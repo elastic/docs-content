@@ -7,7 +7,7 @@ mapped_pages:
 
 Docker images for {{es}} are available from the Elastic Docker registry. A list of all published Docker images and tags is available at [www.docker.elastic.co](https://www.docker.elastic.co). The source code is in [GitHub](https://github.com/elastic/elasticsearch/blob/master/distribution/docker).
 
-This package contains both free and subscription features. [Start a 30-day trial](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/license-settings.md) to try out all of the features.
+This package contains both free and subscription features. [Start a 30-day trial](elasticsearch://reference/elasticsearch/configuration-reference/license-settings.md) to try out all of the features.
 
 ::::{tip}
 If you just want to test {{es}} in local development, refer to [Run {{es}} locally](../../../solutions/search/get-started.md). Please note that this setup is not suitable for production environments.
@@ -452,9 +452,9 @@ The image [exposes](https://docs.docker.com/engine/reference/builder/#/expose) T
 
 ### Manually set the heap size [docker-set-heap-size]
 
-By default, {{es}} automatically sizes JVM heap based on a nodes’s [roles](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/node-settings.md#node-roles) and the total memory available to the node’s container. We recommend this default sizing for most production environments. If needed, you can override default sizing by manually setting JVM heap size.
+By default, {{es}} automatically sizes JVM heap based on a nodes’s [roles](elasticsearch://reference/elasticsearch/configuration-reference/node-settings.md#node-roles) and the total memory available to the node’s container. We recommend this default sizing for most production environments. If needed, you can override default sizing by manually setting JVM heap size.
 
-To manually set the heap size in production, bind mount a [JVM options](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/jvm-settings.md#set-jvm-options) file under `/usr/share/elasticsearch/config/jvm.options.d` that includes your desired [heap size](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/jvm-settings.md#set-jvm-heap-size) settings.
+To manually set the heap size in production, bind mount a [JVM options](elasticsearch://reference/elasticsearch/jvm-settings.md#set-jvm-options) file under `/usr/share/elasticsearch/config/jvm.options.d` that includes your desired [heap size](elasticsearch://reference/elasticsearch/jvm-settings.md#set-jvm-heap-size) settings.
 
 For testing, you can also manually set the heap size using the `ES_JAVA_OPTS` environment variable. For example, to use 1GB, use the following command.
 
@@ -595,7 +595,7 @@ Some plugins require additional security permissions. You must explicitly accept
 * Attaching a `tty` when you run the Docker image and allowing the permissions when prompted.
 * Inspecting the security permissions and accepting them (if appropriate) by adding the `--batch` flag to the plugin install command.
 
-See [Plugin management](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch-plugins/_other_command_line_parameters.md) for more information.
+See [Plugin management](elasticsearch://reference/elasticsearch-plugins/_other_command_line_parameters.md) for more information.
 
 
 ### Troubleshoot Docker errors for {{es}} [troubleshoot-docker-errors]

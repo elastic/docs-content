@@ -13,10 +13,10 @@ mapped_urls:
 % - [x] ./raw-migrated-files/security-docs/security/query-alert-indices.md
 % - [ ] ./raw-migrated-files/docs-content/serverless/security-query-alert-indices.md
 
-This page explains how you should query alert indices, for example, when building rule queries, custom dashboards, or visualizations. For more information about alert event field definitions, review the [Alert schema](asciidocalypse://docs/docs-content/docs/reference/security/fields-and-object-schemas/alert-schema.md).
+This page explains how you should query alert indices, for example, when building rule queries, custom dashboards, or visualizations. For more information about alert event field definitions, review the [Alert schema](/reference/security/fields-and-object-schemas/alert-schema.md).
 
 
-## Alert index aliases [_alert_index_aliases] 
+## Alert index aliases [_alert_index_aliases]
 
 We recommend querying the following index aliases:
 
@@ -26,7 +26,7 @@ We recommend querying the following index aliases:
 Regardless of which alias you query, you should not include a dash or wildcard after the space ID. To query all spaces, use the following syntax: `.alerts-security.alerts-*` or `.siem-signals-*`.
 
 
-## Alert indices [_alert_indices] 
+## Alert indices [_alert_indices]
 
 For additional context, alert events are stored in hidden {{es}} indices. We do not recommend querying them directly. The naming conventions for these indices and their aliases differ depending on which version of {{stack}} you’re running:
 

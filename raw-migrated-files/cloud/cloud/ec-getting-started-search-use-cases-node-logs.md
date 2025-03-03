@@ -1,6 +1,6 @@
 # Ingest logs from a Node.js web application using Filebeat [ec-getting-started-search-use-cases-node-logs]
 
-This guide demonstrates how to ingest logs from a Node.js web application and deliver them securely into an {{ech}} deployment. You’ll set up Filebeat to monitor a JSON-structured log file that has standard Elastic Common Schema (ECS) formatted fields, and you’ll then view real-time visualizations of the log events in Kibana as requests are made to the Node.js server. While Node.js is used for this example, this approach to monitoring log output is applicable across many client types. Check the list of [available ECS logging plugins](asciidocalypse://docs/ecs-logging/docs/reference/intro.md#_get_started).
+This guide demonstrates how to ingest logs from a Node.js web application and deliver them securely into an {{ech}} deployment. You’ll set up Filebeat to monitor a JSON-structured log file that has standard Elastic Common Schema (ECS) formatted fields, and you’ll then view real-time visualizations of the log events in Kibana as requests are made to the Node.js server. While Node.js is used for this example, this approach to monitoring log output is applicable across many client types. Check the list of [available ECS logging plugins](ecs-logging://reference/intro.md#_get_started).
 
 This guide presents:
 
@@ -33,7 +33,7 @@ For the three following packages, you can create a working directory to install 
     npm install winston
     ```
 
-* The [Elastic Common Schema (ECS) formatter](asciidocalypse://docs/ecs-logging-nodejs/docs/reference/winston.md) for the Node.js winston logger - This plugin formats your Node.js logs into an ECS structured JSON format ideally suited for ingestion into Elasticsearch. To install the ECS winston logger, run the following command in your working directory so that the package is installed in the same location as the winston package:
+* The [Elastic Common Schema (ECS) formatter](ecs-logging-nodejs://reference/winston.md) for the Node.js winston logger - This plugin formats your Node.js logs into an ECS structured JSON format ideally suited for ingestion into Elasticsearch. To install the ECS winston logger, run the following command in your working directory so that the package is installed in the same location as the winston package:
 
     ```sh
     npm install @elastic/ecs-winston-format

@@ -5,7 +5,7 @@ You have a number of options for getting data into Elasticsearch, referred to as
 $$$ec-ingest-methods$$$
 
 General content
-:   Index content like HTML pages, catalogs and other files. Send data directly to Elasticseach from your application using an Elastic language client. Otherwise use Elastic content [connectors](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/search-connectors/index.md) or the Elastic [web crawler](https://github.com/elastic/crawler).
+:   Index content like HTML pages, catalogs and other files. Send data directly to Elasticseach from your application using an Elastic language client. Otherwise use Elastic content [connectors](elasticsearch://reference/ingestion-tools/search-connectors/index.md) or the Elastic [web crawler](https://github.com/elastic/crawler).
 
 Timestamped data
 :   The preferred way to index timestamped data is to use Elastic Agent. Elastic Agent is a single, unified way to add monitoring for logs, metrics, and other types of data to a host. It can also protect hosts from security threats, query data from operating systems, and forward data from remote services or hardware. Each Elastic Agent based integration includes default ingestion rules, dashboards, and visualizations to start analyzing your data right away. Fleet Management enables you to centrally manage all of your deployed Elastic Agents from Kibana.
@@ -143,16 +143,16 @@ One reason for preprocessing your data is to control the structure of the data t
 
 ### Data integrity [ec-data-integrity]
 
-Logstash boosts data resiliency for important data that you don’t want to lose. Logstash offers an on-disk [persistent queue (PQ)](asciidocalypse://docs/logstash/docs/reference/persistent-queues.md) that absorbs bursts of events without an external buffering mechanism. It attempts to deliver messages stored in the PQ until delivery succeeds at least once.
+Logstash boosts data resiliency for important data that you don’t want to lose. Logstash offers an on-disk [persistent queue (PQ)](logstash://reference/persistent-queues.md) that absorbs bursts of events without an external buffering mechanism. It attempts to deliver messages stored in the PQ until delivery succeeds at least once.
 
-The Logstash [dead letter queue (DLQ)](asciidocalypse://docs/logstash/docs/reference/dead-letter-queues.md) provides on-disk storage for events that Logstash can’t process, giving you a chance to evaluate them. You can use the dead_letter_queue input plugin to easily reprocess DLQ events.
+The Logstash [dead letter queue (DLQ)](logstash://reference/dead-letter-queues.md) provides on-disk storage for events that Logstash can’t process, giving you a chance to evaluate them. You can use the dead_letter_queue input plugin to easily reprocess DLQ events.
 
 
 ### Data flow [ec-data-flow]
 
 If you need to collect data from multiple Beats or Elastic Agents, consider using Logstash as a proxy. Logstash can receive data from multiple endpoints, even on different networks, and send the data on to Elasticsearch through a single firewall rule. You get more security for less work than if you set up individual rules for each endpoint.
 
-Logstash can send to multiple [outputs](asciidocalypse://docs/logstash/docs/reference/output-plugins.md) from a single pipeline to help you get the most value from your data.
+Logstash can send to multiple [outputs](logstash://reference/output-plugins.md) from a single pipeline to help you get the most value from your data.
 
 
 ## Where to go from here [ec-data-ingest-where-to-go]
@@ -166,7 +166,7 @@ We have guides and many hands-on tutorials to help get you started with ingestin
 :   Use Elastic Observability to gain deeper insight into the behavior of your applications and systems. Follow our guides to ingest various data types, such as [logs and metrics](/solutions/observability/infra-and-hosts/get-started-with-system-metrics.md), [traces and APM](/solutions/observability/apps/get-started-with-apm.md), and [data from Splunk](/solutions/observability/get-started/add-data-from-splunk.md). There are also several [tutorials](https://www.elastic.co/guide/en/observability/current/observability-tutorials.html) to choose from.
 
 [Add data to Elastic Security](/solutions/security/get-started/ingest-data-to-elastic-security.md)
-:   Use Elastic Security to quickly detect, investigate, and respond to threats and vulnerabilities across your environment. You can use {{agent}} to ingest data into the [{{elastic-defend}} integration](/solutions/security/configure-elastic-defend/install-elastic-defend.md), or with many other [{{integrations}}](https://docs.elastic.co/en/integrations) that work together with {{elastic-sec}}. You can also [ingest data from Splunk](/solutions/observability/get-started/add-data-from-splunk.md) or from various third party collectors that ship [ECS compliant security data](asciidocalypse://docs/docs-content/docs/reference/security/fields-and-object-schemas/siem-field-reference.md).
+:   Use Elastic Security to quickly detect, investigate, and respond to threats and vulnerabilities across your environment. You can use {{agent}} to ingest data into the [{{elastic-defend}} integration](/solutions/security/configure-elastic-defend/install-elastic-defend.md), or with many other [{{integrations}}](https://docs.elastic.co/en/integrations) that work together with {{elastic-sec}}. You can also [ingest data from Splunk](/solutions/observability/get-started/add-data-from-splunk.md) or from various third party collectors that ship [ECS compliant security data](/reference/security/fields-and-object-schemas/siem-field-reference.md).
 
 
 ### Ingest data with Elastic Agent, Beats, and Logstash [ec-ingest-timestamped]
@@ -179,10 +179,10 @@ For users who want to build their own solution, we can help you get started inge
 [Beats and Elastic Agent comparison](../../../manage-data/ingest/tools.md)
 :   {{beats}} and {{agent}} can both send data to {{es}} either directly or via {{ls}}. You can use this guide to determine which of these primary ingest tools best matches your use case.
 
-[Introduction to Fleet management](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/index.md)
+[Introduction to Fleet management](/reference/ingestion-tools/fleet/index.md)
 :   {{fleet}} provides a web-based UI in Kibana for centrally managing Elastic Agents and their policies.
 
-[{{ls}} introduction](asciidocalypse://docs/logstash/docs/reference/index.md)
+[{{ls}} introduction](logstash://reference/index.md)
 :   Use {{ls}} to dynamically unify data from disparate sources and normalize the data into destinations of your choice.
 
 
@@ -191,7 +191,7 @@ For users who want to build their own solution, we can help you get started inge
 [Add data with the web crawler](https://github.com/elastic/crawler)
 :   Use the web crawler to programmatically discover, extract, and index searchable content from websites and knowledge bases.
 
-[Add data with connectors](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/search-connectors/index.md)
+[Add data with connectors](elasticsearch://reference/ingestion-tools/search-connectors/index.md)
 :   Sync data from an original data source to an {{es}} index. Connectors enable you to create searchable, read-only replicas of your data sources.
 
 
@@ -209,10 +209,10 @@ For users who want to build their own solution, we can help you get started inge
 [Ingest pipelines](/manage-data/ingest/transform-enrich/ingest-pipelines.md)
 :   {{es}} ingest pipelines let you perform common transformations on your data before indexing.
 
-[{{agent}} processors](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/agent-processors.md)
+[{{agent}} processors](/reference/ingestion-tools/fleet/agent-processors.md)
 :   Use the {{agent}} lightweight processors to parse, filter, transform, and enrich data at the source.
 
-[Creating a {{ls}} pipeline](asciidocalypse://docs/logstash/docs/reference/creating-logstash-pipeline.md)
+[Creating a {{ls}} pipeline](logstash://reference/creating-logstash-pipeline.md)
 :   Create a {{ls}} pipeline by stringing together plugins—​inputs, outputs, filters, and sometimes codecs—​in order to process your data during ingestion.
 
 

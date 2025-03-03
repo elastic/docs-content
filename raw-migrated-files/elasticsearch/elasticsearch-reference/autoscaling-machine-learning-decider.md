@@ -4,8 +4,8 @@ The [autoscaling](../../../deploy-manage/autoscaling.md) {{ml}} decider (`ml`) c
 
 The {{ml}} decider is enabled for policies governing `ml` nodes.
 
-::::{note} 
-For {{ml}} jobs to open when the cluster is not appropriately scaled, set `xpack.ml.max_lazy_ml_nodes` to the largest number of possible {{ml}} nodes (refer to [Advanced machine learning settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/machine-learning-settings.md#advanced-ml-settings) for more information). In {{ech}}, this is automatically set.
+::::{note}
+For {{ml}} jobs to open when the cluster is not appropriately scaled, set `xpack.ml.max_lazy_ml_nodes` to the largest number of possible {{ml}} nodes (refer to [Advanced machine learning settings](elasticsearch://reference/elasticsearch/configuration-reference/machine-learning-settings.md#advanced-ml-settings) for more information). In {{ech}}, this is automatically set.
 ::::
 
 
@@ -20,7 +20,7 @@ Both `num_anomaly_jobs_in_queue` and `num_analytics_jobs_in_queue` are designed 
 :   (Optional, integer) Specifies the number of queued {{dfanalytics-jobs}} to allow. Defaults to `0`.
 
 `down_scale_delay`
-:   (Optional, [time value](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/api-conventions.md#time-units)) Specifies the time to delay before scaling down. Defaults to 1 hour. If a scale down is possible for the entire time window, then a scale down is requested. If the cluster requires a scale up during the window, the window is reset.
+:   (Optional, [time value](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#time-units)) Specifies the time to delay before scaling down. Defaults to 1 hour. If a scale down is possible for the entire time window, then a scale down is requested. If the cluster requires a scale up during the window, the window is reset.
 
 
 ## {{api-examples-title}} [autoscaling-machine-learning-decider-examples]

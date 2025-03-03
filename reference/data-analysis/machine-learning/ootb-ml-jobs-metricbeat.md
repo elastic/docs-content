@@ -5,7 +5,7 @@ mapped_pages:
 
 # {{metricbeat}} {{anomaly-detect}} configurations [ootb-ml-jobs-metricbeat]
 
-These {{anomaly-job}} wizards appear in {{kib}} if you use the [{{metricbeat}} system module](asciidocalypse://docs/reference/metricbeat/metricbeat-module-system.md) to monitor your servers. For more details, see the {{dfeed}} and job definitions in GitHub.
+These {{anomaly-job}} wizards appear in {{kib}} if you use the [{{metricbeat}} system module](asciidocalypse://docs/beats/docs/reference/metricbeat/metricbeat-module-system.md) to monitor your servers. For more details, see the {{dfeed}} and job definitions in GitHub.
 
 
 ## {{metricbeat}} system [metricbeat-system-ecs]

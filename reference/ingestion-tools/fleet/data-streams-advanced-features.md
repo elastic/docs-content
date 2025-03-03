@@ -10,7 +10,7 @@ mapped_pages:
 {{fleet}} provides support for several advanced features around its data streams, including:
 
 * [Time series data streams (TSDS)](/manage-data/data-store/data-streams/time-series-data-stream-tsds.md)
-* [Synthetic `_source`](asciidocalypse://docs/reference/elasticsearch/mapping-reference/mapping-source-field.md#synthetic-source)
+* [Synthetic `_source`](elasticsearch://reference/elasticsearch/mapping-reference/mapping-source-field.md#synthetic-source)
 
 These features can be enabled and disabled for {{fleet}}-managed data streams by using the index template API and a few key settings. Note that in versions 8.17.0 and later, Synthetic `_source` requires an Enterprise license.
 

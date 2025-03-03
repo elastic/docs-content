@@ -77,7 +77,7 @@ Complete the following steps **for each node in your cluster**. To join the same
 
 1. Open the `$ES_PATH_CONF/elasticsearch.yml` file and make the following changes:
 
-    1. Add the [`cluster-name`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/miscellaneous-cluster-settings.md#cluster-name) setting and enter a name for your cluster:
+    1. Add the [`cluster-name`](elasticsearch://reference/elasticsearch/configuration-reference/miscellaneous-cluster-settings.md#cluster-name) setting and enter a name for your cluster:
 
         ```yaml
         cluster.name: my-cluster
@@ -101,7 +101,7 @@ Complete the following steps **for each node in your cluster**. To join the same
         xpack.security.transport.ssl.truststore.path: elastic-certificates.p12
         ```
 
-        1. If you want to use hostname verification, set the verification mode to `full`. You should generate a different certificate for each host that matches the DNS or IP address. See the `xpack.security.transport.ssl.verification_mode` parameter in [TLS settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/security-settings.md#transport-tls-ssl-settings).
+        1. If you want to use hostname verification, set the verification mode to `full`. You should generate a different certificate for each host that matches the DNS or IP address. See the `xpack.security.transport.ssl.verification_mode` parameter in [TLS settings](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#transport-tls-ssl-settings).
 
 2. If you entered a password when creating the node certificate, run the following commands to store the password in the {{es}} keystore:
 

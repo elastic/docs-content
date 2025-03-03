@@ -37,7 +37,7 @@ If no data shows up in {{es}}, first make sure that your APM components are prop
 ::::::{tab-item} Fleet-managed
 **Is {{agent}} healthy?**
 
-In {{kib}} open **{{fleet}}** and find the host that is running the APM integration; confirm that its status is **Healthy**. If it isn’t, check the {{agent}} logs to diagnose potential causes. See [Monitor {{agent}}s](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/monitor-elastic-agent.md) to learn more.
+In {{kib}} open **{{fleet}}** and find the host that is running the APM integration; confirm that its status is **Healthy**. If it isn’t, check the {{agent}} logs to diagnose potential causes. See [Monitor {{agent}}s](/reference/ingestion-tools/fleet/monitor-elastic-agent.md) to learn more.
 
 **Is APM Server happy?**
 

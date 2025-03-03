@@ -26,22 +26,22 @@ A role is defined by the following JSON structure:
 ```
 
 1. A list of usernames the owners of this role can [impersonate](/deploy-manage/users-roles/cluster-or-deployment-auth/submitting-requests-on-behalf-of-other-users.md).
-2. A list of cluster privileges. These privileges define the cluster level actions users with this role are able to execute. 
-   
+2. A list of cluster privileges. These privileges define the cluster level actions users with this role are able to execute.
+
    This field is optional (missing `cluster` privileges effectively mean no cluster level permissions).
 3. An object defining global privileges. A global privilege is a form of cluster privilege that is request sensitive. A standard cluster privilege makes authorization decisions based solely on the action being executed. A global privilege also considers the parameters included in the request. Support for global privileges is currently limited to the management of application privileges. This field is optional.
 4. A list of indices permissions entries.
-   
+
    This field is optional (missing `indices` privileges effectively mean no index level permissions).
 5. A list of application privilege entries. This field is optional.
-6. A list of indices permissions entries for [remote clusters configured with the API key based model](/deploy-manage/remote-clusters/remote-clusters-api-key.md). 
-   
+6. A list of indices permissions entries for [remote clusters configured with the API key based model](/deploy-manage/remote-clusters/remote-clusters-api-key.md).
+
    This field is optional (missing `remote_indices` privileges effectively mean no index level permissions for any API key based remote clusters).
-7. A list of cluster permissions entries for [remote clusters configured with the API key based model](/deploy-manage/remote-clusters/remote-clusters-api-key.md). 
-   
+7. A list of cluster permissions entries for [remote clusters configured with the API key based model](/deploy-manage/remote-clusters/remote-clusters-api-key.md).
+
    This field is optional (missing `remote_cluster` privileges effectively means no additional cluster permissions for any API key based remote clusters).
-8. Metadata field associated with the role, such as `metadata.app_tag`. Metadata is internally indexed as a [flattened](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/flattened.md) field type. This means that all sub-fields act like `keyword` fields when querying and sorting. Metadata values can be simple values, but also lists and maps. This field is optional.
-9.  A string value with the description text of the role. The maximum length of it is `1000` chars. The field is internally indexed as a [text](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/text.md#text-field-type) field type (with default values for all parameters). This field is optional.
+8. Metadata field associated with the role, such as `metadata.app_tag`. Metadata is internally indexed as a [flattened](elasticsearch://reference/elasticsearch/mapping-reference/flattened.md) field type. This means that all sub-fields act like `keyword` fields when querying and sorting. Metadata values can be simple values, but also lists and maps. This field is optional.
+9.  A string value with the description text of the role. The maximum length of it is `1000` chars. The field is internally indexed as a [text](elasticsearch://reference/elasticsearch/mapping-reference/text.md#text-field-type) field type (with default values for all parameters). This field is optional.
 
 
 ::::{note}
@@ -160,7 +160,7 @@ The remote indices privileges entry has an extra mandatory `clusters` field comp
 }
 ```
 
-1. A list of remote cluster aliases. It supports literal strings as well as [wildcards](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/api-conventions.md#api-multi-index) and [regular expressions](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/regexp-syntax.md). This field is required.
+1. A list of remote cluster aliases. It supports literal strings as well as [wildcards](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#api-multi-index) and [regular expressions](elasticsearch://reference/query-languages/regexp-syntax.md). This field is required.
 2. A list of data streams, indices, and aliases to which the permissions in this entry apply. Supports wildcards (`*`).
 3. The index level privileges the owners of the role have on the associated data streams and indices specified in the `names` argument.
 4. Specification for document fields the owners of the role have read access to. See [Setting up field and document level security](/deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level.md) for details.
@@ -186,7 +186,7 @@ The following describes the structure of a remote cluster permissions entry:
 }
 ```
 
-1. A list of remote cluster aliases. It supports literal strings as well as [wildcards](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/api-conventions.md#api-multi-index) and [regular expressions](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/regexp-syntax.md). This field is required.
+1. A list of remote cluster aliases. It supports literal strings as well as [wildcards](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#api-multi-index) and [regular expressions](elasticsearch://reference/query-languages/regexp-syntax.md). This field is required.
 2. The cluster level privileges for the remote cluster. The allowed values here are a subset of the [cluster privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-cluster). The [builtin privileges API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-get-builtin-privileges) can be used to determine which privileges are allowed here. This field is required.
 
 

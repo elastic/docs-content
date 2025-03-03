@@ -20,5 +20,5 @@ inputs:
 3. An array containing all log file paths.
 
 
-For other custom options to configure the input, refer to the [filestream input](asciidocalypse://docs/reference/filebeat/filebeat-input-filestream.md) in the {{filebeat}} documentation.
+For other custom options to configure the input, refer to the [filestream input](asciidocalypse://docs/beats/docs/reference/filebeat/filebeat-input-filestream.md) in the {{filebeat}} documentation.
 

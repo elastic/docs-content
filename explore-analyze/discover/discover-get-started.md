@@ -29,7 +29,7 @@ Select the data you want to explore, and then specify the time range in which to
 2. Select the data view that contains the data you want to explore.
    ::::{tip}
    By default, {{kib}} requires a [{{data-source}}](../find-and-organize/data-views.md) to access your Elasticsearch data. A {{data-source}} can point to one or more indices, [data streams](../../manage-data/data-store/data-streams.md), or [index aliases](https://www.elastic.co/guide/en/elasticsearch/reference/current/alias.html). When adding data to {{es}} using one of the many integrations available, sometimes data views are created automatically, but you can also create your own.
-   
+
    You can also [try {{esql}}](try-esql.md), that let's you query any data you have in {{es}} without specifying a {{data-source}} first.
    ::::
    If you’re using sample data, data views are automatically created and are ready to use.
@@ -283,5 +283,5 @@ This section references common questions and issues encountered when using Disco
 
 This can happen in several cases:
 
-* With runtime fields and regular keyword fields, when the string exceeds the value set for the [ignore_above](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/ignore-above.md) setting used when indexing the data into {{es}}.
+* With runtime fields and regular keyword fields, when the string exceeds the value set for the [ignore_above](elasticsearch://reference/elasticsearch/mapping-reference/ignore-above.md) setting used when indexing the data into {{es}}.
 * Due to the structure of nested fields, a leaf field added to the table as a column will not contain values in any of its cells. Instead, add the root field as a column to view a JSON representation of its values. Learn more in [this blog post](https://www.elastic.co/de/blog/discover-uses-fields-api-in-7-12).

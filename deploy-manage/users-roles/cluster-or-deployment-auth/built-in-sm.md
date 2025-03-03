@@ -11,11 +11,11 @@ navigation_title: Change passwords
 After you implement security, you might need or want to change passwords for different users. If you want to reset a password for a [built-in user](/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-users.md) such as the `elastic` or `kibana_system` users, or a user in the [native realm](/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-users.md), you can use the following tools:
 
 * The **Manage users** UI in {{kib}}
-* The [`elasticsearch-reset-password`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/command-line-tools/reset-password.md) tool
+* The [`elasticsearch-reset-password`](elasticsearch://reference/elasticsearch/command-line-tools/reset-password.md) tool
 * The [change passwords API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-change-password)
 
 :::{{tip}}
-This topic describes resetting passwords after the initial bootstrap password is reset. To learn about the users that are used to communicate between {{stack}} components, and about managing bootstrap passwords for built-in users, refer to [](/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-users.md). 
+This topic describes resetting passwords after the initial bootstrap password is reset. To learn about the users that are used to communicate between {{stack}} components, and about managing bootstrap passwords for built-in users, refer to [](/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-users.md).
 :::
 
 ## Using {{kib}}
@@ -47,7 +47,7 @@ POST /_security/user/user1/_password
 
 ## Using the `user` API [native-users-api]
 
-You can manage users through the Elasticsearch `user` API. 
+You can manage users through the Elasticsearch `user` API.
 
 For example, you can change a user's password:
 

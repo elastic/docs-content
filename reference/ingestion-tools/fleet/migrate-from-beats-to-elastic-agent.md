@@ -22,7 +22,7 @@ Learn how to replace your existing {{filebeat}} and {{metricbeat}} deployments w
 
 There are currently some limitations and requirements to be aware of before migrating to {{agent}}:
 
-* **No support for configuring the {{beats}} internal queue.** Each Beat has an internal queue that stores events before batching and publishing them to the output. To improve data throughput, {{beats}} users can set [configuration options](asciidocalypse://docs/reference/filebeat/configuring-internal-queue.md) to tune the performance of the internal queue. However, the endless fine tuning required to configure the queue is cumbersome and not always fruitful. Instead of expecting users to configure the internal queue, {{agent}} uses sensible defaults. This means you won’t be able to migrate internal queue configurations to {{agent}}.
+* **No support for configuring the {{beats}} internal queue.** Each Beat has an internal queue that stores events before batching and publishing them to the output. To improve data throughput, {{beats}} users can set [configuration options](asciidocalypse://docs/beats/docs/reference/filebeat/configuring-internal-queue.md) to tune the performance of the internal queue. However, the endless fine tuning required to configure the queue is cumbersome and not always fruitful. Instead of expecting users to configure the internal queue, {{agent}} uses sensible defaults. This means you won’t be able to migrate internal queue configurations to {{agent}}.
 
 For more information about {{agent}} limitations, see [*{{beats}} and {{agent}} capabilities*](/reference/ingestion-tools/fleet/index.md).
 
@@ -167,7 +167,7 @@ Notice again that the data is duplicated because you still have {{beats}} runnin
 
 ## Migrate processor configurations [_migrate_processor_configurations]
 
-Processors enable you to filter and enhance the data before it’s sent to the output. Each processor receives an event, applies a defined action to the event, and returns the event. If you define a list of processors, they are executed in the order they are defined. Elastic provides a [rich set of processors](asciidocalypse://docs/reference/filebeat/defining-processors.md) that are supported by all {{beats}} and by {{agent}}.
+Processors enable you to filter and enhance the data before it’s sent to the output. Each processor receives an event, applies a defined action to the event, and returns the event. If you define a list of processors, they are executed in the order they are defined. Elastic provides a [rich set of processors](asciidocalypse://docs/beats/docs/reference/filebeat/defining-processors.md) that are supported by all {{beats}} and by {{agent}}.
 
 Prior to migrating from {{beats}}, you defined processors in the configuration file for each Beat. After migrating to {{agent}}, however, the {{beats}} configuration files are redundant. All configuration is policy-driven from {{fleet}} (or for advanced use cases, specified in a standalone agent policy). Any processors you defined previously in the {{beats}} configuration need to be added to an integration policy; they cannot be defined in the {{beats}} configuration.
 

@@ -32,7 +32,7 @@ Refer to [](./cloud-enterprise/ece-architecture.md) for details about the ECE pl
 - **Air-gapped installations**: Support for off-line installations.
 - **Microservices architecture**: All services are containerized through Docker.
 
-Check the [glossary](asciidocalypse:///docs-content/docs/reference/glossary.md) to get familiar with the terminology for ECE as well as other Elastic products and solutions.
+Check the [glossary](/reference/glossary/index.md) to get familiar with the terminology for ECE as well as other Elastic products and solutions.
 
 ## Section overview
 

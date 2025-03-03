@@ -6,12 +6,12 @@ mapped_pages:
 ---
 
 # Elastic APM release notes [elastic-apm-release-notes]
-Review the changes, fixes, and more in each version of Elastic APM. 
+Review the changes, fixes, and more in each version of Elastic APM.
 
 To check for security updates, go to [Security announcements for the Elastic stack](https://discuss.elastic.co/c/announcements/security-announcements/31).
 
-% Release notes include only features, enhancements, and fixes. Add breaking changes, deprecations, and known issues to the applicable release notes sections. 
-% For each new version section, include the Elastic APM and Kibana changes. 
+% Release notes include only features, enhancements, and fixes. Add breaking changes, deprecations, and known issues to the applicable release notes sections.
+% For each new version section, include the Elastic APM and Kibana changes.
 
 % ## version.next [elastic-apm-next-release-notes]
 % **Release date:** Month day, year

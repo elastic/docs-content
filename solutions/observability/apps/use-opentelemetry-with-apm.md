@@ -73,7 +73,7 @@ However, not all features of the OpenTelemetry API are supported when using this
 Find more details about how to use an OpenTelemetry API or SDK with an Elastic APM agent and which OpenTelemetry API features are supported in the APM agent documentation:
 
 * [**APM Java agent →**](asciidocalypse://docs/apm-agent-java/docs/reference/opentelemetry-bridge.md)
-* [**APM .NET agent →**](asciidocalypse://docs/apm-agent-dotnet/docs/reference/opentelemetry-bridge.md)
+* [**APM .NET agent →**](apm-agent-dotnet://reference/opentelemetry-bridge.md)
 * [**APM Node.js agent →**](asciidocalypse://docs/apm-agent-nodejs/docs/reference/opentelemetry-bridge.md)
 * [**APM Python agent →**](asciidocalypse://docs/apm-agent-python/docs/reference/opentelemetry-api-bridge.md)
 

@@ -78,7 +78,7 @@ To revoke an enrollment token:
     To re-enroll your {{agent}}s, use an active enrollment token.
 
 
-Note that when an enrollment token is revoked it is not immediately deleted. Deletion occurs automatically after the duration specified in the {{es}} [`xpack.security.authc.api_key.delete.retention_period`](asciidocalypse://docs/reference/elasticsearch/configuration-reference/security-settings.md#api-key-service-settings-delete-retention-period) setting has expired (see [Invalidate API key API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-invalidate-api-key) for details).
+Note that when an enrollment token is revoked it is not immediately deleted. Deletion occurs automatically after the duration specified in the {{es}} [`xpack.security.authc.api_key.delete.retention_period`](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#api-key-service-settings-delete-retention-period) setting has expired (see [Invalidate API key API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-invalidate-api-key) for details).
 
 Until the enrollment token has been deleted:
 

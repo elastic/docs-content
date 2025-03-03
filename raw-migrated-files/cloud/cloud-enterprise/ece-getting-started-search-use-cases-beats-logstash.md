@@ -245,7 +245,7 @@ Now the Filebeat and Metricbeat are set up, let’s configure a {{ls}} pipeline 
     1. {{ls}} listens for Beats input on the default port of 5044. Only one line is needed to do this. {{ls}} can handle input from many Beats of the same and also of varying types (Metricbeat, Filebeat, and others).
     2. This sends output to the standard output, which displays through your command line interface. This plugin enables you to verify the data before you send it to {{es}}, in a later step.
 
-3. Save the new *beats.conf* file in your Logstash folder. To learn more about the file format and options, check [{{ls}} Configuration Examples](asciidocalypse://docs/logstash/docs/reference/config-examples.md).
+3. Save the new *beats.conf* file in your Logstash folder. To learn more about the file format and options, check [{{ls}} Configuration Examples](logstash://reference/config-examples.md).
 
 
 ## Output {{ls}} data to stdout [ece-beats-logstash-stdout]
@@ -481,7 +481,7 @@ In this section, you configure {{ls}} to send the Metricbeat and Filebeat data t
 ::::{note}
 In this guide, you manually launch each of the Elastic stack applications through the command line interface. In production, you may prefer to configure {{ls}}, Metricbeat, and Filebeat to run as System Services. Check the following pages for the steps to configure each application to run as a service:
 
-* [Running {{ls}} as a service on Debian or RPM](asciidocalypse://docs/logstash/docs/reference/running-logstash.md)
+* [Running {{ls}} as a service on Debian or RPM](logstash://reference/running-logstash.md)
 * [Metricbeat and systemd](asciidocalypse://docs/beats/docs/reference/metricbeat/running-with-systemd.md)
 * [Start filebeat](asciidocalypse://docs/beats/docs/reference/filebeat/filebeat-starting.md)
 

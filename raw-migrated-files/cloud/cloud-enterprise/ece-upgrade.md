@@ -24,7 +24,7 @@ The following table shows the recommended upgrade paths from older {{ece}} versi
 
 ## The upgrade process [ece-upgrade-overview]
 
-Upgrading Elastic Cloud Enterprise works by replacing the [containers](asciidocalypse://docs/docs-content/docs/reference/glossary/index.md#glossary-container) that ECE itself requires to run on each host. Upgrading ECE does not touch any of the containers that run Elasticsearch clusters and Kibana instances. Each container that needs to be upgraded is renamed and stopped, followed by the creation of a new container with an upgraded instance of the ECE software and its dependencies. When the upgrade process has completed successfully, it cleans up after itself and removes the old containers.
+Upgrading Elastic Cloud Enterprise works by replacing the [containers](/reference/glossary/index.md#glossary-container) that ECE itself requires to run on each host. Upgrading ECE does not touch any of the containers that run Elasticsearch clusters and Kibana instances. Each container that needs to be upgraded is renamed and stopped, followed by the creation of a new container with an upgraded instance of the ECE software and its dependencies. When the upgrade process has completed successfully, it cleans up after itself and removes the old containers.
 
 The upgrade process creates a `frc-upgraders-monitor` container on the host where you initiate the process that performs the following actions:
 

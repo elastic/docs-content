@@ -8,7 +8,7 @@ mapped_pages:
 
 # Transport settings [k8s-transport-settings]
 
-The transport module in Elasticsearch is used for internal communication between nodes within the cluster as well as communication between remote clusters. Check the [Elasticsearch documentation](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/networking-settings.md) for details. For customization options of the HTTP layer, check [Services](accessing-services.md) and [TLS certificates](/deploy-manage/security/secure-http-communications.md).
+The transport module in Elasticsearch is used for internal communication between nodes within the cluster as well as communication between remote clusters. Check the [Elasticsearch documentation](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md) for details. For customization options of the HTTP layer, check [Services](accessing-services.md) and [TLS certificates](/deploy-manage/security/secure-http-communications.md).
 
 ## Customize the Transport Service [k8s_customize_the_transport_service]
 

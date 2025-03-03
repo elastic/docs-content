@@ -62,7 +62,7 @@ This is not concerning as long as the number of such shards is decreasing and th
 
 If the cluster has this warning repeatedly for an extended period of time (multiple hours), it is possible that the desired balance is diverging too far from the current state.
 
-If so, increase the [`cluster.routing.allocation.balance.threshold`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#shards-rebalancing-heuristics) to reduce the sensitivity of the algorithm that tries to level up the shard count and disk usage within the cluster.
+If so, increase the [`cluster.routing.allocation.balance.threshold`](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#shards-rebalancing-heuristics) to reduce the sensitivity of the algorithm that tries to level up the shard count and disk usage within the cluster.
 
 And reset the desired balance using the following API call:
 

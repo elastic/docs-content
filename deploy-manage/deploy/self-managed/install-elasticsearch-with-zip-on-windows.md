@@ -7,7 +7,7 @@ mapped_pages:
 
 {{es}} can be installed on Windows using the Windows `.zip` archive. This comes with a `elasticsearch-service.bat` command which will setup {{es}} to run as a service.
 
-This package contains both free and subscription features. [Start a 30-day trial](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/license-settings.md) to try out all of the features.
+This package contains both free and subscription features. [Start a 30-day trial](elasticsearch://reference/elasticsearch/configuration-reference/license-settings.md) to try out all of the features.
 
 ::::{note}
 On Windows the {{es}} {{ml}} feature requires the Microsoft Universal C Runtime library. This is built into Windows 10, Windows Server 2016 and more recent versions of Windows. For older versions of Windows it can be installed via Windows Update, or from a [separate download](https://support.microsoft.com/en-us/help/2999226/update-for-universal-c-runtime-in-windows). If you cannot install the Microsoft Universal C Runtime library you can still use the rest of {{es}} if you disable the {{ml}} feature.
@@ -87,11 +87,11 @@ When {{es}} starts for the first time, the security auto-configuration process b
 
 Before enrolling a new node, additional actions such as binding to an address other than `localhost` or satisfying bootstrap checks are typically necessary in production clusters. During that time, an auto-generated enrollment token could expire, which is why enrollment tokens aren’t generated automatically.
 
-Additionally, only nodes on the same host can join the cluster without additional configuration. If you want nodes from another host to join your cluster, you need to set `transport.host` to a [supported value](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/networking-settings.md#network-interface-values) (such as uncommenting the suggested value of `0.0.0.0`), or an IP address that’s bound to an interface where other hosts can reach it. Refer to [transport settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/networking-settings.md#transport-settings) for more information.
+Additionally, only nodes on the same host can join the cluster without additional configuration. If you want nodes from another host to join your cluster, you need to set `transport.host` to a [supported value](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md#network-interface-values) (such as uncommenting the suggested value of `0.0.0.0`), or an IP address that’s bound to an interface where other hosts can reach it. Refer to [transport settings](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md#transport-settings) for more information.
 
 To enroll new nodes in your cluster, create an enrollment token with the `elasticsearch-create-enrollment-token` tool on any existing node in your cluster. You can then start a new node with the `--enrollment-token` parameter so that it joins an existing cluster.
 
-1. In a separate terminal from where {{es}} is running, navigate to the directory where you installed {{es}} and run the [`elasticsearch-create-enrollment-token`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/command-line-tools/create-enrollment-token.md) tool to generate an enrollment token for your new nodes.
+1. In a separate terminal from where {{es}} is running, navigate to the directory where you installed {{es}} and run the [`elasticsearch-create-enrollment-token`](elasticsearch://reference/elasticsearch/command-line-tools/create-enrollment-token.md) tool to generate an enrollment token for your new nodes.
 
     ```sh
     bin\elasticsearch-create-enrollment-token -s node
@@ -194,7 +194,7 @@ You can install {{es}} as a service that runs in the background or starts automa
     TLS is not enabled or configured when you start {{es}} as a service.
     ::::
 
-3. Generate a password for the `elastic` user with the [`elasticsearch-reset-password`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/command-line-tools/reset-password.md) tool. The password is output to the command line.
+3. Generate a password for the `elastic` user with the [`elasticsearch-reset-password`](elasticsearch://reference/elasticsearch/command-line-tools/reset-password.md) tool. The password is output to the command line.
 
     ```sh
     C:\Program Files\elasticsearch-9.0.0-beta1\bin>\bin\elasticsearch-reset-password -u elastic
@@ -284,9 +284,9 @@ At its core, `elasticsearch-service.bat` relies on [Apache Commons Daemon](https
 
 
 ::::{note}
-By default, {{es}} automatically sizes JVM heap based on a node’s [roles](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/node-settings.md#node-roles) and total memory. We recommend this default sizing for most production environments. If needed, you can override default sizing by manually setting the heap size.
+By default, {{es}} automatically sizes JVM heap based on a node’s [roles](elasticsearch://reference/elasticsearch/configuration-reference/node-settings.md#node-roles) and total memory. We recommend this default sizing for most production environments. If needed, you can override default sizing by manually setting the heap size.
 
-When installing {{es}} on Windows as a service for the first time or running {{es}} from the command line, you can manually [Set the JVM heap size](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/jvm-settings.md#set-jvm-heap-size). To resize the heap for an already installed service, use the service manager: `bin\elasticsearch-service.bat manager`.
+When installing {{es}} on Windows as a service for the first time or running {{es}} from the command line, you can manually [Set the JVM heap size](elasticsearch://reference/elasticsearch/jvm-settings.md#set-jvm-heap-size). To resize the heap for an already installed service, use the service manager: `bin\elasticsearch-service.bat manager`.
 
 ::::
 

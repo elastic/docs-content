@@ -16,7 +16,7 @@ The selected plugins/bundles are downloaded and provided when a node starts. Cha
 
 With great power comes great responsibility: your plugins can extend your deployment with new functionality, but also break it. Be careful. We obviously cannot guarantee that your custom code works.
 
-::::{important} 
+::::{important}
 You cannot edit or delete a custom extension after it has been used in a deployment. To remove it from your deployment, you can disable the extension and update your deployment configuration.
 ::::
 
@@ -39,7 +39,7 @@ Plugins
 
     {{es}} assumes that the uploaded ZIP file contains binaries. If it finds any source code, it fails with an error message, causing provisioning to fail. Make sure you upload binaries, and not source code.
 
-    ::::{note} 
+    ::::{note}
     Plugins larger than 5GB should have the plugin descriptor file at the top of the archive. This order can be achieved by specifying at time of creating the ZIP file:
 
     ```sh
@@ -76,7 +76,7 @@ Bundles
 
     The dictionary `synonyms.txt` can be used as `synonyms.txt` or using the full path `/app/config/synonyms.txt` in the `synonyms_path` of the `synonym-filter`.
 
-    To learn more about analyzing with synonyms, check [Synonym token filter](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/text-analysis/analysis-synonym-tokenfilter.md) and [Formatting Synonyms](https://www.elastic.co/guide/en/elasticsearch/guide/2.x/synonym-formats.html).
+    To learn more about analyzing with synonyms, check [Synonym token filter](elasticsearch://reference/data-analysis/text-analysis/analysis-synonym-tokenfilter.md) and [Formatting Synonyms](https://www.elastic.co/guide/en/elasticsearch/guide/2.x/synonym-formats.html).
 
     **GeoIP database bundle**
 
@@ -110,7 +110,7 @@ You must upload your files before you can apply them to your cluster configurati
 
 After creating your extension, you can [enable them for existing {{es}} deployments](../../../deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md#ec-update-bundles) or enable them when creating new deployments.
 
-::::{note} 
+::::{note}
 Creating extensions larger than 200MB should be done through the extensions API.
 
 Refer to [Managing plugins and extensions through the API](../../../deploy-manage/deploy/elastic-cloud/manage-plugins-extensions-through-api.md) for more details.
@@ -169,7 +169,7 @@ To update an extension with a new file version,
 
 ## How to use the extensions API [ec-extension-api-usage-guide]
 
-::::{note} 
+::::{note}
 For a full set of examples, check [Managing plugins and extensions through the API](../../../deploy-manage/deploy/elastic-cloud/manage-plugins-extensions-through-api.md).
 ::::
 

@@ -4,21 +4,21 @@ mapped_pages:
 
 applies_to:
   deployment:
-    eck: 
-    ess: 
-    ece: 
-    self: 
+    eck:
+    ess:
+    ece:
+    self:
 ---
 
 # Recreate a follower index [ccr-recreate-follower-index]
 
-When a document is updated or deleted, the underlying operation is retained in the Lucene index for a period of time defined by the [`index.soft_deletes.retention_lease.period`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index-modules.md#ccr-index-soft-deletes-retention-period) parameter. You configure this setting on the [leader index](../cross-cluster-replication.md#ccr-leader-requirements).
+When a document is updated or deleted, the underlying operation is retained in the Lucene index for a period of time defined by the [`index.soft_deletes.retention_lease.period`](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#ccr-index-soft-deletes-retention-period) parameter. You configure this setting on the [leader index](../cross-cluster-replication.md#ccr-leader-requirements).
 
 When a follower index starts, it acquires a retention lease from the leader index. This lease informs the leader that it should not allow a soft delete to be pruned until either the follower indicates that it has received the operation, or until the lease expires.
 
 If a follower index falls sufficiently behind a leader and cannot replicate operations, {{es}} reports an `indices[].fatal_exception` error. To resolve the issue, recreate the follower index. When the new follow index starts, the [remote recovery](../cross-cluster-replication.md#ccr-remote-recovery) process recopies the Lucene segment files from the leader.
 
-::::{important} 
+::::{important}
 Recreating the follower index is a destructive action. All existing Lucene segment files are deleted on the cluster containing the follower index.
 ::::
 

@@ -16,5 +16,5 @@ The topics in this section provides information about the architecture of {{es}}
 
     * [Shard allocation awareness](distributed-architecture/shard-allocation-relocation-recovery/shard-allocation-awareness.md): Learn how to use custom node attributes to distribute shards across different racks or availability zones.
 
-* [Shard request cache](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/shard-request-cache-settings.md): Learn how {{es}} caches search requests to improve performance.
+* [Shard request cache](elasticsearch://reference/elasticsearch/configuration-reference/shard-request-cache-settings.md): Learn how {{es}} caches search requests to improve performance.
 

@@ -29,8 +29,8 @@ Info on {{ls}} and {{ls}} input and output plugins:
 
 * [{{ls}} plugin support matrix](https://www.elastic.co/support/matrix#logstash_plugins)
 * [{{ls}} Reference](https://www.elastic.co/guide/en/logstash/current)
-* [{{ls}} input plugins](asciidocalypse://docs/logstash/docs/reference/input-plugins.md)
-* [{{es}} output plugin](asciidocalypse://docs/logstash/docs/reference/plugins-outputs-elasticsearch.md)
+* [{{ls}} input plugins](logstash://reference/input-plugins.md)
+* [{{es}} output plugin](logstash://reference/plugins-outputs-elasticsearch.md)
 
 Info on {{es}} and ingest pipelines:
 

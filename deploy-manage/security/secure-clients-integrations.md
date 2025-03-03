@@ -9,13 +9,13 @@ You will need to update the configuration for several [clients](httprest-clients
 
 The {{es}} {{security-features}} enable you to secure your {{es}} cluster. But {{es}} itself is only one product within the {{stack}}. It is often the case that other products in the {{stack}} are connected to the cluster and therefore need to be secured as well, or at least communicate with the cluster in a secured way:
 
-* [Apache Hadoop](asciidocalypse://docs/elasticsearch-hadoop/docs/reference/security.md)
+* [Apache Hadoop](elasticsearch-hadoop://reference/security.md)
 * [Auditbeat](asciidocalypse://docs/beats/docs/reference/auditbeat/securing-auditbeat.md)
 * [Filebeat](asciidocalypse://docs/beats/docs/reference/filebeat/securing-filebeat.md)
-* [{{fleet}} & {{agent}}](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/secure.md)
+* [{{fleet}} & {{agent}}](/reference/ingestion-tools/fleet/secure.md)
 * [Heartbeat](asciidocalypse://docs/beats/docs/reference/heartbeat/securing-heartbeat.md)
 * [{{kib}}](../security.md)
-* [Logstash](asciidocalypse://docs/logstash/docs/reference/secure-connection.md)
+* [Logstash](logstash://reference/secure-connection.md)
 * [Metricbeat](asciidocalypse://docs/beats/docs/reference/metricbeat/securing-metricbeat.md)
 * [Monitoring and security](../monitor.md)
 * [Packetbeat](asciidocalypse://docs/beats/docs/reference/packetbeat/securing-packetbeat.md)

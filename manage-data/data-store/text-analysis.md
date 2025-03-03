@@ -14,7 +14,7 @@ _Text analysis_ is the process of converting unstructured text, like the body of
 
 Text analysis enables {{es}} to perform full-text search, where the search returns all *relevant* results rather than just exact matches. For example, if you search for `Quick fox jumps`, you probably want the document that contains `A quick brown fox jumps over the lazy dog`, and you might also want documents that contain related words like `fast fox` or `foxes leap`.
 
-{{es}} performs text analysis when indexing or searching [`text`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/text.md) fields. If your index does _not_ contain `text` fields, no further setup is needed; you can skip the pages in this section. If you _do_ use `text` fields or your text searches aren’t returning results as expected, configuring text analysis can often help. You should also look into analysis configuration if you’re using {{es}} to:
+{{es}} performs text analysis when indexing or searching [`text`](elasticsearch://reference/elasticsearch/mapping-reference/text.md) fields. If your index does _not_ contain `text` fields, no further setup is needed; you can skip the pages in this section. If you _do_ use `text` fields or your text searches aren’t returning results as expected, configuring text analysis can often help. You should also look into analysis configuration if you’re using {{es}} to:
 
 * Build a search engine
 * Mine unstructured data
@@ -47,9 +47,9 @@ To ensure search terms match these words as intended, you can apply the same tok
 
 Text analysis is performed by an [*analyzer*](/manage-data/data-store/text-analysis/anatomy-of-an-analyzer.md), a set of rules that govern the entire process.
 
-{{es}} includes a default analyzer, called the [standard analyzer](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/text-analysis/analysis-standard-analyzer.md), which works well for most use cases right out of the box.
+{{es}} includes a default analyzer, called the [standard analyzer](elasticsearch://reference/data-analysis/text-analysis/analysis-standard-analyzer.md), which works well for most use cases right out of the box.
 
-If you want to tailor your search experience, you can choose a different [built-in analyzer](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/text-analysis/analyzer-reference.md) or even [configure a custom one](/manage-data/data-store/text-analysis/create-custom-analyzer.md). A custom analyzer gives you control over each step of the analysis process, including:
+If you want to tailor your search experience, you can choose a different [built-in analyzer](elasticsearch://reference/data-analysis/text-analysis/analyzer-reference.md) or even [configure a custom one](/manage-data/data-store/text-analysis/create-custom-analyzer.md). A custom analyzer gives you control over each step of the analysis process, including:
 
 * Changes to the text *before* tokenization
 * How text is converted to tokens

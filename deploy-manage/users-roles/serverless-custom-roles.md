@@ -54,14 +54,14 @@ Each role can grant access to multiple data indices, and each index can have a d
 :class: screenshot
 :::
 
-Refer to [index privileges](asciidocalypse://reference/elasticsearch/security-privileges.md#privileges-list-indices) for a complete description of available options.
+Refer to [index privileges](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-indices) for a complete description of available options.
 
 ### Document level and field level security
 
-Document-level and field-level security affords you even more granularity when it comes to granting access to your data: 
+Document-level and field-level security affords you even more granularity when it comes to granting access to your data:
 
-* With document-level security (DLS), you can write an {{es}} query to describe which documents this role grants access to. Add your query in the **Granted documents query** field using [QueryDSL](/explore-analyze/query-filter/languages/querydsl.md) syntax. 
-  
+* With document-level security (DLS), you can write an {{es}} query to describe which documents this role grants access to. Add your query in the **Granted documents query** field using [QueryDSL](/explore-analyze/query-filter/languages/querydsl.md) syntax.
+
   For example, the following query grants read access only to the documents whose `department_id` equals `12`:
 
   ```json
@@ -106,6 +106,6 @@ As new features are added to {{serverless-full}}, roles that use the custom opti
 
 ::::
 
-## Assign custom roles 
+## Assign custom roles
 
 After your roles are set up, the next step to securing access is to assign roles to your users. Click the **Assign roles** link to go to the **Members** tab of the **Organization** page. Learn more in [](/deploy-manage/users-roles/cloud-organization/user-roles.md).

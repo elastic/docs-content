@@ -212,7 +212,7 @@ If you are using {{agent}} with [{{serverless-full}}](/deploy-manage/deploy/elas
 
 **{{agents}}**
 
-When you use {{fleet}} to manage a large volume (10k or more) of {{agents}}, the check-in from each of the multiple agents triggers an {{es}} authentication request. To help reduce the possibility of cache eviction and to speed up propagation of {{agent}} policy changes and actions, we recommend setting the [API key cache size](asciidocalypse://docs/reference/elasticsearch/configuration-reference/security-settings.md#api-key-service-settings) in your {{es}} configuration to 2x the maximum number of agents.
+When you use {{fleet}} to manage a large volume (10k or more) of {{agents}}, the check-in from each of the multiple agents triggers an {{es}} authentication request. To help reduce the possibility of cache eviction and to speed up propagation of {{agent}} policy changes and actions, we recommend setting the [API key cache size](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#api-key-service-settings) in your {{es}} configuration to 2x the maximum number of agents.
 
 For example, with 25,000 running {{agents}} you could set the cache value to `50000`:
 

@@ -73,7 +73,7 @@ Before you can monitor APM, you must have monitoring data for the {{es}} product
     ```
 
 
-See the [{{agent}} command reference](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/agent-command-reference.md) for more information on the enroll command.
+See the [{{agent}} command reference](/reference/ingestion-tools/fleet/agent-command-reference.md) for more information on the enroll command.
 
 
 ## Install and configure {{metricbeat}} to collect monitoring data [apm-install-config-metricbeat]

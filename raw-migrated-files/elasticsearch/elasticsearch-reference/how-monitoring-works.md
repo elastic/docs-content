@@ -20,7 +20,7 @@ To learn how to collect monitoring data, refer to:
     * [Legacy collection methods](../../../deploy-manage/monitor/stack-monitoring/es-legacy-collection-methods.md): Uses internal exporters to gather metrics. Not recommended. If you have previously configured legacy collection methods, you should migrate to using {{agent}} or {{metricbeat}}.
 
 * [Monitoring {{kib}}](../../../deploy-manage/monitor/monitoring-data/visualizing-monitoring-data.md)
-* [Monitoring {{ls}}](asciidocalypse://docs/logstash/docs/reference/monitoring-logstash-legacy.md)
+* [Monitoring {{ls}}](logstash://reference/monitoring-logstash-legacy.md)
 * Monitoring {{beats}}:
 
     * [{{auditbeat}}](asciidocalypse://docs/beats/docs/reference/auditbeat/monitoring.md)
@@ -31,5 +31,5 @@ To learn how to collect monitoring data, refer to:
     * [{{winlogbeat}}](asciidocalypse://docs/beats/docs/reference/winlogbeat/monitoring.md)
 
 * [Monitoring APM Server](/solutions/observability/apps/monitor-apm-server.md)
-* [Monitoring {{agent}}s](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/monitor-elastic-agent.md) {{fleet}}-managed agents) or [Configure monitoring for standalone {{agent}}s](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/elastic-agent-monitoring-configuration.md)
+* [Monitoring {{agent}}s](/reference/ingestion-tools/fleet/monitor-elastic-agent.md) {{fleet}}-managed agents) or [Configure monitoring for standalone {{agent}}s](/reference/ingestion-tools/fleet/elastic-agent-monitoring-configuration.md)
 

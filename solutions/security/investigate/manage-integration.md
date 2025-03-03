@@ -14,7 +14,7 @@ applies_to:
 
 ## System requirements [_system_requirements]
 
-* [{{fleet}}](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/index.md) is enabled on your cluster, and one or more [{{agents}}](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/install-elastic-agents.md) is enrolled.
+* [{{fleet}}](/reference/ingestion-tools/fleet/index.md) is enabled on your cluster, and one or more [{{agents}}](/reference/ingestion-tools/fleet/install-elastic-agents.md) is enrolled.
 * The [Osquery Manager](https://docs.elastic.co/en/integrations/osquery_manager) integration has been added and configured for an agent policy through {{fleet}}. This integration supports x64 architecture on Windows, MacOS, and Linux platforms, and ARM64 architecture on Linux.
 
 ::::{note}
@@ -93,12 +93,12 @@ For each agent policy where you want to allow `curl` table queries, edit the Osq
 
 ## Upgrade Osquery versions [_upgrade_osquery_versions]
 
-The [Osquery version](https://github.com/osquery/osquery/releases) available on an {{agent}} is associated to the version of Osquery Beat on the Agent. To get the latest version of Osquery Beat, [upgrade your {{agent}}](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/upgrade-elastic-agent.md).
+The [Osquery version](https://github.com/osquery/osquery/releases) available on an {{agent}} is associated to the version of Osquery Beat on the Agent. To get the latest version of Osquery Beat, [upgrade your {{agent}}](/reference/ingestion-tools/fleet/upgrade-elastic-agent.md).
 
 
 ## Debug issues [_debug_issues]
 
-If you encounter issues with **Osquery Manager**, find the relevant logs for {{elastic-agent}} and Osquerybeat in the agent directory. Refer to the [Fleet Installation layout](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/installation-layout.md) to find the log file location for your OS.
+If you encounter issues with **Osquery Manager**, find the relevant logs for {{elastic-agent}} and Osquerybeat in the agent directory. Refer to the [Fleet Installation layout](/reference/ingestion-tools/fleet/installation-layout.md) to find the log file location for your OS.
 
 ```ts
 ../data/elastic-agent-*/logs/elastic-agent-json.log-*

@@ -18,7 +18,7 @@ Most Elastic resources can be accessed and managed through RESTful APIs. While t
 Elasticsearch APIs
 :   This set of APIs allows you to interact directly with the Elasticsearch nodes in your deployment. You can ingest data, run search queries, check the health of your clusters, manage snapshots, and more.
 
-    To use these APIs on {{ecloud}} read our topic [Access the API console](asciidocalypse://docs/cloud/docs/reference/cloud-hosted/ec-api-console.md), and to learn about all of the available endpoints check the [Elasticsearch API reference documentation](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/index.md).
+    To use these APIs on {{ecloud}} read our topic [Access the API console](asciidocalypse://docs/cloud/docs/reference/cloud-hosted/ec-api-console.md), and to learn about all of the available endpoints check the [Elasticsearch API reference documentation](elasticsearch://reference/elasticsearch/rest-apis/index.md).
 
     Some [restrictions](../deploy/elastic-cloud/restrictions-known-problems.md#ec-restrictions-apis-elasticsearch) apply when using the Elasticsearch APIs on {{ecloud}}.
 
@@ -37,7 +37,7 @@ Other Products
     * [APM event intake API Reference](/solutions/observability/apps/elastic-apm-events-intake-api.md)
     * [App Search API Reference](https://www.elastic.co/guide/en/app-search/current/api-reference.html)
     * [Elastic Security APIs](https://www.elastic.co/guide/en/security/current/security-apis.html)
-    * [Fleet APIs](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/fleet-api-docs.md)
+    * [Fleet APIs](/reference/ingestion-tools/fleet/fleet-api-docs.md)
     * [Logstash APIs](https://www.elastic.co/guide/en/logstash/current/monitoring-logstash.html)
     * [Workplace Search API Reference](https://www.elastic.co/guide/en/workplace-search/current/workplace-search-api-overview.html)
 

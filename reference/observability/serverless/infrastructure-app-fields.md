@@ -5,7 +5,7 @@ mapped_pages:
 
 # Infrastructure app fields [observability-infrastructure-monitoring-required-fields]
 
-This section lists the fields the Infrastructure UI uses to display data. Please note that some of the fields listed here are not [ECS fields](asciidocalypse://docs/reference/index.md#_what_is_ecs).
+This section lists the fields the Infrastructure UI uses to display data. Please note that some of the fields listed here are not [ECS fields](asciidocalypse://docs/ecs/docs/reference/index.md#_what_is_ecs).
 
 
 ## Additional field details [observability-infrastructure-monitoring-required-fields-additional-field-details]

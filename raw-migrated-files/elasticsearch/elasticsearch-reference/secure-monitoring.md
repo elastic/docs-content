@@ -8,5 +8,5 @@ For more information, see:
 
 * [*Monitoring in a production environment*](../../../deploy-manage/monitor/stack-monitoring/elasticsearch-monitoring-self-managed.md)
 * [Configuring monitoring in {{kib}}](/deploy-manage/monitor/stack-monitoring/kibana-monitoring-legacy.md)
-* [Configuring monitoring for Logstash nodes](asciidocalypse://docs/logstash/docs/reference/monitoring-logstash-legacy.md)
+* [Configuring monitoring for Logstash nodes](logstash://reference/monitoring-logstash-legacy.md)
 

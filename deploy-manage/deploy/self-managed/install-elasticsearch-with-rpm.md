@@ -12,7 +12,7 @@ RPM install is not supported on distributions with old versions of RPM, such as 
 ::::
 
 
-This package contains both free and subscription features. [Start a 30-day trial](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/license-settings.md) to try out all of the features.
+This package contains both free and subscription features. [Start a 30-day trial](elasticsearch://reference/elasticsearch/configuration-reference/license-settings.md) to try out all of the features.
 
 The latest stable version of Elasticsearch can be found on the [Download Elasticsearch](https://elastic.co/downloads/elasticsearch) page. Other versions can be found on the [Past Releases page](https://elastic.co/downloads/past-releases).
 
@@ -82,7 +82,7 @@ When installing {{es}}, security features are enabled and configured by default.
 * Authentication and authorization are enabled, and a password is generated for the `elastic` built-in superuser.
 * Certificates and keys for TLS are generated for the transport and HTTP layer, and TLS is enabled and configured with these keys and certificates.
 
-The password and certificate and keys are output to your terminal. You can reset the password for the `elastic` user with the [`elasticsearch-reset-password`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/command-line-tools/reset-password.md) command.
+The password and certificate and keys are output to your terminal. You can reset the password for the `elastic` user with the [`elasticsearch-reset-password`](elasticsearch://reference/elasticsearch/command-line-tools/reset-password.md) command.
 
 We recommend storing the `elastic` password as an environment variable in your shell. For example:
 
@@ -344,7 +344,7 @@ When you install {{es}}, the following certificates and keys are generated in th
 `transport.p12`
 :   Keystore that contains the key and certificate for the transport layer for all the nodes in your cluster.
 
-`http.p12` and `transport.p12` are password-protected PKCS#12 keystores. {{es}} stores the passwords for these keystores as [secure settings](../../security/secure-settings.md). To retrieve the passwords so that you can inspect or change the keystore contents, use the [`bin/elasticsearch-keystore`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/command-line-tools/elasticsearch-keystore.md) tool.
+`http.p12` and `transport.p12` are password-protected PKCS#12 keystores. {{es}} stores the passwords for these keystores as [secure settings](../../security/secure-settings.md). To retrieve the passwords so that you can inspect or change the keystore contents, use the [`bin/elasticsearch-keystore`](elasticsearch://reference/elasticsearch/command-line-tools/elasticsearch-keystore.md) tool.
 
 Use the following command to retrieve the password for `http.p12`:
 

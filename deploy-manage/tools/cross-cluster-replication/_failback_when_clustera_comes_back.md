@@ -4,10 +4,10 @@ mapped_pages:
 
 applies_to:
   deployment:
-    eck: 
-    ess: 
-    ece: 
-    self: 
+    eck:
+    ess:
+    ece:
+    self:
 ---
 
 # Failback when clusterA comes back [_failback_when_clustera_comes_back]
@@ -61,8 +61,8 @@ When `clusterA` comes back, `clusterB` becomes the new leader and `clusterA` bec
     GET kibana_sample_data_ecommerce/_search?q=kimchy
     ```
 
-    ::::{tip} 
-    If a soft delete is merged away before it can be replicated to a follower the following process will fail due to incomplete history on the leader, see [index.soft_deletes.retention_lease.period](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index-modules.md#ccr-index-soft-deletes-retention-period) for more details.
+    ::::{tip}
+    If a soft delete is merged away before it can be replicated to a follower the following process will fail due to incomplete history on the leader, see [index.soft_deletes.retention_lease.period](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#ccr-index-soft-deletes-retention-period) for more details.
     ::::
 
 

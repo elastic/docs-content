@@ -25,7 +25,7 @@ When an {{es}} request generates multiple audit events across multiple nodes, yo
 
 This identifier allows you to trace the flow of a request across the {{es}} cluster and reconstruct the full context of an operation.
 
-Refer to [Audit events](asciidocalypse://elasticsearch/docs/reference/elasticsearch/elasticsearch-audit-events) for a complete reference of event types and attributes.
+Refer to [Audit events](elasticsearch://reference/elasticsearch/elasticsearch-audit-events.md) for a complete reference of event types and attributes.
 
 ## `trace.id` field in {{kib}} audit events
 
