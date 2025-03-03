@@ -228,7 +228,6 @@ toc:
       - file: docs-content/serverless/security-llm-connector-guides.md
       - file: docs-content/serverless/security-llm-performance-matrix.md
       - file: docs-content/serverless/security-overview-dashboard.md
-      - file: docs-content/serverless/security-policies-page.md
       - file: docs-content/serverless/security-posture-faq.md
       - file: docs-content/serverless/security-posture-management.md
       - file: docs-content/serverless/security-prebuilt-rules-management.md
