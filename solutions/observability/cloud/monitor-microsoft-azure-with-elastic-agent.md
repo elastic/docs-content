@@ -266,10 +266,10 @@ To add the integration:
     **Storage account key**
     :   A valid access key defined for the storage account.
 
-    :::{image} ../../../images/observability-agent-tut-azure-activity-log-settings.png
-    :alt: Screenshot of integration settings for Azure activity logs
-    :class: screenshot
-    :::
+        :::{image} ../../../images/observability-agent-tut-azure-activity-log-settings.png
+        :alt: Screenshot of integration settings for Azure activity logs
+        :class: screenshot
+        :::
 
 6. Make sure the **Collect Azure activity logs from Event Hub** selector is turned on.
 7. Under **Existing hosts**, select the agent policy that created earlier.
