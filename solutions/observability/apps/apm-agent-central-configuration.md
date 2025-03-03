@@ -35,7 +35,7 @@ Android agent
 :   [Configuration reference](apm-agent-android://reference/configuration.md)
 
 Go agent
-:   [Configuration reference](asciidocalypse://docs/apm-agent-go/docs/reference/configuration.md)
+:   [Configuration reference](apm-agent-go://reference/configuration.md)
 
 iOS agent
 :   [Configuration reference](asciidocalypse://docs/apm-agent-ios/docs/reference/configuration.md)

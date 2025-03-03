@@ -99,7 +99,7 @@ Sending services must add the `traceparent` header to outgoing requests.
 ::::::
 
 ::::::{tab-item} Go
-1. Start a transaction with [`StartTransaction`](asciidocalypse://docs/apm-agent-go/docs/reference/api-documentation.md#tracer-api-start-transaction) or a span with [`StartSpan`](asciidocalypse://docs/apm-agent-go/docs/reference/api-documentation.md#transaction-start-span).
+1. Start a transaction with [`StartTransaction`](apm-agent-go://reference/api-documentation.md#tracer-api-start-transaction) or a span with [`StartSpan`](apm-agent-go://reference/api-documentation.md#transaction-start-span).
 2. Get the active `TraceContext`.
 3. Send the `TraceContext` to the receiving service.
 
@@ -275,7 +275,7 @@ Receiving services must parse the incoming `traceparent` header, and start a new
 
 ::::::{tab-item} Go
 1. Parse the incoming `TraceContext` with [`ParseTraceparentHeader`](https://pkg.go.dev/go.elastic.co/apm/module/apmhttp/v2#ParseTraceparentHeader) or [`ParseTracestateHeader`](https://pkg.go.dev/go.elastic.co/apm/module/apmhttp/v2#ParseTracestateHeader).
-2. Start a new transaction or span as a child of the incoming transaction with [`StartTransactionOptions`](asciidocalypse://docs/apm-agent-go/docs/reference/api-documentation.md#tracer-api-start-transaction-options) or [`StartSpanOptions`](asciidocalypse://docs/apm-agent-go/docs/reference/api-documentation.md#transaction-start-span-options).
+2. Start a new transaction or span as a child of the incoming transaction with [`StartTransactionOptions`](apm-agent-go://reference/api-documentation.md#tracer-api-start-transaction-options) or [`StartSpanOptions`](apm-agent-go://reference/api-documentation.md#transaction-start-span-options).
 
 Example:
 

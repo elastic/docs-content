@@ -34,7 +34,7 @@ The environment selector is a global filter for `service.environment`. It allows
 
 Service environments are defined when configuring your APM agents. It’s vital to be consistent when naming environments in your APM agents. To learn how to configure service environments, see the specific APM agent documentation:
 
-* **Go:** [`ELASTIC_APM_ENVIRONMENT`](asciidocalypse://docs/apm-agent-go/docs/reference/configuration.md#config-environment)
+* **Go:** [`ELASTIC_APM_ENVIRONMENT`](apm-agent-go://reference/configuration.md#config-environment)
 * **iOS agent:** *Not yet supported*
 * **Java:** [`environment`](asciidocalypse://docs/apm-agent-java/docs/reference/ingestion-tools/apm-agent-java/config-core.md#config-environment)
 * **.NET:** [`Environment`](apm-agent-dotnet://reference/config-core.md#config-environment)

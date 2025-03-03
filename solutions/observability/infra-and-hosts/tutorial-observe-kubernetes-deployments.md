@@ -644,9 +644,9 @@ Configure the agent using environment variables:
 
 **Learn more in the agent reference**
 
-* [Supported technologies](asciidocalypse://docs/apm-agent-go/docs/reference/supported-technologies.md)
-* [Advanced configuration](asciidocalypse://docs/apm-agent-go/docs/reference/configuration.md)
-* [Detailed guide to instrumenting Go source code](asciidocalypse://docs/apm-agent-go/docs/reference/set-up-apm-go-agent.md)
+* [Supported technologies](apm-agent-go://reference/supported-technologies.md)
+* [Advanced configuration](apm-agent-go://reference/configuration.md)
+* [Detailed guide to instrumenting Go source code](apm-agent-go://reference/set-up-apm-go-agent.md)
 ::::::
 
 ::::::{tab-item} Java

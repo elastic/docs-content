@@ -303,14 +303,14 @@ export ELASTIC_APM_SECRET_TOKEN=
 
 Instrumentation is the process of extending your application’s code to report trace data to Elastic APM. Go applications must be instrumented manually at the source code level. To instrument your applications, use one of the following approaches:
 
-* [Built-in instrumentation modules](asciidocalypse://docs/apm-agent-go/docs/reference/builtin-modules.md).
-* [Custom instrumentation](asciidocalypse://docs/apm-agent-go/docs/reference/custom-instrumentation.md) and context propagation with the Go Agent API.
+* [Built-in instrumentation modules](apm-agent-go://reference/builtin-modules.md).
+* [Custom instrumentation](apm-agent-go://reference/custom-instrumentation.md) and context propagation with the Go Agent API.
 
 **Learn more in the agent reference**
 
-* [Supported technologies](asciidocalypse://docs/apm-agent-go/docs/reference/supported-technologies.md)
-* [Advanced configuration](asciidocalypse://docs/apm-agent-go/docs/reference/configuration.md)
-* [Detailed guide to instrumenting Go source code](asciidocalypse://docs/apm-agent-go/docs/reference/set-up-apm-go-agent.md)
+* [Supported technologies](apm-agent-go://reference/supported-technologies.md)
+* [Advanced configuration](apm-agent-go://reference/configuration.md)
+* [Detailed guide to instrumenting Go source code](apm-agent-go://reference/set-up-apm-go-agent.md)
 ::::::
 
 ::::::{tab-item} iOS
