@@ -6,25 +6,18 @@ mapped_urls:
 
 # Blocklist
 
-% What needs to be done: Align serverless/stateful
-
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/security-docs/security/blocklist.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/security-blocklist.md
 
 The blocklist allows you to prevent specified applications from running on hosts, extending the list of processes that {{elastic-defend}} considers malicious. This helps ensure that known malicious processes aren’t accidentally executed by end users.
 
-The blocklist is not intended to broadly block benign applications for non-security reasons; only use it to block potentially harmful applications. To compare the blocklist with other endpoint artifacts, refer to [*Optimize {{elastic-defend}}*](/solutions/security/manage-elastic-defend/optimize-elastic-defend.md).
+The blocklist is not intended to broadly block benign applications for non-security reasons; only use it to block potentially harmful applications. To compare the blocklist with other endpoint artifacts, refer to [](/solutions/security/manage-elastic-defend/optimize-elastic-defend.md).
 
 ::::{admonition} Requirements
 * In addition to configuring specific entries on the **Blocklist** page, you must also ensure that the blocklist is enabled on the {{elastic-defend}} integration policy in the [Malware protection settings](/solutions/security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md#malware-protection). This setting is enabled by default.
-* You must have the **Blocklist** [privilege](/solutions/security/configure-elastic-defend/elastic-defend-feature-privileges.md) to access this feature.
-
+* You must have the **Blocklist** [privilege](/solutions/security/configure-elastic-defend/elastic-defend-feature-privileges.md) or the appropriate user role to access this feature.
 ::::
 
 
-By default, a blocklist entry is recognized globally across all hosts running {{elastic-defend}}. If you have a [Platinum or Enterprise subscription](https://www.elastic.co/pricing), you can also assign a blocklist entry to specific {{elastic-defend}} integration policies, which blocks the process only on hosts assigned to that policy.
+By default, a blocklist entry is recognized globally across all hosts running {{elastic-defend}}. You can also assign a blocklist entry to specific {{elastic-defend}} integration policies, which blocks the process only on hosts assigned to that policy.
 
 1. Find **Blocklist** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Click **Add blocklist entry**. The **Add blocklist** flyout appears.
@@ -43,7 +36,7 @@ By default, a blocklist entry is recognized globally across all hosts running {{
         * `Signature`: (Windows only) The name of the application’s digital signer.
 
             ::::{tip}
-            To find the signer’s name for an application, go to **Kibana** → **Discover** and query the process name of the application’s executable (for example, `process.name : "mctray.exe"` for a McAfee security binary). Then, search the results for the `process.code_signature.subject_name` field, which contains the signer’s name (for example, `McAfee, Inc.`).
+            To find the signer’s name for an application, go to **Discover** and query the process name of the application’s executable (for example, `process.name : "mctray.exe"` for a McAfee security binary). Then, search the results for the `process.code_signature.subject_name` field, which contains the signer’s name (for example, `McAfee, Inc.`).
             ::::
 
     3. `Operator`: For hash and path conditions, the operator is `is one of` and can’t be modified. For signature conditions, choose `is one of` to enter multiple values or `is` for one value.
@@ -82,7 +75,7 @@ The **Blocklist** page displays all the blocklist entries that have been added t
 
 ### Edit a blocklist entry [edit-blocklist-entry]
 
-You can individually modify each blocklist entry. With a Platinum or Enterprise subscription, you can also change the policies that a blocklist entry is assigned to.
+You can individually modify each blocklist entry. You can also change the policies that a blocklist entry is assigned to.
 
 To edit a blocklist entry:
 

@@ -4,7 +4,6 @@ toc:
     children:
       - file: security/fields-and-object-schemas/index.md
         children:
-          - file: security/fields-and-object-schemas/runtime-fields.md
           - file: security/fields-and-object-schemas/siem-field-reference.md
           - file: security/fields-and-object-schemas/timeline-object-schema.md
           - file: security/fields-and-object-schemas/alert-schema.md
