@@ -28,5 +28,5 @@ When you are ready to install ECE, you can proceed:
 * [Without your private Docker registry](./ece-install-offline-no-registry.md)
 
 ::::{note}
-Deployment End-of-life (EOL) information relies on the connection to [https://www.elastic.co/support/eol.json](https://www.elastic.co/support/eol.json). If EOL information is updated, Elastic may require you to reconnect to [https://www.elastic.co/support/eol.json](https://www.elastic.co/support/eol.json) over the Internet to get this information reflected.
+Deployment End-of-life (EOL) information relies on the connection to [https://www.elastic.co/support/eol.json](https://www.elastic.co/support/eol.json). If EOL information is updated, Elastic may require you to reconnect to [https://www.elastic.co/support/eol.json](https://www.elastic.co/support/eol.json) over the internet to get this information reflected.
 ::::
