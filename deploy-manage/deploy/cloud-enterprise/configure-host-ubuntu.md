@@ -5,6 +5,7 @@ applies_to:
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-configure-hosts-ubuntu-cloud.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-configure-hosts-ubuntu-onprem.html
+navigation_title: Ubuntu
 ---
 
 # Configure host Ubuntu cloud [ece-configure-hosts-ubuntu]
