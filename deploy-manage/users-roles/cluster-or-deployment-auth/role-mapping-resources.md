@@ -1,4 +1,16 @@
-# Role mapping resources [role-mapping-resources]
+---
+mapped_urls:
+  - https://www.elastic.co/guide/en/elasticsearch/reference/current/role-mapping-resources.html
+navigation_title: "Role mapping properties"
+applies_to:
+  deployment:
+    ece:
+    eck:
+    ess:
+    self:
+---
+
+# Role mapping resource properties [role-mapping-resources]
 
 A role mapping resource has the following properties:
 
@@ -21,12 +33,10 @@ A role mapping resource has the following properties:
     :   (array of rules) If **all** of its children are true, it evaluates to `true`.
 
     `field`
-    :   (object) See [Field rules](../../../deploy-manage/users-roles/cluster-or-deployment-auth/mapping-users-groups-to-roles.md#mapping-roles-rule-field).
+    :   (object) See [Field rules](#mapping-roles-rule-field).
 
     `except`
     :   (object) A single rule as an object. Only valid as a child of an `all` rule. If its child is `false`, the `except` is `true`.
-
-
 
 ## Field rules [mapping-roles-rule-field] 
 
@@ -42,7 +52,6 @@ The value specified in the field rule can be one of the following types:
 | Number | Matches an equivalent numerical value. | `7` |
 | Null | Matches a null or missing value. | `null` |
 | Array | Tests each element in the array in                      accordance with the above definitions.                      If *any* of elements match, the match is successful. | `["admin", "operator"]` |
-
 
 ### User fields [_user_fields] 
 
