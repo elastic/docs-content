@@ -30,7 +30,7 @@ In these pages we frequently refer to [Docker](https://www.docker.com/), as its 
 
 ## Prerequisites
 
-Before you start, make sure to [identify your deployment scenario](identify-deployment-scenario.md) and follow all the referenced sections in [prepare your hosts](prepare-environment.md). Make sure that your selected infrastructure meets the requirements.
+Before you start, make sure to [identify your deployment scenario](identify-deployment-scenario.md) and follow all the referenced sections in [](prepare-environment.md). Make sure that your selected infrastructure meets the requirements.
 
 ## Configure your ECE hosts [ece-configure-hosts]
 
