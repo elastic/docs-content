@@ -6,16 +6,6 @@ mapped_urls:
 
 # Findings page
 
-% What needs to be done: Align serverless/stateful
-
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/security-docs/security/findings-page.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/security-cspm-findings-page-kspm-kspm.md
-
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
-
-$$$cspm-findings-page-filter-findings-kspm$$$
 
 The **Misconfigurations** tab on the Findings page displays the configuration risks identified by the [CSPM](/solutions/security/cloud/cloud-security-posture-management.md) and [KSPM](/solutions/security/cloud/kubernetes-security-posture-management.md) integrations.
 
@@ -37,13 +27,14 @@ By default, the Findings page lists all findings, without grouping or filtering.
 
 ### Group findings [_group_findings_2]
 
-1. Click **Group findings by** to group your data by a field. Select one of the suggested fields or **Custom field** to choose your own. You can select up to three group fields at once.
-2. When grouping is turned on, click a group to expand it and examine all sub-groups or findings within that group.
-3. To turn off grouping, click **Group findings by** and select **None**.
+Click **Group findings by** to group your data by a field. Select one of the suggested fields or **Custom field** to choose your own. You can select up to three group fields at once. 
 
-::::{note}
-Multiple groupings apply to your data in the order you selected them. For example, if you first select **Kubernetes cluster**, then select **Resource***, the top-level grouping will be based on ***Kubernetes cluster**, and its subordinate grouping will be based on **Resource**.
-::::
+* When grouping is turned on, click a group to expand it and examine all sub-groups or findings within that group. 
+* To turn off grouping, click **Group findings by** and select **None**.
+
+  ::::{note}
+  Multiple groupings apply to your data in the order you selected them. For example, if you first select **Cloud account**, then select **Resource**, the top-level grouping will be based on **Cloud account**, and its subordinate grouping will be based on **Resource**.
+  ::::
 
 
 
@@ -77,9 +68,9 @@ To remediate failed findings and reduce your attack surface:
 2. Click the arrow to the left of a failed finding to open the findings flyout.
 3. Follow the steps under **Remediation**.
 
-    ::::{note}
-    Remediation steps typically include commands for you to execute. These sometimes contain placeholder values that you must replace before execution.
-    ::::
+   ::::{note}
+   Remediation steps typically include commands for you to execute. These sometimes contain placeholder values that you must replace before execution.
+   ::::
 
 
 

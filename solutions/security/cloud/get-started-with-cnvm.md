@@ -6,12 +6,6 @@ mapped_urls:
 
 # Get started with CNVM
 
-% What needs to be done: Align serverless/stateful
-
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/security-docs/security/vuln-management-get-started.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/security-vuln-management-get-started.md
 
 This page explains how to set up Cloud Native Vulnerability Management (CNVM).
 
@@ -53,9 +47,9 @@ Do not add the integration to an existing {{agent}} policy. It should always be 
 3. Click **Add Cloud Native Vulnerability Management**.
 4. Give your integration a name that matches its purpose or the AWS account region you want to scan for vulnerabilities (for example, `uswest2-aws-account`.)
 
-    :::{image} ../../../images/security-cnvm-setup-1.png
-    :alt: The CNVM integration setup page
-    :::
+   :::{image} ../../../images/security-cnvm-setup-1.png
+   :alt: The CNVM integration setup page
+   :::
 
 5. Click **Save and continue**. The integration will create a new {{agent}} policy.
 6. Click **Add {{agent}} to your hosts**.
@@ -77,9 +71,9 @@ The integration will only scan VMs in the region you select. To scan multiple re
 1. Switch back to the tab where you have {{kib}} open.
 2. Click **Launch CloudFormation**. The CloudFormation page appears.
 
-    :::{image} ../../../images/security-cnvm-cloudformation.png
-    :alt: The cloud formation template
-    :::
+   :::{image} ../../../images/security-cnvm-cloudformation.png
+   :alt: The cloud formation template
+   :::
 
 3. Click **Create stack**.  To avoid authentication problems, you can only make configuration changes to the VM InstanceType, which you could make larger to increase scanning speed.
 4. Wait for the confirmation that {{agent}} was enrolled.

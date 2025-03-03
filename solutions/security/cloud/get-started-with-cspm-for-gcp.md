@@ -56,6 +56,9 @@ This functionality is in beta and is subject to change. The design and code is l
 7. Next, you’ll need to authenticate to GCP. Expand the **Steps to Generate GCP Account Credentials** section, then follow the instructions that appear to automatically create the necessary credentials using Google Cloud Shell.
 8. Once you’ve provided the necessary credentials, click **Save and continue** to finish deployment. Your data should start to appear within a few minutes.
 
+::::{admonition} Important
+Agentless deployment does not work if you are using [Traffic filtering](/deploy-manage/security/traffic-filtering.md).
+::::
 
 ## Agent-based deployment [cspm-gcp-agent-based]
 
@@ -92,9 +95,9 @@ For most users, the simplest option is to use a Google Cloud Shell script to aut
 4. Copy the command that appears, then click **Launch Google Cloud Shell**. It opens in a new window.
 5. Check the box to trust Elastic’s `cloudbeat` repo, then click **Confirm**
 
-    :::{image} ../../../images/security-cspm-cloudshell-trust.png
-    :alt: The cloud shell confirmation popup
-    :::
+:::{image} ../../../images/security-cspm-cloudshell-trust.png
+:alt: The cloud shell confirmation popup
+:::
 
 6. In Google Cloud Shell, execute the command you copied. Once it finishes, return to {{kib}} and wait for the confirmation of data received from your new integration. Then you can click **View Assets** to see your data.
 

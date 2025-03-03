@@ -6,12 +6,6 @@ mapped_urls:
 
 # Cloud workload protection for VMs
 
-% What needs to be done: Align serverless/stateful
-
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/security-docs/security/cloud-workload-protection.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/security-cloud-workload-protection.md
 
 Cloud workload protection helps you monitor and protect your Linux VMs. It uses the [{{elastic-defend}}](/solutions/security/configure-elastic-defend/install-elastic-defend.md) integration to capture cloud workload telemetry containing process, file, and network activity.
 
@@ -28,5 +22,4 @@ To continue setting up your cloud workload protection, learn more about:
 
 * [**Getting started with {{elastic-defend}}**](/solutions/security/configure-elastic-defend/install-elastic-defend.md): configure {{elastic-defend}} to protect your hosts. Be sure to select one of the "Cloud workloads" presets if you want to collect session data by default, including process, file, and network telemetry.
 * [**Session view**](/solutions/security/investigate/session-view.md): examine Linux process data organized in a tree-like structure according to the Linux logical event model, with processes organized by parentage and time of execution. Use it to monitor and investigate session activity, and to understand user and service behavior on your Linux infrastructure.
-* [**The Kubernetes dashboard**](/solutions/security/cloud/kubernetes-dashboard.md): Explore an overview of your protected Kubernetes clusters, and drill down into individual sessions within your Kubernetes infrastructure.
 * [**Environment variable capture**](/solutions/security/cloud/capture-environment-variables.md): Capture the environment variables associated with process events, such as `PATH`, `LD_PRELOAD`, or `USER`.
