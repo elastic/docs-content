@@ -2,6 +2,9 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/serverless/current/what-is-observability-serverless.html
   - https://www.elastic.co/guide/en/observability/current/index.html
+applies_to:
+  stack: ga
+  serverless: ga
 ---
 
 # Observability
@@ -14,9 +17,9 @@ mapped_urls:
 * [**Get started**](observability/get-started.md): Discover more about our observability features and how to get started.
 * [**Quickstart: Monitor hosts with Elastic Agent**](observability/get-started/quickstart-monitor-hosts-with-elastic-agent.md): Scan your host to detect and collect logs and metrics.
 * [**Quickstart: Monitor your Kubernetes cluster with Elastic Agent**](observability/get-started/quickstart-monitor-kubernetes-cluster-with-elastic-agent.md): Create the Kubernetes resources that are required to monitor your cluster infrastructure.
-* [**Get started with Logs**](observability/logs/get-started-with-system-logs.md): Add your log data to {{obs-serverless}} and start exploring your logs.
+* [**Get started with Logs**](observability/logs/get-started-with-system-logs.md): Add your log data to {{observability}} and start exploring your logs.
 * [**Get started with traces and APM**](observability/apps/get-started-with-apm.md): Collect Application Performance Monitoring (APM) data and visualize it in real time.
-* [**Get started with metrics**](observability/infra-and-hosts/get-started-with-system-metrics.md): Add your metrics data to {{obs-serverless}} and visualize it in real time.
+* [**Get started with metrics**](observability/infra-and-hosts/get-started-with-system-metrics.md): Add your metrics data to {{observability}} and visualize it in real time.
 
 
 ## How to [_how_to]

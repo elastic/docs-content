@@ -64,10 +64,10 @@ Data collection with AWS Firehose is supported on {{ech}} deployments in AWS, Az
 
 ## Prerequisites [_prerequisites_5]
 
-::::{tab-set}
+:::::{tab-set}
 :group: stack-serverless
 
-:::{tab-item} Elastic Stack
+::::{tab-item} Elastic Stack
 :sync: stack
 
 * An [{{ech}}](https://cloud.elastic.co/registration?page=docs&placement=docs-body) deployment. The deployment includes an {{es}} cluster for storing and searching your data, and {{kib}} for visualizing and managing your data.
@@ -86,18 +86,18 @@ Data collection with AWS Firehose is supported on {{ech}} deployments in AWS, Az
 The default CloudFormation stack is created in the AWS region selected for the user’s account. This region can be modified either through the AWS Console interface or by specifying a `--region` parameter in the AWS CLI command when creating the stack.
 ::::
 
-:::
+::::
 
-:::{tab-item} Serverless
+::::{tab-item} Serverless
 :sync: serverless
 
 * An {{obs-serverless}} project. To learn more, refer to [Create an Observability project](../../../solutions/observability/get-started/create-an-observability-project.md).
 * A user with the **Admin** role or higher—required to onboard system logs and metrics. To learn more, refer to [Assign user roles and privileges](../../../deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
 * An active AWS account and the necessary permissions to create delivery streams.
 
-:::
-
 ::::
+
+:::::
 
 
 
