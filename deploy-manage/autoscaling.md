@@ -6,6 +6,7 @@ applies_to:
     ece: ga
     ess: ga
     eck: ga
+  serverless: all
 ---
 
 # Autoscaling
@@ -20,11 +21,14 @@ The autoscaling feature allows an operator to create tiers of nodes. These nodes
 By default, {{serverless-full}} automatically scales your {{es}} resources based on your usage. You don't need to enable autoscaling.
 :::
 
+Trained model autoscaling is available on all cloud deployments, and {{serverless-short}}.
+
 A policy is composed of a list of roles and a list of deciders. The policy governs the nodes matching the roles. The deciders provide independent estimates of the capacity required. See [Autoscaling deciders](../deploy-manage/autoscaling/autoscaling-deciders.md) for details on available deciders.
 
 Autoscaling supports:
 * Scaling machine learning nodes up and down.
 * Scaling data nodes up based on storage.
+* Scaling trained model deployments
 
 ::::{note} 
 Autoscaling is not supported on Debian 8.
