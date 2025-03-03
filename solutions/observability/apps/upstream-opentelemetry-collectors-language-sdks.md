@@ -257,6 +257,11 @@ If you use the OTLP/gRPC protocol, requests to Elastic must use either HTTP/2 ov
 
 When using a layer 7 (L7) proxy like AWS ALB, requests must be proxied in a way that ensures requests to Elastic follow the rules outlined above. For example, with ALB you can create rules to select an alternative backend protocol based on the headers of requests coming into ALB. In this example, you’d select the gRPC protocol when the  `"Content-Type: application/grpc"` header exists on a request.
 
+Many L7 load balancers handle HTTP and gRPC traffic separately and rely on explicitly defined routes and service configurations to correctly proxy requests. Since APM Server serves both protocols on the same port, it may not be compatible with some L7 load balancers. For example, to work around this issue in [Ingress NGINX Controller for Kubernetes](https://github.com/kubernetes/ingress-nginx), either:
+
+* Use the `otlp` exporter in the OTel collector. Set annotation `nginx.ingress.kubernetes.io/backend-protocol: "GRPC"` on the K8s Ingress object proxying to APM Server.
+* Use the `otlphttp` exporter in the OTel collector. Set annotation `nginx.ingress.kubernetes.io/backend-protocol: "HTTP"` (or `"HTTPS"` if APM Server expects TLS) on the K8s Ingress object proxying to APM Server.
+
 For more information on how to configure an AWS ALB to support gRPC, see this AWS blog post: [Application Load Balancer Support for End-to-End HTTP/2 and gRPC](https://aws.amazon.com/blogs/aws/new-application-load-balancer-support-for-end-to-end-http-2-and-grpc/).
 
 For more information on how APM Server services gRPC requests, see [Muxing gRPC and HTTP/1.1](https://github.com/elastic/apm-server/blob/main/dev_docs/otel.md#muxing-grpc-and-http11).
