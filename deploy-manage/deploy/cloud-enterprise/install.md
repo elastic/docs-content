@@ -44,7 +44,7 @@ ECE supports a [wide range of OS versions](https://www.elastic.co/support/matrix
 * [SUSE Linux Enterprise Server (SLES) 12 SP5 and 15](configure-host-suse.md)
 
 ::::{important} 
-Cloud providers default provide automatic operating system patching for their virtual machines. We strongly recommend disabling this feature to avoid potential data loss and installation failure. All patching should be done through [Perform host maintenance](../../maintenance/ece/perform-ece-hosts-maintenance.md) instructions.
+Cloud providers default provide automatic operating system patching for their virtual machines. We strongly recommend disabling this feature to avoid potential data loss and installation failure. All patching should be done using the [Perform host maintenance](../../maintenance/ece/perform-ece-hosts-maintenance.md) instructions.
 ::::
 
 ## Install ECE [install-ece]

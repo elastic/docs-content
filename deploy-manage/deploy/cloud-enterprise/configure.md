@@ -13,7 +13,7 @@ Now that you have {{ece}} up and running, take a look at some of the additional 
 
 ## Common ECE tasks
 
-* [Assign Roles to Hosts](../../../deploy-manage/deploy/cloud-enterprise/assign-roles-to-hosts.md) - Make sure new hosts can be used for their intended purpose after you install ECE on them.
+* [Assign roles to hosts](../../../deploy-manage/deploy/cloud-enterprise/assign-roles-to-hosts.md) - Make sure new hosts can be used for their intended purpose after you install ECE on them.
 * [System deployments configuration](system-deployments-configuration.md) - Best practices for ECE system deployments to ensure a highly available and resilient setup.
 * [Configure deployment templates](configure-deployment-templates.md) - Make the most out of deployment templates by configuring ECE for your hardware and creating custom deployment templates.
 * [Manage Elastic Stack versions](./manage-elastic-stack-versions.md) - Upload or remove Elastic Stack packs.

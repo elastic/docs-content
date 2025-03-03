@@ -5,9 +5,10 @@ applies_to:
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-configure-hosts-sles12-cloud.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-configure-hosts-sles12-onprem.html
+navigation_title: SUSE
 ---
 
-# Configure host SUSE cloud [ece-configure-hosts-sles12]
+# Configure a SUSE host [ece-configure-hosts-sles12]
 
 The following instructions show you how to prepare your hosts on SLES 12 SP5 or 15.
 

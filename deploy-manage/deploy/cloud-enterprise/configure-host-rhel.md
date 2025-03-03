@@ -5,12 +5,12 @@ applies_to:
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-configure-hosts-rhel-centos-cloud.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-configure-hosts-rhel-centos-onprem.html
+navigation_title: RHEL
 ---
 
 # Configure a RHEL host [ece-configure-hosts-rhel-centos]
 
 
-## Red Hat Enterprise Linux 8 (RHEL 8), 9 (RHEL 9), and Rocky Linux 8 and 9 [ece-setup-rhel8-podman]
 
 The following instructions show you how to prepare your hosts on Red Hat Enterprise Linux 8 (RHEL 8), 9 (RHEL 9), and Rocky Linux 8 and 9.
 
@@ -18,7 +18,7 @@ The following instructions show you how to prepare your hosts on Red Hat Enterpr
 * [Configure the host](#ece-configure-hosts-rhel8-podman)
 
 
-### Prerequisites [ece-prerequisites-rhel8]
+## Prerequisites [ece-prerequisites-rhel8]
 
 Follow your internal guidelines to create a RHEL 8 (the version must be >= 8.5), RHEL 9, Rocky Linux 8, or Rocky Linux 9 server or VM in your environment.
 
@@ -26,7 +26,7 @@ Verify that required traffic is allowed. Check the [Networking prerequisites](ec
 
 **Example:** For AWS, allowing traffic between hosts is implemented using security groups.
 
-### Configure the host [ece-configure-hosts-rhel8-podman]
+## Configure the host [ece-configure-hosts-rhel8-podman]
 
 1. Install the OS packages `lvm2`, `iptables`, `sysstat`, and `net-tools` by executing:
 

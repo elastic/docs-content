@@ -20,7 +20,7 @@ After your Elastic Cloud Enterprise installation is up, some additional steps mi
   If you intend to use [custom endpoint aliases](./enable-custom-endpoint-aliases.md) functionality, ensure you add the necessary Subject Alternative Name (SAN) entries to the proxy certificate.
   ::::
 
-* Optionally, if you want the deployment endpoint links and Single-sign on to work with your domain name, configure it as the **deployment domain name** in the Platform → Settings section of the [Cloud UI](./log-into-cloud-ui.md). The domain name is used to generate the endpoint URLs and must align with your proxy certificate and DNS record.
+* Optionally, if you want the deployment endpoint links and Single-sign on to work with your domain name, configure it as the **deployment domain name** in the **Platform** > **Settings** section of the [Cloud UI](./log-into-cloud-ui.md). The domain name is used to generate the endpoint URLs and must align with your proxy certificate and DNS record.
 
   ::::{tip}
   For example, if your proxy certificate is signed for `*.elastic-cloud-enterprise.example.com` and you have a wildcard DNS register pointing `*.elastic-cloud-enterprise.example.com` to your load balancer, you should configure `elastic-cloud-enterprise.example.com` as the **deployment domain name** in Platform → Settings. Refer to [](./change-endpoint-urls.md) for more details.
@@ -33,6 +33,10 @@ After your Elastic Cloud Enterprise installation is up, some additional steps mi
 * [Add a snapshot repository](../../tools/snapshot-and-restore/cloud-enterprise.md) to enable regular backups of your Elasticsearch clusters.
 
 * Consider enabling encryption-at-rest (EAR) on your hosts.
+  
+  :::{{tip}}
+  Encryption-at-rest is not implemented out of the box in {{{ece}}. [Learn more](/deploy-manage/security/secure-your-elastic-cloud-enterprise-installation.md#ece_encryption).
+  :::
 
 * To start creating {{es}} deployments, refer to [](./working-with-deployments.md).
 
