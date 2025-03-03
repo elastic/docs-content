@@ -85,7 +85,7 @@ The following are known limitations and restrictions with autoscaling:
 In {{ech}} the following additional limitations apply:
 
 * Trial deployments cannot be configured to autoscale beyond the normal Trial deployment size limits. The maximum size per zone is increased automatically from the Trial limit when you convert to a paid subscription.
-* ELSER deployments do not scale automatically. For more information, refer to [ELSER](../../explore-analyze/machine-learning/nlp/ml-nlp-elser.md) and [Trained model autoscaling](../../explore-analyze/machine-learning/nlp/ml-nlp-auto-scale.md).
+* ELSER deployments do not scale automatically. For more information, refer to [ELSER](../../explore-analyze/machine-learning/nlp/ml-nlp-elser.md) and [Trained model autoscaling](../autoscaling/trained-model-autoscaling.md).
 
 In {{ece}}, the following additional limitations apply:
 

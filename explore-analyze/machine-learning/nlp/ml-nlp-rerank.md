@@ -73,7 +73,7 @@ PUT _inference/rerank/my-rerank-model
 ```
 
 ::::{note}
-The API request automatically downloads and deploys the model. This example uses [autoscaling](ml-nlp-auto-scale.md) through adaptive allocation.
+The API request automatically downloads and deploys the model. This example uses [autoscaling](../../../deploy-manage/autoscaling/trained-model-autoscaling.md) through adaptive allocation.
 ::::
 
 ::::{note}
