@@ -26,7 +26,7 @@ You can use the following language clients with {{es-serverless}}:
 * [.NET](elasticsearch-net://reference/getting-started.md)
 * [Node.JS](elasticsearch-js://reference/getting-started.md)
 * [PHP](elasticsearch-php://reference/getting-started.md)
-* [Python](asciidocalypse://docs/elasticsearch-py/docs/reference/getting-started.md)
+* [Python](elasticsearch-py://reference/getting-started.md)
 * [Ruby](elasticsearch-ruby://reference/getting-started.md)
 
 ::::{tip}
