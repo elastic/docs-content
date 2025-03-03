@@ -11,7 +11,7 @@ mapped_urls:
 applies_to:
   ece:
   eck:
-  ech:
+  ess:
 ---
 
 # Autoscaling deciders [autoscaling-deciders]
