@@ -2,6 +2,9 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/observability/current/add-logs-service-name.html
   - https://www.elastic.co/guide/en/serverless/current/observability-add-logs-service-name.html
+applies_to:
+  stack: all
+  serverless: all
 ---
 
 # Add a service name to logs [observability-add-logs-service-name]
