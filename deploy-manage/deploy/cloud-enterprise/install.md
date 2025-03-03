@@ -11,7 +11,9 @@ navigation_title: Install ECE
 
 # Install Elastic Cloud Enterprise [ece-installing]
 
-You can deploy ECE on public or private clouds, virtual machines, or on-premises. In particular, for public cloud deployments, you can choose from the following providers:
+You can deploy ECE on public or private clouds, virtual machines, or on-premises. 
+
+For public cloud deployments, you can choose from the following providers:
 
 * Amazon Web Services (AWS)
 * Google Cloud Platform (GCP)
