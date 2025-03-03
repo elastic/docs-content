@@ -8,7 +8,7 @@ mapped_pages:
 navigation_title: Ubuntu
 ---
 
-# Configure host Ubuntu cloud [ece-configure-hosts-ubuntu]
+# Configure an Ubuntu host [ece-configure-hosts-ubuntu]
 
 The following instructions show you how to prepare your hosts on 20.04 LTS (Focal Fossa) and Ubuntu 22.04 LTS (Jammy Jellyfish).
 
