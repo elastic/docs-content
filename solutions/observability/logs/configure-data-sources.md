@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/configure-data-sources.html
+applies_to:
+  stack: all
 ---
 
 # Configure data sources [configure-data-sources]
