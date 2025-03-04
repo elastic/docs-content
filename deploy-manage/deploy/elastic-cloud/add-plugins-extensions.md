@@ -1,7 +1,6 @@
 ---
 mapped_urls:
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-adding-plugins.html
-
 applies_to:
   deployment:
     ess: ga

@@ -6,7 +6,6 @@ mapped_urls:
   - https://www.elastic.co/guide/en/cloud/current/ec-delete-deployment.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-restore-deployment.html
   - https://www.elastic.co/guide/en/cloud/current/ec-billing-stop.html
-
 navigation_title: "Delete a cloud deployment"
 applies_to:
   deployment:

@@ -1,7 +1,6 @@
 ---
 mapped_urls:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/repository-gcs.html
-
 applies_to:
   deployment:
     self: 
