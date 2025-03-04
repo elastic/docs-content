@@ -25,6 +25,14 @@ After you create your custom roles, you can [learn how to assign them to users](
 
 ## Role structure
 
+% temporary anchors
+
+$$$roles-indices-priv$$$
+$$$roles-global-priv$$$
+$$$roles-application-priv$$$
+$$$roles-remote-indices-priv$$$
+$$$roles-remote-cluster-priv$$$
+
 Custom roles follow a strict data structure. If you're working with custom roles using the role management API or role files, then you need to understand and follow the structure when parsing role information or making changes.
 
 [Learn about the data structure of a role and its entries](/deploy-manage/users-roles/cluster-or-deployment-auth/role-structure.md).

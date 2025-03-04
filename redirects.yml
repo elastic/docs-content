@@ -12,13 +12,6 @@ redirects:
       'anonymous-authentication':
       'basic-authentication':
       'http-authentication':
-  'deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md': 
-    anchors:
-      'roles-indices-priv':
-      'roles-global-priv':
-      'roles-application-priv':
-      'roles-remote-indices-priv':
-      'roles-remote-cluster-priv':
 
 ## reference
   'reference/security/elastic-defend/index.md': 'solutions/security/configure-elastic-defend.md'
