@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/observability-get-started-with-logs.html
+applies_to:
+  stack: all
+  serverless: all
 ---
 
 # Get started with system logs [observability-get-started-with-logs]

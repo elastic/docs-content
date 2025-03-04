@@ -5,7 +5,10 @@ mapped_pages:
 
 # Configure data sources [configure-data-sources]
 
-::::{admonition} There’s a new, better way to explore your logs!
+::::{Note}
+
+**There’s a new, better way to explore your logs!**
+
 These settings only apply to the Logs Stream app. The Logs Stream app and dashboard panel are deactivated by default. We recommend viewing and inspecting your logs with [Logs Explorer](logs-explorer.md) as it provides more features, better performance, and more intuitive navigation.
 
 To activate the Logs Stream app, refer to [Activate Logs Stream](logs-stream.md#activate-logs-stream).

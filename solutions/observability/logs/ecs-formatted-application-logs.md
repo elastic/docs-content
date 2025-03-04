@@ -2,6 +2,9 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/observability/current/logs-ecs-application.html
   - https://www.elastic.co/guide/en/serverless/current/observability-ecs-application-logs.html
+applies_to:
+  stack: all
+  serverless: all
 ---
 
 # ECS formatted application logs [logs-ecs-application]

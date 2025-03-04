@@ -2,6 +2,9 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/observability/current/logs-stream.html
   - https://www.elastic.co/guide/en/serverless/current/observability-stream-log-files.html
+applies_to:
+  stack: all
+  serverless: all
 ---
 
 # Stream any log file [logs-stream]

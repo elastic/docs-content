@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/categorize-logs.html
+applies_to:
+  stack: all
 ---
 
 # Categorize log entries [categorize-logs]
