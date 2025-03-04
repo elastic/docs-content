@@ -8,8 +8,6 @@ sub:
 
 # Install {{es}} with .zip on Windows [zip-windows]
 
-{{es-conf}}
-
 {{es}} can be installed on Windows using the Windows `.zip` archive. This comes with a `elasticsearch-service.bat` command which will setup {{es}} to run as a service.
 
 This package contains both free and subscription features. [Start a 30-day trial](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/license-settings.md) to try out all of the features.
@@ -215,11 +213,5 @@ This is very convenient because you don’t have to create any directories to st
 | plugins | Plugin files location. Each plugin will be contained in a subdirectory. | `%ES_HOME%\plugins` |  |
 | repo | Shared file system repository locations. Can hold multiple locations. A file system repository can be placed in to any subdirectory of any directory specified here. | Not configured | `path.repo` |
 
-
-## Next steps [_next_steps_2]
-
-You now have a test {{es}} environment set up. Before you start serious development or go into production with {{es}}, you must do some additional setup:
-
-* Learn how to [configure {{es}}](configure-elasticsearch.md).
-* Configure [important {{es}} settings](important-settings-configuration.md).
-* Configure [important system settings](important-system-configuration.md).
+:::{include} _snippets/install-next-steps.md
+:::
