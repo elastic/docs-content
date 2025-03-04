@@ -1,6 +1,7 @@
 ---
+mapped_urls:
+  - https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshots-register-repository.html
 navigation_title: "Self-managed"
-
 applies_to:
   deployment:
     self: 
