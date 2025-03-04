@@ -56,7 +56,7 @@ Other sections of the documentation also include relevant configuration options 
 
 * [Remote clusters](/deploy-manage/remote-clusters/eck-remote-clusters.md)
 
-* [Autoscaling](../../autoscaling/deployments-autoscaling-on-eck.md)
+* [Autoscaling](../../autoscaling/autoscaling-in-eck.md#k8s-autoscaling)
 
 * [Stack monitoring](/deploy-manage/monitor/stack-monitoring/eck-stack-monitoring.md): Monitor your {{es}} cluster smoothly with the help of ECK.
 
