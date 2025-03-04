@@ -139,7 +139,7 @@ The processes listed in the **Top processes** table are based on an aggregation 
 
 :::::
 
-:::::{dropdown} **Universal Profiling**
+:::::{dropdown} Universal Profiling
 The **Universal Profiling** tab shows CPU usage down to the application code level. From here, you can find the sources of resource usage, and identify code that can be optimized to reduce infrastructure costs. The Universal Profiling tab has the following views.
 
 |     |     |
