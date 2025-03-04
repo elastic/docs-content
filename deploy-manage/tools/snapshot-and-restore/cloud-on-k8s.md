@@ -1,6 +1,7 @@
 ---
+mapped_urls:
+  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-snapshots.html
 navigation_title: "Elastic Cloud on Kubernetes"
-
 applies_to:
   deployment:
     eck: 

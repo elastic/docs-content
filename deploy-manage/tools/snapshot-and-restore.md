@@ -1,4 +1,11 @@
 ---
+mapped_urls:
+  - https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshot-restore.html
+  - https://www.elastic.co/guide/en/cloud/current/ec-snapshot-restore.html
+  - https://www.elastic.co/guide/en/cloud/current/ec-restoring-snapshots.html
+  - https://www.elastic.co/guide/en/cloud-heroku/current/ech-snapshot-restore.html
+  - https://www.elastic.co/guide/en/cloud-heroku/current/ech-restoring-snapshots.html
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-snapshots.html
 applies_to:
   deployment:
     eck: 
