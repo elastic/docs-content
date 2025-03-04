@@ -85,7 +85,7 @@ Document-level and field-level security affords you even more granularity when i
 
 If you have at least a platinum license, you can manage access to indices in remote clusters.
 
-You can assign the same privileges, document-level, and field-level as for [local index privileges](/deploy-manage/index.md#adding_index_privileges).
+You can assign the same privileges, document-level, and field-level as for [local index privileges](#adding_index_privileges).
 
 ### Example: Grant access to indices in remote clusters [remote_index_privilege_example_1]
 

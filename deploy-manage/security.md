@@ -9,9 +9,20 @@ mapped_urls:
   - https://www.elastic.co/guide/en/kibana/current/using-kibana-with-security.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/security-limitations.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/es-security-principles.html
+  - https://www.elastic.co/guide/en/cloud/current/ec-faq-technical.html
 ---
 
 # Security
+
+% SR: include this info somewhere in this section
+% {{ech}} doesn't support custom SSL certificates, which means that a custom CNAME for an {{ech}} endpoint such as *mycluster.mycompanyname.com* also is not supported.
+%
+% In {{ech}}, IP sniffing is not supported by design and will not return the expected results. We prevent IP sniffing from returning the expected results to improve the security of our underlying {{ech}} infrastructure.
+%
+% encryption at rest (EAR) is enabled in {{ech}} by default. We support EAR for both the data stored in your clusters and the snapshots we take for backup, on all cloud platforms and across all regions.
+% You can also bring your own key (BYOK) to encrypt your Elastic Cloud deployment data and snapshots. For more information, check [Encrypt your deployment with a customer-managed encryption key](../../../deploy-manage/security/encrypt-deployment-with-customer-managed-encryption-key.md).
+
+Note that the encryption happens at the file system level.
 
 % What needs to be done: Refine
 
@@ -31,6 +42,7 @@ mapped_urls:
 % - [ ] ./raw-migrated-files/kibana/kibana/using-kibana-with-security.md
 % - [ ] ./raw-migrated-files/elasticsearch/elasticsearch-reference/security-limitations.md
 % - [ ] ./raw-migrated-files/elasticsearch/elasticsearch-reference/es-security-principles.md
+% - [ ] ./raw-migrated-files/cloud/cloud/ec-faq-technical.md
 
 $$$field-document-limitations$$$
 
@@ -53,3 +65,4 @@ $$$maintaining-audit-trail$$$
 * [/raw-migrated-files/kibana/kibana/using-kibana-with-security.md](/raw-migrated-files/kibana/kibana/using-kibana-with-security.md)
 * [/raw-migrated-files/elasticsearch/elasticsearch-reference/security-limitations.md](/raw-migrated-files/elasticsearch/elasticsearch-reference/security-limitations.md)
 * [/raw-migrated-files/elasticsearch/elasticsearch-reference/es-security-principles.md](/raw-migrated-files/elasticsearch/elasticsearch-reference/es-security-principles.md)
+* [/raw-migrated-files/cloud/cloud/ec-faq-technical.md](/raw-migrated-files/cloud/cloud/ec-faq-technical.md)

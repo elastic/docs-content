@@ -66,7 +66,7 @@ Granting `All` or `Read` {{kib}} feature privilege for {{ml-app}} will also gran
 
 #### Feature visibility in Spaces [kib-visibility-spaces]
 
-In {{kib}}, the {{ml-features}} must be visible in your [space](../../deploy-manage/manage-spaces.md#spaces-control-feature-visibility). To manage which features are visible in your space, go to **{{stack-manage-app}}** > **{{kib}}** > **Spaces** or use the [global search field](../find-and-organize/find-apps-and-objects.md) to locate **Spaces** directly.
+In {{kib}}, the {{ml-features}} must be visible in your [space](../../deploy-manage/manage-spaces.md). To manage which features are visible in your space, go to **{{stack-manage-app}}** > **{{kib}}** > **Spaces** or use the [global search field](../find-and-organize/find-apps-and-objects.md) to locate **Spaces** directly.
 
 :::{image} ../../images/machine-learning-spaces.jpg
 :alt: Manage spaces in {{kib}}

@@ -1,5 +1,5 @@
 
-# Deployment comparison reference
+# Compare deployment options
 
 This reference provides detailed comparisons of features and capabilities across Elastic's deployment options: self-managed deployments, Elastic Cloud Hosted, and Serverless. For a high-level overview of deployment types and guidance on choosing between them, see the [overview](../deploy.md).
 

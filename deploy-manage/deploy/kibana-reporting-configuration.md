@@ -4,7 +4,7 @@ mapped_urls:
   - https://www.elastic.co/guide/en/kibana/current/reporting-production-considerations.html
 ---
 
-# Kibana reporting configuration
+# Configure reporting
 
 % What needs to be done: Refine
 

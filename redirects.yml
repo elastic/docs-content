@@ -12,6 +12,9 @@ redirects:
       'anonymous-authentication':
       'basic-authentication':
       'http-authentication':
+  'deploy-manage/manage-spaces.md':
+    anchors:
+      'spaces-control-feature-visibility':
 
 ## reference
   'reference/security/elastic-defend/index.md': 'solutions/security/configure-elastic-defend.md'
