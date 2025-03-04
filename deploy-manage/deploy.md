@@ -43,7 +43,7 @@ If you want to focus on using Elastic products rather than managing infrastructu
 - **{{serverless-full}}**: Zero operational overhead, automatic scaling and updates, latest features
 - **{{ech}}**: Balance of control and managed operations, choice of resources and regions
 
-Both of these options use [{{ecloud}}](/deploy-manage/deploy/elastic-cloud.md) as an orchestrator.
+Both of these options use [{{ecloud}}](/deploy-manage/deploy/elastic-cloud.md) as the orchestration platform.
 
 #### Self-hosted options
 
