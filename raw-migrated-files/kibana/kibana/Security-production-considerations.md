@@ -23,7 +23,7 @@ When {{security-features}} are enabled, {{kib}} users have to log in. They must 
 
 If a user loads a {{kib}} dashboard that accesses data in an index that they are not authorized to view, they get an error that indicates the index does not exist.
 
-For more information on granting access to {{kib}}, see [Granting access to {{kib}}](xpack-security-authorization.md).
+For more information on granting access to {{kib}}, see [](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md).
 
 
 ## Use secure HTTP headers [configuring-security-headers]
