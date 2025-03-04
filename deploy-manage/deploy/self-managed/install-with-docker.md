@@ -34,7 +34,7 @@ To use the Wolfi image, append `-wolfi` to the image tag in the Docker command.
 For example:
 
 ```sh
-docker pull docker.elastic.co/elasticsearch/elasticsearch-wolfi:9.0.0-beta1
+docker pull docker.elastic.co/elasticsearch/elasticsearch-wolfi:{{stack-version}}
 ```
 
 
@@ -54,26 +54,21 @@ docker pull docker.elastic.co/elasticsearch/elasticsearch-wolfi:9.0.0-beta1
 
 3. Pull the {{es}} Docker image.
 
-    ::::{warning}
-    Version 9.0.0-beta1 has not yet been released. No Docker image is currently available for {{es}} 9.0.0-beta1.
-    ::::
-
-
     ```sh
-    docker pull docker.elastic.co/elasticsearch/elasticsearch:9.0.0-beta1
+    docker pull docker.elastic.co/elasticsearch/elasticsearch:{{stack-version}}
     ```
 
 4. Optional: Install [Cosign](https://docs.sigstore.dev/system_config/installation/) for your environment. Then use Cosign to verify the {{es}} image’s signature.
 
     ```sh
     wget https://artifacts.elastic.co/cosign.pub
-    cosign verify --key cosign.pub docker.elastic.co/elasticsearch/elasticsearch:9.0.0-beta1
+    cosign verify --key cosign.pub docker.elastic.co/elasticsearch/elasticsearch:{{stack-version}}
     ```
 
     The `cosign` command prints the check results and the signature payload in JSON format:
 
     ```sh
-    Verification for docker.elastic.co/elasticsearch/elasticsearch:9.0.0-beta1 --
+    Verification for docker.elastic.co/elasticsearch/elasticsearch:{{stack-version}} --
     The following checks were performed on each of these signatures:
       - The cosign claims were validated
       - Existence of the claims in the transparency log was verified offline
@@ -83,7 +78,7 @@ docker pull docker.elastic.co/elasticsearch/elasticsearch-wolfi:9.0.0-beta1
 5. Start an {{es}} container.
 
     ```sh
-    docker run --name es01 --net elastic -p 9200:9200 -it -m 1GB docker.elastic.co/elasticsearch/elasticsearch:9.0.0-beta1
+    docker run --name es01 --net elastic -p 9200:9200 -it -m 1GB docker.elastic.co/elasticsearch/elasticsearch:{{stack-version}}
     ```
 
     ::::{tip}
@@ -102,26 +97,21 @@ docker pull docker.elastic.co/elasticsearch/elasticsearch-wolfi:9.0.0-beta1
 
 7. Pull the {{kib}} Docker image.
 
-    ::::{warning}
-    Version 9.0.0-beta1 has not yet been released. No Docker image is currently available for {{kib}} 9.0.0-beta1.
-    ::::
-
-
     ```sh
-    docker pull docker.elastic.co/kibana/kibana:9.0.0-beta1
+    docker pull docker.elastic.co/kibana/kibana:{{stack-version}}
     ```
 
 8. Optional: Verify the {{kib}} image’s signature.
 
     ```sh
     wget https://artifacts.elastic.co/cosign.pub
-    cosign verify --key cosign.pub docker.elastic.co/kibana/kibana:9.0.0-beta1
+    cosign verify --key cosign.pub docker.elastic.co/kibana/kibana:{{stack-version}}
     ```
 
 9. Start a {{kib}} container.
 
     ```sh
-    docker run --name kib01 --net elastic -p 5601:5601 docker.elastic.co/kibana/kibana:9.0.0-beta1
+    docker run --name kib01 --net elastic -p 5601:5601 docker.elastic.co/kibana/kibana:{{stack-version}}
     ```
 
 10. When {{kib}} starts, it outputs a unique generated link to the terminal. To access {{kib}}, open this link in a web browser.
@@ -172,7 +162,7 @@ One way to configure {{kib}} on Docker is to provide `kibana.yml` via bind-mount
 version: '2'
 services:
   kibana:
-    image: docker.elastic.co/kibana/kibana:9.0.0-beta1
+    image: docker.elastic.co/kibana/kibana:{{stack-version}}
     volumes:
       - ./kibana.yml:/usr/share/kibana/config/kibana.yml
 ```
@@ -183,14 +173,14 @@ services:
 By default, {{kib}} auto-generates a keystore file for secure settings at startup. To persist your [secure settings](../../security/secure-settings.md), use the `kibana-keystore` utility to bind-mount the parent directory of the keystore to the container. For example:
 
 ```sh
-docker run -it --rm -v full_path_to/config:/usr/share/kibana/config -v full_path_to/data:/usr/share/kibana/data docker.elastic.co/kibana/kibana:9.0.0-beta1 bin/kibana-keystore create
-docker run -it --rm -v full_path_to/config:/usr/share/kibana/config -v full_path_to/data:/usr/share/kibana/data docker.elastic.co/kibana/kibana:9.0.0-beta1 bin/kibana-keystore add test_keystore_setting
+docker run -it --rm -v full_path_to/config:/usr/share/kibana/config -v full_path_to/data:/usr/share/kibana/data docker.elastic.co/kibana/kibana:{{stack-version}} bin/kibana-keystore create
+docker run -it --rm -v full_path_to/config:/usr/share/kibana/config -v full_path_to/data:/usr/share/kibana/data docker.elastic.co/kibana/kibana:{{stack-version}} bin/kibana-keystore add test_keystore_setting
 ```
 
 
 ### Environment variable configuration [environment-variable-config]
 
-Under Docker, {{kib}} can be configured via environment variables. When the container starts, a helper process checks the environment for variables that can be mapped to Kibana command-line arguments.
+Under Docker, {{kib}} can be configured via environment variables. When the container starts, a helper process checks the environment for variables that can be mapped to {{kib}} command-line arguments.
 
 For compatibility with container orchestration systems, these environment variables are written in all capitals, with underscores as word separators. The helper translates these names to valid {{kib}} setting names.
 
@@ -202,7 +192,7 @@ All information that you include in environment variables is visible through the
 Some example translations are shown here:
 
 **Environment Variable**
-:   **Kibana Setting**
+:   **{{kib}} Setting**
 
 `SERVER_NAME`
 :   `server.name`
@@ -223,7 +213,7 @@ These variables can be set with `docker-compose` like this:
 version: '2'
 services:
   kibana:
-    image: docker.elastic.co/kibana/kibana:9.0.0-beta1
+    image: docker.elastic.co/kibana/kibana:{{stack-version}}
     environment:
       SERVER_NAME: kibana.example.org
       ELASTICSEARCH_HOSTS: '["http://es01:9200","http://es02:9200","http://es03:9200"]'

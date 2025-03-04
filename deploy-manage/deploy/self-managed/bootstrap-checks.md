@@ -23,7 +23,7 @@ applies_to:
 
 # Bootstrap checks [bootstrap-checks]
 
-{{es}} has bootstrap checks that run at startup to ensure that users have configured all [important settings](../../../deploy-manage/deploy/self-managed/important-settings-configuration.md).
+{{es}} has bootstrap checks that run at startup to ensure that users have configured all [important settings](/deploy-manage/deploy/self-managed/important-settings-configuration.md).
 
 These bootstrap checks inspect a variety of {{es}} and system settings and compare them to values that are safe for the operation of {{es}}. If {{es}} is in development mode, any bootstrap checks that fail appear as warnings in the {{es}} log. If {{es}} is in production mode, any bootstrap checks that fail will cause {{es}} to refuse to start.
 
@@ -31,7 +31,7 @@ There are some bootstrap checks that are always enforced to prevent {{es}} from 
 
 ## Development vs. production mode [dev-vs-prod-mode] 
 
-By default, {{es}} binds to loopback addresses for [HTTP and transport (internal) communication](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/networking-settings.md). This is fine for downloading and playing with {{es}} as well as everyday development, but it’s useless for production systems. To join a cluster, an {{es}} node must be reachable via transport communication. To join a cluster via a non-loopback address, a node must bind transport to a non-loopback address and not be using [single-node discovery](../../../deploy-manage/deploy/self-managed/bootstrap-checks.md#single-node-discovery). Thus, we consider an {{es}} node to be in development mode if it can not form a cluster with another machine via a non-loopback address, and is otherwise in production mode if it can join a cluster via non-loopback addresses.
+By default, {{es}} binds to loopback addresses for [HTTP and transport (internal) communication](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/networking-settings.md). This is fine for downloading and playing with {{es}} as well as everyday development, but it’s useless for production systems. To join a cluster, an {{es}} node must be reachable via transport communication. To join a cluster via a non-loopback address, a node must bind transport to a non-loopback address and not be using [single-node discovery](/deploy-manage/deploy/self-managed/bootstrap-checks.md#single-node-discovery). Thus, we consider an {{es}} node to be in development mode if it can not form a cluster with another machine via a non-loopback address, and is otherwise in production mode if it can join a cluster via non-loopback addresses.
 
 Note that HTTP and transport can be configured independently via [`http.host`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/networking-settings.md#http-settings) and [`transport.host`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/networking-settings.md#transport-settings). This can be useful for configuring a single node to be reachable via HTTP for testing purposes without triggering production mode.
 
@@ -190,7 +190,7 @@ To pass this bootstrap check, you must set the `xpack.watcher.encryption_key` on
 
 $$$bootstrap-checks-xpack-pki-realm$$$
 
-If you use {{es}} {{security-features}} and a Public Key Infrastructure (PKI) realm, you must configure Transport Layer Security (TLS) on your cluster and enable client authentication on the network layers (either transport or http). For more information, see [PKI user authentication](../../../deploy-manage/users-roles/cluster-or-deployment-auth/pki.md) and [Set up basic security plus HTTPS](../../../deploy-manage/security/set-up-basic-security-plus-https.md).
+If you use {{es}} {{security-features}} and a Public Key Infrastructure (PKI) realm, you must configure Transport Layer Security (TLS) on your cluster and enable client authentication on the network layers (either transport or http). For more information, see [PKI user authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/pki.md) and [Set up basic security plus HTTPS](/deploy-manage/security/set-up-basic-security-plus-https.md).
 
 To pass this bootstrap check, if a PKI realm is enabled, you must configure TLS and enable client authentication on at least one network communication layer.
 :::
@@ -201,7 +201,7 @@ $$$bootstrap-checks-xpack-role-mappings$$$
 
 If you authenticate users with realms other than `native` or `file` realms, you must create role mappings. These role mappings define which roles are assigned to each user.
 
-If you use files to manage the role mappings, you must configure a YAML file and copy it to each node in the cluster. By default, role mappings are stored in `ES_PATH_CONF/role_mapping.yml`. Alternatively, you can specify a different role mapping file for each type of realm and specify its location in the `elasticsearch.yml` file. For more information, see [Using role mapping files](../../../deploy-manage/users-roles/cluster-or-deployment-auth/mapping-users-groups-to-roles.md#mapping-roles-file).
+If you use files to manage the role mappings, you must configure a YAML file and copy it to each node in the cluster. By default, role mappings are stored in `ES_PATH_CONF/role_mapping.yml`. Alternatively, you can specify a different role mapping file for each type of realm and specify its location in the `elasticsearch.yml` file. For more information, see [Using role mapping files](/deploy-manage/users-roles/cluster-or-deployment-auth/mapping-users-groups-to-roles.md#mapping-roles-file).
 
 To pass this bootstrap check, the role mapping files must exist and must be valid. The Distinguished Names (DNs) that are listed in the role mappings files must also be valid.
 :::
@@ -213,10 +213,10 @@ $$$bootstrap-checks-tls$$$
 If you enable {{es}} {{security-features}}, unless you have a trial license, you must configure SSL/TLS for internode-communication.
 
 :::{note} 
-Single-node clusters that use a loopback interface do not have this requirement. For more information, see [*Start the {{stack}} with security enabled automatically*](../../../deploy-manage/security/security-certificates-keys.md).
+Single-node clusters that use a loopback interface do not have this requirement. For more information, see [*Start the {{stack}} with security enabled automatically*](/deploy-manage/security/security-certificates-keys.md).
 :::
 
-To pass this bootstrap check, you must [set up SSL/TLS in your cluster](../../../deploy-manage/security/set-up-basic-security.md#encrypt-internode-communication).
+To pass this bootstrap check, you must [set up SSL/TLS in your cluster](/deploy-manage/security/set-up-basic-security.md#encrypt-internode-communication).
 ::::
 
 :::{dropdown} Token SSL check 

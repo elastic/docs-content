@@ -13,7 +13,7 @@ KBN_PATH_CONF=/home/kibana/config ./bin/kibana
 
 The default host and port settings configure {{kib}} to run on `localhost:5601`. To change this behavior and allow remote users to connect, you’ll need to update your `kibana.yml` file. You can also enable SSL and set a variety of other options.
 
-Environment variables can be injected into configuration using `${MY_ENV_VAR}` syntax. By default, configuration validation will fail if an environment variable used in the config file is not present when Kibana starts. This behavior can be changed by using a default value for the environment variable, using the `${MY_ENV_VAR:defaultValue}` syntax.
+Environment variables can be injected into configuration using `${MY_ENV_VAR}` syntax. By default, configuration validation will fail if an environment variable used in the config file is not present when {{kib}} starts. This behavior can be changed by using a default value for the environment variable, using the `${MY_ENV_VAR:defaultValue}` syntax.
 
 `console.ui.enabled`
 :   Toggling this causes the server to regenerate assets on the next startup, which may cause a delay before pages start being served. Set to `false` to disable Console. **Default: `true`**
@@ -24,7 +24,7 @@ Environment variables can be injected into configuration using `${MY_ENV_VAR}` s
 `csp.disableUnsafeEval`
 :   [8.7.0] Set this to `false` to add the [`unsafe-eval`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/script-src#unsafe_eval_expressions) source expression to the `script-src` directive. **Default: `true`**
 
-    When `csp.disableUnsafeEval` is set to `true`, Kibana will use a custom version of the Handlebars template library. Handlebars is used in various locations in the Kibana frontend where custom templates can be supplied by the user when for instance setting up a visualisation. If you experience any issues rendering Handlebars templates, please set this setting to `false` and [open an issue](https://github.com/elastic/kibana/issues/new/choose) in the Kibana GitHub repository.
+    When `csp.disableUnsafeEval` is set to `true`, {{kib}} will use a custom version of the Handlebars template library. Handlebars is used in various locations in the {{kib}} frontend where custom templates can be supplied by the user when for instance setting up a visualisation. If you experience any issues rendering Handlebars templates, please set this setting to `false` and [open an issue](https://github.com/elastic/kibana/issues/new/choose) in the {{kib}} GitHub repository.
 
 
 `csp.worker_src`
@@ -96,7 +96,7 @@ $$$elasticsearch-hosts$$$ `elasticsearch.hosts:`
 
 
 $$$elasticsearch-publicBaseUrl$$$ `elasticsearch.publicBaseUrl:`
-:   The URL through which {{es}} is publicly accessible, if any. This will be shown to users in Kibana when they need connection details for your {{es}} cluster.
+:   The URL through which {{es}} is publicly accessible, if any. This will be shown to users in {{kib}} when they need connection details for your {{es}} cluster.
 
 $$$elasticsearch-pingTimeout$$$ `elasticsearch.pingTimeout`
 :   Time in milliseconds to wait for {{es}} to respond to pings. **Default: the value of the [`elasticsearch.requestTimeout`](#elasticsearch-requestTimeout) setting**
@@ -289,7 +289,7 @@ $$$server-basePath$$$ `server.basePath`
 :   Enables you to specify a path to mount {{kib}} at if you are running behind a proxy. Use the [`server.rewriteBasePath`](#server-rewriteBasePath) setting to tell {{kib}} if it should remove the basePath from requests it receives, and to prevent a deprecation warning at startup. This setting cannot end in a slash (`/`).
 
 $$$server-publicBaseUrl$$$ `server.publicBaseUrl`
-:   The publicly available URL that end-users access Kibana at. Must include the protocol, hostname, port (if different than the defaults for `http` and `https`, 80 and 443 respectively), and the [`server.basePath`](#server-basePath) (when that setting is configured explicitly). This setting cannot end in a slash (`/`).
+:   The publicly available URL that end-users access {{kib}} at. Must include the protocol, hostname, port (if different than the defaults for `http` and `https`, 80 and 443 respectively), and the [`server.basePath`](#server-basePath) (when that setting is configured explicitly). This setting cannot end in a slash (`/`).
 
 $$$server-compression$$$ `server.compression.enabled`
 :   Set to `false` to disable HTTP compression for all responses. **Default: `true`**
@@ -337,7 +337,7 @@ $$$server-shutdownTimeout$$$ `server.shutdownTimeout`
 :   Sets the grace period for {{kib}} to attempt to resolve any ongoing HTTP requests after receiving a `SIGTERM`/`SIGINT` signal, and before shutting down. Any new HTTP requests received during this period are rejected, because the incoming socket is closed without further processing. **Default: `30s`**
 
 $$$server-host$$$ `server.host`
-:   This setting specifies the host of the back end server. To allow remote users to connect, set the value to the IP address or DNS name of the {{kib}} server. Use `0.0.0.0` to make Kibana listen on all IPs (public and private). **Default: `"localhost"`**
+:   This setting specifies the host of the back end server. To allow remote users to connect, set the value to the IP address or DNS name of the {{kib}} server. Use `0.0.0.0` to make {{kib}} listen on all IPs (public and private). **Default: `"localhost"`**
 
 `server.keepaliveTimeout`
 :   The number of milliseconds to wait for additional data before restarting the [`server.socketTimeout`](#server-socketTimeout) counter. **Default: `"120000"`**

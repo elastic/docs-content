@@ -9,38 +9,76 @@ mapped_pages:
 # Install with Debian package [deb]
 
 
-The Debian package for Kibana can be [downloaded from our website](#install-deb) or from our [APT repository](#deb-repo). It can be used to install Kibana on any Debian-based system such as Debian and Ubuntu.
+The Debian package for {{kib}} can be [downloaded from our website](#install-deb) or from our [APT repository](#deb-repo). It can be used to install {{kib}} on any Debian-based system such as Debian and Ubuntu.
 
 This package contains both free and subscription features. [Start a 30-day trial](../../license/manage-your-license-in-self-managed-cluster.md) to try out all of the features.
 
-The latest stable version of Kibana can be found on the [Download Kibana](https://elastic.co/downloads/kibana) page. Other versions can be found on the [Past Releases page](https://elastic.co/downloads/past-releases).
+The latest stable version of {{kib}} can be found on the [Download Kibana](https://elastic.co/downloads/kibana) page. Other versions can be found on the [Past Releases page](https://elastic.co/downloads/past-releases).
 
 ## Import the Elastic PGP key [deb-key]
 
-We sign all of our packages with the Elastic Signing Key (PGP key [D88E42B4](https://pgp.mit.edu/pks/lookup?op=vindex&search=0xD27D666CD88E42B4), available from [https://pgp.mit.edu](https://pgp.mit.edu)) with fingerprint:
-
-```
-4609 5ACC 8548 582C 1A26 99A9 D27D 666C D88E 42B4
-```
-Download and install the public signing key:
+:::{include} _snippets/pgp-key.md
+:::
 
 ```sh
 wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo gpg --dearmor -o /usr/share/keyrings/elasticsearch-keyring.gpg
 ```
 
-
 ## Install from the APT repository [deb-repo]
 
-Version 9.0.0-beta1 of Kibana has not yet been released.
+You may need to install the `apt-transport-https` package on Debian before proceeding:
 
+```sh
+sudo apt-get install apt-transport-https
+```
+
+Save the repository definition to `/etc/apt/sources.list.d/elastic-9.x.list`:
+
+```sh
+echo "deb [signed-by=/usr/share/keyrings/elasticsearch-keyring.gpg] https://artifacts.elastic.co/packages/8.x/apt stable main" | sudo tee /etc/apt/sources.list.d/elastic-9.x.list
+```
+
+:::{warning}
+Do not use `add-apt-repository` as it will add a `deb-src` entry as well, but we do not provide a source package. If you have added the `deb-src` entry, you will see an error like the following:
+
+```
+Unable to find expected entry 'main/source/Sources' in Release file
+(Wrong sources.list entry or malformed file)
+```
+
+Delete the `deb-src` entry from the `/etc/apt/sources.list` file and the installation should work as expected.
+:::
+
+You can install the {{kib}} Debian package with:
+
+```sh
+sudo apt-get update && sudo apt-get install kibana
+```
+
+:::{warning}
+If two entries exist for the same {{kib}} repository, you will see an error like this during `apt-get update`:
+
+```
+Duplicate sources.list entry https://artifacts.elastic.co/packages/8.x/apt/ ...`
+```
+
+Examine `/etc/apt/sources.list.d/kibana-8.x.list` for the duplicate entry or locate the duplicate entry amongst the files in `/etc/apt/sources.list.d/` and the `/etc/apt/sources.list` file.
+:::
 
 ## Download and install the Debian package manually [install-deb]
 
-Version 9.0.0-beta1 of Kibana has not yet been released.
+The Debian package for {{kib}} {{stack-version}} can be downloaded from the website and installed as follows:
+```sh
+wget https://artifacts.elastic.co/downloads/kibana/kibana-{{stack-version}}-amd64.deb
+shasum -a 512 kibana-{{stack-version}}-amd64.deb <1>
+sudo dpkg -i kibana-{{stack-version}}-amd64.deb
+```
 
+1. 	Compare the SHA produced by shasum with the [published SHA](https://artifacts.elastic.co/downloads/kibana/kibana-9.0.0-amd64.deb.sha512).
+
+% version manually specified in the link above
 
 ## Start {{es}} and generate an enrollment token for {{kib}} [deb-enroll]
-
 
 When you start {{es}} for the first time, the following security configuration occurs automatically:
 
@@ -79,7 +117,7 @@ These commands provide no feedback as to whether {{kib}} was started successfull
 
 ## Configure {{kib}} via the config file [deb-configuring]
 
-Kibana loads its configuration from the `/etc/kibana/kibana.yml` file by default.  The format of this config file is explained in [Configuring Kibana](configure.md).
+{{kib}} loads its configuration from the `/etc/kibana/kibana.yml` file by default.  The format of this config file is explained in [Configuring Kibana](configure.md).
 
 
 ## Directory layout of Debian package [deb-layout]
@@ -88,9 +126,9 @@ The Debian package places config files, logs, and the data directory in the appr
 
 | Type | Description | Default Location | Setting |
 | --- | --- | --- | --- |
-| home | Kibana home directory or `$KIBANA_HOME` | `/usr/share/kibana` |  |
-| bin | Binary scripts including `kibana` to start the Kibana server    and `kibana-plugin` to install plugins | `/usr/share/kibana/bin` |  |
+| home | {{kib}} home directory or `$KIBANA_HOME` | `/usr/share/kibana` |  |
+| bin | Binary scripts including `kibana` to start the {{kib}} server    and `kibana-plugin` to install plugins | `/usr/share/kibana/bin` |  |
 | config | Configuration files including `kibana.yml` | `/etc/kibana` | `[KBN_PATH_CONF](configure.md)` |
-| data | The location of the data files written to disk by Kibana and its plugins | `/var/lib/kibana` | `path.data` |
+| data | The location of the data files written to disk by {{kib}} and its plugins | `/var/lib/kibana` | `path.data` |
 | logs | Logs files location | `/var/log/kibana` | `[Logging configuration](../../monitor/logging-configuration/kibana-logging.md)` |
 | plugins | Plugin files location. Each plugin will be contained in a subdirectory. | `/usr/share/kibana/plugins` |  |

@@ -262,8 +262,6 @@ toc:
       - file: elasticsearch/elasticsearch-reference/autoscaling-machine-learning-decider.md
       - file: elasticsearch/elasticsearch-reference/autoscaling-proactive-storage-decider.md
       - file: elasticsearch/elasticsearch-reference/autoscaling-reactive-storage-decider.md
-      - file: elasticsearch/elasticsearch-reference/bootstrap-checks-xpack.md
-      - file: elasticsearch/elasticsearch-reference/bootstrap-checks.md
       - file: elasticsearch/elasticsearch-reference/change-passwords-native-users.md
       - file: elasticsearch/elasticsearch-reference/configuring-stack-security.md
       - file: elasticsearch/elasticsearch-reference/data-management.md
@@ -274,7 +272,6 @@ toc:
       - file: elasticsearch/elasticsearch-reference/how-monitoring-works.md
       - file: elasticsearch/elasticsearch-reference/index-modules-allocation.md
       - file: elasticsearch/elasticsearch-reference/index-modules-mapper.md
-      - file: elasticsearch/elasticsearch-reference/install-elasticsearch.md
       - file: elasticsearch/elasticsearch-reference/ip-filtering.md
       - file: elasticsearch/elasticsearch-reference/monitor-elasticsearch-cluster.md
       - file: elasticsearch/elasticsearch-reference/monitoring-overview.md

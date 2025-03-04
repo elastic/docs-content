@@ -62,64 +62,47 @@ $$$install-stack-self-view-data$$$
 * [/raw-migrated-files/elasticsearch/elasticsearch-reference/configuring-stack-security.md](/raw-migrated-files/elasticsearch/elasticsearch-reference/configuring-stack-security.md)
 * [/raw-migrated-files/stack-docs/elastic-stack/installing-stack-demo-self.md](/raw-migrated-files/stack-docs/elastic-stack/installing-stack-demo-self.md)
 
-
-
 If you want to install and manage {{es}} yourself, you can:
 
-* Run {{es}} using a [Linux, MacOS, or Windows install package](../../../deploy-manage/deploy/self-managed/installing-elasticsearch.md#elasticsearch-install-packages).
-* Run {{es}} in a [Docker container](../../../deploy-manage/deploy/self-managed/installing-elasticsearch.md#elasticsearch-docker-images).
-* Set up and manage {{es}}, {{kib}}, {{agent}}, and the rest of the Elastic Stack on Kubernetes with [{{eck}}](https://www.elastic.co/guide/en/cloud-on-k8s/current).
+* Run {{es}} using a [Linux, MacOS, or Windows install package](/deploy-manage/deploy/self-managed/installing-elasticsearch.md#elasticsearch-install-packages).
+* Run {{es}} in a [Docker container](/deploy-manage/deploy/self-managed/installing-elasticsearch.md#elasticsearch-docker-images).
 
 ::::{tip}
-To try out Elasticsearch on your own machine, we recommend using Docker and running both Elasticsearch and Kibana. For more information, see [Run Elasticsearch locally](../../../solutions/search/get-started.md). This setup is not suitable for production use.
+To try out  on your own machine, we recommend using Docker and running both {{es}} and Kibana. For more information, see [Run {{es}} locally](../../../solutions/search/get-started.md). This setup is not suitable for production use.
 ::::
 
+## {{es}} install packages [elasticsearch-install-packages]
 
-
-## Elasticsearch install packages [elasticsearch-install-packages]
-
-Elasticsearch is provided in the following package formats:
+{{es}} is provided in the following package formats:
 
 Linux and MacOS `tar.gz` archives
 :   The `tar.gz` archives are available for installation on any Linux distribution and MacOS.
 
-    [Install {{es}} from archive on Linux or MacOS](../../../deploy-manage/deploy/self-managed/install-elasticsearch-from-archive-on-linux-macos.md)
+    [Install {{es}} from archive on Linux or MacOS](/deploy-manage/deploy/self-managed/install-elasticsearch-from-archive-on-linux-macos.md)
 
 
 Windows `.zip` archive
 :   The `zip` archive is suitable for installation on Windows.
 
-    [Install {{es}} with `.zip` on Windows](../../../deploy-manage/deploy/self-managed/install-elasticsearch-with-zip-on-windows.md)
+    [Install {{es}} with `.zip` on Windows](/deploy-manage/deploy/self-managed/install-elasticsearch-with-zip-on-windows.md)
 
 
 `deb`
-:   The `deb` package is suitable for Debian, Ubuntu, and other Debian-based systems. Debian packages may be downloaded from the Elasticsearch website or from our Debian repository.
+:   The `deb` package is suitable for Debian, Ubuntu, and other Debian-based systems. Debian packages can be downloaded from the {{es}} website or from our Debian repository.
 
-    [Install Elasticsearch with Debian Package](../../../deploy-manage/deploy/self-managed/install-elasticsearch-with-debian-package.md)
+    [Install {{es}} with Debian Package](/deploy-manage/deploy/self-managed/install-elasticsearch-with-debian-package.md)
 
 
 `rpm`
-:   The `rpm` package is suitable for installation on Red Hat, Centos, SLES, OpenSuSE and other RPM-based systems. RPMs may be downloaded from the Elasticsearch website or from our RPM repository.
+:   The `rpm` package is suitable for installation on Red Hat, Centos, SLES, OpenSuSE and other RPM-based systems. RPM packages can be downloaded from the {{es}} website or from our RPM repository.
 
-    [Install Elasticsearch with RPM](../../../deploy-manage/deploy/self-managed/install-elasticsearch-with-rpm.md)
+    [Install {{es}} with RPM](/deploy-manage/deploy/self-managed/install-elasticsearch-with-rpm.md)
 
+## {{es}} container images [elasticsearch-docker-images]
 
-::::{tip}
-For a step-by-step example of setting up the {{stack}} on your own premises, try out our tutorial: [Installing a self-managed Elastic Stack](../../../deploy-manage/deploy/self-managed/installing-elasticsearch.md).
-::::
+You can also run {{es}} inside a docket container image. Docker container images may be downloaded from the Elastic Docker Registry.
 
-
-
-## Elasticsearch container images [elasticsearch-docker-images]
-
-You can also run {{es}} inside a container image.
-
-`docker`
-:   Docker container images may be downloaded from the Elastic Docker Registry.
-
-    [Install {{es}} with Docker](../../../deploy-manage/deploy/self-managed/install-elasticsearch-with-docker.md)
-
-
+[Install {{es}} with Docker](/deploy-manage/deploy/self-managed/install-elasticsearch-with-docker.md)
 
 ## Java (JVM) Version [jvm-version]
 

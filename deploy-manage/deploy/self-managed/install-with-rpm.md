@@ -9,7 +9,7 @@ mapped_pages:
 # Install with RPM [rpm]
 
 
-The RPM for Kibana can be [downloaded from our website](#install-rpm) or from our [RPM repository](#rpm-repo). It can be used to install Kibana on any RPM-based system such as OpenSuSE, SLES, Red Hat, and Oracle Enterprise.
+The RPM for {{kib}} can be [downloaded from our website](#install-rpm) or from our [RPM repository](#rpm-repo). It can be used to install {{kib}} on any RPM-based system such as OpenSuSE, SLES, Red Hat, and Oracle Enterprise.
 
 ::::{note}
 RPM install is not supported on distributions with old versions of RPM, such as SLES 11. Refer to [Install from archive on Linux or macOS](install-from-archive-on-linux-macos.md) instead.
@@ -18,7 +18,7 @@ RPM install is not supported on distributions with old versions of RPM, such as 
 
 This package contains both free and subscription features. [Start a 30-day trial](../../license/manage-your-license-in-self-managed-cluster.md) to try out all of the features.
 
-The latest stable version of Kibana can be found on the [Download Kibana](https://elastic.co/downloads/kibana) page. Other versions can be found on the [Past Releases page](https://elastic.co/downloads/past-releases).
+The latest stable version of {{kib}} can be found on the [Download Kibana](https://elastic.co/downloads/kibana) page. Other versions can be found on the [Past Releases page](https://elastic.co/downloads/past-releases).
 
 ::::{tip}
 For a step-by-step example of setting up the {{stack}} on your own premises, try out our tutorial: [Installing a self-managed Elastic Stack](installing-elasticsearch.md).
@@ -27,12 +27,8 @@ For a step-by-step example of setting up the {{stack}} on your own premises, try
 
 ## Import the Elastic PGP key [rpm-key]
 
-We sign all of our packages with the Elastic Signing Key (PGP key [D88E42B4](https://pgp.mit.edu/pks/lookup?op=vindex&search=0xD27D666CD88E42B4), available from [https://pgp.mit.edu](https://pgp.mit.edu)) with fingerprint:
-
-```
-4609 5ACC 8548 582C 1A26 99A9 D27D 666C D88E 42B4
-```
-Download and install the public signing key:
+:::{include} _snippets/pgp-key.md
+:::
 
 ```sh
 rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
@@ -41,12 +37,44 @@ rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
 
 ## Installing from the RPM repository [rpm-repo]
 
-Version 9.0.0-beta1 of Kibana has not yet been released.
+Create a file called `kibana.repo` in the `/etc/yum.repos.d/` directory for RedHat based distributions, or in the `/etc/zypp/repos.d/` directory for OpenSuSE based distributions, containing:
+
+```sh
+[kibana-9.X]
+name={{kib}} repository for 9.x packages
+baseurl=https://artifacts.elastic.co/packages/9.x/yum
+gpgcheck=1
+gpgkey=https://artifacts.elastic.co/GPG-KEY-elasticsearch
+enabled=1
+autorefresh=1
+type=rpm-md
+```
+
+And your repository is ready for use. You can now install {{kib}} with one of the following commands:
+
+```sh
+sudo yum install kibana <1>
+sudo dnf install kibana <2>
+sudo zypper install kibana <3>
+```
+
+1. Use yum on older Red Hat based distributions.
+2. Use dnf on Fedora and other newer Red Hat distributions.
+3. Use zypper on OpenSUSE based distributions
 
 
 ## Download and install the RPM manually [install-rpm]
 
-Version 9.0.0-beta1 of Kibana has not yet been released.
+The RPM for {{kib}} {{stack-version}} can be downloaded from the website and installed as follows:
+
+```sh
+wget https://artifacts.elastic.co/downloads/kibana/kibana-{{stack-version}}-x86_64.rpm
+wget https://artifacts.elastic.co/downloads/kibana/kibana-{{stack-version}}-x86_64.rpm.sha512
+shasum -a 512 -c kibana-{{stack-version}}-x86_64.rpm.sha512 <1>
+sudo rpm --install kibana-{{stack-version}}-x86_64.rpm
+```
+
+1. Compares the SHA of the downloaded RPM and the published checksum, which should output `kibana-{version}-x86_64.rpm: OK`.
 
 
 ## Start {{es}} and generate an enrollment token for {{kib}} [rpm-enroll]
@@ -89,7 +117,7 @@ These commands provide no feedback as to whether {{kib}} was started successfull
 
 ## Configure {{kib}} via the config file [rpm-configuring]
 
-Kibana loads its configuration from the `/etc/kibana/kibana.yml` file by default.  The format of this config file is explained in [Configuring Kibana](configure.md).
+{{kib}} loads its configuration from the `/etc/kibana/kibana.yml` file by default.  The format of this config file is explained in [Configuring Kibana](configure.md).
 
 
 ## Directory layout of RPM [rpm-layout]
@@ -98,9 +126,9 @@ The RPM places config files, logs, and the data directory in the appropriate loc
 
 | Type | Description | Default Location | Setting |
 | --- | --- | --- | --- |
-| home | Kibana home directory or `$KIBANA_HOME` | `/usr/share/kibana` |  |
-| bin | Binary scripts including `kibana` to start the Kibana server    and `kibana-plugin` to install plugins | `/usr/share/kibana/bin` |  |
+| home | {{kib}} home directory or `$KIBANA_HOME` | `/usr/share/kibana` |  |
+| bin | Binary scripts including `kibana` to start the {{kib}} server    and `kibana-plugin` to install plugins | `/usr/share/kibana/bin` |  |
 | config | Configuration files including `kibana.yml` | `/etc/kibana` | `[KBN_PATH_CONF](configure.md)` |
-| data | The location of the data files written to disk by Kibana and its plugins | `/var/lib/kibana` | `path.data` |
+| data | The location of the data files written to disk by {{kib}} and its plugins | `/var/lib/kibana` | `path.data` |
 | logs | Logs files location | `/var/log/kibana` | `[Logging configuration](../../monitor/logging-configuration/kibana-logging.md)` |
 | plugins | Plugin files location. Each plugin will be contained in a subdirectory. | `/usr/share/kibana/plugins` |  |

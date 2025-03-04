@@ -1,7 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/system-config-tcpretries.html
-
+applies_to:
+  deployment:
+    self:
 ---
 
 # Decrease the TCP retransmission timeout [system-config-tcpretries]

@@ -1,7 +1,7 @@
 Run the following command to start {{es}} from the command line:
 
 ```sh
-.\bin\elasticsearch.bat
+./bin/elasticsearch
 ```
 
 When starting {{es}} for the first time, security features are enabled and configured by default. The following security configuration occurs automatically:
@@ -15,11 +15,15 @@ The password for the `elastic` user and the enrollment token for {{kib}} are out
 We recommend storing the `elastic` password as an environment variable in your shell. Example:
 
 ```sh
-$ELASTIC_PASSWORD = "your_password"
+export ELASTIC_PASSWORD="your_password"
 ```
 
 If you have password-protected the {{es}} keystore, you will be prompted to enter the keystore’s password. See [Secure settings](../../security/secure-settings.md) for more details.
 
-By default {{es}} prints its logs to the console (`STDOUT`) and to the `<cluster name>.log` file within the [logs directory](important-settings-configuration.md#path-settings). {{es}} logs some information while it is starting, but after it has finished initializing it will continue to run in the foreground and won’t log anything further until something happens that is worth recording. While {{es}} is running you can interact with it through its HTTP interface which is on port `9200` by default.
+By default {{es}} prints its logs to the console (`stdout`) and to the `<cluster name>.log` file within the [logs directory](important-settings-configuration.md#path-settings). {{es}} logs some information while it is starting, but after it has finished initializing it will continue to run in the foreground and won’t log anything further until something happens that is worth recording. While {{es}} is running you can interact with it through its HTTP interface which is on port `9200` by default.
 
 To stop {{es}}, press `Ctrl-C`.
+
+::::{note}
+All scripts packaged with {{es}} require a version of Bash that supports arrays and assume that Bash is available at `/bin/bash`. As such, Bash should be available at this path either directly or via a symbolic link.
+::::

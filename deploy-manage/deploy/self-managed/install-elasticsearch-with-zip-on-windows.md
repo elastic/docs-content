@@ -4,20 +4,22 @@ mapped_pages:
 sub:
   es-conf: "%ES_HOME%\\config"
   slash: "\\"
+navigation_title: Windows
 ---
 
 # Install {{es}} with .zip on Windows [zip-windows]
 
 {{es}} can be installed on Windows using the Windows `.zip` archive. This comes with a `elasticsearch-service.bat` command which will setup {{es}} to run as a service.
 
-This package contains both free and subscription features. [Start a 30-day trial](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/license-settings.md) to try out all of the features.
+:::{include} _snippets/trial.md
+:::
 
 ::::{note}
 On Windows the {{es}} {{ml}} feature requires the Microsoft Universal C Runtime library. This is built into Windows 10, Windows Server 2016 and more recent versions of Windows. For older versions of Windows it can be installed via Windows Update, or from a [separate download](https://support.microsoft.com/en-us/help/2999226/update-for-universal-c-runtime-in-windows). If you cannot install the Microsoft Universal C Runtime library you can still use the rest of {{es}} if you disable the {{ml}} feature.
 ::::
 
-
-The latest stable version of {{es}} can be found on the [Download {{es}}](https://elastic.co/downloads/elasticsearch) page. Other versions can be found on the [Past Releases page](https://elastic.co/downloads/past-releases).
+:::{include} _snippets/other-versions.md
+:::
 
 ::::{note}
 {{es}} includes a bundled version of [OpenJDK](https://openjdk.java.net) from the JDK maintainers (GPLv2+CE). To use your own version of Java, see the [JVM version requirements](installing-elasticsearch.md#jvm-version)
@@ -26,21 +28,29 @@ The latest stable version of {{es}} can be found on the [Download {{es}}](https:
 
 ## Download and install the `.zip` package [install-windows]
 
+% link url manually set
+Download the `.zip` archive for {{es}} {{stack-version}} from: [https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-{{stack-version}}-windows-x86_64.zip](https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-9.0.0-windows-x86_64.zip)
 
-Download the `.zip` archive for {{es}} 9.0.0-beta1 from: [https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-9.0.0-beta1-windows-x86_64.zip](https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-9.0.0-beta1-windows-x86_64.zip)
-
-Unzip it with your favorite unzip tool. This will create a folder called `elasticsearch-9.0.0-beta1`, which we will refer to as `%ES_HOME%`. In a terminal window, `cd` to the `%ES_HOME%` directory, for instance:
+Unzip it with your favorite unzip tool. This will create a folder called `elasticsearch-{{stack-version}}`, which we will refer to as `%ES_HOME%`. In a terminal window, `cd` to the `%ES_HOME%` directory, for instance:
 
 ```sh
-cd C:\Program Files\elasticsearch-9.0.0-beta1
+cd C:\Program Files\elasticsearch-{{stack-version}}
 ```
-
 
 ## Enable automatic creation of system indices [windows-enable-indices]
 
 :::{include} _snippets/enable-auto-indices.md
+:::
+
+## Run {{es}} from the command line [windows-running]
 
 :::{include} _snippets/zip-windows-start.md
+:::
+
+### Enroll nodes in an existing cluster [_enroll_nodes_in_an_existing_cluster_2]
+
+:::{include} _snippets/enroll-nodes.md
+:::
 
 ## Configure {{es}} on the command line [windows-configuring]
 
@@ -61,7 +71,10 @@ Values that contain spaces must be surrounded with quotes. For instance `-Epath.
 Typically, any cluster-wide settings (like `cluster.name`) should be added to the `elasticsearch.yml` config file, while any node-specific settings such as `node.name` could be specified on the command line.
 ::::
 
+## Check that {{es}} is running [_check_that_elasticsearch_is_running_2]
+
 :::{include} _snippets/check-es-running.md
+:::
 
 ## Install and run {{es}} as a service on Windows [windows-service]
 
@@ -70,7 +83,7 @@ You can install {{es}} as a service that runs in the background or starts automa
 1. Install {{es}} as a service. The name of the service and the value of `ES_JAVA_HOME` will be made available during install:
 
     ```sh
-    C:\Program Files\elasticsearch-9.0.0-beta1\bin>elasticsearch-service.bat install
+    C:\Program Files\elasticsearch-{{stack-version}}\bin>elasticsearch-service.bat install
     Installing service      :  "elasticsearch-service-x64"
     Using ES_JAVA_HOME (64-bit):  "C:\jvm\jdk1.8"
     The service 'elasticsearch-service-x64' has been installed.
@@ -79,7 +92,7 @@ You can install {{es}} as a service that runs in the background or starts automa
 2. Start {{es}} as a service. When {{es}} starts, authentication is enabled by default:
 
     ```sh
-    C:\Program Files\elasticsearch-9.0.0-beta1\bin>bin\elasticsearch-service.bat start
+    C:\Program Files\elasticsearch-{{stack-version}}\bin>bin\elasticsearch-service.bat start
     ```
 
     ::::{note}
@@ -89,7 +102,7 @@ You can install {{es}} as a service that runs in the background or starts automa
 3. Generate a password for the `elastic` user with the [`elasticsearch-reset-password`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/command-line-tools/reset-password.md) tool. The password is output to the command line.
 
     ```sh
-    C:\Program Files\elasticsearch-9.0.0-beta1\bin>\bin\elasticsearch-reset-password -u elastic
+    C:\Program Files\elasticsearch-{{stack-version}}\bin>\bin\elasticsearch-reset-password -u elastic
     ```
 
 
@@ -108,7 +121,7 @@ The system environment variable `ES_JAVA_HOME` should be set to the path of the 
 Run the `elasticsearch-service.bat` script in the `bin\` folder to install, remove, manage, or configure the service and potentially start and stop the service from the command line.
 
 ```sh
-C:\Program Files\elasticsearch-9.0.0-beta1\bin>elasticsearch-service.bat
+C:\Program Files\elasticsearch-{{stack-version}}\bin>elasticsearch-service.bat
 
 Usage: elasticsearch-service.bat install|remove|start|stop|manager [SERVICE_ID]
 ```
@@ -147,10 +160,10 @@ The {{es}} service can be configured prior to installation by setting the follow
 :   The password for the user specified in `%SERVICE_USERNAME%`.
 
 `SERVICE_DISPLAY_NAME`
-:   The name of the service. Defaults to `Elasticsearch <version> %SERVICE_ID%`.
+:   The name of the service. Defaults to `{{es}}<version> %SERVICE_ID%`.
 
 `SERVICE_DESCRIPTION`
-:   The description of the service. Defaults to `Elasticsearch <version> Windows Service - https://elastic.co`.
+:   The description of the service. Defaults to `{{es}}<version> Windows Service - https://elastic.co`.
 
 `ES_JAVA_HOME`
 :   The installation directory of the desired JVM to run the service under.
@@ -193,7 +206,19 @@ Using the Manager GUI
 
 Most changes (like JVM settings) made through the manager GUI will require a restart of the service to take affect.
 
+## Connect clients to {{es}} [_connect_clients_to_es_4]
+
 :::{include} _snippets/connect-clients.md
+:::
+
+### Use the CA fingerprint [_use_the_ca_fingerprint_2]
+
+:::{include} _snippets/ca-fingerprint.md
+:::
+
+### Use the CA certificate [_use_the_ca_certificate_2]
+
+:::{include} _snippets/ca-cert.md
 :::
 
 ## Directory layout of `.zip` archive [windows-layout]
@@ -212,6 +237,10 @@ This is very convenient because you don’t have to create any directories to st
 | logs | Log files location. | `%ES_HOME%\logs` | `path.logs` |
 | plugins | Plugin files location. Each plugin will be contained in a subdirectory. | `%ES_HOME%\plugins` |  |
 | repo | Shared file system repository locations. Can hold multiple locations. A file system repository can be placed in to any subdirectory of any directory specified here. | Not configured | `path.repo` |
+
+
+
+## Next steps [_next_steps]
 
 :::{include} _snippets/install-next-steps.md
 :::

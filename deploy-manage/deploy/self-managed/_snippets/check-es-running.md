@@ -1,9 +1,7 @@
-## Check that {{es}} is running [_check_that_elasticsearch_is_running_2]
-
 You can test that your {{es}} node is running by sending an HTTPS request to port `9200` on `localhost`:
 
 ```sh
-curl --cacert %ES_HOME%\config\certs\http_ca.crt -u elastic:$ELASTIC_PASSWORD https://localhost:9200 <1>
+curl --cacert {{es-conf}}{{slash}}certs{{slash}}http_ca.crt -u elastic:$ELASTIC_PASSWORD https://localhost:9200 <1>
 ```
 
 1. Ensure that you use `https` in your call, or the request will fail.`--cacert`
