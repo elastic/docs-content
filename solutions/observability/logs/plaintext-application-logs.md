@@ -44,20 +44,20 @@ Install {{filebeat}} on the server you want to monitor by running the commands t
 
 ::::::{tab-item} DEB
 ```sh
-curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-9.0.0-beta1-darwin-x86_64.tar.gz
-tar xzvf filebeat-9.0.0-beta1-darwin-x86_64.tar.gz
+curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{version}}-beta1-darwin-x86_64.tar.gz
+tar xzvf filebeat-{{version}}-beta1-darwin-x86_64.tar.gz
 ```
 ::::::
 
 ::::::{tab-item} RPM
 ```sh
-curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-9.0.0-beta1-linux-x86_64.tar.gz
-tar xzvf filebeat-9.0.0-beta1-linux-x86_64.tar.gz
+curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{version}}-beta1-linux-x86_64.tar.gz
+tar xzvf filebeat-{{version}}-beta1-linux-x86_64.tar.gz
 ```
 ::::::
 
 ::::::{tab-item} macOS
-1. Download the {{filebeat}} Windows zip file: https\://artifacts.elastic.co/downloads/beats/filebeat/filebeat-9.0.0-beta1-windows-x86_64.zip[https\://artifacts.elastic.co/downloads/beats/filebeat/filebeat-9.0.0-beta1-windows-x86_64.zip]
+1. Download the {{filebeat}} Windows zip file: https\://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{version}}-beta1-windows-x86_64.zip[https\://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{version}}-beta1-windows-x86_64.zip]
 2. Extract the contents of the zip file into `C:\Program Files`.
 3. Rename the `filebeat-{{version}}-windows-x86_64` directory to `{{filebeat}}`.
 4. Open a PowerShell prompt as an Administrator (right-click the PowerShell icon and select **Run As Administrator**).
@@ -74,15 +74,15 @@ If script execution is disabled on your system, you need to set the execution po
 
 ::::::{tab-item} Linux
 ```sh
-curl -L -O https\://artifacts.elastic.co/downloads/beats/filebeat/filebeat-9.0.0-beta1-amd64.deb
-sudo dpkg -i filebeat-9.0.0-beta1-amd64.deb
+curl -L -O https\://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{version}}-beta1-amd64.deb
+sudo dpkg -i filebeat-{{version}}-beta1-amd64.deb
 ```
 ::::::
 
 ::::::{tab-item} Windows
 ```sh
-curl -L -O https\://artifacts.elastic.co/downloads/beats/filebeat/filebeat-9.0.0-beta1-x86_64.rpm
-sudo rpm -vi filebeat-9.0.0-beta1-x86_64.rpm
+curl -L -O https\://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{version}}-beta1-x86_64.rpm
+sudo rpm -vi filebeat-{{version}}-beta1-x86_64.rpm
 ```
 ::::::
 
