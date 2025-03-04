@@ -20,7 +20,7 @@ There are a number of things you need to plan for before performing the actual u
 
 Ensure the version you’re upgrading to for {{es}}, {{kib}}, and any ingest components supports your current operating system. Refer to the [Product and Operating System support matrix](https://www.elastic.co/support/matrix#matrix_os). 
 
-**OpenJDK and FIPS compliance**
+**OpenJDK compatibility and FIPS compliance**
 
 By default, {{es}} is built using Java and includes a bundled version of [OpenJDK](https://openjdk.java.net/) within each distribution. While we strongly recommend using the bundled Java Virtual Machine (JVM) in all installations of {{es}}, if you choose to use your own JVM, ensure it’s compatible by reviewing the [Product and JVM support matrix](https://www.elastic.co/support/matrix#matrix_jvm). {{es}} 9.0 requires Java 21 and supports Java 24. 
 
@@ -74,10 +74,13 @@ We highly recommend testing and upgrading in your development environment before
 
 The procedures you follow to upgrade depend on your infrastructure and deployment method. You’ve installed Elastic components using either Elastic-managed infrastructure or self-managed infrastructure. 
 
+### Elastic-managed infrastructure 
+
 Elastic-managed infrastructure includes {{ecloud}} – the umbrella term for {{ech}} (ECH) and {{serverless-full}}. {{serverless-full}} (“Serverless”) is a fully managed cloud offering with three products: {{es-serverless}}, {{obs-serverless}}, and {{sec-serverless}}. All serverless products are built on top of the Search AI Lake. Customers on serverless receive the latest features automatically when updates are published and do not need to choose an upgrade path.  
 
 {{ech}} is Elastic’s cloud offering for managing {{stack}} deployments, built on top of {{es}}. A single click in the {{ecloud}} console can upgrade a deployment to a newer version.
 
+### Self-managed infrastructure
 
 Self-managed infrastructure – either on-prem or on public cloud, includes: 
 * {{stack}} 
