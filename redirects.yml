@@ -19,6 +19,9 @@ redirects:
       'roles-application-priv':
       'roles-remote-indices-priv':
       'roles-remote-cluster-priv':
+  'deploy-manage/manage-spaces.md':
+    anchors:
+      'spaces-control-feature-visibility':
 
 ## reference
   'reference/security/elastic-defend/index.md': 'solutions/security/configure-elastic-defend.md'
