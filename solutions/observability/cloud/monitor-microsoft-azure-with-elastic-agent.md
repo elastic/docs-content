@@ -113,10 +113,10 @@ To add the integration:
     **Subscription ID**
     :   The subscription ID listed on the main Subscriptions page.
 
-    :::{image} ../../../images/observability-agent-tut-azure-integration-settings.png
-    :alt: Screenshot of integration settings for Azure
-    :class: screenshot
-    :::
+        :::{image} ../../../images/observability-agent-tut-azure-integration-settings.png
+        :alt: Screenshot of integration settings for Azure
+        :class: screenshot
+        :::
 
 6. Make sure the **Collect Azure Billing metrics** selector is turned on.
 7. Accept the defaults to create a new agent policy.
