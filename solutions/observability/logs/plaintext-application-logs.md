@@ -57,7 +57,7 @@ tar xzvf filebeat-{{version}}-beta1-linux-x86_64.tar.gz
 ::::::
 
 ::::::{tab-item} macOS
-1. Download the {{filebeat}} Windows zip file: [https\://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{version}}-beta1-windows-x86_64.zip](https\://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{version}}-beta1-windows-x86_64.zip)
+1. Download the {{filebeat}} Windows zip file: https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{version}}-beta1-windows-x86_64.zip
 2. Extract the contents of the zip file into `C:\Program Files`.
 3. Rename the `filebeat-{{version}}-windows-x86_64` directory to `{{filebeat}}`.
 4. Open a PowerShell prompt as an Administrator (right-click the PowerShell icon and select **Run As Administrator**).
