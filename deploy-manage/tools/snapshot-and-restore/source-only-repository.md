@@ -1,4 +1,6 @@
 ---
+mapped_urls:
+  - https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshots-source-only-repository.html
 applies_to:
   deployment:
     self: 

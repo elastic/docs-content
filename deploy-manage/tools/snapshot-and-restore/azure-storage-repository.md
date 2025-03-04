@@ -1,4 +1,6 @@
 ---
+mapped_urls:
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-configure-azure-snapshotting.html
 applies_to:
   deployment:
     ece: 

@@ -6,20 +6,14 @@ mapped_urls:
 
 # Host isolation exceptions
 
-% What needs to be done: Align serverless/stateful
 
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/security-docs/security/host-isolation-exceptions.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/security-host-isolation-exceptions.md
-
-You can configure host isolation exceptions for specific IP addresses that [isolated hosts](/solutions/security/endpoint-response-actions/isolate-host.md) are still allowed to communicate with, even when blocked from the rest of your network. Isolated hosts can still send data to {{es}} and {{kib}}, so you don’t need to set up host isolation exceptions for them.
+You can configure host isolation exceptions for specific IP addresses that [isolated hosts](/solutions/security/endpoint-response-actions/isolate-host.md) are still allowed to communicate with, even when blocked from the rest of your network. Isolated hosts can still send data to {{elastic-sec}}, so you don’t need to set up host isolation exceptions for them.
 
 Host isolation exceptions support IPv4 addresses, with optional classless inter-domain routing (CIDR) notation.
 
 ::::{admonition} Requirements
-You must have the **Host Isolation Exceptions** [privilege](/solutions/security/configure-elastic-defend/elastic-defend-feature-privileges.md) to access this feature.
-
+* You must have the **Host Isolation Exceptions** [privilege](/solutions/security/configure-elastic-defend/elastic-defend-feature-privileges.md) or the appropriate user role to access this feature.
+* Host isolation requires the appropriate [subscription](https://www.elastic.co/pricing) in {{stack}} or [project feature](/deploy-manage/deploy/elastic-cloud/project-settings.md) in {{serverless-short}}. 
 ::::
 
 
@@ -29,8 +23,7 @@ You must have the **Host Isolation Exceptions** [privilege](/solutions/security/
 
 ::::
 
-
-Host isolation is a [Platinum or Enterprise subscription](https://www.elastic.co/pricing) feature. By default, a host isolation exception is recognized globally across all hosts running {{elastic-defend}}. You can also assign a host isolation exception to a specific {{elastic-defend}} integration policy, affecting only the hosts assigned to that policy.
+By default, a host isolation exception is recognized globally across all hosts running {{elastic-defend}}. You can also assign a host isolation exception to a specific {{elastic-defend}} integration policy, affecting only the hosts assigned to that policy.
 
 1. Find **Host isolation exceptions** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Click **Add Host isolation exception**.
