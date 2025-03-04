@@ -36,8 +36,11 @@ This section provides a list of common symptoms and possible actions that you ca
 Some actions described here, such as stopping indexing or Machine Learning jobs, are temporary remediations intended to get your cluster into a state where you can make configuration changes to resolve the issue.
 ::::
 
-
 For production deployments, we recommend setting up a dedicated monitoring cluster to collect metrics and logs, troubleshooting views, and cluster alerts.
+
+:::{important}
+ If you’re using Elastic Cloud Hosted, then you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, real-time issue detection and resolution paths. For more information, refer to [Monitor with AutoOps](/deploy-manage/monitor/autoops.md).
+:::
 
 If your issue is not addressed here, then [contact Elastic support for help](/troubleshoot/index.md).
 

@@ -229,7 +229,6 @@ toc:
       - file: docs-content/serverless/security-prebuilt-rules-management.md
       - file: docs-content/serverless/security-query-alert-indices.md
       - file: docs-content/serverless/security-reduce-notifications-alerts.md
-      - file: docs-content/serverless/security-requirements-overview.md
       - file: docs-content/serverless/security-response-actions-config.md
       - file: docs-content/serverless/security-response-actions-history.md
       - file: docs-content/serverless/security-response-actions.md
