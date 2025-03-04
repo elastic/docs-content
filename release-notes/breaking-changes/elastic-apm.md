@@ -26,3 +26,10 @@ To learn how to upgrade, check out <uprade docs>.
 % **Impact**<br> Impact of the breaking change.
 % **Action**<br> Steps for mitigating deprecation impact.
 % ::::
+
+% ::::{dropdown} Change server information endpoint `/` to only accept GET and HEAD requests
+% This will surface any agent misconfiguration causing data to be sent to `/` instead of the correct endpoint, e.g. `/v1/traces` for OTLP/HTTP.
+% For more information, check [PR #15976](https://github.com/elastic/apm-server/pull/15976).
+% **Impact**<br> Any methods other than GET and HEAD to `/` will return HTTP 405 Method Not Allowed.
+% **Action**<br> Update any existing usage of e.g. `POST /` to `GET /`.
+% ::::
