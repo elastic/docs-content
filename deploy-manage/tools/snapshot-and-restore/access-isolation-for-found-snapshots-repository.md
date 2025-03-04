@@ -1,4 +1,7 @@
 ---
+mapped_urls:
+  - https://www.elastic.co/guide/en/cloud/current/ec-snapshot-repository-migration.html
+
 applies_to:
   deployment:
     ess: 

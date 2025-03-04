@@ -1,4 +1,7 @@
 ---
+mapped_urls:
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-configure-gcp-snapshotting.html
+
 applies_to:
   deployment:
     ece: 
