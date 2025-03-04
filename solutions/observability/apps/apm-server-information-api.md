@@ -16,11 +16,11 @@ This is the server information endpoint:
 http(s)://{hostname}:{port}/
 ```
 
-Sending an `HTTP GET` or `HTTP POST` request to the server information endpoint will return an HTTP 200, indicating that the server is up.
+Sending an `HTTP GET` request to the server information endpoint will return an HTTP 200, indicating that the server is up.
 
 To configure authenticated access to the APM server, the instructions at [APM API key](api-keys.md) or [APM Secret Token](secret-token.md), must be followed to configure the correct permissions for APM access.
 
-If an [API keys](api-keys.md) or a [Secret token](secret-token.md) is passed along with the `HTTP GET` or `HTTP POST` request, in addition to an HTTP 200, the response payload will include some information about the APM server.
+If an [API keys](api-keys.md) or a [Secret token](secret-token.md) is passed along with the `HTTP GET` request, in addition to an HTTP 200, the response payload will include some information about the APM server.
 
 
 ### Example: GET, without credentials [apm-api-info-example-get-without-credentials] 
@@ -48,12 +48,12 @@ curl --verbose -X GET http://127.0.0.1:8200
 ```
 
 
-### Example: POST, with secret token [apm-api-info-example-post-with-secret-token] 
+### Example: GET, with secret token [apm-api-info-example-get-with-secret-token]
 
-Example APM Server information request with POST, with a [Secret token](secret-token.md):
+Example APM Server information request with GET, with a [Secret token](secret-token.md):
 
 ```sh
-curl -X POST http://127.0.0.1:8200/ \
+curl -X GET http://127.0.0.1:8200/ \
   -H "Authorization: Bearer secret_token"
 
 {
