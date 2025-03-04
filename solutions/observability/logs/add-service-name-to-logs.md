@@ -2,6 +2,9 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/observability/current/add-logs-service-name.html
   - https://www.elastic.co/guide/en/serverless/current/observability-add-logs-service-name.html
+applies_to:
+  stack: all
+  serverless: all
 ---
 
 # Add a service name to logs [observability-add-logs-service-name]
@@ -42,7 +45,7 @@ For more on defining processors, refer to [define processors](asciidocalypse://d
 
 For logs that with an existing field being used to represent the service name, map that field to the `service.name` field using the [alias field type](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/field-alias.md). Follow these steps to update your mapping:
 
-1. find **Stack Management** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Find **Stack Management** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Select **Index Templates**.
 3. Search for the index template you want to update.
 4. From the **Actions** menu for that template, select **edit**.
@@ -58,13 +61,5 @@ For more ways to add a field to your mapping, refer to [add a field to an existi
 
 The {{stack}} provides additional ways to process your data:
 
-* **https://www.elastic.co/guide/en/elasticsearch/reference/current/ingest.html[Ingest pipelines]:** convert data to ECS, normalize field data, or enrich incoming data.
-* **https://www.elastic.co/guide/en/logstash/current/introduction.html[Logstash]:** enrich your data using input, output, and filter plugins.
-
-
-% What needs to be done: Align serverless/stateful
-
-% Use migrated content from existing pages that map to this page:
-
-% - [ ] ./raw-migrated-files/observability-docs/observability/add-logs-service-name.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/observability-add-logs-service-name.md
+* **[Ingest pipelines](../../../manage-data/ingest/transform-enrich/ingest-pipelines.md):** convert data to ECS, normalize field data, or enrich incoming data.
+* **[Logstash](https://www.elastic.co/guide/en/logstash/current):** enrich your data using input, output, and filter plugins.
