@@ -127,7 +127,7 @@ In case of ingest-optimized deployments, we maximize the number of model allocat
 
 ::::{tab-set}
 
-:::{tab-item} {{stack}}
+:::{tab-item} ECH, ECK, ECE
 
 | Level | Allocations | Threads | vCPUs |
 | --- | --- | --- | --- |
