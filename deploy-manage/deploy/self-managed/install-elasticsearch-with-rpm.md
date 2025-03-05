@@ -9,6 +9,9 @@ sub:
   escape: "\\"
   stack-version: "9.0.0"
 navigation_title: "RPM"
+applies_to:
+  deployment:
+    self:
 ---
 
 # Install {{es}} with RPM [rpm]
@@ -25,15 +28,15 @@ RPM install is not supported on distributions with old versions of RPM, such as 
 :::{include} _snippets/es-releases.md
 :::
 
-::::{note}
-{{es}} includes a bundled version of [OpenJDK](https://openjdk.java.net) from the JDK maintainers (GPLv2+CE). To use your own version of Java, see the [JVM version requirements](installing-elasticsearch.md#jvm-version)
-::::
+:::{include} _snippets/java-version.md
+:::
 
-::::{tip}
-For a step-by-step example of setting up the {{stack}} on your own premises, try out our tutorial: [Installing a self-managed Elastic Stack](installing-elasticsearch.md).
-::::
+## Before you start
 
-## Import the {{es}} PGP key [rpm-key]
+:::{include} _snippets/prereqs.md
+:::
+
+## Step 1: Import the {{es}} PGP key [rpm-key]
 
 :::{include} _snippets/pgp-key.md
 :::
@@ -42,11 +45,42 @@ For a step-by-step example of setting up the {{stack}} on your own premises, try
 rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
 ```
 
-## Installing from the RPM repository [rpm-repo]
+## Step 2: Install {{es}}
+
+You have several options for installing the {{es}} RPM package:
+
+* [From the RPM repository](#rpm-repo)
+* [Manually](#install-deb)
+
+### Install from the RPM repository [rpm-repo]
 
 Create a file called `elasticsearch.repo` in the `/etc/yum.repos.d/` directory for RedHat based distributions, or in the `/etc/zypp/repos.d/` directory for OpenSuSE based distributions, containing:
 
-## Download and install the RPM manually [install-rpm]
+```ini
+[elasticsearch]
+name=Elasticsearch repository for 9.x packages
+baseurl=https://artifacts.elastic.co/packages/9.x/yum
+gpgcheck=1
+gpgkey=https://artifacts.elastic.co/GPG-KEY-elasticsearch
+enabled=0
+autorefresh=1
+type=rpm-md
+```
+And your repository is ready for use. You can now install {{es}} with one of the following commands:
+
+```sh
+sudo yum install --enablerepo=elasticsearch elasticsearch <1>
+sudo dnf install --enablerepo=elasticsearch elasticsearch <2>
+sudo zypper modifyrepo --enable elasticsearch && \
+  sudo zypper install elasticsearch; \
+  sudo zypper modifyrepo --disable elasticsearch <3>
+```
+
+1. Use `yum` on CentOS and older Red Hat based distributions.
+2. Use `dnf` on Fedora and other newer Red Hat distributions.
+3. Use `zypper` on OpenSUSE based distributions.
+
+### Download and install the RPM manually [install-rpm]
 
 The RPM for {{es}} {{stack-version}} can be downloaded from the website and installed as follows:
 
@@ -57,12 +91,41 @@ shasum -a 512 -c elasticsearch-{{stack-version}}-x86_64.rpm.sha512 <1>
 sudo rpm --install elasticsearch-{{stack-version}}-x86_64.rpm
 ```
 
-1. Compares the SHA of the downloaded RPM and the published checksum, which should output `elasticsearch-{{version}}-x86_64.rpm: OK`.
+1. Compares the SHA of the downloaded RPM and the published checksum, which should output `elasticsearch-<version>-x86_64.rpm: OK`.
 
 :::{include} _snippets/skip-set-kernel-params.md
 :::
 
-## Start {{es}} with security enabled [rpm-security-configuration]
+### Step 3 (Optional): Reconfigure a node to join an existing cluster [_reconfigure_a_node_to_join_an_existing_cluster_2]
+
+:::{include} _snippets/join-existing-cluster.md
+:::
+
+
+## Step 4: Enable automatic creation of system indices [rpm-enable-indices]
+
+:::{include} _snippets/enable-auto-indices.md
+:::
+
+## Step 5: Run {{es}} with `systemd` [running-systemd]
+
+:::{include} _snippets/systemd.md
+:::
+
+### Start {{es}} automatically
+
+:::{include} _snippets/systemd-startup.md
+:::
+
+### Log to the systemd journal
+
+:::{include} _snippets/systemd-journal.md
+:::
+
+:::{include} _snippets/systemd-startup-timeout.md
+:::
+
+### Security at startup [deb-security-configuration]
 
 :::{include} _snippets/auto-security-config.md
 :::
@@ -70,22 +133,7 @@ sudo rpm --install elasticsearch-{{stack-version}}-x86_64.rpm
 :::{include} _snippets/pw-env-var.md
 :::
 
-### Reconfigure a node to join an existing cluster [_reconfigure_a_node_to_join_an_existing_cluster_2]
-
-:::{include} _snippets/join-existing-cluster.md
-:::
-
-## Enable automatic creation of system indices [rpm-enable-indices]
-
-:::{include} _snippets/enable-auto-indices.md
-:::
-
-## Running {{es}} with `systemd` [running-systemd]
-
-:::{include} _snippets/systemd.md
-:::
-
-## Check that {{es}} is running [rpm-check-running]
+## Step 6: Check that {{es}} is running [rpm-check-running]
 
 :::{include} _snippets/check-es-running.md
 :::

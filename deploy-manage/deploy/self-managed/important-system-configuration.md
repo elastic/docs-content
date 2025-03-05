@@ -21,6 +21,9 @@ The following settings **must** be considered before going to production:
 * [](executable-jna-tmpdir.md) (Linux only)
 * [](system-config-tcpretries.md) (Linux only)
 
+:::{tip}
+For examples of applying these settings in a Docker environment, refer to [](/deploy-manage/deploy/self-managed/install-elasticsearch-docker-prod.md).
+:::
 
 ## Development mode vs. production mode [dev-vs-prod] 
 

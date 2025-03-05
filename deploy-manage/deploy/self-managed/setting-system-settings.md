@@ -48,7 +48,7 @@ elasticsearch  -  nofile  65535
 
 This change will only take effect the next time the `elasticsearch` user opens a new session.
 
-::::{admonition} Ubuntu and `limits.conf`
+::::{admonition} Ubuntu and limits.conf
 :class: note
 
 Ubuntu ignores the `limits.conf` file for processes started by `init.d`. To enable the `limits.conf` file, edit `/etc/pam.d/su` and uncomment the following line:

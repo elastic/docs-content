@@ -9,6 +9,9 @@ sub:
   escape: "\\"
   stack-version: "9.0.0"
 navigation_title: Debian
+applies_to:
+  deployment:
+    self:
 ---
 
 # Install {{es}} with a Debian package [deb]
@@ -21,12 +24,16 @@ The Debian package for {{es}} can be [downloaded from our website](#install-deb)
 :::{include} _snippets/es-releases.md
 :::
 
-::::{note}
-{{es}} includes a bundled version of [OpenJDK](https://openjdk.java.net) from the JDK maintainers (GPLv2+CE). To use your own version of Java, see the [JVM version requirements](installing-elasticsearch.md#jvm-version)
-::::
+:::{include} _snippets/java-version.md
+:::
+
+## Before you start
+
+:::{include} _snippets/prereqs.md
+:::
 
 
-## Import the {{es}} PGP key [deb-key]
+## Step 1: Import the {{es}} PGP key [deb-key]
 
 :::{include} _snippets/pgp-key.md
 :::
@@ -35,19 +42,32 @@ The Debian package for {{es}} can be [downloaded from our website](#install-deb)
 wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo gpg --dearmor -o /usr/share/keyrings/elasticsearch-keyring.gpg
 ```
 
-## Installing from the APT repository [deb-repo]
+## Step 2: Install {{es}}
 
-You may need to install the `apt-transport-https` package on Debian before proceeding:
+You have several options for installing the {{es}} Debian package:
 
-```sh
-sudo apt-get install apt-transport-https
-```
+* [From the APT repository](#deb-repo)
+* [Manually](#install-deb)
+  
+### Install from the APT repository [deb-repo]
 
-Save the repository definition to  `/etc/apt/sources.list.d/elastic-9.x.list`:
+1. You may need to install the `apt-transport-https` package on Debian before proceeding:
 
-```sh
-echo "deb [signed-by=/usr/share/keyrings/elasticsearch-keyring.gpg] https://artifacts.elastic.co/packages/8.x/apt stable main" | sudo tee /etc/apt/sources.list.d/elastic-8.x.list
-```
+    ```sh
+    sudo apt-get install apt-transport-https
+    ```
+
+2. Save the repository definition to  `/etc/apt/sources.list.d/elastic-9.x.list`:
+
+    ```sh
+    echo "deb [signed-by=/usr/share/keyrings/elasticsearch-keyring.gpg] https://artifacts.elastic.co/packages/9.x/apt stable main" | sudo tee /etc/apt/sources.list.d/elastic-9.x.list
+    ```
+
+3. Install the {{es}} Debian package:
+
+    ```sh
+    sudo apt-get update && sudo apt-get install elasticsearch
+    ```
 
 :::{note}
 These instructions do not use `add-apt-repository` for several reasons:
@@ -56,23 +76,17 @@ These instructions do not use `add-apt-repository` for several reasons:
 2. `add-apt-repository` is not part of the default install on many distributions and requires a number of non-default dependencies.
 3. Older versions of `add-apt-repository` always add a `deb-src` entry which will cause errors because we do not provide a source package. If you have added the `deb-src` entry, you will see an error like the following until you delete the `deb-src` line:
 
-    ```
+    ```text
     Unable to find expected entry 'main/source/Sources' in Release file
     (Wrong sources.list entry or malformed file)
     ```
 :::
 
-You can install the {{es}} Debian package with:
-
-```sh
-sudo apt-get update && sudo apt-get install elasticsearch
-```
-
 :::{warning}
 If two entries exist for the same {{es}} repository, you will see an error like this during `apt-get update`:
 
-```
-Duplicate sources.list entry https://artifacts.elastic.co/packages/8.x/apt/ ...
+```text
+Duplicate sources.list entry https://artifacts.elastic.co/packages/9.x/apt/ ...
 ```
 
 Examine `/etc/apt/sources.list.d/elasticsearch-9.x.list` for the duplicate entry or locate the duplicate entry amongst the files in `/etc/apt/sources.list.d/` and the `/etc/apt/sources.list` file.
@@ -81,7 +95,7 @@ Examine `/etc/apt/sources.list.d/elasticsearch-9.x.list` for the duplicate entry
 :::{include} _snippets/skip-set-kernel-params.md
 :::
 
-## Download and install the Debian package manually [install-deb]
+### Download and install the Debian package manually [install-deb]
 
 The Debian package for {{es}} {{stack-version}} can be downloaded from the website and installed as follows:
 
@@ -92,9 +106,37 @@ shasum -a 512 -c elasticsearch-{{stack-version}}-amd64.deb.sha512 <1>
 sudo dpkg -i elasticsearch-{{stack-version}}-amd64.deb
 ```
 
-1. Compares the SHA of the downloaded Debian package and the published checksum, which should output `elasticsearch-{{version}}-amd64.deb: OK`.
+1. Compares the SHA of the downloaded Debian package and the published checksum, which should output `elasticsearch-<version>-amd64.deb: OK`.
 
-## Start {{es}} with security enabled [deb-security-configuration]
+## Step 3 (Optional): Reconfigure a node to join an existing cluster [_reconfigure_a_node_to_join_an_existing_cluster]
+
+:::{include} _snippets/join-existing-cluster.md
+:::
+
+## Step 4: Enable automatic creation of system indices [deb-enable-indices]
+
+:::{include} _snippets/enable-auto-indices.md
+:::
+
+## Step 5: Run {{es}} with `systemd` [running-systemd]
+
+:::{include} _snippets/systemd.md
+:::
+
+### Start {{es}} automatically
+
+:::{include} _snippets/systemd-startup.md
+:::
+
+### Log to the systemd journal
+
+:::{include} _snippets/systemd-journal.md
+:::
+
+:::{include} _snippets/systemd-startup-timeout.md
+:::
+
+### Security at startup [deb-security-configuration]
 
 :::{include} _snippets/auto-security-config.md
 :::
@@ -102,22 +144,7 @@ sudo dpkg -i elasticsearch-{{stack-version}}-amd64.deb
 :::{include} _snippets/pw-env-var.md
 :::
 
-### Reconfigure a node to join an existing cluster [_reconfigure_a_node_to_join_an_existing_cluster]
-
-:::{include} _snippets/join-existing-cluster.md
-:::
-
-## Enable automatic creation of system indices [deb-enable-indices]
-
-:::{include} _snippets/enable-auto-indices.md
-:::
-
-## Running {{es}} with `systemd` [running-systemd]
-
-:::{include} _snippets/systemd.md
-:::
-
-## Check that {{es}} is running [deb-check-running]
+## Step 6: Check that {{es}} is running [deb-check-running]
 
 :::{include} _snippets/check-es-running.md
 :::

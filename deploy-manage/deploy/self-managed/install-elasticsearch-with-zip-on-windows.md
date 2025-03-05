@@ -8,28 +8,34 @@ sub:
   escape: "^"
   stack-version: "9.0.0"
 navigation_title: Windows
+applies_to:
+  deployment:
+    self:
 ---
 
 # Install {{es}} with .zip on Windows [zip-windows]
 
-{{es}} can be installed on Windows using the Windows `.zip` archive. This comes with a `elasticsearch-service.bat` command which will setup {{es}} to run as a service.
+{{es}} can be installed on Windows using the Windows `.zip` archive. This comes with a `elasticsearch-service.bat` command which will set up {{es}} to [run as a service](#windows-service).
 
 :::{include} _snippets/trial.md
 :::
 
-::::{note}
-On Windows the {{es}} {{ml}} feature requires the Microsoft Universal C Runtime library. This is built into Windows 10, Windows Server 2016 and more recent versions of Windows. For older versions of Windows it can be installed via Windows Update, or from a [separate download](https://support.microsoft.com/en-us/help/2999226/update-for-universal-c-runtime-in-windows). If you cannot install the Microsoft Universal C Runtime library you can still use the rest of {{es}} if you disable the {{ml}} feature.
-::::
-
 :::{include} _snippets/es-releases.md
 :::
 
+:::{include} _snippets/java-version.md
+:::
+
 ::::{note}
-{{es}} includes a bundled version of [OpenJDK](https://openjdk.java.net) from the JDK maintainers (GPLv2+CE). To use your own version of Java, see the [JVM version requirements](installing-elasticsearch.md#jvm-version)
+On Windows, the {{es}} {{ml}} feature requires the Microsoft Universal C Runtime library. This is built into Windows 10, Windows Server 2016 and more recent versions of Windows. For older versions of Windows, it can be installed through Windows Update, or from a [separate download](https://support.microsoft.com/en-us/help/2999226/update-for-universal-c-runtime-in-windows). If you can't install the Microsoft Universal C Runtime library, you can still use the rest of {{es}} if you disable the {{ml}} feature.
 ::::
 
+## Before you start
 
-## Download and install the `.zip` package [install-windows]
+:::{include} _snippets/prereqs.md
+:::
+
+## Step 1: Download and install the `.zip` package [install-windows]
 
 % link url manually set
 Download the `.zip` archive for {{es}} {{stack-version}} from: [https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-{{stack-version}}-windows-x86_64.zip](https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-9.0.0-windows-x86_64.zip)
@@ -40,17 +46,27 @@ Unzip it with your favorite unzip tool. This will create a folder called `elasti
 cd C:\Program Files\elasticsearch-{{stack-version}}
 ```
 
-## Enable automatic creation of system indices [windows-enable-indices]
+## Step 2: Enable automatic creation of system indices [windows-enable-indices]
 
 :::{include} _snippets/enable-auto-indices.md
 :::
 
-## Run {{es}} from the command line [windows-running]
+## Step 3: Run {{es}}
+
+You have several options for starting {{es}}:
+
+* [Run from the command line](#command-line)
+* [Run the node to be enrolled in an existing cluster](#existing-cluster)
+* [Install and run as a service](#windows-service)
+
+You can run {{es}} [from the command line](#command-line), or install and run {{es}} [as a service](#windows-service).
+
+### Run {{es}} from the command line [command-line]
 
 :::{include} _snippets/zip-windows-start.md
 :::
 
-### Security at startup [security-at-startup]
+#### Security at startup [security-at-startup]
 
 :::{include} _snippets/auto-security-config.md
 :::
@@ -58,36 +74,17 @@ cd C:\Program Files\elasticsearch-{{stack-version}}
 :::{include} _snippets/pw-env-var.md
 :::
 
-### Enroll nodes in an existing cluster [_enroll_nodes_in_an_existing_cluster_2]
+#### Configure {{es}} on the command line [windows-configuring]
+
+:::{include} _snippets/cmd-line-config.md
+:::
+
+### Enroll the node in an existing cluster [_enroll_nodes_in_an_existing_cluster_2]
 
 :::{include} _snippets/enroll-nodes.md
 :::
 
-## Configure {{es}} on the command line [windows-configuring]
-
-{{es}} loads its configuration from the `%ES_HOME%\config\elasticsearch.yml` file by default. The format of this config file is explained in [](configure-elasticsearch.md).
-
-Any settings that can be specified in the config file can also be specified on the command line, using the `-E` syntax as follows:
-
-```sh
-.\bin\elasticsearch.bat -Ecluster.name=my_cluster -Enode.name=node_1
-```
-
-::::{note}
-Values that contain spaces must be surrounded with quotes. For instance `-Epath.logs="C:\My Logs\logs"`.
-::::
-
-
-::::{tip}
-Typically, any cluster-wide settings (like `cluster.name`) should be added to the `elasticsearch.yml` config file, while any node-specific settings such as `node.name` could be specified on the command line.
-::::
-
-## Check that {{es}} is running [_check_that_elasticsearch_is_running_2]
-
-:::{include} _snippets/check-es-running.md
-:::
-
-## Install and run {{es}} as a service on Windows [windows-service]
+### Install and run {{es}} as a service on Windows [windows-service]
 
 You can install {{es}} as a service that runs in the background or starts automatically at boot time without user interaction.
 
@@ -99,6 +96,12 @@ You can install {{es}} as a service that runs in the background or starts automa
     Using ES_JAVA_HOME (64-bit):  "C:\jvm\jdk1.8"
     The service 'elasticsearch-service-x64' has been installed.
     ```
+
+    `ES_JAVA_HOME` is the installation directory of the desired JVM to run the service under. You can change this value using an [environment variable](#windows-service-settings).
+
+    ::::{note}
+    While a JRE can be used for the {{es}} service, its use is discouraged and using a JRE will trigger a warning. Use is discouraged due to its use of a client VM, as opposed to a server JVM which offers better performance for long-running applications.
+    ::::
 
 2. Start {{es}} as a service. When {{es}} starts, authentication is enabled by default:
 
@@ -116,106 +119,85 @@ You can install {{es}} as a service that runs in the background or starts automa
     C:\Program Files\elasticsearch-{{stack-version}}\bin>\bin\elasticsearch-reset-password -u elastic
     ```
 
-
-::::{note}
-While a JRE can be used for the {{es}} service, due to its use of a client VM (as opposed to a server JVM which offers better performance for long-running applications) its usage is discouraged and a warning will be issued.
-::::
-
-
-::::{note}
-The system environment variable `ES_JAVA_HOME` should be set to the path of the JDK installation that you want the service to use. If you upgrade the JDK, you are not required to the reinstall the service but you must set the value of the system environment variable `ES_JAVA_HOME` to the path to the new JDK installation. However, upgrading across JVM types (e.g. JRE versus SE) is not supported, and does require the service to be reinstalled.
-::::
-
-
-### Manage {{es}} as a service on Windows [windows-service-manage]
+#### Manage {{es}} as a service on Windows [windows-service-manage]
 
 Run the `elasticsearch-service.bat` script in the `bin\` folder to install, remove, manage, or configure the service and potentially start and stop the service from the command line.
 
 ```sh
 C:\Program Files\elasticsearch-{{stack-version}}\bin>elasticsearch-service.bat
-
-Usage: elasticsearch-service.bat install|remove|start|stop|manager [SERVICE_ID]
 ```
 
-The script requires one parameter (the command to execute), followed by an optional one indicating the service id (useful when installing multiple {{es}} services).
+Usage:
+```
+elasticsearch-service.bat install|remove|start|stop|manager [SERVICE_ID]
+```
+
+The script requires one parameter (the command to execute), followed by an optional one indicating the service ID (useful when installing multiple {{es}} services).
 
 The commands available are:
 
-`install`
-:   Install {{es}} as a service
-
-`remove`
-:   Remove the installed {{es}} service (and stop the service if started)
-
-`start`
-:   Start the {{es}} service (if installed)
-
-`stop`
-:   Stop the {{es}} service (if started)
-
-`manager`
-:   Start a GUI for managing the installed service
+| Command | Description |
+| --- | --- |
+|
+| `install` | Install {{es}} as a service |
+| `remove`  | Remove the installed {{es}} service (and stop the service if started) |
+| `start`   | Start the {{es}} service (if installed) |
+| `stop`    |  Stop the {{es}} service (if started) |
+| `manager` | Start a GUI for managing the installed service |
 
 
-## Customize service settings [windows-service-settings]
+#### Customize service settings [windows-service-settings]
 
-The {{es}} service can be configured prior to installation by setting the following environment variables (either using the [set command](https://technet.microsoft.com/en-us/library/cc754250(v=ws.10).aspx) from the command line, or through the **System Properties→Environment Variables** GUI).
+You can customize the service settings before installation using environment variables, or after installation using the Manager GUI.
 
-`SERVICE_ID`
-:   A unique identifier for the service. Useful if installing multiple instances on the same machine. Defaults to `elasticsearch-service-x64`.
+`elasticsearch-service.bat` relies on [Apache Commons Daemon](https://commons.apache.org/proper/commons-daemon/) project to install the service. Environment variables set prior to the service installation are copied and will be used during the service lifecycle. This means any changes made to them after the installation will not be picked up unless the service is reinstalled.
 
-`SERVICE_USERNAME`
-:   The user to run as, defaults to the local system account.
+::::{tab-set}
+:::{tab-item} Environment variables (pre-install)
 
-`SERVICE_PASSWORD`
-:   The password for the user specified in `%SERVICE_USERNAME%`.
+The {{es}} service can be configured prior to installation by setting the following environment variables (either using the [set command](https://technet.microsoft.com/en-us/library/cc754250(v=ws.10).aspx) from the command line, or through the **System Properties > Environment Variables** GUI).
 
-`SERVICE_DISPLAY_NAME`
-:   The name of the service. Defaults to `{{es}}<version> %SERVICE_ID%`.
+| Environment variable | Description | 
+| --- | --- |
+| `SERVICE_ID` | A unique identifier for the service. Useful if installing multiple instances on the same machine. Defaults to `elasticsearch-service-x64`. |
+| `SERVICE_USERNAME` | The user to run as, defaults to the local system account. |
+| `SERVICE_PASSWORD` | The password for the user specified in `%SERVICE_USERNAME%`. |
+| `SERVICE_DISPLAY_NAME` | The name of the service. Defaults to `{{es}}<version> %SERVICE_ID%`. |
+| `SERVICE_DESCRIPTION` | The description of the service. Defaults to `{{es}}<version> Windows Service - https://elastic.co`. |
+| `ES_JAVA_HOME` | The installation directory of the desired JVM to run the service under. |
+| `SERVICE_LOG_DIR` | Service log directory, defaults to `%ES_HOME%\logs`. Note that this does not control the path for the {{es}} logs; the path for these is set via the setting `path.logs` in the `elasticsearch.yml` configuration file, or on the command line. |
+| `ES_PATH_CONF` | Configuration file directory (which needs to include `elasticsearch.yml`, `jvm.options`, and `log4j2.properties` files), defaults to `%ES_HOME%\config`. |
+| `ES_JAVA_OPTS` | Any additional JVM system properties you may want to apply. |
+| `ES_START_TYPE` | Startup mode for the service. Can be either `auto` or `manual` (default). |
+| `ES_STOP_TIMEOUT` | The timeout in seconds that procrun waits for service to exit gracefully. Defaults to `0`. |
 
-`SERVICE_DESCRIPTION`
-:   The description of the service. Defaults to `{{es}}<version> Windows Service - https://elastic.co`.
+:::
+:::{tab-item} Manager GUI (post-install)
 
-`ES_JAVA_HOME`
-:   The installation directory of the desired JVM to run the service under.
+It is also possible to configure the service after it’s been installed using the manager GUI (`elasticsearch-service-mgr.exe`), which offers insight into the installed service, including its status, startup type, JVM, start and stop settings amongst other things. To open the manager GUI, run the following command:
 
-`SERVICE_LOG_DIR`
-:   Service log directory, defaults to `%ES_HOME%\logs`. Note that this does not control the path for the {{es}} logs; the path for these is set via the setting `path.logs` in the `elasticsearch.yml` configuration file, or on the command line.
-
-`ES_PATH_CONF`
-:   Configuration file directory (which needs to include `elasticsearch.yml`, `jvm.options`, and `log4j2.properties` files), defaults to `%ES_HOME%\config`.
-
-`ES_JAVA_OPTS`
-:   Any additional JVM system properties you may want to apply.
-
-`ES_START_TYPE`
-:   Startup mode for the service. Can be either `auto` or `manual` (default).
-
-`ES_STOP_TIMEOUT`
-:   The timeout in seconds that procrun waits for service to exit gracefully. Defaults to `0`.
-
-::::{note}
-At its core, `elasticsearch-service.bat` relies on [Apache Commons Daemon](https://commons.apache.org/proper/commons-daemon/) project to install the service. Environment variables set prior to the service installation are copied and will be used during the service lifecycle. This means any changes made to them after the installation will not be picked up unless the service is reinstalled.
-::::
-
-
-::::{note}
-By default, {{es}} automatically sizes JVM heap based on a node’s [roles](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/node-settings.md#node-roles) and total memory. We recommend this default sizing for most production environments. If needed, you can override default sizing by manually setting the heap size.
-
-When installing {{es}} on Windows as a service for the first time or running {{es}} from the command line, you can manually [Set the JVM heap size](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/jvm-settings.md#set-jvm-heap-size). To resize the heap for an already installed service, use the service manager: `bin\elasticsearch-service.bat manager`.
-
-::::
-
-
-::::{note}
-The service automatically configures a private temporary directory for use by {{es}} when it is running. This private temporary directory is configured as a sub-directory of the private temporary directory for the user running the installation. If the service will run under a different user, you can configure the location of the temporary directory that the service should use by setting the environment variable `ES_TMPDIR` to the preferred location before you execute the service installation.
-::::
-
-
-Using the Manager GUI
-:   It is also possible to configure the service after it’s been installed using the manager GUI (`elasticsearch-service-mgr.exe`), which offers insight into the installed service, including its status, startup type, JVM, start and stop settings amongst other things. Invoke `elasticsearch-service.bat manager` from the command-line to open the manager window.
+```sh
+elasticsearch-service.bat manager
+```
 
 Most changes (like JVM settings) made through the manager GUI will require a restart of the service to take affect.
+:::
+::::
+
+##### Considerations
+
+* By default, {{es}} automatically sizes JVM heap based on a node’s [roles](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/node-settings.md#node-roles) and total memory. We recommend this default sizing for most production environments. If needed, you can override default sizing by manually setting the heap size.
+  
+  When installing {{es}} on Windows as a service for the first time or running {{es}} from the command line, you can manually [Set the JVM heap size](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/jvm-settings.md#set-jvm-heap-size). To resize the heap for an already installed service, use the manager GUI.
+
+* The service automatically configures a private temporary directory for use by {{es}} when it is running. This private temporary directory is configured as a sub-directory of the private temporary directory for the user running the installation. If the service will run under a different user, you can configure the location of the temporary directory that the service should use by setting the environment variable `ES_TMPDIR` to the preferred location before you execute the service installation.
+
+* The system environment variable `ES_JAVA_HOME` should be set to the path of the JDK installation that you want the service to use. If you upgrade the JDK, you are not required to the reinstall the service, but you must set the value of the system environment variable `ES_JAVA_HOME` to the path to the new JDK installation. Upgrading across JVM types (e.g. JRE versus SE) is not supported, and requires the service to be reinstalled.
+
+## Step 4: Check that {{es}} is running [_check_that_elasticsearch_is_running_2]
+
+:::{include} _snippets/check-es-running.md
+:::
 
 ## Connect clients to {{es}} [_connect_clients_to_es_4]
 

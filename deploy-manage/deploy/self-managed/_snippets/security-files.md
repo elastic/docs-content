@@ -1,4 +1,4 @@
-When you install {{es}}, the following certificates and keys are generated in the {{es}} configuration directory, which are used to connect a {{kib}} instance to your secured {{es}} cluster and to encrypt internode communication. The files are listed here for reference.
+When you install {{es}}, the following certificates and keys are generated in the {{es}} configuration directory. These files are used to connect a {{kib}} instance to your secured {{es}} cluster and to encrypt internode communication. The files are listed here for reference.
 
 `http_ca.crt`
 :   The CA certificate that is used to sign the certificates for the HTTP layer of this {{es}} cluster.

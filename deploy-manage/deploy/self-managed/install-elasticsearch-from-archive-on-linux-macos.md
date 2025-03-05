@@ -8,6 +8,9 @@ sub:
   escape: "\\"
   stack-version: "9.0.0"
 navigation_title: "Linux or MacOS"
+applies_to:
+  deployment:
+    self:
 ---
 
 # Install {{es}} from archive on Linux or MacOS [targz]
@@ -20,10 +23,13 @@ navigation_title: "Linux or MacOS"
 :::{include} _snippets/es-releases.md
 :::
 
-::::{note}
-{{es}} includes a bundled version of [OpenJDK](https://openjdk.java.net) from the JDK maintainers (GPLv2+CE). To use your own version of Java, see the [JVM version requirements](installing-elasticsearch.md#jvm-version)
-::::
+:::{include} _snippets/java-version.md
+:::
 
+## Before you start
+
+:::{include} _snippets/prereqs.md
+:::
 
 ## Step 1: Download and install the archive
 
@@ -81,7 +87,7 @@ Alternatively, you can add a security override by following the instructions in 
 
 ## Step 3: Start {{es}} [targz-running]
 
-You have several options for starting {{es}}
+You have several options for starting {{es}}:
 
 * [Run from the command line](#command-line)
 * [Run the node to be enrolled in an existing cluster](#existing-cluster)
@@ -100,6 +106,11 @@ You have several options for starting {{es}}
 :::{include} _snippets/pw-env-var.md
 :::
 
+#### Configure {{es}} on the command line [targz-configuring]
+
+:::{include} _snippets/cmd-line-config.md
+:::
+
 ### Enroll the node in an existing cluster [existing-cluster]
 
 :::{include} _snippets/enroll-nodes.md
@@ -110,36 +121,22 @@ You have several options for starting {{es}}
 :::{include} _snippets/targz-daemon.md
 :::
 
-## Step 4: Check that {{es}} is running [_check_that_elasticsearch_is_running]
+## Step 4: Check that {{es}} is running [check_that_elasticsearch_is_running]
 
 :::{include} _snippets/check-es-running.md
 :::
 
-## Configure {{es}} on the command line [targz-configuring]
-
-{{es}} loads its configuration from the `$ES_HOME/config/elasticsearch.yml` file by default. The format of this config file is explained in [*Configuring {{es}}*](configure-elasticsearch.md).
-
-Any settings that can be specified in the config file can also be specified on the command line, using the `-E` syntax as follows:
-
-```sh
-./bin/elasticsearch -d -Ecluster.name=my_cluster -Enode.name=node_1
-```
-
-::::{tip}
-Typically, any cluster-wide settings (like `cluster.name`) should be added to the `elasticsearch.yml` config file, while any node-specific settings such as `node.name` could be specified on the command line.
-::::
-
-## Connect clients to {{es}} [_connect_clients_to_es]
+## Connect clients to {{es}} [connect_clients_to_es]
 
 :::{include} _snippets/connect-clients.md
 :::
 
-### Use the CA fingerprint [_use_the_ca_fingerprint_2]
+### Use the CA fingerprint [use_the_ca_fingerprint]
 
 :::{include} _snippets/ca-fingerprint.md
 :::
 
-### Use the CA certificate [_use_the_ca_certificate_2]
+### Use the CA certificate [use_the_ca_certificate]
 
 :::{include} _snippets/ca-cert.md
 :::
@@ -148,9 +145,9 @@ Typically, any cluster-wide settings (like `cluster.name`) should be added to th
 
 The archive distributions are entirely self-contained. All files and directories are, by default, contained within `$ES_HOME` — the directory created when unpacking the archive.
 
-This is very convenient because you don’t have to create any directories to start using {{es}}, and uninstalling {{es}} is as easy as removing the `$ES_HOME` directory. However, it is advisable to change the default locations of the config directory, the data directory, and the logs directory so that you do not delete important data later on.
+This is convenient because you don’t have to create any directories to start using {{es}}, and uninstalling {{es}} is as easy as removing the `$ES_HOME` directory. However, you should change the default locations of the config directory, the data directory, and the logs directory so that you do not delete important data later on.
 
-| Type | Description | Default Location | Setting |
+| Type | Description | Default location | Setting |
 | --- | --- | --- | --- |
 | home | {{es}} home directory or `$ES_HOME` | Directory created by unpacking the archive |  |
 | bin | Binary scripts including `elasticsearch` to start a node    and `elasticsearch-plugin` to install plugins | `$ES_HOME/bin` |  |
@@ -161,12 +158,12 @@ This is very convenient because you don’t have to create any directories to st
 | plugins | Plugin files location. Each plugin will be contained in a subdirectory. | `$ES_HOME/plugins` |  |
 | repo | Shared file system repository locations. Can hold multiple locations. A file system repository can be placed in to any subdirectory of any directory specified here. | Not configured | `path.repo` |
 
-### Security certificates and keys [_security_certificates_and_keys]
+### Security certificates and keys [security_certificates_and_keys]
 
 :::{include} _snippets/security-files.md
 :::
 
-## Next steps [_next_steps]
+## Next steps [next_steps]
 
 :::{include} _snippets/install-next-steps.md
 :::
