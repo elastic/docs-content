@@ -143,7 +143,7 @@ appender.rolling.strategy.action.condition.nested_condition.age = 7D <7>
 7. Retain logs for seven days
 
 
-Multiple configuration files can be loaded (in which case they will get merged) as long as they are named `log4j2.properties` and have the Elasticsearch config directory as an ancestor; this is useful for plugins that expose additional loggers. The logger section contains the java packages and their corresponding log level. The appender section contains the destinations for the logs. Extensive information on how to customize logging and all the supported appenders can be found on the [Log4j documentation](https://logging.apache.org/log4j/2.x/manual/configuration.md).
+Multiple configuration files can be loaded (in which case they will get merged) as long as they are named `log4j2.properties` and have the Elasticsearch config directory as an ancestor; this is useful for plugins that expose additional loggers. The logger section contains the java packages and their corresponding log level. The appender section contains the destinations for the logs. Extensive information on how to customize logging and all the supported appenders can be found on the [Log4j documentation](https://logging.apache.org/log4j/2.x/manual/configuration.html).
 
 
 ## Configuring logging levels [configuring-logging-levels] 
@@ -265,7 +265,7 @@ Deprecation logs can be indexed into `.logs-deprecation.elasticsearch-default` d
 
 ### Deprecation logs throttling [_deprecation_logs_throttling] 
 
-Deprecation logs are deduplicated based on a deprecated feature key and x-opaque-id so that if a feature is repeatedly used, it will not overload the deprecation logs. This applies to both indexed deprecation logs and logs emitted to log files. You can disable the use of `x-opaque-id` in throttling by changing `cluster.deprecation_indexing.x_opaque_id_used.enabled` to false, refer to this class [javadoc](https://snapshots.elastic.co/javadoc/org/elasticsearch/elasticsearch/9.0.0-beta1-SNAPSHOT/org.elasticsearch.server/org/elasticsearch/common/logging/RateLimitingFilter.md) for more details.
+Deprecation logs are deduplicated based on a deprecated feature key and x-opaque-id so that if a feature is repeatedly used, it will not overload the deprecation logs. This applies to both indexed deprecation logs and logs emitted to log files. You can disable the use of `x-opaque-id` in throttling by changing `cluster.deprecation_indexing.x_opaque_id_used.enabled` to false, refer to this class [javadoc](https://snapshots.elastic.co/javadoc/org/elasticsearch/elasticsearch/9.0.0-beta1-SNAPSHOT/org.elasticsearch.server/org/elasticsearch/common/logging/RateLimitingFilter.html) for more details.
 
 
 ## JSON log format [json-logging] 
@@ -277,7 +277,7 @@ appender.rolling.layout.type = ECSJsonLayout
 appender.rolling.layout.dataset = elasticsearch.server
 ```
 
-Each line contains a single JSON document with the properties configured in `ECSJsonLayout`. See this class [javadoc](https://snapshots.elastic.co/javadoc/org/elasticsearch/elasticsearch/9.0.0-beta1-SNAPSHOT/org.elasticsearch.server/org/elasticsearch/common/logging/ESJsonLayout.md) for more details. However if a JSON document contains an exception, it will be printed over multiple lines. The first line will contain regular properties and subsequent lines will contain the stacktrace formatted as a JSON array.
+Each line contains a single JSON document with the properties configured in `ECSJsonLayout`. See this class [javadoc](https://snapshots.elastic.co/javadoc/org/elasticsearch/elasticsearch/9.0.0-beta1-SNAPSHOT/org.elasticsearch.server/org/elasticsearch/common/logging/ESJsonLayout.html) for more details. However if a JSON document contains an exception, it will be printed over multiple lines. The first line will contain regular properties and subsequent lines will contain the stacktrace formatted as a JSON array.
 
 ::::{note} 
 You can still use your own custom layout. To do that replace the line `appender.rolling.layout.type` with a different layout. See sample below:

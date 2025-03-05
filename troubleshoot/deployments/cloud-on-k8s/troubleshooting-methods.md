@@ -156,7 +156,7 @@ kubectl -n elastic-system logs -f statefulset.apps/elastic-operator
 
 The operator constantly attempts to reconcile Kubernetes resources to match the desired state. Logs with `INFO` level provide some insights about what is going on. Logs with `ERROR` level indicate something is not going as expected.
 
-Due to [optimistic locking](https://github.com/eBay/Kubernetes/blob/master/docs/devel/api-conventions.md#concurrency-control-and-consistency), you can get errors reporting a conflict while updating a resource. You can ignore them, as the update goes through at the next reconciliation attempt, which will happen almost immediately.
+Due to [optimistic locking](https://github.com/eBay/Kubernetes/blob/master/docs/devel/api-conventions.html#concurrency-control-and-consistency), you can get errors reporting a conflict while updating a resource. You can ignore them, as the update goes through at the next reconciliation attempt, which will happen almost immediately.
 
 
 ## Configure Elasticsearch timeouts [k8s-resource-level-config]

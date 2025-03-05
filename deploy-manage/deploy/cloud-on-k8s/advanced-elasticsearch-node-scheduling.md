@@ -22,7 +22,7 @@ You can combine these features to deploy a production-grade Elasticsearch cluste
 You can configure Elasticsearch nodes with [one or multiple roles](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/node-settings.md).
 
 ::::{tip}
-You can use [YAML anchors](https://yaml.org/spec/1.2/spec.md#id2765878) to declare the configuration change once and reuse it across all the node sets.
+You can use [YAML anchors](https://yaml.org/spec/1.2/spec.html#id2765878) to declare the configuration change once and reuse it across all the node sets.
 ::::
 
 

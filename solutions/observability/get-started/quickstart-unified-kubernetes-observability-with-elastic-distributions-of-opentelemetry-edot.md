@@ -20,7 +20,7 @@ All the components will be deployed through the [opentelemetry-kube-stack](https
 * `Deployment` EDOT Collector configured for cluster level metrics.
 * `Instrumentation` object for applications [auto-instrumentation](https://opentelemetry.io/docs/kubernetes/operator/automatic/).
 
-For a more detailed description of the components and advanced configuration, refer to the [elastic/opentelemetry](https://github.com/elastic/opentelemetry/blob/main/docs/kubernetes/operator/README.md) GitHub repository.
+For a more detailed description of the components and advanced configuration, refer to the [elastic/opentelemetry](https://github.com/elastic/opentelemetry/blob/main/docs/kubernetes/operator/README.html) GitHub repository.
 
 
 ## Prerequisites [_prerequisites_2]
@@ -71,7 +71,7 @@ For a more detailed description of the components and advanced configuration, re
 3. Follow the on-screen instructions to install all needed components.
 
     ::::{note}
-    The default installation deploys the OpenTelemetry Operator with a self-signed TLS certificate valid for 365 days. This certificate **won’t be renewed** unless the Helm Chart release is manually updated. Refer to the [cert-manager integrated installation](https://github.com/elastic/opentelemetry/blob/main/docs/kubernetes/operator/README.md#cert-manager) guide to enable automatic certificate generation and renewal using [cert-manager](https://cert-manager.io/docs/installation/).
+    The default installation deploys the OpenTelemetry Operator with a self-signed TLS certificate valid for 365 days. This certificate **won’t be renewed** unless the Helm Chart release is manually updated. Refer to the [cert-manager integrated installation](https://github.com/elastic/opentelemetry/blob/main/docs/kubernetes/operator/README.html#cert-manager) guide to enable automatic certificate generation and renewal using [cert-manager](https://cert-manager.io/docs/installation/).
 
     ::::
 
@@ -101,7 +101,7 @@ For a more detailed description of the components and advanced configuration, re
 4. Follow the on-screen instructions to install all needed components.
 
     ::::{note}
-    The default installation deploys the OpenTelemetry Operator with a self-signed TLS certificate valid for 365 days. This certificate **won’t be renewed** unless the Helm Chart release is manually updated. Refer to the [cert-manager integrated installation](https://github.com/elastic/opentelemetry/blob/main/docs/kubernetes/operator/README.md#cert-manager) guide to enable automatic certificate generation and renewal using [cert-manager](https://cert-manager.io/docs/installation/).
+    The default installation deploys the OpenTelemetry Operator with a self-signed TLS certificate valid for 365 days. This certificate **won’t be renewed** unless the Helm Chart release is manually updated. Refer to the [cert-manager integrated installation](https://github.com/elastic/opentelemetry/blob/main/docs/kubernetes/operator/README.html#cert-manager) guide to enable automatic certificate generation and renewal using [cert-manager](https://cert-manager.io/docs/installation/).
 
     ::::
 

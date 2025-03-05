@@ -36,7 +36,7 @@ Make sure that:
 * You have installed curl version 7.49 or above as older versions of curl have known Kerberos bugs.
 * The curl installed on your machine has `GSS-API`, `Kerberos` and `SPNEGO` features listed when you invoke command `curl -V`. If not, you will need to compile `curl` version with this support.
 
-To download latest curl version visit [https://curl.haxx.se/download.html](https://curl.haxx.se/download.md)
+To download latest curl version visit [https://curl.haxx.se/download.html](https://curl.haxx.se/download.html)
 
 
 As Kerberos logs are often cryptic in nature and many things can go wrong as it depends on external services like DNS and NTP. You might have to enable additional debug logs to determine the root cause of the issue.

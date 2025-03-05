@@ -190,13 +190,13 @@ An **OpenID Connect Claim** is a piece of information asserted by the OP for the
 
 The RP requests specific scopes during the authentication request. If the OP Privacy Policy allows it and the authenticating user consents to it, the related claims are returned to the RP (either in the ID Token or as a UserInfo response).
 
-The list of the supported claims will vary depending on the OP you are using, but [standard claims](https://openid.net/specs/openid-connect-core-1_0.md#StandardClaims) are usually supported.
+The list of the supported claims will vary depending on the OP you are using, but [standard claims](https://openid.net/specs/openid-connect-core-1_0.html#StandardClaims) are usually supported.
 
 ### How claims appear in user metadata [oidc-user-metadata]
 
 By default, users who authenticate through OpenID Connect have additional metadata fields. These fields include every OpenID claim that is provided in the authentication response, regardless of whether it is mapped to an {{es}} user property. 
 
-For example, in the metadata field `oidc(claim_name)`, "claim_name" is the name of the claim as it was contained in the ID Token or in the User Info response. Note that these will include all the [ID Token claims](https://openid.net/specs/openid-connect-core-1_0.md#IDToken) that pertain to the authentication event, rather than the user themselves.
+For example, in the metadata field `oidc(claim_name)`, "claim_name" is the name of the claim as it was contained in the ID Token or in the User Info response. Note that these will include all the [ID Token claims](https://openid.net/specs/openid-connect-core-1_0.html#IDToken) that pertain to the authentication event, rather than the user themselves.
 
 This behavior can be disabled by adding `populate_user_metadata: false` as a setting in the OIDC realm.
 

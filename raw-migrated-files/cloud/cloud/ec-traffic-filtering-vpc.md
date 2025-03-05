@@ -5,7 +5,7 @@ Traffic filtering, to only AWS PrivateLink connections, is one of the security l
 Read more about [Traffic Filtering](../../../deploy-manage/security/traffic-filtering.md) for the general concepts behind traffic filtering in {{ecloud}}.
 
 ::::{note}
-PrivateLink filtering is supported only for AWS regions. AWS does not support cross-region PrivateLink connections. Your PrivateLink endpoint needs to be in the same region as your target deployments. Additional details can be found in the [AWS VPCE Documentation](https://docs.aws.amazon.com/vpc/latest/userguide/vpce-interface.md#vpce-interface-limitations). AWS interface VPC endpoints get created in availability zones (AZ). In some regions, our VPC endpoint *service* is not present in all the possible AZs that a region offers. You can only choose AZs that are common on both sides. As the *names* of AZs (for example `us-east-1a`) differ between AWS accounts, the following list of AWS regions shows the *ID* (e.g. `use1-az4`) of each available AZ for the service. Check [interface endpoint availability zone considerations](https://docs.aws.amazon.com/vpc/latest/userguide/vpce-interface.md#vpce-interface-availability-zones) for more details.
+PrivateLink filtering is supported only for AWS regions. AWS does not support cross-region PrivateLink connections. Your PrivateLink endpoint needs to be in the same region as your target deployments. Additional details can be found in the [AWS VPCE Documentation](https://docs.aws.amazon.com/vpc/latest/userguide/vpce-interface.html#vpce-interface-limitations). AWS interface VPC endpoints get created in availability zones (AZ). In some regions, our VPC endpoint *service* is not present in all the possible AZs that a region offers. You can only choose AZs that are common on both sides. As the *names* of AZs (for example `us-east-1a`) differ between AWS accounts, the following list of AWS regions shows the *ID* (e.g. `use1-az4`) of each available AZ for the service. Check [interface endpoint availability zone considerations](https://docs.aws.amazon.com/vpc/latest/userguide/vpce-interface.html#vpce-interface-availability-zones) for more details.
 ::::
 
 
@@ -96,7 +96,7 @@ The mapping will be different for your region. Our production VPC Service for `u
 
 1. Create a VPC endpoint in your VPC using the service name for your region.
 
-    Follow the [AWS instructions](https://docs.aws.amazon.com/vpc/latest/userguide/vpce-interface.md#create-interface-endpoint) for details on creating a VPC interface endpoint to an endpoint service.
+    Follow the [AWS instructions](https://docs.aws.amazon.com/vpc/latest/userguide/vpce-interface.html#create-interface-endpoint) for details on creating a VPC interface endpoint to an endpoint service.
 
     Use [the service name for your region](../../../deploy-manage/security/aws-privatelink-traffic-filters.md#ec-private-link-service-names-aliases).
 
@@ -118,7 +118,7 @@ The mapping will be different for your region. Our production VPC Service for `u
 
     2. Then create a DNS CNAME alias pointing to the PrivateLink Endpoint. Add the record to a private DNS zone in your VPC. Use `*` as the record name, and the VPC endpoint DNS name as a value.
 
-        Follow the [AWS instructions](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resource-record-sets-creating.md) for details on creating a CNAME record which points to your VPC endpoint DNS name.
+        Follow the [AWS instructions](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resource-record-sets-creating.html) for details on creating a CNAME record which points to your VPC endpoint DNS name.
 
         :::{image} ../../../images/cloud-ec-private-link-cname.png
         :alt: PrivateLink CNAME
