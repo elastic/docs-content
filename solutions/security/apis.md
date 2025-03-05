@@ -3,7 +3,7 @@
 You can use these APIs to interface with {{elastic-sec}} features:
 
 
-* [AI Assistant API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-security-ai-assistant-api): Interact with and manage Elastic AI Assistant
+* [AI Assistant API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-security-ai-assistant-api): Interact with and manage Elastic AI Assistant.
 * [Cases API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-cases): Open and manage cases.
 * [Detections API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-security-detections-api): Manage detection rules, rule exceptions for individual rules, and alerts.
 * [Endpoint exceptions API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-security-endpoint-exceptions-api): Manage detection rule endpoint exceptions.

@@ -57,10 +57,10 @@ Refer to [Elastic OpenTelemetry Collector limitations](https://github.com/elasti
 
 Follow these steps to collect logs and metrics using the EDOT Collector:
 
-::::{tab-set}
+:::::{tab-set}
 :group: stack-serverless
 
-:::{tab-item} Elastic Stack
+::::{tab-item} Elastic Stack
 :sync: stack
 
 1. In {{kib}}, go to the **Observability** UI and click **Add Data**.
@@ -86,9 +86,9 @@ Follow these steps to collect logs and metrics using the EDOT Collector:
 Logs are collected from setup onward, so you won’t see logs that occurred before starting the EDOT Collector.
 ::::
 
-:::
+::::
 
-:::{tab-item} Serverless
+::::{tab-item} Serverless
 :sync: serverless
 
 1. [Create a new {{obs-serverless}} project](../../../solutions/observability/get-started/create-an-observability-project.md), or open an existing one.
@@ -110,9 +110,9 @@ Logs are collected from setup onward, so you won’t see logs that occurred befo
 
 Logs are collected from setup onward, so you won’t see logs that occurred before starting the EDOT Collector. The default log path is `/var/log/*`. To update the path, modify `otel.yml`.
 
-:::
-
 ::::
+
+:::::
 
 
 Under **Visualize your data**, you’ll see links to **Logs Explorer** to view your logs and **Hosts** to view your host metrics.

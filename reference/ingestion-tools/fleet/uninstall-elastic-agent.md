@@ -64,7 +64,7 @@ If you run into problems, refer to [Troubleshoot common problems](/troubleshoot/
 If you are using DEB or RPM, you can use the package manager to remove the installed package.
 
 ::::{note}
-For hosts enrolled in the {{elastic-defend}} integration with Agent tamper protection enabled, you’ll need to include the uninstall token in the command, using the `--uninstall-token` flag. Refer to the [Agent tamper protection docs](/reference/security/elastic-defend/agent-tamper-protection.md) for more information.
+For hosts enrolled in the {{elastic-defend}} integration with Agent tamper protection enabled, you’ll need to include the uninstall token in the command, using the `--uninstall-token` flag. For more information, refer to [](/solutions/security/configure-elastic-defend/prevent-elastic-agent-uninstallation.md).
 ::::
 
 
