@@ -214,7 +214,7 @@ To export and import detection rules:
 3. To import rules:
 
     ::::{note}
-   To import rules with and without actions, and to manage rule connectors, you must have the appropriate user role. Refer to [Enable and access detections](detections-requirements.md#enable-detections-ui) for more information.
+   To import rules with or without actions, and to manage rule connectors, you must have the appropriate user role. Refer to [Enable and access detections](detections-requirements.md#enable-detections-ui) for more information.
     ::::
 
 
