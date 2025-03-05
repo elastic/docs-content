@@ -5,6 +5,7 @@ mapped_pages:
 applies_to:
   deployment:
     eck: ga
+navigation_title: "In ECK"
 ---
 # Autoscaling in {{eck}}
 
