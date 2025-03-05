@@ -5,6 +5,8 @@ applies_to:
   stack:
 ---
 
+% Discovery and cluster formation content (7 pages): add introductory note to specify that the endpoints/settings are possibly for self-managed only, and review the content.
+
 # Discovery and cluster formation [modules-discovery]
 
 The discovery and cluster formation processes are responsible for discovering nodes, electing a master, forming a cluster, and publishing the cluster state each time it changes.
