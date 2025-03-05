@@ -16,7 +16,7 @@ The Detection & Response dashboard provides focused visibility into the day-to-d
 Interact with various dashboard elements:
 
 * Use the date and time picker in the upper-right to specify a time range for displaying information on the dashboard.
-* In sections that list alert counts, click a number to view the alerts on the Alerts page. Hover over the number and select **Investigate in timeline** (![Investigate in timeline icon](../../../images/security-timeline-button-osquery.png "title =50%")) to open the alerts in Timeline.
+* In sections that list alert counts, click a number to view the alerts on the Alerts page. Hover over the number and select **Investigate in timeline** (![Investigate in timeline icon](../../../images/security-timeline-button-osquery.png "title =20x20")) to open the alerts in Timeline.
 * Click the name of a detection rule, case, host, or user to open its details page.
 
 The following sections are included:
