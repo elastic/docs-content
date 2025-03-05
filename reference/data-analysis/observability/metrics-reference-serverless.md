@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/observability-metrics-reference.html
+applies:
+  serverless: all
 ---
 
 # Metrics reference [observability-metrics-reference]
