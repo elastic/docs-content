@@ -190,7 +190,6 @@ toc:
       - file: docs-content/serverless/security-ai-usecase-incident-reporting.md
       - file: docs-content/serverless/security-alert-suppression.md
       - file: docs-content/serverless/security-alerts-manage.md
-      - file: docs-content/serverless/security-automated-response-actions.md
       - file: docs-content/serverless/security-automatic-import.md
       - file: docs-content/serverless/security-benchmark-rules-kspm.md
       - file: docs-content/serverless/security-benchmark-rules.md
