@@ -6,8 +6,7 @@ mapped_urls:
 
 # View alerts [observability-view-alerts]
 
-::::{admonition} Required role
-:class: note
+::::{note}
 
 **For Observability serverless projects**, the **Editor** role or higher is required to perform this task. To learn more, refer to [Assign user roles and privileges](../../../deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
 
@@ -62,8 +61,8 @@ There are three common alert statuses:
 `untracked`
 :   The corresponding rule is disabled or you’ve marked the alert as untracked. To mark the alert as untracked, go to the **Alerts** table, click the ![More actions](../../../images/serverless-boxesHorizontal.svg "") icon to expand the *More actions* menu, and click **Mark as untracked**. When an alert is marked as untracked, actions are no longer generated. You can choose to move active alerts to this state when you disable or delete rules.
 
-::::{admonition} Flapping alerts
-:class: note
+::::{note}
+**Flapping alerts**
 
 The flapping state is possible only if you have enabled alert flapping detection. Go to the **Alerts** page and click **Manage Rules** to navigate to the {{obs-serverless}} **{{rules-app}}** page. Click **Settings** then set the look back window and threshold that are used to determine whether alerts are flapping. For example, you can specify that the alert must change status at least 6 times in the last 10 runs. If the rule has actions that run when the alert status changes, those actions are suppressed while the alert is flapping.
 

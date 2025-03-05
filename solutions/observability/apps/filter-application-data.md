@@ -36,10 +36,10 @@ Service environments are defined when configuring your APM agents. It’s vital 
 
 * **Go:** [`ELASTIC_APM_ENVIRONMENT`](asciidocalypse://docs/apm-agent-go/docs/reference/configuration.md#config-environment)
 * **iOS agent:** *Not yet supported*
-* **Java:** [`environment`](asciidocalypse://docs/apm-agent-java/docs/reference/config-core.md#config-environment)
-* **.NET:** [`Environment`](asciidocalypse://docs/apm-agent-dotnet/docs/reference/config-core.md#config-environment)
-* **Node.js:** [`environment`](asciidocalypse://docs/apm-agent-nodejs/docs/reference/configuration.md#environment)
-* **PHP:** [`environment`](asciidocalypse://docs/apm-agent-php/docs/reference/configuration-reference.md#config-environment)
-* **Python:** [`environment`](asciidocalypse://docs/apm-agent-python/docs/reference/configuration.md#config-environment)
-* **Ruby:** [`environment`](asciidocalypse://docs/apm-agent-ruby/docs/reference/configuration.md#config-environment)
-* **Real User Monitoring:** [`environment`](asciidocalypse://docs/apm-agent-rum-js/docs/reference/configuration.md#environment)
+* **Java:** [`environment`](asciidocalypse://docs/apm-agent-java/docs/reference/ingestion-tools/apm-agent-java/config-core.md#config-environment)
+* **.NET:** [`Environment`](asciidocalypse://docs/apm-agent-dotnet/docs/reference/ingestion-tools/apm-agent-dotnet/config-core.md#config-environment)
+* **Node.js:** [`environment`](asciidocalypse://docs/apm-agent-nodejs/docs/reference/ingestion-tools/apm-agent-nodejs/configuration.md#environment)
+* **PHP:** [`environment`](asciidocalypse://docs/apm-agent-php/docs/reference/ingestion-tools/apm-agent-php/configuration-reference.md#config-environment)
+* **Python:** [`environment`](asciidocalypse://docs/apm-agent-python/docs/reference/ingestion-tools/apm-agent-python/configuration.md#config-environment)
+* **Ruby:** [`environment`](asciidocalypse://docs/apm-agent-ruby/docs/reference/ingestion-tools/apm-agent-ruby/configuration.md#config-environment)
+* **Real User Monitoring (Elastic Stack only):** [`environment`](asciidocalypse://docs/apm-agent-rum-js/docs/reference/ingestion-tools/apm-agent-rum-js/configuration.md#environment)

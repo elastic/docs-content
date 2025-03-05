@@ -2,9 +2,9 @@
 navigation_title: "Use {{metricbeat}} collection"
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-monitoring-metricbeat-collection.html
+applies_to:
+  stack: all
 ---
-
-
 
 # Use Metricbeat to send monitoring data [apm-monitoring-metricbeat-collection]
 
@@ -17,7 +17,7 @@ To collect and ship monitoring data:
 2. [Install and configure {{metricbeat}} to collect monitoring data](#apm-configure-metricbeat)
 
 
-## Configure the shipper you want to monitor [apm-configure-shipper] 
+## Configure the shipper you want to monitor [apm-configure-shipper]
 
 1. Enable the HTTP endpoint to allow external collection of monitoring data:
 
@@ -62,7 +62,7 @@ To collect and ship monitoring data:
 5. Start APM Server.
 
 
-## Install and configure {{metricbeat}} to collect monitoring data [apm-configure-metricbeat] 
+## Install and configure {{metricbeat}} to collect monitoring data [apm-configure-metricbeat]
 
 1. Install {{metricbeat}} on the same server as APM Server. To learn how, see [Get started with {{metricbeat}}](asciidocalypse://docs/beats/docs/reference/metricbeat/metricbeat-installation-configuration.md). If you already have {{metricbeat}} installed on the server, skip this step.
 2. Enable the `beat-xpack` module in {{metricbeat}}.<br>
@@ -118,7 +118,7 @@ To collect and ship monitoring data:
 
 5. Identify where to send the monitoring data.<br>
 
-    ::::{tip} 
+    ::::{tip}
     In production environments, we strongly recommend using a separate cluster (referred to as the *monitoring cluster*) to store the data. Using a separate monitoring cluster prevents production cluster outages from impacting your ability to access your monitoring data. It also prevents monitoring activities from impacting the performance of your production cluster.
     ::::
 
@@ -143,7 +143,7 @@ To collect and ship monitoring data:
 
     If you configured the monitoring cluster to use encrypted communications, you must access it via HTTPS. For example, use a `hosts` setting like `https://es-mon-1:9200`.
 
-    ::::{important} 
+    ::::{important}
     The {{es}} {{monitor-features}} use ingest pipelines, therefore the cluster that stores the monitoring data must have at least one ingest node.
     ::::
 
@@ -152,7 +152,7 @@ To collect and ship monitoring data:
 
     1. Create a user on the monitoring cluster that has the `remote_monitoring_agent` [built-in role](../../../deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md). Alternatively, if it’s available in your environment, use the `remote_monitoring_user` [built-in user](../../../deploy-manage/users-roles/cluster-or-deployment-auth/built-in-users.md).
 
-        ::::{tip} 
+        ::::{tip}
         If you’re using {{ilm}}, the remote monitoring user requires additional privileges to create and read indices. For more information, see [Use feature roles](create-assign-feature-roles-to-apm-server-users.md).
         ::::
 

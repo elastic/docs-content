@@ -30,13 +30,13 @@ For example, it might make sense to create a policy per operating system type: W
 
 ## Policy types [agent-policy-types]
 
-In most use cases, {{fleet}} provides complete central management of {{agent}}s. However some use cases, like running in Kubernetes or using our hosted {{ess}} on {{ecloud}}, require {{agent}} infrastructure management outside of {{fleet}}. With this in mind, there are two types of {{agent}} policies:
+In most use cases, {{fleet}} provides complete central management of {{agent}}s. However some use cases, like running in Kubernetes or using {{ecloud}}, require {{agent}} infrastructure management outside of {{fleet}}. With this in mind, there are two types of {{agent}} policies:
 
 * **regular policy**: The default use case, where {{fleet}} provides full central management for {{agent}}s. Users can manage {{agent}} infrastructure by adding, removing, or upgrading {{agent}}s. Users can also manage {{agent}} configuration by updating the {{agent}} policy.
 * **hosted policy**: A policy where *something else* provides central management for {{agent}}s. For example, in Kubernetes, adding, removing, and upgrading {{agent}}s should be configured directly in Kubernetes. Allowing {{fleet}} users to manage {{agent}}s would conflict with any Kubernetes configuration.
 
     ::::{tip}
-    Hosted policies also apply when using our hosted {{ess}} on {{ecloud}}. {{ecloud}} is responsible for hosting {{agent}}s and assigning them to a policy. Platform operators, who create and manage Elastic deployments can add, upgrade, and remove {{agent}}s through the {{ecloud}} console.
+    Hosted policies also apply when using {{ech}}. {{ecloud}} is responsible for hosting {{agent}}s and assigning them to a policy. Platform operators, who create and manage Elastic deployments can add, upgrade, and remove {{agent}}s through the {{ecloud}} console.
     ::::
 
 
@@ -322,7 +322,7 @@ You can limit the amount of CPU consumed by {{agent}}. This parameter limits the
 
 This limit applies independently to the agent and each underlying Go process that it supervises. For example, if {{agent}} is configured to supervise two {{beats}} with a CPU usage limit of `2` set in the policy, then the total CPU limit is six, where each of the three processes (one {{agent}} and two {{beats}}) may execute independently on two CPUs.
 
-This setting is similar to the {{beats}} [`max_procs`](beats://docs/reference/filebeat/configuration-general-options.md#_max_procs) setting. For more detail, refer to the [GOMAXPROCS](https://pkg.go.dev/runtime#GOMAXPROCS) function in the Go runtime documentation.
+This setting is similar to the {{beats}} [`max_procs`](asciidocalypse://docs/reference/filebeat/configuration-general-options.md#_max_procs) setting. For more detail, refer to the [GOMAXPROCS](https://pkg.go.dev/runtime#GOMAXPROCS) function in the Go runtime documentation.
 
 1. In {{fleet}}, click **Agent policies**. Select the name of the policy you want to edit.
 2. Click the **Settings** tab and scroll to **Advanced settings**.

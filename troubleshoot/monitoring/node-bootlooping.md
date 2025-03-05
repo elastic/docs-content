@@ -38,6 +38,9 @@ Following are some frequent causes of a failed configuration change:
 
 If you’re unable to remediate the failing plan’s root cause, you can attempt to reset the deployment to the latest successful {{es}} configuration by performing a [no-op plan](/troubleshoot/monitoring/deployment-health-warnings.md). For an example, see this [video walkthrough](https://www.youtube.com/watch?v=8MnXZ9egBbQ).
 
+:::{important}
+ If you’re using Elastic Cloud Hosted, then you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, real-time issue detection and resolution paths. For more information, refer to [Monitor with AutoOps](/deploy-manage/monitor/autoops.md).
+:::
 
 ## Secure settings [ec-config-change-errors-secure-settings]
 
@@ -89,7 +92,7 @@ In some cases, settings may accidentally be added to the keystore that should ha
 
 ## Expired custom plugins or bundles [ec-config-change-errors-expired-bundle-extension]
 
-During the process of applying a configuration change, Elasticsearch Service checks to determine if any [uploaded custom plugins or bundles](/deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md) are expired.
+During the process of applying a configuration change, {{ecloud}} checks to determine if any [uploaded custom plugins or bundles](/deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md) are expired.
 
 Problematic plugins produce oscillating {{es}} start-up logs like the following:
 

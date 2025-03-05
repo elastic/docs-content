@@ -32,7 +32,7 @@ Changes in your synonyms sets will automatically reload the associated analyzers
 
 You can store your synonyms set in a file.
 
-A synonyms set file needs to be uploaded to all your cluster nodes, and be located in the configuration directory for your {{es}} distribution. If you’re using {{ess}}, you can upload synonyms files using [custom bundles](../../../deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md).
+A synonyms set file needs to be uploaded to all your cluster nodes, and be located in the configuration directory for your {{es}} distribution. If you’re using {{ecloud}}, you can upload synonyms files using [custom bundles](../../../deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md).
 
 An example synonyms file:
 

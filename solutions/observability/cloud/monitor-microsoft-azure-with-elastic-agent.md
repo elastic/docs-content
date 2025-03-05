@@ -5,7 +5,7 @@ mapped_pages:
 
 # Monitor Microsoft Azure with Elastic Agent [monitor-azure-elastic-agent]
 
-::::{admonition}
+::::{note}
 **New to Elastic?** Follow the steps in our [getting started guide](https://www.elastic.co/guide/en/starting-with-the-elasticsearch-platform-and-its-solutions/current/getting-started-observability.html) instead of the steps described here. Return to this tutorial after you’ve learned the basics.
 
 **Using the native Azure integration from the marketplace?** Refer to [Monitor Microsoft Azure with the Azure Native ISV Service](monitor-microsoft-azure-with-azure-native-isv-service.md).
@@ -113,10 +113,10 @@ To add the integration:
     **Subscription ID**
     :   The subscription ID listed on the main Subscriptions page.
 
-    :::{image} ../../../images/observability-agent-tut-azure-integration-settings.png
-    :alt: Screenshot of integration settings for Azure
-    :class: screenshot
-    :::
+        :::{image} ../../../images/observability-agent-tut-azure-integration-settings.png
+        :alt: Screenshot of integration settings for Azure
+        :class: screenshot
+        :::
 
 6. Make sure the **Collect Azure Billing metrics** selector is turned on.
 7. Accept the defaults to create a new agent policy.
@@ -195,7 +195,7 @@ To create an Azure event hub:
 7. Click **Review + create**, and then click **Create** to deploy the resource.
 8. Make a note of the namespace and event hub name because you will need them later.
 
-:::::{admonition}
+:::::{note}
 **When do I need more than one event hub?**
 
 Typically you create an event hub for each service you want to monitor. For example, imagine that you want to collect activity logs from the Azure Monitor service plus signin and audit logs from the Active Directory service. Rather than sending all logs to a single event hub, you create an event hub for each service:
@@ -266,10 +266,10 @@ To add the integration:
     **Storage account key**
     :   A valid access key defined for the storage account.
 
-    :::{image} ../../../images/observability-agent-tut-azure-activity-log-settings.png
-    :alt: Screenshot of integration settings for Azure activity logs
-    :class: screenshot
-    :::
+        :::{image} ../../../images/observability-agent-tut-azure-activity-log-settings.png
+        :alt: Screenshot of integration settings for Azure activity logs
+        :class: screenshot
+        :::
 
 6. Make sure the **Collect Azure activity logs from Event Hub** selector is turned on.
 7. Under **Existing hosts**, select the agent policy that created earlier.

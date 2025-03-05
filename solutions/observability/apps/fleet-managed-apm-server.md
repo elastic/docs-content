@@ -144,10 +144,10 @@ If you don’t have a {{fleet}} setup already in place, the easiest way to get s
     Any {{agent}}s assigned to this policy will collect APM data from your instrumented services.
 
 
-::::{admonition}
+::::{tip}
 An internet connection is required to install the APM integration via the Fleet UI in Kibana.
 
-::::{dropdown} **If you don’t have an internet connection**
+::::{dropdown} If you don’t have an internet connection
 If your environment has network traffic restrictions, there are other ways to install the APM integration. See [Air-gapped environments](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/air-gapped.md) for more information.
 
 Option 1: Update `kibana.yml`

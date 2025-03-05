@@ -16,13 +16,13 @@ In order to fix this follow the next steps:
 
 :::::::{tab-set}
 
-::::::{tab-item} Elasticsearch Service
+::::::{tab-item} {{ech}}
 In order to get the shards assigned we need to call the [migrate to data tiers routing](../../manage-data/lifecycle/data-tiers.md) API which will resolve the conflicting routing configurations towards using the standardized [data tiers](../../manage-data/lifecycle/data-tiers.md). This will also future-proof the system by migrating the index templates and ILM policies if needed.
 
 **Use {{kib}}**
 
 1. Log in to the [{{ecloud}} console](https://cloud.elastic.co?page=docs&placement=docs-body).
-2. On the **Elasticsearch Service** panel, click the name of your deployment.
+2. On the **Hosted deployments** panel, click the name of your deployment.
 
     ::::{note}
     If the name of your deployment is disabled your {{kib}} instances might be unhealthy, in which case please contact [Elastic Support](https://support.elastic.co). If your deployment doesn’t include {{kib}}, all you need to do is [enable it first](../../deploy-manage/deploy/elastic-cloud/access-kibana.md).

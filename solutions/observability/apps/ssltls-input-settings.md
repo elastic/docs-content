@@ -1,11 +1,13 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-agent-server-ssl.html
+applies_to:
+  stack: all
 ---
 
 # SSL/TLS input settings [apm-agent-server-ssl]
 
-::::{admonition}
+::::{note}
 ![supported deployment methods](../../../images/observability-binary-yes-fm-yes.svg "")
 
 Most options on this page are supported by all APM Server deployment methods.

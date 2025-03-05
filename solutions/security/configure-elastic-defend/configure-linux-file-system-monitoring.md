@@ -6,16 +6,6 @@ mapped_urls:
 
 # Configure Linux file system monitoring
 
-% What needs to be done: Align serverless/stateful
-
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/security-docs/security/linux-file-monitoring.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/security-linux-file-monitoring.md
-
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
-
-$$$find-file-system-names$$$
 
 By default, {{elastic-defend}} monitors specific Linux file system types that Elastic has tested for compatibility. If your network includes nonstandard, proprietary, or otherwise unrecognized Linux file systems, you can configure the integration policy to extend monitoring and protections to those additional file systems. You can also have {{elastic-defend}} ignore unrecognized file system types if they don’t require monitoring or cause unexpected problems.
 
@@ -40,7 +30,7 @@ $$$ignore-unknown-filesystems$$$
     * `false`: Monitor all file systems. You can still ignore specific file systems with `ignored_filesystems`.
 
     ::::{note}
-    If you’ve upgraded from 8.3 or earlier, this value will be `false` for backwards compatibility. If you don’t need to monitor additional file systems, it’s recommended to change `ignore_unknown_filesystems` to `true` after upgrading.
+    In {{stack}}, if you’ve upgraded from 8.3 or earlier, this value will be `false` for backwards compatibility. If you don’t need to monitor additional file systems, it’s recommended to change `ignore_unknown_filesystems` to `true` after upgrading.
     ::::
 
 

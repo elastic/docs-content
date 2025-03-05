@@ -14,9 +14,9 @@ On managed Kubernetes solutions like EKS, {{agent}} has no access to several dat
 
 1. Metrics from [Kubernetes control plane](https://kubernetes.io/docs/concepts/overview/components/#control-plane-components) components are not available. Consequently metrics are not available for `kube-scheduler` and `kube-controller-manager` components. In this regard, the respective **dashboards** will not be populated with data.
 2. **Audit logs** are available only on Kubernetes master nodes as well, hence cannot be collected by {{agent}}.
-3. Fields `orchestrator.cluster.name` and `orchestrator.cluster.url` are not populated. `orchestrator.cluster.name` field is used as a cluster selector for default Kubernetes dashboards, shipped with [Kubernetes integration](integration-docs://docs/reference/kubernetes.md).
+3. Fields `orchestrator.cluster.name` and `orchestrator.cluster.url` are not populated. `orchestrator.cluster.name` field is used as a cluster selector for default Kubernetes dashboards, shipped with [Kubernetes integration](asciidocalypse://docs/reference/kubernetes.md).
 
-    In this regard, you can use [`add_fields` processor](beats://docs/reference/filebeat/add-fields.md) to add `orchestrator.cluster.name` and `orchestrator.cluster.url` fields for each [Kubernetes integration](integration-docs://docs/reference/kubernetes.md)'s component:
+    In this regard, you can use [`add_fields` processor](asciidocalypse://docs/reference/filebeat/add-fields.md) to add `orchestrator.cluster.name` and `orchestrator.cluster.url` fields for each [Kubernetes integration](asciidocalypse://docs/reference/kubernetes.md)'s component:
 
     ```yaml
     - add_fields:

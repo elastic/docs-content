@@ -57,7 +57,7 @@ You have a few options for installing and managing an {{agent}}:
 ::::{admonition} Restrictions in {{serverless-short}}
 :class: important
 
-If you are using {{agent}} with [{{serverless-full}}](/deploy-manage/deploy/elastic-cloud/serverless.md), note these differences from use with {{ess}} and self-managed {{es}}:
+If you are using {{agent}} with [{{serverless-full}}](/deploy-manage/deploy/elastic-cloud/serverless.md), note these differences from use with {{ech}} and self-managed {{es}}:
 
 * The number of {{agents}} that may be connected to an {{serverless-full}} project is limited to 10 thousand.
 * The minimum supported version of {{agent}} supported for use with {{serverless-full}} is 8.11.0.
@@ -75,7 +75,7 @@ Using our lab environment as an example, we can observe the following resource c
 
 ### CPU and RSS memory size [_cpu_and_rss_memory_size]
 
-We tested using an AWS `m7i.large` instance type with 2 vCPUs, 8.0 GB of memory, and up to 12.5 Gbps of bandwidth. The tests ingested a single log file using both the [throughput and scale preset](/reference/ingestion-tools/fleet/elasticsearch-output.md#output-elasticsearch-performance-tuning-settings) with self monitoring enabled. These tests are representative of use cases that attempt to ingest data as fast as possible. This does not represent the resource overhead when using [{{elastic-defend}}](integration-docs://docs/reference/endpoint.md).
+We tested using an AWS `m7i.large` instance type with 2 vCPUs, 8.0 GB of memory, and up to 12.5 Gbps of bandwidth. The tests ingested a single log file using both the [throughput and scale preset](/reference/ingestion-tools/fleet/elasticsearch-output.md#output-elasticsearch-performance-tuning-settings) with self monitoring enabled. These tests are representative of use cases that attempt to ingest data as fast as possible. This does not represent the resource overhead when using [{{elastic-defend}}](asciidocalypse://docs/reference/endpoint.md).
 
 |     |     |     |
 | --- | --- | --- |

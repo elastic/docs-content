@@ -90,7 +90,7 @@ As is common with Cloud providers, we meter and bill snapshot storage using two 
 
 ### How can I control the storage cost? [ec_how_can_i_control_the_storage_cost] 
 
-Snapshots in Elasticsearch Service save data incrementally at each snapshot event. This means that the effective snapshot size may be larger than the size of the current indices. The snapshot size increases as data is added or updated in the cluster, and deletions do not reduce the snapshot size until the snapshot containing that data is removed.
+Snapshots in {{ech}} save data incrementally at each snapshot event. This means that the effective snapshot size may be larger than the size of the current indices. The snapshot size increases as data is added or updated in the cluster, and deletions do not reduce the snapshot size until the snapshot containing that data is removed.
 
 API requests are executed every time a snapshot is taken or restored, affecting usage costs. In the event that you have any automated processes that use the Elasticsearch API to create or restore snapshots, these should be set so as to avoid unexpected charges.
 

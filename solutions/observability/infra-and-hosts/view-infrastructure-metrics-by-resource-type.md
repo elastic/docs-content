@@ -17,8 +17,8 @@ To open **Infrastructure inventory**, find **Infrastructure** in the main menu o
 
 To learn more about the metrics shown on this page, refer to the [Metrics reference](https://www.elastic.co/guide/en/serverless/current/observability-metrics-reference.html).
 
-::::{admonition} Don’t see any metrics?
-:class: note
+::::{note}
+**Don’t see any metrics?**
 
 If you haven’t added data yet, click **Add data** to search for and install an Elastic integration.
 
@@ -139,7 +139,7 @@ The processes listed in the **Top processes** table are based on an aggregation 
 
 :::::
 
-:::::{dropdown} **Universal Profiling**
+:::::{dropdown} Universal Profiling
 The **Universal Profiling** tab shows CPU usage down to the application code level. From here, you can find the sources of resource usage, and identify code that can be optimized to reduce infrastructure costs. The Universal Profiling tab has the following views.
 
 |     |     |
@@ -192,8 +192,7 @@ To drill down and analyze the metric anomaly, select **Actions** → **Open in A
 
 :::::{dropdown} Osquery
 
-::::{admonition} Required role
-:class: note
+::::{note}
 
 **For Observability serverless projects**, one of the following roles is required to use Osquery.
 
@@ -245,8 +244,8 @@ When you select **Docker containers**, the **Infrastructure inventory** page dis
 
 Without leaving the **Infrastructure inventory** page, you can view enhanced metrics relating to each container running in your infrastructure.
 
-::::{admonition} Why do some containers report 0% or null (-) values in the waffle map?
-:class: note
+::::{note}
+**Why do some containers report 0% or null (-) values in the waffle map?**
 
 The waffle map shows *all* monitored containers, including containerd, provided that the data collected from the container has the `container.id` field. However, the waffle map currently only displays metrics for Docker fields. This display problem will be resolved in a future release.
 

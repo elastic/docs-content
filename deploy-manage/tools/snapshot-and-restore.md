@@ -1,4 +1,11 @@
 ---
+mapped_urls:
+  - https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshot-restore.html
+  - https://www.elastic.co/guide/en/cloud/current/ec-snapshot-restore.html
+  - https://www.elastic.co/guide/en/cloud/current/ec-restoring-snapshots.html
+  - https://www.elastic.co/guide/en/cloud-heroku/current/ech-snapshot-restore.html
+  - https://www.elastic.co/guide/en/cloud-heroku/current/ech-restoring-snapshots.html
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-snapshots.html
 applies_to:
   deployment:
     eck: 
@@ -106,7 +113,7 @@ In Elasticsearch 8.0 and later versions, feature states are the only way to back
 
 ## How snapshots work
 
-Snapshots are **automatically deduplicated** to save storage space and reduce network transfer costs. To back up an index, a snapshot makes a copy of the index’s [segments](/solutions/search/search-approaches/near-real-time-search.md) and stores them in the snapshot repository. Since segments are immutable, the snapshot only needs to copy any new segments created since the repository’s last snapshot.
+Snapshots are **automatically deduplicated** to save storage space and reduce network transfer costs. To back up an index, a snapshot makes a copy of the index’s [segments](/manage-data/data-store/near-real-time-search.md) and stores them in the snapshot repository. Since segments are immutable, the snapshot only needs to copy any new segments created since the repository’s last snapshot.
 
 Each snapshot is **logically independent**. When you delete a snapshot, Elasticsearch only deletes the segments used exclusively by that snapshot. Elasticsearch doesn’t delete segments used by other snapshots in the repository.
 

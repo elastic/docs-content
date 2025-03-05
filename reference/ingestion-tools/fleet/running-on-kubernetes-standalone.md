@@ -12,8 +12,8 @@ mapped_pages:
 
   ::::{tab-set}
 
-  :::{tab-item} Elasticsearch Service
-  To get started quickly, spin up a deployment of our [hosted {{ess}}](https://www.elastic.co/cloud/elasticsearch-service). The {{ess}} is available on AWS, GCP, and Azure. [Try it out for free](https://cloud.elastic.co/registration?page=docs&placement=docs-body).
+  :::{tab-item} {{ech}}
+  To get started quickly, spin up an [{{ech}}](https://www.elastic.co/cloud/elasticsearch-service) deployment. {{ech}} is available on AWS, GCP, and Azure. [Try it out for free](https://cloud.elastic.co/registration?page=docs&placement=docs-body).
   :::
 
   :::{tab-item} Self-managed
@@ -37,7 +37,7 @@ mapped_pages:
     ```
 
     ::::{warning}
-    On managed Kubernetes solutions, such as AKS, GKE or EKS, {{agent}} does not have the required permissions to collect metrics from [Kubernetes control plane](https://kubernetes.io/docs/concepts/overview/components/#control-plane-components) components, like `kube-scheduler` and `kube-controller-manager`. Audit logs are only available on Kubernetes control plane nodes as well, and hence cannot be collected by {{agent}}. Refer [here](integration-docs://docs/reference/kubernetes.md#kubernetes-scheduler-and-controllermanager) to find more information. For more information about specific cloud providers, refer to [Run {{agent}} on Azure AKS managed by {{fleet}}](/reference/ingestion-tools/fleet/running-on-aks-managed-by-fleet.md), [Run {{agent}} on GKE managed by {{fleet}}](/reference/ingestion-tools/fleet/running-on-gke-managed-by-fleet.md) and [Run {{agent}} on Amazon EKS managed by {{fleet}}](/reference/ingestion-tools/fleet/running-on-eks-managed-by-fleet.md)
+    On managed Kubernetes solutions, such as AKS, GKE or EKS, {{agent}} does not have the required permissions to collect metrics from [Kubernetes control plane](https://kubernetes.io/docs/concepts/overview/components/#control-plane-components) components, like `kube-scheduler` and `kube-controller-manager`. Audit logs are only available on Kubernetes control plane nodes as well, and hence cannot be collected by {{agent}}. Refer [here](asciidocalypse://docs/reference/kubernetes.md#kubernetes-scheduler-and-controllermanager) to find more information. For more information about specific cloud providers, refer to [Run {{agent}} on Azure AKS managed by {{fleet}}](/reference/ingestion-tools/fleet/running-on-aks-managed-by-fleet.md), [Run {{agent}} on GKE managed by {{fleet}}](/reference/ingestion-tools/fleet/running-on-gke-managed-by-fleet.md) and [Run {{agent}} on Amazon EKS managed by {{fleet}}](/reference/ingestion-tools/fleet/running-on-eks-managed-by-fleet.md)
     ::::
 
 
@@ -157,7 +157,7 @@ If you’d like to run {{agent}} on Kubernetes on a read-only file system, you c
 
     ::::{tab-set}
 
-    :::{tab-item} Elasticsearch Service
+    :::{tab-item} {{ech}}
 
     1. [Log in](https://cloud.elastic.co/) to your {{ecloud}} account.
     2. Navigate to the {{kib}} endpoint in your deployment.

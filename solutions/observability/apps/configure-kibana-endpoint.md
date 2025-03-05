@@ -2,6 +2,8 @@
 navigation_title: "{{kib}} endpoint"
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-setup-kibana-endpoint.html
+applies_to:
+  stack: all
 ---
 
 
@@ -9,7 +11,7 @@ mapped_pages:
 # Configure the Kibana endpoint [apm-setup-kibana-endpoint]
 
 
-::::{admonition}
+::::{note}
 ![supported deployment methods](../../../images/observability-binary-yes-fm-no.svg "")
 
 You must configure the {{kib}} endpoint when running the APM Server binary with a non-{{es}} output. Configuring the {{kib}} endpoint allows the APM Server to communicate with {{kib}} and ensure that the APM integration was properly set up. It is also required for APM agent configuration when using an output other than {{es}}.

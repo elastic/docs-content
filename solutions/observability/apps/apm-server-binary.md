@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/get-started-with-apm-server-binary.html
+applies_to:
+  stack: all
 ---
 
 # APM Server binary [get-started-with-apm-server-binary]
@@ -36,27 +38,49 @@ To download and install APM Server, use the commands below that work with your s
 $$$apm-deb$$$
 **deb:**
 
-Version 9.0.0 of APM Server has not yet been released.
+```shell
+curl -L -O https://artifacts.elastic.co/downloads/apm-server/apm-server-{{apm_server_version}}-amd64.deb
+sudo dpkg -i apm-server-{{apm_server_version}}-amd64.deb
+```
 
 $$$apm-rpm$$$
 **RPM:**
 
-Version 9.0.0 of APM Server has not yet been released.
+```shell
+curl -L -O https://artifacts.elastic.co/downloads/apm-server/apm-server-{{apm_server_version}}-x86_64.rpm
+sudo rpm -vi apm-server-{{apm_server_version}}-x86_64.rpm
+```
 
 $$$apm-linux$$$
 **Other Linux:**
 
-Version 9.0.0 of APM Server has not yet been released.
+```shell
+curl -L -O https://artifacts.elastic.co/downloads/apm-server/apm-server-{{apm_server_version}}-linux-x86_64.tar.gz
+tar xzvf apm-server-{{apm_server_version}}-linux-x86_64.tar.gz
+```
 
 $$$apm-mac$$$
 **Mac:**
 
-Version 9.0.0 of APM Server has not yet been released.
+```shell
+curl -L -O https://artifacts.elastic.co/downloads/apm-server/apm-server-{{apm_server_version}}-darwin-x86_64.tar.gz
+tar xzvf apm-server-{{apm_server_version}}-darwin-x86_64.tar.gz
+```
 
 $$$apm-installing-on-windows$$$
 **Windows:**
 
-Version 9.0.0 of APM Server has not yet been released.
+1. Download the APM Server Windows zip file from the
+https://www.elastic.co/downloads/apm/apm-server[downloads page].
+
+1. Extract the contents of the zip file into `C:\Program Files`.
+
+1. Rename the `apm-server-<version>-windows` directory to `APM-Server`.
+
+1. Open a PowerShell prompt as an Administrator (right-click the PowerShell icon and select *Run As Administrator*).
+If you are running Windows XP, you may need to download and install PowerShell.
+
+1. From the PowerShell prompt, run the following commands to install APM Server as a Windows service:
 
 $$$apm-docker$$$
 **Docker:**

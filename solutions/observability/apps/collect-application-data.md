@@ -9,14 +9,17 @@ mapped_urls:
 
 % is required role serverless only?
 
-::::{admonition} Required role
-:class: note
+::::{note}
 
-The **Admin** role or higher is required to send APM data to Elastic. To learn more, refer to [Assign user roles and privileges](../../../deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
+**For Observability Serverless projects**, the **Admin** role or higher is required to send APM data to Elastic. To learn more, refer to [Assign user roles and privileges](../../../deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
 
 ::::
 
+::::{note}
+
 ![documentation icon](../../../images/serverless-documentation.svg "") Want to get started quickly? See [Get started with traces and APM](../../../solutions/observability/apps/get-started-with-apm.md).
+
+::::
 
 ## Language-specific options [_language_specific_options]
 

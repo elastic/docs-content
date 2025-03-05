@@ -36,8 +36,11 @@ This section provides a list of common symptoms and possible actions that you ca
 Some actions described here, such as stopping indexing or Machine Learning jobs, are temporary remediations intended to get your cluster into a state where you can make configuration changes to resolve the issue.
 ::::
 
-
 For production deployments, we recommend setting up a dedicated monitoring cluster to collect metrics and logs, troubleshooting views, and cluster alerts.
+
+:::{important}
+ If you’re using Elastic Cloud Hosted, then you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, real-time issue detection and resolution paths. For more information, refer to [Monitor with AutoOps](/deploy-manage/monitor/autoops.md).
+:::
 
 If your issue is not addressed here, then [contact Elastic support for help](/troubleshoot/index.md).
 
@@ -45,12 +48,8 @@ If your issue is not addressed here, then [contact Elastic support for help](/tr
 
 **Health check**
 
-1. Log in to the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body).
-2. From the Elasticsearch Service panel, click the **Quick link** icon corresponding to the deployment that you want to manage.
-
-    :::{image} /images/cloud-ec-quick-link-to-deployment.png
-    :alt: Quick link to the deployment page
-    :::
+1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
+2. Click the **Manage** link corresponding to the deployment that you want to manage.
 
 3. On your deployment page, scroll down to **Instances** and check if the disk allocation for your {{es}} instance is over 90%.
 
@@ -92,7 +91,7 @@ If your {{es}} cluster is unhealthy and reports a status of red, then increasing
 
 **Health check**
 
-1. Log in to the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body).
+1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
 2. From the {{es}} Service panel, click the **Quick link** icon corresponding to the deployment that you want to manage.
 
     :::{image} /images/cloud-ec-quick-link-to-deployment.png
@@ -151,7 +150,7 @@ If your {{es}} cluster is unhealthy and reports a status of red, the scale up co
 
 **Health check**
 
-1. Log in to the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body).
+1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
 2. From the {{es}} Service panel, click the **Quick link** icon corresponding to the deployment that you want to manage.
 
     :::{image} /images/cloud-ec-quick-link-to-deployment.png
@@ -217,7 +216,7 @@ If your {{es}} cluster is unhealthy and reports a status of red, the scale up co
 
 By default, the allowed CPU usage threshold is set at 85%.
 
-1. Log in to the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body).
+1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
 2. From the {{es}} Service panel, click the **Quick link** icon corresponding to the deployment that you want to manage.
 
     :::{image} /images/cloud-ec-quick-link-to-deployment.png

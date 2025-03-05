@@ -591,7 +591,7 @@ PUT /_security/role_mapping/saml-example
 }
 ```
 
-1. The `example_role` role is **not** a builtin Elasticsearch role. This example assumes that you have created a custom role of your own, with appropriate access to your [data streams, indices,](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md#roles-indices-priv) and [Kibana features](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md#kibana-feature-privileges).
+1. The `example_role` role is **not** a builtin Elasticsearch role. This example assumes that you have created a custom role of your own, with appropriate access to your [data streams, indices,](/deploy-manage/users-roles/cluster-or-deployment-auth/role-structure.md#roles-indices-priv) and [Kibana features](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md#kibana-feature-privileges).
 
 ### Example: Role mapping API, using SAML attributes
 

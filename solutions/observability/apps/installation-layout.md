@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-directory-layout.html
+applies_to:
+  stack: all
 ---
 
 # Installation layout [apm-directory-layout]
@@ -8,7 +10,7 @@ mapped_pages:
 View the installation layout and default paths for both Fleet-managed APM Server and the APM Server binary.
 
 
-## Fleet-managed [_fleet_managed] 
+## Fleet-managed [_fleet_managed]
 
 {{agent}} files are installed in the following locations. You cannot override these installation paths because they are required for upgrades.
 
@@ -104,7 +106,7 @@ You can install {{agent}} in a custom base path other than `C:\Program Files`.  
 
 :::::::
 
-## APM Server binary [_apm_server_binary] 
+## APM Server binary [_apm_server_binary]
 
 APM Server uses the following default paths unless you explicitly change them.
 

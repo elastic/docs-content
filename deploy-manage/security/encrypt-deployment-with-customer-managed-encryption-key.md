@@ -158,11 +158,11 @@ Provide your key identifier without the key version identifier so Elastic Cloud 
 :::::::{tab-set}
 
 ::::::{tab-item} AWS
-1. Create a new deployment. You can do it from the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body), or from the API:
+1. Create a new deployment. You can do it from the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body), or from the API:
 
-    * from the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body):
+    * from the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body):
 
-        * Select **Create deployment** from the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body) home page.
+        * Select **Create deployment** from the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body) home page.
         * In the **Settings**, set the **Cloud provider** to **Amazon Web Services** and select a region.
         * Expand the **Advanced settings** and turn on **Use a customer-managed encryption key**. An additional field appears to let you specify the ARN of the AWS KMS key or key alias you will use to encrypt your new deployment.
         * Configure the rest of your deployment to your convenience, and select **Create deployment**.
@@ -207,7 +207,7 @@ To create a new deployment with a customer-managed key in Azure, you need to per
 
 1. In Elastic Cloud, retrieve the Azure application ID:
 
-    * Select **Create deployment** from the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body) home page.
+    * Select **Create deployment** from the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body) home page.
     * In the **Settings**, set the **Cloud provider** to **Azure** and select a region.
     * Expand the **Advanced settings** and turn on **Use a customer-managed encryption key**.
     * Copy the **Azure application ID**.
@@ -231,11 +231,11 @@ To create a new deployment with a customer-managed key in Azure, you need to per
 
 **Step 2: Create your deployment**<br>
 
-After you have created the service principal and granted it the necessary permissions, you can finish creating your deployment. You can do so from the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body), or from the API.
+After you have created the service principal and granted it the necessary permissions, you can finish creating your deployment. You can do so from the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body), or from the API.
 
-* Using the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body):
+* Using the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body):
 
-    * Select **Create deployment** from the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body) home page.
+    * Select **Create deployment** from the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body) home page.
     * In the **Settings**, set the **Cloud provider** to **Azure** and select a region.
     * Expand the **Advanced settings** and turn on **Use a customer-managed encryption key**.
     * Enter the Azure key identifier for the RSA key that you created.
@@ -284,7 +284,7 @@ Elastic Cloud uses two service principals to encrypt and decrypt data using your
 
 1. In Elastic Cloud, retrieve the email addresses for the service principals that will be used by Elastic:
 
-    * Select **Create deployment** from the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body) home page.
+    * Select **Create deployment** from the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body) home page.
     * In the **Settings**, set the **Cloud provider** to **Google Cloud** and select a region.
     * Expand the **Advanced settings** and turn on **Use a customer-managed encryption key**.
     * Note the **Elastic service account** and **Google Cloud Platform storage service agent** email addresses.
@@ -310,11 +310,11 @@ The user performing this action needs to belong to the **Owner** or **Cloud KMS 
 
 **Step 2: Create your deployment**
 
-After you have granted the Elastic principals the necessary roles, you can finish creating your deployment. You can do so from the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body), or from the API.
+After you have granted the Elastic principals the necessary roles, you can finish creating your deployment. You can do so from the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body), or from the API.
 
-* Using the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body):
+* Using the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body):
 
-    * Select **Create deployment** from the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body) home page.
+    * Select **Create deployment** from the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body) home page.
     * In the **Settings**, set the **Cloud provider** to **Google Cloud** and select a region.
     * Expand the **Advanced settings** and turn on **Use a customer-managed encryption key**.
     * Enter the resource ID for the key that you created.

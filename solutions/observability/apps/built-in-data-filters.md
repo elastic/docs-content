@@ -64,6 +64,10 @@ By default, the APM Server captures some personal data associated with trace eve
 
 The capturing of this data can be turned off by setting **Capture personal data** to `false`.
 
+:::{note}
+This setting only prevents APM Server from capturing already ingested personal data. It does not prevent such data from appearing in ingestion logs where applicable. See [{{apm-agent}} filters](custom-filters.md#apm-filters-in-agent) for redacting data on ingestion.
+:::
+
 
 ## Real user monitoring data [apm-filters-real-user-data]
 

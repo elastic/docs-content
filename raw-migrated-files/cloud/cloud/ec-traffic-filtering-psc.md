@@ -1,8 +1,8 @@
 # GCP Private Service Connect traffic filters [ec-traffic-filtering-psc]
 
-Traffic filtering, to allow only Private Service Connect connections, is one of the security layers available in Elasticsearch Service. It allows you to limit how your deployments can be accessed.
+Traffic filtering, to allow only Private Service Connect connections, is one of the security layers available in {{ecloud}}. It allows you to limit how your deployments can be accessed.
 
-Read more about [Traffic Filtering](../../../deploy-manage/security/traffic-filtering.md) for the general concepts behind traffic filtering in Elasticsearch Service.
+Read more about [Traffic Filtering](../../../deploy-manage/security/traffic-filtering.md) for the general concepts behind traffic filtering in {{ecloud}}.
 
 ::::{note}
 Private Service Connect filtering is supported only for Google Cloud regions.

@@ -54,7 +54,7 @@ The steps to follow depend on whether the Certificate Authority (CA) of the remo
 
 ::::{dropdown} The CA is public
 1. [Log into the Cloud UI](../deploy/cloud-enterprise/log-into-cloud-ui.md).
-2. On the deployments page, select your deployment.
+2. On the **Deployments** page, select your deployment.
 
     Narrow the list by name, ID, or choose from several other filters. To further define the list, use a combination of filters.
 
@@ -82,7 +82,7 @@ If you later need to update the remote connection with different permissions, yo
 
 ::::{dropdown} The CA is private
 1. [Log into the Cloud UI](../deploy/cloud-enterprise/log-into-cloud-ui.md).
-2. On the deployments page, select your deployment.
+2. On the **Deployments** page, select your deployment.
 
     Narrow the list by name, ID, or choose from several other filters. To further define the list, use a combination of filters.
 
@@ -328,4 +328,4 @@ The response includes just the remote clusters from the same ECE environment. In
 
 ## Configure roles and users [ece_configure_roles_and_users_4]
 
-To use a remote cluster for {{ccr}} or {{ccs}}, you need to create user roles with [remote indices privileges](../users-roles/cluster-or-deployment-auth/defining-roles.md#roles-remote-indices-priv) on the local cluster. Refer to [Configure roles and users](remote-clusters-api-key.md#remote-clusters-privileges-api-key).
+To use a remote cluster for {{ccr}} or {{ccs}}, you need to create user roles with [remote indices privileges](../users-roles/cluster-or-deployment-auth/role-structure.md#roles-remote-indices-priv) on the local cluster. Refer to [Configure roles and users](remote-clusters-api-key.md#remote-clusters-privileges-api-key).
