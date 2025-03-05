@@ -6,12 +6,6 @@ mapped_urls:
 
 # Configure third-party response actions
 
-% What needs to be done: Align serverless/stateful
-
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/security-docs/security/response-actions-config.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/security-response-actions-config.md
 
 You can direct third-party endpoint protection systems to perform response actions on enrolled hosts, such as isolating a suspicious endpoint from your network, without leaving the {{elastic-sec}} UI. This page explains the configuration steps needed to enable response actions for these third-party systems:
 
@@ -19,20 +13,20 @@ You can direct third-party endpoint protection systems to perform response actio
 * Microsoft Defender for Endpoint
 * SentinelOne
 
-Check out [*Third-party response actions*](/solutions/security/endpoint-response-actions/third-party-response-actions.md) to learn which response actions are supported for each system.
+Check out [](/solutions/security/endpoint-response-actions/third-party-response-actions.md) to learn which response actions are supported for each system.
 
 ::::{admonition} Prerequisites
-* [Subscription level](https://www.elastic.co/pricing): Enterprise
+* This feature requires the appropriate [subscription](https://www.elastic.co/pricing) in {{stack}} or [project feature](/deploy-manage/deploy/elastic-cloud/project-settings.md) in {{serverless-short}}.
 * [{{kib}} feature privilege](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md): Under **Actions and Connectors**, turn on **Customize sub-feature privileges** and enable **Endpoint Security**.
 * [{{elastic-sec}} feature privileges](/solutions/security/configure-elastic-defend/elastic-defend-feature-privileges.md): **All** for the response action features, such as **Host Isolation**, that you want to perform.
+* (In {{serverless-short}}) [User roles](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles): **SOC manager** or **Endpoint operations analyst**
 * Endpoints must have actively running third-party agents installed.
-
 ::::
 
 
 Expand a section below for your endpoint security system:
 
-::::{dropdown} **Set up CrowdStrike response actions**
+::::{dropdown} Set up CrowdStrike response actions
 1. **Enable API access in CrowdStrike.** Create an API client in CrowdStrike to allow access to the system. Refer to CrowdStrike’s docs for instructions.
 
     * Give the API client the minimum privilege required to read CrowdStrike data and perform actions on enrolled hosts. Consider creating separate API clients for reading data and performing actions, to limit privileges allowed by each API client.
@@ -83,12 +77,10 @@ Expand a section below for your endpoint security system:
 4. **Create and enable detection rules to generate {{elastic-sec}} alerts.** (Optional) Create [detection rules](/solutions/security/detect-and-alert/create-detection-rule.md) to generate {{elastic-sec}} alerts based on CrowdStrike events and data. The [CrowdStrike integration docs](https://docs.elastic.co/en/integrations/crowdstrike) list the available ingested logs and fields you can use to build a rule query.
 
     This gives you visibility into CrowdStrike without needing to leave {{elastic-sec}}. You can perform supported endpoint response actions directly from alerts that a rule creates, by using the **Take action** menu in the alert details flyout.
-
-
 ::::
 
 
-::::{dropdown} **Set up Microsoft Defender for Endpoint response actions**
+::::{dropdown} Set up Microsoft Defender for Endpoint response actions
 1. **Create API access information in Microsoft Azure.** Create two new applications in your Azure domain and grant them the following minimum API permissions:
 
     * Microsoft Defender for Endpoint Fleet integration policy: Permission to read alert data (`Windows Defender ATP: Alert.Read.All`).
@@ -107,7 +99,7 @@ Expand a section below for your endpoint security system:
 
     1. Find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), search for and select **Microsoft Defender for Endpoint**, then select **Add Microsoft Defender for Endpoint**.
     2. Enter an **Integration name**. Entering a **Description** is optional.
-    3. Ensure that **Microsoft Defender for Endpoint logs** is selected, and enter the required values for **Client ID***, ***Client Secret**, and **Tenant ID**.
+    3. Ensure that **Microsoft Defender for Endpoint logs** is selected, and enter the required values for **Client ID**, **Client Secret**, and **Tenant ID**.
     4. Scroll down and enter a name for the agent policy in **New agent policy name**. If other agent policies already exist, you can click the **Existing hosts** tab and select an existing policy instead. For more details on {{agent}} configuration settings, refer to [{{agent}} policies](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/agent-policy.md).
     5. Click **Save and continue**.
     6. Select **Add {{agent}} to your hosts** and continue with the [{{agent}} installation steps](/solutions/security/configure-elastic-defend/install-elastic-defend.md#enroll-agent) to install {{agent}} on a resource in your network (such as a server or VM). {{agent}} will act as a bridge, collecting data from Microsoft Defender for Endpoint and sending it back to {{elastic-sec}}.
@@ -142,12 +134,10 @@ Expand a section below for your endpoint security system:
     * `logs-m365_defender.incident-*`
     * `logs-m365_defender.log-*`
     * `logs-m365_defender.event-*`
-
-
 ::::
 
 
-::::{dropdown} **Set up SentinelOne response actions**
+::::{dropdown} Set up SentinelOne response actions
 1. **Generate API access tokens in SentinelOne.** You’ll need these tokens in later steps, and they allow {{elastic-sec}} to collect data and perform actions in SentinelOne.
 
     Create two API tokens in SentinelOne, and give them the minimum privilege required by the Elastic components that will use them:
@@ -203,6 +193,4 @@ Expand a section below for your endpoint security system:
     ::::{note}
     Do not include any other index patterns.
     ::::
-
-
 ::::
