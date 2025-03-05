@@ -15,7 +15,7 @@ Amazon EC2 instances can be run in various locations. The location is composed o
 
 Like most AWS services, Amazon EC2 sends its metrics to Amazon CloudWatch. The Elastic [Amazon EC2 integration](https://docs.elastic.co/en/integrations/aws/ec2) collects metrics from Amazon CloudWatch using {{agent}}.
 
-CloudWatch, by default, uses basic monitoring that publishes metrics at five-minute intervals. You can enable detailed monitoring to increase that resolution to one-minute, at an additional cost. To learn how to enable detailed monitoring, refer to the [Amazon EC2 documentation](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-cloudwatch-new.md).
+CloudWatch, by default, uses basic monitoring that publishes metrics at five-minute intervals. You can enable detailed monitoring to increase that resolution to one-minute, at an additional cost. To learn how to enable detailed monitoring, refer to the [Amazon EC2 documentation](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-cloudwatch-new.html).
 
 CloudWatch does not expose metrics related to EC2 instance memory. You can install {{agent}} on the EC2 instances to collect detailed system metrics.
 
@@ -159,7 +159,7 @@ Here are the key status check metrics you should monitor and what to look for:
 
 
 `aws.ec2.metrics.StatusCheckFailed_Instance.avg`
-:   This check monitors the software and network configuration of the instance. Problems that can cause instance status checks to fail may include: incorrect networking or startup configuration, exhausted memory, corrupted file system, incompatible kernel, and so on. When an instance status check fails, you typically must address the problem yourself. You may need to reboot the instance or make instance configuration changes. To troubleshoot instances with failed status checks, refer to the [Amazon EC2 documentation](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/TroubleshootingInstances.md).
+:   This check monitors the software and network configuration of the instance. Problems that can cause instance status checks to fail may include: incorrect networking or startup configuration, exhausted memory, corrupted file system, incompatible kernel, and so on. When an instance status check fails, you typically must address the problem yourself. You may need to reboot the instance or make instance configuration changes. To troubleshoot instances with failed status checks, refer to the [Amazon EC2 documentation](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/TroubleshootingInstances.html).
 
     This check returns 0 (passed) if an instance passes the system status check or 1 (failed) if it fails.
 

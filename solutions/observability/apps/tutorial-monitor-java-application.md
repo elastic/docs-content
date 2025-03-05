@@ -917,7 +917,7 @@ You have now learned about parsing logs in either {{beats}} or {{es}}. What if w
 
 Writing out logs as plain text works and is easy to read for humans. However, first writing them out as plain text, parsing them using the `dissect` processors, and then creating a JSON again sounds tedious and burns unneeded CPU cycles.
 
-While log4j2 has a [JSONLayout](https://logging.apache.org/log4j/2.x/manual/layouts.md#JSONLayout), you can go further and use a Library called [ecs-logging-java](https://github.com/elastic/ecs-logging-java). The advantage of ECS logging is that it uses the [Elastic Common Schema](asciidocalypse://docs/ecs/docs/reference/index.md). ECS defines a standard set of fields used when storing event data in {{es}}, such as logs and metrics.
+While log4j2 has a [JSONLayout](https://logging.apache.org/log4j/2.x/manual/layouts.html#JSONLayout), you can go further and use a Library called [ecs-logging-java](https://github.com/elastic/ecs-logging-java). The advantage of ECS logging is that it uses the [Elastic Common Schema](asciidocalypse://docs/ecs/docs/reference/index.md). ECS defines a standard set of fields used when storing event data in {{es}}, such as logs and metrics.
 
 1. Instead of writing our logging standard, use an existing one. Let’s add the logging dependency to our Javalin application.
 
@@ -1561,7 +1561,7 @@ A programmatic setup allows you to attach the agent via a line of java in your s
 
     This looks much better, having differences between endpoints.
 
-4. Add another endpoint to see the power of transactions, which polls another HTTP service. You may have heard of [wttr.in](https://wttr.in/), a service to poll weather information from. Let’s implement a proxy HTTP method that forwards the request to that endpoint. Let’s use [Apache HTTP client](https://hc.apache.org/httpcomponents-client-4.5.x/quickstart.md), one of the most typical HTTP clients out there.
+4. Add another endpoint to see the power of transactions, which polls another HTTP service. You may have heard of [wttr.in](https://wttr.in/), a service to poll weather information from. Let’s implement a proxy HTTP method that forwards the request to that endpoint. Let’s use [Apache HTTP client](https://hc.apache.org/httpcomponents-client-4.5.x/quickstart.html), one of the most typical HTTP clients out there.
 
     ```gradle
     implementation 'org.apache.httpcomponents:fluent-hc:4.5.12'
