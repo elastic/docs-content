@@ -236,7 +236,11 @@ $$$ece-autoscaling-api-example-requirements-table$$$
 
 * The `elasticsearch` object must contain the property `"autoscaling_enabled": true`.
 
-### API request example [ec_api_request_example] 
+### API request example [ec_api_request_example]
+
+::::{note} 
+Although autoscaling can scale some tiers by CPU, the primary measurement of tier size is memory. Limits on tier size are in terms of memory.
+::::
 
 Run this example API request to create a deployment with autoscaling:
 
@@ -653,8 +657,4 @@ curl -XPOST \
 
 :::
 
-::::
-
-::::{note} 
-Although autoscaling can scale some tiers by CPU, the primary measurement of tier size is memory. Limits on tier size are in terms of memory.
 ::::

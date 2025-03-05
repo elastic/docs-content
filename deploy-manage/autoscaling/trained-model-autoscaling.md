@@ -23,10 +23,11 @@ There are two ways to enable autoscaling:
 To fully leverage model autoscaling in {{ech}}, {{ece}}, and {{eck}}, it is highly recommended to enable [{{es}} deployment autoscaling](../../deploy-manage/autoscaling.md).
 ::::
 
-Trained model autoscaling is available for both {{serverless-short}} and Cloud deployments. In serverless deployments, processing power is managed differently across Search, Observability, and Security projects, which impacts their costs and resource limits.
+Trained model autoscaling is available for {{serverless-short}}, {{ech}}, {{ece}}, and {{eck}} deployments. In serverless deployments, processing power is managed differently across Search, Observability, and Security projects, which impacts their costs and resource limits.
 
-::: {admonition} Trained model auto-scaling for self-managed deployments
+:::{admonition} Trained model auto-scaling for self-managed deployments
 The available resources of self-managed deployments are static, so trained model autoscaling is not applicable. However, available resources are still segmented based on the settings described in this section.
+:::
 
 {{serverless-full}} Security and Observability projects are only charged for data ingestion and retention. They are not charged for processing power (VCU usage), which is used for more complex operations, like running advanced search models. For example, in Search projects, models such as ELSER require significant processing power to provide more accurate search results.
 
@@ -159,7 +160,7 @@ In case of search-optimized deployments, we maximize the number of threads. The 
 
 ::::{tab-set}
 
-:::{tab-item} {{stack}}
+:::{tab-item} ECH, ECK, ECE
 
 | Level | Allocations | Threads | vCPUs |
 | --- | --- | --- | --- |
@@ -187,7 +188,7 @@ In case of search-optimized deployments, we maximize the number of threads. The 
 
 ::::{tab-set}
 
-:::{tab-item} {{stack}}
+:::{tab-item} ECH, ECK, ECE
 
 | Level | Allocations | Threads | vCPUs |
 | --- | --- | --- | --- |
