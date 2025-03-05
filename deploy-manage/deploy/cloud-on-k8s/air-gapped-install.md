@@ -1,5 +1,5 @@
 ---
-navigation_title: Air gapped environments
+navigation_title: Air-gapped environments
 applies_to:
   deployment:
     eck: all
@@ -8,51 +8,9 @@ mapped_urls:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-air-gapped.html
 ---
 
-# Air gapped install
-
-% What needs to be done: Refine
-
-% GitHub issue: https://github.com/elastic/docs-projects/issues/309
-
-% Scope notes: Curate and merget the content to have a proper guide for air gapped installations. Similar to ECE activity
-
-% Use migrated content from existing pages that map to this page:
-
-% - [ ] ./raw-migrated-files/stack-docs/elastic-stack/air-gapped-install.md
-
-% already removed
-% - [ ] ./raw-migrated-files/cloud-on-k8s/cloud-on-k8s/k8s-air-gapped.md
-
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
-
-$$$air-gapped-install$$$
-
-$$$k8s-container-registry-override$$$
-
-$$$k8s-eck-diag-air-gapped$$$
-
-% There are two concepts and areas to explore here:
-% ECK installation on air-gapped. This has no complexity as it's all a matter of docker registry and docker images.
-% Managing deployments on an ECK running on air-gapped is something not really covered in the official ECK book and partly covered in stack-docs
-
-% In this doc we will focus on ECK operator installation in air gapped environments, and we will link to Manage Deployments -> Air gapped (doesn't exist yet) for the content and examples about the rest.
-
-% from fleet air-gapped
-% Kibana is able to reach the Elastic Package Registry to download package metadata and content.
-% Elastic Agents are able to download binaries during upgrades from the Elastic Artifact Registry.
-
-% what about Elasticsearch requirements for example for GeoIP database, etc?
-
-Pending to determine what to do with this:
-* Syncing container images for ECK and all other {{stack}} components over to a locally-accessible container repository.
-* Modifying the ECK helm chart configuration so that ECK is aware that it is supposed to use your offline container repository instead of the public Elastic repository.
-* Optionally, disabling ECK telemetry collection in the ECK helm chart. This configuration propagates to all other Elastic components, such as {{kib}}.
-* Building your custom deployment container image for the {{artifact-registry}}.
-* Building your custom deployment container image for the Elastic Endpoint Artifact Repository.
-
 # Running in air-gapped environments [k8s-air-gapped]
 
-The ECK operator can be run in an air-gapped environment without access to the open internet when it is configured not to pull container images from `docker.elastic.co`.
+The ECK operator can be run in an air-gapped environment without access to the open internet when configured to avoid pulling container images from `docker.elastic.co`.
 
 By default ECK does not require you to specify the container image for each Elastic Stack application you deploy.
 
@@ -63,13 +21,13 @@ metadata:
   name: quickstart
 spec:
   version: 8.16.1
-  # image: docker.elastic.co/elasticsearch/elasticsearch:8.16.1 <1>
+  # image: docker.elastic.co/elasticsearch/elasticsearch:8.16.1 // <1>
   nodeSets:
   - name: default
     count: 1
   # podTemplate:
   #   spec:
-  #     imagePullSecrets: <2>
+  #     imagePullSecrets: // <2>
   #     - name: private-registry-credentials-secret
 ```
 
@@ -113,49 +71,4 @@ For example, if your private registry is `my.registry` and all Elastic images ar
 
 The [eck-diagnostics tool](../../../troubleshoot/deployments/cloud-on-k8s/run-eck-diagnostics.md) optionally runs diagnostics for Elastic Stack applications in a separate container that is deployed into the Kubernetes cluster.
 
-In air-gapped environments with no access to the `docker.elastic.co` registry, you should copy the latest support-diagnostics container image to your internal image registry and then run the tool with the additional flag `--diagnostic-image <custom-support-diagnostics-image-name>`. To find out which support diagnostics container image matches your version of eck-diagnostics run the tool once without arguments and it will print the default image in use.
-
-
-% FROM THE OTHER CONTENT (ELASTIC-STACK):
-
-### 2. Kubernetes & OpenShift Install [air-gapped-kubernetes-and-openshift]
-
-Setting up air-gapped Kubernetes or OpenShift installs of the {{stack}} has some unique concerns, but the general dependencies are the same as in the self-managed install case on a regular Linux machine.
-
-
-#### 2.1. Elastic Kubernetes Operator (ECK) [air-gapped-k8s-os-elastic-kubernetes-operator]
-
-The Elastic Kubernetes operator is an additional component in the Kubernetes OpenShift install that, essentially, does a lot of the work in installing, configuring, and updating deployments of the {{stack}}. For details, refer to the [{{eck}} install instructions](../../../deploy-manage/deploy/cloud-on-k8s/air-gapped-install.md).
-
-The main requirements are:
-
-* Syncing container images for ECK and all other {{stack}} components over to a locally-accessible container repository.
-* Modifying the ECK helm chart configuration so that ECK is aware that it is supposed to use your offline container repository instead of the public Elastic repository.
-* Optionally, disabling ECK telemetry collection in the ECK helm chart. This configuration propagates to all other Elastic components, such as {{kib}}.
-* Building your custom deployment container image for the {{artifact-registry}}.
-* Building your custom deployment container image for the Elastic Endpoint Artifact Repository.
-
-
-#### 2.2. Elastic Package Registry [air-gapped-k8s-os-elastic-package-registry]
-
-The container image can be downloaded from the official Elastic Docker repository, as described in the {{fleet}} and {{elastic-agent}} [air-gapped environments](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/air-gapped.md) documentation.
-
-This container would, ideally, run as a Kubernetes deployment. Refer to [Appendix C - EPR Kubernetes Deployment](../../../deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-epr-kubernetes-example) for examples.
-
-
-#### 2.3. {{artifact-registry}} [air-gapped-k8s-os-elastic-artifact-registry]
-
-A custom container would need to be created following similar instructions to setting up a web server in the [self-managed install case](../../../deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-elastic-artifact-registry). For example, a container file using an NGINX base image could be used to run a build similar to the example described in [Appendix B - {{artifact-registry}}](../../../deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-elastic-artifact-registry-example).
-
-
-#### 2.4. Elastic Endpoint Artifact Repository [air-gapped-k8s-os-elastic-endpoint-artifact-repository]
-
-Just like the {{artifact-registry}}. A custom container needs to be created following similar instructions to setting up a web server for the [self-managed install case](../../../deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-elastic-artifact-registry).
-
-
-#### 2.5. Ironbank Secure Images for Elastic [air-gapped-k8s-os-ironbank-secure-images]
-
-Besides the public [Elastic container repository](https://www.docker.elastic.co), most {{stack}} container images are also available in Platform One’s [Iron Bank](https://ironbank.dso.mil/repomap?vendorFilters=Elastic&page=1&sort=1).
-
-
-
+In air-gapped environments with no access to the `docker.elastic.co` registry, you should copy the latest support-diagnostics container image to your internal image registry and then run the tool with the additional flag `--diagnostic-image <custom-support-diagnostics-image-name>`. To find out which support diagnostics container image matches your version of eck-diagnostics, run the tool once without arguments and it will print the default image in use.
