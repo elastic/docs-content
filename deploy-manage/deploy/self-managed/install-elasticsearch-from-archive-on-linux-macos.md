@@ -4,6 +4,8 @@ mapped_pages:
 sub:
   es-conf: "$ES_HOME/config"
   slash: "/"
+  export: "export"
+  escape: "\\"
 navigation_title: "Linux or MacOS"
 ---
 
@@ -14,7 +16,7 @@ navigation_title: "Linux or MacOS"
 :::{include} _snippets/trial.md
 :::
 
-:::{include} _snippets/other-versions.md
+:::{include} _snippets/es-releases.md
 :::
 
 ::::{note}
@@ -22,7 +24,11 @@ navigation_title: "Linux or MacOS"
 ::::
 
 
-## Download and install archive for Linux [install-linux]
+## Step 1: Download and install the archive
+
+Download and install the archive for Linux or MacOS.
+
+### Linux [install-linux]
 
 The Linux archive for {{es}} {{stack-version}} can be downloaded and installed as follows:
 
@@ -34,12 +40,24 @@ tar -xzf elasticsearch-{{stack-version}}-linux-x86_64.tar.gz
 cd elasticsearch-{{stack-version}}/ <2>
 ```
 
-1. Compares the SHA of the downloaded `.tar.gz` archive and the published checksum, which should output `elasticsearch-{{stack-version}}-linux-x86_64.tar.gz: OK`.
+1. Compares the SHA of the downloaded `.tar.gz` archive and the published checksum, which should output `elasticsearch-<version>-linux-x86_64.tar.gz: OK`.
 2. This directory is known as `$ES_HOME`.
 
 
 
-## Download and install archive for MacOS [install-macos]
+### MacOS [install-macos]
+
+The MacOS archive for {{es}} {{stack-version}} can be downloaded and installed as follows:
+
+```sh
+curl -O https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-{{stack-version}}-darwin-x86_64.tar.gz
+curl https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-{{stack-version}}-darwin-x86_64.tar.gz.sha512 | shasum -a 512 -c - <1>
+tar -xzf elasticsearch-{{stack-version}}-darwin-x86_64.tar.gz
+cd elasticsearch-{{stack-version}}/ <2>
+```
+
+1. Compares the SHA of the downloaded `.tar.gz` archive and the published checksum, which should output `elasticsearch-<version>-darwin-x86_64.tar.gz: OK`.
+2. This directory is known as `$ES_HOME`.
 
 ::::{admonition} macOS Gatekeeper warnings
 :class: important
@@ -53,45 +71,47 @@ xattr -d -r com.apple.quarantine <archive-or-directory>
 ```
 
 Alternatively, you can add a security override by following the instructions in the *If you want to open an app that hasn’t been notarized or is from an unidentified developer* section of [Safely open apps on your Mac](https://support.apple.com/en-us/HT202491).
-
 ::::
 
-
-The MacOS archive for {{es}} {{stack-version}} can be downloaded and installed as follows:
-
-```sh
-curl -O https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-{{stack-version}}-darwin-x86_64.tar.gz
-curl https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-{{stack-version}}-darwin-x86_64.tar.gz.sha512 | shasum -a 512 -c - <1>
-tar -xzf elasticsearch-{{stack-version}}-darwin-x86_64.tar.gz
-cd elasticsearch-{{stack-version}}/ <2>
-```
-
-1. Compares the SHA of the downloaded `.tar.gz` archive and the published checksum, which should output `elasticsearch-{{version}}-darwin-x86_64.tar.gz: OK`.
-2. This directory is known as `$ES_HOME`.
-
-## Enable automatic creation of system indices [targz-enable-indices]
+## Step 2: Enable automatic creation of system indices [targz-enable-indices]
 
 :::{include} _snippets/enable-auto-indices.md
 :::
 
-## Run {{es}} from the command line [targz-running]
+## Step 3: Start {{es}} [targz-running]
+
+You have several options for starting {{es}}
+
+* [Run from the command line](#command-line)
+* [Run the node to be enrolled in an existing cluster](#existing-cluster)
+* [Run as a daemon](#setup-installation-daemon)
+
+### Run {{es}} from the command line [command-line]
 
 :::{include} _snippets/targz-start.md
 :::
 
-### Enroll nodes in an existing cluster [_enroll_nodes_in_an_existing_cluster_2]
+#### Security at startup [security-at-startup]
+
+:::{include} _snippets/auto-security-config.md
+:::
+
+:::{include} _snippets/pw-env-var.md
+:::
+
+### Enroll the node in an existing cluster [existing-cluster]
 
 :::{include} _snippets/enroll-nodes.md
 :::
 
-## Check that {{es}} is running [_check_that_elasticsearch_is_running]
-
-:::{include} _snippets/check-es-running.md
-:::
-
-## Run as a daemon [setup-installation-daemon]
+### Run as a daemon [setup-installation-daemon]
 
 :::{include} _snippets/targz-daemon.md
+:::
+
+## Step 4: Check that {{es}} is running [_check_that_elasticsearch_is_running]
+
+:::{include} _snippets/check-es-running.md
 :::
 
 ## Configure {{es}} on the command line [targz-configuring]

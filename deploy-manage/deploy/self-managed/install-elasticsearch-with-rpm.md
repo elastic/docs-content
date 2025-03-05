@@ -5,6 +5,8 @@ sub:
   es-conf: "/etc/elasticsearch"
   slash: "/"
   distro: "RPM"
+  export: "export"
+  escape: "\\"
 navigation_title: "RPM"
 ---
 
@@ -19,7 +21,7 @@ RPM install is not supported on distributions with old versions of RPM, such as 
 :::{include} _snippets/trial.md
 :::
 
-:::{include} _snippets/other-versions.md
+:::{include} _snippets/es-releases.md
 :::
 
 ::::{note}
@@ -61,7 +63,10 @@ sudo rpm --install elasticsearch-{{stack-version}}-x86_64.rpm
 
 ## Start {{es}} with security enabled [rpm-security-configuration]
 
-:::{include} _snippets/start-security-enabled.md
+:::{include} _snippets/auto-security-config.md
+:::
+
+:::{include} _snippets/pw-env-var.md
 :::
 
 ### Reconfigure a node to join an existing cluster [_reconfigure_a_node_to_join_an_existing_cluster_2]

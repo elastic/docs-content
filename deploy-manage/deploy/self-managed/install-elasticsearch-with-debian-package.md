@@ -5,6 +5,8 @@ sub:
   es-conf: "/etc/elasticsearch"
   slash: "/"
   distro: "Debian"
+  export: "export"
+  escape: "\\"
 navigation_title: Debian
 ---
 
@@ -15,7 +17,7 @@ The Debian package for {{es}} can be [downloaded from our website](#install-deb)
 :::{include} _snippets/trial.md
 :::
 
-:::{include} _snippets/other-versions.md
+:::{include} _snippets/es-releases.md
 :::
 
 ::::{note}
@@ -93,7 +95,10 @@ sudo dpkg -i elasticsearch-{{stack-version}}-amd64.deb
 
 ## Start {{es}} with security enabled [deb-security-configuration]
 
-:::{include} _snippets/start-security-enabled.md
+:::{include} _snippets/auto-security-config.md
+:::
+
+:::{include} _snippets/pw-env-var.md
 :::
 
 ### Reconfigure a node to join an existing cluster [_reconfigure_a_node_to_join_an_existing_cluster]

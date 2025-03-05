@@ -47,7 +47,7 @@ sudo journalctl --unit elasticsearch --since  "2016-10-30 18:17:16"
 
 Check `man journalctl` or [https://www.freedesktop.org/software/systemd/man/journalctl.html](https://www.freedesktop.org/software/systemd/man/journalctl.md) for more command line options.
 
-::::{admonition} Startup timeouts with older `systemd` versions
+::::{admonition} Startup timeouts with older systemd versions
 :class: tip
 
 By default {{es}} sets the `TimeoutStartSec` parameter to `systemd` to `900s`. If you are running at least version 238 of `systemd` then {{es}} can automatically extend the startup timeout, and will do so repeatedly until startup is complete even if it takes longer than 900s.

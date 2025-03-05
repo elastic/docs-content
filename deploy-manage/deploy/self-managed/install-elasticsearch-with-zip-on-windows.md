@@ -4,6 +4,8 @@ mapped_pages:
 sub:
   es-conf: "%ES_HOME%\\config"
   slash: "\\"
+  export: "$"
+  escape: "^"
 navigation_title: Windows
 ---
 
@@ -18,7 +20,7 @@ navigation_title: Windows
 On Windows the {{es}} {{ml}} feature requires the Microsoft Universal C Runtime library. This is built into Windows 10, Windows Server 2016 and more recent versions of Windows. For older versions of Windows it can be installed via Windows Update, or from a [separate download](https://support.microsoft.com/en-us/help/2999226/update-for-universal-c-runtime-in-windows). If you cannot install the Microsoft Universal C Runtime library you can still use the rest of {{es}} if you disable the {{ml}} feature.
 ::::
 
-:::{include} _snippets/other-versions.md
+:::{include} _snippets/es-releases.md
 :::
 
 ::::{note}
@@ -31,7 +33,7 @@ On Windows the {{es}} {{ml}} feature requires the Microsoft Universal C Runtime 
 % link url manually set
 Download the `.zip` archive for {{es}} {{stack-version}} from: [https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-{{stack-version}}-windows-x86_64.zip](https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-9.0.0-windows-x86_64.zip)
 
-Unzip it with your favorite unzip tool. This will create a folder called `elasticsearch-{{stack-version}}`, which we will refer to as `%ES_HOME%`. In a terminal window, `cd` to the `%ES_HOME%` directory, for instance:
+Unzip it with your favorite unzip tool. This will create a folder called `elasticsearch-<version>`, which we will refer to as `%ES_HOME%`. In a terminal window, `cd` to the `%ES_HOME%` directory, for instance:
 
 ```sh
 cd C:\Program Files\elasticsearch-{{stack-version}}
@@ -47,6 +49,14 @@ cd C:\Program Files\elasticsearch-{{stack-version}}
 :::{include} _snippets/zip-windows-start.md
 :::
 
+### Security at startup [security-at-startup]
+
+:::{include} _snippets/auto-security-config.md
+:::
+
+:::{include} _snippets/pw-env-var.md
+:::
+
 ### Enroll nodes in an existing cluster [_enroll_nodes_in_an_existing_cluster_2]
 
 :::{include} _snippets/enroll-nodes.md
@@ -54,7 +64,7 @@ cd C:\Program Files\elasticsearch-{{stack-version}}
 
 ## Configure {{es}} on the command line [windows-configuring]
 
-{{es}} loads its configuration from the `%ES_HOME%\config\elasticsearch.yml` file by default. The format of this config file is explained in [*Configuring {{es}}*](configure-elasticsearch.md).
+{{es}} loads its configuration from the `%ES_HOME%\config\elasticsearch.yml` file by default. The format of this config file is explained in [](configure-elasticsearch.md).
 
 Any settings that can be specified in the config file can also be specified on the command line, using the `-E` syntax as follows:
 

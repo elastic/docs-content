@@ -17,7 +17,6 @@ The latest stable version of {{kib}} can be found on the [Download Kibana](https
 
 ::::{note}
 macOS is supported for development purposes only and is not covered under the support SLA for [production-supported operating systems](https://www.elastic.co/support/matrix#kibana).
-
 ::::
 
 
@@ -66,7 +65,6 @@ cd kibana-{{stack-version}}/ <2>
 
 ## Start {{es}} and generate an enrollment token for {{kib}} [targz-enroll]
 
-
 When you start {{es}} for the first time, the following security configuration occurs automatically:
 
 * [Certificates and keys](installing-elasticsearch.md#stack-security-certificates) for TLS are generated for the transport and HTTP layers.
@@ -75,7 +73,6 @@ When you start {{es}} for the first time, the following security configuration o
 * An enrollment token is generated for {{kib}}.
 
 You can then start {{kib}} and enter the enrollment token to securely connect {{kib}} with {{es}}. The enrollment token is valid for 30 minutes.
-
 
 ## Run {{kib}} from the command line [targz-running]
 
@@ -97,8 +94,6 @@ If this is the first time you’re starting {{kib}}, this command generates a un
 If you need to reset the password for the `elastic` user or other built-in users, run the [`elasticsearch-reset-password`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/command-line-tools/reset-password.md) tool. To generate new enrollment tokens for {{kib}} or {{es}} nodes, run the [`elasticsearch-create-enrollment-token`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/command-line-tools/create-enrollment-token.md) tool. These tools are available in the {{es}} `bin` directory.
 
 ::::
-
-
 
 ## Configure {{kib}} via the config file [targz-configuring]
 
