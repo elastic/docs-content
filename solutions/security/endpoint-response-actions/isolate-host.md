@@ -6,37 +6,22 @@ mapped_urls:
 
 # Isolate a host
 
-% What needs to be done: Align serverless/stateful
-
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/security-docs/security/host-isolation-ov.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/security-isolate-host.md
-
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
-
-$$$isolate-a-host$$$
-
-$$$release-a-host$$$
-
-$$$view-host-isolation-details$$$
 
 Host isolation allows you to isolate hosts from your network, blocking communication with other hosts on your network until you release the host. Isolating a host is useful for responding to malicious activity or preventing potential attacks, as it prevents lateral movement across other hosts.
 
-Isolated hosts, however, can still send data to {{es}} and {{kib}}. You can also create [host isolation exceptions](/solutions/security/manage-elastic-defend/host-isolation-exceptions.md) for specific IP addresses that isolated hosts are still allowed to communicate with, even when blocked from the rest of your network.
+Isolated hosts, however, can still send data to {{elastic-sec}}. You can also create [host isolation exceptions](/solutions/security/manage-elastic-defend/host-isolation-exceptions.md) for specific IP addresses that isolated hosts are still allowed to communicate with, even when blocked from the rest of your network.
 
 ::::{admonition} Requirements
-* Host isolation is a [Platinum or Enterprise subscription](https://www.elastic.co/pricing) feature.
+* Host isolation requires the appropriate [subscription](https://www.elastic.co/pricing) in {{stack}} or [project feature](/deploy-manage/deploy/elastic-cloud/project-settings.md) in {{serverless-short}}.
 * Hosts must have {{agent}} installed with the {{elastic-defend}} integration.
-* For {{stack}} versions >= 7.15.0, host isolation is supported for endpoints running Windows, macOS, and these Linux distributions:
+* For {{stack}} versions >= 7.15.0 and {{serverless-short}}, host isolation is supported for endpoints running Windows, macOS, and these Linux distributions:
 
     * CentOS/RHEL 8
     * Debian 11
     * Ubuntu 18.04, 20.04, and 22.04
     * AWS Linux 2
 
-* To isolate and release hosts running any operating system, you must have the **Host Isolation** [privilege](/solutions/security/configure-elastic-defend/elastic-defend-feature-privileges.md).
-
+* To isolate and release hosts running any operating system, you must have the **Host Isolation** [privilege](/solutions/security/configure-elastic-defend/elastic-defend-feature-privileges.md) or the appropriate user role.
 ::::
 
 
@@ -45,14 +30,14 @@ Isolated hosts, however, can still send data to {{es}} and {{kib}}. You can also
 :class: screenshot
 :::
 
-You can isolate a host from a detection alert’s details flyout, from the Endpoints page, or (with an Enterprise subscription) from the endpoint response console. Once a host is successfully isolated, an `Isolated` status displays next to the `Agent status` field, which you can view on the alert details flyout or Endpoints list table.
+You can isolate a host from a detection alert’s details flyout, from the Endpoints page, or from the endpoint response console. Once a host is successfully isolated, an `Isolated` status displays next to the `Agent status` field, which you can view on the alert details flyout or Endpoints list table.
 
 ::::{tip}
 If the request fails, verify that the {{agent}} and your endpoint are both online before trying again.
 ::::
 
 
-All actions executed on a host are tracked in the host’s response actions history, which you can access from the Endpoints page. Refer to [View host isolation history](/solutions/security/endpoint-response-actions/isolate-host.md#view-host-isolation-details) for more information.
+All actions executed on a host are tracked in the host’s response actions history, which you can access from the Endpoints page. Refer to [](/solutions/security/endpoint-response-actions/isolate-host.md#view-host-isolation-details) for more information.
 
 
 ## Isolate a host [isolate-a-host]
@@ -66,7 +51,6 @@ All actions executed on a host are tracked in the host’s response actions hist
 2. Click **Take action → Isolate host**.
 3. Enter a comment describing why you’re isolating the host (optional).
 4. Click **Confirm**.
-
 ::::
 
 
@@ -78,13 +62,12 @@ All actions executed on a host are tracked in the host’s response actions hist
 
 2. Enter a comment describing why you’re isolating the host (optional).
 3. Click **Confirm**.
-
 ::::
 
 
 :::::{dropdown} Isolate a host from the response console
 ::::{note}
-The response console is an [Enterprise subscription](https://www.elastic.co/pricing) feature.
+The response console requires the appropriate [subscription](https://www.elastic.co/pricing) in {{stack}} or [project feature](/deploy-manage/deploy/elastic-cloud/project-settings.md) in {{serverless-short}}.
 ::::
 
 
@@ -94,13 +77,12 @@ The response console is an [Enterprise subscription](https://www.elastic.co/pric
     `isolate --comment "Isolate this host"`
 
 3. Press **Return**.
-
 :::::
 
 
 :::::{dropdown} Automatically isolate a host using a rule’s endpoint response action
 ::::{note}
-The host isolation endpoint response action is an [Enterprise subscription](https://www.elastic.co/pricing) feature.
+The host isolation endpoint response action requires the appropriate [subscription](https://www.elastic.co/pricing) in {{stack}} or [project feature](/deploy-manage/deploy/elastic-cloud/project-settings.md) in {{serverless-short}}.
 ::::
 
 
@@ -117,7 +99,6 @@ Be aware that automatic host isolation can result in unintended consequences, su
 2. In the **Response action** field, select **Isolate**.
 3. Enter a comment describing why you’re isolating the host (optional).
 4. To finish adding the response action, click **Create & enable rule** (for a new rule) or **Save changes** (for existing rules).
-
 :::::
 
 
@@ -125,6 +106,7 @@ After the host is successfully isolated, an **Isolated** status is added to the 
 
 :::{image} ../../../images/security-host-isolated-notif.png
 :alt: Host isolated notification message
+:width: 50%
 :class: screenshot
 :::
 
@@ -140,7 +122,6 @@ After the host is successfully isolated, an **Isolated** status is added to the 
 2. From the alert details flyout, click **Take action → Release host**.
 3. Enter a comment describing why you’re releasing the host (optional).
 4. Click **Confirm**.
-
 ::::
 
 
@@ -152,13 +133,12 @@ After the host is successfully isolated, an **Isolated** status is added to the 
 
 2. Enter a comment describing why you’re releasing the host (optional).
 3. Click **Confirm**.
-
 ::::
 
 
 :::::{dropdown} Release a host from the response console
 ::::{note}
-The response console is an [Enterprise subscription](https://www.elastic.co/pricing) feature.
+The response console requires the appropriate [subscription](https://www.elastic.co/pricing) in {{stack}} or [project feature](/deploy-manage/deploy/elastic-cloud/project-settings.md) in {{serverless-short}}.
 ::::
 
 
@@ -168,7 +148,6 @@ The response console is an [Enterprise subscription](https://www.elastic.co/pric
     `release --comment "Release this host"`
 
 3. Press **Return**.
-
 :::::
 
 
@@ -176,6 +155,7 @@ After the host is successfully released, the **Isolated** status is removed from
 
 :::{image} ../../../images/security-host-released-notif.png
 :alt: Host released notification message
+:width: 50%
 :class: screenshot
 :::
 
@@ -184,9 +164,10 @@ After the host is successfully released, the **Isolated** status is removed from
 
 To confirm if a host has been successfully isolated or released, check the response actions history, which logs the response actions performed on a host.
 
-Go to the **Endpoints** page, click an endpoint’s name, then click the **Response action history** tab. You can filter the information displayed in this view. Refer to [*Response actions history*](/solutions/security/endpoint-response-actions/response-actions-history.md) for more details.
+Go to the **Endpoints** page, click an endpoint’s name, then click the **Response action history** tab. You can filter the information displayed in this view. Refer to [](/solutions/security/endpoint-response-actions/response-actions-history.md) for more details.
 
 :::{image} ../../../images/security-response-actions-history-endpoint-details.png
 :alt: Response actions history page UI
+:width: 90%
 :class: screenshot
 :::
