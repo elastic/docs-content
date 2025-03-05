@@ -44,7 +44,6 @@ The following diagram illustrates a simple RAG system using {{es}}.
 
 :::{image} ../../images/elasticsearch-reference-rag-schema.svg
 :alt: Components of a simple RAG system using Elasticsearch
-:class: stretch
 :::
 
 The workflow is as follows:
