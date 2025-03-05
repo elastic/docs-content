@@ -12,6 +12,7 @@ applies_to:
   deployment:
     ece: ga
     ess: ga
+navigation_title: "In ECE and ECH"
 ---
 
 # Autoscaling in {{ece}} and {{ech}}
