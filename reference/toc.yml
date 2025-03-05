@@ -125,6 +125,7 @@ toc:
                   - file: ingestion-tools/fleet/agent-provider.md
                   - file: ingestion-tools/fleet/host-provider.md
                   - file: ingestion-tools/fleet/env-provider.md
+                  - file: ingestion-tools/fleet/filesource-provider.md
                   - file: ingestion-tools/fleet/kubernetes_secrets-provider.md
                   - file: ingestion-tools/fleet/kubernetes_leaderelection-provider.md
                   - file: ingestion-tools/fleet/local-dynamic-provider.md
