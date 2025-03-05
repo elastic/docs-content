@@ -12,13 +12,6 @@ redirects:
       'anonymous-authentication':
       'basic-authentication':
       'http-authentication':
-  'deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md': 
-    anchors:
-      'roles-indices-priv':
-      'roles-global-priv':
-      'roles-application-priv':
-      'roles-remote-indices-priv':
-      'roles-remote-cluster-priv':
 
 ## reference
   'reference/security/elastic-defend/index.md': 'solutions/security/configure-elastic-defend.md'
@@ -38,3 +31,4 @@ redirects:
   'reference/security/elastic-defend/create-defend-policy-api.md': 'solutions/security/configure-elastic-defend/create-an-elastic-defend-policy-using-api.md'
   'reference/security/elastic-defend/offline-endpoint.md': 'solutions/security/configure-elastic-defend/configure-offline-endpoints-air-gapped-environments.md'
   'reference/security/elastic-defend/uninstall-agent.md': 'solutions/security/configure-elastic-defend/uninstall-elastic-agent.md'
+  'reference/security/fields-and-object-schemas/runtime-fields.md': 'solutions/security/get-started/create-runtime-fields-in-elastic-security.md'

@@ -5,7 +5,9 @@ mapped_pages:
 
 # Logs Stream [tail-logs]
 
-::::{admonition} There’s a new, better way to explore your logs!
+::::{note}
+**There’s a new, better way to explore your logs!**
+
 The Logs Stream app and dashboard panel are deactivated by default. We recommend viewing and inspecting your logs with [Logs Explorer](logs-explorer.md) as it provides more features, better performance, and more intuitive navigation.
 
 To activate the Logs Stream app, refer to [Activate Logs Stream](#activate-logs-stream).

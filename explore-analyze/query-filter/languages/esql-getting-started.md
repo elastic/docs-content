@@ -191,7 +191,7 @@ FROM sample_data
 | WHERE event_duration > 5000000
 ```
 
-`WHERE` supports several [operators](elasticsearch://reference/query-languages/esql/esql-functions-operators.md#esql-operators). For example, you can use [`LIKE`](elasticsearch://reference/query-languages/esql/esql-functions-operators.md#esql-like-operator) to run a wildcard query against the `message` column:
+`WHERE` supports several [operators](elasticsearch://reference/query-languages/esql/esql-functions-operators.md#esql-operators). For example, you can use [`LIKE`](elasticsearch://reference/query-languages/esql/esql-functions-operators.md#esql-like) to run a wildcard query against the `message` column:
 
 ```esql
 FROM sample_data

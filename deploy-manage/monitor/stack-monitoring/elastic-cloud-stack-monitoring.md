@@ -60,6 +60,13 @@ $$$ech-logging-and-monitoring-production$$$
 
 $$$ech-logging-and-monitoring-retention$$$
 
+% Please leave the AutoOps banner in the final content of this page
+
+:::{important}
+ If you’re using Elastic Cloud Hosted, then you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, real-time issue detection and resolution paths. For more information, refer to [Monitor with AutoOps](/deploy-manage/monitor/autoops.md).
+:::
+
+
 **This page is a work in progress.** The documentation team is working to combine content pulled from the following pages:
 
 * [/raw-migrated-files/cloud/cloud-heroku/ech-monitoring.md](/raw-migrated-files/cloud/cloud-heroku/ech-monitoring.md)

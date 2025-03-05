@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/inspect-log-anomalies.html
+applies_to:
+  stack: all
 ---
 
 # Inspect log anomalies [inspect-log-anomalies]

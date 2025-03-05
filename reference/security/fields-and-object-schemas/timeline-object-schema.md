@@ -1,4 +1,8 @@
 ---
+applies_to:
+  stack: all
+  serverless:
+    security: all
 mapped_pages:
   - https://www.elastic.co/guide/en/security/current/timeline-object-schema.html
   - https://www.elastic.co/guide/en/serverless/current/security-timeline-object-schema.html

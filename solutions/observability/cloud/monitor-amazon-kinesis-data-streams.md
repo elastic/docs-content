@@ -28,8 +28,7 @@ To collect Kinesis data stream metrics from Amazon CloudWatch, you typically nee
 
 Expand the **quick guide** to learn how, or skip to the next section if your data is already in {{es}}.
 
-:::::{dropdown} **Quick guide: Add data**
-::::{note}
+:::::{dropdown} Quick guide: Add data
 1. In the Observability UI, find **Integrations** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. In the query bar, search for and select the **Amazon Kinesis Data Stream** integration.
 3. Read the overview to make sure you understand integration requirements and other considerations.

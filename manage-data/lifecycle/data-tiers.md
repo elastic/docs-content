@@ -111,12 +111,28 @@ To add a data tier to an existing deployment:
 
 #### Disable a data tier [disable-a-data-tier]
 
+:::{important}
+Disabling a data tier, attempting to scale nodes down in size, reducing availability zones, or reverting an [autoscaling](/deploy-manage/autoscaling.md) change can all result in cluster instability, cluster inaccessibility, and even data corruption or loss in extreme cases.
+
+To avoid this, especially for [production environments](/deploy-manage/production-guidance.md), and in addition to making configuration changes to your indices and ILM as described on this page:
+* Review the disk size, CPU, JVM memory pressure, and other [performance metrics](/deploy-manage/monitor/monitoring-data/access-performance-metrics-on-elastic-cloud.md) of your deployment **before** attempting to perform the scaling down action. 
+* Make sure that you have enough resources and [availability zones](/deploy-manage/production-guidance/availability-and-resilience.md) to handle your workloads after scaling down.
+* Check that your [deployment hardware profile](/deploy-manage/deploy/elastic-cloud/ec-change-hardware-profile.md) (for {{ech}}) or [deployment template](/deploy-manage/deploy/cloud-enterprise/configure-deployment-templates.md) (for {{ece}}) is correct for your business use case. For example, if you need to scale due to CPU pressure increases and are using a *Storage Optimized* hardware profile, consider switching to a *CPU Optimized* configuration instead. 
+
+Read [https://www.elastic.co/cloud/shared-responsibility](https://www.elastic.co/cloud/shared-responsibility) for additional details.
+If in doubt, reach out to Support.
+:::
+
 The process of disabling a data tier depends on whether we are dealing with [searchable snapshots](#ece-disable-searchable-snapshot-data-tier) or [regular indices](#ece-disable-non-searchable-snapshot-data-tier).
 
 The hot and warm tiers store regular indices, while the frozen tier stores searchable snapshots. However, the cold tier can store either regular indices or searchable snapshots. To check if a cold tier contains searchable snapshots perform the following request:
 
 ```sh
+# cold data tier searchable snapshot indices 
 GET /_cat/indices/restored-*
+
+# frozen data tier searchable snapshot indices 
+GET /_cat/indices/partial-*
 ```
 
 ##### Non-searchable snapshot data tier [ece-disable-non-searchable-snapshot-data-tier]

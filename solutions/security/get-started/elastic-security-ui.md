@@ -109,7 +109,7 @@ Expand this section to access the following pages:
 
 * [Rules](/solutions/security/detect-and-alert/manage-detection-rules.md): Create and manage rules to monitor suspicious events.
 
-* [Benchmarks](/solutions/security/cloud/benchmarks-2.md): View, set up, or configure cloud security benchmarks.
+* [Benchmarks](/solutions/security/cloud/benchmarks.md): View, set up, or configure cloud security benchmarks.
 
 * [Shared Exception Lists](/solutions/security/detect-and-alert/rule-exceptions.md#shared-exception-list-intro): View and manage rule exceptions and shared exception lists.
 
