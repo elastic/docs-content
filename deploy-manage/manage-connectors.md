@@ -26,7 +26,7 @@ Access to connectors is granted based on your privileges to alerting-enabled fea
 stack:
 ```
 
-If you're using {{stack}}, use the [action configuration settings](asciidocalypse://docs/kibana/docs/reference/configuration-reference/alerting-settings.md#action-settings) to customize connector networking configurations, such as proxies, certificates, or TLS settings. You can set configurations that apply to all your connectors or use `xpack.actions.customHostSettings` to set per-host configurations.
+If you're using {{stack}}, use the [action configuration settings](kibana://reference/configuration-reference/alerting-settings.md#action-settings) to customize connector networking configurations, such as proxies, certificates, or TLS settings. You can set configurations that apply to all your connectors or use `xpack.actions.customHostSettings` to set per-host configurations.
 
 ## Connector list [connectors-list]
 
@@ -51,7 +51,7 @@ You can delete a connector even if there are still actions referencing it. When 
 
 ## Creating a new connector [creating-new-connector]
 
-New connectors can be created with the **Create connector** button, which guides you to select the type of connector and configure its properties. For a full list of available connectors, see [Available connectors](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/connectors-kibana.md).
+New connectors can be created with the **Create connector** button, which guides you to select the type of connector and configure its properties. For a full list of available connectors, see [Available connectors](kibana://reference/connectors-kibana.md).
 
 ::::{note}
 Some connector types are paid commercial features, while others are free. For a comparison of the Elastic subscription levels, go to [the subscription page](https://www.elastic.co/subscriptions).
@@ -66,7 +66,7 @@ Some connector types are paid commercial features, while others are free. For a 
 After you create a connector, it is available for use any time you set up an action in the current space.
 
 ::::{tip}
-For out-of-the-box and standardized connectors, refer to [preconfigured connectors](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/pre-configured-connectors.md).
+For out-of-the-box and standardized connectors, refer to [preconfigured connectors](kibana://reference/connectors-kibana/pre-configured-connectors.md).
 
 You can also manage connectors as resources with the [Elasticstack provider](https://registry.terraform.io/providers/elastic/elasticstack/latest) for Terraform. For more details, refer to the [elasticstack_kibana_action_connector](https://registry.terraform.io/providers/elastic/elasticstack/latest/docs/resources/kibana_action_connector) resource.
 

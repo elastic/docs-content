@@ -92,7 +92,7 @@ To store monitoring data in a separate cluster:
     ::::
 
 
-    1. (Optional) Disable the collection of monitoring data in this {{kib}} instance. Set the `xpack.monitoring.kibana.collection.enabled` setting to `false` in the `kibana.yml` file. For more information about this setting, see [Monitoring settings in {{kib}}](asciidocalypse://docs/kibana/docs/reference/configuration-reference/monitoring-settings.md).
+    1. (Optional) Disable the collection of monitoring data in this {{kib}} instance. Set the `xpack.monitoring.kibana.collection.enabled` setting to `false` in the `kibana.yml` file. For more information about this setting, see [Monitoring settings in {{kib}}](kibana://reference/configuration-reference/monitoring-settings.md).
 
 8. [Configure {{kib}} to retrieve and display the monitoring data](../../../deploy-manage/monitor/stack-monitoring/kibana-monitoring-data.md).
 

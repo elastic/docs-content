@@ -15,7 +15,7 @@ $$$glossary-metadata$$$ @metadata
 ## A [a-glos]
 
 $$$glossary-action$$$ action
-:   1. The rule-specific response that occurs when an alerting rule fires. A rule can have multiple actions. See [Connectors and actions](asciidocalypse://docs/kibana/docs/reference/connectors-kibana.md).
+:   1. The rule-specific response that occurs when an alerting rule fires. A rule can have multiple actions. See [Connectors and actions](kibana://reference/connectors-kibana.md).
 2. In {{elastic-sec}}, actions send notifications via other systems when a detection alert is created, such as email, Slack, PagerDuty, and {{webhook}}.
 
 
@@ -23,7 +23,7 @@ $$$glossary-admin-console$$$ administration console
 :   A component of {{ece}} that provides the API server for the [Cloud UI](/reference/glossary/index.md#glossary-cloud-ui). Also syncs cluster and allocator data from ZooKeeper to {{es}}.
 
 $$$glossary-advanced-settings$$$ Advanced Settings
-:   Enables you to control the appearance and behavior of {{kib}} by setting the date format, default index, and other attributes. Part of {{kib}} Stack Management. See [Advanced Settings](asciidocalypse://docs/kibana/docs/reference/advanced-settings.md).
+:   Enables you to control the appearance and behavior of {{kib}} by setting the date format, default index, and other attributes. Part of {{kib}} Stack Management. See [Advanced Settings](kibana://reference/advanced-settings.md).
 
 $$$glossary-agent-policy$$$ Agent policy
 :   A collection of inputs and settings that defines the data to be collected by {{agent}}. An agent policy can be applied to a single agent or shared by a group of agents; this makes it easier to manage many agents at scale. See [{{agent}} policies](/reference/ingestion-tools/fleet/agent-policy.md).
@@ -129,7 +129,7 @@ $$$glossary-conditional$$$ conditional
 :   A control flow that executes certain actions based on whether a statement (also called a condition) is true or false. {{ls}} supports `if`, `else if`, and `else` statements. You can use conditional statements to apply filters and send events to a specific output based on conditions that you specify.
 
 $$$glossary-connector$$$ connector
-:   A configuration that enables integration with an external system (the destination for an action). See [Connectors and actions](asciidocalypse://docs/kibana/docs/reference/connectors-kibana.md).
+:   A configuration that enables integration with an external system (the destination for an action). See [Connectors and actions](kibana://reference/connectors-kibana.md).
 
 $$$glossary-console$$$ Console
 :   In {{kib}}, a tool for interacting with the {{es}} REST API. You can send requests to {{es}}, view responses, view API documentation, and get your request history. See [Console](/explore-analyze/query-filter/tools/console.md).

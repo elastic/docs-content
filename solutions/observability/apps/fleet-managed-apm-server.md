@@ -17,7 +17,7 @@ You need {{es}} for storing and searching your data, and {{kib}} for visualizing
 * Internet connection for {{kib}} to download integration packages from the {{package-registry}}. Make sure the {{kib}} server can connect to `https://epr.elastic.co` on port `443`. If your environment has network traffic restrictions, there are ways to work around this requirement. See [Air-gapped environments](/reference/ingestion-tools/fleet/air-gapped.md) for more information.
 * {{kib}} user with `All` privileges on {{fleet}} and {{integrations}}. Since many Integrations assets are shared across spaces, users need the {{kib}} privileges in all spaces.
 * In the {{es}} configuration, the [built-in API key service](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#api-key-service-settings) must be enabled. (`xpack.security.authc.api_key.enabled: true`)
-* In the {{kib}} configuration, the saved objects encryption key must be set. {{fleet}} requires this setting in order to save API keys and encrypt them in {{kib}}. You can either set `xpack.encryptedSavedObjects.encryptionKey` to an alphanumeric value of at least 32 characters, or run the [`kibana-encryption-keys` command](asciidocalypse://docs/kibana/docs/reference/commands/kibana-encryption-keys.md) to generate the key.
+* In the {{kib}} configuration, the saved objects encryption key must be set. {{fleet}} requires this setting in order to save API keys and encrypt them in {{kib}}. You can either set `xpack.encryptedSavedObjects.encryptionKey` to an alphanumeric value of at least 32 characters, or run the [`kibana-encryption-keys` command](kibana://reference/commands/kibana-encryption-keys.md) to generate the key.
 
 **Example security settings**
 
@@ -64,7 +64,7 @@ You can install only a single {{agent}} per host, which means you cannot run {{f
 2. Under **Fleet Server hosts**, click **Edit hosts** and specify one or more host URLs your {{agent}}s will use to connect to {{fleet-server}}. For example, `https://192.0.2.1:8220`, where `192.0.2.1` is the host IP where you will install {{fleet-server}}. Save and apply your settings.
 
     ::::{tip}
-    If the **Edit hosts** option is grayed out, {{fleet-server}} hosts are configured outside of {{fleet}}. For more information, refer to [{{fleet}} settings in {{kib}}](asciidocalypse://docs/kibana/docs/reference/configuration-reference/fleet-settings.md).
+    If the **Edit hosts** option is grayed out, {{fleet-server}} hosts are configured outside of {{fleet}}. For more information, refer to [{{fleet}} settings in {{kib}}](kibana://reference/configuration-reference/fleet-settings.md).
     ::::
 
 3. In the **{{es}} hosts** field, specify the {{es}} URLs where {{agent}}s will send data. For example, `https://192.0.2.0:9200`. Skip this step if you’ve started the {{stack}} with security enabled (you cannot change this setting because it’s managed outside of {{fleet}}).

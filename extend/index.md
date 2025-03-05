@@ -6,7 +6,7 @@ This section contains information on how to extend or contribute to our various 
 
 You can contribute to various projects, including:
 
-- [Kibana](asciidocalypse://docs/kibana/docs/extend/index.md): Enhance our data visualization platform by contributing to Kibana.
+- [Kibana](kibana://extend/index.md): Enhance our data visualization platform by contributing to Kibana.
 - [Logstash](logstash://extend/index.md): Help us improve the data processing pipeline with your contributions to Logstash.
 - [Beats](asciidocalypse://docs/beats/docs/extend/index.md): Add new features or beats to our lightweight data shippers.
 

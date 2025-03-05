@@ -22,7 +22,7 @@ Elasticsearch
 
 Kibana
 
-* [Kibana 8.x Release Notes](asciidocalypse://docs/kibana/docs/release-notes/kibana.md)
+* [Kibana 8.x Release Notes](kibana://release-notes/index.md)
 * [Kibana 7.x Release Notes](https://www.elastic.co/guide/en/kibana/7.17/release-notes.html)
 * [Kibana 6.x Release Notes](https://www.elastic.co/guide/en/kibana/6.8/release-notes.html)
 * [Kibana 5.x Release Notes](https://www.elastic.co/guide/en/kibana/5.6/release-notes.html)

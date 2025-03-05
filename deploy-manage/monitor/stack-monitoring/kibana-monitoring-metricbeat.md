@@ -28,7 +28,7 @@ To learn about monitoring in general, see [Monitor a cluster](../../monitor.md).
     monitoring.kibana.collection.enabled: false
     ```
 
-    Leave the `monitoring.enabled` set to its default value (`true`). For more information, see [Monitoring settings in {{kib}}](asciidocalypse://docs/kibana/docs/reference/configuration-reference/monitoring-settings.md).
+    Leave the `monitoring.enabled` set to its default value (`true`). For more information, see [Monitoring settings in {{kib}}](kibana://reference/configuration-reference/monitoring-settings.md).
 
 2. [Start {{kib}}](../../maintenance/start-stop-services/start-stop-kibana.md).
 3. Set the `xpack.monitoring.collection.enabled` setting to `true` on each node in the production cluster. By default, it is disabled (`false`).

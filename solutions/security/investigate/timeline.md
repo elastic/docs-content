@@ -223,7 +223,7 @@ From the **Correlation** tab, you can also do the following:
 ## Use {{esql}} to investigate events [esql-in-timeline]
 
 ::::{note}
-{{esql}} is enabled by default in {{kib}}. It can be disabled using the `enableESQL` setting from the [Advanced Settings](asciidocalypse://docs/kibana/docs/reference/advanced-settings.md). This will hide the {{esql}} user interface from various applications. However, users will be able to access existing {{esql}} artifacts like saved searches and visualizations.
+{{esql}} is enabled by default in {{kib}}. It can be disabled using the `enableESQL` setting from the [Advanced Settings](kibana://reference/advanced-settings.md). This will hide the {{esql}} user interface from various applications. However, users will be able to access existing {{esql}} artifacts like saved searches and visualizations.
 ::::
 
 

@@ -22,9 +22,9 @@ The AI Assistant uses generative AI to provide:
 
 The AI Assistant integrates with your large language model (LLM) provider through our supported {{stack}} connectors:
 
-* [OpenAI connector](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/openai-action-type.md) for OpenAI or Azure OpenAI Service.
-* [Amazon Bedrock connector](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/bedrock-action-type.md) for Amazon Bedrock, specifically for the Claude models.
-* [Google Gemini connector](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/gemini-action-type.md) for Google Gemini.
+* [OpenAI connector](kibana://reference/connectors-kibana/openai-action-type.md) for OpenAI or Azure OpenAI Service.
+* [Amazon Bedrock connector](kibana://reference/connectors-kibana/bedrock-action-type.md) for Amazon Bedrock, specifically for the Claude models.
+* [Google Gemini connector](kibana://reference/connectors-kibana/gemini-action-type.md) for Google Gemini.
 
 ::::{important}
 The AI Assistant is powered by an integration with your large language model (LLM) provider. LLMs are known to sometimes present incorrect information as if it’s correct. Elastic supports configuration and connection to the LLM provider and your knowledge base, but is not responsible for the LLM’s responses.
@@ -86,9 +86,9 @@ To set up the AI Assistant:
 
 2. Create a connector for your AI provider. Refer to the connector documentation to learn how:
 
-    * [OpenAI](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/openai-action-type.md)
-    * [Amazon Bedrock](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/bedrock-action-type.md)
-    * [Google Gemini](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/gemini-action-type.md)
+    * [OpenAI](kibana://reference/connectors-kibana/openai-action-type.md)
+    * [Amazon Bedrock](kibana://reference/connectors-kibana/bedrock-action-type.md)
+    * [Google Gemini](kibana://reference/connectors-kibana/gemini-action-type.md)
 
 3. Authenticate communication between {{observability}} and the AI provider by providing the following information:
 
@@ -329,7 +329,7 @@ Continue a conversation from a contextual prompt by clicking **Start chat** to o
 
 ### Add the AI Assistant connector to alerting workflows [obs-ai-connector]
 
-Use the [Observability AI Assistant connector](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/obs-ai-assistant-action-type.md) to add AI-generated insights and custom actions to your alerting workflows as follows:
+Use the [Observability AI Assistant connector](kibana://reference/connectors-kibana/obs-ai-assistant-action-type.md) to add AI-generated insights and custom actions to your alerting workflows as follows:
 
 1. [Create (or edit) an alerting rule](incident-management/create-manage-rules.md) and specify the conditions that must be met for the alert to fire.
 2. Under **Actions**, select the **Observability AI Assistant** connector type.
@@ -403,7 +403,7 @@ It is possible to make the Elastic official documentation available to the AI As
 Enabling that feature can be done from the **Settings** tab of the AI Assistant Settings page, using the "Install Elastic Documentation" action.
 
 ::::{important}
-Installing the product documentation in air gapped environments requires specific installation and configuration instructions, which are available in the [{{kib}} Kibana AI Assistants settings documentation](asciidocalypse://docs/kibana/docs/reference/configuration-reference/ai-assistant-settings.md).
+Installing the product documentation in air gapped environments requires specific installation and configuration instructions, which are available in the [{{kib}} Kibana AI Assistants settings documentation](kibana://reference/configuration-reference/ai-assistant-settings.md).
 ::::
 
 
@@ -413,4 +413,4 @@ Installing the product documentation in air gapped environments requires specifi
 
 ### Token limits [obs-ai-token-limits]
 
-Most LLMs have a set number of tokens they can manage in single a conversation. When you reach the token limit, the LLM will throw an error, and Elastic will display a "Token limit reached" error in Kibana. The exact number of tokens that the LLM can support depends on the LLM provider and model you’re using. If you use an OpenAI connector, monitor token utilization in **OpenAI Token Usage** dashboard. For more information, refer to the [OpenAI Connector documentation](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/openai-action-type.md#openai-connector-token-dashboard).
+Most LLMs have a set number of tokens they can manage in single a conversation. When you reach the token limit, the LLM will throw an error, and Elastic will display a "Token limit reached" error in Kibana. The exact number of tokens that the LLM can support depends on the LLM provider and model you’re using. If you use an OpenAI connector, monitor token utilization in **OpenAI Token Usage** dashboard. For more information, refer to the [OpenAI Connector documentation](kibana://reference/connectors-kibana/openai-action-type.md#openai-connector-token-dashboard).

@@ -88,7 +88,7 @@ In some cases, you may get a warning saying "User settings are different across 
 
 Be aware that some settings that could break your cluster if set incorrectly and that the syntax might change between major versions.
 
-For a list of supported settings, check [Kibana settings](asciidocalypse://docs/kibana/docs/reference/cloud/elastic-cloud-kibana-settings.md).
+For a list of supported settings, check [Kibana settings](kibana://reference/cloud/elastic-cloud-kibana-settings.md).
 
 To change Kibana settings:
 

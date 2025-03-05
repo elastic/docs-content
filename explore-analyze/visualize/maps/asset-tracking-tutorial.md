@@ -725,7 +725,7 @@ For this example, you will set the rule to check every minute. However, when run
 
 16. Click **Save**.
 
-The **TriMet Alerts connector** is added to the **{{connectors-ui}}** page. For more information on common connectors, refer to the [Slack](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/slack-action-type.md) and [Email](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/email-action-type.md) connectors.
+The **TriMet Alerts connector** is added to the **{{connectors-ui}}** page. For more information on common connectors, refer to the [Slack](kibana://reference/connectors-kibana/slack-action-type.md) and [Email](kibana://reference/connectors-kibana/email-action-type.md) connectors.
 
 
 ### Step 3. View alerts in real time [_step_3_view_alerts_in_real_time]

@@ -15,7 +15,7 @@ mapped_pages:
 
 If you are using an **on-premises** {{stack}} deployment:
 
-* In the `kibana.yml` configuration file, add the [`xpack.encryptedSavedObjects.encryptionKey`](asciidocalypse://docs/kibana/docs/reference/configuration-reference/alerting-settings.md#general-alert-action-settings) setting.
+* In the `kibana.yml` configuration file, add the [`xpack.encryptedSavedObjects.encryptionKey`](kibana://reference/configuration-reference/alerting-settings.md#general-alert-action-settings) setting.
 * For emails to have a footer with a link back to {{kib}}, set the [`server.publicBaseUrl`](../../../deploy-manage/deploy/self-managed/configure.md#server-publicBaseUrl) configuration setting.
 
 If you are using an **on-premises** {{stack}} deployment with [**security**](../../../deploy-manage/security.md):
@@ -47,7 +47,7 @@ The **{{connectors-feature}}** feature privilege is required to manage connector
 
 Likewise, you can customize the **Rules Settings** sub-feature privileges related to flapping detection settings.
 
-To create a rule that uses the [Cases connector](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/cases-action-type.md), you must also have `All` privileges for the **Cases** feature.
+To create a rule that uses the [Cases connector](kibana://reference/connectors-kibana/cases-action-type.md), you must also have `All` privileges for the **Cases** feature.
 
 The rule type also affects the privileges that are required. For example, to create or edit {{ml}} rules, you must have `all` privileges for the **Analytics > {{ml-app}}** feature. For {{stack-monitor-app}} rules, you must have the `monitoring_user` role. For {{observability}} rules, you must have `all` privileges for the appropriate {{observability}} features. For Security rules, refer to [Detections prerequisites and requirements](../../../solutions/security/detect-and-alert/detections-requirements.md).
 
@@ -104,7 +104,7 @@ If a rule requires certain privileges, such as index privileges, to run and a us
 
 ### Restrict actions [alerting-restricting-actions]
 
-For security reasons you may wish to limit the extent to which {{kib}} can connect to external services. You can use [Action settings](asciidocalypse://docs/kibana/docs/reference/configuration-reference/alerting-settings.md#action-settings) to disable certain [*Connectors*](../../../deploy-manage/manage-connectors.md) and allowlist the hostnames that {{kib}} can connect with.
+For security reasons you may wish to limit the extent to which {{kib}} can connect to external services. You can use [Action settings](kibana://reference/configuration-reference/alerting-settings.md#action-settings) to disable certain [*Connectors*](../../../deploy-manage/manage-connectors.md) and allowlist the hostnames that {{kib}} can connect with.
 
 ## Space isolation [alerting-spaces]
 

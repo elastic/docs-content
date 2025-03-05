@@ -645,7 +645,7 @@ To use actions for alert notifications, you need the appropriate user role. For 
     ::::{note}
     Each action type requires a connector. Connectors store the information required to send the notification from the external system. You can configure connectors while creating the rule or in **Project settings** → **Stack Management** → **{{connectors-ui}}**. For more information, see [Action and connector types](../../../deploy-manage/manage-connectors.md).
 
-    Some connectors that perform actions require less configuration. For example, you do not need to set the action frequency or variables for the [Cases connector](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/cases-action-type.md).
+    Some connectors that perform actions require less configuration. For example, you do not need to set the action frequency or variables for the [Cases connector](kibana://reference/connectors-kibana/cases-action-type.md).
 
     ::::
 

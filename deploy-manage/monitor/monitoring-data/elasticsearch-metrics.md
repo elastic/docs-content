@@ -120,5 +120,5 @@ If you use {{filebeat}} to collect log data from your cluster, you can see its r
 If you click **Logs**, you can see the most recent logs for the cluster.
 
 ::::{tip}
-By default, up to 10 log entries are shown. You can show up to 50 log entries by changing the [`monitoring.ui.elasticsearch.logFetchCount` setting](asciidocalypse://docs/kibana/docs/reference/configuration-reference/monitoring-settings.md#monitoring-ui-settings). If you changed the default name of filebeat indices, you also need to update `monitoring.ui.logs.index` accordingly.
+By default, up to 10 log entries are shown. You can show up to 50 log entries by changing the [`monitoring.ui.elasticsearch.logFetchCount` setting](kibana://reference/configuration-reference/monitoring-settings.md#monitoring-ui-settings). If you changed the default name of filebeat indices, you also need to update `monitoring.ui.logs.index` accordingly.
 ::::

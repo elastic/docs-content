@@ -19,13 +19,13 @@ When a user is not authorized to view data in an index (such as an {{es}} index)
 
 Set an encryption key so that sessions are not invalidated. You can optionally configure additional security settings and authentication.
 
-1. Set the `xpack.security.encryptionKey` property in the `kibana.yml` configuration file. You can use any text string that is 32 characters or longer as the encryption key. Refer to [`xpack.security.encryptionKey`](asciidocalypse://docs/kibana/docs/reference/configuration-reference/security-settings.md#xpack-security-encryptionKey).
+1. Set the `xpack.security.encryptionKey` property in the `kibana.yml` configuration file. You can use any text string that is 32 characters or longer as the encryption key. Refer to [`xpack.security.encryptionKey`](kibana://reference/configuration-reference/security-settings.md#xpack-security-encryptionkey).
 
     ```yaml
     xpack.security.encryptionKey: "something_at_least_32_characters"
     ```
 
-    {{kib}}'s reporting and saved objects features also have encryption key settings. Refer to [`xpack.reporting.encryptionKey`](asciidocalypse://docs/kibana/docs/reference/configuration-reference/reporting-settings.md#xpack-reporting-encryptionKey) and [`xpack.encryptedSavedObjects.encryptionKey`](asciidocalypse://docs/kibana/docs/reference/configuration-reference/security-settings.md#xpack-encryptedSavedObjects-encryptionKey) respectively.
+    {{kib}}'s reporting and saved objects features also have encryption key settings. Refer to [`xpack.reporting.encryptionKey`](kibana://reference/configuration-reference/reporting-settings.md#xpack-reporting-encryptionkey) and [`xpack.encryptedSavedObjects.encryptionKey`](kibana://reference/configuration-reference/security-settings.md#xpack-encryptedsavedobjects-encryptionkey) respectively.
 
 2. Optional: [Configure {{kib}}'s session expiration settings](../../../deploy-manage/security/kibana-session-management.md).
 3. Optional: [Configure {{kib}} to authenticate to {{es}} with a client certificate](../../../deploy-manage/security/secure-cluster-communications.md).

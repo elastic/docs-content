@@ -47,7 +47,7 @@ You can create the following types of rules:
 * [**ES|QL**](/solutions/security/detect-and-alert/create-detection-rule.md#create-esql-rule): Searches the defined indices and creates an alert when results match an [Elasticsearch Query Language (ES|QL)](/explore-analyze/query-filter/languages/esql.md) query.
 
     ::::{note}
-    {{esql}} is enabled by default in {{kib}}. It can be disabled using the `enableESQL` setting from the [Advanced Settings](asciidocalypse://docs/kibana/docs/reference/advanced-settings.md). This will hide the {{esql}} user interface from various applications. However, users will be able to access existing {{esql}} artifacts like saved searches and visualizations.
+    {{esql}} is enabled by default in {{kib}}. It can be disabled using the `enableESQL` setting from the [Advanced Settings](kibana://reference/advanced-settings.md). This will hide the {{esql}} user interface from various applications. However, users will be able to access existing {{esql}} artifacts like saved searches and visualizations.
     ::::
 
 

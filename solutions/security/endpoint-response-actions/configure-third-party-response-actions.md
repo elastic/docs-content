@@ -56,7 +56,7 @@ Expand a section below for your endpoint security system:
     6. Click **Save and continue**.
     7. Select **Add {{agent}} to your hosts** and continue with the [{{agent}} installation steps](/solutions/security/configure-elastic-defend/install-elastic-defend.md#enroll-agent) to install {{agent}} on a resource in your network (such as a server or VM). {{agent}} will act as a bridge collecting data from CrowdStrike and sending it back to {{elastic-sec}}.
 
-3. **Create a CrowdStrike connector.** Elastic’s [CrowdStrike connector](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/crowdstrike-action-type.md) enables {{elastic-sec}} to perform actions on CrowdStrike-enrolled hosts.
+3. **Create a CrowdStrike connector.** Elastic’s [CrowdStrike connector](kibana://reference/connectors-kibana/crowdstrike-action-type.md) enables {{elastic-sec}} to perform actions on CrowdStrike-enrolled hosts.
 
     ::::{important}
     Do not create more than one CrowdStrike connector.
@@ -160,7 +160,7 @@ Expand a section below for your endpoint security system:
     5. Click **Save and continue**.
     6. Select **Add {{agent}} to your hosts** and continue with the [{{agent}} installation steps](/solutions/security/configure-elastic-defend/install-elastic-defend.md#enroll-agent) to install {{agent}} on a resource in your network (such as a server or VM). {{agent}} will act as a bridge collecting data from SentinelOne and sending it to {{elastic-sec}}.
 
-3. **Create a SentinelOne connector.** Elastic’s [SentinelOne connector](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/sentinelone-action-type.md) enables {{elastic-sec}} to perform actions on SentinelOne-enrolled hosts.
+3. **Create a SentinelOne connector.** Elastic’s [SentinelOne connector](kibana://reference/connectors-kibana/sentinelone-action-type.md) enables {{elastic-sec}} to perform actions on SentinelOne-enrolled hosts.
 
     ::::{important}
     Do not create more than one SentinelOne connector.

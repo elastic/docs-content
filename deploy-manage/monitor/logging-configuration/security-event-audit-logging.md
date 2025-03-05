@@ -34,4 +34,4 @@ By following these guidelines, you can effectively audit system activity, enhanc
 For a complete description of audit event details and format, refer to:
 
 * [Elasticsearch audit events](elasticsearch://reference/elasticsearch/elasticsearch-audit-events.md)
-* [Kibana audit events](asciidocalypse://docs/kibana/docs/reference/kibana-audit-events.md)
+* [Kibana audit events](kibana://reference/kibana-audit-events.md)

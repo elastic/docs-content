@@ -26,7 +26,7 @@ To work around the limitations, use filters to create multiple smaller reports, 
 
 For more information on using Elasticsearch APIs directly, see [Scroll API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-scroll), [Point in time API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-open-point-in-time), [ES|QL](../query-filter/languages/esql-rest.md) or [SQL](../query-filter/languages/sql-rest-format.md#_csv) with CSV response data format. We recommend that you use an official Elastic language client: details for each programming language library that Elastic provides are in the [{{es}} Client documentation](https://www.elastic.co/guide/en/elasticsearch/client/index.html).
 
-[Reporting parameters](asciidocalypse://docs/kibana/docs/reference/configuration-reference/reporting-settings.md) can be adjusted to overcome some of these limiting scenarios. Results are dependent on data size, availability, and latency factors and are not guaranteed.
+[Reporting parameters](kibana://reference/configuration-reference/reporting-settings.md) can be adjusted to overcome some of these limiting scenarios. Results are dependent on data size, availability, and latency factors and are not guaranteed.
 
 ::::
 
@@ -54,7 +54,7 @@ If you prefer the internal implementation of CSV export to use the scroll API, y
 xpack.reporting.csv.scroll.strategy: scroll
 ```
 
-For more details about CSV export settings, go to [CSV settings](asciidocalypse://docs/kibana/docs/reference/configuration-reference/reporting-settings.md#reporting-csv-settings).
+For more details about CSV export settings, go to [CSV settings](kibana://reference/configuration-reference/reporting-settings.md#reporting-csv-settings).
 
 
 ## Socket hangups [reporting-troubleshooting-csv-socket-hangup]

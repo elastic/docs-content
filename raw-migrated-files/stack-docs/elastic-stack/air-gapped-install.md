@@ -156,7 +156,7 @@ Some {{ml}} features, like natural language processing (NLP), require you to dep
 
 #### 1.13 {{kib}} Product documentation for AI Assistants [air-gapped-kibana-product-documentation]
 
-Detailed install and configuration instructions are available in the [{{kib}} AI Assistants settings documentation](asciidocalypse://docs/kibana/docs/reference/configuration-reference/ai-assistant-settings.md).
+Detailed install and configuration instructions are available in the [{{kib}} AI Assistants settings documentation](kibana://reference/configuration-reference/ai-assistant-settings.md).
 
 
 ### 2. Kubernetes & OpenShift Install [air-gapped-kubernetes-and-openshift]
@@ -494,7 +494,7 @@ Agent policies and integration settings can be managed using the {{kib}} UI. For
 
 **Good option for:** Declarative configuration and users who need reproducible and automated deployments.
 
-**Example:** [Fleet settings in {{kib}}](asciidocalypse://docs/kibana/docs/reference/configuration-reference/fleet-settings.md)
+**Example:** [Fleet settings in {{kib}}](kibana://reference/configuration-reference/fleet-settings.md)
 
 ::::{note}
 This documentation is still under development; there may be gaps around building custom agent policies.
@@ -507,13 +507,13 @@ You can have {{kib}} create {{agent}} policies on your behalf by adding appropri
 :   Takes a list of all integration package names and versions that {{kib}} should download from the {{package-registry}} (EPR). This is done because {{agents}} themselves do not directly fetch packages from the EPR.
 
 `xpack.fleet.agentPolicies`
-:   Takes a list of {{agent}} policies in the format expected by the [{{kib}} {{fleet}} HTTP API](/reference/ingestion-tools/fleet/fleet-api-docs.md). Refer to the setting in [Preconfiguration settings](asciidocalypse://docs/kibana/docs/reference/configuration-reference/fleet-settings.md#_preconfiguration_settings_for_advanced_use_cases) for the format. See also [D.2.3. Using the {{kib}} {{fleet}} API](../../../deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-agent-integration-configure-fleet-api).
+:   Takes a list of {{agent}} policies in the format expected by the [{{kib}} {{fleet}} HTTP API](/reference/ingestion-tools/fleet/fleet-api-docs.md). Refer to the setting in [Preconfiguration settings](kibana://reference/configuration-reference/fleet-settings.md#_preconfiguration_settings_for_advanced_use_cases) for the format. See also [D.2.3. Using the {{kib}} {{fleet}} API](../../../deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-agent-integration-configure-fleet-api).
 
 `xpack.fleet.registryUrl`
 :   Takes a URL of the {{package-registry}} that can be reached by the {{kib}} server. Enable this setting only when deploying in an air-gapped environment.
 
 Other settings
-:   You can add other, more discretionary settings for {{fleet}}, {{agents}}, & policies. Refer to [Fleet settings in {{kib}}](asciidocalypse://docs/kibana/docs/reference/configuration-reference/fleet-settings.md).
+:   You can add other, more discretionary settings for {{fleet}}, {{agents}}, & policies. Refer to [Fleet settings in {{kib}}](kibana://reference/configuration-reference/fleet-settings.md).
 
 
 #### D.2.3. Using the {{kib}} {{fleet}} API [air-gapped-agent-integration-configure-fleet-api]
