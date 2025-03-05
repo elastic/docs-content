@@ -9,7 +9,7 @@ When you install {{es}}, the following certificates and keys are generated in th
 `transport.p12`
 :   Keystore that contains the key and certificate for the transport layer for all the nodes in your cluster.
 
-`http.p12` and `transport.p12` are password-protected PKCS#12 keystores. {{es}} stores the passwords for these keystores as [secure settings](../../security/secure-settings.md). To retrieve the passwords so that you can inspect or change the keystore contents, use the [`bin/elasticsearch-keystore`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/command-line-tools/elasticsearch-keystore.md) tool.
+`http.p12` and `transport.p12` are password-protected PKCS#12 keystores. {{es}} stores the passwords for these keystores as [secure settings](/deploy-manage/security/secure-settings.md). To retrieve the passwords so that you can inspect or change the keystore contents, use the [`bin/elasticsearch-keystore`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/command-line-tools/elasticsearch-keystore.md) tool.
 
 Use the following command to retrieve the password for `http.p12`:
 

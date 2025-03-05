@@ -1,7 +1,7 @@
 ::::{warning}
 **DO NOT USE THESE INSTRUCTIONS FOR PRODUCTION DEPLOYMENTS**
 
-The instructions on this page are for **local development only**. Do not use this configuration for production deployments, because it is not secure. Refer to [deployment options](../../get-started/deployment-options.md) for a list of production deployment options.
+The instructions on this page are for **local development only**. Do not use this configuration for production deployments, because it is not secure. Refer to [](/get-started/deployment-options.md) for a list of production deployment options.
 
 ::::
 

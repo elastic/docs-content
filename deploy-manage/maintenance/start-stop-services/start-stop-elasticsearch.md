@@ -24,7 +24,7 @@ If you installed {{es}} on Linux or MacOS with a `.tar.gz` package, you can star
 :::{include} /deploy-manage/deploy/self-managed/_snippets/targz-start.md
 :::
 
-If you're starting {{es}} for the first time, then {{es}} also enables and configures security. [Learn more](/deploy-manage/deploy/self-managed/install-{{es}}-from-archive-on-linux-macos.md#security-at-startup).
+If you're starting {{es}} for the first time, then {{es}} also enables and configures security. [Learn more](/deploy-manage/deploy/self-managed/install-elasticsearch-from-archive-on-linux-macos.md#security-at-startup).
 
 #### Run as a daemon [_run_as_a_daemon]
 
@@ -33,7 +33,7 @@ If you're starting {{es}} for the first time, then {{es}} also enables and confi
 
 ### Archive packages (`.zip`) [start-zip]
 
-If you installed {{es}} on Windows with a `.zip` package, you can start {{es}} from the command line. If you want {{es}} to start automatically at boot time without any user interaction, [install {{es}} as a service](../../../deploy-manage/deploy/self-managed/install-{{es}}-with-zip-on-windows.md#windows-service).
+If you installed {{es}} on Windows with a `.zip` package, you can start {{es}} from the command line. If you want {{es}} to start automatically at boot time without any user interaction, [install {{es}} as a service](../../../deploy-manage/deploy/self-managed/install-elasticsearch-with-zip-on-windows.md#windows-service).
 
 :::{include} /deploy-manage/deploy/self-managed/_snippets/zip-windows-start.md
 :::
@@ -122,7 +122,7 @@ To avoid this, upgrade your `systemd` to at least version 238. You can also temp
 
 ### Docker images [start-docker]
 
-If you installed a Docker image, you can start {{es}} from the command line. There are different methods depending on whether you’re using development mode or production mode. See [Run {{es}} in Docker](../../../deploy-manage/deploy/self-managed/install-{{es}}-with-docker.md#docker-cli-run-dev-mode).
+If you installed a Docker image, you can start {{es}} from the command line. There are different methods depending on whether you’re using development mode or production mode. See [Run {{es}} in Docker](../../../deploy-manage/deploy/self-managed/install-elasticsearch-with-docker.md#docker-cli-run-dev-mode).
 
 ### RPM packages [start-rpm]
 

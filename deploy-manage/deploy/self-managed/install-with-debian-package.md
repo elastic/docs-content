@@ -2,6 +2,8 @@
 navigation_title: "Install with Debian package"
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/deb.html
+sub:
+  stack-version: "9.0.0"
 ---
 
 

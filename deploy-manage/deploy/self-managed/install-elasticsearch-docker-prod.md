@@ -107,7 +107,7 @@ vm.max_map_count = 262144
 
 By default, {{es}} runs inside the container as user `elasticsearch` using uid:gid `1000:0`.
 
-If you are bind-mounting a local directory or file, it must be readable by the `elasticsearch` user. In addition, this user must have write access to the [config, data and log dirs](important-settings-configuration.md#path-settings) ({{es}} needs write access to the `config` directory so that it can generate a keystore). A good strategy is to grant group access to gid `0` for the local directory.
+If you are bind-mounting a local directory or file, it must be readable by the `elasticsearch` user. In addition, this user must have write access to the [config, data and log dirs](/deploy-manage/deploy/self-managed/important-settings-configuration.md#path-settings) ({{es}} needs write access to the `config` directory so that it can generate a keystore). A good strategy is to grant group access to gid `0` for the local directory.
 
 ::::{important}
 One exception is [Openshift](https://docs.openshift.com/container-platform/3.6/creating_images/guidelines.md#openshift-specific-guidelines), which runs containers using an arbitrarily assigned user ID. Openshift presents persistent volumes with the gid set to `0`, which works without any adjustments.
@@ -123,13 +123,13 @@ chgrp 0 esdatadir
 
 You can also run an {{es}} container using both a custom UID and GID. You must ensure that file permissions will not prevent {{es}} from executing. You can use one of two options:
 
-* Bind-mount the `config`, `data` and `logs` directories. If you intend to install plugins and prefer not to [create a custom Docker image](#_c_customized_image), you must also bind-mount the `plugins` directory.
+* Bind-mount the `config`, `data` and `logs` directories. If you intend to install plugins and prefer not to [create a custom Docker image](/deploy-manage/deploy/self-managed/install-elasticsearch-docker-configure.md#_c_customized_image), you must also bind-mount the `plugins` directory.
 * Pass the `--group-add 0` command line option to `docker run`. This ensures that the user under which {{es}} is running is also a member of the `root` (GID 0) group inside the container.
 
 
 ## Increase ulimits for nofile and nproc [_increase_ulimits_for_nofile_and_nproc]
 
-Increased ulimits for [nofile](setting-system-settings.md) and [nproc](max-number-threads-check.md) must be available for the {{es}} containers. Verify the [init system](https://github.com/moby/moby/tree/ea4d1243953e6b652082305a9c3cda8656edab26/contrib/init) for the Docker daemon sets them to acceptable values.
+Increased ulimits for [nofile](setting-system-settings.md) and [nproc](/deploy-manage/deploy/self-managed/bootstrap-checks.md#max-number-threads-check) must be available for the {{es}} containers. Verify the [init system](https://github.com/moby/moby/tree/ea4d1243953e6b652082305a9c3cda8656edab26/contrib/init) for the Docker daemon sets them to acceptable values.
 
 To check the Docker daemon defaults for ulimits, run:
 
@@ -148,7 +148,7 @@ If needed, adjust them in the Daemon or override them per container. For example
 
 Swapping needs to be disabled for performance and node stability. For information about ways to do this, see [Disable swapping](setup-configuration-memory.md).
 
-If you opt for the `bootstrap.memory_lock: true` approach, you also need to define the `memlock: true` ulimit in the [Docker Daemon](https://docs.docker.com/engine/reference/commandline/dockerd/#default-ulimits), or explicitly set for the container as shown in the  [sample compose file](#docker-compose-file). When using `docker run`, you can specify:
+If you opt for the `bootstrap.memory_lock: true` approach, you also need to define the `memlock: true` ulimit in the [Docker Daemon](https://docs.docker.com/engine/reference/commandline/dockerd/#default-ulimits), or explicitly set for the container as shown in the  [sample compose file](/deploy-manage/deploy/self-managed/install-elasticsearch-docker-compose.md). When using `docker run`, you can specify:
 
 ```sh
 -e "bootstrap.memory_lock=true" --ulimit memlock=-1:-1

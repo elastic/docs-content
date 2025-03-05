@@ -103,7 +103,7 @@ To pass the maximum size virtual memory check, you must configure your system to
 
 $$$bootstrap-checks-max-map-count$$$
 
-Continuing from the previous [point](max-size-virtual-memory-check.md), to use `mmap` effectively, {{es}} also requires the ability to create many memory-mapped areas. The maximum map count check checks that the kernel allows a process to have at least 262,144 memory-mapped areas and is enforced on Linux only. 
+In addition to [unlimited address space](#max-size-virtual-memory-check), to use `mmap` effectively, {{es}} also requires the ability to create many memory-mapped areas. The maximum map count check checks that the kernel allows a process to have at least 262,144 memory-mapped areas and is enforced on Linux only. 
 
 To pass the maximum map count check, you must configure `vm.max_map_count` via `sysctl` to be at least `262144`.
 
@@ -174,7 +174,7 @@ This bootstrap check ensures that discovery is not running with the default conf
 * `discovery.seed_providers`
 * `cluster.initial_master_nodes`
 
-Note that you must [remove `cluster.initial_master_nodes` from the configuration of every node](important-settings-configuration.md#initial_master_nodes) after the cluster has started for the first time. Instead, configure `discovery.seed_hosts` or `discovery.seed_providers`. If you do not need any discovery configuration, for instance if running a single-node cluster, set `discovery.seed_hosts: []` to disable discovery and satisfy this bootstrap check.
+Note that you must [remove `cluster.initial_master_nodes` from the configuration of every node](/deploy-manage/deploy/self-managed/important-settings-configuration.md#initial_master_nodes) after the cluster has started for the first time. Instead, configure `discovery.seed_hosts` or `discovery.seed_providers`. If you do not need any discovery configuration, for instance if running a single-node cluster, set `discovery.seed_hosts: []` to disable discovery and satisfy this bootstrap check.
 :::
 
 :::{dropdown} Encrypt sensitive data check 

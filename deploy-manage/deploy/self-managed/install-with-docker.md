@@ -21,7 +21,7 @@ These images contain both free and subscription features. [Start a 30-day trial]
 Use Docker commands to run {{kib}} on a single-node {{es}} cluster for development or testing.
 
 ::::{tip}
-This setup doesn’t run multiple {{es}} nodes by default. To create a multi-node cluster with {{kib}}, use Docker Compose instead. Refer to [Start a multi-node cluster with Docker Compose](install-elasticsearch-with-docker.md#docker-compose-file) in the {{es}} documentation.
+This setup doesn’t run multiple {{es}} nodes by default. To create a multi-node cluster with {{kib}}, use Docker Compose instead. Refer to [Start a multi-node cluster with Docker Compose](/deploy-manage/deploy/self-managed/install-elasticsearch-docker-compose.md) in the {{es}} documentation.
 ::::
 
 
@@ -82,7 +82,7 @@ docker pull docker.elastic.co/elasticsearch/elasticsearch-wolfi:{{stack-version}
     ```
 
     ::::{tip}
-    Use the `-m` flag to set a memory limit for the container. This removes the need to [manually set the JVM size](install-elasticsearch-with-docker.md#docker-set-heap-size).
+    Use the `-m` flag to set a memory limit for the container. This removes the need to [manually set the JVM size](/deploy-manage/deploy/self-managed/install-elasticsearch-docker-prod.md#docker-set-heap-size).
     ::::
 
 
@@ -170,7 +170,7 @@ services:
 
 ## Persist the {{kib}} keystore [_persist_the_kib_keystore]
 
-By default, {{kib}} auto-generates a keystore file for secure settings at startup. To persist your [secure settings](../../security/secure-settings.md), use the `kibana-keystore` utility to bind-mount the parent directory of the keystore to the container. For example:
+By default, {{kib}} auto-generates a keystore file for secure settings at startup. To persist your [secure settings](/deploy-manage/security/secure-settings.md), use the `kibana-keystore` utility to bind-mount the parent directory of the keystore to the container. For example:
 
 ```sh
 docker run -it --rm -v full_path_to/config:/usr/share/kibana/config -v full_path_to/data:/usr/share/kibana/data docker.elastic.co/kibana/kibana:{{stack-version}} bin/kibana-keystore create

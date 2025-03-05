@@ -89,4 +89,4 @@ docker-compose down -v
 
 ## Next steps [_next_steps_6]
 
-You now have a test {{es}} environment set up. Before you start serious development or go into production with {{es}}, review the [requirements and recommendations](#docker-prod-prerequisites) to apply when running {{es}} in Docker in production.
+You now have a test {{es}} environment set up. Before you start serious development or go into production with {{es}}, review the [requirements and recommendations](/deploy-manage/deploy/self-managed/install-elasticsearch-docker-prod.md) to apply when running {{es}} in Docker in production.

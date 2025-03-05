@@ -114,7 +114,7 @@ Configure two important discovery and cluster formation settings before going to
 
 Out of the box, without any network configuration, {{es}} will bind to the available loopback addresses and scan local ports `9300` to `9305` to connect with other nodes running on the same server. This behavior provides an auto-clustering experience without having to do any configuration.
 
-When you want to form a cluster with nodes on other hosts, use the [static](configure-elasticsearch.md#static-cluster-setting) `discovery.seed_hosts` setting. This setting provides a list of other nodes in the cluster that are master-eligible and likely to be live and contactable to seed the [discovery process](../../distributed-architecture/discovery-cluster-formation/discovery-hosts-providers.md). This setting accepts a YAML sequence or array of the addresses of all the master-eligible nodes in the cluster. Each address can be either an IP address or a hostname that resolves to one or more IP addresses via DNS.
+When you want to form a cluster with nodes on other hosts, use the [static](/deploy-manage/deploy/self-managed/configure-elasticsearch.md#static-cluster-setting) `discovery.seed_hosts` setting. This setting provides a list of other nodes in the cluster that are master-eligible and likely to be live and contactable to seed the [discovery process](../../distributed-architecture/discovery-cluster-formation/discovery-hosts-providers.md). This setting accepts a YAML sequence or array of the addresses of all the master-eligible nodes in the cluster. Each address can be either an IP address or a hostname that resolves to one or more IP addresses via DNS.
 
 ```yaml
 discovery.seed_hosts:
@@ -134,7 +134,7 @@ If your master-eligible nodes do not have fixed names or addresses, use an [alte
 
 ### `cluster.initial_master_nodes` [initial_master_nodes]
 
-When you start an {{es}} cluster for the first time, a [cluster bootstrapping](../../distributed-architecture/discovery-cluster-formation/modules-discovery-bootstrap-cluster.md) step determines the set of master-eligible nodes whose votes are counted in the first election. In [development mode](bootstrap-checks.md#dev-vs-prod-mode), with no discovery settings configured, this step is performed automatically by the nodes themselves.
+When you start an {{es}} cluster for the first time, a [cluster bootstrapping](../../distributed-architecture/discovery-cluster-formation/modules-discovery-bootstrap-cluster.md) step determines the set of master-eligible nodes whose votes are counted in the first election. In [development mode](/deploy-manage/deploy/self-managed/bootstrap-checks.md#bootstrap-checks.md#dev-vs-prod-mode), with no discovery settings configured, this step is performed automatically by the nodes themselves.
 
 Because auto-bootstrapping is [inherently unsafe](../../distributed-architecture/discovery-cluster-formation/modules-discovery-quorums.md), when starting a new cluster in production mode, you must explicitly list the master-eligible nodes whose votes should be counted in the very first election. You set this list using the `cluster.initial_master_nodes` setting on every master-eligible node. Do not configure this setting on master-ineligible nodes.
 

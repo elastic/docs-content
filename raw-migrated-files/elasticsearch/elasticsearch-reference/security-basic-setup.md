@@ -126,7 +126,7 @@ Complete the following steps **for each node in your cluster**. To join the same
 
 ## What’s next? [encrypting-internode-whatsnext]
 
-Congratulations! You’ve encrypted communications between the nodes in your cluster and can pass the [TLS bootstrap check](bootstrap-checks-xpack.md#bootstrap-checks-tls).
+Congratulations! You’ve encrypted communications between the nodes in your cluster and can pass the [TLS bootstrap check](/deploy-manage/deploy/self-managed/bootstrap-checks.md#bootstrap-checks-tls).
 
 To add another layer of security, [Set up basic security for the Elastic Stack plus secured HTTPS traffic](security-basic-setup-https.md). In addition to configuring TLS on the transport interface of your {{es}} cluster, you configure TLS on the HTTP interface for both {{es}} and {{kib}}.
 

@@ -177,7 +177,7 @@ The Debian package places config files, logs, and the data directory in the appr
 | --- | --- | --- | --- |
 | home | {{es}} home directory or `$ES_HOME` | `/usr/share/elasticsearch` |  |
 | bin | Binary scripts including `elasticsearch` to start a node    and `elasticsearch-plugin` to install plugins | `/usr/share/elasticsearch/bin` |  |
-| conf | Configuration files including `elasticsearch.yml` | `/etc/elasticsearch` | `[ES_PATH_CONF](configure-elasticsearch.md#config-files-location)` |
+| conf | Configuration files including `elasticsearch.yml` | `/etc/elasticsearch` | `[ES_PATH_CONF](/deploy-manage/deploy/self-managed/configure-elasticsearch.md#config-files-location)` |
 | conf | Environment variables including heap size, file descriptors. | `/etc/default/elasticsearch` |  |
 | conf | Generated TLS keys and certificates for the transport and http layer. | `/etc/elasticsearch/certs` |  |
 | data | The location of the data files of each index / shard allocated    on the node. | `/var/lib/elasticsearch` | `path.data` |

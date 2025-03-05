@@ -50,7 +50,7 @@ rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
 You have several options for installing the {{es}} RPM package:
 
 * [From the RPM repository](#rpm-repo)
-* [Manually](#install-deb)
+* [Manually](#install-rpm)
 
 ### Install from the RPM repository [rpm-repo]
 
@@ -166,7 +166,7 @@ The RPM places config files, logs, and the data directory in the appropriate loc
 | --- | --- | --- | --- |
 | home |{{es}} home directory or `$ES_HOME` | `/usr/share/elasticsearch` |  |
 | bin | Binary scripts including `elasticsearch` to start a node    and `elasticsearch-plugin` to install plugins | `/usr/share/elasticsearch/bin` |  |
-| conf | Configuration files including `elasticsearch.yml` | `/etc/elasticsearch` | `[ES_PATH_CONF](configure-elasticsearch.md#config-files-location)` |
+| conf | Configuration files including `elasticsearch.yml` | `/etc/elasticsearch` | `[ES_PATH_CONF](/deploy-manage/deploy/self-managed/configure-elasticsearch.md#config-files-location)` |
 | conf | Environment variables including heap size, file descriptors. | `/etc/sysconfig/elasticsearch` |  |
 | conf | Generated TLS keys and certificates for the transport and http layer. | `/etc/elasticsearch/certs` |  |
 | data | The location of the data files of each index / shard allocated    on the node. | `/var/lib/elasticsearch` | `path.data` |
