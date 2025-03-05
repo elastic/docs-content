@@ -61,7 +61,7 @@ Each Elastic {{apm-agent}} has a configuration option to set the value of the se
 
 * **Android agent**: [`secretToken`](apm-agent-android://reference/configuration.md)
 * **Go agent**: [`ELASTIC_APM_SECRET_TOKEN`](apm-agent-go://reference/configuration.md#config-secret-token)
-* **iOS agent**: [`secretToken`](asciidocalypse://docs/apm-agent-ios/docs/reference/configuration.md#secretToken)
+* **iOS agent**: [`secretToken`](apm-agent-ios://reference/configuration.md#secrettoken)
 * **Java agent**: [`secret_token`](asciidocalypse://docs/apm-agent-java/docs/reference/config-reporter.md#config-secret-token)
 * **.NET agent**: [`ELASTIC_APM_SECRET_TOKEN`](apm-agent-dotnet://reference/config-reporter.md#config-secret-token)
 * **Node.js agent**: [`Secret Token`](asciidocalypse://docs/apm-agent-nodejs/docs/reference/configuration.md#secret-token)

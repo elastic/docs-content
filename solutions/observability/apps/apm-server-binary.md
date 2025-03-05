@@ -353,7 +353,7 @@ var config = AgentConfigBuilder()
 
 **Learn more in the agent reference**
 
-Read more in the [APM iOS Agent Reference](asciidocalypse://docs/apm-agent-ios/docs/reference/index.md).
+Read more in the [APM iOS Agent Reference](apm-agent-ios://reference/index.md).
 ::::::
 
 ::::::{tab-item} Java

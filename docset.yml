@@ -11,6 +11,7 @@ cross_links:
   - apm-agent-android
   - apm-agent-dotnet
   - apm-agent-go
+  - apm-agent-ios
   - apm-aws-lambda
   - asciidocalypse
   - beats
