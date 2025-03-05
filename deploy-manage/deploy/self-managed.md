@@ -8,7 +8,7 @@ mapped_pages:
 See [Elastic Stack Third-party Dependencices](https://artifacts.elastic.co/reports/dependencies/dependencies-current.md) for the complete list of dependencies for {{es}}.
 
 
-```sh
+```{code} sh
 {{stack-version}}
 ```
 
