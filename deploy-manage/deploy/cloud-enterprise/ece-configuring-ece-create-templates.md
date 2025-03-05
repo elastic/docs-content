@@ -1,4 +1,5 @@
 ---
+navigation_title: Create templates
 applies_to:
   deployment:
     ece: all

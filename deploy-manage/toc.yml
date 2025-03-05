@@ -168,7 +168,6 @@ toc:
                       - file: deploy/cloud-enterprise/ce-add-support-for-node-roles-autoscaling.md
                       - file: deploy/cloud-enterprise/ece-ce-add-support-for-integrations-server.md
                       - file: deploy/cloud-enterprise/ece-configuring-ece-instance-configurations-default.md
-                      - file: deploy/cloud-enterprise/ece-include-additional-kibana-plugin.md
                   - file: deploy/cloud-enterprise/change-ece-api-url.md
                   - file: deploy/cloud-enterprise/change-endpoint-urls.md
                   - file: deploy/cloud-enterprise/enable-custom-endpoint-aliases.md
@@ -177,6 +176,7 @@ toc:
                   - file: deploy/cloud-enterprise/configure-allocator-affinity.md
                   - file: deploy/cloud-enterprise/change-allocator-disconnect-timeout.md
                   - file: deploy/cloud-enterprise/manage-elastic-stack-versions.md
+                  - file: deploy/cloud-enterprise/ece-include-additional-kibana-plugin.md
                   - file: deploy/cloud-enterprise/migrate-ece-on-podman-hosts-to-selinux-enforce.md
           - file: deploy/cloud-enterprise/working-with-deployments.md
             children:

@@ -26,21 +26,10 @@ Using Docker or Podman as container runtime is a configuration local to the host
 :::
 
 ::::{note}
-When copy-pasting commands, verify that characters like quotes (“) are encoded correctly in the console where you copy the command to.
+* When copy-pasting commands, verify that characters like quotes (“) are encoded correctly in the console where you copy the command to.
+* Steps that run commands starting with `sudo` can be run as any sudoers user. Otherwise, the corresponding user is mentioned as part of the step description.
+* Avoid customizing the host Docker path `/mnt/data/docker` when using SELinux. Otherwise the ECE installer script needs to be adjusted.
 ::::
-
-
-::::{note}
-Steps that run commands starting with `sudo` can be run as any sudoers user.
-::::
-
-
-::::{note}
-Avoid customizing the host Docker path `/mnt/data/docker` when using SELinux. Otherwise the ECE installer script needs to be adjusted.
-::::
-
-
-Otherwise, when the file content changes, the corresponding user is mentioned as part of the step description.
 
 1. Make sure you are running a healthy x-node ECE environment ready to be upgraded. All nodes use the Docker container runtime.
 2. Upgrade to ECE 3.3.0+ following the [Upgrade your installation](../../upgrade/orchestrator/upgrade-cloud-enterprise.md) guideline. Skip this step if your existing ECE installation already runs ECE >= 3.3.0.

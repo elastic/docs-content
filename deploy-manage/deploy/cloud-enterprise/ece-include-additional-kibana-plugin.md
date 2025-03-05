@@ -1,4 +1,5 @@
 ---
+navigation_title: Include additional Kibana plugins
 applies_to:
   deployment:
     ece: all

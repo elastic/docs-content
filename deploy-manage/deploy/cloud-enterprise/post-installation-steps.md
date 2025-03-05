@@ -10,6 +10,10 @@ mapped_pages:
 
 After your Elastic Cloud Enterprise installation is up, some additional steps might be required. For a complete list of configurable features in ECE, refer to [](./configure.md).
 
+::::{tip}
+To start creating {{es}} deployments directly, refer to [](./working-with-deployments.md).
+::::
+
 * Add your own [load balancer](./ece-load-balancers.md). Load balancers are user supplied and we do not currently provide configuration steps for you.
 
 * In production systems, add your own [Cloud UI and Proxy certificates](../../security/secure-your-elastic-cloud-enterprise-installation/manage-security-certificates.md) to enable secure connections over HTTPS. The proxy certificate must be a wildcard certificate signed for the needed DNS records of your domain.
@@ -34,11 +38,12 @@ After your Elastic Cloud Enterprise installation is up, some additional steps mi
 
 * Consider enabling encryption-at-rest (EAR) on your hosts.
   
-  :::{{tip}}
-  Encryption-at-rest is not implemented out of the box in {{{ece}}. [Learn more](/deploy-manage/security/secure-your-elastic-cloud-enterprise-installation.md#ece_encryption).
+  :::{{note}}
+  Encryption-at-rest is not implemented out of the box in {{ece}}. [Learn more](/deploy-manage/security/secure-your-elastic-cloud-enterprise-installation.md#ece_encryption).
   :::
-
-* To start creating {{es}} deployments, refer to [](./working-with-deployments.md).
 
 * Learn about common maintenance activities—such as adding capacity, applying OS patches, and addressing host failures--at [](../../maintenance/ece.md).
 
+::::{warning} 
+During installation, the system generates secrets that are placed into the `/mnt/data/elastic/bootstrap-state/bootstrap-secrets.json` secrets file, unless you passed in a different path with the --host-storage-path parameter. Keep the information in the `bootstrap-secrets.json` file secure by removing it from its default location and placing it into a secure storage location.
+::::

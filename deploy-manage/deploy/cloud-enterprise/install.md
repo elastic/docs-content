@@ -11,7 +11,9 @@ navigation_title: Install ECE
 
 # Install Elastic Cloud Enterprise [ece-installing]
 
-You can deploy ECE on public or private clouds, virtual machines, or on-premises. 
+You can deploy {{ece}} (ECE) on public or private clouds, virtual machines, or on-premises.
+
+In ECE, a host refers to any server, VM, or cloud instance where the ECE software is installed. An ECE platform consists of multiple hosts working together to orchestrate Elastic Stack applications.
 
 For public cloud deployments, you can choose from the following providers:
 
@@ -27,8 +29,7 @@ If you already have an ECE platform up and running, and you want to add hosts to
 In these pages we frequently refer to [Docker](https://www.docker.com/), as its currently the most common container engine, but these instructions are generally valid for [Podman](https://podman.io/) as well, with `podman` replacing `docker` in commands as appropriate.
 ::::
 
-
-## Prerequisites
+## Prerequisites [ece-install-prerequisites]
 
 Before you start, make sure to [identify your deployment scenario](identify-deployment-scenario.md) and follow all the referenced sections in [](prepare-environment.md). Make sure that your selected infrastructure meets the requirements.
 

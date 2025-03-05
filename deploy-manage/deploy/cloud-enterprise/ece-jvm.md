@@ -12,7 +12,6 @@ mapped_pages:
 ECE uses default JVM heap sizes for services that work for testing. Make sure to configure the JVM heap size that fits your use case. Not following the recommended settings may cause issues later on as volume of data and usage increases.
 ::::
 
-
 When you install ECE specify the recommended JVM heap sizes with `--memory-settings JVM_SETTINGS` parameter, based on the use cases as described below:
 
 * [Deploy a small installation](deploy-small-installation.md): For development, test, and small-scale use cases.

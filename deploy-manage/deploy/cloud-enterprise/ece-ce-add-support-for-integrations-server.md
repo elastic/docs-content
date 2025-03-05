@@ -1,4 +1,5 @@
 ---
+navigation_title: Integrations server support
 applies_to:
   deployment:
     ece: all
@@ -44,7 +45,6 @@ To manually update your custom deployment templates to support Integrations Serv
       }
     ]
     ```
-
 
 Send a `PUT` request with the updated template in the payload to replace the original template with the new one. Remember that:
 

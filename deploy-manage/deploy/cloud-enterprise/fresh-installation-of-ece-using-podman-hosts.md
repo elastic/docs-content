@@ -16,20 +16,11 @@ This section provides guidelines and recommendations to install ECE using a Podm
 
 **Step 2**: Add additional Podman hosts
 
-::::{note} 
-When copy-pasting commands, verify that characters like quotes (“) are encoded correctly in the console where you copy the command to.
+::::{note}
+* When copy-pasting commands, verify that characters like quotes (“) are encoded correctly in the console where you copy the command to.
+* Steps that run commands starting with `sudo` can be run as any sudoers user. Otherwise, the corresponding user is mentioned as part of the step description.
+* Avoid customizing the host Docker path `/mnt/data/docker` when using SELinux. Otherwise the ECE installer script needs to be adjusted.
 ::::
-
-
-::::{note} 
-Steps that run commands starting with `sudo` can be run as any sudoers user. Otherwise, the corresponding user is mentioned as part of the step description.
-::::
-
-
-::::{note} 
-Avoid customizing the host Docker path `/mnt/data/docker` when using SELinux. Otherwise the ECE installer script needs to be adjusted.
-::::
-
 
 1. Install ECE
 
@@ -47,7 +38,6 @@ Avoid customizing the host Docker path `/mnt/data/docker` when using SELinux. Ot
     * Make sure you use `--podman`.
     * Use `--cloud-enterprise-version VERSION_NAME` to specify the correct version.
     * If you are using SELinux, make sure you also use `--selinux`.
-
     ::::
 
 2. Add additional Podman hosts
@@ -79,8 +69,6 @@ Avoid customizing the host Docker path `/mnt/data/docker` when using SELinux. Ot
         ```sh
         --roles "allocator,coordinator,director,proxy"
         ```
-
-
     ::::
 
 

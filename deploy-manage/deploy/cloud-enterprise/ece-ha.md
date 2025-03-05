@@ -8,7 +8,9 @@ mapped_pages:
 
 # High availability [ece-ha]
 
-Ensuring high availability in {{ece}} (ECE) requires careful planning and implementation across multiple areas, including availability zones, master nodes, replica shards, snapshot backups, and Zookeeper nodes. This section outlines key considerations and best practices to prevent downtime and data loss at both the ECE platform level and within orchestrated deployments.
+Ensuring high availability in {{ece}} (ECE) requires careful planning and implementation across multiple areas, including availability zones, master nodes, replica shards, snapshot backups, and Zookeeper nodes.
+
+This section describes key considerations and best practices to prevent downtime and data loss at both the ECE platform level and within orchestrated deployments.
 
 ## Availability zones [ece-ece-ha-1-az]
 
@@ -54,6 +56,8 @@ GET _all/_settings/index.number_of_replicas
 ::::{warning}
 Indices with no replica, except for [searchable snapshot indices](/deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md), are not highly available. You should use replicas to mitigate against possible data loss.
 ::::
+
+Refer to [](../../reference-architectures.md) for information about {{es}} architectures.
 
 ## Snapshot backups [ece-ece-ha-4-snapshot]
 

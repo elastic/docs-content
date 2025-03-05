@@ -12,11 +12,13 @@ In this section you'll find all the prerequisites and environment preparations r
 
 ## Requirements [ece-prepare-requirements]
 
+In {{ece}}, an ECE host is the server, virtual machine, or cloud instance where the ECE software is installed. An ECE installation consists of a cluster of multiple hosts, forming the platform where Elastic Stack applications are orchestrated.
+
+To prepare your hosts for installation, the following prerequisites **must** be met:
+
 ::::{important}
 These prerequisites are critical to establish a supported ECE configuration. Using unsupported combinations can cause a number of either intermediate or potentially permanent issues with your ECE environment, such as failures to create [system deployments](system-deployments-configuration.md), failures to upgrade workload deployments, proxy timeouts, data loss, and more. If upgrading ECE, read [upgrade your installation](../../upgrade/orchestrator/upgrade-cloud-enterprise.md) for guidance.
 ::::
-
-To prepare your hosts for their ECE installation, the following prerequisites **must** be met:
 
 * [Hardware prerequisites](ece-hardware-prereq.md)
 * [Software prerequisites](ece-software-prereq.md)

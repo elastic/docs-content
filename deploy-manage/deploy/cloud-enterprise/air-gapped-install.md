@@ -16,16 +16,17 @@ Installing ECE on hosts without internet access is commonly referred to as an *o
 
 Before you start, you must:
 
-* Follow [](./prepare-environment.md) steps as you would for other installation methods, except that outgoing internet connections for downloading Docker images are not required.
-* [Configure your operating system](./configure-operating-system.md).
+* Follow the same prerequisites described in [](./install.md#ece-install-prerequisites). This includes [](./identify-deployment-scenario.md) and [](./prepare-environment.md) steps.
+* [Configure your operating system](./configure-operating-system.md) in all ECE hosts.
 * Be part of the `docker` group to run the installation script. You should not install Elastic Cloud Enterprise as the `root` user.
-* Set up your [wildcard DNS record](./ece-wildcard-dns.md).
 * Set up and run a local copy of the Elastic Package Repository, otherwise your deployments with APM server and Elastic agent won’t work. Refer to the [Running EPR in air-gapped environments](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/air-gapped.md#air-gapped-diy-epr) documentation.
 
 When you are ready to install ECE, you can proceed:
 
 * [With your private Docker registry](./ece-install-offline-with-registry.md)
 * [Without a private Docker registry](./ece-install-offline-no-registry.md)
+
+After installing ECE in your hosts, you can continue with [](./post-installation-steps.md).
 
 ::::{note}
 Deployment End-of-life (EOL) information relies on the connection to [https://www.elastic.co/support/eol.json](https://www.elastic.co/support/eol.json). If EOL information is updated, Elastic may require you to reconnect to [https://www.elastic.co/support/eol.json](https://www.elastic.co/support/eol.json) over the internet to get this information reflected.
