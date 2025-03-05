@@ -77,11 +77,11 @@ Filter your data using the fields you’ve extracted so you can focus on log dat
 * [Filter logs with Query DSL](../../../solutions/observability/logs/filter-aggregate-logs.md#logs-filter-qdsl): Filter log data from Developer Tools using Query DSL.
 
 
-### Filter logs in Logs Explorer [logs-filter-logs-explorer]
+### Filter logs in Discover [logs-filter-discover]
 
-Logs Explorer is a tool that automatically provides views of your log data based on integrations and data streams. To open **Logs Explorer**, find `Logs Explorer` in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+Discover is a tool that provides views of your log data based on data views and index patterns. To open **Discover**, find `Discover` in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
-From Logs Explorer, you can use the [{{kib}} Query Language (KQL)](../../../explore-analyze/query-filter/languages/kql.md) in the search bar to narrow down the log data that’s displayed. For example, you might want to look into an event that occurred within a specific time range.
+From Discover, open the `logs-*` or `All logs` data views from the **Data views** menu. From here, you can use the [{{kib}} Query Language (KQL)](../../../explore-analyze/query-filter/languages/kql.md) in the search bar to narrow down the log data that’s displayed. For example, you might want to look into an event that occurred within a specific time range.
 
 Add some logs with varying timestamps and log levels to your data stream:
 
@@ -124,7 +124,7 @@ Under the **Documents** tab, you’ll see the filtered log data matching your qu
 :class: screenshot
 :::
 
-For more on using Logs Explorer, refer to the [Discover](../../../explore-analyze/discover.md) documentation.
+For more on using Discover, refer to the [Discover](../../../explore-analyze/discover.md) documentation.
 
 
 ### Filter logs with Query DSL [logs-filter-qdsl]
