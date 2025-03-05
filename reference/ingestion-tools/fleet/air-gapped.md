@@ -15,7 +15,7 @@ The {{package-registry}} must therefore be accessible from {{kib}} via an HTTP P
 The {{artifact-registry}} must therefore be accessible from {{kib}} via an HTTP Proxy and/or self-hosted.
 
 ::::{tip}
-See the {{elastic-sec}} Solution documentation for air-gapped [offline endpoints](/reference/security/elastic-defend/offline-endpoint.md).
+See the {{elastic-sec}} Solution documentation for air-gapped [offline endpoints](/solutions/security/configure-elastic-defend/configure-offline-endpoints-air-gapped-environments.md).
 
 ::::
 

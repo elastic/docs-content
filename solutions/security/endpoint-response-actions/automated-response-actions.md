@@ -6,20 +6,13 @@ mapped_urls:
 
 # Automated response actions
 
-% What needs to be done: Align serverless/stateful
-
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/security-docs/security/automated-response-actions.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/security-automated-response-actions.md
 
 Add {{elastic-defend}}'s [response actions](/solutions/security/endpoint-response-actions.md) to detection rules to automatically perform actions on an affected host when an event meets the rule’s criteria. Use these actions to support your response to detected threats and suspicious events.
 
 ::::{admonition} Requirements
-* Automated response actions require an [Enterprise subscription](https://www.elastic.co/pricing).
+* Automated response actions require the appropriate [subscription](https://www.elastic.co/pricing) in {{stack}} or [project feature](/deploy-manage/deploy/elastic-cloud/project-settings.md) in {{serverless-short}}.
 * Hosts must have {{agent}} installed with the {{elastic-defend}} integration.
 * Your user role must have the ability to create detection rules and the privilege to perform [specific response actions](/solutions/security/endpoint-response-actions.md#response-action-commands) (for example, the **Host Isolation** privilege to isolate hosts).
-
 ::::
 
 
@@ -33,12 +26,14 @@ To add automated response actions to a new or existing rule:
 2. Select an option in the **Response action** field:
 
     * **Isolate**: [Isolate the host](/solutions/security/endpoint-response-actions/isolate-host.md), blocking communication with other hosts on the network.
+
+      ::::{important}
+      Be aware that automatic host isolation can result in unintended consequences, such as disrupting legitimate user activities or blocking critical business processes.
+      ::::
+
     * **Kill process**: Terminate a process on the host.
     * **Suspend process**: Temporarily suspend a process on the host.
 
-    ::::{important}
-    Be aware that automatic host isolation can result in unintended consequences, such as disrupting legitimate user activities or blocking critical business processes.
-    ::::
 
 3. For process actions, specify how to identify the process you want to terminate or suspend:
 

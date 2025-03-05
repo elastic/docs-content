@@ -40,7 +40,7 @@ If you’re using {{ecloud}}, then you can perform the following tasks to contro
 * [Invite users to join your organization](/deploy-manage/users-roles/cloud-organization/manage-users.md)
 * Assign [user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md): 
   * Manage organization-level roles and high-level access to deployments and projects. 
-  * Assign project-level roles and [create custom roles](/deploy-manage/users-roles/custom-roles.md). ({{serverless-short}} only)
+  * Assign project-level roles and [create custom roles](/deploy-manage/users-roles/serverless-custom-roles.md). ({{serverless-short}} only)
 * Configure [SAML single sign-on](/deploy-manage/users-roles/cloud-organization/configure-saml-authentication.md) for your organization
 
 ::::{tip}
@@ -84,7 +84,7 @@ You can't manage users and roles for {{eck}} clusters at the orchestrator level.
 
 As an extension of the [predefined instance access roles](/deploy-manage/users-roles/cloud-organization/user-roles.md#ec_instance_access_roles) offered for {{serverless-short}} projects, you can create custom roles at the project level to provide more granular control, and provide users with only the access they need within specific projects.
 
-[Learn more about custom roles for {{serverless-full}} projects](/deploy-manage/users-roles/custom-roles.md).
+[Learn more about custom roles for {{serverless-full}} projects](/deploy-manage/users-roles/serverless-custom-roles.md).
 
 ## Cluster or deployment level
 

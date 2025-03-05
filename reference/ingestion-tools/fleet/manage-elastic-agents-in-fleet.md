@@ -34,7 +34,7 @@ To use {{fleet}} go to **Management > {{fleet}}** in {{kib}}. The following tabl
 | [{{agent}}s](/reference/ingestion-tools/fleet/manage-agents.md) | Enroll, unenroll, upgrade, add tags, and view {{agent}} status and logs. |
 | [Policies](/reference/ingestion-tools/fleet/agent-policy.md) | Create and edit agent policies and add integrations to them. |
 | [{{fleet}} enrollment tokens](/reference/ingestion-tools/fleet/fleet-enrollment-tokens.md) | Create and revoke enrollment tokens. |
-| [Uninstall tokens](/reference/security/elastic-defend/agent-tamper-protection.md) | ({{elastic-defend}} integration only) Access tokens to allow uninstalling {{agent}} from endpoints with Agent tamper protection enabled. |
+| [Uninstall tokens](/solutions/security/configure-elastic-defend/prevent-elastic-agent-uninstallation.md) | ({{elastic-defend}} integration only) Access tokens to allow uninstalling {{agent}} from endpoints with Agent tamper protection enabled. |
 | [Data streams](/reference/ingestion-tools/fleet/data-streams.md) | View data streams and navigate to dashboards to analyze your data. |
 
 

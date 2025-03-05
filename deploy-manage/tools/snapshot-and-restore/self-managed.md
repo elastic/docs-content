@@ -1,6 +1,7 @@
 ---
+mapped_urls:
+  - https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshots-register-repository.html
 navigation_title: "Self-managed"
-
 applies_to:
   deployment:
     self: 
@@ -20,8 +21,8 @@ In this guide, you’ll learn how to:
 
 * To use {{kib}}'s **Snapshot and Restore** feature, you must have the following permissions:
 
-    * [Cluster privileges](../../users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-cluster): `monitor`, `manage_slm`, `cluster:admin/snapshot`, and `cluster:admin/repository`
-    * [Index privilege](../../users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-indices): `all` on the `monitor` index
+    * [Cluster privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-cluster): `monitor`, `manage_slm`, `cluster:admin/snapshot`, and `cluster:admin/repository`
+    * [Index privilege](/deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-indices): `all` on the `monitor` index
 
 * To register a snapshot repository, the cluster’s global metadata must be writeable. Ensure there aren’t any [cluster blocks](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/miscellaneous-cluster-settings.md#cluster-read-only) that prevent write access.
 
