@@ -4,8 +4,9 @@ mapped_pages:
 sub:
   es-conf: "$ES_HOME/config"
   slash: "/"
-  export: "export"
+  export: "export "
   escape: "\\"
+  stack-version: "9.0.0"
 navigation_title: "Linux or MacOS"
 ---
 

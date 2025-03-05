@@ -2,6 +2,8 @@
 navigation_title: "Install from archive on Linux or macOS"
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/targz.html
+sub:
+  stack-version: "9.0.0"
 ---
 
 

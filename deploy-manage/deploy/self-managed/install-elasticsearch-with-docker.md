@@ -2,6 +2,8 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/docker.html
 navigation_title: "Docker"
+sub:
+  stack-version: "9.0.0"
 ---
 
 # Install {{es}} with Docker [docker]

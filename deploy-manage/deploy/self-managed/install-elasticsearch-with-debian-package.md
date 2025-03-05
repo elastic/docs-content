@@ -5,8 +5,9 @@ sub:
   es-conf: "/etc/elasticsearch"
   slash: "/"
   distro: "Debian"
-  export: "export"
+  export: "export "
   escape: "\\"
+  stack-version: "9.0.0"
 navigation_title: Debian
 ---
 

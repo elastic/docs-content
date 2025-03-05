@@ -6,6 +6,7 @@ sub:
   slash: "\\"
   export: "$"
   escape: "^"
+  stack-version: "9.0.0"
 navigation_title: Windows
 ---
 
