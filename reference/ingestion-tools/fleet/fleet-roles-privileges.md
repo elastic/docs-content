@@ -5,9 +5,7 @@ mapped_pages:
 
 # Required roles and privileges [fleet-roles-and-privileges]
 
-Beginning with {{stack}} version 8.1, you no longer require the built-in `elastic` superuser credentials to use {{fleet}} and Integrations.
-
-Assigning the {{kib}} feature privileges `Fleet` and `Integrations` grants access to these features:
+Assigning the {{kib}} feature privileges `Fleet` and `Integrations` grants access to use {{fleet}} and Integrations.
 
 `all`
 :   Grants full read-write access.
@@ -33,7 +31,7 @@ Take advantage of these privilege settings by:
 * Integrations: `all`
 
 `viewer`
-The built-in `viewer` role grants the following privileges, supporting read-only access to {{fleet}} and Integrations:
+:   The built-in `viewer` role grants the following privileges, supporting read-only access to {{fleet}} and Integrations:
 
 * {{Fleet}}:: `read`
 * Integrations:: `read`
