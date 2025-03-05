@@ -13,6 +13,7 @@ cross_links:
   - apm-agent-go
   - apm-agent-ios
   - apm-aws-lambda
+  - apm-k8s-attacher
   - asciidocalypse
   - beats
   - cloud
