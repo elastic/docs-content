@@ -4,7 +4,6 @@ redirects:
 
 # solutions
   'solutions/search/search-approaches/near-real-time-search.md': '!manage-data/data-store/near-real-time-search.md'
-  'solutions/search/inference-api/watsonx-inference-integration.md': 'https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put-watsonx'
 
 ## deploy-manage
   'deploy-manage/deploy/elastic-cloud/ec-configure-deployment-settings.md': '!deploy-manage/deploy/elastic-cloud/ec-customize-deployment-components.md'
