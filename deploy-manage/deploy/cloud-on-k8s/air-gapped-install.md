@@ -40,7 +40,6 @@ $$$k8s-eck-diag-air-gapped$$$
 % from fleet air-gapped
 % Kibana is able to reach the Elastic Package Registry to download package metadata and content.
 % Elastic Agents are able to download binaries during upgrades from the Elastic Artifact Registry.
-
 % what about Elasticsearch requirements for example for GeoIP database, etc?
 
 Pending to determine what to do with this:
