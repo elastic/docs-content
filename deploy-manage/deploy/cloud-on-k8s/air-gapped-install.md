@@ -21,13 +21,13 @@ metadata:
   name: quickstart
 spec:
   version: 8.16.1
-  # image: docker.elastic.co/elasticsearch/elasticsearch:8.16.1 <1>
+  # image: docker.elastic.co/elasticsearch/elasticsearch:8.16.1 // <1>
   nodeSets:
   - name: default
     count: 1
   # podTemplate:
   #   spec:
-  #     imagePullSecrets: <2>
+  #     imagePullSecrets: // <2>
   #     - name: private-registry-credentials-secret
 ```
 
