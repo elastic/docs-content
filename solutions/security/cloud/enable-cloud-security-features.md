@@ -5,7 +5,7 @@ applies_to:
   serverless: all
 ---
 
-# Enable cloud security features in serverless [security-enable-cloudsec]
+# Enable cloud security features in {{serverless-short}} [security-enable-cloudsec]
 
 
 To use cloud security features in your {{serverless-full}} project, you must have the `Cloud Protection Essentials` or `Cloud Protection Complete` options enabled for your project.
