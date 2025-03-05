@@ -86,7 +86,7 @@ The default chunking strategy is `sentence`.
 
 #### Example of configuring the chunking behavior
 
-The following example creates an {infer} endpoint with the `elasticsearch` service that deploys the ELSER model by default and configures the chunking behavior.
+The following example creates an {{infer}} endpoint with the `elasticsearch` service that deploys the ELSER model by default and configures the chunking behavior.
 
 ```console
 PUT _inference/sparse_embedding/small_chunk_size
