@@ -182,7 +182,6 @@ elastic-agent enroll --fleet-server-es <string>
                      [--force]
                      [--header <strings>]
                      [--help]
-                     [--non-interactive]
                      [--proxy-disabled]
                      [--proxy-header <strings>]
                      [--proxy-url <string>]
@@ -306,9 +305,6 @@ For more information about custom certificates, refer to [Configure SSL/TLS for 
 
     We strongly recommend that you use a secure connection.
 
-
-`--non-interactive`
-:   Install {{agent}} in a non-interactive mode. This flag is helpful when using automation software or scripted deployments. If {{agent}} is already installed on the host, the installation will terminate.
 
 `--proxy-disabled`
 :   Disable proxy support including environment variables.
