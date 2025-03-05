@@ -76,7 +76,7 @@ To set up the AI Assistant:
 
     * [OpenAI API keys](https://platform.openai.com/docs/api-reference)
     * [Azure OpenAI Service API keys](https://learn.microsoft.com/en-us/azure/cognitive-services/openai/reference)
-    * [Amazon Bedrock authentication keys and secrets](https://docs.aws.amazon.com/bedrock/latest/userguide/security-iam.md)
+    * [Amazon Bedrock authentication keys and secrets](https://docs.aws.amazon.com/bedrock/latest/userguide/security-iam.html)
     * [Google Gemini service account keys](https://cloud.google.com/iam/docs/keys-list-get)
 
 2. Create a connector for your AI provider. Refer to the connector documentation to learn how:
