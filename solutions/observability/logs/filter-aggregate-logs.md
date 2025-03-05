@@ -73,7 +73,7 @@ PUT _index_template/logs-example-default-template
 
 Filter your data using the fields you’ve extracted so you can focus on log data with specific log levels, timestamp ranges, or host IPs. You can filter your log data in different ways:
 
-* [Filter logs in Logs Explorer](../../../solutions/observability/logs/filter-aggregate-logs.md#logs-filter-logs-explorer): Filter and visualize log data in Logs Explorer.
+* [Filter logs in Logs Explorer](../../../solutions/observability/logs/filter-aggregate-logs.md#logs-filter-discover): Filter and visualize log data in Logs Explorer.
 * [Filter logs with Query DSL](../../../solutions/observability/logs/filter-aggregate-logs.md#logs-filter-qdsl): Filter log data from Developer Tools using Query DSL.
 
 

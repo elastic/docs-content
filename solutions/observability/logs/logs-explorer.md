@@ -28,9 +28,9 @@ Viewing data in Discover logs data views requires `read` privileges for **Discov
 
 By default, the **All logs** data view shows all of your logs, according to the index patterns set in the **logs sources** advanced setting. To open **Advanced settings**, find **Stack Management** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
-To focus on logs from a specific source or sources, create a data view using the index patterns of those source. For more information on creating data views, refer to [Create a data view](../../../explore-analyze/find-and-organize/data-views.md#create-a-data-view-settings-create-pattern)
+To focus on logs from a specific source or sources, create a data view using the index patterns of those source. For more information on creating data views, refer to [Create a data view](../../../explore-analyze/find-and-organize/data-views.md#settings-create-pattern)
 
-Once you have the logs you want to focus on displayed, you can drill down further to find the information you need. For more on filtering your data in Discover, refer to [Filter logs in Discover](../../../solutions/observability/logs/filter-aggregate-logs.md#filter-logs-in-discover-logs-filter-discover).
+Once you have the logs you want to focus on displayed, you can drill down further to find the information you need. For more on filtering your data in Discover, refer to [Filter logs in Discover](../../../solutions/observability/logs/filter-aggregate-logs.md#logs-filter-discover).
 
 
 ## Review log data in the documents table [review-log-data-in-the-documents-table]
