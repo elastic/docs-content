@@ -13,7 +13,7 @@ When you run in Docker, the [{{es}} configuration files](configure-elasticsearch
 
 To use custom configuration files, you [bind-mount the files](#docker-config-bind-mount) over the configuration files in the image.
 
-You can set individual {{es}} configuration parameters using Docker environment variables. The [sample compose file](#docker-compose-file) and the [single-node example](#docker-cli-run-dev-mode) use this method. You can use the setting name directly as the environment variable name. If you cannot do this, for example because your orchestration platform forbids periods in environment variable names, then you can use an alternative style by converting the setting name as follows.
+You can set individual {{es}} configuration parameters using Docker environment variables. The [sample compose file](/deploy-manage/deploy/self-managed/install-elasticsearch-docker-compose.md) and the [single-node example](/deploy-manage/deploy/self-managed/install-elasticsearch-docker-basic.md) use this method. You can use the setting name directly as the environment variable name. If you can't do this, for example because your orchestration platform forbids periods in environment variable names, then you can use an alternative style by converting the setting name as follows:
 
 1. Change the setting name to uppercase
 2. Prefix it with `ES_SETTING_`
@@ -38,7 +38,7 @@ docker run <various parameters> bin/elasticsearch -Ecluster.name=mynewclusternam
 
 While bind-mounting your configuration files is usually the preferred method in production, you can also [create a custom Docker image](#_c_customized_image) that contains your configuration.
 
-### Mounting {{es}} configuration files [docker-config-bind-mount]
+## Mounting {{es}} configuration files [docker-config-bind-mount]
 
 Create custom config files and bind-mount them over the corresponding files in the Docker image. For example, to bind-mount `custom_elasticsearch.yml` with `docker run`, specify:
 
@@ -54,7 +54,7 @@ The container **runs {{es}} as user `elasticsearch` using uid:gid `1000:0`**. Bi
 
 
 
-### Create an encrypted {{es}} keystore [docker-keystore-bind-mount]
+## Create an encrypted {{es}} keystore [docker-keystore-bind-mount]
 
 By default, {{es}} will auto-generate a keystore file for [secure settings](../../security/secure-settings.md). This file is obfuscated but not encrypted.
 
@@ -91,7 +91,7 @@ If you’ve already created the keystore and don’t need to update it, you can 
 ```
 
 
-### Using custom Docker images [_c_customized_image]
+## Using custom Docker images [_c_customized_image]
 
 In some environments, it might make more sense to prepare a custom image that contains your configuration. A `Dockerfile` to achieve this might be as simple as:
 
@@ -115,7 +115,7 @@ Some plugins require additional security permissions. You must explicitly accept
 See [Plugin management](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch-plugins/_other_command_line_parameters.md) for more information.
 
 
-### Troubleshoot Docker errors for {{es}} [troubleshoot-docker-errors]
+## Troubleshoot Docker errors for {{es}} [troubleshoot-docker-errors]
 
 Here’s how to resolve common errors when running {{es}} with Docker.
 

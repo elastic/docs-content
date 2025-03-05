@@ -68,7 +68,7 @@ If you want to install and manage {{es}} yourself, you can:
 * Run {{es}} in a [Docker container](/deploy-manage/deploy/self-managed/installing-elasticsearch.md#elasticsearch-docker-images).
 
 ::::{tip}
-To try out  on your own machine, we recommend using Docker and running both {{es}} and Kibana. For more information, see [Run {{es}} locally](../../../solutions/search/get-started.md). This setup is not suitable for production use.
+To try out  on your own machine, we recommend using Docker and running both {{es}} and Kibana. For more information, see [Run {{es}} locally](/deploy-manage/deploy/self-managed/local-development-installation-quickstart.md). This setup is not suitable for production use.
 ::::
 
 ## {{es}} install packages [elasticsearch-install-packages]

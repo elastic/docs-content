@@ -177,16 +177,20 @@ The `ES_JAVA_OPTS` variable overrides all other JVM options. We do not recommend
 
 ## Pin deployments to a specific image version [_pin_deployments_to_a_specific_image_version]
 
-Pin your deployments to a specific version of the {{es}} Docker image. For example `docker.elastic.co/elasticsearch/elasticsearch:{{stack-version}}`.
+Pin your deployments to a specific version of the {{es}} Docker image. For example:
+
+```sh
+docker.elastic.co/elasticsearch/elasticsearch:{{stack-version}}
+```
 
 
 ## Always bind data volumes [_always_bind_data_volumes]
 
 You should use a volume bound on `/usr/share/elasticsearch/data` for the following reasons:
 
-1. The data of your {{es}} node won’t be lost if the container is killed
-2. {{es}} is I/O sensitive and the Docker storage driver is not ideal for fast I/O
-3. It allows the use of advanced [Docker volume plugins](https://docs.docker.com/engine/extend/plugins/#volume-plugins)
+1. The data of your {{es}} node won’t be lost if the container is killed.
+2. {{es}} is I/O sensitive and the Docker storage driver is not ideal for fast I/O.
+3. It allows the use of advanced [Docker volume plugins](https://docs.docker.com/engine/extend/plugins/#volume-plugins).
 
 
 ## Avoid using `loop-lvm` mode [_avoid_using_loop_lvm_mode]
