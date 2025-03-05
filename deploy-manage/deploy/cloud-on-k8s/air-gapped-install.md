@@ -10,7 +10,7 @@ mapped_urls:
 
 # Running in air-gapped environments [k8s-air-gapped]
 
-The ECK operator can be run in an air-gapped environment without access to the open internet when it is configured not to pull container images from `docker.elastic.co`.
+The ECK operator can be run in an air-gapped environment without access to the open internet when configured to avoid pulling container images from `docker.elastic.co`.
 
 By default ECK does not require you to specify the container image for each Elastic Stack application you deploy.
 
