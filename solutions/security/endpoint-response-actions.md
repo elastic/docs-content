@@ -6,44 +6,25 @@ mapped_urls:
 
 # Endpoint response actions
 
-% What needs to be done: Align serverless/stateful
-
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/security-docs/security/response-actions.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/security-response-actions.md
-
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
-
-$$$actions-log$$$
-
-$$$get-file$$$
-
-$$$help-panel$$$
-
-$$$kill-process$$$
-
-$$$processes$$$
-
-$$$response-action-commands$$$
-
-$$$runscript$$$
-
 The response console allows you to perform response actions on an endpoint using a terminal-like interface. You can enter action commands and get near-instant feedback on them. Actions are also recorded in the endpoint’s [response actions history](/solutions/security/endpoint-response-actions.md#actions-log) for reference.
 
 Response actions are supported on all endpoint platforms (Linux, macOS, and Windows).
 
 ::::{admonition} Requirements
-* Response actions and the response console UI are [Enterprise subscription](https://www.elastic.co/pricing) features.
+* Response actions and the response console UI require the appropriate [subscription](https://www.elastic.co/pricing) in {{stack}} or [project feature](/deploy-manage/deploy/elastic-cloud/project-settings.md) in {{serverless-short}}.
 * Endpoints must have {{agent}} version 8.4 or higher installed with the {{elastic-defend}} integration to receive response actions.
-* Some response actions require specific [privileges](/solutions/security/configure-elastic-defend/elastic-defend-feature-privileges.md), indicated below. These are required to perform actions both in the response console and in other areas of the {{security-app}} (such as isolating a host from a detection alert).
-* Users must have privileges for at least one response action to access the response console.
+* Some response actions require:
+  * In {{stack}}, specific [privileges](/solutions/security/configure-elastic-defend/elastic-defend-feature-privileges.md), indicated below.
+  * In {{serverless-short}}, either a [predefined Security user role](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles) or a [custom role](/deploy-manage/users-roles/cloud-organization/user-roles.md) with a specific feature privilege, indicated below.
 
+  These are required to perform actions both in the response console and in other areas of the {{security-app}} (such as isolating a host from a detection alert).
+* Users must have the appropriate user role or privileges for at least one response action to access the response console.
 ::::
 
 
 :::{image} ../../images/security-response-console.png
 :alt: Response console UI
+:width: 90%
 :class: screenshot
 :::
 
@@ -70,7 +51,6 @@ Once you submit a response action, you can’t cancel it, even if the action is 
 ::::
 
 
-
 ## Response action commands [response-action-commands]
 
 The following response action commands are available in the response console.
@@ -80,7 +60,9 @@ The following response action commands are available in the response console.
 
 [Isolate the host](/solutions/security/endpoint-response-actions/isolate-host.md), blocking communication with other hosts on the network.
 
-Required privilege: **Host Isolation**
+Predefined role (in {{serverless-short}}): **Tier 3 analyst**, **SOC manager**, or **Endpoint operations analyst**
+
+Required privilege (in {{stack}}) or custom role privilege (in {{serverless-short}}): **Host Isolation**
 
 Example: `isolate --comment "Isolate host related to detection alerts"`
 
@@ -89,7 +71,9 @@ Example: `isolate --comment "Isolate host related to detection alerts"`
 
 Release an isolated host, allowing it to communicate with the network again.
 
-Required privilege: **Host Isolation**
+Predefined role (in {{serverless-short}}): **Tier 3 analyst**, **SOC manager**, or **Endpoint operations analyst**
+
+Required privilege (in {{stack}}) or custom role privilege (in {{serverless-short}}): **Host Isolation**
 
 Example: `release --comment "Release host, everything looks OK"`
 
@@ -103,20 +87,20 @@ Show information about the host’s status, including: {{agent}} status and vers
 
 Show a list of all processes running on the host. This action may take a minute or so to complete.
 
-Required privilege: **Process Operations**
+Predefined role (in {{serverless-short}}): **Tier 3 analyst**, **SOC manager**, or **Endpoint operations analyst**
+
+Required privilege (in {{stack}}) or custom role privilege (in {{serverless-short}}): **Process Operations**
 
 ::::{tip}
 Use this command to get current PID or entity ID values, which are required for other response actions such as `kill-process` and `suspend-process`.
 
 Entity IDs may be more reliable than PIDs, because entity IDs are unique values on the host, while PID values can be reused by the operating system.
-
 ::::
 
 
 ::::{note}
-Running this command on third-party-protected hosts might return the process list in a different format. Refer to [*Third-party response actions*](/solutions/security/endpoint-response-actions/third-party-response-actions.md) for more information.
+Running this command on third-party-protected hosts might return the process list in a different format. Refer to [](/solutions/security/endpoint-response-actions/third-party-response-actions.md) for more information.
 ::::
-
 
 
 ### `kill-process` [kill-process]
@@ -126,7 +110,9 @@ Terminate a process. You must include one of the following parameters to identif
 * `--pid` : A process ID (PID) representing the process to terminate.
 * `--entityId` : An entity ID representing the process to terminate.
 
-Required privilege: **Process Operations**
+Predefined role (in {{serverless-short}}): **Tier 3 analyst**, **SOC manager**, or **Endpoint operations analyst**
+
+Required privilege (in {{stack}}) or custom role privilege (in {{serverless-short}}): **Process Operations**
 
 Example: `kill-process --pid 123 --comment "Terminate suspicious process"`
 
@@ -134,9 +120,7 @@ Example: `kill-process --pid 123 --comment "Terminate suspicious process"`
 For SentinelOne-enrolled hosts, you must use the parameter `--processName` to identify the process to terminate. `--pid` and `--entityId` are not supported.
 
 Example: `kill-process --processName cat --comment "Terminate suspicious process"`
-
 ::::
-
 
 
 ### `suspend-process` [_suspend_process]
@@ -146,7 +130,9 @@ Suspend a process. You must include one of the following parameters to identify 
 * `--pid` : A process ID (PID) representing the process to suspend.
 * `--entityId` : An entity ID representing the process to suspend.
 
-Required privilege: **Process Operations**
+Predefined role (in {{serverless-short}}): **Tier 3 analyst**, **SOC manager**, or **Endpoint operations analyst**
+
+Required privilege (in {{stack}}) or custom role privilege (in {{serverless-short}}): **Process Operations**
 
 Example: `suspend-process --pid 123 --comment "Suspend suspicious process"`
 
@@ -156,7 +142,7 @@ Example: `suspend-process --pid 123 --comment "Suspend suspicious process"`
 Retrieve a file from a host. Files are downloaded in a password-protected `.zip` archive to prevent the file from running. Use password `elastic` to open the `.zip` in a safe environment.
 
 ::::{note}
-Files retrieved from third-party-protected hosts require a different password. Refer to [*Third-party response actions*](/solutions/security/endpoint-response-actions/third-party-response-actions.md) for your system’s password.
+Files retrieved from third-party-protected hosts require a different password. Refer to [](/solutions/security/endpoint-response-actions/third-party-response-actions.md) for your system’s password.
 ::::
 
 
@@ -164,7 +150,9 @@ You must include the following parameter to specify the file’s location on the
 
 * `--path` : The file’s full path (including the file name).
 
-Required privilege: **File Operations**
+Predefined role (in {{serverless-short}}): **Tier 3 analyst**, **SOC manager**, or **Endpoint operations analyst**
+
+Required privilege (in {{stack}}) or custom role privilege (in {{serverless-short}}): **File Operations**
 
 Example: `get-file --path "/full/path/to/file.txt" --comment "Possible malware"`
 
@@ -175,9 +163,7 @@ You can use the [Osquery manager integration](/solutions/security/investigate/os
 
 ::::{note}
 When {{elastic-defend}} prevents file activity due to [malware prevention](/solutions/security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md#malware-protection), the file is quarantined on the host and a malware prevention alert is created. To retrieve this file with `get-file`, copy the path from the alert’s **Quarantined file path** field (`file.Ext.quarantine_path`), which appears under **Highlighted fields** in the alert details flyout. Then paste the value into the `--path` parameter.
-
 ::::
-
 
 
 ### `execute` [_execute]
@@ -189,19 +175,19 @@ Run a shell command on the host. The command’s output and any errors appear in
     ::::{note}
     * Multiple consecutive dashes in the value must be escaped; single dashes do not need to be escaped. For example, to represent a directory named `/opt/directory--name`, use the following: `/opt/directory\-\-name`.
     * You can use quotation marks without escaping. For example:<br> `execute --command "cd "C:\Program Files\directory""`
-
     ::::
 
 * `--timeout` : (Optional) How long the host should wait for the command to complete. Use `h` for hours, `m` for minutes, `s` for seconds (for example, `2s` is two seconds). If no timeout is specified, it defaults to four hours.
 
-Required privilege: **Execute Operations**
+Predefined role (in {{serverless-short}}): **SOC manager** or **Endpoint operations analyst**
+
+Required privilege (in {{stack}}) or custom role privilege (in {{serverless-short}}): **Execute Operations**
 
 Example: `execute --command "ls -al" --timeout 2s --comment "Get list of all files"`
 
 ::::{warning}
 This response action runs commands on the host using the same user account running the {{elastic-defend}} integration, which normally has full control over the system. Be careful with any commands that could cause irrevocable changes.
 ::::
-
 
 
 ### `upload` [_upload]
@@ -211,7 +197,9 @@ Upload a file to the host. The file is saved to the location on the host where {
 * `--file` : (Required) The file to send to the host. As soon as you type this parameter, a popup appears — select it to navigate to the file, or drag and drop the file onto the popup.
 * `--overwrite` : (Optional) Overwrite the file on the host if it already exists.
 
-Required privilege: **File Operations**
+Predefined role (in {{serverless-short}}): **Tier 3 analyst**, **SOC manager**, or **Endpoint operations analyst**
+
+Required privilege (in {{stack}}) or custom role privilege (in {{serverless-short}}): **File Operations**
 
 Example: `upload --file --comment "Upload remediation script"`
 
@@ -225,21 +213,21 @@ The default file size maximum is 25 MB, configurable in `kibana.yml` with the `x
 ::::
 
 
-
 ### `scan` [_scan]
 
 Scan a specific file or directory on the host for malware. This uses the [malware protection settings](/solutions/security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md#malware-protection) (such as **Detect** or **Prevent** options, or enabling the blocklist) as configured in the host’s associated {{elastic-defend}} integration policy. Use these parameters:
 
 * `--path` : (Required) The absolute path to a file or directory to be scanned.
 
-Required privilege: **Scan Operations**
+Predefined role (in {{serverless-short}}): **Tier 3 Analyst**, **SOC Manager**, or **Endpoint Operations Analyst**
+
+Required privilege (in {{stack}}) or custom role privilege (in {{serverless-short}}): **Scan Operations**
 
 Example: `scan --path "/Users/username/Downloads" --comment "Scan Downloads folder for malware"`
 
 ::::{note}
 Scanning can take longer for directories containing a lot of files.
 ::::
-
 
 
 ### `runscript` [runscript]
@@ -260,13 +248,15 @@ You can also use these optional parameters:
 * `--CommandLine`: Additional command-line arguments passed to the script to customize its execution.
 * `--Timeout`: The maximum duration, in seconds, that the script can run before it’s forcibly stopped. If no timeout is specified, it defaults to 60 seconds.
 
-Required privilege: **Execute Operations**
+Predefined role (in {{serverless-short}}): **SOC manager** or **Endpoint operations analyst**
+
+Required privilege (in {{stack}}) or custom role privilege (in {{serverless-short}}): **Execute Operations**
 
 Examples:
 
 `runscript --CloudFile="CloudScript1.ps1" --CommandLine="-Verbose true" --Timeout=180`
 
-`runscript --Raw=```Get-ChildItem.````
+` runscript --Raw=```Get-ChildItem.``` `
 
 `runscript --HostPath="C:\temp\LocalScript.ps1" --CommandLine="-Verbose true"`
 
@@ -300,18 +290,18 @@ You can also get a list of commands in the [Help panel](/solutions/security/endp
 ::::
 
 
-
 ## Help panel [help-panel]
 
 Click ![Help icon](../../images/security-help-icon.png "") **Help** in the upper-right to open the **Help** panel, which lists available response action commands and parameters as a reference.
 
 ::::{note}
-This panel displays only the response actions that the user has privileges to perform.
+This panel displays only the response actions that you have the user role or privileges to perform.
 ::::
 
 
 :::{image} ../../images/security-response-console-help-panel.png
 :alt: Help panel
+:width: 65%
 :class: screenshot
 :::
 
@@ -321,15 +311,17 @@ If the endpoint is running an older version of {{agent}}, some response actions 
 
 :::{image} ../../images/security-response-console-unsupported-command.png
 :alt: Unsupported response action with tooltip
+:width: 65%
 :class: screenshot
 :::
 
 
 ## Response actions history [actions-log]
 
-Click **Response actions history** to display a log of the response actions performed on the endpoint, such as isolating a host or terminating a process. You can filter the information displayed in this view. Refer to [*Response actions history*](/solutions/security/endpoint-response-actions/response-actions-history.md) for more details.
+Click **Response actions history** to display a log of the response actions performed on the endpoint, such as isolating a host or terminating a process. You can filter the information displayed in this view. Refer to [](/solutions/security/endpoint-response-actions/response-actions-history.md) for more details.
 
 :::{image} ../../images/security-response-actions-history-console.png
 :alt: Response actions history with a few past actions
+:width: 85%
 :class: screenshot
 :::

@@ -1,20 +1,13 @@
 ---
 mapped_urls:
-  - https://www.elastic.co/guide/en/security/current/security-posture-faq.html
-  - https://www.elastic.co/guide/en/serverless/current/security-posture-faq.html
+  - https://www.elastic.co/guide/en/security/current/cspm-security-posture-faq.html
+  - https://www.elastic.co/guide/en/serverless/current/security-cspm-security-posture-faq.html
 ---
 
 # Frequently asked questions (FAQ)
 
-% What needs to be done: Lift-and-shift
 
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/security-docs/security/security-posture-faq.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/security-posture-faq.md
-
-
-## CSPM FAQ [cspm-faq]
+## CSPM FAQ [_cspm_faq]
 
 Frequently asked questions about the Cloud Security Posture Management (CSPM) integration and features.
 
@@ -35,7 +28,7 @@ After you deploy the CSPM integration, it can take up to 10 minutes for resource
 Newly unenrolled cloud accounts can take a maximum of 24 hours to disappear from the Cloud Security Posture dashboard.
 
 
-## KSPM FAQ [kspm-faq]
+## KSPM FAQ [_kspm_faq]
 
 Frequently asked questions about the Kubernetes Security Posture Management (KSPM) integration and features.
 
@@ -54,7 +47,7 @@ For self-managed/vanilla and EKS clusters, Kubernetes version 1.23 is supported.
 **When do unenrolled clusters disappear from the dashboard?** A cluster will disappear as soon as the KSPM integration fetches data while that cluster is not enrolled. The fetch process repeats every four hours, which means a newly unenrolled cluster can take a maximum of four hours to disappear from the dashboard.
 
 
-## Findings page [_findings_page_2]
+## Findings page [_findings_page]
 
 **Are all the findings page current?** Yes. Only the most recent findings appear on the Findings page.
 
@@ -66,11 +59,11 @@ For self-managed/vanilla and EKS clusters, Kubernetes version 1.23 is supported.
 * **Historical findings:** `logs-cloud_security_posture.findings-*`
 
 
-## Benchmark rules [_benchmark_rules_2]
+## Benchmark rules [_benchmark_rules]
 
 **How often are my resources evaluated against benchmark rules?** Resources are fetched and evaluated against benchmark rules when a security posture management integration is deployed. After that, the CSPM integration evaluates every 24 hours, and the KSPM integration evaluates every four hours.
 
-**Can I configure an integration’s fetch cycle?** No, the four-hour fetch cycle is not configurable.
+**Can I configure an integration’s fetch cycle?** No, the fetch cycle’s timing is not configurable.
 
 **Can I contribute to the CSP ruleset?** You can’t directly edit benchmark rules. The rules are defined [in this repository](https://github.com/elastic/csp-security-policies), where you can raise issues with certain rules. They are written in [Rego](https://www.openpolicyagent.org/docs/latest/policy-language/).
 
