@@ -25,7 +25,8 @@ To fully leverage model autoscaling in {{ech}}, {{ece}}, and {{eck}}, it is high
 
 Trained model autoscaling is available for both {{serverless-short}} and Cloud deployments. In serverless deployments, processing power is managed differently across Search, Observability, and Security projects, which impacts their costs and resource limits.
 
-The available resources of on-premises deployments are static, trained model autoscaling is not applicable. However, available resources are still segmented based on the settings described in this section.
+::: {admonition} Trained model auto-scaling for self-managed deployments
+The available resources of self-managed deployments are static, so trained model autoscaling is not applicable. However, available resources are still segmented based on the settings described in this section.
 
 Security and Observability projects are only charged for data ingestion and retention. They are not charged for processing power (VCU usage), which is used for more complex operations, like running advanced search models. For example, in Search projects, models such as ELSER require significant processing power to provide more accurate search results.
 
