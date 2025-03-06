@@ -100,7 +100,7 @@ In case of ingest-optimized deployments, we maximize the number of model allocat
 
 ::::{tab-set}
 
-:::{tab-item} ECH, ECK, ECE
+:::{tab-item} ECH, ECE
 
 | Level | Allocations | Threads | vCPUs |
 | --- | --- | --- | --- |
@@ -128,7 +128,7 @@ In case of ingest-optimized deployments, we maximize the number of model allocat
 
 ::::{tab-set}
 
-:::{tab-item} ECH, ECK, ECE
+:::{tab-item} ECH, ECE
 
 | Level | Allocations | Threads | vCPUs |
 | --- | --- | --- | --- |
@@ -160,7 +160,7 @@ In case of search-optimized deployments, we maximize the number of threads. The 
 
 ::::{tab-set}
 
-:::{tab-item} ECH, ECK, ECE
+:::{tab-item} ECH, ECE
 
 | Level | Allocations | Threads | vCPUs |
 | --- | --- | --- | --- |
@@ -188,7 +188,7 @@ In case of search-optimized deployments, we maximize the number of threads. The 
 
 ::::{tab-set}
 
-:::{tab-item} ECH, ECK, ECE
+:::{tab-item} ECH, ECE
 
 | Level | Allocations | Threads | vCPUs |
 | --- | --- | --- | --- |
