@@ -2,7 +2,6 @@ project: 'Elastic documentation'
 
 features:
   primary-nav: true
-  landing-page: true
 
 exclude:
   - 'README.md'
