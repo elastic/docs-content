@@ -19,7 +19,7 @@ By default, Kinesis Data Streams sends stream-level (basic level) metrics to Clo
 aws kinesis enable-enhanced-monitoring --stream-name samplestream --shard-level-metrics ALL
 ```
 
-For more details, refer to the [EnableEnhancedMonitoring](https://docs.aws.amazon.com/kinesis/latest/APIReference/API_EnableEnhancedMonitoring.md) documentation.
+For more details, refer to the [EnableEnhancedMonitoring](https://docs.aws.amazon.com/kinesis/latest/APIReference/API_EnableEnhancedMonitoring.html) documentation.
 
 
 ## Get started [get-started-kinesis]

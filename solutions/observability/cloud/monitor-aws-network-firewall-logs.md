@@ -47,7 +47,7 @@ AWS PrivateLink is not supported. Make sure the deployment is on AWS, because th
 
 You can either use an existing AWS Network Firewall, or create a new one for testing purposes.
 
-Creating a Network Firewall is not trivial and is beyond the scope of this guide. For more information, check the AWS documentation on the [Getting started with AWS Network Firewall](https://docs.aws.amazon.com/network-firewall/latest/developerguide/getting-started.md) guide.
+Creating a Network Firewall is not trivial and is beyond the scope of this guide. For more information, check the AWS documentation on the [Getting started with AWS Network Firewall](https://docs.aws.amazon.com/network-firewall/latest/developerguide/getting-started.html) guide.
 
 
 ## Step 3: Create a stream in Amazon Data Firehose [firehose-firewall-step-three]

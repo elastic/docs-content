@@ -1,31 +1,32 @@
 ---
+applies_to:
+  deployment:
+    ece: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-configure-hosts-rhel-centos-cloud.html
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-configure-hosts-rhel-centos-onprem.html
+navigation_title: RHEL
 ---
 
-# Configure host RHEL cloud [ece-configure-hosts-rhel-centos-cloud]
+# Configure a RHEL host [ece-configure-hosts-rhel-centos]
 
 
-## Red Hat Enterprise Linux 8 (RHEL 8), 9 (RHEL 9), and Rocky Linux 8 and 9 [ece-setup-rhel8-podman-cloud]
 
 The following instructions show you how to prepare your hosts on Red Hat Enterprise Linux 8 (RHEL 8), 9 (RHEL 9), and Rocky Linux 8 and 9.
 
-* [Prerequisites](#ece-prerequisites-rhel8-cloud)
-* [Configure the host](#ece-configure-hosts-rhel8-podman-cloud)
+* [Prerequisites](#ece-prerequisites-rhel8)
+* [Configure the host](#ece-configure-hosts-rhel8-podman)
 
 
-### Prerequisites [ece-prerequisites-rhel8-cloud]
+## Prerequisites [ece-prerequisites-rhel8]
 
-Create a RHEL 8 (the version must be >= 8.5, but <9), RHEL 9, Rocky Linux 8, or Rocky Linux 9 VM.
+Follow your internal guidelines to create a RHEL 8 (the version must be >= 8.5), RHEL 9, Rocky Linux 8, or Rocky Linux 9 server or VM in your environment.
 
-* For RHEL 8, follow your internal guidelines to add a vanilla RHEL 8 VM to your environment. Note that the version must be >= 8.5, but <9.
-
-Verify that required traffic is allowed. Check the [Networking prerequisites](ece-networking-prereq.md) and [Google Cloud Platform (GCP)](/deploy-manage/deploy/cloud-enterprise/prepare-environment.md) guidelines for a list of ports that need to be open. The technical configuration highly depends on the underlying infrastructure.
+Verify that required traffic is allowed. Check the [Networking prerequisites](ece-networking-prereq.md) for a list of ports that need to be open. The technical configuration depends on the underlying infrastructure.
 
 **Example:** For AWS, allowing traffic between hosts is implemented using security groups.
 
-
-### Configure the host [ece-configure-hosts-rhel8-podman-cloud]
+## Configure the host [ece-configure-hosts-rhel8-podman]
 
 1. Install the OS packages `lvm2`, `iptables`, `sysstat`, and `net-tools` by executing:
 

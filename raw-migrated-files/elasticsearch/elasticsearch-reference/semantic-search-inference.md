@@ -23,7 +23,7 @@ The following examples use the:
 * `amazon.titan-embed-text-v1` model for [Amazon Bedrock](https://docs.aws.amazon.com/bedrock/latest/userguide/model-ids.md)
 * `ops-text-embedding-zh-001` model for [AlibabaCloud AI](https://help.aliyun.com/zh/open-search/search-platform/developer-reference/text-embedding-api-details)
 
-You can use any Cohere and OpenAI models, they are all supported by the {{infer}} API. For a list of recommended models available on HuggingFace, refer to [the supported model list](../../../solutions/search/inference-api/huggingface-inference-integration.md#inference-example-hugging-face-supported-models).
+You can use any Cohere and OpenAI models, they are all supported by the {{infer}} API. For a list of recommended models available on HuggingFace, refer to [the supported model list](../../../explore-analyze/elastic-inference/inference-api/huggingface-inference-integration.md).
 
 Click the name of the service you want to use on any of the widgets below to review the corresponding instructions.
 

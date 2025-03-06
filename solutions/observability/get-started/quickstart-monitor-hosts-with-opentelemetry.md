@@ -50,7 +50,7 @@ In this quickstart guide, you’ll learn how to monitor your hosts using the Ela
 
 ## Limitations [_limitations]
 
-Refer to [Elastic OpenTelemetry Collector limitations](https://github.com/elastic/opentelemetry/blob/main/docs/collector-limitations.md) for known limitations when using the EDOT Collector.
+Refer to [Elastic OpenTelemetry Collector limitations](https://github.com/elastic/opentelemetry/blob/main/docs/EDOT-collector/edot-collector-limitations.md) for known limitations when using the EDOT Collector.
 
 
 ## Collect your data [_collect_your_data]

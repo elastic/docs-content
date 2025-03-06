@@ -1,6 +1,10 @@
 ---
+applies_to:
+  deployment:
+    ece: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-configure-ansible.html
+navigation_title: Ansible playbook
 ---
 
 # Alternative: Install ECE with Ansible [ece-configure-ansible]

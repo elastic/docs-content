@@ -58,7 +58,7 @@ It can also be any other unique string that indicates a specific version of your
 
 ## Generate a source map [apm-source-map-rum-generate]
 
-To be compatible with Elastic APM, source maps must follow the [source map revision 3 proposal spec](https://sourcemaps.info/spec.md).
+To be compatible with Elastic APM, source maps must follow the [source map revision 3 proposal spec](https://sourcemaps.info/spec.html).
 
 Source maps can be generated and configured in many different ways. For example, parcel automatically generates source maps by default. If you’re using webpack, some configuration may be needed to generate a source map:
 

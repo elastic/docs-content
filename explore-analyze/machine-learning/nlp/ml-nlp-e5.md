@@ -13,7 +13,7 @@ EmbEddings from bidirEctional Encoder rEpresentations - or E5 -  is a {{nlp}} mo
 
 [Semantic search](../../../solutions/search/semantic-search.md) provides you search results based on contextual meaning and user intent, rather than exact keyword matches.
 
-E5 has two versions: one cross-platform version which runs on any hardware and one version which is optimized for Intel® silicon. The **Model Management** > **Trained Models** page shows you which version of E5 is recommended to deploy based on your cluster’s hardware. However, the recommended way to use E5 is through the [{{infer}} API](../../../solutions/search/inference-api/elasticsearch-inference-integration.md) as a service which makes it easier to download and deploy the model and you don’t need to select from different versions.
+E5 has two versions: one cross-platform version which runs on any hardware and one version which is optimized for Intel® silicon. The **Model Management** > **Trained Models** page shows you which version of E5 is recommended to deploy based on your cluster’s hardware. However, the recommended way to use E5 is through the [{{infer}} API](../../elastic-inference/inference-api/elasticsearch-inference-integration.md) as a service which makes it easier to download and deploy the model and you don’t need to select from different versions.
 
 Refer to the model cards of the [multilingual-e5-small](https://huggingface.co/elastic/multilingual-e5-small) and the [multilingual-e5-small-optimized](https://huggingface.co/elastic/multilingual-e5-small-optimized) models on HuggingFace for further information including licensing.
 
@@ -44,7 +44,7 @@ PUT _inference/text_embedding/my-e5-model
 
     The API request automatically initiates the model download and then deploy the model.
 
-Refer to the [`elasticsearch` {{infer}} service documentation](../../../solutions/search/inference-api/elasticsearch-inference-integration.md) to learn more about the available settings.
+Refer to the [`elasticsearch` {{infer}} service documentation](../../elastic-inference/inference-api/elasticsearch-inference-integration.md) to learn more about the available settings.
 
 After you created the E5 {{infer}} endpoint, it’s ready to be used for semantic search. The easiest way to perform semantic search in the {{stack}} is to [follow the `semantic_text` workflow](../../../solutions/search/semantic-search/semantic-search-semantic-text.md).
 

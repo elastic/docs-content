@@ -86,10 +86,10 @@ You need to provide the access and secret keys only once, during the {{infer}} m
 
 
 `model`
-:   (Required, string) The base model ID or an ARN to a custom model based on a foundational model. The base model IDs can be found in the [Amazon Bedrock model IDs](https://docs.aws.amazon.com/bedrock/latest/userguide/model-ids.md) documentation. Note that the model ID must be available for the provider chosen, and your IAM user must have access to the model.
+:   (Required, string) The base model ID or an ARN to a custom model based on a foundational model. The base model IDs can be found in the [Amazon Bedrock model IDs](https://docs.aws.amazon.com/bedrock/latest/userguide/model-ids.html) documentation. Note that the model ID must be available for the provider chosen, and your IAM user must have access to the model.
 
 `region`
-:   (Required, string) The region that your model or ARN is deployed in. The list of available regions per model can be found in the [Model support by AWS region](https://docs.aws.amazon.com/bedrock/latest/userguide/models-regions.md) documentation.
+:   (Required, string) The region that your model or ARN is deployed in. The list of available regions per model can be found in the [Model support by AWS region](https://docs.aws.amazon.com/bedrock/latest/userguide/models-regions.html) documentation.
 
 `rate_limit`
 :   (Optional, object) By default, the `amazonbedrock` service sets the number of requests allowed per minute to `240`. This helps to minimize the number of rate limit errors returned from Amazon Bedrock. To modify this, set the `requests_per_minute` setting of this object in your service settings:
@@ -124,7 +124,7 @@ You need to provide the access and secret keys only once, during the {{infer}} m
 
 The following example shows how to create an {{infer}} endpoint called `amazon_bedrock_embeddings` to perform a `text_embedding` task type.
 
-Choose chat completion and embeddings models that you have access to from the [Amazon Bedrock base models](https://docs.aws.amazon.com/bedrock/latest/userguide/model-ids.md).
+Choose chat completion and embeddings models that you have access to from the [Amazon Bedrock base models](https://docs.aws.amazon.com/bedrock/latest/userguide/model-ids.html).
 
 ```console
 PUT _inference/text_embedding/amazon_bedrock_embeddings

@@ -92,10 +92,10 @@ To use semantic re-ranking in {{es}}, you need to:
 
 1. **Select and configure a re-ranking model**. You have the following options:
 
-    1. Use the [Elastic Rerank](../inference-api/elasticsearch-inference-integration.md#inference-example-elastic-reranker) cross-encoder model via the inference API’s {{es}} service.
-    2. Use the [Cohere Rerank inference endpoint](../inference-api/cohere-inference-integration.md) to create a `rerank` endpoint.
-    3. Use the [Google Vertex AI inference endpoint](../inference-api/google-vertex-ai-inference-integration.md) to create a `rerank` endpoint.
-    4. Upload a model to {{es}} from Hugging Face with [Eland](asciidocalypse://docs/eland/docs/reference/machine-learning.md#ml-nlp-pytorch). You’ll need to use the `text_similarity` NLP task type when loading the model using Eland. Then set up an [{{es}} service inference endpoint](../inference-api/elasticsearch-inference-integration.md#inference-example-eland) with the `rerank` endpoint type.
+    1. Use the [Elastic Rerank](../../../explore-analyze/elastic-inference/inference-api/elasticsearch-inference-integration.md#inference-example-elastic-reranker) cross-encoder model via the inference API’s {{es}} service.
+    2. Use the [Cohere Rerank inference endpoint](../../../explore-analyze/elastic-inference/inference-api/cohere-inference-integration.md) to create a `rerank` endpoint.
+    3. Use the [Google Vertex AI inference endpoint](../../../explore-analyze/elastic-inference/inference-api/google-vertex-ai-inference-integration.md) to create a `rerank` endpoint.
+    4. Upload a model to {{es}} from Hugging Face with [Eland](asciidocalypse://docs/eland/docs/reference/machine-learning.md#ml-nlp-pytorch). You’ll need to use the `text_similarity` NLP task type when loading the model using Eland. Then set up an [{{es}} service inference endpoint](../../../explore-analyze/elastic-inference/inference-api/elasticsearch-inference-integration.md#inference-example-eland) with the `rerank` endpoint type.
 
         Refer to [the Elastic NLP model reference](../../../explore-analyze/machine-learning/nlp/ml-nlp-model-ref.md#ml-nlp-model-ref-text-similarity) for a list of third party text similarity models supported by {{es}} for semantic re-ranking.
 

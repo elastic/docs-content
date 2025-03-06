@@ -35,7 +35,7 @@ You also need to copy the **Symbols** endpoint from the deployment overview page
 
 ## Custom C, C++, Go and Rust applications [profiling-symbols-c]
 
-C/C++ applications must be built with debug symbols (`-g`) for symbolization to work. Rust applications must be built with [`debug = 1`](https://doc.rust-lang.org/cargo/reference/profiles.md#debug) (or higher). Go binaries will not require any special compiler flags and come with debug information by default. The debug info doesn’t have to be deployed to production, but it does have to be present temporarily to push it to the Elastic cluster.
+C/C++ applications must be built with debug symbols (`-g`) for symbolization to work. Rust applications must be built with [`debug = 1`](https://doc.rust-lang.org/cargo/reference/profiles.html#debug) (or higher). Go binaries will not require any special compiler flags and come with debug information by default. The debug info doesn’t have to be deployed to production, but it does have to be present temporarily to push it to the Elastic cluster.
 
 If you don’t mind deploying your applications with debug symbols, run:
 

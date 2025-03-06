@@ -49,9 +49,9 @@ Files in `%ES_HOME%` risk deletion during an upgrade. In production, we strongly
 If you run {{es}} from the command line, {{es}} prints logs to the standard output (`stdout`).
 
 
-## Logging configuration [logging-configuration] 
+## Logging configuration [logging-configuration]
 
-::::{important} 
+::::{important}
 Elastic strongly recommends using the Log4j 2 configuration that is shipped by default.
 ::::
 
@@ -115,7 +115,7 @@ appender.rolling_old.filePattern = ${sys:es.logs.base_path}${sys:file.separator}
 1. The configuration for `old style` pattern appenders. These logs will be saved in `*.log` files and if archived will be in `* .log.gz` files. Note that these should be considered deprecated and will be removed in the future.
 
 
-::::{note} 
+::::{note}
 Log4j’s configuration parsing gets confused by any extraneous whitespace; if you copy and paste any Log4j settings on this page, or enter any Log4j configuration in general, be sure to trim any leading and trailing whitespace.
 ::::
 
@@ -143,10 +143,10 @@ appender.rolling.strategy.action.condition.nested_condition.age = 7D <7>
 7. Retain logs for seven days
 
 
-Multiple configuration files can be loaded (in which case they will get merged) as long as they are named `log4j2.properties` and have the Elasticsearch config directory as an ancestor; this is useful for plugins that expose additional loggers. The logger section contains the java packages and their corresponding log level. The appender section contains the destinations for the logs. Extensive information on how to customize logging and all the supported appenders can be found on the [Log4j documentation](https://logging.apache.org/log4j/2.x/manual/configuration.md).
+Multiple configuration files can be loaded (in which case they will get merged) as long as they are named `log4j2.properties` and have the Elasticsearch config directory as an ancestor; this is useful for plugins that expose additional loggers. The logger section contains the java packages and their corresponding log level. The appender section contains the destinations for the logs. Extensive information on how to customize logging and all the supported appenders can be found on the [Log4j documentation](https://logging.apache.org/log4j/2.x/manual/configuration.html).
 
 
-## Configuring logging levels [configuring-logging-levels] 
+## Configuring logging levels [configuring-logging-levels]
 
 Log4J 2 log messages include a *level* field, which is one of the following (in order of increasing verbosity):
 
@@ -205,18 +205,18 @@ Other ways to change log levels include:
     This is most appropriate when you already need to change your Log4j 2 configuration for other reasons. For example, you may want to send logs for a particular logger to another file. However, these use cases are rare.
 
 
-::::{important} 
+::::{important}
 {{es}}'s application logs are intended for humans to read and interpret. Different versions of {{es}} may report information in these logs in different ways, perhaps adding extra detail, removing unnecessary information, formatting the same information in different ways, renaming the logger or adjusting the log level for specific messages. Do not rely on the contents of the application logs remaining precisely the same between versions.
 ::::
 
 
-::::{note} 
+::::{note}
 To prevent leaking sensitive information in logs, {{es}} suppresses certain log messages by default even at the highest verbosity levels. To disable this protection on a node, set the Java system property `es.insecure_network_trace_enabled` to `true`. This feature is primarily intended for test systems which do not contain any sensitive information. If you set this property on a system which contains sensitive information, you must protect your logs from unauthorized access.
 ::::
 
 
 
-## Deprecation logging [deprecation-logging] 
+## Deprecation logging [deprecation-logging]
 
 {{es}} also writes deprecation logs to the log directory. These logs record a message when you use deprecated {{es}} functionality. You can use the deprecation logs to update your application before upgrading {{es}} to a new major version.
 
@@ -263,12 +263,12 @@ You can identify what is triggering deprecated functionality if `X-Opaque-Id` wa
 Deprecation logs can be indexed into `.logs-deprecation.elasticsearch-default` data stream `cluster.deprecation_indexing.enabled` setting is set to true.
 
 
-### Deprecation logs throttling [_deprecation_logs_throttling] 
+### Deprecation logs throttling [_deprecation_logs_throttling]
 
-Deprecation logs are deduplicated based on a deprecated feature key and x-opaque-id so that if a feature is repeatedly used, it will not overload the deprecation logs. This applies to both indexed deprecation logs and logs emitted to log files. You can disable the use of `x-opaque-id` in throttling by changing `cluster.deprecation_indexing.x_opaque_id_used.enabled` to false, refer to this class [javadoc](https://snapshots.elastic.co/javadoc/org/elasticsearch/elasticsearch/9.0.0-beta1-SNAPSHOT/org.elasticsearch.server/org/elasticsearch/common/logging/RateLimitingFilter.md) for more details.
+Deprecation logs are deduplicated based on a deprecated feature key and x-opaque-id so that if a feature is repeatedly used, it will not overload the deprecation logs. This applies to both indexed deprecation logs and logs emitted to log files. You can disable the use of `x-opaque-id` in throttling by changing `cluster.deprecation_indexing.x_opaque_id_used.enabled` to false, refer to this class [javadoc](https://artifacts.elastic.co/javadoc/org/elasticsearch/elasticsearch/8.17.3/org.elasticsearch.server/org/elasticsearch/common/logging/RateLimitingFilter.html) for more details.
 
 
-## JSON log format [json-logging] 
+## JSON log format [json-logging]
 
 To make parsing Elasticsearch logs easier, logs are now printed in a JSON format. This is configured by a Log4J layout property `appender.rolling.layout.type = ECSJsonLayout`. This layout requires a `dataset` attribute to be set which is used to distinguish logs streams when parsing.
 
@@ -277,9 +277,9 @@ appender.rolling.layout.type = ECSJsonLayout
 appender.rolling.layout.dataset = elasticsearch.server
 ```
 
-Each line contains a single JSON document with the properties configured in `ECSJsonLayout`. See this class [javadoc](https://snapshots.elastic.co/javadoc/org/elasticsearch/elasticsearch/9.0.0-beta1-SNAPSHOT/org.elasticsearch.server/org/elasticsearch/common/logging/ESJsonLayout.md) for more details. However if a JSON document contains an exception, it will be printed over multiple lines. The first line will contain regular properties and subsequent lines will contain the stacktrace formatted as a JSON array.
+Each line contains a single JSON document with the properties configured in `ECSJsonLayout`. See this class [javadoc](https://artifacts.elastic.co/javadoc/org/elasticsearch/elasticsearch/8.17.3/org.elasticsearch.server/org/elasticsearch/common/logging/ESJsonLayout.html) for more details. However if a JSON document contains an exception, it will be printed over multiple lines. The first line will contain regular properties and subsequent lines will contain the stacktrace formatted as a JSON array.
 
-::::{note} 
+::::{note}
 You can still use your own custom layout. To do that replace the line `appender.rolling.layout.type` with a different layout. See sample below:
 ::::
 

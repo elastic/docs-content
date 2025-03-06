@@ -35,15 +35,15 @@ Create an [{{ech}}](https://cloud.elastic.co/registration?page=docs&placement=do
 
 In this tutorial, we assume that:
 
-* Your VPC flow logs are already exported to an S3 bucket. To learn how, refer to the AWS documentation about [publishing flow logs to an S3 bucket](https://docs.aws.amazon.com/vpc/latest/userguide/flow-logs-s3.md).
-* You have EC2 instances in your AWS account. By default, Amazon EC2 sends metric data to CloudWatch. If you don’t have an EC2 instance in your account, refer to the [AWS documentation](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EC2_GetStarted.md) to learn how to launch, connect to, and use a Linux instance.
+* Your VPC flow logs are already exported to an S3 bucket. To learn how, refer to the AWS documentation about [publishing flow logs to an S3 bucket](https://docs.aws.amazon.com/vpc/latest/userguide/flow-logs-s3.html).
+* You have EC2 instances in your AWS account. By default, Amazon EC2 sends metric data to CloudWatch. If you don’t have an EC2 instance in your account, refer to the [AWS documentation](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EC2_GetStarted.html) to learn how to launch, connect to, and use a Linux instance.
 
 
 ## Step 1: Create a queue and notifications for VPC flow logs [aws-elastic-agent-set-up-sqs-queue-and-notifications]
 
 In this step, you create an Amazon Simple Queue Service (SQS) queue and configure the S3 bucket containing your VPC flow logs to send a message to the SQS queue whenever new logs are present in the S3 bucket.
 
-You should already have an S3 bucket that contains exported VPC flow logs. If you don’t, create one now. To learn how, refer to [publishing flow logs to an S3 bucket](https://docs.aws.amazon.com/vpc/latest/userguide/flow-logs-s3.md).
+You should already have an S3 bucket that contains exported VPC flow logs. If you don’t, create one now. To learn how, refer to [publishing flow logs to an S3 bucket](https://docs.aws.amazon.com/vpc/latest/userguide/flow-logs-s3.html).
 
 ::::{note}
 **Why is an SQS queue needed?**
