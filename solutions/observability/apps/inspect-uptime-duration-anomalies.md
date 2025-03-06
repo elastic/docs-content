@@ -28,6 +28,6 @@ When an anomaly is detected, the duration is displayed on the **Monitor duration
 
 :::{image} ../../../images/observability-inspect-uptime-duration-anomalies.png
 :alt: inspect uptime duration anomalies
-:class: screenshot
+:screenshot:
 :::
 

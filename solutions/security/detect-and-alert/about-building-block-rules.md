@@ -25,7 +25,7 @@ To create a rule that searches alert indices, select **Index Patterns** as the r
 
 :::{image} ../../../images/security-alert-indices-ui.png
 :alt: alert indices ui
-:class: screenshot
+:screenshot:
 :::
 
 

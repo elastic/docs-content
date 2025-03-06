@@ -146,4 +146,4 @@ To resolve this:
 
 ## Insufficient Storage [ec-config-change-errors-insufficient-storage]
 
-Configuration change errors can occur when there is insufficient disk space for a data tier. To resolve this, you need to increase the size of that tier to ensure it provides enough storage to accommodate the data in your cluster tier considering the [high watermark](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#disk-based-shard-allocation). For troubleshooting walkthrough, see [Fix watermark errors](/troubleshoot/elasticsearch/fix-watermark-errors.md).
+Configuration change errors can occur when there is insufficient disk space for a data tier. To resolve this, you need to increase the size of that tier to ensure it provides enough storage to accommodate the data in your cluster tier considering the [high watermark](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#disk-based-shard-allocation). For troubleshooting walkthrough, see [Fix watermark errors](/troubleshoot/elasticsearch/fix-watermark-errors.md).

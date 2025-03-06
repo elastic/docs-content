@@ -11,7 +11,7 @@ Go to **{{project-settings}} → {{manage-app}} → {{index-manage-app}}**:
 
 :::{image} ../../../images/serverless-index-management-indices.png
 :alt: {{index-manage-app}} UI
-:class: screenshot
+:screenshot:
 :::
 
 The **{{index-manage-app}}** page contains an overview of your indices.
@@ -35,7 +35,7 @@ This value is the time period for which your data is guaranteed to be stored. Da
 
 :::{image} ../../../images/serverless-management-data-stream.png
 :alt: Data stream details
-:class: screenshot
+:screenshot:
 :::
 
 To view information about the stream’s backing indices, click the number in the **Indices** column.
@@ -50,7 +50,7 @@ Create, edit, clone, and delete your index templates in the **Index Templates** 
 
 :::{image} ../../../images/serverless-index-management-index-templates.png
 :alt: Index templates
-:class: screenshot
+:screenshot:
 :::
 
 The default **logs** template uses the logsDB index mode to create a [logs data stream](../../../manage-data/data-store/data-streams/logs-data-stream.md).
@@ -70,7 +70,7 @@ Use the **Enrich Policies** view to add data from your existing indices to incom
 
 :::{image} ../../../images/serverless-management-enrich-policies.png
 :alt: Enrich policies
-:class: screenshot
+:screenshot:
 :::
 
 When creating an enrich policy, the UI walks you through the configuration setup and selecting the fields. Before you can use the policy with an enrich processor, you must execute the policy.

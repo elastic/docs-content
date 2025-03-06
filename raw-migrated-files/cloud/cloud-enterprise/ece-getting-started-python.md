@@ -282,7 +282,7 @@ es.get(index='lord-of-the-rings', id='2EkAzngB_pyHD3p65UMt')
   'birthplace': 'The Shire'}}
 ```
 
-For frequently used API calls with the Python client, check [Examples](asciidocalypse://docs/elasticsearch-py/docs/reference/examples.md).
+For frequently used API calls with the Python client, check [Examples](elasticsearch-py://reference/examples.md).
 
 
 ## Switch to API key authentication [ece_switch_to_api_key_authentication_2]
@@ -342,7 +342,7 @@ es = Elasticsearch(
 
 Check [Create API key API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-api-key) to learn more about API Keys and [Security privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md) to understand which privileges are needed. If you are not sure what the right combination of privileges for your custom application is, you can enable [audit logging](../../../deploy-manage/monitor/logging-configuration/enabling-audit-logs.md) on {{es}} to find out what privileges are being used. To learn more about how logging works on {{ece}}, check [Monitoring Elastic Cloud deployment logs and metrics](https://www.elastic.co/blog/monitoring-elastic-cloud-deployment-logs-and-metrics).
 
-For more information on refreshing an index, searching, updating, and deleting, check the [elasticsearch-py examples](asciidocalypse://docs/elasticsearch-py/docs/reference/examples.md).
+For more information on refreshing an index, searching, updating, and deleting, check the [elasticsearch-py examples](elasticsearch-py://reference/examples.md).
 
 
 ### Best practices [ece_best_practices_2]
@@ -357,5 +357,5 @@ Schema
 :   When the example code is run, an index mapping is created automatically. The field types are selected by {{es}} based on the content seen when the first record was ingested, and updated as new fields appeared in the data. It would be more efficient to specify the fields and field types in advance to optimize performance. Refer to the Elastic Common Schema documentation and Field Type documentation when you design the schema for your production use cases.
 
 Ingest
-:   For more advanced scenarios, [Bulk helpers](asciidocalypse://docs/elasticsearch-py/docs/reference/client-helpers.md#bulk-helpers) gives examples for the `bulk` API that makes it possible to perform multiple operations in a single call. If you have a lot of documents to index, using bulk to batch document operations is significantly faster than submitting requests individually.
+:   For more advanced scenarios, [Bulk helpers](elasticsearch-py://reference/client-helpers.md#bulk-helpers) gives examples for the `bulk` API that makes it possible to perform multiple operations in a single call. If you have a lot of documents to index, using bulk to batch document operations is significantly faster than submitting requests individually.
 

@@ -10,7 +10,7 @@ You can identify the space you’re in or switch to a different space from the h
 
 :::{image} ../../../images/serverless-space-breadcrumb.png
 :alt: Space breadcrumb
-:class: screenshot
+:screenshot:
 :::
 
 You can view and manage the spaces of a project from the **Spaces** page in **Management**.

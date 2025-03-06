@@ -12,7 +12,7 @@ To set up Lambda monitoring, refer to [AWS Lambda functions](/solutions/observab
 
 :::{image} ../../../images/observability-lambda-overview.png
 :alt: lambda overview
-:class: screenshot
+:screenshot:
 :::
 
 

@@ -12,7 +12,7 @@ The following limitations and known problems apply to the 9.0.0-beta1 release of
 
 ## Document size limitations when using `semantic_text` fields [ml-nlp-large-documents-limit-10k-10mb]
 
-When using semantic text to ingest documents, chunking takes place automatically. The number of chunks is limited by the [`index.mapping.nested_objects.limit`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/mapping-limit.md) cluster setting, which defaults to 10k. Documents that are too large will cause errors during ingestion. To avoid this issue, please split your documents into roughly 1MB parts before ingestion.
+When using semantic text to ingest documents, chunking takes place automatically. The number of chunks is limited by the [`index.mapping.nested_objects.limit`](elasticsearch://reference/elasticsearch/index-settings/mapping-limit.md) cluster setting, which defaults to 10k. Documents that are too large will cause errors during ingestion. To avoid this issue, please split your documents into roughly 1MB parts before ingestion.
 
 ## ELSER semantic search is limited to 512 tokens per field that inference is applied to [ml-nlp-elser-v1-limit-512]
 

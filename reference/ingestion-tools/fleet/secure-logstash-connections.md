@@ -155,9 +155,9 @@ output {
 
 To learn more about the {{ls}} configuration, refer to:
 
-* [{{agent}} input plugin](asciidocalypse://docs/reference/plugins-inputs-elastic_agent.md)
-* [{{es}} output plugin](asciidocalypse://docs/reference/plugins-outputs-elasticsearch.md)
-* [Secure your connection to {{es}}](asciidocalypse://docs/reference/secure-connection.md)
+* [{{agent}} input plugin](logstash://reference/plugins-inputs-elastic_agent.md)
+* [{{es}} output plugin](logstash://reference/plugins-outputs-elasticsearch.md)
+* [Secure your connection to {{es}}](logstash://reference/secure-connection.md)
 
 When you’re done configuring the pipeline, restart {{ls}}:
 
@@ -181,7 +181,7 @@ This section describes how to add a {{ls}} output and configure SSL settings in 
 
 :::{image} images/add-logstash-output.png
 :alt: Screen capture of a folder called `logstash` that contains two files: logstash.crt and logstash.key
-:class: screenshot
+:screenshot:
 :::
 
 When you’re done, save and apply the settings.
@@ -200,7 +200,7 @@ When you’re done, save and apply the settings.
 
     :::{image} images/agent-output-settings.png
     :alt: Screen capture showing the {{ls}} output policy selected in an agent policy
-    :class: screenshot
+    :screenshot:
     :::
 
 3. Save your changes.

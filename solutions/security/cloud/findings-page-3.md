@@ -10,7 +10,7 @@ The **Vulnerabilities** tab on the Findings page displays the vulnerabilities de
 
 :::{image} ../../../images/serverless--cloud-native-security-cnvm-findings-page.png
 :alt: The Vulnerabilities tab of the Findings page
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -41,7 +41,7 @@ Multiple groupings apply to your data in the order you selected them. For exampl
 
 :::{image} ../../../images/serverless--cloud-native-security-cnvm-findings-grouped.png
 :alt: The Vulnerabilities tab of the Findings page
-:class: screenshot
+:screenshot:
 :::
 
 

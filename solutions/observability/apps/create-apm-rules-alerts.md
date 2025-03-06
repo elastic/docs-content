@@ -47,7 +47,7 @@ If you’re using the [service groups](../../../solutions/observability/apps/ser
 
 :::{image} ../../../images/observability-apm-service-group.png
 :alt: Example view of service group in the Applications UI in Kibana
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -57,7 +57,7 @@ Alerts can be viewed within the context of any service. After selecting a servic
 
 :::{image} ../../../images/observability-active-alert-service.png
 :alt: View active alerts by service
-:class: screenshot
+:screenshot:
 :::
 
 

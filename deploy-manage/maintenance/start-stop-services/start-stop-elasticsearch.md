@@ -156,7 +156,7 @@ To list journal entries for the elasticsearch service starting from a given time
 sudo journalctl --unit elasticsearch --since  "2016-10-30 18:17:16"
 ```
 
-Check `man journalctl` or [https://www.freedesktop.org/software/systemd/man/journalctl.html](https://www.freedesktop.org/software/systemd/man/journalctl.md) for more command line options.
+Check `man journalctl` or [https://www.freedesktop.org/software/systemd/man/journalctl.html](https://www.freedesktop.org/software/systemd/man/journalctl.html) for more command line options.
 
 ::::{admonition} Startup timeouts with older `systemd` versions
 :class: tip
@@ -240,7 +240,7 @@ To list journal entries for the elasticsearch service starting from a given time
 sudo journalctl --unit elasticsearch --since  "2016-10-30 18:17:16"
 ```
 
-Check `man journalctl` or [https://www.freedesktop.org/software/systemd/man/journalctl.html](https://www.freedesktop.org/software/systemd/man/journalctl.md) for more command line options.
+Check `man journalctl` or [https://www.freedesktop.org/software/systemd/man/journalctl.html](https://www.freedesktop.org/software/systemd/man/journalctl.html) for more command line options.
 
 ::::{admonition} Startup timeouts with older `systemd` versions
 :class: tip

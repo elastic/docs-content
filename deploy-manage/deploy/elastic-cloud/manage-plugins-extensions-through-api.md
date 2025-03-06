@@ -22,21 +22,21 @@ This guide provides a full list of tasks for managing [plugins and extensions](a
 * [Delete an extension](#ec-extension-guide-delete)
 
 
-## Create an extension [ec-extension-guide-create] 
+## Create an extension [ec-extension-guide-create]
 
 There are two methods to create an extension. You can:
 
 1. Stream the file from a publicly-accessible download URL.
 2. Upload the file from a local file path.
 
-::::{note} 
+::::{note}
 For plugins larger than 200MB the download URL option **must** be used. Plugins larger than 8GB cannot be uploaded with either method.
 ::::
 
 
 These two examples are for the `plugin` extension type. For bundles, change `extension_type` to `bundle`.
 
-For plugins, `version` must match (exactly) the `elasticsearch.version` field defined in the plugin’s `plugin-descriptor.properties` file. Check [Help for plugin authors](asciidocalypse://docs/elasticsearch/docs/extend/index.md#plugin-authors) for details. For plugins larger than 5GB, the `plugin-descriptor.properties` file needs to be at the top of the archive. This ensures that the our verification process is able to detect that it is an Elasticsearch plugin; otherwise the plugin will be rejected by the API. This order can be achieved by specifying at time of creating the ZIP file: `zip -r name-of-plugin.zip plugin-descriptor.properties *`.
+For plugins, `version` must match (exactly) the `elasticsearch.version` field defined in the plugin’s `plugin-descriptor.properties` file. Check [Help for plugin authors](elasticsearch://extend/index.md) for details. For plugins larger than 5GB, the `plugin-descriptor.properties` file needs to be at the top of the archive. This ensures that the our verification process is able to detect that it is an Elasticsearch plugin; otherwise the plugin will be rejected by the API. This order can be achieved by specifying at time of creating the ZIP file: `zip -r name-of-plugin.zip plugin-descriptor.properties *`.
 
 For bundles, we recommend setting `version` using wildcard notation that matches the major version of the Elasticsearch deployment. For example, if Elasticsearch is on version 8.4.3, simply set `8.*` as the version. The value `8.*` means that the bundle is compatible with all 8.x versions of Elasticsearch.
 
@@ -58,12 +58,12 @@ curl -X POST \
 
 The single POST request creates an extension with the metadata, validates, and streams the file from the `download_url` specified. The accepted protocols for `download_url` are `http` and `https`.
 
-::::{note} 
+::::{note}
 The `download_url` must be directly and publicly accessible. There is currently no support for redirection or authentication unless it contains security credentials/tokens expected by your HTTP service as part of the URL. Otherwise, use the following Option 2 to upload the file from a local path.
 ::::
 
 
-::::{note} 
+::::{note}
 When the file is larger than 5GB, the request may timeout after 2-5 minutes, but streaming will continue on the server. Check the Extensions page in the Cloud UI after 5-10 minutes to make sure that the plugin has been created. A successfully created plugin will contain correct name, type, version, size, and last modified information.
 ::::
 
@@ -105,7 +105,7 @@ curl -v -X PUT "https://api.elastic-cloud.com/api/v1/deployments/extensions/EXTE
 -T "/path_to/custom-plugin-8.4.3.zip"
 ```
 
-::::{note} 
+::::{note}
 When using curl, always use the `-T` option.  DO NOT use `-F` (we have seen inconsistency in curl behavior across systems; using `-F` can result in partially uploaded or truncated files).
 ::::
 
@@ -123,7 +123,7 @@ The above PUT request uploads the file from the local path specified. This reque
 ```
 
 
-## Add an extension to a deployment plan [ec-extension-guide-add-plan] 
+## Add an extension to a deployment plan [ec-extension-guide-add-plan]
 
 Once the extension is created and uploaded, you can add the extension using its `EXTENSION_ID` in an [update deployment API call](https://www.elastic.co/docs/api/doc/cloud/operation/operation-update-deployment).
 
@@ -180,7 +180,7 @@ The previous examples are for plugins. For bundles, use the `user_bundles` const
 ```
 
 
-## Get an extension [ec-extension-guide-get-extension] 
+## Get an extension [ec-extension-guide-get-extension]
 
 You can use the GET call to retrieve information about an extension.
 
@@ -227,7 +227,7 @@ For example, the previous call returns:
 ```
 
 
-## Update the name of an existing extension [ec-extension-guide-update-name] 
+## Update the name of an existing extension [ec-extension-guide-update-name]
 
 To update the name of an existing extension, simply update the name field without uploading a new file. You do not have to specify the `download_url` when only making metadata changes to an extension.
 
@@ -262,12 +262,12 @@ curl -X POST \
 Updating the name of an existing extension does not change its `EXTENSION_ID`.
 
 
-## Update the type of an existing extension [ec-extension-guide-update-type] 
+## Update the type of an existing extension [ec-extension-guide-update-type]
 
 Updating `extension_type` has no effect. You cannot change the extension’s type (`plugin` versus `bundle`) after the initial creation of a plugin.
 
 
-## Update the version of an existing bundle [ec-extension-guide-update-version-bundle] 
+## Update the version of an existing bundle [ec-extension-guide-update-version-bundle]
 
 For bundles, we recommend setting `version` using wildcard notation that matches the major version of the Elasticsearch deployment. For example, if Elasticsearch is on version 8.4.3, simply set `8.*` as the version. The value `8.*` means that the bundle is compatible with all 7.x versions of Elasticsearch.
 
@@ -304,12 +304,12 @@ curl -X POST \
 Updating the name of an existing extension does not change its `EXTENSION_ID`.
 
 
-## Update the version of an existing plugin [ec-extension-guide-update-version-plugin] 
+## Update the version of an existing plugin [ec-extension-guide-update-version-plugin]
 
-For plugins, `version` must match (exactly) the `elasticsearch.version` field defined in the plugin’s `plugin-descriptor.properties` file.  Check [Help for plugin authors](asciidocalypse://docs/elasticsearch/docs/extend/index.md#plugin-authors) for details. If you change the version, the associated plugin file *must* also be updated accordingly.
+For plugins, `version` must match (exactly) the `elasticsearch.version` field defined in the plugin’s `plugin-descriptor.properties` file.  Check [Help for plugin authors](elasticsearch://extend/index.md) for details. If you change the version, the associated plugin file *must* also be updated accordingly.
 
 
-## Update the file associated to an existing extension [ec-extension-guide-update-file] 
+## Update the file associated to an existing extension [ec-extension-guide-update-file]
 
 You may want to update an uploaded file for an existing extension without performing an Elasticsearch upgrade. If you are updating the extension to prepare for an Elasticsearch upgrade, check the [Upgrade Elasticsearch](#ec-extension-guide-upgrade-elasticsearch) scenario later on this page.
 
@@ -340,7 +340,7 @@ curl -v -X PUT "https://api.elastic-cloud.com/api/v1/deployments/extensions/EXTE
 -T "/path_to/custom-plugin-8.4.3-10212022.zip"
 ```
 
-::::{important} 
+::::{important}
 If you are not making any other plan changes and simply updating an extension file, you need to issue a no-op plan so that Elasticsearch will make use of this new file. A *no-op* (no operation) plan triggers a rolling restart on the deployment, applying the same (unchanged) plan as the current plan.
 ::::
 
@@ -348,7 +348,7 @@ If you are not making any other plan changes and simply updating an extension fi
 Updating the file of an existing extension or bundle does not change its `EXTENSION_ID`.
 
 
-## Upgrade Elasticsearch [ec-extension-guide-upgrade-elasticsearch] 
+## Upgrade Elasticsearch [ec-extension-guide-upgrade-elasticsearch]
 
 When you upgrade Elasticsearch in a deployment, you must ensure that:
 
@@ -473,7 +473,7 @@ Unlike bundles, plugins *must* match the Elasticsearch version down to the patch
 
 
 
-## Delete an extension [ec-extension-guide-delete] 
+## Delete an extension [ec-extension-guide-delete]
 
 You can delete an extension simply by calling a DELETE against the EXTENSION_ID of interest:
 

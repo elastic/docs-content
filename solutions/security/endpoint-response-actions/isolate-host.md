@@ -27,7 +27,7 @@ Isolated hosts, however, can still send data to {{elastic-sec}}. You can also cr
 
 :::{image} ../../../images/security-isolated-host.png
 :alt: Endpoint page highlighting a host that's been isolated
-:class: screenshot
+:screenshot:
 :::
 
 You can isolate a host from a detection alert’s details flyout, from the Endpoints page, or from the endpoint response console. Once a host is successfully isolated, an `Isolated` status displays next to the `Agent status` field, which you can view on the alert details flyout or Endpoints list table.
@@ -107,7 +107,7 @@ After the host is successfully isolated, an **Isolated** status is added to the 
 :::{image} ../../../images/security-host-isolated-notif.png
 :alt: Host isolated notification message
 :width: 50%
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -156,7 +156,7 @@ After the host is successfully released, the **Isolated** status is removed from
 :::{image} ../../../images/security-host-released-notif.png
 :alt: Host released notification message
 :width: 50%
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -169,5 +169,5 @@ Go to the **Endpoints** page, click an endpoint’s name, then click the **Respo
 :::{image} ../../../images/security-response-actions-history-endpoint-details.png
 :alt: Response actions history page UI
 :width: 90%
-:class: screenshot
+:screenshot:
 :::

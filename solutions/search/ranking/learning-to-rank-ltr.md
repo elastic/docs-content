@@ -90,7 +90,7 @@ The LTR space is evolving rapidly and many approaches and model types are being 
 
 Note that {{es}} supports model inference but the training process itself must happen outside of {{es}}, using a GBDT model. Among the most popular LTR models used today, [LambdaMART](https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/MSR-TR-2010-82.pdf) provides strong ranking performance with low inference latencies. It relies on GBDT models and is therefore a perfect fit for LTR in {{es}}.
 
-[XGBoost](https://xgboost.readthedocs.io/en/stable/) is a well known library that provides an [implementation](https://xgboost.readthedocs.io/en/stable/tutorials/learning_to_rank.md) of LambdaMART, making it a popular choice for LTR. We offer helpers in [eland](https://eland.readthedocs.io/) to facilitate the integration of a trained [XBGRanker](https://xgboost.readthedocs.io/en/stable/python/python_api.md#xgboost.XGBRanker) model as your LTR model in {{es}}.
+[XGBoost](https://xgboost.readthedocs.io/en/stable/) is a well known library that provides an [implementation](https://xgboost.readthedocs.io/en/stable/tutorials/learning_to_rank.html) of LambdaMART, making it a popular choice for LTR. We offer helpers in [eland](https://eland.readthedocs.io/) to facilitate the integration of a trained [XBGRanker](https://xgboost.readthedocs.io/en/stable/python/python_api.html#xgboost.XGBRanker) model as your LTR model in {{es}}.
 
 ::::{tip}
 Learn more about training in [Train and deploy a LTR model](learning-to-rank-model-training.md), or check out our [interactive LTR notebook](https://github.com/elastic/elasticsearch-labs/blob/main/notebooks/search/08-learning-to-rank.ipynb) available in the `elasticsearch-labs` repo.

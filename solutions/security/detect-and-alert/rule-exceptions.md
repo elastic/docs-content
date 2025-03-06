@@ -19,7 +19,7 @@ You can create exceptions that apply exclusively to a single rule. These types o
 
 :::{image} ../../../images/security-exception-item-example.png
 :alt: An exception item
-:class: screenshot
+:screenshot:
 :::
 
 ::::{note}
@@ -34,7 +34,7 @@ If you want an exception to apply to multiple rules, you can add an exception to
 
 :::{image} ../../../images/security-rule-exceptions-page.png
 :alt: Shared Exception Lists page
-:class: screenshot
+:screenshot:
 :::
 
 

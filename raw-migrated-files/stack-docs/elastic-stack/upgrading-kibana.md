@@ -14,7 +14,7 @@ Before you start, [take the upgrade preparation steps](../../../deploy-manage/up
 2. To install the `deb` or `rpm` package:
 
     1. Use `rpm` or `dpkg`. This installs all files in their proper locations and will not overwrite the config files.
-    2. Upgrade any plugins by removing the existing plugin and reinstalling the appropriate version using the `kibana-plugin` script. For more information, see [{{kib}} plugins](asciidocalypse://docs/kibana/docs/reference/kibana-plugins.md).
+    2. Upgrade any plugins by removing the existing plugin and reinstalling the appropriate version using the `kibana-plugin` script. For more information, see [{{kib}} plugins](kibana://reference/kibana-plugins.md).
 
 3. To install from a `zip` or `tar.gz` archive:
 
@@ -26,10 +26,10 @@ Before you start, [take the upgrade preparation steps](../../../deploy-manage/up
         If you use {{monitor-features}}, you must re-use the data directory when you upgrade {{kib}}. Otherwise, the {{kib}} instance is assigned a new persistent UUID and becomes a new instance in the monitoring data.
         ::::
 
-    4. Install the appropriate versions of all your plugins for your new installation using the `kibana-plugin` script. For more information, see [{{kib}} plugins](asciidocalypse://docs/kibana/docs/reference/kibana-plugins.md).
+    4. Install the appropriate versions of all your plugins for your new installation using the `kibana-plugin` script. For more information, see [{{kib}} plugins](kibana://reference/kibana-plugins.md).
 
 4. Start {{kib}}.
 
 ::::{important}
-{{kib}} has a new logging system in 8.0 and the log formats have changed. For additional information, see [Logging configuration changes](asciidocalypse://docs/kibana/docs/extend/logging-config-changes.md).
+{{kib}} has a new logging system in 8.0 and the log formats have changed. For additional information, see [Logging configuration changes](kibana://extend/logging-config-changes.md).
 ::::

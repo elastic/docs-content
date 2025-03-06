@@ -21,7 +21,7 @@ To view a summary of all rule executions, including the most recent failures and
 
 :::{image} ../../../images/security-monitor-table.png
 :alt: monitor table
-:class: screenshot
+:screenshot:
 :::
 
 On the **Rule Monitoring** tab, you can [sort and filter rules](../detect-and-alert/manage-detection-rules.md#sort-filter-rules) just like you can on the **Installed Rules** tab.
@@ -42,7 +42,7 @@ To access a rule’s execution log, click the rule’s name to open its details,
 
 :::{image} ../../../images/security-rule-execution-logs.png
 :alt: Execution log table on the rule execution results tab
-:class: screenshot
+:screenshot:
 :::
 
 You can hover over each column heading to display a tooltip about that column’s data. Click a column heading to sort the table by that column.
@@ -81,7 +81,7 @@ To stop an active run, go to the appropriate row and click **Stop run** in the *
 
 :::{image} ../../../images/security-manual-rule-run-table.png
 :alt: Manual rule runs table on the rule execution results tab
-:class: screenshot
+:screenshot:
 :::
 
 The Manual runs table displays important details such as:

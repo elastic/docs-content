@@ -10,7 +10,7 @@ The Network page provides key network activity metrics in an interactive map, an
 
 :::{image} ../../../images/security-network-ui.png
 :alt: network ui
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -79,7 +79,7 @@ The IP’s details page includes the following sections:
 
 :::{image} ../../../images/security-IP-detail-pg.png
 :alt: IP details page
-:class: screenshot
+:screenshot:
 :::
 
 

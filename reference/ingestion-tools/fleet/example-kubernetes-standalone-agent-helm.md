@@ -111,14 +111,14 @@ To get started, you need:
 
     :::{image} images/helm-example-nodes-metrics-dashboard.png
     :alt: Screen capture of the Metrics Kubernetes nodes dashboard
-    :class: screenshot
+    :screenshot:
     :::
 
 12. On the {{k8s}} integration page, open the **Assets** tab and select the **[Metrics Kubernetes] Pods** dashboard. As with the nodes dashboard, on this dashboard you can view the status of your {{k8s}} pods, including various metrics on memory, CPU, and network throughput.
 
     :::{image} images/helm-example-pods-metrics-dashboard.png
     :alt: Screen capture of the Metrics Kubernetes pods dashboard
-    :class: screenshot
+    :screenshot:
     :::
 
 
