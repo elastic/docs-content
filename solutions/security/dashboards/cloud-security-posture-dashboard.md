@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/cloud-posture-dashboard.html
   - https://www.elastic.co/guide/en/serverless/current/security-cloud-posture-dashboard-dash.html
+  - https://www.elastic.co/guide/en/serverless/current/security-cloud-posture-dashboard-dash-cspm.html
+  - https://www.elastic.co/guide/en/serverless/current/security-cloud-posture-dashboard-dash-kspm.html
+  - https://www.elastic.co/guide/en/security/current/cspm-posture-dashboard.html
+  - https://www.elastic.co/guide/en/security/current/cloud-nat-sec-posture-dashboard.html
 ---
 
 # Cloud Security Posture dashboard
