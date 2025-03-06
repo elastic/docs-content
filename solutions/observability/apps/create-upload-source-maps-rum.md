@@ -15,14 +15,14 @@ Here’s an example of an exception stack trace in the Applications UI when usin
 
 :::{image} ../../../images/observability-source-map-before.png
 :alt: Applications UI without source mapping
-:class: screenshot
+:screenshot:
 :::
 
 With a source map, minified files are mapped back to the original source code, allowing you to maintain the speed advantage of minified code, without losing the ability to quickly and easily debug your application. Here’s the same example as before, but with a source map uploaded and applied:
 
 :::{image} ../../../images/observability-source-map-after.png
 :alt: Applications UI with source mapping
-:class: screenshot
+:screenshot:
 :::
 
 Follow the steps below to enable source mapping your error stack traces in the Applications UI:

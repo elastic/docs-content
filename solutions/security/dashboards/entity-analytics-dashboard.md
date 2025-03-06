@@ -24,7 +24,7 @@ The dashboard includes the following sections:
 
 :::{image} ../../../images/security-entity-dashboard.png
 :alt: Entity dashboard
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -45,7 +45,7 @@ Displays user risk score data for your environment, including the total number o
 
 :::{image} ../../../images/security-user-score-data.png
 :alt: User risk table
-:class: screenshot
+:screenshot:
 :::
 
 Interact with the table to filter data, view more details, and take action:
@@ -70,7 +70,7 @@ Displays host risk score data for your environment, including the total number o
 
 :::{image} ../../../images/security-host-score-data.png
 :alt: Host risk scores table
-:class: screenshot
+:screenshot:
 :::
 
 Interact with the table to filter data, view more details, and take action:
@@ -105,7 +105,7 @@ The **Entities** table only shows a subset of the data available for each entity
 
 :::{image} ../../../images/security-entities-section.png
 :alt: Entities section
-:class: screenshot
+:screenshot:
 :::
 
 Entity data from different sources appears in the **Entities** section based on the following timelines:
@@ -134,7 +134,7 @@ To display anomaly results, you must [install and run](/explore-analyze/machine-
 
 :::{image} ../../../images/security-anomalies-table.png
 :alt: Anomalies table
-:class: screenshot
+:screenshot:
 :::
 
 Interact with the table to view more details:

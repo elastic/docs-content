@@ -32,7 +32,7 @@ In order to get the shards assigned we need to call the [migrate to data tiers r
 
     :::{image} ../../images/elasticsearch-reference-kibana-console.png
     :alt: {{kib}} Console
-    :class: screenshot
+    :screenshot:
     :::
 
 4. First, let’s [stop](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-stop) {{ilm}}

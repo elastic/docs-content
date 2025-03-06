@@ -45,7 +45,7 @@ Because everyone’s data is different, you’ll need to examine your traces to 
 
 :::{image} ../../../images/observability-example-metadata.png
 :alt: Example metadata
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -103,7 +103,7 @@ This link opens a new GitHub issue in the apm-agent-rum repository. It populates
 
 :::{image} ../../../images/observability-create-github-issue.png
 :alt: Example github issue
-:class: screenshot
+:screenshot:
 :::
 
 |     |     |
@@ -130,7 +130,7 @@ This link creates a new task on the Engineering board in Jira. It populates the 
 
 :::{image} ../../../images/observability-create-jira-issue.png
 :alt: Example jira issue
-:class: screenshot
+:screenshot:
 :::
 
 |     |     |

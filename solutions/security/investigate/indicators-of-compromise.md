@@ -22,7 +22,7 @@ The Indicators page collects data from enabled threat intelligence feeds and pro
 
 :::{image} ../../../images/security-indicators-table.png
 :alt: Shows the Indicators page
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -54,7 +54,7 @@ After you add indicators to the Indicators page, you can [examine](#examine-indi
 
 :::{image} ../../../images/security-interact-with-indicators-table.gif
 :alt: interact with indicators table
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -73,7 +73,7 @@ Learn more about an indicator by clicking **View details**, then opening the Ind
 
     :::{image} ../../../images/security-indicator-details-flyout.png
     :alt: Shows the Indicator details flyout
-    :class: screenshot
+    :screenshot:
     :::
 
 
@@ -84,7 +84,7 @@ Investigate an indicator in [Timeline](/solutions/security/investigate/timeline.
 
 :::{image} ../../../images/security-indicator-query-timeline.png
 :alt: Shows the results of an indicator being investigated in Timeline
-:class: screenshot
+:screenshot:
 :::
 
 When you add an indicator to Timeline, a new Timeline opens with an auto-generated KQL query. The query contains the indicator field-value pair that you selected plus the field-value pair of the automatically mapped source event. By default, the query’s time range is set to seven days before and after the indicator’s `timestamp`.
@@ -98,7 +98,7 @@ The following image shows a file hash indictor being investigated in Timeline. T
 
 :::{image} ../../../images/security-indicator-in-timeline.png
 :alt: Shows the results of an indicator being investigated in Timeline
-:class: screenshot
+:screenshot:
 :::
 
 The auto-generated query contains the indicator field-value pair (mentioned previously) and the auto-mapped source event field-value pair, which is:
@@ -125,7 +125,7 @@ To add indicators to cases:
 
 :::{image} ../../../images/security-indicator-added-to-case.png
 :alt: An indicator attached to a case
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -154,7 +154,7 @@ To remove an indicator attached to a case, click the **More actions** (**…​�
 
 :::{image} ../../../images/security-remove-indicator.png
 :alt: Removing an indicator from a case
-:class: screenshot
+:screenshot:
 :::
 
 

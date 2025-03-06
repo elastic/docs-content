@@ -26,7 +26,7 @@ You can create {{anomaly-jobs}} by using the [create {{anomaly-jobs}} API](https
 
 :::{image} ../../../images/machine-learning-ml-create-job.png
 :alt: Create New Job
-:class: screenshot
+:screenshot:
 :::
 
 * The single metric wizard creates simple jobs that have a single detector. A *detector* applies an analytical function to specific fields in your data. In addition to limiting the number of detectors, the single metric wizard omits many of the more advanced configuration options.
@@ -190,7 +190,7 @@ You can see the list of model snapshots for each job with the [get model snapsho
 
 :::{image} ../../../images/machine-learning-ml-model-snapshots.png
 :alt: Example screenshot with a list of model snapshots
-:class: screenshot
+:screenshot:
 :::
 
 ::::{tip}

@@ -12,7 +12,7 @@ Vector layers display points, lines, and polygons.
 
 :::{image} ../../../images/kibana-vector_layer.png
 :alt: vector layer
-:class: screenshot
+:screenshot:
 :::
 
 To add a vector layer to your map, click **Add layer**, then select one of the following:

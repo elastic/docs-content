@@ -98,7 +98,7 @@ To add a warm, cold, or frozen tier when you create a deployment:
 
 :::{image} ../../images/elasticsearch-reference-ess-advanced-config-data-tiers.png
 :alt: {{ecloud}}'s deployment Advanced configuration page
-:class: screenshot
+:screenshot:
 :::
 
 To add a data tier to an existing deployment:

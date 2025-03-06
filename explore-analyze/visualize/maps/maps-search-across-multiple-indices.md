@@ -34,7 +34,7 @@ the `kibana_sample_data_flights` layer is empty because the index `kibana_sample
 
 :::{image} ../../../images/kibana-global_search_multiple_indices_query1.png
 :alt: global search multiple indices query1
-:class: screenshot
+:screenshot:
 :::
 
 If you instead query for
@@ -47,6 +47,6 @@ the `kibana_sample_data_flights` layer includes data.
 
 :::{image} ../../../images/kibana-global_search_multiple_indices_query2.png
 :alt: global search multiple indices query2
-:class: screenshot
+:screenshot:
 :::
 

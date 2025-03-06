@@ -48,7 +48,7 @@ After a rule is created, you can open the **More actions** menu ![More actions](
 
 :::{image} ../../../images/serverless-alerts-edit-rule.png
 :alt: Edit rule (failed transaction rate)
-:class: screenshot
+:screenshot:
 :::
 
 From the action menu you can also:
@@ -66,7 +66,7 @@ Click on an individual rule on the **{{rules-app}}** page to view details includ
 
 :::{image} ../../../images/serverless-alerts-detail-apm-anomaly.png
 :alt: Rule details (APM anomaly)
-:class: screenshot
+:screenshot:
 :::
 
 A rule can have one of the following responses:

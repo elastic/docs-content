@@ -20,7 +20,7 @@ To open **Hosts**, find **Infrastructure** in the main menu or use the [global s
 
 :::{image} ../../../images/serverless-hosts.png
 :alt: Screenshot of the Hosts page
-:class: screenshot
+:screenshot:
 :::
 
 To learn more about the metrics shown on this page, refer to the [Metrics reference](https://www.elastic.co/guide/en/serverless/current/observability-metrics-reference.html) documentation.
@@ -88,7 +88,7 @@ Metrics visualizations are powered by Lens, meaning you can continue your analys
 
 :::{image} ../../../images/serverless-hosts-open-in-lens.png
 :alt: Screenshot showing option to open in Lens
-:class: screenshot
+:screenshot:
 :::
 
 In Lens, you can examine all the fields and formulas used to create the visualization, make modifications to the visualization, and save your changes.
@@ -102,7 +102,7 @@ On the **Logs** tab of the **Hosts** page, view logs for the systems you are mon
 
 :::{image} ../../../images/serverless-hosts-logs.png
 :alt: Screenshot showing Logs view
-:class: screenshot
+:screenshot:
 :::
 
 To see logs for a specific host, refer to [View host details](../../../solutions/observability/infra-and-hosts/analyze-compare-hosts.md#view-host-details).
@@ -120,7 +120,7 @@ From the **Actions** menu, you can choose to:
 
 :::{image} ../../../images/serverless-hosts-view-alerts.png
 :alt: Screenshot showing Alerts view
-:class: screenshot
+:screenshot:
 :::
 
 To see alerts for a specific host, refer to [View host details](../../../solutions/observability/infra-and-hosts/analyze-compare-hosts.md#view-host-details).
@@ -164,7 +164,7 @@ Click **Show all** to drill down into related data.
 
 :::{image} ../../../images/serverless-overview-overlay.png
 :alt: Host overview
-:class: screenshot
+:screenshot:
 :::
 
 :::::
@@ -177,7 +177,7 @@ This information can help when investigating events—for example, when filterin
 
 :::{image} ../../../images/serverless-metadata-overlay.png
 :alt: Host metadata
-:class: screenshot
+:screenshot:
 :::
 
 :::::
@@ -188,7 +188,7 @@ The **Metrics** tab shows host metrics organized by type and is more complete th
 
 :::{image} ../../../images/serverless-metrics-overlay.png
 :alt: Metrics
-:class: screenshot
+:screenshot:
 :::
 
 :::::
@@ -219,7 +219,7 @@ The processes listed in the **Top processes** table are based on an aggregation 
 
 :::{image} ../../../images/serverless-processes-overlay.png
 :alt: Host processes
-:class: screenshot
+:screenshot:
 :::
 
 :::::
@@ -238,7 +238,7 @@ For more on Universal Profiling, refer to the [Universal Profiling](../../../sol
 
 :::{image} ../../../images/observability-universal-profiling-overlay.png
 :alt: Host Universal Profiling
-:class: screenshot
+:screenshot:
 :::
 
 :::::
@@ -256,7 +256,7 @@ To view the logs in the {{logs-app}} for a detailed analysis, click **Open in Lo
 
 :::{image} ../../../images/serverless-logs-overlay.png
 :alt: Host logs
-:class: screenshot
+:screenshot:
 :::
 
 :::::
@@ -271,7 +271,7 @@ To drill down and analyze the metric anomaly, select **Actions** → **Open in A
 
 :::{image} ../../../images/serverless-anomalies-overlay.png
 :alt: Anomalies
-:class: screenshot
+:screenshot:
 :::
 
 :::::
@@ -311,7 +311,7 @@ Other options include:
 
 :::{image} ../../../images/serverless-osquery-overlay.png
 :alt: Osquery
-:class: screenshot
+:screenshot:
 :::
 
 :::::
@@ -339,7 +339,7 @@ In this example, the data emission rate is lower than the Lens chart interval. A
 
 :::{image} ../../../images/serverless-hosts-dashed.png
 :alt: Screenshot showing dashed chart
-:class: screenshot
+:screenshot:
 :::
 
 The chart interval is automatically set depending on the selected time duration. To fix this problem, change the selected time range at the top of the page.
@@ -357,7 +357,7 @@ A solid line indicates that the chart interval is set appropriately for the data
 
 :::{image} ../../../images/serverless-hosts-missing-data.png
 :alt: Screenshot showing missing data
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -369,7 +369,7 @@ This missing data can be hard to spot at first glance. The green boxes outline r
 
 :::{image} ../../../images/serverless-hosts-dashed-and-missing.png
 :alt: Screenshot showing dashed lines and missing data
-:class: screenshot
+:screenshot:
 :::
 
 

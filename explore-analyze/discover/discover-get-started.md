@@ -35,7 +35,7 @@ Select the data you want to explore, and then specify the time range in which to
    If you’re using sample data, data views are automatically created and are ready to use.
    :::{image} ../../images/kibana-discover-data-view.png
    :alt: How to set the {{data-source}} in Discover
-   :class: screenshot
+   :screenshot:
    :width: 300px
    :::
 

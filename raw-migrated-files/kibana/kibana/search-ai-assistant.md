@@ -52,14 +52,14 @@ To open AI Assistant, select the **AI Assistant** button in the top toolbar in t
 
 :::{image} ../../../images/kibana-ai-assistant-button.png
 :alt: AI Assistant button
-:class: screenshot
+:screenshot:
 :::
 
 This opens the AI Assistant chat interface flyout.
 
 :::{image} ../../../images/kibana-ai-assistant-welcome-chat.png
 :alt: AI Assistant Welcome chat
-:class: screenshot
+:screenshot:
 :::
 
 You can get started by selecting **✨ Suggest** to get some example prompts, or by typing into the chat field.

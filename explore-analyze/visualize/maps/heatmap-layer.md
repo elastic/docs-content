@@ -12,7 +12,7 @@ Heat map layers cluster point data to show locations with higher densities.
 
 :::{image} ../../../images/kibana-heatmap_layer.png
 :alt: heatmap layer
-:class: screenshot
+:screenshot:
 :::
 
 To add a heat map layer to your map, click **Add layer**, then select **Heat map**. The index must contain at least one field mapped as [geo_point](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/geo-point.md) or [geo_shape](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/geo-shape.md).

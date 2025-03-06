@@ -38,7 +38,7 @@ To access advanced settings, go to **Stack Management** → **Advanced Settings*
 
 :::{image} ../../../images/security-solution-advanced-settings.png
 :alt: solution advanced settings
-:class: screenshot
+:screenshot:
 :::
 
 

@@ -98,7 +98,7 @@ Click **Create APM Agent key** and copy the Base64 encoded API key. You will nee
 
 :::{image} ../../../images/observability-apm-ui-api-key.png
 :alt: Applications UI API key
-:class: screenshot
+:screenshot:
 :::
 
 

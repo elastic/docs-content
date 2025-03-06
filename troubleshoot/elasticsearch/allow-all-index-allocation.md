@@ -33,7 +33,7 @@ In order to get the shards assigned we’ll need to change the value of the [con
 
     :::{image} ../../images/elasticsearch-reference-kibana-console.png
     :alt: {{kib}} Console
-    :class: screenshot
+    :screenshot:
     :::
 
 4. Inspect the `index.routing.allocation.enable` [index setting](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-settings) for the index with unassigned shards:

@@ -14,7 +14,7 @@ When you’re done, you’ll have a complete overview of the sample web logs dat
 
 :::{image} ../../images/kibana-lens_logsDashboard_8.4.0.png
 :alt: Logs dashboard
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -37,7 +37,7 @@ Open the visualization editor, then make sure the correct fields appear.
 
    :::{image} ../../images/kibana-lens_dataViewDropDown_8.4.0.png
    :alt: Data view dropdown
-   :class: screenshot
+   :screenshot:
    :::
 
 
@@ -53,7 +53,7 @@ Click a field name to view more details, such as its top values and distribution
 
 :::{image} ../../images/tutorial-field-more-info.gif
 :alt: Clicking a field name to view more details
-:class: screenshot
+:screenshot:
 :width: 50%
 :::
 
@@ -68,14 +68,14 @@ The only number function that you can use with **clientip** is **Unique count**,
 
    :::{image} ../../images/kibana-visualization-type-dropdown-8.16.0.png
    :alt: Visualization type dropdown
-   :class: screenshot
+   :screenshot:
    :::
 
 2. From the **Available fields** list, drag **clientip** to the workspace or layer pane.
 
    :::{image} ../../images/kibana-tutorial-unique-count-of-client-ip-8.16.0.png
    :alt: Metric visualization of the clientip field
-   :class: screenshot
+   :screenshot:
    :::
 
    In the layer pane, **Unique count of clientip** appears because the editor automatically applies the **Unique count** function to the **clientip** field. **Unique count** is the only numeric function that works with IP addresses.
@@ -103,7 +103,7 @@ To visualize the **bytes** field over time:
 
    :::{image} ../../images/kibana-lens_end_to_end_3_1_1.gif
    :alt: Zoom in on the data
-   :class: screenshot
+   :screenshot:
    :::
 
 
@@ -127,7 +127,7 @@ To save space on the dashboard, hide the axis labels.
 
    :::{image} ../../images/kibana-line-chart-left-axis-8.16.0.png
    :alt: Left axis menu
-   :class: screenshot
+   :screenshot:
    :width: 50%
    :::
 
@@ -135,7 +135,7 @@ To save space on the dashboard, hide the axis labels.
 
    :::{image} ../../images/kibana-line-chart-bottom-axis-8.16.0.png
    :alt: Bottom axis menu
-   :class: screenshot
+   :screenshot:
    :width: 50%
    :::
 
@@ -148,7 +148,7 @@ Since you removed the axis labels, add a panel title:
 
    :::{image} ../../images/kibana-lens_lineChartMetricOverTime_8.4.0.png
    :alt: Line chart that displays metric data over time
-   :class: screenshot
+   :screenshot:
    :width: 50%
    :::
 
@@ -169,7 +169,7 @@ The **Top values** function ranks the unique values of a field by another functi
 
    :::{image} ../../images/kibana-tutorial-top-values-of-field-8.16.0.png
    :alt: Vertical bar chart with top values of request.keyword by most unique visitors
-   :class: screenshot
+   :screenshot:
    :width: 50%
    :::
 
@@ -182,7 +182,7 @@ The chart labels are unable to display because the **request.keyword** field con
 
    :::{image} ../../images/kibana-table-with-request-keyword-and-client-ip-8.16.0.png
    :alt: Table with top values of request.keyword by most unique visitors
-   :class: screenshot
+   :screenshot:
    :width: 50%
    :::
 
@@ -194,7 +194,7 @@ The chart labels are unable to display because the **request.keyword** field con
 
        :::{image} ../../images/kibana-lens_tableTopFieldValues_7.16.png
        :alt: Table that displays the top field values
-       :class: screenshot
+       :screenshot:
        :width: 50%
        :::
 
@@ -231,7 +231,7 @@ Specify the file size ranges:
 
       :::{image} ../../images/kibana-lens_end_to_end_6_1.png
       :alt: Custom ranges configuration
-      :class: screenshot
+      :screenshot:
       :::
 
 4. From the **Value format** dropdown, select **Bytes (1024)**, then click **Close**.
@@ -242,7 +242,7 @@ To display the values as a percentage of the sum of all values, use the **Pie** 
 
    :::{image} ../../images/kibana-lens_pieChartCompareSubsetOfDocs_7.16.png
    :alt: Pie chart that compares a subset of documents to all documents
-   :class: screenshot
+   :screenshot:
    :width: 50%
    :::
 
@@ -271,7 +271,7 @@ The distribution of a number can help you find patterns. For example, you can an
 
    :::{image} ../../images/kibana-lens_barChartDistributionOfNumberField_7.16.png
    :alt: Bar chart that displays the distribution of a number field
-   :class: screenshot
+   :screenshot:
    :width: 60%
    :::
 
@@ -319,7 +319,7 @@ Add the user geography grouping:
 
    :::{image} ../../images/kibana-lens_end_to_end_7_2.png
    :alt: Treemap visualization
-   :class: screenshot
+   :screenshot:
    :width: 50%
    :::
 
@@ -331,7 +331,7 @@ Remove the documents that do not match the filter criteria:
 
    :::{image} ../../images/kibana-lens_treemapMultiLevelChart_7.16.png
    :alt: Treemap visualization
-   :class: screenshot
+   :screenshot:
    :width: 50%
    :::
 
@@ -356,7 +356,7 @@ Decrease the size of the following panels, then move the panels to the first row
 
   :::{image} ../../images/kibana-lens_logsDashboard_8.4.0.png
   :alt: Logs dashboard
-  :class: screenshot
+  :screenshot:
   :::
 
 

@@ -373,14 +373,14 @@ If you want to omit the raw events from the diagnostic, add the flag `--exclude-
 
     :::{image} ../../../images/fleet-collect-agent-diagnostics1.png
     :alt: Collect agent diagnostics under agent details
-    :class: screenshot
+    :screenshot:
     :::
 
 4. In the **Request Diagnostics** pop-up, select **Collect additional CPU metrics** if you’d like detailed CPU data.
 
     :::{image} ../../../images/fleet-collect-agent-diagnostics2.png
     :alt: Collect agent diagnostics confirmation pop-up
-    :class: screenshot
+    :screenshot:
     :::
 
 5. Click the **Request diagnostics** button.

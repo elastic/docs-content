@@ -30,7 +30,7 @@ In order to check the status of failing {{slm}} policies we need to go to Kibana
 
     :::{image} ../../images/elasticsearch-reference-kibana-console.png
     :alt: {{kib}} Console
-    :class: screenshot
+    :screenshot:
     :::
 
 4. [Retrieve](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-slm-get-lifecycle) the {{slm}} policy:

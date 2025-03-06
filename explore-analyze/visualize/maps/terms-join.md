@@ -22,7 +22,7 @@ The [choropleth layer example](maps-getting-started.md#maps-add-choropleth-layer
 
 :::{image} ../../../images/kibana-gs_add_cloropeth_layer.png
 :alt: gs add cloropeth layer
-:class: screenshot
+:screenshot:
 :::
 
 ### How a term join works [_how_a_term_join_works]
@@ -33,7 +33,7 @@ The cloropeth example uses the shared key, [ISO 3166-1 alpha-2 code](https://wik
 
 :::{image} ../../../images/kibana-terms_join_shared_key_config.png
 :alt: terms join shared key config
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -71,7 +71,7 @@ The METRICS configuration defines two metric aggregations:
 
 :::{image} ../../../images/kibana-terms_join_metric_config.png
 :alt: terms join metric config
-:class: screenshot
+:screenshot:
 :::
 
 The right source does not provide individual documents, but instead provides the metrics from a terms aggregation. The metrics are calculated from the following sample web logs documents.

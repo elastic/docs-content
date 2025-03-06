@@ -59,7 +59,7 @@ Deployed models can be evaluated in {{kib}} under **{{ml-app}}** > **Trained Mod
 
 :::{image} ../../../images/machine-learning-ml-nlp-text-emb-test.png
 :alt: Test trained model UI
-:class: screenshot
+:screenshot:
 :::
 
 ::::{dropdown} **Test the model by using the _infer API**
@@ -107,7 +107,7 @@ Upload the file by using the [Data Visualizer](../../../manage-data/ingest/uploa
 
 :::{image} ../../../images/machine-learning-ml-nlp-text-emb-data.png
 :alt: Importing the data
-:class: screenshot
+:screenshot:
 :::
 
 ## Add the text embedding model to an {{infer}} ingest pipeline [ex-text-emb-ingest]
@@ -199,7 +199,7 @@ You can also open the model stat UI to follow the progress.
 
 :::{image} ../../../images/machine-learning-ml-nlp-text-emb-reindex.png
 :alt: Model status UI
-:class: screenshot
+:screenshot:
 :::
 
 After the reindexing is finished, the documents in the new index contain the {{infer}} results – the vector embeddings.

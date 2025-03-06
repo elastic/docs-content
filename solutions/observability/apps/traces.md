@@ -79,7 +79,7 @@ APM's timeline visualization provides a visual deep-dive into each of your appli
 
 :::{image} ../../../images/observability-apm-distributed-tracing.png
 :alt: Distributed tracing in the Applications UI
-:class: screenshot
+:screenshot:
 :::
 
 

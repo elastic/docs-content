@@ -16,7 +16,7 @@ To get started, choose the services and environments you wish to configure. The 
 
 :::{image} ../../../images/observability-apm-agent-configuration.png
 :alt: APM Agent configuration in Kibana
-:class: screenshot
+:screenshot:
 :::
 
 

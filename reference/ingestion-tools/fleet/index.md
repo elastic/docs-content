@@ -92,7 +92,7 @@ Standalone mode requires you to manually configure and manage the agent locally.
 
 :::{image} images/fleet-start.png
 :alt: {{fleet}} app in {{kib}}
-:class: screenshot
+:screenshot:
 :::
 
 {{fleet}} serves as the communication channel back to the {{agents}}. Agents check in for the latest updates on a regular basis. You can have any number of agents enrolled into each agent policy, which allows you to scale up to thousands of hosts.

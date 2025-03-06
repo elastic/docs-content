@@ -68,7 +68,7 @@ For more information {{agent}} and integrations, refer to the [{{fleet}} and {{a
 
 :::{image} ../../../images/observability-s3-dashboard.png
 :alt: Screenshot showing the S3 dashboard
-:class: screenshot
+:screenshot:
 :::
 
 

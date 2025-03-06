@@ -53,7 +53,7 @@ You can create the following types of rules:
 
 :::{image} ../../../images/security-all-rules.png
 :alt: Shows the Rules page
-:class: screenshot
+:screenshot:
 :::
 
 

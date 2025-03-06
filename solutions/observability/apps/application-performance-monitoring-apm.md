@@ -10,7 +10,7 @@ Elastic APM is an application performance monitoring system built on the {{stack
 
 :::{image} ../../../images/observability-apm-app-landing.png
 :alt: Applications UI in {kib}
-:class: screenshot
+:screenshot:
 :::
 
 Elastic APM also automatically collects unhandled errors and exceptions. Errors are grouped based primarily on the stack trace, so you can identify new errors as they appear and keep an eye on how many times specific errors happen.

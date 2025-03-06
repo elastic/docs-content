@@ -189,7 +189,7 @@ The **Metrics Nginx overview** shows visual representations of total requests, p
 
 :::{image} ../../../images/observability-nginx-metrics-dashboard.png
 :alt: nginx metrics dashboard
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -210,7 +210,7 @@ Filter your results to see logs from the nginx integration from the data selecto
 
     :::{image} ../../../images/observability-nginx-data-selector.png
     :alt: nginx integration in the data selector
-    :class: screenshot
+    :screenshot:
     :::
 
 2. Select either **access** logs or **error** logs to view the logs you’re looking for.
@@ -219,7 +219,7 @@ The **Documents** table now shows your nginx logs:
 
 :::{image} ../../../images/observability-nginx-logs-explorer.png
 :alt: Logs Explorer showing nginx error logs
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -236,14 +236,14 @@ The **Nginx logs overview** dashboard shows visual representations of geographic
 
 :::{image} ../../../images/observability-nginx-logs-overview-dashboard.png
 :alt: nginx logs overview dashboard
-:class: screenshot
+:screenshot:
 :::
 
 The **Nginx access and error logs** dashboard shows your access logs over time, and lists your access and error logs.
 
 :::{image} ../../../images/observability-nginx-logs-access-error-dashboard.png
 :alt: nginx access and error logs dashboard
-:class: screenshot
+:screenshot:
 :::
 
 

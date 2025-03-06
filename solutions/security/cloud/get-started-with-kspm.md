@@ -252,7 +252,7 @@ To install the integration on unmanaged clusters:
 
 :::{image} ../../../images/security-kspm-add-agent-wizard.png
 :alt: The KSPM integration's Add agent wizard
-:class: screenshot
+:screenshot:
 :::
 
 

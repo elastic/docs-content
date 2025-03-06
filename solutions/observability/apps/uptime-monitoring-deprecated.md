@@ -39,7 +39,7 @@ In the {{uptime-app}}, you can monitor the status of network endpoints using the
 
 :::{image} ../../../images/observability-uptime-app.png
 :alt: {{uptime-app}} in {{kib}}
-:class: screenshot
+:screenshot:
 :::
 
 To set up your first monitor, refer to [Get started with Uptime](get-started-with-uptime.md).
@@ -53,7 +53,7 @@ In addition to the common name, associated monitors, issuer information, and SHA
 
 :::{image} ../../../images/observability-tls-certificates.png
 :alt: TLS certificates
-:class: screenshot
+:screenshot:
 :::
 
 The table entries can be sorted by *status* and *valid until*. You can use the search bar at the top of the view to find values in most of the TLS-related fields in your Uptime indices.

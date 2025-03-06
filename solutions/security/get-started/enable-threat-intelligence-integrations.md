@@ -20,7 +20,7 @@ You can connect to threat intelligence sources using an [{{agent}} integration](
 
 :::{image} ../../../images/getting-started-threat-intelligence-view.png
 :alt: The Threat Intelligence view on the Overview dashboard
-:class: screenshot
+:screenshot:
 :::
 
 There are a few scenarios when data won’t display in the Threat Intelligence view:

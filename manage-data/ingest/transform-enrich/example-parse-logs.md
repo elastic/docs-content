@@ -26,7 +26,7 @@ These logs contain a timestamp, IP address, and user agent. You want to give the
 
     :::{image} ../../../images/elasticsearch-reference-ingest-pipeline-list.png
     :alt: Kibana's Ingest Pipelines list view
-    :class: screenshot
+    :screenshot:
     :::
 
 2. Click **Create pipeline > New pipeline**.
@@ -55,7 +55,7 @@ These logs contain a timestamp, IP address, and user agent. You want to give the
 
     :::{image} ../../../images/elasticsearch-reference-ingest-pipeline-processor.png
     :alt: Processors for Ingest Pipelines
-    :class: screenshot
+    :screenshot:
     :::
 
     The four processors will run sequentially:<br> Grok > Date > GeoIP > User agent<br> You can reorder processors using the arrow icons.

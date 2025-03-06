@@ -30,7 +30,7 @@ In this example, the conditions state that you will receive a critical alert for
 
 :::{image} ../../../images/observability-metrics-alert.png
 :alt: Metric threshold alert
-:class: screenshot
+:screenshot:
 :::
 
 When you select **Alert me if there’s no data**, the rule is triggered if the metrics don’t report any data over the expected time period, or if the rule fails to query {{es}}.
@@ -40,7 +40,7 @@ When you select **Alert me if there’s no data**, the rule is triggered if the 
 
 :::{image} ../../../images/observability-metrics-alert-filters-and-group.png
 :alt: Metric threshold filter and group fields
-:class: screenshot
+:screenshot:
 :::
 
 The **Filters** control the scope of the rule. If used, the rule will only evaluate metric data that matches the query in this field. In this example, the rule will only alert on metrics reported from a Cloud region called `us-east`.
@@ -91,14 +91,14 @@ After you select a connector, you must set the action frequency. You can choose 
 
 :::{image} ../../../images/observability-action-alert-summary.png
 :alt: Action types
-:class: screenshot
+:screenshot:
 :::
 
 Alternatively, you can set the action frequency such that you choose how often the action runs (for example, at each check interval, only when the alert status changes, or at a custom action interval). In this case, you must also select the specific threshold condition that affects when actions run: `Alert`, `Warning`, `No data`, or `Recovered` (a value that was once above a threshold has now dropped below it).
 
 :::{image} ../../../images/observability-metrics-threshold-run-when-selection.png
 :alt: Configure when a rule is triggered
-:class: screenshot
+:screenshot:
 :::
 
 You can also further refine the conditions under which actions run by specifying that actions only run when they match a KQL query or when an alert occurs within a specific time frame:
@@ -108,7 +108,7 @@ You can also further refine the conditions under which actions run by specifying
 
 :::{image} ../../../images/observability-metric-threshold-conditional-alerts.png
 :alt: Configure a conditional alert
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -118,7 +118,7 @@ Use the default notification message or customize it. You can add more context t
 
 :::{image} ../../../images/observability-metrics-threshold-alert-default-message.png
 :alt: Default notification message for metric threshold rules with open "Add variable" popup listing available action variables
-:class: screenshot
+:screenshot:
 :::
 
 The following variables are specific to this rule type. You an also specify [variables common to all rules](../../../explore-analyze/alerts-cases/alerts/rule-action-variables.md).

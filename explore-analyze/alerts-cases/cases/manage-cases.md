@@ -17,7 +17,7 @@ Open a new case to keep track of issues and share their details with colleagues.
 1. Go to **Management > {{stack-manage-app}} > Cases**, then click **Create case**.
    :::{image} ../../../images/kibana-cases-create.png
    :alt: Create a case in {{stack-manage-app}}
-   :class: screenshot
+   :screenshot:
    :::
 
 2. If you defined [templates](manage-cases-settings.md#case-templates), you can optionally select one to use its default field values. [preview]
@@ -78,7 +78,7 @@ After you create a case, you can upload and manage files on the **Files** tab:
 
 :::{image} ../../../images/kibana-cases-files.png
 :alt: A list of files attached to a case
-:class: screenshot
+:screenshot:
 :::
 
 The acceptable file types and sizes are affected by your [case settings](../../../deploy-manage/deploy/self-managed/configure.md).
@@ -98,7 +98,7 @@ You can also optionally add visualizations. For example, you can portray event a
 
 :::{image} ../../../images/kibana-cases-visualization.png
 :alt: Adding a visualization as a comment within a case
-:class: screenshot
+:screenshot:
 :::
 
 To add a visualization to a comment within your case:

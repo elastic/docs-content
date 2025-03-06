@@ -34,5 +34,5 @@ This could be for any of these reasons:
 
   :::{image} ../../../images/observability-turn-on-system-metrics.png
   :alt: Screenshot showing system cpu and diskio metrics selected for collection
-  :class: screenshot
+  :screenshot:
   :::

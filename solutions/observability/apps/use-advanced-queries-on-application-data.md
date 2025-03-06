@@ -19,7 +19,7 @@ When you type, you can begin to see some of the transaction fields available for
 
 :::{image} ../../../images/observability-apm-query-bar.png
 :alt: Example of the Kibana Query bar in Applications UI in Kibana
-:class: screenshot
+:screenshot:
 :::
 
 ::::{tip}
@@ -58,17 +58,17 @@ In this example, we’re interested in viewing all of the `APIRestController#cus
 
 :::{image} ../../../images/observability-advanced-discover.png
 :alt: View all transactions in bucket
-:class: screenshot
+:screenshot:
 :::
 
 You can now explore the data until you find a specific transaction that you’re interested in. Copy that transaction’s `transaction.id` and paste it into APM to view the data in the context of the APM:
 
 :::{image} ../../../images/observability-specific-transaction-search.png
 :alt: View specific transaction in Applications UI
-:class: screenshot
+:screenshot:
 :::
 
 :::{image} ../../../images/observability-specific-transaction.png
 :alt: View specific transaction in Applications UI
-:class: screenshot
+:screenshot:
 :::

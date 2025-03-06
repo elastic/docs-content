@@ -19,7 +19,7 @@ If you are monitoring Logstash nodes, click **Overview** in the Logstash section
 
 :::{image} ../../../images/kibana-monitoring-logstash-overview.png
 :alt: Logstash Overview
-:class: screenshot
+:screenshot:
 :::
 
 1. To view Logstash node metrics, click **Nodes**. The Nodes section shows the status of each Logstash node.

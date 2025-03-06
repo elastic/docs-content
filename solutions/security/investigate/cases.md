@@ -19,7 +19,7 @@ You can also send cases to these external systems by [configuring external conne
 
 :::{image} ../../../images/security-cases-home-page.png
 :alt: Case UI Home
-:class: screenshot
+:screenshot:
 :::
 
 ::::{note}

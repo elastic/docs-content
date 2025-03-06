@@ -55,7 +55,7 @@ Deployed models can be evaluated in {{kib}} under **{{ml-app}}** > **Trained Mod
 
 :::{image} ../../../images/machine-learning-ml-nlp-ner-test.png
 :alt: Test trained model UI
-:class: screenshot
+:screenshot:
 :::
 
 ::::{dropdown} **Test the model by using the _infer API**
@@ -250,5 +250,5 @@ Update and save the visualization.
 
 :::{image} ../../../images/machine-learning-ml-nlp-tag-cloud.png
 :alt: Tag cloud created from Les Misérables
-:class: screenshot
+:screenshot:
 :::

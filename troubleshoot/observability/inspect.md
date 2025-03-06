@@ -9,7 +9,7 @@ The **Inspect** view in {{kib}} allows you to view information about all request
 
 :::{image} ../../images/observability-inspect-flyout.png
 :alt: Inspector flyout in the {{uptime-app}}
-:class: screenshot
+:screenshot:
 :::
 
 Many requests go into building visualizations in {{kib}}. For example, to render visualizations in the {{uptime-app}}, {{kib}} needs to request a list of all your monitors, data about the availability of each monitor over time, and more. If something goes wrong, the Inspect view can help you report an issue and troubleshoot with Elastic support.
@@ -32,7 +32,7 @@ To enable inspect across apps:
 
 :::{image} ../../images/observability-inspect-enable.png
 :alt: {{kib}} Advanced Settings {{observability}} section with Inspect ES queries enabled
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -44,7 +44,7 @@ Click the **Request** dropdown to see all the requests used to make the current 
 
 :::{image} ../../images/observability-inspect-flyout-dropdown.png
 :alt: Inspector flyout dropdown for selecting a request to inspect
-:class: screenshot
+:screenshot:
 :::
 
 Toggle between the **Statistics**, **Request**, and **Response** tabs to see details for a single request.
@@ -74,20 +74,20 @@ Request timestamp
 
 :::{image} ../../images/observability-inspect-flyout-statistics.png
 :alt: Inspector flyout Statistics tab
-:class: screenshot
+:screenshot:
 :::
 
 The **Request** tab shows the exact syntax used in the request. You can click **Copy to clipboard** to copy the request or **Open in Console** to open it in the [{{kib}} console](../../explore-analyze/query-filter/tools/console.md).
 
 :::{image} ../../images/observability-inspect-flyout-request.png
 :alt: Inspector flyout Request tab with exact syntax
-:class: screenshot
+:screenshot:
 :::
 
 The **Response** tab shows the exact response used in the visualizations on the page. You can click **Copy to clipboard** to copy the response.
 
 :::{image} ../../images/observability-inspect-flyout-response.png
 :alt: Inspector flyout Response tab with exact response
-:class: screenshot
+:screenshot:
 :::
 

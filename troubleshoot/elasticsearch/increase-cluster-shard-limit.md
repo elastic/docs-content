@@ -32,7 +32,7 @@ In order to get the shards assigned we’ll need to increase the number of shard
 
     :::{image} ../../images/elasticsearch-reference-kibana-console.png
     :alt: {{kib}} Console
-    :class: screenshot
+    :screenshot:
     :::
 
 4. Inspect the `cluster.routing.allocation.total_shards_per_node` [cluster setting](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-get-settings):

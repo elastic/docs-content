@@ -17,28 +17,28 @@ In order to increase the disk capacity of the data nodes in your cluster:
 
     :::{image} ../../images/elasticsearch-reference-autoscaling_banner.png
     :alt: Autoscaling banner
-    :class: screenshot
+    :screenshot:
     :::
 
     Or you can go to `Actions > Edit deployment`, check the checkbox `Autoscale` and click `save` at the bottom of the page.
 
     :::{image} ../../images/elasticsearch-reference-enable_autoscaling.png
     :alt: Enabling autoscaling
-    :class: screenshot
+    :screenshot:
     :::
 
 4. If autoscaling has succeeded the cluster should return to `healthy` status. If the cluster is still out of disk, please check if autoscaling has reached its limits. You will be notified about this by the following banner:
 
     :::{image} ../../images/elasticsearch-reference-autoscaling_limits_banner.png
     :alt: Autoscaling banner
-    :class: screenshot
+    :screenshot:
     :::
 
     or you can go to `Actions > Edit deployment` and look for the label `LIMIT REACHED` as shown below:
 
     :::{image} ../../images/elasticsearch-reference-reached_autoscaling_limits.png
     :alt: Autoscaling limits reached
-    :class: screenshot
+    :screenshot:
     :::
 
     If you are seeing the banner click `Update autoscaling settings` to go to the `Edit` page. Otherwise, you are already in the `Edit` page, click `Edit settings` to increase the autoscaling limits. After you perform the change click `save` at the bottom of the page.

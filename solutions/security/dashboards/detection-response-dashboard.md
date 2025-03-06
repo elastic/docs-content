@@ -10,7 +10,7 @@ The Detection & Response dashboard provides focused visibility into the day-to-d
 
 :::{image} ../../../images/security-detection-response-dashboard.png
 :alt: Overview of Detection & Response dashboard
-:class: screenshot
+:screenshot:
 :::
 
 Interact with various dashboard elements:

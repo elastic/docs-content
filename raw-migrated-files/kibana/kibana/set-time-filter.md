@@ -12,14 +12,14 @@ Display data within a specified time range when your index contains time-based e
 
         :::{image} ../../../images/kibana-time-filter.png
         :alt: Time filter menu
-        :class: screenshot
+        :screenshot:
         :::
 
 3. To set start and end times, click the bar next to the time filter. In the popup, select **Absolute**, **Relative** or **Now**, then specify the required options.
 
     :::{image} ../../../images/kibana-time-relative.png
     :alt: Time filter showing relative time
-    :class: screenshot
+    :screenshot:
     :::
 
 

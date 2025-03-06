@@ -10,7 +10,7 @@ The Detection rule monitoring dashboard provides visualizations to help you moni
 
 :::{image} ../../../images/security-rule-monitoring-overview.png
 :alt: Overview of Detection rule monitoring dashboard
-:class: screenshot
+:screenshot:
 :::
 
 ::::{admonition} Requirements

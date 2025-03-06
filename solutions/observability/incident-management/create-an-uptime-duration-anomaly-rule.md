@@ -27,7 +27,7 @@ The *anomaly score* is a value from `0` to `100`, which indicates the significan
 
 :::{image} ../../../images/observability-response-durations-alert.png
 :alt: Uptime response duration rule
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -66,14 +66,14 @@ After you select a connector, you must set the action frequency. You can choose 
 
 :::{image} ../../../images/observability-duration-anomaly-alert-summary.png
 :alt: Action types
-:class: screenshot
+:screenshot:
 :::
 
 Alternatively, you can set the action frequency such that you choose how often the action runs (for example, at each check interval, only when the alert status changes, or at a custom action interval). In this case, you must also select the specific threshold condition that affects when actions run: `Uptime Duration Anomaly` or `Recovered`.
 
 :::{image} ../../../images/observability-duration-anomaly-run-when-selection.png
 :alt: Configure when a rule is triggered
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -83,7 +83,7 @@ Use the default notification message or customize it. You can add more context t
 
 :::{image} ../../../images/observability-duration-anomaly-alert-default-message.png
 :alt: Default notification message for Uptime duration anomaly rules with open "Add variable" popup listing available action variables
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -93,6 +93,6 @@ To receive a notification when the alert recovers, select **Run when Recovered**
 
 :::{image} ../../../images/observability-duration-anomaly-alert-recovery.png
 :alt: Default recovery message for Uptime duration anomaly rules with open "Add variable" popup listing available action variables
-:class: screenshot
+:screenshot:
 :::
 

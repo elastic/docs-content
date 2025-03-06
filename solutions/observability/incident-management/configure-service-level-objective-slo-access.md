@@ -45,7 +45,7 @@ Set the following privileges for the SLO Editor role:
 
     :::{image} ../../../images/observability-slo-es-priv-editor.png
     :alt: Cluster and index privileges for SLO Editor role
-    :class: screenshot
+    :screenshot:
     :::
 
 4. In the **Kibana** section, click **Add Kibana privilege**.
@@ -54,7 +54,7 @@ Set the following privileges for the SLO Editor role:
 
     :::{image} ../../../images/observability-slo-kibana-priv-all.png
     :alt: SLO Kibana all privileges
-    :class: screenshot
+    :screenshot:
     :::
 
 7. Click **Create Role** at the bottom of the page and assign the role to the relevant users.
@@ -68,7 +68,7 @@ Set the following privileges for the SLO Read role:
 
     :::{image} ../../../images/observability-slo-es-priv-viewer.png
     :alt: Index privileges for SLO Viewer role
-    :class: screenshot
+    :screenshot:
     :::
 
 2. In the **Kibana** section, click **Add Kibana privilege**.
@@ -77,7 +77,7 @@ Set the following privileges for the SLO Read role:
 
     :::{image} ../../../images/observability-slo-kibana-priv-read.png
     :alt: SLO Kibana read privileges
-    :class: screenshot
+    :screenshot:
     :::
 
 5. Click **Create Role** at the bottom of the page and assign the role to the relevant users.

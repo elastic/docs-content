@@ -12,7 +12,7 @@ To open **Infrastructure inventory**, find **Infrastructure** in the main menu o
 
 :::{image} ../../../images/observability-metrics-app.png
 :alt: Infrastructure UI in {kib}
-:class: screenshot
+:screenshot:
 :::
 
 To learn more about the metrics shown on this page, refer to the [Metrics reference](https://www.elastic.co/guide/en/serverless/current/observability-metrics-reference.html).
@@ -42,7 +42,7 @@ You can sort by resource, group the resource by specific fields related to it, a
 
 :::{image} ../../../images/observability-kubernetes-filter.png
 :alt: Kubernetes pod filtering
-:class: screenshot
+:screenshot:
 :::
 
 You can also use the search bar to create structured queries using [{{kib}} Query Language](../../../explore-analyze/query-filter/languages/kql.md). For example, enter `host.hostname : "host1"` to view only the information for `host1`.
@@ -77,7 +77,7 @@ Click **Show all** to drill down into related data.
 
 :::{image} ../../../images/observability-overview-overlay.png
 :alt: Host overview
-:class: screenshot
+:screenshot:
 :::
 
 :::::
@@ -90,7 +90,7 @@ This information can help when investigating events—for example, when filterin
 
 :::{image} ../../../images/observability-metadata-overlay.png
 :alt: Host metadata
-:class: screenshot
+:screenshot:
 :::
 
 :::::
@@ -101,7 +101,7 @@ The **Metrics** tab shows host metrics organized by type and is more complete th
 
 :::{image} ../../../images/serverless-metrics-overlay.png
 :alt: Metrics
-:class: screenshot
+:screenshot:
 :::
 
 :::::
@@ -132,7 +132,7 @@ The processes listed in the **Top processes** table are based on an aggregation 
 
 :::{image} ../../../images/serverless-processes-overlay.png
 :alt: Host processes
-:class: screenshot
+:screenshot:
 :::
 
 % Stateful only for Profiling
@@ -151,7 +151,7 @@ For more on Universal Profiling, refer to the [Universal Profiling](../../../sol
 
 :::{image} ../../../images/observability-universal-profiling-overlay.png
 :alt: Host Universal Profiling
-:class: screenshot
+:screenshot:
 :::
 
 :::::
@@ -169,7 +169,7 @@ To view the logs in the {{logs-app}} for a detailed analysis, click **Open in Lo
 
 :::{image} ../../../images/observability-logs-overlay.png
 :alt: Host logs
-:class: screenshot
+:screenshot:
 :::
 
 :::::
@@ -184,7 +184,7 @@ To drill down and analyze the metric anomaly, select **Actions** → **Open in A
 
 :::{image} ../../../images/serverless-anomalies-overlay.png
 :alt: Anomalies
-:class: screenshot
+:screenshot:
 :::
 
 :::::
@@ -225,7 +225,7 @@ Other options include:
 
 :::{image} ../../../images/observability-osquery-overlay.png
 :alt: Osquery
-:class: screenshot
+:screenshot:
 :::
 
 :::::
@@ -275,7 +275,7 @@ Click **Show all** to drill down into related data.
 
 :::{image} ../../../images/observability-overview-overlay-containers.png
 :alt: Container overview
-:class: screenshot
+:screenshot:
 :::
 
 :::::
@@ -292,7 +292,7 @@ All of this information can help when investigating events—for example, filter
 
 :::{image} ../../../images/observability-metadata-overlay-containers.png
 :alt: Container metadata
-:class: screenshot
+:screenshot:
 :::
 
 :::::
@@ -303,7 +303,7 @@ The **Metrics** tab shows container metrics organized by type.
 
 :::{image} ../../../images/observability-metrics-overlay-containers.png
 :alt: Metrics
-:class: screenshot
+:screenshot:
 :::
 
 :::::
@@ -321,7 +321,7 @@ To view the logs in the {{logs-app}} for a detailed analysis, click **Open in Lo
 
 :::{image} ../../../images/observability-logs-overlay-containers.png
 :alt: Container logs
-:class: screenshot
+:screenshot:
 :::
 
 :::::
@@ -334,7 +334,7 @@ When you have searched and filtered for a specific resource, you can drill down 
 
 :::{image} ../../../images/observability-pod-metrics.png
 :alt: Kubernetes pod metrics
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -346,7 +346,7 @@ Select your resource, and from the **Metric** filter menu, click **Add metric**.
 
 :::{image} ../../../images/serverless-add-custom-metric.png
 :alt: Add custom metrics
-:class: screenshot
+:screenshot:
 :::
 
 

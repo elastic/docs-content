@@ -18,7 +18,7 @@ If you have the appropriate role, you can use the **ML job settings** interface 
 
 :::{image} ../../../images/security-ml-ui.png
 :alt: ML job settings UI on the Alerts page
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -30,14 +30,14 @@ You can also check the status of {{ml}} detection rules, and start or stop their
 
     :::{image} ../../../images/security-rules-table-ml-job-error.png
     :alt: Rules table {{ml}} job error
-    :class: screenshot
+    :screenshot:
     :::
 
 * On a rule’s details page, check the **Definition** section to confirm whether the required {{ml}} jobs are running. Switch the toggles on or off to run or stop each job.
 
     :::{image} ../../../images/security-rules-ts-ml-job-stopped.png
     :alt: Rule details page with ML job stopped
-    :class: screenshot
+    :screenshot:
     :::
 
 

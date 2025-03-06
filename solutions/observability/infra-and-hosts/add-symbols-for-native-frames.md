@@ -29,7 +29,7 @@ You also need to copy the **Symbols** endpoint from the deployment overview page
 
 :::{image} ../../../images/observability-profiling-symbolizer-url.png
 :alt: profiling symbolizer url
-:class: screenshot
+:screenshot:
 :::
 
 

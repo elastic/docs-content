@@ -32,7 +32,7 @@ We’ll achieve this by inspecting the system-wide `cluster.routing.allocation.e
 
     :::{image} ../../images/elasticsearch-reference-kibana-console.png
     :alt: {{kib}} Console
-    :class: screenshot
+    :screenshot:
     :::
 
 4. Inspect the `cluster.routing.allocation.enable` [cluster setting](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-get-settings):

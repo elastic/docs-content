@@ -76,7 +76,7 @@ Once your index-specific ML {{infer}} pipeline is ready, you can add {{infer}} p
 
 :::{image} ../../../images/elasticsearch-reference-document-enrichment-add-inference-pipeline.png
 :alt: Add Inference Pipeline
-:class: screenshot
+:screenshot:
 :::
 
 Here, you’ll be able to:

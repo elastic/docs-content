@@ -39,7 +39,7 @@ In this example, the conditions are met when any of the TLS certificates on site
 
 :::{image} ../../../images/observability-tls-rule-synthetics-conditions.png
 :alt: Conditions and advanced options defining a Synthetics TLS certificate rule
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -76,14 +76,14 @@ After you select a connector, you must set the action frequency. You can choose 
 
 :::{image} ../../../images/observability-tls-rule-synthetics-action-types-summary.png
 :alt: tls rule synthetics action types summary
-:class: screenshot
+:screenshot:
 :::
 
 Alternatively, you can set the action frequency such that you choose how often the action runs (for example, at each check interval, only when the alert status changes, or at a custom action interval). In this case, you must also select the specific threshold condition that affects when actions run: the *Synthetics TLS certificate* changes or when it is *Recovered* (went from down to up).
 
 :::{image} ../../../images/observability-tls-rule-synthetics-action-types-each-alert.png
 :alt: tls rule synthetics action types each alert
-:class: screenshot
+:screenshot:
 :::
 
 You can also further refine the conditions under which actions run by specifying that actions only run when they match a KQL query or when an alert occurs within a specific time frame:
@@ -93,7 +93,7 @@ You can also further refine the conditions under which actions run by specifying
 
 :::{image} ../../../images/observability-tls-rule-synthetics-action-types-more-options.png
 :alt: tls rule synthetics action types more options
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -103,7 +103,7 @@ Use the default notification message or customize it. You can add more context t
 
 :::{image} ../../../images/observability-tls-rule-synthetics-action-variables.png
 :alt: tls rule synthetics action variables
-:class: screenshot
+:screenshot:
 :::
 
 The following variables are specific to this rule type. You an also specify [variables common to all rules](../../../explore-analyze/alerts-cases/alerts/rule-action-variables.md).
@@ -182,7 +182,7 @@ In this example, the conditions are met when any of the TLS certificates on site
 
 :::{image} ../../../images/observability-tls-rule-uptime-conditions.png
 :alt: Monitor status rule
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -221,14 +221,14 @@ After you select a connector, you must set the action frequency. You can choose 
 
 :::{image} ../../../images/observability-tls-rule-uptime-action-types-summary.png
 :alt: tls rule uptime action types summary
-:class: screenshot
+:screenshot:
 :::
 
 Alternatively, you can set the action frequency such that you choose how often the action runs (for example, at each check interval, only when the alert status changes, or at a custom action interval). In this case, you must also select the specific threshold condition that affects when actions run: *Uptime TLS Alert* or *Recovered* (went from down to up).
 
 :::{image} ../../../images/observability-tls-rule-uptime-action-types-each-alert.png
 :alt: tls rule uptime action types each alert
-:class: screenshot
+:screenshot:
 :::
 
 You can also further refine the conditions under which actions run by specifying that actions only run when they match a KQL query or when an alert occurs within a specific time frame:
@@ -238,7 +238,7 @@ You can also further refine the conditions under which actions run by specifying
 
 :::{image} ../../../images/observability-tls-rule-uptime-action-types-more-options.png
 :alt: tls rule uptime action types more options
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -248,7 +248,7 @@ Use the default notification message or customize it. You can add more context t
 
 :::{image} ../../../images/observability-tls-rule-uptime-default-message.png
 :alt: Default notification message for TLS rules with open "Add variable" popup listing available action variables
-:class: screenshot
+:screenshot:
 :::
 
 The following variables are specific to this rule type. You an also specify [variables common to all rules](../../../explore-analyze/alerts-cases/alerts/rule-action-variables.md).

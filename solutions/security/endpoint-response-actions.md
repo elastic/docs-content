@@ -25,7 +25,7 @@ Response actions are supported on all endpoint platforms (Linux, macOS, and Wind
 :::{image} ../../images/security-response-console.png
 :alt: Response console UI
 :width: 90%
-:class: screenshot
+:screenshot:
 :::
 
 Launch the response console from any of the following places in {{elastic-sec}}:
@@ -302,7 +302,7 @@ This panel displays only the response actions that you have the user role or pri
 :::{image} ../../images/security-response-console-help-panel.png
 :alt: Help panel
 :width: 65%
-:class: screenshot
+:screenshot:
 :::
 
 You can use this panel to build commands with less typing. Click the add icon (![Add icon](../../images/security-add-command-icon.png "")) to add a command to the input area, enter any additional parameters or a comment, then press **Return** to run the command.
@@ -312,7 +312,7 @@ If the endpoint is running an older version of {{agent}}, some response actions 
 :::{image} ../../images/security-response-console-unsupported-command.png
 :alt: Unsupported response action with tooltip
 :width: 65%
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -323,5 +323,5 @@ Click **Response actions history** to display a log of the response actions perf
 :::{image} ../../images/security-response-actions-history-console.png
 :alt: Response actions history with a few past actions
 :width: 85%
-:class: screenshot
+:screenshot:
 :::

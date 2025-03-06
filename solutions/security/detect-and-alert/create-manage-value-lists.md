@@ -46,7 +46,7 @@ To create a value list:
 
     :::{image} ../../../images/security-upload-lists-ui.png
     :alt: Manage value lists flyout
-    :class: screenshot
+    :screenshot:
     :::
 
 4. Select the list type (**Keywords**, **IP addresses**, **IP ranges**, or **Text**) from the **Type of value list** drop-down.
@@ -80,7 +80,7 @@ You can edit, remove, or export existing value lists.
 
 :::{image} ../../../images/security-edit-value-lists.png
 :alt: Manage items in a value lists
-:class: screenshot
+:screenshot:
 :::
 
 ::::{tip}
@@ -98,5 +98,5 @@ You can also edit value lists while creating and managing exceptions that use va
 
         :::{image} ../../../images/security-manage-value-list.png
         :alt: Import value list flyout with action buttons highlighted
-        :class: screenshot
+        :screenshot:
         :::

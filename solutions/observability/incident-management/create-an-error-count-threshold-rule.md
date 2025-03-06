@@ -20,7 +20,7 @@ Create an error count threshold rule to alert you when the number of errors in a
 
 :::{image} ../../../images/serverless-alerts-create-rule-error-count.png
 :alt: Create rule for error count threshold alert
-:class: screenshot
+:screenshot:
 :::
 
 ::::{tip}
@@ -91,14 +91,14 @@ Alternatively, you can set the action frequency to **For each alert** and specif
 
 :::{image} ../../../images/serverless-alert-action-frequency.png
 :alt: Configure when a rule is triggered
-:class: screenshot
+:screenshot:
 :::
 
 With the **Run when** menu you can choose if an action runs when the threshold for an alert is reached, or when the alert is recovered. For example, you can add a corresponding action for each state to ensure you are alerted when the rule is triggered and also when it recovers.
 
 :::{image} ../../../images/serverless-alert-apm-action-frequency-recovered.png
 :alt: Choose between threshold met or recovered
-:class: screenshot
+:screenshot:
 :::
 
 :::::
@@ -109,7 +109,7 @@ Use the default notification message or customize it. You can add more context t
 
 :::{image} ../../../images/serverless-action-variables-popup.png
 :alt: Action variables list
-:class: screenshot
+:screenshot:
 :::
 
 The following variables are specific to this rule type. You can also specify [variables common to all rules](../../../explore-analyze/alerts-cases/alerts/rule-action-variables.md).

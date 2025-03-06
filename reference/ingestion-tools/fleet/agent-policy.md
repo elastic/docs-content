@@ -123,7 +123,7 @@ You can apply policies to one or more {{agent}}s. To apply a policy:
 
     :::{image} images/apply-agent-policy.png
     :alt: Assign to new policy dropdown
-    :class: screenshot
+    :screenshot:
     :::
 
     Unable to select multiple agents? Confirm that your subscription level supports selective agent policy reassignment in {{fleet}}. For more information, refer to [{{stack}} subscriptions](https://www.elastic.co/subscriptions).
@@ -183,7 +183,7 @@ To add a custom field:
 
     :::{image} images/agent-policy-custom-field.png
     :alt: Sceen capture showing the UI to add a custom field and value
-    :class: screenshot
+    :screenshot:
     :::
 
 5. Click **Add another field** for additional fields. Click **Save changes** when you’re done.
@@ -269,7 +269,7 @@ Assuming your [{{stack}} subscription level](https://www.elastic.co/subscription
 
     :::{image} images/agent-output-settings.png
     :alt: Screen capture showing the {{ls}} output policy selected in an agent policy
-    :class: screenshot
+    :screenshot:
     :::
 
 4. Save your changes.
@@ -283,7 +283,7 @@ If you want to connect multiple agents to a specific on-premises {{fleet-server}
 
 :::{image} images/add-fleet-server-to-policy.png
 :alt: Screen capture showing how to add a {{fleet-server}} to a policy when creating or updating the policy.
-:class: screenshot
+:screenshot:
 :::
 
 When the policy is saved, all agents assigned to the policy are configured to use the new {{fleet-server}} as the controller.
@@ -310,7 +310,7 @@ Though secret values stored in {{fleet}} are hidden, they can be updated. To upd
 
     :::{image} images/fleet-policy-hidden-secret.png
     :alt: Screen capture showing a hidden secret value as part of an integration policy
-    :class: screenshot
+    :screenshot:
     :::
 
 4. Click **Save integration**. The original secret value is overwritten in the policy.

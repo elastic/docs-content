@@ -27,7 +27,7 @@ On the *Rules* page, you can manage the default synthetics rules including snooz
 
 :::{image} ../../../images/observability-synthetics-settings-disable-default-rules.png
 :alt: Rules page with default Synthetics rules
-:class: screenshot
+:screenshot:
 :::
 
 ::::{note}
@@ -44,7 +44,7 @@ In the **Alerting** tab on the Synthetics Settings page, you can add and configu
 
 :::{image} ../../../images/observability-synthetics-settings-alerting.png
 :alt: Alerting tab on the Synthetics Settings page in {kib}
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -56,7 +56,7 @@ In the **{{private-location}}s** tab, you can add and manage {{private-location}
 
 :::{image} ../../../images/observability-synthetics-settings-private-locations.png
 :alt: {{private-location}}s tab on the Synthetics Settings page in {kib}
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -68,7 +68,7 @@ In the **Global parameters** tab, you can define variables and parameters. This 
 
 :::{image} ../../../images/observability-synthetics-settings-global-parameters.png
 :alt: Global parameters tab on the Synthetics Settings page in {kib}
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -80,7 +80,7 @@ In the **Data retention** tab, use the links to jump to the relevant policy for 
 
 :::{image} ../../../images/observability-synthetics-settings-data-retention.png
 :alt: Data retention tab on the Synthetics Settings page in {kib}
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -100,5 +100,5 @@ In a serverless project, to create a Project API key you must be logged in as a 
 
 :::{image} ../../../images/observability-synthetics-settings-api-keys.png
 :alt: Project API keys tab on the Synthetics Settings page in {kib}
-:class: screenshot
+:screenshot:
 :::

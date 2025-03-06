@@ -15,7 +15,7 @@ As data sets increase in size and complexity, the human effort required to inspe
 
 :::{image} ../../images/kibana-ml-data-visualizer-sample.png
 :alt: {{data-viz}} for sample flight data
-:class: screenshot
+:screenshot:
 :::
 
 You can upload different file formats for analysis with the **{{data-viz}}**.
@@ -53,7 +53,7 @@ You can find the data drift view in **{{ml-app}}** > **{{data-viz}}** in {{kib}}
 
 :::{image} ../../images/kibana-ml-data-drift.png
 :alt: Data drift view in {{kib}}
-:class: screenshot
+:screenshot:
 :::
 
 Select a {{data-source}} that you want to analyze, then select a time range for the reference and the comparison data in the appearing histogram chart. You can adjust the time range for both the reference and the comparison data by moving the respective brushes. When you finished setting the time ranges, click **Run analysis**.

@@ -80,7 +80,7 @@ The listing of reports in **Stack Management > Reporting** allows you to inspect
 
 :::{image} ../../images/inspect-query-from-csv-export.gif
 :alt: Inspect the query used for CSV export
-:class: screenshot
+:screenshot:
 :::
 
 

@@ -30,7 +30,7 @@ One way to get the replica shards assigned is to add an availability zone. This 
 
     :::{image} ../../images/elasticsearch-reference-kibana-console.png
     :alt: {{kib}} Console
-    :class: screenshot
+    :screenshot:
     :::
 
 
@@ -59,7 +59,7 @@ Now that you know the tier, you want to increase the number of nodes in that tie
 
 :::{image} ../../images/elasticsearch-reference-ess-advanced-config-data-tiers.png
 :alt: {{kib}} Console
-:class: screenshot
+:screenshot:
 :::
 
 * Option 1: Increase the size per zone

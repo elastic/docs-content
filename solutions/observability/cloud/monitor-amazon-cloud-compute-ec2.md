@@ -67,7 +67,7 @@ For more information {{agent}} and integrations, refer to the [{{fleet}} and {{a
 
 :::{image} ../../../images/observability-ec2-overview-dashboard.png
 :alt: Screenshot showing the EC2 overview dashboard
-:class: screenshot
+:screenshot:
 :::
 
 

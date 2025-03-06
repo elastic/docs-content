@@ -47,7 +47,7 @@ If you’re using {{stack-security-features}}, you must have the `manage_pipelin
 
    :::{image} ../../../images/kibana-grok-debugger-overview.png
    :alt: Grok Debugger
-   :class: screenshot
+   :screenshot:
    :::
 
 
@@ -89,7 +89,7 @@ Follow this example to define a custom pattern.
 
    :::{image} ../../../images/kibana-grok-debugger-custom-pattern.png
    :alt: Debugging a custom pattern
-   :class: screenshot
+   :screenshot:
    :::
 
    If an error occurs, you can continue iterating over the custom pattern until the output matches the event that you expect.

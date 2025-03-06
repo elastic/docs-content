@@ -44,7 +44,7 @@ You can find the **Saved Objects** page using the navigation menu or the [global
 
 :::{image} ../../images/kibana-management-saved-objects.png
 :alt: Saved Objects
-:class: screenshot
+:screenshot:
 :::
 
 ## Permissions [_required_permissions_5]

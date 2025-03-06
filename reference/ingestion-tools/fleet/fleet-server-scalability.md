@@ -25,7 +25,7 @@ First modify your {{fleet}} deployment settings in {{ecloud}}:
 
     :::{image} images/fleet-server-hosted-container.png
     :alt: {{fleet-server}} hosted agent
-    :class: screenshot
+    :screenshot:
     :::
 
 
@@ -36,14 +36,14 @@ Next modify the {{fleet-server}} configuration by editing the agent policy:
 
     :::{image} images/elastic-cloud-agent-policy.png
     :alt: {{ecloud}} policy
-    :class: screenshot
+    :screenshot:
     :::
 
 3. Under {{fleet-server}}, modify **Max Connections** and other [advanced settings](#fleet-server-configuration) as described in [Scaling recommendations ({{ecloud}})](#scaling-recommendations).
 
     :::{image} images/fleet-server-configuration.png
     :alt: {{fleet-server}} configuration
-    :class: screenshot
+    :screenshot:
     :::
 
 

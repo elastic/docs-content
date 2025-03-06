@@ -19,7 +19,7 @@ mapped_pages:
 
     :::{image} ../../images/elasticsearch-reference-increase-disk-capacity-other-node.png
     :alt: Increase disk capacity of other nodes
-    :class: screenshot
+    :screenshot:
     :::
 
 4. Choose a larger than the pre-selected capacity configuration from the drop-down menu and click `save`. Wait for the plan to be applied and the problem should be resolved.

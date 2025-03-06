@@ -97,7 +97,7 @@ You can also download and deploy ELSER either from **{{ml-app}}** > **Trained Mo
 
     :::{image} ../../../images/machine-learning-ml-nlp-elser-v2-download.png
     :alt: Downloading ELSER
-    :class: screenshot
+    :screenshot:
     :::
 
     Alternatively, click the **Download model** button under **Actions** in the trained model list.
@@ -107,7 +107,7 @@ You can also download and deploy ELSER either from **{{ml-app}}** > **Trained Mo
 
     :::{image} ../../../images/machine-learning-ml-nlp-deployment-id-elser-v2.png
     :alt: Deploying ELSER
-    :class: screenshot
+    :screenshot:
     :::
 
 5. Click **Start**.
@@ -127,14 +127,14 @@ Alternatively, you can download and deploy ELSER to an {{infer}} pipeline using 
 
     :::{image} ../../../images/machine-learning-ml-nlp-deploy-elser-v2-es.png
     :alt: Deploying ELSER in Elasticsearch
-    :class: screenshot
+    :screenshot:
     :::
 
 5. Once the model is downloaded, click the **Start single-threaded** button to start the model with basic configuration or select the **Fine-tune performance** option to navigate to the **Trained Models** page where you can configure the model deployment.
 
     :::{image} ../../../images/machine-learning-ml-nlp-start-elser-v2-es.png
     :alt: Start ELSER in Elasticsearch
-    :class: screenshot
+    :screenshot:
     :::
 
 ::::
@@ -271,7 +271,7 @@ The results contain a list of ten random values for the selected field along wit
 
 :::{image} ../../../images/machine-learning-ml-nlp-elser-v2-test.png
 :alt: Testing ELSER
-:class: screenshot
+:screenshot:
 :::
 
 ## Performance considerations [performance]

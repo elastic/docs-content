@@ -26,7 +26,7 @@ These grammars have some limitations: they do not support tables, and can’t ru
 
 :::{image} ../../images/kibana-vega.png
 :alt: Vega UI
-:class: screenshot
+:screenshot:
 :::
 
 Both **Vega** and **Vega-Lite** use JSON, but {{kib}} has made this simpler to type by integrating [HJSON](https://hjson.github.io/). HJSON supports the following:
@@ -224,14 +224,14 @@ To generate the data, **Vega-Lite** uses the `source_0` and `data_0`. `source_0`
 
    :::{image} ../../images/kibana-vega_lite_tutorial_4.png
    :alt: Table for data_0 with columns key
-   :class: screenshot
+   :screenshot:
    :::
 
 4. To compare to the visually encoded data, select **data_0** from the dropdown.
 
    :::{image} ../../images/kibana-vega_lite_tutorial_5.png
    :alt: Table for data_0 where the key is NaN instead of a string
-   :class: screenshot
+   :screenshot:
    :::
 
    **key** is unable to convert because the property is category (`Men's Clothing`, `Women's Clothing`, etc.) instead of a timestamp.
@@ -262,7 +262,7 @@ In the **Vega-Lite** spec, add the `encoding` block:
 
    :::{image} ../../images/kibana-vega_lite_tutorial_6.png
    :alt: Table for data_0 showing that the column time_buckets.buckets.key is undefined
-   :class: screenshot
+   :screenshot:
    :::
 
 
@@ -288,7 +288,7 @@ In the **Vega-Lite** spec, add a `transform` block, then click **Update**:
 
    :::{image} ../../images/kibana-vega_lite_tutorial_7.png
    :alt: Table showing data_0 with multiple pages of results
-   :class: screenshot
+   :screenshot:
    :::
 
     Vega-Lite displays **undefined** values because there are duplicate names.
@@ -412,7 +412,7 @@ Move your cursor around the stacked area chart. The points are able to indicate 
 
 :::{image} ../../images/kibana-vega_lite_tutorial_2.png
 :alt: Vega-Lite tutorial selection enabled
-:class: screenshot
+:screenshot:
 :::
 
 The selection is controlled by a signal. To view the signal, click **Inspect** in the toolbar.
@@ -664,7 +664,7 @@ Add the `key` and `doc_count` fields as the X- and Y-axis values, then click **U
 
 :::{image} ../../images/kibana-vega_tutorial_3.png
 :alt: vega tutorial 3
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -754,7 +754,7 @@ To allow users to filter based on a time range, add a drag interaction, which re
 
 :::{image} ../../images/kibana-vega_tutorial_4.png
 :alt: vega tutorial 4
-:class: screenshot
+:screenshot:
 :::
 
 In the **Vega** spec, add a `signal` to track the X position of the cursor:
@@ -1455,7 +1455,7 @@ Use the contextual **Inspect** tool to gain insights into different elements.
 
 :::{image} ../../images/kibana-vega_tutorial_inspect_requests.png
 :alt: vega tutorial inspect requests
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -1467,7 +1467,7 @@ The runtime data is read from the [runtime scope](https://vega.github.io/vega/do
 
 :::{image} ../../images/kibana-vega_tutorial_inspect_data_sets.png
 :alt: vega tutorial inspect data sets
-:class: screenshot
+:screenshot:
 :::
 
 To debug more complex specs, access to the `view` variable.  For more information, refer to the [Vega browser debugging process](#vega-browser-debugging-console).
@@ -1479,7 +1479,7 @@ Because of the dynamic nature of the data in {{es}}, it is hard to help you with
 
 :::{image} ../../images/kibana-vega_tutorial_getting_help.png
 :alt: vega tutorial getting help
-:class: screenshot
+:screenshot:
 :::
 
 To copy the response, click **Copy to clipboard**. Paste the copied data to [gist.github.com](https://gist.github.com/), possibly with a .json extension. Use the [raw] button, and share that when asking for help.
