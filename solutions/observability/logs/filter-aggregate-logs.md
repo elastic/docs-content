@@ -2,6 +2,9 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/observability/current/logs-filter-and-aggregate.html
   - https://www.elastic.co/guide/en/serverless/current/observability-filter-and-aggregate-logs.html
+applies_to:
+  stack: all
+  serverless: all
 ---
 
 # Filter and aggregate logs [observability-filter-and-aggregate-logs]
@@ -16,8 +19,7 @@ This guide shows you how to:
 
 ## Before you get started [logs-filter-and-aggregate-prereq]
 
-::::{admonition} Required role
-:class: note
+::::{note}
 
 **For Observability serverless projects**, the **Admin** role or higher is required to create ingest pipelines and set the index template. To learn more, refer to [Assign user roles and privileges](../../../deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
 

@@ -6,28 +6,14 @@ mapped_urls:
 
 # Third-party response actions
 
-% What needs to be done: Align serverless/stateful
-
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/security-docs/security/third-party-actions.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/security-third-party-actions.md
-
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
-
-$$$crowdstrike-response-actions$$$
-
-$$$security-third-party-actions-supported-systems-and-response-actions$$$
 
 You can perform response actions on hosts enrolled in other third-party endpoint protection systems, such as CrowdStrike or SentinelOne. For example, you can direct the other system to isolate a suspicious endpoint from your network, without leaving the {{elastic-sec}} UI.
 
 ::::{admonition} Requirements
-* Third-party response actions require an [Enterprise subscription](https://www.elastic.co/pricing).
+* Third-party response actions require the appropriate [subscription](https://www.elastic.co/pricing) in {{stack}} or [project feature](/deploy-manage/deploy/elastic-cloud/project-settings.md) in {{serverless-short}}.
 * Each response action type has its own user role privilege requirements. Find an action’s role requirements at [Endpoint response actions](/solutions/security/endpoint-response-actions.md).
 * Additional [configuration](/solutions/security/endpoint-response-actions/configure-third-party-response-actions.md) is required to connect {{elastic-sec}} with a third-party system.
-
 ::::
-
 
 
 ## CrowdStrike response actions [crowdstrike-response-actions]
@@ -57,7 +43,6 @@ These response actions are supported for Microsoft Defender for Endpoint–enrol
     Refer to the instructions on [isolating](/solutions/security/endpoint-response-actions/isolate-host.md#isolate-a-host) and [releasing](/solutions/security/endpoint-response-actions/isolate-host.md#release-a-host) hosts for more details.
 
 
-
 ## SentinelOne response actions [sentinelone-response-actions]
 
 These response actions are supported for SentinelOne-enrolled hosts:
@@ -82,7 +67,6 @@ These response actions are supported for SentinelOne-enrolled hosts:
     For SentinelOne-enrolled hosts, you must use the parameter `--processName` to identify the process to terminate. `--pid` and `--entityId` are not supported.
 
     Example: `kill-process --processName cat --comment "Terminate suspicious process"`
-
     ::::
 
 * **View past response action activity** in the [response actions history](/solutions/security/endpoint-response-actions/response-actions-history.md) log.

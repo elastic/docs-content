@@ -32,6 +32,10 @@ If a cluster has unassigned shards, you might see an error message such as this 
 :alt: Unhealthy deployment error message
 :::
 
+:::{important}
+ If you’re using Elastic Cloud Hosted, then you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, real-time issue detection and resolution paths. For more information, refer to [Monitor with AutoOps](/deploy-manage/monitor/autoops.md).
+:::
+
 If your issue is not addressed here, then [contact Elastic support for help](/troubleshoot/index.md).
 
 ## Analyze unassigned shards using the {{es}} API [ec-analyze_shards_with-api]

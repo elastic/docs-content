@@ -20,7 +20,7 @@ $$$faq-autoops-monitoring$$$Does AutoOps monitor the entire Elastic Stack?
 :   AutoOps is currently limited to {{es}} (not {{kib}}, Logstash and Beats).
 
 $$$faq-autoops-supported-versions$$$What versions of Elasticsearch are supported for Elastic Cloud Hosted?
-:   AutoOps is currently available for {{es}} versions 7.17 and above.
+:   AutoOps supports {es} versions according to the [supported Elastic Stack versions](https://www.elastic.co/support/eol).
 
 $$$faq-autoops-license$$$How is AutoOps currently licensed?
 :   AutoOps current feature set is available to Elastic Cloud Hosted customers at all subscription tiers. For more information please refer to the [subscription page](https://www.elastic.co/subscriptions/cloud).

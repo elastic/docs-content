@@ -2,6 +2,9 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/observability/current/logs-stream.html
   - https://www.elastic.co/guide/en/serverless/current/observability-stream-log-files.html
+applies_to:
+  stack: all
+  serverless: all
 ---
 
 # Stream any log file [logs-stream]
@@ -60,23 +63,67 @@ On your host, download and extract the installation package that corresponds wit
 :::::::{tab-set}
 
 ::::::{tab-item} macOS
-Version 9.0.0-beta1 of {{agent}} has not yet been released.
+
+```shell
+
+curl -L -O https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-{{version}}-darwin-x86_64.tar.gz
+tar xzvf elastic-agent-{{version}}-darwin-x86_64.tar.gz
+
+```
 ::::::
 
 ::::::{tab-item} Linux
-Version 9.0.0-beta1 of {{agent}} has not yet been released.
+
+```shell
+
+curl -L -O https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-{{version}}-linux-x86_64.tar.gz
+tar xzvf elastic-agent-{{version}}-linux-x86_64.tar.gz
+
+```
+
 ::::::
 
 ::::::{tab-item} Windows
-Version 9.0.0-beta1 of {{agent}} has not yet been released.
+
+```powershell
+
+# PowerShell 5.0+
+wget https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-{{version}}-windows-x86_64.zip -OutFile elastic-agent-{{version}}-windows-x86_64.zip
+Expand-Archive .\elastic-agent-{version}-windows-x86_64.zip
+
+```
+
+
 ::::::
 
 ::::::{tab-item} DEB
-Version 9.0.0-beta1 of {{agent}} has not yet been released.
+
+:::tip
+To simplify upgrading to future versions of Elastic Agent, we recommended that you use the tarball distribution instead of the RPM distribution.
+You can install Elastic Agent in an unprivileged mode that does not require root privileges.
+:::
+
+```shell
+
+curl -L -O https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-{{version}}-amd64.deb
+sudo dpkg -i elastic-agent-{{version}}-amd64.deb
+
+```
 ::::::
 
 ::::::{tab-item} RPM
-Version 9.0.0-beta1 of {{agent}} has not yet been released.
+
+:::tip
+To simplify upgrading to future versions of Elastic Agent, we recommended that you use the tarball distribution instead of the RPM distribution.
+You can install Elastic Agent in an unprivileged mode that does not require root privileges.
+:::
+
+```shell
+
+curl -L -O https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-{{version}}-x86_64.rpm
+sudo rpm -vi elastic-agent-{{version}}-x86_64.rpm
+
+```
 ::::::
 
 :::::::
@@ -86,7 +133,7 @@ Version 9.0.0-beta1 of {{agent}} has not yet been released.
 After downloading and extracting the installation package, you’re ready to install the {{agent}}. From the agent directory, run the install command that corresponds with your system:
 
 ::::{note}
-On macOS, Linux (tar package), and Windows, run the `install` command to install and start {{agent}} as a managed service and start the service. The DEB and RPM packages include a service unit for Linux systems with systemd, For these systems, you must enable and start the service.
+On macOS, Linux (tar package), and Windows, run the `install` command to install and start {{agent}} as a managed service and start the service. The DEB and RPM packages include a service unit for Linux systems with systemd. For these systems, you must enable and start the service.
 ::::
 
 

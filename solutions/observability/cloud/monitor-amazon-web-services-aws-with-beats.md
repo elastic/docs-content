@@ -30,7 +30,7 @@ Create an [{{ech}}](https://cloud.elastic.co/registration?page=docs&placement=do
 With this tutorial, we assume that your logs and your infrastructure data are already shipped to CloudWatch. We are going to show you how you can stream your data from CloudWatch to {{es}}. If you don’t know how to put your AWS logs and infrastructure data in CloudWatch, Amazon provides a lot of documentation around this specific topic:
 
 * Collect your logs and infrastructure data from specific [AWS services](https://www.youtube.com/watch?v=vAnIhIwE5hY)
-* Export your logs [to an S3 bucket](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/S3ExportTasksConsole.md)
+* Export your logs [to an S3 bucket](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/S3ExportTasksConsole.html)
 
 
 ## Step 1:  Create an S3 Bucket [aws-step-one]
@@ -269,7 +269,7 @@ Edit the `modules.d/aws.yml` file with the following configurations.
 ```
 
 1. Enables the `ec2` fileset.
-2. This is the AWS profile defined following the [AWS standard](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.md).
+2. This is the AWS profile defined following the [AWS standard](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html).
 3. Add the URL to the queue containing notifications around the bucket containing the EC2 logs
 
 
@@ -293,7 +293,7 @@ Make sure that the AWS user used to collect the logs from S3 has at least the fo
 }
 ```
 
-You can now upload your logs to the S3 bucket. If you are using CloudWatch, make sure to edit the policy of your bucket as shown in [step 3 of the AWS user guide](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/S3ExportTasksConsole.md). This will help you avoid permissions issues.
+You can now upload your logs to the S3 bucket. If you are using CloudWatch, make sure to edit the policy of your bucket as shown in [step 3 of the AWS user guide](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/S3ExportTasksConsole.html). This will help you avoid permissions issues.
 
 Start {{filebeat}} to collect the logs.
 
@@ -344,7 +344,7 @@ Copy the URL of the queue you created. Edit the `modules.d/aws.yml`file with the
 ```
 
 1. Enables the `ec2` fileset.
-2. This is the AWS profile defined following the [AWS standard](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.md).
+2. This is the AWS profile defined following the [AWS standard](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html).
 3. Add the URL to the queue containing notifications around the bucket containing the EC2 logs
 4. Add the URL to the queue containing notifications around the bucket containing the S3 access logs
 
@@ -532,7 +532,7 @@ To collect metrics from your AWS infrastructure, we’ll use the [{{metricbeat}}
     1. Defines the module that is going to be used.
     2. Defines the period at which the metrics are going to be collected
     3. Defines the metricset that is going to be used.
-    4. This is the AWS profile defined following the [AWS standard](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.md).
+    4. This is the AWS profile defined following the [AWS standard](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html).
 
 
 Make sure that the AWS user used to collect the metrics from CloudWatch has at least the following permissions attached to it:

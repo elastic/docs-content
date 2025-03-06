@@ -258,7 +258,7 @@ Rerank the results using the new {{infer}} endpoint.
 
 ```py
 # Pass the query and the search results to the service
-response = client.inference.inference(
+response = client.inference.rerank(
     inference_id="cohere_rerank",
     body={
         "query": query,
