@@ -122,7 +122,7 @@ To avoid this, upgrade your `systemd` to at least version 238. You can also temp
 
 ### Docker images [start-docker]
 
-If you installed a Docker image, you can start {{es}} from the command line. There are different methods depending on whether you’re using development mode or production mode. See [Run {{es}} in Docker](../../../deploy-manage/deploy/self-managed/install-elasticsearch-with-docker.md#docker-cli-run-dev-mode).
+If you installed a Docker image, you can start {{es}} from the command line. There are different methods depending on whether you’re using development mode or production mode. See [](../../../deploy-manage/deploy/self-managed/install-elasticsearch-with-docker.md).
 
 ### RPM packages [start-rpm]
 

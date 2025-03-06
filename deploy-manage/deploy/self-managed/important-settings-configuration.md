@@ -134,7 +134,7 @@ If your master-eligible nodes do not have fixed names or addresses, use an [alte
 
 ### `cluster.initial_master_nodes` [initial_master_nodes]
 
-When you start an {{es}} cluster for the first time, a [cluster bootstrapping](../../distributed-architecture/discovery-cluster-formation/modules-discovery-bootstrap-cluster.md) step determines the set of master-eligible nodes whose votes are counted in the first election. In [development mode](/deploy-manage/deploy/self-managed/bootstrap-checks.md#bootstrap-checks.md#dev-vs-prod-mode), with no discovery settings configured, this step is performed automatically by the nodes themselves.
+When you start an {{es}} cluster for the first time, a [cluster bootstrapping](../../distributed-architecture/discovery-cluster-formation/modules-discovery-bootstrap-cluster.md) step determines the set of master-eligible nodes whose votes are counted in the first election. In [development mode](/deploy-manage/deploy/self-managed/bootstrap-checks.md#dev-vs-prod-mode), with no discovery settings configured, this step is performed automatically by the nodes themselves.
 
 Because auto-bootstrapping is [inherently unsafe](../../distributed-architecture/discovery-cluster-formation/modules-discovery-quorums.md), when starting a new cluster in production mode, you must explicitly list the master-eligible nodes whose votes should be counted in the very first election. You set this list using the `cluster.initial_master_nodes` setting on every master-eligible node. Do not configure this setting on master-ineligible nodes.
 

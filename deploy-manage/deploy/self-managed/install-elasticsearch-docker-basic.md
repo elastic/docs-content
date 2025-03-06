@@ -66,7 +66,7 @@ Use Docker commands to start a single-node {{es}} cluster for development or tes
     ```
 
     ::::{tip}
-    Use the `-m` flag to set a memory limit for the container. This removes the need to [manually set the JVM size](#docker-set-heap-size).
+    Use the `-m` flag to set a memory limit for the container. This removes the need to [manually set the JVM size](/deploy-manage/deploy/self-managed/install-elasticsearch-docker-prod.md#docker-set-heap-size).
     ::::
 
 

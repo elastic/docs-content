@@ -8,7 +8,7 @@ navigation_title: "Set up basic security"
 When you start {{es}} for the first time, passwords are generated for the `elastic` user and TLS is automatically configured for you. If you configure security manually *before* starting your {{es}} nodes, the auto-configuration process will respect your security configuration. You can adjust your TLS configuration at any time, such as [updating node certificates](../../../deploy-manage/security/updating-certificates.md).
 
 ::::{important}
-If your cluster has multiple nodes, then you must configure TLS between nodes. [Production mode](bootstrap-checks.md#dev-vs-prod-mode) clusters will not start if you do not enable TLS.
+If your cluster has multiple nodes, then you must configure TLS between nodes. [Production mode](/deploy-manage/deploy/self-managed/bootstrap-checks.md#dev-vs-prod-mode) clusters will not start if you do not enable TLS.
 ::::
 
 
