@@ -11,14 +11,10 @@ applies_to:
 
 # Data set quality monitoring [observability-monitor-datasets]
 
-::::{Note}
-
-**Required Privileges**
-
+::::{Note}: Required roles and privileges
 With the `viewer` role, you can view the Data Sets Quality summary.
 
 You need the `monitor` [index privilege](../../deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-indices) for the `logs-*-*` index to view the Active Data Sets and Estimated Data summaries on the Data set quality page.
-
 ::::
 
 The **Data Set Quality** page provides an overview of your log, metric, trace, and synthetic data sets. Use this information to get an idea of your overall data set quality and find data sets that contain incorrectly parsed documents.
@@ -41,9 +37,7 @@ The Data Set Quality page provides several ways to help you investigate issues. 
 
 ### Failure store
 
-::::{Note}
-
-**Required Privileges**
+::::{Note}: Required privileges
 
 You need the `read_failure_store` or `all` [index privilege](../../deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-indices) to access failure store.
 
