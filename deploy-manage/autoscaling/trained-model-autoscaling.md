@@ -86,7 +86,9 @@ The used resources for trained model deployments depend on three factors:
 * the use case you optimize the model deployment for (ingest or search)
 * whether model autoscaling is enabled with adaptive allocations/resources to have dynamic resources, or disabled for static resources
 
-If you use a self-managed cluster or ECK, vCPUs level ranges are derived from the `total_ml_processors` and `max_single_ml_node_processors` values. Use the [get {{ml}} info API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-info) to check these values. The following tables show you the number of allocations, threads, and vCPUs available in ECE, ECK, and ECH when adaptive resources are enabled or disabled.
+If you use a self-managed cluster or ECK, vCPUs level ranges are derived from the `total_ml_processors` and `max_single_ml_node_processors` values. Use the [get {{ml}} info API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-info) to check these values. 
+
+The following tables show you the number of allocations, threads, and vCPUs available in ECE and ECH when adaptive resources are enabled or disabled.
 
 ::::{note}
 On {{serverless-short}}, adaptive allocations are automatically enabled for all project types. However, the "Adaptive resources" control is not displayed in {{kib}} for Observability and Security projects.
