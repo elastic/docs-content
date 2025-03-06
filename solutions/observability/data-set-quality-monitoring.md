@@ -4,8 +4,8 @@ mapped_urls:
   - https://www.elastic.co/guide/en/serverless/current/observability-monitor-datasets.html
 navigation_title: "Data set quality"
 applies_to:
-  stack: all
-  serverless: all
+  stack: beta
+  serverless: beta
 ---
 
 # Data set quality monitoring [observability-monitor-datasets]
