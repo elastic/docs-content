@@ -34,3 +34,21 @@ The documentation team is working to combine content pulled from the following p
 
 % from the post-install instructions
 % * [Set up traffic filters](../../security/traffic-filtering.md) to restrict traffic to your deployment to only trusted IP addresses or VPCs.
+
+
+TBD: where to put this:
+
+## Other actions
+
+From the deployment page you can also:
+
+* Access to different feature sections like 
+* 
+
+**Kibana** page you can also:
+
+* Terminate your Kibana instance, which stops it. The information is stored in your Elasticsearch cluster, so stopping and restarting should not risk your Kibana information.
+* Restart it after stopping.
+* Upgrade your Kibana instance version if it is out of sync with your Elasticsearch cluster.
+* Delete to fully remove the instance, wipe it from the disk, and stop charges.
+
