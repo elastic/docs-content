@@ -51,7 +51,7 @@ To use the UI to add a lightweight monitor:
 
     :::{image} ../../../images/serverless-private-locations-monitor-locations.png
     :alt: Screenshot of Monitor locations options including a {private-location}
-    :screenshot:
+    :class: screenshot
     :::
 
     :::::
@@ -63,7 +63,7 @@ To use the UI to add a lightweight monitor:
 
     :::{image} ../../../images/observability-synthetics-get-started-ui-lightweight.png
     :alt: Synthetics Create monitor UI
-    :screenshot:
+    :class: screenshot
     :::
 
 
@@ -92,7 +92,7 @@ To use the UI to add a browser monitor:
 
     :::{image} ../../../images/observability-synthetics-ui-inline-script.png
     :alt: Configure a synthetic monitor using an inline script in Elastic {{fleet}}
-    :screenshot:
+    :class: screenshot
     :::
 
     ::::{note}

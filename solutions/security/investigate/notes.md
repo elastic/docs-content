@@ -22,7 +22,7 @@ After notes are created, the **Add note** icon displays a notification dot. In t
 
 :::{image} ../../../images/security-new-note-alert-event.png
 :alt: New note added to an alert
-:screenshot:
+:class: screenshot
 :::
 
 
@@ -39,7 +39,7 @@ After notes are created, the **Notes** Timeline tab displays the total number of
 
 :::{image} ../../../images/security-new-note-timeline-tab.png
 :alt: New note added to a Timeline
-:screenshot:
+:class: screenshot
 :::
 
 
@@ -56,5 +56,5 @@ Use the **Notes** page to view and interact with all existing notes. To access t
 
 :::{image} ../../../images/security-notes-management-page.png
 :alt: Notes management page
-:screenshot:
+:class: screenshot
 :::

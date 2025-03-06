@@ -73,7 +73,7 @@ You can install only a single {{agent}} per host, which means you cannot run {{f
 
     :::{image} ../../../images/observability-add-fleet-server.png
     :alt: In-product instructions for adding a {{fleet-server}}
-    :screenshot:
+    :class: screenshot
     :::
 
 
@@ -116,14 +116,14 @@ If you don’t have a {{fleet}} setup already in place, the easiest way to get s
 
     :::{image} ../../../images/observability-kibana-fleet-integrations-apm.png
     :alt: {{fleet}} showing APM integration
-    :screenshot:
+    :class: screenshot
     :::
 
 3. Click **Add Elastic APM**.
 
     :::{image} ../../../images/observability-kibana-fleet-integrations-apm-overview.png
     :alt: {{fleet}} showing APM integration overview
-    :screenshot:
+    :class: screenshot
     :::
 
 4. On the **Add Elastic APM integration** page, define the host and port where APM Server will listen. Make a note of this value—​you’ll need it later.
@@ -138,7 +138,7 @@ If you don’t have a {{fleet}} setup already in place, the easiest way to get s
 
     :::{image} ../../../images/observability-apm-agent-policy-1.png
     :alt: {{fleet}} showing apm policy
-    :screenshot:
+    :class: screenshot
     :::
 
     Any {{agent}}s assigned to this policy will collect APM data from your instrumented services.
@@ -812,5 +812,5 @@ Back in {{kib}}, under {{observability}}, select APM. You should see application
 
 :::{image} ../../../images/observability-kibana-apm-sample-data.png
 :alt: Applications UI with data
-:screenshot:
+:class: screenshot
 :::

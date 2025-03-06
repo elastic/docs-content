@@ -23,7 +23,7 @@ To get started, go to the **Tags** management page using the navigation menu or 
 
 :::{image} ../../images/kibana-tag-management-section.png
 :alt: Tags management
-:screenshot:
+:class: screenshot
 :::
 
 
@@ -62,7 +62,7 @@ To assign and remove tags, you must have `write` permission on the objects to wh
 
    :::{image} ../../images/kibana-manage-assignments-flyout.png
    :alt: Assign flyout
-   :screenshot:
+   :class: screenshot
    :width: 50%
    :::
 

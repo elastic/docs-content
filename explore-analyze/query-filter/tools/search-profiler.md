@@ -23,7 +23,7 @@ The following example shows the results of profiling the `match_all` query. If y
 
 :::{image} ../../../images/kibana-overview.png
 :alt: {{searchprofiler}} visualization
-:screenshot:
+:class: screenshot
 :::
 
 ::::{note}
@@ -47,7 +47,7 @@ In the following example, the query is executed against the indices `.security-7
 
 :::{image} ../../../images/kibana-filter.png
 :alt: Filtering by index and type
-:screenshot:
+:class: screenshot
 :::
 
 
@@ -109,7 +109,7 @@ To understand how the query trees are displayed inside the **{{searchprofiler}}*
 
     :::{image} ../../../images/kibana-gs8.png
     :alt: Profiling the more complicated query
-    :screenshot:
+    :class: screenshot
     :::
 
     * The top `BooleanQuery` component corresponds to the bool in the query.
@@ -126,7 +126,7 @@ To understand how the query trees are displayed inside the **{{searchprofiler}}*
 
     :::{image} ../../../images/kibana-gs10.png
     :alt: Drilling into the first shard's details
-    :screenshot:
+    :class: screenshot
     :::
 
     For more information about how the **{{searchprofiler}}** works, how timings are calculated, and how to interpret various results, see [Profiling queries](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-profile.html#profiling-queries).
@@ -285,6 +285,6 @@ Your output should look similar to this:
 
 :::{image} ../../../images/kibana-search-profiler-json.png
 :alt: Rendering pre-captured profiler JSON
-:screenshot:
+:class: screenshot
 :::
 

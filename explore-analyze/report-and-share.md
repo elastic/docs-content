@@ -87,7 +87,7 @@ In the following dashboard, the shareable container is highlighted:
 
 :::{image} ../images/kibana-shareable-container.png
 :alt: Shareable Container
-:screenshot:
+:class: screenshot
 :::
 
 1. Open the saved Discover session, dashboard, visualization, or workpad you want to share.

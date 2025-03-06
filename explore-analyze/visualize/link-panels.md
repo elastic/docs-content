@@ -12,7 +12,7 @@ You can use **Links** panels to create links to other dashboards or external web
 
 :::{image} ../../images/kibana-dashboard_links_panel.png
 :alt: A screenshot displaying the new links panel
-:screenshot:
+:class: screenshot
 :::
 
 * [Add a links panel](#add-links-panel)
@@ -56,7 +56,7 @@ To edit links panels:
 
    :::{image} ../../images/kibana-edit-links-panel.png
    :alt: A screenshot displaying the Edit icon next to the link
-   :screenshot:
+   :class: screenshot
    :::
 
 3. Edit the link as needed and then click **Update link**.

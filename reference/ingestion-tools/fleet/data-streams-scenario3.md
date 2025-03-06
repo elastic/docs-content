@@ -29,7 +29,7 @@ The **Data Streams** view in {{kib}} shows you the data streams, index templates
 
     :::{image} images/data-stream-info.png
     :alt: Data streams info
-    :screenshot:
+    :class: screenshot
     :::
 
 
@@ -65,7 +65,7 @@ metrics-system.network-production@custom
 
     :::{image} images/create-component-template.png
     :alt: Create component template
-    :screenshot:
+    :class: screenshot
     :::
 
 
@@ -93,7 +93,7 @@ Please note the following: * When duplicating the index template, do not change 
 
 :::{image} images/create-index-template.png
 :alt: Create index template
-:screenshot:
+:class: screenshot
 :::
 
 

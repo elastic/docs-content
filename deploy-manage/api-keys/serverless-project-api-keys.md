@@ -16,7 +16,7 @@ You can manage your keys in **{{project-settings}} → {{manage-app}} → {{api-
 
 :::{image} ../../images/serverless-api-key-management.png
 :alt: API keys UI
-:screenshot:
+:class: screenshot
 :::
 
 
@@ -26,7 +26,7 @@ In **{{api-keys-app}}**, click **Create API key**:
 
 :::{image} ../../images/serverless-create-personal-api-key.png
 :alt: Create API key UI
-:screenshot:
+:class: screenshot
 :width: 50%
 :::
 

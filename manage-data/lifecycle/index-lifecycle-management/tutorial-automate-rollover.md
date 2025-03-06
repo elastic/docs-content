@@ -47,7 +47,7 @@ You can create the policy through {{kib}} or with the [create or update policy](
 
 :::{image} ../../../images/elasticsearch-reference-create-policy.png
 :alt: Create policy page
-:screenshot:
+:class: screenshot
 :::
 
 ::::{dropdown} API example

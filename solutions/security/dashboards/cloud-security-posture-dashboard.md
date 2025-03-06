@@ -14,7 +14,7 @@ The Cloud Security Posture dashboard summarizes your cloud infrastructure’s ov
 
 :::{image} ../../../images/security-cloud-sec-dashboard.png
 :alt: The cloud Security dashboard
-:screenshot:
+:class: screenshot
 :::
 
 The Cloud Security Posture dashboard shows:
@@ -42,7 +42,7 @@ Below the summary section, each row shows the CSP for a benchmark that applies t
 
 :::{image} ../../../images/security-cloud-sec-dashboard-individual-row.png
 :alt: A row representing a single cluster in the Cloud Security Posture dashboard
-:screenshot:
+:class: screenshot
 :::
 
 

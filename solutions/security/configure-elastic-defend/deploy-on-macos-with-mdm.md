@@ -38,7 +38,7 @@ In Jamf, create a configuration profile for {{elastic-endpoint}}. Follow these s
 
 :::{image} ../../../images/security-system-extension-jamf.png
 :alt: system extension jamf
-:screenshot:
+:class: screenshot
 :::
 
 
@@ -69,7 +69,7 @@ In Jamf, create a configuration profile for {{elastic-endpoint}}. Follow these s
 
 :::{image} ../../../images/security-content-filtering-jamf.png
 :alt: content filtering jamf
-:screenshot:
+:class: screenshot
 :::
 
 
@@ -92,7 +92,7 @@ In Jamf, create a configuration profile for {{elastic-endpoint}}. Follow these s
 
 :::{image} ../../../images/security-notifications-jamf.png
 :alt: notifications jamf
-:screenshot:
+:class: screenshot
 :::
 
 
@@ -139,7 +139,7 @@ In Jamf, create a configuration profile for {{elastic-endpoint}}. Follow these s
 
 :::{image} ../../../images/security-fda-jamf.png
 :alt: fda jamf
-:screenshot:
+:class: screenshot
 :::
 
 After you complete these steps, generate the mobile configuration profile and install it onto the macOS machines. Once the profile is installed, {{elastic-defend}} can be deployed without the need for user interaction.

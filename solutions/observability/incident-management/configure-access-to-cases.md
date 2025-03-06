@@ -16,7 +16,7 @@ For more details, refer to [feature access based on user privileges](../../../de
 
 :::{image} ../../../images/observability-cases-privileges.png
 :alt: cases privileges
-:screenshot:
+:class: screenshot
 :::
 
 Below are the minimum required privileges for some common use cases.

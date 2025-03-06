@@ -68,7 +68,7 @@ Follow these steps to collect logs and metrics using the EDOT Collector:
 
     :::{image} ../../../images/observability-quickstart-monitor-hosts-otel-entry-point.png
     :alt: Host monitoring entry point
-    :screenshot:
+    :class: screenshot
     :::
 
 3. Select the appropriate platform.
@@ -98,7 +98,7 @@ Logs are collected from setup onward, so you won’t see logs that occurred befo
 
     :::{image} ../../../images/serverless-quickstart-monitor-hosts-otel-entry-point.png
     :alt: Host monitoring entry point
-    :screenshot:
+    :class: screenshot
     :::
 
 5. Select the appropriate platform, and complete the following:

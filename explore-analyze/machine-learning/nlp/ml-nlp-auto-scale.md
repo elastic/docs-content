@@ -49,7 +49,7 @@ Refer to the tables in the [Model deployment resource matrix](#auto-scaling-matr
 
 :::{image} ../../../images/machine-learning-ml-nlp-deployment-id-elser-v2.png
 :alt: ELSER deployment with adaptive resources enabled.
-:screenshot:
+:class: screenshot
 :::
 
 ## Model deployment resource matrix [auto-scaling-matrix]

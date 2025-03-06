@@ -24,7 +24,7 @@ Create a custom threshold rule to trigger an alert when an {{obs-serverless}} da
 
 :::{image} ../../../images/serverless-custom-threshold-rule.png
 :alt: Rule details (custom threshold)
-:screenshot:
+:class: screenshot
 :::
 
 
@@ -181,7 +181,7 @@ After you select a connector, you must set the action frequency. You can choose 
 
 :::{image} ../../../images/serverless-custom-threshold-run-when.png
 :alt: Configure when a rule is triggered
-:screenshot:
+:class: screenshot
 :::
 
 You can also further refine the conditions under which actions run by specifying that actions only run when they match a KQL query or when an alert occurs within a specific time frame:
@@ -191,7 +191,7 @@ You can also further refine the conditions under which actions run by specifying
 
 :::{image} ../../../images/serverless-logs-threshold-conditional-alert.png
 :alt: Configure a conditional alert
-:screenshot:
+:class: screenshot
 :::
 
 :::::
@@ -202,7 +202,7 @@ Use the default notification message or customize it. You can add more context t
 
 :::{image} ../../../images/serverless-action-variables-popup.png
 :alt: Action variables list
-:screenshot:
+:class: screenshot
 :::
 
 The following variables are specific to this rule type. You can also specify [variables common to all rules](../../../explore-analyze/alerts-cases/alerts/rule-action-variables.md).

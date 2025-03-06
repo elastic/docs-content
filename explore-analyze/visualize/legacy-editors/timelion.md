@@ -221,7 +221,7 @@ Move the legend to the north west position  with two columns, then click **Updat
 
 :::{image} ../../../images/kibana-timelion-customize04.png
 :alt: Final time series visualization
-:screenshot:
+:class: screenshot
 :::
 
  
@@ -344,7 +344,7 @@ Customize and format the visualization using the following functions, then click
 
 :::{image} ../../../images/kibana-timelion-math05.png
 :alt: Final visualization that displays inbound and outbound network traffic
-:screenshot:
+:class: screenshot
 :::
 
  
@@ -529,7 +529,7 @@ Customize and format the visualization using the following functions, then click
 
 :::{image} ../../../images/kibana-timelion-conditional04.png
 :alt: Final visualization that displays outliers and patterns over time
-:screenshot:
+:class: screenshot
 :::
 
  

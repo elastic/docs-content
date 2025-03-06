@@ -38,7 +38,7 @@ For example, to filter out results from a housekeeping process, named `maintenan
 
     :::{image} ../../../images/security-filter-add-item.png
     :alt: filter add item
-    :screenshot:
+    :class: screenshot
     :::
 
 8. Click **Add** and then **Save**.
@@ -58,7 +58,7 @@ For example, to filter out results from a housekeeping process, named `maintenan
 
     :::{image} ../../../images/security-rule-scope.png
     :alt: rule scope
-    :screenshot:
+    :class: screenshot
     :::
 
 5. Select:
@@ -103,7 +103,7 @@ Running the cloned job can take some time. Only run the job after you have compl
 
     :::{image} ../../../images/security-cloned-job-details.png
     :alt: cloned job details
-    :screenshot:
+    :class: screenshot
     :::
 
 9. Click **Next** and check the job validates without errors. You can ignore warnings about multiple influencers.
@@ -113,7 +113,7 @@ Running the cloned job can take some time. Only run the job after you have compl
 
     :::{image} ../../../images/security-start-job-window.png
     :alt: start job window
-    :screenshot:
+    :class: screenshot
     :::
 
 11. Select the point of time from which the job will analyze anomalies.
@@ -138,7 +138,7 @@ Depending on your anomaly detection results, you may want to set a minimum event
 
     :::{image} ../../../images/security-ml-rule-threshold.png
     :alt: ml rule threshold
-    :screenshot:
+    :class: screenshot
     :::
 
 5. Select *Add numeric conditions for when the rule applies* and the following `when` statement:

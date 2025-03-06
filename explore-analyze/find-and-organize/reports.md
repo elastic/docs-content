@@ -16,7 +16,7 @@ To view and manage reports, go to **Management** > **Reporting**.
 
 :::{image} ../../images/serverless-reports-management.png
 :alt: {{reports-app}}
-:screenshot:
+:class: screenshot
 :::
 
 You can download or view details about the report by clicking the icons in the actions menu.

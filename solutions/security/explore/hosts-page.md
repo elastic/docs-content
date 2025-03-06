@@ -10,7 +10,7 @@ The Hosts page provides a comprehensive overview of all hosts and host-related s
 
 :::{image} ../../../images/security-hosts-ov-pg.png
 :alt: Hosts page
-:screenshot:
+:class: screenshot
 :::
 
 The Hosts page has the following sections:
@@ -41,7 +41,7 @@ The tables within the **Events** and **Sessions** tabs include inline actions an
 
 :::{image} ../../../images/security-events-table.png
 :alt: Events table
-:screenshot:
+:class: screenshot
 :::
 
 
@@ -58,7 +58,7 @@ The host details page includes the following sections:
 
 :::{image} ../../../images/security-hosts-detail-pg.png
 :alt: Host's details page
-:screenshot:
+:class: screenshot
 :::
 
 
@@ -82,7 +82,7 @@ The host details flyout includes the following sections:
 
 :::{image} ../../../images/security-host-details-flyout.png
 :alt: Host details flyout
-:screenshot:
+:class: screenshot
 :::
 
 
@@ -109,7 +109,7 @@ If more than 10 alerts contributed to the risk scoring calculation, the remainin
 
 :::{image} ../../../images/security-host-risk-inputs.png
 :alt: Host risk inputs
-:screenshot:
+:class: screenshot
 :::
 
 
@@ -119,7 +119,7 @@ The **Asset Criticality** section displays the selected host’s [asset critical
 
 :::{image} ../../../images/security-host-asset-criticality.png
 :alt: Asset criticality
-:screenshot:
+:class: screenshot
 :::
 
 Click **Assign** to assign a criticality level to the selected host, or **Change** to change the currently assigned criticality level.
@@ -140,5 +140,5 @@ This section displays details such as the host ID, when the host was first and l
 
 :::{image} ../../../images/security-host-observed-data.png
 :alt: Host observed data
-:screenshot:
+:class: screenshot
 :::

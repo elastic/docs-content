@@ -19,7 +19,7 @@ When you create an {{es}} query rule, your choice of query type affects the info
 
 :::{image} ../../../images/kibana-rule-types-es-query-conditions.png
 :alt: Define the condition to detect
-:screenshot:
+:class: screenshot
 :::
 
 1. Define your query
@@ -72,14 +72,14 @@ If you use query DSL, KQL, or Lucene, the query runs against the selected indice
 
 :::{image} ../../../images/kibana-rule-types-es-query-valid.png
 :alt: Test {{es}} query returns number of matches when valid
-:screenshot:
+:class: screenshot
 :::
 
 If you use an ES|QL query, a table is displayed. For example:
 
 :::{image} ../../../images/kibana-rule-types-esql-query-valid.png
 :alt: Test ES|QL query returns a table when valid
-:screenshot:
+:class: screenshot
 :::
 
 If the query is not valid, an error occurs.
@@ -98,14 +98,14 @@ After you select a connector, you must set the action frequency. You can choose 
 
 :::{image} ../../../images/kibana-es-query-rule-action-summary.png
 :alt: UI for defining alert summary action in an {{es}} query rule
-:screenshot:
+:class: screenshot
 :::
 
 Alternatively, you can set the action frequency such that actions run for each alert. Choose how often the action runs (at each check interval, only when the alert status changes, or at a custom action interval). You must also choose an action group, which indicates whether the action runs when the query is matched or when the alert is recovered. Each connector supports a specific set of actions for each action group. For example:
 
 :::{image} ../../../images/kibana-es-query-rule-action-query-matched.png
 :alt: UI for defining a recovery action
-:screenshot:
+:class: screenshot
 :::
 
 You can further refine the conditions under which actions run by specifying that actions only run when they match a KQL query or when an alert occurs within a specific time frame.
@@ -127,7 +127,7 @@ Rules use rule action variables and Mustache templates to pass contextual detail
 
 :::{image} ../../../images/kibana-es-query-rule-action-variables.png
 :alt: Passing rule values to an action
-:screenshot:
+:class: screenshot
 :::
 
 The following variables are specific to the {{es}} query rule:

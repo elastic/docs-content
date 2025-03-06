@@ -23,7 +23,7 @@ All of these contexts contain the same information and features. The following i
 
 :::{image} ../../../images/security-response-actions-history-page.png
 :alt: Response actions history page UI
-:screenshot:
+:class: screenshot
 :::
 
 To filter and expand the information in the response actions history:

@@ -19,7 +19,7 @@ To view the key metrics that indicate the overall health of {{kib}} itself, clic
 
 :::{image} ../../../images/kibana-monitoring-kibana-overview.png
 :alt: Kibana Overview
-:screenshot:
+:class: screenshot
 :::
 
 1. To view {{kib}} instance metrics, click **Instances**.

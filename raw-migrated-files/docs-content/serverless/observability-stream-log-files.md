@@ -11,12 +11,12 @@ The **Admin** role or higher is required to onboard log data. To learn more, ref
 <div style="display:none">
 :::{image} ../../../images/serverless-logs-stream-logs-api-key-beats.png
 :alt: logs stream logs api key beats
-:screenshot:
+:class: screenshot
 :::
 
 :::{image} ../../../images/serverless-log-copy-es-endpoint.png
 :alt: Copy a project's Elasticsearch endpoint
-:screenshot:
+:class: screenshot
 :::
 
 </div>
@@ -257,7 +257,7 @@ You need to set the values for the following fields:
 
     :::{image} ../../../images/serverless-log-copy-es-endpoint.png
     :alt: Copy a project's Elasticsearch endpoint
-    :screenshot:
+    :class: screenshot
     :::
 
     :::::
@@ -297,7 +297,7 @@ You need to set the values for the following fields:
 
         :::{image} ../../../images/serverless-logs-stream-logs-api-key-beats.png
         :alt: logs stream logs api key beats
-        :screenshot:
+        :class: screenshot
         :::
 
 

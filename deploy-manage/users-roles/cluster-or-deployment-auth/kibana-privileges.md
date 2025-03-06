@@ -33,7 +33,7 @@ From the role management screen:
 
 :::{image} ../../../images/kibana-assign-base-privilege.png
 :alt: Assign base privilege
-:screenshot:
+:class: screenshot
 :::
 
 Using the [role APIs](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-roles):
@@ -78,7 +78,7 @@ From the role management screen:
 
 :::{image} ../../../images/kibana-assign-subfeature-privilege.png
 :alt: Assign feature privilege
-:screenshot:
+:class: screenshot
 :::
 
 Using the [role APIs](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-roles):

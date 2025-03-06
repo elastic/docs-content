@@ -70,7 +70,7 @@ In {{kib}}, the {{ml-features}} must be visible in your [space](../../deploy-man
 
 :::{image} ../../images/machine-learning-spaces.jpg
 :alt: Manage spaces in {{kib}}
-:screenshot:
+:class: screenshot
 :::
 
 In addition to index privileges, source {{data-sources}} must also exist in the same space as your {{ml}} jobs. You can configure these under **{{data-sources-caps}}**. To open **{{data-sources-caps}}**, find **{{stack-manage-app}}** > **{{kib}}** in the main menu, or use the [global search field](../find-and-organize/find-apps-and-objects.md).
@@ -79,7 +79,7 @@ Each {{ml}} job and trained model can be assigned to all, one, or multiple space
 
 :::{image} ../../images/machine-learning-assign-job-spaces.jpg
 :alt: Assign machine learning jobs to spaces
-:screenshot:
+:class: screenshot
 :::
 
 #### {{kib}} user [kib-security-privileges]

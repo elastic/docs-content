@@ -36,7 +36,7 @@ Reducing the replicas of an index can potentially reduce search throughput and d
 
     :::{image} ../../images/elasticsearch-reference-reduce_replicas.png
     :alt: Reducing replicas
-    :screenshot:
+    :class: screenshot
     :::
 
 6. Continue this process until the cluster is healthy again.

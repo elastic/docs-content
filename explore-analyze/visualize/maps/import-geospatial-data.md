@@ -98,7 +98,7 @@ When feature editing is open, a feature editing toolbox is displayed on the left
 
 :::{image} ../../../images/kibana-drawing_layer.png
 :alt: drawing layer
-:screenshot:
+:class: screenshot
 :::
 
 To draw features:

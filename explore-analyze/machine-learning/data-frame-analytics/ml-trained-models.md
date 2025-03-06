@@ -24,21 +24,21 @@ Alternatively, you can use APIs like [get trained models](https://www.elastic.co
 
 :::{image} ../../../images/machine-learning-ml-dfa-trained-models-ui.png
 :alt: The trained models UI in {{kib}}
-:screenshot:
+:class: screenshot
 :::
 
 3. Create an {{infer}} pipeline to be able to use the model against new data through the pipeline. Add a name and a description or use the default values.
 
 :::{image} ../../../images/machine-learning-ml-dfa-inference-pipeline.png
 :alt: Creating an inference pipeline
-:screenshot:
+:class: screenshot
 :::
 
 4. Configure the pipeline processors or use the default settings.
 
 :::{image} ../../../images/machine-learning-ml-dfa-inference-processor.png
 :alt: Configuring an inference processor
-:screenshot:
+:class: screenshot
 :::
 
 5. Configure to handle ingest failures or use the default settings.

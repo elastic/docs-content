@@ -101,7 +101,7 @@ To add a {{fleet-server}}:
 
         :::{image} images/add-fleet-server.png
         :alt: In-product instructions for adding a {{fleet-server}} in quick start mode
-        :screenshot:
+        :class: screenshot
         :::
 
     * Use **Advanced** if you want to either:
@@ -120,7 +120,7 @@ To add a {{fleet-server}}:
 
             :::{image} images/add-fleet-server-advanced.png
             :alt: In-product instructions for adding a {{fleet-server}} in advanced mode
-            :screenshot:
+            :class: screenshot
             :::
 
 4. Step through the in-product instructions to configure and install {{fleet-server}}.

@@ -41,7 +41,7 @@ Create event filters from the **Hosts** page or the **Event filters** page.
 
     :::{image} ../../../images/security-event-filter.png
     :alt: Add event filter flyout
-    :screenshot:
+    :class: screenshot
     :::
 
 2. Fill in these fields in the **Details** section:
@@ -94,7 +94,7 @@ The **Event filters** page displays all the event filters that have been added t
 
 :::{image} ../../../images/security-event-filters-list.png
 :alt: event filters list
-:screenshot:
+:class: screenshot
 :::
 
 
