@@ -3,9 +3,9 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/logs-app-fields.html
 ---
 
-# Logs Explorer fields [logs-app-fields]
+# Discover logs fields [logs-app-fields]
 
-This section lists the required fields the **Logs Explorer** uses to display data. Please note that some of the fields listed are not [ECS fields](asciidocalypse://docs/ecs/docs/reference/index.md#_what_is_ecs).
+This section lists the required fields Discover uses to display log data. Please note that some of the fields listed are not [ECS fields](asciidocalypse://docs/ecs/docs/reference/index.md#_what_is_ecs).
 
 `@timestamp`
 :   Date/time when the event originated.

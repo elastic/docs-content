@@ -13,7 +13,7 @@ Beat modules (for example, [{{filebeat}} modules](asciidocalypse://docs/beats/do
 
 This reference covers:
 
-* [Logs Explorer fields](/reference/observability/fields-and-object-schemas/logs-app-fields.md)
+* [Logs Discover fields](/reference/observability/fields-and-object-schemas/logs-app-fields.md)
 * [{{infrastructure-app}} fields](/reference/observability/fields-and-object-schemas/metrics-app-fields.md)
 
 
