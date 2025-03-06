@@ -18,7 +18,7 @@ We have collected the most common known problems and listed them here. If your p
 
 Have a question? Read our [FAQ](frequently-asked-questions.md), or contact us in the [discuss forum](https://discuss.elastic.co/). Your feedback is valuable to us.
 
-Running {{agent}} standalone? Also refer to [Debug standalone {{agent}}s](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/debug-standalone-agents.md).
+Running {{agent}} standalone? Also refer to [Debug standalone {{agent}}s](/reference/ingestion-tools/fleet/debug-standalone-agents.md).
 
 
 ## Troubleshooting contents [troubleshooting-contents]
@@ -64,7 +64,7 @@ Find troubleshooting information for {{fleet}}, {{fleet-server}}, and {{agent}} 
 
 In {{fleet}}, if you delete an {{agent}} policy that is associated with one or more inactive enrolled agents, when the agent returns back to a `Healthy` or `Offline` state, it cannot be unenrolled. Attempting to unenroll the agent results in an `Error unenrolling agent` message, and the unenrollment fails.
 
-To resolve this problem, you can use the [{{kib}} {{fleet}} APIs](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/fleet-api-docs.md) to force unenroll the agent.
+To resolve this problem, you can use the [{{kib}} {{fleet}} APIs](/reference/ingestion-tools/fleet/fleet-api-docs.md) to force unenroll the agent.
 
 To uninstall a single {{agent}}:
 
@@ -100,7 +100,7 @@ For details about the error and how to resolve it, refer to the section `Runtime
 
 ## {{agent}}s hosted on {{ecloud}} are stuck in `Updating` or `Offline` [agents-in-cloud-stuck-at-updating]
 
-In {{ecloud}}, after [upgrading](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/upgrade-integration.md) {{fleet-server}} and its integration policies, agents enrolled in the {{ecloud}} agent policy may experience issues updating. To resolve this problem:
+In {{ecloud}}, after [upgrading](/reference/ingestion-tools/fleet/upgrade-integration.md) {{fleet-server}} and its integration policies, agents enrolled in the {{ecloud}} agent policy may experience issues updating. To resolve this problem:
 
 1. In a terminal window, run the following `cURL` request, providing your {{kib}} superuser credentials to reset the {{ecloud}} agent policy.
 
@@ -180,7 +180,7 @@ To enable {{fleet}} and set up {{fleet-server}} on a self-managed cluster:
 
     1. Copy the Elastic user name to the {{kib}} configuration file.
     2. Restart {{kib}}.
-    3. Follow the documented steps for setting up a self-managed {{fleet-server}}. For more information, refer to [What is {{fleet-server}}?](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/fleet-server.md).
+    3. Follow the documented steps for setting up a self-managed {{fleet-server}}. For more information, refer to [What is {{fleet-server}}?](/reference/ingestion-tools/fleet/fleet-server.md).
 
 
 
@@ -199,7 +199,7 @@ In air-gapped environments, you may encounter the following error if you’re us
 {"type":"log","@timestamp":"2022-03-02T09:58:36-05:00","tags":["error","plugins","fleet"],"pid":58716,"message":"Error connecting to package registry: request to https://customer.server.name:8443/categories?experimental=true&include_policy_templates=true&kibana.version=7.17.0 failed, reason: self signed certificate in certificate chain"}
 ```
 
-To fix this problem, add your CA certificate file path to the {{kib}} startup file by defining the `NODE_EXTRA_CA_CERTS` environment variable. More information about this in [TLS configuration of the {{package-registry}}](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/air-gapped.md#air-gapped-tls) section.
+To fix this problem, add your CA certificate file path to the {{kib}} startup file by defining the `NODE_EXTRA_CA_CERTS` environment variable. More information about this in [TLS configuration of the {{package-registry}}](/reference/ingestion-tools/fleet/air-gapped.md#air-gapped-tls) section.
 
 
 ## {{fleet}} in {{kib}} crashes [fleet-app-crashes]
@@ -232,7 +232,7 @@ Traffic between {{agent}}s and {{fleet-server}} over HTTPS will be encrypted; yo
 
 Allowing {{fleet-server}} to generate self-signed certificates is useful to get things running for development, but not recommended in a production environment.
 
-For more information, refer to [Configure SSL/TLS for self-managed {{fleet-server}}s](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/secure-connections.md).
+For more information, refer to [Configure SSL/TLS for self-managed {{fleet-server}}s](/reference/ingestion-tools/fleet/secure-connections.md).
 
 
 ## {{agent}} enrollment fails on the host with `x509: cannot validate certificate for x.x.x.x because it doesn't contain any IP SANs` message [es-enrollment-certs]
@@ -298,7 +298,7 @@ When creating an issue or sending a support forum communication, this section ca
     ```
 
     ::::{note}
-    Both of the above commands are accessible via Windows or macOS with their OS-specific slight variation in how you call them. If needed, please refer to [*Install {{agent}}s*](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/install-elastic-agents.md) for examples of how to adjust them.
+    Both of the above commands are accessible via Windows or macOS with their OS-specific slight variation in how you call them. If needed, please refer to [*Install {{agent}}s*](/reference/ingestion-tools/fleet/install-elastic-agents.md) for examples of how to adjust them.
     ::::
 
 
@@ -431,7 +431,7 @@ For information on where to find agent logs, refer to our [FAQ](frequently-asked
 
 ## {{agent}} is stuck in status `Updating` [fleet-agent-stuck-on-updating]
 
-Beginning in {{stack}} version 8.11, a stuck {{agent}} upgrade should be detected automatically, and you can [restart the upgrade](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/upgrade-elastic-agent.md#restart-upgrade-single) from {{fleet}}.
+Beginning in {{stack}} version 8.11, a stuck {{agent}} upgrade should be detected automatically, and you can [restart the upgrade](/reference/ingestion-tools/fleet/upgrade-elastic-agent.md#restart-upgrade-single) from {{fleet}}.
 
 
 ## {{fleet-server}} is running and healthy with data, but other Agents cannot use it to connect to {{es}} [secondary-agent-not-connecting]
@@ -469,7 +469,7 @@ If you’re running {{agent}} in the foreground (and not as a service) on Linux 
 If you’re using the {{elastic-defend}} integration, make sure you’re running {{agent}} under the SYSTEM account.
 
 ::::{tip}
-If you install {{agent}} as a service as described in [*Install {{agent}}s*](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/install-elastic-agents.md), {{agent}} runs under the SYSTEM account by default.
+If you install {{agent}} as a service as described in [*Install {{agent}}s*](/reference/ingestion-tools/fleet/install-elastic-agents.md), {{agent}} runs under the SYSTEM account by default.
 ::::
 
 
@@ -489,11 +489,11 @@ To run {{agent}} under the SYSTEM account, you can do the following:
 
 If you try to upgrade an integration policy that is several versions old, there may be substantial conflicts or configuration issues. Rather than trying to fix these problems, it might be faster to create a new policy, test it, and roll out the integration upgrade to additional hosts.
 
-After [upgrading the integration](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/upgrade-integration.md):
+After [upgrading the integration](/reference/ingestion-tools/fleet/upgrade-integration.md):
 
-1. [Create a new policy](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/agent-policy.md#create-a-policy).
-2. [Add the integration to the policy](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/agent-policy.md#add-integration). The newer version is automatically used.
-3. [Apply the policy](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/agent-policy.md#apply-a-policy) to an {{agent}}.
+1. [Create a new policy](/reference/ingestion-tools/fleet/agent-policy.md#create-a-policy).
+2. [Add the integration to the policy](/reference/ingestion-tools/fleet/agent-policy.md#add-integration). The newer version is automatically used.
+3. [Apply the policy](/reference/ingestion-tools/fleet/agent-policy.md#apply-a-policy) to an {{agent}}.
 
     ::::{tip}
     In larger deployments, you should test integration upgrades on a sample {{agent}} before rolling out a larger upgrade initiative. Only after a small trial is deemed successful should the updated policy be rolled out all hosts.
@@ -507,7 +507,7 @@ After [upgrading the integration](asciidocalypse://docs/docs-content/docs/refere
     4. Repeat this process for each policy with the out-of-date integration.
 
         ::::{note}
-        In some instances, for example, when there are hundreds or thousands of different {{agent}}s and policies that need to be updated, this upgrade path is not feasible. In this case, update one policy and use the [Copy a policy](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/agent-policy.md#copy-policy) action to apply the updated policy versions to additional policies. This method’s downside is losing the granularity of assessing the individual Integration version changes individually across policies.
+        In some instances, for example, when there are hundreds or thousands of different {{agent}}s and policies that need to be updated, this upgrade path is not feasible. In this case, update one policy and use the [Copy a policy](/reference/ingestion-tools/fleet/agent-policy.md#copy-policy) action to apply the updated policy versions to additional policies. This method’s downside is losing the granularity of assessing the individual Integration version changes individually across policies.
         ::::
 
 
@@ -713,7 +713,7 @@ To resolve the problem, allocate additional memory to the agent and then restart
 
 ## Error when running {{agent}} commands with `sudo` [agent-sudo-error]
 
-On Linux systems, when you install {{agent}} [without administrative privileges](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/elastic-agent-unprivileged.md), that is, using the `--unprivileged` flag, {{agent}} commands should not be run with `sudo`. Doing so may result in an error due to the agent not having the required privileges.
+On Linux systems, when you install {{agent}} [without administrative privileges](/reference/ingestion-tools/fleet/elastic-agent-unprivileged.md), that is, using the `--unprivileged` flag, {{agent}} commands should not be run with `sudo`. Doing so may result in an error due to the agent not having the required privileges.
 
 For example, when you run {{agent}} with the `--unprivileged` flag, running the `elastic-agent inspect` command will result in an error like the following:
 
@@ -749,7 +749,7 @@ The previous command generates a local file named `elastic_agent_installation_co
 * {{agent}} Standalone deployed as a `DaemonSet`
 * [Kube-state-metrics](https://github.com/kubernetes/kube-state-metrics) deployed as a `Deployment`
 
-The content of this file is equivalent to what you’d obtain by following the [Run {{agent}} Standalone on Kubernetes](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/running-on-kubernetes-standalone.md) steps, with the exception that `kube-state-metrics` is not included in the standalone method.
+The content of this file is equivalent to what you’d obtain by following the [Run {{agent}} Standalone on Kubernetes](/reference/ingestion-tools/fleet/running-on-kubernetes-standalone.md) steps, with the exception that `kube-state-metrics` is not included in the standalone method.
 
 **Possible issues**
 
@@ -803,9 +803,9 @@ If the installation is correct and all resources are deployed, but data is not f
 
 * Missing cluster-level metrics (provided by `kube-state-metrics`):
 
-    As described in [Run {{agent}} Standalone on Kubernetes](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/running-on-kubernetes-standalone.md), the {{agent}} Pod acting as `leader` is responsible for retrieving cluster-level metrics from `kube-state-metrics` and delivering them to [data streams](../../../manage-data/data-store/data-streams.md) prefixed as `metrics-kubernetes.state_<resource>`. In order to troubleshoot a situation where these metrics are not appearing:
+    As described in [Run {{agent}} Standalone on Kubernetes](/reference/ingestion-tools/fleet/running-on-kubernetes-standalone.md), the {{agent}} Pod acting as `leader` is responsible for retrieving cluster-level metrics from `kube-state-metrics` and delivering them to [data streams](../../../manage-data/data-store/data-streams.md) prefixed as `metrics-kubernetes.state_<resource>`. In order to troubleshoot a situation where these metrics are not appearing:
 
-    1. Determine which Pod owns the [leadership](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/kubernetes_leaderelection-provider.md) `lease` in the cluster, with:
+    1. Determine which Pod owns the [leadership](/reference/ingestion-tools/fleet/kubernetes_leaderelection-provider.md) `lease` in the cluster, with:
 
         ```sh
         kubectl get lease -n kube-system elastic-agent-cluster-leader
@@ -831,7 +831,7 @@ If the installation is correct and all resources are deployed, but data is not f
 
 * Performance problems:
 
-    Monitor the CPU and Memory usage of the agents Pods and adjust the manifest requests and limits as needed. Refer to [Scaling {{agent}} on {{k8s}}](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/scaling-on-kubernetes.md) for more details about the needed resources.
+    Monitor the CPU and Memory usage of the agents Pods and adjust the manifest requests and limits as needed. Refer to [Scaling {{agent}} on {{k8s}}](/reference/ingestion-tools/fleet/scaling-on-kubernetes.md) for more details about the needed resources.
 
 
 Extra resources for {{agent}} on Kubernetes troubleshooting and information:

@@ -9,7 +9,7 @@ applies_to:
 
 # Exporters [es-monitoring-exporters]
 
-::::{important} 
+::::{important}
 {{agent}} and {{metricbeat}} are the recommended methods for collecting and shipping monitoring data to a monitoring cluster.
 
 If you have previously configured legacy collection methods, you should migrate to using [{{agent}}](collecting-monitoring-data-with-elastic-agent.md) or [{{metricbeat}}](collecting-monitoring-data-with-metricbeat.md) collection. Do not use legacy collection alongside other collection methods.
@@ -31,7 +31,7 @@ Both exporters serve the same purpose: to set up the monitoring cluster and rout
 
 Exporters are configurable at both the node and cluster level. Cluster-wide settings, which are updated with the [`_cluster/settings` API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings), take precedence over settings in the `elasticsearch.yml` file on each node. When you update an exporter, it is completely replaced by the updated version of the exporter.
 
-::::{important} 
+::::{important}
 It is critical that all nodes share the same setup. Otherwise, monitoring data might be routed in different ways or to different places.
 ::::
 
@@ -40,15 +40,15 @@ When the exporters route monitoring data into the monitoring cluster, they use `
 
 Routing monitoring data involves indexing it into the appropriate monitoring indices. Once the data is indexed, it exists in a monitoring index that, by default, is named with a daily index pattern. For {{es}} monitoring data, this is an index that matches `.monitoring-es-6-*`. From there, the data lives inside the monitoring cluster and must be curated or cleaned up as necessary. If you do not curate the monitoring data, it eventually fills up the nodes and the cluster might fail due to lack of disk space.
 
-::::{tip} 
-You are strongly recommended to manage the curation of indices and particularly the monitoring indices. To do so, you can take advantage of the [cleaner service](es-local-exporter.md#local-exporter-cleaner) or [Elastic Curator](asciidocalypse://docs/curator/docs/reference/index.md).
+::::{tip}
+You are strongly recommended to manage the curation of indices and particularly the monitoring indices. To do so, you can take advantage of the [cleaner service](es-local-exporter.md#local-exporter-cleaner) or [Elastic Curator](curator://reference/index.md).
 ::::
 
 
-There is also a disk watermark (known as the flood stage watermark), which protects clusters from running out of disk space. When this feature is triggered, it makes all indices (including monitoring indices) read-only until the issue is fixed and a user manually makes the index writeable again. While an active monitoring index is read-only, it will naturally fail to write (index) new data and will continuously log errors that indicate the write failure. For more information, see [Disk-based shard allocation settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#disk-based-shard-allocation).
+There is also a disk watermark (known as the flood stage watermark), which protects clusters from running out of disk space. When this feature is triggered, it makes all indices (including monitoring indices) read-only until the issue is fixed and a user manually makes the index writeable again. While an active monitoring index is read-only, it will naturally fail to write (index) new data and will continuously log errors that indicate the write failure. For more information, see [Disk-based shard allocation settings](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#disk-based-shard-allocation).
 
 
-## Default exporters [es-monitoring-default-exporter] 
+## Default exporters [es-monitoring-default-exporter]
 
 If a node or cluster does not explicitly define an exporter, the following default exporter is used:
 
@@ -63,7 +63,7 @@ xpack.monitoring.exporters.default_local: <1>
 If another exporter is already defined, the default exporter is *not* created. When you define a new exporter, if the default exporter exists, it is automatically removed.
 
 
-## Exporter templates and ingest pipelines [es-monitoring-templates] 
+## Exporter templates and ingest pipelines [es-monitoring-templates]
 
 Before exporters can route monitoring data, they must set up certain {{es}} resources. These resources include templates and ingest pipelines. The following table lists the templates that are required before an exporter can route monitoring data:
 
@@ -77,9 +77,9 @@ Before exporters can route monitoring data, they must set up certain {{es}} reso
 
 The templates are ordinary {{es}} templates that control the default settings and mappings for the monitoring indices.
 
-By default, monitoring indices are created daily (for example, `.monitoring-es-6-2017.08.26`). You can change the default date suffix for monitoring indices with the `index.name.time_format` setting. You can use this setting to control how frequently monitoring indices are created by a specific `http` exporter. You cannot use this setting with `local` exporters. For more information, see [HTTP exporter settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/monitoring-settings.md#http-exporter-settings).
+By default, monitoring indices are created daily (for example, `.monitoring-es-6-2017.08.26`). You can change the default date suffix for monitoring indices with the `index.name.time_format` setting. You can use this setting to control how frequently monitoring indices are created by a specific `http` exporter. You cannot use this setting with `local` exporters. For more information, see [HTTP exporter settings](elasticsearch://reference/elasticsearch/configuration-reference/monitoring-settings.md#http-exporter-settings).
 
-::::{warning} 
+::::{warning}
 Some users create their own templates that match *all* index patterns, which therefore impact the monitoring indices that get created. It is critical that you do not disable `_source` storage for the monitoring indices. If you do, {{kib}} {{monitor-features}} do not work and you cannot visualize monitoring data for your cluster.
 ::::
 
@@ -93,14 +93,14 @@ The following table lists the ingest pipelines that are required before an expor
 
 Exporters handle the setup of these resources before ever sending data. If resource setup fails (for example, due to security permissions), no data is sent and warnings are logged.
 
-::::{note} 
+::::{note}
 Empty pipelines are evaluated on the coordinating node during indexing and they are ignored without any extra effort. This inherently makes them a safe, no-op operation.
 ::::
 
 
 For monitoring clusters that have disabled `node.ingest` on all nodes, it is possible to disable the use of the ingest pipeline feature. However, doing so blocks its purpose, which is to upgrade older monitoring data as our mappings improve over time. Beginning in 6.0, the ingest pipeline feature is a requirement on the monitoring cluster; you must have `node.ingest` enabled on at least one node.
 
-::::{warning} 
+::::{warning}
 Once any node running 5.5 or later has set up the templates and ingest pipeline on a monitoring cluster, you must use {{kib}} 5.5 or later to view all subsequent data on the monitoring cluster. The easiest way to determine whether this update has occurred is by checking for the presence of indices matching `.monitoring-es-6-*` (or more concretely the existence of the new pipeline). Versions prior to 5.5 used `.monitoring-es-2-*`.
 ::::
 

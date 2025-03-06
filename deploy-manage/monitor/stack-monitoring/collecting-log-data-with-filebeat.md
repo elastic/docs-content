@@ -14,22 +14,22 @@ applies_to:
 
 You can use {{filebeat}} to monitor the {{es}} log files, collect log events, and ship them to the monitoring cluster. Your recent logs are visible on the **Monitoring** page in {{kib}}.
 
-::::{important} 
+::::{important}
 If you’re using {{agent}}, do not deploy {{filebeat}} for log collection. Instead, configure the {{es}} integration to collect logs.
 ::::
 
 
 1. Verify that {{es}} is running and that the monitoring cluster is ready to receive data from {{filebeat}}.
 
-    ::::{tip} 
+    ::::{tip}
     In production environments, we strongly recommend using a separate cluster (referred to as the *monitoring cluster*) to store the data. Using a separate monitoring cluster prevents production cluster outages from impacting your ability to access your monitoring data. It also prevents monitoring activities from impacting the performance of your production cluster. See [*Monitoring in a production environment*](elasticsearch-monitoring-self-managed.md).
     ::::
 
 2. Identify which logs you want to monitor.
 
-    The {{filebeat}} {{es}} module can handle [audit logs](../logging-configuration/logfile-audit-output.md), [deprecation logs](../logging-configuration/elasticsearch-log4j-configuration-self-managed.md#deprecation-logging), [gc logs](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/jvm-settings.md#gc-logging), [server logs](../logging-configuration/elasticsearch-log4j-configuration-self-managed.md), and [slow logs](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/slow-log.md). For more information about the location of your {{es}} logs, see the [path.logs](../../deploy/self-managed/important-settings-configuration.md#path-settings) setting.
+    The {{filebeat}} {{es}} module can handle [audit logs](../logging-configuration/logfile-audit-output.md), [deprecation logs](../logging-configuration/elasticsearch-log4j-configuration-self-managed.md#deprecation-logging), [gc logs](elasticsearch://reference/elasticsearch/jvm-settings.md#gc-logging), [server logs](../logging-configuration/elasticsearch-log4j-configuration-self-managed.md), and [slow logs](elasticsearch://reference/elasticsearch/index-settings/slow-log.md). For more information about the location of your {{es}} logs, see the [path.logs](../../deploy/self-managed/important-settings-configuration.md#path-settings) setting.
 
-    ::::{important} 
+    ::::{important}
     If there are both structured (`*.json`) and unstructured (plain text) versions of the logs, you must use the structured logs. Otherwise, they might not appear in the appropriate context in {{kib}}.
     ::::
 
@@ -54,7 +54,7 @@ If you’re using {{agent}}, do not deploy {{filebeat}} for log collection. Inst
 
     If you configured the monitoring cluster to use encrypted communications, you must access it via HTTPS. For example, use a `hosts` setting like `https://es-mon-1:9200`.
 
-    ::::{important} 
+    ::::{important}
     The {{es}} {{monitor-features}} use ingest pipelines, therefore the cluster that stores the monitoring data must have at least one [ingest node](../../../manage-data/ingest/transform-enrich/ingest-pipelines.md).
     ::::
 
@@ -74,7 +74,7 @@ If you’re using {{agent}}, do not deploy {{filebeat}} for log collection. Inst
       #password: "YOUR_PASSWORD"
     ```
 
-    ::::{tip} 
+    ::::{tip}
     In production environments, we strongly recommend using a dedicated {{kib}} instance for your monitoring cluster.
     ::::
 
@@ -101,13 +101,13 @@ If you’re using {{agent}}, do not deploy {{filebeat}} for log collection. Inst
 
     If the logs that you want to monitor aren’t in the default location, set the appropriate path variables in the `modules.d/elasticsearch.yml` file. See [Configure the {{es}} module](asciidocalypse://docs/beats/docs/reference/filebeat/filebeat-module-elasticsearch.md#configuring-elasticsearch-module).
 
-    ::::{important} 
+    ::::{important}
     If there are JSON logs, configure the `var.paths` settings to point to them instead of the plain text logs.
     ::::
 
 8. [Start {{filebeat}}](asciidocalypse://docs/beats/docs/reference/filebeat/filebeat-starting.md) on each node.
 
-    ::::{note} 
+    ::::{note}
     Depending on how you’ve installed {{filebeat}}, you might see errors related to file ownership or permissions when you try to run {{filebeat}} modules. See [Config file ownership and permissions](asciidocalypse://docs/beats/docs/reference/libbeat/config-file-permissions.md).
     ::::
 
@@ -115,7 +115,7 @@ If you’re using {{agent}}, do not deploy {{filebeat}} for log collection. Inst
 
     For example, use the [cat indices](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-indices) command to verify that there are new `filebeat-*` indices.
 
-    ::::{tip} 
+    ::::{tip}
     If you want to use the **Monitoring** UI in {{kib}}, there must also be `.monitoring-*` indices. Those indices are generated when you collect metrics about {{stack}} products. For example, see [Collecting monitoring data with {{metricbeat}}](collecting-monitoring-data-with-metricbeat.md).
     ::::
 

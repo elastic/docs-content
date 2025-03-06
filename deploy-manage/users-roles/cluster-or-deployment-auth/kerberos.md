@@ -17,12 +17,12 @@ applies_to:
 
 You can configure the {{stack}} {{security-features}} to support Kerberos V5 authentication, an industry standard protocol to authenticate users in {{es}} and {{kib}}.
 
-::::{note} 
+::::{note}
 You can't use the Kerberos realm to authenticate on the transport network layer.
 ::::
 
 
-To authenticate users with Kerberos, you need to configure a Kerberos realm and map users to roles. For more information on realm settings, see [Kerberos realm settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/security-settings.md#ref-kerberos-settings).
+To authenticate users with Kerberos, you need to configure a Kerberos realm and map users to roles. For more information on realm settings, see [Kerberos realm settings](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#ref-kerberos-settings).
 
 ## Key concepts [kerberos-terms]
 
@@ -47,7 +47,7 @@ realm
 keytab
 :   A file that stores pairs of principals and encryption keys.
 
-    ::::{important} 
+    ::::{important}
     Anyone with read permissions to this file can use the credentials in the network to access other services so it is important to protect it with proper file permissions.
     ::::
 
@@ -69,13 +69,13 @@ In Kerberos, users authenticate with an authentication service and later with a 
 
 Before you set up a Kerberos realm, you must have the Kerberos infrastructure set up in your environment.
 
-::::{note} 
+::::{note}
 Kerberos requires a lot of external services to function properly, such as time synchronization between all machines and working forward and reverse DNS mappings in your domain. Refer to your Kerberos documentation for more details.
 ::::
 
 These instructions do not cover setting up and configuring your Kerberos deployment. Where examples are provided, they pertain to an MIT Kerberos V5 deployment. For more information, see [MIT Kerberos documentation](http://web.mit.edu/kerberos/www/index.html)
 
-If you're using a self-managed cluster, then perform the following additional steps: 
+If you're using a self-managed cluster, then perform the following additional steps:
 
 * Enable TLS for HTTP.
 
@@ -83,7 +83,7 @@ If you're using a self-managed cluster, then perform the following additional st
 
     This step is necessary to support Kerberos authentication through {{kib}}. It is not required for Kerberos authentication directly against the {{es}} Rest API.
 
-    If you started {{es}} [with security enabled](/deploy-manage/deploy/self-managed/installing-elasticsearch.md), then TLS is already enabled for HTTP. 
+    If you started {{es}} [with security enabled](/deploy-manage/deploy/self-managed/installing-elasticsearch.md), then TLS is already enabled for HTTP.
 
     {{ech}}, {{ece}}, and {{eck}} have TLS enabled by default.
 
@@ -110,7 +110,7 @@ To configure a Kerberos realm in {{es}}:
 
    * `krb5.conf`: The Kerberos configuration file (`krb5.conf`) provides information such as the default realm, the Key Distribution Center (KDC), and other configuration details required for Kerberos authentication. For more information, see [krb5.conf](https://web.mit.edu/kerberos/krb5-latest/doc/admin/conf_files/krb5_conf.html).
    * `keytab`: A keytab is a file that stores pairs of principals and encryption keys. {{es}} uses the keys from the keytab to decrypt the tickets presented by the user. You must create a keytab for {{es}} by using the tools provided by your Kerberos implementation. For example, some tools that create keytabs are `ktpass.exe` on Windows and `kadmin` for MIT Kerberos.
-  
+
 The configuration requirements depend on your Kerberos setup. Refer to your Kerberos documentation to configure the `krb5.conf` file.
 
 For more information on Java GSS, see [Java GSS Kerberos requirements](https://docs.oracle.com/javase/10/security/kerberos-requirements1.htm).
@@ -119,34 +119,34 @@ For more information on Java GSS, see [Java GSS Kerberos requirements](https://d
 
 The way that you provide Kerberos config files to {{es}} depends on your deployment method.
 
-For detailed information of available realm settings, see [Kerberos realm settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/security-settings.md#ref-kerberos-settings).
+For detailed information of available realm settings, see [Kerberos realm settings](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#ref-kerberos-settings).
 
 :::::{tab-set}
 
 ::::{tab-item} Self-managed
 
 1. Configure the JVM to find the Kerberos configuration file.
-   
-   {{es}} uses Java GSS and JAAS Krb5LoginModule to support Kerberos authentication using a Simple and Protected GSSAPI Negotiation (SPNEGO) mechanism. When the JVM needs some configuration properties, it tries to find those values by locating and loading the `krb5.conf` file. The JVM system property to configure the file path is `java.security.krb5.conf`. To configure JVM system properties see [Set JVM options](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/jvm-settings.md#set-jvm-options). If this system property is not specified, Java tries to locate the file based on the conventions.
-   
-   :::{tip} 
+
+   {{es}} uses Java GSS and JAAS Krb5LoginModule to support Kerberos authentication using a Simple and Protected GSSAPI Negotiation (SPNEGO) mechanism. When the JVM needs some configuration properties, it tries to find those values by locating and loading the `krb5.conf` file. The JVM system property to configure the file path is `java.security.krb5.conf`. To configure JVM system properties see [Set JVM options](elasticsearch://reference/elasticsearch/jvm-settings.md#set-jvm-options). If this system property is not specified, Java tries to locate the file based on the conventions.
+
+   :::{tip}
    It is recommended that this system property be configured for {{es}}. The method for setting this property depends on your Kerberos infrastructure. Refer to your Kerberos documentation for more details.
    :::
 
    For more information, see [krb5.conf](https://web.mit.edu/kerberos/krb5-latest/doc/admin/conf_files/krb5_conf.html).
 
 2. Put the keytab file in the {{es}} configuration directory.
-   
+
    Make sure that this keytab file has read permissions. This file contains credentials, therefore you must take appropriate measures to protect it.
-   
-   :::{important} 
+
+   :::{important}
    {{es}} uses Kerberos on the HTTP network layer, therefore there must be a keytab file for the HTTP service principal on every {{es}} node. The service principal name must have the format `HTTP/es.domain.local@ES.DOMAIN.LOCAL`. The keytab files are unique for each node since they include the hostname. An {{es}} node can act as any principal a client requests as long as that principal and its credentials are found in the configured keytab.
    :::
 
 3. Create a Kerberos realm.
-   
+
    To enable Kerberos authentication in {{es}}, you must add a Kerberos realm in the realm chain.
-   
+
    :::{note}
    You can configure only one Kerberos realm on {{es}} nodes.
    :::
@@ -154,7 +154,7 @@ For detailed information of available realm settings, see [Kerberos realm settin
    To configure a Kerberos realm, there are a few mandatory realm settings and other optional settings that you need to configure in the `elasticsearch.yml` configuration file. Add a realm configuration under the `xpack.security.authc.realms.kerberos` namespace.
 
    The most common configuration for a Kerberos realm is as follows:
-   
+
    ```yaml
    xpack.security.authc.realms.kerberos.kerb1:
     order: 3
@@ -166,7 +166,7 @@ For detailed information of available realm settings, see [Kerberos realm settin
 
 ::::{tab-item} ECH and ECE
 
-1. Create a [custom bundle](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch-plugins/cloud-enterprise/ece-add-plugins.md) that contains your `krb5.conf` and `keytab` files, and add it to your cluster.
+1. Create a [custom bundle](elasticsearch://reference/elasticsearch-plugins/cloud-enterprise/ece-add-plugins.md) that contains your `krb5.conf` and `keytab` files, and add it to your cluster.
 
     :::{tip}
     You should use these exact filenames for {{ecloud}} to recognize the file in the bundle.
@@ -191,13 +191,13 @@ For detailed information of available realm settings, see [Kerberos realm settin
 1. Install your `krb5.conf` and `keytab` files as a [custom configuration files](/deploy-manage/deploy/cloud-on-k8s/custom-configuration-files-plugins.md#use-a-volume-and-volume-mount-together-with-a-configmap-or-secret). Mount them in a sub-directory of the main config directory, for example `/usr/share/elasticsearch/config/kerberos`, and use a `Secret` instead of a `ConfigMap` to store the information.
 
 2. Configure the JVM to find the Kerberos configuration file.
-   
+
    {{es}} uses Java GSS and JAAS Krb5LoginModule to support Kerberos authentication using a Simple and Protected GSSAPI Negotiation (SPNEGO) mechanism. When the JVM needs some configuration properties, it tries to find those values by locating and loading the `krb5.conf` file. The JVM system property to configure the file path is `java.security.krb5.conf`. If this system property is not specified, Java tries to locate the file based on the conventions.
 
    To provide JVM setting overrides to your cluster:
 
    1. Create a new ConfigMap with a valid JVM options file as the key. The source file should be a JVM `.options` file containing the JVM system property `-Djava.security.krb5.conf=/usr/share/elasticsearch/config/kerberos/krb5.conf`, assuming the `krb5.conf` file was mounted on `/usr/share/elasticsearch/config/kerberos` in the previous step.
-   
+
     ```
     # create a configmap with a key named override.options and the content of your local file
     kubectl create configmap jvm-options --from-file=override.options=<your-local-file>
@@ -209,7 +209,7 @@ For detailed information of available realm settings, see [Kerberos realm settin
         apiVersion: elasticsearch.k8s.elastic.co/v1
         kind: Elasticsearch
         metadata:
-        name: test-cluster 
+        name: test-cluster
         spec:
         version: 8.17.0
         nodeSets:
@@ -253,12 +253,12 @@ The `username` is extracted from the ticket presented by the user and usually ha
 ## Map Kerberos users to roles
 
 
-The `kerberos` realm enables you to map Kerberos users to roles. 
+The `kerberos` realm enables you to map Kerberos users to roles.
 
-You can map these users to roles in multiple ways: 
+You can map these users to roles in multiple ways:
 
 * Using the role mappings page in {{kib}}.
-* Using the [role mapping API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-role-mapping). 
+* Using the [role mapping API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-role-mapping).
 
 You identify users by their `username` field.
 
@@ -275,14 +275,14 @@ POST /_security/role_mapping/kerbrolemapping
 }
 ```
 
-In case you want to support Kerberos cross realm authentication, you may need to map roles based on the Kerberos realm name. For such scenarios, the following additional user metadata can be used for role mapping: 
+In case you want to support Kerberos cross realm authentication, you may need to map roles based on the Kerberos realm name. For such scenarios, the following additional user metadata can be used for role mapping:
 
-- `kerberos_realm`: The Kerberos realm name. 
+- `kerberos_realm`: The Kerberos realm name.
 - `kerberos_user_principal_name`: The user principal name from the Kerberos ticket.
 
 For more information, see [Mapping users and groups to roles](/deploy-manage/users-roles/cluster-or-deployment-auth/mapping-users-groups-to-roles.md).
 
-::::{note} 
+::::{note}
 The Kerberos realm supports [authorization realms](/deploy-manage/users-roles/cluster-or-deployment-auth/realm-chains.md#authorization_realms) as an alternative to role mapping.
 ::::
 

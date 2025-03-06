@@ -131,7 +131,7 @@ For more on using Logs Explorer, refer to the [Discover](../../../explore-analyz
 
 [Query DSL](../../../explore-analyze/query-filter/languages/querydsl.md) is a JSON-based language that sends requests and retrieves data from indices and data streams. You can filter your log data using Query DSL from **Developer Tools**.
 
-For example, you might want to troubleshoot an issue that happened on a specific date or at a specific time. To do this, use a boolean query with a [range query](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/query-dsl-range-query.md) to filter for the specific timestamp range and a [term query](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/query-dsl-term-query.md) to filter for `WARN` and `ERROR` log levels.
+For example, you might want to troubleshoot an issue that happened on a specific date or at a specific time. To do this, use a boolean query with a [range query](elasticsearch://reference/query-languages/query-dsl-range-query.md) to filter for the specific timestamp range and a [term query](elasticsearch://reference/query-languages/query-dsl-term-query.md) to filter for `WARN` and `ERROR` log levels.
 
 First, from **Developer Tools**, add some logs with varying timestamps and log levels to your data stream with the following command:
 
@@ -214,7 +214,7 @@ The filtered results should show `WARN` and `ERROR` logs that occurred within th
 
 ## Aggregate logs [logs-aggregate]
 
-Use aggregation to analyze and summarize your log data to find patterns and gain insight. [Bucket aggregations](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/aggregations/bucket.md) organize log data into meaningful groups making it easier to identify patterns, trends, and anomalies within your logs.
+Use aggregation to analyze and summarize your log data to find patterns and gain insight. [Bucket aggregations](elasticsearch://reference/data-analysis/aggregations/bucket.md) organize log data into meaningful groups making it easier to identify patterns, trends, and anomalies within your logs.
 
 For example, you might want to understand error distribution by analyzing the count of logs per log level.
 
