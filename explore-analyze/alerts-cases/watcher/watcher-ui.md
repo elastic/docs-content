@@ -135,7 +135,7 @@ On the Watch overview page, click **Create** and choose **Create advanced watch*
 
 The **Simulate** tab allows you to override parts of the watch, and then run a simulation. Be aware of these implementation details on overrides:
 
-* Trigger overrides use [date math](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/common-options.md#date-math).
+* Trigger overrides use [date math](elasticsearch://reference/elasticsearch/rest-apis/common-options.md#date-math).
 * Input overrides accepts a JSON blob.
 * Condition overrides indicates if you want to force the condition to always be `true`.
 * Action overrides support [multiple options](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-watcher-execute-watch).

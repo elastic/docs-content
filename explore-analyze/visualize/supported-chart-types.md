@@ -25,7 +25,7 @@ $$$aggregation-reference$$$
 | Tag cloud | &check; |  | &check; | &check; |  |
 
 
-## Bar, line, and area chart features [xy-features] 
+## Bar, line, and area chart features [xy-features]
 
 | Feature | **Lens** | **TSVB** | **Aggregation-based** | **Vega** | **Timelion** |
 | --- | --- | --- | --- | --- | --- |
@@ -37,7 +37,7 @@ $$$aggregation-reference$$$
 | Synchronized tooltips | &check; | &check; |  |  |  |
 
 
-## Advanced features [other-features] 
+## Advanced features [other-features]
 
 | Feature | **Lens** | **TSVB** | **Vega** | **Timelion** |
 | --- | --- | --- | --- | --- |
@@ -51,7 +51,7 @@ $$$aggregation-reference$$$
 | Annotations | &check; | &check; |  |  |
 
 
-## Table features [table-features] 
+## Table features [table-features]
 
 | Feature | **Lens** | **TSVB** | **Aggregation-based** |
 | --- | --- | --- | --- |
@@ -61,7 +61,7 @@ $$$aggregation-reference$$$
 | Color by value | &check; | &check; |  |
 
 
-## Functions [custom-functions] 
+## Functions [custom-functions]
 
 | Function | **Lens** | **TSVB** |
 | --- | --- | --- |
@@ -72,7 +72,7 @@ $$$aggregation-reference$$$
 | Static value | &check; | &check; |
 
 
-## Metrics aggregations [metrics-aggregations] 
+## Metrics aggregations [metrics-aggregations]
 
 Metric aggregations are calculated from the values in the aggregated documents. The values are extracted from the document fields.
 
@@ -89,10 +89,10 @@ Metric aggregations are calculated from the values in the aggregated documents. 
 | Value count | &check; |  | &check; | &check; |
 | Variance | &check; | &check; |  | &check; |
 
-For information about {{es}} metrics aggregations, refer to [Metrics aggregations](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/aggregations/metrics.md).
+For information about {{es}} metrics aggregations, refer to [Metrics aggregations](elasticsearch://reference/data-analysis/aggregations/metrics.md).
 
 
-## Bucket aggregations [bucket-aggregations] 
+## Bucket aggregations [bucket-aggregations]
 
 Bucket aggregations group, or bucket, documents based on the aggregation type. To define the document buckets, bucket aggregations compute and return the number of documents for each bucket.
 
@@ -110,10 +110,10 @@ Bucket aggregations group, or bucket, documents based on the aggregation type. T
 | Terms | &check; | &check; | &check; | &check; |
 | Significant terms | &check; |  | &check; | &check; |
 
-For information about {{es}} bucket aggregations, refer to [Bucket aggregations](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/aggregations/bucket.md).
+For information about {{es}} bucket aggregations, refer to [Bucket aggregations](elasticsearch://reference/data-analysis/aggregations/bucket.md).
 
 
-## Pipeline aggregations [pipeline-aggregations] 
+## Pipeline aggregations [pipeline-aggregations]
 
 Pipeline aggregations are dependent on the outputs calculated from other aggregations. Parent pipeline aggregations are provided with the output of the parent aggregation, and compute new buckets or aggregations that are added to existing buckets. Sibling pipeline aggregations are provided with the output of a sibling aggregation, and compute new aggregations for the same level as the sibling aggregation.
 
@@ -130,5 +130,5 @@ Pipeline aggregations are dependent on the outputs calculated from other aggrega
 | Bucket selector |  |  |  | &check; |
 | Serial differencing |  | &check; | &check; | &check; |
 
-For information about {{es}} pipeline aggregations, refer to [Pipeline aggregations](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/aggregations/pipeline.md).
+For information about {{es}} pipeline aggregations, refer to [Pipeline aggregations](elasticsearch://reference/data-analysis/aggregations/pipeline.md).
 

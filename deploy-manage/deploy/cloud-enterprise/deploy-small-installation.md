@@ -1,9 +1,13 @@
 ---
+applies_to:
+  deployment:
+    ece: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-install-small-cloud.html
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-install-small-onprem.html
 ---
 
-# Deploy a small installation cloud [ece-install-small-cloud]
+# Deploy a small installation [ece-install-small]
 
 The type of installation is recommended for development, test, and small-scale use cases. You need:
 
@@ -14,8 +18,7 @@ The type of installation is recommended for development, test, and small-scale u
 :alt: A small baseline installation with three hosts across three availability zones
 :::
 
-
-## Before you start [ece_before_you_start]
+## Important considerations [ece_before_you_start]
 
 * This type of installation is **not recommended for high-traffic workloads**.
 * You must not use **spinning disks** with small ECE installations, as these are not supported when you run allocators and ECE management services on the same server.
@@ -36,6 +39,9 @@ The type of installation is recommended for development, test, and small-scale u
 For production environments, you must define the memory settings for each role, except for the `proxy` role, as starting from ECE 2.4 the JVM proxy was replaced with a Golang-based proxy. If you don’t set any memory setting, the default values are used, which are inadequate for production environments and can lead to performance or stability issues.
 ::::
 
+## Before you start
+
+Make sure you have completed all prerequisites and environment preparations described in the [Installation overview](./install.md), and that the hosts are configured according to [](./configure-operating-system.md).
 
 
 ## Installation steps [ece_installation_steps]
@@ -64,7 +70,10 @@ For production environments, you must define the memory settings for each role, 
     bash <(curl -fsSL https://download.elastic.co/cloud/elastic-cloud-enterprise.sh) install --coordinator-host HOST_IP --roles-token 'MY_TOKEN' --roles "director,coordinator,proxy,allocator" --availability-zone MY_ZONE-3 --memory-settings '{"runner":{"xms":"1G","xmx":"1G"},"allocator":{"xms":"4G","xmx":"4G"},"zookeeper":{"xms":"4G","xmx":"4G"},"director":{"xms":"1G","xmx":"1G"},"constructor":{"xms":"4G","xmx":"4G"},"admin-console":{"xms":"4G","xmx":"4G"}}'
     ```
 
-4. [Change the deployment configuration for the `admin-console-elasticsearch`, `logging-and-metrics`, and `security` clusters](working-with-deployments.md) to use three availability zones and resize the nodes to use at least 4 GB of RAM. This change makes sure that the clusters used by the administration console are highly available and provisioned sufficiently.
+4. [Change the deployment configuration](working-with-deployments.md) for the `admin-console-elasticsearch`, `logging-and-metrics`, and `security` clusters to use three availability zones and resize the nodes to use at least 4 GB of RAM. This change makes sure that the clusters used by the administration console are highly available and provisioned sufficiently.
+
 5. [Log into the Cloud UI](log-into-cloud-ui.md) to provision your deployment.
 
-If necessary, you can scale and deploy a [medium installation](deploy-medium-installation-cloud.md).
+If necessary, you can scale and deploy a [medium installation](deploy-medium-installation.md).
+
+Once the installation is complete, you can continue with [](./post-installation-steps.md).

@@ -1,19 +1,24 @@
 ---
+applies_to:
+  deployment:
+    ece: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-configure-hosts-ubuntu-cloud.html
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-configure-hosts-ubuntu-onprem.html
+navigation_title: Ubuntu
 ---
 
-# Configure host Ubuntu cloud [ece-configure-hosts-ubuntu-cloud]
+# Configure an Ubuntu host [ece-configure-hosts-ubuntu]
 
 The following instructions show you how to prepare your hosts on 20.04 LTS (Focal Fossa) and Ubuntu 22.04 LTS (Jammy Jellyfish).
 
-* [Install Docker 24.0](#ece-install-docker-ubuntu-cloud)
-* [Set up XFS quotas](#ece-xfs-setup-ubuntu-cloud)
-* [Update the configurations settings](#ece-update-config-ubuntu-cloud)
-* [Configure the Docker daemon options](#ece-configure-docker-daemon-ubuntu-cloud)
+* [Install Docker 24.0](#ece-install-docker-ubuntu)
+* [Set up XFS quotas](#ece-xfs-setup-ubuntu)
+* [Update the configurations settings](#ece-update-config-ubuntu)
+* [Configure the Docker daemon options](#ece-configure-docker-daemon-ubuntu)
 
 
-## Install Docker [ece-install-docker-ubuntu-cloud]
+## Install Docker [ece-install-docker-ubuntu]
 
 Install Docker LTS version 24.0 for Ubuntu 20.04 or 22.04.
 
@@ -56,7 +61,7 @@ Docker 25 and higher are not compatible with ECE 3.7.
 
 
 
-## Set up XFS quotas [ece-xfs-setup-ubuntu-cloud]
+## Set up XFS quotas [ece-xfs-setup-ubuntu]
 
 XFS is required to support disk space quotas for Elasticsearch data directories. Some Linux distributions such as RHEL and Rocky Linux already provide XFS as the default file system. On Ubuntu, you need to set up an XFS file system and have quotas enabled.
 
@@ -101,7 +106,7 @@ You must use XFS and have quotas enabled on all allocators, otherwise disk usage
 
 
 
-## Update the configurations settings [ece-update-config-ubuntu-cloud]
+## Update the configurations settings [ece-update-config-ubuntu]
 
 1. Stop the Docker service:
 
@@ -197,7 +202,7 @@ You must use XFS and have quotas enabled on all allocators, otherwise disk usage
     sudo install -o $USER -g $USER -d -m 700 /mnt/data
     ```
 
-7. If you [set up a new device with XFS](#ece-xfs-setup-ubuntu-cloud) earlier:
+7. If you [set up a new device with XFS](#ece-xfs-setup-ubuntu) earlier:
 
     1. Mount the block device (change the device name if you use a different device than `/dev/xvdg1`):
 
@@ -219,7 +224,7 @@ You must use XFS and have quotas enabled on all allocators, otherwise disk usage
 
 
 
-## Configure the Docker daemon options [ece-configure-docker-daemon-ubuntu-cloud]
+## Configure the Docker daemon options [ece-configure-docker-daemon-ubuntu]
 
 ::::{tip}
 Docker creates a bridge IP address that can conflict with IP addresses on your internal network. To avoid an IP address conflict, change the `--bip=172.17.42.1/16` parameter in our examples to something that you know will work. If there is no conflict, you can omit the `--bip` parameter. The `--bip` parameter is internal to the host and can be set to the same IP for each host in the cluster. More information on Docker daemon options can be found in the  [dockerd command line reference](https://docs.docker.com/engine/reference/commandline/dockerd/).

@@ -9,4 +9,4 @@ Hybrid search combines traditional [full-text search](full-text.md) with [AI-pow
 
 The recommended way to use hybrid search in the Elastic Stack is following the `semantic_text` workflow. Check out the [hands-on tutorial](hybrid-semantic-text.md) for a step-by-step guide.
 
-We recommend implementing hybrid search with the [reciprocal rank fusion (RRF)](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/reciprocal-rank-fusion.md) algorithm. This approach merges rankings from both semantic and lexical queries, giving more weight to results that rank high in either search. This ensures that the final results are balanced and relevant.
+We recommend implementing hybrid search with the [reciprocal rank fusion (RRF)](elasticsearch://reference/elasticsearch/rest-apis/reciprocal-rank-fusion.md) algorithm. This approach merges rankings from both semantic and lexical queries, giving more weight to results that rank high in either search. This ensures that the final results are balanced and relevant.

@@ -58,7 +58,7 @@ The default deployments include processors, when needed, for enriching events wi
 :alt: Metadata processors for cloud
 :::
 
-For more on these processors, refer to the [`add_cloud_metadata`](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/add-cloud-metadata-processor.md) and [`add_host_metadata`](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/add_host_metadata-processor.md) documentation.
+For more on these processors, refer to the [`add_cloud_metadata`](/reference/ingestion-tools/fleet/add-cloud-metadata-processor.md) and [`add_host_metadata`](/reference/ingestion-tools/fleet/add_host_metadata-processor.md) documentation.
 
 By default, the Kubernetes integration enriches logs and metrics with valuable metadata.
 
@@ -419,7 +419,7 @@ Provide the following information to collect Kubernetes events metrics:
 
 Collecting and parsing Kubernetes container logs is on by default. Containers running within Kubernetes pods publish logs to stdout or stderr. These logs are written to a location known to kubelet. The container parser is enabled by default. You can enable additional parsers in **advanced settings**.
 
-Metadata enrichment is also enabled by default, and is based on the Kubernetes provider. Use the `add_resource_metadata` block of the Kubernetes provider to configure it. Refer to the [Kubernetes provider](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/kubernetes-provider.md) docs for more on configuring the provider.
+Metadata enrichment is also enabled by default, and is based on the Kubernetes provider. Use the `add_resource_metadata` block of the Kubernetes provider to configure it. Refer to the [Kubernetes provider](/reference/ingestion-tools/fleet/kubernetes-provider.md) docs for more on configuring the provider.
 
 Refer to [Kubernetes container logs](https://docs.elastic.co/en/integrations/kubernetes/container-logs) for more on collecting container logs.
 
@@ -464,7 +464,7 @@ After configuring your integration, you need to download and update your manifes
 
 After downloading the manifest, open it and update the `ES_USERNAME` and `ES_PASSWORD` environment variables in the DaemonSet to match your {{es}} credentials.
 
-You can also further modify the manifest to fit your needs. For example, you might want to enable autodiscovery to automatically discover container logs. Refer to the [autodiscovery docs](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/elastic-agent-kubernetes-autodiscovery.md) in the {{fleet}} guide for more on enabling autodiscovery in your manifest.
+You can also further modify the manifest to fit your needs. For example, you might want to enable autodiscovery to automatically discover container logs. Refer to the [autodiscovery docs](/reference/ingestion-tools/fleet/elastic-agent-kubernetes-autodiscovery.md) in the {{fleet}} guide for more on enabling autodiscovery in your manifest.
 
 Once you are ready to deploy your {{agent}}:
 
@@ -481,7 +481,7 @@ Once you are ready to deploy your {{agent}}:
     ```
 
 
-Refer to [Debug standalone Elastic Agents](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/debug-standalone-agents.md) if you run into any issues with configuring or installing your {{agent}}.
+Refer to [Debug standalone Elastic Agents](/reference/ingestion-tools/fleet/debug-standalone-agents.md) if you run into any issues with configuring or installing your {{agent}}.
 
 
 ## Part 3: Explore logs and metrics [monitor-kubernetes-explore]
@@ -644,9 +644,9 @@ Configure the agent using environment variables:
 
 **Learn more in the agent reference**
 
-* [Supported technologies](asciidocalypse://docs/apm-agent-go/docs/reference/supported-technologies.md)
-* [Advanced configuration](asciidocalypse://docs/apm-agent-go/docs/reference/configuration.md)
-* [Detailed guide to instrumenting Go source code](asciidocalypse://docs/apm-agent-go/docs/reference/set-up-apm-go-agent.md)
+* [Supported technologies](apm-agent-go://reference/supported-technologies.md)
+* [Advanced configuration](apm-agent-go://reference/configuration.md)
+* [Detailed guide to instrumenting Go source code](apm-agent-go://reference/set-up-apm-go-agent.md)
 ::::::
 
 ::::::{tab-item} Java
@@ -732,7 +732,7 @@ Configure the agent using environment variables:
 
 ::::::{tab-item} .NET
 ::::{note}
-These instructions are for .NET Core v2.2+. All other use-cases require downloading the agent from NuGet and adding it to your application. See [set up the Agent](asciidocalypse://docs/apm-agent-dotnet/docs/reference/set-up-apm-net-agent.md) for full details. Once agent set-up is complete, jump to the **Configure the agent** section on this page.
+These instructions are for .NET Core v2.2+. All other use-cases require downloading the agent from NuGet and adding it to your application. See [set up the Agent](apm-agent-dotnet://reference/set-up-apm-net-agent.md) for full details. Once agent set-up is complete, jump to the **Configure the agent** section on this page.
 ::::
 
 
@@ -806,8 +806,8 @@ Configure the agent using environment variables:
 
 **Learn more in the agent reference**
 
-* [Supported technologies](asciidocalypse://docs/apm-agent-dotnet/docs/reference/supported-technologies.md)
-* [Advanced configuration](asciidocalypse://docs/apm-agent-dotnet/docs/reference/configuration.md)
+* [Supported technologies](apm-agent-dotnet://reference/supported-technologies.md)
+* [Advanced configuration](apm-agent-dotnet://reference/configuration.md)
 ::::::
 
 ::::::{tab-item} Node.js

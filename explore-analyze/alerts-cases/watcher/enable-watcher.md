@@ -164,4 +164,4 @@ An example on how to configure a new account from the Elastic cloud console:
 
 6. The new email account is now set up. It will now be used by default for watcher email actions.
 
-For a full reference of all available settings, see the [Elasticsearch documentation](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/watcher-settings.md#email-notification-settings).
+For a full reference of all available settings, see the [Elasticsearch documentation](elasticsearch://reference/elasticsearch/configuration-reference/watcher-settings.md#email-notification-settings).

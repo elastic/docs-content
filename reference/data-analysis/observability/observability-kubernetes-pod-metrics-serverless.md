@@ -1,6 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/observability-kubernetes-pod-metrics.html
+  - https://www.elastic.co/guide/en/observability/current/kubernetes-pod-metrics.html
 ---
 
 # Kubernetes pod metrics [observability-kubernetes-pod-metrics]

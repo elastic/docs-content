@@ -18,7 +18,7 @@ You can configure the {{stack}} {{security-features}} to communicate with a Ligh
 To integrate with LDAP, you configure an `ldap` realm and map LDAP groups to user roles.
 
 :::{{tip}}
-This topic describes implementing LDAP at the cluster or deployment level, for the purposes of authenticating with {{es}} and {{kib}}. 
+This topic describes implementing LDAP at the cluster or deployment level, for the purposes of authenticating with {{es}} and {{kib}}.
 
 You can also configure an {{ece}} installation to use an LDAP server to authenticate users. [Learn more](/deploy-manage/users-roles/cloud-enterprise-orchestrator/ldap.md).
 :::
@@ -31,7 +31,7 @@ The path to an entry is a *Distinguished Name* (DN) that uniquely identifies a u
 
 The `ldap` realm supports two modes of operation, a user search mode and a mode with specific templates for user DNs.
 
-::::{important} 
+::::{important}
 When you configure realms in `elasticsearch.yml`, only the realms you specify are used for authentication. If you also want to use the `native` or `file` realms, you must include them in the realm chain.
 ::::
 
@@ -44,13 +44,13 @@ The `ldap` realm supports two modes of operation, a user search mode and a mode 
 * **DN templates**:  If your LDAP environment uses a few specific standard naming conditions for users, you can use user DN templates to configure the realm. The advantage of this method is that a search does not have to be performed to find the user DN. However, multiple bind operations might be needed to find the correct user DN.
 
 
-### Set up LDAP user search mode 
+### Set up LDAP user search mode
 
 To configure an `ldap` realm with user search:
 
-1. Add a realm configuration to `elasticsearch.yml` under the `xpack.security.authc.realms.ldap` namespace. 
-   
-   At a minimum, you must specify the `url` and `order` of the LDAP server, and set `user_search.base_dn` to the container DN where the users are searched for. See [LDAP realm settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/security-settings.md#ref-ldap-settings) for all of the options you can set for an `ldap` realm.
+1. Add a realm configuration to `elasticsearch.yml` under the `xpack.security.authc.realms.ldap` namespace.
+
+   At a minimum, you must specify the `url` and `order` of the LDAP server, and set `user_search.base_dn` to the container DN where the users are searched for. See [LDAP realm settings](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#ref-ldap-settings) for all of the options you can set for an `ldap` realm.
 
     For example, the following snippet shows an LDAP realm configured with a user search:
 
@@ -90,10 +90,10 @@ To configure an `ldap` realm with user search:
 
 1. (Optional) Configure how the {{security-features}} interact with multiple LDAP servers.
 
-    The `load_balance.type` setting can be used at the realm level. The {{es}} {{security-features}} support both failover and load balancing modes of operation. See [LDAP realm settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/security-settings.md#ref-ldap-settings).
+    The `load_balance.type` setting can be used at the realm level. The {{es}} {{security-features}} support both failover and load balancing modes of operation. See [LDAP realm settings](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#ref-ldap-settings).
 
 2. (Optional) To protect passwords, [encrypt communications between {{es}} and the LDAP server](../../../deploy-manage/users-roles/cluster-or-deployment-auth/ldap.md#tls-ldap).
-   
+
     * **For self-managed clusters and {{eck}} deployments**, clients and nodes that connect using SSL/TLS to the Active Directory server need to have the Active Directory server’s certificate or the server’s root CA certificate installed in their keystore or trust store.
 
     * **For {{ece}} and {{ech}} deployments**, if your Domain Controller is configured to use LDAP over TLS and it uses a self-signed certificate or a certificate that is signed by your organization’s CA, you need to enable the deployment to trust this certificate.
@@ -103,7 +103,7 @@ To configure an `ldap` realm with user search:
 
 To configure an `ldap` realm with user DN templates:
 
-1. Add a realm configuration to `elasticsearch.yml` in the `xpack.security.authc.realms.ldap` namespace. At a minimum, you must specify the `url` and `order` of the LDAP server, and specify at least one template with the `user_dn_templates` option. See [LDAP realm settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/security-settings.md#ref-ldap-settings) for all of the options you can set for an `ldap` realm.
+1. Add a realm configuration to `elasticsearch.yml` in the `xpack.security.authc.realms.ldap` namespace. At a minimum, you must specify the `url` and `order` of the LDAP server, and specify at least one template with the `user_dn_templates` option. See [LDAP realm settings](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#ref-ldap-settings) for all of the options you can set for an `ldap` realm.
 
     For example, the following snippet shows an LDAP realm configured with user DN templates:
 
@@ -136,10 +136,10 @@ To configure an `ldap` realm with user DN templates:
 
 2. (Optional) Configure how the {{security-features}} interact with multiple LDAP servers.
 
-    The `load_balance.type` setting can be used at the realm level. The {{es}} {{security-features}} support both failover and load balancing modes of operation. See [LDAP realm settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/security-settings.md#ref-ldap-settings).
+    The `load_balance.type` setting can be used at the realm level. The {{es}} {{security-features}} support both failover and load balancing modes of operation. See [LDAP realm settings](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#ref-ldap-settings).
 
 3. (Optional) To protect passwords, [encrypt communications between {{es}} and the LDAP server](../../../deploy-manage/users-roles/cluster-or-deployment-auth/ldap.md#tls-ldap).
-  
+
     * **For self-managed clusters and {{eck}} deployments**, clients and nodes that connect using SSL/TLS to the Active Directory server need to have the Active Directory server’s certificate or the server’s root CA certificate installed in their keystore or trust store.
 
     * **For {{ece}} and {{ech}} deployments**, if your Domain Controller is configured to use LDAP over TLS and it uses a self-signed certificate or a certificate that is signed by your organization’s CA, you need to enable the deployment to trust this certificate.
@@ -151,17 +151,17 @@ An integral part of a realm authentication process is to resolve the roles assoc
 
 Because users are managed externally in the LDAP server, the expectation is that their roles are managed there as well. LDAP groups often represent user roles for different systems in the organization.
 
-The `active_directory` realm enables you to map Active Directory users to roles using their Active Directory groups or other metadata. 
+The `active_directory` realm enables you to map Active Directory users to roles using their Active Directory groups or other metadata.
 
-You can map LDAP groups to roles in the following ways: 
+You can map LDAP groups to roles in the following ways:
 
 * Using the role mappings page in {{kib}}.
-* Using the [role mapping API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-role-mapping). 
+* Using the [role mapping API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-role-mapping).
 * Using a role mapping file.
 
 For more information, see [Mapping users and groups to roles](/deploy-manage/users-roles/cluster-or-deployment-auth/mapping-users-groups-to-roles.md).
 
-::::{note} 
+::::{note}
 The LDAP realm supports [authorization realms](../../../deploy-manage/users-roles/cluster-or-deployment-auth/realm-chains.md#authorization_realms) as an alternative to role mapping.
 ::::
 
@@ -190,7 +190,7 @@ POST /_security/role_mapping/ldap-superuser <1>
 
 ### Example: Using a role mapping file
 
-:::{tip} 
+:::{tip}
 If you're using {{ece}} or {{ech}}, then you must [upload this file as a custom bundle](/deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md) before it can be referenced. If you're using {{eck}}, then install the file as a [custom configuration file](/deploy-manage/deploy/cloud-on-k8s/custom-configuration-files-plugins.md#use-a-volume-and-volume-mount-together-with-a-configmap-or-secret). If you're using a self-managed cluster, then the file must be present on each node.
 :::
 
@@ -260,7 +260,7 @@ xpack:
 
 The `load_balance.type` setting can be used at the realm level to configure how the {{security-features}} should interact with multiple LDAP servers. The {{security-features}} support both failover and load balancing modes of operation.
 
-See [Load balancing and failover](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/security-settings.md#load-balancing).
+See [Load balancing and failover](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#load-balancing).
 
 
 ## Encrypting communications between {{es}} and LDAP [tls-ldap]
@@ -271,7 +271,7 @@ If you're using {{ech}} or {{ece}}, then you must [upload your certificate as a 
 
 If you're using {{eck}}, then install the certificate as a [custom configuration file](/deploy-manage/deploy/cloud-on-k8s/custom-configuration-files-plugins.md#use-a-volume-and-volume-mount-together-with-a-configmap-or-secret).
 
-:::{tip} 
+:::{tip}
 
 If you're using {{ece}} or {{ech}}, then these steps are required only if TLS is enabled and the Active Directory controller is using self-signed certificates.
 :::
@@ -306,7 +306,7 @@ You can also specify the individual server certificates rather than the CA certi
 
 For more information about these settings, see [LDAP realm settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#ref-ldap-settings).
 
-::::{note} 
+::::{note}
 By default, when you configure {{es}} to connect to an LDAP server using SSL/TLS, it attempts to verify the hostname or IP address specified with the `url` attribute in the realm configuration with the values in the certificate. If the values in the certificate and realm configuration do not match, {{es}} does not allow a connection to the LDAP server. This is done to protect against man-in-the-middle attacks. If necessary, you can disable this behavior by setting the `ssl.verification_mode` property to `certificate`.
 ::::
 

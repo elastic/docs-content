@@ -1,14 +1,19 @@
 ---
+navigation_title: Data tiers and autoscaling support
+applies_to:
+  deployment:
+    ece: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ce-add-support-for-node-roles-and-autoscaling.html
 ---
 
 # Updating custom templates to support node_roles and autoscaling [ce-add-support-for-node-roles-and-autoscaling]
 
-Custom deployment templates should be updated in order to take advantage of new Elastic Cloud Enterprise features, such as [Data tiers](../../../manage-data/lifecycle/data-tiers.md) (that is, the new cold and frozen data tiers) and [Deployment autoscaling](../../autoscaling.md). By updating these templates we also ensure forward compatibility with future Elastic Cloud Enterprise versions that will require certain fields such as `node_roles` and `id` to be present in the deployment configuration.
+Templates created in older versions of ECE should be updated in order to take advantage of new Elastic Cloud Enterprise features, such as [Data tiers](../../../manage-data/lifecycle/data-tiers.md), and [Deployment autoscaling](../../autoscaling.md). By updating these templates we also ensure forward compatibility with future Elastic Cloud Enterprise versions that will require certain fields such as `node_roles` and `id` to be present in the deployment configuration.
 
-System owned deployment templates have already been updated to support both data tiers with `node_roles` and autoscaling. However, the custom templates that you created need to be manually updated by following the steps in this guide.
-
+::::{note}
+System owned deployment templates are automatically updated during the ECE upgrade process to support both data tiers with `node_roles` and autoscaling. However, custom templates that you created must be manually updated by following the steps in this guide.
+::::
 
 ## Adding support for node_roles [ece_adding_support_for_node_roles]
 
@@ -17,7 +22,7 @@ The `node_roles` field defines the roles that an Elasticsearch topology element 
 There are a number of fields that need to be added to each Elasticsearch node in order to support `node_roles`:
 
 * **id**: Unique identifier of the topology element. This field, along with the `node_roles`, identifies an Elasticsearch topology element.
-* **node_roles**: The list of node roles. Allowable roles are: `master`, `ingest`, `ml`, `data_hot`, `data_content`, `data_warm`, `data_cold`, `data_frozen`, `remote_cluster_client`, and `transform`. For details, check [Node roles](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/node-settings.md#node-roles).
+* **node_roles**: The list of node roles. Allowable roles are: `master`, `ingest`, `ml`, `data_hot`, `data_content`, `data_warm`, `data_cold`, `data_frozen`, `remote_cluster_client`, and `transform`. For details, check [Node roles](elasticsearch://reference/elasticsearch/configuration-reference/node-settings.md#node-roles).
 * **topology_element_control**: Controls for the topology element.
 
     * **min**: The absolute minimum size limit for a topology element. If the value is `0`, that means the topology element can be disabled.
