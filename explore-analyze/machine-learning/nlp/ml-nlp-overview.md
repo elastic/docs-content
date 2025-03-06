@@ -16,7 +16,7 @@ Elastic offers a wide range of possibilities to leverage natural language proces
 
 You can **integrate NLP models from different providers** such as Cohere, HuggingFace, or OpenAI and use them as a service through the [semantic_text](../../../solutions/search/semantic-search/semantic-search-semantic-text.md) workflow. You can also use [ELSER](ml-nlp-elser.md) (the retrieval model trained by Elastic) and [E5](ml-nlp-e5.md) in the same way.
 
-The [{{infer}} API](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-inference) enables you to use the same services with a more complex workflow, for greater control over your configurations settings. This [tutorial](../../../solutions/search/inference-api.md) walks you through the process of using the various services with the {{infer}} API.
+The [{{infer}} API](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-inference) enables you to use the same services with a more complex workflow, for greater control over your configurations settings. This [tutorial](../../elastic-inference/inference-api.md) walks you through the process of using the various services with the {{infer}} API.
 
 You can **upload and manage NLP models** using the Eland client and the [{{stack}}](ml-nlp-deploy-models.md). Find the  [list of recommended and compatible models here](ml-nlp-model-ref.md). Refer to [*Examples*](ml-nlp-examples.md) to learn more about how to use {{ml}} models deployed in your cluster.
 

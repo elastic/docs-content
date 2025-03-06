@@ -19,14 +19,14 @@ This tutorial shows you how to use the semantic text feature to perform semantic
 
 Semantic text simplifies the {{infer}} workflow by providing {{infer}} at ingestion time and sensible default values automatically. You don’t need to define model related settings and parameters, or create {{infer}} ingest pipelines.
 
-The recommended way to use [semantic search](../semantic-search.md) in the {{stack}} is following the `semantic_text` workflow. When you need more control over indexing and query settings, you can still use the complete {{infer}} workflow (refer to  [this tutorial](../inference-api.md) to review the process).
+The recommended way to use [semantic search](../semantic-search.md) in the {{stack}} is following the `semantic_text` workflow. When you need more control over indexing and query settings, you can still use the complete {{infer}} workflow (refer to  [this tutorial](../../../explore-analyze/elastic-inference/inference-api.md) to review the process).
 
-This tutorial uses the [`elasticsearch` service](../inference-api/elasticsearch-inference-integration.md) for demonstration, but you can use any service and their supported models offered by the {{infer-cap}} API.
+This tutorial uses the [`elasticsearch` service](../../../explore-analyze/elastic-inference/inference-api/elasticsearch-inference-integration.md) for demonstration, but you can use any service and their supported models offered by the {{infer-cap}} API.
 
 
 ## Requirements [semantic-text-requirements]
 
-This tutorial uses the [`elasticsearch` service](../inference-api/elasticsearch-inference-integration.md) for demonstration, which is created automatically as needed. To use the `semantic_text` field type with an {{infer}} service other than `elasticsearch` service, you must create an inference endpoint using the [Create {{infer}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put).
+This tutorial uses the [`elasticsearch` service](../../../explore-analyze/elastic-inference/inference-api/elasticsearch-inference-integration.md) for demonstration, which is created automatically as needed. To use the `semantic_text` field type with an {{infer}} service other than `elasticsearch` service, you must create an inference endpoint using the [Create {{infer}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put).
 
 
 ## Create the index mapping [semantic-text-index-mapping]
@@ -47,7 +47,7 @@ PUT semantic-embeddings
 ```
 
 1. The name of the field to contain the generated embeddings.
-2. The field to contain the embeddings is a `semantic_text` field. Since no `inference_id` is provided, the default endpoint `.elser-2-elasticsearch` for the [`elasticsearch` service](../inference-api/elasticsearch-inference-integration.md) is used. To use a different {{infer}} service, you must create an {{infer}} endpoint first using the [Create {{infer}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put) and then specify it in the `semantic_text` field mapping using the `inference_id` parameter.
+2. The field to contain the embeddings is a `semantic_text` field. Since no `inference_id` is provided, the default endpoint `.elser-2-elasticsearch` for the [`elasticsearch` service](../../../explore-analyze/elastic-inference/inference-api/elasticsearch-inference-integration.md) is used. To use a different {{infer}} service, you must create an {{infer}} endpoint first using the [Create {{infer}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put) and then specify it in the `semantic_text` field mapping using the `inference_id` parameter.
 
 
 ::::{note}
