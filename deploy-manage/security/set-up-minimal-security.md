@@ -9,7 +9,7 @@ mapped_pages:
 # Set up minimal security [security-minimal-setup]
 
 
-::::{important} 
+::::{important}
 You only need to complete the following steps if you’re running an existing, unsecured cluster and want to enable the {{es}} {{security-features}}.
 ::::
 
@@ -18,7 +18,7 @@ In {{es}} 8.0 and later, security is [enabled automatically](../deploy/self-mana
 
 If you’re running an existing {{es}} cluster where security is disabled, you can manually enable the {{es}} {{security-features}} and then create passwords for built-in users. You can add more users later, but using the built-in users simplifies the process of enabling security for your cluster.
 
-::::{important} 
+::::{important}
 The minimal security scenario is not sufficient for [production mode](../deploy/self-managed/bootstrap-checks.md#dev-vs-prod-mode) clusters. If your cluster has multiple nodes, you must enable minimal security and then [configure Transport Layer Security (TLS)](secure-cluster-communications.md) between nodes.
 ::::
 
@@ -34,7 +34,7 @@ Enabling the {{es}} security features provides basic authentication so that you 
     xpack.security.enabled: true
     ```
 
-    ::::{note} 
+    ::::{note}
     The `$ES_PATH_CONF` variable is the path for the {{es}} configuration files. If you installed {{es}} using archive distributions (`zip` or `tar.gz`), the variable defaults to `$ES_HOME/config`. If you used package distributions (Debian or RPM), the variable defaults to `/etc/elasticsearch`.
     ::::
 
@@ -50,7 +50,7 @@ Enabling the {{es}} security features provides basic authentication so that you 
 
 To communicate with your cluster, you must configure a password for the `elastic` and `kibana_system` built-in users. Unless you enable anonymous access (not recommended), all requests that don’t include credentials are rejected.
 
-::::{note} 
+::::{note}
 You only need to set passwords for the `elastic` and `kibana_system` users when enabling minimal or basic security.
 ::::
 
@@ -61,7 +61,7 @@ You only need to set passwords for the `elastic` and `kibana_system` users when 
     ./bin/elasticsearch
     ```
 
-2. On any node in your cluster, open another terminal window and set the password for the `elastic` built-in user by running the [`elasticsearch-reset-password`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/command-line-tools/reset-password.md) utility. This command resets the password to an auto-generated value.
+2. On any node in your cluster, open another terminal window and set the password for the `elastic` built-in user by running the [`elasticsearch-reset-password`](elasticsearch://reference/elasticsearch/command-line-tools/reset-password.md) utility. This command resets the password to an auto-generated value.
 
     ```shell
     ./bin/elasticsearch-reset-password -u elastic
@@ -98,7 +98,7 @@ This account is not meant for individual users and does not have permission to l
     elasticsearch.username: "kibana_system"
     ```
 
-    ::::{note} 
+    ::::{note}
     The `KBN_PATH_CONF` variable is the path for the {{kib}} configuration files. If you installed {{kib}} using archive distributions (`zip` or `tar.gz`), the variable defaults to `KIB_HOME/config`. If you used package distributions (Debian or RPM), the variable defaults to `/etc/kibana`.
     ::::
 

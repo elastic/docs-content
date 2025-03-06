@@ -8,25 +8,45 @@ exclude:
   - 'README.md'
 
 cross_links:
+  - apm-agent-android
+  - apm-agent-dotnet
+  - apm-agent-go
+  - apm-agent-ios
+  - apm-aws-lambda
+  - apm-k8s-attacher
   - asciidocalypse
-  - kibana
-  - integration-docs
-  - integrations
-  - logstash
-  - elasticsearch
-  - cloud
   - beats
-  - go-elasticsearch
+  - cloud
+  - cloud-on-k8s
+  - curator
+  - ecctl
+  - ecs
+  - ecs-dotnet
+  - ecs-logging
+  - ecs-logging-go-zap
+  - ecs-logging-java
+  - ecs-logging-nodejs
+  - ecs-logging-php
+  - ecs-logging-python
+  - ecs-logging-ruby
+  - eland
+  - elastic-serverless-forwarder
+  - elasticsearch
+  - elasticsearch-hadoop
   - elasticsearch-java
+  - elasticsearch-js
   - elasticsearch-net
   - elasticsearch-php
   - elasticsearch-py
+  - elasticsearch-rs
   - elasticsearch-ruby
-  - elasticsearch-js
-  - ecs
-  - ecs-logging
+  - go-elasticsearch
+  - integration-docs
+  - integrations
+  - kibana
+  - logstash
   - search-ui
-  - cloud-on-k8s
+  - security-docs
 
 toc:
   - file: index.md

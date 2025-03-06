@@ -25,13 +25,13 @@ mapped_pages:
     1. `unknown_role` was not found in `roles.yml`
 
 
-    For more information about this command, see the [`elasticsearch-users` command](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/command-line-tools/users-command.md).
+    For more information about this command, see the [`elasticsearch-users` command](elasticsearch://reference/elasticsearch/command-line-tools/users-command.md).
 
 2. If you are authenticating to LDAP, a number of configuration options can cause this error.
 
     |     |     |
     | --- | --- |
-    | *group identification* | Groups are located by either an LDAP search or by the "memberOf" attribute onthe user. Also, If subtree search is turned off, it will search only onelevel deep. For all the options, see [LDAP realm settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/security-settings.md#ref-ldap-settings).There are many options here and sticking to the defaults will not work for allscenarios. |
+    | *group identification* | Groups are located by either an LDAP search or by the "memberOf" attribute onthe user. Also, If subtree search is turned off, it will search only onelevel deep. For all the options, see [LDAP realm settings](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#ref-ldap-settings).There are many options here and sticking to the defaults will not work for allscenarios. |
     | *group to role mapping* | Either the `role_mapping.yml` file or the location for this file could bemisconfigured. For more information, see [Security files](../../../deploy-manage/security.md). |
     | *role definition* | The role definition might be missing or invalid. |
 

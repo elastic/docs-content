@@ -22,7 +22,7 @@ The `node_roles` field defines the roles that an Elasticsearch topology element 
 There are a number of fields that need to be added to each Elasticsearch node in order to support `node_roles`:
 
 * **id**: Unique identifier of the topology element. This field, along with the `node_roles`, identifies an Elasticsearch topology element.
-* **node_roles**: The list of node roles. Allowable roles are: `master`, `ingest`, `ml`, `data_hot`, `data_content`, `data_warm`, `data_cold`, `data_frozen`, `remote_cluster_client`, and `transform`. For details, check [Node roles](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/node-settings.md#node-roles).
+* **node_roles**: The list of node roles. Allowable roles are: `master`, `ingest`, `ml`, `data_hot`, `data_content`, `data_warm`, `data_cold`, `data_frozen`, `remote_cluster_client`, and `transform`. For details, check [Node roles](elasticsearch://reference/elasticsearch/configuration-reference/node-settings.md#node-roles).
 * **topology_element_control**: Controls for the topology element.
 
     * **min**: The absolute minimum size limit for a topology element. If the value is `0`, that means the topology element can be disabled.

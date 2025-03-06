@@ -95,7 +95,7 @@ The {{stack}} provides several options for processing data collected by {{agent}
 | Sanitize or enrich raw data at the source | Use an {{agent}} processor |
 | Convert data to ECS, normalize field data, or enrich incoming data | Use [ingest pipelines](/manage-data/ingest/transform-enrich/ingest-pipelines.md#pipelines-for-fleet-elastic-agent) |
 | Define or alter the schema at query time | Use [runtime fields](/manage-data/data-store/mapping/runtime-fields.md) |
-| Do something else with your data | Use [Logstash plugins](asciidocalypse://docs/reference/filter-plugins.md) |
+| Do something else with your data | Use [Logstash plugins](logstash://reference/filter-plugins.md) |
 
 
 ## How are {{agent}} processors different from {{ls}} plugins or ingest pipelines? [how-different]

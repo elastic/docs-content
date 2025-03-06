@@ -37,13 +37,13 @@ To start creating {{es}} deployments directly, refer to [](./working-with-deploy
 * [Add a snapshot repository](../../tools/snapshot-and-restore/cloud-enterprise.md) to enable regular backups of your Elasticsearch clusters.
 
 * Consider enabling encryption-at-rest (EAR) on your hosts.
-  
+
   :::{{note}}
   Encryption-at-rest is not implemented out of the box in {{ece}}. [Learn more](/deploy-manage/security/secure-your-elastic-cloud-enterprise-installation.md#ece_encryption).
   :::
 
 * Learn about common maintenance activities—such as adding capacity, applying OS patches, and addressing host failures--at [](../../maintenance/ece.md).
 
-::::{warning} 
+::::{warning}
 During installation, the system generates secrets that are placed into the `/mnt/data/elastic/bootstrap-state/bootstrap-secrets.json` secrets file, unless you passed in a different path with the --host-storage-path parameter. Keep the information in the `bootstrap-secrets.json` file secure by removing it from its default location and placing it into a secure storage location.
 ::::

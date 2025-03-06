@@ -164,7 +164,7 @@ To learn more about cases, refer to [Cases](/solutions/security/investigate/case
 
 You can view, duplicate, export, delete, and create templates from existing Timelines:
 
-1. Find **Timelines** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). 
+1. Find **Timelines** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Click the **All actions** menu in the desired row, then select an action:
 
     * **Create template from timeline** (refer to [Timeline templates](/solutions/security/investigate/timeline-templates.md))
@@ -223,7 +223,7 @@ From the **Correlation** tab, you can also do the following:
 ## Use {{esql}} to investigate events [esql-in-timeline]
 
 ::::{note}
-{{esql}} is enabled by default in {{kib}}. It can be disabled using the `enableESQL` setting from the [Advanced Settings](asciidocalypse://docs/kibana/docs/reference/advanced-settings.md). This will hide the {{esql}} user interface from various applications. However, users will be able to access existing {{esql}} artifacts like saved searches and visualizations.
+{{esql}} is enabled by default in {{kib}}. It can be disabled using the `enableESQL` setting from the [Advanced Settings](kibana://reference/advanced-settings.md). This will hide the {{esql}} user interface from various applications. However, users will be able to access existing {{esql}} artifacts like saved searches and visualizations.
 ::::
 
 
@@ -246,7 +246,7 @@ You can use {{esql}} in Timeline by opening the **{{esql}}** tab. From there, yo
     * Finally, it keeps the default Timeline fields (`@timestamp`, `message`, `event.category`, `event.action`, `host.name`, `source.ip`, `destination.ip`, and `user.name`) in the output.
 
         ::::{tip}
-        When querying indices that tend to be large (for example, `logs-*`), performance can be impacted by the number of fields returned in the output. To optimize performance, we recommend using the [`KEEP`](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/esql-commands.md#esql-keep) command to specify fields that you want returned. For example, add the clause `KEEP @timestamp, user.name` to the end of your query to specify that you only want the `@timestamp` and `user.name` fields returned.
+        When querying indices that tend to be large (for example, `logs-*`), performance can be impacted by the number of fields returned in the output. To optimize performance, we recommend using the [`KEEP`](elasticsearch://reference/query-languages/esql/esql-commands.md#esql-keep) command to specify fields that you want returned. For example, add the clause `KEEP @timestamp, user.name` to the end of your query to specify that you only want the `@timestamp` and `user.name` fields returned.
         ::::
 
 

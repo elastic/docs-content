@@ -37,4 +37,4 @@ To get started with the setup of Elastic APM for your Lambda functions, checkout
 * [Quick Start with APM on AWS Lambda - Python](asciidocalypse://docs/apm-agent-python/docs/reference/lambda-support.md)
 * [Quick Start with APM on AWS Lambda - Java](asciidocalypse://docs/apm-agent-java/docs/reference/aws-lambda.md)
 
-Or, see the [architecture guide](asciidocalypse://docs/apm-aws-lambda/docs/reference/index.md) to learn more about how the extension works, performance impacts, and more.
+Or, see the [architecture guide](apm-aws-lambda://reference/index.md) to learn more about how the extension works, performance impacts, and more.

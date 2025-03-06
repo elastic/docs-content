@@ -28,7 +28,7 @@ If you set the minimum number of allocations to 1, you will be charged even if t
 
 You can enable adaptive allocations by using:
 
-* the create inference endpoint API for [ELSER](../../../solutions/search/inference-api/elser-inference-integration.md), [E5 and models uploaded through Eland](../../../solutions/search/inference-api/elasticsearch-inference-integration.md) that are used as inference services.
+* the create inference endpoint API for [ELSER](../../../explore-analyze/elastic-inference/inference-api/elser-inference-integration.md ), [E5 and models uploaded through Eland](../../../explore-analyze/elastic-inference/inference-api/elasticsearch-inference-integration.md) that are used as inference services.
 * the [start trained model deployment](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-start-trained-model-deployment) or [update trained model deployment](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-update-trained-model-deployment) APIs for trained models that are deployed on machine learning nodes.
 
 If the new allocations fit on the current machine learning nodes, they are immediately started. If more resource capacity is needed for creating new model allocations, then your machine learning node will be scaled up if machine learning autoscaling is enabled to provide enough resources for the new allocation. The number of model allocations can be scaled down to 0. They cannot be scaled up to more than 32 allocations, unless you explicitly set the maximum number of allocations to more. Adaptive allocations must be set up independently for each deployment and [inference endpoint](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put).

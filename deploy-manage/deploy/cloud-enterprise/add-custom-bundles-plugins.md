@@ -1,8 +1,8 @@
 ---
-mapped_pages: 
+mapped_pages:
     - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-add-custom-bundle-plugin.html
 navigation_title: "Custom bundles and plugins"
-applies_to: 
+applies_to:
   deployment:
     ece:
 ---
@@ -360,7 +360,7 @@ You do not need to do this step if you are using default filename and password (
             }
     ```
 
-4. To use this bundle, you can refer it in the [GeoIP processor](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/enrich-processor/geoip-processor.md) of an ingest pipeline as `MyGeoLite2-City.mmdb` under `database_file` such as:
+4. To use this bundle, you can refer it in the [GeoIP processor](elasticsearch://reference/ingestion-tools/enrich-processor/geoip-processor.md) of an ingest pipeline as `MyGeoLite2-City.mmdb` under `database_file` such as:
 
     ```sh
     ...

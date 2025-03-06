@@ -25,7 +25,7 @@ Inspecting requests is available for the following UIs:
 
 To enable inspect across apps:
 
-1. Go to {{kib}}'s [Advanced Settings](asciidocalypse://docs/kibana/docs/reference/advanced-settings.md).
+1. Go to {{kib}}'s [Advanced Settings](kibana://reference/advanced-settings.md).
 2. Find the **Observability** section.
 3. Turn on the **Inspect ES queries** option.
 4. Click **Save changes**.

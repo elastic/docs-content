@@ -28,13 +28,13 @@ Wherever scripting is supported in the {{es}} APIs, the syntax follows the same 
 :   Specifies any named parameters that are passed into the script as variables. [Use parameters](#prefer-params) instead of hard-coded values to decrease compile time.
 
 
-## Write your first script [hello-world-script] 
+## Write your first script [hello-world-script]
 
 [Painless](modules-scripting-painless.md) is the default scripting language for {{es}}. It is secure, performant, and provides a natural syntax for anyone with a little coding experience.
 
 A Painless script is structured as one or more statements and optionally has one or more user-defined functions at the beginning. A script must always have at least one statement.
 
-The [Painless execute API](asciidocalypse://docs/elasticsearch/docs/reference/scripting-languages/painless/painless-api-examples.md) provides the ability to test a script with simple user-defined parameters and receive a result. Let’s start with a complete script and review its constituent parts.
+The [Painless execute API](elasticsearch://reference/scripting-languages/painless/painless-api-examples.md) provides the ability to test a script with simple user-defined parameters and receive a result. Let’s start with a complete script and review its constituent parts.
 
 First, index a document with a single field so that we have some data to work with:
 
@@ -45,7 +45,7 @@ PUT my-index-000001/_doc/1
 }
 ```
 
-We can then construct a script that operates on that field and run evaluate the script as part of a query. The following query uses the [`script_fields`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/retrieve-selected-fields.md#script-fields) parameter of the search API to retrieve a script valuation. There’s a lot happening here, but we’ll break it down the components to understand them individually. For now, you only need to understand that this script takes `my_field` and operates on it.
+We can then construct a script that operates on that field and run evaluate the script as part of a query. The following query uses the [`script_fields`](elasticsearch://reference/elasticsearch/rest-apis/retrieve-selected-fields.md#script-fields) parameter of the search API to retrieve a script valuation. There’s a lot happening here, but we’ll break it down the components to understand them individually. For now, you only need to understand that this script takes `my_field` and operates on it.
 
 ```console
 GET my-index-000001/_search
@@ -70,7 +70,7 @@ GET my-index-000001/_search
 The `script` is a standard JSON object that defines scripts under most APIs in {{es}}. This object requires `source` to define the script itself. The script doesn’t specify a language, so it defaults to Painless.
 
 
-## Use parameters in your script [prefer-params] 
+## Use parameters in your script [prefer-params]
 
 The first time {{es}} sees a new script, it compiles the script and stores the compiled version in a cache. Compilation can be a heavy process. Rather than hard-coding values in your script, pass them as named `params` instead.
 
@@ -97,13 +97,13 @@ You can compile up to 150 scripts per 5 minutes by default. For ingest contexts,
 script.context.field.max_compilations_rate=100/10m
 ```
 
-::::{important} 
+::::{important}
 If you compile too many unique scripts within a short time, {{es}} rejects the new dynamic scripts with a `circuit_breaking_exception` error.
 ::::
 
 
 
-## Shorten your script [script-shorten-syntax] 
+## Shorten your script [script-shorten-syntax]
 
 Using syntactic abilities that are native to Painless, you can reduce verbosity in your scripts and make them shorter. Here’s a simple script that we can make shorter:
 
@@ -152,13 +152,13 @@ This version of the script removes several components and simplifies the syntax 
 Use this abbreviated syntax anywhere that {{es}} supports scripts, such as when you’re creating [runtime fields](../../manage-data/data-store/mapping/map-runtime-field.md).
 
 
-## Store and retrieve scripts [script-stored-scripts] 
+## Store and retrieve scripts [script-stored-scripts]
 
 You can store and retrieve scripts from the cluster state using the [stored script APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-script). Stored scripts allow you to reference shared scripts for operations like scoring, aggregating, filtering, and reindexing. Instead of embedding scripts inline in each query, you can reference these shared operations.
 
 Stored scripts can also reduce request payload size. Depending on script size and request frequency, this can help lower latency and data transfer costs.
 
-::::{note} 
+::::{note}
 Unlike regular scripts, stored scripts require that you specify a script language using the `lang` parameter.
 ::::
 
@@ -214,7 +214,7 @@ DELETE _scripts/calculate-score
 ```
 
 
-## Update documents with scripts [scripts-update-scripts] 
+## Update documents with scripts [scripts-update-scripts]
 
 You can use the [update API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-update) to update documents with a specified script. The script can update, delete, or skip modifying the document. The update API also supports passing a partial document, which is merged into the existing document.
 

@@ -6,7 +6,7 @@ mapped_pages:
 
 # Symptom: High CPU usage [high-cpu-usage]
 
-{{es}} uses [thread pools](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/thread-pool-settings.md) to manage CPU resources for concurrent operations. High CPU usage typically means one or more thread pools are running low.
+{{es}} uses [thread pools](elasticsearch://reference/elasticsearch/configuration-reference/thread-pool-settings.md) to manage CPU resources for concurrent operations. High CPU usage typically means one or more thread pools are running low.
 
 If a thread pool is depleted, {{es}} will [reject requests](rejected-requests.md) related to the thread pool. For example, if the `search` thread pool is depleted, {{es}} will reject search requests until more threads are available.
 
