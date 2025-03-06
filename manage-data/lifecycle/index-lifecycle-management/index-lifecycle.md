@@ -34,7 +34,7 @@ If you use {{es}}'s security features, {{ilm-init}} performs operations as the u
 The minimum age defaults to zero, which causes {{ilm-init}} to move indices to the next phase as soon as all actions in the current phase complete.
 
 ::::{note}
-If an index has been [rolled over](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-lifecycle-actions/ilm-rollover.md), then the `min_age` value is relative to the time the index was rolled over, not the index creation time. [Learn more](../../../troubleshoot/elasticsearch/index-lifecycle-management-errors.md#min-age-calculation).
+If an index has been [rolled over](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-rollover.md), then the `min_age` value is relative to the time the index was rolled over, not the index creation time. [Learn more](../../../troubleshoot/elasticsearch/index-lifecycle-management-errors.md#min-age-calculation).
 
 ::::
 
@@ -59,42 +59,42 @@ When an index enters a phase, {{ilm-init}} caches the phase definition in the in
 
 * Hot
 
-    * [Set Priority](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-lifecycle-actions/ilm-set-priority.md)
-    * [Unfollow](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-lifecycle-actions/ilm-unfollow.md)
-    * [Rollover](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-lifecycle-actions/ilm-rollover.md)
-    * [Read-Only](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-lifecycle-actions/ilm-readonly.md)
-    * [Downsample](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-lifecycle-actions/ilm-downsample.md)
-    * [Shrink](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-lifecycle-actions/ilm-shrink.md)
-    * [Force Merge](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-lifecycle-actions/ilm-forcemerge.md)
-    * [Searchable Snapshot](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-lifecycle-actions/ilm-searchable-snapshot.md)
+    * [Set Priority](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-set-priority.md)
+    * [Unfollow](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-unfollow.md)
+    * [Rollover](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-rollover.md)
+    * [Read-Only](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-readonly.md)
+    * [Downsample](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-downsample.md)
+    * [Shrink](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-shrink.md)
+    * [Force Merge](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-forcemerge.md)
+    * [Searchable Snapshot](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-searchable-snapshot.md)
 
 * Warm
 
-    * [Set Priority](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-lifecycle-actions/ilm-set-priority.md)
-    * [Unfollow](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-lifecycle-actions/ilm-unfollow.md)
-    * [Read-Only](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-lifecycle-actions/ilm-readonly.md)
-    * [Downsample](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-lifecycle-actions/ilm-downsample.md)
-    * [Allocate](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-lifecycle-actions/ilm-allocate.md)
-    * [Migrate](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-lifecycle-actions/ilm-migrate.md)
-    * [Shrink](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-lifecycle-actions/ilm-shrink.md)
-    * [Force Merge](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-lifecycle-actions/ilm-forcemerge.md)
+    * [Set Priority](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-set-priority.md)
+    * [Unfollow](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-unfollow.md)
+    * [Read-Only](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-readonly.md)
+    * [Downsample](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-downsample.md)
+    * [Allocate](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-allocate.md)
+    * [Migrate](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-migrate.md)
+    * [Shrink](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-shrink.md)
+    * [Force Merge](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-forcemerge.md)
 
 * Cold
 
-    * [Set Priority](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-lifecycle-actions/ilm-set-priority.md)
-    * [Unfollow](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-lifecycle-actions/ilm-unfollow.md)
-    * [Read-Only](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-lifecycle-actions/ilm-readonly.md)
-    * [Downsample](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-lifecycle-actions/ilm-downsample.md)
-    * [Searchable Snapshot](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-lifecycle-actions/ilm-searchable-snapshot.md)
-    * [Allocate](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-lifecycle-actions/ilm-allocate.md)
-    * [Migrate](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-lifecycle-actions/ilm-migrate.md)
+    * [Set Priority](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-set-priority.md)
+    * [Unfollow](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-unfollow.md)
+    * [Read-Only](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-readonly.md)
+    * [Downsample](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-downsample.md)
+    * [Searchable Snapshot](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-searchable-snapshot.md)
+    * [Allocate](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-allocate.md)
+    * [Migrate](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-migrate.md)
 
 * Frozen
 
-    * [Unfollow](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-lifecycle-actions/ilm-unfollow.md)
-    * [Searchable Snapshot](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-lifecycle-actions/ilm-searchable-snapshot.md)
+    * [Unfollow](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-unfollow.md)
+    * [Searchable Snapshot](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-searchable-snapshot.md)
 
 * Delete
 
-    * [Wait For Snapshot](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-lifecycle-actions/ilm-wait-for-snapshot.md)
-    * [Delete](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-lifecycle-actions/ilm-delete.md)
+    * [Wait For Snapshot](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-wait-for-snapshot.md)
+    * [Delete](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-delete.md)

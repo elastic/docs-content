@@ -2,6 +2,9 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/observability/current/logs-send-application.html
   - https://www.elastic.co/guide/en/serverless/current/observability-send-application-logs.html
+applies_to:
+  stack: all
+  serverless: all
 ---
 
 # APM agent log sending [observability-send-application-logs]

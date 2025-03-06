@@ -21,14 +21,13 @@ With the Amazon S3 integration, you can collect these S3 metrics from CloudWatch
 
 ## Get started [get-started-s3]
 
-If you plan to collect request metrics, enable them for the S3 buckets you want to monitor. To learn how, refer to the [AWS documentation](https://docs.aws.amazon.com/AmazonS3/latest/userguide/configure-request-metrics-bucket.md).
+If you plan to collect request metrics, enable them for the S3 buckets you want to monitor. To learn how, refer to the [AWS documentation](https://docs.aws.amazon.com/AmazonS3/latest/userguide/configure-request-metrics-bucket.html).
 
 To collect S3 metrics, you typically need to install the Elastic [Amazon S3 integration](https://docs.elastic.co/en/integrations/aws/s3) and deploy an {{agent}} locally or on an EC2 instance.
 
 Expand the **quick guide** to learn how, or skip to the next section if your data is already in {{es}}.
 
-:::::{dropdown} **Quick guide: Add data**
-::::{note}
+:::::{dropdown} Quick guide: Add data
 1. In the Observability UI, find **Integrations** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. In the query bar, search for and select the **Amazon S3** integration.
 3. Read the overview to make sure you understand integration requirements and other considerations.
@@ -52,7 +51,7 @@ Expand the **quick guide** to learn how, or skip to the next section if your dat
 
 9. When incoming data is confirmed—​after a minute or two—​click **View assets** to access the dashboards.
 
-For more information {{agent}} and integrations, refer to the [{{fleet}} and {{agent}} documentation](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/index.md).
+For more information {{agent}} and integrations, refer to the [{{fleet}} and {{agent}} documentation](/reference/ingestion-tools/fleet/index.md).
 
 ::::
 

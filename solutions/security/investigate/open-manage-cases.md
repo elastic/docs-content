@@ -60,7 +60,7 @@ For self-managed {{kib}}:
 1. Create a preconfigured email connector.
 
     ::::{note}
-    At this time, email notifications support only [preconfigured email connectors](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/pre-configured-connectors.md), which are defined in the `kibana.yml` file.
+    At this time, email notifications support only [preconfigured email connectors](kibana://reference/connectors-kibana/pre-configured-connectors.md), which are defined in the `kibana.yml` file.
     ::::
 
 2. Set the `notifications.connectors.default.email` {{kib}} setting to the name of your email connector.
@@ -150,7 +150,7 @@ To upload files to a case, click the **Files** tab:
 :class: screenshot
 :::
 
-You can set file types and sizes by configuring your [{{kib}} case settings](asciidocalypse://docs/kibana/docs/reference/configuration-reference/cases-settings.md).
+You can set file types and sizes by configuring your [{{kib}} case settings](kibana://reference/configuration-reference/cases-settings.md).
 
 % The following note was grabbed from the Serverless docs. Check if this is Serverless only or if it's for both.
 

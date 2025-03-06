@@ -917,7 +917,7 @@ You have now learned about parsing logs in either {{beats}} or {{es}}. What if w
 
 Writing out logs as plain text works and is easy to read for humans. However, first writing them out as plain text, parsing them using the `dissect` processors, and then creating a JSON again sounds tedious and burns unneeded CPU cycles.
 
-While log4j2 has a [JSONLayout](https://logging.apache.org/log4j/2.x/manual/layouts.md#JSONLayout), you can go further and use a Library called [ecs-logging-java](https://github.com/elastic/ecs-logging-java). The advantage of ECS logging is that it uses the [Elastic Common Schema](asciidocalypse://docs/ecs/docs/reference/index.md). ECS defines a standard set of fields used when storing event data in {{es}}, such as logs and metrics.
+While log4j2 has a [JSONLayout](https://logging.apache.org/log4j/2.x/manual/layouts.html#JSONLayout), you can go further and use a Library called [ecs-logging-java](https://github.com/elastic/ecs-logging-java). The advantage of ECS logging is that it uses the [Elastic Common Schema](asciidocalypse://docs/ecs/docs/reference/index.md). ECS defines a standard set of fields used when storing event data in {{es}}, such as logs and metrics.
 
 1. Instead of writing our logging standard, use an existing one. Let’s add the logging dependency to our Javalin application.
 
@@ -1288,9 +1288,9 @@ Visualize the number of log messages over time, split by the log level. Since th
 1. Log into {{kib}} and select **Visualize** → **Create Visualization**.
 2. Create a line chart and select `metricbeat-*` as the source.
 
-    The basic idea is to have a [max aggregation](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/aggregations/search-aggregations-metrics-max-aggregation.md) on the y-axis on the `prometheus.log4j2_events_total.rate` field, whereas the x-axis, is split by date using a [date_histogram aggregation](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/aggregations/search-aggregations-bucket-datehistogram-aggregation.md) on the `@timestamp` field.
+    The basic idea is to have a [max aggregation](elasticsearch://reference/data-analysis/aggregations/search-aggregations-metrics-max-aggregation.md) on the y-axis on the `prometheus.log4j2_events_total.rate` field, whereas the x-axis, is split by date using a [date_histogram aggregation](elasticsearch://reference/data-analysis/aggregations/search-aggregations-bucket-datehistogram-aggregation.md) on the `@timestamp` field.
 
-    There is one more split within each date histogram bucket, split by log level, using a [terms aggregation](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/aggregations/search-aggregations-bucket-terms-aggregation.md) on the `prometheus.labels.level`, which contains the log level. Also, increase the size of the log level to six to display every log level.
+    There is one more split within each date histogram bucket, split by log level, using a [terms aggregation](elasticsearch://reference/data-analysis/aggregations/search-aggregations-bucket-terms-aggregation.md) on the `prometheus.labels.level`, which contains the log level. Also, increase the size of the log level to six to display every log level.
 
     The final result looks like this.
 
@@ -1561,7 +1561,7 @@ A programmatic setup allows you to attach the agent via a line of java in your s
 
     This looks much better, having differences between endpoints.
 
-4. Add another endpoint to see the power of transactions, which polls another HTTP service. You may have heard of [wttr.in](https://wttr.in/), a service to poll weather information from. Let’s implement a proxy HTTP method that forwards the request to that endpoint. Let’s use [Apache HTTP client](https://hc.apache.org/httpcomponents-client-4.5.x/quickstart.md), one of the most typical HTTP clients out there.
+4. Add another endpoint to see the power of transactions, which polls another HTTP service. You may have heard of [wttr.in](https://wttr.in/), a service to poll weather information from. Let’s implement a proxy HTTP method that forwards the request to that endpoint. Let’s use [Apache HTTP client](https://hc.apache.org/httpcomponents-client-4.5.x/quickstart.html), one of the most typical HTTP clients out there.
 
     ```gradle
     implementation 'org.apache.httpcomponents:fluent-hc:4.5.12'

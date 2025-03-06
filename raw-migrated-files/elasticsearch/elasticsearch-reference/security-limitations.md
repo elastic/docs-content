@@ -6,44 +6,44 @@ navigation_title: "Limitations"
 
 
 
-## Plugins [_plugins] 
+## Plugins [_plugins]
 
 {{es}}'s plugin infrastructure is extremely flexible in terms of what can be extended. While it opens up {{es}} to a wide variety of (often custom) additional functionality, when it comes to security, this high extensibility level comes at a cost. We have no control over the third-party plugins' code (open source or not) and therefore we cannot guarantee their compliance with {{stack-security-features}}. For this reason, third-party plugins are not officially supported on clusters with {{security-features}} enabled.
 
 
-## Changes in wildcard behavior [_changes_in_wildcard_behavior] 
+## Changes in wildcard behavior [_changes_in_wildcard_behavior]
 
 {{es}} clusters with the {{security-features}} enabled apply `_all` and other wildcards to data streams, indices, and aliases the current user has privileges for, not all data streams, indices, and aliases on the cluster.
 
 
-## Multi document APIs [_multi_document_apis] 
+## Multi document APIs [_multi_document_apis]
 
 Multi get and multi term vectors API throw IndexNotFoundException when trying to access non existing indices that the user is not authorized for. By doing that they leak information regarding the fact that the data stream or index doesn’t exist, while the user is not authorized to know anything about those data streams or indices.
 
 
-## Filtered index aliases [_filtered_index_aliases] 
+## Filtered index aliases [_filtered_index_aliases]
 
 Aliases containing filters are not a secure way to restrict access to individual documents, due to the limitations described in [Index and field names can be leaked when using aliases](../../../deploy-manage/security.md#alias-limitations). The {{stack-security-features}} provide a secure way to restrict access to documents through the [document-level security](../../../deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level.md) feature.
 
 
-## Field and document level security limitations [field-document-limitations] 
+## Field and document level security limitations [field-document-limitations]
 
 ::::{include} /deploy-manage/_snippets/field-doc-sec-limitations.md
 ::::
 
-## Index and field names can be leaked when using aliases [alias-limitations] 
+## Index and field names can be leaked when using aliases [alias-limitations]
 
 Calling certain {{es}} APIs on an alias can potentially leak information about indices that the user isn’t authorized to access. For example, when you get the mappings for an alias with the `_mapping` API, the response includes the index name and mappings for each index that the alias applies to.
 
 Until this limitation is addressed, avoid index and field names that contain confidential or sensitive information.
 
 
-## LDAP realm [_ldap_realm] 
+## LDAP realm [_ldap_realm]
 
 The [LDAP Realm](../../../deploy-manage/users-roles/cluster-or-deployment-auth/ldap.md) does not currently support the discovery of nested LDAP Groups. For example, if a user is a member of `group_1` and `group_1` is a member of `group_2`, only `group_1` will be discovered. However, the [Active Directory Realm](../../../deploy-manage/users-roles/cluster-or-deployment-auth/active-directory.md) **does** support transitive group membership.
 
 
-## Resource sharing check for users and API keys [can-access-resources-check] 
+## Resource sharing check for users and API keys [can-access-resources-check]
 
 The result of [async search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-async-search-submit) and [scroll](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-scroll) requests can be retrieved later by the same user or API key that submitted the initial request. The verification process involves comparing the username, authentication realm type, and (for realms other than file or native) realm name. If you used an API key to submit the request, only that key can retrieve the results. This logic also has a few limitations:
 

@@ -21,13 +21,13 @@ applies_to:
 
 # SAML authentication [saml-realm]
 
-The {{stack}} supports SAML single-sign-on (SSO) into {{kib}}, using {{es}} as a backend service. 
+The {{stack}} supports SAML single-sign-on (SSO) into {{kib}}, using {{es}} as a backend service.
 
 The {{security-features}} provide this support using the Web Browser SSO profile of the SAML 2.0 protocol. This protocol is specifically designed to support authentication using an interactive web browser, so it does not operate as a standard authentication realm. Instead, there are {{kib}} and {{es}} {{security-features}} that work together to enable interactive SAML sessions.
 
 This means that the SAML realm is not suitable for use by standard REST clients. If you configure a SAML realm for use in {{kib}}, you should also configure another realm, such as the [native realm](/deploy-manage/users-roles/cluster-or-deployment-auth/native.md) in your authentication chain.
 
-Because this feature is designed with {{kib}} in mind, most sections of this guide assume {{kib}} is used. To learn how a custom web application could use the OpenID Connect REST APIs to authenticate the users to {{es}} with SAML, refer to [SAML without {{kib}}](#saml-no-kibana). 
+Because this feature is designed with {{kib}} in mind, most sections of this guide assume {{kib}} is used. To learn how a custom web application could use the OpenID Connect REST APIs to authenticate the users to {{es}} with SAML, refer to [SAML without {{kib}}](#saml-no-kibana).
 
 The SAML support in {{kib}} is designed with the expectation that it will be the primary (or sole) authentication method for users of that {{kib}} instance. After you enable SAML authentication in {{kib}}, it will affect all users who try to login. The [Configuring {{kib}}](/deploy-manage/users-roles/cluster-or-deployment-auth/saml.md#saml-configure-kibana) section provides more detail about how this works.
 
@@ -47,7 +47,7 @@ Additional steps outlined in this document are optional.
 ::::
 
 ::::{tip}
-This topic describes implementing SAML SSO at the deployment or cluster level, for the purposes of authenticating with a {{kib}} instance. 
+This topic describes implementing SAML SSO at the deployment or cluster level, for the purposes of authenticating with a {{kib}} instance.
 
 Depending on your deployment type, you can also configure SSO for the following use cases:
 
@@ -59,7 +59,7 @@ Depending on your deployment type, you can also configure SSO for the following 
 
 In SAML terminology, the {{stack}} is operating as a *Service Provider*.
 
-The other component that is needed to enable SAML single-sign-on is the *Identity Provider*, which is a service that handles your credentials and performs that actual authentication of users. 
+The other component that is needed to enable SAML single-sign-on is the *Identity Provider*, which is a service that handles your credentials and performs that actual authentication of users.
 
 If you are interested in configuring SSO into {{kib}}, then you need to provide {{es}} with information about your *Identity Provider*, and you will need to register the {{stack}} as a known *Service Provider* within that Identity Provider. There are also a few configuration changes that are required in {{kib}} to activate the SAML authentication provider.
 
@@ -89,13 +89,13 @@ The {{stack}} requires that all messages from the IdP are signed. For authentica
 
 Before you set up SAML single-sign on, you must have a [SAML IdP](#saml-guide-idp) configured.
 
-If you're using a self-managed cluster, then perform the following additional steps: 
+If you're using a self-managed cluster, then perform the following additional steps:
 
 * Enable TLS for HTTP.
 
     If your {{es}} cluster is operating in production mode, you must configure the HTTP interface to use SSL/TLS before you can enable SAML authentication. For more information, see [Encrypt HTTP client communications for {{es}}](/deploy-manage/security/set-up-basic-security-plus-https.md#encrypt-http-communication).
 
-    If you started {{es}} [with security enabled](/deploy-manage/deploy/self-managed/installing-elasticsearch.md), then TLS is already enabled for HTTP. 
+    If you started {{es}} [with security enabled](/deploy-manage/deploy/self-managed/installing-elasticsearch.md), then TLS is already enabled for HTTP.
 
     {{ech}}, {{ece}}, and {{eck}} have TLS enabled by default.
 
@@ -113,11 +113,11 @@ If you're using a self-managed cluster, then perform the following additional st
 
 SAML authentication is enabled by configuring a SAML realm within the authentication chain for {{es}}.
 
-This realm has a few mandatory settings, and a number of optional settings. The available settings are described in detail in [Security settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/security-settings.md): 
-* [SAML realm settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/security-settings.md#ref-saml-settings)
-* [SAML realm signing settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/security-settings.md#ref-saml-signing-settings)
-* [SAML realm encryption settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/security-settings.md#ref-saml-encryption-settings)
-* [SAML realm SSL settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/security-settings.md#ref-saml-ssl-settings)
+This realm has a few mandatory settings, and a number of optional settings. The available settings are described in detail in [Security settings](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md):
+* [SAML realm settings](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#ref-saml-settings)
+* [SAML realm signing settings](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#ref-saml-signing-settings)
+* [SAML realm encryption settings](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#ref-saml-encryption-settings)
+* [SAML realm SSL settings](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#ref-saml-ssl-settings)
 
 This guide will walk you through the most common settings.
 
@@ -148,13 +148,13 @@ order
   If you're using {{eck}}, then make sure not to disable Elasticsearch’s file realm set by ECK, as ECK relies on the file realm for its operation. Set the `order` setting of the SAML realm to a greater value than the `order` value set for the file and native realms, which is by default -100 and -99 respectively.
 
 idp.metadata.path
-:   $$$idp-metadata-path$$$ The path to the metadata file for your Identity Provider. The metadata file path can either be a path, or an HTTPS URL. 
+:   $$$idp-metadata-path$$$ The path to the metadata file for your Identity Provider. The metadata file path can either be a path, or an HTTPS URL.
 
-    :::{tip} 
-    If you want to pass a file path, then review the following: 
-    
-    * File path settings are resolved relative to the {{es}} config directory. {{es}} will automatically monitor this file for changes and will reload the configuration whenever it is updated. 
-    * If you're using {{ece}} or {{ech}}, then you must upload the file [as a custom bundle](/deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md) before it can be referenced. 
+    :::{tip}
+    If you want to pass a file path, then review the following:
+
+    * File path settings are resolved relative to the {{es}} config directory. {{es}} will automatically monitor this file for changes and will reload the configuration whenever it is updated.
+    * If you're using {{ece}} or {{ech}}, then you must upload the file [as a custom bundle](/deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md) before it can be referenced.
     * If you're using {{eck}}, then install the file as [custom configuration files](/deploy-manage/deploy/cloud-on-k8s/custom-configuration-files-plugins.md#use-a-volume-and-volume-mount-together-with-a-configmap-or-secret).
     :::
 
@@ -212,8 +212,8 @@ The recommended steps for configuring these SAML attributes are as follows:
 
 1. Consult your IdP to see what user attributes it can provide. This varies greatly between providers, but you should be able to obtain a list from the documentation, or from your local admin.
 2. Review the list of [user properties](#saml-es-user-properties) that {{es}} supports, and decide which of them are useful to you, and can be provided by your IdP. At a *minimum*, the `principal` attribute is required.
-3. Configure your IdP to "release" those attributes to your {{kib}} SAML service provider. This process varies by provider: some will provide a user interface for this, while others may require that you edit configuration files. 
-   
+3. Configure your IdP to "release" those attributes to your {{kib}} SAML service provider. This process varies by provider: some will provide a user interface for this, while others may require that you edit configuration files.
+
    Because {{es}} does not require that any specific URIs are used, you can use any URIs to use for each attribute as they are recommended by the IDP or your local administrator.
 4. Configure the SAML realm in {{es}} to associate the [{{es}} user properties](#saml-es-user-properties) to the URIs that you configured in your IdP. The [sample configuration](#saml-create-realm) configures the `principal` and `groups` attributes.
 
@@ -228,7 +228,7 @@ In general, {{es}} expects that the configured value for an attribute will be a 
 :   This uses the SAML `NameID` value (all leading and trailing whitespace removed), but only if the NameID format is `urn:oasis:names:tc:SAML:2.0:nameid-format:persistent`. A SAML `NameID` element has an optional `Format` attribute that indicates the semantics of the provided name. It is common for IdPs to be configured with "transient" NameIDs that present a new identifier for each session. Since it is rarely useful to use a transient NameID as part of an attribute mapping, the "nameid:persistent" attribute name can be used as a safety mechanism that will cause an error if you attempt to map from a `NameID` that does not have a persistent value.
 
 :::{note}
-Identity Providers can be either statically configured to release a `NameID` with a specific format, or they can be configured to try to conform with the requirements of the SP. The SP declares its requirements as part of the Authentication Request, using an element which is called the `NameIDPolicy`. If this is needed, you can set the relevant [settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/security-settings.md#ref-saml-settings) named `nameid_format` in order to request that the IdP releases a `NameID` with a specific format.
+Identity Providers can be either statically configured to release a `NameID` with a specific format, or they can be configured to try to conform with the requirements of the SP. The SP declares its requirements as part of the Authentication Request, using an element which is called the `NameIDPolicy`. If this is needed, you can set the relevant [settings](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#ref-saml-settings) named `nameid_format` in order to request that the IdP releases a `NameID` with a specific format.
 :::
 
 *friendlyName*
@@ -304,7 +304,7 @@ It is sometimes necessary for a SAML SP to be able to impose specific restrictio
 
 The SAML SP defines a set of Authentication Context Class Reference values, which describe the restrictions to be imposed on the IdP, and sends these in the Authentication Request. The IdP attempts to grant these restrictions. If it cannot grant them, the authentication attempt fails. If the user is successfully authenticated, the Authentication Statement of the SAML Response contains an indication of the restrictions that were satisfied.
 
-You can define the Authentication Context Class Reference values by using the `req_authn_context_class_ref` option in the SAML realm configuration. See [SAML realm settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/security-settings.md#ref-saml-settings).
+You can define the Authentication Context Class Reference values by using the `req_authn_context_class_ref` option in the SAML realm configuration. See [SAML realm settings](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#ref-saml-settings).
 
 {{es}} supports only the `exact` comparison method for the Authentication Context. When it receives the Authentication Response from the IdP, {{es}} examines the value of the Authentication Context Class Reference that is part of the Authentication Statement of the SAML Assertion. If it matches one of the requested values, the authentication is considered successful. Otherwise, the authentication attempt fails.
 
@@ -364,7 +364,7 @@ You can configure {{es}} for signing, encryption or both, using a single key or 
 
 The {{stack}} uses X.509 certificates with RSA private keys for SAML cryptography. These keys can be generated using any standard SSL tool, including the `elasticsearch-certutil` tool.
 
-Your IdP may require that the {{stack}} have a cryptographic key for signing SAML messages, and that you provide the corresponding signing certificate within the Service Provider configuration (either within the {{stack}} SAML metadata file, or manually configured within the IdP administration interface). 
+Your IdP may require that the {{stack}} have a cryptographic key for signing SAML messages, and that you provide the corresponding signing certificate within the Service Provider configuration (either within the {{stack}} SAML metadata file, or manually configured within the IdP administration interface).
 
 While most IdPs do not expect authentication requests to be signed, it is commonly the case that signatures are required for logout requests. Your IdP will validate these signatures against the signing certificate that has been configured for the {{stack}} Service Provider.
 
@@ -372,7 +372,7 @@ Encryption certificates are rarely needed, but the {{stack}} supports them for c
 
 ### Generate certificates and keys [_generating_certificates_and_keys]
 
-{{es}} supports certificates and keys in either PEM, PKCS#12 or JKS format. Some Identity Providers are more restrictive in the formats they support, and will require you to provide the certificates as a file in a particular format. You should consult the documentation for your IdP to determine what formats they support. 
+{{es}} supports certificates and keys in either PEM, PKCS#12 or JKS format. Some Identity Providers are more restrictive in the formats they support, and will require you to provide the certificates as a file in a particular format. You should consult the documentation for your IdP to determine what formats they support.
 
 #### Example: Using `openssl`
 
@@ -387,7 +387,7 @@ deployment:
   self:
 ```
 
-Using the [`elasticsearch-certutil` tool](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/command-line-tools/certutil.md), you can generate a signing certificate with the following command. Because PEM format is the most commonly supported format, the example generates a certificate in that format.
+Using the [`elasticsearch-certutil` tool](elasticsearch://reference/elasticsearch/command-line-tools/certutil.md), you can generate a signing certificate with the following command. Because PEM format is the most commonly supported format, the example generates a certificate in that format.
 
 ```sh
 bin/elasticsearch-certutil cert --self-signed --pem --days 1100 --name saml-sign --out saml-sign.zip
@@ -414,8 +414,8 @@ Encryption certificates can be generated with the same process.
 
 By default, {{es}} will sign *all* outgoing SAML messages if a signing key has been configured.
 
-:::{tip} 
-* In self-managed clusters, file path settings is resolved relative to the {{es}} config directory. {{es}} will automatically monitor this file for changes and will reload the configuration whenever it is updated. 
+:::{tip}
+* In self-managed clusters, file path settings is resolved relative to the {{es}} config directory. {{es}} will automatically monitor this file for changes and will reload the configuration whenever it is updated.
 * If you're using {{ece}} or {{ech}}, then you must upload any certificate or keystore files [as a custom bundle](/deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md) before it can be referenced. You can add this file to your existing SAML bundle.
 * If you're using {{eck}}, then install the files as [custom configuration files](/deploy-manage/deploy/cloud-on-k8s/custom-configuration-files-plugins.md#use-a-volume-and-volume-mount-together-with-a-configmap-or-secret).
 :::
@@ -478,8 +478,8 @@ The {{es}} {{security-features}} support a single key for message decryption. If
 
 If an `Assertion` contains both encrypted and plain-text attributes, then failure to decrypt the encrypted attributes will not cause an automatic rejection. Rather, {{es}} processes the available plain-text attributes (and any `EncryptedAttributes` that could be decrypted).
 
-:::{tip} 
-* In self-managed clusters, file path settings is resolved relative to the {{es}} config directory. {{es}} will automatically monitor this file for changes and will reload the configuration whenever it is updated. 
+:::{tip}
+* In self-managed clusters, file path settings is resolved relative to the {{es}} config directory. {{es}} will automatically monitor this file for changes and will reload the configuration whenever it is updated.
 * If you're using {{ece}} or {{ech}}, then you must upload any certificate or keystore files [as a custom bundle](/deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md) before it can be referenced. You can add this file to your existing SAML bundle.
 * If you're using {{eck}}, then install the files as [custom configuration files](/deploy-manage/deploy/cloud-on-k8s/custom-configuration-files-plugins.md#use-a-volume-and-volume-mount-together-with-a-configmap-or-secret).
 :::
@@ -519,7 +519,7 @@ If you want to use **PKCS#12 formatted** files or a **Java Keystore** for SAML e
 
 Some Identity Providers support importing a metadata file from the Service Provider. This will automatically configure many of the integration options between the IdP and the SP.
 
-The {{stack}} supports generating such a metadata file using the [SAML service provider metadata API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-saml-service-provider-metadata) or the [`bin/elasticsearch-saml-metadata` command](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/command-line-tools/saml-metadata.md).
+The {{stack}} supports generating such a metadata file using the [SAML service provider metadata API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-saml-service-provider-metadata) or the [`bin/elasticsearch-saml-metadata` command](elasticsearch://reference/elasticsearch/command-line-tools/saml-metadata.md).
 
 ### Using the SAML service provider metadata API
 
@@ -531,7 +531,7 @@ curl -u user_name:password  -X GET http://localhost:9200/_security/saml/metadata
 
 ### Using the `elasticsearch-saml-metadata` command
 
-You can generate the SAML metadata by running the [`bin/elasticsearch-saml-metadata` command](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/command-line-tools/saml-metadata.md).
+You can generate the SAML metadata by running the [`bin/elasticsearch-saml-metadata` command](elasticsearch://reference/elasticsearch/command-line-tools/saml-metadata.md).
 
 ```{applies_to}
 deployment:
@@ -566,17 +566,17 @@ When a user authenticates using SAML, they are identified to the {{stack}}, but 
 
 Your SAML users cannot do anything until they are assigned roles. This can be done through either the [add role mapping API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-role-mapping) or with [authorization realms](/deploy-manage/users-roles/cluster-or-deployment-auth/realm-chains.md#authorization_realms).
 
-You can map SAML users to roles in the following ways: 
+You can map SAML users to roles in the following ways:
 
 * Using the role mappings page in {{kib}}.
-* Using the [role mapping API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-role-mapping). 
+* Using the [role mapping API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-role-mapping).
 * By delegating authorization to another realm.
 
 ::::{note}
 You can't use [role mapping files](/deploy-manage/users-roles/cluster-or-deployment-auth/mapping-users-groups-to-roles.md#mapping-roles-file) to grant roles to users authenticating using SAML.
 ::::
 
-### Example: Using the role mapping API 
+### Example: Using the role mapping API
 
 This is an example of a simple role mapping that grants the `example_role` role to any user who authenticates against the `saml1` realm:
 
@@ -628,10 +628,10 @@ PUT /_security/role_mapping/saml-finance
 
 If your users also exist in a repository that can be directly accessed by {{es}} (such as an LDAP directory) then you can use [authorization realms](/deploy-manage/users-roles/cluster-or-deployment-auth/realm-chains.md#authorization_realms) instead of role mappings.
 
-In this case, you perform the following steps: 
+In this case, you perform the following steps:
 
-1. In your SAML realm, assigned a SAML attribute to act as the lookup userid, by configuring the `attributes.principal` setting. 
-2. Create a new realm that can lookup users from your local repository (e.g. an `ldap` realm) 
+1. In your SAML realm, assigned a SAML attribute to act as the lookup userid, by configuring the `attributes.principal` setting.
+2. Create a new realm that can lookup users from your local repository (e.g. an `ldap` realm)
 3. In your SAML realm, set `authorization_realms` to the name of the realm you created in step 2.
 
 ## Configure {{kib}} [saml-configure-kibana]

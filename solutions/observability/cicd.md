@@ -370,7 +370,7 @@ To learn more, see the [integration of Maven builds with Elastic {{observability
 
 The Ansible OpenTelemetry plugin integration provides visibility into all your Ansible playbooks. The plugin generates traces for each run and performance metrics to help you understand which Ansible tasks or roles are run the most, how often they fail, and how long they take to complete.
 
-You can configure your Ansible playbooks with the [Ansible OpenTelemetry callback plugin](https://docs.ansible.com/ansible/latest/collections/community/general/opentelemetry_callback.md). It’s required to install the OpenTelemetry python libraries and configure the callback as stated in the [examples](https://docs.ansible.com/ansible/latest/collections/community/general/opentelemetry_callback.md#examples) section.
+You can configure your Ansible playbooks with the [Ansible OpenTelemetry callback plugin](https://docs.ansible.com/ansible/latest/collections/community/general/opentelemetry_callback.html). It’s required to install the OpenTelemetry python libraries and configure the callback as stated in the [examples](https://docs.ansible.com/ansible/latest/collections/community/general/opentelemetry_callback.html#examples) section.
 
 The context propagation from the Jenkins job or pipeline is passed to the Ansible run. Therefore, everything that happens in the CI is also shown in the traces.
 
@@ -492,7 +492,7 @@ pytest --otel-session-name='My_Test_cases'
 
 ### Concourse CI [ci-cd-concourse-ci]
 
-To configure Concourse CI to send traces, refer to the [tracing](https://concourse-ci.org/tracing.md) docs. In the Concourse configuration, you just need to define `CONCOURSE_TRACING_OTLP_ADDRESS` and `CONCOURSE_TRACING_OTLP_HEADERS`.
+To configure Concourse CI to send traces, refer to the [tracing](https://concourse-ci.org/tracing.html) docs. In the Concourse configuration, you just need to define `CONCOURSE_TRACING_OTLP_ADDRESS` and `CONCOURSE_TRACING_OTLP_HEADERS`.
 
 ```bash
 CONCOURSE_TRACING_OTLP_ADDRESS=elastic-apm-server.example.com:8200

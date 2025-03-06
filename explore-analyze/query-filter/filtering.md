@@ -26,7 +26,7 @@ Some apps provide more options, such as [Dashboards](../dashboards.md).
 
 ## Time filter [set-time-filter]
 
-Display data within a specified time range when your index contains time-based events, and a time-field is configured for the selected [{{data-source}}](../find-and-organize/data-views.md). The default time range is 15 minutes, but you can customize it in [Advanced Settings](asciidocalypse://docs/kibana/docs/reference/advanced-settings.md).
+Display data within a specified time range when your index contains time-based events, and a time-field is configured for the selected [{{data-source}}](../find-and-organize/data-views.md). The default time range is 15 minutes, but you can customize it in [Advanced Settings](kibana://reference/advanced-settings.md).
 
 1. Click ![calendar icon](../../images/kibana-time-filter-icon.png).
 2. Choose one of the following:

@@ -198,7 +198,7 @@ To automatically generate reports with {{watcher}}, you must configure {{watcher
     xpack.http.ssl.certificate_authorities: ["/path/to/your/cacert1.pem", "/path/to/your/cacert2.pem"]
     ```
 
-    For more information, see [the {{watcher}} HTTP TLS/SSL Settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/watcher-settings.md#ssl-notification-settings).
+    For more information, see [the {{watcher}} HTTP TLS/SSL Settings](elasticsearch://reference/elasticsearch/configuration-reference/watcher-settings.md#ssl-notification-settings).
 
 4. Add one or more users who have access to the {{report-features}}.
 
@@ -240,5 +240,5 @@ If using PNG/PDF {{report-features}} in a production environment, it is preferre
 
 ## Ensure {{es}} allows built-in templates [reporting-elasticsearch-configuration]
 
-Reporting relies on {{es}} to install a mapping template for the data stream that stores reports. Ensure that {{es}} allows built-in templates to be installed by keeping the `stack.templates.enabled` setting at the default value of `true`. For more information, see [Index management settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/index-management-settings.md#stack-templates-enabled).
+Reporting relies on {{es}} to install a mapping template for the data stream that stores reports. Ensure that {{es}} allows built-in templates to be installed by keeping the `stack.templates.enabled` setting at the default value of `true`. For more information, see [Index management settings](elasticsearch://reference/elasticsearch/configuration-reference/index-management-settings.md#stack-templates-enabled).
 

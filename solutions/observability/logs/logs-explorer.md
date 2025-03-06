@@ -2,6 +2,9 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/observability/current/explore-logs.html
   - https://www.elastic.co/guide/en/serverless/current/observability-discover-and-explore-logs.html
+applies_to:
+  stack: all
+  serverless: all
 ---
 
 # Logs Explorer [explore-logs]

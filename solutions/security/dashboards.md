@@ -6,13 +6,6 @@ mapped_urls:
 
 # Dashboards
 
-% What needs to be done: Lift-and-shift
-
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/security-docs/security/dashboards-overview.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/security-dashboards-overview.md
-
 The {{security-app}}'s default dashboards provide useful visualizations of your security environment. To view them in {{elastic-sec}}, select **Dashboards** from the navigation menu. From the Dashboards page, you can access the default dashboards, as well as create and access custom dashboards.
 
 To create a new custom dashboard, click **Create Dashboard**. You can control which custom dashboards appear in the table:

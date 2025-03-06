@@ -265,7 +265,7 @@ To send monitoring data securely, create a monitoring user and grant it the nece
 
 You can use the built-in `beats_system` user, if it’s available in your environment. Because the built-in users are not available in {{ecloud}}, these instructions create a user that is explicitly used for monitoring {{metricbeat}}.
 
-1. If you’re using the built-in `beats_system` user, on any node in your cluster, run the [`elasticsearch-reset-password`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/command-line-tools/reset-password.md) utility to set the password for that user:
+1. If you’re using the built-in `beats_system` user, on any node in your cluster, run the [`elasticsearch-reset-password`](elasticsearch://reference/elasticsearch/command-line-tools/reset-password.md) utility to set the password for that user:
 
     This command resets the password for the `beats_system` user to an auto-generated value.
 
