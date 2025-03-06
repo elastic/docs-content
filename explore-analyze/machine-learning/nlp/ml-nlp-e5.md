@@ -21,7 +21,7 @@ Refer to the model cards of the [multilingual-e5-small](https://huggingface.co/e
 
 To use E5, you must have the [appropriate subscription](https://www.elastic.co/subscriptions) level for semantic search or the trial period activated.
 
-Enabling trained model autoscaling for your E5 deployment is recommended. Refer to [*Trained model autoscaling*](ml-nlp-auto-scale.md) to learn more.
+Enabling trained model autoscaling for your E5 deployment is recommended. Refer to [*Trained model autoscaling*](../../../deploy-manage/autoscaling/trained-model-autoscaling.md) to learn more.
 
 ## Download and deploy E5 [download-deploy-e5]
 

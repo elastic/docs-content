@@ -50,7 +50,7 @@ The default {{data-source}} is defined by the `securitySolution:defaultIndex` se
 The first time a user visits {{elastic-sec}} within a given {{kib}} [space](/deploy-manage/manage-spaces.md), the default {{data-source}} generates in that space and becomes active.
 
 ::::{note}
-In {{stack}}, your {{kib}} space must have the **Data View Management** [feature visibility](/deploy-manage/manage-spaces.md#spaces-control-feature-visibility) setting enabled for the default {{data-source}} to generate and become active in your space.
+In {{stack}}, your {{kib}} space must have the **Data View Management** [feature visibility](/deploy-manage/manage-spaces.md) setting enabled for the default {{data-source}} to generate and become active in your space.
 ::::
 
 

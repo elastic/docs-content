@@ -33,7 +33,7 @@ To use ELSER, you must have the [appropriate subscription](https://www.elastic.c
 The minimum dedicated ML node size for deploying and using the ELSER model is 4 GB in {{ech}} if [deployment autoscaling](../../../deploy-manage/autoscaling.md) is turned off. Turning on autoscaling is recommended because it allows your deployment to dynamically adjust resources based on demand. Better performance can be achieved by using more allocations or more threads per allocation, which requires bigger ML nodes. Autoscaling provides bigger nodes when required. If autoscaling is turned off, you must provide suitably sized nodes yourself.
 ::::
 
-Enabling trained model autoscaling for your ELSER deployment is recommended. Refer to [*Trained model autoscaling*](ml-nlp-auto-scale.md) to learn more.
+Enabling trained model autoscaling for your ELSER deployment is recommended. Refer to [*Trained model autoscaling*](../../../deploy-manage/autoscaling/trained-model-autoscaling.md) to learn more.
 
 ## ELSER v2 [elser-v2]
 
@@ -72,7 +72,7 @@ PUT _inference/sparse_embedding/my-elser-model
     }
 ```
 
-The API request automatically initiates the model download and then deploy the model. This example uses [autoscaling](ml-nlp-auto-scale.md) through adaptive allocation.
+The API request automatically initiates the model download and then deploy the model. This example uses [autoscaling](../../../deploy-manage/autoscaling/trained-model-autoscaling.md) through adaptive allocation.
 
 Refer to the [ELSER {{infer}} integration documentation](../../elastic-inference/inference-api/elser-inference-integration.md) to learn more about the available settings.
 
@@ -292,7 +292,7 @@ To gain the biggest value out of ELSER trained models, consider to follow this l
 
 * If quick response time is important for your use case, keep {{ml}} resources available at all times by setting `min_allocations` to `1`.
 * Setting `min_allocations` to `0` can save on costs for non-critical use cases or testing environments.
-* Enabling [autoscaling](ml-nlp-auto-scale.md) through adaptive allocations or adaptive resources makes it possible for {{es}} to scale up or down the available resources of your ELSER deployment based on the load on the process.
+* Enabling [autoscaling](../../../deploy-manage/autoscaling/trained-model-autoscaling.md) through adaptive allocations or adaptive resources makes it possible for {{es}} to scale up or down the available resources of your ELSER deployment based on the load on the process.
 * Use dedicated, optimized ELSER {{infer}} endpoints for ingest and search use cases.
   * When deploying a trained model in {{kib}}, you can select for which case you want to optimize your ELSER deployment.
   * If you use the trained model or {{infer}} APIs and want to optimize your ELSER trained model deployment or {{infer}} endpoint for ingest, set the number of threads to `1` (`"num_threads": 1`).

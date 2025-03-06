@@ -4,6 +4,7 @@ mapped_urls:
   - https://www.elastic.co/guide/en/kibana/current/introduction.html
   - https://www.elastic.co/guide/en/kibana/current/index.html
   - https://www.elastic.co/guide/en/elastic-stack/current/installing-elastic-stack.html
+  - https://www.elastic.co/guide/en/elastic-stack/current/overview.html
 ---
 
 # The {{stack}}
@@ -16,7 +17,13 @@ $$$kibana-navigation-search$$$
 
 What is the {{stack}}? It’s a fast and highly scalable set of components — {{es}}, {{kib}}, {{beats}}, {{ls}}, and others — that together enable you to securely take data from any source, in any format, and then search, analyze, and visualize it.
 
-You have many options for [deploying the {{stack}}](./deployment-options.md) to suit your needs. You can deploy it on your own hardware, in the cloud, or use a managed service on {{ecloud}}.
+The products in the {{es}} are designed to be used together and releases are synchronized to simplify the installation and upgrade process.
+
+You have many options for deploying the {{stack}} to suit your needs. You can deploy it on your own hardware, in the cloud, or use a managed service on {{ecloud}}.
+
+:::{tip}
+To learn how to deploy {{es}}, {{kib}}, and supporting orchestration technologies, refer to [](/deploy-manage/index.md). To learn how to deploy additional ingest and consume components, refer to the documentation for the component.
+:::
 
 ![Components of the Elastic Stack](../images/stack-components-diagram.svg)
 
