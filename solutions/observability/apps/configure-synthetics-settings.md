@@ -1,3 +1,9 @@
+---
+mapped_pages:
+  - https://www.elastic.co/guide/en/serverless/current/observability-synthetics-settings.html
+  - https://www.elastic.co/guide/en/observability/current/synthetics-settings.html
+---
+
 # Configure Synthetics settings [synthetics-settings]
 
 There are several Synthetics settings you can adjust in Observability.

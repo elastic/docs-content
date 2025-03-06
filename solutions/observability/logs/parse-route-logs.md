@@ -2,12 +2,14 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/observability/current/logs-parse.html
   - https://www.elastic.co/guide/en/serverless/current/observability-parse-log-data.html
+applies_to:
+  stack: all
+  serverless: all
 ---
 
 # Parse and route logs [observability-parse-log-data]
 
-::::{admonition} Required role
-:class: note
+::::{note}
 
 **For Observability serverless projects**, the **Admin** role or higher is required to create ingest pipelines that parse and route logs. To learn more, refer to [Assign user roles and privileges](../../../deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
 

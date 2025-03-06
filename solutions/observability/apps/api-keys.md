@@ -146,7 +146,7 @@ APM Server provides a command line interface for creating, retrieving, invalidat
 
     The user requesting to create an API Key needs to have APM privileges used by the APM Server. A superuser, by default, has these privileges.
 
-    ::::{dropdown} **Expand for more information on assigning these privileges to other users**
+    ::::{dropdown} Expand for more information on assigning these privileges to other users
     To create an APM Server user with the required privileges for creating and managing API keys:
 
     1. Create an **API key role**, called something like `apm_api_key`, that has the following `cluster` level privileges:

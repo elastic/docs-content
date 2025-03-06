@@ -6,13 +6,6 @@ mapped_urls:
 
 # Ingest AWS Security Hub data
 
-% What needs to be done: Lift-and-shift
-
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/security-docs/security/ingest-aws-securityhub-data.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/ingest-aws-securityhub-data.md
-
 In order to enrich your {{elastic-sec}} workflows with third-party cloud security posture data collected by AWS Security Hub:
 
 * Follow the steps to [set up the AWS Security Hub integration](https://docs.elastic.co/en/integrations/aws/securityhub).

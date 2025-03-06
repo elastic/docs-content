@@ -6,20 +6,6 @@ mapped_urls:
 
 # Capture environment variables
 
-% What needs to be done: Align serverless/stateful
-
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/security-docs/security/environment-variable-capture.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/security-environment-variable-capture.md
-
-::::{admonition} Requirements
-* This feature requires {{stack}} version 8.6 or higher.
-* In {{stack}} version 8.6, this feature is only available for Linux.
-
-::::
-
-
 You can configure an {{agent}} policy to capture up to five environment variables (`env vars`).
 
 ::::{note}
