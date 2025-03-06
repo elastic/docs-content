@@ -11,7 +11,10 @@ applies_to:
 
 # Data set quality monitoring [observability-monitor-datasets]
 
-::::{Note}: Required roles and privileges
+::::{note}:
+
+**Required roles and privileges**
+
 With the `viewer` role, you can view the Data Sets Quality summary.
 
 You need the `monitor` [index privilege](../../deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-indices) for the `logs-*-*` index to view the Active Data Sets and Estimated Data summaries on the Data set quality page.
@@ -37,7 +40,9 @@ The Data Set Quality page provides several ways to help you investigate issues. 
 
 ### Failure store
 
-::::{Note}: Required privileges
+::::{note}:
+
+**Required privileges**
 
 You need the `read_failure_store` or `all` [index privilege](../../deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-indices) to access failure store.
 
