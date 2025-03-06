@@ -23,7 +23,7 @@ You can centrally manage rules from the [{{kib}} Management UI](../../../explore
 
 :::{image} ../../../images/serverless-observability-alerts-view.png
 :alt: Alerts page
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -44,7 +44,7 @@ From the **Alerts** table, you can click on a specific alert to open the alert d
 
 :::{image} ../../../images/serverless-alert-details-flyout.png
 :alt: Alerts detail (APM anomaly)
-:class: screenshot
+:screenshot:
 :::
 
 There are three common alert statuses:

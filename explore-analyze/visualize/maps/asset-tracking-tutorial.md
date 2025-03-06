@@ -24,7 +24,7 @@ When you complete this tutorial, you’ll have a map that looks like this:
 
 :::{image} ../../../images/kibana-construction_zones.png
 :alt: construction zones
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -32,7 +32,7 @@ When you complete this tutorial, you’ll have a map that looks like this:
 
 * If you don’t already have {{kib}}, sign up for [a free Elastic Cloud trial](https://www.elastic.co/cloud/elasticsearch-service/signup?baymax=docs-body&elektra=docs) and create a hosted deployment. When creating it, download the deployment credentials.
 * Obtain an API key for [TriMet web services](https://developer.trimet.org/) at [https://developer.trimet.org/appid/registration/](https://developer.trimet.org/appid/registration/).
-* [Fleet](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/index.md) is enabled on your cluster, and one or more [{{agent}}s](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/install-elastic-agents.md) is enrolled.
+* [Fleet](/reference/ingestion-tools/fleet/index.md) is enabled on your cluster, and one or more [{{agent}}s](/reference/ingestion-tools/fleet/install-elastic-agents.md) is enrolled.
 
 
 ## Part 1: Ingest the Portland public transport data [_part_1_ingest_the_portland_public_transport_data]
@@ -369,12 +369,12 @@ If you already have an agent policy, get its identifier from the `View policy` a
 
 :::{image} ../../../images/kibana-agent-policy-id.png
 :alt: agent policy id
-:class: screenshot
+:screenshot:
 :::
 
 :::{image} ../../../images/kibana-policy_id.png
 :alt: policy id
-:class: screenshot
+:screenshot:
 :::
 ::::::
 
@@ -470,7 +470,7 @@ POST kbn:/api/data_views/data_view
 
 :::{image} ../../../images/kibana-data_view.png
 :alt: data view
-:class: screenshot
+:screenshot:
 :::
 
 ::::{tip}
@@ -488,7 +488,7 @@ You may want to tweak this Data View to adjust the field names and number or dat
 
 :::{image} ../../../images/kibana-discover.png
 :alt: discover
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -534,7 +534,7 @@ At this point, you have a map with lines that represent the routes of the TriMet
 
 :::{image} ../../../images/kibana-tracks_layer.png
 :alt: tracks layer
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -570,7 +570,7 @@ Add a layer that uses attributes in the data to set the style and orientation of
 
        :::{image} ../../../images/kibana-top_hits_layer_style.png
        :alt: top hits layer style
-       :class: screenshot
+       :screenshot:
        :::
 
 7. Click **Keep changes**.
@@ -580,7 +580,7 @@ Your map should automatically refresh every 10 seconds to show the latest vehicl
 
 :::{image} ../../../images/kibana-tracks_and_top_hits.png
 :alt: tracks and top hits
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -620,7 +620,7 @@ Your map is now complete for now, congratulations!
 
 :::{image} ../../../images/kibana-construction_zones.png
 :alt: construction zones
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -694,7 +694,7 @@ For this example, you will set the rule to check every minute. However, when run
 
     :::{image} ../../../images/kibana-rule_configuration.png
     :alt: rule configuration
-    :class: screenshot
+    :screenshot:
     :::
 
 11. Under **Actions**, select the **Index** connector type.
@@ -720,12 +720,12 @@ For this example, you will set the rule to check every minute. However, when run
 
     :::{image} ../../../images/kibana-alert_connector.png
     :alt: alert connector
-    :class: screenshot
+    :screenshot:
     :::
 
 16. Click **Save**.
 
-The **TriMet Alerts connector** is added to the **{{connectors-ui}}** page. For more information on common connectors, refer to the [Slack](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/slack-action-type.md) and [Email](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/email-action-type.md) connectors.
+The **TriMet Alerts connector** is added to the **{{connectors-ui}}** page. For more information on common connectors, refer to the [Slack](kibana://reference/connectors-kibana/slack-action-type.md) and [Email](kibana://reference/connectors-kibana/email-action-type.md) connectors.
 
 
 ### Step 3. View alerts in real time [_step_3_view_alerts_in_real_time]
@@ -743,7 +743,7 @@ With the alert configured and running, in a few minutes your `trimet_alerts` ind
 
   :::{image} ../../../images/kibana-vehicle_alerts.png
   :alt: vehicle alerts
-  :class: screenshot
+  :screenshot:
   :::
 
 

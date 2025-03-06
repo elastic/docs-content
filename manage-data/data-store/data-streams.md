@@ -30,7 +30,7 @@ Keep in mind that some features such as [Time Series Data Streams (TSDS)](../dat
 
 ## Backing indices [backing-indices]
 
-A data stream consists of one or more [hidden](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index-modules.md#index-hidden), auto-generated backing indices.
+A data stream consists of one or more [hidden](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#index-hidden), auto-generated backing indices.
 
 :::{image} ../../images/elasticsearch-reference-data-streams-diagram.svg
 :alt: data streams diagram
@@ -38,7 +38,7 @@ A data stream consists of one or more [hidden](asciidocalypse://docs/elasticsear
 
 A data stream requires a matching [index template](templates.md). The template contains the mappings and settings used to configure the stream’s backing indices.
 
-Every document indexed to a data stream must contain a `@timestamp` field, mapped as a [`date`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/date.md) or [`date_nanos`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/date_nanos.md) field type. If the index template doesn’t specify a mapping for the `@timestamp` field, {{es}} maps `@timestamp` as a `date` field with default options.
+Every document indexed to a data stream must contain a `@timestamp` field, mapped as a [`date`](elasticsearch://reference/elasticsearch/mapping-reference/date.md) or [`date_nanos`](elasticsearch://reference/elasticsearch/mapping-reference/date_nanos.md) field type. If the index template doesn’t specify a mapping for the `@timestamp` field, {{es}} maps `@timestamp` as a `date` field with default options.
 
 The same index template can be used for multiple data streams. You cannot delete an index template in use by a data stream.
 

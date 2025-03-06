@@ -35,7 +35,7 @@ Use multiple layers and indices to show all your data in a single map. Show how 
 
 :::{image} ../../images/kibana-sample_data_ecommerce.png
 :alt: sample data ecommerce
-:class: screenshot
+:screenshot:
 :::
 
 To learn about specific types of layers, check out [Heat map layer](../../explore-analyze/visualize/maps/heatmap-layer.md), [Tile layer](../../explore-analyze/visualize/maps/tile-layer.md), and [Vector layer](../../explore-analyze/visualize/maps/vector-layer.md).
@@ -49,7 +49,7 @@ This animated map uses the time slider to show Portland buses over a period of 1
 
 :::{image} ../../images/kibana-timeslider.gif
 :alt: timeslider
-:class: screenshot
+:screenshot:
 :::
 
 To create this type of map, check out [Track, visualize, and alert assets in real time](../../explore-analyze/visualize/maps/asset-tracking-tutorial.md).
@@ -67,7 +67,7 @@ This choropleth map shows the density of non-emergency service requests in San D
 
 :::{image} ../../images/kibana-embed_in_dashboard.jpeg
 :alt: embed in dashboard
-:class: screenshot
+:screenshot:
 :::
 
 

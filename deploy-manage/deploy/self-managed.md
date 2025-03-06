@@ -5,4 +5,4 @@ mapped_pages:
 
 # Self-managed cluster [dependencies-versions]
 
-See [Elastic Stack Third-party Dependencices](https://artifacts.elastic.co/reports/dependencies/dependencies-current.md) for the complete list of dependencies for {{es}}.
+See [Elastic Stack Third-party Dependencices](https://artifacts.elastic.co/reports/dependencies/dependencies-current.html) for the complete list of dependencies for {{es}}.

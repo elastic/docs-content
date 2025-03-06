@@ -16,14 +16,14 @@ xpack.encryptedSavedObjects:
   encryptionKey: "min-32-byte-long-strong-encryption-key"
 ```
 
-::::{important} 
+::::{important}
 If you don’t specify an encryption key, {{kib}} might disable features that rely on encrypted saved objects.
 
 ::::
 
 
-::::{tip} 
-For help generating the encryption key, refer to the [`kibana-encryption-keys`](asciidocalypse://docs/kibana/docs/reference/commands/kibana-encryption-keys.md) script.
+::::{tip}
+For help generating the encryption key, refer to the [`kibana-encryption-keys`](kibana://reference/commands/kibana-encryption-keys.md) script.
 
 ::::
 
@@ -47,7 +47,7 @@ xpack.encryptedSavedObjects:
 2. A list of encryption keys {{kib}} will try to use to decrypt existing saved objects if decryption with the primary encryption key isn’t possible. These keys are known as the decryption-only or secondary encryption keys.
 
 
-::::{note} 
+::::{note}
 You might also leverage this functionality if multiple {{kib}} instances connected to the same {{es}} cluster use different encryption keys. In this case, you might have a mix of saved objects encrypted with different keys, and every {{kib}} instance can only deal with a specific subset of objects. To fix this, you must choose a single primary encryption key for `xpack.encryptedSavedObjects.encryptionKey`, move all other encryption keys to `xpack.encryptedSavedObjects.keyRotation.decryptionOnlyKeys`, and sync this configuration across all {{kib}} instances.
 
 ::::

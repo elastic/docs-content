@@ -15,6 +15,6 @@ With **Discover**, you can quickly search and filter your data, get information 
 
 :::{image} ../images/kibana-hello-field.png
 :alt: A view of the Discover app
-:class: screenshot
+:screenshot:
 :::
 

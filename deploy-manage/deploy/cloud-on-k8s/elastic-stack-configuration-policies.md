@@ -34,7 +34,7 @@ Starting from ECK `2.6.1` and Elasticsearch `8.6.1`, Elastic Stack configuration
 
 Additionally with ECK `2.11.0` it is possible to configure Kibana as well using Elastic Stack configuration policies, the following settings can be configured for Kibana:
 
-* [Kibana Configuration](asciidocalypse://docs/kibana/docs/reference/configuration-reference/general-settings.md) (configuration settings for Kibana that will go into `kibana.yml`)
+* [Kibana Configuration](kibana://reference/configuration-reference/general-settings.md) (configuration settings for Kibana that will go into `kibana.yml`)
 * [Kibana Secure Settings](k8s-kibana-secure-settings.md)
 
 A policy can be applied to one or more Elasticsearch clusters or Kibana instances in any namespace managed by the ECK operator. Configuration policy settings applied by the ECK operator are immutable through the Elasticsearch REST API. It is currently not allowed to configure an Elasticsearch cluster or Kibana instance with more than one policy.

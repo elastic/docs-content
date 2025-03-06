@@ -24,7 +24,7 @@ To get started with your analysis, use the automated filter options, such as loc
 
 :::{image} ../../../images/observability-uptime-filter-bar.png
 :alt: Uptime filter bar
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -36,7 +36,7 @@ Next to the counts, a histogram shows a count of **Pings over time** with a brea
 
 :::{image} ../../../images/observability-monitors-chart.png
 :alt: Monitors chart
-:class: screenshot
+:screenshot:
 :::
 
 Information about individual monitors is displayed in the monitor list and provides a quick way to navigate to a detailed visualization for hosts or endpoints.
@@ -53,7 +53,7 @@ Expand the table row for a specific monitor on the list to view additional infor
 
 :::{image} ../../../images/observability-monitors-list.png
 :alt: Monitors list
-:class: screenshot
+:screenshot:
 :::
 
 

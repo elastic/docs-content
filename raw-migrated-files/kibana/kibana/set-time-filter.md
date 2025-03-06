@@ -1,6 +1,6 @@
 # Set the time range [set-time-filter]
 
-Display data within a specified time range when your index contains time-based events, and a time-field is configured for the selected [{{data-source}}](../../../explore-analyze/find-and-organize/data-views.md). The default time range is 15 minutes, but you can customize it in [Advanced Settings](asciidocalypse://docs/kibana/docs/reference/advanced-settings.md).
+Display data within a specified time range when your index contains time-based events, and a time-field is configured for the selected [{{data-source}}](../../../explore-analyze/find-and-organize/data-views.md). The default time range is 15 minutes, but you can customize it in [Advanced Settings](kibana://reference/advanced-settings.md).
 
 1. Click ![calendar icon](../../../images/kibana-time-filter-icon.png "").
 2. Choose one of the following:
@@ -12,14 +12,14 @@ Display data within a specified time range when your index contains time-based e
 
         :::{image} ../../../images/kibana-time-filter.png
         :alt: Time filter menu
-        :class: screenshot
+        :screenshot:
         :::
 
 3. To set start and end times, click the bar next to the time filter. In the popup, select **Absolute**, **Relative** or **Now**, then specify the required options.
 
     :::{image} ../../../images/kibana-time-relative.png
     :alt: Time filter showing relative time
-    :class: screenshot
+    :screenshot:
     :::
 
 

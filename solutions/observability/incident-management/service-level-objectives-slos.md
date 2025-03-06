@@ -37,7 +37,7 @@ From the SLO overview, you can see all of your SLOs and a quick summary of whatâ
 
 :::{image} ../../../images/observability-slo-dashboard.png
 :alt: Dashboard showing list of SLOs
-:class: screenshot
+:screenshot:
 :::
 
 Select an SLO from the overview to see additional details including:
@@ -49,7 +49,7 @@ Select an SLO from the overview to see additional details including:
 
 :::{image} ../../../images/serverless-slo-detailed-view.png
 :alt: Detailed view of a single SLO
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -59,7 +59,7 @@ You can apply searches and filters to quickly find the SLOs youâ€™re interested 
 
 :::{image} ../../../images/serverless-slo-filtering-options.png
 :alt: Options for filtering SLOs in the overview
-:class: screenshot
+:screenshot:
 :::
 
 * **Apply structured filters:** Next to the search field, click the **Add filter** ![Add filter icon](../../../images/serverless-plusInCircleFilled.svg "") icon to add a custom filter. Notice that you can use `OR` and `AND` to combine filters. The structured filter can be disabled, inverted, or pinned across all apps.
@@ -70,7 +70,7 @@ There are also options to sort and group the SLOs displayed in the overview:
 
 :::{image} ../../../images/serverless-slo-group-by.png
 :alt: SLOs sorted by SLO status and grouped by tags
-:class: screenshot
+:screenshot:
 :::
 
 * **Sort by**: SLI value, SLO status, Error budget consumed, or Error budget remaining.
@@ -89,7 +89,7 @@ Available SLO panels include:
 
 :::{image} ../../../images/serverless-slo-dashboard-panel.png
 :alt: Detailed view of an SLO dashboard panel
-:class: screenshot
+:screenshot:
 :::
 
 To learn more about Dashboards, see [Dashboards](../../../solutions/observability/get-started/get-started-with-dashboards.md).

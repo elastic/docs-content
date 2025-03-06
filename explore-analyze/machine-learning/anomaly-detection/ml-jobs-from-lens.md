@@ -32,14 +32,14 @@ You need to have a compatible visualization on **Dashboard** to create an {{anom
 
 :::{image} ../../../images/machine-learning-create-ad-job-from-lens.jpg
 :alt: A screenshot of a chart with the Options menu opened
-:class: screenshot
+:screenshot:
 :::
 
 If the visualization has multiple compatible layers, you can select which layer to use for creating the {{anomaly-job}}.
 
 :::{image} ../../../images/machine-learning-select-layer-for-job.jpg
 :alt: A screenshot of a chart with the Options menu opened
-:class: screenshot
+:screenshot:
 :::
 
 If multiple fields are added to the chart or you selected a `Break down by` field, the multi metric job wizard is used for creating the job. For a single metric chart, the single metric wizard is used.

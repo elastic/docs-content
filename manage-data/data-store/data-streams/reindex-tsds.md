@@ -13,7 +13,7 @@ applies_to:
 
 
 
-## Introduction [tsds-reindex-intro] 
+## Introduction [tsds-reindex-intro]
 
 With reindexing, you can copy documents from an old [time-series data stream (TSDS)](../data-streams/time-series-data-stream-tsds.md) to a new one. Data streams support reindexing in general, with a few [restrictions](use-data-stream.md#reindex-with-a-data-stream). Still, time-series data streams introduce additional challenges due to tight control on the accepted timestamp range for each backing index they contain. Direct use of the reindex API would likely error out due to attempting to insert documents with timestamps that are outside the current acceptance window.
 
@@ -30,7 +30,7 @@ To avoid these limitations, use the process that is outlined below:
 4. Revert the overriden index settings in the destination index template.
 5. Invoke the `rollover` api to create a new backing index that can receive new documents.
 
-::::{note} 
+::::{note}
 This process only applies to time-series data streams without [downsampling](./downsampling-time-series-data-stream.md) configuration. Data streams with downsampling can only be re-indexed by re-indexing their backing indexes individually and adding them to an empty destination data stream.
 ::::
 
@@ -38,7 +38,7 @@ This process only applies to time-series data streams without [downsampling](./d
 In what follows, we elaborate on each step of the process with examples.
 
 
-## Create a TSDS template to accept old documents [tsds-reindex-create-template] 
+## Create a TSDS template to accept old documents [tsds-reindex-create-template]
 
 Consider a TSDS with the following template:
 
@@ -201,7 +201,7 @@ POST /_index_template/2
 ```
 
 
-## Reindex [tsds-reindex-op] 
+## Reindex [tsds-reindex-op]
 
 Invoke the reindex api, for instance:
 
@@ -219,7 +219,7 @@ POST /_reindex
 ```
 
 
-## Restore the destination index template [tsds-reindex-restore] 
+## Restore the destination index template [tsds-reindex-restore]
 
 Once the reindexing operation completes, restore the index template for the destination TSDS as follows:
 
@@ -267,5 +267,5 @@ POST /k9s/_rollover/
 
 This creates a new backing index with the updated index settings. The destination data stream is now ready to accept new documents.
 
-Note that the initial backing index can still accept documents within the range of timestamps derived from the source data stream. If this is not desired, mark it as [read-only](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index-block.md#index-blocks-read-only) explicitly.
+Note that the initial backing index can still accept documents within the range of timestamps derived from the source data stream. If this is not desired, mark it as [read-only](elasticsearch://reference/elasticsearch/index-settings/index-block.md#index-blocks-read-only) explicitly.
 

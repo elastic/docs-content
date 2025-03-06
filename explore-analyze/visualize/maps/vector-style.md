@@ -19,7 +19,7 @@ This image shows an example of static styling using the [Kibana sample web logs]
 
 :::{image} ../../../images/kibana-vector_style_static.png
 :alt: vector style static
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -34,7 +34,7 @@ This image shows an example of data driven styling using the [Kibana sample web 
 
 :::{image} ../../../images/kibana-vector_style_dynamic.png
 :alt: vector style dynamic
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -78,7 +78,7 @@ This image shows an example of quantitative data driven styling using the [Kiban
 
 :::{image} ../../../images/kibana-quantitative_data_driven_styling.png
 :alt: quantitative data driven styling
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -93,6 +93,6 @@ This image shows an example of class styling using the [Kibana sample web logs](
 
 :::{image} ../../../images/kibana-vector_style_class.png
 :alt: vector style class
-:class: screenshot
+:screenshot:
 :::
 

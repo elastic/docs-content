@@ -102,7 +102,7 @@ The mapping will be different for your region. Our production VPC Service for `u
 
     :::{image} ../../../images/cloud-ec-private-link-service.png
     :alt: PrivateLink
-    :class: screenshot
+    :screenshot:
     :::
 
     The security group for the endpoint should at minimum allow for inbound connectivity from your instances CIDR range on ports 443 and 9243. Security groups for the instances should allow for outbound connnectibity to the endpoint on ports 443 and 9243.
@@ -113,7 +113,7 @@ The mapping will be different for your region. Our production VPC Service for `u
 
         :::{image} ../../../images/cloud-ec-private-link-private-hosted-zone-example.png
         :alt: Private hosted zone example
-        :class: screenshot
+        :screenshot:
         :::
 
     2. Then create a DNS CNAME alias pointing to the PrivateLink Endpoint. Add the record to a private DNS zone in your VPC. Use `*` as the record name, and the VPC endpoint DNS name as a value.
@@ -122,7 +122,7 @@ The mapping will be different for your region. Our production VPC Service for `u
 
         :::{image} ../../../images/cloud-ec-private-link-cname.png
         :alt: PrivateLink CNAME
-        :class: screenshot
+        :screenshot:
         :::
 
 3. Test the connection.
@@ -179,7 +179,7 @@ Having trouble finding your VPC endpoint ID? You can find it in the AWS console.
 
 :::{image} ../../../images/cloud-ec-private-link-endpoint-id.png
 :alt: VPC Endpoint ID
-:class: screenshot
+:screenshot:
 :::
 
 

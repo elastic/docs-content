@@ -69,7 +69,7 @@ The **Data Streams** view in {{kib}} shows you data streams, index templates, an
 
     :::{image} ../../../images/observability-data-stream-overview.png
     :alt: Data streams info
-    :class: screenshot
+    :screenshot:
     :::
 
 
@@ -103,7 +103,7 @@ To apply your new index lifecycle policy to the `traces-apm-*` data stream, edit
 
     :::{image} ../../../images/observability-create-component-template.png
     :alt: Create component template
-    :class: screenshot
+    :screenshot:
     :::
 
 
