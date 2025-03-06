@@ -211,7 +211,6 @@ toc:
               - file: machine-learning/nlp/ml-nlp-import-model.md
               - file: machine-learning/nlp/ml-nlp-deploy-model.md
               - file: machine-learning/nlp/ml-nlp-test-inference.md
-          - file: machine-learning/nlp/ml-nlp-auto-scale.md
           - file: machine-learning/nlp/ml-nlp-inference.md
           - file: machine-learning/nlp/ml-nlp-apis.md
           - file: machine-learning/nlp/ml-nlp-built-in-models.md

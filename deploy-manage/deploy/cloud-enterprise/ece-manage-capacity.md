@@ -18,13 +18,13 @@ This section focuses on the allocator role, and explains how to plan its capacit
 * [Storage](#ece-alloc-storage)
 
 
-## Memory [ece-alloc-memory] 
+## Memory [ece-alloc-memory]
 
 You should plan your deployment size based on the amount of data you ingest. Memory is the main scaling unit for a deployment. Other units, like CPU and disks, are proportional to the memory size. The memory available for an allocator is called *capacity*.
 
 During installation, the allocator capacity defaults to 85% of the host physical memory, as the rest is reserved for ECE system services.
 
-::::{note} 
+::::{note}
 ECE does not support hot-adding of resources to a running node.  When increasing CPU/memory allocated to a ECE node, a restart is needed to utilize the additional resources.
 ::::
 
@@ -41,13 +41,13 @@ curl -X PUT \
 
 For more information on how to use API keys for authentication, check the section [Access the API from the Command Line](asciidocalypse://docs/cloud/docs/reference/cloud-enterprise/ece-api-command-line.md).
 
-::::{important} 
+::::{important}
 Prior to ECE 3.5.0, regardless of the use of this API, the [CPU quota](#ece-alloc-cpu) used the memory specified at installation time.
 ::::
 
 
 
-### Examples [ece_examples] 
+### Examples [ece_examples]
 
 Here are some examples to make Elastic deployments and ECE system services run smoothly on your host:
 
@@ -59,14 +59,14 @@ Note that the recommended reservations above are not guaranteed upper limits, if
 These fluctuations should not be a concern in practice. To get actual limits that could be used in alerts, you could add 4GB to the recommended values above.
 
 
-## CPU quotas [ece-alloc-cpu] 
+## CPU quotas [ece-alloc-cpu]
 
 ECE uses CPU quotas to assign shares of the allocator host to the instances that are running on it. To calculate the CPU quota, use the following formula:
 
 `CPU quota = DeploymentRAM / HostCapacity`
 
 
-### Examples [ece_examples_2] 
+### Examples [ece_examples_2]
 
 Consider a 32GB deployment hosted on a 128GB allocator.
 
@@ -81,19 +81,19 @@ If you use 12GB Allocator system service reservation, the CPU quota is 28%:
 Those percentages represent the upper limit of the % of the total CPU resources available in a given 100ms period.
 
 
-## Processors setting [ece-alloc-processors-setting] 
+## Processors setting [ece-alloc-processors-setting]
 
 In addition to the [CPU quotas](#ece-alloc-cpu), the `processors` setting also plays a relevant role.
 
-The allocated `processors` setting originates from Elasticsearch and is responsible for calculating your [thread pools](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/thread-pool-settings.md#node.processors). While the CPU quota defines the percentage of the total CPU resources of an allocator that are assigned to an instance, the allocated `processors` define how the thread pools are calculated in Elasticsearch, and therefore how many concurrent search and indexing requests an instance can process. In other words, the CPU ratio defines how fast a single task can be completed, while the `processors` setting defines how many different tasks can be completed at the same time.
+The allocated `processors` setting originates from Elasticsearch and is responsible for calculating your [thread pools](elasticsearch://reference/elasticsearch/configuration-reference/thread-pool-settings.md#node.processors). While the CPU quota defines the percentage of the total CPU resources of an allocator that are assigned to an instance, the allocated `processors` define how the thread pools are calculated in Elasticsearch, and therefore how many concurrent search and indexing requests an instance can process. In other words, the CPU ratio defines how fast a single task can be completed, while the `processors` setting defines how many different tasks can be completed at the same time.
 
 We rely on Elasticsearch and the `-XX:ActiveProcessorCount` JVM setting to automatically detect the allocated `processors`.
 
-In earlier versions of ECE and Elasticsearch, the [Elasticsearch processors](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/thread-pool-settings.md#node.processors) setting was used to configure the allocated `processors` according to the following formula:
+In earlier versions of ECE and Elasticsearch, the [Elasticsearch processors](elasticsearch://reference/elasticsearch/configuration-reference/thread-pool-settings.md#node.processors) setting was used to configure the allocated `processors` according to the following formula:
 
 `Math.min(16,Math.max(2,(16*instanceCapacity*1.0/1024/64).toInt))`
 
-The following table gives an overview of the allocated `processors` that are used to calculate the Elasticsearch [thread pools](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/thread-pool-settings.md) based on the preceding formula:
+The following table gives an overview of the allocated `processors` that are used to calculate the Elasticsearch [thread pools](elasticsearch://reference/elasticsearch/configuration-reference/thread-pool-settings.md) based on the preceding formula:
 
 | instance size | vCPU |
 | --- | --- |
@@ -107,18 +107,18 @@ The following table gives an overview of the allocated `processors` that are use
 This table also provides a rough indication of what the auto-detected value could be on newer versions of ECE and Elasticsearch.
 
 
-## Storage [ece-alloc-storage] 
+## Storage [ece-alloc-storage]
 
 ECE has specific [hardware prerequisites](ece-hardware-prereq.md) for storage. Disk space is consumed by system logs, container overhead, and deployment data.
 
 The main factor for selecting a disk quota is the deployment data, that is, data from your Elasticsearch, Kibana, and APM nodes. The biggest portion of data is consumed by the Elasticsearch nodes.
 
-::::{note} 
+::::{note}
 ECE uses [XFS](ece-software-prereq.md#ece-xfs) to enforce specific disk space quotas to control the disk consumption for the deployment nodes running on your allocator.
 ::::
 
 
-::::{important} 
+::::{important}
 You must use XFS and have quotas enabled on all allocators, otherwise disk usage won’t display correctly.
 ::::
 
@@ -141,7 +141,7 @@ You can change the value of the disk multiplier at different levels:
     3. Adjust the disk quota to your needs.
 
 
-::::{important} 
+::::{important}
 The override only persists during the lifecycle of the instance container. If a new container is created, for example during a `grow_and_shrink` plan or a vacate operation, the quota is reset to its default. To increase the storage ratio in a persistent way, [edit the instance configurations](ece-configuring-ece-instance-configurations-edit.md).
 ::::
 

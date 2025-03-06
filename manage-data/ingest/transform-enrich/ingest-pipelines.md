@@ -10,7 +10,7 @@ applies_to:
 
 {{es}} ingest pipelines let you perform common transformations on your data before indexing. For example, you can use pipelines to remove fields, extract values from text, and enrich your data.
 
-A pipeline consists of a series of configurable tasks called [processors](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/enrich-processor/index.md). Each processor runs sequentially, making specific changes to incoming documents. After the processors have run, {{es}} adds the transformed documents to your data stream or index.
+A pipeline consists of a series of configurable tasks called [processors](elasticsearch://reference/ingestion-tools/enrich-processor/index.md). Each processor runs sequentially, making specific changes to incoming documents. After the processors have run, {{es}} adds the transformed documents to your data stream or index.
 
 :::{image} ../../../images/elasticsearch-reference-ingest-process.svg
 :alt: Ingest pipeline diagram
@@ -49,7 +49,7 @@ The **New pipeline from CSV** option lets you use a CSV to create an ingest pipe
 ::::
 
 
-You can also use the [ingest APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-ingest) to create and manage pipelines. The following [create pipeline API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ingest-put-pipeline) request creates a pipeline containing two [`set`](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/enrich-processor/set-processor.md) processors followed by a [`lowercase`](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/enrich-processor/lowercase-processor.md) processor. The processors run sequentially in the order specified.
+You can also use the [ingest APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-ingest) to create and manage pipelines. The following [create pipeline API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ingest-put-pipeline) request creates a pipeline containing two [`set`](elasticsearch://reference/ingestion-tools/enrich-processor/set-processor.md) processors followed by a [`lowercase`](elasticsearch://reference/ingestion-tools/enrich-processor/lowercase-processor.md) processor. The processors run sequentially in the order specified.
 
 ```console
 PUT _ingest/pipeline/my-pipeline
@@ -228,12 +228,12 @@ POST _reindex
 
 ## Set a default pipeline [set-default-pipeline]
 
-Use the [`index.default_pipeline`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index-modules.md#index-default-pipeline) index setting to set a default pipeline. {{es}} applies this pipeline to indexing requests if no `pipeline` parameter is specified.
+Use the [`index.default_pipeline`](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#index-default-pipeline) index setting to set a default pipeline. {{es}} applies this pipeline to indexing requests if no `pipeline` parameter is specified.
 
 
 ## Set a final pipeline [set-final-pipeline]
 
-Use the [`index.final_pipeline`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index-modules.md#index-final-pipeline) index setting to set a final pipeline. {{es}} applies this pipeline after the request or default pipeline, even if neither is specified.
+Use the [`index.final_pipeline`](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#index-final-pipeline) index setting to set a final pipeline. {{es}} applies this pipeline after the request or default pipeline, even if neither is specified.
 
 
 ## Pipelines for {{beats}} [pipelines-for-beats]
@@ -249,9 +249,9 @@ output.elasticsearch:
 
 ## Pipelines for {{fleet}} and {{agent}} [pipelines-for-fleet-elastic-agent]
 
-{{agent}} integrations ship with default ingest pipelines that preprocess and enrich data before indexing. [{{fleet}}](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/index.md) applies these pipelines using [index templates](../../data-store/templates.md) that include [pipeline index settings](ingest-pipelines.md#set-default-pipeline). {{es}} matches these templates to your {{fleet}} data streams based on the [stream’s naming scheme](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/data-streams.md#data-streams-naming-scheme).
+{{agent}} integrations ship with default ingest pipelines that preprocess and enrich data before indexing. [{{fleet}}](/reference/ingestion-tools/fleet/index.md) applies these pipelines using [index templates](../../data-store/templates.md) that include [pipeline index settings](ingest-pipelines.md#set-default-pipeline). {{es}} matches these templates to your {{fleet}} data streams based on the [stream’s naming scheme](/reference/ingestion-tools/fleet/data-streams.md#data-streams-naming-scheme).
 
-Each default integration pipeline calls a nonexistent, unversioned `*@custom` ingest pipeline. If unaltered, this pipeline call has no effect on your data. However, you can modify this call to create custom pipelines for integrations that persist across upgrades. Refer to [Tutorial: Transform data with custom ingest pipelines](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/data-streams-pipeline-tutorial.md) to learn more.
+Each default integration pipeline calls a nonexistent, unversioned `*@custom` ingest pipeline. If unaltered, this pipeline call has no effect on your data. However, you can modify this call to create custom pipelines for integrations that persist across upgrades. Refer to [Tutorial: Transform data with custom ingest pipelines](/reference/ingestion-tools/fleet/data-streams-pipeline-tutorial.md) to learn more.
 
 {{fleet}} doesn’t provide a default ingest pipeline for the **Custom logs** integration, but you can specify a pipeline for this integration using an [index template](ingest-pipelines.md#pipeline-custom-logs-index-template) or a [custom configuration](ingest-pipelines.md#pipeline-custom-logs-configuration).
 
@@ -270,7 +270,7 @@ $$$pipeline-custom-logs-index-template$$$
     }
     ```
 
-2. Create an [index template](../../data-store/templates.md) that includes your pipeline in the [`index.default_pipeline`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index-modules.md#index-default-pipeline) or [`index.final_pipeline`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index-modules.md#index-final-pipeline) index setting. Ensure the template is [data stream enabled](../../data-store/data-streams/set-up-data-stream.md#create-index-template). The template’s index pattern should match `logs-<dataset-name>-*`.
+2. Create an [index template](../../data-store/templates.md) that includes your pipeline in the [`index.default_pipeline`](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#index-default-pipeline) or [`index.final_pipeline`](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#index-final-pipeline) index setting. Ensure the template is [data stream enabled](../../data-store/data-streams/set-up-data-stream.md#create-index-template). The template’s index pattern should match `logs-<dataset-name>-*`.
 
     You can create this template using {{kib}}'s [**Index Management**](../../lifecycle/index-lifecycle-management/index-management-in-kibana.md#manage-index-templates) feature or the [create index template API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-index-template).
 
@@ -345,12 +345,12 @@ $$$pipeline-custom-logs-configuration$$$
 
 **{{agent}} standalone**
 
-If you run {{agent}} standalone, you can apply pipelines using an [index template](../../data-store/templates.md) that includes the [`index.default_pipeline`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index-modules.md#index-default-pipeline) or [`index.final_pipeline`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index-modules.md#index-final-pipeline) index setting. Alternatively, you can specify the `pipeline` policy setting in your `elastic-agent.yml` configuration. See [Install standalone {{agent}}s](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/install-standalone-elastic-agent.md).
+If you run {{agent}} standalone, you can apply pipelines using an [index template](../../data-store/templates.md) that includes the [`index.default_pipeline`](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#index-default-pipeline) or [`index.final_pipeline`](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#index-final-pipeline) index setting. Alternatively, you can specify the `pipeline` policy setting in your `elastic-agent.yml` configuration. See [Install standalone {{agent}}s](/reference/ingestion-tools/fleet/install-standalone-elastic-agent.md).
 
 
 ## Pipelines for search indices [pipelines-in-enterprise-search]
 
-When you create Elasticsearch indices for search use cases, for example, using the [web crawler^](https://www.elastic.co/guide/en/enterprise-search/current/crawler.html) or [connectors](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/search-connectors/index.md), these indices are automatically set up with specific ingest pipelines. These processors help optimize your content for search. See [*Ingest pipelines in Search*](../../../solutions/search/ingest-for-search.md) for more information.
+When you create Elasticsearch indices for search use cases, for example, using the [web crawler^](https://www.elastic.co/guide/en/enterprise-search/current/crawler.html) or [connectors](elasticsearch://reference/ingestion-tools/search-connectors/index.md), these indices are automatically set up with specific ingest pipelines. These processors help optimize your content for search. See [*Ingest pipelines in Search*](../../../solutions/search/ingest-for-search.md) for more information.
 
 
 ## Access source fields in a processor [access-source-fields]
@@ -390,7 +390,7 @@ PUT _ingest/pipeline/my-pipeline
 Use dot notation to access object fields.
 
 ::::{important}
-If your document contains flattened objects, use the [`dot_expander`](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/enrich-processor/dot-expand-processor.md) processor to expand them first. Other ingest processors cannot access flattened objects.
+If your document contains flattened objects, use the [`dot_expander`](elasticsearch://reference/ingestion-tools/enrich-processor/dot-expand-processor.md) processor to expand them first. Other ingest processors cannot access flattened objects.
 ::::
 
 
@@ -636,10 +636,10 @@ PUT _ingest/pipeline/my-pipeline
 
 ## Conditionally run a processor [conditionally-run-processor]
 
-Each processor supports an optional `if` condition, written as a [Painless script](asciidocalypse://docs/elasticsearch/docs/reference/scripting-languages/painless/painless.md). If provided, the processor only runs when the `if` condition is `true`.
+Each processor supports an optional `if` condition, written as a [Painless script](elasticsearch://reference/scripting-languages/painless/painless.md). If provided, the processor only runs when the `if` condition is `true`.
 
 ::::{important}
-`if` condition scripts run in Painless’s [ingest processor context](asciidocalypse://docs/elasticsearch/docs/reference/scripting-languages/painless/painless-ingest-processor-context.md). In `if` conditions, `ctx` values are read-only.
+`if` condition scripts run in Painless’s [ingest processor context](elasticsearch://reference/scripting-languages/painless/painless-ingest-processor-context.md). In `if` conditions, `ctx` values are read-only.
 ::::
 
 
@@ -657,7 +657,7 @@ PUT _ingest/pipeline/my-pipeline
 }
 ```
 
-If the [`script.painless.regex.enabled`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/circuit-breaker-settings.md#script-painless-regex-enabled) cluster setting is enabled, you can use regular expressions in your `if` condition scripts. For supported syntax, see [Painless regular expressions](asciidocalypse://docs/elasticsearch/docs/reference/scripting-languages/painless/painless-regexes.md).
+If the [`script.painless.regex.enabled`](elasticsearch://reference/elasticsearch/configuration-reference/circuit-breaker-settings.md#script-painless-regex-enabled) cluster setting is enabled, you can use regular expressions in your `if` condition scripts. For supported syntax, see [Painless regular expressions](elasticsearch://reference/scripting-languages/painless/painless-regexes.md).
 
 ::::{tip}
 If possible, avoid using regular expressions. Expensive regular expressions can slow indexing speeds.
@@ -745,7 +745,7 @@ PUT _ingest/pipeline/my-pipeline
 }
 ```
 
-Incoming documents often contain object fields. If a processor script attempts to access a field whose parent object does not exist, {{es}} returns a `NullPointerException`. To avoid these exceptions, use [null safe operators](asciidocalypse://docs/elasticsearch/docs/reference/scripting-languages/painless/painless-operators-reference.md#null-safe-operator), such as `?.`, and write your scripts to be null safe.
+Incoming documents often contain object fields. If a processor script attempts to access a field whose parent object does not exist, {{es}} returns a `NullPointerException`. To avoid these exceptions, use [null safe operators](elasticsearch://reference/scripting-languages/painless/painless-operators-reference.md#null-safe-operator), such as `?.`, and write your scripts to be null safe.
 
 For example, `ctx.network?.name.equalsIgnoreCase('Guest')` is not null safe. `ctx.network?.name` can return null. Rewrite the script as `'Guest'.equalsIgnoreCase(ctx.network?.name)`, which is null safe because `Guest` is always non-null.
 
@@ -768,7 +768,7 @@ PUT _ingest/pipeline/my-pipeline
 
 ## Conditionally apply pipelines [conditionally-apply-pipelines]
 
-Combine an `if` condition with the [`pipeline`](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/enrich-processor/pipeline-processor.md) processor to apply other pipelines to documents based on your criteria. You can use this pipeline as the [default pipeline](ingest-pipelines.md#set-default-pipeline) in an [index template](../../data-store/templates.md) used to configure multiple data streams or indices.
+Combine an `if` condition with the [`pipeline`](elasticsearch://reference/ingestion-tools/enrich-processor/pipeline-processor.md) processor to apply other pipelines to documents based on your criteria. You can use this pipeline as the [default pipeline](ingest-pipelines.md#set-default-pipeline) in an [index template](../../data-store/templates.md) used to configure multiple data streams or indices.
 
 ```console
 PUT _ingest/pipeline/one-pipeline-to-rule-them-all

@@ -12,9 +12,9 @@ The AI Assistant uses generative AI to provide:
 
 The AI Assistant integrates with your large language model (LLM) provider through our supported Elastic connectors:
 
-* [OpenAI connector](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/openai-action-type.md) for OpenAI or Azure OpenAI Service.
-* [Amazon Bedrock connector](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/bedrock-action-type.md) for Amazon Bedrock, specifically for the Claude models.
-* [Google Gemini connector](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/gemini-action-type.md) for Google Gemini.
+* [OpenAI connector](kibana://reference/connectors-kibana/openai-action-type.md) for OpenAI or Azure OpenAI Service.
+* [Amazon Bedrock connector](kibana://reference/connectors-kibana/bedrock-action-type.md) for Amazon Bedrock, specifically for the Claude models.
+* [Google Gemini connector](kibana://reference/connectors-kibana/gemini-action-type.md) for Google Gemini.
 
 ::::{important}
 The AI Assistant is powered by an integration with your large language model (LLM) provider. LLMs are known to sometimes present incorrect information as if it’s correct. Elastic supports configuration and connection to the LLM provider and your knowledge base, but is not responsible for the LLM’s responses.
@@ -66,9 +66,9 @@ To set up the AI Assistant:
 
 2. From **Project settings** → **Management** → **Connectors**, create a connector for your AI provider:
 
-    * [OpenAI](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/openai-action-type.md)
-    * [Amazon Bedrock](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/bedrock-action-type.md)
-    * [Google Gemini](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/gemini-action-type.md)
+    * [OpenAI](kibana://reference/connectors-kibana/openai-action-type.md)
+    * [Amazon Bedrock](kibana://reference/connectors-kibana/bedrock-action-type.md)
+    * [Google Gemini](kibana://reference/connectors-kibana/gemini-action-type.md)
 
 3. Authenticate communication between {{obs-serverless}} and the AI provider by providing the following information:
 
@@ -248,7 +248,7 @@ Clicking a prompt generates a message specific to that log entry. You can contin
 
 ### Add the AI Assistant connector to alerting workflows [observability-ai-assistant-add-the-ai-assistant-connector-to-alerting-workflows]
 
-You can use the [Observability AI Assistant connector](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/obs-ai-assistant-action-type.md) to add AI-generated insights and custom actions to your alerting workflows. To do this:
+You can use the [Observability AI Assistant connector](kibana://reference/connectors-kibana/obs-ai-assistant-action-type.md) to add AI-generated insights and custom actions to your alerting workflows. To do this:
 
 1. [Create (or edit) an alerting rule](../../../solutions/observability/incident-management/create-manage-rules.md) and specify the conditions that must be met for the alert to fire.
 2. Under **Actions**, select the **Observability AI Assistant** connector type.
@@ -311,4 +311,4 @@ Enabling that feature can be done from the **Settings** tab of the AI Assistant 
 
 ### Token limits [token-limits]
 
-Most LLMs have a set number of tokens they can manage in single a conversation. When you reach the token limit, the LLM will throw an error, and Elastic will display a "Token limit reached" error. The exact number of tokens that the LLM can support depends on the LLM provider and model you’re using. If you are using an OpenAI connector, you can monitor token usage in **OpenAI Token Usage** dashboard. For more information, refer to the [OpenAI Connector documentation](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/openai-action-type.md#openai-connector-token-dashboard).
+Most LLMs have a set number of tokens they can manage in single a conversation. When you reach the token limit, the LLM will throw an error, and Elastic will display a "Token limit reached" error. The exact number of tokens that the LLM can support depends on the LLM provider and model you’re using. If you are using an OpenAI connector, you can monitor token usage in **OpenAI Token Usage** dashboard. For more information, refer to the [OpenAI Connector documentation](kibana://reference/connectors-kibana/openai-action-type.md#openai-connector-token-dashboard).

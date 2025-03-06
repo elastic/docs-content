@@ -10,7 +10,7 @@ mapped_pages:
 
 A `ScriptEngine` is a backend for implementing a scripting language. It may also be used to write scripts that need to use advanced internals of scripting. For example, a script that wants to use term frequencies while scoring.
 
-The plugin [documentation](asciidocalypse://docs/elasticsearch/docs/extend/index.md) has more information on how to write a plugin so that Elasticsearch will properly load it. To register the `ScriptEngine`, your plugin should implement the `ScriptPlugin` interface and override the `getScriptEngine(Settings settings)` method.
+The plugin [documentation](elasticsearch://extend/index.md) has more information on how to write a plugin so that Elasticsearch will properly load it. To register the `ScriptEngine`, your plugin should implement the `ScriptPlugin` interface and override the `getScriptEngine(Settings settings)` method.
 
 The following is an example of a custom `ScriptEngine` which uses the language name `expert_scripts`. It implements a single script called `pure_df` which may be used as a search script to override each document’s score as the document frequency of a provided term.
 

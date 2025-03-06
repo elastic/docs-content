@@ -29,6 +29,6 @@ The following sections describe how to customize a {{kib}} deployment to suit yo
     * [Disable TLS](k8s-kibana-http-configuration.md#k8s-kibana-http-disable-tls)
     * [Install {{kib}} plugins](k8s-kibana-plugins.md)
 
-* [Autoscaling stateless applications](../../autoscaling/autoscaling-stateless-applications-on-eck.md): Use [Horizontal Pod Autoscaler](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/) for {{kib}} or other stateless applications.
+* [Autoscaling stateless applications](../../autoscaling/autoscaling-in-eck.md#k8s-stateless-autoscaling): Use [Horizontal Pod Autoscaler](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/) for {{kib}} or other stateless applications.
 
 

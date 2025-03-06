@@ -106,10 +106,10 @@ Click **Create APM Agent key** and copy the Base64 encoded API key. You will nee
 
 You can now apply your newly created API keys in the configuration of each of your APM agents. See the relevant agent documentation for additional information:
 
-* **Android**: [`apiKey`](asciidocalypse://docs/apm-agent-android/docs/reference/configuration.md)
-* **Go agent**: [`ELASTIC_APM_API_KEY`](asciidocalypse://docs/apm-agent-go/docs/reference/configuration.md#config-api-key)
-* **.NET agent**: [`ApiKey`](asciidocalypse://docs/apm-agent-dotnet/docs/reference/config-reporter.md#config-api-key)
-* **iOS**: [`withApiKey`](asciidocalypse://docs/apm-agent-ios/docs/reference/configuration.md#withApiKey)
+* **Android**: [`apiKey`](apm-agent-android://reference/configuration.md)
+* **Go agent**: [`ELASTIC_APM_API_KEY`](apm-agent-go://reference/configuration.md#config-api-key)
+* **.NET agent**: [`ApiKey`](apm-agent-dotnet://reference/config-reporter.md#config-api-key)
+* **iOS**: [`withApiKey`](apm-agent-ios://reference/configuration.md#withapikey)
 * **Java agent**: [`api_key`](asciidocalypse://docs/apm-agent-java/docs/reference/config-reporter.md#config-api-key)
 * **Node.js agent**: [`apiKey`](asciidocalypse://docs/apm-agent-nodejs/docs/reference/configuration.md#api-key)
 * **PHP agent**: [`api_key`](asciidocalypse://docs/apm-agent-php/docs/reference/configuration-reference.md#config-api-key)

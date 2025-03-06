@@ -28,7 +28,7 @@ mapped_pages:
 ::::::{tab-item} Self-managed
 In order to increase the disk capacity of any other node, you will need to replace the instance that has run out of space with one of higher disk capacity.
 
-1. First, retrieve the disk threshold that will indicate how much disk space is needed. The relevant threshold is the [high watermark](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#cluster-routing-watermark-high) and can be retrieved via the following command:
+1. First, retrieve the disk threshold that will indicate how much disk space is needed. The relevant threshold is the [high watermark](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#cluster-routing-watermark-high) and can be retrieved via the following command:
 
     ```console
     GET _cluster/settings?include_defaults&filter_path=*.cluster.routing.allocation.disk.watermark.high*
@@ -54,7 +54,7 @@ In order to increase the disk capacity of any other node, you will need to repla
       }
     ```
 
-    The above means that in order to resolve the disk shortage we need to either drop our disk usage below the 90% or have more than 150GB available, read more how this threshold works [here](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#cluster-routing-watermark-high).
+    The above means that in order to resolve the disk shortage we need to either drop our disk usage below the 90% or have more than 150GB available, read more how this threshold works [here](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#cluster-routing-watermark-high).
 
 2. The next step is to find out the current disk usage, this will allow to calculate how much extra space is needed. In the following example, we show only a machine learning node for readability purposes:
 

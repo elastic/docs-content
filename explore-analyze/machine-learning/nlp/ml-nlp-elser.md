@@ -21,7 +21,7 @@ While ELSER V2 is generally available, ELSER V1 is in [preview] and will remain 
 
 ## Tokens - not synonyms [elser-tokens]
 
-ELSER expands the indexed and searched passages into collections of terms that are learned to co-occur frequently within a diverse set of training data. The terms that the text is expanded into by the model *are not* synonyms for the search terms; they are learned associations capturing relevance. These expanded terms are weighted as some of them are more significant than others. Then the {{es}} [sparse vector](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/sparse-vector.md) (or [rank features](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/rank-features.md)) field type is used to store the terms and weights at index time, and to search against later.
+ELSER expands the indexed and searched passages into collections of terms that are learned to co-occur frequently within a diverse set of training data. The terms that the text is expanded into by the model *are not* synonyms for the search terms; they are learned associations capturing relevance. These expanded terms are weighted as some of them are more significant than others. Then the {{es}} [sparse vector](elasticsearch://reference/elasticsearch/mapping-reference/sparse-vector.md) (or [rank features](elasticsearch://reference/elasticsearch/mapping-reference/rank-features.md)) field type is used to store the terms and weights at index time, and to search against later.
 
 This approach provides a more understandable search experience compared to vector embeddings. However, attempting to directly interpret the tokens and weights can be misleading, as the expansion essentially results in a vector in a very high-dimensional space. Consequently, certain tokens, especially those with low weight, contain information that is intertwined with other low-weight tokens in the representation. In this regard, they function similarly to a dense vector representation, making it challenging to separate their individual contributions. This complexity can potentially lead to misinterpretations if not carefully considered during analysis.
 
@@ -33,7 +33,7 @@ To use ELSER, you must have the [appropriate subscription](https://www.elastic.c
 The minimum dedicated ML node size for deploying and using the ELSER model is 4 GB in {{ech}} if [deployment autoscaling](../../../deploy-manage/autoscaling.md) is turned off. Turning on autoscaling is recommended because it allows your deployment to dynamically adjust resources based on demand. Better performance can be achieved by using more allocations or more threads per allocation, which requires bigger ML nodes. Autoscaling provides bigger nodes when required. If autoscaling is turned off, you must provide suitably sized nodes yourself.
 ::::
 
-Enabling trained model autoscaling for your ELSER deployment is recommended. Refer to [*Trained model autoscaling*](ml-nlp-auto-scale.md) to learn more.
+Enabling trained model autoscaling for your ELSER deployment is recommended. Refer to [*Trained model autoscaling*](../../../deploy-manage/autoscaling/trained-model-autoscaling.md) to learn more.
 
 ## ELSER v2 [elser-v2]
 
@@ -72,7 +72,7 @@ PUT _inference/sparse_embedding/my-elser-model
     }
 ```
 
-The API request automatically initiates the model download and then deploy the model. This example uses [autoscaling](ml-nlp-auto-scale.md) through adaptive allocation.
+The API request automatically initiates the model download and then deploy the model. This example uses [autoscaling](../../../deploy-manage/autoscaling/trained-model-autoscaling.md) through adaptive allocation.
 
 Refer to the [ELSER {{infer}} integration documentation](../../elastic-inference/inference-api/elser-inference-integration.md) to learn more about the available settings.
 
@@ -172,7 +172,7 @@ POST _ml/trained_models/.elser_model_2/deployment/_start?deployment_id=for_searc
 If you want to deploy ELSER in a restricted or closed network, you have two options:
 
 * create your own HTTP/HTTPS endpoint with the model artifacts on it,
-* put the model artifacts into a directory inside the config directory on all [master-eligible nodes](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/node-settings.md#master-node).
+* put the model artifacts into a directory inside the config directory on all [master-eligible nodes](elasticsearch://reference/elasticsearch/configuration-reference/node-settings.md#master-node).
 
 ### Model artifact files [elser-model-artifacts]
 
@@ -284,7 +284,7 @@ To learn more about ELSER performance, refer to the [Benchmark information](#els
 
 ## Pre-cleaning input text [pre-cleaning]
 
-The quality of the input text significantly affects the quality of the embeddings. To achieve the best results, it’s recommended to clean the input text before generating embeddings. The exact preprocessing you may need to do heavily depends on your text. For example, if your text contains HTML tags, use the [HTML strip processor](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/enrich-processor/htmlstrip-processor.md) in an ingest pipeline to remove unnecessary elements. Always review and clean your input text before ingestion to eliminate any irrelevant entities that might affect the results.
+The quality of the input text significantly affects the quality of the embeddings. To achieve the best results, it’s recommended to clean the input text before generating embeddings. The exact preprocessing you may need to do heavily depends on your text. For example, if your text contains HTML tags, use the [HTML strip processor](elasticsearch://reference/ingestion-tools/enrich-processor/htmlstrip-processor.md) in an ingest pipeline to remove unnecessary elements. Always review and clean your input text before ingestion to eliminate any irrelevant entities that might affect the results.
 
 ## Recommendations for using ELSER [elser-recommendations]
 
@@ -292,7 +292,7 @@ To gain the biggest value out of ELSER trained models, consider to follow this l
 
 * If quick response time is important for your use case, keep {{ml}} resources available at all times by setting `min_allocations` to `1`.
 * Setting `min_allocations` to `0` can save on costs for non-critical use cases or testing environments.
-* Enabling [autoscaling](ml-nlp-auto-scale.md) through adaptive allocations or adaptive resources makes it possible for {{es}} to scale up or down the available resources of your ELSER deployment based on the load on the process.
+* Enabling [autoscaling](../../../deploy-manage/autoscaling/trained-model-autoscaling.md) through adaptive allocations or adaptive resources makes it possible for {{es}} to scale up or down the available resources of your ELSER deployment based on the load on the process.
 * Use dedicated, optimized ELSER {{infer}} endpoints for ingest and search use cases.
   * When deploying a trained model in {{kib}}, you can select for which case you want to optimize your ELSER deployment.
   * If you use the trained model or {{infer}} APIs and want to optimize your ELSER trained model deployment or {{infer}} endpoint for ingest, set the number of threads to `1` (`"num_threads": 1`).

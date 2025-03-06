@@ -10,7 +10,7 @@ mapped_pages:
 
 You can build and debug grok patterns in the {{kib}} **Grok Debugger** before you use them in your data processing pipelines. Grok is a pattern matching syntax that you can use to parse arbitrary text and structure it. Grok is good for parsing syslog, apache, and other webserver logs, mysql logs, and in general, any log format that is written for human consumption.
 
-Grok patterns are supported in {{es}} [runtime fields](../../../manage-data/data-store/mapping/runtime-fields.md), the {{es}} [grok ingest processor](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/enrich-processor/grok-processor.md), and the {{ls}} [grok filter](asciidocalypse://docs/logstash/docs/reference/plugins-filters-grok.md). For syntax, see [Grokking grok](../../scripting/grok.md).
+Grok patterns are supported in {{es}} [runtime fields](../../../manage-data/data-store/mapping/runtime-fields.md), the {{es}} [grok ingest processor](elasticsearch://reference/ingestion-tools/enrich-processor/grok-processor.md), and the {{ls}} [grok filter](logstash://reference/plugins-filters-grok.md). For syntax, see [Grokking grok](../../scripting/grok.md).
 
 The {{stack}} ships with more than 120 reusable grok patterns. For a complete list of patterns, see [{{es}} grok patterns](https://github.com/elastic/elasticsearch/tree/master/libs/grok/src/main/resources/patterns) and [{{ls}} grok patterns](https://github.com/logstash-plugins/logstash-patterns-core/tree/master/patterns).
 

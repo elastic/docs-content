@@ -31,7 +31,7 @@ This tutorial uses the [`elasticsearch` service](../../../explore-analyze/elasti
 
 ## Create the index mapping [semantic-text-index-mapping]
 
-The mapping of the destination index - the index that contains the embeddings that the inference endpoint will generate based on your input text - must be created. The destination index must have a field with the [`semantic_text`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/semantic-text.md) field type to index the output of the used inference endpoint.
+The mapping of the destination index - the index that contains the embeddings that the inference endpoint will generate based on your input text - must be created. The destination index must have a field with the [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) field type to index the output of the used inference endpoint.
 
 ```console
 PUT semantic-embeddings
@@ -132,4 +132,4 @@ As a result, you receive the top 10 documents that are closest in meaning to the
 
 * If you want to use `semantic_text` in hybrid search, refer to [this notebook](https://colab.research.google.com/github/elastic/elasticsearch-labs/blob/main/notebooks/search/09-semantic-text.ipynb) for a step-by-step guide.
 * For more information on how to optimize your ELSER endpoints, refer to [the ELSER recommendations](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md#elser-recommendations) section in the model documentation.
-* To learn more about model autoscaling, refer to the [trained model autoscaling](/explore-analyze/machine-learning/nlp/ml-nlp-auto-scale.md) page.
+* To learn more about model autoscaling, refer to the [trained model autoscaling](../../../deploy-manage/autoscaling/trained-model-autoscaling.md) page.
