@@ -1,9 +1,13 @@
 ---
+applies_to:
+  deployment:
+    ece: all
 mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-install-medium-cloud.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-install-medium-onprem.html
 ---
 
-# Deploy a medium installation onprem [ece-install-medium-onprem]
+# Deploy a medium installation [ece-install-medium]
 
 This type of installation is recommended for many production setups. You need:
 
@@ -15,8 +19,7 @@ This type of installation is recommended for many production setups. You need:
 :alt: A medium installation with nine to twelve hosts across three availability zones
 :::
 
-
-## Before you start [ece_before_you_start_5]
+## Important considerations  [ece_before_you_start_2]
 
 * Monitor the load on proxies and make sure the volume of user requests routed by the proxies does not affect the resources available to the ECE management services.
 * Note that the medium-sized Elastic Cloud Enterprise installation separates the allocator from the director and coordinator roles (ECE management services) and the proxy roles.
@@ -36,9 +39,11 @@ This type of installation is recommended for many production setups. You need:
 For production environments, you must define the memory settings for each role, except for the `proxy` role, as starting from ECE 2.4 the JVM proxy was replaced with a Golang-based proxy. If you don’t set any memory setting, the default values are used, which are inadequate for production environments and can lead to performance or stability issues.
 ::::
 
+## Before you start
 
+Make sure you have completed all prerequisites and environment preparations described in the [Installation overview](./install.md), and that the hosts are configured according to [](./configure-operating-system.md).
 
-## Installation steps [ece_installation_steps_5]
+## Installation steps [ece_installation_steps_2]
 
 1. Install Elastic Cloud Enterprise on the first host to start a new installation with your first availability zone. This first host holds all roles to help bootstrap the rest of the installation, but you will remove some of its roles in a later step.
 
@@ -64,12 +69,22 @@ For production environments, you must define the memory settings for each role, 
     bash <(curl -fsSL https://download.elastic.co/cloud/elastic-cloud-enterprise.sh) install --coordinator-host HOST_IP --roles-token 'MY_TOKEN' --roles "director,coordinator,proxy" --availability-zone MY_ZONE-3 --memory-settings '{"runner":{"xms":"1G","xmx":"1G"},"zookeeper":{"xms":"8G","xmx":"8G"},"director":{"xms":"1G","xmx":"1G"},"constructor":{"xms":"4G","xmx":"4G"},"admin-console":{"xms":"8G","xmx":"8G"}}'
     ```
 
-4. To handle the Elasticsearch and Kibana workload, install Elastic Cloud Enterprise on a fourth, fifth, and sixth host, distributing them evenly across the existing three availability zones and assign them the `allocator` role. Make sure you include the coordinator host IP information and allocator roles token from step 1.
+4. To handle the Elasticsearch and Kibana workloads, install Elastic Cloud Enterprise on a fourth, fifth, and sixth host, distributing them evenly across the existing three availability zones and assign them the `allocator` role. Make sure you include the coordinator host IP information and allocator roles token from step 1.
 
     ```sh
     bash <(curl -fsSL https://download.elastic.co/cloud/elastic-cloud-enterprise.sh) install --coordinator-host HOST_IP --roles-token 'ALLOCATOR_TOKEN' --roles "allocator" --availability-zone MY_ZONE-1 --memory-settings '{"runner":{"xms":"1G","xmx":"1G"},"allocator":{"xms":"4G","xmx":"4G"}}'
+    ```
 
+    ```sh
     bash <(curl -fsSL https://download.elastic.co/cloud/elastic-cloud-enterprise.sh) install --coordinator-host HOST_IP --roles-token 'ALLOCATOR_TOKEN' --roles "allocator" --availability-zone MY_ZONE-2 --memory-settings '{"runner":{"xms":"1G","xmx":"1G"},"allocator":{"xms":"4G","xmx":"4G"}}'
-
+    ```
+    
+    ```sh
     bash <(curl -fsSL https://download.elastic.co/cloud/elastic-cloud-enterprise.sh) install --coordinator-host HOST_IP --roles-token 'ALLOCATOR_TOKEN' --roles "allocator" --availability-zone MY_ZONE-3 --memory-settings '{"runner":{"xms":"1G","xmx":"1G"},"allocator":{"xms":"4G","xmx":"4G"}}'
     ```
+
+5. [Change the deployment configuration](working-with-deployments.md) for the `admin-console-elasticsearch`, `logging-and-metrics`, and `security` clusters to use three availability zones and resize the nodes to use at least 4 GB of RAM. This change makes sure that the clusters used by the administration console are highly available and provisioned sufficiently.
+
+6. [Log into the Cloud UI](log-into-cloud-ui.md) to provision your deployment.
+
+Once the installation is complete, you can continue with [](./post-installation-steps.md).
