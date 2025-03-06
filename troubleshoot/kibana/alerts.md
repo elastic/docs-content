@@ -34,7 +34,7 @@ The following debugging tools are available:
 
 :::{image} ../../images/kibana-rule-details-alerts-inactive.png
 :alt: Alerting management details
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -44,7 +44,7 @@ When creating or editing an index threshold rule, you see a graph of the data th
 
 :::{image} ../../images/kibana-index-threshold-chart.png
 :alt: Index Threshold chart
-:class: screenshot
+:screenshot:
 :::
 
 The end date is related to the check interval for the rule. You can use this view to see if the rule is getting the data you expect, and visually compare to the threshold value (a horizontal line in the graph). If the graph does not contain any lines except for the threshold line, then the rule has an issue, for example, no data is available given the specified index and fields or there is a permission error. Diagnosing these may be difficult - but there may be log messages for error conditions.
@@ -83,7 +83,7 @@ The **{{stack-manage-app}}** > **{{rules-ui}}** page contains an error banner th
 
 :::{image} ../../images/kibana-rules-management-health.png
 :alt: Rule management page with the errors banner
-:class: screenshot
+:screenshot:
 :::
 
 

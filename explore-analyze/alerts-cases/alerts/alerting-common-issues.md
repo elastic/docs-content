@@ -73,7 +73,7 @@ and in the [details page](create-manage-rules.md#rule-details):
 
 :::{image} ../../../images/kibana-rule-details-timeout-error.png
 :alt: Rule details page with timeout error
-:class: screenshot
+:screenshot:
 :::
 
 If you want your rules to run longer, update the `xpack.alerting.rules.run.timeout` configuration in your [Alerting settings](kibana://reference/configuration-reference/alerting-settings.md#alert-settings). You can also target a specific rule type by using `xpack.alerting.rules.run.ruleTypeOverrides`.

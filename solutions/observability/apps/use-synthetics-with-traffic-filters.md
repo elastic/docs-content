@@ -52,7 +52,7 @@ For example, if you had a {{private-location}} running with a public CIDR block 
 
 :::{image} ../../../images/observability-synthetics-traffic-filters-create-filter.png
 :alt: Create a traffic filter in {{ecloud}}
-:class: screenshot
+:screenshot:
 :::
 
 Once the traffic filter has been created, it needs to be assigned to the deployment from which you’re managing monitors from (the deployment containing the {{es}} cluster where your results need to go).

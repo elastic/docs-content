@@ -14,7 +14,7 @@ To perform these tasks, you must have [full access](setup-cases.md) to the appro
 
 :::{image} ../../../images/kibana-cases-settings.png
 :alt: View case settings
-:class: screenshot
+:screenshot:
 :::
 
 ## Case closures [case-closures]
@@ -58,7 +58,7 @@ To create a custom field:
 1. In the **Custom fields** section, click **Add field**.
    :::{image} ../../../images/kibana-cases-custom-fields-add.png
    :alt: Add a custom field in case settings
-   :class: screenshot
+   :screenshot:
    :::
 
 2. You must provide a field label and type (text or toggle). You can optionally designate it as a required field and provide a default value.
@@ -80,7 +80,7 @@ To create a template:
 1. In the **Templates** section, click **Add template**.
    :::{image} ../../../images/kibana-cases-templates-add.png
    :alt: Add a template in case settings
-   :class: screenshot
+   :screenshot:
    :::
 
 2. You must provide a template name and case severity. You can optionally add template tags and a description, values for each case field, and a case connector.

@@ -117,5 +117,5 @@ Navigate to {{kib}} and choose **Visualize your logs with Discover**.
 
 :::{image} ../../../images/observability-firehose-networkfirewall-discover.png
 :alt: Visualize Network Firewall logs with Discover
-:class: screenshot
+:screenshot:
 :::

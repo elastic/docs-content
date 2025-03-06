@@ -77,7 +77,7 @@ Investigate your indices and perform operations from the **Indices** view.
 
 :::{image} /images/serverless-index-management-indices.png
 :alt: Index Management indices
-:class: screenshot
+:screenshot:
 :::
 
 * To show details and perform operations, click the index name. To perform operations on multiple indices, select their checkboxes and then open the **Manage** menu. For more information on managing indices, refer to [Index APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-indices).
@@ -93,7 +93,7 @@ Investigate your data streams and address lifecycle management needs in the **Da
 
 :::{image} /images/serverless-management-data-stream.png
 :alt: Data stream details
-:class: screenshot
+:screenshot:
 :::
 
 In {{es-serverless}}, indices matching the `logs-*-*` pattern use the logsDB index mode by default. The logsDB index mode creates a [logs data stream](https://www.elastic.co/guide/en/elasticsearch/reference/master/logs-data-stream.html).
@@ -111,7 +111,7 @@ Create, edit, clone, and delete your index templates in the **Index Templates** 
 
 :::{image} /images/serverless-index-management-index-templates.png
 :alt: Index templates
-:class: screenshot
+:screenshot:
 :::
 
 * To show details and perform operations, click the template name.
@@ -127,7 +127,7 @@ Create, edit, clone, and delete your component templates in the **Component Temp
 
 :::{image} /images/serverless-management-component-templates.png
 :alt: Component templates
-:class: screenshot
+:screenshot:
 :::
 
 * To show details and perform operations, click the template name.
@@ -141,7 +141,7 @@ Add data from your existing indices to incoming documents using the **Enrich Pol
 
 :::{image} /images/serverless-management-enrich-policies.png
 :alt: Enrich policies
-:class: screenshot
+:screenshot:
 :::
 
 * To show details click the policy name.

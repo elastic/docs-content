@@ -45,7 +45,7 @@ At any step, you can [preview the rule](../../../solutions/security/detect-and-a
 
             :::{image} ../../../images/serverless--detections-rule-query-example.png
             :alt: Rule query example
-            :class: screenshot
+            :screenshot:
             :::
 
     3. You can use saved queries and queries from saved Timelines (**Import query from saved Timeline**) as rule conditions.
@@ -180,7 +180,7 @@ To create or edit {{ml}} rules, you need an appropriate user role. Additionally,
 
             :::{image} ../../../images/serverless--detections-eql-rule-query-example.png
             :alt:  detections eql rule query example
-            :class: screenshot
+            :screenshot:
             :::
 
             ::::{note}
@@ -260,7 +260,7 @@ To create or edit {{ml}} rules, you need an appropriate user role. Additionally,
 
         :::{image} ../../../images/serverless--detections-indicator-rule-example.png
         :alt: Indicator match rule settings
-        :class: screenshot
+        :screenshot:
         :::
 
         ::::{tip}
@@ -308,7 +308,7 @@ You uploaded a value list of known ransomware domains, and you want to be notifi
 
 :::{image} ../../../images/serverless--detections-indicator_value_list.png
 :alt:  detections indicator value list
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -515,7 +515,7 @@ When configuring an {{esql}} rule’s **[Custom highlighted fields](../../../sol
 
         :::{image} ../../../images/serverless--detections-severity-mapping-ui.png
         :alt:  detections severity mapping ui
-        :class: screenshot
+        :screenshot:
         :::
 
         ::::{note}
@@ -534,7 +534,7 @@ When configuring an {{esql}} rule’s **[Custom highlighted fields](../../../sol
 
         :::{image} ../../../images/serverless--detections-risk-source-field-ui.png
         :alt:  detections risk source field ui
-        :class: screenshot
+        :screenshot:
         :::
 
         ::::{note}
@@ -602,7 +602,7 @@ When configuring an {{esql}} rule’s **[Custom highlighted fields](../../../sol
 
     :::{image} ../../../images/serverless--detections-schedule-rule.png
     :alt:  detections schedule rule
-    :class: screenshot
+    :screenshot:
     :::
 
 3. Continue with [setting the rule’s schedule](../../../solutions/security/detect-and-alert/create-detection-rule.md#rule-schedule).
@@ -669,7 +669,7 @@ To use actions for alert notifications, you need the appropriate user role. For 
 
     :::{image} ../../../images/serverless--detections-selected-action-type.png
     :alt:  detections selected action type
-    :class: screenshot
+    :screenshot:
     :::
 
 5. Use the default notification message or customize it. You can add more context to the message by clicking the icon above the message text box and selecting from a list of available [alert notification variables](../../../solutions/security/detect-and-alert/create-detection-rule.md#rule-action-variables).
@@ -811,7 +811,7 @@ Click the **Rule preview** button while creating or editing a rule. The preview 
 
 :::{image} ../../../images/serverless--detections-preview-rule.png
 :alt: Rule preview
-:class: screenshot
+:screenshot:
 :::
 
 The preview also includes the effects of rule exceptions and override fields. In the histogram, alerts are stacked by `event.category` (or `host.name` for machine learning rules), and alerts with multiple values are counted more than once.

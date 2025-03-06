@@ -118,21 +118,21 @@ The following image shows the **Agent monitoring** settings for the default agen
 
 :::{image} ../../../images/fleet-agent-monitoring-settings.png
 :alt: Screen capture of agent monitoring settings in the default agent policy
-:class: screenshot
+:screenshot:
 :::
 
 There are also pre-built dashboards for agent metrics that you can access under **Assets** in the {{agent}} integration:
 
 :::{image} ../../../images/fleet-agent-monitoring-assets.png
 :alt: Screen capture of {{agent}} monitoring assets
-:class: screenshot
+:screenshot:
 :::
 
 The **[{{agent}}] Agent metrics** dashboard shows an aggregated view of agent metrics:
 
 :::{image} ../../../images/fleet-agent-metrics-dashboard.png
 :alt: Screen capture showing {{agent}} metrics
-:class: screenshot
+:screenshot:
 :::
 
 For more information, refer to [Monitor {{agent}}s](/reference/ingestion-tools/fleet/monitor-elastic-agent.md).

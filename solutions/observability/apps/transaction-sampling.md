@@ -37,7 +37,7 @@ In the example in *Figure 1*, `Service A` initiates four transactions and has sa
 
 :::{image} ../../../images/observability-dt-sampling-example-1.png
 :alt: Distributed tracing and head based sampling example one
-:class: screenshot
+:screenshot:
 :::
 
 In the example in *Figure 2*, `Service A` initiates four transactions and has a sample rate of `1` (`100%`). Again, the upstream sampling decision is respected, so the sample rate for all services will be `1` (`100%`).
@@ -46,7 +46,7 @@ In the example in *Figure 2*, `Service A` initiates four transactions and has a 
 
 :::{image} ../../../images/observability-dt-sampling-example-2.png
 :alt: Distributed tracing and head based sampling example two
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -64,7 +64,7 @@ In the example in *Figure 3*, `Service A` is an Elastic-monitored service that i
 
 :::{image} ../../../images/observability-dt-sampling-continuation-strategy-restart_external.png
 :alt: Distributed tracing and head based sampling with restart_external continuation strategy
-:class: screenshot
+:screenshot:
 :::
 
 Use the **`restart`** trace continuation strategy on an Elastic-monitored service to start a new trace regardless of whether the previous service had a `traceparent` header. This can be helpful if an Elastic-monitored service is publicly exposed, and you do not want tracing data to possibly be spoofed by user requests.

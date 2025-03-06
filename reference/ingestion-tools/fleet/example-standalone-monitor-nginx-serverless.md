@@ -42,7 +42,7 @@ To start, we’ll set up a basic [nginx web server](https://docs.nginx.com/nginx
 
     :::{image} images/guide-nginx-welcome.png
     :alt: Browser window showing Welcome to nginx!
-    :class: screenshot
+    :screenshot:
     :::
 
 
@@ -61,7 +61,7 @@ Now that your web server is running, let’s get set up to monitor it in {{eclou
 
     :::{image} images/guide-sign-up-trial.png
     :alt: Start your free Elastic Cloud trial
-    :class: screenshot
+    :screenshot:
     :::
 
 3. After you’ve [logged in](https://cloud.elastic.co/login), select **Create project**.

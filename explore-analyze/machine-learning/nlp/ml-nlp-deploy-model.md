@@ -16,7 +16,7 @@ You can optimize your deplyoment for typical use cases, such as search and inges
 
 :::{image} ../../../images/machine-learning-ml-nlp-deployment-id-elser-v2.png
 :alt: Model deployment on the Trained Models UI.
-:class: screenshot
+:screenshot:
 :::
 
 Each deployment will be fine-tuned automatically based on its specific purpose you choose.

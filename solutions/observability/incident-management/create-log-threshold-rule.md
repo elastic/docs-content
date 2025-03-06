@@ -11,7 +11,7 @@ mapped_pages:
 
 :::{image} ../../../images/observability-log-threshold-alert.png
 :alt: Log threshold alert configuration
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -62,7 +62,7 @@ When group by fields are selected, but no documents contain the selected field(s
 
 :::{image} ../../../images/observability-log-threshold-alert-group-by.png
 :alt: Log threshold rule group by
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -72,7 +72,7 @@ To determine how many log entries would match each part of your configuration, y
 
 :::{image} ../../../images/observability-log-threshold-alert-chart-previews.png
 :alt: Log threshold chart previews
-:class: screenshot
+:screenshot:
 :::
 
 The shaded area denotes the threshold that has been selected.
@@ -86,7 +86,7 @@ The following example triggers an alert when there are twice as many error logs 
 
 :::{image} ../../../images/observability-log-threshold-alert-ratio.png
 :alt: Log threshold ratio rule
-:class: screenshot
+:screenshot:
 :::
 
 ::::{important}
@@ -129,7 +129,7 @@ After you select a connector, you must set the action frequency. You can choose 
 
 :::{image} ../../../images/observability-log-threshold-run-when-selection.png
 :alt: Configure when a rule is triggered
-:class: screenshot
+:screenshot:
 :::
 
 You can also further refine the conditions under which actions run by specifying that actions only run when they match a KQL query or when an alert occurs within a specific time frame:
@@ -139,7 +139,7 @@ You can also further refine the conditions under which actions run by specifying
 
 :::{image} ../../../images/observability-logs-threshold-conditional-alert.png
 :alt: Configure a conditional alert
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -149,7 +149,7 @@ Use the default notification message or customize it. You can add more context t
 
 :::{image} ../../../images/observability-logs-threshold-alert-default-message.png
 :alt: Default notification message for log threshold rules with open "Add variable" popup listing available action variables
-:class: screenshot
+:screenshot:
 :::
 
 The following variables are specific to this rule type. You an also specify [variables common to all rules](../../../explore-analyze/alerts-cases/alerts/rule-action-variables.md).
@@ -193,7 +193,7 @@ When a rule check is performed, a query is built based on the configuration of t
 
 :::{image} ../../../images/observability-log-threshold-alert-es-query-ungrouped.png
 :alt: Log threshold ungrouped {{es}} query example
-:class: screenshot
+:screenshot:
 :::
 
 ```json
@@ -245,7 +245,7 @@ When a rule check is performed, a query is built based on the configuration of t
 
 :::{image} ../../../images/observability-log-threshold-alert-es-query-grouped.png
 :alt: Log threshold grouped {{es}} query example
-:class: screenshot
+:screenshot:
 :::
 
 ```json

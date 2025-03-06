@@ -21,7 +21,7 @@ To use the UI, go to the Synthetics UI in {{kib}} or in your Observability Serve
 
 :::{image} ../../../images/observability-synthetics-get-started-ui-lightweight.png
 :alt: Synthetics Create monitor UI
-:class: screenshot
+:screenshot:
 :::
 
 

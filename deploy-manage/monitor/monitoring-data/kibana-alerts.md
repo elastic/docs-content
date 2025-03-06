@@ -17,7 +17,7 @@ The {{stack}} {{monitor-features}} provide [Alerting rules](../../../explore-ana
 
 :::{image} ../../../images/kibana-monitoring-kibana-alerting-notification.png
 :alt: {{kib}} alerting notifications in {{stack-monitor-app}}
-:class: screenshot
+:screenshot:
 :::
 
 When you open **{{stack-monitor-app}}** for the first time, you will be asked to acknowledge the creation of these default rules. They are initially configured to detect and notify on various conditions across your monitored clusters. You can view notifications for: **Cluster health**, **Resource utilization**, and **Errors and exceptions** for {{es}} in real time.

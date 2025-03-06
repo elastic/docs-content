@@ -74,7 +74,7 @@ The **Trusted applications** page displays all the trusted applications that hav
 
 :::{image} ../../../images/security-trusted-apps-list.png
 :alt: trusted apps list
-:class: screenshot
+:screenshot:
 :::
 
 

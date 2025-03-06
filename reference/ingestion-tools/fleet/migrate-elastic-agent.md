@@ -24,7 +24,7 @@ Refer to the full [Snapshot and restore](/deploy-manage/tools/snapshot-and-resto
 
     :::{image} images/migrate-agent-take-snapshot.png
     :alt: Deployments Snapshots page
-    :class: screenshot
+    :screenshot:
     :::
 
 
@@ -41,7 +41,7 @@ You can create a new cluster based on the snapshot taken in the previous step, a
 
     :::{image} images/migrate-agent-new-deployment.png
     :alt: Create a deployment page
-    :class: screenshot
+    :screenshot:
     :::
 
 
@@ -55,7 +55,7 @@ when the target cluster is available you’ll need to adjust a few settings. Tak
 
     :::{image} images/migrate-agent-agents-offline.png
     :alt: Agents tab in Fleet showing offline agents
-    :class: screenshot
+    :screenshot:
     :::
 
 3. Open the {{fleet}} **Settings** tab.
@@ -65,7 +65,7 @@ when the target cluster is available you’ll need to adjust a few settings. Tak
 
     :::{image} images/migrate-agent-host-output-settings.png
     :alt: Settings tab in Fleet showing source deployment host and output settings
-    :class: screenshot
+    :screenshot:
     :::
 
     The next steps explain how to obtain the relevant {{fleet-server}} host and {{es}} output details applicable to the new target cluster in {{ecloud}}.
@@ -88,7 +88,7 @@ when the target cluster is available you’ll need to adjust a few settings. Tak
 
     :::{image} images/migrate-agent-elasticsearch-output.png
     :alt: Outputs section showing the new Elasticsearch host setting
-    :class: screenshot
+    :screenshot:
     :::
 
     In this example, the `New Elasticsearch` output and the `Elastic Cloud internal output` now have the same cluster ID, namely `fcccb85b651e452aa28703a59aea9b00`.
@@ -114,7 +114,7 @@ The easiest way to find the `deployment-id` is from the deployment URL:
 
     :::{image} images/migrate-agent-deployment-id.png
     :alt: Deployment management page
-    :class: screenshot
+    :screenshot:
     :::
 
     In this example, the new deployment ID is `eed4ae8e2b604fae8f8d515479a16b7b`.
@@ -127,7 +127,7 @@ The easiest way to find the `deployment-id` is from the deployment URL:
 
     :::{image} images/migrate-agent-fleet-server-host.png
     :alt: Fleet server hosts showing the new host URL
-    :class: screenshot
+    :screenshot:
     :::
 
 
@@ -188,7 +188,7 @@ Now that the {{fleet}} settings are correctly set up, it pays to ensure that the
 
     :::{image} images/migrate-agent-policy-settings.png
     :alt: An agent policy's settings showing the newly created entities
-    :class: screenshot
+    :screenshot:
     :::
 
 
@@ -218,7 +218,7 @@ This is best performed one policy at a time. For a given policy, you need to cap
 
     :::{image} images/migrate-agent-install-command.png
     :alt: Install command from the Add Agent UI
-    :class: screenshot
+    :screenshot:
     :::
 
 5. On the host machines where the current agents are installed, enroll the agents again using this copied URL and the enrollment token:
@@ -231,14 +231,14 @@ This is best performed one policy at a time. For a given policy, you need to cap
 
     :::{image} images/migrate-agent-install-command-output.png
     :alt: Install command output
-    :class: screenshot
+    :screenshot:
     :::
 
 6. The agent on each host will now check into the new {{fleet-server}} and appear in the new target cluster. In the source cluster, the agents will go offline as they won’t be sending any check-ins.
 
     :::{image} images/migrate-agent-newly-enrolled-agents.png
     :alt: Newly enrolled agents in the target cluster
-    :class: screenshot
+    :screenshot:
     :::
 
 7. Repeat this procedure for each {{agent}} policy.

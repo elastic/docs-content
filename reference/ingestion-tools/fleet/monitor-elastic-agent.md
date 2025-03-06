@@ -30,7 +30,7 @@ To view the overall status of your {{fleet}}-managed agents, in {{kib}}, go to *
 
 :::{image} images/kibana-fleet-agents.png
 :alt: Agents tab showing status of each {agent}
-:class: screenshot
+:screenshot:
 :::
 
 ::::{important}
@@ -59,7 +59,7 @@ To filter the list of agents by status, click the **Status** dropdown and select
 
 :::{image} images/agent-status-filter.png
 :alt: Agent Status dropdown with multiple statuses selected
-:class: screenshot
+:screenshot:
 :::
 
 For advanced filtering, use the search bar to create structured queries using [{{kib}} Query Language](elasticsearch://reference/query-languages/kql.md). For example, enter `local_metadata.os.family : "darwin"` to see only agents running on macOS.
@@ -104,7 +104,7 @@ On the **Agents** tab, click **Agent activity**. All agent operations are shown,
 
 :::{image} images/agent-activity.png
 :alt: Agent activity panel
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -119,7 +119,7 @@ When {{fleet}} reports an agent status like `Offline` or `Unhealthy`, you might 
 
     :::{image} images/view-agent-logs.png
     :alt: View agent logs under agent details
-    :class: screenshot
+    :screenshot:
     :::
 
 
@@ -130,7 +130,7 @@ On the **Logs** tab you can filter, search, and explore the agent logs:
 
     :::{image} images/kibana-fleet-datasets.png
     :alt: {{fleet}} showing datasets for logging
-    :class: screenshot
+    :screenshot:
     :::
 
 * Change the log level to filter the view by log levels. Want to see debugging logs? Refer to [Change the logging level](#change-logging-level).
@@ -146,7 +146,7 @@ The logging level for monitored agents is set to `info` by default. You can chan
 
     :::{image} images/agent-set-logging-level.png
     :alt: Logs tab showing the agent logging level setting
-    :class: screenshot
+    :screenshot:
     :::
 
 2. Select an **Agent logging level**:
@@ -171,14 +171,14 @@ The logging level for monitored agents is set to `info` by default. You can chan
 
     :::{image} images/collect-agent-diagnostics1.png
     :alt: Collect agent diagnostics under agent details
-    :class: screenshot
+    :screenshot:
     :::
 
 4. In the **Request Diagnostics** pop-up, select **Collect additional CPU metrics** if you’d like detailed CPU data.
 
     :::{image} images/collect-agent-diagnostics2.png
     :alt: Collect agent diagnostics confirmation pop-up
-    :class: screenshot
+    :screenshot:
     :::
 
 5. Click the **Request diagnostics** button.
@@ -201,7 +201,7 @@ To view agent metrics:
 
     :::{image} images/selected-agent-metrics-dashboard.png
     :alt: Screen capture showing {{agent}} metrics
-    :class: screenshot
+    :screenshot:
     :::
 
 

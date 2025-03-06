@@ -14,7 +14,7 @@ You can also optionally add custom fields and case templates. [preview]
 
 :::{image} ../../images/kibana-cases-list.png
 :alt: Cases page
-:class: screenshot
+:screenshot:
 :::
 
 ::::{note}

@@ -67,7 +67,7 @@ When security is enabled, you grant users access to {{report-features}} with [{{
 
         :::{image} ../../../images/kibana-kibana-privileges-with-reporting.png
         :alt: Kibana privileges with Reporting options, Gold or higher license
-        :class: screenshot
+        :screenshot:
         :::
 
         ::::{note}
@@ -133,7 +133,7 @@ With a Basic license, you can grant users access with custom roles to {{report-f
 
 :::{image} ../../../images/kibana-kibana-privileges-with-reporting-basic.png
 :alt: Kibana privileges with Reporting options, Basic license
-:class: screenshot
+:screenshot:
 :::
 
 With a Basic license, sub-feature application privileges are unavailable, but you can use the [role API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-role) to grant access to CSV {{report-features}}:

@@ -7,7 +7,7 @@ The AI Assistant uses generative AI to provide:
 
 :::{image} ../../../images/serverless-ai-assistant-overview.gif
 :alt: Observability AI assistant preview
-:class: screenshot
+:screenshot:
 :::
 
 The AI Assistant integrates with your large language model (LLM) provider through our supported Elastic connectors:
@@ -180,7 +180,7 @@ This opens the AI Assistant flyout, where you can ask the assistant questions ab
 
 :::{image} ../../../images/serverless-ai-assistant-chat.png
 :alt: Observability AI assistant chat
-:class: screenshot
+:screenshot:
 :::
 
 ::::{important}
@@ -235,14 +235,14 @@ For example, in the log details, you’ll see prompts for **What’s this messag
 
 :::{image} ../../../images/serverless-ai-assistant-logs-prompts.png
 :alt: Observability AI assistant example prompts for logs
-:class: screenshot
+:screenshot:
 :::
 
 Clicking a prompt generates a message specific to that log entry. You can continue a conversation from a contextual prompt by clicking **Start chat** to open the AI Assistant chat.
 
 :::{image} ../../../images/serverless-ai-assistant-logs.png
 :alt: Observability AI assistant example
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -257,7 +257,7 @@ You can use the [Observability AI Assistant connector](kibana://reference/connec
 
 :::{image} ../../../images/serverless-obs-ai-assistant-action-high-cpu.png
 :alt: Add an Observability AI assistant action while creating a rule in the Observability UI
-:class: screenshot
+:screenshot:
 :::
 
 You can ask the assistant to generate a report of the alert that fired, recall any information or potential resolutions of past occurrences stored in the knowledge base, provide troubleshooting guidance and resolution steps, and also include other active alerts that may be related. As a last step, you can ask the assistant to trigger an action, such as sending the report (or any other message) to a Slack webhook.
@@ -274,7 +274,7 @@ When the alert fires, contextual details about the event—such as when the aler
 
 :::{image} ../../../images/serverless-obs-ai-assistant-output.png
 :alt: AI Assistant conversation created in response to an alert
-:class: screenshot
+:screenshot:
 :::
 
 ::::{important}
@@ -291,7 +291,7 @@ When asked to send a message to another connector, such as Slack, the AI Assista
 
 :::{image} ../../../images/serverless-obs-ai-assistant-slack-message.png
 :alt: Message sent by Slack by the AI Assistant includes a link to the conversation
-:class: screenshot
+:screenshot:
 :::
 
 The Observability AI Assistant connector is called when the alert fires and when it recovers.

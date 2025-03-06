@@ -13,7 +13,7 @@ Create, edit, clone, and delete your index templates in the **Index Templates** 
 
 :::{image} ../../../images/elasticsearch-reference-management-index-templates.png
 :alt: Index templates
-:class: screenshot
+:screenshot:
 :::
 
 In {{serverless-full}}, the default **logs** template uses the logsDB index mode to create a [logs data stream](../data-streams/logs-data-stream.md).
@@ -30,7 +30,7 @@ In this tutorial, you’ll create an index template and use it to configure two 
 
     :::{image} ../../../images/elasticsearch-reference-management_index_create_wizard.png
     :alt: Create wizard
-    :class: screenshot
+    :screenshot:
     :::
 
 2. In the **Name** field, enter `my-index-template`.
@@ -47,7 +47,7 @@ In this tutorial, you’ll create an index template and use it to configure two 
 
     :::{image} ../../../images/elasticsearch-reference-management_index_component_template.png
     :alt: Component templates page
-    :class: screenshot
+    :screenshot:
     :::
 
 2. Define index settings. These are optional. For this tutorial, leave this section blank.
@@ -55,7 +55,7 @@ In this tutorial, you’ll create an index template and use it to configure two 
 
     :::{image} ../../../images/elasticsearch-reference-management-index-templates-mappings.png
     :alt: Mapped fields page
-    :class: screenshot
+    :screenshot:
     :::
 
     Alternatively, you can click the **Load JSON** link and define the mapping as JSON:

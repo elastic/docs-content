@@ -65,7 +65,7 @@ For example, to see an overview of your SQS metrics in {{kib}}, go to the **Dash
 
 :::{image} ../../../images/observability-sqs-dashboard.png
 :alt: Screenshot showing the SQS overview dashboard
-:class: screenshot
+:screenshot:
 :::
 
 

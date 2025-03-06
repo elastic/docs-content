@@ -77,7 +77,7 @@ Here is an example of a user who has the Detections feature enabled in all {{kib
 
 :::{image} ../../../images/security-sec-admin-user.png
 :alt: Shows user with the Detections feature enabled in all Kibana spaces
-:class: screenshot
+:screenshot:
 :::
 
 

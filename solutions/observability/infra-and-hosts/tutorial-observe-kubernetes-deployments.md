@@ -457,7 +457,7 @@ After configuring your integration, you need to download and update your manifes
 
     :::{image} ../../../images/observability-run-standalone-option.png
     :alt: Select run standalone under Enroll in Fleet
-    :class: screenshot
+    :screenshot:
     :::
 
 4. Under **Configure the agent**, select **Download Manifest**.
@@ -500,7 +500,7 @@ On the **Infrastructure inventory** page, you can switch between different views
 
 :::{image} ../../../images/observability-metrics-inventory.png
 :alt: Inventory page that shows Kubernetes pods
-:class: screenshot
+:screenshot:
 :::
 
 For more on using the Inventory page, refer to [View infrastructure metrics by resource type](view-infrastructure-metrics-by-resource-type.md).
@@ -509,7 +509,7 @@ On the **Metrics Explorer** page, you can group and analyze metrics for the reso
 
 :::{image} ../../../images/observability-monitor-k8s-metrics-explorer.png
 :alt: Metrics dashboard that shows CPU usage for Kubernetes pods
-:class: screenshot
+:screenshot:
 :::
 
 For more on using the **Metrics Explorer** page, refer to [Explore infrastructure metrics over time](explore-infrastructure-metrics-over-time.md).
@@ -523,7 +523,7 @@ With **Logs Explorer**, you can quickly search and filter your log data, get inf
 
 :::{image} ../../../images/observability-log-explorer.png
 :alt: screenshot of the logs explorer main page
-:class: screenshot
+:screenshot:
 :::
 
 From **Logs Explorer**, you can select the Kubernetes integration from the data selector to view your Kubernetes data.
@@ -1167,7 +1167,7 @@ The **Applications** app allows you to monitor your software services and applic
 
 :::{image} ../../../images/observability-apm-app-landing.png
 :alt: Applications UI Kubernetes
-:class: screenshot
+:screenshot:
 :::
 
 Having access to application-level insights with just a few clicks can drastically decrease the time you spend debugging errors, slow response times, and crashes.
@@ -1176,7 +1176,7 @@ Best of all, because Kubernetes environment variables have been mapped to APM me
 
 :::{image} ../../../images/observability-apm-app-kubernetes-filter.png
 :alt: Applications UI Kubernetes
-:class: screenshot
+:screenshot:
 :::
 
 

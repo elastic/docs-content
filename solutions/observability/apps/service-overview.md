@@ -21,7 +21,7 @@ For insight into the health of your services, you can compare how a service perf
 
 :::{image} ../../../images/observability-time-series-expected-bounds-comparison.png
 :alt: Time series and expected bounds comparison
-:class: screenshot
+:screenshot:
 :::
 
 Select the **Comparison** box to apply a time-based or expected bounds comparison. The time-based comparison options are based on the selected time filter range:
@@ -41,7 +41,7 @@ Response times for the service. You can filter the **Latency** chart to display 
 
 :::{image} ../../../images/observability-latency.png
 :alt: Service latency
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -72,7 +72,7 @@ The **Errors** table provides a high-level view of each error message when it fi
 
 :::{image} ../../../images/observability-error-rate.png
 :alt: failed transaction rate and errors
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -103,7 +103,7 @@ The **Instances** table displays a list of all the available service instances w
 
 :::{image} ../../../images/observability-all-instances.png
 :alt: All instances
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -114,7 +114,7 @@ To view metadata relating to the service agent, and if relevant, the container a
 
 :::{image} ../../../images/observability-metadata-icons.png
 :alt: Service metadata
-:class: screenshot
+:screenshot:
 :::
 
 **Service information**

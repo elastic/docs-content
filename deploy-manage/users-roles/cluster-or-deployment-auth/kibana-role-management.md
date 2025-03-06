@@ -45,7 +45,7 @@ Document-level and field-level security affords you even more granularity when i
 <br>
 :::{image} ../../../images/kibana-create-role-index-example.png
 :alt: Create role with index privileges
-:class: screenshot
+:screenshot:
 :::
 
 ### Example: Grant read access to specific documents in indices that match the `filebeat-*` pattern [index_privilege_dls_example]
@@ -76,7 +76,7 @@ Document-level and field-level security affords you even more granularity when i
 <br>
 :::{image} ../../../images/kibana-create-role-dls-example.png
 :alt: Create role with DLS index privileges
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -99,7 +99,7 @@ You can assign the same privileges, document-level, and field-level as for [loca
 <br>
 :::{image} ../../../images/kibana-create-role-remote-index-example.png
 :alt: Create role with remote index privileges
-:class: screenshot
+:screenshot:
 :::
 
 ## {{kib}} privileges [adding_kibana_privileges]
@@ -109,7 +109,7 @@ To assign {{kib}} privileges to the role, click **Add {{kib}} privilege** in the
 <br>
 :::{image} ../../../images/kibana-spaces-roles.png
 :alt: Add {{kib}} privileges
-:class: screenshot
+:screenshot:
 :width: 650px
 :::
 
@@ -129,7 +129,7 @@ To apply your changes, click **Add {{kib}} privilege**. The privilege shows up u
 <br>
 :::{image} ../../../images/kibana-create-space-privilege.png
 :alt: Add {{kib}} privilege
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -167,7 +167,7 @@ To view a summary of the privileges granted, click **View privilege summary**.
 <br>
 :::{image} ../../../images/kibana-privilege-example-1.png
 :alt: Privilege example 1
-:class: screenshot
+:screenshot:
 :width: 650px
 :::
 
@@ -185,7 +185,7 @@ To view a summary of the privileges granted, click **View privilege summary**.
 <br>
 :::{image} ../../../images/kibana-privilege-example-2.png
 :alt: Privilege example 2
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -202,5 +202,5 @@ To view a summary of the privileges granted, click **View privilege summary**.
 <br>
 :::{image} ../../../images/kibana-privilege-example-3.png
 :alt: Privilege example 3
-:class: screenshot
+:screenshot:
 :::

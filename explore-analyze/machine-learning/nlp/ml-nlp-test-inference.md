@@ -14,7 +14,7 @@ The simplest method to test your model against new data is to use the **Test mod
 
 :::{image} ../../../images/machine-learning-ml-nlp-test-ner.png
 :alt: Testing a sentence with two named entities against a NER trained model in the *{{ml}}* app
-:class: screenshot
+:screenshot:
 :::
 
 Alternatively, you can use the [infer trained model API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-infer-trained-model). For example, to try a named entity recognition task, provide some sample text:

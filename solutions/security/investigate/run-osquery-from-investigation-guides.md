@@ -26,7 +26,7 @@ Detection rule investigation guides suggest steps for triaging, analyzing, and r
 
 :::{image} ../../../images/security-osquery-investigation-guide.png
 :alt: Shows a live query in an investigation guide
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -58,7 +58,7 @@ You can only add Osquery to investigation guides for custom rules because prebui
 
         :::{image} ../../../images/security-setup-osquery-investigation-guide.png
         :alt: Shows results from running a query from an investigation guide
-        :class: screenshot
+        :screenshot:
         :::
 
 5. Click **Save changes** to add the query to the rule’s investigation guide.
@@ -89,5 +89,5 @@ You can only add Osquery to investigation guides for custom rules because prebui
 
     :::{image} ../../../images/security-run-query-investigation-guide.png
     :alt: Shows results from running a query from an investigation guide
-    :class: screenshot
+    :screenshot:
     :::

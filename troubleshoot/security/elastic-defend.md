@@ -28,7 +28,7 @@ Integration policy response information is also available from the **Endpoints**
 
 :::{image} ../../images/security-unhealthy-agent-fleet.png
 :alt: Agent details page in {{fleet}} with Unhealthy status and integration failures
-:class: screenshot
+:screenshot:
 :::
 
 Common causes of failure in the {{elastic-defend}} integration policy include missing prerequisites or unexpected system configuration. Consult the following topics to resolve a specific error:
@@ -79,7 +79,7 @@ If you encounter a `“Required transform failed”` notice on the Endpoints pag
 
 :::{image} ../../images/security-endpoints-transform-failed.png
 :alt: Endpoints page with Required transform failed notice
-:class: screenshot
+:screenshot:
 :::
 
 To restart a transform that’s not running:
@@ -93,7 +93,7 @@ To restart a transform that’s not running:
 
       :::{image} ../../images/security-transforms-start.png
       :alt: Transforms page with Start option selected
-      :class: screenshot
+      :screenshot:
       :::
 
 4. On the confirmation message that displays, click **Start** to restart the transform.

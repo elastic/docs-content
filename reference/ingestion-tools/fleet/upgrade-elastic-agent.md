@@ -59,7 +59,7 @@ To upgrade your {{agent}}s, go to **Management > {{fleet}} > Agents** in {{kib}}
 
     :::{image} images/upgrade-available-indicator.png
     :alt: Indicator on the UI showing that the agent can be upgraded
-    :class: screenshot
+    :screenshot:
     :::
 
     You can also click the **Upgrade available** button to filter the list agents to only those that currently can be upgraded.
@@ -68,7 +68,7 @@ To upgrade your {{agent}}s, go to **Management > {{fleet}} > Agents** in {{kib}}
 
     :::{image} images/upgrade-single-agent.png
     :alt: Menu for upgrading a single {agent}
-    :class: screenshot
+    :screenshot:
     :::
 
 3. In the Upgrade agent window, select or specify an upgrade version and click **Upgrade agent**.
@@ -77,7 +77,7 @@ To upgrade your {{agent}}s, go to **Management > {{fleet}} > Agents** in {{kib}}
 
     :::{image} images/upgrade-agent-custom.png
     :alt: Menu for upgrading a single {agent}
-    :class: screenshot
+    :screenshot:
     :::
 
 
@@ -103,7 +103,7 @@ You can do rolling upgrades to avoid exhausting network resources when updating 
 
     :::{image} images/schedule-upgrade.png
     :alt: Menu for scheduling {{agent}} upgrades
-    :class: screenshot
+    :screenshot:
     :::
 
     If the schedule option is grayed out, it may not be available at your subscription level. For more information, refer to [{{stack}} subscriptions](https://www.elastic.co/subscriptions).
@@ -122,7 +122,7 @@ Agents on version 8.12 and higher that are currently upgrading additionally show
 
 :::{image} images/upgrade-states.png
 :alt: Detailed state of an upgrading agent
-:class: screenshot
+:screenshot:
 :::
 
 The following table explains the upgrade states in the order that they can occur.
@@ -145,19 +145,19 @@ Beside the upgrade status indicator, you can hover your cursor over the informat
 
 :::{image} images/upgrade-detailed-state01.png
 :alt: Granular upgrade details shown as hover text (agent has requested an upgrade)
-:class: screenshot
+:screenshot:
 :::
 
 :::{image} images/upgrade-detailed-state02.png
 :alt: Granular upgrade details shown as hover text (agent is restarting to apply the update)
-:class: screenshot
+:screenshot:
 :::
 
 Note that when you upgrade agents from versions below 8.12, the upgrade details are not provided.
 
 :::{image} images/upgrade-non-detailed.png
 :alt: An earlier release agent showing only the updating state without additional details
-:class: screenshot
+:screenshot:
 :::
 
 When upgrading many agents, you can fine tune the maintenance window by viewing stats and metrics about the upgrade:
@@ -175,7 +175,7 @@ If an upgrade fails, you can view the agent logs to find the reason:
 
     :::{image} images/upgrade-failure.png
     :alt: Agent logs showing upgrade failure
-    :class: screenshot
+    :screenshot:
     :::
 
 

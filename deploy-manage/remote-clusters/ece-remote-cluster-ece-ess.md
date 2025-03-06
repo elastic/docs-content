@@ -154,7 +154,7 @@ On the local cluster, add the remote cluster using {{kib}} or the {{es}} API.
 
       :::{image} ../../images/cloud-enterprise-ce-copy-remote-cluster-parameters.png
       :alt: Remote Cluster Parameters in Deployment
-      :class: screenshot
+      :screenshot:
       :::
 
       ::::{note}

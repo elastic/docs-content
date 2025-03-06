@@ -89,7 +89,7 @@ Set the `advanced.artifacts.global.base_url` advanced setting for each [{{elasti
 
 :::{image} ../../../images/security-offline-adv-settings.png
 :alt: Integration policy advanced settings
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -171,7 +171,7 @@ Set the `advanced.artifacts.global.base_url` advanced setting for each [{{elasti
 
 :::{image} ../../../images/security-offline-adv-settings.png
 :alt: Integration policy advanced settings
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -206,6 +206,6 @@ After updating the {{elastic-endpoint}} configuration to read from the mirror se
 
 :::{image} ../../../images/security-offline-endpoint-version-discover.png
 :alt: Searching for `endpoint.policy` in Discover
-:class: screenshot
+:screenshot:
 :::
 

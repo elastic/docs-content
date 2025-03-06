@@ -17,7 +17,7 @@ Shared exception lists allow you to group exceptions together and then apply the
 
 :::{image} ../../../images/security-rule-exceptions-page.png
 :alt: Shared Exception Lists page
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -107,7 +107,7 @@ Apply shared exception lists to rules:
 
         :::{image} ../../../images/security-associated-shared-exception-list.png
         :alt: Associated shared exceptions
-        :class: screenshot
+        :screenshot:
         :::
 
 
@@ -126,7 +126,7 @@ To view the details of an exception item within a shared exception list, expand 
 
 :::{image} ../../../images/security-view-filter-shared-exception.png
 :alt: Associated shared exceptions
-:class: screenshot
+:screenshot:
 :::
 
 To filter exception lists by a specific value, enter a value in the search bar. You can search the following attributes:
@@ -158,5 +158,5 @@ To export or delete an exception list, select the required action button on the 
 
 :::{image} ../../../images/security-actions-exception-list.png
 :alt: Detail of Exception lists table with export and delete buttons highlighted
-:class: screenshot
+:screenshot:
 :::

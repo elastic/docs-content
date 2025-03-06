@@ -39,7 +39,7 @@ Cluster privileges grant access to monitoring and management features in {{es}}.
 
 :::{image} ../../images/serverless-custom-roles-cluster-privileges.png
 :alt: Create a custom role and define {{es}} cluster privileges
-:class: screenshot
+:screenshot:
 :::
 
 Refer to [cluster privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-cluster) for a complete description of available options.
@@ -51,7 +51,7 @@ Each role can grant access to multiple data indices, and each index can have a d
 
 :::{image} ../../images/serverless-custom-roles-index-privileges.png
 :alt: Create a custom role and define {{es}} index privileges
-:class: screenshot
+:screenshot:
 :::
 
 Refer to [index privileges](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-indices) for a complete description of available options.
@@ -83,7 +83,7 @@ When you create a custom role, click **Add Kibana privilege** to grant access to
 
 :::{image} ../../images/serverless-custom-roles-kibana-privileges.png
 :alt: Create a custom role and define {{kib}} privileges
-:class: screenshot
+:screenshot:
 :::
 
 Open the **Spaces** selection control to specify whether to grant the role access to all spaces or one or more individual spaces. When using the **Customize by feature** option, you can choose either **All**, **Read** or **None** for access to each feature.

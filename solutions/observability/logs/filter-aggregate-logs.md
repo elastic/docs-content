@@ -121,7 +121,7 @@ Under the **Documents** tab, you’ll see the filtered log data matching your qu
 
 :::{image} ../../../images/serverless-logs-kql-filter.png
 :alt: logs kql filter
-:class: screenshot
+:screenshot:
 :::
 
 For more on using Logs Explorer, refer to the [Discover](../../../explore-analyze/discover.md) documentation.

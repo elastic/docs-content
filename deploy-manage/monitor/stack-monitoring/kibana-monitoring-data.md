@@ -73,7 +73,7 @@ You’ll see cluster alerts that require your attention and a summary of the ava
 
 :::{image} ../../../images/kibana-monitoring-dashboard.png
 :alt: Monitoring dashboard
-:class: screenshot
+:screenshot:
 :::
 
 If you encounter problems, see [Troubleshooting monitoring](../monitoring-data/monitor-troubleshooting.md).
