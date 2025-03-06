@@ -41,7 +41,6 @@ toc:
       - file: cloud/cloud-enterprise/ece-getting-started-search-use-cases-node-logs.md
       - file: cloud/cloud-enterprise/ece-getting-started-search-use-cases-python-logs.md
       - file: cloud/cloud-enterprise/ece-ingest-guides.md
-      - file: cloud/cloud-enterprise/ece-install-offline.md
       - file: cloud/cloud-enterprise/ece-integrations-server-api-example.md
       - file: cloud/cloud-enterprise/ece-manage-apm-settings.md
       - file: cloud/cloud-enterprise/ece-manage-enterprise-search-settings.md

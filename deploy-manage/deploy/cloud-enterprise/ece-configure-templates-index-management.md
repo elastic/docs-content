@@ -1,9 +1,13 @@
 ---
+navigation_title: Configure index management
+applies_to:
+  deployment:
+    ece: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-configure-templates-index-management.html
 ---
 
-# Configure index management for templates [ece-configure-templates-index-management]
+# Configure index management for deployment templates [ece-configure-templates-index-management]
 
 If you create a deployment template that includes more than one data configuration, you must also specify how Elastic Cloud Enterprise should manage indices for your users when they create their deployments. For time-series use cases such as logging, metrics, and APM, providing a template that enables index management ensures that data is being stored in the most cost-effective way possible as it ages.
 

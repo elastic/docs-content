@@ -12,6 +12,7 @@ redirects:
       'anonymous-authentication':
       'basic-authentication':
       'http-authentication':
+  'deploy-manage/deploy/cloud-enterprise/deploy-large-installation-cloud.md': '!deploy-manage/deploy/cloud-enterprise/deploy-large-installation.md'
 
 ## reference
   'reference/security/elastic-defend/index.md': 'solutions/security/configure-elastic-defend.md'

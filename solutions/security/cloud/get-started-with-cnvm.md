@@ -32,7 +32,7 @@ CNVM currently only supports AWS EC2 Linux workloads.
 
 ## Set up CNVM for AWS [vuln-management-setup]
 
-To set up the CNVM integration for AWS, install the integration on a new {{agent}} policy, sign into the AWS account you want to scan, and run the [CloudFormation](https://docs.aws.amazon.com/cloudformation/index.md) template.
+To set up the CNVM integration for AWS, install the integration on a new {{agent}} policy, sign into the AWS account you want to scan, and run the [CloudFormation](https://docs.aws.amazon.com/cloudformation/index.html) template.
 
 ::::{important}
 Do not add the integration to an existing {{agent}} policy. It should always be added to a new policy since it should not run on VMs with existing workloads. For more information, refer to [How CNVM works](/solutions/security/cloud/cloud-native-vulnerability-management.md#vuln-management-overview-how-it-works).

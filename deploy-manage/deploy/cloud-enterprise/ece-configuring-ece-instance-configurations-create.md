@@ -1,11 +1,14 @@
 ---
+applies_to:
+  deployment:
+    ece: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-configuring-ece-instance-configurations-create.html
 ---
 
 # Create instance configurations [ece-configuring-ece-instance-configurations-create]
 
-If you plan to [create your own templates](ece-configuring-ece-create-templates.md) and the default instance configurations that ship with ECE don’t quite suit your purpose, it’s generally easier and safer to create your own custom instance configurations first. Instance configurations match components of the Elastic Stack to allocators and tailor how memory and storage resources get sized relative to each other, and what sizes are available.
+If you plan to [create your own templates](ece-configuring-ece-create-templates.md) and the [default instance configurations](./ece-configuring-ece-instance-configurations-default.md) that ship with ECE don’t quite suit your purpose, it’s generally easier and safer to create your own custom instance configurations first. Instance configurations match components of the Elastic Stack to allocators and tailor how memory and storage resources get sized relative to each other, and what sizes are available.
 
 
 ## Before you begin [ece_before_you_begin_2] 
