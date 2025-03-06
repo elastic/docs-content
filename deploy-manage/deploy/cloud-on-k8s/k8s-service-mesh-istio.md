@@ -10,7 +10,7 @@ mapped_pages:
 
 The instructions in this section describe how to connect the operator and managed resources to the Istio service mesh and assume that Istio is already installed and configured on your Kubernetes cluster. To know more about Istio and how to install it, check the [product documentation](https://istio.io).
 
-These instructions have been tested with Istio 1.6.1. Older or newer versions of Istio might require additional configuration steps not documented here.
+These instructions have been tested with Istio 1.24.3. Older or newer versions of Istio might require additional configuration steps not documented here.
 
 ::::{warning}
 Some Elastic Stack features such as [Kibana alerting and actions](/explore-analyze/alerts-cases.md) rely on the Elasticsearch API keys feature which requires TLS to be enabled at the application level. If you want to use these features, you should not disable the self-signed certificate on the Elasticsearch resource and enable `PERMISSIVE` mode for the Elasticsearch service through a `DestinationRule` or `PeerAuthentication` resource. Strict mTLS mode is currently not compatible with Elastic Stack features requiring TLS to be enabled for the Elasticsearch HTTP layer.
