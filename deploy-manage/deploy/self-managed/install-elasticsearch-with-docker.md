@@ -397,7 +397,7 @@ vm.max_map_count = 262144
 By default, {{es}} runs inside the container as user `elasticsearch` using uid:gid `1000:0`.
 
 ::::{important}
-One exception is [Openshift](https://docs.openshift.com/container-platform/3.6/creating_images/guidelines.md#openshift-specific-guidelines), which runs containers using an arbitrarily assigned user ID. Openshift presents persistent volumes with the gid set to `0`, which works without any adjustments.
+One exception is [Openshift](https://docs.openshift.com/container-platform/3.6/creating_images/guidelines.html#openshift-specific-guidelines), which runs containers using an arbitrarily assigned user ID. Openshift presents persistent volumes with the gid set to `0`, which works without any adjustments.
 ::::
 
 

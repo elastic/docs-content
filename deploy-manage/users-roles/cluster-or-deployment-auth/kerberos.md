@@ -73,7 +73,7 @@ Before you set up a Kerberos realm, you must have the Kerberos infrastructure se
 Kerberos requires a lot of external services to function properly, such as time synchronization between all machines and working forward and reverse DNS mappings in your domain. Refer to your Kerberos documentation for more details.
 ::::
 
-These instructions do not cover setting up and configuring your Kerberos deployment. Where examples are provided, they pertain to an MIT Kerberos V5 deployment. For more information, see [MIT Kerberos documentation](http://web.mit.edu/kerberos/www/index.md)
+These instructions do not cover setting up and configuring your Kerberos deployment. Where examples are provided, they pertain to an MIT Kerberos V5 deployment. For more information, see [MIT Kerberos documentation](http://web.mit.edu/kerberos/www/index.html)
 
 If you're using a self-managed cluster, then perform the following additional steps: 
 

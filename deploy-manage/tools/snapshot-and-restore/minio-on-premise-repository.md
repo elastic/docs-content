@@ -70,7 +70,7 @@ How you create the AWS S3 bucket depends on what version of Elasticsearch you ar
 * For versions 8.0 and later, {{es}} has built-in support for AWS S3 repositories; no repository plugin is needed. Use the Minio browser or an S3 client application to create an S3 bucket to store your snapshots.
 
 ::::{tip}
-Don’t forget to make the bucket name DNS-friendly, for example no underscores or uppercase letters. For more details, read the [bucket restrictions](https://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.md).
+Don’t forget to make the bucket name DNS-friendly, for example no underscores or uppercase letters. For more details, read the [bucket restrictions](https://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html).
 ::::
 
 

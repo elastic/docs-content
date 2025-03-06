@@ -37,10 +37,10 @@ Next, create an IAM user, copy the access key ID and secret, and configure the f
 }
 ```
 
-1. The version of the policy language syntax rules. For more information, refer to the [AWS documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.md#access-analyzer-reference-policy-checks-error-invalid-version).
+1. The version of the policy language syntax rules. For more information, refer to the [AWS documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-invalid-version).
 
 
-For more information on S3 and IAM, refer to AWS' [S3-documentation](http://docs.aws.amazon.com/AmazonS3/latest/dev/Introduction.md) and [IAM-documentation](http://aws.amazon.com/documentation/iam/).
+For more information on S3 and IAM, refer to AWS' [S3-documentation](http://docs.aws.amazon.com/AmazonS3/latest/dev/Introduction.html) and [IAM-documentation](http://aws.amazon.com/documentation/iam/).
 
 ::::{note}
 For a full list of settings that are supported for your S3 bucket, refer to [S3 repository](s3-repository.md) in the {{es}} Guide.
