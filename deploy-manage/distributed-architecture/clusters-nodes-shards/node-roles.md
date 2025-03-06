@@ -9,7 +9,6 @@ Any time that you start an instance of {{es}}, you are starting a *node*. A coll
 
 Each node performs one or more roles. Roles control the behavior of the node in the cluster.
 
-
 ## Set node roles [set-node-roles]
 
 You define a node’s roles by setting `node.roles` in [`elasticsearch.yml`](../../deploy/self-managed/configure-elasticsearch.md). If you set `node.roles`, the node is only assigned the roles you specify. If you don’t set `node.roles`, the node is assigned the following roles:
@@ -30,10 +29,7 @@ You define a node’s roles by setting `node.roles` in [`elasticsearch.yml`](../
 If you set `node.roles`, ensure you specify every node role your cluster needs. Every cluster requires the following node roles:
 
 * `master`
-*
-
-    `data_content` and `data_hot`<br> OR<br> `data`
-
+* `data_content` and `data_hot`<br> OR<br> `data`
 
 Some {{stack}} features also require specific node roles:
 
