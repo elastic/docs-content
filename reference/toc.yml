@@ -7,6 +7,8 @@ toc:
           - file: security/fields-and-object-schemas/siem-field-reference.md
           - file: security/fields-and-object-schemas/timeline-object-schema.md
           - file: security/fields-and-object-schemas/alert-schema.md
+      - file: security/endpoint-command-reference.md
+      - file: security/prebuilt-anomaly-detection-jobs.md
   - file: observability/index.md
     children:
       - file: observability/fields-and-object-schemas.md
