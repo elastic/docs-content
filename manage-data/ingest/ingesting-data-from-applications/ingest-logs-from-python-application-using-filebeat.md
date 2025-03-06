@@ -33,13 +33,13 @@ $$$ece-python-logs-send-ess$$$
 
 $$$ece-python-logs-view-kibana$$$
 
-This guide demonstrates how to ingest logs from a Python application and deliver them securely into an {{ech}} deployment. You’ll set up Filebeat to monitor a JSON-structured log file that has standard Elastic Common Schema (ECS) formatted fields, and you’ll then view real-time visualizations of the log events in {{kib}} as they occur. While Python is used for this example, this approach to monitoring log output is applicable across many client types. Check the list of [available ECS logging plugins](asciidocalypse://docs/ecs-logging/docs/reference/intro.md).
+This guide demonstrates how to ingest logs from a Python application and deliver them securely into an {{ech}} deployment. You’ll set up Filebeat to monitor a JSON-structured log file that has standard Elastic Common Schema (ECS) formatted fields, and you’ll then view real-time visualizations of the log events in {{kib}} as they occur. While Python is used for this example, this approach to monitoring log output is applicable across many client types. Check the list of [available ECS logging plugins](ecs-logging://reference/intro.md).
 
 *Time required: 1 hour*
 
 ## Prerequisites [ec_prerequisites_2]
 
-To complete these steps you need to have [Python](https://www.python.org/) installed on your system as well as the [Elastic Common Schema (ECS) logger](asciidocalypse://docs/ecs-logging-python/docs/reference/installation.md) for the Python logging library.
+To complete these steps you need to have [Python](https://www.python.org/) installed on your system as well as the [Elastic Common Schema (ECS) logger](ecs-logging-python://reference/installation.md) for the Python logging library.
 
 To install *ecs-logging-python*, run:
 
@@ -136,7 +136,7 @@ In this step, you’ll create a Python script that generates logs in JSON format
 
     This Python script randomly generates one of twelve log messages, continuously, at a random interval of between 1 and 10 seconds. The log messages are written to file `elvis.json`, each with a timestamp, a log level of *info*, *warning*, *error*, or *critical*, and other data. Just to add some variance to the log data, the *info* message *Elvis has left the building* is set to be the most probable log event.
 
-    For simplicity, there is just one log file and it is written to the local directory where `elvis.py` is located. In a production environment you may have multiple log files, associated with different modules and loggers, and likely stored in `/var/log` or similar. To learn more about configuring logging in Python, check [Logging facility for Python](https://docs.python.org/3/library/logging.md).
+    For simplicity, there is just one log file and it is written to the local directory where `elvis.py` is located. In a production environment you may have multiple log files, associated with different modules and loggers, and likely stored in `/var/log` or similar. To learn more about configuring logging in Python, check [Logging facility for Python](https://docs.python.org/3/library/logging.html).
 
     Having your logs written in a JSON format with ECS fields allows for easy parsing and analysis, and for standardization with other applications. A standard, easily parsible format becomes increasingly important as the volume and type of data captured in your logs expands over time.
 

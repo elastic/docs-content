@@ -44,7 +44,7 @@ If you have a lot of log partitions, use the following to filter your data:
 
 :::{image} ../../../images/observability-anomalies-chart.png
 :alt: Anomalies chart
-:class: screenshot
+:screenshot:
 :::
 
 The chart shows the time range where anomalies were detected. The typical rate values are shown in gray, while the anomalous regions are color-coded and superimposed on top.

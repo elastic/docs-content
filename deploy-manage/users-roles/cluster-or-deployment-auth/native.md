@@ -75,7 +75,7 @@ Elastic enables you to easily manage users in {{kib}} on the **Stack Management 
 
 :::{image} ../../../images/kibana-tutorial-secure-access-example-1-user.png
 :alt: Create user UI
-:class: screenshot
+:screenshot:
 :::
 
 ## Manage native users using the `user` API [native-users-api]

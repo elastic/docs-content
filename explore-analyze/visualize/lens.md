@@ -121,7 +121,7 @@ To use a keyboard instead of a mouse, use the **Lens** fully accessible and cont
 
    :::{image} ../../images/kibana-lens_drag_drop_2.png
    :alt: Lens drag and drop focus state
-   :class: screenshot
+   :screenshot:
    :::
 
 2. Complete the following actions:
@@ -133,7 +133,7 @@ To use a keyboard instead of a mouse, use the **Lens** fully accessible and cont
 
       :::{image} ../../images/kibana-lens_drag_drop_3.gif
       :alt: Using drag and drop to reorder
-      :class: screenshot
+      :screenshot:
       :::
 
 3. To confirm the action, press Space bar. To cancel, press Esc.
@@ -225,7 +225,7 @@ Annotations allow you to call out specific points in your visualizations that ar
 
 :::{image} ../../images/kibana-lens_annotations_8.2.0.png
 :alt: Lens annotations
-:class: screenshot
+:screenshot:
 :::
 
 Annotations support two placement types:
@@ -287,7 +287,7 @@ For example, to track the number of bytes in the 75th percentile, add a shaded *
 
 :::{image} ../../images/kibana-lens_referenceLine_7.16.png
 :alt: Lens drag and drop focus state
-:class: screenshot
+:screenshot:
 :::
 
 1. In the layer pane, click **Add layer > Reference lines**.

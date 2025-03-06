@@ -59,7 +59,7 @@ The backend is made up of two services: the collector and the symbolizer.
 
 :::{image} ../../../images/observability-profiling-self-managed-ingestion-architecture.png
 :alt: profiling self managed ingestion architecture
-:class: screenshot
+:screenshot:
 :::
 
 

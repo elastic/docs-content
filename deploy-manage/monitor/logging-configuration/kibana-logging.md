@@ -53,7 +53,7 @@ There are two types of layout supported at the moment: [`pattern`](#pattern-layo
 With `pattern` layout it’s possible to define a string pattern with special placeholders `%conversion_pattern` that will be replaced with data from the actual log message. By default the following pattern is used: `[%date][%level][%logger] %message`.
 
 ::::{note}
-The `pattern` layout uses a sub-set of [log4j 2 pattern syntax](https://logging.apache.org/log4j/2.x/manual/layouts.md#PatternLayout) and **doesn’t implement** all `log4j 2` capabilities.
+The `pattern` layout uses a sub-set of [log4j 2 pattern syntax](https://logging.apache.org/log4j/2.x/manual/layouts.html#PatternLayout) and **doesn’t implement** all `log4j 2` capabilities.
 ::::
 
 

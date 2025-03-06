@@ -18,10 +18,10 @@ You can specify a `summary_count_field_name` with any function except `metric`. 
 
 If your data is sparse, there may be gaps in the data which means you might have empty buckets. You might want to treat these as anomalies or you might want these gaps to be ignored. Your decision depends on your use case and what is important to you. It also depends on which functions you use. The `sum` and `count` functions are strongly affected by empty buckets. For this reason, there are `non_null_sum` and `non_zero_count` functions, which are tolerant to sparse data. These functions effectively ignore empty buckets.
 
-* [Count functions](asciidocalypse://docs/docs-content/docs/reference/data-analysis/machine-learning/ml-count-functions.md)
-* [Geographic functions](asciidocalypse://docs/docs-content/docs/reference/data-analysis/machine-learning/ml-geo-functions.md)
-* [Information content functions](asciidocalypse://docs/docs-content/docs/reference/data-analysis/machine-learning/ml-info-functions.md)
-* [Metric functions](asciidocalypse://docs/docs-content/docs/reference/data-analysis/machine-learning/ml-metric-functions.md)
-* [Rare functions](asciidocalypse://docs/docs-content/docs/reference/data-analysis/machine-learning/ml-rare-functions.md)
-* [Sum functions](asciidocalypse://docs/docs-content/docs/reference/data-analysis/machine-learning/ml-sum-functions.md)
-* [Time functions](asciidocalypse://docs/docs-content/docs/reference/data-analysis/machine-learning/ml-time-functions.md)
+* [Count functions](/reference/data-analysis/machine-learning/ml-count-functions.md)
+* [Geographic functions](/reference/data-analysis/machine-learning/ml-geo-functions.md)
+* [Information content functions](/reference/data-analysis/machine-learning/ml-info-functions.md)
+* [Metric functions](/reference/data-analysis/machine-learning/ml-metric-functions.md)
+* [Rare functions](/reference/data-analysis/machine-learning/ml-rare-functions.md)
+* [Sum functions](/reference/data-analysis/machine-learning/ml-sum-functions.md)
+* [Time functions](/reference/data-analysis/machine-learning/ml-time-functions.md)

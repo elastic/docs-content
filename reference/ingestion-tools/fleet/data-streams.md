@@ -57,7 +57,7 @@ All data streams, and the pre-built dashboards that they ship with, are viewable
 
 :::{image} images/kibana-fleet-datastreams.png
 :alt: Data streams page
-:class: screenshot
+:screenshot:
 :::
 
 ::::{tip}

@@ -59,7 +59,7 @@ Microsoft Azure allows you to find, deploy, and manage {{es}} from within the Az
 
     :::{image} ../../../images/observability-monitor-azure-native-create-elastic-resource.png
     :alt: Screenshot of Elastic resource creation in Azure
-    :class: screenshot
+    :screenshot:
     :::
 
 7. To create the {{es}} deployment, click **Create**.
@@ -67,7 +67,7 @@ Microsoft Azure allows you to find, deploy, and manage {{es}} from within the Az
 
     :::{image} ../../../images/observability-monitor-azure-native-elastic-deployment.png
     :alt: Screenshot of deployment details for Elastic resource in Azure
-    :class: screenshot
+    :screenshot:
     :::
 
 9. Click **Accept** (if necessary) to grant permissions to use your Azure account, then log in to {{ecloud}} using your Azure credentials as a single sign-on.
@@ -83,7 +83,7 @@ To ingest Azure subscription and resource logs into Elastic, you use the Azure N
 
     :::{image} ../../../images/observability-monitor-azure-native-elastic-config-logs-metrics.png
     :alt: Screenshot of logs and metrics configuration for Elastic resource in Azure
-    :class: screenshot
+    :screenshot:
     :::
 
     ::::{note}
@@ -106,7 +106,7 @@ To ingest Azure subscription and resource logs into Elastic, you use the Azure N
 
     :::{image} ../../../images/observability-monitor-azure-native-elastic-vms.png
     :alt: Screenshot that shows VMs selected for logs and metrics collection
-    :class: screenshot
+    :screenshot:
     :::
 
 3. Wait until the extension is installed and sending data (if the list does not update, click **Refresh** ).

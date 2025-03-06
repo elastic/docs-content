@@ -21,7 +21,7 @@ When you complete this tutorial, you’ll have a map that looks like this:
 
 :::{image} ../../../images/kibana-sample_data_web_logs.png
 :alt: sample data web logs
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -75,7 +75,7 @@ The first layer you’ll add is a choropleth layer to shade world countries by w
 
    :::{image} ../../../images/kibana-gs_add_cloropeth_layer.png
    :alt: Map showing the Total Requests by Destination layer
-   :class: screenshot
+   :screenshot:
    :::
 
 
@@ -107,7 +107,7 @@ This layer displays web log documents as points. The layer is only visible when 
 
    :::{image} ../../../images/kibana-gs_add_es_document_layer.png
    :alt: Map showing what zoom level looks like a level 9
-   :class: screenshot
+   :screenshot:
    :::
 
 
@@ -142,7 +142,7 @@ You’ll create a layer for [aggregated data](../../query-filter/aggregations.md
 
    :::{image} ../../../images/kibana-sample_data_web_logs.png
    :alt: Map showing what zoom level 3 looks like
-   :class: screenshot
+   :screenshot:
    :::
 
 
@@ -163,7 +163,7 @@ View your geospatial data alongside a heat map and pie chart, and then filter th
 
    :::{image} ../../../images/kibana-gs_dashboard_with_map.png
    :alt: Map in a dashboard with 2 other panels
-   :class: screenshot
+   :screenshot:
    :::
 
 3. To filter for documents with unusually high byte values, click and drag in the **Bytes distribution** chart.
@@ -175,14 +175,14 @@ View your geospatial data alongside a heat map and pie chart, and then filter th
 
        :::{image} ../../../images/kibana-gs_tooltip_filter.png
        :alt: Tooltip on map
-       :class: screenshot
+       :screenshot:
        :::
 
        Your filtered map should look similar to this:
 
        :::{image} ../../../images/kibana-gs_map_filtered.png
        :alt: Map showing filtered data
-       :class: screenshot
+       :screenshot:
        :::
 
 

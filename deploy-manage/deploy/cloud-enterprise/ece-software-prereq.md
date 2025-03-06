@@ -1,4 +1,7 @@
 ---
+applies_to:
+  deployment:
+    ece: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-software-prereq.html
 ---
@@ -22,7 +25,7 @@ We recommend using kernel 4.15.x or later on Ubuntu.
 To check your kernel version, run `uname -r`.
 
 ::::{note} 
-Elastic Cloud Enterprise is not supported on Linux distributions that use [cgroups](https://man7.org/linux/man-pages/man7/cgroups.7.md) version 2.
+Elastic Cloud Enterprise is not supported on Linux distributions that use [cgroups](https://man7.org/linux/man-pages/man7/cgroups.7.html) version 2.
 ::::
 
 

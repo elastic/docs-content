@@ -67,7 +67,7 @@ When security is enabled, you grant users access to {{report-features}} with [{{
 
         :::{image} ../../../images/kibana-kibana-privileges-with-reporting.png
         :alt: Kibana privileges with Reporting options, Gold or higher license
-        :class: screenshot
+        :screenshot:
         :::
 
         ::::{note}
@@ -133,7 +133,7 @@ With a Basic license, you can grant users access with custom roles to {{report-f
 
 :::{image} ../../../images/kibana-kibana-privileges-with-reporting-basic.png
 :alt: Kibana privileges with Reporting options, Basic license
-:class: screenshot
+:screenshot:
 :::
 
 With a Basic license, sub-feature application privileges are unavailable, but you can use the [role API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-role) to grant access to CSV {{report-features}}:
@@ -198,7 +198,7 @@ To automatically generate reports with {{watcher}}, you must configure {{watcher
     xpack.http.ssl.certificate_authorities: ["/path/to/your/cacert1.pem", "/path/to/your/cacert2.pem"]
     ```
 
-    For more information, see [the {{watcher}} HTTP TLS/SSL Settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/watcher-settings.md#ssl-notification-settings).
+    For more information, see [the {{watcher}} HTTP TLS/SSL Settings](elasticsearch://reference/elasticsearch/configuration-reference/watcher-settings.md#ssl-notification-settings).
 
 4. Add one or more users who have access to the {{report-features}}.
 
@@ -240,5 +240,5 @@ If using PNG/PDF {{report-features}} in a production environment, it is preferre
 
 ## Ensure {{es}} allows built-in templates [reporting-elasticsearch-configuration]
 
-Reporting relies on {{es}} to install a mapping template for the data stream that stores reports. Ensure that {{es}} allows built-in templates to be installed by keeping the `stack.templates.enabled` setting at the default value of `true`. For more information, see [Index management settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/index-management-settings.md#stack-templates-enabled).
+Reporting relies on {{es}} to install a mapping template for the data stream that stores reports. Ensure that {{es}} allows built-in templates to be installed by keeping the `stack.templates.enabled` setting at the default value of `true`. For more information, see [Index management settings](elasticsearch://reference/elasticsearch/configuration-reference/index-management-settings.md#stack-templates-enabled).
 

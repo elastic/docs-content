@@ -28,7 +28,7 @@ Use filter pills to focus in on the specific data you want.
 
 :::{image} ../../images/kibana-dashboard_filter_pills_8.15.0.png
 :alt: Filter pills
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -112,7 +112,7 @@ Filter the data with one or more options that you select.
 
 :::{image} ../../images/kibana-dashboard_controlsOptionsList_8.7.0.png
 :alt: Options list control
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -129,7 +129,7 @@ Filter the data within a specified range of values.
 
 :::{image} ../../images/kibana-dashboard_controlsRangeSlider_8.3.0.png
 :alt: Range slider control
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -145,7 +145,7 @@ Filter the data within a specified range of time.
 
 :::{image} ../../images/dashboard_timeslidercontrol_8.17.0.gif
 :alt: Time slider control
-:class: screenshot
+:screenshot:
 :::
 
 

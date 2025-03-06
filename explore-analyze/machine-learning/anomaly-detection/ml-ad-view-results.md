@@ -25,7 +25,7 @@ The {{ml}} analytics enhance the anomaly score for each bucket by considering co
 
 :::{image} ../../../images/machine-learning-multibucketanalysis.jpg
 :alt: Examples of anomalies with multi-bucket impact in {{kib}}
-:class: screenshot
+:screenshot:
 :::
 
 In this example, you can see that some of the anomalies fall within the shaded blue area, which represents the bounds for the expected values. The bounds are calculated per bucket, but multi-bucket analysis is not limited by that scope.
@@ -36,7 +36,7 @@ If you have [{{anomaly-detect-cap}} alert rules](https://www.elastic.co/guide/en
 
 :::{image} ../../../images/machine-learning-anomaly-explorer-alerts.png
 :alt: Alerts table in the Anomaly Explorer
-:class: screenshot
+:screenshot:
 :::
 
 If you have more than one {{anomaly-job}}, you can also obtain *overall bucket* results, which combine and correlate anomalies from multiple jobs into an overall score. When you view the results for job groups in {{kib}}, it provides the overall bucket scores. For more information, see [Get overall buckets API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-get-overall-buckets).
@@ -51,7 +51,7 @@ For example, the `high_sum_total_sales` {{anomaly-job}} for the eCommerce orders
 
 :::{image} ../../../images/machine-learning-influencers.jpg
 :alt: Influencers in the {{kib}} Anomaly Explorer
-:class: screenshot
+:screenshot:
 :::
 
 On the left is a list of the top influencers for all of the detected anomalies in that same time period. The list includes maximum anomaly scores, which in this case are aggregated for each influencer, for each bucket, across all detectors. There is also a total sum of the anomaly scores for each influencer. You can use this list to help you narrow down the contributing factors and focus on the most anomalous entities.
