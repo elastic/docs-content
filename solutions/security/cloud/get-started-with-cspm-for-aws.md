@@ -6,34 +6,6 @@ mapped_urls:
 
 # Get started with CSPM for AWS
 
-% What needs to be done: Align serverless/stateful
-
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/security-docs/security/cspm-get-started.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/security-cspm-get-started.md
-
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
-
-$$$cspm-aws-agent-based$$$
-
-$$$cspm-aws-agentless$$$
-
-$$$cspm-finish-manual$$$
-
-$$$cspm-setup-organization-manual$$$
-
-$$$cspm-use-a-shared-credentials-file$$$
-
-$$$cspm-use-iam-arn$$$
-
-$$$cspm-use-instance-role$$$
-
-$$$cspm-use-keys-directly$$$
-
-$$$cspm-use-temp-credentials$$$
-
-
 ## Overview [cspm-overview]
 
 This page explains how to get started monitoring the security posture of your cloud assets using the Cloud Security Posture Management (CSPM) feature.
@@ -71,14 +43,17 @@ This functionality is in beta and is subject to change. The design and code is l
 
     1. Option 1: Direct access keys/CloudFormation (Recommended). Under **Preferred method**, select **Direct access keys**. Expand the **Steps to Generate AWS Account Credentials** section, then follow the displayed instructions to automatically create the necessary credentials using CloudFormation.
 
-        ::::{note}
-        If you don’t want to monitor every account in your organization, specify which to monitor using the `OrganizationalUnitIDs` field that appears after you click **Launch CloudFormation**.
-        ::::
+       ::::{note}
+       If you don’t want to monitor every account in your organization, specify which to monitor using the `OrganizationalUnitIDs` field that appears after you click **Launch CloudFormation**.
+       ::::
 
     2. Option 2: Temporary keys. To authenticate using temporary keys, refer to the instructions for [temporary keys](/solutions/security/cloud/get-started-with-cspm-for-aws.md#cspm-use-temp-credentials).
 
 8. Once you’ve selected an authentication method and provided all necessary credentials, click **Save and continue** to finish deployment. Your data should start to appear within a few minutes.
 
+::::{admonition} Important
+Agentless deployment does not work if you are using [Traffic filtering](/deploy-manage/security/traffic-filtering.md).
+::::
 
 ## Agent-based deployment [cspm-aws-agent-based]
 
@@ -110,9 +85,9 @@ For most use cases, the simplest option is to use AWS CloudFormation to automati
 7. (Optional) Switch to the AWS region where you want to deploy using the controls in the upper right corner.
 8. Tick the checkbox under **Capabilities** to authorize the creation of necessary resources.
 
-    :::{image} ../../../images/security-cspm-cloudformation-template.png
-    :alt: The Add permissions screen in AWS
-    :::
+   :::{image} ../../../images/security-cspm-cloudformation-template.png
+   :alt: The Add permissions screen in AWS
+   :::
 
 9. At the bottom of the template, select **Create stack**.
 
@@ -262,15 +237,15 @@ Follow AWS’s [IAM roles for Amazon EC2](https://docs.aws.amazon.com/AWSEC2/lat
     2. On the **Select trusted entity** page, under **Trusted entity type**, select **AWS service**.
     3. Under **Use case**, select **EC2**. Click **Next**.
 
-        :::{image} ../../../images/security-cspm-aws-auth-1.png
-        :alt: The Select trusted entity screen in AWS
-        :::
+       :::{image} ../../../images/security-cspm-aws-auth-1.png
+       :alt: The Select trusted entity screen in AWS
+       :::
 
     4. On the **Add permissions** page, search for and select `SecurityAudit`. Click **Next**.
 
-        :::{image} ../../../images/security-cspm-aws-auth-2.png
-        :alt: The Add permissions screen in AWS
-        :::
+       :::{image} ../../../images/security-cspm-aws-auth-2.png
+       :alt: The Add permissions screen in AWS
+       :::
 
     5. On the **Name, review, and create** page, name your role, then click **Create role**.
 
@@ -279,9 +254,9 @@ Follow AWS’s [IAM roles for Amazon EC2](https://docs.aws.amazon.com/AWSEC2/lat
     1. In AWS, select an EC2 instance.
     2. Select **Actions > Security > Modify IAM role**.
 
-        :::{image} ../../../images/security-cspm-aws-auth-3.png
-        :alt: The EC2 page in AWS
-        :::
+       :::{image} ../../../images/security-cspm-aws-auth-3.png
+       :alt: The EC2 page in AWS
+       :::
 
     3. On the **Modify IAM role** page, search for and select your new IAM role.
     4. Click **Update IAM role**.
