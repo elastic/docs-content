@@ -13,6 +13,8 @@ Also your organization might have network traffic restrictions that prevent {{ki
 xpack.fleet.registryProxyUrl: your-nat-gateway.corp.net
 ```
 
+If your HTTP proxy requires authentication, you can include the credentials in the URI, such as `https://username:password@your-nat-gateway.corp.net`, only when using HTTPS.
+
 ## What information is sent to the {{package-registry}}? [_what_information_is_sent_to_the_package_registry]
 
 In production environments, {{kib}}, through the {{fleet}} plugin, is the only service interacting with the {{package-registry}}. Communication happens when interacting with the Integrations UI, and when upgrading {{kib}}. The shared information is about discovery of Elastic packages and their available versions. In general, the only deployment-specific data that is shared is the {{kib}} version.
