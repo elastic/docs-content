@@ -264,7 +264,6 @@ toc:
       - file: kibana/kibana/esql.md
       - file: kibana/kibana/install.md
       - file: kibana/kibana/logging-settings.md
-      - file: kibana/kibana/management.md
       - file: kibana/kibana/reporting-production-considerations.md
       - file: kibana/kibana/search-ai-assistant.md
       - file: kibana/kibana/secure-reporting.md

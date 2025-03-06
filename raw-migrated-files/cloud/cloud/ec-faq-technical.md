@@ -2,14 +2,6 @@
 
 This frequently-asked-questions list answers some of your more common questions about configuring {{ech}}.
 
-* [Can I implement a Hot-Warm architecture?](../../../deploy-manage/index.md#faq-hw-architecture)
-* [What about dedicated master nodes?](../../../deploy-manage/index.md#faq-master-nodes)
-* [Can I use a Custom SSL certificate?](../../../deploy-manage/index.md#faq-ssl)
-* [Can {{ech}} autoscale?](../../../deploy-manage/index.md#faq-autoscale)
-* [Do you support IP sniffing?](../../../deploy-manage/index.md#faq-ip-sniffing)
-* [Does {{ech}} support encryption at rest?](../../../deploy-manage/index.md#faq-encryption-at-rest)
-* [Can I find the static IP addresses for my endpoints on {{ech}}?](../../../deploy-manage/index.md#faq-static-ip-elastic-cloud)
-
     $$$faq-hw-architecture$$$Can I implement a hot-warm architecture?
     :   [*hot-warm architecture*](https://www.elastic.co/blog/hot-warm-architecture) refers to an Elasticsearch setup for larger time-data analytics use cases with two different types of nodes, hot and warm. {{ech}} supports hot-warm architectures in all of the solutions provided by allowing you to add warm nodes to any of your deployments.
 

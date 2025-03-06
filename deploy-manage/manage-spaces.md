@@ -7,26 +7,7 @@ mapped_urls:
   - https://www.elastic.co/guide/en/serverless/current/spaces.html
 ---
 
-# Manage spaces [xpack-spaces]
-
-% What needs to be done: Refine
-
-% GitHub issue: https://github.com/elastic/docs-projects/issues/348
-
-% Scope notes: Create a new landing page including the content that is relevant for both serverless and stateful Highlight the differences in subheadings for serverless and stateful Link to solution topics on spaces
-
-% Use migrated content from existing pages that map to this page:
-
-% - [ ] ./raw-migrated-files/kibana/kibana/xpack-spaces.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/spaces.md
-
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
-
-$$$spaces-control-feature-visibility$$$
-
-$$$spaces-control-user-access$$$
-
-$$$spaces-managing$$$
+# Spaces [xpack-spaces]
 
 **Spaces** let you organize your content and users according to your needs.
 
@@ -55,14 +36,14 @@ To go to **Spaces**, find **Stack Management** in the navigation menu or use the
 The maximum number of spaces that you can have differs by deployment type:
 
 * **Serverless projects:** Maximum of 100 spaces.
-* **{{stack}} deployments:** Controlled by the `xpack.spaces.maxSpaces` setting. Default is 1000. View the full list of Space settings in [this document](kibana://reference/configuration-reference/spaces-settings.md).
+* **{{stack}} deployments:** Controlled by the `xpack.spaces.maxSpaces` setting. Default is 1000. View the [full list of Space settings](kibana://reference/configuration-reference/spaces-settings.md).
 
 To create a space:
 
-::::{tab-set}
+:::::{tab-set}
 :group: stack-serverless
 
-:::{tab-item} {{serverless-short}}
+::::{tab-item} {{serverless-short}}
 :sync: serverless
 
 1. Click **Create space** or select the space you want to edit.
@@ -73,9 +54,9 @@ To create a space:
 
 3. Customize the avatar of the space to your liking.
 4. Save the space.
-:::
+::::
 
-:::{tab-item} {{stack}}
+::::{tab-item} {{stack}}
 :sync: stack
 
 1. Select **Create space** and provide a name, description, and URL identifier.
@@ -89,14 +70,15 @@ To create a space:
 
 3. If you selected the **Classic** solution view, you can customize the **Feature visibility** as you need it to be for that space.
 
-   % This is hacking since proper admonition blocks are currently breaking my tabs
-   > **Note:** Even when disabled in this menu, some Management features can remain visible to some users depending on their privileges. Additionally, controlling feature visibility is not a security feature. To secure access to specific features on a per-user basis, you must configure [{{kib}} Security](/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md).
+   :::{note}
+   Even when disabled in this menu, some Management features can remain visible to some users depending on their privileges. Additionally, controlling feature visibility is not a security feature. To secure access to specific features on a per-user basis, you must configure [{{kib}} Security](/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md).
+   :::
 
 4. Customize the avatar of the space to your liking.
 5. Save your new space by selecting **Create space**.
-:::
-
 ::::
+
+:::::
 
 You can edit all of the space settings you just defined at any time, except for the URL identifier.
 

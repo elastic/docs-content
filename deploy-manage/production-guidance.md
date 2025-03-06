@@ -1,6 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-best-practices-data.html
+  - https://www.elastic.co/guide/en/elasticsearch/reference/current/scalability.html
 ---
 
 # Production guidance [ec-best-practices-data]
