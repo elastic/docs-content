@@ -57,9 +57,9 @@ From the {{ecloud}} Console you can customize {{es}}, {{kib}}, and related produ
 
 Change how {{es}} runs by providing your own user settings. {{ech}} appends these settings to each node’s `elasticsearch.yml` configuration file.
 
-{{ech}} automatically rejects `elasticsearch.yml` settings that could break your cluster. 
+{{ech}} automatically rejects `elasticsearch.yml` settings that could break your cluster.
 
-For a list of supported settings, check [Supported {{es}} settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/elastic-cloud-hosted-elasticsearch-settings.md).
+For a list of supported settings, check [Supported {{es}} settings](elasticsearch://reference/elasticsearch/configuration-reference/elastic-cloud-hosted-elasticsearch-settings.md).
 
 ::::{warning}
 You can also update [dynamic cluster settings](../../../deploy-manage/deploy/self-managed/configure-elasticsearch.md#dynamic-cluster-setting) using {{es}}'s [update cluster settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings). However, {{ech}} doesn’t reject unsafe setting changes made using this API. Use it with caution.
@@ -88,7 +88,7 @@ In some cases, you may get a warning saying "User settings are different across 
 
 Be aware that some settings that could break your cluster if set incorrectly and that the syntax might change between major versions.
 
-For a list of supported settings, check [Kibana settings](asciidocalypse://docs/kibana/docs/reference/cloud/elastic-cloud-kibana-settings.md).
+For a list of supported settings, check [Kibana settings](kibana://reference/cloud/elastic-cloud-kibana-settings.md).
 
 To change Kibana settings:
 

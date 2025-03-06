@@ -53,7 +53,7 @@ The Endpoints list provides the following data:
     * **View host details**: View host details on the **Hosts** page in the {{security-app}}.
     * **View agent policy**: View the agent policy in {{fleet}}.
     * **View agent details**: View {{agent}} details and activity logs in {{fleet}}.
-    * **Reassign agent policy**: Change the [agent policy](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/agent-policy.md#apply-a-policy) assigned to the host in {{fleet}}.
+    * **Reassign agent policy**: Change the [agent policy](/reference/ingestion-tools/fleet/agent-policy.md#apply-a-policy) assigned to the host in {{fleet}}.
 
 
 ### Endpoint details [endpoint-details]

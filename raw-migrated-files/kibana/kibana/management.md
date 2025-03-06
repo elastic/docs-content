@@ -10,7 +10,7 @@ Access to individual features is governed by {{es}} and {{kib}} privileges. Cons
 |     |     |
 | --- | --- |
 | [Ingest Pipelines](../../../manage-data/ingest/transform-enrich/ingest-pipelines.md) | Create and manage ingest pipelines that let you perform common transformationsand enrichments on your data. |
-| [Logstash Pipelines](asciidocalypse://docs/logstash/docs/reference/logstash-centralized-pipeline-management.md) | Create, edit, and delete your Logstash pipeline configurations. |
+| [Logstash Pipelines](logstash://reference/logstash-centralized-pipeline-management.md) | Create, edit, and delete your Logstash pipeline configurations. |
 
 
 ## Data [manage-data]
@@ -58,7 +58,7 @@ Access to individual features is governed by {{es}} and {{kib}} privileges. Cons
 | [Tags](../../../explore-analyze/find-and-organize/tags.md) | Create, manage, and assign tags to your saved objects. |
 | [Search Sessions](../../../explore-analyze/discover/search-sessions.md) | Manage your saved search sessions, groups of queries that run in the background.Search sessions are useful when your queries take longer than usual to process,for example, when you have a large volume of data or when the performance of your storage location is slow. |
 | [Spaces](../../../deploy-manage/manage-spaces.md) | Create spaces to organize your dashboards and other saved objects into categories.A space is isolated from all other spaces,so you can tailor it to your needs without impacting others. |
-| [Advanced Settings](asciidocalypse://docs/kibana/docs/reference/advanced-settings.md) | Customize {{kib}} to suit your needs. Change the format for displaying dates, turn on dark mode,set the timespan for notification messages, and much more. |
+| [Advanced Settings](kibana://reference/advanced-settings.md) | Customize {{kib}} to suit your needs. Change the format for displaying dates, turn on dark mode,set the timespan for notification messages, and much more. |
 
 
 ## Stack [manage-stack]

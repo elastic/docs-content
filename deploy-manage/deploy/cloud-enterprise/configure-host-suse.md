@@ -1,26 +1,31 @@
 ---
+applies_to:
+  deployment:
+    ece: all
 mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-configure-hosts-sles12-cloud.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-configure-hosts-sles12-onprem.html
+navigation_title: SUSE
 ---
 
-# Configure host SUSE onprem [ece-configure-hosts-sles12-onprem]
+# Configure a SUSE host [ece-configure-hosts-sles12]
 
 The following instructions show you how to prepare your hosts on SLES 12 SP5 or 15.
 
-* [Install Docker](#ece-install-docker-sles12-onprem)
-* [Set up XFS on SLES](#ece-xfs-setup-sles12-onprem)
-* [Update the configurations settings](#ece-update-config-sles-onprem)
-* [Configure the Docker daemon options](#ece-configure-docker-daemon-sles12-onprem)
+* [Install Docker](#ece-install-docker-sles12)
+* [Set up XFS on SLES](#ece-xfs-setup-sles12)
+* [Update the configurations settings](#ece-update-config-sles)
+* [Configure the Docker daemon options](#ece-configure-docker-daemon-sles12)
 
-If you want to install Elastic Cloud Enterprise on your own hosts, the steps for preparing your hosts can take a bit of time. There are two ways you can approach this:
+If you want to install {{ece}} (ECE) on your own hosts, the steps for preparing your hosts can take a bit of time. There are two ways you can approach this:
 
-* **Think like a minimalist**: [Install the correct version of Docker](#ece-install-docker-sles12-onprem) on hosts that meet the [prerequisites](prepare-environment.md) for Elastic Cloud Enterprise, then skip ahead and [install Elastic Cloud Enterprise](install.md). Be aware that some checks during the installation can fail with this approach, which will mean doing further host preparation work before retrying the installation.
-* **Cover your bases**: If you want to make absolutely sure that your installation of Elastic Cloud Enterprise can succeed on hosts that meet the [prerequisites](prepare-environment.md), or if any of the checks during the installation failed previously, run through the full preparation steps in this section and then and [install Elastic Cloud Enterprise](install.md). You’ll do a bit more work now, but life will be simpler later on.
+* **Think like a minimalist**: [Install the correct version of Docker](#ece-install-docker-sles12) on hosts that meet the [prerequisites](prepare-environment.md) for ECE, then skip ahead and [install ECE](install.md#install-ece). Be aware that some checks during the installation can fail with this approach, which will mean doing further host preparation work before retrying the installation.
+* **Cover your bases**: If you want to make absolutely sure that your installation of {{ece}} can succeed on hosts that meet the [prerequisites](prepare-environment.md), or if any of the checks during the installation failed previously, run through the full preparation steps in this section and then and [install ECE](install.md#install-ece). You’ll do a bit more work now, but life will be simpler later on.
 
-Regardless of which approach you take, the steps in this section need to be performed on every host that you want to use with Elastic Cloud Enterprise.
+Regardless of which approach you take, the steps in this section need to be performed on every host that you want to use with ECE.
 
 
-## Install Docker [ece-install-docker-sles12-onprem]
+## Install Docker [ece-install-docker-sles12]
 
 ::::{important}
 Make sure to use a combination of Linux distribution and Docker version that is supported, following our official [Support matrix](https://www.elastic.co/support/matrix#elastic-cloud-enterprise). Using unsupported combinations can cause multiple issues with you ECE environment, such as failures to create system deployments, to upgrade workload deployments, proxy timeouts, and more.
@@ -63,7 +68,7 @@ Make sure to use a combination of Linux distribution and Docker version that is 
 
 
 
-## Set up OS groups and user [ece_set_up_os_groups_and_user_2]
+## Set up OS groups and user [ece_set_up_os_groups_and_user]
 
 1. If they don’t already exist, create the following OS groups:
 
@@ -80,14 +85,14 @@ Make sure to use a combination of Linux distribution and Docker version that is 
 
 
 
-## Set up XFS on SLES [ece-xfs-setup-sles12-onprem]
+## Set up XFS on SLES [ece-xfs-setup-sles12]
 
 XFS is required to support disk space quotas for Elasticsearch data directories. Some Linux distributions such as RHEL and Rocky Linux already provide XFS as the default file system. On SLES 12 and 15, you need to set up an XFS file system and have quotas enabled.
 
 Disk space quotas set a limit on the amount of disk space an Elasticsearch cluster node can use. Currently, quotas are calculated by a static ratio of 1:32, which means that for every 1 GB of RAM a cluster is given, a cluster node is allowed to consume 32 GB of disk space.
 
 ::::{note}
-Using LVM, `mdadm`, or a combination of the two for block device management is possible, but the configuration is not covered here, nor is it provided as part of supporting Elastic Cloud Enterprise.
+Using LVM, `mdadm`, or a combination of the two for block device management is possible, but the configuration is not covered here, nor is it provided as part of supporting ECE.
 ::::
 
 
@@ -110,7 +115,7 @@ You must use XFS and have quotas enabled on all allocators, otherwise disk usage
     sudo install -o $USER -g elastic -d -m 700 /mnt/data
     ```
 
-3. Add an entry to the `/etc/fstab` file for the new XFS volume. The default filesystem path used by Elastic Cloud Enterprise is `/mnt/data`.
+3. Add an entry to the `/etc/fstab` file for the new XFS volume. The default filesystem path used by ECE is `/mnt/data`.
 
     ```sh
     /dev/xvdg1	/mnt/data	xfs	defaults,pquota,prjquota,x-systemd.automount  0 0
@@ -124,7 +129,7 @@ You must use XFS and have quotas enabled on all allocators, otherwise disk usage
 
 
 
-## Update the configurations settings [ece-update-config-sles-onprem]
+## Update the configurations settings [ece-update-config-sles]
 
 1. Stop the Docker service:
 
@@ -176,7 +181,7 @@ You must use XFS and have quotas enabled on all allocators, otherwise disk usage
 
 4. Adjust the system limits.
 
-    Add the following configuration values to the `/etc/security/limits.conf` file. These values are derived from our experience with the Elastic Cloud hosted offering and should be used for Elastic Cloud Enterprise as well.
+    Add the following configuration values to the `/etc/security/limits.conf` file. These values are derived from our experience with the Elastic Cloud hosted offering and should be used for ECE as well.
 
     ::::{tip}
     If you are using a user name other than `elastic`, adjust the configuration values accordingly.
@@ -221,7 +226,7 @@ You must use XFS and have quotas enabled on all allocators, otherwise disk usage
     sudo install -o $USER -g elastic -d -m 700 /mnt/data
     ```
 
-7. If you [set up a new device with XFS](#ece-xfs-setup-sles12-onprem) earlier:
+7. If you [set up a new device with XFS](#ece-xfs-setup-sles12) earlier:
 
     1. Mount the block device (change the device name if you use a different device than `/dev/xvdg1`):
 
@@ -243,7 +248,7 @@ You must use XFS and have quotas enabled on all allocators, otherwise disk usage
 
 
 
-## Configure the Docker daemon [ece-configure-docker-daemon-sles12-onprem]
+## Configure the Docker daemon [ece-configure-docker-daemon-sles12]
 
 1. Edit `/etc/docker/daemon.json`, and make sure that the following configuration values are present:<br>
 
@@ -261,7 +266,7 @@ You must use XFS and have quotas enabled on all allocators, otherwise disk usage
     }
     ```
 
-2. The user installing {{ece}} must have a User ID (UID) and Group ID (GID) of 1000 or higher. Make sure that the GID matches the ID of the `elastic`` group created earlier (likely to be 1000). You can set this using the following command:
+2. The user installing ECE must have a User ID (UID) and Group ID (GID) of 1000 or higher. Make sure that the GID matches the ID of the `elastic`` group created earlier (likely to be 1000). You can set this using the following command:
 
     ```sh
     sudo usermod -g <elastic_group_gid> $USER
@@ -269,23 +274,23 @@ You must use XFS and have quotas enabled on all allocators, otherwise disk usage
 
 3. Apply the updated Docker daemon configuration:
 
-    Reload the Docker daemon configuration:
+   * Reload the Docker daemon configuration:
 
-    ```sh
-    sudo systemctl daemon-reload
-    ```
+        ```sh
+        sudo systemctl daemon-reload
+        ```
 
-    Restart the Docker service:
+   * Restart the Docker service:
 
-    ```sh
-    sudo systemctl restart docker
-    ```
+        ```sh
+        sudo systemctl restart docker
+        ```
 
-    Enable Docker to start on boot:
+   * Enable Docker to start on boot:
 
-    ```sh
-    sudo systemctl enable docker
-    ```
+        ```sh
+        sudo systemctl enable docker
+        ```
 
 4. Recommended: Tune your network settings.
 
@@ -341,4 +346,4 @@ You must use XFS and have quotas enabled on all allocators, otherwise disk usage
 
     If the command returns `Docker Root Dir: /var/lib/docker`, then you need to troubleshoot the previous configuration steps until the Docker settings are applied successfully before continuing with the installation process. For more information, check [Custom Docker daemon options](https://docs.docker.com/engine/admin/systemd/#/custom-docker-daemon-options) in the Docker documentation.
 
-8. Repeat these steps on other hosts that you want to use with Elastic Cloud Enterprise or follow the steps in the next section to start installing Elastic Cloud Enterprise.
+8. Repeat these steps on other hosts that you want to use with ECE or follow the steps in the next section to start installing {{ece}}.

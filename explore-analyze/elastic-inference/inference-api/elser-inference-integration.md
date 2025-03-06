@@ -102,7 +102,7 @@ The `elser` service is deprecated and will be removed in a future release. Use t
 When adaptive allocations are enabled, the number of allocations of the model is set automatically based on the current load.
 
 ::::{note} 
-For more information on how to optimize your ELSER endpoints, refer to [the ELSER recommendations](../../../explore-analyze/machine-learning/nlp/ml-nlp-elser.md#elser-recommendations) section in the model documentation. To learn more about model autoscaling, refer to the [trained model autoscaling](../../../explore-analyze/machine-learning/nlp/ml-nlp-auto-scale.md) page.
+For more information on how to optimize your ELSER endpoints, refer to [the ELSER recommendations](../../../explore-analyze/machine-learning/nlp/ml-nlp-elser.md#elser-recommendations) section in the model documentation. To learn more about model autoscaling, refer to the [trained model autoscaling](../../../deploy-manage/autoscaling/trained-model-autoscaling.md) page.
 ::::
 
 

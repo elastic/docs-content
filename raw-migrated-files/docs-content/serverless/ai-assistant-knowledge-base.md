@@ -117,7 +117,7 @@ Refer to the following video for an example of adding a document to Knowledge Ba
 Add an index as a knowledge source when you want new information added to that index to automatically inform AI Assistant’s responses. Common security examples include asset inventories, network configuration information, on-call matrices, threat intelligence reports, and vulnerability scans.
 
 ::::{important}
-Indices added to Knowledge Base must have at least one field mapped as [semantic text](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/semantic-text.md).
+Indices added to Knowledge Base must have at least one field mapped as [semantic text](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md).
 ::::
 
 

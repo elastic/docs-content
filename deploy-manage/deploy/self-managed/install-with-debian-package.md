@@ -49,7 +49,7 @@ When you start {{es}} for the first time, the following security configuration o
 
 The password and certificate and keys are output to your terminal.
 
-You can then generate an enrollment token for {{kib}} with the [`elasticsearch-create-enrollment-token`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/command-line-tools/create-enrollment-token.md) tool:
+You can then generate an enrollment token for {{kib}} with the [`elasticsearch-create-enrollment-token`](elasticsearch://reference/elasticsearch/command-line-tools/create-enrollment-token.md) tool:
 
 ```sh
 bin/elasticsearch-create-enrollment-token -s kibana

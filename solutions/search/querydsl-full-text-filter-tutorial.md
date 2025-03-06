@@ -24,7 +24,7 @@ The goal is to create search queries that enable users to:
 To achieve these goals we’ll use different Elasticsearch queries to perform full-text search, apply filters, and combine multiple search criteria.
 
 
-## Requirements [full-text-filter-tutorial-requirements] 
+## Requirements [full-text-filter-tutorial-requirements]
 
 You’ll need a running {{es}} cluster, together with {{kib}} to use the Dev Tools API Console. Run the following command in your terminal to set up a [single-node local cluster in Docker](get-started.md):
 
@@ -33,7 +33,7 @@ curl -fsSL https://elastic.co/start-local | sh
 ```
 
 
-## Step 1: Create an index [full-text-filter-tutorial-create-index] 
+## Step 1: Create an index [full-text-filter-tutorial-create-index]
 
 Create the `cooking_blog` index to get started:
 
@@ -101,18 +101,18 @@ PUT /cooking_blog/_mapping
 ```
 
 1. The `standard` analyzer is used by default for `text` fields if an `analyzer` isn’t specified. It’s included here for demonstration purposes.
-2. [Multi-fields](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/multi-fields.md) are used here to index `text` fields as both `text` and `keyword` [data types](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/field-data-types.md). This enables both full-text search and exact matching/filtering on the same field. Note that if you used [dynamic mapping](../../manage-data/data-store/mapping/dynamic-field-mapping.md), these multi-fields would be created automatically.
-3. The [`ignore_above` parameter](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/ignore-above.md) prevents indexing values longer than 256 characters in the `keyword` field. Again this is the default value, but it’s included here for demonstration purposes. It helps to save disk space and avoid potential issues with Lucene’s term byte-length limit.
+2. [Multi-fields](elasticsearch://reference/elasticsearch/mapping-reference/multi-fields.md) are used here to index `text` fields as both `text` and `keyword` [data types](elasticsearch://reference/elasticsearch/mapping-reference/field-data-types.md). This enables both full-text search and exact matching/filtering on the same field. Note that if you used [dynamic mapping](../../manage-data/data-store/mapping/dynamic-field-mapping.md), these multi-fields would be created automatically.
+3. The [`ignore_above` parameter](elasticsearch://reference/elasticsearch/mapping-reference/ignore-above.md) prevents indexing values longer than 256 characters in the `keyword` field. Again this is the default value, but it’s included here for demonstration purposes. It helps to save disk space and avoid potential issues with Lucene’s term byte-length limit.
 
 
-::::{tip} 
+::::{tip}
 Full-text search is powered by [text analysis](full-text/text-analysis-during-search.md). Text analysis normalizes and standardizes text data so it can be efficiently stored in an inverted index and searched in near real-time. Analysis happens at both [index and search time](../../manage-data/data-store/text-analysis/index-search-analysis.md). This tutorial won’t cover analysis in detail, but it’s important to understand how text is processed to create effective search queries.
 
 ::::
 
 
 
-## Step 2: Add sample blog posts to your index [full-text-filter-tutorial-index-data] 
+## Step 2: Add sample blog posts to your index [full-text-filter-tutorial-index-data]
 
 Now you’ll need to index some example blog posts using the [Bulk API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-settings). Note that `text` fields are analyzed and multi-fields are generated at index time.
 
@@ -131,14 +131,14 @@ POST /cooking_blog/_bulk?refresh=wait_for
 ```
 
 
-## Step 3: Perform basic full-text searches [full-text-filter-tutorial-match-query] 
+## Step 3: Perform basic full-text searches [full-text-filter-tutorial-match-query]
 
 Full-text search involves executing text-based queries across one or more document fields. These queries calculate a relevance score for each matching document, based on how closely the document’s content aligns with the search terms. {{es}} offers various query types, each with its own method for matching text and [relevance scoring](../../explore-analyze/query-filter/languages/querydsl.md#relevance-scores).
 
 
-### `match` query [_match_query] 
+### `match` query [_match_query]
 
-The [`match`](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/query-dsl-match-query.md) query is the standard query for full-text, or "lexical", search. The query text will be analyzed according to the analyzer configuration specified on each field (or at query time).
+The [`match`](elasticsearch://reference/query-languages/query-dsl-match-query.md) query is the standard query for full-text, or "lexical", search. The query text will be analyzed according to the analyzer configuration specified on each field (or at query time).
 
 First, search the `description` field for "fluffy pancakes":
 
@@ -212,7 +212,7 @@ At search time, {{es}} defaults to the analyzer defined in the field mapping. In
 
 
 
-### Require all terms in a match query [_require_all_terms_in_a_match_query] 
+### Require all terms in a match query [_require_all_terms_in_a_match_query]
 
 Specify the `and` operator to require both terms in the `description` field. This stricter search returns *zero hits* on our sample data, as no document contains both "fluffy" and "pancakes" in the description.
 
@@ -256,9 +256,9 @@ GET /cooking_blog/_search
 
 
 
-### Specify a minimum number of terms to match [_specify_a_minimum_number_of_terms_to_match] 
+### Specify a minimum number of terms to match [_specify_a_minimum_number_of_terms_to_match]
 
-Use the [`minimum_should_match`](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/query-dsl-minimum-should-match.md) parameter to specify the minimum number of terms a document should have to be included in the search results.
+Use the [`minimum_should_match`](elasticsearch://reference/query-languages/query-dsl-minimum-should-match.md) parameter to specify the minimum number of terms a document should have to be included in the search results.
 
 Search the title field to match at least 2 of the 3 terms: "fluffy", "pancakes", or "breakfast". This is useful for improving relevance while allowing some flexibility.
 
@@ -277,9 +277,9 @@ GET /cooking_blog/_search
 ```
 
 
-## Step 4: Search across multiple fields at once [full-text-filter-tutorial-multi-match] 
+## Step 4: Search across multiple fields at once [full-text-filter-tutorial-multi-match]
 
-When users enter a search query, they often don’t know (or care) whether their search terms appear in a specific field. A [`multi_match`](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/query-dsl-multi-match-query.md) query allows searching across multiple fields simultaneously.
+When users enter a search query, they often don’t know (or care) whether their search terms appear in a specific field. A [`multi_match`](elasticsearch://reference/query-languages/query-dsl-multi-match-query.md) query allows searching across multiple fields simultaneously.
 
 Let’s start with a basic `multi_match` query:
 
@@ -320,7 +320,7 @@ GET /cooking_blog/_search
 
 
 
-Learn more about fields and per-field boosting in the [`multi_match` query](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/query-dsl-multi-match-query.md) reference.
+Learn more about fields and per-field boosting in the [`multi_match` query](elasticsearch://reference/query-languages/query-dsl-multi-match-query.md) reference.
 
 ::::{dropdown} Example response
 ```console-result
@@ -374,18 +374,18 @@ This result demonstrates how the `multi_match` query with field boosts helps use
 ::::
 
 
-::::{tip} 
+::::{tip}
 The `multi_match` query is often recommended over a single `match` query for most text search use cases, as it provides more flexibility and better matches user expectations.
 
 ::::
 
 
 
-## Step 5: Filter and find exact matches [full-text-filter-tutorial-filtering] 
+## Step 5: Filter and find exact matches [full-text-filter-tutorial-filtering]
 
 [Filtering](../../explore-analyze/query-filter/languages/querydsl.md#filter-context) allows you to narrow down your search results based on exact criteria. Unlike full-text searches, filters are binary (yes/no) and do not affect the relevance score. Filters execute faster than queries because excluded results don’t need to be scored.
 
-This [`bool`](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/query-dsl-bool-query.md) query will return only blog posts in the "Breakfast" category.
+This [`bool`](elasticsearch://reference/query-languages/query-dsl-bool-query.md) query will return only blog posts in the "Breakfast" category.
 
 ```console
 GET /cooking_blog/_search
@@ -400,10 +400,10 @@ GET /cooking_blog/_search
 }
 ```
 
-1. Note the use of `category.keyword` here. This refers to the [`keyword`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/keyword.md) multi-field of the `category` field, ensuring an exact, case-sensitive match.
+1. Note the use of `category.keyword` here. This refers to the [`keyword`](elasticsearch://reference/elasticsearch/mapping-reference/keyword.md) multi-field of the `category` field, ensuring an exact, case-sensitive match.
 
 
-::::{tip} 
+::::{tip}
 The `.keyword` suffix accesses the unanalyzed version of a field, enabling exact, case-sensitive matching. This works in two scenarios:
 
 1. **When using dynamic mapping for text fields**. Elasticsearch automatically creates a `.keyword` sub-field.
@@ -413,9 +413,9 @@ The `.keyword` suffix accesses the unanalyzed version of a field, enabling exact
 
 
 
-### Search for posts within a date range [full-text-filter-tutorial-range-query] 
+### Search for posts within a date range [full-text-filter-tutorial-range-query]
 
-Often users want to find content published within a specific time frame. A [`range`](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/query-dsl-range-query.md) query finds documents that fall within numeric or date ranges.
+Often users want to find content published within a specific time frame. A [`range`](elasticsearch://reference/query-languages/query-dsl-range-query.md) query finds documents that fall within numeric or date ranges.
 
 ```console
 GET /cooking_blog/_search
@@ -436,9 +436,9 @@ GET /cooking_blog/_search
 
 
 
-### Find exact matches [full-text-filter-tutorial-term-query] 
+### Find exact matches [full-text-filter-tutorial-term-query]
 
-Sometimes users want to search for exact terms to eliminate ambiguity in their search results. A [`term`](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/query-dsl-term-query.md) query searches for an exact term in a field without analyzing it. Exact, case-sensitive matches on specific terms are often referred to as "keyword" searches.
+Sometimes users want to search for exact terms to eliminate ambiguity in their search results. A [`term`](elasticsearch://reference/query-languages/query-dsl-term-query.md) query searches for an exact term in a field without analyzing it. Exact, case-sensitive matches on specific terms are often referred to as "keyword" searches.
 
 Here you’ll search for the author "Maria Rodriguez" in the `author.keyword` field.
 
@@ -456,16 +456,16 @@ GET /cooking_blog/_search
 1. The `term` query has zero flexibility. For example, here the queries `maria` or `maria rodriguez` would have zero hits, due to case sensitivity.
 
 
-::::{tip} 
-Avoid using the `term` query for [`text` fields](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/text.md) because they are transformed by the analysis process.
+::::{tip}
+Avoid using the `term` query for [`text` fields](elasticsearch://reference/elasticsearch/mapping-reference/text.md) because they are transformed by the analysis process.
 
 ::::
 
 
 
-## Step 6: Combine multiple search criteria [full-text-filter-tutorial-complex-bool] 
+## Step 6: Combine multiple search criteria [full-text-filter-tutorial-complex-bool]
 
-A [`bool`](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/query-dsl-bool-query.md) query allows you to combine multiple query clauses to create sophisticated searches. In this tutorial scenario it’s useful for when users have complex requirements for finding recipes.
+A [`bool`](elasticsearch://reference/query-languages/query-dsl-bool-query.md) query allows you to combine multiple query clauses to create sophisticated searches. In this tutorial scenario it’s useful for when users have complex requirements for finding recipes.
 
 Let’s create a query that addresses the following user needs:
 
@@ -571,7 +571,7 @@ GET /cooking_blog/_search
 }
 ```
 
-1. The title contains "Spicy" and "Curry", matching our should condition. With the default [best_fields](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/query-dsl-multi-match-query.md#type-best-fields) behavior, this field contributes most to the relevance score.
+1. The title contains "Spicy" and "Curry", matching our should condition. With the default [best_fields](elasticsearch://reference/query-languages/query-dsl-multi-match-query.md#type-best-fields) behavior, this field contributes most to the relevance score.
 2. While the description also contains matching terms, only the best matching field’s score is used by default.
 3. The recipe was published within the last month, satisfying our recency preference.
 4. The "Main Course" category satisfies another `should` condition.
@@ -583,7 +583,7 @@ GET /cooking_blog/_search
 
 
 
-## Learn more [full-text-filter-tutorial-learn-more] 
+## Learn more [full-text-filter-tutorial-learn-more]
 
 This tutorial introduced the basics of full-text search and filtering in {{es}}. Building a real-world search experience requires understanding many more advanced concepts and techniques. Here are some resources once you’re ready to dive deeper:
 
