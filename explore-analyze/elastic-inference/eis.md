@@ -7,4 +7,4 @@ navigation_title: Elastic Inference Service (EIS)
 
 # Elastic {{infer-cap}} Service
 
-Yay.
+This is the documentation of the Elastic Inference Service.
