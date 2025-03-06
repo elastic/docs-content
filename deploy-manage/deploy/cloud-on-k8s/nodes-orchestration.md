@@ -186,7 +186,7 @@ During {{es}} rolling upgrades, ECK follows a set of rules (also known as predic
 
 These predicates can be selectively disabled for certain scenarios where the ECK operator will not proceed with an Elasticsearch cluster upgrade because it deems it to be "unsafe".
 
-For a complete list of available predicates, their meaning and a use case example, refer to [ECK upgrade predicates](cloud-on-k8s://reference/upgrade-predicates.md).
+For a complete list of available predicates, their meaning, and example usage, refer to [ECK upgrade predicates](cloud-on-k8s://reference/upgrade-predicates.md).
 
 ::::{warning}
 * Selectively disabling the predicates is extremely risky, and carry a high chance of either data loss, or causing a cluster to become completely unavailable. Use them only if you are sure that you are not causing permanent damage to an Elasticsearch cluster.
