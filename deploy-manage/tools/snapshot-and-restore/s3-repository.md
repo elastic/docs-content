@@ -1,16 +1,16 @@
---- 
+---
 mapped_urls:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/repository-s3.html
 applies_to:
   deployment:
-    self: 
+    self:
 ---
 
 # S3 repository [repository-s3]
 
 You can use AWS S3 as a repository for [Snapshot/Restore](../snapshot-and-restore.md).
 
-::::{note} 
+::::{note}
 If you are looking for a hosted solution of Elasticsearch on AWS, please visit [https://www.elastic.co/cloud/](https://www.elastic.co/cloud/).
 ::::
 
@@ -122,7 +122,7 @@ The following list contains the available client settings. Those that must be st
 `path_style_access`
 :   Whether to force the use of the path style access pattern. If `true`, the path style access pattern will be used. If `false`, the access pattern will be automatically determined by the AWS Java SDK (See [AWS documentation](https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/s3/AmazonS3Builder.md#setPathStyleAccessEnabled-java.lang.Boolean-) for details). Defaults to `false`.
 
-::::{note} 
+::::{note}
 :name: repository-s3-path-style-deprecation
 
 In versions `7.0`, `7.1`, `7.2` and `7.3` all bucket operations used the [now-deprecated](https://aws.amazon.com/blogs/aws/amazon-s3-path-deprecation-plan-the-rest-of-the-story/) path style access pattern. If your deployment requires the path style access pattern then you should set this setting to `true` when upgrading.
@@ -168,7 +168,7 @@ The following settings are supported:
 `base_path`
 :   Specifies the path to the repository data within its bucket. Defaults to an empty string, meaning that the repository is at the root of the bucket. The value of this setting should not start or end with a `/`.
 
-    ::::{note} 
+    ::::{note}
     Don’t set `base_path` when configuring a snapshot repository for {{ECE}}. {{ECE}} automatically generates the `base_path` for each deployment so that multiple deployments may share the same bucket.
     ::::
 
@@ -192,7 +192,7 @@ The following settings are supported:
 
     If `false`, the cluster can write to the repository and create snapshots in it. Defaults to `false`.
 
-    ::::{important} 
+    ::::{important}
     If you register the same snapshot repository with multiple clusters, only one cluster should have write access to the repository. Having multiple clusters write to the repository at the same time risks corrupting the contents of the repository.
 
     ::::
@@ -231,7 +231,7 @@ The following settings are supported:
 `get_register_retry_delay`
 :   ([time value](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/api-conventions.md#time-units)) Sets the time to wait before trying again if an attempt to read a [linearizable register](#repository-s3-linearizable-registers) fails. Defaults to `5s`.
 
-::::{note} 
+::::{note}
 The option of defining client settings in the repository settings as documented below is considered deprecated, and will be removed in a future version.
 ::::
 
@@ -352,7 +352,7 @@ You may further restrict the permissions by specifying a prefix within the bucke
 The bucket needs to exist to register a repository for snapshots. If you did not create the bucket then the repository registration will fail.
 
 
-#### Using IAM roles for Kubernetes service accounts for authentication [iam-kubernetes-service-accounts] 
+#### Using IAM roles for Kubernetes service accounts for authentication [iam-kubernetes-service-accounts]
 
 If you want to use [Kubernetes service accounts](https://aws.amazon.com/blogs/opensource/introducing-fine-grained-iam-roles-service-accounts/) for authentication, you need to add a symlink to the `$AWS_WEB_IDENTITY_TOKEN_FILE` environment variable (which should be automatically set by a Kubernetes pod) in the S3 repository config directory, so the repository can have the read access for the service account (a repository can’t read any files outside its config directory). For example:
 
@@ -361,7 +361,7 @@ mkdir -p "${ES_PATH_CONF}/repository-s3"
 ln -s $AWS_WEB_IDENTITY_TOKEN_FILE "${ES_PATH_CONF}/repository-s3/aws-web-identity-token-file"
 ```
 
-::::{important} 
+::::{important}
 The symlink must be created on all data and master eligible nodes and be readable by the `elasticsearch` user. By default, {{es}} runs as user `elasticsearch` using uid:gid `1000:0`.
 ::::
 

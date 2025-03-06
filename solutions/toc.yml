@@ -580,26 +580,21 @@ toc:
               - file: security/cloud/cspm-privilege-requirements.md
               - file: security/cloud/findings-page.md
               - file: security/cloud/benchmarks.md
-              - file: security/cloud/cloud-security-posture-dashboard.md
-              - file: security/cloud/frequently-asked-questions-faq.md
+              - file: security/dashboards/cloud-security-posture-dashboard.md
+              - file: security/cloud/cspm-frequently-asked-questions-faq.md
           - file: security/cloud/kubernetes-security-posture-management.md
             children:
               - file: security/cloud/get-started-with-kspm.md
               - file: security/cloud/findings-page-2.md
-              - file: security/cloud/benchmarks-2.md
-              - file: security/cloud/cloud-security-posture-dashboard-2.md
-              - file: security/cloud/frequently-asked-questions-faq-2.md
+              - file: security/cloud/benchmarks.md
+              - file: security/dashboards/cloud-security-posture-dashboard.md
+              - file: security/cloud/cspm-frequently-asked-questions-faq.md
           - file: security/cloud/cloud-native-vulnerability-management.md
             children:
               - file: security/cloud/get-started-with-cnvm.md
               - file: security/cloud/findings-page-3.md
-              - file: security/cloud/cloud-native-vulnerability-management-dashboard.md
-              - file: security/cloud/frequently-asked-questions-faq-3.md
-          - file: security/cloud/cloud-workload-protection-for-kubernetes.md
-            children:
-              - file: security/cloud/get-started-with-cwp-for-kubernetes.md
-              - file: security/cloud/container-workload-protection-policies.md
-              - file: security/cloud/kubernetes-dashboard.md
+              - file: security/dashboards/cloud-native-vulnerability-management-dashboard.md
+              - file: security/cloud/cnvm-frequently-asked-questions-faq.md
           - file: security/cloud/cloud-workload-protection-for-vms.md
             children:
               - file: security/cloud/capture-environment-variables.md
@@ -635,7 +630,6 @@ toc:
         children:
           - file: security/dashboards/overview-dashboard.md
           - file: security/dashboards/detection-response-dashboard.md
-          - file: security/dashboards/kubernetes-dashboard.md
           - file: security/dashboards/cloud-security-posture-dashboard.md
           - file: security/dashboards/entity-analytics-dashboard.md
           - file: security/dashboards/data-quality-dashboard.md

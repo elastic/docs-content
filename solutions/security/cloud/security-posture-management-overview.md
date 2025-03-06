@@ -6,14 +6,6 @@ mapped_urls:
 
 # Security posture management overview
 
-% What needs to be done: Lift-and-shift
-
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/security-docs/security/security-posture-management.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/security-posture-management.md
-
-
 ## Overview [_overview]
 
 Elastic’s [Cloud Security Posture Management](/solutions/security/cloud/cloud-security-posture-management.md) (CSPM) and [Kubernetes Security Posture Management](/solutions/security/cloud/kubernetes-security-posture-management.md) (KSPM) features help you discover and evaluate the services and resources in your cloud environment — like storage, compute, IAM, and more — against security guidelines defined by the Center for Internet Security (CIS). They help you identify and remediate configuration risks that could undermine the confidentiality, integrity, and availability of your cloud assets, such as publicly exposed storage buckets or overly permissive networking objects.

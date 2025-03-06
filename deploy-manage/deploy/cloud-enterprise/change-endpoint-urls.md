@@ -1,4 +1,7 @@
 ---
+applies_to:
+  deployment:
+    ece: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-administering-endpoints.html
 ---
@@ -9,14 +12,10 @@ For applications without SSL or HTTPS protocol support, you can use a local endp
 
 By default, cluster and Kibana endpoint URLs are constructed according to the following pattern, where `CLUSTER_ID` and `LOCAL_HOST_IP` are values that depend on your specific installation:
 
-::::{admonition}
-```text
+```sh
 http://CLUSTER_ID.LOCAL_HOST_IP.ip.es.io:9200
 https://CLUSTER_ID.LOCAL_HOST_IP.ip.es.io:9243
 ```
-
-::::
-
 
 For example:
 
@@ -28,7 +27,6 @@ https://2882c82e54d4361.us-west-5.aws.found.io:9243
 ::::{tip}
 To find your endpoints, select a deployment review the information on the **Elasticsearch** and **Kibana** pages.
 ::::
-
 
 To change endpoints in the Cloud UI:
 

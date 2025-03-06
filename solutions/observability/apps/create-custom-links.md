@@ -138,7 +138,7 @@ This link creates a new task on the Engineering board in Jira. It populates the 
 | Label | `Open a task in Jira` |
 | Link | `https://test-site-33.atlassian.net/secure/CreateIssueDetails!init.jspa?pid=10000&issuetype=10001&summary=Created+via+APM&description=Investigate+the+following+APM+trace%3A%0D%0A%0D%0Aservice.name%3A+{{service.name}}%0D%0Atransaction.id%3A+{{transaction.id}}%0D%0Acontainer.id%3A+{{container.id}}%0D%0Aurl.full%3A+{{url.full}}` |
 
-See the [Jira application administration knowledge base](https://confluence.atlassian.com/jirakb/how-to-create-issues-using-direct-html-links-in-jira-server-159474.md) for a full list of supported query parameters.
+See the [Jira application administration knowledge base](https://confluence.atlassian.com/jirakb/how-to-create-issues-using-direct-html-links-in-jira-server-159474.html) for a full list of supported query parameters.
 
 
 ### Dashboards [custom-links-examples-kib]

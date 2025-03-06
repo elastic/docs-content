@@ -24,7 +24,7 @@ Installing Minio for production requires a high-availability configuration where
 
 As mentioned in the Minio documentation, you will need to have 4-16 Minio drive mounts. There is no hard limit on the number of Minio nodes. It might be convenient to place the Minio node containers on your ECE hosts to ensure you have a suitable level of availability, but those can not be located on the same hosts as ECE proxies since they both listen on the same port.
 
-The following illustration is a sample architecture for a [large ECE installation](../../deploy/cloud-enterprise/deploy-large-installation-onprem.md). Note that there is at least one MinIO container in *each* availability zone.
+The following illustration is a sample architecture for a [large ECE installation](../../deploy/cloud-enterprise/deploy-large-installation.md). Note that there is at least one MinIO container in *each* availability zone.
 
 There are a number of different ways of orchestrating the Minio deployment (Docker Compose, Kubernetes, and so on). We suggest you use the method most familiar to you.
 
