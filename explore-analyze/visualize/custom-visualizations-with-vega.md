@@ -271,7 +271,7 @@ In the **Vega-Lite** spec, add the `encoding` block:
 
 #### Extract the `time_buckets.buckets` inner array [_extract_the_time_buckets_buckets_inner_array]
 
-In {{kib}} 7.9 and later, use the **Vega-Lite** [flatten transformation](https://vega.github.io/vega-lite/docs/flatten.md) to extract the `time_buckets.buckets` inner array.
+In {{kib}} 7.9 and later, use the **Vega-Lite** [flatten transformation](https://vega.github.io/vega-lite/docs/flatten.html) to extract the `time_buckets.buckets` inner array.
 
 If you are using {{kib}} 7.8 and earlier, the flatten transformation is available only in **Vega**.
 
@@ -1160,10 +1160,10 @@ padding: {
 }
 ```
 
-To learn more, read about [Vega autosize](https://vega.github.io/vega/docs/specification/#autosize) and [Vega-Lite autosize](https://vega.github.io/vega-lite/docs/size.md).
+To learn more, read about [Vega autosize](https://vega.github.io/vega/docs/specification/#autosize) and [Vega-Lite autosize](https://vega.github.io/vega-lite/docs/size.html).
 
 ::::{note}
-Autosize in Vega-Lite has [several limitations](https://vega.github.io/vega-lite/docs/size.md#limitations) which can affect the height and width of your visualization, but these limitations do not exist in Vega. If you need full control, convert your spec to Vega using the [browser console](#vega-browser-debugging-console) `VEGA_DEBUG.vega_spec` output. To disable these warnings, you can [add extra options to your spec](#vega-additional-configuration-options).
+Autosize in Vega-Lite has [several limitations](https://vega.github.io/vega-lite/docs/size.html#limitations) which can affect the height and width of your visualization, but these limitations do not exist in Vega. If you need full control, convert your spec to Vega using the [browser console](#vega-browser-debugging-console) `VEGA_DEBUG.vega_spec` output. To disable these warnings, you can [add extra options to your spec](#vega-additional-configuration-options).
 ::::
 
 
@@ -1418,7 +1418,7 @@ The visualization automatically injects a `"projection"`, which you can use to c
 
 ##### Additional tooltip styling [vega-tooltip]
 
-{{kib}} has installed the [Vega tooltip plugin](https://vega.github.io/vega-lite/docs/tooltip.md), so tooltips can be defined in the ways documented there. Beyond that, {{kib}} also supports a configuration option for changing the tooltip position and padding:
+{{kib}} has installed the [Vega tooltip plugin](https://vega.github.io/vega-lite/docs/tooltip.html), so tooltips can be defined in the ways documented there. Beyond that, {{kib}} also supports a configuration option for changing the tooltip position and padding:
 
 ```js
 {
@@ -1558,7 +1558,7 @@ The [Vega Editor](https://vega.github.io/editor/) includes examples for Vega & V
 
 #### Vega-Lite resources [vega-lite-resources]
 
-* [Tutorials](https://vega.github.io/vega-lite/tutorials/getting_started.md)
+* [Tutorials](https://vega.github.io/vega-lite/tutorials/getting_started.html)
 * [Docs](https://vega.github.io/vega-lite/docs/)
 * [Examples](https://vega.github.io/vega-lite/examples/)
 

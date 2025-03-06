@@ -1,4 +1,6 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshots-take-snapshot.html
 applies_to:
   deployment:
     eck:

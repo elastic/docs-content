@@ -146,11 +146,11 @@ This method will serialize the trained model and the Learning To Rank configurat
 
 The following types of models are currently supported for LTR with {{es}}:
 
-* [`DecisionTreeRegressor`](https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeRegressor.md)
-* [`RandomForestRegressor`](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestRegressor.md)
-* [`LGBMRegressor`](https://lightgbm.readthedocs.io/en/latest/pythonapi/lightgbm.LGBMRegressor.md)
-* [`XGBRanker`](https://xgboost.readthedocs.io/en/stable/python/python_api.md#xgboost.XGBRanker)
-* [`XGBRegressor`](https://xgboost.readthedocs.io/en/stable/python/python_api.md#xgboost.XGBRegressor)
+* [`DecisionTreeRegressor`](https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeRegressor.html)
+* [`RandomForestRegressor`](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestRegressor.html)
+* [`LGBMRegressor`](https://lightgbm.readthedocs.io/en/latest/pythonapi/lightgbm.LGBMRegressor.html)
+* [`XGBRanker`](https://xgboost.readthedocs.io/en/stable/python/python_api.html#xgboost.XGBRanker)
+* [`XGBRegressor`](https://xgboost.readthedocs.io/en/stable/python/python_api.html#xgboost.XGBRegressor)
 
 More model types will be supported in the future.
 
