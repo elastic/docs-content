@@ -6,7 +6,7 @@ mapped_urls:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-monitoring-deployments.html
 ---
 
-# Working with deployments
+# Manage deployments
 
 % What needs to be done: Refine
 

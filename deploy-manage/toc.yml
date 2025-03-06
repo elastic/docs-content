@@ -182,19 +182,22 @@ toc:
             children:
               - file: deploy/cloud-enterprise/deployment-templates.md
               - file: deploy/cloud-enterprise/create-deployment.md
-              - file: deploy/cloud-enterprise/edit-stack-settings.md
-              - file: deploy/cloud-enterprise/customize-deployment.md
-              - file: deploy/cloud-enterprise/resize-deployment.md
+              - file: deploy/cloud-enterprise/access-kibana.md
+              - file: deploy/cloud-enterprise/configure-deployment.md
                 children:
-                  - file: deploy/cloud-enterprise/resource-overrides.md
-              - file: deploy/cloud-enterprise/add-plugins.md
-              - file: deploy/cloud-enterprise/add-custom-bundles-plugins.md
-              - file: deploy/cloud-enterprise/manage-integrations-server.md
-                children:
-                  - file: deploy/cloud-enterprise/switch-from-apm-to-integrations-server-payload.md
+                  - file: deploy/cloud-enterprise/customize-deployment.md
+                  - file: deploy/cloud-enterprise/edit-stack-settings.md
+                  - file: deploy/cloud-enterprise/resize-deployment.md
+                    children:
+                      - file: deploy/cloud-enterprise/resource-overrides.md
+                  - file: deploy/cloud-enterprise/add-plugins.md
+                  - file: deploy/cloud-enterprise/add-custom-bundles-plugins.md
+                  - file: deploy/cloud-enterprise/advanced-cluster-configuration.md
+                  - file: deploy/cloud-enterprise/manage-integrations-server.md
+                    children:
+                      - file: deploy/cloud-enterprise/switch-from-apm-to-integrations-server-payload.md
               - file: deploy/cloud-enterprise/find-cloud-id.md
               - file: deploy/cloud-enterprise/find-endpoint-url.md
-              - file: deploy/cloud-enterprise/advanced-cluster-configuration.md
               - file: deploy/cloud-enterprise/search-filter-deployments.md
               - file: deploy/cloud-enterprise/keep-track-of-deployment-activity.md
           - file: deploy/cloud-enterprise/tools-apis.md
