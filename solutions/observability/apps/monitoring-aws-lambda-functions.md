@@ -24,7 +24,7 @@ Normally, during the execution of a Lambda function, there’s only a single lan
 
 :::{image} ../../../images/serverless-apm-agents-aws-lambda-functions-architecture.png
 :alt: image showing data flow from lambda function
-:class: screenshot
+:screenshot:
 :::
 
 By using an AWS Lambda extension, Elastic APM agents can send data to a local Lambda extension process, and that process will forward data on to the managed intake service asynchronously. The Lambda extension ensures that any potential latency between the Lambda function and the managed intake service instance will not cause latency in the request flow of the Lambda function itself.
@@ -37,4 +37,4 @@ To get started with the setup of Elastic APM for your Lambda functions, checkout
 * [Quick Start with APM on AWS Lambda - Python](asciidocalypse://docs/apm-agent-python/docs/reference/lambda-support.md)
 * [Quick Start with APM on AWS Lambda - Java](asciidocalypse://docs/apm-agent-java/docs/reference/aws-lambda.md)
 
-Or, see the [architecture guide](asciidocalypse://docs/apm-aws-lambda/docs/reference/index.md) to learn more about how the extension works, performance impacts, and more.
+Or, see the [architecture guide](apm-aws-lambda://reference/index.md) to learn more about how the extension works, performance impacts, and more.

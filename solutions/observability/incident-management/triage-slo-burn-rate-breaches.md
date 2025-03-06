@@ -24,7 +24,7 @@ Explore charts on the page to learn more about the SLO breach:
 
     :::{image} ../../../images/observability-slo-burn-rate-breach.png
     :alt: Alert details for SLO burn rate breach
-    :class: screenshot
+    :screenshot:
     :::
 
     ::::{tip}
@@ -36,7 +36,7 @@ Explore charts on the page to learn more about the SLO breach:
 
     :::{image} ../../../images/observability-log-threshold-breach-alert-history-chart.png
     :alt: Alert history chart in alert details for SLO burn rate breach
-    :class: screenshot
+    :screenshot:
     :::
 
 

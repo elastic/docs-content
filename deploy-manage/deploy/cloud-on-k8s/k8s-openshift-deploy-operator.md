@@ -25,7 +25,7 @@ This page shows the installation steps to deploy ECK in Openshift:
 
 3. Create a namespace to hold the Elastic resources (Elasticsearch, Kibana, APM Server, Beats, Elastic Agent, Elastic Maps Server, and Logstash):
    ::::{note}
-   A namespace other than the default namespaces (default, kube-\*, openshift-\*, etc) is required such that default [Security Context Constraint](https://docs.openshift.com/container-platform/4.12/authentication/managing-security-context-constraints.md) (SCC) permissions are applied automatically. Elastic resources will not work properly in any of the default namespaces.
+   A namespace other than the default namespaces (default, kube-\*, openshift-\*, etc) is required such that default [Security Context Constraint](https://docs.openshift.com/container-platform/4.12/authentication/managing-security-context-constraints.html) (SCC) permissions are applied automatically. Elastic resources will not work properly in any of the default namespaces.
    ::::
 
    ```sh

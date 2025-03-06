@@ -2,18 +2,8 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/serverless/current/intro.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/elasticsearch-intro-deploy.html
+  - https://www.elastic.co/guide/en/starting-with-the-elasticsearch-platform-and-its-solutions/current/get-elastic.html
 ---
-
-% What needs to be done: Write from scratch
-
-% GitHub issue: https://github.com/elastic/docs-projects/issues/334
-
-% Scope notes: does plan for production content go here?  With orchestrator layer - explain relationship between orchestrator and clusters  how to help people to be aware of the other products that might need to be deployed? "these are the core products, you might add others on"  describe relationship between orchestrators and ES  Explain that when using orchestrators a lot of the reference configuration of the orchestrated applications is still applicable. The user needs to learn how to configure the applications when using an orchestrator, then afterwards, the documentation of the application will be valid and applicable to their use case. When a certain feature or configuration is not applicable in some deployment types, the document will specify it.
-
-% Use migrated content from existing pages that map to this page:
-
-% - [ ] ./raw-migrated-files/docs-content/serverless/intro.md
-% - [ ] ./raw-migrated-files/elasticsearch/elasticsearch-reference/elasticsearch-intro-deploy.md
 
 # Deploy
 
@@ -23,13 +13,20 @@ This page will help you understand your deployment options and choose the approa
 
 ## Core components
 
-Every Elastic deployment requires {{es}} as its core data store and search/analytics engine.
-Additionally, {{kib}} provides the user interface for all Elastic solutions and Serverless projects. It is required for most use cases, from data exploration to monitoring and security analysis.
+All deployments include **{{es}}**. {{es}} is the distributed search and analytics engine, scalable data store, and vector database at the heart of all Elastic solutions.
 
-Your choice of deployment type determines how you'll set up and manage these core components, plus any additional components you need.
+In most cases, you also need to deploy **{{kib}}**. {{kib}} provides the user interface for all Elastic solutions and Serverless projects. It’s a powerful tool for visualizing and analyzing your data, and for managing and monitoring the {{stack}}. Although {{kib}} is not required to use {{es}}, it's required for most use cases, and is included by default when you deploy using certain deployment methods.
 
-:::{tip}
-Learn more about the [{{stack}}](/get-started/the-stack.md) to understand the core and optional components of an Elastic deployment.
+Your choice of deployment type determines how you'll set up and manage these core components, as well as any additional components you need.
+
+:::{admonition} Other {{stack}} components
+This section focuses on deploying and managing {{es}} and {{kib}}, as well as supporting orchestration technologies. However, depending on your use case, you might need to deploy [other {{stack}} components](/get-started/the-stack.md). For example, you might need to add components to ingest logs or metrics.
+
+To learn how to deploy optional {{stack}} components, refer to the following sections:
+* [Fleet and Elastic Agent](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/index.md)
+* [APM](/solutions/observability/apps/application-performance-monitoring-apm.md)
+* [Beats](asciidocalypse://docs/beats/docs/reference/index.md)
+* [Logstash](asciidocalypse://docs/logstash/docs/reference/index.md)
 :::
 
 ## Choosing your deployment type
@@ -41,10 +38,12 @@ Learn more about the [{{stack}}](/get-started/the-stack.md) to understand the co
 
 #### Managed by Elastic
 
-If you want to focus on using Elastic products rather than managing infrastructure, choose:
+If you want to focus on using Elastic products rather than managing infrastructure, choose one of the following options:
 
-- **Serverless**: Zero operational overhead, automatic scaling and updates, latest features
-- **Cloud hosted**: Balance of control and managed operations, choice of resources and regions
+- **{{serverless-full}}**: Zero operational overhead, automatic scaling and updates, latest features
+- **{{ech}}**: Balance of control and managed operations, choice of resources and regions
+
+Both of these options use [{{ecloud}}](/deploy-manage/deploy/elastic-cloud.md) as the orchestration platform.
 
 #### Self-hosted options
 
@@ -52,11 +51,14 @@ If you need to run Elastic on your infrastructure, choose between a fully self-m
 
 - **Fully self-managed**: Complete control and responsibility for your Elastic deployment
 - **With orchestration**:
-  - **Elastic Cloud on Kubernetes (ECK)**: If you need Kubernetes-native orchestration
-  - **Elastic Cloud Enterprise (ECE)**: If you need a multi-tenant orchestration platform
+  - **{{eck}} (ECK)**: If you need Kubernetes-native orchestration
+  - **{{ece}} (ECE)**: If you need a multi-tenant orchestration platform
 
-:::::{note}
-:::{dropdown} About orchestration
+::::{tip}
+Documentation will specify when certain features or configurations are not applicable to specific deployment types.
+::::
+
+### About orchestration
 
 An orchestrator automates the deployment and management of multiple Elastic clusters, handling tasks like scaling, upgrades, and monitoring.
 
@@ -66,27 +68,21 @@ Consider orchestration if you:
 - Have a Kubernetes environment (ECK)
 - Need to build a multi-tenant platform (ECE)
 
-Orchestrators manage the lifecycle of your Elastic deployments but don't change how the core products work. When using ECK or ECE:
+Orchestrators manage the lifecycle of your Elastic deployments but don't change how the core products work. When using an orchestrated deployment:
 - You'll still use the same Elasticsearch and Kibana features and configurations
 - Most product documentation remains applicable
 - You can add other Elastic products as needed
 - The orchestrator handles operational tasks while you focus on using and configuring the products
 
-::::{tip}
-Documentation will specify when certain features or configurations are not applicable to specific deployment types.
-::::
-:::
-:::::
-
 ### Versioning and compatibility 
 
 In {{serverless-full}}, you automatically get access to the latest versions of Elastic features and you don't need to manage version compatibility.
 
-With other deployment types ({{ecloud}} Hosted, ECE, and ECK), you control which {{stack}} versions you deploy and when you upgrade. The ECE and ECK orchestrators themselves also receive regular version updates, independent of the {{stack}} versions they manage.
+With other deployment types (ECH, ECE, and ECK), you control which {{stack}} versions you deploy and when you upgrade. The ECE and ECK orchestrators themselves also receive regular version updates, independent of the {{stack}} versions they manage.
 
 Consider this when choosing your deployment type:
 
-- Choose Serverless if you want automatic access to the latest features and don't want to manage version compatibility
+- Choose {{serverless-full}} if you want automatic access to the latest features and don't want to manage version compatibility
 - Choose other deployment types if you need more control over version management
 
 :::{tip}
@@ -95,8 +91,8 @@ Learn more about [versioning and availability](/get-started/versioning-availabil
 
 ### Cost considerations
 
-- **Serverless**: Pay for what you use
-- **Cloud hosted**: Subscription-based with resource allocation
+- **{{serverless-full}}**: Pay for what you use
+- **{{ech}}**: Subscription-based with resource allocation
 - **Self-hosted options**: Infrastructure costs plus operational overhead mean a higher total cost of ownership (TCO)
 
 :::::{tip}

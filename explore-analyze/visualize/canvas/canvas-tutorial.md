@@ -35,7 +35,7 @@ To customize your workpad to look the way you want, add your own images.
 
        :::{image} ../../../images/kibana-canvas_tutorialCustomImage_7.17.0.png
        :alt: The Analytics logo added to the workpad
-       :class: screenshot
+       :screenshot:
        :::
 
 
@@ -78,7 +78,7 @@ Customize your data by connecting it to the Sample eCommerce orders data.
 
 :::{image} ../../../images/kibana-canvas_tutorialCustomMetric_7.17.0.png
 :alt: The total sales metric added to the workpad using Elasticsearch SQL
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -106,7 +106,7 @@ To show what your data can do, add charts, graphs, progress monitors, and more t
 
 :::{image} ../../../images/kibana-canvas_tutorialCustomChart_7.17.0.png
 :alt: Custom line chart added to the workpad using Elasticsearch SQL
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -122,7 +122,7 @@ To focus your data on a specific time range, add the time filter.
 
 % :::{image} ../../../images/kibana-canvas_tutorialCustomTimeFilter_7.17.0.png
 % :alt: Custom time filter added to the workpad
-% :class: screenshot
+% :screenshot:
 % :::
 
 To see how the data changes, set the time filter to **Last 7 days**. As you change the time filter options, the elements automatically update.

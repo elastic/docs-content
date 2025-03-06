@@ -3,7 +3,7 @@ mapped_urls:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-configuring-minio.html
 applies_to:
   deployment:
-    ece: 
+    ece:
 ---
 
 # Minio on-premise repository [ece-configuring-minio]
@@ -65,12 +65,12 @@ How you create the AWS S3 bucket depends on what version of Elasticsearch you ar
 * For version 7.x:
 
     1. Using the Minio browser or an S3 client application, create an S3 bucket to store your snapshots.
-    2. [Log into the Cloud UI](../../deploy/cloud-enterprise/log-into-cloud-ui.md) and [add the S3 repository plugin](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch-plugins/cloud-enterprise/ece-add-plugins.md) to your cluster.
+    2. [Log into the Cloud UI](../../deploy/cloud-enterprise/log-into-cloud-ui.md) and [add the S3 repository plugin](elasticsearch://reference/elasticsearch-plugins/cloud-enterprise/ece-add-plugins.md) to your cluster.
 
 * For versions 8.0 and later, {{es}} has built-in support for AWS S3 repositories; no repository plugin is needed. Use the Minio browser or an S3 client application to create an S3 bucket to store your snapshots.
 
 ::::{tip}
-Don’t forget to make the bucket name DNS-friendly, for example no underscores or uppercase letters. For more details, read the [bucket restrictions](https://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.md).
+Don’t forget to make the bucket name DNS-friendly, for example no underscores or uppercase letters. For more details, read the [bucket restrictions](https://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html).
 ::::
 
 

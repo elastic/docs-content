@@ -7,6 +7,7 @@ mapped_urls:
   - https://www.elastic.co/guide/en/kibana/current/introduction.html#visualize-and-analyze
   - https://www.elastic.co/guide/en/kibana/current/get-started.html
   - https://www.elastic.co/guide/en/kibana/current/accessibility.html
+  - https://www.elastic.co/guide/en/kibana/current/introduction.html
 ---
 
 # Explore and analyze

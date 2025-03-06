@@ -24,7 +24,7 @@ Explore charts on the page to learn more about the threshold breach:
 
     :::{image} ../../../images/observability-log-threshold-breach-condition-chart.png
     :alt: Chart for a condition in alert details for log threshold breach
-    :class: screenshot
+    :screenshot:
     :::
 
     ::::{tip}
@@ -36,14 +36,14 @@ Explore charts on the page to learn more about the threshold breach:
 
     :::{image} ../../../images/observability-log-threshold-breach-log-rate-analysis.png
     :alt: Log rate analysis chart in alert details for log threshold breach
-    :class: screenshot
+    :screenshot:
     :::
 
 * **Alerts history chart**. The next chart provides information about alerts for the same rule and group over the last 30 days. It shows the number of those alerts that were triggered per day, the total number of alerts triggered throughout the 30 days, and the average time it took to recover after a breach.
 
     :::{image} ../../../images/observability-log-threshold-breach-alert-history-chart.png
     :alt: Alert history chart in alert details for log threshold breach
-    :class: screenshot
+    :screenshot:
     :::
 
 

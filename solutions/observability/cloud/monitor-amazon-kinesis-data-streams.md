@@ -52,7 +52,7 @@ Expand the **quick guide** to learn how, or skip to the next section if your dat
 
 9. When incoming data is confirmed—​after a minute or two—​click **View assets** to access the dashboards.
 
-For more information {{agent}} and integrations, refer to the [{{fleet}} and {{agent}} documentation](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/index.md).
+For more information {{agent}} and integrations, refer to the [{{fleet}} and {{agent}} documentation](/reference/ingestion-tools/fleet/index.md).
 
 ::::
 
@@ -69,7 +69,7 @@ For more information {{agent}} and integrations, refer to the [{{fleet}} and {{a
 
 :::{image} ../../../images/observability-kinesis-dashboard.png
 :alt: Screenshot showing the Kinesis overview dashboard
-:class: screenshot
+:screenshot:
 :::
 
 

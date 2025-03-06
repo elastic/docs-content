@@ -22,7 +22,7 @@ When enabled, {{agent}} and {{elastic-endpoint}} can only be uninstalled on the 
 
 :::{image} ../../../images/security-agent-tamper-protection.png
 :alt: Agent tamper protection setting highlighted on Agent policy settings page
-:class: screenshot
+:screenshot:
 :::
 
 

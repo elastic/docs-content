@@ -10,5 +10,5 @@ Collect and share information about observability issues by creating a case. Cas
 
 :::{image} ../../../images/observability-cases.png
 :alt: Cases page
-:class: screenshot
+:screenshot:
 :::

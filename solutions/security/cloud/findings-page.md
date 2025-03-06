@@ -14,7 +14,7 @@ The **Misconfigurations** tab on the Findings page displays the configuration ri
 
 :::{image} ../../../images/security-findings-page.png
 :alt: Findings page
-:class: screenshot
+:screenshot:
 :::
 
 

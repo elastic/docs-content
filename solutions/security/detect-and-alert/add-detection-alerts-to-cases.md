@@ -30,7 +30,7 @@ From the Alerts table, you can attach one or more alerts to a [new case](/soluti
 
 :::{image} ../../../images/security-add-alert-to-case.gif
 :alt: add alert to case
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -56,7 +56,7 @@ To add alerts to a new case:
 
 :::{image} ../../../images/security-add-alert-to-new-case.png
 :alt: add alert to new case
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -78,5 +78,5 @@ To add alerts to an existing case:
 
 :::{image} ../../../images/security-add-alert-to-existing-case.png
 :alt: Select case dialog listing existing cases
-:class: screenshot
+:screenshot:
 :::

@@ -40,7 +40,7 @@ To use {{ilm-init}}, all nodes in a cluster must run the same version. Although 
 * **Shrink**: Reduces the number of primary shards in an index.
 * **Force merge**: Triggers a [force merge](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-forcemerge) to reduce the number of segments in an index’s shards.
 * **Delete**: Permanently remove an index, including all of its data and metadata.
-* [And more](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-lifecycle-actions/index.md)
+* [And more](elasticsearch://reference/elasticsearch/index-lifecycle-actions/index.md)
 
 Each action has options you can use to specify index behavior and characteristics like:
 
@@ -58,7 +58,7 @@ For example, if you are indexing metrics data from a fleet of ATMs into Elastics
 3. After 7 days, move the index into the cold phase and move it to less expensive hardware.
 4. Delete the index once the required 30 day retention period is reached.
 
-**Learn about all available actions in [Index lifecycle actions](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-lifecycle-actions/index.md).**
+**Learn about all available actions in [Index lifecycle actions](elasticsearch://reference/elasticsearch/index-lifecycle-actions/index.md).**
 
 ## Create and manage {{ilm-init}} policies
 

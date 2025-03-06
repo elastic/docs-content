@@ -16,7 +16,7 @@ To learn how to correlate your logs with your instrumented services, refer to [S
 
 :::{image} ../../../images/observability-logs.png
 :alt: Example view of the Logs tab in Applications UI
-:class: screenshot
+:screenshot:
 :::
 
 ::::{tip}

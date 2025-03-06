@@ -26,14 +26,14 @@ Each Elastic Cloud Enterprise runner can take on several roles:
 `director`
 :   Manages the ZooKeeper datastore. This role is typically shared with the coordinator role. In production deployments it can be separated from a coordinator.
 
-::::{important} 
+::::{important}
 Once the `director` role is assigned to a runner, the Zookeeper service starts on that host. The Zookeeper service continues even after the  director role is removed from the runner. Therefore, if you remove the `director` role from any host that has ever had it, we highly recommend also [deleting the runner](../../maintenance/ece/delete-ece-hosts.md) and re-installing it.
 ::::
 
 
 Each role is associated with a set of Docker containers that provide the specific functionality.
 
-There are some additional roles shown in the Cloud UI, such as the [beats-runner](asciidocalypse://docs/docs-content/docs/reference/glossary/index.md#glossary-beats-runner) and [services-forwarder](asciidocalypse://docs/docs-content/docs/reference/glossary/index.md#glossary-services-forwarder) roles, that are required by Elastic Cloud Enterprise and that you cannot modify.
+There are some additional roles shown in the Cloud UI, such as the [beats-runner](/reference/glossary/index.md#glossary-beats-runner) and [services-forwarder](/reference/glossary/index.md#glossary-services-forwarder) roles, that are required by Elastic Cloud Enterprise and that you cannot modify.
 
 To assign roles to hosts:
 

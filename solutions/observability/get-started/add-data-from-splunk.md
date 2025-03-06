@@ -16,7 +16,7 @@ These integrations work by using the `httpjson` input in {{agent}} to run a Splu
 
 :::{image} ../../../images/observability-elastic-agent-splunk.png
 :alt: Splunk integration components
-:class: screenshot
+:screenshot:
 :::
 
 To ingest Nginx data from Splunk, perform the following steps. The options are the same for Apache, AWS CloudTrail, and Zeek.
@@ -45,7 +45,7 @@ Enable "Collect logs from third-party REST API" and disable both "Collect logs f
 
 :::{image} ../../../images/observability-kibana-fleet-third-party-rest-api.png
 :alt: {{fleet}} showing enabling third-party REST API
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -61,7 +61,7 @@ SSL Configuration is available under the "Advanced options".  These may be neces
 
 :::{image} ../../../images/observability-kibana-fleet-third-party-rest-settings.png
 :alt: {{fleet}} showing enabling third-party REST API settings
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -79,7 +79,7 @@ Tags may be added in the "Advanced options".  For example, if you’d like to ta
 
 :::{image} ../../../images/observability-kibana-fleet-third-party-rest-dataset-settings.png
 :alt: {{fleet}} showing enabling third-party REST API settings
-:class: screenshot
+:screenshot:
 :::
 
 

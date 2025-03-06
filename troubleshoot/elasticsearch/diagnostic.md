@@ -73,9 +73,9 @@ To capture an {{es}} diagnostic:
 
     You can execute the script in three [modes](https://github.com/elastic/support-diagnostics#diagnostic-types):
 
-    * `local` (default, recommended): Polls the [{{es}} API](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/index.md), gathers operating system info, and captures cluster and GC logs.
+    * `local` (default, recommended): Polls the [{{es}} API](elasticsearch://reference/elasticsearch/rest-apis/index.md), gathers operating system info, and captures cluster and GC logs.
     * `remote`: Establishes an ssh session to the applicable target server to pull the same information as `local`.
-    * `api`: Polls the [{{es}} API](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/index.md). All other data must be collected manually.
+    * `api`: Polls the [{{es}} API](elasticsearch://reference/elasticsearch/rest-apis/index.md). All other data must be collected manually.
 
     ::::
 

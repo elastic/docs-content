@@ -20,7 +20,7 @@ To monitor {{fleet-server}}:
 
     :::{image} images/fleet-server-agent-policy-page.png
     :alt: {{fleet-server}} agent policy
-    :class: screenshot
+    :screenshot:
     :::
 
 5. To confirm your change, click **Save changes**.
@@ -31,7 +31,7 @@ In the following example, `fleetserver` was configured as the namespace, and you
 
 :::{image} images/datastream-namespace.png
 :alt: Data stream
-:class: screenshot
+:screenshot:
 :::
 
 Go to **Analytics > Dashboard** and search for the predefined dashboard called **[Elastic Agent] Agent metrics**. Choose this dashboard, and run a query based on the `fleetserver` namespace.
@@ -40,7 +40,7 @@ The following dashboard shows data for the query `data_stream.namespace: "fleets
 
 :::{image} images/dashboard-datastream01.png
 :alt: Dashboard Data stream
-:class: screenshot
+:screenshot:
 :::
 
 Note that as an alternative to running the query, you can hide all metrics except `fleet_server` in the dashboard.

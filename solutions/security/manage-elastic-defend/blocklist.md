@@ -69,7 +69,7 @@ The **Blocklist** page displays all the blocklist entries that have been added t
 
 :::{image} ../../../images/security-blocklist.png
 :alt: blocklist
-:class: screenshot
+:screenshot:
 :::
 
 

@@ -19,12 +19,12 @@ Refer to [Troubleshooting discovery](../../../troubleshoot/elasticsearch/discove
 
 ## Seed hosts providers [built-in-hosts-providers]
 
-By default the cluster formation module offers two seed hosts providers to configure the list of seed nodes: a *settings*-based and a *file*-based seed hosts provider. It can be extended to support cloud environments and other forms of seed hosts providers via [discovery plugins](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch-plugins/discovery-plugins.md). Seed hosts providers are configured using the `discovery.seed_providers` setting, which defaults to the *settings*-based hosts provider. This setting accepts a list of different providers, allowing you to make use of multiple ways to find the seed hosts for your cluster.
+By default the cluster formation module offers two seed hosts providers to configure the list of seed nodes: a *settings*-based and a *file*-based seed hosts provider. It can be extended to support cloud environments and other forms of seed hosts providers via [discovery plugins](elasticsearch://reference/elasticsearch-plugins/discovery-plugins.md). Seed hosts providers are configured using the `discovery.seed_providers` setting, which defaults to the *settings*-based hosts provider. This setting accepts a list of different providers, allowing you to make use of multiple ways to find the seed hosts for your cluster.
 
 Each seed hosts provider yields the IP addresses or hostnames of the seed nodes. If it returns any hostnames then these are resolved to IP addresses using a DNS lookup. If a hostname resolves to multiple IP addresses then {{es}} tries to find a seed node at all of these addresses. If the hosts provider does not explicitly give the TCP port of the node by then, it will implicitly use the first port in the port range given by `transport.profiles.default.port`, or by `transport.port` if `transport.profiles.default.port` is not set. The number of concurrent lookups is controlled by `discovery.seed_resolver.max_concurrent_resolvers` which defaults to `10`, and the timeout for each lookup is controlled by `discovery.seed_resolver.timeout` which defaults to `5s`. Note that DNS lookups are subject to [JVM DNS caching](../../deploy/self-managed/networkaddress-cache-ttl.md).
 
 
-#### Settings-based seed hosts provider [settings-based-hosts-provider] 
+#### Settings-based seed hosts provider [settings-based-hosts-provider]
 
 The settings-based seed hosts provider uses a node setting to configure a static list of the addresses of the seed nodes. These addresses can be given as hostnames or IP addresses; hosts specified as hostnames are resolved to IP addresses during each round of discovery.
 
@@ -42,7 +42,7 @@ discovery.seed_hosts:
 
 
 
-#### File-based seed hosts provider [file-based-hosts-provider] 
+#### File-based seed hosts provider [file-based-hosts-provider]
 
 The file-based seed hosts provider configures a list of hosts via an external file.  {{es}} reloads this file when it changes, so that the list of seed nodes can change dynamically without needing to restart each node. For example, this gives a convenient mechanism for an {{es}} instance that is run in a Docker container to be dynamically supplied with a list of IP addresses to connect to when those IP addresses may not be known at node startup.
 
@@ -73,18 +73,18 @@ Host names are allowed instead of IP addresses and are resolved by DNS as descri
 You can also add comments to this file. All comments must appear on their lines starting with `#` (i.e. comments cannot start in the middle of a line).
 
 
-#### EC2 hosts provider [ec2-hosts-provider] 
+#### EC2 hosts provider [ec2-hosts-provider]
 
-The [EC2 discovery plugin](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch-plugins/discovery-ec2.md) adds a hosts provider that uses the [AWS API](https://github.com/aws/aws-sdk-java) to find a list of seed nodes.
-
-
-#### Azure Classic hosts provider [azure-classic-hosts-provider] 
-
-The [Azure Classic discovery plugin](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch-plugins/discovery-azure-classic.md) adds a hosts provider that uses the Azure Classic API find a list of seed nodes.
+The [EC2 discovery plugin](elasticsearch://reference/elasticsearch-plugins/discovery-ec2.md) adds a hosts provider that uses the [AWS API](https://github.com/aws/aws-sdk-java) to find a list of seed nodes.
 
 
-#### Google Compute Engine hosts provider [gce-hosts-provider] 
+#### Azure Classic hosts provider [azure-classic-hosts-provider]
 
-The [GCE discovery plugin](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch-plugins/discovery-gce.md) adds a hosts provider that uses the GCE API find a list of seed nodes.
+The [Azure Classic discovery plugin](elasticsearch://reference/elasticsearch-plugins/discovery-azure-classic.md) adds a hosts provider that uses the Azure Classic API find a list of seed nodes.
+
+
+#### Google Compute Engine hosts provider [gce-hosts-provider]
+
+The [GCE discovery plugin](elasticsearch://reference/elasticsearch-plugins/discovery-gce.md) adds a hosts provider that uses the GCE API find a list of seed nodes.
 
 
