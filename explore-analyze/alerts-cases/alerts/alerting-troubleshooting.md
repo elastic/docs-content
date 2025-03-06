@@ -177,7 +177,7 @@ In addition to the above methods, refer to the following approaches and common i
 
 ### Temporarily throttle all tasks [alerting-kibana-throttle]
 
-If cluster performance becomes degraded from excessive or expensive rules and {{kib}} is sluggish or unresponsive, you can temporarily reduce load to the Task Manager by updating its [settings](asciidocalypse://docs/kibana/docs/reference/configuration-reference/task-manager-settings.md):
+If cluster performance becomes degraded from excessive or expensive rules and {{kib}} is sluggish or unresponsive, you can temporarily reduce load to the Task Manager by updating its [settings](kibana://reference/configuration-reference/task-manager-settings.md):
 
 ```txt
 xpack.task_manager.capacity: 5

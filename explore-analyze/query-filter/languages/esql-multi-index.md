@@ -25,7 +25,7 @@ FROM cluster_one:employees-00001,cluster_two:other-employees-*
 ```
 
 
-## Field type mismatches [esql-multi-index-invalid-mapping] 
+## Field type mismatches [esql-multi-index-invalid-mapping]
 
 When querying multiple indices, data streams, or aliases, you might find that the same field is mapped to multiple different types. For example, consider the two indices with the following field mappings:
 
@@ -106,16 +106,16 @@ Cannot use field [client_ip] due to ambiguities being mapped as
 ```
 
 
-## Union types [esql-multi-index-union-types] 
+## Union types [esql-multi-index-union-types]
 
-::::{warning} 
+::::{warning}
 This functionality is in technical preview and may be changed or removed in a future release. Elastic will work to fix any issues, but features in technical preview are not subject to the support SLA of official GA features.
 ::::
 
 
-{{esql}} has a way to handle [field type mismatches](#esql-multi-index-invalid-mapping). When the same field is mapped to multiple types in multiple indices, the type of the field is understood to be a *union* of the various types in the index mappings. As seen in the preceding examples, this *union type* cannot be used in the results, and cannot be referred to by the query — except in `KEEP`, `DROP` or when it’s passed to a type conversion function that accepts all the types in the *union* and converts the field to a single type. {{esql}} offers a suite of [type conversion functions](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/esql-functions-operators.md#esql-type-conversion-functions) to achieve this.
+{{esql}} has a way to handle [field type mismatches](#esql-multi-index-invalid-mapping). When the same field is mapped to multiple types in multiple indices, the type of the field is understood to be a *union* of the various types in the index mappings. As seen in the preceding examples, this *union type* cannot be used in the results, and cannot be referred to by the query — except in `KEEP`, `DROP` or when it’s passed to a type conversion function that accepts all the types in the *union* and converts the field to a single type. {{esql}} offers a suite of [type conversion functions](elasticsearch://reference/query-languages/esql/esql-functions-operators.md#esql-type-conversion-functions) to achieve this.
 
-In the above examples, the query can use a command like `EVAL client_ip = TO_IP(client_ip)` to resolve the union of `ip` and `keyword` to just `ip`. You can also use the type-conversion syntax `EVAL client_ip = client_ip::IP`. Alternatively, the query could use [`TO_STRING`](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/esql-functions-operators.md#esql-to_string) to convert all supported types into `KEYWORD`.
+In the above examples, the query can use a command like `EVAL client_ip = TO_IP(client_ip)` to resolve the union of `ip` and `keyword` to just `ip`. You can also use the type-conversion syntax `EVAL client_ip = client_ip::IP`. Alternatively, the query could use [`TO_STRING`](elasticsearch://reference/query-languages/esql/esql-functions-operators.md#esql-to_string) to convert all supported types into `KEYWORD`.
 
 For example, the [query](#query-unsupported) that returned `client_ip:unsupported` with `null` values can be improved using the `TO_IP` function or the equivalent `field::ip` syntax. These changes also resolve the error message. As long as the only reference to the original field is to pass it to a conversion function that resolves the type ambiguity, no error results.
 
@@ -137,9 +137,9 @@ FROM events_*
 | 2023-10-23T12:15:03.360Z | 172.21.2.162 | 3450233 | Connected to 10.1.0.3 |
 
 
-## Index metadata [esql-multi-index-index-metadata] 
+## Index metadata [esql-multi-index-index-metadata]
 
-It can be helpful to know the particular index from which each row is sourced. To get this information, use the [`METADATA`](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/esql-metadata-fields.md) option on the [`FROM`](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/esql-commands.md#esql-from) command.
+It can be helpful to know the particular index from which each row is sourced. To get this information, use the [`METADATA`](elasticsearch://reference/query-languages/esql/esql-metadata-fields.md) option on the [`FROM`](elasticsearch://reference/query-languages/esql/esql-commands.md#esql-from) command.
 
 ```esql
 FROM events_* METADATA _index

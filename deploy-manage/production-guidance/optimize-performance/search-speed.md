@@ -6,49 +6,49 @@ mapped_pages:
 # Search speed [tune-for-search-speed]
 
 
-## Give memory to the filesystem cache [_give_memory_to_the_filesystem_cache_2] 
+## Give memory to the filesystem cache [_give_memory_to_the_filesystem_cache_2]
 
 Elasticsearch heavily relies on the filesystem cache in order to make search fast. In general, you should make sure that at least half the available memory goes to the filesystem cache so that Elasticsearch can keep hot regions of the index in physical memory.
 
 
-## Avoid page cache thrashing by using modest readahead values on Linux [_avoid_page_cache_thrashing_by_using_modest_readahead_values_on_linux] 
+## Avoid page cache thrashing by using modest readahead values on Linux [_avoid_page_cache_thrashing_by_using_modest_readahead_values_on_linux]
 
-Search can cause a lot of randomized read I/O. When the underlying block device has a high readahead value, there may be a lot of unnecessary read I/O done, especially when files are accessed using memory mapping (see [storage types](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/store.md#file-system)).
+Search can cause a lot of randomized read I/O. When the underlying block device has a high readahead value, there may be a lot of unnecessary read I/O done, especially when files are accessed using memory mapping (see [storage types](elasticsearch://reference/elasticsearch/index-settings/store.md#file-system)).
 
 Most Linux distributions use a sensible readahead value of `128KiB` for a single plain device, however, when using software raid, LVM or dm-crypt the resulting block device (backing Elasticsearch [path.data](../../deploy/self-managed/important-settings-configuration.md#path-settings)) may end up having a very large readahead value (in the range of several MiB). This usually results in severe page (filesystem) cache thrashing adversely affecting search (or [update](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-document)) performance.
 
 You can check the current value in `KiB` using `lsblk -o NAME,RA,MOUNTPOINT,TYPE,SIZE`. Consult the documentation of your distribution on how to alter this value (for example with a `udev` rule to persist across reboots, or via [blockdev --setra](https://man7.org/linux/man-pages/man8/blockdev.8.html) as a transient setting). We recommend a value of `128KiB` for readahead.
 
-::::{warning} 
+::::{warning}
 `blockdev` expects values in 512 byte sectors whereas `lsblk` reports values in `KiB`. As an example, to temporarily set readahead to `128KiB` for `/dev/nvme0n1`, specify `blockdev --setra 256 /dev/nvme0n1`.
 ::::
 
 
 
-## Use faster hardware [search-use-faster-hardware] 
+## Use faster hardware [search-use-faster-hardware]
 
 If your searches are I/O-bound, consider increasing the size of the filesystem cache (see above) or using faster storage. Each search involves a mix of sequential and random reads across multiple files, and there may be many searches running concurrently on each shard, so SSD drives tend to perform better than spinning disks.
 
 If your searches are CPU-bound, consider using a larger number of faster CPUs.
 
 
-### Local vs. remote storage [_local_vs_remote_storage_2] 
+### Local vs. remote storage [_local_vs_remote_storage_2]
 
 Directly-attached (local) storage generally performs better than remote storage because it is simpler to configure well and avoids communications overheads.
 
 Some remote storage performs very poorly, especially under the kind of load that {{es}} imposes. However, with careful tuning, it is sometimes possible to achieve acceptable performance using remote storage too. Before committing to a particular storage architecture, benchmark your system with a realistic workload to determine the effects of any tuning parameters. If you cannot achieve the performance you expect, work with the vendor of your storage system to identify the problem.
 
 
-## Document modeling [_document_modeling] 
+## Document modeling [_document_modeling]
 
 Documents should be modeled so that search-time operations are as cheap as possible.
 
-In particular, joins should be avoided. [`nested`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/nested.md) can make queries several times slower and [parent-child](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/parent-join.md) relations can make queries hundreds of times slower. So if the same questions can be answered without joins by denormalizing documents, significant speedups can be expected.
+In particular, joins should be avoided. [`nested`](elasticsearch://reference/elasticsearch/mapping-reference/nested.md) can make queries several times slower and [parent-child](elasticsearch://reference/elasticsearch/mapping-reference/parent-join.md) relations can make queries hundreds of times slower. So if the same questions can be answered without joins by denormalizing documents, significant speedups can be expected.
 
 
-## Search as few fields as possible [search-as-few-fields-as-possible] 
+## Search as few fields as possible [search-as-few-fields-as-possible]
 
-The more fields a [`query_string`](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/query-dsl-query-string-query.md) or [`multi_match`](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/query-dsl-multi-match-query.md) query targets, the slower it is. A common technique to improve search speed over multiple fields is to copy their values into a single field at index time, and then use this field at search time. This can be automated with the [`copy-to`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/copy-to.md) directive of mappings without having to change the source of documents. Here is an example of an index containing movies that optimizes queries that search over both the name and the plot of the movie by indexing both values into the `name_and_plot` field.
+The more fields a [`query_string`](elasticsearch://reference/query-languages/query-dsl-query-string-query.md) or [`multi_match`](elasticsearch://reference/query-languages/query-dsl-multi-match-query.md) query targets, the slower it is. A common technique to improve search speed over multiple fields is to copy their values into a single field at index time, and then use this field at search time. This can be automated with the [`copy-to`](elasticsearch://reference/elasticsearch/mapping-reference/copy-to.md) directive of mappings without having to change the source of documents. Here is an example of an index containing movies that optimizes queries that search over both the name and the plot of the movie by indexing both values into the `name_and_plot` field.
 
 ```console
 PUT movies
@@ -72,9 +72,9 @@ PUT movies
 ```
 
 
-## Pre-index data [_pre_index_data] 
+## Pre-index data [_pre_index_data]
 
-You should leverage patterns in your queries to optimize the way data is indexed. For instance, if all your documents have a `price` field and most queries run [`range`](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/aggregations/search-aggregations-bucket-range-aggregation.md) aggregations on a fixed list of ranges, you could make this aggregation faster by pre-indexing the ranges into the index and using a [`terms`](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/aggregations/search-aggregations-bucket-terms-aggregation.md) aggregations.
+You should leverage patterns in your queries to optimize the way data is indexed. For instance, if all your documents have a `price` field and most queries run [`range`](elasticsearch://reference/data-analysis/aggregations/search-aggregations-bucket-range-aggregation.md) aggregations on a fixed list of ranges, you could make this aggregation faster by pre-indexing the ranges into the index and using a [`terms`](elasticsearch://reference/data-analysis/aggregations/search-aggregations-bucket-terms-aggregation.md) aggregations.
 
 For instance, if documents look like:
 
@@ -106,7 +106,7 @@ GET index/_search
 }
 ```
 
-Then documents could be enriched by a `price_range` field at index time, which should be mapped as a [`keyword`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/keyword.md):
+Then documents could be enriched by a `price_range` field at index time, which should be mapped as a [`keyword`](elasticsearch://reference/elasticsearch/mapping-reference/keyword.md):
 
 ```console
 PUT index
@@ -144,26 +144,26 @@ GET index/_search
 ```
 
 
-## Consider mapping identifiers as `keyword` [map-ids-as-keyword] 
+## Consider mapping identifiers as `keyword` [map-ids-as-keyword]
 
-Not all numeric data should be mapped as a [numeric](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/number.md) field data type. {{es}} optimizes numeric fields, such as `integer` or `long`, for [`range`](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/query-dsl-range-query.md) queries. However, [`keyword`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/keyword.md) fields are better for [`term`](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/query-dsl-term-query.md) and other [term-level](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/term-level-queries.md) queries.
+Not all numeric data should be mapped as a [numeric](elasticsearch://reference/elasticsearch/mapping-reference/number.md) field data type. {{es}} optimizes numeric fields, such as `integer` or `long`, for [`range`](elasticsearch://reference/query-languages/query-dsl-range-query.md) queries. However, [`keyword`](elasticsearch://reference/elasticsearch/mapping-reference/keyword.md) fields are better for [`term`](elasticsearch://reference/query-languages/query-dsl-term-query.md) and other [term-level](elasticsearch://reference/query-languages/term-level-queries.md) queries.
 
 Identifiers, such as an ISBN or a product ID, are rarely used in `range` queries. However, they are often retrieved using term-level queries.
 
 Consider mapping a numeric identifier as a `keyword` if:
 
-* You don’t plan to search for the identifier data using [`range`](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/query-dsl-range-query.md) queries.
+* You don’t plan to search for the identifier data using [`range`](elasticsearch://reference/query-languages/query-dsl-range-query.md) queries.
 * Fast retrieval is important. `term` query searches on `keyword` fields are often faster than `term` searches on numeric fields.
 
-If you’re unsure which to use, you can use a [multi-field](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/multi-fields.md) to map the data as both a `keyword` *and* a numeric data type.
+If you’re unsure which to use, you can use a [multi-field](elasticsearch://reference/elasticsearch/mapping-reference/multi-fields.md) to map the data as both a `keyword` *and* a numeric data type.
 
 
-## Avoid scripts [_avoid_scripts] 
+## Avoid scripts [_avoid_scripts]
 
-If possible, avoid using [script](../../../explore-analyze/scripting.md)-based sorting, scripts in aggregations, and the [`script_score`](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/query-dsl-script-score-query.md) query. See [Scripts, caching, and search speed](../../../explore-analyze/scripting/scripts-search-speed.md).
+If possible, avoid using [script](../../../explore-analyze/scripting.md)-based sorting, scripts in aggregations, and the [`script_score`](elasticsearch://reference/query-languages/query-dsl-script-score-query.md) query. See [Scripts, caching, and search speed](../../../explore-analyze/scripting/scripts-search-speed.md).
 
 
-## Search rounded dates [_search_rounded_dates] 
+## Search rounded dates [_search_rounded_dates]
 
 Queries on date fields that use `now` are typically not cacheable since the range that is being matched changes all the time. However switching to a rounded date is often acceptable in terms of user experience, and has the benefit of making better use of the query cache.
 
@@ -214,7 +214,7 @@ GET index/_search
 
 In that case we rounded to the minute, so if the current time is `16:31:29`, the range query will match everything whose value of the `my_date` field is between `15:31:00` and `16:31:59`. And if several users run a query that contains this range in the same minute, the query cache could help speed things up a bit. The longer the interval that is used for rounding, the more the query cache can help, but beware that too aggressive rounding might also hurt user experience.
 
-::::{note} 
+::::{note}
 It might be tempting to split ranges into a large cacheable part and smaller not cacheable parts in order to be able to leverage the query cache, as shown below:
 ::::
 
@@ -262,19 +262,19 @@ GET index/_search
 However such practice might make the query run slower in some cases since the overhead introduced by the `bool` query may defeat the savings from better leveraging the query cache.
 
 
-## Force-merge read-only indices [_force_merge_read_only_indices] 
+## Force-merge read-only indices [_force_merge_read_only_indices]
 
 Indices that are read-only may benefit from being [merged down to a single segment](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-forcemerge). This is typically the case with time-based indices: only the index for the current time frame is getting new documents while older indices are read-only. Shards that have been force-merged into a single segment can use simpler and more efficient data structures to perform searches.
 
-::::{important} 
+::::{important}
 Do not force-merge indices to which you are still writing, or to which you will write again in the future. Instead, rely on the automatic background merge process to perform merges as needed to keep the index running smoothly. If you continue to write to a force-merged index then its performance may become much worse.
 ::::
 
 
 
-## Warm up global ordinals [_warm_up_global_ordinals] 
+## Warm up global ordinals [_warm_up_global_ordinals]
 
-[Global ordinals](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/eager-global-ordinals.md) are a data structure that is used to optimize the performance of aggregations. They are calculated lazily and stored in the JVM heap as part of the [field data cache](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/field-data-cache-settings.md). For fields that are heavily used for bucketing aggregations, you can tell {{es}} to construct and cache the global ordinals before requests are received. This should be done carefully because it will increase heap usage and can make [refreshes](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-refresh) take longer. The option can be updated dynamically on an existing mapping by setting the [eager global ordinals](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/eager-global-ordinals.md) mapping parameter:
+[Global ordinals](elasticsearch://reference/elasticsearch/mapping-reference/eager-global-ordinals.md) are a data structure that is used to optimize the performance of aggregations. They are calculated lazily and stored in the JVM heap as part of the [field data cache](elasticsearch://reference/elasticsearch/configuration-reference/field-data-cache-settings.md). For fields that are heavily used for bucketing aggregations, you can tell {{es}} to construct and cache the global ordinals before requests are received. This should be done carefully because it will increase heap usage and can make [refreshes](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-refresh) take longer. The option can be updated dynamically on an existing mapping by setting the [eager global ordinals](elasticsearch://reference/elasticsearch/mapping-reference/eager-global-ordinals.md) mapping parameter:
 
 ```console
 PUT index
@@ -291,29 +291,29 @@ PUT index
 ```
 
 
-## Warm up the filesystem cache [_warm_up_the_filesystem_cache] 
+## Warm up the filesystem cache [_warm_up_the_filesystem_cache]
 
-If the machine running Elasticsearch is restarted, the filesystem cache will be empty, so it will take some time before the operating system loads hot regions of the index into memory so that search operations are fast. You can explicitly tell the operating system which files should be loaded into memory eagerly depending on the file extension using the [`index.store.preload`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/preloading-data-into-file-system-cache.md) setting.
+If the machine running Elasticsearch is restarted, the filesystem cache will be empty, so it will take some time before the operating system loads hot regions of the index into memory so that search operations are fast. You can explicitly tell the operating system which files should be loaded into memory eagerly depending on the file extension using the [`index.store.preload`](elasticsearch://reference/elasticsearch/index-settings/preloading-data-into-file-system-cache.md) setting.
 
-::::{warning} 
+::::{warning}
 Loading data into the filesystem cache eagerly on too many indices or too many files will make search *slower* if the filesystem cache is not large enough to hold all the data. Use with caution.
 ::::
 
 
 
-## Use index sorting to speed up conjunctions [_use_index_sorting_to_speed_up_conjunctions] 
+## Use index sorting to speed up conjunctions [_use_index_sorting_to_speed_up_conjunctions]
 
-[Index sorting](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/sorting.md) can be useful in order to make conjunctions faster at the cost of slightly slower indexing. Read more about it in the [index sorting documentation](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/sorting-conjunctions.md).
+[Index sorting](elasticsearch://reference/elasticsearch/index-settings/sorting.md) can be useful in order to make conjunctions faster at the cost of slightly slower indexing. Read more about it in the [index sorting documentation](elasticsearch://reference/elasticsearch/index-settings/sorting-conjunctions.md).
 
 
-## Use `preference` to optimize cache utilization [preference-cache-optimization] 
+## Use `preference` to optimize cache utilization [preference-cache-optimization]
 
-There are multiple caches that can help with search performance, such as the [filesystem cache](https://en.wikipedia.org/wiki/Page_cache), the [request cache](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/shard-request-cache-settings.md) or the [query cache](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/node-query-cache-settings.md). Yet all these caches are maintained at the node level, meaning that if you run the same request twice in a row, have 1 replica or more and use [round-robin](https://en.wikipedia.org/wiki/Round-robin_DNS), the default routing algorithm, then those two requests will go to different shard copies, preventing node-level caches from helping.
+There are multiple caches that can help with search performance, such as the [filesystem cache](https://en.wikipedia.org/wiki/Page_cache), the [request cache](elasticsearch://reference/elasticsearch/configuration-reference/shard-request-cache-settings.md) or the [query cache](elasticsearch://reference/elasticsearch/configuration-reference/node-query-cache-settings.md). Yet all these caches are maintained at the node level, meaning that if you run the same request twice in a row, have 1 replica or more and use [round-robin](https://en.wikipedia.org/wiki/Round-robin_DNS), the default routing algorithm, then those two requests will go to different shard copies, preventing node-level caches from helping.
 
 Since it is common for users of a search application to run similar requests one after another, for instance in order to analyze a narrower subset of the index, using a preference value that identifies the current user or session could help optimize usage of the caches.
 
 
-## Replicas might help with throughput, but not always [_replicas_might_help_with_throughput_but_not_always] 
+## Replicas might help with throughput, but not always [_replicas_might_help_with_throughput_but_not_always]
 
 In addition to improving resiliency, replicas can help improve throughput. For instance if you have a single-shard index and three nodes, you will need to set the number of replicas to 2 in order to have 3 copies of your shard in total so that all nodes are utilized.
 
@@ -322,7 +322,7 @@ Now imagine that you have a 2-shards index and two nodes. In one case, the numbe
 So what is the right number of replicas? If you have a cluster that has `num_nodes` nodes, `num_primaries` primary shards *in total* and if you want to be able to cope with `max_failures` node failures at once at most, then the right number of replicas for you is `max(max_failures, ceil(num_nodes / num_primaries) - 1)`.
 
 
-## Tune your queries with the Search Profiler [_tune_your_queries_with_the_search_profiler] 
+## Tune your queries with the Search Profiler [_tune_your_queries_with_the_search_profiler]
 
 The [Profile API](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-profile.html) provides detailed information about how each component of your queries and aggregations impacts the time it takes to process the request.
 
@@ -331,17 +331,17 @@ The [Search Profiler](../../../explore-analyze/query-filter/tools/search-profile
 Because the Profile API itself adds significant overhead to the query, this information is best used to understand the relative cost of the various query components. It does not provide a reliable measure of actual processing time.
 
 
-## Faster phrase queries with `index_phrases` [faster-phrase-queries] 
+## Faster phrase queries with `index_phrases` [faster-phrase-queries]
 
-The [`text`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/text.md) field has an [`index_phrases`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/index-phrases.md) option that indexes 2-shingles and is automatically leveraged by query parsers to run phrase queries that don’t have a slop. If your use-case involves running lots of phrase queries, this can speed up queries significantly.
-
-
-## Faster prefix queries with `index_prefixes` [faster-prefix-queries] 
-
-The [`text`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/text.md) field has an [`index_prefixes`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/index-prefixes.md) option that indexes prefixes of all terms and is automatically leveraged by query parsers to run prefix queries. If your use-case involves running lots of prefix queries, this can speed up queries significantly.
+The [`text`](elasticsearch://reference/elasticsearch/mapping-reference/text.md) field has an [`index_phrases`](elasticsearch://reference/elasticsearch/mapping-reference/index-phrases.md) option that indexes 2-shingles and is automatically leveraged by query parsers to run phrase queries that don’t have a slop. If your use-case involves running lots of phrase queries, this can speed up queries significantly.
 
 
-## Use `constant_keyword` to speed up filtering [faster-filtering-with-constant-keyword] 
+## Faster prefix queries with `index_prefixes` [faster-prefix-queries]
+
+The [`text`](elasticsearch://reference/elasticsearch/mapping-reference/text.md) field has an [`index_prefixes`](elasticsearch://reference/elasticsearch/mapping-reference/index-prefixes.md) option that indexes prefixes of all terms and is automatically leveraged by query parsers to run prefix queries. If your use-case involves running lots of prefix queries, this can speed up queries significantly.
+
+
+## Use `constant_keyword` to speed up filtering [faster-filtering-with-constant-keyword]
 
 There is a general rule that the cost of a filter is mostly a function of the number of matched documents. Imagine that you have an index containing cycles. There are a large number of bicycles and many searches perform a filter on `cycle_type: bicycle`. This very common filter is unfortunately also very costly since it matches most documents. There is a simple way to avoid running this filter: move bicycles to their own index and filter bicycles by searching this index instead of adding a filter to the query.
 
@@ -422,7 +422,7 @@ This is a powerful way of making queries cheaper by putting common values in a d
 The `constant_keyword` is not strictly required for this optimization: it is also possible to update the client-side logic in order to route queries to the relevant indices based on filters. However `constant_keyword` makes it transparently and allows to decouple search requests from the index topology in exchange of very little overhead.
 
 
-## Default search timeout [_default_search_timeout] 
+## Default search timeout [_default_search_timeout]
 
 By default, search requests don’t time out. You can set a timeout using the [`search.default_search_timeout`](../../../solutions/search/the-search-api.md#search-timeout) setting.
 

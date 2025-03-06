@@ -47,7 +47,7 @@ To create a new role with access to {{fleet}} and Integrations:
 2. In the **Security** section, select **Roles**.
 3. Select **Create role**.
 4. Specify a name for the role.
-5. Leave the {{es}} settings at their defaults, or refer to [Security privileges](asciidocalypse://docs/reference/elasticsearch/security-privileges.md) for descriptions of the available settings.
+5. Leave the {{es}} settings at their defaults, or refer to [Security privileges](elasticsearch://reference/elasticsearch/security-privileges.md) for descriptions of the available settings.
 6. In the {{kib}} section, select **Assign to space**.
 7. In the **Spaces** menu, select *** All Spaces**. Since many Integrations assets are shared across spaces, the users need the {{kib}} privileges in all spaces.
 8. Expand the **Management** section.

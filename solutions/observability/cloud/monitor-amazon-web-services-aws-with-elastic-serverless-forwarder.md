@@ -9,7 +9,7 @@ mapped_pages:
 # Monitor Amazon Web Services (AWS) with Elastic Serverless Forwarder [monitor-aws-esf]
 
 
-The Elastic Serverless Forwarder (ESF) is an Amazon Web Services (AWS) Lambda function that ships logs from your AWS environment to Elastic. Elastic Serverless Forwarder is published in the AWS Serverless Application Repository (SAR). For more information on ESF, check the [Elastic Serverless Forwarder Guide](asciidocalypse://docs/elastic-serverless-forwarder/docs/reference/index.md).
+The Elastic Serverless Forwarder (ESF) is an Amazon Web Services (AWS) Lambda function that ships logs from your AWS environment to Elastic. Elastic Serverless Forwarder is published in the AWS Serverless Application Repository (SAR). For more information on ESF, check the [Elastic Serverless Forwarder Guide](elastic-serverless-forwarder://reference/index.md).
 
 
 ## What you’ll learn [aws-esf-what-you-learn]

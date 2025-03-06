@@ -108,7 +108,7 @@ The following list contains the available client settings. Those that must be st
 :   The password to connect to the `proxy.host` with.
 
 `read_timeout`
-:   ([time value](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/api-conventions.md#time-units)) The maximum time {{es}} will wait to receive the next byte of data over an established, open connection to the repository before it closes the connection. The default value is 50 seconds.
+:   ([time value](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#time-units)) The maximum time {{es}} will wait to receive the next byte of data over an established, open connection to the repository before it closes the connection. The default value is 50 seconds.
 
 `max_connections`
 :   The maximum number of concurrent connections to S3. The default value is `50`.
@@ -174,16 +174,16 @@ The following settings are supported:
 
 
 `chunk_size`
-:   ([byte value](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/api-conventions.md#byte-units)) The maximum size of object that {{es}} will write to the repository when creating a snapshot. Files which are larger than `chunk_size` will be chunked into several smaller objects. {{es}} may also split a file across multiple objects to satisfy other constraints such as the `max_multipart_parts` limit. Defaults to `5TB` which is the [maximum size of an object in AWS S3](https://docs.aws.amazon.com/AmazonS3/latest/userguide/qfacts.html).
+:   ([byte value](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#byte-units)) The maximum size of object that {{es}} will write to the repository when creating a snapshot. Files which are larger than `chunk_size` will be chunked into several smaller objects. {{es}} may also split a file across multiple objects to satisfy other constraints such as the `max_multipart_parts` limit. Defaults to `5TB` which is the [maximum size of an object in AWS S3](https://docs.aws.amazon.com/AmazonS3/latest/userguide/qfacts.html).
 
 `compress`
 :   When set to `true` metadata files are stored in compressed format. This setting doesn’t affect index files that are already compressed by default. Defaults to `true`.
 
 `max_restore_bytes_per_sec`
-:   (Optional, [byte value](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/api-conventions.md#byte-units)) Maximum snapshot restore rate per node. Defaults to unlimited. Note that restores are also throttled through [recovery settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/index-recovery-settings.md).
+:   (Optional, [byte value](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#byte-units)) Maximum snapshot restore rate per node. Defaults to unlimited. Note that restores are also throttled through [recovery settings](elasticsearch://reference/elasticsearch/configuration-reference/index-recovery-settings.md).
 
 `max_snapshot_bytes_per_sec`
-:   (Optional, [byte value](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/api-conventions.md#byte-units)) Maximum snapshot creation rate per node. Defaults to `40mb` per second. Note that if the [recovery settings for managed services](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/index-recovery-settings.md#recovery-settings-for-managed-services) are set, then it defaults to unlimited, and the rate is additionally throttled through [recovery settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/index-recovery-settings.md).
+:   (Optional, [byte value](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#byte-units)) Maximum snapshot creation rate per node. Defaults to `40mb` per second. Note that if the [recovery settings for managed services](elasticsearch://reference/elasticsearch/configuration-reference/index-recovery-settings.md#recovery-settings-for-managed-services) are set, then it defaults to unlimited, and the rate is additionally throttled through [recovery settings](elasticsearch://reference/elasticsearch/configuration-reference/index-recovery-settings.md).
 
 `readonly`
 :   (Optional, Boolean) If `true`, the repository is read-only. The cluster can retrieve and restore snapshots from the repository but not write to the repository or create snapshots in it.
@@ -202,7 +202,7 @@ The following settings are supported:
 :   When set to `true` files are encrypted on server side using AES256 algorithm. Defaults to `false`.
 
 `buffer_size`
-:   ([byte value](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/api-conventions.md#byte-units)) Minimum threshold below which the chunk is uploaded using a single request. Beyond this threshold, the S3 repository will use the [AWS Multipart Upload API](https://docs.aws.amazon.com/AmazonS3/latest/dev/uploadobjusingmpu.html) to split the chunk into several parts, each of `buffer_size` length, and to upload each part in its own request. Note that setting a buffer size lower than `5mb` is not allowed since it will prevent the use of the Multipart API and may result in upload errors. It is also not possible to set a buffer size greater than `5gb` as it is the maximum upload size allowed by S3. Defaults to `100mb` or `5%` of JVM heap, whichever is smaller.
+:   ([byte value](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#byte-units)) Minimum threshold below which the chunk is uploaded using a single request. Beyond this threshold, the S3 repository will use the [AWS Multipart Upload API](https://docs.aws.amazon.com/AmazonS3/latest/dev/uploadobjusingmpu.html) to split the chunk into several parts, each of `buffer_size` length, and to upload each part in its own request. Note that setting a buffer size lower than `5mb` is not allowed since it will prevent the use of the Multipart API and may result in upload errors. It is also not possible to set a buffer size greater than `5gb` as it is the maximum upload size allowed by S3. Defaults to `100mb` or `5%` of JVM heap, whichever is smaller.
 
 `max_multipart_parts`
 :   (integer) The maximum number of parts that {{es}} will write during a multipart upload of a single object. Files which are larger than `buffer_size × max_multipart_parts` will be chunked into several smaller objects. {{es}} may also split a file across multiple objects to satisfy other constraints such as the `chunk_size` limit. Defaults to `10000` which is the [maximum number of parts in a multipart upload in AWS S3](https://docs.aws.amazon.com/AmazonS3/latest/userguide/qfacts.html).
@@ -220,16 +220,16 @@ The following settings are supported:
 :   (integer) Sets the maximum number of possibly-dangling multipart uploads to clean up in each batch of snapshot deletions. Defaults to `1000` which is the maximum number supported by the [AWS ListMultipartUploads API](https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListMultipartUploads.html). If set to `0`, {{es}} will not attempt to clean up dangling multipart uploads.
 
 `throttled_delete_retry.delay_increment`
-:   ([time value](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/api-conventions.md#time-units)) This value is used as the delay before the first retry and the amount the delay is incremented by on each subsequent retry. Default is 50ms, minimum is 0ms.
+:   ([time value](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#time-units)) This value is used as the delay before the first retry and the amount the delay is incremented by on each subsequent retry. Default is 50ms, minimum is 0ms.
 
 `throttled_delete_retry.maximum_delay`
-:   ([time value](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/api-conventions.md#time-units)) This is the upper bound on how long the delays between retries will grow to. Default is 5s, minimum is 0ms.
+:   ([time value](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#time-units)) This is the upper bound on how long the delays between retries will grow to. Default is 5s, minimum is 0ms.
 
 `throttled_delete_retry.maximum_number_of_retries`
 :   (integer) Sets the number times to retry a throttled snapshot deletion. Defaults to `10`, minimum value is `0` which will disable retries altogether. Note that if retries are enabled in the Azure client, each of these retries comprises that many client-level retries.
 
 `get_register_retry_delay`
-:   ([time value](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/api-conventions.md#time-units)) Sets the time to wait before trying again if an attempt to read a [linearizable register](#repository-s3-linearizable-registers) fails. Defaults to `5s`.
+:   ([time value](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#time-units)) Sets the time to wait before trying again if an attempt to read a [linearizable register](#repository-s3-linearizable-registers) fails. Defaults to `5s`.
 
 ::::{note}
 The option of defining client settings in the repository settings as documented below is considered deprecated, and will be removed in a future version.
@@ -390,7 +390,7 @@ You can perform some basic checks of the suitability of your storage system usin
 
 Most storage systems can be configured to log the details of their interaction with {{es}}. If you are investigating a suspected incompatibility with AWS S3, it is usually simplest to collect these logs and provide them to the supplier of your storage system for further analysis. If the incompatibility is not clear from the logs emitted by the storage system, configure {{es}} to log every request it makes to the S3 API by [setting the logging level](../../monitor/logging-configuration/elasticsearch-log4j-configuration-self-managed.md#configuring-logging-levels) of the `com.amazonaws.request` logger to `DEBUG`.
 
-To prevent leaking sensitive information such as credentials and keys in logs, {{es}} rejects configuring this logger at high verbosity unless [insecure network trace logging](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/networking-settings.md#http-rest-request-tracer) is enabled. To do so, you must explicitly enable it on each node by setting the system property `es.insecure_network_trace_enabled` to `true`.
+To prevent leaking sensitive information such as credentials and keys in logs, {{es}} rejects configuring this logger at high verbosity unless [insecure network trace logging](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md#http-rest-request-tracer) is enabled. To do so, you must explicitly enable it on each node by setting the system property `es.insecure_network_trace_enabled` to `true`.
 
 Once enabled, you can configure the `com.amazonaws.request` logger:
 
@@ -403,7 +403,7 @@ PUT /_cluster/settings
 }
 ```
 
-Collect the Elasticsearch logs covering the time period of the failed analysis from all nodes in your cluster and share them with the supplier of your storage system along with the analysis response so they can use them to determine the problem. See the [AWS Java SDK](https://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/java-dg-logging.html) documentation for further information, including details about other loggers that can be used to obtain even more verbose logs. When you have finished collecting the logs needed by your supplier, set the logger settings back to `null` to return to the default logging configuration and disable insecure network trace logging again. See [Logger](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/miscellaneous-cluster-settings.md#cluster-logger) and [Cluster update settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings) for more information.
+Collect the Elasticsearch logs covering the time period of the failed analysis from all nodes in your cluster and share them with the supplier of your storage system along with the analysis response so they can use them to determine the problem. See the [AWS Java SDK](https://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/java-dg-logging.html) documentation for further information, including details about other loggers that can be used to obtain even more verbose logs. When you have finished collecting the logs needed by your supplier, set the logger settings back to `null` to return to the default logging configuration and disable insecure network trace logging again. See [Logger](elasticsearch://reference/elasticsearch/configuration-reference/miscellaneous-cluster-settings.md#cluster-logger) and [Cluster update settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings) for more information.
 
 
 ## Linearizable register implementation [repository-s3-linearizable-registers]

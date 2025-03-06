@@ -27,7 +27,7 @@ After you have created a new deployment, you should enable shipping logs and met
 
 5. Select **Save**.
 
-Optionally, turn on [audit logging](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/auding-settings.md) to capture security-related events, such as authentication failures, refused connections, and data-access events through the proxy. To turn on audit logging, [edit your deployment’s elasticsearch.yml file](../../../deploy-manage/deploy/elastic-cloud/edit-stack-settings.md) to add these lines:
+Optionally, turn on [audit logging](elasticsearch://reference/elasticsearch/configuration-reference/auding-settings.md) to capture security-related events, such as authentication failures, refused connections, and data-access events through the proxy. To turn on audit logging, [edit your deployment’s elasticsearch.yml file](../../../deploy-manage/deploy/elastic-cloud/edit-stack-settings.md) to add these lines:
 
 ```sh
 xpack.security.audit.enabled: true
@@ -106,12 +106,12 @@ You will get this request reported as a new log. Audit logs do not currently rep
 
 You should take advantage of the default [Elastic Stack monitoring alerts](/deploy-manage/monitor/monitoring-data/kibana-alerts.md) that are available out-of-the-box. You don’t have to do anything other than enable shipping logs and metrics to have them made available to you (which you did earlier on).
 
-On top of these default alerts that write to indices you can investigate, you might want to add some custom actions, such as a [connector](asciidocalypse://docs/kibana/docs/reference/connectors-kibana.md) for Slack notifications. To set up these notifications, you first configure a Slack connector and then append it to the default alerts and actions. From Kibana:
+On top of these default alerts that write to indices you can investigate, you might want to add some custom actions, such as a [connector](kibana://reference/connectors-kibana.md) for Slack notifications. To set up these notifications, you first configure a Slack connector and then append it to the default alerts and actions. From Kibana:
 
 1. Go to **Stack Management** > **Rules and Connectors** > **Connectors** and create your Slack connector:
 
     1. Select **Slack**.
-    2. [Create a Slack Webhook URL](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/slack-action-type.md#configuring-slack) and paste it into the **Webhook URL** field.
+    2. [Create a Slack Webhook URL](kibana://reference/connectors-kibana/slack-action-type.md#configuring-slack) and paste it into the **Webhook URL** field.
     3. Select **Save**.
 
 2. Go to **Stack Monitoring** and select **Enter setup mode**.

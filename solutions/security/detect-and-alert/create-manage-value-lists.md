@@ -8,7 +8,7 @@ mapped_urls:
 
 Value lists hold multiple values of the same Elasticsearch data type, such as IP addresses, which are used to determine when an exception prevents an alert from being generated. You can use value lists to define exceptions for detection rules; however, you cannot use value lists to define endpoint rule exceptions.
 
-Value lists are lists of items with the same {{es}} [data type](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/field-data-types.md). You can create value lists with these types:
+Value lists are lists of items with the same {{es}} [data type](elasticsearch://reference/elasticsearch/mapping-reference/field-data-types.md). You can create value lists with these types:
 
 * `Keywords` (many [ECS fields](asciidocalypse://docs/ecs/docs/reference/ecs-field-reference.md) are keywords)
 * `IP Addresses`

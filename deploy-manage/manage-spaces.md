@@ -30,7 +30,7 @@ $$$spaces-managing$$$
 
 **Spaces** let you organize your content and users according to your needs.
 
-- Each space has its own saved objects. 
+- Each space has its own saved objects.
 - Users can only access the spaces that they have been granted access to. This access is based on user roles, and a given role can have different permissions per space.
 - In {{stack}} deployments on version 8.16 and later, each space has its own navigation, called solution view.
 
@@ -46,18 +46,18 @@ To go to **Spaces**, find **Stack Management** in the navigation menu or use the
 
 ## Required permissions [_required_privileges_3]
 
-* **Serverless projects:** `Admin` role or equivalent 
+* **Serverless projects:** `Admin` role or equivalent
 * **{{stack}} deployments:** `kibana_admin` or equivalent
 
 
 ## Create a space [spaces-managing]
 
-The maximum number of spaces that you can have differs by deployment type: 
+The maximum number of spaces that you can have differs by deployment type:
 
 * **Serverless projects:** Maximum of 100 spaces.
-* **{{stack}} deployments:** Controlled by the `xpack.spaces.maxSpaces` setting. Default is 1000. View the full list of Space settings in [this document](asciidocalypse://docs/kibana/docs/reference/configuration-reference/spaces-settings.md).
+* **{{stack}} deployments:** Controlled by the `xpack.spaces.maxSpaces` setting. Default is 1000. View the full list of Space settings in [this document](kibana://reference/configuration-reference/spaces-settings.md).
 
-To create a space: 
+To create a space:
 
 ::::{tab-set}
 :group: stack-serverless
@@ -100,7 +100,7 @@ To create a space:
 
 You can edit all of the space settings you just defined at any time, except for the URL identifier.
 
-Elastic also allows you to manage spaces using APIs: 
+Elastic also allows you to manage spaces using APIs:
 
 * **Serverless projects:** [Spaces API](https://www.elastic.co/docs/api/doc/serverless/operation/operation-get-spaces-space)
 * **{{stack}} deployments:** [Spaces API](https://www.elastic.co/docs/api/doc/kibana/operation/operation-post-spaces-copy-saved-objects)
@@ -123,7 +123,7 @@ Users can access spaces based on the roles that they have.
   - For {{stack}} deployments, check [Creating or editing a role](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md).
 
 
-If you're managing an {{stack}} deployment, then you can also assign roles and define permissions for a space from the **Permissions** tab of the space settings. 
+If you're managing an {{stack}} deployment, then you can also assign roles and define permissions for a space from the **Permissions** tab of the space settings.
 
 When a role is assigned to *All Spaces*, you can’t remove its access from the space settings. You must instead edit the role to give it more granular access to individual spaces.
 
@@ -147,7 +147,7 @@ serverless: unavailable
 
 You can create a custom experience for users by configuring the {{kib}} landing page on a per-space basis. The landing page can route users to a specific dashboard, application, or saved object as they enter each space.
 
-To configure the landing page, use the default route setting in [Stack Management > {{kib}} > Advanced settings](asciidocalypse://docs/kibana/docs/reference/advanced-settings.md#kibana-general-settings). For example, you might set the default route to `/app/dashboards`.
+To configure the landing page, use the default route setting in [Stack Management > {{kib}} > Advanced settings](kibana://reference/advanced-settings.md#kibana-general-settings). For example, you might set the default route to `/app/dashboards`.
 
 :::{image} ../images/kibana-spaces-configure-landing-page.png
 :alt: Configure space-level landing page

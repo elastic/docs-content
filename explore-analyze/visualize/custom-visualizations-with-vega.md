@@ -116,7 +116,7 @@ POST kibana_sample_data_ecommerce/_search
 }
 ```
 
-Add the [terms aggregation](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/aggregations/search-aggregations-bucket-terms-aggregation.md), then click **Click to send request**:
+Add the [terms aggregation](elasticsearch://reference/data-analysis/aggregations/search-aggregations-bucket-terms-aggregation.md), then click **Click to send request**:
 
 ```js
 POST kibana_sample_data_ecommerce/_search
