@@ -1084,7 +1084,7 @@ Similar to the `node_roles` example, the following one is also based on the `def
 To add support for autoscaling, the deployment template has to meet the following requirements:
 
 1. Already has support for `node_roles`.
-2. Contains the `size`, `autoscaling_min`, and `autoscaling_max` fields, according to the rules specified in the [autoscaling requirements table](../../autoscaling/ece-autoscaling-api-example.md#ece-autoscaling-api-example-requirements-table).
+2. Contains the `size`, `autoscaling_min`, and `autoscaling_max` fields, according to the rules specified in the [autoscaling requirements table](../../autoscaling/autoscaling-in-ece-and-ech.md#ece-autoscaling-api-example-requirements-table).
 3. Contains the `autoscaling_enabled` fields on the `elasticsearch` resource.
 
 If necessary, the values chosen for each field can be based on the reference example.
@@ -1094,7 +1094,7 @@ If necessary, the values chosen for each field can be based on the reference exa
 
 To update a custom deployment template:
 
-1. Add the `autoscaling_min` and `autoscaling_max` fields to the Elasticsearch topology elements (check [Autoscaling through the API](../../autoscaling/ece-autoscaling-api-example.md)).
+1. Add the `autoscaling_min` and `autoscaling_max` fields to the Elasticsearch topology elements (check [Autoscaling through the API](../../autoscaling/autoscaling-in-ece-and-ech.md#ec-autoscaling-api-example)).
 2. Add the `autoscaling_enabled` fields to the `elasticsearch` resource. Set this field to `true` in case you want autoscaling enabled by default, and to `false` otherwise.
 
 

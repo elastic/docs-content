@@ -25,13 +25,13 @@ Each deployment will be fine-tuned automatically based on its specific purpose y
 Since eland uses APIs to deploy the models, you cannot see the models in {{kib}} until the saved objects are synchronized. You can follow the prompts in {{kib}}, wait for automatic synchronization, or use the [sync {{ml}} saved objects API](https://www.elastic.co/docs/api/doc/kibana/v8/group/endpoint-ml).
 ::::
 
-You can define the resource usage level of the NLP model during model deployment. The resource usage levels behave differently depending on [adaptive resources](ml-nlp-auto-scale.md#nlp-model-adaptive-resources) being enabled or disabled. When adaptive resources are disabled but {{ml}} autoscaling is enabled, vCPU usage of Cloud deployments derived from the Cloud console and functions as follows:
+You can define the resource usage level of the NLP model during model deployment. The resource usage levels behave differently depending on [adaptive resources](../../../deploy-manage/autoscaling/trained-model-autoscaling.md#enabling-autoscaling-through-apis-adaptive-allocations) being enabled or disabled. When adaptive resources are disabled but {{ml}} autoscaling is enabled, vCPU usage of Cloud deployments derived from the Cloud console and functions as follows:
 
 * Low: This level limits resources to two vCPUs, which may be suitable for development, testing, and demos depending on your parameters. It is not recommended for production use
 * Medium: This level limits resources to 32 vCPUs, which may be suitable for development, testing, and demos depending on your parameters. It is not recommended for production use.
 * High: This level may use the maximum number of vCPUs available for this deployment from the Cloud console. If the maximum is 2 vCPUs or fewer, this level is equivalent to the medium or low level.
 
-For the resource levels when adaptive resources are enabled, refer to <[*Trained model autoscaling*](ml-nlp-auto-scale.md).
+For the resource levels when adaptive resources are enabled, refer to <[*Trained model autoscaling*](../../../deploy-manage/autoscaling/trained-model-autoscaling.md).
 
 ## Request queues and search priority [infer-request-queues]
 
