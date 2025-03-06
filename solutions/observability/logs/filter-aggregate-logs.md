@@ -73,7 +73,7 @@ PUT _index_template/logs-example-default-template
 
 Filter your data using the fields you’ve extracted so you can focus on log data with specific log levels, timestamp ranges, or host IPs. You can filter your log data in different ways:
 
-* [Filter logs in Logs Explorer](../../../solutions/observability/logs/filter-aggregate-logs.md#logs-filter-discover): Filter and visualize log data in Logs Explorer.
+* [Filter logs in Discover](../../../solutions/observability/logs/filter-aggregate-logs.md#logs-filter-discover): Filter and visualize log data in Discover.
 * [Filter logs with Query DSL](../../../solutions/observability/logs/filter-aggregate-logs.md#logs-filter-qdsl): Filter log data from Developer Tools using Query DSL.
 
 
@@ -100,19 +100,18 @@ POST logs-example-default/_bulk
 { "message": "2023-09-20T09:40:32.345Z INFO 192.168.1.106 User logout initiated." }
 ```
 
-For this example, let’s look for logs with a `WARN` or `ERROR` log level that occurred on September 14th or 15th. From Logs Explorer:
+For this example, let’s look for logs with a `WARN` or `ERROR` log level that occurred on September 14th or 15th. From Discover:
 
+1. Make sure **All logs** is selected in the **Data views** menu.
 1. Add the following KQL query in the search bar to filter for logs with log levels of `WARN` or `ERROR`:
 
     ```text
     log.level: ("ERROR" or "WARN")
     ```
-
-2. Click the current time range, select **Absolute**, and set the **Start date** to `Sep 14, 2023 @ 00:00:00.000`.
+1. Click the current time range, select **Absolute**, and set the **Start date** to `Sep 14, 2023 @ 00:00:00.000`.
 
     ![Set the time range start date](../../../images/serverless-logs-start-date.png "")
-
-3. Click the end of the current time range, select **Absolute**, and set the **End date** to `Sep 15, 2023 @ 23:59:59.999`.
+1. Click the end of the current time range, select **Absolute**, and set the **End date** to `Sep 15, 2023 @ 23:59:59.999`.
 
     ![Set the time range end date](../../../images/serverless-logs-end-date.png "")
 
