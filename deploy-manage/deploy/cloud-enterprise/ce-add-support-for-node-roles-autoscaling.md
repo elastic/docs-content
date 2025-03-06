@@ -1,14 +1,19 @@
 ---
+navigation_title: Data tiers and autoscaling support
+applies_to:
+  deployment:
+    ece: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ce-add-support-for-node-roles-and-autoscaling.html
 ---
 
 # Updating custom templates to support node_roles and autoscaling [ce-add-support-for-node-roles-and-autoscaling]
 
-Custom deployment templates should be updated in order to take advantage of new Elastic Cloud Enterprise features, such as [Data tiers](../../../manage-data/lifecycle/data-tiers.md) (that is, the new cold and frozen data tiers) and [Deployment autoscaling](../../autoscaling.md). By updating these templates we also ensure forward compatibility with future Elastic Cloud Enterprise versions that will require certain fields such as `node_roles` and `id` to be present in the deployment configuration.
+Templates created in older versions of ECE should be updated in order to take advantage of new Elastic Cloud Enterprise features, such as [Data tiers](../../../manage-data/lifecycle/data-tiers.md), and [Deployment autoscaling](../../autoscaling.md). By updating these templates we also ensure forward compatibility with future Elastic Cloud Enterprise versions that will require certain fields such as `node_roles` and `id` to be present in the deployment configuration.
 
-System owned deployment templates have already been updated to support both data tiers with `node_roles` and autoscaling. However, the custom templates that you created need to be manually updated by following the steps in this guide.
-
+::::{note}
+System owned deployment templates are automatically updated during the ECE upgrade process to support both data tiers with `node_roles` and autoscaling. However, custom templates that you created must be manually updated by following the steps in this guide.
+::::
 
 ## Adding support for node_roles [ece_adding_support_for_node_roles]
 

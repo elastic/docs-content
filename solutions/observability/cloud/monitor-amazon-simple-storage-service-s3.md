@@ -21,7 +21,7 @@ With the Amazon S3 integration, you can collect these S3 metrics from CloudWatch
 
 ## Get started [get-started-s3]
 
-If you plan to collect request metrics, enable them for the S3 buckets you want to monitor. To learn how, refer to the [AWS documentation](https://docs.aws.amazon.com/AmazonS3/latest/userguide/configure-request-metrics-bucket.md).
+If you plan to collect request metrics, enable them for the S3 buckets you want to monitor. To learn how, refer to the [AWS documentation](https://docs.aws.amazon.com/AmazonS3/latest/userguide/configure-request-metrics-bucket.html).
 
 To collect S3 metrics, you typically need to install the Elastic [Amazon S3 integration](https://docs.elastic.co/en/integrations/aws/s3) and deploy an {{agent}} locally or on an EC2 instance.
 

@@ -2,9 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/cloud/current/ec-aws-custom-repository.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-custom-repository.html
+  - https://www.elastic.co/guide/en/cloud-heroku/current/ech-aws-custom-repository.html
 applies_to:
   deployment:
-    ess: 
+    ess:
 ---
 
 # Configure a snapshot repository using AWS S3 [ec-aws-custom-repository]

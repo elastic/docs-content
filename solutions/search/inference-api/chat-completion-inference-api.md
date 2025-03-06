@@ -23,9 +23,9 @@ The {{infer}} APIs enable you to use certain services, such as built-in {{ml}} m
 
 ## {{api-request-title}} [chat-completion-inference-api-request] 
 
-`POST /_inference/<inference_id>/_unified`
+`POST /_inference/<inference_id>/_stream`
 
-`POST /_inference/chat_completion/<inference_id>/_unified`
+`POST /_inference/chat_completion/<inference_id>/_stream`
 
 
 ## {{api-prereq-title}} [chat-completion-inference-api-prereqs] 
@@ -38,8 +38,8 @@ The {{infer}} APIs enable you to use certain services, such as built-in {{ml}} m
 
 The chat completion {{infer}} API enables real-time responses for chat completion tasks by delivering answers incrementally, reducing response times during computation. It only works with the `chat_completion` task type for `openai` and `elastic` {{infer}} services.
 
-::::{note} 
-* The `chat_completion` task type is only available within the _unified API and only supports streaming.
+::::{note}
+* The `chat_completion` task type is only available within the `_stream` API and only supports streaming.
 * The Chat completion {{infer}} API and the Stream {{infer}} API differ in their response structure and capabilities. The Chat completion {{infer}} API provides more comprehensive customization options through more fields and function calling support. If you use the `openai` service or the `elastic` service, use the Chat completion {{infer}} API.
 
 ::::

@@ -530,7 +530,7 @@ DATE_FORMAT(
 
 **Output**: string
 
-**Description**: Returns the date/datetime/time as a string using the format specified in the 2nd argument. The formatting pattern is one of the specifiers used in the [MySQL DATE_FORMAT() function](https://dev.mysql.com/doc/refman/8.0/en/date-and-time-functions.md#function_date-format).
+**Description**: Returns the date/datetime/time as a string using the format specified in the 2nd argument. The formatting pattern is one of the specifiers used in the [MySQL DATE_FORMAT() function](https://dev.mysql.com/doc/refman/8.0/en/date-and-time-functions.html#function_date-format).
 
 ::::{note} 
 If the 1st argument is of type `time`, then pattern specified by the 2nd argument cannot contain date related units (e.g. *dd*, *MM*, *yyyy*, etc.). If it contains such units an error is returned. Ranges for month and day specifiers (%c, %D, %d, %e, %m) start at one, unlike MySQL, where they start at zero, due to the fact that MySQL permits the storing of incomplete dates such as *2014-00-00*. Elasticsearch in this case returns an error.
@@ -578,7 +578,7 @@ DATE_PARSE(
 
 **Output**: date
 
-**Description**: Returns a date by parsing the 1st argument using the format specified in the 2nd argument. The parsing format pattern used is the one from [`java.time.format.DateTimeFormatter`](https://docs.oracle.com/en/java/javase/14/docs/api/java.base/java/time/format/DateTimeFormatter.md).
+**Description**: Returns a date by parsing the 1st argument using the format specified in the 2nd argument. The parsing format pattern used is the one from [`java.time.format.DateTimeFormatter`](https://docs.oracle.com/en/java/javase/14/docs/api/java.base/java/time/format/DateTimeFormatter.html).
 
 ::::{note} 
 If the parsing pattern does not contain all valid date units (e.g. *HH:mm:ss*, *dd-MM HH:mm:ss*, etc.) an error is returned as the function needs to return a value of `date` type which will contain date part.
@@ -627,7 +627,7 @@ DATETIME_FORMAT(
 
 **Output**: string
 
-**Description**: Returns the date/datetime/time as a string using the format specified in the 2nd argument. The formatting pattern used is the one from [`java.time.format.DateTimeFormatter`](https://docs.oracle.com/en/java/javase/14/docs/api/java.base/java/time/format/DateTimeFormatter.md).
+**Description**: Returns the date/datetime/time as a string using the format specified in the 2nd argument. The formatting pattern used is the one from [`java.time.format.DateTimeFormatter`](https://docs.oracle.com/en/java/javase/14/docs/api/java.base/java/time/format/DateTimeFormatter.html).
 
 ::::{note} 
 If the 1st argument is of type `time`, then pattern specified by the 2nd argument cannot contain date related units (e.g. *dd*, *MM*, *yyyy*, etc.). If it contains such units an error is returned.
@@ -675,7 +675,7 @@ DATETIME_PARSE(
 
 **Output**: datetime
 
-**Description**: Returns a datetime by parsing the 1st argument using the format specified in the 2nd argument. The parsing format pattern used is the one from [`java.time.format.DateTimeFormatter`](https://docs.oracle.com/en/java/javase/14/docs/api/java.base/java/time/format/DateTimeFormatter.md).
+**Description**: Returns a datetime by parsing the 1st argument using the format specified in the 2nd argument. The parsing format pattern used is the one from [`java.time.format.DateTimeFormatter`](https://docs.oracle.com/en/java/javase/14/docs/api/java.base/java/time/format/DateTimeFormatter.html).
 
 ::::{note} 
 If the parsing pattern contains only date or only time units (e.g. *dd/MM/yyyy*, *HH:mm:ss*, etc.) an error is returned as the function needs to return a value of `datetime` type which must contain both.
@@ -732,7 +732,7 @@ TIME_PARSE(
 
 **Output**: time
 
-**Description**: Returns a time by parsing the 1st argument using the format specified in the 2nd argument. The parsing format pattern used is the one from [`java.time.format.DateTimeFormatter`](https://docs.oracle.com/en/java/javase/14/docs/api/java.base/java/time/format/DateTimeFormatter.md).
+**Description**: Returns a time by parsing the 1st argument using the format specified in the 2nd argument. The parsing format pattern used is the one from [`java.time.format.DateTimeFormatter`](https://docs.oracle.com/en/java/javase/14/docs/api/java.base/java/time/format/DateTimeFormatter.html).
 
 ::::{note} 
 If the parsing pattern contains only date units (e.g. *dd/MM/yyyy*) an error is returned as the function needs to return a value of `time` type which will contain only time.

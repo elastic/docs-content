@@ -1,9 +1,13 @@
 ---
+applies_to:
+  deployment:
+    ece: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-install-large-cloud.html
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-install-large-onprem.html
 ---
 
-# Deploy a large installation cloud [ece-install-large-cloud]
+# Deploy a large installation [ece-install-large]
 
 This type of installation is recommended for deployments with significant overall search and indexing throughput. You need:
 
@@ -21,8 +25,7 @@ This type of installation is recommended for deployments with significant overal
 :alt: A large installation with nine to twelve hosts across three availability zones
 :::
 
-
-## Before you start [ece_before_you_start_3]
+## Important considerations  [ece_before_you_start_3]
 
 Note that the large-sized Elastic Cloud Enterprise installation separates the allocator and proxy roles from the director and coordinator roles (ECE management services).
 
@@ -41,7 +44,9 @@ Note that the large-sized Elastic Cloud Enterprise installation separates the al
 For production environments, you must define the memory settings for each role, except for the `proxy` role, as starting from ECE 2.4 the JVM proxy was replaced with a Golang-based proxy. If you don’t set any memory setting, the default values are used, which are inadequate for production environments and can lead to performance or stability issues.
 ::::
 
+## Before you start
 
+Make sure you have completed all prerequisites and environment preparations described in the [Installation overview](./install.md), and that the hosts are configured according to [](./configure-operating-system.md).
 
 ## Installation steps [ece_installation_steps_3]
 
@@ -82,12 +87,19 @@ For production environments, you must define the memory settings for each role, 
 5. To handle the routing of user requests to Elasticsearch, install Elastic Cloud Enterprise on a three additional hosts, distributing them evenly across the existing three availability zones, and assign them the `proxy` role. Do not assign any other roles, as these hosts should only route user requests. Make sure you include the coordinator host IP information from step 1 and the new roles token from step 2.
 
     ```sh
-    bash <(curl -fsSL https://download.elastic.co/cloud/elastic-cloud-enterprise.sh) install --coordinator-host HOST_IP --roles-token 'MY_TOKEN' --roles "proxy" --availability-zone MY_ZONE-1 --memory-settings
-    '{"runner":{"xms":"1G","xmx":"1G"}}'
-
-    bash <(curl -fsSL https://download.elastic.co/cloud/elastic-cloud-enterprise.sh) install --coordinator-host HOST_IP --roles-token 'MY_TOKEN' --roles "proxy" --availability-zone MY_ZONE-2 --memory-settings
-    '{"runner":{"xms":"1G","xmx":"1G"}}'
-
-    bash <(curl -fsSL https://download.elastic.co/cloud/elastic-cloud-enterprise.sh) install --coordinator-host HOST_IP --roles-token 'MY_TOKEN' --roles "proxy" --availability-zone MY_ZONE-3 --memory-settings
-    '{"runner":{"xms":"1G","xmx":"1G"}}'
+    bash <(curl -fsSL https://download.elastic.co/cloud/elastic-cloud-enterprise.sh) install --coordinator-host HOST_IP --roles-token 'MY_TOKEN' --roles "proxy" --availability-zone MY_ZONE-1 --memory-settings '{"runner":{"xms":"1G","xmx":"1G"}}'
     ```
+
+    ```sh
+    bash <(curl -fsSL https://download.elastic.co/cloud/elastic-cloud-enterprise.sh) install --coordinator-host HOST_IP --roles-token 'MY_TOKEN' --roles "proxy" --availability-zone MY_ZONE-2 --memory-settings '{"runner":{"xms":"1G","xmx":"1G"}}'
+    ```
+
+    ```sh
+    bash <(curl -fsSL https://download.elastic.co/cloud/elastic-cloud-enterprise.sh) install --coordinator-host HOST_IP --roles-token 'MY_TOKEN' --roles "proxy" --availability-zone MY_ZONE-3 --memory-settings '{"runner":{"xms":"1G","xmx":"1G"}}'
+    ```
+
+6. [Change the deployment configuration](working-with-deployments.md) for the `admin-console-elasticsearch`, `logging-and-metrics`, and `security` clusters to use three availability zones and resize the nodes to use at least 4 GB of RAM. This change makes sure that the clusters used by the administration console are highly available and provisioned sufficiently.
+
+7. [Log into the Cloud UI](log-into-cloud-ui.md) to provision your deployment.
+
+Once the installation is complete, you can continue with [](./post-installation-steps.md).
