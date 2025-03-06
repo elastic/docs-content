@@ -2,8 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/observability/current/monitor-datasets.html
   - https://www.elastic.co/guide/en/serverless/current/observability-monitor-datasets.html
-
 navigation_title: "Data set quality"
+applies_to:
+  stack: all
+  serverless: all
 ---
 
 # Data set quality monitoring [observability-monitor-datasets]
