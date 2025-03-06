@@ -19,7 +19,7 @@ With **TSVB**, you can:
 
 :::{image} ../../../images/kibana-tsvb-screenshot.png
 :alt: TSVB overview
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -234,7 +234,7 @@ Performing math across data series is unsupported in **TSVB**. To calculate the 
 
    :::{image} ../../../images/kibana-tsvb_clone_series.png
    :alt: Clone Series action
-   :class: screenshot
+   :screenshot:
    :::
 
 2. Click **Options**, then enter the offset value in the **Offset series time by** field.

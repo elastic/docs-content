@@ -37,7 +37,7 @@ The data represents two real airports, two fictitious flight routes, and fictiti
 
    :::{image} ../../../images/kibana-fu_gs_new_england_map.png
    :alt: fu gs new england map
-   :class: screenshot
+   :screenshot:
    :::
 
 
@@ -65,7 +65,7 @@ For each GeoJSON file you downloaded, complete the following steps:
 
    :::{image} ../../../images/kibana-fu_gs_flight_paths.png
    :alt: fu gs flight paths
-   :class: screenshot
+   :screenshot:
    :::
 
 
@@ -94,7 +94,7 @@ Looking at the `Lightning detected` layer, it’s clear where lightning has stru
 
    :::{image} ../../../images/kibana-fu_gs_lightning_intensity.png
    :alt: fu gs lightning intensity
-   :class: screenshot
+   :screenshot:
    :::
 
 
@@ -114,6 +114,6 @@ Your final map might look like this:
 
 :::{image} ../../../images/kibana-fu_gs_final_map.png
 :alt: fu gs final map
-:class: screenshot
+:screenshot:
 :::
 

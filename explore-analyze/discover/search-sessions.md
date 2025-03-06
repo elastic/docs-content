@@ -21,7 +21,7 @@ Save your search session from **Discover** or **Dashboard**, and when your sessi
 
 :::{image} ../../images/kibana-search-session.png
 :alt: Search Session indicator displaying the current state of the search
-:class: screenshot
+:screenshot:
 :::
 
 

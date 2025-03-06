@@ -65,7 +65,7 @@ For most cases, the preferred version is the **Intel and Linux optimized** model
 
     :::{image} ../../../images/machine-learning-ml-nlp-e5-download.png
     :alt: Downloading E5
-    :class: screenshot
+    :screenshot:
     :::
 
     Alternatively, click the **Download model** button under **Actions** in the trained model list.
@@ -75,7 +75,7 @@ For most cases, the preferred version is the **Intel and Linux optimized** model
 
     :::{image} ../../../images/machine-learning-ml-nlp-deployment-id-e5.png
     :alt: Deploying E5
-    :class: screenshot
+    :screenshot:
     :::
 
 5. Click Start.
@@ -95,14 +95,14 @@ Alternatively, you can download and deploy the E5 model to an {{infer}} pipeline
 
     :::{image} ../../../images/machine-learning-ml-nlp-deploy-e5-es.png
     :alt: Deploying E5 in Elasticsearch
-    :class: screenshot
+    :screenshot:
     :::
 
 5. Once the model is downloaded, click the **Start single-threaded** button to start the model with basic configuration or select the **Fine-tune performance** option to navigate to the **Trained Models** page where you can configure the model deployment.
 
     :::{image} ../../../images/machine-learning-ml-nlp-start-e5-es.png
     :alt: Start E5 in Elasticsearch
-    :class: screenshot
+    :screenshot:
     :::
 
 When your E5 model is deployed and started, it is ready to be used in a pipeline.

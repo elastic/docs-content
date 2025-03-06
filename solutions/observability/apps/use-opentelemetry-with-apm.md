@@ -35,7 +35,7 @@ Elastic offers several distributions of OpenTelemetry language SDKs. A *distribu
 
 :::{image} ../../../images/observability-apm-otel-distro.png
 :alt: apm otel distro
-:class: screenshot
+:screenshot:
 :::
 
 With an Elastic Distribution of OpenTelemetry language SDK you have access to all the features of the OpenTelemetry SDK that it customizes, plus:
@@ -63,7 +63,7 @@ Use the OpenTelemetry API/SDKs with [Elastic APM agents](../../../solutions/obse
 
 :::{image} ../../../images/observability-apm-otel-api-sdk-elastic-agent.png
 :alt: apm otel api sdk elastic agent
-:class: screenshot
+:screenshot:
 :::
 
 This allows you to reuse your existing OpenTelemetry instrumentation to create Elastic APM transactions and spans — ​avoiding vendor lock-in and having to redo manual instrumentation.
@@ -86,7 +86,7 @@ You can set up an [OpenTelemetry Collector](https://opentelemetry.io/docs/collec
 
 :::{image} ../../../images/observability-apm-otel-api-sdk-collector.png
 :alt: apm otel api sdk collector
-:class: screenshot
+:screenshot:
 :::
 
 ::::{note}

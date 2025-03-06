@@ -35,7 +35,7 @@ The following is a high-level overview of the required configuration:
 
 ### Java security provider [java-security-provider]
 
-Detailed instructions for installation and configuration of a FIPS certified Java security provider is beyond the scope of this document. Specifically, a FIPS certified [JCA](https://docs.oracle.com/en/java/javase/17/security/java-cryptography-architecture-jca-reference-guide.md) and [JSSE](https://docs.oracle.com/en/java/javase/17/security/java-secure-socket-extension-jsse-reference-guide.md) implementation is required so that the JVM uses FIPS validated implementations of NIST recommended cryptographic algorithms.
+Detailed instructions for installation and configuration of a FIPS certified Java security provider is beyond the scope of this document. Specifically, a FIPS certified [JCA](https://docs.oracle.com/en/java/javase/17/security/java-cryptography-architecture-jca-reference-guide.html) and [JSSE](https://docs.oracle.com/en/java/javase/17/security/java-secure-socket-extension-jsse-reference-guide.html) implementation is required so that the JVM uses FIPS validated implementations of NIST recommended cryptographic algorithms.
 
 Elasticsearch has been tested with Bouncy Castle’s [bc-fips 1.0.2.5](https://repo1.maven.org/maven2/org/bouncycastle/bc-fips/1.0.2.5/bc-fips-1.0.2.5.jar) and [bctls-fips 1.0.19](https://repo1.maven.org/maven2/org/bouncycastle/bctls-fips/1.0.19/bctls-fips-1.0.19.jar). Please refer to the {{es}} [JVM support matrix](https://www.elastic.co/support/matrix#matrix_jvm) for details on which combinations of JVM and security provider are supported in FIPS mode. Elasticsearch does not ship with a FIPS certified provider. It is the responsibility of the user to install and configure the security provider to ensure compliance with FIPS 140-2. Using a FIPS certified provider will ensure that only approved cryptographic algorithms are used.
 
@@ -131,7 +131,7 @@ To verify that the security provider is installed and in use, you can use any of
 
 ## Upgrade considerations [fips-upgrade-considerations]
 
-{{es}} 8.0+ requires Java 17 or later. {{es}} 8.13+ has been tested with [Bouncy Castle](https://www.bouncycastle.org/java.md)'s Java 17 [certified](https://csrc.nist.gov/projects/cryptographic-module-validation-program/certificate/4616) FIPS implementation and is the recommended Java security provider when running {{es}} in FIPS 140-2 mode. Note - {{es}} does not ship with a FIPS certified security provider and requires explicit installation and configuration.
+{{es}} 8.0+ requires Java 17 or later. {{es}} 8.13+ has been tested with [Bouncy Castle](https://www.bouncycastle.org/java.html)'s Java 17 [certified](https://csrc.nist.gov/projects/cryptographic-module-validation-program/certificate/4616) FIPS implementation and is the recommended Java security provider when running {{es}} in FIPS 140-2 mode. Note - {{es}} does not ship with a FIPS certified security provider and requires explicit installation and configuration.
 
 Alternatively, consider using {{ech}} in the [FedRAMP-certified GovCloud region](https://www.elastic.co/industries/public-sector/fedramp).
 

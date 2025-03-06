@@ -14,7 +14,7 @@ In **{{project-settings}} → {{manage-app}} → {{ls-pipelines-app}}**, you can
 
 :::{image} ../../../images/serverless-logstash-pipelines-management.png
 :alt: {{ls-pipelines-app}}"
-:class: screenshot
+:screenshot:
 :::
 
 On the {{ls}} side, you must enable configuration management and register {{ls}} to use the centrally managed pipeline configurations.

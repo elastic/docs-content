@@ -245,14 +245,14 @@ The AWS integration also comes with pre-built dashboards that you can use to vis
 
 :::{image} ../../../images/observability-agent-tut-vpcflowlog-dashboard.png
 :alt: Screenshot of the VPC Flow Log Overview dashboard
-:class: screenshot
+:screenshot:
 :::
 
 Next, open the dashboard called **[Logs AWS] S3 Server Access Log Overview**:
 
 :::{image} ../../../images/observability-agent-tut-s3accesslog-dashboard.png
 :alt: Screenshot of the S3 Server Access Log Overview dashboard
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -303,7 +303,7 @@ Now that the metrics are streaming into {{es}}, you can visualize them in {{kib}
 
 :::{image} ../../../images/observability-agent-tut-ec2-metrics-discover.png
 :alt: Screenshot of the Discover app showing EC2 metrics
-:class: screenshot
+:screenshot:
 :::
 
 The AWS integration also comes with pre-built dashboards that you can use to visualize the data. Find **Dashboards** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
@@ -312,14 +312,14 @@ Search for EC2 and select the dashboard called **[Metrics AWS] EC2 Overview**:
 
 :::{image} ../../../images/observability-agent-tut-ec2-overview-dashboard.png
 :alt: Screenshot of the EC2 Overview dashboard
-:class: screenshot
+:screenshot:
 :::
 
 To track your AWS billing, open the **[Metrics AWS] Billing Overview** dashboard:
 
 :::{image} ../../../images/observability-agent-tut-billing-dashboard.png
 :alt: Screenshot of the Billing Overview dashboard
-:class: screenshot
+:screenshot:
 :::
 
 Congratulations! You have completed the tutorial.

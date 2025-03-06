@@ -23,7 +23,7 @@ Results from machine learning jobs are shown in multiple places throughout the A
 
     :::{image} ../../../images/observability-apm-service-map-anomaly.png
     :alt: Example view of anomaly scores on service maps in the Applications UI
-    :class: screenshot
+    :screenshot:
     :::
 
 

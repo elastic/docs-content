@@ -33,7 +33,7 @@ If you’re confident your changes won’t destabilize the cluster, you can temp
 
     :::{image} ../../images/elasticsearch-reference-kibana-console.png
     :alt: {{kib}} Console
-    :class: screenshot
+    :screenshot:
     :::
 
 4. Check the current status of the cluster according the shards capacity indicator:
@@ -243,7 +243,7 @@ If you’re confident your changes won’t destabilize the cluster, you can temp
 
     :::{image} ../../images/kibana-console.png
     :alt: {{kib}} Console
-    :class: screenshot
+    :screenshot:
     :::
 
 4. Check the current status of the cluster according the shards capacity indicator:

@@ -24,14 +24,14 @@ mapped_pages:
    Go to **Management** > **Stack Management** > **Data** > **Transforms** in {{kib}} and use the wizard to create a {{transform}}:
    :::{image} ../../images/elasticsearch-reference-ecommerce-pivot1.png
    :alt: Creating a simple {{transform}} in {{kib}}
-   :class: screenshot
+   :screenshot:
    :::
 
    Group the data by customer ID and add one or more aggregations to learn more about each customer’s orders. For example, let’s calculate the sum of products they purchased, the total price of their purchases, the maximum number of products that they purchased in a single order, and their total number of orders. We’ll accomplish this by using the [`sum` aggregation](elasticsearch://reference/data-analysis/aggregations/search-aggregations-metrics-sum-aggregation.md) on the `total_quantity` and `taxless_total_price` fields, the [`max` aggregation](elasticsearch://reference/data-analysis/aggregations/search-aggregations-metrics-max-aggregation.md) on the `total_quantity` field, and the [`cardinality` aggregation](elasticsearch://reference/data-analysis/aggregations/search-aggregations-metrics-cardinality-aggregation.md) on the `order_id` field:
 
    :::{image} ../../images/elasticsearch-reference-ecommerce-pivot2.png
    :alt: Adding multiple aggregations to a {{transform}} in {{kib}}
-   :class: screenshot
+   :screenshot:
    :::
 
    ::::{tip}
@@ -96,13 +96,13 @@ mapped_pages:
    3. Optionally, you can configure a retention policy that applies to your {{transform}}. Select a date field that is used to identify old documents in the destination index and provide a maximum age. Documents that are older than the configured value are removed from the destination index.
    :::{image} ../../images/elasticsearch-reference-ecommerce-pivot3.png
    :alt: Adding transfrom ID and retention policy to a {{transform}} in {{kib}}
-   :class: screenshot
+   :screenshot:
    :::
 
    In {{kib}}, before you finish creating the {{transform}}, you can copy the preview {{transform}} API request to your clipboard. This information is useful later when you’re deciding whether you want to manually create the destination index.
    :::{image} ../../images/elasticsearch-reference-ecommerce-pivot4.png
    :alt: Copy the Dev Console statement of the transform preview to the clipboard
-   :class: screenshot
+   :screenshot:
    :::
 
    If you prefer, you can use the [create {{transforms}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-transform-put-transform).
@@ -296,7 +296,7 @@ mapped_pages:
    You can start, stop, reset, and manage {{transforms}} in {{kib}}:
    :::{image} ../../images/elasticsearch-reference-manage-transforms.png
    :alt: Managing {{transforms}} in {{kib}}
-   :class: screenshot
+   :screenshot:
    :::
 
    Alternatively, you can use the [start {{transforms}}](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-transform-start-transform), [stop {{transforms}}](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-transform-stop-transform) and [reset {{transforms}}](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-transform-reset-transform) APIs.
@@ -318,14 +318,14 @@ mapped_pages:
    For example, use the **Discover** application in {{kib}}:
    :::{image} ../../images/elasticsearch-reference-ecommerce-results.png
    :alt: Exploring the new index in {{kib}}
-   :class: screenshot
+   :screenshot:
    :::
 
 8. Optional: Create another {{transform}}, this time using the `latest` method.
    This method populates the destination index with the latest documents for each unique key value. For example, you might want to find the latest orders (sorted by the `order_date` field) for each customer or for each country and region.
    :::{image} ../../images/elasticsearch-reference-ecommerce-latest1.png
    :alt: Creating a latest {{transform}} in {{kib}}
-   :class: screenshot
+   :screenshot:
    :::
 
    ::::{dropdown} API example

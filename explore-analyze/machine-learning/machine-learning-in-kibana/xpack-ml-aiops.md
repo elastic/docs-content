@@ -21,7 +21,7 @@ You can find log rate analysis embedded in multiple applications. In {{kib}}, yo
 
 :::{image} ../../../images/kibana-ml-log-rate-analysis-before.png
 :alt: Log event histogram chart
-:class: screenshot
+:screenshot:
 :::
 
 Select a spike or drop in the log event histogram chart to start the analysis. It identifies statistically significant field-value combinations that contribute to the spike or drop and displays them in a table. You can optionally choose to summarize the results into groups. The table also shows an indicator of the level of impact and a sparkline showing the shape of the impact in the chart. Hovering over a row displays the impact on the histogram chart in more detail. You can inspect a field in **Discover**, further investigate in **Log pattern analysis**, or copy the table row information as a query filter to the clipboard by selecting the corresponding option under the **Actions** column. You can also pin a table row by clicking on it then move the cursor to the histogram chart. It displays a tooltip with exact count values for the pinned field which enables closer investigation.
@@ -30,7 +30,7 @@ Brushes in the chart show the baseline time range and the deviation in the analy
 
 :::{image} ../../../images/kibana-ml-log-rate-analysis.png
 :alt: Log rate spike explained
-:class: screenshot
+:screenshot:
 :::
 
 ## Log pattern analysis [log-pattern-analysis]
@@ -41,7 +41,7 @@ You can find log pattern analysis under **{{ml-app}}** > **AIOps Labs** or by us
 
 :::{image} ../../../images/kibana-ml-log-pattern-analysis.png
 :alt: Log pattern analysis UI
-:class: screenshot
+:screenshot:
 :::
 
 Select a field for categorization and optionally apply any filters that you want, then start the analysis. The analysis uses the same algorithms as a {{ml}} categorization job. The results of the analysis are shown in a table that makes it possible to open **Discover** and show or filter out the given category there, which helps you to further examine your log messages.
@@ -58,7 +58,7 @@ You can find change point detection under **{{ml-app}}** > **AIOps Labs** or by 
 
 :::{image} ../../../images/kibana-ml-change-point-detection.png
 :alt: Change point detection UI
-:class: screenshot
+:screenshot:
 :::
 
 Select a function and a metric field, then pick a date range to start detecting change points in the defined range. Optionally, you can split the data by a field. If the cardinality of the split field exceeds 10,000, then only the first 10,000, sorted by document count, are analyzed. You can configure a maximum of 6 combinations of a function applied to a metric field, partitioned by a split field to identify change points.
@@ -67,7 +67,7 @@ When a change point is detected, a row displays basic information including the 
 
 :::{image} ../../../images/kibana-ml-change-point-detection-selected.png
 :alt: Selected change points
-:class: screenshot
+:screenshot:
 :::
 
 You can attach change point charts to a dashboard or a case by using the context menu. If the split field is selected, you can either select specific charts (partitions) or set the maximum number of top change points to plot. It’s possible to preserve the applied time range or use the time bound from the page date picker. You can also add or edit change point charts directly from the **Dashboard** app.

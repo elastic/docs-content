@@ -17,7 +17,7 @@ The AI Assistant uses generative AI to provide:
 
 :::{image} ../../images/observability-obs-assistant2.gif
 :alt: Observability AI assistant preview
-:class: screenshot
+:screenshot:
 :::
 
 The AI Assistant integrates with your large language model (LLM) provider through our supported {{stack}} connectors:
@@ -241,7 +241,7 @@ This opens the AI Assistant flyout, where you can ask the assistant questions ab
 
 :::{image} ../../images/observability-obs-ai-chat.png
 :alt: Observability AI assistant chat
-:class: screenshot
+:screenshot:
 :::
 
 ::::{important}
@@ -314,14 +314,14 @@ For example, in the log details, you’ll see prompts for **What’s this messag
 
 :::{image} ../../images/observability-obs-ai-logs-prompts.png
 :alt: Observability AI assistant logs prompts
-:class: screenshot
+:screenshot:
 :::
 
 Clicking a prompt generates a message specific to that log entry:
 
 :::{image} ../../images/observability-obs-ai-logs.gif
 :alt: Observability AI assistant example
-:class: screenshot
+:screenshot:
 :::
 
 Continue a conversation from a contextual prompt by clicking **Start chat** to open the AI Assistant chat.
@@ -338,7 +338,7 @@ Use the [Observability AI Assistant connector](kibana://reference/connectors-kib
 
     :::{image} ../../images/observability-obs-ai-assistant-action-high-cpu.png
     :alt: Add an Observability AI assistant action while creating a rule in the Observability UI
-    :class: screenshot
+    :screenshot:
     :::
 
 
@@ -353,7 +353,7 @@ When the alert fires, contextual details about the event—such as when the aler
 
 :::{image} ../../images/observability-obs-ai-assistant-output.png
 :alt: AI Assistant conversation created in response to an alert
-:class: screenshot
+:screenshot:
 :::
 
 ::::{important}
@@ -374,7 +374,7 @@ The `server.publicBaseUrl` setting must be correctly specified under {{kib}} set
 
 :::{image} ../../images/observability-obs-ai-assistant-slack-message.png
 :alt: Message sent by Slack by the AI Assistant includes a link to the conversation
-:class: screenshot
+:screenshot:
 :::
 
 The Observability AI Assistant connector is called when the alert fires and when it recovers.

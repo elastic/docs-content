@@ -12,7 +12,7 @@ You can drag or send fields of interest to a Timeline to create the desired quer
 
 :::{image} ../../../images/security-timeline-ui-updated.png
 :alt: example Timeline with several events
-:class: screenshot
+:screenshot:
 :::
 
 In addition to Timelines, you can create and attach Timeline templates to [detection rules](/solutions/security/detect-and-alert.md). Timeline templates allow you to define the source event fields used when you investigate alerts in Timeline. You can select whether the fields use predefined values or values retrieved from the alert. For more information, refer to [Timeline templates](/solutions/security/investigate/timeline-templates.md).
@@ -56,7 +56,7 @@ Many types of events automatically appear in preconfigured views that provide re
 
 :::{image} ../../../images/security-timeline-ui-renderer.png
 :alt: example timeline with the event renderer highlighted
-:class: screenshot
+:screenshot:
 :::
 
 The example above displays the Flow event renderer, which highlights the movement of data between its source and destination. If you see a particular part of the rendered event that interests you, you can drag it up to the drop zone below the query bar for further investigation.
@@ -81,7 +81,7 @@ To add a field from the sidebar, hover over it, and click the **Add field as a c
 
 :::{image} ../../../images/security-timeline-sidebar.png
 :alt: Shows the sidebar that allows you to configure the columns that display in Timeline
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -103,7 +103,7 @@ Click a filter to access additional operations such as **Add filter**, **Clear a
 
 :::{image} ../../../images/security-timeline-ui-filter-options.png
 :alt: timeline ui filter options
-:class: screenshot
+:screenshot:
 :::
 
 Here are examples of various types of filters:
@@ -113,7 +113,7 @@ Field with value
 
     :::{image} ../../../images/security-timeline-filter-value.png
     :alt: timeline filter value
-    :class: screenshot
+    :screenshot:
     :::
 
 
@@ -122,7 +122,7 @@ Field exists
 
     :::{image} ../../../images/security-timeline-field-exists.png
     :alt: timeline field exists
-    :class: screenshot
+    :screenshot:
     :::
 
 
@@ -131,7 +131,7 @@ Exclude results
 
     :::{image} ../../../images/security-timeline-filter-exclude.png
     :alt: timeline filter exclude
-    :class: screenshot
+    :screenshot:
     :::
 
 
@@ -140,7 +140,7 @@ Temporarily disable
 
     :::{image} ../../../images/security-timeline-disable-filter.png
     :alt: timeline disable filter
-    :class: screenshot
+    :screenshot:
     :::
 
 
@@ -210,7 +210,7 @@ The following image shows what matched ordered events look like in the Timeline 
 
 :::{image} ../../../images/security-correlation-tab-eql-query.png
 :alt: a Timeline's correlation tab
-:class: screenshot
+:screenshot:
 :::
 
 From the **Correlation** tab, you can also do the following:
@@ -262,7 +262,7 @@ You can use {{esql}} in Timeline by opening the **{{esql}}** tab. From there, yo
 
 :::{image} ../../../images/security-esql-tab.png
 :alt: Example of the ES|QL tab in Timeline
-:class: screenshot
+:screenshot:
 :::
 
 

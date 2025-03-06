@@ -152,7 +152,7 @@ The following table shows the type of data ingested by the supported AWS service
 
     :::{image} ../../../images/observability-quickstart-aws-firehose-entry-point.png
     :alt: AWS Firehose entry point
-    :class: screenshot
+    :screenshot:
     :::
 
 3. Click **Create Firehose Stream in AWS** to create a CloudFormation stack from the CloudFormation template.
@@ -170,7 +170,7 @@ The following table shows the type of data ingested by the supported AWS service
 
     :::{image} ../../../images/serverless-quickstart-aws-firehose-entry-point.png
     :alt: AWS Firehose entry point
-    :class: screenshot
+    :screenshot:
     :::
 
 4. Click **Create Firehose Stream in AWS** to create a CloudFormation stack from the CloudFormation template.
@@ -186,14 +186,14 @@ After installation is complete and all relevant data is flowing into Elastic, th
 
 :::{image} ../../../images/observability-quickstart-aws-firehose-dashboards.png
 :alt: AWS Firehose dashboards
-:class: screenshot
+:screenshot:
 :::
 
 Here is an example of the VPC Flow logs dashboard:
 
 :::{image} ../../../images/observability-quickstart-aws-firehose-vpc-flow.png
 :alt: AWS Firehose VPC flow
-:class: screenshot
+:screenshot:
 :::
 
 Refer to [What is Elastic {{observability}}?](../../../solutions/observability/get-started/what-is-elastic-observability.md) for a description of other useful features.

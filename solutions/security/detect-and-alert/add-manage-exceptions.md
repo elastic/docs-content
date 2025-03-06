@@ -40,7 +40,7 @@ You can add exceptions to a rule from the rule details page, the Alerts table, t
 
             :::{image} ../../../images/security-rule-exception-tab.png
             :alt: Detail of rule exceptions tab
-            :class: screenshot
+            :screenshot:
             :::
 
     * To add an exception from the Alerts table:
@@ -115,7 +115,7 @@ You can add exceptions to a rule from the rule details page, the Alerts table, t
 
         :::{image} ../../../images/security-add-exception-ui.png
         :alt: add exception ui
-        :class: screenshot
+        :screenshot:
         :::
 
 4. Click **AND** or **OR** to create multiple conditions and define their relationships.
@@ -188,7 +188,7 @@ Additionally, to add an Endpoint exception to an endpoint protection rule, there
 
     :::{image} ../../../images/security-endpoint-add-exp.png
     :alt: endpoint add exp
-    :class: screenshot
+    :screenshot:
     :::
 
 2. If required, modify the conditions.
@@ -270,7 +270,7 @@ Creates an exception that excludes all LFC-signed trusted processes:
 
 :::{image} ../../../images/security-nested-exp.png
 :alt: nested exp
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -285,7 +285,7 @@ To view a rule’s exceptions:
 
     :::{image} ../../../images/security-manage-default-rule-list.png
     :alt: A default rule list
-    :class: screenshot
+    :screenshot:
     :::
 
 
@@ -301,5 +301,5 @@ Changes that you make to the exception also apply to other rules that use the ex
 
 :::{image} ../../../images/security-exception-affects-multiple-rules.png
 :alt: Exception that affects multiple rules
-:class: screenshot
+:screenshot:
 :::

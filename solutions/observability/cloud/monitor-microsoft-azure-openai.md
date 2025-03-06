@@ -272,7 +272,7 @@ From here, filter your data and dive deeper into individual logs to find informa
 
 :::{image} ../../../images/observability-azure-openai-discover.png
 :alt: screenshot of the discover main page
-:class: screenshot
+:screenshot:
 :::
 
 For more on using Discover and creating data views, refer to the [Discover](../../../explore-analyze/discover.md) documentation.
@@ -284,7 +284,7 @@ To view Azure OpenAI logs, open {{kib}} and go to **Logs Explorer** (find `Logs 
 
 :::{image} ../../../images/observability-log-explorer.png
 :alt: screenshot of the logs explorer main page
-:class: screenshot
+:screenshot:
 :::
 
 From **Logs Explorer**, you can select the Azure OpenAI integration from the data selector to view your Kubernetes data.
@@ -469,14 +469,14 @@ After ingesting your data, you can filter and explore it using Discover in {{kib
 
 :::{image} ../../../images/observability-azure-openai-apm-discover.png
 :alt: screenshot of the discover main page
-:class: screenshot
+:screenshot:
 :::
 
 Then, use these fields to create visualizations and build dashboards. Refer to the [Dashboard and visualizations](../../../explore-analyze/dashboards.md) documentation for more information.
 
 :::{image} ../../../images/observability-azure-openai-apm-dashboard.png
 :alt: screenshot of the Azure OpenAI APM dashboard
-:class: screenshot
+:screenshot:
 :::
 
 

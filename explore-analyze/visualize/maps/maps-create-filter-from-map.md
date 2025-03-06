@@ -50,7 +50,7 @@ You can create spatial filters in two ways:
 
 :::{image} ../../../images/kibana-create_spatial_filter.png
 :alt: create spatial filter
-:class: screenshot
+:screenshot:
 :::
 
 

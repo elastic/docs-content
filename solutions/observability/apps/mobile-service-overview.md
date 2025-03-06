@@ -32,7 +32,7 @@ Note: due to the way crash rate is calculated (crashes per session) it is possib
 
 :::{image} ../../../images/observability-mobile-location.png
 :alt: mobile service overview centered on location map
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -43,7 +43,7 @@ Optimize your end-user experience and your application QA strategy based on your
 
 :::{image} ../../../images/observability-mobile-most-used.png
 :alt: mobile service overview showing most used devices
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -58,7 +58,7 @@ By default, transaction groups are sorted by *Impact* to show the most used and 
 
 :::{image} ../../../images/observability-traffic-transactions.png
 :alt: Traffic and transactions
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -86,11 +86,11 @@ Displaying dependencies for services instrumented with the Real User Monitoring 
 
 :::{image} ../../../images/observability-spans-dependencies.png
 :alt: Span type duration and dependencies
-:class: screenshot
+:screenshot:
 :::
 
 
 :::{image} ../../../images/observability-mobile-tp.png
 :alt: mobile service overview showing latency
-:class: screenshot
+:screenshot:
 :::

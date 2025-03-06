@@ -19,7 +19,7 @@ mapped_urls:
 
 :::{image} ../images/kibana-change-space.png
 :alt: Change current space menu
-:class: screenshot
+:screenshot:
 :::
 
 To go to **Spaces**, find **Stack Management** in the navigation menu or use the [global search bar](/explore-analyze/find-and-organize/find-apps-and-objects.md).
@@ -133,5 +133,5 @@ To configure the landing page, use the default route setting in [Stack Managemen
 
 :::{image} ../images/kibana-spaces-configure-landing-page.png
 :alt: Configure space-level landing page
-:class: screenshot
+:screenshot:
 :::

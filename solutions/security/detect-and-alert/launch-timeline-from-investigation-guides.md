@@ -28,21 +28,21 @@ Interactive investigation guides are compatible between {{stack}} versions 8.7.0
 
 :::{image} ../../../images/security-ig-alert-flyout.png
 :alt: Alert details flyout with interactive investigation guide
-:class: screenshot
+:screenshot:
 :::
 
 Under the Investigation section, click **Show investigation guide** to open the **Investigation** tab in the left panel of the alert details flyout.
 
 :::{image} ../../../images/security-ig-alert-flyout-invest-tab.png
 :alt: Alert details flyout with interactive investigation guide
-:class: screenshot
+:screenshot:
 :::
 
 The **Investigation** tab displays query buttons, and each query button displays the number of event documents found. Click the query button to automatically load the query in Timeline, based on configuration settings in the investigation guide.
 
 :::{image} ../../../images/security-ig-timeline.png
 :alt: Timeline with query pre-loaded from investigation guide action
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -59,14 +59,14 @@ You can configure an interactive investigation guide when you [create a new rule
 
     :::{image} ../../../images/security-ig-investigation-guide-editor.png
     :alt: Investigation guide editor field
-    :class: screenshot
+    :screenshot:
     :::
 
 2. Place the editor cursor where you want to add the query button in the investigation guide, then select the Investigate icon (![Investigate icon](../../../images/security-ig-investigate-icon.png "")) in the toolbar. The **Add investigation query** builder form appears.
 
     :::{image} ../../../images/security-ig-investigation-query-builder.png
     :alt: Add investigation guide UI
-    :class: screenshot
+    :screenshot:
     :::
 
 3. Complete the query builder form to create an investigation query:
@@ -79,7 +79,7 @@ You can configure an interactive investigation guide when you [create a new rule
 
         :::{image} ../../../images/security-ig-filters-field-custom-value.png
         :alt: Add investigation guide UI
-        :class: screenshot
+        :screenshot:
         :::
 
     4. **Relative time range**: (Optional) Select a time range to limit the query, relative to the alert’s creation time.
@@ -137,7 +137,7 @@ This example creates the following Timeline query, as illustrated below:
 
 :::{image} ../../../images/security-ig-timeline-query.png
 :alt: Timeline query
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -147,5 +147,5 @@ When viewing an interactive investigation guide in contexts unconnected to a spe
 
 :::{image} ../../../images/security-ig-timeline-template-fields.png
 :alt: Timeline template
-:class: screenshot
+:screenshot:
 :::

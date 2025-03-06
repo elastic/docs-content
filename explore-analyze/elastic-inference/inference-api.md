@@ -22,7 +22,7 @@ The **Inference endpoints** page provides an interface for managing inference en
 
 :::{image} ../../images/kibana-inference-endpoints-ui.png
 :alt: Inference endpoints UI
-:class: screenshot
+:screenshot:
 :::
 
 Available actions:

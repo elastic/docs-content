@@ -106,21 +106,21 @@ After an alert is moved to the `Closed` status, it will no longer suppress new a
 
     :::{image} ../../../images/security-suppressed-alerts-table.png
     :alt: Suppressed alerts icon and tooltip in Alerts table
-    :class: screenshot
+    :screenshot:
     :::
 
 * **Alerts** table — Column for suppressed alerts count. Select **Fields** to open the fields browser, then add `kibana.alert.suppression.docs_count` to the table.
 
     :::{image} ../../../images/security-suppressed-alerts-table-column.png
     :alt: Suppressed alerts count field column in Alerts table
-    :class: screenshot
+    :screenshot:
     :::
 
 * Alert details flyout — **Insights** → **Correlations** section:
 
     :::{image} ../../../images/security-suppressed-alerts-details.png
     :alt: Suppressed alerts in the Correlations section within the alert details flyout
-    :class: screenshot
+    :screenshot:
     :::
 
 
@@ -133,7 +133,7 @@ With alert suppression, detection alerts aren’t created for the grouped source
 
     :::{image} ../../../images/security-timeline-button.png
     :alt: Investigate in timeline button
-    :class: screenshot
+    :screenshot:
     :::
 
 * Alert details flyout — Select **Take action** → **Investigate in timeline**.

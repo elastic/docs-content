@@ -30,7 +30,7 @@ Each project type supports a specific set of rule types. Each *rule type* provid
 
 :::{image} ../../images/serverless-es-query-rule-conditions.png
 :alt: UI for defining rule conditions in an {{es}} query rule
-:class: screenshot
+:screenshot:
 :::
 
 ### Schedule [rules-schedule]
@@ -58,14 +58,14 @@ After you select a connector, set the *action frequency*. If you want to reduce 
 
 :::{image} ../../images/serverless-es-query-rule-action-summary.png
 :alt: UI for defining rule conditions in an {{es}} query rule
-:class: screenshot
+:screenshot:
 :::
 
 Alternatively, you can set the action frequency such that the action runs for each alert. If the rule type does not support alert summaries, this is your only available option. You must choose when the action runs (for example, at each check interval, only when the alert status changes, or at a custom action interval). You must also choose an action group, which affects whether the action runs. Each rule type has a specific set of valid action groups. For example, you can set *Run when* to `Query matched` or `Recovered` for the {{es}} query rule:
 
 :::{image} ../../images/serverless-es-query-rule-recovery-action.png
 :alt: UI for defining a recovery action
-:class: screenshot
+:screenshot:
 :::
 
 Each connector supports a specific set of actions for each action group and enables different action properties. For example, you can have actions that create an {{opsgenie}} alert when rule conditions are met and recovery actions that close the {{opsgenie}} alert.
@@ -95,7 +95,7 @@ You can pass rule values to an action at the time a condition is detected. To vi
 
 :::{image} ../../images/serverless-es-query-rule-action-variables.png
 :alt: Passing rule values to an action
-:class: screenshot
+:screenshot:
 :::
 
 For more information about common action variables, refer to [Rule actions variables](../../explore-analyze/alerts-cases/alerts/rule-action-variables.md)
@@ -112,7 +112,7 @@ A rule consists of conditions, actions, and a schedule. When conditions are met,
 
 :::{image} ../../images/serverless-rule-concepts-summary.svg
 :alt: Rules
-:class: screenshot
+:screenshot:
 :::
 
 1. Any time a rule’s conditions are met, an alert is created. This example checks for servers with average CPU > 0.9. Three servers meet the condition, so three alerts are created.

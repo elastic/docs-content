@@ -13,7 +13,7 @@ Global filters are ways you can filter your APM data based on a specific time ra
 
 :::{image} ../../../images/observability-global-filters.png
 :alt: Global filters view
-:class: screenshot
+:screenshot:
 :::
 
 ::::{note}

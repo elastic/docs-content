@@ -6,20 +6,6 @@ mapped_urls:
 
 # Get started with CSPM for GCP
 
-% What needs to be done: Align serverless/stateful
-
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/security-docs/security/cspm-get-started-gcp.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/security-cspm-get-started-gcp.md
-
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
-
-$$$cspm-gcp-agent-based$$$
-
-$$$cspm-gcp-agentless$$$
-
-
 ## Overview [cspm-overview-gcp]
 
 This page explains how to get started monitoring the security posture of your GCP cloud assets using the Cloud Security Posture Management (CSPM) feature.
@@ -41,11 +27,6 @@ You can set up CSPM for GCP either by enrolling a single project, or by enrollin
 
 
 ## Agentless deployment [cspm-gcp-agentless]
-
-::::{warning}
-This functionality is in beta and is subject to change. The design and code is less mature than official GA features and is being provided as-is with no warranties. Beta features are not subject to the support SLA of official GA features.
-::::
-
 
 1. Find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Search for `CSPM`, then click on the result.

@@ -18,7 +18,7 @@ The new Inventory requires the Elastic Entity Model (EEM). To learn more, refer 
 
 :::{image} ../../../images/observability-inventory-catalog.png
 :alt: Inventory catalog
-:class: screenshot
+:screenshot:
 :::
 
 Inventory is currently available for hosts, containers, and services, but it will scale to support all of your entities.
@@ -72,7 +72,7 @@ For each entity, you can click the entity name and get a detailed view. For exam
 
 :::{image} ../../../images/observability-inventory-entity-detailed-view.png
 :alt: Inventory detailed view
-:class: screenshot
+:screenshot:
 :::
 
 If you open an entity of type `host` or `container` that does not have infrastructure data, some of the visualizations will be blank and some features on the page will not be fully populated.

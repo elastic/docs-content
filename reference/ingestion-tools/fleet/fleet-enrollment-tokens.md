@@ -37,7 +37,7 @@ To create an enrollment token:
 
     :::{image} images/create-token.png
     :alt: Enrollment tokens tab in {fleet}
-    :class: screenshot
+    :screenshot:
     :::
 
 3. Click **Create enrollment token**.
@@ -45,7 +45,7 @@ To create an enrollment token:
 
     :::{image} images/show-token.png
     :alt: Enrollment tokens tab with Show token icon highlighted
-    :class: screenshot
+    :screenshot:
     :::
 
 
@@ -70,7 +70,7 @@ To revoke an enrollment token:
 
     :::{image} images/revoke-token.png
     :alt: Enrollment tokens tab with Revoke token highlighted
-    :class: screenshot
+    :screenshot:
     :::
 
 3. Click **Revoke enrollment token**. You can no longer use this token to enroll {{agent}}s. However, the currently enrolled agents will continue to function.

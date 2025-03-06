@@ -18,12 +18,12 @@ Maps uses the [{{es}} vector tile search API](https://www.elastic.co/docs/api/do
 
 :::{image} ../../images/kibana-vector_tile_inspector.png
 :alt: vector tile inspector
-:class: screenshot
+:screenshot:
 :::
 
 :::{image} ../../images/kibana-requests_inspector.png
 :alt: requests inspector
-:class: screenshot
+:screenshot:
 :::
 
 

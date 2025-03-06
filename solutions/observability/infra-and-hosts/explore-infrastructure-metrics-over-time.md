@@ -13,7 +13,7 @@ To open **Metrics Explorer**, find **Infrastructure** in the main menu or use th
 
 :::{image} ../../../images/observability-metrics-explorer.png
 :alt: Metrics Explorer
-:class: screenshot
+:screenshot:
 :::
 
 To learn more about the metrics shown on this page, refer to the [Metrics reference](/reference/data-analysis/observability/index.md) documentation.
@@ -40,7 +40,7 @@ As an example, let’s view the system load metrics for hosts we’re currently 
 
     :::{image} ../../../images/observability-metrics-explorer-filter.png
     :alt: Metrics Explorer query
-    :class: screenshot
+    :screenshot:
     :::
 
 3. Select **Actions** in the top right-hand corner of one of the graphs and then click **Add filter**.
@@ -59,7 +59,7 @@ As an example, let’s view the system load metrics for hosts we’re currently 
 
     :::{image} ../../../images/observability-metrics-time-series.png
     :alt: Time series chart
-    :class: screenshot
+    :screenshot:
     :::
 
     The `derivative` aggregation is used to calculate the difference between each bucket. By default, the value of units is automatically set to `1s`, along with the `positive only` aggregation.

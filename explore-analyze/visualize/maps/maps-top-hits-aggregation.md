@@ -19,6 +19,6 @@ To enable top hits:
 
 :::{image} ../../../images/kibana-top_hits.png
 :alt: top hits
-:class: screenshot
+:screenshot:
 :::
 

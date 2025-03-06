@@ -39,6 +39,6 @@ When you authenticate using `basic.basic1`, you’ll see the following agreement
 
 :::{image} ../../../images/kibana-access-agreement.png
 :alt: Access Agreement UI
-:class: screenshot
+:screenshot:
 :::
 

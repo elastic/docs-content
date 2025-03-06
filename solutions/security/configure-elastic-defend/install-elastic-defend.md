@@ -34,7 +34,7 @@ If you’re using macOS, some versions may require you to grant Full Disk Access
 
     :::{image} ../../../images/security-endpoint-cloud-sec-integrations-page.png
     :alt: Search result for "{{elastic-defend}}" on the Integrations page.
-    :class: screenshot
+    :screenshot:
     :::
 
 2. Search for and select **{{elastic-defend}}**, then select **Add {{elastic-defend}}**. The integration configuration page appears.
@@ -46,7 +46,7 @@ If you’re using macOS, some versions may require you to grant Full Disk Access
 
     :::{image} ../../../images/security-endpoint-cloud-security-configuration.png
     :alt: Add {{elastic-defend}} integration page
-    :class: screenshot
+    :screenshot:
     :::
 
 3. Configure the {{elastic-defend}} integration with an **Integration name** and optional **Description**.
@@ -97,7 +97,7 @@ If you have upgraded to an {{stack}} version that includes {{fleet-server}} 7.13
 
     :::{image} ../../../images/security-endpoint-cloud-sec-add-agent.png
     :alt: Add agent flyout on the Fleet page.
-    :class: screenshot
+    :screenshot:
     :::
 
 2. Select an agent policy for the {{agent}}. You can select an existing policy, or select **Create new agent policy** to create a new one. For more details on {{agent}} configuration settings, refer to [{{agent}} policies](/reference/ingestion-tools/fleet/agent-policy.md).
@@ -106,7 +106,7 @@ If you have upgraded to an {{stack}} version that includes {{fleet-server}} 7.13
 
     :::{image} ../../../images/security-endpoint-cloud-sec-add-agent-detail.png
     :alt: Add agent flyout with {{elastic-defend}} integration highlighted.
-    :class: screenshot
+    :screenshot:
     :::
 
 3. Ensure that the **Enroll in {{fleet}}** option is selected. {{elastic-defend}} cannot be integrated with {{agent}} in standalone mode.

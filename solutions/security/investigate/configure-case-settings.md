@@ -11,7 +11,7 @@ First, find **Cases** in the navigation menu or search for `Security/Cases` by u
 
 :::{image} ../../../images/security-cases-settings.png
 :alt: Shows the case settings page
-:class: screenshot
+:screenshot:
 :::
 
 ::::{note}
@@ -89,7 +89,7 @@ You can add optional and required fields for customized case collaboration.
 
     :::{image} ../../../images/security-cases-add-custom-field.png
     :alt: Add a custom field in case settings
-    :class: screenshot
+    :screenshot:
     :::
 
 2. You must provide a field label and type (text or toggle). You can optionally designate it as a required field and provide a default value.
@@ -114,7 +114,7 @@ To create a template:
 
     :::{image} ../../../images/security-cases-add-template.png
     :alt: Add a template in case settings
-    :class: screenshot
+    :screenshot:
     :::
 
 2. You must provide a template name and case severity. You can optionally add template tags and a description, values for each case field, and a case connector.
@@ -154,5 +154,5 @@ Deleting a custom observable type deletes all instances of it.
 
 :::{image} ../../../images/security-cases-observable-types.png
 :alt: Add an observable type in case settings
-:class: screenshot
+:screenshot:
 :::
