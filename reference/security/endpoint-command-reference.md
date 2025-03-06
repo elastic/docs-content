@@ -6,7 +6,7 @@ mapped_pages:
 
 # Endpoint command reference [endpoint-command-ref]
 
-This page lists the commands for management and troubleshooting of {{elastic-endpoint}}, the installed component that performs {{elastic-defend}}'s threat monitoring and prevention.
+This page lists the commands for managing and troubleshooting {{elastic-endpoint}}, the installed component that performs {{elastic-defend}}'s threat monitoring and prevention.
 
 ::::{note}
 * {{elastic-endpoint}} is not added to the `PATH` system variable, so you must prepend the commands with the full OS-dependent path:
