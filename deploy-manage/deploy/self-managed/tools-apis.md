@@ -1,4 +1,10 @@
-# Tools and APIs
+---
+navigation_title: "Tools and APIs"
+applies_to:
+  deployment:
+    self:
+---
+# Tools and APIs for self-managed clusters
 
 % What needs to be done: Write from scratch
 
