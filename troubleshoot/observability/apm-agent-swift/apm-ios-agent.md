@@ -2,6 +2,10 @@
 navigation_title: "APM iOS Agent"
 mapped_pages:
   - https://www.elastic.co/guide/en/apm/agent/swift/current/troubleshooting.html
+applies_to:
+  stack: all
+  serverless:
+    observability: all
 ---
 
 # Troubleshoot APM iOS Agent [troubleshooting]

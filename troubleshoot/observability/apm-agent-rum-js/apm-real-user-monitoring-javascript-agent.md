@@ -2,6 +2,10 @@
 navigation_title: "APM Real User Monitoring JavaScript Agent"
 mapped_pages:
   - https://www.elastic.co/guide/en/apm/agent/rum-js/current/troubleshooting.html
+applies_to:
+  stack: all
+  serverless:
+    observability: all
 ---
 
 # Troubleshoot APM Real User Monitoring JavaScript Agent [troubleshooting]
