@@ -1,7 +1,10 @@
 ---
-navigation_title: "Run {{es}} locally"
+navigation_title: "Local installation (quickstart)"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/run-elasticsearch-locally.html
+applies_to:
+  deployment:
+    self:
 ---
 
 

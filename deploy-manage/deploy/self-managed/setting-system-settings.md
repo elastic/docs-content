@@ -1,11 +1,14 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/setting-system-settings.html
+applies_to:
+  deployment:
+    self:
 ---
 
-# Configuring system settings [setting-system-settings]
+# Configure system settings [setting-system-settings]
 
-Where to configure systems settings depends on which package you have used to install Elasticsearch, and which operating system you are using.
+Where to configure systems settings depends on which package you have used to install {{es}}, and which operating system you are using.
 
 When using the `.zip` or `.tar.gz` packages, system settings can be configured:
 
@@ -14,9 +17,10 @@ When using the `.zip` or `.tar.gz` packages, system settings can be configured:
 
 When using the RPM or Debian packages, most system settings are set in the [system configuration file](#sysconfig). However, systems which use systemd require that system limits are specified in a [systemd configuration file](#systemd).
 
+
 ## `ulimit` [ulimit]
 
-On Linux systems, `ulimit` can be used to change resource limits on a temporary basis. Limits usually need to be set as `root` before switching to the user that will run Elasticsearch. For example, to set the number of open file handles (`ulimit -n`) to 65,535, you can do the following:
+On Linux systems, `ulimit` can be used to change resource limits on a temporary basis. Limits usually need to be set as `root` before switching to the user that will run {{es}}. For example, to set the number of open file handles (`ulimit -n`) to 65,535, you can do the following:
 
 ```sh
 sudo su  <1>
@@ -26,7 +30,7 @@ su elasticsearch <3>
 
 1. Become `root`.
 2. Change the max number of open files.
-3. Become the `elasticsearch` user in order to start Elasticsearch.
+3. Become the `elasticsearch` user in order to start {{es}}.
 
 
 The new limit is only applied during the current session.
@@ -44,7 +48,7 @@ elasticsearch  -  nofile  65535
 
 This change will only take effect the next time the `elasticsearch` user opens a new session.
 
-::::{admonition} Ubuntu and `limits.conf`
+::::{admonition} Ubuntu and limits.conf
 :class: note
 
 Ubuntu ignores the `limits.conf` file for processes started by `init.d`. To enable the `limits.conf` file, edit `/etc/pam.d/su` and uncomment the following line:
@@ -59,13 +63,12 @@ Ubuntu ignores the `limits.conf` file for processes started by `init.d`. To enab
 
 ## Sysconfig file [sysconfig]
 
-When using the RPM or Debian packages, environment variables can be specified in the system configuration file, which is located in:
+When using the RPM or Debian packages, environment variables can be specified in the system configuration file, which is located in the relevant location for your package type:
 
-RPM
-:   `/etc/sysconfig/elasticsearch`
-
-Debian
-:   `/etc/default/elasticsearch`
+| Package type | Location |
+| --- | --- | 
+| RPM | `/etc/sysconfig/elasticsearch`|
+| Debian | `/etc/default/elasticsearch` | 
 
 However, system limits need to be specified via [systemd](#systemd).
 
@@ -78,7 +81,7 @@ The systemd service file (`/usr/lib/systemd/system/elasticsearch.service`) conta
 
 To override them, add a file called `/etc/systemd/system/elasticsearch.service.d/override.conf` (alternatively, you may run `sudo systemctl edit elasticsearch` which opens the file automatically inside your default editor). Set any changes in this file, such as:
 
-```sh
+```ini
 [Service]
 LimitMEMLOCK=infinity
 ```

@@ -1,0 +1,1 @@
+The latest stable version of {{es}} can be found on the [Download {{es}}](https://elastic.co/downloads/elasticsearch) page. Other versions can be found on the [Past Releases page](https://elastic.co/downloads/past-releases).

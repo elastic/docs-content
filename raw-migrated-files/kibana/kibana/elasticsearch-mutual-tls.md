@@ -13,7 +13,7 @@ In a standard TLS configuration, the server presents a signed certificate to aut
 
 {{es}} {{security-features}} are enabled on your cluster by default, so each request that {{kib}} (the client) makes to {{es}} (the server) is authenticated. Most requests made by end users through {{kib}} to {{es}} are authenticated by using the credentials of the logged-in user.
 
-To [enroll {{kib}} with an {{es}} cluster](../../../deploy-manage/security/security-certificates-keys.md#stack-start-with-security), you pass a generated enrollment token. This token configures {{kib}} to authenticate with {{es}} using a [service account token](../../../deploy-manage/users-roles/cluster-or-deployment-auth/service-accounts.md#service-accounts-tokens). {{kib}} also supports mutual TLS authentication with {{es}} via a [Public Key Infrastructure (PKI) realm](../../../deploy-manage/users-roles/cluster-or-deployment-auth/pki.md). With this setup, {{es}} needs to verify the signature on the {{kib}} client certificate, and it also needs to map the client certificate’s distinguished name (DN) to the appropriate `kibana_system` role.
+To [enroll {{kib}} with an {{es}} cluster](/deploy-manage/security/security-certificates-keys.md#stack-start-with-security), you pass a generated enrollment token. This token configures {{kib}} to authenticate with {{es}} using a [service account token](../../../deploy-manage/users-roles/cluster-or-deployment-auth/service-accounts.md#service-accounts-tokens). {{kib}} also supports mutual TLS authentication with {{es}} via a [Public Key Infrastructure (PKI) realm](../../../deploy-manage/users-roles/cluster-or-deployment-auth/pki.md). With this setup, {{es}} needs to verify the signature on the {{kib}} client certificate, and it also needs to map the client certificate’s distinguished name (DN) to the appropriate `kibana_system` role.
 
 ::::{note}
 Using a PKI realm is a [subscription feature](https://www.elastic.co/subscriptions).
@@ -23,7 +23,7 @@ Using a PKI realm is a [subscription feature](https://www.elastic.co/subscriptio
 
 ## Configure {{kib}} and {{es}} to use mutual TLS authentication [_configure_kib_and_es_to_use_mutual_tls_authentication]
 
-If you haven’t already, start {{kib}} and connect it to {{es}} using the [enrollment token](../../../deploy-manage/security/security-certificates-keys.md#stack-start-with-security).
+If you haven’t already, start {{kib}} and connect it to {{es}} using the [enrollment token](/deploy-manage/security/security-certificates-keys.md#stack-start-with-security).
 
 1. Obtain a client certificate and private key for {{kib}}.
 

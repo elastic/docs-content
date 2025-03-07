@@ -45,7 +45,7 @@ The location where you set these environment variables is platform-specific and 
 
         Then add the environment variables under `[Service]`
 
-        ```shell
+        ```ini
         [Service]
 
         Environment="HTTPS_PROXY=https://my.proxy:8443"
