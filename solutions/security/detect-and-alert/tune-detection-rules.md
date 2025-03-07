@@ -59,7 +59,7 @@ For example, to prevent the [Unusual Process Execution Path - Alternate Data Str
 
     :::{image} ../../../images/security-rule-details-page.png
     :alt: Rule details page
-    :class: screenshot
+    :screenshot:
     :::
 
 3. Select the **Rule exceptions** tab, then click **Add rule exception**.
@@ -71,7 +71,7 @@ For example, to prevent the [Unusual Process Execution Path - Alternate Data Str
 
         :::{image} ../../../images/security-process-exception.png
         :alt: Add Rule Exception UI
-        :class: screenshot
+        :screenshot:
         :::
 
 5. Click **Add rule exception**.
@@ -104,7 +104,7 @@ Another useful technique is to assign lower risk scores to rules triggered by au
 
         :::{image} ../../../images/security-process-specific-exception.png
         :alt: Example of `is not` exception in the Add Rule Exception UI
-        :class: screenshot
+        :screenshot:
         :::
 
 4. Click **Add rule exception**.

@@ -23,7 +23,7 @@ The terms you want to include in the graph are called *vertices*. The relationsh
 
 :::{image} ../../images/kibana-graph-vertices-connections.jpg
 :alt: Graph components
-:class: screenshot
+:screenshot:
 :::
 
 ::::{note}
@@ -56,14 +56,14 @@ Use **Graph** to reveal the relationships in your data.
 
    :::{image} ../../images/kibana-graph-url-connections.png
    :alt: URL connections
-   :class: screenshot
+   :screenshot:
    :::
 
 3. Add more fields, or click an existing field to edit, disable or deselect it.
 
    :::{image} ../../images/kibana-graph-menu.png
    :alt: menu for editing, disabling, or removing a field from the graph
-   :class: screenshot
+   :screenshot:
    :width: 50%
    :::
 
@@ -75,7 +75,7 @@ Use **Graph** to reveal the relationships in your data.
 
    :::{image} ../../images/kibana-graph-control-bar.png
    :alt: Graph toolbar
-   :class: screenshot
+   :screenshot:
    :width: 50%
    :::
 

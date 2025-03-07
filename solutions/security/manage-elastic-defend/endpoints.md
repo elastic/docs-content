@@ -21,7 +21,7 @@ The **Endpoints** list displays all hosts running {{elastic-defend}} and their r
 
 :::{image} ../../../images/security-endpoints-pg.png
 :alt: Endpoints page
-:class: screenshot
+:screenshot:
 :::
 
 The Endpoints list provides the following data:
@@ -62,7 +62,7 @@ Click any link in the **Endpoint** column to display host details in a flyout. Y
 
 :::{image} ../../../images/security-host-flyout.png
 :alt: Endpoint details flyout
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -72,7 +72,7 @@ The endpoint details flyout also includes the **Response actions history** tab, 
 
 :::{image} ../../../images/security-response-actions-history-endpoint-details.png
 :alt: Response actions history with a few past actions
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -89,7 +89,7 @@ Users must have permission to read/write to {{fleet}} APIs to make changes to th
 
 :::{image} ../../../images/security-integration-pg.png
 :alt: Integration page
-:class: screenshot
+:screenshot:
 :::
 
 Users who have unique configuration and security requirements can select **Show advanced settings** to configure the policy to support advanced use cases. Hover over each setting to view its description.
@@ -101,7 +101,7 @@ Advanced settings are not recommended for most users.
 
 :::{image} ../../../images/security-integration-advanced-settings.png
 :alt: Integration page
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -128,7 +128,7 @@ If you need help troubleshooting a configuration failure, refer to [](/troublesh
 
 :::{image} ../../../images/security-config-status.png
 :alt: Config status details
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -138,7 +138,7 @@ To filter the Endpoints list, use the search bar to enter a query using [{{kib}}
 
 :::{image} ../../../images/security-filter-endpoints.png
 :alt: filter endpoints
-:class: screenshot
+:screenshot:
 :::
 
 ::::{note}

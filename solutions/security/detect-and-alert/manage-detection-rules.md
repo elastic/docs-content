@@ -35,7 +35,7 @@ The Rules page allows you to view and manage all prebuilt and custom detection r
 
 :::{image} ../../../images/security-all-rules.png
 :alt: The Rules page
-:class: screenshot
+:screenshot:
 :::
 
 On the Rules page, you can:
@@ -198,7 +198,7 @@ You can snooze rule notifications from the **Installed Rules** tab, the rule det
 
 :::{image} ../../../images/security-rule-snoozing.png
 :alt: Rules snooze options
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -266,14 +266,14 @@ Additionally, the **Setup guide** section provides guidance on setting up the ru
 
 :::{image} ../../../images/security-rule-details-prerequisites.png
 :alt: Rule details page with Related integrations
-:class: screenshot
+:screenshot:
 :::
 
 You can also check rules' related integrations in the **Installed Rules** and **Rule Monitoring** tables. Click the **integrations** badge to display the related integrations in a popup.
 
 :::{image} ../../../images/security-rules-table-related-integrations.png
 :alt: Rules table with related integrations popup
-:class: screenshot
+:screenshot:
 :::
 
 ::::{tip}

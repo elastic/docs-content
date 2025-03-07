@@ -36,7 +36,7 @@ To create an anomaly detection rule:
 
     :::{image} ../../../images/serverless-anomaly-detection-alert.png
     :alt: Anomaly detection alert settings
-    :class: screenshot
+    :screenshot:
     :::
 
 6. For the result type:
@@ -115,14 +115,14 @@ Alternatively, you can set the action frequency to **For each alert** and specif
 
 :::{image} ../../../images/serverless-alert-action-frequency.png
 :alt: Configure when a rule is triggered
-:class: screenshot
+:screenshot:
 :::
 
 With the **Run when** menu you can choose if an action runs when the the anomaly score matched the condition or was recovered. For example, you can add a corresponding action for each state to ensure you are alerted when the anomaly score was matched and also when it recovers.
 
 :::{image} ../../../images/serverless-alert-anomaly-action-frequency-recovered.png
 :alt: Choose between anomaly score matched condition or recovered
-:class: screenshot
+:screenshot:
 :::
 
 :::::
@@ -133,7 +133,7 @@ Use the default notification message or customize it. You can add more context t
 
 :::{image} ../../../images/serverless-action-variables-popup.png
 :alt: Action variables list
-:class: screenshot
+:screenshot:
 :::
 
 The following variables are specific to this rule type. You can also specify [variables common to all rules](../../../explore-analyze/alerts-cases/alerts/rule-action-variables.md).

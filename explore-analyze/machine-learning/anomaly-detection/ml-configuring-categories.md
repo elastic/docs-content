@@ -30,7 +30,7 @@ Categorization is a {{ml}} process that tokenizes a text field, clusters similar
 
     :::{image} ../../../images/machine-learning-categorization-wizard.png
     :alt: Creating a categorization job in Kibana
-    :class: screenshot
+    :screenshot:
     :::
 
 5. Click **Next**.
@@ -71,7 +71,7 @@ Use the **Anomaly Explorer** in {{kib}} to view the analysis results:
 
 :::{image} ../../../images/machine-learning-ml-category-anomalies.png
 :alt: Categorization results in the Anomaly Explorer
-:class: screenshot
+:screenshot:
 :::
 
 For this type of job, the results contain extra information for each anomaly: the name of the category (for example, `mlcategory 2`) and examples of the messages in that category. You can use these details to investigate occurrences of unusually high message counts.
@@ -98,7 +98,7 @@ If you use the categorization wizard in {{kib}}, you can see which categorizatio
 
 :::{image} ../../../images/machine-learning-ml-category-analyzer.png
 :alt: Editing the categorization analyzer in Kibana
-:class: screenshot
+:screenshot:
 :::
 
 The categorization analyzer can refer to a built-in {{es}} analyzer or a combination of zero or more character filters, a tokenizer, and zero or more token filters. In this example, adding a [`pattern_replace` character filter](elasticsearch://reference/data-analysis/text-analysis/analysis-pattern-replace-charfilter.md) achieves the same behavior as the `categorization_filters` job configuration option described earlier. For more details about these properties, refer to the [`categorization_analyzer` API object](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-put-job#ml-put-job-request-body).

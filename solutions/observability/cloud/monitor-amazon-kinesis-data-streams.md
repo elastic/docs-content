@@ -69,7 +69,7 @@ For more information {{agent}} and integrations, refer to the [{{fleet}} and {{a
 
 :::{image} ../../../images/observability-kinesis-dashboard.png
 :alt: Screenshot showing the Kinesis overview dashboard
-:class: screenshot
+:screenshot:
 :::
 
 

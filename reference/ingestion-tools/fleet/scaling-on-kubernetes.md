@@ -54,7 +54,7 @@ Additionally, by default one agent is elected as **leader** (for more informatio
 
 :::{image} images/k8sscaling.png
 :alt: {{agent}} as daemonset
-:class: screenshot
+:screenshot:
 :::
 
 The above schema explains how {{agent}} collects and sends metrics to {{es}}. Because of Leader Agent being responsible to also collecting cluster-lever metrics, this means that it requires additional resources.
@@ -189,7 +189,7 @@ If {{agent}} is configured as managed, in {{kib}} you can observe under **Fleet>
 
 :::{image} images/kibana-fleet-agents.png
 :alt: {{agent}} Status
-:class: screenshot
+:screenshot:
 :::
 
 Additionally you can verify the process status with following commands:
@@ -260,14 +260,14 @@ Filter for Pod dataset:
 
 :::{image} images/pod-latency.png
 :alt: {{k8s}} Pod Metricset
-:class: screenshot
+:screenshot:
 :::
 
 Filter for State_Pod dataset
 
 :::{image} images/state-pod.png
 :alt: {{k8s}} State Pod Metricset
-:class: screenshot
+:screenshot:
 :::
 
 Identify how many events have been sent to {{es}}:

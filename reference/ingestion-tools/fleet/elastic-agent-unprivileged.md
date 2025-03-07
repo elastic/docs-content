@@ -88,14 +88,14 @@ Most Elastic integrations support running {{agent}} in unprivileged mode. For th
 
 :::{image} images/integration-root-requirement.png
 :alt: Elastic Defend integration page showing root requirement
-:class: screenshot
+:screenshot:
 :::
 
 As well, a warning is displayed in {{kib}} if you try to add an integration that requires root privileges to an {{agent}} policy that has agents enrolled in unprivileged mode.
 
 :::{image} images/unprivileged-agent-warning.png
 :alt: Warning indicating that root privileged agent is required for an integration
-:class: screenshot
+:screenshot:
 :::
 
 Examples of integrations that require {{agent}} to have administrative privileges are:
@@ -120,7 +120,7 @@ To view the status of an {{agent}}:
 
     :::{image} images/agent-privilege-mode.png
     :alt: Agent details tab showing the agent is running as non-root
-    :class: screenshot
+    :screenshot:
     :::
 
 
@@ -133,14 +133,14 @@ The number of agents enrolled with the policy is shown. Hover over the link to v
 
 :::{image} images/privileged-and-unprivileged-agents.png
 :alt: Agent policy tab showing 1 unprivileged agent and 0 privileged enrolled agents
-:class: screenshot
+:screenshot:
 :::
 
 In the event that the {{agent}} policy has integrations installed that require root privileges, but there are agents running without root privileges, this is shown in the tooltip.
 
 :::{image} images/root-integration-and-unprivileged-agents.png
 :alt: Agent policy tab showing 1 unprivileged agent and 0 privileged enrolled agents
-:class: screenshot
+:screenshot:
 :::
 
 

@@ -24,7 +24,7 @@ The tab is highlighted in this screenshot:
 
 :::{image} /images/elasticsearch-reference-ingest-pipeline-ent-search-ui.png
 :alt: ingest pipeline ent search ui
-:class: screenshot
+:screenshot:
 :::
 
 ## Overview [ingest-pipeline-search-in-enterprise-search]

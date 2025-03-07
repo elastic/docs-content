@@ -9,7 +9,7 @@ The Alerts page displays all detection alerts.
 
 :::{image} ../../../images/serverless--detections-alert-page.png
 :alt: Alerts page overview
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -35,7 +35,7 @@ The Alerts page offers various ways for you to organize and triage detection ale
 
     :::{image} ../../../images/serverless--detections-additional-filters.png
     :alt: Alerts table with Additional filters menu highlighted
-    :class: screenshot
+    :screenshot:
     :::
 
     ::::{note}
@@ -52,7 +52,7 @@ By default, the drop-down controls on the Alerts page filter alerts by **Status*
 
 :::{image} ../../../images/serverless--detections-alert-page-dropdown-controls.png
 :alt: Alerts page with drop-down controls highlighted
-:class: screenshot
+:screenshot:
 :::
 
 ::::{note}
@@ -89,7 +89,7 @@ Select up to three fields for grouping alerts. The groups will nest in the order
 
 :::{image} ../../../images/serverless--detections-group-alerts.png
 :alt: Alerts table with Group alerts by drop-down
-:class: screenshot
+:screenshot:
 :::
 
 Each group displays information such as the alerts' severity and how many users, hosts, and alerts are in the group. The information displayed varies depending on the selected fields.
@@ -101,7 +101,7 @@ To interact with grouped alerts:
 
     :::{image} ../../../images/serverless--detections-group-alerts-expand.png
     :alt: Expanded alert group with alerts table
-    :class: screenshot
+    :screenshot:
     :::
 
 
@@ -118,7 +118,7 @@ Click the **Full screen** button in the upper-right to view the table in full-sc
 
 :::{image} ../../../images/serverless--detections-alert-table-toolbar-buttons.png
 :alt: Alerts table with toolbar buttons highlighted
-:class: screenshot
+:screenshot:
 :::
 
 Use the view options drop-down in the upper-right of the Alerts table to control how alerts are displayed:
@@ -128,7 +128,7 @@ Use the view options drop-down in the upper-right of the Alerts table to control
 
 :::{image} ../../../images/serverless--detections-event-rendered-view.png
 :alt: Alerts table with the Event rendered view enabled
-:class: screenshot
+:screenshot:
 :::
 
 ::::{tip}
@@ -197,7 +197,7 @@ To apply or remove alert tags on multiple alerts, select the alerts you want to 
 
 :::{image} ../../../images/serverless--detections-bulk-apply-alert-tag.png
 :alt: Bulk action menu with multiple alerts selected
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -230,14 +230,14 @@ Show users that have been assigned to alerts by adding the **Assignees** column 
 
 :::{image} ../../../images/serverless--detections-alert-assigned-alerts.png
 :alt: Alert assignees in the Alerts table
-:class: screenshot
+:screenshot:
 :::
 
 Assigned users are automatically displayed in the alert details flyout. Up to two assigned users can be shown in the flyout. If an alert is assigned to three or more users, a numbered badge displays instead.
 
 :::{image} ../../../images/serverless--detections-alert-flyout-assignees.png
 :alt: Alert assignees in the alert details flyout
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -247,7 +247,7 @@ Click the **Assignees** filter above the Alerts table, then select the users you
 
 :::{image} ../../../images/serverless--detections-alert-filter-assigned-alerts.png
 :alt: Filtering assigned alerts
-:class: screenshot
+:screenshot:
 :::
 
 

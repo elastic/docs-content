@@ -45,7 +45,7 @@ Each rule type provides its own way of defining the conditions to detect, but an
 
 :::{image} ../../../images/kibana-rule-types-es-query-conditions.png
 :alt: UI for defining rule conditions in an {{es}} query rule
-:class: screenshot
+:screenshot:
 :::
 
 All rules must have a check interval, which defines how often to evaluate the rule conditions. Checks are queued; they run as close to the defined value as capacity allows.
@@ -70,14 +70,14 @@ For example, if you create an {{es}} query rule, you can send notifications that
 
 :::{image} ../../../images/kibana-es-query-rule-action-summary.png
 :alt: UI for defining alert summary action in an {{es}} query rule
-:class: screenshot
+:screenshot:
 :::
 
 When you choose to run actions for each alert, you must specify an action group. Each rule type has a set of valid action groups, which affect when an action runs. For example, you can set **Run when** to `Query matched` or `Recovered` for the {{es}} query rule:
 
 :::{image} ../../../images/kibana-es-query-rule-recovery-action.png
 :alt: UI for defining a recovery action
-:class: screenshot
+:screenshot:
 :::
 
 Connectors have unique behavior for each action group. For example, you can have actions that create an {{opsgenie}} alert when rule conditions are met and recovery actions that close the {{opsgenie}} alert. For more information about connectors, refer to [*Connectors*](../../../deploy-manage/manage-connectors.md).
@@ -107,7 +107,7 @@ You can pass rule values to an action at the time a condition is detected. To vi
 
 :::{image} ../../../images/kibana-es-query-rule-action-variables.png
 :alt: Passing rule values to an action
-:class: screenshot
+:screenshot:
 :::
 
 For more information about common action variables, refer to [*Rule action variables*](rule-action-variables.md).
@@ -145,7 +145,7 @@ Click the rule name to access a rule details page:
 
 :::{image} ../../../images/kibana-rule-details-alerts-active.png
 :alt: Rule details page with multiple alerts
-:class: screenshot
+:screenshot:
 :::
 
 In this example, the rule detects when a site serves more than a threshold number of bytes in a 24 hour period. Four sites are above the threshold. These are called alerts - occurrences of the condition being detected - and the alert name, status, time of detection, and duration of the condition are shown in this view. Alerts come and go from the list depending on whether the rule conditions are met. For more information about alerts, go to [*View alerts*](view-alerts.md).
@@ -154,7 +154,7 @@ If there are rule actions that failed to run successfully, you can see the detai
 
 :::{image} ../../../images/kibana-rule-details-errored-actions.png
 :alt: Rule histor page with alerts that have errored actions
-:class: screenshot
+:screenshot:
 :::
 
 ## Import and export rules [importing-and-exporting-rules]
@@ -174,5 +174,5 @@ Rules are disabled on export. You are prompted to re-enable the rule on successf
 
 :::{image} ../../../images/kibana-rules-imported-banner.png
 :alt: Rules import banner
-:class: screenshot
+:screenshot:
 :::

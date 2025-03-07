@@ -41,21 +41,21 @@ You can view, assign, change, or unassign asset criticality from the following p
 
     :::{image} ../../../images/security-assign-asset-criticality-host-details.png
     :alt: Assign asset criticality from the host details page
-    :class: screenshot
+    :screenshot:
     :::
 
 * The [host details flyout](../explore/hosts-page.md#host-details-flyout) and [user details flyout](../explore/users-page.md#user-details-flyout):
 
     :::{image} ../../../images/security-assign-asset-criticality-host-flyout.png
     :alt: Assign asset criticality from the host details flyout
-    :class: screenshot
+    :screenshot:
     :::
 
 * The host details flyout and user details flyout in [Timeline](../investigate/timeline.md):
 
     :::{image} ../../../images/security-assign-asset-criticality-timeline.png
     :alt: Assign asset criticality from the host details flyout in Timeline
-    :class: screenshot
+    :screenshot:
     :::
 
 
@@ -63,7 +63,7 @@ If you have enabled the [entity store](entity-store.md), you can also view asset
 
 :::{image} ../../../images/security-entities-section.png
 :alt: Entities section
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -136,6 +136,6 @@ To view the impact of asset criticality on an entity’s risk score, follow thes
 
 :::{image} ../../../images/security-asset-criticality-impact.png
 :alt: View asset criticality impact on host risk score
-:class: screenshot
+:screenshot:
 :::
 

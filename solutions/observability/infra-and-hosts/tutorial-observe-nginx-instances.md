@@ -189,7 +189,7 @@ The **Metrics Nginx overview** shows visual representations of total requests, p
 
 :::{image} ../../../images/observability-nginx-metrics-dashboard.png
 :alt: nginx metrics dashboard
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -223,14 +223,14 @@ The **Nginx logs overview** dashboard shows visual representations of geographic
 
 :::{image} ../../../images/observability-nginx-logs-overview-dashboard.png
 :alt: nginx logs overview dashboard
-:class: screenshot
+:screenshot:
 :::
 
 The **Nginx access and error logs** dashboard shows your access logs over time, and lists your access and error logs.
 
 :::{image} ../../../images/observability-nginx-logs-access-error-dashboard.png
 :alt: nginx access and error logs dashboard
-:class: screenshot
+:screenshot:
 :::
 
 

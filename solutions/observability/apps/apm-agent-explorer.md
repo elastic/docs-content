@@ -17,13 +17,13 @@ APM agent explorer provides a centralized panel to identify APM agent deployment
 
 :::{image} ../../../images/observability-apm-agent-explorer.png
 :alt: APM agent explorer
-:class: screenshot
+:screenshot:
 :::
 
 Select an APM agent to expand it and view the details of each agent instance.
 
 :::{image} ../../../images/observability-apm-agent-explorer-flyout.png
 :alt: APM agent explorer flyout
-:class: screenshot
+:screenshot:
 :::
 

@@ -19,7 +19,7 @@ You can drill down into the status of your {{es}} cluster in {{kib}} by clicking
 
 :::{image} ../../../images/kibana-monitoring-elasticsearch.png
 :alt: Monitoring clusters
-:class: screenshot
+:screenshot:
 :::
 
 For more information, refer to [Monitor a cluster](../../monitor.md).
@@ -38,7 +38,7 @@ The panel at the top shows the current cluster statistics, the charts show the s
 
 :::{image} ../../../images/kibana-monitoring-overview.png
 :alt: Elasticsearch Cluster Overview
-:class: screenshot
+:screenshot:
 :::
 
 ::::{tip}

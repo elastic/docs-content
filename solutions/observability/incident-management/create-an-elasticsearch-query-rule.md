@@ -31,7 +31,7 @@ When you create an {{es}} query rule, your choice of query type affects the info
 
 :::{image} ../../../images/serverless-alerting-rule-types-es-query-conditions.png
 :alt: Define the condition to detect
-:class: screenshot
+:screenshot:
 :::
 
 1. Define your query
@@ -83,14 +83,14 @@ If you use query DSL, KQL, or Lucene, the query runs against the selected indice
 
 :::{image} ../../../images/serverless-alerting-rule-types-es-query-valid.png
 :alt: Test {{es}} query returns number of matches when valid
-:class: screenshot
+:screenshot:
 :::
 
 If you use an ES|QL query, a table is displayed. For example:
 
 :::{image} ../../../images/serverless-alerting-rule-types-esql-query-valid.png
 :alt: Test ES|QL query returns a table when valid
-:class: screenshot
+:screenshot:
 :::
 
 If the query is not valid, an error occurs.
@@ -145,7 +145,7 @@ After you select a connector, you must set the action frequency. You can choose 
 
 :::{image} ../../../images/serverless-alerting-es-query-rule-action-summary.png
 :alt: UI for defining alert summary action in an {{es}} query rule
-:class: screenshot
+:screenshot:
 :::
 
 Alternatively, you can set the action frequency to **For each alert** and specify the conditions each alert must meet for the action to run.
@@ -154,7 +154,7 @@ With the **Run when** menu you can choose how often the action runs (at each che
 
 :::{image} ../../../images/serverless-alerting-es-query-rule-action-query-matched.png
 :alt: UI for defining a recovery action
-:class: screenshot
+:screenshot:
 :::
 
 You can further refine the conditions under which actions run by specifying that actions only run when they match a KQL query or when an alert occurs within a specific time frame.
@@ -167,7 +167,7 @@ Use the default notification message or customize it. You can add more context t
 
 :::{image} ../../../images/serverless-action-variables-popup.png
 :alt: Action variables list
-:class: screenshot
+:screenshot:
 :::
 
 The following variables are specific to this rule type. You can also specify [variables common to all rules](../../../explore-analyze/alerts-cases/alerts/rule-action-variables.md).

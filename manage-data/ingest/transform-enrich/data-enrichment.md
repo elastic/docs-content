@@ -79,7 +79,7 @@ Use the **Enrich Policies** view to add data from your existing indices to incom
 
 :::{image} ../../../images/elasticsearch-reference-management-enrich-policies.png
 :alt: Enrich policies
-:class: screenshot
+:screenshot:
 :::
 
 When creating an enrich policy, the UI walks you through the configuration setup and selecting the fields. Before you can use the policy with an enrich processor or {{esql}} query, you must execute the policy.

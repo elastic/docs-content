@@ -54,7 +54,7 @@ If you collected data using one of the {{kib}} [ingest options](../../manage-dat
 
    :::{image} ../../images/kibana-discover-data-view.png
    :alt: How to set the {{data-source}} in Discover
-   :class: screenshot
+   :screenshot:
    :width: 50%
    :::
 
@@ -91,7 +91,7 @@ A temporary {{data-source}} remains in your space until you change apps, or unti
 
 :::{image} ../../images/ad-hoc-data-view.gif
 :alt: how to create an ad-hoc data view
-:class: screenshot
+:screenshot:
 :::
 
 ::::{note}

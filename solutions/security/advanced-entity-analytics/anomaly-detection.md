@@ -18,7 +18,7 @@ If you have the appropriate role, you can use the **ML job settings** interface 
 
 :::{image} ../../../images/security-ml-ui.png
 :alt: ML job settings UI on the Alerts page
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -30,14 +30,14 @@ You can also check the status of {{ml}} detection rules, and start or stop their
 
     :::{image} ../../../images/security-rules-table-ml-job-error.png
     :alt: Rules table {{ml}} job error
-    :class: screenshot
+    :screenshot:
     :::
 
 * On a rule’s details page, check the **Definition** section to confirm whether the required {{ml}} jobs are running. Switch the toggles on or off to run or stop each job.
 
     :::{image} ../../../images/security-rules-ts-ml-job-stopped.png
     :alt: Rule details page with ML job stopped
-    :class: screenshot
+    :screenshot:
     :::
 
 
@@ -56,7 +56,7 @@ Or
 
 * You install one or more of the [Advanced Analytics integrations](/solutions/security/advanced-entity-analytics/behavioral-detection-use-cases.md#ml-integrations).
 
-[Prebuilt job reference](security-docs://reference/prebuilt-jobs.md) describes all available {{ml}} jobs and lists which ECS fields are required on your hosts when you are not using {{beats}} or the {{agent}} to ship your data. For information on tuning anomaly results to reduce the number of false positives, see [Optimizing anomaly results](/solutions/security/advanced-entity-analytics/optimizing-anomaly-results.md).
+[Prebuilt anomaly detection jobs](/reference/security/prebuilt-anomaly-detection-jobs.md) describes all available {{ml}} jobs and lists which ECS fields are required on your hosts when you are not using {{beats}} or the {{agent}} to ship your data. For information on tuning anomaly results to reduce the number of false positives, see [Optimizing anomaly results](/solutions/security/advanced-entity-analytics/optimizing-anomaly-results.md).
 
 ::::{note}
 Machine learning jobs look back and analyze two weeks of historical data prior to the time they are enabled. After jobs are enabled, they continuously analyze incoming data. When jobs are stopped and restarted within the two-week time frame, previously analyzed data is not processed again.

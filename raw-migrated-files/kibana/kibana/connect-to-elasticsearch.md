@@ -6,7 +6,7 @@ All integrations are available in a single view on the **Integrations** page.
 
 :::{image} ../../../images/kibana-add-integration.png
 :alt: Integrations page from which you can choose integrations to start collecting and analyzing data
-:class: screenshot
+:screenshot:
 :::
 
 ::::{note}
@@ -41,7 +41,7 @@ Sample data sets come with sample visualizations, dashboards, and more to help y
 
 :::{image} ../../../images/kibana-add-sample-data.png
 :alt: eCommerce
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -73,7 +73,7 @@ The upload feature is not intended for use as part of a repeated production proc
 
 :::{image} ../../../images/kibana-add-data-fv.png
 :alt: Uploading a file in {{kib}}
-:class: screenshot
+:screenshot:
 :::
 
 The {{stack-security-features}} provide roles and privileges that control which users can upload files. To upload a file in {{kib}} and import it into an {{es}} index, you’ll need:

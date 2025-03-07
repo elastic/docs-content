@@ -32,7 +32,7 @@ The processors described in this section are valid:
 
     :::{image} images/add-processor.png
     :alt: Screen showing how to add a processor to an integration policy
-    :class: screenshot
+    :screenshot:
     :::
 
     ::::{note}

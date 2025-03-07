@@ -19,7 +19,7 @@ You can create {{transform}} rules under **{{stack-manage-app}} > {{rules-ui}}**
 3. Select the {{transform}} or {{transforms}} to include. You can also use a special character (`*`) to apply the rule to all your {{transforms}}. {{transforms-cap}} created after the rule are automatically included.
    :::{image} ../../images/elasticsearch-reference-transform-check-config.png
    :alt: Selecting health check
-   :class: screenshot
+   :screenshot:
    :::
 
 4. The following health checks are available and enabled by default:
@@ -49,7 +49,7 @@ After you select a connector, you must set the action frequency. You can choose 
 
 :::{image} ../../images/elasticsearch-reference-transform-alert-summary-actions.png
 :alt: Setting action frequency to summary of alerts
-:class: screenshot
+:screenshot:
 :::
 
 ::::{tip}
@@ -64,7 +64,7 @@ There is a set of variables that you can use to customize the notification messa
 
 :::{image} ../../images/elasticsearch-reference-transform-alert-actions.png
 :alt: Selecting action variables
-:class: screenshot
+:screenshot:
 :::
 
 After you save the configurations, the rule appears in the **{{rules-ui}}** list where you can check its status and see the overview of its configuration information.

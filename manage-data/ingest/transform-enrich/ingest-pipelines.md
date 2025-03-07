@@ -39,7 +39,7 @@ In {{kib}}, open the main menu and click **Stack Management > Ingest Pipelines**
 
 :::{image} ../../../images/elasticsearch-reference-ingest-pipeline-list.png
 :alt: Kibana's Ingest Pipelines list view
-:class: screenshot
+:screenshot:
 :::
 
 To create a pipeline, click **Create pipeline > New pipeline**. For an example tutorial, see [Example: Parse logs](example-parse-logs.md).
@@ -101,7 +101,7 @@ Before using a pipeline in production, we recommend you test it using sample doc
 
 :::{image} ../../../images/elasticsearch-reference-test-a-pipeline.png
 :alt: Test a pipeline in Kibana
-:class: screenshot
+:screenshot:
 :::
 
 You can also test pipelines using the [simulate pipeline API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ingest-simulate). You can specify a configured pipeline in the request path. For example, the following request tests `my-pipeline`.
@@ -305,7 +305,7 @@ $$$pipeline-custom-logs-index-template$$$
 
     :::{image} ../../../images/elasticsearch-reference-custom-logs.png
     :alt: Set up custom log integration in Fleet
-    :class: screenshot
+    :screenshot:
     :::
 
 5. Use the [rollover API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-rollover) to roll over your data stream. This ensures {{es}} applies the index template and its pipeline settings to any new data for the integration.
@@ -339,7 +339,7 @@ $$$pipeline-custom-logs-configuration$$$
 
     :::{image} ../../../images/elasticsearch-reference-custom-logs-pipeline.png
     :alt: Custom pipeline configuration for custom log integration
-    :class: screenshot
+    :screenshot:
     :::
 
 

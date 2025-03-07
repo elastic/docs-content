@@ -69,7 +69,7 @@ To create an API key for {{agent}}:
 
     :::{image} images/copy-api-key.png
     :alt: Message with field for copying API key
-    :class: screenshot
+    :screenshot:
     :::
 
 2. Copy the API key. You will need this for the next step, and you will not be able to view it again.
@@ -111,7 +111,7 @@ Although it’s recommended that you use an API key instead of a username and pa
 
         :::{image} images/create-standalone-agent-role.png
         :alt: Create role settings for a standalone agent role
-        :class: screenshot
+        :screenshot:
         :::
 
 5. Create the role and assign it to a user. For more information about creating roles, refer to [{{kib}} role management](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md).

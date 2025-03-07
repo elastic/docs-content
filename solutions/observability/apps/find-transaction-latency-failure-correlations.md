@@ -45,7 +45,7 @@ The correlations on the **Latency correlations** tab help you discover which att
 
 :::{image} ../../../images/observability-correlations-hover.png
 :alt: APM latency correlations
-:class: screenshot
+:screenshot:
 :::
 
 The progress bar indicates the status of the asynchronous analysis, which performs statistical searches across a large number of attributes. For large time ranges and services with high transaction throughput, this might take some time. To improve performance, reduce the time range.
@@ -72,7 +72,7 @@ For example, in the screenshot below, there are attributes such as a specific no
 
 :::{image} ../../../images/observability-correlations-failed-transactions.png
 :alt: Failed transaction correlations
-:class: screenshot
+:screenshot:
 :::
 
 Select the `+` filter to create a new query in the Applications UI for transactions with one or more of these attributes. If you are unfamiliar with a field, click the icon beside its name to view its most popular values and optionally filter on those values too. Each time that you add another attribute, it is filtering out more and more noise and bringing you closer to a diagnosis.

@@ -7,7 +7,7 @@ applies_to:
   serverless:
 ---
 
-# Manage connectors [connector-management]
+# Connectors [connector-management]
 
 Connectors serve as a central place to store connection information for both Elastic and third-party systems. They enable the linking of actions to rules, which execute as background tasks on the {{kib}} server when rule conditions are met. This allows rules to route actions to various destinations such as log files, ticketing systems, and messaging tools. Different {{kib}} apps may have their own rule types, but they typically share connectors. The **{{stack-manage-app}} > {{connectors-ui}}** provides a central location to view and manage all connectors in the current space.
 
@@ -34,14 +34,14 @@ In **{{stack-manage-app}} > {{connectors-ui}}**, you can find a list of the conn
 
 :::{image} ../images/kibana-connector-filter-by-type.png
 :alt: Filtering the connector list by types of connectors
-:class: screenshot
+:screenshot:
 :::
 
 You can delete individual connectors using the trash icon. Alternatively, select multiple connectors and delete them in bulk using the **Delete** button.
 
 :::{image} ../images/kibana-connector-delete.png
 :alt: Deleting connectors individually or in bulk
-:class: screenshot
+:screenshot:
 :::
 
 ::::{note}
@@ -59,7 +59,7 @@ Some connector types are paid commercial features, while others are free. For a 
 
 :::{image} ../images/kibana-connector-select-type.png
 :alt: Connector select type
-:class: screenshot
+:screenshot:
 :width: 75%
 :::
 
@@ -81,7 +81,7 @@ If a connector is missing sensitive information after the import, a **Fix** butt
 
 :::{image} ../images/kibana-connectors-with-missing-secrets.png
 :alt: Connectors with missing secrets
-:class: screenshot
+:screenshot:
 :::
 
 ## Monitoring connectors [monitoring-connectors]

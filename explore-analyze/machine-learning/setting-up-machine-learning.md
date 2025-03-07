@@ -66,11 +66,11 @@ Granting `All` or `Read` {{kib}} feature privilege for {{ml-app}} will also gran
 
 #### Feature visibility in Spaces [kib-visibility-spaces]
 
-In {{kib}}, the {{ml-features}} must be visible in your [space](../../deploy-manage/manage-spaces.md#spaces-control-feature-visibility). To manage which features are visible in your space, go to **{{stack-manage-app}}** > **{{kib}}** > **Spaces** or use the [global search field](../find-and-organize/find-apps-and-objects.md) to locate **Spaces** directly.
+In {{kib}}, the {{ml-features}} must be visible in your [space](../../deploy-manage/manage-spaces.md). To manage which features are visible in your space, go to **{{stack-manage-app}}** > **{{kib}}** > **Spaces** or use the [global search field](../find-and-organize/find-apps-and-objects.md) to locate **Spaces** directly.
 
 :::{image} ../../images/machine-learning-spaces.jpg
 :alt: Manage spaces in {{kib}}
-:class: screenshot
+:screenshot:
 :::
 
 In addition to index privileges, source {{data-sources}} must also exist in the same space as your {{ml}} jobs. You can configure these under **{{data-sources-caps}}**. To open **{{data-sources-caps}}**, find **{{stack-manage-app}}** > **{{kib}}** in the main menu, or use the [global search field](../find-and-organize/find-apps-and-objects.md).
@@ -79,7 +79,7 @@ Each {{ml}} job and trained model can be assigned to all, one, or multiple space
 
 :::{image} ../../images/machine-learning-assign-job-spaces.jpg
 :alt: Assign machine learning jobs to spaces
-:class: screenshot
+:screenshot:
 :::
 
 #### {{kib}} user [kib-security-privileges]

@@ -30,7 +30,7 @@ Investigate your indices and perform operations from the **Indices** view.
 
 :::{image} ../../../images/elasticsearch-reference-management_index_labels.png
 :alt: Index Management UI
-:class: screenshot
+:screenshot:
 :::
 
 * To show details and perform operations such as close, forcemerge, and flush, click the index name.  To perform operations on multiple indices, select their checkboxes and then open the **Manage** menu. For more information on managing indices, refer to [Index APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-indices).
@@ -39,7 +39,7 @@ Investigate your indices and perform operations from the **Indices** view.
 
     :::{image} ../../../images/elasticsearch-reference-management_index_details.png
     :alt: Index Management UI
-    :class: screenshot
+    :screenshot:
     :::
 
 
@@ -54,7 +54,7 @@ A value in the data retention column indicates that the data stream is managed b
 
 :::{image} ../../../images/elasticsearch-reference-management-data-stream-fields.png
 :alt: Data stream details
-:class: screenshot
+:screenshot:
 :::
 
 * To view more information about a data stream, such as its generation or its current index lifecycle policy, click the stream’s name. From this view, you can navigate to **Discover** to further explore data within the data stream.
@@ -67,7 +67,7 @@ Create, edit, clone, and delete your index templates in the **Index Templates** 
 
 :::{image} ../../../images/elasticsearch-reference-management-index-templates.png
 :alt: Index templates
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -81,7 +81,7 @@ In this tutorial, you’ll create an index template and use it to configure two 
 
     :::{image} ../../../images/elasticsearch-reference-management_index_create_wizard.png
     :alt: Create wizard
-    :class: screenshot
+    :screenshot:
     :::
 
 2. In the **Name** field, enter `my-index-template`.
@@ -98,7 +98,7 @@ In this tutorial, you’ll create an index template and use it to configure two 
 
     :::{image} ../../../images/elasticsearch-reference-management_index_component_template.png
     :alt: Component templates page
-    :class: screenshot
+    :screenshot:
     :::
 
 2. Define index settings. These are optional. For this tutorial, leave this section blank.
@@ -106,7 +106,7 @@ In this tutorial, you’ll create an index template and use it to configure two 
 
     :::{image} ../../../images/elasticsearch-reference-management-index-templates-mappings.png
     :alt: Mapped fields page
-    :class: screenshot
+    :screenshot:
     :::
 
     Alternatively, you can click the **Load JSON** link and define the mapping as JSON:
@@ -196,7 +196,7 @@ Use the **Enrich Policies** view to add data from your existing indices to incom
 
 :::{image} ../../../images/elasticsearch-reference-management-enrich-policies.png
 :alt: Enrich policies
-:class: screenshot
+:screenshot:
 :::
 
 When creating an enrich policy, the UI walks you through the configuration setup and selecting the fields. Before you can use the policy with an enrich processor or {{esql}} query, you must execute the policy.

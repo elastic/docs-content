@@ -56,12 +56,12 @@ To create a new role with access to {{fleet}} and Integrations:
     1. To grant the role full access to use and manage {{fleet}} and integrations, set both the **Fleet** and **Integrations** privileges to `All`.
     :::{image} images/kibana-fleet-privileges-all.png
     :alt: Kibana privileges flyout showing Fleet and Integrations access set to All
-    :class: screenshot
+    :screenshot:
     :::
     2. Similarly, to create a read-only user for {{fleet}} and Integrations, set both the **Fleet** and **Integrations** privileges to `Read`.
     :::{image} images/kibana-fleet-privileges-read.png
     :alt: Kibana privileges flyout showing Fleet and Integrations access set to All
-    :class: screenshot
+    :screenshot:
     :::
 
 Once you've created a new role you can assign it to any {{es}} user. You can edit the role at any time by returning to the **Roles** page in {{kib}}.

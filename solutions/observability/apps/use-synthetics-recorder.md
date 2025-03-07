@@ -16,7 +16,7 @@ You can use the Synthetics Recorder to [write a synthetic test](../../../solutio
 
 :::{image} ../../../images/observability-synthetics-create-test-script-recorder.png
 :alt: Elastic Synthetics Recorder after recording a journey and clicking Export
-:class: screenshot
+:screenshot:
 :::
 
 

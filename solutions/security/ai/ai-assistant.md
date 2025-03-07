@@ -23,7 +23,7 @@ The Elastic AI Assistant utilizes generative AI to bolster your cybersecurity op
 
 :::{image} ../../../images/security-assistant-basic-view.png
 :alt: Image of AI Assistant chat window
-:class: screenshot
+:screenshot:
 :::
 
 ::::{warning}
@@ -71,7 +71,7 @@ To open AI Assistant, select the **AI Assistant** button in the top toolbar from
 
 :::{image} ../../../images/security-ai-assistant-button.png
 :alt: AI Assistant button
-:class: screenshot
+:screenshot:
 :::
 
 This opens the **Welcome** chat interface, where you can ask general questions about {{elastic-sec}}.
@@ -98,7 +98,7 @@ Use these features to adjust and act on your conversations with AI Assistant:
 
     :::{image} ../../../images/security-quick-prompts.png
     :alt: Quick Prompts highlighted below a conversation
-    :class: screenshot
+    :screenshot:
     :::
 
 * System Prompts and Quick Prompts can also be configured from the corresponding tabs on the **Security AI settings** page.
@@ -155,7 +155,7 @@ You can access anonymization settings directly from the **Attack Discovery** pag
 
 :::{image} ../../../images/security-assistant-anonymization-menu.png
 :alt: AI Assistant's settings menu
-:class: screenshot
+:screenshot:
 :::
 
 The fields on this list are among those most likely to provide relevant context to AI Assistant. Fields with **Allowed** toggled on are included. **Allowed** fields with **Anonymized** set to **Yes** are included, but with their values obfuscated.
