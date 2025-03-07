@@ -31,9 +31,9 @@ There are some bootstrap checks that are always enforced to prevent {{es}} from 
 
 ## Development vs. production mode [dev-vs-prod-mode] 
 
-By default, {{es}} binds to loopback addresses for [HTTP and transport (internal) communication](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/networking-settings.md). This is fine for downloading and playing with {{es}} as well as everyday development, but it’s useless for production systems. To join a cluster, an {{es}} node must be reachable via transport communication. To join a cluster via a non-loopback address, a node must bind transport to a non-loopback address and not be using [single-node discovery](/deploy-manage/deploy/self-managed/bootstrap-checks.md#single-node-discovery). Thus, we consider an {{es}} node to be in development mode if it can not form a cluster with another machine via a non-loopback address, and is otherwise in production mode if it can join a cluster via non-loopback addresses.
+By default, {{es}} binds to loopback addresses for [HTTP and transport (internal) communication](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md). This is fine for downloading and playing with {{es}} as well as everyday development, but it’s useless for production systems. To join a cluster, an {{es}} node must be reachable via transport communication. To join a cluster via a non-loopback address, a node must bind transport to a non-loopback address and not be using [single-node discovery](/deploy-manage/deploy/self-managed/bootstrap-checks.md#single-node-discovery). Thus, we consider an {{es}} node to be in development mode if it can not form a cluster with another machine via a non-loopback address, and is otherwise in production mode if it can join a cluster via non-loopback addresses.
 
-Note that HTTP and transport can be configured independently via [`http.host`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/networking-settings.md#http-settings) and [`transport.host`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/networking-settings.md#transport-settings). This can be useful for configuring a single node to be reachable via HTTP for testing purposes without triggering production mode.
+Note that HTTP and transport can be configured independently via [`http.host`](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md#http-settings) and [`transport.host`](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md#transport-settings). This can be useful for configuring a single node to be reachable via HTTP for testing purposes without triggering production mode.
 
 
 ## Single-node discovery [single-node-discovery] 
@@ -43,13 +43,13 @@ Some users need to bind the transport to an external interface for testing a rem
 
 ## Forcing the bootstrap checks [_forcing_the_bootstrap_checks] 
 
-If you are running a single node in production, it is possible to evade the bootstrap checks, either by not binding transport to an external interface, or by binding transport to an external interface and setting the discovery type to `single-node`. For this situation, you can force execution of the bootstrap checks by setting the system property `es.enforce.bootstrap.checks` to `true` in the [JVM options](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/jvm-settings.md#set-jvm-options). We strongly encourage you to do this if you are in this specific situation. This system property can be used to force execution of the bootstrap checks independent of the node configuration.
+If you are running a single node in production, it is possible to evade the bootstrap checks, either by not binding transport to an external interface, or by binding transport to an external interface and setting the discovery type to `single-node`. For this situation, you can force execution of the bootstrap checks by setting the system property `es.enforce.bootstrap.checks` to `true` in the [JVM options](elasticsearch://reference/elasticsearch/jvm-settings.md#set-jvm-options). We strongly encourage you to do this if you are in this specific situation. This system property can be used to force execution of the bootstrap checks independent of the node configuration.
 
 ## Checks
 
 :::{dropdown} Heap size check
 
-By default, {{es}} automatically sizes JVM heap based on a node’s [roles](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/node-settings.md#node-roles) and total memory. If you manually override the default sizing and start the JVM with different initial and max heap sizes, the JVM may pause as it resizes the heap during system usage. If you enable [`bootstrap.memory_lock`](setup-configuration-memory.md#bootstrap-memory_lock), the JVM locks the initial heap size on startup. If the initial heap size is not equal to the maximum heap size, some JVM heap may not be locked after a resize. 
+By default, {{es}} automatically sizes JVM heap based on a node’s [roles](elasticsearch://reference/elasticsearch/configuration-reference/node-settings.md#node-roles) and total memory. If you manually override the default sizing and start the JVM with different initial and max heap sizes, the JVM may pause as it resizes the heap during system usage. If you enable [`bootstrap.memory_lock`](setup-configuration-memory.md#bootstrap-memory_lock), the JVM locks the initial heap size on startup. If the initial heap size is not equal to the maximum heap size, some JVM heap may not be locked after a resize. 
 
 To avoid these issues, start the JVM with an initial heap size equal to the maximum heap size.
 :::
@@ -225,7 +225,7 @@ $$$bootstrap-checks-xpack-token-ssl$$$
 
 If you use {{es}} {{security-features}} and the built-in token service is enabled, you must configure your cluster to use SSL/TLS for the HTTP interface. HTTPS is required in order to use the token service.
 
-In particular, if `xpack.security.authc.token.enabled` is set to `true` in the `elasticsearch.yml` file, you must also set `xpack.security.http.ssl.enabled` to `true`. For more information about these settings, see [Security settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/security-settings.md) and [Advanced HTTP settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/networking-settings.md#http-settings).
+In particular, if `xpack.security.authc.token.enabled` is set to `true` in the `elasticsearch.yml` file, you must also set `xpack.security.http.ssl.enabled` to `true`. For more information about these settings, see [Security settings](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md) and [Advanced HTTP settings](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md#http-settings).
 
 To pass this bootstrap check, you must enable HTTPS or disable the built-in token service.
 

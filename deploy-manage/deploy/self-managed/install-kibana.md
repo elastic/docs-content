@@ -23,7 +23,7 @@ This section includes information on how to setup {{kib}} and get it running, in
 
 Packages of {{kib}} are provided for and tested against Linux, Darwin, and Windows. Since {{kib}} runs on Node.js, we include the necessary Node.js binaries for these platforms. Running {{kib}} against a separately maintained version of Node.js is not supported.
 
-To support certain older Linux platforms (most notably CentOS7/RHEL7), {{kib}} for Linux ships with a custom build of Node.js with glibc 2.17 support. For details, see [Custom builds of Node.js](asciidocalypse://docs/kibana/docs/extend/upgrading-nodejs.md#custom-nodejs-builds).
+To support certain older Linux platforms (most notably CentOS7/RHEL7), {{kib}} for Linux ships with a custom build of Node.js with glibc 2.17 support. For details, see [Custom builds of Node.js](kibana://extend/upgrading-nodejs.md#custom-nodejs-builds).
 
 ## {{kib}} install packages [install]
 

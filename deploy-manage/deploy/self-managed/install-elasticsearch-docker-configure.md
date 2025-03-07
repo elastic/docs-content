@@ -112,7 +112,7 @@ Some plugins require additional security permissions. You must explicitly accept
 * Attaching a `tty` when you run the Docker image and allowing the permissions when prompted.
 * Inspecting the security permissions and accepting them (if appropriate) by adding the `--batch` flag to the plugin install command.
 
-See [Plugin management](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch-plugins/_other_command_line_parameters.md) for more information.
+See [Plugin management](elasticsearch://reference/elasticsearch-plugins/_other_command_line_parameters.md) for more information.
 
 
 ## Troubleshoot Docker errors for {{es}} [troubleshoot-docker-errors]
