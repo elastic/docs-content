@@ -28,7 +28,7 @@ In **{{project-settings}} → {{manage-app}} → {{ingest-pipelines-app}}**, you
 
 :::{image} ../../../images/serverless-ingest-pipelines-management.png
 :alt: {{ingest-pipelines-app}}
-:class: screenshot
+:screenshot:
 :::
 
 To create a pipeline, click **Create pipeline → New pipeline**. For an example tutorial, see [Example: Parse logs](example-parse-logs.md).
@@ -42,5 +42,5 @@ Before you use a pipeline in production, you should test it using sample documen
 
 :::{image} ../../../images/serverless-ingest-pipelines-test.png
 :alt: Test a pipeline in {{ingest-pipelines-app}}
-:class: screenshot
+:screenshot:
 :::

@@ -93,9 +93,9 @@ jdk.tls.disabledAlgorithms=SSLv3, TLSv1, RC4, DES, MD5withRSA, \
 
 ### Enable your custom security configuration [_enable_your_custom_security_configuration]
 
-To enable your custom security policy, add a file in the [`jvm.options.d`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/jvm-settings.md#set-jvm-options) directory within your {{es}} configuration directory.
+To enable your custom security policy, add a file in the [`jvm.options.d`](elasticsearch://reference/elasticsearch/jvm-settings.md#set-jvm-options) directory within your {{es}} configuration directory.
 
-To enable your custom security policy, create a file named `java.security.options` within the [jvm.options.d](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/jvm-settings.md#set-jvm-options) directory of your {{es}} configuration directory, with this content:
+To enable your custom security policy, create a file named `java.security.options` within the [jvm.options.d](elasticsearch://reference/elasticsearch/jvm-settings.md#set-jvm-options) directory of your {{es}} configuration directory, with this content:
 
 ```text
 -Djava.security.properties=/path/to/your/es.java.security
@@ -105,7 +105,7 @@ To enable your custom security policy, create a file named `java.security.option
 
 ## Enabling TLS versions in {{es}} [_enabling_tls_versions_in_es]
 
-SSL/TLS versions can be enabled and disabled within {{es}} via the [`ssl.supported_protocols` settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/security-settings.md#ssl-tls-settings).
+SSL/TLS versions can be enabled and disabled within {{es}} via the [`ssl.supported_protocols` settings](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#ssl-tls-settings).
 
 {{es}} will only support the TLS versions that are enabled by the underlying JDK. If you configure `ssl.supported_procotols` to include a TLS version that is not enabled in your JDK, then it will be silently ignored.
 

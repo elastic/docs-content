@@ -30,7 +30,7 @@ In order to restore the indices and data streams that are missing data:
 
     :::{image} ../../images/elasticsearch-reference-kibana-console.png
     :alt: {{kib}} Console
-    :class: screenshot
+    :screenshot:
     :::
 
 4. To view the affected indices using the [cat indices API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-indices).

@@ -1,4 +1,7 @@
 ---
+mapped_urls:
+  - https://www.elastic.co/guide/en/cloud/current/ec-azure-snapshotting.html
+  - https://www.elastic.co/guide/en/cloud-heroku/current/ech-azure-snapshotting.html
 applies_to:
   deployment:
     ess: 

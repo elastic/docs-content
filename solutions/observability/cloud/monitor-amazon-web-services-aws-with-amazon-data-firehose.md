@@ -66,13 +66,13 @@ From the **Destination settings** panel, specify the following settings:
 
 ## Step 4: Send data to the Firehose delivery stream [firehose-step-four]
 
-You can configure a variety of log sources to send data to Firehose streams directly for example VPC flow logs. Some services don’t support publishing logs directly to Firehose but they do support publishing logs to CloudWatch logs, such as CloudTrail and Lambda. Refer to the [AWS documentation](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/AWS-logs-and-resource-policy.md) for more information.
+You can configure a variety of log sources to send data to Firehose streams directly for example VPC flow logs. Some services don’t support publishing logs directly to Firehose but they do support publishing logs to CloudWatch logs, such as CloudTrail and Lambda. Refer to the [AWS documentation](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/AWS-logs-and-resource-policy.html) for more information.
 
 For example, a typical workflow for sending CloudTrail logs to Firehose would be the following:
 
-* Publish CloudTrail logs to a Cloudwatch log group. Refer to the AWS documentation [about publishing CloudTrail logs](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/monitor-cloudtrail-log-files-with-cloudwatch-logs.md).
-* Create a subscription filter in the CloudWatch log group to the Firehose stream. Refer to the AWS documentation [about using subscription filters](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/SubscriptionFilters.md#FirehoseExample).
+* Publish CloudTrail logs to a Cloudwatch log group. Refer to the AWS documentation [about publishing CloudTrail logs](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/monitor-cloudtrail-log-files-with-cloudwatch-logs.html).
+* Create a subscription filter in the CloudWatch log group to the Firehose stream. Refer to the AWS documentation [about using subscription filters](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/SubscriptionFilters.html#FirehoseExample).
 
-We also added support for sending CloudWatch monitoring metrics to Elastic using Firehose. For example, you can configure metrics ingestion by creating a metric stream through CloudWatch. You can select an existing Firehose stream by choosing the option **Custom setup with Firehose**. For more information, refer to the AWS documentation [about the custom setup with Firehose](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-metric-streams-setup-datalake.md).
+We also added support for sending CloudWatch monitoring metrics to Elastic using Firehose. For example, you can configure metrics ingestion by creating a metric stream through CloudWatch. You can select an existing Firehose stream by choosing the option **Custom setup with Firehose**. For more information, refer to the AWS documentation [about the custom setup with Firehose](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-metric-streams-setup-datalake.html).
 
 For more information on Amazon Data Firehose, you can also check the [Amazon Data Firehose Integrations documentation](https://docs.elastic.co/integrations/awsfirehose).

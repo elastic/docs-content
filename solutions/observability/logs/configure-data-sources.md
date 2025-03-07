@@ -1,11 +1,16 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/configure-data-sources.html
+applies_to:
+  stack: all
 ---
 
 # Configure data sources [configure-data-sources]
 
-::::{admonition} There’s a new, better way to explore your logs!
+::::{Note}
+
+**There’s a new, better way to explore your logs!**
+
 These settings only apply to the Logs Stream app. The Logs Stream app and dashboard panel are deactivated by default. We recommend viewing and inspecting your logs with [Logs Explorer](logs-explorer.md) as it provides more features, better performance, and more intuitive navigation.
 
 To activate the Logs Stream app, refer to [Activate Logs Stream](logs-stream.md#activate-logs-stream).
@@ -13,7 +18,7 @@ To activate the Logs Stream app, refer to [Activate Logs Stream](logs-stream.md#
 ::::
 
 
-Specify the source configuration for logs in the [Logs settings](asciidocalypse://docs/kibana/docs/reference/configuration-reference/logs-settings.md) in the [{{kib}} configuration file](../../../deploy-manage/deploy/self-managed/configure.md). By default, the configuration uses the index patterns stored in the {{kib}} log sources advanced setting to query the data. The configuration also defines the default columns displayed in the logs stream.
+Specify the source configuration for logs in the [Logs settings](kibana://reference/configuration-reference/logs-settings.md) in the [{{kib}} configuration file](../../../deploy-manage/deploy/self-managed/configure.md). By default, the configuration uses the index patterns stored in the {{kib}} log sources advanced setting to query the data. The configuration also defines the default columns displayed in the logs stream.
 
 If your logs have custom index patterns, use non-default field settings, or contain parsed fields that you want to expose as individual columns, you can override the default configuration settings.
 

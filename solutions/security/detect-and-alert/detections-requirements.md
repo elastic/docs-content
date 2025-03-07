@@ -36,7 +36,7 @@ Additionally, there are some [advanced settings](/solutions/security/detect-and-
 These steps are only required for **self-managed** deployments:
 
 * HTTPS must be configured for communication between [{{es}} and {{kib}}](/deploy-manage/security/set-up-basic-security-plus-https.md#encrypt-kibana-http).
-* In the `elasticsearch.yml` configuration file, set the `xpack.security.enabled` setting to `true`. For more information, refer to [Configuring {{es}}](/deploy-manage/deploy/self-managed/configure-elasticsearch.md) and [Security settings in {{es}}](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/security-settings.md).
+* In the `elasticsearch.yml` configuration file, set the `xpack.security.enabled` setting to `true`. For more information, refer to [Configuring {{es}}](/deploy-manage/deploy/self-managed/configure-elasticsearch.md) and [Security settings in {{es}}](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md).
 * In the `kibana.yml` [configuration file](/deploy-manage/deploy/self-managed/configure.md), add the `xpack.encryptedSavedObjects.encryptionKey` setting with any alphanumeric value of at least 32 characters. For example:
 
     `xpack.encryptedSavedObjects.encryptionKey: 'fhjskloppd678ehkdfdlliverpoolfcr'`
@@ -50,7 +50,7 @@ After changing the `xpack.encryptedSavedObjects.encryptionKey` value and restart
 
 ## Enable and access detections [enable-detections-ui]
 
-To use the Detections feature, it must be enabled, your role must have access to rules and alerts, and your {{kib}} space must have **Data View Management** [feature visibility](/deploy-manage/manage-spaces.md#spaces-control-feature-visibility). If your role doesn’t have the cluster and index privileges needed to enable this feature, you can request someone who has these privileges to visit your {{kib}} space, which will turn it on for you.
+To use the Detections feature, it must be enabled, your role must have access to rules and alerts, and your {{kib}} space must have **Data View Management** [feature visibility](/deploy-manage/manage-spaces.md). If your role doesn’t have the cluster and index privileges needed to enable this feature, you can request someone who has these privileges to visit your {{kib}} space, which will turn it on for you.
 
 ::::{note}
 For instructions about using {{ml}} jobs and rules, refer to [Machine learning job and rule requirements](/solutions/security/advanced-entity-analytics/machine-learning-job-rule-requirements.md).
@@ -77,7 +77,7 @@ Here is an example of a user who has the Detections feature enabled in all {{kib
 
 :::{image} ../../../images/security-sec-admin-user.png
 :alt: Shows user with the Detections feature enabled in all Kibana spaces
-:class: screenshot
+:screenshot:
 :::
 
 

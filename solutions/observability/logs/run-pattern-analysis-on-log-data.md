@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/observability-run-log-pattern-analysis.html
+applies_to:
+  stack: all
 ---
 
 # Run a pattern analysis on log data [observability-run-log-pattern-analysis]
@@ -27,7 +29,7 @@ To run a log pattern analysis:
 
     :::{image} ../../../images/serverless-log-pattern-analysis.png
     :alt: Log pattern analysis of the message field
-    :class: screenshot
+    :screenshot:
     :::
 
 5. (Optional) Select one or more patterns, then choose to filter for (or filter out) documents that match the selected patterns. **Logs Explorer** only displays documents that match (or don’t match) the selected patterns. The filter options enable you to remove unimportant messages and focus on the more important, actionable data during troubleshooting.

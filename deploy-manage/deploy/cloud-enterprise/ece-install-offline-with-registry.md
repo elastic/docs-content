@@ -1,9 +1,13 @@
 ---
+navigation_title: With your private Docker registry
+applies_to:
+  deployment:
+    ece: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-install-offline-with-registry.html
 ---
 
-# With your private Docker registry [ece-install-offline-with-registry]
+# Air-gapped install with a private Docker registry [ece-install-offline-with-registry]
 
 Installing ECE on multiple hosts with your own registry server is simpler, because you do not have to load the Docker images on each host.
 
@@ -36,7 +40,7 @@ Installing ECE on multiple hosts with your own registry server is simpler, becau
        Enterprise Search is not available in versions 9.0+.
     :::
 
-3. Tag the Docker images with your private registry, where `REGISTRY` is `my.private.repo:5000`, for example:
+3. Tag the Docker images with your private registry URL by replacing `REGISTRY` with your actual registry address, for example `my.private.repo:5000`:
 
     ```sh
     docker tag docker.elastic.co/cloud-enterprise/elastic-cloud-enterprise:3.8.1 REGISTRY/cloud-enterprise/elastic-cloud-enterprise:3.8.1
@@ -50,7 +54,7 @@ Installing ECE on multiple hosts with your own registry server is simpler, becau
     docker tag docker.elastic.co/cloud-release/enterprise-search-cloud:8.17.1 REGISTRY/cloud-release/enterprise-search-cloud:8.17.1
     ```
 
-4. Push the Docker images to your private Docker registry, where `REGISTRY` is `my.private.repo:5000`, for example:
+4. Push the Docker images to your private Docker registry, using the same tags from the previous step. Replace `REGISTRY` with your actual registry URL, for example `my.private.repo:5000`:
 
     ```sh
     docker push REGISTRY/cloud-enterprise/elastic-cloud-enterprise:3.8.1
@@ -70,8 +74,13 @@ Installing ECE on multiple hosts with your own registry server is simpler, becau
     curl -L -O https://download.elastic.co/cloud/elastic-cloud-enterprise.sh
     ```
 
-6. Copy the installation script to each host where you plan to install Elastic Cloud Enterprise. (Alternatively, you can place the installation script in a secure network location where your other hosts can access it.)
-7. Invoke the installation script on each host with the `--docker-registry REGISTRY` parameter, where `REGISTRY` is `my.private.repo:5000`, for example:
+6. Copy the installation script to each host where you plan to install Elastic Cloud Enterprise or make it available on your network.
+
+7. Invoke the installation script on each host with the `--docker-registry REGISTRY` parameter, replacing `REGISTRY` with your actual registry URL (for example `my.private.repo:5000`):
+
+   ::::{note}
+   Refer to [](./install-ece-procedures.md) for more details on the parameters to pass to the installation script depending on the size of your installation.
+   ::::
 
     1. On the first host:
 
@@ -89,4 +98,4 @@ Installing ECE on multiple hosts with your own registry server is simpler, becau
           --docker-registry REGISTRY
         ```
 
-
+   Once the installation is complete, refer to [](./log-into-cloud-ui.md) to access Cloud UI.

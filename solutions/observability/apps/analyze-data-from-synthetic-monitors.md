@@ -26,7 +26,7 @@ When you use a single monitor configuration to create monitors in multiple locat
 
 :::{image} ../../../images/observability-synthetics-monitor-page.png
 :alt: Synthetics UI
-:class: screenshot
+:screenshot:
 :::
 
 To get started with your analysis in the Overview tab, you can search for monitors or use the filter options including current status (up, down, or disabled), monitor type (for example, journey or HTTP), location, and more.
@@ -52,7 +52,7 @@ When you go to an individual monitor’s page, you’ll see much more detail abo
 
 :::{image} ../../../images/observability-synthetics-analyze-individual-monitor-header.png
 :alt: Header at the top of the individual monitor page for all monitor types in the {synthetics-app}
-:class: screenshot
+:screenshot:
 :::
 
 Each individual monitor’s page has three tabs: Overview, History, and Errors.
@@ -64,7 +64,7 @@ The **Overview** tab has information about the monitor availability, duration, a
 
 :::{image} ../../../images/observability-synthetics-analyze-individual-monitor-details.png
 :alt: Details in the Overview tab on the individual monitor page for all monitor types in the {synthetics-app}
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -76,14 +76,14 @@ For browser monitors, you can click on any run in the **Test runs** list to see 
 
 :::{image} ../../../images/observability-synthetics-analyze-individual-monitor-history.png
 :alt: The History tab on the individual monitor page for all monitor types in the {synthetics-app}
-:class: screenshot
+:screenshot:
 :::
 
 If the monitor is configured to [retest on failure](../../../solutions/observability/apps/configure-synthetics-projects.md#synthetics-configuration-monitor), you’ll see retests listed in the **Test runs** table. Runs that are retests include a rerun icon (![Refresh icon](../../../images/observability-refresh.svg "")) next to the result badge.
 
 :::{image} ../../../images/observability-synthetics-retest.png
 :alt: A failed run and a retest in the table of test runs in the {synthetics-app}
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -97,7 +97,7 @@ For browser monitors, you can click on any run in the **Error** list to open an 
 
 :::{image} ../../../images/observability-synthetics-analyze-individual-monitor-errors.png
 :alt: The Errors tab on the individual monitor page for all monitor types in the {synthetics-app}
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -121,7 +121,7 @@ The journey page on the Overview tab includes:
 
 :::{image} ../../../images/observability-synthetics-analyze-journeys-over-time.png
 :alt: Individual journey page for browser monitors in the {synthetics-app}
-:class: screenshot
+:screenshot:
 :::
 
 From here, you can either drill down into:
@@ -140,7 +140,7 @@ Navigate through each step using **![Previous icon](../../../images/observabilit
 
 :::{image} ../../../images/observability-synthetics-analyze-one-run-code-executed.png
 :alt: Step carousel on a page detailing one run of a browser monitor in the {synthetics-app}
-:class: screenshot
+:screenshot:
 :::
 
 Scroll down to dig into the steps in this journey run. Click the ![Arrow right icon](../../../images/observability-arrowRight.svg "") icon next to the step number to show details. The details include metrics for the step in the current run and the step in the last successful run. Read more about step-level metrics below in [Timing](../../../solutions/observability/apps/analyze-data-from-synthetic-monitors.md#synthetics-analyze-one-step-timing) and [Metrics](../../../solutions/observability/apps/analyze-data-from-synthetic-monitors.md#synthetics-analyze-one-step-metrics).
@@ -171,7 +171,7 @@ Screenshots can be particularly helpful to identify what went wrong when a step 
 
 :::{image} ../../../images/observability-synthetics-analyze-one-step-screenshot.png
 :alt: Screenshot for one step in a browser monitor in the {synthetics-app}
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -193,7 +193,7 @@ This gives you an overview of how much time is spent (and how that time is spent
 
 :::{image} ../../../images/observability-synthetics-analyze-one-step-timing.png
 :alt: Network timing visualization for one step in a browser monitor in the {synthetics-app}
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -217,7 +217,7 @@ Next to each metric, there’s an icon that indicates whether the value is highe
 
 :::{image} ../../../images/observability-synthetics-analyze-one-step-metrics.png
 :alt: Metrics visualization for one step in a browser monitor in the {synthetics-app}
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -229,7 +229,7 @@ This provides a different kind of analysis. For example, you might have a large 
 
 :::{image} ../../../images/observability-synthetics-analyze-one-step-object.png
 :alt: Object visualization for one step in a browser monitor in the {synthetics-app}
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -243,7 +243,7 @@ Understanding each phase of a request can help you improve your site’s speed b
 
 :::{image} ../../../images/observability-synthetics-analyze-one-step-network.png
 :alt: Network requests waterfall visualization for one step in a browser monitor in the {synthetics-app}
-:class: screenshot
+:screenshot:
 :::
 
 Without leaving the waterfall chart, you can view data points relating to each resource: resource details, request headers, response headers, and certificate headers. On the waterfall chart, select a resource name, or any part of each row, to display the resource details overlay.

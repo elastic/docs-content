@@ -131,5 +131,5 @@ Navigate to Kibana and visualize the first WAF logs in your {{stack}}.
 
 :::{image} ../../../images/observability-firehose-waf-logs.png
 :alt: Firehose WAF logs in Kibana
-:class: screenshot
+:screenshot:
 :::

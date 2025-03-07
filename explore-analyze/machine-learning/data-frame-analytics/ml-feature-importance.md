@@ -16,28 +16,28 @@ You can see the average magnitude of the {{feat-imp}} values for each field acro
 
 :::{image} ../../../images/machine-learning-flights-regression-total-importance.jpg
 :alt: Total {{feat-imp}} values for a {{regression}} {{dfanalytics-job}} in {{kib}}
-:class: screenshot
+:screenshot:
 :::
 
 If the {{classanalysis}} involves more than two classes, {{kib}} uses colors to show how the impact of each field varies by class. For example:
 
 :::{image} ../../../images/machine-learning-diamonds-classification-total-importance.png
 :alt: Total {{feat-imp}} values for a {{classification}} {{dfanalytics-job}} in {{kib}}
-:class: screenshot
+:screenshot:
 :::
 
 You can also examine the feature importance values for each individual prediction. In {{kib}}, you can see these values in JSON objects or decision plots. For {{reganalysis}}, each decision plot starts at a shared baseline, which is the average of the prediction values for all the data points in the training data set. When you add all of the feature importance values for a particular data point to that baseline, you arrive at the numeric prediction value. If a {{feat-imp}} value is negative, it reduces the prediction value. If a {{feat-imp}} value is positive, it increases the prediction value. For example:
 
 :::{image} ../../../images/machine-learning-flights-regression-decision-plot.png
 :alt: Feature importance values for a {{regression}} {{dfanalytics-job}} in {{kib}}
-:class: screenshot
+:screenshot:
 :::
 
 For {{classanalysis}}, the sum of the {{feat-imp}} values approximates the predicted logarithm of odds for each data point. The simplest way to understand {{feat-imp}} in the context of {{classanalysis}} is to look at the decision plots in {{kib}}. For each data point, there is a chart which shows the relative impact of each feature on the prediction probability for that class. This information helps you to understand which features reduces or increase the prediction probability. For example:
 
 :::{image} ../../../images/machine-learning-flights-classification-decision-plot.png
 :alt: A decision plot in {{kib}}for a {{classification}} {{dfanalytics-job}}
-:class: screenshot
+:screenshot:
 :::
 
 By default, {{feat-imp}} values are not calculated. To generate this information, when you create a {{dfanalytics-job}} you must specify the `num_top_feature_importance_values` property. For example, see [Performing {{reganalysis}} in the sample flight data set](ml-dfa-regression.md#performing-regression) and [Performing {{classanalysis}} in the sample flight data set](ml-dfa-classification.md#performing-classification).

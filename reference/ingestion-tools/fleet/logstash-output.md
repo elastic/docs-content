@@ -25,6 +25,8 @@ outputs:
 
 To receive the events in {{ls}}, you also need to create a {{ls}} configuration pipeline. The {{ls}} configuration pipeline listens for incoming {{agent}} connections, processes received events, and then sends the events to {{es}}.
 
+Please be aware that the structure of the documents sent from {{agent}} to {{ls}} must not be modified by the pipeline. We recommend that the pipeline doesn’t edit or remove the fields and their contents. Editing the structure of the documents coming from {{agent}} can prevent the {{es}} ingest pipelines associated to the integrations in use to work correctly. We cannot guarantee that the {{es}} ingest pipelines associated to the integrations using {agent} can work with missing or modified fields.
+
 The following {{ls}} pipeline definition example configures a pipeline that listens on port `5044` for incoming {{agent}} connections and routes received events to {{es}}.
 
 ```yaml
@@ -58,7 +60,7 @@ output {
 3. The API Key used by {{ls}} to ship data to the destination data streams.
 
 
-For more information about configuring {{ls}}, refer to [Configuring {{ls}}](asciidocalypse://docs/reference/creating-logstash-pipeline.md) and [{{agent}} input plugin](asciidocalypse://docs/reference/plugins-inputs-elastic_agent.md).
+For more information about configuring {{ls}}, refer to [Configuring {{ls}}](logstash://reference/creating-logstash-pipeline.md) and [{{agent}} input plugin](logstash://reference/plugins-inputs-elastic_agent.md).
 
 ## {{ls}} output configuration settings [_ls_output_configuration_settings]
 
@@ -86,7 +88,7 @@ The `logstash` output supports the following settings, grouped by category. Many
 When sending data to a secured cluster through the `logstash` output, {{agent}} can use SSL/TLS. For a list of available settings, refer to [SSL/TLS](/reference/ingestion-tools/fleet/elastic-agent-ssl-configuration.md), specifically the settings under [Table 7, Common configuration options](/reference/ingestion-tools/fleet/elastic-agent-ssl-configuration.md#common-ssl-options) and [Table 8, Client configuration options](/reference/ingestion-tools/fleet/elastic-agent-ssl-configuration.md#client-ssl-options).
 
 ::::{note}
-To use SSL/TLS, you must also configure the [{{agent}} input plugin for {{ls}}](asciidocalypse://docs/reference/plugins-inputs-beats.md) to use SSL/TLS.
+To use SSL/TLS, you must also configure the [{{agent}} input plugin for {{ls}}](logstash://reference/plugins-inputs-beats.md) to use SSL/TLS.
 ::::
 
 

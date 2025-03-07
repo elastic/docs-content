@@ -23,10 +23,6 @@ Session View has the following features:
 * **Alerts:** Process, file, and network alerts in the context of the events which caused them.
 * **Terminal output:** Terminal output associated with each process in the session.
 
-::::{note}
-To view Linux session data from your Kubernetes infrastructure, you’ll need to set up the [Kubernetes dashboard](/solutions/security/dashboards/kubernetes-dashboard.md).
-::::
-
 
 
 ## Enable Session View data [enable-session-view]
@@ -51,7 +47,7 @@ Session View is accessible from the **Hosts**, **Alerts**, and **Timelines** pag
 
     :::{image} ../../../images/security-session-view-action-icon-detail.png
     :alt: Detail of the Open Session View button
-    :class: screenshot
+    :screenshot:
     :::
 
 * On the Hosts page (**Explore** → **Hosts**), select the **Sessions** or the **Events** tab. From either of these tabs, click the **Open Session View** button for an event or session.
@@ -63,7 +59,7 @@ The Session View UI has the following features:
 
 :::{image} ../../../images/security-session-view-terminal-labeled.png
 :alt: Detail of Session view with labeled UI elements
-:class: screenshot
+:screenshot:
 :::
 
 1. The **Close Session** and **Full screen** buttons.
@@ -82,21 +78,21 @@ Session View includes additional badges not pictured above:
 
     :::{image} ../../../images/security-session-view-alert-types-badge.png
     :alt: The alert badge for a command with all three alert types
-    :class: screenshot
+    :screenshot:
     :::
 
 * The **Exec user change** badge highlights exec user changes, such as when a user escalates to root:
 
     :::{image} ../../../images/security-session-view-exec-user-change-badge.png
     :alt: The Exec user change badge
-    :class: screenshot
+    :screenshot:
     :::
 
 * The **Output** badge appears next to commands that generated terminal output. Click it to view that command’s output in terminal output view.
 
     :::{image} ../../../images/security-session-view-output-badge.png
     :alt: The Output badge
-    :class: screenshot
+    :screenshot:
     :::
 
 
@@ -127,7 +123,7 @@ You can configure several additional settings by clicking **Advanced settings** 
 
 :::{image} ../../../images/security-session-view-output-viewer.png
 :alt: Terminal output view
-:class: screenshot
+:screenshot:
 :::
 
 1. Search bar. Use to find and highlight search terms within the current session. The left and right arrows allow you to navigate through search results.
