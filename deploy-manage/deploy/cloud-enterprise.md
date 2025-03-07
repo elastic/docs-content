@@ -51,7 +51,7 @@ The section covers the following tasks:
 * [Work with deployments](./cloud-enterprise/working-with-deployments.md)
   - Use [](./cloud-enterprise/deployment-templates.md) to [](./cloud-enterprise/create-deployment.md)
   - [](./cloud-enterprise/customize-deployment.md)
-  - Use the deployment [Cloud ID](./cloud-enterprise/find-cloud-id.md) and [Endpoint URLs](./cloud-enterprise/find-endpoint-url.md) for clients connection
+  - [Connect your applications to {{es}}](./cloud-enterprise/connect-elasticsearch.md)
 
 * Learn about [](./cloud-enterprise/tools-apis.md) that you can use with ECE
 
