@@ -1,4 +1,8 @@
 ---
+navigation_title: Self-managed
+applies_to:
+  deployment:
+    self: ga
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/manually-configure-security.html
 ---
@@ -15,8 +19,9 @@ If you configure security manually *before* starting your {{es}} nodes, the auto
 :alt: Elastic Security layers
 :::
 
+## Common security scenarios
 
-## Minimal security ({{es}} Development) [security-minimal-overview]
+### Minimal security ({{es}} Development) [security-minimal-overview]
 
 If you’ve been working with {{es}} and want to enable security on your existing, unsecured cluster, start here. You’ll set passwords for the built-in users to prevent unauthorized access to your local cluster, and also configure password authentication for {{kib}}.
 
@@ -28,7 +33,7 @@ The minimal security scenario is not sufficient for [production mode](../deploy/
 [Set up minimal security](set-up-minimal-security.md)
 
 
-## Basic security ({{es}} + {{kib}}) [security-basic-overview]
+### Basic security ({{es}} + {{kib}}) [security-basic-overview]
 
 This scenario configures TLS for communication between nodes. This security layer requires that nodes verify security certificates, which prevents unauthorized nodes from joining your {{es}} cluster.
 
@@ -37,7 +42,7 @@ Your external HTTP traffic between {{es}} and {{kib}} won’t be encrypted, but 
 [Set up basic security](secure-cluster-communications.md)
 
 
-## Basic security plus secured HTTPS traffic ({{stack}}) [security-basic-https-overview]
+### Basic security plus secured HTTPS traffic ({{stack}}) [security-basic-https-overview]
 
 This scenario builds on the one for basic security and secures all HTTP traffic with TLS. In addition to configuring TLS on the transport interface of your {{es}} cluster, you configure TLS on the HTTP interface for both {{es}} and {{kib}}.
 
@@ -49,6 +54,24 @@ If you need mutual (bidirectional) TLS on the HTTP layer, then you’ll need to 
 You then configure {{kib}} and Beats to communicate with {{es}} using TLS so that all communications are encrypted. This level of security is strong, and ensures that any communications in and out of your cluster are secure.
 
 [Set up basic security plus HTTPS traffic](secure-http-communications.md)
+
+## Considerations
+
+### TLS certificate management
+
+TLS certificates apply security controls to network communications. They encrypt data in transit, verify the identity of connecting parties, and help prevent man-in-the-middle attacks.
+
+On **self-managed** installations, you manage certificates for both HTTP and transport layers.
+
+### Network security
+
+Control which systems can access your Elastic deployment through traffic filtering and network controls:
+
+- **IP traffic filtering**: Restrict access based on IP addresses or CIDR ranges.
+
+## Next step: secure your deployments and clusters
+
+This section covered security principles and options at the environment level. You can take further measures individually for each deployment or cluster that you're running on your installation. Refer to [](secure-your-cluster-deployment.md).
 
 
 

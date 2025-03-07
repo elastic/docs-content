@@ -1,4 +1,7 @@
 ---
+applies_to:
+  deployment: all
+  serverless: all
 mapped_urls:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/security-files.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/secure-cluster.html
