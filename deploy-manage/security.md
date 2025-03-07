@@ -97,14 +97,14 @@ See the [Deployment overview](/deploy-manage/deploy.md) to understand your optio
 
 #### Communication security
 
-| **Security Feature** | Serverless | Elastic Cloud | ECE | ECK | Self-managed |
+| **Security feature** | Serverless | Elastic Cloud | ECE | ECK | Self-managed |
 |------------------|------------|--------------|-----|-----|--------------|
 | **TLS (HTTP Layer)** | ✓ Managed  | ✓ Managed     | ✓ Configurable | ✓ Configurable | ✓ Manual |
 | **TLS (Transport Layer)** | ✓ Managed | ✓ Managed | ✓ Managed | ✓ Managed | ✓ Manual |
 
 #### Network security
 
-| **Security Feature** | Serverless | Elastic Cloud | ECE | ECK | Self-managed |
+| **Security feature** | Serverless | Elastic Cloud | ECE | ECK | Self-managed |
 |------------------|------------|--------------|-----|-----|--------------|
 | **IP Traffic Filtering** | ✓ Available | ✓ Available | ✓ Available | ✓ Available | ✓ Available |
 | **Private Link** | ✗ N/A | ✓ Available | ✗ N/A | ✗ N/A | ✗ N/A |
@@ -112,7 +112,7 @@ See the [Deployment overview](/deploy-manage/deploy.md) to understand your optio
 
 #### Data security
 
-| **Security Feature** | Serverless | Elastic Cloud | ECE | ECK | Self-managed |
+| **Security feature** | Serverless | Elastic Cloud | ECE | ECK | Self-managed |
 |------------------|------------|--------------|-----|-----|--------------|
 | **Encryption at Rest** | ✓ Default | ✓ Default | ✗ Manual | ✗ Manual | ✗ Manual |
 | **BYOK/CMEK** | ✗ N/A | ✓ Available | ✗ N/A | ✗ N/A | ✗ N/A |
@@ -121,7 +121,7 @@ See the [Deployment overview](/deploy-manage/deploy.md) to understand your optio
 
 #### User session security
 
-| **Security Feature** | Serverless | Elastic Cloud | ECE | ECK | Self-managed |
+| **Security feature** | Serverless | Elastic Cloud | ECE | ECK | Self-managed |
 |------------------|------------|--------------|-----|-----|--------------|
 | **Kibana Sessions** | ✓ Managed | ✓ Configurable | ✓ Configurable | ✓ Configurable | ✓ Configurable |
 
