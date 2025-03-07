@@ -2,4 +2,3 @@ You now have a test {{es}} environment set up. Before you start serious developm
 
 * Learn how to [configure {{es}}](/deploy-manage/deploy/self-managed/configure-elasticsearch.md).
 * Configure [important {{es}} settings](/deploy-manage/deploy/self-managed/important-settings-configuration.md).
-* Configure [important system settings](/deploy-manage/deploy/self-managed/important-system-configuration.md).

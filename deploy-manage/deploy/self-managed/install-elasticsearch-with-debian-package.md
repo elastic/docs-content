@@ -120,12 +120,10 @@ sudo dpkg -i elasticsearch-{{stack-version}}-amd64.deb
 
 ## Step 5: Run {{es}} with `systemd` [running-systemd]
 
-:::{include} _snippets/systemd.md
+:::{include} _snippets/systemd-startup.md
 :::
 
-### Start {{es}} automatically
-
-:::{include} _snippets/systemd-startup.md
+:::{include} _snippets/systemd.md
 :::
 
 ### Log to the systemd journal

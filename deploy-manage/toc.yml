@@ -355,17 +355,16 @@ toc:
           - file: deploy/self-managed/configure-elasticsearch.md
             children:
               - file: deploy/self-managed/important-settings-configuration.md
-              - file: deploy/self-managed/other-configuration-settings.md
               - file: deploy/self-managed/plugins.md
           - file: deploy/self-managed/install-kibana.md
             children:
-              - file: deploy/self-managed/install-from-archive-on-linux-macos.md
-              - file: deploy/self-managed/install-on-windows.md
-              - file: deploy/self-managed/install-with-debian-package.md
-              - file: deploy/self-managed/install-with-rpm.md
-              - file: deploy/self-managed/install-with-docker.md
-              - file: deploy/self-managed/configure.md
-              - file: deploy/self-managed/access.md
+              - file: deploy/self-managed/install-kibana-from-archive-on-linux-macos.md
+              - file: deploy/self-managed/install-kibana-on-windows.md
+              - file: deploy/self-managed/install-kibana-with-debian-package.md
+              - file: deploy/self-managed/install-kibana-with-rpm.md
+              - file: deploy/self-managed/install-kibana-with-docker.md
+          - file: deploy/self-managed/configure-kibana.md
+          - file: deploy/self-managed/access-kibana.md
           - file: deploy/self-managed/air-gapped-install.md
           - file: deploy/self-managed/tools-apis.md
       - file: deploy/kibana-reporting-configuration.md

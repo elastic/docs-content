@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/important-settings.html
+applies_to:
+  deployment:
+    self:
 ---
 
 # Important settings configuration [important-settings]
@@ -18,9 +21,6 @@ mapped_pages:
 * [Temporary directory settings](#es-tmpdir)
 * [JVM fatal error log setting](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/jvm-settings.md#error-file-path)
 * [Cluster backups](#important-settings-backups)
-
-Our [{{ecloud}}](https://cloud.elastic.co/registration?page=docs&placement=docs-body) service configures these items automatically, making your cluster production-ready by default.
-
 
 ## Path settings [path-settings]
 
@@ -54,14 +54,16 @@ path:
 ```
 ::::::
 
-:::::::
-::::{warning}
-Don’t modify anything within the data directory or run processes that might interfere with its contents. If something other than {{es}} modifies the contents of the data directory, then {{es}} may fail, reporting corruption or other data inconsistencies, or may appear to work correctly having silently lost some of your data. Don’t attempt to take filesystem backups of the data directory; there is no supported way to restore such a backup. Instead, use [Snapshot and restore](../../tools/snapshot-and-restore.md) to take backups safely. Don’t run virus scanners on the data directory. A virus scanner can prevent {{es}} from working correctly and may modify the contents of the data directory. The data directory contains no executables so a virus scan will only find false positives.
-::::
-
-
 {{es}} offers a deprecated setting that allows you to specify multiple paths in `path.data`. To learn about this setting, and how to migrate away from it, refer to [Multiple data paths](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/path.md#multiple-data-paths).
 
+:::::::
+::::{warning}
+* Don’t modify anything within the data directory or run processes that might interfere with its contents. 
+
+  If something other than {{es}} modifies the contents of the data directory, then {{es}} may fail, reporting corruption or other data inconsistencies, or may appear to work correctly having silently lost some of your data. 
+* Don’t attempt to take filesystem backups of the data directory; there is no supported way to restore such a backup. Instead, use [Snapshot and restore](../../tools/snapshot-and-restore.md) to take backups safely. 
+* Don’t run virus scanners on the data directory. A virus scanner can prevent {{es}} from working correctly and may modify the contents of the data directory. The data directory contains no executables so a virus scan will only find false positives.
+::::
 
 ## Cluster name setting [_cluster_name_setting]
 
@@ -107,14 +109,14 @@ When you provide a value for `network.host`, {{es}} assumes that you are moving 
 
 ## Discovery and cluster formation settings [discovery-settings]
 
-Configure two important discovery and cluster formation settings before going to production so that nodes in the cluster can discover each other and elect a master node.
+Configure two important discovery and cluster formation settings before going to production so that nodes in the cluster can [discover](/deploy-manage/distributed-architecture/discovery-cluster-formation/discovery-hosts-providers.md) each other and elect a master node.
 
 
 ### `discovery.seed_hosts` [unicast.hosts]
 
 Out of the box, without any network configuration, {{es}} will bind to the available loopback addresses and scan local ports `9300` to `9305` to connect with other nodes running on the same server. This behavior provides an auto-clustering experience without having to do any configuration.
 
-When you want to form a cluster with nodes on other hosts, use the [static](/deploy-manage/deploy/self-managed/configure-elasticsearch.md#static-cluster-setting) `discovery.seed_hosts` setting. This setting provides a list of other nodes in the cluster that are master-eligible and likely to be live and contactable to seed the [discovery process](../../distributed-architecture/discovery-cluster-formation/discovery-hosts-providers.md). This setting accepts a YAML sequence or array of the addresses of all the master-eligible nodes in the cluster. Each address can be either an IP address or a hostname that resolves to one or more IP addresses via DNS.
+When you want to form a cluster with nodes on other hosts, use the [static](/deploy-manage/deploy/self-managed/configure-elasticsearch.md#static-cluster-setting) `discovery.seed_hosts` setting. This setting provides a list of other nodes in the cluster that are master-eligible and likely to be live and contactable to seed the [discovery process](/deploy-manage/distributed-architecture/discovery-cluster-formation/discovery-hosts-providers.md). This setting accepts a YAML sequence or array of the addresses of all the master-eligible nodes in the cluster. Each address can be either an IP address or a hostname that resolves to one or more IP addresses via DNS.
 
 ```yaml
 discovery.seed_hosts:
@@ -191,7 +193,7 @@ To see further options not contained in the original JEP, see [Enable Logging wi
 
 Change the default GC log output location to `/opt/my-app/gc.log` by creating `$ES_HOME/config/jvm.options.d/gc.options` with some sample options:
 
-```shell
+```sh
 # Turn off all previous logging configuratons
 -Xlog:disable
 
@@ -230,9 +232,9 @@ These are logs produced by the JVM when it encounters a fatal error, such as a s
 
 ## Cluster backups [important-settings-backups]
 
-In a disaster, [snapshots](../../tools/snapshot-and-restore.md) can prevent permanent data loss. [{{slm-cap}}](../../tools/snapshot-and-restore/create-snapshots.md#automate-snapshots-slm) is the easiest way to take regular backups of your cluster. For more information, see [*Create a snapshot*](../../tools/snapshot-and-restore/create-snapshots.md).
+In a disaster, [snapshots](../../tools/snapshot-and-restore.md) can prevent permanent data loss. [{{slm-cap}}](../../tools/snapshot-and-restore/create-snapshots.md#automate-snapshots-slm) is the easiest way to take regular backups of your cluster. For more information, see [](../../tools/snapshot-and-restore/create-snapshots.md).
 
 ::::{warning}
-**Taking a snapshot is the only reliable and supported way to back up a cluster.** You cannot back up an {{es}} cluster by making copies of the data directories of its nodes. There are no supported methods to restore any data from a filesystem-level backup. If you try to restore a cluster from such a backup, it may fail with reports of corruption or missing files or other data inconsistencies, or it may appear to have succeeded having silently lost some of your data.
+**Taking a snapshot is the only reliable and supported way to back up a cluster.** You cannot back up an {{es}} cluster by making copies of the data directories of its nodes. There are no supported methods to restore any data from a file system-level backup. If you try to restore a cluster from such a backup, it may fail with reports of corruption or missing files or other data inconsistencies, or it may appear to have succeeded having silently lost some of your data.
 
 ::::

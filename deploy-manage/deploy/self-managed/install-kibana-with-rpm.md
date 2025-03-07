@@ -4,12 +4,13 @@ mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/rpm.html
 sub:
   stack-version: "9.0.0"
+navigation_title: "RPM"
+applies_to:
+  deployment:
+    self:
 ---
 
-
-
-# Install with RPM [rpm]
-
+# Install {{kib}} with RPM [rpm]
 
 The RPM for {{kib}} can be [downloaded from our website](#install-rpm) or from our [RPM repository](#rpm-repo). It can be used to install {{kib}} on any RPM-based system such as OpenSuSE, SLES, Red Hat, and Oracle Enterprise.
 
@@ -17,17 +18,13 @@ The RPM for {{kib}} can be [downloaded from our website](#install-rpm) or from o
 RPM install is not supported on distributions with old versions of RPM, such as SLES 11. Refer to [Install from archive on Linux or macOS](install-from-archive-on-linux-macos.md) instead.
 ::::
 
+:::{include} _snippets/trial.md
+:::
 
-This package contains both free and subscription features. [Start a 30-day trial](../../license/manage-your-license-in-self-managed-cluster.md) to try out all of the features.
+:::{include} _snippets/kib-releases.md
+:::
 
-The latest stable version of {{kib}} can be found on the [Download Kibana](https://elastic.co/downloads/kibana) page. Other versions can be found on the [Past Releases page](https://elastic.co/downloads/past-releases).
-
-::::{tip}
-For a step-by-step example of setting up the {{stack}} on your own premises, try out our tutorial: [Installing a self-managed Elastic Stack](installing-elasticsearch.md).
-::::
-
-
-## Import the Elastic PGP key [rpm-key]
+## Step 1: Import the Elastic PGP key [rpm-key]
 
 :::{include} _snippets/pgp-key.md
 :::
@@ -37,7 +34,14 @@ rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
 ```
 
 
-## Installing from the RPM repository [rpm-repo]
+## Step 2: Install {{kib}}
+
+You have the following options for installing the {{es}} RPM package:
+
+* [From the RPM repository](#rpm-repo)
+* [Manually](#install-rpm)
+
+### Install from the RPM repository [rpm-repo]
 
 Create a file called `kibana.repo` in the `/etc/yum.repos.d/` directory for RedHat based distributions, or in the `/etc/zypp/repos.d/` directory for OpenSuSE based distributions, containing:
 
@@ -65,7 +69,7 @@ sudo zypper install kibana <3>
 3. Use zypper on OpenSUSE based distributions
 
 
-## Download and install the RPM manually [install-rpm]
+### Download and install the RPM manually [install-rpm]
 
 The RPM for {{kib}} {{stack-version}} can be downloaded from the website and installed as follows:
 
@@ -76,29 +80,20 @@ shasum -a 512 -c kibana-{{stack-version}}-x86_64.rpm.sha512 <1>
 sudo rpm --install kibana-{{stack-version}}-x86_64.rpm
 ```
 
-1. Compares the SHA of the downloaded RPM and the published checksum, which should output `kibana-{version}-x86_64.rpm: OK`.
+1. Compares the SHA of the downloaded RPM and the published checksum, which should output `kibana-<version>-x86_64.rpm: OK`.
 
 
-## Start {{es}} and generate an enrollment token for {{kib}} [rpm-enroll]
+## Step 3: Start {{es}} and generate an enrollment token for {{kib}} [rpm-enroll]
 
+[Start {{es}}](/deploy-manage/maintenance/start-stop-services/start-stop-elasticsearch.md).
 
-When you start {{es}} for the first time, the following security configuration occurs automatically:
+:::{include} _snippets/auto-security-config.md
+:::
 
-* Authentication and authorization are enabled, and a password is generated for the `elastic` built-in superuser.
-* Certificates and keys for TLS are generated for the transport and HTTP layer, and TLS is enabled and configured with these keys and certificates.
+:::{include} _snippets/new-enrollment-token.md
+:::
 
-The password and certificate and keys are output to your terminal.
-
-You can then generate an enrollment token for {{kib}} with the [`elasticsearch-create-enrollment-token`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/command-line-tools/create-enrollment-token.md) tool:
-
-```sh
-bin/elasticsearch-create-enrollment-token -s kibana
-```
-
-Start {{kib}} and enter the enrollment token to securely connect {{kib}} with {{es}}.
-
-
-## Run {{kib}} with `systemd` [rpm-running-systemd]
+## Step 4: Run {{kib}} with `systemd` [rpm-running-systemd]
 
 To configure {{kib}} to start automatically when the system starts, run the following commands:
 
@@ -114,12 +109,17 @@ sudo systemctl start kibana.service
 sudo systemctl stop kibana.service
 ```
 
-These commands provide no feedback as to whether {{kib}} was started successfully or not. Log information can be accessed via `journalctl -u kibana.service`.
+These commands provide no feedback as to whether {{kib}} was started successfully or not. Log information can be accessed using `journalctl -u kibana.service`.
 
 
-## Configure {{kib}} via the config file [rpm-configuring]
+## Step 5: Enroll {{kib}} with {{es}}
 
-{{kib}} loads its configuration from the `/etc/kibana/kibana.yml` file by default.  The format of this config file is explained in [Configuring Kibana](configure.md).
+:::{include} _snippets/enroll-systemd.md
+:::
+
+## Step 6: Configure {{kib}} using the config file [rpm-configuring]
+
+{{kib}} loads its configuration from the `/etc/kibana/kibana.yml` file by default.  The format of this config file is explained in [](configure.md).
 
 
 ## Directory layout of RPM [rpm-layout]

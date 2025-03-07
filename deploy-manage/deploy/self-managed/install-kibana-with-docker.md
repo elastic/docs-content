@@ -2,19 +2,26 @@
 navigation_title: "Install with Docker"
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/docker.html
+navigation_title: "Docker"
+applies_to:
+  deployment:
+    self:
+applies_to:
+  deployment:
+    self:
 ---
 
 
 
-# Install with Docker [docker]
+# Install {{kib}} with Docker [docker]
 
 
 Docker images for {{kib}} are available from the Elastic Docker registry. The base image is [ubuntu:20.04](https://hub.docker.com/_/ubuntu).
 
 A list of all published Docker images and tags is available at [www.docker.elastic.co](https://www.docker.elastic.co). The source code is in [GitHub](https://github.com/elastic/dockerfiles/tree/master/kibana).
 
-These images contain both free and subscription features. [Start a 30-day trial](../../license/manage-your-license-in-self-managed-cluster.md) to try out all of the features.
-
+:::{include} _snippets/trial.md
+:::
 
 ## Run {{kib}} in Docker for development [run-kibana-on-docker-for-dev]
 
@@ -27,16 +34,8 @@ This setup doesn’t run multiple {{es}} nodes by default. To create a multi-nod
 
 ## Hardened Docker images [_hardened_docker_images]
 
-You can also use the hardened [Wolfi](https://wolfi.dev/) image for additional security. Using Wolfi images requires Docker version 20.10.10 or higher.
-
-To use the Wolfi image, append `-wolfi` to the image tag in the Docker command.
-
-For example:
-
-```sh
-docker pull docker.elastic.co/elasticsearch/elasticsearch-wolfi:{{stack-version}}
-```
-
+:::{include} _snippets/wolfi.md
+:::
 
 ## Start a single node cluster [_start_a_single_node_cluster]
 
@@ -130,8 +129,6 @@ docker pull docker.elastic.co/elasticsearch/elasticsearch-wolfi:{{stack-version}
     ```sh
     docker exec -it es01 /usr/share/elasticsearch/bin/elasticsearch-reset-password -u elastic
     ```
-
-
 
 ### Remove Docker containers [_remove_docker_containers]
 

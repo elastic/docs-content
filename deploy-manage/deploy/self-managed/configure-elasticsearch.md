@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/settings.html
+applies_to:
+  deployment:
+    self:
 ---
 
 # Configure {{es}} [settings]
@@ -9,8 +12,14 @@ mapped_pages:
 
 The configuration files should contain settings which are node-specific (such as `node.name` and paths), or settings which a node requires in order to be able to join a cluster, such as `cluster.name` and `network.host`.
 
+## Available settings
 
-## Config files location [config-files-location] 
+For a complete list of settings that you can apply to your {{es}} cluster, refer to the [Elasticsearch configuration reference](elasticsearch://reference/elasticsearch/configuration-reference.md).
+
+For a list of settings that must be configured before using your cluster in production, refer to [](/deploy-manage/deploy/self-managed/important-settings-configuration.md).
+
+
+## Config files [config-files-location] 
 
 {{es}} has three configuration files:
 
@@ -20,15 +29,26 @@ The configuration files should contain settings which are node-specific (such as
 
 These files are located in the config directory, whose default location depends on whether or not the installation is from an archive distribution (`tar.gz` or `zip`) or a package distribution (Debian or RPM packages).
 
-For the archive distributions, the config directory location defaults to `$ES_HOME/config`. The location of the config directory can be changed via the `ES_PATH_CONF` environment variable as follows:
+### Archive distributions
+
+For the archive distributions, the config directory location defaults to `$ES_HOME/config`. The location of the config directory can be changed using the `ES_PATH_CONF` environment variable:
 
 ```sh
 ES_PATH_CONF=/path/to/my/config ./bin/elasticsearch
 ```
 
-Alternatively, you can `export` the `ES_PATH_CONF` environment variable via the command line or via your shell profile.
+Alternatively, you can `export` the `ES_PATH_CONF` environment variable through the command line or through your shell profile.
 
-For the package distributions, the config directory location defaults to `/etc/elasticsearch`. The location of the config directory can also be changed via the `ES_PATH_CONF` environment variable, but note that setting this in your shell is not sufficient. Instead, this variable is sourced from `/etc/default/elasticsearch` (for the Debian package) and `/etc/sysconfig/elasticsearch` (for the RPM package). You will need to edit the `ES_PATH_CONF=/etc/elasticsearch` entry in one of these files accordingly to change the config directory location.
+### Package distributions
+
+For the package distributions, the config directory location defaults to `/etc/elasticsearch`. 
+
+The location of the config directory can be changed by setting the `ES_PATH_CONF` environment variable, however, setting the environment variable in your shell is not sufficient. Instead, this variable is sourced from one the following locations:
+
+* Debian: `/etc/default/elasticsearch` 
+* RPM: `/etc/sysconfig/elasticsearch` 
+
+You need to edit the `ES_PATH_CONF=/etc/elasticsearch` entry in the relevant file for your package to change the config directory location.
 
 
 ## Config file format [_config_file_format] 
@@ -79,15 +99,13 @@ Values for environment variables must be simple strings. Use a comma-separated s
 export HOSTNAME="host1,host2"
 ```
 
-
 ## Cluster and node setting types [cluster-setting-types] 
 
 Cluster and node settings can be categorized based on how they are configured:
 
-$$$dynamic-cluster-setting$$$
+### Dynamic [dynamic-cluster-setting]
 
-Dynamic
-:   You can configure and update dynamic settings on a running cluster using the [cluster update settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings). You can also configure dynamic settings locally on an unstarted or shut down node using `elasticsearch.yml`.
+You can configure and update dynamic settings on a running cluster using the [cluster update settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings). You can also configure dynamic settings locally on an unstarted or shut down node using `elasticsearch.yml`.
 
 Updates made using the cluster update settings API can be *persistent*, which apply across cluster restarts, or *transient*, which reset after a cluster restart. You can also reset transient or persistent settings by assigning them a `null` value using the API.
 
@@ -100,27 +118,18 @@ If you configure the same setting using multiple methods, {{es}} applies the set
 
 For example, you can apply a transient setting to override a persistent setting or `elasticsearch.yml` setting. However, a change to an `elasticsearch.yml` setting will not override a defined transient or persistent setting.
 
-::::{tip} 
-If you use {{ech}}, use the [user settings](../elastic-cloud/edit-stack-settings.md) feature to configure all cluster settings. This method lets {{ech}} automatically reject unsafe settings that could break your cluster.
-
-If you run {{es}} on your own hardware, use the [cluster update settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings) to configure dynamic cluster settings. Only use `elasticsearch.yml` for static cluster settings and node settings. The API doesn’t require a restart and ensures a setting’s value is the same on all nodes.
-
-::::
-
+Use the [cluster update settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings) to configure dynamic cluster settings. Only use `elasticsearch.yml` for static cluster settings and node settings. The API doesn’t require a restart and ensures a setting’s value is the same on all nodes.
 
 ::::{warning} 
 We no longer recommend using transient cluster settings. Use persistent cluster settings instead. If a cluster becomes unstable, transient settings can clear unexpectedly, resulting in a potentially undesired cluster configuration.
-
 ::::
 
 
+### Static [static-cluster-setting]
 
-$$$static-cluster-setting$$$
+Static settings can only be configured on an unstarted or shut down node using `elasticsearch.yml`.
 
-Static
-:   Static settings can only be configured on an unstarted or shut down node using `elasticsearch.yml`.
-
-    Static settings must be set on every relevant node in the cluster.
+Static settings must be set on every relevant node in the cluster.
 
 
 
