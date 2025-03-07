@@ -1,3 +1,12 @@
+---
+navigation_title: Enterprise search user settings
+applies_to:
+  deployment:
+    ece: all
+mapped_urls:
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-manage-enterprise-search-settings.html
+---
+
 # Add Enterprise Search user settings [ece-manage-enterprise-search-settings]
 
 :::{important}
@@ -23,5 +32,8 @@ To add user settings:
 ::::{note}
 If a setting is not supported by Elastic Cloud Enterprise, an error message displays when you try to save your settings.
 ::::
+
+
+
 
 

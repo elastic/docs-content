@@ -24,46 +24,55 @@ To connect to your {{es}} cluster, copy the **{{es}} endpoint** from the deploym
 Application endpoints in ECE are generated based on the domain name configured in **Platform > Settings**. To learn how to modify these endpoints, refer to [Change endpoint URLs](./change-endpoint-urls.md).
 ::::
 
-Once you have the endpoint, use it in your client application. To test connectivity, open the endpoint in your browser or modify the following `curl` example to fit your environment by replacing the URL and proxy CA certificate with your own values.
+Once you have the endpoint, use it in your client application. To test connectivity, you can:
+* Open the endpoint in your browser and enter authentication details when prompted.
+* Modify the following `curl` example to fit your environment by replacing the URL and proxy CA certificate with your own values.
 
-```sh
-curl --cacert /path/to/elastic-ece-ca-cert.pem -u elastic https://f76e96da2a7f4d3f8f3ee25d686b879c.HOST-IP-ADDRESS.ip.es.io:9243
-{
-  "name" : "instance-0000000000",
-  "cluster_name" : "f76e96da2a7f4d3f8f3ee25d686b879c",
-  "cluster_uuid" : "w2SXqdACQCy5AAixXRxeXg",
-  "version" : {
-    "number" : "8.17.3",
-    "build_flavor" : "default",
-    "build_type" : "docker",
-    "build_hash" : "a091390de485bd4b127884f7e565c0cad59b10d2",
-    "build_date" : "2025-02-28T10:07:26.089129809Z",
-    "build_snapshot" : false,
-    "lucene_version" : "9.12.0",
-    "minimum_wire_compatibility_version" : "7.17.0",
-    "minimum_index_compatibility_version" : "7.0.0"
-  },
-  "tagline" : "You Know, for Search"
-}
-```
+  ```sh
+  curl --cacert /path/to/elastic-ece-ca-cert.pem -u elastic https://f76e96da2a7f4d3f8f3ee25d686b879c.HOST-IP-ADDRESS.ip.es.io:9243
+  {
+    "name" : "instance-0000000000",
+    "cluster_name" : "f76e96da2a7f4d3f8f3ee25d686b879c",
+    "cluster_uuid" : "w2SXqdACQCy5AAixXRxeXg",
+    "version" : {
+      "number" : "8.17.3",
+      "build_flavor" : "default",
+      "build_type" : "docker",
+      "build_hash" : "a091390de485bd4b127884f7e565c0cad59b10d2",
+      "build_date" : "2025-02-28T10:07:26.089129809Z",
+      "build_snapshot" : false,
+      "lucene_version" : "9.12.0",
+      "minimum_wire_compatibility_version" : "7.17.0",
+      "minimum_index_compatibility_version" : "7.0.0"
+    },
+    "tagline" : "You Know, for Search"
+  }
+  ```
 
-The previous example authenticates to the cluster using the default `elastic` user. For more information on authentication and authorization in {{es}}, refer to [](../../users-roles.md).
+  The previous example authenticates to the cluster using the default `elastic` user. For more information on authentication and authorization in {{es}}, refer to [](../../users-roles.md).
 
-::::{note}
-When connecting to {{es}}, you can use one of the following ports:
-* Port 9243 – Secure HTTPS (**recommended**).
-* Port 9200 – Plaintext HTTP (**not recommended**).
-::::
+  ::::{note}
+  When connecting to {{es}}, you can use one of the following ports:
+  * Port 9243 – Secure HTTPS (**recommended**).
+  * Port 9200 – Plaintext HTTP (**not recommended**).
+  ::::
 
 ## Connect using Cloud ID [ece-cloud-id]
 
-The Cloud ID reduces the number of steps required to start sending data from [Beats](https://www.elastic.co/guide/en/beats/libbeat/current/index.html) or [Logstash](https://www.elastic.co/guide/en/logstash/current/index.html) to your hosted {{es}} cluster on {{ece}}. It works by assigning a unique ID to your hosted {{es}} cluster on {{ece}}. All deployments automatically get a Cloud ID.
-
-You include your Cloud ID along with your user credentials (defined in `cloud.auth`) when you run Beats or Logstash locally, and then let {{ece}} handle all of the remaining connection details to send the data to your hosted cluster on {{ece}} safely and securely.
+The Cloud ID reduces the number of steps required to start sending data from [Beats](https://www.elastic.co/guide/en/beats/libbeat/current/index.html) or [Logstash](https://www.elastic.co/guide/en/logstash/current/index.html) to your hosted {{es}} cluster on ECE, by assigning a unique ID to your cluster.
 
 ::::{note}
-For information about beats or logstash refer to xxxx
+Connections through Cloud IDs are only supported in Beats and Logstash.
 ::::
+
+
+Cloud IDs are available in every deployment page, as showed below:
+
+:::{image} ../../../images/cloud-enterprise-ec-ce-cloud-id.png
+:alt: The Cloud ID and `elastic` user information shown when you create a deployment
+:::
+
+Include this ID along with your user credentials (defined in `cloud.auth`) in your Beat or Logstash configuration. ECE will handle the remaining connection details, ensuring secure data transfer to your hosted cluster.
 
 ### Before you begin [ece_before_you_begin_16]
 
@@ -81,7 +90,7 @@ To use the Cloud ID, you need:
 
 ### Configure Beats with your Cloud ID [ece-cloud-id-beats]
 
-The following example shows how you can send operational data from Metricbeat to a new {{ece}} deployment by using the Cloud ID. While this example uses Metricbeat, the same approach applies to other Beats.
+The following example shows how you can send operational data from Metricbeat to a new ECE deployment by using the Cloud ID. While this example uses Metricbeat, the same approach applies to other Beats.
 
 ::::{tip}
 For others, you can learn more about [getting started](asciidocalypse://docs/beats/docs/reference/index.md) with each Beat.

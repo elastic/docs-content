@@ -1,4 +1,7 @@
 ---
+applies_to:
+  deployment:
+    ece: all
 mapped_urls:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-stack-getting-started.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-administering-deployments.html

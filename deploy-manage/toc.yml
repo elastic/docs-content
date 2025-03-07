@@ -188,9 +188,13 @@ toc:
                 children:
                   - file: deploy/cloud-enterprise/customize-deployment.md
                   - file: deploy/cloud-enterprise/edit-stack-settings.md
-                  - file: deploy/cloud-enterprise/resize-deployment.md
                     children:
-                      - file: deploy/cloud-enterprise/resource-overrides.md
+                      - file: deploy/cloud-enterprise/edit-stack-settings-elasticsearch.md
+                      - file: deploy/cloud-enterprise/edit-stack-settings-kibana.md
+                      - file: deploy/cloud-enterprise/edit-stack-settings-apm.md
+                      - file: deploy/cloud-enterprise/edit-stack-settings-enterprise.md
+                  - file: deploy/cloud-enterprise/resize-deployment.md
+                  - file: deploy/cloud-enterprise/resource-overrides.md
                   - file: deploy/cloud-enterprise/add-plugins.md
                   - file: deploy/cloud-enterprise/add-custom-bundles-plugins.md
                   - file: deploy/cloud-enterprise/advanced-cluster-configuration.md

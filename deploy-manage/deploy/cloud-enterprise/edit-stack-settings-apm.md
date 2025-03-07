@@ -1,3 +1,12 @@
+---
+navigation_title: APM user settings
+applies_to:
+  deployment:
+    ece: all
+mapped_urls:
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-manage-apm-settings.html
+---
+
 # Add APM user settings [ece-manage-apm-settings]
 
 Starting in {{stack}} version 8.0, how you change APM settings and the settings that are available to you depend on how you spin up Elastic APM. There are two modes:
@@ -90,3 +99,4 @@ If the size of the HTTP request frequently exceeds the maximum, you might need t
 apm-server:
   max_event_size: 407200
 ```
+

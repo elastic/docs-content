@@ -1,4 +1,7 @@
 ---
+applies_to:
+  deployment:
+    ece: all
 mapped_urls:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-create-deployment.html
 ---
@@ -48,15 +51,8 @@ After a deployment is spun up, you can scale the size and add other features; ho
 
 ## Next steps
 
-Once you have created your deployment, consider the following activities:
-(TBD)
+After creating your deployment, you may want to:
 
 * [Access {{kib}}](./access-kibana.md)
-
-* Connect your applications to your {{es}} cluster to start sending data.
-* [Add data](../../../manage-data/ingest.md)
-* Configure [users and roles](../../users-roles.md)
-* TBD
-From "here", you can start ingesting data or simply [try a sample data](../../../explore-analyze/index.md#gs-get-data-into-kibana) set to get started.
-
-Check all other actions from [](./working-with-deployments.md).
+* [Connect your applications to {{es}}](./connect-elasticsearch.md) to start [ingesting data](../../../manage-data/ingest.md)
+* Learn how to configure and [manage your deployment](./working-with-deployments.md)

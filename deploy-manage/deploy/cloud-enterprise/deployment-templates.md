@@ -14,9 +14,9 @@ The components of the Elastic Stack that we support as part of a deployment are 
 * Kibana instances
 * APM and Fleet instances
 
-Elastic Cloud Enterprise comes with some deployment templates already built in, but you can [create new deployment templates](ece-configuring-ece-create-templates.md) to address a particular use case you might have. To make the most out of your hardware, we also recommend that you [configure deployment templates](configure-deployment-templates.md), so that ECE knows where to deploy components of the Elastic Stack.
+Elastic Cloud Enterprise comes with some system deployment templates already built in, but you can [create new deployment templates](ece-configuring-ece-create-templates.md) to address a particular use case you might have. To make the most out of your hardware, we also recommend that you tag your allocators and follow the instructions from [](configure-deployment-templates.md), so that ECE knows where to deploy components of the Elastic Stack.
 
-The deployment templates available are:
+The system deployment templates available by default are:
 
 * **Default template**
 
@@ -41,8 +41,6 @@ The deployment templates available are:
 * **Elastic Observability template**
 
     This template allows you to consolidate your logs, metrics, application traces, and system availability with purpose-built UIs. Check the [**Elastic Observability**](../../../solutions/observability/get-started/what-is-elastic-observability.md) documentation for more information.
-
-
 
 ## Instance configurations [ece-getting-started-instance-configurations]
 
