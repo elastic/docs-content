@@ -33,7 +33,7 @@ The pattern set here only restricts what the {{uptime-app}} displays. You can st
 
 :::{image} ../../../images/observability-heartbeat-indices.png
 :alt: {{heartbeat}} indices
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -47,7 +47,7 @@ For more information about each connector, see [action types and connectors](../
 
 :::{image} ../../../images/observability-alert-connector.png
 :alt: Rule connector
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -64,6 +64,6 @@ A standard security requirement is to make sure that your TLS certificates have 
 
 :::{image} ../../../images/observability-cert-expiry-settings.png
 :alt: Certificate expiry settings
-:class: screenshot
+:screenshot:
 :::
 

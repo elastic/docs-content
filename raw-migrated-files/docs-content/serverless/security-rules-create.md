@@ -45,7 +45,7 @@ At any step, you can [preview the rule](../../../solutions/security/detect-and-a
 
             :::{image} ../../../images/serverless--detections-rule-query-example.png
             :alt: Rule query example
-            :class: screenshot
+            :screenshot:
             :::
 
     3. You can use saved queries and queries from saved Timelines (**Import query from saved Timeline**) as rule conditions.
@@ -149,10 +149,10 @@ To create or edit {{ml}} rules, you need an appropriate user role. Additionally,
 2. To create an event correlation rule using EQL, select **Event Correlation**, then:
 
     1. Define which {{es}} indices or data view the rule searches when querying for events.
-    2. Write an [EQL query](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/eql-syntax.md) that searches for matching events or a series of matching events.
+    2. Write an [EQL query](elasticsearch://reference/query-languages/eql-syntax.md) that searches for matching events or a series of matching events.
 
         ::::{tip}
-        To find events that are missing in a sequence, use the [missing events](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/eql-syntax.md#eql-missing-events) syntax.
+        To find events that are missing in a sequence, use the [missing events](elasticsearch://reference/query-languages/eql-syntax.md#eql-missing-events) syntax.
 
         ::::
 
@@ -180,7 +180,7 @@ To create or edit {{ml}} rules, you need an appropriate user role. Additionally,
 
             :::{image} ../../../images/serverless--detections-eql-rule-query-example.png
             :alt:  detections eql rule query example
-            :class: screenshot
+            :screenshot:
             :::
 
             ::::{note}
@@ -190,7 +190,7 @@ To create or edit {{ml}} rules, you need an appropriate user role. Additionally,
 
 3. (Optional) Click the EQL settings icon (![EQL settings](../../../images/serverless-controlsVertical.svg "")) to configure additional fields used by [EQL search](../../../explore-analyze/query-filter/languages/eql.md#specify-a-timestamp-or-event-category-field):
 
-    * **Event category field**: Contains the event classification, such as `process`, `file`, or `network`. This field is typically mapped as a field type in the [keyword family](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/keyword.md). Defaults to the `event.category` ECS field.
+    * **Event category field**: Contains the event classification, such as `process`, `file`, or `network`. This field is typically mapped as a field type in the [keyword family](elasticsearch://reference/elasticsearch/mapping-reference/keyword.md). Defaults to the `event.category` ECS field.
     * **Tiebreaker field**: Sets a secondary field for sorting events (in ascending, lexicographic order) if they have the same timestamp.
     * **Timestamp field**: Contains the event timestamp used for sorting a sequence of events. This is different from the **Timestamp override** advanced setting, which is used for querying events within a range. Defaults to the `@timestamp` ECS field.
 
@@ -236,7 +236,7 @@ To create or edit {{ml}} rules, you need an appropriate user role. Additionally,
     3. **Indicator index patterns**: The indicator index patterns containing field values for which you want to generate alerts. This field is automatically populated with indices specified in the `securitySolution:defaultThreatIndex` advanced setting. For more information, see [Update default Elastic Security threat intelligence indices](../../../solutions/security/get-started/configure-advanced-settings.md#update-threat-intel-indices).
 
         ::::{important}
-        Data in indicator indices must be [ECS compatible](asciidocalypse://docs/docs-content/docs/reference/security/fields-and-object-schemas/siem-field-reference.md), and so it must contain a `@timestamp` field.
+        Data in indicator indices must be [ECS compatible](/reference/security/fields-and-object-schemas/siem-field-reference.md), and so it must contain a `@timestamp` field.
 
         ::::
 
@@ -260,7 +260,7 @@ To create or edit {{ml}} rules, you need an appropriate user role. Additionally,
 
         :::{image} ../../../images/serverless--detections-indicator-rule-example.png
         :alt: Indicator match rule settings
-        :class: screenshot
+        :screenshot:
         :::
 
         ::::{tip}
@@ -308,7 +308,7 @@ You uploaded a value list of known ransomware domains, and you want to be notifi
 
 :::{image} ../../../images/serverless--detections-indicator_value_list.png
 :alt:  detections indicator value list
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -391,7 +391,7 @@ To create an {{esql}} rule:
 
 #### Aggregating query [esql-agg-query]
 
-Aggregating queries use [`STATS...BY`](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/esql-functions-operators.md#esql-agg-functions) functions to aggregate source event data. Alerts generated by a rule with an aggregating query only contain the fields that the {{esql}} query returns and any new fields that the query creates.
+Aggregating queries use [`STATS...BY`](elasticsearch://reference/query-languages/esql/esql-functions-operators.md#esql-agg-functions) functions to aggregate source event data. Alerts generated by a rule with an aggregating query only contain the fields that the {{esql}} query returns and any new fields that the query creates.
 
 ::::{note}
 A *new field* is a field that doesn’t exist in the query’s source index and is instead created when the rule runs. You can access new fields in the details of any alerts that are generated by the rule. For example, if you use the `STATS...BY` function to create a column with aggregated values, the column is created when the rule runs and is added as a new field to any alerts that are generated by the rule.
@@ -425,7 +425,7 @@ Rules that use aggregating queries might create duplicate alerts. This can happe
 Non-aggregating queries don’t use `STATS...BY` functions and don’t aggregate source event data. Alerts generated by a non-aggregating query contain source event fields that the query returns, new fields the query creates, and all other fields in the source event document.
 
 ::::{note}
-A *new field* is a field that doesn’t exist in the query’s source index and is instead created when the rule runs. You can access new fields in the details of any alerts that are generated by the rule. For example, if you use the [`EVAL`](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/esql-commands.md#esql-eval) command to append new columns with calculated values, the columns are created when the rule runs and are added as new fields to any alerts generated by the rule.
+A *new field* is a field that doesn’t exist in the query’s source index and is instead created when the rule runs. You can access new fields in the details of any alerts that are generated by the rule. For example, if you use the [`EVAL`](elasticsearch://reference/query-languages/esql/esql-commands.md#esql-eval) command to append new columns with calculated values, the columns are created when the rule runs and are added as new fields to any alerts generated by the rule.
 
 ::::
 
@@ -455,7 +455,7 @@ FROM logs-* METADATA _id, _index, _version
 
 When those metadata fields are provided, unique alert IDs are created for each alert generated by the query.
 
-When developing the query, make sure you don’t [`DROP`](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/esql-commands.md#esql-drop) or filter out the `_id`, `_index`, or `_version` metadata fields.
+When developing the query, make sure you don’t [`DROP`](elasticsearch://reference/query-languages/esql/esql-commands.md#esql-drop) or filter out the `_id`, `_index`, or `_version` metadata fields.
 
 Here is an example of a query that fails to deduplicate alerts. It uses the `DROP` command to omit the `_id` property from the results table:
 
@@ -480,11 +480,11 @@ FROM logs-* METADATA _id, _index, _version
 
 When writing your query, consider the following:
 
-* The [`LIMIT`](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/esql-commands.md#esql-limit) command specifies the maximum number of rows an {{esql}} query returns and the maximum number of alerts created per rule run. Similarly, a detection rule’s **Max alerts per run** setting specifies the maximum number of alerts it can create every time it runs.
+* The [`LIMIT`](elasticsearch://reference/query-languages/esql/esql-commands.md#esql-limit) command specifies the maximum number of rows an {{esql}} query returns and the maximum number of alerts created per rule run. Similarly, a detection rule’s **Max alerts per run** setting specifies the maximum number of alerts it can create every time it runs.
 
     If the `LIMIT` value and **Max alerts per run** value are different, the rule uses the lower value to determine the maximum number of alerts the rule generates.
 
-* When writing an aggregating query, use the [`STATS...BY`](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/esql-commands.md#esql-stats-by) command with fields that you want to search and filter for after alerts are created. For example, using the `host.name`, `user.name`, `process.name` fields with the `BY` operator of the `STATS...BY` command returns these fields in alert documents, and allows you to search and filter for them from the Alerts table.
+* When writing an aggregating query, use the [`STATS...BY`](elasticsearch://reference/query-languages/esql/esql-commands.md#esql-stats-by) command with fields that you want to search and filter for after alerts are created. For example, using the `host.name`, `user.name`, `process.name` fields with the `BY` operator of the `STATS...BY` command returns these fields in alert documents, and allows you to search and filter for them from the Alerts table.
 * When configuring alert suppression on a non-aggregating query, we recommend sorting results by ascending `@timestamp` order. Doing so ensures that alerts are properly suppressed, especially if the number of alerts generated is higher than the **Max alerts per run** value.
 
 
@@ -515,7 +515,7 @@ When configuring an {{esql}} rule’s **[Custom highlighted fields](../../../sol
 
         :::{image} ../../../images/serverless--detections-severity-mapping-ui.png
         :alt:  detections severity mapping ui
-        :class: screenshot
+        :screenshot:
         :::
 
         ::::{note}
@@ -534,7 +534,7 @@ When configuring an {{esql}} rule’s **[Custom highlighted fields](../../../sol
 
         :::{image} ../../../images/serverless--detections-risk-source-field-ui.png
         :alt:  detections risk source field ui
-        :class: screenshot
+        :screenshot:
         :::
 
         ::::{note}
@@ -602,7 +602,7 @@ When configuring an {{esql}} rule’s **[Custom highlighted fields](../../../sol
 
     :::{image} ../../../images/serverless--detections-schedule-rule.png
     :alt:  detections schedule rule
-    :class: screenshot
+    :screenshot:
     :::
 
 3. Continue with [setting the rule’s schedule](../../../solutions/security/detect-and-alert/create-detection-rule.md#rule-schedule).
@@ -645,7 +645,7 @@ To use actions for alert notifications, you need the appropriate user role. For 
     ::::{note}
     Each action type requires a connector. Connectors store the information required to send the notification from the external system. You can configure connectors while creating the rule or in **Project settings** → **Stack Management** → **{{connectors-ui}}**. For more information, see [Action and connector types](../../../deploy-manage/manage-connectors.md).
 
-    Some connectors that perform actions require less configuration. For example, you do not need to set the action frequency or variables for the [Cases connector](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/cases-action-type.md).
+    Some connectors that perform actions require less configuration. For example, you do not need to set the action frequency or variables for the [Cases connector](kibana://reference/connectors-kibana/cases-action-type.md).
 
     ::::
 
@@ -669,7 +669,7 @@ To use actions for alert notifications, you need the appropriate user role. For 
 
     :::{image} ../../../images/serverless--detections-selected-action-type.png
     :alt:  detections selected action type
-    :class: screenshot
+    :screenshot:
     :::
 
 5. Use the default notification message or customize it. You can add more context to the message by clicking the icon above the message text box and selecting from a list of available [alert notification variables](../../../solutions/security/detect-and-alert/create-detection-rule.md#rule-action-variables).
@@ -811,7 +811,7 @@ Click the **Rule preview** button while creating or editing a rule. The preview 
 
 :::{image} ../../../images/serverless--detections-preview-rule.png
 :alt: Rule preview
-:class: screenshot
+:screenshot:
 :::
 
 The preview also includes the effects of rule exceptions and override fields. In the histogram, alerts are stacked by `event.category` (or `host.name` for machine learning rules), and alerts with multiple values are counted more than once.

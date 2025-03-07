@@ -24,7 +24,7 @@ To create an API key:
 
     :::{image} ../../../images/observability-server-api-key-create.png
     :alt: API key creation
-    :class: screenshot
+    :screenshot:
     :::
 
 3. Enter a name for your API key and select **Restrict privileges**. In the role descriptors box, assign the appropriate privileges to the new API key. For example:
@@ -90,7 +90,7 @@ To open **API keys**, find **Stack Management** in the main menu or use the [glo
 
 :::{image} ../../../images/observability-server-api-key-create.png
 :alt: API key creation
-:class: screenshot
+:screenshot:
 :::
 
 Enter a name for your API key and select **Restrict privileges**. In the role descriptors box, assign the appropriate privileges to the new API key. For example:

@@ -12,7 +12,7 @@ Tile layers display image tiles served from a tile server.
 
 :::{image} ../../../images/kibana-tile_layer.png
 :alt: tile layer
-:class: screenshot
+:screenshot:
 :::
 
 To add a tile layer to your map, click **Add layer**, then select one of the following:

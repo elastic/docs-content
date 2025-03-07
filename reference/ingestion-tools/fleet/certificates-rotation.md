@@ -188,5 +188,5 @@ To rotate a CA certificate on {{es}} for connections from {{agent}}:
 
     :::{image} images/certificate-rotation-agent-es.png
     :alt: Screen capture of the Edit Output UI: Elasticsearch CA trusted fingerprint
-    :class: screenshot
+    :screenshot:
     :::

@@ -18,28 +18,28 @@ For example, when you enter:
 
 :::{image} ../../images/kibana-markdown_example_1.png
 :alt: Markdown text with links
-:class: screenshot
+:screenshot:
 :::
 
 The following instructions are displayed:
 
 :::{image} ../../images/kibana-markdown_example_2.png
 :alt: Panel with markdown link text
-:class: screenshot
+:screenshot:
 :::
 
 Or when you enter:
 
 :::{image} ../../images/kibana-markdown_example_3.png
 :alt: Markdown text with image file
-:class: screenshot
+:screenshot:
 :::
 
 The following image is displayed:
 
 :::{image} ../../images/kibana-markdown_example_4.png
 :alt: Panel with markdown image
-:class: screenshot
+:screenshot:
 :::
 
 For detailed information about writing on GitHub, click **Help** on the top-right of the Markdown editor.

@@ -12,7 +12,7 @@ To create a rule that searches alert indices, select **Index Patterns** as the r
 
 :::{image} ../../../images/serverless--detections-alert-indices-ui.png
 :alt:  detections alert indices ui
-:class: screenshot
+:screenshot:
 :::
 
 

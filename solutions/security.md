@@ -28,7 +28,7 @@ mapped_urls:
 * [{{ml-cap}}](https://www.elastic.co/products/stack/machine-learning): Enable built-in {{ml}} tools to help you identify malicious behavior.
 * [Advanced entity analytics](security/advanced-entity-analytics.md): Leverage {{elastic-sec}}'s detection engine and {{ml}} capabilities to generate comprehensive risk analytics for hosts and users.
 * [Elastic AI assistant](security/ai/ai-assistant.md): Ask AI Assistant questions about how to use {{elastic-sec}}, how to understand particular alerts and other documents, and how to write {{esql}} queries.
-* [{{elastic-sec}} fields and object schemas](asciidocalypse://docs/docs-content/docs/reference/security/fields-and-object-schemas/index.md): Learn how to structure data for use with {{elastic-sec}}.
+* [{{elastic-sec}} fields and object schemas](/reference/security/fields-and-object-schemas/index.md): Learn how to structure data for use with {{elastic-sec}}.
 
 
 ## {{es}} and {{kib}} [elastic-search-and-kibana]

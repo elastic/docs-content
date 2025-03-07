@@ -6,7 +6,7 @@ navigation_title: "Search"
 % Derived from https://www.elastic.co/platform
 % Build powerful AI search experiences with the best vector database and platform for RAG.
 
-This section contains reference information for Elastic Search features, in particular the [Search UI](asciidocalypse://docs/index.md).
+This section contains reference information for Elastic Search features, in particular the [Search UI](search-ui://reference/index.md).
 
 You can also use [Elasticsearch](https://www.elastic.co/docs/api/doc/elasticsearch) or [Elasticsearch Serverless](https://www.elastic.co/docs/api/doc/elasticsearch-serverless) APIs to interface with search features.
 For example:

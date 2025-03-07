@@ -28,14 +28,14 @@ To connect to your {{es}} deployment, you need either a Cloud ID or an {{es}} en
 
     :::{image} ../../images/kibana-manage-deployment.png
     :alt: manage deployment
-    :class: screenshot
+    :screenshot:
     :::
 
 3. The Cloud ID is displayed on the right side of the page.
 
     :::{image} ../../images/kibana-cloud-id.png
     :alt: cloud id
-    :class: screenshot
+    :screenshot:
     :::
 
 
@@ -46,14 +46,14 @@ To connect to your {{es}} deployment, you need either a Cloud ID or an {{es}} en
 
     :::{image} ../../images/kibana-api-keys-search-bar.png
     :alt: api keys search bar
-    :class: screenshot
+    :screenshot:
     :::
 
 2. Click **Create API key**.
 
     :::{image} ../../images/kibana-click-create-api-key.png
     :alt: click create api key
-    :class: screenshot
+    :screenshot:
     :::
 
 3. Enter the API key details, and click **Create API key**.
@@ -69,7 +69,7 @@ To connect to your {{es}} deployment, you need either a Cloud ID or an {{es}} en
 
     :::{image} ../../images/kibana-serverless-connection-details.png
     :alt: serverless connection details
-    :class: screenshot
+    :screenshot:
     :::
 
 
@@ -86,7 +86,7 @@ The **Cloud ID** is also displayed in the Copy your connection details section, 
 
     :::{image} ../../images/kibana-serverless-create-an-api-key.png
     :alt: serverless create an api key
-    :class: screenshot
+    :screenshot:
     :::
 
 3. Enter the API key details, and click **Create API key**.

@@ -14,7 +14,7 @@ applies_to:
 ::::{note}
 ![supported deployment methods](../../../images/observability-binary-yes-fm-no.svg "")
 
-This documentation only applies to APM Server binary users. Fleet-managed users should see [Configure the {{es}} output](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/elasticsearch-output.md).
+This documentation only applies to APM Server binary users. Fleet-managed users should see [Configure the {{es}} output](/reference/ingestion-tools/fleet/elasticsearch-output.md).
 
 ::::
 

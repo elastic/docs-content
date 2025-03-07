@@ -39,7 +39,7 @@ In this example, Kubernetes Pods is the selected inventory type. The conditions 
 
 :::{image} ../../../images/serverless-inventory-alert.png
 :alt: Inventory rule
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -88,14 +88,14 @@ After you select a connector, you must set the action frequency. You can choose 
 
 :::{image} ../../../images/serverless-action-alert-summary.png
 :alt: Action types
-:class: screenshot
+:screenshot:
 :::
 
 Alternatively, you can set the action frequency such that you choose how often the action runs (for example, at each check interval, only when the alert status changes, or at a custom action interval). In this case, you define precisely when the alert is triggered by selecting a specific threshold condition: `Alert`, `Warning`, or `Recovered` (a value that was once above a threshold has now dropped below it).
 
 :::{image} ../../../images/serverless-inventory-threshold-run-when-selection.png
 :alt: Configure when an alert is triggered
-:class: screenshot
+:screenshot:
 :::
 
 You can also further refine the conditions under which actions run by specifying that actions only run when they match a KQL query or when an alert occurs within a specific time frame:
@@ -105,7 +105,7 @@ You can also further refine the conditions under which actions run by specifying
 
 :::{image} ../../../images/serverless-conditional-alerts.png
 :alt: Configure a conditional alert
-:class: screenshot
+:screenshot:
 :::
 
 :::::
@@ -116,7 +116,7 @@ Use the default notification message or customize it. You can add more context t
 
 :::{image} ../../../images/serverless-action-variables-popup.png
 :alt: Action variables list
-:class: screenshot
+:screenshot:
 :::
 
 The following variables are specific to this rule type. You can also specify [variables common to all rules](../../../explore-analyze/alerts-cases/alerts/rule-action-variables.md).

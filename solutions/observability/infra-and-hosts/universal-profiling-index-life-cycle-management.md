@@ -26,7 +26,7 @@ The following table lists the default thresholds for rollover and delete:
 | after 30 days or 50 GB | after 30 days | after 60 days |
 
 ::::{note}
-The [rollover condition blocks phase transitions](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-lifecycle-actions/ilm-rollover.md#_rollover_condition_blocks_phase_transition) which means that indices are kept 30 days **after** rollover on the hot tier.
+The [rollover condition blocks phase transitions](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-rollover.md#_rollover_condition_blocks_phase_transition) which means that indices are kept 30 days **after** rollover on the hot tier.
 ::::
 
 
@@ -84,7 +84,7 @@ To apply a custom {{ilm-init}} policy, you must name the component template `pro
 
     :::{image} ../../../images/observability-profiling-create-component-template.png
     :alt: Create component template
-    :class: screenshot
+    :screenshot:
     :::
 
 

@@ -1,27 +1,6 @@
 project: 'Deploy and manage'
 toc:
   - file: index.md
-  - file: distributed-architecture.md
-    children:
-      - file: distributed-architecture/clusters-nodes-shards.md
-        children:
-          - file: distributed-architecture/clusters-nodes-shards/node-roles.md
-      - file: distributed-architecture/reading-and-writing-documents.md
-      - file: distributed-architecture/shard-allocation-relocation-recovery.md
-        children:
-          - file: distributed-architecture/shard-allocation-relocation-recovery/shard-allocation-awareness.md
-          - file: distributed-architecture/shard-allocation-relocation-recovery/index-level-shard-allocation.md
-            children:
-              - file: distributed-architecture/shard-allocation-relocation-recovery/delaying-allocation-when-node-leaves.md
-      - file: distributed-architecture/discovery-cluster-formation.md
-        children:
-          - file: distributed-architecture/discovery-cluster-formation/discovery-hosts-providers.md
-          - file: distributed-architecture/discovery-cluster-formation/modules-discovery-quorums.md
-          - file: distributed-architecture/discovery-cluster-formation/modules-discovery-voting.md
-          - file: distributed-architecture/discovery-cluster-formation/modules-discovery-bootstrap-cluster.md
-          - file: distributed-architecture/discovery-cluster-formation/cluster-state-overview.md
-          - file: distributed-architecture/discovery-cluster-formation/cluster-fault-detection.md
-      - file: distributed-architecture/kibana-tasks-management.md
   - file: deploy.md
     children:
       - file: deploy/deployment-comparison.md
@@ -117,49 +96,34 @@ toc:
                   - file: deploy/cloud-enterprise/ece-software-prereq.md
                   - file: deploy/cloud-enterprise/ece-sysconfig.md
                   - file: deploy/cloud-enterprise/ece-networking-prereq.md
+                  - file: deploy/cloud-enterprise/ece-users-permissions.md
                   - file: deploy/cloud-enterprise/ece-ha.md
                   - file: deploy/cloud-enterprise/ece-roles.md
                   - file: deploy/cloud-enterprise/ece-load-balancers.md
-                  - file: deploy/cloud-enterprise/ece-users-permissions.md
                   - file: deploy/cloud-enterprise/ece-jvm.md
                   - file: deploy/cloud-enterprise/ece-wildcard-dns.md
                   - file: deploy/cloud-enterprise/ece-manage-capacity.md
               - file: deploy/cloud-enterprise/install.md
                 children:
                   - file: deploy/cloud-enterprise/identify-deployment-scenario.md
-                  - file: deploy/cloud-enterprise/install-ece-on-public-cloud.md
+                  - file: deploy/cloud-enterprise/configure-operating-system.md
                     children:
-                      - file: deploy/cloud-enterprise/configure-operating-system-cloud.md
-                        children:
-                          - file: deploy/cloud-enterprise/configure-host-ubuntu-cloud.md
-                          - file: deploy/cloud-enterprise/configure-host-rhel-cloud.md
-                          - file: deploy/cloud-enterprise/configure-host-suse-cloud.md
-                      - file: deploy/cloud-enterprise/install-ece-cloud.md
-                        children:
-                          - file: deploy/cloud-enterprise/deploy-small-installation-cloud.md
-                          - file: deploy/cloud-enterprise/deploy-medium-installation-cloud.md
-                          - file: deploy/cloud-enterprise/deploy-large-installation-cloud.md
-                          - file: deploy/cloud-enterprise/fresh-installation-of-ece-using-podman-hosts-cloud.md
-                  - file: deploy/cloud-enterprise/install-ece-on-own-premises.md
+                      - file: deploy/cloud-enterprise/configure-host-ubuntu.md
+                      - file: deploy/cloud-enterprise/configure-host-rhel.md
+                      - file: deploy/cloud-enterprise/configure-host-suse.md
+                  - file: deploy/cloud-enterprise/install-ece-procedures.md
                     children:
-                      - file: deploy/cloud-enterprise/configure-operating-system-onprem.md
-                        children:
-                          - file: deploy/cloud-enterprise/configure-host-ubuntu-onprem.md
-                          - file: deploy/cloud-enterprise/configure-host-rhel-onprem.md
-                          - file: deploy/cloud-enterprise/configure-host-suse-onprem.md
-                      - file: deploy/cloud-enterprise/install-ece-onprem.md
-                        children:
-                          - file: deploy/cloud-enterprise/deploy-small-installation-onprem.md
-                          - file: deploy/cloud-enterprise/deploy-medium-installation-onprem.md
-                          - file: deploy/cloud-enterprise/deploy-large-installation-onprem.md
-                          - file: deploy/cloud-enterprise/fresh-installation-of-ece-using-podman-hosts-onprem.md
-                  - file: deploy/cloud-enterprise/alternative-install-ece-with-ansible.md
+                      - file: deploy/cloud-enterprise/deploy-small-installation.md
+                      - file: deploy/cloud-enterprise/deploy-medium-installation.md
+                      - file: deploy/cloud-enterprise/deploy-large-installation.md
+                      - file: deploy/cloud-enterprise/fresh-installation-of-ece-using-podman-hosts.md
+                      - file: deploy/cloud-enterprise/migrate-ece-to-podman-hosts.md
                   - file: deploy/cloud-enterprise/log-into-cloud-ui.md
+                  - file: deploy/cloud-enterprise/post-installation-steps.md
                   - file: deploy/cloud-enterprise/install-ece-on-additional-hosts.md
                     children:
                       - file: deploy/cloud-enterprise/generate-roles-tokens.md
-                  - file: deploy/cloud-enterprise/migrate-ece-to-podman-hosts.md
-                  - file: deploy/cloud-enterprise/post-installation-steps.md
+                  - file: deploy/cloud-enterprise/alternative-install-ece-with-ansible.md
                   - file: deploy/cloud-enterprise/statistics-collected-by-cloud-enterprise.md
               - file: deploy/cloud-enterprise/air-gapped-install.md
                 children:
@@ -183,7 +147,6 @@ toc:
                       - file: deploy/cloud-enterprise/ce-add-support-for-node-roles-autoscaling.md
                       - file: deploy/cloud-enterprise/ece-ce-add-support-for-integrations-server.md
                       - file: deploy/cloud-enterprise/ece-configuring-ece-instance-configurations-default.md
-                      - file: deploy/cloud-enterprise/ece-include-additional-kibana-plugin.md
                   - file: deploy/cloud-enterprise/change-ece-api-url.md
                   - file: deploy/cloud-enterprise/change-endpoint-urls.md
                   - file: deploy/cloud-enterprise/enable-custom-endpoint-aliases.md
@@ -192,6 +155,7 @@ toc:
                   - file: deploy/cloud-enterprise/configure-allocator-affinity.md
                   - file: deploy/cloud-enterprise/change-allocator-disconnect-timeout.md
                   - file: deploy/cloud-enterprise/manage-elastic-stack-versions.md
+                  - file: deploy/cloud-enterprise/ece-include-additional-kibana-plugin.md
                   - file: deploy/cloud-enterprise/migrate-ece-on-podman-hosts-to-selinux-enforce.md
           - file: deploy/cloud-enterprise/working-with-deployments.md
             children:
@@ -379,6 +343,27 @@ toc:
           - file: deploy/self-managed/air-gapped-install.md
           - file: deploy/self-managed/tools-apis.md
       - file: deploy/kibana-reporting-configuration.md
+  - file: distributed-architecture.md
+    children:
+      - file: distributed-architecture/clusters-nodes-shards.md
+        children:
+          - file: distributed-architecture/clusters-nodes-shards/node-roles.md
+      - file: distributed-architecture/reading-and-writing-documents.md
+      - file: distributed-architecture/shard-allocation-relocation-recovery.md
+        children:
+          - file: distributed-architecture/shard-allocation-relocation-recovery/shard-allocation-awareness.md
+          - file: distributed-architecture/shard-allocation-relocation-recovery/index-level-shard-allocation.md
+            children:
+              - file: distributed-architecture/shard-allocation-relocation-recovery/delaying-allocation-when-node-leaves.md
+      - file: distributed-architecture/discovery-cluster-formation.md
+        children:
+          - file: distributed-architecture/discovery-cluster-formation/discovery-hosts-providers.md
+          - file: distributed-architecture/discovery-cluster-formation/modules-discovery-quorums.md
+          - file: distributed-architecture/discovery-cluster-formation/modules-discovery-voting.md
+          - file: distributed-architecture/discovery-cluster-formation/modules-discovery-bootstrap-cluster.md
+          - file: distributed-architecture/discovery-cluster-formation/cluster-state-overview.md
+          - file: distributed-architecture/discovery-cluster-formation/cluster-fault-detection.md
+      - file: distributed-architecture/kibana-tasks-management.md
   - file: production-guidance.md
     children:
       - file: production-guidance/getting-ready-for-production-elasticsearch.md
@@ -484,48 +469,10 @@ toc:
               - file: tools/cross-cluster-replication/_perform_update_or_delete_by_query.md
   - file: autoscaling.md
     children:
-      - file: autoscaling/ech-autoscaling.md
-        children:
-          - file: autoscaling/ech-autoscaling-example.md
-      - file: autoscaling/ec-autoscaling.md
-        children:
-          - file: autoscaling/ec-autoscaling-example.md
-          - file: autoscaling/ec-autoscaling-api-example.md
-      - file: autoscaling/ece-autoscaling.md
-        children:
-          - file: autoscaling/ece-autoscaling-example.md
-          - file: autoscaling/ece-autoscaling-api-example.md
-      - file: autoscaling/autoscaling-stateless-applications-on-eck.md
-      - file: autoscaling/deployments-autoscaling-on-eck.md
+      - file: autoscaling/autoscaling-in-ece-and-ech.md
+      - file: autoscaling/autoscaling-in-eck.md
       - file: autoscaling/autoscaling-deciders.md
       - file: autoscaling/trained-model-autoscaling.md
-  - file: remote-clusters.md
-    children:
-      - file: remote-clusters/ec-enable-ccs.md
-        children:
-          - file: remote-clusters/ec-remote-cluster-same-ess.md
-          - file: remote-clusters/ec-remote-cluster-other-ess.md
-          - file: remote-clusters/ec-remote-cluster-ece.md
-          - file: remote-clusters/ec-remote-cluster-self-managed.md
-          - file: remote-clusters/ec-enable-ccs-for-eck.md
-          - file: remote-clusters/ec-edit-remove-trusted-environment.md
-          - file: remote-clusters/ec-migrate-ccs.md
-      - file: remote-clusters/ece-enable-ccs.md
-        children:
-          - file: remote-clusters/ece-remote-cluster-same-ece.md
-          - file: remote-clusters/ece-remote-cluster-other-ece.md
-          - file: remote-clusters/ece-remote-cluster-ece-ess.md
-          - file: remote-clusters/ece-remote-cluster-self-managed.md
-          - file: remote-clusters/ece-enable-ccs-for-eck.md
-          - file: remote-clusters/ece-edit-remove-trusted-environment.md
-          - file: remote-clusters/ece-migrate-ccs.md
-      - file: remote-clusters/remote-clusters-self-managed.md
-        children:
-          - file: remote-clusters/remote-clusters-api-key.md
-          - file: remote-clusters/remote-clusters-cert.md
-          - file: remote-clusters/remote-clusters-migrate.md
-          - file: remote-clusters/remote-clusters-settings.md
-      - file: remote-clusters/eck-remote-clusters.md
   - file: security.md
     children:
       - file: security/secure-your-elastic-cloud-enterprise-installation.md
@@ -670,6 +617,33 @@ toc:
       - file: api-keys/elastic-cloud-api-keys.md
       - file: api-keys/elastic-cloud-enterprise-api-keys.md
   - file: manage-connectors.md
+  - file: remote-clusters.md
+    children:
+      - file: remote-clusters/ec-enable-ccs.md
+        children:
+          - file: remote-clusters/ec-remote-cluster-same-ess.md
+          - file: remote-clusters/ec-remote-cluster-other-ess.md
+          - file: remote-clusters/ec-remote-cluster-ece.md
+          - file: remote-clusters/ec-remote-cluster-self-managed.md
+          - file: remote-clusters/ec-enable-ccs-for-eck.md
+          - file: remote-clusters/ec-edit-remove-trusted-environment.md
+          - file: remote-clusters/ec-migrate-ccs.md
+      - file: remote-clusters/ece-enable-ccs.md
+        children:
+          - file: remote-clusters/ece-remote-cluster-same-ece.md
+          - file: remote-clusters/ece-remote-cluster-other-ece.md
+          - file: remote-clusters/ece-remote-cluster-ece-ess.md
+          - file: remote-clusters/ece-remote-cluster-self-managed.md
+          - file: remote-clusters/ece-enable-ccs-for-eck.md
+          - file: remote-clusters/ece-edit-remove-trusted-environment.md
+          - file: remote-clusters/ece-migrate-ccs.md
+      - file: remote-clusters/remote-clusters-self-managed.md
+        children:
+          - file: remote-clusters/remote-clusters-api-key.md
+          - file: remote-clusters/remote-clusters-cert.md
+          - file: remote-clusters/remote-clusters-migrate.md
+          - file: remote-clusters/remote-clusters-settings.md
+      - file: remote-clusters/eck-remote-clusters.md
   - file: monitor.md
     children:
       - file: monitor/autoops.md

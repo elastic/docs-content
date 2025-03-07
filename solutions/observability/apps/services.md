@@ -17,7 +17,7 @@ In addition to health status, active alerts for each service are prominently dis
 
 :::{image} ../../../images/observability-apm-services-overview.png
 :alt: Example view of services table the Applications UI in Kibana
-:class: screenshot
+:screenshot:
 :::
 
 % Stateful only for the following tip?
@@ -47,7 +47,7 @@ Group services together to build meaningful views that remove noise, simplify in
 
 :::{image} ../../../images/observability-apm-service-group.png
 :alt: Example view of service group in the Applications UI in Kibana
-:class: screenshot
+:screenshot:
 :::
 
 To create a service group:

@@ -24,7 +24,7 @@ You can then **Save** and add it to an existing or a new dashboard using the sav
 2. Choose **ES|QL** under **Visualizations**. An ES|QL editor appears and lets you configure your query and its associated visualization. The **Suggestions** panel can help you find alternative ways to configure the visualization.
 
    ::::{tip}
-   Check the [ES|QL reference](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/esql.md) to get familiar with the syntax and optimize your query.
+   Check the [ES|QL reference](elasticsearch://reference/query-languages/esql.md) to get familiar with the syntax and optimize your query.
    ::::
 
 3. When editing your query or its configuration, run the query to update the preview of the visualization.

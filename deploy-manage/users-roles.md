@@ -11,7 +11,7 @@ applies_to:
   serverless: all
 ---
 
-# Manage users and roles
+# Users and roles
 
 To prevent unauthorized access to your Elastic resources, you need a way to identify users and validate that a user is who they claim to be (*authentication*), and control what data users can access and what tasks they can perform (*authorization*).
 

@@ -36,7 +36,7 @@ The **Index Templates** view in {{kib}} shows you all of the index templates ava
 
     :::{image} images/component-templates-list.png
     :alt: List of component templates available for the index template
-    :class: screenshot
+    :screenshot:
     :::
 
 5. Select `logs@custom` in the list to view the component template properties.
@@ -60,7 +60,7 @@ The **Index Templates** view in {{kib}} shows you all of the index templates ava
 
     :::{image} images/review-component-template01.png
     :alt: Review details for the new component template
-    :class: screenshot
+    :screenshot:
     :::
 
 

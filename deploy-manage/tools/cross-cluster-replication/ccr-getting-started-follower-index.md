@@ -27,7 +27,7 @@ When you index documents into your leader index, {{es}} replicates the documents
 
 :::{image} ../../../images/elasticsearch-reference-ccr-follower-index.png
 :alt: The Cross-Cluster Replication page in {{kib}}
-:class: screenshot
+:screenshot:
 :::
 
 ::::{dropdown} API example

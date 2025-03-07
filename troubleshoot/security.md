@@ -3,6 +3,10 @@ navigation_title: "Security"
 mapped_pages:
   - https://www.elastic.co/guide/en/security/current/troubleshooting-ov.html
   - https://www.elastic.co/guide/en/serverless/current/security-troubleshooting-ov.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Troubleshoot Security [troubleshooting-ov]

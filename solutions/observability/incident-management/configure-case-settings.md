@@ -18,7 +18,7 @@ To change case closure options and add custom fields, templates, and connectors 
 
 :::{image} ../../../images/observability-cases-settings.png
 :alt: View case settings
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -57,7 +57,7 @@ After creating a connector, you can set your cases to [automatically close](../.
 
     :::{image} ../../../images/serverless-observability-cases-add-connector.png
     :alt: Add a connector to send cases to an external source
-    :class: screenshot
+    :screenshot:
     :::
 
 3. Enter your required settings. For connector configuration details, refer to:
@@ -101,7 +101,7 @@ To create a custom field:
 
     :::{image} ../../../images/observability-cases-add-custom-field.png
     :alt: Add a custom field in case settings
-    :class: screenshot
+    :screenshot:
     :::
 
 2. You must provide a field label and type (text or toggle). You can optionally designate it as a required field and provide a default value.
@@ -126,7 +126,7 @@ To create a template:
 
     :::{image} ../../../images/serverless-observability-cases-templates.png
     :alt: Add a case template
-    :class: screenshot
+    :screenshot:
     :::
 
 2. You must provide a template name and case severity. You can optionally add template tags and a description, values for each case field, and a case connector.

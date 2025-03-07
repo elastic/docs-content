@@ -141,7 +141,7 @@ To send log events from CloudWatch to Firehose, open the log group where the Lam
 
 **Create a subscription filter for Amazon Data Firehose**
 
-The [subscription filter](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/Subscriptions.md) allows you to pick log events from the log group and forward them to other services, such as an Amazon Kinesis stream, an Amazon Data Firehose stream, or AWS Lambda.
+The [subscription filter](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/Subscriptions.html) allows you to pick log events from the log group and forward them to other services, such as an Amazon Kinesis stream, an Amazon Data Firehose stream, or AWS Lambda.
 
 1. On the log group page, select **Subscription filters** and click the **Create Amazon Data Firehose subscription filter** button.
 

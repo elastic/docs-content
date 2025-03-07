@@ -2,6 +2,8 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/cspm-benchmark-rules.html
   - https://www.elastic.co/guide/en/serverless/current/security-benchmark-rules.html
+  - https://www.elastic.co/guide/en/serverless/current/security-benchmark-rules-kspm.html
+  - https://www.elastic.co/guide/en/security/current/benchmark-rules.html
 ---
 
 # Benchmarks
@@ -17,7 +19,7 @@ The Benchmarks page lets you view the cloud security posture (CSP) benchmark rul
 
 :::{image} ../../../images/security-benchmark-rules.png
 :alt: Benchmarks page
-:class: screenshot
+:screenshot:
 :::
 
 

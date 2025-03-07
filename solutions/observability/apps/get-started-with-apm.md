@@ -90,7 +90,7 @@ This decision tree highlights key factors to help you make an informed decision 
 
 :::{image} ../../../images/observability-apm-help-me-decide.svg
 :alt: APM decision tree
-:class: screenshot
+:screenshot:
 :::
 
 % What needs to be done: Align serverless/stateful
