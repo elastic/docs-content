@@ -19,7 +19,7 @@ When you create a tracking containment rule, you must define the conditions that
 
 :::{image} ../../../images/kibana-alert-types-tracking-containment-conditions.png
 :alt: Creating a tracking containment rule in Kibana
-:class: screenshot
+:screenshot:
 :::
 
 1. Define the entities index, which must contain a `geo_point` or `geo_shape` field, `date` field, and entity identifier. An entity identifier is a `keyword`, `number`, or `ip` field that identifies the entity. Entity data is expected to be updating so that there are entity movements to alert upon.
@@ -43,7 +43,7 @@ After you select a connector, you must set the action frequency. You can choose 
 
 :::{image} ../../../images/kibana-alert-types-tracking-containment-action-options.png
 :alt: Action frequency options for an action
-:class: screenshot
+:screenshot:
 :::
 
 You can further refine the conditions under which actions run by specifying that actions only run when they match a KQL query or when an alert occurs within a specific time frame.
@@ -54,7 +54,7 @@ You can pass rule values to an action to provide contextual details. To view the
 
 :::{image} ../../../images/kibana-alert-types-tracking-containment-rule-action-variables.png
 :alt: Passing rule values to an action
-:class: screenshot
+:screenshot:
 :::
 
 The following action variables are specific to the tracking containment rule. You can also specify [variables common to all rules](rule-action-variables.md).

@@ -17,5 +17,5 @@ Click on an integration policy’s name to configure its settings. For more info
 
 :::{image} ../../../images/security-policy-list.png
 :alt: policy list
-:class: screenshot
+:screenshot:
 :::

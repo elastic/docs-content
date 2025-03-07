@@ -45,7 +45,7 @@ To view the {{kib}} status page, use the status endpoint. For example, `localhos
 
 :::{image} ../../images/kibana-kibana-status-page-7_14_0.png
 :alt: Kibana server status page
-:class: screenshot
+:screenshot:
 :::
 
 For JSON-formatted server status details, use the `localhost:5601/api/status` API endpoint.

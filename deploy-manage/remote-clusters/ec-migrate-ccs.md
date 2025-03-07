@@ -27,7 +27,7 @@ You can use a PUT request to update your deployment, changing both the deploymen
 
    :::{image} ../../images/cloud-ec-migrate-deployment-template(2).png
    :alt: Deployment Template ID
-   :class: screenshot
+   :screenshot:
    :::
 
 2. Make a request to update your deployment with two changes:
@@ -273,7 +273,7 @@ You can make this change in the user [{{ecloud}} Console](https://cloud.elastic.
 
     :::{image} ../../images/cloud-ec-create-from-snapshot-updated.png
     :alt: Create a Deployment using a snapshot
-    :class: screenshot
+    :screenshot:
     :::
 
 

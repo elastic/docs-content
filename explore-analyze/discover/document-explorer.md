@@ -12,7 +12,7 @@ Fine tune your explorations by customizing **Discover** to bring out the the bes
 
 :::{image} ../../images/kibana-hello-field.png
 :alt: A view of the Discover app
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -53,7 +53,7 @@ You can define different settings for the header row and body rows.
 
 ### Limit the sample size [document-explorer-sample-size]
 
-When the number of results returned by your search query (displayed at the top of the **Documents** or **Results** tab) is greater than the value of [`discover:sampleSize`](asciidocalypse://docs/kibana/docs/reference/advanced-settings.md#kibana-discover-settings), the number of results displayed in the table is limited to the configured value by default. You can adjust the initial sample size for searches to any number between 10 and `discover:sampleSize` from the **Display options** located in the table toolbar.
+When the number of results returned by your search query (displayed at the top of the **Documents** or **Results** tab) is greater than the value of [`discover:sampleSize`](kibana://reference/advanced-settings.md#kibana-discover-settings), the number of results displayed in the table is limited to the configured value by default. You can adjust the initial sample size for searches to any number between 10 and `discover:sampleSize` from the **Display options** located in the table toolbar.
 
 On the last page of the table, a message indicates that you’ve reached the end of the loaded search results. From that message, you can choose to load more results to continue exploring.
 
@@ -75,7 +75,7 @@ To sort by multiple fields:
    By default, columns are sorted in the order they are added.
    :::{image} ../../images/kibana-document-explorer-multi-field.png
    :alt: Multi field sort in the document table
-   :class: screenshot
+   :screenshot:
    :width: 50%
    :::
 
@@ -100,7 +100,7 @@ Narrow your results to a subset of documents so you’re comparing just the data
 2. Click the **Selected** option, and then select **Show selected documents only**.
    :::{image} ../../images/kibana-document-explorer-compare-data.png
    :alt: Compare data in the document table
-   :class: screenshot
+   :screenshot:
    :width: 50%
    :::
 
@@ -114,5 +114,5 @@ To change the numbers of results you want to display on each page, use the **Row
 
 :::{image} ../../images/kibana-document-table-rows-per-page.png
 :alt: Menu with options for setting the number of results in the document table
-:class: screenshot
+:screenshot:
 :::

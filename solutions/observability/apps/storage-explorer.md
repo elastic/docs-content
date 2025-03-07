@@ -11,7 +11,7 @@ Analyze your APM data and manage costs with **storage explorer**. For example, a
 
 :::{image} ../../../images/observability-storage-explorer-overview.png
 :alt: APM Storage Explorer
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -44,7 +44,7 @@ The service statistics table provides detailed information on each service:
 
 :::{image} ../../../images/observability-storage-explorer-expanded.png
 :alt: APM Storage Explorer service breakdown
-:class: screenshot
+:screenshot:
 :::
 
 As you explore your service statistics, you might want to take action to reduce the number of documents and therefore storage size of a particular service.

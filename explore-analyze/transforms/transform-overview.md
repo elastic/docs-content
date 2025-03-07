@@ -42,7 +42,7 @@ If you want to check the sales in the different categories in your last fiscal y
 
 :::{image} ../../images/elasticsearch-reference-pivot-preview.png
 :alt: Example of a pivot {{transform}} preview in {{kib}}
-:class: screenshot
+:screenshot:
 :::
 
 ## Latest {{transforms}} [latest-transform-overview]
@@ -51,7 +51,7 @@ You can use the `latest` type of {{transform}} to copy the most recent documents
 
 :::{image} ../../images/elasticsearch-reference-latest-preview.png
 :alt: Example of a latest {{transform}} preview in {{kib}}
-:class: screenshot
+:screenshot:
 :::
 
 As in the case of a pivot, a latest {{transform}} can run once or continuously. It performs a composite aggregation on the data in the source index and stores the output in the destination index. If the {{transform}} runs continuously, new unique key values are automatically added to the destination index and the most recent documents for existing key values are automatically updated at each checkpoint.

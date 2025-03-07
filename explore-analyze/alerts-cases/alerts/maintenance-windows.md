@@ -42,7 +42,7 @@ When you create a maintenance window, you must provide a name and a schedule. Yo
 
 :::{image} ../../../images/kibana-create-maintenance-window.png
 :alt: The Create Maintenance Window user interface in {{kib}}
-:class: screenshot
+:screenshot:
 :::
 
 By default, maintenance windows affect all categories of rules. The category-specific maintenance window options alter this behavior. For the definitive list of rule types in each category, refer to the [get rule types API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-alerting).
@@ -51,7 +51,7 @@ If you turn on **Filter alerts**, you can use KQL to filter the alerts affected 
 
 :::{image} ../../../images/kibana-create-maintenance-window-filter.png
 :alt: The Create Maintenance Window user interface in {{kib}} with alert filters turned on
-:class: screenshot
+:screenshot:
 :::
 
 ::::{note}

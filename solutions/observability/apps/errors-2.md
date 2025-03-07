@@ -12,14 +12,14 @@ A service returning a 5xx code from a request handler, controller, etc., will no
 
 :::{image} ../../../images/observability-apm-errors-overview.png
 :alt: APM Errors overview
-:class: screenshot
+:screenshot:
 :::
 
 Selecting an error group ID or error message brings you to the **Error group**.
 
 :::{image} ../../../images/observability-apm-error-group.png
 :alt: APM Error group
-:class: screenshot
+:screenshot:
 :::
 
 The error group details page visualizes the number of error occurrences over time and compared to a recent time range. This allows you to quickly determine if the error rate is changing or remaining constant. You’ll also see the top 5 affected transactions—​enabling you to quickly narrow down which transactions are most impacted by the selected error.

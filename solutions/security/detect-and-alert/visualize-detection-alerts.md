@@ -17,7 +17,7 @@ Visualize and group detection alerts by specific parameters in the visualization
 
 :::{image} ../../../images/security-alert-page-visualizations.png
 :alt: Alerts page with visualizations section highlighted
-:class: screenshot
+:screenshot:
 :::
 
 Use the left buttons to select a view type (**Summary**, **Trend**, **Counts**, or **Treemap**), and use the right menus to select the ECS fields to use for grouping:
@@ -43,7 +43,7 @@ Click the collapse icon (![Collapse icon](../../../images/security-collapse-icon
 
 :::{image} ../../../images/security-alert-page-viz-collapsed.png
 :alt: Alerts page with visualizations section collapsed
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -59,7 +59,7 @@ You can hover and click on elements within the summary — such as severity leve
 
 :::{image} ../../../images/security-alerts-viz-summary.png
 :alt: Summary visualization for alerts
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -74,7 +74,7 @@ The **Group by top** menu is unavailable for the trend view.
 
 :::{image} ../../../images/security-alerts-viz-trend.png
 :alt: Trend visualization for alerts
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -84,7 +84,7 @@ The counts view shows the count of alerts in each group. By default, it groups a
 
 :::{image} ../../../images/security-alerts-viz-counts.png
 :alt: Counts visualization for alerts
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -94,7 +94,7 @@ The treemap view shows the distribution of alerts as nested, proportionally-size
 
 :::{image} ../../../images/security-alerts-viz-treemap.png
 :alt: Treemap visualization for alerts
-:class: screenshot
+:screenshot:
 :::
 
 Larger tiles represent more frequent alerts, and each tile’s color is based on the alerts' risk score:
@@ -115,6 +115,6 @@ You can click on the treemap to narrow down the alerts displayed in both the tre
 
 :::{image} ../../../images/security-treemap-click.gif
 :alt: Animation of clicking the treemap
-:class: screenshot
+:screenshot:
 :::
 

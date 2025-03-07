@@ -30,7 +30,7 @@ If there’s a specific service that interests you, select that service to highl
 
 :::{image} ../../../images/observability-service-maps-java.png
 :alt: Example view of service maps in the Applications UI in Kibana
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -46,7 +46,7 @@ You can create machine learning jobs to calculate anomaly scores on APM transact
 
 :::{image} ../../../images/observability-apm-service-map-anomaly.png
 :alt: Example view of anomaly scores on service maps in the Applications UI
-:class: screenshot
+:screenshot:
 :::
 
 If an anomaly has been detected, click **View anomalies** to view the anomaly detection metric viewer. This time series analysis will display additional details on the severity and time of the detected anomalies.

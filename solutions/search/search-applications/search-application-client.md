@@ -309,7 +309,7 @@ If you need to adjust `search_fields` at query request time, you can add a new p
 
 **Use case: I want to boost results given a certain proximity to the user**
 
-You can add additional template parameters to send the geo-coordinates of the user. Then use [`function_score`](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/query-dsl-function-score-query.md) to boost documents which match a certain [`geo_distance`](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/query-dsl-geo-distance-query.md) from the user.
+You can add additional template parameters to send the geo-coordinates of the user. Then use [`function_score`](elasticsearch://reference/query-languages/query-dsl-function-score-query.md) to boost documents which match a certain [`geo_distance`](elasticsearch://reference/query-languages/query-dsl-geo-distance-query.md) from the user.
 
 
 ## Result fields [search-application-client-client-features-result-fields]
@@ -368,7 +368,7 @@ If you need to adjust the fields returned at query request time, you can add a n
 
 ### Highlighting and snippets [search-application-client-client-features-highlight-snippets]
 
-Highlighting support is straightforward to add to the template. With the [highlighting API](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/highlighting.md), you can specify which fields you want to highlight for matches.
+Highlighting support is straightforward to add to the template. With the [highlighting API](elasticsearch://reference/elasticsearch/rest-apis/highlighting.md), you can specify which fields you want to highlight for matches.
 
 In the following example, we specify `title` and `plot` as the highlighted fields. `title` typically has a short value length, compared to `plot` which is variable and tends to be longer.
 

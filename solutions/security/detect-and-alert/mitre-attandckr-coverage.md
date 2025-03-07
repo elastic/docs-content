@@ -29,7 +29,7 @@ You can map custom rules to tactics in **Advanced settings** when creating or ed
 
 :::{image} ../../../images/security-rules-coverage.png
 :alt: MITRE ATT&CK® coverage page
-:class: screenshot
+:screenshot:
 :::
 
 
