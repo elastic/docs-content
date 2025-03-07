@@ -2,13 +2,18 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/observability/current/view-infrastructure-metrics.html
   - https://www.elastic.co/guide/en/serverless/current/observability-view-infrastructure-metrics.html
+applies_to:
+  stack: 
+  serverless: 
 ---
 
 # View infrastructure metrics by resource type [observability-view-infrastructure-metrics]
 
 The **Infrastructure Inventory** page provides a metrics-driven view of your entire infrastructure grouped by the resources you are monitoring. All monitored resources emitting a core set of infrastructure metrics are displayed to give you a quick view of the overall health of your infrastructure.
 
-To open **Infrastructure inventory**, find **Infrastructure** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+To open the **Infrastructure inventory** page in:
+- **Elastic Stack,** find **Infrastructure** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+- **Serverless,** go to **Infrastructure inventory** in your Observability Serverless project.
 
 :::{image} ../../../images/observability-metrics-app.png
 :alt: Infrastructure UI in {kib}

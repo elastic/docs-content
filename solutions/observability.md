@@ -3,8 +3,8 @@ mapped_urls:
   - https://www.elastic.co/guide/en/serverless/current/what-is-observability-serverless.html
   - https://www.elastic.co/guide/en/observability/current/index.html
 applies_to:
-  stack: ga
-  serverless: ga
+  stack: 
+  serverless: 
 ---
 
 # Observability

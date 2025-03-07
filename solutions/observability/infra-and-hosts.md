@@ -4,6 +4,9 @@ mapped_urls:
   - https://www.elastic.co/guide/en/serverless/current/infrastructure-and-host-monitoring-intro.html
 
 navigation_title: "Infrastructure and hosts"
+applies_to:
+  stack: 
+  serverless: 
 ---
 
 # Infrastructure and host monitoring [infrastructure-and-host-monitoring-intro]
