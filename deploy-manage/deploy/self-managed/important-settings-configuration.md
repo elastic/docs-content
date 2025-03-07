@@ -53,10 +53,10 @@ path:
   logs: "C:\\Elastic\\Elasticsearch\\logs"
 ```
 ::::::
+:::::::
 
 {{es}} offers a deprecated setting that allows you to specify multiple paths in `path.data`. To learn about this setting, and how to migrate away from it, refer to [Multiple data paths](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/path.md#multiple-data-paths).
 
-:::::::
 ::::{warning}
 * Don’t modify anything within the data directory or run processes that might interfere with its contents. 
 
@@ -64,8 +64,6 @@ path:
 * Don’t attempt to take filesystem backups of the data directory; there is no supported way to restore such a backup. Instead, use [Snapshot and restore](../../tools/snapshot-and-restore.md) to take backups safely. 
 * Don’t run virus scanners on the data directory. A virus scanner can prevent {{es}} from working correctly and may modify the contents of the data directory. The data directory contains no executables so a virus scan will only find false positives.
 ::::
-
-Elasticsearch offers a deprecated setting that allows you to specify multiple paths in `path.data`. To learn about this setting, and how to migrate away from it, refer to [Multiple data paths](elasticsearch://reference/elasticsearch/index-settings/path.md#multiple-data-paths).
 
 
 ## Cluster name setting [_cluster_name_setting]

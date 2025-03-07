@@ -292,6 +292,7 @@ toc:
         children:
           - file: deploy/self-managed/deploy-cluster.md
             children:
+              - file: deploy/self-managed/local-development-installation-quickstart.md
               - file: deploy/self-managed/important-system-configuration.md
                 children:
                   - file: deploy/self-managed/setting-system-settings.md
@@ -302,20 +303,18 @@ toc:
                   - file: deploy/self-managed/networkaddress-cache-ttl.md
                   - file: deploy/self-managed/executable-jna-tmpdir.md
                   - file: deploy/self-managed/system-config-tcpretries.md
-              - file: deploy/self-managed/installing-elasticsearch.md
+                  - file: deploy/self-managed/bootstrap-checks.md
+              - file: deploy/self-managed/install-elasticsearch-from-archive-on-linux-macos.md
+              - file: deploy/self-managed/install-elasticsearch-with-zip-on-windows.md
+              - file: deploy/self-managed/install-elasticsearch-with-debian-package.md
+              - file: deploy/self-managed/install-elasticsearch-with-rpm.md
+              - file: deploy/self-managed/install-elasticsearch-with-docker.md
                 children:
-                  - file: deploy/self-managed/install-elasticsearch-from-archive-on-linux-macos.md
-                  - file: deploy/self-managed/install-elasticsearch-with-zip-on-windows.md
-                  - file: deploy/self-managed/install-elasticsearch-with-debian-package.md
-                  - file: deploy/self-managed/install-elasticsearch-with-rpm.md
-                  - file: deploy/self-managed/install-elasticsearch-with-docker.md
-                    children:
-                      - file: deploy/self-managed/install-elasticsearch-docker-basic.md
-                      - file: deploy/self-managed/install-elasticsearch-docker-compose.md
-                      - file: deploy/self-managed/install-elasticsearch-docker-prod.md
-                      - file: deploy/self-managed/install-elasticsearch-docker-configure.md
-              - file: deploy/self-managed/local-development-installation-quickstart.md
-              - file: deploy/self-managed/bootstrap-checks.md
+                  - file: deploy/self-managed/install-elasticsearch-docker-basic.md
+                  - file: deploy/self-managed/install-elasticsearch-docker-compose.md
+                  - file: deploy/self-managed/install-elasticsearch-docker-prod.md
+                  - file: deploy/self-managed/install-elasticsearch-docker-configure.md
+
           - file: deploy/self-managed/configure-elasticsearch.md
             children:
               - file: deploy/self-managed/important-settings-configuration.md

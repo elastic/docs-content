@@ -74,7 +74,7 @@ To override these variables, create a drop-in unit file in the `/etc/systemd/sys
 
 For example a file with the following content placed in `/etc/systemd/system/apm-server.service.d/debug.conf` would override `BEAT_LOG_OPTS` to enable debug for {{es}} output.
 
-```text
+```ini
 [Service]
 Environment="BEAT_LOG_OPTS=-d elasticsearch"
 ```

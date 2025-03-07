@@ -7,7 +7,7 @@ sub:
   export: "$"
   escape: "^"
   stack-version: "9.0.0"
-navigation_title: Windows
+navigation_title: Install on Windows
 applies_to:
   deployment:
     self:
@@ -224,12 +224,12 @@ This is very convenient because you don’t have to create any directories to st
 | --- | --- | --- | --- |
 | home | {{es}} home directory or `%ES_HOME%` | Directory created by unpacking the archive |  |
 | bin | Binary scripts including `elasticsearch` to start a node    and `elasticsearch-plugin` to install plugins | `%ES_HOME%\bin` |  |
-| conf | Configuration files including `elasticsearch.yml` | `%ES_HOME%\config` | `[ES_PATH_CONF](/deploy-manage/deploy/self-managed/configure-elasticsearch.md#config-files-location)` |
+| conf | Configuration files including `elasticsearch.yml` | `%ES_HOME%\config` | [`ES_PATH_CONF`](/deploy-manage/deploy/self-managed/configure-elasticsearch.md#config-files-location) |
 | conf | Generated TLS keys and certificates for the transport and HTTP layer. | `%ES_HOME%\config\certs` |  |
-| data | The location of the data files of each index / shard allocated    on the node. | `%ES_HOME%\data` | `path.data` |
-| logs | Log files location. | `%ES_HOME%\logs` | `path.logs` |
+| data | The location of the data files of each index / shard allocated    on the node. | `%ES_HOME%\data` | [`path.data`](/deploy-manage/deploy/self-managed/important-settings-configuration.md#path-settings) |
+| logs | Log files location. | `%ES_HOME%\logs` | [`path.logs`](/deploy-manage/deploy/self-managed/important-settings-configuration.md#path-settings) |
 | plugins | Plugin files location. Each plugin will be contained in a subdirectory. | `%ES_HOME%\plugins` |  |
-| repo | Shared file system repository locations. Can hold multiple locations. A file system repository can be placed in to any subdirectory of any directory specified here. | Not configured | `path.repo` |
+| repo | Shared file system repository locations. Can hold multiple locations. A file system repository can be placed in to any subdirectory of any directory specified here. | Not configured | [`path.repo`](/deploy-manage/tools/snapshot-and-restore/shared-file-system-repository.md) |
 
 
 

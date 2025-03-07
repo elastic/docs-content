@@ -15,6 +15,14 @@ Access {{kib}} through the web application on port 5601.
 3. Go to the home page, then click **{{kib}}**.
 4. To make the {{kib}} page your landing page, click **Make this my landing page**.
 
+## Grant other users access to {{kib}}
+
+{{kib}} leverages {{es}} authentication and authorization technologies to secure access.
+
+To learn about authentication options, refer to [](/deploy-manage/users-roles/cluster-or-deployment-auth/user-authentication.md). 
+
+To learn how to enable authentication providers for {{kib}}, refer to [](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-authentication.md).
+
 ## Resources
 
 * [Troubleshoot: Check {{kib}} server status](/troubleshoot/kibana/access.md)

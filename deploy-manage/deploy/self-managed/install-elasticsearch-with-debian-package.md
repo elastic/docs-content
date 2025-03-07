@@ -8,7 +8,7 @@ sub:
   export: "export "
   escape: "\\"
   stack-version: "9.0.0"
-navigation_title: Debian
+navigation_title: Install with Debian package
 applies_to:
   deployment:
     self:
@@ -175,14 +175,14 @@ The Debian package places config files, logs, and the data directory in the appr
 | --- | --- | --- | --- |
 | home | {{es}} home directory or `$ES_HOME` | `/usr/share/elasticsearch` |  |
 | bin | Binary scripts including `elasticsearch` to start a node    and `elasticsearch-plugin` to install plugins | `/usr/share/elasticsearch/bin` |  |
-| conf | Configuration files including `elasticsearch.yml` | `/etc/elasticsearch` | `[ES_PATH_CONF](/deploy-manage/deploy/self-managed/configure-elasticsearch.md#config-files-location)` |
+| conf | Configuration files including `elasticsearch.yml` | `/etc/elasticsearch` | [`ES_PATH_CONF`](/deploy-manage/deploy/self-managed/configure-elasticsearch.md#config-files-location) |
 | conf | Environment variables including heap size, file descriptors. | `/etc/default/elasticsearch` |  |
 | conf | Generated TLS keys and certificates for the transport and http layer. | `/etc/elasticsearch/certs` |  |
-| data | The location of the data files of each index / shard allocated    on the node. | `/var/lib/elasticsearch` | `path.data` |
+| data | The location of the data files of each index / shard allocated    on the node. | `/var/lib/elasticsearch` | [`path.data`](/deploy-manage/deploy/self-managed/important-settings-configuration.md#path-settings) |
 | jdk | The bundled Java Development Kit used to run {{es}}. Can    be overridden by setting the `ES_JAVA_HOME` environment variable    in `/etc/default/elasticsearch`. | `/usr/share/elasticsearch/jdk` |  |
-| logs | Log files location. | `/var/log/elasticsearch` | `path.logs` |
+| logs | Log files location. | `/var/log/elasticsearch` | [`path.logs`](/deploy-manage/deploy/self-managed/important-settings-configuration.md#path-settings) |
 | plugins | Plugin files location. Each plugin will be contained in a subdirectory. | `/usr/share/elasticsearch/plugins` |  |
-| repo | Shared file system repository locations. Can hold multiple locations. A file system repository can be placed in to any subdirectory of any directory specified here. | Not configured | `path.repo` |
+| repo | Shared file system repository locations. Can hold multiple locations. A file system repository can be placed in to any subdirectory of any directory specified here. | Not configured | [`path.repo`](/deploy-manage/tools/snapshot-and-restore/shared-file-system-repository.md) |
 
 ### Security certificates and keys [_security_certificates_and_keys]
 

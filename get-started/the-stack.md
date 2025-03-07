@@ -5,6 +5,8 @@ mapped_urls:
   - https://www.elastic.co/guide/en/kibana/current/index.html
   - https://www.elastic.co/guide/en/elastic-stack/current/installing-elastic-stack.html
   - https://www.elastic.co/guide/en/elastic-stack/current/overview.html
+sub:
+  stack-version: "9.0.0"
 ---
 
 # The {{stack}}
@@ -88,3 +90,20 @@ $$$stack-components-elasticsearch-clients$$$
 {{es}} clients
 :   The clients provide a convenient mechanism to manage API requests and responses to and from {{es}} from popular languages such as Java, Ruby, Go, Python, and others. Both official and community contributed clients are available. [Learn more about the {{es}} clients](https://www.elastic.co/guide/en/elasticsearch/client/index.html).
 
+## Version compatibility
+```{applies_to}
+deployment:
+  self:
+```
+
+:::{include} /deploy-manage/deploy/_snippets/stack-version-compatibility.md
+:::
+
+## Installation order
+```{applies_to}
+deployment:
+  self:
+```
+
+:::{include} /deploy-manage/deploy/_snippets/installation-order.md
+:::

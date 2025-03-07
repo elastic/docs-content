@@ -5,6 +5,8 @@ mapped_urls:
 applies_to:
   deployment:
     self:
+sub:
+  stack-version: "9.0.0"
 ---
 
 # Install {{kib}}
@@ -61,10 +63,17 @@ If your {{es}} installation is protected by [{{stack-security-features}}](/deplo
 
 ## {{es}} version [elasticsearch-version] 
 
-{{kib}} should be configured to run against an {{es}} node of the same version. This is the officially supported configuration.
+:::{include} /deploy-manage/deploy/_snippets/stack-version-compatibility.md
+:::
 
 Running different major version releases of {{kib}} and {{es}} (e.g. {{kib}} 9.x and {{es}} 8.x) is not supported, nor is running a minor version of {{kib}} that is newer than the version of {{es}} (e.g. {{kib}} 8.14 and {{es}} 8.13).
 
 Running a minor version of {{es}} that is higher than {{kib}} will generally work in order to facilitate an upgrade process where {{es}} is upgraded first (e.g. {{kib}} 8.14 and {{es}} 8.15). In this configuration, a warning will be logged on {{kib}} server startup, so it’s only meant to be temporary until {{kib}} is upgraded to the same version as {{es}}.
 
 Running different patch version releases of {{kib}} and {{es}} (e.g. {{kib}} 9.0.0 and {{es}} 9.0.1) is generally supported, though we encourage users to run the same versions of {{kib}} and {{es}} down to the patch version.
+
+
+## Installation order
+
+:::{include} /deploy-manage/deploy/_snippets/installation-order.md
+:::

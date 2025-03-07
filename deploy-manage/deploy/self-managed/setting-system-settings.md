@@ -63,13 +63,12 @@ Ubuntu ignores the `limits.conf` file for processes started by `init.d`. To enab
 
 ## Sysconfig file [sysconfig]
 
-When using the RPM or Debian packages, environment variables can be specified in the system configuration file, which is located in:
+When using the RPM or Debian packages, environment variables can be specified in the system configuration file, which is located in the relevant location for your package type:
 
-RPM
-:   `/etc/sysconfig/elasticsearch`
-
-Debian
-:   `/etc/default/elasticsearch`
+| Package type | Location |
+| --- | --- | 
+| RPM | `/etc/sysconfig/elasticsearch`|
+| Debian | `/etc/default/elasticsearch` | 
 
 However, system limits need to be specified via [systemd](#systemd).
 
@@ -82,7 +81,7 @@ The systemd service file (`/usr/lib/systemd/system/elasticsearch.service`) conta
 
 To override them, add a file called `/etc/systemd/system/elasticsearch.service.d/override.conf` (alternatively, you may run `sudo systemctl edit elasticsearch` which opens the file automatically inside your default editor). Set any changes in this file, such as:
 
-```sh
+```ini
 [Service]
 LimitMEMLOCK=infinity
 ```
