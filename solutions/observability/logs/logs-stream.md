@@ -44,7 +44,7 @@ When you have searched and filtered your logs for a specific log event, you may 
 
 :::{image} ../../../images/observability-log-event-details.png
 :alt: Log event details
-:screenshot:
+:class: screenshot
 :::
 
 
@@ -56,7 +56,7 @@ Hover over the log event, click **View actions for line**, and then select **Vie
 
 :::{image} ../../../images/observability-contextual-logs.png
 :alt: Contextual log event
-:screenshot:
+:class: screenshot
 :::
 
 

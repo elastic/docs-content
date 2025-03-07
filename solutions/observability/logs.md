@@ -77,7 +77,7 @@ The following resources provide information on configuring your logs:
 
 ## View and monitor logs [observability-log-monitoring-view-and-monitor-logs]
 
-Use **Logs Explorer** to search, filter, and tail all your logs ingested into your project in one place.
+Use **Discover** to search, filter, and tail all your logs ingested into your project in one place.
 
 The following resources provide information on viewing and monitoring your logs:
 

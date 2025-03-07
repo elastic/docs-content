@@ -10,7 +10,7 @@ applies_to:
 This section contains reference information for Elastic Observability features, including:
 
 * Fields reference
-  * Logs Explorer fields
+  * Logs Discover fields
   * Infrastructure app fields
 * Elastic Entity Model
 
