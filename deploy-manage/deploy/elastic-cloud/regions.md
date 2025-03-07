@@ -12,7 +12,7 @@ A region is the geographic area where the data center of the cloud provider that
 Elastic Cloud Serverless handles all hosting details for you. You are unable to change the region after you create a project.
 
 ::::{note} 
-Currently, a limited number of Amazon Web Services (AWS), Microsoft Azure, and Google Cloud Platform (GCP) regions are available. More regions for AWS and Azure, and Google Cloud Platform (GCP), will be added in the future.
+Currently, a limited number of Amazon Web Services (AWS), Microsoft Azure, and Google Cloud Platform (GCP) regions are available. More regions for AWS, Azure, and Google Cloud Platform (GCP), will be added in the future.
 
 ::::
 
