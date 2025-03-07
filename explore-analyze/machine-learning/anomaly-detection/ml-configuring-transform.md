@@ -141,7 +141,7 @@ You can alternatively use {{kib}} to create an advanced {{anomaly-job}} that use
 
 :::{image} ../../../images/machine-learning-ml-runtimefields.jpg
 :alt: Using runtime_mappings in {{dfeed}} config via {{kib}}
-:class: screenshot
+:screenshot:
 :::
 
 $$$ml-configuring-transform2$$$

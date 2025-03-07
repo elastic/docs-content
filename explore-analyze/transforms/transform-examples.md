@@ -24,7 +24,7 @@ This example uses the eCommerce orders sample data set to find the customers who
 
 :::{image} ../../images/elasticsearch-reference-transform-ex1-1.jpg
 :alt: Finding your best customers with {{transforms}} in {{kib}}
-:class: screenshot
+:screenshot:
 :::
 
 Alternatively, you can use the [preview {{transform}}](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-transform-preview-transform) and the [create {{transform}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-transform-put-transform).
@@ -292,14 +292,14 @@ Pick the `clientip` field as the unique key; the data is grouped by this field. 
 
 :::{image} ../../images/elasticsearch-reference-transform-ex4-1.jpg
 :alt: Finding the last log event for each IP address with {{transforms}} in {{kib}}
-:class: screenshot
+:screenshot:
 :::
 
 Let’s assume that we’re interested in retaining documents only for IP addresses that appeared recently in the log. You can define a retention policy and specify a date field that is used to calculate the age of a document. This example uses the same date field that is used to sort the data. Then set the maximum age of a document; documents that are older than the value you set will be removed from the destination index.
 
 :::{image} ../../images/elasticsearch-reference-transform-ex4-2.jpg
 :alt: Defining retention policy for {{transforms}} in {{kib}}
-:class: screenshot
+:screenshot:
 :::
 
 This {{transform}} creates the destination index that contains the latest login date for each client IP. As the {{transform}} runs in continuous mode, the destination index will be updated as new data that comes into the source index. Finally, every document that is older than 30 days will be removed from the destination index due to the applied retention policy.

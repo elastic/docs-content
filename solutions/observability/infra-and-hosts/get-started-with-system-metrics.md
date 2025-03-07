@@ -62,14 +62,14 @@ In this step, add the System integration to monitor host logs and metrics.
 
     :::{image} ../../../images/observability-kibana-agent-add-log-path.png
     :alt: Configuration page for adding log paths to the {{agent}} System integration
-    :class: screenshot
+    :screenshot:
     :::
 
 6. Click **Save and continue**. This step takes a minute or two to complete. When it’s done, you’ll have an agent policy that contains a system integration policy for the configuration you just specified.
 
     :::{image} ../../../images/observability-kibana-system-policy.png
     :alt: Configuration page for adding the {{agent}} System integration
-    :class: screenshot
+    :screenshot:
     :::
 
 7. In the popup, click **Add {{agent}} to your hosts** to open the **Add agent** flyout.
@@ -106,7 +106,7 @@ The **Add agent** flyout has two options: **Enroll in {{fleet}}** and **Run stan
 
     :::{image} ../../../images/observability-kibana-agent-flyout.png
     :alt: Add agent flyout in {{kib}}
-    :class: screenshot
+    :screenshot:
     :::
 
     It takes about a minute for {{agent}} to enroll in {{fleet}}, download the configuration specified in the policy you just created, and start collecting data.

@@ -25,7 +25,7 @@ For example, if you don’t increase the visibility timeout for an SQS queue as 
 
 ## Prevent unexpected costs [preventing-unexpected-costs]
 
-It is important to monitor the Elastic Serverless Forwarder Lambda function for timeouts to prevent unexpected costs. You can use the [AWS Lambda integration](https://docs.elastic.co/en/integrations/aws/lambda) for this. If the timeouts are constant, you should throttle the Lambda function to stop its execution before proceeding with any troubleshooting steps. In most cases, constant timeouts will cause the records and messages from the event triggers to go back to their sources and trigger the function again, which will cause further timeouts and force a loop that will incure unexpected high costs. For more information on throttling Lambda functions, refer to [AWS docs](https://docs.aws.amazon.com/lambda/latest/operatorguide/throttling.md).
+It is important to monitor the Elastic Serverless Forwarder Lambda function for timeouts to prevent unexpected costs. You can use the [AWS Lambda integration](https://docs.elastic.co/en/integrations/aws/lambda) for this. If the timeouts are constant, you should throttle the Lambda function to stop its execution before proceeding with any troubleshooting steps. In most cases, constant timeouts will cause the records and messages from the event triggers to go back to their sources and trigger the function again, which will cause further timeouts and force a loop that will incure unexpected high costs. For more information on throttling Lambda functions, refer to [AWS docs](https://docs.aws.amazon.com/lambda/latest/operatorguide/throttling.html).
 
 
 ## Increase debug information [_increase_debug_information]

@@ -39,7 +39,7 @@ Open a new case to keep track of security issues and share their details with co
 
 :::{image} ../../../images/security-cases-ui-open.png
 :alt: Shows an open case
-:class: screenshot
+:screenshot:
 :::
 
 % This wasn't in the Serverless docs. Might be an ESS-only feature.
@@ -75,7 +75,7 @@ From the Cases page, you can search existing cases and filter them by attributes
 
 :::{image} ../../../images/security-cases-home-page.png
 :alt: Case UI Home
-:class: screenshot
+:screenshot:
 :::
 
 To explore a case, click on its name. You can then:
@@ -112,7 +112,7 @@ Click on an existing case to access its summary. The case summary, located under
 
 :::{image} ../../../images/security-cases-summary.png
 :alt: Shows you a summary of the case
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -122,7 +122,7 @@ To edit, delete, or quote a comment, select the appropriate option from the **Mo
 
 :::{image} ../../../images/security-cases-manage-comments.png
 :alt: Shows you a summary of the case
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -132,7 +132,7 @@ To explore the alerts attached to a case, click the **Alerts** tab. In the table
 
 :::{image} ../../../images/security-cases-alert-tab.png
 :alt: Shows you the Alerts tab
-:class: screenshot
+:screenshot:
 :::
 
 ::::{note}
@@ -147,7 +147,7 @@ To upload files to a case, click the **Files** tab:
 
 :::{image} ../../../images/security-cases-files.png
 :alt: A list of files attached to a case
-:class: screenshot
+:screenshot:
 :::
 
 You can set file types and sizes by configuring your [{{kib}} case settings](kibana://reference/configuration-reference/cases-settings.md).
@@ -175,7 +175,7 @@ Add a Lens visualization to your case to portray event and alert data through ch
 
 :::{image} ../../../images/security-add-vis-to-case.gif
 :alt: Shows how to add a visualization to a case
-:class: screenshot
+:screenshot:
 :::
 
 To add a Lens visualization to a comment within your case:
@@ -202,7 +202,7 @@ After a visualization has been added to a case, you can modify or interact with 
 
 :::{image} ../../../images/security-cases-open-vis.png
 :alt: Shows where the Open Visualization option is
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -241,7 +241,7 @@ Go to the **Similar cases** tab to access other cases with the same observables.
 
 :::{image} ../../../images/security-cases-add-observables.png
 :alt: Shows you where to add observables
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -251,7 +251,7 @@ Each case has a universally unique identifier (UUID) that you can copy and share
 
 :::{image} ../../../images/security-cases-copy-case-id.png
 :alt: Copy Case ID option in More actions menu 30%
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -298,7 +298,7 @@ To export a case:
 
 :::{image} ../../../images/security-cases-export-button.png
 :alt: Shows the export saved objects workflow
-:class: screenshot
+:screenshot:
 :::
 
 

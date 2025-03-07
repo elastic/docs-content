@@ -35,7 +35,7 @@ Adding the `add_fields` processor to an integration’s settings would add `your
 
 :::{image} ../../../images/serverless-add-field-processor.png
 :alt: Add the add_fields processor to an integration
-:class: screenshot
+:screenshot:
 :::
 
 For more on defining processors, refer to [define processors](/reference/ingestion-tools/fleet/agent-processors.md).

@@ -767,7 +767,7 @@ Once you have at least one {{apm-agent}} sending data to APM Server, you can sta
 
 :::{image} ../../../images/observability-kibana-apm-sample-data.png
 :alt: Applications UI with data
-:class: screenshot
+:screenshot:
 :::
 
 

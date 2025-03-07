@@ -13,7 +13,7 @@ This section covers the following topics:
 NodeSets are used to specify the topology of the Elasticsearch cluster. Each NodeSet represents a group of Elasticsearch nodes that share the same Elasticsearch configuration and Kubernetes Pod configuration.
 
 ::::{tip}
-You can use [YAML anchors](https://yaml.org/spec/1.2/spec.md#id2765878) to declare the configuration change once and reuse it across all the node sets.
+You can use [YAML anchors](https://yaml.org/spec/1.2/spec.html#id2765878) to declare the configuration change once and reuse it across all the node sets.
 ::::
 
 

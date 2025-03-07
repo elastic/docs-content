@@ -21,7 +21,7 @@ This screenshot maps the Timeline UI components to their JSON objects:
 
 :::{image} ../../../images/security-timeline-object-ui.png
 :alt: timeline object ui
-:class: screenshot
+:screenshot:
 :::
 
 1. [Title](#timeline-object-title) (`title`)

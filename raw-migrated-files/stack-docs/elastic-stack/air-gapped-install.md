@@ -486,7 +486,7 @@ Agent policies and integration settings can be managed using the {{kib}} UI. For
 
 :::{image} ../../../images/elastic-stack-air-gapped-configure-logging.png
 :alt: Configuration of a logging integration in an agent policy
-:class: screenshot
+:screenshot:
 :::
 
 

@@ -21,7 +21,7 @@ For {{agent}} versions >[8.10.4], the default configuration for metadata enrichm
 
 :::{image} images/add_resource_metadata.png
 :alt: Configure add_resource_metadata
-:class: screenshot
+:screenshot:
 :::
 
 Example: Enabling the enrichment through `add_resource_metadata` in a Managed {{agent}} Policy.
@@ -40,14 +40,14 @@ Create the following custom ingest pipeline with two processors:
 
 :::{image} images/ingest_pipeline_custom_k8s.png
 :alt: Custom ingest pipeline
-:class: screenshot
+:screenshot:
 :::
 
 ### Processor for deployment [_processor_for_deployment]
 
 :::{image} images/gsub_deployment.png
 :alt: Gsub Processor for deployment
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -55,7 +55,7 @@ Create the following custom ingest pipeline with two processors:
 
 :::{image} images/gsub_cronjob.png
 :alt: Gsub Processor for cronjob
-:class: screenshot
+:screenshot:
 :::
 
 The final `metrics-kubernetes.state_pod@custom` ingest pipeline:

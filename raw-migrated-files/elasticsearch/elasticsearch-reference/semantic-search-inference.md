@@ -20,7 +20,7 @@ The following examples use the:
 * models available through [Azure AI Studio](https://ai.azure.com/explore/models?selectedTask=embeddings) or [Azure OpenAI](https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/models)
 * `text-embedding-004` model for [Google Vertex AI](https://cloud.google.com/vertex-ai/generative-ai/docs/model-reference/text-embeddings-api)
 * `mistral-embed` model for [Mistral](https://docs.mistral.ai/getting-started/models/)
-* `amazon.titan-embed-text-v1` model for [Amazon Bedrock](https://docs.aws.amazon.com/bedrock/latest/userguide/model-ids.md)
+* `amazon.titan-embed-text-v1` model for [Amazon Bedrock](https://docs.aws.amazon.com/bedrock/latest/userguide/model-ids.html)
 * `ops-text-embedding-zh-001` model for [AlibabaCloud AI](https://help.aliyun.com/zh/open-search/search-platform/developer-reference/text-embedding-api-details)
 
 You can use any Cohere and OpenAI models, they are all supported by the {{infer}} API. For a list of recommended models available on HuggingFace, refer to [the supported model list](../../../explore-analyze/elastic-inference/inference-api/huggingface-inference-integration.md).
@@ -556,7 +556,7 @@ PUT amazon-bedrock-embeddings
 
 1. The name of the field to contain the generated tokens. It must be referenced in the {{infer}} pipeline configuration in the next step.
 2. The field to contain the tokens is a `dense_vector` field.
-3. The output dimensions of the model. This value may be different depending on the underlying model used. See the [Amazon Titan model](https://docs.aws.amazon.com/bedrock/latest/userguide/titan-multiemb-models.md) or the [Cohere Embeddings model](https://docs.cohere.com/reference/embed) documentation.
+3. The output dimensions of the model. This value may be different depending on the underlying model used. See the [Amazon Titan model](https://docs.aws.amazon.com/bedrock/latest/userguide/titan-multiemb-models.html) or the [Cohere Embeddings model](https://docs.cohere.com/reference/embed) documentation.
 4. For Amazon Bedrock embeddings, the `dot_product` function should be used to calculate similarity for Amazon titan models, or `cosine` for Cohere models.
 5. The name of the field from which to create the dense vector representation. In this example, the name of the field is `content`. It must be referenced in the {{infer}} pipeline configuration in the next step.
 6. The field type which is text in this example.

@@ -31,7 +31,7 @@ The **Index Templates** view in {{kib}} shows you all of the index templates ava
 
     :::{image} images/index-template-system-auth.png
     :alt: List of component templates available for the logs-system.auth index template
-    :class: screenshot
+    :screenshot:
     :::
 
 5. In the **Summary**, select `logs-system.auth@custom` from the list to view the component template properties.
@@ -56,7 +56,7 @@ The **Index Templates** view in {{kib}} shows you all of the index templates ava
 
         :::{image} images/review-component-template02.png
         :alt: Review details for the new component template
-        :class: screenshot
+        :screenshot:
         :::
 
 

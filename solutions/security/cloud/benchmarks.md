@@ -19,7 +19,7 @@ The Benchmarks page lets you view the cloud security posture (CSP) benchmark rul
 
 :::{image} ../../../images/security-benchmark-rules.png
 :alt: Benchmarks page
-:class: screenshot
+:screenshot:
 :::
 
 

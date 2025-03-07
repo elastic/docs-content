@@ -52,7 +52,7 @@ To run Osquery from an alert:
 
         :::{image} ../../../images/security-setup-query.png
         :alt: Shows how to set up a single query
-        :class: screenshot
+        :screenshot:
         :::
 
 5. Click **Submit**. Query results will display within the flyout.

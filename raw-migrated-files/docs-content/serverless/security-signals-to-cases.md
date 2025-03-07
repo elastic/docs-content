@@ -16,7 +16,7 @@ From the Alerts table, you can attach one or more alerts to a [new case](../../.
 
 :::{image} ../../../images/serverless--detections-add-alert-to-case.gif
 :alt: Animation of adding an alert to a case
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -64,5 +64,5 @@ To add alerts to an existing case:
 
     :::{image} ../../../images/serverless--detections-add-alert-to-existing-case.png
     :alt: Select case dialog listing existing cases
-    :class: screenshot
+    :screenshot:
     :::

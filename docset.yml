@@ -2,7 +2,6 @@ project: 'Elastic documentation'
 
 features:
   primary-nav: true
-  landing-page: true
 
 exclude:
   - 'README.md'
@@ -61,6 +60,7 @@ toc:
   - toc: reference
   - toc: extend
   - toc: raw-migrated-files
+  - hidden: 404.md
 
 subs:
   ref:   "https://www.elastic.co/guide/en/elasticsearch/reference/current"

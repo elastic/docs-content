@@ -40,7 +40,7 @@ View event and host counts grouped by data source, such as **Auditbeat** or **{{
 
 :::{image} ../../../images/security-events-count.png
 :alt: Host and network events on the Overview dashboard
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -57,6 +57,6 @@ For more information about connecting to threat intelligence sources, visit [Ena
 
 :::{image} ../../../images/security-threat-intelligence-view.png
 :alt: threat intelligence view
-:class: screenshot
+:screenshot:
 :::
 

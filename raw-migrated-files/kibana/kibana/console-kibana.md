@@ -4,7 +4,7 @@
 
 :::{image} ../../../images/kibana-console.png
 :alt: Console
-:class: screenshot
+:screenshot:
 :::
 
 To go to **Console***, find ***Dev Tools** in the navigation menu or use the [global search bar](/explore-analyze/find-and-organize/find-apps-and-objects.md).
@@ -13,7 +13,7 @@ You can also find Console directly on certain Search solution and Elasticsearch 
 
 :::{image} ../../../images/kibana-persistent-console.png
 :alt: Console
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -91,7 +91,7 @@ Click **Variables** to create, edit, and delete variables.
 
 :::{image} ../../../images/kibana-variables.png
 :alt: Variables
-:class: screenshot
+:screenshot:
 :::
 
 You can refer to these variables in the paths and bodies of your requests. Each variable can be referenced multiple times.

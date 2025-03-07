@@ -27,7 +27,7 @@ Follow these guidelines to start using the {{security-app}}'s [prebuilt rules](s
 
     :::{image} ../../../images/serverless--detections-prebuilt-rules-add-badge.png
     :alt: The Add Elastic Rules page
-    :class: screenshot
+    :screenshot:
     :::
 
 2. Click **Add Elastic rules**.
@@ -51,7 +51,7 @@ Follow these guidelines to start using the {{security-app}}'s [prebuilt rules](s
 
     :::{image} ../../../images/serverless--detections-prebuilt-rules-add.png
     :alt: The Add Elastic Rules page
-    :class: screenshot
+    :screenshot:
     :::
 
 4. For any rules you haven’t already enabled, go back to the **Rules** page, search or filter for the rules you want to run, and do either of the following:
@@ -112,7 +112,7 @@ Elastic regularly updates prebuilt rules to optimize their performance and ensur
 
     :::{image} ../../../images/serverless--detections-prebuilt-rules-update.png
     :alt: The Rule Updates tab on the Rules page
-    :class: screenshot
+    :screenshot:
     :::
 
 2. (Optional) To examine the details of a rule’s latest version before you update it, select the rule name. This opens the rule details flyout.
@@ -123,7 +123,7 @@ Elastic regularly updates prebuilt rules to optimize their performance and ensur
 
     :::{image} ../../../images/serverless-prebuilt-rules-update-diff.png
     :alt: Prebuilt rule comparison
-    :class: screenshot
+    :screenshot:
     :::
 
 3. Do one of the following to update prebuilt rules on the **Rules** page:

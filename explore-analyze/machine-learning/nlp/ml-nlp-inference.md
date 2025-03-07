@@ -21,7 +21,7 @@ In {{kib}}, you can create and edit pipelines in **{{stack-manage-app}}** > **In
 
 :::{image} ../../../images/machine-learning-ml-nlp-pipeline-lang.png
 :alt: Creating a pipeline in the Stack Management app
-:class: screenshot
+:screenshot:
 :::
 
 1. Click **Create pipeline** or edit an existing pipeline.
@@ -173,7 +173,7 @@ Before you can verify the results of the pipelines, you must [create {{data-sour
 
 :::{image} ../../../images/machine-learning-ml-nlp-discover-ner.png
 :alt: A document from the NER pipeline in the Discover app
-:class: screenshot
+:screenshot:
 :::
 
 The `ml.inference.predicted_value` field contains the output from the {{infer}} processor. In this NER example, there are two documents that contain the `Elastic` organization entity.
@@ -182,7 +182,7 @@ In this {{lang-ident}} example, the `ml.inference.predicted_value` contains the 
 
 :::{image} ../../../images/machine-learning-ml-nlp-discover-lang.png
 :alt: A document from the {{lang-ident}} pipeline in the Discover app
-:class: screenshot
+:screenshot:
 :::
 
 To learn more about ingest pipelines and all of the other processors that you can add, refer to [Ingest pipelines](../../../manage-data/ingest/transform-enrich/ingest-pipelines.md).

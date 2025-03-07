@@ -25,7 +25,7 @@ Osquery Response Actions allow you to add live queries to custom query rules so 
 
 :::{image} ../../../images/security-available-response-actions-osquery.png
 :alt: The Osquery response action
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -64,7 +64,7 @@ You can add Osquery Response Actions to new or existing custom query rules. Quer
 
         :::{image} ../../../images/security-setup-single-query.png
         :alt: Shows how to set up a single query
-        :class: screenshot
+        :screenshot:
         :::
 
 3. Click the **Osquery** icon to add more live queries (optional).
@@ -96,5 +96,5 @@ Refer to [Examine Osquery results](/solutions/security/investigate/examine-osque
 
 :::{image} ../../../images/security-osquery-results-tab.png
 :alt: Shows how to set up a single query
-:class: screenshot
+:screenshot:
 :::

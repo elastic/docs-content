@@ -24,7 +24,7 @@ When you complete this tutorial, you’ll have a map that looks like this:
 
 :::{image} ../../../images/kibana-csa_regions_by_web_traffic.png
 :alt: Map showing custom regions
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -69,7 +69,7 @@ Looking at the map, you get a sense of what constitutes a metro area in the eyes
 
 :::{image} ../../../images/kibana-csa_regions.png
 :alt: Map showing metro area
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -154,7 +154,7 @@ Your web log data now contains `csa.GEOID` and `csa.NAME` fields from the matchi
 
 :::{image} ../../../images/kibana-discover_enriched_web_log.png
 :alt: View of data in Discover
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -189,7 +189,7 @@ Now that our web traffic contains CSA region identifiers, you’ll visualize CSA
 
 :::{image} ../../../images/kibana-csa_regions_by_web_traffic.png
 :alt: Final map showing custom regions
-:class: screenshot
+:screenshot:
 :::
 
 Congratulations! You have completed the tutorial and have the recipe for visualizing custom regions. You can now try replicating this same analysis with your own data.

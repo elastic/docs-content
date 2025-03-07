@@ -29,7 +29,7 @@ To get the best results from {{ml}} analytics, you must understand your data. Yo
 
 :::{image} ../../../images/machine-learning-weblogs-data-visualizer-geopoint.jpg
 :alt: A screenshot of a geo_point field in {{data-viz}}
-:class: screenshot
+:screenshot:
 :::
 
 ## Create an {{anomaly-job}} [geographic-anomalies-jobs]
@@ -47,7 +47,7 @@ For example, create a job that analyzes the sample eCommerce orders data set to 
 
 :::{image} ../../../images/machine-learning-ecommerce-advanced-wizard-geopoint.jpg
 :alt: A screenshot of creating an {{anomaly-job}} using the eCommerce data in {{kib}}
-:class: screenshot
+:screenshot:
 :::
 
 ::::{dropdown} API example
@@ -108,7 +108,7 @@ Alternatively, create a job that analyzes the sample web logs data set to detect
 
 :::{image} ../../../images/machine-learning-weblogs-advanced-wizard-geopoint.jpg
 :alt: A screenshot of creating an {{anomaly-job}} using the web logs data in {{kib}}
-:class: screenshot
+:screenshot:
 :::
 
 ::::{dropdown} API example
@@ -181,7 +181,7 @@ When you select a period that contains an anomaly in the **Anomaly Explorer** sw
 
 :::{image} ../../../images/machine-learning-ecommerce-anomaly-explorer-geopoint.jpg
 :alt: A screenshot of an anomalous event in the eCommerce data in Anomaly Explorer
-:class: screenshot
+:screenshot:
 :::
 
 A "typical" value indicates a centroid of a cluster of previously observed locations that is closest to the "actual" location at that time. For example, there may be one centroid near the user’s home and another near the user’s work place since there are many records associated with these distinct locations.
@@ -190,7 +190,7 @@ Likewise, there are time periods in the web logs sample data where there are bot
 
 :::{image} ../../../images/machine-learning-weblogs-anomaly-explorer-geopoint.jpg
 :alt: A screenshot of an anomalous event in the web logs data in Anomaly Explorer
-:class: screenshot
+:screenshot:
 :::
 
 You can use the top influencer values to further filter your results and identify possible contributing factors or patterns of behavior.
@@ -199,7 +199,7 @@ You can also view the anomaly in **Maps** by clicking **View in Maps** in the ac
 
 :::{image} ../../../images/machine-learning-view-in-maps.jpg
 :alt: A screenshot of the anomaly table with the Action menu opened and the "View in Maps" option selected
-:class: screenshot
+:screenshot:
 :::
 
 When you try this type of {{anomaly-job}} with your own data, it might take some experimentation to find the best combination of buckets, detectors, and influencers to detect the type of behavior you’re seeking.
@@ -214,7 +214,7 @@ For example, you can extend the map example from [Build a map to compare metrics
 
 :::{image} ../../../images/machine-learning-weblogs-anomaly-map.jpg
 :alt: A screenshot of an anomaly within the Maps app
-:class: screenshot
+:screenshot:
 :::
 
 ## What’s next [geographic-anomalies-next]
