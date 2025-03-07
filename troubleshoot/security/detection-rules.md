@@ -5,6 +5,10 @@ mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/security-ts-detection-rules.html
   - https://www.elastic.co/guide/en/security/current/alerts-ui-monitor.html#troubleshoot-signals
   - https://www.elastic.co/guide/en/serverless/current/security-alerts-ui-monitor.html#troubleshoot-signals
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Troubleshoot detection rules [ts-detection-rules]
