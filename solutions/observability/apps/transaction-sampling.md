@@ -37,7 +37,7 @@ In the example in *Figure 1*, `Service A` initiates four transactions and has sa
 
 :::{image} ../../../images/observability-dt-sampling-example-1.png
 :alt: Distributed tracing and head based sampling example one
-:class: screenshot
+:screenshot:
 :::
 
 In the example in *Figure 2*, `Service A` initiates four transactions and has a sample rate of `1` (`100%`). Again, the upstream sampling decision is respected, so the sample rate for all services will be `1` (`100%`).
@@ -46,7 +46,7 @@ In the example in *Figure 2*, `Service A` initiates four transactions and has a 
 
 :::{image} ../../../images/observability-dt-sampling-example-2.png
 :alt: Distributed tracing and head based sampling example two
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -64,7 +64,7 @@ In the example in *Figure 3*, `Service A` is an Elastic-monitored service that i
 
 :::{image} ../../../images/observability-dt-sampling-continuation-strategy-restart_external.png
 :alt: Distributed tracing and head based sampling with restart_external continuation strategy
-:class: screenshot
+:screenshot:
 :::
 
 Use the **`restart`** trace continuation strategy on an Elastic-monitored service to start a new trace regardless of whether the previous service had a `traceparent` header. This can be helpful if an Elastic-monitored service is publicly exposed, and you do not want tracing data to possibly be spoofed by user requests.
@@ -182,9 +182,9 @@ The transaction sample rate can be changed dynamically (no redeployment necessar
 
 Each agent provides a configuration value used to set the transaction sample rate. See the relevant agent’s documentation for more details:
 
-* Go: [`ELASTIC_APM_TRANSACTION_SAMPLE_RATE`](asciidocalypse://docs/apm-agent-go/docs/reference/configuration.md#config-transaction-sample-rate)
+* Go: [`ELASTIC_APM_TRANSACTION_SAMPLE_RATE`](apm-agent-go://reference/configuration.md#config-transaction-sample-rate)
 * Java: [`transaction_sample_rate`](asciidocalypse://docs/apm-agent-java/docs/reference/config-core.md#config-transaction-sample-rate)
-* .NET: [`TransactionSampleRate`](asciidocalypse://docs/apm-agent-dotnet/docs/reference/config-core.md#config-transaction-sample-rate)
+* .NET: [`TransactionSampleRate`](apm-agent-dotnet://reference/config-core.md#config-transaction-sample-rate)
 * Node.js: [`transactionSampleRate`](asciidocalypse://docs/apm-agent-nodejs/docs/reference/configuration.md#transaction-sample-rate)
 * PHP: [`transaction_sample_rate`](asciidocalypse://docs/apm-agent-php/docs/reference/configuration-reference.md#config-transaction-sample-rate)
 * Python: [`transaction_sample_rate`](asciidocalypse://docs/apm-agent-python/docs/reference/configuration.md#config-transaction-sample-rate)

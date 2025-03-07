@@ -33,7 +33,7 @@ The **Categories** page lists all the log categories from the selected indices. 
 
 :::{image} ../../../images/observability-log-categories.jpg
 :alt: Log categories
-:class: screenshot
+:screenshot:
 :::
 
 The category row contains the following information:
@@ -48,7 +48,7 @@ To view a log message under a particular category, click the arrow at the end of
 
 :::{image} ../../../images/observability-log-opened.png
 :alt: Opened log category
-:class: screenshot
+:screenshot:
 :::
 
 For more information about categorization, go to [Detecting anomalous categories of data](../../../explore-analyze/machine-learning/anomaly-detection/ml-configuring-categories.md).

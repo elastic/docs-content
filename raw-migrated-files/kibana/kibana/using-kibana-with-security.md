@@ -9,37 +9,37 @@ When you start {{es}} for the first time, {{stack-security-features}} are enable
 
 You can then log in to {{kib}} as the `elastic` user to create additional roles and users.
 
-::::{note} 
+::::{note}
 When a user is not authorized to view data in an index (such as an {{es}} index), the entire index will be inaccessible and not display in {{kib}}.
 ::::
 
 
 
-## Configure security settings [security-configure-settings] 
+## Configure security settings [security-configure-settings]
 
 Set an encryption key so that sessions are not invalidated. You can optionally configure additional security settings and authentication.
 
-1. Set the `xpack.security.encryptionKey` property in the `kibana.yml` configuration file. You can use any text string that is 32 characters or longer as the encryption key. Refer to [`xpack.security.encryptionKey`](asciidocalypse://docs/kibana/docs/reference/configuration-reference/security-settings.md#xpack-security-encryptionKey).
+1. Set the `xpack.security.encryptionKey` property in the `kibana.yml` configuration file. You can use any text string that is 32 characters or longer as the encryption key. Refer to [`xpack.security.encryptionKey`](kibana://reference/configuration-reference/security-settings.md#xpack-security-encryptionkey).
 
     ```yaml
     xpack.security.encryptionKey: "something_at_least_32_characters"
     ```
 
-    {{kib}}'s reporting and saved objects features also have encryption key settings. Refer to [`xpack.reporting.encryptionKey`](asciidocalypse://docs/kibana/docs/reference/configuration-reference/reporting-settings.md#xpack-reporting-encryptionKey) and [`xpack.encryptedSavedObjects.encryptionKey`](asciidocalypse://docs/kibana/docs/reference/configuration-reference/security-settings.md#xpack-encryptedSavedObjects-encryptionKey) respectively.
+    {{kib}}'s reporting and saved objects features also have encryption key settings. Refer to [`xpack.reporting.encryptionKey`](kibana://reference/configuration-reference/reporting-settings.md#xpack-reporting-encryptionkey) and [`xpack.encryptedSavedObjects.encryptionKey`](kibana://reference/configuration-reference/security-settings.md#xpack-encryptedsavedobjects-encryptionkey) respectively.
 
 2. Optional: [Configure {{kib}}'s session expiration settings](../../../deploy-manage/security/kibana-session-management.md).
 3. Optional: [Configure {{kib}} to authenticate to {{es}} with a client certificate](../../../deploy-manage/security/secure-cluster-communications.md).
 4. Restart {{kib}}.
 
 
-## Create roles and users [security-create-roles] 
+## Create roles and users [security-create-roles]
 
 Configure roles for your {{kib}} users to control what data those users can access.
 
 1. Temporarily log in to {{kib}} using the built-in `elastic` superuser so you can create new users and assign roles. If you are running {{kib}} locally, go to `https://localhost:5601` to view the login page.
 
-    ::::{note} 
-    The password for the built-in `elastic` user is generated as part of the security configuration process on {{es}}. If you need to reset the password for the `elastic` user or other built-in users, run the [`elasticsearch-reset-password`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/command-line-tools/reset-password.md) tool.
+    ::::{note}
+    The password for the built-in `elastic` user is generated as part of the security configuration process on {{es}}. If you need to reset the password for the `elastic` user or other built-in users, run the [`elasticsearch-reset-password`](elasticsearch://reference/elasticsearch/command-line-tools/reset-password.md) tool.
     ::::
 
 2. $$$kibana-roles$$$Create roles and users to grant access to {{kib}}.
@@ -56,13 +56,13 @@ Configure roles for your {{kib}} users to control what data those users can acce
     }
     ```
 
-    ::::{tip} 
+    ::::{tip}
     For more information on Basic Authentication and additional methods of authenticating {{kib}} users, see [Authentication](../../../deploy-manage/users-roles/cluster-or-deployment-auth/user-authentication.md).
     ::::
 
 3. Grant users access to the indices that they will be working with in {{kib}}.
 
-    ::::{tip} 
+    ::::{tip}
     You can define as many different roles for your {{kib}} users as you need.
     ::::
 
@@ -71,7 +71,7 @@ Configure roles for your {{kib}} users to control what data those users can acce
 
 4. Log out of {{kib}} and verify that you can log in as a normal user. If you are running {{kib}} locally, go to `https://localhost:5601` and enter the credentials for a user you’ve assigned a {{kib}} user role. For example, you could log in as the user `jacknich`.
 
-    ::::{note} 
+    ::::{note}
     This must be a user who has been assigned [Kibana privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md). {{kib}} server credentials (the built-in `kibana_system` user) should only be used internally by the {{kib}} server.
     ::::
 

@@ -268,7 +268,7 @@ Using the table below, assign each role the following privileges:
 
 :::{image} ../../../images/observability-apm-roles-config.png
 :alt: APM role config example
-:class: screenshot
+:screenshot:
 :::
 
 Alternatively, you can use the {{es}} [Create or update roles API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-role):

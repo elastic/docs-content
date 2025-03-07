@@ -12,7 +12,7 @@ To quickly find apps and the objects you create, use the search field in the glo
 
 :::{image} ../../images/kibana-app-navigation-search.png
 :alt: Example of searching for apps
-:class: screenshot
+:screenshot:
 :width: 60%
 :::
 
@@ -33,7 +33,7 @@ This example searches for visualizations with the tag `design` .
 
 :::{image} ../../images/kibana-tags-search.png
 :alt: Example of searching for tags
-:class: screenshot
+:screenshot:
 :width: 60%
 :::
 

@@ -57,7 +57,7 @@ To inspect hosts, run a query against one or more agents or policies, then view 
 
         :::{image} ../../../images/kibana-enter-query.png
         :alt: Select saved query dropdown name showing query name and description
-        :class: screenshot
+        :screenshot:
         :::
 
 6. Click **Submit**.
@@ -85,7 +85,7 @@ The **Live queries history** section on the **Live queries** tab shows a log of 
 
     :::{image} ../../../images/kibana-live-query-check-results.png
     :alt: Results of OSquery
-    :class: screenshot
+    :screenshot:
     :::
 
 
@@ -140,7 +140,7 @@ You can run packs as live queries or schedule packs to run for one or more agent
 
     :::{image} ../../../images/kibana-scheduled-pack.png
     :alt: Shows queries in the pack and details about each query
-    :class: screenshot
+    :screenshot:
     :::
 
 3. View scheduled query results in [**Discover**](../../../explore-analyze/discover.md) or the drag-and-drop [**Lens**](../../../explore-analyze/visualize/lens.md) editor.

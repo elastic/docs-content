@@ -58,5 +58,5 @@ After you review the report, click **Add to existing case** at the top of AI Ass
 
 :::{image} ../../../images/security-ai-triage-add-to-case.png
 :alt: An AI Assistant dialogue with the add to existing case button highlighted
-:class: screenshot
+:screenshot:
 :::

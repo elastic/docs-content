@@ -8,7 +8,7 @@ applies_to:
 
 # Increase virtual memory [vm-max-map-count]
 
-{{es}} uses a [`mmapfs`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/store.md#mmapfs) directory by default to store its indices. The default operating system limits on mmap counts is likely to be too low, which may result in out of memory exceptions.
+{{es}} uses a [`mmapfs`](elasticsearch://reference/elasticsearch/index-settings/store.md#mmapfs) directory by default to store its indices. The default operating system limits on mmap counts is likely to be too low, which may result in out of memory exceptions.
 
 On Linux, you can increase the limits by running the following command as `root`:
 

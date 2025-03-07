@@ -41,9 +41,9 @@ The host to use for metrics retrieval. If not defined, the host will be set as t
 
 ### `co.elastic.hints/data_stream` [_co_elastic_hintsdata_stream]
 
-The list of data streams to enable. If not specified, the integration’s default data streams are used. To find the defaults, refer to the [Elastic integrations documentation](asciidocalypse://docs/reference/index.md).
+The list of data streams to enable. If not specified, the integration’s default data streams are used. To find the defaults, refer to the [Elastic integrations documentation](asciidocalypse://docs/integration-docs/docs/reference/index.md).
 
-If data streams are specified, additional hints can be defined per data stream. For example, `co.elastic.hints/info.period: 5m` if the data stream specified is `info` for the [Redis module](asciidocalypse://docs/reference/metricbeat/metricbeat-module-redis.md).
+If data streams are specified, additional hints can be defined per data stream. For example, `co.elastic.hints/info.period: 5m` if the data stream specified is `info` for the [Redis module](asciidocalypse://docs/beats/docs/reference/metricbeat/metricbeat-module-redis.md).
 
 ```yaml
 apiVersion: v1

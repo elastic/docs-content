@@ -37,7 +37,7 @@ To learn more about an alert, click the **View details** button from the Alerts 
 
 :::{image} ../../../images/security-open-alert-details-flyout.gif
 :alt: Expandable flyout
-:class: screenshot
+:screenshot:
 :::
 
 Use the alert details flyout to begin an investigation, open a case, or plan a response. Click **Take action** at the bottom of the flyout to find more options for interacting with the alert.
@@ -54,7 +54,7 @@ The right panel provides an overview of the alert. Expand any of the collapsed s
 
 :::{image} ../../../images/security-alert-details-flyout-right-panel.png
 :alt: Right panel of the alert details flyout
-:class: screenshot
+:screenshot:
 :::
 
 From the right panel, you can also:
@@ -90,7 +90,7 @@ Some areas in the flyout provide previews when you click on them. For example, c
 
 :::{image} ../../../images/security-alert-details-flyout-preview-panel.gif
 :alt: Preview panel of the alert details flyout
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -102,14 +102,14 @@ The left panel provides an expanded view of what’s shown in the right panel. T
 
     :::{image} ../../../images/security-expand-details-button.png
     :alt: Expand details button at the top of the alert details flyout
-    :class: screenshot
+    :screenshot:
     :::
 
 * Click one of the section titles on the **Overview** tab within the right panel.
 
     :::{image} ../../../images/security-alert-details-flyout-left-panel.png
     :alt: Left panel of the alert details flyout
-    :class: screenshot
+    :screenshot:
     :::
 
 
@@ -120,7 +120,7 @@ The About section is located on the **Overview** tab in the right panel. It prov
 
 :::{image} ../../../images/security-about-section-rp.png
 :alt: About section of the Overview tab
-:class: screenshot
+:screenshot:
 :::
 
 The About section has the following information:
@@ -141,7 +141,7 @@ The Investigation section is located on the **Overview** tab in the right panel.
 
 :::{image} ../../../images/security-investigation-section-rp.png
 :alt: Investigation section of the Overview tab
-:class: screenshot
+:screenshot:
 :::
 
 The Investigation section provides the following information:
@@ -161,7 +161,7 @@ The Visualizations section is located on the **Overview** tab in the right panel
 
 :::{image} ../../../images/security-visualizations-section-rp.png
 :alt: Visualizations section of the Overview tab
-:class: screenshot
+:screenshot:
 :::
 
 Click **Visualizations** to display the following previews:
@@ -187,14 +187,14 @@ The **Visualize** tab allows you to maintain the context of the Alerts table, wh
 
 :::{image} ../../../images/security-visualize-tab-lp.png
 :alt: Expanded view of visualization details
-:class: screenshot
+:screenshot:
 :::
 
 As you examine the alert’s related processes, you can also preview the alerts and events which are associated with those processes. Then, if you want to learn more about a particular alert or event, you can click **Show full alert details** to open the full details flyout.
 
 :::{image} ../../../images/security-visualize-tab-lp-alert-details.gif
 :alt: Examine alert details from event analyzer
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -204,7 +204,7 @@ The Insights section is located on the **Overview** tab in the right panel. It o
 
 :::{image} ../../../images/security-insights-section-rp.png
 :alt: Insights section of the Overview tab
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -214,7 +214,7 @@ The Entities overview provides high-level details about the user and host that a
 
 :::{image} ../../../images/security-entities-overview.png
 :alt: Overview of the entity details  section in the right panel
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -224,7 +224,7 @@ From the right panel, click **Entities** to open a detailed view of the host and
 
 :::{image} ../../../images/security-expanded-entities-view.png
 :alt: Expanded view of entity details
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -234,7 +234,7 @@ The Threat intelligence overview shows matched indicators, which provide threat 
 
 :::{image} ../../../images/security-threat-intelligence-overview.png
 :alt: Overview of threat intelligence on the alert
-:class: screenshot
+:screenshot:
 :::
 
 The Threat intelligence overview provides the following information:
@@ -254,7 +254,7 @@ The expanded threat intelligence view queries indices specified in the `security
 
 :::{image} ../../../images/security-expanded-threat-intelligence-view.png
 :alt: Expanded view of threat intelligence on the alert
-:class: screenshot
+:screenshot:
 :::
 
 The expanded Threat intelligence view shows individual indicators within the alert document. You can expand and collapse indicator details by clicking the arrow button at the end of the indicator label. Each indicator is labeled with values from the `matched.field` and `matched.atomic` fields and displays the threat intelligence provider.
@@ -294,7 +294,7 @@ The Correlations overview shows how an alert is related to other alerts and offe
 
 :::{image} ../../../images/security-correlations-overview.png
 :alt: Overview of available correlation data
-:class: screenshot
+:screenshot:
 :::
 
 The Correlations overview provides the following information:
@@ -317,7 +317,7 @@ From the right panel, click **Correlations** to open the expanded Correlations v
 
 :::{image} ../../../images/security-expanded-correlations-view.png
 :alt: Expanded view of correlation data
-:class: screenshot
+:screenshot:
 :::
 
 In the expanded view, corelation data is organized into several tables:
@@ -350,7 +350,7 @@ Update the date time picker for the table to show data from a different time ran
 
 :::{image} ../../../images/security-expanded-prevalence-view.png
 :alt: Expanded view of prevalence data
-:class: screenshot
+:screenshot:
 :::
 
 The expanded Prevalence view provides the following details:
@@ -372,7 +372,7 @@ The **Response** section is located on the **Overview** tab in the right panel. 
 
 :::{image} ../../../images/security-response-action-rp.png
 :alt: Response section of the Overview tab
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -387,5 +387,5 @@ Go to the **Notes** [page](/solutions/security/investigate/notes.md#manage-notes
 
 :::{image} ../../../images/security-notes-tab-lp.png
 :alt: Notes tab in the left panel
-:class: screenshot
+:screenshot:
 :::

@@ -13,7 +13,7 @@ To filter the Agents list by tag, in {{kib}}, go to **{{fleet}} > Agents** and c
 
 :::{image} images/agent-tags.png
 :alt: Agents list filtered to show agents with the staging tag
-:class: screenshot
+:screenshot:
 :::
 
 If you haven’t added tags to any {{agent}}s yet, the list will be empty.
@@ -32,7 +32,7 @@ To manage tags in {{fleet}}:
 
     :::{image} images/add-remove-tags.png
     :alt: Screenshot of add / remove tags menu
-    :class: screenshot
+    :screenshot:
     :::
 
     ::::{tip}

@@ -11,7 +11,7 @@ Most integration content installed by {{fleet}} isn't editable. This content is 
 
 :::{image} images/system-managed.png
 :alt: An image of the new managed badge.
-:class: screenshot
+:screenshot:
 :::
 
 When a managed dashboard is cloned, any linked or referenced panels become part of the clone without relying on external sources. The panels are integrated into the cloned dashboard as stand alone components. For example, with a cloned dashboard, the cloned panels become entirely self-contained copies without any dependencies on the original configuration. Clones can be customized and modified without accidentally affecting the original.

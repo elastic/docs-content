@@ -25,7 +25,7 @@ Choose which SLO to monitor and then define multiple burn rate windows with appr
 
 :::{image} ../../../images/serverless-slo-alerts-create-rule.png
 :alt: Create rule for failed transaction rate threshold
-:class: screenshot
+:screenshot:
 :::
 
 ::::{tip}
@@ -101,14 +101,14 @@ Alternatively, you can set the action frequency to **For each alert** and specif
 
 :::{image} ../../../images/serverless-alert-action-frequency.png
 :alt: Configure when a rule is triggered
-:class: screenshot
+:screenshot:
 :::
 
 With the **Run when** menu you can choose if an action runs for a specific severity (critical, high, medium, low), or when the alert is recovered. For example, you can add a corresponding action for each severity you want an alert for, and also for when the alert recovers.
 
 :::{image} ../../../images/serverless-slo-action-frequency.png
 :alt: Choose between severity or recovered
-:class: screenshot
+:screenshot:
 :::
 
 :::::
@@ -119,7 +119,7 @@ Use the default notification message or customize it. You can add more context t
 
 :::{image} ../../../images/serverless-action-variables-popup.png
 :alt: Action variables list
-:class: screenshot
+:screenshot:
 :::
 
 The following variables are specific to this rule type. You can also specify [variables common to all rules](../../../explore-analyze/alerts-cases/alerts/rule-action-variables.md).

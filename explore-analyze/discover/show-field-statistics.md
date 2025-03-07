@@ -23,7 +23,7 @@ This example explores the fields in the [sample web logs data](../index.md#gs-ge
 
    :::{image} ../../images/kibana-field-statistics-view.png
    :alt: Field statistics view in Discover showing a summary of document data.
-   :class: screenshot
+   :screenshot:
    :::
 
 5. Expand the `hour_of_day` field.
@@ -31,7 +31,7 @@ This example explores the fields in the [sample web logs data](../index.md#gs-ge
 
    :::{image} ../../images/kibana-field-statistics-numeric.png
    :alt: Field statistics for a numeric field.
-   :class: screenshot
+   :screenshot:
    :::
 
 6. Expand the `geo.coordinates` field.
@@ -40,7 +40,7 @@ This example explores the fields in the [sample web logs data](../index.md#gs-ge
 
    :::{image} ../../images/kibana-field-statistics-geo.png
    :alt: Field statistics for a geo field.
-   :class: screenshot
+   :screenshot:
    :::
 
 7. Explore additional field types to see the statistics that **Discover** provides.

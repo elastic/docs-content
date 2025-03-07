@@ -24,7 +24,7 @@ Users running {{stack}} versions 7.16 or 7.17 need to manually configure TLS. Th
 
 Pick one of the following options:
 
-1. Upload and configure a publicly signed {{es}} TLS certificates. Check [Encrypt traffic in clusters with a self-managed Fleet Server](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/secure-connections.md) for details.
+1. Upload and configure a publicly signed {{es}} TLS certificates. Check [Encrypt traffic in clusters with a self-managed Fleet Server](/reference/ingestion-tools/fleet/secure-connections.md) for details.
 2. Change the {{es}} hosts where {{agent}}s send data from the default public URL, to the internal URL. In {{kib}}, navigate to **Fleet** and select the **Elastic Cloud agent policy**. Click **Fleet settings** and update the {{es}} hosts URL. For example, if the current URL is `https://123abc.us-central1.gcp.foundit.no:9244`, change it to `http://123abc.containerhost:9244`.
 
 

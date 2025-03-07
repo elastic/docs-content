@@ -85,7 +85,7 @@ PUT _watcher/watch/cluster_health_watch
 
 It would be a good idea to create a user with the minimum privileges required for use with such a watch configuration.
 
-Depending on how your cluster is configured, there may be additional settings required before the watch can access your cluster such as keystores, truststores, or certificates. For more information, see [{{watcher}} settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/watcher-settings.md).
+Depending on how your cluster is configured, there may be additional settings required before the watch can access your cluster such as keystores, truststores, or certificates. For more information, see [{{watcher}} settings](elasticsearch://reference/elasticsearch/configuration-reference/watcher-settings.md).
 
 If you check the watch history, you’ll see that the cluster status is recorded as part of the `watch_record` each time the watch executes.
 
