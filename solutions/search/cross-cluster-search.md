@@ -84,7 +84,8 @@ PUT _cluster/settings
 ```
 
 1. Since `skip_unavailable` was not set on `cluster_three`, it uses the default of `true`. See the [Optional remote clusters](#skip-unavailable-clusters) section for details.
-
+%  TEST[setup:host]
+%  TEST[s/35.238.149.\d+:930\d+/${transport_host}/]
 
 
 ### Search a single remote cluster [ccs-search-remote-cluster]
@@ -105,6 +106,8 @@ GET /cluster_one:my-index-000001/_search
   "_source": ["user.id", "message", "http.response.status_code"]
 }
 ```
+%  TEST[continued]
+%  TEST[setup:my_index]
 
 The API returns the following response. Note that when you search one or more remote clusters, a `_clusters` section is included to provide information about the search on each cluster.
 
@@ -175,7 +178,13 @@ The API returns the following response. Note that when you search one or more re
 4. How long (in milliseconds) the sub-search took on that cluster.
 5. The shard details for the sub-search on that cluster.
 6. The search response body includes the name of the remote cluster in the `_index` parameter.
-
+%  TESTRESPONSE[s/"took": 150/"took": "$body.took"/]
+%  TESTRESPONSE[s/"max_score": 1/"max_score": "$body.hits.max_score"/]
+%  TESTRESPONSE[s/"_score": 1/"_score": "$body.hits.hits.0._score"/]
+%  TESTRESPONSE[s/"total": 12/"total": "$body._shards.total"/]
+%  TESTRESPONSE[s/"successful": 12/"successful": "$body._shards.successful"/]
+%  TESTRESPONSE[s/"skipped": 0/"skipped": "$body._shards.skipped"/]
+%  TESTRESPONSE[s/"took": 148/"took": "$body._clusters.details.cluster_one.took"/]
 
 
 ### Search multiple remote clusters [ccs-search-multi-remote-cluster]
@@ -196,6 +205,7 @@ GET /my-index-000001,cluster_one:my-index-000001,cluster_two:my-index-000001/_se
   "_source": ["user.id", "message", "http.response.status_code"]
 }
 ```
+%  TEST[continued]
 
 The API returns the following response:
 
@@ -323,7 +333,21 @@ The API returns the following response:
 2. This document’s `_index` parameter doesn’t include a cluster name. This means the document came from the local cluster.
 3. This document came from `cluster_one`.
 4. This document came from `cluster_two`.
-
+%  TESTRESPONSE[s/"took": 150/"took": "$body.took"/]
+%  TESTRESPONSE[s/"max_score": 1/"max_score": "$body.hits.max_score"/]
+%  TESTRESPONSE[s/"_score": 1/"_score": "$body.hits.hits.0._score"/]
+%  TESTRESPONSE[s/"_score": 2/"_score": "$body.hits.hits.1._score"/]
+%  TESTRESPONSE[s/"total": 28/"total": "$body._shards.total"/]
+%  TESTRESPONSE[s/"successful": 28/"successful": "$body._shards.successful"/]
+%  TESTRESPONSE[s/"total": 10/"total": "$body._clusters.details.(local)._shards.total"/]
+%  TESTRESPONSE[s/"successful": 10/"successful": "$body._clusters.details.(local)._shards.successful"/]
+%  TESTRESPONSE[s/"took": 21/"took": "$body._clusters.details.(local).took"/]
+%  TESTRESPONSE[s/"total": 12/"total": "$body._clusters.details.cluster_one._shards.total"/]
+%  TESTRESPONSE[s/"successful": 12/"successful": "$body._clusters.details.cluster_one._shards.successful"/]
+%  TESTRESPONSE[s/"took": 48/"took": "$body._clusters.details.cluster_one.took"/]
+%  TESTRESPONSE[s/"total" : 6/"total": "$body._clusters.details.cluster_two._shards.total"/]
+%  TESTRESPONSE[s/"successful" : 6/"successful": "$body._clusters.details.cluster_two._shards.successful"/]
+%  TESTRESPONSE[s/"took": 141/"took": "$body._clusters.details.cluster_two.took"/]
 
 
 ## Using async search for {{ccs}} with ccs_minimize_roundtrips=true [ccs-async-search-minimize-roundtrips-true]
@@ -343,6 +367,8 @@ POST /my-index-000001,cluster_one:my-index-000001,cluster_two:my-index-000001/_a
   "_source": ["user.id", "message", "http.response.status_code"]
 }
 ```
+%  TEST[continued]
+%  TEST[s/ccs_minimize_roundtrips=true/ccs_minimize_roundtrips=true&wait_for_completion_timeout=100ms&keep_on_completion=true/]
 
 The API returns the following response:
 
@@ -403,7 +429,7 @@ The API returns the following response:
 1. The async search id.
 2. When `ccs_minimize_roundtrips` = `true` and searches on the remote clusters are still running, this section indicates the number of shards in scope for the local cluster only and any clusters that have finished their search so far. This will be updated to include the total number of shards across all clusters only when the search is completed. When `ccs_minimize_roundtrips`= `false`, the total shard count across all clusters is known up front and will be correct.
 3. The `_clusters` section indicates that 3 clusters are in scope for the search and all are currently in the "running" state.
-
+%  TEST[skip: hard to reproduce initial state]
 
 If you query the [get async search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-async-search-submit) endpoint while the query is still running, you will see an update in the `_clusters` and `_shards` section of the response as each cluster finishes its search.
 
@@ -414,6 +440,7 @@ If you set `ccs_minimize_roundtrips=true`, then you will also see partial result
 ```console
 GET /_async_search/FklQYndoTDJ2VEFlMEVBTzFJMGhJVFEaLVlKYndBWWZSMUdicUc4WVlEaFl4ZzoxNTU=
 ```
+%  TEST[continued s/FklQYndoTDJ2VEFlMEVBTzFJMGhJVFEaLVlKYndBWWZSMUdicUc4WVlEaFl4ZzoxNTU=/${body.id}/]
 
 Response:
 
@@ -495,6 +522,7 @@ After searches on all the clusters have completed, querying the [get async searc
 ```console
 GET /_async_search/FklQYndoTDJ2VEFlMEVBTzFJMGhJVFEaLVlKYndBWWZSMUdicUc4WVlEaFl4ZzoxNTU=
 ```
+%  TEST[continued s/FklQYndoTDJ2VEFlMEVBTzFJMGhJVFEaLVlKYndBWWZSMUdicUc4WVlEaFl4ZzoxNTU=/${body.id}/]
 
 Response:
 
@@ -577,7 +605,25 @@ Response:
 1. Once the search has finished, the completion_time is present.
 2. The `_shards` section is now updated to show that 28 total shards were searched across all clusters and that all were successful.
 3. The `_clusters` section shows that searches on all 3 clusters were successful.
-
+%  TESTRESPONSE[s/FklQYndoTDJ2VEFlMEVBTzFJMGhJVFEaLVlKYndBWWZSMUdicUc4WVlEaFl4ZzoxNTU=/$body.id/]
+%  TESTRESPONSE[s/"is_partial": true/"is_partial": $body.is_partial/]
+%  TESTRESPONSE[s/"is_running": true/"is_running": $body.is_running/]
+%  TESTRESPONSE[s/1685564911108/$body.start_time_in_millis/]
+%  TESTRESPONSE[s/1685996911108/$body.expiration_time_in_millis/]
+%  TESTRESPONSE[s/1685564938727/$body.completion_time_in_millis/]
+%  TESTRESPONSE[s/"took": 27619/"took": "$body.response.took"/]
+%  TESTRESPONSE[s/"took": 2034/"took": "$body.$_path"/]
+%  TESTRESPONSE[s/"took": 9039/"took": "$body.$_path"/]
+%  TESTRESPONSE[s/"took": 27550/"took": "$body.$_path"/]
+%  TESTRESPONSE[s/"total": 28/"total": $body.response._shards.total/]
+%  TESTRESPONSE[s/"successful": 28/"successful": $body.response._shards.successful/]
+%  TESTRESPONSE[s/"successful": 3/"successful": $body.response._clusters.successful/]
+%  TESTRESPONSE[s/"value": 1067/"value": "$body.response.hits.total.value"/]
+%  TESTRESPONSE[s/"relation": "eq"/"relation": "$body.response.hits.total.relation"/]
+%  TESTRESPONSE[s/"max_score": 1.8293576/"max_score": "$body.response.hits.max_score"/]
+%  TESTRESPONSE[s/"hits": […​list of hits here…​]/"hits": $body.response.hits.hits/]
+%  TESTRESPONSE[s/"total": \d+/"total": $body.$_path/]
+%  TESTRESPONSE[s/"successful": \d+/"successful": $body.$_path/]
 
 
 ## {{ccs-cap}} failures [cross-cluster-search-failures]
@@ -600,6 +646,7 @@ Here is an example of a search with partial results due to a failure on one shar
 ```console
 GET /_async_search/status/FmpwbThueVB4UkRDeUxqb1l4akIza3cbWEJyeVBPQldTV3FGZGdIeUVabXBldzoyMDIw
 ```
+%  TEST[continued s/FmpwbThueVB4UkRDeUxqb1l4akIza3cbWEJyeVBPQldTV3FGZGdIeUVabXBldzoyMDIw/${body.id}/]
 
 Response:
 
@@ -713,7 +760,7 @@ Response:
 4. The `partial` status has been applied to the cluster with partial results.
 5. The failed shard count is shown.
 6. The shard failures are listed under the cluster/details entry also.
-
+%  TEST[skip: hard to reproduce failure results]
 
 Here is an example where both `cluster_one` and `cluster_two` lost connectivity during a {{ccs}}. Since `cluster_one` is marked as `skip_unavailable`=`true`, its status is `skipped` and since `cluster_two` is marked as `skip_unavailable`=`false`, its status is `failed`. Since there was a `failed` cluster, a top level `error` is also present and this returns an HTTP status of 500 (not shown).
 
@@ -722,6 +769,7 @@ If you want the search to still return results even when a cluster is unavailabl
 ```console
 GET /_async_search/FjktRGJ1Y2w1U0phLTRhZnVyeUZ2MVEbWEJyeVBPQldTV3FGZGdIeUVabXBldzo5NzA4
 ```
+%  TEST[continued s/FjktRGJ1Y2w1U0phLTRhZnVyeUZ2MVEbWEJyeVBPQldTV3FGZGdIeUVabXBldzo5NzA4/${body.id}/]
 
 Response:
 
@@ -814,7 +862,7 @@ Response:
 3. The failures list shows that the remote cluster node disconnected from the querying cluster.
 4. `cluster_two` status is "failed", since it is marked in the remote cluster configuration as `skip_unavailable`=`false`.
 5. A top level `error` entry is included when there is a "failed" cluster.
-
+%  TEST[skip: hard to reproduce failure results]
 
 
 ## Excluding clusters or indices from a {{ccs}} [exclude-problematic-clusters]
@@ -842,7 +890,8 @@ POST /my-index-000001,cluster*:my-index-000001,-cluster_three:*/_async_search  <
 ```
 
 1. The `cluster*` notation would naturally include `cluster_one`, `cluster_two` and `cluster_three`. To exclude `cluster_three` use a `-` before the cluster name along with a simple wildcard `*` in the index position. This indicates that you do not want the search to make any contact with `cluster_three`.
-
+%  TEST[continued]
+%  TEST[s/ccs_minimize_roundtrips=true/ccs_minimize_roundtrips=true&wait_for_completion_timeout=100ms&keep_on_completion=true/]
 
 **Exclude a remote index**
 
@@ -861,7 +910,8 @@ POST /my-index-000001,cluster*:my-index-*,cluster_three:-my-index-000001/_async_
 ```
 
 1. This will **not** exclude `cluster_three` from the search. It will still be contacted and told to search any indexes matching `my-index-*` except for `my-index-000001`.
-
+%  TEST[continued]
+%  TEST[s/ccs_minimize_roundtrips=true/ccs_minimize_roundtrips=true&wait_for_completion_timeout=100ms&keep_on_completion=true/]
 
 
 ## Using async search for {{ccs}} with ccs_minimize_roundtrips=false [ccs-async-search-minimize-roundtrips-false]
@@ -887,6 +937,8 @@ POST /my-index-000001,cluster_one:my-index-000001,cluster_two:my-index-000001/_a
   "_source": ["user.id", "message", "http.response.status_code"]
 }
 ```
+%  TEST[continued]
+%  TEST[s/ccs_minimize_roundtrips=false/ccs_minimize_roundtrips=false&wait_for_completion_timeout=2s&keep_on_completion=true/]
 
 The API returns the following response if the query takes longer than the `wait_for_completion_timeout` duration (see [Async search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-async-search-submit)).
 
@@ -964,7 +1016,7 @@ The API returns the following response if the query takes longer than the `wait_
 1. All shards from all clusters in scope for the search are listed here. Watch this section and/or the _clusters section for updates to monitor search progress.
 2. From the `_clusters` section we can see that all the clusters are in "running" state.
 3. The `_clusters` section shows that shard information was successfully gathered from all 3 clusters and the total shard count on each cluster is listed.
-
+%  TEST[skip: hard to reproduce intermediate results]
 
 
 ## Optional remote clusters [skip-unavailable-clusters]

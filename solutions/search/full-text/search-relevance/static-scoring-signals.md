@@ -36,7 +36,7 @@ GET index/_search
 ```
 
 1. `pagerank` must be mapped as a [Numeric](elasticsearch://reference/elasticsearch/mapping-reference/number.md)
-
+% TEST[continued]
 
 while with the [`rank_feature` query](elasticsearch://reference/query-languages/query-dsl-rank-feature-query.md) it would look like below:
 

@@ -63,6 +63,7 @@ If a node has high CPU usage, use the [nodes hot threads API](https://www.elasti
 ```console
 GET _nodes/hot_threads
 ```
+%  TEST[s//my-node,my-other-node//]
 
 This API returns a breakdown of any hot threads in plain text. High CPU usage frequently correlates to [a long-running task, or a backlog of tasks](task-queue-backlog.md).
 
@@ -113,6 +114,7 @@ The response’s `description` contains the search request and its queries. `run
   }
 }
 ```
+%  TESTRESPONSE[skip: no way to get tasks]
 
 To cancel a search and free up resources, use the API’s `_cancel` endpoint.
 

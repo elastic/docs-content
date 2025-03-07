@@ -37,6 +37,7 @@ PUT _all/_settings
   }
 }
 ```
+%  TEST[s/^/PUT test\n/]
 
 With delayed allocation enabled, the above scenario changes to look like this:
 
@@ -83,6 +84,7 @@ PUT _all/_settings
   }
 }
 ```
+%  TEST[s/^/PUT test\n/]
 
 You can reset the timeout as soon as the missing shards have started to recover.
 

@@ -42,6 +42,7 @@ GET my-index-000001/_search
   }
 }
 ```
+% TEST[continued]
 
 The response includes indexed values for documents matching model number `HG537PU`:
 
@@ -83,6 +84,9 @@ The response includes indexed values for documents matching model number `HG537P
   }
 }
 ```
+%  TESTRESPONSE[s/.../"took" : $body.took,"timed_out" : $body.timed_out,"_shards" : $body._shards,/]
+%  TESTRESPONSE[s/"_id" : "F1BeSXYBg_szTodcYCmk"/"_id": $body.hits.hits.0._id/]
+%  TESTRESPONSE[s/"_id" : "l02aSXYBkpNf6QRDO62Q"/"_id": $body.hits.hits.1._id/]
 
 The following request defines a runtime field where the script evaluates the `model_number` field where the value is `HG537PU`. For each match, the script multiplies the value for the `voltage` field by `1.7`.
 
@@ -110,6 +114,7 @@ POST my-index-000001/_search
   "fields": ["measures.voltage"]
 }
 ```
+% TEST[continued]
 
 Looking at the response, the calculated values for `measures.voltage` on each result are `7.14` and `6.8`. That’s more like it! The runtime field calculated this value as part of the search request without modifying the mapped value, which still returns in the response:
 
@@ -161,4 +166,7 @@ Looking at the response, the calculated values for `measures.voltage` on each re
   }
 }
 ```
+%  TESTRESPONSE[s/.../"took" : $body.took,"timed_out" : $body.timed_out,"_shards" : $body._shards,/]
+%  TESTRESPONSE[s/"_id" : "F1BeSXYBg_szTodcYCmk"/"_id": $body.hits.hits.0._id/]
+%  TESTRESPONSE[s/"_id" : "l02aSXYBkpNf6QRDO62Q"/"_id": $body.hits.hits.1._id/]
 

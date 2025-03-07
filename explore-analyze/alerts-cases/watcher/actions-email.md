@@ -38,6 +38,7 @@ For example, the following email action uses a template to include data from the
 3. One or more addresses to send the email to. Must be specified in the action definition or in the email account configuration.
 4. The subject of the email can contain static text and Mustache [templates](how-watcher-works.md#templates).
 5. The body of the email can contain static text and Mustache [templates](how-watcher-works.md#templates). Must be specified in the action definition or in the email account configuration.
+%  NOTCONSOLE
 
 ## Configuring email attachments [configuring-email-attachments]
 
@@ -79,7 +80,7 @@ To configure attachments, specify a name for the attached file and the type of a
 2. The type of the attachment and its specific configuration.
 3. The URL from which to retrieve the attachment.
 4. Data attachments default to JSON if you don’t specify the format.
-
+%  NOTCONSOLE
 
 | Name | Description |
 | --- | --- |

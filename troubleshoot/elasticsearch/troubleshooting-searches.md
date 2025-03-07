@@ -47,6 +47,7 @@ Use the [count API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/
 ```console
 GET /my-index-000001/_count
 ```
+% TEST[continued]
 
 ::::{note}
 When getting no search results in {{kib}}, check that you have selected the correct data view and a valid time range. Also, ensure the data view has been configured with the correct time field.
@@ -61,6 +62,7 @@ Querying a field that does not exist will not return any results. Use the [field
 ```console
 GET /my-index-000001/_field_caps?fields=my-field
 ```
+% TEST[continued]
 
 If the field does not exist, check the data ingestion process. The field may have a different name.
 
@@ -97,6 +99,7 @@ A field’s capabilities are determined by its [mapping](../../manage-data/data-
 ```console
 GET /my-index-000001/_mappings
 ```
+% TEST[continued]
 
 If you query a `text` field, pay attention to the analyzer that may have been configured. You can use the [analyze API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-analyze) to check how a field’s analyzer processes values and query terms:
 
@@ -107,6 +110,7 @@ GET /my-index-000001/_analyze
   "text" : "this is a test"
 }
 ```
+% TEST[continued]
 
 To change the mapping of an existing field, refer to [Changing the mapping of a field](../../manage-data/data-store/mapping.md#updating-field-mappings).
 
@@ -125,6 +129,7 @@ GET /my-index-000001/_count
   }
 }
 ```
+% TEST[continued]
 
 If the field is aggregatable, you can use [aggregations](../../explore-analyze/query-filter/aggregations.md) to check the field’s values. For `keyword` fields, you can use a [terms aggregation](elasticsearch://reference/data-analysis/aggregations/search-aggregations-bucket-terms-aggregation.md) to retrieve the field’s most common values:
 
@@ -142,6 +147,7 @@ GET /my-index-000001/_search?filter_path=aggregations
   }
 }
 ```
+% TEST[continued]
 
 For numeric fields, you can use the [stats aggregation](elasticsearch://reference/data-analysis/aggregations/search-aggregations-metrics-stats-aggregation.md) to get an idea of the field’s value distribution:
 
@@ -157,6 +163,7 @@ GET my-index-000001/_search?filter_path=aggregations
   }
 }
 ```
+% TEST[continued]
 
 If the field does not return any values, check the data ingestion process. The field may have a different name.
 
@@ -168,6 +175,7 @@ For time-series data, confirm there is non-filtered data within the attempted ti
 ```console
 GET my-index-000001/_search?sort=@timestamp:desc&size=1
 ```
+% TEST[continued]
 
 
 ## Validate, explain, and profile queries [troubleshooting-searches-validate-explain-profile]
@@ -189,6 +197,7 @@ GET /my-index-000001/_validate/query?rewrite=true
   }
 }
 ```
+% TEST[continued]
 
 Use the [explain API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-explain) to find out why a specific document matches or doesn’t match a query:
 
@@ -200,6 +209,7 @@ GET /my-index-000001/_explain/0
   }
 }
 ```
+%  TEST[setup:messages]
 
 The [profile API](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-profile.html) provides detailed timing information about a search request. For a visual representation of the results, use the [Search Profiler](../../explore-analyze/query-filter/tools/search-profiler.md) in {{kib}}.
 
@@ -216,6 +226,7 @@ To troubleshoot queries in {{kib}}, select **Inspect** in the toolbar. Next, sel
 ```console
 GET /my-index-000001/_settings
 ```
+% TEST[continued]
 
 You can update dynamic index settings with the [update index settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-settings). [Changing dynamic index settings for a data stream](../../manage-data/data-store/data-streams/modify-data-stream.md#change-dynamic-index-setting-for-a-data-stream) requires changing the index template used by the data stream.
 

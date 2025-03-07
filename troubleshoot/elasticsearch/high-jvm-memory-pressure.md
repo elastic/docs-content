@@ -94,6 +94,7 @@ PUT _cluster/settings
   }
 }
 ```
+%  TEST[s/^/PUT my-index\n/]
 
 **Prevent mapping explosions**
 

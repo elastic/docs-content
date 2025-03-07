@@ -94,6 +94,7 @@ PUT _index_template/sensor-template
   }
 }
 ```
+%  TEST[continued]
 
 The downsample configuration is included in the above template for a [time series data stream (TSDS)](../../data-store/data-streams/time-series-data-stream-tsds.md). Only the `downsampling` part is necessary to enable downsampling, which indicates when to downsample to what fixed interval.
 

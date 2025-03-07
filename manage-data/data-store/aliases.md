@@ -44,6 +44,7 @@ POST _aliases
   ]
 }
 ```
+%  TEST[s/^/PUT _data_stream/logs-nginx.access-prod\n/]
 
 The API’s `index` and `indices` parameters support wildcards (`*`). Wildcard patterns that match both data streams and indices return an error.
 
@@ -60,6 +61,7 @@ POST _aliases
   ]
 }
 ```
+%  TEST[s/^/PUT _data_stream/logs-nginx.access-prod\n/]
 
 
 ## Remove an alias [remove-alias]
@@ -79,6 +81,7 @@ POST _aliases
   ]
 }
 ```
+%  TEST[continued]
 
 
 ## Multiple actions [multiple-actions]
@@ -106,6 +109,7 @@ POST _aliases
   ]
 }
 ```
+%  TEST[s/^/PUT _data_stream/logs-nginx.access-prod\nPUT _data_stream/logs-my_app-default\n/]
 
 
 ## Multiple action results [multiple-action-results]
@@ -133,6 +137,7 @@ POST _aliases
   ]
 }
 ```
+%  TEST[s/^/PUT /index1\nPUT /index2\n/]
 
 The API returns the following result:
 
@@ -203,6 +208,8 @@ PUT _index_template/my-index-template
   }
 }
 ```
+%  TEST[s/,\n    "my-mappings",\n    "my-settings"//]
+%  TEST[teardown:data_stream_cleanup]
 
 You can also specify index aliases in [create index API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-create) requests.
 
@@ -224,18 +231,22 @@ To get a list of your cluster’s aliases, use the [get alias API](https://www.e
 ```console
 GET _alias
 ```
+%  TEST[s/^/PUT _data_stream/logs-nginx.access-prod\nPUT logs-nginx.access-prod/_alias/logs\n/]
 
 Specify a data stream or index before `_alias` to view its aliases.
 
 ```console
 GET my-data-stream/_alias
 ```
+%  TEST[s/^/PUT _data_stream/logs-nginx.access-prod\nPUT logs-nginx.access-prod/_alias/logs\n/]
+%  TEST[s/my-data-stream/logs-nginx.access-prod/]
 
 Specify an alias after `_alias` to view its data streams or indices.
 
 ```console
 GET _alias/logs
 ```
+%  TEST[s/^/PUT _data_stream/logs-nginx.access-prod\nPUT logs-nginx.access-prod/_alias/logs\n/]
 
 
 ## Write index [write-index]
@@ -262,6 +273,7 @@ POST _aliases
   ]
 }
 ```
+%  TEST[s/^/PUT _data_stream/logs-nginx.access-prod\nPUT _data_stream/logs-my_app-default\n/]
 
 If an alias points to multiple indices or data streams and `is_write_index` isn’t set, the alias rejects write requests. If an index alias points to one index and `is_write_index` isn’t set, the index automatically acts as the write index. Data stream aliases don’t automatically set a write data stream, even if the alias points to one data stream.
 
@@ -307,6 +319,7 @@ POST _aliases
   ]
 }
 ```
+%  TEST[s/^/PUT my-index-2099.05.06-000001\n/]
 
 ::::{note}
 Filters are only applied when using the [Query DSL](../../explore-analyze/query-filter/languages/querydsl.md), and are not applied when [retrieving a document by ID](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-get).
@@ -332,6 +345,7 @@ POST _aliases
   ]
 }
 ```
+%  TEST[s/^/PUT my-index-2099.05.06-000001\n/]
 
 Use `index_routing` and `search_routing` to specify different routing values for indexing and search. If specified, these options overwrite the `routing` value for their respective operations.
 
@@ -350,6 +364,7 @@ POST _aliases
   ]
 }
 ```
+%  TEST[s/^/PUT my-index-2099.05.06-000001\n/]
 
 
 ## Remove an index [remove-index]
@@ -368,3 +383,4 @@ POST _aliases
   ]
 }
 ```
+%  TEST[s/^/PUT my-index-2099.05.06-000001\n/]

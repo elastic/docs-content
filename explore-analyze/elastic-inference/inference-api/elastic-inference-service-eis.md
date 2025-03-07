@@ -92,6 +92,7 @@ PUT _inference/sparse_embedding/elser-model-eis
     }
 }
 ```
+%  TEST[skip:TBD]
 
 The following example shows how to create an {{infer}} endpoint called `chat-completion-endpoint` to perform a `chat_completion` task type.
 
@@ -104,4 +105,5 @@ PUT /_inference/chat_completion/chat-completion-endpoint
     }
 }
 ```
+%  TEST[skip:TBD]
 

@@ -80,6 +80,7 @@ To do this in {{es}}, use templated queries to extract features when building th
   }
 ]
 ```
+%  NOTCONSOLE
 
 
 ## Models [learning-to-rank-models]

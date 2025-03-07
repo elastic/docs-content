@@ -69,6 +69,7 @@ A JSON service account file looks like this:
   "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/your-bucket@your-project-id.iam.gserviceaccount.com"
 }
 ```
+%  NOTCONSOLE
 
 To provide this file to the repository, it must be stored in the [Elasticsearch keystore](../../security/secure-settings.md). You must add a `file` setting with the name `gcs.client.NAME.credentials_file` using the `add-file` subcommand. `NAME` is the name of the client configuration for the repository. The implicit client name is `default`, but a different client name can be specified in the repository settings with the `client` key.
 
@@ -89,6 +90,7 @@ PUT _snapshot/my_gcs_repository
   }
 }
 ```
+%  TEST[skip:we don’t have gcs setup while testing this]
 
 The `credentials_file` settings are [reloadable](../../security/secure-settings.md#reloadable-secure-settings). You can define these settings before the node is started, or call the [Nodes reload secure settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-reload-secure-settings) after the settings are defined to apply them to a running node.
 
@@ -117,6 +119,7 @@ PUT _snapshot/my_gcs_repository
   }
 }
 ```
+%  TEST[skip:we don’t have gcs setup while testing this]
 
 Some settings are sensitive and must be stored in the [Elasticsearch keystore](../../security/secure-settings.md). This is the case for the service account file:
 
@@ -170,6 +173,7 @@ PUT _snapshot/my_gcs_repository
   }
 }
 ```
+%  TEST[skip:we don’t have gcs set up while testing this]
 
 The following settings are supported:
 

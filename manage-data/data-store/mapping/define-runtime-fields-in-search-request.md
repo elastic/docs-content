@@ -34,6 +34,7 @@ GET my-index-000001/_search
   }
 }
 ```
+% TEST[continued]
 
 
 ## Create runtime fields that use other runtime fields [runtime-search-request-examples]
@@ -71,6 +72,7 @@ PUT my-index-000001/_mapping
   }
 }
 ```
+%  TEST[continued]
 
 Runtime fields take precedence over fields defined with the same name in the index mappings. This flexibility allows you to shadow existing fields and calculate a different value, without modifying the field itself. If you made a mistake in your index mapping, you can use runtime fields to calculate values that [override values](override-field-values-at-query-time.md) in the mapping during the search request.
 
@@ -93,6 +95,8 @@ GET my-index-000001/_search
   }
 }
 ```
+%  TEST[continued]
+%  TEST[s/_search/_search?filter_path=aggregations/]
 
 The response includes the aggregation results without changing the values for the underlying data:
 
@@ -135,6 +139,8 @@ GET my-index-000001/_search
   }
 }
 ```
+%  TEST[continued]
+%  TEST[s/_search/_search?filter_path=aggregations/]
 
 Even though the `duration` runtime field only exists in the context of a search query, you can search and aggregate on that field. This flexibility is incredibly powerful, enabling you to rectify mistakes in your index mappings and dynamically complete calculations all within a single search request.
 

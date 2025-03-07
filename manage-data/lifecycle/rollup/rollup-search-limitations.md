@@ -53,6 +53,9 @@ GET sensor_rollup/_rollup_search
   }
 }
 ```
+%  TEST[setup:sensor_prefab_data]
+%  TEST[catch:/illegal_argument_exception/]
+%  TEST[warning:The rollup functionality will be removed in Elasticsearch 10.0. See docs for more information.]
 
 The response will tell you that the field and aggregation were not possible, because no rollup jobs were found which contained them:
 
@@ -73,6 +76,7 @@ The response will tell you that the field and aggregation were not possible, bec
   "status": 400
 }
 ```
+%  TESTRESPONSE[s/"stack_trace": .../"stack_trace": $body.$_path/]
 
 
 ## Interval granularity [_interval_granularity] 

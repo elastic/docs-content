@@ -36,6 +36,7 @@ For example, the following `array_compare` condition returns `true` if there is 
 2. The path to the field in each array element that you want to evaluate.
 3. The [comparison operator](condition-compare.md#condition-compare-operators) to use.
 4. The comparison value. Supports date math like the [compare condition](condition-compare.md#compare-condition-date-math).
+%  NOTCONSOLE
 
 ::::{note}
 When using fieldnames that contain a dot this condition will not work, use a [script condition](condition-script.md) instead.

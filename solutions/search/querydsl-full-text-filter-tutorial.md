@@ -31,6 +31,7 @@ You’ll need a running {{es}} cluster, together with {{kib}} to use the Dev Too
 ```sh
 curl -fsSL https://elastic.co/start-local | sh
 ```
+%  NOTCONSOLE
 
 
 ## Step 1: Create an index [full-text-filter-tutorial-create-index]
@@ -40,6 +41,7 @@ Create the `cooking_blog` index to get started:
 ```console
 PUT /cooking_blog
 ```
+%  TESTSETUP
 
 Now define the mappings for the index:
 
@@ -103,7 +105,7 @@ PUT /cooking_blog/_mapping
 1. The `standard` analyzer is used by default for `text` fields if an `analyzer` isn’t specified. It’s included here for demonstration purposes.
 2. [Multi-fields](elasticsearch://reference/elasticsearch/mapping-reference/multi-fields.md) are used here to index `text` fields as both `text` and `keyword` [data types](elasticsearch://reference/elasticsearch/mapping-reference/field-data-types.md). This enables both full-text search and exact matching/filtering on the same field. Note that if you used [dynamic mapping](../../manage-data/data-store/mapping/dynamic-field-mapping.md), these multi-fields would be created automatically.
 3. The [`ignore_above` parameter](elasticsearch://reference/elasticsearch/mapping-reference/ignore-above.md) prevents indexing values longer than 256 characters in the `keyword` field. Again this is the default value, but it’s included here for demonstration purposes. It helps to save disk space and avoid potential issues with Lucene’s term byte-length limit.
-
+%  TEST
 
 ::::{tip}
 Full-text search is powered by [text analysis](full-text/text-analysis-during-search.md). Text analysis normalizes and standardizes text data so it can be efficiently stored in an inverted index and searched in near real-time. Analysis happens at both [index and search time](../../manage-data/data-store/text-analysis/index-search-analysis.md). This tutorial won’t cover analysis in detail, but it’s important to understand how text is processed to create effective search queries.
@@ -129,6 +131,7 @@ POST /cooking_blog/_bulk?refresh=wait_for
 {"index":{"_id":"5"}}
 {"title":"Crispy Oven-Fried Chicken","description":"Get that perfect crunch without the deep fryer! This oven-fried chicken recipe delivers crispy, juicy results every time. A healthier take on the classic comfort food.","author":"Maria Rodriguez","date":"2023-05-20","category":"Main Course","tags":["chicken","oven-fried","healthy"],"rating":4.9}
 ```
+%  TEST[continued]
 
 
 ## Step 3: Perform basic full-text searches [full-text-filter-tutorial-match-query]
@@ -156,7 +159,7 @@ GET /cooking_blog/_search
 ```
 
 1. By default, the `match` query uses `OR` logic between the resulting tokens. This means it will match documents that contain either "fluffy" or "pancakes", or both, in the description field.
-
+%  TEST[continued]
 
 At search time, {{es}} defaults to the analyzer defined in the field mapping. In this example, we’re using the `standard` analyzer. Using a different analyzer at search time is an [advanced use case](../../manage-data/data-store/text-analysis/index-search-analysis.md#different-analyzers).
 
@@ -206,7 +209,12 @@ At search time, {{es}} defaults to the analyzer defined in the field mapping. In
 3. `_score` is the relevance score for a specific document, indicating how well it matches the query. Higher scores indicate better matches. In this example the `max_score` is the same as the `_score`, as there is only one matching document.
 4. The title contains both "Fluffy" and "Pancakes", matching our search terms exactly.
 5. The description includes "fluffiest" and "pancakes", further contributing to the document’s relevance due to the analysis process.
-
+%  TESTRESPONSE[s/"took": 0/"took": "$body.took"/]
+%  TESTRESPONSE[s/"total": 1/"total": $body._shards.total/]
+%  TESTRESPONSE[s/"successful": 1/"successful": $body._shards.successful/]
+%  TESTRESPONSE[s/"value": 1/"value": $body.hits.total.value/]
+%  TESTRESPONSE[s/"max_score": 1.8378843/"max_score": $body.hits.max_score/]
+%  TESTRESPONSE[s/"_score": 1.8378843/"_score": $body.hits.hits.0._score/]
 
 ::::
 
@@ -229,6 +237,7 @@ GET /cooking_blog/_search
   }
 }
 ```
+%  TEST[continued]
 
 ::::{dropdown} Example response
 ```console-result
@@ -251,6 +260,7 @@ GET /cooking_blog/_search
   }
 }
 ```
+%  TESTRESPONSE[s/"took": 0/"took": "$body.took"/]
 
 ::::
 
@@ -275,6 +285,7 @@ GET /cooking_blog/_search
   }
 }
 ```
+%  TEST[continued]
 
 
 ## Step 4: Search across multiple fields at once [full-text-filter-tutorial-multi-match]
@@ -294,6 +305,7 @@ GET /cooking_blog/_search
   }
 }
 ```
+%  TEST[continued]
 
 This query searches for "vegetarian curry" across the title, description, and tags fields. Each field is treated with equal importance.
 
@@ -314,7 +326,7 @@ GET /cooking_blog/_search
 1. The `^` syntax applies a boost to specific fields:* `title^3`: The title field is 3 times more important than an unboosted field
 * `description^2`: The description is 2 times more important
 * `tags`: No boost applied (equivalent to `^1`)
-
+%  TEST[continued]
     These boosts help tune relevance, prioritizing matches in the title over the description, and matches in the description over tags.
 
 
@@ -367,7 +379,9 @@ Learn more about fields and per-field boosting in the [`multi_match` query](elas
 1. The title contains "Vegetarian" and "Curry", which matches our search terms. The title field has the highest boost (^3), contributing significantly to this document’s relevance score.
 2. The description contains "curry" and related terms like "vegetables", further increasing the document’s relevance.
 3. The tags include both "vegetarian" and "curry", providing an exact match for our search terms, albeit with no boost.
-
+%  TESTRESPONSE[s/"took": 0/"took": "$body.took"/]
+%  TESTRESPONSE[s/"_score": 7.546015/"_score": $body.hits.hits.0._score/]
+%  TESTRESPONSE[s/"max_score": 7.546015/"max_score": $body.hits.max_score/]
 
 This result demonstrates how the `multi_match` query with field boosts helps users find relevant recipes across multiple fields. Even though the exact phrase "vegetarian curry" doesn’t appear in any single field, the combination of matches across fields produces a highly relevant result.
 
@@ -401,7 +415,7 @@ GET /cooking_blog/_search
 ```
 
 1. Note the use of `category.keyword` here. This refers to the [`keyword`](elasticsearch://reference/elasticsearch/mapping-reference/keyword.md) multi-field of the `category` field, ensuring an exact, case-sensitive match.
-
+%  TEST[continued]
 
 ::::{tip}
 The `.keyword` suffix accesses the unanalyzed version of a field, enabling exact, case-sensitive matching. This works in two scenarios:
@@ -433,7 +447,7 @@ GET /cooking_blog/_search
 
 1. Greater than or equal to May 1, 2023.
 2. Less than or equal to May 31, 2023.
-
+%  TEST[continued]
 
 
 ### Find exact matches [full-text-filter-tutorial-term-query]
@@ -454,7 +468,7 @@ GET /cooking_blog/_search
 ```
 
 1. The `term` query has zero flexibility. For example, here the queries `maria` or `maria rodriguez` would have zero hits, due to case sensitivity.
-
+%  TEST[continued]
 
 ::::{tip}
 Avoid using the `term` query for [`text` fields](elasticsearch://reference/elasticsearch/mapping-reference/text.md) because they are transformed by the analysis process.
@@ -527,7 +541,7 @@ GET /cooking_blog/_search
 ```
 
 1. The `must_not` clause excludes documents that match the specified criteria. This is a powerful tool for filtering out unwanted results.
-
+%  TEST[continued]
 
 ::::{dropdown} Example response
 ```console-result
@@ -577,7 +591,7 @@ GET /cooking_blog/_search
 4. The "Main Course" category satisfies another `should` condition.
 5. The "vegetarian" tag satisfies a `must` condition, while "curry" and "spicy" tags align with our `should` preferences.
 6. The rating of 4.6 meets our minimum rating requirement of 4.5.
-
+%  TESTRESPONSE[s/"took": 1/"took": "$body.took"/]
 
 ::::
 

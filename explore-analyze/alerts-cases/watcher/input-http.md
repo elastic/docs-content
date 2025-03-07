@@ -32,6 +32,7 @@ To query an external Elasticsearch cluster, you specify the cluster’s `host` a
   }
 }
 ```
+%  NOTCONSOLE
 
 You can use the full Elasticsearch [Query DSL](../../query-filter/languages/querydsl.md) to perform more sophisticated searches. For example, the following `http` input retrieves all documents that contain `event` in the `category` field:
 
@@ -47,6 +48,7 @@ You can use the full Elasticsearch [Query DSL](../../query-filter/languages/quer
   }
 }
 ```
+%  NOTCONSOLE
 
 ## Calling Elasticsearch APIs [_calling_elasticsearch_apis]
 
@@ -68,6 +70,7 @@ To load the data from other Elasticsearch APIs, specify the API endpoint as the 
 ```
 
 1. Enabling this attribute returns the `bytes` values in the response in human readable format.
+%  NOTCONSOLE
 
 ## Calling external web services [input-http-auth-basic-example]
 
@@ -90,6 +93,7 @@ You can use `http` input to get data from any external web service. The `http` i
   }
 }
 ```
+%  NOTCONSOLE
 
 You can also pass in service-specific API keys and other information through the `params` attribute. For example, the following `http` input loads the current weather forecast for Amsterdam from the [OpenWeatherMap](http://openweathermap.org/appid) service:
 
@@ -107,6 +111,7 @@ You can also pass in service-specific API keys and other information through the
   }
 }
 ```
+%  NOTCONSOLE
 
 ### Using token-based authentication [_using_token_based_authentication]
 
@@ -127,6 +132,7 @@ You can also call an API using a `Bearer token` instead of basic authentication.
   }
 }
 ```
+%  NOTCONSOLE
 
 ## Using templates [_using_templates_2]
 
@@ -146,6 +152,7 @@ For example, the following snippet uses templates to specify what index to query
     }
   }
 ```
+%  NOTCONSOLE
 
 ## Accessing the HTTP response [_accessing_the_http_response]
 

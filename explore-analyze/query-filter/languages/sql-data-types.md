@@ -92,6 +92,7 @@ Consider the following `string` mapping:
   }
 }
 ```
+%  NOTCONSOLE
 
 The following SQL query:
 

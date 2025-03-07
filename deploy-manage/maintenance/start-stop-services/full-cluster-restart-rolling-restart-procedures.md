@@ -84,6 +84,7 @@ Nodes exceeding the low watermark threshold will be slow to restart. Reduce the 
 
     GET _cat/nodes
     ```
+    %  TEST[continued]
 
    The `status` column returned by `_cat/health` shows the health of each node in the cluster: `red`, `yellow`, or `green`.
 
@@ -118,6 +119,7 @@ Nodes exceeding the low watermark threshold will be slow to restart. Reduce the 
     ```console
     POST _ml/set_upgrade_mode?enabled=false
     ```
+    %  TEST[continued]
 
    If you closed all {{ml}} jobs before stopping the nodes, open the jobs and start the datafeeds from {{kib}} or with the [open jobs](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-open-job) and [start datafeed](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-start-datafeed) APIs.
 
@@ -208,5 +210,6 @@ Nodes exceeding the low watermark threshold will be slow to restart. Reduce the 
     ```console
     POST _ml/set_upgrade_mode?enabled=false
     ```
+    %  TEST[continued]
 
    If you closed all {{ml}} jobs before stopping the nodes, open the jobs and start the datafeeds from {{kib}} or with the [open jobs](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-open-job) and [start datafeed](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-start-datafeed) APIs.

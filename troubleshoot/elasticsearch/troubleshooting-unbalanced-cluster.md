@@ -29,6 +29,7 @@ Use the [cat allocation command](https://www.elastic.co/docs/api/doc/elasticsear
 ```console
 GET /_cat/allocation?v
 ```
+%  TEST[s/^/PUT test\n{"settings": {"number_of_replicas": 0}}\n/]
 
 The API returns the following response:
 
@@ -36,6 +37,8 @@ The API returns the following response:
 shards shards.undesired write_load.forecast disk.indices.forecast disk.indices disk.used disk.avail disk.total disk.percent host      ip        node    node.role
      1                0                 0.0                  260b         260b    47.3gb     43.4gb    100.7gb           46 127.0.0.1 127.0.0.1 CSUXak2 himrst
 ```
+%  TESTRESPONSE[s/\d+(.\d+)?[tgmk]?b/\d+(\.\d+)?[tgmk]?b/ s/46/\d+/]
+%  TESTRESPONSE[s/CSUXak2 himrst/.+/ non_json]
 
 This response contains the following information that influences balancing:
 

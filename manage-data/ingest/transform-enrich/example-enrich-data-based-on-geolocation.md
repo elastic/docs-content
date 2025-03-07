@@ -42,6 +42,7 @@ PUT /postal_codes/_doc/1?refresh=wait_for
   "postal_code": "96598"
 }
 ```
+%  TEST[continued]
 
 Use the [create enrich policy API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-enrich-put-policy) to create an enrich policy with the `geo_match` policy type. This policy must include:
 
@@ -59,12 +60,15 @@ PUT /_enrich/policy/postal_policy
   }
 }
 ```
+%  TEST[continued]
 
 Use the [execute enrich policy API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-enrich-execute-policy) to create an enrich index for the policy.
 
 ```console
 POST /_enrich/policy/postal_policy/_execute?wait_for_completion=false
 ```
+%  TEST[s/?wait_for_completion=false//]
+%  TEST[continued]
 
 Use the [create or update pipeline API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ingest-put-pipeline) to create an ingest pipeline. In the pipeline, add an [enrich processor](elasticsearch://reference/ingestion-tools/enrich-processor/enrich-processor.md) that includes:
 
@@ -89,6 +93,7 @@ PUT /_ingest/pipeline/postal_lookup
   ]
 }
 ```
+%  TEST[continued]
 
 Use the ingest pipeline to index a document. The incoming document should include the `field` specified in your enrich processor.
 
@@ -100,12 +105,14 @@ PUT /users/_doc/0?pipeline=postal_lookup
   "geo_location": "POINT (13.5 52.5)"
 }
 ```
+%  TEST[continued]
 
 To verify the enrich processor matched and appended the appropriate field data, use the [get API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-get) to view the indexed document.
 
 ```console
 GET /users/_doc/0
 ```
+%  TEST[continued]
 
 The API returns the following response:
 
@@ -131,4 +138,5 @@ The API returns the following response:
   }
 }
 ```
+%  TESTRESPONSE[s/"_seq_no": \d+/"_seq_no" : $body._seq_no/ s/"_primary_term":1/"_primary_term" : $body._primary_term/]
 

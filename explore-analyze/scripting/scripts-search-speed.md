@@ -56,6 +56,7 @@ GET /my_test_scores/_search
   ]
 }
 ```
+%  TEST[s/^/PUT my_test_scores\n/]
 
 If you’re searching a small index, then including the script as part of your search query can be a good solution. If you want to make search faster, you can perform this calculation during ingest and index the sum to a field instead.
 
@@ -71,6 +72,7 @@ PUT /my_test_scores/_mapping
   }
 }
 ```
+%  TEST[continued]
 
 Next, use an [ingest pipeline](../../manage-data/ingest/transform-enrich/ingest-pipelines.md) containing the [script processor](elasticsearch://reference/ingestion-tools/enrich-processor/script-processor.md) to calculate the sum of `math_score` and `verbal_score` and index it in the `total_score` field.
 
@@ -87,6 +89,7 @@ PUT _ingest/pipeline/my_test_scores_pipeline
   ]
 }
 ```
+%  TEST[continued]
 
 To update existing data, use this pipeline to [reindex](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-reindex) any documents from `my_test_scores` to a new index named `my_test_scores_2`.
 
@@ -102,6 +105,7 @@ POST /_reindex
   }
 }
 ```
+%  TEST[continued]
 
 Continue using the pipeline to index any new documents to `my_test_scores_2`.
 
@@ -114,6 +118,7 @@ POST /my_test_scores_2/_doc/?pipeline=my_test_scores_pipeline
   "verbal_score": 800
 }
 ```
+%  TEST[continued]
 
 These changes slow the index process, but allow for faster searches. Instead of using a script, you can sort searches made on `my_test_scores_2` using the `total_score` field. The response is near real-time! Though this process slows ingest time, it greatly increases queries at search time.
 
@@ -134,4 +139,5 @@ GET /my_test_scores_2/_search
   ]
 }
 ```
+%  TEST[continued]
 

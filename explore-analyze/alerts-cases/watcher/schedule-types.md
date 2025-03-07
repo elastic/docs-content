@@ -43,6 +43,7 @@ For example, the following `hourly` schedule triggers at minute 30 every hour-- 
   }
 }
 ```
+%  NOTCONSOLE
 
 
 ### Configuring a multiple times hourly schedule [_configuring_a_multiple_times_hourly_schedule]
@@ -58,6 +59,7 @@ To configure an `hourly` schedule that triggers at multiple times during the hou
   }
 }
 ```
+%  NOTCONSOLE
 
 
 
@@ -86,6 +88,7 @@ To configure a once a day schedule, you specify a single time with the `at` attr
   }
 }
 ```
+%  NOTCONSOLE
 
 
 ### Configuring a multiple times daily schedule [_configuring_a_multiple_times_daily_schedule]
@@ -101,6 +104,7 @@ To configure a `daily` schedule that triggers at multiple times during the day, 
   }
 }
 ```
+%  NOTCONSOLE
 
 
 ### Specifying times using objects [specifying-times-using-objects]
@@ -123,6 +127,7 @@ For example, the following `daily` schedule triggers once every day at 5:00 PM:
   }
 }
 ```
+%  NOTCONSOLE
 
 To specify multiple times using the object notation, you specify multiple hours or minutes as an array. For example, following `daily` schedule triggers at `00:00`, `00:30`, `12:00`, `12:30`, `17:00` and `17:30` every day:
 
@@ -140,6 +145,7 @@ To specify multiple times using the object notation, you specify multiple hours 
   }
 }
 ```
+%  NOTCONSOLE
 
 
 ### Specifying a time zone for a daily schedule [specifying-time-zone-for-daily-schedule]
@@ -161,6 +167,7 @@ By default, daily schedules are evaluated in the UTC time zone. To use a differe
   }
 }
 ```
+%  NOTCONSOLE
 
 
 
@@ -190,6 +197,7 @@ To configure a once a week schedule, you specify the day with the `on` attribute
   }
 }
 ```
+%  NOTCONSOLE
 
 ::::{note}
 You can also specify the day and time with the `day` and `time` attributes, they are interchangeable with `on` and `at`.
@@ -213,6 +221,7 @@ To configure a `weekly` schedule that triggers multiple times a week, you can sp
   }
 }
 ```
+%  NOTCONSOLE
 
 Alternatively, you can specify days and times in an object that has `on` and `minute` attributes that contain an array of values. For example, the following `weekly` schedule triggers every Tuesday and Friday at 12:00 PM and 17:00 PM:
 
@@ -228,6 +237,7 @@ Alternatively, you can specify days and times in an object that has `on` and `mi
   }
 }
 ```
+%  NOTCONSOLE
 
 
 
@@ -248,6 +258,7 @@ By default, weekly schedules are evaluated in the UTC time zone. To use a differ
   }
 }
 ```
+%  NOTCONSOLE
 
 
 ## {{watcher}} monthly schedule [schedule-monthly]
@@ -270,6 +281,7 @@ To configure a once a month schedule, you specify a single day and time with the
   }
 }
 ```
+%  NOTCONSOLE
 
 ::::{note}
 You can also specify the day and time with the `day` and `time` attributes, they are interchangeable with `on` and `at`.
@@ -293,6 +305,7 @@ To configure a `monthly` schedule that triggers multiple times a month, you can 
   }
 }
 ```
+%  NOTCONSOLE
 
 Alternatively, you can specify days and times in an object that has `on` and `at` attributes that contain an array of values. For example, the following `monthly` schedule triggers at 12:00 AM and 12:00 PM on the 10th and 20th of each month.
 
@@ -308,6 +321,7 @@ Alternatively, you can specify days and times in an object that has `on` and `at
   }
 }
 ```
+%  NOTCONSOLE
 
 
 
@@ -328,6 +342,7 @@ By default, monthly schedules are evaluated in the UTC time zone. To use a diffe
   }
 }
 ```
+%  NOTCONSOLE
 
 
 ## {{watcher}} yearly schedule [schedule-yearly]
@@ -356,6 +371,7 @@ To configure a once a year schedule, you specify the month with the `in` attribu
   }
 }
 ```
+%  NOTCONSOLE
 
 ::::{note}
 You can also specify the month, day, and time with the `month`, `day`, and `time` attributes, they are interchangeable with `in`, `on`, and `at`.
@@ -379,6 +395,7 @@ To configure a `yearly` schedule that triggers multiple times a year, you can sp
   }
 }
 ```
+%  NOTCONSOLE
 
 Alternatively, you can specify the months, days, and times in an object that has `in`, `on`, and `minute` attributes that contain an array of values. For example, the following `yearly` schedule triggers at 12:00 AM and 12:00 PM on January 10th, January 20th, December 10th, and December 20th.
 
@@ -395,6 +412,7 @@ Alternatively, you can specify the months, days, and times in an object that has
   }
 }
 ```
+%  NOTCONSOLE
 
 
 
@@ -416,6 +434,7 @@ By default, the `yearly` schedule is evaluated in the UTC time zone. To use a di
   }
 }
 ```
+%  NOTCONSOLE
 
 
 ## {{watcher}} cron schedule [schedule-cron]
@@ -443,6 +462,7 @@ To configure a `cron` schedule, you simply specify the cron expression as a stri
   ...
 }
 ```
+%  NOTCONSOLE
 
 
 ### Configure a cron schedule with multiple times [_configuring_a_multiple_times_cron_schedule]
@@ -463,6 +483,7 @@ To configure a `cron` schedule that triggers multiple times, you can specify an 
   ...
 }
 ```
+%  NOTCONSOLE
 
 
 
@@ -484,6 +505,7 @@ By default, cron expressions are evaluated in the UTC time zone. To use a differ
   ...
 }
 ```
+%  NOTCONSOLE
 
 ### Use croneval to validate cron expressions [croneval]
 
@@ -530,6 +552,7 @@ For example, the following `interval` schedule triggers every five minutes:
   }
 }
 ```
+%  NOTCONSOLE
 
 
 

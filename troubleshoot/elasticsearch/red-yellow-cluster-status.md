@@ -54,6 +54,7 @@ GET _cluster/allocation/explain?filter_path=index,node_allocation_decisions.node
   "primary": false
 }
 ```
+%  TEST[s/^/PUT my-index\n/]
 
 
 ## Fix a red or yellow cluster status [fix-red-yellow-cluster-status]
@@ -102,6 +103,7 @@ GET my-index/_settings?flat_settings=true&include_defaults=true
 
 GET _cluster/settings?flat_settings=true&include_defaults=true
 ```
+%  TEST[s/^/PUT my-index\n/]
 
 You can change the settings using the [update index settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-settings) and [cluster update settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings) APIs.
 
@@ -119,6 +121,7 @@ PUT _settings
   "index.number_of_replicas": 1
 }
 ```
+%  TEST[s/^/PUT my-index\n/]
 
 
 ### Free up or increase disk space [fix-cluster-status-disk-space]

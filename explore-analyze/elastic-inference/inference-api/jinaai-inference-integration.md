@@ -141,6 +141,7 @@ PUT _inference/text_embedding/jinaai-embeddings
     }
 }
 ```
+%  TEST[skip:uses ML]
 
 Then, we create the `rerank` service:
 
@@ -158,6 +159,7 @@ PUT _inference/rerank/jinaai-rerank
     }
 }
 ```
+%  TEST[skip:uses ML]
 
 Now we can create an index that will use `jinaai-embeddings` service to index the documents.
 
@@ -174,6 +176,7 @@ PUT jinaai-index
   }
 }
 ```
+%  TEST[skip:uses ML]
 
 ```console
 PUT jinaai-index/_bulk
@@ -184,6 +187,7 @@ PUT jinaai-index/_bulk
 { "index" : { "_index" : "jinaai-index", "_id" : "3" } }
 {"content": "Her dedication to preserving these delicate underwater environments has inspired a new generation of conservationists."}
 ```
+%  TEST[skip:uses ML]
 
 Now, with the index created, we can search with and without the reranker service.
 
@@ -198,6 +202,7 @@ GET jinaai-index/_search
   }
 }
 ```
+%  TEST[skip:uses ML]
 
 ```console
 POST jinaai-index/_search
@@ -222,4 +227,5 @@ POST jinaai-index/_search
   }
 }
 ```
+%  TEST[skip:uses ML]
 

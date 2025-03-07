@@ -24,3 +24,4 @@ There are no attributes to specify for the `always` condition. To explicitly use
   "always" : {}
 }
 ```
+%  NOTCONSOLE

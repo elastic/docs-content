@@ -66,6 +66,7 @@ For example, if you’re working with Apache log data, you can use the `%{{COMMO
 "timestamp":"2020-04-30T14:30:17-05:00","message":"40.135.0.0 - -
 [30/Apr/2020:14:30:17 -0500] \"GET /images/hm_bg.jpg HTTP/1.0\" 200 24736"
 ```
+%  NOTCONSOLE
 
 To extract the IP address from the `message` field, you can write a Painless script that incorporates the `%{{COMMONAPACHELOG}}` syntax. You can test this script using the [`ip` field context](elasticsearch://reference/scripting-languages/painless/painless-api-examples.md#painless-runtime-ip) of the Painless execute API, but let’s use a runtime field instead.
 
@@ -107,6 +108,7 @@ POST /my-index/_bulk?refresh
 {"index":{}}
 {"timestamp":"2020-04-30T14:31:28-05:00","message":"not a valid apache log"}
 ```
+%  TEST[continued]
 
 
 ## Incorporate grok patterns and scripts in runtime fields [grok-patterns-runtime]
@@ -127,6 +129,7 @@ PUT my-index/_mappings
   }
 }
 ```
+%  TEST[continued]
 
 Alternatively, you can define the same runtime field but in the context of a search request. The runtime definition and the script are exactly the same as the one defined previously in the index mapping. Just copy that definition into the search request under the `runtime_mappings` section and include a query that matches on the runtime field. This query returns the same results as if you [defined a search query](#grok-pattern-results) for the `http.clientip` runtime field in your index mappings, but only in the context of this specific search:
 
@@ -150,6 +153,7 @@ GET my-index/_search
   "fields" : ["http.clientip"]
 }
 ```
+%  TEST[continued]
 
 
 ## Return calculated results [grok-pattern-results]
@@ -167,6 +171,8 @@ GET my-index/_search
   "fields" : ["http.clientip"]
 }
 ```
+%  TEST[continued]
+%  TEST[s/_search/_search?filter_path=hits/]
 
 The response includes the specific IP address indicated in your search query. The grok pattern within the Painless script extracted this value from the `message` field at runtime.
 
@@ -197,5 +203,6 @@ The response includes the specific IP address indicated in your search query. Th
   }
 }
 ```
+%  TESTRESPONSE[s/"_id" : "1iN2a3kBw4xTzEDqyYE0"/"_id": $body.hits.hits.0._id/]
 
 

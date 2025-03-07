@@ -36,6 +36,7 @@ If a request triggers a circuit breaker, {{es}} returns an error with a `429` HT
   'status': 429
 }
 ```
+%  NOTCONSOLE
 
 {{es}} also writes circuit breaker errors to [`elasticsearch.log`](../../deploy-manage/monitor/logging-configuration/elasticsearch-log4j-configuration-self-managed.md). This is helpful when automated processes, such as allocation, trigger a circuit breaker.
 
@@ -77,3 +78,4 @@ If you’ve triggered the fielddata circuit breaker and can’t disable fielddat
 ```console
 POST _cache/clear?fielddata=true
 ```
+%  TEST[s/^/PUT my-index\n/]

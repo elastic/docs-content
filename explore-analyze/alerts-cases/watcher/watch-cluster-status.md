@@ -36,6 +36,7 @@ To get the status of your cluster, you can call the [cluster health API](https:/
 ```console
 GET _cluster/health?pretty
 ```
+%  TEST[continued]
 
 To load the health status into your watch, you simply add an [HTTP input](input-http.md) that calls the cluster health API:
 
@@ -99,6 +100,7 @@ GET .watcher-history*/_search
   ]
 }
 ```
+%  TEST[continued]
 
 ## Add a condition [health-add-condition]
 
@@ -143,6 +145,7 @@ GET .watcher-history*/_search?pretty
   }
 }
 ```
+%  TEST[continued]
 
 ## Take action [health-take-action]
 
@@ -219,6 +222,7 @@ GET .watcher-history*/_search?pretty
   }
 }
 ```
+%  TEST[continued]
 
 ## Delete the watch [health-delete]
 
@@ -229,3 +233,4 @@ To remove the watch, use the [delete watch API](https://www.elastic.co/docs/api/
 ```console
 DELETE _watcher/watch/cluster_health_watch
 ```
+%  TEST[continued]

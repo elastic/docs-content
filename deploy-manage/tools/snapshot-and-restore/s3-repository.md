@@ -31,6 +31,7 @@ PUT _snapshot/my_s3_repository
   }
 }
 ```
+%  TEST[skip:we don’t have s3 setup while testing this]
 
 
 ## Client settings [repository-s3-client]
@@ -47,6 +48,7 @@ PUT _snapshot/my_s3_repository
   }
 }
 ```
+%  TEST[skip:we don’t have S3 setup while testing this]
 
 Most client settings can be added to the `elasticsearch.yml` configuration file with the exception of the secure settings, which you add to the {{es}} keystore. For more information about creating and updating the {{es}} keystore, see [Secure settings](../../security/secure-settings.md).
 
@@ -153,6 +155,7 @@ PUT _snapshot/my_s3_repository
   }
 }
 ```
+%  TEST[skip:we don’t have S3 set up while testing this]
 
 The following settings are supported:
 
@@ -251,6 +254,7 @@ PUT _snapshot/my_s3_repository
   }
 }
 ```
+%  TEST[skip:we don’t have s3 set up while testing this]
 
 This sets up a repository that uses all client settings from the client `my_client_name` except for the `endpoint` that is overridden to `my.s3.endpoint` by the repository settings. `
 
@@ -306,6 +310,7 @@ In order to restrict the Elasticsearch snapshot process to the minimum required 
   "Version": "2012-10-17"
 }
 ```
+%  NOTCONSOLE
 
 You may further restrict the permissions by specifying a prefix within the bucket, in this example, named "foo".
 
@@ -348,6 +353,7 @@ You may further restrict the permissions by specifying a prefix within the bucke
   "Version": "2012-10-17"
 }
 ```
+%  NOTCONSOLE
 
 The bucket needs to exist to register a repository for snapshots. If you did not create the bucket then the repository registration will fail.
 
@@ -402,6 +408,7 @@ PUT /_cluster/settings
   }
 }
 ```
+%  TEST[skip:we don’t really want to change this logger]
 
 Collect the Elasticsearch logs covering the time period of the failed analysis from all nodes in your cluster and share them with the supplier of your storage system along with the analysis response so they can use them to determine the problem. See the [AWS Java SDK](https://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/java-dg-logging.html) documentation for further information, including details about other loggers that can be used to obtain even more verbose logs. When you have finished collecting the logs needed by your supplier, set the logger settings back to `null` to return to the default logging configuration and disable insecure network trace logging again. See [Logger](elasticsearch://reference/elasticsearch/configuration-reference/miscellaneous-cluster-settings.md#cluster-logger) and [Cluster update settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings) for more information.
 

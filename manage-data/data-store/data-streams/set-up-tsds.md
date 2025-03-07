@@ -150,6 +150,7 @@ PUT _index_template/my-weather-sensor-index-template
   }
 }
 ```
+%  TEST[continued]
 
 
 ## Create the TSDS [create-tsds]
@@ -182,12 +183,15 @@ POST metrics-weather_sensors-dev/_doc
   "humidity": 88.9
 }
 ```
+%  TEST[skip: The @timestamp value won’t match an accepted range in the TSDS]
 
 You can also manually create the TSDS using the [create data stream API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-create-data-stream). The TSDS’s name must still match one of your template’s index patterns.
 
 ```console
 PUT _data_stream/metrics-weather_sensors-dev
 ```
+%  TEST[setup:tsds_template]
+%  TEST[teardown:tsds_cleanup]
 
 
 ## Secure the TSDS [secure-tsds]

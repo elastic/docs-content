@@ -20,6 +20,7 @@ The following snippet configures an inline `script` condition that always return
   "script" : "return true"
 }
 ```
+%  NOTCONSOLE
 
 This example defines a script as a simple string. This format is actually a shortcut for defining an [inline](#condition-script-inline) script. The formal definition of a script is an object that specifies the script type and optional language and parameter values. If the `lang` attribute is omitted, the language defaults to `painless`. Elasticsearch supports two types of scripts, [inline](#condition-script-inline) and [stored](#condition-script-stored).
 
@@ -36,6 +37,7 @@ For example, the following snippet shows a formal definition of an `inline` scri
   }
 }
 ```
+%  NOTCONSOLE
 
 ## Inline scripts [condition-script-inline]
 
@@ -48,6 +50,7 @@ Inline scripts are scripts that are defined in the condition itself. The followi
   }
 }
 ```
+%  NOTCONSOLE
 
 ## Stored scripts [condition-script-stored]
 
@@ -60,6 +63,7 @@ Stored scripts refer to scripts that were [stored](../../scripting/modules-scrip
   }
 }
 ```
+%  NOTCONSOLE
 
 As with [inline](#condition-script-inline) scripts, you can also specify the script language and parameters:
 
@@ -72,6 +76,7 @@ As with [inline](#condition-script-inline) scripts, you can also specify the scr
   }
 }
 ```
+%  NOTCONSOLE
 
 ## Accessing the watch payload [accessing-watch-payload]
 
@@ -102,12 +107,14 @@ For example, the following snippet defines a watch that uses a [`search` input](
   }
 }
 ```
+%  NOTCONSOLE
 
 When you’re using a scripted condition to evaluate an Elasticsearch response, keep in mind that the fields in the response are no longer in their native data types. For example, the `@timestamp` in the response is a string, rather than a `DateTime`. To compare the response `@timestamp` against the `ctx.execution_time`, you need to parse the `@timestamp` string into a `ZonedDateTime`. For example:
 
 ```js
 java.time.ZonedDateTime.parse(@timestamp)
 ```
+%  NOTCONSOLE
 
 You can reference the following variables in the watch context:
 

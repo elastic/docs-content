@@ -41,7 +41,7 @@ Which returns a list of statuses like this:
 
 1. The user submitted query.
 2. Time the query has been running.
-
+%  NOTCONSOLE
 
 You can use this to find long running queries and, if you need to, cancel them with the [task cancellation API](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-tasks#task-cancellation):
 

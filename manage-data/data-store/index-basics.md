@@ -52,6 +52,7 @@ A simple {{es}} document might look like this:
   }
 }
 ```
+%  NOTCONSOLE
 
 ### Metadata fields [elasticsearch-intro-documents-fields-data-metadata]
 

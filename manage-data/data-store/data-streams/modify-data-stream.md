@@ -340,6 +340,7 @@ Follow these steps:
     ```console
     PUT /_data_stream/new-data-stream
     ```
+    %  TEST[s/new-data-stream/new-data-stream-two/]
 
 4. If you do not want to mix new and old data in your new data stream, pause the indexing of new documents. While mixing old and new data is safe, it could interfere with data retention. See [Mixing new and old data in a data stream](../data-streams/modify-data-stream.md#data-stream-mix-new-old-data).
 5. If you use {{ilm-init}} to [automate rollover](../../lifecycle/index-lifecycle-management/tutorial-automate-rollover.md), reduce the {{ilm-init}} poll interval. This ensures the current write index doesn’t grow too large while waiting for the rollover check. By default, {{ilm-init}} checks rollover conditions every 10 minutes.
@@ -498,4 +499,5 @@ POST _aliases
   ]
 }
 ```
+%  TEST[s/^/PUT _data_stream/logs-nginx.access-prod\nPUT _data_stream/logs-my_app-default\n/]
 

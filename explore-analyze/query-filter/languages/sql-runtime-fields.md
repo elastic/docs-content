@@ -28,6 +28,7 @@ POST _sql?format=txt
   """
 }
 ```
+%  TEST[setup:library]
 
 The API returns:
 
@@ -36,4 +37,5 @@ The API returns:
 ---------------+---------------+---------------+------------------------+-------------------
 Frank Herbert  |Dune           |604            |1965-06-01T00:00:00.000Z|TUESDAY
 ```
+%  TESTRESPONSE[non_json]
 

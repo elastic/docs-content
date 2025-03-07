@@ -87,6 +87,7 @@ The response will look like this:
   "acknowledged": true
 }
 ```
+%  TESTRESPONSE[skip:the result is for illustrating purposes only]
 
 Verify {{ilm}} is now running:
 
@@ -101,6 +102,8 @@ The response will look like this:
   "operation_mode": "RUNNING"
 }
 ```
+%  TESTRESPONSE[skip:the result is for illustrating purposes only]
+
 ::::::
 
 :::::::
@@ -175,6 +178,7 @@ The response will look like this:
   "acknowledged": true
 }
 ```
+%  TESTRESPONSE[skip:the result is for illustrating purposes only]
 
 Verify the {{slm}} is now running:
 
@@ -189,6 +193,8 @@ The response will look like this:
   "operation_mode": "RUNNING"
 }
 ```
+%  TESTRESPONSE[skip:the result is for illustrating purposes only]
+
 ::::::
 
 :::::::

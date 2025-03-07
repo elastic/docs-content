@@ -15,7 +15,7 @@ If you use {{es}} as a search backend, you can pass user input from a search bar
 If you use {{es}} for a custom application, search templates let you change your searches without modifying your app’s code.
 
 
-### Create a search template [create-search-template] 
+### Create a search template [create-search-template]
 
 To create or update a search template, use the [create stored script API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-put-script).
 
@@ -46,7 +46,7 @@ PUT _scripts/my-search-template
 {{es}} stores search templates as Mustache [scripts](../../explore-analyze/scripting.md) in the cluster state. {{es}} compiles search templates in the `template` script context. Settings that limit or disable scripts also affect search templates.
 
 
-### Validate a search template [validate-search-template] 
+### Validate a search template [validate-search-template]
 
 $$$_validating_templates$$$
 To test a template with different `params`, use the [render search template API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-render-search-template).
@@ -62,6 +62,7 @@ POST _render/template
   }
 }
 ```
+%  TEST[continued]
 
 When rendered, the template outputs a [search request body](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search).
 
@@ -100,9 +101,10 @@ POST _render/template
   }
 }
 ```
+%  TEST[continued]
 
 
-### Run a templated search [run-templated-search] 
+### Run a templated search [run-templated-search]
 
 To run a search with a search template, use the [search template API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search-template). You can specify different `params` with each request.
 
@@ -117,6 +119,7 @@ GET my-index/_search/template
   }
 }
 ```
+%  TEST[continued]
 
 The response uses the same properties as the [search API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search)'s response.
 
@@ -149,9 +152,10 @@ The response uses the same properties as the [search API](https://www.elastic.co
   }
 }
 ```
+%  TESTRESPONSE[s/"took": 36/"took": "$body.took"/]
 
 
-### Run multiple templated searches [run-multiple-templated-searches] 
+### Run multiple templated searches [run-multiple-templated-searches]
 
 To run multiple templated searches with a single request, use the [multi search template API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-msearch-template). These requests often have less overhead and faster speeds than multiple individual searches.
 
@@ -162,33 +166,38 @@ GET my-index/_msearch/template
 { }
 { "id": "my-other-search-template", "params": { "query_type": "match_all" }}
 ```
+%  TEST[continued]
+%  TEST[s/my-other-search-template/my-search-template/]
 
 
-### Get search templates [get-search-templates] 
+### Get search templates [get-search-templates]
 
 To retrieve a search template, use the [get stored script API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-get-script).
 
 ```console
 GET _scripts/my-search-template
 ```
+%  TEST[continued]
 
 To get a list of all search templates and other stored scripts, use the [cluster state API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-state).
 
 ```console
 GET _cluster/state/metadata?pretty&filter_path=metadata.stored_scripts
 ```
+%  TEST[continued]
 
 
-### Delete a search template [delete-search-template] 
+### Delete a search template [delete-search-template]
 
 To delete a search template, use the [delete stored script API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-delete-script).
 
 ```console
 DELETE _scripts/my-search-template
 ```
+%  TEST[continued]
 
 
-### Set default values [search-template-set-default-values] 
+### Set default values [search-template-set-default-values]
 
 To set a default value for a variable, use the following syntax:
 
@@ -217,7 +226,7 @@ POST _render/template
 ```
 
 
-### URL encode strings [search-template-url-encode-strings] 
+### URL encode strings [search-template-url-encode-strings]
 
 Use the `{{#url}}` function to URL encode a string.
 
@@ -253,7 +262,7 @@ The template renders as:
 ```
 
 
-### Concatenate values [search-template-concatenate-values] 
+### Concatenate values [search-template-concatenate-values]
 
 Use the `{{#join}}` function to concatenate array values as a comma-delimited string. For example, the following template concatenates two email addresses.
 
@@ -332,7 +341,7 @@ The template renders as:
 ```
 
 
-### Convert to JSON [search-template-convert-json] 
+### Convert to JSON [search-template-convert-json]
 
 Use the `{{#toJson}}` function to convert a variable value to its JSON representation.
 
@@ -443,7 +452,7 @@ The template renders as:
 ```
 
 
-### Use conditions [search-template-use-conditions] 
+### Use conditions [search-template-use-conditions]
 
 To create if conditions, use the following syntax:
 
@@ -549,7 +558,7 @@ POST _render/template
 The mustache templating language defines various tag types you can use within templates. The following sections describe some of these tag types and provide examples of using them in {{es}} search templates.
 
 
-### Mustache variables [search-template-mustache-variable] 
+### Mustache variables [search-template-mustache-variable]
 
 Mustache tags are typically enclosed in double curly brackets. A mustache variable: `{{my-variable}}` is a type of mustache tag. When you run a templated search, {{es}} replaces these variables with values from `params`.
 
@@ -586,6 +595,7 @@ POST _render/template
   }
 }
 ```
+%  TEST[continued]
 
 When rendered, the `{{query_string}}` in `message` is replaced with `hello world` passed in `params`.
 
@@ -617,6 +627,7 @@ POST _render/template
   }
 }
 ```
+%  TEST[continued]
 
 When rendered, template outputs as:
 
@@ -635,7 +646,7 @@ When rendered, template outputs as:
 ```
 
 
-### Sections [search-template-sections] 
+### Sections [search-template-sections]
 
 Sections are also a type of Mustache tags. You can use `sections` in your search template with a nested or unnested object. A section begins with `{{#my-section-variable}}` and ends with `{{/my-section-variable}}`.
 
@@ -684,7 +695,7 @@ The template renders as:
 ```
 
 
-#### Lists [search-template-lists] 
+#### Lists [search-template-lists]
 
 You can pass a list of objects and loop over each item in your search template.
 
@@ -726,6 +737,7 @@ POST _render/template
   }
 }
 ```
+%  TEST[continued]
 
 When rendered, template outputs:
 
@@ -742,7 +754,7 @@ When rendered, template outputs:
 }
 ```
 
-::::{note} 
+::::{note}
 The above will cause a trailing comma issue, which causes invalid JSON. A workaround would be to include an [inverted section](#search-template-inverted-section) and adding a variable to make sure it’s the last item in the array.
 ::::
 
@@ -787,6 +799,7 @@ POST _render/template
   }
 }
 ```
+%  TEST[continued]
 
 When rendered the template outputs:
 
@@ -804,14 +817,14 @@ When rendered the template outputs:
 ```
 
 
-#### Lambdas [search-template-lambdas] 
+#### Lambdas [search-template-lambdas]
 
 {{es}} has pre-built custom functions to support converting the text into a specific format.
 
 To Learn more about usage of mustache lambdas, check out the examples in [Url encode strings](#search-template-url-encode-strings), [Concatenate values](#search-template-concatenate-values), and [Convert to json](#search-template-convert-json).
 
 
-### Inverted sections [search-template-inverted-section] 
+### Inverted sections [search-template-inverted-section]
 
 Inverted sections are useful when you want to set a value once.
 
@@ -875,7 +888,7 @@ When rendered, template output:
 ```
 
 
-### Set delimiter [search-template-set-delimiter] 
+### Set delimiter [search-template-set-delimiter]
 
 You can change the default delimiter: double curly brackets `{{my-variable}}` to any custom delimiter in your search template.
 
@@ -913,6 +926,7 @@ POST _render/template
   }
 }
 ```
+%  TEST[continued]
 
 When rendered, template outputs:
 
@@ -929,7 +943,7 @@ When rendered, template outputs:
 ```
 
 
-### Unsupported features [search-template-unsupported-features] 
+### Unsupported features [search-template-unsupported-features]
 
 The following mustache features are not supported in {{es}} search templates:
 

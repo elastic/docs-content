@@ -408,6 +408,7 @@ POST _inference/chat_completion/openai-completion/_stream
     ]
 }
 ```
+%  TEST[skip:TBD]
 
 The following example performs a chat completion using an Assistant message with `tool_calls`.
 
@@ -437,6 +438,7 @@ POST _inference/chat_completion/openai-completion/_stream
     ]
 }
 ```
+%  TEST[skip:TBD]
 
 1. Each tool call needs a corresponding Tool message.
 2. The corresponding Tool message.
@@ -483,6 +485,7 @@ POST _inference/chat_completion/openai-completion/_stream
     }
 }
 ```
+%  TEST[skip:TBD]
 
 The API returns the following response when a request is made to the OpenAI service:
 
@@ -504,6 +507,7 @@ data: {"chat_completion":{"id":"chatcmpl-Ae0TWsy2VPnSfBbv5UztnSdYUMFP3","choices
 event: message
 data: [DONE]
 ```
+%  NOTCONSOLE
 
 1. The last object message of the stream contains the token usage information.
 

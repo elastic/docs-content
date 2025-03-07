@@ -80,6 +80,7 @@ PUT /_autoscaling/policy/my_autoscaling_policy
   }
 }
 ```
+%  TEST
 
 The API returns the following result:
 
@@ -157,6 +158,7 @@ PUT /_autoscaling/policy/my_autoscaling_policy
   }
 }
 ```
+%  TEST
 
 The API returns the following result:
 
@@ -213,6 +215,7 @@ PUT /_autoscaling/policy/my_autoscaling_policy
   }
 }
 ```
+%  TEST
 
 The API returns the following result:
 

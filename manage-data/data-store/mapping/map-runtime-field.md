@@ -115,6 +115,7 @@ PUT my-index-000001/_mapping
  }
 }
 ```
+% TEST[continued]
 
 :::::{admonition} Downstream impacts
 Updating or removing a runtime field while a dependent query is running can return inconsistent results. Each shard might have access to different versions of the script, depending on when the mapping change takes effect.

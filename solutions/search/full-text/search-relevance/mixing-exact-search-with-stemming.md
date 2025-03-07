@@ -67,6 +67,7 @@ GET index/_search
   }
 }
 ```
+%  TEST[continued]
 
 ```console-result
 {
@@ -105,6 +106,7 @@ GET index/_search
   }
 }
 ```
+%  TESTRESPONSE[s/"took": 2,/"took": "$body.took",/]
 
 On the other hand, searching for `ski` on `body.exact` would only return document `1` since the analysis chain of `body.exact` does not perform stemming.
 
@@ -119,6 +121,7 @@ GET index/_search
   }
 }
 ```
+%  TEST[continued]
 
 ```console-result
 {
@@ -149,6 +152,7 @@ GET index/_search
   }
 }
 ```
+%  TESTRESPONSE[s/"took": 1,/"took": "$body.took",/]
 
 This is not something that is easy to expose to end users, as we would need to have a way to figure out whether they are looking for an exact match or not and redirect to the appropriate field accordingly. Also what to do if only parts of the query need to be matched exactly while other parts should still take stemming into account?
 
@@ -166,6 +170,7 @@ GET index/_search
   }
 }
 ```
+%  TEST[continued]
 
 ```console-result
 {
@@ -196,6 +201,7 @@ GET index/_search
   }
 }
 ```
+%  TESTRESPONSE[s/"took": 2,/"took": "$body.took",/]
 
 In the above case, since `ski` was in-between quotes, it was searched on the `body.exact` field due to the `quote_field_suffix` parameter, so only document `1` matched. This allows users to mix exact search with stemmed search as they like.
 

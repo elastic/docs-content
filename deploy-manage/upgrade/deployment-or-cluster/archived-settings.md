@@ -48,6 +48,7 @@ Use the following [get index settings](https://www.elastic.co/docs/api/doc/elast
 ```console
 GET */_settings?flat_settings=true&filter_path=**.settings.archived*
 ```
+%  TEST[s/^/PUT my-index\n/]
 
 To remove any archived index settings, use the following [indices update settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-settings) request.
 
@@ -57,4 +58,5 @@ PUT /my-index/_settings
   "archived.*": null
 }
 ```
+%  TEST[s/^/PUT my-index\n/]
 

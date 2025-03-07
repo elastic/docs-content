@@ -14,7 +14,7 @@ To update the lifecycle of an existing data stream you do the following actions:
 2. [Remove lifecycle for a data stream](#delete-lifecycle)
 
 
-## Set a data stream’s lifecycle [set-lifecycle] 
+## Set a data stream’s lifecycle [set-lifecycle]
 
 To add or to change the retention period of your data stream you can use the [PUT lifecycle API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-data-lifecycle).
 
@@ -44,6 +44,7 @@ The changes in the lifecycle are applied on all backing indices of the data stre
 ```console
 GET .ds-my-data-stream-*/_lifecycle/explain
 ```
+%  TEST[continued]
 
 The response will look like:
 
@@ -87,22 +88,26 @@ The response will look like:
 8. The time that has passed since this index was [rolled over](../index-lifecycle-management/rollover.md).
 9. The time that will be used to determine when it’s safe to delete this index and all its data.
 10. The data retention for this index as well is at least 30 days, as it was recently updated.
+%  TEST[continued]
+%  TESTRESPONSE[skip:the result is for illustrating purposes only]
 
 
-
-## Remove lifecycle for a data stream [delete-lifecycle] 
+## Remove lifecycle for a data stream [delete-lifecycle]
 
 To remove the lifecycle of a data stream you can use the [delete lifecycle API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-delete-data-lifecycle). As consequence, the maintenance operations that were applied by the lifecycle will no longer be applied to the data stream and all its backing indices. For example:
 
 ```console
 DELETE _data_stream/my-data-stream/_lifecycle
 ```
+%  TEST[continued]
 
 You can then use the [explain API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-explain-data-lifecycle) again to see that the indices are no longer managed.
 
 ```console
 GET .ds-my-data-stream-*/_lifecycle/explain
 ```
+%  TEST[continued]
+%  TEST[teardown:data_stream_cleanup]
 
 ```console-result
 {
@@ -123,5 +128,5 @@ GET .ds-my-data-stream-*/_lifecycle/explain
 2. Indication that the index is not managed by the data stream lifecycle.
 3. The name of another backing index.
 4. Indication that the index is not managed by the data stream lifecycle.
-
+%  TESTRESPONSE[skip:the result is for illustrating purposes only]
 

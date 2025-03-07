@@ -199,6 +199,8 @@ GET my-index/_search
    }
 }
 ```
+%  TEST[skip:TBD]
+
 ::::::
 
 ::::::{tab-item} Dense vector models
@@ -220,6 +222,8 @@ GET my-index/_search
   }
 }
 ```
+%  TEST[skip:TBD]
+
 ::::::
 
 :::::::
@@ -266,6 +270,8 @@ GET my-index/_search
   }
 }
 ```
+%  TEST[skip:TBD]
+
 ::::::
 
 ::::::{tab-item} Dense vector models
@@ -308,6 +314,8 @@ GET my-index/_search
   }
 }
 ```
+%  TEST[skip:TBD]
+
 ::::::
 
 :::::::

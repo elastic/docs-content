@@ -63,6 +63,7 @@ POST my-index-000001/_bulk?refresh=true
 {"index":{}}
 {"timestamp": 1516297294000, "temperature": 202, "voltage": 4.0, "node": "c"}
 ```
+%  TEST[continued]
 
 After talking to a few site engineers, you realize that the sensors should be reporting at least *double* the current values, but potentially higher. You create a runtime field named `voltage_corrected` that retrieves the current voltage and multiplies it by `2`:
 
@@ -84,6 +85,7 @@ PUT my-index-000001/_mapping
   }
 }
 ```
+%  TEST[continued]
 
 You retrieve the calculated values using the [`fields`](elasticsearch://reference/elasticsearch/rest-apis/retrieve-selected-fields.md) parameter on the `_search` API:
 
@@ -97,6 +99,8 @@ GET my-index-000001/_search
   "size": 2
 }
 ```
+%  TEST[continued]
+%  TEST[s/_search/_search?filter_path=hits/]
 
 After reviewing the sensor data and running some tests, you determine that the multiplier for reported sensor data should be `4`. To gain greater performance, you decide to index the `voltage_corrected` runtime field with the new `multiplier` parameter.
 
@@ -156,6 +160,7 @@ POST my-index-000001/_bulk?refresh=true
 { "index": {}}
 { "timestamp": 1516297294000, "temperature": 202, "voltage": 4.0, "node": "c"}
 ```
+%  TEST[continued]
 
 You can now retrieve calculated values in a search query, and find documents based on precise values. The following range query returns all documents where the calculated `voltage_corrected` is greater than or equal to `16`, but less than or equal to `20`. Again, use the [`fields`](elasticsearch://reference/elasticsearch/rest-apis/retrieve-selected-fields.md) parameter on the `_search` API to retrieve the fields you want:
 
@@ -174,6 +179,8 @@ POST my-index-000001/_search
   "fields": ["voltage_corrected", "node"]
 }
 ```
+%  TEST[continued]
+%  TEST[s/_search/_search?filter_path=hits/]
 
 The response includes the `voltage_corrected` field for the documents that match the range query, based on the calculated value of the included script:
 
@@ -228,4 +235,6 @@ The response includes the `voltage_corrected` field for the documents that match
   }
 }
 ```
+%  TESTRESPONSE[s/"_id" : "yoSLrHgBdg9xpPrUZz_P"/"_id": $body.hits.hits.0._id/]
+%  TESTRESPONSE[s/"_id" : "y4SLrHgBdg9xpPrUZz_P"/"_id": $body.hits.hits.1._id/]
 

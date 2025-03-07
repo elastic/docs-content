@@ -43,12 +43,15 @@ PUT _application/search_application/my_search_application
   "indices": ["index1", "index2"]
 }
 ```
+%  TEST[warning:Using default search application template which is subject to change. We recommend storing a template to avoid breaking changes.]
 
 You can then use the [get search application](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search-application-get) API call to view your newly created search application, which will also include the default template that was created for you:
 
 ```console
 GET _application/search_application/my_search_application
 ```
+%  TEST[continued]
+%  TEST[warning:Using default search application template which is subject to change. We recommend storing a template to avoid breaking changes.]
 
 In this case, the response would be:
 
@@ -80,6 +83,7 @@ In this case, the response would be:
   }
 }
 ```
+%  TESTRESPONSE[s/"updated_at_millis": 1715802354482/"updated_at_millis": $body.$_path/]
 
 The default template is very minimal:
 
@@ -103,6 +107,7 @@ The default template is very minimal:
   }
 }
 ```
+%  TEST[skip:This is not a console result but NOTCONSOLE annotation by itself still fails the test]
 
 This may be useful for initial exploration of search templates, but you’ll likely want to update this.
 
@@ -118,6 +123,7 @@ You can use the [render search application query](https://www.elastic.co/docs/ap
 ```console
 POST _application/search_application/my_search_application/_render_query
 ```
+%  TEST[continued]
 
 will return:
 
@@ -132,6 +138,7 @@ will return:
   }
 }
 ```
+%  TEST[continued]
 
 This uses the default parameters that were defined with the template. You can also specify one or more parameters to the render call, for example:
 
@@ -143,6 +150,7 @@ POST _application/search_application/my_search_application/_render_query
   }
 }
 ```
+%  TEST[continued]
 
 will return:
 
@@ -157,6 +165,7 @@ will return:
   }
 }
 ```
+%  TEST[continued]
 
 In this case, the `{{query_string}}` parameter has been replaced with the value `rock climbing`, and the `{{default_field}}` parameter was not specified so used the default value of `*`.
 
@@ -165,6 +174,7 @@ When you actually perform a search with no parameters, it will execute the under
 ```console
 POST _application/search_application/my_search_application/_search
 ```
+%  TEST[continued]
 
 Searching with the `query_string` and/or `default_field` parameters will perform a [`query_string`](elasticsearch://reference/query-languages/query-dsl-query-string-query.md) query.
 
@@ -196,6 +206,7 @@ POST _application/search_application/my_search_application/_search
   }
 }
 ```
+%  TEST[continued]
 
 In this example, we’ve overridden the `query_string` parameter’s default value of `*`. Since we didn’t specify `default_field` the value of this parameter will still be `*`.
 
@@ -278,6 +289,7 @@ POST _application/search_application/my_search_application/_search
   }
 }
 ```
+%  TEST[continued]
 
 The `text_fields` parameters can be overridden with new/different fields and boosts to experiment with the best configuration for your use case. This template also supports pagination and `explain` via parameters.
 
@@ -366,6 +378,7 @@ POST _application/search_application/my-search-app/_search
   }
 }
 ```
+%  TEST[skip:ELSER requires inference]
 
 
 ### Text search + ELSER [search-application-api-catchall-template]
@@ -476,6 +489,7 @@ POST _application/search_application/my_search_application/_search
   }
 }
 ```
+%  TEST[skip:ELSER requires inference]
 
 An ELSER search query using this template will look like the following example:
 
@@ -492,6 +506,7 @@ POST _application/search_application/my_search_application/_search
   }
 }
 ```
+%  TEST[skip:ELSER requires inference]
 
 A combined text search and ELSER search query using this template will look like the following example:
 
@@ -511,6 +526,7 @@ POST _application/search_application/my_search_application/_search
   }
 }
 ```
+%  TEST[skip:ELSER requires inference]
 
 ::::{tip}
 Text search results and ELSER search results are expected to have significantly different scores in some cases, which makes ranking challenging. To find the best search result mix for your dataset, we suggest experimenting with the boost values provided in the example template:
@@ -529,6 +545,7 @@ Finally, a parameterless search using this template would fall back to a default
 ```console
 POST _application/search_application/my_search_application/_search
 ```
+%  TEST[continued]
 
 
 ### ELSER search [search-application-api-elser-template]
@@ -597,6 +614,7 @@ POST _application/search_application/my_search_application/_search
     }
   }
 ```
+%  TEST[skip:ELSER requires inference]
 
 
 ### kNN search [search-applications-knn-template]
@@ -660,6 +678,7 @@ POST _application/search_application/my_search_application/_search
   }
 }
 ```
+%  TEST[continued]
 
 A template supporting approximate kNN search will look like the following example:
 
@@ -709,4 +728,5 @@ POST _application/search_application/my_search_application/_search
   }
 }
 ```
+%  TEST[continued]
 

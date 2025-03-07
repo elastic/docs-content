@@ -100,7 +100,7 @@ PUT _inference/text_embedding/hugging-face-embeddings
 
 1. A valid Hugging Face access token. You can find on the [settings page of your account](https://huggingface.co/settings/tokens).
 2. The {{infer}} endpoint URL you created on Hugging Face.
-
+%  TEST[skip:TBD]
 
 Create a new {{infer}} endpoint on [the Hugging Face endpoint page](https://ui.endpoints.huggingface.co/) to get an endpoint URL. Select the model you want to use on the new endpoint creation page - for example `intfloat/e5-small-v2` - then select the `Sentence Embeddings` task under the Advanced configuration section. Create the endpoint. Copy the URL after the endpoint initialization has been finished.
 

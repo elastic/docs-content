@@ -26,6 +26,7 @@ PUT _snapshot/my_read_only_url_repository
   }
 }
 ```
+%  TEST[skip:no access to url file path]
 
 ## Repository settings [read-only-url-repository-settings]
 

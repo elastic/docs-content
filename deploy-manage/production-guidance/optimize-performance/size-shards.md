@@ -89,6 +89,7 @@ To see the current size of your shards, use the [cat shards API](https://www.ela
 ```console
 GET _cat/shards?v=true&h=index,prirep,shard,store&s=prirep,store&bytes=gb
 ```
+%  TEST[setup:my_index]
 
 The `pri.store.size` value shows the combined size of all primary shards for the index.
 
@@ -97,6 +98,9 @@ index                                 prirep shard store
 .ds-my-data-stream-2099.05.06-000001  p      0      50gb
 ...
 ```
+%  TESTRESPONSE[non_json]
+%  TESTRESPONSE[s/.ds-my-data-stream-2099.05.06-000001/my-index-000001/]
+%  TESTRESPONSE[s/50gb/.*/]
 
 If an index’s shard is experiencing degraded performance from surpassing the recommended 50GB size, you may consider fixing the index’s shards' sizing. Shards are immutable and therefore their size is fixed in place, so indices must be copied with corrected settings. This requires first ensuring sufficient disk to copy the data. Afterwards, you can copy the index’s data with corrected settings via one of the following options:
 
@@ -123,12 +127,14 @@ To check the configured size of each node’s heap, use the [cat nodes API](http
 ```console
 GET _cat/nodes?v=true&h=heap.max
 ```
+%  TEST[setup:my_index]
 
 You can use the [cat shards API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-shards) to check the number of shards per node.
 
 ```console
 GET _cat/shards?v=true
 ```
+%  TEST[setup:my_index]
 
 
 ### Add enough nodes to stay within the cluster shard limits [shard-count-per-node-recommendation]
@@ -148,6 +154,7 @@ Each node in the cluster has a copy of the [cluster state](https://www.elastic.c
 ```console
 GET _cluster/stats?human&filter_path=indices.mappings.total_deduplicated_mapping_size*
 ```
+%  TEST[setup:node]
 
 This will show you information like in this example output:
 
@@ -161,6 +168,8 @@ This will show you information like in this example output:
   }
 }
 ```
+%  TESTRESPONSE[s/"total_deduplicated_mapping_size": "1gb"/"total_deduplicated_mapping_size": $body.$_path/]
+%  TESTRESPONSE[s/"total_deduplicated_mapping_size_in_bytes": 1073741824/"total_deduplicated_mapping_size_in_bytes": $body.$_path/]
 
 
 #### Retrieving heap size and field mapper overheads [_retrieving_heap_size_and_field_mapper_overheads]
@@ -173,6 +182,7 @@ You can use the [Nodes stats API](https://www.elastic.co/docs/api/doc/elasticsea
 ```console
 GET _nodes/stats?human&filter_path=nodes.*.name,nodes.*.indices.mappings.total_estimated_overhead*,nodes.*.jvm.mem.heap_max*
 ```
+%  TEST[setup:node]
 
 For each node, this will show you information like in this example output:
 
@@ -197,6 +207,12 @@ For each node, this will show you information like in this example output:
   }
 }
 ```
+%  TESTRESPONSE[s/"USpTGYaBSIKbgSUJR2Z9lg"/$node_name/]
+%  TESTRESPONSE[s/"name": "node-0"/"name": $body.$_path/]
+%  TESTRESPONSE[s/"total_estimated_overhead": "1gb"/"total_estimated_overhead": $body.$_path/]
+%  TESTRESPONSE[s/"total_estimated_overhead_in_bytes": 1073741824/"total_estimated_overhead_in_bytes": $body.$_path/]
+%  TESTRESPONSE[s/"heap_max": "4gb"/"heap_max": $body.$_path/]
+%  TESTRESPONSE[s/"heap_max_in_bytes": 4294967296/"heap_max_in_bytes": $body.$_path/]
 
 
 #### Consider additional heap overheads [_consider_additional_heap_overheads]
@@ -233,6 +249,7 @@ PUT my-index-000001/_settings
   }
 }
 ```
+%  TEST[setup:my_index]
 
 
 ### Avoid unnecessary mapped fields [avoid-unnecessary-fields]
@@ -263,12 +280,14 @@ You can find these empty indices using the [cat count API](https://www.elastic.c
 ```console
 GET _cat/count/my-index-000001?v=true
 ```
+%  TEST[setup:my_index]
 
 Once you have a list of empty indices, you can delete them using the [delete index API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-delete). You can also delete any other unneeded indices.
 
 ```console
 DELETE my-index-000001
 ```
+%  TEST[setup:my_index]
 
 
 ### Force merge during off-peak hours [force-merge-during-off-peak-hours]
@@ -278,6 +297,7 @@ If you no longer write to an index, you can use the [force merge API](https://ww
 ```console
 POST my-index-000001/_forcemerge
 ```
+%  TEST[setup:my_index]
 
 
 ### Shrink an existing index to fewer shards [shrink-existing-index-to-fewer-shards]
@@ -364,6 +384,7 @@ If you encounter this problem, try to mitigate it by using the [Force Merge API]
 ```console
 POST my-index-000001/_forcemerge?only_expunge_deletes=true
 ```
+%  TEST[setup:my_index]
 
 This will launch an asynchronous task which can be monitored via the [Task Management API](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-tasks).
 

@@ -120,6 +120,7 @@ PUT _inference/text_embedding/google_vertex_ai_embeddings
     }
 }
 ```
+%  TEST[skip:TBD]
 
 The next example shows how to create an {{infer}} endpoint called `google_vertex_ai_rerank` to perform a `rerank` task type.
 
@@ -133,4 +134,5 @@ PUT _inference/rerank/google_vertex_ai_rerank
     }
 }
 ```
+%  TEST[skip:TBD]
 

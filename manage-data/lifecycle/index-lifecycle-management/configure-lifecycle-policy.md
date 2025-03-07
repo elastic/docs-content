@@ -190,7 +190,7 @@ PUT mylogs-pre-ilm*/_settings <1>
 ```
 
 1. Updates all indices with names that start with `mylogs-pre-ilm`
-
+%  TEST[continued]
 
 
 ### Switch lifecycle policies [switch-lifecycle-policies]
@@ -212,12 +212,14 @@ To switch an index’s lifecycle policy, follow these steps:
     ```console
     GET logs-my_app-default
     ```
+    %  TEST[continued]
 
     You can then change the index as needed. For example, you can re-open any closed indices using the [open index API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-open).
 
     ```console
     POST logs-my_app-default/_open
     ```
+    %  TEST[continued]
 
 3. Assign a new policy using the [update settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-settings). Target a data stream or alias to assign a policy to all its indices.
 

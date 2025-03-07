@@ -20,3 +20,4 @@ There are no attributes to specify for the `never` condition. To use the it, you
   "never" : {}
 }
 ```
+%  NOTCONSOLE

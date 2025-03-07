@@ -163,6 +163,7 @@ PUT _inference/completion/alibabacloud_ai_search_completion
     }
 }
 ```
+%  TEST[skip:TBD]
 
 The next example shows how to create an {{infer}} endpoint called `alibabacloud_ai_search_rerank` to perform a `rerank` task type.
 
@@ -178,6 +179,7 @@ PUT _inference/rerank/alibabacloud_ai_search_rerank
     }
 }
 ```
+%  TEST[skip:TBD]
 
 The following example shows how to create an {{infer}} endpoint called `alibabacloud_ai_search_sparse` to perform a `sparse_embedding` task type.
 
@@ -193,6 +195,7 @@ PUT _inference/sparse_embedding/alibabacloud_ai_search_sparse
     }
 }
 ```
+%  TEST[skip:TBD]
 
 The following example shows how to create an {{infer}} endpoint called `alibabacloud_ai_search_embeddings` to perform a `text_embedding` task type.
 
@@ -208,4 +211,5 @@ PUT _inference/text_embedding/alibabacloud_ai_search_embeddings
     }
 }
 ```
+%  TEST[skip:TBD]
 

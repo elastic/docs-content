@@ -139,6 +139,7 @@ PUT _inference/text_embedding/amazon_bedrock_embeddings
     }
 }
 ```
+%  TEST[skip:TBD]
 
 The next example shows how to create an {{infer}} endpoint called `amazon_bedrock_completion` to perform a `completion` task type.
 
@@ -155,4 +156,5 @@ PUT _inference/completion/amazon_bedrock_completion
     }
 }
 ```
+%  TEST[skip:TBD]
 

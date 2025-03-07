@@ -13,6 +13,7 @@ All {{transform}} endpoints have the following base:
 ```js
 _transform/
 ```
+%  NOTCONSOLE
 
 * [Create {{transforms}}](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-transform-put-transform)
 * [Delete {{transforms}}](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-transform-delete-transform)

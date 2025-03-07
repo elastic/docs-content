@@ -37,6 +37,7 @@ PUT /networks/_doc/1?refresh=wait_for
   "department": "OPS"
 }
 ```
+%  TEST[continued]
 
 Use the create enrich policy API to create an enrich policy with the `range` policy type. This policy must include:
 
@@ -56,12 +57,15 @@ PUT /_enrich/policy/networks-policy
   }
 }
 ```
+%  TEST[continued]
 
 Use the [execute enrich policy API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-enrich-execute-policy) to create an enrich index for the policy.
 
 ```console
 POST /_enrich/policy/networks-policy/_execute?wait_for_completion=false
 ```
+%  TEST[s/?wait_for_completion=false//]
+%  TEST[continued]
 
 Use the [create or update pipeline API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ingest-put-pipeline) to create an ingest pipeline. In the pipeline, add an [enrich processor](elasticsearch://reference/ingestion-tools/enrich-processor/enrich-processor.md) that includes:
 
@@ -85,6 +89,7 @@ PUT /_ingest/pipeline/networks_lookup
   ]
 }
 ```
+%  TEST[continued]
 
 Use the ingest pipeline to index a document. The incoming document should include the `field` specified in your enrich processor.
 
@@ -94,12 +99,14 @@ PUT /my-index-000001/_doc/my_id?pipeline=networks_lookup
   "ip": "10.100.34.1"
 }
 ```
+%  TEST[continued]
 
 To verify the enrich processor matched and appended the appropriate field data, use the [get API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-get) to view the indexed document.
 
 ```console
 GET /my-index-000001/_doc/my_id
 ```
+%  TEST[continued]
 
 The API returns the following response:
 
@@ -123,4 +130,5 @@ The API returns the following response:
   }
 }
 ```
+%  TESTRESPONSE[s/"_seq_no": \d+/"_seq_no" : $body._seq_no/ s/"_primary_term":1/"_primary_term" : $body._primary_term/]
 

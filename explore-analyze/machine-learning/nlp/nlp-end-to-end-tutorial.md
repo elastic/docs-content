@@ -97,6 +97,7 @@ Let’s say our photo comments look like this when they are uploaded as a docume
   ...
 }
 ```
+%  NOTCONSOLE
 
 We want to run our documents through an inference processor that uses the trained model we uploaded to determine if the comments are positive. To do this, we first need to set up an Elasticsearch index.
 
@@ -116,6 +117,7 @@ PUT search-photo-comments/_mapping
   }
 }
 ```
+%  NOTCONSOLE
 
 Now it’s time to create an inference pipeline.
 
@@ -144,12 +146,14 @@ POST search-photo-comments/_doc/my-new-doc?pipeline=search-photo-comments
   "_run_ml_inference": true
 }
 ```
+%  NOTCONSOLE
 
 Once the document is indexed, use the API to retrieve it and view the enriched data.
 
 ```js
 GET search-photo-comments/_doc/my-new-doc
 ```
+%  NOTCONSOLE
 
 ```js
 {
@@ -172,6 +176,7 @@ GET search-photo-comments/_doc/my-new-doc
   }
 }
 ```
+%  NOTCONSOLE
 
 The document has new fields with the enriched data. The `ml.inference.positivity_result` field is an object with the analysis from the machine learning model. The model we used predicted with 99.98% confidence that the analyzed text is positive.
 

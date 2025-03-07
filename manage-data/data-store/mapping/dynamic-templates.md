@@ -39,7 +39,7 @@ Dynamic templates are specified as an array of named objects:
 1. The template name can be any string value.
 2. The match conditions can include any of : `match_mapping_type`, `match`, `match_pattern`, `unmatch`, `path_match`, `path_unmatch`.
 3. The mapping that the matched field should use.
-
+%  NOTCONSOLE
 
 ## Validating dynamic templates [dynamic-templates-validation]
 
@@ -190,6 +190,7 @@ The `match_pattern` parameter adjusts the behavior of the `match` parameter to s
   "match_pattern": "regex",
   "match": "^profit_\d+$"
 ```
+%  NOTCONSOLE
 
 The following example matches all `string` fields whose name starts with `long_` (except for those which end with `_text`) and maps them as `long` fields:
 
@@ -355,6 +356,8 @@ PUT my-index-000001/_doc/2
   }
 }
 ```
+%  TEST[continued]
+%  TEST[catch:bad_request]
 
 
 ## Template variables [template-variables]
@@ -481,12 +484,14 @@ PUT my-index-000001/_doc/1
   "count":   5
 }
 ```
+% TEST[continued]
 
 When you view the mapping, you’ll see that the `english` field is a runtime field of type `keyword`:
 
 ```console
 GET my-index-000001/_mapping
 ```
+% TEST[continued]
 
 ```console-result
 {

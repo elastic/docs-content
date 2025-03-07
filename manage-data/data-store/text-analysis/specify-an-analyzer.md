@@ -119,6 +119,7 @@ GET my-index-000001/_search
   }
 }
 ```
+%  TEST[s/^/PUT my-index-000001\n/]
 
 
 ## Specify the search analyzer for a field [specify-search-field-analyzer]

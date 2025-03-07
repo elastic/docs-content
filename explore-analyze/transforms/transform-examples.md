@@ -11,12 +11,13 @@ mapped_pages:
 
 These examples demonstrate how to use {{transforms}} to derive useful insights from your data. All the examples use one of the [{{kib}} sample datasets](/explore-analyze/index.md). For a more detailed, step-by-step example, see [Tutorial: Transforming the eCommerce sample data](ecommerce-transforms.md).
 
-* [Finding your best customers](#example-best-customers)
-* [Finding air carriers with the most delays](#example-airline)
-* [Finding suspicious client IPs](#example-clientips)
-* [Finding the last log event for each IP address](#example-last-log)
-* [Finding client IPs that sent the most bytes to the server](#example-bytes)
-* [Getting customer name and email address by customer ID](#example-customer-names)
+- [Examples \[transform-examples\]](#examples-transform-examples)
+  - [Finding your best customers \[example-best-customers\]](#finding-your-best-customers-example-best-customers)
+  - [Finding air carriers with the most delays \[example-airline\]](#finding-air-carriers-with-the-most-delays-example-airline)
+  - [Finding suspicious client IPs \[example-clientips\]](#finding-suspicious-client-ips-example-clientips)
+  - [Finding the last log event for each IP address \[example-last-log\]](#finding-the-last-log-event-for-each-ip-address-example-last-log)
+  - [Finding client IPs that sent the most bytes to the server \[example-bytes\]](#finding-client-ips-that-sent-the-most-bytes-to-the-server-example-bytes)
+  - [Getting customer name and email address by customer ID \[example-customer-names\]](#getting-customer-name-and-email-address-by-customer-id-example-customer-names)
 
 ## Finding your best customers [example-best-customers]
 
@@ -57,6 +58,7 @@ POST _transform/_preview
 
 1. The destination index for the {{transform}}. It is ignored by `_preview`.
 2. Two `group_by` fields is selected. This means the {{transform}} contains a unique row per `user` and `customer_id` combination. Within this data set, both these fields are unique. By including both in the {{transform}}, it gives more context to the final results.
+%  TEST[skip:setup kibana sample data]
 
 ::::{note}
 In the example above, condensed JSON formatting is used for easier readability of the pivot object.
@@ -80,6 +82,7 @@ The preview {{transforms}} API enables you to see the layout of the {{transform}
     ]
   }
 ```
+%  NOTCONSOLE
 
 :::::
 
@@ -138,6 +141,7 @@ POST _transform/_preview
 2. The destination index for the {{transform}}. It is ignored by `_preview`.
 3. The data is grouped by the `Carrier` field which contains the airline name.
 4. This `bucket_script` performs calculations on the results that are returned by the aggregation. In this particular example, it calculates what percentage of travel time was taken up by delays.
+%  TEST[skip:setup kibana sample data]
 
 The preview shows you that the new index would contain data like this for each carrier:
 
@@ -155,6 +159,7 @@ The preview shows you that the new index would contain data like this for each c
   ]
 }
 ```
+%  NOTCONSOLE
 
 This {{transform}} makes it easier to answer questions such as:
 
@@ -227,18 +232,21 @@ PUT _transform/suspicious_client_ips
 3. The data is grouped by the `clientip` field.
 4. Filter aggregation that counts the occurrences of successful (`200`) responses in the `response` field. The following two aggregations (`error404` and `error5xx`) count the error responses by error codes, matching an exact value or a range of response codes.
 5. This `bucket_script` calculates the duration of the `clientip` access based on the results of the aggregation.
+%  TEST[skip:setup kibana sample data]
 
 After you create the {{transform}}, you must start it:
 
 ```console
 POST _transform/suspicious_client_ips/_start
 ```
+%  TEST[skip:setup kibana sample data]
 
 Shortly thereafter, the first results should be available in the destination index:
 
 ```console
 GET sample_weblogs_by_clientip/_search
 ```
+%  TEST[skip:setup kibana sample data]
 
 The search result shows you data like this for each client IP:
 
@@ -272,6 +280,7 @@ The search result shows you data like this for each client IP:
       }
     ]
 ```
+%  NOTCONSOLE
 
 ::::{note}
 Like other Kibana sample data sets, the web log sample dataset contains timestamps relative to when you installed it, including timestamps in the future. The {{ctransform}} will pick up the data points once they are in the past. If you installed the web log sample dataset some time ago, you can uninstall and reinstall it and the timestamps will change.
@@ -346,12 +355,14 @@ PUT _transform/last-log-from-clientip
 3. Sets the interval for the {{transform}} to check for changes in the source index.
 4. Contains the time field and delay settings used to synchronize the source and destination indices.
 5. Specifies the retention policy for the transform. Documents that are older than the configured value will be removed from the destination index.
+%  TEST[skip:setup kibana sample data]
 
 After you create the {{transform}}, start it:
 
 ```console
 POST _transform/last-log-from-clientip/_start
 ```
+%  TEST[skip:setup kibana sample data]
 
 ::::
 
@@ -360,6 +371,7 @@ After the {{transform}} processes the data, search the destination index:
 ```console
 GET last-log-from-clientip/_search
 ```
+%  TEST[skip:setup kibana sample data]
 
 The search result shows you data like this for each client IP:
 
@@ -408,6 +420,7 @@ The search result shows you data like this for each client IP:
   }
 }
 ```
+%  NOTCONSOLE
 
 This {{transform}} makes it easier to answer questions such as:
 
@@ -463,6 +476,7 @@ POST _transform/_preview
 1. The data is grouped by a date histogram of the time field with a one hour interval.
 2. Calculates the maximum value of the `bytes` field.
 3. Specifies the fields (`clientip` and `geo.src`) of the top document to return and the sorting method (document with the highest `bytes` value).
+%  TEST[skip:setup kibana sample data]
 
 The API call above returns a response similar to this:
 
@@ -503,6 +517,7 @@ The API call above returns a response similar to this:
   ]
 }
 ```
+%  NOTCONSOLE
 
 ## Getting customer name and email address by customer ID [example-customer-names]
 
@@ -550,6 +565,7 @@ POST _transform/_preview
 
 1. The data is grouped by a `terms` aggregation on the `customer_id` field.
 2. Specifies the fields to return (email and name fields) in a descending order by the order date.
+%  TEST[skip:setup kibana sample data]
 
 The API returns a response that is similar to this:
 
@@ -584,3 +600,4 @@ The API returns a response that is similar to this:
   ]
 }
 ```
+%  NOTCONSOLE

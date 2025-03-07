@@ -65,6 +65,7 @@ Consider using [date math](elasticsearch://reference/elasticsearch/rest-apis/api
     ]
   },
 ```
+%  NOTCONSOLE
 
 ## 5. Optimize the sharding strategy for the source index (search) [optimize-shading-strategy]
 

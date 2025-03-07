@@ -40,6 +40,7 @@ To use the `compare` condition, you specify the value in the execution context t
 
 1. Use dot notation to reference a value in the execution context.
 2. Specify a comparison operator and the value you want to compare against.
+%  NOTCONSOLE
 
 You can also compare two values in the execution context by specifying the compared value as a path of the form of `{{path}}`. For example, the following condition compares the `ctx.payload.aggregations.status.buckets.error.doc_count` to the `ctx.payload.aggregations.handled.buckets.true.doc_count`:
 
@@ -54,6 +55,7 @@ You can also compare two values in the execution context by specifying the compa
   }
 }
 ```
+%  NOTCONSOLE
 
 ## Using date math in a compare condition [compare-condition-date-math]
 
@@ -70,6 +72,7 @@ When comparing dates and times, you can use date math expressions of the form `<
   }
 }
 ```
+%  NOTCONSOLE
 
 ## Accessing values in the execution context [_accessing_values_in_the_execution_context]
 

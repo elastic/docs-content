@@ -58,6 +58,7 @@ PUT _snapshot/my_backup
   }
 }
 ```
+%  TEST[skip:we don’t have azure setup while testing this]
 
 If you are using the `default` client, you may omit the `client` repository setting:
 
@@ -67,6 +68,7 @@ PUT _snapshot/my_backup
   "type": "azure"
 }
 ```
+%  TEST[skip:we don’t have azure setup while testing this]
 
 ::::{note}
 In progress snapshot or restore jobs will not be preempted by a **reload** of the storage secure settings. They will complete using the client as it was built when the operation started.
@@ -143,6 +145,7 @@ PUT _snapshot/my_backup
   }
 }
 ```
+%  TEST[skip:we don’t have azure setup while testing this]
 
 `client`
 :   The name of the Azure repository client to use. Defaults to `default`.

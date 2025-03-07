@@ -81,6 +81,7 @@ GET example-index/_search
   }
 }
 ```
+% NOTCONSOLE
 
 This example demonstrates how you can combine different retrieval strategies into a single `retriever` pipeline.
 
@@ -116,6 +117,7 @@ GET example-index/_search
   }
 }
 ```
+% NOTCONSOLE
 ::::
 
 For more examples, refer to [retriever examples](retrievers-examples.md).
