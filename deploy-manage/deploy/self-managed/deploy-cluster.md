@@ -5,7 +5,7 @@ mapped_urls:
   - https://www.elastic.co/guide/en/elastic-stack/current/installing-elastic-stack.html
 ---
 
-# Deploy the cluster
+# Deploy an {{es}} cluster
 
 % What needs to be done: Refine
 
@@ -29,3 +29,8 @@ $$$dedicated-host$$$
 
 % Doesn't exist
 % * [/raw-migrated-files/stack-docs/elastic-stack/installing-elastic-stack.md](/raw-migrated-files/stack-docs/elastic-stack/installing-elastic-stack.md)
+
+
+## Third-party dependencies [dependencies-versions]
+
+See [Elastic Stack third-party dependencies](https://artifacts.elastic.co/reports/dependencies/dependencies-current.html) for the complete list of dependencies for {{es}}.

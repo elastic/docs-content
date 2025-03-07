@@ -5,6 +5,6 @@ sub:
   stack-version: "9.0.0"
 ---
 
-# Self-managed cluster [dependencies-versions]
+# Self-managed cluster 
 
-See [Elastic Stack third-party dependencies](https://artifacts.elastic.co/reports/dependencies/dependencies-current.md) for the complete list of dependencies for {{es}}.
+

@@ -24,6 +24,7 @@ This page will help you understand your deployment options and choose the approa
 ## Core components
 
 Every Elastic deployment requires {{es}} as its core data store and search/analytics engine.
+
 Additionally, {{kib}} provides the user interface for all Elastic solutions and Serverless projects. It is required for most use cases, from data exploration to monitoring and security analysis.
 
 Your choice of deployment type determines how you'll set up and manage these core components, plus any additional components you need.
