@@ -25,7 +25,7 @@ When `kubectl` is used to modify a resource, it calculates the diff between the 
 
 If you have configured a Beat to run as a `Deployment` and you are using a `hostPath` volume as the Beats data directory, you might encounter an error similar to the following:
 
-```shell script
+```shell
 ERROR   instance/beat.go:958    Exiting: data path already locked by another beat. Please make sure that multiple beats are not sharing the same data path (path.data).
 ```
 
