@@ -1,6 +1,10 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/apm/agent/php/current/_agent_is_not_instrumenting_code.html
+applies_to:
+  stack: all
+  serverless:
+    observability: all
 ---
 
 # Agent is not instrumenting code [_agent_is_not_instrumenting_code]

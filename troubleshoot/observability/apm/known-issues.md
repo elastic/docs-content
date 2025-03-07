@@ -1,6 +1,10 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-known-issues.html
+applies_to:
+  stack: all
+  serverless:
+    observability: all
 ---
 
 # Known issues [apm-known-issues]

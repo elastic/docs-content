@@ -1,6 +1,10 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-common-response-codes.html
+applies_to:
+  stack: all
+  serverless:
+    observability: all
 ---
 
 # APM Server response codes [apm-common-response-codes]

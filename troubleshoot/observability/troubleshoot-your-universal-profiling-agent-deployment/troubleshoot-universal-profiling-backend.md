@@ -2,6 +2,10 @@
 navigation_title: "Troubleshoot the backend"
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/profiling-self-managed-troubleshooting.html
+applies_to:
+  stack: all
+  serverless:
+    observability: all
 ---
 
 

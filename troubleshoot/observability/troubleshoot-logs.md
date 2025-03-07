@@ -3,6 +3,10 @@ navigation_title: Logs
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/logs-troubleshooting.html
   - https://www.elastic.co/guide/en/serverless/current/observability-troubleshoot-logs.html
+applies_to:
+  stack: all
+  serverless:
+    observability: all
 ---
 
 # Troubleshoot logs [logs-troubleshooting]

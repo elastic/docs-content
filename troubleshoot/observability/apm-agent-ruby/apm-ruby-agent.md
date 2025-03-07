@@ -2,6 +2,10 @@
 navigation_title: "APM Ruby Agent"
 mapped_pages:
   - https://www.elastic.co/guide/en/apm/agent/ruby/current/debugging.html
+applies_to:
+  stack: all
+  serverless:
+    observability: all
 ---
 
 # Troubleshoot APM Ruby Agent [debugging]

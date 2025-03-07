@@ -2,6 +2,10 @@
 navigation_title: "APM"
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-troubleshoot-apm.html
+applies_to:
+  stack: all
+  serverless:
+    observability: all
 ---
 
 
