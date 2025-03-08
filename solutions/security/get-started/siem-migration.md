@@ -68,7 +68,7 @@ The table's fields are as follows:
 * **Status:** The rule's translation status. Hover over the tooltip next to the column title for more information.
 * **Risk Score:** For Elastic authored rules, risk scores are predefined. For custom translated rules, risk scores are defined as follows:
   * If the source rule has a field comparable to Elastic's risk score, we use that value.
-  * Otherwise, if the source rule has a field comparable to Elastic's rule severity field, we base the risk score on that value according to these [guidelines](../security/rules-ui-create.html#rule-ui-basic-params).
+  * Otherwise, if the source rule has a field comparable to Elastic's rule severity field, we base the risk score on that value according to these [guidelines](/solutions/security/detect-and-alert/create-detection-rule.html#custom-highlighted-esql-fields).
   * Otherwise, a default value is assigned.
 * **Rule severity:** For Elastic authored rules, severity scores are predefined. For custom translated rules, risk scores are based on the source rule's severity field. Splunk severity scores are translated to Elastic rule severity scores as follows:
 
@@ -89,7 +89,7 @@ The table's fields are as follows:
 Once you're on the **Translated rules** page, to install any rules that were partially translated or not translated, you will need to edit them. Optionally, you can also edit custom rules that were successfully translated to finetune them. 
 
 :::{note}
-You cannot edit Elastic authored rules using this interface, but after they are installed you can edit them from the [**Rules**](../security/detect-and-alert/about-detection-rules.html) page. 
+You cannot edit Elastic authored rules using this interface, but after they are installed you can edit them from the [**Rules**](/solutions/security/detect-and-alert/about-detection-rules.html) page. 
 :::
   
 ### Edit a custom rule
