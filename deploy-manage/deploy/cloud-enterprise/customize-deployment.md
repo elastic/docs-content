@@ -1,4 +1,5 @@
 ---
+navigation_title: Customize deployment components
 applies_to:
   deployment:
     ece: all
@@ -6,14 +7,33 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-customize-deployment.html
 ---
 
+% Background and scope note: this document is about the Deployment -> Edit page, how ECE applies changes, and links to other configurable features
+
 # Customize your deployment [ece-customize-deployment]
 
-You can either customize a new deployment, or customize an existing one. On the **Create a deployment** page, select **Edit settings** to change the cloud provider, region, hardware profile, and stack version; or select **Advanced settings** for more complex configuration settings.
+% TBD, refine this intro after checking the UI
+In ECE, you can customize your deployment at any time by selecting **Edit** from the deployment page. This allows you to modify the deployment architecture, adjust configuration settings, availability zones, resources, and enable or disable data tiers.
 
-On the **Advanced settings** page, you can change the following settings:
+::::{note}
+The configurable components and allowed values available on the Edit page depend on the [deployment template](./deployment-templates.md) and [instance configurations](./ece-configuring-ece-instance-configurations-default.md) associated with the deployment.
+::::
+
+To customize your deployment:
+
+1. [Log into the Cloud UI](./log-into-cloud-ui.md).
+2. On the **Deployments** page, select your deployment.
+
+    Narrow the list by name, ID, or choose from several other [filters](./search-filter-deployments.md). To further define the list, use a combination of filters.
+
+3. From your deployment menu, go to the **Edit** page.
+
+## Editing deployment
+
+In the deployment edit page, you can change the following settings:
 
 * Enable [autoscaling](../../autoscaling.md) so that the available resources adjust automatically as demands on the deployment change.
-* If you don’t want to autoscale your deployment, you can manually increase or decrease capacity by adjusting the size of hot, warm, cold, and frozen [data tiers](../../../manage-data/lifecycle/data-tiers.md) nodes. For example, you might want to add warm tier nodes if you have time series data that is accessed less-frequently and rarely needs to be updated. Alternatively, you might need cold tier nodes if you have time series data that is accessed occasionally and not normally updated.
+
+* If you don’t want to autoscale your deployment, you can manually increase or decrease capacity by adjusting the size of hot, warm, cold, and frozen [data tiers](../../../manage-data/lifecycle/data-tiers.md) nodes. For example, you might want to add warm or cold tier nodes if you have time series data that is accessed less-frequently and rarely needs to be updated.
 
     * From the **Size per zone** drop-down menu, select what best fits your requirements.
 
@@ -21,7 +41,9 @@ On the **Advanced settings** page, you can change the following settings:
         :alt: Customize hot data and content tier nodes
         :::
 
-        Tiers increase in size before they increase the number of nodes. Based on the size that you select, the number of nodes is calculated for you automatically. Each node can be scaled up to 58GB RAM for Azure or 64GB RAM for GCP and AWS. The **Architecture** summary displays the total number of nodes per zone, where each circle color represents a different node type.
+        Based on the size you select for a tier, ECE automatically calculates the required number of nodes. Before adding additional nodes, the system scales up existing nodes to the maximum size allowed by their instance configuration, as defined in the deployment template. The maximum size for an {{es}} instance using the default templates typically ranges between 58GB and 64GB RAM.
+        
+        The **Architecture** summary displays the total number of nodes per zone, where each circle color represents a different node type:
 
         :::{image} ../../../images/cloud-enterprise-ec-number-of-nodes.png
         :alt: Number of nodes per deployment size
@@ -29,12 +51,29 @@ On the **Advanced settings** page, you can change the following settings:
 
     * Adjust the number of **Availability zones** to increase fault tolerance for the deployment.
 
-* Open **Edit user settings**  to change the  YML configuration file to further customize how you run {{es}}.
+* Select **Edit user settings** to add configuration settings to the YML file of any component and further customize its behavior.
 
-For more information, refer to [Editing your user settings](edit-stack-settings.md).
+  For more information, refer to [](edit-stack-settings.md).
 
 * Enable specific {{es}} plugins which are not enabled by default.
 * Enable additional features, such as Machine Learning or coordinating nodes.
 * Set specific configuration parameters for your {{es}} nodes or {{kib}} instances.
 
-That’s it! Now that you are up and running, [start exploring with {{kib}}](create-deployment.md), our open-source visualization tool. If you’re not familiar with adding data, yet, {{kib}} can show you how to index your data into {{es}}.
+## Applying changes
+
+When clicking on **Save changes** in the Edit deployment page
+
+% TBD, explain a bit the different type of plans
+
+* Select the method to apply changes
+  * Rolling inline
+  * Grow and shrink
+
+## Other configuration changes
+
+The following configuration settings are not available within the Edit deployment page:
+
+* Logs and Metrics (monitoring)
+* Secure settings (keystore settings)
+* Snapshots
+

@@ -1,4 +1,7 @@
 ---
+applies_to:
+  deployment:
+    ece: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-regional-deployment-aliases.html
 ---
@@ -7,8 +10,9 @@ mapped_pages:
 
 Custom aliases for your deployment endpoints on Elastic Cloud Enterprise allow you to have predictable, human-readable URLs that can be shared easily.
 
+::::{important}
 Before setting up your custom alias, your platform administrator must enable the feature. Check [Enable custom endpoint aliases](enable-custom-endpoint-aliases.md) for more information.
-
+::::
 
 ## Create a custom endpoint alias for a deployment [ece-create-regional-deployment-alias] 
 
@@ -24,7 +28,6 @@ To add an alias to an existing deployment:
     ::::
 
 5. Select **Update alias**.
-
 
 ## Remove a custom endpoint alias [ece-delete-regional-deployment-alias] 
 
@@ -44,7 +47,6 @@ To use your new custom endpoint URL to access your Elastic products, note that e
 ::::{note} 
 You can get the application-specific custom endpoint alias by selecting **Copy endpoint** for that product. It should contain a subdomain for each application type, for example `es`, `kb`, `apm`, or `ent`.
 ::::
-
 
 
 ### With the REST Client [ece-rest-regional-deployment-alias] 

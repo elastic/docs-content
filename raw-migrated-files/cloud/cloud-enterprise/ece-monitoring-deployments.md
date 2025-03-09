@@ -1,3 +1,5 @@
+% processed
+
 # Keep your clusters healthy [ece-monitoring-deployments]
 
 Elastic Cloud Enterprise monitors many aspects of your installation, but some issues require a human to resolve them. Use this section to learn how you can:

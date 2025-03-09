@@ -1,4 +1,5 @@
 ---
+navigation_title: Configure plugins and extensions
 applies_to:
   deployment:
     ece:

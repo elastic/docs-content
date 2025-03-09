@@ -1,3 +1,5 @@
+% processed
+
 # Working with deployments [ece-stack-getting-started]
 
 ::::{note}

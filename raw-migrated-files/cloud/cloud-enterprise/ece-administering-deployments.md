@@ -1,3 +1,5 @@
+% processed
+
 # Administering deployments [ece-administering-deployments]
 
 Care and feeding of your deployments is important. Take a look at the things you can do to keep your deployments and the Elastic Stack running smoothly:

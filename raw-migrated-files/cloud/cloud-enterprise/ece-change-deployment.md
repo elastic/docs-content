@@ -1,3 +1,5 @@
+% processed
+
 # Change your deployment configuration [ece-change-deployment]
 
 There are several reasons why you might want to change the configuration of a deployment:

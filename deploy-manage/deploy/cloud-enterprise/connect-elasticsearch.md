@@ -12,7 +12,8 @@ mapped_pages:
 
 This section explains how to connect client applications to an {{es}} deployment running on ECE. You can use the [endpoint URL](#ece-connect-endpoint) available in the deployment UI, or the [Cloud ID](#ece-cloud-id) for a simplified setup with compatible clients such as Beats and Logstash.
 
-{{ece}} clusters running on ECE only support connections over **HTTP/HTTPS** through the RESTful API. Direct connections to the transport port are not supported.
+% TBD - not sure if this is totally accurate
+% {{ece}} clusters running on ECE only support connections over **HTTP/HTTPS** through the RESTful API. Direct connections to the transport port are not supported.
 
 To successfully connect to a deployment, you need both the connection details and valid authentication credentials for an authorized user in the target deployment. For more details on authentication and authorization mechanisms in ECE, refer to [Users and roles](../../users-roles.md#orchestrator-level).
 
