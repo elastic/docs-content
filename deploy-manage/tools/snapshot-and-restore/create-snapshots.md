@@ -254,7 +254,7 @@ If you delete a snapshot that’s in progress, {{es}} cancels it. The snapshot p
 If you run {{es}} on your own hardware, we recommend that, in addition to backups, you take regular backups of the files in each node’s [`$ES_PATH_CONF` directory](../../deploy/self-managed/configure-elasticsearch.md#config-files-location) using the file backup software of your choice. Snapshots don’t back up these files. Also note that these files will differ on each node, so each node’s files should be backed up individually.
 
 ::::{important}
-The `elasticsearch.keystore`, TLS keys, and [SAML](../../deploy/self-managed/configure-elasticsearch.md#ref-saml-settings), [OIDC](../../deploy/self-managed/configure-elasticsearch.md#ref-oidc-settings), and [Kerberos](../../deploy/self-managed/configure-elasticsearch.md#ref-kerberos-settings) realms private key files contain sensitive information. Consider encrypting your backups of these files.
+The `elasticsearch.keystore`, TLS keys, and [SAML](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#ref-saml-settings), [OIDC](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#ref-oidc-settings), and [Kerberos](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#ref-kerberos-settings) realms private key files contain sensitive information. Consider encrypting your backups of these files.
 ::::
 
 

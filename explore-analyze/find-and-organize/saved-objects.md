@@ -80,7 +80,7 @@ Import multiple objects in a single operation.
 4. Click **Import**.
 
 ::::{note}
-The [`savedObjects.maxImportExportSize`](kibana://reference/configuration-reference/general-settings.md#savedObjects-maxImportExportSize) configuration setting limits the number of saved objects to include in the file. The [`savedObjects.maxImportPayloadBytes`](kibana://reference/configuration-reference/general-settings.md#savedObjects-maximportpayloadbytes) setting limits the overall size of the file that you can import.
+The [`savedObjects.maxImportExportSize`](kibana://reference/configuration-reference/general-settings.md#savedobjects-maximportexportsize) configuration setting limits the number of saved objects to include in the file. The [`savedObjects.maxImportPayloadBytes`](kibana://reference/configuration-reference/general-settings.md#savedObjects-maximportpayloadbytes) setting limits the overall size of the file that you can import.
 ::::
 
 

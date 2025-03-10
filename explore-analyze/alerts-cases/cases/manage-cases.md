@@ -68,7 +68,7 @@ For self-managed {{kib}}:
          hasAuth: true/false
    ```
 
-3. If you want the email notifications to contain links back to the case, you must configure the [server.publicBaseUrl](kibana://reference/configuration-reference/general-settings.md#server-publicBaseUrl) setting.
+3. If you want the email notifications to contain links back to the case, you must configure the [server.publicBaseUrl](kibana://reference/configuration-reference/general-settings.md#server-publicbaseurl) setting.
 
 When you subsequently add assignees to cases, they receive an email.
 

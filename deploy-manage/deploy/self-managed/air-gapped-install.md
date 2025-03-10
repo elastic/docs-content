@@ -56,8 +56,6 @@ Additionally, if the {{agent}} {{elastic-defend}} integration is used, then acce
 
 To learn more about install and configuration, refer to the [{{agent}} install documentation](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/install-elastic-agents.md). Make sure to check the requirements specific to running {{agents}} in an [air-gapped environment](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/air-gapped.md).
 
-To get a better understanding of how to work with {{agent}} configuration settings and policies, refer to [Appendix D - Agent Integration Guide](/deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-agent-integration-guide).
-
 
 ## {{fleet-server}} [air-gapped-fleet]
 
