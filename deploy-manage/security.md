@@ -87,7 +87,7 @@ To keep your data secured, Elastic offers comprehensive security features that:
 - Protect data at rest
 - Secure sensitive settings and saved objects
 
-Different deployment types have different security requirements and capabilities. Some security features are managed automatically, while others require manual configuration depending on your deployment type.
+Security requirements and capabilities vary by deployment. Features may be managed automatically by Elastic, require configuration, or must be fully self-managed. Refer to [Security by deployment type](#security-by-deployment-type) for details.
 
 ::::{tip}
 See the [Deployment overview](/deploy-manage/deploy.md) to understand your options for deploying Elastic.
@@ -95,35 +95,44 @@ See the [Deployment overview](/deploy-manage/deploy.md) to understand your optio
 
 ### Security by deployment type
 
+Security features have one of these statuses across deployment types:
+
+| Status | Description |
+|--------|-------------|
+| **Managed** | Feature is handled automatically by Elastic |
+| **Configurable** | Feature is available but requires user configuration |
+| **Self-managed** | Feature must be implemented and maintained by you |
+| **✗ N/A** | Feature is not available |
+
 #### Communication security
 
 | **Security feature** | Serverless | Elastic Cloud Hosted | ECE | ECK | Self-managed |
 |------------------|------------|--------------|-----|-----|--------------|
-| **TLS (HTTP Layer)** | ✓ Managed | ✓ Managed | ✓ Configurable | ✓ Configurable | ✓ Self-managed |
-| **TLS (Transport Layer)** | ✓ Managed | ✓ Managed | ✓ Managed | ✓ Managed | ✓ Self-managed |
+| **TLS (HTTP Layer)** | Managed | Managed | Configurable | Configurable | Self-managed |
+| **TLS (Transport Layer)** | Managed | Managed | Managed | Managed | Self-managed |
 
 #### Network security
 
 | **Security feature** | Serverless | Elastic Cloud Hosted | ECE | ECK | Self-managed |
 |------------------|------------|--------------|-----|-----|--------------|
-| **IP traffic filtering** | ✓ Configurable | ✓ Configurable | ✓ Configurable | ✓ Configurable | ✓ Configurable |
-| **Private link** | ✗ N/A | ✓ Configurable | ✗ N/A | ✗ N/A | ✗ N/A |
-| **Static IPs** | ✓ Configurable | ✓ Configurable | ✗ N/A | ✗ N/A | ✗ N/A |
+| **IP traffic filtering** | Configurable | Configurable | Configurable | Configurable | Configurable |
+| **Private link** | ✗ N/A | Configurable | ✗ N/A | ✗ N/A | ✗ N/A |
+| **Static IPs** | Configurable | Configurable | ✗ N/A | ✗ N/A | ✗ N/A |
 
 #### Data security
 
 | **Security feature** | Serverless | Elastic Cloud Hosted | ECE | ECK | Self-managed |
 |------------------|------------|--------------|-----|-----|--------------|
-| **Encryption at rest** | ✓ Managed | ✓ Managed | ✓ Self-managed | ✓ Self-managed | ✓ Self-managed |
-| **Bring your own encryption key** | ✗ N/A | ✓ Configurable | ✗ N/A | ✗ N/A | ✗ N/A |
-| **Keystore security** | ✓ Managed | ✓ Managed | ✓ Configurable | ✓ Configurable | ✓ Configurable |
-| **Saved object encryption** | ✓ Managed | ✓ Managed | ✓ Configurable | ✓ Configurable | ✓ Configurable |
+| **Encryption at rest** | Managed | Managed | Self-managed | Self-managed | Self-managed |
+| **Bring your own encryption key** | ✗ N/A | Configurable | ✗ N/A | ✗ N/A | ✗ N/A |
+| **Keystore security** | Managed | Managed | Configurable | Configurable | Configurable |
+| **Saved object encryption** | Managed | Managed | Configurable | Configurable | Configurable |
 
 #### User session security
 
 | **Security feature** | Serverless | Elastic Cloud Hosted | ECE | ECK | Self-managed |
 |------------------|------------|--------------|-----|-----|--------------|
-| **Kibana Sessions** | ✓ Managed | ✓ Configurable | ✓ Configurable | ✓ Configurable | ✓ Configurable |
+| **Kibana Sessions** | Managed | Configurable | Configurable | Configurable | Configurable |
 
 ### Using this documentation
 
