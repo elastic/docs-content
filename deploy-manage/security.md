@@ -228,7 +228,7 @@ Select your deployment type below to see what's available and how implementation
 
 ## Next steps
 
-Based on your deployment type, refer to the following sections for detailed setup instructions:
+Refer to the following sections for detailed instructions about securing your hosting environment:
 
 * [Elastic Cloud Hosted and Serverless security setup](/deploy-manage/security/secure-your-elastic-cloud-organization.md)
 * [Elastic Cloud Enterprise (ECE) security setup](/deploy-manage/security/secure-your-elastic-cloud-enterprise-installation.md)
