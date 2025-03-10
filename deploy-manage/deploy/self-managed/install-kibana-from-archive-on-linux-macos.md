@@ -38,7 +38,7 @@ tar -xzf kibana-{{stack-version}}-linux-x86_64.tar.gz
 cd kibana-{{stack-version}}/ <2>
 ```
 
-1. Compares the SHA of the downloaded `.tar.gz` archive and the published checksum, which should output `kibana-{{stack-version}}-linux-x86_64.tar.gz: OK`.
+1. Compares the SHA of the downloaded `.tar.gz` archive and the published checksum, which should output `kibana-<version>-linux-x86_64.tar.gz: OK`.
 2. This directory is known as `$KIBANA_HOME`.
 
 ## MacOS [install-darwin64]
@@ -52,7 +52,7 @@ tar -xzf kibana-{{stack-version}}-darwin-x86_64.tar.gz
 cd kibana-{{stack-version}}/ <2>
 ```
 
-1. Compares the SHA of the downloaded `.tar.gz` archive and the published checksum, which should output `kibana-{{stack-version}}-darwin-x86_64.tar.gz: OK`.
+1. Compares the SHA of the downloaded `.tar.gz` archive and the published checksum, which should output `kibana-<version>-darwin-x86_64.tar.gz: OK`.
 2. This directory is known as `$KIBANA_HOME`.
 
 

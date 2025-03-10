@@ -90,7 +90,7 @@ To begin, use RPM to install {{es}} on the first host. This initial {{es}} insta
     shasum -a 512 -c elasticsearch-9.0.0-beta1-x86_64.rpm.sha512
     ```
 
-    The command should return: `elasticsearch-{{version}}-x86_64.rpm: OK`.
+    The command should return: `elasticsearch-<version>-x86_64.rpm: OK`.
 
 6. Run the {{es}} install command:
 
@@ -406,7 +406,7 @@ As with {{es}}, you can use RPM to install {{kib}} on another host. You can find
     shasum -a 512 -c kibana-9.0.0-beta1-x86_64.rpm.sha512
     ```
 
-    The command should return: `kibana-{{version}}-x86_64.rpm: OK`.
+    The command should return: `kibana-<version>-x86_64.rpm: OK`.
 
 5. Run the {{kib}} install command:
 
