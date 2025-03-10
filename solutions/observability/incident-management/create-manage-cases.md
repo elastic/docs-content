@@ -48,7 +48,7 @@ After you create a case, you can upload and manage files on the **Files** tab:
 
 :::{image} ../../../images/serverless-cases-files-tab.png
 :alt: A list of files attached to a case
-:class: screenshot
+:screenshot:
 :::
 
 To download or delete the file or copy the file hash to your clipboard, open the action menu (…). The available hash functions are MD5, SHA-1, and SHA-256.

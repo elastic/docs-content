@@ -64,6 +64,6 @@ Use Elastic APM agents or an OpenTelemetry language SDK to instrument a service 
 
 Elastic also offers several tools to help you collect data from specific services:
 
-* **Kubernetes**: The Elastic APM attacher for Kubernetes simplifies the instrumentation and configuration of your application pods. Read more in the [APM attacher for Kubernetes docs](asciidocalypse://docs/apm-k8s-attacher/docs/reference/index.md).
-* **AWS Lambda Functions**: Helps you monitor your AWS Lambda functions. Read more in the [APM Architecture for AWS Lambda docs](asciidocalypse://docs/apm-aws-lambda/docs/reference/index.md).
+* **Kubernetes**: The Elastic APM attacher for Kubernetes simplifies the instrumentation and configuration of your application pods. Read more in the [APM attacher for Kubernetes docs](apm-k8s-attacher://reference/index.md).
+* **AWS Lambda Functions**: Helps you monitor your AWS Lambda functions. Read more in the [APM Architecture for AWS Lambda docs](apm-aws-lambda://reference/index.md).
 * [8.15.0] **Jaeger**: Helps you to switch an existing Jaeger setup from the default Jaeger backend to the {{stack}}. Read more in [Integrate with Jaeger](../../../solutions/observability/apps/integrate-with-jaeger-deprecated.md).

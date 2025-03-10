@@ -116,7 +116,7 @@ You can also use locally hosted LLMs that are compatible with the OpenAI SDK. On
 
 :::{image} ../../../images/kibana-get-started.png
 :alt: get started
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -146,7 +146,7 @@ If you need to update a connector, or add a new one, click the 🔧 **Manage** b
 There are many options for ingesting data into {{es}}, including:
 
 * The [Elastic crawler](https://www.elastic.co/guide/en/enterprise-search/current/crawler.html) for web content (**NOTE**: Not yet available in *Serverless*)
-* [Elastic connectors](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/search-connectors/index.md) for data synced from third-party sources
+* [Elastic connectors](elasticsearch://reference/ingestion-tools/search-connectors/index.md) for data synced from third-party sources
 * The {{es}} [Bulk API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-bulk) for JSON documents
 
     ::::{dropdown} **Expand** for example
@@ -187,7 +187,7 @@ You can always add or remove indices later by selecting the **Data** button from
 
 :::{image} ../../../images/kibana-data-button.png
 :alt: data button
-:class: screenshot
+:screenshot:
 :width: 150px
 :::
 
@@ -206,14 +206,14 @@ The **chat mode** is selected when you first set up your Playground instance.
 
 :::{image} ../../../images/kibana-chat-interface.png
 :alt: chat interface
-:class: screenshot
+:screenshot:
 :::
 
 To switch to **query mode**, select **Query** from the main UI.
 
 :::{image} ../../../images/kibana-query-interface.png
 :alt: query interface
-:class: screenshot
+:screenshot:
 :::
 
 ::::{tip}
@@ -255,7 +255,7 @@ Use the **View code** button to see the Python code that powers the chat interfa
 
 :::{image} ../../../images/kibana-view-code-button.png
 :alt: view code button
-:class: screenshot
+:screenshot:
 :width: 150px
 :::
 

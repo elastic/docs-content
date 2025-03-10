@@ -117,7 +117,7 @@ To add a {{fleet-server}}:
 
     :::{image} images/add-fleet-server-advanced.png
     :alt: In-product instructions for adding a {{fleet-server}} in advanced mode
-    :class: screenshot
+    :screenshot:
     :::
 
 4. Follow the in-product instructions to add a {{fleet-server}}.

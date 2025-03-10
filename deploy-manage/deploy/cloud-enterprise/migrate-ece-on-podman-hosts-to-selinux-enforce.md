@@ -1,11 +1,18 @@
 ---
+applies_to:
+  deployment:
+    ece: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-migrate-to-selinux-in-enforcing-mode.html
 ---
 
 # Migrate ECE on Podman hosts to SELinux enforce [ece-migrate-to-selinux-in-enforcing-mode]
 
-This section provides guidelines and recommendations for migrating an existing platform on a Podman-based environment to use SELinux in `enforcing` mode. The recommended approach consists of four (4) high-level steps. Steps 2-4 need to be repeated for each host in your environment.
+This section provides guidelines and recommendations for migrating an existing platform on a Podman-based environment to use SELinux in `enforcing` mode.
+
+[SELinux](https://www.redhat.com/en/topics/linux/what-is-selinux) (Security-Enhanced Linux) is a security module that enforces mandatory access controls, helping to protect systems from unauthorized access and privilege escalation. Running in enforcing mode ensures that security policies are strictly applied, which can improve security and compliance in hardened environments.
+
+The migration process consists of four high-level steps. Steps 2-4 need to be repeated for each host in your environment.
 
 **Step 1** Migrate existing ECE installation to version >=3.7.2
 

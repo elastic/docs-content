@@ -1,10 +1,10 @@
 ---
 applies_to:
   deployment:
-    eck: 
-    ess: 
-    ece: 
-    self: 
+    eck:
+    ess:
+    ece:
+    self:
 ---
 
 # Manage snapshot repositories
@@ -26,13 +26,13 @@ If you manage your own Elasticsearch cluster, you can use the following built-in
 
 Other repository types are available through official plugins:
 
-* [Hadoop Distributed File System (HDFS)](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch-plugins/repository-hdfs.md)
+* [Hadoop Distributed File System (HDFS)](elasticsearch://reference/elasticsearch-plugins/repository-hdfs.md)
 
 ### Elastic Cloud Hosted
 
 {{ech}} deployments automatically register a repository named `found-snapshots` in {{es}} clusters. These repositories are used together with the `cloud-snapshot-policy` SLM policy to take periodic snapshots of your {{es}} clusters. You can also use the `found-snapshots` repository for your own [SLM policies](/deploy-manage/tools/snapshot-and-restore/create-snapshots.md#automate-snapshots-slm) or to store searchable snapshots.
 
-The `found-snapshots` repository is specific to each deployment. However, you can restore snapshots from another deployment’s found-snapshots repository if the deployments are under the same account and in the same region. 
+The `found-snapshots` repository is specific to each deployment. However, you can restore snapshots from another deployment’s found-snapshots repository if the deployments are under the same account and in the same region.
 
 Elastic Cloud Hosted deployments also support the following repository types:
 
@@ -57,7 +57,7 @@ Elastic Cloud Enterprise installations support the following Elasticsearch snaps
 * [Minio](/deploy-manage/tools/snapshot-and-restore/minio-on-premise-repository.md)
 
 :::{note}
-No repository types other than those listed are supported in the Elastic Cloud Enterprise platform, even if they are supported by Elasticsearch. 
+No repository types other than those listed are supported in the Elastic Cloud Enterprise platform, even if they are supported by Elasticsearch.
 :::
 
 For more details, refer to [Managing snapshot repositories in Elastic Cloud Enterprise](/deploy-manage/tools/snapshot-and-restore/cloud-enterprise.md).

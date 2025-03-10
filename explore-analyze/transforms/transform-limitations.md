@@ -49,7 +49,7 @@ A {{ctransform}} periodically checks for changes to source data. The functionali
 
 ### Aggregation responses may be incompatible with destination index mappings [transform-aggresponse-limitations]
 
-When a pivot {{transform}} is first started, it will deduce the mappings required for the destination index. This process is based on the field types of the source index and the aggregations used. If the fields are derived from [`scripted_metrics`](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/aggregations/search-aggregations-metrics-scripted-metric-aggregation.md) or [`bucket_scripts`](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/aggregations/search-aggregations-pipeline-bucket-script-aggregation.md), [dynamic mappings](../../manage-data/data-store/mapping/dynamic-mapping.md) will be used. In some instances the deduced mappings may be incompatible with the actual data. For example, numeric overflows might occur or dynamically mapped fields might contain both numbers and strings. Please check {{es}} logs if you think this may have occurred.
+When a pivot {{transform}} is first started, it will deduce the mappings required for the destination index. This process is based on the field types of the source index and the aggregations used. If the fields are derived from [`scripted_metrics`](elasticsearch://reference/data-analysis/aggregations/search-aggregations-metrics-scripted-metric-aggregation.md) or [`bucket_scripts`](elasticsearch://reference/data-analysis/aggregations/search-aggregations-pipeline-bucket-script-aggregation.md), [dynamic mappings](../../manage-data/data-store/mapping/dynamic-mapping.md) will be used. In some instances the deduced mappings may be incompatible with the actual data. For example, numeric overflows might occur or dynamically mapped fields might contain both numbers and strings. Please check {{es}} logs if you think this may have occurred.
 
 You can view the deduced mappings by using the [preview transform API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-transform-preview-transform). See the `generated_dest_index` object in the API response.
 
@@ -57,7 +57,7 @@ If it’s required, you may define custom mappings prior to starting the {{trans
 
 ### Batch {{transforms}} may not account for changed documents [transform-batch-limitations]
 
-A batch {{transform}} uses a [composite aggregation](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/aggregations/search-aggregations-bucket-composite-aggregation.md) which allows efficient pagination through all buckets. Composite aggregations do not yet support a search context, therefore if the source data is changed (deleted, updated, added) while the batch {{dataframe}} is in progress, then the results may not include these changes.
+A batch {{transform}} uses a [composite aggregation](elasticsearch://reference/data-analysis/aggregations/search-aggregations-bucket-composite-aggregation.md) which allows efficient pagination through all buckets. Composite aggregations do not yet support a search context, therefore if the source data is changed (deleted, updated, added) while the batch {{dataframe}} is in progress, then the results may not include these changes.
 
 ### {{ctransform-cap}} consistency does not account for deleted or updated documents [transform-consistency-limitations]
 
@@ -77,7 +77,7 @@ When deleting a {{transform}} using `DELETE _transform/index` neither the destin
 
 During the development of {{transforms}}, control was favoured over performance. In the design considerations, it is preferred for the {{transform}} to take longer to complete quietly in the background rather than to finish quickly and take precedence in resource consumption.
 
-Composite aggregations are well suited for high cardinality data enabling pagination through results. If a [circuit breaker](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/circuit-breaker-settings.md) memory exception occurs when performing the composite aggregated search then we try again reducing the number of buckets requested. This circuit breaker is calculated based upon all activity within the cluster, not just activity from {{transforms}}, so it therefore may only be a temporary resource availability issue.
+Composite aggregations are well suited for high cardinality data enabling pagination through results. If a [circuit breaker](elasticsearch://reference/elasticsearch/configuration-reference/circuit-breaker-settings.md) memory exception occurs when performing the composite aggregated search then we try again reducing the number of buckets requested. This circuit breaker is calculated based upon all activity within the cluster, not just activity from {{transforms}}, so it therefore may only be a temporary resource availability issue.
 
 For a batch {{transform}}, the number of buckets requested is only ever adjusted downwards. The lowering of value may result in a longer duration for the {{transform}} checkpoint to complete. For {{ctransforms}}, the number of buckets requested is reset back to its default at the start of every checkpoint and it is possible for circuit breaker exceptions to occur repeatedly in the {{es}} logs.
 
@@ -85,11 +85,11 @@ The {{transform}} retrieves data in batches which means it calculates several bu
 
 ### Handling dynamic adjustments for many terms [transform-dynamic-adjustments-limitations]
 
-For each checkpoint, entities are identified that have changed since the last time the check was performed. This list of changed entities is supplied as a [terms query](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/query-dsl-terms-query.md) to the {{transform}} composite aggregation, one page at a time. Then updates are applied to the destination index for each page of entities.
+For each checkpoint, entities are identified that have changed since the last time the check was performed. This list of changed entities is supplied as a [terms query](elasticsearch://reference/query-languages/query-dsl-terms-query.md) to the {{transform}} composite aggregation, one page at a time. Then updates are applied to the destination index for each page of entities.
 
 The page `size` is defined by `max_page_search_size` which is also used to define the number of buckets returned by the composite aggregation search. The default value is 500, the minimum is 10.
 
-The index setting [`index.max_terms_count`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index-modules.md#dynamic-index-settings) defines the maximum number of terms that can be used in a terms query. The default value is 65536. If `max_page_search_size` exceeds `index.max_terms_count` the {{transform}} will fail.
+The index setting [`index.max_terms_count`](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#dynamic-index-settings) defines the maximum number of terms that can be used in a terms query. The default value is 65536. If `max_page_search_size` exceeds `index.max_terms_count` the {{transform}} will fail.
 
 Using smaller values for `max_page_search_size` may result in a longer duration for the {{transform}} checkpoint to complete.
 
@@ -109,7 +109,7 @@ If using a `sync.time.field` that represents the data ingest time and using a ze
 
 ### Support for date nanoseconds data type [transform-date-nanos]
 
-If your data uses the [date nanosecond data type](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/date_nanos.md), aggregations are nonetheless on millisecond resolution. This limitation also affects the aggregations in your {{transforms}}.
+If your data uses the [date nanosecond data type](elasticsearch://reference/elasticsearch/mapping-reference/date_nanos.md), aggregations are nonetheless on millisecond resolution. This limitation also affects the aggregations in your {{transforms}}.
 
 ### Data streams as destination indices are not supported [transform-data-streams-destination]
 
@@ -119,7 +119,7 @@ If your data uses the [date nanosecond data type](asciidocalypse://docs/elastics
 
 [ILM](../../manage-data/lifecycle/index-lifecycle-management.md) is not recommended to use as a {{transform}} destination index. {{transforms-cap}} update documents in the current destination, and cannot delete documents in the indices previously used by ILM. This may lead to duplicated documents when you use {{transforms}} combined with ILM in case of a rollover.
 
-If you use ILM to have time-based indices, please consider using the [Date index name](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/enrich-processor/date-index-name-processor.md) instead. The processor works without duplicated documents if your {{transform}} contains a `group_by` based on `date_histogram`.
+If you use ILM to have time-based indices, please consider using the [Date index name](elasticsearch://reference/ingestion-tools/enrich-processor/date-index-name-processor.md) instead. The processor works without duplicated documents if your {{transform}} contains a `group_by` based on `date_histogram`.
 
 ## Limitations in {{kib}} [transform-ui-limitations]
 

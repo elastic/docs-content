@@ -1,4 +1,7 @@
 ---
+applies_to:
+  deployment:
+    ece: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-system-clusters-configuration.html
 ---
@@ -21,7 +24,7 @@ Admin console - `admin-console-elasticsearch`
 :   Stores the state of your deployments, plans, and other operational data. If this cluster is not available, there will be several unexpected behaviors in the Cloud UI, such as stale or wrong status indicators for deployments, allocators, hosts, and more.
 
 Logging and metrics - `logging-and-metrics`
-:   As part of an ECE environment, a Beats sidecar  with Filebeat and Metricbeat is installed on each ECE host. The logs and metrics collected by those beats are indexed in the `logging-and-metrics` cluster. This includes ECE service logs, such as proxy logs, director logs, and more. It also includes hosted deployments logs, security cluster audit logs, and metrics, such as CPU and disk usage. Data is collected from all hosts. This information is critical in order to be able to monitor ECE and troubleshoot issues. You can also use this data to configure watches to alert you in case of an issue, or machine learning jobs that can provide alerts based on anomalies or forecasting.
+:   As part of an ECE environment, a Beats sidecar with Filebeat and Metricbeat is installed on each ECE host. The logs and metrics collected by those beats are indexed in the `logging-and-metrics` cluster. This includes ECE service logs, such as proxy logs, director logs, and more. It also includes hosted deployments logs, security cluster audit logs, and metrics, such as CPU and disk usage. Data is collected from all hosts. This information is critical in order to be able to monitor ECE and troubleshoot issues. You can also use this data to configure watches to alert you in case of an issue, or machine learning jobs that can provide alerts based on anomalies or forecasting.
 
 Security - `security`
 :   When you enable the user management feature, you trigger the creation of a third system deployment named `security`. This cluster stores all security-related configurations, such as native users and the related native realm, integration with SAML or LDAP as external authentication providers and their role mapping, and the realm ordering. The health of this cluster is critical to provide access to the ECE Cloud UI and REST API. To learn more, check [Configure role-based access control](../../users-roles/cloud-enterprise-orchestrator/manage-users-roles.md). Beginning with Elastic Cloud Enterprise 2.5.0 the `security` cluster is created automatically for you. It is recommended to use the [dedicated API](https://www.elastic.co/docs/api/doc/cloud-enterprise/operation/operation-update-security-deployment) to manage the cluster.
@@ -39,9 +42,7 @@ For the `logging-and-metrics` cluster, you might want to also make sure that you
 For the `security` cluster, the number of zones must be set to 3 for high availability, otherwise you may encounter errors when trying to upgrade ECE versions.
 ::::
 
-
-
-### Backup and restore [ece_backup_and_restore] 
+## Backup and restore [ece_backup_and_restore] 
 
 ECE lets you manage snapshot repositories, so that you can back up and restore your clusters. This mechanism allows you to centrally manage your snapshot repositories, assigning them to deployments, and restoring snapshots to an existing or new deployment. Since the `admin-console-elasticsearch` and `security` clusters have a key role in making sure your ECE installation is operational, it’s important that you configure a snapshot repository after you complete your ECE installation and enable snapshots for both the `admin-console-elasticsearch` and `security` clusters, so that you can easily restore them if needed.
 
@@ -49,8 +50,7 @@ As mentioned earlier, the `logging-and-metrics` cluster stores important informa
 
 To configure snapshot repositories, check [Add snapshot repository configurations](../../tools/snapshot-and-restore/cloud-enterprise.md).
 
-
-### Sizing [ece_sizing] 
+## Sizing [ece_sizing] 
 
 Both the `admin-console-elasticsearch` and `security` clusters require relatively small amounts of RAM and almost no disk space, so increasing their size to 4 GB or 8 GB RAM per data node should be sufficient.
 
@@ -62,8 +62,7 @@ When sizing your `logging-and-metrics` cluster, consider:
 * the number of ECE hosts, deployments, and log types you want to enable, such as slow logs or audit logs.
 * the desired retention period for the data. As with any other time-series data, you must properly manage your indices and delete old indices based on that retention period.
 
-
-### Access to system deployments [ece_access_to_system_deployments] 
+## Access to system deployments [ece_access_to_system_deployments] 
 
 In the case of the `admin-console-elasticsearch` and `security` system deployments, the team managing ECE and assigned to the platform admin role should have permission to change each system deployment configuration and also to access each cluster itself.
 
@@ -73,11 +72,8 @@ The `logging-and-metrics` cluster is different since, as an ECE admin, you likel
 The `logging-and-metrics` cluster is only intended for troubleshooting ECE deployment issues. If your use case involves modifying or normalizing logs from {{es}} or {{kib}}, use a separate [dedicated monitoring deployment](../../monitor/stack-monitoring/ece-stack-monitoring.md) instead.
 ::::
 
-
 You can’t use ECE’s single sign-on (SSO) to access system deployments.
 
 ::::{note} 
 Enabling integration with external authentication provider requires that you set the `system_owned` flag to `false` in order to change the elasticsearch.yaml configuration. Remember to set the flag back to `true` after you are done.
 ::::
-
-

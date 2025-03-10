@@ -33,7 +33,7 @@ This updates the notifications settings for {{es}} and {{kib}} to reflect what i
 
 ### Use the {{ecloud}} Control CLI [use-the-ecloud-control-cli]
 
-Updating multiple deployments through the UI can take a lot of time. Instead, you can use the [{{ecloud}} Control](asciidocalypse://docs/ecctl/docs/reference/index.md) command-line interface (`ecctl`) to automate the deployment update.
+Updating multiple deployments through the UI can take a lot of time. Instead, you can use the [{{ecloud}} Control](ecctl://reference/index.md) command-line interface (`ecctl`) to automate the deployment update.
 
 The following example script shows how to update all deployments of an organization:
 

@@ -10,46 +10,46 @@ applies_to:
 
 When the built-in analyzers do not fulfill your needs, you can create a `custom` analyzer which uses the appropriate combination of:
 
-* zero or more [character filters](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/text-analysis/character-filter-reference.md)
-* a [tokenizer](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/text-analysis/tokenizer-reference.md)
-* zero or more [token filters](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/text-analysis/token-filter-reference.md).
+* zero or more [character filters](elasticsearch://reference/data-analysis/text-analysis/character-filter-reference.md)
+* a [tokenizer](elasticsearch://reference/data-analysis/text-analysis/tokenizer-reference.md)
+* zero or more [token filters](elasticsearch://reference/data-analysis/text-analysis/token-filter-reference.md).
 
 
-## Configuration [_configuration] 
+## Configuration [_configuration]
 
 The `custom` analyzer accepts the following parameters:
 
 `type`
-:   Analyzer type. Accepts [built-in analyzer types](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/text-analysis/analyzer-reference.md). For custom analyzers, use `custom` or omit this parameter.
+:   Analyzer type. Accepts [built-in analyzer types](elasticsearch://reference/data-analysis/text-analysis/analyzer-reference.md). For custom analyzers, use `custom` or omit this parameter.
 
 `tokenizer`
-:   A built-in or customised [tokenizer](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/text-analysis/tokenizer-reference.md). (Required)
+:   A built-in or customised [tokenizer](elasticsearch://reference/data-analysis/text-analysis/tokenizer-reference.md). (Required)
 
 `char_filter`
-:   An optional array of built-in or customised [character filters](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/text-analysis/character-filter-reference.md).
+:   An optional array of built-in or customised [character filters](elasticsearch://reference/data-analysis/text-analysis/character-filter-reference.md).
 
 `filter`
-:   An optional array of built-in or customised [token filters](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/text-analysis/token-filter-reference.md).
+:   An optional array of built-in or customised [token filters](elasticsearch://reference/data-analysis/text-analysis/token-filter-reference.md).
 
 `position_increment_gap`
-:   When indexing an array of text values, Elasticsearch inserts a fake "gap" between the last term of one value and the first term of the next value to ensure that a phrase query doesn’t match two terms from different array elements. Defaults to `100`. See [`position_increment_gap`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/position-increment-gap.md) for more.
+:   When indexing an array of text values, Elasticsearch inserts a fake "gap" between the last term of one value and the first term of the next value to ensure that a phrase query doesn’t match two terms from different array elements. Defaults to `100`. See [`position_increment_gap`](elasticsearch://reference/elasticsearch/mapping-reference/position-increment-gap.md) for more.
 
 
-## Example configuration [_example_configuration] 
+## Example configuration [_example_configuration]
 
 Here is an example that combines the following:
 
 Character Filter
-:   * [HTML Strip Character Filter](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/text-analysis/analysis-htmlstrip-charfilter.md)
+:   * [HTML Strip Character Filter](elasticsearch://reference/data-analysis/text-analysis/analysis-htmlstrip-charfilter.md)
 
 
 Tokenizer
-:   * [Standard Tokenizer](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/text-analysis/analysis-standard-tokenizer.md)
+:   * [Standard Tokenizer](elasticsearch://reference/data-analysis/text-analysis/analysis-standard-tokenizer.md)
 
 
 Token Filters
-:   * [Lowercase Token Filter](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/text-analysis/analysis-lowercase-tokenfilter.md)
-* [ASCII-Folding Token Filter](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/text-analysis/analysis-asciifolding-tokenfilter.md)
+:   * [Lowercase Token Filter](elasticsearch://reference/data-analysis/text-analysis/analysis-lowercase-tokenfilter.md)
+* [ASCII-Folding Token Filter](elasticsearch://reference/data-analysis/text-analysis/analysis-asciifolding-tokenfilter.md)
 
 
 ```console
@@ -95,16 +95,16 @@ The previous example used tokenizer, token filters, and character filters with t
 Here is a more complicated example that combines the following:
 
 Character Filter
-:   * [Mapping Character Filter](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/text-analysis/analysis-mapping-charfilter.md), configured to replace `:)` with `_happy_` and `:(` with `_sad_`
+:   * [Mapping Character Filter](elasticsearch://reference/data-analysis/text-analysis/analysis-mapping-charfilter.md), configured to replace `:)` with `_happy_` and `:(` with `_sad_`
 
 
 Tokenizer
-:   * [Pattern Tokenizer](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/text-analysis/analysis-pattern-tokenizer.md), configured to split on punctuation characters
+:   * [Pattern Tokenizer](elasticsearch://reference/data-analysis/text-analysis/analysis-pattern-tokenizer.md), configured to split on punctuation characters
 
 
 Token Filters
-:   * [Lowercase Token Filter](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/text-analysis/analysis-lowercase-tokenfilter.md)
-* [Stop Token Filter](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/text-analysis/analysis-stop-tokenfilter.md), configured to use the pre-defined list of English stop words
+:   * [Lowercase Token Filter](elasticsearch://reference/data-analysis/text-analysis/analysis-lowercase-tokenfilter.md)
+* [Stop Token Filter](elasticsearch://reference/data-analysis/text-analysis/analysis-stop-tokenfilter.md), configured to use the pre-defined list of English stop words
 
 
 Here is an example:

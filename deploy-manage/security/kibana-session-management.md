@@ -9,7 +9,7 @@ When you log in, {{kib}} creates a session that is used to authenticate subseque
 
 When your session expires, or you log out, {{kib}} will invalidate your cookie and remove session information from the index. {{kib}} also periodically invalidates and removes any expired sessions that weren’t explicitly invalidated.
 
-To manage user sessions programmatically, {{kib}} exposes [session management APIs](https://www.elastic.co/guide/en/kibana/current/session-management-api.html). For details, check out [Session and cookie security settings](asciidocalypse://docs/kibana/docs/reference/configuration-reference/security-settings.md#security-session-and-cookie-settings).
+To manage user sessions programmatically, {{kib}} exposes [session management APIs](https://www.elastic.co/guide/en/kibana/current/session-management-api.html). For details, check out [Session and cookie security settings](kibana://reference/configuration-reference/security-settings.md#security-session-and-cookie-settings).
 
 ## Session idle timeout [session-idle-timeout]
 
@@ -31,7 +31,7 @@ xpack.security.session.lifespan: "7d"
 
 ## Session cleanup interval [session-cleanup-interval]
 
-::::{important} 
+::::{important}
 If you disable session idle timeout and lifespan, then Kibana will not automatically remove session information from the index unless you explicitly log out. This might lead to an infinitely growing session index. As long as either idle timeout or lifespan is configured, Kibana sessions will be cleaned up even if you don’t explicitly log out.
 
 ::::
@@ -48,7 +48,7 @@ xpack.security.session.cleanupInterval: "1d"
 
 By default, there is no limit to the maximum number of concurrent sessions each user can have in {{kib}}. To add a limit, use the `xpack.security.session.сoncurrentSessions.maxSessions` configuration option. If set, the value of this option should be an integer between `1` and `1000`. When the limit is exceeded, the oldest session is automatically invalidated.
 
-::::{note} 
+::::{note}
 Due to the rate at which session information is refreshed, there might be a few seconds where the concurrent session limit is not enforced. This is something to consider for use cases where it is common to create multiple sessions simultaneously.
 ::::
 

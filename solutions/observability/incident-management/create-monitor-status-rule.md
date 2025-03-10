@@ -21,7 +21,7 @@ The **Filter by** section controls the scope of the rule. The rule will only che
 
 :::{image} ../../../images/serverless-synthetic-monitor-filters.png
 :alt: Filter by section of the Synthetics monitor status rule
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -43,7 +43,7 @@ In this example, the conditions will be met any time a `browser` monitor is down
 
 :::{image} ../../../images/serverless-synthetic-monitor-conditions.png
 :alt: Filters and conditions defining a Synthetics monitor status rule
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -81,14 +81,14 @@ After you select a connector, you must set the action frequency. You can choose 
 
 :::{image} ../../../images/serverless-synthetic-monitor-action-types-summary.png
 :alt: synthetic monitor action types summary
-:class: screenshot
+:screenshot:
 :::
 
 Alternatively, you can set the action frequency such that you choose how often the action runs (for example, at each check interval, only when the alert status changes, or at a custom action interval). In this case, you must also select the specific threshold condition that affects when actions run: the *Synthetics monitor status* changes or when it is *Recovered* (went from down to up).
 
 :::{image} ../../../images/serverless-synthetic-monitor-action-types-each-alert.png
 :alt: synthetic monitor action types each alert
-:class: screenshot
+:screenshot:
 :::
 
 You can also further refine the conditions under which actions run by specifying that actions only run when they match a KQL query or when an alert occurs within a specific time frame:
@@ -98,7 +98,7 @@ You can also further refine the conditions under which actions run by specifying
 
 :::{image} ../../../images/serverless-synthetic-monitor-action-types-more-options.png
 :alt: synthetic monitor action types more options
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -108,7 +108,7 @@ Use the default notification message or customize it. You can add more context t
 
 :::{image} ../../../images/serverless-synthetic-monitor-action-variables.png
 :alt: synthetic monitor action variables
-:class: screenshot
+:screenshot:
 :::
 
 The following variables are specific to this rule type. You an also specify [variables common to all rules](../../../explore-analyze/alerts-cases/alerts/rule-action-variables.md).
@@ -202,7 +202,7 @@ This rule covers all the monitors you have running. You can use a query to speci
 
 :::{image} ../../../images/observability-monitor-status-alert.png
 :alt: Monitor status rule
-:class: screenshot
+:screenshot:
 :::
 
 The final step when creating a rule is to select one or more actions to take when the alert is triggered.
@@ -216,21 +216,21 @@ You can configure action types on the [Settings](../../../solutions/observabilit
 
 :::{image} ../../../images/observability-uptime-alert-connectors.png
 :alt: Uptime rule connectors
-:class: screenshot
+:screenshot:
 :::
 
 After you select a connector, you must set the action frequency. You can choose to create a summary of alerts on each check interval or on a custom interval. For example, send email notifications that summarize the new, ongoing, and recovered alerts each hour:
 
 :::{image} ../../../images/observability-action-alert-summary.png
 :alt: Action frequency summary of alerts
-:class: screenshot
+:screenshot:
 :::
 
 Alternatively, you can set the action frequency such that you choose how often the action runs (for example, at each check interval, only when the alert status changes, or at a custom action interval). In this case, you must also select the specific threshold condition that affects when actions run: `Uptime Down Monitor` or `Recovered`.
 
 :::{image} ../../../images/observability-uptime-run-when-selection.png
 :alt: Action frequency for each alert
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -240,7 +240,7 @@ Use the default notification message or customize it. You can add more context t
 
 :::{image} ../../../images/observability-monitor-status-alert-default-message.png
 :alt: Default notification message for monitor status rules with open "Add variable" popup listing available action variables
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -250,7 +250,7 @@ To receive a notification when the alert recovers, select **Run when Recovered**
 
 :::{image} ../../../images/observability-monitor-status-alert-recovery.png
 :alt: Default recovery message for monitor status rules with open "Add variable" popup listing available action variables
-:class: screenshot
+:screenshot:
 :::
 
 

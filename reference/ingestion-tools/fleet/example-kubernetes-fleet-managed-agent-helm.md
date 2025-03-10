@@ -100,7 +100,7 @@ To get started, you need:
 
     :::{image} images/helm-example-nodes-enrollment-confirmation.png
     :alt: Screen capture of Add Agent UI showing that the agent has enrolled in Fleet
-    :class: screenshot
+    :screenshot:
     :::
 
 12. In {{fleet}}, open the **Agents** tab and see that an **Agent-pernode-demo-#** agent is running.
@@ -109,7 +109,7 @@ To get started, you need:
 
     :::{image} images/helm-example-nodes-logs-and-metrics.png
     :alt: Screen capture of the Logs and Metrics view on the Integrations pane
-    :class: screenshot
+    :screenshot:
     :::
 
 
@@ -132,7 +132,7 @@ Now that you’ve {{agent}} and data is flowing, you can set up the {{k8s}} inte
 
     :::{image} images/helm-example-fleet-metrics-dashboard.png
     :alt: Screen capture of the Metrics Kubernetes pods dashboard
-    :class: screenshot
+    :screenshot:
     :::
 
 

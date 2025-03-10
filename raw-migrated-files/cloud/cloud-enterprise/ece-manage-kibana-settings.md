@@ -3,7 +3,7 @@
 Elastic Cloud Enterprise supports most of the standard Kibana and X-Pack settings. Through a YAML editor in the console, you can append Kibana properties to the `kibana.yml` file. Your changes to the configuration file are read on startup.
 
 ::::{important}
-Be aware that some settings that could break your cluster if set incorrectly and that the syntax might change between major versions. Before upgrading, be sure to review the full list of the [latest Kibana settings and syntax](asciidocalypse://docs/kibana/docs/reference/configuration-reference/general-settings.md).
+Be aware that some settings that could break your cluster if set incorrectly and that the syntax might change between major versions. Before upgrading, be sure to review the full list of the [latest Kibana settings and syntax](kibana://reference/configuration-reference/general-settings.md).
 ::::
 
 

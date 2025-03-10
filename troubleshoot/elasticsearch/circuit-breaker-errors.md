@@ -5,9 +5,9 @@ mapped_pages:
 
 # Circuit breaker errors [circuit-breaker-errors]
 
-{{es}} uses [circuit breakers](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/circuit-breaker-settings.md) to prevent nodes from running out of JVM heap memory. If Elasticsearch estimates an operation would exceed a circuit breaker, it stops the operation and returns an error.
+{{es}} uses [circuit breakers](elasticsearch://reference/elasticsearch/configuration-reference/circuit-breaker-settings.md) to prevent nodes from running out of JVM heap memory. If Elasticsearch estimates an operation would exceed a circuit breaker, it stops the operation and returns an error.
 
-By default, the [parent circuit breaker](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/circuit-breaker-settings.md#parent-circuit-breaker) triggers at 95% JVM memory usage. To prevent errors, we recommend taking steps to reduce memory pressure if usage consistently exceeds 85%.
+By default, the [parent circuit breaker](elasticsearch://reference/elasticsearch/configuration-reference/circuit-breaker-settings.md#parent-circuit-breaker) triggers at 95% JVM memory usage. To prevent errors, we recommend taking steps to reduce memory pressure if usage consistently exceeds 85%.
 
 See [this video](https://www.youtube.com/watch?v=k3wYlRVbMSw) for a walkthrough of diagnosing circuit breaker errors.
 
@@ -68,7 +68,7 @@ High JVM memory pressure often causes circuit breaker errors. See [High JVM memo
 
 **Avoid using fielddata on `text` fields**
 
-For high-cardinality `text` fields, fielddata can use a large amount of JVM memory. To avoid this, {{es}} disables fielddata on `text` fields by default. If you’ve enabled fielddata and triggered the [fielddata circuit breaker](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/circuit-breaker-settings.md#fielddata-circuit-breaker), consider disabling it and using a `keyword` field instead. See [`fielddata` mapping parameter](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/text.md#fielddata-mapping-param).
+For high-cardinality `text` fields, fielddata can use a large amount of JVM memory. To avoid this, {{es}} disables fielddata on `text` fields by default. If you’ve enabled fielddata and triggered the [fielddata circuit breaker](elasticsearch://reference/elasticsearch/configuration-reference/circuit-breaker-settings.md#fielddata-circuit-breaker), consider disabling it and using a `keyword` field instead. See [`fielddata` mapping parameter](elasticsearch://reference/elasticsearch/mapping-reference/text.md#fielddata-mapping-param).
 
 **Clear the fielddata cache**
 

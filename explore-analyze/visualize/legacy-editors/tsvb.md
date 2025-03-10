@@ -3,7 +3,7 @@ applies_to:
   stack: ga
   serverless: ga
 ---
-  
+
 # TSVB [tsvb-panel]
 
 **TSVB** is a set of visualization types that you configure and display on dashboards.
@@ -19,7 +19,7 @@ With **TSVB**, you can:
 
 :::{image} ../../../images/kibana-tsvb-screenshot.png
 :alt: TSVB overview
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -37,7 +37,7 @@ When you use only {{data-sources}}, you are able to:
 ::::{important}
 :name: tsvb-index-patterns-mode
 
-Creating **TSVB** visualizations with an {{es}} index string is deprecated and will be removed in a future release. By default, you create **TSVB** visualizations with only {{data-sources}}. To use an {{es}} index string, contact your administrator, or go to [Advanced Settings](asciidocalypse://docs/kibana/docs/reference/advanced-settings.md) and set `metrics:allowStringIndices` to `true`.
+Creating **TSVB** visualizations with an {{es}} index string is deprecated and will be removed in a future release. By default, you create **TSVB** visualizations with only {{data-sources}}. To use an {{es}} index string, contact your administrator, or go to [Advanced Settings](kibana://reference/advanced-settings.md) and set `metrics:allowStringIndices` to `true`.
 ::::
 
 
@@ -234,7 +234,7 @@ Performing math across data series is unsupported in **TSVB**. To calculate the 
 
    :::{image} ../../../images/kibana-tsvb_clone_series.png
    :alt: Clone Series action
-   :class: screenshot
+   :screenshot:
    :::
 
 2. Click **Options**, then enter the offset value in the **Offset series time by** field.

@@ -17,12 +17,12 @@ Upgrading from a release candidate build, such as 8.0.0-rc1 or 8.0.0-rc2, is not
 
     * [APM breaking changes](https://www.elastic.co/guide/en/observability/current/apm-breaking.html)
     * [{{beats}} breaking changes](asciidocalypse://docs/beats/docs/release-notes/breaking-changes.md)
-    * [{{es}} migration guide](asciidocalypse://docs/elasticsearch/docs/release-notes/breaking-changes.md)
+    * [{{es}} migration guide](elasticsearch://release-notes/breaking-changes.md)
     * [{{elastic-sec}} release notes](https://www.elastic.co/guide/en/security/current/release-notes.html)
     * [{{ents}} release notes](https://www.elastic.co/guide/en/enterprise-search/current/changelog.html)
-    * [{{fleet}} and {{agent}} release notes](asciidocalypse://docs/docs-content/docs/release-notes/fleet.md)
-    * [{{kib}} release notes](asciidocalypse://docs/kibana/docs/release-notes/kibana.md)
-    * [{{ls}} breaking changes](asciidocalypse://docs/logstash/docs/release-notes/breaking-changes/logstash.md)
+    * [{{fleet}} and {{agent}} release notes](/release-notes/fleet-elastic-agent.md)
+    * [{{kib}} release notes](kibana://release-notes/index.md)
+    * [{{ls}} breaking changes](logstash://release-notes/breaking-changes.md)
 
     ::::{important}
     * Make sure you check the breaking changes for each minor release up to 9.0.0-beta1.
@@ -74,7 +74,7 @@ You can view your remote clusters from **Stack Management > Remote Clusters**.
 3. Make the recommended changes to ensure that your applications continue to operate as expected after the upgrade.
 
     ::::{note}
-    As a temporary solution, you can submit requests to 9.x using the 8.x syntax with the REST API compatibility mode. While this enables you to submit requests that use the old syntax, it does not guarantee the same behavior. REST API compatibility should be a bridge to smooth out the upgrade process, not a long term strategy. For more information, see [REST API compatibility](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/compatibility.md).
+    As a temporary solution, you can submit requests to 9.x using the 8.x syntax with the REST API compatibility mode. While this enables you to submit requests that use the old syntax, it does not guarantee the same behavior. REST API compatibility should be a bridge to smooth out the upgrade process, not a long term strategy. For more information, see [REST API compatibility](elasticsearch://reference/elasticsearch/rest-apis/compatibility.md).
     ::::
 
 4. If you use any {{es}} plugins, make sure there is a version of each plugin that is compatible with {{es}} version 9.0.0-beta1.

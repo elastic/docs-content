@@ -14,7 +14,7 @@ This image shows an example of global search and global time narrowing results.
 
 :::{image} ../../../images/kibana-global_search_bar.png
 :alt: global search and global time narrowing results
-:class: screenshot
+:screenshot:
 :::
 
 Only layers requesting data from {{es}} are narrowed by global search and global time. To add a layer that requests data from {{es}} to your map, click **Add layer**, then select one of the following:

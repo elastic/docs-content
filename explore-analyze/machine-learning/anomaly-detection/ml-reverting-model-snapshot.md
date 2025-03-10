@@ -15,7 +15,7 @@ mapped_pages:
 3. Open the job details and navigate to the **Model Snapshots** tab.
    :::{image} ../../../images/machine-learning-anomaly-job-model-snapshots.jpg
    :alt: A screenshot of a job with the Model Snapshots tab opened
-   :class: screenshot
+   :screenshot:
    :::
 
 4. Select a snapshot from the list and click the **Revert** icon under **Actions**.
@@ -24,7 +24,7 @@ mapped_pages:
    * You can select a time range you want to avoid during the replay by declaring a calendar event. This way, you can skip any problematic time frame that you want the {{anomaly-job}} to avoid.
    :::{image} ../../../images/machine-learning-revert-model-snapshot.jpg
    :alt: A screenshot of a revert model snapshot flyout
-   :class: screenshot
+   :screenshot:
    :::
 
 6. Click **Apply**.
