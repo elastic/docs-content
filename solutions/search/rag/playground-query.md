@@ -28,7 +28,7 @@ The following screenshot shows the query editor in the Playground UI. In this si
 
 :::{image} ../../../images/kibana-query-interface.png
 :alt: View and modify queries
-:class: screenshot
+:screenshot:
 :::
 
 Certain fields in your documents may be hidden. Learn more about [hidden fields](#playground-hidden-fields).

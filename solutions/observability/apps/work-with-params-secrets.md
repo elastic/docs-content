@@ -42,7 +42,7 @@ From any page in the Synthetics UI:
 
 :::{image} ../../../images/observability-synthetics-params-secrets-kibana-define.png
 :alt: Global parameters tab on the Synthetics Settings page
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -121,14 +121,14 @@ To use a param in a lightweight monitor that is created in the Synthetics UI, wr
 
 :::{image} ../../../images/serverless-synthetics-params-secrets-kibana-use-lightweight.png
 :alt: Use a param in a lightweight monitor created in the Synthetics UI
-:class: screenshot
+:screenshot:
 :::
 
 To use a param in a browser monitor that is created in the Synthetics UI, add `params.` before the name of the param (for example, `params.my_url`).
 
 :::{image} ../../../images/observability-synthetics-params-secrets-kibana-use-lightweight.png
 :alt: Use a param in a lightweight monitor created in the Synthetics UI
-:class: screenshot
+:screenshot:
 :::
 
 

@@ -4,7 +4,7 @@ The Elastic AI Assistant utilizes generative AI to bolster your cybersecurity op
 
 :::{image} ../../../images/serverless-assistant-basic-view.png
 :alt: Image of AI Assistant chat window
-:class: screenshot
+:screenshot:
 :::
 
 ::::{important}
@@ -55,7 +55,7 @@ To open AI Assistant, select the **AI Assistant** button in the top toolbar from
 
 :::{image} ../../../images/serverless-ai-assistant-button.png
 :alt: AI Assistant button
-:class: screenshot
+:screenshot:
 :::
 
 This opens the **Welcome** chat interface, where you can ask general questions about {{elastic-sec}}.
@@ -82,14 +82,14 @@ Use these features to adjust and act on your conversations with AI Assistant:
 
     :::{image} ../../../images/serverless-quick-prompts.png
     :alt: Quick Prompts highlighted below a conversation
-    :class: screenshot
+    :screenshot:
     :::
 
 * System Prompts and Quick Prompts can also be configured from the corresponding tabs on the **Security AI settings** page.
 
     :::{image} ../../../images/serverless-assistant-settings-system-prompts.png
     :alt: The Security AI settings menu's System Prompts tab
-    :class: screenshot
+    :screenshot:
     :::
 
 * Quick Prompt availability varies based on context—for example, the **Alert summarization** Quick Prompt appears when you open AI Assistant while viewing an alert. To customize existing Quick Prompts and create new ones, click **Add Quick Prompt**.
@@ -141,7 +141,7 @@ You can access anonymization settings directly from the **Attack Discovery** pag
 
 :::{image} ../../../images/serverless-assistant-anonymization-menu.png
 :alt: AI Assistant's settings menu
-:class: screenshot
+:screenshot:
 :::
 
 The **Show anonymized** toggle controls whether you see the obfuscated or plaintext versions of the fields you sent to AI Assistant. It doesn’t control what gets obfuscated — that’s determined by the anonymization settings. It also doesn’t affect how event fields appear *before* being sent to AI Assistant. Instead, it controls how fields that were already sent and obfuscated appear to you.

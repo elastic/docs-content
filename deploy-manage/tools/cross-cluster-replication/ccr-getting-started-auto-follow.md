@@ -28,7 +28,7 @@ As new indices matching these patterns are created on the remote, {{es}} automat
 
 :::{image} ../../../images/elasticsearch-reference-auto-follow-patterns.png
 :alt: The Auto-follow patterns page in {{kib}}
-:class: screenshot
+:screenshot:
 :::
 
 ::::{dropdown} API example

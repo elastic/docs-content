@@ -17,7 +17,7 @@ Powered by the APM Real user monitoring (RUM) agent, all it takes is a few lines
 
 :::{image} ../../../images/observability-user-experience-tab.png
 :alt: {{user-experience}} tab
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -44,7 +44,7 @@ You won’t be able to fix any problems from viewing these metrics alone, but yo
 
 :::{image} ../../../images/observability-page-load-duration.png
 :alt: {{user-experience}} page load duration metrics
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -54,7 +54,7 @@ You won’t be able to fix any problems from viewing these metrics alone, but yo
 
 :::{image} ../../../images/observability-user-exp-metrics.png
 :alt: {{user-experience}} metrics
-:class: screenshot
+:screenshot:
 :::
 
 ::::{dropdown} Metric reference
@@ -123,7 +123,7 @@ Don’t forget, this data also influences search engine page rankings and placem
 
 :::{image} ../../../images/observability-visitor-breakdown.png
 :alt: {{user-experience}} visitor breakdown
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -133,7 +133,7 @@ JavaScript errors can be detrimental to a users experience on your website. But 
 
 :::{image} ../../../images/observability-js-errors.png
 :alt: {{user-experience}} JavaScript errors
-:class: screenshot
+:screenshot:
 :::
 
 Open error messages in APM for additional analysis tools, like occurrence rates, transaction ids, user data, and more.

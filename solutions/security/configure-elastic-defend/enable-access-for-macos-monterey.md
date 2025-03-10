@@ -68,7 +68,7 @@ The following instructions apply only to {{elastic-endpoint}} running version 8.
 
     :::{image} ../../../images/security-sec-privacy-pane.png
     :alt: sec privacy pane
-    :class: screenshot
+    :screenshot:
     :::
 
 3. On the **Security and Privacy** pane, select the **Privacy** tab.
@@ -76,7 +76,7 @@ The following instructions apply only to {{elastic-endpoint}} running version 8.
 
     :::{image} ../../../images/security-select-fda.png
     :alt: Select Full Disk Access
-    :class: screenshot
+    :screenshot:
     :::
 
 5. In the lower-left corner of the pane, click the **Lock button**, then enter your credentials to authenticate.

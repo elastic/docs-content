@@ -70,7 +70,7 @@ After enabling Universal Profiling on your deployment for the first time, select
 
 :::{image} ../../../images/observability-profiling-setup-popup.png
 :alt: profiling setup popup
-:class: screenshot
+:screenshot:
 :::
 
 Click **Set up Universal Profiling** to configure data ingestion.
@@ -120,7 +120,7 @@ To install the Universal Profiling Agent using the {{agent}} and the Universal P
 
     :::{image} ../../../images/observability-profiling-elastic-agent.png
     :alt: profiling elastic agent
-    :class: screenshot
+    :screenshot:
     :::
 
 2. Click `Manage Universal Profiling Agent in Fleet` to complete the integration.
@@ -132,7 +132,7 @@ To install the Universal Profiling Agent using the {{agent}} and the Universal P
 
         :::{image} ../../../images/observability-profililing-elastic-agent-creds.png
         :alt: profililing elastic agent creds
-        :class: screenshot
+        :screenshot:
         :::
 
 5. Click **Save and continue**.
@@ -148,7 +148,7 @@ The following is an example of the provided instructions for {{k8s}}:
 
 :::{image} ../../../images/observability-profiling-k8s-hostagent.png
 :alt: profiling k8s hostagent
-:class: screenshot
+:screenshot:
 :::
 
 

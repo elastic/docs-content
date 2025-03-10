@@ -21,7 +21,7 @@ To create or update a search template, use the [create stored script API](https:
 
 The request’s `source` supports the same parameters as the [search API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search)'s request body.`source` also accepts [Mustache](https://mustache.github.io/) variables, from an open source project [mustache.java](https://github.com/spullara/mustache.java).
 
-Typically [Mustache](https://mustache.github.io/) variables are enclosed in double curly brackets: `{{my-var}}`. When you run a templated search, {{es}} replaces these variables with values from `params`. To learn more about mustache syntax - see [Mustache.js manual](http://mustache.github.io/mustache.5.md) Search templates must use a `lang` of `mustache`.
+Typically [Mustache](https://mustache.github.io/) variables are enclosed in double curly brackets: `{{my-var}}`. When you run a templated search, {{es}} replaces these variables with values from `params`. To learn more about mustache syntax - see [Mustache.js manual](http://mustache.github.io/mustache.5.html) Search templates must use a `lang` of `mustache`.
 
 The following request creates a search template with an `id` of `my-search-template`.
 

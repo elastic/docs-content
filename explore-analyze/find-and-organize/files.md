@@ -14,5 +14,5 @@ You can access and manage all of the files currently stored in {{kib}} from the 
 
 :::{image} ../../images/serverless-file-management.png
 :alt: Files UI
-:class: screenshot
+:screenshot:
 :::

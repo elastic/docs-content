@@ -13,12 +13,10 @@ mapped_pages:
 
  ⚠️ **This page is a work in progress.** ⚠️
 
-**TOOLS**
+You can use these tools and APIs to interact with the following {{ece}} features:
 
-You can use these tools and APIs to interact with the following {{ece}} features: 
-
-* [{{ecloud}} Control (ecctl)](asciidocalypse://docs/ecctl/docs/reference/index.md): Wraps typical operations commonly needed by operators within a single command line tool. 
-* [ECE scripts](asciidocalypse://docs/cloud/docs/reference/cloud-enterprise/scripts.md): Use the `elastic-cloud-enterprise.sh` script to install {{ece}} or modify your installation. 
+* [{{ecloud}} Control (ecctl)](ecctl://reference/index.md): Wraps typical operations commonly needed by operators within a single command line tool.
+* [ECE scripts](asciidocalypse://docs/cloud/docs/reference/cloud-enterprise/scripts.md): Use the `elastic-cloud-enterprise.sh` script to install {{ece}} or modify your installation.
 * [ECE diagnostics tool](/troubleshoot/deployments/cloud-enterprise/run-ece-diagnostics-tool.md): Collect logs and metrics that you can send to Elastic Support for troubleshooting and investigation purposes.
 * [Elasticsearch API console](#ece-api-console)
 
@@ -46,4 +44,4 @@ To learn more about what kinds of {{es}} API calls you can make from the Cloud U
 
 
 
- 
+

@@ -1,27 +1,6 @@
 project: 'Deploy and manage'
 toc:
   - file: index.md
-  - file: distributed-architecture.md
-    children:
-      - file: distributed-architecture/clusters-nodes-shards.md
-        children:
-          - file: distributed-architecture/clusters-nodes-shards/node-roles.md
-      - file: distributed-architecture/reading-and-writing-documents.md
-      - file: distributed-architecture/shard-allocation-relocation-recovery.md
-        children:
-          - file: distributed-architecture/shard-allocation-relocation-recovery/shard-allocation-awareness.md
-          - file: distributed-architecture/shard-allocation-relocation-recovery/index-level-shard-allocation.md
-            children:
-              - file: distributed-architecture/shard-allocation-relocation-recovery/delaying-allocation-when-node-leaves.md
-      - file: distributed-architecture/discovery-cluster-formation.md
-        children:
-          - file: distributed-architecture/discovery-cluster-formation/discovery-hosts-providers.md
-          - file: distributed-architecture/discovery-cluster-formation/modules-discovery-quorums.md
-          - file: distributed-architecture/discovery-cluster-formation/modules-discovery-voting.md
-          - file: distributed-architecture/discovery-cluster-formation/modules-discovery-bootstrap-cluster.md
-          - file: distributed-architecture/discovery-cluster-formation/cluster-state-overview.md
-          - file: distributed-architecture/discovery-cluster-formation/cluster-fault-detection.md
-      - file: distributed-architecture/kibana-tasks-management.md
   - file: deploy.md
     children:
       - file: deploy/deployment-comparison.md
@@ -370,6 +349,27 @@ toc:
           - file: deploy/self-managed/air-gapped-install.md
           - file: deploy/self-managed/tools-apis.md
       - file: deploy/kibana-reporting-configuration.md
+  - file: distributed-architecture.md
+    children:
+      - file: distributed-architecture/clusters-nodes-shards.md
+        children:
+          - file: distributed-architecture/clusters-nodes-shards/node-roles.md
+      - file: distributed-architecture/reading-and-writing-documents.md
+      - file: distributed-architecture/shard-allocation-relocation-recovery.md
+        children:
+          - file: distributed-architecture/shard-allocation-relocation-recovery/shard-allocation-awareness.md
+          - file: distributed-architecture/shard-allocation-relocation-recovery/index-level-shard-allocation.md
+            children:
+              - file: distributed-architecture/shard-allocation-relocation-recovery/delaying-allocation-when-node-leaves.md
+      - file: distributed-architecture/discovery-cluster-formation.md
+        children:
+          - file: distributed-architecture/discovery-cluster-formation/discovery-hosts-providers.md
+          - file: distributed-architecture/discovery-cluster-formation/modules-discovery-quorums.md
+          - file: distributed-architecture/discovery-cluster-formation/modules-discovery-voting.md
+          - file: distributed-architecture/discovery-cluster-formation/modules-discovery-bootstrap-cluster.md
+          - file: distributed-architecture/discovery-cluster-formation/cluster-state-overview.md
+          - file: distributed-architecture/discovery-cluster-formation/cluster-fault-detection.md
+      - file: distributed-architecture/kibana-tasks-management.md
   - file: production-guidance.md
     children:
       - file: production-guidance/getting-ready-for-production-elasticsearch.md
@@ -475,96 +475,65 @@ toc:
               - file: tools/cross-cluster-replication/_perform_update_or_delete_by_query.md
   - file: autoscaling.md
     children:
-      - file: autoscaling/ech-autoscaling.md
-        children:
-          - file: autoscaling/ech-autoscaling-example.md
-      - file: autoscaling/ec-autoscaling.md
-        children:
-          - file: autoscaling/ec-autoscaling-example.md
-          - file: autoscaling/ec-autoscaling-api-example.md
-      - file: autoscaling/ece-autoscaling.md
-        children:
-          - file: autoscaling/ece-autoscaling-example.md
-          - file: autoscaling/ece-autoscaling-api-example.md
-      - file: autoscaling/autoscaling-stateless-applications-on-eck.md
-      - file: autoscaling/deployments-autoscaling-on-eck.md
+      - file: autoscaling/autoscaling-in-ece-and-ech.md
+      - file: autoscaling/autoscaling-in-eck.md
       - file: autoscaling/autoscaling-deciders.md
       - file: autoscaling/trained-model-autoscaling.md
-  - file: remote-clusters.md
-    children:
-      - file: remote-clusters/ec-enable-ccs.md
-        children:
-          - file: remote-clusters/ec-remote-cluster-same-ess.md
-          - file: remote-clusters/ec-remote-cluster-other-ess.md
-          - file: remote-clusters/ec-remote-cluster-ece.md
-          - file: remote-clusters/ec-remote-cluster-self-managed.md
-          - file: remote-clusters/ec-enable-ccs-for-eck.md
-          - file: remote-clusters/ec-edit-remove-trusted-environment.md
-          - file: remote-clusters/ec-migrate-ccs.md
-      - file: remote-clusters/ece-enable-ccs.md
-        children:
-          - file: remote-clusters/ece-remote-cluster-same-ece.md
-          - file: remote-clusters/ece-remote-cluster-other-ece.md
-          - file: remote-clusters/ece-remote-cluster-ece-ess.md
-          - file: remote-clusters/ece-remote-cluster-self-managed.md
-          - file: remote-clusters/ece-enable-ccs-for-eck.md
-          - file: remote-clusters/ece-edit-remove-trusted-environment.md
-          - file: remote-clusters/ece-migrate-ccs.md
-      - file: remote-clusters/remote-clusters-self-managed.md
-        children:
-          - file: remote-clusters/remote-clusters-api-key.md
-          - file: remote-clusters/remote-clusters-cert.md
-          - file: remote-clusters/remote-clusters-migrate.md
-          - file: remote-clusters/remote-clusters-settings.md
-      - file: remote-clusters/eck-remote-clusters.md
   - file: security.md
-    children:
-      - file: security/secure-your-elastic-cloud-enterprise-installation.md
+    children: 
+      - file: security/secure-hosting-environment.md
         children:
-          - file: security/secure-your-elastic-cloud-enterprise-installation/manage-security-certificates.md
-          - file: security/secure-your-elastic-cloud-enterprise-installation/allow-x509-certificates-signed-with-sha-1.md
-          - file: security/secure-your-elastic-cloud-enterprise-installation/configure-tls-version.md
+          - file: security/secure-your-elastic-cloud-organization.md        
+          - file: security/secure-your-elastic-cloud-enterprise-installation.md
+            children:
+              - file: security/secure-your-elastic-cloud-enterprise-installation/manage-security-certificates.md
+              - file: security/secure-your-elastic-cloud-enterprise-installation/allow-x509-certificates-signed-with-sha-1.md
+              - file: security/secure-your-elastic-cloud-enterprise-installation/configure-tls-version.md
+          - file: security/secure-your-eck-installation.md
+          - file: security/manually-configure-security-in-self-managed-cluster.md
+            children:
+              - file: security/set-up-minimal-security.md
+              - file: security/set-up-basic-security.md
+              - file: security/set-up-basic-security-plus-https.md
+              - file: security/install-stack-demo-secure.md
       - file: security/secure-your-cluster-deployment.md
         children:
-          - file: security/secure-endpoints.md
+          - file: security/traffic-filtering.md
             children:
-              - file: security/secure-http-communications.md
-              - file: security/traffic-filtering.md
+              - file: security/ip-traffic-filtering.md
                 children:
-                  - file: security/ip-traffic-filtering.md
-                  - file: security/private-link-traffic-filters.md
-                    children:
-                      - file: security/aws-privatelink-traffic-filters.md
-                      - file: security/azure-private-link-traffic-filters.md
-                      - file: security/gcp-private-service-connect-traffic-filters.md
-                      - file: security/claim-traffic-filter-link-id-ownership-through-api.md
                   - file: security/manage-traffic-filtering-through-api.md
+              - file: security/private-link-traffic-filters.md
+                children:
+                  - file: security/aws-privatelink-traffic-filters.md
+                  - file: security/azure-private-link-traffic-filters.md
+                  - file: security/gcp-private-service-connect-traffic-filters.md
+                  - file: security/claim-traffic-filter-link-id-ownership-through-api.md
               - file: security/elastic-cloud-static-ips.md
-          - file: security/kibana-session-management.md
           - file: security/secure-cluster-communications.md
             children:
+              - file: security/secure-http-communications.md
               - file: security/security-certificates-keys.md
                 children:
                   - file: security/updating-certificates.md
                     children:
                       - file: security/same-ca.md
                       - file: security/different-ca.md
-          - file: security/secure-clients-integrations.md
+              - file: security/supported-ssltls-versions-by-jdk-version.md
+          - file: security/data-security.md
             children:
-              - file: security/httprest-clients-security.md
-          - file: security/encrypt-deployment.md
-            children:
-              - file: security/encrypt-deployment-with-customer-managed-encryption-key.md
-          - file: security/secure-settings.md
-          - file: security/secure-saved-objects.md
-          - file: security/manually-configure-security-in-self-managed-cluster.md
-            children:
-              - file: security/set-up-minimal-security.md
-              - file: security/set-up-basic-security.md
-              - file: security/set-up-basic-security-plus-https.md
-          - file: security/enabling-cipher-suites-for-stronger-encryption.md
-          - file: security/supported-ssltls-versions-by-jdk-version.md
+              - file: security/encrypt-deployment.md
+                children:
+                  - file: security/encrypt-deployment-with-customer-managed-encryption-key.md
+                  - file: security/enabling-cipher-suites-for-stronger-encryption.md
+              - file: security/secure-settings.md
+              - file: security/secure-saved-objects.md
+          - file: security/kibana-session-management.md
           - file: security/fips-140-2.md
+      - file: security/secure-your-personal-account.md
+      - file: security/secure-clients-integrations.md
+        children:
+          - file: security/httprest-clients-security.md
   - file: users-roles.md
     children:
       - file: users-roles/cloud-organization.md
@@ -661,6 +630,33 @@ toc:
       - file: api-keys/elastic-cloud-api-keys.md
       - file: api-keys/elastic-cloud-enterprise-api-keys.md
   - file: manage-connectors.md
+  - file: remote-clusters.md
+    children:
+      - file: remote-clusters/ec-enable-ccs.md
+        children:
+          - file: remote-clusters/ec-remote-cluster-same-ess.md
+          - file: remote-clusters/ec-remote-cluster-other-ess.md
+          - file: remote-clusters/ec-remote-cluster-ece.md
+          - file: remote-clusters/ec-remote-cluster-self-managed.md
+          - file: remote-clusters/ec-enable-ccs-for-eck.md
+          - file: remote-clusters/ec-edit-remove-trusted-environment.md
+          - file: remote-clusters/ec-migrate-ccs.md
+      - file: remote-clusters/ece-enable-ccs.md
+        children:
+          - file: remote-clusters/ece-remote-cluster-same-ece.md
+          - file: remote-clusters/ece-remote-cluster-other-ece.md
+          - file: remote-clusters/ece-remote-cluster-ece-ess.md
+          - file: remote-clusters/ece-remote-cluster-self-managed.md
+          - file: remote-clusters/ece-enable-ccs-for-eck.md
+          - file: remote-clusters/ece-edit-remove-trusted-environment.md
+          - file: remote-clusters/ece-migrate-ccs.md
+      - file: remote-clusters/remote-clusters-self-managed.md
+        children:
+          - file: remote-clusters/remote-clusters-api-key.md
+          - file: remote-clusters/remote-clusters-cert.md
+          - file: remote-clusters/remote-clusters-migrate.md
+          - file: remote-clusters/remote-clusters-settings.md
+      - file: remote-clusters/eck-remote-clusters.md
   - file: monitor.md
     children:
       - file: monitor/autoops.md

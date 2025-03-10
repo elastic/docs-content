@@ -151,7 +151,7 @@ link_id: ""  # no value
 
 :::{image} ../../../images/cloud-enterprise-ce-traffic-filter-ip-rejected-request.png
 :alt: Show rejected request in the proxy logs
-:class: screenshot
+:screenshot:
 :::
 
 To allow such a request to come through the traffic filter, you would register an IP traffic filter with the source IP address `192.168.255.6`, or a matching CIDR mask, e.g. `192.168.255.0/24`.

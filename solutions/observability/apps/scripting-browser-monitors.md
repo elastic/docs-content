@@ -20,5 +20,5 @@ Start by learning the basics of synthetic monitoring, including how to:
 
 :::{image} ../../../images/observability-synthetic-monitor-lifecycle.png
 :alt: Diagram of the lifecycle of a synthetic monitor: write a test
-:class: screenshot
+:screenshot:
 :::

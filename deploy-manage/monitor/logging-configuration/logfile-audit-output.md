@@ -19,7 +19,7 @@ In self-managed clusters, you can configure how the `logfile` is written in the 
 
 Orchestrated deployments (ECH, ECE, and ECK) do not support changes in `log4j2.properties` files of the {{es}} instances.
 
-::::{note} 
+::::{note}
 If you overwrite the `log4j2.properties` and do not specify appenders for any of the audit trails, audit events are forwarded to the root appender, which by default points to the `elasticsearch.log` file.
 ::::
 
@@ -33,4 +33,4 @@ There are however a few attributes that are exceptions to the above format. The 
 
 When the `request.body` attribute is present (see [Auditing search queries](auditing-search-queries.md)), it contains a string value containing the full HTTP request body, escaped as per the JSON RFC 4677.
 
-Refer to [audit event types](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/elasticsearch-audit-events.md) for a complete list of fields, as well as examples, for each entry type.
+Refer to [audit event types](elasticsearch://reference/elasticsearch/elasticsearch-audit-events.md) for a complete list of fields, as well as examples, for each entry type.

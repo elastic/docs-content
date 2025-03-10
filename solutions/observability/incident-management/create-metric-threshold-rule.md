@@ -30,7 +30,7 @@ In this example, the conditions state that you will receive a critical alert for
 
 :::{image} ../../../images/observability-metrics-alert.png
 :alt: Metric threshold alert
-:class: screenshot
+:screenshot:
 :::
 
 When you select **Alert me if there’s no data**, the rule is triggered if the metrics don’t report any data over the expected time period, or if the rule fails to query {{es}}.
@@ -40,7 +40,7 @@ When you select **Alert me if there’s no data**, the rule is triggered if the 
 
 :::{image} ../../../images/observability-metrics-alert-filters-and-group.png
 :alt: Metric threshold filter and group fields
-:class: screenshot
+:screenshot:
 :::
 
 The **Filters** control the scope of the rule. If used, the rule will only evaluate metric data that matches the query in this field. In this example, the rule will only alert on metrics reported from a Cloud region called `us-east`.
@@ -62,24 +62,24 @@ In the **Advanced options**, you can change the number of consecutive runs that 
 
 Extend your rules by connecting them to actions that use the following supported built-in integrations.
 
-* [D3 Security](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/d3security-action-type.md)
-* [Email](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/email-action-type.md)
-* [{{ibm-r}}](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/resilient-action-type.md)
-* [Index](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/index-action-type.md)
-* [Jira](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/jira-action-type.md)
-* [Microsoft Teams](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/teams-action-type.md)
-* [Observability AI Assistant connector](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/obs-ai-assistant-action-type.md)
-* [{{opsgenie}}](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/opsgenie-action-type.md)
-* [PagerDuty](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/pagerduty-action-type.md)
-* [Server log](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/server-log-action-type.md)
-* [{{sn-itom}}](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/servicenow-itom-action-type.md)
-* [{{sn-itsm}}](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/servicenow-action-type.md)
-* [{{sn-sir}}](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/servicenow-sir-action-type.md)
-* [Slack](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/slack-action-type.md)
-* [{{swimlane}}](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/swimlane-action-type.md)
-* [Torq](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/torq-action-type.md)
-* [{{webhook}}](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/webhook-action-type.md)
-* [xMatters](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/xmatters-action-type.md)
+* [D3 Security](kibana://reference/connectors-kibana/d3security-action-type.md)
+* [Email](kibana://reference/connectors-kibana/email-action-type.md)
+* [{{ibm-r}}](kibana://reference/connectors-kibana/resilient-action-type.md)
+* [Index](kibana://reference/connectors-kibana/index-action-type.md)
+* [Jira](kibana://reference/connectors-kibana/jira-action-type.md)
+* [Microsoft Teams](kibana://reference/connectors-kibana/teams-action-type.md)
+* [Observability AI Assistant connector](kibana://reference/connectors-kibana/obs-ai-assistant-action-type.md)
+* [{{opsgenie}}](kibana://reference/connectors-kibana/opsgenie-action-type.md)
+* [PagerDuty](kibana://reference/connectors-kibana/pagerduty-action-type.md)
+* [Server log](kibana://reference/connectors-kibana/server-log-action-type.md)
+* [{{sn-itom}}](kibana://reference/connectors-kibana/servicenow-itom-action-type.md)
+* [{{sn-itsm}}](kibana://reference/connectors-kibana/servicenow-action-type.md)
+* [{{sn-sir}}](kibana://reference/connectors-kibana/servicenow-sir-action-type.md)
+* [Slack](kibana://reference/connectors-kibana/slack-action-type.md)
+* [{{swimlane}}](kibana://reference/connectors-kibana/swimlane-action-type.md)
+* [Torq](kibana://reference/connectors-kibana/torq-action-type.md)
+* [{{webhook}}](kibana://reference/connectors-kibana/webhook-action-type.md)
+* [xMatters](kibana://reference/connectors-kibana/xmatters-action-type.md)
 
 ::::{note}
 Some connector types are paid commercial features, while others are free. For a comparison of the Elastic subscription levels, go to [the subscription page](https://www.elastic.co/subscriptions).
@@ -91,14 +91,14 @@ After you select a connector, you must set the action frequency. You can choose 
 
 :::{image} ../../../images/observability-action-alert-summary.png
 :alt: Action types
-:class: screenshot
+:screenshot:
 :::
 
 Alternatively, you can set the action frequency such that you choose how often the action runs (for example, at each check interval, only when the alert status changes, or at a custom action interval). In this case, you must also select the specific threshold condition that affects when actions run: `Alert`, `Warning`, `No data`, or `Recovered` (a value that was once above a threshold has now dropped below it).
 
 :::{image} ../../../images/observability-metrics-threshold-run-when-selection.png
 :alt: Configure when a rule is triggered
-:class: screenshot
+:screenshot:
 :::
 
 You can also further refine the conditions under which actions run by specifying that actions only run when they match a KQL query or when an alert occurs within a specific time frame:
@@ -108,7 +108,7 @@ You can also further refine the conditions under which actions run by specifying
 
 :::{image} ../../../images/observability-metric-threshold-conditional-alerts.png
 :alt: Configure a conditional alert
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -118,7 +118,7 @@ Use the default notification message or customize it. You can add more context t
 
 :::{image} ../../../images/observability-metrics-threshold-alert-default-message.png
 :alt: Default notification message for metric threshold rules with open "Add variable" popup listing available action variables
-:class: screenshot
+:screenshot:
 :::
 
 The following variables are specific to this rule type. You an also specify [variables common to all rules](../../../explore-analyze/alerts-cases/alerts/rule-action-variables.md).

@@ -51,7 +51,7 @@ The **Host isolation exceptions** page displays all the host isolation exception
 
 :::{image} ../../../images/security-host-isolation-exceptions-ui.png
 :alt: List of host isolation exceptions
-:class: screenshot
+:screenshot:
 :::
 
 

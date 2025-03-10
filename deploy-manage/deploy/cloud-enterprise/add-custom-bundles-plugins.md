@@ -1,8 +1,8 @@
 ---
-mapped_pages: 
+mapped_pages:
     - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-add-custom-bundle-plugin.html
 navigation_title: "Add custom bundles and plugins"
-applies_to: 
+applies_to:
   deployment:
     ece:
 ---
@@ -158,7 +158,7 @@ In this example, we assume the Identity Provider does not publish its SAML metad
     ```
 
     1. The URL for the bundle ZIP file must be always available. Make sure you host the plugin artifacts internally in a highly available environment.
-    
+
 Custom bundles are unzipped in `/app/config/BUNDLE_DIRECTORY_STRUCTURE`, where `BUNDLE_DIRECTORY_STRUCTURE` is the directory structure within the ZIP file itself. These file locations are needed in the next step.
 
 In this example, the SAML metadata file is located in the path `/app/config/saml/metadata.xml`:
@@ -272,7 +272,7 @@ To import a JVM trust store:
     ```
     1. The name of the trust store must match the filename included into the archive
     2. Password used to create the trust store
-    
+
     ::::{important}
     * Use only alphanumeric characters, dashes, and underscores in both file name and password.
     * You do not need to do this step if you are using default filename and password (`cacerts` and `changeit` respectively) in your bundle.
@@ -314,7 +314,7 @@ To import a JVM trust store:
             }
     ```
 
-4. To use this bundle, you can refer it in the [GeoIP processor](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/enrich-processor/geoip-processor.md) of an ingest pipeline as `MyGeoLite2-City.mmdb` under `database_file` such as:
+4. To use this bundle, you can refer it in the [GeoIP processor](elasticsearch://reference/ingestion-tools/enrich-processor/geoip-processor.md) of an ingest pipeline as `MyGeoLite2-City.mmdb` under `database_file` such as:
 
     ```sh
     ...

@@ -21,7 +21,7 @@ You can also access and install them from the **Integrations** page. Go to **Int
 <br>
 :::{image} /images/sample-data-sets.png
 :alt: Sample data sets
-:class: screenshot
+:screenshot:
 :::
 
 ## Run the makelogs script
@@ -46,5 +46,5 @@ Go to **Integrations** and search for **Upload a file**. On the **Upload file** 
 <br>
 :::{image} /images/sample-upload-a-file.png
 :alt: Upload a sample data file
-:class: screenshot
+:screenshot:
 :::

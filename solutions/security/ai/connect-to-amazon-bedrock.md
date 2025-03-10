@@ -174,7 +174,7 @@ Finally, configure the connector in {{kib}}:
 
 
 ::::{important}
-If you’re using [provisioned throughput](https://docs.aws.amazon.com/bedrock/latest/userguide/prov-throughput.md), your ARN becomes the model ID, and the connector settings **URL** value must be [encoded](https://www.urlencoder.org/) to work. For example, if the non-encoded ARN is `arn:aws:bedrock:us-east-2:123456789102:provisioned-model/3Ztr7hbzmkrqy1`, the encoded ARN would be `arn%3Aaws%3Abedrock%3Aus-east-2%3A123456789102%3Aprovisioned-model%2F3Ztr7hbzmkrqy1`.
+If you’re using [provisioned throughput](https://docs.aws.amazon.com/bedrock/latest/userguide/prov-throughput.html), your ARN becomes the model ID, and the connector settings **URL** value must be [encoded](https://www.urlencoder.org/) to work. For example, if the non-encoded ARN is `arn:aws:bedrock:us-east-2:123456789102:provisioned-model/3Ztr7hbzmkrqy1`, the encoded ARN would be `arn%3Aaws%3Abedrock%3Aus-east-2%3A123456789102%3Aprovisioned-model%2F3Ztr7hbzmkrqy1`.
 ::::
 
 
