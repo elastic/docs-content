@@ -1,4 +1,7 @@
 ---
+applies_to:
+  deployment:
+    ece: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-access-kibana.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-manage-kibana.html
