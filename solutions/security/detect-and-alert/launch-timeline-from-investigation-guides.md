@@ -4,27 +4,9 @@ mapped_urls:
   - https://www.elastic.co/guide/en/serverless/current/security-interactive-investigation-guides.html
 ---
 
-# Launch Timeline from investigation guides
-
-% What needs to be done: Align serverless/stateful
-
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/security-docs/security/interactive-investigation-guides.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/security-interactive-investigation-guides.md
-
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
-
-$$$add-ig-actions-rule$$$
-
-$$$query-button-syntax$$$
+# Launch Timeline from investigation guides [security-interactive-investigation-guides]
 
 Detection rule investigation guides suggest steps for triaging, analyzing, and responding to potential security issues. For custom rules, you can create an interactive investigation guide that includes buttons for launching runtime queries in [Timeline](/solutions/security/investigate/timeline.md), using alert data and hard-coded literal values. This allows you to start detailed Timeline investigations directly from an alert using relevant data.
-
-::::{important}
-Interactive investigation guides are compatible between {{stack}} versions 8.7.0 and later. Query buttons created in 8.6.x use different syntax and won’t render correctly in later versions, and vice versa.
-::::
-
 
 :::{image} ../../../images/security-ig-alert-flyout.png
 :alt: Alert details flyout with interactive investigation guide
@@ -62,7 +44,7 @@ You can configure an interactive investigation guide when you [create a new rule
     :screenshot:
     :::
 
-2. Place the editor cursor where you want to add the query button in the investigation guide, then select the Investigate icon (![Investigate icon](../../../images/security-ig-investigate-icon.png "")) in the toolbar. The **Add investigation query** builder form appears.
+2. Place the editor cursor where you want to add the query button in the investigation guide, then select the Investigate icon (![Investigate icon](../../../images/security-ig-investigate-icon.png "title =20x20")) in the toolbar. The **Add investigation query** builder form appears.
 
     :::{image} ../../../images/security-ig-investigation-query-builder.png
     :alt: Add investigation guide UI
@@ -106,7 +88,7 @@ The following syntax defines a query button in an interactive investigation guid
 | `relativeFrom`, `relativeTo` | (Optional) The start and end, respectively, of the relative time range for the query. Times are relative to the alert’s creation time, represented as `now` in [date math](elasticsearch://reference/elasticsearch/rest-apis/common-options.md#date-math) format. For example, selecting **Last 15 minutes** in the query builder form creates the syntax `"relativeFrom": "now-15m", "relativeTo": "now"`. |
 
 ::::{note}
-Some characters must be escaped with a backslash, such as `\"` for a quotation mark and `\\` for a literal backslash. Divide Windows paths with double backslashes (for example, `C:\\Windows\\explorer.exe`), and paths that already include double backslashes might require four backslashes for each divider. A clickable error icon (![Error icon](../../../images/security-ig-error-icon.png "")) displays below the Markdown editor if there are any syntax errors.
+Some characters must be escaped with a backslash, such as `\"` for a quotation mark and `\\` for a literal backslash. Divide Windows paths with double backslashes (for example, `C:\\Windows\\explorer.exe`), and paths that already include double backslashes might require four backslashes for each divider. A clickable error icon (![Error icon](../../../images/security-ig-error-icon.png "title =20x20")) displays below the Markdown editor if there are any syntax errors.
 ::::
 
 
