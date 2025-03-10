@@ -66,6 +66,8 @@ Before you start, make sure that you [configure your system](/deploy-manage/depl
 
 You can also run {{es}} inside a docket container image. Docker container images may be downloaded from the Elastic Docker Registry.
 
+You can [use Docker Compose](/deploy-manage/deploy/self-managed/install-elasticsearch-docker-compose.md) to deploy multiple nodes at once.
+
 [Install {{es}} with Docker](/deploy-manage/deploy/self-managed/install-elasticsearch-with-docker.md)
 
 ## Version compatibility

@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/access.html
+applies_to:
+  deployment:
+    self:
 ---
 
 # Access {{kib}} [access]
