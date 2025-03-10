@@ -1,14 +1,12 @@
 ---
-navigation_title: "Mapping issues"
+navigation_title: "Uptime"
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/troubleshoot-uptime-mapping-issues.html
 applies_to:
-  stack: all
-  serverless:
-    observability: all
+  stack: deprecated 8.15.0
 ---
 
-# Troubleshoot mapping issues [troubleshoot-uptime-mapping-issues]
+# Troubleshoot Uptime mapping issues [troubleshoot-uptime-mapping-issues]
 
 
 ## Mapping issues [_mapping_issues] 
