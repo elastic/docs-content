@@ -126,9 +126,9 @@ However, saved objects can only be imported into the same version, a newer minor
 | 7.8.1 | 9.0.0 | No |
 
 ## Saved Object IDs [saved-object-ids]
-::::{applies_to}
-:stack:
-::::
+```{applies_to}
+stack:
+```
 
 In the past, many saved object types could have the same ID in different [spaces](/deploy-manage/manage-spaces.md). For example, if you copied dashboard "123" from the one space to another space, the second dashboard would also have an ID of "123". While the saved object ID is not something that users would interact with directly, many aspects of {{kib}} rely on it, notably URLs. If you have a "deep link" URL to a saved dashboard, that URL includes the saved object ID.
 
