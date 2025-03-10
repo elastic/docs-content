@@ -5,7 +5,25 @@ mapped_pages:
 
 # Size your shards [size-your-shards]
 
-Each index in {{es}} is divided into one or more shards, each of which may be replicated across multiple nodes to protect against hardware failures. If you are using [Data streams](../../../manage-data/data-store/data-streams.md) then each data stream is backed by a sequence of indices. There is a limit to the amount of data you can store on a single node so you can increase the capacity of your cluster by adding nodes and increasing the number of indices and shards to match. However, each index and shard has some overhead and if you divide your data across too many shards then the overhead can become overwhelming. A cluster with too many indices or shards is said to suffer from *oversharding*. An oversharded cluster will be less efficient at responding to searches and in extreme cases it may even become unstable.
+## What is a shard? [what-is-a-shard]
+
+A shard is a basic unit of storage in {{es}}. Every index is divided into one or more shards to help distribute data and workload across nodes in a cluster. This division allows {{es}} to handle large datasets and perform operations like searches and indexing efficiently but not without cost. Each index and shard has some overhead and if you divide your data across too many shards then the overhead will degrade performance. Shards play several key roles in {{es}}:
+
+* **Data Distribution:** Each shard contains a portion of the data from the index. When you add more nodes to your cluster, {{es}} will spread the shards across the nodes, balancing the workload between them.
+* **Replication:** Shards can have replicas which are copies of the original shard. Replicas ensure data availability and improve search performance by allowing multiple nodes to handle requests for that shard.
+* **Parallel Processing:** Shards enable {{es}} to distribute indexing of documents, and process queries in parallel across shards, making ingestion and searches faster and more efficient.
+
+By effectively using shards, {{es}} can scale horizontally and provide fault tolerance, ensuring your data is distributed and indexing and searches are processed efficiently.
+
+## Sizing Shard Guidelines [sizing-shard-guidelines]
+
+Proper shard sizing is crucial for maintaining the performance and stability of an {{es}} cluster. _Oversharding_ occurs when data is distributed across an excessive number of shards (primary or replica), which can degrade search performance and make the cluster unstable. Conversely, very large shards may slow down search operations and prolong recovery times after failures. 
+
+To strike the right balance, the [general guidelines](#shard-size-recommendation) are to aim for shard sizes between 10GB and 50GB, keeping the per-shard document count below 200 million. To ensure that each node is working optimally, it's important to distribute shards evenly across nodes. Uneven distribution can cause some nodes to work harder than others, leading to performance degradation and instability. While Elasticsearch automatically balances shards, it’s important to configure your indices with an appropriate number of shards and replicas to facilitate even distribution across nodes.
+
+If you are using [data streams](../../../manage-data/data-store/data-streams.md#data-streams), each data stream is backed by a sequence of indices, each index potentially having multiple shards. 
+
+Despite these general guidelines, it is good to develop a tailored [sharding strategy](#create-a-sharding-strategy) that considers your specific infrastructure, use case, and performance expectations. 
 
 
 ## Create a sharding strategy [create-a-sharding-strategy]
