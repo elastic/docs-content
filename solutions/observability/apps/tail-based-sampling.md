@@ -1,11 +1,11 @@
 ---
 mapped_pages:
-  - https://www.elastic.co/guide/en/observability/current/apm-tail-based-samling-config.html
+  - https://www.elastic.co/guide/en/observability/current/apm-tail-based-sampling-config.html
 applies_to:
   stack: all
 ---
 
-# Tail-based sampling [apm-tail-based-samling-config]
+# Tail-based sampling [apm-tail-based-sampling-config]
 
 ::::{note}
 ![supported deployment methods](../../../images/observability-binary-yes-fm-yes.svg "")
