@@ -115,13 +115,13 @@ See the [Deployment overview](/deploy-manage/deploy.md) to understand your optio
 | **Security feature** | Serverless | Elastic Cloud Hosted | ECE | ECK | Self-managed |
 |------------------|------------|--------------|-----|-----|--------------|
 | **Encryption at Rest** | ✓ Default | ✓ Default | ✗ Manual | ✗ Manual | ✗ Manual |
-| **BYOK/CMEK** | ✗ N/A | ✓ Available | ✗ N/A | ✗ N/A | ✗ N/A |
+| **Bring your own encryption key** | ✗ N/A | ✓ Available | ✗ N/A | ✗ N/A | ✗ N/A |
 | **Keystore Security** | ✓ Available | ✓ Available | ✓ Available | ✓ Available | ✓ Available |
 | **Saved Object Encryption** | ✓ Available | ✓ Available | ✓ Available | ✓ Available | ✓ Available |
 
 #### User session security
 
-| **Security feature** | Serverless | Elastic Cloud | ECE | ECK | Self-managed |
+| **Security feature** | Serverless | Elastic Cloud Hosted | ECE | ECK | Self-managed |
 |------------------|------------|--------------|-----|-----|--------------|
 | **Kibana Sessions** | ✓ Managed | ✓ Configurable | ✓ Configurable | ✓ Configurable | ✓ Configurable |
 
