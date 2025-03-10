@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/universal-profiling.html
+applies_to:
+  stack: 
 ---
 
 # Universal Profiling [universal-profiling]
