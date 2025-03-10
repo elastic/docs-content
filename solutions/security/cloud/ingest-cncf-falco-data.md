@@ -6,19 +6,6 @@ mapped_urls:
 
 # Ingest CNCF Falco data
 
-% What needs to be done: Lift-and-shift
-
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/security-docs/security/ingest-falco.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/ingest-falco.md
-
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
-
-$$$ingest-falco-setup-falco-kubernetes$$$
-
-$$$ingest-falco-setup-falco-vm$$$
-
 CNCF Falco is an open-source runtime security tool that detects anomalous activity in Linux hosts, containers, Kubernetes, and cloud environments. You can ingest Falco alerts into {{es}} to view them on {{elastic-sec}}'s Alerts page and incorporate them into your security workflows by using Falcosidekick, a proxy forwarder which can send alerts from your Falco deployments to {{es}}.
 
 First, you’ll need to configure {{elastic-sec}} to receive data from Falco, then you’ll need to configure Falco and Falcosidekick to send data to {{es}}.
@@ -79,9 +66,9 @@ Multiple methods for configuring Falco to send data from VMs to {{es}} are avail
     1. `ELASTICSEARCH_HOSTPORT`: Your {{es}} endpoint URL, which can be found under **Connection details** on the upper right of the **Integrations** page in {{kib}}.
     2. `ELASTICSEARCH_INDEX`: The {{es}} index where you want to store Falco logs.
 
-        ::::{important}
-        Your `ELASTICSEARCH_INDEX` value must match `logs-falco.alerts-*`.
-        ::::
+       ::::{important}
+       Your `ELASTICSEARCH_INDEX` value must match `logs-falco.alerts-*`.
+       ::::
 
     3. `ELASTICSEARCH_SUFFIX`: The frequency with which you want the {{es}} index suffix to change. Either `daily`, `monthly`, `annually`, or `none`.
     4. `ELASTICSEARCH_APIKEY`: The recommended way to authenticate to {{es}}, by providing an [API key](/deploy-manage/api-keys/elasticsearch-api-keys.md). Note that support for this environment variable starts with Falcosidekick version 2.30. You can access the latest version on Falcosidekick’s [Docker Hub](https://hub.docker.com/r/falcosecurity/falcosidekick).
@@ -113,7 +100,7 @@ After installing and configuring Falcosidekick, restart Falco with `sudo systemc
 
 1. Add the Falco [Helm charts](https://github.com/falcosecurity/charts/blob/master/README.md):
 
-    ```
+    ```bash
     helm repo add falcosecurity https://falcosecurity.github.io/charts
     helm repo update
     ```

@@ -38,6 +38,9 @@ Following are some frequent causes of a failed configuration change:
 
 If you’re unable to remediate the failing plan’s root cause, you can attempt to reset the deployment to the latest successful {{es}} configuration by performing a [no-op plan](/troubleshoot/monitoring/deployment-health-warnings.md). For an example, see this [video walkthrough](https://www.youtube.com/watch?v=8MnXZ9egBbQ).
 
+:::{important}
+ If you’re using Elastic Cloud Hosted, then you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, real-time issue detection and resolution paths. For more information, refer to [Monitor with AutoOps](/deploy-manage/monitor/autoops.md).
+:::
 
 ## Secure settings [ec-config-change-errors-secure-settings]
 
@@ -143,4 +146,4 @@ To resolve this:
 
 ## Insufficient Storage [ec-config-change-errors-insufficient-storage]
 
-Configuration change errors can occur when there is insufficient disk space for a data tier. To resolve this, you need to increase the size of that tier to ensure it provides enough storage to accommodate the data in your cluster tier considering the [high watermark](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#disk-based-shard-allocation). For troubleshooting walkthrough, see [Fix watermark errors](/troubleshoot/elasticsearch/fix-watermark-errors.md).
+Configuration change errors can occur when there is insufficient disk space for a data tier. To resolve this, you need to increase the size of that tier to ensure it provides enough storage to accommodate the data in your cluster tier considering the [high watermark](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#disk-based-shard-allocation). For troubleshooting walkthrough, see [Fix watermark errors](/troubleshoot/elasticsearch/fix-watermark-errors.md).

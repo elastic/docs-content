@@ -22,3 +22,7 @@ Cluster performance metrics are shown per node and are color-coded to indicate w
 This CPU usage graph indicates that your cluster is load-balancing between the nodes in the different availability zones as designed, but the workload is too high to be able to handle the loss of an availability zone. For a cluster to be able to handle the failure of a node, it should be considered at capacity when it uses 50% of its resources. In this case, two of the nodes are already maxed out and the third one is around 50%. If any one of the three nodes were to fail, the volume of user requests would overwhelm the remaining nodes. On smaller clusters up to and including 8 GB of RAM, CPU boosting can temporarily relieve some of the pressure, but you should not rely on this feature for high availability. On larger clusters, CPU boosting is not available.
 
 Even if your cluster is performing well, you still need to make sure that there is sufficient spare capacity to deal with the outage of an entire availability zone. For this cluster to remain highly available at all times, you either need to increase its size or reduce its workload.
+
+:::{important}
+ If you’re using Elastic Cloud Hosted, then you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, real-time issue detection and resolution paths. For more information, refer to [Monitor with AutoOps](/deploy-manage/monitor/autoops.md).
+:::

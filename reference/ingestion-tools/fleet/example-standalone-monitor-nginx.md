@@ -42,7 +42,7 @@ To start, we’ll set up a basic [nginx web server](https://docs.nginx.com/nginx
 
     :::{image} images/guide-nginx-welcome.png
     :alt: Browser window showing Welcome to nginx!
-    :class: screenshot
+    :screenshot:
     :::
 
 
@@ -61,7 +61,7 @@ Now that your web server is running, let’s get set up to monitor it in {{eclou
 
     :::{image} images/guide-sign-up-trial.png
     :alt: Start your free Elastic Cloud trial
-    :class: screenshot
+    :screenshot:
     :::
 
 3. After you’ve [logged in](https://cloud.elastic.co/login), select **Create deployment** and give your deployment a name. You can leave the default options or select a different cloud provider, region, hardware profile, or version.
@@ -310,4 +310,4 @@ Congratulations! You have successfully set up monitoring for nginx using standal
 ## What’s next? [_whats_next_2]
 
 * Learn more about [{{fleet}} and {{agent}}](/reference/ingestion-tools/fleet/index.md).
-* Learn more about [{{integrations}}](asciidocalypse://docs/reference/index.md).
+* Learn more about [{{integrations}}](asciidocalypse://docs/integration-docs/docs/reference/index.md).

@@ -6,12 +6,12 @@ mapped_urls:
 
 # Configure case settings [security-cases-settings]
 
-This page explains how to change case closure options, add custom fields, templates, and connectors for external incident management systems, and create custom observable types. 
+This page explains how to change case closure options, add custom fields, templates, and connectors for external incident management systems, and create custom observable types.
 First, find **Cases** in the navigation menu or search for `Security/Cases` by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then click **Settings**. In {{serverless-short}}, you can access case settings in an {{elastic-sec}} project, go to **Cases** → **Settings**.
 
 :::{image} ../../../images/security-cases-settings.png
 :alt: Shows the case settings page
-:class: screenshot
+:screenshot:
 :::
 
 ::::{note}
@@ -52,13 +52,13 @@ To create a new connector:
 2. Select the system to send cases to: **{{sn}}**, **{{jira}}**, **{{ibm-r}}**, **{{swimlane}}**, **{{hive}}**, or **{{webhook-cm}}**.
 3. Enter your required settings. For connector configuration details, refer to:
 
-    * [{{sn-itsm}} connector](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/servicenow-action-type.md)
-    * [{{sn-sir}} connector](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/servicenow-sir-action-type.md)
-    * [{{jira}} connector](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/jira-action-type.md)
-    * [{{ibm-r}} connector](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/resilient-action-type.md)
-    * [{{swimlane}} connector](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/swimlane-action-type.md)
-    * [{{hive}} connector](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/thehive-action-type.md)
-    * [{{webhook-cm}} connector](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/cases-webhook-action-type.md)
+    * [{{sn-itsm}} connector](kibana://reference/connectors-kibana/servicenow-action-type.md)
+    * [{{sn-sir}} connector](kibana://reference/connectors-kibana/servicenow-sir-action-type.md)
+    * [{{jira}} connector](kibana://reference/connectors-kibana/jira-action-type.md)
+    * [{{ibm-r}} connector](kibana://reference/connectors-kibana/resilient-action-type.md)
+    * [{{swimlane}} connector](kibana://reference/connectors-kibana/swimlane-action-type.md)
+    * [{{hive}} connector](kibana://reference/connectors-kibana/thehive-action-type.md)
+    * [{{webhook-cm}} connector](kibana://reference/connectors-kibana/cases-webhook-action-type.md)
 
 
 To change the settings of an existing connector:
@@ -89,7 +89,7 @@ You can add optional and required fields for customized case collaboration.
 
     :::{image} ../../../images/security-cases-add-custom-field.png
     :alt: Add a custom field in case settings
-    :class: screenshot
+    :screenshot:
     :::
 
 2. You must provide a field label and type (text or toggle). You can optionally designate it as a required field and provide a default value.
@@ -114,7 +114,7 @@ To create a template:
 
     :::{image} ../../../images/security-cases-add-template.png
     :alt: Add a template in case settings
-    :class: screenshot
+    :screenshot:
     :::
 
 2. You must provide a template name and case severity. You can optionally add template tags and a description, values for each case field, and a case connector.
@@ -154,5 +154,5 @@ Deleting a custom observable type deletes all instances of it.
 
 :::{image} ../../../images/security-cases-observable-types.png
 :alt: Add an observable type in case settings
-:class: screenshot
+:screenshot:
 :::

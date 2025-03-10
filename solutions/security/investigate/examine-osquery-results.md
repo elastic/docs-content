@@ -20,7 +20,7 @@ Results for single queries appear on the **Results** tab. When you run a query, 
 
 :::{image} ../../../images/security-single-query-results.png
 :alt: Shows query results
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -30,7 +30,7 @@ Results for each query in the pack appear in the **Results** tab. Click the expa
 
 :::{image} ../../../images/security-pack-query-results.png
 :alt: Shows query results
-:class: screenshot
+:screenshot:
 :::
 
 

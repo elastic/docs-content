@@ -1,9 +1,10 @@
 ---
+mapped_urls:
+  - https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshots-register-repository.html
 navigation_title: "Self-managed"
-
 applies_to:
   deployment:
-    self: 
+    self:
 ---
 
 # Manage snapshot repositories in self-managed deployments [snapshots-register-repository]
@@ -20,10 +21,10 @@ In this guide, you’ll learn how to:
 
 * To use {{kib}}'s **Snapshot and Restore** feature, you must have the following permissions:
 
-    * [Cluster privileges](../../users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-cluster): `monitor`, `manage_slm`, `cluster:admin/snapshot`, and `cluster:admin/repository`
-    * [Index privilege](../../users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-indices): `all` on the `monitor` index
+    * [Cluster privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-cluster): `monitor`, `manage_slm`, `cluster:admin/snapshot`, and `cluster:admin/repository`
+    * [Index privilege](/deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-indices): `all` on the `monitor` index
 
-* To register a snapshot repository, the cluster’s global metadata must be writeable. Ensure there aren’t any [cluster blocks](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/miscellaneous-cluster-settings.md#cluster-read-only) that prevent write access.
+* To register a snapshot repository, the cluster’s global metadata must be writeable. Ensure there aren’t any [cluster blocks](elasticsearch://reference/elasticsearch/configuration-reference/miscellaneous-cluster-settings.md#cluster-read-only) that prevent write access.
 
 ## Considerations [snapshot-repo-considerations]
 
@@ -59,7 +60,7 @@ If you manage your own {{es}} cluster, you can use the following built-in snapsh
 $$$snapshots-repository-plugins$$$
 Other repository types are available through official plugins:
 
-* [Hadoop Distributed File System (HDFS)](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch-plugins/repository-hdfs.md)
+* [Hadoop Distributed File System (HDFS)](elasticsearch://reference/elasticsearch-plugins/repository-hdfs.md)
 
 You can also use alternative storage implementations with these repository types, as long as the alternative implementation is fully compatible. For instance, [MinIO](https://minio.io) provides an alternative implementation of the AWS S3 API and you can use MinIO with the [`s3` repository type](s3-repository.md).
 

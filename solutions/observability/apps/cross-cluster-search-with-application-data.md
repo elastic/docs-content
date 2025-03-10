@@ -35,7 +35,7 @@ You can also specify certain clusters to display data from, for example, `cluste
 There are two ways to edit the default {{data-source}}:
 
 * In the Applications UI — Find **Applications** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Go to **Settings** → **Indices** and change all `xpack.apm.indices.*` values to include remote clusters.
-* In `kibana.yml` — Update the [`xpack.apm.indices.*`](asciidocalypse://docs/kibana/docs/reference/configuration-reference/apm-settings.md) configuration values to include remote clusters.
+* In `kibana.yml` — Update the [`xpack.apm.indices.*`](kibana://reference/configuration-reference/apm-settings.md) configuration values to include remote clusters.
 
 ::::{tip}
 

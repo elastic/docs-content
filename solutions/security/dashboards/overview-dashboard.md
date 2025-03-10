@@ -6,13 +6,6 @@ mapped_urls:
 
 # Overview dashboard
 
-% What needs to be done: Lift-and-shift
-
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/security-docs/security/overview-dashboard.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/security-overview-dashboard.md
-
 The Overview dashboard provides a high-level snapshot of alerts and events. It helps you assess overall system health and find anomalies that may require further investigation.
 
 :::{image} ../../../images/security-overview-pg.png
@@ -47,7 +40,7 @@ View event and host counts grouped by data source, such as **Auditbeat** or **{{
 
 :::{image} ../../../images/security-events-count.png
 :alt: Host and network events on the Overview dashboard
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -64,6 +57,6 @@ For more information about connecting to threat intelligence sources, visit [Ena
 
 :::{image} ../../../images/security-threat-intelligence-view.png
 :alt: threat intelligence view
-:class: screenshot
+:screenshot:
 :::
 

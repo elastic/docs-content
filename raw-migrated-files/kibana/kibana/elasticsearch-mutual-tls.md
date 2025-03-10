@@ -34,7 +34,7 @@ If you haven’t already, start {{kib}} and connect it to {{es}} using the [enro
     ::::
 
 
-    You may choose to generate a client certificate and private key using the [`elasticsearch-certutil`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/command-line-tools/certutil.md) tool. If you followed the {{es}} documentation for [generating the certificates authority](../../../deploy-manage/security/set-up-basic-security.md#generate-certificates), then you already have a certificate authority (CA) to sign the {{es}} server certificate. You may choose to use the same CA to sign the {{kib}} client certificate. For example:
+    You may choose to generate a client certificate and private key using the [`elasticsearch-certutil`](elasticsearch://reference/elasticsearch/command-line-tools/certutil.md) tool. If you followed the {{es}} documentation for [generating the certificates authority](../../../deploy-manage/security/set-up-basic-security.md#generate-certificates), then you already have a certificate authority (CA) to sign the {{es}} server certificate. You may choose to use the same CA to sign the {{kib}} client certificate. For example:
 
     ```sh
     bin/elasticsearch-certutil cert -ca elastic-stack-ca.p12 -name kibana-client -dns <your_kibana_hostname>
@@ -79,7 +79,7 @@ If you haven’t already, start {{kib}} and connect it to {{es}} using the [enro
 
     ![Role mapping for the {{kib}} client certificate](../../../images/kibana-mutual-tls-role-mapping.png "")
 
-    For more information, see [role mappings](role-mappings.md).
+    For more information, see [](/deploy-manage/users-roles/cluster-or-deployment-auth/mapping-users-groups-to-roles.md).
 
 7. Configure {{kib}} to use the client certificate and private key.
 

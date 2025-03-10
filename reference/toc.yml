@@ -4,10 +4,11 @@ toc:
     children:
       - file: security/fields-and-object-schemas/index.md
         children:
-          - file: security/fields-and-object-schemas/runtime-fields.md
           - file: security/fields-and-object-schemas/siem-field-reference.md
           - file: security/fields-and-object-schemas/timeline-object-schema.md
           - file: security/fields-and-object-schemas/alert-schema.md
+      - file: security/endpoint-command-reference.md
+      - file: security/prebuilt-anomaly-detection-jobs.md
   - file: observability/index.md
     children:
       - file: observability/fields-and-object-schemas.md
@@ -126,6 +127,7 @@ toc:
                   - file: ingestion-tools/fleet/agent-provider.md
                   - file: ingestion-tools/fleet/host-provider.md
                   - file: ingestion-tools/fleet/env-provider.md
+                  - file: ingestion-tools/fleet/filesource-provider.md
                   - file: ingestion-tools/fleet/kubernetes_secrets-provider.md
                   - file: ingestion-tools/fleet/kubernetes_leaderelection-provider.md
                   - file: ingestion-tools/fleet/local-dynamic-provider.md

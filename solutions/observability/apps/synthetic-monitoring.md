@@ -19,7 +19,7 @@ Synthetics periodically checks the status of your services and applications. Mon
 
 :::{image} ../../../images/observability-synthetics-monitor-page.png
 :alt: {{synthetics-app}} in {{kib}}
-:class: screenshot
+:screenshot:
 :::
 
 

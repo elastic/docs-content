@@ -9,7 +9,7 @@ applies_to:
 
 # Collectors [es-monitoring-collectors]
 
-::::{important} 
+::::{important}
 {{agent}} and {{metricbeat}} are the recommended methods for collecting and shipping monitoring data to a monitoring cluster.
 
 If you have previously configured legacy collection methods, you should migrate to using [{{agent}}](collecting-monitoring-data-with-elastic-agent.md) or [{{metricbeat}}](collecting-monitoring-data-with-metricbeat.md) collection. Do not use legacy collection alongside other collection methods.
@@ -40,23 +40,23 @@ Once collection has completed, all of the monitoring data is passed to the expor
 
 If gaps exist in the monitoring charts in {{kib}}, it is typically because either a collector failed or the monitoring cluster did not receive the data (for example, it was being restarted). In the event that a collector fails, a logged error should exist on the node that attempted to perform the collection.
 
-::::{note} 
+::::{note}
 Collection is currently done serially, rather than in parallel, to avoid extra overhead on the elected master node. The downside to this approach is that collectors might observe a different version of the cluster state within the same collection period. In practice, this does not make a significant difference and running the collectors in parallel would not prevent such a possibility.
 ::::
 
 
-For more information about the configuration options for the collectors, see [Monitoring collection settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/monitoring-settings.md#monitoring-collection-settings).
+For more information about the configuration options for the collectors, see [Monitoring collection settings](elasticsearch://reference/elasticsearch/configuration-reference/monitoring-settings.md#monitoring-collection-settings).
 
 
-## Collecting data from across the Elastic Stack [es-monitoring-stack] 
+## Collecting data from across the Elastic Stack [es-monitoring-stack]
 
 {{es}} {{monitor-features}} also receive monitoring data from other parts of the Elastic Stack. In this way, it serves as an unscheduled monitoring data collector for the stack.
 
-By default, data collection is disabled. {{es}} monitoring data is not collected and all monitoring data from other sources such as {{kib}}, Beats, and Logstash is ignored. You must set `xpack.monitoring.collection.enabled` to `true` to enable the collection of monitoring data. See [Monitoring settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/monitoring-settings.md).
+By default, data collection is disabled. {{es}} monitoring data is not collected and all monitoring data from other sources such as {{kib}}, Beats, and Logstash is ignored. You must set `xpack.monitoring.collection.enabled` to `true` to enable the collection of monitoring data. See [Monitoring settings](elasticsearch://reference/elasticsearch/configuration-reference/monitoring-settings.md).
 
 Once data is received, it is forwarded to the exporters to be routed to the monitoring cluster like all monitoring data.
 
-::::{warning} 
+::::{warning}
 Because this stack-level "collector" lives outside of the collection interval of {{es}} {{monitor-features}}, it is not impacted by the `xpack.monitoring.collection.interval` setting. Therefore, data is passed to the exporters whenever it is received. This behavior can result in indices for {{kib}}, Logstash, or Beats being created somewhat unexpectedly.
 ::::
 

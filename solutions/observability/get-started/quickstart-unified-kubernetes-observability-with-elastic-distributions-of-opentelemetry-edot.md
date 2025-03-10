@@ -65,7 +65,7 @@ For a more detailed description of the components and advanced configuration, re
 
     :::{image} ../../../images/observability-quickstart-k8s-otel-entry-point.png
     :alt: Kubernetes-OTel entry point
-    :class: screenshot
+    :screenshot:
     :::
 
 3. Follow the on-screen instructions to install all needed components.
@@ -95,7 +95,7 @@ For a more detailed description of the components and advanced configuration, re
 
     :::{image} ../../../images/serverless-quickstart-k8s-otel-entry-point.png
     :alt: Kubernetes-OTel entry point
-    :class: screenshot
+    :screenshot:
     :::
 
 4. Follow the on-screen instructions to install all needed components.
@@ -127,7 +127,7 @@ After installation is complete and all relevant data is flowing into Elastic, th
 
 :::{image} ../../../images/observability-quickstart-k8s-otel-dashboard.png
 :alt: Kubernetes overview dashboard
-:class: screenshot
+:screenshot:
 :::
 
 

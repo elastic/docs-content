@@ -81,7 +81,7 @@ This configuration produces fields like:
 },
 ```
 
-`service.name` is an ECS [keyword field](asciidocalypse://docs/reference/elasticsearch/mapping-reference/keyword.md), which means that you can use it in {{es}} for filtering, sorting, and aggregations.
+`service.name` is an ECS [keyword field](elasticsearch://reference/elasticsearch/mapping-reference/keyword.md), which means that you can use it in {{es}} for filtering, sorting, and aggregations.
 
-When possible, use ECS-compatible field names. For more information, see the [Elastic Common Schema](asciidocalypse://docs/reference/index.md) documentation.
+When possible, use ECS-compatible field names. For more information, see the [Elastic Common Schema](asciidocalypse://docs/integration-docs/docs/reference/index.md) documentation.
 

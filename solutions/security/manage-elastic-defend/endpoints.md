@@ -6,31 +6,13 @@ mapped_urls:
 
 # Endpoints
 
-% What needs to be done: Align serverless/stateful
-
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/security-docs/security/admin-page-ov.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/security-endpoints-page.md
-
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
-
-$$$endpoint-details$$$
-
-$$$integration-policy-details$$$
-
-$$$policy-status$$$
-
-$$$response-action-history-tab$$$
 
 The Endpoints page allows administrators to view and manage endpoints that are running the [{{elastic-defend}} integration](/solutions/security/configure-elastic-defend/install-elastic-defend.md).
 
 ::::{admonition} Requirements
 * {{fleet}} must be enabled in a {{kib}} space for administrative actions to function correctly.
-* You must have the **Endpoint List** [privilege](/solutions/security/configure-elastic-defend/elastic-defend-feature-privileges.md) to access this feature.
-
+* You must have the **Endpoint List** [privilege](/solutions/security/configure-elastic-defend/elastic-defend-feature-privileges.md) or the appropriate user role to access this feature.
 ::::
-
 
 
 ## Endpoints list [endpoints-list-ov]
@@ -39,7 +21,7 @@ The **Endpoints** list displays all hosts running {{elastic-defend}} and their r
 
 :::{image} ../../../images/security-endpoints-pg.png
 :alt: Endpoints page
-:class: screenshot
+:screenshot:
 :::
 
 The Endpoints list provides the following data:
@@ -49,7 +31,7 @@ The Endpoints list provides the following data:
 
     * `Healthy`: The agent is online and communicating with {{kib}}.
     * `Unenrolling`: The agent is currently unenrolling and will soon be removed from Fleet. Afterward, the endpoint will also uninstall.
-    * `Unhealthy`: The agent is online but requires attention from an administrator because it’s reporting a problem with a process. An unhealthy status could mean an upgrade failed and was rolled back to its previous version, or an integration might be missing prerequisites or additional configuration. Refer to [Endpoint management troubleshooting](/troubleshoot/security/elastic-defend.md#ts-unhealthy-agent) for more on resolving an unhealthy agent status.
+    * `Unhealthy`: The agent is online but requires attention from an administrator because it’s reporting a problem with a process. An unhealthy status could mean an upgrade failed and was rolled back to its previous version, or an integration might be missing prerequisites or additional configuration. Refer to [](/troubleshoot/security/elastic-defend.md#ts-unhealthy-agent) for more on resolving an unhealthy agent status.
     * `Updating`: The agent is online and is updating the agent policy or binary, or is enrolling or unenrolling.
     * `Offline`: The agent is still enrolled but may be on a machine that is shut down or currently does not have internet access. In this state, the agent is no longer communicating with {{kib}} at a regular interval.
 
@@ -61,7 +43,7 @@ The Endpoints list provides the following data:
 * **Policy status:** Indicates whether the integration policy was successfully applied. Click the link to view [policy status](/solutions/security/manage-elastic-defend/endpoints.md#policy-status) response details in a flyout.
 * **OS**: The host’s operating system.
 * **IP address**: All IP addresses associated with the hostname.
-* **Version**: The {{stack}} version currently running.
+* **Version**: The {{agent}} version currently running.
 * **Last active**: A date and timestamp of the last time the {{agent}} was active.
 * **Actions**: Select the context menu (**…​**) to do the following:
 
@@ -71,8 +53,7 @@ The Endpoints list provides the following data:
     * **View host details**: View host details on the **Hosts** page in the {{security-app}}.
     * **View agent policy**: View the agent policy in {{fleet}}.
     * **View agent details**: View {{agent}} details and activity logs in {{fleet}}.
-    * **Reassign agent policy**: Change the [agent policy](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/agent-policy.md#apply-a-policy) assigned to the host in {{fleet}}.
-
+    * **Reassign agent policy**: Change the [agent policy](/reference/ingestion-tools/fleet/agent-policy.md#apply-a-policy) assigned to the host in {{fleet}}.
 
 
 ### Endpoint details [endpoint-details]
@@ -81,17 +62,17 @@ Click any link in the **Endpoint** column to display host details in a flyout. Y
 
 :::{image} ../../../images/security-host-flyout.png
 :alt: Endpoint details flyout
-:class: screenshot
+:screenshot:
 :::
 
 
 ### Response actions history [response-action-history-tab]
 
-The endpoint details flyout also includes the **Response actions history** tab, which provides a log of the [response actions](/solutions/security/endpoint-response-actions.md) performed on the endpoint, such as isolating a host or terminating a process. You can use the tools at the top to filter the information displayed in this view. Refer to [*Response actions history*](/solutions/security/endpoint-response-actions/response-actions-history.md) for more details.
+The endpoint details flyout also includes the **Response actions history** tab, which provides a log of the [response actions](/solutions/security/endpoint-response-actions.md) performed on the endpoint, such as isolating a host or terminating a process. You can use the tools at the top to filter the information displayed in this view. Refer to [](/solutions/security/endpoint-response-actions/response-actions-history.md) for more details.
 
 :::{image} ../../../images/security-response-actions-history-endpoint-details.png
 :alt: Response actions history with a few past actions
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -108,7 +89,7 @@ Users must have permission to read/write to {{fleet}} APIs to make changes to th
 
 :::{image} ../../../images/security-integration-pg.png
 :alt: Integration page
-:class: screenshot
+:screenshot:
 :::
 
 Users who have unique configuration and security requirements can select **Show advanced settings** to configure the policy to support advanced use cases. Hover over each setting to view its description.
@@ -120,7 +101,7 @@ Advanced settings are not recommended for most users.
 
 :::{image} ../../../images/security-integration-advanced-settings.png
 :alt: Integration page
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -141,23 +122,23 @@ The status of the integration policy appears in the **Policy status** column and
 For more details on what’s causing a policy status, click the link in the **Policy status** column and review the details flyout. Expand each section and subsection to display individual responses from the agent.
 
 ::::{tip}
-If you need help troubleshooting a configuration failure, refer to [Endpoint management troubleshooting](/troubleshoot/security/elastic-defend.md#ts-unhealthy-agent) and [{{fleet}} troubleshooting](/troubleshoot/ingest/fleet/common-problems.md).
+If you need help troubleshooting a configuration failure, refer to [](/troubleshoot/security/elastic-defend.md#ts-unhealthy-agent) and [](/troubleshoot/ingest/fleet/common-problems.md).
 ::::
 
 
 :::{image} ../../../images/security-config-status.png
 :alt: Config status details
-:class: screenshot
+:screenshot:
 :::
 
 
 ### Filter endpoints [_filter_endpoints]
 
-To filter the Endpoints list, use the search bar to enter a query using **https://www.elastic.co/guide/en/kibana/current/kuery-query.html[{{kib}} Query Language (KQL)]**. To refresh the search results, click **Refresh**.
+To filter the Endpoints list, use the search bar to enter a query using [{{kib}} Query Language (KQL)](/explore-analyze/query-filter/languages/kql.md). To refresh the search results, click **Refresh**.
 
 :::{image} ../../../images/security-filter-endpoints.png
 :alt: filter endpoints
-:class: screenshot
+:screenshot:
 :::
 
 ::::{note}

@@ -5,7 +5,9 @@ mapped_pages:
 
 # Logs Stream [tail-logs]
 
-::::{admonition} There’s a new, better way to explore your logs!
+::::{note}
+**There’s a new, better way to explore your logs!**
+
 The Logs Stream app and dashboard panel are deactivated by default. We recommend viewing and inspecting your logs with [Logs Explorer](logs-explorer.md) as it provides more features, better performance, and more intuitive navigation.
 
 To activate the Logs Stream app, refer to [Activate Logs Stream](#activate-logs-stream).
@@ -42,7 +44,7 @@ When you have searched and filtered your logs for a specific log event, you may 
 
 :::{image} ../../../images/observability-log-event-details.png
 :alt: Log event details
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -54,7 +56,7 @@ Hover over the log event, click **View actions for line**, and then select **Vie
 
 :::{image} ../../../images/observability-contextual-logs.png
 :alt: Contextual log event
-:class: screenshot
+:screenshot:
 :::
 
 

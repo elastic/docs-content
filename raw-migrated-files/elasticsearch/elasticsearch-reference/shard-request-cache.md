@@ -4,12 +4,12 @@ When a search request is run against an index or against many indices, each invo
 
 The shard-level request cache module caches the local results on each shard. This allows frequently used (and potentially heavy) search requests to return results almost instantly. The requests cache is a very good fit for the logging use case, where only the most recent index is being actively updated — results from older indices will be served directly from the cache.
 
-You can control the size and expiration of the cache at the node level using the [shard request cache settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/shard-request-cache-settings.md).
+You can control the size and expiration of the cache at the node level using the [shard request cache settings](elasticsearch://reference/elasticsearch/configuration-reference/shard-request-cache-settings.md).
 
-::::{important} 
+::::{important}
 By default, the requests cache will only cache the results of search requests where `size=0`, so it will not cache `hits`, but it will cache `hits.total`,  [aggregations](../../../explore-analyze/query-filter/aggregations.md), and [suggestions](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-suggesters.html).
 
-Most queries that use `now` (see [Date Math](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/common-options.md#date-math)) cannot be cached.
+Most queries that use `now` (see [Date Math](elasticsearch://reference/elasticsearch/rest-apis/common-options.md#date-math)) cannot be cached.
 
 Scripted queries that use the API calls which are non-deterministic, such as `Math.random()` or `new Date()` are not cached.
 
@@ -17,7 +17,7 @@ Scripted queries that use the API calls which are non-deterministic, such as `Ma
 
 
 
-## Cache invalidation [_cache_invalidation] 
+## Cache invalidation [_cache_invalidation]
 
 The cache is smart — it keeps the same *near real-time* promise as uncached search.
 
@@ -32,7 +32,7 @@ POST /my-index-000001,my-index-000002/_cache/clear?request=true
 ```
 
 
-## Enabling and disabling caching [_enabling_and_disabling_caching] 
+## Enabling and disabling caching [_enabling_and_disabling_caching]
 
 The cache is enabled by default, but can be disabled when creating a new index as follows:
 
@@ -53,7 +53,7 @@ PUT /my-index-000001/_settings
 ```
 
 
-## Enabling and disabling caching per request [_enabling_and_disabling_caching_per_request] 
+## Enabling and disabling caching per request [_enabling_and_disabling_caching_per_request]
 
 The `request_cache` query-string parameter can be used to enable or disable caching on a **per-request** basis. If set, it overrides the index-level setting:
 
@@ -74,17 +74,17 @@ GET /my-index-000001/_search?request_cache=true
 Requests where `size` is greater than 0 will not be cached even if the request cache is enabled in the index settings. To cache these requests you will need to use the query-string parameter detailed here.
 
 
-## Cache key [_cache_key] 
+## Cache key [_cache_key]
 
 A hash of the whole JSON body is used as the cache key. This means that if the JSON changes — for instance if keys are output in a different order — then the cache key will not be recognised.
 
-::::{tip} 
+::::{tip}
 Most JSON libraries support a *canonical* mode which ensures that JSON keys are always emitted in the same order. This canonical mode can be used in the application to ensure that a request is always serialized in the same way.
 ::::
 
 
 
-## Monitoring cache usage [_monitoring_cache_usage] 
+## Monitoring cache usage [_monitoring_cache_usage]
 
 The size of the cache (in bytes) and the number of evictions can be viewed by index, with the [`indices-stats`](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-stats) API:
 

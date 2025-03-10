@@ -85,7 +85,7 @@ By default, any deployment that you create trusts all other deployments in the s
 
 :::{image} ../../images/cloud-ec-account-trust-management.png
 :alt: Trust management at the account Level
-:class: screenshot
+:screenshot:
 :::
 
 ::::{note}
@@ -183,7 +183,7 @@ On the local cluster, add the remote cluster using {{kib}} or the {{es}} API.
 
       :::{image} ../../images/cloud-ce-copy-remote-cluster-parameters.png
       :alt: Remote Cluster Parameters in Deployment
-      :class: screenshot
+      :screenshot:
       :::
 
       ::::{note}
@@ -274,4 +274,4 @@ The response will include just the remote clusters from the same {{ecloud}} orga
 
 ## Configure roles and users [ec_configure_roles_and_users]
 
-To use a remote cluster for {{ccr}} or {{ccs}}, you need to create user roles with [remote indices privileges](../users-roles/cluster-or-deployment-auth/defining-roles.md#roles-remote-indices-priv) on the local cluster. Refer to [Configure roles and users](remote-clusters-api-key.md#remote-clusters-privileges-api-key).
+To use a remote cluster for {{ccr}} or {{ccs}}, you need to create user roles with [remote indices privileges](../users-roles/cluster-or-deployment-auth/role-structure.md#roles-remote-indices-priv) on the local cluster. Refer to [Configure roles and users](remote-clusters-api-key.md#remote-clusters-privileges-api-key).

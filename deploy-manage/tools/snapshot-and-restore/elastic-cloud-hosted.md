@@ -1,6 +1,8 @@
 ---
+mapped_urls:
+  - https://www.elastic.co/guide/en/cloud/current/ec-custom-repository.html
+  - https://www.elastic.co/guide/en/cloud-heroku/current/ech-custom-repository.html
 navigation_title: "Elastic Cloud Hosted"
-
 applies_to:
   deployment:
     ess: 
