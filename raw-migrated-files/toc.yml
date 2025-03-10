@@ -183,22 +183,12 @@ toc:
       - file: docs-content/serverless/security-detection-engine-overview.md
       - file: docs-content/serverless/security-triage-alerts-with-elastic-ai-assistant.md
       - file: docs-content/serverless/security-vuln-management-faq.md
-      - file: docs-content/serverless/spaces.md
       - file: docs-content/serverless/what-is-observability-serverless.md
   - file: elasticsearch-hadoop/elasticsearch-hadoop/index.md
     children:
       - file: elasticsearch-hadoop/elasticsearch-hadoop/doc-sections.md
   - file: elasticsearch/elasticsearch-reference/index.md
     children:
-      - file: elasticsearch/elasticsearch-reference/autoscaling-deciders.md
-      - file: elasticsearch/elasticsearch-reference/autoscaling-fixed-decider.md
-      - file: elasticsearch/elasticsearch-reference/autoscaling-frozen-existence-decider.md
-      - file: elasticsearch/elasticsearch-reference/autoscaling-frozen-shards-decider.md
-      - file: elasticsearch/elasticsearch-reference/autoscaling-frozen-storage-decider.md
-      - file: elasticsearch/elasticsearch-reference/autoscaling-machine-learning-decider.md
-      - file: elasticsearch/elasticsearch-reference/autoscaling-proactive-storage-decider.md
-      - file: elasticsearch/elasticsearch-reference/autoscaling-reactive-storage-decider.md
-      - file: elasticsearch/elasticsearch-reference/change-passwords-native-users.md
       - file: elasticsearch/elasticsearch-reference/configuring-stack-security.md
       - file: elasticsearch/elasticsearch-reference/data-management.md
       - file: elasticsearch/elasticsearch-reference/documents-indices.md
@@ -224,12 +214,8 @@ toc:
       - file: elasticsearch/elasticsearch-reference/security-files.md
       - file: elasticsearch/elasticsearch-reference/security-limitations.md
       - file: elasticsearch/elasticsearch-reference/semantic-search-inference.md
-      - file: elasticsearch/elasticsearch-reference/setup.md
       - file: elasticsearch/elasticsearch-reference/shard-allocation-filtering.md
       - file: elasticsearch/elasticsearch-reference/shard-request-cache.md
-      - file: elasticsearch/elasticsearch-reference/snapshot-restore.md
-      - file: elasticsearch/elasticsearch-reference/snapshots-restore-snapshot.md
-      - file: elasticsearch/elasticsearch-reference/xpack-autoscaling.md
   - file: ingest-docs/fleet/index.md
     children:
       - file: ingest-docs/fleet/beats-agent-comparison.md
@@ -270,14 +256,9 @@ toc:
   - file: security-docs/security/index.md
   - file: stack-docs/elastic-stack/index.md
     children:
-      - file: stack-docs/elastic-stack/air-gapped-install.md
       - file: stack-docs/elastic-stack/installing-stack-demo-self.md
-      - file: stack-docs/elastic-stack/overview.md
       - file: stack-docs/elastic-stack/upgrade-elastic-stack-for-elastic-cloud.md
       - file: stack-docs/elastic-stack/upgrading-elastic-stack-on-prem.md
       - file: stack-docs/elastic-stack/upgrading-elastic-stack.md
       - file: stack-docs/elastic-stack/upgrading-elasticsearch.md
       - file: stack-docs/elastic-stack/upgrading-kibana.md
-  - file: tech-content/starting-with-the-elasticsearch-platform-and-its-solutions/index.md
-    children:
-      - file: tech-content/starting-with-the-elasticsearch-platform-and-its-solutions/get-elastic.md

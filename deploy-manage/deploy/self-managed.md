@@ -81,11 +81,11 @@ Review these other sections for critical information about securing and managing
 Learn how to secure your Elastic environment to restrict access to only authorized parties, and allow communication between your environment and external parties.
 
 * [](/deploy-manage/security.md): Learn about security features that prevent bad actors from tampering with your data, and encrypt communications to, from, and within your cluster.
-* [](/deploy-manage/users-roles.md): Set up authentication and authorization for your cluster, and learn about the underlying security technologies that {{es}} uses to authenticate and authorize requests internally and across services.
+* [](/deploy-manage/users-roles/cluster-or-deployment-auth.md): Set up authentication and authorization for your cluster, and learn about the underlying security technologies that {{es}} uses to authenticate and authorize requests internally and across services.
 * [](/deploy-manage/manage-spaces.md): Learn how to organize content in {{kib}}, and restrict access to this content to specific users.
 * [](/deploy-manage/api-keys.md): Authenticate and authorize programmatic access to your deployments and {{es}} resources.
 * [](/deploy-manage/manage-connectors.md): Manage connection information between Elastic and third-party systems.
-* [](/deploy-manage/remote-clusters.md): Enable communication between {{es}} clusters to support [cross-cluster replication](/deploy-manage/tools/cross-cluster-replication.md) and [cross-cluster search](/solutions/search/cross-cluster-search.md).
+* [](/deploy-manage/remote-clusters/remote-clusters-self-managed.md): Enable communication between {{es}} clusters to support [cross-cluster replication](/deploy-manage/tools/cross-cluster-replication.md) and [cross-cluster search](/solutions/search/cross-cluster-search.md).
 
 ### Administer and maintain
 
@@ -94,11 +94,12 @@ Monitor the performance of your Elastic environment, administer your license, se
 * [](/deploy-manage/tools.md): Learn about the tools available to safeguard data, ensure continuous availability, and maintain resilience in your {{es}} environment.
 * [](/deploy-manage/monitor.md): View health and performance data for Elastic components, and receive recommendations and insights.
 * [](/deploy-manage/license.md): Learn how to manage your Elastic license.
-* [](/deploy-manage/maintenance.md): Learn how to isolate or deactivate parts of your Elastic environment to perform maintenance, or restart parts of Elastic.
+* [](/deploy-manage/maintenance/start-stop-services.md): Learn how to isolate or deactivate parts of your Elastic environment to perform maintenance, or restart parts of Elastic.
+* [](/deploy-manage/maintenance/add-and-remove-elasticsearch-nodes.md): Learn how to add nodes to a cluster or remove them from a cluster to change the size and capacity of {{es}}.
 
 ### Upgrade
 
-You can [upgrade your Elastic environment](/deploy-manage/upgrade.md) to gain access to the latest features. Learn how to upgrade your cluster or deployment to the latest {{stack}} version, or upgrade your {{ece}} orchestrator or {{eck}} operator to the latest version.
+You can [upgrade your Elastic environment](/deploy-manage/upgrade.md) to gain access to the latest features.
 
 ### Design guidance
 
