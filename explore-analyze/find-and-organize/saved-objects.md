@@ -116,9 +116,8 @@ With each release, {{kib}} introduces changes to the way saved objects are store
 
 However, saved objects can only be imported into the same version, a newer minor on the same major, or the next major. Exported saved objects are not backward compatible and cannot be imported into an older version of {{kib}}. For example:
 
-|     |     |     |
-| --- | --- | --- |
 | Exporting version | Importing version | Compatible? |
+| --- | --- | --- |
 | 8.7.0 | 8.8.1 | Yes |
 | 7.8.1 | 8.3.0 | Yes |
 | 8.3.0 | 8.11.1 | Yes |
