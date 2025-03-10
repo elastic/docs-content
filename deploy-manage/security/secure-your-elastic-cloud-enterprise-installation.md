@@ -19,19 +19,6 @@ TLS certificates apply security controls to network communications. They encrypt
 
 With {{ece}}, you manage proxy certificates for the HTTP layer. The transport layer is managed by ECE. Refer to [](secure-your-elastic-cloud-enterprise-installation/manage-security-certificates.md).
 
-## Network security
-
-Control which systems can access your Elastic deployment through traffic filtering and network controls:
-
-- **IP traffic filtering**: Restrict access based on IP addresses or CIDR ranges.
-- **Trust for cross-cluster operations**. Define which environments your {{ece}} installation can connect to and receive connections from. For more details on cross-cluster operations and the required settings, refer to [](/deploy-manage/remote-clusters.md).
-
-$$$ece_clusters_share_the_same_resources$$$
-:::{note}
-Clusters share the same resources
-
-The Elasticsearch clusters you create on Elastic Cloud Enterprise share the same resources. It is currently not possible to run a specific cluster on entirely dedicated hardware not shared by other clusters.
-:::
 
 ## Users with admin privileges [ece_users_with_admin_privileges] 
 
@@ -63,7 +50,13 @@ Elastic Cloud Enterprise is designed to ensure that an allocator has access only
 
 Security comes in layers, and running separate services on separate infrastructure is the last layer of defense, on top of other security features like the JVM security manager, system call filtering, and running nodes in isolated containers with no shared secrets.
 
+## Hardware isolation
+$$$ece_clusters_share_the_same_resources$$$
+
+The Elasticsearch clusters you create on Elastic Cloud Enterprise share the same resources. It is currently not possible to run a specific cluster on entirely dedicated hardware not shared by other clusters.
+
+
 ## Next step: secure your deployments and clusters
 
-This section covered security principles and options at the environment level. You can take further measures individually for each deployment or cluster that you're running on your installation. Refer to [](secure-your-cluster-deployment.md).
+This section covered security principles and options at the environment level. You can take further measures individually for each deployment or cluster that you're running on this environment. Refer to [](secure-your-cluster-deployment.md).
 

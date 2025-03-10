@@ -21,6 +21,10 @@ If you configure security manually *before* starting your {{es}} nodes, the auto
 
 ## Common security scenarios
 
+Even with security enabled, never expose {{es}} to public internet traffic. Using an application to sanitize requests to {{es}} still poses risks, such as a malicious user writing [`_search`](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-search) requests that could overwhelm an {{es}} cluster and bring it down. Keep {{es}} as isolated as possible, preferably behind a firewall and a VPN. Any internet-facing applications should run pre-canned aggregations, or not run aggregations at all.
+
+While you absolutely shouldn’t expose {{es}} directly to the internet, you also shouldn’t expose {{es}} directly to users. Instead, use an intermediary application to make requests on behalf of users. This implementation allows you to track user behaviors, such as can submit requests, and to which specific nodes in the cluster. For example, you can implement an application that accepts a search term from a user and funnels it through a [`simple_query_string`](elasticsearch://reference/query-languages/query-dsl-simple-query-string-query.md) query.
+
 ### Minimal security ({{es}} Development) [security-minimal-overview]
 
 If you’ve been working with {{es}} and want to enable security on your existing, unsecured cluster, start here. You’ll set passwords for the built-in users to prevent unauthorized access to your local cluster, and also configure password authentication for {{kib}}.
@@ -71,7 +75,7 @@ Control which systems can access your Elastic deployment through traffic filteri
 
 ## Next step: secure your deployments and clusters
 
-This section covered security principles and options at the environment level. You can take further measures individually for each deployment or cluster that you're running on your installation. Refer to [](secure-your-cluster-deployment.md).
+This section covered security principles and options at the environment level. You can take further measures individually for each deployment or cluster that you're running on this environment. Refer to [](secure-your-cluster-deployment.md).
 
 
 

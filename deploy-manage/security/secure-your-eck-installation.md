@@ -23,5 +23,5 @@ Control which systems can access your Elastic deployment through traffic filteri
 
 ## Next step: secure your deployments and clusters
 
-This section covered security principles and options at the environment level. You can take further measures individually for each deployment or cluster that you're running on your installation. Refer to [](secure-your-cluster-deployment.md).
+This section covered security principles and options at the environment level. You can take further measures individually for each deployment or cluster that you're running on this environment. Refer to [](secure-your-cluster-deployment.md).
 

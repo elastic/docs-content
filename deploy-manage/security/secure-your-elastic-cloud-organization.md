@@ -16,15 +16,15 @@ TLS certificates apply security controls to network communications. They encrypt
 
 For your **{{ech}}** deployments and serverless projects hosted on {{ecloud}}, TLS certificates are managed automatically.
 
-## Network security
+## Access control
 
-Control which systems can access your Elastic deployment through traffic filtering and network controls:
+Define which users can access your {{ecloud}} organization using the following methods:
 
-- **IP traffic filtering**: Restrict access based on IP addresses or CIDR ranges.
-- **Private link filters**: Secure connectivity through AWS PrivateLink, Azure Private Link, or GCP Private Service Connect.
-- **Static IPs**: Use static IP addresses for predictable firewall rules.
+- [SSO](/deploy-manage/users-roles/cloud-organization/configure-saml-authentication.md)
+- [Role-based access control](/deploy-manage/users-roles/cloud-organization/manage-users.md)
+- [Cloud API keys](/deploy-manage/api-keys/elastic-cloud-api-keys.md)
 
 
 ## Next step: secure your deployments and clusters
 
-This section covered security principles and options at the environment level. You can take further measures individually for each deployment or cluster that you're running on your installation. Refer to [](secure-your-cluster-deployment.md).
+This section covered security principles and options at the environment level. You can take further measures individually for each deployment or cluster that you're running on this environment. Refer to [](secure-your-cluster-deployment.md).
