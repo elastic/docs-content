@@ -99,25 +99,25 @@ See the [Deployment overview](/deploy-manage/deploy.md) to understand your optio
 
 | **Security feature** | Serverless | Elastic Cloud Hosted | ECE | ECK | Self-managed |
 |------------------|------------|--------------|-----|-----|--------------|
-| **TLS (HTTP Layer)** | ✓ Managed  | ✓ Managed     | ✓ Configurable | ✓ Configurable | ✓ Manual |
-| **TLS (Transport Layer)** | ✓ Managed | ✓ Managed | ✓ Managed | ✓ Managed | ✓ Manual |
+| **TLS (HTTP Layer)** | ✓ Managed | ✓ Managed | ✓ Configurable | ✓ Configurable | ✓ Self-managed |
+| **TLS (Transport Layer)** | ✓ Managed | ✓ Managed | ✓ Managed | ✓ Managed | ✓ Self-managed |
 
 #### Network security
 
 | **Security feature** | Serverless | Elastic Cloud Hosted | ECE | ECK | Self-managed |
 |------------------|------------|--------------|-----|-----|--------------|
-| **IP Traffic Filtering** | ✓ Available | ✓ Available | ✓ Available | ✓ Available | ✓ Available |
-| **Private Link** | ✗ N/A | ✓ Available | ✗ N/A | ✗ N/A | ✗ N/A |
-| **Static IPs** | ✓ Available | ✓ Available | ✗ N/A | ✗ N/A | ✗ N/A |
+| **IP traffic filtering** | ✓ Configurable | ✓ Configurable | ✓ Configurable | ✓ Configurable | ✓ Configurable |
+| **Private link** | ✗ N/A | ✓ Configurable | ✗ N/A | ✗ N/A | ✗ N/A |
+| **Static IPs** | ✓ Configurable | ✓ Configurable | ✗ N/A | ✗ N/A | ✗ N/A |
 
 #### Data security
 
 | **Security feature** | Serverless | Elastic Cloud Hosted | ECE | ECK | Self-managed |
 |------------------|------------|--------------|-----|-----|--------------|
-| **Encryption at Rest** | ✓ Default | ✓ Default | ✗ Manual | ✗ Manual | ✗ Manual |
-| **Bring your own encryption key** | ✗ N/A | ✓ Available | ✗ N/A | ✗ N/A | ✗ N/A |
-| **Keystore Security** | ✓ Available | ✓ Available | ✓ Available | ✓ Available | ✓ Available |
-| **Saved Object Encryption** | ✓ Available | ✓ Available | ✓ Available | ✓ Available | ✓ Available |
+| **Encryption at rest** | ✓ Managed | ✓ Managed | ✓ Self-managed | ✓ Self-managed | ✓ Self-managed |
+| **Bring your own encryption key** | ✗ N/A | ✓ Configurable | ✗ N/A | ✗ N/A | ✗ N/A |
+| **Keystore security** | ✓ Managed | ✓ Managed | ✓ Configurable | ✓ Configurable | ✓ Configurable |
+| **Saved object encryption** | ✓ Managed | ✓ Managed | ✓ Configurable | ✓ Configurable | ✓ Configurable |
 
 #### User session security
 
