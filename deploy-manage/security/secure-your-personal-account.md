@@ -6,4 +6,6 @@ applies_to:
 
 # Secure your personal account
 
-**This page is a work in progress.**
+:::{warning}
+**This page is a work in progress.** 
+:::

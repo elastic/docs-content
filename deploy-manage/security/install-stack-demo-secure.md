@@ -11,7 +11,7 @@ For traffic to be encrypted between {{es}} cluster nodes and between {{kib}} and
 * [Prerequisites and assumptions](secure-your-cluster-deployment.md#install-stack-demo-secure-prereqs)
 * [Step 1: Generate a new self-signed CA certificate](secure-your-cluster-deployment.md#install-stack-demo-secure-ca)
 * [Step 2: Generate a new certificate for the transport layer](secure-your-cluster-deployment.md#install-stack-demo-secure-transport)
-* [Step 3: Generate new certificate(s) for the HTTP layer](../../raw-migrated-files/stack-docs/deploy-manage/security/secure-your-cluster-deployment.md#install-stack-demo-secure-http)
+* [Step 3: Generate new certificate(s) for the HTTP layer](secure-your-cluster-deployment.md#install-stack-demo-secure-http)
 * [Step 4: Configure security on additional {{es}} nodes](secure-your-cluster-deployment.md#install-stack-demo-secure-second-node)
 * [Step 5: Generate server-side and client-side certificates for {{kib}}](secure-your-cluster-deployment.md#install-stack-demo-secure-kib-es)
 * [Step 6: Install {{fleet}} with SSL certificates configured](secure-your-cluster-deployment.md#install-stack-demo-secure-fleet)
@@ -23,7 +23,7 @@ It should take between one and two hours to complete these steps.
 
 ## Prerequisites and assumptions [install-stack-demo-secure-prereqs]
 
-Before starting, you’ll need to have set up an on-premises {{es}} cluster with {{kib}}, following the steps in [Tutorial 1: Installing a self-managed {{stack}}](../deploy/self-managed/installing-elasticsearch.md).
+Before starting, you’ll need to have set up an on-premises {{es}} cluster with {{kib}}, following the steps in [Tutorial 1: Installing a self-managed {{stack}}](/deploy/self-managed/installing-elasticsearch.md).
 
 The examples in this guide use RPM packages to install the {{stack}} components on hosts running Red Hat Enterprise Linux 8. The steps for other install methods and operating systems are similar, and can be found in the documentation linked from each section.
 
@@ -874,7 +874,7 @@ View your system metrics data:
 2. In the query field, search for `Metrics System`.
 3. Select the `[Metrics System] Host overview` link. The {{kib}} Dashboard opens with visualizations of host metrics including CPU usage, memory usage, running processes, and more.
 
-    :::{image} ../../../images/elastic-stack-install-stack-metrics-dashboard.png
+    :::{image} /images/elastic-stack-install-stack-metrics-dashboard.png
     :alt: The System metrics host overview showing CPU usage, memory usage, and other visualizations
     :::
 

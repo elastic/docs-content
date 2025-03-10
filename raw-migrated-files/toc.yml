@@ -290,7 +290,6 @@ toc:
   - file: stack-docs/elastic-stack/index.md
     children:
       - file: stack-docs/elastic-stack/air-gapped-install.md
-      - file: stack-docs/elastic-stack/install-stack-demo-secure.md
       - file: stack-docs/elastic-stack/installing-stack-demo-self.md
       - file: stack-docs/elastic-stack/overview.md
       - file: stack-docs/elastic-stack/upgrade-elastic-stack-for-elastic-cloud.md

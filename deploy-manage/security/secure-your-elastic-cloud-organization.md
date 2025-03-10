@@ -8,7 +8,10 @@ applies_to:
 
 # Secure your Elastic Cloud organization [ec-securing-considerations]
 
-**This page is a work in progress.**
+:::{warning}
+**This page is a work in progress.** 
+:::
+
 
 ## TLS certificate management
 

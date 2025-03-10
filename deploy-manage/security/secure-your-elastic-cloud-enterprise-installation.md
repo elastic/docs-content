@@ -9,7 +9,10 @@ mapped_pages:
 
 # Secure your Elastic Cloud Enterprise installation [ece-securing-considerations]
 
-**This page is a work in progress.**
+:::{warning}
+**This page is a work in progress.** 
+:::
+
 
 When securing your {{ece}} installation, consider the following:
 

@@ -6,6 +6,10 @@ applies_to:
 
 # Secure your hosting environment
 
+:::{warning}
+**This page is a work in progress.** 
+:::
+
 Whether you're running Elastic on {{ecloud}}, through an {{ece}} or {{eck}} orchestrator, or self-managed on your own premises, it is critical that you secure the layer responsible for deploying and hosting your Elastic products.
 
 This section covers security measures specific to:
