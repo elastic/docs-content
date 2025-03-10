@@ -111,3 +111,8 @@ This is very convenient because you don’t have to create any directories to st
 | config | Configuration files including `kibana.yml` | `$KIBANA_HOME\config` | `[KBN_PATH_CONF](configure.md)` |
 | data | The location of the data files written to disk by {{kib}} and its plugins | `$KIBANA_HOME\data` |  |
 | plugins | Plugin files location. Each plugin will be contained in a subdirectory. | `$KIBANA_HOME\plugins` |  |
+
+## Next steps
+
+:::{include} _snippets/install-kib-next-steps.md
+:::

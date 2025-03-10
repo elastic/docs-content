@@ -131,7 +131,7 @@ Static settings can only be configured on an unstarted or shut down node using `
 
 Static settings must be set on every relevant node in the cluster.
 
-## Additional guides
+## Additional topics
 
 Refer to the following documentation to learn how to perform key configuration tasks for {{es}}: 
 

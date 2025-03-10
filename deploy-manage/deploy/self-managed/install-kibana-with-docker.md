@@ -188,19 +188,13 @@ All information that you include in environment variables is visible through the
 
 Some example translations are shown here:
 
-**Environment Variable**
-:   **{{kib}} Setting**
+| Environment variable | {{kib}} setting | 
+| --- | --- |
+| `SERVER_NAME` | `server.name` |
+| `SERVER_BASEPATH` | `server.basePath`| 
+| `ELASTICSEARCH_HOSTS` | `elasticsearch.hosts` |
 
-`SERVER_NAME`
-:   `server.name`
-
-`SERVER_BASEPATH`
-:   `server.basePath`
-
-`ELASTICSEARCH_HOSTS`
-:   `elasticsearch.hosts`
-
-In general, any setting listed in [*Configure {{kib}}*](configure.md) can be configured with this technique.
+In general, any setting listed in [](configure-kibana.md) can be configured with this technique.
 
 Supplying array options can be tricky. The following example shows the syntax for providing an array to `ELASTICSEARCH_HOSTS`.
 
@@ -240,3 +234,8 @@ These settings are defined in the default `kibana.yml`. They can be overridden w
 ::::{important}
 If replacing `kibana.yml` with a custom version, be sure to copy the defaults to the custom file if you want to retain them. If not, they will be "masked" by the new file.
 ::::
+
+## Next steps
+
+:::{include} _snippets/install-kib-next-steps.md
+:::

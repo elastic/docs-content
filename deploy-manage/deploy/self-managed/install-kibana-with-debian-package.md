@@ -143,3 +143,8 @@ The Debian package places config files, logs, and the data directory in the appr
 | data | The location of the data files written to disk by {{kib}} and its plugins | `/var/lib/kibana` | `path.data` |
 | logs | Logs files location | `/var/log/kibana` | `[Logging configuration](../../monitor/logging-configuration/kibana-logging.md)` |
 | plugins | Plugin files location. Each plugin will be contained in a subdirectory. | `/usr/share/kibana/plugins` |  |
+
+## Next steps
+
+:::{include} _snippets/install-kib-next-steps.md
+:::

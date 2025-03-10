@@ -31,12 +31,13 @@ Environment variables can be injected into configuration using `${MY_ENV_VAR}` s
 
 For a complete list of settings that you can apply to {{kib}}, refer to [{{kib}} configuration reference](kibana:///reference/configuration-reference.md).
 
-## Additional guides
+## Additional topics
 
 Refer to the following documentation to learn how to perform key configuration tasks for {{kib}}: 
 
 * [Configure SSL certificates](/deploy-manage/security/set-up-basic-security-plus-https.md#encrypt-kibana-browser) to encrypt traffic between client browsers and {{kib}}
 * [Enable authentication providers](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-authentication.md) for {{kib}}
+* Configure the {{kib}} [reporting feature](/deploy-manage/deploy/kibana-reporting-configuration.md)
 * Use [Spaces](/deploy-manage/manage-spaces.md) to organize content in {{kib}}, and restrict access to this content to specific users
 * Use [Connectors](/deploy-manage/manage-connectors.md) to manage connection information between {{es}}, {{kib}}, and third-party systems
 * Present a [user access agreement](/deploy-manage/users-roles/cluster-or-deployment-auth/access-agreement.md) when logging on to {{kib}}
