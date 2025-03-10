@@ -45,4 +45,41 @@ $$$security-configure-settings$$$
 
 * [/raw-migrated-files/elasticsearch/elasticsearch-reference/es-security-principles.md](/raw-migrated-files/elasticsearch/elasticsearch-reference/es-security-principles.md)
 * [/raw-migrated-files/kibana/kibana/using-kibana-with-security.md](/raw-migrated-files/kibana/kibana/using-kibana-with-security.md)
-* [/raw-migrated-files/stack-docs/elastic-stack/install-stack-demo-secure.md](/raw-migrated-files/stack-docs/elastic-stack/install-stack-demo-secure.md)
+* [/raw-migrated-files/stack-docs/elastic-stack/install-stack-demo-secure.md](/deploy-manage/security/install-stack-demo-secure.md)
+
+Protecting your {{es}} cluster and the data it contains is of utmost importance. Implementing a defense in depth strategy provides multiple layers of security to help safeguard your system.
+
+:::{important}
+Never run an {{es}} cluster without security enabled. This principle cannot be overstated. Running {{es}} without security leaves your cluster exposed to anyone who can send network traffic to {{es}}, permitting these individuals to download, modify, or delete any data in your cluster.
+::: 
+
+To secure your clusters and deployments, consider the following:
+
+## Network access
+
+Control which systems can access your Elastic deployments and clusters through traffic filtering and network controls:
+
+- **IP traffic filtering**: Restrict access based on IP addresses or CIDR ranges.
+- **Private link filters**: Secure connectivity through AWS PrivateLink, Azure Private Link, or GCP Private Service Connect.
+- **Static IPs**: Use static IP addresses for predictable firewall rules.
+
+
+## Cluster communication
+
+- **HTTP and HTTPs**
+- **TLS certificates and keys**
+
+
+## Data and objects security
+
+- **Bring your own encryption key**
+- **Elasticsearch keystore**
+- **Kibana saved objects**
+
+## User roles and sessions
+
+[Define roles](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md) for your users and [assign appropriate privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md) to ensure that users have access only to the resources that they need. This process determines whether the user behind an incoming request is allowed to run that request.
+
+:::{important}
+Never try to run {{es}} as the `root` user, which would invalidate any defense strategy and permit a malicious user to do **anything** on your server. You must create a dedicated, unprivileged user to run {{es}}. By default, the `rpm`, `deb`, `docker`, and Windows packages of {{es}} contain an `elasticsearch` user with this scope.
+:::

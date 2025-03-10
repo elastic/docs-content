@@ -1,6 +1,6 @@
 # Tutorial 2: Securing a self-managed {{stack}} [install-stack-demo-secure]
 
-This tutorial is a follow-on to [Tutorial 1: Installing a self-managed {{stack}}](../../../deploy-manage/deploy/self-managed/installing-elasticsearch.md). The first tutorial describes how to configure a multi-node {{es}} cluster and then set up {{kib}}, followed by {{fleet-server}} and {{agent}}. In a production environment, it’s recommended after completing the {{kib}} setup to proceed directly to this tutorial to configure your SSL certificates. These steps guide you through that process, and then describe how to configure {{fleet-server}} and {{agent}} with the certificates in place.
+This tutorial is a follow-on to [Tutorial 1: Installing a self-managed {{stack}}](/deploy-manage/deploy/self-managed.md). The first tutorial describes how to configure a multi-node {{es}} cluster and then set up {{kib}}, followed by {{fleet-server}} and {{agent}}. In a production environment, it’s recommended after completing the {{kib}} setup to proceed directly to this tutorial to configure your SSL certificates. These steps guide you through that process, and then describe how to configure {{fleet-server}} and {{agent}} with the certificates in place.
 
 **Securing the {{stack}}**
 
@@ -8,22 +8,22 @@ Beginning with Elastic 8.0, security is enabled in the {{stack}} by default, mea
 
 For traffic to be encrypted between {{es}} cluster nodes and between {{kib}} and {{es}}, SSL certificates must be created for the transport ({{es}} inter-node communication) and HTTP (for the {{es}} REST API) layers. Similarly, when setting up {{fleet-server}} you’ll generate and configure a new certificate bundle, and then {{elastic-agent}} uses the generated certificates to communicate with both {{fleet-server}} and {{es}}. The process to set things up is as follows:
 
-* [Prerequisites and assumptions](../../../deploy-manage/security/secure-your-cluster-deployment.md#install-stack-demo-secure-prereqs)
-* [Step 1: Generate a new self-signed CA certificate](../../../deploy-manage/security/secure-your-cluster-deployment.md#install-stack-demo-secure-ca)
-* [Step 2: Generate a new certificate for the transport layer](../../../deploy-manage/security/secure-your-cluster-deployment.md#install-stack-demo-secure-transport)
-* [Step 3: Generate new certificate(s) for the HTTP layer](../../../deploy-manage/security/secure-your-cluster-deployment.md#install-stack-demo-secure-http)
-* [Step 4: Configure security on additional {{es}} nodes](../../../deploy-manage/security/secure-your-cluster-deployment.md#install-stack-demo-secure-second-node)
-* [Step 5: Generate server-side and client-side certificates for {{kib}}](../../../deploy-manage/security/secure-your-cluster-deployment.md#install-stack-demo-secure-kib-es)
-* [Step 6: Install {{fleet}} with SSL certificates configured](../../../deploy-manage/security/secure-your-cluster-deployment.md#install-stack-demo-secure-fleet)
-* [Step 7: Install {{agent}}](../../../deploy-manage/security/secure-your-cluster-deployment.md#install-stack-demo-secure-agent)
-* [Step 8: View your system data](../../../deploy-manage/security/secure-your-cluster-deployment.md#install-stack-demo-secure-view-data)
+* [Prerequisites and assumptions](secure-your-cluster-deployment.md#install-stack-demo-secure-prereqs)
+* [Step 1: Generate a new self-signed CA certificate](secure-your-cluster-deployment.md#install-stack-demo-secure-ca)
+* [Step 2: Generate a new certificate for the transport layer](secure-your-cluster-deployment.md#install-stack-demo-secure-transport)
+* [Step 3: Generate new certificate(s) for the HTTP layer](secure-your-cluster-deployment.md#install-stack-demo-secure-http)
+* [Step 4: Configure security on additional {{es}} nodes](secure-your-cluster-deployment.md#install-stack-demo-secure-second-node)
+* [Step 5: Generate server-side and client-side certificates for {{kib}}](secure-your-cluster-deployment.md#install-stack-demo-secure-kib-es)
+* [Step 6: Install {{fleet}} with SSL certificates configured](secure-your-cluster-deployment.md#install-stack-demo-secure-fleet)
+* [Step 7: Install {{agent}}](secure-your-cluster-deployment.md#install-stack-demo-secure-agent)
+* [Step 8: View your system data](secure-your-cluster-deployment.md#install-stack-demo-secure-view-data)
 
 It should take between one and two hours to complete these steps.
 
 
 ## Prerequisites and assumptions [install-stack-demo-secure-prereqs]
 
-Before starting, you’ll need to have set up an on-premises {{es}} cluster with {{kib}}, following the steps in [Tutorial 1: Installing a self-managed {{stack}}](../../../deploy-manage/deploy/self-managed/installing-elasticsearch.md).
+Before starting, you’ll need to have set up an on-premises {{es}} cluster with {{kib}}, following the steps in [Tutorial 1: Installing a self-managed {{stack}}](/deploy-manage/deploy/self-managed.md).
 
 The examples in this guide use RPM packages to install the {{stack}} components on hosts running Red Hat Enterprise Linux 8. The steps for other install methods and operating systems are similar, and can be found in the documentation linked from each section.
 
@@ -40,7 +40,7 @@ In a production environment you would typically use the CA certificate from your
     sudo systemctl stop elasticsearch.service
     ```
 
-2. Generate a CA certificate using the provided certificate utility, `elasticsearch-certutil`. Note that the location of the utility depends on the installation method you used to install {{es}}. Refer to [elasticsearch-certutil](elasticsearch://reference/elasticsearch/command-line-tools/certutil.md) for the command details and to [Update security certificates with a different CA](../../../deploy-manage/security/different-ca.md) for details about the procedure as a whole.
+2. Generate a CA certificate using the provided certificate utility, `elasticsearch-certutil`. Note that the location of the utility depends on the installation method you used to install {{es}}. Refer to [elasticsearch-certutil](elasticsearch://reference/elasticsearch/command-line-tools/certutil.md) for the command details and to [Update security certificates with a different CA](different-ca.md) for details about the procedure as a whole.
 
     Run the following command. When prompted, specify a unique name for the output file, such as `elastic-stack-ca.zip`:
 
@@ -77,7 +77,7 @@ In a production environment you would typically use the CA certificate from your
 6. From the `/etc/elasticsearch/certs/ca/` directory, import the newly created CA certificate into the {{es}} truststore. This step ensures that your cluster trusts the new CA certificate.
 
     ::::{note}
-    On a new installation a new keystore and truststore are created automatically. If you’re running these steps on an existing {{es}} installation and you know the password to the keystore and the truststore, follow the instructions in [Update security certificates with a different CA](../../../deploy-manage/security/different-ca.md) to import the CA certificate.
+    On a new installation a new keystore and truststore are created automatically. If you’re running these steps on an existing {{es}} installation and you know the password to the keystore and the truststore, follow the instructions in [Update security certificates with a different CA](different-ca.md) to import the CA certificate.
     ::::
 
 
@@ -131,7 +131,7 @@ This guide assumes the use of self-signed certificates, but the process to impor
     ::::{important}
     If you’re running these steps on a production cluster that already contains data:
 
-    * In a cluster with multiple {{es}} nodes, before proceeding you first need to perform a [Rolling restart](../../../deploy-manage/maintenance/start-stop-services/full-cluster-restart-rolling-restart-procedures.md#restart-cluster-rolling) beginning with the node where you’re updating the keystore. Stop at the `Perform any needed changes` step, and then proceed to the next step in this guide.
+    * In a cluster with multiple {{es}} nodes, before proceeding you first need to perform a [Rolling restart](../maintenance/start-stop-services/full-cluster-restart-rolling-restart-procedures.md#restart-cluster-rolling) beginning with the node where you’re updating the keystore. Stop at the `Perform any needed changes` step, and then proceed to the next step in this guide.
     * In a single node cluster, always stop {{es}} before proceeding.
 
     ::::
@@ -227,7 +227,7 @@ Now that communication between {{es}} nodes (the transport layer) has been secur
             ```
 
         2. When prompted, confirm that the settings are correct.
-        3. Add the network IP address that clients can use to connect to the first {{es}} node. This is the same value that’s described in Step 2 of [Tutorial 1: Installing a self-managed {{stack}}](../../../deploy-manage/deploy/self-managed/installing-elasticsearch.md), for example `10.128.0.84`:
+        3. Add the network IP address that clients can use to connect to the first {{es}} node. This is the same value that’s described in Step 2 of [Tutorial 1: Installing a self-managed {{stack}}](/deploy-manage/deploy/self-managed.md), for example `10.128.0.84`:
 
             ```shell
             10.128.0.84
@@ -506,7 +506,7 @@ Now that the security is configured for the first {{es}} node, some steps need t
 
 ## Step 5: Generate server-side and client-side certificates for {{kib}} [install-stack-demo-secure-kib-es]
 
-Now that the transport and HTTP layers are configured with encryption using the new certificates, there are two more tasks that must be accomplished for end-to-end connectivity to {{es}}: Set up certificates for encryption between {{kib}} and {{es}}, and between the client browser and {{kib}}. For additional details about any of these steps, refer to [Mutual TLS authentication between {{kib}} and {{es}}](../../../deploy-manage/security/secure-cluster-communications.md) and [Encrypt traffic between your browser and {{kib}}](../../../deploy-manage/security/set-up-basic-security-plus-https.md#encrypt-kibana-browser).
+Now that the transport and HTTP layers are configured with encryption using the new certificates, there are two more tasks that must be accomplished for end-to-end connectivity to {{es}}: Set up certificates for encryption between {{kib}} and {{es}}, and between the client browser and {{kib}}. For additional details about any of these steps, refer to [Mutual TLS authentication between {{kib}} and {{es}}](secure-cluster-communications.md) and [Encrypt traffic between your browser and {{kib}}](set-up-basic-security-plus-https.md#encrypt-kibana-browser).
 
 1. In Step 3, when you generated a new certificate for the HTTP layer, the process created an archive `elasticsearch-ssl-http.zip`.
 
@@ -617,7 +617,7 @@ Now that the transport and HTTP layers are configured with encryption using the 
 
     Open a web browser to the external IP address of the Kibana host machine: `https://<kibana-host-address>:5601`. Note that the URL should use the `https` and not the `http` protocol.
 
-15. Log in using the `elastic` user and password that you configured in Step 1 of [Tutorial 1: Installing a self-managed {{stack}}](../../../deploy-manage/deploy/self-managed/installing-elasticsearch.md).
+15. Log in using the `elastic` user and password that you configured in Step 1 of [Tutorial 1: Installing a self-managed {{stack}}](/deploy-manage/deploy/self-managed.md).
 
 Congratulations! You’ve successfully updated the SSL certificates between {{es}} and {{kib}}.
 
@@ -874,7 +874,7 @@ View your system metrics data:
 2. In the query field, search for `Metrics System`.
 3. Select the `[Metrics System] Host overview` link. The {{kib}} Dashboard opens with visualizations of host metrics including CPU usage, memory usage, running processes, and more.
 
-    :::{image} ../../../images/elastic-stack-install-stack-metrics-dashboard.png
+    :::{image} /images/elastic-stack-install-stack-metrics-dashboard.png
     :alt: The System metrics host overview showing CPU usage, memory usage, and other visualizations
     :::
 
@@ -884,6 +884,6 @@ Congratulations! You’ve successfully configured security for {{es}}, {{kib}}, 
 
 ## What’s next? [_whats_next]
 
-* Do you have data ready to ingest into your newly set up {{stack}}? Learn how to [add data to Elasticsearch](../../../manage-data/ingest.md).
+* Do you have data ready to ingest into your newly set up {{stack}}? Learn how to [add data to Elasticsearch](../../manage-data/ingest.md).
 * Use [Elastic {{observability}}](https://www.elastic.co/observability) to unify your logs, infrastructure metrics, uptime, and application performance data.
 * Want to protect your endpoints from security threats? Try [{{elastic-sec}}](https://www.elastic.co/security). Adding endpoint protection is just another integration that you add to the agent policy!

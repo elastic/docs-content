@@ -174,4 +174,3 @@ Ensure secure communication between your applications and Elastic:
 
 - **Client security**: Best practices for securely connecting applications to {es}
 - **Integration security**: Secure configuration for Beats, Logstash, and other integrations
-

@@ -5,6 +5,11 @@ mapped_pages:
 
 # Secure clients and integrations [security-clients-integrations]
 
+:::{warning}
+**This page is a work in progress.** 
+:::
+
+
 You will need to update the configuration for several [clients](httprest-clients-security.md) to work with a secured {{es}} cluster.
 
 The {{es}} {{security-features}} enable you to secure your {{es}} cluster. But {{es}} itself is only one product within the {{stack}}. It is often the case that other products in the {{stack}} are connected to the cluster and therefore need to be secured as well, or at least communicate with the cluster in a secured way:
