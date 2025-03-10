@@ -4,21 +4,15 @@ mapped_urls:
   - https://www.elastic.co/guide/en/serverless/current/security-alert-suppression.html
 ---
 
-# Suppress detection alerts
+# Suppress detection alerts [security-alert-suppression]
 
-% What needs to be done: Align serverless/stateful
-
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/security-docs/security/alert-suppression.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/security-alert-suppression.md
 
 ::::{admonition} Requirements and notices
-* Alert suppression requires a [Platinum or higher subscription](https://www.elastic.co/pricing).
+* In {{stack}} alert suppression requires a [Platinum or higher subscription](https://www.elastic.co/pricing) or the appropriate [{{serverless-short}} project tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md).
 * {{ml-cap}} rules have [additional requirements](/solutions/security/advanced-entity-analytics/machine-learning-job-rule-requirements.md) for alert suppression.
+* This functionality is in technical preview for event correlation rules only and may be changed or removed in a future release. Elastic will work to fix any issues, but features in technical preview are not subject to the support SLA of official GA features.
 
 ::::
-
 
 Alert suppression allows you to reduce the number of repeated or duplicate detection alerts created by these detection rule types:
 
@@ -39,7 +33,7 @@ Alert suppression is not available for Elastic prebuilt rules. However, if you w
 ::::
 
 
-## Configure alert suppression [_configure_alert_suppression]
+## Configure alert suppression [security-alert-suppression-configure-alert-suppression]
 
 You can configure alert suppression when you create or edit a supported rule type. Refer to documentation for creating [custom query](/solutions/security/detect-and-alert/create-detection-rule.md#create-custom-rule), [threshold](/solutions/security/detect-and-alert/create-detection-rule.md#create-threshold-rule), [event correlation](/solutions/security/detect-and-alert/create-detection-rule.md#create-eql-rule), [new terms](/solutions/security/detect-and-alert/create-detection-rule.md#create-new-terms-rule), [{{esql}}](/solutions/security/detect-and-alert/create-detection-rule.md#create-esql-rule), or [{{ml}}](/solutions/security/detect-and-alert/create-detection-rule.md#create-ml-rule) rules for detailed instructions.
 
@@ -51,7 +45,7 @@ You can configure alert suppression when you create or edit a supported rule typ
     ::::{note}
     If you specify a field with multiple values, alerts with that field are handled as follows:
 
-    * **Custom query or threshold rules:** A group of alerts is created for each value. For example, if you suppress alerts by `destination.ip` of `[127.0.0.1, 127.0.0.2, 127.0.0.3]`, alerts will be suppressed separately for each value of `127.0.0.1`, `127.0.0.2`, and `127.0.0.3`.
+    * **Custom query or threshold rules:** Alerts are grouped by each unique value. For example, if you suppress alerts by `destination.ip` of `[127.0.0.1, 127.0.0.2, 127.0.0.3]`, alerts will be suppressed separately for each value of `127.0.0.1`, `127.0.0.2`, and `127.0.0.3`.
     * **Indicator match, event correlation (non-sequence queries only), new terms, {{esql}}, or {{ml}} rules:** Alerts with the specified field name and identical array values are grouped together. For example, if you suppress alerts by `destination.ip` of `[127.0.0.1, 127.0.0.2, 127.0.0.3]`, alerts with the entire array are grouped and only one alert is created for the group.
     * **Event correlation (sequence queries only) rules:** If the specified field contains an array of values, suppression only happens if the field’s values are an exact match and in the same order. For example, if you specify the field `myips` and one sequence alert has [1.1.1.1, 0.0.0.0] and another sequence alert has [1.1.1.1, 192.168.0.1], neither of those alerts will be suppressed, despite sharing an array element.
 
@@ -64,7 +58,7 @@ You can configure alert suppression when you create or edit a supported rule typ
     ::::
 
 
-    * **Per rule execution**: Create an alert each time the rule runs and meets its criteria.
+    * **Per rule execution**: Create an alert each time the rule runs and an event meets its criteria.
     * **Per time period**: Create one alert for all qualifying events that occur within a specified time window, beginning from when an event first meets the rule criteria and creates the alert.
 
         For example, if a rule runs every 5 minutes but you don’t need alerts that frequently, you can set the suppression time period to a longer time, such as 1 hour. If the rule meets its criteria, it creates an alert at that time, and for the next hour, it’ll suppress any subsequent qualifying events.
@@ -93,7 +87,7 @@ You can configure alert suppression when you create or edit a supported rule typ
 
 
 
-## Confirm suppressed alerts [_confirm_suppressed_alerts]
+## Confirm suppressed alerts [security-alert-suppression-confirm-suppressed-alerts]
 
 The {{security-app}} displays several indicators of whether a detection alert was created with alert suppression enabled, and how many duplicate alerts were suppressed.
 
@@ -125,7 +119,7 @@ After an alert is moved to the `Closed` status, it will no longer suppress new a
 
 
 
-## Investigate events for suppressed alerts [_investigate_events_for_suppressed_alerts]
+## Investigate events for suppressed alerts [security-alert-suppression-investigate-events-for-suppressed-alerts]
 
 With alert suppression, detection alerts aren’t created for the grouped source events, but you can still retrieve the events for further analysis or investigation. Do one of the following to open Timeline with the original events associated with both the created alert and the suppressed alerts:
 
@@ -139,9 +133,9 @@ With alert suppression, detection alerts aren’t created for the grouped source
 * Alert details flyout — Select **Take action** → **Investigate in timeline**.
 
 
-## Alert suppression limit by rule type [_alert_suppression_limit_by_rule_type]
+## Alert suppression limit by rule type [security-alert-suppression-alert-suppression-limit-by-rule-type]
 
 Some rule types have a maximum number of alerts that can be suppressed (custom query rules don’t have a suppression limit):
 
 * **Threshold, event correlation, {{esql}}, and {{ml}}:** The maximum number of alerts is the value you choose for the rule’s **Max alerts per run** [advanced setting](/solutions/security/detect-and-alert/create-detection-rule.md#rule-ui-advanced-params), which is `100` by default.
-* **Indicator match and new terms:** The maximum number is five times the value you choose for the rule’s **Max alerts per run** [advanced setting](/solutions/security/detect-and-alert/create-detection-rule.md#rule-ui-advanced-params). The default value is `100`, which means the default maximum limit for indicator match rules and new term rules is `500`.
+* **Indicator match and new terms:** The maximum number is five times the value you choose for the rule’s **Max alerts per run** [advanced setting](/solutions/security/detect-and-alert/create-detection-rule.md#rule-ui-advanced-params). The default value is `100`, which means the default maximum limit for indicator match rules and new terms rules is `500`.

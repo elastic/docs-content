@@ -474,53 +474,60 @@ toc:
       - file: autoscaling/autoscaling-deciders.md
       - file: autoscaling/trained-model-autoscaling.md
   - file: security.md
-    children:
-      - file: security/secure-your-elastic-cloud-enterprise-installation.md
+    children: 
+      - file: security/secure-hosting-environment.md
         children:
-          - file: security/secure-your-elastic-cloud-enterprise-installation/manage-security-certificates.md
-          - file: security/secure-your-elastic-cloud-enterprise-installation/allow-x509-certificates-signed-with-sha-1.md
-          - file: security/secure-your-elastic-cloud-enterprise-installation/configure-tls-version.md
+          - file: security/secure-your-elastic-cloud-organization.md        
+          - file: security/secure-your-elastic-cloud-enterprise-installation.md
+            children:
+              - file: security/secure-your-elastic-cloud-enterprise-installation/manage-security-certificates.md
+              - file: security/secure-your-elastic-cloud-enterprise-installation/allow-x509-certificates-signed-with-sha-1.md
+              - file: security/secure-your-elastic-cloud-enterprise-installation/configure-tls-version.md
+          - file: security/secure-your-eck-installation.md
+          - file: security/manually-configure-security-in-self-managed-cluster.md
+            children:
+              - file: security/set-up-minimal-security.md
+              - file: security/set-up-basic-security.md
+              - file: security/set-up-basic-security-plus-https.md
+              - file: security/install-stack-demo-secure.md
       - file: security/secure-your-cluster-deployment.md
         children:
-          - file: security/secure-endpoints.md
+          - file: security/traffic-filtering.md
             children:
-              - file: security/secure-http-communications.md
-              - file: security/traffic-filtering.md
+              - file: security/ip-traffic-filtering.md
                 children:
-                  - file: security/ip-traffic-filtering.md
-                  - file: security/private-link-traffic-filters.md
-                    children:
-                      - file: security/aws-privatelink-traffic-filters.md
-                      - file: security/azure-private-link-traffic-filters.md
-                      - file: security/gcp-private-service-connect-traffic-filters.md
-                      - file: security/claim-traffic-filter-link-id-ownership-through-api.md
                   - file: security/manage-traffic-filtering-through-api.md
+              - file: security/private-link-traffic-filters.md
+                children:
+                  - file: security/aws-privatelink-traffic-filters.md
+                  - file: security/azure-private-link-traffic-filters.md
+                  - file: security/gcp-private-service-connect-traffic-filters.md
+                  - file: security/claim-traffic-filter-link-id-ownership-through-api.md
               - file: security/elastic-cloud-static-ips.md
-          - file: security/kibana-session-management.md
           - file: security/secure-cluster-communications.md
             children:
+              - file: security/secure-http-communications.md
               - file: security/security-certificates-keys.md
                 children:
                   - file: security/updating-certificates.md
                     children:
                       - file: security/same-ca.md
                       - file: security/different-ca.md
-          - file: security/secure-clients-integrations.md
+              - file: security/supported-ssltls-versions-by-jdk-version.md
+          - file: security/data-security.md
             children:
-              - file: security/httprest-clients-security.md
-          - file: security/encrypt-deployment.md
-            children:
-              - file: security/encrypt-deployment-with-customer-managed-encryption-key.md
-          - file: security/secure-settings.md
-          - file: security/secure-saved-objects.md
-          - file: security/manually-configure-security-in-self-managed-cluster.md
-            children:
-              - file: security/set-up-minimal-security.md
-              - file: security/set-up-basic-security.md
-              - file: security/set-up-basic-security-plus-https.md
-          - file: security/enabling-cipher-suites-for-stronger-encryption.md
-          - file: security/supported-ssltls-versions-by-jdk-version.md
+              - file: security/encrypt-deployment.md
+                children:
+                  - file: security/encrypt-deployment-with-customer-managed-encryption-key.md
+                  - file: security/enabling-cipher-suites-for-stronger-encryption.md
+              - file: security/secure-settings.md
+              - file: security/secure-saved-objects.md
+          - file: security/kibana-session-management.md
           - file: security/fips-140-2.md
+      - file: security/secure-your-personal-account.md
+      - file: security/secure-clients-integrations.md
+        children:
+          - file: security/httprest-clients-security.md
   - file: users-roles.md
     children:
       - file: users-roles/cloud-organization.md
