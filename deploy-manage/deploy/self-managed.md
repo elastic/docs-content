@@ -42,7 +42,7 @@ Learn how to install and configure {{es}}. {{es}} is the distributed search and 
 
 * [](/deploy-manage/deploy/self-managed/installing-elasticsearch.md)
   * [](/deploy-manage/deploy/self-managed/important-system-configuration.md): Prepare your environment for an {{es}} installation.
-  * [](/deploy-manage/deploy/self-managed/deploy-cluster.md#installation-methods): Install and run {{es}} using one of our install packages or container images.
+  * [](/deploy-manage/deploy/self-managed/installing-elasticsearch.md#installation-methods): Install and run {{es}} using one of our install packages or container images.
   * [](/deploy-manage/deploy/self-managed/local-development-installation-quickstart.md): Quickly set up {{es}} and {{kib}} in Docker for local development or testing.
 * [](/deploy-manage/deploy/self-managed/configure-elasticsearch.md): Learn how to make configuration changes to {{es}}
   * [](/deploy-manage/deploy/self-managed/important-settings-configuration.md): Learn about key settings required for production environments.

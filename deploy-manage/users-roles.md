@@ -33,7 +33,7 @@ Preventing unauthorized access is only one element of a complete security strate
 ```{applies_to}
 deployment:
   ess: all
-:serverless: all
+serverless: all
 ```
 
 If you’re using {{ecloud}}, then you can perform the following tasks to control access to your Cloud organization, your Cloud Hosted deployments, and your Cloud Serverless projects:
@@ -81,7 +81,7 @@ You can't manage users and roles for {{eck}} clusters at the orchestrator level.
 ## Project level
 
 ```{applies_to}
-:serverless: all
+serverless: all
 ```
 
 As an extension of the [predefined instance access roles](/deploy-manage/users-roles/cloud-organization/user-roles.md#ec_instance_access_roles) offered for {{serverless-short}} projects, you can create custom roles at the project level to provide more granular control, and provide users with only the access they need within specific projects.

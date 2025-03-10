@@ -43,7 +43,7 @@ To add a node to a cluster running on multiple machines, you must also set [`dis
 
 ::::
 
-:::{include} deploy-manage/deploy/self-managed/_snippets/enroll-nodes.md
+:::{include} /deploy-manage/deploy/self-managed/_snippets/enroll-nodes.md
 :::
 
 ## Master-eligible nodes [add-elasticsearch-nodes-master-eligible]
