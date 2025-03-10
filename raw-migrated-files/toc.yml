@@ -229,7 +229,6 @@ toc:
       - file: kibana/kibana/console-kibana.md
       - file: kibana/kibana/elasticsearch-mutual-tls.md
       - file: kibana/kibana/esql.md
-      - file: kibana/kibana/install.md
       - file: kibana/kibana/logging-settings.md
       - file: kibana/kibana/reporting-production-considerations.md
       - file: kibana/kibana/search-ai-assistant.md
@@ -237,7 +236,6 @@ toc:
       - file: kibana/kibana/secure-settings.md
       - file: kibana/kibana/Security-production-considerations.md
       - file: kibana/kibana/set-time-filter.md
-      - file: kibana/kibana/setup.md
       - file: kibana/kibana/upgrade-migrations-rolling-back.md
       - file: kibana/kibana/upgrade.md
       - file: kibana/kibana/using-kibana-with-security.md
