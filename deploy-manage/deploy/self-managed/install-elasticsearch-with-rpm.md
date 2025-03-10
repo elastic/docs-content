@@ -218,7 +218,7 @@ curl --cacert /etc/elasticsearch/certs/http_ca.crt -u elastic:$ELASTIC_PASSWORD 
 
 1. Ensure that you use `https` in your call, or the request will fail.`--cacert`
 :   Path to the generated `http_ca.crt` certificate for the HTTP layer.
-
+%  NOTCONSOLE
 
 
 The call returns a response like this:

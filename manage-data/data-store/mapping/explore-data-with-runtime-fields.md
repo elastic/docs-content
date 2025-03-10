@@ -57,12 +57,14 @@ POST /my-index-000001/_bulk?refresh
 {"index":{}}
 {"timestamp":"2020-04-30T14:31:28-05:00","message":"not a valid apache log"}
 ```
+%  TEST[continued]
 
 At this point, you can view how {{es}} stores your raw data.
 
 ```console
 GET /my-index-000001
 ```
+%  TEST[continued]
 
 The mapping contains two fields: `@timestamp` and `message`.
 
@@ -88,6 +90,7 @@ The mapping contains two fields: `@timestamp` and `message`.
   }
 }
 ```
+%  TESTRESPONSE[s/.../"settings": $body.my-index-000001.settings/]
 
 
 ## Define a runtime field with a grok pattern [runtime-examples-grok]
@@ -110,6 +113,7 @@ PUT my-index-000001/_mappings
   }
 }
 ```
+%  TEST[continued]
 
 1. This condition ensures that the script doesn’t crash even if the pattern of the message doesn’t match.
 
@@ -136,6 +140,7 @@ GET my-index-000001/_search
   "fields" : ["http.clientip"]
 }
 ```
+%  TEST[continued]
 
 
 ## Define a composite runtime field [runtime-examples-grok-composite]
@@ -164,6 +169,7 @@ PUT my-index-000001/_mappings
   }
 }
 ```
+%  TEST[continued]
 
 ### Search for a specific IP address [runtime-examples-grok-ip]
 
@@ -180,6 +186,7 @@ GET my-index-000001/_search
   "fields" : ["*"]
 }
 ```
+%  TEST[continued]
 
 The API returns the following result. Because `http` is a `composite` runtime field, the response includes each of the sub-fields under `fields`, including any associated values that match the query. Without building your data structure in advance, you can search and explore your data in meaningful ways to experiment and determine which fields to index.
 
@@ -226,6 +233,8 @@ The API returns the following result. Because `http` is a `composite` runtime fi
   }
 }
 ```
+%  TESTRESPONSE[s/.../"took" : $body.took,"timed_out" : $body.timed_out,"_shards" : $body._shards,/]
+%  TESTRESPONSE[s/"_id" : "sRVHBnwBB-qjgFni7h_O"/"_id": $body.hits.hits.0._id/]
 
 Also, remember that `if` statement in the script?
 
@@ -252,6 +261,7 @@ GET my-index-000001/_search
   }
 }
 ```
+%  TEST[continued]
 
 The response includes the document where the log format doesn’t match, but the timestamp falls within the defined range.
 
@@ -287,6 +297,9 @@ The response includes the document where the log format doesn’t match, but the
   }
 }
 ```
+%  TESTRESPONSE[s/.../"took" : $body.took,"timed_out" : $body.timed_out,"_shards" : $body._shards,/]
+%  TESTRESPONSE[s/"_id" : "hdEhyncBRSB6iD-PoBqe"/"_id": $body.hits.hits.0._id/]
+%  TESTRESPONSE[s/"_id" : "htEhyncBRSB6iD-PoBqe"/"_id": $body.hits.hits.1._id/]
 
 
 
@@ -310,6 +323,7 @@ PUT my-index-000001/_mappings
   }
 }
 ```
+%  TEST[continued]
 
 Similarly, you can define a dissect pattern to extract the [HTTP response code](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status):
 
@@ -327,6 +341,7 @@ PUT my-index-000001/_mappings
   }
 }
 ```
+%  TEST[continued]
 
 You can then run a query to retrieve a specific HTTP response using the `http.responses` runtime field. Use the `fields` parameter of the `_search` request to indicate which fields you want to retrieve:
 
@@ -341,6 +356,7 @@ GET my-index-000001/_search
   "fields" : ["http.client_ip","timestamp","http.verb"]
 }
 ```
+%  TEST[continued]
 
 The response includes a single document where the HTTP response is `304`:
 
@@ -378,5 +394,7 @@ The response includes a single document where the HTTP response is `304`:
   }
 }
 ```
+%  TESTRESPONSE[s/.../"took" : $body.took,"timed_out" : $body.timed_out,"_shards" : $body._shards,/]
+%  TESTRESPONSE[s/"_id" : "A2qDy3cBWRMvVAuI7F8M"/"_id": $body.hits.hits.0._id/]
 
 

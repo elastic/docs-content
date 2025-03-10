@@ -83,12 +83,16 @@ PUT _snapshot/my_unverified_backup?verify=false
   }
 }
 ```
+%  TEST[setup:setup-repository]
+%  TEST[s/my_unverified_backup_location/my_repository/]
 
 If wanted, you can manually run the repository verification check. To verify a repository in {{kib}}, go to the **Repositories** list page and click the name of a repository. Then click **Verify repository**. You can also use the [verify snapshot repository API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-verify-repository).
 
 ```console
 POST _snapshot/my_unverified_backup/_verify
 ```
+%  TEST[continued]
+%  TEST[s/my_unverified_backup_location/my_repository/]
 
 If successful, the request returns a list of nodes used to verify the repository. If verification fails, the request returns an error.
 
@@ -106,6 +110,7 @@ You can also use the [clean up snapshot repository API](https://www.elastic.co/d
 ```console
 POST _snapshot/my_repository/_cleanup
 ```
+%  TEST[setup:setup-snapshots]
 
 The API returns:
 
@@ -117,6 +122,8 @@ The API returns:
   }
 }
 ```
+%  TESTRESPONSE[s/"deleted_bytes": 20/"deleted_bytes": $body.results.deleted_bytes/]
+%  TESTRESPONSE[s/"deleted_blobs": 5/"deleted_blobs": $body.results.deleted_bytes/]
 
 Depending on the concrete repository implementation the numbers shown for bytes free as well as the number of blobs removed will either be an approximation or an exact result. Any non-zero value for the number of blobs removed implies that unreferenced blobs were found and subsequently cleaned up.
 

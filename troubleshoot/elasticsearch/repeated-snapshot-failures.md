@@ -38,6 +38,7 @@ In order to check the status of failing {{slm}} policies we need to go to Kibana
     ```console
     GET _slm/policy/<affected-policy-name>
     ```
+    %  TEST[skip:These policies do not exist]
 
     The response will look like this:
 
@@ -105,6 +106,7 @@ In the event that snapshots are failing for other reasons check the logs on the 
 ```console
 GET _slm/policy/<affected-policy-name>
 ```
+%  TEST[skip:These policies do not exist]
 
 The response will look like this:
 
@@ -156,7 +158,7 @@ The response will look like this:
 2. The information about the last failure for the policy.
 3. The time when the failure occurred in millis. Use the `human=true` request parameter to see a formatted timestamp.
 4. Error details containing the reason for the snapshot failure.
-
+%  TESTRESPONSE[skip:the result is for illustrating purposes only]
 
 Snapshots can fail for a variety reasons. If the failures are due to configuration errors, consult the documentation for the repository that the automated snapshots are using.
 

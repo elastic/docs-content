@@ -38,6 +38,7 @@ In order to restore the indices and data streams that are missing data:
     ```console
     GET _cat/indices?v&health=red&h=index,status,health
     ```
+    %  TEST[skip:illustration purposes only]
 
     The response will look like this:
 
@@ -54,6 +55,7 @@ In order to restore the indices and data streams that are missing data:
     ```console
     GET _snapshot/my_repository/*?verbose=false
     ```
+    %  TEST[skip:illustration purposes only]
 
     The response will look like this:
 
@@ -149,6 +151,7 @@ In order to restore the indices and data streams that are missing data:
     ```console
     POST my-data-stream/_rollover
     ```
+    %  TEST[skip:illustration purposes only]
 
 8. Now that the data stream preparation is done, we will close the target indices by using the [close indices API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-close).
 
@@ -161,6 +164,7 @@ In order to restore the indices and data streams that are missing data:
     ```console
     GET _cat/indices?v&health=red&h=index,status,health
     ```
+    %  TEST[skip:illustration purposes only]
 
     The response will look like this:
 
@@ -242,6 +246,7 @@ In order to restore the indices that are missing shards:
     ```console
     GET _snapshot/my_repository/*?verbose=false
     ```
+    %  TEST[skip:illustration purposes only]
 
     The response will look like this:
 
@@ -337,6 +342,7 @@ In order to restore the indices that are missing shards:
     ```console
     POST my-data-stream/_rollover
     ```
+    %  TEST[skip:illustration purposes only]
 
 5. Now that the data stream preparation is done, we will close the target indices by using the [close indices API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-close).
 

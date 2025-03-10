@@ -32,6 +32,7 @@ PUT _ilm/policy/shrink-index
   }
 }
 ```
+%  TEST
 
 There is nothing that prevents you from applying the `shrink-index` policy to a new index that has only two shards:
 
@@ -44,6 +45,7 @@ PUT /my-index-000001
   }
 }
 ```
+%  TEST[continued]
 
 After five days, {{ilm-init}} attempts to shrink `my-index-000001` from two shards to four shards. Because the shrink action cannot *increase* the number of shards, this operation fails and {{ilm-init}} moves `my-index-000001` to the `ERROR` step.
 
@@ -52,6 +54,7 @@ You can use the [{{ilm-init}} Explain API](https://www.elastic.co/docs/api/doc/e
 ```console
 GET /my-index-000001/_ilm/explain
 ```
+%  TEST[continued]
 
 Which returns the following information:
 
@@ -103,7 +106,7 @@ Which returns the following information:
 6. The step that failed to execute: `shrink`
 7. The type of error and a description of that error.
 8. The definition of the current phase from the `shrink-index` policy
-
+%  TESTRESPONSE[skip:no way to know if we will get this response immediately]
 
 To resolve this, you could update the policy to shrink the index to a single shard after 5 days:
 
@@ -124,6 +127,7 @@ PUT _ilm/policy/shrink-index
   }
 }
 ```
+%  TEST[continued]
 
 
 ## Retrying failed lifecycle policy steps [_retrying_failed_lifecycle_policy_steps]
@@ -133,6 +137,7 @@ Once you fix the problem that put an index in the `ERROR` step, you might need t
 ```console
 POST /my-index-000001/_ilm/retry
 ```
+%  TEST[skip:we can’t be sure the index is ready to be retried at this point]
 
 {{ilm-init}} subsequently attempts to re-run the step that failed. You can use the [{{ilm-init}} Explain API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-explain-lifecycle) to monitor the progress.
 

@@ -108,6 +108,7 @@ PUT _inference/text_embedding/cohere_embeddings <1>
     }
 }
 ```
+%  TEST[skip:TBD]
 
 1. The task type is `text_embedding` in the path and the `inference_id` which is the unique identifier of the {{infer}} endpoint is `cohere_embeddings`.
 2. The API key of your Cohere account. You can find your API keys in your Cohere dashboard under the [API keys section](https://dashboard.cohere.com/api-keys). You need to provide your API key only once. The [Get {{infer}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-get) does not return your API key.
@@ -130,6 +131,7 @@ PUT _inference/sparse_embedding/elser_embeddings <1>
   }
 }
 ```
+%  TEST[skip:TBD]
 
 1. The task type is `sparse_embedding` in the path and the `inference_id` which is the unique identifier of the {{infer}} endpoint is `elser_embeddings`.
 
@@ -155,6 +157,7 @@ PUT _inference/text_embedding/hugging_face_embeddings <1>
   }
 }
 ```
+%  TEST[skip:TBD]
 
 1. The task type is `text_embedding` in the path and the `inference_id` which is the unique identifier of the {{infer}} endpoint is `hugging_face_embeddings`.
 2. A valid HuggingFace access token. You can find on the [settings page of your account](https://huggingface.co/settings/tokens).
@@ -172,6 +175,7 @@ PUT _inference/text_embedding/openai_embeddings <1>
     }
 }
 ```
+%  TEST[skip:TBD]
 
 1. The task type is `text_embedding` in the path and the `inference_id` which is the unique identifier of the {{infer}} endpoint is `openai_embeddings`.
 2. The API key of your OpenAI account. You can find your OpenAI API keys in your OpenAI account under the [API keys section](https://platform.openai.com/api-keys). You need to provide your API key only once. The [Get {{infer}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-get) does not return your API key.
@@ -196,6 +200,7 @@ PUT _inference/text_embedding/azure_openai_embeddings <1>
     }
 }
 ```
+%  TEST[skip:TBD]
 
 1. The task type is `text_embedding` in the path and the `inference_id` which is the unique identifier of the {{infer}} endpoint is `azure_openai_embeddings`.
 2. The API key for accessing your Azure OpenAI services. Alternately, you can provide an `entra_id` instead of an `api_key` here. The [Get {{infer}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-get) does not return this information.
@@ -221,6 +226,7 @@ PUT _inference/text_embedding/azure_ai_studio_embeddings <1>
     }
 }
 ```
+%  TEST[skip:TBD]
 
 1. The task type is `text_embedding` in the path and the `inference_id` which is the unique identifier of the {{infer}} endpoint is `azure_ai_studio_embeddings`.
 2. The API key for accessing your Azure AI Studio deployed model. You can find this on your model deployment’s overview page.
@@ -247,6 +253,7 @@ PUT _inference/text_embedding/google_vertex_ai_embeddings <1>
     }
 }
 ```
+%  TEST[skip:TBD]
 
 1. The task type is `text_embedding` per the path. `google_vertex_ai_embeddings` is the unique identifier of the {{infer}} endpoint (its `inference_id`).
 2. A valid service account in JSON format for the Google Vertex AI API.
@@ -266,6 +273,7 @@ PUT _inference/text_embedding/mistral_embeddings <1>
     }
 }
 ```
+%  TEST[skip:TBD]
 
 1. The task type is `text_embedding` in the path and the `inference_id` which is the unique identifier of the {{infer}} endpoint is `mistral_embeddings`.
 2. The API key for accessing the Mistral API. You can find this in your Mistral account’s API Keys page.
@@ -286,6 +294,7 @@ PUT _inference/text_embedding/amazon_bedrock_embeddings <1>
     }
 }
 ```
+%  TEST[skip:TBD]
 
 1. The task type is `text_embedding` in the path and the `inference_id` which is the unique identifier of the {{infer}} endpoint is `amazon_bedrock_embeddings`.
 2. The access key can be found on your AWS IAM management page for the user account to access Amazon Bedrock.
@@ -308,6 +317,7 @@ PUT _inference/text_embedding/alibabacloud_ai_search_embeddings <1>
     }
 }
 ```
+%  TEST[skip:TBD]
 
 1. The task type is `text_embedding` in the path and the `inference_id` which is the unique identifier of the {{infer}} endpoint is `alibabacloud_ai_search_embeddings`.
 2. The API key for accessing the AlibabaCloud AI Search API. You can find your API keys in your AlibabaCloud account under the [API keys section](https://opensearch.console.aliyun.com/cn-shanghai/rag/api-key). You need to provide your API key only once. The [Get {{infer}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-get) does not return your API key.
@@ -852,6 +862,7 @@ POST _reindex?wait_for_completion=false
   }
 }
 ```
+%  TEST[skip:TBD]
 
 1. The default batch size for reindexing is 1000. Reducing `size` to a smaller number makes the update of the reindexing process quicker which enables you to follow the progress closely and detect errors early.
 
@@ -875,6 +886,7 @@ POST _reindex?wait_for_completion=false
   }
 }
 ```
+%  TEST[skip:TBD]
 
 1. The default batch size for reindexing is 1000. Reducing `size` to a smaller number makes the update of the reindexing process quicker which enables you to follow the progress closely and detect errors early.
 ::::::
@@ -893,6 +905,7 @@ POST _reindex?wait_for_completion=false
   }
 }
 ```
+%  TEST[skip:TBD]
 
 1. The default batch size for reindexing is 1000. Reducing `size` to a smaller number makes the update of the reindexing process quicker which enables you to follow the progress closely and detect errors early.
 ::::::
@@ -911,6 +924,7 @@ POST _reindex?wait_for_completion=false
   }
 }
 ```
+%  TEST[skip:TBD]
 
 1. The default batch size for reindexing is 1000. Reducing `size` to a smaller number makes the update of the reindexing process quicker which enables you to follow the progress closely and detect errors early.
 
@@ -934,6 +948,7 @@ POST _reindex?wait_for_completion=false
   }
 }
 ```
+%  TEST[skip:TBD]
 
 1. The default batch size for reindexing is 1000. Reducing `size` to a smaller number makes the update of the reindexing process quicker which enables you to follow the progress closely and detect errors early.
 
@@ -957,6 +972,7 @@ POST _reindex?wait_for_completion=false
   }
 }
 ```
+%  TEST[skip:TBD]
 
 1. The default batch size for reindexing is 1000. Reducing `size` to a smaller number makes the update of the reindexing process quicker which enables you to follow the progress closely and detect errors early.
 
@@ -980,6 +996,7 @@ POST _reindex?wait_for_completion=false
   }
 }
 ```
+%  TEST[skip:TBD]
 
 1. The default batch size for reindexing is 1000. Reducing `size` will make updates to the reindexing process faster. This enables you to follow the progress closely and detect errors early.
 ::::::
@@ -998,6 +1015,7 @@ POST _reindex?wait_for_completion=false
   }
 }
 ```
+%  TEST[skip:TBD]
 
 1. The default batch size for reindexing is 1000. Reducing `size` to a smaller number makes the update of the reindexing process quicker which enables you to follow the progress closely and detect errors early.
 ::::::
@@ -1016,6 +1034,7 @@ POST _reindex?wait_for_completion=false
   }
 }
 ```
+%  TEST[skip:TBD]
 
 1. The default batch size for reindexing is 1000. Reducing `size` to a smaller number makes the update of the reindexing process quicker which enables you to follow the progress closely and detect errors early.
 ::::::
@@ -1034,6 +1053,7 @@ POST _reindex?wait_for_completion=false
   }
 }
 ```
+%  TEST[skip:TBD]
 
 1. The default batch size for reindexing is 1000. Reducing `size` to a smaller number makes the update of the reindexing process quicker which enables you to follow the progress closely and detect errors early.
 ::::::
@@ -1044,12 +1064,14 @@ The call returns a task ID to monitor the progress:
 ```console
 GET _tasks/<task_id>
 ```
+%  TEST[skip:TBD]
 
 Reindexing large datasets can take a long time. You can test this workflow using only a subset of the dataset. Do this by cancelling the reindexing process, and only generating embeddings for the subset that was reindexed. The following API request will cancel the reindexing task:
 
 ```console
 POST _tasks/<task_id>/_cancel
 ```
+%  TEST[skip:TBD]
 
 
 ## Semantic search [infer-semantic-search]
@@ -1084,6 +1106,7 @@ GET cohere-embeddings/_search
   ]
 }
 ```
+%  TEST[skip:TBD]
 
 As a result, you receive the top 10 documents that are closest in meaning to the query from the `cohere-embeddings` index sorted by their proximity to the query:
 
@@ -1128,6 +1151,8 @@ As a result, you receive the top 10 documents that are closest in meaning to the
       (...)
     ]
 ```
+%  NOTCONSOLE
+::::::
 ::::::
 
 ::::::{tab-item} ELSER
@@ -1147,6 +1172,7 @@ GET elser-embeddings/_search
   ]
 }
 ```
+%  TEST[skip:TBD]
 
 As a result, you receive the top 10 documents that are closest in meaning to the query from the `cohere-embeddings` index sorted by their proximity to the query:
 
@@ -1182,6 +1208,8 @@ As a result, you receive the top 10 documents that are closest in meaning to the
     (...)
   ]
 ```
+%  NOTCONSOLE
+::::::
 ::::::
 
 ::::::{tab-item} HuggingFace
@@ -1205,6 +1233,7 @@ GET hugging-face-embeddings/_search
   ]
 }
 ```
+%  TEST[skip:TBD]
 
 As a result, you receive the top 10 documents that are closest in meaning to the query from the `hugging-face-embeddings` index sorted by their proximity to the query:
 
@@ -1249,6 +1278,8 @@ As a result, you receive the top 10 documents that are closest in meaning to the
       (...)
     ]
 ```
+%  NOTCONSOLE
+::::::
 ::::::
 
 ::::::{tab-item} OpenAI
@@ -1272,6 +1303,7 @@ GET openai-embeddings/_search
   ]
 }
 ```
+%  TEST[skip:TBD]
 
 As a result, you receive the top 10 documents that are closest in meaning to the query from the `openai-embeddings` index sorted by their proximity to the query:
 
@@ -1307,6 +1339,8 @@ As a result, you receive the top 10 documents that are closest in meaning to the
       (...)
     ]
 ```
+%  NOTCONSOLE
+::::::
 ::::::
 
 ::::::{tab-item} Azure OpenAI
@@ -1330,6 +1364,7 @@ GET azure-openai-embeddings/_search
   ]
 }
 ```
+%  TEST[skip:TBD]
 
 As a result, you receive the top 10 documents that are closest in meaning to the query from the `azure-openai-embeddings` index sorted by their proximity to the query:
 
@@ -1365,6 +1400,8 @@ As a result, you receive the top 10 documents that are closest in meaning to the
       (...)
     ]
 ```
+%  NOTCONSOLE
+::::::
 ::::::
 
 ::::::{tab-item} Azure AI Studio
@@ -1388,6 +1425,7 @@ GET azure-ai-studio-embeddings/_search
   ]
 }
 ```
+%  TEST[skip:TBD]
 
 As a result, you receive the top 10 documents that are closest in meaning to the query from the `azure-ai-studio-embeddings` index sorted by their proximity to the query:
 
@@ -1423,6 +1461,8 @@ As a result, you receive the top 10 documents that are closest in meaning to the
       (...)
     ]
 ```
+%  NOTCONSOLE
+::::::
 ::::::
 
 ::::::{tab-item} Google Vertex AI
@@ -1446,6 +1486,7 @@ GET google-vertex-ai-embeddings/_search
   ]
 }
 ```
+%  TEST[skip:TBD]
 
 As a result, you receive the top 10 documents that are closest in meaning to the query from the `mistral-embeddings` index sorted by their proximity to the query:
 
@@ -1481,6 +1522,8 @@ As a result, you receive the top 10 documents that are closest in meaning to the
       (...)
     ]
 ```
+%  NOTCONSOLE
+::::::
 ::::::
 
 ::::::{tab-item} Mistral
@@ -1504,6 +1547,7 @@ GET mistral-embeddings/_search
   ]
 }
 ```
+%  TEST[skip:TBD]
 
 As a result, you receive the top 10 documents that are closest in meaning to the query from the `mistral-embeddings` index sorted by their proximity to the query:
 
@@ -1539,6 +1583,8 @@ As a result, you receive the top 10 documents that are closest in meaning to the
       (...)
     ]
 ```
+%  NOTCONSOLE
+::::::
 ::::::
 
 ::::::{tab-item} Amazon Bedrock
@@ -1562,6 +1608,7 @@ GET amazon-bedrock-embeddings/_search
   ]
 }
 ```
+%  TEST[skip:TBD]
 
 As a result, you receive the top 10 documents that are closest in meaning to the query from the `amazon-bedrock-embeddings` index sorted by their proximity to the query:
 
@@ -1597,6 +1644,8 @@ As a result, you receive the top 10 documents that are closest in meaning to the
       (...)
     ]
 ```
+%  NOTCONSOLE
+::::::
 ::::::
 
 ::::::{tab-item} AlibabaCloud AI Search
@@ -1620,6 +1669,7 @@ GET alibabacloud-ai-search-embeddings/_search
   ]
 }
 ```
+%  TEST[skip:TBD]
 
 As a result, you receive the top 10 documents that are closest in meaning to the query from the `alibabacloud-ai-search-embeddings` index sorted by their proximity to the query:
 
@@ -1655,6 +1705,8 @@ As a result, you receive the top 10 documents that are closest in meaning to the
       (...)
     ]
 ```
+%  NOTCONSOLE
+::::::
 ::::::
 
 :::::::

@@ -124,6 +124,7 @@ PUT _inference/sparse_embedding/my-elser-model
   }
 }
 ```
+%  TEST[skip:TBD]
 
 
 ## ELSER service example without adaptive allocations [inference-example-elser] 
@@ -147,6 +148,7 @@ PUT _inference/sparse_embedding/my-elser-model
   }
 }
 ```
+%  TEST[skip:TBD]
 
 Example response:
 
@@ -162,6 +164,7 @@ Example response:
   "task_settings": {}
 }
 ```
+%  NOTCONSOLE
 
 ::::{note} 
 You might see a 502 bad gateway error in the response when using the {{kib}} Console. This error usually just reflects a timeout, while the model downloads in the background. You can check the download progress in the {{ml-app}} UI. If using the Python client, you can set the `timeout` parameter to a higher value.

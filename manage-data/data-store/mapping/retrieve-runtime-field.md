@@ -64,6 +64,7 @@ POST /my-index-000001/_bulk?refresh
 { "index": {}}
 { "@timestamp": "2020-04-30T14:31:43-05:00", "message" : "247.37.0.0 - - [2020-04-30T14:31:43-05:00] \"GET /french/images/nav_venue_off.gif HTTP/1.0\" 304 0"}
 ```
+% TEST[continued]
 
 
 ## Search for the calculated day of week [runtime-search-dayofweek]
@@ -80,6 +81,7 @@ GET my-index-000001/_search
   "_source": false
 }
 ```
+%  TEST[continued]
 
 The previous request returns the `day_of_week` field for all matching documents. We can define another runtime field called `client_ip` that also operates on the `message` field and will further refine the query:
 
@@ -96,6 +98,7 @@ PUT /my-index-000001/_mapping
   }
 }
 ```
+% TEST[continued]
 
 Run another query, but search for a specific IP address using the `client_ip` runtime field:
 
@@ -111,6 +114,7 @@ GET my-index-000001/_search
   "fields" : ["*"]
 }
 ```
+% TEST[continued]
 
 This time, the response includes only two hits. The value for `day_of_week` (`Sunday`) was calculated at query time using the runtime script defined in the mapping, and the result includes only documents matching the `211.11.9.0` IP address.
 
@@ -151,6 +155,9 @@ This time, the response includes only two hits. The value for `day_of_week` (`Su
   }
 }
 ```
+%  TESTRESPONSE[s/.../"took" : $body.took,"timed_out" : $body.timed_out,"_shards" : $body._shards,/]
+%  TESTRESPONSE[s/"_id" : "oWs5KXYB-XyJbifr9mrz"/"_id": $body.hits.hits.0._id/]
+%  TESTRESPONSE[s/"day_of_week" : [\n\s+"Sunday"\n\s]/"day_of_week": $body.hits.hits.0.fields.day_of_week/]
 
 
 ## Retrieve fields from related indices [lookup-runtime-fields]
@@ -256,6 +263,7 @@ The above search returns the country and city from the `ip_location` index for e
   }
 }
 ```
+%  TESTRESPONSE[s/"took": 3/"took": $body.took/]
 
 The response of lookup fields are grouped to maintain the independence of each document from the lookup index. The lookup query for each input value is expected to match at most one document on the lookup index. If the lookup query matches more than one documents, then a random document will be selected.
 

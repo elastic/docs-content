@@ -49,6 +49,7 @@ To learn about monitoring in general, see [Monitor a cluster](../../monitor.md).
         ```console
         GET _cluster/settings
         ```
+        %  TEST[warning:[xpack.monitoring.collection.enabled] setting was deprecated in Elasticsearch and will be removed in a future release.]
 
         ```console
         PUT _cluster/settings

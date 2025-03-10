@@ -211,6 +211,7 @@ PUT _index_template/datastream_template
     }
 }
 ```
+%  TEST[continued]
 
 
 ## Ingest time series data [downsampling-ilm-ingest-data]
@@ -242,6 +243,7 @@ PUT /datastream/_bulk?refresh
 {"create": {}}
 {"@timestamp":"2022-06-21T15:38:30Z","kubernetes":{"host":"gke-apps-0","node":"gke-apps-0-0","pod":"gke-apps-0-0-0","container":{"cpu":{"usage":{"nanocores":40018,"core":{"ns":12828317850},"node":{"pct":2.77905e-05},"limit":{"pct":2.77905e-05}}},"memory":{"available":{"bytes":1062428344},"usage":{"bytes":265142477,"node":{"pct":0.01770037710617187},"limit":{"pct":9.923134671484496e-05}},"workingset":{"bytes":2294743},"rss":{"bytes":340623},"pagefaults":224530,"majorpagefaults":0},"start_time":"2021-03-30T07:59:06Z","name":"container-name-44"},"namespace":"namespace26"}}
 ```
+%  TEST[skip: The @timestamp value won’t match an accepted range in the TSDS]
 
 
 ## View the results [downsampling-ilm-view-results]
@@ -251,6 +253,7 @@ Now that you’ve created and added documents to the data stream, check to confi
 ```console
 GET _data_stream
 ```
+%  TEST[skip: The @timestamp value won’t match an accepted range in the TSDS]
 
 If the ILM policy has not yet been applied, your results will be like the following. Note the original `index_name`: `.ds-datastream-<timestamp>-000001`.
 
@@ -293,12 +296,15 @@ If the ILM policy has not yet been applied, your results will be like the follow
   ]
 }
 ```
+%  TEST[skip:todo]
+%  TEST[continued]
 
 Next, run a search query:
 
 ```console
 GET datastream/_search
 ```
+%  TEST[skip: The @timestamp value won’t match an accepted range in the TSDS]
 
 The query returns your ten newly added documents.
 
@@ -319,12 +325,15 @@ The query returns your ten newly added documents.
     },
 ...
 ```
+%  TEST[skip:todo]
+%  TEST[continued]
 
 By default, index lifecycle management checks every ten minutes for indices that meet policy criteria. Wait for about ten minutes (maybe brew up a quick coffee or tea ☕ ) and then re-run the `GET _data_stream` request.
 
 ```console
 GET _data_stream
 ```
+%  TEST[skip: The @timestamp value won’t match an accepted range in the TSDS]
 
 After the ILM policy has taken effect, the original `.ds-datastream-2022.08.26-000001` index is replaced with a new, downsampled index, in this case `downsample-6tkn-.ds-datastream-2022.08.26-000001`.
 
@@ -348,12 +357,15 @@ After the ILM policy has taken effect, the original `.ds-datastream-2022.08.26-0
       ],
 ...
 ```
+%  TEST[skip:todo]
+%  TEST[continued]
 
 Run a search query on the datastream (note that when querying downsampled indices there are [a few nuances to be aware of](./downsampling-time-series-data-stream.md#querying-downsampled-indices-notes)).
 
 ```console
 GET datastream/_search
 ```
+%  TEST[continued]
 
 The new downsampled index contains just one document that includes the `min`, `max`, `sum`, and `value_count` statistics based off of the original sampled metrics.
 
@@ -435,12 +447,15 @@ The new downsampled index contains just one document that includes the `min`, `m
   }
 }
 ```
+%  TEST[skip:todo]
+%  TEST[continued]
 
 Use the [data stream stats API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-data-streams-stats-1) to get statistics for the data stream, including the storage size.
 
 ```console
 GET /_data_stream/datastream/_stats?human=true
 ```
+%  TEST[continued]
 
 ```console-result
 {
@@ -464,6 +479,8 @@ GET /_data_stream/datastream/_stats?human=true
   ]
 }
 ```
+%  TEST[skip:todo]
+%  TEST[continued]
 
 This example demonstrates how downsampling works as part of an ILM policy to reduce the storage size of metrics data as it becomes less current and less frequently queried.
 

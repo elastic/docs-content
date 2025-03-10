@@ -58,11 +58,13 @@ You can also use the get repository API and the get snapshot API to find snapsho
 ```console
 GET _snapshot
 ```
+%  TEST[setup:setup-snapshots]
 Then use the get snapshot API to get a list of snapshots in a specific repository. This also returns each snapshot’s contents.
 
 ```console
 GET _snapshot/my_repository/*?verbose=false
 ```
+%  TEST[setup:setup-snapshots]
 
 ## Restore an index or data stream [restore-index-data-stream]
 
@@ -90,6 +92,7 @@ DELETE my-index
 # Delete a data stream
 DELETE _data_stream/logs-my_app-default
 ```
+%  TEST[setup:setup-snapshots]
 In the restore request, explicitly specify any indices and data streams to restore.
 
 ```console
@@ -98,6 +101,8 @@ POST _snapshot/my_repository/my_snapshot_2099.05.06/_restore
   "indices": "my-index,logs-my_app-default"
 }
 ```
+%  TEST[continued]
+%  TEST[s/_restore/_restore?wait_for_completion=true/]
 
 ### Rename on restore [rename-on-restore]
 
@@ -112,9 +117,12 @@ POST _snapshot/my_repository/my_snapshot_2099.05.06/_restore
 {
   "indices": "my-index,logs-my_app-default",
   "rename_pattern": "(.+)",
-  "rename_replacement": "restored-$1"
+  "rename_replacement": "restored-
+If the rename options produce two or more indices or data streams with the same name, the restore operation fails."
 }
 ```
+%  TEST[setup:setup-snapshots]
+%  TEST[s/_restore/_restore?wait_for_completion=true/]
 
 If the rename options produce two or more indices or data streams with the same name, the restore operation fails.
 
@@ -152,6 +160,7 @@ POST _reindex
   }
 }
 ```
+%  TEST[continued]
 
 
 ## Restore a feature state [restore-feature-state]
@@ -165,6 +174,7 @@ To view a snapshot’s feature states, use the get snapshot API.
 ```console
 GET _snapshot/my_repository/my_snapshot_2099.05.06
 ```
+%  TEST[setup:setup-snapshots]
 
 The response’s `feature_states` property contains a list of features in the snapshot as well as each feature’s indices.
 
@@ -191,7 +201,10 @@ POST _snapshot/my_repository/my_snapshot_2099.05.06/_restore
 
 1. Exclude the cluster state from the restore operation.
 2. Exclude the other indices and data streams in the snapshot from the restore operation.
-
+%  TEST[setup:setup-snapshots]
+%  TEST[s/^/DELETE my-index\nDELETE _data_stream/logs-my_app-default\n/]
+%  TEST[s/_restore/_restore?wait_for_completion=true/]
+%  TEST[s/"feature_states": [ "geoip" ],//]
 
 
 ## Restore an entire cluster [restore-entire-cluster]
@@ -414,6 +427,7 @@ To get detailed information about ongoing shard recoveries, use the [index recov
 ```console
 GET my-index/_recovery
 ```
+%  TEST[setup:setup-snapshots]
 
 To view any unassigned shards, use the [cat shards API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-shards).
 
@@ -434,6 +448,9 @@ GET _cluster/allocation/explain
   "current_node": "my-node"
 }
 ```
+%  TEST[s/^/PUT my-index\n/]
+%  TEST[s/"primary": false,/"primary": false/]
+%  TEST[s/"current_node": "my-node"//]
 
 
 ## Cancel a restore [cancel-restore]
@@ -447,6 +464,7 @@ DELETE my-index
 # Delete a data stream
 DELETE _data_stream/logs-my_app-default
 ```
+%  TEST[setup:setup-snapshots]
 
 
 ## Restore to a different cluster [restore-different-cluster]

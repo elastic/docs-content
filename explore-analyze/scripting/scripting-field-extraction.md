@@ -53,6 +53,7 @@ POST /my-index/_bulk?refresh
 {"index":{}}
 {"timestamp":"2020-04-30T14:31:28-05:00","message":"not a valid apache log"}
 ```
+%  TEST[continued]
 
 
 ## Extract an IP address from a log message (Grok) [field-extraction-ip]
@@ -75,6 +76,7 @@ PUT my-index/_mappings
   }
 }
 ```
+%  TEST[continued]
 
 1. This condition ensures that the script doesn’t emit anything even if the pattern of the message doesn’t match.
 
@@ -92,6 +94,8 @@ GET my-index/_search
   "fields" : ["http.clientip"]
 }
 ```
+%  TEST[continued]
+%  TEST[s/_search/_search?filter_path=hits/]
 
 The response includes documents where the value for `http.clientip` matches `40.135.0.0`.
 
@@ -122,6 +126,7 @@ The response includes documents where the value for `http.clientip` matches `40.
   }
 }
 ```
+%  TESTRESPONSE[s/"_id" : "Rq-ex3gBA_A0V6dYGLQ7"/"_id": $body.hits.hits.0._id/]
 
 
 ## Parse a string to extract part of a field (Dissect) [field-extraction-parse]
@@ -133,6 +138,7 @@ For example, the log data at the start of this section includes a `message` fiel
 ```js
 "message" : "247.37.0.0 - - [30/Apr/2020:14:31:22 -0500] \"GET /images/hm_nbg.jpg HTTP/1.0\" 304 0"
 ```
+%  NOTCONSOLE
 
 You can define a dissect pattern in a runtime field to extract the [HTTP response code](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status), which is `304` in the previous example.
 
@@ -150,6 +156,7 @@ PUT my-index/_mappings
   }
 }
 ```
+%  TEST[continued]
 
 You can then run a query to retrieve a specific HTTP response using the `http.response` runtime field:
 
@@ -164,6 +171,8 @@ GET my-index/_search
   "fields" : ["http.response"]
 }
 ```
+%  TEST[continued]
+%  TEST[s/_search/_search?filter_path=hits/]
 
 The response includes a single document where the HTTP response is `304`:
 
@@ -194,6 +203,7 @@ The response includes a single document where the HTTP response is `304`:
   }
 }
 ```
+%  TESTRESPONSE[s/"_id" : "Sq-ex3gBA_A0V6dYGLQ7"/"_id": $body.hits.hits.0._id/]
 
 
 ## Split values in a field by a separator (Dissect) [field-extraction-split]
@@ -205,6 +215,7 @@ For example, let’s say you have a bunch of garbage collection (gc) log data fr
 ```txt
 [2021-04-27T16:16:34.699+0000][82460][gc,heap,exit]   class space    used 266K, capacity 384K, committed 384K, reserved 1048576K
 ```
+%  NOTCONSOLE
 
 You only want to extract the `used`, `capacity`, and `committed` data, along with the associated values. Let’s index some a few documents containing log data to use as an example:
 
@@ -229,6 +240,7 @@ Looking at the data again, there’s a timestamp, some other data that you’re 
 ```txt
 [2021-04-27T16:16:34.699+0000][82460][gc,heap,exit]   class space    used 266K, capacity 384K, committed 384K, reserved 1048576K
 ```
+%  NOTCONSOLE
 
 You can assign variables to each part of the data in the `gc` field, and then return only the parts that you want. Anything in curly braces `{}` is considered a variable. For example, the variables `[%{@timestamp}][%{{code}}][%{{desc}}]` will match the first three chunks of data, all of which are in square brackets `[]`.
 
@@ -272,6 +284,7 @@ GET my-index/_search
   "fields" : ["gc_size"]
 }
 ```
+%  TEST[continued]
 
 The response includes the data from the `gc_size` field, formatted exactly as you defined it in the dissect pattern!
 
@@ -341,4 +354,6 @@ The response includes the data from the `gc_size` field, formatted exactly as yo
   }
 }
 ```
+%  TESTRESPONSE[s/"took" : 2/"took": "$body.took"/]
+%  TESTRESPONSE[s/"_id" : "GXx3H3kBKGE42WRNlddJ"/"_id": $body.hits.hits.0._id/]
 

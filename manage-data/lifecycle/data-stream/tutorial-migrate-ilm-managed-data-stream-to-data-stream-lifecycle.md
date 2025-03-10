@@ -63,6 +63,7 @@ PUT _index_template/dsl-data-stream-template
   }
 }
 ```
+%  TEST[continued]
 
 We’ll now index a document targetting `dsl-data-stream` to create the data stream and we’ll also manually rollover the data stream to have another generation index created:
 
@@ -73,16 +74,19 @@ POST dsl-data-stream/_doc?
   "message": "192.0.2.42 - - [06/May/2099:16:21:15 +0000] \"GET /images/bg.jpg HTTP/1.0\" 200 24736"
 }
 ```
+%  TEST[continued]
 
 ```console
 POST dsl-data-stream/_rollover
 ```
+%  TEST[continued]
 
 We’ll use the [GET _data_stream](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-data-stream) API to inspect the state of the data stream:
 
 ```console
 GET _data_stream/dsl-data-stream
 ```
+%  TEST[continued]
 
 Inspecting the response we’ll see that both backing indices are managed by {{ilm-init}} and that the next generation index will also be managed by {{ilm-init}}:
 
@@ -133,7 +137,11 @@ Inspecting the response we’ll see that both backing indices are managed by {{i
 5. The system that will manage the next generation index (the new write index of this data stream, once the data stream is rolled over). The possible values are "Index Lifecycle Management", "Data stream lifecycle", or "Unmanaged".
 6. The [prefer_ilm](elasticsearch://reference/elasticsearch/configuration-reference/data-stream-lifecycle-settings.md#index-lifecycle-prefer-ilm) value configured in the index template that’s backing the data stream. This value will be configured for all the new backing indices. If it’s not configured in the index template the backing indices will receive the `true` default value ({{ilm-init}} takes precedence over data stream lifecycle by default as it’s currently richer in features).
 7. The {{ilm-init}} policy configured in the index template that’s backing this data stream (which will be configured on all the new backing indices, as long as it exists in the index template).
-
+%  TESTRESPONSE[s/"index_name": ".ds-dsl-data-stream-2023.10.19-000001"/"index_name": $body.data_streams.0.indices.0.index_name/]
+%  TESTRESPONSE[s/"index_uuid": "xCEhwsp8Tey0-FLNFYVwSg"/"index_uuid": $body.data_streams.0.indices.0.index_uuid/]
+%  TESTRESPONSE[s/"index_name": ".ds-dsl-data-stream-2023.10.19-000002"/"index_name": $body.data_streams.0.indices.1.index_name/]
+%  TESTRESPONSE[s/"index_uuid": "PA_JquKGSiKcAKBA8DJ5gw"/"index_uuid": $body.data_streams.0.indices.1.index_uuid/]
+%  TESTRESPONSE[s/"status": "GREEN"/"status": "YELLOW","failure_store":{"enabled": false, "indices": [], "rollover_on_write": true}/]
 
 
 ## Migrate data stream to data stream lifecycle [migrate-from-ilm-to-dsl]
@@ -171,7 +179,7 @@ PUT _index_template/dsl-data-stream-template
 
 1. The `prefer_ilm` setting will now be configured on the **new** backing indices (created by rolling over the data stream) such that {{ilm-init}} does *not* take precedence over data stream lifecycle.
 2. We’re configuring the data stream lifecycle so *new* data streams will be managed by data stream lifecycle.
-
+%  TEST[continued]
 
 We’ve now made sure that new data streams will be managed by data stream lifecycle.
 
@@ -183,12 +191,14 @@ PUT _data_stream/dsl-data-stream/_lifecycle
     "data_retention": "7d"
 }
 ```
+%  TEST[continued]
 
 We can inspect the data stream to check that the next generation will indeed be managed by data stream lifecycle:
 
 ```console
 GET _data_stream/dsl-data-stream
 ```
+%  TEST[continued]
 
 ```console-result
 {
@@ -240,17 +250,23 @@ GET _data_stream/dsl-data-stream
 2. The existing backing index will continue to be managed by {{ilm-init}}
 3. The next generation index will be managed by Data stream lifecycle
 4. The `prefer_ilm` setting value we configured in the index template is reflected and will be configured accordingly for new backing indices.
-
+%  TESTRESPONSE[s/"index_name": ".ds-dsl-data-stream-2023.10.19-000001"/"index_name": $body.data_streams.0.indices.0.index_name/]
+%  TESTRESPONSE[s/"index_uuid": "xCEhwsp8Tey0-FLNFYVwSg"/"index_uuid": $body.data_streams.0.indices.0.index_uuid/]
+%  TESTRESPONSE[s/"index_name": ".ds-dsl-data-stream-2023.10.19-000002"/"index_name": $body.data_streams.0.indices.1.index_name/]
+%  TESTRESPONSE[s/"index_uuid": "PA_JquKGSiKcAKBA8DJ5gw"/"index_uuid": $body.data_streams.0.indices.1.index_uuid/]
+%  TESTRESPONSE[s/"status": "GREEN"/"status": "YELLOW","failure_store":{"enabled": false, "indices": [], "rollover_on_write": true}/]
 
 We’ll now rollover the data stream to see the new generation index being managed by data stream lifecycle:
 
 ```console
 POST dsl-data-stream/_rollover
 ```
+%  TEST[continued]
 
 ```console
 GET _data_stream/dsl-data-stream
 ```
+%  TEST[continued]
 
 ```console-result
 {
@@ -309,7 +325,13 @@ GET _data_stream/dsl-data-stream
 2. The backing indices that existed before rollover will continue to be managed by {{ilm-init}}
 3. The new write index received the `false` value for the `prefer_ilm` setting, as we configured in the index template
 4. The new write index is managed by `Data stream lifecycle`
-
+%  TESTRESPONSE[s/"index_name": ".ds-dsl-data-stream-2023.10.19-000001"/"index_name": $body.data_streams.0.indices.0.index_name/]
+%  TESTRESPONSE[s/"index_uuid": "xCEhwsp8Tey0-FLNFYVwSg"/"index_uuid": $body.data_streams.0.indices.0.index_uuid/]
+%  TESTRESPONSE[s/"index_name": ".ds-dsl-data-stream-2023.10.19-000002"/"index_name": $body.data_streams.0.indices.1.index_name/]
+%  TESTRESPONSE[s/"index_uuid": "PA_JquKGSiKcAKBA8DJ5gw"/"index_uuid": $body.data_streams.0.indices.1.index_uuid/]
+%  TESTRESPONSE[s/"index_name": ".ds-dsl-data-stream-2023.10.19-000003"/"index_name": $body.data_streams.0.indices.2.index_name/]
+%  TESTRESPONSE[s/"index_uuid": "PA_JquKGSiKcAKBA8abcd1"/"index_uuid": $body.data_streams.0.indices.2.index_uuid/]
+%  TESTRESPONSE[s/"status": "GREEN"/"status": "YELLOW","failure_store":{"enabled": false, "indices": [], "rollover_on_write": true}/]
 
 
 ## Migrate data stream back to ILM [migrate-from-dsl-to-ilm]
@@ -332,11 +354,12 @@ PUT _data_stream/dsl-data-stream/_lifecycle
 ```
 
 1. The `enabled` flag can be ommitted and defaults to `true` however, here we explicitly configure it to `false` Let’s check the state of the data stream:
-
+%  TEST[continued]
 
 ```console
 GET _data_stream/dsl-data-stream
 ```
+%  TEST[continued]
 
 ```console-result
 {
@@ -392,6 +415,12 @@ GET _data_stream/dsl-data-stream
 1. The write index is now managed by {{ilm-init}}
 2. The `lifecycle` configured on the data stream is now disabled.
 3. The next write index will be managed by {{ilm-init}}
-
+%  TESTRESPONSE[s/"index_name": ".ds-dsl-data-stream-2023.10.19-000001"/"index_name": $body.data_streams.0.indices.0.index_name/]
+%  TESTRESPONSE[s/"index_uuid": "xCEhwsp8Tey0-FLNFYVwSg"/"index_uuid": $body.data_streams.0.indices.0.index_uuid/]
+%  TESTRESPONSE[s/"index_name": ".ds-dsl-data-stream-2023.10.19-000002"/"index_name": $body.data_streams.0.indices.1.index_name/]
+%  TESTRESPONSE[s/"index_uuid": "PA_JquKGSiKcAKBA8DJ5gw"/"index_uuid": $body.data_streams.0.indices.1.index_uuid/]
+%  TESTRESPONSE[s/"index_name": ".ds-dsl-data-stream-2023.10.19-000003"/"index_name": $body.data_streams.0.indices.2.index_name/]
+%  TESTRESPONSE[s/"index_uuid": "PA_JquKGSiKcAKBA8abcd1"/"index_uuid": $body.data_streams.0.indices.2.index_uuid/]
+%  TESTRESPONSE[s/"status": "GREEN"/"status": "YELLOW","failure_store":{"enabled": false, "indices": [], "rollover_on_write": true}/]
 
 Had we removed the {{ilm-init}} policy from the index template when we [updated](#update-index-template-for-dsl) it, the write index of the data stream will now be `Unmanaged` because the index wouldn’t have the {{ilm-init}} policy configured to fallback onto.

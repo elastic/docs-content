@@ -170,7 +170,8 @@ PUT _cluster/settings
 ```
 
 1. Since `skip_unavailable` was not set on `cluster_three`, it uses the default of `false`. See the [Optional remote clusters](#ccq-skip-unavailable-clusters) section for details.
-
+%  TEST[setup:host]
+%  TEST[s/35.238.149.\d+:930\d+/${transport_host}/]
 
 
 ## Query across multiple clusters [ccq-from]
@@ -215,6 +216,8 @@ POST /_query/async?format=json
   "include_ccs_metadata": true
 }
 ```
+%  TEST[setup:my_index]
+%  TEST[s/cluster_one:my-index-000001,cluster_two:my-index//]
 
 Which returns:
 
@@ -290,7 +293,7 @@ Which returns:
 5. How long (in milliseconds) the search took on each cluster. This can be useful to determine which clusters have slower response times than others.
 6. The shard details for the search on that cluster, including a count of shards that were skipped due to the can-match phase results. Shards are skipped when they cannot have any matching data and therefore are not included in the full ES|QL query.
 7. The `is_partial` field is set to `true` if the search has partial results for any reason, for example if it was interrupted before finishing using the [async query stop API](https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-async-query-stop-api.html).
-
+%  TEST[skip: cross-cluster testing env not set up]
 
 The cross-cluster metadata can be used to determine whether any data came back from a cluster. For instance, in the query below, the wildcard expression for `cluster-two` did not resolve to a concrete index (or indices). The cluster is, therefore, marked as *skipped* and the total number of shards searched is set to zero.
 
@@ -305,6 +308,8 @@ POST /_query/async?format=json
   "include_ccs_metadata": true
 }
 ```
+%  TEST[continued]
+%  TEST[s/cluster_one:my-index*,cluster_two:logs*/my-index-000001/]
 
 Which returns:
 

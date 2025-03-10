@@ -102,5 +102,5 @@ PUT _inference/text_embedding/mistral-embeddings-test
 ```
 
 1. The `model` must be the ID of a text embedding model which can be found in the [Mistral models documentation](https://docs.mistral.ai/getting-started/models/).
-
+%  TEST[skip:TBD]
 

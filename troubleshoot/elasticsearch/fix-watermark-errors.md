@@ -41,6 +41,8 @@ GET _cluster/allocation/explain
   "primary": false
 }
 ```
+%  TEST[s/^/PUT my-index\n/]
+%  TEST[s/"primary": false,/"primary": false/]
 
 
 ## Temporary Relief [fix-watermark-errors-temporary]
@@ -67,6 +69,7 @@ PUT */_settings?expand_wildcards=all
   "index.blocks.read_only_allow_delete": null
 }
 ```
+%  TEST[s/^/PUT my-index\n/]
 
 When a long-term solution is in place, to reset or reconfigure the disk watermarks:
 

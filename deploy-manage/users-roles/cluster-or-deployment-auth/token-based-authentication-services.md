@@ -23,6 +23,7 @@ To use a service account token, include the generated token value in a request w
 ```shell
 curl -H "Authorization: Bearer AAEAAWVsYXN0aWMvZ...mXQtc2VydmMTpyNXdkYmRib1FTZTl2R09Ld2FKR0F3" http://localhost:9200/_cluster/health
 ```
+%  NOTCONSOLE
 
 ::::{important}
 Do not attempt to use service accounts for authenticating individual users. Service accounts can only be authenticated with service tokens, which are not applicable to regular users.

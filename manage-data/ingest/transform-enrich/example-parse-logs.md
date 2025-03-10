@@ -19,6 +19,7 @@ The logs you want to parse look similar to this:
 ```txt
 212.87.37.154 - - [05/May/2099:16:21:15 +0000] "GET /favicon.ico HTTP/1.1" 200 3638 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36"
 ```
+%  NOTCONSOLE
 
 These logs contain a timestamp, IP address, and user agent. You want to give these three items their own field in {{es}} for faster searches and visualizations. You also want to know where the request is coming from.
 
@@ -140,6 +141,7 @@ These logs contain a timestamp, IP address, and user agent. You want to give the
     ```console
     GET my-data-stream/_search?filter_path=hits.hits._source
     ```
+    %  TEST[continued]
 
     The API returns:
 

@@ -811,6 +811,7 @@ POST /_security/saml/authenticate
   "ids" : []
 }
 ```
+%  TEST[skip:handled in IT]
 
 
 ### Handling the logout flow [saml-no-kibana-slo]

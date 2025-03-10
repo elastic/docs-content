@@ -90,6 +90,7 @@ POST /_security/user/user1/_password
   "password" : "new-test-password"
 }
 ```
+% TEST[continued]
 
 For more information and examples, see [Users](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-security).
 

@@ -20,6 +20,7 @@ You can verify if a data steam is managed by the data stream lifecycle via the [
 ```console
 GET _data_stream/my-data-stream/_lifecycle
 ```
+%  TEST[continued]
 
 The result should look like this:
 
@@ -35,6 +36,7 @@ The result should look like this:
   ]
 }
 ```
+%  TESTRESPONSE[skip:the result is for illustrating purposes only]
 
 1. The name of your data stream.
 2. Ensure that the lifecycle is enabled, meaning this should be `true`.
@@ -136,6 +138,7 @@ Considering our example, if we retrieve the lifecycle of `my-data-stream`:
 ```console
 GET _data_stream/my-data-stream/_lifecycle
 ```
+%  TEST[continued]
 
 We see that it will remain the same with what the user configured:
 

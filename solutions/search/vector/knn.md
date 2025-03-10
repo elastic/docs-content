@@ -226,6 +226,9 @@ POST byte-image-index/_search
   "fields": [ "title" ]
 }
 ```
+%  TEST[continued]
+%  TEST[s/"k": 10/"k": 3/]
+%  TEST[s/"num_candidates": 100/"num_candidates": 3/]
 
 
 ### Byte quantized kNN search [knn-search-quantized-example]
@@ -262,6 +265,7 @@ PUT quantized-image-index
 ```
 
 1. Index your `float` vectors.
+%  TEST[continued]
 
     ```console
     POST quantized-image-index/_bulk?refresh=true
@@ -321,6 +325,9 @@ POST quantized-image-index/_search
   }
 }
 ```
+%  TEST[continued]
+%  TEST[s/"k": 15/"k": 3/]
+%  TEST[s/"num_candidates": 100/"num_candidates": 3/]
 
 
 ### Filtered kNN search [knn-search-filter-example]
@@ -347,6 +354,7 @@ POST image-index/_search
   "_source": false
 }
 ```
+%  TEST[continued]
 
 ::::{note}
 The filter is applied **during** the approximate kNN search to ensure that `k` matching documents are returned. This contrasts with a post-filtering approach, where the filter is applied **after** the approximate kNN search completes. Post-filtering has the downside that it sometimes returns fewer than k results, even when there are enough matching documents.
@@ -389,6 +397,7 @@ POST image-index/_search
   "size": 10
 }
 ```
+%  TEST[continued]
 
 This search finds the global top `k = 5` vector matches, combines them with the matches from the `match` query, and finally returns the 10 top-scoring results. The `knn` and `query` matches are combined through a disjunction, as if you took a boolean *or* between them. The top `k` vector results represent the global nearest neighbors across all index shards.
 
@@ -444,7 +453,7 @@ Reference the deployed text embedding model or the model deployment in the `quer
 1. The {{nlp}} task to perform. It must be `text_embedding`.
 2. The ID of the text embedding model to use to generate the dense vectors from the query string. Use the same model that generated the embeddings from the input text in the index you search against. You can use the value of the `deployment_id` instead in the `model_id` argument.
 3. The query string from which the model generates the dense vector representation.
-
+%  NOTCONSOLE
 
 For more information on how to deploy a trained model and use it to create text embeddings, refer to this [end-to-end example](../../../explore-analyze/machine-learning/nlp/ml-nlp-text-emb-vector-search-example.md).
 
@@ -481,6 +490,7 @@ POST image-index/_search
   "size": 10
 }
 ```
+%  TEST[continued]
 
 This search finds the global top `k = 5` vector matches for `image-vector` and the global `k = 10` for the `title-vector`. These top values are then combined with the matches from the `match` query and the top-10 documents are returned. The multiple `knn` entries and the `query` matches are combined through a disjunction, as if you took a boolean *or* between them. The top `k` vector results represent the global nearest neighbors across all index shards.
 
@@ -537,6 +547,7 @@ POST image-index/_search
   "_source": false
 }
 ```
+%  TEST[continued]
 
 In our data set, the only document with the file type of `png` has a vector of `[42, 8, -15]`. The `l2_norm` distance between `[42, 8, -15]` and `[1, 5, -20]` is `41.412`, which is greater than the configured similarity of `36`. Meaning, this search will return no hits.
 
@@ -578,6 +589,7 @@ PUT passage_vectors
     }
 }
 ```
+% TEST[continued]
 
 With the above mapping, we can index multiple passage vectors along with storing the individual passage text.
 
@@ -588,6 +600,8 @@ POST passage_vectors/_bulk?refresh=true
 { "index": { "_id": "2" } }
 { "full_text": "number one paragraph number two paragraph", "creation_time": "2020-05-04", "paragraph": [ { "vector": [ 1.2, 4.5 ], "text": "number one paragraph", "paragraph_id": "1" }, { "vector": [ -1, 42 ], "text": "number two paragraph", "paragraph_id": "2" } ] }
 ```
+% TEST[continued]
+% TEST[s/...//]
 
 The query will seem very similar to a typical kNN search:
 
@@ -607,6 +621,7 @@ POST passage_vectors/_search
     }
 }
 ```
+% TEST[continued]
 
 Note below that even though we have 4 total vectors, we still return two documents. kNN search over nested dense_vectors will always diversify the top results over the top-level document. Meaning, `"k"` top-level documents will be returned, scored by their nearest passage vector (e.g. `"paragraph.vector"`).
 
@@ -657,6 +672,7 @@ Note below that even though we have 4 total vectors, we still return two documen
     }
 }
 ```
+%  TESTRESPONSE[s/"took": 4/"took" : "$body.took"/]
 
 What if you wanted to filter by some top-level document metadata? You can do this by adding `filter` to your `knn` clause.
 
@@ -698,6 +714,7 @@ POST passage_vectors/_search
     }
 }
 ```
+% TEST[continued]
 
 Now we have filtered based on the top level `"creation_time"` and only one document falls within that range.
 
@@ -735,6 +752,7 @@ Now we have filtered based on the top level `"creation_time"` and only one docum
     }
 }
 ```
+%  TESTRESPONSE[s/"took": 4/"took" : "$body.took"/]
 
 
 ### Nested kNN Search with Inner hits [nested-knn-search-inner-hits]
@@ -772,6 +790,7 @@ POST passage_vectors/_search
     }
 }
 ```
+% TEST[continued]
 
 Now the result will contain the nearest found paragraph when searching.
 
@@ -884,6 +903,7 @@ Now the result will contain the nearest found paragraph when searching.
     }
 }
 ```
+%  TESTRESPONSE[s/"took": 4/"took" : "$body.took"/]
 
 ### Limitations for approximate kNN search [approximate-knn-limitations]
 
@@ -937,6 +957,9 @@ POST image-index/_search
   "fields": [ "title", "file-type" ]
 }
 ```
+% TEST[continued]
+%  TEST[s/"k": 10/"k": 3/]
+%  TEST[s/"num_candidates": 100/"num_candidates": 3/]
 
 This example will:
 
@@ -998,7 +1021,7 @@ POST /my-index/_search
 4. The script to rescore the results. Script score will interact directly with the originally provided float32 vector.
 5. The weight of the original query, here we simply throw away the original score
 6. The weight of the rescore query, here we only use the rescore query
-
+%  TEST[skip: setup not provided]
 
 
 ##### Use a `script_score` query to rescore per shard [dense-vector-knn-search-rescoring-script-score]
@@ -1035,7 +1058,7 @@ POST /my-index/_search
 2. The `knn` query to perform the initial search, this is executed per-shard
 3. The number of candidates to use for the initial approximate `knn` search. This will search using the quantized vectors and return the top 20 candidates per shard to then be scored
 4. The script to score the results. Script score will interact directly with the originally provided float32 vector.
-
+%  TEST[skip: setup not provided]
 
 
 ## Exact kNN [exact-knn]

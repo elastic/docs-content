@@ -144,6 +144,7 @@ PUT _component_template/my-settings
   }
 }
 ```
+%  TEST[continued]
 
 
 ## Create an index template [create-index-template]
@@ -172,6 +173,7 @@ PUT _index_template/my-index-template
   }
 }
 ```
+%  TEST[continued]
 
 
 ## Create the data stream [create-data-stream]
@@ -193,12 +195,15 @@ POST my-data-stream/_doc
   "message": "192.0.2.42 - - [06/May/2099:16:21:15 +0000] \"GET /images/bg.jpg HTTP/1.0\" 200 24736"
 }
 ```
+%  TEST[continued]
 
 You can also manually create the stream using the [create data stream API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-create-data-stream). The stream’s name must still match one of your template’s index patterns.
 
 ```console
 PUT _data_stream/my-data-stream
 ```
+%  TEST[continued]
+%  TEST[s/my-data-stream/my-data-stream-alt/]
 
 After it's been created, you can view and manage this and other data streams from the **Stack Management > Index Management** view. Refer to [Manage a data stream](./manage-data-stream.md) for details.
 
@@ -218,6 +223,7 @@ To convert an index alias with a write index to a data stream with the same name
 ```console
 POST _data_stream/_migrate/my-time-series-data
 ```
+%  TEST[continued]
 
 
 ## Get information about a data stream [get-info-about-data-stream]
@@ -229,6 +235,7 @@ You can also use the [get data stream API](https://www.elastic.co/docs/api/doc/e
 ```console
 GET _data_stream/my-data-stream
 ```
+%  TEST[continued]
 
 
 ## Delete a data stream [delete-data-stream]
@@ -240,4 +247,5 @@ You can also use the [delete data stream API](https://www.elastic.co/docs/api/do
 ```console
 DELETE _data_stream/my-data-stream
 ```
+%  TEST[continued]
 

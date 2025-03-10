@@ -103,6 +103,7 @@ PUT /_application/search_application/my_search_application
   }
 }
 ```
+%  TEST[skip:TODO]
 
 
 ### Search templates [search-application-overview-get-started-templates] 

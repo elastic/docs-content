@@ -38,6 +38,7 @@ node_1 *      hirstm              24                20  95
 node_2 -      hirstm              23                18  18
 node_3 -      hirstmv             25                90  10
 ```
+%  TEST[skip:illustrative response only]
 
 Here we see two significantly unique utilizations: where the master node is at `cpu: 95` and a hot node is at `disk.used_percent: 90%`. This would indicate hot spotting was occurring on these two nodes, and not necessarily from the same root cause.
 
@@ -81,6 +82,7 @@ node_1    446           19      154.8gb   173.1gb
 node_2     31           52       44.6gb   372.7gb
 node_3    445           43      271.5gb   289.4gb
 ```
+%  TEST[skip:illustrative response only]
 
 Here we see two significantly unique situations. `node_2` has recently restarted, so it has a much lower number of shards than all other nodes. This also relates to `disk.indices` being much smaller than `disk.used` while shards are recovering as seen via [cat recovery](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-recovery). While `node_2`'s shard count is low, it may become a write hot spot due to ongoing [ILM rollovers](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-rollover.md). This is a common root cause of write hot spots covered in the next section.
 
@@ -114,6 +116,7 @@ write  node_1 100 3 0 4259
 write  node_2   0 4 0  980
 write  node_3   1 5 0 8714
 ```
+%  TEST[skip:illustrative response only]
 
 Here you can see two significantly unique situations. Firstly, `node_1` has a severely backed up write queue compared to other nodes. Secondly, `node_3` shows historically completed writes that are double any other node. These are both probably due to either poorly distributed write-heavy indices, or to multiple write-heavy indices allocated to the same node. Since primary and replica writes are majorly the same amount of cluster work, we usually recommend setting [`index.routing.allocation.total_shards_per_node`](elasticsearch://reference/elasticsearch/index-settings/total-shards-per-node.md#total-shards-per-node) to force index spreading after lining up index shard counts to total nodes.
 
@@ -162,6 +165,7 @@ type   action                running_time  node    cancellable
 direct indices:data/read/eql 10m           node_1  true
 ...
 ```
+%  TEST[skip:illustrative response only]
 
 This surfaces a problematic [EQL query](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-eql-search). We can gain further insight on it via [the task management API](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-tasks),
 

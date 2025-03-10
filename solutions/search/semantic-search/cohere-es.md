@@ -318,3 +318,4 @@ Response: Biosimilarity is based on the comparability concept, which has been us
 Sources:
 Interchangeability of Biosimilars: A European Perspective: (...)
 ```
+%  NOTCONSOLE

@@ -24,6 +24,7 @@ You can define the static data as a string (`str`), numeric value (`num`), or an
   }
 }
 ```
+%  NOTCONSOLE
 
 For example, the following watch uses the `simple` input to set the recipient name for a daily reminder email:
 
@@ -50,3 +51,4 @@ For example, the following watch uses the `simple` input to set the recipient na
   }
 }
 ```
+%  NOTCONSOLE

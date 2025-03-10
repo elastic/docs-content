@@ -37,6 +37,7 @@ Rather than force the admin to decide ahead of time which individual tuples shou
   }
 }
 ```
+%  NOTCONSOLE
 
 Allows `date_histogram` to be used on the `"timestamp"` field, `terms` aggregations to be used on the `"hostname"` and `"datacenter"` fields, and `histograms` to be used on any of `"load"`, `"net_in"`, `"net_out"` fields.
 
@@ -59,6 +60,7 @@ Importantly, these aggs/fields can be used in any combination. This aggregation:
   }
 }
 ```
+%  NOTCONSOLE
 
 is just as valid as this aggregation:
 
@@ -94,6 +96,7 @@ is just as valid as this aggregation:
   }
 }
 ```
+%  NOTCONSOLE
 
 You’ll notice that the second aggregation is not only substantially larger, it also swapped the position of the terms aggregation on `"hostname"`, illustrating how the order of aggregations does not matter to rollups. Similarly, while the `date_histogram` is required for rolling up data, it isn’t required while querying (although often used). For example, this is a valid aggregation for Rollup Search to execute:
 
@@ -106,6 +109,7 @@ You’ll notice that the second aggregation is not only substantially larger, it
   }
 }
 ```
+%  NOTCONSOLE
 
 Ultimately, when configuring `groups` for a job, think in terms of how you might wish to partition data in a query at a future date…​ then include those in the config. Because Rollup Search allows any order or combination of the grouped fields, you just need to decide if a field is useful for aggregating later, and how you might wish to use it (terms, histogram, etc).
 
@@ -152,6 +156,7 @@ As an example, if your index has two types of documents:
   "node": "a"
 }
 ```
+%  NOTCONSOLE
 
 and
 
@@ -162,6 +167,7 @@ and
   "title": "Foo"
 }
 ```
+%  NOTCONSOLE
 
 the best practice is to combine them into a single rollup job which covers both of these document types, like this:
 
@@ -194,6 +200,7 @@ PUT _rollup/job/combined
   ]
 }
 ```
+%  NOTCONSOLE
 
 
 ## Doc counts and overlapping jobs [_doc_counts_and_overlapping_jobs]

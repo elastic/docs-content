@@ -21,6 +21,7 @@ For example, let’s say you have log data with a `message` field that looks lik
 ```js
 "message" : "247.37.0.0 - - [30/Apr/2020:14:31:22 -0500] \"GET /images/hm_nbg.jpg HTTP/1.0\" 304 0"
 ```
+%  NOTCONSOLE
 
 You assign variables to each part of the data to construct a successful dissect pattern. Remember, tell dissect *exactly* what you want you want to match on.
 
@@ -31,6 +32,7 @@ The first part of the data looks like an IP address, so you can assign a variabl
 
 %{clientip} %{ident} %{auth} [%{@timestamp}] <2>
 ```
+%  NOTCONSOLE
 
 1. The first chunks of data from the `message` field
 2. Dissect pattern to match on the selected data chunks
@@ -43,12 +45,14 @@ Using that same logic, you can create variables for the remaining chunks of data
 
 "%{verb} %{request} HTTP/%{httpversion}" %{response} %{size}
 ```
+%  NOTCONSOLE
 
 Combining the two patterns results in a dissect pattern that looks like this:
 
 ```js
 %{clientip} %{ident} %{auth} [%{@timestamp}] \"%{verb} %{request} HTTP/%{httpversion}\" %{status} %{size}
 ```
+%  NOTCONSOLE
 
 Now that you have a dissect pattern, how do you test and use it?
 
@@ -98,6 +102,7 @@ POST /_scripts/painless/_execute
   }
 }
 ```
+%  TEST[continued]
 
 1. Runtime fields require the `emit` method to return values.
 2. Because the response code is an integer, use the `long_field` context.
@@ -154,6 +159,7 @@ PUT my-index/_mappings
   }
 }
 ```
+%  TEST[continued]
 
 After mapping the fields you want to retrieve, index a few records from your log data into {{es}}. The following request uses the [bulk API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-bulk) to index raw log data into `my-index`:
 
@@ -174,6 +180,7 @@ POST /my-index/_bulk?refresh=true
 {"index":{}}
 {"timestamp":"2020-04-30T14:31:28-05:00","message":"not a valid apache log"}
 ```
+%  TEST[continued]
 
 You can define a simple query to run a search for a specific HTTP response and return all related fields. Use the `fields` parameter of the search API to retrieve the `http.response` runtime field.
 
@@ -188,6 +195,7 @@ GET my-index/_search
   "fields" : ["http.response"]
 }
 ```
+%  TEST[continued]
 
 Alternatively, you can define the same runtime field but in the context of a search request. The runtime definition and the script are exactly the same as the one defined previously in the index mapping. Just copy that definition into the search request under the `runtime_mappings` section and include a query that matches on the runtime field. This query returns the same results as the search query previously defined for the `http.response` runtime field in your index mappings, but only in the context of this specific search:
 
@@ -211,6 +219,8 @@ GET my-index/_search
   "fields" : ["http.response"]
 }
 ```
+%  TEST[continued]
+%  TEST[s/_search/_search?filter_path=hits/]
 
 ```console-result
 {
@@ -239,5 +249,6 @@ GET my-index/_search
   }
 }
 ```
+%  TESTRESPONSE[s/"_id" : "D47UqXkBByC8cgZrkbOm"/"_id": $body.hits.hits.0._id/]
 
 

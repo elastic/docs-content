@@ -259,6 +259,7 @@ You can identify what is triggering deprecated functionality if `X-Opaque-Id` wa
   "node.id": "D7fUYfnfTLa2D7y-xw6tZg"
 }
 ```
+%  NOTCONSOLE
 
 Deprecation logs can be indexed into `.logs-deprecation.elasticsearch-default` data stream `cluster.deprecation_indexing.enabled` setting is set to true.
 

@@ -37,6 +37,8 @@ GET /my-index-000001/_search
   }
 }
 ```
+%  TEST[setup:my_index]
+%  TEST[s/my-field/http.request.method/]
 
 Aggregation results are in the response’s `aggregations` object:
 
@@ -69,6 +71,10 @@ Aggregation results are in the response’s `aggregations` object:
 ```
 
 1. Results for the `my-agg-name` aggregation.
+%  TESTRESPONSE[s/"took": 78/"took": "$body.took"/]
+%  TESTRESPONSE[s/...$/"took": "$body.took", "timed_out": false, "_shards": "$body._shards", /]
+%  TESTRESPONSE[s/"hits": [...]/"hits": "$body.hits.hits"/]
+%  TESTRESPONSE[s/"buckets": []/"buckets":[{"key":"get","doc_count":5}]/]
 
 ## Change an aggregation’s scope [change-agg-scope]
 
@@ -94,6 +100,8 @@ GET /my-index-000001/_search
   }
 }
 ```
+%  TEST[setup:my_index]
+%  TEST[s/my-field/http.request.method/]
 
 ## Return only aggregation results [return-only-agg-results]
 
@@ -112,6 +120,8 @@ GET /my-index-000001/_search
   }
 }
 ```
+%  TEST[setup:my_index]
+%  TEST[s/my-field/http.request.method/]
 
 ## Run multiple aggregations [run-multiple-aggs]
 
@@ -134,6 +144,9 @@ GET /my-index-000001/_search
   }
 }
 ```
+%  TEST[setup:my_index]
+%  TEST[s/my-field/http.request.method/]
+%  TEST[s/my-other-field/http.response.bytes/]
 
 ## Run sub-aggregations [run-sub-aggs]
 
@@ -158,6 +171,10 @@ GET /my-index-000001/_search
   }
 }
 ```
+%  TEST[setup:my_index]
+%  TEST[s/_search/_search?size=0/]
+%  TEST[s/my-field/http.request.method/]
+%  TEST[s/my-other-field/http.response.bytes/]
 
 The response nests sub-aggregation results under their parent aggregation:
 
@@ -184,6 +201,9 @@ The response nests sub-aggregation results under their parent aggregation:
 
 1. Results for the parent aggregation, `my-agg-name`.
 2. Results for `my-agg-name`'s sub-aggregation, `my-sub-agg-name`.
+%  TESTRESPONSE[s/.../"took": "$body.took", "timed_out": false, "_shards": "$body._shards", "hits": "$body.hits",/]
+%  TESTRESPONSE[s/"key": "foo"/"key": "get"/]
+%  TESTRESPONSE[s/"value": 75.0/"value": $body.aggregations.my-agg-name.buckets.0.my-sub-agg-name.value/]
 
 ## Add custom metadata [add-metadata-to-an-agg]
 
@@ -204,6 +224,8 @@ GET /my-index-000001/_search
   }
 }
 ```
+%  TEST[setup:my_index]
+%  TEST[s/_search/_search?size=0/]
 
 The response returns the `meta` object in place:
 
@@ -222,6 +244,7 @@ The response returns the `meta` object in place:
   }
 }
 ```
+%  TESTRESPONSE[s/.../"took": "$body.took", "timed_out": false, "_shards": "$body._shards", "hits": "$body.hits",/]
 
 ## Return the aggregation type [return-agg-type]
 
@@ -240,6 +263,9 @@ GET /my-index-000001/_search?typed_keys
   }
 }
 ```
+%  TEST[setup:my_index]
+%  TEST[s/typed_keys/typed_keys&size=0/]
+%  TEST[s/my-field/http.response.bytes/]
 
 The response returns the aggregation type as a prefix to the aggregation’s name.
 
@@ -259,6 +285,8 @@ Some aggregations return a different aggregation type from the type in the reque
 ```
 
 1. The aggregation type, `histogram`, followed by a `#` separator and the aggregation’s name, `my-agg-name`.
+%  TESTRESPONSE[s/.../"took": "$body.took", "timed_out": false, "_shards": "$body._shards", "hits": "$body.hits",/]
+%  TESTRESPONSE[s/"buckets": []/"buckets":[{"key":1070000.0,"doc_count":5}]/]
 
 ## Use scripts in an aggregation [use-scripts-in-an-agg]
 
@@ -283,6 +311,7 @@ GET /my-index-000001/_search?size=0
   }
 }
 ```
+%  TEST[setup:my_index]
 
 Scripts calculate field values dynamically, which adds a little overhead to the aggregation. In addition to the time spent calculating, some aggregations like [`terms`](elasticsearch://reference/data-analysis/aggregations/search-aggregations-bucket-terms-aggregation.md) and [`filters`](elasticsearch://reference/data-analysis/aggregations/search-aggregations-bucket-filters-aggregation.md) can’t use some of their optimizations with runtime fields. In total, performance costs for using a runtime field varies from aggregation to aggregation.
 

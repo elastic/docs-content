@@ -31,6 +31,7 @@ To set up {{es}} and {{kib}} locally, run the `start-local` script:
 ```sh
 curl -fsSL https://elastic.co/start-local | sh
 ```
+%  NOTCONSOLE
 
 This script creates an `elastic-start-local` folder containing configuration files and starts both {{es}} and {{kib}} using Docker.
 

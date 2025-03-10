@@ -64,7 +64,7 @@ PUT my-index
 2. The field to contain the tokens is a `sparse_vector` field.
 3. The name of the field from which to create the sparse vector representation. In this example, the name of the field is `content`. It must be referenced in the {{infer}} pipeline configuration in the next step.
 4. The field type which is text in this example.
-
+%  TEST[skip:TBD]
 
 To learn how to optimize space, refer to the [Saving disk space by excluding the ELSER tokens from document source](/manage-data/ingest/transform-enrich/ingest-pipelines.md) with an [{{infer}} processor](elasticsearch://reference/ingestion-tools/enrich-processor/inference-processor.md) to use ELSER to infer against the data that is being ingested in the pipeline.
 
@@ -124,13 +124,14 @@ POST _reindex?wait_for_completion=false
 ```
 
 1. The default batch size for reindexing is 1000. Reducing `size` to a smaller number makes the update of the reindexing process quicker which enables you to follow the progress closely and detect errors early.
-
+%  TEST[skip:TBD]
 
 The call returns a task ID to monitor the progress:
 
 ```console
 GET _tasks/<task_id>
 ```
+%  TEST[skip:TBD]
 
 You can also open the Trained Models UI, select the Pipelines tab under ELSER to follow the progress.
 
@@ -139,6 +140,7 @@ Reindexing large datasets can take a long time. You can test this workflow using
 ```console
 POST _tasks/<task_id>/_cancel
 ```
+%  TEST[skip:TBD]
 
 
 ### Semantic search by using the `sparse_vector` query [text-expansion-query]
@@ -157,6 +159,7 @@ GET my-index/_search
    }
 }
 ```
+%  TEST[skip:TBD]
 
 The result is the top 10 documents that are closest in meaning to your query text from the `my-index` index sorted by their relevancy. The result also contains the extracted tokens for each of the relevant search results with their weights. Tokens are learned associations capturing relevance, they are not synonyms. To learn more about what tokens are, refer to [this page](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md#elser-tokens). It is possible to exclude tokens from source, refer to [this section](#save-space) to learn more.
 
@@ -197,6 +200,7 @@ The result is the top 10 documents that are closest in meaning to your query tex
   ]
 }
 ```
+%  NOTCONSOLE
 
 ### Combining semantic search with other queries [text-expansion-compound-query]
 
@@ -235,7 +239,7 @@ GET my-index/_search
 2. The `boost` value is `1` for the `sparse_vector` query which is the default value. This means that the relevance score of the results of this query are not boosted.
 3. The `boost` value is `4` for the `query_string` query. The relevance score of the results of this query is increased causing them to rank higher in the search results.
 4. Only the results with a score equal to or higher than `10` are displayed.
-
+%  TEST[skip:TBD]
 
 
 ## Optimizing performance [optimization]
@@ -272,6 +276,7 @@ PUT my-index
   }
 }
 ```
+%  TEST[skip:TBD]
 
 ::::{note}
 Depending on your data, the `sparse_vector` query may be faster with `track_total_hits: false`.

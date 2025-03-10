@@ -43,6 +43,7 @@ To stop the {{ilm-init}} service and pause execution of all lifecycle policies, 
 ```console
 POST _ilm/stop
 ```
+%  TEST[continued]
 
 {{ilm-init}} service runs all policies to a point where it is safe to stop. While the {{ilm-init}} service is shutting down, the status API shows {{ilm-init}} is in the `STOPPING` mode:
 
@@ -51,6 +52,7 @@ POST _ilm/stop
   "operation_mode": "STOPPING"
 }
 ```
+%  TESTRESPONSE[s/"STOPPING"/$body.operation_mode/]
 
 Once all policies are at a safe stopping point, {{ilm-init}} moves into the `STOPPED` mode:
 
@@ -59,6 +61,7 @@ Once all policies are at a safe stopping point, {{ilm-init}} moves into the `STO
   "operation_mode": "STOPPED"
 }
 ```
+%  TESTRESPONSE[s/"STOPPED"/$body.operation_mode/]
 
 
 ## Start {{ilm-init}} [_start_ilm_init]
@@ -68,4 +71,5 @@ To restart {{ilm-init}} and resume executing policies, use the [Start API](https
 ```console
 POST _ilm/start
 ```
+%  TEST[continued]
 

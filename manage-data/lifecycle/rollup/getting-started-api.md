@@ -29,6 +29,7 @@ Imagine you have a series of daily indices that hold sensor data (`sensor-2017-0
   "node": "a"
 }
 ```
+%  NOTCONSOLE
 
 
 ## Creating a rollup job [_creating_a_rollup_job]
@@ -63,6 +64,8 @@ PUT _rollup/job/sensor
   ]
 }
 ```
+%  TEST[setup:sensor_index]
+%  TEST[warning:The rollup functionality will be removed in Elasticsearch 10.0. See docs for more information.]
 
 We give the job the ID of "sensor" (in the url: `PUT _rollup/job/sensor`), and tell it to rollup the index pattern `"sensor-*"`. This job will find and rollup any index that matches that pattern. Rollup summaries are then stored in the `"sensor_rollup"` index.
 
@@ -114,6 +117,8 @@ To start the job, execute this command:
 ```console
 POST _rollup/job/sensor/_start
 ```
+%  TEST[setup:sensor_rollup_job]
+%  TEST[warning:The rollup functionality will be removed in Elasticsearch 10.0. See docs for more information.]
 
 
 ## Searching the rolled results [_searching_the_rolled_results]
@@ -135,6 +140,8 @@ GET /sensor_rollup/_rollup_search
   }
 }
 ```
+%  TEST[setup:sensor_prefab_data]
+%  TEST[warning:The rollup functionality will be removed in Elasticsearch 10.0. See docs for more information.]
 
 It’s a simple aggregation that calculates the maximum of the `temperature` field. But you’ll notice that it is being sent to the `sensor_rollup` index instead of the raw `sensor-*` indices. And you’ll also notice that it is using the `_rollup_search` endpoint. Otherwise the syntax is exactly as you’d expect.
 
@@ -161,6 +168,9 @@ If you were to execute that query, you’d receive a result that looks like a no
   }
 }
 ```
+%  TESTRESPONSE[s/"took" : 102/"took" : $body.$_path/]
+%  TESTRESPONSE[s/"_shards" : ... /"_shards" : $body.$_path/]
+%  TEST[warning:The rollup functionality will be removed in Elasticsearch 10.0. See docs for more information.]
 
 The only notable difference is that Rollup search results have zero `hits`, because we aren’t really searching the original, live data any more. Otherwise it’s identical syntax.
 
@@ -201,6 +211,8 @@ GET /sensor_rollup/_rollup_search
   }
 }
 ```
+%  TEST[setup:sensor_prefab_data]
+%  TEST[warning:The rollup functionality will be removed in Elasticsearch 10.0. See docs for more information.]
 
 Which returns a corresponding response:
 
@@ -267,6 +279,8 @@ Which returns a corresponding response:
    }
 }
 ```
+%  TESTRESPONSE[s/"took" : 93/"took" : $body.$_path/]
+%  TESTRESPONSE[s/"_shards" : ... /"_shards" : $body.$_path/]
 
 In addition to being more complicated (date histogram and a terms aggregation, plus an additional average metric), you’ll notice the date_histogram uses a `7d` interval instead of `60m`.
 

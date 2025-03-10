@@ -90,6 +90,7 @@ POST _security/role/slm-admin
   ]
 }
 ```
+%  TEST[skip:security is not enabled here]
 
 To grant read-only access to {{slm-init}} policies and the snapshot history, you can set up a role with the `read_slm` cluster privilege and read access to the {{slm}} history indices.
 
@@ -107,6 +108,7 @@ POST _security/role/slm-read-only
   ]
 }
 ```
+%  TEST[skip:security is not enabled here]
 
 
 ### Create an {{slm-init}} policy [create-slm-policy]
@@ -153,6 +155,7 @@ To run a policy in {{kib}}, go to the **Policies** page and click the run icon u
 ```console
 POST _slm/policy/nightly-snapshots/_execute
 ```
+%  TEST[skip:we can’t easily handle snapshots from docs tests]
 
 The snapshot process runs in the background. To monitor its progress, see [Monitor a snapshot](#monitor-snapshot).
 
@@ -194,6 +197,7 @@ To take a snapshot without an {{slm-init}} policy, use the [create snapshot API]
 # PUT _snapshot/my_repository/<my_snapshot_{now/d}>
 PUT _snapshot/my_repository/%3Cmy_snapshot_%7Bnow%2Fd%7D%3E
 ```
+%  TEST[s/3E/3E?wait_for_completion=true/]
 
 Depending on its size, a snapshot can take a while to complete. By default, the create snapshot API only initiates the snapshot process, which runs in the background. To block the client until the snapshot finishes, set the `wait_for_completion` query parameter to `true`.
 
@@ -245,6 +249,7 @@ To delete a snapshot in {{kib}}, go to the **Snapshots** page and click the tras
 ```console
 DELETE _snapshot/my_repository/my_snapshot_2099.05.06
 ```
+%  TEST[setup:setup-snapshots]
 
 If you delete a snapshot that’s in progress, {{es}} cancels it. The snapshot process halts and deletes any files created for the snapshot. Deleting a snapshot doesn’t delete files used by other snapshots.
 
@@ -292,6 +297,7 @@ The API returns:
   ]
 }
 ```
+%  TESTRESPONSE[skip:response may vary based on features in test cluster]
 
 To include a specific feature state in a snapshot, specify the feature `name` in the `feature_states` array.
 
@@ -350,7 +356,7 @@ PUT _slm/policy/nightly-cluster-state-snapshots
 
 1. Includes the cluster state. This also includes all feature states by default.
 2. Excludes regular data streams and indices.
-
+%  TEST[s/my_secure_repository/my_repository/]
 
 If you take dedicated snapshots of the cluster state, you’ll need to exclude the cluster state from your other snapshots. For example:
 

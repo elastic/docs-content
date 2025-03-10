@@ -168,6 +168,7 @@ PUT _inference/text_embedding/cohere-embeddings
     }
 }
 ```
+%  TEST[skip:TBD]
 
 The following example shows how to create an {{infer}} endpoint called `cohere-rerank` to perform a `rerank` task type.
 
@@ -185,6 +186,7 @@ PUT _inference/rerank/cohere-rerank
     }
 }
 ```
+%  TEST[skip:TBD]
 
 For more examples, also review the [Cohere documentation](https://docs.cohere.com/docs/elasticsearch-and-cohere#rerank-search-results-with-cohere-and-elasticsearch).
 

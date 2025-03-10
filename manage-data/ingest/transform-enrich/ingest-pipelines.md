@@ -78,6 +78,7 @@ PUT _ingest/pipeline/my-pipeline
   ]
 }
 ```
+%  TESTSETUP
 
 
 ## Manage pipeline versions [manage-pipeline-versions]
@@ -91,6 +92,7 @@ PUT _ingest/pipeline/my-pipeline-id
   "processors": [ ... ]
 }
 ```
+%  TEST[s/.../{"lowercase": {"field":"my-keyword-field"}}/]
 
 To unset the `version` number using the API, replace or update the pipeline without specifying the `version` parameter.
 
@@ -187,6 +189,8 @@ The API returns transformed documents:
   ]
 }
 ```
+%  TESTRESPONSE[s/"2099-03-07T11:04:03.000Z"/$body.docs.0.doc._ingest.timestamp/]
+%  TESTRESPONSE[s/"2099-03-07T11:04:04.000Z"/$body.docs.1.doc._ingest.timestamp/]
 
 
 ## Add a pipeline to an indexing request [add-pipeline-to-indexing-request]
@@ -206,6 +210,8 @@ PUT my-data-stream/_bulk?pipeline=my-pipeline
 { "create":{ } }
 { "@timestamp": "2099-03-07T11:04:07.000Z", "my-keyword-field": "bar" }
 ```
+%  TEST[setup:my_data_stream]
+%  TEST[teardown:data_stream_cleanup]
 
 You can also use the `pipeline` parameter with the [update by query](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-update-by-query) or [reindex](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-reindex) APIs.
 
@@ -224,6 +230,8 @@ POST _reindex
   }
 }
 ```
+%  TEST[setup:my_data_stream]
+%  TEST[teardown:data_stream_cleanup]
 
 
 ## Set a default pipeline [set-default-pipeline]
@@ -313,6 +321,7 @@ $$$pipeline-custom-logs-index-template$$$
     ```console
     POST logs-my_app-default/_rollover/
     ```
+    %  TEST[continued]
 
 
 $$$pipeline-custom-logs-configuration$$$
@@ -612,6 +621,7 @@ PUT _ingest/pipeline/my-pipeline
   ]
 }
 ```
+%  TEST[s/.../{"lowercase": {"field":"my-keyword-field"}}/]
 
 Additional information about the pipeline failure may be available in the document metadata fields `on_failure_message`, `on_failure_processor_type`, `on_failure_processor_tag`, and `on_failure_pipeline`. These fields are accessible only from within an `on_failure` block.
 
@@ -632,6 +642,7 @@ PUT _ingest/pipeline/my-pipeline
   ]
 }
 ```
+%  TEST[s/.../{"lowercase": {"field":"my-keyword-field"}}/]
 
 
 ## Conditionally run a processor [conditionally-run-processor]

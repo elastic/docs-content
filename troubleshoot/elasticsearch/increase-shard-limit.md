@@ -77,6 +77,7 @@ To inspect which tier is an index targeting for assignment, use the [get index s
 ```console
 GET /my-index-000001/_settings/index.routing.allocation.include._tier_preference?flat_settings
 ```
+%  TEST[continued]
 
 The response will look like this:
 
@@ -91,7 +92,7 @@ The response will look like this:
 ```
 
 1. Represents a comma separated list of data tier node roles this index is allowed to be allocated on, the first one in the list being the one with the higher priority i.e. the tier the index is targeting. e.g. in this example the tier preference is `data_warm,data_hot` so the index is targeting the `warm` tier and more nodes with the `data_warm` role are needed in the {{es}} cluster.
-
+%  TESTRESPONSE[skip:the result is for illustrating purposes only]
 
 Alternatively, if adding more nodes to the {{es}} cluster is not desired, inspecting the configuration for the `index.routing.allocation.total_shards_per_node` [index setting](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-settings) and increasing the configured value will allow more shards to be assigned on the same node.
 
@@ -127,6 +128,6 @@ Alternatively, if adding more nodes to the {{es}} cluster is not desired, inspec
     ```
 ::::::
 
-:::{tip}}
+:::{tip}
 If you’re using Elastic Cloud Hosted, then you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, real-time issue detection and resolution paths. For more information, refer to [Monitor with AutoOps](/deploy-manage/monitor/autoops.md).
 :::

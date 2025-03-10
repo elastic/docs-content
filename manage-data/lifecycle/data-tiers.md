@@ -476,6 +476,7 @@ You can check an existing index’s data tier preference by [polling its setting
 ```console
 GET /my-index-000001/_settings?filter_path=*.settings.index.routing.allocation.include._tier_preference
 ```
+%  TEST[setup:my_index]
 
 ### Troubleshooting [data-tier-allocation-troubleshooting]
 

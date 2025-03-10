@@ -301,6 +301,7 @@ PUT _component_template/my-settings
   }
 }
 ```
+%  TEST[continued]
 
 
 ## Create an index template [create-ts-index-template]
@@ -329,6 +330,7 @@ PUT _index_template/my-index-template
   }
 }
 ```
+%  TEST[continued]
 
 
 ## Add data to a data stream [add-data-to-data-stream]
@@ -350,6 +352,7 @@ POST my-data-stream/_doc
   "message": "192.0.2.42 - - [06/May/2099:16:21:15 +0000] \"GET /images/bg.jpg HTTP/1.0\" 200 24736"
 }
 ```
+%  TEST[continued]
 
 
 ## Search and visualize your data [search-visualize-your-data]
@@ -408,6 +411,8 @@ GET my-data-stream/_search
   ]
 }
 ```
+%  TEST[setup:my_data_stream]
+%  TEST[teardown:data_stream_cleanup]
 
 {{es}} searches are synchronous by default. Searches across frozen data, long time ranges, or large datasets may take longer. Use the [async search API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-async-search-submit) to run searches in the background. For more search options, see [*The search API*](../solutions/search/querying-for-search.md).
 
@@ -459,3 +464,5 @@ POST my-data-stream/_async_search
   ]
 }
 ```
+%  TEST[setup:my_data_stream]
+%  TEST[teardown:data_stream_cleanup]

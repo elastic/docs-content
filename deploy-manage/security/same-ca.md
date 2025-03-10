@@ -98,6 +98,7 @@ The following examples use PKCS#12 files, but the same steps apply to JKS keysto
     ```console
     GET /_ssl/certificates
     ```
+    %  TEST[skip:creates a lot of noise]
 
 9. If you’re only updating certificates for the transport layer (and not the HTTP layer), then complete [step 4](#start-rolling-restart) through [step 8](#verify-keystore) one node at a time until you’ve updated all keystores in your cluster. You can then complete the remaining steps for a [rolling restart](../maintenance/start-stop-services/full-cluster-restart-rolling-restart-procedures.md#restart-cluster-rolling).
 
@@ -205,6 +206,7 @@ If your organization has its own CA, you’ll need to [generate Certificate Sign
     ```console
     GET /_ssl/certificates
     ```
+    %  TEST[skip:creates a lot of noise]
 
 11. One node at a time, complete [step 5](#start-rolling-restart-http) through [step 10](#verify-keystore-http) until you’ve updated all keystores in your cluster.
 12. Complete the remaining steps for a [rolling restart](../maintenance/start-stop-services/full-cluster-restart-rolling-restart-procedures.md#restart-cluster-rolling), beginning with the step to **Reenable shard allocation**.

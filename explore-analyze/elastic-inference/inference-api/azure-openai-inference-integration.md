@@ -127,6 +127,7 @@ PUT _inference/text_embedding/azure_openai_embeddings
     }
 }
 ```
+%  TEST[skip:TBD]
 
 The next example shows how to create an {{infer}} endpoint called `azure_openai_completion` to perform a `completion` task type.
 
@@ -142,6 +143,7 @@ PUT _inference/completion/azure_openai_completion
     }
 }
 ```
+%  TEST[skip:TBD]
 
 The list of chat completion models that you can choose from in your Azure OpenAI deployment can be found at the following places:
 

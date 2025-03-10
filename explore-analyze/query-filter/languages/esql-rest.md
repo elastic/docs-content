@@ -23,6 +23,7 @@ POST /_query?format=txt
   "query": "FROM library | KEEP author, name, page_count, release_date | SORT page_count DESC | LIMIT 5"
 }
 ```
+%  TEST[setup:library]
 
 Which returns:
 
@@ -35,6 +36,8 @@ Frank Herbert    |Dune                |604            |1965-06-01T00:00:00.000Z
 Alastair Reynolds|Revelation Space    |585            |2000-03-15T00:00:00.000Z
 James S.A. Corey |Leviathan Wakes     |561            |2011-06-02T00:00:00.000Z
 ```
+%  TESTRESPONSE[s/|/\|/ s/+/\+/]
+%  TESTRESPONSE[non_json]
 
 
 ### Kibana Console [esql-kibana-console]
@@ -52,6 +55,7 @@ POST /_query?format=txt
   """
 }
 ```
+%  TEST[setup:library]
 
 
 ### Response formats [esql-rest-format]
@@ -103,6 +107,7 @@ POST /_query?format=txt
   }
 }
 ```
+%  TEST[setup:library]
 
 Which returns:
 
@@ -111,6 +116,8 @@ Which returns:
 ---------------+------------------------------------+---------------+------------------------
 Douglas Adams  |The Hitchhiker's Guide to the Galaxy|180            |1979-10-12T00:00:00.000Z
 ```
+%  TESTRESPONSE[s/|/\|/ s/+/\+/]
+%  TESTRESPONSE[non_json]
 
 
 ### Columnar results [esql-rest-columnar]
@@ -129,6 +136,7 @@ POST /_query?format=json
   "columnar": true
 }
 ```
+%  TEST[setup:library]
 
 Which returns:
 
@@ -150,6 +158,7 @@ Which returns:
   ]
 }
 ```
+%  TESTRESPONSE[s/"took": 28/"took": "$body.took"/]
 
 
 ### Returning localized results [esql-locale-param]
@@ -172,6 +181,7 @@ POST /_query
    """
 }
 ```
+%  TEST[setup:library]
 
 
 ### Passing parameters to a query [esql-rest-params]
@@ -191,6 +201,7 @@ POST /_query
   """
 }
 ```
+%  TEST[setup:library]
 
 To avoid any attempts of hacking or code injection, extract the values in a separate list of parameters. Use question mark placeholders (`?`) in the query string for each of the parameters:
 
@@ -208,6 +219,7 @@ POST /_query
   "params": [300, "Frank Herbert", 0]
 }
 ```
+%  TEST[setup:library]
 
 The parameters can be named parameters or positional parameters.
 
@@ -227,6 +239,7 @@ POST /_query
   "params": [{"page_count" : 300}, {"author" : "Frank Herbert"}, {"count" : 0}]
 }
 ```
+%  TEST[setup:library]
 
 Positional parameters use question mark placeholders (`?`) followed by an integer.
 
@@ -244,6 +257,7 @@ POST /_query
   "params": [300, "Frank Herbert", 0]
 }
 ```
+%  TEST[setup:library]
 
 
 ### Running an async {{esql}} query [esql-rest-async-query]
@@ -267,6 +281,8 @@ POST /_query/async
   "wait_for_completion_timeout": "2s"
 }
 ```
+%  TEST[setup:library]
+%  TEST[skip:awaitsfix https://github.com/elastic/elasticsearch/issues/104013]
 
 If the results are not available within the given timeout period, 2 seconds in this case, no results are returned but rather a response that includes:
 
@@ -281,12 +297,14 @@ The query continues to run in the background without blocking other requests.
   "is_running": true
 }
 ```
+%  TEST[skip: no access to query ID - may return response values]
 
 To check the progress of an async query, use the [{{esql}} async query get API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-esql-async-query-get) with the query ID. Specify how long you’d like to wait for complete results in the `wait_for_completion_timeout` parameter.
 
 ```console
 GET /_query/async/FmNJRUZ1YWZCU3dHY1BIOUhaenVSRkEaaXFlZ3h4c1RTWFNocDdnY2FSaERnUTozNDE=?wait_for_completion_timeout=30s
 ```
+%  TEST[skip: no access to query ID - may return response values]
 
 If the response’s `is_running` value is `false`, the query has finished and the results are returned, along with the `took` time for the query.
 
@@ -297,9 +315,11 @@ If the response’s `is_running` value is `false`, the query has finished and th
   "columns": ...
 }
 ```
+%  TEST[skip: no access to query ID - may return response values]
 
 Use the [{{esql}} async query delete API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-esql-async-query-delete) to delete an async query before the `keep_alive` period ends. If the query is still running, {{es}} cancels it.
 
 ```console
 DELETE /_query/async/FmdMX2pIang3UWhLRU5QS0lqdlppYncaMUpYQ05oSkpTc3kwZ21EdC1tbFJXQToxOTI=
 ```
+%  TEST[skip: no access to query ID]

@@ -142,6 +142,7 @@ PUT _inference/text_embedding/azure_ai_studio_embeddings
     }
 }
 ```
+%  TEST[skip:TBD]
 
 The next example shows how to create an {{infer}} endpoint called `azure_ai_studio_completion` to perform a `completion` task type.
 
@@ -157,6 +158,7 @@ PUT _inference/completion/azure_ai_studio_completion
     }
 }
 ```
+%  TEST[skip:TBD]
 
 The list of chat completion models that you can choose from in your deployment can be found in the [Azure AI Studio model explorer](https://ai.azure.com/explore/models?selectedTask=chat-completion).
 

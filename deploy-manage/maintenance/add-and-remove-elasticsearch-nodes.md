@@ -107,6 +107,7 @@ POST /_cluster/voting_config_exclusions?node_names=node_name
 # auto-reconfiguration up to one minute
 POST /_cluster/voting_config_exclusions?node_names=node_name&timeout=1m
 ```
+%  TEST[skip:this would break the test cluster if executed]
 
 The nodes that should be added to the exclusions list are specified by name using the `?node_names` query parameter, or by their persistent node IDs using the `?node_ids` query parameter. If a call to the voting configuration exclusions API fails, you can safely retry it. Only a successful response guarantees that the node has actually been removed from the voting configuration and will not be reinstated. If the elected master node is excluded from the voting configuration then it will abdicate to another master-eligible node that is still in the voting configuration if such a node is available.
 

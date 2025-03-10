@@ -83,6 +83,7 @@ POST /_index_template/1
   "data_stream": {}
 }
 ```
+%  TEST[skip: not expected to match the sample below]
 
 A possible output of `/k8s/_settings` looks like:
 
@@ -144,6 +145,7 @@ A possible output of `/k8s/_settings` looks like:
   }
 }
 ```
+%  NOTCONSOLE
 
 To reindex this TSDS, do not to re-use its index template in the destination data stream, to avoid impacting its functionality. Instead, clone the template of the source TSDS and apply the following modifications:
 
@@ -199,6 +201,7 @@ POST /_index_template/2
   "data_stream": {}
 }
 ```
+%  TEST[continued]
 
 
 ## Reindex [tsds-reindex-op]
@@ -217,6 +220,7 @@ POST /_reindex
   }
 }
 ```
+%  TEST[continued]
 
 
 ## Restore the destination index template [tsds-reindex-restore]
@@ -258,12 +262,14 @@ POST /_component_template/destination_template
   }
 }
 ```
+%  TEST[continued]
 
 Next, Invoke the `rollover` api on the destination data stream without any conditions set.
 
 ```console
 POST /k9s/_rollover/
 ```
+%  TEST[continued]
 
 This creates a new backing index with the updated index settings. The destination data stream is now ready to accept new documents.
 

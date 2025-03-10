@@ -74,6 +74,7 @@ To use a service account token, include the generated token value in a request w
 ```shell
 curl -H "Authorization: Bearer AAEAAWVsYXN0aWM...vZmxlZXQtc2VydmVyL3Rva2VuMTo3TFdaSDZ" http://localhost:9200/_security/_authenticate
 ```
+%  NOTCONSOLE
 
 A successful authentication response includes a `token` field, which contains a `name` field for the name of the service token and a `type` field for the type of the service token:
 
@@ -105,5 +106,5 @@ A successful authentication response includes a `token` field, which contains a 
 
 1. Name of the service account token.
 2. Type of service account token. The value always begins with `_service_account_` and is followed by a string that indicates the service token backend in use (can be either `file` or `index`).
-
+%  NOTCONSOLE
 

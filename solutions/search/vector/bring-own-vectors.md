@@ -58,7 +58,7 @@ PUT /amazon-reviews
 1. The `dims` parameter must match the length of the embedding vector. Here we’re using a simple 8-dimensional embedding for readability. If not specified, `dims` will be dynamically calculated based on the first indexed document.
 2. The `index` parameter is set to `true` to enable the use of the `knn` query.
 3. The `similarity` parameter defines the similarity function used to compare the query vector to the document vectors. `cosine` is the default similarity function for `dense_vector` fields in {{es}}.
-
+%  TEST SETUP
 
 
 ## Step 2: Index documents with embeddings [bring-your-own-vectors-index-documents]
@@ -77,7 +77,7 @@ PUT /amazon-reviews/_doc/1
 ```
 
 1. The size of the `review_vector` array is 8, matching the `dims` count specified in the mapping.
-
+%  TEST
 
 
 ### Bulk index multiple documents [_bulk_index_multiple_documents]
@@ -97,6 +97,7 @@ POST /_bulk
 { "index": { "_index": "amazon-reviews", "_id": "5" } }
 { "review_text": "This product has ruined my life and the lives of my family and friends.", "review_vector": [0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2, 0.1] }
 ```
+%  TEST[continued]
 
 
 ## Step 3: Search documents with embeddings [bring-your-own-vectors-search-documents]
@@ -120,7 +121,7 @@ POST /amazon-reviews/_search
 1. In this simple example, we’re sending a raw vector as the query text. In a real-world scenario, you’ll need to generate vectors for queries using an embedding model.
 2. The `k` parameter specifies the number of results to return.
 3. The `num_candidates` parameter is optional. It limits the number of candidates returned by the search node. This can improve performance and reduce costs.
-
+%  TEST[skip:flakeyknnerror]
 
 
 ## Learn more [bring-your-own-vectors-learn-more]

@@ -45,6 +45,7 @@ Before we start analyzing the data, let’s examine the structure of the documen
 ```console
 GET kibana_sample_data_ecommerce/_mapping
 ```
+%  TEST[skip:Using Kibana sample data]
 
 The response shows the field mappings for the `kibana_sample_data_ecommerce` index.
 
@@ -309,6 +310,7 @@ GET kibana_sample_data_ecommerce/_search
 1. Set `size` to 0 to avoid returning matched documents in the response and return only the aggregation results
 2. A meaningful name that describes what this metric represents
 3. Configures an `avg` aggregation, which calculates a simple arithmetic mean
+%  TEST[skip:Using Kibana sample data]
 
 ::::{dropdown} Example response
 
@@ -342,6 +344,7 @@ GET kibana_sample_data_ecommerce/_search
 2. `hits` is empty because we set `size` to 0
 3. Results appear under the name we specified in the request
 4. The average order value is calculated dynamically from all the orders in the dataset
+%  TEST[skip:Using Kibana sample data]
 
 ::::
 
@@ -365,6 +368,7 @@ GET kibana_sample_data_ecommerce/_search
 
 1. A descriptive name for this set of statistics
 2. `stats` returns count, min, max, avg, and sum at once
+%  TEST[skip:Using Kibana sample data]
 
 ::::{dropdown} Example response
 
@@ -387,6 +391,7 @@ GET kibana_sample_data_ecommerce/_search
 3. `"max"`: Highest individual order value in the dataset
 4. `"avg"`: Average value per order across all orders
 5. `"sum"`: Total revenue from all orders combined
+%  TEST[skip:Using Kibana sample data]
 
 ::::
 
@@ -424,6 +429,7 @@ GET kibana_sample_data_ecommerce/_search
 3. Use [`.keyword`](elasticsearch://reference/elasticsearch/mapping-reference/keyword.md) field for exact matching on text fields
 4. Limit to top 5 categories
 5. Order by number of orders (descending)
+%  TEST[skip:Using Kibana sample data]
 
 ::::{dropdown} Example response
 
@@ -481,6 +487,7 @@ GET kibana_sample_data_ecommerce/_search
 3. Array of category buckets, ordered by count.
 4. Category name.
 5. Number of orders in this category.
+%  TEST[skip:Using Kibana sample data]
 
 ::::
 
@@ -510,6 +517,7 @@ GET kibana_sample_data_ecommerce/_search
 3. Uses [calendar and fixed time intervals](elasticsearch://reference/data-analysis/aggregations/search-aggregations-bucket-datehistogram-aggregation.md#calendar_and_fixed_intervals) to handle months with different lengths. `"day"` ensures consistent daily grouping regardless of timezone.
 4. Formats dates in response using [date patterns](elasticsearch://reference/elasticsearch/mapping-reference/mapping-date-format.md) (e.g. "yyyy-MM-dd"). Refer to [date math expressions](elasticsearch://reference/elasticsearch/rest-apis/common-options.md#date-math) for additional options.
 5. When `min_doc_count` is 0, returns buckets for days with no orders, useful for continuous time series visualization.
+%  TEST[skip:Using Kibana sample data]
 
 ::::{dropdown} Example response
 
@@ -700,6 +708,7 @@ GET kibana_sample_data_ecommerce/_search
 3. `key_as_string` is the human-readable date for this bucket
 4. `key` is the same date represented as the Unix timestamp for this bucket
 5. `doc_count` counts the number of documents that fall into this time bucket
+%  TEST[skip:Using Kibana sample data]
 
 ::::
 
@@ -749,6 +758,7 @@ GET kibana_sample_data_ecommerce/_search
 3. Total revenue for the category
 4. Average order value in the category
 5. Total number of items sold
+%  TEST[skip:Using Kibana sample data]
 
 ::::{dropdown} Example response
 
@@ -786,6 +796,7 @@ GET kibana_sample_data_ecommerce/_search
 3. Total revenue for this category
 4. Average order value for this category
 5. Total quantity of items sold
+%  TEST[skip:Using Kibana sample data]
 
 ::::
 
@@ -829,6 +840,7 @@ GET kibana_sample_data_ecommerce/_search
 1. Daily revenue
 2. Uses the [`cardinality`](elasticsearch://reference/data-analysis/aggregations/search-aggregations-metrics-cardinality-aggregation.md) aggregation to count unique customers per day
 3. Average number of items per order
+%  TEST[skip:Using Kibana sample data]
 
 ::::{dropdown} Example response
 
@@ -1338,6 +1350,7 @@ GET kibana_sample_data_ecommerce/_search
 4. Reference the revenue from our date histogram.
 5. Use a 3-day window — use different window sizes to see trends at different time scales.
 6. Use the built-in unweighted average function in the `moving_fn` aggregation.
+%  TEST[skip:Using Kibana sample data]
 
 ::::{dropdown} Example response
 
@@ -1714,6 +1727,7 @@ GET kibana_sample_data_ecommerce/_search
 3. Raw daily revenue before smoothing
 4. First day has no smoothed value as it needs previous days for the calculation
 5. Moving average starts from second day, using a 3-day window
+%  TEST[skip:Using Kibana sample data]
 
 ::::
 
@@ -1756,6 +1770,7 @@ GET kibana_sample_data_ecommerce/_search
 1. Name for our running total
 2. `cumulative_sum` adds up values across buckets
 3. Reference the revenue we want to accumulate
+%  TEST[skip:Using Kibana sample data]
 
 ::::{dropdown} Example response
 
@@ -2132,6 +2147,7 @@ GET kibana_sample_data_ecommerce/_search
 3. `key_as_string`: Date for this bucket (in ISO format since no format specified)
 4. `revenue`: Daily revenue for this date
 5. `cumulative_revenue`: Running total of revenue up to this date
+%  TEST[skip:Using Kibana sample data]
 
 ::::
 

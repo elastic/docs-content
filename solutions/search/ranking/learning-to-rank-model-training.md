@@ -77,6 +77,7 @@ feature_extractors=[
     ),
 ]
 ```
+%  NOTCONSOLE
 
 ::::{admonition} Term statistics as features
 :class: note
@@ -93,6 +94,7 @@ from eland.ml.ltr import LTRModelConfig
 
 ltr_config = LTRModelConfig(feature_extractors)
 ```
+%  NOTCONSOLE
 
 
 ### Extracting features for training [learning-to-rank-model-training-feature-extraction]
@@ -114,6 +116,7 @@ feature_logger.extract_features(
     doc_ids=["doc-1", "doc-2"]
 )
 ```
+%  NOTCONSOLE
 
 Our [example notebook](https://github.com/elastic/elasticsearch-labs/blob/main/notebooks/search/08-learning-to-rank.ipynb) explains how to use the `FeatureLogger` to build a training dataset, by adding features to a judgment list.
 
@@ -141,6 +144,7 @@ MLModel.import_ltr_model(
     es_if_exists="replace",
 )
 ```
+%  NOTCONSOLE
 
 This method will serialize the trained model and the Learning To Rank configuration (including feature extraction) in a format that {{es}} can understand. The model is then deployed to {{es}} using the [Create Trained Models API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-put-trained-model).
 

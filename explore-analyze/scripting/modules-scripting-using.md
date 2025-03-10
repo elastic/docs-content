@@ -17,6 +17,7 @@ Wherever scripting is supported in the {{es}} APIs, the syntax follows the same 
     "params": { ... }
   }
 ```
+%  NOTCONSOLE
 
 `lang`
 :   Specifies the language the script is written in. Defaults to `painless`.
@@ -62,6 +63,7 @@ GET my-index-000001/_search
   }
 }
 ```
+%  TEST[continued]
 
 1. `script` object
 2. `script` source
@@ -96,6 +98,7 @@ You can compile up to 150 scripts per 5 minutes by default. For ingest contexts,
 ```js
 script.context.field.max_compilations_rate=100/10m
 ```
+%  NOTCONSOLE
 
 ::::{important}
 If you compile too many unique scripts within a short time, {{es}} rejects the new dynamic scripts with a `circuit_breaking_exception` error.
@@ -123,6 +126,7 @@ GET my-index-000001/_search
   }
 }
 ```
+%  TEST[s/^/PUT my-index-000001\n/]
 
 Let’s look at a shortened version of the script to see what improvements it includes over the previous iteration:
 
@@ -141,6 +145,7 @@ GET my-index-000001/_search
   }
 }
 ```
+%  TEST[s/^/PUT my-index-000001\n/]
 
 This version of the script removes several components and simplifies the syntax significantly:
 
@@ -180,6 +185,7 @@ You can retrieve that script by using the [get stored script API](https://www.el
 ```console
 GET _scripts/calculate-score
 ```
+%  TEST[continued]
 
 To use the stored script in a query, include the script `id` in the `script` declaration:
 
@@ -203,6 +209,8 @@ GET my-index-000001/_search
   }
 }
 ```
+%  TEST[setup:my_index]
+%  TEST[continued]
 
 1. `id` of the stored script
 
@@ -212,6 +220,7 @@ To delete a stored script, submit a [delete stored script API](https://www.elast
 ```console
 DELETE _scripts/calculate-score
 ```
+%  TEST[continued]
 
 
 ## Update documents with scripts [scripts-update-scripts]
@@ -242,6 +251,7 @@ POST my-index-000001/_update/1
   }
 }
 ```
+%  TEST[continued]
 
 Similarly, you can use an update script to add a tag to the list of tags. Because this is just a list, the tag is added even it exists:
 
@@ -257,6 +267,7 @@ POST my-index-000001/_update/1
   }
 }
 ```
+%  TEST[continued]
 
 You can also remove a tag from the list of tags. The `remove` method of a Java `List` is available in Painless. It takes the index of the element you want to remove. To avoid a possible runtime error, you first need to make sure the tag exists. If the list contains duplicates of the tag, this script just removes one occurrence.
 
@@ -272,6 +283,7 @@ POST my-index-000001/_update/1
   }
 }
 ```
+%  TEST[continued]
 
 You can also add and remove fields from a document. For example, this script adds the field `new_field`:
 
@@ -281,6 +293,7 @@ POST my-index-000001/_update/1
   "script" : "ctx._source.new_field = 'value_of_new_field'"
 }
 ```
+%  TEST[continued]
 
 Conversely, this script removes the field `new_field`:
 
@@ -290,6 +303,7 @@ POST my-index-000001/_update/1
   "script" : "ctx._source.remove('new_field')"
 }
 ```
+%  TEST[continued]
 
 Instead of updating the document, you can also change the operation that is executed from within the script. For example, this request deletes the document if the `tags` field contains `green`. Otherwise it does nothing (`noop`):
 
@@ -305,6 +319,7 @@ POST my-index-000001/_update/1
   }
 }
 ```
+%  TEST[continued]
 
 
 

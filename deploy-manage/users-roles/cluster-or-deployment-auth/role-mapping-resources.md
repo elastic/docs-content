@@ -80,6 +80,7 @@ The `groups` field is multi-valued; a user can belong to many groups. When a `fi
 ```js
 { "field" : { "groups" : "admin" } }
 ```
+%  NOTCONSOLE
 
 For additional realm-specific details, see [Active Directory and LDAP realms](../../../deploy-manage/users-roles/cluster-or-deployment-auth/mapping-users-groups-to-roles.md#ldap-role-mapping).
 

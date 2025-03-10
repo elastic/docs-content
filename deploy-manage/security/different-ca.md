@@ -145,6 +145,7 @@ If your organization has its own CA, you’ll need to [generate Certificate Sign
     ```console
     GET /_ssl/certificates
     ```
+    %  TEST[skip:creates a lot of noise]
 
 7. If you’re only updating certificates for the transport layer (and not the HTTP layer), then complete [step 2](#start-rolling-restart-newca) through [step 6](#verify-keystore-newca) one node at a time until you’ve updated all keystores in your cluster. You can then complete the remaining steps for a [rolling restart](../maintenance/start-stop-services/full-cluster-restart-rolling-restart-procedures.md#restart-cluster-rolling).
 
@@ -275,6 +276,7 @@ This process is different for each client, so refer to your client’s documenta
     ```console
     GET /_ssl/certificates
     ```
+    %  TEST[skip:creates a lot of noise]
 
 11. One node at a time, complete [step 5](#start-rolling-restart-http-newca) through [step 10](#verify-keystore-http-newca) until you’ve updated all keystores in your cluster.
 12. Complete the remaining steps for a [rolling restart](../maintenance/start-stop-services/full-cluster-restart-rolling-restart-procedures.md#restart-cluster-rolling), beginning with the step to **Reenable shard allocation**.

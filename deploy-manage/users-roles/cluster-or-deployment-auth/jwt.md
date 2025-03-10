@@ -205,6 +205,7 @@ Header: {"typ":"JWT","alg":"HS256"}
 Claims: {"aud":"aud8","sub":"security_test_user","iss":"iss8","exp":4070908800,"iat":946684800}
 Signature: UnnFmsoFKfNmKMsVoDQmKI_3-j95PCaKdgqqau3jPMY
 ```
+%  NOTCONSOLE
 
 This example illustrates a partial decoding of a JWT. The validity period is from 2000 to 2099 (inclusive), as defined by the issue time (`iat`) and expiration time (`exp`). JWTs typically have a validity period shorter than 100 years, such as 1-2 hours or 1-7 days, not an entire human life.
 
@@ -396,6 +397,7 @@ $$$jwt-auth-shared-secret-scheme-example$$$
 ```sh
 curl -s -X GET -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOlsiZXMwMSIsImVzMDIiLCJlczAzIl0sInN1YiI6InVzZXIyIiwiaXNzIjoibXktaXNzdWVyIiwiZXhwIjo0MDcwOTA4ODAwLCJpYXQiOjk0NjY4NDgwMCwiZW1haWwiOiJ1c2VyMkBzb21ldGhpbmcuZXhhbXBsZS5jb20ifQ.UgO_9w--EoRyUKcWM5xh9SimTfMzl1aVu6ZBsRWhxQA" -H "ES-Client-Authentication: sharedsecret test-secret" https://localhost:9200/_security/_authenticate
 ```
+%  NOTCONSOLE
 
 The response includes the user who submitted the request (`user2`), including the `jwt_role1` role that you mapped to this user in the JWT realm:
 
@@ -412,6 +414,7 @@ If you want to specify a request as the `run_as` user, include the `es-security-
 ```sh
 curl -s -X GET -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOlsiZXMwMSIsImVzMDIiLCJlczAzIl0sInN1YiI6InVzZXIyIiwiaXNzIjoibXktaXNzdWVyIiwiZXhwIjo0MDcwOTA4ODAwLCJpYXQiOjk0NjY4NDgwMCwiZW1haWwiOiJ1c2VyMkBzb21ldGhpbmcuZXhhbXBsZS5jb20ifQ.UgO_9w--EoRyUKcWM5xh9SimTfMzl1aVu6ZBsRWhxQA" -H "ES-Client-Authentication: sharedsecret test-secret" -H "es-security-runas-user: user123_runas" https://localhost:9200/_security/_authenticate
 ```
+%  NOTCONSOLE
 
 In the response, you’ll see that the `user123_runas` user submitted the request, and {{es}} used the `jwt_role1` role:
 
@@ -476,6 +479,7 @@ Audiences:  aud8
 Algorithms: HS256
 HMAC UTF-8: hmac-oidc-key-string-for-hs256-algorithm
 ```
+%  NOTCONSOLE
 
 
 ### JWT realm settings [hmac-oidc-example-jwt-realm]
@@ -530,12 +534,14 @@ The following header settings are for an {{es}} client.
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJpc3M4IiwiYXVkIjoiYXVkOCIsInN1YiI6InNlY3VyaXR5X3Rlc3RfdXNlciIsImV4cCI6NDA3MDkwODgwMCwiaWF0Ijo5NDY2ODQ4MDB9.UnnFmsoFKfNmKMsVoDQmKI_3-j95PCaKdgqqau3jPMY
 ES-Client-Authentication: SharedSecret client-shared-secret-string
 ```
+%  NOTCONSOLE
 
 You can use this header in a `curl` request to make an authenticated call to {{es}}. Both the bearer token and the client authorization token must be specified as separate headers with the `-H` option:
 
 ```sh
 curl -s -X GET -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJpc3M4IiwiYXVkIjoiYXVkOCIsInN1YiI6InNlY3VyaXR5X3Rlc3RfdXNlciIsImV4cCI6NDA3MDkwODgwMCwiaWF0Ijo5NDY2ODQ4MDB9.UnnFmsoFKfNmKMsVoDQmKI_3-j95PCaKdgqqau3jPMY" -H "ES-Client-Authentication: SharedSecret client-shared-secret-string" https://localhost:9200/_security/_authenticate
 ```
+%  NOTCONSOLE
 
 If you used role mapping in the JWT realm, the response includes the user’s `username`, their `roles`, metadata about the user, and the details about the JWT realm itself.
 

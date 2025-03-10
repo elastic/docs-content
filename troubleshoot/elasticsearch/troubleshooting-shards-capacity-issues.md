@@ -41,6 +41,7 @@ If you’re confident your changes won’t destabilize the cluster, you can temp
     ```console
     GET _health_report/shards_capacity
     ```
+    %  TESTRESPONSE[skip:the result is for illustrating purposes only]
 
     The response will look like this:
 
@@ -133,6 +134,7 @@ Check the current status of the cluster according the shards capacity indicator:
 ```console
 GET _health_report/shards_capacity
 ```
+%  TESTRESPONSE[skip:the result is for illustrating purposes only]
 
 The response will look like this:
 
@@ -164,7 +166,7 @@ The response will look like this:
 
 1. Current value of the setting `cluster.max_shards_per_node`
 2. Current number of open shards across the cluster
-
+%  TESTRESPONSE[skip:the result is for illustrating purposes only]
 
 Using the [`cluster settings API`](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings), update the [`cluster.max_shards_per_node`](elasticsearch://reference/elasticsearch/configuration-reference/miscellaneous-cluster-settings.md#cluster-max-shards-per-node) setting:
 
@@ -204,6 +206,7 @@ The response will look like this:
   }
 }
 ```
+%  TESTRESPONSE[skip:the result is for illustrating purposes only]
 
 When a long-term solution is in place, we recommend you reset the `cluster.max_shards_per_node` limit.
 
@@ -371,7 +374,7 @@ GET _health_report/shards_capacity
 
 1. Current value of the setting `cluster.max_shards_per_node.frozen`.
 2. Current number of open shards used by frozen nodes across the cluster.
-
+%  TESTRESPONSE[skip:the result is for illustrating purposes only]
 
 Using the [`cluster settings API`](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings), update the [`cluster.max_shards_per_node.frozen`](elasticsearch://reference/elasticsearch/configuration-reference/miscellaneous-cluster-settings.md#cluster-max-shards-per-node-frozen) setting:
 
@@ -411,6 +414,7 @@ The response will look like this:
   }
 }
 ```
+%  TESTRESPONSE[skip:the result is for illustrating purposes only]
 
 When a long-term solution is in place, we recommend you reset the `cluster.max_shards_per_node.frozen` limit.
 

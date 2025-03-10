@@ -136,6 +136,7 @@ PUT _inference/text_embedding/openai-embeddings
     }
 }
 ```
+%  TEST[skip:TBD]
 
 The next example shows how to create an {{infer}} endpoint called `openai-completion` to perform a `completion` task type.
 
@@ -149,3 +150,4 @@ PUT _inference/completion/openai-completion
     }
 }
 ```
+%  TEST[skip:TBD]

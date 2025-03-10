@@ -37,6 +37,8 @@ PUT _snapshot/my_src_only_repository
   }
 }
 ```
+%  TEST[setup:setup-repository]
+%  TEST[s/my_backup_repository/my_repository/]
 
 ## Repository settings [source-only-repository-settings]
 

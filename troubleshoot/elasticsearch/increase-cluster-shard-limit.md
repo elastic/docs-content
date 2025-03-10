@@ -76,6 +76,7 @@ To inspect which tier is an index targeting for assignment, use the [get index s
 ```console
 GET /my-index-000001/_settings/index.routing.allocation.include._tier_preference?flat_settings
 ```
+%  TEST[continued]
 
 The response will look like this:
 
@@ -88,6 +89,7 @@ The response will look like this:
   }
 }
 ```
+%  TESTRESPONSE[skip:the result is for illustrating purposes only]
 
 1. Represents a comma separated list of data tier node roles this index is allowed to be allocated on, the first one in the list being the one with the higher priority i.e. the tier the index is targeting. e.g. in this example the tier preference is `data_warm,data_hot` so the index is targeting the `warm` tier and more nodes with the `data_warm` role are needed in the {{es}} cluster.
 

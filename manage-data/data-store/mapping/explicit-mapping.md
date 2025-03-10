@@ -53,6 +53,7 @@ PUT /my-index-000001/_mapping
   }
 }
 ```
+%  TEST[continued]
 
 
 ## Update the mapping of a field [update-mapping]
@@ -73,6 +74,7 @@ You can use the [get mapping](https://www.elastic.co/docs/api/doc/elasticsearch/
 ```console
 GET /my-index-000001/_mapping
 ```
+%  TEST[continued]
 
 The API returns the following response:
 
@@ -112,6 +114,7 @@ The following request retrieves the mapping for the `employee-id` field.
 ```console
 GET /my-index-000001/_mapping/field/employee-id
 ```
+%  TEST[continued]
 
 The API returns the following response:
 

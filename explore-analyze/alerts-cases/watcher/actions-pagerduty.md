@@ -30,6 +30,7 @@ The following snippet shows a simple PagerDuty action definition:
 ```
 
 1. Description of the message
+%  NOTCONSOLE
 
 ## Adding meta information to a PagerDuty incident [adding-context-and-payloads-to-pagerduty-actions]
 
@@ -59,6 +60,7 @@ To give the PagerDuty incident some more context, you can attach the payload as 
   }
 }
 ```
+%  NOTCONSOLE
 
 ## Pagerduty action attributes [pagerduty-action-attributes]
 

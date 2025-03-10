@@ -33,6 +33,7 @@ For example, the following input retrieves all `event` documents from the `logs`
   }
 }
 ```
+%  NOTCONSOLE
 
 You can use date math and wildcards when specifying indices. For example, the following input loads the latest VIXZ quote from today’s daily quotes index:
 
@@ -56,6 +57,7 @@ You can use date math and wildcards when specifying indices. For example, the fo
   }
 }
 ```
+%  NOTCONSOLE
 
 ## Extracting specific fields [_extracting_specific_fields]
 
@@ -73,6 +75,7 @@ For example, the following input loads only the total number of hits into the wa
     }
   },
 ```
+%  NOTCONSOLE
 
 ## Using Templates [_using_templates]
 
@@ -96,6 +99,7 @@ The `search` input supports [search templates](../../../solutions/search/search-
   ...
 }
 ```
+%  NOTCONSOLE
 
 ## Applying conditions [_applying_conditions]
 
@@ -119,6 +123,7 @@ The `search` input is often used in conjunction with the [`script`](condition-sc
   ...
 }
 ```
+%  NOTCONSOLE
 
 ## Accessing the search results [_accessing_the_search_results]
 

@@ -56,6 +56,7 @@ GET .watcher-history*/_search?pretty
   ]
 }
 ```
+%  TEST[continued]
 
 ## Add a condition [log-add-condition]
 
@@ -98,6 +99,7 @@ POST logs/_doc
   "message": "Error: File not found"
 }
 ```
+%  TEST[continued]
 
 Once you add this event, the next time the watch executes its condition will evaluate to `true`. The condition result is recorded as part of the `watch_record` each time the watch executes, so you can verify whether or not the condition was met by searching the watch history:
 
@@ -114,6 +116,7 @@ GET .watcher-history*/_search?pretty
   }
 }
 ```
+%  TEST[continued]
 
 ## Configure an action [log-take-action]
 
@@ -159,6 +162,7 @@ To remove the watch, use the [delete watch API](https://www.elastic.co/docs/api/
 ```console
 DELETE _watcher/watch/log_error_watch
 ```
+%  TEST[continued]
 
 ## Required security privileges [required-security-privileges]
 

@@ -153,6 +153,7 @@ To acknowledge an action, you use the [ack watch API](https://www.elastic.co/doc
 ```console
 POST _watcher/watch/<id>/_ack/<action_ids>
 ```
+%  TEST[skip:https://github.com/elastic/x-plugins/issues/2513]
 
 Where `<id>` is the id of the watch and `<action_ids>` is a comma-separated list of the action ids you want to acknowledge. To acknowledge all actions, omit the `actions` parameter.
 

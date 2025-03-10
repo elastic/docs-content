@@ -255,6 +255,7 @@ Use the dot notations to refer to nested fields in more complex documents. For e
   }
 }
 ```
+%  NOTCONSOLE
 
 The following role definition enables only read access to the customer `handle` field:
 

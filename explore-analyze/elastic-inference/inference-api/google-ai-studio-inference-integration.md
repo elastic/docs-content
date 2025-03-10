@@ -93,4 +93,5 @@ PUT _inference/completion/google_ai_studio_completion
     }
 }
 ```
+%  TEST[skip:TBD]
 

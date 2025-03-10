@@ -57,3 +57,4 @@ The following example defines two {{watcher-transforms}}, one at the watch level
 
 1. A watch level `transform`
 2. An action level `transform`
+%  NOTCONSOLE

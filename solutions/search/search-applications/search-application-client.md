@@ -97,6 +97,7 @@ Use the following import statement:
 ```js
 import SearchApplicationClient from '@elastic/search-application-client';
 ```
+%  NOTCONSOLE
 
 Configure the client with your deployment details to start making search requests. You can generate an API key on the **Connect** page in the {{kib}} UI. Go to **Search > Search Applications >** <MY_SEARCH_APPLICATION> **> Connect**. You’ll find the following information prepopulated to initialize the client:
 
@@ -120,6 +121,7 @@ const results = await request()
   .query('star wars')
   .search()
 ```
+%  NOTCONSOLE
 
 
 #### Option 2: Using CDN [search-application-client-client-configuration-import-cdn]
@@ -203,6 +205,7 @@ PUT _application/search_application/my-example-app
   }
 }
 ```
+%  TEST[skip:TODO]
 
 This will allow you to add any template parameters you need to your template and then provide the values in your client request. Use `addParameter` to inject actual values into your template parameters.
 
@@ -214,6 +217,7 @@ const results = await request()
   .addParameter('search_fields', ['title', 'description'])
   .search()
 ```
+%  NOTCONSOLE
 
 
 ### Example template [search-application-client-client-template-example]
@@ -449,6 +453,7 @@ If a match was found, this will return the results with a highlight field. For e
   ]
 }
 ```
+%  NOTCONSOLE
 
 
 #### Highlighting helper [search-application-client-client-features-highlight-helpers]
@@ -502,6 +507,7 @@ const results = await request()
  .setSort([{ year: 'asc' }, '_score'])
  .search()
 ```
+%  NOTCONSOLE
 
 
 ### Filtering [search-application-client-client-features-filter]
@@ -565,6 +571,7 @@ const request = Client(
   }
 )
 ```
+%  NOTCONSOLE
 
 ::::{note}
 In {{es}}, the `keyword` type is used for fields that need to be searchable in their exact, unmodified form. This means these queries are case-sensitive. We use this type for facets because facets require aggregating and filtering data based on exact values or terms.
@@ -590,6 +597,7 @@ const results = await request()
   })
   .search()
 ```
+%  NOTCONSOLE
 
 You can access the facets in the results:
 
@@ -721,4 +729,5 @@ You can access the facets in the results:
   ]
 }
 ```
+%  NOTCONSOLE
 

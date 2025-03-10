@@ -307,6 +307,7 @@ mapped_pages:
    ```console
    POST _transform/ecommerce-customer-transform/_start
    ```
+   %  TEST[skip:setup kibana sample data]
 
    ::::
 

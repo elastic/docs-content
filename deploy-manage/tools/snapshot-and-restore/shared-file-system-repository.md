@@ -42,6 +42,7 @@ PUT _snapshot/my_fs_backup
   }
 }
 ```
+%  TEST[skip:no access to path]
 
 If you specify a relative path, {{es}} resolves the path using the first value in the `path.repo` setting.
 
@@ -54,6 +55,7 @@ PUT _snapshot/my_fs_backup
   }
 }
 ```
+%  TEST[skip:no access to path]
 
 1. The first value in the `path.repo` setting is `/mount/backups`. This relative path, `my_fs_backup_location`, resolves to `/mount/backups/my_fs_backup_location`.
 
@@ -74,6 +76,7 @@ PUT _snapshot/my_fs_backup
   }
 }
 ```
+%  TEST[skip:no access to path]
 ::::::
 
 ::::::{tab-item} Windows
@@ -101,6 +104,7 @@ PUT _snapshot/my_fs_backup
   }
 }
 ```
+%  TEST[skip:no access to path]
 
 If you specify a relative path, {{es}} resolves the path using the first value in the `path.repo` setting.
 
@@ -113,6 +117,7 @@ PUT _snapshot/my_fs_backup
   }
 }
 ```
+%  TEST[skip:no access to path]
 
 1. The first value in the `path.repo` setting is `E:\Mount\Backups`. This relative path, `My_fs_backup_location`, resolves to `E:\Mount\Backups\My_fs_backup_location`.
 
@@ -133,6 +138,7 @@ PUT _snapshot/my_fs_backup
   }
 }
 ```
+%  TEST[skip:no access to path]
 ::::::
 
 :::::::

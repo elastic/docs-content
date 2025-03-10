@@ -24,6 +24,7 @@ The `script` {{watcher-transform}} is often useful when used in combination with
 ```
 
 1. A simple `painless` script that creates a new payload with a single `time` field holding the scheduled time.
+%  NOTCONSOLE
 
 ::::{note}
 The executed script may either return a valid model that is the equivalent of a Java™ Map or a JSON object (you will need to consult the documentation of the specific scripting language to find out what this construct is). Any other value that is returned will be assigned and accessible to/via the `_value` variable.

@@ -22,6 +22,7 @@ A [{{watcher-transform}}](transform.md) that executes a search on the cluster an
   }
 }
 ```
+%  NOTCONSOLE
 
 Like every other search based construct, one can make use of the full search API supported by Elasticsearch. For example, the following search {{watcher-transform}} execute a search over all events indices, matching events with `error` priority:
 
@@ -42,6 +43,7 @@ Like every other search based construct, one can make use of the full search API
   }
 }
 ```
+%  NOTCONSOLE
 
 ## Transform search settings [transform-search-settings]
 
@@ -95,6 +97,7 @@ For example, the following snippet shows a search that refers to the scheduled t
   }
 }
 ```
+%  NOTCONSOLE
 
 The model of the template is a union between the provided `template.params` settings and the [standard watch execution context model](how-watcher-works.md#watch-execution-context).
 
@@ -136,3 +139,4 @@ The following is an example of using templates that refer to provided parameters
   }
 }
 ```
+%  NOTCONSOLE

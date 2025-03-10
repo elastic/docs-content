@@ -194,4 +194,5 @@ POST /_search
   }
 }
 ```
+%  TEST[skip:we don’t have an expert script plugin installed to test this]
 

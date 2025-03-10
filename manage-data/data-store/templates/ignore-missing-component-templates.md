@@ -69,12 +69,14 @@ PUT _index_template/logs-foo
   "priority": 500
 }
 ```
+%  TEST[continued]
 
 A data stream can be created based on this template:
 
 ```console
 PUT _data_stream/logs-foo-bar
 ```
+%  TEST[continued]
 The mappings of the data stream will contain the `host.name` field.
 
 The missing component template can be added later:
@@ -93,10 +95,13 @@ PUT _component_template/logs-foo_component2
   }
 }
 ```
+%  TEST[continued]
 
 This will not have an immediate effect on the data stream. The mapping `host.ip` will only show up in the data stream mappings when the data stream is rolled over automatically next time or a manual rollover is triggered:
 
 ```console
 POST logs-foo-bar/_rollover
 ```
+%  TEST[continued]
+%  TEST[teardown:data_stream_cleanup]
 

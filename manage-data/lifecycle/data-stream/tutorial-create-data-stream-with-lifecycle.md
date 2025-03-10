@@ -72,6 +72,7 @@ You can use the [get data stream lifecycle API](https://www.elastic.co/docs/api/
 ```console
 GET _data_stream/my-data-stream/_lifecycle
 ```
+%  TEST[continued]
 
 The result will look like this:
 
@@ -103,6 +104,7 @@ If you want to see more information about how the data stream lifecycle is appli
 ```console
 GET .ds-my-data-stream-*/_lifecycle/explain
 ```
+%  TEST[continued]
 
 The result will look like this:
 
@@ -122,6 +124,7 @@ The result will look like this:
   }
 }
 ```
+%  TESTRESPONSE[skip:the result is for illustrating purposes only]
 
 1. The name of the backing index.
 2. If it is managed by the built-in data stream lifecycle.

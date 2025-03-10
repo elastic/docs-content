@@ -23,6 +23,7 @@ A successful call to the cluster settings update API for adding or updating remo
 ```console
 GET /_remote/info
 ```
+%  TEST[skip:TODO]
 
 The API should return `"connected" : true`. When using [API key authentication](../../deploy-manage/remote-clusters/remote-clusters-api-key.md), it should also return `"cluster_credentials": "::es_redacted::"`.
 
@@ -45,7 +46,7 @@ The API should return `"connected" : true`. When using [API key authentication](
 
 1. The remote cluster has connected successfully.
 2. If present, indicates the remote cluster has connected using [API key authentication](../../deploy-manage/remote-clusters/remote-clusters-api-key.md) instead of [certificate based authentication](../../deploy-manage/remote-clusters/remote-clusters-cert.md).
-
+%  TEST[skip:TODO]
 
 
 ### Enabling the remote cluster server [remote-clusters-troubleshooting-enable-server]
@@ -246,6 +247,7 @@ A local cluster uses the presence of a cross-cluster API key to determine the mo
 ```console
 GET /_remote/info
 ```
+%  TEST[skip:TODO]
 
 The API should return `"connected" : true`. When using [API key authentication](../../deploy-manage/remote-clusters/remote-clusters-api-key.md), it should also return `"cluster_credentials": "::es_redacted::"`.
 
@@ -268,7 +270,7 @@ The API should return `"connected" : true`. When using [API key authentication](
 
 1. The remote cluster has connected successfully.
 2. If present, indicates the remote cluster has connected using [API key authentication](../../deploy-manage/remote-clusters/remote-clusters-api-key.md) instead of [certificate based authentication](../../deploy-manage/remote-clusters/remote-clusters-cert.md).
-
+%  TEST[skip:TODO]
 
 Besides checking the response of the remote cluster info API, you can also check the logs.
 
@@ -373,6 +375,7 @@ Request failures due to insufficient privileges result in API responses like:
     "reason": "action [indices:data/read/search] towards remote cluster is **unauthorized for user** [foo] with assigned roles [foo-role] authenticated by API key id [agZXJocBmA2beJfq2yKu] of user [elastic-admin] on indices [cd], this action is granted by the index privileges [read,all]"
 }
 ```
+%  NOTCONSOLE
 
 This does not show up in any logs.
 
@@ -398,6 +401,7 @@ This results in API responses like:
     "reason": "action [indices:data/read/search] towards remote cluster [my] is unauthorized for user [foo] with effective roles [] (assigned roles [foo-role] were not found) because **no remote indices privileges apply for the target cluster**"
 }
 ```
+%  NOTCONSOLE
 
 
 #### Resolution [_resolution_9]
