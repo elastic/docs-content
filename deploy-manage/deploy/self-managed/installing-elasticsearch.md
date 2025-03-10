@@ -28,8 +28,8 @@ To quickly set up {{es}} and {{kib}} in Docker for local development or testing,
 
 If you want to install and manage {{es}} yourself, you can:
 
-* Run {{es}} using a [Linux, MacOS, or Windows install package](/deploy-manage/deploy/self-managed/installing-elasticsearch.md#elasticsearch-install-packages).
-* Run {{es}} in a [Docker container](/deploy-manage/deploy/self-managed/installing-elasticsearch.md#elasticsearch-docker-images).
+* Run {{es}} using a [Linux, MacOS, or Windows install package](#elasticsearch-install-packages).
+* Run {{es}} in a [Docker container](#elasticsearch-docker-images).
 
 ::::{tip}
 To try out {{stack}} on your own machine, we recommend using Docker and running both {{es}} and {{kib}}. For more information, see [](/deploy-manage/deploy/self-managed/local-development-installation-quickstart.md). This setup is not suitable for production use.

@@ -290,7 +290,7 @@ toc:
           - file: deploy/cloud-on-k8s/tools-apis.md
       - file: deploy/self-managed.md
         children:
-          - file: deploy/self-managed/deploy-cluster.md
+          - file: deploy/self-managed/installing-elasticsearch.md
             children:
               - file: deploy/self-managed/local-development-installation-quickstart.md
               - file: deploy/self-managed/important-system-configuration.md

@@ -17,7 +17,7 @@ Refer to the section for each Elastic component for air-gapped installation conf
 
 ## {{es}} [air-gapped-elasticsearch]
 
-Air-gapped install of {{es}} may require additional steps in order to access some of the features. General install and configuration guides are available in the [{{es}} install documentation](/deploy-manage/deploy/self-managed/installing-elasticsearch.md).
+Air-gapped install of {{es}} may require additional steps in order to access some of the features. General install and configuration guides are available in [](/deploy-manage/deploy/self-managed/installing-elasticsearch.md).
 
 Specifically:
 

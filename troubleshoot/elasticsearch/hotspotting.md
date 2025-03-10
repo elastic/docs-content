@@ -52,7 +52,7 @@ Historically, clusters experience hot spotting mainly as an effect of hardware, 
 Here are some common improper hardware setups which may contribute to hot spotting:
 
 * Resources are allocated non-uniformly. For example, if one hot node is given half the CPU of its peers. {{es}} expects all nodes on a [data tier](../../manage-data/lifecycle/data-tiers.md) to share the same hardware profiles or specifications.
-* Resources are consumed by another service on the host, including other {{es}} nodes. Refer to our [dedicated host](../../deploy-manage/deploy/self-managed/deploy-cluster.md#dedicated-host) recommendation.
+* Resources are consumed by another service on the host, including other {{es}} nodes. Refer to our [dedicated host](../../deploy-manage/deploy/self-managed/installing-elasticsearch.md#dedicated-host) recommendation.
 * Resources experience different network or disk throughputs. For example, if one node’s I/O is lower than its peers. Refer to [Use faster hardware](../../deploy-manage/production-guidance/optimize-performance/indexing-speed.md) for more information.
 * A JVM that has been configured with a heap larger than 31GB. Refer to [Set the JVM heap size](elasticsearch://reference/elasticsearch/jvm-settings.md#set-jvm-heap-size) for more information.
 * Problematic resources uniquely report [memory swapping](../../deploy-manage/deploy/self-managed/setup-configuration-memory.md).
