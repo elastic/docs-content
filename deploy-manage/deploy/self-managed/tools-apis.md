@@ -12,7 +12,7 @@ Review key resources that can be used to interact with and manage self-managed c
 
 * [{{es}} API](https://www.elastic.co/docs/api/doc/elasticsearch/): The core API for interacting with a self-managed {{es}} cluster, or any cluster running {{stack}}. Configure {{es}} functionality and settings, query your data, and more.
   
-    Refer to [REST APIs](/reference/elasticsearch/rest-apis.md) to learn about API conventions and view API usage examples.
+    Refer to [REST APIs](elasticsearch://reference/elasticsearch/rest-apis/index.md) to learn about API conventions and view API usage examples.
 * [{{kib}} API](https://www.elastic.co/docs/api/doc/kibana/): manage {{kib}} resources such as connectors, data views, and saved objects.
 
 :::{tip}
@@ -25,5 +25,5 @@ Learn how to [generate API keys for your self-managed cluster](/deploy-manage/ap
 
 ## Other
 
-* [{{es}} command line tools](elasticsearch://reference/elasticsearch/command-line-tools.md): Utilities for configuring security and performing other tasks from the command line.
-* [Plugins](elasticsearch://reference/elasticsearch/elasticsearch-plugins.md): Plugins extend core {{es}} functionality. Choose from an existing plugin, or [build your own](elasticsearch://extend/index.md).
+* [{{es}} command line tools](elasticsearch://reference/elasticsearch/command-line-tools/index.md): Utilities for configuring security and performing other tasks from the command line.
+* [Plugins](elasticsearch://reference/elasticsearch/elasticsearch-plugins/index.md): Plugins extend core {{es}} functionality. Choose from an existing plugin, or [build your own](elasticsearch://extend/index.md).

@@ -148,7 +148,7 @@ docker rm kib01
 
 ## Configure {{kib}} on Docker [configuring-kibana-docker]
 
-The Docker images provide several methods for configuring {{kib}}. The conventional approach is to provide a `kibana.yml` file as described in [Configuring Kibana](configure.md), but it’s also possible to use environment variables to define settings.
+The Docker images provide several methods for configuring {{kib}}. The conventional approach is to provide a `kibana.yml` file as described in [](configure-kibana.md), but it’s also possible to use environment variables to define settings.
 
 
 ### Bind-mounted configuration [bind-mount-config]

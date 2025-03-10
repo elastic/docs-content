@@ -33,8 +33,8 @@ To support certain older Linux platforms (most notably CentOS7/RHEL7), {{kib}} f
 
 | Format | Description | Instructions |
 | --- | --- | --- |
-| `tar.gz` | The `tar.gz` packages are provided for installation on Linux and Darwin and are the easiest choice for getting started with {{kib}}. | [Install from archive on Linux or macOS](/deploy-manage/deploy/self-managed/install-from-archive-on-linux-macos.md)|
-| `zip` | The `zip` package is the only supported package for Windows.| [Install on Windows](/deploy-manage/deploy/self-managed/install-on-windows.md)|
+| `tar.gz` | The `tar.gz` packages are provided for installation on Linux and Darwin and are the easiest choice for getting started with {{kib}}. | [Install from archive on Linux or macOS](/deploy-manage/deploy/self-managed/install-kibana-from-archive-on-linux-macos.md)|
+| `zip` | The `zip` package is the only supported package for Windows.| [Install on Windows](/deploy-manage/deploy/self-managed/install-kibana-on-windows.md)|
 | `deb` | The `deb` package is suitable for Debian, Ubuntu, and other Debian-based systems.  Debian packages may be downloaded from the Elastic website or from our Debian repository. | [Install with Debian package](/deploy-manage/deploy/self-managed/install-kibana-with-debian-package.md) |
 | `rpm` | The `rpm` package is suitable for installation on Red Hat, SLES, OpenSuSE and other RPM-based systems.  RPMs may be downloaded from the Elastic website or from our RPM repository. | [Install with RPM](/deploy-manage/deploy/self-managed/install-kibana-with-rpm.md) |
 | `docker` | Images are available for running {{kib}} as a Docker container. They may be downloaded from the Elastic Docker Registry. | [Running {{kib}} on Docker](/deploy-manage/deploy/self-managed/install-kibana-with-docker.md) |

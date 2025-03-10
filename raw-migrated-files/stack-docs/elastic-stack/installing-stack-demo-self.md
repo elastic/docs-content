@@ -194,7 +194,7 @@ Before moving ahead to configure additional {{es}} nodes, you’ll need to updat
 
 ## Step 4: Set up a second {{es}} node [install-stack-self-elasticsearch-second]
 
-To set up a second {{es}} node, the initial steps are similar to those that you followed for [Step 1: Set up the first {{es}} node](../../../deploy-manage/deploy/self-managed/installing-elasticsearch.md#install-stack-self-elasticsearch-first).
+To set up a second {{es}} node, the initial steps are similar to those that you followed for [Step 1: Set up the first {{es}} node](#install-stack-self-elasticsearch-first).
 
 1. Log in to the host where you’d like to set up your second {{es}} instance.
 2. Create a working directory for the installation package:
@@ -361,7 +361,7 @@ To set up a second {{es}} node, the initial steps are similar to those that you 
 
 ## Step 5: Set up additional {{es}} nodes [install-stack-self-elasticsearch-third]
 
-To set up your next {{es}} node, follow exactly the same steps as you did previously in [Step 4: Set up a second {{es}} node](../../../deploy-manage/deploy/self-managed/installing-elasticsearch.md#install-stack-self-elasticsearch-second). The process is identical for each additional {{es}} node that you would like to add to the cluster. As a recommended best practice, create a new enrollment token for each new node that you add.
+To set up your next {{es}} node, follow exactly the same steps as you did previously in [Step 4: Set up a second {{es}} node](#install-stack-self-elasticsearch-second). The process is identical for each additional {{es}} node that you would like to add to the cluster. As a recommended best practice, create a new enrollment token for each new node that you add.
 
 
 ## Step 6: Install {{kib}} [install-stack-self-kibana]

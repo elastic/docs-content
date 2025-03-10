@@ -139,7 +139,7 @@ The Debian package places config files, logs, and the data directory in the appr
 | --- | --- | --- | --- |
 | home | {{kib}} home directory or `$KIBANA_HOME` | `/usr/share/kibana` |  |
 | bin | Binary scripts including `kibana` to start the {{kib}} server    and `kibana-plugin` to install plugins | `/usr/share/kibana/bin` |  |
-| config | Configuration files including `kibana.yml` | `/etc/kibana` | `[KBN_PATH_CONF](configure.md)` |
+| config | Configuration files including `kibana.yml` | `/etc/kibana` | `[KBN_PATH_CONF](configure-kibana.md)` |
 | data | The location of the data files written to disk by {{kib}} and its plugins | `/var/lib/kibana` | `path.data` |
 | logs | Logs files location | `/var/log/kibana` | `[Logging configuration](../../monitor/logging-configuration/kibana-logging.md)` |
 | plugins | Plugin files location. Each plugin will be contained in a subdirectory. | `/usr/share/kibana/plugins` |  |

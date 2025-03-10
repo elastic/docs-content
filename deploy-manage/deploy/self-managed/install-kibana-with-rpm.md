@@ -15,7 +15,7 @@ applies_to:
 The RPM for {{kib}} can be [downloaded from our website](#install-rpm) or from our [RPM repository](#rpm-repo). It can be used to install {{kib}} on any RPM-based system such as OpenSuSE, SLES, Red Hat, and Oracle Enterprise.
 
 ::::{note}
-RPM install is not supported on distributions with old versions of RPM, such as SLES 11. Refer to [Install from archive on Linux or macOS](install-from-archive-on-linux-macos.md) instead.
+RPM install is not supported on distributions with old versions of RPM, such as SLES 11. Refer to [Install from archive on Linux or macOS](install-kibana-from-archive-on-linux-macos.md) instead.
 ::::
 
 :::{include} _snippets/trial.md
@@ -130,7 +130,7 @@ The RPM places config files, logs, and the data directory in the appropriate loc
 | --- | --- | --- | --- |
 | home | {{kib}} home directory or `$KIBANA_HOME` | `/usr/share/kibana` |  |
 | bin | Binary scripts including `kibana` to start the {{kib}} server    and `kibana-plugin` to install plugins | `/usr/share/kibana/bin` |  |
-| config | Configuration files including `kibana.yml` | `/etc/kibana` | `[KBN_PATH_CONF](configure.md)` |
+| config | Configuration files including `kibana.yml` | `/etc/kibana` | `[KBN_PATH_CONF](configure-kibana.md)` |
 | data | The location of the data files written to disk by {{kib}} and its plugins | `/var/lib/kibana` | `path.data` |
 | logs | Logs files location | `/var/log/kibana` | `[Logging configuration](../../monitor/logging-configuration/kibana-logging.md)` |
 | plugins | Plugin files location. Each plugin will be contained in a subdirectory. | `/usr/share/kibana/plugins` |  |

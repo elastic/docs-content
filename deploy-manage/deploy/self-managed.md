@@ -25,7 +25,7 @@ Self-hosted options:
 * [{{eck}}](/deploy-manage/deploy/cloud-on-k8s.md)
 * [{{ece}}](/deploy-manage/deploy/cloud-enterprise.md)
 
-For a comparison of these deployment options, refer to [Choosing your deployment type](/deploy-manage/deploy#choosing-your-deployment-type.md) and [](/deploy-manage/deploy/deployment-comparison.md).
+For a comparison of these deployment options, refer to [Choosing your deployment type](/deploy-manage/deploy.md#choosing-your-deployment-type) and [](/deploy-manage/deploy/deployment-comparison.md).
 :::
 
 ## Section overview
@@ -42,14 +42,14 @@ Learn how to install and configure {{es}}. {{es}} is the distributed search and 
 
 * [](/deploy-manage/deploy/self-managed/installing-elasticsearch.md)
   * [](/deploy-manage/deploy/self-managed/important-system-configuration.md): Prepare your environment for an {{es}} installation.
-  * [](/deploy-manage/deploy/self-managed/deploy-cluster#installation-methods.md): Install and run {{es}} using one of our install packages or container images.
+  * [](/deploy-manage/deploy/self-managed/deploy-cluster.md#installation-methods): Install and run {{es}} using one of our install packages or container images.
   * [](/deploy-manage/deploy/self-managed/local-development-installation-quickstart.md): Quickly set up {{es}} and {{kib}} in Docker for local development or testing.
 * [](/deploy-manage/deploy/self-managed/configure-elasticsearch.md): Learn how to make configuration changes to {{es}}
   * [](/deploy-manage/deploy/self-managed/important-settings-configuration.md): Learn about key settings required for production environments.
   * [](/deploy-manage/deploy/self-managed/plugins.md): Learn about how to extend {{es}} functionality with plugins.
 
     :::{note}
-    For a complete list of settings that you can apply to your {{es}} cluster, refer to the [Elasticsearch configuration reference](elasticsearch://reference/elasticsearch/configuration-reference.md).
+    For a complete list of settings that you can apply to your {{es}} cluster, refer to the [Elasticsearch configuration reference](elasticsearch://reference/elasticsearch/configuration-reference/index.md).
     :::
 
 ### Deploying Kibana
