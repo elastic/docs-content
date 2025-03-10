@@ -14,7 +14,6 @@ Elasticsearch scales to whatever capacity you need and with as many nodes as the
 You can also enable autoscaling on a deployment to have the available resources for components, such as data tiers and machine learning nodes, adjust automatically as the demands on the deployment change over time. Check [Deployment autoscaling](../../autoscaling.md) to learn more.
 ::::
 
-
 To resize a deployment:
 
 1. [Log into the Cloud UI](log-into-cloud-ui.md).

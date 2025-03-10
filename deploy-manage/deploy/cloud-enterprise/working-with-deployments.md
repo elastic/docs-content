@@ -8,107 +8,88 @@ mapped_urls:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-monitoring-deployments.html
 ---
 
+% document scope: This doc focuses on everything that can be achieved from the deployment UI
+% TBD: include a link to a doc to manage deployments through ECE API. Same for Deploy an orchestrator section (ECE API links are still pending because we still haven't published the reference docs)
+
 # Manage deployments [ece-stack-getting-started]
 
-% What needs to be done: Refine
+{{ece}} allows you to manage one or more instances of the {{stack}} through **deployments**.
 
-% GitHub issue: https://github.com/elastic/docs-projects/issues/339
+## Introducing deployments
 
-% Use migrated content from existing pages that map to this page:
+A *deployment* helps you manage an {{es}} cluster and instances of other Elastic products, like {{kib}} or APM, in one place. Spin up, scale, upgrade, and delete your Elastic Stack products without having to manage each one separately. In a deployment, everything works together.
 
-% - [ ] ./raw-migrated-files/cloud/cloud-enterprise/ece-stack-getting-started.md
-%      Notes: 9 child and sub-child docs (some of them are about "adding data to Elasticsearch" which might fit better somewhere else. we need to analyze that. We are missing https://www.elastic.co/guide/en/cloud-enterprise/current/ece-administering-deployments.html.... on purpose?
-% - [ ] ./raw-migrated-files/cloud/cloud-enterprise/ece-administering-deployments.md
-%      Notes: probably just a redirect
-% - [ ] ./raw-migrated-files/cloud/cloud-enterprise/ece-change-deployment.md
-%      Notes: another redirect
-% - [ ] ./raw-migrated-files/cloud/cloud-enterprise/ece-monitoring-deployments.md
-%      Notes: mostly redirect
+ECE provides a preset of *hardware profiles* that provide a unique blend of storage, memory and vCPU for each component of a deployment. They support a specific purpose, such as a hot-warm architecture, that helps you manage your data storage retention.
 
-⚠️ **This page is a work in progress.** ⚠️
+All of these profiles are based on [deployment templates](./deployment-templates.md), which are a reusable configuration of Elastic products that you can deploy. With the flexibility of Elastic Cloud Enterprise, you can take it a step further by customizing a deployment template to your own needs.
 
-The documentation team is working to combine content pulled from the following pages:
+## Creating deployments
 
-* [/raw-migrated-files/cloud/cloud-enterprise/ece-stack-getting-started.md](/raw-migrated-files/cloud/cloud-enterprise/ece-stack-getting-started.md)
-* [/raw-migrated-files/cloud/cloud-enterprise/ece-administering-deployments.md](/raw-migrated-files/cloud/cloud-enterprise/ece-administering-deployments.md)
-* [/raw-migrated-files/cloud/cloud-enterprise/ece-change-deployment.md](/raw-migrated-files/cloud/cloud-enterprise/ece-change-deployment.md)
-* [/raw-migrated-files/cloud/cloud-enterprise/ece-monitoring-deployments.md](/raw-migrated-files/cloud/cloud-enterprise/ece-monitoring-deployments.md)
-
-% from the post-install instructions
-% * [Set up traffic filters](../../security/traffic-filtering.md) to restrict traffic to your deployment to only trusted IP addresses or VPCs.
-
-
-## Introducing deployments [ece_introducing_deployments]
-
-**The Elastic Stack, managed through {{ecloud}} deployments.**
-
-Elastic Cloud Enterprise allows you to manage one or more instances of the Elastic Stack through **deployments**.
-
-A *deployment* helps you manage an Elasticsearch cluster and instances of other Elastic products, like Kibana or APM instances, in one place. Spin up, scale, upgrade, and delete your Elastic Stack products without having to manage each one separately. In a deployment, everything works together.
-
-**Hardware profiles to optimize deployments for your usage.**
-
-You can optimize the configuration and performance of a deployment by selecting a **hardware profile** that matches your usage.
-
-*Hardware profiles* are presets that provide a unique blend of storage, memory and vCPU for each component of a deployment. They support a specific purpose, such as a hot-warm architecture that helps you manage your data storage retention.
-
-You can use these presets, or start from them to get the unique configuration you need. They can vary slightly from one cloud provider or region to another to align with the available virtual hardware.
-
-All of these profiles are based on *deployment templates*, which are a reusable configuration of Elastic products that you can deploy. With the flexibility of Elastic Cloud Enterprise, you can take it a step further by customizing a deployment template to your own needs.
-
-## How to operate Elastic Cloud Enterprise? [ece_how_to_operate_elastic_cloud_enterprise]
-
-**Where to start?**
-
-* Try one of our solutions by following our [getting started guides](https://www.elastic.co/guide/en/starting-with-the-elasticsearch-platform-and-its-solutions/current/getting-started-guides.html).
-* [Create a deployment](../../../deploy-manage/deploy/cloud-enterprise/create-deployment.md) - Get up and running very quickly. Select your desired configuration and let Elastic deploy Elasticsearch, Kibana, and the Elastic products that you need for you. In a deployment, everything works together, everything runs on hardware that is optimized for your use case.
-* [Connect your data to your deployment](https://www.elastic.co/guide/en/cloud-enterprise/current/ece-cloud-ingest-data.html) - Ingest and index the data you want, from a variety of sources, and take action on it.
-
+Refer to [Create a deployment](./create-deployment.md) to launch and configure an Elastic Stack environment.
 
 ## Administering deployments [ece-administering-deployments]
 
-Care and feeding of your deployments is important. Take a look at the things you can do to keep your deployments and the Elastic Stack running smoothly:
+Care and feeding of your deployments is important. Take a look at the things you can do to keep your deployments and the Elastic Stack running smoothly.
 
-* [Change your deployment configuration](../../../deploy-manage/deploy/cloud-enterprise/working-with-deployments.md) to provide additional resources, for example. For many changes, your deployment can continue to handle search and indexing workloads without interruption.
-* [Stop routing requests or pause nodes](../../../deploy-manage/maintenance/ece/deployments-maintenance.md) to perform corrective actions that might otherwise be difficult to complete.
-* [Terminate a deployment](../../../deploy-manage/uninstall/delete-a-cloud-deployment.md) to stop all running instances and delete all data in the deployment.
+Deployments in ECE are managed from the Deployment view of the [Cloud UI](./log-into-cloud-ui.md). This section focuses on the different actions you can take from this view.
+
+### Configuration and features
+
+From the deployment main page you can quickly access the following configuration areas:
+
+* Select **Edit** to change the deployment configuration, its components and data tiers. Refer to [](./customize-deployment.md) for more details.
+
+* Set a [Custom endpoint alias](./ece-regional-deployment-aliases.md) to create human-readable URLs for your {{stack}} applications, making them easier to share and use.
+
+* [Upgrade your deployment](../../upgrade/deployment-or-cluster/upgrade-on-ece.md) if a newer {{stack}} version is available.
+
+* Select **{{es}} > snapshots** to associate a [snapshots repository](../../tools/snapshot-and-restore/cloud-enterprise.md#ece-manage-repositories-clusters) with the deployment.
+
+* Select **Monitoring > Logs and metrics** to set up [Stack monitoring](../../monitor/stack-monitoring/ece-stack-monitoring.md) for your deployment, forwarding its logs and metrics to a dedicated monitoring deployment. 
+
+  ::::{note}
+  In addition to the monitoring of clusters that is described here, don’t forget that {{ece}} also provides [monitoring information for your entire installation](../../../deploy-manage/monitor/orchestrators/ece-platform-monitoring.md).
+  ::::
+
+### Security and access control
+
+From the **Deployment > Security** view, you can manage security settings, authentication, and access controls. Refer to [Secure your clusters](../../../deploy-manage/users-roles/cluster-or-deployment-auth.md) for more details on security options for your deployments.
+
+* [Reset elastic password](../../users-roles/cluster-or-deployment-auth/manage-elastic-user-cloud.md)
+* [Set up traffic filters](../../security/traffic-filtering.md) to restrict traffic to your deployment
+* Configure {{es}} keystore settings, also known as [Secure settings](../../security/secure-settings.md)
+* Configure trust relationships for [Remote clusters](../../remote-clusters/ece-enable-ccs.md)
+
+### Endpoints, monitoring, and troubleshooting
+
+From the deployment view, you can directly access endpoints, platform logs and metrics, and troubleshoot issues using various built-in tools.
+
+* Select **Copy endpoint** links to obtain the different URLs to [](./connect-elasticsearch.md) and [](./access-kibana.md).
+
+* If your deployment includes an integrations server, open the **Integrations server** page to get direct access to APM and Fleet. Refer to [](./manage-integrations-server.md) for more information.
+
+* For {{es}}, {{kib}}, and Integrations Server components, use the **External links** to access each service's logs and metrics, including the associated proxy logs. These logs are part of [](../../../deploy-manage/monitor/orchestrators/ece-platform-monitoring.md), and are separate from user-configured stack monitoring.
+
+* Use the [{{es}} API console](./tools-apis.md#ece-api-console) to send API calls directly to {{es}}.
+
+* [Keep track of your deployment activity](./keep-track-of-deployment-activity.md) and get information about configuration changes results and failures.
+
+* Open the **Operations** page to generate and download diagnostics bundles for {{es}} and {{kib}}, and to access other [tools](./tools-apis.md).
+
+### Operational actions
+
+Use the **Actions** button at deployment or instance level to:
+
 * [Restart a deployment](../../../deploy-manage/maintenance/start-stop-services/restart-an-ece-deployment.md) that has become unresponsive, for example.
-* [Restore a deployment](../../../deploy-manage/uninstall/delete-a-cloud-deployment.md) a deployment that had been terminated.
+* [Terminate a deployment](../../../deploy-manage/uninstall/delete-a-cloud-deployment.md) to stop all running instances and delete all data in the deployment.
+* [Restore a deployment](../../../deploy-manage/uninstall/delete-a-cloud-deployment.md#restore-a-deployment) that had been terminated.
 * [Delete a deployment](../../../deploy-manage/uninstall/delete-a-cloud-deployment.md) if you no longer need it.
-* [Perform maintenance on the Kibana instance](../../../deploy-manage/maintenance.md) associated with the deployment.
-* [Work with snapshots](../../../deploy-manage/tools/snapshot-and-restore.md) to recover from a failure or to recover from accidental deletion.
-* [Keep your deployments healthy](../../../deploy-manage/deploy/cloud-enterprise/working-with-deployments.md) by monitoring key performance metrics.
-* [Secure your clusters](../../../deploy-manage/users-roles/cluster-or-deployment-auth.md) to prevent unauthorized access from unwanted traffic or users and to preserve the integrity of your data with message authentication and SSL/TLS encryption.
-* [Access the Elasticsearch API console](../../../explore-analyze/query-filter/tools/console.md) - Work with the Elasticsearch RESTful API directly from the Cloud UI.
+* [Override instance resources](./resource-overrides.md) when needed to stabilize your deployment.
+* [Stop routing requests or pause deployment instances](../../../deploy-manage/maintenance/ece/deployments-maintenance.md) to perform corrective actions that might otherwise be difficult to complete.
 
-TBD: EDU  where to put this:
-### Other actions
+## Keeping your clusters healthy [ece-monitoring-deployments]
 
-From the deployment page you can also:
+{{ece}} monitors many aspects of your installation, but some issues require a human to resolve them. Use this section to learn how you can:
 
-* Access to different feature sections like 
-* 
-
-**Kibana** page you can also:
-
-* Terminate your Kibana instance, which stops it. The information is stored in your Elasticsearch cluster, so stopping and restarting should not risk your Kibana information.
-* Restart it after stopping.
-* Upgrade your Kibana instance version if it is out of sync with your Elasticsearch cluster.
-* Delete to fully remove the instance, wipe it from the disk, and stop charges.
-
-
-TBD - Link to monitoring and troubleshooting perhaps
-
-## Keep your clusters healthy [ece-monitoring-deployments]
-
-Elastic Cloud Enterprise monitors many aspects of your installation, but some issues require a human to resolve them. Use this section to learn how you can:
-
-* [Find clusters](/troubleshoot/deployments/elastic-cloud.md) that have issues.
-* [Move affected nodes off an allocator](../../../deploy-manage/maintenance/ece/move-nodes-instances-from-allocators.md), if the allocator fails.
-* [Enable deployment logging and monitoring](../../../deploy-manage/monitor/stack-monitoring/ece-stack-monitoring.md) to keep an eye on the performance of deployments and debug stack and solution issues.
-
-In addition to the monitoring of clusters that is described here, don’t forget that Elastic Cloud Enterprise also provides [monitoring information for your entire installation](../../../deploy-manage/monitor/orchestrators/ece-platform-monitoring.md). You can you also monitor the physical hosts machines on which Elastic Cloud Enterprise is installed.
-
-
-
-
+* [Find clusters](/troubleshoot/deployments/cloud-enterprise/cloud-enterprise.md) that have issues.
+* [Move affected instances off an allocator](../../../deploy-manage/maintenance/ece/move-nodes-instances-from-allocators.md), if the allocator fails.

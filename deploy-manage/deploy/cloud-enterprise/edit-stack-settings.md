@@ -15,7 +15,7 @@ To customize the settings of your deployments' {{stack}} components:
 
 1. Open your deployment page in the ECE [Cloud UI](./log-into-cloud-ui.md).
 2. In the left navigation menu, select **Edit**.
-3. Look for the **Manage user settings and extensions** and **Edit user settings** links for each deployment, and select the one corresponding to the component you want to update, such as {{es}} or {{kib}.
+3. Look for the **Manage user settings and extensions** and **Edit user settings** links for each deployment, and select the one corresponding to the component you want to update, such as {{es}} or {{kib}}.
 4. Apply the necessary settings in the **Users Settings** tab of the editor and select **Back** when finished.
 5. Select **Save** to apply the changes to the deployment. Saving your changes initiates a configuration plan change that restarts the affected components for you.
 

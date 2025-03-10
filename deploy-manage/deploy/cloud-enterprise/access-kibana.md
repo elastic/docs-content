@@ -19,7 +19,7 @@ To access Kibana:
 
     Narrow the list by name, ID, or choose from several other filters. To further define the list, use a combination of filters.
 
-3. Under **Applications**, select the Kibana **Launch** link and wait for Kibana to open.
+3. Under **Applications**, select the Kibana **Open** link and wait for Kibana to open.
 
     ::::{note} 
     Both ports 443 and 9243 can be used to access Kibana. SSO only works with 9243 on older deployments, where you will see an option in the Cloud UI to migrate the default to port 443. In addition, any version upgrade will automatically migrate the default port to 443.
