@@ -99,10 +99,10 @@ Security features have one of these statuses across deployment types:
 
 | Status | Description |
 |--------|-------------|
-| **Managed** | Feature is handled automatically by Elastic |
-| **Configurable** | Feature is available but requires user configuration |
-| **Self-managed** | Feature must be implemented and maintained by you |
-| **✗ N/A** | Feature is not available |
+| **Managed** | Handled automatically by Elastic with no user configuration needed |
+| **Configurable** | Built-in feature that needs your configuration (like IP filters or passwords) |
+| **Self-managed** | Infrastructure-level security you implement and maintain |
+| **N/A** | Not available for this deployment type |
 
 #### Communication security
 
@@ -116,15 +116,15 @@ Security features have one of these statuses across deployment types:
 | **Security feature** | Serverless | Elastic Cloud Hosted | ECE | ECK | Self-managed |
 |------------------|------------|--------------|-----|-----|--------------|
 | **IP traffic filtering** | Configurable | Configurable | Configurable | Configurable | Configurable |
-| **Private link** | ✗ N/A | Configurable | ✗ N/A | ✗ N/A | ✗ N/A |
-| **Static IPs** | Configurable | Configurable | ✗ N/A | ✗ N/A | ✗ N/A |
+| **Private link** | N/A | Configurable | N/A | N/A | N/A |
+| **Static IPs** | Configurable | Configurable | N/A | N/A | N/A |
 
 #### Data security
 
 | **Security feature** | Serverless | Elastic Cloud Hosted | ECE | ECK | Self-managed |
 |------------------|------------|--------------|-----|-----|--------------|
 | **Encryption at rest** | Managed | Managed | Self-managed | Self-managed | Self-managed |
-| **Bring your own encryption key** | ✗ N/A | Configurable | ✗ N/A | ✗ N/A | ✗ N/A |
+| **Bring your own encryption key** | N/A | Configurable | N/A | N/A | N/A |
 | **Keystore security** | Managed | Managed | Configurable | Configurable | Configurable |
 | **Saved object encryption** | Managed | Managed | Configurable | Configurable | Configurable |
 
