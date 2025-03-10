@@ -7,5 +7,7 @@ applies_to:
     self:
 ---
 
+# Local development installation (quickstart) [run-elasticsearch-locally]
+
 :::{include} /deploy-manage/deploy/self-managed/_snippets/start-local.md
 :::

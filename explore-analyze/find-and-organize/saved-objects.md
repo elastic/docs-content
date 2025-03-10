@@ -80,7 +80,7 @@ Import multiple objects in a single operation.
 4. Click **Import**.
 
 ::::{note}
-The [`savedObjects.maxImportExportSize`](/deploy-manage/deploy/self-managed/configure.md#savedObjects-maxImportExportSize) configuration setting limits the number of saved objects to include in the file. The [`savedObjects.maxImportPayloadBytes`](/deploy-manage/deploy/self-managed/configure.md#savedObjects-maxImportPayloadBytes) setting limits the overall size of the file that you can import.
+The [`savedObjects.maxImportExportSize`](kibana://reference/configuration-reference/general-settings.md#savedObjects-maxImportExportSize) configuration setting limits the number of saved objects to include in the file. The [`savedObjects.maxImportPayloadBytes`](kibana://reference/configuration-reference/general-settings.md#savedObjects-maxImportPayloadBytes) setting limits the overall size of the file that you can import.
 ::::
 
 
@@ -94,7 +94,7 @@ Export objects by selection or type.
 {{kib}} creates an NDJSON with all your saved objects. By default, the NDJSON includes child objects related to the saved objects. Exported dashboards include their associated {{data-sources}}.
 
 ::::{note}
-The [`savedObjects.maxImportExportSize`](/deploy-manage/deploy/self-managed/configure.md#savedObjects-maxImportExportSize) configuration setting limits the number of saved objects that you can export.
+The [`savedObjects.maxImportExportSize`](kibana://reference/configuration-reference/general-settings.md#savedObjects-maxImportExportSize) configuration setting limits the number of saved objects that you can export.
 ::::
 
 

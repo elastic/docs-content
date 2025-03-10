@@ -159,7 +159,7 @@ xpack.fleet.packages:
   version: latest
 ```
 
-See [Configure Kibana](../../../deploy-manage/deploy/self-managed/configure.md) to learn more about how to edit the Kibana configuration file.
+See [Configure Kibana](kibana://reference/configuration-reference/general-settings.md) to learn more about how to edit the Kibana configuration file.
 
 
 Option 2: Use the {{fleet}} API

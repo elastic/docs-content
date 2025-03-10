@@ -432,7 +432,7 @@ As with {{es}}, you can use RPM to install {{kib}} on another host. You can find
     sudo systemctl enable kibana.service
     ```
 
-10. Before starting the {{kib}} service there’s one configuration change to make, to set {{kib}} to run on the {{es}} host IP address. This is done by updating the settings in the `kibana.yml` file. For details about all available settings refer to [Configure {{kib}}](../../../deploy-manage/deploy/self-managed/configure.md).
+10. Before starting the {{kib}} service there’s one configuration change to make, to set {{kib}} to run on the {{es}} host IP address. This is done by updating the settings in the `kibana.yml` file. For details about all available settings refer to [Configure {{kib}}](kibana://reference/configuration-reference/general-settings.md).
 11. In a terminal, run the `ifconfig` command and copy the value for the host inet IP address.
 12. Open the {{kib}} configuration file for editing:
 

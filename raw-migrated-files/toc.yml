@@ -189,7 +189,6 @@ toc:
       - file: elasticsearch-hadoop/elasticsearch-hadoop/doc-sections.md
   - file: elasticsearch/elasticsearch-reference/index.md
     children:
-      - file: elasticsearch/elasticsearch-reference/configuring-stack-security.md
       - file: elasticsearch/elasticsearch-reference/data-management.md
       - file: elasticsearch/elasticsearch-reference/documents-indices.md
       - file: elasticsearch/elasticsearch-reference/es-security-principles.md
