@@ -75,7 +75,7 @@ $$$maintaining-audit-trail$$$
 
 # Security
 
-This section covers how to secure your Elastic Stack at the infrastructure and communication levels. Learn how to implement TLS encryption, network security controls, and data protection measures.
+This section covers how to secure your Elastic environment. Learn how to implement TLS encryption, network security controls, and data protection measures.
 
 ## Security overview
 
@@ -85,7 +85,7 @@ To keep your data secured, Elastic offers comprehensive security features that:
 - Prevent unauthorized access to your deployment
 - Encrypt communications between components
 - Protect data at rest
-- Secure configuration settings and saved objects
+- Secure sensitive settings and saved objects
 
 Different deployment types have different security requirements and capabilities. Some security features are managed automatically, while others require manual configuration depending on your deployment type.
 
@@ -97,14 +97,14 @@ See the [Deployment overview](/deploy-manage/deploy.md) to understand your optio
 
 #### Communication security
 
-| **Security feature** | Serverless | Elastic Cloud | ECE | ECK | Self-managed |
+| **Security feature** | Serverless | Elastic Cloud Hosted | ECE | ECK | Self-managed |
 |------------------|------------|--------------|-----|-----|--------------|
 | **TLS (HTTP Layer)** | ✓ Managed  | ✓ Managed     | ✓ Configurable | ✓ Configurable | ✓ Manual |
 | **TLS (Transport Layer)** | ✓ Managed | ✓ Managed | ✓ Managed | ✓ Managed | ✓ Manual |
 
 #### Network security
 
-| **Security feature** | Serverless | Elastic Cloud | ECE | ECK | Self-managed |
+| **Security feature** | Serverless | Elastic Cloud Hosted | ECE | ECK | Self-managed |
 |------------------|------------|--------------|-----|-----|--------------|
 | **IP Traffic Filtering** | ✓ Available | ✓ Available | ✓ Available | ✓ Available | ✓ Available |
 | **Private Link** | ✗ N/A | ✓ Available | ✗ N/A | ✗ N/A | ✗ N/A |
@@ -112,7 +112,7 @@ See the [Deployment overview](/deploy-manage/deploy.md) to understand your optio
 
 #### Data security
 
-| **Security feature** | Serverless | Elastic Cloud | ECE | ECK | Self-managed |
+| **Security feature** | Serverless | Elastic Cloud Hosted | ECE | ECK | Self-managed |
 |------------------|------------|--------------|-----|-----|--------------|
 | **Encryption at Rest** | ✓ Default | ✓ Default | ✗ Manual | ✗ Manual | ✗ Manual |
 | **BYOK/CMEK** | ✗ N/A | ✓ Available | ✗ N/A | ✗ N/A | ✗ N/A |
@@ -141,15 +141,15 @@ This security documentation is organized into four main areas:
 
 The security of your hosting environment forms the foundation of your overall security posture. This section covers environment-specific security controls:
 
-- **Self-managed environments**: TLS certificates, HTTPS configuration
-- **Elastic Cloud Enterprise**: TLS certificates, Cloud RBAC
 - **Elastic Cloud Hosted and Serverless**: Organization-level SSO, role-based access control, and cloud API keys
+- **Elastic Cloud Enterprise**: TLS certificates, role-based access control, and cloud API keys
+- **Self-managed environments**: TLS certificates, HTTPS configuration
 
 ### 2. Secure your deployments and clusters
 
 Protect your deployments with features available across all deployment types:
 
-- **Authentication and access controls**: User management, authentication protocols, and traffic filtering
+- **Authentication and access controls**: User management, API keys, authentication protocols, and traffic filtering
 - **Data protection**: Encryption, sensitive settings, and document-level security
 - **Monitoring and compliance**: Audit logging and security best practices
 
@@ -158,7 +158,6 @@ Protect your deployments with features available across all deployment types:
 Individual user security helps prevent unauthorized access:
 
 - **Multi-factor authentication**: Add an extra layer of security to your login process
-- **API key management**: Secure programmatic access to Elastic resources
 
 ### 4. Secure your clients and integrations
 
