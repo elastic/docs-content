@@ -54,13 +54,6 @@ The following table describes the required privileges to access the Detections f
 | Manage alerts<br>**NOTE**: Allows you to manage alerts, but not modify rules. | N/A | `maintenance`, `write`, `read`, and `view_index_metadata` for these system indices and data streams, where `<space-id>` is the space name:<br><br>* `.alerts-security.alerts-<space-id>`<br>* `.internal.alerts-security.alerts-<space-id>-*`<br>* `.siem-signals-<space-id>`1<br>* `.lists-<space-id>`<br>* `.items-<space-id>`<br><br>1 **NOTE**: If you’re upgrading to {{stack}} 8.0.0 or later, users should have privileges for the `.alerts-security.alerts-<space-id>` AND `.siem-signals-<space-id>` indices. If you’re newly installing the {{stack}}, then users do not need privileges for the `.siem-signals-<space-id>` index.<br> | `Read` for the `Security` feature |
 | Create the `.lists` and `.items` data streams in your space<br>**NOTE**: To initiate the process that creates the data streams, you must visit the Rules page for each appropriate space. | `manage` | `manage`, `write`, `read`, and `view_index_metadata` for these data streams, where `<space-id>` is the space name:<br><br>* `.lists-<space-id>`<br>* `.items-<space-id>`<br> | `All` for the `Security` and `Saved Objects Management` features |
 
-Here is an example of a user who has the Detections feature enabled in all {{kib}} spaces:
-
-:::{image} ../../../images/security-sec-admin-user.png
-:alt: Shows user with the Detections feature enabled in all Kibana spaces
-:screenshot:
-:::
-
 
 ### Authorization [alerting-auth-model]
 
