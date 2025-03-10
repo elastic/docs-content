@@ -4,21 +4,14 @@ mapped_urls:
   - https://www.elastic.co/guide/en/serverless/current/detections-logsdb-index-mode-impact.html
 ---
 
-# Using logsdb index mode with Elastic Security
-
-% What needs to be done: Align serverless/stateful
-
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/security-docs/security/detections-logsdb-index-mode-impact.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/detections-logsdb-index-mode-impact.md
+# Using logsdb index mode with Elastic Security [detections-logsdb-index-mode-impact]
 
 ::::{note}
 To use the [synthetic `_source`](elasticsearch://reference/elasticsearch/mapping-reference/mapping-source-field.md#synthetic-source) feature, you must have the appropriate subscription. Refer to the subscription page for [Elastic Cloud](https://www.elastic.co/subscriptions/cloud) and [Elastic Stack/self-managed](https://www.elastic.co/subscriptions) for the breakdown of available features and their associated subscription tiers.
 ::::
 
 
-This topic explains the impact of using logsdb index mode with {{elastic-sec}}.
+This topic explains the impact of using logsdb index mode with {{elastic-sec}} and {{sec-serverless}}.
 
 With logsdb index mode, the original `_source` field is not stored in the index but can be reconstructed using [synthetic `_source`](elasticsearch://reference/elasticsearch/mapping-reference/mapping-source-field.md#synthetic-source).
 
@@ -26,7 +19,9 @@ When the `_source` is reconstructed, [modifications](elasticsearch://reference/e
 
 Continue reading to find out how this affects specific {{elastic-sec}} components.
 
-::::{note}
+::::{note} 
+The following statement applies to {{stack}} users only:
+
 Logsdb is not recommended for {{elastic-sec}} at this time. Users must fully understand and accept the documented changes to detection alert documents (see below), and ensure their deployment has excess hot data tier CPU resource capacity before enabling logsdb mode, as logsdb mode requires additional CPU resources during the ingest/indexing process. Enabling logsdb without sufficient hot data tier CPU may result in data ingestion backups and/or security detection rule timeouts and errors.
 ::::
 
