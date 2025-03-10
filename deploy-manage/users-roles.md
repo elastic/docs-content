@@ -31,7 +31,8 @@ Preventing unauthorized access is only one element of a complete security strate
 ## Cloud organization level
 
 :::{applies_to}
-:hosted: all
+deployment:
+  ess: all
 :serverless: all
 :::
 
@@ -89,10 +90,11 @@ As an extension of the [predefined instance access roles](/deploy-manage/users-r
 ## Cluster or deployment level
 
 :::{applies_to}
-:ece: all
-:hosted: all
-:eck: all
-:stack: all
+deployment:
+  ece: all
+  ess: all
+  eck: all
+  self: all
 :::
 
 Set up authentication and authorization at the cluster or deployment level, and learn about the underlying security technologies that Elasticsearch uses to authenticate and authorize requests internally and across services.
