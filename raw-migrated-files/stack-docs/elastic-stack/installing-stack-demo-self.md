@@ -4,19 +4,6 @@ This tutorial demonstrates how to install and configure the {{stack}} in a self-
 
 It should take between one and two hours to complete these steps.
 
-* [Prerequisites and assumptions](../../../deploy-manage/deploy/self-managed/installing-elasticsearch.md#install-stack-self-prereqs)
-* [{{stack}} overview](../../../deploy-manage/deploy/self-managed/installing-elasticsearch.md#install-stack-self-overview)
-* [Step 1: Set up the first {{es}} node](../../../deploy-manage/deploy/self-managed/installing-elasticsearch.md#install-stack-self-elasticsearch-first)
-* [Step 2: Configure the first {{es}} node for connectivity](../../../deploy-manage/deploy/self-managed/installing-elasticsearch.md#install-stack-self-elasticsearch-config)
-* [Step 3: Start {{es}}](../../../deploy-manage/deploy/self-managed/installing-elasticsearch.md#install-stack-self-elasticsearch-start)
-* [Step 4: Set up a second {{es}} node](../../../deploy-manage/deploy/self-managed/installing-elasticsearch.md#install-stack-self-elasticsearch-second)
-* [Step 5: Set up additional {{es}} nodes](../../../deploy-manage/deploy/self-managed/installing-elasticsearch.md#install-stack-self-elasticsearch-third)
-* [Step 6: Install {{kib}}](../../../deploy-manage/deploy/self-managed/installing-elasticsearch.md#install-stack-self-kibana)
-* [Step 7: Install {{fleet-server}}](../../../deploy-manage/deploy/self-managed/installing-elasticsearch.md#install-stack-self-fleet-server)
-* [Step 8: Install {{agent}}](../../../deploy-manage/deploy/self-managed/installing-elasticsearch.md#install-stack-self-elastic-agent)
-* [Step 9: View your system data](../../../deploy-manage/deploy/self-managed/installing-elasticsearch.md#install-stack-self-view-data)
-* [Next steps](../../../deploy-manage/deploy/self-managed/installing-elasticsearch.md#install-stack-self-next-steps)
-
 ::::{important}
 If you’re using these steps to configure a production cluster that uses trusted CA-signed certificates for secure communications, after completing Step 6 to install {{kib}} we recommend jumping directly to [Tutorial 2: Securing a self-managed {{stack}}](../../../deploy-manage/security/secure-your-cluster-deployment.md).
 
@@ -379,7 +366,7 @@ To set up your next {{es}} node, follow exactly the same steps as you did previo
 
 ## Step 6: Install {{kib}} [install-stack-self-kibana]
 
-As with {{es}}, you can use RPM to install {{kib}} on another host. You can find details about all of the following steps in the section [Install {{kib}} with RPM](../../../deploy-manage/deploy/self-managed/install-with-rpm.md#install-rpm).
+As with {{es}}, you can use RPM to install {{kib}} on another host. You can find details about all of the following steps in the section [Install {{kib}} with RPM](../../../deploy-manage/deploy/self-managed/install-kibana-with-rpm.md#install-rpm).
 
 1. Log in to the host where you’d like to install {{kib}} and create a working directory for the installation package:
 

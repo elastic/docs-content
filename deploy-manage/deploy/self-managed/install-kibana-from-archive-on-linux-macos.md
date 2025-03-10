@@ -95,7 +95,7 @@ By default, {{kib}} runs in the foreground, prints its logs to the standard outp
 
 ## Step 4: Configure {{kib}} using the config file [targz-configuring]
 
-{{kib}} loads its configuration from the `$KIBANA_HOME/config/kibana.yml` file by default. The format of this config file is explained in [](configure.md).
+{{kib}} loads its configuration from the `$KIBANA_HOME/config/kibana.yml` file by default. The format of this config file is explained in [](configure-kibana.md).
 
 
 ## Directory layout of `.tar.gz` archives [targz-layout]

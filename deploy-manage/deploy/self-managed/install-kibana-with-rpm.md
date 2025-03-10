@@ -119,7 +119,7 @@ These commands provide no feedback as to whether {{kib}} was started successfull
 
 ## Step 6: Configure {{kib}} using the config file [rpm-configuring]
 
-{{kib}} loads its configuration from the `/etc/kibana/kibana.yml` file by default.  The format of this config file is explained in [](configure.md).
+{{kib}} loads its configuration from the `/etc/kibana/kibana.yml` file by default.  The format of this config file is explained in [](configure-kibana.md).
 
 
 ## Directory layout of RPM [rpm-layout]

@@ -13,6 +13,8 @@ applies_to:
 
 # Deploy an {{es}} cluster
 
+% will be fixed
+
 $$$stack-security-certificates$$$
 
 This section includes information on how to set up {{es}} and get it running, including:
@@ -34,6 +36,7 @@ To try out {{stack}} on your own machine, we recommend using Docker and running 
 ::::
 
 ::::{admonition} Use dedicated hosts
+$$$dedicated-host$$$
 :::{include} _snippets/dedicated-hosts.md
 :::
 ::::

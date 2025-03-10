@@ -15,5 +15,5 @@ pkill -F pid
 ```
 
 ::::{note}
-The {{es}} `.tar.gz` package does not include the `systemd` module. To manage {{es}} as a service, use the [Debian](/deploy-manage/deploy/self-managed/install-with-debian-package.md) or [RPM](/deploy-manage/deploy/self-managed/install-with-rpm.md) package instead.
+The {{es}} `.tar.gz` package does not include the `systemd` module. To manage {{es}} as a service, use the [Debian](/deploy-manage/deploy/self-managed/install-kibana-with-debian-package.md) or [RPM](/deploy-manage/deploy/self-managed/install-kibana-with-rpm.md) package instead.
 ::::

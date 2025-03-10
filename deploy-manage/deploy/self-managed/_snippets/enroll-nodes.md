@@ -28,4 +28,4 @@ To enroll new nodes in your cluster, create an enrollment token with the `elasti
 
 3. Repeat the previous step for any new nodes that you want to enroll.
 
-For more information about discovery and shard allocation, refer to [Discovery and cluster formation](../distributed-architecture/discovery-cluster-formation.md) and [Cluster-level shard allocation and routing settings](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md).
+For more information about discovery and shard allocation, refer to [Discovery and cluster formation](/deploy-manage/distributed-architecture/discovery-cluster-formation.md) and [Cluster-level shard allocation and routing settings](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md).
