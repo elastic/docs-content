@@ -17,7 +17,7 @@ To learn how to upgrade, check out <uprade docs>.
 % **Action**<br> Steps for mitigating deprecation impact.
 % ::::
 
-## 9.0.0 [elastic-apm-900-breaking-changes]
+## 9.0.0 [elastic-apm-9-0-0-breaking-changes]
 **Release date:** March 25, 2025
 
 % ::::{dropdown} Title of breaking change 
