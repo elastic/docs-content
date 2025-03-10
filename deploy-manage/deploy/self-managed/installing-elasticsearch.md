@@ -13,9 +13,7 @@ applies_to:
 
 # Deploy an {{es}} cluster
 
-% Doesn't exist
-% * [/raw-migrated-files/stack-docs/elastic-stack/installing-elastic-stack.md](/raw-migrated-files/stack-docs/elastic-stack/installing-elastic-stack.md)
-
+$$$stack-security-certificates$$$
 
 This section includes information on how to set up {{es}} and get it running, including:
 

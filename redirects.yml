@@ -18,6 +18,8 @@ redirects:
     anchors:
       'spaces-control-feature-visibility':
   'deploy-manage/deploy/cloud-enterprise/deploy-large-installation-cloud.md': '!deploy-manage/deploy/cloud-enterprise/deploy-large-installation.md'
+  'deploy-manage/deploy/self-managed/install-with-docker.md': '!deploy-manage/deploy/self-managed/install-kibana-with-docker.md'
+  'deploy-manage/deploy/self-managed/deploy-cluster.md': '!deploy-manage/deploy/self-managed/installing-elasticsearch.md'
 
 ## explore-analyze
   'explore-analyze/machine-learning/nlp/ml-nlp-auto-scale.md': '!deploy-manage/autoscaling/trained-model-autoscaling.md'
