@@ -55,7 +55,7 @@ For {{ech}} deployments, you can configure SSO at the organization level, the de
 ```{applies_to}
 deployment:
   ece: all
-:::
+```
 
 Control access to your {{ece}} [orchestrator](/deploy-manage/deploy/cloud-enterprise/deploy-an-orchestrator.md) and deployments. 
 
