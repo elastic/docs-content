@@ -3,9 +3,10 @@ navigation_title: "{{elastic-defend}}"
 mapped_pages:
   - https://www.elastic.co/guide/en/security/current/ts-management.html
   - https://www.elastic.co/guide/en/serverless/current/security-troubleshoot-endpoints.html
-applies:
-  serverless: all
-  hosted: all
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Troubleshoot {{elastic-defend}} [ts-management]
