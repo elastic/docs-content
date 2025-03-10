@@ -4,54 +4,7 @@ mapped_urls:
   - https://www.elastic.co/guide/en/serverless/current/security-rules-create.html
 ---
 
-# Create a detection rule
-
-% What needs to be done: Align serverless/stateful
-
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/security-docs/security/rules-ui-create.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/security-rules-create.md
-
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
-
-$$$rule-ui-advanced-params$$$
-
-$$$preview-rules$$$
-
-$$$create-esql-rule$$$
-
-$$$create-custom-rule$$$
-
-$$$create-eql-rule$$$
-
-$$$create-indicator-rule$$$
-
-$$$create-ml-rule$$$
-
-$$$create-new-terms-rule$$$
-
-$$$create-threshold-rule$$$
-
-$$$esql-non-agg-query-dedupe$$$
-
-$$$esql-query-design$$$
-
-$$$esql-rule-limitations$$$
-
-$$$esql-rule-query-types$$$
-
-$$$indicator-value-lists$$$
-
-$$$rule-action-variables$$$
-
-$$$rule-notifications$$$
-
-$$$rule-response-action$$$
-
-$$$rule-schedule$$$
-
-$$$rule-ui-basic-params$$$
+# Create a detection rule [security-rules-create]
 
 To create a new detection rule, follow these steps:
 
@@ -63,15 +16,17 @@ To create a new detection rule, follow these steps:
 6. Set up response actions (optional).
 
 ::::{admonition} Requirements
-* To create detection rules, you must have access to data views, which requires the [{{kib}} privilege](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md) `Data View Management`.
-* You’ll also need permissions to enable and view detections, manage rules, manage alerts, and preview rules. These permissions depend on the user role. Refer to [*Detections requirements*](/solutions/security/detect-and-alert/detections-requirements.md) for more information.
+To create detection rules, you must have:
+
+* Access to data views, which requires the `Data View Management` [{{kib}} privilege](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md) in {{stack}} or the appropriate [user role](/deploy-manage/users-roles/cloud-organization/user-roles.md) in {{serverless-short}}.
+* Permissions to enable and view detections, manage rules, manage alerts, and preview rules. These permissions depend on the user role. Refer to [Detections requirements](/solutions/security/detect-and-alert/detections-requirements.md) for more information.
 
 ::::
 
 
 ::::{tip}
 * At any step, you can [preview the rule](/solutions/security/detect-and-alert/create-detection-rule.md#preview-rules) before saving it to see what kind of results you can expect.
-* To ensure rules don’t search cold and frozen data when executing, either configure the `excludedDataTiersForRuleExecution` [advanced setting](/solutions/security/get-started/configure-advanced-settings.md#exclude-cold-frozen-data-rule-executions) (which applies to all rules in a space), or add a [Query DSL filter](/solutions/security/detect-and-alert/exclude-cold-frozen-data-from-individual-rules.md) to individual rules.
+* To ensure rules don’t search cold and frozen data when executing, either configure the `excludedDataTiersForRuleExecution` [advanced setting](/solutions/security/get-started/configure-advanced-settings.md#exclude-cold-frozen-data-rule-executions) (which applies to all rules in a space), or add a [Query DSL filter](/solutions/security/detect-and-alert/exclude-cold-frozen-data-from-individual-rules.md) to individual rules. These options are only available if you're on the {{stack}}.
 
 ::::
 
@@ -80,47 +35,10 @@ To create a new detection rule, follow these steps:
 Additional configuration is required for detection rules using cross-cluster search. Refer to [Cross-cluster search and detection rules](/solutions/security/detect-and-alert/cross-cluster-search-detection-rules.md).
 ::::
 
-
-
-## Create a machine learning rule [create-ml-rule]
-
-::::{important}
-To create or edit {{ml}} rules, you must have the [appropriate license](https://www.elastic.co/subscriptions) or use a [cloud deployment](https://cloud.elastic.co/registration?page=docs&placement=docs-body). Additionally, you must have the [`machine_learning_admin`](/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md) user role, and the selected {{ml}} job must be running for the rule to function correctly.
-
-::::
-
-
-1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. Click **Create new rule**.
-3. To create a rule based on a {{ml}} anomaly threshold, select **Machine Learning** on the **Create new rule** page, then select:
-
-    1. The required {{ml}} jobs.
-
-        ::::{note}
-        If a required job isn’t currently running, it will automatically start when you finish configuring and enable the rule.
-        ::::
-
-    2. The anomaly score threshold above which alerts are created.
-
-4. (Optional, [Platinum or higher subscription](https://www.elastic.co/pricing) required) Use **Suppress alerts by** to reduce the number of repeated or duplicate alerts created by the rule. Refer to [Suppress detection alerts](/solutions/security/detect-and-alert/suppress-detection-alerts.md) for more information.
-
-    ::::{note}
-    Because {{ml}} rules generate alerts from anomalies, which don’t contain source event fields, you can only use anomaly fields when configuring alert suppression.
-    ::::
-
-5. (Optional) Add **Related integrations** to associate the rule with one or more [Elastic integrations](https://docs.elastic.co/en/integrations). This indicates the rule’s dependency on specific integrations and the data they generate, and allows users to confirm each integration’s [installation status](/solutions/security/detect-and-alert/manage-detection-rules.md#rule-prerequisites) when viewing the rule.
-
-    1. Click **Add integration**, then select an integration from the list. You can also start typing an integration’s name to find it faster.
-    2. Enter the version of the integration you want to associate with the rule, using [semantic versioning](https://semver.org). For version ranges, you must use tilde or caret syntax. For example, `~1.2.3` is from 1.2.3 to any patch version less than 1.3.0, and `^1.2.3` is from 1.2.3 to any minor and patch version less than 2.0.0.
-
-6. Click **Continue** to [configure basic rule settings](/solutions/security/detect-and-alert/create-detection-rule.md#rule-ui-basic-params).
-
-
 ## Create a custom query rule [create-custom-rule]
 
-1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. Click **Create new rule**.
-3. To create a rule based on a KQL or Lucene query, select **Custom query** on the **Create new rule** page, then:
+1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then click **Create new rule**.
+2. To create a rule based on a KQL or Lucene query, select **Custom query** on the **Create new rule** page, then:
 
     1. Define which {{es}} indices or data view the rule searches for alerts.
     2. Use the filter and query fields to create the criteria used for detecting alerts.
@@ -140,38 +58,72 @@ To create or edit {{ml}} rules, you must have the [appropriate license](https://
             :screenshot:
             :::
 
-    3. You can use {{kib}} saved queries (![Saved query menu](../../../images/security-saved-query-menu.png "")) and queries from saved Timelines (**Import query from saved Timeline**) as rule conditions.
+    3. You can use {{kib}} saved queries (![Saved query menu](../../../images/security-saved-query-menu.png "title =20x20")) and queries from saved Timelines (**Import query from saved Timeline**) as rule conditions.
 
         When you use a saved query, the **Load saved query "*query name*" dynamically on each rule execution** check box appears:
 
         * Select this to use the saved query every time the rule runs. This links the rule to the saved query, and you won’t be able to modify the rule’s **Custom query** field or filters because the rule will only use settings from the saved query. To make changes, modify the saved query itself.
         * Deselect this to load the saved query as a one-time way of populating the rule’s **Custom query** field and filters. This copies the settings from the saved query to the rule, so you can then further adjust the rule’s query and filters as needed. If the saved query is later changed, the rule will not inherit those changes.
 
-4. (Optional, [Platinum or higher subscription](https://www.elastic.co/pricing) required) Use **Suppress alerts by** to reduce the number of repeated or duplicate alerts created by the rule. Refer to [Suppress detection alerts](/solutions/security/detect-and-alert/suppress-detection-alerts.md) for more information.
-5. (Optional) Create a list of **Required fields** that the rule needs to function. This list is informational only, to help users understand the rule; it doesn’t affect how the rule actually runs.
+3. (Optional) Use **Suppress alerts by** to reduce the number of repeated or duplicate alerts created by the rule. Refer to [Suppress detection alerts](/solutions/security/detect-and-alert/suppress-detection-alerts.md) for more information.
+4. (Optional) Create a list of **Required fields** that the rule needs to function. This list is informational only, to help users understand the rule; it doesn’t affect how the rule actually runs.
 
     1. Click **Add required field**, then select a field from the index patterns or data view you specified for the rule. You can also start typing a field’s name to find it faster, or type in an entirely new custom field.
     2. Enter the field’s data type.
 
-6. (Optional) Add **Related integrations** to associate the rule with one or more [Elastic integrations](https://docs.elastic.co/en/integrations). This indicates the rule’s dependency on specific integrations and the data they generate, and allows users to confirm each integration’s [installation status](/solutions/security/detect-and-alert/manage-detection-rules.md#rule-prerequisites) when viewing the rule.
+5. (Optional) Add **Related integrations** to associate the rule with one or more [Elastic integrations](https://docs.elastic.co/en/integrations). This indicates the rule’s dependency on specific integrations and the data they generate, and allows users to confirm each integration’s [installation status](/solutions/security/detect-and-alert/manage-detection-rules.md#rule-prerequisites) when viewing the rule.
 
     1. Click **Add integration**, then select an integration from the list. You can also start typing an integration’s name to find it faster.
-    2. Enter the version of the integration you want to associate with the rule, using [semantic versioning](https://semver.org). For version ranges, you must use tilde or caret syntax. For example, `~1.2.3` is from 1.2.3 to any patch version less than 1.3.0, and `^1.2.3` is from 1.2.3 to any minor and patch version less than 2.0.0.
+    2. Enter the version of the integration you want to associate with the rule, using [semantic versioning](https://semver.org/). For version ranges, you must use tilde or caret syntax. For example, `~1.2.3` is from 1.2.3 to any patch version less than 1.3.0, and `^1.2.3` is from 1.2.3 to any minor and patch version less than 2.0.0.
 
-7. Click **Continue** to [configure basic rule settings](/solutions/security/detect-and-alert/create-detection-rule.md#rule-ui-basic-params).
+6. Click **Continue** to [configure basic rule settings](/solutions/security/detect-and-alert/create-detection-rule.md#rule-ui-basic-params).
+
+## Create a machine learning rule [create-ml-rule]
+
+::::{admonition} Requirements
+To create or edit {{ml}} rules, you need: 
+* The appropriate [{{stack}} subscription](https://www.elastic.co/pricing) or [{{serverless-short}} project tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md).
+* The [`machine_learning_admin`](/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md) in {{stack}} or the appropriate [user role](/deploy-manage/users-roles/cloud-organization/user-roles.md) in {{serverless-short}}. 
+* The selected {{ml}} job to be running for the rule to function correctly.
+
+::::
+
+
+1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then click **Create new rule**.
+2. To create a rule based on a {{ml}} anomaly threshold, select **Machine Learning** on the **Create new rule** page, then select:
+
+    1. The required {{ml}} jobs.
+
+        ::::{note}
+        If a required job isn’t currently running, it will automatically start when you finish configuring and enable the rule.
+        ::::
+
+    2. The anomaly score threshold above which alerts are created.
+
+3. (Optional) Use **Suppress alerts by** to reduce the number of repeated or duplicate alerts created by the rule. Refer to [Suppress detection alerts](/solutions/security/detect-and-alert/suppress-detection-alerts.md) for more information.
+
+    ::::{note}
+    Because {{ml}} rules generate alerts from anomalies, which don’t contain source event fields, you can only use anomaly fields when configuring alert suppression.
+    ::::
+
+4. (Optional) Add **Related integrations** to associate the rule with one or more [Elastic integrations](https://docs.elastic.co/en/integrations). This indicates the rule’s dependency on specific integrations and the data they generate, and allows users to confirm each integration’s [installation status](/solutions/security/detect-and-alert/manage-detection-rules.md#rule-prerequisites) when viewing the rule.
+
+    1. Click **Add integration**, then select an integration from the list. You can also start typing an integration’s name to find it faster.
+    2. Enter the version of the integration you want to associate with the rule, using [semantic versioning](https://semver.org/). For version ranges, you must use tilde or caret syntax. For example, `~1.2.3` is from 1.2.3 to any patch version less than 1.3.0, and `^1.2.3` is from 1.2.3 to any minor and patch version less than 2.0.0.
+
+5. Click **Continue** to [configure basic rule settings](/solutions/security/detect-and-alert/create-detection-rule.md#rule-ui-basic-params).
 
 
 ## Create a threshold rule [create-threshold-rule]
 
-1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. Click **Create new rule**.
-3. To create a rule based on a source event field threshold, select **Threshold** on the **Create new rule** page, then:
+1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then click **Create new rule**.
+2. To create a rule based on a source event field threshold, select **Threshold**, then:
 
     1. Define which {{es}} indices the rule analyzes for alerts.
     2. Use the filter and query fields to create the criteria used for detecting alerts.
 
         ::::{note}
-        You can use {{kib}} saved queries (![Saved query menu](../../../images/security-saved-query-menu.png "")) and queries from saved Timelines (**Import query from saved Timeline**) as rule conditions.
+        You can use {{kib}} saved queries (![Saved query menu](../../../images/security-saved-query-menu.png "title =20x20")) and queries from saved Timelines (**Import query from saved Timeline**) as rule conditions.
         ::::
 
     3. Use the **Group by** and **Threshold** fields to determine which source event field is used as a threshold and the threshold’s value.
@@ -190,26 +142,24 @@ To create or edit {{ml}} rules, you must have the [appropriate license](https://
         Alerts created by threshold rules are synthetic alerts that do not resemble the source documents. The alert itself only contains data about the fields that were aggregated over (the **Group by** fields). Other fields are omitted, because they can vary across all source documents that were counted toward the threshold. Additionally, you can reference the actual count of documents that exceeded the threshold from the `kibana.alert.threshold_result.count` field.
         ::::
 
-4. (Optional, [Platinum or higher subscription](https://www.elastic.co/pricing) required) Select **Suppress alerts** to reduce the number of repeated or duplicate alerts created by the rule. Refer to [Suppress detection alerts](/solutions/security/detect-and-alert/suppress-detection-alerts.md) for more information.
-5. (Optional) Create a list of **Required fields** that the rule needs to function. This list is informational only, to help users understand the rule; it doesn’t affect how the rule actually runs.
+3. (Optional) Select **Suppress alerts** to reduce the number of repeated or duplicate alerts created by the rule. Refer to [Suppress detection alerts](/solutions/security/detect-and-alert/suppress-detection-alerts.md) for more information.
+4. (Optional) Create a list of **Required fields** that the rule needs to function. This list is informational only, to help users understand the rule; it doesn’t affect how the rule actually runs.
 
     1. Click **Add required field**, then select a field from the index patterns or data view you specified for the rule. You can also start typing a field’s name to find it faster, or type in an entirely new custom field.
     2. Enter the field’s data type.
 
-6. (Optional) Add **Related integrations** to associate the rule with one or more [Elastic integrations](https://docs.elastic.co/en/integrations). This indicates the rule’s dependency on specific integrations and the data they generate, and allows users to confirm each integration’s [installation status](/solutions/security/detect-and-alert/manage-detection-rules.md#rule-prerequisites) when viewing the rule.
+5. (Optional) Add **Related integrations** to associate the rule with one or more [Elastic integrations](https://docs.elastic.co/en/integrations). This indicates the rule’s dependency on specific integrations and the data they generate, and allows users to confirm each integration’s [installation status](/solutions/security/detect-and-alert/manage-detection-rules.md#rule-prerequisites) when viewing the rule.
 
     1. Click **Add integration**, then select an integration from the list. You can also start typing an integration’s name to find it faster.
     2. Enter the version of the integration you want to associate with the rule, using [semantic versioning](https://semver.org). For version ranges, you must use tilde or caret syntax. For example, `~1.2.3` is from 1.2.3 to any patch version less than 1.3.0, and `^1.2.3` is from 1.2.3 to any minor and patch version less than 2.0.0.
 
-7. Click **Continue** to [configure basic rule settings](/solutions/security/detect-and-alert/create-detection-rule.md#rule-ui-basic-params).
+6. Click **Continue** to [configure basic rule settings](/solutions/security/detect-and-alert/create-detection-rule.md#rule-ui-basic-params).
 
 
 ## Create an event correlation rule [create-eql-rule]
 
-1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. Click **Create new rule**.
-3. To create an event correlation rule using EQL, select **Event Correlation** on the **Create new rule** page, then:
-4. To create an event correlation rule using EQL, select **Event Correlation**, then:
+1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then click **Create new rule**.
+2. To create an event correlation rule using EQL, select **Event Correlation** on the **Create new rule** page, then:
 
     1. Define which {{es}} indices or data view the rule searches when querying for events.
     2. Write an [EQL query](elasticsearch://reference/query-languages/eql-syntax.md) that searches for matching events or a series of matching events.
@@ -249,24 +199,24 @@ To create or edit {{ml}} rules, you must have the [appropriate license](https://
             For sequence events, the {{security-app}} generates a single alert when all events listed in the sequence are detected. To see the matched sequence events in more detail, you can view the alert in the Timeline, and, if all events came from the same process, open the alert in Analyze Event view.
             ::::
 
-5. (Optional) Click the EQL settings icon (![EQL settings icon](../../../images/security-eql-settings-icon.png "")) to configure additional fields used by [EQL search](/explore-analyze/query-filter/languages/eql.md#specify-a-timestamp-or-event-category-field):
+3. (Optional) Click the EQL settings icon (![EQL settings icon](../../../images/security-eql-settings-icon.png "title =20x20")) to configure additional fields used by [EQL search](/explore-analyze/query-filter/languages/eql.md#specify-a-timestamp-or-event-category-field):
 
     * **Event category field**: Contains the event classification, such as `process`, `file`, or `network`. This field is typically mapped as a field type in the [keyword family](elasticsearch://reference/elasticsearch/mapping-reference/keyword.md). Defaults to the `event.category` ECS field.
     * **Tiebreaker field**: Sets a secondary field for sorting events (in ascending, lexicographic order) if they have the same timestamp.
     * **Timestamp field**: Contains the event timestamp used for sorting a sequence of events. This is different from the **Timestamp override** advanced setting, which is used for querying events within a range. Defaults to the `@timestamp` ECS field.
 
-6. Optional, [Platinum or higher subscription](https://www.elastic.co/pricing) required) Use **Suppress alerts by** to reduce the number of repeated or duplicate alerts created by the rule. Refer to [Suppress detection alerts](/solutions/security/detect-and-alert/suppress-detection-alerts.md) for more information.
-7. (Optional) Create a list of **Required fields** that the rule needs to function. This list is informational only, to help users understand the rule; it doesn’t affect how the rule actually runs.
+4. (Optional) Use **Suppress alerts by** to reduce the number of repeated or duplicate alerts created by the rule. Refer to [Suppress detection alerts](/solutions/security/detect-and-alert/suppress-detection-alerts.md) for more information.
+5. (Optional) Create a list of **Required fields** that the rule needs to function. This list is informational only, to help users understand the rule; it doesn’t affect how the rule actually runs.
 
     1. Click **Add required field**, then select a field from the index patterns or data view you specified for the rule. You can also start typing a field’s name to find it faster, or type in an entirely new custom field.
     2. Enter the field’s data type.
 
-8. (Optional) Add **Related integrations** to associate the rule with one or more [Elastic integrations](https://docs.elastic.co/en/integrations). This indicates the rule’s dependency on specific integrations and the data they generate, and allows users to confirm each integration’s [installation status](/solutions/security/detect-and-alert/manage-detection-rules.md#rule-prerequisites) when viewing the rule.
+6. (Optional) Add **Related integrations** to associate the rule with one or more [Elastic integrations](https://docs.elastic.co/en/integrations). This indicates the rule’s dependency on specific integrations and the data they generate, and allows users to confirm each integration’s [installation status](/solutions/security/detect-and-alert/manage-detection-rules.md#rule-prerequisites) when viewing the rule.
 
     1. Click **Add integration**, then select an integration from the list. You can also start typing an integration’s name to find it faster.
-    2. Enter the version of the integration you want to associate with the rule, using [semantic versioning](https://semver.org). For version ranges, you must use tilde or caret syntax. For example, `~1.2.3` is from 1.2.3 to any patch version less than 1.3.0, and `^1.2.3` is from 1.2.3 to any minor and patch version less than 2.0.0.
+    2. Enter the version of the integration you want to associate with the rule, using [semantic versioning](https://semver.org/). For version ranges, you must use tilde or caret syntax. For example, `~1.2.3` is from 1.2.3 to any patch version less than 1.3.0, and `^1.2.3` is from 1.2.3 to any minor and patch version less than 2.0.0.
 
-9. Click **Continue** to [configure basic rule settings](/solutions/security/detect-and-alert/create-detection-rule.md#rule-ui-basic-params).
+7. Click **Continue** to [configure basic rule settings](/solutions/security/detect-and-alert/create-detection-rule.md#rule-ui-basic-params).
 
 
 ## Create an indicator match rule [create-indicator-rule]
@@ -276,9 +226,8 @@ To create or edit {{ml}} rules, you must have the [appropriate license](https://
 ::::
 
 
-1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. Click **Create new rule**.
-3. To create a rule that searches for events whose specified field value matches the specified indicator field value in the indicator index patterns, select **Indicator Match** on the **Create new rule** page, then fill in the following fields:
+1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then click **Create new rule**.
+2. To create a rule that searches for events whose specified field value matches the specified indicator field value in the indicator index patterns, select **Indicator Match**, then fill in the following fields:
 
     1. **Source**: The individual index patterns or data view that specifies what data to search.
     2. **Custom query**: The query and filters used to retrieve the required results from the {{elastic-sec}} event indices. For example, if you want to match documents that only contain a `destination.ip` address field, add `destination.ip : *`.
@@ -289,7 +238,7 @@ To create or edit {{ml}} rules, you must have the [appropriate license](https://
 
 
         ::::{note}
-        You can use {{kib}} saved queries (![Saved query menu](../../../images/security-saved-query-menu.png "")) and queries from saved Timelines (**Import query from saved Timeline**) as rule conditions.
+        You can use saved queries and queries from saved Timelines (**Import query from saved Timeline**) as rule conditions.
         ::::
 
     3. **Indicator index patterns**: The indicator index patterns containing field values for which you want to generate alerts. This field is automatically populated with indices specified in the `securitySolution:defaultThreatIndex` advanced setting. For more information, see [Update default Elastic Security threat intelligence indices](/solutions/security/get-started/configure-advanced-settings.md#update-threat-intel-indices).
@@ -306,7 +255,7 @@ To create or edit {{ml}} rules, you must have the [appropriate license](https://
         ::::
 
 
-        To define which field values are compared from the indices add the following:
+        To define which field values are compared from the indices, add the following:
 
         * **Field**: The field used for comparing values in the {{elastic-sec}} event indices.
         * **Indicator index field**: The field used for comparing values in the indicator indices.
@@ -321,21 +270,21 @@ To create or edit {{ml}} rules, you must have the [appropriate license](https://
         :::
 
         ::::{tip}
-        Before you create rules, create [Timeline templates](/solutions/security/investigate/timeline.md) so they can be selected here. When alerts generated by the rule are investigated in the Timeline, Timeline query values are replaced with their corresponding alert field values.
+        Before you create rules, create [Timeline templates](/solutions/security/investigate/timeline.md) so you can select them under **Timeline template** at the end of the **Define rule** section. When alerts generated by the rule are investigated in the Timeline, Timeline query values are replaced with their corresponding alert field values.
         ::::
 
-4. (Optional, [Platinum or higher subscription](https://www.elastic.co/pricing) required) Select **Suppress alerts** to reduce the number of repeated or duplicate alerts created by the rule. Refer to [Suppress detection alerts](/solutions/security/detect-and-alert/suppress-detection-alerts.md) for more information.
-5. (Optional) Create a list of **Required fields** that the rule needs to function. This list is informational only, to help users understand the rule; it doesn’t affect how the rule actually runs.
+3. (Optional) Select **Suppress alerts** to reduce the number of repeated or duplicate alerts created by the rule. Refer to [Suppress detection alerts](/solutions/security/detect-and-alert/suppress-detection-alerts.md) for more information.
+4. (Optional) Create a list of **Required fields** that the rule needs to function. This list is informational only, to help users understand the rule; it doesn’t affect how the rule actually runs.
 
     1. Click **Add required field**, then select a field from the index patterns or data view you specified for the rule. You can also start typing a field’s name to find it faster, or type in an entirely new custom field.
     2. Enter the field’s data type.
 
-6. (Optional) Add **Related integrations** to associate the rule with one or more [Elastic integrations](https://docs.elastic.co/en/integrations). This indicates the rule’s dependency on specific integrations and the data they generate, and allows users to confirm each integration’s [installation status](/solutions/security/detect-and-alert/manage-detection-rules.md#rule-prerequisites) when viewing the rule.
+5. (Optional) Add **Related integrations** to associate the rule with one or more [Elastic integrations](https://docs.elastic.co/en/integrations). This indicates the rule’s dependency on specific integrations and the data they generate, and allows users to confirm each integration’s [installation status](/solutions/security/detect-and-alert/manage-detection-rules.md#rule-prerequisites) when viewing the rule.
 
     1. Click **Add integration**, then select an integration from the list. You can also start typing an integration’s name to find it faster.
-    2. Enter the version of the integration you want to associate with the rule, using [semantic versioning](https://semver.org). For version ranges, you must use tilde or caret syntax. For example, `~1.2.3` is from 1.2.3 to any patch version less than 1.3.0, and `^1.2.3` is from 1.2.3 to any minor and patch version less than 2.0.0.
+    2. Enter the version of the integration you want to associate with the rule, using [semantic versioning](https://semver.org/). For version ranges, you must use tilde or caret syntax. For example, `~1.2.3` is from 1.2.3 to any patch version less than 1.3.0, and `^1.2.3` is from 1.2.3 to any minor and patch version less than 2.0.0.
 
-7. Click **Continue** to [configure basic rule settings](/solutions/security/detect-and-alert/create-detection-rule.md#rule-ui-basic-params).
+6. Click **Continue** to [configure basic rule settings](/solutions/security/detect-and-alert/create-detection-rule.md#rule-ui-basic-params).
 
 
 ### Use value lists with indicator match rules [indicator-value-lists]
@@ -369,15 +318,14 @@ You uploaded a value list of known ransomware domains, and you want to be notifi
 
 ## Create a new terms rule [create-new-terms-rule]
 
-1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. Click **Create new rule**.
-3. To create a rule that searches for each new term detected in source documents, select **New Terms** on the **Create new rule** page, then:
+1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then click **Create new rule**.
+2. To create a rule that searches for each new term detected in source documents, select **New Terms** on the **Create new rule** page, then:
 
     1. Specify what data to search by entering individual {{es}} index patterns or selecting an existing data view.
     2. Use the filter and query fields to create the criteria used for detecting alerts.
 
         ::::{note}
-        You can use {{kib}} saved queries (![Saved query menu](../../../images/security-saved-query-menu.png "")) and queries from saved Timelines (**Import query from saved Timeline**) as rule conditions.
+        You can use saved queries and queries from saved Timelines (**Import query from saved Timeline**) as rule conditions.
         ::::
 
     3. Use the **Fields** menu to select a field to check for new terms. You can also select up to three fields to detect a combination of new terms (for example, a `host.ip` and `host.id` that have never been observed together before).
@@ -390,18 +338,18 @@ You uploaded a value list of known ransomware domains, and you want to be notifi
 
         For example, if a rule has an interval of 5 minutes, no additional look-back time, and a history window size of 7 days, a term will be considered new only if the time it appears within the last 7 days is also within the last 5 minutes. Configure the rule interval and additional look-back time when you [set the rule’s schedule](/solutions/security/detect-and-alert/create-detection-rule.md#rule-schedule).
 
-4. (Optional, [Platinum or higher subscription](https://www.elastic.co/pricing) required) Use **Suppress alerts by** to reduce the number of repeated or duplicate alerts created by the rule. Refer to [Suppress detection alerts](/solutions/security/detect-and-alert/suppress-detection-alerts.md) for more information.
-5. (Optional) Create a list of **Required fields** that the rule needs to function. This list is informational only, to help users understand the rule; it doesn’t affect how the rule actually runs.
+3. (Optional) Use **Suppress alerts by** to reduce the number of repeated or duplicate alerts created by the rule. Refer to [Suppress detection alerts](/solutions/security/detect-and-alert/suppress-detection-alerts.md) for more information.
+4. (Optional) Create a list of **Required fields** that the rule needs to function. This list is informational only, to help users understand the rule; it doesn’t affect how the rule actually runs.
 
     1. Click **Add required field**, then select a field from the index patterns or data view you specified for the rule. You can also start typing a field’s name to find it faster, or type in an entirely new custom field.
     2. Enter the field’s data type.
 
-6. (Optional) Add **Related integrations** to associate the rule with one or more [Elastic integrations](https://docs.elastic.co/en/integrations). This indicates the rule’s dependency on specific integrations and the data they generate, and allows users to confirm each integration’s [installation status](/solutions/security/detect-and-alert/manage-detection-rules.md#rule-prerequisites) when viewing the rule.
+5. (Optional) Add **Related integrations** to associate the rule with one or more [Elastic integrations](https://docs.elastic.co/en/integrations). This indicates the rule’s dependency on specific integrations and the data they generate, and allows users to confirm each integration’s [installation status](/solutions/security/detect-and-alert/manage-detection-rules.md#rule-prerequisites) when viewing the rule.
 
     1. Click **Add integration**, then select an integration from the list. You can also start typing an integration’s name to find it faster.
     2. Enter the version of the integration you want to associate with the rule, using [semantic versioning](https://semver.org). For version ranges, you must use tilde or caret syntax. For example, `~1.2.3` is from 1.2.3 to any patch version less than 1.3.0, and `^1.2.3` is from 1.2.3 to any minor and patch version less than 2.0.0.
 
-7. Click **Continue** to [configure basic rule settings](/solutions/security/detect-and-alert/create-detection-rule.md#rule-ui-basic-params).
+6. Click **Continue** to [configure basic rule settings](/solutions/security/detect-and-alert/create-detection-rule.md#rule-ui-basic-params).
 
 
 ## Create an {{esql}} rule [create-esql-rule]
@@ -410,9 +358,8 @@ Use [{{esql}}](/explore-analyze/query-filter/languages/esql.md) to query your so
 
 To create an {{esql}} rule:
 
-1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. Click **Create new rule**.
-3. Select **{{esql}}**, then write a query.
+1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then click **Create new rule**.
+2. Select **{{esql}}**, then write a query.
 
     ::::{note}
     Refer to the sections below to learn more about [{{esql}} query types](/solutions/security/detect-and-alert/create-detection-rule.md#esql-rule-query-types), [query design considerations](/solutions/security/detect-and-alert/create-detection-rule.md#esql-query-design), and [rule limitations](/solutions/security/detect-and-alert/create-detection-rule.md#esql-rule-limitations).
@@ -420,21 +367,21 @@ To create an {{esql}} rule:
 
 
     ::::{tip}
-    Click the help icon (![Click the ES|QL help icon](../../../images/security-esql-help-ref-button.png "")) to open the in-product reference documentation for all {{esql}} commands and functions.
+    Click the help icon (![Click the ES|QL help icon](../../../images/security-esql-help-ref-button.png "title =20x20")) to open the in-product reference documentation for all {{esql}} commands and functions.
     ::::
 
-4. (Optional, [Platinum or higher subscription](https://www.elastic.co/pricing) required) Use **Suppress alerts by** to reduce the number of repeated or duplicate alerts created by the rule. Refer to [Suppress detection alerts](/solutions/security/detect-and-alert/suppress-detection-alerts.md) for more information.
-5. (Optional) Create a list of **Required fields** that the rule needs to function. This list is informational only, to help users understand the rule; it doesn’t affect how the rule actually runs.
+3. (Optional) Use **Suppress alerts by** to reduce the number of repeated or duplicate alerts created by the rule. Refer to [Suppress detection alerts](/solutions/security/detect-and-alert/suppress-detection-alerts.md) for more information.
+4. (Optional) Create a list of **Required fields** that the rule needs to function. This list is informational only, to help users understand the rule; it doesn’t affect how the rule actually runs.
 
     1. Click **Add required field**, then select a field from the index patterns or data view you specified for the rule. You can also start typing a field’s name to find it faster, or type in an entirely new custom field.
     2. Enter the field’s data type.
 
-6. (Optional) Add **Related integrations** to associate the rule with one or more [Elastic integrations](https://docs.elastic.co/en/integrations). This indicates the rule’s dependency on specific integrations and the data they generate, and allows users to confirm each integration’s [installation status](/solutions/security/detect-and-alert/manage-detection-rules.md#rule-prerequisites) when viewing the rule.
+5. (Optional) Add **Related integrations** to associate the rule with one or more [Elastic integrations](https://docs.elastic.co/en/integrations). This indicates the rule’s dependency on specific integrations and the data they generate, and allows users to confirm each integration’s [installation status](/solutions/security/detect-and-alert/manage-detection-rules.md#rule-prerequisites) when viewing the rule.
 
     1. Click **Add integration**, then select an integration from the list. You can also start typing an integration’s name to find it faster.
-    2. Enter the version of the integration you want to associate with the rule, using [semantic versioning](https://semver.org). For version ranges, you must use tilde or caret syntax. For example, `~1.2.3` is from 1.2.3 to any patch version less than 1.3.0, and `^1.2.3` is from 1.2.3 to any minor and patch version less than 2.0.0.
+    2. Enter the version of the integration you want to associate with the rule, using [semantic versioning](https://semver.org/). For version ranges, you must use tilde or caret syntax. For example, `~1.2.3` is from 1.2.3 to any patch version less than 1.3.0, and `^1.2.3` is from 1.2.3 to any minor and patch version less than 2.0.0.
 
-7. Click **Continue** to [configure basic rule settings](/solutions/security/detect-and-alert/create-detection-rule.md#rule-ui-basic-params).
+6. Click **Continue** to [configure basic rule settings](/solutions/security/detect-and-alert/create-detection-rule.md#rule-ui-basic-params).
 
 
 ### {{esql}} query types [esql-rule-query-types]
@@ -540,7 +487,7 @@ When writing your query, consider the following:
 
 ### {{esql}} rule limitations [esql-rule-limitations]
 
-If your {{esql}} query creates new fields that aren’t part of the ECS schema, they aren’t mapped to the alerts index so you can’t search for or filter them in the Alerts table. As a workaround, create [runtime fields](/solutions/security/get-started/create-runtime-fields-in-elastic-security.md).
+If your {{esql}} query creates new fields that aren’t part of the ECS schema, they aren’t mapped to the alerts index, so you can’t search for or filter them in the Alerts table. As a workaround, create [runtime fields](/solutions/security/get-started/create-runtime-fields-in-elastic-security.md).
 
 
 ### Highlight fields returned by the {{esql}} rule query [custom-highlighted-esql-fields]
@@ -606,7 +553,7 @@ When configuring an {{esql}} rule’s **[Custom highlighted fields](/solutions/s
     1. **Reference URLs** (optional): References to information that is relevant to the rule. For example, links to background information.
     2. **False positive examples** (optional): List of common scenarios that may produce false-positive alerts.
     3. **MITRE ATT&CKTM threats** (optional): Add relevant [MITRE](https://attack.mitre.org/) framework tactics, techniques, and subtechniques.
-    4. **Custom highlighted fields** (optional): Specify one or more highlighted fields for unique alert investigation flows. You can choose any fields that are available in the indices you selected for the rule’s data source.
+    4. **Custom highlighted fields** (optional): Specify highlighted fields for unique alert investigation flows. You can choose any fields that are available in the indices you selected for the rule’s data source.
 
         After you create the rule, you can find all custom highlighted fields in the About section of the rule details page. If the rule has alerts, you can find custom highlighted fields in the [Highlighted fields](/solutions/security/detect-and-alert/view-detection-alert-details.md#investigation-section) section of the alert details flyout.
 
@@ -620,7 +567,7 @@ When configuring an {{esql}} rule’s **[Custom highlighted fields](/solutions/s
         If you select this option, you can add {{elastic-endpoint}} exceptions on the Rule details page. Additionally, all future exceptions added to [endpoint protection rules](/solutions/security/manage-elastic-defend/endpoint-protection-rules.md) will also affect this rule.
         ::::
 
-    10. **Building block** (optional): Select to create a building-block rule. By default, alerts generated from a building-block rule are not displayed in the UI. See [*About building block rules*](/solutions/security/detect-and-alert/about-building-block-rules.md) for more information.
+    10. **Building block** (optional): Select to create a building-block rule. By default, alerts generated from a building-block rule are not displayed in the UI. See [About building block rules](/solutions/security/detect-and-alert/about-building-block-rules.md) for more information.
     11. **Max alerts per run** (optional): Specify the maximum number of alerts the rule can create each time it runs. Default is 100.
 
         ::::{note}
@@ -681,17 +628,17 @@ When configuring an {{esql}} rule’s **[Custom highlighted fields](/solutions/s
 
 ## Set up rule actions (optional) [rule-notifications]
 
-Use {{kib}} actions to set up notifications sent via other systems when alerts are generated.
+Use actions to set up notifications sent via other systems when alerts are generated.
 
 ::::{note}
-To use {{kib}} actions for alert notifications, you need the [appropriate license](https://www.elastic.co/subscriptions) and your role needs **All** privileges for the **Action and Connectors** feature. For more information, see [Cases requirements](/solutions/security/investigate/cases-requirements.md).
+To use actions for alert notifications, you need the [appropriate license](https://www.elastic.co/subscriptions). For more information, see [Cases requirements](/solutions/security/investigate/cases-requirements.md).
 ::::
 
 
 1. Select a connector type to determine how notifications are sent. For example, if you select the {{jira}} connector, notifications are sent to your {{jira}} system.
 
     ::::{note}
-    Each action type requires a connector. Connectors store the information required to send the notification from the external system. You can configure connectors while creating the rule or in **{{stack-manage-app}}** → **{{connectors-ui}}**. For more information, see [Action and connector types](/deploy-manage/manage-connectors.md).
+    Each action type requires a connector. Connectors store the information required to send the notification from the external system. You can configure connectors while creating the rule or from the **{{connectors-ui}}** page. For more information, refer to [Action and connector types](/deploy-manage/manage-connectors.md).
 
     Some connectors that perform actions require less configuration. For example, you do not need to set the action frequency or variables for the [Cases connector](kibana://reference/connectors-kibana/cases-action-type.md)
 
@@ -801,7 +748,7 @@ The following variables can only be passed if the rule’s action frequency is f
 
 #### Alert placeholder examples [placeholder-examples]
 
-To understand which fields to parse, see the [*Detections API*](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-security-detections-api) to view the JSON representation of rules.
+To understand which fields to parse, see the [Detections API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-security-detections-api) to view the JSON representation of rules.
 
 Example using `{{context.rule.filters}}` to output a list of filters:
 
@@ -831,7 +778,7 @@ Example using the mustache "current element" notation `{{.}}` to output all the 
 Use response actions to set up additional functionality that will run whenever a rule executes:
 
 * **Osquery**: Include live Osquery queries with a custom query rule. When an alert is generated, Osquery automatically collects data on the system related to the alert. Refer to [Add Osquery Response Actions](/solutions/security/investigate/add-osquery-response-actions.md) to learn more.
-* **{{elastic-defend}}**: Automatically run response actions on an endpoint when rule conditions are met. For example, you can automatically isolate a host or terminate a process when specific activities or events are detected on the host. Refer to [*Automated response actions*](/solutions/security/endpoint-response-actions/automated-response-actions.md) to learn more.
+* **{{elastic-defend}}**: Automatically run response actions on an endpoint when rule conditions are met. For example, you can automatically isolate a host or terminate a process when specific activities or events are detected on the host. Refer to [Automated response actions](/solutions/security/endpoint-response-actions/automated-response-actions.md) to learn more.
 
 ::::{important}
 Host isolation involves quarantining a host from the network to prevent further spread of threats and limit potential damage. Be aware that automatic host isolation can cause unintended consequences, such as disrupting legitimate user activities or blocking critical business processes.
@@ -844,7 +791,7 @@ Host isolation involves quarantining a host from the network to prevent further 
 You can preview any custom or prebuilt rule to find out how noisy it will be. For a custom rule, you can then adjust the rule’s query or other settings.
 
 ::::{note}
-To preview rules, you need the `read` privilege for the `.preview.alerts-security.alerts-<space-id>` and `.internal.preview.alerts-security.alerts-<space-id>-*` indices, plus `All` privileges for the Security feature. Refer to [*Detections requirements*](/solutions/security/detect-and-alert/detections-requirements.md) for more information.
+To preview rules, you must have the appropriate user role. Refer to [Detections requirements](/solutions/security/detect-and-alert/detections-requirements.md) for more information.
 ::::
 
 
@@ -867,11 +814,11 @@ To interact with the rule preview:
 
 * Click **Refresh** to update the preview.
 
-    * When you edit the rule’s settings or the preview’s time range, the button changes from blue (![Blue circular refresh icon](../../../images/security-rule-preview-refresh-circle.png "")) to green (![Green right-pointing arrow refresh icon](../../../images/security-rule-preview-refresh-arrow.png "")) to indicate that the rule has been edited since the last preview.
+    * When you edit the rule’s settings or the preview’s time range, the button changes from blue (![Blue circular refresh icon](../../../images/security-rule-preview-refresh-circle.png "title =20x20")) to green (![Green right-pointing arrow refresh icon](../../../images/security-rule-preview-refresh-arrow.png "title =20x20")) to indicate that the rule has been edited since the last preview.
     * For a relative time range (such as `Last 1 hour`), refresh the preview to check for the latest results. (Previews don’t automatically refresh with new incoming data.)
 
-* Click the **View details** icon (![View details icon](../../../images/security-view-details-icon.png "")) in the alerts table to view the details of a particular alert.
-* To resize the preview, hover between the rule settings and preview, then click and drag the border. You can also click the border, then the collapse icon (![Collapse icon](../../../images/security-collapse-right-icon.png "")) to collapse and expand the preview.
+* Click the **View details** icon (![View details icon](../../../images/security-view-details-icon.png "title =20x20")) in the alerts table to view the details of a particular alert.
+* To resize the preview, hover between the rule settings and preview, then click and drag the border. You can also click the border, then the collapse icon (![Collapse icon](../../../images/security-collapse-right-icon.png "title =20x20")) to collapse and expand the preview.
 * To close the preview, click the **Rule preview** button again.
 
 

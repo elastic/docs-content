@@ -4,26 +4,7 @@ mapped_urls:
   - https://www.elastic.co/guide/en/serverless/current/security-tune-detection-signals.html
 ---
 
-# Tune detection rules
-
-% What needs to be done: Lift-and-shift
-
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/security-docs/security/tuning-detection-signals.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/security-tune-detection-signals.md
-
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
-
-$$$tune-indicator-rules$$$
-
-$$$filter-rule-process$$$
-
-$$$tune-authorized-processes$$$
-
-$$$tune-network-rules$$$
-
-$$$tune-windows-rules$$$
+# Tune detection rules [security-tune-detection-signals]
 
 Using the {{security-app}}, you can tune prebuilt and custom detection rules to optimize alert generation. To reduce noise, you can:
 
@@ -154,7 +135,7 @@ Take the following steps to tune indicator match rules:
 
 
 
-### Noise from common cloud-based network traffic [_noise_from_common_cloud_based_network_traffic]
+### Noise from common cloud-based network traffic [security-tune-detection-signals-noise-from-common-cloud-based-network-traffic]
 
 In cloud-based organizations, remote workers sometimes access services over the internet. The security policies of home networks probably differ from the security policies of managed corporate networks, and these rules might need tuning to reduce noise from legitimate administrative activities:
 

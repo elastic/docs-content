@@ -6,32 +6,17 @@ mapped_urls:
 
 # Detections requirements
 
-% What needs to be done: Align serverless/stateful
-
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/security-docs/security/detections-permissions-section.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/security-detections-requirements.md
-
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
-
-$$$enable-detections-ui$$$
-
-$$$adv-list-settings$$$
-
-$$$detections-on-prem-requirements$$$
-
-To use the [Detections feature](/solutions/security/detect-and-alert.md), you first need to configure a few settings. You also need the [appropriate license](https://www.elastic.co/subscriptions) to send [notifications](/solutions/security/detect-and-alert/create-detection-rule.md#rule-notifications) when detection alerts are generated.
+To use the [Detections feature](/solutions/security/detect-and-alert.md), you first need to configure a few settings. You also need the appropriate [{{stack}} subscription](https://www.elastic.co/pricing) or [{{serverless-short}} project tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md) to send [notifications](/solutions/security/detect-and-alert/create-detection-rule.md#rule-notifications) when detection alerts are generated. Additionally, there are some [advanced settings](/solutions/security/detect-and-alert/detections-requirements.md#adv-list-settings) used to configure {{kib}} [value list](/solutions/security/detect-and-alert/create-manage-value-lists.md) upload limits.
 
 ::::{important}
 Several steps are **only** required for **self-managed** {{stack}} deployments. If you’re using an Elastic Cloud deployment, you only need to [enable detections](/solutions/security/detect-and-alert/detections-requirements.md#enable-detections-ui).
 ::::
 
-
-Additionally, there are some [advanced settings](/solutions/security/detect-and-alert/detections-requirements.md#adv-list-settings) used to configure {{kib}} [value list](/solutions/security/detect-and-alert/create-manage-value-lists.md) upload limits.
-
-
 ## Configure self-managed {{stack}} deployments [detections-on-prem-requirements]
+
+```yaml {applies_to}
+stack:
+```
 
 These steps are only required for **self-managed** deployments:
 
@@ -57,11 +42,7 @@ For instructions about using {{ml}} jobs and rules, refer to [Machine learning j
 ::::
 
 
-::::{important}
-In {{stack}} version 8.0.0, the `.siem-signals-<space-id>` index was renamed to `.alerts-security.alerts-<space-id>`. Detection alert indices are created for each {{kib}} space. For the default space, the alerts index is named `.alerts-security.alerts-default`. If you’re upgrading to 8.0.0 or later, users should have privileges for the `.alerts-security.alerts-<space-id>` AND `.siem-signals-<space-id>` indices. If you’re newly installing the {{stack}}, then users do not need privileges for the `.siem-signals-<space-id>` index.
-::::
-
-
+### Custom role privileges [security-detections-requirements-custom-role-privileges]
 The following table describes the required privileges to access the Detections feature, including rules and alerts. For more information on {{kib}} privileges, refer to [Feature access based on user privileges](/deploy-manage/manage-spaces.md#spaces-control-user-access).
 
 | Action | Cluster Privileges | Index Privileges | Kibana Privileges |
@@ -73,15 +54,12 @@ The following table describes the required privileges to access the Detections f
 | Manage alerts<br>**NOTE**: Allows you to manage alerts, but not modify rules. | N/A | `maintenance`, `write`, `read`, and `view_index_metadata` for these system indices and data streams, where `<space-id>` is the space name:<br><br>* `.alerts-security.alerts-<space-id>`<br>* `.internal.alerts-security.alerts-<space-id>-*`<br>* `.siem-signals-<space-id>`1<br>* `.lists-<space-id>`<br>* `.items-<space-id>`<br><br>1 **NOTE**: If you’re upgrading to {{stack}} 8.0.0 or later, users should have privileges for the `.alerts-security.alerts-<space-id>` AND `.siem-signals-<space-id>` indices. If you’re newly installing the {{stack}}, then users do not need privileges for the `.siem-signals-<space-id>` index.<br> | `Read` for the `Security` feature |
 | Create the `.lists` and `.items` data streams in your space<br>**NOTE**: To initiate the process that creates the data streams, you must visit the Rules page for each appropriate space. | `manage` | `manage`, `write`, `read`, and `view_index_metadata` for these data streams, where `<space-id>` is the space name:<br><br>* `.lists-<space-id>`<br>* `.items-<space-id>`<br> | `All` for the `Security` and `Saved Objects Management` features |
 
-Here is an example of a user who has the Detections feature enabled in all {{kib}} spaces:
-
-:::{image} ../../../images/security-sec-admin-user.png
-:alt: Shows user with the Detections feature enabled in all Kibana spaces
-:screenshot:
-:::
-
 
 ### Authorization [alerting-auth-model]
+
+```yaml {applies_to}
+stack:
+```
 
 Rules, including all background detection and the actions they generate, are authorized using an [API key](/deploy-manage/api-keys/elasticsearch-api-keys.md) associated with the last user to edit the rule. Upon creating or modifying a rule, an API key is generated for that user, capturing a snapshot of their privileges. The API key is then used to run all background tasks associated with the rule including detection checks and executing actions.
 
@@ -93,6 +71,10 @@ If a rule requires certain privileges to run, such as index privileges, keep in 
 
 
 ## Configure list upload limits [adv-list-settings]
+
+```yaml {applies_to}
+stack:
+```
 
 You can set limits to the number of bytes and the buffer size used to upload [value lists](/solutions/security/detect-and-alert/create-manage-value-lists.md) to {{elastic-sec}}.
 
@@ -106,8 +88,3 @@ To set the value:
         For example, on a Kibana instance with 2 gigabytes of RAM, you can set this value up to 20000000 (20 megabytes).
 
     * `xpack.lists.importBufferSize`: Sets the buffer size used for uploading {{elastic-sec}} value lists (default `1000`). Change the value if you’re experiencing slow upload speeds or larger than wanted memory usage when uploading value lists. Set to a higher value to increase throughput at the expense of using more Kibana memory, or a lower value to decrease throughput and reduce memory usage.
-
-
-::::{note}
-For information on how to configure Elastic Cloud deployments, refer to [Add Kibana user settings](/deploy-manage/deploy/elastic-cloud/edit-stack-settings.md).
-::::
