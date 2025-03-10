@@ -33,7 +33,7 @@ You can ingest your data before migrating your rules, or migrate your rules firs
    ::::{note}
    The provided query downloads Splunk correlation rules and saved searches. Alternatively, as long as you    export your results in a JSON format, you can use a different query. For example:
 
-   ```spl
+   ```
    | rest /servicesNS/-/-/saved/searches
    | search is_scheduled=1 AND eai:acl.app=splunksysmonsecurity
    | where disabled=0
