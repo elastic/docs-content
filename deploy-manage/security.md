@@ -111,7 +111,7 @@ The [security of your orchestrator](security/secure-hosting-environment.md) form
 - [**Elastic Cloud on Kubernetes**](security/secure-your-eck-installation.md)
 
 :::{note}
-There is no orchestration layer for self-managed installations, but you can find a summary of your security options in [](security/manually-configure-security-in-self-managed-cluster.md).
+There is no orchestration layer for self-managed deployments because you directly control the host environment. Refer to [](security/manually-configure-security-in-self-managed-cluster.md) to learn more about securing self-managed installations.
 :::
 
 ### 2. Secure your deployments and clusters
