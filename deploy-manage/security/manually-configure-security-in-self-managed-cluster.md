@@ -9,7 +9,11 @@ mapped_pages:
 
 # Manually configure security in a self-managed cluster [manually-configure-security]
 
-Security needs vary depending on whether you’re developing locally on your laptop or securing all communications in a production environment. Regardless of where you’re deploying the {{stack}} ("ELK"), running a secure cluster is incredibly important to protect your data. That’s why security is [enabled and configured by default](../deploy/self-managed/installing-elasticsearch.md) in {{es}} 8.0 and later.
+:::{note}
+This page describes important aspects to consider and common end-to-end scenarios for securing your self-managed {{stack}}. For a more granular view of the available security options for your clusters and nodes, refer to [](secure-your-cluster-deployment.md).
+:::
+
+Security needs vary depending on whether you’re developing locally on your laptop or securing all communications in a production environment. Regardless of where you’re deploying the {{stack}} ("ELK"), running a secure cluster is incredibly important to protect your data. That’s why security is [enabled and configured by default](../deploy/self-managed/installing-elasticsearch.md) since {{es}} 8.0.
 
 If you want to enable security on an existing, unsecured cluster, use your own Certificate Authority (CA), or would rather manually configure security, the following scenarios provide steps for configuring TLS on the transport layer, plus securing HTTPS traffic if you want it.
 

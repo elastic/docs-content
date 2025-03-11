@@ -1,6 +1,6 @@
 # Tutorial: Securing a self-managed {{stack}} [install-stack-demo-secure]
 
-This tutorial is a follow-on to [Tutorial 1: Installing a self-managed {{stack}}](/deploy-manage/deploy/self-managed.md). The first tutorial describes how to configure a multi-node {{es}} cluster and then set up {{kib}}, followed by {{fleet-server}} and {{agent}}. In a production environment, it’s recommended after completing the {{kib}} setup to proceed directly to this tutorial to configure your SSL certificates. These steps guide you through that process, and then describe how to configure {{fleet-server}} and {{agent}} with the certificates in place.
+This tutorial is a follow-on to [installing a self-managed {{stack}}](/deploy-manage/deploy/self-managed.md) with a multi-node {{es}} cluster, {{kib}}, {{fleet-server}} and {{agent}}. In a production environment, it’s recommended after completing the {{kib}} setup to proceed directly to this tutorial to configure your SSL certificates. These steps guide you through that process, and then describe how to configure {{fleet-server}} and {{agent}} with the certificates in place.
 
 **Securing the {{stack}}**
 
@@ -23,7 +23,7 @@ It should take between one and two hours to complete these steps.
 
 ## Prerequisites and assumptions [install-stack-demo-secure-prereqs]
 
-Before starting, you’ll need to have set up an on-premises {{es}} cluster with {{kib}}, following the steps in [Tutorial 1: Installing a self-managed {{stack}}](/deploy-manage/deploy/self-managed.md).
+Before starting, you’ll need to have set up an on-premises {{es}} cluster with {{kib}}, following the steps for [installing a self-managed {{stack}}](/deploy-manage/deploy/self-managed.md).
 
 The examples in this guide use RPM packages to install the {{stack}} components on hosts running Red Hat Enterprise Linux 8. The steps for other install methods and operating systems are similar, and can be found in the documentation linked from each section.
 
@@ -227,7 +227,7 @@ Now that communication between {{es}} nodes (the transport layer) has been secur
             ```
 
         2. When prompted, confirm that the settings are correct.
-        3. Add the network IP address that clients can use to connect to the first {{es}} node. This is the same value that’s described in Step 2 of [Tutorial 1: Installing a self-managed {{stack}}](/deploy-manage/deploy/self-managed.md), for example `10.128.0.84`:
+        3. Add the network IP address that clients can use to connect to the first {{es}} node. For example `10.128.0.84`:
 
             ```shell
             10.128.0.84
@@ -617,7 +617,7 @@ Now that the transport and HTTP layers are configured with encryption using the 
 
     Open a web browser to the external IP address of the Kibana host machine: `https://<kibana-host-address>:5601`. Note that the URL should use the `https` and not the `http` protocol.
 
-15. Log in using the `elastic` user and password that you configured in Step 1 of [Tutorial 1: Installing a self-managed {{stack}}](/deploy-manage/deploy/self-managed.md).
+15. Log in using the `elastic` user and password that you configured when [installing your self-managed {{stack}}](/deploy-manage/deploy/self-managed.md).
 
 Congratulations! You’ve successfully updated the SSL certificates between {{es}} and {{kib}}.
 

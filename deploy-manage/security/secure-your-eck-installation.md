@@ -7,10 +7,6 @@ applies_to:
 
 # Secure your {{eck}} orchestrator [eck-securing-considerations]
 
-:::{warning}
-**This page is a work in progress.** 
-:::
-
 This section covers security settings for your {{eck}} orchestrator.
 
 **Orchestrator-level security**
@@ -19,7 +15,7 @@ This section covers security settings for your {{eck}} orchestrator.
 - [Isolate pods with network policies](/deploy-manage/deploy/cloud-on-k8s/network-policies.md)
 - [Secure the metrics endpoint](/deploy-manage/monitor/orchestrators/k8s-securing-metrics-endpoint.md)
 
-Also refer to [](/deploy-manage/deploy/cloud-on-k8s/configure-eck.md) for more information about configuring {{eck}}.
+Also refer to [](/deploy-manage/deploy/cloud-on-k8s/configure.md) for more information about configuring {{eck}}.
 
 **Additional deployment-level security settings**
 
