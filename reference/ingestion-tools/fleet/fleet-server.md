@@ -61,3 +61,4 @@ To learn more about deploying and scaling {{fleet-server}}, refer to:
 ## {{fleet-server}} secrets configuration [fleet-server-secrets-config]
 
 Secrets used to configure {{fleet-server}} can either be directly specified in configuration or provided through secret files. See [{{fleet-server}} Secrets](/reference/ingestion-tools/fleet/fleet-server-secrets.md) for more information.
+
