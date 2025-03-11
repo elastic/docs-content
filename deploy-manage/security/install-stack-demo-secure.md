@@ -1,10 +1,10 @@
-# Tutorial 2: Securing a self-managed {{stack}} [install-stack-demo-secure]
+# Tutorial: Securing a self-managed {{stack}} [install-stack-demo-secure]
 
 This tutorial is a follow-on to [Tutorial 1: Installing a self-managed {{stack}}](/deploy-manage/deploy/self-managed.md). The first tutorial describes how to configure a multi-node {{es}} cluster and then set up {{kib}}, followed by {{fleet-server}} and {{agent}}. In a production environment, it’s recommended after completing the {{kib}} setup to proceed directly to this tutorial to configure your SSL certificates. These steps guide you through that process, and then describe how to configure {{fleet-server}} and {{agent}} with the certificates in place.
 
 **Securing the {{stack}}**
 
-Beginning with Elastic 8.0, security is enabled in the {{stack}} by default, meaning that traffic between {{es}} nodes and between {{kib}} and {{es}} is SSL-encrypted. While this is suitable for testing non-production viability of the Elastic platform, most production networks have requirements for the use of trusted CA-signed certificates. These steps demonstrate how to update the out-of-the-box self-signed certificates with your own trusted CA-signed certificates.
+Since {{stack}} 8.0, security is enabled by default, meaning that traffic between {{es}} nodes and between {{kib}} and {{es}} is SSL-encrypted. While this is suitable for testing non-production viability of the Elastic platform, most production networks have requirements for the use of trusted CA-signed certificates. These steps demonstrate how to update the out-of-the-box self-signed certificates with your own trusted CA-signed certificates.
 
 For traffic to be encrypted between {{es}} cluster nodes and between {{kib}} and {{es}}, SSL certificates must be created for the transport ({{es}} inter-node communication) and HTTP (for the {{es}} REST API) layers. Similarly, when setting up {{fleet-server}} you’ll generate and configure a new certificate bundle, and then {{elastic-agent}} uses the generated certificates to communicate with both {{fleet-server}} and {{es}}. The process to set things up is as follows:
 

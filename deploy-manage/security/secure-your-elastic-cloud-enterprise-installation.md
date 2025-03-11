@@ -7,14 +7,14 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-securing-considerations.html
 ---
 
-# Secure your Elastic Cloud Enterprise installation [ece-securing-considerations]
+# Secure your Elastic Cloud Enterprise orchestrator [ece-securing-considerations]
 
 :::{warning}
 **This page is a work in progress.** 
 :::
 
+This section covers security settings for your {{eck}} orchestrator.
 
-When securing your {{ece}} installation, consider the following:
 
 ## TLS certificate management 
 
@@ -58,8 +58,15 @@ $$$ece_clusters_share_the_same_resources$$$
 
 The Elasticsearch clusters you create on Elastic Cloud Enterprise share the same resources. It is currently not possible to run a specific cluster on entirely dedicated hardware not shared by other clusters.
 
+**Orchestrator-level security**
 
-## Next step: secure your deployments and clusters
+- **Network security**
+  - [**TLS certificates**](secure-your-elastic-cloud-enterprise-installation/manage-security-certificates.md): Apply security controls to network communications. With {{ece}}, you manage proxy certificates for the HTTP layer. The transport layer is managed by ECE.
+- **Access control**
+  - [**Cloud role-based access control**](/deploy-manage/users-roles/cloud-enterprise-orchestrator.md): Define the roles of users who have access to your organization and its resources. Note that you can also [manage non-cloud users and roles](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md).
+  - [Authentication providers](/deploy-manage/users-roles/cloud-enterprise-orchestrator.md): Integrate with external authentication providers, including Active Directory, LDAP, and SAML.
 
-This section covered security principles and options at the environment level. You can take further measures individually for each deployment or cluster that you're running on this environment. Refer to [](secure-your-cluster-deployment.md).
 
+**Additional deployment-level security settings**
+
+Additional security settings are available for you to configure individually for each deployment orchestrated using {{ece}}. Refer to [](secure-your-cluster-deployment.md) for more information.
