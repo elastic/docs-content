@@ -12,7 +12,7 @@ mapped_urls:
 Change how Elasticsearch runs by providing your own user settings. User settings are appended to the `elasticsearch.yml` configuration file for your cluster and provide custom configuration options. Elastic Cloud Enterprise supports many of the user settings for the version of Elasticsearch that your cluster is running.
 
 ::::{note}
-ECE blocks the configuration of certain settings that could break your cluster if misconfigured, including some zen discovery and security settings. For a list of settings that are generally safe in cloud environments, check [{{es}} settings](asciidocalypse://pending-link-lisa) on ECE reference documentation.
+ECE blocks the configuration of certain settings that could break your cluster if misconfigured, including some zen discovery and security settings. For a list of settings that are generally safe in cloud environments, refer to the [Elasticsearch configuration reference](elasticsearch://reference/elasticsearch/configuration-reference/index.md).
 ::::
 
 To add user settings for {{es}} follow the instructions provided in [](./edit-stack-settings.md)

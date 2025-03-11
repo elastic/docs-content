@@ -8,7 +8,7 @@ mapped_pages:
 
 # Resource overrides [ece-resource-overrides]
 
-{{ecloud}} allocators assign {{es}} instance sizes based on RAM, where RAM is proportional to CPU and disk resources. As needed, you can temporarily override the allocated resources to stabilize the deployment. You should reset overrides as soon as possible, or make the override permanent by [changing your configuration](working-with-deployments.md).
+{{ecloud}} allocators assign resources to {{es}} instances based on RAM, where RAM is proportional to CPU and disk resources. As needed, you can temporarily override the allocated resources to stabilize the deployment. You should reset overrides as soon as possible, or make the override permanent by [changing your configuration](working-with-deployments.md).
 
 The RAM to CPU proportions can’t be overridden per instance.
 

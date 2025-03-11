@@ -15,13 +15,12 @@ mapped_urls:
 
 {{ece}} allows you to manage one or more instances of the {{stack}} through **deployments**.
 
-## Introducing deployments
 
-A *deployment* helps you manage an {{es}} cluster and instances of other Elastic products, like {{kib}} or APM, in one place. Spin up, scale, upgrade, and delete your Elastic Stack products without having to manage each one separately. In a deployment, everything works together.
+A *deployment* helps you manage an {{es}} cluster and instances of other Elastic products, like {{kib}} or APM, in one place. Spin up, scale, upgrade, and delete your {{stack}} products without having to manage each one separately. In a deployment, everything works together.
 
 ECE provides a preset of *hardware profiles* that provide a unique blend of storage, memory and vCPU for each component of a deployment. They support a specific purpose, such as a hot-warm architecture, that helps you manage your data storage retention.
 
-All of these profiles are based on [deployment templates](./deployment-templates.md), which are a reusable configuration of Elastic products that you can deploy. With the flexibility of Elastic Cloud Enterprise, you can take it a step further by customizing a deployment template to your own needs.
+All of these profiles are based on [deployment templates](./deployment-templates.md), which are a reusable configuration of Elastic products that you can deploy. You can modify existing deployment templates, or create custom deployment templates, to suit your needs.
 
 ## Creating deployments
 
@@ -29,13 +28,13 @@ Refer to [Create a deployment](./create-deployment.md) to launch and configure a
 
 ## Administering deployments [ece-administering-deployments]
 
-Care and feeding of your deployments is important. Take a look at the things you can do to keep your deployments and the Elastic Stack running smoothly.
+Maintaining your existing deployments is important. Take a look at the things you can do to keep your deployments and the {{stack}} running smoothly.
 
-Deployments in ECE are managed from the Deployment view of the [Cloud UI](./log-into-cloud-ui.md). This section focuses on the different actions you can take from this view.
+Deployments in ECE are managed from the **Deployment** view of the [Cloud UI](./log-into-cloud-ui.md). This section focuses on the different actions you can take from this view.
 
 ### Configuration and features
 
-From the deployment main page you can quickly access the following configuration areas:
+From the deployment main page, you can quickly access the following configuration areas:
 
 * Select **Edit** to change the deployment configuration, its components and data tiers. Refer to [](./customize-deployment.md) for more details.
 
@@ -55,10 +54,10 @@ From the deployment main page you can quickly access the following configuration
 
 From the **Deployment > Security** view, you can manage security settings, authentication, and access controls. Refer to [Secure your clusters](../../../deploy-manage/users-roles/cluster-or-deployment-auth.md) for more details on security options for your deployments.
 
-* [Reset elastic password](../../users-roles/cluster-or-deployment-auth/manage-elastic-user-cloud.md)
+* [Reset the `elastic` user password](../../users-roles/cluster-or-deployment-auth/manage-elastic-user-cloud.md)
 * [Set up traffic filters](../../security/traffic-filtering.md) to restrict traffic to your deployment
-* Configure {{es}} keystore settings, also known as [Secure settings](../../security/secure-settings.md)
-* Configure trust relationships for [Remote clusters](../../remote-clusters/ece-enable-ccs.md)
+* Configure {{es}} keystore settings, also known as [secure settings](../../security/secure-settings.md)
+* Configure trust relationships for [remote clusters](../../remote-clusters/ece-enable-ccs.md)
 
 ### Endpoints, monitoring, and troubleshooting
 

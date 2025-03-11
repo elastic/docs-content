@@ -17,7 +17,7 @@ This section explains how to connect client applications to an {{es}} deployment
 
 To successfully connect to a deployment, you need both the connection details and valid authentication credentials for an authorized user in the target deployment. For more details on authentication and authorization mechanisms in ECE, refer to [Users and roles](../../users-roles.md#orchestrator-level).
 
-## Connect Using the Endpoint URL [ece-connect-endpoint]
+## Connect using the endpoint URL [ece-connect-endpoint]
 
 To connect to your {{es}} cluster, copy the **{{es}} endpoint** from the deployment page in the [Cloud UI](./log-into-cloud-ui.md).
 
@@ -89,7 +89,7 @@ To use the Cloud ID, you need:
         In our examples, we use the `elastic` superuser that every {{es}} cluster comes with. The password for the `elastic` user is provided when you create a deployment (and can also be [reset](../../users-roles/cluster-or-deployment-auth/built-in-users.md) if you forget it). On a production system, you should adapt these examples by creating a user that can write to and access only the minimally required indices. For each Beat, review the specific feature and role table, similar to the one in [Metricbeat](asciidocalypse://docs/beats/docs/reference/metricbeat/feature-roles.md) documentation.
 ::::
 
-### Configure Beats with your Cloud ID [ece-cloud-id-beats]
+### Example: Configure Beats with your Cloud ID [ece-cloud-id-beats]
 
 The following example shows how you can send operational data from Metricbeat to a new ECE deployment by using the Cloud ID. While this example uses Metricbeat, the same approach applies to other Beats.
 

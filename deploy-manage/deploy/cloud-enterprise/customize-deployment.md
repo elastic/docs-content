@@ -32,7 +32,7 @@ To customize your deployment:
         When updating an existing deployment, you can make multiple changes to your {{es}} cluster with a single configuration update.
     ::::
 
-5. Select a [configuration strategy](#configuration-strategies) and **Save your changes**. The orchestrator will prepare and execute a plan to apply the requested changes.
+5. Select a [configuration strategy](#configuration-strategies) and save your changes. The orchestrator will prepare and execute a plan to apply the requested changes.
 
 Review the changes to your configuration on the **Activity** page, with a tab for {{es}} and one for {{kib}}.
 
@@ -72,12 +72,12 @@ In the deployment edit page, you can configure the following settings and featur
 
 ## Configuration strategies [configuration-strategies]
 
-When you select **Save changes** on the Edit deployment page, the orchestrator initiates a plan to apply the new configuration to your deployment. You can control how these changes are applied to minimize disruption and ensure a smooth transition.
+When you select **Save changes** on the **Edit deployment** page, the orchestrator initiates a plan to apply the new configuration to your deployment. You can control how these changes are applied to minimize disruption and ensure a smooth transition.
 
-* Autodetect strategy (**recommended**): Let ECE will determine the strategy depending on the type changes to apply.
-* Rolling change per node: One node at a time. This strategy performs inline, rolling configuration changes that mutate existing containers. Recommended for most configuration changes.
-* Grow and shrink: The orchestrator creates nodes with the new configuration, then migrates data from the old ones, and eventually delete the original nodes. This strategy is automatically selected when adding or removing master-eligibie nodes.
-* Rolling grow and shrink: Similar to grow and shrink, but creating one node at a time. This strategy can take a lot longer than grow and shrink.
+* **Autodetect strategy** (recommended): Let ECE determine the strategy depending on the type changes to apply.
+* **Rolling change per node**: One node at a time. This strategy performs inline, rolling configuration changes that mutate existing containers. Recommended for most configuration changes.
+* **Grow and shrink**: The orchestrator creates nodes with the new configuration, then migrates data from the old ones, and eventually delete the original nodes. This strategy is automatically selected when adding or removing master-eligibie nodes.
+* **Rolling grow and shrink**: Similar to grow and shrink, but creating one node at a time. This strategy can take a lot longer than grow and shrink.
 
 The `Extended maintenance` option will make ECE to [stop routing requests](../../maintenance/ece/start-stop-routing-requests.md) to all instances during the plan execution. The cluster will be unavailable for external connections while the configuration changes are in progress.
 

@@ -17,11 +17,11 @@ You might want to change the configuration of your deployment to:
 * Increase or decrease capacity by changing the amount of reserved memory and storage for different parts of your deployment.
 * Enable [autoscaling](/deploy-manage/autoscaling/autoscaling-in-ece-and-ech.md) so that the available resources for deployment components, such as data tiers and machine learning nodes, adjust automatically as the demands on them change over time.
 * Enable [high availability](./ece-ha.md), also known as fault tolerance, by adjusting the number of availability zones that parts of your deployment run on.
-* Upgrade to new versions of {{es}}. You can upgrade from one major version to another, such as from 6.8.23 to 7.17.27, or from one minor version to another, such as 6.1 to 6.2. You can’t downgrade versions.
+* Upgrade to new versions of {{es}}. You can upgrade from one major version to another, such as from 8.17 to 9.0, or from one minor version to another, such as 8.16 to 8.17. You can’t downgrade versions.
 * Change what plugins or custom bundles are available on your {{es}} cluster.
 * Change {{es}}, {{kib}}, or other stack application YML configuration settings.
 
-For single availability zone deployments, there is downtime to portions of your cluster when changes are applied. For HA deployments and with the exception of major version upgrades, we can perform all these changes without interrupting your deployment. During the application of these changes, you can continue to search and index.
+For single availability zone deployments, there is downtime to portions of your cluster when changes are applied. For [high availability](./ece-ha.md) deployments, with the exception of major version upgrades, we these changes can be made without interrupting your deployment. While these changes are being applied, you can continue to search and index.
 
 When updating an existing deployment, you can make multiple changes in a single configuration update. For example, you increase memory and storage, upgrade minor versions, adjust the number of plugins, and adjust fault tolerance by changing the number of availability zones—all in one action.
 

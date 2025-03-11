@@ -12,7 +12,7 @@ mapped_pages:
 Kibana is an open source analytics and visualization platform designed to search, view, and interact with data stored in Elasticsearch indices.
 
 ::::{tip} 
-Most deployment templates include a Kibana instance, but if it wasn’t part of the initial deployment you can [](./customize-deployment.md) and add {{kib}}.
+Most deployment templates include a Kibana instance, but if it wasn’t part of the initial deployment you can [customize your deployment components](./customize-deployment.md) to add {{kib}}.
 ::::
 
 To access Kibana:
@@ -31,7 +31,7 @@ To access Kibana:
 4. Log into Kibana. Single sign-on (SSO) is enabled between your Cloud account and the Kibana instance. If you’re logged in already, then Kibana opens without requiring you to log in again. However, if your token has expired, choose from one of these methods to log in:
 
     * Select **Login with Cloud**. You’ll need to log in with your Cloud account credentials and then you’ll be redirected to Kibana.
-    * Log in with the `elastic` superuser. The password was provided when you created your cluster or [can be reset](../../../deploy-manage/users-roles/cluster-or-deployment-auth/built-in-users.md).
+    * Log in with the `elastic` superuser. The password was provided when you created your cluster and [can be reset](../../../deploy-manage/users-roles/cluster-or-deployment-auth/built-in-users.md).
     * Log in with any users you created in Kibana already.
 
     ::::{tip} 

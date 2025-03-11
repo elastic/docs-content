@@ -11,7 +11,7 @@ mapped_urls:
 
 From the {{ece}} console you can customize settings for {{es}}, {{kib}}, and other {{stack}} components by applying **user settings** to your deployments. These settings are internally mapped to the appropriate YAML configuration files, such as `elasticsearch.yml` and `kibana.yml`, and they affect all users of that cluster.
 
-To customize the settings of your deployments' {{stack}} components:
+To customize the settings of a deployment's {{stack}} components:
 
 1. Open your deployment page in the ECE [Cloud UI](./log-into-cloud-ui.md).
 2. In the left navigation menu, select **Edit**.
@@ -21,7 +21,7 @@ To customize the settings of your deployments' {{stack}} components:
 
 The following sections provide extra details and examples for different components:
 
-* [](./edit-stack-settings-elasticsearch.md).
-* [](./edit-stack-settings-kibana.md).
-* [](./edit-stack-settings-apm.md).
-* [](./edit-stack-settings-enterprise.md).
+* [](./edit-stack-settings-elasticsearch.md)
+* [](./edit-stack-settings-kibana.md)
+* [](./edit-stack-settings-apm.md)
+* [](./edit-stack-settings-enterprise.md)
