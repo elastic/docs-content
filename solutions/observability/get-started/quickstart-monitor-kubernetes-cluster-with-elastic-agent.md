@@ -62,7 +62,7 @@ The kubectl command installs the standalone Elastic Agent in your Kubernetes clu
 
     :::{image} ../../../images/observability-quickstart-k8s-entry-point.png
     :alt: Kubernetes entry point
-    :class: screenshot
+    :screenshot:
     :::
 
 3. To install the Elastic Agent on your host, copy and run the install command.
@@ -86,7 +86,7 @@ The kubectl command installs the standalone Elastic Agent in your Kubernetes clu
 
     :::{image} ../../../images/serverless-quickstart-k8s-entry-point.png
     :alt: Kubernetes entry point
-    :class: screenshot
+    :screenshot:
     :::
 
 4. To install the Elastic Agent on your host, copy and run the install command.
@@ -107,7 +107,7 @@ After installation is complete and all relevant data is flowing into Elastic, th
 
 :::{image} ../../../images/observability-quickstart-k8s-overview.png
 :alt: Kubernetes overview dashboard
-:class: screenshot
+:screenshot:
 :::
 
 Furthermore, you can access other useful prebuilt dashboards for monitoring Kubernetes resources, for example running pods per namespace, as well as the resources they consume, like CPU and memory.

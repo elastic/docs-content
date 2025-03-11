@@ -1,6 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/observability-host-metrics.html
+  - https://www.elastic.co/guide/en/observability/current/host-metrics.html
 ---
 
 # Host metrics [observability-host-metrics]

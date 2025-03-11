@@ -136,7 +136,7 @@ If your objective is to maximize accuracy, the scores are weighted to maximize t
 
 :::{image} ../../../images/machine-learning-confusion-matrix-binary-accuracy.jpg
 :alt: A confusion matrix with the correct predictions highlighted
-:class: screenshot
+:screenshot:
 :::
 
 ::::{tip}
@@ -147,7 +147,7 @@ By default, {{classanalysis}} jobs accept a slight degradation of the overall ac
 
 :::{image} ../../../images/machine-learning-confusion-matrix-multiclass-recall.jpg
 :alt: A confusion matrix with a row highlighted
-:class: screenshot
+:screenshot:
 :::
 
 For each class, the recall is calculated as the number of correct predictions divided by the sum of all the other predicted labels in that row. This value is represented as a percentage in each cell of the confusion matrix. The class scores are then weighted to favor predictions that result in the highest recall values across the training data. This objective typically performs better than accuracy when you have highly imbalanced data.
@@ -162,19 +162,19 @@ The model that you created is stored as {{es}} documents in internal indices. In
 2. Find the model you want to deploy in the list and click **Deploy model** in the **Actions** menu.
    :::{image} ../../../images/machine-learning-ml-dfa-trained-models-ui.png
    :alt: The trained models UI in {{kib}}
-   :class: screenshot
+   :screenshot:
    :::
 
 3. Create an {{infer}} pipeline to be able to use the model against new data through the pipeline. Add a name and a description or use the default values.
    :::{image} ../../../images/machine-learning-ml-dfa-inference-pipeline.png
    :alt: Creating an inference pipeline
-   :class: screenshot
+   :screenshot:
    :::
 
 4. Configure the pipeline processors or use the default settings.
    :::{image} ../../../images/machine-learning-ml-dfa-inference-processor.png
    :alt: Configuring an inference processor
-   :class: screenshot
+   :screenshot:
    :::
 
 5. Configure to handle ingest failures or use the default settings.
@@ -193,13 +193,13 @@ For instance, suppose you have an online service and you would like to predict w
 
 {{infer-cap}} can be used as a processor specified in an [ingest pipeline](../../../manage-data/ingest/transform-enrich/ingest-pipelines.md). It uses a trained model to infer against the data that is being ingested in the pipeline. The model is used on the ingest node. {{infer-cap}} pre-processes the data by using the model and provides a prediction. After the process, the pipeline continues executing (if there is any other processor in the pipeline), finally the new data together with the results are indexed into the destination index.
 
-Check the [{{infer}} processor](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/enrich-processor/inference-processor.md) and [the {{ml}} {{dfanalytics}} API documentation](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-ml-data-frame) to learn more.
+Check the [{{infer}} processor](elasticsearch://reference/ingestion-tools/enrich-processor/inference-processor.md) and [the {{ml}} {{dfanalytics}} API documentation](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-ml-data-frame) to learn more.
 
 #### {{infer-cap}} aggregation [ml-inference-aggregation-class]
 
 {{infer-cap}} can also be used as a pipeline aggregation. You can reference a trained model in the aggregation to infer on the result field of the parent bucket aggregation. The {{infer}} aggregation uses the model on the results to provide a prediction. This aggregation enables you to run {{classification}} or {{reganalysis}} at search time. If you want to perform the analysis on a small set of data, this aggregation enables you to generate predictions without the need to set up a processor in the ingest pipeline.
 
-Check the [{{infer}} bucket aggregation](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/aggregations/search-aggregations-pipeline-inference-bucket-aggregation.md) and [the {{ml}} {{dfanalytics}} API documentation](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-ml-data-frame) to learn more.
+Check the [{{infer}} bucket aggregation](elasticsearch://reference/data-analysis/aggregations/search-aggregations-pipeline-inference-bucket-aggregation.md) and [the {{ml}} {{dfanalytics}} API documentation](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-ml-data-frame) to learn more.
 
 ::::{note}
 If you use trained model aliases to reference your trained model in an {{infer}} processor or {{infer}} aggregation, you can replace your trained model with a new one without the need of updating the processor or the aggregation. Reassign the alias you used to a new trained model ID by using the [Create or update trained model aliases API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-put-trained-model-alias). The new trained model needs to use the same type of {{dfanalytics}} as the old one.
@@ -282,7 +282,7 @@ To predict whether a specific flight is delayed:
    You can use the wizard on the **{{ml-app}}** > **Data Frame Analytics** tab in {{kib}} or the [create {{dfanalytics-jobs}}](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-put-data-frame-analytics) API.
    :::{image} ../../../images/machine-learning-flights-classification-job-1.jpg
    :alt: Creating a {{dfanalytics-job}} in {{kib}}
-   :class: screenshot
+   :screenshot:
    :::
 
       1. Choose `kibana_sample_data_flights` as the source index.
@@ -292,7 +292,7 @@ To predict whether a specific flight is delayed:
         The wizard includes a scatterplot matrix, which enables you to explore the relationships between the numeric fields. The color of each point is affected by the value of the {{depvar}} for that document, as shown in the legend. You can highlight an area in one of the charts and the corresponding area is also highlighted in the rest of the charts. You can use this matrix to help you decide which fields to include or exclude.
    :::{image} ../../../images/machine-learning-flights-classification-scatterplot.png
    :alt: A scatterplot matrix for three fields in {{kib}}
-   :class: screenshot
+   :screenshot:
    :::
        If you want these charts to represent data from a larger sample size or from a randomized selection of documents, you can change the default behavior. However, a larger sample size might slow down the performance of the matrix and a randomized selection might put more load on the cluster due to the more intensive query.
       5. Choose a training percent of `10` which means it randomly selects 10% of the source data for training. While that value is low for this example, for many large data sets using a small training sample greatly reduces runtime without impacting accuracy.
@@ -357,7 +357,7 @@ POST _ml/data_frame/analytics/model-flight-delays-classification/_start
 
 :::{image} ../../../images/machine-learning-flights-classification-details.jpg
 :alt: Statistics for a {{dfanalytics-job}} in {{kib}}
-:class: screenshot
+:screenshot:
 :::
 
    When the job stops, the results are ready to view and evaluate. To learn more about the job phases, see [How {{dfanalytics-jobs}} work](ml-dfa-phases.md).
@@ -466,7 +466,7 @@ When you view the {{classification}} results in {{kib}}, it shows the contents o
 
 :::{image} ../../../images/machine-learning-flights-classification-results.jpg
 :alt: Destination index table for a classification job in {{kib}}
-:class: screenshot
+:screenshot:
 :::
 
 The table shows a column for the {{depvar}} (`FlightDelay`), which contains the ground truth values that you are trying to predict. It also shows a column for the predicted values (`ml.FlightDelay_prediction`), which were generated by the {{classanalysis}}. The `ml.is_training` column indicates whether the document was used in the training or testing data set. You can use the **Training** and **Testing** filter options to refine the contents of the results table. You can also enable histogram charts to get a better understanding of the distribution of values.
@@ -518,14 +518,14 @@ If you chose to calculate {{feat-imp}}, the destination index also contains `ml.
 
 :::{image} ../../../images/machine-learning-flights-classification-total-importance.jpg
 :alt: Total {{feat-imp}} values in {{kib}}
-:class: screenshot
+:screenshot:
 :::
 
 You can also see the {{feat-imp}} values for each individual prediction in the form of a decision plot:
 
 :::{image} ../../../images/machine-learning-flights-classification-importance.png
 :alt: A decision plot for {{feat-imp}} values in {{kib}}
-:class: screenshot
+:screenshot:
 :::
 
 In {{kib}}, the decision path shows the relative impact of each feature on the probability of the prediction. The features with the most significant positive or negative impact appear at the top of the decision plot. Thus in this example, the features related to flight time and distance had the most significant influence on the probability value for this prediction. This type of information can help you to understand how models arrive at their predictions. It can also indicate which aspects of your data set are most influential or least useful when you are training and tuning your model.
@@ -673,7 +673,7 @@ Though you can look at individual results and compare the predicted value (`ml.F
 
 :::{image} ../../../images/machine-learning-flights-classification-evaluation.png
 :alt: Evaluation of a classification job in {{kib}}
-:class: screenshot
+:screenshot:
 :::
 
 ::::{note}
@@ -688,7 +688,7 @@ Likewise if you select other quadrants in the matrix, it shows the number of doc
 
 :::{image} ../../../images/machine-learning-flights-classification-roc-curve.jpg
 :alt: Evaluation of a classification job in {{kib}} – ROC curve
-:class: screenshot
+:screenshot:
 :::
 
 You can also generate these metrics with the [{{dfanalytics}} evaluate API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-evaluate-data-frame). For more information about interpreting the evaluation metrics, see [6. Evaluate and interpret the result](#ml-dfanalytics-classification-evaluation).

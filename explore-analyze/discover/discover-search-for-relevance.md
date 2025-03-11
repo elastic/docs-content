@@ -35,7 +35,7 @@ This example shows how to use **Discover** to list your documents from most rele
    Your table now sorts documents from most to least relevant.
    :::{image} ../../images/kibana-discover-search-for-relevance.png
    :alt: Documents are sorted from most relevant to least relevant.
-   :class: screenshot
+   :screenshot:
    :::
 
 

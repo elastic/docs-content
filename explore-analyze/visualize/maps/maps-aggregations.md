@@ -33,7 +33,7 @@ In the following example, the Grid aggregation layer is only visible when the ma
 
 :::{image} ../../../images/kibana-grid_to_docs.gif
 :alt: grid to docs
-:class: screenshot
+:screenshot:
 :::
 
 

@@ -10,7 +10,7 @@ The Users page provides a comprehensive overview of user data to help you unders
 
 :::{image} ../../../images/security-users-page.png
 :alt: User's page
-:class: screenshot
+:screenshot:
 :::
 
 The Users page has the following sections:
@@ -52,7 +52,7 @@ The user details page includes the following sections:
 
 :::{image} ../../../images/security-user-details-pg.png
 :alt: User details page
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -76,7 +76,7 @@ The user details flyout includes the following sections:
 
 :::{image} ../../../images/security-user-details-flyout.png
 :alt: User details flyout
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -103,7 +103,7 @@ If more than 10 alerts contributed to the risk scoring calculation, the remainin
 
 :::{image} ../../../images/security-user-risk-inputs.png
 :alt: User risk inputs
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -113,7 +113,7 @@ The **Asset Criticality** section displays the selected user’s [asset critical
 
 :::{image} ../../../images/security-user-asset-criticality.png
 :alt: Asset criticality
-:class: screenshot
+:screenshot:
 :::
 
 Click **Assign** to assign a criticality level to the selected user, or **Change** to change the currently assigned criticality level.
@@ -130,5 +130,5 @@ This section displays details such as the user ID, when the user was first and l
 
 :::{image} ../../../images/security-user-observed-data.png
 :alt: User observed data
-:class: screenshot
+:screenshot:
 :::

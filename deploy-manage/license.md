@@ -8,9 +8,9 @@ applies_to:
   serverless:
 ---
 
-# Manage your license  
+# Licenses and subscriptions  
 
-Your Elastic license determines which features are available and what level of support you receive. 
+Your Elastic license or subscription determines which features are available and what level of support you receive. 
 
 Depending on your deployment type, licenses and subscriptions are applied at different levels:
 

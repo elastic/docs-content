@@ -12,7 +12,7 @@ applies_to:
 Would you prefer to start with a hands-on example? Refer to our [full-text search tutorial](querydsl-full-text-filter-tutorial.md).
 ::::
 
-Full-text search, also known as lexical search, is a technique for fast, efficient searching through text fields in documents. Documents and search queries are transformed to enable returning [relevant](https://www.elastic.co/what-is/search-relevance) results instead of simply exact term matches. Fields of type [`text`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/text.md#text-field-type) are analyzed and indexed for full-text search.
+Full-text search, also known as lexical search, is a technique for fast, efficient searching through text fields in documents. Documents and search queries are transformed to enable returning [relevant](https://www.elastic.co/what-is/search-relevance) results instead of simply exact term matches. Fields of type [`text`](elasticsearch://reference/elasticsearch/mapping-reference/text.md#text-field-type) are analyzed and indexed for full-text search.
 
 Built on decades of information retrieval research, full-text search delivers reliable results that scale predictably as your data grows. Because it runs efficiently on CPUs, {{es}}'s full-text search requires minimal computational resources compared to GPU-intensive vector operations.
 
@@ -34,18 +34,18 @@ Here are some resources to help you learn more about full-text search with {{es}
 
 Learn about the core components of full-text search:
 
-* [Text fields](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/text.md)
+* [Text fields](elasticsearch://reference/elasticsearch/mapping-reference/text.md)
 * [Text analysis](full-text/text-analysis-during-search.md)
-    * [Tokenizers](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/text-analysis/tokenizer-reference.md)
-    * [Analyzers](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/text-analysis/analyzer-reference.md)
+    * [Tokenizers](elasticsearch://reference/data-analysis/text-analysis/tokenizer-reference.md)
+    * [Analyzers](elasticsearch://reference/data-analysis/text-analysis/analyzer-reference.md)
 
 
 **{{es}} query languages**
 
 Learn how to build full-text search queries using {{es}}'s query languages:
 
-* [Full-text queries using Query DSL](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/full-text-queries.md)
-* [Full-text search functions in {{esql}}](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/esql-functions-operators.md#esql-search-functions)
+* [Full-text queries using Query DSL](elasticsearch://reference/query-languages/full-text-queries.md)
+* [Full-text search functions in {{esql}}](elasticsearch://reference/query-languages/esql/esql-functions-operators.md#esql-search-functions)
 
 **Advanced topics**
 

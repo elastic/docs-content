@@ -11,7 +11,7 @@ Custom pipelines can be used to add custom data processing, like adding fields, 
 
 ## Metadata enrichment for Kubernetes [_metadata_enrichment_for_kubernetes]
 
-The [{{k8s}} Integration](asciidocalypse://docs/reference/kubernetes.md) is used to collect logs and metrics from Kubernetes clusters with {{agent}}. During the collection, the integration enhances the collected information with extra useful information that users can correlate with different Kubernetes assets. This additional information added on top of collected data, such as labels, annotations, ancestor names of Kubernetes assets, and others, are called metadata.
+The [{{k8s}} Integration](asciidocalypse://docs/integration-docs/docs/reference/kubernetes.md) is used to collect logs and metrics from Kubernetes clusters with {{agent}}. During the collection, the integration enhances the collected information with extra useful information that users can correlate with different Kubernetes assets. This additional information added on top of collected data, such as labels, annotations, ancestor names of Kubernetes assets, and others, are called metadata.
 
 The [{{k8s}} Provider](/reference/ingestion-tools/fleet/kubernetes-provider.md) offers the `add_resource_metadata` option to configure the metadata enrichment options.
 
@@ -21,7 +21,7 @@ For {{agent}} versions >[8.10.4], the default configuration for metadata enrichm
 
 :::{image} images/add_resource_metadata.png
 :alt: Configure add_resource_metadata
-:class: screenshot
+:screenshot:
 :::
 
 Example: Enabling the enrichment through `add_resource_metadata` in a Managed {{agent}} Policy.
@@ -40,14 +40,14 @@ Create the following custom ingest pipeline with two processors:
 
 :::{image} images/ingest_pipeline_custom_k8s.png
 :alt: Custom ingest pipeline
-:class: screenshot
+:screenshot:
 :::
 
 ### Processor for deployment [_processor_for_deployment]
 
 :::{image} images/gsub_deployment.png
 :alt: Gsub Processor for deployment
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -55,7 +55,7 @@ Create the following custom ingest pipeline with two processors:
 
 :::{image} images/gsub_cronjob.png
 :alt: Gsub Processor for cronjob
-:class: screenshot
+:screenshot:
 :::
 
 The final `metrics-kubernetes.state_pod@custom` ingest pipeline:

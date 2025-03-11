@@ -18,5 +18,5 @@ Find **Painless Lab** by navigating to the **Developer tools** page using the na
 
 :::{image} ../../images/kibana-painless-lab.png
 :alt: Painless Lab
-:class: screenshot
+:screenshot:
 :::

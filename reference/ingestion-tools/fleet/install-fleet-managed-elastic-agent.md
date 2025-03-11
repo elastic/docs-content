@@ -67,7 +67,7 @@ To install an {{agent}} and enroll it in {{fleet}}:
 
         :::{image} images/kibana-agent-flyout.png
         :alt: Add agent flyout in {kib}
-        :class: screenshot
+        :screenshot:
         :::
 
 
@@ -84,7 +84,7 @@ To confirm that {{agent}} is installed and running, open the **Agents** tab in {
 
 :::{image} images/kibana-fleet-agents.png
 :alt: {{fleet}} showing enrolled agents
-:class: screenshot
+:screenshot:
 :::
 
 ::::{tip}

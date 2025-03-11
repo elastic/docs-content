@@ -18,7 +18,7 @@ If you don’t have sufficient privileges to save Discover sessions, the followi
 
 :::{image} ../../images/kibana-read-only-badge.png
 :alt: Example of Discover's read only access indicator in Kibana's header
-:class: screenshot
+:screenshot:
 :::
 
 

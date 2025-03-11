@@ -15,28 +15,28 @@ If you have a license that includes the {{ml-features}}, you can create {{anomal
 
 :::{image} ../../../images/kibana-ml-job-management.png
 :alt: Job Management
-:class: screenshot
+:screenshot:
 :::
 
 You can use the **Settings** pane to create and edit calendars and the filters that are used in custom rules:
 
 :::{image} ../../../images/kibana-ml-settings.png
 :alt: Calendar Management
-:class: screenshot
+:screenshot:
 :::
 
 The **Anomaly Explorer** and **Single Metric Viewer** display the results of your {{anomaly-jobs}}. For example:
 
 :::{image} ../../../images/kibana-ml-single-metric-viewer.png
 :alt: Single Metric Viewer
-:class: screenshot
+:screenshot:
 :::
 
 You can optionally add annotations by drag-selecting a period of time in the **Single Metric Viewer** and adding a description. For example, you can add an explanation for anomalies in that time period or provide notes about what is occurring in your operational environment at that time:
 
 :::{image} ../../../images/kibana-ml-annotations-list.png
 :alt: Single Metric Viewer with annotations
-:class: screenshot
+:screenshot:
 :::
 
 In some circumstances, annotations are also added automatically. For example, if the {{anomaly-job}} detects that there is missing data, it annotates the affected time period. For more information, see [Handling delayed data](../anomaly-detection/ml-delayed-data-detection.md). The **Job Management** pane shows the full list of annotations for each job.
