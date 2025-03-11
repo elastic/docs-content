@@ -28,7 +28,7 @@ To learn about monitoring in general, see [Monitor a cluster](../../monitor.md).
     monitoring.kibana.collection.enabled: false
     ```
 
-    Leave the `monitoring.enabled` set to its default value (`true`). For more information, see [Monitoring settings in {{kib}}](asciidocalypse://docs/kibana/docs/reference/configuration-reference/monitoring-settings.md).
+    Leave the `monitoring.enabled` set to its default value (`true`). For more information, see [Monitoring settings in {{kib}}](kibana://reference/configuration-reference/monitoring-settings.md).
 
 2. [Start {{kib}}](../../maintenance/start-stop-services/start-stop-kibana.md).
 3. Set the `xpack.monitoring.collection.enabled` setting to `true` on each node in the production cluster. By default, it is disabled (`false`).
@@ -63,7 +63,7 @@ To learn about monitoring in general, see [Monitor a cluster](../../monitor.md).
         }
         ```
 
-        For more information, see [Monitoring settings in {{es}}](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/monitoring-settings.md) and [Cluster update settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings).
+        For more information, see [Monitoring settings in {{es}}](elasticsearch://reference/elasticsearch/configuration-reference/monitoring-settings.md) and [Cluster update settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings).
 
 4. [Install {{metricbeat}}](asciidocalypse://docs/beats/docs/reference/metricbeat/metricbeat-installation-configuration.md) on the same server as {{kib}}.
 5. Enable the {{kib}} {{xpack}} module in {{metricbeat}}.<br>

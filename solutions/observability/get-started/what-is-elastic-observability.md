@@ -22,7 +22,7 @@ In **Logs Explorer** (powered by Discover), you can quickly search and filter yo
 
 :::{image} ../../../images/serverless-log-explorer-overview.png
 :alt: Logs Explorer showing log events
-:class: screenshot
+:screenshot:
 :::
 
 [Learn more about log monitoring →](../../../solutions/observability/logs.md)
@@ -40,7 +40,7 @@ The **Service** inventory provides a quick, high-level overview of the health an
 
 :::{image} ../../../images/serverless-services-inventory.png
 :alt: Service inventory showing health and performance of instrumented services
-:class: screenshot
+:screenshot:
 :::
 
 [Learn more about Application performance monitoring (APM) →](../../../solutions/observability/apps/application-performance-monitoring-apm.md)
@@ -54,7 +54,7 @@ On the {{observability}} **Overview** page, the **Hosts** table shows your top h
 
 :::{image} ../../../images/observability-metrics-summary.png
 :alt: Summary of Hosts on the {{observability}} overview page
-:class: screenshot
+:screenshot:
 :::
 
 You can then drill down into the {{infrastructure-app}} by clicking **Show inventory**. Here you can monitor and filter your data by hosts, pods, containers,or EC2 instances and create custom groupings such as availability zones or namespaces.
@@ -72,7 +72,7 @@ On the {{observability}} **Overview** page, the **{{user-experience}}** chart pr
 
 :::{image} ../../../images/observability-obs-overview-ue.png
 :alt: Summary of {{user-experience}} metrics on the {{observability}} overview page
-:class: screenshot
+:screenshot:
 :::
 
 You can then drill down into the {{user-experience}} dashboard by clicking **Show dashboard** too see data by URL, operating system, browser, and location.
@@ -102,7 +102,7 @@ On the **Alerts** page, the **Alerts** table provides a snapshot of alerts occur
 
 :::{image} ../../../images/serverless-observability-alerts-overview.png
 :alt: Summary of Alerts on the Observability overview page
-:class: screenshot
+:screenshot:
 :::
 
 [Learn more about alerting → ](../../../solutions/observability/incident-management/alerting.md)
@@ -116,7 +116,7 @@ From the SLO overview list, you can see all of your SLOs and a quick summary of 
 
 :::{image} ../../../images/serverless-slo-dashboard.png
 :alt: Dashboard showing list of SLOs
-:class: screenshot
+:screenshot:
 :::
 
 [Learn more about SLOs → ](../../../solutions/observability/incident-management/service-level-objectives-slos.md)
@@ -127,7 +127,7 @@ Collect and share information about observability issues by creating cases. Case
 
 :::{image} ../../../images/serverless-cases.png
 :alt: Screenshot showing list of cases
-:class: screenshot
+:screenshot:
 :::
 
 [Learn more about cases → ](../../../solutions/observability/incident-management/cases.md)
@@ -142,7 +142,7 @@ Reduce the time and effort required to detect, understand, investigate, and reso
 
 :::{image} ../../../images/serverless-log-rate-analysis.png
 :alt: Log rate analysis page showing log rate spike
-:class: screenshot
+:screenshot:
 :::
 
 [Learn more about machine learning and AIOps →](../../../explore-analyze/machine-learning/machine-learning-in-kibana/xpack-ml-aiops.md)

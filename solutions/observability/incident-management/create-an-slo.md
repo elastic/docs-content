@@ -247,5 +247,5 @@ After you’ve created your SLO, you can monitor it from the *SLOs* page in Obse
 
 :::{image} ../../../images/observability-slo-overview-embeddable-widget.png
 :alt: Using the Add panel button to add an SLO Overview widget to a dashboard
-:class: screenshot
+:screenshot:
 :::

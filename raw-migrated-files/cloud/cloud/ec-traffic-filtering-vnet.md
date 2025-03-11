@@ -104,12 +104,12 @@ Follow these high-level steps to add Private Link rules to your deployments.
 
 :::{image} ../../../images/cloud-ec-private-link-azure-json-view.png
 :alt: Private endpoint JSON View
-:class: screenshot
+:screenshot:
 :::
 
 :::{image} ../../../images/cloud-ec-private-link-azure-properties.png
 :alt: Private endpoint Properties
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -274,7 +274,7 @@ This means your deployment on Elastic Cloud can be in a different region than th
 
 :::{image} ../../../images/cloud-ce-azure-inter-region-pl.png
 :alt: Inter-region Private Link
-:class: screenshot
+:screenshot:
 :::
 
 1. Set up Private Link Endpoint in region 1 for a deployment hosted in region 2.

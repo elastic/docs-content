@@ -28,7 +28,7 @@ First mark the repository as read-only on the secondary deployments:
 
     :::{image} ../../images/elasticsearch-reference-repositories.png
     :alt: {{kib}} Console
-    :class: screenshot
+    :screenshot:
     :::
 
 4. The repositories table should now be visible. Click on the pencil icon at the right side of the repository to be marked as read-only. On the Edit page that opened scroll down and check "Read-only repository". Click "Save". Alternatively if deleting the repository altogether is preferable, select the checkbox at the left of the repository name in the repositories table and click the "Remove repository" red button at the top left of the table.
@@ -41,7 +41,7 @@ Note that we’re now configuring the primary (current) deployment.
 
     :::{image} ../../images/elasticsearch-reference-repositories.png
     :alt: {{kib}} Console
-    :class: screenshot
+    :screenshot:
     :::
 
 2. Click on the pencil icon at the right side of the repository. On the Edit page that opened scroll down and click "Save", without making any changes to the existing settings.

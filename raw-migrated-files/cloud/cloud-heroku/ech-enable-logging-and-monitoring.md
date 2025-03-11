@@ -13,12 +13,12 @@ Monitoring consists of two components:
 The steps in this section cover only the enablement of the monitoring and logging features in Elasticsearch Add-On for Heroku. For more information on how to use the monitoring features, refer to [Monitor a cluster](../../../deploy-manage/monitor.md).
 
 
-### Before you begin [ech-logging-and-monitoring-limitations] 
+### Before you begin [ech-logging-and-monitoring-limitations]
 
 Some limitations apply when you use monitoring on Elasticsearch Add-On for Heroku. To learn more, check the monitoring [restrictions and limitations](../../../deploy-manage/monitor/stack-monitoring/elastic-cloud-stack-monitoring.md).
 
 
-### Monitoring for production use [ech-logging-and-monitoring-production] 
+### Monitoring for production use [ech-logging-and-monitoring-production]
 
 For production use, you should send your deployment logs and metrics to a dedicated monitoring deployment. Monitoring indexes logs and metrics into {{es}} and these indexes consume storage, memory, and CPU cycles like any other index. By using a separate monitoring deployment, you avoid affecting your other production deployments and can view the logs and metrics even when a production deployment is unavailable.
 
@@ -35,15 +35,15 @@ How many monitoring deployments you use depends on your requirements:
 Logs and metrics that get sent to a dedicated monitoring {{es}} deployment [may not be cleaned up automatically](../../../deploy-manage/monitor/stack-monitoring/elastic-cloud-stack-monitoring.md#ech-logging-and-monitoring-retention) and might require some additional steps to remove excess data periodically.
 
 
-### Retention of monitoring daily indices [ech-logging-and-monitoring-retention] 
+### Retention of monitoring daily indices [ech-logging-and-monitoring-retention]
 
 
-#### Stack versions 8.0 and above [ech-logging-and-monitoring-retention-8] 
+#### Stack versions 8.0 and above [ech-logging-and-monitoring-retention-8]
 
 When you enable monitoring in Elasticsearch Add-On for Heroku, your monitoring indices are retained for a certain period by default. After the retention period has passed, the monitoring indices are deleted automatically. The retention period is configured in the `.monitoring-8-ilm-policy` index lifecycle policy. To view or edit the policy open {{kib}} **Stack management > Data > Index Lifecycle Policies**.
 
 
-### Sending monitoring data to itself (self monitoring) [ech-logging-and-monitoring-retention-self-monitoring] 
+### Sending monitoring data to itself (self monitoring) [ech-logging-and-monitoring-retention-self-monitoring]
 
 $$$ech-logging-and-monitoring-retention-7$$$
 When you enable self-monitoring in Elasticsearch Add-On for Heroku, your monitoring indices are retained for a certain period by default. After the retention period has passed, the monitoring indices are deleted automatically. Monitoring data is retained for three days by default or as specified by the [`xpack.monitoring.history.duration` user setting](../../../deploy-manage/deploy/elastic-cloud/edit-stack-settings.md#xpack-monitoring-history-duration).
@@ -65,7 +65,7 @@ PUT /_cluster/settings
 ```
 
 
-### Sending monitoring data to a dedicated monitoring deployment [ech-logging-and-monitoring-retention-dedicated-monitoring] 
+### Sending monitoring data to a dedicated monitoring deployment [ech-logging-and-monitoring-retention-dedicated-monitoring]
 
 When [monitoring for production use](../../../deploy-manage/monitor/stack-monitoring/elastic-cloud-stack-monitoring.md#ech-logging-and-monitoring-production), where you configure your deployments **to send monitoring data to a dedicated monitoring deployment** for indexing, this retention period does not apply. Monitoring indices on a dedicated monitoring deployment are retained until you remove them. There are three options open to you:
 
@@ -98,17 +98,17 @@ When [monitoring for production use](../../../deploy-manage/monitor/stack-monito
 * To retain monitoring indices on a dedicated monitoring deployment as is without deleting them automatically, no additional steps are required other than making sure that you do not enable the monitoring deployment to send monitoring data to itself. You should also monitor the deployment for disk space usage and upgrade your deployment periodically, if necessary.
 
 
-### Retention of logging indices [ech-logging-and-monitoring-log-retention] 
+### Retention of logging indices [ech-logging-and-monitoring-log-retention]
 
 An ILM policy is pre-configured to manage log retention. The policy can be adjusted according to your requirements.
 
 
-### Index management [ech-logging-and-monitoring-index-management-ilm] 
+### Index management [ech-logging-and-monitoring-index-management-ilm]
 
 When sending monitoring data to a deployment, you can configure [Index Lifecycle Management (ILM)](../../../manage-data/lifecycle/index-lifecycle-management.md) to manage retention of your monitoring and logging indices. When sending logs to a deployment, an ILM policy is pre-configured to manage log retention and the policy can be customized to your needs.
 
 
-### Enable logging and monitoring [ech-enable-logging-and-monitoring-steps] 
+### Enable logging and monitoring [ech-enable-logging-and-monitoring-steps]
 
 Elasticsearch Add-On for Heroku manages the installation and configuration of the monitoring agent for you. When you enable monitoring on a deployment, you are configuring where the monitoring agent for your current deployment should send its logs and metrics.
 
@@ -125,23 +125,23 @@ To enable monitoring on your deployment:
 
     If a deployment is not listed, make sure that it is running a compatible version. The monitoring deployment and production deployment must be on the same major version, cloud provider, and region.
 
-    ::::{tip} 
+    ::::{tip}
     Remember to send logs and metrics for production deployments to a dedicated monitoring deployment, so that your production deployments are not impacted by the overhead of indexing and storing monitoring data. A dedicated monitoring deployment also gives you more control over the retention period for monitoring data.
     ::::
 
 
-::::{note} 
+::::{note}
 Enabling logs and monitoring may trigger a plan change on your deployment. You can monitor the plan change progress from the deployment’s **Activity** page.
 ::::
 
 
-::::{note} 
+::::{note}
 Enabling logs and monitoring requires some extra resource on a deployment. For production systems, we recommend sizing deployments with logs and monitoring enabled to at least 4 GB of RAM.
 ::::
 
 
 
-### Access the monitoring application in Kibana [ech-access-kibana-monitoring] 
+### Access the monitoring application in Kibana [ech-access-kibana-monitoring]
 
 With monitoring enabled for your deployment, you can access the [logs](https://www.elastic.co/guide/en/kibana/current/observability.html) and [stack monitoring](../../../deploy-manage/monitor/monitoring-data/visualizing-monitoring-data.md) through Kibana.
 
@@ -165,28 +165,28 @@ Alternatively, you can access logs and metrics directly on the Kibana **Logs** a
 | `service.version` | The version of the stack resource that generated the log | `8.13.1` |
 
 
-### Logging features [ech-extra-logging-features] 
+### Logging features [ech-extra-logging-features]
 
 When shipping logs to a monitoring deployment there are more logging features available to you. These features include:
 
 
-#### For {{es}}: [ech-extra-logging-features-elasticsearch] 
+#### For {{es}}: [ech-extra-logging-features-elasticsearch]
 
 * [Audit logging](../../../deploy-manage/monitor/logging-configuration/enabling-audit-logs.md) - logs security-related events on your deployment
-* [Slow query and index logging](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/slow-log.md) - helps find and debug slow queries and indexing
+* [Slow query and index logging](elasticsearch://reference/elasticsearch/index-settings/slow-log.md) - helps find and debug slow queries and indexing
 * Verbose logging - helps debug stack issues by increasing component logs
 
 After you’ve enabled log delivery on your deployment, you can [add the Elasticsearch user settings](../../../deploy-manage/deploy/elastic-cloud/edit-stack-settings.md) to enable these features.
 
 
-#### For Kibana: [ech-extra-logging-features-kibana] 
+#### For Kibana: [ech-extra-logging-features-kibana]
 
 * [Audit logging](../../../deploy-manage/monitor/logging-configuration/enabling-audit-logs.md) - logs security-related events on your deployment
 
 After you’ve enabled log delivery on your deployment, you can [add the Kibana user settings](../../../deploy-manage/deploy/elastic-cloud/edit-stack-settings.md) to enable this feature.
 
 
-### Other components [ech-extra-logging-features-enterprise-search] 
+### Other components [ech-extra-logging-features-enterprise-search]
 
 Enabling log collection also supports collecting and indexing the following types of logs from other components in your deployments:
 
@@ -204,12 +204,12 @@ The ˆ*ˆ indicates that we also index the archived files of each type of log.
 Check the respective product documentation for more information about the logging capabilities of each product.
 
 
-## Metrics features [ech-extra-metrics-features] 
+## Metrics features [ech-extra-metrics-features]
 
 With logging and monitoring enabled for a deployment, metrics are collected for Elasticsearch, Kibana, and APM with Fleet Server.
 
 
-#### Enabling Elasticsearch/Kibana audit logs on your deployment [ech-enable-audit-logs] 
+#### Enabling Elasticsearch/Kibana audit logs on your deployment [ech-enable-audit-logs]
 
 Audit logs are useful for tracking security events on your {{es}} and/or {{kib}} clusters. To enable {{es}} audit logs on your deployment:
 

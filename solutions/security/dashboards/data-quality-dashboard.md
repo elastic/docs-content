@@ -10,7 +10,7 @@ The Data Quality dashboard shows you whether your data is correctly mapped to th
 
 :::{image} ../../../images/security-data-qual-dash.png
 :alt: The Data Quality dashboard
-:class: screenshot
+:screenshot:
 :::
 
 Use the Data Quality dashboard to:
@@ -77,13 +77,13 @@ After an index is checked, a **Pass** or **Fail** status appears. **Fail** indic
 
 :::{image} ../../../images/security-data-qual-dash-detail.png
 :alt: An expanded index with some failed results in the Data Quality dashboard
-:class: screenshot
+:screenshot:
 :::
 
 The index check flyout provides more information about the status of fields in that index. Each of its tabs describe fields grouped by mapping status.
 
 ::::{note}
-Fields in the **Same family** category have the correct search behavior, but might have different storage or performance characteristics (for example, you can index strings to both `text` and `keyword` fields). To learn more, refer to [Field data types](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/field-data-types.md).
+Fields in the **Same family** category have the correct search behavior, but might have different storage or performance characteristics (for example, you can index strings to both `text` and `keyword` fields). To learn more, refer to [Field data types](elasticsearch://reference/elasticsearch/mapping-reference/field-data-types.md).
 ::::
 
 

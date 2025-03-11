@@ -45,7 +45,7 @@ To store monitoring data in a separate cluster:
         ::::
 
 
-        * If you plan to use {{agent}}, create a user that has the `remote_monitoring_collector` [built-in role](../../../deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md#built-in-roles-remote-monitoring-agent) and that the monitoring related [integration assets have been installed](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/install-uninstall-integration-assets.md#install-integration-assets) on the remote monitoring cluster.
+        * If you plan to use {{agent}}, create a user that has the `remote_monitoring_collector` [built-in role](../../../deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md#built-in-roles-remote-monitoring-agent) and that the monitoring related [integration assets have been installed](/reference/ingestion-tools/fleet/install-uninstall-integration-assets.md#install-integration-assets) on the remote monitoring cluster.
         * If you plan to use {{metricbeat}}, create a user that has the `remote_monitoring_collector` built-in role and a user that has the `remote_monitoring_agent` [built-in role](../../../deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md#built-in-roles-remote-monitoring-agent). Alternatively, use the `remote_monitoring_user` [built-in user](../../../deploy-manage/users-roles/cluster-or-deployment-auth/built-in-users.md).
         * If you plan to use HTTP exporters to route data through your production cluster, create a user that has the `remote_monitoring_agent` [built-in role](../../../deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md#built-in-roles-remote-monitoring-agent).
 
@@ -68,7 +68,7 @@ To store monitoring data in a separate cluster:
     * [{{metricbeat}} collection methods](../../../deploy-manage/monitor/stack-monitoring/collecting-monitoring-data-with-metricbeat.md)
     * [Legacy collection methods](../../../deploy-manage/monitor/stack-monitoring/es-legacy-collection-methods.md)
 
-3. (Optional) [Configure {{ls}} to collect data and send it to the monitoring cluster](asciidocalypse://docs/logstash/docs/reference/monitoring-logstash-legacy.md).
+3. (Optional) [Configure {{ls}} to collect data and send it to the monitoring cluster](logstash://reference/monitoring-logstash-legacy.md).
 4. (Optional) Configure the {{beats}} to collect data and send it to the monitoring cluster. Skip this step for {{beats}} that are managed by {{agent}}.
 
     * [Auditbeat](asciidocalypse://docs/beats/docs/reference/auditbeat/monitoring.md)
@@ -92,7 +92,7 @@ To store monitoring data in a separate cluster:
     ::::
 
 
-    1. (Optional) Disable the collection of monitoring data in this {{kib}} instance. Set the `xpack.monitoring.kibana.collection.enabled` setting to `false` in the `kibana.yml` file. For more information about this setting, see [Monitoring settings in {{kib}}](asciidocalypse://docs/kibana/docs/reference/configuration-reference/monitoring-settings.md).
+    1. (Optional) Disable the collection of monitoring data in this {{kib}} instance. Set the `xpack.monitoring.kibana.collection.enabled` setting to `false` in the `kibana.yml` file. For more information about this setting, see [Monitoring settings in {{kib}}](kibana://reference/configuration-reference/monitoring-settings.md).
 
 8. [Configure {{kib}} to retrieve and display the monitoring data](../../../deploy-manage/monitor/stack-monitoring/kibana-monitoring-data.md).
 

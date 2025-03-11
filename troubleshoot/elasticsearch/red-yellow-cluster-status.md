@@ -63,7 +63,7 @@ A shard can become unassigned for several reasons. The following tips outline th
 
 ### Single node cluster [fix-cluster-status-only-one-node]
 
-{{es}} will never assign a replica to the same node as the primary shard. A single-node cluster will always have yellow status. To change to green, set [number_of_replicas](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index-modules.md#dynamic-index-number-of-replicas) to 0 for all indices.
+{{es}} will never assign a replica to the same node as the primary shard. A single-node cluster will always have yellow status. To change to green, set [number_of_replicas](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#dynamic-index-number-of-replicas) to 0 for all indices.
 
 Therefore, if the number of replicas equals or exceeds the number of nodes, some shards won’t be allocated.
 
@@ -92,7 +92,7 @@ POST _cluster/reroute
 Misconfigured allocation settings can result in an unassigned primary shard. These settings include:
 
 * [Shard allocation](../../deploy-manage/distributed-architecture/shard-allocation-relocation-recovery/index-level-shard-allocation.md) index settings
-* [Allocation filtering](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#cluster-shard-allocation-filtering) cluster settings
+* [Allocation filtering](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#cluster-shard-allocation-filtering) cluster settings
 * [Allocation awareness](../../deploy-manage/distributed-architecture/shard-allocation-relocation-recovery/shard-allocation-awareness.md) cluster settings
 
 To review your allocation settings, use the [get index settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-settings) and [cluster get settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-get-settings) APIs.
@@ -123,7 +123,7 @@ PUT _settings
 
 ### Free up or increase disk space [fix-cluster-status-disk-space]
 
-{{es}} uses a [low disk watermark](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#disk-based-shard-allocation) to ensure data nodes have enough disk space for incoming shards. By default, {{es}} does not allocate shards to nodes using more than 85% of disk space.
+{{es}} uses a [low disk watermark](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#disk-based-shard-allocation) to ensure data nodes have enough disk space for incoming shards. By default, {{es}} does not allocate shards to nodes using more than 85% of disk space.
 
 To check the current disk space of your nodes, use the [cat allocation API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-allocation).
 
@@ -135,14 +135,14 @@ If your nodes are running low on disk space, you have a few options:
 
 * Upgrade your nodes to increase disk space.
 * Add more nodes to the cluster.
-* Delete unneeded indices to free up space. If you use {{ilm-init}}, you can update your lifecycle policy to use [searchable snapshots](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-lifecycle-actions/ilm-searchable-snapshot.md) or add a delete phase. If you no longer need to search the data, you can use a [snapshot](../../deploy-manage/tools/snapshot-and-restore.md) to store it off-cluster.
-* If you no longer write to an index, use the [force merge API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-forcemerge) or {{ilm-init}}'s [force merge action](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-lifecycle-actions/ilm-forcemerge.md) to merge its segments into larger ones.
+* Delete unneeded indices to free up space. If you use {{ilm-init}}, you can update your lifecycle policy to use [searchable snapshots](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-searchable-snapshot.md) or add a delete phase. If you no longer need to search the data, you can use a [snapshot](../../deploy-manage/tools/snapshot-and-restore.md) to store it off-cluster.
+* If you no longer write to an index, use the [force merge API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-forcemerge) or {{ilm-init}}'s [force merge action](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-forcemerge.md) to merge its segments into larger ones.
 
     ```console
     POST my-index/_forcemerge
     ```
 
-* If an index is read-only, use the [shrink index API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-shrink) or {{ilm-init}}'s [shrink action](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-lifecycle-actions/ilm-shrink.md) to reduce its primary shard count.
+* If an index is read-only, use the [shrink index API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-shrink) or {{ilm-init}}'s [shrink action](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-shrink.md) to reduce its primary shard count.
 
     ```console
     POST my-index/_shrink/my-shrunken-index
@@ -186,7 +186,7 @@ See [this video](https://www.youtube.com/watch?v=MiKKUdZvwnI) for walkthrough of
 
 ### Reduce JVM memory pressure [fix-cluster-status-jvm]
 
-Shard allocation requires JVM heap memory. High JVM memory pressure can trigger [circuit breakers](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/circuit-breaker-settings.md) that stop allocation and leave shards unassigned. See [High JVM memory pressure](high-jvm-memory-pressure.md).
+Shard allocation requires JVM heap memory. High JVM memory pressure can trigger [circuit breakers](elasticsearch://reference/elasticsearch/configuration-reference/circuit-breaker-settings.md) that stop allocation and leave shards unassigned. See [High JVM memory pressure](high-jvm-memory-pressure.md).
 
 
 ### Recover data for a lost primary shard [fix-cluster-status-restore]

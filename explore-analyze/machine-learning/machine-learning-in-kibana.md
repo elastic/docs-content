@@ -15,7 +15,7 @@ As data sets increase in size and complexity, the human effort required to inspe
 
 :::{image} ../../images/kibana-ml-data-visualizer-sample.png
 :alt: {{data-viz}} for sample flight data
-:class: screenshot
+:screenshot:
 :::
 
 You can upload different file formats for analysis with the **{{data-viz}}**.
@@ -35,7 +35,7 @@ File formats supported up to 60 MB:
 * Rich Text (RTF)
 * Open Document Format (ODF)
 
-The **{{data-viz}}** identifies the file format and field mappings, and you can import the data into an {{es}} index. To change the default file size limit, see [`fileUpload:maxFileSize`](asciidocalypse://docs/kibana/docs/reference/advanced-settings.md#kibana-general-settings) in advanced settings.
+The **{{data-viz}}** identifies the file format and field mappings, and you can import the data into an {{es}} index. To change the default file size limit, see [`fileUpload:maxFileSize`](kibana://reference/advanced-settings.md#kibana-general-settings) in advanced settings.
 
 If {{stack-security-features}} are enabled, users must have the necessary privileges to use {{ml-features}}. Refer to [Set up {{ml-features}}](setting-up-machine-learning.md#setup-privileges).
 
@@ -53,7 +53,7 @@ You can find the data drift view in **{{ml-app}}** > **{{data-viz}}** in {{kib}}
 
 :::{image} ../../images/kibana-ml-data-drift.png
 :alt: Data drift view in {{kib}}
-:class: screenshot
+:screenshot:
 :::
 
 Select a {{data-source}} that you want to analyze, then select a time range for the reference and the comparison data in the appearing histogram chart. You can adjust the time range for both the reference and the comparison data by moving the respective brushes. When you finished setting the time ranges, click **Run analysis**.

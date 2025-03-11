@@ -26,7 +26,7 @@ The frequency of check-ins can be configured to a new value with the condition t
 
 :::{image} images/agent-health-status.png
 :alt: Diagram of connectivity between agents
-:class: screenshot
+:screenshot:
 :::
 
 

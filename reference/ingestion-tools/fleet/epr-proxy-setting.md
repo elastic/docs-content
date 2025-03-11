@@ -7,11 +7,13 @@ mapped_pages:
 
 {{fleet}} might be unable to access the {{package-registry}} because {{kib}} is behind a proxy server.
 
-Also your organization might have network traffic restrictions that prevent {{kib}} from reaching the public {{package-registry}} (EPR) endpoints, like [epr.elastic.co](https://epr.elastic.co/), to download package metadata and content. You can route traffic to the public endpoint of EPR through a network gateway, then configure proxy settings in the [{{kib}} configuration file](asciidocalypse://docs/reference/configuration-reference/fleet-settings.md), `kibana.yml`. For example:
+Also your organization might have network traffic restrictions that prevent {{kib}} from reaching the public {{package-registry}} (EPR) endpoints, like [epr.elastic.co](https://epr.elastic.co/), to download package metadata and content. You can route traffic to the public endpoint of EPR through a network gateway, then configure proxy settings in the [{{kib}} configuration file](kibana://reference/configuration-reference/fleet-settings.md), `kibana.yml`. For example:
 
 ```yaml
 xpack.fleet.registryProxyUrl: your-nat-gateway.corp.net
 ```
+
+If your HTTP proxy requires authentication, you can include the credentials in the URI, such as `https://username:password@your-nat-gateway.corp.net`, only when using HTTPS.
 
 ## What information is sent to the {{package-registry}}? [_what_information_is_sent_to_the_package_registry]
 

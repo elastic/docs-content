@@ -31,3 +31,6 @@ The documentation team is working to combine content pulled from the following p
 * [/raw-migrated-files/cloud/cloud-enterprise/ece-administering-deployments.md](/raw-migrated-files/cloud/cloud-enterprise/ece-administering-deployments.md)
 * [/raw-migrated-files/cloud/cloud-enterprise/ece-change-deployment.md](/raw-migrated-files/cloud/cloud-enterprise/ece-change-deployment.md)
 * [/raw-migrated-files/cloud/cloud-enterprise/ece-monitoring-deployments.md](/raw-migrated-files/cloud/cloud-enterprise/ece-monitoring-deployments.md)
+
+% from the post-install instructions
+% * [Set up traffic filters](../../security/traffic-filtering.md) to restrict traffic to your deployment to only trusted IP addresses or VPCs.

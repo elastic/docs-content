@@ -6,7 +6,7 @@ All integrations are available in a single view on the **Integrations** page.
 
 :::{image} ../../../images/kibana-add-integration.png
 :alt: Integrations page from which you can choose integrations to start collecting and analyzing data
-:class: screenshot
+:screenshot:
 :::
 
 ::::{note}
@@ -21,7 +21,7 @@ A good place to start is with one of our Elastic solutions, which offer experien
 
 * **Elastic connectors and crawler.**
 
-    * Create searchable mirrors of your data in Sharepoint Online, S3, Google Drive, and many other web services using our open code [Elastic connectors](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/search-connectors/index.md).
+    * Create searchable mirrors of your data in Sharepoint Online, S3, Google Drive, and many other web services using our open code [Elastic connectors](elasticsearch://reference/ingestion-tools/search-connectors/index.md).
     * Discover, extract, and index your web content into {{es}} using the [Elastic web crawler](https://www.elastic.co/guide/en/enterprise-search/current/crawler.html).
 
 * **Elastic Observability.** Get logs, metrics, traces, and uptime data into the Elastic Stack. Integrations are available for popular services and platforms, such as Nginx, AWS, and MongoDB, and generic input types like log files. Refer to [Elastic Observability](../../../solutions/observability/get-started/what-is-elastic-observability.md) for more information.
@@ -41,7 +41,7 @@ Sample data sets come with sample visualizations, dashboards, and more to help y
 
 :::{image} ../../../images/kibana-add-sample-data.png
 :alt: eCommerce
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -73,7 +73,7 @@ The upload feature is not intended for use as part of a repeated production proc
 
 :::{image} ../../../images/kibana-add-data-fv.png
 :alt: Uploading a file in {{kib}}
-:class: screenshot
+:screenshot:
 :::
 
 The {{stack-security-features}} provide roles and privileges that control which users can upload files. To upload a file in {{kib}} and import it into an {{es}} index, you’ll need:

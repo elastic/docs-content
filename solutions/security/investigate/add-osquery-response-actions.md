@@ -15,8 +15,8 @@ Osquery Response Actions allow you to add live queries to custom query rules so 
 
 ::::{admonition} Requirements
 * Ensure you have the appropriate [{{stack}} subscription](https://www.elastic.co/pricing) or [{{serverless-short}} project tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md).
-* The [Osquery manager integration](manage-integration.md) must be installed. 
-* {{agent}}'s [status](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/monitor-elastic-agent.md) must be `Healthy`. Refer to [{{fleet}} Troubleshooting](/troubleshoot/ingest/fleet/common-problems.md) if it isn’t.
+* The [Osquery manager integration](manage-integration.md) must be installed.
+* {{agent}}'s [status](/reference/ingestion-tools/fleet/monitor-elastic-agent.md) must be `Healthy`. Refer to [{{fleet}} Troubleshooting](/troubleshoot/ingest/fleet/common-problems.md) if it isn’t.
 * Your role must have [Osquery feature privileges](/solutions/security/investigate/osquery.md).
 * You can only add Osquery Response Actions to custom query rules.
 
@@ -25,7 +25,7 @@ Osquery Response Actions allow you to add live queries to custom query rules so 
 
 :::{image} ../../../images/security-available-response-actions-osquery.png
 :alt: The Osquery response action
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -64,7 +64,7 @@ You can add Osquery Response Actions to new or existing custom query rules. Quer
 
         :::{image} ../../../images/security-setup-single-query.png
         :alt: Shows how to set up a single query
-        :class: screenshot
+        :screenshot:
         :::
 
 3. Click the **Osquery** icon to add more live queries (optional).
@@ -96,5 +96,5 @@ Refer to [Examine Osquery results](/solutions/security/investigate/examine-osque
 
 :::{image} ../../../images/security-osquery-results-tab.png
 :alt: Shows how to set up a single query
-:class: screenshot
+:screenshot:
 :::

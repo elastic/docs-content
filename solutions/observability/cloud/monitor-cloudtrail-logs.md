@@ -125,7 +125,7 @@ The Amazon Data Firehose delivery stream is ready to send logs to your Elastic C
 
 1. Visit the log group with the CloudTrail events.
 
-    Open the log group where the CloudTrail service is sending the events. You must forward these events to an Elastic stack using the Amazon Data Firehose delivery stream. CloudWatch log group offers a [subscription filter](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/Subscriptions.md) that allows you to choose log events from the log group and forward them to other services like Amazon Kinesis stream, an Amazon Data Firehose stream, or AWS Lambda.
+    Open the log group where the CloudTrail service is sending the events. You must forward these events to an Elastic stack using the Amazon Data Firehose delivery stream. CloudWatch log group offers a [subscription filter](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/Subscriptions.html) that allows you to choose log events from the log group and forward them to other services like Amazon Kinesis stream, an Amazon Data Firehose stream, or AWS Lambda.
 
 2. Create a subscription filter for Amazon Data Firehose by following these steps.
 
