@@ -108,10 +108,10 @@ Throughout the documentation, you'll see deployment type indicators that show wh
 
 The [security of your hosting environment](security/secure-hosting-environment.md) forms the foundation of your overall security posture. This section covers environment-specific security controls:
 
-- [**Elastic Cloud Hosted and Serverless**](security/secure-your-elastic-cloud-organization.md): Organization-level SSO, role-based access control, and cloud API keys
-- [**Elastic Cloud Enterprise**](security/secure-your-elastic-cloud-enterprise-installation.md): TLS certificates, role-based access control, and cloud API keys
-- [**Elastic Cloud on Kubernetes**](security/secure-your-eck-installation.md): Kubernetes-specific security controls
-- [**Self-managed environments**](security/manually-configure-security-in-self-managed-cluster.md): TLS certificates, HTTPS configuration
+- [**Elastic Cloud Hosted and Serverless**](security/secure-your-elastic-cloud-organization.md)
+- [**Elastic Cloud Enterprise**](security/secure-your-elastic-cloud-enterprise-installation.md)
+- [**Elastic Cloud on Kubernetes**](security/secure-your-eck-installation.md)
+- [**Self-managed environments**](security/manually-configure-security-in-self-managed-cluster.md)
 
 ### 2. Secure your deployments and clusters
 
