@@ -32,3 +32,6 @@ To reinforce the security of your organization, consider implementing the follow
 
 While serverless projects are fully managed and secured by Elastic, additional security settings are available for you to configure individually for your {{ech}} deployments. Refer to [](secure-your-cluster-deployment.md) for more information.
 
+
+In addition, multifactor authentication is mandatory for all {{ecloud}} users belonging to your organization. For more information on the available authentication methods, refer to [](/cloud-account/multifactor-authentication.md).
+
