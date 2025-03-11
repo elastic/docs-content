@@ -10,7 +10,7 @@ mapped_urls:
 
 An ECE deployment is a fully managed Elastic Stack environment running on {{ece}}. It includes {{es}}, {{kib}}, and optional features like Machine Learning or an Integrations (Fleet & APM) Server.
 
-Each deployment is based on a [deployment template](./deployment-templates.md), which defines its resources, default topology, scaling policies, and available features. Deployments can be customized based on workload requirements, including autoscaling, snapshot settings, and security configurations.
+Each deployment is based on a [deployment template](./deployment-templates.md), which defines its resources, default topology, scaling policies, and available features. Deployments can be customized based on workload requirements, snapshot settings, and security configurations.
 
 To create a deployment in ECE:
 
@@ -39,7 +39,7 @@ To create a deployment in ECE:
         Restoring a snapshot can help with major version upgrades by creating a separate, non-production deployment where you can test, for example. Or, make life easier for your developers by providing them with a development environment that is populated with real data.
     ::::
 
-6. Select **Advanced settings** if you want to configure [autoscaling](../../autoscaling/ece-autoscaling.md), adjust storage, memory, or customize data tiers. Refer to [Customize your deployment](../../../deploy-manage/deploy/cloud-enterprise/customize-deployment.md) for more details on the available options.
+6. Select **Advanced settings** if you want to configure [autoscaling](/deploy-manage/autoscaling/autoscaling-in-ece-and-ech.md), adjust storage, memory, or customize data tiers. Refer to [Customize your deployment](../../../deploy-manage/deploy/cloud-enterprise/customize-deployment.md) for more details on the available options.
 
 7. Select **Create deployment**. It takes a few minutes before your deployment gets created.
 

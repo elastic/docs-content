@@ -11,7 +11,7 @@ mapped_pages:
 Elasticsearch scales to whatever capacity you need and with as many nodes as the available resources can support. If you don’t have enough available resources, [add some capacity first](../../maintenance/ece/scale-out-installation.md).
 
 ::::{tip} 
-You can also enable autoscaling on a deployment to have the available resources for components, such as data tiers and machine learning nodes, adjust automatically as the demands on the deployment change over time. Check [Deployment autoscaling](../../autoscaling.md) to learn more.
+You can also enable autoscaling on a deployment to have the available resources for components, such as data tiers and machine learning nodes, adjust automatically as the demands on the deployment change over time. Check [Deployment autoscaling](/deploy-manage/autoscaling/autoscaling-in-ece-and-ech.md) to learn more.
 ::::
 
 To resize a deployment:

@@ -40,7 +40,7 @@ Review the changes to your configuration on the **Activity** page, with a tab fo
 
 In the deployment edit page, you can configure the following settings and features:
 
-* Enable [autoscaling](../../autoscaling.md) so that the available resources adjust automatically as demands on the deployment change.
+* Enable [autoscaling](/deploy-manage/autoscaling/autoscaling-in-ece-and-ech.md) so that the available resources adjust automatically as demands on the deployment change.
 
 * If you don’t want to autoscale your deployment, you can manually increase or decrease capacity of each [data tier](../../../manage-data/lifecycle/data-tiers.md) and component. For example, you might add warm or cold tier nodes for time series data that is accessed infrequently, or expand {{kib}} capacity to handle higher workloads.
 

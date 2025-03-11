@@ -15,7 +15,7 @@ You might want to change the configuration of your deployment to:
 
 * Add features, such as machine learning or APM (application performance monitoring).
 * Increase or decrease capacity by changing the amount of reserved memory and storage for different parts of your deployment.
-* Enable [autoscaling](../../../deploy-manage/autoscaling.md) so that the available resources for deployment components, such as data tiers and machine learning nodes, adjust automatically as the demands on them change over time.
+* Enable [autoscaling](/deploy-manage/autoscaling/autoscaling-in-ece-and-ech.md) so that the available resources for deployment components, such as data tiers and machine learning nodes, adjust automatically as the demands on them change over time.
 * Enable [high availability](./ece-ha.md), also known as fault tolerance, by adjusting the number of availability zones that parts of your deployment run on.
 * Upgrade to new versions of {{es}}. You can upgrade from one major version to another, such as from 6.8.23 to 7.17.27, or from one minor version to another, such as 6.1 to 6.2. You can’t downgrade versions.
 * Change what plugins or custom bundles are available on your {{es}} cluster.
