@@ -100,18 +100,19 @@ The availability and configurability of security features vary by deployment typ
 
 The documentation is organized into four main areas.
 
-:::{note}
-Throughout the documentation, you'll see deployment type indicators that show which content applies to specific deployment types. Focus on sections tagged with your deployment type and look for subsections specifically addressing your deployment model.
-:::
+On every page, you'll see deployment type indicators that show which content applies to specific deployment types. Focus on sections tagged with your deployment type and look for subsections specifically addressing your deployment model.
 
-### 1. Secure your hosting environment
+### 1. Secure your orchestrator
 
-The [security of your hosting environment](security/secure-hosting-environment.md) forms the foundation of your overall security posture. This section covers environment-specific security controls:
+The [security of your orchestrator](security/secure-hosting-environment.md) forms the foundation of your overall security posture. This section covers environment-specific security controls:
 
 - [**Elastic Cloud Hosted and Serverless**](security/secure-your-elastic-cloud-organization.md)
 - [**Elastic Cloud Enterprise**](security/secure-your-elastic-cloud-enterprise-installation.md)
 - [**Elastic Cloud on Kubernetes**](security/secure-your-eck-installation.md)
-- [**Self-managed environments**](security/manually-configure-security-in-self-managed-cluster.md)
+
+:::{note}
+There is no orchestration layer for self-managed deployments because you directly control the host environment. Refer to [](security/manually-configure-security-in-self-managed-cluster.md) to learn more about securing self-managed installations.
+:::
 
 ### 2. Secure your deployments and clusters
 
