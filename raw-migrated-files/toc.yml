@@ -144,9 +144,6 @@ toc:
   - file: docs-content/serverless/index.md
     children:
       - file: docs-content/serverless/intro.md
-      - file: docs-content/serverless/ai-assistant-knowledge-base.md
-      - file: docs-content/serverless/attack-discovery.md
-      - file: docs-content/serverless/connect-to-byo-llm.md
       - file: docs-content/serverless/elasticsearch-differences.md
       - file: docs-content/serverless/elasticsearch-explore-your-data.md
       - file: docs-content/serverless/elasticsearch-http-apis.md
@@ -164,18 +161,8 @@ toc:
       - file: docs-content/serverless/project-setting-data.md
       - file: docs-content/serverless/project-settings-alerts.md
       - file: docs-content/serverless/project-settings-content.md
-      - file: docs-content/serverless/security-ai-assistant-esql-queries.md
-      - file: docs-content/serverless/security-ai-assistant.md
-      - file: docs-content/serverless/security-ai-for-security.md
-      - file: docs-content/serverless/security-ai-use-cases.md
-      - file: docs-content/serverless/security-ai-usecase-incident-reporting.md
       - file: docs-content/serverless/security-automatic-import.md
-      - file: docs-content/serverless/security-connect-to-azure-openai.md
-      - file: docs-content/serverless/security-connect-to-bedrock.md
-      - file: docs-content/serverless/security-connect-to-google-vertex.md
-      - file: docs-content/serverless/security-connect-to-openai.md
       - file: docs-content/serverless/security-detection-engine-overview.md
-      - file: docs-content/serverless/security-triage-alerts-with-elastic-ai-assistant.md
       - file: docs-content/serverless/security-vuln-management-faq.md
       - file: docs-content/serverless/spaces.md
       - file: docs-content/serverless/what-is-observability-serverless.md

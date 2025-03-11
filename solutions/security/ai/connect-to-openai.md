@@ -6,13 +6,6 @@ mapped_urls:
 
 # Connect to OpenAI
 
-% What needs to be done: Lift-and-shift
-
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/security-docs/security/assistant-connect-to-openai.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/security-connect-to-openai.md
-
 This page provides step-by-step instructions for setting up an OpenAI connector for the first time. This connector type enables you to leverage OpenAI’s large language models (LLMs) within {{kib}}. You’ll first need to create an OpenAI API key, then configure the connector in {{kib}}.
 
 
@@ -38,21 +31,9 @@ To generate an API key:
 3. Name your key, select an OpenAI project, and set the desired permissions.
 4. Click **Create secret key** and then copy and securely store the key. It will not be accessible after you leave this screen.
 
-The following video demonstrates these steps.
+The following video demonstrates these steps (click to watch).
 
-::::{admonition}
-<script type="text/javascript" async src="https://play.vidyard.com/embed/v4.js"></script>
-<img
-  style="width: 100%; margin: auto; display: block;"
-  class="vidyard-player-embed"
-  src="https://play.vidyard.com/vbD7fGBGgyxK4TRbipeacL.jpg"
-  data-uuid="vbD7fGBGgyxK4TRbipeacL"
-  data-v="4"
-  data-type="inline"
-/>
-</br>
-::::
-
+[![openai-apikey-video](https://play.vidyard.com/vbD7fGBGgyxK4TRbipeacL.jpg)](https://videos.elastic.co/watch/vbD7fGBGgyxK4TRbipeacL?)
 
 
 ## Configure the OpenAI connector [_configure_the_openai_connector]
@@ -68,17 +49,6 @@ To integrate with {{kib}}:
 7. Paste the API key that you created into the corresponding field.
 8. Click **Save**.
 
-The following video demonstrates these steps.
+The following video demonstrates these steps (click to watch).
 
-::::{admonition}
-<script type="text/javascript" async src="https://play.vidyard.com/embed/v4.js"></script>
-<img
-  style="width: 100%; margin: auto; display: block;"
-  class="vidyard-player-embed"
-  src="https://play.vidyard.com/BGaQ73KBJCzeqWoxXkQvy9.jpg"
-  data-uuid="BGaQ73KBJCzeqWoxXkQvy9"
-  data-v="4"
-  data-type="inline"
-/>
-</br>
-::::
+[![openai-configure-connector-video](https://play.vidyard.com/BGaQ73KBJCzeqWoxXkQvy9.jpg)](https://videos.elastic.co/watch/BGaQ73KBJCzeqWoxXkQvy9?)

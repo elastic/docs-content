@@ -6,23 +6,6 @@ mapped_urls:
 
 # Identify, investigate, and document threats
 
-% What needs to be done: Lift-and-shift
-
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/security-docs/security/attack-discovery-ai-assistant-incident-reporting.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/security-ai-usecase-incident-reporting.md
-
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
-
-$$$use-case-incident-reporting-create-a-case-using-ai-assistant$$$
-
-$$$use-case-incident-reporting-translate$$$
-
-$$$use-case-incident-reporting-use-ai-assistant-to-analyze-a-threat$$$
-
-$$$use-case-incident-reporting-use-attack-discovery-to-identify-threats$$$
-
 Together, [Elastic AI Assistant](/solutions/security/ai/ai-assistant.md) and [Attack discovery](/solutions/security/ai/attack-discovery.md) can help you identify and mitigate threats, investigate incidents, and generate incident reports in various languages so you can monitor and protect your environment.
 
 In this guide, you’ll learn how to:
