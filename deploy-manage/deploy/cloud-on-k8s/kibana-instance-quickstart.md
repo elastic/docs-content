@@ -66,7 +66,7 @@ To deploy a simple [{{kib}}](/get-started/the-stack.md#stack-components-kibana) 
     ```
 
 
-For a full description of each `CustomResourceDefinition` (CRD), refer to the [*API Reference*](asciidocalypse://docs/cloud-on-k8s/docs/reference/k8s-api-reference.md) or view the CRD files in the [project repository](https://github.com/elastic/cloud-on-k8s/tree/2.16/config/crds). You can also retrieve information about a CRD from the instance. For example, describe the {{kib}} CRD specification with [`describe`](https://kubernetes.io/docs/reference/kubectl/generated/kubectl_describe/):
+For a full description of each `CustomResourceDefinition` (CRD), refer to the [*API Reference*](cloud-on-k8s://reference/api-docs.md) or view the CRD files in the [project repository](https://github.com/elastic/cloud-on-k8s/tree/2.16/config/crds). You can also retrieve information about a CRD from the instance. For example, describe the {{kib}} CRD specification with [`describe`](https://kubernetes.io/docs/reference/kubectl/generated/kubectl_describe/):
 
 ```sh
 kubectl describe crd kibana
