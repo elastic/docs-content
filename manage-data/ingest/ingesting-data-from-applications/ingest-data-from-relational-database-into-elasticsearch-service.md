@@ -2,43 +2,11 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/cloud/current/ec-getting-started-search-use-cases-db-logstash.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-getting-started-search-use-cases-db-logstash.html
+applies_to:
+  stack: ga
 ---
 
 # Ingest data from a relational database
-
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
-
-$$$ec-db-logstash-connect-securely$$$
-
-$$$ec-db-logstash-database-structure$$$
-
-$$$ec-db-logstash-database$$$
-
-$$$ec-db-logstash-driver$$$
-
-$$$ec-db-logstash-output$$$
-
-$$$ec-db-logstash-pipeline$$$
-
-$$$ec-db-logstash-prerequisites$$$
-
-$$$ec-db-logstash-trial$$$
-
-$$$ece-db-logstash-connect-securely$$$
-
-$$$ece-db-logstash-database-structure$$$
-
-$$$ece-db-logstash-database$$$
-
-$$$ece-db-logstash-deployment$$$
-
-$$$ece-db-logstash-driver$$$
-
-$$$ece-db-logstash-output$$$
-
-$$$ece-db-logstash-pipeline$$$
-
-$$$ece-db-logstash-prerequisites$$$
 
 This guide explains how to ingest data from a relational database into {{ecloud}} through [{{ls}}](logstash://reference/index.md), using the Logstash [JDBC input plugin](logstash://reference/plugins-inputs-jdbc.md). It demonstrates how Logstash can be used to efficiently copy records and to receive updates from a relational database, and then send them into {{es}} in an {{ech}} or {{ece}} deployment.
 
