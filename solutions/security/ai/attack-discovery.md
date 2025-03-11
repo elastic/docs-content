@@ -6,21 +6,6 @@ mapped_urls:
 
 # Attack Discovery
 
-% What needs to be done: Lift-and-shift
-
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/security-docs/security/attack-discovery.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/attack-discovery.md
-
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
-
-$$$attack-discovery-generate-discoveries$$$
-
-$$$attack-discovery-what-info$$$
-
-$$$attack-discovery-workflows$$$
-
 ::::{warning}
 This feature is in technical preview. It may change in the future, and you should exercise caution when using it in production environments. Elastic will work to fix any issues, but features in technical preview are not subject to the support SLA of GA features.
 ::::
@@ -28,20 +13,9 @@ This feature is in technical preview. It may change in the future, and you shoul
 
 Attack Discovery leverages large language models (LLMs) to analyze alerts in your environment and identify threats. Each "discovery" represents a potential attack and describes relationships among multiple alerts to tell you which users and hosts are involved, how alerts correspond to the MITRE ATT&CK matrix, and which threat actor might be responsible. This can help make the most of each security analyst’s time, fight alert fatigue, and reduce your mean time to respond.
 
-For a demo, refer to the following video.
+For a demo, refer to the following video (click to view).
 
-::::{admonition}
-<script type="text/javascript" async src="https://play.vidyard.com/embed/v4.js"></script>
-<img
-  style="width: 100%; margin: auto; display: block;"
-  class="vidyard-player-embed"
-  src="https://play.vidyard.com/eT92arEbpRddmSM4JeyzdX.jpg"
-  data-uuid="eT92arEbpRddmSM4JeyzdX"
-  data-v="4"
-  data-type="inline"
-/>
-</br>
-::::
+[![Attack Discovery video](https://play.vidyard.com/eT92arEbpRddmSM4JeyzdX.jpg)](https://videos.elastic.co/watch/eT92arEbpRddmSM4JeyzdX?)
 
 
 This page describes:
@@ -55,22 +29,19 @@ This page describes:
 
 The `Attack Discovery: All` privilege allows you to use Attack Discovery.
 
-:::{image} ../../../images/security-attck-disc-rbac.png
-:alt: Attack Discovery's RBAC settings
-:::
-
+![attack-discovery-rbac](../../../images/security-attck-disc-rbac.png)
 
 ## Generate discoveries [attack-discovery-generate-discoveries]
 
-When you access Attack Discovery for the first time, you’ll need to select an LLM connector before you can analyze alerts. Attack Discovery uses the same LLM connectors as [*AI Assistant*](/solutions/security/ai/ai-assistant.md). To get started:
+When you access Attack Discovery for the first time, you’ll need to select an LLM connector before you can analyze alerts. Attack Discovery uses the same LLM connectors as [AI Assistant](/solutions/security/ai/ai-assistant.md). To get started:
 
 1. Click the **Attack Discovery** page from {{elastic-sec}}'s navigation menu.
 2. Select an existing connector from the dropdown menu, or add a new one.
 
-    ::::{admonition} Recommended models
-    While Attack Discovery is compatible with many different models, refer to the [Large language model performance matrix](/solutions/security/ai/large-language-model-performance-matrix.md) to see which models perform best.
+   :::{admonition} Recommended models
+   While Attack Discovery is compatible with many different models, refer to the [Large language model performance matrix](/solutions/security/ai/large-language-model-performance-matrix.md) to see which models perform best.
 
-    ::::
+   :::
 
 
     :::{image} ../../../images/security-attck-disc-select-model-empty.png
@@ -82,12 +53,13 @@ When you access Attack Discovery for the first time, you’ll need to select an 
 It may take from a few seconds up to several minutes to generate discoveries, depending on the number of alerts and the model you selected.
 
 ::::{important}
-By default, Attack Discovery analyzes up to 100 alerts within this timeframe, but you can expand this up to 500 by clicking the settings icon (![Settings icon](../../../images/security-icon-settings.png "")) next to the model selection menu and adjusting the **Alerts** slider. Note that sending more alerts than your chosen LLM can handle may result in an error.
+By default, Attack Discovery analyzes up to 100 alerts within this timeframe, but you can expand this up to 500 by clicking the settings icon (![Settings icon](../../../images/security-icon-settings.png "title=20px")) next to the model selection menu and adjusting the **Alerts** slider. Note that sending more alerts than your chosen LLM can handle may result in an error.
 ::::
 
 
 :::{image} ../../../images/security-attck-disc-alerts-number-menu.png
 :alt: Attack Discovery's settings menu
+:width: 600px
 :::
 
 ::::{important}
@@ -116,7 +88,7 @@ Each discovery includes the following information describing the potential threa
 There are several ways you can incorporate discoveries into your {{elastic-sec}} workflows:
 
 * Click an entity’s name to open the user or host details flyout and view more details that may be relevant to your investigation.
-* Hover over an entity’s name to either add the entity to Timeline (![Add to timeline icon](../../../images/security-icon-add-to-timeline.png "")) or copy its field name and value to the clipboard (![Copy to clipboard icon](../../../images/security-icon-copy.png "")).
+* Hover over an entity’s name to either add the entity to Timeline (![Add to timeline icon](../../../images/security-icon-add-to-timeline.png "title=70%")) or copy its field name and value to the clipboard (![Copy to clipboard icon](../../../images/security-icon-copy.png "title=70%")).
 * Click **Take action**, then select **Add to new case** or **Add to existing case** to add a discovery to a [case](/solutions/security/investigate/cases.md). This makes it easy to share the information with your team and other stakeholders.
 * Click **Investigate in timeline** to explore the discovery in [Timeline](/solutions/security/investigate/timeline.md).
 * Click **View in AI Assistant** to attach the discovery to a conversation with AI Assistant. You can then ask follow-up questions about the discovery or associated alerts.
