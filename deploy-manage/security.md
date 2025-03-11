@@ -75,11 +75,16 @@ $$$maintaining-audit-trail$$$
 
 # Security
 
-This section covers how to secure your Elastic environment. Learn how to implement TLS encryption, network security controls, and data protection measures.
+This overview page helps you understand Elastic's security capabilities across different deployment types. You'll find:
+
+- Key security features for protecting your Elastic deployment
+- Security capabilities specific to each deployment type
+- Comparison tables showing feature availability and configurability by deployment type
+- Links to detailed implementation guides
 
 ## Security overview
 
-An Elastic implementation comprises many moving parts: {es} nodes forming the cluster, {kib} instances, additional stack components such as Logstash and Beats, and various clients and integrations communicating with your deployment.
+An Elastic implementation comprises many moving parts: {{es}} nodes forming the cluster, {{kib}} instances, additional stack components such as Logstash and Beats, and various clients and integrations communicating with your deployment.
 
 To keep your data secured, Elastic offers comprehensive security features that:
 - Prevent unauthorized access to your deployment
@@ -87,90 +92,145 @@ To keep your data secured, Elastic offers comprehensive security features that:
 - Protect data at rest
 - Secure sensitive settings and saved objects
 
-Security requirements and capabilities vary by deployment. Features may be managed automatically by Elastic, require configuration, or must be fully self-managed. Refer to [Security by deployment type](#security-by-deployment-type) for details.
+:::{note}
+The availability and configurability of security features vary by deployment type. Refer to [Security by deployment type](#security-features-by-deployment-type) for a comparison table.
+:::
 
-::::{tip}
-See the [Deployment overview](/deploy-manage/deploy.md) to understand your options for deploying Elastic.
-::::
+## Security topics
 
-### Security by deployment type
+The documentation is organized into four main areas.
 
-Security features have one of these statuses across deployment types:
+:::{note}
+Throughout the documentation, you'll see deployment type indicators that show which content applies to specific deployment types. Focus on sections tagged with your deployment type and look for subsections specifically addressing your deployment model.
+:::
 
-| Status | Description |
+### 1. Secure your hosting environment
+
+The [security of your hosting environment](security/secure-hosting-environment.md) forms the foundation of your overall security posture. This section covers environment-specific security controls:
+
+- [**Elastic Cloud Hosted and Serverless**](security/secure-your-elastic-cloud-organization.md)
+- [**Elastic Cloud Enterprise**](security/secure-your-elastic-cloud-enterprise-installation.md)
+- [**Elastic Cloud on Kubernetes**](security/secure-your-eck-installation.md)
+- [**Self-managed environments**](security/manually-configure-security-in-self-managed-cluster.md)
+
+### 2. Secure your deployments and clusters
+
+[Secure your deployments](security/secure-your-cluster-deployment.md) with features available across all deployment types:
+
+- [**Traffic filtering**](security/traffic-filtering.md): IP filtering, private links, and static IPs
+- [**Secure communications**](security/secure-cluster-communications.md): TLS configuration, certificates management
+- [**Data protection**](security/data-security.md): Encryption at rest, secure settings, saved objects
+- [**Session management**](security/kibana-session-management.md): Kibana session controls
+- [**FIPS 140-2 compliance**](security/fips-140-2.md): Federal security standards
+
+### 3. Secure your personal account
+
+[Secure your personal account](security/secure-your-personal-account.md) to help prevent unauthorized access:
+
+- Multi-factor authentication and account security best practices
+
+### 4. Secure your clients and integrations
+
+[Secure your clients and integrations](security/secure-clients-integrations.md) to ensure secure communication between your applications and Elastic:
+
+- [**Client security**](security/httprest-clients-security.md): Best practices for securely connecting applications to {{es}}
+- **Integration security**: Secure configuration for Beats, Logstash, and other integrations
+
+## Security features by deployment type
+
+Security feature availability varies by deployment type, with each feature having one of the following statuses:
+
+| **Status** | **Description** |
 |--------|-------------|
 | **Managed** | Handled automatically by Elastic with no user configuration needed |
 | **Configurable** | Built-in feature that needs your configuration (like IP filters or passwords) |
 | **Self-managed** | Infrastructure-level security you implement and maintain |
 | **N/A** | Not available for this deployment type |
 
-#### Communication security
+Select your deployment type below to see what's available and how implementation responsibilities are distributed:
 
-| **Security feature** | Serverless | Elastic Cloud Hosted | ECE | ECK | Self-managed |
-|------------------|------------|--------------|-----|-----|--------------|
-| **TLS (HTTP Layer)** | Managed | Managed | Configurable | Configurable | Self-managed |
-| **TLS (Transport Layer)** | Managed | Managed | Managed | Managed | Self-managed |
+::::{tab-set}
+:group: deployment-type
 
-#### Network security
+:::{tab-item} Elastic Cloud Hosted
+:sync: cloud-hosted
 
-| **Security feature** | Serverless | Elastic Cloud Hosted | ECE | ECK | Self-managed |
-|------------------|------------|--------------|-----|-----|--------------|
-| **IP traffic filtering** | Configurable | Configurable | Configurable | Configurable | Configurable |
-| **Private link** | N/A | Configurable | N/A | N/A | N/A |
-| **Static IPs** | Configurable | Configurable | N/A | N/A | N/A |
+| **Security Category** | **Security Feature** | **Status** | **Description** |
+|------------------|------------|--------------|-------------|
+| **Communication** | TLS (HTTP Layer) | Managed | Automatically configured by Elastic |
+| | TLS (Transport Layer) | Managed | Automatically configured by Elastic |
+| **Network** | IP traffic filtering | Configurable | Configure IP-based access restrictions |
+| | Private link | Configurable | Establish secure VPC connection |
+| | Static IPs | Configurable | Enable fixed IP addresses |
+| **Data** | Encryption at rest | Managed | Automatically encrypted by Elastic |
+| | Bring your own encryption key | Configurable | Implement customer-provided keys |
+| | Keystore security | Managed | Automatically protected by Elastic |
+| | Saved object encryption | Managed | Automatically encrypted by Elastic |
+| **User Session** | Kibana Sessions | Configurable | Customize session parameters |
 
-#### Data security
+:::
 
-| **Security feature** | Serverless | Elastic Cloud Hosted | ECE | ECK | Self-managed |
-|------------------|------------|--------------|-----|-----|--------------|
-| **Encryption at rest** | Managed | Managed | Self-managed | Self-managed | Self-managed |
-| **Bring your own encryption key** | N/A | Configurable | N/A | N/A | N/A |
-| **Keystore security** | Managed | Managed | Configurable | Configurable | Configurable |
-| **Saved object encryption** | Managed | Managed | Configurable | Configurable | Configurable |
+:::{tab-item} Serverless
+:sync: serverless
 
-#### User session security
+| **Security Category** | **Security Feature** | **Status** | **Description** |
+|------------------|------------|--------------|-------------|
+| **Communication** | TLS (HTTP Layer) | Managed | Automatically configured by Elastic |
+| | TLS (Transport Layer) | Managed | Automatically configured by Elastic |
+| **Network** | IP traffic filtering | Configurable | Configure IP-based access restrictions |
+| | Private link | N/A | X |
+| | Static IPs | Configurable | Enable fixed IP addresses |
+| **Data** | Encryption at rest | Managed | Automatically encrypted by Elastic |
+| | Bring your own encryption key | N/A | X |
+| | Keystore security | Managed | Automatically protected by Elastic |
+| | Saved object encryption | Managed | Automatically encrypted by Elastic |
+| **User Session** | Kibana Sessions | Managed | Automatically configured by Elastic |
 
-| **Security feature** | Serverless | Elastic Cloud Hosted | ECE | ECK | Self-managed |
-|------------------|------------|--------------|-----|-----|--------------|
-| **Kibana Sessions** | Managed | Configurable | Configurable | Configurable | Configurable |
+:::
 
-### Using this documentation
+:::{tab-item} ECE/ECK
+:sync: ece-eck
 
-Throughout this security documentation, you'll see deployment type indicators that show which content applies to specific deployment types. Each section clearly identifies which deployment types it applies to, and deployment-specific details are separated within each topic.
+| **Security Category** | **Security Feature** | **Status** | **Description** |
+|------------------|------------|--------------|-------------|
+| **Communication** | TLS (HTTP Layer) | Configurable | Configure custom certificates |
+| | TLS (Transport Layer) | Managed | Automatically configured by Elastic |
+| **Network** | IP traffic filtering | Configurable | Configure IP-based access restrictions |
+| | Private link | N/A | X |
+| | Static IPs | N/A | X |
+| **Data** | Encryption at rest | Self-managed | Implement at infrastructure level |
+| | Bring your own encryption key | N/A | X |
+| | Keystore security | Configurable | Configure secure settings storage |
+| | Saved object encryption | Configurable | Enable encryption for saved objects |
+| **User Session** | Kibana Sessions | Configurable | Customize session parameters |
 
-To get the most relevant information for your environment, focus on sections tagged with your deployment type and look for subsections specifically addressing your deployment model.
+:::
 
-## Security topics
+:::{tab-item} Self-managed
+:sync: self-managed
 
-This security documentation is organized into four main areas:
+| **Security Category** | **Security Feature** | **Status** | **Description** |
+|------------------|------------|--------------|-------------|
+| **Communication** | TLS (HTTP Layer) | Self-managed | Implement and maintain certificates |
+| | TLS (Transport Layer) | Self-managed | Implement and maintain certificates |
+| **Network** | IP traffic filtering | Configurable | Configure IP-based access restrictions |
+| | Private link | N/A | X |
+| | Static IPs | N/A | X |
+| **Data** | Encryption at rest | Self-managed | Implement at infrastructure level |
+| | Bring your own encryption key | N/A | X |
+| | Keystore security | Configurable | Configure secure settings storage |
+| | Saved object encryption | Configurable | Enable encryption for saved objects |
+| **User Session** | Kibana Sessions | Configurable | Customize session parameters |
 
-% TODO: Add links to the sections below
+:::
 
-### 1. Secure your hosting environment
+::::
 
-The security of your hosting environment forms the foundation of your overall security posture. This section covers environment-specific security controls:
+## Next steps
 
-- **Elastic Cloud Hosted and Serverless**: Organization-level SSO, role-based access control, and cloud API keys
-- **Elastic Cloud Enterprise**: TLS certificates, role-based access control, and cloud API keys
-- **Self-managed environments**: TLS certificates, HTTPS configuration
+Refer to the following sections for detailed instructions about securing your hosting environment:
 
-### 2. Secure your deployments and clusters
-
-Protect your deployments with features available across all deployment types:
-
-- **Authentication and access controls**: User management, API keys, authentication protocols, and traffic filtering
-- **Data protection**: Encryption, sensitive settings, and document-level security
-- **Monitoring and compliance**: Audit logging and security best practices
-
-### 3. Secure your user accounts
-
-Individual user security helps prevent unauthorized access:
-
-- **Multi-factor authentication**: Add an extra layer of security to your login process
-
-### 4. Secure your clients and integrations
-
-Ensure secure communication between your applications and Elastic:
-
-- **Client security**: Best practices for securely connecting applications to {es}
-- **Integration security**: Secure configuration for Beats, Logstash, and other integrations
+* [Elastic Cloud Hosted and Serverless security setup](/deploy-manage/security/secure-your-elastic-cloud-organization.md)
+* [Elastic Cloud Enterprise (ECE) security setup](/deploy-manage/security/secure-your-elastic-cloud-enterprise-installation.md)
+* [Elastic Cloud on Kubernetes (ECK) security setup](/deploy-manage/security/secure-your-eck-installation.md)
+* [Self-managed cluster security setup](/deploy-manage/security/manually-configure-security-in-self-managed-cluster.md)
