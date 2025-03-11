@@ -1,3 +1,9 @@
+---
+applies_to:
+  deployment:
+    self: all
+---
+    
 # Upgrade {{es}} [upgrading-elasticsearch]
 
 An {{es}} cluster can be upgraded one node at a time so upgrading does not interrupt service. Running multiple versions of {{es}} in the same cluster beyond the duration of an upgrade is not supported, as shards cannot be replicated from upgraded nodes to nodes running the older version.
@@ -14,7 +20,7 @@ To upgrade a cluster:
 
 1. **Disable shard allocation**.
 
-    When you shut down a data node, the allocation process waits for `index.unassigned.node_left.delayed_timeout` (by default, one minute) before starting to replicate the shards on that node to other nodes in the cluster, which can involve a lot of I/O. Since the node is shortly going to be restarted, this I/O is unnecessary. You can avoid racing the clock by [disabling allocation](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#cluster-routing-allocation-enable) of replicas before shutting down [data nodes](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/node-settings.md#data-node):
+    When you shut down a data node, the allocation process waits for `index.unassigned.node_left.delayed_timeout` (by default, one minute) before starting to replicate the shards on that node to other nodes in the cluster, which can involve a lot of I/O. Since the node is shortly going to be restarted, this I/O is unnecessary. You can avoid racing the clock by [disabling allocation](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#cluster-routing-allocation-enable) of replicas before shutting down [data nodes](elasticsearch://reference/elasticsearch/configuration-reference/node-settings.md#data-node):
 
     ```console
     PUT _cluster/settings
@@ -38,7 +44,7 @@ To upgrade a cluster:
     It is possible to leave your {{ml}} jobs running during the upgrade, but it puts increased load on the cluster. When you shut down a {{ml}} node, its jobs automatically move to another node and restore the model states.
 
     ::::{note}
-    Any {{ml}} indices created before 8.x must be reindexed before upgrading, which you can initiate from the **Upgrade Assistant** in 8.18.
+    Any {{ml}} indices created before 8.x must be reindexed before upgrading, which you can initiate from the **Upgrade Assistant** in 8.18. For more information, refer to [Anomaly detection results migration]
     ::::
 
 
