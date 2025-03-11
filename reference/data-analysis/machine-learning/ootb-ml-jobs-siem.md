@@ -133,16 +133,16 @@ If there are additional requirements such as installing the Windows System Monit
 
 The following Integrations use {{ml}} to analyze patterns of user and entity behavior, and help detect and alert when there is related suspicious activity in your environment.
 
-* [Data Exfiltration Detection](integration-docs://reference/ded.md)
-* [Domain Generation Algorithm Detection](integration-docs://reference/dga.md)
-* [Lateral Movement Detection](integration-docs://reference/lmd.md)
-* [Living off the Land Attack Detection](integration-docs://reference/problemchild.md)
+* [Data Exfiltration Detection](integration-docs://reference/ded/index.md)
+* [Domain Generation Algorithm Detection](integration-docs://reference/dga/index.md)
+* [Lateral Movement Detection](integration-docs://reference/lmd/index.md)
+* [Living off the Land Attack Detection](integration-docs://reference/problemchild/index.md)
 
 **Domain Generation Algorithm (DGA) Detection**
 
 {{ml-cap}} solution package to detect domain generation algorithm (DGA) activity in your network data. Refer to the [subscription page](https://www.elastic.co/subscriptions) to learn more about the required subscription.
 
-To download, refer to the [documentation](integration-docs://reference/dga.md).
+To download, refer to the [documentation](integration-docs://reference/dga/index.md).
 
 | Name | Description |
 | --- | --- |
@@ -154,7 +154,7 @@ The job configurations and datafeeds can be found [here](https://github.com/elas
 
 {{ml-cap}} solution package to detect Living off the Land (LotL) attacks in your environment. Refer to the [subscription page](https://www.elastic.co/subscriptions) to learn more about the required subscription. (Also known as ProblemChild).
 
-To download, refer to the [documentation](integration-docs://reference/problemchild.md).
+To download, refer to the [documentation](integration-docs://reference/problemchild/index.md).
 
 | Name | Description |
 | --- | --- |
@@ -171,7 +171,7 @@ The job configurations and datafeeds can be found [here](https://github.com/elas
 
 {{ml-cap}} package to detect data exfiltration in your network and file data. Refer to the [subscription page](https://www.elastic.co/subscriptions) to learn more about the required subscription.
 
-To download, refer to the [documentation](integration-docs://reference/ded.md).
+To download, refer to the [documentation](integration-docs://reference/ded/index.md).
 
 | Name | Description |
 | --- | --- |
@@ -189,7 +189,7 @@ The job configurations and datafeeds can be found [here](https://github.com/elas
 
 {{ml-cap}} package to detect lateral movement based on file transfer activity and Windows RDP events. Refer to the [subscription page](https://www.elastic.co/subscriptions) to learn more about the required subscription.
 
-To download, refer to the [documentation](integration-docs://reference/lmd.md).
+To download, refer to the [documentation](integration-docs://reference/lmd/index.md).
 
 | Name | Description |
 | --- | --- |
