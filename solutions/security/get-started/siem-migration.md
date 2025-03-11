@@ -11,7 +11,7 @@ You can ingest your data before migrating your rules, or migrate your rules firs
 ::::{admonition} Requirements
 * A working [LLM connector](/solutions/security/ai/set-up-connectors-for-large-language-models-llm.md).
 * {{stack}} users: an [Enterprise](https://www.elastic.co/pricing) subscription. 
-* {{Stack users}}: {{ml}} must be enabled.
+* {{Stack}} users: {{ml}} must be enabled.
 * {{serverless-short}} users: a [Security Complete](../../../deploy-manage/deploy/elastic-cloud/project-settings.md) subscription.
 
 ::::
@@ -41,7 +41,7 @@ You can ingest your data before migrating your rules, or migrate your rules firs
    ```
    Which would download rules related to just the `splunksysmonsecurity` app.
 
-   We don't recommend downloading all searches (for example with`| rest /servicesNS/-/-/saved/searches`) since most of the data will be irrelevant to SIEM rule migration. 
+   We don't recommend downloading all searches (for example with `| rest /servicesNS/-/-/saved/searches`) since most of the data will be irrelevant to SIEM rule migration. 
    ::::
 
 5. Select your JSON file and click **Upload**. 
@@ -74,11 +74,11 @@ The table's fields are as follows:
 
   | Splunk severity | Elastic rule severity |
   | ------- | ----------- |
-  | (Info)     | Low      |
-  | (Low)      | Low      |
-  | (Medium)   | Medium   |
-  | (High)     | High     |
-  | (Critical) | Critical |
+  | 1 (Info)     | Low      |
+  | 2 (Low)      | Low      |
+  | 3 (Medium)   | Medium   |
+  | 4 (High)     | High     |
+  | 5 (Critical) | Critical |
 
 * **Author:** Shows one of two possible values: `Elastic`, or `Custom`. Elastic authored rules are created by Elastic and update automatically. Custom rules are translated by the SIEM migration tool or your team, and do not update automatically.
 * **Integrations:** Shows the number of Elastic integrations that must be installed to provide data for the rule to run successfully.
