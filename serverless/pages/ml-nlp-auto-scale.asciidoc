@@ -95,6 +95,9 @@ The used resources for trained model deployments depend on three factors:
 * the use case you optimize the model deployment for (ingest or search)
 * whether model autoscaling is enabled with adaptive allocations/resources to have dynamic resources, or disabled for static resources
 
+VCUs for ML are based on the amount of vCPU and Memory consumed. For ML, `1` VCU equals `0.125` of vCPU and `1GB` of memory, where vCPUs is measured by allocations multiplied by threads, and where memory is the amount consumed by trained models or ML jobs.
+As a math formula, `VCUs = 8 * allocations * threads`, or `1` VCU for every `1GB` of memory consumed, whichever is greater.
+
 The following tables show you the number of allocations, threads, and VCUs available on Serverless when adaptive resources are enabled or disabled.
 
 [discrete]
