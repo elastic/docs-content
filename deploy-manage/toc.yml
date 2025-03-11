@@ -156,7 +156,6 @@ toc:
                   - file: deploy/cloud-enterprise/change-allocator-disconnect-timeout.md
                   - file: deploy/cloud-enterprise/manage-elastic-stack-versions.md
                   - file: deploy/cloud-enterprise/ece-include-additional-kibana-plugin.md
-                  - file: deploy/cloud-enterprise/migrate-ece-on-podman-hosts-to-selinux-enforce.md
           - file: deploy/cloud-enterprise/working-with-deployments.md
             children:
               - file: deploy/cloud-enterprise/deployment-templates.md
@@ -483,6 +482,7 @@ toc:
               - file: security/secure-your-elastic-cloud-enterprise-installation/manage-security-certificates.md
               - file: security/secure-your-elastic-cloud-enterprise-installation/allow-x509-certificates-signed-with-sha-1.md
               - file: security/secure-your-elastic-cloud-enterprise-installation/configure-tls-version.md
+              - file: security/secure-your-elastic-cloud-enterprise-installation/migrate-ece-on-podman-hosts-to-selinux-enforce.md
           - file: security/secure-your-eck-installation.md
           - file: security/manually-configure-security-in-self-managed-cluster.md
             children:
