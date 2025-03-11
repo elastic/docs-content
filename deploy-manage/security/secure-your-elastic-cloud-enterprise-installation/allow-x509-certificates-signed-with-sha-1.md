@@ -1,4 +1,7 @@
 ---
+applies_to:
+  deployment:
+    ece: ga
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-allow-x509-sha1.html
 ---
