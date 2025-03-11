@@ -104,6 +104,7 @@ toc:
                   - file: ingestion-tools/fleet/monitor-elastic-agent.md
                   - file: ingestion-tools/fleet/agent-health-status.md
                   - file: ingestion-tools/fleet/filter-agent-list-by-tags.md
+                  - file: ingestion-tools/fleet/enrollment-handling-containerized-agent.md
               - file: ingestion-tools/fleet/agent-policy.md
                 children:
                   - file: ingestion-tools/fleet/create-policy-no-ui.md
