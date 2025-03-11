@@ -1,5 +1,8 @@
 ---
 navigation_title: "Set up basic security"
+applies_to:
+  deployment:
+    self: ga
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/security-basic-setup.html
 ---
@@ -25,7 +28,7 @@ Transport Layer Security (TLS) is the name of an industry standard protocol for 
 
 Transport Protocol is the name of the protocol that {{es}} nodes use to communicate with one another. This name is specific to {{es}} and distinguishes the transport port (default `9300`) from the HTTP port (default `9200`). Nodes communicate with one another using the transport port, and REST clients communicate with {{es}} using the HTTP port.
 
-Although the word *transport* appears in both contexts, they mean different things. It’s possible to apply TLS to both the {{es}} transport port and the HTTP port. We know that these overlapping terms can be confusing, so to clarify, in this scenario we’re applying TLS to the {{es}} transport port. In [the next scenario](secure-http-communications.md), we’ll apply TLS to the {{es}} HTTP port.
+Although the word *transport* appears in both contexts, they mean different things. It’s possible to apply TLS to both the {{es}} transport port and the HTTP port. We know that these overlapping terms can be confusing, so to clarify, in this scenario we’re applying TLS to the {{es}} transport port. In [](secure-http-communications.md), we’ll apply TLS to the {{es}} HTTP port.
 
 ::::
 

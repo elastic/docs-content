@@ -23,6 +23,10 @@ To learn how to run {{agent}}s in a containerized environment, see:
 * [Using a custom ingest pipeline with the {{k8s}} Integration](/reference/ingestion-tools/fleet/ingest-pipeline-kubernetes.md)
 * [Run {{agent}} on ECK](/deploy-manage/deploy/cloud-on-k8s/standalone-elastic-agent.md) — for {{eck}} users
 
+::::{note}
+Enrollment handling for {{agent}} in a containerized environment has some special nuances.
+For details refer to [Enrollment handing for containerized agents](./enrollment-handling-containerized-agent.md).
+::::
 
 
 
