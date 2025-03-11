@@ -8,17 +8,17 @@ applies_to:
 
 # Secure your Elastic Cloud organization [ec-securing-considerations]
 
-This section describes the settings available for you to secure your {{ecloud}} organization, which is the platform where you can manage your {{ech}} deployments and serverless projects. 
+This section covers security settings for your {{ecloud}} organization, the platform for managing {{ech}} deployments and serverless projects.
 
-**Managed for you**
+**Managed by Elastic**
 
-As a managed service, a certain number of [security aspects are handled by Elastic](https://www.elastic.co/cloud/security#details) and don't require specific configuration from you:
+As a managed service, Elastic automatically handles a [number of security features](https://www.elastic.co/cloud/security#details) with no configuration required:
 
 - **TLS encrypted communication** is provided in the default configuration. Elasticsearch nodes communicate using TLS.
 - **Encryption at rest**. By default, all of your {{ecloud}} resources are encrypted at rest. Note that you can choose to encrypt your {{ech}} deployments [using your own encryption key](/deploy-manage/security/encrypt-deployment-with-customer-managed-encryption-key.md).
 - **Cluster isolation**. Elasticsearch nodes run in isolated containers, configured according to the principle of least privilege, and with restrictions on system calls and allowed root operations.
 
-**Organization-level available security settings**
+**Additional organization-level security settings**
 
 To reinforce the security of your organization, consider implementing the following measures:
 
@@ -33,7 +33,7 @@ To reinforce the security of your organization, consider implementing the follow
 
 
 
-**Deployment-level available security settings**
+**Additional deployment-level security settings**
 
 While serverless projects are fully managed and secured by Elastic, additional security settings are available for you to configure individually for your {{ech}} deployments. Refer to [](secure-your-cluster-deployment.md) for more information.
 
