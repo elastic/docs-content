@@ -524,7 +524,6 @@ toc:
               - file: security/secure-saved-objects.md
           - file: security/kibana-session-management.md
           - file: security/fips-140-2.md
-      - file: security/secure-your-personal-account.md
       - file: security/secure-clients-integrations.md
         children:
           - file: security/httprest-clients-security.md
