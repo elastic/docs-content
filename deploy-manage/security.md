@@ -98,7 +98,7 @@ The availability and configurability of security features vary by deployment typ
 
 ## Security topics
 
-The documentation is organized into four main areas.
+The documentation is organized into three main areas.
 
 On every page, you'll see deployment type indicators that show which content applies to specific deployment types. Focus on sections tagged with your deployment type and look for subsections specifically addressing your deployment model.
 
@@ -124,13 +124,7 @@ There is no orchestration layer for self-managed deployments because you directl
 - [**Session management**](security/kibana-session-management.md): Kibana session controls
 - [**FIPS 140-2 compliance**](security/fips-140-2.md): Federal security standards
 
-### 3. Secure your personal account
-
-[Secure your personal account](security/secure-your-personal-account.md) to help prevent unauthorized access:
-
-- Multi-factor authentication and account security best practices
-
-### 4. Secure your clients and integrations
+### 3. Secure your clients and integrations
 
 [Secure your clients and integrations](security/secure-clients-integrations.md) to ensure secure communication between your applications and Elastic:
 
