@@ -255,7 +255,6 @@ toc:
           - file: data-analysis/machine-learning/ml-sum-functions.md
           - file: data-analysis/machine-learning/ml-time-functions.md
       - file: data-analysis/observability/index.md
-      - file: data-analysis/observability/metrics-reference-serverless.md
         children:
           - file: data-analysis/observability/observability-host-metrics-serverless.md
           - file: data-analysis/observability/observability-container-metrics-serverless.md
