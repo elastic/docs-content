@@ -185,7 +185,7 @@ $$$elasticsearch-service-account-token$$$ `elasticsearch.serviceAccountToken`
 :   Maximum number of documents loaded by each shard to generate autocomplete suggestions. This value must be a whole number greater than zero. **Default: `"100000"`**
 
     ::::{note}
-    To reload the [logging settings](asciidocalypse://docs/kibana/docs/reference/configuration-reference/logging-settings.md), send a SIGHUP signal to {{kib}}. For more logging configuration options, see the [Configure Logging in {{kib}}](../../monitor/logging-configuration/kibana-logging.md) guide.
+    To reload the [logging settings](kibana://reference/configuration-reference/logging-settings.md), send a SIGHUP signal to {{kib}}. For more logging configuration options, see the [Configure Logging in {{kib}}](../../monitor/logging-configuration/kibana-logging.md) guide.
     ::::
 
 
@@ -262,7 +262,7 @@ $$$tilemap-url$$$ `map.tilemap.url` ![logo cloud](https://doc-icons.s3.us-east-2
 :   [preview] Indicates which roles to configure the {{kib}} process with, which will effectively run {{kib}} in different modes. Valid options are `background_tasks` and `ui`, or `*` to select all roles. **Default: `*`**
 
 `notifications.connectors.default.email`
-:   Choose the default email connector for user notifications. As of `8.6.0`, {{kib}} is shipping with a new notification mechanism that will send email notifications for various user actions, e.g. assigning a *Case* to a user. To enable notifications, an email connector must be [preconfigured](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/pre-configured-connectors.md) in the system via `kibana.yml`, and the notifications plugin must be configured to point to the ID of that connector.
+:   Choose the default email connector for user notifications. As of `8.6.0`, {{kib}} is shipping with a new notification mechanism that will send email notifications for various user actions, e.g. assigning a *Case* to a user. To enable notifications, an email connector must be [preconfigured](kibana://reference/connectors-kibana/pre-configured-connectors.md) in the system via `kibana.yml`, and the notifications plugin must be configured to point to the ID of that connector.
 
 $$$path-data$$$ `path.data`
 :   The path where {{kib}} stores persistent data not saved in {{es}}. **Default: `data`**
@@ -472,12 +472,12 @@ $$$settings-xsrf-disableProtection$$$ `server.xsrf.disableProtection`
 :   If authentication is enabled, setting this to `true` enables unauthenticated users to access the {{kib}} server status API and status page. **Default: `false`**
 
 $$$telemetry-allowChangingOptInStatus$$$ `telemetry.allowChangingOptInStatus`
-:   When `false`, users cannot change the opt-in status through [Advanced Settings](asciidocalypse://docs/kibana/docs/reference/advanced-settings.md), and {{kib}} only looks at the value of [`telemetry.optIn`](#settings-telemetry-optIn) to determine whether to send telemetry data or not. **Default: `true`**.
+:   When `false`, users cannot change the opt-in status through [Advanced Settings](kibana://reference/advanced-settings.md), and {{kib}} only looks at the value of [`telemetry.optIn`](#settings-telemetry-optIn) to determine whether to send telemetry data or not. **Default: `true`**.
 
 $$$settings-telemetry-optIn$$$ `telemetry.optIn`
 :   Set to `false` to stop sending any telemetry data to Elastic. Reporting your cluster statistics helps us improve your user experience. When `false`, the telemetry data is never sent to Elastic.<br>
 
-    This setting can be changed at any time in [Advanced Settings](asciidocalypse://docs/kibana/docs/reference/advanced-settings.md). To prevent users from changing it, set [`telemetry.allowChangingOptInStatus`](#telemetry-allowChangingOptInStatus) to `false`. **Default: `true`**
+    This setting can be changed at any time in [Advanced Settings](kibana://reference/advanced-settings.md). To prevent users from changing it, set [`telemetry.allowChangingOptInStatus`](#telemetry-allowChangingOptInStatus) to `false`. **Default: `true`**
 
 
 `vis_type_vega.enableExternalUrls` ![logo cloud](https://doc-icons.s3.us-east-2.amazonaws.com/logo_cloud.svg "Supported on {{ech}}")

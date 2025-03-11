@@ -22,7 +22,7 @@ Learn how to replace your existing {{filebeat}} and {{metricbeat}} deployments w
 
 There are currently some limitations and requirements to be aware of before migrating to {{agent}}:
 
-* **No support for configuring the {{beats}} internal queue.** Each Beat has an internal queue that stores events before batching and publishing them to the output. To improve data throughput, {{beats}} users can set [configuration options](asciidocalypse://docs/reference/filebeat/configuring-internal-queue.md) to tune the performance of the internal queue. However, the endless fine tuning required to configure the queue is cumbersome and not always fruitful. Instead of expecting users to configure the internal queue, {{agent}} uses sensible defaults. This means you won’t be able to migrate internal queue configurations to {{agent}}.
+* **No support for configuring the {{beats}} internal queue.** Each Beat has an internal queue that stores events before batching and publishing them to the output. To improve data throughput, {{beats}} users can set [configuration options](asciidocalypse://docs/beats/docs/reference/filebeat/configuring-internal-queue.md) to tune the performance of the internal queue. However, the endless fine tuning required to configure the queue is cumbersome and not always fruitful. Instead of expecting users to configure the internal queue, {{agent}} uses sensible defaults. This means you won’t be able to migrate internal queue configurations to {{agent}}.
 
 For more information about {{agent}} limitations, see [*{{beats}} and {{agent}} capabilities*](/reference/ingestion-tools/fleet/index.md).
 
@@ -86,21 +86,21 @@ After deploying an {{agent}} to a host, view details about the agent and inspect
 
     :::{image} images/migration-agent-status-healthy01.png
     :alt: Screen showing that agent status is Healthy
-    :class: screenshot
+    :screenshot:
     :::
 
 2. Click the host name to examine the {{agent}} details. This page shows the integrations that are currently installed, the policy the agent is enrolled in, and information about the host machine:
 
     :::{image} images/migration-agent-details01.png
     :alt: Screen showing that agent status is Healthy
-    :class: screenshot
+    :screenshot:
     :::
 
 3. Go back to the main {{fleet}} page and click the **Data streams** tab. You should be able to see the data streams for various logs and metrics from the host. This is out-of-the-box without any extra configuration or dashboard creation:
 
     :::{image} images/migration-agent-data-streams01.png
     :alt: Screen showing data streams created by the {agent}
-    :class: screenshot
+    :screenshot:
     :::
 
 4. Go to **Analytics > Discover** and examine the data streams. Note that documents indexed by {{agent}} match these patterns:
@@ -114,14 +114,14 @@ After deploying an {{agent}} to a host, view details about the agent and inspect
 
     :::{image} images/migration-event-from-filebeat.png
     :alt: Screen showing event from {filebeat}
-    :class: screenshot
+    :screenshot:
     :::
 
     Next, filter on `logs-*`. Notice that the document contains `data_stream.*` fields that come from logs ingested by the {{agent}}.
 
     :::{image} images/migration-event-from-agent.png
     :alt: Screen showing event from {agent}
-    :class: screenshot
+    :screenshot:
     :::
 
     ::::{note}
@@ -140,14 +140,14 @@ For example, if the agent policy you created earlier includes the System integra
 
     :::{image} images/migration-add-nginx-integration.png
     :alt: Screen showing the Nginx integration
-    :class: screenshot
+    :screenshot:
     :::
 
 2. Configure the integration, then apply it to the agent policy you used earlier. Make sure you expand collapsed sections to see all the settings like log paths.
 
     :::{image} images/migration-add-integration-policy.png
     :alt: Screen showing Nginx configuration
-    :class: screenshot
+    :screenshot:
     :::
 
     When you save and deploy your changes, the agent policy is updated to include a new integration policy for Nginx. All {{agent}}s enrolled in the agent policy get the updated policy, and the {{agent}} running on your host will begin collecting Nginx data.
@@ -167,7 +167,7 @@ Notice again that the data is duplicated because you still have {{beats}} runnin
 
 ## Migrate processor configurations [_migrate_processor_configurations]
 
-Processors enable you to filter and enhance the data before it’s sent to the output. Each processor receives an event, applies a defined action to the event, and returns the event. If you define a list of processors, they are executed in the order they are defined. Elastic provides a [rich set of processors](asciidocalypse://docs/reference/filebeat/defining-processors.md) that are supported by all {{beats}} and by {{agent}}.
+Processors enable you to filter and enhance the data before it’s sent to the output. Each processor receives an event, applies a defined action to the event, and returns the event. If you define a list of processors, they are executed in the order they are defined. Elastic provides a [rich set of processors](asciidocalypse://docs/beats/docs/reference/filebeat/defining-processors.md) that are supported by all {{beats}} and by {{agent}}.
 
 Prior to migrating from {{beats}}, you defined processors in the configuration file for each Beat. After migrating to {{agent}}, however, the {{beats}} configuration files are redundant. All configuration is policy-driven from {{fleet}} (or for advanced use cases, specified in a standalone agent policy). Any processors you defined previously in the {{beats}} configuration need to be added to an integration policy; they cannot be defined in the {{beats}} configuration.
 
@@ -184,7 +184,7 @@ To add processors to an integration policy:
 
     :::{image} images/migration-add-processor.png
     :alt: Screen showing how to add a processor to an integration policy
-    :class: screenshot
+    :screenshot:
     :::
 
     For example, the following processor adds geographically specific metadata to host events:
@@ -216,7 +216,7 @@ If you must preserve the raw event, edit the integration policy, and for each en
 
 :::{image} images/migration-preserve-raw-event.png
 :alt: Screen showing how to add a processor to an integration policy
-:class: screenshot
+:screenshot:
 :::
 
 Do this for every data stream with a raw event you want to preserve.
@@ -294,7 +294,7 @@ For more information, see the [Aliases documentation](/manage-data/data-store/al
 
 :::{image} images/migration-index-lifecycle-policies.png
 :alt: Screen showing how to add a processor to an integration policy
-:class: screenshot
+:screenshot:
 :::
 
 If you used {{ilm}} with {{beats}}, you’ll see index lifecycle policies like **filebeat** and **metricbeat** in the list. After migrating to {{agent}}, you’ll see polices named **logs** and **metrics**, which encapsulate the {{ilm}} policies for all `logs-*` and `metrics-*` index templates.

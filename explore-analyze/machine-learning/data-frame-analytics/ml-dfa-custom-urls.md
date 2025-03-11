@@ -12,14 +12,14 @@ You can optionally attach one or more custom URLs to your {{dfanalytics-jobs}}. 
 
 :::{image} ../../../images/machine-learning-ml-dfa-custom-url.png
 :alt: Creating a custom URL during job creation
-:class: screenshot
+:screenshot:
 :::
 
 When you create or edit an {{dfanalytics-job}} in {{kib}}, it simplifies the creation of the custom URLs for {{kib}} dashboards and the **Discover** app and it enables you to test your URLs. For example:
 
 :::{image} ../../../images/machine-learning-ml-dfa-custom-url-edit.png
 :alt: Add a custom URL in {{kib}}
-:class: screenshot
+:screenshot:
 :::
 
 For each custom URL, you must supply a label. You can also optionally supply a time range. When you link to **Discover** or a {{kib}} dashboard, you’ll have additional options for specifying the pertinent {{data-source}} or dashboard name and query entities.

@@ -45,7 +45,7 @@ To inspect hosts, run a query against one or more agents or policies, then view 
     * **Query**: Select a saved query or enter a new one in the text box. After you enter the query, you can expand the **Advanced** section to set a timeout period for the query, and view or set [mapped ECS fields](#osquery-map-fields)  included in the results from the live query (optional).
 
         ::::{note}
-        Overwriting the query’s default timeout period allows you to support queries that require more time to complete. The default and minimum supported value for the **Timeout** field is `60`. The maximum supported value is `900`.
+        Overwriting the query’s default timeout period allows you to support queries that require more time to complete. The default and minimum supported value for the **Timeout** field is `60`. The maximum supported value is `86400` (24 hours).
         ::::
 
     * **Pack**: Select from available query packs. After you select a pack, all of the queries in the pack are displayed.
@@ -57,7 +57,7 @@ To inspect hosts, run a query against one or more agents or policies, then view 
 
         :::{image} ../../../images/kibana-enter-query.png
         :alt: Select saved query dropdown name showing query name and description
-        :class: screenshot
+        :screenshot:
         :::
 
 6. Click **Submit**.
@@ -85,7 +85,7 @@ The **Live queries history** section on the **Live queries** tab shows a log of 
 
     :::{image} ../../../images/kibana-live-query-check-results.png
     :alt: Results of OSquery
-    :class: screenshot
+    :screenshot:
     :::
 
 
@@ -123,7 +123,7 @@ You can run packs as live queries or schedule packs to run for one or more agent
     * Click **Add query** and then add a saved query or enter a new query. Each query must include a unique query ID and the interval at which it should run. Optionally, set the minimum Osquery version and platform, specify a timeout period, or [map ECS fields](#osquery-map-fields). When you add a saved query to a pack, this adds a copy of the query. A connection is not maintained between saved queries and packs.
 
         ::::{note}
-        Overwriting the query’s default timeout period allows you to support queries that require more time to complete. The default and minimum supported value for the **Timeout** field is `60`. The maximum supported value is `900`.
+        Overwriting the query’s default timeout period allows you to support queries that require more time to complete. The default and minimum supported value for the **Timeout** field is `60`. The maximum supported value is `86400` (24 hours).
         ::::
 
     * Upload queries from a `.conf` query pack by dragging the pack to the drop zone under the query table. To explore the community packs that Osquery publishes, click **Example packs**.
@@ -140,7 +140,7 @@ You can run packs as live queries or schedule packs to run for one or more agent
 
     :::{image} ../../../images/kibana-scheduled-pack.png
     :alt: Shows queries in the pack and details about each query
-    :class: screenshot
+    :screenshot:
     :::
 
 3. View scheduled query results in [**Discover**](../../../explore-analyze/discover.md) or the drag-and-drop [**Lens**](../../../explore-analyze/visualize/lens.md) editor.
@@ -161,7 +161,7 @@ Once you save a query, you can only edit it from the **Saved queries** tab:
     * The unique identifier (required).
     * A brief description.
     * The SQL query (required). Osquery supports multi-line queries.
-    * A timeout period (optional). Increase the query’s default timeout period to support queries that require more time to complete. The default and minimum supported value for the **Timeout** field is `60`. The maximum supported value is `900`.
+    * A timeout period (optional). Increase the query’s default timeout period to support queries that require more time to complete. The default and minimum supported value for the **Timeout** field is `60`. The maximum supported value is `86400` (24 hours).
     * The [ECS fields](#osquery-map-fields) to populate when the query is run (optional). These fields are also copied in when you add this query to a pack.
     * The defaults to set when you add the query to a pack.
 

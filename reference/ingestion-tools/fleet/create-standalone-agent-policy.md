@@ -21,7 +21,7 @@ You don’t need {{fleet}} to perform the following steps, but on self-managed c
 
     :::{image} images/add-integration-standalone.png
     :alt: Add Nginx integration screen with agent policy selected
-    :class: screenshot
+    :screenshot:
     :::
 
     ::::{note}
@@ -37,7 +37,7 @@ You don’t need {{fleet}} to perform the following steps, but on self-managed c
 
     :::{image} images/add-agent-to-hosts.png
     :alt: Popup window showing the option to add {{agent}} to your hosts
-    :class: screenshot
+    :screenshot:
     :::
 
 7. (Optional) To add more integrations to the agent policy, click **Add {{agent}} later** and go back to the **Integrations** page. Repeat the previous steps for each integration.
@@ -47,7 +47,7 @@ You don’t need {{fleet}} to perform the following steps, but on self-managed c
 
     :::{image} images/download-agent-policy.png
     :alt: Add data screen with option to download the default agent policy
-    :class: screenshot
+    :screenshot:
     :::
 
 

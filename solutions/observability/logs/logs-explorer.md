@@ -2,6 +2,9 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/observability/current/explore-logs.html
   - https://www.elastic.co/guide/en/serverless/current/observability-discover-and-explore-logs.html
+applies_to:
+  stack: all
+  serverless: all
 ---
 
 # Logs Explorer [explore-logs]
@@ -17,7 +20,7 @@ To open **Logs Explorer**, find `Logs Explorer` in the [global search field](/ex
 
 :::{image} ../../../images/observability-log-explorer.png
 :alt: Screen capture of the Logs Explorer
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -34,7 +37,7 @@ If you need to focus on logs from a specific integration, select the integration
 
 :::{image} ../../../images/observability-log-menu.png
 :alt: Screen capture of log menu
-:class: screenshot
+:screenshot:
 :::
 
 Once you have the logs you want to focus on displayed, you can drill down further to find the information you need. For more on filtering your data in Logs Explorer, refer to [Filter logs in Logs Explorer](../../../solutions/observability/logs/filter-aggregate-logs.md#logs-filter-logs-explorer).

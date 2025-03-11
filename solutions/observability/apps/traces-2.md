@@ -19,7 +19,7 @@ You can also use queries to filter and search the transactions shown on this pag
 
 :::{image} ../../../images/observability-apm-traces.png
 :alt: Example view of the Traces overview in Applications UI in Kibana
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -36,5 +36,5 @@ Curate your own custom queries, or use the [**Service Map**](../../../solutions/
 
 :::{image} ../../../images/observability-trace-explorer.png
 :alt: Trace explorer
-:class: screenshot
+:screenshot:
 :::

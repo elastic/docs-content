@@ -2,6 +2,9 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/observability/current/logs-plaintext.html
   - https://www.elastic.co/guide/en/serverless/current/observability-plaintext-application-logs.html
+applies_to:
+  stack: all
+  serverless: all
 ---
 
 # Plaintext application logs [logs-plaintext]
@@ -41,27 +44,27 @@ Install {{filebeat}} on the server you want to monitor by running the commands t
 
 ::::::{tab-item} DEB
 ```sh
-curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-9.0.0-beta1-darwin-x86_64.tar.gz
-tar xzvf filebeat-9.0.0-beta1-darwin-x86_64.tar.gz
+curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{version}}-darwin-x86_64.tar.gz
+tar xzvf filebeat-{{version}}-darwin-x86_64.tar.gz
 ```
 ::::::
 
 ::::::{tab-item} RPM
 ```sh
-curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-9.0.0-beta1-linux-x86_64.tar.gz
-tar xzvf filebeat-9.0.0-beta1-linux-x86_64.tar.gz
+curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{version}}-linux-x86_64.tar.gz
+tar xzvf filebeat-{{version}}-linux-x86_64.tar.gz
 ```
 ::::::
 
 ::::::{tab-item} macOS
-1. Download the {{filebeat}} Windows zip file: https\://artifacts.elastic.co/downloads/beats/filebeat/filebeat-9.0.0-beta1-windows-x86_64.zip[https\://artifacts.elastic.co/downloads/beats/filebeat/filebeat-9.0.0-beta1-windows-x86_64.zip]
+1. Download the {{filebeat}} Windows zip file: `https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{version}}-windows-x86_64.zip`
 2. Extract the contents of the zip file into `C:\Program Files`.
 3. Rename the `filebeat-{{version}}-windows-x86_64` directory to `{{filebeat}}`.
 4. Open a PowerShell prompt as an Administrator (right-click the PowerShell icon and select **Run As Administrator**).
 5. From the PowerShell prompt, run the following commands to install {{filebeat}} as a Windows service:
 
     ```powershell
-    PS > cd 'C:\Program Files\{filebeat}'
+    PS > cd 'C:\Program Files\{{filebeat}}'
     PS C:\Program Files\{filebeat}> .\install-service-filebeat.ps1
     ```
 
@@ -71,15 +74,15 @@ If script execution is disabled on your system, you need to set the execution po
 
 ::::::{tab-item} Linux
 ```sh
-curl -L -O https\://artifacts.elastic.co/downloads/beats/filebeat/filebeat-9.0.0-beta1-amd64.deb
-sudo dpkg -i filebeat-9.0.0-beta1-amd64.deb
+curl -L -O https\://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{version}}-amd64.deb
+sudo dpkg -i filebeat-{{version}}-amd64.deb
 ```
 ::::::
 
 ::::::{tab-item} Windows
 ```sh
-curl -L -O https\://artifacts.elastic.co/downloads/beats/filebeat/filebeat-9.0.0-beta1-x86_64.rpm
-sudo rpm -vi filebeat-9.0.0-beta1-x86_64.rpm
+curl -L -O https\://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{version}}-x86_64.rpm
+sudo rpm -vi filebeat-{{version}}-x86_64.rpm
 ```
 ::::::
 
@@ -231,7 +234,7 @@ By default, Windows log files are stored in `C:\ProgramData\filebeat\Logs`.
 
 Use an ingest pipeline to parse the contents of your logs into structured, [Elastic Common Schema (ECS)](asciidocalypse://docs/ecs/docs/reference/index.md)-compatible fields.
 
-Create an ingest pipeline that defines a [dissect processor](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/enrich-processor/dissect-processor.md) to extract structured ECS fields from your log messages. In your project, navigate to **Developer Tools** and using a command similar to the following example:
+Create an ingest pipeline that defines a [dissect processor](elasticsearch://reference/ingestion-tools/enrich-processor/dissect-processor.md) to extract structured ECS fields from your log messages. In your project, navigate to **Developer Tools** and using a command similar to the following example:
 
 ```console
 PUT _ingest/pipeline/filebeat* <1>
@@ -248,8 +251,8 @@ PUT _ingest/pipeline/filebeat* <1>
 }
 ```
 
-1. `_ingest/pipeline/filebeat*`: The name of the pipeline. Update the pipeline name to match the name of your data stream. For more information, refer to [Data stream naming scheme](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/data-streams.md#data-streams-naming-scheme).
-2. `processors.dissect`: Adds a [dissect processor](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/enrich-processor/dissect-processor.md) to extract structured fields from your log message.
+1. `_ingest/pipeline/filebeat*`: The name of the pipeline. Update the pipeline name to match the name of your data stream. For more information, refer to [Data stream naming scheme](/reference/ingestion-tools/fleet/data-streams.md#data-streams-naming-scheme).
+2. `processors.dissect`: Adds a [dissect processor](elasticsearch://reference/ingestion-tools/enrich-processor/dissect-processor.md) to extract structured fields from your log message.
 3. `field`: The field you’re extracting data from, `message` in this case.
 4. `pattern`: The pattern of the elements in your log data. The pattern varies depending on your log format. `%{@timestamp}` is required. `%{log.level}`, `%{host.ip}`, and `%{{message}}` are common [ECS](asciidocalypse://docs/ecs/docs/reference/index.md) fields. This pattern would match a log file in this format: `2023-11-07T09:39:01.012Z ERROR 192.168.1.110 Server hardware failure detected.`
 
@@ -297,7 +300,7 @@ To aggregate or search for information in plaintext logs, use an ingest pipeline
 2. Select the integration policy you created in the previous section.
 3. Click **Change defaults → Advanced options**.
 4. Under **Ingest pipelines**, click **Add custom pipeline**.
-5. Create an ingest pipeline with a [dissect processor](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/enrich-processor/dissect-processor.md) to extract structured fields from your log messages.
+5. Create an ingest pipeline with a [dissect processor](elasticsearch://reference/ingestion-tools/enrich-processor/dissect-processor.md) to extract structured fields from your log messages.
 
     Click **Import processors** and add a similar JSON to the following example:
 
@@ -315,7 +318,7 @@ To aggregate or search for information in plaintext logs, use an ingest pipeline
     }
     ```
 
-    1. `processors.dissect`: Adds a [dissect processor](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/enrich-processor/dissect-processor.md) to extract structured fields from your log message.
+    1. `processors.dissect`: Adds a [dissect processor](elasticsearch://reference/ingestion-tools/enrich-processor/dissect-processor.md) to extract structured fields from your log message.
     2. `field`: The field you’re extracting data from, `message` in this case.
     3. `pattern`: The pattern of the elements in your log data. The pattern varies depending on your log format. `%{@timestamp}`, `%{log.level}`, `%{host.ip}`, and `%{{message}}` are common [ECS](asciidocalypse://docs/ecs/docs/reference/index.md) fields. This pattern would match a log file in this format: `2023-11-07T09:39:01.012Z ERROR 192.168.1.110 Server hardware failure detected.`
 
@@ -338,9 +341,9 @@ Log correlation works on two levels:
 
 Learn about correlating plaintext logs in the agent-specific ingestion guides:
 
-* [Go](asciidocalypse://docs/apm-agent-go/docs/reference/logs.md)
+* [Go](apm-agent-go://reference/logs.md)
 * [Java](asciidocalypse://docs/apm-agent-java/docs/reference/logs.md#log-correlation-ids)
-* [.NET](asciidocalypse://docs/apm-agent-dotnet/docs/reference/logs.md)
+* [.NET](apm-agent-dotnet://reference/logs.md)
 * [Node.js](asciidocalypse://docs/apm-agent-nodejs/docs/reference/logs.md)
 * [Python](asciidocalypse://docs/apm-agent-python/docs/reference/logs.md#log-correlation-ids)
 * [Ruby](asciidocalypse://docs/apm-agent-ruby/docs/reference/logs.md)

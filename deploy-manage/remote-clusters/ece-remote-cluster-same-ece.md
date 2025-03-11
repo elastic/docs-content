@@ -84,7 +84,7 @@ By default, any deployment that you or your users create trusts all other deploy
 
 :::{image} ../../images/cloud-enterprise-ce-environment-trust-management.png
 :alt: Trust management at the environment Level
-:class: screenshot
+:screenshot:
 :::
 
 ::::{note}
@@ -182,7 +182,7 @@ On the local cluster, add the remote cluster using {{kib}} or the {{es}} API.
 
       :::{image} ../../images/cloud-enterprise-ce-copy-remote-cluster-parameters.png
       :alt: Remote Cluster Parameters in Deployment
-      :class: screenshot
+      :screenshot:
       :::
 
       ::::{note}

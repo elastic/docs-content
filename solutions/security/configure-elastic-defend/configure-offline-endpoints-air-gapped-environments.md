@@ -45,7 +45,7 @@ docker run -v "$PWD"/nginx.conf:/etc/nginx/conf.d/default.conf:ro -p 80:80 nginx
 ```
 
 ::::{important}
-This example script is not appropriate for production environments. We recommend configuring the Nginx server to use [TLS](http://nginx.org/en/docs/http/configuring_https_servers.md) according to your IT policies. Refer to [Nginx documentation](https://docs.nginx.com/nginx/admin-guide/installing-nginx/) for more information on downloading and configuring Nginx.
+This example script is not appropriate for production environments. We recommend configuring the Nginx server to use [TLS](http://nginx.org/en/docs/http/configuring_https_servers.html) according to your IT policies. Refer to [Nginx documentation](https://docs.nginx.com/nginx/admin-guide/installing-nginx/) for more information on downloading and configuring Nginx.
 ::::
 
 
@@ -71,7 +71,7 @@ docker run -p 80:80 -v "$PWD"/httpd.conf:/usr/local/apache2/conf/httpd.conf http
 ```
 
 ::::{important}
-This example script is not appropriate for production environments. We recommend configuring httpd to use [TLS](https://httpd.apache.org/docs/trunk/ssl/ssl_howto.md) according to your IT policies. Refer to [Apache documentation](https://httpd.apache.org) for more information on downloading and configuring Apache httpd.
+This example script is not appropriate for production environments. We recommend configuring httpd to use [TLS](https://httpd.apache.org/docs/trunk/ssl/ssl_howto.html) according to your IT policies. Refer to [Apache documentation](https://httpd.apache.org) for more information on downloading and configuring Apache httpd.
 ::::
 
 
@@ -89,7 +89,7 @@ Set the `advanced.artifacts.global.base_url` advanced setting for each [{{elasti
 
 :::{image} ../../../images/security-offline-adv-settings.png
 :alt: Integration policy advanced settings
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -133,7 +133,7 @@ docker run -v "$PWD"/nginx.conf:/etc/nginx/conf.d/default.conf:ro -v "$PWD"/stat
 ```
 
 ::::{important}
-This example script is not appropriate for production environments. We recommend configuring the Nginx server to use [TLS](http://nginx.org/en/docs/http/configuring_https_servers.md) according to your IT policies. Refer to [Nginx documentation](https://docs.nginx.com/nginx/admin-guide/installing-nginx/) for more information on downloading and configuring Nginx.
+This example script is not appropriate for production environments. We recommend configuring the Nginx server to use [TLS](http://nginx.org/en/docs/http/configuring_https_servers.html) according to your IT policies. Refer to [Nginx documentation](https://docs.nginx.com/nginx/admin-guide/installing-nginx/) for more information on downloading and configuring Nginx.
 ::::
 
 
@@ -153,7 +153,7 @@ docker run -p 80:80 -v "$PWD/static":/usr/local/apache2/htdocs/ -v "$PWD"/my-htt
 ```
 
 ::::{important}
-This example script is not appropriate for production environments. We recommend configuring httpd to use [TLS](https://httpd.apache.org/docs/trunk/ssl/ssl_howto.md) according to your IT policies. Refer to [Apache documentation](https://httpd.apache.org) for more information on downloading and configuring Apache httpd.
+This example script is not appropriate for production environments. We recommend configuring httpd to use [TLS](https://httpd.apache.org/docs/trunk/ssl/ssl_howto.html) according to your IT policies. Refer to [Apache documentation](https://httpd.apache.org) for more information on downloading and configuring Apache httpd.
 ::::
 
 
@@ -171,7 +171,7 @@ Set the `advanced.artifacts.global.base_url` advanced setting for each [{{elasti
 
 :::{image} ../../../images/security-offline-adv-settings.png
 :alt: Integration policy advanced settings
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -206,6 +206,6 @@ After updating the {{elastic-endpoint}} configuration to read from the mirror se
 
 :::{image} ../../../images/security-offline-endpoint-version-discover.png
 :alt: Searching for `endpoint.policy` in Discover
-:class: screenshot
+:screenshot:
 :::
 

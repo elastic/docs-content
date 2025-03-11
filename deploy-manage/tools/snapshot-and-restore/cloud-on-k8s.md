@@ -376,7 +376,7 @@ Follow the [Azure documentation](https://learn.microsoft.com/en-us/azure/aks/wor
 
     1. Specify the Kubernetes secret created in the previous step to configure the Azure storage account name as a secure setting.
     2. This is the service account created earlier in the steps from the [Azure Workload Identity](https://learn.microsoft.com/en-us/azure/aks/workload-identity-deploy-cluster#create-a-kubernetes-service-account) tutorial.
-    3. The corresponding volume is injected by the [Azure Workload Identity Mutating Admission Webhook](https://azure.github.io/azure-workload-identity/docs/installation/mutating-admission-webhook.md). For Elasticsearch to be able to access the token, the mount needs to be in a sub-directory of the Elasticsearch config directory. The corresponding environment variable needs to be adjusted as well.
+    3. The corresponding volume is injected by the [Azure Workload Identity Mutating Admission Webhook](https://azure.github.io/azure-workload-identity/docs/installation/mutating-admission-webhook.html). For Elasticsearch to be able to access the token, the mount needs to be in a sub-directory of the Elasticsearch config directory. The corresponding environment variable needs to be adjusted as well.
 
 11. Create a snapshot repository of type `azure` through the Elasticsearch API, or through [*Elastic Stack configuration policies*](../../deploy/cloud-on-k8s/elastic-stack-configuration-policies.md).
 

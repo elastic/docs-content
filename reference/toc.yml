@@ -7,6 +7,8 @@ toc:
           - file: security/fields-and-object-schemas/siem-field-reference.md
           - file: security/fields-and-object-schemas/timeline-object-schema.md
           - file: security/fields-and-object-schemas/alert-schema.md
+      - file: security/endpoint-command-reference.md
+      - file: security/prebuilt-anomaly-detection-jobs.md
   - file: observability/index.md
     children:
       - file: observability/fields-and-object-schemas.md
@@ -102,6 +104,7 @@ toc:
                   - file: ingestion-tools/fleet/monitor-elastic-agent.md
                   - file: ingestion-tools/fleet/agent-health-status.md
                   - file: ingestion-tools/fleet/filter-agent-list-by-tags.md
+                  - file: ingestion-tools/fleet/enrollment-handling-containerized-agent.md
               - file: ingestion-tools/fleet/agent-policy.md
                 children:
                   - file: ingestion-tools/fleet/create-policy-no-ui.md
@@ -125,6 +128,7 @@ toc:
                   - file: ingestion-tools/fleet/agent-provider.md
                   - file: ingestion-tools/fleet/host-provider.md
                   - file: ingestion-tools/fleet/env-provider.md
+                  - file: ingestion-tools/fleet/filesource-provider.md
                   - file: ingestion-tools/fleet/kubernetes_secrets-provider.md
                   - file: ingestion-tools/fleet/kubernetes_leaderelection-provider.md
                   - file: ingestion-tools/fleet/local-dynamic-provider.md
@@ -252,7 +256,6 @@ toc:
           - file: data-analysis/machine-learning/ml-sum-functions.md
           - file: data-analysis/machine-learning/ml-time-functions.md
       - file: data-analysis/observability/index.md
-      - file: data-analysis/observability/metrics-reference-serverless.md
         children:
           - file: data-analysis/observability/observability-host-metrics-serverless.md
           - file: data-analysis/observability/observability-container-metrics-serverless.md

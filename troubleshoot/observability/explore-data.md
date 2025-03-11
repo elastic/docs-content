@@ -11,7 +11,7 @@ Based on your synthetic monitoring, user experience, and mobile experience data,
 
 :::{image} ../../images/observability-exploratory-view.png
 :alt: Explore {{data-source}} for Monitor duration
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -71,7 +71,7 @@ Based on the Uptime data you are sending to your deployment, you can create vari
 
 :::{image} ../../images/observability-exploratory-view-uptime.png
 :alt: Explore data for Uptime
-:class: screenshot
+:screenshot:
 :::
 
 |     |     |
@@ -86,7 +86,7 @@ Based on the {{user-experience}} data from your instrumented applications, you c
 
 :::{image} ../../images/observability-exploratory-view-ux-page-load-time.png
 :alt: Explore data for {{user-experience}} (page load time)
-:class: screenshot
+:screenshot:
 :::
 
 |     |     |

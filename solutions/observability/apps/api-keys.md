@@ -98,7 +98,7 @@ Click **Create APM Agent key** and copy the Base64 encoded API key. You will nee
 
 :::{image} ../../../images/observability-apm-ui-api-key.png
 :alt: Applications UI API key
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -106,10 +106,10 @@ Click **Create APM Agent key** and copy the Base64 encoded API key. You will nee
 
 You can now apply your newly created API keys in the configuration of each of your APM agents. See the relevant agent documentation for additional information:
 
-* **Android**: [`apiKey`](asciidocalypse://docs/apm-agent-android/docs/reference/configuration.md)
-* **Go agent**: [`ELASTIC_APM_API_KEY`](asciidocalypse://docs/apm-agent-go/docs/reference/configuration.md#config-api-key)
-* **.NET agent**: [`ApiKey`](asciidocalypse://docs/apm-agent-dotnet/docs/reference/config-reporter.md#config-api-key)
-* **iOS**: [`withApiKey`](asciidocalypse://docs/apm-agent-ios/docs/reference/configuration.md#withApiKey)
+* **Android**: [`apiKey`](apm-agent-android://reference/configuration.md)
+* **Go agent**: [`ELASTIC_APM_API_KEY`](apm-agent-go://reference/configuration.md#config-api-key)
+* **.NET agent**: [`ApiKey`](apm-agent-dotnet://reference/config-reporter.md#config-api-key)
+* **iOS**: [`withApiKey`](apm-agent-ios://reference/configuration.md#withapikey)
 * **Java agent**: [`api_key`](asciidocalypse://docs/apm-agent-java/docs/reference/config-reporter.md#config-api-key)
 * **Node.js agent**: [`apiKey`](asciidocalypse://docs/apm-agent-nodejs/docs/reference/configuration.md#api-key)
 * **PHP agent**: [`api_key`](asciidocalypse://docs/apm-agent-php/docs/reference/configuration-reference.md#config-api-key)
@@ -146,7 +146,7 @@ APM Server provides a command line interface for creating, retrieving, invalidat
 
     The user requesting to create an API Key needs to have APM privileges used by the APM Server. A superuser, by default, has these privileges.
 
-    ::::{dropdown} **Expand for more information on assigning these privileges to other users**
+    ::::{dropdown} Expand for more information on assigning these privileges to other users
     To create an APM Server user with the required privileges for creating and managing API keys:
 
     1. Create an **API key role**, called something like `apm_api_key`, that has the following `cluster` level privileges:

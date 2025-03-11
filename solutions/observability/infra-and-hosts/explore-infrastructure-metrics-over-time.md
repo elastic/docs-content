@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/explore-metrics.html
+applies_to:
+  stack: 
 ---
 
 # Explore infrastructure metrics over time [explore-metrics]
@@ -13,10 +15,10 @@ To open **Metrics Explorer**, find **Infrastructure** in the main menu or use th
 
 :::{image} ../../../images/observability-metrics-explorer.png
 :alt: Metrics Explorer
-:class: screenshot
+:screenshot:
 :::
 
-To learn more about the metrics shown on this page, refer to the [Metrics reference](asciidocalypse://docs/docs-content/docs/reference/data-analysis/observability/metrics-reference.md) documentation.
+To learn more about the metrics shown on this page, refer to the [Metrics reference](/reference/data-analysis/observability/index.md) documentation.
 
 ::::{tip}
 If there are no metrics to display, {{kib}} prompts you to add a metrics integration. Click **Add a metrics integration** to get started. If you want to add more data in the future, click **Add data** from any page in the {{infrastructure-app}}.
@@ -40,7 +42,7 @@ As an example, let’s view the system load metrics for hosts we’re currently 
 
     :::{image} ../../../images/observability-metrics-explorer-filter.png
     :alt: Metrics Explorer query
-    :class: screenshot
+    :screenshot:
     :::
 
 3. Select **Actions** in the top right-hand corner of one of the graphs and then click **Add filter**.
@@ -59,7 +61,7 @@ As an example, let’s view the system load metrics for hosts we’re currently 
 
     :::{image} ../../../images/observability-metrics-time-series.png
     :alt: Time series chart
-    :class: screenshot
+    :screenshot:
     :::
 
     The `derivative` aggregation is used to calculate the difference between each bucket. By default, the value of units is automatically set to `1s`, along with the `positive only` aggregation.

@@ -13,7 +13,7 @@ In your Observability project, go to **Dashboards** to see installed dashboards 
 
 :::{image} ../../../images/serverless-dashboards.png
 :alt: Screenshot showing list of System dashboards
-:class: screenshot
+:screenshot:
 :::
 
 Notice you can filter the list of dashboards:

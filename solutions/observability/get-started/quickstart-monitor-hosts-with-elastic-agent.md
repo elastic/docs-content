@@ -67,7 +67,7 @@ The script also generates an {{agent}} configuration file that you can use with 
 
     :::{image} ../../../images/observability-quickstart-monitor-hosts-entry-point.png
     :alt: Host monitoring entry point
-    :class: screenshot
+    :screenshot:
     :::
 
 3. Copy the install command.
@@ -91,7 +91,7 @@ The script also generates an {{agent}} configuration file that you can use with 
 
     :::{image} ../../../images/serverless-quickstart-monitor-hosts-entry-point.png
     :alt: Host monitoring entry point
-    :class: screenshot
+    :screenshot:
     :::
 
 4. Copy the install command.
@@ -140,7 +140,7 @@ For example, you can navigate the **Host overview** dashboard to explore detaile
 
 :::{image} ../../../images/observability-quickstart-host-overview.png
 :alt: Host overview dashboard
-:class: screenshot
+:screenshot:
 :::
 
 
