@@ -21,7 +21,7 @@ Proper shard sizing is crucial for maintaining the performance and stability of 
 
 To strike the right balance, the [general guidelines](#shard-size-recommendation) are to aim for shard sizes between 10GB and 50GB, keeping the per-shard document count below 200 million. To ensure that each node is working optimally, it's important to distribute shards evenly across nodes. Uneven distribution can cause some nodes to work harder than others, leading to performance degradation and instability. While Elasticsearch automatically balances shards, it’s important to configure your indices with an appropriate number of shards and replicas to facilitate even distribution across nodes.
 
-If you are using [data streams](../../../manage-data/data-store/data-streams.md#data-streams), each data stream is backed by a sequence of indices, each index potentially having multiple shards. 
+If you are using [data streams](/manage-data/data-store/data-streams.md), each data stream is backed by a sequence of indices, each index potentially having multiple shards. 
 
 Despite these general guidelines, it is good to develop a tailored [sharding strategy](#create-a-sharding-strategy) that considers your specific infrastructure, use case, and performance expectations. 
 
