@@ -2,6 +2,9 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/observability/current/monitor-infrastructure-and-hosts.html
   - https://www.elastic.co/guide/en/serverless/current/observability-infrastructure-monitoring.html
+applies_to:
+  stack: 
+  serverless: 
 ---
 
 # Analyze infrastructure and host metrics [observability-infrastructure-monitoring]
