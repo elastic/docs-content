@@ -97,8 +97,7 @@ Replace `<sqs-arn>` with the ARN of the SQS queue, `<s3-bucket-arn>` with the AR
 ```
 
 
-## Step 3:  
- Event Notification [aws-step-three]
+## Step 3:  Event Notification [aws-step-three]
 
 Now that your queue is created, go to the properties of the S3 bucket you created and click **Create event notification**.
 
