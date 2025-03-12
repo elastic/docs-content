@@ -32,6 +32,7 @@ The available resources of self-managed deployments are static, so trained model
 {{serverless-full}} Security and Observability projects are only charged for data ingestion and retention. They are not charged for processing power (VCU usage), which is used for more complex operations, like running advanced search models. For example, in Search projects, models such as ELSER require significant processing power to provide more accurate search results.
 
 ## Enabling autoscaling through APIs - adaptive allocations [enabling-autoscaling-through-apis-adaptive-allocations]
+
 $$$nlp-model-adaptive-resources$$$
 
 Model allocations are independent units of work for NLP tasks. If you set the numbers of threads and allocations for a model manually, they remain constant even when not all the available resources are fully used or when the load on the model requires more resources. Instead of setting the number of allocations manually, you can enable adaptive allocations to set the number of allocations based on the load on the process. This can help you to manage performance and cost more easily. (Refer to the [pricing calculator](https://cloud.elastic.co/pricing) to learn more about the possible costs.)
@@ -55,6 +56,7 @@ When you create inference endpoints on {{serverless-short}} using Kibana, adapti
 :::
 
 ### Optimizing for typical use cases [optimizing-for-typical-use-cases]
+
 You can optimize your model deployment for typical use cases, such as search and ingest. When you optimize for ingest, the throughput will be higher, which increases the number of {{infer}} requests that can be performed in parallel. When you optimize for search, the latency will be lower during search processes.
 
 * If you want to optimize for ingest, set the number of threads to `1` (`"threads_per_allocation": 1`).
@@ -85,6 +87,11 @@ The used resources for trained model deployments depend on three factors:
 * your cluster environment ({{serverless-short}}, Cloud (ECE, ECK, ECH), or self-managed)
 * the use case you optimize the model deployment for (ingest or search)
 * whether model autoscaling is enabled with adaptive allocations/resources to have dynamic resources, or disabled for static resources
+
+::::{note}
+On {{serverless-short}}, VCUs for {{ml}} are based on the amount of vCPU and memory consumed. For {{ml}}, `1` VCU equals `0.125` of vCPU and `1GB` of memory, where vCPUs are measured by allocations multiplied by threads, and where memory is the amount consumed by trained models or {{ml}} jobs.
+As a math formula, `VCUs = 8 * allocations * threads`, or `1` VCU for every `1GB` of memory consumed, whichever is greater.
+::::
 
 If you use a self-managed cluster or ECK, vCPUs level ranges are derived from the `total_ml_processors` and `max_single_ml_node_processors` values. Use the [get {{ml}} info API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-info) to check these values. 
 
