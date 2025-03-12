@@ -2,13 +2,13 @@ toc:
   - file: index.md
   - file: known-issues/index.md
     children:
-      - file: known-issues/fleet.md
-      - file: known-issues/observability.md
+      - file: known-issues/fleet-elastic-agent.md
+      - file: known-issues/elastic-observability.md
         children:
-          - file: known-issues/apm.md
-      - file: known-issues/security.md
+          - file: known-issues/elastic-apm.md
+      - file: known-issues/elastic-security.md
       - file: known-issues/search-ui.md
-      - file: known-issues/serverless.md
+      - file: known-issues/elastic-cloud-serverless.md
   - file: breaking-changes/index.md
     children:
       - file: breaking-changes/fleet-elastic-agent.md

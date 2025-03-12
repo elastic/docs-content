@@ -2,16 +2,16 @@
 navigation_title: "Elastic Cloud Serverless"
 ---
 
-# Elastic Cloud Serverless deprecations [elastic-cloud-serverless-deprecations]
-Review the deprecated functionality for Elastic Cloud Serverless. While deprecations have no immediate impact, we strongly encourage you update your implementation.
+# {{serverless-full}} deprecations [elastic-cloud-serverless-deprecations]
+Review the deprecated functionality for {{serverless-full}}. While deprecations have no immediate impact, we strongly encourage you update your implementation.
 
-For serverless API deprecations, check [APIs Changelog](https://www.elastic.co/docs/api/changes).
+For {{serverless-full}} API deprecations, check [APIs Changelog](https://www.elastic.co/docs/api/changes).
 
 % ## Next release date Month Day, Year [elastic-cloud-serverless-releasedate-deprecations]
 % Description of the deprecation and steps to update implementation.
 % For more information, check [PR #](PR link).
 
-## February 3, 2025 [[elastic-cloud-serverless-02032025-deprecations]
+## February 3, 2025 [elastic-cloud-serverless-02032025-deprecations]
 * Rename plugin to automatic import. For more information, check [#207325](https://github.com/elastic/kibana/pull/207325).
 
 ## January 27, 2025 [elastic-cloud-serverless-01272025-deprecations]

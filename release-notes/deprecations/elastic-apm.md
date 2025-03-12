@@ -5,7 +5,7 @@ navigation_title: "Elastic APM"
 # Elastic APM deprecations [elastic-apm-deprecations]
 Review the deprecated functionality for your Elastic APM version. While deprecations have no immediate impact, we strongly encourage you update your implementation after you upgrade.
 
-To learn how to upgrade, check out <uprade docs>.
+To learn how to upgrade, check out [Upgrade](/deploy-manage/upgrade.md).
 
 % ## Next version
 % **Release date:** Month day, year
@@ -18,7 +18,7 @@ To learn how to upgrade, check out <uprade docs>.
 % ::::
 
 % ## 9.0.0 [elastic-apm-900-deprecations]
-% **Release date:** March 25, 2025
+% **Release date:** April 1, 2025
 
 % ::::{dropdown} Deprecation title
 % Description of the deprecation.
