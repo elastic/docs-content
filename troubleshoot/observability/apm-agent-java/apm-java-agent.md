@@ -8,7 +8,7 @@ mapped_pages:
 
 Something isn’t quite working as expected? Here are some guidelines how to find out what’s going wrong. 
 
-As a first step, please check if your stack is compatible with the currently [supported technologies](asciidocalypse://docs/apm-agent-java/docs/reference/set-up-apm-java-agent.md#supported-technologies).
+As a first step, please check if your stack is compatible with the currently [supported technologies](apm-agent-java://reference/set-up-apm-java-agent.md#supported-technologies).
 
 Don’t worry if you can’t figure out what the problem is. Open a topic in the [APM discuss forum](https://discuss.elastic.co/c/apm) and we will help you out.
 
@@ -24,7 +24,7 @@ Agent is updated frequently and releases are not strongly tied to other componen
 
 Therefore, trying to update to the most recently released agent version is often the recommended first troubleshooting step. If possible, trying the [latest-snapshot](https://github.com/elastic/apm-agent-java/blob/main/README.md#snapshots) is even preferable as it would include fixes that are not yet released.
 
-See [upgrading documentation](asciidocalypse://docs/apm-agent-java/docs/reference/upgrading.md) for more details.
+See [upgrading documentation](apm-agent-java://reference/upgrading.md) for more details.
 
 
 ## Running alongside other agents [trouble-shooting-additional-agent]
@@ -34,7 +34,7 @@ Like many other Java agents, our agent instruments classes by injecting bytecode
 
 ## Logging [trouble-shooting-logging]
 
-There are several [logging related configuration options](asciidocalypse://docs/apm-agent-java/docs/reference/config-logging.md). The most important one is [`log_level`](asciidocalypse://docs/apm-agent-java/docs/reference/config-logging.md#config-log-level).
+There are several [logging related configuration options](apm-agent-java://reference/config-logging.md). The most important one is [`log_level`](apm-agent-java://reference/config-logging.md#config-log-level).
 
 Set the log level to `DEBUG` or even `TRACE` to get more information about the behavior of the agent.
 
@@ -82,7 +82,7 @@ Make sure to execute some requests to your application before posting your log f
 [apm-reporter] DEBUG co.elastic.apm.agent.report.IntakeV2ReportingEventHandler - Receiving TRANSACTION event (sequence 25)
 ```
 
-If you don’t see anything in your logs, the technology stack you are using is probably not [supported](asciidocalypse://docs/apm-agent-java/docs/reference/supported-technologies.md).
+If you don’t see anything in your logs, the technology stack you are using is probably not [supported](apm-agent-java://reference/supported-technologies.md).
 
 After that, you should see logs indicating that the agent has successfully sent data to the APM server:
 
@@ -108,13 +108,13 @@ Ideally this should be done outside of production.
 * It requires restarting the application
 * With log level set to `DEBUG` logs can be verbose, with `TRACE` they are even more verbose.
 * Having only a few transactions in the log makes investigations easier, production traffic creates noise.
-* If not possible, we can still use it for a few minutes in production, when using an external configuration file ([doc](asciidocalypse://docs/apm-agent-java/docs/reference/configuration.md)) the `log_level` can be changed at runtime.
+* If not possible, we can still use it for a few minutes in production, when using an external configuration file ([doc](apm-agent-java://reference/configuration.md)) the `log_level` can be changed at runtime.
 
 Most investigations require using `DEBUG` log level, thus use `DEBUG` unless asked for `TRACE`.
 
 Here, we will refer to the agent log file as `/tmp/agent.log`, but any other location could be used.
 
-1. configure the agent with `log_level=debug` or `log_level=trace` ([doc](asciidocalypse://docs/apm-agent-java/docs/reference/config-logging.md#config-log-level)) and `log_file=/tmp/agent.log` ([doc](asciidocalypse://docs/apm-agent-java/docs/reference/config-logging.md))
+1. configure the agent with `log_level=debug` or `log_level=trace` ([doc](apm-agent-java://reference/config-logging.md#config-log-level)) and `log_file=/tmp/agent.log` ([doc](apm-agent-java://reference/config-logging.md))
 2. truncate the `/tmp/agent.log` file and restart the application
 3. execute a few transactions which aren’t properly captured by the agent
 4. copy the `/tmp/agent.log` file and send it back for investigation
@@ -176,7 +176,7 @@ The most common source of this problem are connection issues between the agent a
 
 If the APM server does not receive data from the agent, check if the agent is able to establish a connection to the server. In the agent logs, look out for logs containing `Elastic APM server is available` and `Elastic APM server is not available`.
 
-If you see the message `Elastic APM server is not available`, the agent has problems connecting to the APM server. Check the setting of [`server_url`](asciidocalypse://docs/apm-agent-java/docs/reference/config-reporter.md#config-server-url) and make sure the agent is able to connect to the server. Try to execute `curl -v <apm-server-url>` from the machine the agent is running on. The server should respond with a 200 status code.
+If you see the message `Elastic APM server is not available`, the agent has problems connecting to the APM server. Check the setting of [`server_url`](apm-agent-java://reference/config-reporter.md#config-server-url) and make sure the agent is able to connect to the server. Try to execute `curl -v <apm-server-url>` from the machine the agent is running on. The server should respond with a 200 status code.
 
 If the APM server does not respond successfully, have a look at the APM server logs to verify that the server is actually running. Also make sure to configure your firewalls so that the host the agent runs on can open HTTP connections to the APM server.
 
@@ -197,15 +197,15 @@ There are two reasons why this might happen:
 
 
     Requests do not reach a servlet
-    :   It’s possible to change the default transaction naming to use the URL path instead. See [`use_path_as_transaction_name` ([1.0.0])](asciidocalypse://docs/apm-agent-java/docs/reference/config-http.md#config-use-path-as-transaction-name) for more information.
+    :   It’s possible to change the default transaction naming to use the URL path instead. See [`use_path_as_transaction_name` ([1.0.0])](apm-agent-java://reference/config-http.md#config-use-path-as-transaction-name) for more information.
 
-        Unfortunately, this may create a lot of duplicate transactions if they have similar paths. For example, in `/usr/{{id}}`, where `{{id}}` is the user ID, you can end up with as many transactions as there are users. You can mitigate this by using [`url_groups` (deprecated)](asciidocalypse://docs/apm-agent-java/docs/reference/config-http.md#config-url-groups), which will allow the use of wildcards in transaction URLs.
+        Unfortunately, this may create a lot of duplicate transactions if they have similar paths. For example, in `/usr/{{id}}`, where `{{id}}` is the user ID, you can end up with as many transactions as there are users. You can mitigate this by using [`url_groups` (deprecated)](apm-agent-java://reference/config-http.md#config-url-groups), which will allow the use of wildcards in transaction URLs.
 
 
 If the proposed fixes do not solve the problem, or if a custom name is required, transaction names can be set manually throughout the request handling flow using our API:
 
-* [`Transaction currentTransaction()`](asciidocalypse://docs/apm-agent-java/docs/reference/public-api.md#api-current-transaction) gets the current transaction.
-* [`Transaction setName(String name)`](asciidocalypse://docs/apm-agent-java/docs/reference/public-api.md#api-set-name) sets the transaction name.
+* [`Transaction currentTransaction()`](apm-agent-java://reference/public-api.md#api-current-transaction) gets the current transaction.
+* [`Transaction setName(String name)`](apm-agent-java://reference/public-api.md#api-set-name) sets the transaction name.
 
 
 ### Libraries compiled against old Java versions [trouble-shooting-old-jdbc-drivers]
@@ -224,14 +224,14 @@ That mostly concerns JDBC drivers. Updating them to a more recent version should
 
 If you are using a manual setup with a `-javaagent` flag against an application server and are seeing the `Failed to find Premain-Class manifest attribute` error and a failure to start, then you might be pointing at the incorrect jar file.
 
-The correct jar file to be pointing at should be in the form of `elastic-apm-agent-<version>.jar` and further information about how to download this file can be found [in the manual setup instructions.](asciidocalypse://docs/apm-agent-java/docs/reference/setup-javaagent.md)
+The correct jar file to be pointing at should be in the form of `elastic-apm-agent-<version>.jar` and further information about how to download this file can be found [in the manual setup instructions.](apm-agent-java://reference/setup-javaagent.md)
 
 
 ### Communication with APM Server [trouble-shooting-communication]
 
-`unable to find valid certification path to requested target` - server authentication fails. Check out [APM Server certificate authentication](asciidocalypse://docs/apm-agent-java/docs/reference/ssl-configuration.md#ssl-server-authentication).
+`unable to find valid certification path to requested target` - server authentication fails. Check out [APM Server certificate authentication](apm-agent-java://reference/ssl-configuration.md#ssl-server-authentication).
 
-`java.net.SocketException: Broken pipe` - one option is that client authentication fails. Check out [Agent certificate authentication](asciidocalypse://docs/apm-agent-java/docs/reference/ssl-configuration.md#ssl-client-authentication).
+`java.net.SocketException: Broken pipe` - one option is that client authentication fails. Check out [Agent certificate authentication](apm-agent-java://reference/ssl-configuration.md#ssl-client-authentication).
 
 With Oracle Weblogic application server wildcard TLS certificates are not allowed by default, when this happens a message error like this is visible in agent logs: `Hostname verification failed: HostnameVerifier=weblogic.security.utils.SSLWLSHostnameVerifier`. Disabling this extra check can be done with `-Dweblogic.security.SSL.ignoreHostnameVerification=true`.
 
@@ -254,7 +254,7 @@ Known issues:
     1. Add `-XX:CompileCommand=exclude,java.lang.invoke.LambdaForm*::*` to the command line to avoid the problematic JIT compilation
     2. Increase the delay from the default (3000ms) by setting the `elastic.apm.delay_agent_premain_ms` System property to indicate the number of milliseconds to delay, through the command line, for example: `-Delastic.apm.delay_agent_premain_ms=10000`.
 
-* When [`profiling_inferred_spans_enabled` ([1.15.0] experimental)](asciidocalypse://docs/apm-agent-java/docs/reference/config-profiling.md#config-profiling-inferred-spans-enabled) is set to `true`, it uses a native library that collects low-level information from the JVM. All known issues so far had been fixed. Try to disable it if you think the crash may be related. We continuously upgrade to the latest async profiler version, so upgrading your agent to the latest version may already contain a fix.
+* When [`profiling_inferred_spans_enabled` ([1.15.0] experimental)](apm-agent-java://reference/config-profiling.md#config-profiling-inferred-spans-enabled) is set to `true`, it uses a native library that collects low-level information from the JVM. All known issues so far had been fixed. Try to disable it if you think the crash may be related. We continuously upgrade to the latest async profiler version, so upgrading your agent to the latest version may already contain a fix.
 
 Whenever you encounter a JVM crash, please report through [our forum](https://discuss.elastic.co/c/observability/apm/58) or by opening an issue on our [GitHub repository](https://github.com/elastic/apm-agent-java). Look for the crash log (e.g. an `hs_err_pid<PID>.log`) and provide it when reporting, as well as all factors describing you setup and scenario.
 
@@ -273,9 +273,9 @@ If you use `jlink` to create a custom runtime, make sure the following modules a
 
 In the unlikely event the agent causes disruptions to a production application, you can disable the agent while you troubleshoot.
 
-Using [dynamic configuration](asciidocalypse://docs/apm-agent-java/docs/reference/configuration.md#configuration-dynamic), you can disable the recording of events by setting [`recording`](asciidocalypse://docs/apm-agent-java/docs/reference/config-core.md#config-recording) to `false`.
+Using [dynamic configuration](apm-agent-java://reference/configuration.md#configuration-dynamic), you can disable the recording of events by setting [`recording`](apm-agent-java://reference/config-core.md#config-recording) to `false`.
 
-If that doesn’t work, you can completely disable the agent by setting [`enabled`](asciidocalypse://docs/apm-agent-java/docs/reference/config-core.md#config-enabled) to `false`. You’ll need to restart your application for this change to take effect.
+If that doesn’t work, you can completely disable the agent by setting [`enabled`](apm-agent-java://reference/config-core.md#config-enabled) to `false`. You’ll need to restart your application for this change to take effect.
 
 
 ## Unsupported framework versions [trouble-shooting-unsupported-framework-versions]

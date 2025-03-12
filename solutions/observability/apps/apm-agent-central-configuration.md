@@ -41,7 +41,7 @@ iOS agent
 :   [Configuration reference](apm-agent-ios://reference/configuration.md)
 
 Java agent
-:   [Configuration reference](asciidocalypse://docs/apm-agent-java/docs/reference/configuration.md)
+:   [Configuration reference](apm-agent-java://reference/configuration.md)
 
 .NET agent
 :   [Configuration reference](apm-agent-dotnet://reference/configuration.md)
