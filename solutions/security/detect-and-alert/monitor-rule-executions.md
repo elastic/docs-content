@@ -63,7 +63,7 @@ Use these controls to filter what’s included in the logs table:
 * The date and time picker sets the time range of rule executions included in the table. This is separate from the global date and time picker at the top of the rule details page.
 * The **Source event time range** button toggles the display of data pertaining to the time range of manual runs.
 * The **Show metrics columns** toggle includes more or less data in the table, pertaining to the timing of each rule execution.
-* The **Actions** column allows you to show alerts generated from a given rule execution. Click the filter icon (![Filter icon](../../../images/security-filter-icon.png "")) to create a global search filter based on the rule execution’s ID value. This replaces any previously applied filters, changes the global date and time range to 24 hours before and after the rule execution, and displays a confirmation notification. You can revert this action by clicking **Restore previous filters** in the notification.
+* The **Actions** column allows you to show alerts generated from a given rule execution. Click the filter icon (![Filter icon](../../../images/security-filter-icon.png "title =20x20")) to create a global search filter based on the rule execution’s ID value. This replaces any previously applied filters, changes the global date and time range to 24 hours before and after the rule execution, and displays a confirmation notification. You can revert this action by clicking **Restore previous filters** in the notification.
 
 
 ### Manual runs table [manual-runs-table]

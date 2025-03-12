@@ -93,8 +93,8 @@ You can also edit value lists while creating and managing exceptions that use va
 2. Click **Manage value lists**. The **Manage value lists** window opens.
 3. From the **Value lists** table, you can:
 
-    1. Click the **Export value list** button (![Export button from Manage value lists window](../../../images/security-export-value-list.png "")) to export the value list.
-    2. Click the **Remove value list** button (![Remove button from Manage value lists window](../../../images/security-remove-value-list.png "")) to delete the value list.
+    1. Click the **Export value list** button (![Export button from Manage value lists window](../../../images/security-export-value-list.png "title =20x20")) to export the value list.
+    2. Click the **Remove value list** button (![Remove button from Manage value lists window](../../../images/security-remove-value-list.png "title =20x20")) to delete the value list.
 
         :::{image} ../../../images/security-manage-value-list.png
         :alt: Import value list flyout with action buttons highlighted
