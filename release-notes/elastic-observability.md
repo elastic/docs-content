@@ -2,7 +2,7 @@
 navigation_title: "Elastic Observability"
 ---
 
-# Elastic {{observability}}release notes [elastic-observability-release-notes]
+# Elastic {{observability}} release notes [elastic-observability-release-notes]
 Review the changes, fixes, and more in each version of Elastic {{observability}}. 
 
 To check for security updates, go to [Security announcements for the Elastic stack](https://discuss.elastic.co/c/announcements/security-announcements/31).
