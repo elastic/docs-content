@@ -107,6 +107,12 @@ In versions from 2.6 to 2.10 included, some or all platform certificates are gen
 
 To upgrade an Elastic Cloud Enterprise installation, download the latest installation script. Log in as the user used to run Elastic Cloud Enterprise (by default called `elastic` with UID/GID 1000), and run the script with the `upgrade` action on a single host that holds the director role:
 
+::::{important}
+* If your ECE installation was set up using **Podman** instead of Docker, append the `--podman` flag when running the upgrade command.
+* If your installation uses **SELinux**, append the `--selinux` flag when running the upgrade command.
+* If you configured a **custom Docker registry** during installation using the `--docker-registry` or `--ece-docker-repository` parameters, include the same parameters when running the upgrade.
+::::
+
 ```sh
 bash <(curl -fsSL https://download.elastic.co/cloud/elastic-cloud-enterprise.sh) upgrade
 ```
