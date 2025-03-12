@@ -171,7 +171,6 @@ toc:
       - file: elasticsearch/elasticsearch-reference/bootstrap-checks.md
       - file: elasticsearch/elasticsearch-reference/change-passwords-native-users.md
       - file: elasticsearch/elasticsearch-reference/configuring-stack-security.md
-      - file: elasticsearch/elasticsearch-reference/data-management.md
       - file: elasticsearch/elasticsearch-reference/documents-indices.md
       - file: elasticsearch/elasticsearch-reference/es-security-principles.md
       - file: elasticsearch/elasticsearch-reference/esql-using.md
@@ -204,9 +203,6 @@ toc:
       - file: elasticsearch/elasticsearch-reference/xpack-autoscaling.md
   - file: ingest-docs/fleet/index.md
     children:
-      - file: ingest-docs/fleet/beats-agent-comparison.md
-      - file: ingest-docs/fleet/fleet-agent-serverless-restrictions.md
-      - file: ingest-docs/fleet/fleet-elastic-agent-quick-start.md
   - file: ingest-docs/ingest-overview/index.md
   - file: kibana/kibana/index.md
     children:
