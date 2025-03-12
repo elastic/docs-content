@@ -4,6 +4,8 @@ mapped_urls:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece_re_running_the_ece_upgrade.html
 ---
 
+% The upgrade procedure is expected to change with ECE 3.8.0 release. This document is currently a temporary draft, pending to be refined.
+
 # Upgrade Elastic Cloud Enterprise [ece-upgrade]
 
 Periodically, you might need to upgrade an Elastic Cloud Enterprise installation as new versions with additional features become available. The upgrade process updates all hosts that are part of an Elastic Cloud Enterprise installation to the latest version of ECE, with little or no downtime for managed deployments. To upgrade deployments to Elastic Stack 9.x, the minimum required version of ECE is 3.0.0.  
