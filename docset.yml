@@ -11,6 +11,7 @@ cross_links:
   - apm-agent-dotnet
   - apm-agent-go
   - apm-agent-ios
+  - apm-agent-rum-js
   - apm-aws-lambda
   - apm-k8s-attacher
   - asciidocalypse

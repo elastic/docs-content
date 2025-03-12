@@ -34,7 +34,7 @@ Avoid defining too many user-specified labels. Defining too many unique fields i
 * PHP: [`Transaction` `setLabel`](asciidocalypse://docs/apm-agent-php/docs/reference/public-api.md#api-transaction-interface-set-label) | [`Span` `setLabel`](asciidocalypse://docs/apm-agent-php/docs/reference/public-api.md#api-span-interface-set-label)
 * Python: [`elasticapm.label()`](asciidocalypse://docs/apm-agent-python/docs/reference/api-reference.md#api-label)
 * Ruby:  [`set_label`](asciidocalypse://docs/apm-agent-ruby/docs/reference/api-reference.md#api-agent-set-label)
-* Rum: [`addLabels`](asciidocalypse://docs/apm-agent-rum-js/docs/reference/agent-api.md#apm-add-labels)
+* Rum: [`addLabels`](apm-agent-rum-js://reference/agent-api.md#apm-add-labels)
 
 
 ## Custom context [apm-data-model-custom]
@@ -64,7 +64,7 @@ Setting a circular object, a large object, or a non JSON serializable object can
 * PHP: *coming soon*
 * Python: [`set_custom_context`](asciidocalypse://docs/apm-agent-python/docs/reference/api-reference.md#api-set-custom-context)
 * Ruby: [`set_custom_context`](asciidocalypse://docs/apm-agent-ruby/docs/reference/api-reference.md#api-agent-set-custom-context)
-* Rum: [`setCustomContext`](asciidocalypse://docs/apm-agent-rum-js/docs/reference/agent-api.md#apm-set-custom-context)
+* Rum: [`setCustomContext`](apm-agent-rum-js://reference/agent-api.md#apm-set-custom-context)
 
 
 ## User context [apm-data-model-user]
@@ -87,5 +87,5 @@ User context adds **indexed** user information to transactions and errors. Index
 * PHP: *coming soon*
 * Python: [`set_user_context`](asciidocalypse://docs/apm-agent-python/docs/reference/api-reference.md#api-set-user-context)
 * Ruby: [`set_user`](asciidocalypse://docs/apm-agent-ruby/docs/reference/api-reference.md#api-agent-set-user)
-* Rum: [`setUserContext`](asciidocalypse://docs/apm-agent-rum-js/docs/reference/agent-api.md#apm-set-user-context)
+* Rum: [`setUserContext`](apm-agent-rum-js://reference/agent-api.md#apm-set-user-context)
 
