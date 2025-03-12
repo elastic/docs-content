@@ -102,23 +102,6 @@ If the license version is not 4 or higher, you must request an updated license f
 
 In versions from 2.6 to 2.10 included, some or all platform certificates are generated with a 398-day expiration. Installations that ran on these versions, even temporarily, must have their certificates rotated manually before expiry. For details, check our [KB article](https://support.elastic.co/knowledge/ECE-Certificate-Rotation).
 
-## Preserve installation flags during upgrade [ece-upgrade-preserve-flags]
-
-When performing an upgrade, you must **explicitly pass the same flags** that were used during the initial installation of Elastic Cloud Enterprise.  
-
-For example, if your ECE installation was set up using **Podman**, you **must** include the `--podman` flag when running the upgrade command:
-
-```sh
-bash <(curl -fsSL https://download.elastic.co/cloud/elastic-cloud-enterprise.sh) upgrade --podman
-```
-
-Similarly, if your installation used SELinux, include the `--selinux` flag:
-
-```sh
-bash <(curl -fsSL https://download.elastic.co/cloud/elastic-cloud-enterprise.sh) upgrade --selinux
-```
-
-If the necessary flags are not passed, you may encounter errors stating that the operating system or container engine is incompatible, even if your setup is actually supported.
 
 ## Perform the upgrade [ece-upgrade-steps]
 
