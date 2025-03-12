@@ -59,18 +59,18 @@ Some AWS services need additional manual configuration to properly ingest logs a
 ::::
 
 
-Data collection with AWS Firehose is supported on ESS deployments in AWS, Azure and GCP.
+Data collection with AWS Firehose is supported on {{ech}} deployments in AWS, Azure and GCP.
 
 
 ## Prerequisites [_prerequisites_5]
 
-::::{tab-set}
+:::::{tab-set}
 :group: stack-serverless
 
-:::{tab-item} Elastic Stack v9
+::::{tab-item} Elastic Stack
 :sync: stack
 
-* A deployment using our hosted {{ess}} on [{{ecloud}}](https://cloud.elastic.co/registration?page=docs&placement=docs-body). The deployment includes an {{es}} cluster for storing and searching your data, and {{kib}} for visualizing and managing your data.
+* An [{{ech}}](https://cloud.elastic.co/registration?page=docs&placement=docs-body) deployment. The deployment includes an {{es}} cluster for storing and searching your data, and {{kib}} for visualizing and managing your data.
 * A user with the `superuser` [built-in role](../../../deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md) or the privileges required to onboard data.
 
     ::::{dropdown} Expand to view required privileges
@@ -86,18 +86,18 @@ Data collection with AWS Firehose is supported on ESS deployments in AWS, Azure 
 The default CloudFormation stack is created in the AWS region selected for the user’s account. This region can be modified either through the AWS Console interface or by specifying a `--region` parameter in the AWS CLI command when creating the stack.
 ::::
 
-:::
+::::
 
-:::{tab-item} Serverless
+::::{tab-item} Serverless
 :sync: serverless
 
 * An {{obs-serverless}} project. To learn more, refer to [Create an Observability project](../../../solutions/observability/get-started/create-an-observability-project.md).
 * A user with the **Admin** role or higher—required to onboard system logs and metrics. To learn more, refer to [Assign user roles and privileges](../../../deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
 * An active AWS account and the necessary permissions to create delivery streams.
 
-:::
-
 ::::
+
+:::::
 
 
 
@@ -144,15 +144,15 @@ The following table shows the type of data ingested by the supported AWS service
 ::::{tab-set}
 :group: stack-serverless
 
-:::{tab-item} Elastic Stack v9
+:::{tab-item} Elastic Stack
 :sync: stack
 
 1. In {{kib}}, go to the **Observability** UI and click **Add Data**.
-2. Under **What do you want to monitor?** select **Cloud***, ***AWS**, and then select **AWS Firehose**.
+2. Under **What do you want to monitor?** select **Cloud**, **AWS**, and then select **AWS Firehose**.
 
     :::{image} ../../../images/observability-quickstart-aws-firehose-entry-point.png
     :alt: AWS Firehose entry point
-    :class: screenshot
+    :screenshot:
     :::
 
 3. Click **Create Firehose Stream in AWS** to create a CloudFormation stack from the CloudFormation template.
@@ -166,11 +166,11 @@ The following table shows the type of data ingested by the supported AWS service
 
 1. [Create a new {{obs-serverless}} project](../../../solutions/observability/get-started/create-an-observability-project.md), or open an existing one.
 2. In your {{obs-serverless}} project, go to **Add Data**.
-3. Under **What do you want to monitor?** select **Cloud***, ***AWS**, and then select **AWS Firehose**.
+3. Under **What do you want to monitor?** select **Cloud**, **AWS**, and then select **AWS Firehose**.
 
     :::{image} ../../../images/serverless-quickstart-aws-firehose-entry-point.png
     :alt: AWS Firehose entry point
-    :class: screenshot
+    :screenshot:
     :::
 
 4. Click **Create Firehose Stream in AWS** to create a CloudFormation stack from the CloudFormation template.
@@ -186,14 +186,14 @@ After installation is complete and all relevant data is flowing into Elastic, th
 
 :::{image} ../../../images/observability-quickstart-aws-firehose-dashboards.png
 :alt: AWS Firehose dashboards
-:class: screenshot
+:screenshot:
 :::
 
 Here is an example of the VPC Flow logs dashboard:
 
 :::{image} ../../../images/observability-quickstart-aws-firehose-vpc-flow.png
 :alt: AWS Firehose VPC flow
-:class: screenshot
+:screenshot:
 :::
 
 Refer to [What is Elastic {{observability}}?](../../../solutions/observability/get-started/what-is-elastic-observability.md) for a description of other useful features.

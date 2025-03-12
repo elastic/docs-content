@@ -9,8 +9,7 @@ navigation_title: "Custom threshold"
 # Create a custom threshold rule [observability-create-custom-threshold-alert-rule]
 
 
-::::{admonition} Required role
-:class: note
+::::{note}
 
 **For Observability serverless projects**, the **Editor** role or higher is required to create a custom threshold rule. To learn more, refer to [Assign user roles and privileges](../../../deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
 
@@ -25,7 +24,7 @@ Create a custom threshold rule to trigger an alert when an {{obs-serverless}} da
 
 :::{image} ../../../images/serverless-custom-threshold-rule.png
 :alt: Rule details (custom threshold)
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -128,8 +127,8 @@ The behavior of the alert depends on whether any **group alerts by** fields are 
     * If `host-1` reports CPU usage below the threshold of 80%, the alert status is changed to recovered.
 
 
-::::{admonition} How to untrack decommissioned hosts
-:class: note
+::::{note} 
+**How to untrack decommissioned hosts**
 
 If a host (for example, `host-1`) is decommissioned, you probably no longer want to see "no data" alerts about it. To mark an alert as untracked: Go to the Alerts table, click the ![More actions](../../../images/serverless-boxesHorizontal.svg "") icon to expand the "More actions" menu, and click *Mark as untracked*.
 
@@ -182,7 +181,7 @@ After you select a connector, you must set the action frequency. You can choose 
 
 :::{image} ../../../images/serverless-custom-threshold-run-when.png
 :alt: Configure when a rule is triggered
-:class: screenshot
+:screenshot:
 :::
 
 You can also further refine the conditions under which actions run by specifying that actions only run when they match a KQL query or when an alert occurs within a specific time frame:
@@ -192,7 +191,7 @@ You can also further refine the conditions under which actions run by specifying
 
 :::{image} ../../../images/serverless-logs-threshold-conditional-alert.png
 :alt: Configure a conditional alert
-:class: screenshot
+:screenshot:
 :::
 
 :::::
@@ -203,7 +202,7 @@ Use the default notification message or customize it. You can add more context t
 
 :::{image} ../../../images/serverless-action-variables-popup.png
 :alt: Action variables list
-:class: screenshot
+:screenshot:
 :::
 
 The following variables are specific to this rule type. You can also specify [variables common to all rules](../../../explore-analyze/alerts-cases/alerts/rule-action-variables.md).

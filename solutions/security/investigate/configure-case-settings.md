@@ -4,42 +4,18 @@ mapped_urls:
   - https://www.elastic.co/guide/en/serverless/current/security-cases-settings.html
 ---
 
-# Configure case settings
+# Configure case settings [security-cases-settings]
 
-% What needs to be done: Align serverless/stateful
-
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/security-docs/security/cases-manage-settings.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/security-cases-settings.md
-
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
-
-$$$cases-templates$$$
-
-$$$cases-ui-custom-fields$$$
-
-$$$cases-ui-integrations$$$
-
-$$$cases-observable-types$$$
-
-$$$security-cases-settings-templates$$$
-
-$$$security-cases-settings-custom-fields$$$
-
-$$$security-cases-observable-types$$$
-
-
-
-To change case closure options, add custom fields, templates, and connectors for external incident management systems, and create custom observable types, find **Cases** in the navigation menu or search for `Security/Cases` by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then click **Settings**.
+This page explains how to change case closure options, add custom fields, templates, and connectors for external incident management systems, and create custom observable types.
+First, find **Cases** in the navigation menu or search for `Security/Cases` by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then click **Settings**. In {{serverless-short}}, you can access case settings in an {{elastic-sec}} project, go to **Cases** → **Settings**.
 
 :::{image} ../../../images/security-cases-settings.png
 :alt: Shows the case settings page
-:class: screenshot
+:screenshot:
 :::
 
 ::::{note}
-To view and change case settings, you must have the appropriate {{kib}} feature privileges. Refer to [Cases requirements](/solutions/security/investigate/cases-requirements.md).
+On {{stack}}, view and change case settings, you must have the appropriate {{kib}} feature privileges. Refer to [Cases requirements](/solutions/security/investigate/cases-requirements.md).
 ::::
 
 
@@ -48,7 +24,7 @@ To view and change case settings, you must have the appropriate {{kib}} feature 
 
 If you close cases in your external incident management system, the cases will remain open in {{elastic-sec}} until you close them manually.
 
-To close cases when they are sent to an external system, select **Automatically close cases when pushing new incident to external system**.
+To close cases when they are sent to an external system, select the option to automatically close cases when pushing new incident to external system.
 
 
 ## External incident management systems [cases-ui-integrations]
@@ -66,7 +42,7 @@ You can push {{elastic-sec}} cases to these third-party systems:
 To push cases, you need to create a connector, which stores the information required to interact with an external system. After you have created a connector, you can set {{elastic-sec}} cases to automatically close when they are sent to external systems.
 
 ::::{important}
-To create connectors and send cases to external systems, you need the [appropriate license](https://www.elastic.co/subscriptions), and your role needs **All** privileges for the **Action and Connectors** feature. For more information, refer to [Cases requirements](/solutions/security/investigate/cases-requirements.md).
+To create connectors and send cases to external systems, ensure you have the appropriate role privileges and [{{stack}} subscription](https://www.elastic.co/pricing) or [{{serverless-short}} project tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md). For more information, refer to [Cases requirements](/solutions/security/investigate/cases-requirements.md).
 ::::
 
 
@@ -76,13 +52,13 @@ To create a new connector:
 2. Select the system to send cases to: **{{sn}}**, **{{jira}}**, **{{ibm-r}}**, **{{swimlane}}**, **{{hive}}**, or **{{webhook-cm}}**.
 3. Enter your required settings. For connector configuration details, refer to:
 
-    * [{{sn-itsm}} connector](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/servicenow-action-type.md)
-    * [{{sn-sir}} connector](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/servicenow-sir-action-type.md)
-    * [{{jira}} connector](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/jira-action-type.md)
-    * [{{ibm-r}} connector](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/resilient-action-type.md)
-    * [{{swimlane}} connector](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/swimlane-action-type.md)
-    * [{{hive}} connector](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/thehive-action-type.md)
-    * [{{webhook-cm}} connector](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/cases-webhook-action-type.md)
+    * [{{sn-itsm}} connector](kibana://reference/connectors-kibana/servicenow-action-type.md)
+    * [{{sn-sir}} connector](kibana://reference/connectors-kibana/servicenow-sir-action-type.md)
+    * [{{jira}} connector](kibana://reference/connectors-kibana/jira-action-type.md)
+    * [{{ibm-r}} connector](kibana://reference/connectors-kibana/resilient-action-type.md)
+    * [{{swimlane}} connector](kibana://reference/connectors-kibana/swimlane-action-type.md)
+    * [{{hive}} connector](kibana://reference/connectors-kibana/thehive-action-type.md)
+    * [{{webhook-cm}} connector](kibana://reference/connectors-kibana/cases-webhook-action-type.md)
 
 
 To change the settings of an existing connector:
@@ -113,7 +89,7 @@ You can add optional and required fields for customized case collaboration.
 
     :::{image} ../../../images/security-cases-add-custom-field.png
     :alt: Add a custom field in case settings
-    :class: screenshot
+    :screenshot:
     :::
 
 2. You must provide a field label and type (text or toggle). You can optionally designate it as a required field and provide a default value.
@@ -138,7 +114,7 @@ To create a template:
 
     :::{image} ../../../images/security-cases-add-template.png
     :alt: Add a template in case settings
-    :class: screenshot
+    :screenshot:
     :::
 
 2. You must provide a template name and case severity. You can optionally add template tags and a description, values for each case field, and a case connector.
@@ -154,7 +130,7 @@ If you update or delete templates, existing cases are unaffected.
 ## Observable types [cases-observable-types]
 
 ::::{admonition} Requirements
-To use observables, you must have a [Platinum subscription](https://www.elastic.co/pricing) or higher.
+Ensure you have the appropriate [{{stack}} subscription](https://www.elastic.co/pricing) or [{{serverless-short}} project tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md).
 
 ::::
 
@@ -178,5 +154,5 @@ Deleting a custom observable type deletes all instances of it.
 
 :::{image} ../../../images/security-cases-observable-types.png
 :alt: Add an observable type in case settings
-:class: screenshot
+:screenshot:
 :::

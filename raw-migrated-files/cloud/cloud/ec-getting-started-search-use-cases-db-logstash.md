@@ -1,6 +1,6 @@
-# Ingest data from a relational database into Elasticsearch Service [ec-getting-started-search-use-cases-db-logstash]
+# Ingest data from a relational database into {{ech}} [ec-getting-started-search-use-cases-db-logstash]
 
-This guide explains how to ingest data from a relational database into Elasticsearch Service through [Logstash](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/index.md), using the Logstash [JDBC input plugin](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/plugins-inputs-jdbc.md). It demonstrates how Logstash can be used to efficiently copy records and to receive updates from a relational database, and then send them into {{es}} in an Elasticsearch Service deployment.
+This guide explains how to ingest data from a relational database into {{ech}} through [Logstash](logstash://reference/index.md), using the Logstash [JDBC input plugin](logstash://reference/plugins-inputs-jdbc.md). It demonstrates how Logstash can be used to efficiently copy records and to receive updates from a relational database, and then send them into {{es}} in an {{ech}} deployment.
 
 The code and methods presented here have been tested with MySQL. They should work with other relational databases.
 
@@ -9,7 +9,7 @@ The Logstash Java Database Connectivity (JDBC) input plugin enables you to pull 
 This document presents:
 
 1. [Prerequisites](../../../manage-data/ingest/ingesting-data-from-applications/ingest-data-from-relational-database-into-elasticsearch-service.md#ec-db-logstash-prerequisites)
-2. [Get Elasticsearch Service](../../../manage-data/ingest/ingesting-data-from-applications/ingest-data-from-relational-database-into-elasticsearch-service.md#ec-db-logstash-trial)
+2. [Get {{ech}}](../../../manage-data/ingest/ingesting-data-from-applications/ingest-data-from-relational-database-into-elasticsearch-service.md#ec-db-logstash-trial)
 3. [Connect securely](../../../manage-data/ingest/ingesting-data-from-applications/ingest-data-from-relational-database-into-elasticsearch-service.md#ec-db-logstash-connect-securely)
 4. [Get the MySQL JDBC driver](../../../manage-data/ingest/ingesting-data-from-applications/ingest-data-from-relational-database-into-elasticsearch-service.md#ec-db-logstash-driver)
 5. [Prepare a source MySQL database](../../../manage-data/ingest/ingesting-data-from-applications/ingest-data-from-relational-database-into-elasticsearch-service.md#ec-db-logstash-database)
@@ -25,7 +25,7 @@ This document presents:
 For this tutorial you need a source MySQL instance for Logstash to read from. A free version of MySQL is available from the [MySQL Community Server section](https://dev.mysql.com/downloads/mysql/) of the MySQL Community Downloads site.
 
 
-## Get Elasticsearch Service [ec-db-logstash-trial]
+## Get {{ech}} [ec-db-logstash-trial]
 
 1. [Get a free trial](https://cloud.elastic.co/registration?page=docs&placement=docs-body).
 2. Log into [Elastic Cloud](https://cloud.elastic.co?page=docs&placement=docs-body).
@@ -34,14 +34,14 @@ For this tutorial you need a source MySQL instance for Logstash to read from. A 
 5. Select **Create deployment** and save your Elastic deployment credentials. You need these credentials later on.
 6. When the deployment is ready, click **Continue** and a page of **Setup guides** is displayed. To continue to the deployment homepage click **I’d like to do something else**.
 
-Prefer not to subscribe to yet another service? You can also get Elasticsearch Service through [AWS, Azure, and GCP marketplaces](../../../deploy-manage/deploy/elastic-cloud/subscribe-from-marketplace.md).
+Prefer not to subscribe to yet another service? You can also get {{ech}} through [AWS, Azure, and GCP marketplaces](../../../deploy-manage/deploy/elastic-cloud/subscribe-from-marketplace.md).
 
 
 ## Connect securely [ec-db-logstash-connect-securely]
 
-When connecting to Elasticsearch Service you can use a Cloud ID to specify the connection details. Find your Cloud ID by going to the {{kib}} main menu and selecting Management > Integrations, and then selecting View deployment details.
+When connecting to {{ech}} you can use a Cloud ID to specify the connection details. Find your Cloud ID by going to the {{kib}} main menu and selecting Management > Integrations, and then selecting View deployment details.
 
-To connect to, stream data to, and issue queries with Elasticsearch Service, you need to think about authentication. Two authentication mechanisms are supported, *API key* and *basic authentication*. Here, to get you started quickly, we’ll show you how to use basic authentication, but you can also generate API keys as shown later on. API keys are safer and preferred for production environments.
+To connect to, stream data to, and issue queries with {{ech}}, you need to think about authentication. Two authentication mechanisms are supported, *API key* and *basic authentication*. Here, to get you started quickly, we’ll show you how to use basic authentication, but you can also generate API keys as shown later on. API keys are safer and preferred for production environments.
 
 1. [Download](https://www.elastic.co/downloads/logstash) and unpack Logstash on the local machine that hosts MySQL or another machine granted access to the MySQL machine.
 
@@ -56,7 +56,7 @@ The Logstash JDBC input plugin does not include any database connection drivers.
 
 ## Prepare a source MySQL database [ec-db-logstash-database]
 
-Let’s look at a simple database from which you’ll import data and send it to Elasticsearch Service. This example uses a MySQL database with timestamped records. The timestamps enable you to determine easily what’s changed in the database since the most recent data transfer to Elasticsearch Service.
+Let’s look at a simple database from which you’ll import data and send it to {{ech}}. This example uses a MySQL database with timestamped records. The timestamps enable you to determine easily what’s changed in the database since the most recent data transfer to {{ech}}.
 
 
 ### Consider the database structure and design [ec-db-logstash-database-structure]
@@ -192,13 +192,13 @@ Let’s set up a sample Logstash input pipeline to ingest data from your new JDB
     :   The Logstash JDBC plugin does not come packaged with JDBC driver libraries. The JDBC driver library must be passed explicitly into the plugin using the `jdbc_driver_library` configuration option.
 
     tracking_column
-    :   This parameter specifies the field `unix_ts_in_secs` that tracks the last document read by Logstash from MySQL, stored on disk in [logstash_jdbc_last_run](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/plugins-inputs-jdbc.md#plugins-inputs-jdbc-last_run_metadata_path). The parameter determines the starting value for documents that Logstash requests in the next iteration of its polling loop. The value stored in `logstash_jdbc_last_run` can be accessed in a SELECT statement as `sql_last_value`.
+    :   This parameter specifies the field `unix_ts_in_secs` that tracks the last document read by Logstash from MySQL, stored on disk in [logstash_jdbc_last_run](logstash://reference/plugins-inputs-jdbc.md#plugins-inputs-jdbc-last_run_metadata_path). The parameter determines the starting value for documents that Logstash requests in the next iteration of its polling loop. The value stored in `logstash_jdbc_last_run` can be accessed in a SELECT statement as `sql_last_value`.
 
     unix_ts_in_secs
     :   The field generated by the SELECT statement, which contains the `modification_time` as a standard [Unix timestamp](https://en.wikipedia.org/wiki/Unix_time) (seconds since the epoch). The field is referenced by the `tracking column`. A Unix timestamp is used for tracking progress rather than a normal timestamp, as a normal timestamp may cause errors due to the complexity of correctly converting back and forth between UMT and the local timezone.
 
     sql_last_value
-    :   This is a [built-in parameter](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/plugins-inputs-jdbc.md#_predefined_parameters) containing the starting point of the current iteration of the Logstash polling loop, and it is referenced in the SELECT statement line of the JDBC input configuration. This parameter is set to the most recent value of `unix_ts_in_secs`, which is read from `.logstash_jdbc_last_run`. This value is the starting point for documents returned by the MySQL query that is executed in the Logstash polling loop. Including this variable in the query guarantees that we’re not resending data that is already stored in Elasticsearch.
+    :   This is a [built-in parameter](logstash://reference/plugins-inputs-jdbc.md#_predefined_parameters) containing the starting point of the current iteration of the Logstash polling loop, and it is referenced in the SELECT statement line of the JDBC input configuration. This parameter is set to the most recent value of `unix_ts_in_secs`, which is read from `.logstash_jdbc_last_run`. This value is the starting point for documents returned by the MySQL query that is executed in the Logstash polling loop. Including this variable in the query guarantees that we’re not resending data that is already stored in Elasticsearch.
 
     schedule
     :   This uses cron syntax to specify how often Logstash should poll MySQL for changes. The specification `*/5 * * * * *` tells Logstash to contact MySQL every 5 seconds.  Input from this plugin can be scheduled to run periodically according to a specific schedule. This scheduling syntax is powered by [rufus-scheduler](https://github.com/jmettraux/rufus-scheduler). The syntax is cron-like with some extensions specific to Rufus (for example, timezone support).
@@ -269,7 +269,7 @@ Let’s set up a sample Logstash input pipeline to ingest data from your new JDB
 
 ## Output to Elasticsearch [ec-db-logstash-output]
 
-In this section, we configure Logstash to send the MySQL data to Elasticsearch. We modify the configuration file created in the section [Configure a Logstash pipeline with the JDBC input plugin](../../../manage-data/ingest/ingesting-data-from-applications/ingest-data-from-relational-database-into-elasticsearch-service.md#ec-db-logstash-pipeline) so that data is output directly to Elasticsearch. We start Logstash to send the data, and then log into Elasticsearch Service to verify the data in Kibana.
+In this section, we configure Logstash to send the MySQL data to Elasticsearch. We modify the configuration file created in the section [Configure a Logstash pipeline with the JDBC input plugin](../../../manage-data/ingest/ingesting-data-from-applications/ingest-data-from-relational-database-into-elasticsearch-service.md#ec-db-logstash-pipeline) so that data is output directly to Elasticsearch. We start Logstash to send the data, and then log into {{ech}} to verify the data in Kibana.
 
 1. Open the `jdbc.conf` file in the Logstash folder for editing.
 2. Update the output section with the one that follows:
@@ -287,8 +287,8 @@ In this section, we configure Logstash to send the MySQL data to Elasticsearch. 
     }
     ```
 
-    1. Use the Cloud ID of your Elasticsearch Service deployment. You can include or omit the `<DeploymentName>:` prefix at the beginning of the Cloud ID. Both versions work fine. Find your Cloud ID by going to the {{kib}} main menu and selecting Management > Integrations, and then selecting View deployment details.
-    2. the default username is `elastic`.  It is not recommended to use the `elastic` account for ingesting data as this is a superuser.  We recommend using a user with reduced permissions, or an API Key with permissions specific to the indices or data streams that will be written to.  Check [Configuring security in Logstash](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/secure-connection.md) for information on roles and API Keys. Use the password provided when you created the deployment if using the `elastic` user, or the password used when creating a new ingest user with the roles specified in the [Configuring security in Logstash](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/secure-connection.md) documentation.
+    1. Use the Cloud ID of your {{ech}} deployment. You can include or omit the `<DeploymentName>:` prefix at the beginning of the Cloud ID. Both versions work fine. Find your Cloud ID by going to the {{kib}} main menu and selecting Management > Integrations, and then selecting View deployment details.
+    2. the default username is `elastic`.  It is not recommended to use the `elastic` account for ingesting data as this is a superuser.  We recommend using a user with reduced permissions, or an API Key with permissions specific to the indices or data streams that will be written to.  Check [Configuring security in Logstash](logstash://reference/secure-connection.md) for information on roles and API Keys. Use the password provided when you created the deployment if using the `elastic` user, or the password used when creating a new ingest user with the roles specified in the [Configuring security in Logstash](logstash://reference/secure-connection.md) documentation.
 
 
     Following are some additional details about the configuration file settings:
@@ -299,9 +299,9 @@ In this section, we configure Logstash to send the MySQL data to Elasticsearch. 
     api_key
     :   If you choose to use an API key to authenticate (as discussed in the next step), you can provide it here.
 
-3. **Optional**: For additional security, you can generate an Elasticsearch API key through the Elasticsearch Service console and configure Logstash to use the new key to connect securely to Elasticsearch Service.
+3. **Optional**: For additional security, you can generate an Elasticsearch API key through the {{ecloud}} Console and configure Logstash to use the new key to connect securely to {{ech}}.
 
-    1. Log in to the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body).
+    1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
     2. Select the deployment name and go to **☰** > **Management** > **Dev Tools**.
     3. Enter the following:
 
@@ -375,9 +375,9 @@ In this section, we configure Logstash to send the MySQL data to Elasticsearch. 
     bin/logstash -f jdbc.conf
     ```
 
-6. Logstash outputs the MySQL data to your Elasticsearch Service deployment. Let’s take a look in Kibana and verify that data:
+6. Logstash outputs the MySQL data to your {{ech}} deployment. Let’s take a look in Kibana and verify that data:
 
-    1. Log in to the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body).
+    1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
     2. Select the deployment and go to **☰** > **Management** > **Dev Tools**
     3. Copy and paste the following API GET request into the Console pane, and then click **▶**. This queries all records in the new `rdbms_idx` index.
 

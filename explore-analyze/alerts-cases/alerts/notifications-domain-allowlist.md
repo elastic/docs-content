@@ -24,7 +24,7 @@ Changes to the allowlist do not take effect immediately. After saving your chang
 
 ### Using the UI [using-the-ui]
 
-1. Log in to the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body).
+1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
 2. Select a deployment.
 3. From your deployment menu, go to the **Edit** page.
 4. Select **Save**.
@@ -33,7 +33,7 @@ This updates the notifications settings for {{es}} and {{kib}} to reflect what i
 
 ### Use the {{ecloud}} Control CLI [use-the-ecloud-control-cli]
 
-Updating multiple deployments through the UI can take a lot of time. Instead, you can use the [{{ecloud}} Control](asciidocalypse://docs/ecctl/docs/reference/cloud/ecctl/index.md) command-line interface (`ecctl`) to automate the deployment update.
+Updating multiple deployments through the UI can take a lot of time. Instead, you can use the [{{ecloud}} Control](ecctl://reference/index.md) command-line interface (`ecctl`) to automate the deployment update.
 
 The following example script shows how to update all deployments of an organization:
 

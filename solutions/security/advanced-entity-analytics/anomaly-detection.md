@@ -6,25 +6,19 @@ mapped_urls:
 
 # Anomaly detection
 
-% What needs to be done: Align serverless/stateful
 
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/security-docs/security/machine-learning.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/security-machine-learning.md
-
-[{{ml-cap}}](/explore-analyze/machine-learning/anomaly-detection.md) functionality is available when you have the appropriate subscription, are using a **{{ess-trial}}[cloud deployment]**, or are testing out a **Free Trial**. Refer to [Machine learning job and rule requirements](/solutions/security/advanced-entity-analytics/machine-learning-job-rule-requirements.md) for more information.
+[{{ml-cap}}](/explore-analyze/machine-learning/anomaly-detection.md) functionality is available when you have the appropriate role, subscription, are using a [cloud deployment](https://cloud.elastic.co/registration?page=docs&placement=docs-body), or are testing out a **Free Trial**. Refer to [Machine learning job and rule requirements](/solutions/security/advanced-entity-analytics/machine-learning-job-rule-requirements.md) for more information.
 
 You can view the details of detected anomalies within the `Anomalies` table widget shown on the Hosts, Network, and associated details pages, or even narrow to the specific date range of an anomaly from the `Max anomaly score by job` field in the overview of the details pages for hosts and IPs. These interfaces also offer the ability to drag and drop details of the anomaly to Timeline, such as the `Entity` itself, or any of the associated `Influencers`.
 
 
 ## Manage {{ml}} jobs [manage-jobs]
 
-If you have the `machine_learning_admin` role, you can use the **ML job settings** interface on the **Alerts**, **Rules**, and **Rule Exceptions** pages to view, start, and stop {{elastic-sec}} {{ml}} jobs.
+If you have the appropriate role, you can use the **ML job settings** interface on the **Alerts**, **Rules**, and **Rule Exceptions** pages to view, start, and stop {{elastic-sec}} {{ml}} jobs.
 
 :::{image} ../../../images/security-ml-ui.png
 :alt: ML job settings UI on the Alerts page
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -36,14 +30,14 @@ You can also check the status of {{ml}} detection rules, and start or stop their
 
     :::{image} ../../../images/security-rules-table-ml-job-error.png
     :alt: Rules table {{ml}} job error
-    :class: screenshot
+    :screenshot:
     :::
 
 * On a rule’s details page, check the **Definition** section to confirm whether the required {{ml}} jobs are running. Switch the toggles on or off to run or stop each job.
 
     :::{image} ../../../images/security-rules-ts-ml-job-stopped.png
     :alt: Rule details page with ML job stopped
-    :class: screenshot
+    :screenshot:
     :::
 
 
@@ -62,7 +56,7 @@ Or
 
 * You install one or more of the [Advanced Analytics integrations](/solutions/security/advanced-entity-analytics/behavioral-detection-use-cases.md#ml-integrations).
 
-[Prebuilt job reference](asciidocalypse://docs/docs-content/docs/reference/security/prebuilt-jobs.md) describes all available {{ml}} jobs and lists which ECS fields are required on your hosts when you are not using {{beats}} or the {{agent}} to ship your data. For information on tuning anomaly results to reduce the number of false positives, see [Optimizing anomaly results](/solutions/security/advanced-entity-analytics/optimizing-anomaly-results.md).
+[Prebuilt anomaly detection jobs](/reference/security/prebuilt-anomaly-detection-jobs.md) describes all available {{ml}} jobs and lists which ECS fields are required on your hosts when you are not using {{beats}} or the {{agent}} to ship your data. For information on tuning anomaly results to reduce the number of false positives, see [Optimizing anomaly results](/solutions/security/advanced-entity-analytics/optimizing-anomaly-results.md).
 
 ::::{note}
 Machine learning jobs look back and analyze two weeks of historical data prior to the time they are enabled. After jobs are enabled, they continuously analyze incoming data. When jobs are stopped and restarted within the two-week time frame, previously analyzed data is not processed again.

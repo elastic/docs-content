@@ -1,7 +1,8 @@
 ---
 navigation_title: "ECE orchestrator"
-applies:
-  ece: all
+applies_to:
+  deployment:
+    ece: all
 ---
 
 # Elastic Cloud Enterprise orchestrator users

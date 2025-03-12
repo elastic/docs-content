@@ -5,7 +5,7 @@ mapped_pages:
 
 # Monitor Microsoft Azure with Elastic Agent [monitor-azure-elastic-agent]
 
-::::{admonition}
+::::{note}
 **New to Elastic?** Follow the steps in our [getting started guide](https://www.elastic.co/guide/en/starting-with-the-elasticsearch-platform-and-its-solutions/current/getting-started-observability.html) instead of the steps described here. Return to this tutorial after you’ve learned the basics.
 
 **Using the native Azure integration from the marketplace?** Refer to [Monitor Microsoft Azure with the Azure Native ISV Service](monitor-microsoft-azure-with-azure-native-isv-service.md).
@@ -41,7 +41,7 @@ The [Azure REST API](https://learn.microsoft.com/en-us/rest/api/azure/) allows y
 
     :::{image} ../../../images/observability-agent-tut-azure-register-app.png
     :alt: Screenshot of the application registration
-    :class: screenshot
+    :screenshot:
     :::
 
     Copy the **Application (client) ID** and save it for later. This ID is required to configure {{agent}} to connect to your Azure account.
@@ -50,7 +50,7 @@ The [Azure REST API](https://learn.microsoft.com/en-us/rest/api/azure/) allows y
 
     :::{image} ../../../images/observability-agent-tut-azure-click-client-secret.png
     :alt: Screenshot of adding a new client secret
-    :class: screenshot
+    :screenshot:
     :::
 
 5. Type a description of the secret and select an expiration. Click **Add** to create the client secret. Under **Value**, copy the secret value and save it (along with your client ID) for later.
@@ -78,7 +78,7 @@ After creating the Azure service principal, you need to grant it the correct per
 
     :::{image} ../../../images/observability-agent-tut-azure-add-role-assignment.png
     :alt: Screen capture of adding a role assignment
-    :class: screenshot
+    :screenshot:
     :::
 
 10. Click **Review + assign** to grant the service principal access to your subscription.
@@ -113,10 +113,10 @@ To add the integration:
     **Subscription ID**
     :   The subscription ID listed on the main Subscriptions page.
 
-    :::{image} ../../../images/observability-agent-tut-azure-integration-settings.png
-    :alt: Screenshot of integration settings for Azure
-    :class: screenshot
-    :::
+        :::{image} ../../../images/observability-agent-tut-azure-integration-settings.png
+        :alt: Screenshot of integration settings for Azure
+        :screenshot:
+        :::
 
 6. Make sure the **Collect Azure Billing metrics** selector is turned on.
 7. Accept the defaults to create a new agent policy.
@@ -161,7 +161,7 @@ Now that the metrics are streaming to {{es}}, you can visualize them in {{kib}}.
 
 :::{image} ../../../images/observability-agent-tut-azure-billing-dashboard.png
 :alt: Screenshot of Azure billing overview dashboard
-:class: screenshot
+:screenshot:
 :::
 
 Keep in mind {{agent}} collects data every 24 hours.
@@ -187,7 +187,7 @@ To create an Azure event hub:
 
     :::{image} ../../../images/observability-agent-tut-azure-create-eventhub.png
     :alt: Screenshot of window for creating an event hub namespace
-    :class: screenshot
+    :screenshot:
     :::
 
 5. Click **Create** to deploy the resource.
@@ -195,7 +195,7 @@ To create an Azure event hub:
 7. Click **Review + create**, and then click **Create** to deploy the resource.
 8. Make a note of the namespace and event hub name because you will need them later.
 
-:::::{admonition}
+:::::{note}
 **When do I need more than one event hub?**
 
 Typically you create an event hub for each service you want to monitor. For example, imagine that you want to collect activity logs from the Azure Monitor service plus signin and audit logs from the Active Directory service. Rather than sending all logs to a single event hub, you create an event hub for each service:
@@ -231,7 +231,7 @@ To configure diagnostic settings for the Azure Monitor service:
 
     :::{image} ../../../images/observability-agent-tut-azure-log-categories.png
     :alt: Screenshot of Azure diagnostic settings showing Administrative
-    :class: screenshot
+    :screenshot:
     :::
 
 7. Save the diagnostic settings.
@@ -266,10 +266,10 @@ To add the integration:
     **Storage account key**
     :   A valid access key defined for the storage account.
 
-    :::{image} ../../../images/observability-agent-tut-azure-activity-log-settings.png
-    :alt: Screenshot of integration settings for Azure activity logs
-    :class: screenshot
-    :::
+        :::{image} ../../../images/observability-agent-tut-azure-activity-log-settings.png
+        :alt: Screenshot of integration settings for Azure activity logs
+        :screenshot:
+        :::
 
 6. Make sure the **Collect Azure activity logs from Event Hub** selector is turned on.
 7. Under **Existing hosts**, select the agent policy that created earlier.
@@ -287,7 +287,7 @@ The Azure activity logs integration also comes with pre-built dashboards that yo
 
 :::{image} ../../../images/observability-agent-tut-azure-activity-logs-dashboard.png
 :alt: Screenshot of Azure activity logs dashboard
-:class: screenshot
+:screenshot:
 :::
 
 Congratulations! You have completed the tutorial.

@@ -2,18 +2,13 @@
 navigation_title: "Centrally configure APM agents in Kibana"
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-agent-configuration.html
+applies_to:
+  stack: all
 ---
 
 
 
 # APM agent central configuration [apm-agent-configuration]
-
-
-::::{note}
-APM agent central configuration is *not* compatible with [{{serverless-full}}](https://docs.elastic.co/serverless).
-
-::::
-
 
 APM Agent configuration allows you to fine-tune your APM agent configuration from within the Applications UI. Changes are automatically propagated to your APM agents, so there’s no need to redeploy.
 
@@ -21,7 +16,7 @@ To get started, choose the services and environments you wish to configure. The 
 
 :::{image} ../../../images/observability-apm-agent-configuration.png
 :alt: APM Agent configuration in Kibana
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -37,34 +32,34 @@ Each APM agent has a list of supported configurations. After selecting a Service
 Supported configurations are also tagged with the ![dynamic config](../../../images/observability-dynamic-config.svg "") badge in each APM agent’s configuration reference:
 
 Android agent
-:   [Configuration reference](asciidocalypse://docs/apm-agent-android/docs/reference/ingestion-tools/apm-agent-android/configuration.md)
+:   [Configuration reference](apm-agent-android://reference/configuration.md)
 
 Go agent
-:   [Configuration reference](asciidocalypse://docs/apm-agent-go/docs/reference/ingestion-tools/apm-agent-go/configuration.md)
+:   [Configuration reference](apm-agent-go://reference/configuration.md)
 
 iOS agent
-:   [Configuration reference](asciidocalypse://docs/apm-agent-ios/docs/reference/ingestion-tools/apm-agent-swift/configuration.md)
+:   [Configuration reference](apm-agent-ios://reference/configuration.md)
 
 Java agent
-:   [Configuration reference](asciidocalypse://docs/apm-agent-java/docs/reference/ingestion-tools/apm-agent-java/configuration.md)
+:   [Configuration reference](asciidocalypse://docs/apm-agent-java/docs/reference/configuration.md)
 
 .NET agent
-:   [Configuration reference](asciidocalypse://docs/apm-agent-dotnet/docs/reference/ingestion-tools/apm-agent-dotnet/configuration.md)
+:   [Configuration reference](apm-agent-dotnet://reference/configuration.md)
 
 Node.js agent
-:   [Configuration reference](asciidocalypse://docs/apm-agent-nodejs/docs/reference/ingestion-tools/apm-agent-nodejs/configuration.md)
+:   [Configuration reference](asciidocalypse://docs/apm-agent-nodejs/docs/reference/configuration.md)
 
 PHP agent
-:   [Configuration reference](asciidocalypse://docs/apm-agent-php/docs/reference/ingestion-tools/apm-agent-php/configuration.md)
+:   [Configuration reference](asciidocalypse://docs/apm-agent-php/docs/reference/configuration.md)
 
 Python agent
-:   [Configuration reference](asciidocalypse://docs/apm-agent-python/docs/reference/ingestion-tools/apm-agent-python/configuration.md)
+:   [Configuration reference](asciidocalypse://docs/apm-agent-python/docs/reference/configuration.md)
 
 Ruby agent
-:   [Configuration reference](asciidocalypse://docs/apm-agent-ruby/docs/reference/ingestion-tools/apm-agent-ruby/configuration.md)
+:   [Configuration reference](asciidocalypse://docs/apm-agent-ruby/docs/reference/configuration.md)
 
 Real User Monitoring (RUM) agent
-:   [Configuration reference](asciidocalypse://docs/apm-agent-rum-js/docs/reference/ingestion-tools/apm-agent-rum-js/configuration.md)
+:   [Configuration reference](asciidocalypse://docs/apm-agent-rum-js/docs/reference/configuration.md)
 
 
 ## APM Server configuration [_apm_server_configuration]

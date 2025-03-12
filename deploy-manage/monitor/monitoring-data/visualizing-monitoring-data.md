@@ -1,11 +1,12 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/xpack-monitoring.html
-applies:
-  hosted: all
-  ece: all
-  eck: all
-  stack: all
+applies_to:
+  deployment:
+    ess: all
+    ece: all
+    eck: all
+    self: all
 ---
 
 # Visualizing monitoring data [xpack-monitoring]
@@ -19,5 +20,5 @@ If you enable monitoring across the {{stack}}, each monitored component is consi
 
 For more information, see [Configure monitoring](../stack-monitoring/kibana-monitoring-self-managed.md) and [Monitor a cluster](../../monitor.md).
 
-Want to monitor your fleet of {{agent}}s, too? Use {{fleet}} instead of the Stack Monitoring UI. To learn more, refer to [Monitor {{agent}}s](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/monitor-elastic-agent.md).
+Want to monitor your fleet of {{agent}}s, too? Use {{fleet}} instead of the Stack Monitoring UI. To learn more, refer to [Monitor {{agent}}s](/reference/ingestion-tools/fleet/monitor-elastic-agent.md).
 

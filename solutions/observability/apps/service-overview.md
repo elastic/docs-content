@@ -21,7 +21,7 @@ For insight into the health of your services, you can compare how a service perf
 
 :::{image} ../../../images/observability-time-series-expected-bounds-comparison.png
 :alt: Time series and expected bounds comparison
-:class: screenshot
+:screenshot:
 :::
 
 Select the **Comparison** box to apply a time-based or expected bounds comparison. The time-based comparison options are based on the selected time filter range:
@@ -41,7 +41,7 @@ Response times for the service. You can filter the **Latency** chart to display 
 
 :::{image} ../../../images/observability-latency.png
 :alt: Service latency
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -72,7 +72,7 @@ The **Errors** table provides a high-level view of each error message when it fi
 
 :::{image} ../../../images/observability-error-rate.png
 :alt: failed transaction rate and errors
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -85,7 +85,7 @@ The **Dependencies** table displays a list of downstream services or external co
 % Stateful only for following note?
 
 ::::{note}
-Displaying dependencies for services instrumented with the Real User Monitoring (RUM) agent requires an agent version ≥ v5.6.3.
+**In Elastic Stack deployments**, displaying dependencies for services instrumented with the Real User Monitoring (RUM) agent requires an agent version ≥ v5.6.3.
 ::::
 
 
@@ -100,9 +100,10 @@ The cold start rate chart is currently supported for [AWS Lambda](../../../solut
 
 The **Instances** table displays a list of all the available service instances within the selected time range. Depending on how the service runs, the instance could be a host or a container. The table displays latency, throughput, failed transaction, CPU usage, and memory usage for each instance. By default, instances are sorted by *Throughput*.
 
+
 :::{image} ../../../images/observability-all-instances.png
 :alt: All instances
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -110,9 +111,10 @@ The **Instances** table displays a list of all the available service instances w
 
 To view metadata relating to the service agent, and if relevant, the container and cloud provider, click on each icon located at the top of the page beside the service name.
 
+
 :::{image} ../../../images/observability-metadata-icons.png
 :alt: Service metadata
-:class: screenshot
+:screenshot:
 :::
 
 **Service information**

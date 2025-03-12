@@ -1,17 +1,17 @@
-# Ingest data with Node.js on Elasticsearch Service [ec-getting-started-node-js]
+# Ingest data with Node.js on {{ech}} [ec-getting-started-node-js]
 
 This guide tells you how to get started with:
 
-* Securely connecting to Elasticsearch Service with Node.js
+* Securely connecting to {{ech}} with Node.js
 * Ingesting data into your deployment from your application
-* Searching and modifying your data on Elasticsearch Service
+* Searching and modifying your data on {{ech}}
 
 If you are an Node.js application programmer who is new to the Elastic Stack, this content helps you get started more easily.
 
 *Time required: 45 minutes*
 
 
-## Get Elasticsearch Service [ec_get_elasticsearch_service]
+## Get {{ech}} [ec_get_elasticsearch_service]
 
 1. [Get a free trial](https://cloud.elastic.co/registration?page=docs&placement=docs-body).
 2. Log into [Elastic Cloud](https://cloud.elastic.co?page=docs&placement=docs-body).
@@ -20,7 +20,7 @@ If you are an Node.js application programmer who is new to the Elastic Stack, th
 5. Select **Create deployment** and save your Elastic deployment credentials. You need these credentials later on.
 6. When the deployment is ready, click **Continue** and a page of **Setup guides** is displayed. To continue to the deployment homepage click **I’d like to do something else**.
 
-Prefer not to subscribe to yet another service? You can also get Elasticsearch Service through [AWS, Azure, and GCP marketplaces](../../../deploy-manage/deploy/elastic-cloud/subscribe-from-marketplace.md).
+Prefer not to subscribe to yet another service? You can also get {{ech}} through [AWS, Azure, and GCP marketplaces](../../../deploy-manage/deploy/elastic-cloud/subscribe-from-marketplace.md).
 
 
 ## Set up your application [ec_set_up_your_application]
@@ -73,9 +73,9 @@ The example here shows what the `config` package expects. You need to update `co
 
 ## About connecting securely [ec_about_connecting_securely]
 
-When connecting to Elasticsearch Service use a Cloud ID to specify the connection details. You must pass the Cloud ID that is found in {{kib}} or the cloud console.
+When connecting to {{ech}} use a Cloud ID to specify the connection details. You must pass the Cloud ID that is found in {{kib}} or the cloud console.
 
-To connect to, stream data to, and issue queries with Elasticsearch Service, you need to think about authentication. Two authentication mechanisms are supported, *API key* and *basic authentication*. Here, to get you started quickly, we’ll show you how to use basic authentication, but you can also generate API keys as shown later on. API keys are safer and preferred for production environments.
+To connect to, stream data to, and issue queries with {{ech}}, you need to think about authentication. Two authentication mechanisms are supported, *API key* and *basic authentication*. Here, to get you started quickly, we’ll show you how to use basic authentication, but you can also generate API keys as shown later on. API keys are safer and preferred for production environments.
 
 
 ### Basic authentication [ec_basic_authentication]
@@ -150,7 +150,7 @@ async function run() {
 run().catch(console.log)
 ```
 
-When using the [client.index](asciidocalypse://docs/elasticsearch-js/docs/reference/elasticsearch/elasticsearch-client-javascript-api/api-reference.md#_index) API, the request automatically creates the `game-of-thrones` index if it doesn’t already exist, as well as document IDs for each indexed document if they are not explicitly specified.
+When using the [client.index](elasticsearch-js://reference/api-reference.md#_index) API, the request automatically creates the `game-of-thrones` index if it doesn’t already exist, as well as document IDs for each indexed document if they are not explicitly specified.
 
 
 ## Search and modify data [ec_search_and_modify_data]
@@ -197,7 +197,7 @@ async function update() {
 update().catch(console.log)
 ```
 
-This [more comprehensive list of API examples](asciidocalypse://docs/elasticsearch-js/docs/reference/elasticsearch/elasticsearch-client-javascript-api/examples.md) includes bulk operations, checking the existence of documents, updating by query, deleting, scrolling, and SQL queries. To learn more, check the complete [API reference](asciidocalypse://docs/elasticsearch-js/docs/reference/elasticsearch/elasticsearch-client-javascript-api/api-reference.md).
+This [more comprehensive list of API examples](elasticsearch-js://reference/examples.md) includes bulk operations, checking the existence of documents, updating by query, deleting, scrolling, and SQL queries. To learn more, check the complete [API reference](elasticsearch-js://reference/api-reference.md).
 
 
 ## Switch to API key authentication [ec_switch_to_api_key_authentication]
@@ -272,23 +272,23 @@ const client = new Client({
 })
 ```
 
-Check [Create API key API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-api-key) to learn more about API Keys and [Security privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md) to understand which privileges are needed. If you are not sure what the right combination of privileges for your custom application is, you can enable [audit logging](../../../deploy-manage/monitor/logging-configuration/enabling-audit-logs.md) on {{es}} to find out what privileges are being used. To learn more about how logging works on {{ech}}, check [Monitoring Elastic Cloud deployment logs and metrics](https://www.elastic.co/blog/monitoring-elastic-cloud-deployment-logs-and-metrics).
+Check [Create API key API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-api-key) to learn more about API Keys and [Security privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md) to understand which privileges are needed. If you are not sure what the right combination of privileges for your custom application is, you can enable [audit logging](../../../deploy-manage/security/logging-configuration/enabling-audit-logs.md) on {{es}} to find out what privileges are being used. To learn more about how logging works on {{ech}}, check [Monitoring Elastic Cloud deployment logs and metrics](https://www.elastic.co/blog/monitoring-elastic-cloud-deployment-logs-and-metrics).
 
 
 ### Best practices [ec_best_practices]
 
 Security
-:   When connecting to Elasticsearch Service, the client automatically enables both request and response compression by default, since it yields significant throughput improvements. Moreover, the client also sets the SSL option `secureProtocol` to `TLSv1_2_method` unless specified otherwise. You can still override this option by configuring it.
+:   When connecting to {{ech}}, the client automatically enables both request and response compression by default, since it yields significant throughput improvements. Moreover, the client also sets the SSL option `secureProtocol` to `TLSv1_2_method` unless specified otherwise. You can still override this option by configuring it.
 
-    Do not enable sniffing when using Elasticsearch Service, since the nodes are behind a load balancer. Elasticsearch Service takes care of everything for you. Take a look at [Elasticsearch sniffing best practices: What, when, why, how](https://www.elastic.co/blog/elasticsearch-sniffing-best-practices-what-when-why-how) if you want to know more.
+    Do not enable sniffing when using {{ech}}, since the nodes are behind a load balancer. {{ech}} takes care of everything for you. Take a look at [Elasticsearch sniffing best practices: What, when, why, how](https://www.elastic.co/blog/elasticsearch-sniffing-best-practices-what-when-why-how) if you want to know more.
 
 
 Connections
-:   If your application connecting to Elasticsearch Service runs under the Java security manager, you should at least disable the caching of positive hostname resolutions. To learn more, check the [Java API Client documentation](asciidocalypse://docs/elasticsearch-java/docs/reference/elasticsearch/elasticsearch-client-java-api-client/_others.md).
+:   If your application connecting to {{ech}} runs under the Java security manager, you should at least disable the caching of positive hostname resolutions. To learn more, check the [Java API Client documentation](elasticsearch-java://reference/_others.md).
 
 Schema
 :   When the example code was run an index mapping was created automatically. The field types were selected by {{es}} based on the content seen when the first record was ingested, and updated as new fields appeared in the data. It would be more efficient to specify the fields and field types in advance to optimize performance. Refer to the Elastic Common Schema documentation and Field Type documentation when you are designing the schema for your production use cases.
 
 Ingest
-:   For more advanced scenarios, this [bulk ingestion](asciidocalypse://docs/elasticsearch-js/docs/reference/elasticsearch/elasticsearch-client-javascript-api/bulk_examples.md) reference gives an example of the `bulk` API that makes it possible to perform multiple operations in a single call. This bulk example also explicitly specifies document IDs. If you have a lot of documents to index, using bulk to batch document operations is significantly faster than submitting requests individually.
+:   For more advanced scenarios, this [bulk ingestion](elasticsearch-js://reference/bulk_examples.md) reference gives an example of the `bulk` API that makes it possible to perform multiple operations in a single call. This bulk example also explicitly specifies document IDs. If you have a lot of documents to index, using bulk to batch document operations is significantly faster than submitting requests individually.
 

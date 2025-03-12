@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/monitor-kubernetes.html
+applies_to:
+  stack: 
 ---
 
 # Tutorial: Observe your Kubernetes deployments [monitor-kubernetes]
@@ -58,7 +60,7 @@ The default deployments include processors, when needed, for enriching events wi
 :alt: Metadata processors for cloud
 :::
 
-For more on these processors, refer to the [`add_cloud_metadata`](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/add-cloud-metadata-processor.md) and [`add_host_metadata`](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/add_host_metadata-processor.md) documentation.
+For more on these processors, refer to the [`add_cloud_metadata`](/reference/ingestion-tools/fleet/add-cloud-metadata-processor.md) and [`add_host_metadata`](/reference/ingestion-tools/fleet/add_host_metadata-processor.md) documentation.
 
 By default, the Kubernetes integration enriches logs and metrics with valuable metadata.
 
@@ -419,7 +421,7 @@ Provide the following information to collect Kubernetes events metrics:
 
 Collecting and parsing Kubernetes container logs is on by default. Containers running within Kubernetes pods publish logs to stdout or stderr. These logs are written to a location known to kubelet. The container parser is enabled by default. You can enable additional parsers in **advanced settings**.
 
-Metadata enrichment is also enabled by default, and is based on the Kubernetes provider. Use the `add_resource_metadata` block of the Kubernetes provider to configure it. Refer to the [Kubernetes provider](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/kubernetes-provider.md) docs for more on configuring the provider.
+Metadata enrichment is also enabled by default, and is based on the Kubernetes provider. Use the `add_resource_metadata` block of the Kubernetes provider to configure it. Refer to the [Kubernetes provider](/reference/ingestion-tools/fleet/kubernetes-provider.md) docs for more on configuring the provider.
 
 Refer to [Kubernetes container logs](https://docs.elastic.co/en/integrations/kubernetes/container-logs) for more on collecting container logs.
 
@@ -457,14 +459,14 @@ After configuring your integration, you need to download and update your manifes
 
     :::{image} ../../../images/observability-run-standalone-option.png
     :alt: Select run standalone under Enroll in Fleet
-    :class: screenshot
+    :screenshot:
     :::
 
 4. Under **Configure the agent**, select **Download Manifest**.
 
 After downloading the manifest, open it and update the `ES_USERNAME` and `ES_PASSWORD` environment variables in the DaemonSet to match your {{es}} credentials.
 
-You can also further modify the manifest to fit your needs. For example, you might want to enable autodiscovery to automatically discover container logs. Refer to the [autodiscovery docs](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/elastic-agent-kubernetes-autodiscovery.md) in the {{fleet}} guide for more on enabling autodiscovery in your manifest.
+You can also further modify the manifest to fit your needs. For example, you might want to enable autodiscovery to automatically discover container logs. Refer to the [autodiscovery docs](/reference/ingestion-tools/fleet/elastic-agent-kubernetes-autodiscovery.md) in the {{fleet}} guide for more on enabling autodiscovery in your manifest.
 
 Once you are ready to deploy your {{agent}}:
 
@@ -481,7 +483,7 @@ Once you are ready to deploy your {{agent}}:
     ```
 
 
-Refer to [Debug standalone Elastic Agents](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/debug-standalone-agents.md) if you run into any issues with configuring or installing your {{agent}}.
+Refer to [Debug standalone Elastic Agents](/reference/ingestion-tools/fleet/debug-standalone-agents.md) if you run into any issues with configuring or installing your {{agent}}.
 
 
 ## Part 3: Explore logs and metrics [monitor-kubernetes-explore]
@@ -500,7 +502,7 @@ On the **Infrastructure inventory** page, you can switch between different views
 
 :::{image} ../../../images/observability-metrics-inventory.png
 :alt: Inventory page that shows Kubernetes pods
-:class: screenshot
+:screenshot:
 :::
 
 For more on using the Inventory page, refer to [View infrastructure metrics by resource type](view-infrastructure-metrics-by-resource-type.md).
@@ -509,7 +511,7 @@ On the **Metrics Explorer** page, you can group and analyze metrics for the reso
 
 :::{image} ../../../images/observability-monitor-k8s-metrics-explorer.png
 :alt: Metrics dashboard that shows CPU usage for Kubernetes pods
-:class: screenshot
+:screenshot:
 :::
 
 For more on using the **Metrics Explorer** page, refer to [Explore infrastructure metrics over time](explore-infrastructure-metrics-over-time.md).
@@ -523,7 +525,7 @@ With **Logs Explorer**, you can quickly search and filter your log data, get inf
 
 :::{image} ../../../images/observability-log-explorer.png
 :alt: screenshot of the logs explorer main page
-:class: screenshot
+:screenshot:
 :::
 
 From **Logs Explorer**, you can select the Kubernetes integration from the data selector to view your Kubernetes data.
@@ -547,7 +549,7 @@ Think of a latency spike — APM can help you narrow the scope of your inves
 
 Application monitoring data is streamed from your applications running in Kubernetes to APM, where it is validated, processed, and transformed into {{es}} documents.
 
-There are many ways to deploy APM when working with Kubernetes, but this guide assumes that you’re using our hosted {{ess}} on {{ecloud}}. If you haven’t done so already, enable APM in the [{{ess}} console](https://cloud.elastic.co?page=docs&placement=docs-body).
+There are many ways to deploy APM when working with Kubernetes, but this guide assumes that you’re using an {{ech}} deployment. If you haven’t done so already, enable APM in the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
 
 If you want to manage APM yourself, there are a few alternative options:
 
@@ -644,9 +646,9 @@ Configure the agent using environment variables:
 
 **Learn more in the agent reference**
 
-* [Supported technologies](asciidocalypse://docs/apm-agent-go/docs/reference/ingestion-tools/apm-agent-go/supported-technologies.md)
-* [Advanced configuration](asciidocalypse://docs/apm-agent-go/docs/reference/ingestion-tools/apm-agent-go/configuration.md)
-* [Detailed guide to instrumenting Go source code](asciidocalypse://docs/apm-agent-go/docs/reference/ingestion-tools/apm-agent-go/set-up-apm-go-agent.md)
+* [Supported technologies](apm-agent-go://reference/supported-technologies.md)
+* [Advanced configuration](apm-agent-go://reference/configuration.md)
+* [Detailed guide to instrumenting Go source code](apm-agent-go://reference/set-up-apm-go-agent.md)
 ::::::
 
 ::::::{tab-item} Java
@@ -726,13 +728,13 @@ Configure the agent using environment variables:
 
 **Learn more in the agent reference**
 
-* [Supported technologies](asciidocalypse://docs/apm-agent-java/docs/reference/ingestion-tools/apm-agent-java/supported-technologies.md)
-* [Advanced configuration](asciidocalypse://docs/apm-agent-java/docs/reference/ingestion-tools/apm-agent-java/configuration.md)
+* [Supported technologies](asciidocalypse://docs/apm-agent-java/docs/reference/supported-technologies.md)
+* [Advanced configuration](asciidocalypse://docs/apm-agent-java/docs/reference/configuration.md)
 ::::::
 
 ::::::{tab-item} .NET
 ::::{note}
-These instructions are for .NET Core v2.2+. All other use-cases require downloading the agent from NuGet and adding it to your application. See [set up the Agent](asciidocalypse://docs/apm-agent-dotnet/docs/reference/ingestion-tools/apm-agent-dotnet/set-up-apm-net-agent.md) for full details. Once agent set-up is complete, jump to the **Configure the agent** section on this page.
+These instructions are for .NET Core v2.2+. All other use-cases require downloading the agent from NuGet and adding it to your application. See [set up the Agent](apm-agent-dotnet://reference/set-up-apm-net-agent.md) for full details. Once agent set-up is complete, jump to the **Configure the agent** section on this page.
 ::::
 
 
@@ -806,8 +808,8 @@ Configure the agent using environment variables:
 
 **Learn more in the agent reference**
 
-* [Supported technologies](asciidocalypse://docs/apm-agent-dotnet/docs/reference/ingestion-tools/apm-agent-dotnet/supported-technologies.md)
-* [Advanced configuration](asciidocalypse://docs/apm-agent-dotnet/docs/reference/ingestion-tools/apm-agent-dotnet/configuration.md)
+* [Supported technologies](apm-agent-dotnet://reference/supported-technologies.md)
+* [Advanced configuration](apm-agent-dotnet://reference/configuration.md)
 ::::::
 
 ::::::{tab-item} Node.js
@@ -851,8 +853,8 @@ Configure the agent using environment variables:
 
 **Learn more in the agent reference**
 
-* [Supported technologies](asciidocalypse://docs/apm-agent-nodejs/docs/reference/ingestion-tools/apm-agent-nodejs/supported-technologies.md)
-* [Configuring the agent](asciidocalypse://docs/apm-agent-nodejs/docs/reference/ingestion-tools/apm-agent-nodejs/advanced-setup.md)
+* [Supported technologies](asciidocalypse://docs/apm-agent-nodejs/docs/reference/supported-technologies.md)
+* [Configuring the agent](asciidocalypse://docs/apm-agent-nodejs/docs/reference/advanced-setup.md)
 ::::::
 
 ::::::{tab-item} PHP
@@ -878,7 +880,7 @@ To use the APK package (Alpine):
 apk add --allow-untrusted <package-file>.apk
 ```
 
-If you can’t find your distribution, you can install the agent by [building it from the source](asciidocalypse://docs/apm-agent-php/docs/reference/ingestion-tools/apm-agent-php/set-up-apm-php-agent.md).
+If you can’t find your distribution, you can install the agent by [building it from the source](asciidocalypse://docs/apm-agent-php/docs/reference/set-up-apm-php-agent.md).
 
 **Configure the agent**
 
@@ -904,8 +906,8 @@ Configure the agent using environment variables:
 
 **Learn more in the agent reference**
 
-* [Supported technologies](asciidocalypse://docs/apm-agent-php/docs/reference/ingestion-tools/apm-agent-php/supported-technologies.md)
-* [Configuration](asciidocalypse://docs/apm-agent-php/docs/reference/ingestion-tools/apm-agent-php/configuration.md)
+* [Supported technologies](asciidocalypse://docs/apm-agent-php/docs/reference/supported-technologies.md)
+* [Configuration](asciidocalypse://docs/apm-agent-php/docs/reference/configuration.md)
 ::::::
 
 ::::::{tab-item} Python
@@ -966,8 +968,8 @@ Configure the agent using environment variables:
 
 **Learn more in the agent reference**
 
-* [Supported technologies](asciidocalypse://docs/apm-agent-python/docs/reference/ingestion-tools/apm-agent-python/supported-technologies.md)
-* [Advanced configuration](asciidocalypse://docs/apm-agent-python/docs/reference/ingestion-tools/apm-agent-python/configuration.md)
+* [Supported technologies](asciidocalypse://docs/apm-agent-python/docs/reference/supported-technologies.md)
+* [Advanced configuration](asciidocalypse://docs/apm-agent-python/docs/reference/configuration.md)
 ::::::
 
 ::::::{tab-item} Ruby
@@ -1029,8 +1031,8 @@ Configure the agent using environment variables:
 
 **Learn more in the agent reference**
 
-* [Supported technologies](asciidocalypse://docs/apm-agent-ruby/docs/reference/ingestion-tools/apm-agent-ruby/supported-technologies.md)
-* [Advanced configuration](asciidocalypse://docs/apm-agent-ruby/docs/reference/ingestion-tools/apm-agent-ruby/configuration.md)
+* [Supported technologies](asciidocalypse://docs/apm-agent-ruby/docs/reference/supported-technologies.md)
+* [Advanced configuration](asciidocalypse://docs/apm-agent-ruby/docs/reference/configuration.md)
 ::::::
 
 :::::::
@@ -1167,7 +1169,7 @@ The **Applications** app allows you to monitor your software services and applic
 
 :::{image} ../../../images/observability-apm-app-landing.png
 :alt: Applications UI Kubernetes
-:class: screenshot
+:screenshot:
 :::
 
 Having access to application-level insights with just a few clicks can drastically decrease the time you spend debugging errors, slow response times, and crashes.
@@ -1176,7 +1178,7 @@ Best of all, because Kubernetes environment variables have been mapped to APM me
 
 :::{image} ../../../images/observability-apm-app-kubernetes-filter.png
 :alt: Applications UI Kubernetes
-:class: screenshot
+:screenshot:
 :::
 
 

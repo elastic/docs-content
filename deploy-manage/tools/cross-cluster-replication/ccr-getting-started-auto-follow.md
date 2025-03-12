@@ -1,6 +1,13 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/ccr-getting-started-auto-follow.html
+
+applies_to:
+  deployment:
+    eck: 
+    ess: 
+    ece: 
+    self: 
 ---
 
 # Create an auto-follow pattern to replicate time series indices [ccr-getting-started-auto-follow]
@@ -21,7 +28,7 @@ As new indices matching these patterns are created on the remote, {{es}} automat
 
 :::{image} ../../../images/elasticsearch-reference-auto-follow-patterns.png
 :alt: The Auto-follow patterns page in {{kib}}
-:class: screenshot
+:screenshot:
 :::
 
 ::::{dropdown} API example

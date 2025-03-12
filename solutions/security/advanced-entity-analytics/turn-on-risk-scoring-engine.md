@@ -6,21 +6,10 @@ mapped_urls:
 
 # Turn on the risk scoring engine
 
-% What needs to be done: Align serverless/stateful
-
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/security-docs/security/turn-on-risk-engine.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/security-turn-on-risk-engine.md
-
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
-
-$$$upgrade-risk-engine$$$
 
 ::::{important}
-To use entity risk scoring, your role must have the appropriate privileges. For more information, refer to [Entity risk scoring requirements](/solutions/security/advanced-entity-analytics/entity-risk-scoring-requirements.md).
+To use entity risk scoring, your role must have the appropriate user role or privileges. For more information, refer to [Entity risk scoring requirements](/solutions/security/advanced-entity-analytics/entity-risk-scoring-requirements.md).
 ::::
-
 
 
 ## Preview risky entities [_preview_risky_entities]
@@ -28,7 +17,7 @@ To use entity risk scoring, your role must have the appropriate privileges. For 
 You can preview risky entities before installing the latest risk engine. The preview shows the riskiest hosts and users found in the 1000 sampled entities during the time frame selected in the date picker.
 
 ::::{note}
-The preview is limited to two risk scores per {{kib}} instance.
+The preview is limited to two risk scores per {{kib}} instance or serverless project.
 ::::
 
 
@@ -36,7 +25,7 @@ To preview risky entities, find **Entity Risk Score** in the navigation menu or 
 
 :::{image} ../../../images/security-preview-risky-entities.png
 :alt: Preview of risky entities
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -44,7 +33,7 @@ To preview risky entities, find **Entity Risk Score** in the navigation menu or 
 
 ::::{note}
 * To view risk score data, you must have alerts generated in your environment.
-* If you previously installed the original user and host risk score modules, and you’re upgrading to {{stack}} version 8.11 or newer, refer to [Upgrade to the latest risk engine](/solutions/security/advanced-entity-analytics/turn-on-risk-scoring-engine.md#upgrade-risk-engine).
+* In {{stack}}, if you previously installed the original user and host risk score modules, and you’re upgrading to {{stack}} version 8.11 or newer, refer to [Upgrade to the latest risk engine](/solutions/security/advanced-entity-analytics/turn-on-risk-scoring-engine.md#upgrade-risk-engine).
 
 ::::
 
@@ -58,11 +47,14 @@ You can also choose to include `Closed` alerts in risk scoring calculations and 
 
 :::{image} ../../../images/security-turn-on-risk-engine.png
 :alt: Turn on entity risk scoring
-:class: screenshot
+:screenshot:
 :::
 
 
 ## Upgrade to the latest risk engine [upgrade-risk-engine]
+```yaml {applies_to}
+stack:
+```
 
 If you upgraded to 8.11 from an earlier {{stack}} version, and you have the original risk engine installed, you can upgrade to the latest risk engine. You will be prompted to upgrade in places where risk score data exists, such as:
 
@@ -74,7 +66,7 @@ If you upgraded to 8.11 from an earlier {{stack}} version, and you have the orig
 
 :::{image} ../../../images/security-risk-engine-upgrade-prompt.png
 :alt: Prompt to upgrade to the latest risk engine
-:class: screenshot
+:screenshot:
 :::
 
 1. Click **Manage** in the upgrade prompt, or find **Entity Risk Score** in the navigation menu.
@@ -82,7 +74,7 @@ If you upgraded to 8.11 from an earlier {{stack}} version, and you have the orig
 
     :::{image} ../../../images/security-risk-score-start-update.png
     :alt: Start the risk engine upgrade
-    :class: screenshot
+    :screenshot:
     :::
 
 3. On the confirmation message, click **Yes, update now**. The old transform is removed and the latest risk engine is installed.
@@ -90,7 +82,7 @@ If you upgraded to 8.11 from an earlier {{stack}} version, and you have the orig
 
     :::{image} ../../../images/security-turn-on-risk-engine.png
     :alt: Turn on entity risk scoring
-    :class: screenshot
+    :screenshot:
     :::
 
 

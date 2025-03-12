@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/tutorial-manage-new-data-stream.html
+applies_to:
+  stack: ga
+  serverless: ga
 ---
 
 # Tutorial: Create a data stream with a lifecycle [tutorial-manage-new-data-stream]

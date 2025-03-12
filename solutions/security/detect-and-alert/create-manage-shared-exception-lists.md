@@ -8,7 +8,7 @@ mapped_urls:
 
 Shared exception lists allow you to group exceptions together and then apply them to multiple rules. Use the Shared Exception Lists page to set up shared exception lists.
 
-% The following note is only applicable to ESS and is only relevant for users who are upgrading from 8.5 -> 8.6 or later. Might need to add this to the [8.6.x upgrade docs](https://www.elastic.co/guide/en/security/8.6/upgrade-intro.html) later.
+% The following note is only applicable to {{ech}} and is only relevant for users who are upgrading from 8.5 -> 8.6 or later. Might need to add this to the [8.6.x upgrade docs](https://www.elastic.co/guide/en/security/8.6/upgrade-intro.html) later.
 
 % ::::{note}
 % Exception lists created in 8.5 and earlier become shared exception lists in 8.6 or later. You can access all shared exception % lists from the Shared Exception Lists page.
@@ -17,7 +17,7 @@ Shared exception lists allow you to group exceptions together and then apply the
 
 :::{image} ../../../images/security-rule-exceptions-page.png
 :alt: Shared Exception Lists page
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -60,7 +60,7 @@ Add exception items:
 
             ::::
 
-        * `matches` | `does not match` — Allows you to use wildcards in **Value**, such as `C:\path\*\app.exe`. Available wildcards are `?` (match one character) and `*` (match zero or more characters). The selected **Field** data type must be [keyword](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/keyword.md#keyword-field-type), [text](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/text.md#text-field-type), or [wildcard](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/keyword.md#wildcard-field-type).
+        * `matches` | `does not match` — Allows you to use wildcards in **Value**, such as `C:\path\*\app.exe`. Available wildcards are `?` (match one character) and `*` (match zero or more characters). The selected **Field** data type must be [keyword](elasticsearch://reference/elasticsearch/mapping-reference/keyword.md#keyword-field-type), [text](elasticsearch://reference/elasticsearch/mapping-reference/text.md#text-field-type), or [wildcard](elasticsearch://reference/elasticsearch/mapping-reference/keyword.md#wildcard-field-type).
 
             ::::{important}
             Using wildcards can impact performance. To create a more efficient exception using wildcards, use multiple conditions and make them as specific as possible. For example, adding conditions using `process.name` or `file.name` can help limit the scope of wildcard matching.
@@ -107,7 +107,7 @@ Apply shared exception lists to rules:
 
         :::{image} ../../../images/security-associated-shared-exception-list.png
         :alt: Associated shared exceptions
-        :class: screenshot
+        :screenshot:
         :::
 
 
@@ -126,7 +126,7 @@ To view the details of an exception item within a shared exception list, expand 
 
 :::{image} ../../../images/security-view-filter-shared-exception.png
 :alt: Associated shared exceptions
-:class: screenshot
+:screenshot:
 :::
 
 To filter exception lists by a specific value, enter a value in the search bar. You can search the following attributes:
@@ -142,7 +142,7 @@ If no attribute is selected, the app searches the list name by default.
 
 You can edit, export, import, duplicate, and delete shared exception lists from the Shared Exception Lists page.
 
-% The following note is only applicable to ESS and is only relevant for users who are upgrading from 8.5 -> 8.6 or later. Might need to add this to the [8.6.x upgrade docs](https://www.elastic.co/guide/en/security/8.6/upgrade-intro.html) later.
+% The following note is only applicable to {{ech}} and is only relevant for users who are upgrading from 8.5 -> 8.6 or later. Might need to add this to the [8.6.x upgrade docs](https://www.elastic.co/guide/en/security/8.6/upgrade-intro.html) later.
 
 % ::::{note}
 % Exception lists created in 8.5 and earlier become shared exception lists in 8.6 or later. You can access all shared exception lists from the Shared Exception Lists page.
@@ -158,5 +158,5 @@ To export or delete an exception list, select the required action button on the 
 
 :::{image} ../../../images/security-actions-exception-list.png
 :alt: Detail of Exception lists table with export and delete buttons highlighted
-:class: screenshot
+:screenshot:
 :::

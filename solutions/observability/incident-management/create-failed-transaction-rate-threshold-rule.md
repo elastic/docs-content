@@ -9,8 +9,7 @@ navigation_title: "Failed transaction rate threshold"
 # Create a failed transaction rate threshold rule [observability-create-failed-transaction-rate-threshold-alert-rule]
 
 
-::::{admonition} Required role
-:class: note
+::::{note}
 
 **For Observability serverless projects**, the **Editor** role or higher is required to create failed transaction rate threshold rules. To learn more, refer to [Assign user roles and privileges](../../../deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
 
@@ -21,11 +20,11 @@ You can create a failed transaction rate threshold rule to alert you when the ra
 
 :::{image} ../../../images/serverless-alerts-create-rule-failed-transaction-rate.png
 :alt: Create rule for failed transaction rate threshold alert
-:class: screenshot
+:screenshot:
 :::
 
 ::::{tip}
-These steps show how to use the **Alerts** UI. You can also create a failed transaction rate threshold rule directly from any page within **Applications***. Click the ***Alerts and rules*** button, and select ***Create threshold rule*** and then ***Failed transaction rate***. When you create a rule this way, the ***Name** and **Tags** fields will be prepopulated but you can still change these.
+These steps show how to use the **Alerts** UI. You can also create a failed transaction rate threshold rule directly from any page within **Applications**. Click the **Alerts and rules** button, and select **Create threshold rule** and then **Failed transaction rate**. When you create a rule this way, the **Name** and **Tags** fields will be prepopulated but you can still change these.
 
 ::::
 
@@ -36,7 +35,7 @@ To create your failed transaction rate threshold rule:
 2. Select **Manage Rules** from the **Alerts** page, and select **Create rule**.
 3. Enter a **Name** for your rule, and any optional **Tags** for more granular reporting (leave blank if unsure).
 4. Select the **Failed transaction rate threshold** rule type from the APM use case.
-5. Select the appropriate **Service**, **Type***, **Environment** and **Name** (or leave **ALL** to include all options). Alternatively, you can select **Use KQL Filter** and enter a KQL expression to limit the scope of your rule.
+5. Select the appropriate **Service**, **Type**, **Environment** and **Name** (or leave **ALL** to include all options). Alternatively, you can select **Use KQL Filter** and enter a KQL expression to limit the scope of your rule.
 6. Enter a fail rate in the **Is Above** (defaults to 30%).
 7. Define the period to be assessed in **For the last** (defaults to last 5 minutes).
 8. Choose how to **Group alerts by**. Every unique value will create an alert.
@@ -92,14 +91,14 @@ Alternatively, you can set the action frequency to **For each alert** and specif
 
 :::{image} ../../../images/serverless-alert-action-frequency.png
 :alt: Configure when a rule is triggered
-:class: screenshot
+:screenshot:
 :::
 
 With the **Run when** menu you can choose if an action runs when the threshold for an alert is reached, or when the alert is recovered. For example, you can add a corresponding action for each state to ensure you are alerted when the rule is triggered and also when it recovers.
 
 :::{image} ../../../images/serverless-alert-apm-action-frequency-recovered.png
 :alt: Choose between threshold met or recovered
-:class: screenshot
+:screenshot:
 :::
 
 :::::
@@ -110,7 +109,7 @@ Use the default notification message or customize it. You can add more context t
 
 :::{image} ../../../images/serverless-action-variables-popup.png
 :alt: Action variables list
-:class: screenshot
+:screenshot:
 :::
 
 The following variables are specific to this rule type. You can also specify [variables common to all rules](../../../explore-analyze/alerts-cases/alerts/rule-action-variables.md).
@@ -165,7 +164,7 @@ This guide will create an alert for an error group ID based on the following cri
 * Check every 1 minute
 * Send the alert via email to the site reliability team
 
-From any page in **Applications**, select **Alerts and rules*** → ***Create threshold rule** → **Failed transaction rate**. Change the name of the alert (if you wish), but do not edit the tags.
+From any page in **Applications**, select **Alerts and rules** → **Create threshold rule** → **Failed transaction rate**. Change the name of the alert (if you wish), but do not edit the tags.
 
 Based on the criteria above, define the following rule details:
 

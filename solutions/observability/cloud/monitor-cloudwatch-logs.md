@@ -25,7 +25,7 @@ You’ll go through the following steps:
 We assume that you already have:
 
 * An AWS account with permissions to pull the necessary data from AWS.
-* A deployment using our hosted {{ess}} on [{{ecloud}}](https://cloud.elastic.co/registration?page=docs&placement=docs-body). The deployment includes an {{es}} cluster for storing and searching your data, and {{kib}} for visualizing and managing your data. AWS Data Firehose works with Elastic Stack version 7.17 or greater, running on Elastic Cloud only.
+* An [{{ech}}](https://cloud.elastic.co/registration?page=docs&placement=docs-body) deployment. The deployment includes an {{es}} cluster for storing and searching your data, and {{kib}} for visualizing and managing your data. AWS Data Firehose works with Elastic Stack version 7.17 or greater, running on Elastic Cloud only.
 
 ::::{important}
 AWS PrivateLink is not supported. Make sure the deployment is on AWS, because the Amazon Data Firehose delivery stream connects specifically to an endpoint that needs to be on AWS.
@@ -114,6 +114,7 @@ Take note of the log group name for this Lambda function, as you will need it in
         1. Go to the [Elastic Cloud](https://cloud.elastic.co/) console
         2. Find your deployment in the **Hosted deployments** card and select **Manage**.
         3. Under **Applications** click **Copy endpoint** next to **Elasticsearch**.
+        4. Make sure the endpoint is in the following format: `https://<deployment_name>.es.<region>.<csp>.elastic-cloud.com`.
 
     * **To create the API key**:
 
@@ -121,14 +122,10 @@ Take note of the log group name for this Lambda function, as you will need it in
         2. Select **Open Kibana**.
         3. Expand the left-hand menu, under **Management** select **Stack management > API Keys** and click **Create API key**. If you are using an API key with **Restrict privileges**, make sure to review the Indices privileges to provide at least `auto_configure` and `write` permissions for the indices you will be using with this delivery stream.
 
-    * **Content encoding**: For a better network efficiency, leave content encoding set to GZIP.
-    * **Retry duration**: Determines how long Firehose continues retrying the request in the event of an error. A duration of 60-300s should be suitable for most use cases.
-    * **es_datastream_name**: `logs-aws.generic-default`
+    * **Content encoding**: To reduce the data transfer costs, use GZIP encoding.
+    * **Retry duration**: Determines how long Firehose continues retrying the request in the event of an error. A duration between 60 and 300 seconds should be suitable for most use cases.
 
-
-::::{important}
-Verify that your **Elasticsearch endpoint URL** includes `.es.` between the **deployment name** and **region**. Example: `https://my-deployment.es.us-east-1.aws.elastic-cloud.com`
-::::
+5. It is recommended to configure S3 backup for failed records from the **Backup settings** panel. These backups can be used to restore data losses caused by unforeseen service outages.
 
 
 The Firehose stream is now ready to send logs to your Elastic Cloud deployment.
@@ -144,7 +141,7 @@ To send log events from CloudWatch to Firehose, open the log group where the Lam
 
 **Create a subscription filter for Amazon Data Firehose**
 
-The [subscription filter](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/Subscriptions.md) allows you to pick log events from the log group and forward them to other services, such as an Amazon Kinesis stream, an Amazon Data Firehose stream, or AWS Lambda.
+The [subscription filter](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/Subscriptions.html) allows you to pick log events from the log group and forward them to other services, such as an Amazon Kinesis stream, an Amazon Data Firehose stream, or AWS Lambda.
 
 1. On the log group page, select **Subscription filters** and click the **Create Amazon Data Firehose subscription filter** button.
 

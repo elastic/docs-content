@@ -23,7 +23,7 @@ The Elastic AI Assistant utilizes generative AI to bolster your cybersecurity op
 
 :::{image} ../../../images/security-assistant-basic-view.png
 :alt: Image of AI Assistant chat window
-:class: screenshot
+:screenshot:
 :::
 
 ::::{warning}
@@ -71,7 +71,7 @@ To open AI Assistant, select the **AI Assistant** button in the top toolbar from
 
 :::{image} ../../../images/security-ai-assistant-button.png
 :alt: AI Assistant button
-:class: screenshot
+:screenshot:
 :::
 
 This opens the **Welcome** chat interface, where you can ask general questions about {{elastic-sec}}.
@@ -81,7 +81,6 @@ You can also chat with AI Assistant from several particular pages in {{elastic-s
 * [Alert details](/solutions/security/detect-and-alert/view-detection-alert-details.md) or Event details flyout: Click **Chat** while viewing the details of an alert or event.
 * [Rules page](/solutions/security/detect-and-alert/manage-detection-rules.md): Use AI Assistant to help create or correct rule queries.
 * [Data Quality dashboard](/solutions/security/dashboards/data-quality-dashboard.md): Select the **Incompatible fields** tab, then click **Chat**. (This is only available for fields marked red, indicating they’re incompatible).
-* [Timeline](/solutions/security/investigate/timeline.md): Select the **Security Assistant** tab.
 
 ::::{note}
 Each user’s chat history (up to the 99 most recent conversations) and custom Quick Prompts are automatically saved, so you can leave {{elastic-sec}} and return to a conversation later. Chat history appears to the left of the AI Assistant chat window, and on the **Conversations** tab of the **AI Assistant settings** menu. To access the settings menu, use the global search field to search for "AI Assistant for Security".
@@ -98,7 +97,7 @@ Use these features to adjust and act on your conversations with AI Assistant:
 
     :::{image} ../../../images/security-quick-prompts.png
     :alt: Quick Prompts highlighted below a conversation
-    :class: screenshot
+    :screenshot:
     :::
 
 * System Prompts and Quick Prompts can also be configured from the corresponding tabs on the **Security AI settings** page.
@@ -130,7 +129,7 @@ The **Security AI settings** page allows you to configure AI Assistant. To acces
 
 It has the following tabs:
 
-* **Conversations:** When you open AI Assistant from certain pages, such as **Timeline*** or ***Alerts**, it defaults to the relevant conversation type. For each conversation type, choose the default System Prompt, the default connector, and the default model (if applicable). The **Streaming** setting controls whether AI Assistant’s responses appear word-by-word (streamed), or as a complete block of text. Streaming is currently only available for OpenAI models.
+* **Conversations:** When you open AI Assistant from certain pages, such as ***Alerts**, it defaults to the relevant conversation type. For each conversation type, choose the default System Prompt, the default connector, and the default model (if applicable). The **Streaming** setting controls whether AI Assistant’s responses appear word-by-word (streamed), or as a complete block of text. Streaming is currently only available for OpenAI models.
 * **Connectors:** Manage all LLM connectors.
 * **System Prompts:** Edit existing System Prompts or create new ones. To create a new System Prompt, type a unique name in the **Name** field, then press **enter**. Under **Prompt**, enter or update the System Prompt’s text. Under **Contexts**, select where the System Prompt should appear.
 * **Quick Prompts:** Modify existing Quick Prompts or create new ones. To create a new Quick Prompt, type a unique name in the **Name** field, then press **enter**. Under **Prompt**, enter or update the Quick Prompt’s text.
@@ -155,7 +154,7 @@ You can access anonymization settings directly from the **Attack Discovery** pag
 
 :::{image} ../../../images/security-assistant-anonymization-menu.png
 :alt: AI Assistant's settings menu
-:class: screenshot
+:screenshot:
 :::
 
 The fields on this list are among those most likely to provide relevant context to AI Assistant. Fields with **Allowed** toggled on are included. **Allowed** fields with **Anonymized** set to **Yes** are included, but with their values obfuscated.

@@ -1,20 +1,20 @@
 # Edit {{es}} user settings [ec-add-user-settings]
 
-Change how {{es}} runs by providing your own user settings. Elasticsearch Service appends these settings to each node’s `elasticsearch.yml` configuration file.
+Change how {{es}} runs by providing your own user settings. {{ech}} appends these settings to each node’s `elasticsearch.yml` configuration file.
 
-Elasticsearch Service automatically rejects `elasticsearch.yml` settings that could break your cluster. For a list of supported settings, check [Supported {{es}} settings](../../../deploy-manage/deploy/elastic-cloud/edit-stack-settings.md#ec-es-elasticsearch-settings).
+{{ech}} automatically rejects `elasticsearch.yml` settings that could break your cluster. For a list of supported settings, check [Supported {{es}} settings](../../../deploy-manage/deploy/elastic-cloud/edit-stack-settings.md#ec-es-elasticsearch-settings).
 
 ::::{warning}
-You can also update [dynamic cluster settings](../../../deploy-manage/deploy/self-managed/configure-elasticsearch.md#dynamic-cluster-setting) using {{es}}'s [update cluster settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings). However, Elasticsearch Service doesn’t reject unsafe setting changes made using this API. Use with caution.
+You can also update [dynamic cluster settings](../../../deploy-manage/deploy/self-managed/configure-elasticsearch.md#dynamic-cluster-setting) using {{es}}'s [update cluster settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings). However, {{ech}} doesn’t reject unsafe setting changes made using this API. Use with caution.
 ::::
 
 
 To add or edit user settings:
 
-1. Log in to the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body).
-2. Find your deployment on the home page in the Elasticsearch Service card and select **Manage** to access it directly. Or, select **Hosted deployments** to go to the deployments page to view all of your deployments.
+1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
+2. Find your deployment on the home page in the **Hosted deployments** card and select **Manage** to access it directly. Or, select **Hosted deployments** to go to the **Deployments** page to view all of your deployments.
 
-    On the deployments page you can narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
+    On the **Deployments** page you can narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
 
 3. From your deployment menu, go to the **Edit** page.
 4. In the **Elasticsearch** section, select **Manage user settings and extensions**.
@@ -28,14 +28,14 @@ In some cases, you may get a warning saying "User settings are different across 
 
 ## Supported {{es}} settings [ec-es-elasticsearch-settings]
 
-Elasticsearch Service supports the following `elasticsearch.yml` settings.
+{{ech}} supports the following `elasticsearch.yml` settings.
 
 ### General settings [ec_general_settings]
 
 The following general settings are supported:
 
 $$$http-cors-settings$$$`http.cors.*`
-:   Enables cross-origin resource sharing (CORS) settings for the [HTTP module](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/networking-settings.md).
+:   Enables cross-origin resource sharing (CORS) settings for the [HTTP module](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md).
 
     ::::{note}
     If your use case depends on the ability to receive CORS requests and you have a cluster that was provisioned prior to January 25th 2019, you must manually set `http.cors.enabled` to `true` and allow a specific set of hosts with `http.cors.allow-origin`. Applying these changes in your Elasticsearch configuration  allows cross-origin resource sharing requests.
@@ -43,13 +43,13 @@ $$$http-cors-settings$$$`http.cors.*`
 
 
 `http.compression`
-:   Support for [HTTP compression](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/networking-settings.md) when possible (with Accept-Encoding). Defaults to `true`.
+:   Support for [HTTP compression](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md) when possible (with Accept-Encoding). Defaults to `true`.
 
 `transport.compress`
-:   Configures [transport compression](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/networking-settings.md) for node-to-node traffic.
+:   Configures [transport compression](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md) for node-to-node traffic.
 
 `transport.compression_scheme`
-:   Configures [transport compression](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/networking-settings.md) for node-to-node traffic.
+:   Configures [transport compression](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md) for node-to-node traffic.
 
 `repositories.url.allowed_urls`
 :   Enables explicit allowing of [read-only URL repositories](../../../deploy-manage/tools/snapshot-and-restore/read-only-url-repository.md).
@@ -61,7 +61,7 @@ $$$http-cors-settings$$$`http.cors.*`
 :   To learn more on how to configure reindex SSL user settings, check [configuring reindex SSL parameters](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-reindex).
 
 `script.painless.regex.enabled`
-:   Enables [regular expressions](asciidocalypse://docs/elasticsearch/docs/reference/scripting-languages/painless/brief-painless-walkthrough.md#modules-scripting-painless-regex) for the Painless scripting language.
+:   Enables [regular expressions](elasticsearch://reference/scripting-languages/painless/brief-painless-walkthrough.md#modules-scripting-painless-regex) for the Painless scripting language.
 
 `action.auto_create_index`
 :   [Automatically create index](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-create) if it doesn’t already exist.
@@ -94,19 +94,19 @@ $$$http-cors-settings$$$`http.cors.*`
 The following circuit breaker settings are supported:
 
 `indices.breaker.total.limit`
-:   Configures [the parent circuit breaker settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/circuit-breaker-settings.md#parent-circuit-breaker).
+:   Configures [the parent circuit breaker settings](elasticsearch://reference/elasticsearch/configuration-reference/circuit-breaker-settings.md#parent-circuit-breaker).
 
 `indices.breaker.fielddata.limit`
-:   Configures [the limit for the fielddata breaker](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/circuit-breaker-settings.md#fielddata-circuit-breaker).
+:   Configures [the limit for the fielddata breaker](elasticsearch://reference/elasticsearch/configuration-reference/circuit-breaker-settings.md#fielddata-circuit-breaker).
 
 `indices.breaker.fielddata.overhead`
-:   Configures [a constant that all field data estimations are multiplied with to determine a final estimation](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/circuit-breaker-settings.md#fielddata-circuit-breaker).
+:   Configures [a constant that all field data estimations are multiplied with to determine a final estimation](elasticsearch://reference/elasticsearch/configuration-reference/circuit-breaker-settings.md#fielddata-circuit-breaker).
 
 `indices.breaker.request.limit`
-:   Configures [the limit for the request breaker](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/circuit-breaker-settings.md#request-circuit-breaker).
+:   Configures [the limit for the request breaker](elasticsearch://reference/elasticsearch/configuration-reference/circuit-breaker-settings.md#request-circuit-breaker).
 
 `indices.breaker.request.overhead`
-:   Configures [a constant that all request estimations are multiplied by to determine a final estimation](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/circuit-breaker-settings.md#request-circuit-breaker).
+:   Configures [a constant that all request estimations are multiplied by to determine a final estimation](elasticsearch://reference/elasticsearch/configuration-reference/circuit-breaker-settings.md#request-circuit-breaker).
 
 
 ### Indexing pressure settings [ec_indexing_pressure_settings]
@@ -114,7 +114,7 @@ The following circuit breaker settings are supported:
 The following indexing pressure settings are supported:
 
 `indexing_pressure.memory.limit`
-:   Configures [the indexing pressure settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/indexing-pressure-settings.md#indexing-pressure-settings).
+:   Configures [the indexing pressure settings](elasticsearch://reference/elasticsearch/index-settings/pressure.md).
 
 
 ### X-Pack [ec_x_pack]
@@ -128,7 +128,7 @@ The following indexing pressure settings are supported:
 #### All supported versions [ec_all_supported_versions]
 
 `xpack.ml.inference_model.time_to_live`
-:   Sets the duration of time that the trained models are cached. Check [{{ml-cap}} settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/machine-learning-settings.md).
+:   Sets the duration of time that the trained models are cached. Check [{{ml-cap}} settings](elasticsearch://reference/elasticsearch/configuration-reference/machine-learning-settings.md).
 
 `xpack.security.loginAssistanceMessage`
 :   Adds a message to the login screen. Useful for displaying corporate messages.
@@ -146,10 +146,10 @@ The following indexing pressure settings are supported:
 :   Defines when the watch should start, based on date and time [Learn more](/explore-analyze/alerts-cases/watcher/trigger-schedule.md).
 
 `xpack.notification.email.html.sanitization.*`
-:   Enables [email notification settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/watcher-settings.md) to sanitize HTML elements in emails that are sent.
+:   Enables [email notification settings](elasticsearch://reference/elasticsearch/configuration-reference/watcher-settings.md) to sanitize HTML elements in emails that are sent.
 
 `xpack.monitoring.collection.interval`
-:   Controls [how often data samples are collected](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/monitoring-settings.md#monitoring-collection-settings).
+:   Controls [how often data samples are collected](elasticsearch://reference/elasticsearch/configuration-reference/monitoring-settings.md#monitoring-collection-settings).
 
 `xpack.monitoring.collection.min_interval_seconds`
 :   Specifies the minimum number of seconds that a time bucket in a chart can represent. If you modify the `xpack.monitoring.collection.interval`, use the same value in this setting.
@@ -158,10 +158,10 @@ The following indexing pressure settings are supported:
 
 
 $$$xpack-monitoring-history-duration$$$`xpack.monitoring.history.duration`
-:   Sets the [retention duration](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/monitoring-settings.md#monitoring-collection-settings) beyond which the indices created by a monitoring exporter will be automatically deleted.
+:   Sets the [retention duration](elasticsearch://reference/elasticsearch/configuration-reference/monitoring-settings.md#monitoring-collection-settings) beyond which the indices created by a monitoring exporter will be automatically deleted.
 
 `xpack.watcher.history.cleaner_service.enabled`
-:   Controls [whether old watcher indices are automatically deleted](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/watcher-settings.md#general-notification-settings).
+:   Controls [whether old watcher indices are automatically deleted](elasticsearch://reference/elasticsearch/configuration-reference/watcher-settings.md#general-notification-settings).
 
 `xpack.http.ssl.cipher_suites`
 :   Controls the list of supported cipher suites for all outgoing TLS connections.
@@ -197,16 +197,16 @@ The following search settings are supported:
 The following disk-based allocation settings are supported:
 
 `cluster.routing.allocation.disk.threshold_enabled`
-:   Enable or disable [disk allocation](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#disk-based-shard-allocation) decider and defaults to `true`.
+:   Enable or disable [disk allocation](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#disk-based-shard-allocation) decider and defaults to `true`.
 
 `cluster.routing.allocation.disk.watermark.low`
-:   Configures [disk-based shard allocation’s low watermark](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#disk-based-shard-allocation).
+:   Configures [disk-based shard allocation’s low watermark](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#disk-based-shard-allocation).
 
 `cluster.routing.allocation.disk.watermark.high`
-:   Configures [disk-based shard allocation’s high watermark](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#disk-based-shard-allocation).
+:   Configures [disk-based shard allocation’s high watermark](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#disk-based-shard-allocation).
 
 `cluster.routing.allocation.disk.watermark.flood_stage`
-:   Configures [disk-based shard allocation’s flood_stage](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#disk-based-shard-allocation).
+:   Configures [disk-based shard allocation’s flood_stage](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#disk-based-shard-allocation).
 
 ::::{tip}
 Remember to update user settings for alerts when performing a major version upgrade.

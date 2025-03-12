@@ -4,23 +4,12 @@ mapped_urls:
   - https://www.elastic.co/guide/en/serverless/current/security-session-view.html
 ---
 
-# Session view
-
-% What needs to be done: Align serverless/stateful
-
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/security-docs/security/session-view.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/security-session-view.md
-
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
-
-$$$enable-session-view$$$
+# Session View [security-session-view]
 
 Session View is an investigation tool that allows you to examine Linux process data organized in a tree-like structure according to the Linux logical event model, with processes organized by parentage and time of execution. It displays events in a highly readable format that is inspired by the terminal. This makes it a powerful tool for monitoring and investigating session activity on your Linux infrastructure and understanding user and service behavior.
 
 ::::{admonition} Requirements
-* Session View requires an [Enterprise subscription](https://www.elastic.co/pricing).
+Ensure you have the appropriate [{{stack}} subscription](https://www.elastic.co/pricing) or [{{serverless-short}} project tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md).
 
 ::::
 
@@ -33,10 +22,6 @@ Session View has the following features:
 * **Nested sessions:** Sessions started by processes descended from the entry session.
 * **Alerts:** Process, file, and network alerts in the context of the events which caused them.
 * **Terminal output:** Terminal output associated with each process in the session.
-
-::::{note}
-To view Linux session data from your Kubernetes infrastructure, you’ll need to set up the [Kubernetes dashboard](/solutions/security/dashboards/kubernetes-dashboard.md).
-::::
 
 
 
@@ -56,13 +41,13 @@ Session View can only display data that was collected by {{elastic-defend}} when
 
 ## Open Session View [open-session-view]
 
-Session View is accessible from the **Hosts**, **Alerts***, and ***Timelines** pages, as well as the alert details flyout and the **Kubernetes** dashboard. Events and sessions that you can investigate in Session View have a rectangular **Open Session View** button in the **Actions** column. For example:
+Session View is accessible from the **Hosts**, **Alerts**, and **Timelines** pages, as well as the alert details flyout and the **Kubernetes** dashboard. Events and sessions that you can investigate in Session View have a rectangular **Open Session View** button in the **Actions** column. For example:
 
 * On the Alerts page, scroll down to view the Alerts table. Look for alerts that have the **Open Session View** button in the **Actions** column:
 
     :::{image} ../../../images/security-session-view-action-icon-detail.png
     :alt: Detail of the Open Session View button
-    :class: screenshot
+    :screenshot:
     :::
 
 * On the Hosts page (**Explore** → **Hosts**), select the **Sessions** or the **Events** tab. From either of these tabs, click the **Open Session View** button for an event or session.
@@ -74,7 +59,7 @@ The Session View UI has the following features:
 
 :::{image} ../../../images/security-session-view-terminal-labeled.png
 :alt: Detail of Session view with labeled UI elements
-:class: screenshot
+:screenshot:
 :::
 
 1. The **Close Session** and **Full screen** buttons.
@@ -93,21 +78,21 @@ Session View includes additional badges not pictured above:
 
     :::{image} ../../../images/security-session-view-alert-types-badge.png
     :alt: The alert badge for a command with all three alert types
-    :class: screenshot
+    :screenshot:
     :::
 
 * The **Exec user change** badge highlights exec user changes, such as when a user escalates to root:
 
     :::{image} ../../../images/security-session-view-exec-user-change-badge.png
     :alt: The Exec user change badge
-    :class: screenshot
+    :screenshot:
     :::
 
 * The **Output** badge appears next to commands that generated terminal output. Click it to view that command’s output in terminal output view.
 
     :::{image} ../../../images/security-session-view-output-badge.png
     :alt: The Output badge
-    :class: screenshot
+    :screenshot:
     :::
 
 
@@ -138,7 +123,7 @@ You can configure several additional settings by clicking **Advanced settings** 
 
 :::{image} ../../../images/security-session-view-output-viewer.png
 :alt: Terminal output view
-:class: screenshot
+:screenshot:
 :::
 
 1. Search bar. Use to find and highlight search terms within the current session. The left and right arrows allow you to navigate through search results.

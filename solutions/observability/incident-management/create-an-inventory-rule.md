@@ -9,8 +9,7 @@ navigation_title: "Inventory"
 # Create an inventory rule [observability-create-inventory-threshold-alert-rule]
 
 
-::::{admonition} Required role
-:class: note
+::::{note}
 
 For Observability serverless projects, the **Editor** role or higher is required to create inventory threshold rules. To learn more, refer to [Assign user roles and privileges](../../../deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
 
@@ -22,7 +21,7 @@ Based on the resources listed on the **Infrastructure inventory** page within th
 Additionally, each rule can be defined using multiple conditions that combine metrics and thresholds to create precise notifications and reduce false positives.
 
 1. To access this page, go to **{{observability}}** → **Infrastructure**.
-2. On the **Infrastructure inventory** page or the **Metrics Explorer*** page, click ***Alerts and rules** → **Infrastructure**.
+2. On the **Infrastructure inventory** page or the **Metrics Explorer** page, click **Alerts and rules** → **Infrastructure**.
 3. Select **Create inventory rule**.
 
 ::::{tip}
@@ -40,7 +39,7 @@ In this example, Kubernetes Pods is the selected inventory type. The conditions 
 
 :::{image} ../../../images/serverless-inventory-alert.png
 :alt: Inventory rule
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -89,14 +88,14 @@ After you select a connector, you must set the action frequency. You can choose 
 
 :::{image} ../../../images/serverless-action-alert-summary.png
 :alt: Action types
-:class: screenshot
+:screenshot:
 :::
 
 Alternatively, you can set the action frequency such that you choose how often the action runs (for example, at each check interval, only when the alert status changes, or at a custom action interval). In this case, you define precisely when the alert is triggered by selecting a specific threshold condition: `Alert`, `Warning`, or `Recovered` (a value that was once above a threshold has now dropped below it).
 
 :::{image} ../../../images/serverless-inventory-threshold-run-when-selection.png
 :alt: Configure when an alert is triggered
-:class: screenshot
+:screenshot:
 :::
 
 You can also further refine the conditions under which actions run by specifying that actions only run when they match a KQL query or when an alert occurs within a specific time frame:
@@ -106,7 +105,7 @@ You can also further refine the conditions under which actions run by specifying
 
 :::{image} ../../../images/serverless-conditional-alerts.png
 :alt: Configure a conditional alert
-:class: screenshot
+:screenshot:
 :::
 
 :::::
@@ -117,7 +116,7 @@ Use the default notification message or customize it. You can add more context t
 
 :::{image} ../../../images/serverless-action-variables-popup.png
 :alt: Action variables list
-:class: screenshot
+:screenshot:
 :::
 
 The following variables are specific to this rule type. You can also specify [variables common to all rules](../../../explore-analyze/alerts-cases/alerts/rule-action-variables.md).

@@ -66,7 +66,7 @@ Then, follow the prompts on screen to set up the correct default variables for y
 ::::{tab-set}
 :group: stack-serverless
 
-:::{tab-item} Elastic Stack v9
+:::{tab-item} Elastic Stack
 :sync: stack
 
 1. To generate an API key:
@@ -84,7 +84,7 @@ Then, follow the prompts on screen to set up the correct default variables for y
 
         :::{image} ../../../images/serverless-synthetics-monitor-management-api-key.png
         :alt: Project API Keys tab in Synthetics settings
-        :class: screenshot
+        :screenshot:
         :::
 
         ::::{note}
@@ -127,7 +127,7 @@ Then, take a look at key files and directories inside your Synthetics project:
 
         :::{image} ../../../images/serverless-synthetics-monitor-management-api-key.png
         :alt: Project API Keys tab in Synthetics settings
-        :class: screenshot
+        :screenshot:
         :::
 
         ::::{note}
@@ -201,7 +201,7 @@ For more details on writing journeys and configuring browser monitors, refer to 
 ::::{tab-set}
 :group: stack-serverless
 
-:::{tab-item} Elastic Stack v9
+:::{tab-item} Elastic Stack
 :sync: stack
 
 While inside the project directory you can do two things with the `npx @elastic/synthetics` command:

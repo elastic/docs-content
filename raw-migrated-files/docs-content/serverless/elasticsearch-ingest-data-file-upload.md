@@ -26,14 +26,14 @@ You’ll find a link to the Data Visualizer on the {{es}} **Getting Started** pa
 
 :::{image} ../../../images/serverless-file-data-visualizer-homepage-link.png
 :alt: data visualizer link
-:class: screenshot
+:screenshot:
 :::
 
 Clicking **Upload a file** opens the Data Visualizer UI.
 
 :::{image} ../../../images/serverless-file-uploader-UI.png
 :alt: File upload UI
-:class: screenshot
+:screenshot:
 :::
 
 Drag a file into the upload area or click **Select or drag and drop a file** to choose a file from your computer.

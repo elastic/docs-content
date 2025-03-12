@@ -2,11 +2,12 @@
 navigation_title: "View monitoring data"
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/monitoring-data.html
-applies:
-  hosted: all
-  ece: all
-  eck: all
-  stack: all
+applies_to:
+  deployment:
+    ess: all
+    ece: all
+    eck: all
+    self: all
 ---
 
 <!-- This doc needs to be moved somewhere else, it's not specific about self-managed, it's about Stack Monitoring in general -->
@@ -32,7 +33,7 @@ If you use a separate monitoring cluster to store the monitoring data, it is str
 
     To learn more about typical monitoring architectures, see [How monitoring works](../stack-monitoring.md) and [Monitoring in a production environment](elasticsearch-monitoring-self-managed.md).
 
-2. Verify that `monitoring.ui.enabled` is set to `true`, which is the default value, in the `kibana.yml` file. For more information, see [Monitoring settings](asciidocalypse://docs/kibana/docs/reference/configuration-reference/monitoring-settings.md).
+2. Verify that `monitoring.ui.enabled` is set to `true`, which is the default value, in the `kibana.yml` file. For more information, see [Monitoring settings](kibana://reference/configuration-reference/monitoring-settings.md).
 3. If the Elastic {{security-features}} are enabled on the monitoring cluster, you must provide a user ID and password so {{kib}} can retrieve the data.
 
     1. Create a user that has the `monitoring_user` [built-in role](../../users-roles/cluster-or-deployment-auth/built-in-roles.md) on the monitoring cluster.
@@ -72,7 +73,7 @@ You’ll see cluster alerts that require your attention and a summary of the ava
 
 :::{image} ../../../images/kibana-monitoring-dashboard.png
 :alt: Monitoring dashboard
-:class: screenshot
+:screenshot:
 :::
 
 If you encounter problems, see [Troubleshooting monitoring](../monitoring-data/monitor-troubleshooting.md).

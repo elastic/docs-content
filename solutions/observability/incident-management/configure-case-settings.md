@@ -8,8 +8,7 @@ mapped_urls:
 
 % Serverless only for the following role, does stateful require a special role?
 
-::::{admonition} Required role
-:class: note
+::::{note}
 
 For Observability serverless projects, the **Editor** role or higher is required to create and edit connectors. To learn more, refer to [Assign user roles and privileges](../../../deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
 
@@ -19,7 +18,7 @@ To change case closure options and add custom fields, templates, and connectors 
 
 :::{image} ../../../images/observability-cases-settings.png
 :alt: View case settings
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -54,11 +53,11 @@ After creating a connector, you can set your cases to [automatically close](../.
 ### Create a connector [new-connector-observability]
 
 1. From the **Incident management system** list, select **Add new connector**.
-2. Select the system to send cases to: **{{sn}}**, **{{jira}}***, ***{{ibm-r}}***, ***{{swimlane}}***, ***TheHive**, or **{{webhook-cm}}**.
+2. Select the system to send cases to: **{{sn}}**, **{{jira}}**, **{{ibm-r}}**, **{{swimlane}}**, **TheHive**, or **{{webhook-cm}}**.
 
     :::{image} ../../../images/serverless-observability-cases-add-connector.png
     :alt: Add a connector to send cases to an external source
-    :class: screenshot
+    :screenshot:
     :::
 
 3. Enter your required settings. For connector configuration details, refer to:
@@ -102,7 +101,7 @@ To create a custom field:
 
     :::{image} ../../../images/observability-cases-add-custom-field.png
     :alt: Add a custom field in case settings
-    :class: screenshot
+    :screenshot:
     :::
 
 2. You must provide a field label and type (text or toggle). You can optionally designate it as a required field and provide a default value.
@@ -127,7 +126,7 @@ To create a template:
 
     :::{image} ../../../images/serverless-observability-cases-templates.png
     :alt: Add a case template
-    :class: screenshot
+    :screenshot:
     :::
 
 2. You must provide a template name and case severity. You can optionally add template tags and a description, values for each case field, and a case connector.

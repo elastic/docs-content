@@ -101,13 +101,13 @@ Follow the instructions that match your use case:
 
 ## Troubleshooting [ece-traffic-filter-troubleshooting]
 
-This section offers suggestions on how to troubleshoot your traffic filters. Before you start make sure you check the [Limitations and known problems](asciidocalypse://docs/cloud/docs/release-notes/known-issues/cloud-enterprise.md).
+This section offers suggestions on how to troubleshoot your traffic filters. Before you start make sure you check the [Limitations and known problems](asciidocalypse://docs/cloud/docs/release-notes/cloud-enterprise/known-issues.md).
 
 
 ### Review the rule sets associated with a deployment [ece-review-rule-sets]
 
 1. [Log into the Cloud UI](../../../deploy-manage/deploy/cloud-enterprise/log-into-cloud-ui.md).
-2. On the deployments page, select your deployment.
+2. On the **Deployments** page, select your deployment.
 
     Narrow the list by name, ID, or choose from several other filters. To further define the list, use a combination of filters.
 
@@ -151,7 +151,7 @@ link_id: ""  # no value
 
 :::{image} ../../../images/cloud-enterprise-ce-traffic-filter-ip-rejected-request.png
 :alt: Show rejected request in the proxy logs
-:class: screenshot
+:screenshot:
 :::
 
 To allow such a request to come through the traffic filter, you would register an IP traffic filter with the source IP address `192.168.255.6`, or a matching CIDR mask, e.g. `192.168.255.0/24`.

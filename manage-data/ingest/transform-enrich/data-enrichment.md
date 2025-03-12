@@ -2,11 +2,14 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/ingest-enriching-data.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/index-mgmt.html#manage-enrich-policies
+applies_to:
+  stack: ga
+  serverless: ga
 ---
 
 # Data enrichment
 
-You can use the [enrich processor](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/enrich-processor/enrich-processor.md) to add data from your existing indices to incoming documents during ingest.
+You can use the [enrich processor](elasticsearch://reference/ingestion-tools/enrich-processor/enrich-processor.md) to add data from your existing indices to incoming documents during ingest.
 
 For example, you can use the enrich processor to:
 
@@ -72,11 +75,11 @@ Use the **Enrich Policies** view to add data from your existing indices to incom
 * The source indices that store enrich data as documents
 * The fields from the source indices used to match incoming documents
 * The enrich fields containing enrich data from the source indices that you want to add to incoming documents
-* An optional [query](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/query-dsl-match-all-query.md).
+* An optional [query](elasticsearch://reference/query-languages/query-dsl-match-all-query.md).
 
 :::{image} ../../../images/elasticsearch-reference-management-enrich-policies.png
 :alt: Enrich policies
-:class: screenshot
+:screenshot:
 :::
 
 When creating an enrich policy, the UI walks you through the configuration setup and selecting the fields. Before you can use the policy with an enrich processor or {{esql}} query, you must execute the policy.

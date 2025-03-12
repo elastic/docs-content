@@ -1,6 +1,6 @@
 # Ingest logs from a Python application using Filebeat [ec-getting-started-search-use-cases-python-logs]
 
-This guide demonstrates how to ingest logs from a Python application and deliver them securely into an Elasticsearch Service deployment. You’ll set up Filebeat to monitor a JSON-structured log file that has standard Elastic Common Schema (ECS) formatted fields, and you’ll then view real-time visualizations of the log events in {{kib}} as they occur. While Python is used for this example, this approach to monitoring log output is applicable across many client types. Check the list of [available ECS logging plugins](asciidocalypse://docs/ecs-logging/docs/reference/ecs/ecs-logging-overview/intro.md).
+This guide demonstrates how to ingest logs from a Python application and deliver them securely into an {{ech}} deployment. You’ll set up Filebeat to monitor a JSON-structured log file that has standard Elastic Common Schema (ECS) formatted fields, and you’ll then view real-time visualizations of the log events in {{kib}} as they occur. While Python is used for this example, this approach to monitoring log output is applicable across many client types. Check the list of [available ECS logging plugins](ecs-logging://reference/intro.md).
 
 You are going to learn how to:
 
@@ -14,7 +14,7 @@ You are going to learn how to:
 
 ## Prerequisites [ec_prerequisites_2]
 
-To complete these steps you need to have [Python](https://www.python.org/) installed on your system as well as the [Elastic Common Schema (ECS) logger](asciidocalypse://docs/ecs-logging-python/docs/reference/ecs/ecs-logging-python/installation.md) for the Python logging library.
+To complete these steps you need to have [Python](https://www.python.org/) installed on your system as well as the [Elastic Common Schema (ECS) logger](ecs-logging-python://reference/installation.md) for the Python logging library.
 
 To install *ecs-logging-python*, run:
 
@@ -23,7 +23,7 @@ python -m pip install ecs-logging
 ```
 
 
-## Get Elasticsearch Service [ec_get_elasticsearch_service_3]
+## Get {{ech}} [ec_get_elasticsearch_service_3]
 
 1. [Get a free trial](https://cloud.elastic.co/registration?page=docs&placement=docs-body).
 2. Log into [Elastic Cloud](https://cloud.elastic.co?page=docs&placement=docs-body).
@@ -32,14 +32,14 @@ python -m pip install ecs-logging
 5. Select **Create deployment** and save your Elastic deployment credentials. You need these credentials later on.
 6. When the deployment is ready, click **Continue** and a page of **Setup guides** is displayed. To continue to the deployment homepage click **I’d like to do something else**.
 
-Prefer not to subscribe to yet another service? You can also get Elasticsearch Service through [AWS, Azure, and GCP marketplaces](../../../deploy-manage/deploy/elastic-cloud/subscribe-from-marketplace.md).
+Prefer not to subscribe to yet another service? You can also get {{ech}} through [AWS, Azure, and GCP marketplaces](../../../deploy-manage/deploy/elastic-cloud/subscribe-from-marketplace.md).
 
 
 ## Connect securely [ec_connect_securely_2]
 
-When connecting to Elasticsearch Service you can use a Cloud ID to specify the connection details. Find your Cloud ID by going to the {{kib}} main menu and selecting Management > Integrations, and then selecting View deployment details.
+When connecting to {{ech}} you can use a Cloud ID to specify the connection details. Find your Cloud ID by going to the {{kib}} main menu and selecting Management > Integrations, and then selecting View deployment details.
 
-To connect to, stream data to, and issue queries with Elasticsearch Service, you need to think about authentication. Two authentication mechanisms are supported, *API key* and *basic authentication*. Here, to get you started quickly, we’ll show you how to use basic authentication, but you can also generate API keys as shown later on. API keys are safer and preferred for production environments.
+To connect to, stream data to, and issue queries with {{ech}}, you need to think about authentication. Two authentication mechanisms are supported, *API key* and *basic authentication*. Here, to get you started quickly, we’ll show you how to use basic authentication, but you can also generate API keys as shown later on. API keys are safer and preferred for production environments.
 
 
 ## Create a Python script with logging [ec-python-logs-create-script]
@@ -98,11 +98,11 @@ In this step, you’ll create a Python script that generates logs in JSON format
 
     This Python script randomly generates one of twelve log messages, continuously, at a random interval of between 1 and 10 seconds. The log messages are written to file `elvis.json`, each with a timestamp, a log level of *info*, *warning*, *error*, or *critical*, and other data. Just to add some variance to the log data, the *info* message *Elvis has left the building* is set to be the most probable log event.
 
-    For simplicity, there is just one log file and it is written to the local directory where `elvis.py` is located. In a production environment you may have multiple log files, associated with different modules and loggers, and likely stored in `/var/log` or similar. To learn more about configuring logging in Python, check [Logging facility for Python](https://docs.python.org/3/library/logging.md).
+    For simplicity, there is just one log file and it is written to the local directory where `elvis.py` is located. In a production environment you may have multiple log files, associated with different modules and loggers, and likely stored in `/var/log` or similar. To learn more about configuring logging in Python, check [Logging facility for Python](https://docs.python.org/3/library/logging.html).
 
     Having your logs written in a JSON format with ECS fields allows for easy parsing and analysis, and for standardization with other applications. A standard, easily parsible format becomes increasingly important as the volume and type of data captured in your logs expands over time.
 
-    Together with the standard fields included for each log entry is an extra *http.request.body.content* field. This extra field is there just to give you some additional, interesting data to work with, and also to demonstrate how you can add optional fields to your log data. Check the [ECS Field Reference](asciidocalypse://docs/ecs/docs/reference/ecs/ecs-field-reference.md) for the full list of available fields.
+    Together with the standard fields included for each log entry is an extra *http.request.body.content* field. This extra field is there just to give you some additional, interesting data to work with, and also to demonstrate how you can add optional fields to your log data. Check the [ECS Field Reference](asciidocalypse://docs/ecs/docs/reference/ecs-field-reference.md) for the full list of available fields.
 
 2. Let’s give the Python script a test run. Open a terminal instance in the location where you saved *elvis.py* and run the following:
 
@@ -121,13 +121,13 @@ In this step, you’ll create a Python script that generates logs in JSON format
 
 ## Set up Filebeat [ec-python-logs-filebeat]
 
-Filebeat offers a straightforward, easy to configure way to monitor your Python log files and port the log data into Elasticsearch Service.
+Filebeat offers a straightforward, easy to configure way to monitor your Python log files and port the log data into {{ech}}.
 
 **Get Filebeat**
 
 [Download Filebeat](https://www.elastic.co/downloads/beats/filebeat) and unpack it on the local server from which you want to collect data.
 
-**Configure Filebeat to access Elasticsearch Service**
+**Configure Filebeat to access {{ech}}**
 
 In *<localpath>/filebeat-<version>/* (where *<localpath>* is the directory where Filebeat is installed and *<version>* is the Filebeat version number), open the *filebeat.yml* configuration file for editing.
 
@@ -188,7 +188,7 @@ For this example, Filebeat uses the following four decoding options.
   json.expand_keys: true
 ```
 
-To learn more about these settings, check [JSON input configuration options](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/filebeat-input-log.md#filebeat-input-log-config-json) and [Decode JSON fields](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/decode-json-fields.md) in the Filebeat Reference.
+To learn more about these settings, check [JSON input configuration options](asciidocalypse://docs/beats/docs/reference/filebeat/filebeat-input-log.md#filebeat-input-log-config-json) and [Decode JSON fields](asciidocalypse://docs/beats/docs/reference/filebeat/decode-json-fields.md) in the Filebeat Reference.
 
 Append the four JSON decoding options to the *Filebeat inputs* section of *filebeat.yml*, so that the section now looks like this:
 
@@ -224,7 +224,7 @@ Filebeat comes with predefined assets for parsing, indexing, and visualizing you
 ```
 
 ::::{important}
-Depending on variables including the installation location, environment, and local permissions, you might need to [change the ownership](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-libbeat/config-file-permissions.md) of filebeat.yml. You can also try running the command as *root*: *sudo ./filebeat setup -e* or you can disable strict permission checks by running the command with the `--strict.perms=false` option.
+Depending on variables including the installation location, environment, and local permissions, you might need to [change the ownership](asciidocalypse://docs/beats/docs/reference/libbeat/config-file-permissions.md) of filebeat.yml. You can also try running the command as *root*: *sudo ./filebeat setup -e* or you can disable strict permission checks by running the command with the `--strict.perms=false` option.
 ::::
 
 
@@ -247,9 +247,9 @@ Beginning with Elastic Stack version 8.0, Kibana *index patterns* have been rena
 
 **Optional: Use an API key to authenticate**
 
-For additional security, instead of using basic authentication you can generate an Elasticsearch API key through the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body), and then configure Filebeat to use the new key to connect securely to the Elasticsearch Service deployment.
+For additional security, instead of using basic authentication you can generate an Elasticsearch API key through the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body), and then configure Filebeat to use the new key to connect securely to the {{ech}} deployment.
 
-1. Log in to the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body).
+1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
 2. Select the deployment name and go to **☰** > **Management** > **Dev Tools**.
 3. Enter the following request:
 
@@ -330,7 +330,7 @@ In this command:
 * The *-c* flag specifies the path to the Filebeat config file.
 
 ::::{note}
-Just in case the command doesn’t work as expected, check the [Filebeat quick start](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/filebeat-installation-configuration.md#start) for the detailed command syntax for your operating system. You can also try running the command as *root*: *sudo ./filebeat -e -c filebeat.yml*.
+Just in case the command doesn’t work as expected, check the [Filebeat quick start](asciidocalypse://docs/beats/docs/reference/filebeat/filebeat-installation-configuration.md#start) for the detailed command syntax for your operating system. You can also try running the command as *root*: *sudo ./filebeat -e -c filebeat.yml*.
 ::::
 
 
@@ -342,9 +342,9 @@ python elvis.py
 
 Let the script run for a few minutes and maybe brew up a quick coffee or tea ☕ . After that, make sure that the *elvis.json* file is generated as expected and is populated with several log entries.
 
-**Verify the log entries in Elasticsearch Service**
+**Verify the log entries in {{ech}}**
 
-The next step is to confirm that the log data has successfully found it’s way into Elasticsearch Service.
+The next step is to confirm that the log data has successfully found it’s way into {{ech}}.
 
 1. [Login to Kibana](../../../deploy-manage/deploy/elastic-cloud/access-kibana.md).
 2. Open the {{kib}} main menu and select **Management** > **{{kib}}** > **Data views**.
@@ -408,5 +408,5 @@ You can add titles to the visualizations, resize and position them as you like, 
 
 2. As your final step, remember to stop Filebeat and the Python script. Enter *CTRL + C* in both your Filebeat terminal and in your `elvis.py` terminal.
 
-You now know how to monitor log files from a Python application, deliver the log event data securely into an Elasticsearch Service deployment, and then visualize the results in Kibana in real time. Consult the [Filebeat documentation](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/filebeat-overview.md) to learn more about the ingestion and processing options available for your data. You can also explore our [documentation](../../../manage-data/ingest.md) to learn all about working in Elasticsearch Service.
+You now know how to monitor log files from a Python application, deliver the log event data securely into an {{ech}} deployment, and then visualize the results in Kibana in real time. Consult the [Filebeat documentation](asciidocalypse://docs/beats/docs/reference/filebeat/filebeat-overview.md) to learn more about the ingestion and processing options available for your data. You can also explore our [documentation](../../../manage-data/ingest.md) to learn all about working in {{ech}}.
 

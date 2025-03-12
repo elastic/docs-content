@@ -1,6 +1,12 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/xpack-ccr.html
+applies_to:
+  deployment:
+    eck:
+    ess:
+    ece:
+    self:
 ---
 
 # Cross-cluster replication [xpack-ccr]
@@ -39,12 +45,14 @@ In a uni-directional configuration, the cluster containing follower indices must
 | 7.17 | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") |
 | 8.0–9.0 | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") |
 
-::::{note}
-This documentation is for {{es}} version 9.0.0-beta1, which is not yet released. The above compatibility table applies if both clusters are running a released version of {{es}}, or if one of the clusters is running a released version and the other is running a pre-release build with a later build date. A cluster running a pre-release build of {{es}} can also communicate with remote clusters running the same pre-release build. Running a mix of pre-release builds is unsupported and typically will not work, even if the builds have the same version number.
-::::
 
 
 :::::
+
+% Moved from another file - hiding this note for now
+% ::::{note}
+% CCR is not supported for indices used by Enterprise Search.
+% ::::
 
 
 
@@ -178,7 +186,7 @@ When you create a follower index, you cannot use it until it is fully initialize
 Remote recovery is a network intensive process that transfers all of the Lucene segment files from the leader cluster to the follower cluster. The follower requests that a recovery session be initiated on the primary shard in the leader cluster. The follower then requests file chunks concurrently from the leader. By default, the process concurrently requests five 1MB file chunks. This default behavior is designed to support leader and follower clusters with high network latency between them.
 
 ::::{tip}
-You can modify dynamic [remote recovery settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/cross-cluster-replication-settings.md#ccr-recovery-settings) to rate-limit the transmitted data and manage the resources consumed by remote recoveries.
+You can modify dynamic [remote recovery settings](elasticsearch://reference/elasticsearch/configuration-reference/cross-cluster-replication-settings.md#ccr-recovery-settings) to rate-limit the transmitted data and manage the resources consumed by remote recoveries.
 ::::
 
 
@@ -187,11 +195,11 @@ Use the [recovery API](https://www.elastic.co/docs/api/doc/elasticsearch/operati
 
 ## Replicating a leader requires soft deletes [ccr-leader-requirements]
 
-{{ccr-cap}} works by replaying the history of individual write operations that were performed on the shards of the leader index. {{es}} needs to retain the [history of these operations](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/history-retention-settings.md) on the leader shards so that they can be pulled by the follower shard tasks. The underlying mechanism used to retain these operations is *soft deletes*.
+{{ccr-cap}} works by replaying the history of individual write operations that were performed on the shards of the leader index. {{es}} needs to retain the [history of these operations](elasticsearch://reference/elasticsearch/index-settings/history-retention.md) on the leader shards so that they can be pulled by the follower shard tasks. The underlying mechanism used to retain these operations is *soft deletes*.
 
 A soft delete occurs whenever an existing document is deleted or updated. By retaining these soft deletes up to configurable limits, the history of operations can be retained on the leader shards and made available to the follower shard tasks as it replays the history of operations.
 
-The [`index.soft_deletes.retention_lease.period`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index.md#ccr-index-soft-deletes-retention-period) setting defines the maximum time to retain a shard history retention lease before it is considered expired. This setting determines how long the cluster containing your follower index can be offline, which is 12 hours by default. If a shard copy recovers after its retention lease expires, but the missing operations are still available on the leader index, then {{es}} will establish a new lease and copy the missing operations. However {{es}} does not guarantee to retain unleased operations, so it is also possible that some of the missing operations have been discarded by the leader and are now completely unavailable. If this happens then the follower cannot recover automatically so you must [recreate it](cross-cluster-replication/ccr-recreate-follower-index.md).
+The [`index.soft_deletes.retention_lease.period`](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#ccr-index-soft-deletes-retention-period) setting defines the maximum time to retain a shard history retention lease before it is considered expired. This setting determines how long the cluster containing your follower index can be offline, which is 12 hours by default. If a shard copy recovers after its retention lease expires, but the missing operations are still available on the leader index, then {{es}} will establish a new lease and copy the missing operations. However {{es}} does not guarantee to retain unleased operations, so it is also possible that some of the missing operations have been discarded by the leader and are now completely unavailable. If this happens then the follower cannot recover automatically so you must [recreate it](cross-cluster-replication/ccr-recreate-follower-index.md).
 
 Soft deletes must be enabled for indices that you want to use as leader indices. Soft deletes are enabled by default on new indices created on or after {{es}} 7.0.0.
 
@@ -201,7 +209,7 @@ Soft deletes must be enabled for indices that you want to use as leader indices.
 
 
 
-## Use {{ccr}} [ccr-learn-more]
+## Use cross-cluster replication [ccr-learn-more]
 
 This following sections provide more information about how to configure and use {{ccr}}:
 
@@ -211,17 +219,17 @@ This following sections provide more information about how to configure and use 
 * [Upgrading clusters](cross-cluster-replication/upgrading-clusters.md)
 
 
-## {{ccr-cap}} limitations [ccr-limitations]
+## Cross-cluster replication limitations [ccr-limitations]
 
 {{ccr-cap}} is designed to replicate user-generated indices only, and doesn’t currently replicate any of the following:
 
-* [System indices](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/api-conventions.md#system-indices)
+* [System indices](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#system-indices)
 * [Machine learning jobs](../../explore-analyze/machine-learning.md)
 * [index templates](../../manage-data/data-store/templates.md)
 * [{{ilm-cap}}](../../manage-data/lifecycle/index-lifecycle-management.md) and [{{slm}}](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-slm) polices
 * [User permissions and role mappings](../users-roles/cluster-or-deployment-auth/mapping-users-groups-to-roles.md)
 * [Snapshot repository settings](snapshot-and-restore/self-managed.md)
-* [Cluster settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md)
+* [Cluster settings](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md)
 * [Searchable snapshot](snapshot-and-restore/searchable-snapshots.md)
 
 If you want to replicate any of this data, you must replicate it to a remote cluster manually.

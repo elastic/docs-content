@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/analyze-monitors.html
+applies_to:
+  stack: all
 ---
 
 # Analyze monitors [analyze-monitors]
@@ -16,7 +18,7 @@ The **Status** panel displays a summary of the latest information regarding your
 
 :::{image} ../../../images/observability-uptime-status-panel.png
 :alt: Uptime status panel
-:class: screenshot
+:screenshot:
 :::
 
 The **Monitoring from** list displays service availability per monitoring location, along with the amount of time elapsed since data was received from that location. The availability percentage is the percentage of successful checks made during the selected time period.
@@ -32,7 +34,7 @@ Included on this chart is the {{anomaly-detect}} ({{ml}}) integration. For more 
 
 :::{image} ../../../images/observability-monitor-duration-chart.png
 :alt: Monitor duration chart
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -42,7 +44,7 @@ The **Pings over time** chart is a graphical representation of the check statuse
 
 :::{image} ../../../images/observability-pings-over-time.png
 :alt: Pings over time chart
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -54,6 +56,6 @@ This table can help you gain insights into more granular details about recent in
 
 :::{image} ../../../images/observability-uptime-history.png
 :alt: Monitor history list
-:class: screenshot
+:screenshot:
 :::
 

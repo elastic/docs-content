@@ -11,7 +11,7 @@ mapped_pages:
 
 This section provides solutions to common questions and problems, and processing and performance guidance.
 
-* [Common problems](../../solutions/observability/apps/common-problems.md)
+* [Common problems](/troubleshoot/observability/apm/common-problems.md)
 * [What happens when APM Server or {{es}} is down?](../../solutions/observability/apps/what-happens-when-apm-server-elasticsearch-is-down.md)
 * [APM Server response codes](../../solutions/observability/apps/apm-server-response-codes.md)
 * [Processing and performance](../../solutions/observability/apps/processing-performance.md)
@@ -26,7 +26,7 @@ For additional help with other APM components, see the links below.
 {{agent}}, the Applications UI, and each {{apm-agent}} has its own troubleshooting guide:
 
 * [**{{fleet}} and {{agent}}** troubleshooting](../ingest/fleet/fleet-elastic-agent.md)
-* [**Android agent** FAQ](asciidocalypse://docs/apm-agent-android/docs/reference/ingestion-tools/apm-agent-android/faq.md)
+* [**Android agent** FAQ](apm-agent-android://reference/faq.md)
 * [**.NET agent** troubleshooting](/troubleshoot/observability/apm-agent-dotnet/apm-net-agent.md)
 * [**Go agent** troubleshooting](/troubleshoot/observability/apm-agent-go/apm-go-agent.md)
 * [**iOS agent** troubleshooting](/troubleshoot/observability/apm-agent-swift/apm-ios-agent.md)

@@ -20,7 +20,7 @@ You can connect to threat intelligence sources using an [{{agent}} integration](
 
 :::{image} ../../../images/getting-started-threat-intelligence-view.png
 :alt: The Threat Intelligence view on the Overview dashboard
-:class: screenshot
+:screenshot:
 :::
 
 There are a few scenarios when data won’t display in the Threat Intelligence view:
@@ -31,7 +31,7 @@ There are a few scenarios when data won’t display in the Threat Intelligence v
 
 ## Add an {{agent}} integration [agent-ti-integration]
 
-1. Install a [{{fleet}}-managed {{agent}}](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/install-fleet-managed-elastic-agent.md) on the hosts you want to monitor.
+1. Install a [{{fleet}}-managed {{agent}}](/reference/ingestion-tools/fleet/install-fleet-managed-elastic-agent.md) on the hosts you want to monitor.
 2. In the Threat Intelligence view, click **Enable sources** to view the Integrations page. Scroll down and select **Elastic Agent only** to filter by {{agent}} integrations.
 
     ::::{tip}
@@ -47,16 +47,16 @@ There are a few scenarios when data won’t display in the Threat Intelligence v
 
 % Substeps in step 2 will require inline versioning. Remember to update them when we have more guidance on handling line-level differences.
 
-1. Set up the [{{filebeat}} agent](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/filebeat-installation-configuration.md) and enable the Threat Intel module.
+1. Set up the [{{filebeat}} agent](asciidocalypse://docs/beats/docs/reference/filebeat/filebeat-installation-configuration.md) and enable the Threat Intel module.
 
     ::::{note}
-    For more information about enabling available threat intelligence filesets, refer to [Threat Intel module](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/filebeat-module-threatintel.md).
+    For more information about enabling available threat intelligence filesets, refer to [Threat Intel module](asciidocalypse://docs/beats/docs/reference/filebeat/filebeat-module-threatintel.md).
 
     ::::
 
 2. Update the `securitySolution:defaultThreatIndex` [advanced setting](configure-advanced-settings.md#update-threat-intel-indices) by adding the appropriate index pattern name after the default {{fleet}} threat intelligence index pattern (`logs-ti*`):
 
-    * If you’re *only* using {{filebeat}} version 8.x, add the appropriate {{filebeat}} threat intelligence index pattern. For example, `logs-ti*`, `filebeat-8*`. 
+    * If you’re *only* using {{filebeat}} version 8.x, add the appropriate {{filebeat}} threat intelligence index pattern. For example, `logs-ti*`, `filebeat-8*`.
     * If you’re using a previous version of Filebeat *and* a current one, differentiate between the threat intelligence indices by using unique index pattern names. For example, if you’re using {{filebeat}} version 7.0.0 and 8.0.0, update the setting to `logs-ti*`,`filebeat-7*`,`filebeat-8*`.
 
 3. Return to the Threat Intelligence view on the Overview dashboard. Refresh the page if indicator data isn’t displaying.
@@ -68,7 +68,7 @@ There are a few scenarios when data won’t display in the Threat Intelligence v
 2. Update the `securitySolution:defaultThreatIndex` [advanced setting](configure-advanced-settings.md#update-threat-intel-indices) by adding the appropriate index pattern name after the default {{fleet}} threat intelligence index pattern (`logs-ti*`), for example, `logs-ti*`,`custom-ti-index*`.
 
     ::::{note}
-    Threat intelligence indices aren’t required to be ECS compatible. However, we strongly recommend compatibility if you’d like your alerts to be enriched with relevant threat indicator information. You can find a list of ECS-compliant threat intelligence fields at [Threat Fields](asciidocalypse://docs/ecs/docs/reference/ecs/ecs-threat.md).
+    Threat intelligence indices aren’t required to be ECS compatible. However, we strongly recommend compatibility if you’d like your alerts to be enriched with relevant threat indicator information. You can find a list of ECS-compliant threat intelligence fields at [Threat Fields](asciidocalypse://docs/ecs/docs/reference/ecs-threat.md).
 
     ::::
 

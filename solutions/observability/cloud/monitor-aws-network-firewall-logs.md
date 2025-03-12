@@ -24,7 +24,7 @@ You will go through the following steps:
 We assume that you already have:
 
 * An AWS account with permissions to pull the necessary data from AWS.
-* A deployment using our hosted {{ess}} on [{{ecloud}}](https://cloud.elastic.co/registration?page=docs&placement=docs-body). The deployment includes an {{es}} cluster for storing and searching your data, and {{kib}} for visualizing and managing your data. AWS Data Firehose works with Elastic Stack version 7.17 or greater, running on Elastic Cloud only.
+* An [{{ech}}](https://cloud.elastic.co/registration?page=docs&placement=docs-body) deployment. The deployment includes an {{es}} cluster for storing and searching your data, and {{kib}} for visualizing and managing your data. AWS Data Firehose works with Elastic Stack version 7.17 or greater, running on Elastic Cloud only.
 
 ::::{important}
 AWS PrivateLink is not supported. Make sure the deployment is on AWS, because the Amazon Data Firehose delivery stream connects specifically to an endpoint that needs to be on AWS.
@@ -47,7 +47,7 @@ AWS PrivateLink is not supported. Make sure the deployment is on AWS, because th
 
 You can either use an existing AWS Network Firewall, or create a new one for testing purposes.
 
-Creating a Network Firewall is not trivial and is beyond the scope of this guide. For more information, check the AWS documentation on the [Getting started with AWS Network Firewall](https://docs.aws.amazon.com/network-firewall/latest/developerguide/getting-started.md) guide.
+Creating a Network Firewall is not trivial and is beyond the scope of this guide. For more information, check the AWS documentation on the [Getting started with AWS Network Firewall](https://docs.aws.amazon.com/network-firewall/latest/developerguide/getting-started.html) guide.
 
 
 ## Step 3: Create a stream in Amazon Data Firehose [firehose-firewall-step-three]
@@ -65,6 +65,7 @@ Creating a Network Firewall is not trivial and is beyond the scope of this guide
         1. Go to the [Elastic Cloud](https://cloud.elastic.co/) console
         2. Find your deployment in the **Hosted deployments** card and select **Manage**.
         3. Under **Applications** click **Copy endpoint** next to **Elasticsearch**.
+        4. Make sure the endpoint is in the following format: `https://<deployment_name>.es.<region>.<csp>.elastic-cloud.com`.
 
     * **To create the API key**:
 
@@ -74,17 +75,11 @@ Creating a Network Firewall is not trivial and is beyond the scope of this guide
 
 4. Set up the delivery stream by specifying the following data:
 
-    * Elastic endpoint URL
-    * API key
-    * Content encoding: gzip
-    * Retry duration: 60 (default)
-    * Parameter **es_datastream_name** = `logs-aws.firewall_logs-default`
-    * Backup settings: failed data only to S3 bucket
-
-
-::::{important}
-Verify that your **Elasticsearch endpoint URL** includes `.es.` between the **deployment name** and **region**. Example: `https://my-deployment.es.us-east-1.aws.elastic-cloud.com`
-::::
+    * Elastic endpoint URL: The URL that you copied in the previous step.
+    * API key: The API key that you created in the previous step.
+    * Content encoding: To reduce the data transfer costs, use GZIP encoding.
+    * Retry duration: A duration between 60 and 300 seconds should be suitable for most use cases.
+    * Backup settings: It is recommended to configure S3 backup for failed records. These backups can then be used to restore failed data ingestion caused by unforeseen service outages.
 
 
 The Firehose stream is ready to send logs to our Elastic Cloud deployment.
@@ -122,5 +117,5 @@ Navigate to {{kib}} and choose **Visualize your logs with Discover**.
 
 :::{image} ../../../images/observability-firehose-networkfirewall-discover.png
 :alt: Visualize Network Firewall logs with Discover
-:class: screenshot
+:screenshot:
 :::

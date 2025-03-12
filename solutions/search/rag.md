@@ -1,7 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/_retrieval_augmented_generation.html
-applies:
+applies_to:
   stack:
   serverless:
 ---
@@ -44,7 +44,6 @@ The following diagram illustrates a simple RAG system using {{es}}.
 
 :::{image} ../../images/elasticsearch-reference-rag-schema.svg
 :alt: Components of a simple RAG system using Elasticsearch
-:class: stretch
 :::
 
 The workflow is as follows:

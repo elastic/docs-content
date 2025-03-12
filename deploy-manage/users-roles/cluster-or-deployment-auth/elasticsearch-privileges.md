@@ -1,11 +1,19 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/security-privileges.html
+applies_to:
+  deployment:
+    ece:
+    eck:
+    ess:
+    self:
 ---
 
 # Elasticsearch privileges [security-privileges]
 
 This section lists the privileges that you can assign to a role.
+
+To learn how to assign privileges to a role, refer to [](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md).
 
 ## Cluster privileges [privileges-list-cluster]
 
@@ -297,7 +305,7 @@ This section lists the privileges that you can assign to a role.
 :   Privilege to create an index or data stream. A create index request may contain aliases to be added to the index once created. In that case the request requires the `manage` privilege as well, on both the index and the aliases names.
 
 `cross_cluster_replication`
-:   Privileges to perform cross-cluster replication for indices located on [remote clusters configured with the API key based model](../../remote-clusters/remote-clusters-api-key.md). This privilege should only be used for the `privileges` field of [remote indices privileges](defining-roles.md#roles-remote-indices-priv).
+:   Privileges to perform cross-cluster replication for indices located on [remote clusters configured with the API key based model](../../remote-clusters/remote-clusters-api-key.md). This privilege should only be used for the `privileges` field of [remote indices privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/role-structure.md#roles-remote-indices-priv).
 
     This privilege is not available in {{serverless-full}}.
 

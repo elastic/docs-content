@@ -4,11 +4,11 @@ Once you are [prepared to upgrade](../../../deploy-manage/upgrade/deployment-or-
 
 Minor version upgrades, upgrades from 8.17 to 9.0.0-beta1, and cluster configuration changes can be performed with no downtime. Elastic Cloud only supports upgrades to released versions. Preview releases and master snapshots are not supported.
 
-{{ess}} and {{ece}} do not support the ability to upgrade to or from release candidate builds, such as 8.0.0-rc1.
+{{ech}} and {{ece}} do not support the ability to upgrade to or from release candidate builds, such as 8.0.0-rc1.
 
 If you use a separate [monitoring deployment](../../../deploy-manage/monitor/stack-monitoring/elastic-cloud-stack-monitoring.md), you should upgrade the monitoring deployment before the production deployment. In general, the monitoring deployment and the deployments being monitored should be running the same version of the Elastic Stack. A monitoring deployment cannot monitor production deployments running newer versions of the stack. If necessary, the monitoring deployment can monitor production deployments running the latest release of the previous major version.
 
-::::{important} 
+::::{important}
 Although it’s simple to upgrade an Elastic Cloud deployment, the new version might include breaking changes that affect your application. Make sure you review the deprecation logs, make any necessary changes, and test against the new version before upgrading your production deployment.
 ::::
 
@@ -43,7 +43,7 @@ Security realm settings
 
 
 
-## Perform the upgrade [perform-cloud-upgrade] 
+## Perform the upgrade [perform-cloud-upgrade]
 
 Log in to your Elastic Cloud environment:
 
@@ -209,16 +209,16 @@ function changeTabs(e) {
 </script>
 :::::::{tab-set}
 
-::::::{tab-item} Elasticsearch Service
-1. Log in to the [Elasticsearch Service Console](https://cloud.elastic.co/?page=docs&placement=docs-body).
-2. Select your deployment on the home page in the {{ess}} card or go to the deployments page.
+::::::{tab-item} {{ech}}
+1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co/?page=docs&placement=docs-body).
+2. Select your deployment on the home page in the **Hosted deployments** card or go to the **Deployments** page.
 
     Narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
 ::::::
 
 ::::::{tab-item} Elastic Cloud Enterprise
 1. [Log into the Cloud UI](/deploy-manage/deploy/cloud-enterprise/log-into-cloud-ui.md)
-2. On the deployments page, select your deployment.
+2. On the **Deployments** page, select your deployment.
 
     Narrow the list by name, ID, or choose from several other filters. To further define the list, use a combination of filters.
 ::::::
@@ -230,23 +230,23 @@ To upgrade a deployment:
 2. Select version 9.0.0-beta1.
 3. Click **Upgrade** and then **Confirm upgrade**. The new configuration takes a few minutes to create.
 
-    ::::{note} 
-    If any incompatibilities are detected when you attempt to upgrade to 9.0.0-beta1, the UI provides a link to the Upgrade Assistant, which checks for deprecated settings in your cluster and indices and helps you resolve them. After resolving the issues, return to the deployments page and restart the upgrade.
+    ::::{note}
+    If any incompatibilities are detected when you attempt to upgrade to 9.0.0-beta1, the UI provides a link to the Upgrade Assistant, which checks for deprecated settings in your cluster and indices and helps you resolve them. After resolving the issues, return to the **Deployments** page and restart the upgrade.
     ::::
 
 
 
-## Upgrading {{es}} clients and ingest components [upgrading-clients-ingest] 
+## Upgrading {{es}} clients and ingest components [upgrading-clients-ingest]
 
 Once you have upgraded from 8.17, you need to update your {{es}} clients and ingest components in the following order:
 
-1. Java API Client: [dependency configuration](asciidocalypse://docs/elasticsearch-java/docs/reference/elasticsearch/elasticsearch-client-java-api-client/installation.md#maven)
-2. Logstash: [upgrade instructions](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/upgrading-logstash.md)
-3. Beats: [upgrade instructions](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-libbeat/upgrading.md)
-4. {{agent}}: [upgrade instructions](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/upgrade-elastic-agent.md)
+1. Java API Client: [dependency configuration](elasticsearch-java://reference/installation.md#maven)
+2. Logstash: [upgrade instructions](logstash://reference/upgrading-logstash.md)
+3. Beats: [upgrade instructions](asciidocalypse://docs/beats/docs/reference/libbeat/upgrading.md)
+4. {{agent}}: [upgrade instructions](/reference/ingestion-tools/fleet/upgrade-elastic-agent.md)
 
 
-## Reindex to upgrade [upgrading-reindex] 
+## Reindex to upgrade [upgrading-reindex]
 
 If you are running a pre-8.x version, you might need to perform multiple upgrades or a full-cluster restart to get to 8.17 to prepare to upgrade to 9.0.0-beta1.
 

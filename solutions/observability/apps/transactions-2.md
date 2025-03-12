@@ -11,19 +11,19 @@ A *transaction* describes an event captured by an Elastic APM agent instrumentin
 
 :::{image} ../../../images/observability-apm-transactions-overview.png
 :alt: Example view of transactions table in the Applications UI
-:class: screenshot
+:screenshot:
 :::
 
 The **Latency**, **Throughput**, **Failed transaction rate**, **Time spent by span type**, and **Cold start rate** charts display information on all transactions associated with the selected service:
 
 **Latency**
-:   Response times for the service. Options include average, 95th, and 99th percentile. If there’s a weird spike that you’d like to investigate, you can simply zoom in on the graph - this will adjust the specific time range, and all of the data on the page will update accordingly.
+   Response times for the service. Options include average, 95th, and 99th percentile. If there’s a weird spike that you’d like to investigate, you can simply zoom in on the graph - this will adjust the specific time range, and all of the data on the page will update accordingly.
 
 **Throughput**
-:   Visualize response codes: `2xx`, `3xx`, `4xx`, etc. Useful for determining if more responses than usual are being served with a particular response code. Like in the latency graph, you can zoom in on anomalies to further investigate them.
+   Visualize response codes: `2xx`, `3xx`, `4xx`, etc. Useful for determining if more responses than usual are being served with a particular response code. Like in the latency graph, you can zoom in on anomalies to further investigate them.
 
 **Failed transaction rate**
-:   The failed transaction rate represents the percentage of failed transactions from the perspective of the selected service. It’s useful for visualizing unexpected increases, decreases, or irregular patterns in a service’s transactions.
+   The failed transaction rate represents the percentage of failed transactions from the perspective of the selected service. It’s useful for visualizing unexpected increases, decreases, or irregular patterns in a service’s transactions.
 
     ::::{tip}
     HTTP **transactions** from the HTTP server perspective do not consider a `4xx` status code (client error) as a failure because the failure was caused by the caller, not the HTTP server. Thus, `event.outcome=success` and there will be no increase in failed transaction rate.
@@ -36,7 +36,7 @@ The **Latency**, **Throughput**, **Failed transaction rate**, **Time spent by sp
 
 
 **Time spent by span type**
-:   Visualize where your application is spending most of its time. For example, is your app spending time in external calls, database processing, or application code execution?
+   Visualize where your application is spending most of its time. For example, is your app spending time in external calls, database processing, or application code execution?
 
     The time a transaction took to complete is also recorded and displayed on the chart under the "app" label. "app" indicates that something was happening within the application, but we’re not sure exactly what. This could be a sign that the APM agent does not have auto-instrumentation for whatever was happening during that time.
 
@@ -44,7 +44,7 @@ The **Latency**, **Throughput**, **Failed transaction rate**, **Time spent by sp
 
 
 **Cold start rate**
-:   Only applicable to serverless transactions, this chart displays the percentage of requests that trigger a cold start of a serverless function. See [Cold starts](../../../solutions/observability/apps/observe-lambda-functions.md#apm-lambda-cold-start-info) for more information.
+   Only applicable to serverless transactions, this chart displays the percentage of requests that trigger a cold start of a serverless function. See [Cold starts](../../../solutions/observability/apps/observe-lambda-functions.md#apm-lambda-cold-start-info) for more information.
 
 
 ## Transactions table [transactions-table]
@@ -53,7 +53,7 @@ The **Transactions** table displays a list of *transaction groups* for the selec
 
 :::{image} ../../../images/observability-apm-transactions-table.png
 :alt: Example view of the transactions table in the Applications UI in Kibana
-:class: screenshot
+:screenshot:
 :::
 
 By default, transaction groups are sorted by *Impact*. Impact helps show the most used and slowest endpoints in your service - in other words, it’s the collective amount of pain a specific endpoint is causing your users. If there’s a particular endpoint you’re worried about, you can click on it to view the [transaction details](../../../solutions/observability/apps/transactions-2.md#transaction-details).
@@ -73,7 +73,7 @@ The transaction overview page is customized for the JavaScript RUM agent. Specif
 
 :::{image} ../../../images/observability-apm-geo-ui.png
 :alt: average page load duration distribution
-:class: screenshot
+:screenshot:
 :::
 
 Additional RUM goodies, like core vitals, and visitor breakdown by browser, location, and device, are available in the Observability User Experience tab.
@@ -85,7 +85,7 @@ Selecting a transaction group will bring you to the **transaction** details. Thi
 
 :::{image} ../../../images/observability-apm-transactions-overview.png
 :alt: Example view of response time distribution
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -95,7 +95,7 @@ The latency distribution shows a plot of all transaction durations for the given
 
 :::{image} ../../../images/observability-apm-transaction-duration-dist.png
 :alt: Example view of latency distribution graph
-:class: screenshot
+:screenshot:
 :::
 
 Click and drag to select a latency duration *bucket* to display up to 500 trace samples.
@@ -113,7 +113,7 @@ Each sample has a trace timeline waterfall that shows how a typical request in t
 
 :::{image} ../../../images/observability-apm-transaction-sample.png
 :alt: Example view of transactions sample
-:class: screenshot
+:screenshot:
 :::
 
 ::::{note}
@@ -155,7 +155,7 @@ To learn how to correlate your logs with your instrumented services, see [Stream
 
 :::{image} ../../../images/observability-apm-logs-tab.png
 :alt: APM logs tab
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -165,5 +165,5 @@ Correlations surface attributes of your data that are potentially correlated wit
 
 :::{image} ../../../images/observability-correlations-hover.png
 :alt: APM lattency correlations
-:class: screenshot
+:screenshot:
 :::

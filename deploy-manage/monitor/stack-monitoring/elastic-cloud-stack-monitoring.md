@@ -7,8 +7,9 @@ mapped_urls:
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-enable-logging-and-monitoring.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-monitoring-setup.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-restrictions-monitoring.html
-applies:
-  hosted: all
+applies_to:
+  deployment:
+    ess: all
 ---
 
 # Stack Monitoring on Elastic Cloud deployments
@@ -58,6 +59,13 @@ $$$ech-health-best-practices$$$
 $$$ech-logging-and-monitoring-production$$$
 
 $$$ech-logging-and-monitoring-retention$$$
+
+% Please leave the AutoOps banner in the final content of this page
+
+:::{important}
+ If you’re using Elastic Cloud Hosted, then you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, real-time issue detection and resolution paths. For more information, refer to [Monitor with AutoOps](/deploy-manage/monitor/autoops.md).
+:::
+
 
 **This page is a work in progress.** The documentation team is working to combine content pulled from the following pages:
 

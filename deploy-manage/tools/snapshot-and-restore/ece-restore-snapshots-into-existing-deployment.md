@@ -1,7 +1,11 @@
 ---
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-restore-snapshots-into-existing-deployment.html
+mapped_urls:
   - https://www.elastic.co/guide/en/cloud/current/ec-restore-snapshots-into-existing-deployment.html
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-restore-snapshots-into-existing-deployment.html
+applies_to:
+  deployment:
+    ess: 
+    ece: 
 ---
 
 # Restore snapshot into an existing deployment [ece-restore-snapshots-into-existing-deployment]

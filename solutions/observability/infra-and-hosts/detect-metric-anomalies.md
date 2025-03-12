@@ -6,8 +6,7 @@ mapped_urls:
 
 # Detect metric anomalies [observability-detect-metric-anomalies]
 
-::::{admonition} Required role
-:class: note
+::::{note}
 
 **For Observability serverless projects**, the **Editor** role or higher is required to create {{ml}} jobs. To learn more, refer to [Assign user roles and privileges](../../../deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
 
@@ -28,7 +27,7 @@ After creating {{ml}} jobs, you cannot change the settings. You can recreate the
 ::::{tab-set}
 :group: stack-serverless
 
-:::{tab-item} Elastic Stack v9
+:::{tab-item} Elastic Stack
 :sync: stack
 
 1. To open **Infrastructure inventory**, find **Infrastructure** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
@@ -72,7 +71,7 @@ After creating {{ml}} jobs, you cannot change the settings. You can recreate the
 
 :::{image} ../../../images/serverless-metrics-ml-jobs.png
 :alt: Infrastructure {{ml-app}} anomalies
-:class: screenshot
+:screenshot:
 :::
 
 The **Anomalies** table displays a list of each single metric {{anomaly-detect}} job for the specific host or Kubernetes pod. By default, anomaly jobs are sorted by time to show the most recent job.
@@ -94,5 +93,5 @@ On the **Infrastructure inventory** page, click **Show history** to view the met
 
 :::{image} ../../../images/serverless-metrics-history-chart.png
 :alt: History
-:class: screenshot
+:screenshot:
 :::

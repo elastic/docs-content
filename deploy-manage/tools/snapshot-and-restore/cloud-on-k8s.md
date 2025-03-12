@@ -1,14 +1,15 @@
 ---
-mapped_pages:
+mapped_urls:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-snapshots.html
+navigation_title: "Elastic Cloud on Kubernetes"
+applies_to:
+  deployment:
+    eck: 
 ---
 
-# Elastic Cloud on Kubernetes [k8s-snapshots]
+# Manage snapshot repositories in Elastic Cloud on Kubernetes [k8s-snapshots]
 
-::::{note}
-Snapshots are essential for recovering Elasticsearch indices in case of accidental deletion or for migrating data between clusters.
-::::
-
+Snapshots allow you to back up and restore Elasticsearch indices, helping protect data from accidental deletion and enabling migration between clusters. In Elastic Cloud on Kubernetes (ECK), you can register snapshot repositories and configure snapshot lifecycle policies to automate backups.
 
 To set up automated snapshots for Elasticsearch on Kubernetes you have to:
 
@@ -375,7 +376,7 @@ Follow the [Azure documentation](https://learn.microsoft.com/en-us/azure/aks/wor
 
     1. Specify the Kubernetes secret created in the previous step to configure the Azure storage account name as a secure setting.
     2. This is the service account created earlier in the steps from the [Azure Workload Identity](https://learn.microsoft.com/en-us/azure/aks/workload-identity-deploy-cluster#create-a-kubernetes-service-account) tutorial.
-    3. The corresponding volume is injected by the [Azure Workload Identity Mutating Admission Webhook](https://azure.github.io/azure-workload-identity/docs/installation/mutating-admission-webhook.md). For Elasticsearch to be able to access the token, the mount needs to be in a sub-directory of the Elasticsearch config directory. The corresponding environment variable needs to be adjusted as well.
+    3. The corresponding volume is injected by the [Azure Workload Identity Mutating Admission Webhook](https://azure.github.io/azure-workload-identity/docs/installation/mutating-admission-webhook.html). For Elasticsearch to be able to access the token, the mount needs to be in a sub-directory of the Elasticsearch config directory. The corresponding environment variable needs to be adjusted as well.
 
 11. Create a snapshot repository of type `azure` through the Elasticsearch API, or through [*Elastic Stack configuration policies*](../../deploy/cloud-on-k8s/elastic-stack-configuration-policies.md).
 

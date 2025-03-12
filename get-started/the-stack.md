@@ -4,19 +4,26 @@ mapped_urls:
   - https://www.elastic.co/guide/en/kibana/current/introduction.html
   - https://www.elastic.co/guide/en/kibana/current/index.html
   - https://www.elastic.co/guide/en/elastic-stack/current/installing-elastic-stack.html
+  - https://www.elastic.co/guide/en/elastic-stack/current/overview.html
 ---
 
-# The stack
+# The {{stack}}
 
-This section provides an overview of the {{stack}} and its components — including {{kib}}, the primary user interface for all of Elastic's solutions: Elastic Search, Elastic Observability, and Elastic Security. It then describes how to install the {{stack}}.
+This section provides an overview of the {{stack}} and its components — powered by [{{es}} and {{kib}}](introduction.md).
 
 $$$kibana-navigation-search$$$
 
 ## An overview of the {{stack}} [stack-components]
 
-What exactly is the "{{stack}}?" It’s a fast and highly scalable set of components — {{es}}, {{kib}}, {{beats}}, {{ls}}, and others — that together enable you to securely take data from any source, in any format, and then search, analyze, and visualize it.
+What is the {{stack}}? It’s a fast and highly scalable set of components — {{es}}, {{kib}}, {{beats}}, {{ls}}, and others — that together enable you to securely take data from any source, in any format, and then search, analyze, and visualize it.
 
-You can deploy the {{stack}} as a Cloud service supported on AWS, Google Cloud, and Azure, or as an on-prem installation on your own hardware.
+The products in the {{es}} are designed to be used together and releases are synchronized to simplify the installation and upgrade process.
+
+You have many options for deploying the {{stack}} to suit your needs. You can deploy it on your own hardware, in the cloud, or use a managed service on {{ecloud}}.
+
+:::{tip}
+To learn how to deploy {{es}}, {{kib}}, and supporting orchestration technologies, refer to [](/deploy-manage/index.md). To learn how to deploy additional ingest and consume components, refer to the documentation for the component.
+:::
 
 ![Components of the Elastic Stack](../images/stack-components-diagram.svg)
 
@@ -35,7 +42,7 @@ $$$stack-components-agent$$$
 
     {{fleet}} enables you to centrally manage {{agents}} and their policies. Use {{fleet}} to monitor the state of all your {{agents}}, manage agent policies, and upgrade {{agent}} binaries or integrations.
 
-    [Learn more about {{fleet}} and {{agent}}](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/index.md).
+    [Learn more about {{fleet}} and {{agent}}](/reference/ingestion-tools/fleet/index.md).
 
 
 $$$stack-components-apm$$$
@@ -46,7 +53,7 @@ APM
 $$$stack-components-beats$$$
 
 {{beats}}
-:   {{beats}} are data shippers that you install as agents on your servers to send operational data to {{es}}. {{beats}} are available for many standard observability data scenarios, including audit data, log files and journals, cloud data, availability, metrics, network traffic, and Windows event logs. [Learn more about {{beats}}](asciidocalypse://docs/beats/docs/reference/ingestion-tools/index.md).
+:   {{beats}} are data shippers that you install as agents on your servers to send operational data to {{es}}. {{beats}} are available for many standard observability data scenarios, including audit data, log files and journals, cloud data, availability, metrics, network traffic, and Windows event logs. [Learn more about {{beats}}](asciidocalypse://docs/beats/docs/reference/index.md).
 
 $$$stack-components-ingest-pipelines$$$
 
@@ -56,7 +63,7 @@ $$$stack-components-ingest-pipelines$$$
 $$$stack-components-logstash$$$
 
 {{ls}}
-:   {{ls}} is a data collection engine with real-time pipelining capabilities. It can dynamically unify data from disparate sources and normalize the data into destinations of your choice. {{ls}} supports a broad array of input, filter, and output plugins, with many native codecs further simplifying the ingestion process. [Learn more about {{ls}}](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/index.md).
+:   {{ls}} is a data collection engine with real-time pipelining capabilities. It can dynamically unify data from disparate sources and normalize the data into destinations of your choice. {{ls}} supports a broad array of input, filter, and output plugins, with many native codecs further simplifying the ingestion process. [Learn more about {{ls}}](logstash://reference/index.md).
 
 
 ### Store [_store]
@@ -74,7 +81,7 @@ Use {{kib}} to query and visualize the data that’s stored in {{es}}. Or, use t
 $$$stack-components-kibana$$$
 
 {{kib}}
-:   {{kib}} is the tool to harness your {{es}} data and to manage the {{stack}}. Use it to analyze and visualize the data that’s stored in {{es}}. {{kib}} is also the home for the Search, Observability and Security solutions. [Learn more about {{kib}}](/get-started/the-stack.md).
+:   {{kib}} is the tool to harness your {{es}} data and to manage the {{stack}}. Use it to analyze and visualize the data that’s stored in {{es}}. {{kib}} is also the home for the Search, Observability and Security solutions. [Learn more about {{kib}}](/explore-analyze/index.md).
 
 $$$stack-components-elasticsearch-clients$$$
 

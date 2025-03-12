@@ -2,6 +2,9 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/observability/current/analyze-hosts.html
   - https://www.elastic.co/guide/en/serverless/current/observability-analyze-hosts.html
+applies_to:
+  stack: 
+  serverless:
 ---
 
 # Analyze and compare hosts [observability-analyze-hosts]
@@ -16,17 +19,19 @@ The **Hosts** page provides a metrics-driven view of your infrastructure backed 
 * View historical data to rule out false alerts and identify root causes.
 * Filter and search the data to focus on the hosts you care about the most.
 
-To open **Hosts**, find **Infrastructure** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+To access the **Hosts** page in:
+- **Elastic Stack,** find **Infrastructure** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+- **Serverless,** go to **Infrastructure → Hosts** in your Elastic Observability Serverless project. 
 
 :::{image} ../../../images/serverless-hosts.png
 :alt: Screenshot of the Hosts page
-:class: screenshot
+:screenshot:
 :::
 
 To learn more about the metrics shown on this page, refer to the [Metrics reference](https://www.elastic.co/guide/en/serverless/current/observability-metrics-reference.html) documentation.
 
-::::{admonition} Don’t see any metrics?
-:class: note
+::::{note}
+**Don’t see any metrics?**
 
 If you haven’t added data yet, click **Add data** to search for and install an Elastic integration.
 
@@ -88,7 +93,7 @@ Metrics visualizations are powered by Lens, meaning you can continue your analys
 
 :::{image} ../../../images/serverless-hosts-open-in-lens.png
 :alt: Screenshot showing option to open in Lens
-:class: screenshot
+:screenshot:
 :::
 
 In Lens, you can examine all the fields and formulas used to create the visualization, make modifications to the visualization, and save your changes.
@@ -102,7 +107,7 @@ On the **Logs** tab of the **Hosts** page, view logs for the systems you are mon
 
 :::{image} ../../../images/serverless-hosts-logs.png
 :alt: Screenshot showing Logs view
-:class: screenshot
+:screenshot:
 :::
 
 To see logs for a specific host, refer to [View host details](../../../solutions/observability/infra-and-hosts/analyze-compare-hosts.md#view-host-details).
@@ -120,13 +125,13 @@ From the **Actions** menu, you can choose to:
 
 :::{image} ../../../images/serverless-hosts-view-alerts.png
 :alt: Screenshot showing Alerts view
-:class: screenshot
+:screenshot:
 :::
 
 To see alerts for a specific host, refer to [View host details](../../../solutions/observability/infra-and-hosts/analyze-compare-hosts.md#view-host-details).
 
-::::{admonition} Why are alerts missing from the Hosts page?
-:class: note
+::::{note}
+**Why are alerts missing from the Hosts page?**
 
 If your rules are triggering alerts that don’t appear on the **Hosts** page, edit the rules and make sure they are correctly configured to associate the host name with the alert:
 
@@ -164,7 +169,7 @@ Click **Show all** to drill down into related data.
 
 :::{image} ../../../images/serverless-overview-overlay.png
 :alt: Host overview
-:class: screenshot
+:screenshot:
 :::
 
 :::::
@@ -177,7 +182,7 @@ This information can help when investigating events—for example, when filterin
 
 :::{image} ../../../images/serverless-metadata-overlay.png
 :alt: Host metadata
-:class: screenshot
+:screenshot:
 :::
 
 :::::
@@ -188,7 +193,7 @@ The **Metrics** tab shows host metrics organized by type and is more complete th
 
 :::{image} ../../../images/serverless-metrics-overlay.png
 :alt: Metrics
-:class: screenshot
+:screenshot:
 :::
 
 :::::
@@ -219,7 +224,7 @@ The processes listed in the **Top processes** table are based on an aggregation 
 
 :::{image} ../../../images/serverless-processes-overlay.png
 :alt: Host processes
-:class: screenshot
+:screenshot:
 :::
 
 :::::
@@ -238,7 +243,7 @@ For more on Universal Profiling, refer to the [Universal Profiling](../../../sol
 
 :::{image} ../../../images/observability-universal-profiling-overlay.png
 :alt: Host Universal Profiling
-:class: screenshot
+:screenshot:
 :::
 
 :::::
@@ -256,7 +261,7 @@ To view the logs in the {{logs-app}} for a detailed analysis, click **Open in Lo
 
 :::{image} ../../../images/serverless-logs-overlay.png
 :alt: Host logs
-:class: screenshot
+:screenshot:
 :::
 
 :::::
@@ -267,19 +272,18 @@ The **Anomalies** tab displays a list of each single metric {{anomaly-detect}} j
 
 Along with the name of each anomaly job, detected anomalies with a severity score equal to 50 or higher are listed. These scores represent a severity of "warning" or higher in the selected time period. The **summary** value represents the increase between the actual value and the expected ("typical") value of the host metric in the anomaly record result.
 
-To drill down and analyze the metric anomaly, select **Actions** → **Open in Anomaly Explorer***. You can also select ***Actions** → **Show in Inventory** to view the host Inventory page, filtered by the specific metric.
+To drill down and analyze the metric anomaly, select **Actions** → **Open in Anomaly Explorer**. You can also select **Actions** → **Show in Inventory** to view the host Inventory page, filtered by the specific metric.
 
 :::{image} ../../../images/serverless-anomalies-overlay.png
 :alt: Anomalies
-:class: screenshot
+:screenshot:
 :::
 
 :::::
 
 
 :::::{dropdown} Osquery
-::::{admonition} Required role
-:class: note
+::::{note}
 
 **For Observability serverless projects**, one of the following roles is required to use Osquery.
 
@@ -312,7 +316,7 @@ Other options include:
 
 :::{image} ../../../images/serverless-osquery-overlay.png
 :alt: Osquery
-:class: screenshot
+:screenshot:
 :::
 
 :::::
@@ -340,7 +344,7 @@ In this example, the data emission rate is lower than the Lens chart interval. A
 
 :::{image} ../../../images/serverless-hosts-dashed.png
 :alt: Screenshot showing dashed chart
-:class: screenshot
+:screenshot:
 :::
 
 The chart interval is automatically set depending on the selected time duration. To fix this problem, change the selected time range at the top of the page.
@@ -358,7 +362,7 @@ A solid line indicates that the chart interval is set appropriately for the data
 
 :::{image} ../../../images/serverless-hosts-missing-data.png
 :alt: Screenshot showing missing data
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -370,7 +374,7 @@ This missing data can be hard to spot at first glance. The green boxes outline r
 
 :::{image} ../../../images/serverless-hosts-dashed-and-missing.png
 :alt: Screenshot showing dashed lines and missing data
-:class: screenshot
+:screenshot:
 :::
 
 

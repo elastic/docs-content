@@ -1,8 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/logging-configuration.html
-applies:
-  stack: all
+applies_to:
+  deployment:
+    self: all
 ---
 
 % this might not be valid for all deployment types. needs review.
@@ -52,7 +53,7 @@ There are two types of layout supported at the moment: [`pattern`](#pattern-layo
 With `pattern` layout it’s possible to define a string pattern with special placeholders `%conversion_pattern` that will be replaced with data from the actual log message. By default the following pattern is used: `[%date][%level][%logger] %message`.
 
 ::::{note}
-The `pattern` layout uses a sub-set of [log4j 2 pattern syntax](https://logging.apache.org/log4j/2.x/manual/layouts.md#PatternLayout) and **doesn’t implement** all `log4j 2` capabilities.
+The `pattern` layout uses a sub-set of [log4j 2 pattern syntax](https://logging.apache.org/log4j/2.x/manual/layouts.html#PatternLayout) and **doesn’t implement** all `log4j 2` capabilities.
 ::::
 
 
@@ -98,7 +99,7 @@ The pattern layout also offers a `highlight` option that allows you to highlight
 
 ### JSON layout [json-layout]
 
-With `json` layout log messages will be formatted as JSON strings in [ECS format](asciidocalypse://docs/ecs/docs/reference/ecs/index.md) that includes a timestamp, log level, logger, message text and any other metadata that may be associated with the log message itself.
+With `json` layout log messages will be formatted as JSON strings in [ECS format](asciidocalypse://docs/ecs/docs/reference/index.md) that includes a timestamp, log level, logger, message text and any other metadata that may be associated with the log message itself.
 
 
 ## Logger hierarchy [logger-hierarchy]

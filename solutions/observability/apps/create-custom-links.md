@@ -8,10 +8,9 @@ navigation_title: "Create custom links"
 
 # Custom links in the Applications UI [apm-custom-links]
 
-::::{admonition} Required role
-:class: note
+::::{note}
 
-For serverless Observability projects, the **Editor** role or higher is required to create and manage custom links. To learn more, refer to [Assign user roles and privileges](../../../deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
+**For serverless Observability projects**, the **Editor** role or higher is required to create and manage custom links. To learn more, refer to [Assign user roles and privileges](../../../deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
 
 ::::
 
@@ -46,7 +45,7 @@ Because everyone’s data is different, you’ll need to examine your traces to 
 
 :::{image} ../../../images/observability-example-metadata.png
 :alt: Example metadata
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -104,7 +103,7 @@ This link opens a new GitHub issue in the apm-agent-rum repository. It populates
 
 :::{image} ../../../images/observability-create-github-issue.png
 :alt: Example github issue
-:class: screenshot
+:screenshot:
 :::
 
 |     |     |
@@ -131,7 +130,7 @@ This link creates a new task on the Engineering board in Jira. It populates the 
 
 :::{image} ../../../images/observability-create-jira-issue.png
 :alt: Example jira issue
-:class: screenshot
+:screenshot:
 :::
 
 |     |     |
@@ -139,7 +138,7 @@ This link creates a new task on the Engineering board in Jira. It populates the 
 | Label | `Open a task in Jira` |
 | Link | `https://test-site-33.atlassian.net/secure/CreateIssueDetails!init.jspa?pid=10000&issuetype=10001&summary=Created+via+APM&description=Investigate+the+following+APM+trace%3A%0D%0A%0D%0Aservice.name%3A+{{service.name}}%0D%0Atransaction.id%3A+{{transaction.id}}%0D%0Acontainer.id%3A+{{container.id}}%0D%0Aurl.full%3A+{{url.full}}` |
 
-See the [Jira application administration knowledge base](https://confluence.atlassian.com/jirakb/how-to-create-issues-using-direct-html-links-in-jira-server-159474.md) for a full list of supported query parameters.
+See the [Jira application administration knowledge base](https://confluence.atlassian.com/jirakb/how-to-create-issues-using-direct-html-links-in-jira-server-159474.html) for a full list of supported query parameters.
 
 
 ### Dashboards [custom-links-examples-kib]

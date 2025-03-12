@@ -14,7 +14,7 @@ If you have a license that includes the {{ml-features}}, you can create {{dfanal
 
 :::{image} ../../../images/kibana-classification.png
 :alt: {{classification-cap}} results in {{kib}}
-:class: screenshot
+:screenshot:
 :::
 
 For more information about the {{dfanalytics}} feature, see [{{ml-cap}} {{dfanalytics}}](../data-frame-analytics.md).

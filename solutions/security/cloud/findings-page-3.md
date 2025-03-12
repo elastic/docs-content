@@ -10,7 +10,7 @@ The **Vulnerabilities** tab on the Findings page displays the vulnerabilities de
 
 :::{image} ../../../images/serverless--cloud-native-security-cnvm-findings-page.png
 :alt: The Vulnerabilities tab of the Findings page
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -34,14 +34,14 @@ Click **Group vulnerabilities by** to group your data by a field. Select one of 
 * To turn off grouping, click **Group vulnerabilities by:** and select **None**.
 
 ::::{note}
-Multiple groupings apply to your data in the order you selected them. For example, if you first select **Cloud account**, then select **Resource***, the top-level grouping will be based on ***Cloud account**, and its subordinate grouping will be based on **Resource**, as demonstrated in the following screenshot.
+Multiple groupings apply to your data in the order you selected them. For example, if you first select **Cloud account**, then select **Resource**, the top-level grouping will be based on **Cloud account**, and its subordinate grouping will be based on **Resource**, as demonstrated in the following screenshot.
 
 ::::
 
 
 :::{image} ../../../images/serverless--cloud-native-security-cnvm-findings-grouped.png
 :alt: The Vulnerabilities tab of the Findings page
-:class: screenshot
+:screenshot:
 :::
 
 

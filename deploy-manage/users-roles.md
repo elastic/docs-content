@@ -2,15 +2,16 @@
 navigation_title: "Users and roles"
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/project-settings-access.html
-applies:
+applies_to:
+  deployment:
+    ess: all
+    ece: all
+    eck: all
+    self: all
   serverless: all
-  hosted: all
-  ece: all
-  eck: all
-  stack: all
 ---
 
-# Manage users and roles
+# Users and roles
 
 To prevent unauthorized access to your Elastic resources, you need a way to identify users and validate that a user is who they claim to be (*authentication*), and control what data users can access and what tasks they can perform (*authorization*).
 
@@ -20,8 +21,8 @@ The methods that you use to authenticate users and control access depends on the
 Preventing unauthorized access is only one element of a complete security strategy. To secure your Elastic environment, you can also do the following:
  
 * Restrict the nodes and clients that can connect to the cluster using [traffic filters](/deploy-manage/security/traffic-filtering.md). 
-* Take steps to maintain your data integrity and confidentiality by [encrypting HTTP and inter-node communications](/deploy-manage/security/secure-endpoints.md), as well as [encrypting your data at rest](/deploy-manage/security/encrypt-deployment.md).
-* Maintain an [audit trail](/deploy-manage/monitor/logging-configuration/security-event-audit-logging.md) for security-related events.
+* Take steps to maintain your data integrity and confidentiality by [encrypting HTTP and inter-node communications](/deploy-manage/security/secure-cluster-communications.md), as well as [encrypting your data at rest](/deploy-manage/security/encrypt-deployment.md).
+* Maintain an [audit trail](/deploy-manage/security/logging-configuration/security-event-audit-logging.md) for security-related events.
 * Control access to dashboards and other saved objects in your UI using [{{kib}} spaces](/deploy-manage/manage-spaces.md). 
 * Connect your cluster to a [remote cluster](/deploy-manage/remote-clusters.md) to enable cross-cluster replication and search.
 * Manage [API keys](/deploy-manage/api-keys.md) used for programmatic access to Elastic.
@@ -39,7 +40,7 @@ If you’re using {{ecloud}}, then you can perform the following tasks to contro
 * [Invite users to join your organization](/deploy-manage/users-roles/cloud-organization/manage-users.md)
 * Assign [user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md): 
   * Manage organization-level roles and high-level access to deployments and projects. 
-  * Assign project-level roles and [create custom roles](/deploy-manage/users-roles/custom-roles.md). ({{serverless-short}} only)
+  * Assign project-level roles and [create custom roles](/deploy-manage/users-roles/serverless-custom-roles.md). ({{serverless-short}} only)
 * Configure [SAML single sign-on](/deploy-manage/users-roles/cloud-organization/configure-saml-authentication.md) for your organization
 
 ::::{tip}
@@ -83,7 +84,7 @@ You can't manage users and roles for {{eck}} clusters at the orchestrator level.
 
 As an extension of the [predefined instance access roles](/deploy-manage/users-roles/cloud-organization/user-roles.md#ec_instance_access_roles) offered for {{serverless-short}} projects, you can create custom roles at the project level to provide more granular control, and provide users with only the access they need within specific projects.
 
-[Learn more about custom roles for {{serverless-full}} projects](/deploy-manage/users-roles/custom-roles.md).
+[Learn more about custom roles for {{serverless-full}} projects](/deploy-manage/users-roles/serverless-custom-roles.md).
 
 ## Cluster or deployment level
 

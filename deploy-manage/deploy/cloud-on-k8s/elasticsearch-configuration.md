@@ -1,6 +1,7 @@
 ---
-applies:
-  eck: all
+applies_to:
+  deployment:
+    eck: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-elasticsearch-specification.html
 ---
@@ -55,7 +56,7 @@ Other sections of the documentation also include relevant configuration options 
 
 * [Remote clusters](/deploy-manage/remote-clusters/eck-remote-clusters.md)
 
-* [Autoscaling](../../autoscaling/deployments-autoscaling-on-eck.md)
+* [Autoscaling](../../autoscaling/autoscaling-in-eck.md#k8s-autoscaling)
 
 * [Stack monitoring](/deploy-manage/monitor/stack-monitoring/eck-stack-monitoring.md): Monitor your {{es}} cluster smoothly with the help of ECK.
 

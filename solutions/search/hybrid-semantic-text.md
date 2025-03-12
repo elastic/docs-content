@@ -2,7 +2,7 @@
 navigation_title: "Hybrid search with `semantic_text`"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/semantic-text-hybrid-search.html
-applies:
+applies_to:
   stack:
   serverless:
 ---
@@ -14,7 +14,7 @@ This tutorial demonstrates how to perform hybrid search, combining semantic sear
 
 In hybrid search, semantic search retrieves results based on the meaning of the text, while full-text search focuses on exact word matches. By combining both methods, hybrid search delivers more relevant results, particularly in cases where relying on a single approach may not be sufficient.
 
-The recommended way to use hybrid search in the {{stack}} is following the `semantic_text` workflow. This tutorial uses the [`elasticsearch` service](inference-api/elasticsearch-inference-integration.md) for demonstration, but you can use any service and their supported models offered by the {{infer-cap}} API.
+The recommended way to use hybrid search in the {{stack}} is following the `semantic_text` workflow. This tutorial uses the [`elasticsearch` service](../../explore-analyze/elastic-inference/inference-api/elasticsearch-inference-integration.md) for demonstration, but you can use any service and their supported models offered by the {{infer-cap}} API.
 
 
 ## Create an index mapping [hybrid-search-create-index-mapping]
@@ -102,7 +102,7 @@ POST _tasks/<task_id>/_cancel
 
 ## Perform hybrid search [hybrid-search-perform-search]
 
-After reindexing the data into the `semantic-embeddings` index, you can perform hybrid search by using [reciprocal rank fusion (RRF)](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/reciprocal-rank-fusion.md). RRF is a technique that merges the rankings from both semantic and lexical queries, giving more weight to results that rank high in either search. This ensures that the final results are balanced and relevant.
+After reindexing the data into the `semantic-embeddings` index, you can perform hybrid search by using [reciprocal rank fusion (RRF)](elasticsearch://reference/elasticsearch/rest-apis/reciprocal-rank-fusion.md). RRF is a technique that merges the rankings from both semantic and lexical queries, giving more weight to results that rank high in either search. This ensures that the final results are balanced and relevant.
 
 ```console
 GET semantic-embeddings/_search

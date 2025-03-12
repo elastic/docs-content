@@ -26,7 +26,7 @@ The following message appears during installation:
 
 :::{image} ../../../images/security-system_extension_blocked_warning_ven.png
 :alt: system extension blocked warning ven
-:class: screenshot
+:screenshot:
 :::
 
 1. Click **Open System Settings**.
@@ -34,21 +34,21 @@ The following message appears during installation:
 
     :::{image} ../../../images/security-privacy_security_ven.png
     :alt: privacy security ven
-    :class: screenshot
+    :screenshot:
     :::
 
 3. On the right pane, scroll down to the Security section. Click **Allow** to allow the ElasticEndpoint system extension to load.
 
     :::{image} ../../../images/security-allow_system_extension_ven.png
     :alt: allow system extension ven
-    :class: screenshot
+    :screenshot:
     :::
 
 4. Enter your username and password and click **Modify Settings** to save your changes.
 
     :::{image} ../../../images/security-enter_login_details_to_confirm_ven.png
     :alt: enter login details to confirm ven
-    :class: screenshot
+    :screenshot:
     :::
 
 
@@ -59,7 +59,7 @@ After successfully loading the ElasticEndpoint system extension, an additional m
 
 :::{image} ../../../images/security-allow_network_filter_ven.png
 :alt: allow network filter ven
-:class: screenshot
+:screenshot:
 :::
 
 Click **Allow** to enable content filtering for the ElasticEndpoint system extension. Without this approval, {{elastic-endpoint}} cannot receive network events and, therefore, cannot enable network-related features such as [host isolation](../endpoint-response-actions/isolate-host.md).
@@ -73,7 +73,7 @@ If you have not granted Full Disk Access, the following notification prompt will
 
 :::{image} ../../../images/security-allow_full_disk_access_notification_ven.png
 :alt: allow full disk access notification ven
-:class: screenshot
+:screenshot:
 :::
 
 To enable Full Disk Access, you must manually approve {{elastic-endpoint}}.
@@ -88,21 +88,21 @@ The following instructions apply only to {{elastic-endpoint}} version 8.0.0 and 
 
     :::{image} ../../../images/security-privacy_security_ven.png
     :alt: privacy security ven
-    :class: screenshot
+    :screenshot:
     :::
 
 3. From the right pane, select **Full Disk Access**.
 
     :::{image} ../../../images/security-select_fda_ven.png
     :alt: Select Full Disk Access
-    :class: screenshot
+    :screenshot:
     :::
 
 4. Enable `ElasticEndpoint` and `co.elastic` to properly enable Full Disk Access.
 
     :::{image} ../../../images/security-allow_fda_ven.png
     :alt: allow fda ven
-    :class: screenshot
+    :screenshot:
     :::
 
 
@@ -113,7 +113,7 @@ If the endpoint is running {{elastic-endpoint}} version 7.17.0 or earlier:
 
     :::{image} ../../../images/security-enter_login_details_to_confirm_ven.png
     :alt: enter login details to confirm ven
-    :class: screenshot
+    :screenshot:
     :::
 
 3. Navigate to `/Library/Elastic/Endpoint`, then select the `elastic-endpoint` file.
@@ -122,6 +122,6 @@ If the endpoint is running {{elastic-endpoint}} version 7.17.0 or earlier:
 
     :::{image} ../../../images/security-verify_fed_granted_ven.png
     :alt: Select Full Disk Access
-    :class: screenshot
+    :screenshot:
     :::
 

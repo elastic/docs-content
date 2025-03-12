@@ -19,7 +19,7 @@ When you type, you can begin to see some of the transaction fields available for
 
 :::{image} ../../../images/observability-apm-query-bar.png
 :alt: Example of the Kibana Query bar in Applications UI in Kibana
-:class: screenshot
+:screenshot:
 :::
 
 ::::{tip}
@@ -28,7 +28,7 @@ To learn more about the {{kib}} query language capabilities, see the [Kibana Que
 ::::
 
 
-### Applications UI queries [apm-app-queries]
+### APM queries [apm-app-queries]
 
 APM queries can be handy for removing noise from your data in the [Services](../../../solutions/observability/apps/services.md), [Transactions](../../../solutions/observability/apps/transactions-2.md), [Errors](../../../solutions/observability/apps/errors-2.md), [Metrics](../../../solutions/observability/apps/metrics-2.md), and [Traces](../../../solutions/observability/apps/traces-2.md) views.
 
@@ -58,17 +58,17 @@ In this example, we’re interested in viewing all of the `APIRestController#cus
 
 :::{image} ../../../images/observability-advanced-discover.png
 :alt: View all transactions in bucket
-:class: screenshot
+:screenshot:
 :::
 
 You can now explore the data until you find a specific transaction that you’re interested in. Copy that transaction’s `transaction.id` and paste it into APM to view the data in the context of the APM:
 
 :::{image} ../../../images/observability-specific-transaction-search.png
 :alt: View specific transaction in Applications UI
-:class: screenshot
+:screenshot:
 :::
 
 :::{image} ../../../images/observability-specific-transaction.png
 :alt: View specific transaction in Applications UI
-:class: screenshot
+:screenshot:
 :::

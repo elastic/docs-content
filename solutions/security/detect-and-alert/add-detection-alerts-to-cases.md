@@ -4,20 +4,7 @@ mapped_urls:
   - https://www.elastic.co/guide/en/serverless/current/security-signals-to-cases.html
 ---
 
-# Add detection alerts to cases
-
-% What needs to be done: Lift-and-shift
-
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/security-docs/security/signals-to-cases.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/security-signals-to-cases.md
-
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
-
-$$$signals-to-existing-cases$$$
-
-$$$signals-to-new-cases$$$
+# Add detection alerts to cases [security-signals-to-cases]
 
 From the Alerts table, you can attach one or more alerts to a [new case](/solutions/security/detect-and-alert/add-detection-alerts-to-cases.md#signals-to-new-cases) or [an existing one](/solutions/security/detect-and-alert/add-detection-alerts-to-cases.md#signals-to-existing-cases). Alerts from any rule type can be added to a case.
 
@@ -30,7 +17,7 @@ From the Alerts table, you can attach one or more alerts to a [new case](/soluti
 
 :::{image} ../../../images/security-add-alert-to-case.gif
 :alt: add alert to case
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -56,7 +43,7 @@ To add alerts to a new case:
 
 :::{image} ../../../images/security-add-alert-to-new-case.png
 :alt: add alert to new case
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -78,5 +65,5 @@ To add alerts to an existing case:
 
 :::{image} ../../../images/security-add-alert-to-existing-case.png
 :alt: Select case dialog listing existing cases
-:class: screenshot
+:screenshot:
 :::

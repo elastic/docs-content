@@ -521,7 +521,7 @@ If you cannot connect to Elastic Maps Service from the {{kib}} server or browser
 
    :::{image} ../../../images/kibana-elastic-maps-server-instructions.png
    :alt: Set-up instructions
-   :class: screenshot
+   :screenshot:
    :::
 
 
@@ -603,7 +603,7 @@ services:
 
 :::{image} ../../../images/kibana-elastic-maps-server-basemaps.png
 :alt: Basemaps download options
-:class: screenshot
+:screenshot:
 :::
 
 ::::{tip}

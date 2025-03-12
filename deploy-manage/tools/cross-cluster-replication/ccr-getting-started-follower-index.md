@@ -1,6 +1,13 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/ccr-getting-started-follower-index.html
+
+applies_to:
+  deployment:
+    eck: 
+    ess: 
+    ece: 
+    self: 
 ---
 
 # Create a follower index to replicate a specific index [ccr-getting-started-follower-index]
@@ -20,7 +27,7 @@ When you index documents into your leader index, {{es}} replicates the documents
 
 :::{image} ../../../images/elasticsearch-reference-ccr-follower-index.png
 :alt: The Cross-Cluster Replication page in {{kib}}
-:class: screenshot
+:screenshot:
 :::
 
 ::::{dropdown} API example

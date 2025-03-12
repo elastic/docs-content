@@ -2,6 +2,9 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/observability/current/logs-ecs-application.html
   - https://www.elastic.co/guide/en/serverless/current/observability-ecs-application-logs.html
+applies_to:
+  stack: all
+  serverless: all
 ---
 
 # ECS formatted application logs [logs-ecs-application]
@@ -23,13 +26,13 @@ ECS loggers reformat your application logs into ECS-compatible JSON, removing th
 
 For more information on adding an ECS logger to your application, refer to the guide for your framework:
 
-* [.NET](asciidocalypse://docs/ecs-dotnet/docs/reference/ecs/ecs-logging-dotnet/setup.md)
-* Go: [zap](asciidocalypse://docs/ecs-logging-go-zap/docs/reference/ecs/ecs-logging-go-zap/setup.md)
-* [Java](asciidocalypse://docs/ecs-logging-java/docs/reference/ecs/ecs-logging-java/setup.md)
-* Node.js: [morgan](asciidocalypse://docs/ecs-logging-nodejs/docs/reference/ecs/ecs-logging-nodejs/winston.md)
-* [PHP](asciidocalypse://docs/ecs-logging-php/docs/reference/ecs/ecs-logging-php/setup.md)
-* [Python](asciidocalypse://docs/ecs-logging-python/docs/reference/ecs/ecs-logging-python/installation.md)
-* [Ruby](asciidocalypse://docs/ecs-logging-ruby/docs/reference/ecs/ecs-logging-ruby/setup.md)
+* [.NET](ecs-dotnet://reference/setup.md)
+* Go: [zap](ecs-logging-go-zap://reference/setup.md)
+* [Java](ecs-logging-java://reference/setup.md)
+* Node.js: [morgan](ecs-logging-nodejs://reference/winston.md)
+* [PHP](ecs-logging-php://reference/setup.md)
+* [Python](ecs-logging-python://reference/installation.md)
+* [Ruby](ecs-logging-ruby://reference/setup.md)
 
 
 ## APM agent ECS reformatting [apm-agent-ecs-reformatting]
@@ -47,9 +50,9 @@ To set up log ECS reformatting:
 
 Log ECS reformatting is controlled by the `log_ecs_reformatting` configuration option, and is disabled by default. Refer to the guide for your framework for information on enabling:
 
-* [Java](asciidocalypse://docs/apm-agent-java/docs/reference/ingestion-tools/apm-agent-java/config-logging.md#config-log-ecs-reformatting)
-* [Ruby](asciidocalypse://docs/apm-agent-ruby/docs/reference/ingestion-tools/apm-agent-ruby/configuration.md#config-log-ecs-formatting)
-* [Python](asciidocalypse://docs/apm-agent-python/docs/reference/ingestion-tools/apm-agent-python/configuration.md#config-log_ecs_reformatting)
+* [Java](asciidocalypse://docs/apm-agent-java/docs/reference/config-logging.md#config-log-ecs-reformatting)
+* [Ruby](asciidocalypse://docs/apm-agent-ruby/docs/reference/configuration.md#config-log-ecs-formatting)
+* [Python](asciidocalypse://docs/apm-agent-python/docs/reference/configuration.md#config-log_ecs_reformatting)
 
 
 ### Ingest logs [ingest-ecs-logs]
@@ -73,20 +76,20 @@ Install {{filebeat}} on the server you want to monitor by running the commands t
 
 ::::::{tab-item} DEB
 ```sh
-curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-9.0.0-beta1-darwin-x86_64.tar.gz
-tar xzvf filebeat-9.0.0-beta1-darwin-x86_64.tar.gz
+curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{version}}-darwin-x86_64.tar.gz
+tar xzvf filebeat-{{version}}-darwin-x86_64.tar.gz
 ```
 ::::::
 
 ::::::{tab-item} RPM
 ```sh
-curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-9.0.0-beta1-linux-x86_64.tar.gz
-tar xzvf filebeat-9.0.0-beta1-linux-x86_64.tar.gz
+curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{version}}-linux-x86_64.tar.gz
+tar xzvf filebeat-{{version}}-linux-x86_64.tar.gz
 ```
 ::::::
 
 ::::::{tab-item} macOS
-1. Download the {{filebeat}} Windows zip file: https\://artifacts.elastic.co/downloads/beats/filebeat/filebeat-9.0.0-beta1-windows-x86_64.zip[https\://artifacts.elastic.co/downloads/beats/filebeat/filebeat-9.0.0-beta1-windows-x86_64.zip]
+1. Download the {{filebeat}} Windows zip file: `https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{version}}-windows-x86_64.zip`
 2. Extract the contents of the zip file into `C:\Program Files`.
 3. Rename the `filebeat-{{version}}-windows-x86_64` directory to `{{filebeat}}`.
 4. Open a PowerShell prompt as an Administrator (right-click the PowerShell icon and select **Run As Administrator**).
@@ -103,15 +106,15 @@ If script execution is disabled on your system, you need to set the execution po
 
 ::::::{tab-item} Linux
 ```sh
-curl -L -O https\://artifacts.elastic.co/downloads/beats/filebeat/filebeat-9.0.0-beta1-amd64.deb
-sudo dpkg -i filebeat-9.0.0-beta1-amd64.deb
+curl -L -O https\://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{version}}-amd64.deb
+sudo dpkg -i filebeat-{{version}}-amd64.deb
 ```
 ::::::
 
 ::::::{tab-item} Windows
 ```sh
-curl -L -O https\://artifacts.elastic.co/downloads/beats/filebeat/filebeat-9.0.0-beta1-x86_64.rpm
-sudo rpm -vi filebeat-9.0.0-beta1-x86_64.rpm
+curl -L -O https\://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{version}}-x86_64.rpm
+sudo rpm -vi filebeat-{{version}}-x86_64.rpm
 ```
 ::::::
 
@@ -148,7 +151,7 @@ output.elasticsearch:
     }
     ```
 
-    Refer to [Grant access using API keys](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/beats-api-keys.md) for more information.
+    Refer to [Grant access using API keys](asciidocalypse://docs/beats/docs/reference/filebeat/beats-api-keys.md) for more information.
 
 
 
@@ -273,7 +276,7 @@ To add the custom logs integration to your project:
 5. Give your integration a meaningful name and description.
 6. Add the **Log file path**. For example, `/var/log/your-logs.log`.
 7. Click **Advanced options**.
-8. In the **Processors** text box, add the following YAML configuration to add processors that enhance your data. Refer to [processors](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/filtering-enhancing-data.md) to learn more.
+8. In the **Processors** text box, add the following YAML configuration to add processors that enhance your data. Refer to [processors](asciidocalypse://docs/beats/docs/reference/filebeat/filtering-enhancing-data.md) to learn more.
 
     ```yaml
     processors:

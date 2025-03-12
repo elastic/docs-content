@@ -23,7 +23,7 @@ In this section, you’ll learn how to monitor and analyze the CloudTrail logs y
 We assume that you already have:
 
 * An AWS account with permissions to pull the necessary data from AWS.
-* A deployment using our hosted {{ess}} on [{{ecloud}}](https://cloud.elastic.co/registration?page=docs&placement=docs-body). The deployment includes an {{es}} cluster for storing and searching your data, and {{kib}} for visualizing and managing your data. AWS Data Firehose works with Elastic Stack version 7.17 or greater, running on Elastic Cloud only.
+* An [{{ech}}](https://cloud.elastic.co/registration?page=docs&placement=docs-body) deployment. The deployment includes an {{es}} cluster for storing and searching your data, and {{kib}} for visualizing and managing your data. AWS Data Firehose works with Elastic Stack version 7.17 or greater, running on Elastic Cloud only.
 
 ::::{important}
 Make sure the deployment is on AWS, because the Amazon Data Firehose delivery stream connects specifically to an endpoint that needs to be on AWS.
@@ -91,6 +91,7 @@ You now have a CloudWatch log group with events coming from CloudTrail. For more
         1. Go to the [Elastic Cloud](https://cloud.elastic.co/) console
         2. Find your deployment in the **Hosted deployments** card and select **Manage**.
         3. Under **Applications** click **Copy endpoint** next to **Elasticsearch**.
+        4. Make sure the endpoint is in the following format: `https://<deployment_name>.es.<region>.<csp>.elastic-cloud.com`.
 
     * **To create the API key**:
 
@@ -102,14 +103,9 @@ You now have a CloudWatch log group with events coming from CloudTrail. For more
 
     * Elastic endpoint URL: The URL that you copied in the previous step.
     * API key: The API key that you created in the previous step.
-    * Content encoding: gzip
-    * Retry duration: 60 (default)
-    * Backup settings: failed data only to s3 bucket
-
-
-::::{important}
-Verify that your **Elasticsearch endpoint URL** includes `.es.` between the **deployment name** and **region**. Example: `https://my-deployment.es.us-east-1.aws.elastic-cloud.com`
-::::
+    * Content encoding: To reduce the data transfer costs, use GZIP encoding.
+    * Retry duration: A duration between 60 and 300 seconds should be suitable for most use cases.
+    * Backup settings: It is recommended to configure S3 backup for failed records. These backups can then be used to restore failed data ingestion caused by unforeseen service outages.
 
 
 You now have an Amazon Data Firehose delivery specified with:
@@ -129,7 +125,7 @@ The Amazon Data Firehose delivery stream is ready to send logs to your Elastic C
 
 1. Visit the log group with the CloudTrail events.
 
-    Open the log group where the CloudTrail service is sending the events. You must forward these events to an Elastic stack using the Amazon Data Firehose delivery stream. CloudWatch log group offers a [subscription filter](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/Subscriptions.md) that allows you to choose log events from the log group and forward them to other services like Amazon Kinesis stream, an Amazon Data Firehose stream, or AWS Lambda.
+    Open the log group where the CloudTrail service is sending the events. You must forward these events to an Elastic stack using the Amazon Data Firehose delivery stream. CloudWatch log group offers a [subscription filter](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/Subscriptions.html) that allows you to choose log events from the log group and forward them to other services like Amazon Kinesis stream, an Amazon Data Firehose stream, or AWS Lambda.
 
 2. Create a subscription filter for Amazon Data Firehose by following these steps.
 

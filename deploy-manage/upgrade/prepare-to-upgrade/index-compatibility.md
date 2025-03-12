@@ -29,11 +29,11 @@ To upgrade to 9.0.0-beta1 from 7.16 or an earlier version, **you must first upgr
 
 ## REST API compatibility [upgrade-rest-api-compatibility]
 
-[REST API compatibility](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/compatibility.md) is a per-request opt-in feature that can help REST clients mitigate non-compatible (breaking) changes to the REST API.
+[REST API compatibility](elasticsearch://reference/elasticsearch/rest-apis/compatibility.md) is a per-request opt-in feature that can help REST clients mitigate non-compatible (breaking) changes to the REST API.
 
 
 ## FIPS Compliance and Java 17 [upgrade-fips-java17]
 
-{{es}} 8.0+ requires Java 17 or later. {{es}} 8.13+ has been tested with [Bouncy Castle](https://www.bouncycastle.org/java.md)'s Java 17 [certified](https://csrc.nist.gov/projects/cryptographic-module-validation-program/certificate/4616) FIPS implementation and is the recommended Java security provider when running {{es}} in FIPS 140-2 mode. Note - {{es}} does not ship with a FIPS certified security provider and requires explicit installation and configuration.
+{{es}} 8.0+ requires Java 17 or later. {{es}} 8.13+ has been tested with [Bouncy Castle](https://www.bouncycastle.org/java.html)'s Java 17 [certified](https://csrc.nist.gov/projects/cryptographic-module-validation-program/certificate/4616) FIPS implementation and is the recommended Java security provider when running {{es}} in FIPS 140-2 mode. Note - {{es}} does not ship with a FIPS certified security provider and requires explicit installation and configuration.
 
-Alternatively, consider using {{ess}} in the [FedRAMP-certified GovCloud region](https://www.elastic.co/industries/public-sector/fedramp).
+Alternatively, consider using {{ech}} in the [FedRAMP-certified GovCloud region](https://www.elastic.co/industries/public-sector/fedramp).

@@ -16,7 +16,7 @@ To learn how to correlate your logs with your instrumented services, refer to [S
 
 :::{image} ../../../images/observability-logs.png
 :alt: Example view of the Logs tab in Applications UI
-:class: screenshot
+:screenshot:
 :::
 
 ::::{tip}
@@ -24,6 +24,9 @@ Logs displayed on this page are filtered on `service.name`
 ::::
 
 ## Integrate with logging frameworks [apm-logs-correlation]
+```{applies_to}
+stack: all
+```
 
 Elastic APM integrates with popular logging frameworks, making it easy to correlate your logs and traces. This enables you to:
 

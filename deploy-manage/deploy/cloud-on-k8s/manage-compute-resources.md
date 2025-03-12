@@ -1,6 +1,7 @@
 ---
-applies:
-  eck: all
+applies_to:
+  deployment:
+    eck: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-managing-compute-resources.html
 ---
@@ -324,7 +325,7 @@ To avoid this, explicitly define the requests and limits mandated by your enviro
 
 :::{image} ../../../images/cloud-on-k8s-metrics-explorer-cpu.png
 :alt: cgroup CPU perforamce chart
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -354,6 +355,6 @@ The **Cgroup usage** curve shows that the CPU usage of this container has been s
 
 :::{image} ../../../images/cloud-on-k8s-cgroups-cfs-stats.png
 :alt: cgroup CPU perforamce chart
-:class: screenshot
+:screenshot:
 :::
 

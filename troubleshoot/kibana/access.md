@@ -10,7 +10,7 @@ mapped_pages:
 % 
 % ## Set up on cloud [_set_up_on_cloud]
 % 
-% There’s no faster way to get started than with our hosted {{ess}} on Elastic Cloud:
+% There’s no faster way to get started than with {{ecloud}}:
 % 
 % 1. [Get a free trial](https://cloud.elastic.co/registration?page=docs&placement=docs-body).
 % 2. Log into [Elastic Cloud](https://cloud.elastic.co?page=docs&placement=docs-body).
@@ -45,7 +45,7 @@ To view the {{kib}} status page, use the status endpoint. For example, `localhos
 
 :::{image} ../../images/kibana-kibana-status-page-7_14_0.png
 :alt: Kibana server status page
-:class: screenshot
+:screenshot:
 :::
 
 For JSON-formatted server status details, use the `localhost:5601/api/status` API endpoint.

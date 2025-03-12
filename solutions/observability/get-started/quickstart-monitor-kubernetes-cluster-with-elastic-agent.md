@@ -18,10 +18,10 @@ The kubectl command installs the standalone Elastic Agent in your Kubernetes clu
 ::::{tab-set}
 :group: stack-serverless
 
-:::{tab-item} Elastic Stack v9
+:::{tab-item} Elastic Stack
 :sync: stack
 
-* An {{es}} cluster for storing and searching your data, and {{kib}} for visualizing and managing your data. This quickstart is available for all Elastic deployment models. To get started quickly, try out our hosted {{ess}} on [{{ecloud}}](https://cloud.elastic.co/registration?page=docs&placement=docs-body).
+* An {{es}} cluster for storing and searching your data, and {{kib}} for visualizing and managing your data. This quickstart is available for all Elastic deployment models. To get started quickly, try out [{{ecloud}}](https://cloud.elastic.co/registration?page=docs&placement=docs-body).
 * A user with the `superuser` [built-in role](../../../deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md) or the privileges required to onboard data.
 
     ::::{dropdown} Expand to view required privileges
@@ -54,7 +54,7 @@ The kubectl command installs the standalone Elastic Agent in your Kubernetes clu
 ::::{tab-set}
 :group: stack-serverless
 
-:::{tab-item} Elastic Stack v9
+:::{tab-item} Elastic Stack
 :sync: stack
 
 1. In {{kib}}, go to the **Observability** UI and click **Add Data**.
@@ -62,7 +62,7 @@ The kubectl command installs the standalone Elastic Agent in your Kubernetes clu
 
     :::{image} ../../../images/observability-quickstart-k8s-entry-point.png
     :alt: Kubernetes entry point
-    :class: screenshot
+    :screenshot:
     :::
 
 3. To install the Elastic Agent on your host, copy and run the install command.
@@ -86,7 +86,7 @@ The kubectl command installs the standalone Elastic Agent in your Kubernetes clu
 
     :::{image} ../../../images/serverless-quickstart-k8s-entry-point.png
     :alt: Kubernetes entry point
-    :class: screenshot
+    :screenshot:
     :::
 
 4. To install the Elastic Agent on your host, copy and run the install command.
@@ -107,7 +107,7 @@ After installation is complete and all relevant data is flowing into Elastic, th
 
 :::{image} ../../../images/observability-quickstart-k8s-overview.png
 :alt: Kubernetes overview dashboard
-:class: screenshot
+:screenshot:
 :::
 
 Furthermore, you can access other useful prebuilt dashboards for monitoring Kubernetes resources, for example running pods per namespace, as well as the resources they consume, like CPU and memory.

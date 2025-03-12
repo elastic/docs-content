@@ -102,7 +102,7 @@ $$$elasticsearch-pingTimeout$$$ `elasticsearch.pingTimeout`
 :   Time in milliseconds to wait for {{es}} to respond to pings. **Default: the value of the [`elasticsearch.requestTimeout`](#elasticsearch-requestTimeout) setting**
 
 $$$elasticsearch-requestHeadersWhitelist$$$ `elasticsearch.requestHeadersWhitelist`
-:   List of {{kib}} client-side headers to send to {{es}}. To send **no** client-side headers, set this value to [] (an empty list). Removing the `authorization` header from being whitelisted means that you cannot use [basic authentication](../../users-roles/cluster-or-deployment-auth/user-authentication.md#basic-authentication) in {{kib}}. **Default: `[ 'authorization', 'es-client-authentication' ]`**
+:   List of {{kib}} client-side headers to send to {{es}}. To send **no** client-side headers, set this value to [] (an empty list). Removing the `authorization` header from being whitelisted means that you cannot use [basic authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-authentication.md) in {{kib}}. **Default: `[ 'authorization', 'es-client-authentication' ]`**
 
 $$$elasticsearch-requestTimeout$$$ `elasticsearch.requestTimeout`
 :   Time in milliseconds to wait for responses from the back end or {{es}}. This value must be a positive integer. **Default: `30000`**
@@ -178,14 +178,14 @@ $$$elasticsearch-user-passwd$$$ `elasticsearch.username` and `elasticsearch.pass
 $$$elasticsearch-service-account-token$$$ `elasticsearch.serviceAccountToken`
 :   If your {{es}} is protected with basic authentication, this token provides the credentials that the {{kib}} server uses to perform maintenance on the {{kib}} index at startup. This setting is an alternative to `elasticsearch.username` and `elasticsearch.password`.
 
-`unifiedSearch.autocomplete.valueSuggestions.timeout` ![logo cloud](https://doc-icons.s3.us-east-2.amazonaws.com/logo_cloud.svg "Supported on {{ess}}")
+`unifiedSearch.autocomplete.valueSuggestions.timeout` ![logo cloud](https://doc-icons.s3.us-east-2.amazonaws.com/logo_cloud.svg "Supported on {{ech}}")
 :   Time in milliseconds to wait for autocomplete suggestions from {{es}}. This value must be a whole number greater than zero. **Default: `"1000"`**
 
-`unifiedSearch.autocomplete.valueSuggestions.terminateAfter` ![logo cloud](https://doc-icons.s3.us-east-2.amazonaws.com/logo_cloud.svg "Supported on {{ess}}")
+`unifiedSearch.autocomplete.valueSuggestions.terminateAfter` ![logo cloud](https://doc-icons.s3.us-east-2.amazonaws.com/logo_cloud.svg "Supported on {{ech}}")
 :   Maximum number of documents loaded by each shard to generate autocomplete suggestions. This value must be a whole number greater than zero. **Default: `"100000"`**
 
     ::::{note}
-    To reload the [logging settings](asciidocalypse://docs/kibana/docs/reference/configuration-reference/logging-settings.md), send a SIGHUP signal to {{kib}}. For more logging configuration options, see the [Configure Logging in {{kib}}](../../monitor/logging-configuration/kibana-logging.md) guide.
+    To reload the [logging settings](kibana://reference/configuration-reference/logging-settings.md), send a SIGHUP signal to {{kib}}. For more logging configuration options, see the [Configure Logging in {{kib}}](../../monitor/logging-configuration/kibana-logging.md) guide.
     ::::
 
 
@@ -195,7 +195,7 @@ $$$logging-root$$$ `logging.root`
 $$$logging-root-appenders$$$ `logging.root.appenders`
 :   A list of logging appenders to forward the root level logger instance to.  By default `root` is configured with the `default` appender that logs to stdout with a `pattern` layout. This is the configuration that all custom loggers will use unless they’re re-configured explicitly. You can override the default behavior by configuring a different [appender](../../monitor/logging-configuration/kibana-logging.md#logging-appenders) to apply to `root`.
 
-$$$logging-root-level$$$ `logging.root.level` ![logo cloud](https://doc-icons.s3.us-east-2.amazonaws.com/logo_cloud.svg "Supported on {{ess}}")
+$$$logging-root-level$$$ `logging.root.level` ![logo cloud](https://doc-icons.s3.us-east-2.amazonaws.com/logo_cloud.svg "Supported on {{ech}}")
 :   Level at which a log record should be logged. Supported levels are: *all*, *fatal*, *error*, *warn*, *info*, *debug*, *trace*, *off*. Levels are ordered from *all* (highest) to *off* and a log record will be logged it its level is higher than or equal to the level of its logger, otherwise the log record is ignored. Use this value to [change the overall log level](../../monitor/logging-configuration/kibana-log-settings-examples.md#change-overall-log-level). **Default: `info`**.
 
     ::::{tip}
@@ -225,25 +225,25 @@ $$$logging-loggers$$$ `logging.loggers[]`
 `logging.appenders[]`
 :   [Appenders](../../monitor/logging-configuration/kibana-logging.md#logging-appenders) define how and where log messages are displayed (eg. **stdout** or console) and stored (eg. file on the disk).
 
-`map.includeElasticMapsService` ![logo cloud](https://doc-icons.s3.us-east-2.amazonaws.com/logo_cloud.svg "Supported on {{ess}}")
+`map.includeElasticMapsService` ![logo cloud](https://doc-icons.s3.us-east-2.amazonaws.com/logo_cloud.svg "Supported on {{ech}}")
 :   Set to `false` to disable connections to Elastic Maps Service. When `includeElasticMapsService` is turned off, only tile layer configured by [`map.tilemap.url`](#tilemap-url) is available in [Maps](../../../explore-analyze/visualize/maps.md). **Default: `true`**
 
 `map.emsUrl`
 :   Specifies the URL of a self hosted [{{hosted-ems}}](../../../explore-analyze/visualize/maps/maps-connect-to-ems.md#elastic-maps-server)
 
-$$$tilemap-settings$$$ `map.tilemap.options.attribution` ![logo cloud](https://doc-icons.s3.us-east-2.amazonaws.com/logo_cloud.svg "Supported on {{ess}}")
+$$$tilemap-settings$$$ `map.tilemap.options.attribution` ![logo cloud](https://doc-icons.s3.us-east-2.amazonaws.com/logo_cloud.svg "Supported on {{ech}}")
 :   The map attribution string. Provide attributions in markdown and use `\|` to delimit attributions, for example: `"[attribution 1](https://www.attribution1)\|[attribution 2](https://www.attribution2)"`. **Default: `"© [Elastic Maps Service](https://www.elastic.co/elastic-maps-service)"`**
 
-$$$tilemap-max-zoom$$$ `map.tilemap.options.maxZoom` ![logo cloud](https://doc-icons.s3.us-east-2.amazonaws.com/logo_cloud.svg "Supported on {{ess}}")
+$$$tilemap-max-zoom$$$ `map.tilemap.options.maxZoom` ![logo cloud](https://doc-icons.s3.us-east-2.amazonaws.com/logo_cloud.svg "Supported on {{ech}}")
 :   The maximum zoom level. **Default: `10`**
 
-$$$tilemap-min-zoom$$$ `map.tilemap.options.minZoom` ![logo cloud](https://doc-icons.s3.us-east-2.amazonaws.com/logo_cloud.svg "Supported on {{ess}}")
+$$$tilemap-min-zoom$$$ `map.tilemap.options.minZoom` ![logo cloud](https://doc-icons.s3.us-east-2.amazonaws.com/logo_cloud.svg "Supported on {{ech}}")
 :   The minimum zoom level. **Default: `1`**
 
-$$$tilemap-subdomains$$$ `map.tilemap.options.subdomains` ![logo cloud](https://doc-icons.s3.us-east-2.amazonaws.com/logo_cloud.svg "Supported on {{ess}}")
+$$$tilemap-subdomains$$$ `map.tilemap.options.subdomains` ![logo cloud](https://doc-icons.s3.us-east-2.amazonaws.com/logo_cloud.svg "Supported on {{ech}}")
 :   An array of subdomains used by the tile service. Specify the position of the subdomain the URL with the token `{s}`.
 
-$$$tilemap-url$$$ `map.tilemap.url` ![logo cloud](https://doc-icons.s3.us-east-2.amazonaws.com/logo_cloud.svg "Supported on {{ess}}")
+$$$tilemap-url$$$ `map.tilemap.url` ![logo cloud](https://doc-icons.s3.us-east-2.amazonaws.com/logo_cloud.svg "Supported on {{ech}}")
 :   The URL to the service that {{kib}} uses as the default basemap in [maps](../../../explore-analyze/visualize/maps.md) and [vega maps](../../../explore-analyze/visualize/custom-visualizations-with-vega.md#vega-with-a-map). By default, {{kib}} sets a basemap from the [Elastic Maps Service](../../../explore-analyze/visualize/maps/maps-connect-to-ems.md), but users can point to their own Tile Map Service. For example: `"https://tiles.elastic.co/v2/default/{{z}}/{x}/{{y}}.png?elastic_tile_service_tos=agree&my_app_name=kibana"`
 
 `migrations.batchSize`
@@ -262,7 +262,7 @@ $$$tilemap-url$$$ `map.tilemap.url` ![logo cloud](https://doc-icons.s3.us-east-2
 :   [preview] Indicates which roles to configure the {{kib}} process with, which will effectively run {{kib}} in different modes. Valid options are `background_tasks` and `ui`, or `*` to select all roles. **Default: `*`**
 
 `notifications.connectors.default.email`
-:   Choose the default email connector for user notifications. As of `8.6.0`, {{kib}} is shipping with a new notification mechanism that will send email notifications for various user actions, e.g. assigning a *Case* to a user. To enable notifications, an email connector must be [preconfigured](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/pre-configured-connectors.md) in the system via `kibana.yml`, and the notifications plugin must be configured to point to the ID of that connector.
+:   Choose the default email connector for user notifications. As of `8.6.0`, {{kib}} is shipping with a new notification mechanism that will send email notifications for various user actions, e.g. assigning a *Case* to a user. To enable notifications, an email connector must be [preconfigured](kibana://reference/connectors-kibana/pre-configured-connectors.md) in the system via `kibana.yml`, and the notifications plugin must be configured to point to the ID of that connector.
 
 $$$path-data$$$ `path.data`
 :   The path where {{kib}} stores persistent data not saved in {{es}}. **Default: `data`**
@@ -330,7 +330,7 @@ $$$server-securityResponseHeaders-disableEmbedding$$$`server.securityResponseHea
 $$$server-securityResponseHeaders-crossOriginOpenerPolicy$$$ `server.securityResponseHeaders.crossOriginOpenerPolicy`
 :   Controls whether the [`Cross-Origin-Opener-Policy`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cross-Origin-Opener-Policy) header is used in all responses to the client from the {{kib}} server, and specifies what value is used. Allowed values are `unsafe-none`, `same-origin-allow-popups`, `same-origin`, or `null`. To disable, set to `null`. **Default:** `"same-origin"`
 
-`server.customResponseHeaders` ![logo cloud](https://doc-icons.s3.us-east-2.amazonaws.com/logo_cloud.svg "Supported on {{ess}}")
+`server.customResponseHeaders` ![logo cloud](https://doc-icons.s3.us-east-2.amazonaws.com/logo_cloud.svg "Supported on {{ech}}")
 :   Header names and values to send on all responses to the client from the {{kib}} server. **Default: `{}`**
 
 $$$server-shutdownTimeout$$$ `server.shutdownTimeout`
@@ -472,15 +472,15 @@ $$$settings-xsrf-disableProtection$$$ `server.xsrf.disableProtection`
 :   If authentication is enabled, setting this to `true` enables unauthenticated users to access the {{kib}} server status API and status page. **Default: `false`**
 
 $$$telemetry-allowChangingOptInStatus$$$ `telemetry.allowChangingOptInStatus`
-:   When `false`, users cannot change the opt-in status through [Advanced Settings](asciidocalypse://docs/kibana/docs/reference/advanced-settings.md), and {{kib}} only looks at the value of [`telemetry.optIn`](#settings-telemetry-optIn) to determine whether to send telemetry data or not. **Default: `true`**.
+:   When `false`, users cannot change the opt-in status through [Advanced Settings](kibana://reference/advanced-settings.md), and {{kib}} only looks at the value of [`telemetry.optIn`](#settings-telemetry-optIn) to determine whether to send telemetry data or not. **Default: `true`**.
 
 $$$settings-telemetry-optIn$$$ `telemetry.optIn`
 :   Set to `false` to stop sending any telemetry data to Elastic. Reporting your cluster statistics helps us improve your user experience. When `false`, the telemetry data is never sent to Elastic.<br>
 
-    This setting can be changed at any time in [Advanced Settings](asciidocalypse://docs/kibana/docs/reference/advanced-settings.md). To prevent users from changing it, set [`telemetry.allowChangingOptInStatus`](#telemetry-allowChangingOptInStatus) to `false`. **Default: `true`**
+    This setting can be changed at any time in [Advanced Settings](kibana://reference/advanced-settings.md). To prevent users from changing it, set [`telemetry.allowChangingOptInStatus`](#telemetry-allowChangingOptInStatus) to `false`. **Default: `true`**
 
 
-`vis_type_vega.enableExternalUrls` ![logo cloud](https://doc-icons.s3.us-east-2.amazonaws.com/logo_cloud.svg "Supported on {{ess}}")
+`vis_type_vega.enableExternalUrls` ![logo cloud](https://doc-icons.s3.us-east-2.amazonaws.com/logo_cloud.svg "Supported on {{ech}}")
 :   Set this value to true to allow Vega to use any URL to access external data sources and images. When false, Vega can only get data from {{es}}. **Default: `false`**
 
 `xpack.ccr.ui.enabled`
@@ -523,5 +523,5 @@ $$$settings-explore-data-in-chart$$$ `xpack.discoverEnhanced.actions.exploreData
 `xpack.upgrade_assistant.ui.enabled`
 :   Set this value to false to disable the Upgrade Assistant UI. **Default: true**
 
-`i18n.locale` ![logo cloud](https://doc-icons.s3.us-east-2.amazonaws.com/logo_cloud.svg "Supported on {{ess}}")
+`i18n.locale` ![logo cloud](https://doc-icons.s3.us-east-2.amazonaws.com/logo_cloud.svg "Supported on {{ech}}")
 :   Set this value to change the {{kib}} interface language. Valid locales are: `en`, `zh-CN`, `ja-JP`, `fr-FR`. **Default: `en`**

@@ -1,4 +1,7 @@
 ---
+applies_to:
+  deployment:
+    ece: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-configuring-deployment-aliases.html
 ---
@@ -26,6 +29,7 @@ After installing or upgrading to version 2.10 or later:
     * For Kibana, the certificate needs to allow for ***.kb.<your-domain>**
     * For APM, the certificate needs to allow for ***.apm.<your-domain>**
     * For Fleet, the certificate needs to allow for ***.fleet.<your-domain>**
+    * For Universal Profiling, the certificate needs to allow for ***.profiling.<your-domain>** and ***.symbols.<your-domain>**
 
 3. In the **Platform** menu, select **Settings**.
 4. Under the **Enable custom endpoint alias naming**, toggle the setting to allow platform administrators and deployment managers to choose a simplified, unique URL for the endpoint.

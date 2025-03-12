@@ -6,7 +6,7 @@ mapped_pages:
 
 # Symptom: High CPU usage [high-cpu-usage]
 
-{{es}} uses [thread pools](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/thread-pool-settings.md) to manage CPU resources for concurrent operations. High CPU usage typically means one or more thread pools are running low.
+{{es}} uses [thread pools](elasticsearch://reference/elasticsearch/configuration-reference/thread-pool-settings.md) to manage CPU resources for concurrent operations. High CPU usage typically means one or more thread pools are running low.
 
 If a thread pool is depleted, {{es}} will [reject requests](rejected-requests.md) related to the thread pool. For example, if the `search` thread pool is depleted, {{es}} will reject search requests until more threads are available.
 
@@ -35,7 +35,7 @@ To track CPU usage over time, we recommend enabling monitoring:
 
 :::::::{tab-set}
 
-::::::{tab-item} Elasticsearch Service
+::::::{tab-item} {{ech}}
 * (Recommended) Enable [logs and metrics](../../deploy-manage/monitor/stack-monitoring/elastic-cloud-stack-monitoring.md). When logs and metrics are enabled, monitoring information is visible on {{kib}}'s [Stack Monitoring](../../deploy-manage/monitor/monitoring-data/visualizing-monitoring-data.md) page.
 
     You can also enable the [CPU usage threshold alert](../../deploy-manage/monitor/monitoring-data/kibana-alerts.md) to be notified about potential issues through email.
@@ -46,7 +46,7 @@ To track CPU usage over time, we recommend enabling monitoring:
     * **CPU credits**: Your remaining CPU credits, measured in seconds of CPU time.
 
 
-{{ess}} grants [CPU credits](../../deploy-manage/monitor/monitoring-data/ec-vcpu-boost-instance.md) per deployment to provide smaller clusters with performance boosts when needed. High CPU usage can deplete these credits, which might lead to [performance degradation](../monitoring/performance.md) and [increased cluster response times](../monitoring/cluster-response-time.md).
+{{ech}} grants [CPU credits](../../deploy-manage/monitor/monitoring-data/ec-vcpu-boost-instance.md) per deployment to provide smaller clusters with performance boosts when needed. High CPU usage can deplete these credits, which might lead to [performance degradation](../monitoring/performance.md) and [increased cluster response times](../monitoring/cluster-response-time.md).
 ::::::
 
 ::::::{tab-item} Self-managed

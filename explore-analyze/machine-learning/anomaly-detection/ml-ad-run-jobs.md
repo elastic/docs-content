@@ -26,7 +26,7 @@ You can create {{anomaly-jobs}} by using the [create {{anomaly-jobs}} API](https
 
 :::{image} ../../../images/machine-learning-ml-create-job.png
 :alt: Create New Job
-:class: screenshot
+:screenshot:
 :::
 
 * The single metric wizard creates simple jobs that have a single detector. A *detector* applies an analytical function to specific fields in your data. In addition to limiting the number of detectors, the single metric wizard omits many of the more advanced configuration options.
@@ -45,7 +45,7 @@ The {{ml-features}} use the concept of a *bucket* to divide the time series into
 
 The *bucket span* is part of the configuration information for an {{anomaly-job}}. It defines the time interval that is used to summarize and model the data. This is typically between 5 minutes to 1 hour and it depends on your data characteristics. When you set the bucket span, take into account the granularity at which you want to analyze, the frequency of the input data, the typical duration of the anomalies, and the frequency at which alerting is required.
 
-The bucket span must contain a valid [time interval](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/api-conventions.md#time-units). When you create an {{anomaly-job}} in {{kib}}, you can choose to estimate a bucket span value based on your data characteristics. If you choose a value that is larger than one day or is significantly different than the estimated value, you receive an informational message.
+The bucket span must contain a valid [time interval](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#time-units). When you create an {{anomaly-job}} in {{kib}}, you can choose to estimate a bucket span value based on your data characteristics. If you choose a value that is larger than one day or is significantly different than the estimated value, you receive an informational message.
 
 ### Detectors [ml-ad-detectors]
 
@@ -108,7 +108,7 @@ If the estimated model memory limit for an {{anomaly-job}} is greater than the m
   * Add bigger {{ml}} nodes to the cluster, or
   * Accept that the job will hit its memory limit and will not necessarily find all the anomalies it could otherwise find.
 
-If you are using {{ece}} or the hosted Elasticsearch Service on Elastic Cloud, `xpack.ml.max_model_memory_limit` is set to prevent you from creating jobs that cannot be allocated to any {{ml}} nodes in the cluster. If you find that you cannot increase `model_memory_limit` for your {{ml}} jobs, the solution is to increase the size of the {{ml}} nodes in your cluster.
+If you are using {{ece}} or {{ech}}, `xpack.ml.max_model_memory_limit` is set to prevent you from creating jobs that cannot be allocated to any {{ml}} nodes in the cluster. If you find that you cannot increase `model_memory_limit` for your {{ml}} jobs, the solution is to increase the size of the {{ml}} nodes in your cluster.
 
 ### Dedicated indices [ml-ad-dedicated-indices]
 
@@ -190,7 +190,7 @@ You can see the list of model snapshots for each job with the [get model snapsho
 
 :::{image} ../../../images/machine-learning-ml-model-snapshots.png
 :alt: Example screenshot with a list of model snapshots
-:class: screenshot
+:screenshot:
 :::
 
 ::::{tip}

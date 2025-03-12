@@ -28,10 +28,10 @@ For a more detailed description of the components and advanced configuration, re
 ::::{tab-set}
 :group: stack-serverless
 
-:::{tab-item} Elastic Stack v9
+:::{tab-item} Elastic Stack
 :sync: stack
 
-* An {{es}} cluster for storing and searching your data, and {{kib}} for visualizing and managing your data. This quickstart is available for all Elastic deployment models. To get started quickly, try out our hosted {{ess}} on [{{ecloud}}](https://cloud.elastic.co/registration?page=docs&placement=docs-body).
+* An {{es}} cluster for storing and searching your data, and {{kib}} for visualizing and managing your data. This quickstart is available for all Elastic deployment models. To get started quickly, try out [{{ecloud}}](https://cloud.elastic.co/registration?page=docs&placement=docs-body).
 * A running Kubernetes cluster (v1.23 or newer).
 * [Kubectl](https://kubernetes.io/docs/reference/kubectl/).
 * [Helm](https://helm.sh/docs/intro/install/).
@@ -57,7 +57,7 @@ For a more detailed description of the components and advanced configuration, re
 ::::{tab-set}
 :group: stack-serverless
 
-:::{tab-item} Elastic Stack v9
+:::{tab-item} Elastic Stack
 :sync: stack
 
 1. In {{kib}}, go to the **Observability** UI and click **Add Data**.
@@ -65,7 +65,7 @@ For a more detailed description of the components and advanced configuration, re
 
     :::{image} ../../../images/observability-quickstart-k8s-otel-entry-point.png
     :alt: Kubernetes-OTel entry point
-    :class: screenshot
+    :screenshot:
     :::
 
 3. Follow the on-screen instructions to install all needed components.
@@ -95,7 +95,7 @@ For a more detailed description of the components and advanced configuration, re
 
     :::{image} ../../../images/serverless-quickstart-k8s-otel-entry-point.png
     :alt: Kubernetes-OTel entry point
-    :class: screenshot
+    :screenshot:
     :::
 
 4. Follow the on-screen instructions to install all needed components.
@@ -127,7 +127,7 @@ After installation is complete and all relevant data is flowing into Elastic, th
 
 :::{image} ../../../images/observability-quickstart-k8s-otel-dashboard.png
 :alt: Kubernetes overview dashboard
-:class: screenshot
+:screenshot:
 :::
 
 

@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/logstash-pipelines.html
+applies_to:
+  stack: ga
+  serverless: ga
 ---
 
 # Logstash pipelines [logstash-pipelines]
@@ -11,7 +14,7 @@ In **{{project-settings}} → {{manage-app}} → {{ls-pipelines-app}}**, you can
 
 :::{image} ../../../images/serverless-logstash-pipelines-management.png
 :alt: {{ls-pipelines-app}}"
-:class: screenshot
+:screenshot:
 :::
 
 On the {{ls}} side, you must enable configuration management and register {{ls}} to use the centrally managed pipeline configurations.
@@ -25,7 +28,7 @@ After you configure {{ls}} to use centralized pipeline management, you can no lo
 
 ## Manage pipelines [logstash-pipelines-manage-pipelines]
 
-1. [Configure centralized pipeline management](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/configuring-centralized-pipelines.md).
+1. [Configure centralized pipeline management](logstash://reference/configuring-centralized-pipelines.md).
 2. To add a new pipeline, go to **{{project-settings}} → {{manage-app}} → {{ls-pipelines-app}}** and click **Create pipeline**. Provide the following details, then click **Create and deploy**.
 
     Pipeline ID
@@ -58,4 +61,4 @@ After you configure {{ls}} to use centralized pipeline management, you can no lo
 
 To delete one or more pipelines, select their checkboxes then click **Delete**.
 
-For more information about pipeline behavior, go to [Centralized Pipeline Management](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/logstash-centralized-pipeline-management.md#_pipeline_behavior).
+For more information about pipeline behavior, go to [Centralized Pipeline Management](logstash://reference/logstash-centralized-pipeline-management.md#_pipeline_behavior).

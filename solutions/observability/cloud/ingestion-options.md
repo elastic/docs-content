@@ -26,6 +26,6 @@ The high-level architecture is shown below.
 
 :::{image} ../../../images/observability-ingest-options-overview.png
 :alt: Ingest options
-:class: screenshot
+:screenshot:
 :::
 

@@ -16,7 +16,7 @@ Use when
 :   Agents have network restrictions for connecting to {{es}} on {{stack}} deployed outside of the agent network
 
 Example
-:   You can send data from multiple {{agent}}s through your demilitarized zone (DMZ) to {{ls}}, and then use {{ls}} as a proxy through your firewall to {{ess}}. This approach helps reduce the number of firewall exceptions needed to forward data from large numbers of {{agent}}s.
+:   You can send data from multiple {{agent}}s through your demilitarized zone (DMZ) to {{ls}}, and then use {{ls}} as a proxy through your firewall to {{ecloud}}. This approach helps reduce the number of firewall exceptions needed to forward data from large numbers of {{agent}}s.
 
 
 ## Resources [ls-networkbridge-resources]
@@ -24,12 +24,12 @@ Example
 Info on configuring {{agent}}:
 
 * [Fleet and Elastic Agent Guide](https://www.elastic.co/guide/en/fleet/current)
-* [Configuring outputs for {{agent}}](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/elastic-agent-output-configuration.md)
+* [Configuring outputs for {{agent}}](/reference/ingestion-tools/fleet/elastic-agent-output-configuration.md)
 
 Info on {{ls}} and {{ls}} plugins:
 
 * [{{ls}} Reference](https://www.elastic.co/guide/en/logstash/current)
-* [{{es}} output plugin](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/plugins-outputs-elasticsearch.md)
+* [{{es}} output plugin](logstash://reference/plugins-outputs-elasticsearch.md)
 
 Info on {{es}}:
 

@@ -2,23 +2,28 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/observability/current/view-infrastructure-metrics.html
   - https://www.elastic.co/guide/en/serverless/current/observability-view-infrastructure-metrics.html
+applies_to:
+  stack: 
+  serverless: 
 ---
 
 # View infrastructure metrics by resource type [observability-view-infrastructure-metrics]
 
 The **Infrastructure Inventory** page provides a metrics-driven view of your entire infrastructure grouped by the resources you are monitoring. All monitored resources emitting a core set of infrastructure metrics are displayed to give you a quick view of the overall health of your infrastructure.
 
-To open **Infrastructure inventory**, find **Infrastructure** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+To open the **Infrastructure inventory** page in:
+- **Elastic Stack,** find **Infrastructure** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+- **Serverless,** go to **Infrastructure inventory** in your Observability Serverless project.
 
 :::{image} ../../../images/observability-metrics-app.png
 :alt: Infrastructure UI in {kib}
-:class: screenshot
+:screenshot:
 :::
 
 To learn more about the metrics shown on this page, refer to the [Metrics reference](https://www.elastic.co/guide/en/serverless/current/observability-metrics-reference.html).
 
-::::{admonition} Don’t see any metrics?
-:class: note
+::::{note}
+**Don’t see any metrics?**
 
 If you haven’t added data yet, click **Add data** to search for and install an Elastic integration.
 
@@ -42,7 +47,7 @@ You can sort by resource, group the resource by specific fields related to it, a
 
 :::{image} ../../../images/observability-kubernetes-filter.png
 :alt: Kubernetes pod filtering
-:class: screenshot
+:screenshot:
 :::
 
 You can also use the search bar to create structured queries using [{{kib}} Query Language](../../../explore-analyze/query-filter/languages/kql.md). For example, enter `host.hostname : "host1"` to view only the information for `host1`.
@@ -77,7 +82,7 @@ Click **Show all** to drill down into related data.
 
 :::{image} ../../../images/observability-overview-overlay.png
 :alt: Host overview
-:class: screenshot
+:screenshot:
 :::
 
 :::::
@@ -90,7 +95,7 @@ This information can help when investigating events—for example, when filterin
 
 :::{image} ../../../images/observability-metadata-overlay.png
 :alt: Host metadata
-:class: screenshot
+:screenshot:
 :::
 
 :::::
@@ -101,7 +106,7 @@ The **Metrics** tab shows host metrics organized by type and is more complete th
 
 :::{image} ../../../images/serverless-metrics-overlay.png
 :alt: Metrics
-:class: screenshot
+:screenshot:
 :::
 
 :::::
@@ -132,14 +137,14 @@ The processes listed in the **Top processes** table are based on an aggregation 
 
 :::{image} ../../../images/serverless-processes-overlay.png
 :alt: Host processes
-:class: screenshot
+:screenshot:
 :::
 
 % Stateful only for Profiling
 
 :::::
 
-:::::{dropdown} **Universal Profiling**
+:::::{dropdown} Universal Profiling
 The **Universal Profiling** tab shows CPU usage down to the application code level. From here, you can find the sources of resource usage, and identify code that can be optimized to reduce infrastructure costs. The Universal Profiling tab has the following views.
 
 |     |     |
@@ -151,7 +156,7 @@ For more on Universal Profiling, refer to the [Universal Profiling](../../../sol
 
 :::{image} ../../../images/observability-universal-profiling-overlay.png
 :alt: Host Universal Profiling
-:class: screenshot
+:screenshot:
 :::
 
 :::::
@@ -169,7 +174,7 @@ To view the logs in the {{logs-app}} for a detailed analysis, click **Open in Lo
 
 :::{image} ../../../images/observability-logs-overlay.png
 :alt: Host logs
-:class: screenshot
+:screenshot:
 :::
 
 :::::
@@ -180,11 +185,11 @@ The **Anomalies** tab displays a list of each single metric {{anomaly-detect}} j
 
 Along with the name of each anomaly job, detected anomalies with a severity score equal to 50 or higher are listed. These scores represent a severity of "warning" or higher in the selected time period. The **summary** value represents the increase between the actual value and the expected ("typical") value of the host metric in the anomaly record result.
 
-To drill down and analyze the metric anomaly, select **Actions** → **Open in Anomaly Explorer***. You can also select ***Actions** → **Show in Inventory** to view the host Inventory page, filtered by the specific metric.
+To drill down and analyze the metric anomaly, select **Actions** → **Open in Anomaly Explorer**. You can also select **Actions** → **Show in Inventory** to view the host Inventory page, filtered by the specific metric.
 
 :::{image} ../../../images/serverless-anomalies-overlay.png
 :alt: Anomalies
-:class: screenshot
+:screenshot:
 :::
 
 :::::
@@ -192,8 +197,7 @@ To drill down and analyze the metric anomaly, select **Actions** → **Open in A
 
 :::::{dropdown} Osquery
 
-::::{admonition} Required role
-:class: note
+::::{note}
 
 **For Observability serverless projects**, one of the following roles is required to use Osquery.
 
@@ -226,7 +230,7 @@ Other options include:
 
 :::{image} ../../../images/observability-osquery-overlay.png
 :alt: Osquery
-:class: screenshot
+:screenshot:
 :::
 
 :::::
@@ -245,8 +249,8 @@ When you select **Docker containers**, the **Infrastructure inventory** page dis
 
 Without leaving the **Infrastructure inventory** page, you can view enhanced metrics relating to each container running in your infrastructure.
 
-::::{admonition} Why do some containers report 0% or null (-) values in the waffle map?
-:class: note
+::::{note}
+**Why do some containers report 0% or null (-) values in the waffle map?**
 
 The waffle map shows *all* monitored containers, including containerd, provided that the data collected from the container has the `container.id` field. However, the waffle map currently only displays metrics for Docker fields. This display problem will be resolved in a future release.
 
@@ -276,7 +280,7 @@ Click **Show all** to drill down into related data.
 
 :::{image} ../../../images/observability-overview-overlay-containers.png
 :alt: Container overview
-:class: screenshot
+:screenshot:
 :::
 
 :::::
@@ -293,7 +297,7 @@ All of this information can help when investigating events—for example, filter
 
 :::{image} ../../../images/observability-metadata-overlay-containers.png
 :alt: Container metadata
-:class: screenshot
+:screenshot:
 :::
 
 :::::
@@ -304,7 +308,7 @@ The **Metrics** tab shows container metrics organized by type.
 
 :::{image} ../../../images/observability-metrics-overlay-containers.png
 :alt: Metrics
-:class: screenshot
+:screenshot:
 :::
 
 :::::
@@ -322,7 +326,7 @@ To view the logs in the {{logs-app}} for a detailed analysis, click **Open in Lo
 
 :::{image} ../../../images/observability-logs-overlay-containers.png
 :alt: Container logs
-:class: screenshot
+:screenshot:
 :::
 
 :::::
@@ -335,7 +339,7 @@ When you have searched and filtered for a specific resource, you can drill down 
 
 :::{image} ../../../images/observability-pod-metrics.png
 :alt: Kubernetes pod metrics
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -347,7 +351,7 @@ Select your resource, and from the **Metric** filter menu, click **Add metric**.
 
 :::{image} ../../../images/serverless-add-custom-metric.png
 :alt: Add custom metrics
-:class: screenshot
+:screenshot:
 :::
 
 

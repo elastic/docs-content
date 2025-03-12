@@ -34,8 +34,8 @@ When a deployment encrypted with a customer-managed key is deleted or terminated
 :::::::{tab-set}
 
 ::::::{tab-item} AWS
-* Have permissions on AWS KMS to [create a symmetric AWS KMS key](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.md#symmetric-cmks) and to configure AWS IAM roles.
-* Consider the cloud regions where you need your deployment to live. Refer to the [list of available regions, deployment templates, and instance configurations](asciidocalypse://docs/cloud/docs/reference/cloud/cloud-hosted/ec-regions-templates-instances.md) supported by Elastic Cloud.
+* Have permissions on AWS KMS to [create a symmetric AWS KMS key](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#symmetric-cmks) and to configure AWS IAM roles.
+* Consider the cloud regions where you need your deployment to live. Refer to the [list of available regions, deployment templates, and instance configurations](asciidocalypse://docs/cloud/docs/reference/cloud-hosted/ec-regions-templates-instances.md) supported by Elastic Cloud.
 ::::::
 
 ::::::{tab-item} Azure
@@ -46,11 +46,11 @@ When a deployment encrypted with a customer-managed key is deleted or terminated
     * Permissions to [assign roles in your Key Vault using Access control (IAM)](https://learn.microsoft.com/en-us/azure/key-vault/general/rbac-guide?tabs=azure-cli#prerequisites). This is required to grant the service principal access to your key.
 
 * The Azure Key Vault where the RSA key will be stored must have [purge protection](https://learn.microsoft.com/en-us/azure/key-vault/general/soft-delete-overview#purge-protection) enabled to support the encryption of snapshots.
-* Consider the cloud regions where you need your deployment to live. Refer to the [list of available regions, deployment templates, and instance configurations](asciidocalypse://docs/cloud/docs/reference/cloud/cloud-hosted/ec-regions-templates-instances.md) supported by Elastic Cloud.
+* Consider the cloud regions where you need your deployment to live. Refer to the [list of available regions, deployment templates, and instance configurations](asciidocalypse://docs/cloud/docs/reference/cloud-hosted/ec-regions-templates-instances.md) supported by Elastic Cloud.
 ::::::
 
 ::::::{tab-item} Google Cloud
-* Consider the cloud regions where you need your deployment to live. Refer to the [list of available regions, deployment templates, and instance configurations](asciidocalypse://docs/cloud/docs/reference/cloud/cloud-hosted/ec-regions-templates-instances.md) supported by Elastic Cloud.
+* Consider the cloud regions where you need your deployment to live. Refer to the [list of available regions, deployment templates, and instance configurations](asciidocalypse://docs/cloud/docs/reference/cloud-hosted/ec-regions-templates-instances.md) supported by Elastic Cloud.
 * Have the following permissions in Google Cloud KMS:
 
     * Permissions to [create a KMS key](https://cloud.google.com/kms/docs/create-key) on a key ring in the same region as your deployment. If you don’t have a key ring in the same region, or want to store the key in its own key ring, then you also need permissions to [create a key ring](https://cloud.google.com/kms/docs/create-key-ring).
@@ -67,7 +67,7 @@ At this time, the following features are not supported:
 * Disabling encryption on a deployment
 * AWS:
 
-    * Encrypting deployments using keys from [key stores external to AWS KMS](https://docs.aws.amazon.com/kms/latest/developerguide/keystore-external.md)
+    * Encrypting deployments using keys from [key stores external to AWS KMS](https://docs.aws.amazon.com/kms/latest/developerguide/keystore-external.html)
 
 * Azure:
 
@@ -85,7 +85,7 @@ At this time, the following features are not supported:
 :::::::{tab-set}
 
 ::::::{tab-item} AWS
-1. Create a symmetric [single-region key](https://docs.aws.amazon.com/kms/latest/developerguide/create-keys.md) or [multi-region replica key](https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-keys-replicate.md). The key must be available in each region in which you have deployments to encrypt. You can use the same key to encrypt multiple deployments. Later, you will need to provide the Amazon Resource Name (ARN) of that key or key alias to Elastic Cloud.
+1. Create a symmetric [single-region key](https://docs.aws.amazon.com/kms/latest/developerguide/create-keys.html) or [multi-region replica key](https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-keys-replicate.html). The key must be available in each region in which you have deployments to encrypt. You can use the same key to encrypt multiple deployments. Later, you will need to provide the Amazon Resource Name (ARN) of that key or key alias to Elastic Cloud.
 
     ::::{note}
     Use an alias ARN instead of the key ARN itself if you plan on doing manual key rotations. When using a key ARN directly, only automatic rotations are supported.
@@ -116,12 +116,12 @@ At this time, the following features are not supported:
     }
     ```
 
-    1. [kms:Decrypt](https://docs.aws.amazon.com/kms/latest/APIReference/API_Decrypt.md) - This operation is used to decrypt data encryption keys stored on the deployment’s host, as well as decrypting snapshots stored in S3.
-    2. [kms:Encrypt](https://docs.aws.amazon.com/kms/latest/APIReference/API_Encrypt.md) - This operation is used to encrypt the data encryption keys generated by the KMS as well as encrypting your snapshots.
-    3. [kms:GetKeyRotationStatus](https://docs.aws.amazon.com/kms/latest/APIReference/API_GetKeyRotationStatus.md) - This operation is used to determine whether automatic key rotation is enabled.
-    4. [kms:GenerateDataKey](https://docs.aws.amazon.com/kms/latest/APIReference/API_GenerateDataKey.md) - This operation is used to generate a data encryption key along with an encrypted version of it. The system leverages the randomness provided by the KMS to produce the data encryption key and your actual customer-managed key to encrypt the data encryption key.
-    5. [kms:DescribeKey](https://docs.aws.amazon.com/kms/latest/APIReference/API_DescribeKey.md) - This operation is used to check whether your key is properly configured for Elastic Cloud. In addition, Elastic Cloud uses this to check if a manual key rotation was performed by comparing underlying key IDs associated with an alias.
-    6. This condition allows the accounts associated with the Elastic Cloud production infrastructure to access your key. Under typical circumstances, Elastic Cloud will only be accessing your key via two AWS accounts: the account your deployment’s host is in and the account your S3 bucket containing snapshots is in. However, determining these particular account IDs prior to the deployment creation is not possible at the moment. This encompasses all of the possibilities. For more on this, check the [AWS documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_condition-keys.md#condition-keys-principalorgpaths).
+    1. [kms:Decrypt](https://docs.aws.amazon.com/kms/latest/APIReference/API_Decrypt.html) - This operation is used to decrypt data encryption keys stored on the deployment’s host, as well as decrypting snapshots stored in S3.
+    2. [kms:Encrypt](https://docs.aws.amazon.com/kms/latest/APIReference/API_Encrypt.html) - This operation is used to encrypt the data encryption keys generated by the KMS as well as encrypting your snapshots.
+    3. [kms:GetKeyRotationStatus](https://docs.aws.amazon.com/kms/latest/APIReference/API_GetKeyRotationStatus.html) - This operation is used to determine whether automatic key rotation is enabled.
+    4. [kms:GenerateDataKey](https://docs.aws.amazon.com/kms/latest/APIReference/API_GenerateDataKey.html) - This operation is used to generate a data encryption key along with an encrypted version of it. The system leverages the randomness provided by the KMS to produce the data encryption key and your actual customer-managed key to encrypt the data encryption key.
+    5. [kms:DescribeKey](https://docs.aws.amazon.com/kms/latest/APIReference/API_DescribeKey.html) - This operation is used to check whether your key is properly configured for Elastic Cloud. In addition, Elastic Cloud uses this to check if a manual key rotation was performed by comparing underlying key IDs associated with an alias.
+    6. This condition allows the accounts associated with the Elastic Cloud production infrastructure to access your key. Under typical circumstances, Elastic Cloud will only be accessing your key via two AWS accounts: the account your deployment’s host is in and the account your S3 bucket containing snapshots is in. However, determining these particular account IDs prior to the deployment creation is not possible at the moment. This encompasses all of the possibilities. For more on this, check the [AWS documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_condition-keys.html#condition-keys-principalorgpaths).
 ::::::
 
 ::::::{tab-item} Azure
@@ -158,20 +158,20 @@ Provide your key identifier without the key version identifier so Elastic Cloud 
 :::::::{tab-set}
 
 ::::::{tab-item} AWS
-1. Create a new deployment. You can do it from the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body), or from the API:
+1. Create a new deployment. You can do it from the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body), or from the API:
 
-    * from the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body):
+    * from the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body):
 
-        * Select **Create deployment** from the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body) home page.
+        * Select **Create deployment** from the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body) home page.
         * In the **Settings**, set the **Cloud provider** to **Amazon Web Services** and select a region.
         * Expand the **Advanced settings** and turn on **Use a customer-managed encryption key**. An additional field appears to let you specify the ARN of the AWS KMS key or key alias you will use to encrypt your new deployment.
         * Configure the rest of your deployment to your convenience, and select **Create deployment**.
 
     * using the API:
 
-        * Choose a **cloud region** and a **deployment template** (also called hardware profile) for your deployment from the [list of available regions, deployment templates, and instance configurations](asciidocalypse://docs/cloud/docs/reference/cloud/cloud-hosted/ec-regions-templates-instances.md).
+        * Choose a **cloud region** and a **deployment template** (also called hardware profile) for your deployment from the [list of available regions, deployment templates, and instance configurations](asciidocalypse://docs/cloud/docs/reference/cloud-hosted/ec-regions-templates-instances.md).
         * [Get a valid Elastic Cloud API key](/deploy-manage/api-keys/elastic-cloud-api-keys.md) with the **Organization owner** role or the **Admin** role on deployments. These roles allow you to create new deployments.
-        * Get the ARN of the symmetric AWS KMS key or of its alias. Use an alias if you are planning to do manual key rotations as specified in the [AWS documentation](https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.md).
+        * Get the ARN of the symmetric AWS KMS key or of its alias. Use an alias if you are planning to do manual key rotations as specified in the [AWS documentation](https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html).
         * Use these parameters to create a new deployment with the [Elastic Cloud API](https://www.elastic.co/docs/api/doc/cloud/group/endpoint-deployments). For example:
 
             ```bash
@@ -207,7 +207,7 @@ To create a new deployment with a customer-managed key in Azure, you need to per
 
 1. In Elastic Cloud, retrieve the Azure application ID:
 
-    * Select **Create deployment** from the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body) home page.
+    * Select **Create deployment** from the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body) home page.
     * In the **Settings**, set the **Cloud provider** to **Azure** and select a region.
     * Expand the **Advanced settings** and turn on **Use a customer-managed encryption key**.
     * Copy the **Azure application ID**.
@@ -231,11 +231,11 @@ To create a new deployment with a customer-managed key in Azure, you need to per
 
 **Step 2: Create your deployment**<br>
 
-After you have created the service principal and granted it the necessary permissions, you can finish creating your deployment. You can do so from the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body), or from the API.
+After you have created the service principal and granted it the necessary permissions, you can finish creating your deployment. You can do so from the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body), or from the API.
 
-* Using the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body):
+* Using the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body):
 
-    * Select **Create deployment** from the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body) home page.
+    * Select **Create deployment** from the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body) home page.
     * In the **Settings**, set the **Cloud provider** to **Azure** and select a region.
     * Expand the **Advanced settings** and turn on **Use a customer-managed encryption key**.
     * Enter the Azure key identifier for the RSA key that you created.
@@ -243,7 +243,7 @@ After you have created the service principal and granted it the necessary permis
 
 * Using the API:
 
-    * Choose a **cloud region** and a **deployment template** (also called hardware profile) for your deployment from the [list of available regions, deployment templates, and instance configurations](asciidocalypse://docs/cloud/docs/reference/cloud/cloud-hosted/ec-regions-templates-instances.md).
+    * Choose a **cloud region** and a **deployment template** (also called hardware profile) for your deployment from the [list of available regions, deployment templates, and instance configurations](asciidocalypse://docs/cloud/docs/reference/cloud-hosted/ec-regions-templates-instances.md).
 
         * [Get a valid Elastic Cloud API key](/deploy-manage/api-keys/elastic-cloud-api-keys.md) with the **Organization owner** role or the **Admin** role on deployments. These roles allow you to create new deployments.
         * Use these parameters to create a new deployment with the [Elastic Cloud API](https://www.elastic.co/docs/api/doc/cloud/group/endpoint-deployments). For example:
@@ -284,7 +284,7 @@ Elastic Cloud uses two service principals to encrypt and decrypt data using your
 
 1. In Elastic Cloud, retrieve the email addresses for the service principals that will be used by Elastic:
 
-    * Select **Create deployment** from the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body) home page.
+    * Select **Create deployment** from the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body) home page.
     * In the **Settings**, set the **Cloud provider** to **Google Cloud** and select a region.
     * Expand the **Advanced settings** and turn on **Use a customer-managed encryption key**.
     * Note the **Elastic service account** and **Google Cloud Platform storage service agent** email addresses.
@@ -310,11 +310,11 @@ The user performing this action needs to belong to the **Owner** or **Cloud KMS 
 
 **Step 2: Create your deployment**
 
-After you have granted the Elastic principals the necessary roles, you can finish creating your deployment. You can do so from the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body), or from the API.
+After you have granted the Elastic principals the necessary roles, you can finish creating your deployment. You can do so from the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body), or from the API.
 
-* Using the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body):
+* Using the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body):
 
-    * Select **Create deployment** from the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body) home page.
+    * Select **Create deployment** from the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body) home page.
     * In the **Settings**, set the **Cloud provider** to **Google Cloud** and select a region.
     * Expand the **Advanced settings** and turn on **Use a customer-managed encryption key**.
     * Enter the resource ID for the key that you created.
@@ -322,7 +322,7 @@ After you have granted the Elastic principals the necessary roles, you can finis
 
 * Using the API:
 
-    * Choose a **cloud region** and a **deployment template** (also called hardware profile) for your deployment from the [list of available regions, deployment templates, and instance configurations](asciidocalypse://docs/cloud/docs/reference/cloud/cloud-hosted/ec-regions-templates-instances.md).
+    * Choose a **cloud region** and a **deployment template** (also called hardware profile) for your deployment from the [list of available regions, deployment templates, and instance configurations](asciidocalypse://docs/cloud/docs/reference/cloud-hosted/ec-regions-templates-instances.md).
 
         * [Get a valid Elastic Cloud API key](/deploy-manage/api-keys/elastic-cloud-api-keys.md) with the **Organization owner** role or the **Admin** role on deployments. These roles allow you to create new deployments.
         * Use these parameters to create a new deployment with the [Elastic Cloud API](https://www.elastic.co/docs/api/doc/cloud/group/endpoint-deployments). For example:
@@ -364,7 +364,7 @@ You can check that your hosted deployment is correctly encrypted with the key yo
 ::::::{tab-item} AWS
 Elastic Cloud will automatically rotate the keys every 31 days as a security best practice.
 
-You can also trigger a manual rotation [in AWS KMS](https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.md), which will take effect in Elastic Cloud within 30 minutes. **For manual rotations to work, you must use an alias when creating the deployment. We do not currently support [on-demand rotations](https://docs.aws.amazon.com/kms/latest/APIReference/API_RotateKeyOnDemand.md) but plan on supporting this in the future.**
+You can also trigger a manual rotation [in AWS KMS](https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html), which will take effect in Elastic Cloud within 30 minutes. **For manual rotations to work, you must use an alias when creating the deployment. We do not currently support [on-demand rotations](https://docs.aws.amazon.com/kms/latest/APIReference/API_RotateKeyOnDemand.html) but plan on supporting this in the future.**
 ::::::
 
 ::::::{tab-item} Azure

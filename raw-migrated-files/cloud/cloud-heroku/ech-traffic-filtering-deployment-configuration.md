@@ -120,7 +120,7 @@ This section offers suggestions on how to troubleshoot your traffic filters. Bef
 ### Review the rule sets associated with a deployment [ech-review-rule-sets] 
 
 1. Log in to the [Elasticsearch Add-On for Heroku console](https://cloud.elastic.co?page=docs&placement=docs-body).
-2. On the deployments page, select your deployment.
+2. On the **Deployments** page, select your deployment.
 
     Narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
 
@@ -135,7 +135,7 @@ On this screen you can view and remove existing filters and attach new filters.
 To identify which rule sets are automatically applied to new deployments in your account:
 
 1. Log in to the [Elasticsearch Add-On for Heroku console](https://cloud.elastic.co?page=docs&placement=docs-body).
-2. On the deployments page, select your deployment.
+2. On the **Deployments** page, select your deployment.
 3. Under the **Features** tab, open the **Traffic filters** page.
 4. You can find the list of traffic filter rule sets.
 5. Select each of the rule sets — **Include by default** is checked when this rule set is automatically applied to all new deployments in its region.

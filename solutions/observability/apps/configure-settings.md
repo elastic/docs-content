@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/configure-uptime-settings.html
+applies_to:
+  stack: all
 ---
 
 # Configure settings [configure-uptime-settings]
@@ -31,7 +33,7 @@ The pattern set here only restricts what the {{uptime-app}} displays. You can st
 
 :::{image} ../../../images/observability-heartbeat-indices.png
 :alt: {{heartbeat}} indices
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -45,7 +47,7 @@ For more information about each connector, see [action types and connectors](../
 
 :::{image} ../../../images/observability-alert-connector.png
 :alt: Rule connector
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -62,6 +64,6 @@ A standard security requirement is to make sure that your TLS certificates have 
 
 :::{image} ../../../images/observability-cert-expiry-settings.png
 :alt: Certificate expiry settings
-:class: screenshot
+:screenshot:
 :::
 

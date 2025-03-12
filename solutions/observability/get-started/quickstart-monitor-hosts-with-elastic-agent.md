@@ -18,10 +18,10 @@ The script also generates an {{agent}} configuration file that you can use with 
 ::::{tab-set}
 :group: stack-serverless
 
-:::{tab-item} Elastic Stack v9
+:::{tab-item} Elastic Stack
 :sync: stack
 
-* An {{es}} cluster for storing and searching your data, and {{kib}} for visualizing and managing your data. This quickstart is available for all Elastic deployment models. To get started quickly, try out our hosted {{ess}} on [{{ecloud}}](https://cloud.elastic.co/registration?page=docs&placement=docs-body).
+* An {{es}} cluster for storing and searching your data, and {{kib}} for visualizing and managing your data. This quickstart is available for all Elastic deployment models. To get started quickly, try out [{{ecloud}}](https://cloud.elastic.co/registration?page=docs&placement=docs-body).
 * A user with the `superuser` [built-in role](../../../deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md) or the privileges required to onboard data.
 
     ::::{dropdown} Expand to view required privileges
@@ -59,7 +59,7 @@ The script also generates an {{agent}} configuration file that you can use with 
 ::::{tab-set}
 :group: stack-serverless
 
-:::{tab-item} Elastic Stack v9
+:::{tab-item} Elastic Stack
 :sync: stack
 
 1. In {{kib}}, go to the **Observability** UI and click **Add Data**.
@@ -67,7 +67,7 @@ The script also generates an {{agent}} configuration file that you can use with 
 
     :::{image} ../../../images/observability-quickstart-monitor-hosts-entry-point.png
     :alt: Host monitoring entry point
-    :class: screenshot
+    :screenshot:
     :::
 
 3. Copy the install command.
@@ -91,7 +91,7 @@ The script also generates an {{agent}} configuration file that you can use with 
 
     :::{image} ../../../images/serverless-quickstart-monitor-hosts-entry-point.png
     :alt: Host monitoring entry point
-    :class: screenshot
+    :screenshot:
     :::
 
 4. Copy the install command.
@@ -113,8 +113,8 @@ When the script is done, you’ll see a message like "{{agent}} is configured an
 
 There might be a slight delay before logs and other data are ingested.
 
-::::{admonition} Need to scan your host again?
-:class: note
+::::{note}
+**Need to scan your host again?**
 
 The auto-detection script (`auto_detect.sh`) is downloaded to the directory where you ran the installation command. You can re-run the script on the same host to detect additional logs. The script will scan the host and reconfigure {{agent}} with any additional logs that are found. If the script misses any custom logs, you can add them manually by entering `n` after the script has finished scanning the host.
 
@@ -140,7 +140,7 @@ For example, you can navigate the **Host overview** dashboard to explore detaile
 
 :::{image} ../../../images/observability-quickstart-host-overview.png
 :alt: Host overview dashboard
-:class: screenshot
+:screenshot:
 :::
 
 

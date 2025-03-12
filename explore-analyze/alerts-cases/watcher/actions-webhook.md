@@ -71,7 +71,7 @@ You can use basic authentication when sending a request to a secured webservice.
 By default, both the username and the password are stored in the `.watches` index in plain text. When the {{es}} {{security-features}} are enabled, {{watcher}} can encrypt the password before storing it.
 ::::
 
-You can also use PKI-based authentication when submitting requests to a cluster that has {{es}} {{security-features}} enabled. When you use PKI-based authentication instead of HTTP basic auth, you don’t need to store any authentication information in the watch itself. To use PKI-based authentication, you [configure the SSL key settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/watcher-settings.md#ssl-notification-settings) for {{watcher}} in `elasticsearch.yml`.
+You can also use PKI-based authentication when submitting requests to a cluster that has {{es}} {{security-features}} enabled. When you use PKI-based authentication instead of HTTP basic auth, you don’t need to store any authentication information in the watch itself. To use PKI-based authentication, you [configure the SSL key settings](elasticsearch://reference/elasticsearch/configuration-reference/watcher-settings.md#ssl-notification-settings) for {{watcher}} in `elasticsearch.yml`.
 
 ## Query parameters [webhook-query-parameters]
 

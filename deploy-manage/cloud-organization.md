@@ -1,14 +1,15 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-organizations.html
-applies:
+applies_to:
+  deployment:
+    ess: all
   serverless: all
-  hosted: all
 ---
 
 # Manage your Cloud organization [ec-organizations]
 
-When you sign up to {{ecloud}}, you create an organization. This organization is the umbrella for all of your {{ecloud}} resources, users, and account settings. Every organization has a unique identifier. 
+When you [sign up for {{ecloud}}](/deploy-manage/deploy/elastic-cloud/create-an-organization.md), you create an organization. This organization is the umbrella for all of your {{ecloud}} resources, users, and account settings. Every organization has a unique identifier. 
 
 You can perform the following tasks to manage your Cloud organization:
 

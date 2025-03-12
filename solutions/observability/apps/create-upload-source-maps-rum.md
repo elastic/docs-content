@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-source-map-how-to.html
+applies_to:
+  stack: all
 ---
 
 # Create and upload source maps (RUM) [apm-source-map-how-to]
@@ -13,14 +15,14 @@ Here’s an example of an exception stack trace in the Applications UI when usin
 
 :::{image} ../../../images/observability-source-map-before.png
 :alt: Applications UI without source mapping
-:class: screenshot
+:screenshot:
 :::
 
 With a source map, minified files are mapped back to the original source code, allowing you to maintain the speed advantage of minified code, without losing the ability to quickly and easily debug your application. Here’s the same example as before, but with a source map uploaded and applied:
 
 :::{image} ../../../images/observability-source-map-after.png
 :alt: Applications UI with source mapping
-:class: screenshot
+:screenshot:
 :::
 
 Follow the steps below to enable source mapping your error stack traces in the Applications UI:
@@ -56,7 +58,7 @@ It can also be any other unique string that indicates a specific version of your
 
 ## Generate a source map [apm-source-map-rum-generate]
 
-To be compatible with Elastic APM, source maps must follow the [source map revision 3 proposal spec](https://sourcemaps.info/spec.md).
+To be compatible with Elastic APM, source maps must follow the [source map revision 3 proposal spec](https://sourcemaps.info/spec.html).
 
 Source maps can be generated and configured in many different ways. For example, parcel automatically generates source maps by default. If you’re using webpack, some configuration may be needed to generate a source map:
 
@@ -91,7 +93,7 @@ When uploading a source map, ensure that RUM support is enabled in the APM integ
 ::::
 
 
-{{kib}} exposes a [source map endpoint](rum-source-map-api.md) for uploading source maps. Source maps can be uploaded as a string, or as a file upload.
+{{kib}} exposes a source map endpoint for uploading source maps. Source maps can be uploaded as a string, or as a file upload.
 
 Let’s look at two different ways to upload a source map: curl and a custom application. Each example includes the four fields necessary for APM Server to later map minified code to its source:
 
@@ -120,9 +122,7 @@ curl -X POST "http://localhost:5601/api/apm/sourcemaps" \
 ```
 
 1. This example uses the version from `package.json`
-2. The API key used here needs to have appropriate [privileges](rum-source-map-api.md)
-
-
+2. The API key used here needs to have appropriate privileges. Refer to the [{{stack}}](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-apm-sourcemaps) or [{{serverless-short}}](https://www.elastic.co/docs/api/doc/serverless/group/endpoint-apm-sourcemaps) API documentation.
 
 ### Upload via a custom app [apm-source-map-custom-app]
 

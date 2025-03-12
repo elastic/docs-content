@@ -31,21 +31,21 @@ First you’ll focus on monitoring logs, then you’ll add metrics after you’v
 
 ## Before you begin [aws-elastic-agent-before-you-begin]
 
-Create a deployment using our hosted {{ess}} on [{{ecloud}}](https://cloud.elastic.co/registration?page=docs&placement=docs-body). The deployment includes an {{es}} cluster for storing and searching your data, and {{kib}} for visualizing and managing your data.
+Create an [{{ech}}](https://cloud.elastic.co/registration?page=docs&placement=docs-body) deployment. The deployment includes an {{es}} cluster for storing and searching your data, and {{kib}} for visualizing and managing your data.
 
 In this tutorial, we assume that:
 
-* Your VPC flow logs are already exported to an S3 bucket. To learn how, refer to the AWS documentation about [publishing flow logs to an S3 bucket](https://docs.aws.amazon.com/vpc/latest/userguide/flow-logs-s3.md).
-* You have EC2 instances in your AWS account. By default, Amazon EC2 sends metric data to CloudWatch. If you don’t have an EC2 instance in your account, refer to the [AWS documentation](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EC2_GetStarted.md) to learn how to launch, connect to, and use a Linux instance.
+* Your VPC flow logs are already exported to an S3 bucket. To learn how, refer to the AWS documentation about [publishing flow logs to an S3 bucket](https://docs.aws.amazon.com/vpc/latest/userguide/flow-logs-s3.html).
+* You have EC2 instances in your AWS account. By default, Amazon EC2 sends metric data to CloudWatch. If you don’t have an EC2 instance in your account, refer to the [AWS documentation](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EC2_GetStarted.html) to learn how to launch, connect to, and use a Linux instance.
 
 
 ## Step 1: Create a queue and notifications for VPC flow logs [aws-elastic-agent-set-up-sqs-queue-and-notifications]
 
 In this step, you create an Amazon Simple Queue Service (SQS) queue and configure the S3 bucket containing your VPC flow logs to send a message to the SQS queue whenever new logs are present in the S3 bucket.
 
-You should already have an S3 bucket that contains exported VPC flow logs. If you don’t, create one now. To learn how, refer to [publishing flow logs to an S3 bucket](https://docs.aws.amazon.com/vpc/latest/userguide/flow-logs-s3.md).
+You should already have an S3 bucket that contains exported VPC flow logs. If you don’t, create one now. To learn how, refer to [publishing flow logs to an S3 bucket](https://docs.aws.amazon.com/vpc/latest/userguide/flow-logs-s3.html).
 
-::::{admonition}
+::::{note}
 **Why is an SQS queue needed?**
 
 Creating an SQS queue helps avoid significant lagging caused by polling all log files from each S3 bucket. Instead of polling each bucket, you configure the S3 buckets to send a notification to the SQS queue whenever a new object is created. The {{agent}} monitors the SQS queue for new object creation messages and uses information in the messages to retrieve logs from the S3 buckets. With this setup, periodic polling from each S3 bucket is not needed. Instead, the {{agent}} S3 input guarantees near real-time data collection from S3 buckets with both speed and reliability.
@@ -188,7 +188,7 @@ VPC flow logs are sent to an S3 bucket, which sends a notification to the SQS qu
 
 ## Step 4: Collect S3 access logs [aws-elastic-agent-collect-s3-access-logs]
 
-::::{admonition}
+::::{note}
 S3 access logs contain detailed records for the requests that are made to a bucket. Server access logs are useful for many applications. For example, access log information can be useful in security and access audits. It can also help you learn about your customer base and understand your Amazon S3 bill.
 
 ::::
@@ -245,14 +245,14 @@ The AWS integration also comes with pre-built dashboards that you can use to vis
 
 :::{image} ../../../images/observability-agent-tut-vpcflowlog-dashboard.png
 :alt: Screenshot of the VPC Flow Log Overview dashboard
-:class: screenshot
+:screenshot:
 :::
 
 Next, open the dashboard called **[Logs AWS] S3 Server Access Log Overview**:
 
 :::{image} ../../../images/observability-agent-tut-s3accesslog-dashboard.png
 :alt: Screenshot of the S3 Server Access Log Overview dashboard
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -303,7 +303,7 @@ Now that the metrics are streaming into {{es}}, you can visualize them in {{kib}
 
 :::{image} ../../../images/observability-agent-tut-ec2-metrics-discover.png
 :alt: Screenshot of the Discover app showing EC2 metrics
-:class: screenshot
+:screenshot:
 :::
 
 The AWS integration also comes with pre-built dashboards that you can use to visualize the data. Find **Dashboards** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
@@ -312,14 +312,14 @@ Search for EC2 and select the dashboard called **[Metrics AWS] EC2 Overview**:
 
 :::{image} ../../../images/observability-agent-tut-ec2-overview-dashboard.png
 :alt: Screenshot of the EC2 Overview dashboard
-:class: screenshot
+:screenshot:
 :::
 
 To track your AWS billing, open the **[Metrics AWS] Billing Overview** dashboard:
 
 :::{image} ../../../images/observability-agent-tut-billing-dashboard.png
 :alt: Screenshot of the Billing Overview dashboard
-:class: screenshot
+:screenshot:
 :::
 
 Congratulations! You have completed the tutorial.

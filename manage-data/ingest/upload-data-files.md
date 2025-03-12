@@ -2,6 +2,9 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/serverless/current/elasticsearch-ingest-data-file-upload.html
   - https://www.elastic.co/guide/en/kibana/current/connect-to-elasticsearch.html#upload-data-kibana
+applies_to:
+  stack: ga
+  serverless: ga
 ---
 
 # Upload data files [upload-data-kibana]
@@ -21,7 +24,7 @@ To use the Data Visualizer, click **Upload a file** on the {{es}} **Getting Star
 
 :::{image} /images/serverless-file-uploader-UI.png
 :alt: File upload UI
-:class: screenshot
+:screenshot:
 :::
 
 Drag a file into the upload area or click **Select or drag and drop a file** to choose a file from your computer.

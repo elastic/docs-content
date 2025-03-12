@@ -1,6 +1,7 @@
 ---
-applies:
-  eck: all
+applies_to:
+  deployment:
+    eck: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-openshift-deploy-elasticsearch.html
 ---
@@ -10,7 +11,7 @@ mapped_pages:
 Use the following code to create an Elasticsearch cluster `elasticsearch-sample` and a "passthrough" route to access it:
 
 ::::{note} 
-A namespace other than the default namespaces (default, kube-system, kube-**, openshift-**, etc) is required such that default [Security Context Constraint](https://docs.openshift.com/container-platform/4.12/authentication/managing-security-context-constraints.md) (SCC) permissions are applied automatically. Elastic resources will not work properly in any of the default namespaces.
+A namespace other than the default namespaces (default, kube-system, kube-**, openshift-**, etc) is required such that default [Security Context Constraint](https://docs.openshift.com/container-platform/4.12/authentication/managing-security-context-constraints.html) (SCC) permissions are applied automatically. Elastic resources will not work properly in any of the default namespaces.
 ::::
 
 

@@ -12,7 +12,7 @@ To set up Lambda monitoring, refer to [AWS Lambda functions](/solutions/observab
 
 :::{image} ../../../images/observability-lambda-overview.png
 :alt: lambda overview
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -33,11 +33,6 @@ Cold start is also displayed in the trace waterfall, where you can drill-down in
 ### Latency distribution correlation [apm-lambda-cold-start-latency]
 
 The [latency correlations](../../../solutions/observability/apps/find-transaction-latency-failure-correlations.md) feature can be used to visualize the impact of Lambda cold starts on latency—​just select the `faas.coldstart` field.
-
-:::{image} ../../../images/observability-lambda-correlations.png
-:alt: lambda correlations example
-:class: screenshot
-:::
 
 
 ## AWS Lambda function grouping [apm-lambda-service-config]
