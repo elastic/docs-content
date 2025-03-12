@@ -16,7 +16,7 @@ Plugins extend the core functionality of {{es}}. There are many suitable plugins
 * Analysis plugins, to provide analyzers targeted at languages other than English.
 * Scripting plugins, to provide additional scripting languages.
 
-Plugins can come from different sources: the official ones created or at least maintained by Elastic, community-sourced plugins from other users, and plugins that you provide. Some of the official plugins are always provided with our service, and can be [enabled per deployment](elasticsearch://reference/elasticsearch-plugins/cloud/ec-adding-elastic-plugins.md).
+Plugins can come from different sources: the official ones created or at least maintained by Elastic, community-sourced plugins from other users, and plugins that you provide. Some of the official plugins are always provided with our service, and can be [enabled per deployment](elasticsearch://reference/elasticsearch-plugins/plugin-management.md).
 
 There are two ways to add plugins to a hosted deployment in {{ecloud}}:
 
