@@ -45,6 +45,7 @@ If you use {{fleet}} or {{agent}}, assign your index templates a priority lower 
 * Use a non-overlapping index pattern.
 * Assign templates with an overlapping pattern a `priority` higher than `500`. For example, if you don’t use {{fleet}} or {{agent}} and want to create a template for the `logs-*` index pattern, assign your template a priority of `500`. This ensures your template is applied instead of the built-in template for `logs-*-*`.
 * To avoid naming collisions with built-in and Fleet-managed index templates, avoid using `@` as part of the name of your own index templates.
+* Beginning in {{stack}} version 9.1, {{fleet}} uses indices named `fleet-synced-integrations*` for a feature. Avoid using this name to avoid collisions with built-in indices.
 
 ::::
 
