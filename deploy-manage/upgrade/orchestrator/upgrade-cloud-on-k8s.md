@@ -9,6 +9,7 @@ This page provides instructions on how to upgrade the ECK operator.
 
 For upgrades of Elastic Stack applications like Elasticsearch or Kibana, check [Upgrade the Elastic Stack version](../deployment-or-cluster.md).
 
+TIP: ECK 2.x can upgrade to ECK 3.0.0 directly, without having to go to ECK 2.x latest minor version - 2.16
 
 ## Before you upgrade to ECK 3.0.0 [k8s-ga-upgrade]
 
