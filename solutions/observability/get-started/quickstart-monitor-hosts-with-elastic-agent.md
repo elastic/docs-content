@@ -2,6 +2,9 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/observability/current/quickstart-monitor-hosts-with-elastic-agent.html
   - https://www.elastic.co/guide/en/serverless/current/observability-quickstarts-monitor-hosts-with-elastic-agent.html
+applies_to:
+  stack:
+  serverless:
 ---
 
 # Quickstart: Monitor hosts with {{agent}} [quickstart-monitor-hosts-with-elastic-agent]
