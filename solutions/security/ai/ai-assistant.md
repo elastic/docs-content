@@ -6,19 +6,6 @@ mapped_urls:
 
 # AI Assistant
 
-% What needs to be done: Align serverless/stateful
-
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/security-docs/security/security-assistant.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/security-ai-assistant.md
-
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
-
-$$$configure-ai-assistant$$$
-
-$$$ai-assistant-anonymization$$$
-
 The Elastic AI Assistant utilizes generative AI to bolster your cybersecurity operations team. It allows users to interact with {{elastic-sec}} for tasks such as alert investigation, incident response, and query generation or conversion using natural language and much more.
 
 :::{image} ../../../images/security-assistant-basic-view.png
@@ -32,11 +19,12 @@ The Elastic AI Assistant is designed to enhance your analysis with smart dialogu
 
 
 ::::{admonition} Requirements
-* The Elastic AI Assistant and Generative AI connector are available in {{stack}} versions 8.8.1 and later. The Generative AI connector is renamed to OpenAI connector in 8.11.0.
-* This feature requires an [Enterprise subscription](https://www.elastic.co/pricing).
-* To use AI Assistant, you need at least the **Elastic AI Assistant : All** and **Actions and Connectors : Read** [privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md).
-* To set up AI Assistant, you need the **Actions and Connectors : All** [privilege](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md).
-* You need a [generative AI connector](/solutions/security/ai/set-up-connectors-for-large-language-models-llm.md), which AI Assistant uses to generate responses.
+* {{stack}} users: {{stack}} version 8.8.1 or later. Also note the Generative AI connector was renamed to OpenAI connector in 8.11.0.
+* {{stack}} users: an [Enterprise subscription](https://www.elastic.co/pricing).
+* {{serverless-short}} users: a [Security Analytics Complete subscription](/deploy-manage/deploy/elastic-cloud/project-settings.md).
+* To use AI Assistant, the **Elastic AI Assistant : All** and **Actions and Connectors : Read** [privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md).
+* To set up AI Assistant, the **Actions and Connectors : All** [privilege](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md).
+* A [generative AI connector](/solutions/security/ai/set-up-connectors-for-large-language-models-llm.md), which AI Assistant uses to generate responses.
 
 ::::
 
