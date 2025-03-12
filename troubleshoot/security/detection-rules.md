@@ -87,7 +87,7 @@ Turning off `autocomplete:useTimeRange` could cause performance issues if the da
 :::::{dropdown} Warning about type conflicts and unmapped fields
 :name: rule-exceptions-field-conflicts
 
-A warning icon (![Field conflict warning icon](../../images/security-field-warning-icon.png "")) and message appear for fields with [type conflicts](#fields-with-conflicting-types) across multiple indices or  fields that are [unmapped](#unmapped-field-conflict). You can learn more about the conflict by clicking the warning message.
+A warning icon (![Field conflict warning icon](../../images/security-field-warning-icon.png "title =20x20")) and message appear for fields with [type conflicts](#fields-with-conflicting-types) across multiple indices or  fields that are [unmapped](#unmapped-field-conflict). You can learn more about the conflict by clicking the warning message.
 
 ::::{note}
 A field can have type conflicts *and* be unmapped in specified indices.

@@ -97,10 +97,10 @@ Use these features to adjust and act on your conversations with AI Assistant:
 * Quick Prompt availability varies based on context—for example, the **Alert summarization** Quick Prompt appears when you open AI Assistant while viewing an alert. To customize existing Quick Prompts and create new ones, click **Add Quick Prompt**.
 * In an active conversation, you can use the inline actions that appear on messages to incorporate AI Assistant’s responses into your workflows:
 
-    * **Add note to timeline** (![Add note icon](../../../images/security-icon-add-note.png "")): Add the selected text to your currently active Timeline as a note.
-    * **Add to existing case** (![Add to case icon](../../../images/security-icon-add-to-case.png "")): Add a comment to an existing case using the selected text.
-    * **Copy to clipboard** (![Copy to clipboard icon](../../../images/security-icon-copy.png "")): Copy the text to clipboard to paste elsewhere. Also helpful for resubmitting a previous prompt.
-    * **Add to timeline** (![Add to timeline icon](../../../images/security-icon-add-to-timeline.png "")): Add a filter or query to Timeline using the text. This button appears for particular queries in AI Assistant’s responses.
+    * **Add note to timeline** (![Add note icon](../../../images/security-icon-add-note.png "title =20x20")): Add the selected text to your currently active Timeline as a note.
+    * **Add to existing case** (![Add to case icon](../../../images/security-icon-add-to-case.png "title =20x20")): Add a comment to an existing case using the selected text.
+    * **Copy to clipboard** (![Copy to clipboard icon](../../../images/security-icon-copy.png "title =20x20")): Copy the text to clipboard to paste elsewhere. Also helpful for resubmitting a previous prompt.
+    * **Add to timeline** (![Add to timeline icon](../../../images/security-icon-add-to-timeline.png "title =20x20")): Add a filter or query to Timeline using the text. This button appears for particular queries in AI Assistant’s responses.
 
 
 Be sure to specify which language you’d like AI Assistant to use when writing a query. For example: "Can you generate an Event Query Language query to find four failed logins followed by a successful login?"
@@ -136,7 +136,7 @@ To modify Anonymization settings, you need the **Elastic AI Assistant: All** pri
 The **Anonymization** tab of the Security AI settings menu allows you to define default data anonymization behavior for events you send to AI Assistant. Fields with **Allowed*** toggled on are included in events provided to AI Assistant. ***Allowed*** fields with ***Anonymized** set to **Yes** are included, but with their values obfuscated.
 
 ::::{note}
-You can access anonymization settings directly from the **Attack Discovery** page by clicking the settings (![Settings icon](../../../images/security-icon-settings.png "title=70%")) button next to the model selection dropdown menu.
+You can access anonymization settings directly from the **Attack Discovery** page by clicking the settings (![Settings icon](../../../images/security-icon-settings.png "title =20x20")) button next to the model selection dropdown menu.
 ::::
 
 

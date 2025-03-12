@@ -19,22 +19,22 @@ Filter for alerts, events, processes, and other important security data by enter
 :screenshot:
 :::
 
-* To refine your search results, select **Add Filter** (![Add filter icon](../../../images/security-add-filter-icon.png "")), then enter the field, operator (such as `is not` or `is between`), and value for your filter.
-* To save the current KQL query and any applied filters, select **Saved query menu** (![Saved query menu icon](../../../images/security-saved-query-menu-icon.png "")), enter a name for the saved query, and select **Save saved query**.
+* To refine your search results, select **Add Filter** (![Add filter icon](../../../images/security-add-filter-icon.png "title =20x20")), then enter the field, operator (such as `is not` or `is between`), and value for your filter.
+* To save the current KQL query and any applied filters, select **Saved query menu** (![Saved query menu icon](../../../images/security-saved-query-menu-icon.png "title =20x20")), enter a name for the saved query, and select **Save saved query**.
 
 
 ## Navigation menu [navigation-menu-overview]
 
-The navigation menu contains direct links and expandable groups, identified by the group icon (![Group icon](../../../images/security-group-icon.png "")).
+The navigation menu contains direct links and expandable groups, identified by the group icon (![Group icon](../../../images/security-group-icon.png "title =20x20")).
 
 * Click a top-level link to go directly to its landing page, which contains links and information for related pages.
-* Click a group’s icon (![Group icon](../../../images/security-group-icon.png "")) to open its flyout menu, which displays links to related pages within that group. Click a link in the flyout to navigate to its landing page.
-* Click the **Collapse side navigation** icon (![Side menu collapse icon](../../../images/security-side-button.png "")) to collapse and expand the main navigation menu.
+* Click a group’s icon (![Group icon](../../../images/security-group-icon.png "title =20x20")) to open its flyout menu, which displays links to related pages within that group. Click a link in the flyout to navigate to its landing page.
+* Click the **Collapse side navigation** icon (![Side menu collapse icon](../../../images/security-side-button.png "title =20x20")) to collapse and expand the main navigation menu.
 
 
 ## Visualization actions [visualization-actions]
 
-Many {{elastic-sec}} histograms, graphs, and tables display an **Inspect** button (![Inspect icon](../../../images/security-inspect-icon.png "")) when you hover over them. Click to examine the {{es}} queries used to retrieve data throughout the app.
+Many {{elastic-sec}} histograms, graphs, and tables display an **Inspect** button (![Inspect icon](../../../images/security-inspect-icon.png "title =20x20")) when you hover over them. Click to examine the {{es}} queries used to retrieve data throughout the app.
 
 :::{image} ../../../images/security-inspect-icon-context.png
 :alt: Inspect icon
@@ -42,7 +42,7 @@ Many {{elastic-sec}} histograms, graphs, and tables display an **Inspect** butto
 :screenshot:
 :::
 
-Other visualizations display an options menu (![Three-dot menu icon](../../../images/security-three-dot-icon.png "")), which allows you to inspect the visualization’s queries, add it to a new or existing case, or open it in Lens for customization.
+Other visualizations display an options menu (![Three-dot menu icon](../../../images/security-three-dot-icon.png "title =20x20")), which allows you to inspect the visualization’s queries, add it to a new or existing case, or open it in Lens for customization.
 
 :::{image} ../../../images/security-viz-options-menu-open.png
 :alt: Options menu opened
@@ -61,7 +61,7 @@ Throughout the {{security-app}}, you can hover over many data fields and values 
 :screenshot:
 :::
 
-In some visualizations, these actions are available in the legend by clicking a value’s options icon (![Vertical three-dot icon](../../../images/security-three-dot-icon-vertical.png "")).
+In some visualizations, these actions are available in the legend by clicking a value’s options icon (![Vertical three-dot icon](../../../images/security-three-dot-icon-vertical.png "title =20x20")).
 
 :::{image} ../../../images/security-inline-actions-legend.png
 :alt: Actions in a visualization legend

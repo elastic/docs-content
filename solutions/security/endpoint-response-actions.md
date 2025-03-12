@@ -292,7 +292,7 @@ You can also get a list of commands in the [Help panel](/solutions/security/endp
 
 ## Help panel [help-panel]
 
-Click ![Help icon](../../images/security-help-icon.png "") **Help** in the upper-right to open the **Help** panel, which lists available response action commands and parameters as a reference.
+Click ![Help icon](../../images/security-help-icon.png "title =20x20") **Help** in the upper-right to open the **Help** panel, which lists available response action commands and parameters as a reference.
 
 ::::{note}
 This panel displays only the response actions that you have the user role or privileges to perform.
@@ -305,7 +305,7 @@ This panel displays only the response actions that you have the user role or pri
 :screenshot:
 :::
 
-You can use this panel to build commands with less typing. Click the add icon (![Add icon](../../images/security-add-command-icon.png "")) to add a command to the input area, enter any additional parameters or a comment, then press **Return** to run the command.
+You can use this panel to build commands with less typing. Click the add icon (![Add icon](../../images/security-add-command-icon.png "title =20x20")) to add a command to the input area, enter any additional parameters or a comment, then press **Return** to run the command.
 
 If the endpoint is running an older version of {{agent}}, some response actions may not be supported, as indicated by an informational icon and tooltip. [Upgrade {{agent}}](/reference/ingestion-tools/fleet/upgrade-elastic-agent.md) on the endpoint to be able to use the latest response actions.
 
