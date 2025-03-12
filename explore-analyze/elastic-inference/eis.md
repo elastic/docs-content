@@ -32,7 +32,7 @@ Your {{es}} deployment includes a preconfigured EIS endpoint, making it easier t
 
 ## Regions [eis-regions]
 
-EIS is currently running on AWS and in the following regions:
+EIS runs on AWS in the following regions:
 
 * `us-east-1`
 * `us-west-2`
@@ -45,7 +45,7 @@ The LLM used with EIS is hosted by [Amazon Bedrock](https://aws.amazon.com/bedro
 
 ## Examples
 
-The following example demostrates how to perform a `chat_completion` task through EIS by using the `.rainbow-sprinkles-elastic` default {{infer}} endpoint.
+The following example demonstrates how to perform a `chat_completion` task through EIS by using the `.rainbow-sprinkles-elastic` default {{infer}} endpoint.
 
 ```json
 POST /_inference/chat_completion/.rainbow-sprinkles-elastic/_stream
