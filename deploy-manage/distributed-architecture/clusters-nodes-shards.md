@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/nodes-shards.html
+applies_to:
+  stack:
+  serverless:
 ---
 
 # Clusters, nodes, and shards [nodes-shards]
@@ -14,7 +17,6 @@ Nodes and shards are what make {{es}} distributed and scalable. These concepts a
 
 ::::
 
-
 You can add servers (*nodes*) to a cluster to increase capacity, and {{es}} automatically distributes your data and query load across all of the available nodes.
 
 Elastic is able to distribute your data across nodes by subdividing an index into *shards*. Each index in {{es}} is a grouping of one or more physical shards, where each shard is a self-contained Lucene index containing a subset of the documents in the index. By distributing the documents in an index across multiple shards, and distributing those shards across multiple nodes, {{es}} increases indexing and query capacity.
@@ -23,7 +25,6 @@ There are two types of shards: *primaries* and *replicas*. Each document in an i
 
 ::::{tip}
 The number of primary shards in an index is fixed at the time that an index is created, but the number of replica shards can be changed at any time, without interrupting indexing or query operations.
-
 ::::
 
 Shard copies in your cluster are automatically balanced across nodes to provide scale and high availability. All nodes are aware of all the other nodes in the cluster and can forward client requests to the appropriate node. This allows {{es}} to distribute indexing and query load across the cluster.

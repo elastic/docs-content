@@ -23,7 +23,7 @@ applies_to:
 The topics in this section provides information about the architecture of {{es}} and how it stores and retrieves data:
 
 ::::{note}
-{{serverless-full}} scales with your workload and automates nodes, shards, and replicas for you. Some of the content in this section does not apply to you if you are using {{serverless-full}}.
+{{serverless-full}} scales with your workload and automates nodes, shards, and replicas for you. Some of the content in this section does not apply to you if you are using {{serverless-full}}. Instead, the information in this section will provide you information about how the platform works for you. 
 ::::
 
 * [Cluster, nodes, and shards](distributed-architecture/clusters-nodes-shards.md): Learn about the basic building blocks of an {{es}} cluster, including nodes, shards, primaries, and replicas.
@@ -33,4 +33,5 @@ The topics in this section provides information about the architecture of {{es}}
   * [Shard allocation awareness](distributed-architecture/shard-allocation-relocation-recovery/shard-allocation-awareness.md): Learn how to use custom node attributes to distribute shards across different racks or availability zones.
 * [Disocvery and cluster formation](distributed-architecture/discovery-cluster-formation.md): Learn about the cluster formation process including voting, adding nodes and publishing the cluster state.
 * [Shard request cache](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/shard-request-cache-settings.md): Learn how {{es}} caches search requests to improve performance.
+* [Kibana task management](distributed-architecture/kibana-tasks-management.md): Learn how {{kib}} runs background tasks and distribute work across multiple {{kib}} instances to be persistent and scale with your deployment.
 
