@@ -20,10 +20,10 @@ The following table shows the recommended upgrade paths from older Elastic Cloud
 
 | Upgrade from | Recommended upgrade path to 4.0 |
 | --- | --- |
-| Any previous 3.x version (for example, 3.7.3) | Upgrade directly to 4.0.0 |
-| 2.13 | Upgrade directly to 4.0.0 |
-| 2.5-2.12 | 1. Upgrade to 2.13.4<br>2. Upgrade to 4.0.0<br> |
-| 2.0-2.4 | 1. Upgrade to 2.5.1<br>2. Upgrade to 2.13.4<br>3. Upgrade to 4.0.0<br> |
+| Any 3.x version | 1. Upgrade to 3.8.0<br>2. Upgrade to 4.0.0<br> |
+| 2.13 | 1. Upgrade to 3.8.0<br>2. Upgrade to 4.0.0<br> |
+| 2.5-2.12 | 1. Upgrade to 2.13.4<br>2. Upgrade to 3.8.0<br>3. Upgrade to 4.0.0<br> |
+| 2.0-2.4 | 1. Upgrade to 2.5.1<br>2. Upgrade to 2.13.4<br>3. Upgrade to 3.8.0<br>4. Upgrade to 4.0.0<br> |
 
 ## The upgrade process [ece-upgrade-overview]
 
