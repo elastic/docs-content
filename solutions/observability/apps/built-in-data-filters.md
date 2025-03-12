@@ -71,7 +71,7 @@ This setting only prevents APM Server from capturing already ingested personal d
 
 ## Real user monitoring data [apm-filters-real-user-data]
 
-Protecting user data is important. For that reason, individual RUM instrumentations can be disabled in the RUM agent with the [`disableInstrumentations`](asciidocalypse://docs/apm-agent-rum-js/docs/reference/configuration.md#disable-instrumentations) configuration variable. Disabled instrumentations produce no spans or transactions.
+Protecting user data is important. For that reason, individual RUM instrumentations can be disabled in the RUM agent with the [`disableInstrumentations`](apm-agent-rum-js://reference/configuration.md#disable-instrumentations) configuration variable. Disabled instrumentations produce no spans or transactions.
 
 | Disable | Configuration value |
 | --- | --- |

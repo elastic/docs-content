@@ -749,8 +749,8 @@ const apm = initApm({
 
 **Learn more in the agent reference**
 
-* [Supported technologies](asciidocalypse://docs/apm-agent-rum-js/docs/reference/supported-technologies.md)
-* [Advanced configuration](asciidocalypse://docs/apm-agent-rum-js/docs/reference/configuration.md)
+* [Supported technologies](apm-agent-rum-js://reference/supported-technologies.md)
+* [Advanced configuration](apm-agent-rum-js://reference/configuration.md)
 ::::::
 
 ::::::{tab-item} OpenTelemetry
