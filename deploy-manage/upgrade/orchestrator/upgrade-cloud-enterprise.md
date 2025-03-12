@@ -24,6 +24,7 @@ The following table shows the recommended upgrade paths from older Elastic Cloud
 | 2.13 | 1. Upgrade to 3.8.0<br>2. Upgrade to 4.0.0<br> |
 | 2.5-2.12 | 1. Upgrade to 2.13.4<br>2. Upgrade to 3.8.0<br>3. Upgrade to 4.0.0<br> |
 | 2.0-2.4 | 1. Upgrade to 2.5.1<br>2. Upgrade to 2.13.4<br>3. Upgrade to 3.8.0<br>4. Upgrade to 4.0.0<br> |
+
 In case you have to upgrade to any of the intermediate versions, follow the upgrade instructions of the relevant release before upgrading to 4.0.0:
 - [ECE 2.5 Upgrade](https://www.elastic.co/guide/en/cloud-enterprise/2.5/ece-upgrade.html)
 - [ECE 2.13 Upgrade](https://www.elastic.co/guide/en/cloud-enterprise/2.13/ece-upgrade.html)
