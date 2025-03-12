@@ -62,7 +62,9 @@ Control which systems can access your Elastic deployments and clusters through t
 - **IP traffic filtering**: Restrict access based on IP addresses or CIDR ranges.
 - **Private link filters**: Secure connectivity through AWS PrivateLink, Azure Private Link, or GCP Private Service Connect.
 - **Static IPs**: Use static IP addresses for predictable firewall rules.
+- **Remote cluster access**: Secure cross-cluster operations.
 
+Refer to [](traffic-filtering.md).
 
 ## Cluster communication
 
