@@ -6,13 +6,6 @@ mapped_urls:
 
 # Generate, customize, and learn about ES|QL queries
 
-% What needs to be done: Lift-and-shift
-
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/security-docs/security/esql-queries-assistant.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/security-ai-assistant-esql-queries.md
-
 Elastic AI Assistant can help you learn about and leverage the Elasticsearch Query Language ({{esql}}) in many ways, including:
 
 * **Education and training**: AI Assistant can serve as a powerful {{esql}} learning tool. Ask it for examples, explanations of complex queries, and best practices.

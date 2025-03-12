@@ -52,5 +52,5 @@ To start orchestrating your {{es}} clusters, refer to [](./working-with-deployme
 The following tasks are only needed on certain circumstances:
 
 * [Migrate ECE to Podman hosts](./migrate-ece-to-podman-hosts.md)
-* [Migrate ECE on Podman hosts to SELinux enforce](./migrate-ece-on-podman-hosts-to-selinux-enforce.md)
+* [Migrate ECE on Podman hosts to SELinux enforce](./../../security/secure-your-elastic-cloud-enterprise-installation/migrate-ece-on-podman-hosts-to-selinux-enforce.md)
 * [Change allocator disconnect timeout](./change-allocator-disconnect-timeout.md)

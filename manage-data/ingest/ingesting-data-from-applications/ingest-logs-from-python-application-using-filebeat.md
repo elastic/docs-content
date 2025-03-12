@@ -2,36 +2,11 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/cloud/current/ec-getting-started-search-use-cases-python-logs.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-getting-started-search-use-cases-python-logs.html
+applies_to:
+  stack: ga
 ---
 
 # Ingest logs from a Python application using Filebeat
-
-% What needs to be done: Refine
-
-% Scope notes: Merge ESS and ECE versions (should be pretty much identical)
-
-% Use migrated content from existing pages that map to this page:
-
-% - [ ] ./raw-migrated-files/cloud/cloud/ec-getting-started-search-use-cases-python-logs.md
-% - [ ] ./raw-migrated-files/cloud/cloud-enterprise/ece-getting-started-search-use-cases-python-logs.md
-
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
-
-$$$ec-python-logs-create-script$$$
-
-$$$ec-python-logs-filebeat$$$
-
-$$$ec-python-logs-send-ess$$$
-
-$$$ec-python-logs-view-kibana$$$
-
-$$$ece-python-logs-create-script$$$
-
-$$$ece-python-logs-filebeat$$$
-
-$$$ece-python-logs-send-ess$$$
-
-$$$ece-python-logs-view-kibana$$$
 
 This guide demonstrates how to ingest logs from a Python application and deliver them securely into an {{ech}} deployment. You’ll set up Filebeat to monitor a JSON-structured log file that has standard Elastic Common Schema (ECS) formatted fields, and you’ll then view real-time visualizations of the log events in {{kib}} as they occur. While Python is used for this example, this approach to monitoring log output is applicable across many client types. Check the list of [available ECS logging plugins](ecs-logging://reference/intro.md).
 

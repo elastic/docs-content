@@ -6,13 +6,6 @@ mapped_urls:
 
 # Connect to your own local LLM
 
-% What needs to be done: Lift-and-shift
-
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/security-docs/security/connect-to-byo-llm.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/connect-to-byo-llm.md
-
 This page provides instructions for setting up a connector to a large language model (LLM) of your choice using LM Studio. This allows you to use your chosen model within {{elastic-sec}}. You’ll first need to set up a reverse proxy to communicate with {{elastic-sec}}, then set up LM Studio on a server, and finally configure the connector in your Elastic deployment. [Learn more about the benefits of using a local LLM](https://www.elastic.co/blog/ai-assistant-locally-hosted-models).
 
 This example uses a single server hosted in GCP to run the following components:
@@ -46,7 +39,7 @@ You need to set up a reverse proxy to enable communication between LM Studio and
 
 The following is an example Nginx configuration file:
 
-```txt
+```nginx
 server {
     listen                          80;
     listen                          [::]:80;
@@ -176,21 +169,9 @@ If your model uses NVIDIA drivers, you can check the GPU performance with the `s
 
 ### Option 2: load a model using the GUI [_option_2_load_a_model_using_the_gui]
 
-Refer to the following video to see how to load a model using LM Studio’s GUI. You can change the **port** setting, which is referenced in the Nginx configuration file. Note that the **GPU offload** was set to **Max**.
+Refer to the following video to see how to load a model using LM Studio’s GUI. You can change the **port** setting, which is referenced in the Nginx configuration file. Note that the **GPU offload** was set to **Max**. The following video demonstrates this process (click to watch).
 
-::::{admonition}
-<script type="text/javascript" async src="https://play.vidyard.com/embed/v4.js"></script>
-<img
-  style="width: 100%; margin: auto; display: block;"
-  class="vidyard-player-embed"
-  src="https://play.vidyard.com/c4AxH8d9tWMnwNp5J6bcfX.jpg"
-  data-uuid="c4AxH8d9tWMnwNp5J6bcfX"
-  data-v="4"
-  data-type="inline"
-/>
-</br>
-::::
-
+[![byollm-load-model-gui-video](https://play.vidyard.com/c4AxH8d9tWMnwNp5J6bcfX.jpg)](https://videos.elastic.co/watch/c4AxH8d9tWMnwNp5J6bcfX?)
 
 
 ## (Optional) Collect logs using Elastic’s Custom Logs integration [_optional_collect_logs_using_elastics_custom_logs_integration]

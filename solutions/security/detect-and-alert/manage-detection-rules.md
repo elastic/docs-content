@@ -4,32 +4,7 @@ mapped_urls:
   - https://www.elastic.co/guide/en/serverless/current/security-rules-ui-management.html
 ---
 
-# Manage detection rules
-
-% What needs to be done: Align serverless/stateful
-
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/security-docs/security/rules-ui-management.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/security-rules-ui-management.md
-
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
-
-$$$sort-filter-rules$$$
-
-$$$manually-run-rules$$$
-
-$$$import-export-rules-ui$$$
-
-$$$edit-rules-settings$$$
-
-$$$manage-rules-ui$$$
-
-$$$rule-prerequisites$$$
-
-$$$rule-status$$$
-
-$$$snooze-rule-actions$$$
+# Manage detection rules [security-rules-ui-management]
 
 The Rules page allows you to view and manage all prebuilt and custom detection rules.
 
@@ -79,7 +54,7 @@ The **Last response** column displays the current status of each rule, based on 
 * **Failed**: The rule encountered an error that prevented it from running. For example, a {{ml}} rule whose corresponding {{ml}} job wasn’t running.
 * **Warning**: Nothing prevented the rule from running, but it might have returned unexpected results. For example, a custom query rule tried to search an index pattern that couldn’t be found in {{es}}.
 
-For {{ml}} rules, an indicator icon (![Error icon from rules table](../../../images/security-rules-table-error-icon.png "")) also appears in this column if a required {{ml}} job isn’t running. Click the icon to list the affected jobs, then click **Visit rule details page to investigate** to open the rule’s details page, where you can start the {{ml}} job.
+For {{ml}} rules, an indicator icon (![Error icon from rules table](../../../images/security-rules-table-error-icon.png "title =20x20")) also appears in this column if a required {{ml}} job isn’t running. Click the icon to list the affected jobs, then click **Visit rule details page to investigate** to open the rule’s details page, where you can start the {{ml}} job.
 
 
 ## Modify existing rules settings [edit-rules-settings]
@@ -97,8 +72,8 @@ Similarly, rules will be skipped if they can’t be modified by a bulk edit. For
 1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Do one of the following:
 
-    * Edit a single rule: Select the **All actions** menu (**…​**) on a rule, then select **Edit rule settings**. The **Edit rule settings** view opens, where you can modify the [rule’s settings](/solutions/security/detect-and-alert/create-detection-rule.md).
-    * Bulk edit multiple rules: Select the rules you want to edit, then select an action from the **Bulk actions** menu:
+    * **Edit a single rule**: Select the **All actions** menu (**…​**) on a rule, then select **Edit rule settings**. The **Edit rule settings** view opens, where you can modify the [rule’s settings](/solutions/security/detect-and-alert/create-detection-rule.md).
+    * **Bulk edit multiple rules**: Select the rules you want to edit, then select an action from the **Bulk actions** menu:
 
         * **Index patterns**: Add or delete the index patterns used by all selected rules.
         * **Tags**: Add or delete tags on all selected rules.
@@ -106,7 +81,7 @@ Similarly, rules will be skipped if they can’t be modified by a bulk edit. For
         * **Add rule actions**: Add [rule actions](/solutions/security/detect-and-alert/create-detection-rule.md#rule-notifications) on all selected rules. If you add multiple actions, you can specify an action frequency for each of them. To overwrite the frequency of existing actions select the option to **Overwrite all selected rules actions**.
 
         ::::{important}
-        After upgrading to 8.8 or later, frequency settings for rule actions created in 8.7 or earlier are moved from the rule level to the action level. The action schedules remain the same and will continue to run on their previously specified frequency (`On each rule execution`, `Hourly`, `Daily`, or `Weekly`).
+        After upgrading to {{stack}} 8.8 or later, frequency settings for rule actions created in 8.7 or earlier are moved from the rule level to the action level. The action schedules remain the same and will continue to run on their previously specified frequency (`On each rule execution`, `Hourly`, `Daily`, or `Weekly`).
         ::::
 
 
@@ -118,7 +93,7 @@ Similarly, rules will be skipped if they can’t be modified by a bulk edit. For
     * **Update rule schedules**: Update the [schedules](/solutions/security/detect-and-alert/create-detection-rule.md#rule-schedule) and look-back times on all selected rules.
     * **Apply Timeline template**: Apply a specified [Timeline template](/solutions/security/investigate/timeline-templates.md) to the selected rules. You can also choose **None** to remove Timeline templates from the selected rules.
 
-3. On the flyout that opens, update the rule settings and actions.
+3. On the page or flyout that opens, update the rule settings and actions.
 
     ::::{tip}
     To [snooze](/solutions/security/detect-and-alert/manage-detection-rules.md#snooze-rule-actions) rule actions, go to the **Actions** tab and click the bell icon.
@@ -147,7 +122,7 @@ When duplicating a rule with exceptions, you can choose to duplicate the rule an
 
 
 
-## Run rules manually [manually-run-rules]
+## Run rules manually [manually-run-rules] 
 
 ::::{warning}
 This functionality is in beta and is subject to change. The design and code is less mature than official GA features and is being provided as-is with no warranties. Beta features are not subject to the support SLA of official GA features.
@@ -223,7 +198,7 @@ The `.ndjson` file also includes any actions, connectors, and exception lists re
 * **Actions and connectors**: Rule actions and connectors are included in the exported file, but sensitive information about the connector (such as authentication credentials) *is not* included. You must re-add missing connector details after importing detection rules.
 
     ::::{tip}
-    You can also use {{kib}}'s [Saved Objects](/explore-analyze/find-and-organize/saved-objects.md#saved-objects-export) UI to export and import necessary connectors before importing detection rules.
+    You can also use the [Saved Objects](/explore-analyze/find-and-organize/saved-objects.md#saved-objects-export) UI to export and import necessary connectors before importing detection rules.
     ::::
 
 * **Value lists**: Any value lists used for rule exceptions are *not* included in rule exports or imports. Use the [Manage value lists](/solutions/security/detect-and-alert/create-manage-value-lists.md#edit-value-lists) UI to export and import value lists separately.
@@ -239,7 +214,7 @@ To export and import detection rules:
 3. To import rules:
 
     ::::{note}
-    To import rules with actions, you need at least `Read` privileges for the `Action and Connectors` feature. To overwrite or add new connectors, you need `All` privileges for the `Actions and Connectors` feature. To import rules without actions,  you don’t need `Actions and Connectors` privileges. Refer to [Enable and access detections](/solutions/security/detect-and-alert/detections-requirements.md#enable-detections-ui) for more information.
+   To import rules with or without actions, and to manage rule connectors, you must have the appropriate user role. Refer to [Enable and access detections](detections-requirements.md#enable-detections-ui) for more information.
     ::::
 
 
@@ -277,5 +252,5 @@ You can also check rules' related integrations in the **Installed Rules** and **
 :::
 
 ::::{tip}
-You can hide the **integrations** badge in the rules tables. To do this, turn off `securitySolution:showRelatedIntegrations` [advanced setting](/solutions/security/get-started/configure-advanced-settings.md#show-related-integrations).
+You can hide the **integrations** badge in the rules tables by turning off the `securitySolution:showRelatedIntegrations` [advanced setting](/solutions/security/get-started/configure-advanced-settings.md#show-related-integrations). 
 ::::

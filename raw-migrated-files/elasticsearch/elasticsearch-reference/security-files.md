@@ -6,7 +6,7 @@ The {{es}} {{security-features}} use the following files:
 * `ES_PATH_CONF/elasticsearch-users` defines the users and their hashed passwords for the `file` realm. See [File-based user authentication](../../../deploy-manage/users-roles/cluster-or-deployment-auth/file-based.md).
 * `ES_PATH_CONF/elasticsearch-users_roles` defines the user roles assignment for the `file` realm. See [File-based user authentication](../../../deploy-manage/users-roles/cluster-or-deployment-auth/file-based.md).
 * `ES_PATH_CONF/role_mapping.yml` defines the role assignments for a Distinguished Name (DN) to a role. This allows for LDAP and Active Directory groups and users and PKI users to be mapped to roles. See [Mapping users and groups to roles](../../../deploy-manage/users-roles/cluster-or-deployment-auth/mapping-users-groups-to-roles.md).
-* `ES_PATH_CONF/log4j2.properties` contains audit information. See [Logfile audit output](../../../deploy-manage/monitor/logging-configuration/logfile-audit-output.md).
+* `ES_PATH_CONF/log4j2.properties` contains audit information. See [Logfile audit output](../../../deploy-manage/security/logging-configuration/logfile-audit-output.md).
 
 ::::{important} 
 :name: security-files-location

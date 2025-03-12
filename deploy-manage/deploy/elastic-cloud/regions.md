@@ -12,7 +12,7 @@ A region is the geographic area where the data center of the cloud provider that
 Elastic Cloud Serverless handles all hosting details for you. You are unable to change the region after you create a project.
 
 ::::{note} 
-Currently, a limited number of Amazon Web Services (AWS) and Microsoft Azure regions are available. More regions for AWS and Azure, as well as Google Cloud Platform (GCP), will be added in the future.
+Currently, a limited number of Amazon Web Services (AWS), Microsoft Azure, and Google Cloud Platform (GCP) regions are available. More regions for AWS, Azure, and GCP, will be added in the future.
 
 ::::
 
@@ -40,3 +40,15 @@ The following Azure regions are currently available:
 | Region | Name |
 | :--- | :--- |
 | eastus | East US |
+
+## Google Cloud Platform (GCP) regions [regions-gcp-regions]
+
+```yaml {applies_to}
+serverless: preview
+```
+
+The following GCP regions are currently available:
+
+| Region | Name |
+| :--- | :--- |
+| us-central1 | Iowa |

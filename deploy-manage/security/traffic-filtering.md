@@ -5,22 +5,15 @@ mapped_urls:
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-traffic-filtering-deployment-configuration.html
 ---
 
-# Traffic filtering
+# Secure network access
 
-% What needs to be done: Refine
+:::{warning}
+**This page is a work in progress.** 
+:::
 
-% GitHub issue: https://github.com/elastic/docs-projects/issues/346
 
-% Use migrated content from existing pages that map to this page:
+Never expose {{es}} to unwanted internet traffic. Using an application to sanitize requests to {{es}} still poses risks, such as a malicious user writing [`_search`](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-search) requests that could overwhelm an {{es}} cluster and bring it down. Depending on your environment, consider the following:
 
-% - [ ] ./raw-migrated-files/cloud/cloud-enterprise/ece-traffic-filtering-deployment-configuration.md
-% - [ ] ./raw-migrated-files/cloud/cloud/ec-traffic-filtering-deployment-configuration.md
-% - [ ] ./raw-migrated-files/cloud/cloud-heroku/ech-traffic-filtering-deployment-configuration.md
-
-⚠️ **This page is a work in progress.** ⚠️
-
-The documentation team is working to combine content pulled from the following pages:
-
-* [/raw-migrated-files/cloud/cloud-enterprise/ece-traffic-filtering-deployment-configuration.md](/raw-migrated-files/cloud/cloud-enterprise/ece-traffic-filtering-deployment-configuration.md)
-* [/raw-migrated-files/cloud/cloud/ec-traffic-filtering-deployment-configuration.md](/raw-migrated-files/cloud/cloud/ec-traffic-filtering-deployment-configuration.md)
-* [/raw-migrated-files/cloud/cloud-heroku/ech-traffic-filtering-deployment-configuration.md](/raw-migrated-files/cloud/cloud-heroku/ech-traffic-filtering-deployment-configuration.md)
+- **IP traffic filtering**: Restrict access based on IP addresses or CIDR ranges.
+- **Private link filters**: Secure connectivity through AWS PrivateLink, Azure Private Link, or GCP Private Service Connect.
+- **Elastic Cloud static IPs**: Use static IP addresses for predictable firewall rules.

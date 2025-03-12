@@ -429,4 +429,4 @@ end
 
 Some additional setup may be required to correlate requests correctly with the Real User Monitoring (RUM) agent.
 
-See the [RUM distributed tracing guide](asciidocalypse://docs/apm-agent-rum-js/docs/reference/distributed-tracing.md) for information on enabling cross-origin requests, setting up server configuration, and working with dynamically-generated HTML.
+See the [RUM distributed tracing guide](apm-agent-rum-js://reference/distributed-tracing.md) for information on enabling cross-origin requests, setting up server configuration, and working with dynamically-generated HTML.

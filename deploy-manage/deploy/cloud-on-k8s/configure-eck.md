@@ -12,7 +12,7 @@ mapped_pages:
 This page explains the various methods for configuring and applying ECK settings.
 
 ::::{tip}
-For a detailed list and description of all available settings in ECK, refer to [ECK configuration flags](asciidocalypse://docs/cloud-on-k8s/docs/reference/eck-configuration-flags.md).
+For a detailed list and description of all available settings in ECK, refer to [ECK configuration flags](cloud-on-k8s://reference/eck-configuration-flags.md).
 ::::
 
 By default, the ECK installation includes a [ConfigMap](https://kubernetes.io/docs/concepts/configuration/configmap/) with an `eck.yaml` key where you can add, remove, or update configuration settings. This ConfigMap is mounted into the operator’s container as a file, and provided to the application through the `--config` flag.
@@ -56,7 +56,7 @@ If you installed ECK using the manifests and the commands listed in [Deploy ECK]
 
 You can update the ConfigMap directly using the command `kubectl edit configmap elastic-operator -n elastic-operator` or modify the installation manifests and reapply them with `kubectl apply -f <your-manifest-file.yaml>`.
 
-The following shows the default `elastic-operator` ConfigMap, for reference purposes. Refer to [ECK configuration flags](asciidocalypse://docs/cloud-on-k8s/docs/reference/eck-configuration-flags.md) for a complete list of available settings.
+The following shows the default `elastic-operator` ConfigMap, for reference purposes. Refer to [ECK configuration flags](cloud-on-k8s://reference/eck-configuration-flags.md) for a complete list of available settings.
 
 ```yaml
 apiVersion: v1

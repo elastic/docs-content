@@ -73,7 +73,7 @@ To confirm that the index template is using the `logs@custom` component template
 2. Search for `logs@` and select the `logs@custom` component template.
 3. The **Summary** shows the list of all data streams that use the component template, and the **Settings** view shows your newly configured ILM policy.
 
-New ILM policies only take effect when new indices are created, so you either must wait for a rollover to occur (usually after 30 days or when the index size reaches 50 GB), or force a rollover of each data stream using the {{ref}}/indices-rollover-index.html[{{es}} rollover API.
+New ILM policies only take effect when new indices are created, so you either must wait for a rollover to occur (usually after 30 days or when the index size reaches 50 GB), or force a rollover of each data stream using the {{es}} [rollover API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-rollover).
 
 For example:
 

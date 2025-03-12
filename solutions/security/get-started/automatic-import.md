@@ -29,9 +29,10 @@ Click [here](https://elastic.navattic.com/automatic-import) to access an interac
 
 ::::{admonition} Requirements
 * A working [LLM connector](/solutions/security/ai/set-up-connectors-for-large-language-models-llm.md). Recommended models: `Claude 3.5 Sonnet`; `GPT-4o`; `Gemini-1.5-pro-002`.
-* An [Enterprise](https://www.elastic.co/pricing) subscription.
+* {{stack}} users: An [Enterprise](https://www.elastic.co/pricing) subscription.
+* {{serverless-short}} users: a [Security Analytics Complete subscription](/deploy-manage/deploy/elastic-cloud/project-settings.md).
 * A sample of the data you want to import, in a structured or unstructured format (including JSON, NDJSON, and Syslog).
-* To import data from a REST API, have its OpenAPI specification (OAS) file ready.
+* To import data from a REST API: its OpenAPI specification (OAS) file.
 
 ::::
 
@@ -47,32 +48,29 @@ Using Automatic Import allows users to create new third-party data integrations 
 1. In {{elastic-sec}}, click **Add integrations**.
 2. Under **Can’t find an integration?** click **Create new integration**.
 
-    :::{image} ../../../images/security-auto-import-create-new-integration-button.png
-    :alt: The Integrations page with the Create new integration button highlighted
-    :::
+   :::{image} ../../../images/security-auto-import-create-new-integration-button.png
+   :alt: The Integrations page with the Create new integration button highlighted
+   :::
 
 3. Click **Create integration**.
 4. Select an [LLM connector](/solutions/security/ai/set-up-connectors-for-large-language-models-llm.md).
-5. Define how your new integration will appear on the Integrations page by providing a **Title**, **Description***, and ***Logo**.  Click **Next**.
+5. Define how your new integration will appear on the Integrations page by providing a **Title**, **Description**, and **Logo**.  Click **Next**.
 6. Define your integration’s package name, which will prefix the imported event fields.
 7. Define your **Data stream title**, **Data stream description**, and **Data stream name**. These fields appear on the integration’s configuration page to help identify the data stream it writes to.
 8. Select your [**Data collection method**](asciidocalypse://docs/beats/docs/reference/filebeat/configuration-filebeat-options.md). This determines how your new integration will ingest the data (for example, from an S3 bucket, an HTTP endpoint, or a file stream).
 
-    ::::{admonition} Importing CEL data
-    :class: note
-
-    If you select **API (CEL input)**, you’ll have the additional option to upload the API’s OAS file here. After you do, the LLM will use it to determine which API endpoints (GET only), query parameters, and data structures to use in the new custom integration. You will then select which API endpoints to consume and your authentication method before uploading your sample data.
-
-    ::::
+   ::::{admonition} Importing CEL data
+   :class: note
+   If you select **API (CEL input)**, you’ll have the additional option to upload the API’s OAS file here. After you do, the LLM will use it to determine which API endpoints (GET only), query parameters, and data structures to use in the new custom integration. You will then select which API endpoints to consume and your authentication method before uploading your sample data.
+   ::::
 
 9. Upload a sample of your data. Make sure to include all the types of events that you want the new integration to handle.
 
-    ::::{admonition} Best practices for sample data
-    * For JSON and NDJSON samples, each object in your sample should represent an event, and you should avoid deeply nested object structures.
-    * The more variety in your sample, the more accurate the pipeline will be. Include a wide range of unique log entries instead of just repeating the same type of entry. Automatic Import will select up to 100 different events from your sample to use as the basis for the new integration.
-    * Ideally, each field name should describe what the field does.
-
-    ::::
+   ::::{admonition} Best practices for sample data
+   * For JSON and NDJSON samples, each object in your sample should represent an event, and you should avoid deeply nested object structures.
+   * The more variety in your sample, the more accurate the pipeline will be. Include a wide range of unique log entries instead of just repeating the same type of entry. Automatic Import will select up to 100 different events from your sample to use as the basis for the new integration.
+   * Ideally, each field name should describe what the field does.
+   ::::
 
 10. Click **Analyze logs**, then wait for processing to complete. This may take several minutes.
 11. After processing is complete, the pipeline’s field mappings appear, including ECS and custom fields.

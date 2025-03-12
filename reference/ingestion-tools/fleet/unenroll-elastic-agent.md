@@ -20,4 +20,7 @@ Unenrolled agents will continue to run, but will not be able to send data. They 
 If unenrollment hangs, select **Force unenroll** to invalidate all API keys related to the agent and change the status to `inactive` so that the agent no longer appears in {{fleet}}.
 ::::
 
-
+::::{note}
+Enrollment handling for {{agent}} in a containerized environment has some special nuances.
+For details refer to [Enrollment handing for containerized agents](./enrollment-handling-containerized-agent.md).
+::::
