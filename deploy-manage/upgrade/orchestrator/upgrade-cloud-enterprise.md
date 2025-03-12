@@ -42,9 +42,6 @@ The entire process is designed to be failsafe.  Containers get upgraded sequenti
 
 Before starting the upgrade process, check which of the following recommendations may apply for your setup:
 
-:::{note}
-If you are upgrading to ECE versions 2.10, 2.11, or 2.12, refer to the ECE version 2.12 [upgrade steps](https://www.elastic.co/guide/en/cloud-enterprise/2.12/ece-upgrade.html#ece-upgrade-system-deployments) for guidance about certain default ECE visualizations not working.
-:::
 
 * We strongly recommend that you routinely update your ECE installation to the most current version so that any bugs and security issues are fixed promptly. If you need to upgrade but are currently experiencing any issues with your platform, note that as long as ZooKeeper is running and healthy you should be able to upgrade (you can use the [get runners API](https://www.elastic.co/docs/api/doc/cloud-enterprise/operation/operation-get-runners) to easily verify the health of the runners on the [ECE allocators](../../../deploy-manage/deploy/cloud-enterprise/ece-architecture.md#ece-architecture-allocators)). That is, healthy system deployments are not required in order to perform an upgrade successfully.
 * Before upgrading to Elastic Cloud Enterprise 4.0, refer to the [lists of removals](/release-notes/breaking-changes/index.md) to find out about features and API endpoints that are no longer supported.
