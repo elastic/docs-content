@@ -22,7 +22,9 @@ If you’re using {{agent}}, do not deploy {{filebeat}} for log collection. Inst
 1. Verify that {{es}} is running and that the monitoring cluster is ready to receive data from {{filebeat}}.
 
     ::::{tip}
-    In production environments, we strongly recommend using a separate cluster (referred to as the *monitoring cluster*) to store the data. Using a separate monitoring cluster prevents production cluster outages from impacting your ability to access your monitoring data. It also prevents monitoring activities from impacting the performance of your production cluster. See [*Monitoring in a production environment*](elasticsearch-monitoring-self-managed.md).
+    In production environments, we strongly recommend using a separate cluster (referred to as the *monitoring cluster*) to store the data. Using a separate monitoring cluster prevents production cluster outages from impacting your ability to access your monitoring data. It also prevents monitoring activities from impacting the performance of your production cluster. 
+    
+    For more information, refer to [](/deploy-manage/monitor/stack-monitoring/es-self-monitoring-prod.md).
     ::::
 
 2. Identify which logs you want to monitor.

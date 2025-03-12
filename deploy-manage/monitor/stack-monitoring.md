@@ -11,7 +11,7 @@ applies_to:
     self: all
 ---
 
-# Stack Monitoring
+# Stack monitoring
 
 % What needs to be done: Refine
 
@@ -48,3 +48,30 @@ $$$ec-health-best-practices$$$
 * [/raw-migrated-files/elasticsearch/elasticsearch-reference/monitoring-overview.md](/raw-migrated-files/elasticsearch/elasticsearch-reference/monitoring-overview.md)
 * [/raw-migrated-files/elasticsearch/elasticsearch-reference/how-monitoring-works.md](/raw-migrated-files/elasticsearch/elasticsearch-reference/how-monitoring-works.md)
 * [/raw-migrated-files/cloud/cloud/ec-monitoring.md](/raw-migrated-files/cloud/cloud/ec-monitoring.md)
+
+* [Configuring monitoring in {{kib}}](/deploy-manage/monitor/stack-monitoring/kibana-monitoring-legacy.md)
+* [Configuring monitoring for Logstash nodes](logstash://reference/monitoring-logstash-legacy.md)
+
+
+1. Configure your production cluster to collect data and send it to the monitoring cluster:
+
+    * [{{agent}} collection methods](../../../deploy-manage/monitor/stack-monitoring/collecting-monitoring-data-with-elastic-agent.md)
+    * [{{metricbeat}} collection methods](../../../deploy-manage/monitor/stack-monitoring/collecting-monitoring-data-with-metricbeat.md)
+    * [Legacy collection methods](../../../deploy-manage/monitor/stack-monitoring/es-legacy-collection-methods.md)
+
+3. (Optional) [Configure {{ls}} to collect data and send it to the monitoring cluster](logstash://reference/monitoring-logstash-legacy.md).
+4. (Optional) Configure the {{beats}} to collect data and send it to the monitoring cluster. Skip this step for {{beats}} that are managed by {{agent}}.
+
+    * [Auditbeat](asciidocalypse://docs/beats/docs/reference/auditbeat/monitoring.md)
+    * [Filebeat](asciidocalypse://docs/beats/docs/reference/filebeat/monitoring.md)
+    * [Heartbeat](asciidocalypse://docs/beats/docs/reference/heartbeat/monitoring.md)
+    * [Metricbeat](asciidocalypse://docs/beats/docs/reference/metricbeat/monitoring.md)
+    * [Packetbeat](asciidocalypse://docs/beats/docs/reference/packetbeat/monitoring.md)
+    * [Winlogbeat](asciidocalypse://docs/beats/docs/reference/winlogbeat/monitoring.md)
+
+5. (Optional) [Configure APM Server monitoring](/solutions/observability/apps/monitor-apm-server.md)
+6. (Optional) Configure {{kib}} to collect data and send it to the monitoring cluster:
+
+    * [{{agent}} collection methods](../../../deploy-manage/monitor/stack-monitoring/kibana-monitoring-elastic-agent.md)
+    * [{{metricbeat}} collection methods](../../../deploy-manage/monitor/stack-monitoring/kibana-monitoring-metricbeat.md)
+    * [Legacy collection methods](../../../deploy-manage/monitor/stack-monitoring/kibana-monitoring-legacy.md)

@@ -665,12 +665,14 @@ toc:
         children:
           - file: monitor/autoops/ec-autoops-how-to-access.md
           - file: monitor/autoops/ec-autoops-events.md
-          - file: monitor/autoops/ec-autoops-overview-view.md
-          - file: monitor/autoops/ec-autoops-deployment-view.md
-          - file: monitor/autoops/ec-autoops-nodes-view.md
-          - file: monitor/autoops/ec-autoops-index-view.md
-          - file: monitor/autoops/ec-autoops-shards-view.md
-          - file: monitor/autoops/ec-autoops-template-optimizer.md
+          - file: monitor/autoops/views.md
+            children:
+              - file: monitor/autoops/ec-autoops-overview-view.md
+              - file: monitor/autoops/ec-autoops-deployment-view.md
+              - file: monitor/autoops/ec-autoops-nodes-view.md
+              - file: monitor/autoops/ec-autoops-index-view.md
+              - file: monitor/autoops/ec-autoops-shards-view.md
+              - file: monitor/autoops/ec-autoops-template-optimizer.md
           - file: monitor/autoops/ec-autoops-notifications-settings.md
           - file: monitor/autoops/ec-autoops-event-settings.md
           - file: monitor/autoops/ec-autoops-dismiss-event.md
@@ -680,17 +682,12 @@ toc:
         children:
           - file: monitor/stack-monitoring/ece-ech-stack-monitoring.md
           - file: monitor/stack-monitoring/eck-stack-monitoring.md
-            children:
-              - file: monitor/stack-monitoring/k8s_connect_to_an_external_monitoring_elasticsearch_cluster.md
-              - file: monitor/stack-monitoring/k8s_when_to_use_it.md
-              - file: monitor/stack-monitoring/k8s_how_it_works.md
-              - file: monitor/stack-monitoring/k8s_audit_logging.md
-              - file: monitor/stack-monitoring/k8s_override_the_beats_pod_template.md
           - file: monitor/stack-monitoring/elasticsearch-monitoring-self-managed.md
             children:
               - file: monitor/stack-monitoring/collecting-monitoring-data-with-elastic-agent.md
               - file: monitor/stack-monitoring/collecting-monitoring-data-with-metricbeat.md
               - file: monitor/stack-monitoring/collecting-log-data-with-filebeat.md
+              - file: monitor/stack-monitoring/es-self-monitoring-prod.md
               - file: monitor/stack-monitoring/es-legacy-collection-methods.md
                 children:
                   - file: monitor/stack-monitoring/es-monitoring-collectors.md
@@ -702,8 +699,8 @@ toc:
             children:
               - file: monitor/stack-monitoring/kibana-monitoring-elastic-agent.md
               - file: monitor/stack-monitoring/kibana-monitoring-metricbeat.md
-              - file: monitor/stack-monitoring/kibana-monitoring-data.md
-              - file: monitor/stack-monitoring/kibana-monitoring-legacy.md
+              - file: monitor/stack-monitoring/kibana-monitoring-legacy.md 
+          - file: monitor/stack-monitoring/kibana-monitoring-data.md
           - file: monitor/monitoring-data/visualizing-monitoring-data.md
             children:
               - file: monitor/monitoring-data/beats-page.md

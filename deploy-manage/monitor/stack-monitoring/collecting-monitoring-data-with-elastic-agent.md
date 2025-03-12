@@ -11,13 +11,11 @@ applies_to:
 
 # Collecting monitoring data with Elastic Agent [configuring-elastic-agent]
 
-
-In 8.5 and later, you can use {{agent}} to collect data about {{es}} and ship it to the monitoring cluster, rather than [using {{metricbeat}}](collecting-monitoring-data-with-metricbeat.md) or routing it through exporters as described in [Legacy collection methods](es-legacy-collection-methods.md).
-
+You can use {{agent}} to collect data about {{es}} and ship it to the monitoring cluster.
 
 ## Prerequisites [_prerequisites_11]
 
-* (Optional) Create a monitoring cluster as described in [*Monitoring in a production environment*](elasticsearch-monitoring-self-managed.md).
+* (Optional) Create a monitoring cluster as described in [](elasticsearch-monitoring-self-managed.md).
 * Create a user on the production cluster that has the `remote_monitoring_collector` [built-in role](../../users-roles/cluster-or-deployment-auth/built-in-roles.md).
 
 
@@ -48,7 +46,7 @@ To collect {{es}} monitoring data, add an {{es}} integration to an {{agent}} and
 7. Click **Save and continue**. This step takes a minute or two to complete. When it’s done, you’ll have an agent policy that contains an integration for collecting monitoring data from {{es}}.
 8. If an {{agent}} is already assigned to the policy and deployed to the host where {{es}} is running, you’re done. Otherwise, you need to deploy an {{agent}}. To deploy an {{agent}}:
 
-    1. Go to **{{fleet}} → Agents**, then click **Add agent**.
+    1. Go to **{{fleet}} > Agents**, then click **Add agent**.
     2. Follow the steps in the **Add agent** flyout to download, install, and enroll the {{agent}}. Make sure you choose the agent policy you created earlier.
 
 9. Wait a minute or two until incoming data is confirmed.

@@ -9,13 +9,8 @@ applies_to:
 
 # Exporters [es-monitoring-exporters]
 
-::::{important}
-{{agent}} and {{metricbeat}} are the recommended methods for collecting and shipping monitoring data to a monitoring cluster.
-
-If you have previously configured legacy collection methods, you should migrate to using [{{agent}}](collecting-monitoring-data-with-elastic-agent.md) or [{{metricbeat}}](collecting-monitoring-data-with-metricbeat.md) collection. Do not use legacy collection alongside other collection methods.
-
-::::
-
+:::{include} _snippets/legacy-warning.md
+:::
 
 The purpose of exporters is to take data collected from any Elastic Stack source and route it to the monitoring cluster. It is possible to configure more than one exporter, but the general and default setup is to use a single exporter.
 

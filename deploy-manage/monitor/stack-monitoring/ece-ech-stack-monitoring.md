@@ -15,7 +15,7 @@ applies_to:
     ess: all
 ---
 
-# Enable stack monitoring on ECH and ECE deployments
+# Enable and use stack monitoring on ECH and ECE deployments
 
 The deployment logging and monitoring feature lets you monitor your deployment in {{kib}} by shipping logs and metrics to a monitoring deployment. You can:
 
@@ -73,7 +73,7 @@ To enable monitoring on your deployment:
     Narrow the list by name, ID, or choose from several other filters. To further define the list, use a combination of filters.
 
 3. From your deployment menu, go to the **Logs and metrics** page.
-4. Select **Enable**.
+4. Under **Ship to a deployment**, select **Enable**.
 5. Choose where to send your logs and metrics. Select **Save**.
 
     If a deployment is not listed, make sure that it is running a compatible version. The monitoring deployment and production deployment must be on the same major version, cloud provider, and region.
