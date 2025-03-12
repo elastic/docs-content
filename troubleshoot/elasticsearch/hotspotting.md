@@ -175,5 +175,5 @@ Its response contains a `description` that reports this query:
 indices[winlogbeat-*,logs-window*], sequence by winlog.computer_name with maxspan=1m\n\n[authentication where host.os.type == "windows" and event.action:"logged-in" and\n event.outcome == "success" and process.name == "svchost.exe" ] by winlog.event_data.TargetLogonId
 ```
 
-This lets you know which indices to check (`winlogbeat-*,logs-window*`), as well as the [EQL search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-eql-search) request body. Most likely this is [SIEM related](/solutions/security.md). You can combine this with [audit logging](../../deploy-manage/monitor/logging-configuration/enabling-audit-logs.md) as needed to trace the request source.
+This lets you know which indices to check (`winlogbeat-*,logs-window*`), as well as the [EQL search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-eql-search) request body. Most likely this is [SIEM related](/solutions/security.md). You can combine this with [audit logging](../../deploy-manage/security/logging-configuration/enabling-audit-logs.md) as needed to trace the request source.
 

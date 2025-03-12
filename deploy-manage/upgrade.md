@@ -48,7 +48,7 @@ It is very important to map all the components that are being used on the {{stac
 * External services (Kafka, etc.)
 
 :::{tip}
-When you do your inventory, you can [enable audit logging](/deploy-manage/monitor/logging-configuration/enabling-audit-logs.md) to evaluate resources accessing your deployment.
+When you do your inventory, you can [enable audit logging](/deploy-manage/security/logging-configuration/enabling-audit-logs.md) to evaluate resources accessing your deployment.
 :::
 
 **Test your development environment**

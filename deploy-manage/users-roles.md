@@ -22,7 +22,7 @@ Preventing unauthorized access is only one element of a complete security strate
  
 * Restrict the nodes and clients that can connect to the cluster using [traffic filters](/deploy-manage/security/traffic-filtering.md). 
 * Take steps to maintain your data integrity and confidentiality by [encrypting HTTP and inter-node communications](/deploy-manage/security/secure-cluster-communications.md), as well as [encrypting your data at rest](/deploy-manage/security/encrypt-deployment.md).
-* Maintain an [audit trail](/deploy-manage/monitor/logging-configuration/security-event-audit-logging.md) for security-related events.
+* Maintain an [audit trail](/deploy-manage/security/logging-configuration/security-event-audit-logging.md) for security-related events.
 * Control access to dashboards and other saved objects in your UI using [{{kib}} spaces](/deploy-manage/manage-spaces.md). 
 * Connect your cluster to a [remote cluster](/deploy-manage/remote-clusters.md) to enable cross-cluster replication and search.
 * Manage [API keys](/deploy-manage/api-keys.md) used for programmatic access to Elastic.

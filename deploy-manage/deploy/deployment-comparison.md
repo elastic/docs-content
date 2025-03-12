@@ -12,7 +12,7 @@ For more details about feature availability in Serverless, check [](elastic-clou
 | [Security configurations](/deploy-manage/security.md) | Full control | Limited control | Limited control |
 | [Authentication realms](/deploy-manage/users-roles.md) | Available | Available | Available, through Elastic Cloud only |
 | [Custom roles](/deploy-manage/users-roles.md) | Available | Available | Available |
-| [Audit logging](/deploy-manage/monitor/logging-configuration/configuring-audit-logs.md) | Available | Available | No |
+| [Audit logging](/deploy-manage/security/logging-configuration/security-event-audit-logging.md) | Available | Available | No |
 
 ## Infrastructure and cluster management
 
