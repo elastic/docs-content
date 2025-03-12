@@ -2,6 +2,7 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/observability/current/observability-introduction.html
   - https://www.elastic.co/guide/en/serverless/current/observability-serverless-observability-overview.html
+
 ---
 
 # What is Elastic {{observability}}? [observability-introduction]
