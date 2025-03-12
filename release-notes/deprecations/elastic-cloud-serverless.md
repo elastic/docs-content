@@ -13,6 +13,9 @@ For serverless API deprecations, check [APIs Changelog](https://www.elastic.co/d
 % Description of the deprecation and steps to update implementation.
 % For more information, check [PR #](PR link).
 
+## February 3, 2025 [serverless-changelog-01272025]
+* Rename plugin to automatic import ({kibana-pull}207325[#207325]).
+
 ## January 27, 2025 [elastic-cloud-serverless-01272025-deprecations]
 * Deprecates a subset of Elastic Security Serverless endpoint management APIs. For more information, check [#206903](https://github.com/elastic/kibana/pull/206903).
 
