@@ -202,7 +202,6 @@ toc:
       - file: elasticsearch/elasticsearch-reference/snapshots-restore-snapshot.md
       - file: elasticsearch/elasticsearch-reference/xpack-autoscaling.md
   - file: ingest-docs/fleet/index.md
-    children:
   - file: ingest-docs/ingest-overview/index.md
   - file: kibana/kibana/index.md
     children:
