@@ -130,6 +130,8 @@ bash <(curl -fsSL https://download.elastic.co/cloud/elastic-cloud-enterprise.sh)
 
 You can follow along while each container for Elastic Cloud Enterprise is upgraded on the hosts that are part of the installation.
 
+## Upgrade to a specific version
+
 By default, ECE updates to the most current available version. If you want to upgrade to a specific ECE version, use the `--cloud-enterprise-version` option:
 
 ```sh
