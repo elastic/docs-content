@@ -809,6 +809,8 @@ toc:
       - file: upgrade/orchestrator.md
         children:
           - file: upgrade/orchestrator/upgrade-cloud-enterprise.md
+            children:
+              - file: upgrade/orchestrator/re-running-the-ece-upgrade.md
           - file: upgrade/orchestrator/upgrade-cloud-on-k8s.md
       - file: upgrade/deployment-or-cluster.md
         children:
