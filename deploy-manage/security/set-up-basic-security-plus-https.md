@@ -1,5 +1,8 @@
 ---
 navigation_title: "Set up basic security plus HTTPS"
+applies_to:
+  deployment:
+    self: ga
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/security-basic-setup-https.html
 ---
