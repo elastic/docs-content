@@ -25,10 +25,10 @@ You can log security-related events such as authentication failures and refused 
 This section describes how to enable and configure audit logging in both {{es}} and {{kib}} for all supported deployment types, including self-managed clusters, {{ech}}, {{ece}} (ECE), and {{eck}} (ECK).
 
 ::::{important}
-In orchestrated deployments, audit logs must be shipped to a monitoring deployment; otherwise, they remain at container level and won't be accessible to users. For details on configuring log forwarding in orchestrated environments, refer to [logging configuration](../logging-configuration.md).
+In orchestrated deployments, audit logs must be shipped to a monitoring deployment; otherwise, they remain at container level and won't be accessible to users. For details on configuring log forwarding in orchestrated environments, refer to [logging configuration](/deploy-manage/monitor/logging-configuration.md).
 ::::
 
-When audit logging is enabled, security events are persisted to a dedicated `<clustername>_audit.json` file on the host’s file system, on every cluster node. For more information, refer to [{{es}} logfile audit output](logfile-audit-output.md).
+When audit logging is enabled, security events are persisted to a dedicated `<clustername>_audit.json` file on the host’s file system, on every cluster node. For more information, refer to [{{es}} logfile audit output](./logfile-audit-output.md).
 
 ## Enable audit logging [enable-audit-logging-procedure]
 

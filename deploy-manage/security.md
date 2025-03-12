@@ -121,6 +121,7 @@ There is no orchestration layer for self-managed deployments because you directl
 - [**Traffic filtering**](security/traffic-filtering.md): IP filtering, private links, and static IPs
 - [**Secure communications**](security/secure-cluster-communications.md): TLS configuration, certificates management
 - [**Data protection**](security/data-security.md): Encryption at rest, secure settings, saved objects
+- [**Security event audit logging**](security/logging-configuration/security-event-audit-logging.md): {{es}} and {{kib}} audit logs
 - [**Session management**](security/kibana-session-management.md): Kibana session controls
 - [**FIPS 140-2 compliance**](security/fips-140-2.md): Federal security standards
 
