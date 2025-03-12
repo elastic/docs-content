@@ -1,4 +1,7 @@
 ---
+applies_to:
+  deployment:
+    self: ga
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/xpack-security-secure-saved-objects.html
 ---

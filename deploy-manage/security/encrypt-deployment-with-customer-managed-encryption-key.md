@@ -1,9 +1,14 @@
 ---
+applies_to:
+  deployment:
+    ess: ga
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-encrypt-with-cmek.html
 ---
 
 # Encrypt your deployment with a customer-managed encryption key [ec-encrypt-with-cmek]
+
+The following information applies to your {{ech}} deployments. 
 
 By default, Elastic already encrypts your deployment data and snapshots at rest. You can reinforce this mechanism by providing your own encryption key, also known as Bring Your Own Key (BYOK). To do that, you need a customer-managed key that you set up and manage in your cloud provider’s Key Management Service (KMS).
 
