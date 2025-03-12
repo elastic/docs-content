@@ -136,7 +136,6 @@ toc:
           - file: elastic-inference/inference-api/huggingface-inference-integration.md
           - file: elastic-inference/inference-api/jinaai-inference-integration.md
           - file: elastic-inference/inference-api/mistral-inference-integration.md
-          - file: elastic-inference/inference-api/openai-inference-integration.md
   - file: machine-learning.md
     children:
       - file: machine-learning/setting-up-machine-learning.md
