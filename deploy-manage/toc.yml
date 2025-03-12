@@ -669,7 +669,7 @@ toc:
           - file: monitor/autoops/ec-autoops-faq.md
       - file: monitor/stack-monitoring.md
         children:
-          - file: monitor/stack-monitoring/elastic-cloud-stack-monitoring.md
+          - file: monitor/stack-monitoring/ece-ech-stack-monitoring.md
           - file: monitor/stack-monitoring/eck-stack-monitoring.md
             children:
               - file: monitor/stack-monitoring/k8s_connect_to_an_external_monitoring_elasticsearch_cluster.md
@@ -677,9 +677,6 @@ toc:
               - file: monitor/stack-monitoring/k8s_how_it_works.md
               - file: monitor/stack-monitoring/k8s_audit_logging.md
               - file: monitor/stack-monitoring/k8s_override_the_beats_pod_template.md
-          - file: monitor/stack-monitoring/ece-stack-monitoring.md
-            children:
-              - file: monitor/stack-monitoring/ece-restrictions-monitoring.md
           - file: monitor/stack-monitoring/elasticsearch-monitoring-self-managed.md
             children:
               - file: monitor/stack-monitoring/collecting-monitoring-data-with-elastic-agent.md
@@ -698,20 +695,6 @@ toc:
               - file: monitor/stack-monitoring/kibana-monitoring-metricbeat.md
               - file: monitor/stack-monitoring/kibana-monitoring-data.md
               - file: monitor/stack-monitoring/kibana-monitoring-legacy.md
-      - file: monitor/orchestrators.md
-        children:
-          - file: monitor/orchestrators/eck-metrics-configuration.md
-            children:
-              - file: monitor/orchestrators/k8s-enabling-metrics-endpoint.md
-              - file: monitor/orchestrators/k8s-securing-metrics-endpoint.md
-              - file: monitor/orchestrators/k8s-prometheus-requirements.md
-          - file: monitor/orchestrators/ece-platform-monitoring.md
-            children:
-              - file: monitor/orchestrators/ece-monitoring-ece-access.md
-              - file: monitor/orchestrators/ece-proxy-log-fields.md
-              - file: monitor/orchestrators/ece-monitoring-ece-set-retention.md
-      - file: monitor/monitoring-data.md
-        children:
           - file: monitor/monitoring-data/visualizing-monitoring-data.md
             children:
               - file: monitor/monitoring-data/beats-page.md
@@ -732,6 +715,18 @@ toc:
               - file: monitor/monitoring-data/config-monitoring-data-streams-elastic-agent.md
               - file: monitor/monitoring-data/config-monitoring-data-streams-metricbeat-8.md
               - file: monitor/monitoring-data/config-monitoring-indices-metricbeat-7-internal-collection.md
+      - file: monitor/orchestrators.md
+        children:
+          - file: monitor/orchestrators/eck-metrics-configuration.md
+            children:
+              - file: monitor/orchestrators/k8s-enabling-metrics-endpoint.md
+              - file: monitor/orchestrators/k8s-securing-metrics-endpoint.md
+              - file: monitor/orchestrators/k8s-prometheus-requirements.md
+          - file: monitor/orchestrators/ece-platform-monitoring.md
+            children:
+              - file: monitor/orchestrators/ece-monitoring-ece-access.md
+              - file: monitor/orchestrators/ece-proxy-log-fields.md
+              - file: monitor/orchestrators/ece-monitoring-ece-set-retention.md
       - file: monitor/kibana-task-manager-health-monitoring.md
       - file: monitor/logging-configuration.md
         children:

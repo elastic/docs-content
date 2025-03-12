@@ -25,6 +25,10 @@ applies_to:
 % - [ ] ./raw-migrated-files/elasticsearch/elasticsearch-reference/how-monitoring-works.md
 % - [ ] ./raw-migrated-files/cloud/cloud/ec-monitoring.md
 
+
+https://www.elastic.co/guide/en/cloud/current/ec-monitoring-setup.html
+
+
 % Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
 
 $$$ec-es-cluster-health$$$

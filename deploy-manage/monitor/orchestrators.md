@@ -5,7 +5,7 @@ applies_to:
     eck: all
 ---
 
-# Monitoring Orchestrators
+# Monitoring orchestrators
 
 % What needs to be done: Write from scratch
 

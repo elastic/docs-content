@@ -6,7 +6,7 @@ applies_to:
     eck: all
 ---
 
-# Override the Beats Pod Template [k8s_override_the_beats_pod_template]
+# Override the Beats Pod template [k8s_override_the_beats_pod_template]
 
 You can customize the Filebeat and Metricbeat containers through the Pod template. Your configuration is merged with the values of the default Pod template that ECK uses.
 
