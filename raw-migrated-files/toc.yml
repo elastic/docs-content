@@ -126,11 +126,6 @@ toc:
       - file: cloud/cloud/ec-select-subscription-level.md
       - file: cloud/cloud/ec-service-status.md
       - file: cloud/cloud/ec-snapshot-restore.md
-      - file: cloud/cloud/ec-traffic-filtering-deployment-configuration.md
-      - file: cloud/cloud/ec-traffic-filtering-ip.md
-      - file: cloud/cloud/ec-traffic-filtering-psc.md
-      - file: cloud/cloud/ec-traffic-filtering-vnet.md
-      - file: cloud/cloud/ec-traffic-filtering-vpc.md
       - file: cloud/cloud/ec-upgrade-deployment.md
   - file: docs-content/serverless/index.md
     children:
