@@ -14,9 +14,6 @@ mapped_urls:
 
 # Secure network access
 
-
-Never expose {{es}} to unwanted internet traffic. Using an application to sanitize requests to {{es}} still poses risks, such as a malicious user writing [`_search`](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-search) requests that could overwhelm an {{es}} cluster and bring it down.
-
 Traffic filtering allows you to limit how your deployments and clusters can be accessed. Add another layer of security to your installation and deployments by restricting inbound traffic to *only* the sources that you trust.
 
 :::::{tab-set}
