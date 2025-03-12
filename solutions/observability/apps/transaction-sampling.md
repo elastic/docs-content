@@ -183,7 +183,7 @@ The transaction sample rate can be changed dynamically (no redeployment necessar
 Each agent provides a configuration value used to set the transaction sample rate. See the relevant agent’s documentation for more details:
 
 * Go: [`ELASTIC_APM_TRANSACTION_SAMPLE_RATE`](apm-agent-go://reference/configuration.md#config-transaction-sample-rate)
-* Java: [`transaction_sample_rate`](asciidocalypse://docs/apm-agent-java/docs/reference/config-core.md#config-transaction-sample-rate)
+* Java: [`transaction_sample_rate`](apm-agent-java://reference/config-core.md#config-transaction-sample-rate)
 * .NET: [`TransactionSampleRate`](apm-agent-dotnet://reference/config-core.md#config-transaction-sample-rate)
 * Node.js: [`transactionSampleRate`](asciidocalypse://docs/apm-agent-nodejs/docs/reference/configuration.md#transaction-sample-rate)
 * PHP: [`transaction_sample_rate`](asciidocalypse://docs/apm-agent-php/docs/reference/configuration-reference.md#config-transaction-sample-rate)
