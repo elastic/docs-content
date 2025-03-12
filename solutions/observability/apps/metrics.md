@@ -13,7 +13,7 @@ mapped_pages:
 
 ## System metrics [_system_metrics]
 
-APM agents automatically pick up basic host-level metrics, including system and process-level CPU and memory metrics. Agent specific metrics are also available, like [JVM metrics](asciidocalypse://docs/apm-agent-java/docs/reference/metrics.md) in the Java Agent, and [Go runtime](apm-agent-go://reference/metrics.md) metrics in the Go Agent.
+APM agents automatically pick up basic host-level metrics, including system and process-level CPU and memory metrics. Agent specific metrics are also available, like [JVM metrics](apm-agent-java://reference/metrics.md) in the Java Agent, and [Go runtime](apm-agent-go://reference/metrics.md) metrics in the Go Agent.
 
 Infrastructure and application metrics are important sources of information when debugging production systems, which is why we’ve made it easy to filter metrics for specific hosts or containers in the {{kib}} [metrics overview](metrics-2.md).
 
@@ -27,7 +27,7 @@ Metrics are stored in metric indices.
 For a full list of tracked metrics, see the relevant agent documentation:
 
 * [Go](apm-agent-go://reference/metrics.md)
-* [Java](asciidocalypse://docs/apm-agent-java/docs/reference/metrics.md)
+* [Java](apm-agent-java://reference/metrics.md)
 * [Node.js](asciidocalypse://docs/apm-agent-nodejs/docs/reference/metrics.md)
 * [Python](asciidocalypse://docs/apm-agent-python/docs/reference/metrics.md)
 * [Ruby](asciidocalypse://docs/apm-agent-ruby/docs/reference/metrics.md)
