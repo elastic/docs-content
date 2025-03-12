@@ -143,7 +143,6 @@ toc:
       - file: docs-content/serverless/elasticsearch-ingest-data-through-api.md
       - file: docs-content/serverless/general-billing-stop-project.md
       - file: docs-content/serverless/general-sign-up-trial.md
-      - file: docs-content/serverless/index-management.md
       - file: docs-content/serverless/intro.md
       - file: docs-content/serverless/observability-ai-assistant.md
       - file: docs-content/serverless/observability-apm-get-started.md
