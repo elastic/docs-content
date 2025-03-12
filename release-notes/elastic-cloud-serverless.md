@@ -22,7 +22,7 @@ For Cloud Console changes, check out [Elastic Cloud Hosted release notes](asciid
 ## March 10, 2025 [serverless-changelog-03102025]
 
 ### Features and enhancements [elastic-cloud-serverless-03102025-features-enhancements]
-* The Create Rule flyout, used by solutions, now features the improved rule form in Elastic Observability Serverless  ({kibana-pull}206685[#206685]).
+* The Create Rule flyout, used by solutions, now features the improved rule form in Elastic Observability Serverless ({kibana-pull}206685[#206685]).
 * Resolves duplicate conversations in Elastic Observability Serverless ({kibana-pull}208044[#208044]).
 * Split the SLO Details view from the Overview page in Elastic Observability Serverless ({kibana-pull}212826[#212826]).
 * Adds the reason message to the rules recovery context in Elastic Observability Serverless ({kibana-pull}211411[#211411]).
