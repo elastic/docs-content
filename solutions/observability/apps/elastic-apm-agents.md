@@ -33,12 +33,12 @@ Spans are grouped in transactions—by default, one for each incoming HTTP reque
 
 If you're ready to give Elastic APM a try, see [Get started with traces and APM](../../../solutions/observability/apps/get-started-with-apm.md).
 
-See the [Java agent reference](asciidocalypse://docs/apm-agent-java/docs/reference/index.md) for full documentation, including:
+See the [Java agent reference](apm-agent-java://reference/index.md) for full documentation, including:
 
-* [Supported technologies](asciidocalypse://docs/apm-agent-java/docs/reference/supported-technologies.md)
-* [Set up](asciidocalypse://docs/apm-agent-java/docs/reference/set-up-apm-java-agent.md)
-* [Configuration reference](asciidocalypse://docs/apm-agent-java/docs/reference/configuration.md)
-* [API reference](asciidocalypse://docs/apm-agent-java/docs/reference/tracing-apis.md)
+* [Supported technologies](apm-agent-java://reference/supported-technologies.md)
+* [Set up](apm-agent-java://reference/set-up-apm-java-agent.md)
+* [Configuration reference](apm-agent-java://reference/configuration.md)
+* [API reference](apm-agent-java://reference/tracing-apis.md)
 
 ::::{important}
 Not all APM agent configuration options are compatible with Elastic Cloud serverless.

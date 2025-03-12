@@ -71,7 +71,7 @@ This feature is supported for the following {{apm-agent}}s:
 
 * [Ruby](asciidocalypse://docs/apm-agent-ruby/docs/reference/configuration.md#config-log-ecs-formatting)
 * [Python](asciidocalypse://docs/apm-agent-python/docs/reference/logs.md#log-reformatting)
-* [Java](asciidocalypse://docs/apm-agent-java/docs/reference/logs.md#log-reformatting)
+* [Java](apm-agent-java://reference/logs.md#log-reformatting)
 
 **![documentation icon](../../../images/serverless-documentation.svg "") Learn more in [ECS formatted logs](../../../solutions/observability/logs/ecs-formatted-application-logs.md)**
 
@@ -96,7 +96,7 @@ Correlate your application logs with trace events to:
 Learn more about log correlation in the agent-specific ingestion guides:
 
 * [Go](apm-agent-go://reference/logs.md)
-* [Java](asciidocalypse://docs/apm-agent-java/docs/reference/logs.md#log-correlation-ids)
+* [Java](apm-agent-java://reference/logs.md#log-correlation-ids)
 * [.NET](apm-agent-dotnet://reference/logs.md)
 * [Node.js](asciidocalypse://docs/apm-agent-nodejs/docs/reference/logs.md)
 * [Python](asciidocalypse://docs/apm-agent-python/docs/reference/logs.md#log-correlation-ids)
