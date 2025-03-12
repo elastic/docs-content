@@ -18,6 +18,7 @@ redirects:
     anchors:
       'spaces-control-feature-visibility':
   'deploy-manage/deploy/cloud-enterprise/deploy-large-installation-cloud.md': '!deploy-manage/deploy/cloud-enterprise/deploy-large-installation.md'
+  'deploy-manage/security/manage-traffic-filtering-through-api.md': '!deploy-manage/security/ec-traffic-filtering-through-the-api.md'
 
 ## explore-analyze
   'explore-analyze/machine-learning/nlp/ml-nlp-auto-scale.md': '!deploy-manage/autoscaling/trained-model-autoscaling.md'
