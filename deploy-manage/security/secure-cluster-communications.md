@@ -43,8 +43,8 @@ Your {{stack}} deployment includes several distinct communication channels that 
 The transport layer is used for communication between {{es}} nodes in a cluster. Securing this layer prevents unauthorized nodes from joining your cluster and protects internode data.
 
 **Deployment type notes:**
-- **Elastic Cloud & Serverless**: Transport security is fully managed by Elastic. No configuration is required.
-- **ECE/ECK**: Transport security is automatically configured by the operator. No direct user configuration is required.
+- **Elastic Cloud, ECE, and Serverless**: Transport security is fully managed by Elastic. No configuration is required.
+- **ECK**: Transport security is automatically configured by the operator, but you can [customize its service and SSL certificates](/deploy-manage/deploy/cloud-on-k8s/transport-settings.md).
 - **Self-managed**: Transport security must be manually configured following the steps in [Set up basic security](set-up-basic-security.md).
 
 ## HTTP layer security
@@ -53,7 +53,8 @@ The HTTP layer secures client communication with your {{es}} cluster via its RES
 
 **Deployment type notes:**
 - **Elastic Cloud & Serverless**: HTTP security is fully managed by Elastic. No configuration is required.
-- **ECE/ECK**: HTTP security is automatically configured with self-signed certificates. Custom certificates can be configured.
+- **ECE**: HTTP security is automatically enforced at ECE proxies using self-signed certificates and a default [wildcard DNS record](/deploy-manage/deploy/cloud-enterprise/ece-wildcard-dns.md). However, it's recommended to [configure your own certificates](/deploy-manage/security/secure-your-elastic-cloud-enterprise-installation/manage-security-certificates.md).
+- **ECK**: HTTP security is automatically configured with self-signed certificates. Custom certificates and domain names can be configured.
 - **Self-managed**: HTTP security must be manually configured following [Secure HTTP communications](secure-http-communications.md).
 
 ## {{kib}}-to-{{es}} communications
@@ -73,7 +74,7 @@ Managing certificates is critical for secure communications. Certificates have l
 - **Elastic Cloud & Serverless**: Certificate management is fully automated by Elastic.
 - **ECE**: ECE generates certificates for you. Refer to [](/deploy-manage/security/secure-your-elastic-cloud-enterprise-installation/manage-security-certificates.md).
 
-ECK**: Certificate generation and basic rotation is handled by the operator. Custom HTTP certificates require manual management.
+**ECK**: ECK provides flexible options for managing SSL certificates in your deployments, including automatic certificate generation and rotation, integration with external tools like `cert-manager`, or using your own custom certificates. Custom HTTP certificates require manual management.
 - **Self-managed**: Certificate management is your responsibility. See [Security certificates and keys](security-certificates-keys.md).
 
 ## Next steps
