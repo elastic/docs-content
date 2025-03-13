@@ -14,8 +14,6 @@ toc:
   - file: cloud-on-k8s/cloud-on-k8s/index.md
     children:
       - file: cloud-on-k8s/cloud-on-k8s/k8s-es-secure-settings.md
-      - file: cloud-on-k8s/cloud-on-k8s/k8s-installing-eck.md
-      - file: cloud-on-k8s/cloud-on-k8s/k8s-orchestration.md
       - file: cloud-on-k8s/cloud-on-k8s/k8s-securing-stack.md
       - file: cloud-on-k8s/cloud-on-k8s/k8s-upgrading-stack.md
   - file: cloud/cloud-enterprise/index.md

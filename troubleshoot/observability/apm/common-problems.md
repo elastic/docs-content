@@ -2,6 +2,10 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-common-problems.html
   - https://www.elastic.co/guide/en/serverless/current/observability-apm-troubleshooting.html
+applies_to:
+  stack: all
+  serverless:
+    observability: all
 ---
 
 # Common problems [apm-common-problems]
@@ -289,25 +293,4 @@ It’s likely that there is a problem correlating APM and infrastructure data. T
 To fix this, make sure these two fields match exactly.
 
 For example, if the APM agent is not configured to use the correct host name, the host name might be set to the container name or the Kubernetes pod name. To get the correct host name, you need to set some additional configuration options, specifically `system.kubernetes.node.name` as described in [Kubernetes data](../../../solutions/observability/apps/elastic-apm-events-intake-api.md#apm-api-kubernetes-data).
-
-
-## Common response codes [observability-apm-troubleshooting-common-response-codes]
-```yaml {applies_to}
-serverless: all
-```
-
-
-### HTTP 400: Data decoding error / Data validation error [bad-request]
-
-The most likely cause for this error is using an incompatible version of an {{apm-agent}}. See [minimum supported APM agent versions](../../../solutions/observability/apps/elastic-apm-agents.md#observability-apm-agents-elastic-apm-agents-minimum-supported-versions) to verify compatibility.
-
-
-### HTTP 400: Event too large [event-too-large]
-
-APM agents communicate with the Managed intake service by sending events in an HTTP request. Each event is sent as its own line in the HTTP request body. If events are too large, you can reduce the size of the events that your APM agents send by: [enabling span compression](../../../solutions/observability/apps/spans.md) or [reducing collected stack trace information](../../../solutions/observability/apps/reduce-storage.md#observability-apm-reduce-stacktrace).
-
-
-### HTTP 401: Invalid token [unauthorized]
-
-The API key is invalid.
 
