@@ -68,3 +68,15 @@ Update your implementations to use the new endpoints:
 * Remove references to `GET /api/endpoint/metadata/transforms` endpoint.
 * Replace references to deprecated endpoints with the replacements listed in the breaking change details.
 ::::
+
+::::{dropdown} Refactors the Timeline HTTP API endpoints
+For more information, check ({{kibana-pull}}200633[#200633]).
+::::
+
+::::{dropdown} Removes deprecated {{elastic-defend}} APIs
+For more information, check ({{kibana-pull}}199598[#199598]).
+::::
+
+::::{dropdown} Removes deprecated API endpoints for bulk CRUD actions on detection rules
+For more information, check ({{kibana-pull}}197422[#197422]) and ({{kibana-pull}}207906[#207906]).
+::::
