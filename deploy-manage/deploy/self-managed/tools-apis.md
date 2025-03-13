@@ -26,4 +26,5 @@ Learn how to [generate API keys for your self-managed cluster](/deploy-manage/ap
 ## Other
 
 * [{{es}} command line tools](elasticsearch://reference/elasticsearch/command-line-tools/index.md): Utilities for configuring security and performing other tasks from the command line.
+* [{{kib}} command line tools](kibana://reference/commands.md): Utilities for performing security and connectivity related tasks for {{kib}} from the command line.
 * [Plugins](elasticsearch://reference/elasticsearch-plugins/index.md): Plugins extend core {{es}} functionality. Choose from an existing plugin, or [build your own](elasticsearch://extend/index.md).
