@@ -45,12 +45,12 @@ To learn more about the features that are supported by {{ecloud}}, check [Elasti
 The following restrictions apply when using APIs in {{ecloud}}:
 
 {{ecloud}} API
-:   The {{ecloud}} API is subject to a restriction on the volume of API requests that can be submitted per user, per second. Check [Rate limiting](asciidocalypse://docs/cloud/docs/reference/cloud-hosted/ec-api-rate-limiting.md) for details.
+:   The {{ecloud}} API is subject to a restriction on the volume of API requests that can be submitted per user, per second. Check [Rate limiting](cloud://reference/cloud-hosted/ec-api-rate-limiting.md) for details.
 
 $$$ec-restrictions-apis-elasticsearch$$$
 
 Elasticsearch APIs
-:   The Elasticsearch APIs do not natively enforce rate limiting. However, all requests to the Elasticsearch cluster are subject to Elasticsearch configuration settings, such as the [network HTTP setting](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md#http-settings) `http:max_content_length` which restricts the maximum size of an HTTP request body. This setting has a default value of 100MB, hence restricting API request payloads to that size. This setting is not currently configurable in {{ecloud}}. For a list of which Elasticsearch settings are supported on Cloud, check [Add Elasticsearch user settings](edit-stack-settings.md). To learn about using the Elasticsearch APIs in {{ecloud}}, check [Access the Elasticsearch API console](asciidocalypse://docs/cloud/docs/reference/cloud-hosted/ec-api-console.md). And, for full details about the Elasticsearch APIs and their endpoints, check the [Elasticsearch API reference documentation](elasticsearch://reference/elasticsearch/rest-apis/index.md).
+:   The Elasticsearch APIs do not natively enforce rate limiting. However, all requests to the Elasticsearch cluster are subject to Elasticsearch configuration settings, such as the [network HTTP setting](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md#http-settings) `http:max_content_length` which restricts the maximum size of an HTTP request body. This setting has a default value of 100MB, hence restricting API request payloads to that size. This setting is not currently configurable in {{ecloud}}. For a list of which Elasticsearch settings are supported on Cloud, check [Add Elasticsearch user settings](edit-stack-settings.md). To learn about using the Elasticsearch APIs in {{ecloud}}, check [Access the Elasticsearch API console](cloud://reference/cloud-hosted/ec-api-console.md). And, for full details about the Elasticsearch APIs and their endpoints, check the [Elasticsearch API reference documentation](elasticsearch://reference/elasticsearch/rest-apis/index.md).
 
 $$$ec-restrictions-apis-kibana$$$
 
