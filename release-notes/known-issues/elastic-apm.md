@@ -1,14 +1,26 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-known-issues.html
+
+navigation_title: "Elastic APM"
 ---
 
-# Known issues [apm-known-issues]
+# Elastic APM known issues [elastic-apm-known-issues]
+Known issues are significant defects or limitations that may impact your implementation. These issues are actively being worked on and will be addressed in a future release. Reviewing known issues can help you make informed decisions, such as upgrading to a new version.
 
-APM has the following known issues:
+% Use the following template to add entries to this page.
 
+% :::{dropdown} Title of known issue
+% **Applicable versions for the known issue and the version for when the known issue was fixed**
+% On [Month Day, Year], a known issue was discovered that [description of known issue].
+% For more information, check [Issue #](Issue link).
 
-## `prefer_ilm` required in component templates to create custom lifecycle policies [_prefer_ilm_required_in_component_templates_to_create_custom_lifecycle_policies]
+% **Workaround** 
+% Workaround description.
+
+:::
+
+:::{dropdown} `prefer_ilm` required in component templates to create custom lifecycle policies 
 
 *Elastic Stack versions: 8.15.1+*
 
@@ -16,10 +28,11 @@ The issue occurs when creating a *new* cluster using version 8.15.1+. The issue 
 
 In 8.15.0, APM Server began using the [apm-data plugin](https://github.com/elastic/elasticsearch/tree/main/x-pack/plugin/apm-data) to manage data streams, ingest pipelines, lifecycle policies, and more. In 8.15.1, a fix was introduced to address unmanaged indices in older clusters using default ILM policies. This fix added a fallback to the default ILM policy (if it exists) and set the `prefer_ilm` configuration to `false`. This setting impacts clusters where both ILM and data stream lifecycles (DSL) are in effect—such as when configuring custom ILM policies using `@custom` component templates, under the conditions mentioned above.
 
-To override ILM policies for these new clusters using component template, set the `prefer_ilm` configuration to `true` by following the [updated guide to customize ILM](../../../solutions/observability/apps/index-lifecycle-management.md).
+To override ILM policies for these new clusters using component template, set the `prefer_ilm` configuration to `true` by following the [updated guide to customize ILM](/solutions/observability/apps/index-lifecycle-management.md).
 
+:::
 
-## Upgrading to v8.15.x may cause ingestion to fail [_upgrading_to_v8_15_x_may_cause_ingestion_to_fail]
+:::{dropdown} Upgrading to v8.15.x may cause ingestion to fail 
 
 *Elastic Stack versions: 8.15.0, 8.15.1, 8.15.2, 8.15.3*<br> *Fixed in Elastic Stack version 8.15.4*
 
@@ -50,8 +63,9 @@ POST /metrics-apm.transaction.10m-default/_rollover
 POST /metrics-apm.transaction.60m-default/_rollover
 ```
 
+:::
 
-## Upgrading to v8.15.0 may cause APM indices to lose their lifecycle policy [_upgrading_to_v8_15_0_may_cause_apm_indices_to_lose_their_lifecycle_policy]
+:::{dropdown} Upgrading to v8.15.0 may cause APM indices to lose their lifecycle policy
 
 *Elastic Stack versions: 8.15.0*<br> *Fixed in Elastic Stack version 8.15.1*
 
@@ -72,13 +86,13 @@ Upgrading to 8.15.1 resolves the lifecycle issue for any new indices created for
     ```
 
 
-Default `<data_retention_period>` for each data stream is available in [this guide](../../../solutions/observability/apps/index-lifecycle-management.md).
+Default `<data_retention_period>` for each data stream is available in [this guide](/solutions/observability/apps/index-lifecycle-management.md).
 
 This issue is fixed in 8.15.1 ([elastic/elasticsearch#112432](https://github.com/elastic/elasticsearch/pull/112432)).
 
+:::
 
-## Upgrading to v8.13.0 to v8.13.2 breaks APM anomaly rules [broken-apm-anomaly-rule]
-
+:::{dropdown} Upgrading to v8.13.0 to v8.13.2 breaks APM anomaly rules
 *Elastic Stack versions: 8.13.0, 8.13.1, 8.13.2*<br> *Fixed in Elastic Stack version 8.13.3*
 
 This issue occurs when upgrading the Elastic Stack to version 8.13.0, 8.13.1, or 8.13.2. This issue may go unnoticed unless you actively monitor your {{kib}} logs. The following log indicates the presence of this issue:
@@ -110,8 +124,8 @@ There are three ways to fix this error:
 
 1. Find broken rules
 
-   :::::{{tip}
-   To identify rules in this exact state, you can use the [find rules endpoint](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-alerting) and search for the APM anomaly rule type as well as this exact error message indicating that the rule is in the broken state. We will also use the `fields` parameter to specify only the fields required when making the update request later.
+    :::::{admonition}
+    To identify rules in this exact state, you can use the [find rules endpoint](https://www.elastic.co/docs/api/doc/kibana/v8/group/endpoint-alerting) and search for the APM anomaly rule type as well as this exact error message indicating that the rule is in the broken state. We will also use the `fields` parameter to specify only the fields required when making the update request later.
 
     * `search_fields=alertTypeId`
     * `search=apm.anomaly`
@@ -124,7 +138,7 @@ There are three ways to fix this error:
     curl -u "$KIBANA_USER":"$KIBANA_PASSWORD" "$KIBANA_URL/api/alerting/rules/_find?search_fields=alertTypeId&search=apm.anomaly&filter=alert.attributes.executionStatus.error.message%3A%22params%20invalid%3A%20%5BanomalyDetectorTypes%5D%3A%20expected%20value%20of%20type%20%5Barray%5D%20but%20got%20%5Bundefined%5D%22&fields=id&fields=name&fields=actions&fields=tags&fields=schedule&fields=notify_when&fields=throttle&fields=params"
     ```
 
-   ::::{dropdown} Example result:
+    ::::{dropdown} Example result:
     ```json
     {
       "page": 1,
@@ -162,8 +176,8 @@ There are three ways to fix this error:
 
 2. Prepare the update JSON doc(s)
 
-   ::::{tip}
-   For each broken rule found, create a JSON rule document with what was returned from the API in the previous step. You will need to make two changes to each document:
+    ::::{admonition}
+    For each broken rule found, create a JSON rule document with what was returned from the API in the previous step. You will need to make two changes to each document:
 
     1. Remove the `id` key but keep the value connected to this document (e.g. rename the file to `{{id}}.json`). **The `id` cannot be sent as part of the request body for the PUT request, but you will need it for the URL path.**
     2. Add the `"anomalyDetectorTypes"` to the `"params"` block, using the default value as seen below to mimic the pre-8.13 behavior:
@@ -183,12 +197,12 @@ There are three ways to fix this error:
         ```
 
 
-   ::::
+    ::::
 
 3. Update each rule using the `PUT /api/alerting/rule/{{id}}` API
 
-   ::::{tip}
-   For each rule, submit a PUT request to the [update rule endpoint](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-alerting) using that rule’s ID and its stored update document from the previous step. For example, assuming the first broken rule’s ID is `046c0d4f`:
+    ::::{admonition}
+    For each rule, submit a PUT request to the [update rule endpoint](https://www.elastic.co/docs/api/doc/kibana/v8/group/endpoint-alerting) using that rule’s ID and its stored update document from the previous step. For example, assuming the first broken rule’s ID is `046c0d4f`:
 
     ```shell
     curl -u "$KIBANA_USER":"$KIBANA_PASSWORD" -XPUT "$KIBANA_URL/api/alerting/rule/046c0d4f" -H 'Content-Type: application/json' -H 'kbn-xsrf: rule-update' -d @046c0d4f.json
@@ -196,12 +210,11 @@ There are three ways to fix this error:
 
     Once the PUT request executes successfully, the rule will no longer be broken.
 
-   ::::
+    ::::
 
+:::
 
-
-## Upgrading APM Server to 8.11+ might break event intake from older APM Java agents [apm-empty-metricset-values]
-
+:::{dropdown} Upgrading APM Server to 8.11+ might break event intake from older APM Java agents
 *APM Server versions: >=8.11.0*<br> *Elastic APM Java agent versions: < 1.43.0*
 
 If you are using APM Server (> v8.11.0) and the Elastic APM Java agent (< v1.43.0), the agent may be sending empty histogram metricsets.
@@ -212,9 +225,9 @@ The APM Java agent (< v1.43.0) was sending this kind of invalid data under certa
 
 The fix is to upgrade the Elastic APM Java agent to a version >= 1.43.0. Find details in [elastic/apm-data#157](https://github.com/elastic/apm-data/pull/157).
 
+:::
 
-## traces-apm@custom ingest pipeline applied to certain data streams unintentionally [_traces_apmcustom_ingest_pipeline_applied_to_certain_data_streams_unintentionally]
-
+:::{dropdown} traces-apm@custom ingest pipeline applied to certain data streams unintentionally
 *APM Server versions: 8.12.0*<br>
 
 If you’re using the Elastic APM Server v8.12.0, the `traces-apm@custom` ingest pipeline is now additionally applied to data streams `traces-apm.sampled-*` and `traces-apm.rum-*`, and applied twice for `traces-apm-*`. This bug impacts users with a non-empty `traces-apm@custom` ingest pipeline.
@@ -223,9 +236,9 @@ If you rely on this unintended behavior in 8.12.0, please rename your pipeline t
 
 A fix was released in 8.12.1: [elastic/kibana#175448](https://github.com/elastic/kibana/pull/175448).
 
+:::
 
-## Ingesting new JVM metrics in 8.9 and 8.10 breaks upgrade to 8.11 and stops ingestion [_ingesting_new_jvm_metrics_in_8_9_and_8_10_breaks_upgrade_to_8_11_and_stops_ingestion]
-
+:::{dropdown} Ingesting new JVM metrics in 8.9 and 8.10 breaks upgrade to 8.11 and stops ingestion
 *APM Server versions: 8.11.0, 8.11.1*<br> *Elastic APM Java agent versions: 1.39.0+*
 
 If you’re using the Elastic APM Java agent v1.39.0+ to send new JVM metrics to APM Server v8.9.x and v8.10.x, upgrading to 8.11.0 or 8.11.1 will silently fail and stop ingesting APM metrics.
@@ -249,9 +262,9 @@ After upgrading, you will see the following errors:
 
 A fix was released in 8.11.2: [elastic/kibana#171712](https://github.com/elastic/kibana/pull/171712).
 
+:::
 
-## APM integration package upgrade through Fleet causes excessive data stream rollovers [_apm_integration_package_upgrade_through_fleet_causes_excessive_data_stream_rollovers]
-
+:::{dropdown} APM integration package upgrade through Fleet causes excessive data stream rollovers
 *APM Server versions: <= 8.12.1 +*
 
 If you’re upgrading APM integration package to any versions <= 8.12.1, in some rare cases, the upgrade fails with a mapping conflict error. The upgrade process keeps rolling over the data stream in an unsuccessful attempt to work around the error. As a result, many empty backing indices for APM data streams are created.
@@ -270,9 +283,9 @@ During upgrade, you will see errors similar to the one below:
 
 A fix was released in 8.12.2: [elastic/apm-server#12219](https://github.com/elastic/apm-server/pull/12219).
 
+:::
 
-## Performance regression: APM issues too many small bulk requests for Elasticsearch output [_performance_regression_apm_issues_too_many_small_bulk_requests_for_elasticsearch_output]
-
+:::{dropdown} Performance regression: APM issues too many small bulk requests for Elasticsearch output
 *APM Server versions: >=8.13.0, <= 8.14.2*<br>
 
 If you’re on APM server version >=8.13.0, <= 8.14.2_, using Elasticsearch output, do not specify any `output.elasticsearch.flush_bytes`, and do not disable compression explicitly by setting `output.elasticsearch.compression_level` to `0`, APM server will issue smaller bulk requests of 24KB size, and more bulk requests will need to be made to maintain the original throughput. This causes Elasticsearch to experience higher load, and APM server may exhibit Elasticsearch backpressure symptoms.
@@ -303,3 +316,5 @@ To workaround the issue, modify the Elasticsearch output configuration in APM.
 
 
 A fix will be released in 8.14.3: [elastic/apm-server#13576](https://github.com/elastic/apm-server/pull/13576).
+
+:::

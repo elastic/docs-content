@@ -1,4 +1,7 @@
 ---
+applies_to:
+  deployment:
+    ess: ga
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-static-ips.html
 ---
@@ -35,7 +38,7 @@ Not suitable usage of egress static IPs to introduce network controls:
 
 ## Supported Regions [ec-regions] 
 
-::::{dropdown} **AWS**
+::::{dropdown} AWS
 |     |     |     |
 | --- | --- | --- |
 | **Region** | **Ingress Static IPs** | **Egress Static IPs** |
@@ -63,7 +66,7 @@ Not suitable usage of egress static IPs to introduce network controls:
 ::::
 
 
-::::{dropdown} **Azure**
+::::{dropdown} Azure
 |     |     |     |
 | --- | --- | --- |
 | **Region** | **Ingress Static IPs** | **Egress Static IPs** |
@@ -87,7 +90,7 @@ Not suitable usage of egress static IPs to introduce network controls:
 ::::
 
 
-::::{dropdown} **GCP**
+::::{dropdown} GCP
 |     |     |     |
 | --- | --- | --- |
 | **Region** | **Ingress Static IPs** | **Egress Static IPs** |

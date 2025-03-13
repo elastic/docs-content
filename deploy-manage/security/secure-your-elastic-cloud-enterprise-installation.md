@@ -13,6 +13,7 @@ This section covers security settings for your {{ece}} orchestrator.
 
 **Orchestrator-level security**
 
+- [**Enforcing SELinux with RHEL/Podman installations**](secure-your-elastic-cloud-enterprise-installation/migrate-ece-on-podman-hosts-to-selinux-enforce.md): SELinux (Security-Enhanced Linux) is a security module that enforces mandatory access controls, helping to protect systems from unauthorized access and privilege escalation.
 - [**TLS certificates**](secure-your-elastic-cloud-enterprise-installation/manage-security-certificates.md): Apply security controls to network communications. With {{ece}}, you manage proxy certificates for the HTTP layer. The transport layer is managed by ECE.
 - [**Platform role-based access control**](/deploy-manage/users-roles/cloud-enterprise-orchestrator.md): Define the roles of users who have access to your organization and its resources. Note that you can also [manage non-cloud users and roles](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md).
 - [**Authentication providers**](/deploy-manage/users-roles/cloud-enterprise-orchestrator.md): Integrate with external authentication providers, including Active Directory, LDAP, and SAML.

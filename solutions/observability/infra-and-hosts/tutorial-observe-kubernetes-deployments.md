@@ -728,8 +728,8 @@ Configure the agent using environment variables:
 
 **Learn more in the agent reference**
 
-* [Supported technologies](asciidocalypse://docs/apm-agent-java/docs/reference/supported-technologies.md)
-* [Advanced configuration](asciidocalypse://docs/apm-agent-java/docs/reference/configuration.md)
+* [Supported technologies](apm-agent-java://reference/supported-technologies.md)
+* [Advanced configuration](apm-agent-java://reference/configuration.md)
 ::::::
 
 ::::::{tab-item} .NET
