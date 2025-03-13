@@ -5,8 +5,6 @@ mapped_urls:
 applies_to:
   deployment:
     self:
-sub:
-  stack-version: "9.0.0"
 ---
 
 # Install {{kib}}

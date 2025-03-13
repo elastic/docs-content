@@ -1,6 +1,4 @@
 ---
-sub:
-  stack-version: "9.0.0"
 applies_to:
   deployment:
     self:

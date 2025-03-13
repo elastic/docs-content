@@ -2,8 +2,6 @@
 navigation_title: "Install with RPM"
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/rpm.html
-sub:
-  stack-version: "9.0.0"
 navigation_title: "RPM"
 applies_to:
   deployment:

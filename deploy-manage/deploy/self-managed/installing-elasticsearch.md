@@ -4,8 +4,6 @@ mapped_urls:
   - https://www.elastic.co/guide/en/elastic-stack/current/installing-elastic-stack.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/install-elasticsearch.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/configuring-stack-security.html
-sub:
-  stack-version: "9.0.0"
 applies_to:
   deployment:
     self:

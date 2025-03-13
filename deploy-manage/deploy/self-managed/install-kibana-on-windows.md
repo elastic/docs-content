@@ -2,8 +2,6 @@
 navigation_title: "Install on Windows"
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/windows.html
-sub:
-  stack-version: "9.0.0"
 navigation_title: "Windows"
 applies_to:
   deployment:

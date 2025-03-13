@@ -2,8 +2,6 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/docker.html
 navigation_title: "Install with Docker"
-sub:
-  stack-version: "9.0.0"
 applies_to:
   deployment:
     self:

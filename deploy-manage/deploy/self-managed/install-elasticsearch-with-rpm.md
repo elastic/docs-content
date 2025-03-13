@@ -7,7 +7,6 @@ sub:
   distro: "RPM"
   export: "export"
   escape: "\\"
-  stack-version: "9.0.0"
 navigation_title: "Install with RPM package"
 applies_to:
   deployment:
