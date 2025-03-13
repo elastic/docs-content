@@ -40,169 +40,20 @@ If you installed {{es}} on Windows with a `.zip` package, you can start {{es}} f
 
 If you're starting {{es}} for the first time, then {{es}} also enables and configures security. [Learn more](/deploy-manage/deploy/self-managed/install-elasticsearch-with-zip-on-windows.md#security-at-startup).
 
-### Debian packages [start-deb]
+### Debian or RPM packages (using `systemd`) [start-deb]
 
-#### Running {{es}} with `systemd` [start-es-deb-systemd]
+:::{include} /deploy-manage/deploy/self-managed/_snippets/systemd-startup.md
+:::
 
-To configure {{es}} to start automatically when the system boots up, run the following commands:
+:::{include} /deploy-manage/deploy/self-managed/_snippets/systemd.md
+:::
 
-```sh
-sudo /bin/systemctl daemon-reload
-sudo /bin/systemctl enable elasticsearch.service
-```
-
-{{es}} can be started and stopped as follows:
-
-```sh
-sudo systemctl start elasticsearch.service
-sudo systemctl stop elasticsearch.service
-```
-
-These commands provide no feedback as to whether {{es}} was started successfully or not. Instead, this information will be written in the log files located in `/var/log/{{es}}/`.
-
-If you have password-protected your {{es}} keystore, you will need to provide `systemd` with the keystore password using a local file and systemd environment variables. This local file should be protected while it exists and may be safely deleted once {{es}} is up and running.
-
-```sh
-echo "keystore_password" > /path/to/my_pwd_file.tmp
-chmod 600 /path/to/my_pwd_file.tmp
-sudo systemctl set-environment ES_KEYSTORE_PASSPHRASE_FILE=/path/to/my_pwd_file.tmp
-sudo systemctl start elasticsearch.service
-```
-
-By default the {{es}} service doesn’t log information in the `systemd` journal. To enable `journalctl` logging, the `--quiet` option must be removed from the `ExecStart` command line in the `elasticsearch.service` file.
-
-When `systemd` logging is enabled, the logging information are available using the `journalctl` commands:
-
-To tail the journal:
-
-```sh
-sudo journalctl -f
-```
-
-To list journal entries for the {{es}} service:
-
-```sh
-sudo journalctl --unit elasticsearch
-```
-
-To list journal entries for the {{es}} service starting from a given time:
-
-```sh
-sudo journalctl --unit elasticsearch --since  "2016-10-30 18:17:16"
-```
-
-Check `man journalctl` or [https://www.freedesktop.org/software/systemd/man/journalctl.html](https://www.freedesktop.org/software/systemd/man/journalctl.html) for more command line options.
-
-::::{admonition} Startup timeouts with older systemd versions
-:class: tip
-
-By default {{es}} sets the `TimeoutStartSec` parameter to `systemd` to `900s`. If you are running at least version 238 of `systemd` then {{es}} can automatically extend the startup timeout, and will do so repeatedly until startup is complete even if it takes longer than 900s.
-
-Versions of `systemd` prior to 238 do not support the timeout extension mechanism and will terminate the {{es}} process if it has not fully started up within the configured timeout. If this happens, {{es}} will report in its logs that it was shut down normally a short time after it started:
-
-```text
-[2022-01-31T01:22:31,077][INFO ][o.e.n.Node               ] [instance-0000000123] starting ...
-...
-[2022-01-31T01:37:15,077][INFO ][o.e.n.Node               ] [instance-0000000123] stopping ...
-```
-
-However the `systemd` logs will report that the startup timed out:
-
-```text
-Jan 31 01:22:30 debian systemd[1]: Starting elasticsearch...
-Jan 31 01:37:15 debian systemd[1]: elasticsearch.service: Start operation timed out. Terminating.
-Jan 31 01:37:15 debian systemd[1]: elasticsearch.service: Main process exited, code=killed, status=15/TERM
-Jan 31 01:37:15 debian systemd[1]: elasticsearch.service: Failed with result 'timeout'.
-Jan 31 01:37:15 debian systemd[1]: Failed to start elasticsearch.
-```
-
-To avoid this, upgrade your `systemd` to at least version 238. You can also temporarily work around the problem by extending the `TimeoutStartSec` parameter.
-
-::::
+:::{include} /deploy-manage/deploy/self-managed/_snippets/systemd-startup-timeout.md
+:::
 
 ### Docker images [start-docker]
 
 If you installed a Docker image, you can start {{es}} from the command line. There are different methods depending on whether you’re using development mode or production mode. See [](../../../deploy-manage/deploy/self-managed/install-elasticsearch-with-docker.md).
-
-### RPM packages [start-rpm]
-
-#### Running {{es}} with `systemd` [start-es-rpm-systemd]
-
-To configure {{es}} to start automatically when the system boots up, run the following commands:
-
-```sh
-sudo /bin/systemctl daemon-reload
-sudo /bin/systemctl enable elasticsearch.service
-```
-
-{{es}} can be started and stopped as follows:
-
-```sh
-sudo systemctl start elasticsearch.service
-sudo systemctl stop elasticsearch.service
-```
-
-These commands provide no feedback as to whether {{es}} was started successfully or not. Instead, this information will be written in the log files located in `/var/log/{{es}}/`.
-
-If you have password-protected your {{es}} keystore, you will need to provide `systemd` with the keystore password using a local file and systemd environment variables. This local file should be protected while it exists and may be safely deleted once {{es}} is up and running.
-
-```sh
-echo "keystore_password" > /path/to/my_pwd_file.tmp
-chmod 600 /path/to/my_pwd_file.tmp
-sudo systemctl set-environment ES_KEYSTORE_PASSPHRASE_FILE=/path/to/my_pwd_file.tmp
-sudo systemctl start elasticsearch.service
-```
-
-By default the {{es}} service doesn’t log information in the `systemd` journal. To enable `journalctl` logging, the `--quiet` option must be removed from the `ExecStart` command line in the `elasticsearch.service` file.
-
-When `systemd` logging is enabled, the logging information are available using the `journalctl` commands:
-
-To tail the journal:
-
-```sh
-sudo journalctl -f
-```
-
-To list journal entries for the {{es}} service:
-
-```sh
-sudo journalctl --unit elasticsearch
-```
-
-To list journal entries for the {{es}} service starting from a given time:
-
-```sh
-sudo journalctl --unit elasticsearch --since  "2016-10-30 18:17:16"
-```
-
-Check `man journalctl` or [https://www.freedesktop.org/software/systemd/man/journalctl.html](https://www.freedesktop.org/software/systemd/man/journalctl.html) for more command line options.
-
-::::{admonition} Startup timeouts with older systemd versions
-:class: tip
-
-By default {{es}} sets the `TimeoutStartSec` parameter to `systemd` to `900s`. If you are running at least version 238 of `systemd` then {{es}} can automatically extend the startup timeout, and will do so repeatedly until startup is complete even if it takes longer than 900s.
-
-Versions of `systemd` prior to 238 do not support the timeout extension mechanism and will terminate the {{es}} process if it has not fully started up within the configured timeout. If this happens, {{es}} will report in its logs that it was shut down normally a short time after it started:
-
-```text
-[2022-01-31T01:22:31,077][INFO ][o.e.n.Node               ] [instance-0000000123] starting ...
-...
-[2022-01-31T01:37:15,077][INFO ][o.e.n.Node               ] [instance-0000000123] stopping ...
-```
-
-However the `systemd` logs will report that the startup timed out:
-
-```text
-Jan 31 01:22:30 debian systemd[1]: Starting elasticsearch...
-Jan 31 01:37:15 debian systemd[1]: elasticsearch.service: Start operation timed out. Terminating.
-Jan 31 01:37:15 debian systemd[1]: elasticsearch.service: Main process exited, code=killed, status=15/TERM
-Jan 31 01:37:15 debian systemd[1]: elasticsearch.service: Failed with result 'timeout'.
-Jan 31 01:37:15 debian systemd[1]: Failed to start elasticsearch.
-```
-
-To avoid this, upgrade your `systemd` to at least version 238. You can also temporarily work around the problem by extending the `TimeoutStartSec` parameter.
-
-::::
 
 ## Stopping {{es}} [stopping-elasticsearch]
 
