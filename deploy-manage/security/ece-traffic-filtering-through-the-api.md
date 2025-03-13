@@ -8,7 +8,7 @@ mapped_urls:
 
 # Manage traffic filtering through the ECE API [ece-traffic-filtering-through-the-api]
 
-This example demonstrates how to use the Elastic Cloud Enterprise RESTful API to manage different types of traffic filters. We cover the following examples:
+This example demonstrates how to use the {{ece}} RESTful API to manage different types of traffic filters. We cover the following examples:
 
 * [Create a traffic filter rule set](ece-traffic-filtering-through-the-api.md#ece-create-a-traffic-filter-rule-set)
 
@@ -19,7 +19,7 @@ This example demonstrates how to use the Elastic Cloud Enterprise RESTful API to
 * [Delete a rule set association with a deployment](ece-traffic-filtering-through-the-api.md#ece-delete-rule-set-association-with-a-deployment)
 * [Delete a traffic filter rule set](ece-traffic-filtering-through-the-api.md#ece-delete-a-rule-set)
 
-Read through the main [Traffic Filtering](traffic-filtering.md) page to learn about the general concepts behind filtering access to your Elastic Cloud Enterprise deployments.
+Read through the main [Traffic Filtering](traffic-filtering.md) page to learn about the general concepts behind filtering access to your {{ece}} deployments.
 
 
 ## Create a traffic filter rule set [ece-create-a-traffic-filter-rule-set] 
