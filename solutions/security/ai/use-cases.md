@@ -6,13 +6,6 @@ mapped_urls:
 
 # Use cases
 
-% What needs to be done: Lift-and-shift
-
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/security-docs/security/assistant-use-cases.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/security-ai-use-cases.md
-
 The guides in this section describe use cases for AI Assistant and Attack discovery. Refer to them for examples of each tool’s individual capabilities and of what they can do together.
 
 * [Triage alerts](/solutions/security/ai/triage-alerts.md)

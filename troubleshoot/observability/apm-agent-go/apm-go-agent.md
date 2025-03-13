@@ -2,6 +2,10 @@
 navigation_title: "APM Go Agent"
 mapped_pages:
   - https://www.elastic.co/guide/en/apm/agent/go/current/troubleshooting.html
+applies_to:
+  stack: all
+  serverless:
+    observability: all
 ---
 
 # Troubleshoot APM Go Agent

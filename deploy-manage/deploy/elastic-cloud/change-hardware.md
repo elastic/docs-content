@@ -24,6 +24,12 @@ Prerequisites:
 Follow these steps to migrate to a different instance configuration, replacing the default `$EC_API_KEY` value with your actual API key:
 
 1. From the  [list of instance configurations available for each region](asciidocalypse://docs/cloud/docs/reference/cloud-hosted/ec-regions-templates-instances.md), select the target instance configuration you want to migrate to.
+
+   ::::{note}
+   The target instance configuration must be compatible with the Elasticsearch tier or stateless resource you are updating. 
+   For example, if you are migrating the hot Elasticsearch tier, the target instance configuration must also be of the `es.datahot` family.
+   ::::
+
 2. Get the deployment update payload from the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body) **Edit** page, by selecting **Equivalent API request**, and store it in a file called `migrate_instance_configuration.json`.
 
     Example payload containing relevant data for migrating the hot Elasticsearch tier:

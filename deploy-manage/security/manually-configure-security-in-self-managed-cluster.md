@@ -9,7 +9,11 @@ mapped_pages:
 
 # Manually configure security in a self-managed cluster [manually-configure-security]
 
-Security needs vary depending on whether you’re developing locally on your laptop or securing all communications in a production environment. Regardless of where you’re deploying the {{stack}} ("ELK"), running a secure cluster is incredibly important to protect your data. That’s why security is [enabled and configured by default](../deploy/self-managed/installing-elasticsearch.md) in {{es}} 8.0 and later.
+:::{note}
+This page describes important aspects to consider and common end-to-end scenarios for securing your self-managed {{stack}}. For a more granular view of the available security options for your clusters and nodes, refer to [](secure-your-cluster-deployment.md).
+:::
+
+Security needs vary depending on whether you’re developing locally on your laptop or securing all communications in a production environment. Regardless of where you’re deploying the {{stack}} ("ELK"), running a secure cluster is incredibly important to protect your data. That’s why security is [enabled and configured by default](../deploy/self-managed/installing-elasticsearch.md) since {{es}} 8.0.
 
 If you want to enable security on an existing, unsecured cluster, use your own Certificate Authority (CA), or would rather manually configure security, the following scenarios provide steps for configuring TLS on the transport layer, plus securing HTTPS traffic if you want it.
 
@@ -58,24 +62,6 @@ If you need mutual (bidirectional) TLS on the HTTP layer, then you’ll need to 
 You then configure {{kib}} and Beats to communicate with {{es}} using TLS so that all communications are encrypted. This level of security is strong, and ensures that any communications in and out of your cluster are secure.
 
 [Set up basic security plus HTTPS traffic](secure-http-communications.md)
-
-## Considerations
-
-### TLS certificate management
-
-TLS certificates apply security controls to network communications. They encrypt data in transit, verify the identity of connecting parties, and help prevent man-in-the-middle attacks.
-
-On **self-managed** installations, you manage certificates for both HTTP and transport layers.
-
-### Network security
-
-Control which systems can access your Elastic deployment through traffic filtering and network controls:
-
-- **IP traffic filtering**: Restrict access based on IP addresses or CIDR ranges.
-
-## Next step: secure your deployments and clusters
-
-This section covered security principles and options at the environment level. You can take further measures individually for each deployment or cluster that you're running on this environment. Refer to [](secure-your-cluster-deployment.md).
 
 
 
