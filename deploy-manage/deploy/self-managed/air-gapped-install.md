@@ -66,7 +66,7 @@ To learn more about installing {{fleet-server}}, refer to the [{{fleet-server}} 
 
 Air-gapped setup of the APM server is possible in two ways:
 
-* By setting up one of the {{agent}} deployments with an APM integration, as described in [Switch a self-installation to the APM integration](/solutions/observability/apps/switch-self-installation-to-apm-integration.md).
+* By setting up one of the {{agent}} deployments with an APM integration, as described in [Switch a self-installation to the APM integration](/solutions/observability/apps/switch-self-installation-to-apm-integration.md). See [air gapped installation guidance for {{agent}}](#air-gapped-elastic-agent).
 * Or, by installing a standalone Elastic APM Server, as described in the [APM configuration documentation](/solutions/observability/apps/configure-apm-server.md).
 
 
