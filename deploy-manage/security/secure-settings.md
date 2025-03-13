@@ -28,22 +28,22 @@ $$$creating-keystore$$$
 Some settings are sensitive, and relying on filesystem permissions to protect their values is not sufficient. Depending on the settings you need to protect, you can use:
 
 - [The {{es}} keystore](secure-settings.md#the-es-keystore) and the [`elasticsearch-keystore` tool](elasticsearch://reference/elasticsearch/command-line-tools/elasticsearch-keystore.md) to manage {{es}} settings.
-- [The Kibana keystore](secure-settings.md#the-kib-keystore) and the `kibana-keystore` tool to manage {{kib}} settings.
+- [The {{kib}} keystore](secure-settings.md#the-kib-keystore) and the `kibana-keystore` tool to manage {{kib}} settings.
 - [Kubernetes secrets](secure-settings.md#kubernetes-secrets), if you are using {{eck}}.
 
 
 :::{important} 
-Only some settings are designed to be read from the keystore. However, the keystore has no validation to block unsupported settings. Adding unsupported settings to the keystore causes [reload_secure_settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-reload-secure-settings) to fail and if not addressed, Elasticsearch will fail to start. To check whether a setting is supported in the keystore, look for a "Secure" qualifier in the [setting reference](/reference/index.md).
+Only some settings are designed to be read from the keystore. However, the keystore has no validation to block unsupported settings. Adding unsupported settings to the keystore causes [reload_secure_settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-reload-secure-settings) to fail and if not addressed, {{es}} will fail to start. To check whether a setting is supported in the keystore, look for a "Secure" qualifier in the [setting reference](/reference/index.md).
 :::
 
 ## The {{es}} keystore
 
-With the Elasticsearch keystore, you can add a key and its secret value, then use the key in place of the secret value when you configure your sensitive settings.
+With the {{es}} keystore, you can add a key and its secret value, then use the key in place of the secret value when you configure your sensitive settings.
 
 :::::{tab-set}
 :group: deployment-type
 
-::::{tab-item} Elastic Cloud
+::::{tab-item} {{ecloud}}
 :sync: cloud
 
 There are three types of secrets that you can use:
@@ -63,10 +63,10 @@ Add keys and secret values to the keystore.
     On the **Deployments** page you can narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
 
 3. From your deployment menu, select **Security**.
-4. Locate **Elasticsearch keystore** and select **Add settings**.
+4. Locate **{{es}} keystore** and select **Add settings**.
 5. On the **Create setting** window, select the secret **Type**.
 6. Configure the settings, then select **Save**.
-7. All the modifications to the non-reloadable keystore take effect only after restarting Elasticsearch. Reloadable keystore changes take effect after issuing a [reload_secure_settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-reload-secure-settings) API request.
+7. All the modifications to the non-reloadable keystore take effect only after restarting {{es}}. Reloadable keystore changes take effect after issuing a [reload_secure_settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-reload-secure-settings) API request.
 
 
 **Delete secret values**
@@ -81,7 +81,7 @@ When your keys and secret values are no longer needed, delete them from the keys
 3. From your deployment menu, select **Security**.
 4. From the **Existing keystores** list, use the delete icon next to the **Setting Name** that you want to delete.
 5. On the **Confirm to delete** window, select **Confirm**.
-6. All modifications to the non-reloadable keystore take effect only after restarting Elasticsearch. Reloadable keystore changes take effect after issuing a [reload_secure_settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-reload-secure-settings) API request.
+6. All modifications to the non-reloadable keystore take effect only after restarting {{es}}. Reloadable keystore changes take effect after issuing a [reload_secure_settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-reload-secure-settings) API request.
 
 ::::
 
@@ -105,10 +105,10 @@ Add keys and secret values to the keystore.
     Narrow the list by name, ID, or choose from several other filters. To further define the list, use a combination of filters.
 
 3. From your deployment menu, select **Security**.
-4. Locate **Elasticsearch keystore** and select **Add settings**.
+4. Locate **{{es}} keystore** and select **Add settings**.
 5. On the **Create setting** window, select the secret **Type**.
 6. Configure the settings, then select **Save**.
-7. All the modifications to the non-reloadable keystore take effect only after restarting Elasticsearch. Reloadable keystore changes take effect after issuing a [reload_secure_settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-reload-secure-settings) API request.
+7. All the modifications to the non-reloadable keystore take effect only after restarting {{es}}. Reloadable keystore changes take effect after issuing a [reload_secure_settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-reload-secure-settings) API request.
 
 
 
@@ -124,7 +124,7 @@ When your keys and secret values are no longer needed, delete them from the keys
 3. From your deployment menu, select **Security**.
 4. From the **Existing keystores** list, use the delete icon next to the **Setting Name** that you want to delete.
 5. On the **Confirm to delete** window, select **Confirm**.
-6. All modifications to the non-reloadable keystore take effect only after restarting Elasticsearch. Reloadable keystore changes take effect after issuing a [reload_secure_settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-reload-secure-settings) API request.
+6. All modifications to the non-reloadable keystore take effect only after restarting {{es}}. Reloadable keystore changes take effect after issuing a [reload_secure_settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-reload-secure-settings) API request.
 
 :::{dropdown} Using the API
 
@@ -148,7 +148,7 @@ curl -k -X PATCH -H "Authorization: ApiKey $ECE_API_KEY" https://$COORDINATOR_HO
 ```
 
 `ELASTICSEARCH_CLUSTER_ID`
-:   The Elasticsearch cluster ID as shown in the Cloud UI or obtained through the API
+:   The {{es}} cluster ID as shown in the Cloud UI or obtained through the API
 
 List the keys defined in the keystore:
 
@@ -272,7 +272,7 @@ deployment:
   self: ga
 ```
 
-Some settings are sensitive, and relying on filesystem permissions to protect their values is not sufficient. For this use case, Kibana provides a keystore, and the `kibana-keystore` tool to manage the settings in the keystore.
+Some settings are sensitive, and relying on filesystem permissions to protect their values is not sufficient. For this use case, {{kib}} provides a keystore, and the `kibana-keystore` tool to manage the settings in the keystore.
 
 ::::{note} 
 * Run all commands as the user who runs {{kib}}.
@@ -309,13 +309,13 @@ Your input will be JSON-parsed to allow for object/array input configurations. T
 ::::
 
 
-Sensitive string settings, like authentication credentials for Elasticsearch can be added using the `add` command:
+Sensitive string settings, like authentication credentials for {{es}} can be added using the `add` command:
 
 ```sh
 bin/kibana-keystore add the.setting.name.to.set
 ```
 
-Once added to the keystore, these setting will be automatically applied to this instance of Kibana when started. For example if you do
+Once added to the keystore, these setting will be automatically applied to this instance of {{kib}} when started. For example if you do
 
 ```sh
 bin/kibana-keystore add elasticsearch.username
@@ -371,7 +371,7 @@ deployment:
   eck: ga
 ```
 
-You can specify [secure settings](/deploy-manage/security/secure-settings.md) with [Kubernetes secrets](https://kubernetes.io/docs/concepts/configuration/secret/). The secrets should contain a key-value pair for each secure setting you want to add. ECK automatically injects these settings into the keystore on each Elasticsearch node before it starts Elasticsearch. The ECK operator continues to watch the secrets for changes and will update the Elasticsearch keystore when it detects a change.
+You can specify [secure settings](/deploy-manage/security/secure-settings.md) with [Kubernetes secrets](https://kubernetes.io/docs/concepts/configuration/secret/). The secrets should contain a key-value pair for each secure setting you want to add. ECK automatically injects these settings into the keystore on each {{es}} node before it starts {{es}}. The ECK operator continues to watch the secrets for changes and will update the {{es}} keystore when it detects a change.
 
 ### Basic usage [k8s_basic_usage]
 
@@ -384,7 +384,7 @@ spec:
   - secretName: two-secure-settings-secret
 ```
 
-For the following secret, a `gcs.client.default.credentials_file` key will be created in Elasticsearch’s keystore with the provided value:
+For the following secret, a `gcs.client.default.credentials_file` key will be created in {{es}}’s keystore with the provided value:
 
 ```yaml
 apiVersion: v1
@@ -430,7 +430,7 @@ spec:
       path: gcs.client.client_2.credentials_file
 ```
 
-For the three entries listed in the `gcs-secure-settings` secret, three keys are created in Elasticsearch’s keystore:
+For the three entries listed in the `gcs-secure-settings` secret, three keys are created in {{es}}’s keystore:
 
 * `gcs.client.default.credentials_file`
 * `gcs.client.client_1.credentials_file`
@@ -489,6 +489,6 @@ stringData:
 
 ### More examples [k8s_more_examples]
 
-Check [How to create automated snapshots](/deploy-manage/tools/snapshot-and-restore/cloud-on-k8s.md) for an example use case that illustrates how secure settings can be used to set up automated Elasticsearch snapshots to a GCS storage bucket.
+Check [How to create automated snapshots](/deploy-manage/tools/snapshot-and-restore/cloud-on-k8s.md) for an example use case that illustrates how secure settings can be used to set up automated {{es}} snapshots to a GCS storage bucket.
 
 

@@ -30,8 +30,8 @@ Configuring dm-crypt or similar technologies is outside the scope of the Elastic
 However, some native features are available for you to protect sensitive data and objects:
 
 - Store sensitive settings using the [{{es}} or {{kib}} keystores](secure-settings.md).
-- Enable [encryption for Kibana saved objects](secure-saved-objects.md).
-- Customize [Kibana session parameters](kibana-session-management.md).
+- Enable [encryption for {{kib}} saved objects](secure-saved-objects.md).
+- Customize [{{kib}} session parameters](kibana-session-management.md).
 
 
 
