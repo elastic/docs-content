@@ -6,7 +6,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-encrypt-with-cmek.html
 ---
 
-# Encrypt your deployment with a customer-managed encryption key [ec-encrypt-with-cmek]
+# Use a customer-managed encryption key [ec-encrypt-with-cmek]
 
 The following information applies to your {{ech}} deployments. 
 
