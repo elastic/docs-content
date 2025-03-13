@@ -64,7 +64,7 @@ For self-managed {{kib}}:
     ::::
 
 2. Set the `notifications.connectors.default.email` {{kib}} setting to the name of your email connector.
-3. If you want the email notifications to contain links back to the case, you must configure the [server.publicBaseUrl](/deploy-manage/deploy/self-managed/configure.md#server-publicBaseUrl) setting.
+3. If you want the email notifications to contain links back to the case, you must configure the [server.publicBaseUrl](kibana://reference/configuration-reference/general-settings.md#server-publicbaseurl) setting.
 
 When you subsequently add assignees to cases, they receive an email.
 

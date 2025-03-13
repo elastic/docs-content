@@ -63,7 +63,7 @@ At some point, you might want to dispose of old encryption keys completely. Make
 
 ## Docker configuration [encryption-key-docker-configuration]
 
-It’s also possible to configure the encryption keys using [Docker environment variables](../deploy/self-managed/install-with-docker.md#environment-variable-config).
+It’s also possible to configure the encryption keys using [Docker environment variables](../deploy/self-managed/install-kibana-with-docker.md#environment-variable-config).
 
 Docker environment variable examples:
 

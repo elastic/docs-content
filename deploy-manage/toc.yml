@@ -289,8 +289,9 @@ toc:
           - file: deploy/cloud-on-k8s/tools-apis.md
       - file: deploy/self-managed.md
         children:
-          - file: deploy/self-managed/deploy-cluster.md
+          - file: deploy/self-managed/installing-elasticsearch.md
             children:
+              - file: deploy/self-managed/local-development-installation-quickstart.md
               - file: deploy/self-managed/important-system-configuration.md
                 children:
                   - file: deploy/self-managed/setting-system-settings.md
@@ -301,44 +302,31 @@ toc:
                   - file: deploy/self-managed/networkaddress-cache-ttl.md
                   - file: deploy/self-managed/executable-jna-tmpdir.md
                   - file: deploy/self-managed/system-config-tcpretries.md
-              - file: deploy/self-managed/installing-elasticsearch.md
+                  - file: deploy/self-managed/bootstrap-checks.md
+              - file: deploy/self-managed/install-elasticsearch-from-archive-on-linux-macos.md
+              - file: deploy/self-managed/install-elasticsearch-with-zip-on-windows.md
+              - file: deploy/self-managed/install-elasticsearch-with-debian-package.md
+              - file: deploy/self-managed/install-elasticsearch-with-rpm.md
+              - file: deploy/self-managed/install-elasticsearch-with-docker.md
                 children:
-                  - file: deploy/self-managed/install-elasticsearch-from-archive-on-linux-macos.md
-                  - file: deploy/self-managed/install-elasticsearch-with-zip-on-windows.md
-                  - file: deploy/self-managed/install-elasticsearch-with-debian-package.md
-                  - file: deploy/self-managed/install-elasticsearch-with-rpm.md
-                  - file: deploy/self-managed/install-elasticsearch-with-docker.md
-              - file: deploy/self-managed/local-development-installation-quickstart.md
-              - file: deploy/self-managed/bootstrap-checks.md
-                children:
-                  - file: deploy/self-managed/bootstrap-checks-heap-size.md
-                  - file: deploy/self-managed/bootstrap-checks-file-descriptor.md
-                  - file: deploy/self-managed/bootstrap-checks-memory-lock.md
-                  - file: deploy/self-managed/max-number-threads-check.md
-                  - file: deploy/self-managed/bootstrap-checks-max-file-size.md
-                  - file: deploy/self-managed/max-size-virtual-memory-check.md
-                  - file: deploy/self-managed/bootstrap-checks-max-map-count.md
-                  - file: deploy/self-managed/bootstrap-checks-client-jvm.md
-                  - file: deploy/self-managed/bootstrap-checks-serial-collector.md
-                  - file: deploy/self-managed/bootstrap-checks-syscall-filter.md
-                  - file: deploy/self-managed/bootstrap-checks-onerror.md
-                  - file: deploy/self-managed/bootstrap-checks-early-access.md
-                  - file: deploy/self-managed/bootstrap-checks-all-permission.md
-                  - file: deploy/self-managed/bootstrap-checks-discovery-configuration.md
+                  - file: deploy/self-managed/install-elasticsearch-docker-basic.md
+                  - file: deploy/self-managed/install-elasticsearch-docker-compose.md
+                  - file: deploy/self-managed/install-elasticsearch-docker-prod.md
+                  - file: deploy/self-managed/install-elasticsearch-docker-configure.md
+
           - file: deploy/self-managed/configure-elasticsearch.md
             children:
               - file: deploy/self-managed/important-settings-configuration.md
-              - file: deploy/self-managed/other-configuration-settings.md
               - file: deploy/self-managed/plugins.md
           - file: deploy/self-managed/install-kibana.md
             children:
-              - file: deploy/self-managed/install-from-archive-on-linux-macos.md
-              - file: deploy/self-managed/install-on-windows.md
-              - file: deploy/self-managed/install-with-debian-package.md
-              - file: deploy/self-managed/install-with-rpm.md
-              - file: deploy/self-managed/install-with-docker.md
-              - file: deploy/self-managed/configure.md
-              - file: deploy/self-managed/access.md
+              - file: deploy/self-managed/install-kibana-from-archive-on-linux-macos.md
+              - file: deploy/self-managed/install-kibana-on-windows.md
+              - file: deploy/self-managed/install-kibana-with-debian-package.md
+              - file: deploy/self-managed/install-kibana-with-rpm.md
+              - file: deploy/self-managed/install-kibana-with-docker.md
+          - file: deploy/self-managed/configure-kibana.md
+          - file: deploy/self-managed/access-kibana.md
           - file: deploy/self-managed/air-gapped-install.md
           - file: deploy/self-managed/tools-apis.md
       - file: deploy/kibana-reporting-configuration.md

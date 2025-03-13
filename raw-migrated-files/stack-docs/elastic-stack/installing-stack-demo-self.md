@@ -4,19 +4,6 @@ This tutorial demonstrates how to install and configure the {{stack}} in a self-
 
 It should take between one and two hours to complete these steps.
 
-* [Prerequisites and assumptions](../../../deploy-manage/deploy/self-managed/installing-elasticsearch.md#install-stack-self-prereqs)
-* [{{stack}} overview](../../../deploy-manage/deploy/self-managed/installing-elasticsearch.md#install-stack-self-overview)
-* [Step 1: Set up the first {{es}} node](../../../deploy-manage/deploy/self-managed/installing-elasticsearch.md#install-stack-self-elasticsearch-first)
-* [Step 2: Configure the first {{es}} node for connectivity](../../../deploy-manage/deploy/self-managed/installing-elasticsearch.md#install-stack-self-elasticsearch-config)
-* [Step 3: Start {{es}}](../../../deploy-manage/deploy/self-managed/installing-elasticsearch.md#install-stack-self-elasticsearch-start)
-* [Step 4: Set up a second {{es}} node](../../../deploy-manage/deploy/self-managed/installing-elasticsearch.md#install-stack-self-elasticsearch-second)
-* [Step 5: Set up additional {{es}} nodes](../../../deploy-manage/deploy/self-managed/installing-elasticsearch.md#install-stack-self-elasticsearch-third)
-* [Step 6: Install {{kib}}](../../../deploy-manage/deploy/self-managed/installing-elasticsearch.md#install-stack-self-kibana)
-* [Step 7: Install {{fleet-server}}](../../../deploy-manage/deploy/self-managed/installing-elasticsearch.md#install-stack-self-fleet-server)
-* [Step 8: Install {{agent}}](../../../deploy-manage/deploy/self-managed/installing-elasticsearch.md#install-stack-self-elastic-agent)
-* [Step 9: View your system data](../../../deploy-manage/deploy/self-managed/installing-elasticsearch.md#install-stack-self-view-data)
-* [Next steps](../../../deploy-manage/deploy/self-managed/installing-elasticsearch.md#install-stack-self-next-steps)
-
 ::::{important}
 If you’re using these steps to configure a production cluster that uses trusted CA-signed certificates for secure communications, after completing Step 6 to install {{kib}} we recommend jumping directly to [Tutorial 2: Securing a self-managed {{stack}}](../../../deploy-manage/security/secure-your-cluster-deployment.md).
 
@@ -90,7 +77,7 @@ To begin, use RPM to install {{es}} on the first host. This initial {{es}} insta
     shasum -a 512 -c elasticsearch-9.0.0-beta1-x86_64.rpm.sha512
     ```
 
-    The command should return: `elasticsearch-{{version}}-x86_64.rpm: OK`.
+    The command should return: `elasticsearch-<version>-x86_64.rpm: OK`.
 
 6. Run the {{es}} install command:
 
@@ -104,7 +91,7 @@ To begin, use RPM to install {{es}} on the first host. This initial {{es}} insta
     * Certificates and keys for TLS are generated for the transport and HTTP layer, and TLS is enabled and configured with these keys and certificates.
 
 7. Copy the terminal output from the install command to a local file. In particular, you’ll need the password for the built-in `elastic` superuser account. The output also contains the commands to enable {{es}} to run as a service, which you’ll use in the next step.
-8. Run the following two commands to enable {{es}} to run as a service using `systemd`. This enables {{es}} to start automatically when the host system reboots. You can find details about this and the following steps in [Running {{es}} with `systemd`](../../../deploy-manage/maintenance/start-stop-services/start-stop-elasticsearch.md#start-es-deb-systemd).
+8. Run the following two commands to enable {{es}} to run as a service using `systemd`. This enables {{es}} to start automatically when the host system reboots. You can find details about this and the following steps in [Running {{es}} with `systemd`](../../../deploy-manage/maintenance/start-stop-services/start-stop-elasticsearch.md#start-deb).
 
     ```sh
     sudo systemctl daemon-reload
@@ -207,7 +194,7 @@ Before moving ahead to configure additional {{es}} nodes, you’ll need to updat
 
 ## Step 4: Set up a second {{es}} node [install-stack-self-elasticsearch-second]
 
-To set up a second {{es}} node, the initial steps are similar to those that you followed for [Step 1: Set up the first {{es}} node](../../../deploy-manage/deploy/self-managed/installing-elasticsearch.md#install-stack-self-elasticsearch-first).
+To set up a second {{es}} node, the initial steps are similar to those that you followed for [Step 1: Set up the first {{es}} node](#install-stack-self-elasticsearch-first).
 
 1. Log in to the host where you’d like to set up your second {{es}} instance.
 2. Create a working directory for the installation package:
@@ -374,12 +361,12 @@ To set up a second {{es}} node, the initial steps are similar to those that you 
 
 ## Step 5: Set up additional {{es}} nodes [install-stack-self-elasticsearch-third]
 
-To set up your next {{es}} node, follow exactly the same steps as you did previously in [Step 4: Set up a second {{es}} node](../../../deploy-manage/deploy/self-managed/installing-elasticsearch.md#install-stack-self-elasticsearch-second). The process is identical for each additional {{es}} node that you would like to add to the cluster. As a recommended best practice, create a new enrollment token for each new node that you add.
+To set up your next {{es}} node, follow exactly the same steps as you did previously in [Step 4: Set up a second {{es}} node](#install-stack-self-elasticsearch-second). The process is identical for each additional {{es}} node that you would like to add to the cluster. As a recommended best practice, create a new enrollment token for each new node that you add.
 
 
 ## Step 6: Install {{kib}} [install-stack-self-kibana]
 
-As with {{es}}, you can use RPM to install {{kib}} on another host. You can find details about all of the following steps in the section [Install {{kib}} with RPM](../../../deploy-manage/deploy/self-managed/install-with-rpm.md#install-rpm).
+As with {{es}}, you can use RPM to install {{kib}} on another host. You can find details about all of the following steps in the section [Install {{kib}} with RPM](../../../deploy-manage/deploy/self-managed/install-kibana-with-rpm.md#install-rpm).
 
 1. Log in to the host where you’d like to install {{kib}} and create a working directory for the installation package:
 
@@ -406,7 +393,7 @@ As with {{es}}, you can use RPM to install {{kib}} on another host. You can find
     shasum -a 512 -c kibana-9.0.0-beta1-x86_64.rpm.sha512
     ```
 
-    The command should return: `kibana-{{version}}-x86_64.rpm: OK`.
+    The command should return: `kibana-<version>-x86_64.rpm: OK`.
 
 5. Run the {{kib}} install command:
 
@@ -432,7 +419,7 @@ As with {{es}}, you can use RPM to install {{kib}} on another host. You can find
     sudo systemctl enable kibana.service
     ```
 
-10. Before starting the {{kib}} service there’s one configuration change to make, to set {{kib}} to run on the {{es}} host IP address. This is done by updating the settings in the `kibana.yml` file. For details about all available settings refer to [Configure {{kib}}](../../../deploy-manage/deploy/self-managed/configure.md).
+10. Before starting the {{kib}} service there’s one configuration change to make, to set {{kib}} to run on the {{es}} host IP address. This is done by updating the settings in the `kibana.yml` file. For details about all available settings refer to [Configure {{kib}}](kibana://reference/configuration-reference/general-settings.md).
 11. In a terminal, run the `ifconfig` command and copy the value for the host inet IP address.
 12. Open the {{kib}} configuration file for editing:
 
