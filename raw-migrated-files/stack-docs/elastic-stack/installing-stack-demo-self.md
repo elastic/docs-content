@@ -91,7 +91,7 @@ To begin, use RPM to install {{es}} on the first host. This initial {{es}} insta
     * Certificates and keys for TLS are generated for the transport and HTTP layer, and TLS is enabled and configured with these keys and certificates.
 
 7. Copy the terminal output from the install command to a local file. In particular, you’ll need the password for the built-in `elastic` superuser account. The output also contains the commands to enable {{es}} to run as a service, which you’ll use in the next step.
-8. Run the following two commands to enable {{es}} to run as a service using `systemd`. This enables {{es}} to start automatically when the host system reboots. You can find details about this and the following steps in [Running {{es}} with `systemd`](../../../deploy-manage/maintenance/start-stop-services/start-stop-elasticsearch.md#start-es-deb-systemd).
+8. Run the following two commands to enable {{es}} to run as a service using `systemd`. This enables {{es}} to start automatically when the host system reboots. You can find details about this and the following steps in [Running {{es}} with `systemd`](../../../deploy-manage/maintenance/start-stop-services/start-stop-elasticsearch.md#start-deb).
 
     ```sh
     sudo systemctl daemon-reload
