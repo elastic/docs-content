@@ -43,3 +43,5 @@ Refer to the following documentation to learn how to perform key configuration t
 * Present a [user access agreement](/deploy-manage/users-roles/cluster-or-deployment-auth/access-agreement.md) when logging on to {{kib}}
 * Review [considerations for using {{kib}} in production](/deploy-manage/production-guidance/kibana-in-production-environments.md), including using load balancers
 * [Monitor events inside and outside of {{kib}}](/deploy-manage/monitor.md)
+* [Configure logging](/deploy-manage/monitor/logging-configuration.md)
+* [Secure](/deploy-manage/security.md) {{kib}} communications and resources
