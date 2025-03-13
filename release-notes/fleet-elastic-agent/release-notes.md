@@ -26,7 +26,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 
 ## 9.0.0 [fleet-elastic-agent-900-release-notes]
-**Release date:** April 1, 2025
+**Release date:** April 2, 2025
 
 ### Features and enhancements [fleet-elastic-agent-900-features-enhancements]
 

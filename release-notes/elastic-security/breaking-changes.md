@@ -1,9 +1,8 @@
 ---
 navigation_title: "Elastic Security"
 ---
-
 # {{elastic-sec}} breaking changes [elastic-security-breaking-changes]
-Before you upgrade, carefully review the {{elastic-sec}} breaking changes and take the necessary steps to mitigate any issues. 
+Breaking changes can impact your Elastic applications, potentially disrupting normal operations. Before you upgrade, carefully review the {{elastic-sec}} breaking changes and take the necessary steps to mitigate any issues. 
 
 To learn how to upgrade, check [Upgrade](/deploy-manage/upgrade.md).
 
@@ -18,7 +17,7 @@ To learn how to upgrade, check [Upgrade](/deploy-manage/upgrade.md).
 % ::::
 
 ## 9.0.0 [elastic-security-900-breaking-changes]
-**Release date:** April 1, 2025
+**Release date:** April 2, 2025
 
 ::::{dropdown} Removed legacy security rules bulk endpoints
 * `POST /api/detection_engine/rules/_bulk_create` has been replaced by `POST /api/detection_engine/rules/_import`

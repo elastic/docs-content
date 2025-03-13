@@ -1,13 +1,13 @@
 ---
-navigation_title: "Fleet and Elastic Agent"
+navigation_title: "Elastic Observability"
 ---
 
-# {{fleet}} and {{agent}} breaking changes [fleet-elastic-agent-breaking-changes]
-Before you upgrade, carefully review the {{fleet}} and {{agent}} breaking changes and take the necessary steps to mitigate any issues. 
+# Elastic {{observability}} breaking changes [elastic-observability-breaking-changes]
+Breaking changes can impact your Elastic applications, potentially disrupting normal operations. Before you upgrade, carefully review the Elastic {{observability}} breaking changes and take the necessary steps to mitigate any issues. 
 
 To learn how to upgrade, check [Upgrade](/deploy-manage/upgrade.md).
 
-% ## Next version [fleet-elastic-agent-nextversion-breaking-changes]
+% ## Next version [elastic-observability-nextversion-breaking-changes]
 % **Release date:** Month day, year
 
 % ::::{dropdown} Title of breaking change 
@@ -17,8 +17,8 @@ To learn how to upgrade, check [Upgrade](/deploy-manage/upgrade.md).
 % **Action**<br> Steps for mitigating deprecation impact.
 % ::::
 
-% ## 9.0.0 [fleet-elastic-agent-900-breaking-changes]
-% **Release date:** April 1, 2025
+% ## 9.0.0 [elastic-observability-900-breaking-changes]
+% **Release date:** April 2, 2025
 
 % ::::{dropdown} Title of breaking change 
 % Description of the breaking change.
