@@ -49,9 +49,6 @@ toc:
       - file: cloud/cloud-enterprise/ece-snapshots.md
       - file: cloud/cloud-enterprise/ece-stack-getting-started.md
       - file: cloud/cloud-enterprise/ece-terminate-deployment.md
-      - file: cloud/cloud-enterprise/ece-traffic-filtering-deployment-configuration.md
-      - file: cloud/cloud-enterprise/ece-traffic-filtering-ip.md
-      - file: cloud/cloud-enterprise/ece-traffic-filtering-through-the-api.md
       - file: cloud/cloud-enterprise/ece-troubleshooting.md
       - file: cloud/cloud-enterprise/ece-upgrade-deployment.md
       - file: cloud/cloud-enterprise/ece-upgrade.md
@@ -81,11 +78,6 @@ toc:
       - file: cloud/cloud-heroku/ech-saas-metrics-accessing.md
       - file: cloud/cloud-heroku/ech-security.md
       - file: cloud/cloud-heroku/ech-snapshot-restore.md
-      - file: cloud/cloud-heroku/ech-traffic-filtering-deployment-configuration.md
-      - file: cloud/cloud-heroku/ech-traffic-filtering-ip.md
-      - file: cloud/cloud-heroku/ech-traffic-filtering-psc.md
-      - file: cloud/cloud-heroku/ech-traffic-filtering-vnet.md
-      - file: cloud/cloud-heroku/ech-traffic-filtering-vpc.md
       - file: cloud/cloud-heroku/ech-upgrade-deployment.md
   - file: cloud/cloud/index.md
     children:
@@ -125,12 +117,6 @@ toc:
       - file: cloud/cloud/ec-select-subscription-level.md
       - file: cloud/cloud/ec-service-status.md
       - file: cloud/cloud/ec-snapshot-restore.md
-      - file: cloud/cloud/ec-traffic-filtering-deployment-configuration.md
-      - file: cloud/cloud/ec-traffic-filtering-ip.md
-      - file: cloud/cloud/ec-traffic-filtering-psc.md
-      - file: cloud/cloud/ec-traffic-filtering-through-the-api.md
-      - file: cloud/cloud/ec-traffic-filtering-vnet.md
-      - file: cloud/cloud/ec-traffic-filtering-vpc.md
       - file: cloud/cloud/ec-upgrade-deployment.md
   - file: docs-content/serverless/index.md
     children:
