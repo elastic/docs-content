@@ -139,6 +139,7 @@ Tail-based sampling, by definition, requires storing events locally temporarily,
 
 It requires disk storage proportional to traffic received by APM, and additional memory to facilitate disk reads and writes.
 
+It is recommended to use fast disks, for example, NVMe SSDs, when tail-based sampling is enabled, as disk throughput and IO will be the performance bottleneck to tail-based sampling, and APM ingestion as a whole.
 
 ## Sampled data and visualizations [_sampled_data_and_visualizations]
 
