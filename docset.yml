@@ -401,3 +401,7 @@ subs:
   icon-bug:   "pass:[<span class=\"eui-icon icon-bug\"></span>]"
   icon-checkInCircleFilled:   "pass:[<span class=\"eui-icon icon-checkInCircleFilled\"></span>]"
   icon-warningFilled:   "pass:[<span class=\"eui-icon icon-warningFilled\"></span>]"
+  stack-version: "9.0.0"
+  eck_version: "3.0.0"
+  apm_server_version: "9.0.0"
+  version: "9.0.0"

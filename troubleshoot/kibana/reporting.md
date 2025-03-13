@@ -59,7 +59,7 @@ Create a Markdown visualization and then create a PDF report. If this succeeds, 
 logging.root.level: all
 ```
 
-For more information about logging, check out [Kibana configuration settings](../../deploy-manage/deploy/self-managed/configure.md#logging-root-level).
+For more information about logging, check out [Kibana configuration settings](kibana://reference/configuration-reference/general-settings.md#logging-root-level).
 
 
 

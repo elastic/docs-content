@@ -91,10 +91,10 @@ Temporary {{data-sources}} are not available in the **Management** menu.
 
 
 ### Use {{data-sources}} with rolled up data [rollup-data-view]
-::::{applies_to}
-:serverless: unavailable
-:stack: deprecated
-::::
+```{applies_to}
+serverless: unavailable
+stack: deprecated
+```
 
 ::::{admonition}
 :class: warning
@@ -113,10 +113,10 @@ For an example, refer to [Create and visualize rolled up data](/manage-data/life
 
 
 ### Use {{data-sources}} with {{ccs}} [management-cross-cluster-search]
-::::{applies_to}
-:serverless: unavailable
-:stack: ga
-::::
+```{applies_to}
+serverless: unavailable
+stack: ga
+```
 
 If your {{es}} clusters are configured for [{{ccs}}](../../solutions/search/cross-cluster-search.md), you can create a {{data-source}} to search across the clusters of your choosing. Specify data streams, indices, and aliases in a remote cluster using the following syntax:
 

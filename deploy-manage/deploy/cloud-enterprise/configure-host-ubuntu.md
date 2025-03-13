@@ -238,7 +238,7 @@ You can specify `--log-opt max-size` and `--log-opt max-file` to define the Dock
 
 1. Update `/etc/systemd/system/docker.service.d/docker.conf`. If the file path and file do not exist, create them first.
 
-    ```sh
+    ```ini
     [Unit]
     Description=Docker Service
     After=multi-user.target

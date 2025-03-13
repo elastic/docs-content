@@ -1,3 +1,8 @@
+---
+mapped_urls:
+  - https://www.elastic.co/guide/en/elasticsearch/reference/current/elasticsearch-intro-deploy.html
+---
+
 # Deployment options [elasticsearch-intro-deploy]
 
 Use this page for a quick overview of your options for deploying Elastic.

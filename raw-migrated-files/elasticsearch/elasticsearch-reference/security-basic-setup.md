@@ -8,7 +8,7 @@ navigation_title: "Set up basic security"
 When you start {{es}} for the first time, passwords are generated for the `elastic` user and TLS is automatically configured for you. If you configure security manually *before* starting your {{es}} nodes, the auto-configuration process will respect your security configuration. You can adjust your TLS configuration at any time, such as [updating node certificates](../../../deploy-manage/security/updating-certificates.md).
 
 ::::{important}
-If your cluster has multiple nodes, then you must configure TLS between nodes. [Production mode](bootstrap-checks.md#dev-vs-prod-mode) clusters will not start if you do not enable TLS.
+If your cluster has multiple nodes, then you must configure TLS between nodes. [Production mode](/deploy-manage/deploy/self-managed/bootstrap-checks.md#dev-vs-prod-mode) clusters will not start if you do not enable TLS.
 ::::
 
 
@@ -126,7 +126,7 @@ Complete the following steps **for each node in your cluster**. To join the same
 
 ## What’s next? [encrypting-internode-whatsnext]
 
-Congratulations! You’ve encrypted communications between the nodes in your cluster and can pass the [TLS bootstrap check](bootstrap-checks-xpack.md#bootstrap-checks-tls).
+Congratulations! You’ve encrypted communications between the nodes in your cluster and can pass the [TLS bootstrap check](/deploy-manage/deploy/self-managed/bootstrap-checks.md#bootstrap-checks-tls).
 
 To add another layer of security, [Set up basic security for the Elastic Stack plus secured HTTPS traffic](security-basic-setup-https.md). In addition to configuring TLS on the transport interface of your {{es}} cluster, you configure TLS on the HTTP interface for both {{es}} and {{kib}}.
 
