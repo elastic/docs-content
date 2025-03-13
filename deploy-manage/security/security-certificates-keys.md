@@ -140,10 +140,10 @@ If the auto-configuration process already completed, you can still obtain the fi
 openssl x509 -fingerprint -sha256 -in config/certs/http_ca.crt
 ```
 
-The command returns the security certificate, including the fingerprint. The `issuer` should be `Elasticsearch security auto-configuration HTTP CA`.
+The command returns the security certificate, including the fingerprint. The `issuer` should be `{{es}} security auto-configuration HTTP CA`.
 
 ```sh
-issuer= /CN=Elasticsearch security auto-configuration HTTP CA
+issuer= /CN={{es}} security auto-configuration HTTP CA
 SHA256 Fingerprint=<fingerprint>
 ```
 

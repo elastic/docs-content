@@ -536,7 +536,7 @@ Now that the transport and HTTP layers are configured with encryption using the 
     elasticsearch.ssl.certificateAuthorities: [/etc/kibana/elasticsearch-ca.pem]
     ```
 
-5. Log in to the first Elasticsearch node and use the certificate utility to generate a certificate bundle for the Kibana server. This certificate will be used to encrypt the traffic between Kibana and the client’s browser. In the command, replace <DNS name> and <IP address> with the name and IP address of your Kibana server host:
+5. Log in to the first {{es}} node and use the certificate utility to generate a certificate bundle for the {{kib}} server. This certificate will be used to encrypt the traffic between {{kib}} and the client’s browser. In the command, replace <DNS name> and <IP address> with the name and IP address of your {{kib}} server host:
 
     ```shell
     sudo /usr/share/elasticsearch/bin/elasticsearch-certutil cert --name kibana-server --ca-cert /etc/elasticsearch/certs/ca/ca.crt --ca-key /etc/elasticsearch/certs/ca/ca.key  --dns <DNS name> --ip <IP address> --pem
@@ -544,7 +544,7 @@ Now that the transport and HTTP layers are configured with encryption using the 
 
     When prompted, specify a unique name for the output file, such as `kibana-cert-bundle.zip`.
 
-6. Copy the generated archive over to your Kibana host and unpack it:
+6. Copy the generated archive over to your {{kib}} host and unpack it:
 
     ```shell
     sudo unzip kibana-cert-bundle.zip
@@ -617,11 +617,11 @@ Now that the transport and HTTP layers are configured with encryption using the 
     tail -f /var/log/kibana/kibana.log
     ```
 
-    In the log file you should find a `Kibana is now available` message.
+    In the log file you should find a `{{kib}} is now available` message.
 
 14. You should now have an end-to-end ecnrypted deployment with {{es}} and {{kib}} that provides encryption between both the cluster nodes and {{kib}}, and HTTPS access to {{kib}}.
 
-    Open a web browser to the external IP address of the Kibana host machine: `https://<kibana-host-address>:5601`. Note that the URL should use the `https` and not the `http` protocol.
+    Open a web browser to the external IP address of the {{kib}} host machine: `https://<kibana-host-address>:5601`. Note that the URL should use the `https` and not the `http` protocol.
 
 15. Log in using the `elastic` user and password that you configured when [installing your self-managed {{stack}}](/deploy-manage/deploy/self-managed.md).
 
@@ -890,6 +890,6 @@ Congratulations! You’ve successfully configured security for {{es}}, {{kib}}, 
 
 ## What’s next? [_whats_next]
 
-* Do you have data ready to ingest into your newly set up {{stack}}? Learn how to [add data to Elasticsearch](../../manage-data/ingest.md).
+* Do you have data ready to ingest into your newly set up {{stack}}? Learn how to [add data to {{es}}](../../manage-data/ingest.md).
 * Use [Elastic {{observability}}](https://www.elastic.co/observability) to unify your logs, infrastructure metrics, uptime, and application performance data.
 * Want to protect your endpoints from security threats? Try [{{elastic-sec}}](https://www.elastic.co/security). Adding endpoint protection is just another integration that you add to the agent policy!

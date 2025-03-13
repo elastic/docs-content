@@ -1,9 +1,14 @@
 ---
+applies_to:
+  deployment:
+    ece: ga
+    eck: ga
+    self: ga
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/xpack-security-secure-saved-objects.html
 ---
 
-# Secure saved objects [xpack-security-secure-saved-objects]
+# Secure {{kib}} saved objects [xpack-security-secure-saved-objects]
 
 {{kib}} stores entities such as dashboards, visualizations, alerts, actions, and advanced settings as saved objects, which are kept in a dedicated, internal {{es}} index. If such an object includes sensitive information, for example a PagerDuty integration key or email server credentials used by the alert action, {{kib}} encrypts it and makes sure it cannot be accidentally leaked or tampered with.
 

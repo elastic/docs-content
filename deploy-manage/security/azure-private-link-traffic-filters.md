@@ -54,7 +54,7 @@ Azure Private Link filtering is supported only for Azure regions.
 ::::
 
 
-Azure Private Link establishes a secure connection between two Azure VNets. The VNets can belong to separate accounts, for example a service provider and their service consumers. Azure routes the Private Link traffic within the Azure data centers and never exposes it to the public internet. In such a configuration, Elastic Cloud is the third-party service provider and the customers are service consumers.
+Azure Private Link establishes a secure connection between two Azure VNets. The VNets can belong to separate accounts, for example a service provider and their service consumers. Azure routes the Private Link traffic within the Azure data centers and never exposes it to the public internet. In such a configuration, {{ecloud}} is the third-party service provider and the customers are service consumers.
 
 Private Link is a connection between an Azure Private Endpoint and a Azure Private Link Service.
 
@@ -86,11 +86,11 @@ Private Link Services are set up by Elastic in all supported Azure regions under
 ::::
 
 
-The process of setting up the Private link connection to your clusters is split between Azure (e.g. by using Azure portal), Elastic Cloud Support, and Elastic Cloud UI. These are the high-level steps:
+The process of setting up the Private link connection to your clusters is split between Azure (e.g. by using Azure portal), {{ecloud}} Support, and {{ecloud}} UI. These are the high-level steps:
 
-| Azure portal | Elastic Cloud UI |
+| Azure portal | {{ecloud}} UI |
 | --- | --- |
-| 1. Create a private endpoint using Elastic Cloud service alias. |  |
+| 1. Create a private endpoint using {{ecloud}} service alias. |  |
 | 2. Create a [DNS record pointing to the private endpoint](https://learn.microsoft.com/en-us/azure/dns/private-dns-privatednszone). |  |
 |  | 3. Create an Azure Private Link rule set with the private endpoint **Name** and **ID**. |
 |  | 4. Associate the Azure Private Link rule set with your deployments. |
@@ -185,13 +185,13 @@ Creating the filter approves the Private Link connection.
 
 Let’s test the connection:
 
-1. Find out the Elasticsearch cluster ID of your deployment. You can do that by selecting **Copy cluster id** in the Cloud UI. It looks something like `9c794b7c08fa494b9990fa3f6f74c2f8`.
+1. Find out the {{es}} cluster ID of your deployment. You can do that by selecting **Copy cluster id** in the Cloud UI. It looks something like `9c794b7c08fa494b9990fa3f6f74c2f8`.
 
     ::::{tip}
-    The Elasticsearch cluster ID is **different** from the deployment ID, custom alias endpoint, and Cloud ID values that feature prominently in the user console.
+    The {{es}} cluster ID is **different** from the deployment ID, custom alias endpoint, and Cloud ID values that feature prominently in the user console.
     ::::
 
-2. To access your Elasticsearch cluster over Private Link:
+2. To access your {{es}} cluster over Private Link:
 
     * If you have a [custom endpoint alias](/deploy-manage/deploy/elastic-cloud/custom-endpoint-aliases.md) configured, you can use the custom endpoint URL to connect.
 
@@ -209,7 +209,7 @@ Let’s test the connection:
 
         `https://6b111580caaa4a9e84b18ec7c600155e.privatelink.eastus2.azure.elastic-cloud.com:9243`
 
-3. You can test the Azure portal part of the setup with the following command (substitute the region and Elasticsearch ID with your cluster).
+3. You can test the Azure portal part of the setup with the following command (substitute the region and {{es}} ID with your cluster).
 
     The output should look like this:
 
@@ -230,7 +230,7 @@ Let’s test the connection:
 
     The connection is established, and a valid certificate is presented to the client. The `403 Forbidden` is expected, you haven’t associate the rule set with any deployment yet.
 
-4. In the event that the Private Link connection is not approved by Elastic Cloud, you’ll get an error message like the following. Double check that the filter you’ve created in the previous step uses the right resource name and GUID.
+4. In the event that the Private Link connection is not approved by {{ecloud}}, you’ll get an error message like the following. Double check that the filter you’ve created in the previous step uses the right resource name and GUID.
 
     ```sh
     $ curl -v https://6b111580caaa4a9e84b18ec7c600155e.privatelink.eastus2.azure.elastic-cloud.com:9243
@@ -264,7 +264,7 @@ Use the alias you’ve set up as CNAME A record to access your deployment.
 ::::
 
 
-For example, if your Elasticsearch ID is `6b111580caaa4a9e84b18ec7c600155e` and it is located in `eastus2` region you can access it under `https://6b111580caaa4a9e84b18ec7c600155e.privatelink.eastus2.azure.elastic-cloud.com:9243`.
+For example, if your {{es}} ID is `6b111580caaa4a9e84b18ec7c600155e` and it is located in `eastus2` region you can access it under `https://6b111580caaa4a9e84b18ec7c600155e.privatelink.eastus2.azure.elastic-cloud.com:9243`.
 
 ```sh
 $ curl -u 'username:password'  -v https://6b111580caaa4a9e84b18ec7c600155e.privatelink.eastus2.azure.elastic-cloud.com:9243
@@ -274,9 +274,9 @@ $ curl -u 'username:password'  -v https://6b111580caaa4a9e84b18ec7c600155e.priva
 ```
 
 ::::{note}
-If you are using Azure Private Link together with Fleet, and enrolling the Elastic Agent with a Private Link URL, you need to configure Fleet Server to use and propagate the Private Link URL by updating the **Fleet Server hosts** field in the **Fleet settings** section of Kibana. Otherwise, Elastic Agent will reset to use a default address instead of the Private Link URL. The URL needs to follow this pattern: `https://<Fleet component ID/deployment alias>.fleet.<Private hosted zone domain name>:443`.
+If you are using Azure Private Link together with Fleet, and enrolling the Elastic Agent with a Private Link URL, you need to configure Fleet Server to use and propagate the Private Link URL by updating the **Fleet Server hosts** field in the **Fleet settings** section of {{kib}}. Otherwise, Elastic Agent will reset to use a default address instead of the Private Link URL. The URL needs to follow this pattern: `https://<Fleet component ID/deployment alias>.fleet.<Private hosted zone domain name>:443`.
 
-Similarly, the Elasticsearch host needs to be updated to propagate the Private Link URL. The Elasticsearch URL needs to follow this pattern: `https://<Elasticsearch cluster ID/deployment alias>.es.<Private hosted zone domain name>:443`.
+Similarly, the {{es}} host needs to be updated to propagate the Private Link URL. The {{es}} URL needs to follow this pattern: `https://<{{es}} cluster ID/deployment alias>.es.<Private hosted zone domain name>:443`.
 
 ::::
 
@@ -315,7 +315,7 @@ To remove an association through the UI:
 
 Azure supports inter-region Private Link as described in the [Azure documentation](https://docs.microsoft.com/en-us/azure/private-link/private-endpoint-overview). "The Private Link resource can be deployed in a different region than the virtual network and private endpoint."
 
-This means your deployment on Elastic Cloud can be in a different region than the Private Link endpoints or the clients that consume the deployment endpoints.
+This means your deployment on {{ecloud}} can be in a different region than the Private Link endpoints or the clients that consume the deployment endpoints.
 
 :::{image} /images/cloud-ce-azure-inter-region-pl.png
 :alt: Inter-region Private Link
@@ -328,4 +328,4 @@ This means your deployment on Elastic Cloud can be in a different region than th
     2. Create a Private Hosted Zone for region 2, and associate it with VNET1 similar to the step [Create a Private Link endpoint and DNS](/deploy-manage/security/azure-private-link-traffic-filters.md#ec-private-link-azure-dns). Note that you are creating these resources in region 1, VNET1.
 
 2. [Create a traffic filter rule set](/deploy-manage/security/azure-private-link-traffic-filters.md#ec-azure-create-traffic-filter-private-link-rule-set) and [Associate the rule set](/deploy-manage/security/aws-privatelink-traffic-filters.md#ec-associate-traffic-filter-private-link-rule-set) through the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body), just as you would for any deployment.
-3. [Test the connection](/deploy-manage/security/azure-private-link-traffic-filters.md#ec-azure-access-the-deployment-over-private-link) from a VM or client in region 1 to your Private Link endpoint, and it should be able to connect to your Elasticsearch cluster hosted in region 2.
+3. [Test the connection](/deploy-manage/security/azure-private-link-traffic-filters.md#ec-azure-access-the-deployment-over-private-link) from a VM or client in region 1 to your Private Link endpoint, and it should be able to connect to your {{es}} cluster hosted in region 2.
