@@ -386,7 +386,7 @@ Log correlation works on two levels:
 Learn about correlating plaintext logs in the agent-specific ingestion guides:
 
 * [Go](apm-agent-go://reference/logs.md)
-* [Java](asciidocalypse://docs/apm-agent-java/docs/reference/logs.md#log-correlation-ids)
+* [Java](apm-agent-java://reference/logs.md#log-correlation-ids)
 * [.NET](apm-agent-dotnet://reference/logs.md)
 * [Node.js](asciidocalypse://docs/apm-agent-nodejs/docs/reference/logs.md)
 * [Python](asciidocalypse://docs/apm-agent-python/docs/reference/logs.md#log-correlation-ids)

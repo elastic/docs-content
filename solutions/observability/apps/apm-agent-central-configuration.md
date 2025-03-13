@@ -41,7 +41,7 @@ iOS agent
 :   [Configuration reference](apm-agent-ios://reference/configuration.md)
 
 Java agent
-:   [Configuration reference](asciidocalypse://docs/apm-agent-java/docs/reference/configuration.md)
+:   [Configuration reference](apm-agent-java://reference/configuration.md)
 
 .NET agent
 :   [Configuration reference](apm-agent-dotnet://reference/configuration.md)
@@ -59,7 +59,7 @@ Ruby agent
 :   [Configuration reference](asciidocalypse://docs/apm-agent-ruby/docs/reference/configuration.md)
 
 Real User Monitoring (RUM) agent
-:   [Configuration reference](asciidocalypse://docs/apm-agent-rum-js/docs/reference/configuration.md)
+:   [Configuration reference](apm-agent-rum-js://reference/configuration.md)
 
 
 ## APM Server configuration [_apm_server_configuration]

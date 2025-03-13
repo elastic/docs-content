@@ -31,7 +31,6 @@ toc:
       - file: cloud/cloud-enterprise/ece-create-deployment.md
       - file: cloud/cloud-enterprise/ece-delete-deployment.md
       - file: cloud/cloud-enterprise/ece-find.md
-      - file: cloud/cloud-enterprise/ece-ingest-guides.md
       - file: cloud/cloud-enterprise/ece-integrations-server-api-example.md
       - file: cloud/cloud-enterprise/ece-manage-apm-settings.md
       - file: cloud/cloud-enterprise/ece-manage-enterprise-search-settings.md
@@ -48,9 +47,6 @@ toc:
       - file: cloud/cloud-enterprise/ece-snapshots.md
       - file: cloud/cloud-enterprise/ece-stack-getting-started.md
       - file: cloud/cloud-enterprise/ece-terminate-deployment.md
-      - file: cloud/cloud-enterprise/ece-traffic-filtering-deployment-configuration.md
-      - file: cloud/cloud-enterprise/ece-traffic-filtering-ip.md
-      - file: cloud/cloud-enterprise/ece-traffic-filtering-through-the-api.md
       - file: cloud/cloud-enterprise/ece-troubleshooting.md
       - file: cloud/cloud-enterprise/ece-upgrade-deployment.md
       - file: cloud/cloud-enterprise/ece-upgrade.md
@@ -80,11 +76,6 @@ toc:
       - file: cloud/cloud-heroku/ech-saas-metrics-accessing.md
       - file: cloud/cloud-heroku/ech-security.md
       - file: cloud/cloud-heroku/ech-snapshot-restore.md
-      - file: cloud/cloud-heroku/ech-traffic-filtering-deployment-configuration.md
-      - file: cloud/cloud-heroku/ech-traffic-filtering-ip.md
-      - file: cloud/cloud-heroku/ech-traffic-filtering-psc.md
-      - file: cloud/cloud-heroku/ech-traffic-filtering-vnet.md
-      - file: cloud/cloud-heroku/ech-traffic-filtering-vpc.md
       - file: cloud/cloud-heroku/ech-upgrade-deployment.md
   - file: cloud/cloud/index.md
     children:
@@ -95,7 +86,6 @@ toc:
       - file: cloud/cloud/ec-activity-page.md
       - file: cloud/cloud/ec-add-user-settings.md
       - file: cloud/cloud/ec-billing-stop.md
-      - file: cloud/cloud/ec-cloud-ingest-data.md
       - file: cloud/cloud/ec-configuring-keystore.md
       - file: cloud/cloud/ec-custom-bundles.md
       - file: cloud/cloud/ec-custom-repository.md
@@ -105,15 +95,8 @@ toc:
       - file: cloud/cloud/ec-faq-getting-started.md
       - file: cloud/cloud/ec-faq-technical.md
       - file: cloud/cloud/ec-get-help.md
-      - file: cloud/cloud/ec-getting-started-node-js.md
-      - file: cloud/cloud/ec-getting-started-python.md
-      - file: cloud/cloud/ec-getting-started-search-use-cases-beats-logstash.md
-      - file: cloud/cloud/ec-getting-started-search-use-cases-db-logstash.md
-      - file: cloud/cloud/ec-getting-started-search-use-cases-node-logs.md
-      - file: cloud/cloud/ec-getting-started-search-use-cases-python-logs.md
       - file: cloud/cloud/ec-getting-started-trial.md
       - file: cloud/cloud/ec-getting-started.md
-      - file: cloud/cloud/ec-ingest-guides.md
       - file: cloud/cloud/ec-maintenance-mode-routing.md
       - file: cloud/cloud/ec-manage-apm-settings.md
       - file: cloud/cloud/ec-manage-appsearch-settings.md
@@ -132,12 +115,6 @@ toc:
       - file: cloud/cloud/ec-select-subscription-level.md
       - file: cloud/cloud/ec-service-status.md
       - file: cloud/cloud/ec-snapshot-restore.md
-      - file: cloud/cloud/ec-traffic-filtering-deployment-configuration.md
-      - file: cloud/cloud/ec-traffic-filtering-ip.md
-      - file: cloud/cloud/ec-traffic-filtering-psc.md
-      - file: cloud/cloud/ec-traffic-filtering-through-the-api.md
-      - file: cloud/cloud/ec-traffic-filtering-vnet.md
-      - file: cloud/cloud/ec-traffic-filtering-vpc.md
       - file: cloud/cloud/ec-upgrade-deployment.md
   - file: docs-content/serverless/index.md
     children:
@@ -145,11 +122,8 @@ toc:
       - file: docs-content/serverless/elasticsearch-differences.md
       - file: docs-content/serverless/elasticsearch-explore-your-data.md
       - file: docs-content/serverless/elasticsearch-http-apis.md
-      - file: docs-content/serverless/elasticsearch-ingest-data-file-upload.md
-      - file: docs-content/serverless/elasticsearch-ingest-data-through-api.md
       - file: docs-content/serverless/general-billing-stop-project.md
       - file: docs-content/serverless/general-sign-up-trial.md
-      - file: docs-content/serverless/index-management.md
       - file: docs-content/serverless/intro.md
       - file: docs-content/serverless/observability-ai-assistant.md
       - file: docs-content/serverless/observability-apm-get-started.md
@@ -181,7 +155,6 @@ toc:
       - file: elasticsearch/elasticsearch-reference/bootstrap-checks.md
       - file: elasticsearch/elasticsearch-reference/change-passwords-native-users.md
       - file: elasticsearch/elasticsearch-reference/configuring-stack-security.md
-      - file: elasticsearch/elasticsearch-reference/data-management.md
       - file: elasticsearch/elasticsearch-reference/documents-indices.md
       - file: elasticsearch/elasticsearch-reference/es-security-principles.md
       - file: elasticsearch/elasticsearch-reference/esql-using.md
@@ -211,15 +184,10 @@ toc:
       - file: elasticsearch/elasticsearch-reference/snapshots-restore-snapshot.md
       - file: elasticsearch/elasticsearch-reference/xpack-autoscaling.md
   - file: ingest-docs/fleet/index.md
-    children:
-      - file: ingest-docs/fleet/beats-agent-comparison.md
-      - file: ingest-docs/fleet/fleet-agent-serverless-restrictions.md
-      - file: ingest-docs/fleet/fleet-elastic-agent-quick-start.md
   - file: ingest-docs/ingest-overview/index.md
   - file: kibana/kibana/index.md
     children:
       - file: kibana/kibana/apm-settings-kb.md
-      - file: kibana/kibana/connect-to-elasticsearch.md
       - file: kibana/kibana/console-kibana.md
       - file: kibana/kibana/esql.md
       - file: kibana/kibana/install.md
