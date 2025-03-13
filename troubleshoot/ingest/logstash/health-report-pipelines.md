@@ -1,4 +1,5 @@
 ---
+navigation_title: "Health report pipelines"
 mapped_urls:
   - https://www.elastic.co/guide/en/logstash/current/health-report-pipeline-status.html
   - https://www.elastic.co/guide/en/logstash/current/health-report-pipeline-flow-worker-utilization.html
@@ -9,7 +10,7 @@ mapped_urls:
 This page helps you troubleshoot Logstash health report pipelines.
 
 * [Check health report pipeline status](#health-report-pipeline-status)
-* [Check health report pipeline worker utilization ](health-report-pipeline-flow-worker-utilization)
+* [Check health report pipeline worker utilization](#health-report-pipeline-flow-worker-utilization)
 
 ## Check health report pipeline status [health-report-pipeline-status]
 
