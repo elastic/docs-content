@@ -18,7 +18,7 @@ redirects:
     anchors:
       'spaces-control-feature-visibility':
   'deploy-manage/deploy/cloud-enterprise/deploy-large-installation-cloud.md': '!deploy-manage/deploy/cloud-enterprise/deploy-large-installation.md'
-
+  'deploy-manage/deploy/cloud-on-k8s/k8s-kibana-http-configuration.md': '!deploy-manage/security/secure-http-communications.md'
 ## explore-analyze
   'explore-analyze/machine-learning/nlp/ml-nlp-auto-scale.md': '!deploy-manage/autoscaling/trained-model-autoscaling.md'
 

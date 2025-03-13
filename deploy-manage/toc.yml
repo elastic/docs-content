@@ -239,7 +239,6 @@ toc:
                       - file: deploy/cloud-on-k8s/k8s-kibana-es.md
                       - file: deploy/cloud-on-k8s/k8s-kibana-advanced-configuration.md
                       - file: deploy/cloud-on-k8s/k8s-kibana-secure-settings.md
-                      - file: deploy/cloud-on-k8s/k8s-kibana-http-configuration.md
                       - file: deploy/cloud-on-k8s/k8s-kibana-plugins.md
                   - file: deploy/cloud-on-k8s/customize-pods.md
                   - file: deploy/cloud-on-k8s/manage-compute-resources.md
@@ -489,6 +488,7 @@ toc:
               - file: security/set-up-minimal-security.md
               - file: security/set-up-basic-security.md
               - file: security/set-up-basic-security-plus-https.md
+              - file: security/using-kibana-with-security.md
               - file: security/install-stack-demo-secure.md
       - file: security/secure-your-cluster-deployment.md
         children:
@@ -507,6 +507,7 @@ toc:
           - file: security/secure-cluster-communications.md
             children:
               - file: security/secure-http-communications.md
+              - file: security/enabling-cipher-suites-for-stronger-encryption.md
               - file: security/security-certificates-keys.md
                 children:
                   - file: security/updating-certificates.md
@@ -519,7 +520,6 @@ toc:
               - file: security/encrypt-deployment.md
                 children:
                   - file: security/encrypt-deployment-with-customer-managed-encryption-key.md
-                  - file: security/enabling-cipher-suites-for-stronger-encryption.md
               - file: security/secure-settings.md
               - file: security/secure-saved-objects.md
           - file: security/kibana-session-management.md

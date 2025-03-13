@@ -1,9 +1,11 @@
 ---
+applies_to:
+  self: ga
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/configuring-stack-security.html
 ---
 
-# Security certificates and keys [configuring-stack-security]
+# Self-managed certificates and keys [configuring-stack-security]
 
 When you start {{es}} for the first time, the following security configuration occurs automatically:
 
@@ -161,7 +163,7 @@ Copy the `http_ca.crt` file to your machine and configure your client to use thi
 
 ## What’s next? [_whats_next]
 
-Congratulations! You’ve successfully started the {{stack}} with security enabled. {{es}} and {{kib}} are secured with TLS on the HTTP layer, and internode communication is encrypted. If you want to enable HTTPS for web traffic, you can [encrypt traffic between your browser and {{kib}}](secure-http-communications.md#encrypt-kibana-browser).
+Congratulations! You’ve successfully started the {{stack}} with security enabled. {{es}} and {{kib}} are secured with TLS on the HTTP layer, and internode communication is encrypted. If you want to enable HTTPS for web traffic, you can [encrypt traffic between your browser and {{kib}}](set-up-basic-security-plus-https.md#encrypt-kibana-browser).
 
 
 ## Security certificates and keys [stack-security-certificates]
