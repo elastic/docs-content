@@ -63,7 +63,7 @@ The HTTP layer secures client communication with your {{es}} cluster via its RES
 **Deployment type notes:**
 - **Elastic Cloud & Serverless**: {{kib}}-{{es}} communication is fully managed using HTTPS and service tokens.
 - **ECE/ECK**: {{kib}}-{{es}} communication is automatically secured with service tokens.
-- **Self-managed**: {{kib}}-{{es}} communication must be manually secured. For mutual TLS configuration, see [Mutual TLS authentication between {{kib}} and {{es}}](secure-http-communications.md#mutual-tls-kib-es).
+- **Self-managed**: {{kib}}-{{es}} communication must be manually secured. For mutual TLS configuration, see [Mutual TLS authentication between {{kib}} and {{es}}](secure-http-communications.md#elasticsearch-mutual-tls).
 
 ## Certificate management [generate-certificates]
 

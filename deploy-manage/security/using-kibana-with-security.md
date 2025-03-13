@@ -87,7 +87,7 @@ You should use SSL/TLS encryption to ensure that traffic between browsers and th
 
 ### Enabling mutual TLS between {{kib}} and {{es}}
 
-Refer to [](/deploy-manage/security/secure-http-communications#elasticsearch-mutual-tls) for information on how to enable mutual TLS between {{kib}} and {{es}}.
+Refer to [](/deploy-manage/security/secure-http-communications.md#elasticsearch-mutual-tls) for information on how to enable mutual TLS between {{kib}} and {{es}}.
 
 ### Use {{stack}} {{security-features}} [configuring-kibana-shield]
 
