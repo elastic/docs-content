@@ -22,7 +22,7 @@ The following sections describe how to customize a {{kib}} deployment to suit yo
     * [Scaling out a {{kib}} deployment](k8s-kibana-advanced-configuration.md#k8s-kibana-scaling)
 
 * [Secure settings](k8s-kibana-secure-settings.md)
-* [HTTP Configuration](k8s-kibana-http-configuration.md)
+* [HTTP Configuration](/deploy-manage/security/secure-http-communications.md#k8s-kibana-http-configuration)
 
     * [Load balancer settings and TLS SANs](/deploy-manage/security/secure-http-communications.md#k8s-kibana-http-publish)
     * [Provide your own certificate](/deploy-manage/security/secure-http-communications.md#k8s-kibana-http-custom-tls)

@@ -6,6 +6,8 @@ mapped_urls:
   - https://www.elastic.co/guide/en/kibana/current/using-kibana-with-security.html
 ---
 
+$$$kibana-roles$$$
+
 # Configure security in {{kib}} [using-kibana-with-security]
 
 When you start {{es}} for the first time, {{stack-security-features}} are enabled on your cluster and TLS is configured automatically. The security configuration process generates a password for the `elastic` user and an enrollment token for {{kib}}. [Start the {{stack}} with security enabled](/deploy-manage/security/security-certificates-keys.md) and then enroll {{kib}} as part of the configuration process.

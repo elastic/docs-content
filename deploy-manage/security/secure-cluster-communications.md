@@ -14,6 +14,9 @@ mapped_urls:
 % TODO: what to do about this page that doesn't exist
 % * [/raw-migrated-files/cloud-on-k8s/cloud-on-k8s/k8s-security.md](/raw-migrated-files/cloud-on-k8s/cloud-on-k8s/k8s-security.md)
 
+$$$encrypt-internode-communication$$$
+$$$generate-certificates$$$
+
 
 # Secure cluster communications
 

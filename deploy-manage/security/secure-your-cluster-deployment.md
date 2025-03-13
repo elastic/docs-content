@@ -9,6 +9,26 @@ applies_to:
 
 # Secure your cluster or deployment
 
+$$$install-stack-demo-secure-agent$$$
+
+$$$install-stack-demo-secure-ca$$$
+
+$$$install-stack-demo-secure-fleet$$$
+
+$$$install-stack-demo-secure-http$$$
+
+$$$install-stack-demo-secure-kib-es$$$
+
+$$$install-stack-demo-secure-prereqs$$$
+
+$$$install-stack-demo-secure-second-node$$$
+
+$$$install-stack-demo-secure-transport$$$
+
+$$$install-stack-demo-secure-view-data$$$
+
+$$$security-configure-settings$$$
+
 
 Protecting your {{es}} cluster and the data it contains is of utmost importance. Implementing a defense in depth strategy provides multiple layers of security to help safeguard your system.
 

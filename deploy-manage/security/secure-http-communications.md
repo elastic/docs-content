@@ -18,6 +18,8 @@ mapped_urls:
 % Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
 
 $$$configuring-tls-browser-kib$$$
+$$$encrypt-http-communication$$$
+
 % Weird redirect in current system, not sure what to do
 
 # Secure HTTP communications
