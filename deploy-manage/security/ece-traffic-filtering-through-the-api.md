@@ -1,17 +1,25 @@
-# Manage traffic filtering through the API [ece-traffic-filtering-through-the-api]
+---
+applies_to:
+  deployment:
+    ece: ga
+mapped_urls:
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-traffic-filtering-through-the-api.html
+---
 
-This example demonstrates how to use the Elastic Cloud Enterprise RESTful API to manage different types of traffic filters. We cover the following examples:
+# Manage traffic filtering through the ECE API [ece-traffic-filtering-through-the-api]
 
-* [Create a traffic filter rule set](../../../deploy-manage/security/manage-traffic-filtering-through-api.md#ece-create-a-traffic-filter-rule-set)
+This example demonstrates how to use the {{ece}} RESTful API to manage different types of traffic filters. We cover the following examples:
 
-    * [IP traffic filter ingress rule set](../../../deploy-manage/security/manage-traffic-filtering-through-api.md#ece-ip-traffic-filters-ingress-rule-set)
+* [Create a traffic filter rule set](ece-traffic-filtering-through-the-api.md#ece-create-a-traffic-filter-rule-set)
 
-* [Update a traffic filter rule set](../../../deploy-manage/security/manage-traffic-filtering-through-api.md#ece-update-a-traffic-filter-rule-set)
-* [Associate a rule set with a deployment](../../../deploy-manage/security/manage-traffic-filtering-through-api.md#ece-associate-rule-set-with-a-deployment)
-* [Delete a rule set association with a deployment](../../../deploy-manage/security/manage-traffic-filtering-through-api.md#ece-delete-rule-set-association-with-a-deployment)
-* [Delete a traffic filter rule set](../../../deploy-manage/security/manage-traffic-filtering-through-api.md#ece-delete-a-rule-set)
+    * [IP traffic filter ingress rule set](ece-traffic-filtering-through-the-api.md#ece-ip-traffic-filters-ingress-rule-set)
 
-Read through the main [Traffic Filtering](../../../deploy-manage/security/traffic-filtering.md) page to learn about the general concepts behind filtering access to your Elastic Cloud Enterprise deployments.
+* [Update a traffic filter rule set](ece-traffic-filtering-through-the-api.md#ece-update-a-traffic-filter-rule-set)
+* [Associate a rule set with a deployment](ece-traffic-filtering-through-the-api.md#ece-associate-rule-set-with-a-deployment)
+* [Delete a rule set association with a deployment](ece-traffic-filtering-through-the-api.md#ece-delete-rule-set-association-with-a-deployment)
+* [Delete a traffic filter rule set](ece-traffic-filtering-through-the-api.md#ece-delete-a-rule-set)
+
+Read through the main [Traffic Filtering](traffic-filtering.md) page to learn about the general concepts behind filtering access to your {{ece}} deployments.
 
 
 ## Create a traffic filter rule set [ece-create-a-traffic-filter-rule-set] 

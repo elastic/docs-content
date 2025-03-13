@@ -1,21 +1,29 @@
-# Manage traffic filtering through the API [ec-traffic-filtering-through-the-api]
+---
+applies_to:
+  deployment:
+    ess: ga
+mapped_urls:
+  - https://www.elastic.co/guide/en/cloud/current/ec-traffic-filtering-through-the-api.html
+---
+
+# Manage traffic filtering through the {{ecloud}} API [ec-traffic-filtering-through-the-api]
 
 This example demonstrates how to use the {{ecloud}} RESTful API to manage different types of traffic filters. We cover the following examples:
 
-* [Create a traffic filter rule set](../../../deploy-manage/security/manage-traffic-filtering-through-api.md#ec-create-a-traffic-filter-rule-set)
+* [Create a traffic filter rule set](ec-traffic-filtering-through-the-api.md#ec-create-a-traffic-filter-rule-set)
 
-    * [IP traffic filter ingress rule set](../../../deploy-manage/security/manage-traffic-filtering-through-api.md#ec-ip-traffic-filters-ingress-rule-set)
-    * [IP traffic filter egress rule set](../../../deploy-manage/security/manage-traffic-filtering-through-api.md#ec-ip-traffic-filters-egress-rule-set)
-    * [AWS Privatelink traffic filters](../../../deploy-manage/security/manage-traffic-filtering-through-api.md#ec-aws-privatelink-traffic-filters-rule-set)
-    * [Azure Private Link traffic filters](../../../deploy-manage/security/manage-traffic-filtering-through-api.md#ec-azure-privatelink-traffic-filters-rule-set)
-    * [GCP Private Service Connect traffic filters](../../../deploy-manage/security/manage-traffic-filtering-through-api.md#ec-gcp-private-service-connect-traffic-filters-rule-set)
+    * [IP traffic filter ingress rule set](ec-traffic-filtering-through-the-api.md#ec-ip-traffic-filters-ingress-rule-set)
+    * [IP traffic filter egress rule set](ec-traffic-filtering-through-the-api.md#ec-ip-traffic-filters-egress-rule-set)
+    * [AWS Privatelink traffic filters](ec-traffic-filtering-through-the-api.md#ec-aws-privatelink-traffic-filters-rule-set)
+    * [Azure Private Link traffic filters](ec-traffic-filtering-through-the-api.md#ec-azure-privatelink-traffic-filters-rule-set)
+    * [GCP Private Service Connect traffic filters](ec-traffic-filtering-through-the-api.md#ec-gcp-private-service-connect-traffic-filters-rule-set)
 
-* [Update a traffic filter rule set](../../../deploy-manage/security/manage-traffic-filtering-through-api.md#ec-update-a-traffic-filter-rule-set)
-* [Associate a rule set with a deployment](../../../deploy-manage/security/manage-traffic-filtering-through-api.md#ec-associate-rule-set-with-a-deployment)
-* [Delete a rule set association with a deployment](../../../deploy-manage/security/manage-traffic-filtering-through-api.md#ec-delete-rule-set-association-with-a-deployment)
-* [Delete a traffic filter rule set](../../../deploy-manage/security/manage-traffic-filtering-through-api.md#ec-delete-a-rule-set)
+* [Update a traffic filter rule set](ec-traffic-filtering-through-the-api.md#ec-update-a-traffic-filter-rule-set)
+* [Associate a rule set with a deployment](ec-traffic-filtering-through-the-api.md#ec-associate-rule-set-with-a-deployment)
+* [Delete a rule set association with a deployment](ec-traffic-filtering-through-the-api.md#ec-delete-rule-set-association-with-a-deployment)
+* [Delete a traffic filter rule set](ec-traffic-filtering-through-the-api.md#ec-delete-a-rule-set)
 
-Read through the main [Traffic Filtering](../../../deploy-manage/security/traffic-filtering.md) page to learn about the general concepts behind filtering access to your {{ech}} deployments.
+Read through the main [Traffic Filtering](traffic-filtering.md) page to learn about the general concepts behind filtering access to your {{ech}} deployments.
 
 
 ## Create a traffic filter rule set [ec-create-a-traffic-filter-rule-set] 
@@ -133,7 +141,7 @@ https://api.elastic-cloud.com/api/v1/deployments/traffic-filter/rulesets \
 '
 ```
 
-To find the value for `source` for type `vpce`, check [Find your VPC endpoint ID](../../../deploy-manage/security/aws-privatelink-traffic-filters.md#ec-find-your-endpoint). This setting is supported only in AWS regions.
+To find the value for `source` for type `vpce`, check [Find your VPC endpoint ID](aws-privatelink-traffic-filters.md#ec-find-your-endpoint). This setting is supported only in AWS regions.
 
 
 ### Azure Private Link traffic filters [ec-azure-privatelink-traffic-filters-rule-set] 
@@ -162,7 +170,7 @@ https://api.elastic-cloud.com/api/v1/deployments/traffic-filter/rulesets \
 '
 ```
 
-To find the value for `azure_endpoint_name` and `azure_endpoint_guid` for type `azure_private_endpoint`, check [Find your private endpoint resource name](../../../deploy-manage/security/azure-private-link-traffic-filters.md#ec-find-your-resource-name) and [Find your private endpoint resource ID](../../../deploy-manage/security/azure-private-link-traffic-filters.md#ec-find-your-resource-id). This setting is supported only in Azure regions.
+To find the value for `azure_endpoint_name` and `azure_endpoint_guid` for type `azure_private_endpoint`, check [Find your private endpoint resource name](azure-private-link-traffic-filters.md#ec-find-your-resource-name) and [Find your private endpoint resource ID](azure-private-link-traffic-filters.md#ec-find-your-resource-id). This setting is supported only in Azure regions.
 
 
 ### GCP Private Service Connect traffic filters [ec-gcp-private-service-connect-traffic-filters-rule-set] 
@@ -190,7 +198,7 @@ https://api.elastic-cloud.com/api/v1/deployments/traffic-filter/rulesets \
 '
 ```
 
-To find the value for `source` for type `gcp_private_service_connect_endpoint`, check [Find your Private Service Connect connection ID](../../../deploy-manage/security/gcp-private-service-connect-traffic-filters.md#ec-find-your-psc-connection-id). This setting is supported only in GCP regions.
+To find the value for `source` for type `gcp_private_service_connect_endpoint`, check [Find your Private Service Connect connection ID](gcp-private-service-connect-traffic-filters.md#ec-find-your-psc-connection-id). This setting is supported only in GCP regions.
 
 
 ## Update a traffic filter rule set [ec-update-a-traffic-filter-rule-set] 

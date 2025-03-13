@@ -62,7 +62,9 @@ Control which systems can access your Elastic deployments and clusters through t
 - **IP traffic filtering**: Restrict access based on IP addresses or CIDR ranges.
 - **Private link filters**: Secure connectivity through AWS PrivateLink, Azure Private Link, or GCP Private Service Connect.
 - **Static IPs**: Use static IP addresses for predictable firewall rules.
+- **Remote cluster access**: Secure cross-cluster operations.
 
+Refer to [](traffic-filtering.md).
 
 ## Cluster communication
 
@@ -70,13 +72,16 @@ Control which systems can access your Elastic deployments and clusters through t
 - **TLS certificates and keys**
 
 
-## Data and objects security
+## Data, objects and settings security
 
-- **Bring your own encryption key**
-- **Elasticsearch keystore**
-- **Kibana saved objects**
+- **Bring your own encryption key**: Use your own encryption key instead of the default encryption at rest provided by Elastic.
+- **{{es}} and {{kib}} keystores**: Secure sensitive settings using keystores
+- **{{kib}} saved objects**: Customize the encryption for {{kib}} objects such as dashboards.
+- **{{kib}} session management**: Customize {{kib}} session expiration settings.
 
-## User roles and sessions
+Refer to [](data-security.md).
+
+## User roles
 
 [Define roles](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md) for your users and [assign appropriate privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md) to ensure that users have access only to the resources that they need. This process determines whether the user behind an incoming request is allowed to run that request.
 

@@ -18,12 +18,15 @@ redirects:
     anchors:
       'spaces-control-feature-visibility':
   'deploy-manage/deploy/cloud-enterprise/deploy-large-installation-cloud.md': '!deploy-manage/deploy/cloud-enterprise/deploy-large-installation.md'
+  'deploy-manage/security/manage-traffic-filtering-through-api.md': '!deploy-manage/security/ec-traffic-filtering-through-the-api.md'
+
   ## audit logging movement to security section
   'deploy-manage/monitor/logging-configuration/configuring-audit-logs.md': 'deploy-manage/security/logging-configuration/configuring-audit-logs.md'
   'deploy-manage/monitor/logging-configuration/enabling-audit-logs.md': 'deploy-manage/security/logging-configuration/enabling-audit-logs.md'
   'deploy-manage/monitor/logging-configuration/logfile-audit-events-ignore-policies.md': 'deploy-manage/security/logging-configuration/logfile-audit-events-ignore-policies.md'
   'deploy-manage/monitor/logging-configuration/auditing-search-queries.md': 'deploy-manage/security/logging-configuration/auditing-search-queries.md'
   'deploy-manage/monitor/logging-configuration/logfile-audit-output.md': 'deploy-manage/security/logging-configuration/logfile-audit-output.md'
+
 ## explore-analyze
   'explore-analyze/machine-learning/nlp/ml-nlp-auto-scale.md': '!deploy-manage/autoscaling/trained-model-autoscaling.md'
 

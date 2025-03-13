@@ -44,7 +44,7 @@ The chart below outlines the compatibility between different versions of Elastic
 | `1.x` | ≥ `6.5` |
 
 ::::{note} 
-Java agent < 1.43.0 not fully compatible with APM Server >= 8.11.0. Read more in [Known issues](../../../troubleshoot/observability/apm/known-issues.md#apm-empty-metricset-values).
+Java agent < 1.43.0 not fully compatible with APM Server >= 8.11.0. Read more in [Known issues](/release-notes/known-issues/elastic-apm.md).
 
 ::::
 

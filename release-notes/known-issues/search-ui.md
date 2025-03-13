@@ -2,10 +2,10 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/search-ui/current/known-issues.html
 
-navigation_title: "Search UI"
+navigation_title: "Search"
 ---
 
-# Search UI known issues [search-ui-known-issues]
+# Search known issues [search-known-issues]
 
 % Use the following template to add entries to this page.
 
