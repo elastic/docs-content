@@ -31,6 +31,6 @@ The audit events are formatted as JSON documents, and each event is printed on a
 
 There are however a few attributes that are exceptions to the above format. The `put`, `delete`, `change`, `create` and `invalidate` attributes, which are only present for events with the `event.type: "security_config_change"` attribute, contain the **nested JSON** representation of the security change taking effect. The contents of the security config change are hence not displayed as top-level dot-named fields in the audit event document. That’s because the fields are specific to the particular kind of security change and do not show up in any other audit events. The benefits of a columnar format are therefore much more limited; the space-saving benefits of the nested structure is the favoured trade-off in this case.
 
-When the `request.body` attribute is present (see [Auditing search queries](auditing-search-queries.md)), it contains a string value containing the full HTTP request body, escaped as per the JSON RFC 4677.
+When the `request.body` attribute is present (see [Auditing search queries](./auditing-search-queries.md)), it contains a string value containing the full HTTP request body, escaped as per the JSON RFC 4677.
 
 Refer to [audit event types](elasticsearch://reference/elasticsearch/elasticsearch-audit-events.md) for a complete list of fields, as well as examples, for each entry type.

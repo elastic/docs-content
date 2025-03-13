@@ -156,7 +156,6 @@ toc:
                   - file: deploy/cloud-enterprise/change-allocator-disconnect-timeout.md
                   - file: deploy/cloud-enterprise/manage-elastic-stack-versions.md
                   - file: deploy/cloud-enterprise/ece-include-additional-kibana-plugin.md
-                  - file: deploy/cloud-enterprise/migrate-ece-on-podman-hosts-to-selinux-enforce.md
           - file: deploy/cloud-enterprise/working-with-deployments.md
             children:
               - file: deploy/cloud-enterprise/deployment-templates.md
@@ -483,6 +482,7 @@ toc:
               - file: security/secure-your-elastic-cloud-enterprise-installation/manage-security-certificates.md
               - file: security/secure-your-elastic-cloud-enterprise-installation/allow-x509-certificates-signed-with-sha-1.md
               - file: security/secure-your-elastic-cloud-enterprise-installation/configure-tls-version.md
+              - file: security/secure-your-elastic-cloud-enterprise-installation/migrate-ece-on-podman-hosts-to-selinux-enforce.md
           - file: security/secure-your-eck-installation.md
           - file: security/manually-configure-security-in-self-managed-cluster.md
             children:
@@ -496,13 +496,12 @@ toc:
             children:
               - file: security/ip-traffic-filtering.md
                 children:
-                  - file: security/manage-traffic-filtering-through-api.md
-              - file: security/private-link-traffic-filters.md
-                children:
-                  - file: security/aws-privatelink-traffic-filters.md
-                  - file: security/azure-private-link-traffic-filters.md
-                  - file: security/gcp-private-service-connect-traffic-filters.md
-                  - file: security/claim-traffic-filter-link-id-ownership-through-api.md
+                  - file: security/ec-traffic-filtering-through-the-api.md
+                  - file: security/ece-traffic-filtering-through-the-api.md
+              - file: security/aws-privatelink-traffic-filters.md
+              - file: security/azure-private-link-traffic-filters.md
+              - file: security/gcp-private-service-connect-traffic-filters.md
+              - file: security/claim-traffic-filter-link-id-ownership-through-api.md
               - file: security/elastic-cloud-static-ips.md
           - file: security/secure-cluster-communications.md
             children:
@@ -522,6 +521,15 @@ toc:
                   - file: security/enabling-cipher-suites-for-stronger-encryption.md
               - file: security/secure-settings.md
               - file: security/secure-saved-objects.md
+          - file: security/logging-configuration/security-event-audit-logging.md
+            children:
+              - file: security/logging-configuration/enabling-audit-logs.md
+              - file: security/logging-configuration/configuring-audit-logs.md
+                children:
+                  - file: security/logging-configuration/logfile-audit-events-ignore-policies.md
+                  - file: security/logging-configuration/logfile-audit-output.md
+              - file: security/logging-configuration/auditing-search-queries.md
+              - file: security/logging-configuration/correlating-kibana-elasticsearch-audit-logs.md
           - file: security/kibana-session-management.md
           - file: security/fips-140-2.md
       - file: security/secure-clients-integrations.md
@@ -742,15 +750,6 @@ toc:
             children:
               - file: monitor/logging-configuration/kibana-log-settings-examples.md
               - file: monitor/logging-configuration/kibana-logging-cli-configuration.md
-          - file: monitor/logging-configuration/security-event-audit-logging.md
-            children:
-              - file: monitor/logging-configuration/enabling-audit-logs.md
-              - file: monitor/logging-configuration/configuring-audit-logs.md
-                children:
-                  - file: monitor/logging-configuration/logfile-audit-events-ignore-policies.md
-                  - file: monitor/logging-configuration/logfile-audit-output.md
-              - file: monitor/logging-configuration/auditing-search-queries.md
-              - file: monitor/logging-configuration/correlating-kibana-elasticsearch-audit-logs.md
   - file: cloud-organization.md
     children:
       - file: cloud-organization/billing.md
@@ -809,6 +808,8 @@ toc:
       - file: upgrade/orchestrator.md
         children:
           - file: upgrade/orchestrator/upgrade-cloud-enterprise.md
+            children:
+              - file: upgrade/orchestrator/re-running-the-ece-upgrade.md
           - file: upgrade/orchestrator/upgrade-cloud-on-k8s.md
       - file: upgrade/deployment-or-cluster.md
         children:

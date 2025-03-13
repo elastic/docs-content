@@ -6,13 +6,6 @@ mapped_urls:
 
 # Large language model performance matrix
 
-% What needs to be done: Lift-and-shift
-
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/security-docs/security/llm-performance-matrix.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/security-llm-performance-matrix.md
-
 This page describes the performance of various large language models (LLMs) for different use cases in {{elastic-sec}}, based on our internal testing. To learn more about these use cases, refer to [Attack discovery](/solutions/security/ai/attack-discovery.md) or [AI Assistant](/solutions/security/ai/ai-assistant.md).
 
 ::::{note}
