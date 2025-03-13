@@ -152,8 +152,8 @@ span.end()
 ::::::
 
 ::::::{tab-item} Java
-1. Start a transaction with [`startTransaction`](asciidocalypse://docs/apm-agent-java/docs/reference/public-api.md#api-start-transaction), or a span with [`startSpan`](asciidocalypse://docs/apm-agent-java/docs/reference/public-api.md#api-span-start-span).
-2. Inject the `traceparent` header into the request object with [`injectTraceHeaders`](asciidocalypse://docs/apm-agent-java/docs/reference/public-api.md#api-transaction-inject-trace-headers)
+1. Start a transaction with [`startTransaction`](apm-agent-java://reference/public-api.md#api-start-transaction), or a span with [`startSpan`](apm-agent-java://reference/public-api.md#api-span-start-span).
+2. Inject the `traceparent` header into the request object with [`injectTraceHeaders`](apm-agent-java://reference/public-api.md#api-transaction-inject-trace-headers)
 3. make network request
 
 Example of manually instrumenting an RPC framework:
@@ -301,8 +301,8 @@ transaction := apm.DefaultTracer().StartTransactionOptions("GET /", "request", o
 ::::::
 
 ::::::{tab-item} Java
-1. Create a transaction as a child of the incoming transaction with [`startTransactionWithRemoteParent()`](asciidocalypse://docs/apm-agent-java/docs/reference/public-api.md#api-transaction-inject-trace-headers).
-2. Start and name the transaction with [`activate()`](asciidocalypse://docs/apm-agent-java/docs/reference/public-api.md#api-transaction-activate) and [`setName()`](asciidocalypse://docs/apm-agent-java/docs/reference/public-api.md#api-set-name).
+1. Create a transaction as a child of the incoming transaction with [`startTransactionWithRemoteParent()`](apm-agent-java://reference/public-api.md#api-transaction-inject-trace-headers).
+2. Start and name the transaction with [`activate()`](apm-agent-java://reference/public-api.md#api-transaction-activate) and [`setName()`](apm-agent-java://reference/public-api.md#api-set-name).
 
 Example:
 

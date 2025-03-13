@@ -2,10 +2,10 @@
 navigation_title: "Fleet and Elastic Agent"
 ---
 
-# Fleet and Elastic Agent breaking changes [fleet-elastic-agent-breaking-changes]
-Before you upgrade, carefully review the Fleet and Elastic Agent breaking changes and take the necessary steps to mitigate any issues. 
+# {{fleet}} and {{agent}} breaking changes [fleet-elastic-agent-breaking-changes]
+Before you upgrade, carefully review the {{fleet}} and {{agent}} breaking changes and take the necessary steps to mitigate any issues. 
 
-To learn how to upgrade, check out <uprade docs>.
+To learn how to upgrade, check [Upgrade](/deploy-manage/upgrade.md).
 
 % ## Next version [fleet-elastic-agent-nextversion-breaking-changes]
 % **Release date:** Month day, year
@@ -18,7 +18,7 @@ To learn how to upgrade, check out <uprade docs>.
 % ::::
 
 % ## 9.0.0 [fleet-elastic-agent-900-breaking-changes]
-% **Release date:** March 25, 2025
+% **Release date:** April 1, 2025
 
 % ::::{dropdown} Title of breaking change 
 % Description of the breaking change.

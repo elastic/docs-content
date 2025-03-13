@@ -25,7 +25,7 @@ The default list of sanitized fields attempts to target common field names for d
 This setting supports [Central configuration](apm-agent-central-configuration.md), which means the list of sanitized fields can be updated without needing to redeploy your services:
 
 * Go: [`ELASTIC_APM_SANITIZE_FIELD_NAMES`](apm-agent-go://reference/configuration.md#config-sanitize-field-names)
-* Java: [`sanitize_field_names`](asciidocalypse://docs/apm-agent-java/docs/reference/config-core.md#config-sanitize-field-names)
+* Java: [`sanitize_field_names`](apm-agent-java://reference/config-core.md#config-sanitize-field-names)
 * .NET: [`sanitizeFieldNames`](apm-agent-dotnet://reference/config-core.md#config-sanitize-field-names)
 * Node.js: [`sanitizeFieldNames`](asciidocalypse://docs/apm-agent-nodejs/docs/reference/configuration.md#sanitize-field-names)
 * Python: [`sanitize_field_names`](asciidocalypse://docs/apm-agent-python/docs/reference/configuration.md#config-sanitize-field-names)
@@ -34,7 +34,7 @@ This setting supports [Central configuration](apm-agent-central-configuration.md
 Alternatively, you can completely disable the capturing of HTTP headers. This setting also supports [Central configuration](apm-agent-central-configuration.md):
 
 * Go: [`ELASTIC_APM_CAPTURE_HEADERS`](apm-agent-go://reference/configuration.md#config-capture-headers)
-* Java: [`capture_headers`](asciidocalypse://docs/apm-agent-java/docs/reference/config-core.md#config-capture-headers)
+* Java: [`capture_headers`](apm-agent-java://reference/config-core.md#config-capture-headers)
 * .NET: [`CaptureHeaders`](apm-agent-dotnet://reference/config-http.md#config-capture-headers)
 * Node.js: [`captureHeaders`](asciidocalypse://docs/apm-agent-nodejs/docs/reference/configuration.md#capture-headers)
 * Python: [`capture_headers`](asciidocalypse://docs/apm-agent-python/docs/reference/configuration.md#config-capture-headers)
@@ -48,7 +48,7 @@ By default, the body of HTTP requests is not recorded. Request bodies often cont
 This setting supports [Central configuration](apm-agent-central-configuration.md), which means the list of sanitized fields can be updated without needing to redeploy your services:
 
 * Go: [`ELASTIC_APM_CAPTURE_BODY`](apm-agent-go://reference/configuration.md#config-capture-body)
-* Java: [`capture_body`](asciidocalypse://docs/apm-agent-java/docs/reference/config-core.md#config-capture-body)
+* Java: [`capture_body`](apm-agent-java://reference/config-core.md#config-capture-body)
 * .NET: [`CaptureBody`](apm-agent-dotnet://reference/config-http.md#config-capture-body)
 * Node.js: [`captureBody`](asciidocalypse://docs/apm-agent-nodejs/docs/reference/configuration.md#capture-body)
 * Python: [`capture_body`](asciidocalypse://docs/apm-agent-python/docs/reference/configuration.md#config-capture-body)
@@ -96,4 +96,4 @@ Certain agents offer additional filtering and obfuscating options:
 **Agent configuration options**
 
 * (Node.js) Remove errors raised by the server-side process: disable with [captureExceptions](asciidocalypse://docs/apm-agent-nodejs/docs/reference/configuration.md#capture-exceptions).
-* (Java) Remove process arguments from transactions: disabled by default with [`include_process_args`](asciidocalypse://docs/apm-agent-java/docs/reference/config-reporter.md#config-include-process-args).
+* (Java) Remove process arguments from transactions: disabled by default with [`include_process_args`](apm-agent-java://reference/config-reporter.md#config-include-process-args).

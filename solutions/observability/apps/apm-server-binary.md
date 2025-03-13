@@ -383,12 +383,12 @@ Different application servers have different ways of setting the `-javaagent` fl
 java -javaagent:/path/to/elastic-apm-agent-<version>.jar -Delastic.apm.service_name=my-cool-service -Delastic.apm.application_packages=org.example,org.another.example -Delastic.apm.server_url=http://127.0.0.1:8200 -jar my-application.jar
 ```
 
-Refer to [Manual setup with `-javaagent` flag](asciidocalypse://docs/apm-agent-java/docs/reference/setup-javaagent.md) to learn more.
+Refer to [Manual setup with `-javaagent` flag](apm-agent-java://reference/setup-javaagent.md) to learn more.
 
 **Alternate setup methods**
 
-* **Automatic setup with `apm-agent-attach-cli.jar`**<br> Automatically set up the agent without needing to alter the configuration of your JVM or application server. This method requires no changes to application code or JVM options, and allows attaching to a running JVM. Refer to the [Java agent documentation](asciidocalypse://docs/apm-agent-java/docs/reference/setup-attach-cli.md) for more information on this setup method.
-* **Programmatic API setup to self-attach**<br> Set up the agent with a one-line code change and an extra `apm-agent-attach` dependency. This method requires no changes to JVM options, and the agent artifact is embedded within the packaged application binary. Refer to the [Java agent documentation](asciidocalypse://docs/apm-agent-java/docs/reference/setup-attach-api.md) for more information on this setup method.
+* **Automatic setup with `apm-agent-attach-cli.jar`**<br> Automatically set up the agent without needing to alter the configuration of your JVM or application server. This method requires no changes to application code or JVM options, and allows attaching to a running JVM. Refer to the [Java agent documentation](apm-agent-java://reference/setup-attach-cli.md) for more information on this setup method.
+* **Programmatic API setup to self-attach**<br> Set up the agent with a one-line code change and an extra `apm-agent-attach` dependency. This method requires no changes to JVM options, and the agent artifact is embedded within the packaged application binary. Refer to the [Java agent documentation](apm-agent-java://reference/setup-attach-api.md) for more information on this setup method.
 ::::::
 
 ::::::{tab-item} .NET
