@@ -1,24 +1,14 @@
 ---
-mapped_urls:
-  - https://www.elastic.co/guide/en/elasticsearch/reference/current/es-security-principles.html
+applies_to:
+  deployment:
+    self: ga
+    eck: all
+    ece: all
+    ess: all
 ---
 
 # Secure your cluster or deployment
 
-% What needs to be done: Refine
-
-% GitHub issue: https://github.com/elastic/docs-projects/issues/346
-
-% Scope notes: consider keeping the mapped tutorial as a quickstart at some level
-
-% Use migrated content from existing pages that map to this page:
-
-% - [ ] ./raw-migrated-files/elasticsearch/elasticsearch-reference/es-security-principles.md
-
-
-**This page is a work in progress.** The documentation team is working to combine content pulled from the following pages:
-
-* [/raw-migrated-files/elasticsearch/elasticsearch-reference/es-security-principles.md](/raw-migrated-files/elasticsearch/elasticsearch-reference/es-security-principles.md)
 
 Protecting your {{es}} cluster and the data it contains is of utmost importance. Implementing a defense in depth strategy provides multiple layers of security to help safeguard your system.
 

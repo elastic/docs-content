@@ -156,7 +156,6 @@ toc:
       - file: elasticsearch/elasticsearch-reference/change-passwords-native-users.md
       - file: elasticsearch/elasticsearch-reference/configuring-stack-security.md
       - file: elasticsearch/elasticsearch-reference/documents-indices.md
-      - file: elasticsearch/elasticsearch-reference/es-security-principles.md
       - file: elasticsearch/elasticsearch-reference/esql-using.md
       - file: elasticsearch/elasticsearch-reference/fips-140-compliance.md
       - file: elasticsearch/elasticsearch-reference/how-monitoring-works.md
