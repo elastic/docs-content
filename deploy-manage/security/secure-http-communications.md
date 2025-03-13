@@ -17,8 +17,11 @@ mapped_urls:
 
 % Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
 
+% pending to solve too
+
 $$$configuring-tls-browser-kib$$$
 $$$encrypt-http-communication$$$
+$$$encrypt-kibana-http$$$
 
 % Weird redirect in current system, not sure what to do
 

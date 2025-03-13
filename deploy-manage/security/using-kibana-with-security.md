@@ -108,7 +108,7 @@ The {{kib}} server can instruct browsers to enable additional security controls 
 
 1. Enable HTTP Strict-Transport-Security.
 
-    Use [`strictTransportSecurity`](/deploy-manage/deploy/self-managed/configure.md#server-securityResponseHeaders-strictTransportSecurity) to ensure that browsers will only attempt to access {{kib}} with SSL/TLS encryption. This is designed to prevent manipulator-in-the-middle attacks. To configure this with a lifetime of one year in your `kibana.yml`:
+    Use [`strictTransportSecurity`](https://www.elastic.co/guide/en/kibana/current/settings.html#server-securityResponseHeaders-strictTransportSecurity) to ensure that browsers will only attempt to access {{kib}} with SSL/TLS encryption. This is designed to prevent manipulator-in-the-middle attacks. To configure this with a lifetime of one year in your `kibana.yml`:
 
     ```js
     server.securityResponseHeaders.strictTransportSecurity: "max-age=31536000"
@@ -120,7 +120,7 @@ The {{kib}} server can instruct browsers to enable additional security controls 
 
 2. Disable embedding.
 
-    Use [`disableEmbedding`](https://www.elastic.co/guide/en/kibana/master/settings.html#server-securityResponseHeaders-disableEmbedding) to ensure that {{kib}} cannot be embedded in other websites. To configure this in your `kibana.yml`:
+    Use [`disableEmbedding`](https://www.elastic.co/guide/en/kibana/current/settings.html#server-securityResponseHeaders-disableEmbedding) to ensure that {{kib}} cannot be embedded in other websites. To configure this in your `kibana.yml`:
 
     ```js
     server.securityResponseHeaders.disableEmbedding: true
