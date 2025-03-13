@@ -24,7 +24,6 @@ toc:
       - file: cloud/cloud-enterprise/ece-add-custom-bundle-plugin.md
       - file: cloud/cloud-enterprise/ece-add-user-settings.md
       - file: cloud/cloud-enterprise/ece-administering-deployments.md
-      - file: cloud/cloud-enterprise/ece-api-console.md
       - file: cloud/cloud-enterprise/ece-change-deployment.md
       - file: cloud/cloud-enterprise/ece-create-deployment.md
       - file: cloud/cloud-enterprise/ece-delete-deployment.md
@@ -115,7 +114,6 @@ toc:
     children:
       - file: docs-content/serverless/intro.md
       - file: docs-content/serverless/elasticsearch-differences.md
-      - file: docs-content/serverless/elasticsearch-explore-your-data.md
       - file: docs-content/serverless/elasticsearch-http-apis.md
       - file: docs-content/serverless/general-billing-stop-project.md
       - file: docs-content/serverless/general-sign-up-trial.md
@@ -131,7 +129,6 @@ toc:
       - file: docs-content/serverless/security-automatic-import.md
       - file: docs-content/serverless/security-detection-engine-overview.md
       - file: docs-content/serverless/security-vuln-management-faq.md
-      - file: docs-content/serverless/spaces.md
       - file: docs-content/serverless/what-is-observability-serverless.md
   - file: elasticsearch-hadoop/elasticsearch-hadoop/index.md
     children:
@@ -163,7 +160,6 @@ toc:
       - file: elasticsearch/elasticsearch-reference/monitoring-production.md
       - file: elasticsearch/elasticsearch-reference/recovery-prioritization.md
       - file: elasticsearch/elasticsearch-reference/scalability.md
-      - file: elasticsearch/elasticsearch-reference/search-analyze.md
       - file: elasticsearch/elasticsearch-reference/search-with-synonyms.md
       - file: elasticsearch/elasticsearch-reference/secure-cluster.md
       - file: elasticsearch/elasticsearch-reference/secure-monitoring.md
@@ -183,16 +179,12 @@ toc:
   - file: kibana/kibana/index.md
     children:
       - file: kibana/kibana/apm-settings-kb.md
-      - file: kibana/kibana/console-kibana.md
       - file: kibana/kibana/elasticsearch-mutual-tls.md
-      - file: kibana/kibana/esql.md
       - file: kibana/kibana/install.md
       - file: kibana/kibana/logging-settings.md
       - file: kibana/kibana/reporting-production-considerations.md
-      - file: kibana/kibana/search-ai-assistant.md
       - file: kibana/kibana/secure-reporting.md
       - file: kibana/kibana/Security-production-considerations.md
-      - file: kibana/kibana/set-time-filter.md
       - file: kibana/kibana/setup.md
       - file: kibana/kibana/upgrade-migrations-rolling-back.md
       - file: kibana/kibana/upgrade.md
