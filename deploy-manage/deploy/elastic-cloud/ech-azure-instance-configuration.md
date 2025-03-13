@@ -5,7 +5,7 @@ mapped_pages:
 
 # Elasticsearch Add-On for Heroku Azure instance configurations [ech-azure-instance-configuration]
 
-Azure [Ddv4](https://docs.microsoft.com/en-us/azure/virtual-machines/ddv4-ddsv4-series/), [Edsv4](https://docs.microsoft.com/en-us/azure/virtual-machines/edv4-edsv4-series/), [Fsv2](https://docs.microsoft.com/en-us/azure/virtual-machines/fsv2-series/), and [Lsv3](https://docs.microsoft.com/en-us/azure/virtual-machines/lsv3-series/) virtual machines (VM) are now available for Elastic Cloud deployments in all supported [Azure Cloud regions](asciidocalypse://docs/cloud/docs/reference/cloud-hosted/ec-regions-templates-instances.md#ec-azure_regions). These VMs provide additional combinations of compute, memory, and disk configurations to better fit your use-cases to optimize performance and cost.
+Azure [Ddv4](https://docs.microsoft.com/en-us/azure/virtual-machines/ddv4-ddsv4-series/), [Edsv4](https://docs.microsoft.com/en-us/azure/virtual-machines/edv4-edsv4-series/), [Fsv2](https://docs.microsoft.com/en-us/azure/virtual-machines/fsv2-series/), and [Lsv3](https://docs.microsoft.com/en-us/azure/virtual-machines/lsv3-series/) virtual machines (VM) are now available for Elastic Cloud deployments in all supported [Azure Cloud regions](cloud://reference/cloud-hosted/ec-regions-templates-instances.md#ec-azure_regions). These VMs provide additional combinations of compute, memory, and disk configurations to better fit your use-cases to optimize performance and cost.
 
 To learn about the Azure specific configurations, check:
 
