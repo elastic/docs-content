@@ -40,12 +40,12 @@ Specifically:
 
 ## {{beats}} [air-gapped-beats]
 
-Elastic {{beats}} are light-weight data shippers. They do not require any unique setup in the air-gapped scenario. To learn more, refer to the [{{beats}} documentation](asciidocalypse://docs/beats/docs/reference/index.md).
+Elastic {{beats}} are light-weight data shippers. They do not require any special configuration in air-gapped environments. To learn more, refer to the [{{beats}} documentation](asciidocalypse://docs/beats/docs/reference/index.md).
 
 
 ## {{ls}} [air-gapped-logstash]
 
-{{ls}} is a versatile data shipping and processing application. It does not require any unique setup in the air-gapped scenario. To learn more, refer to the [{{ls}} documentation](asciidocalypse://docs/logstash/docs/reference/index.md).
+{{ls}} is a versatile data shipping and processing application. It does not require any special configuration in air-gapped environments. To learn more, refer to the [{{ls}} documentation](asciidocalypse://docs/logstash/docs/reference/index.md).
 
 
 ## {{agent}} [air-gapped-elastic-agent]

@@ -186,9 +186,9 @@ docker.elastic.co/elasticsearch/elasticsearch:{{stack-version}}
 
 ## Always bind data volumes [_always_bind_data_volumes]
 
-You should use a volume bound on `/usr/share/elasticsearch/data` for the following reasons:
+You should use a volume bound to `/usr/share/elasticsearch/data` for the following reasons:
 
-1. The data of your {{es}} node won’t be lost if the container is killed.
+1. The data of your {{es}} node won’t be lost if the container is deleted.
 2. {{es}} is I/O sensitive and the Docker storage driver is not ideal for fast I/O.
 3. It allows the use of advanced [Docker volume plugins](https://docs.docker.com/engine/extend/plugins/#volume-plugins).
 

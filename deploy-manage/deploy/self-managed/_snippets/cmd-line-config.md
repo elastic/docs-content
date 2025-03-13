@@ -1,8 +1,7 @@
 {{es}} loads its configuration from the following location by default:
 
-```
+```sh subs=true
 {{es-conf}}{{slash}}elasticsearch.yml
-```
 
 The format of this config file is explained in [](/deploy-manage/deploy/self-managed/configure-elasticsearch.md).
 

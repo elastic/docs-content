@@ -15,7 +15,7 @@ If you want to install Elastic on your own premises without the assistance of an
 To quickly set up {{es}} and {{kib}} in Docker for local development or testing, jump to [](/deploy-manage/deploy/self-managed/local-development-installation-quickstart.md).
 
 :::{admonition} Simplify the deployment process
-Self-managed clusters are useful for local development, and for exploring Elastic features. However, Elastic offer several deployment options that can simplify the process of deploying and managing multi-node deployments, especially in production. They also allow you to deploy and manage multiple deployments from a single surface.
+Self-managed clusters are useful for local development, and for exploring Elastic features. However, Elastic offers several deployment options that can simplify the process of deploying and managing multi-node deployments, especially in production. They also allow you to deploy and manage multiple deployments from a single surface.
 
 Managed by Elastic: 
 * [{{serverless-full}}](/deploy-manage/deploy/elastic-cloud/serverless.md)
@@ -54,7 +54,7 @@ Learn how to install and configure {{es}}. {{es}} is the distributed search and 
 
 ### Deploying Kibana
 
-After you deploy {{es}}, you can install {{kib}}. {{kib}} provides the user interface for all Elastic solutions. It’s a powerful tool for visualizing and analyzing your data, and for managing and monitoring the {{stack}}. Although {{kib}} is not required to use {{es}}, it's required for most use cases.
+After you deploy {{es}}, you can install {{kib}}. {{kib}} provides the user interface for all Elastic solutions. It’s a powerful tool for [visualizing and analyzing](/explore-analyze/index.md) your data, and for managing and monitoring the {{stack}}. Although {{kib}} is not required to use {{es}}, it's required for most [use cases](/solutions/index.md).
 
 * [](/deploy-manage/deploy/self-managed/install-kibana.md): Install {{kib}} using one of our install packages or container images, and enroll {{kib}} with your {{es}} cluster.
 * [](/deploy-manage/deploy/self-managed/configure-kibana.md): Learn how to make configuration changes to {{kib}}.
@@ -81,7 +81,7 @@ Review these other sections for critical information about securing and managing
 Learn how to secure your Elastic environment to restrict access to only authorized parties, and allow communication between your environment and external parties.
 
 * [](/deploy-manage/security.md): Learn about security features that prevent bad actors from tampering with your data, and encrypt communications to, from, and within your cluster.
-* [](/deploy-manage/users-roles/cluster-or-deployment-auth.md): Set up authentication and authorization for your cluster, and learn about the underlying security technologies that {{es}} uses to authenticate and authorize requests internally and across services.
+* [Users and roles](/deploy-manage/users-roles/cluster-or-deployment-auth.md): Set up authentication and authorization for your cluster, and learn about the underlying security technologies that {{es}} uses to authenticate and authorize requests internally and across services.
 * [](/deploy-manage/manage-spaces.md): Learn how to organize content in {{kib}}, and restrict access to this content to specific users.
 * [](/deploy-manage/api-keys.md): Authenticate and authorize programmatic access to your deployments and {{es}} resources.
 * [](/deploy-manage/manage-connectors.md): Manage connection information between Elastic and third-party systems.
