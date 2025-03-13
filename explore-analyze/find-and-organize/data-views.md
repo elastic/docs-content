@@ -10,16 +10,6 @@ mapped_urls:
 
 # Data views [data-views]
 
-% What needs to be done: Align serverless/stateful
-
-% Use migrated content from existing pages that map to this page:
-
-% - [ ] ./raw-migrated-files/kibana/kibana/data-views.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/data-views.md
-% - [ ] ./raw-migrated-files/kibana/kibana/managing-data-views.md
-
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
-
 $$$field-formatters-numeric$$$
 
 $$$managing-fields$$$

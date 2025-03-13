@@ -5,7 +5,7 @@ mapped_pages:
 
 # Elasticsearch Add-On for Heroku GCP instance configurations [ech-gcp-instance-configuration]
 
-Google Compute Engine (GCE) N2 general purpose VM types are now available for Elastic Cloud deployments in all supported [Google Cloud regions](asciidocalypse://docs/cloud/docs/reference/cloud-hosted/ec-regions-templates-instances.md#ec-gcp_regions). [N2](https://cloud.google.com/compute/docs/machine-types) VMs have a better mix of vCPU, RAM, and internal disk, and are up to 50% more cost effective when compared to N1 VM types. In addition to N2, we also provide N2D VMs across the Google Cloud regions.
+Google Compute Engine (GCE) N2 general purpose VM types are now available for Elastic Cloud deployments in all supported [Google Cloud regions](cloud://reference/cloud-hosted/ec-regions-templates-instances.md#ec-gcp_regions). [N2](https://cloud.google.com/compute/docs/machine-types) VMs have a better mix of vCPU, RAM, and internal disk, and are up to 50% more cost effective when compared to N1 VM types. In addition to N2, we also provide N2D VMs across the Google Cloud regions.
 
 To learn about the GCE specific configurations, check:
 

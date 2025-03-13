@@ -10,16 +10,6 @@ mapped_urls:
 
 # Saved objects [saved-objects]
 
-% What needs to be done: Refine
-
-% Use migrated content from existing pages that map to this page:
-
-% - [ ] ./raw-migrated-files/docs-content/serverless/saved-objects.md
-% - [ ] ./raw-migrated-files/kibana/kibana/managing-saved-objects.md
-% - [ ] ./raw-migrated-files/kibana/kibana/saved-object-ids.md
-
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
-
 $$$managing-saved-objects-copy-to-space$$$
 
 $$$managing-saved-objects-export-objects$$$

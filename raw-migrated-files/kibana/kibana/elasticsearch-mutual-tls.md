@@ -93,7 +93,7 @@ If you haven’t already, start {{kib}} and connect it to {{es}} using the [enro
         elasticsearch.ssl.keystore.path: "/path/to/kibana-client.p12"
         ```
 
-        If your PKCS#12 file is encrypted, add the decryption password to your [{{kib}} keystore](secure-settings.md):
+        If your PKCS#12 file is encrypted, add the decryption password to your [{{kib}} keystore](/deploy-manage/security/secure-settings.md):
 
         ```yaml
         bin/kibana-keystore add elasticsearch.ssl.keystore.password
@@ -112,7 +112,7 @@ If you haven’t already, start {{kib}} and connect it to {{es}} using the [enro
         elasticsearch.ssl.key: "/path/to/kibana-client.key"
         ```
 
-        If your private key is encrypted, add the decryption password to your [{{kib}} keystore](secure-settings.md):
+        If your private key is encrypted, add the decryption password to your [{{kib}} keystore](/deploy-manage/security/secure-settings.md):
 
         ```yaml
         bin/kibana-keystore add elasticsearch.ssl.keyPassphrase

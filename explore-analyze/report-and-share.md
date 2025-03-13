@@ -8,16 +8,6 @@ mapped_urls:
 
 # Reporting and sharing [reporting-getting-started]
 
-% What needs to be done: Refine
-
-% Scope notes: reference prod considerations
-
-% Use migrated content from existing pages that map to this page:
-
-% - [ ] ./raw-migrated-files/kibana/kibana/reporting-getting-started.md
-
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
-
 $$$install-reporting-packages$$$
 
 $$$set-reporting-server-host$$$

@@ -223,7 +223,7 @@ Typically, you need to create the following separate roles:
 * **setup** role for setting up index templates and other dependencies
 * **monitoring** role for sending monitoring information
 * **writer** role for publishing events collected by {{metricbeat}}
-* **reader** role for Kibana users who need to view and create visualizations that access {{metricbeat}} data
+* **reader** role for {{kib}} users who need to view and create visualizations that access {{metricbeat}} data
 
 ::::{note}
 These instructions assume that you are using the default name for {{metricbeat}} indices. If the indicated index names are not listed, or you are using a custom name, enter it manually when defining roles and modify the privileges to match your index naming pattern.
@@ -335,7 +335,7 @@ Users who publish events to {{es}} need to create and write to {{metricbeat}} in
 1. Create the reader role:
 2. Enter **metricbeat_reader** as the role name.
 3. On the **metricbeat-\*** indices, choose the **read** privilege.
-4. Under **Kibana**, click **Add Kibana privilege**.
+4. Under **{{kib}}**, click **Add {{kib}} privilege**.
 
     * Under **Spaces**, choose **Default**.
     * Choose **Read** or **All** for Discover, Visualize, Dashboard, and Metrics.
