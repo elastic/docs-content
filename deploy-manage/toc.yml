@@ -513,14 +513,13 @@ toc:
                       - file: security/same-ca.md
                       - file: security/different-ca.md
               - file: security/supported-ssltls-versions-by-jdk-version.md
+              - file: security/enabling-cipher-suites-for-stronger-encryption.md
           - file: security/data-security.md
             children:
-              - file: security/encrypt-deployment.md
-                children:
-                  - file: security/encrypt-deployment-with-customer-managed-encryption-key.md
-                  - file: security/enabling-cipher-suites-for-stronger-encryption.md
+              - file: security/encrypt-deployment-with-customer-managed-encryption-key.md
               - file: security/secure-settings.md
               - file: security/secure-saved-objects.md
+              - file: security/kibana-session-management.md
           - file: security/logging-configuration/security-event-audit-logging.md
             children:
               - file: security/logging-configuration/enabling-audit-logs.md
@@ -530,7 +529,6 @@ toc:
                   - file: security/logging-configuration/logfile-audit-output.md
               - file: security/logging-configuration/auditing-search-queries.md
               - file: security/logging-configuration/correlating-kibana-elasticsearch-audit-logs.md
-          - file: security/kibana-session-management.md
           - file: security/fips-140-2.md
       - file: security/secure-clients-integrations.md
         children:

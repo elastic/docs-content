@@ -9,13 +9,6 @@ mapped_urls:
 
 # Tags [managing-tags]
 
-% What needs to be done: Refine
-
-% Use migrated content from existing pages that map to this page:
-
-% - [ ] ./raw-migrated-files/docs-content/serverless/tags.md
-% - [ ] ./raw-migrated-files/kibana/kibana/managing-tags.md
-
 
 Use tags to categorize your saved objects, then filter for related objects based on shared tags.
 
