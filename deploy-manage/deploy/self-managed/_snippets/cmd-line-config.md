@@ -2,13 +2,14 @@
 
 ```sh subs=true
 {{es-conf}}{{slash}}elasticsearch.yml
+```
 
 The format of this config file is explained in [](/deploy-manage/deploy/self-managed/configure-elasticsearch.md).
 
 Any settings that can be specified in the config file can also be specified on the command line, using the `-E` syntax as follows:
 
-```sh
-.\bin\elasticsearch.bat -Ecluster.name=my_cluster -Enode.name=node_1
+```sh subs=true
+.{{slash}}bin{{slash}}elasticsearch{{auto}} -Ecluster.name=my_cluster -Enode.name=node_1
 ```
 
 :::{note}

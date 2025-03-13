@@ -99,7 +99,7 @@ Examine `/etc/apt/sources.list.d/elasticsearch-9.x.list` for the duplicate entry
 
 The Debian package for {{es}} {{stack-version}} can be downloaded from the website and installed as follows:
 
-```sh
+```sh subs=true
 wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-{{stack-version}}-amd64.deb
 wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-{{stack-version}}-amd64.deb.sha512
 shasum -a 512 -c elasticsearch-{{stack-version}}-amd64.deb.sha512 <1>

@@ -1,6 +1,6 @@
 If your library doesn’t support a method of validating the fingerprint, the auto-generated CA certificate is created in the following directory on each {{es}} node:
 
-```sh
+```sh subs=true
 {{es-conf}}{{slash}}certs{{slash}}http_ca.crt
 ```
 

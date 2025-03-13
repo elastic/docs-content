@@ -73,7 +73,7 @@ sudo zypper install kibana <3>
 
 The RPM for {{kib}} {{stack-version}} can be downloaded from the website and installed as follows:
 
-```sh
+```sh subs=true
 wget https://artifacts.elastic.co/downloads/kibana/kibana-{{stack-version}}-x86_64.rpm
 wget https://artifacts.elastic.co/downloads/kibana/kibana-{{stack-version}}-x86_64.rpm.sha512
 shasum -a 512 -c kibana-{{stack-version}}-x86_64.rpm.sha512 <1>

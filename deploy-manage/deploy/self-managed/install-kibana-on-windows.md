@@ -26,7 +26,7 @@ Download the .zip windows archive for {{kib}} {{stack-version}} from [https://ar
 
 Unzip it with your favorite unzip tool. This will create a folder called kibana-{{stack-version}}-windows-x86_64, which we will refer to as `$KIBANA_HOME`. In a terminal window, CD to the `$KIBANA_HOME` directory, for instance:
 
-```sh
+```sh subs=true
 CD c:\kibana-{{stack-version}}-windows-x86_64
 ```
 

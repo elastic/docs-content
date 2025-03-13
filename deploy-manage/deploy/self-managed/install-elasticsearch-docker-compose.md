@@ -1,6 +1,4 @@
 ---
-sub:
-  stack-version: "9.0.0"
 applies_to:
   deployment:
     self:
@@ -43,7 +41,7 @@ Use Docker Compose to start a three-node {{es}} cluster with {{kib}}. Docker Com
 
 5. In the `.env` file, set `STACK_VERSION` to the current {{stack}} version.
 
-    ```txt
+    ```txt subs=true
     ...
     # Version of Elastic products
     STACK_VERSION={{stack-version}}
@@ -56,7 +54,7 @@ Use Docker Compose to start a three-node {{es}} cluster with {{kib}}. Docker Com
 
     ```txt
     ...
-    # Port to expose {{es}} HTTP API to the host
+    # Port to expose Elasticsearch HTTP API to the host
     #ES_PORT=9200
     ES_PORT=127.0.0.1:9200
     ...

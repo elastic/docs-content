@@ -1,6 +1,4 @@
 ---
-sub:
-  stack-version: "9.0.0"
 applies_to:
   deployment:
     self:
@@ -36,7 +34,7 @@ Use Docker commands to start a single-node {{es}} cluster for development or tes
 
 3. Pull the {{es}} Docker image.
 
-    ```sh
+    ```sh subs=true
     docker pull docker.elastic.co/elasticsearch/elasticsearch:{{stack-version}}
     ```
 
@@ -44,14 +42,14 @@ Use Docker commands to start a single-node {{es}} cluster for development or tes
 
     $$$docker-verify-signature$$$
 
-    ```sh
+    ```sh subs=true
     wget https://artifacts.elastic.co/cosign.pub
     cosign verify --key cosign.pub docker.elastic.co/elasticsearch/elasticsearch:{{stack-version}}
     ```
 
     The `cosign` command prints the check results and the signature payload in JSON format:
 
-    ```sh
+    ```sh subs=true
     Verification for docker.elastic.co/elasticsearch/elasticsearch:{{stack-version}} --
     The following checks were performed on each of these signatures:
       - The cosign claims were validated
@@ -61,7 +59,7 @@ Use Docker commands to start a single-node {{es}} cluster for development or tes
 
 5. Start an {{es}} container.
 
-    ```sh
+    ```sh subs=true
     docker run --name es01 --net elastic -p 9200:9200 -it -m 1GB docker.elastic.co/elasticsearch/elasticsearch:{{stack-version}}
     ```
 
@@ -72,7 +70,7 @@ Use Docker commands to start a single-node {{es}} cluster for development or tes
 
     {{ml-cap}} features such as [semantic search with ELSER](/solutions/search/semantic-search/semantic-search-elser-ingest-pipelines.md) require a larger container with more than 1GB of memory. If you intend to use the {{ml}} capabilities, then start the container with this command:
 
-    ```sh
+    ```sh subs=true
     docker run --name es01 --net elastic -p 9200:9200 -it -m 6GB -e "xpack.ml.use_auto_machine_memory_percent=true" docker.elastic.co/elasticsearch/elasticsearch:{{stack-version}}
     ```
 
@@ -115,7 +113,7 @@ Use Docker commands to start a single-node {{es}} cluster for development or tes
 
 2. Start a new {{es}} container. Include the enrollment token as an environment variable.
 
-    ```sh
+    ```sh subs=true
     docker run -e ENROLLMENT_TOKEN="<token>" --name es02 --net elastic -it -m 1GB docker.elastic.co/elasticsearch/elasticsearch:{{stack-version}}
     ```
 
@@ -129,20 +127,20 @@ Use Docker commands to start a single-node {{es}} cluster for development or tes
 
 1. Pull the {{kib}} Docker image.
 
-    ```sh
+    ```sh subs=true
     docker pull docker.elastic.co/kibana/kibana:{{stack-version}}
     ```
 
 2. Optional: Verify the {{kib}} image’s signature.
 
-    ```sh
+    ```sh subs=true
     wget https://artifacts.elastic.co/cosign.pub
     cosign verify --key cosign.pub docker.elastic.co/kibana/kibana:{{stack-version}}
     ```
 
 3. Start a {{kib}} container.
 
-    ```sh
+    ```sh subs=true
     docker run --name kib01 --net elastic -p 5601:5601 docker.elastic.co/kibana/kibana:{{stack-version}}
     ```
 
@@ -167,7 +165,7 @@ Use Docker commands to start a single-node {{es}} cluster for development or tes
 
 To remove the containers and their network, run:
 
-```sh
+```sh subs=true
 # Remove the Elastic network
 docker network rm elastic
 

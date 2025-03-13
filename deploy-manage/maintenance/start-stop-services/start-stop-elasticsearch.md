@@ -226,8 +226,8 @@ From the {{es}} startup logs:
 Or by specifying a location to write a PID file to on startup (`-p <path>`):
 
 ```sh
-$ ./bin/{{es}} -p /tmp/{{es}}-pid -d
-$ cat /tmp/{{es}}-pid && echo
+$ ./bin/elasticsearch -p /tmp/elasticsearch-pid -d
+$ cat /tmp/elasticsearch-pid && echo
 15516
 $ kill -SIGTERM 15516
 ```

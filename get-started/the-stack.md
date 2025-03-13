@@ -5,8 +5,6 @@ mapped_urls:
   - https://www.elastic.co/guide/en/kibana/current/index.html
   - https://www.elastic.co/guide/en/elastic-stack/current/installing-elastic-stack.html
   - https://www.elastic.co/guide/en/elastic-stack/current/overview.html
-sub:
-  stack-version: "9.0.0"
 ---
 
 # The {{stack}}

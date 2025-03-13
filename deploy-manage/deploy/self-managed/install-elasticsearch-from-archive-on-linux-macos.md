@@ -6,7 +6,7 @@ sub:
   slash: "/"
   export: "export "
   escape: "\\"
-  stack-version: "9.0.0"
+  auto: " -d"
 navigation_title: "Install on Linux or MacOS"
 applies_to:
   deployment:
@@ -39,7 +39,7 @@ Download and install the archive for Linux or MacOS.
 
 The Linux archive for {{es}} {{stack-version}} can be downloaded and installed as follows:
 
-```sh
+```sh subs=true
 wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-{{stack-version}}-linux-x86_64.tar.gz
 wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-{{stack-version}}-linux-x86_64.tar.gz.sha512
 shasum -a 512 -c elasticsearch-{{stack-version}}-linux-x86_64.tar.gz.sha512 <1>
@@ -56,7 +56,7 @@ cd elasticsearch-{{stack-version}}/ <2>
 
 The MacOS archive for {{es}} {{stack-version}} can be downloaded and installed as follows:
 
-```sh
+```sh subs=true
 curl -O https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-{{stack-version}}-darwin-x86_64.tar.gz
 curl https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-{{stack-version}}-darwin-x86_64.tar.gz.sha512 | shasum -a 512 -c - <1>
 tar -xzf elasticsearch-{{stack-version}}-darwin-x86_64.tar.gz

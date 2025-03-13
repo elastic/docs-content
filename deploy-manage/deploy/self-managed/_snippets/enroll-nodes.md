@@ -8,7 +8,7 @@ To enroll new nodes in your cluster, create an enrollment token with the `elasti
 
 1. In a separate terminal from where {{es}} is running, navigate to the directory where you installed {{es}} and run the [`elasticsearch-create-enrollment-token`](elasticsearch://reference/elasticsearch/command-line-tools/create-enrollment-token.md) tool to generate an enrollment token for your new nodes.
 
-    ```sh
+    ```sh subs=true
     bin{{slash}}elasticsearch-create-enrollment-token -s node
     ```
 
@@ -16,13 +16,13 @@ To enroll new nodes in your cluster, create an enrollment token with the `elasti
 
 2. From the installation directory of your new node, start {{es}} and pass the enrollment token with the `--enrollment-token` parameter.
 
-    ```sh
+    ```sh subs=true
     bin{{slash}}elasticsearch --enrollment-token <enrollment-token>
     ```
 
     {{es}} automatically generates certificates and keys in the following directory:
 
-    ```sh
+    ```sh subs=true
     config{{slash}}certs
     ```
 

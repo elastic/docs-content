@@ -6,7 +6,7 @@ sub:
   slash: "\\"
   export: "$"
   escape: "^"
-  stack-version: "9.0.0"
+  auto: ".bat"
 navigation_title: Install on Windows
 applies_to:
   deployment:
@@ -42,7 +42,7 @@ Download the `.zip` archive for {{es}} {{stack-version}} from: [https://artifact
 
 Unzip it with your favorite unzip tool. This will create a folder called `elasticsearch-<version>`, which we will refer to as `%ES_HOME%`. In a terminal window, `cd` to the `%ES_HOME%` directory, for instance:
 
-```sh
+```sh subs=true
 cd C:\Program Files\elasticsearch-{{stack-version}}
 ```
 
@@ -90,7 +90,7 @@ You can install {{es}} as a service that runs in the background or starts automa
 
 1. Install {{es}} as a service. The name of the service and the value of `ES_JAVA_HOME` will be made available during install:
 
-    ```sh
+    ```sh subs=true
     C:\Program Files\elasticsearch-{{stack-version}}\bin>elasticsearch-service.bat install
     Installing service      :  "elasticsearch-service-x64"
     Using ES_JAVA_HOME (64-bit):  "C:\jvm\jdk1.8"
@@ -105,7 +105,7 @@ You can install {{es}} as a service that runs in the background or starts automa
 
 2. Start {{es}} as a service. When {{es}} starts, authentication is enabled by default:
 
-    ```sh
+    ```sh subs=true
     C:\Program Files\elasticsearch-{{stack-version}}\bin>bin\elasticsearch-service.bat start
     ```
 
@@ -115,7 +115,7 @@ You can install {{es}} as a service that runs in the background or starts automa
 
 3. Generate a password for the `elastic` user with the [`elasticsearch-reset-password`](elasticsearch://reference/elasticsearch/command-line-tools/reset-password.md) tool. The password is output to the command line.
 
-    ```sh
+    ```sh subs=true
     C:\Program Files\elasticsearch-{{stack-version}}\bin>\bin\elasticsearch-reset-password -u elastic
     ```
 
@@ -123,7 +123,7 @@ You can install {{es}} as a service that runs in the background or starts automa
 
 Run the `elasticsearch-service.bat` script in the `bin\` folder to install, remove, manage, or configure the service and potentially start and stop the service from the command line.
 
-```sh
+```sh subs=true
 C:\Program Files\elasticsearch-{{stack-version}}\bin>elasticsearch-service.bat
 ```
 

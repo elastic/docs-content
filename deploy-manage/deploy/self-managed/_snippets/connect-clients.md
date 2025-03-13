@@ -3,7 +3,7 @@
 
 When you start {{es}} for the first time, TLS is configured automatically for the HTTP layer. A CA certificate is generated and stored on disk at:
 
-```sh
+```sh subs=true
 {{es-conf}}{{slash}}certs{{slash}}http_ca.crt
 ```
 

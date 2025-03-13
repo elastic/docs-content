@@ -2,7 +2,7 @@ The password for the `elastic` user and the enrollment token for {{kib}} are out
 
 We recommend storing the `elastic` password as an environment variable in your shell. For example:
 
-```sh
+```sh subs=true
 {{export}}ELASTIC_PASSWORD="your_password"
 ```
 

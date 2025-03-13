@@ -84,7 +84,7 @@ sudo zypper modifyrepo --enable elasticsearch && \
 
 The RPM for {{es}} {{stack-version}} can be downloaded from the website and installed as follows:
 
-```sh
+```sh subs=true
 wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-{{stack-version}}-x86_64.rpm
 wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-{{stack-version}}-x86_64.rpm.sha512
 shasum -a 512 -c elasticsearch-{{stack-version}}-x86_64.rpm.sha512 <1>

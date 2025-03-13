@@ -31,7 +31,7 @@ macOS is supported for development purposes only and is not covered under the su
 
 The Linux archive for {{kib}} {{stack-version}} can be downloaded and installed as follows:
 
-```sh
+```sh subs=true
 curl -O https://artifacts.elastic.co/downloads/kibana/kibana-{{stack-version}}-linux-x86_64.tar.gz
 curl https://artifacts.elastic.co/downloads/kibana/kibana-{{stack-version}}-linux-x86_64.tar.gz.sha512 | shasum -a 512 -c - <1>
 tar -xzf kibana-{{stack-version}}-linux-x86_64.tar.gz
@@ -45,7 +45,7 @@ cd kibana-{{stack-version}}/ <2>
 
 The Darwin archive for {{kib}} {{stack-version}} can be downloaded and installed as follows:
 
-```sh
+```sh subs=true
 curl -O https://artifacts.elastic.co/downloads/kibana/kibana-{{stack-version}}-darwin-x86_64.tar.gz
 curl https://artifacts.elastic.co/downloads/kibana/kibana-{{stack-version}}-darwin-x86_64.tar.gz.sha512 | shasum -a 512 -c - <1>
 tar -xzf kibana-{{stack-version}}-darwin-x86_64.tar.gz
@@ -63,7 +63,7 @@ Apple’s rollout of stricter notarization requirements affected the notarizatio
 
 To prevent Gatekeeper checks on the {{kib}} files, run the following command on the downloaded `.tar.gz` archive or the directory to which was extracted:
 
-```sh
+```sh subs=true
 xattr -d -r com.apple.quarantine <archive-or-directory>
 ```
 
