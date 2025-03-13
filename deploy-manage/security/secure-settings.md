@@ -99,7 +99,7 @@ There are three types of secrets that you can use:
 
 Add keys and secret values to the keystore.
 
-1. [Log into the Cloud UI](../../../deploy-manage/deploy/cloud-enterprise/log-into-cloud-ui.md).
+1. [Log into the Cloud UI](/deploy-manage/deploy/cloud-enterprise/log-into-cloud-ui.md).
 2. On the **Deployments** page, select your deployment.
 
     Narrow the list by name, ID, or choose from several other filters. To further define the list, use a combination of filters.
@@ -116,7 +116,7 @@ Add keys and secret values to the keystore.
 
 When your keys and secret values are no longer needed, delete them from the keystore.
 
-1. [Log into the Cloud UI](../../../deploy-manage/deploy/cloud-enterprise/log-into-cloud-ui.md).
+1. [Log into the Cloud UI](/deploy-manage/deploy/cloud-enterprise/log-into-cloud-ui.md).
 2. On the **Deployments** page, select your deployment.
 
     Narrow the list by name, ID, or choose from several other filters. To further define the list, use a combination of filters.
@@ -250,16 +250,16 @@ When changing multiple **reloadable** secure settings, modify all of them on eac
 
 There are reloadable secure settings for:
 
-* [The Azure repository plugin](../../../deploy-manage/tools/snapshot-and-restore/azure-repository.md)
+* [The Azure repository plugin](/deploy-manage/tools/snapshot-and-restore/azure-repository.md)
 * [The EC2 discovery plugin](elasticsearch://reference/elasticsearch-plugins/discovery-ec2-usage.md#_configuring_ec2_discovery)
-* [The GCS repository plugin](../../../deploy-manage/tools/snapshot-and-restore/google-cloud-storage-repository.md)
-* [The S3 repository plugin](../../../deploy-manage/tools/snapshot-and-restore/s3-repository.md)
+* [The GCS repository plugin](/deploy-manage/tools/snapshot-and-restore/google-cloud-storage-repository.md)
+* [The S3 repository plugin](/deploy-manage/tools/snapshot-and-restore/s3-repository.md)
 * [Monitoring settings](elasticsearch://reference/elasticsearch/configuration-reference/monitoring-settings.md)
 * [{{watcher}} settings](elasticsearch://reference/elasticsearch/configuration-reference/watcher-settings.md)
 * [JWT realm](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#ref-jwt-settings)
 * [Active Directory realm](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#ref-ad-settings)
 * [LDAP realm](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#ref-ldap-settings)
-* [Remote cluster credentials for the API key based security model](../../../deploy-manage/remote-clusters/remote-clusters-settings.md#remote-cluster-credentials-setting)
+* [Remote cluster credentials for the API key based security model](/deploy-manage/remote-clusters/remote-clusters-settings.md#remote-cluster-credentials-setting)
 
 
 ::::
@@ -489,6 +489,6 @@ stringData:
 
 ### More examples [k8s_more_examples]
 
-Check [How to create automated snapshots](../../../deploy-manage/tools/snapshot-and-restore/cloud-on-k8s.md) for an example use case that illustrates how secure settings can be used to set up automated Elasticsearch snapshots to a GCS storage bucket.
+Check [How to create automated snapshots](/deploy-manage/tools/snapshot-and-restore/cloud-on-k8s.md) for an example use case that illustrates how secure settings can be used to set up automated Elasticsearch snapshots to a GCS storage bucket.
 
 
