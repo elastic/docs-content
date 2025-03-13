@@ -75,14 +75,14 @@ Install {{filebeat}} on the server you want to monitor by running the commands t
 :::::::{tab-set}
 
 ::::::{tab-item} DEB
-```sh
+```sh subs=true
 curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{version}}-darwin-x86_64.tar.gz
 tar xzvf filebeat-{{version}}-darwin-x86_64.tar.gz
 ```
 ::::::
 
 ::::::{tab-item} RPM
-```sh
+```sh subs=true
 curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{version}}-linux-x86_64.tar.gz
 tar xzvf filebeat-{{version}}-linux-x86_64.tar.gz
 ```
@@ -105,14 +105,14 @@ If script execution is disabled on your system, you need to set the execution po
 ::::::
 
 ::::::{tab-item} Linux
-```sh
+```sh subs=true
 curl -L -O https\://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{version}}-amd64.deb
 sudo dpkg -i filebeat-{{version}}-amd64.deb
 ```
 ::::::
 
 ::::::{tab-item} Windows
-```sh
+```sh subs=true
 curl -L -O https\://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{version}}-x86_64.rpm
 sudo rpm -vi filebeat-{{version}}-x86_64.rpm
 ```

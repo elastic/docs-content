@@ -5,7 +5,7 @@ Protecting your {{es}} cluster and the data it contains is of utmost importance.
 
 ## Run {{es}} with security enabled [security-run-with-security]
 
-Never run an {{es}} cluster without security enabled. This principle cannot be overstated. Running {{es}} without security leaves your cluster exposed to anyone who can send network traffic to {{es}}, permitting these individuals to download, modify, or delete any data in your cluster. [Start the {{stack}} with security enabled](../../../deploy-manage/security/security-certificates-keys.md) or [manually configure security](../../../deploy-manage/security/manually-configure-security-in-self-managed-cluster.md) to prevent unauthorized access to your clusters and ensure that internode communication is secure.
+Never run an {{es}} cluster without security enabled. This principle cannot be overstated. Running {{es}} without security leaves your cluster exposed to anyone who can send network traffic to {{es}}, permitting these individuals to download, modify, or delete any data in your cluster. [Start the {{stack}} with security enabled](/deploy-manage/security/security-certificates-keys.md) or [manually configure security](../../../deploy-manage/security/manually-configure-security-in-self-managed-cluster.md) to prevent unauthorized access to your clusters and ensure that internode communication is secure.
 
 
 ## Run {{es}} with a dedicated non-root user [security-not-root-user]

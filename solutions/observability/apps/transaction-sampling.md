@@ -229,7 +229,7 @@ This example defines three tail-based sampling polices:
 #### Top-level tail-based sampling settings [_top_level_tail_based_sampling_settings]
 
 
-##### Enable tail-based sampling [sampling-tail-enabled-{{input-type}}]
+##### Enable tail-based sampling [sampling-tail-enabled]
 
 Set to `true` to enable tail based sampling. Disabled by default. (bool)
 
@@ -239,7 +239,7 @@ Set to `true` to enable tail based sampling. Disabled by default. (bool)
 | Fleet-managed | `Enable tail-based sampling` |
 
 
-##### Interval [sampling-tail-interval-{{input-type}}]
+##### Interval [sampling-tail-interval]
 
 Synchronization interval for multiple APM Servers. Should be in the order of tens of seconds or low minutes. Default: `1m` (1 minute). (duration)
 
@@ -249,7 +249,7 @@ Synchronization interval for multiple APM Servers. Should be in the order of ten
 | Fleet-managed | `Interval` |
 
 
-##### Policies [sampling-tail-policies-{{input-type}}]
+##### Policies [sampling-tail-policies]
 
 Criteria used to match a root transaction to a sample rate.
 
@@ -261,7 +261,7 @@ Policies map trace events to a sample rate. Each policy must specify a sample ra
 | Fleet-managed | `Policies` |
 
 
-##### Storage limit [sampling-tail-storage_limit-{{input-type}}]
+##### Storage limit [sampling-tail-storage_limit]
 
 The amount of storage space allocated for trace events matching tail sampling policies. Caution: Setting this limit higher than the allowed space may cause APM Server to become unhealthy.
 
@@ -282,28 +282,28 @@ Default: `0GB`. (text)
 #### Policy settings [_policy_settings]
 
 
-##### **`sample_rate`** [sampling-tail-sample-rate-{{input-type}}]
+##### **`sample_rate`** [sampling-tail-sample-rate]
 
 The sample rate to apply to trace events matching this policy. Required in each policy.
 
 The sample rate must be greater than or equal to `0` and less than or equal to `1`. For example, a `sample_rate` of `0.01` means that 1% of trace events matching the policy will be sampled. A `sample_rate` of `1` means that 100% of trace events matching the policy will be sampled. (int)
 
 
-##### **`trace.name`** [sampling-tail-trace-name-{{input-type}}]
+##### **`trace.name`** [sampling-tail-trace-name]
 
 The trace name for events to match a policy. A match occurs when the configured `trace.name` matches the `transaction.name` of the root transaction of a trace. A root transaction is any transaction without a `parent.id`. (string)
 
 
-##### **`trace.outcome`** [sampling-tail-trace-outcome-{{input-type}}]
+##### **`trace.outcome`** [sampling-tail-trace-outcome]
 
 The trace outcome for events to match a policy. A match occurs when the configured `trace.outcome` matches a trace’s `event.outcome` field. Trace outcome can be `success`, `failure`, or `unknown`. (string)
 
 
-##### **`service.name`** [sampling-tail-service-name-{{input-type}}]
+##### **`service.name`** [sampling-tail-service-name]
 
 The service name for events to match a policy. (string)
 
 
-##### **`service.environment`** [sampling-tail-service-environment-{{input-type}}]
+##### **`service.environment`** [sampling-tail-service-environment]
 
 The service environment for events to match a policy. (string)
