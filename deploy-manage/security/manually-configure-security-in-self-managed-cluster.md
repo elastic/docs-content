@@ -35,7 +35,15 @@ Even with security enabled, never expose {{es}} to public internet traffic. Usin
 
 ## Common security scenarios
 
+:::{image} ../../images/elasticsearch-reference-elastic-security-overview.png
+:alt: Elastic Security layers
+:::
+
 ### Minimal security ({{es}} Development) [security-minimal-overview]
+
+::::{important}
+The minimal security scenario is not sufficient for [production mode](../deploy/self-managed/bootstrap-checks.md#dev-vs-prod-mode) clusters. If your cluster has multiple nodes, you must enable minimal security and then [configure Transport Layer Security (TLS)](secure-cluster-communications.md) between nodes.
+::::
 
 If you’ve been working with {{es}} and want to enable security on your existing, unsecured cluster, start here. You’ll set passwords for the built-in users to prevent unauthorized access to your local cluster, and also configure password authentication for {{kib}}.
 
@@ -56,7 +64,3 @@ This scenario builds on the one for basic security and secures all HTTP traffic 
 If you need mutual (bidirectional) TLS on the HTTP layer, then you’ll need to configure mutual authenticated encryption.
 
 [Set up basic security plus HTTPS traffic](secure-http-communications.md)
-
-:::{image} ../../images/elasticsearch-reference-elastic-security-overview.png
-:alt: Elastic Security layers
-:::
