@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/ingest-aws-securityhub-data.html
   - https://www.elastic.co/guide/en/serverless/current/ingest-aws-securityhub-data.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Ingest AWS Security Hub data

@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/add-manage-notes.html
   - https://www.elastic.co/guide/en/serverless/current/security-add-manage-notes.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Notes [security-add-manage-notes]

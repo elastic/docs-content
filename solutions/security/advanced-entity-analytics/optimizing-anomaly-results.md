@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/tuning-anomaly-results.html
   - https://www.elastic.co/guide/en/serverless/current/security-tuning-anomaly-results.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Optimizing anomaly results [tuning-anomaly-results]

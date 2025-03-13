@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/case-permissions.html
   - https://www.elastic.co/guide/en/serverless/current/security-cases-requirements.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Cases requirements [security-cases-requirements]

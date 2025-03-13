@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/view-alert-details.html
   - https://www.elastic.co/guide/en/serverless/current/security-view-alert-details.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # View detection alert details [security-view-alert-details]

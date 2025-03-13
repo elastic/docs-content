@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/alerts-ui-monitor.html
   - https://www.elastic.co/guide/en/serverless/current/security-alerts-ui-monitor.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Monitor rule executions [alerts-ui-monitor]

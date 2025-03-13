@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/attack-discovery.html
   - https://www.elastic.co/guide/en/serverless/current/attack-discovery.html
+applies_to:
+  stack: preview
+  serverless:
+    security: preview
 ---
 
 # Attack Discovery

@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/cases-open-manage.html
   - https://www.elastic.co/guide/en/serverless/current/security-cases-open-manage.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Open and manage cases [security-cases-open-manage]
