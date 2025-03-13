@@ -12,17 +12,6 @@ mapped_urls:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-kibana-http-configuration.html
 ---
 
-% What needs to be done: Refine
-
-% GitHub issue: https://github.com/elastic/docs-projects/issues/346
-
-% Use migrated content from existing pages that map to this page:
-
-% - [ ] ./raw-migrated-files/elasticsearch/elasticsearch-reference/security-basic-setup-https.md
-%      Notes: just the relevant section + concepts
-% - [ ] ./raw-migrated-files/cloud-on-k8s/cloud-on-k8s/k8s-tls-certificates.md
-% - [ ] ./raw-migrated-files/cloud-on-k8s/cloud-on-k8s/k8s-custom-http-certificate.md
-
 % EEDUGON NOTE: security section might miss a section to secure the transport layer (not the HTTP).
 % There we should integrate the content of https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-transport-settings.html which is currently in ECK (/deploy-manage) doc.
 
