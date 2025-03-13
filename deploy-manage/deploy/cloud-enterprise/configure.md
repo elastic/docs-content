@@ -33,7 +33,7 @@ Other sections of the documentation describe important ECE features to consider:
 * [Configure allocator affinity](configure-allocator-affinity.md) - Determine how ECE distributes your Elastic Stack deployments across allocators.
 * [Change allocator disconnect timeout](change-allocator-disconnect-timeout.md) - Configure how long ECE waits before considering allocators to be disconnected.
 * [Migrate ECE to Podman hosts](./migrate-ece-to-podman-hosts.md) - If you are running a Docker based installation and you need to migrate to Podman.
-* [Migrate ECE on Podman hosts to SELinux in enforcing mode](migrate-ece-on-podman-hosts-to-selinux-enforce.md) - Migrate ECE to SELinux in `enforcing` mode using Podman.
+* [Migrate ECE on Podman hosts to SELinux in enforcing mode](../../security/secure-your-elastic-cloud-enterprise-installation/migrate-ece-on-podman-hosts-to-selinux-enforce.md) - Migrate ECE to SELinux in `enforcing` mode using Podman.
 
 ## Maintenance activities
 
