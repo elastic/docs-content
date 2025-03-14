@@ -198,7 +198,7 @@ This example demonstrates how to use the {{ecloud}} RESTful API to create a depl
 
 The example deployment has a hot data and content tier, warm data tier, cold data tier, and a machine learning node, all of which will scale within the defined parameters. To learn about the autoscaling settings, check [Deployment autoscaling](../autoscaling.md) and [Autoscaling example](#ec-autoscaling-example).
 
-To learn more about the {{ece}} API, see the [RESTful API](asciidocalypse://docs/cloud/docs/reference/cloud-enterprise/restful-api.md) documentation. For details on the {{ech}} API, check [RESTful API](asciidocalypse://docs/cloud/docs/reference/cloud-hosted/ec-api-restful.md).
+To learn more about the {{ece}} API, see the [RESTful API](cloud://reference/cloud-enterprise/restful-api.md) documentation. For details on the {{ech}} API, check [RESTful API](cloud://reference/cloud-hosted/ec-api-restful.md).
 
 ### Requirements [ec_requirements] 
 

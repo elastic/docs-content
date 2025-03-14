@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/configure-endpoint-integration-policy.html
   - https://www.elastic.co/guide/en/serverless/current/security-configure-endpoint-integration-policy.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Configure an integration policy for {{elastic-defend}}

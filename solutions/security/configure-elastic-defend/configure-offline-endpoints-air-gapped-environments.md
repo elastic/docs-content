@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/security/current/offline-endpoint.html
+applies_to:
+  stack: all
 ---
 
 # Configure offline endpoints and air-gapped environments [offline-endpoint]

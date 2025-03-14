@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/linux-file-monitoring.html
   - https://www.elastic.co/guide/en/serverless/current/security-linux-file-monitoring.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Configure Linux file system monitoring

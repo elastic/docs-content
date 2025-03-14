@@ -1,6 +1,10 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/security/current/create-defend-policy-api.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Create an Elastic Defend policy using API [create-defend-policy-api]

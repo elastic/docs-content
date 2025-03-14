@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/runtime-fields.html
   - https://www.elastic.co/guide/en/serverless/current/security-runtime-fields.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Create runtime fields in {{elastic-sec}} [runtime-fields]

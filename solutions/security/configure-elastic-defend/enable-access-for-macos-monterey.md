@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/deploy-elastic-endpoint.html
   - https://www.elastic.co/guide/en/serverless/current/security-install-endpoint-manually.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Enable access for macOS Monterey

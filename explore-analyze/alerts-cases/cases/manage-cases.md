@@ -68,7 +68,7 @@ For self-managed {{kib}}:
          hasAuth: true/false
    ```
 
-3. If you want the email notifications to contain links back to the case, you must configure the [server.publicBaseUrl](../../../deploy-manage/deploy/self-managed/configure.md#server-publicBaseUrl) setting.
+3. If you want the email notifications to contain links back to the case, you must configure the [server.publicBaseUrl](kibana://reference/configuration-reference/general-settings.md#server-publicbaseurl) setting.
 
 When you subsequently add assignees to cases, they receive an email.
 
@@ -81,7 +81,7 @@ After you create a case, you can upload and manage files on the **Files** tab:
 :screenshot:
 :::
 
-The acceptable file types and sizes are affected by your [case settings](../../../deploy-manage/deploy/self-managed/configure.md).
+The acceptable file types and sizes are affected by your [case settings](kibana://reference/configuration-reference/general-settings.md).
 
 To download or delete the file or copy the file hash to your clipboard, open the action menu (…). The available hash functions are MD5, SHA-1, and SHA-256.
 

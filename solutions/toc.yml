@@ -573,6 +573,7 @@ toc:
           - file: security/cloud/cloud-native-vulnerability-management.md
             children:
               - file: security/cloud/get-started-with-cnvm.md
+              - file: security/cloud/cnvm-privilege-requirements.md
               - file: security/cloud/findings-page-3.md
               - file: security/dashboards/cloud-native-vulnerability-management-dashboard.md
               - file: security/cloud/cnvm-frequently-asked-questions-faq.md

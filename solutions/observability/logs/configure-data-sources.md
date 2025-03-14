@@ -18,7 +18,7 @@ To activate the Logs Stream app, refer to [Activate Logs Stream](logs-stream.md#
 ::::
 
 
-Specify the source configuration for logs in the [Logs settings](kibana://reference/configuration-reference/logs-settings.md) in the [{{kib}} configuration file](../../../deploy-manage/deploy/self-managed/configure.md). By default, the configuration uses the index patterns stored in the {{kib}} log sources advanced setting to query the data. The configuration also defines the default columns displayed in the logs stream.
+Specify the source configuration for logs in the [Logs settings](kibana://reference/configuration-reference/logs-settings.md) in the [{{kib}} configuration file](kibana://reference/configuration-reference/general-settings.md). By default, the configuration uses the index patterns stored in the {{kib}} log sources advanced setting to query the data. The configuration also defines the default columns displayed in the logs stream.
 
 If your logs have custom index patterns, use non-default field settings, or contain parsed fields that you want to expose as individual columns, you can override the default configuration settings.
 

@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/invest-guide-run-osquery.html
   - https://www.elastic.co/guide/en/serverless/current/security-invest-guide-run-osquery.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Run Osquery from investigation guides [security-invest-guide-run-osquery]
@@ -52,7 +56,7 @@ You can only add Osquery to investigation guides for custom rules because prebui
     3. Expand the **Advanced** section to set a timeout period for the query, and view or set [mapped ECS fields](/solutions/security/investigate/osquery.md#osquery-map-fields) included in the results from the live query (optional).
 
         ::::{note}
-        Overwriting the query’s default timeout period allows you to support queries that take longer to run. The default and minimum supported value for the **Timeout** field is `60`. The maximum supported value is `900`.
+        Overwriting the query’s default timeout period allows you to support queries that take longer to run. The default and minimum supported value for the **Timeout** field is `60`. The maximum supported value is `86400` (24 hours).
         ::::
 
 
@@ -76,7 +80,7 @@ You can only add Osquery to investigation guides for custom rules because prebui
     2. Expand the **Advanced** section to set a timeout period for the query, and view or set [mapped ECS fields](/solutions/security/investigate/osquery.md#osquery-map-fields) included in the results from the live query (optional).
 
         ::::{note}
-        Overwriting the query’s default timeout period allows you to support queries that take longer to run. The default and minimum supported value for the **Timeout** field is `60`. The maximum supported value is `900`.
+        Overwriting the query’s default timeout period allows you to support queries that take longer to run. The default and minimum supported value for the **Timeout** field is `60`. The maximum supported value is `86400` (24 hours).
         ::::
 
 6. Click **Submit** to run the query. Query results display in the flyout.
