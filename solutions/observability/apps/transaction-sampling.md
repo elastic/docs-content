@@ -135,9 +135,9 @@ Due to [OpenTelemetry tail-based sampling limitations](../../../solutions/observ
 
 ### Tail-based sampling performance and requirements [_tail_based_sampling_performance_and_requirements]
 
-Tail-based sampling, by definition, requires storing events locally temporarily, such that they can be retrieved and forwarded once sampling decision is made.
+Tail-based sampling, by definition, requires storing events locally temporarily, such that they can be retrieved and forwarded once sampling decision is made. 
 
-It requires local disk storage proportional to APM event ingestion rate, and additional memory to facilitate disk reads and writes. Insufficient [storage limit](../../../solutions/observability/apps/transaction-sampling.md#sampling-tail-storage_limit) causes sampling to be bypassed.
+In APM Server implementation, the events are stored temporarily on disk instead of memory for better scalability. Therefore, it requires local disk storage proportional to APM event ingestion rate, and additional memory to facilitate disk reads and writes. Insufficient [storage limit](../../../solutions/observability/apps/transaction-sampling.md#sampling-tail-storage_limit) causes sampling to be bypassed.
 
 It is recommended to use fast disks, for example, NVMe SSDs, when tail-based sampling is enabled, as disk throughput and IO will be the performance bottleneck to tail-based sampling, and APM event ingestion as a whole. Disk writes are proportional to event ingest rate, and disk reads are proportional to event ingest rate and sampling rate.
 
