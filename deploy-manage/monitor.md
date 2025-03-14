@@ -2,6 +2,7 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/monitor-elasticsearch-cluster.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/secure-monitoring.html
+  - https://www.elastic.co/guide/en/cloud/current/ec-monitoring.html
 applies_to:
   deployment:
     ess: all
@@ -31,6 +32,7 @@ The documentation team is working to combine content pulled from the following p
 
 * [/raw-migrated-files/elasticsearch/elasticsearch-reference/monitor-elasticsearch-cluster.md](/raw-migrated-files/elasticsearch/elasticsearch-reference/monitor-elasticsearch-cluster.md)
 * [/raw-migrated-files/elasticsearch/elasticsearch-reference/secure-monitoring.md](/raw-migrated-files/elasticsearch/elasticsearch-reference/secure-monitoring.md)
+* [](/raw-migrated-files/cloud/cloud/ec-monitoring.md)
 
 ## Monitoring your cluster or deployment
 

@@ -1,5 +1,4 @@
 ---
-navigation_title: "Logstash Metrics"
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/logstash-page.html
 applies_to:
@@ -12,7 +11,7 @@ applies_to:
 
 
 
-# Logstash Metrics [logstash-page]
+# Logstash metrics [logstash-page]
 
 
 If you are monitoring Logstash nodes, click **Overview** in the Logstash section of the **Stack Monitoring** page in {{kib}}. You can view the overall health of the Logstash nodes.

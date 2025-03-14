@@ -1,5 +1,4 @@
 ---
-navigation_title: "Beats Metrics"
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/beats-page.html
 applies_to:
@@ -12,7 +11,7 @@ applies_to:
 
 
 
-# Beats Metrics [beats-page]
+# Beats metrics [beats-page]
 
 
 If you are monitoring Beats, the **Stack Monitoring** page in {{kib}} contains a panel for Beats in the cluster overview.

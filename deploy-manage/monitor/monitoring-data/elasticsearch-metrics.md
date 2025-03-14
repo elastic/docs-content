@@ -1,5 +1,4 @@
 ---
-navigation_title: "{{es}} Metrics"
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/elasticsearch-metrics.html
 applies_to:
@@ -12,7 +11,7 @@ applies_to:
 
 
 
-# Elasticsearch Metrics [elasticsearch-metrics]
+# Elasticsearch metrics [elasticsearch-metrics]
 
 
 You can drill down into the status of your {{es}} cluster in {{kib}} by clicking the [Overview](#cluster-overview-page), [Nodes](#nodes-page), [Indices](#indices-overview-page) and [Logs](#logs-monitor-page) links on the **Stack Monitoring** page.

@@ -15,7 +15,7 @@ applies_to:
     ess: all
 ---
 
-# Enable and use stack monitoring on ECH and ECE deployments
+# Enable stack monitoring on ECH and ECE deployments
 
 The deployment logging and monitoring feature lets you monitor your deployment in {{kib}} by shipping logs and metrics to a monitoring deployment. You can:
 
@@ -88,17 +88,12 @@ Enabling logs and monitoring may trigger a plan change on your deployment. You c
 
 ## Access the monitoring application in {{kib}} [access-kibana-monitoring]
 
-With monitoring enabled for your deployment, you can access the [logs](https://www.elastic.co/guide/en/kibana/current/observability.html) and [stack monitoring](../monitoring-data/visualizing-monitoring-data.md) through {{kib}}.
+With monitoring enabled for your deployment, you can access the [logs](//solutions/observability.md) and [stack monitoring](../monitoring-data/visualizing-monitoring-data.md) through {{kib}}.
 
-1. Log into [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body) (ECH) or [the Cloud UI](/deploy-manage/deploy/cloud-enterprise/log-into-cloud-ui.md) (ECE).
-2. On the **Deployments** page, select your deployment.
+:::{include} /deploy-manage/monitor/stack-monitoring/_snippets/cloud-monitoring-access.md
+:::
 
-    Narrow the list by name, ID, or choose from several other filters. To further define the list, use a combination of filters.
-
-3. From your deployment menu, go to the **Logs and Metrics** page.
-4. Select the corresponding **View** button to check the logs or metrics data.
-
-Alternatively, you can access logs and metrics directly on the {{kib}} **Logs** and **Stack Monitoring** pages in the target monitoring deployment. You can also create an `elastic-cloud-logs-*` data view (formerly *index pattern*) to view your deployment’s logs in the {{kib}} **Discover** tab.
+You can also create an `elastic-cloud-logs-*` data view (formerly *index pattern*) to view your deployment’s logs in the {{kib}} **Discover** tab.
 
 Several fields are available for you to view logs based on key details, such as the source deployment:
 
@@ -110,7 +105,6 @@ Several fields are available for you to view logs based on key details, such as 
 | `service.node.name` | The ID of the instance that generated the log | `instance-0000000008` |
 | `service.type` | The type of instance that generated the log | `elasticsearch` |
 | `service.version` | The version of the stack resource that generated the log | `9.0.0` |
-
 
 ## Logging features [extra-logging-features]
 

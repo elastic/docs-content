@@ -2,7 +2,6 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/monitoring-overview.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/how-monitoring-works.html
-  - https://www.elastic.co/guide/en/cloud/current/ec-monitoring.html
 applies_to:
   deployment:
     ess: all
@@ -13,65 +12,94 @@ applies_to:
 
 # Stack monitoring
 
-% What needs to be done: Refine
+When you monitor a cluster, you collect data from the {{es}} nodes, {{ls}} nodes, {{kib}} instances, APM Server, and Beats in your cluster. You can also collect logs.
 
-% GitHub issue: https://github.com/elastic/docs-projects/issues/350
+All of the monitoring metrics are stored in {{es}}, which enables you to easily visualize the data in {{kib}}. By default, the monitoring metrics are stored in local indices.
 
-% Scope notes: Merge both docs into 1 as an overview. Ensure its valid for all deployment types. Consider bringing part of the info from the elastic cloud monitoring introduction.
+::::{tip}
+In production, we strongly recommend using a [separate monitoring cluster](#production-architecture). Using a separate monitoring cluster prevents production cluster outages from impacting your ability to access your monitoring data. It also prevents monitoring activities from impacting the performance of your production cluster. For the same reason, we also recommend using a separate {{kib}} instance for viewing the monitoring data.
+::::
 
-% Use migrated content from existing pages that map to this page:
+::::{admonition} Better monitoring with AutoOps
+If you’re using Elastic Cloud Hosted, then you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, real-time issue detection and resolution paths. For more information, refer to [Monitor with AutoOps](/deploy-manage/monitor/autoops.md).
+::::
 
-% - [ ] ./raw-migrated-files/elasticsearch/elasticsearch-reference/monitoring-overview.md
-% - [ ] ./raw-migrated-files/elasticsearch/elasticsearch-reference/how-monitoring-works.md
-% - [ ] ./raw-migrated-files/cloud/cloud/ec-monitoring.md
+## How it works
+
+Each monitored {{stack}} component is considered unique in the cluster based on its persistent UUID, which is written to the [`path.data`](/deploy-manage/deploy/self-managed/important-settings-configuration.md#path-settings) directory when the node or instance starts.
+
+Monitoring documents are just ordinary JSON documents built by monitoring each {{stack}} component at a specified collection interval. If you want to alter how these documents are structured or stored, refer to [Configuring data streams/indices for monitoring](/deploy-manage/monitor/monitoring-data/configuring-data-streamsindices-for-monitoring.md).
+
+You can use {{agent}} or {{metricbeat}} to collect monitoring data and to ship it directly to the monitoring cluster. 
+
+In {{ece}} and {{ech}}, Elastic manages the installation and configuration of the monitoring agent for you.
+
+## Production architecture
+
+You can collect and ship data directly to your monitoring cluster rather than routing it through your production cluster.
+
+The following diagram illustrates a typical monitoring architecture with separate production and monitoring clusters. This example shows {{metricbeat}}, but you can use {{agent}} instead.
+
+:::{image} ../../../images/elasticsearch-reference-architecture.png
+:alt: A typical monitoring environment
+:::
+
+If you have the appropriate license, you can route data from multiple production clusters to a single monitoring cluster. [Learn about the differences between various subscription levels](https://www.elastic.co/subscriptions).
+
+::::{important}
+In general, the monitoring cluster and the clusters being monitored should be running the same version of the stack. A monitoring cluster cannot monitor production clusters running newer versions of the stack. If necessary, the monitoring cluster can monitor production clusters running the latest release of the previous major version.
+::::
+
+## Configure and use stack monitoring
+
+Refer to the following topics to learn how to configure stack monitoring: 
+
+### Configure for ECH, ECE, and ECK deployments
+
+* [](/deploy-manage/monitor/stack-monitoring/ece-ech-stack-monitoring.md)
+* [](/deploy-manage/monitor/stack-monitoring/eck-stack-monitoring.md)
 
 
-https://www.elastic.co/guide/en/cloud/current/ec-monitoring-setup.html
+### Configure for self-managed deployments
+
+* **{{es}}**:
+  * [](/deploy-manage/monitor/stack-monitoring/collecting-monitoring-data-with-elastic-agent.md) (recommended): Uses a single agent to gather logs and metrics. Can be managed from a central location in {{fleet}}.
+  * [](/deploy-manage/monitor/stack-monitoring/collecting-monitoring-data-with-metricbeat.md): Uses a lightweight {{beats}} shipper to gather metrics. May be preferred if you have an existing investment in {{beats}} or are not yet ready to use {{agent}}.
+  * [](/deploy-manage/monitor/stack-monitoring/collecting-log-data-with-filebeat.md): Uses a lightweight {{beats}} shipper to gather logs. 
+  * [](/deploy-manage/monitor/stack-monitoring/es-legacy-collection-methods.md): Uses internal exporters to gather metrics. Not recommended. If you have previously configured legacy collection methods, you should migrate to using {{agent}} or {{metricbeat}}.
+* **{{kib}}**:
+  * [](/deploy-manage/monitor/stack-monitoring/kibana-monitoring-elastic-agent.md) (recommended): Uses a single agent to gather logs and metrics. Can be managed from a central location in {{fleet}}.
+  * [](/deploy-manage/monitor/stack-monitoring/kibana-monitoring-metricbeat.md): Uses a lightweight {{beats}} shipper to gather metrics. May be preferred if you have an existing investment in {{beats}} or are not yet ready to use {{agent}}.
+  * [](/deploy-manage/monitor/stack-monitoring/kibana-monitoring-legacy.md): Uses internal exporters to gather metrics. Not recommended. If you have previously configured legacy collection methods, you should migrate to using {{agent}} or {{metricbeat}}.
 
 
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
+### Monitor other {{stack}} components
 
-$$$ec-es-cluster-health$$$
+:::{tip}
+Most of these methods require that you configure monitoring of {{es}} before monitoring other components.
+:::
 
-$$$ec-es-cluster-performance$$$
+* **Logstash**:
+  * [Monitoring {{ls}} with {{agent}}](/reference/monitoring-logstash-with-elastic-agent.md) (recommended): Uses a single agent to gather logs and metrics. Can be managed from a central location in {{fleet}}.
+  * [Monitoring {{ls}} with legacy collection methods](logstash://reference/monitoring-logstash-legacy.md): Use {{metricbeat}} or legacy methods to collect monitoring data from {{ls}}.
+* **{{beats}}**:
 
-$$$ec-es-health-dedicated$$$
+    * [{{auditbeat}}](asciidocalypse://docs/beats/docs/reference/auditbeat/monitoring.md)
+    * [{{filebeat}}](asciidocalypse://docs/beats/docs/reference/filebeat/monitoring.md)
+    * [{{heartbeat}}](asciidocalypse://docs/beats/docs/reference/heartbeat/monitoring.md)
+    * [{{metricbeat}}](asciidocalypse://docs/beats/docs/reference/metricbeat/monitoring.md)
+    * [{{packetbeat}}](asciidocalypse://docs/beats/docs/reference/packetbeat/monitoring.md)
+    * [{{winlogbeat}}](asciidocalypse://docs/beats/docs/reference/winlogbeat/monitoring.md)
 
-$$$ec-es-health-preconfigured$$$
+* [**APM Server**](/solutions/observability/apps/monitor-apm-server.md)
 
-$$$ec-es-health-warnings$$$
+* **{{agent}}s**: 
+  * [{{fleet}}-managed {{agent}}s](/reference/ingestion-tools/fleet/monitor-elastic-agent.md) 
+  * [Standalone {{agent}}s](/reference/ingestion-tools/fleet/elastic-agent-monitoring-configuration.md)
 
-$$$ec-health-best-practices$$$
+### Access, view, and use monitoring data
 
-**This page is a work in progress.** The documentation team is working to combine content pulled from the following pages:
-
-* [/raw-migrated-files/elasticsearch/elasticsearch-reference/monitoring-overview.md](/raw-migrated-files/elasticsearch/elasticsearch-reference/monitoring-overview.md)
-* [/raw-migrated-files/elasticsearch/elasticsearch-reference/how-monitoring-works.md](/raw-migrated-files/elasticsearch/elasticsearch-reference/how-monitoring-works.md)
-* [/raw-migrated-files/cloud/cloud/ec-monitoring.md](/raw-migrated-files/cloud/cloud/ec-monitoring.md)
-
-* [Configuring monitoring in {{kib}}](/deploy-manage/monitor/stack-monitoring/kibana-monitoring-legacy.md)
-* [Configuring monitoring for Logstash nodes](logstash://reference/monitoring-logstash-legacy.md)
-
-
-1. Configure your production cluster to collect data and send it to the monitoring cluster:
-
-    * [{{agent}} collection methods](../../../deploy-manage/monitor/stack-monitoring/collecting-monitoring-data-with-elastic-agent.md)
-    * [{{metricbeat}} collection methods](../../../deploy-manage/monitor/stack-monitoring/collecting-monitoring-data-with-metricbeat.md)
-    * [Legacy collection methods](../../../deploy-manage/monitor/stack-monitoring/es-legacy-collection-methods.md)
-
-3. (Optional) [Configure {{ls}} to collect data and send it to the monitoring cluster](logstash://reference/monitoring-logstash-legacy.md).
-4. (Optional) Configure the {{beats}} to collect data and send it to the monitoring cluster. Skip this step for {{beats}} that are managed by {{agent}}.
-
-    * [Auditbeat](asciidocalypse://docs/beats/docs/reference/auditbeat/monitoring.md)
-    * [Filebeat](asciidocalypse://docs/beats/docs/reference/filebeat/monitoring.md)
-    * [Heartbeat](asciidocalypse://docs/beats/docs/reference/heartbeat/monitoring.md)
-    * [Metricbeat](asciidocalypse://docs/beats/docs/reference/metricbeat/monitoring.md)
-    * [Packetbeat](asciidocalypse://docs/beats/docs/reference/packetbeat/monitoring.md)
-    * [Winlogbeat](asciidocalypse://docs/beats/docs/reference/winlogbeat/monitoring.md)
-
-5. (Optional) [Configure APM Server monitoring](/solutions/observability/apps/monitor-apm-server.md)
-6. (Optional) Configure {{kib}} to collect data and send it to the monitoring cluster:
-
-    * [{{agent}} collection methods](../../../deploy-manage/monitor/stack-monitoring/kibana-monitoring-elastic-agent.md)
-    * [{{metricbeat}} collection methods](../../../deploy-manage/monitor/stack-monitoring/kibana-monitoring-metricbeat.md)
-    * [Legacy collection methods](../../../deploy-manage/monitor/stack-monitoring/kibana-monitoring-legacy.md)
+* [](/deploy-manage/monitor/stack-monitoring/kibana-monitoring-data.md): After you collect monitoring data for one or more products in the {{stack}}, configure {{kib}} to retrieve that information and display it in on the **Stack Monitoring** page.
+* [](/deploy-manage/monitor/monitoring-data/visualizing-monitoring-data.md): View health and performance data for {{stack}} components in real time, as well as analyze past performance.
+* [](/deploy-manage/monitor/monitoring-data/configure-stack-monitoring-alerts.md): Configure alerts that trigger based on stack monitoring metrics.
+* [](/deploy-manage/monitor/monitoring-data/configuring-data-streamsindices-for-monitoring.md): Adjust the data streams and indices used by stack monitoring. 
