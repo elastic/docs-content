@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/dashboards-overview.html
   - https://www.elastic.co/guide/en/serverless/current/security-dashboards-overview.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Dashboards

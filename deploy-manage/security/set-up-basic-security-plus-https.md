@@ -103,7 +103,7 @@ Complete all steps in [Set up basic security for the Elastic Stack](secure-clust
     4. Start {{es}}.
 
 
-**Next**: [Encrypt HTTP client communications for {{kib}}](secure-http-communications.md#encrypt-kibana-http)
+**Next**: [Encrypt HTTP client communications for {{kib}}](#encrypt-kibana-http)
 
 
 ## Encrypt HTTP client communications for {{kib}} [encrypt-kibana-http]
@@ -140,7 +140,7 @@ You must create a separate `elasticsearch-ca.pem` security file for the monitori
 :::::
 
 
-**Next**: [Encrypt traffic between your browser and {{kib}}](secure-http-communications.md#encrypt-kibana-browser)
+**Next**: [Encrypt traffic between your browser and {{kib}}](#encrypt-kibana-browser)
 
 
 ### Encrypt traffic between your browser and {{kib}} [encrypt-kibana-browser]
@@ -198,7 +198,7 @@ After making these changes, you must always access {{kib}} via HTTPS. For exampl
 ::::
 
 
-**Next**: [Configure {{beats}} security](secure-http-communications.md#configure-beats-security)
+**Next**: [Configure {{beats}} security](#configure-beats-security)
 
 
 
@@ -232,7 +232,7 @@ These instructions assume that you are using the default name for {{metricbeat}}
 
 To create users and roles from Stack Management in {{kib}}, select **Roles** or **Users** from the side navigation.
 
-**Next**: [Create a setup role](secure-http-communications.md#beats-setup-role)
+**Next**: [Create a setup role](#beats-setup-role)
 
 
 ##### Create a setup role and user [beats-setup-role]
@@ -263,7 +263,7 @@ Setting up {{metricbeat}} is an admin-level task that requires extra privileges.
     | `ingest_admin` | Set up index templates and, if available, ingest pipelines |
 
 
-**Next**: [Create a monitoring role](secure-http-communications.md#beats-monitoring-role)
+**Next**: [Create a monitoring role](#beats-monitoring-role)
 
 
 ##### Create a monitoring role and user [beats-monitoring-role]
@@ -302,12 +302,12 @@ You can use the built-in `beats_system` user, if it’s available in your enviro
     | `monitoring_user` | Use Stack Monitoring in {{kib}} to monitor {{metricbeat}} |
 
 
-**Next**: [Create a writer role](secure-http-communications.md#beats-writer-role)
+**Next**: [Create a writer role](#beats-writer-role)
 
 
 ##### Create a writer role and user [beats-writer-role]
 
-Users who publish events to {{es}} need to create and write to {{metricbeat}} indices. To minimize the privileges required by the writer role, use the setup role to pre-load dependencies. This section assumes that you’ve [created the setup role](secure-http-communications.md#beats-setup-role).
+Users who publish events to {{es}} need to create and write to {{metricbeat}} indices. To minimize the privileges required by the writer role, use the setup role to pre-load dependencies. This section assumes that you’ve [created the setup role](#beats-setup-role).
 
 1. Create the writer role:
 2. Enter **metricbeat_writer** as the role name.
@@ -325,7 +325,7 @@ Users who publish events to {{es}} need to create and write to {{metricbeat}} in
     | `remote_monitoring_agent` | Send monitoring data to the monitoring cluster |
 
 
-**Next**: [Create a reader role](secure-http-communications.md#beats-reader-role)
+**Next**: [Create a reader role](#beats-reader-role)
 
 
 ##### Create a reader role and user [beats-reader-role]
@@ -352,7 +352,7 @@ Users who publish events to {{es}} need to create and write to {{metricbeat}} in
     | `beats_admin` | Create and manage configurations in {{beats}} centralmanagement. Only assign this role to users who need to use {{beats}} centralmanagement. |
 
 
-**Next**: [Configure {{metricbeat}} to use TLS](secure-http-communications.md#configure-metricbeat-tls)
+**Next**: [Configure {{metricbeat}} to use TLS](#configure-metricbeat-tls)
 
 
 #### Configure {{metricbeat}} to use TLS [configure-metricbeat-tls]
@@ -368,7 +368,7 @@ In production environments, we strongly recommend using a separate cluster (refe
 ::::
 
 
-1. On the node where you [generated certificates for the HTTP layer](secure-http-communications.md#encrypt-http-communication), navigate to the `/kibana` directory.
+1. On the node where you [generated certificates for the HTTP layer](#encrypt-http-communication), navigate to the `/kibana` directory.
 2. Copy the `elasticsearch-ca.pem` certificate to the directory where you installed {{metricbeat}}.
 3. Open the `metricbeat.yml` configuration file and configure the connection to {{es}}.
 
