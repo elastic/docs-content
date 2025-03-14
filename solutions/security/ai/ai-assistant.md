@@ -2,22 +2,13 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/security-assistant.html
   - https://www.elastic.co/guide/en/serverless/current/security-ai-assistant.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # AI Assistant
-
-% What needs to be done: Align serverless/stateful
-
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/security-docs/security/security-assistant.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/security-ai-assistant.md
-
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
-
-$$$configure-ai-assistant$$$
-
-$$$ai-assistant-anonymization$$$
 
 The Elastic AI Assistant utilizes generative AI to bolster your cybersecurity operations team. It allows users to interact with {{elastic-sec}} for tasks such as alert investigation, incident response, and query generation or conversion using natural language and much more.
 
@@ -32,11 +23,12 @@ The Elastic AI Assistant is designed to enhance your analysis with smart dialogu
 
 
 ::::{admonition} Requirements
-* The Elastic AI Assistant and Generative AI connector are available in {{stack}} versions 8.8.1 and later. The Generative AI connector is renamed to OpenAI connector in 8.11.0.
-* This feature requires an [Enterprise subscription](https://www.elastic.co/pricing).
-* To use AI Assistant, you need at least the **Elastic AI Assistant : All** and **Actions and Connectors : Read** [privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md).
-* To set up AI Assistant, you need the **Actions and Connectors : All** [privilege](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md).
-* You need a [generative AI connector](/solutions/security/ai/set-up-connectors-for-large-language-models-llm.md), which AI Assistant uses to generate responses.
+* {{stack}} users: {{stack}} version 8.8.1 or later. Also note the Generative AI connector was renamed to OpenAI connector in 8.11.0.
+* {{stack}} users: an [Enterprise subscription](https://www.elastic.co/pricing).
+* {{serverless-short}} users: a [Security Analytics Complete subscription](/deploy-manage/deploy/elastic-cloud/project-settings.md).
+* To use AI Assistant, the **Elastic AI Assistant : All** and **Actions and Connectors : Read** [privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md).
+* To set up AI Assistant, the **Actions and Connectors : All** [privilege](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md).
+* A [generative AI connector](/solutions/security/ai/set-up-connectors-for-large-language-models-llm.md), which AI Assistant uses to generate responses.
 
 ::::
 
@@ -109,10 +101,10 @@ Use these features to adjust and act on your conversations with AI Assistant:
 * Quick Prompt availability varies based on context—for example, the **Alert summarization** Quick Prompt appears when you open AI Assistant while viewing an alert. To customize existing Quick Prompts and create new ones, click **Add Quick Prompt**.
 * In an active conversation, you can use the inline actions that appear on messages to incorporate AI Assistant’s responses into your workflows:
 
-    * **Add note to timeline** (![Add note icon](../../../images/security-icon-add-note.png "")): Add the selected text to your currently active Timeline as a note.
-    * **Add to existing case** (![Add to case icon](../../../images/security-icon-add-to-case.png "")): Add a comment to an existing case using the selected text.
-    * **Copy to clipboard** (![Copy to clipboard icon](../../../images/security-icon-copy.png "")): Copy the text to clipboard to paste elsewhere. Also helpful for resubmitting a previous prompt.
-    * **Add to timeline** (![Add to timeline icon](../../../images/security-icon-add-to-timeline.png "")): Add a filter or query to Timeline using the text. This button appears for particular queries in AI Assistant’s responses.
+    * **Add note to timeline** (![Add note icon](../../../images/security-icon-add-note.png "title =20x20")): Add the selected text to your currently active Timeline as a note.
+    * **Add to existing case** (![Add to case icon](../../../images/security-icon-add-to-case.png "title =20x20")): Add a comment to an existing case using the selected text.
+    * **Copy to clipboard** (![Copy to clipboard icon](../../../images/security-icon-copy.png "title =20x20")): Copy the text to clipboard to paste elsewhere. Also helpful for resubmitting a previous prompt.
+    * **Add to timeline** (![Add to timeline icon](../../../images/security-icon-add-to-timeline.png "title =20x20")): Add a filter or query to Timeline using the text. This button appears for particular queries in AI Assistant’s responses.
 
 
 Be sure to specify which language you’d like AI Assistant to use when writing a query. For example: "Can you generate an Event Query Language query to find four failed logins followed by a successful login?"
@@ -148,7 +140,7 @@ To modify Anonymization settings, you need the **Elastic AI Assistant: All** pri
 The **Anonymization** tab of the Security AI settings menu allows you to define default data anonymization behavior for events you send to AI Assistant. Fields with **Allowed*** toggled on are included in events provided to AI Assistant. ***Allowed*** fields with ***Anonymized** set to **Yes** are included, but with their values obfuscated.
 
 ::::{note}
-You can access anonymization settings directly from the **Attack Discovery** page by clicking the settings (![Settings icon](../../../images/security-icon-settings.png "")) button next to the model selection dropdown menu.
+You can access anonymization settings directly from the **Attack Discovery** page by clicking the settings (![Settings icon](../../../images/security-icon-settings.png "title =20x20")) button next to the model selection dropdown menu.
 ::::
 
 

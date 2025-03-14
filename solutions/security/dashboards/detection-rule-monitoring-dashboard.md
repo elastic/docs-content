@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/rule-monitoring-dashboard.html
   - https://www.elastic.co/guide/en/serverless/current/security-rule-monitoring-dashboard.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Detection rule monitoring dashboard
@@ -43,7 +47,7 @@ The following visualizations are included:
 
 ## Visualization panel actions [rule-visualization-actions]
 
-Open a panel’s options menu (![Options menu](../../../images/security-three-dot-icon.png "")) customize the panel or use its data for further analysis and investigation:
+Open a panel’s options menu (![Options menu](../../../images/security-three-dot-icon.png "title =20x20")) customize the panel or use its data for further analysis and investigation:
 
 * **Edit panel settings**: Customize the panel’s display settings. Options vary by visualization type.
 * **Inspect**: Examine the panel’s underlying data and queries.

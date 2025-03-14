@@ -2,6 +2,10 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/security/current/vuln-management-findings.html
   - https://www.elastic.co/guide/en/serverless/current/security-vuln-management-findings.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Findings page [security-vuln-management-findings]
