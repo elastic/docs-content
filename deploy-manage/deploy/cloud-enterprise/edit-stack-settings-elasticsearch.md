@@ -15,7 +15,7 @@ Change how Elasticsearch runs by providing your own user settings. User settings
 ECE blocks the configuration of certain settings that could break your cluster if misconfigured, including some zen discovery and security settings. For a list of settings that are generally safe in cloud environments, refer to the [Elasticsearch configuration reference](elasticsearch://reference/elasticsearch/configuration-reference/index.md).
 ::::
 
-To add user settings for {{es}} follow the instructions provided in [](./edit-stack-settings.md)
+To change {{es}} user settings:
 
 1. [Log into the Cloud UI](./log-into-cloud-ui.md).
 2. On the **Deployments** page, select your deployment.

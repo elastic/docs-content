@@ -75,10 +75,16 @@ In the deployment edit page, you can configure the following settings and featur
 When you select **Save changes** on the **Edit deployment** page, the orchestrator initiates a plan to apply the new configuration to your deployment. You can control how these changes are applied to minimize disruption and ensure a smooth transition.
 
 * **Autodetect strategy** (recommended): Let ECE determine the strategy depending on the type changes to apply.
-* **Rolling change per node**: One node at a time. This strategy performs inline, rolling configuration changes that mutate existing containers. Recommended for most configuration changes.
-* **Grow and shrink**: The orchestrator creates nodes with the new configuration, then migrates data from the old ones, and eventually delete the original nodes. This strategy is automatically selected when adding or removing master-eligibie nodes.
-* **Rolling grow and shrink**: Similar to grow and shrink, but creating one node at a time. This strategy can take a lot longer than grow and shrink.
+* **Rolling change per node**: One instance at a time. This strategy performs inline, rolling configuration changes that mutate existing containers. Recommended for most configuration changes. If the required resources are unavailable on the ECE nodes handling the existing instances, it falls back to grow and shrink.
+* **Grow and shrink**: The orchestrator creates new instances with the new configuration, then migrates the data, and eventually deletes the original ones. This strategy is automatically selected when adding or removing master-eligible instances.
+* **Rolling grow and shrink**: Similar to grow and shrink, but creating one instance at a time. This strategy can take a lot longer than grow and shrink.
 
-The `Extended maintenance` option will make ECE to [stop routing requests](../../maintenance/ece/start-stop-routing-requests.md) to all instances during the plan execution. The cluster will be unavailable for external connections while the configuration changes are in progress.
+The `Extended maintenance` optional flag will make ECE to [stop routing requests](../../maintenance/ece/start-stop-routing-requests.md) to all instances during the plan execution. The cluster will be unavailable for external connections while the configuration changes are in progress.
 
-When executing plans, always review the reported configuration changes and track progress on the Activity page of the deployment, which includes separate tabs for {{es}} and {{kib}}.
+::::{note}
+If you enable the **Extended maintenance** optional flag, ECE will [stop routing requests](../../maintenance/ece/start-stop-routing-requests.md) to all instances during the plan execution, making the cluster unavailable for external connections while configuration changes are in progress.
+
+This option introduces downtime and is rarely needed. Use it only when you need to block all traffic to the cluster during the update.
+::::
+
+When executing plans, always review the reported configuration changes and track progress on the **Activity** page of the deployment, which includes separate tabs for {{es}}, {{kib}}, and other {{stack}} components.

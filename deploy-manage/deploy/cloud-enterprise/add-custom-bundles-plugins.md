@@ -85,7 +85,7 @@ Custom plugins can include the official Elasticsearch plugins not provided with 
 
 ## Example: Custom LDAP bundle [ece-add-custom-bundle-example-LDAP]
 
-This example adds a custom LDAP bundle for deployment level role-based access control (RBAC). To set platform level RBAC, check [Configure RBAC](../../../deploy-manage/users-roles/cloud-enterprise-orchestrator/manage-users-roles.md).
+This example adds a custom LDAP bundle for deployment level role-based access control (RBAC). To set platform level RBAC, check [](../../../deploy-manage/users-roles/cloud-enterprise-orchestrator/manage-users-roles.md).
 
 1. Prepare a custom bundle as a ZIP file that contains your keystore file with the private key and certificate inside of a `truststore` folder [in the same way that you would on Elastic Cloud](/deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md). This bundle allows all Elasticsearch containers to access the same keystore file through your `ssl.truststore` settings.
 2. In the [advanced configuration editor](../../../deploy-manage/deploy/cloud-enterprise/advanced-cluster-configuration.md), update your new Elasticsearch cluster with the custom bundle you have just created. Modify the `user_bundles` JSON attribute of **each** Elasticsearch instance type as shown in the following example:
@@ -126,7 +126,7 @@ This example adds a custom LDAP bundle for deployment level role-based access co
 
 ## Example: Custom SAML bundle [ece-add-custom-bundle-example-SAML]
 
-This example adds a custom SAML bundle for deployment level role-based access control (RBAC). To set platform level RBAC, check [Configure RBAC](../../../deploy-manage/users-roles/cloud-enterprise-orchestrator/manage-users-roles.md).
+This example adds a custom SAML bundle for deployment level role-based access control (RBAC). To set platform level RBAC, check [](../../../deploy-manage/users-roles/cloud-enterprise-orchestrator/manage-users-roles.md).
 
 In this example, we assume the Identity Provider does not publish its SAML metadata at an HTTP URL, so we provide it through a custom bundle.
 
@@ -159,16 +159,16 @@ In this example, we assume the Identity Provider does not publish its SAML metad
 
     1. The URL for the bundle ZIP file must be always available. Make sure you host the plugin artifacts internally in a highly available environment.
 
-Custom bundles are unzipped in `/app/config/BUNDLE_DIRECTORY_STRUCTURE`, where `BUNDLE_DIRECTORY_STRUCTURE` is the directory structure within the ZIP file itself. These file locations are needed in the next step.
+    Custom bundles are unzipped in `/app/config/BUNDLE_DIRECTORY_STRUCTURE`, where `BUNDLE_DIRECTORY_STRUCTURE` is the directory structure within the ZIP file itself. These file locations are needed in the next step.
 
-In this example, the SAML metadata file is located in the path `/app/config/saml/metadata.xml`:
+    In this example, the SAML metadata file is located in the path `/app/config/saml/metadata.xml`:
 
-```sh
-$ tree .
-.
-└── saml
-      └── metadata.xml
-```
+    ```sh
+    $ tree .
+    .
+    └── saml
+          └── metadata.xml
+    ```
 
 3. Adjust your `saml` realm configuration accordingly through [](./edit-stack-settings.md):
 

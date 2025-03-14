@@ -81,7 +81,7 @@ While the `TransportClient` is deprecated, your custom endpoint aliases still wo
 
     Settings settings = Settings.settingsBuilder()
         .put("transport.ping_schedule", "5s")
-        //.put("transport.sniff", false) // Disabled by default and *must* be disabled.
+        //.put("transport.sniff", false) // Disabled by default and must be kept disabled.
         .put("action.bulk.compress", false)
         .put("shield.transport.ssl", enableSsl)
         .put("request.headers.X-Found-Cluster", alias)

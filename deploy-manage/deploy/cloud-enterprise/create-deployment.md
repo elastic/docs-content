@@ -16,7 +16,7 @@ To create a deployment in ECE:
 
 1. From the Cloud UI **Deployments** view, select **Create deployment**.
 
-    You can quickly create a deployment by setting the basic parameters shown in the UI. If you need more control, select **Advanced settings** to customize the deployment parameters, including autoscaling, storage, memory, data tiers, and additional Elastic Stack components. Refer to [](./customize-deployment.md) for more information.
+    You can quickly create a deployment by setting the basic parameters shown in the UI. If you need more control, select **Advanced settings** to configure additional options, as detailed below.
 
     :::{image} ../../../images/cloud-enterprise-ece-create-deployment.png
     :alt: Create a deployment
@@ -25,11 +25,9 @@ To create a deployment in ECE:
 2. Set a name for your deployment.
 
 3. Select a deployment template.
+   For a description of the available system templates, refer to [](./deployment-templates.md).
 
-    ::::{tip}
-    * For a description of the available system templates, refer to [](./deployment-templates.md).
-    * If the system templates do not meet your requirements, you can [modify them](./ece-configuring-ece-configure-system-templates.md) or [create your own custom templates](../../../deploy-manage/deploy/cloud-enterprise/ece-configuring-ece-create-templates.md).
-    ::::
+   If the system templates do not meet your requirements, you can [modify them](./ece-configuring-ece-configure-system-templates.md) or [create your own custom templates](../../../deploy-manage/deploy/cloud-enterprise/ece-configuring-ece-create-templates.md).
 
 4. Choose your {{stack}} version. To manage available versions at platform level, refer to [](./manage-elastic-stack-versions.md).
 
@@ -39,7 +37,7 @@ To create a deployment in ECE:
         Restoring a snapshot can help with major version upgrades by creating a separate, non-production deployment where you can test, for example. Or, make life easier for your developers by providing them with a development environment that is populated with real data.
     ::::
 
-6. Select **Advanced settings** if you want to configure [autoscaling](/deploy-manage/autoscaling/autoscaling-in-ece-and-ech.md), adjust storage, memory, or customize data tiers. Refer to [Customize your deployment](../../../deploy-manage/deploy/cloud-enterprise/customize-deployment.md) for more details on the available options.
+6. Select **Advanced settings** if you want to configure [autoscaling](/deploy-manage/autoscaling/autoscaling-in-ece-and-ech.md), adjust resources, [select plugins](./add-plugins.md), or customize [data tiers](/manage-data/lifecycle/data-tiers.md). Refer to [Customize your deployment](../../../deploy-manage/deploy/cloud-enterprise/customize-deployment.md) for more details on the available options.
 
 7. Select **Create deployment**. It takes a few minutes before your deployment gets created.
 
