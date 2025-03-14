@@ -27,7 +27,7 @@ Kibana PNG/PDF reporting uses a custom binary of headless Chromium, and support 
 * Linux versions that are in end-of-life phase are not supported.
 * Linux systems with `SELinux` or `fapolicyd` are not supported.
 
-Before upgrading Kibana in a production environment, we encourage you to test your screenshotting use cases in a pre-production environment to make sure your hosts support our latest build of Chromium. For the most reliable configuration of PDF/PNG {{report-features}}, consider installing {{kib}} using [Docker](../../../deploy-manage/deploy/self-managed/install-kibana-with-docker.md), or using [Elastic Cloud](https://cloud.elastic.co).
+Before upgrading Kibana in a production environment, we encourage you to test your screenshotting use cases in a pre-production environment to make sure your hosts support our latest build of Chromium. For the most reliable configuration of PDF/PNG {{report-features}}, consider installing {{kib}} using [Docker](/deploy-manage/deploy/self-managed/install-kibana-with-docker.md), or using [Elastic Cloud](https://cloud.elastic.co).
 ::::
 
 ## Configuration overview
@@ -69,7 +69,7 @@ These settings apply only to **self-managed deployments**. Orchestrated deployme
 
 ### Grant users access using {{kib}} UI
 
-When security is enabled, you grant users access to {{report-features}} with [{{kib}} application privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md), which allow you to create custom roles that control the spaces and applications where users generate reports.
+When security is enabled, you grant users access to {{report-features}} with [{{kib}} application privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md), which allow you to create custom roles that control the spaces and applications where users generate reports.
 
 1. Create the reporting role.
 
@@ -88,7 +88,7 @@ When security is enabled, you grant users access to {{report-features}} with [{{
         ::::
 
 
-        For more information, refer to [Security privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md).
+        For more information, refer to [Security privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md).
 
 3. Add the {{kib}} privileges.
 
@@ -102,7 +102,7 @@ When security is enabled, you grant users access to {{report-features}} with [{{
         ::::
 
 
-        :::{image} ../../../images/kibana-kibana-privileges-with-reporting.png
+        :::{image} /images/kibana-kibana-privileges-with-reporting.png
         :alt: Kibana privileges with Reporting options, Gold or higher license
         :screenshot:
         :::
@@ -165,7 +165,7 @@ PUT <kibana host>:<port>/api/security/role/custom_reporting_user
 
 With a Basic license, you can grant users access with custom roles to {{report-features}} with [{{kib}} application privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md). However, with a Basic license, sub-feature privileges are unavailable. [Create a role](#grant-user-access), then select **All** privileges for the applications where users can create reports.
 
-:::{image} ../../../images/kibana-kibana-privileges-with-reporting-basic.png
+:::{image} /images/kibana-kibana-privileges-with-reporting-basic.png
 :alt: Kibana privileges with Reporting options, Basic license
 :screenshot:
 :::
@@ -196,7 +196,7 @@ PUT localhost:5601/api/security/role/custom_reporting_user
 
 ### Grant access using an external provider [grant-user-access-external-provider]
 
-If you are using an external identity provider, such as LDAP or Active Directory, you can assign roles to individual users or groups of users. Role mappings are configured in [`config/role_mapping.yml`](../../../deploy-manage/users-roles/cluster-or-deployment-auth/mapping-users-groups-to-roles.md).
+If you are using an external identity provider, such as LDAP or Active Directory, you can assign roles to individual users or groups of users. Role mappings are configured in [`config/role_mapping.yml`](/deploy-manage/users-roles/cluster-or-deployment-auth/mapping-users-groups-to-roles.md).
 
 For example, assign the `kibana_admin` and `reporting_user` roles to the Bill Murray user:
 
@@ -267,7 +267,7 @@ If you are using Ubuntu/Debian systems, install the following packages:
 * `libfontconfig1`
 * `libnss3`
 
-The screenshotting plugin used for {{report-features}} has a built-in utility to check for common issues, such as missing dependencies. See [Reporting diagnostics](../../../explore-analyze/report-and-share/reporting-troubleshooting-pdf.md#reporting-diagnostics) for more information.
+The screenshotting plugin used for {{report-features}} has a built-in utility to check for common issues, such as missing dependencies. See [Reporting diagnostics](/explore-analyze/report-and-share/reporting-troubleshooting-pdf.md#reporting-diagnostics) for more information.
 
 
 ### Set the `server.host` for the headless browser [set-reporting-server-host]
