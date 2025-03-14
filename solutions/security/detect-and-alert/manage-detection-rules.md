@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/rules-ui-management.html
   - https://www.elastic.co/guide/en/serverless/current/security-rules-ui-management.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Manage detection rules [security-rules-ui-management]

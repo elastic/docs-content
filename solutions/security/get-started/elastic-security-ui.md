@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/es-ui-overview.html
   - https://www.elastic.co/guide/en/serverless/current/security-ui.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Elastic Security UI

@@ -500,7 +500,6 @@ toc:
           - file: security/secure-cluster-communications.md
             children:
               - file: security/secure-http-communications.md
-              - file: security/enabling-cipher-suites-for-stronger-encryption.md
               - file: security/security-certificates-keys.md
                 children:
                   - file: security/updating-certificates.md

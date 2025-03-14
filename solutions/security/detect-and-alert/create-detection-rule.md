@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/rules-ui-create.html
   - https://www.elastic.co/guide/en/serverless/current/security-rules-create.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Create a detection rule [security-rules-create]

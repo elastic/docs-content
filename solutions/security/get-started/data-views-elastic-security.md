@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/data-views-in-sec.html
   - https://www.elastic.co/guide/en/serverless/current/security-data-views-in-sec.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # {{data-sources-cap}} and {{elastic-sec}} [security-data-views-in-sec]

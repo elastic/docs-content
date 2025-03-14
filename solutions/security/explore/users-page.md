@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/users-page.html
   - https://www.elastic.co/guide/en/serverless/current/security-users-page.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Users page

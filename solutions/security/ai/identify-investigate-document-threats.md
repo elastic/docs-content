@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/attack-discovery-ai-assistant-incident-reporting.html
   - https://www.elastic.co/guide/en/serverless/current/security-ai-usecase-incident-reporting.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Identify, investigate, and document threats

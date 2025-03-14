@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/rule-monitoring-dashboard.html
   - https://www.elastic.co/guide/en/serverless/current/security-rule-monitoring-dashboard.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Detection rule monitoring dashboard

@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/detections-ui-exceptions.html
   - https://www.elastic.co/guide/en/serverless/current/security-rule-exceptions.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Rule exceptions [detections-ui-exceptions]

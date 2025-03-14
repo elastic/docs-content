@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/sec-requirements.html
   - https://www.elastic.co/guide/en/serverless/current/security-requirements-overview.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # {{elastic-sec}} requirements [security-requirements-overview]

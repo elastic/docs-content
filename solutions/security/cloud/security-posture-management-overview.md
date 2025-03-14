@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/security-posture-management.html
   - https://www.elastic.co/guide/en/serverless/current/security-posture-management.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Security posture management overview
