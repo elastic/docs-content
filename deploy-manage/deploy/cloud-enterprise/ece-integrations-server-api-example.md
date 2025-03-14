@@ -1,8 +1,16 @@
+---
+applies_to:
+  deployment:
+    ece: all
+mapped_urls:
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-integrations-server-api-example.html
+---
+
 # Enable Integrations Server through the API [ece-integrations-server-api-example]
 
 This example demonstrates how to use the Elastic Cloud Enterprise RESTful API to create a deployment with Integrations Server enabled.
 
-For more information on how to manage Integrations Server from the UI, check [Manage your Integrations Server](../../../deploy-manage/deploy/cloud-enterprise/manage-integrations-server.md)
+For more information on how to manage Integrations Server from the UI, check [Manage your Integrations Server](manage-integrations-server.md)
 
 
 ## Requirements [ece_requirements_4] 

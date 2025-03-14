@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/add-exceptions.html
   - https://www.elastic.co/guide/en/serverless/current/security-add-exceptions.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Add and manage exceptions [add-exceptions]

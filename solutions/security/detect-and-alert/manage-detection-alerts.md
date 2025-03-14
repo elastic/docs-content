@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/alerts-ui-manage.html
   - https://www.elastic.co/guide/en/serverless/current/security-alerts-manage.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Manage detection alerts [security-alerts-manage]

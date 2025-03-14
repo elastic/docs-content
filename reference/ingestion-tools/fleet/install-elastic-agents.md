@@ -64,7 +64,9 @@ If you are using {{agent}} with [{{serverless-full}}](/deploy-manage/deploy/elas
 
 ::::
 
-
+::::{admonition} Applying {{agent}} configurations dynamically
+When you set up {{agent}}, you might not yet have all input configuration details available. To solve this problem, the input configuration accepts variables and conditions that get evaluated at runtime using information from the running environment, allowing you to apply configurations dynamically. To learn more, refer to [Variables and conditions in input configurations](./dynamic-input-configuration.md).
+::::
 
 ## Resource requirements [elastic-agent-installation-resource-requirements]
 

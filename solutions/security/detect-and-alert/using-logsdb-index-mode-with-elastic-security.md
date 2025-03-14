@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/detections-logsdb-index-mode-impact.html
   - https://www.elastic.co/guide/en/serverless/current/detections-logsdb-index-mode-impact.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Using logsdb index mode with Elastic Security [detections-logsdb-index-mode-impact]

@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/osquery-placeholder-fields.html
   - https://www.elastic.co/guide/en/serverless/current/security-osquery-placeholder-fields.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Use placeholder fields in Osquery queries [security-osquery-placeholder-fields]

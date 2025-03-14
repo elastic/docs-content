@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/agentless-integrations.html
   - https://www.elastic.co/guide/en/serverless/current/security-agentless-integrations.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Agentless integrations [agentless-integrations]

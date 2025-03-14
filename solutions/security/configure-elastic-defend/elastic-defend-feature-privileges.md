@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/endpoint-management-req.html
   - https://www.elastic.co/guide/en/serverless/current/security-endpoint-management-req.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # {{elastic-defend}} feature privileges

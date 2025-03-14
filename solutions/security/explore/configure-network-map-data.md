@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/conf-map-ui.html
   - https://www.elastic.co/guide/en/serverless/current/security-conf-map-ui.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Configure network map data

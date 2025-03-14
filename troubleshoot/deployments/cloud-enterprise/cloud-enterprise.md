@@ -2,7 +2,6 @@
 navigation_title: "Elastic Cloud Enterprise"
 mapped_urls:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-troubleshooting.html
-  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-find.html
 ---
 
 # Troubleshoot Elastic Cloud Enterprise
