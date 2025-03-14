@@ -39,7 +39,7 @@ You can find this console in Cloud UI when selecting a specific deployment to ma
 This API Console is different from the [Dev Tools Console](/explore-analyze/query-filter/tools/console.md) available in {{kib}}, from which you can call {{es}} and {{kib}} APIs. On the ECE API Console, you cannot run Kibana APIs.
 :::
 
-To learn more about what kinds of {{es}} API calls you can make from the Cloud UI, check the [Elasticsearch API Reference](elasticsearch://reference/elasticsearch/rest-apis.md) documentation.
+To learn more about what kinds of {{es}} API calls you can make from the Cloud UI, check the [Elasticsearch API Reference](elasticsearch://reference/elasticsearch/rest-apis/index.md) documentation.
 
 
 
