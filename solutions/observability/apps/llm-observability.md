@@ -26,9 +26,9 @@ Elastic offers specialized OpenTelemetry Protocol (OTLP) tracing for application
 
 You can Instrument the application with one of the following OpenTelemetry API:
 
-- Python
-- Node.js
-- Java
+- [Python](https://github.com/elastic/elastic-otel-python)
+- [Node.js](https://github.com/elastic/elastic-otel-node)
+- [Java](https://github.com/elastic/elastic-otel-java)
 
 ## Getting started
 
