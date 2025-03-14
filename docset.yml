@@ -52,11 +52,17 @@ cross_links:
 toc:
   - file: index.md
   - toc: get-started
+    in_nav: true
   - toc: solutions
+    in_nav: true
   - toc: manage-data
+    in_nav: true
   - toc: explore-analyze
+    in_nav: true
   - toc: deploy-manage
+    in_nav: true
   - toc: cloud-account
+    in_nav: true
   - toc: troubleshoot
   - toc: release-notes
   - toc: reference
@@ -401,3 +407,7 @@ subs:
   icon-bug:   "pass:[<span class=\"eui-icon icon-bug\"></span>]"
   icon-checkInCircleFilled:   "pass:[<span class=\"eui-icon icon-checkInCircleFilled\"></span>]"
   icon-warningFilled:   "pass:[<span class=\"eui-icon icon-warningFilled\"></span>]"
+  stack-version: "9.0.0"
+  eck_version: "3.0.0"
+  apm_server_version: "9.0.0"
+  version: "9.0.0"

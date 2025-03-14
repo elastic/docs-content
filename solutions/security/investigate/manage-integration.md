@@ -6,7 +6,8 @@ navigation_title: "Osquery manager integration"
 
 applies_to:
   stack: preview all
-  serverless: preview all
+  serverless:
+    security: preview all
 ---
 
 # Manage the integration [manage-osquery-integration]

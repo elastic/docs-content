@@ -26,7 +26,7 @@ Before you start creating your own deployment templates, you should have: [tagge
 3. Select **Create template**.
 4. Give your template a name and include a description that reflects its intended use.
 5. Select **Create template**. The **Configure instances** page opens.
-6. Choose whether or not [autoscaling](../../autoscaling.md) is enabled by default for deployments created using the template. Autoscaling adjusts resources available to the deployment automatically as loads change over time.
+6. Choose whether or not [autoscaling](/deploy-manage/autoscaling/autoscaling-in-ece-and-ech.md) is enabled by default for deployments created using the template. Autoscaling adjusts resources available to the deployment automatically as loads change over time.
 
     :::{image} ../../../images/cloud-enterprise-ece-create-template-autoscaling.png
     :alt: screencapture of the "Enable autoscaling by default" switch

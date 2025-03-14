@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/shared-exception-lists.html
   - https://www.elastic.co/guide/en/serverless/current/security-shared-exception-lists.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Create and manage shared exception lists [shared-exception-lists]

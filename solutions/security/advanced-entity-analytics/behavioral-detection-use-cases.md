@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/behavioral-detection-use-cases.html
   - https://www.elastic.co/guide/en/serverless/current/security-behavioral-detection-use-cases.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Behavioral detection use cases

@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/cspm-get-started.html
   - https://www.elastic.co/guide/en/serverless/current/security-cspm-get-started.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Get started with CSPM for AWS
