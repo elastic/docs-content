@@ -11,7 +11,7 @@ applies_to:
 
 The **Assets** page allows you to manage the following features:
 
-* [{{fleet}}](/reference/ingestion-tools/fleet/manage-elastic-agents-in-fleet.md)
-* [{{integrations}}](/reference/ingestion-tools/fleet/manage-integrations.md)
+* [{{fleet}}](/reference/fleet/manage-elastic-agents-in-fleet.md)
+* [{{integrations}}](/reference/fleet/manage-integrations.md)
 * [Endpoint protection](manage-elastic-defend.md)
 * [Cloud security](cloud.md)

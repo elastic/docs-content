@@ -31,5 +31,5 @@ To learn how to collect monitoring data, refer to:
     * [{{winlogbeat}}](asciidocalypse://docs/beats/docs/reference/winlogbeat/monitoring.md)
 
 * [Monitoring APM Server](/solutions/observability/apps/monitor-apm-server.md)
-* [Monitoring {{agent}}s](/reference/ingestion-tools/fleet/monitor-elastic-agent.md) {{fleet}}-managed agents) or [Configure monitoring for standalone {{agent}}s](/reference/ingestion-tools/fleet/elastic-agent-monitoring-configuration.md)
+* [Monitoring {{agent}}s](/reference/fleet/monitor-elastic-agent.md) {{fleet}}-managed agents) or [Configure monitoring for standalone {{agent}}s](/reference/fleet/elastic-agent-monitoring-configuration.md)
 

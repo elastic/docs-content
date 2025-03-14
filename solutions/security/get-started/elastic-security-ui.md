@@ -169,7 +169,7 @@ Expand this section to access the following pages:
 
 The Assets section allows you to manage the following features:
 
-* [{{fleet}}](/reference/ingestion-tools/fleet/manage-elastic-agents-in-fleet.md)
+* [{{fleet}}](/reference/fleet/manage-elastic-agents-in-fleet.md)
 * [Endpoint protection](/solutions/security/manage-elastic-defend.md)
 
     * [Endpoints](/solutions/security/manage-elastic-defend/endpoints.md): View and manage hosts running {{elastic-defend}}.
@@ -203,7 +203,7 @@ stack: all
 Expand this section to access and manage:
 - Additional security features
 - [Stack monitoring](/deploy-manage/monitor/stack-monitoring.md)
-- [{{integrations}}](/reference/ingestion-tools/fleet/manage-integrations.md)
+- [{{integrations}}](/reference/fleet/manage-integrations.md)
 
 ### Project Settings
 ```yaml {applies_to}
@@ -212,7 +212,7 @@ serverless: all
 
 Expand this section to access and manage:
 - Additional security features
-- [{{integrations}}](/reference/ingestion-tools/fleet/manage-integrations.md)
+- [{{integrations}}](/reference/fleet/manage-integrations.md)
 - [Billing](/deploy-manage/cloud-organization/billing/serverless-project-billing-dimensions.md) and [subscription](/deploy-manage/cloud-organization/billing/manage-subscription.md) options for your {{serverless-short}} project
 
 

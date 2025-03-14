@@ -11,7 +11,7 @@ Review key resources that can be used to interact with and manage self-managed c
 ## APIs
 
 * [{{es}} API](https://www.elastic.co/docs/api/doc/elasticsearch/): The core API for interacting with a self-managed {{es}} cluster, or any cluster running {{stack}}. Configure {{es}} functionality and settings, query your data, and more.
-  
+
     Refer to [REST APIs](elasticsearch://reference/elasticsearch/rest-apis/index.md) to learn about API conventions and view API usage examples.
 * [{{kib}} API](https://www.elastic.co/docs/api/doc/kibana/): manage {{kib}} resources such as connectors, data views, and saved objects.
 
@@ -21,7 +21,7 @@ Learn how to [generate API keys for your self-managed cluster](/deploy-manage/ap
 
 ## Clients
 
-* [{{es}} clients](/reference/elasticsearch/clients/index.md): Interact with {{es}} programmatically to integrate {{es}} into your app or website.
+* [{{es}} clients](/reference/elasticsearch-clients/index.md): Interact with {{es}} programmatically to integrate {{es}} into your app or website.
 
 ## Other
 

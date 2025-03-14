@@ -19,7 +19,7 @@ To add a service name to your logs, either:
 
 ## Use the add fields processor to add a service name [observability-add-logs-service-name-use-the-add-fields-processor-to-add-a-service-name]
 
-For log data without a service name, use the [`add_fields` processor](/reference/ingestion-tools/fleet/add_fields-processor.md) to add the `service.name` field. You can add the processor in an integration’s settings or in the {{agent}} or {{filebeat}} configuration.
+For log data without a service name, use the [`add_fields` processor](/reference/fleet/add_fields-processor.md) to add the `service.name` field. You can add the processor in an integration’s settings or in the {{agent}} or {{filebeat}} configuration.
 
 For example, adding the `add_fields` processor to the inputs section of a standalone {{agent}} or {{filebeat}} configuration would add `your_service_name` as the `service.name` field:
 
@@ -38,7 +38,7 @@ Adding the `add_fields` processor to an integration’s settings would add `your
 :screenshot:
 :::
 
-For more on defining processors, refer to [define processors](/reference/ingestion-tools/fleet/agent-processors.md).
+For more on defining processors, refer to [define processors](/reference/fleet/agent-processors.md).
 
 
 ## Map an existing field to the service name field [observability-add-logs-service-name-map-an-existing-field-to-the-service-name-field]

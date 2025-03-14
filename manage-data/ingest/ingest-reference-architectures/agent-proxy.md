@@ -39,7 +39,7 @@ Info on {{agent}} and agent integrations:
 
 Info on using a proxy server:
 
-* [Using a proxy server with {{agent}} and {{fleet}}](/reference/ingestion-tools/fleet/fleet-agent-proxy-support.md)
+* [Using a proxy server with {{agent}} and {{fleet}}](/reference/fleet/fleet-agent-proxy-support.md)
 
 Info on {{es}}:
 
