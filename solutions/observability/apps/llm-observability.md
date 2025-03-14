@@ -15,10 +15,10 @@ Elastic’s end-to-end LLM observability is delivered through the following meth
 
 Elastic’s LLM integrations now support the most widely adopted models, including OpenAI, Azure OpenAI, and a diverse range of models hosted on Amazon Bedrock and Google Vertex AI:
 
-- Amazon Bedrock
-- Azure OpenAI
-- GCP Vertex AI
-- OpenAI
+- [Amazon Bedrock](https://www.elastic.co/guide/en/integrations/current/aws_bedrock.html)
+- [Azure OpenAI](https://www.elastic.co/guide/en/integrations/current/azure_openai.html)
+- [GCP Vertex AI](https://www.elastic.co/guide/en/integrations/current/gcp_vertexai.html)
+- [OpenAI](https://www.elastic.co/guide/en/integrations/current/openai.html)
 
 ## APM tracing for OpenAI models (via instrumentation)
 
