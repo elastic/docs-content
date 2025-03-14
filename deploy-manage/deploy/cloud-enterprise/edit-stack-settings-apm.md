@@ -1,3 +1,12 @@
+---
+navigation_title: APM user settings
+applies_to:
+  deployment:
+    ece: all
+mapped_urls:
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-manage-apm-settings.html
+---
+
 # Add APM user settings [ece-manage-apm-settings]
 
 Starting in {{stack}} version 8.0, how you change APM settings and the settings that are available to you depend on how you spin up Elastic APM. There are two modes:
@@ -5,14 +14,14 @@ Starting in {{stack}} version 8.0, how you change APM settings and the settings 
 {{fleet}}-managed APM integration
 :   New deployments created in {{stack}} version 8.0 and later will be managed by {{fleet}}.
 
-    * This mode requires SSL/TLS configuration. Check [TLS configuration for {{fleet}}-managed mode](../../../deploy-manage/deploy/cloud-enterprise/edit-stack-settings.md#ece-edit-apm-fleet-tls) for details.
+    * This mode requires SSL/TLS configuration. Check [TLS configuration for {{fleet}}-managed mode](#ece-edit-apm-fleet-tls) for details.
     * Check [APM integration input settings](/solutions/observability/apps/configure-apm-server.md) for all other Elastic APM configuration options in this mode.
 
 
 Standalone APM Server (legacy)
 :   Deployments created prior to {{stack}} version 8.0 are in legacy mode. Upgrading to or past {{stack}} 8.0 does not remove you from legacy mode.
 
-    Check [Edit standalone APM settings (legacy)](../../../deploy-manage/deploy/cloud-enterprise/edit-stack-settings.md#ece-edit-apm-standalone-settings-ece)for information on how to configure Elastic APM in this mode.
+    Check [Edit standalone APM settings (legacy)](#ece-edit-apm-standalone-settings-ece)for information on how to configure Elastic APM in this mode.
 
 
 To learn more about the differences between these modes, or to switch from Standalone APM Server (legacy) mode to {{fleet}}-managed, check [Switch to the Elastic APM integration](/solutions/observability/apps/switch-to-elastic-apm-integration.md).
@@ -90,3 +99,4 @@ If the size of the HTTP request frequently exceeds the maximum, you might need t
 apm-server:
   max_event_size: 407200
 ```
+
