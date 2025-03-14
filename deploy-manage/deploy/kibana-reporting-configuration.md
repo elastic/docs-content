@@ -98,7 +98,7 @@ When security is enabled, you grant users access to {{report-features}} with [{{
     4. For each application, select **All**, or to customize the privileges, select **Read** and **Customize sub-feature privileges**.
 
         ::::{note}
-        If you have a Basic license, sub-feature privileges are unavailable. For details, check out [Grant users access with a Basic license](../../../explore-analyze/report-and-share.md#grant-user-access-basic).
+        If you have a Basic license, sub-feature privileges are unavailable. For details, check out [Grant users access with a Basic license](#grant-user-access-basic).
         ::::
 
 
@@ -127,7 +127,7 @@ Granting the privilege to generate reports also grants the user the privilege to
 
 ### Grant access with the role API [reporting-roles-user-api]
 
-With [{{kib}} application privileges](../../../explore-analyze/report-and-share.md#grant-user-access), you can use the [role APIs](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-roles) to grant access to the {{report-features}}, using **All** privileges, or sub-feature privileges.
+With [{{kib}} application privileges](#grant-user-access), you can use the [role APIs](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-roles) to grant access to the {{report-features}}, using **All** privileges, or sub-feature privileges.
 
 ::::{note}
 This API request needs to be run against the [Kibana API endpoint](https://www.elastic.co/guide/en/kibana/current/api.html).
@@ -163,7 +163,7 @@ PUT <kibana host>:<port>/api/security/role/custom_reporting_user
 
 ### Grant users access with a Basic license [grant-user-access-basic]
 
-With a Basic license, you can grant users access with custom roles to {{report-features}} with [{{kib}} application privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md). However, with a Basic license, sub-feature privileges are unavailable. [Create a role](../../../explore-analyze/report-and-share.md#grant-user-access), then select **All** privileges for the applications where users can create reports.
+With a Basic license, you can grant users access with custom roles to {{report-features}} with [{{kib}} application privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md). However, with a Basic license, sub-feature privileges are unavailable. [Create a role](#grant-user-access), then select **All** privileges for the applications where users can create reports.
 
 :::{image} ../../../images/kibana-kibana-privileges-with-reporting-basic.png
 :alt: Kibana privileges with Reporting options, Basic license
@@ -242,7 +242,7 @@ To automatically generate reports with {{watcher}}, you must configure {{watcher
     Once you’ve enabled SSL for {{kib}}, all requests to the reporting endpoints must include valid credentials.
 
 
-For more information on sharing reports, direct links, and more, refer to [Reporting and sharing](../../../explore-analyze/report-and-share.md).
+For more information on sharing reports, direct links, and more, refer to [Reporting and sharing](/explore-analyze/report-and-share.md).
 
 
 ### Install the dependencies for the headless browser [install-reporting-packages]
