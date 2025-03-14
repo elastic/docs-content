@@ -2,6 +2,8 @@
 navigation_title: "SQS"
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/monitor-amazon-sqs.html
+applies_to:
+  stack:
 ---
 
 

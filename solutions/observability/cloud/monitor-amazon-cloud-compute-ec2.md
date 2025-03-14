@@ -2,6 +2,8 @@
 navigation_title: "EC2"
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/monitor-amazon-ec2.html
+applies_to:
+  stack:
 ---
 
 

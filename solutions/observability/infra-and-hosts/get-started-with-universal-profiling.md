@@ -2,6 +2,8 @@
 navigation_title: "Get started"
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/profiling-get-started.html
+applies_to:
+  stack:
 ---
 
 

@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/monitor-azure-native.html
+applies_to:
+  stack:
 ---
 
 # Monitor Microsoft Azure with the Azure Native ISV Service [monitor-azure-native]

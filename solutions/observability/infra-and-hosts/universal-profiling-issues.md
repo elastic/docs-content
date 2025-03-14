@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/profiling-known-issues.html
+applies_to:
+  stack: 
 ---
 
 # Universal Profiling issues [profiling-known-issues]

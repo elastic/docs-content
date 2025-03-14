@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/profiling-config-file.html
+applies_to:
+  stack:
 ---
 
 # Configuration file of the Universal Profiling Agent [profiling-config-file]

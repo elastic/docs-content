@@ -2,6 +2,8 @@
 navigation_title: "CloudTrail logs"
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/monitor-aws-cloudtrail-firehose.html
+applies_to:
+  stack:
 ---
 
 

@@ -2,6 +2,9 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/serverless/current/observability-quickstarts-k8s-logs-metrics.html
   - https://www.elastic.co/guide/en/observability/current/monitor-k8s-logs-metrics-with-elastic-agent.html
+applies_to:
+  stack:
+  serverless:
 ---
 
 # Quickstart: Monitor your Kubernetes cluster with {{agent}} [monitor-k8s-logs-metrics-with-elastic-agent]
