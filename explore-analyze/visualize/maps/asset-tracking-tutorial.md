@@ -32,7 +32,7 @@ When you complete this tutorial, you’ll have a map that looks like this:
 
 * If you don’t already have {{kib}}, sign up for [a free Elastic Cloud trial](https://www.elastic.co/cloud/elasticsearch-service/signup?baymax=docs-body&elektra=docs) and create a hosted deployment. When creating it, download the deployment credentials.
 * Obtain an API key for [TriMet web services](https://developer.trimet.org/) at [https://developer.trimet.org/appid/registration/](https://developer.trimet.org/appid/registration/).
-* [Fleet](/reference/ingestion-tools/fleet/index.md) is enabled on your cluster, and one or more [{{agent}}s](/reference/ingestion-tools/fleet/install-elastic-agents.md) is enrolled.
+* [Fleet](/reference/fleet/index.md) is enabled on your cluster, and one or more [{{agent}}s](/reference/fleet/install-elastic-agents.md) is enrolled.
 
 
 ## Part 1: Ingest the Portland public transport data [_part_1_ingest_the_portland_public_transport_data]

@@ -13,7 +13,7 @@ mapped_pages:
 * Flexible naming scheme
 * Fewer ingest permissions required
 
-See the [{{fleet}} and {{agent}} Guide](/reference/ingestion-tools/fleet/data-streams.md) to learn more.
+See the [{{fleet}} and {{agent}} Guide](/reference/fleet/data-streams.md) to learn more.
 
 ::::
 

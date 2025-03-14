@@ -19,7 +19,7 @@ According to your use case, you may want to control the structure of your ingest
 Finally, to help ensure optimal query results, you may want to customize how text is analyzed and how text fields are defined inside {{es}}.
 
 {{agent}} processors
-:   You can use [{{agent}} processors](/reference/ingestion-tools/fleet/agent-processors.md) to sanitize or enrich raw data at the source. Use {{agent}} processors if you need to control what data is sent across the wire, or if you need to enrich the raw data with information available on the host.
+:   You can use [{{agent}} processors](/reference/fleet/agent-processors.md) to sanitize or enrich raw data at the source. Use {{agent}} processors if you need to control what data is sent across the wire, or if you need to enrich the raw data with information available on the host.
 
 {{es}} ingest pipelines
 :   You can use [{{es}} ingest pipelines](transform-enrich/ingest-pipelines.md) to enrich incoming data or normalize field data before the data is indexed. {{es}} ingest pipelines enable you to manipulate the data as it comes in. This approach helps you avoid adding processing overhead to the hosts from which you’re collecting data.

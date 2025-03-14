@@ -31,7 +31,7 @@ Examples
 Info on configuring {{agent}}:
 
 * [Fleet and Elastic Agent Guide](https://www.elastic.co/guide/en/fleet/current)
-* [Configuring outputs for {{agent}}](/reference/ingestion-tools/fleet/elastic-agent-output-configuration.md)
+* [Configuring outputs for {{agent}}](/reference/fleet/elastic-agent-output-configuration.md)
 
 For info on {{ls}} for enriching data, check out these sections in the [Logstash Reference](https://www.elastic.co/guide/en/logstash/current):
 

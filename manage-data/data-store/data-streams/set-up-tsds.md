@@ -93,7 +93,7 @@ PUT _ilm/policy/my-weather-sensor-lifecycle-policy
 
 To setup a TSDS create an index template with the following details:
 
-* One or more index patterns that match the TSDS’s name. We recommend using our [data stream naming scheme](/reference/ingestion-tools/fleet/data-streams.md#data-streams-naming-scheme).
+* One or more index patterns that match the TSDS’s name. We recommend using our [data stream naming scheme](/reference/fleet/data-streams.md#data-streams-naming-scheme).
 * Enable data streams.
 * Specify a mapping that defines your dimensions and metrics:
 

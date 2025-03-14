@@ -33,4 +33,4 @@ This upgrade guide is for the Elastic APM integration. Only use this guide if bo
     2. Under **Agents**, click **Upgrade available** to see a list of agents that you can upgrade.
     3. Choose **Upgrade agent** from the **Actions** menu next to the agent you want to upgrade. The **Upgrade agent** option is grayed out when an upgrade is unavailable, or the {{kib}} version is lower than the agent version.
 
-    For more details, or for bulk upgrade instructions, see [Upgrade {{agent}}](/reference/ingestion-tools/fleet/upgrade-elastic-agent.md)
+    For more details, or for bulk upgrade instructions, see [Upgrade {{agent}}](/reference/fleet/upgrade-elastic-agent.md)

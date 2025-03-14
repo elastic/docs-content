@@ -430,7 +430,7 @@ $$$azure-integration-vm-extensions$$$How can I monitor my Azure virtual machines
 
     **Managing the Elastic Agent VM extension**
 
-    Once installed on the virtual machine, you can manage Elastic Agent either from Fleet or locally on the host where it’s installed. We recommend managing the VM extension through Fleet, because it makes handling and upgrading the agents considerably easier. For more information on the Elastic Agent, check [Manage your Elastic Agents](/reference/ingestion-tools/fleet/install-elastic-agents.md).
+    Once installed on the virtual machine, you can manage Elastic Agent either from Fleet or locally on the host where it’s installed. We recommend managing the VM extension through Fleet, because it makes handling and upgrading the agents considerably easier. For more information on the Elastic Agent, check [Manage your Elastic Agents](/reference/fleet/install-elastic-agents.md).
 
     **Operating system compatibility matrix**
 

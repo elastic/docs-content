@@ -12,7 +12,7 @@ applies_to:
 
 
 ::::{note}
-Fleet-managed users should see [View {{agent}} logs](/reference/ingestion-tools/fleet/monitor-elastic-agent.md) to learn how to view logs and change the logging level of {{agent}}.
+Fleet-managed users should see [View {{agent}} logs](/reference/fleet/monitor-elastic-agent.md) to learn how to view logs and change the logging level of {{agent}}.
 ::::
 
 

@@ -8,7 +8,7 @@ applies_to:
 # APM Server and systemd [apm-running-with-systemd]
 
 ::::{important}
-These commands only apply to the APM Server binary installation method. Fleet-managed users should see [Start and stop {{agent}}s on edge hosts](/reference/ingestion-tools/fleet/start-stop-elastic-agent.md).
+These commands only apply to the APM Server binary installation method. Fleet-managed users should see [Start and stop {{agent}}s on edge hosts](/reference/fleet/start-stop-elastic-agent.md).
 ::::
 
 
