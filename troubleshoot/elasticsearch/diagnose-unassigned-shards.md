@@ -237,3 +237,26 @@ See [this video](https://www.youtube.com/watch?v=v2mbeSd1vTQ) for a walkthrough 
 If you’re using Elastic Cloud Hosted, then you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, real-time issue detection and resolution paths. For more information, refer to [Monitor with AutoOps](/deploy-manage/monitor/autoops.md).
 
 ::::
+
+## Common issues
+
+The following sections provide advice for resolving some of the common causes for unassigned shards.
+
+### Conflicting settings
+
+A primary shard might be unassigned due to conflicting settings.
+View https://www.youtube.com/watch?v=5z3n2VgusLE[this video] for a walkthrough of troubleshooting a node and index setting mismatch.
+
+### Maximum number of retries exceeded [maximum-retries-exceeded]
+
+When Elasticsearch is unable to allocate a shard, it will attempt to retry allocation up to the maximum number of retries allowed.
+After this, Elasticsearch will stop attempting to allocate the shard in order to prevent infinite retries which may impact cluster performance.
+Run the cluster reroute API to retry allocation, which will allocate the shard if the issue preventing allocation has been resolved.
+
+### No valid shard copy [no-shard-copy]
+
+If a shard is unassigned with an allocation status of `no_valid_shard_copy`, then you should make sure that all nodes are in the cluster. If all the nodes containing in-sync copies of a shard are lost, then you can recover the data for the shard. 
+
+View https://www.youtube.com/watch?v=6OAg9IyXFO4[this video] for a walkthrough of troubleshooting `no_valid_shard_copy`.
+
+
