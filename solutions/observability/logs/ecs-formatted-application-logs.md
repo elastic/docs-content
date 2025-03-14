@@ -50,7 +50,7 @@ To set up log ECS reformatting:
 
 Log ECS reformatting is controlled by the `log_ecs_reformatting` configuration option, and is disabled by default. Refer to the guide for your framework for information on enabling:
 
-* [Java](asciidocalypse://docs/apm-agent-java/docs/reference/config-logging.md#config-log-ecs-reformatting)
+* [Java](apm-agent-java://reference/config-logging.md#config-log-ecs-reformatting)
 * [Ruby](asciidocalypse://docs/apm-agent-ruby/docs/reference/configuration.md#config-log-ecs-formatting)
 * [Python](asciidocalypse://docs/apm-agent-python/docs/reference/configuration.md#config-log_ecs_reformatting)
 
@@ -75,14 +75,14 @@ Install {{filebeat}} on the server you want to monitor by running the commands t
 :::::::{tab-set}
 
 ::::::{tab-item} DEB
-```sh
+```sh subs=true
 curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{version}}-darwin-x86_64.tar.gz
 tar xzvf filebeat-{{version}}-darwin-x86_64.tar.gz
 ```
 ::::::
 
 ::::::{tab-item} RPM
-```sh
+```sh subs=true
 curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{version}}-linux-x86_64.tar.gz
 tar xzvf filebeat-{{version}}-linux-x86_64.tar.gz
 ```
@@ -105,14 +105,14 @@ If script execution is disabled on your system, you need to set the execution po
 ::::::
 
 ::::::{tab-item} Linux
-```sh
+```sh subs=true
 curl -L -O https\://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{version}}-amd64.deb
 sudo dpkg -i filebeat-{{version}}-amd64.deb
 ```
 ::::::
 
 ::::::{tab-item} Windows
-```sh
+```sh subs=true
 curl -L -O https\://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{version}}-x86_64.rpm
 sudo rpm -vi filebeat-{{version}}-x86_64.rpm
 ```

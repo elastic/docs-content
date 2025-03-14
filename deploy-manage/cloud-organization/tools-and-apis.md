@@ -10,15 +10,15 @@ Most Elastic resources can be accessed and managed through RESTful APIs. While t
 {{ecloud}} API
 :   You can use the {{ecloud}} API to manage your deployments and all of the resources associated with them. This includes performing deployment CRUD operations, scaling or autoscaling resources, and managing traffic filters, deployment extensions, remote clusters, and Elastic Stack versions. You can also access cost data by deployment and by organization.
 
-    To learn more about the {{ecloud}} API, read through the [API overview](asciidocalypse://docs/cloud/docs/reference/cloud-hosted/ec-api-restful.md), try out some [getting started examples](asciidocalypse://docs/cloud/docs/reference/cloud-hosted/ec-api-examples.md), and check our [API reference documentation](https://www.elastic.co/docs/api/doc/cloud).
+    To learn more about the {{ecloud}} API, read through the [API overview](cloud://reference/cloud-hosted/ec-api-restful.md), try out some [getting started examples](cloud://reference/cloud-hosted/ec-api-examples.md), and check our [API reference documentation](https://www.elastic.co/docs/api/doc/cloud).
 
-    Calls to the {{ecloud}} API are subject to [Rate limiting](asciidocalypse://docs/cloud/docs/reference/cloud-hosted/ec-api-rate-limiting.md).
+    Calls to the {{ecloud}} API are subject to [Rate limiting](cloud://reference/cloud-hosted/ec-api-rate-limiting.md).
 
 
 Elasticsearch APIs
 :   This set of APIs allows you to interact directly with the Elasticsearch nodes in your deployment. You can ingest data, run search queries, check the health of your clusters, manage snapshots, and more.
 
-    To use these APIs on {{ecloud}} read our topic [Access the API console](asciidocalypse://docs/cloud/docs/reference/cloud-hosted/ec-api-console.md), and to learn about all of the available endpoints check the [Elasticsearch API reference documentation](elasticsearch://reference/elasticsearch/rest-apis/index.md).
+    To use these APIs on {{ecloud}} read our topic [Access the API console](cloud://reference/cloud-hosted/ec-api-console.md), and to learn about all of the available endpoints check the [Elasticsearch API reference documentation](elasticsearch://reference/elasticsearch/rest-apis/index.md).
 
     Some [restrictions](../deploy/elastic-cloud/restrictions-known-problems.md#ec-restrictions-apis-elasticsearch) apply when using the Elasticsearch APIs on {{ecloud}}.
 

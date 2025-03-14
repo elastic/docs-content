@@ -254,7 +254,7 @@ If you delete a snapshot that’s in progress, {{es}} cancels it. The snapshot p
 If you run {{es}} on your own hardware, we recommend that, in addition to backups, you take regular backups of the files in each node’s [`$ES_PATH_CONF` directory](../../deploy/self-managed/configure-elasticsearch.md#config-files-location) using the file backup software of your choice. Snapshots don’t back up these files. Also note that these files will differ on each node, so each node’s files should be backed up individually.
 
 ::::{important}
-The `elasticsearch.keystore`, TLS keys, and [SAML](../../deploy/self-managed/configure-elasticsearch.md#ref-saml-settings), [OIDC](../../deploy/self-managed/configure-elasticsearch.md#ref-oidc-settings), and [Kerberos](../../deploy/self-managed/configure-elasticsearch.md#ref-kerberos-settings) realms private key files contain sensitive information. Consider encrypting your backups of these files.
+The `elasticsearch.keystore`, TLS keys, and [SAML](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#ref-saml-settings), [OIDC](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#ref-oidc-settings), and [Kerberos](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#ref-kerberos-settings) realms private key files contain sensitive information. Consider encrypting your backups of these files.
 ::::
 
 
@@ -324,7 +324,7 @@ Any index or data stream that’s part of the feature state will display in a sn
 
 ## Dedicated cluster state snapshots [cluster-state-snapshots]
 
-Some feature states contain sensitive data. For example, the `security` feature state includes system indices that may contain user names and encrypted password hashes. Because passwords are stored using [cryptographic hashes](../../deploy/self-managed/configure-elasticsearch.md#hashing-settings), the disclosure of a snapshot would not automatically enable a third party to authenticate as one of your users or use API keys. However, it would disclose confidential information, and if a third party can modify snapshots, they could install a back door.
+Some feature states contain sensitive data. For example, the `security` feature state includes system indices that may contain user names and encrypted password hashes. Because passwords are stored using [cryptographic hashes](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#hashing-settings), the disclosure of a snapshot would not automatically enable a third party to authenticate as one of your users or use API keys. However, it would disclose confidential information, and if a third party can modify snapshots, they could install a back door.
 
 To better protect this data, consider creating a dedicated repository and {{slm-init}} policy for snapshots of the cluster state. This lets you strictly limit and audit access to the repository.
 

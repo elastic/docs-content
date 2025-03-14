@@ -21,7 +21,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 % ### Fixes [elastic-apm-next-fixes]
 
 ## 9.0.0 [elastic-apm-900-release-notes]
-**Release date:** March 25, 2025
+**Release date:** April 1, 2025
 
 ### Features and enhancements [elastic-apm-900-features-enhancements]
 

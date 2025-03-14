@@ -160,7 +160,7 @@ In a multi-tier deployment architecture, you use specialized data roles to assig
 
 If you want to include a node in all tiers, or if your cluster does not use multiple tiers, then you can use the generic `data` role.
 
-[Cluster shard limits](../../deploy/self-managed/configure-elasticsearch.md#cluster-shard-limit) prevent creation of more than 1000 non-frozen shards per node, and 3000 frozen shards per dedicated frozen node. Make sure you have enough nodes of each type in your cluster to handle the number of shards you need.
+[Cluster shard limits](elasticsearch://reference/elasticsearch/configuration-reference/miscellaneous-cluster-settings.md#cluster-shard-limit) prevent creation of more than 1000 non-frozen shards per node, and 3000 frozen shards per dedicated frozen node. Make sure you have enough nodes of each type in your cluster to handle the number of shards you need.
 
 ::::{warning}
 If you assign a node to a specific tier using a specialized data role, then you shouldn’t also assign it the generic `data` role. The generic `data` role takes precedence over specialized data roles.

@@ -1,9 +1,11 @@
 ---
+applies_to:
+  self: ga
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/configuring-stack-security.html
 ---
 
-# Security certificates and keys [configuring-stack-security]
+# Self-managed certificates and keys [configuring-stack-security]
 
 When you start {{es}} for the first time, the following security configuration occurs automatically:
 
@@ -15,7 +17,7 @@ When you start {{es}} for the first time, the following security configuration o
 You can then start {{kib}} and enter the enrollment token, which is valid for 30 minutes. This token automatically applies the security settings from your {{es}} cluster, authenticates to {{es}} with the built-in `kibana` service account, and writes the security configuration to `kibana.yml`.
 
 ::::{note}
-There are [some cases](../deploy/self-managed/installing-elasticsearch.md#stack-skip-auto-configuration) where security can’t be configured automatically because the node startup process detects that the node is already part of a cluster, or that security is already configured or explicitly disabled.
+There are [some cases](/deploy-manage/security/security-certificates-keys.md#stack-skip-auto-configuration) where security can’t be configured automatically because the node startup process detects that the node is already part of a cluster, or that security is already configured or explicitly disabled.
 ::::
 
 
@@ -140,10 +142,10 @@ If the auto-configuration process already completed, you can still obtain the fi
 openssl x509 -fingerprint -sha256 -in config/certs/http_ca.crt
 ```
 
-The command returns the security certificate, including the fingerprint. The `issuer` should be `Elasticsearch security auto-configuration HTTP CA`.
+The command returns the security certificate, including the fingerprint. The `issuer` should be `{{es}} security auto-configuration HTTP CA`.
 
 ```sh
-issuer= /CN=Elasticsearch security auto-configuration HTTP CA
+issuer= /CN={{es}} security auto-configuration HTTP CA
 SHA256 Fingerprint=<fingerprint>
 ```
 
@@ -161,7 +163,7 @@ Copy the `http_ca.crt` file to your machine and configure your client to use thi
 
 ## What’s next? [_whats_next]
 
-Congratulations! You’ve successfully started the {{stack}} with security enabled. {{es}} and {{kib}} are secured with TLS on the HTTP layer, and internode communication is encrypted. If you want to enable HTTPS for web traffic, you can [encrypt traffic between your browser and {{kib}}](secure-http-communications.md#encrypt-kibana-browser).
+Congratulations! You’ve successfully started the {{stack}} with security enabled. {{es}} and {{kib}} are secured with TLS on the HTTP layer, and internode communication is encrypted. If you want to enable HTTPS for web traffic, you can [encrypt traffic between your browser and {{kib}}](set-up-basic-security-plus-https.md#encrypt-kibana-browser).
 
 
 ## Security certificates and keys [stack-security-certificates]
