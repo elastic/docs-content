@@ -23,7 +23,7 @@ Your choice of deployment type determines how you'll set up and manage these cor
 This section focuses on deploying and managing {{es}} and {{kib}}, as well as supporting orchestration technologies. However, depending on your use case, you might need to deploy [other {{stack}} components](/get-started/the-stack.md). For example, you might need to add components to ingest logs or metrics.
 
 To learn how to deploy optional {{stack}} components, refer to the following sections:
-* [Fleet and Elastic Agent](asciidocalypse://docs/docs-content/docs/reference/fleet/index.md)
+* [Fleet and Elastic Agent](/reference/fleet/index.md)
 * [APM](/solutions/observability/apps/application-performance-monitoring-apm.md)
 * [Beats](asciidocalypse://docs/beats/docs/reference/index.md)
 * [Logstash](asciidocalypse://docs/logstash/docs/reference/index.md)
