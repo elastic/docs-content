@@ -29,7 +29,7 @@ Users with these minimum permissions can view data on the **Findings** page.
 Users with these minimum permissions can view data on the **Findings** page and create detection rules from the findings details flyout.
 
 ### {{es}} index privileges
-`Read` privileges for the following {es} indices:
+`Read` privileges for the following {{es}} indices:
 
 * `logs-cloud_security_posture.vulnerabilities_latest-default`
 * `logs-cloud_security_posture.scores-default`
