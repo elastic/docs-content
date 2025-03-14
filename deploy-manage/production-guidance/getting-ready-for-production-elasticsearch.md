@@ -56,6 +56,7 @@ As with any enterprise system, you need tools to secure, manage, and monitor you
 
 
 ## Cluster design [cluster-design] 
+% moved to landing page.
 
 {{es}} offers many options that allow you to configure your cluster to meet your organization’s goals, requirements, and restrictions. You can review the following guides to learn how to tune your cluster to meet your needs:
 

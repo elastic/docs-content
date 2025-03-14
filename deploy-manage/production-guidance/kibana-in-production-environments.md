@@ -1,10 +1,8 @@
 ---
-navigation_title: "Production considerations"
+navigation_title: "Run Kibana in production"
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/production.html
 ---
-
-
 
 # Kibana in production environments [production]
 
@@ -22,7 +20,11 @@ While {{kib}} isn’t terribly resource intensive, we still recommend running {{
 
 ## Load balancing across multiple {{kib}} instances [load-balancing-kibana] 
 
-To serve multiple {{kib}} installations behind a load balancer, you must change the configuration. See [Configuring {{kib}}](../deploy/self-managed/configure.md) for details on each setting.
+To serve multiple {{kib}} instances from the same deployment behind a load balancer, you must change the configuration. See [Configuring {{kib}}](../deploy/self-managed/configure.md) for details on each setting.
+
+::::{note}
+In orchestrated deployments such as {{ech}}, {{ece}}, and {{eck}}, the necessary configuration for multiple {{kib}} instances within the same deployment is automatically managed by the orchestrator. This process is transparent to the user, requiring no manual configuration.
+::::
 
 These settings must be unique across each {{kib}} instance:
 
@@ -70,8 +72,13 @@ bin/kibana -c config/instance2.yml
 
 
 ## Accessing multiple load-balanced {{kib}} clusters [accessing-load-balanced-kibana] 
-
+% TBD, WIP
 To access multiple load-balanced {{kib}} clusters from the same browser, explicitly set `xpack.security.cookieName` to the same value in the {{kib}} configuration of each {{kib}} instance.
+To access different load-balanced {{kib}} deployments from the same browser, explicitly set `xpack.security.cookieName` to the same value in the {{kib}} configuration of each {{kib}} instance.
+
+To access different load-balanced {{kib}} instances within the same deployment from the same browser, explicitly set `xpack.security.cookieName` to the same value in the configuration of each instance.
+
+Configure different value of `xpack.security.cookieName` in {{kib}} instances belonging to other deployments.
 
 Each {{kib}} cluster must have a different value of `xpack.security.cookieName`.
 
