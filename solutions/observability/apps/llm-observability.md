@@ -24,7 +24,7 @@ Elastic’s LLM integrations now support the most widely adopted models, includi
 
 Elastic offers specialized OpenTelemetry Protocol (OTLP) tracing for applications leveraging OpeAI models hosted on OpenAI, Azure, and Amazon Bedrock, providing a detailed view of request flows. This tracing capability captures critical insights, including the specific models used, request duration, errors encountered, token consumption per request, and the interaction between prompts and responses. Ideal for troubleshooting, APM tracing allows you to find exactly where the issue is happening with precision and efficiency in your OpenAI-powered application. 
 
-You can Instrument the application with one of the following OpenTelemetry API:
+You can instrument the application with one of the following OpenTelemetry API:
 
 - [Python](https://github.com/elastic/elastic-otel-python)
 - [Node.js](https://github.com/elastic/elastic-otel-node)
@@ -40,7 +40,11 @@ Check these instructions on how to setup and collect OpenTelemetry data for your
 
 For an SRE team optimizing a customer support system powered by Azure OpenAI, Elastic’s [Azure OpenAI integration](https://www.elastic.co/guide/en/integrations/current/azure_openai.html) provides critical insights. They can quickly identify which model variants experience higher latency or error rates, enabling smarter decisions on model deployment or even switching providers based on real-time performance metrics.
 
-[image]
+:::{image} ../../../images/llm-performance-reliability.png
+:alt:  LLM Performance and Reliability
+:screenshot:
+:::
+
 
 ### Troubleshoot OpenAI-powered applications
 
