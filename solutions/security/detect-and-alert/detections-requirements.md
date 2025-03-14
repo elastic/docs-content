@@ -22,7 +22,7 @@ These steps are only required for **self-managed** deployments:
 
 * HTTPS must be configured for communication between [{{es}} and {{kib}}](/deploy-manage/security/set-up-basic-security-plus-https.md#encrypt-kibana-http).
 * In the `elasticsearch.yml` configuration file, set the `xpack.security.enabled` setting to `true`. For more information, refer to [Configuring {{es}}](/deploy-manage/deploy/self-managed/configure-elasticsearch.md) and [Security settings in {{es}}](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md).
-* In the `kibana.yml` [configuration file](/deploy-manage/deploy/self-managed/configure.md), add the `xpack.encryptedSavedObjects.encryptionKey` setting with any alphanumeric value of at least 32 characters. For example:
+* In the `kibana.yml` [configuration file](kibana://reference/configuration-reference/general-settings.md), add the `xpack.encryptedSavedObjects.encryptionKey` setting with any alphanumeric value of at least 32 characters. For example:
 
     `xpack.encryptedSavedObjects.encryptionKey: 'fhjskloppd678ehkdfdlliverpoolfcr'`
 
@@ -80,7 +80,7 @@ You can set limits to the number of bytes and the buffer size used to upload [va
 
 To set the value:
 
-1. Open `kibana.yml` [configuration file](/deploy-manage/deploy/self-managed/configure.md) or edit your {{kib}} cloud instance.
+1. Open `kibana.yml` [configuration file](kibana://reference/configuration-reference/general-settings.md) or edit your {{kib}} cloud instance.
 2. Add any of these settings and their required values:
 
     * `xpack.lists.maxImportPayloadBytes`: Sets the number of bytes allowed for uploading {{elastic-sec}} value lists (default `9000000`, maximum `100000000`). For every 10 megabytes, it is recommended to have an additional 1 gigabyte of RAM reserved for Kibana.

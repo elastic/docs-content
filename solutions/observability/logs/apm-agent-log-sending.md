@@ -35,4 +35,4 @@ The Elastic APM agent for Java.
 
 ## Get started [observability-send-application-logs-get-started]
 
-See the [Java agent](asciidocalypse://docs/apm-agent-java/docs/reference/logs.md#log-sending) documentation to get started.
+See the [Java agent](apm-agent-java://reference/logs.md#log-sending) documentation to get started.

@@ -11,7 +11,7 @@ mapped_urls:
 
 - You need particular subscriptions and privileges to manage case attachments. For example in {{stack}}, to add alerts to cases, you must have privileges for [managing alerts](/solutions/security/detect-and-alert/detections-requirements.md#enable-detections-ui). In {{serverless-short}}, you need the Security Analytics Complete [project feature](../../../deploy-manage/deploy/elastic-cloud/project-settings.md).
 
-- If you have an on-premises deployment and want email notifications and external incident management systems to contain links back to {{kib}}, you must configure the [server.publicBaseUrl](/deploy-manage/deploy/self-managed/configure.md#server-publicBaseUrl) setting.
+- If you have an on-premises deployment and want email notifications and external incident management systems to contain links back to {{kib}}, you must configure the [server.publicBaseUrl](kibana://reference/configuration-reference/general-settings.md#server-publicbaseurl) setting.
 ::::
 
 

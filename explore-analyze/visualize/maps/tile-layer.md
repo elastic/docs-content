@@ -18,7 +18,7 @@ Tile layers display image tiles served from a tile server.
 To add a tile layer to your map, click **Add layer**, then select one of the following:
 
 **Configured Tile Map Service**
-:   Tile map service configured in kibana.yml. See map.tilemap.url in [*Configure {{kib}}*](../../../deploy-manage/deploy/self-managed/configure.md) for details.
+:   Tile map service configured in kibana.yml. See map.tilemap.url in [*Configure {{kib}}*](kibana://reference/configuration-reference/general-settings.md) for details.
 
 **EMS Basemaps**
 :   Tile map service from [Elastic Maps Service](https://www.elastic.co/elastic-maps-service).

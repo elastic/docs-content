@@ -11,7 +11,7 @@ mapped_pages:
 
 While you can create new deployment templates for some use cases, if the default system templates meet your needs but require minor adjustments, you may choose to configure or modify them.
 
-For example, you want to use autoscaling with the system templates, but want to modify some of the default values for autoscaling in those templates. You might want to enable autoscaling by default for new deployments, or adjust the default value of the autoscaling maximum for the hot tier.
+For example, you want to use [Autoscaling](/deploy-manage/autoscaling/autoscaling-in-ece-and-ech.md) with the system templates, but want to modify some of the default values for autoscaling in those templates. You might want to enable autoscaling by default for new deployments, or adjust the default value of the autoscaling maximum for the hot tier.
 
 ::::{note}
 You cannot edit system templates through the UI; they can only be configured through the API.

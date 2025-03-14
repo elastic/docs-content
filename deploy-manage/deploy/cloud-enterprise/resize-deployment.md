@@ -1,4 +1,7 @@
 ---
+applies_to:
+  deployment:
+    ece: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-resize-deployment.html
 ---
@@ -8,9 +11,8 @@ mapped_pages:
 Elasticsearch scales to whatever capacity you need and with as many nodes as the available resources can support. If you don’t have enough available resources, [add some capacity first](../../maintenance/ece/scale-out-installation.md).
 
 ::::{tip} 
-You can also enable autoscaling on a deployment to have the available resources for components, such as data tiers and machine learning nodes, adjust automatically as the demands on the deployment change over time. Check [Deployment autoscaling](../../autoscaling.md) to learn more.
+You can also enable autoscaling on a deployment to have the available resources for components, such as [data tiers](/manage-data/lifecycle/data-tiers.md) and [machine learning](/explore-analyze/machine-learning.md) nodes, adjust automatically as the demands on the deployment change over time. Check [Deployment autoscaling](/deploy-manage/autoscaling/autoscaling-in-ece-and-ech.md) to learn more.
 ::::
-
 
 To resize a deployment:
 
@@ -20,20 +22,19 @@ To resize a deployment:
     Narrow the list by name, ID, or choose from several other filters. To further define the list, use a combination of filters.
 
 3. From your deployment menu, go to the **Edit** page.
-4. Change the deployment configuration:
+4. Change the deployment configuration, keeping the following considerations in mind:
 
     Fault tolerance
-    :   If the initial deployment you created uses only one availability zone, it is not fault tolerant. On a production system, enable [high availability](ece-ha.md) by changing your deployment to use at least two availability zones, three for mission-critical deployments. The number of instances comes from the number of zones and the type of template. Having more nodes or instances lets you scale out horizontally by adding more processing capacity to your deployment.
+    :   If the initial deployment you created uses only one availability zone, it is not fault tolerant. On a production system, enable [high availability](ece-ha.md) by changing your deployment to use at least two availability zones, three for mission-critical deployments. The number of instances comes from the number of zones and the type of [template](./deployment-templates.md). Having more nodes or instances lets you scale out horizontally by adding more processing capacity to your deployment.
 
         ::::{warning} 
         Deployments that use only one availability zone are not highly available and are at risk of data loss, if you do not [configure an external snapshot repository](../../tools/snapshot-and-restore/cloud-enterprise.md) to enable regular backups. To safeguard against data loss, you must use at least two data centers and configure an external repository for backups.
         ::::
 
-
     RAM per instance
     :   Node and instance capacity should be sufficient to sustain your search workload, even if you lose an availability zone. Currently, half of the memory is assigned to the JVM heap. For example, on an Elasticsearch cluster node with 32 GB RAM, 16 GB would be allotted to heap. Up to 64 GB RAM and 1 TB storage per node are supported.
 
-        A summary of your sections for each instance and the entire deployment are available for you to review before finalizing your changes.
+    Before finalizing your changes, you can review the **Architecture** summary, which shows the total number of instances per zone, with each circle color representing a different type of instance.
 
 5. Select **Save changes**.
 

@@ -58,5 +58,5 @@ You can customize sub-feature privileges for deleting cases and comments, editin
 For more details, refer to [{{kib}} privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md).
 
 ::::{note}
-If you are using an on-premises {{kib}} deployment and you want the email notifications and the external incident management systems to contain links back to {{kib}}, you must configure the [`server.publicBaseUrl`](../../../deploy-manage/deploy/self-managed/configure.md#server-publicBaseUrl) setting.
+If you are using an on-premises {{kib}} deployment and you want the email notifications and the external incident management systems to contain links back to {{kib}}, you must configure the [`server.publicBaseUrl`](kibana://reference/configuration-reference/general-settings.md#server-publicbaseurl) setting.
 ::::

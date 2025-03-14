@@ -52,7 +52,7 @@ Historically, clusters experience hot spotting mainly as an effect of hardware, 
 Here are some common improper hardware setups which may contribute to hot spotting:
 
 * Resources are allocated non-uniformly. For example, if one hot node is given half the CPU of its peers. {{es}} expects all nodes on a [data tier](../../manage-data/lifecycle/data-tiers.md) to share the same hardware profiles or specifications.
-* Resources are consumed by another service on the host, including other {{es}} nodes. Refer to our [dedicated host](../../deploy-manage/deploy/self-managed/deploy-cluster.md#dedicated-host) recommendation.
+* Resources are consumed by another service on the host, including other {{es}} nodes. Refer to our [dedicated host](../../deploy-manage/deploy/self-managed/installing-elasticsearch.md#dedicated-host) recommendation.
 * Resources experience different network or disk throughputs. For example, if one node’s I/O is lower than its peers. Refer to [Use faster hardware](../../deploy-manage/production-guidance/optimize-performance/indexing-speed.md) for more information.
 * A JVM that has been configured with a heap larger than 31GB. Refer to [Set the JVM heap size](elasticsearch://reference/elasticsearch/jvm-settings.md#set-jvm-heap-size) for more information.
 * Problematic resources uniquely report [memory swapping](../../deploy-manage/deploy/self-managed/setup-configuration-memory.md).
@@ -175,5 +175,5 @@ Its response contains a `description` that reports this query:
 indices[winlogbeat-*,logs-window*], sequence by winlog.computer_name with maxspan=1m\n\n[authentication where host.os.type == "windows" and event.action:"logged-in" and\n event.outcome == "success" and process.name == "svchost.exe" ] by winlog.event_data.TargetLogonId
 ```
 
-This lets you know which indices to check (`winlogbeat-*,logs-window*`), as well as the [EQL search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-eql-search) request body. Most likely this is [SIEM related](/solutions/security.md). You can combine this with [audit logging](../../deploy-manage/monitor/logging-configuration/enabling-audit-logs.md) as needed to trace the request source.
+This lets you know which indices to check (`winlogbeat-*,logs-window*`), as well as the [EQL search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-eql-search) request body. Most likely this is [SIEM related](/solutions/security.md). You can combine this with [audit logging](../../deploy-manage/security/logging-configuration/enabling-audit-logs.md) as needed to trace the request source.
 

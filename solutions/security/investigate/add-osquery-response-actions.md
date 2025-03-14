@@ -47,7 +47,7 @@ You can add Osquery Response Actions to new or existing custom query rules. Quer
     * **Query**: Select a saved query or enter a new one. After you enter the query, you can expand the **Advanced** section to set a timeout period for the query, and view or set [mapped ECS fields](/solutions/security/investigate/osquery.md#osquery-map-fields) included in the results from the live query (optional).
 
         ::::{note}
-        Overwriting the query’s default timeout period allows you to support queries that take longer to run. The default and minimum supported value for the **Timeout** field is `60`. The maximum supported value is `900`.
+        Overwriting the query’s default timeout period allows you to support queries that take longer to run. The default and minimum supported value for the **Timeout** field is `60`. The maximum supported value is `86400` (24 hours).
         ::::
 
 
