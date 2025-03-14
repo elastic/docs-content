@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/llm-connector-guides.html
   - https://www.elastic.co/guide/en/serverless/current/security-llm-connector-guides.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Set up connectors for large language models (LLM)

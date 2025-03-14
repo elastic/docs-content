@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/automatic-import.html
   - https://www.elastic.co/guide/en/serverless/current/security-automatic-import.html
+applies_to:
+  stack: preview
+  serverless:
+    security: preview
 ---
 
 # Automatic import

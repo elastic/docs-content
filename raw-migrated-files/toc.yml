@@ -25,7 +25,6 @@ toc:
       - file: cloud/cloud-enterprise/ece-securing-ece.md
       - file: cloud/cloud-enterprise/ece-snapshots.md
       - file: cloud/cloud-enterprise/ece-terminate-deployment.md
-      - file: cloud/cloud-enterprise/ece-troubleshooting.md
       - file: cloud/cloud-enterprise/ece-upgrade-deployment.md
       - file: cloud/cloud-enterprise/ece-upgrade.md
   - file: cloud/cloud-heroku/index.md
@@ -42,7 +41,6 @@ toc:
       - file: cloud/cloud-heroku/ech-getting-started.md
       - file: cloud/cloud-heroku/ech-manage-apm-settings.md
       - file: cloud/cloud-heroku/ech-manage-kibana-settings.md
-      - file: cloud/cloud-heroku/ech-metrics-memory-pressure.md
       - file: cloud/cloud-heroku/ech-monitoring-setup.md
       - file: cloud/cloud-heroku/ech-monitoring.md
       - file: cloud/cloud-heroku/ech-planning.md
@@ -69,7 +67,6 @@ toc:
       - file: cloud/cloud/ec-enable-logging-and-monitoring.md
       - file: cloud/cloud/ec-faq-getting-started.md
       - file: cloud/cloud/ec-faq-technical.md
-      - file: cloud/cloud/ec-get-help.md
       - file: cloud/cloud/ec-getting-started-trial.md
       - file: cloud/cloud/ec-getting-started.md
       - file: cloud/cloud/ec-maintenance-mode-routing.md
@@ -77,7 +74,6 @@ toc:
       - file: cloud/cloud/ec-manage-appsearch-settings.md
       - file: cloud/cloud/ec-manage-enterprise-search-settings.md
       - file: cloud/cloud/ec-manage-kibana-settings.md
-      - file: cloud/cloud/ec-metrics-memory-pressure.md
       - file: cloud/cloud/ec-monitoring-setup.md
       - file: cloud/cloud/ec-monitoring.md
       - file: cloud/cloud/ec-password-reset.md
@@ -146,12 +142,6 @@ toc:
       - file: kibana/kibana/upgrade-migrations-rolling-back.md
       - file: kibana/kibana/upgrade.md      
       - file: kibana/kibana/xpack-security.md
-  - file: logstash/logstash/index.md
-    children:
-      - file: logstash/logstash/health-report-pipeline-flow-worker-utilization.md
-      - file: logstash/logstash/health-report-pipeline-status.md
-      - file: logstash/logstash/troubleshooting.md
-      - file: logstash/logstash/ts-logstash.md
   - file: observability-docs/observability/index.md
     children:
       - file: observability-docs/observability/index.md

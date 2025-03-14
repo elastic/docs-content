@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/osquery-response-action.html
   - https://www.elastic.co/guide/en/serverless/current/security-osquery-response-action.html
+applies_to:
+  stack: preview
+  serverless:
+    security: preview
 ---
 
 # Add Osquery Response Actions [security-osquery-response-action]

@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/turn-on-risk-engine.html
   - https://www.elastic.co/guide/en/serverless/current/security-turn-on-risk-engine.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Turn on the risk scoring engine
