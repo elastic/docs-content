@@ -31,3 +31,13 @@ The documentation team is working to combine content pulled from the following p
 
 * [/raw-migrated-files/elasticsearch/elasticsearch-reference/monitor-elasticsearch-cluster.md](/raw-migrated-files/elasticsearch/elasticsearch-reference/monitor-elasticsearch-cluster.md)
 * [/raw-migrated-files/elasticsearch/elasticsearch-reference/secure-monitoring.md](/raw-migrated-files/elasticsearch/elasticsearch-reference/secure-monitoring.md)
+
+## Monitoring your cluster or deployment
+
+Two methods: autoops and stack monitoring
+
+### Stack monitoring
+
+## Monitoring your orchestrator
+
+## M

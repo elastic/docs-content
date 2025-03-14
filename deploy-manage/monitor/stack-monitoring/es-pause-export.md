@@ -9,6 +9,9 @@ applies_to:
 
 # Pausing data collection [pause-export]
 
+:::{include} _snippets/legacy-warning.md
+:::
+
 To stop generating {{monitoring}} data in {{es}}, disable data collection:
 
 ```yaml

@@ -9,13 +9,8 @@ applies_to:
 
 # Collectors [es-monitoring-collectors]
 
-::::{important}
-{{agent}} and {{metricbeat}} are the recommended methods for collecting and shipping monitoring data to a monitoring cluster.
-
-If you have previously configured legacy collection methods, you should migrate to using [{{agent}}](collecting-monitoring-data-with-elastic-agent.md) or [{{metricbeat}}](collecting-monitoring-data-with-metricbeat.md) collection. Do not use legacy collection alongside other collection methods.
-
-::::
-
+:::{include} _snippets/legacy-warning.md
+:::
 
 Collectors, as their name implies, collect things. Each collector runs once for each collection interval to obtain data from the public APIs in {{es}} and {{xpack}} that it chooses to monitor. When the data collection is finished, the data is handed in bulk to the [exporters](es-monitoring-exporters.md) to be sent to the monitoring clusters. Regardless of the number of exporters, each collector only runs once per collection interval.
 

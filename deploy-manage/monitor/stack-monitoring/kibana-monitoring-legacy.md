@@ -20,14 +20,14 @@ If you enable the Elastic {{monitor-features}} in your cluster, you can optional
 
 If you have previously configured legacy collection methods, you should migrate to using {{agent}} or {{metricbeat}} collection. Do not use legacy collection alongside other collection methods.
 
-For more information, refer to [Collect monitoring data with {{agent}}](kibana-monitoring-elastic-agent.md) and [Collect monitoring data with {{metricbeat}}](kibana-monitoring-metricbeat.md).
+For more information, refer to [](kibana-monitoring-elastic-agent.md) and [](kibana-monitoring-metricbeat.md).
 
 ::::
 
 
 The following method involves sending the metrics to the production cluster, which ultimately routes them to the monitoring cluster.
 
-To learn about monitoring in general, see [Monitor a cluster](../../monitor.md).
+To learn about monitoring in general, refer to [](/deploy-manage/monitor/stack-monitoring.md).
 
 1. Set the `xpack.monitoring.collection.enabled` setting to `true` on each node in the production cluster. By default, it is is disabled (`false`).
 
