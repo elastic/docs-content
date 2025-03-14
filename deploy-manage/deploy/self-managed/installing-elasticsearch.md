@@ -104,4 +104,4 @@ Don’t use third-party Java agents that attach to the JVM. These agents can red
 
 ## Third-party dependencies [dependencies-versions]
 
-See [Elastic Stack third-party dependencies](https://artifacts.elastic.co/reports/dependencies/dependencies-current.html) for the complete list of dependencies for {{es}}.
+Refer to [{{stack}} third-party dependencies](https://artifacts.elastic.co/reports/dependencies/dependencies-current.html) for a list of the external dependencies you can leverage.

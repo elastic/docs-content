@@ -53,3 +53,7 @@ Running different patch version releases of {{kib}} and {{es}} (e.g. {{kib}} 9.0
 
 :::{include} /deploy-manage/deploy/_snippets/installation-order.md
 :::
+
+## Third-party dependencies
+
+Refer to [{{stack}} third-party dependencies](https://artifacts.elastic.co/reports/dependencies/dependencies-current.html) for a list of the external dependencies you can leverage.
