@@ -15,6 +15,7 @@ Explore the topics in this section to learn how to observe and monitor software 
 
 |     |     |
 | --- | --- |
+| [LLM Observability](../../solutions/observability/apps/llm-observability.md) | Monitor LLM-powered applications to keep them reliable, efficient, cost-effective, and easy to troubleshoot.|
 | [Application performance monitoring (APM)](../../solutions/observability/apps/application-performance-monitoring-apm.md) | Monitor software services and applications in real time, by collecting detailed performance information on response time for incoming requests, database queries, calls to caches, external HTTP requests, and more. |
 | [Synthetic monitoring](../../solutions/observability/apps/synthetic-monitoring.md) | Monitor the availability of network endpoints and services. |
 | [Real user monitoring](../../solutions/observability/apps/real-user-monitoring-user-experience.md) | Quantify and analyze the perceived performance of your web application using real-world user experiences. |
