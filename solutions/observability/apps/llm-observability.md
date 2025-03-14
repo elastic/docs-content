@@ -41,25 +41,34 @@ Check these instructions on how to setup and collect OpenTelemetry data for your
 For an SRE team optimizing a customer support system powered by Azure OpenAI, Elastic’s [Azure OpenAI integration](https://www.elastic.co/guide/en/integrations/current/azure_openai.html) provides critical insights. They can quickly identify which model variants experience higher latency or error rates, enabling smarter decisions on model deployment or even switching providers based on real-time performance metrics.
 
 :::{image} ../../../images/llm-performance-reliability.png
-:alt:  LLM Performance and Reliability
+:alt:  LLM performance and reliability
 :screenshot:
 :::
-
 
 ### Troubleshoot OpenAI-powered applications
 
 Consider an enterprise utilizing an OpenAI model for real-time user interactions. Encountering unexplained delays, an SRE can use OpenAI tracing to dissect the transaction pathway, identify if one specific API call or model invocation is the bottleneck, and monitor a request to see the exact prompt and response between the user and the LLM. 
 
-[image]
+:::{image} ../../../images/llm-openai-applications.png
+:alt:  Troubleshoot OpenAI-powered applications
+:screenshot:
+:::
 
 ### Addressing cost and usage concerns
 
 For cost-sensitive deployments, being acutely aware of which LLM configurations are more cost-effective is crucial. Elastic’s dashboards, pre-configured to display model usage patterns, help mitigate unnecessary spending effectively. You can use out-of-the-box dashboards for Azure OpenAI, OpenAI, Amazon Bedrock, and Google VertexAI models.
 
-[image]
+:::{image} ../../../images/llm-costs-usage-concerns.png
+:alt:  LLM cost and usage concerns
+:screenshot:
+:::
 
 ### Understand compliance with guardrails in Amazon Bedrock
 
 With the Elastic Amazon Bedrock integration for Guardrails, SREs can swiftly address security concerns, like verifying if certain user interactions prompt policy violations. Elastic's observability logs clarify whether guardrails rightly blocked potentially harmful responses, bolstering compliance assurance.
 
-[image]
+:::{image} ../../../images/llm-amazon-bedrock-guardrails.png
+:alt:  Elastic Amazon Bedrock integration for Guardrails
+:screenshot:
+:::
+
