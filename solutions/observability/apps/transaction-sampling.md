@@ -141,6 +141,17 @@ In APM Server implementation, the events are stored temporarily on disk instead 
 
 It is recommended to use fast disks, for example, NVMe SSDs, when tail-based sampling is enabled, as disk throughput and IO will be the performance bottleneck to tail-based sampling, and APM event ingestion as a whole. Disk writes are proportional to event ingest rate, and disk reads are proportional to event ingest rate and sampling rate.
 
+To demonstrate the performance overhead and requirements, here are some numbers from APM Server 9.0 under full load, trace only APM events, assuming no backpressure from Elasticsearch, and 10% sample rate in tail sampling policy. They are for reference only, and may vary depending on factors like average event size, average number of events per distributed trace.
+
+| APM Server instance size            | TBS enabled, Disk                                           | Event ingestion rate (throughput from APM agent to APM Server) in events/s | Memory usage (max Resident Set Size) in GB | Disk usage in GB |
+|:------------------------------------|:------------------------------------------------------------|----------------------------------------------------------------------------|--------------------------------------------|------------------|
+| AWS EC2 c6i.2xlarge or c6id.2xlarge | TBS disabled                                                | 47220                                                                      | 0.98                                       | 0                |
+| ..                                  | TBS enabled, gp3 volume with the baseline IOPS of 3000 IOPS | 21310                                                                      | 1.41                                       | 13.1             |
+| ..                                  | TBS enabled, local NVMe SSD from c6id instance              | 21210                                                                      | 1.34                                       | 12.9             |
+| AWS EC2 c6i.4xlarge or c6id.4xlarge | TBS disabled                                                | 142200                                                                     | 1.12                                       | 0                |
+| ..                                  | TBS enabled, gp3 volume with the baseline IOPS of 3000 IOPS | 32410                                                                      | 1.71                                       | 19.4             |
+| ..                                  | TBS enabled, local NVMe SSD from c6id instance              | 47370                                                                      | 1.73                                       | 23.6             |
+
 ## Sampled data and visualizations [_sampled_data_and_visualizations]
 
 A sampled trace retains all data associated with it. A non-sampled trace drops all [span](../../../solutions/observability/apps/spans.md) and [transaction](../../../solutions/observability/apps/transactions.md) data1. Regardless of the sampling decision, all traces retain [error](../../../solutions/observability/apps/errors.md) data.
