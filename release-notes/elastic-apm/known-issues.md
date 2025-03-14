@@ -6,7 +6,7 @@ navigation_title: "Elastic APM"
 ---
 
 # Elastic APM known issues [elastic-apm-known-issues]
-Known issues are significant defects or limitations that may impact your implementation. These issues are actively being worked on and will be addressed in a future release. Reviewing known issues can help you make informed decisions, such as upgrading to a new version.
+Known issues are significant defects or limitations that may impact your implementation. These issues are actively being worked on and will be addressed in a future release. Review the Elastic APM known issues to help you make informed decisions, such as upgrading to a new version.
 
 % Use the following template to add entries to this page.
 

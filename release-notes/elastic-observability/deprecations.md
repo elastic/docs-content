@@ -3,7 +3,9 @@ navigation_title: "Elastic Observability"
 ---
 
 # Elastic {{observability}} deprecations [elastic-observability-deprecations]
-Review the deprecated functionality for your Elastic {{observability}} version. While deprecations have no immediate impact, we strongly encourage you update your implementation after you upgrade.
+Over time, certain Elastic functionality becomes outdated and is replaced or removed. To help with the transition, Elastic deprecates functionality for a period before removal, giving you time to update your applications. 
+
+Review the deprecated functionality for Elastic {{observability}}. While deprecations have no immediate impact, we strongly encourage you update your implementation after you upgrade.
 
 To learn how to upgrade, check out [Upgrade](/deploy-manage/upgrade.md).
 
@@ -18,7 +20,7 @@ To learn how to upgrade, check out [Upgrade](/deploy-manage/upgrade.md).
 % ::::
 
 % ## 9.0.0 [elastic-observability-900-deprecations]
-% **Release date:** April 1, 2025
+% **Release date:** April 2, 2025
 
 % ::::{dropdown} Deprecation title
 % Description of the deprecation.

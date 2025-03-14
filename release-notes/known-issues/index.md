@@ -1,2 +1,0 @@
-# Known issues [elastic-known-issues]
-Known issues are significant problems or defects that we are actively working on. Review known issues when making important decisions, such as upgrading to a new version.

@@ -1,32 +1,27 @@
 toc:
   - file: index.md
-  - file: known-issues/index.md
+  - file: elastic-observability/release-notes.md
     children:
-      - file: known-issues/search-ui.md
-      - file: known-issues/elastic-observability.md
-        children:
-          - file: known-issues/elastic-apm.md
-      - file: known-issues/elastic-security.md
-      - file: known-issues/fleet-elastic-agent.md
-      - file: known-issues/elastic-cloud-serverless.md
-  - file: breaking-changes/index.md
+      - file: elastic-observability/known-issues.md
+      - file: elastic-observability/breaking-changes.md
+      - file: elastic-observability/deprecations.md
+  - file: elastic-apm/release-notes.md
     children:
-      - file: breaking-changes/elastic-observability.md
-        children:
-          - file: breaking-changes/elastic-apm.md
-      - file: breaking-changes/elastic-security.md
-      - file: breaking-changes/fleet-elastic-agent.md
-  - file: deprecations/index.md
+      - file: elastic-apm/known-issues.md
+      - file: elastic-apm/breaking-changes.md
+      - file: elastic-apm/deprecations.md
+  - file: elastic-security/release-notes.md
     children:
-      - file: deprecations/elastic-observability.md
-        children:
-          - file: deprecations/elastic-apm.md
-      - file: deprecations/elastic-security.md
-      - file: deprecations/fleet-elastic-agent.md
-      - file: deprecations/elastic-cloud-serverless.md
-  - file: elastic-observability.md
+      - file: elastic-security/known-issues.md
+      - file: elastic-security/breaking-changes.md
+      - file: elastic-security/deprecations.md
+  - file: elastic-cloud-serverless/changelog.md
     children:
-      - file: elastic-apm.md
-  - file: elastic-security.md
-  - file: fleet-elastic-agent.md
-  - file: elastic-cloud-serverless.md
+      - file: elastic-cloud-serverless/known-issues.md
+      - file: elastic-cloud-serverless/deprecations.md
+  - file: fleet-elastic-agent/release-notes.md
+    children:
+      - file: fleet-elastic-agent/known-issues.md
+      - file: fleet-elastic-agent/breaking-changes.md
+      - file: fleet-elastic-agent/deprecations.md
+  - file: search-ui-known-issues.md

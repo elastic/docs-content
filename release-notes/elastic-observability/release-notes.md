@@ -19,8 +19,8 @@ To check for security updates, go to [Security announcements for the Elastic sta
 % *
 
 ## 9.0.0 [elastic-observability-900-release-notes]
-**Release date:** April 1, 2025
-
-### Features and enhancements [elastic-observability-900-features-enhancements]
+**Release date:** April 2, 2025
 
 ### Fixes [elastic-observability-900-fixes]
+* Fixes chat on the Alerts page ({{kibana-pull}}197126[#197126])
+* Fixes an error that could prevent the Observability Infrastructure Inventory view from loading after an upgrade due to missing versioning on inventory_view_saved_object ({{kibana-pull}}207007[#207007])
