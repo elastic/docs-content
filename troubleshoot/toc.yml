@@ -134,7 +134,6 @@ toc:
           - file: observability/apm-agent-python/apm-python-agent.md
           - file: observability/apm-agent-ruby/apm-ruby-agent.md
           - file: observability/apm-agent-rum-js/apm-real-user-monitoring-javascript-agent.md
-          - file: observability/apm/known-issues.md
       - file: observability/amazon-data-firehose.md
       - file: observability/troubleshoot-your-universal-profiling-agent-deployment.md
         children:

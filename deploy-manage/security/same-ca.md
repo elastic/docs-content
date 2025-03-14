@@ -1,4 +1,6 @@
 ---
+applies_to:
+  self: ga
 navigation_title: "With the same CA"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/update-node-certs-same.html

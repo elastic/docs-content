@@ -109,7 +109,7 @@ A plan change will run on your deployment. When it finishes, audit logs will be 
 
 To enable audit logging in an ECK-managed cluster, add `xpack.security.audit.enabled: true` to the `config` section of each {{es}} `nodeSet` and to the `config` section of the {{kib}} object's specification. 
 
-The following example shows this configuration, along with  together with logs and metrics delivery towards a remote cluster:
+The following example shows this configuration, along with logs and metrics delivery towards a remote cluster:
 
 ```yaml
 apiVersion: elasticsearch.k8s.elastic.co/v1
