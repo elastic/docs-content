@@ -1,13 +1,69 @@
-# Prepare to upgrade
-
-% What needs to be done: Write from scratch
-
-% Scope notes: Prerequisites and requirements
+# Prepare to upgrade [prepare-to-upgrade]
 
 ⚠️ **This page is a work in progress.** ⚠️
 
+Before you upgrade Elastic, it's important to take some preparation steps. These steps vary based on your current version. 
 
-## Anomaly detection results migration
+
+## Prepare to upgrade from 8.x [prepare-upgrade-from-8.x]
+
+To upgrade to 9.0 from 8.17 or earlier, you must first upgrade to the latest patch version of 8.18. This enables you to use the [Upgrade Assistant](prepare-to-upgrade/upgrade-assistant.md) to identify and resolve issues, reindex indices created before 8.0, and then perform a rolling upgrade. Upgrading to 8.18 before upgrading to 9.x is required even if you opt to do a full-cluster restart of your {{es}} cluster. Alternatively, you can create a new 9.0 deployment and reindex from remote. For more information, refer to Reindex to upgrade.
+
+:::{note}
+{{beats}} and {{ls}} 8.18 are compatible with {{es}} 9.x to give you flexibility in scheduling the upgrade. {{es}} 8.x clients are also compatible with 9.x and use [REST API compatibility](elasticsearch://reference/elasticsearch/rest-apis/compatibility.md) by default to help ensure compatibility between 8.x clients and the 9.x {{es}} server. 
+:::
+
+With the exception of serverless, the following recommendations are best practices for all deployment methods.
+
+1. Run the [Upgrade Assistant](prepare-to-upgrade/upgrade-assistant.md) to prepare for your upgrade from 8.18 to 9.0. The Upgrade Assistant identifies deprecated settings, and guides you through resolving issues, and reindexing data streams and indices created before 8.0. 
+
+    :::{note}
+    Please be aware that depending on your setup, if your indices change due to reindexing, you might need to change alerts, transforms or other code that was targeting the old index.
+    :::
+
+2. Ensure you have a current [snapshot](/deploy-manage/tools/snapshot-and-restore/create-snapshots.md) before making configuration changes or reindexing. 
+
+    :::{tip}
+    Tip: From version 8.3, snapshots are generally available as simple archives. Use the [archive functionality](/deploy-manage/upgrade/deployment-or-cluster/reading-indices-from-older-elasticsearch-versions.md) to search snapshots as old as version 5.0 without the need of an old {{es}} cluster. This ensures that data you store in {{es}} doesn’t have an end of life and is still accessible when you upgrade, without requiring a reindex process.
+    :::
+
+    You must resolve all critical issues before proceeding with the upgrade. If you make any additional changes, take a new snapshot to back up your data. 
+
+3. Review the deprecation logs from the Upgrade Assistant to determine if your applications are using features that are not supported or behave differently in 9.x. 
+
+4. Major version upgrades can include breaking changes that require you to take additional steps to ensure that your applications behave as expected after the upgrade. Review all breaking changes for each product you use to review more information about changes that could affect your application. Make sure you test against the new version before upgrading existing deployments.
+
+5. Make the recommended changes to ensure that your clients continue to operate as expected after the upgrade. 
+
+    :::{note}
+    As a temporary solution, you can submit requests to 9.x using the 8.x syntax with the REST API compatibility mode. While this enables you to submit requests that use the old syntax, it does not guarantee the same behavior. REST API compatibility should be a bridge to smooth out the upgrade process, not a long term strategy. For more information about how to best leverage REST API compatibility during an upgrade, refer to [REST API compatibility](elasticsearch://reference/elasticsearch/rest-apis/compatibility.md). 
+    :::
+
+6. If you use any {{es}} plugins, make sure there is a version of each plugin that is compatible with the {{es}} version you're upgrading to.
+
+7. We recommend creating a 9.0 test deployment and test the upgrade in an isolated environment before upgrading your production deployment. Ensure that both your test and production environments have the same settings.
+
+    :::{important}
+    You cannot downgrade {{es}} nodes after upgrading. If you cannot complete the upgrade process, you will need to [restore from the snapshot](/deploy-manage/tools/snapshot-and-restore/restore-snapshot). 
+    :::
+
+8. If you use a separate [monitoring cluster](/deploy-manage/monitor/stack-monitoring/elasticsearch-monitoring-self-managed.md), you should upgrade the monitoring cluster before the production cluster. In general, the monitoring cluster and the clusters being monitored should be running the same version of the {{stack}}. A monitoring cluster cannot monitor production clusters running newer versions of the {{stack}}. If necessary, the monitoring cluster can monitor production clusters running the latest release of the previous major version.
+
+    :::{note}
+    If you use {{ccs}}, note that 9.0+ can only search remote clusters running the  previous minor version, the same version, or a newer minor version in the same major version. For more information, refer to [Cross-cluster search](../../solutions/search/cross-cluster-search.md).
+
+    If you use {{ccr}}, a cluster that contains follower indices must run the same or newer (compatible) version as the remote cluster. For more information and to view the version compatibility matrix, refer to [Cross cluster replication](/deploy-manage/tools/cross-cluster-replication.md). You can view your remote clusters from **Stack Management > Remote Clusters**.
+    ::::
+
+9. If you have any anomaly detection result indices `.ml-anomalies-*` that were created in {{es}} 7.x, they must be reindexed, marked as read-only, or deleted before upgrading to 9.x. For instructions on how to do this, refer to [Anomaly detection results migration](#anomaly-detection-results-migration-anomaly-migration). 
+
+10. If you have any transform destination indices that were created in {{es}} 7.x, they must be reset, reindexed, or deleted before upgrading to 9.x. For instructions on how to do this, refer to [Transform destination indices migration](#transform-destination-indices-migration-transform-migration). 
+
+
+## Reindex to upgrade
+
+
+## Anomaly detection results migration [anomaly-migration]
 
 The {{anomaly-detect}} result indices `.ml-anomalies-*` created in {{es}} 7.x must be either reindexed, marked read-only, or deleted before upgrading to 9.x.
 
@@ -256,3 +312,5 @@ GET .ml-anomalies-custom-example/_search
 
 The jobs can be deleted in the UI. After the last job is deleted, the index will be deleted as well.
 :::
+
+## Transform destination indices migration [transform-migration]
