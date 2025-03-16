@@ -1,7 +1,5 @@
 # Upgrade
 
-⚠️ **This page is a work in progress.** ⚠️
-
 Upgrading to the latest version provides you access to Elastic latest features, enhancements, performance improvements, and bug fixes, many of which enable you to save your organization money, respond faster to potential threats, and improve the tools you use to investigate and analyze your data. As new versions are released, older versions reach their end of life at a regular cadence, so it’s important to ensure that your deployment is fully maintained and supported. For more information, refer to Elastic’s [Product End of Life Dates](https://www.elastic.co/support/eol).
 
 :::{note}
@@ -16,7 +14,7 @@ There are a number of things you need to plan for before performing the actual u
 * Consider opening a [support case](https://support.elastic.co/) with Elastic to alert our Elastic Support team of your system change. If you need additional assistance, [Elastic Consulting Services](https://www.elastic.co/consulting) provides the technical expertise and step-by-step approach for upgrading your Elastic deployment.
 * Schedule a system maintenance window within your organization.
 
-**Check system requirements** 
+## Check system requirements [check-system-requirements] 
 
 Ensure the version you’re upgrading to for {{es}}, {{kib}}, and any ingest components supports your current operating system. Refer to the [Product and Operating System support matrix](https://www.elastic.co/support/matrix#matrix_os). 
 
@@ -26,7 +24,7 @@ By default, {{es}} is built using Java and includes a bundled version of [OpenJD
 
 If you’re running {{es}} in FIPS 140-2 mode, {{es}} 9.0 has been tested with [Bouncy Castle's](https://www.bouncycastle.org/java.html) FIPS implementation and is the recommended Java security provider when running {{es}}. 
 
-**Conduct a component inventory**
+## Conduct a component inventory
 
 It is very important to map all the components that are being used on the {{stack}}. When you upgrade your deployment, you also may need to upgrade all the other components. You should record if each component is used, and if it is, also record the current version. While not comprehensive, here’s a list of components you should check: 
 
@@ -51,7 +49,7 @@ It is very important to map all the components that are being used on the {{stac
 When you do your inventory, you can [enable audit logging](/deploy-manage/monitor/logging-configuration/enabling-audit-logs.md) to evaluate resources accessing your deployment.
 :::
 
-**Test your development environment**
+## Test your development environment
 
 We highly recommend testing and upgrading in your development environment before your production environment. Therefore, it is crucial to ensure that both your development and production environments have the same settings. Consider checking the following components beforehand:
 

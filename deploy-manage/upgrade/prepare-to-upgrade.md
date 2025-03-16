@@ -1,13 +1,13 @@
 # Prepare to upgrade [prepare-to-upgrade]
 
-⚠️ **This page is a work in progress.** ⚠️
-
 Before you upgrade Elastic, it's important to take some preparation steps. These steps vary based on your current version. 
 
 
 ## Prepare to upgrade from 8.x [prepare-upgrade-from-8.x]
 
-To upgrade to 9.0 from 8.17 or earlier, you must first upgrade to the latest patch version of 8.18. This enables you to use the [Upgrade Assistant](prepare-to-upgrade/upgrade-assistant.md) to identify and resolve issues, reindex indices created before 8.0, and then perform a rolling upgrade. Upgrading to 8.18 before upgrading to 9.x is required even if you opt to do a full-cluster restart of your {{es}} cluster. Alternatively, you can create a new 9.0 deployment and reindex from remote. For more information, refer to Reindex to upgrade.
+To upgrade to 9.0 from 8.17 or earlier, you must first upgrade to the latest patch version of 8.18. This enables you to use the [Upgrade Assistant](prepare-to-upgrade/upgrade-assistant.md) to identify and resolve issues, reindex indices created before 8.0, and then perform a rolling upgrade. Upgrading to 8.18 before upgrading to 9.x is required even if you opt to do a full-cluster restart of your {{es}} cluster. If you're running a pre-8.x version, you might need to perform multiple upgrades or a full-cluster restart to get to 8.18 to prepare to upgrade to 9.0.
+
+Alternatively, you can create a new 9.0 deployment and reindex from remote. For more information, refer to [Reindex to upgrade](#reindex-to-upgrade-reindex-to-upgrade).
 
 :::{note}
 {{beats}} and {{ls}} 8.18 are compatible with {{es}} 9.x to give you flexibility in scheduling the upgrade. {{es}} 8.x clients are also compatible with 9.x and use [REST API compatibility](elasticsearch://reference/elasticsearch/rest-apis/compatibility.md) by default to help ensure compatibility between 8.x clients and the 9.x {{es}} server. 
@@ -18,7 +18,7 @@ With the exception of serverless, the following recommendations are best practic
 1. Run the [Upgrade Assistant](prepare-to-upgrade/upgrade-assistant.md) to prepare for your upgrade from 8.18 to 9.0. The Upgrade Assistant identifies deprecated settings, and guides you through resolving issues, and reindexing data streams and indices created before 8.0. 
 
     :::{note}
-    Please be aware that depending on your setup, if your indices change due to reindexing, you might need to change alerts, transforms or other code that was targeting the old index.
+    Please be aware that depending on your setup, if your indices change due to reindexing, you might need to change alerts, transforms, or other code that was targeting the old index.
     :::
 
 2. Ensure you have a current [snapshot](/deploy-manage/tools/snapshot-and-restore/create-snapshots.md) before making configuration changes or reindexing. 
@@ -55,12 +55,20 @@ With the exception of serverless, the following recommendations are best practic
     If you use {{ccr}}, a cluster that contains follower indices must run the same or newer (compatible) version as the remote cluster. For more information and to view the version compatibility matrix, refer to [Cross cluster replication](/deploy-manage/tools/cross-cluster-replication.md). You can view your remote clusters from **Stack Management > Remote Clusters**.
     ::::
 
-9. If you have any anomaly detection result indices `.ml-anomalies-*` that were created in {{es}} 7.x, they must be reindexed, marked as read-only, or deleted before upgrading to 9.x. For instructions on how to do this, refer to [Anomaly detection results migration](#anomaly-detection-results-migration-anomaly-migration). 
-
-10. If you have any transform destination indices that were created in {{es}} 7.x, they must be reset, reindexed, or deleted before upgrading to 9.x. For instructions on how to do this, refer to [Transform destination indices migration](#transform-destination-indices-migration-transform-migration). 
+9. If you have any anomaly detection result indices `.ml-anomalies-*` that were created in {{es}} 7.x, they must be reindexed, marked as read-only, or deleted before upgrading to 9.x. For instructions on how to do this, refer to [Anomaly detection results migration](#anomaly-migration). 
 
 
-## Reindex to upgrade
+10. If you have any transform destination indices that were created in {{es}} 7.x, they must be reset, reindexed, or deleted before upgrading to 9.x. For instructions on how to do this, refer to [Transform destination indices migration](#transform-migration). 
+
+
+## Reindex to upgrade [reindex-to-upgrade]
+
+To create a new 9.0 deployment and reindex from remote:
+
+1. Provision an additional deployment running 9.0.
+2. Reindex your data into the new {{es}} cluster using the [reindex documents API](https://www.elastic.co/docs/api/doc/elasticsearch/v8/operation/operation-reindex) and temporarily send new index requests to both clusters.
+3. Verify that the new cluster performs as expected, fix any problems, and then permanently swap in the new cluster.
+4. Delete the old deployment. On {ecloud}, you are billed only for the time that the new deployment runs in parallel with your old deployment. Usage is billed on an hourly basis.
 
 
 ## Anomaly detection results migration [anomaly-migration]
