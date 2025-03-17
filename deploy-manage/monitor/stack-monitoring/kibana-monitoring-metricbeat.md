@@ -151,5 +151,5 @@ To learn about monitoring in general, refer to [](/deploy-manage/monitor/stack-m
     For more information about these configuration options, see [Configure the {{es}} output](asciidocalypse://docs/beats/docs/reference/metricbeat/elasticsearch-output.md).
 
 9. [Start {{metricbeat}}](asciidocalypse://docs/beats/docs/reference/metricbeat/metricbeat-starting.md).
-10. [View the monitoring data in {{kib}}](/deploy-manage/monitor/monitoring-data.md).
+10. [View the monitoring data in {{kib}}](/deploy-manage/monitor/stack-monitoring/kibana-monitoring-data.md).
 

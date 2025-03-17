@@ -53,4 +53,4 @@ To collect {{kib}} monitoring data, add a {{kib}} integration to an {{agent}} an
     2. Follow the steps in the **Add agent** flyout to download, install, and enroll the {{agent}}. Make sure you choose the agent policy you created earlier.
 
 9. Wait a minute or two until incoming data is confirmed.
-10. [View the monitoring data in {{kib}}](/deploy-manage/monitor/monitoring-data.md).
+10. [View the monitoring data in {{kib}}](/deploy-manage/monitor/stack-monitoring/kibana-monitoring-data.md).
