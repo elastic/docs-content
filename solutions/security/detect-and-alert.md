@@ -85,43 +85,9 @@ In addition, the following support restrictions are in place:
 
 ## Detections configuration and index privilege prerequisites [detections-permissions]
 
-[*Detections requirements*](/solutions/security/detect-and-alert/detections-requirements.md) provides detailed information on all the permissions required to initiate and use the Detections feature.
+[Detections requirements](/solutions/security/detect-and-alert/detections-requirements.md) provides detailed information on all the permissions required to initiate and use the Detections feature.
 
-
-## Malware prevention [malware-prevention]
-
-Malware, short for malicious software, is any software program designed to damage or execute unauthorized actions on a computer system. Examples of malware include viruses, worms, Trojan horses, adware, scareware, and spyware. Some malware, such as viruses, can severely damage a computer’s hard drive by deleting files or directory information. Other malware, such as spyware, can obtain user data without their knowledge.
-
-Malware may be stealthy and appear as legitimate executable code, scripts, active content, and other software. It is also often embedded in non-malicious files, non-suspicious websites, and standard programs — sometimes making the root source difficult to identify. If infected and not resolved promptly, malware can cause irreparable damage to a computer network.
-
-For information on how to enable malware protection on your host, see [Malware Protection](/solutions/security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md#malware-protection).
-
-
-### Machine learning model [machine-learning-model]
-
-To determine if a file is malicious or benign, a machine learning model looks for static attributes of files (without executing the file) that include file structure, layout, and content. This includes information such as file header data, imports, exports, section names, and file size. These attributes are extracted from millions of benign and malicious file samples, which then are passed to a machine-learning algorithm that distinguishes a benign file from a malicious one. The machine learning model is updated as new data is procured and analyzed.
-
-
-### Threshold [_threshold]
-
-A malware threshold determines the action the agent should take if malware is detected. The Elastic Agent uses a recommended threshold level that generates a balanced number of alerts with a low probability of undetected malware. This threshold also minimizes the number of false positive alerts.
-
-
-## Ransomware prevention [ransomware-prevention]
-
-Ransomware is computer malware that installs discreetly on a user’s computer and encrypts data until a specified amount of money (ransom) is paid. Ransomware is usually similar to other malware in its delivery and execution, infecting systems through spear-phishing or drive-by downloads. If not resolved immediately, ransomware can cause irreparable damage to an entire computer network.
-
-Behavioral ransomware prevention on the Elastic Endpoint detects and stops ransomware attacks on Windows systems by analyzing data from low-level system processes, and is effective across an array of widespread ransomware families — including those targeting the system’s master boot record.
-
-For information on how to enable ransomware protection on your host, see [Ransomware protection](/solutions/security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md#ransomware-protection).
-
-::::{note}
-Ransomware prevention is a paid feature and is enabled by default if you have a [Platinum or Enterprise license](https://www.elastic.co/pricing).
-::::
-
-
-
-### Resolve UI error messages [_resolve_ui_error_messages]
+## Resolve UI error messages [_resolve_ui_error_messages]
 
 Depending on your privileges and whether detection system indices have already been created for the {{kib}} space, you might get one of these error messages when you open the **Alerts** or **Rules** page:
 
