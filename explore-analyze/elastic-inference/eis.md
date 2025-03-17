@@ -13,17 +13,17 @@ Instead, you can use {{ml}} models for ingest, search and chat independently of 
 
 % TO DO: Link to the EIS inference endpoint reference docs when it's added to the OpenAPI spec. (Comming soon) %
 
-## Available task types
-
-EIS offers the following {{infer}} task types to perform:
-
-* `chat_completion`
-
 ## AI features powered by EIS [ai-features-powered-by-eis]
 
 Your Elastic deployment or project comes with a default `Elastic LLM` connector. This connector is used in the AI Assistant, Attack Discovery, Automatic Import and Search Playground.
 
 % TO DO: Link to the EIS inference endpoint reference docs when it's added to the OpenAPI spec. (Comming soon) %
+
+## Available task types
+
+EIS offers the following {{infer}} task types to perform:
+
+* `chat_completion`
 
 ## Default EIS endpoints [default-eis-inference-endpoints]
 
@@ -39,16 +39,7 @@ Your {{es}} deployment includes a preconfigured EIS endpoint, making it easier t
 
 % TO DO: Link to the AI assistant documentation in the different solutions and possibly connector docs. %
 
-## Regions [eis-regions]
-
-All EIS requests are handled by one of these AWS regions:
-
-* `us-east-1`
-* `us-west-2`
-
-For more details on AWS regions, refer to the [AWS Global Infrastructure](https://aws.amazon.com/about-aws/global-infrastructure/regions_az/).
-
-## Examples
+### Examples
 
 The following example demonstrates how to perform a `chat_completion` task through EIS by using the `.rainbow-sprinkles-elastic` default {{infer}} endpoint.
 
@@ -69,16 +60,43 @@ POST /_inference/chat_completion/.rainbow-sprinkles-elastic/_stream
 The request returns the following response as a stream:
 
 ```json
-(...)
-{
-  "role" : "assistant",
-  "content": "Yes",
+event: message
+data: {
+  "id" : "unified-45ecde2b-6293-4fd6-a195-4252de76ee63",
+  "choices" : [
+    {
+      "delta" : {
+        "role" : "assistant"
+      },
+      "index" : 0
+    }
+  ],
   "model" : "rainbow-sprinkles",
-  "usage" : {
-    "completion_tokens" : 4,
-    "prompt_tokens" : 13,
-    "total_tokens" : 17
-  }
+  "object" : "chat.completion.chunk"
 }
-(...)
+
+
+event: message
+data: {
+  "id" : "unified-45ecde2b-6293-4fd6-a195-4252de76ee63",
+  "choices" : [
+    {
+      "delta" : {
+        "content" : "Yes"
+      },
+      "index" : 0
+    }
+  ],
+  "model" : "rainbow-sprinkles",
+  "object" : "chat.completion.chunk"
+}
 ```
+
+## Regions [eis-regions]
+
+All EIS requests are handled by one of these AWS regions:
+
+* `us-east-1`
+* `us-west-2`
+
+For more details on AWS regions, refer to the [AWS Global Infrastructure](https://aws.amazon.com/about-aws/global-infrastructure/regions_az/).
