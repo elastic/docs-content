@@ -103,20 +103,20 @@ POST _tasks/<task_id>/_cancel
 
 After the data set has been enriched with the embeddings, you can query the data using semantic search. Provide the `semantic_text` field name and the query text in a `semantic` query type. The {{infer}} endpoint used to generate the embeddings for the `semantic_text` field will be used to process the query text.
 
-```esql
-POST /_query?format=txt
+```console
+GET semantic-embeddings/_search
 {
-  "query": """
-    FROM semantic-embeddings  search.
-    | WHERE content: "How to avoid muscle soreness while running?" <1><2>
-    | LIMIT 1000
-  """
+  "query": {
+    "semantic": {
+      "field": "content", <1>
+      "query": "How to avoid muscle soreness while running?" <2>
+    }
+  }
 }
 ```
-1. `content` = The name of the `semantic_text` field that contains the embeddings.
-2.  `:` The name of the `semantic_text` field that contains the embeddings.
 
-# The query text.
+1. The `semantic_text` field on which you want to perform the search.
+2. The query text.
 
 
 As a result, you receive the top 10 documents that are closest in meaning to the query from the `semantic-embedding` index.
