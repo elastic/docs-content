@@ -3,7 +3,7 @@ navigation_title: "Elastic APM"
 ---
 
 # Elastic APM breaking changes [elastic-apm-breaking-changes]
-Before you upgrade, carefully review the Elastic APM breaking changes and take the necessary steps to mitigate any issues. 
+Breaking changes can impact your Elastic applications, potentially disrupting normal operations. Before you upgrade, carefully review the Elastic APM breaking changes and take the necessary steps to mitigate any issues. 
 
 To learn how to upgrade, check [Upgrade](/deploy-manage/upgrade.md).
 
@@ -18,7 +18,7 @@ To learn how to upgrade, check [Upgrade](/deploy-manage/upgrade.md).
 % ::::
 
 ## 9.0.0 [elastic-apm-9-0-0-breaking-changes]
-**Release date:** April 1, 2025
+**Release date:** April 2, 2025
 
 % ::::{dropdown} Title of breaking change 
 % Description of the breaking change.
