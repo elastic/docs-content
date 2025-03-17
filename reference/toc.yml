@@ -257,10 +257,10 @@ toc:
           - file: data-analysis/machine-learning/ml-time-functions.md
       - file: data-analysis/observability/index.md
         children:
-          - file: data-analysis/observability/observability-host-metrics-serverless.md
-          - file: data-analysis/observability/observability-container-metrics-serverless.md
-          - file: data-analysis/observability/observability-kubernetes-pod-metrics-serverless.md
-          - file: data-analysis/observability/observability-aws-metrics-serverless.md
+          - file: data-analysis/observability/observability-host-metrics.md
+          - file: data-analysis/observability/observability-container-metrics.md
+          - file: data-analysis/observability/observability-kubernetes-pod-metrics.md
+          - file: data-analysis/observability/observability-aws-metrics.md
       - file: data-analysis/kibana/canvas-functions.md
         children:
           - file: data-analysis/kibana/tinymath-functions.md
