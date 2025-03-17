@@ -115,7 +115,7 @@ In this step, you’ll create a Python script that generates logs in JSON format
 
     Having your logs written in a JSON format with ECS fields allows for easy parsing and analysis, and for standardization with other applications. A standard, easily parsible format becomes increasingly important as the volume and type of data captured in your logs expands over time.
 
-    Together with the standard fields included for each log entry is an extra *http.request.body.content* field. This extra field is there just to give you some additional, interesting data to work with, and also to demonstrate how you can add optional fields to your log data. Check the [ECS Field Reference](asciidocalypse://docs/ecs/docs/reference/ecs-field-reference.md) for the full list of available fields.
+    Together with the standard fields included for each log entry is an extra *http.request.body.content* field. This extra field is there just to give you some additional, interesting data to work with, and also to demonstrate how you can add optional fields to your log data. Check the [ECS Field Reference](ecs://reference/ecs-field-reference.md) for the full list of available fields.
 
 2. Let’s give the Python script a test run. Open a terminal instance in the location where you saved *elvis.py* and run the following:
 
