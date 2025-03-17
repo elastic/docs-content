@@ -2,6 +2,8 @@
 navigation_title: "Azure"
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/monitor-azure-web-services.html
+applies_to:
+  stack:
 ---
 
 
