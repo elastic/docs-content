@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/value-lists-exceptions.html
   - https://www.elastic.co/guide/en/serverless/current/security-value-lists-exceptions.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Create and manage value lists [value-lists-exceptions]

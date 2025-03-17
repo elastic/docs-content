@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/ml-requirements.html
   - https://www.elastic.co/guide/en/serverless/current/security-ml-requirements.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Machine learning job and rule requirements

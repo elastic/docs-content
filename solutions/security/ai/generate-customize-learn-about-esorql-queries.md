@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/esql-queries-assistant.html
   - https://www.elastic.co/guide/en/serverless/current/security-ai-assistant-esql-queries.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Generate, customize, and learn about ES|QL queries

@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/ai-assistant-knowledge-base.html
   - https://www.elastic.co/guide/en/serverless/current/ai-assistant-knowledge-base.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # AI Assistant Knowledge Base

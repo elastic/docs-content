@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/session-view.html
   - https://www.elastic.co/guide/en/serverless/current/security-session-view.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Session View [security-session-view]

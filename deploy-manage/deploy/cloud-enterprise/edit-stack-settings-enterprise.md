@@ -1,3 +1,12 @@
+---
+navigation_title: Enterprise search user settings
+applies_to:
+  deployment:
+    ece: all
+mapped_urls:
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-manage-enterprise-search-settings.html
+---
+
 # Add Enterprise Search user settings [ece-manage-enterprise-search-settings]
 
 :::{important}
@@ -6,7 +15,7 @@ Enterprise Search is not available in {{stack}} 9.0+.
 
 Change how Enterprise Search runs by providing your own user settings. User settings are appended to the `ent-search.yml` configuration file for your instance and provide custom configuration options.
 
-Refer to the [Configuration settings reference](https://www.elastic.co/guide/en/enterprise-search/current/configuration.html#configuration-file) in the Enterprise Search documentation for a full list of configuration settings. Settings supported on Elastic Cloud Enterprise are indicated by an {{ecloud}} icon (![logo cloud](https://doc-icons.s3.us-east-2.amazonaws.com/logo_cloud.svg "Supported on {{ecloud}}")). Be sure to refer to the documentation version that matches the Elastic Stack version used in your deployment.
+Refer to the [Configuration settings reference](https://www.elastic.co/guide/en/enterprise-search/current/configuration.html#configuration-file) in the Enterprise Search documentation for a full list of configuration settings. Settings supported on Elastic Cloud Enterprise are indicated by an {{ecloud}} icon (![logo cloud](https://doc-icons.s3.us-east-2.amazonaws.com/logo_cloud.svg "Supported on {{ecloud}}")).
 
 To add user settings:
 
@@ -23,5 +32,8 @@ To add user settings:
 ::::{note}
 If a setting is not supported by Elastic Cloud Enterprise, an error message displays when you try to save your settings.
 ::::
+
+
+
 
 

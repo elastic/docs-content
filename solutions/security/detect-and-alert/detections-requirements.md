@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/detections-permissions-section.html
   - https://www.elastic.co/guide/en/serverless/current/security-detections-requirements.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Detections requirements

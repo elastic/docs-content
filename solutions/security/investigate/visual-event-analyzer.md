@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/visual-event-analyzer.html
   - https://www.elastic.co/guide/en/serverless/current/security-visual-event-analyzer.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Visual event analyzer [security-visual-event-analyzer]

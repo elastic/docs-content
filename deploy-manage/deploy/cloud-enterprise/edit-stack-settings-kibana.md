@@ -1,11 +1,19 @@
+---
+navigation_title: Kibana user settings
+applies_to:
+  deployment:
+    ece: all
+mapped_urls:
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-manage-kibana-settings.html
+---
+
 # Add Kibana user settings [ece-manage-kibana-settings]
 
-Elastic Cloud Enterprise supports most of the standard Kibana and X-Pack settings. Through a YAML editor in the console, you can append Kibana properties to the `kibana.yml` file. Your changes to the configuration file are read on startup.
+Elastic Cloud Enterprise supports most of the standard Kibana settings. Through a YAML editor in the console, you can append Kibana properties to the `kibana.yml` file. Your changes to the configuration file are read on startup.
 
 ::::{important}
 Be aware that some settings that could break your cluster if set incorrectly and that the syntax might change between major versions. Before upgrading, be sure to review the full list of the [latest Kibana settings and syntax](kibana://reference/configuration-reference/general-settings.md).
 ::::
-
 
 To change Kibana settings:
 
@@ -31,7 +39,6 @@ If you have a license from 2018 or earlier, you might receive a warning that you
 ::::
 
 
-
 ## Example: Increase the timeout for creating reports [ece_example_increase_the_timeout_for_creating_reports]
 
 When creating reports, you can adjust the number of milliseconds before a worker times out. This is particularly helpful for instances with a slow or heavy load.
@@ -48,5 +55,4 @@ If large exports are causing performance or storage issues, you can increase the
 ```sh
 xpack.reporting.csv.maxSizeBytes: "20971520"
 ```
-
 
