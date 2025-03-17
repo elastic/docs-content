@@ -198,7 +198,7 @@ Enable tail-based sampling with [Enable tail-based sampling](../../../solutions/
 Trace events are matched to policies in the order specified. Each policy list must conclude with a default policy — one that only specifies a sample rate. This default policy is used to catch remaining trace events that don’t match a stricter policy. Requiring this default policy ensures that traces are only dropped intentionally. If you enable tail-based sampling and send a transaction that does not match any of the policies, APM Server will reject the transaction with the error `no matching policy`.
 
 ::::{important}
-Please note that from version `8.3.1` APM Server implements a default storage limit of 3GB, but, due to how the limit is calculated and enforced the actual disk space may still grow slightly over the limit.
+Please note that from version `9.0.0` APM Server has an unlimited storage limit, but will stop writing when the disk where the database resides reaches 80% usage. Due to how the limit is calculated and enforced, the actual disk space may still grow slightly over this disk usage based limit, or any configured storage limit.
 ::::
 
 
