@@ -35,7 +35,7 @@ To configure the number of spans recorded per transaction, see the relevant Agen
 * Android: *Not yet supported*
 * Go: [`ELASTIC_APM_TRANSACTION_MAX_SPANS`](apm-agent-go://reference/configuration.md#config-transaction-max-spans)
 * iOS: *Not yet supported*
-* Java: [`transaction_max_spans`](asciidocalypse://docs/apm-agent-java/docs/reference/config-core.md#config-transaction-max-spans)
+* Java: [`transaction_max_spans`](apm-agent-java://reference/config-core.md#config-transaction-max-spans)
 * .NET: [`TransactionMaxSpans`](apm-agent-dotnet://reference/config-core.md#config-transaction-max-spans)
 * Node.js: [`transactionMaxSpans`](asciidocalypse://docs/apm-agent-nodejs/docs/reference/configuration.md#transaction-max-spans)
 * PHP: [`transaction_max_spans`](asciidocalypse://docs/apm-agent-php/docs/reference/configuration-reference.md#config-transaction-max-spans)
@@ -476,7 +476,7 @@ Support for span compression is available in the following agents and can be con
 | Agent | Same-kind config | Exact-match config |
 | --- | --- | --- |
 | **Go agent** | [`ELASTIC_APM_SPAN_COMPRESSION_SAME_KIND_MAX_DURATION`](apm-agent-go://reference/configuration.md#config-span-compression-exact-match-duration) |
-| **Java agent** | [`span_compression_same_kind_max_duration`](asciidocalypse://docs/apm-agent-java/docs/reference/config-huge-traces.md#config-span-compression-same-kind-max-duration) | [`span_compression_exact_match_max_duration`](asciidocalypse://docs/apm-agent-java/docs/reference/config-huge-traces.md#config-span-compression-exact-match-max-duration) |
+| **Java agent** | [`span_compression_same_kind_max_duration`](apm-agent-java://reference/config-huge-traces.md#config-span-compression-same-kind-max-duration) | [`span_compression_exact_match_max_duration`](apm-agent-java://reference/config-huge-traces.md#config-span-compression-exact-match-max-duration) |
 | **.NET agent** | [`SpanCompressionSameKindMaxDuration`](apm-agent-dotnet://reference/config-core.md#config-span-compression-exact-match-max-duration) |
 | **Node.js agent** | [`spanCompressionSameKindMaxDuration`](asciidocalypse://docs/apm-agent-nodejs/docs/reference/configuration.md#span-compression-exact-match-max-duration) |
 | **Python agent** | [`span_compression_same_kind_max_duration`](asciidocalypse://docs/apm-agent-python/docs/reference/configuration.md#config-span-compression-exact-match-max_duration) |

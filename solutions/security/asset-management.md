@@ -1,6 +1,10 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/security-asset-management.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Asset management [security-asset-management]

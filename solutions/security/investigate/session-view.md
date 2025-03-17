@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/session-view.html
   - https://www.elastic.co/guide/en/serverless/current/security-session-view.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Session View [security-session-view]
@@ -74,7 +78,7 @@ The Session View UI has the following features:
 
 Session View includes additional badges not pictured above:
 
-* The alert badge for multiple alerts appears when a single event causes alerts of multiple types (![Gear icon](../../../images/security-sess-view-process-alert-icon.png "") for `process` alerts, ![Page icon](../../../images/security-sess-view-file-alert-icon.png "") for `file` alerts, and ![Page icon](../../../images/security-sess-view-network-alert-icon.png "") for `network` alerts):
+* The alert badge for multiple alerts appears when a single event causes alerts of multiple types (![Gear icon](../../../images/security-sess-view-process-alert-icon.png "title =20x20") for `process` alerts, ![Page icon](../../../images/security-sess-view-file-alert-icon.png "title =20x20") for `file` alerts, and ![Page icon](../../../images/security-sess-view-network-alert-icon.png "title =20x20") for `network` alerts):
 
     :::{image} ../../../images/security-session-view-alert-types-badge.png
     :alt: The alert badge for a command with all three alert types

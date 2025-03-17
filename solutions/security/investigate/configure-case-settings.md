@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/cases-manage-settings.html
   - https://www.elastic.co/guide/en/serverless/current/security-cases-settings.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Configure case settings [security-cases-settings]

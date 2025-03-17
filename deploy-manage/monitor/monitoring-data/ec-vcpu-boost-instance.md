@@ -16,7 +16,7 @@ Elastic Cloud allows smaller instance sizes to get temporarily boosted vCPU when
 
 Based on the instance size, the vCPU resources assigned to your instance can be boosted to improve performance temporarily, by using vCPU credits. If credits are available, Elastic Cloud will automatically boost your instance when under heavy load. Boosting is available depending on the instance size:
 
-* Instance sizes up to and including 12 GB of RAM get boosted. The boosted vCPU value is `16 * vCPU ratio`, the vCPU ratios are dependent on the [hardware profile](asciidocalypse://docs/cloud/docs/reference/cloud-hosted/hardware.md#ec-getting-started-configurations) selected. If an instance is eligible for boosting, the Elastic Cloud console will display **Up to 2.5 vCPU**, depending on the hardware profile selected. The baseline, or unboosted, vCPU value is calculated as: `RAM size * vCPU ratio`.
+* Instance sizes up to and including 12 GB of RAM get boosted. The boosted vCPU value is `16 * vCPU ratio`, the vCPU ratios are dependent on the [hardware profile](cloud://reference/cloud-hosted/hardware.md#ec-getting-started-configurations) selected. If an instance is eligible for boosting, the Elastic Cloud console will display **Up to 2.5 vCPU**, depending on the hardware profile selected. The baseline, or unboosted, vCPU value is calculated as: `RAM size * vCPU ratio`.
 * Instance sizes bigger than 12 GB of RAM do not get boosted. The vCPU value is displayed in the Elastic Cloud console and calculated as follows: `RAM size * vCPU ratio`.
 
 
@@ -35,7 +35,7 @@ For example: An instance with 4 GB of RAM, can at most accumulate four hours wor
 
 If you observe declining performance on a smaller instance over time, you might have depleted your vCPU credits. In this case, increase the size of your cluster to handle the workload with consistent performance.
 
-For more information, check [{{ech}} default provider instance configurations](asciidocalypse://docs/cloud/docs/reference/cloud-hosted/hardware.md#ec-getting-started-configurations).
+For more information, check [{{ech}} default provider instance configurations](cloud://reference/cloud-hosted/hardware.md#ec-getting-started-configurations).
 
 
 ## Where to check vCPU credits status? [ec_where_to_check_vcpu_credits_status]

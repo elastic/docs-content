@@ -1,6 +1,10 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/security/current/entity-store.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Entity store [entity-store]

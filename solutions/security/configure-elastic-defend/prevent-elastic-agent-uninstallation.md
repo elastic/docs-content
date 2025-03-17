@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/agent-tamper-protection.html
   - https://www.elastic.co/guide/en/serverless/current/security-agent-tamper-protection.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Prevent {{agent}} uninstallation

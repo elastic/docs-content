@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/signals-to-cases.html
   - https://www.elastic.co/guide/en/serverless/current/security-signals-to-cases.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Add detection alerts to cases [security-signals-to-cases]

@@ -12,18 +12,6 @@ mapped_urls:
 
 # ES|QL [esql]
 
-% What needs to be done: Refine
-
-% Scope notes: everything but language reference. Merge the pages about Kibana. Add links to reference's new location
-
-% Use migrated content from existing pages that map to this page:
-
-% - [ ] ./raw-migrated-files/elasticsearch/elasticsearch-reference/esql.md
-% - [ ] ./raw-migrated-files/elasticsearch/elasticsearch-reference/esql-getting-started.md
-% - [ ] ./raw-migrated-files/elasticsearch/elasticsearch-reference/esql-using.md
-% - [ ] ./raw-migrated-files/elasticsearch/elasticsearch-reference/esql-examples.md
-% - [ ] ./raw-migrated-files/kibana/kibana/esql.md
-
 ## What's {{esql}}? [_the_esql_compute_engine]
 
 **Elasticsearch Query Language ({{esql}})** is a piped query language for filtering, transforming, and analyzing data.

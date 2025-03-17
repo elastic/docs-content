@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/building-block-rule.html
   - https://www.elastic.co/guide/en/serverless/current/security-building-block-rules.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # About building block rules [security-building-block-rules]

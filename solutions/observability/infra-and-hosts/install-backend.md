@@ -1,11 +1,13 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/profiling-self-managed-installation.html
+applies_to:
+  stack: 
 ---
 
 # Install the backend [profiling-self-managed-installation]
 
-To install the Universal Profiling backend, complete the following steps:
+To install the Universal Profiling backend, complete these steps:
 
 1. [Update the Elastic stack to the minimum supported version](step-1-update-stack.md).
 2. [Enable Universal Profiling in Kibana](step-2-enable-universal-profiling-in-kibana.md).

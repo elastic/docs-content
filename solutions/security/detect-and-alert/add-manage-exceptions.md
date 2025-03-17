@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/add-exceptions.html
   - https://www.elastic.co/guide/en/serverless/current/security-add-exceptions.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Add and manage exceptions [add-exceptions]
@@ -199,7 +203,7 @@ Additionally, to add an Endpoint exception to an endpoint protection rule, there
 
 
     ::::{note}
-    * Fields with conflicts are marked with a warning icon (![Field conflict warning icon](../../../images/security-field-warning-icon.png "")). Using these fields might cause unexpected exceptions behavior. For more information, refer to [Troubleshooting type conflicts and unmapped fields](../../../troubleshoot/security/detection-rules.md#rule-exceptions-field-conflicts).
+    * Fields with conflicts are marked with a warning icon (![Field conflict warning icon](../../../images/security-field-warning-icon.png "title =20x20")). Using these fields might cause unexpected exceptions behavior. For more information, refer to [Troubleshooting type conflicts and unmapped fields](../../../troubleshoot/security/detection-rules.md#rule-exceptions-field-conflicts).
     * The `is one of` and `is not one of` operators support identical, case-sensitive values. For example, if you want to match the values `Windows` and `windows`, add both values to the **Value** field.
 
     ::::
