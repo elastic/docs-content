@@ -58,7 +58,7 @@ deployment:
     These users must exist on the monitoring cluster. If you are accessing a remote monitoring cluster, you must use credentials that are valid on both the {{kib}} server and the monitoring cluster.
     ::::
 
-## View monitoring data in {{kib}}
+## View monitoring data in {{kib}} [view-monitoring-data-in-kibana]
 
 :::::{tab-set}
 ::::{tab-item} In ECK and self-managed

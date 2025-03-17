@@ -124,13 +124,3 @@ Work with the metrics shown in **Cluster Performance Metrics** section to help y
 * Reset the metric graph axes with ![Reset the metric graph](../../../images/cloud-metrics-reset.png ""), which returns the graphs to their original scale.
 
 Cluster performance metrics are shown per node and are color-coded to indicate which running Elasticsearch instance they belong to.
-
-
-## Cluster restarts after out-of-memory failures [ec_cluster_restarts_after_out_of_memory_failures]
-
-For clusters that suffer out-of-memory failures, it can be difficult to determine whether the clusters are in a completely healthy state afterwards. For this reason, {{ech}} automatically reboots clusters that suffer out-of-memory failures.
-
-You will receive an email notification to let you know that a restart occurred. For repeated alerts, the emails are aggregated so that you do not receive an excessive number of notifications. Either [resizing your cluster to reduce memory pressure](../../deploy/elastic-cloud/ec-customize-deployment-components.md#ec-cluster-size) or reducing the workload that a cluster is being asked to handle can help avoid these cluster restarts.
-
-
-

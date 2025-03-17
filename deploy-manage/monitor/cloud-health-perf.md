@@ -22,7 +22,7 @@ The deployment **Health** page provides detailed information on health issues, i
 
 To view the health for a deployment:
 
-1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body) or [Cloud UI](deploy-manage/deploy/cloud-enterprise/log-into-cloud-ui.md).
+1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body) or [Cloud UI](/deploy-manage/deploy/cloud-enterprise/log-into-cloud-ui.md).
 2. On the **Deployments** page, select your deployment.
 3. In your deployment menu, select **Health**.
 
@@ -31,7 +31,7 @@ The **Health** page provides the following information:
 * Health issues for {{kib}}, Enterprise Search, APM, and plan changes are reported in the health banner.
 * Health issues for {{es}} clusters are broken down into a table with more details on Severity, Description and Affected capabilities.
 
-:::{image} ../../../images/cloud-es-health-page.png
+:::{image} /images/cloud-es-health-page.png
 :alt: {{es}} Health page
 :::
 
@@ -41,7 +41,7 @@ The **Health** page provides the following information:
 
 You can also search and filter the table based on affected resources, such as indices, repositories, nodes, or SLM policies. Individual issues can be further expanded to get more details and guided troubleshooting.
 
-:::{image} ../../../images/cloud-es-health-page-table.png
+:::{image} /images/cloud-es-health-page-table.png
 :alt: {{es}} Health page with details and troubleshooting
 :::
 
@@ -65,7 +65,7 @@ deployment:
 
 For clusters that suffer out-of-memory failures, it can be difficult to determine whether the clusters are in a completely healthy state afterwards. For this reason, {{ech}} automatically reboots clusters that suffer out-of-memory failures.
 
-You will receive an email notification to let you know that a restart occurred. For repeated alerts, the emails are aggregated so that you do not receive an excessive number of notifications. Either [resizing your cluster to reduce memory pressure](../../deploy/elastic-cloud/ec-customize-deployment-components.md#ec-cluster-size) or reducing the workload that a cluster is being asked to handle can help avoid these cluster restarts.
+You will receive an email notification to let you know that a restart occurred. For repeated alerts, the emails are aggregated so that you do not receive an excessive number of notifications. Either [resizing your cluster to reduce memory pressure](/deploy-manage/deploy/elastic-cloud/ec-customize-deployment-components.md#ec-cluster-size) or reducing the workload that a cluster is being asked to handle can help avoid these cluster restarts.
 
 ## Cluster performance [ec-es-cluster-performance]
 

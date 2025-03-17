@@ -95,7 +95,7 @@ The PagerDuty integration consists of the following parts:
 
 :::{dropdown} Slack
 
-$$$ec-autoops-slack
+$$$ec-autoops-slack$$$
 
 To set up a webhook to send AutoOps notifications to a Slack channel, go through the following steps.
 

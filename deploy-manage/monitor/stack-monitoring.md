@@ -76,7 +76,7 @@ Most of these methods require that you configure monitoring of {{es}} before mon
 :::
 
 * **Logstash**:
-  * [Monitoring {{ls}} with {{agent}}](/reference/monitoring-logstash-with-elastic-agent.md) (recommended): Uses a single agent to gather logs and metrics. Can be managed from a central location in {{fleet}}.
+  * [Monitoring {{ls}} with {{agent}}](logstash://reference/monitoring-logstash-with-elastic-agent.md) (recommended): Uses a single agent to gather logs and metrics. Can be managed from a central location in {{fleet}}.
   * [Monitoring {{ls}} with legacy collection methods](logstash://reference/monitoring-logstash-legacy.md): Use {{metricbeat}} or legacy methods to collect monitoring data from {{ls}}.
 * **{{beats}}**:
 
@@ -90,8 +90,8 @@ Most of these methods require that you configure monitoring of {{es}} before mon
 * [**APM Server**](/solutions/observability/apps/monitor-apm-server.md)
 
 * **{{agent}}s**: 
-  * [{{fleet}}-managed {{agent}}s](/reference/ingestion-tools/fleet/monitor-elastic-agent.md) 
-  * [Standalone {{agent}}s](/reference/ingestion-tools/fleet/elastic-agent-monitoring-configuration.md)
+  * [{{fleet}}-managed {{agent}}s](docs-content://reference/ingestion-tools/fleet/monitor-elastic-agent.md) 
+  * [Standalone {{agent}}s](docs-content://reference/ingestion-tools/fleet/elastic-agent-monitoring-configuration.md)
 
 ### Access, view, and use monitoring data
 

@@ -38,7 +38,7 @@ To track CPU usage over time, we recommend enabling monitoring:
 ::::::{tab-item} {{ech}}
 * (Recommended) Enable [logs and metrics](../../deploy-manage/monitor/stack-monitoring/ece-ech-stack-monitoring.md). When logs and metrics are enabled, monitoring information is visible on {{kib}}'s [Stack Monitoring](../../deploy-manage/monitor/monitoring-data/visualizing-monitoring-data.md) page.
 
-    You can also enable the [CPU usage threshold alert](../../deploy-manage/monitor/monitoring-data/kibana-alerts.md) to be notified about potential issues through email.
+    You can also enable the [CPU usage threshold alert](../../deploy-manage/monitor/monitoring-data/configure-stack-monitoring-alerts.md) to be notified about potential issues through email.
 
 * From your deployment menu, view the [**Performance**](../../deploy-manage/monitor/monitoring-data/access-performance-metrics-on-elastic-cloud.md) page. On this page, you can view two key metrics:
 
@@ -52,7 +52,7 @@ To track CPU usage over time, we recommend enabling monitoring:
 ::::::{tab-item} Self-managed
 * Enable [{{es}} monitoring](../../deploy-manage/monitor/stack-monitoring.md). When logs and metrics are enabled, monitoring information is visible on {{kib}}'s [Stack Monitoring](../../deploy-manage/monitor/monitoring-data/visualizing-monitoring-data.md) page.
 
-    You can also enable the [CPU usage threshold alert](../../deploy-manage/monitor/monitoring-data/kibana-alerts.md) to be notified about potential issues through email.
+    You can also enable the [CPU usage threshold alert](../../deploy-manage/monitor/monitoring-data/configure-stack-monitoring-alerts.md) to be notified about potential issues through email.
 ::::::
 
 :::::::

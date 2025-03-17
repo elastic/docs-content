@@ -113,18 +113,18 @@ When shipping logs to a monitoring deployment there are more logging features av
 
 ### For {{es}} [extra-logging-features-elasticsearch]
 
-* [Audit logging](../logging-configuration/enabling-audit-logs.md) - logs security-related events on your deployment
+* [Audit logging](/deploy-manage/security/logging-configuration/enabling-audit-logs.md) - logs security-related events on your deployment
 * [Slow query and index logging](elasticsearch://reference/elasticsearch/index-settings/slow-log.md) - helps find and debug slow queries and indexing
 * Verbose logging - helps debug stack issues by increasing component logs
 
-After you’ve enabled log delivery on your deployment, you can [add the Elasticsearch user settings](../../deploy/cloud-enterprise/edit-stack-settings.md) to enable these features.
+After you’ve enabled log delivery on your deployment, you can [add the Elasticsearch user settings](/deploy-manage/deploy/cloud-enterprise/edit-stack-settings.md) to enable these features.
 
 
 ### For {{kib}} [extra-logging-features-kibana]
 
-* [Audit logging](../logging-configuration/enabling-audit-logs.md) - logs security-related events on your deployment
+* [Audit logging](/deploy-manage/security/logging-configuration/enabling-audit-logs.md) - logs security-related events on your deployment
 
-After you’ve enabled log delivery on your deployment, you can [add the {{kib}} user settings](../../deploy/cloud-enterprise/edit-stack-settings.md) to enable this feature.
+After you’ve enabled log delivery on your deployment, you can [add the {{kib}} user settings](/deploy-mange/deploy/cloud-enterprise/edit-stack-settings.md) to enable this feature.
 
 
 ### Other components [extra-logging-features-enterprise-search]
