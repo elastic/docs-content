@@ -146,10 +146,12 @@ With the exception of serverless, the following recommendations are best practic
     If you use {{ccr}}, a cluster that contains follower indices must run the same or newer (compatible) version as the remote cluster. For more information and to view the version compatibility matrix, refer to [Cross cluster replication](/deploy-manage/tools/cross-cluster-replication.md). You can view your remote clusters from **Stack Management > Remote Clusters**.
     ::::
 
-9. If you have any anomaly detection result indices `.ml-anomalies-*` that were created in {{es}} 7.x, they must be reindexed, marked as read-only, or deleted before upgrading to 9.x. To learn how to do this, refer to [Anomaly detection results migration](prepare-to-upgrade.md#anomaly-migration). 
+9. Consider closing {{ml}} jobs before you start the upgrade process. While {{ml}} jobs can continue to run during a rolling upgrade, it increases the overhead on the cluster during the upgrade process.
+
+10. If you have any anomaly detection result indices `.ml-anomalies-*` that were created in {{es}} 7.x, they must be reindexed, marked as read-only, or deleted before upgrading to 9.x. To learn how to do this, refer to [Anomaly detection results migration](prepare-to-upgrade.md#anomaly-migration). 
 
 
-10. If you have any transform destination indices that were created in {{es}} 7.x, they must be reset, reindexed, or deleted before upgrading to 9.x. To learn how to do this, refer to [Transform destination indices migration](prepare-to-upgrade.md#transform-migration). 
+11. If you have any transform destination indices that were created in {{es}} 7.x, they must be reset, reindexed, or deleted before upgrading to 9.x. To learn how to do this, refer to [Transform destination indices migration](prepare-to-upgrade.md#transform-migration). 
 
 
 ## Reindex to upgrade (optional) [reindex-to-upgrade]
