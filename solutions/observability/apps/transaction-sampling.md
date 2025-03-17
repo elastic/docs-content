@@ -143,14 +143,14 @@ It is recommended to use fast disks, for example, NVMe SSDs, when enabling tail-
 
 To demonstrate the performance overhead and requirements, here are some numbers from a standalone APM Server 9.0 deployed on AWS EC2, under full load receiving APM events containing only traces, assuming no backpressure from Elasticsearch, and 10% sample rate in tail sampling policy. They are for reference only, and may vary depending on factors like sampling rate, average event size, and average number of events per distributed trace.
 
-| APM Server EC2 instance size | TBS enabled, Disk                                           | Event ingestion rate (throughput from APM agent to APM Server) in events/s | Memory usage (max Resident Set Size) in GB | Disk usage in GB |
-|:-----------------------------|:------------------------------------------------------------|----------------------------------------------------------------------------|--------------------------------------------|------------------|
-| c6i.2xlarge or c6id.2xlarge  | TBS disabled                                                | 47220                                                                      | 0.98                                       | 0                |
-| ..                           | TBS enabled, gp3 volume with the baseline IOPS of 3000 IOPS | 21310                                                                      | 1.41                                       | 13.1             |
-| ..                           | TBS enabled, local NVMe SSD from c6id instance              | 21210                                                                      | 1.34                                       | 12.9             |
-| c6i.4xlarge or c6id.4xlarge  | TBS disabled                                                | 142200                                                                     | 1.12                                       | 0                |
-| ..                           | TBS enabled, gp3 volume with the baseline IOPS of 3000 IOPS | 32410                                                                      | 1.71                                       | 19.4             |
-| ..                           | TBS enabled, local NVMe SSD from c6id instance              | 47370                                                                      | 1.73                                       | 23.6             |
+| APM Server EC2 instance size | TBS enabled, Disk                                               | Event ingestion rate (throughput from APM agent to APM Server) in events/s | Memory usage (max Resident Set Size) in GB | Disk usage in GB |
+|:-----------------------------|:----------------------------------------------------------------|----------------------------------------------------------------------------|--------------------------------------------|------------------|
+| c6id.2xlarge                 | TBS disabled                                                    | 47220                                                                      | 0.98                                       | 0                |
+| c6id.2xlarge                 | TBS enabled, EBS gp3 volume with the baseline IOPS of 3000 IOPS | 21310                                                                      | 1.41                                       | 13.1             |
+| c6id.2xlarge                 | TBS enabled, local NVMe SSD from c6id instance                  | 21210                                                                      | 1.34                                       | 12.9             |
+| c6id.4xlarge                 | TBS disabled                                                    | 142200                                                                     | 1.12                                       | 0                |
+| c6id.4xlarge                 | TBS enabled, EBS gp3 volume with the baseline IOPS of 3000 IOPS | 32410                                                                      | 1.71                                       | 19.4             |
+| c6id.4xlarge                 | TBS enabled, local NVMe SSD from c6id instance                  | 47370                                                                      | 1.73                                       | 23.6             |
 
 ## Sampled data and visualizations [_sampled_data_and_visualizations]
 
