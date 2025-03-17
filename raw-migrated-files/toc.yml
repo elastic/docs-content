@@ -103,9 +103,7 @@ toc:
       - file: docs-content/serverless/project-setting-data.md
       - file: docs-content/serverless/project-settings-alerts.md
       - file: docs-content/serverless/project-settings-content.md
-      - file: docs-content/serverless/security-automatic-import.md
       - file: docs-content/serverless/security-detection-engine-overview.md
-      - file: docs-content/serverless/security-vuln-management-faq.md
       - file: docs-content/serverless/what-is-observability-serverless.md
   - file: elasticsearch-hadoop/elasticsearch-hadoop/index.md
     children:
@@ -146,7 +144,6 @@ toc:
     children:
       - file: observability-docs/observability/index.md
       - file: observability-docs/observability/obs-ai-assistant.md
-  - file: security-docs/security/index.md
   - file: stack-docs/elastic-stack/index.md
     children:
       - file: stack-docs/elastic-stack/installing-stack-demo-self.md
