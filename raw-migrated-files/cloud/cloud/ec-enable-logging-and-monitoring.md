@@ -15,7 +15,7 @@ The steps in this section cover only the enablement of the monitoring and loggin
 
 ### Before you begin [ec-logging-and-monitoring-limitations]
 
-Some limitations apply when you use monitoring on {{ech}}. To learn more, check the monitoring [restrictions and limitations](../../../deploy-manage/monitor/stack-monitoring/elastic-cloud-stack-monitoring.md#ec-restrictions-monitoring).
+Some limitations apply when you use monitoring on {{ech}}. To learn more, check the monitoring [restrictions and limitations](../../../deploy-manage/monitor/stack-monitoring/ece-ech-stack-monitoring.md#ec-restrictions-monitoring).
 
 
 ### Monitoring for production use [ec-logging-and-monitoring-production]
@@ -32,7 +32,7 @@ How many monitoring deployments you use depends on your requirements:
     * If you need to silo {{es}} data for different business departments. Deployments that have been configured to ship logs and metrics to a target monitoring deployment have access to indexing data and can manage monitoring index templates, which is addressed by creating separate monitoring deployments.
 
 
-Logs and metrics that get sent to a dedicated monitoring {{es}} deployment [may not be cleaned up automatically](../../../deploy-manage/monitor/stack-monitoring/elastic-cloud-stack-monitoring.md#ec-logging-and-monitoring-retention) and might require some additional steps to remove excess data periodically.
+Logs and metrics that get sent to a dedicated monitoring {{es}} deployment [may not be cleaned up automatically](../../../deploy-manage/monitor/stack-monitoring/ece-ech-stack-monitoring.md#ec-logging-and-monitoring-retention) and might require some additional steps to remove excess data periodically.
 
 
 ### Retention of monitoring daily indices [ec-logging-and-monitoring-retention]
@@ -67,9 +67,9 @@ PUT /_cluster/settings
 
 ### Sending monitoring data to a dedicated monitoring deployment [ec-logging-and-monitoring-retention-dedicated-monitoring]
 
-When [monitoring for production use](../../../deploy-manage/monitor/stack-monitoring/elastic-cloud-stack-monitoring.md#ec-logging-and-monitoring-production), where you configure your deployments **to send monitoring data to a dedicated monitoring deployment** for indexing, this retention period does not apply. Monitoring indices on a dedicated monitoring deployment are retained until you remove them. There are three options open to you:
+When [monitoring for production use](../../../deploy-manage/monitor/stack-monitoring/ece-ech-stack-monitoring.md#ec-logging-and-monitoring-production), where you configure your deployments **to send monitoring data to a dedicated monitoring deployment** for indexing, this retention period does not apply. Monitoring indices on a dedicated monitoring deployment are retained until you remove them. There are three options open to you:
 
-* To enable the automatic deletion of monitoring indices from dedicated monitoring deployments, [enable monitoring](../../../deploy-manage/monitor/stack-monitoring/elastic-cloud-stack-monitoring.md#ec-enable-logging-and-monitoring-steps) on your dedicated monitoring deployment in {{ech}} to send monitoring data to itself. When an {{es}} deployment sends monitoring data to itself, all monitoring indices are deleted automatically after the retention period, regardless of the origin of the monitoring data.
+* To enable the automatic deletion of monitoring indices from dedicated monitoring deployments, [enable monitoring](../../../deploy-manage/monitor/stack-monitoring/ece-ech-stack-monitoring.md#ec-enable-logging-and-monitoring-steps) on your dedicated monitoring deployment in {{ech}} to send monitoring data to itself. When an {{es}} deployment sends monitoring data to itself, all monitoring indices are deleted automatically after the retention period, regardless of the origin of the monitoring data.
 * Alternatively, you can enable the cleaner service on the monitoring deployment by creating a local exporter. You can define the retention period at the same time.
 
     For example
