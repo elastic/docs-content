@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/uninstall-agent.html
   - https://www.elastic.co/guide/en/serverless/current/security-uninstall-agent.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Uninstall {{agent}} [uninstall-agent]

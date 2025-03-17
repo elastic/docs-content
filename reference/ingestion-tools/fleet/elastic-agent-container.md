@@ -27,7 +27,7 @@ Considerations:
    :::
 
    :::{tab-item} Self-managed
-   To install and run {{es}} and {{kib}}, see [Installing the {{stack}}](/deploy-manage/deploy/self-managed/deploy-cluster.md).
+   To install and run {{es}} and {{kib}}, see [Installing the {{stack}}](/deploy-manage/deploy/self-managed/installing-elasticsearch.md).
    :::
 
    ::::

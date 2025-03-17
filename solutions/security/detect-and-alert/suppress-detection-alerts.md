@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/alert-suppression.html
   - https://www.elastic.co/guide/en/serverless/current/security-alert-suppression.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Suppress detection alerts [security-alert-suppression]

@@ -49,7 +49,7 @@ Transport client is not supported over PrivateLink connections.
 ::::
 
 
-AWS PrivateLink establishes a secure connection between two AWS Virtual Private Clouds (VPCs). The VPCs can belong to separate accounts, i.e. a service provider and its service consumers. AWS routes the PrivateLink traffic within the AWS data center and never exposes it to the public internet. In such a configuration, Elastic Cloud is the third-party service provider and the customers are service consumers.
+AWS PrivateLink establishes a secure connection between two AWS Virtual Private Clouds (VPCs). The VPCs can belong to separate accounts, i.e. a service provider and its service consumers. AWS routes the PrivateLink traffic within the AWS data center and never exposes it to the public internet. In such a configuration, {{ecloud}} is the third-party service provider and the customers are service consumers.
 
 PrivateLink is a connection between a VPC Endpoint and a PrivateLink Service.
 
@@ -94,11 +94,11 @@ PrivateLink Service is set up by Elastic in all supported AWS regions under the 
 ::::
 
 
-The process of setting up the PrivateLink connection to your clusters is split between AWS (e.g. by using AWS console) and Elastic Cloud UI. These are the high-level steps:
+The process of setting up the PrivateLink connection to your clusters is split between AWS (e.g. by using AWS console) and {{ecloud}} UI. These are the high-level steps:
 
-| AWS console | Elastic Cloud |
+| AWS console | {{ecloud}} |
 | --- | --- |
-| 1. Create a VPC endpoint using Elastic Cloud service name. |  |
+| 1. Create a VPC endpoint using {{ecloud}} service name. |  |
 | 2. Create a DNS record pointing to the VPC endpoint. |  |
 |  | 3. Create a PrivateLink rule set with your VPC endpoint ID. |
 |  | 4. Associate the PrivateLink rule set with your deployments. |
@@ -108,7 +108,7 @@ The process of setting up the PrivateLink connection to your clusters is split b
 ## Ensure your VPC endpoint is in all availability zones supported by {{ecloud}} on the region for the VPC service [ec-aws-vpc-overlapping-azs]
 
 ::::{note}
-Ensuring that your VPC is in all supported Elastic Cloud availability zones for a particular region avoids potential for a traffic imbalance. That imbalance may saturate some coordinating nodes and underutilize others in the deployment, eventually impacting performance. Enabling all supported Elastic Cloud zones ensures that traffic is balanced optimally.
+Ensuring that your VPC is in all supported {{ecloud}} availability zones for a particular region avoids potential for a traffic imbalance. That imbalance may saturate some coordinating nodes and underutilize others in the deployment, eventually impacting performance. Enabling all supported {{ecloud}} zones ensures that traffic is balanced optimally.
 ::::
 
 
@@ -164,7 +164,7 @@ The mapping will be different for your region. Our production VPC Service for `u
 
     Find out the endpoint of your deployment. You can do that by selecting **Copy endpoint** in the Cloud UI. It looks something like `my-deployment-d53192.es.us-east-1.aws.found.io`. `my-deployment-d53192` is an alias, and `es` is the product you want to access within your deployment.
 
-    To access your Elasticsearch cluster over PrivateLink:
+    To access your {{es}} cluster over PrivateLink:
 
     * If you have a [custom endpoint alias](/deploy-manage/deploy/elastic-cloud/custom-endpoint-aliases.md) configured, you can use the custom endpoint URL to connect.
     * Alternatively, use the following URL structure:
@@ -181,7 +181,7 @@ The mapping will be different for your region. Our production VPC Service for `u
     ::::
 
 
-    You can test the AWS console part of the setup with a following curl (substitute the region and Elasticsearch ID with your cluster):
+    You can test the AWS console part of the setup with a following curl (substitute the region and {{es}} ID with your cluster):
 
     ```sh
     $ curl -v https://my-deployment-d53192.es.vpce.us-east-1.aws.elastic-cloud.com
@@ -269,11 +269,11 @@ $ curl -u 'username:password' -v https://my-deployment-d53192.es.vpce.us-east-1.
 ```
 
 ::::{note}
-If you are using AWS PrivateLink together with Fleet, and enrolling the Elastic Agent with a PrivateLink URL, you need to configure Fleet Server to use and propagate the PrivateLink URL by updating the **Fleet Server hosts** field in the **Fleet settings** section of Kibana. Otherwise, Elastic Agent will reset to use a default address instead of the PrivateLink URL. The URL needs to follow this pattern: `https://<Fleet component ID/deployment alias>.fleet.<Private hosted zone domain name>:443`.
+If you are using AWS PrivateLink together with Fleet, and enrolling the Elastic Agent with a PrivateLink URL, you need to configure Fleet Server to use and propagate the PrivateLink URL by updating the **Fleet Server hosts** field in the **Fleet settings** section of {{kib}}. Otherwise, Elastic Agent will reset to use a default address instead of the PrivateLink URL. The URL needs to follow this pattern: `https://<Fleet component ID/deployment alias>.fleet.<Private hosted zone domain name>:443`.
 
-Similarly, the Elasticsearch host needs to be updated to propagate the Privatelink URL. The Elasticsearch URL needs to follow this pattern: `https://<Elasticsearch cluster ID/deployment alias>.es.<Private hosted zone domain name>:443`.
+Similarly, the {{es}} host needs to be updated to propagate the Privatelink URL. The {{es}} URL needs to follow this pattern: `https://<{{es}} cluster ID/deployment alias>.es.<Private hosted zone domain name>:443`.
 
-The settings `xpack.fleet.agents.fleet_server.hosts` and `xpack.fleet.outputs` that are needed to enable this configuration in {{kib}} are currently available on-prem only, and not in the [Kibana settings in {{ecloud}}](/deploy-manage/deploy/elastic-cloud/edit-stack-settings.md).
+The settings `xpack.fleet.agents.fleet_server.hosts` and `xpack.fleet.outputs` that are needed to enable this configuration in {{kib}} are currently available on-prem only, and not in the [{{kib}} settings in {{ecloud}}](/deploy-manage/deploy/elastic-cloud/edit-stack-settings.md).
 
 ::::
 

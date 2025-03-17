@@ -38,7 +38,7 @@ To download and install APM Server, use the commands below that work with your s
 $$$apm-deb$$$
 **deb:**
 
-```shell
+```shell subs=true
 curl -L -O https://artifacts.elastic.co/downloads/apm-server/apm-server-{{apm_server_version}}-amd64.deb
 sudo dpkg -i apm-server-{{apm_server_version}}-amd64.deb
 ```
@@ -46,7 +46,7 @@ sudo dpkg -i apm-server-{{apm_server_version}}-amd64.deb
 $$$apm-rpm$$$
 **RPM:**
 
-```shell
+```shell subs=true
 curl -L -O https://artifacts.elastic.co/downloads/apm-server/apm-server-{{apm_server_version}}-x86_64.rpm
 sudo rpm -vi apm-server-{{apm_server_version}}-x86_64.rpm
 ```
@@ -54,7 +54,7 @@ sudo rpm -vi apm-server-{{apm_server_version}}-x86_64.rpm
 $$$apm-linux$$$
 **Other Linux:**
 
-```shell
+```shell subs=true
 curl -L -O https://artifacts.elastic.co/downloads/apm-server/apm-server-{{apm_server_version}}-linux-x86_64.tar.gz
 tar xzvf apm-server-{{apm_server_version}}-linux-x86_64.tar.gz
 ```
@@ -62,7 +62,7 @@ tar xzvf apm-server-{{apm_server_version}}-linux-x86_64.tar.gz
 $$$apm-mac$$$
 **Mac:**
 
-```shell
+```shell subs=true
 curl -L -O https://artifacts.elastic.co/downloads/apm-server/apm-server-{{apm_server_version}}-darwin-x86_64.tar.gz
 tar xzvf apm-server-{{apm_server_version}}-darwin-x86_64.tar.gz
 ```

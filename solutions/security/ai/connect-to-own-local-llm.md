@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/connect-to-byo-llm.html
   - https://www.elastic.co/guide/en/serverless/current/connect-to-byo-llm.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Connect to your own local LLM

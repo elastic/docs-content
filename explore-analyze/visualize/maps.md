@@ -9,14 +9,6 @@ mapped_urls:
 
 # Maps [maps]
 
-% What needs to be done: Align serverless/stateful
-
-% Use migrated content from existing pages that map to this page:
-
-% - [ ] ./raw-migrated-files/kibana/kibana/maps.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/maps.md
-
-
 Create beautiful maps from your geographical data. With **Maps**, you can:
 
 * Build maps with multiple layers and indices.
