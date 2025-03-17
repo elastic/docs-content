@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/detection-engine-overview.html
   - https://www.elastic.co/guide/en/serverless/current/security-detection-engine-overview.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Detections and alerts

@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/tuning-detection-signals.html
   - https://www.elastic.co/guide/en/serverless/current/security-tune-detection-signals.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Tune detection rules [security-tune-detection-signals]

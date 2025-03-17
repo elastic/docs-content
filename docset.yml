@@ -52,11 +52,17 @@ cross_links:
 toc:
   - file: index.md
   - toc: get-started
+    in_nav: true
   - toc: solutions
+    in_nav: true
   - toc: manage-data
+    in_nav: true
   - toc: explore-analyze
+    in_nav: true
   - toc: deploy-manage
+    in_nav: true
   - toc: cloud-account
+    in_nav: true
   - toc: troubleshoot
   - toc: release-notes
   - toc: reference

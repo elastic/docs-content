@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/security-assistant.html
   - https://www.elastic.co/guide/en/serverless/current/security-ai-assistant.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # AI Assistant

@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/profiling-manage-storage.html
+applies_to:
+  stack:
 ---
 
 # Manage data storage [profiling-manage-storage]

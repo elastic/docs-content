@@ -3,6 +3,10 @@ navigation_title: "Deploy on macOS with MDM"
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/deploy-with-mdm.html
   - https://www.elastic.co/guide/en/serverless/current/security-deploy-with-mdm.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Deploy {{elastic-defend}} on macOS with mobile device management [deploy-with-mdm]

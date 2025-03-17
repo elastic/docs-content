@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/security/current/exclude-cold-frozen-data-individual-rules.html
+applies_to:
+  stack: all
 ---
 
 # Exclude cold and frozen data from individual rules [exclude-cold-frozen-data-individual-rules]

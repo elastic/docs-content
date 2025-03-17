@@ -1,41 +1,27 @@
 ---
+navigation_title: Edit stack settings
+applies_to:
+  deployment:
+    ece: all
 mapped_urls:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/editing-user-settings.html
-  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-add-user-settings.html
-  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-manage-kibana-settings.html
-  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-manage-apm-settings.html
-  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-manage-enterprise-search-settings.html
 ---
 
-# Edit stack settings
+# Edit stack user settings [editing-user-settings]
 
-% What needs to be done: Refine
+From the {{ece}} console you can customize settings for {{es}}, {{kib}}, and other {{stack}} components by applying **user settings** to your deployments. These settings are internally mapped to the appropriate YAML configuration files, such as `elasticsearch.yml` and `kibana.yml`, and they affect all users of that cluster.
 
-% GitHub issue: https://github.com/elastic/docs-projects/issues/339
+To customize the settings of a deployment's {{stack}} components:
 
-% Use migrated content from existing pages that map to this page:
+1. Open your deployment page in the ECE [Cloud UI](./log-into-cloud-ui.md).
+2. In the left navigation menu, select **Edit**.
+3. Look for the **Manage user settings and extensions** and **Edit user settings** links for each deployment, and select the one corresponding to the component you want to update, such as {{es}} or {{kib}}.
+4. Apply the necessary settings in the **Users Settings** tab of the editor and select **Back** when finished.
+5. Select **Save** to apply the changes to the deployment. Saving your changes initiates a configuration plan change that restarts the affected components for you.
 
-% - [ ] ./raw-migrated-files/cloud/cloud-enterprise/editing-user-settings.md
-% - [ ] ./raw-migrated-files/cloud/cloud-enterprise/ece-add-user-settings.md
-%      Notes: instructions only, link to reference
-% - [ ] ./raw-migrated-files/cloud/cloud-enterprise/ece-manage-kibana-settings.md
-%      Notes: instructions only, link to reference
-% - [ ] ./raw-migrated-files/cloud/cloud-enterprise/ece-manage-apm-settings.md
-%      Notes: instructions only, link to reference
-% - [ ] ./raw-migrated-files/cloud/cloud-enterprise/ece-manage-enterprise-search-settings.md
+The following sections provide extra details and examples for different components:
 
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
-
-$$$ece-edit-apm-fleet-tls$$$
-
-$$$ece-edit-apm-standalone-settings-ece$$$
-
-
-
-**This page is a work in progress.** The documentation team is working to combine content pulled from the following pages:
-
-* [/raw-migrated-files/cloud/cloud-enterprise/editing-user-settings.md](/raw-migrated-files/cloud/cloud-enterprise/editing-user-settings.md)
-* [/raw-migrated-files/cloud/cloud-enterprise/ece-add-user-settings.md](/raw-migrated-files/cloud/cloud-enterprise/ece-add-user-settings.md)
-* [/raw-migrated-files/cloud/cloud-enterprise/ece-manage-kibana-settings.md](/raw-migrated-files/cloud/cloud-enterprise/ece-manage-kibana-settings.md)
-* [/raw-migrated-files/cloud/cloud-enterprise/ece-manage-apm-settings.md](/raw-migrated-files/cloud/cloud-enterprise/ece-manage-apm-settings.md)
-* [/raw-migrated-files/cloud/cloud-enterprise/ece-manage-enterprise-search-settings.md](/raw-migrated-files/cloud/cloud-enterprise/ece-manage-enterprise-search-settings.md)
+* [](./edit-stack-settings-elasticsearch.md)
+* [](./edit-stack-settings-kibana.md)
+* [](./edit-stack-settings-apm.md)
+* [](./edit-stack-settings-enterprise.md)

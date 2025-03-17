@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/event-filters.html
   - https://www.elastic.co/guide/en/serverless/current/security-event-filters.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Event filters

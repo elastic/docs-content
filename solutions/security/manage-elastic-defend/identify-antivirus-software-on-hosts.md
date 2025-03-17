@@ -1,6 +1,10 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/identify-third-party-av-products.html
+applies_to:
+  stack: preview 9.0
+  serverless:
+    security: preview
 ---
 
 # Identify antivirus software on your hosts [identify-third-party-av-products]

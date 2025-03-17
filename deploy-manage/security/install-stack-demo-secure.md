@@ -2,6 +2,8 @@
 applies_to:
   deployment:
     self: ga
+mapped_urls:
+  - https://www.elastic.co/guide/en/elastic-stack/current/install-stack-demo-secure.html
 ---
 
 # Tutorial: Securing a self-managed {{stack}} [install-stack-demo-secure]
@@ -14,15 +16,15 @@ Since {{stack}} 8.0, security is enabled by default, meaning that traffic betwee
 
 For traffic to be encrypted between {{es}} cluster nodes and between {{kib}} and {{es}}, SSL certificates must be created for the transport ({{es}} inter-node communication) and HTTP (for the {{es}} REST API) layers. Similarly, when setting up {{fleet-server}} you’ll generate and configure a new certificate bundle, and then {{elastic-agent}} uses the generated certificates to communicate with both {{fleet-server}} and {{es}}. The process to set things up is as follows:
 
-* [Prerequisites and assumptions](secure-your-cluster-deployment.md#install-stack-demo-secure-prereqs)
-* [Step 1: Generate a new self-signed CA certificate](secure-your-cluster-deployment.md#install-stack-demo-secure-ca)
-* [Step 2: Generate a new certificate for the transport layer](secure-your-cluster-deployment.md#install-stack-demo-secure-transport)
-* [Step 3: Generate new certificate(s) for the HTTP layer](secure-your-cluster-deployment.md#install-stack-demo-secure-http)
-* [Step 4: Configure security on additional {{es}} nodes](secure-your-cluster-deployment.md#install-stack-demo-secure-second-node)
-* [Step 5: Generate server-side and client-side certificates for {{kib}}](secure-your-cluster-deployment.md#install-stack-demo-secure-kib-es)
-* [Step 6: Install {{fleet}} with SSL certificates configured](secure-your-cluster-deployment.md#install-stack-demo-secure-fleet)
-* [Step 7: Install {{agent}}](secure-your-cluster-deployment.md#install-stack-demo-secure-agent)
-* [Step 8: View your system data](secure-your-cluster-deployment.md#install-stack-demo-secure-view-data)
+* [Prerequisites and assumptions](#install-stack-demo-secure-prereqs)
+* [Step 1: Generate a new self-signed CA certificate](#install-stack-demo-secure-ca)
+* [Step 2: Generate a new certificate for the transport layer](#install-stack-demo-secure-transport)
+* [Step 3: Generate new certificate(s) for the HTTP layer](#install-stack-demo-secure-http)
+* [Step 4: Configure security on additional {{es}} nodes](#install-stack-demo-secure-second-node)
+* [Step 5: Generate server-side and client-side certificates for {{kib}}](#install-stack-demo-secure-kib-es)
+* [Step 6: Install {{fleet}} with SSL certificates configured](#install-stack-demo-secure-fleet)
+* [Step 7: Install {{agent}}](#install-stack-demo-secure-agent)
+* [Step 8: View your system data](#install-stack-demo-secure-view-data)
 
 It should take between one and two hours to complete these steps.
 

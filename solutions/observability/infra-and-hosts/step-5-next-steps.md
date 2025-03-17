@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/profiling-self-managed-install-next-steps.html
+applies_to:
+  stack:
 ---
 
 # Step 5: Next steps [profiling-self-managed-install-next-steps]
