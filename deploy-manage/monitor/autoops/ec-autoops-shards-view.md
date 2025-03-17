@@ -10,7 +10,7 @@ applies_to:
 
 The **Shards** view allows you to manage and monitor shards allocated to each node, ensuring optimal performance and reliability of your search and indexing operations.
 
-:::{image} ../../../images/cloud-autoops-shard-view.png
+:::{image} /images/cloud-autoops-shard-view.png
 :alt: The Shards view
 :::
 

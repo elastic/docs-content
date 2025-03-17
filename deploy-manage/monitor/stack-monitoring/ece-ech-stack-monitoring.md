@@ -124,7 +124,7 @@ After you’ve enabled log delivery on your deployment, you can [add the Elastic
 
 * [Audit logging](/deploy-manage/security/logging-configuration/enabling-audit-logs.md) - logs security-related events on your deployment
 
-After you’ve enabled log delivery on your deployment, you can [add the {{kib}} user settings](/deploy-mange/deploy/cloud-enterprise/edit-stack-settings.md) to enable this feature.
+After you’ve enabled log delivery on your deployment, you can [add the {{kib}} user settings](/deploy-manage/deploy/cloud-enterprise/edit-stack-settings.md) to enable this feature.
 
 
 ### Other components [extra-logging-features-enterprise-search]

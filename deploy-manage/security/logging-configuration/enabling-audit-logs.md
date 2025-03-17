@@ -32,7 +32,7 @@ When audit logging is enabled, security events are persisted to a dedicated `<cl
 
 ## Before you  begin
 
-* If you're using ECE or ECH, then you need to [enable monitoring and logging](/deploy-manage/monitor/stack-monitoring/ece-ech-stack-monitoring#enable-logging-and-monitoring-steps.md) on your deployment. As part of enabling monitoring and logging, you choose a location where logs will be delivered.
+* If you're using ECE or ECH, then you need to [enable monitoring and logging](/deploy-manage/monitor/stack-monitoring/ece-ech-stack-monitoring.md) on your deployment. As part of enabling monitoring and logging, you choose a location where logs will be delivered.
 * In production environments, consider creating a separate monitoring cluster that can consume the logs.
 
 ## Enable audit logging [enable-audit-logging-procedure]

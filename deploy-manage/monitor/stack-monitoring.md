@@ -36,7 +36,7 @@ You can collect and ship data directly to your monitoring cluster rather than ro
 
 The following diagram illustrates a typical monitoring architecture with separate production and monitoring clusters. This example shows {{metricbeat}}, but you can use {{agent}} instead.
 
-:::{image} ../../../images/elasticsearch-reference-architecture.png
+:::{image} /images/elasticsearch-reference-architecture.png
 :alt: A typical monitoring environment
 :::
 
@@ -90,8 +90,8 @@ Most of these methods require that you configure monitoring of {{es}} before mon
 * [**APM Server**](/solutions/observability/apps/monitor-apm-server.md)
 
 * **{{agent}}s**: 
-  * [{{fleet}}-managed {{agent}}s](docs-content://reference/ingestion-tools/fleet/monitor-elastic-agent.md) 
-  * [Standalone {{agent}}s](docs-content://reference/ingestion-tools/fleet/elastic-agent-monitoring-configuration.md)
+  * [{{fleet}}-managed {{agent}}s](/reference/ingestion-tools/fleet/monitor-elastic-agent.md) 
+  * [Standalone {{agent}}s](/reference/ingestion-tools/fleet/elastic-agent-monitoring-configuration.md)
 
 ### Access, view, and use monitoring data
 

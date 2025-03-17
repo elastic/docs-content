@@ -40,7 +40,7 @@ To track CPU usage over time, we recommend enabling monitoring:
 
     You can also enable the [CPU usage threshold alert](../../deploy-manage/monitor/monitoring-data/configure-stack-monitoring-alerts.md) to be notified about potential issues through email.
 
-* From your deployment menu, view the [**Performance**](../../deploy-manage/monitor/monitoring-data/access-performance-metrics-on-elastic-cloud.md) page. On this page, you can view two key metrics:
+* From your deployment menu, view the [**Performance**](../../deploy-manage/monitor/access-performance-metrics-on-elastic-cloud.md) page. On this page, you can view two key metrics:
 
     * **CPU usage**: Your deployment’s CPU usage, represented as a percentage.
     * **CPU credits**: Your remaining CPU credits, measured in seconds of CPU time.

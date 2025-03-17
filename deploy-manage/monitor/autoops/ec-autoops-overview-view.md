@@ -10,7 +10,7 @@ applies_to:
 
 The **Overview** page displays the current status of customer deployments in Elastic Cloud Hosted that are linked to the same Elastic organization.
 
-:::{image} ../../../images/cloud-autoops-overview-page.png
+:::{image} /images/cloud-autoops-overview-page.png
 :alt: The Overview page
 :::
 
