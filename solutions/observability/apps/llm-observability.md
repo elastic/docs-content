@@ -33,7 +33,7 @@ Depending on the LLM provider you choose, the following table shows which source
 
 ## APM tracing for OpenAI models (via instrumentation)
 
-Elastic offers specialized OpenTelemetry Protocol (OTLP) tracing for applications leveraging OpeAI models hosted on OpenAI, Azure, and Amazon Bedrock, providing a detailed view of request flows. This tracing capability captures critical insights, including the specific models used, request duration, errors encountered, token consumption per request, and the interaction between prompts and responses. Ideal for troubleshooting, APM tracing allows you to find exactly where the issue is happening with precision and efficiency in your OpenAI-powered application. 
+Elastic offers specialized OpenTelemetry Protocol (OTLP) tracing for applications leveraging OpenAI models hosted on OpenAI, Azure, and Amazon Bedrock, providing a detailed view of request flows. This tracing capability captures critical insights, including the specific models used, request duration, errors encountered, token consumption per request, and the interaction between prompts and responses. Ideal for troubleshooting, APM tracing allows you to find exactly where the issue is happening with precision and efficiency in your OpenAI-powered application. 
 
 You can instrument the application with one of the following OpenTelemetry API:
 
