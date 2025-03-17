@@ -312,7 +312,7 @@ Which returns:
 {
   "is_running": false,
   "took": 55,
-  "is_partial": false,
+  "is_partial": true, <3>
   "columns": [
      ...
   ],
@@ -321,9 +321,9 @@ Which returns:
   ],
   "_clusters": {
     "total": 2,
-    "successful": 2,
+    "successful": 1,
     "running": 0,
-    "skipped": 0,
+    "skipped": 1, <1>
     "partial": 0,
     "failed": 0,
     "details": {
@@ -356,6 +356,7 @@ Which returns:
 
 1. This cluster is marked as *skipped*, since there were no matching indices on that cluster.
 2. Indicates that no shards were searched (due to not having any matching indices).
+3. Since one of the clusters is skipped, the search result is marked as partial.
 
 
 
