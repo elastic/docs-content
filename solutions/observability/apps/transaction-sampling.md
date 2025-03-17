@@ -137,7 +137,7 @@ Due to [OpenTelemetry tail-based sampling limitations](../../../solutions/observ
 
 Tail-based sampling (TBS), by definition, requires storing events locally temporarily, such that they can be retrieved and forwarded once sampling decision is made.
 
-In APM Server implementation, the events are stored temporarily on disk instead of memory for better scalability. Therefore, it requires local disk storage proportional to APM event ingestion rate, and additional memory to facilitate disk reads and writes. Insufficient [storage limit](../../../solutions/observability/apps/transaction-sampling.md#sampling-tail-storage_limit) causes sampling to be bypassed.
+In APM Server implementation, the events are stored temporarily on disk instead of in memory for better scalability. Therefore, it requires local disk storage proportional to APM event ingestion rate, and additional memory to facilitate disk reads and writes. Insufficient [storage limit](../../../solutions/observability/apps/transaction-sampling.md#sampling-tail-storage_limit) causes sampling to be bypassed.
 
 It is recommended to use fast disks, such as NVMe SSDs, when enabling tail-based sampling. Disk throughput and I/O may become performance bottlenecks for tail-based sampling and APM event ingestion overall. Disk writes are proportional to the event ingest rate, while disk reads are proportional to both the event ingest rate and the sampling rate.
 
@@ -167,6 +167,7 @@ Terminology:
 The tail-based sampling implementation in version 9.0 offers significantly better performance compared to version 8.18, primarily due to a rewritten storage layer. This new implementation cleans up expired data more reliably, resulting in reduced load on disk, memory, and compute resources. This improvement is particularly evident in the event indexing rate on slower disks.
 
 In version 8.18, as the database grows larger, the performance slowdown can become disproportionate. The one outlier data point where 8.18 with a 32GB NVMe disk shows a higher ingest rate than 9.0 can be attributed to the change in the balance between disk read and write operations, which results in a slower event indexing rate.
+
 ## Sampled data and visualizations [_sampled_data_and_visualizations]
 
 A sampled trace retains all data associated with it. A non-sampled trace drops all [span](../../../solutions/observability/apps/spans.md) and [transaction](../../../solutions/observability/apps/transactions.md) data1. Regardless of the sampling decision, all traces retain [error](../../../solutions/observability/apps/errors.md) data.
