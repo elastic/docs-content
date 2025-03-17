@@ -2,7 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/about-rules.html
   - https://www.elastic.co/guide/en/serverless/current/security-about-rules.html
-
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # About detection rules [security-about-rules]

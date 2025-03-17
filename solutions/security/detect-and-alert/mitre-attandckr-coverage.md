@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/rules-coverage.html
   - https://www.elastic.co/guide/en/serverless/current/security-rules-coverage.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # MITRE ATT&CK® coverage [security-rules-coverage]

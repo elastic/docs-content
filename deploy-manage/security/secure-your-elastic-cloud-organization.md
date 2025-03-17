@@ -6,7 +6,7 @@ applies_to:
   serverless: ga
 ---
 
-# Secure your Elastic Cloud organization [ec-securing-considerations]
+# Secure your {{ecloud}} organization [ec-securing-considerations]
 
 This section covers security settings for your {{ecloud}} organization, the platform for managing {{ech}} deployments and serverless projects.
 
@@ -14,9 +14,9 @@ This section covers security settings for your {{ecloud}} organization, the plat
 
 As a managed service, Elastic automatically handles a [number of security features](https://www.elastic.co/cloud/security#details) with no configuration required:
 
-- **TLS encrypted communication** is provided in the default configuration. Elasticsearch nodes communicate using TLS.
+- **TLS encrypted communication** is provided in the default configuration. {{es}} nodes communicate using TLS.
 - **Encryption at rest**. By default, all of your {{ecloud}} resources are encrypted at rest. Note that you can choose to encrypt your {{ech}} deployments [using your own encryption key](/deploy-manage/security/encrypt-deployment-with-customer-managed-encryption-key.md).
-- **Cluster isolation**. Elasticsearch nodes run in isolated containers, configured according to the principle of least privilege, and with restrictions on system calls and allowed root operations.
+- **Cluster isolation**. {{es}} nodes run in isolated containers, configured according to the principle of least privilege, and with restrictions on system calls and allowed root operations.
 
 **Additional organization-level security settings**
 

@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/interactive-investigation-guides.html
   - https://www.elastic.co/guide/en/serverless/current/security-interactive-investigation-guides.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Launch Timeline from investigation guides [security-interactive-investigation-guides]

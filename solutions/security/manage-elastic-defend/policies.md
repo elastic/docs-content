@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/policies-page-ov.html
   - https://www.elastic.co/guide/en/serverless/current/security-policies-page.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Policies

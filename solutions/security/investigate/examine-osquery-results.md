@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/view-osquery-results.html
   - https://www.elastic.co/guide/en/serverless/current/security-examine-osquery-results.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Examine Osquery results [security-examine-osquery-results]

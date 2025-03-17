@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/host-isolation-ov.html
   - https://www.elastic.co/guide/en/serverless/current/security-isolate-host.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Isolate a host

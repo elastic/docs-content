@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/cases-open-manage.html
   - https://www.elastic.co/guide/en/serverless/current/security-cases-open-manage.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Open and manage cases [security-cases-open-manage]
@@ -64,7 +68,7 @@ For self-managed {{kib}}:
     ::::
 
 2. Set the `notifications.connectors.default.email` {{kib}} setting to the name of your email connector.
-3. If you want the email notifications to contain links back to the case, you must configure the [server.publicBaseUrl](/deploy-manage/deploy/self-managed/configure.md#server-publicBaseUrl) setting.
+3. If you want the email notifications to contain links back to the case, you must configure the [server.publicBaseUrl](kibana://reference/configuration-reference/general-settings.md#server-publicbaseurl) setting.
 
 When you subsequently add assignees to cases, they receive an email.
 

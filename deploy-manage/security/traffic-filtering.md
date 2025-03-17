@@ -19,7 +19,7 @@ Traffic filtering allows you to limit how your deployments and clusters can be a
 :::::{tab-set}
 :group: deployment-type
 
-::::{tab-item} Elastic Cloud
+::::{tab-item} {{ecloud}}
 :sync: cloud
 
 On {{ecloud}}, the following types of traffic filters are available for your {{ech}} deployments:
@@ -35,7 +35,7 @@ On {{ecloud}}, the following types of traffic filters are available for your {{e
 
 **How does it work?**
 
-By default, all your {{ecloud}} deployments are accessible over the public internet. They are not accessible over unknown PrivateLink connections. This only applies to external traffic. Internal traffic is managed by {{ecloud}}. For example, Kibana can connect to Elasticsearch, as well as internal services which manage the deployment. Other deployments can’t connect to deployments protected by traffic filters.
+By default, all your {{ecloud}} deployments are accessible over the public internet. They are not accessible over unknown PrivateLink connections. This only applies to external traffic. Internal traffic is managed by {{ecloud}}. For example, {{kib}} can connect to {{es}}, as well as internal services which manage the deployment. Other deployments can’t connect to deployments protected by traffic filters.
 
 In {{ecloud}} you can define traffic filters from the **Features** > **Traffic filters** page, and apply them to your {{ech}} deployments individually from their **Settings** page.
 
@@ -51,7 +51,7 @@ Filtering rules are grouped into rule sets, which in turn are associated with on
 - You can assign multiple rule sets to a single deployment. The rule sets can be of different types. In case of multiple rule sets, traffic can match ANY of them. If none of the rule sets match the request is rejected with `403 Forbidden`.
 - Traffic filter rule sets are bound to a single region. The rule sets can be assigned only to deployments in the same region. If you want to associate a rule set with deployments in multiple regions you have to create the same rule set in all the regions you want to apply it to.
 - You can mark a rule set as *default*. It is automatically attached to all new deployments that you create in its region. You can detach default rule sets from deployments after they are created. Note that a *default* rule set is not automatically attached to existing deployments.
-- Traffic filter rule sets when associated with a deployment will apply to all deployment endpoints, such as Elasticsearch, Kibana, APM Server, and others.
+- Traffic filter rule sets when associated with a deployment will apply to all deployment endpoints, such as {{es}}, {{kib}}, APM Server, and others.
 - Any traffic filter rule set assigned to a deployment overrides the default behavior of *allow all access over the public internet endpoint; deny all access over Private Link*. The implication is that if you make a mistake putting in the traffic source (for example, specified the wrong IP address) the deployment will be effectively locked down to any of your traffic. You can use the UI to adjust or remove the rule sets.
 
 
@@ -77,7 +77,7 @@ On {{ece}}, make sure your [load balancer](/deploy-manage/deploy/cloud-enterpris
 
 **How does it work?**
 
-By default, all your deployments are accessible over the public internet, assuming that your orchestrator's proxies are accessible. This only applies to external traffic. Internal traffic is managed by the orchestrator. For example, Kibana can connect to Elasticsearch, as well as internal services which manage the deployment. Other deployments can’t connect to deployments protected by traffic filters.
+By default, all your deployments are accessible over the public internet, assuming that your orchestrator's proxies are accessible. This only applies to external traffic. Internal traffic is managed by the orchestrator. For example, {{kib}} can connect to {{es}}, as well as internal services which manage the deployment. Other deployments can’t connect to deployments protected by traffic filters.
 
 You can define traffic filters from the **Platform** > **Security** page, and apply them to your {{ech}} deployments individually from their **Settings** page.
 
@@ -93,7 +93,7 @@ Filtering rules are grouped into rule sets, which in turn are associated with on
 - You can assign multiple rule sets to a single deployment. The rule sets can be of different types. In case of multiple rule sets, traffic can match ANY of them. If none of the rule sets match the request is rejected with `403 Forbidden`.
 - Traffic filter rule sets are bound to a single region. The rule sets can be assigned only to deployments in the same region. If you want to associate a rule set with deployments in multiple regions you have to create the same rule set in all the regions you want to apply it to.
 - You can mark a rule set as *default*. It is automatically attached to all new deployments that you create in its region. You can detach default rule sets from deployments after they are created. Note that a *default* rule set is not automatically attached to existing deployments.
-- Traffic filter rule sets when associated with a deployment will apply to all deployment endpoints, such as Elasticsearch, Kibana, APM Server, and others.
+- Traffic filter rule sets when associated with a deployment will apply to all deployment endpoints, such as {{es}}, {{kib}}, APM Server, and others.
 - Any traffic filter rule set assigned to a deployment overrides the default behavior of *allow all access over the public internet endpoint; deny all access over Private Link*. The implication is that if you make a mistake putting in the traffic source (for example, specified the wrong IP address) the deployment will be effectively locked down to any of your traffic. You can use the UI to adjust or remove the rule sets.
 
 ::::
