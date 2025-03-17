@@ -94,7 +94,7 @@ In a production environment, it’s important set up dedicated health monitoring
 
 You have the option of sending logs and metrics to a separate, specialized monitoring deployment, which ensures that they’re available in the event of a deployment outage. The monitoring deployment also gives you access to Kibana’s stack monitoring features, through which you can view health and performance data for all of your deployment resources.
 
-Check the guide on [how to set up monitoring](../../../deploy-manage/monitor/stack-monitoring/elastic-cloud-stack-monitoring.md) to learn more.
+Check the guide on [how to set up monitoring](../../../deploy-manage/monitor/stack-monitoring/ece-ech-stack-monitoring.md) to learn more.
 
 
 ## Understanding deployment health [ech-health-best-practices]
