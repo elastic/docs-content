@@ -5,14 +5,14 @@ navigation_title: "Search and filter with ES|QL"
 # Tutorial: Full-text search and filtering with {{esql}}
 
 :::{tip}
-This tutorial presents examples in {{esql}} syntax. Refer to [the Query DSL version](query-dsl-full-text-filter-tutorial.md) for the equivalent examples in Query DSL syntax.
+This tutorial presents examples in {{esql}} syntax. Refer to [the Query DSL version](querydsl-full-text-filter-tutorial.md) for the equivalent examples in Query DSL syntax.
 :::
 
 This is a hands-on introduction to the basics of [full-text search](full-text.md) with Elasticsearch, also known as *lexical search*, and how to filter search results based on exact criteria. In this scenario, we're implementing a search function for a cooking blog. The blog contains recipes with various attributes including textual content, categorical data, and numerical ratings.
 
 ## Requirements
 
-You'll need a running {{es}} cluster, together with {{kib}} to use the Dev Tools API Console. Refer to [choose your deployment type](/deploy-manage/deploy#choosing-your-deployment-type) for deployment options.
+You'll need a running {{es}} cluster, together with {{kib}} to use the Dev Tools API Console. Refer to [choose your deployment type](/deploy-manage/deploy.md#choosing-your-deployment-type) for deployment options.
 
 Want to get started quickly? Run the following command in your terminal to set up a [single-node local cluster in Docker](get-started.md):
 

@@ -29,7 +29,7 @@ To achieve these goals we’ll use different Elasticsearch queries to perform fu
 
 ## Requirements [full-text-filter-tutorial-requirements]
 
-You’ll need a running {{es}} cluster, together with {{kib}} to use the Dev Tools API Console. Refer to [choose your deployment type](/deploy-manage/deploy#choosing-your-deployment-type) for deployment options.
+You’ll need a running {{es}} cluster, together with {{kib}} to use the Dev Tools API Console. Refer to [choose your deployment type](/deploy-manage/deploy.md#choosing-your-deployment-type) for deployment options.
 
 Want to get started quickly? Run the following command in your terminal to set up a [single-node local cluster in Docker](get-started.md):
 
