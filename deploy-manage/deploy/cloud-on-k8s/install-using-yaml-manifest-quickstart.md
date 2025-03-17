@@ -39,7 +39,7 @@ To deploy the ECK operator:
 
 1. Install Elastic's [custom resource definitions](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/) with [`create`](https://kubernetes.io/docs/reference/kubectl/generated/kubectl_create/):
 
-    ```sh
+    ```sh subs=true
     kubectl create -f https://download.elastic.co/downloads/eck/{{eck_version}}/crds.yaml
     ```
 
@@ -58,7 +58,7 @@ To deploy the ECK operator:
 
 2. Using [`kubectl apply`](https://kubernetes.io/docs/reference/kubectl/generated/kubectl_apply/), install the operator with its RBAC rules:
 
-    ```sh
+    ```sh subs=true
     kubectl apply -f https://download.elastic.co/downloads/eck/{{eck_version}}/operator.yaml
     ```
 

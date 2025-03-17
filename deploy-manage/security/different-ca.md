@@ -1,9 +1,10 @@
 ---
+applies_to:
+  self: ga
 navigation_title: "With a different CA"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/update-node-certs-different.html
 ---
-
 
 
 # Different CA [update-node-certs-different]

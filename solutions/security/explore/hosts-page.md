@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/hosts-overview.html
   - https://www.elastic.co/guide/en/serverless/current/security-hosts-overview.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Hosts page

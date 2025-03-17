@@ -55,7 +55,7 @@ Elasticsearch APIs
 $$$ec-restrictions-apis-kibana$$$
 
 Kibana APIs
-:   There are no rate limits restricting your use of the Kibana APIs. However, Kibana features are affected by the [Kibana configuration settings](../self-managed/configure.md), not all of which are supported in {{ecloud}}. For a list of what settings are currently supported, check [Add Kibana user settings](edit-stack-settings.md). For all details about using the Kibana APIs, check the [Kibana API reference documentation](https://www.elastic.co/guide/en/kibana/current/api.html).
+:   There are no rate limits restricting your use of the Kibana APIs. However, Kibana features are affected by the [Kibana configuration settings](kibana://reference/configuration-reference.md), not all of which are supported in {{ecloud}}. For a list of what settings are currently supported, check [Add Kibana user settings](edit-stack-settings.md). For all details about using the Kibana APIs, check the [Kibana API reference documentation](https://www.elastic.co/docs/api/doc/kibana/).
 
 
 ## Transport client [ec-restrictions-transport-client]
