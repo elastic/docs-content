@@ -142,7 +142,7 @@ For geo point fields (![Geo point field icon](../../images/kibana-geoip-icon.png
 
 ### Find and highlight values in the table [in-table-search]
 
-Use the in-table search to find and highlight specific values beyond what's currently visible on your screen. 
+Use the in-table search to find and highlight specific values beyond what's currently visible on your screen.
 
 The in-table search looks for all matching values in all results and pages currently loaded in the table. The number of results loaded depends on the [Sample size](document-explorer.md#document-explorer-sample-size) option value. If you load more results, the search automatically updates and reflects the new number of matching values, if any more are found.
 
