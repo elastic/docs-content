@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/advanced-settings.html
   - https://www.elastic.co/guide/en/serverless/current/security-advanced-settings.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Configure advanced settings [security-advanced-settings]

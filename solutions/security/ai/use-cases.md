@@ -2,16 +2,13 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/assistant-use-cases.html
   - https://www.elastic.co/guide/en/serverless/current/security-ai-use-cases.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Use cases
-
-% What needs to be done: Lift-and-shift
-
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/security-docs/security/assistant-use-cases.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/security-ai-use-cases.md
 
 The guides in this section describe use cases for AI Assistant and Attack discovery. Refer to them for examples of each tool’s individual capabilities and of what they can do together.
 

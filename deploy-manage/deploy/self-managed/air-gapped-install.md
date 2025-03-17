@@ -1,84 +1,298 @@
 ---
 mapped_urls:
   - https://www.elastic.co/guide/en/elastic-stack/current/air-gapped-install.html
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-install-offline.html
+applies_to:
+  deployment:
+    self:
 ---
 
 # Air gapped install
 
-% What needs to be done: Refine
+Some components of the {{stack}} require additional configuration and local dependencies in order to deploy in environments without internet access. This guide gives an overview of this setup scenario and connects you to existing documentation for individual parts of the stack.
 
-% GitHub issue: https://github.com/elastic/docs-projects/issues/309
+Refer to the section for each Elastic component for air-gapped installation configuration and dependencies in a self-managed Linux environment.
 
-% Use migrated content from existing pages that map to this page:
+## {{es}} [air-gapped-elasticsearch]
 
-% - [ ] ./raw-migrated-files/stack-docs/elastic-stack/air-gapped-install.md
-% - [ ] ./raw-migrated-files/cloud/cloud-enterprise/ece-install-offline.md
+Air-gapped install of {{es}} may require additional steps in order to access some of the features. General install and configuration guides are available in [](/deploy-manage/deploy/self-managed/installing-elasticsearch.md).
 
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
+Specifically:
 
-$$$air-gapped-self-managed-linux$$$
-
-$$$air-gapped-elasticsearch$$$
-
-$$$air-gapped-kibana$$$
-
-$$$air-gapped-beats$$$
-
-$$$air-gapped-logstash$$$
-
-$$$air-gapped-elastic-agent$$$
-
-$$$air-gapped-fleet$$$
-
-$$$air-gapped-elastic-apm$$$
-
-$$$air-gapped-elastic-maps-service$$$
-
-$$$air-gapped-enterprise-search$$$
-
-$$$air-gapped-elastic-package-registry$$$
-
-$$$air-gapped-elastic-artifact-registry$$$
-
-$$$air-gapped-elastic-endpoint-artifact-repository$$$
-
-$$$air-gapped-machine-learning$$$
-
-$$$air-gapped-kubernetes-and-openshift$$$
-
-$$$air-gapped-k8s-os-elastic-kubernetes-operator$$$
-
-$$$air-gapped-k8s-os-elastic-package-registry$$$
-
-$$$air-gapped-k8s-os-elastic-artifact-registry$$$
-
-$$$air-gapped-k8s-os-elastic-endpoint-artifact-repository$$$
-
-$$$air-gapped-k8s-os-ironbank-secure-images$$$
-
-$$$air-gapped-ece$$$
-
-$$$air-gapped-elastic-package-registry-example$$$
-
-$$$air-gapped-elastic-artifact-registry-example$$$
-
-$$$air-gapped-epr-kubernetes-example$$$
-
-$$$air-gapped-agent-integration-guide$$$
-
-$$$air-gapped-agent-integration-terminology$$$
-
-$$$air-gapped-agent-integration-configure$$$
-
-$$$air-gapped-agent-integration-configure-kibana$$$
-
-$$$air-gapped-agent-integration-configure-yml$$$
-
-$$$air-gapped-agent-integration-configure-fleet-api$$$
-
-$$$air-gapped-kibana-product-documentation$$$
+* To be able to use the GeoIP processor, refer to [the GeoIP processor documentation](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/enrich-processor/geoip-processor.md#manually-update-geoip-databases) for instructions on downloading and deploying the required databases.
+* Refer to [{{ml-cap}}](/deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-machine-learning) for instructions on deploying the Elastic Learned Sparse EncodeR (ELSER) natural language processing (NLP) model and other trained {{ml}} models.
 
 
-**This page is a work in progress.** The documentation team is working to combine content pulled from the following pages:
+## {{kib}} [air-gapped-kibana]
 
-* [/raw-migrated-files/stack-docs/elastic-stack/air-gapped-install.md](/raw-migrated-files/stack-docs/elastic-stack/air-gapped-install.md)
+Air-gapped install of {{kib}} may require a number of additional services in the local network in order to access some of the features. General install and configuration guides are available in the [{{kib}} install documentation](/deploy-manage/deploy/self-managed/install-kibana.md).
+
+Specifically:
+
+* To be able to use {{kib}} mapping visualizations, you need to set up and configure the [Elastic Maps Service](/deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-elastic-maps-service).
+* To be able to use {{kib}} sample data, install or update hundreds of prebuilt alert rules, and explore available data integrations, you need to set up and configure the [{{package-registry}}](/deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-elastic-package-registry).
+* To provide detection rule updates for {{endpoint-sec}} agents, you need to set up and configure the [Elastic Endpoint Artifact Repository](/deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-elastic-endpoint-artifact-repository).
+* To access the APM integration, you need to set up and configure [Elastic APM](/deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-elastic-apm).
+* To install and use the Elastic documentation for {{kib}} AI assistants, you need to set up and configure the [Elastic product documentation for {{kib}}](/deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-kibana-product-documentation).
+
+
+## {{beats}} [air-gapped-beats]
+
+Elastic {{beats}} are light-weight data shippers. They do not require any special configuration in air-gapped environments. To learn more, refer to the [{{beats}} documentation](asciidocalypse://docs/beats/docs/reference/index.md).
+
+
+## {{ls}} [air-gapped-logstash]
+
+{{ls}} is a versatile data shipping and processing application. It does not require any special configuration in air-gapped environments. To learn more, refer to the [{{ls}} documentation](asciidocalypse://docs/logstash/docs/reference/index.md).
+
+
+## {{agent}} [air-gapped-elastic-agent]
+
+Air-gapped install of {{agent}} depends on the [{{package-registry}}](/deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-elastic-package-registry) and the [{{artifact-registry}}](/deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-elastic-artifact-registry) for most use-cases. The agent itself is fairly lightweight and installs dependencies only as required by its configuration. In terms of connections to these dependencies, {{agents}} need to be able to connect to the {{artifact-registry}} directly, but {{package-registry}} connections are handled through [{{kib}}](/deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-kibana).
+
+Additionally, if the {{agent}} {{elastic-defend}} integration is used, then access to the [Elastic Endpoint Artifact Repository](/deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-elastic-endpoint-artifact-repository) is necessary in order to deploy updates for some of the detection and prevention capabilities.
+
+To learn more about install and configuration, refer to the [{{agent}} install documentation](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/install-elastic-agents.md). Make sure to check the requirements specific to running {{agents}} in an [air-gapped environment](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/air-gapped.md).
+
+
+## {{fleet-server}} [air-gapped-fleet]
+
+{{fleet-server}} is a required middleware component for any scalable deployment of the {{agent}}. The air-gapped dependencies of {{fleet-server}} are the same as those of the [{{agent}}](/deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-elastic-agent).
+
+To learn more about installing {{fleet-server}}, refer to the [{{fleet-server}} set up documentation](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/fleet-server.md).
+
+
+## Elastic APM [air-gapped-elastic-apm]
+
+Air-gapped setup of the APM server is possible in two ways:
+
+* By setting up one of the {{agent}} deployments with an APM integration, as described in [Switch a self-installation to the APM integration](/solutions/observability/apps/switch-self-installation-to-apm-integration.md). See [air gapped installation guidance for {{agent}}](#air-gapped-elastic-agent).
+* Or, by installing a standalone Elastic APM Server, as described in the [APM configuration documentation](/solutions/observability/apps/configure-apm-server.md).
+
+
+## {{ems}} [air-gapped-elastic-maps-service]
+
+Refer to [Connect to {{ems}}](../../../explore-analyze/visualize/maps/maps-connect-to-ems.md) in the {{kib}} documentation to learn how to configure your firewall to connect to {{ems}}, host it locally, or disable it completely.
+
+
+## {{package-registry}} [air-gapped-elastic-package-registry]
+
+Air-gapped install of the EPR is possible using any OCI-compatible runtime like Podman (a typical choice for RHEL-like Linux systems) or Docker. Links to the official container image and usage guide is available on the [Air-gapped environments](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/air-gapped.md) page in the {{fleet}} and {{agent}} Guide.
+
+::::{note}
+Besides setting up the EPR service, you also need to [configure {{kib}}](/deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-kibana) to use this service. If using TLS with the EPR service, it is also necessary to set up {{kib}} to trust the certificate presented by the EPR.
+::::
+
+### Additional {{package-registry}} examples
+
+:::{dropdown} Script to generate a SystemD service file on a RHEL 8 system
+
+The following script generates a SystemD service file on a RHEL 8 system in order to run EPR with Podman in a production environment.
+
+```sh subs=true
+#!/usr/bin/env bash
+
+EPR_BIND_ADDRESS="0.0.0.0"
+EPR_BIND_PORT="8443"
+EPR_TLS_CERT="/etc/elastic/epr/epr.pem"
+EPR_TLS_KEY="/etc/elastic/epr/epr-key.pem"
+EPR_IMAGE="docker.elastic.co/package-registry/distribution:{{stack-version}}"
+
+podman create \
+  --name "elastic-epr" \
+  -p "$EPR_BIND_ADDRESS:$EPR_BIND_PORT:$EPR_BIND_PORT" \
+  -v "$EPR_TLS_CERT:/etc/ssl/epr.crt:ro" \
+  -v "$EPR_TLS_KEY:/etc/ssl/epr.key:ro" \
+  -e "EPR_ADDRESS=0.0.0.0:$EPR_BIND_PORT" \
+  -e "EPR_TLS_CERT=/etc/ssl/epr.crt" \
+  -e "EPR_TLS_KEY=/etc/ssl/epr.key" \
+  "$EPR_IMAGE"
+
+## creates service file in the root directory
+# podman generate systemd --new --files --name elastic-epr --restart-policy always
+```
+:::
+
+:::{dropdown} SystemD service file launched as a Podman service
+
+The following is an example of an actual SystemD service file for an EPR, launched as a Podman service.
+
+```ini subs=true
+# container-elastic-epr.service
+# autogenerated by Podman 4.1.1
+# Wed Oct 19 13:12:33 UTC 2022
+
+[Unit]
+Description=Podman container-elastic-epr.service
+Documentation=man:podman-generate-systemd(1)
+Wants=network-online.target
+After=network-online.target
+RequiresMountsFor=%t/containers
+
+[Service]
+Environment=PODMAN_SYSTEMD_UNIT=%n
+Restart=always
+TimeoutStopSec=70
+ExecStartPre=/bin/rm -f %t/%n.ctr-id
+ExecStart=/usr/bin/podman run \
+  --cidfile=%t/%n.ctr-id \
+  --cgroups=no-conmon \
+  --rm \
+  --sdnotify=conmon \
+  -d \
+  --replace \
+  --name elastic-epr \
+  -p 0.0.0.0:8443:8443 \
+  -v /etc/elastic/epr/epr.pem:/etc/ssl/epr.crt:ro \
+  -v /etc/elastic/epr/epr-key.pem:/etc/ssl/epr.key:ro \
+  -e EPR_ADDRESS=0.0.0.0:8443 \
+  -e EPR_TLS_CERT=/etc/ssl/epr.crt \
+  -e EPR_TLS_KEY=/etc/ssl/epr.key docker.elastic.co/package-registry/distribution:{{stack-version}}
+ExecStop=/usr/bin/podman stop --ignore --cidfile=%t/%n.ctr-id
+ExecStopPost=/usr/bin/podman rm -f --ignore --cidfile=%t/%n.ctr-id
+Type=notify
+NotifyAccess=all
+
+[Install]
+WantedBy=default.target
+```
+:::
+
+## {{artifact-registry}} [air-gapped-elastic-artifact-registry]
+
+Air-gapped install of the {{artifact-registry}} is necessary in order to enable {{agent}} deployments to perform self-upgrades and install certain components which are needed for some of the data integrations (that is, in addition to what is also retrieved from the EPR). To learn more, refer to [Host your own artifact registry for binary downloads](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/air-gapped.md#host-artifact-registry) in the {{fleet}} and {{elastic-agent}} Guide.
+
+::::{note}
+When setting up own web server, such as NGINX, to function as the {{artifact-registry}}, it is recommended not to use TLS as there are, currently, no direct ways to establish certificate trust between {{agents}} and this service.
+::::
+
+### Additional {{artifact-registry}} examples
+
+:::{dropdown} Artifact download script
+
+The following example script downloads artifacts from the internet to be later served as a private Elastic Package Registry.
+
+```sh subs=true
+#!/usr/bin/env bash
+set -o nounset -o errexit -o pipefail
+
+STACK_VERSION={{stack-version}}
+ARTIFACT_DOWNLOADS_BASE_URL=https://artifacts.elastic.co/downloads
+
+DOWNLOAD_BASE_DIR=${DOWNLOAD_BASE_DIR:?"Make sure to set DOWNLOAD_BASE_DIR when running this script"}
+
+COMMON_PACKAGE_PREFIXES="apm-server/apm-server beats/auditbeat/auditbeat beats/elastic-agent/elastic-agent beats/filebeat/filebeat beats/heartbeat/heartbeat beats/metricbeat/metricbeat beats/osquerybeat/osquerybeat beats/packetbeat/packetbeat cloudbeat/cloudbeat endpoint-dev/endpoint-security fleet-server/fleet-server"
+
+WIN_ONLY_PACKAGE_PREFIXES="beats/winlogbeat/winlogbeat"
+
+RPM_PACKAGES="beats/elastic-agent/elastic-agent"
+DEB_PACKAGES="beats/elastic-agent/elastic-agent"
+
+function download_packages() {
+  local url_suffix="$1"
+  local package_prefixes="$2"
+
+  local _url_suffixes="$url_suffix ${url_suffix}.sha512 ${url_suffix}.asc"
+  local _pkg_dir=""
+  local _dl_url=""
+
+  for _download_prefix in $package_prefixes; do
+    for _pkg_url_suffix in $_url_suffixes; do
+          _pkg_dir=$(dirname ${DOWNLOAD_BASE_DIR}/${_download_prefix})
+          _dl_url="${ARTIFACT_DOWNLOADS_BASE_URL}/${_download_prefix}-${_pkg_url_suffix}"
+          (mkdir -p $_pkg_dir && cd $_pkg_dir && curl -O "$_dl_url")
+    done
+  done
+}
+
+# and we download
+for _os in linux windows; do
+  case "$_os" in
+    linux)
+      PKG_URL_SUFFIX="${STACK_VERSION}-${_os}-x86_64.tar.gz"
+      ;;
+    windows)
+      PKG_URL_SUFFIX="${STACK_VERSION}-${_os}-x86_64.zip"
+      ;;
+    *)
+      echo "[ERROR] Something happened"
+      exit 1
+      ;;
+  esac
+
+  download_packages "$PKG_URL_SUFFIX" "$COMMON_PACKAGE_PREFIXES"
+
+  if [[ "$_os" = "windows" ]]; then
+    download_packages "$PKG_URL_SUFFIX" "$WIN_ONLY_PACKAGE_PREFIXES"
+  fi
+
+  if [[ "$_os" = "linux" ]]; then
+    download_packages "${STACK_VERSION}-x86_64.rpm" "$RPM_PACKAGES"
+    download_packages "${STACK_VERSION}-amd64.deb" "$DEB_PACKAGES"
+  fi
+done
+
+
+## selinux tweaks
+# semanage fcontext -a -t "httpd_sys_content_t" '/opt/elastic-packages(/.*)?'
+# restorecon -Rv /opt/elastic-packages
+```
+:::
+
+:::{dropdown} NGINX config for private {{artifact-registry}} web server
+The following is an example NGINX configuration for running a web server for the {{artifact-registry}}.
+
+```sh
+user  nginx;
+worker_processes  2;
+
+error_log  /var/log/nginx/error.log notice;
+pid        /var/run/nginx.pid;
+
+events {
+    worker_connections  1024;
+}
+
+http {
+    include       /etc/nginx/mime.types;
+    default_type  application/octet-stream;
+
+    log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+                      '$status $body_bytes_sent "$http_referer" '
+                      '"$http_user_agent" "$http_x_forwarded_for"';
+
+    access_log          /var/log/nginx/access.log  main;
+    sendfile            on;
+    keepalive_timeout   65;
+
+    server {
+        listen                  9080 default_server;
+        server_name             _;
+        root                    /opt/elastic-packages;
+
+        location / {
+
+        }
+    }
+
+}
+```
+:::
+
+
+## Elastic Endpoint Artifact Repository [air-gapped-elastic-endpoint-artifact-repository]
+
+Air-gapped setup of this component is, essentially, identical to the setup of the [{{artifact-registry}}](/deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-elastic-artifact-registry) except that different artifacts are served. To learn more, refer to [Configure offline endpoints and air-gapped environments](../../../solutions/security/configure-elastic-defend/configure-offline-endpoints-air-gapped-environments.md) in the Elastic Security guide.
+
+
+## {{ml-cap}} [air-gapped-machine-learning]
+
+Some {{ml}} features, like natural language processing (NLP), require you to deploy trained models. To learn about deploying {{ml}} models in an air-gapped environment, refer to:
+
+* [Deploy ELSER in an air-gapped environment](../../../explore-analyze/machine-learning/nlp/ml-nlp-elser.md#air-gapped-install).
+* [Install trained models in an air-gapped environment with Eland](asciidocalypse://docs/eland/docs/reference/machine-learning.md#ml-nlp-pytorch-air-gapped).
+
+
+## {{kib}} Product documentation for AI Assistants [air-gapped-kibana-product-documentation]
+
+Detailed install and configuration instructions are available in the [{{kib}} AI Assistants settings documentation](asciidocalypse://docs/kibana/docs/reference/configuration-reference/ai-assistant-settings.md).

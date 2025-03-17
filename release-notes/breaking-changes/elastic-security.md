@@ -2,10 +2,10 @@
 navigation_title: "Elastic Security"
 ---
 
-# Elastic Security breaking changes [elastic-security-breaking-changes]
-Before you upgrade, carefully review the Elastic Security breaking changes and take the necessary steps to mitigate any issues. 
+# {{elastic-sec}} breaking changes [elastic-security-breaking-changes]
+Before you upgrade, carefully review the {{elastic-sec}} breaking changes and take the necessary steps to mitigate any issues. 
 
-To learn how to upgrade, check out <uprade docs>.
+To learn how to upgrade, check [Upgrade](/deploy-manage/upgrade.md).
 
 % ## Next version [elastic-security-nextversion-breaking-changes]
 % **Release date:** Month day, year
@@ -18,7 +18,7 @@ To learn how to upgrade, check out <uprade docs>.
 % ::::
 
 ## 9.0.0 [elastic-security-900-breaking-changes]
-**Release date:** March 25, 2025
+**Release date:** April 1, 2025
 
 ::::{dropdown} Removed legacy security rules bulk endpoints
 * `POST /api/detection_engine/rules/_bulk_create` has been replaced by `POST /api/detection_engine/rules/_import`

@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/kspm.html
   - https://www.elastic.co/guide/en/serverless/current/security-kspm.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Kubernetes security posture management

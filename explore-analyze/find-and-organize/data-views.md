@@ -10,16 +10,6 @@ mapped_urls:
 
 # Data views [data-views]
 
-% What needs to be done: Align serverless/stateful
-
-% Use migrated content from existing pages that map to this page:
-
-% - [ ] ./raw-migrated-files/kibana/kibana/data-views.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/data-views.md
-% - [ ] ./raw-migrated-files/kibana/kibana/managing-data-views.md
-
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
-
 $$$field-formatters-numeric$$$
 
 $$$managing-fields$$$
@@ -101,10 +91,10 @@ Temporary {{data-sources}} are not available in the **Management** menu.
 
 
 ### Use {{data-sources}} with rolled up data [rollup-data-view]
-::::{applies_to}
-:serverless: unavailable
-:stack: deprecated
-::::
+```{applies_to}
+serverless: unavailable
+stack: deprecated
+```
 
 ::::{admonition}
 :class: warning
@@ -123,10 +113,10 @@ For an example, refer to [Create and visualize rolled up data](/manage-data/life
 
 
 ### Use {{data-sources}} with {{ccs}} [management-cross-cluster-search]
-::::{applies_to}
-:serverless: unavailable
-:stack: ga
-::::
+```{applies_to}
+serverless: unavailable
+stack: ga
+```
 
 If your {{es}} clusters are configured for [{{ccs}}](../../solutions/search/cross-cluster-search.md), you can create a {{data-source}} to search across the clusters of your choosing. Specify data streams, indices, and aliases in a remote cluster using the following syntax:
 

@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/host-isolation-ov.html
   - https://www.elastic.co/guide/en/serverless/current/security-isolate-host.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Isolate a host
@@ -45,7 +49,7 @@ All actions executed on a host are tracked in the host’s response actions hist
 ::::{dropdown} Isolate a host from a detection alert
 1. Open a detection alert:
 
-    * From the Alerts table or Timeline: Click **View details** (![View details icon](../../../images/security-view-details-icon.png "")).
+    * From the Alerts table or Timeline: Click **View details** (![View details icon](../../../images/security-view-details-icon.png "title =20x20")).
     * From a case with an attached alert: Click **Show alert details** (**>**).
 
 2. Click **Take action → Isolate host**.
@@ -116,7 +120,7 @@ After the host is successfully isolated, an **Isolated** status is added to the 
 ::::{dropdown} Release a host from a detection alert
 1. Open a detection alert:
 
-    * From the Alerts table or Timeline: Click **View details** (![View details icon](../../../images/security-view-details-icon.png "")).
+    * From the Alerts table or Timeline: Click **View details** (![View details icon](../../../images/security-view-details-icon.png "title =20x20")).
     * From a case with an attached alert: Click **Show alert details** (**>**).
 
 2. From the alert details flyout, click **Take action → Release host**.

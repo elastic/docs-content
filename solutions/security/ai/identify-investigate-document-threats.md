@@ -2,26 +2,13 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/attack-discovery-ai-assistant-incident-reporting.html
   - https://www.elastic.co/guide/en/serverless/current/security-ai-usecase-incident-reporting.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Identify, investigate, and document threats
-
-% What needs to be done: Lift-and-shift
-
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/security-docs/security/attack-discovery-ai-assistant-incident-reporting.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/security-ai-usecase-incident-reporting.md
-
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
-
-$$$use-case-incident-reporting-create-a-case-using-ai-assistant$$$
-
-$$$use-case-incident-reporting-translate$$$
-
-$$$use-case-incident-reporting-use-ai-assistant-to-analyze-a-threat$$$
-
-$$$use-case-incident-reporting-use-attack-discovery-to-identify-threats$$$
 
 Together, [Elastic AI Assistant](/solutions/security/ai/ai-assistant.md) and [Attack discovery](/solutions/security/ai/attack-discovery.md) can help you identify and mitigate threats, investigate incidents, and generate incident reports in various languages so you can monitor and protect your environment.
 
@@ -67,7 +54,7 @@ At any point in a conversation with AI Assistant, you can add data, narrative su
 
 ## Generate reports [use-case-incident-reporting-create-a-case-using-ai-assistant]
 
-From the AI Assistant dialog window, click **Add to case** (![Add to case icon](../../../images/security-icon-add-to-case.png "")) next to a message to add the information in that message to a [case](/solutions/security/investigate/cases.md). Cases help centralize relevant details in one place for easy sharing with stakeholders.
+From the AI Assistant dialog window, click **Add to case** (![Add to case icon](../../../images/security-icon-add-to-case.png "title =20x20")) next to a message to add the information in that message to a [case](/solutions/security/investigate/cases.md). Cases help centralize relevant details in one place for easy sharing with stakeholders.
 
 If you add a message that contains a discovery to a case, AI Assistant automatically adds the attack summary and all associated alerts to the case. You can also add AI Assistant messages that contain remediation steps and relevant data to the case.
 

@@ -4,7 +4,10 @@ mapped_urls:
   - https://www.elastic.co/guide/en/serverless/current/security-prebuilt-rules-management.html
 
 navigation_title: "Use Elastic prebuilt rules"
-
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Install and manage Elastic prebuilt rules [security-prebuilt-rules-management]

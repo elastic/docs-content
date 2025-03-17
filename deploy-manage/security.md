@@ -98,20 +98,21 @@ The availability and configurability of security features vary by deployment typ
 
 ## Security topics
 
-The documentation is organized into four main areas.
+The documentation is organized into three main areas.
 
-:::{note}
-Throughout the documentation, you'll see deployment type indicators that show which content applies to specific deployment types. Focus on sections tagged with your deployment type and look for subsections specifically addressing your deployment model.
-:::
+On every page, you'll see deployment type indicators that show which content applies to specific deployment types. Focus on sections tagged with your deployment type and look for subsections specifically addressing your deployment model.
 
-### 1. Secure your hosting environment
+### 1. Secure your orchestrator
 
-The [security of your hosting environment](security/secure-hosting-environment.md) forms the foundation of your overall security posture. This section covers environment-specific security controls:
+The [security of your orchestrator](security/secure-hosting-environment.md) forms the foundation of your overall security posture. This section covers environment-specific security controls:
 
 - [**Elastic Cloud Hosted and Serverless**](security/secure-your-elastic-cloud-organization.md)
 - [**Elastic Cloud Enterprise**](security/secure-your-elastic-cloud-enterprise-installation.md)
 - [**Elastic Cloud on Kubernetes**](security/secure-your-eck-installation.md)
-- [**Self-managed environments**](security/manually-configure-security-in-self-managed-cluster.md)
+
+:::{note}
+There is no orchestration layer for self-managed deployments because you directly control the host environment. Refer to [](security/manually-configure-security-in-self-managed-cluster.md) to learn more about securing self-managed installations.
+:::
 
 ### 2. Secure your deployments and clusters
 
@@ -120,16 +121,11 @@ The [security of your hosting environment](security/secure-hosting-environment.m
 - [**Traffic filtering**](security/traffic-filtering.md): IP filtering, private links, and static IPs
 - [**Secure communications**](security/secure-cluster-communications.md): TLS configuration, certificates management
 - [**Data protection**](security/data-security.md): Encryption at rest, secure settings, saved objects
+- [**Security event audit logging**](security/logging-configuration/security-event-audit-logging.md): {{es}} and {{kib}} audit logs
 - [**Session management**](security/kibana-session-management.md): Kibana session controls
 - [**FIPS 140-2 compliance**](security/fips-140-2.md): Federal security standards
 
-### 3. Secure your personal account
-
-[Secure your personal account](security/secure-your-personal-account.md) to help prevent unauthorized access:
-
-- Multi-factor authentication and account security best practices
-
-### 4. Secure your clients and integrations
+### 3. Secure your clients and integrations
 
 [Secure your clients and integrations](security/secure-clients-integrations.md) to ensure secure communication between your applications and Elastic:
 

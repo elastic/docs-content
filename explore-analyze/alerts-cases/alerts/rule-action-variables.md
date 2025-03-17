@@ -34,7 +34,7 @@ All rule types pass the following variables:
 :   The date the rule scheduled the action, in ISO format.
 
 `kibanaBaseUrl`
-:   The configured [`server.publicBaseUrl`](../../../deploy-manage/deploy/self-managed/configure.md#server-publicBaseUrl). If not configured, this will be empty.
+:   The configured [`server.publicBaseUrl`](kibana://reference/configuration-reference/general-settings.md#server-publicbaseurl). If not configured, this will be empty.
 
 `rule.id`
 :   The rule identifier.

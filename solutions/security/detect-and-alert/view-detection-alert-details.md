@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/view-alert-details.html
   - https://www.elastic.co/guide/en/serverless/current/security-view-alert-details.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # View detection alert details [security-view-alert-details]
@@ -38,7 +42,7 @@ From the right panel, you can also:
 
     ::::{note}
     For {{stack}} users only:
-    If you’ve configured the [`server.publicBaseUrl`](/deploy-manage/deploy/self-managed/configure.md#server-publicBaseUrl) setting in the `kibana.yml` file, the shareable URL is also in the `kibana.alert.url` field. You can find the field by searching for `kibana.alert.url` on the **Table** tab.
+    If you’ve configured the [`server.publicBaseUrl`](kibana://reference/configuration-reference/general-settings.md#server-publicbaseurl) setting in the `kibana.yml` file, the shareable URL is also in the `kibana.alert.url` field. You can find the field by searching for `kibana.alert.url` on the **Table** tab.
     ::::
 
 

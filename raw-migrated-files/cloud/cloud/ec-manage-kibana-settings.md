@@ -112,7 +112,7 @@ If a setting is not supported by {{ech}}, you will get an error message when you
 :   The maximum payload size in bytes for incoming server requests. Default: 1048576. To learn more, check [Configure Kibana](kibana://reference/configuration-reference/general-settings.md#server-maxpayload).
 
 `server.securityResponseHeaders.strictTransportSecurity`
-:   Controls whether the [`Strict-Transport-Security`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Strict-Transport-Security) header is used in all responses to the client from the Kibana server. To learn more, check [Configure Kibana](kibana://reference/configuration-reference/general-settings.md#server-securityresponseheaders-stricttransportsecurity).
+:   Controls whether the [`Strict-Transport-Security`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Strict-Transport-Security) header is used in all responses to the client from the Kibana server. To learn more, check [Configure Kibana](kibana://reference/configuration-reference/general-settings.md##server-securityresponseheaders-stricttransportsecurity).
 
 `server.securityResponseHeaders.xContentTypeOptions`
 :   Controls whether the [`X-Content-Type-Options`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Content-Type-Options) header is used in all responses to the client from the Kibana server. To learn more, check [Configure Kibana](kibana://reference/configuration-reference/general-settings.md#server-securityresponseheaders-xcontenttypeoptions).
