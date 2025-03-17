@@ -26,7 +26,7 @@ Scaling isn’t just about adding more nodes—it also involves [optimizing the 
 
 ## Scaling and fault tolerance
 
-When adding zones for fault tolerance or high availability, it might seem like you’re also scaling up. While additional zones might improve the performance, they should not be relied upon for additional capacity.
+When adding zones for fault tolerance or high availability (HA), it might seem like you’re also scaling up. While additional zones might improve the performance, they should not be relied upon for additional capacity.
 
 In {{ech}} and {{ece}}, the concept of zones is intended for:
 * High Availability (2 zones)
@@ -34,11 +34,9 @@ In {{ech}} and {{ece}}, the concept of zones is intended for:
 
 Neither will work if the cluster relies on the resources from those zones to be operational.
 
-The recommendation is to scale up the resources within a single zone until the cluster can take the full load (add some buffer to be prepared for a peak of requests), then scale out by adding additional zones depending on your requirements: 2 zones for High Availability, 3 zones for Fault Tolerance.
+Fo true HA at zone level, the recommended approach is to **first scale up** resources within a single zone until the cluster can take the full load (add some buffer to be prepared for a peak of requests), **then scale out** by adding additional zones depending on your requirements: 2 zones for High Availability, 3 zones for Fault Tolerance.
 
-::::{note}
-This is a general recommendation, but you are free to design your cluster in a way that best supports your high availability (HA) requirements. Just ensure you fully understand the implications of your choices and plan accordingly.
-::::
+Although the previous is the general recommendation, you should design your cluster to best support your HA requirements. Just make sure you fully understand the implications of your choices and plan accordingly.
 
 ## How to scale
 
