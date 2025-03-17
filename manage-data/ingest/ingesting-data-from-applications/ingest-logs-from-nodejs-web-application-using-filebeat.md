@@ -2,54 +2,13 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/cloud/current/ec-getting-started-search-use-cases-node-logs.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-getting-started-search-use-cases-node-logs.html
+applies_to:
+  stack: ga
 ---
 
 # Ingest logs from a Node.js web application using Filebeat
 
-% What needs to be done: Refine
-
-% Scope notes: Merge ESS and ECE versions (should be pretty much identical)
-
-% Use migrated content from existing pages that map to this page:
-
-% - [ ] ./raw-migrated-files/cloud/cloud/ec-getting-started-search-use-cases-node-logs.md
-% - [ ] ./raw-migrated-files/cloud/cloud-enterprise/ece-getting-started-search-use-cases-node-logs.md
-
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
-
-$$$ec-node-logs-connect-securely$$$
-
-$$$ec-node-logs-create-request-script$$$
-
-$$$ec-node-logs-create-server-script$$$
-
-$$$ec-node-logs-filebeat$$$
-
-$$$ec-node-logs-prerequisites$$$
-
-$$$ec-node-logs-send-ess$$$
-
-$$$ec-node-logs-trial$$$
-
-$$$ec-node-logs-view-kibana$$$
-
-$$$ece-node-logs-connect-securely$$$
-
-$$$ece-node-logs-create-request-script$$$
-
-$$$ece-node-logs-create-server-script$$$
-
-$$$ece-node-logs-deployment$$$
-
-$$$ece-node-logs-filebeat$$$
-
-$$$ece-node-logs-prerequisites$$$
-
-$$$ece-node-logs-send-ess$$$
-
-$$$ece-node-logs-view-kibana$$$
-
-This guide demonstrates how to ingest logs from a Node.js web application and deliver them securely into an {{ech}} or {{ece}} deployment. You’ll set up Filebeat to monitor a JSON-structured log file that has standard Elastic Common Schema (ECS) formatted fields, and you’ll then view real-time visualizations of the log events in Kibana as requests are made to the Node.js server. While Node.js is used for this example, this approach to monitoring log output is applicable across many client types. Check the list of [available ECS logging plugins](asciidocalypse://docs/ecs-logging/docs/reference/intro.md#_get_started).
+This guide demonstrates how to ingest logs from a Node.js web application and deliver them securely into an {{ech}} or {{ece}} deployment. You’ll set up Filebeat to monitor a JSON-structured log file that has standard Elastic Common Schema (ECS) formatted fields, and you’ll then view real-time visualizations of the log events in Kibana as requests are made to the Node.js server. While Node.js is used for this example, this approach to monitoring log output is applicable across many client types. Check the list of [available ECS logging plugins](ecs-logging://reference/intro.md#_get_started).
 
 *Time required: 1.5 hours*
 
@@ -71,7 +30,7 @@ For the three following packages, you can create a working directory to install 
     npm install winston
     ```
 
-* The [Elastic Common Schema (ECS) formatter](asciidocalypse://docs/ecs-logging-nodejs/docs/reference/winston.md) for the Node.js winston logger - This plugin formats your Node.js logs into an ECS structured JSON format ideally suited for ingestion into Elasticsearch. To install the ECS winston logger, run the following command in your working directory so that the package is installed in the same location as the winston package:
+* The [Elastic Common Schema (ECS) formatter](ecs-logging-nodejs://reference/winston.md) for the Node.js winston logger - This plugin formats your Node.js logs into an ECS structured JSON format ideally suited for ingestion into Elasticsearch. To install the ECS winston logger, run the following command in your working directory so that the package is installed in the same location as the winston package:
 
     ```sh
     npm install @elastic/ecs-winston-format

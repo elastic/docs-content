@@ -14,7 +14,7 @@ If more than one feature exists at a location, the tooltip displays the attribut
 
 :::{image} ../../../images/kibana-multifeature_tooltip.png
 :alt: multifeature tooltip
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -35,6 +35,6 @@ This image shows a locked tooltip with features from three layers. The tooltip d
 
 :::{image} ../../../images/kibana-locked_tooltip.png
 :alt: locked tooltip
-:class: screenshot
+:screenshot:
 :::
 

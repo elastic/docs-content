@@ -57,7 +57,7 @@ High availability is achieved by running a cluster with replicas in multiple dat
 Running in two data centers or availability zones is our default high availability configuration. It provides reasonably high protection against infrastructure failures and intermittent network problems. You might want three data centers if you need even higher fault tolerance. Just one zone might be sufficient, if the cluster is mainly used for testing or development.
 
 ::::{important}
-Some [regions](asciidocalypse://docs/cloud/docs/reference/cloud-hosted/regions.md) might have only two availability zones.
+Some [regions](cloud://reference/cloud-hosted/regions.md) might have only two availability zones.
 ::::
 
 

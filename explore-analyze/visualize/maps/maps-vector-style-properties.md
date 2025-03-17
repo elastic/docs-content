@@ -50,7 +50,7 @@ Available icons
 
 :::{image} ../../../images/kibana-maki-icons.png
 :alt: maki icons
-:class: screenshot
+:screenshot:
 :::
 
 Custom Icons

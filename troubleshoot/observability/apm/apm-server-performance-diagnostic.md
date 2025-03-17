@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-performance-diagnostic.html
+applies_to:
+  stack: all
 ---
 
 # APM Server performance diagnostic [apm-performance-diagnostic]

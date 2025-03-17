@@ -27,7 +27,7 @@ Considerations:
    :::
 
    :::{tab-item} Self-managed
-   To install and run {{es}} and {{kib}}, see [Installing the {{stack}}](/deploy-manage/deploy/self-managed/deploy-cluster.md).
+   To install and run {{es}} and {{kib}}, see [Installing the {{stack}}](/deploy-manage/deploy/self-managed/installing-elasticsearch.md).
    :::
 
    ::::
@@ -199,7 +199,7 @@ You can also add `type=tmpfs` to the mount parameter (`--mount type=tmpfs,destin
 
     :::{image} images/kibana-fleet-agents.png
     :alt: {{agent}}s {{fleet}} page
-    :class: screenshot
+    :screenshot:
     :::
 
 3. To view data flowing in, go to **Analytics → Discover** and select the index `metrics-*`, or even more specific, `metrics-kubernetes.*`. If you can’t see these indexes, [create a data view](/explore-analyze/find-and-organize/data-views.md) for them.

@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/add-manage-notes.html
   - https://www.elastic.co/guide/en/serverless/current/security-add-manage-notes.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Notes [security-add-manage-notes]
@@ -22,7 +26,7 @@ After notes are created, the **Add note** icon displays a notification dot. In t
 
 :::{image} ../../../images/security-new-note-alert-event.png
 :alt: New note added to an alert
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -39,7 +43,7 @@ After notes are created, the **Notes** Timeline tab displays the total number of
 
 :::{image} ../../../images/security-new-note-timeline-tab.png
 :alt: New note added to a Timeline
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -56,5 +60,5 @@ Use the **Notes** page to view and interact with all existing notes. To access t
 
 :::{image} ../../../images/security-notes-management-page.png
 :alt: Notes management page
-:class: screenshot
+:screenshot:
 :::

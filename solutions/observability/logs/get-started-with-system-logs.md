@@ -31,7 +31,7 @@ After the agent is installed and successfully streaming log data, you can view t
 
 :::{image} ../../../images/serverless-log-explorer-select-syslogs.png
 :alt: Screen capture of the Logs Explorer showing syslog dataset selected
-:class: screenshot
+:screenshot:
 :::
 
 

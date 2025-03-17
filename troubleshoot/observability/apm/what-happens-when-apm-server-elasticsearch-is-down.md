@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-server-es-down.html
+applies_to:
+  stack: all
 ---
 
 # APM Server or Elasticsearch is down [apm-server-es-down]
@@ -13,8 +15,8 @@ APM Server does not have an internal queue to buffer requests, but instead lever
 
 Some agents have internal queues or buffers that will temporarily store data if the APM Server goes down. As a general rule of thumb, queues fill up quickly. Assume data will be lost if APM Server goes down. Adjusting these queues/buffers can increase the agent’s overhead, so use caution when updating default values.
 
-* **Go agent** - Circular buffer with configurable size: [`ELASTIC_APM_BUFFER_SIZE`](asciidocalypse://docs/apm-agent-go/docs/reference/configuration.md#config-api-buffer-size).
-* **Java agent** - Internal buffer with configurable size: [`max_queue_size`](asciidocalypse://docs/apm-agent-java/docs/reference/config-reporter.md#config-max-queue-size).
+* **Go agent** - Circular buffer with configurable size: [`ELASTIC_APM_BUFFER_SIZE`](apm-agent-go://reference/configuration.md#config-api-buffer-size).
+* **Java agent** - Internal buffer with configurable size: [`max_queue_size`](apm-agent-java://reference/config-reporter.md#config-max-queue-size).
 * **Node.js agent** - No internal queue. Data is lost.
 * **PHP agent** - No internal queue. Data is lost.
 * **Python agent** - Internal [Transaction queue](asciidocalypse://docs/apm-agent-python/docs/reference/performance-tuning.md#tuning-queue) with configurable size and time between flushes.

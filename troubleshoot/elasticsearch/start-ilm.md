@@ -41,7 +41,7 @@ In order to start {{ilm}} we need to go to Kibana and execute the [start command
 
     :::{image} ../../images/elasticsearch-reference-kibana-console.png
     :alt: {{kib}} Console
-    :class: screenshot
+    :screenshot:
     :::
 
 4. [Start](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-start) {{ilm}}:
@@ -129,7 +129,7 @@ In order to start {{slm}} we need to go to Kibana and execute the [start command
 
     :::{image} ../../images/elasticsearch-reference-kibana-console.png
     :alt: {{kib}} Console
-    :class: screenshot
+    :screenshot:
     :::
 
 4. [Start](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-slm-start) {{slm}}:

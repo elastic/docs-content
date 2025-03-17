@@ -7,7 +7,7 @@ mapped_pages:
 
 Amazon EC2 (AWS) C6gd, M6gd & R6gd instances, powered by AWS Graviton2, are now available for Elastic Cloud deployments. C6gd, M6gd & R6gd VMs use the [Graviton2, ARM neoverse N1 cores](https://aws.amazon.com/about-aws/whats-new/2020/07/announcing-new-amazon-ec2-instances-powered-aws-graviton2-processors/) and provide high compute coupled with fast NVMe storage, which makes them a good fit to power Elastic workloads. In addition, Graviton2 VMs also offer more than a 20% improvement in price-performance over comparable Intel chipsets.
 
-In addition to AWS Graviton2 instances, Amazon EC2 (AWS) C5d, M5d, I3, I3en, and D2/D3 instances are now available for Elastic Cloud deployments in all supported [AWS Cloud Regions](asciidocalypse://docs/cloud/docs/reference/cloud-hosted/ec-regions-templates-instances.md#ec-aws_regions).
+In addition to AWS Graviton2 instances, Amazon EC2 (AWS) C5d, M5d, I3, I3en, and D2/D3 instances are now available for Elastic Cloud deployments in all supported [AWS Cloud Regions](cloud://reference/cloud-hosted/ec-regions-templates-instances.md#ec-aws_regions).
 
 For specific AWS hardware and availability details, check the [Regional availability of instances per AWS region](ech-default-aws-configurations.md#aws-list-region) and the [AWS default provider instance configurations](ech-default-aws-configurations.md).
 

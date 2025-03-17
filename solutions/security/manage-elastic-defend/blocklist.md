@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/blocklist.html
   - https://www.elastic.co/guide/en/serverless/current/security-blocklist.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Blocklist
@@ -69,7 +73,7 @@ The **Blocklist** page displays all the blocklist entries that have been added t
 
 :::{image} ../../../images/security-blocklist.png
 :alt: blocklist
-:class: screenshot
+:screenshot:
 :::
 
 

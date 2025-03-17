@@ -32,7 +32,7 @@ In order to get the shards assigned we need enable a new tier in the deployment.
 
     :::{image} ../../images/elasticsearch-reference-kibana-console.png
     :alt: {{kib}} Console
-    :class: screenshot
+    :screenshot:
     :::
 
 4. Determine which tier an index expects for assignment. [Retrieve](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-settings) the configured value for the `index.routing.allocation.include._tier_preference` setting:

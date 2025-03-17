@@ -30,7 +30,7 @@ In order to diagnose the unassigned shards, follow the next steps:
 
     :::{image} ../../images/elasticsearch-reference-kibana-console.png
     :alt: {{kib}} Console
-    :class: screenshot
+    :screenshot:
     :::
 
 4. View the unassigned shards using the [cat shards API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-shards).

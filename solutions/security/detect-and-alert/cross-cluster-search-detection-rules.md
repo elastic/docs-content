@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/security/current/rules-cross-cluster-search.html
+applies_to:
+  stack: all
 ---
 
 # Cross-cluster search and detection rules [rules-cross-cluster-search]
@@ -25,14 +27,14 @@ This section explains the general process for setting up cross-cluster search in
 
         :::{image} ../../../images/security-ccs-local-role.png
         :alt: Local cluster role configuration
-        :class: screenshot
+        :screenshot:
         :::
 
     2. **Remote cluster role**: Assign the `read` and `read_cross_cluster` privileges to the indices you want to search. You don’t need to include the remote cluster’s name here.
 
         :::{image} ../../../images/security-ccs-remote-role.png
         :alt: Remote cluster role configuration
-        :class: screenshot
+        :screenshot:
         :::
 
 3. On the local cluster:
@@ -49,7 +51,7 @@ This section explains the general process for setting up cross-cluster search in
 
         :::{image} ../../../images/security-ccs-rule-source.png
         :alt: Rule source configuration
-        :class: screenshot
+        :screenshot:
         :::
 
         ::::{note}

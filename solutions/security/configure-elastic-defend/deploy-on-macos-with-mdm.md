@@ -3,6 +3,10 @@ navigation_title: "Deploy on macOS with MDM"
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/deploy-with-mdm.html
   - https://www.elastic.co/guide/en/serverless/current/security-deploy-with-mdm.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Deploy {{elastic-defend}} on macOS with mobile device management [deploy-with-mdm]
@@ -38,7 +42,7 @@ In Jamf, create a configuration profile for {{elastic-endpoint}}. Follow these s
 
 :::{image} ../../../images/security-system-extension-jamf.png
 :alt: system extension jamf
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -69,7 +73,7 @@ In Jamf, create a configuration profile for {{elastic-endpoint}}. Follow these s
 
 :::{image} ../../../images/security-content-filtering-jamf.png
 :alt: content filtering jamf
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -92,7 +96,7 @@ In Jamf, create a configuration profile for {{elastic-endpoint}}. Follow these s
 
 :::{image} ../../../images/security-notifications-jamf.png
 :alt: notifications jamf
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -139,7 +143,7 @@ In Jamf, create a configuration profile for {{elastic-endpoint}}. Follow these s
 
 :::{image} ../../../images/security-fda-jamf.png
 :alt: fda jamf
-:class: screenshot
+:screenshot:
 :::
 
 After you complete these steps, generate the mobile configuration profile and install it onto the macOS machines. Once the profile is installed, {{elastic-defend}} can be deployed without the need for user interaction.

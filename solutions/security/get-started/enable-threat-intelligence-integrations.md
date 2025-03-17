@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/es-threat-intel-integrations.html
   - https://www.elastic.co/guide/en/serverless/current/security-threat-intelligence.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Enable threat intelligence integrations [security-enable-threat-intelligence-integrations]
@@ -20,7 +24,7 @@ You can connect to threat intelligence sources using an [{{agent}} integration](
 
 :::{image} ../../../images/getting-started-threat-intelligence-view.png
 :alt: The Threat Intelligence view on the Overview dashboard
-:class: screenshot
+:screenshot:
 :::
 
 There are a few scenarios when data won’t display in the Threat Intelligence view:
@@ -31,7 +35,7 @@ There are a few scenarios when data won’t display in the Threat Intelligence v
 
 ## Add an {{agent}} integration [agent-ti-integration]
 
-1. Install a [{{fleet}}-managed {{agent}}](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/install-fleet-managed-elastic-agent.md) on the hosts you want to monitor.
+1. Install a [{{fleet}}-managed {{agent}}](/reference/ingestion-tools/fleet/install-fleet-managed-elastic-agent.md) on the hosts you want to monitor.
 2. In the Threat Intelligence view, click **Enable sources** to view the Integrations page. Scroll down and select **Elastic Agent only** to filter by {{agent}} integrations.
 
     ::::{tip}
@@ -56,7 +60,7 @@ There are a few scenarios when data won’t display in the Threat Intelligence v
 
 2. Update the `securitySolution:defaultThreatIndex` [advanced setting](configure-advanced-settings.md#update-threat-intel-indices) by adding the appropriate index pattern name after the default {{fleet}} threat intelligence index pattern (`logs-ti*`):
 
-    * If you’re *only* using {{filebeat}} version 8.x, add the appropriate {{filebeat}} threat intelligence index pattern. For example, `logs-ti*`, `filebeat-8*`. 
+    * If you’re *only* using {{filebeat}} version 8.x, add the appropriate {{filebeat}} threat intelligence index pattern. For example, `logs-ti*`, `filebeat-8*`.
     * If you’re using a previous version of Filebeat *and* a current one, differentiate between the threat intelligence indices by using unique index pattern names. For example, if you’re using {{filebeat}} version 7.0.0 and 8.0.0, update the setting to `logs-ti*`,`filebeat-7*`,`filebeat-8*`.
 
 3. Return to the Threat Intelligence view on the Overview dashboard. Refresh the page if indicator data isn’t displaying.

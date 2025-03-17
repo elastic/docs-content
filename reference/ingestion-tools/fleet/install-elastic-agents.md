@@ -64,7 +64,9 @@ If you are using {{agent}} with [{{serverless-full}}](/deploy-manage/deploy/elas
 
 ::::
 
-
+::::{admonition} Applying {{agent}} configurations dynamically
+When you set up {{agent}}, you might not yet have all input configuration details available. To solve this problem, the input configuration accepts variables and conditions that get evaluated at runtime using information from the running environment, allowing you to apply configurations dynamically. To learn more, refer to [Variables and conditions in input configurations](./dynamic-input-configuration.md).
+::::
 
 ## Resource requirements [elastic-agent-installation-resource-requirements]
 
@@ -75,7 +77,7 @@ Using our lab environment as an example, we can observe the following resource c
 
 ### CPU and RSS memory size [_cpu_and_rss_memory_size]
 
-We tested using an AWS `m7i.large` instance type with 2 vCPUs, 8.0 GB of memory, and up to 12.5 Gbps of bandwidth. The tests ingested a single log file using both the [throughput and scale preset](/reference/ingestion-tools/fleet/elasticsearch-output.md#output-elasticsearch-performance-tuning-settings) with self monitoring enabled. These tests are representative of use cases that attempt to ingest data as fast as possible. This does not represent the resource overhead when using [{{elastic-defend}}](asciidocalypse://docs/reference/endpoint.md).
+We tested using an AWS `m7i.large` instance type with 2 vCPUs, 8.0 GB of memory, and up to 12.5 Gbps of bandwidth. The tests ingested a single log file using both the [throughput and scale preset](/reference/ingestion-tools/fleet/elasticsearch-output.md#output-elasticsearch-performance-tuning-settings) with self monitoring enabled. These tests are representative of use cases that attempt to ingest data as fast as possible. This does not represent the resource overhead when using [{{elastic-defend}}](asciidocalypse://docs/integration-docs/docs/reference/endpoint.md).
 
 |     |     |     |
 | --- | --- | --- |

@@ -35,7 +35,7 @@ Elastic offers several distributions of OpenTelemetry language SDKs. A *distribu
 
 :::{image} ../../../images/observability-apm-otel-distro.png
 :alt: apm otel distro
-:class: screenshot
+:screenshot:
 :::
 
 With an Elastic Distribution of OpenTelemetry language SDK you have access to all the features of the OpenTelemetry SDK that it customizes, plus:
@@ -63,7 +63,7 @@ Use the OpenTelemetry API/SDKs with [Elastic APM agents](../../../solutions/obse
 
 :::{image} ../../../images/observability-apm-otel-api-sdk-elastic-agent.png
 :alt: apm otel api sdk elastic agent
-:class: screenshot
+:screenshot:
 :::
 
 This allows you to reuse your existing OpenTelemetry instrumentation to create Elastic APM transactions and spans — ​avoiding vendor lock-in and having to redo manual instrumentation.
@@ -72,8 +72,8 @@ However, not all features of the OpenTelemetry API are supported when using this
 
 Find more details about how to use an OpenTelemetry API or SDK with an Elastic APM agent and which OpenTelemetry API features are supported in the APM agent documentation:
 
-* [**APM Java agent →**](asciidocalypse://docs/apm-agent-java/docs/reference/opentelemetry-bridge.md)
-* [**APM .NET agent →**](asciidocalypse://docs/apm-agent-dotnet/docs/reference/opentelemetry-bridge.md)
+* [**APM Java agent →**](apm-agent-java://reference/opentelemetry-bridge.md)
+* [**APM .NET agent →**](apm-agent-dotnet://reference/opentelemetry-bridge.md)
 * [**APM Node.js agent →**](asciidocalypse://docs/apm-agent-nodejs/docs/reference/opentelemetry-bridge.md)
 * [**APM Python agent →**](asciidocalypse://docs/apm-agent-python/docs/reference/opentelemetry-api-bridge.md)
 
@@ -86,7 +86,7 @@ You can set up an [OpenTelemetry Collector](https://opentelemetry.io/docs/collec
 
 :::{image} ../../../images/observability-apm-otel-api-sdk-collector.png
 :alt: apm otel api sdk collector
-:class: screenshot
+:screenshot:
 :::
 
 ::::{note}

@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/network-page-overview.html
   - https://www.elastic.co/guide/en/serverless/current/security-network-page-overview.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Network page
@@ -10,7 +14,7 @@ The Network page provides key network activity metrics in an interactive map, an
 
 :::{image} ../../../images/security-network-ui.png
 :alt: network ui
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -79,7 +83,7 @@ The IP’s details page includes the following sections:
 
 :::{image} ../../../images/security-IP-detail-pg.png
 :alt: IP details page
-:class: screenshot
+:screenshot:
 :::
 
 

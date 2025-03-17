@@ -2,6 +2,8 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/cloud/current/ec-getting-started-node-js.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-getting-started-node-js.html
+applies_to:
+  stack: ga
 ---
 
 # Ingest data with Node.js
@@ -168,7 +170,7 @@ async function run() {
 run().catch(console.log)
 ```
 
-When using the [client.index](asciidocalypse://docs/elasticsearch-js/docs/reference/api-reference.md#_index) API, the request automatically creates the `game-of-thrones` index if it doesn’t already exist, as well as document IDs for each indexed document if they are not explicitly specified.
+When using the [client.index](elasticsearch-js://reference/api-reference.md#_index) API, the request automatically creates the `game-of-thrones` index if it doesn’t already exist, as well as document IDs for each indexed document if they are not explicitly specified.
 
 
 ## Search and modify data [ec_search_and_modify_data]
@@ -215,7 +217,7 @@ async function update() {
 update().catch(console.log)
 ```
 
-This [more comprehensive list of API examples](asciidocalypse://docs/elasticsearch-js/docs/reference/examples.md) includes bulk operations, checking the existence of documents, updating by query, deleting, scrolling, and SQL queries. To learn more, check the complete [API reference](asciidocalypse://docs/elasticsearch-js/docs/reference/api-reference.md).
+This [more comprehensive list of API examples](elasticsearch-js://reference/examples.md) includes bulk operations, checking the existence of documents, updating by query, deleting, scrolling, and SQL queries. To learn more, check the complete [API reference](elasticsearch-js://reference/api-reference.md).
 
 
 ## Switch to API key authentication [ec_switch_to_api_key_authentication]
@@ -290,7 +292,7 @@ const client = new Client({
 })
 ```
 
-Check [Create API key API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-api-key) to learn more about API Keys and [Security privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md) to understand which privileges are needed. If you are not sure what the right combination of privileges for your custom application is, you can enable [audit logging](../../../deploy-manage/monitor/logging-configuration/enabling-audit-logs.md) on {{es}} to find out what privileges are being used. To learn more about how logging works on {{ech}} or {{ece}}, check [Monitoring Elastic Cloud deployment logs and metrics](https://www.elastic.co/blog/monitoring-elastic-cloud-deployment-logs-and-metrics).
+Check [Create API key API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-api-key) to learn more about API Keys and [Security privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md) to understand which privileges are needed. If you are not sure what the right combination of privileges for your custom application is, you can enable [audit logging](../../../deploy-manage/security/logging-configuration/enabling-audit-logs.md) on {{es}} to find out what privileges are being used. To learn more about how logging works on {{ech}} or {{ece}}, check [Monitoring Elastic Cloud deployment logs and metrics](https://www.elastic.co/blog/monitoring-elastic-cloud-deployment-logs-and-metrics).
 
 
 ### Best practices [ec_best_practices]
@@ -302,11 +304,11 @@ Security
 
 
 Connections ({{ech}} only)
-:   If your application connecting to {{ech}} runs under the Java security manager, you should at least disable the caching of positive hostname resolutions. To learn more, check the [Java API Client documentation](asciidocalypse://docs/elasticsearch-java/docs/reference/_others.md).
+:   If your application connecting to {{ech}} runs under the Java security manager, you should at least disable the caching of positive hostname resolutions. To learn more, check the [Java API Client documentation](elasticsearch-java://reference/_others.md).
 
 Schema
 :   When the example code was run an index mapping was created automatically. The field types were selected by {{es}} based on the content seen when the first record was ingested, and updated as new fields appeared in the data. It would be more efficient to specify the fields and field types in advance to optimize performance. Refer to the Elastic Common Schema documentation and Field Type documentation when you are designing the schema for your production use cases.
 
 Ingest
-:   For more advanced scenarios, this [bulk ingestion](asciidocalypse://docs/elasticsearch-js/docs/reference/bulk_examples.md) reference gives an example of the `bulk` API that makes it possible to perform multiple operations in a single call. This bulk example also explicitly specifies document IDs. If you have a lot of documents to index, using bulk to batch document operations is significantly faster than submitting requests individually.
+:   For more advanced scenarios, this [bulk ingestion](elasticsearch-js://reference/bulk_examples.md) reference gives an example of the `bulk` API that makes it possible to perform multiple operations in a single call. This bulk example also explicitly specifies document IDs. If you have a lot of documents to index, using bulk to batch document operations is significantly faster than submitting requests individually.
 

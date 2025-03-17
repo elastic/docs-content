@@ -9,13 +9,6 @@ mapped_urls:
 
 # Tags [managing-tags]
 
-% What needs to be done: Refine
-
-% Use migrated content from existing pages that map to this page:
-
-% - [ ] ./raw-migrated-files/docs-content/serverless/tags.md
-% - [ ] ./raw-migrated-files/kibana/kibana/managing-tags.md
-
 
 Use tags to categorize your saved objects, then filter for related objects based on shared tags.
 
@@ -23,7 +16,7 @@ To get started, go to the **Tags** management page using the navigation menu or 
 
 :::{image} ../../images/kibana-tag-management-section.png
 :alt: Tags management
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -62,7 +55,7 @@ To assign and remove tags, you must have `write` permission on the objects to wh
 
    :::{image} ../../images/kibana-manage-assignments-flyout.png
    :alt: Assign flyout
-   :class: screenshot
+   :screenshot:
    :width: 50%
    :::
 

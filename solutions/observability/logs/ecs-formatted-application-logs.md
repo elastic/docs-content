@@ -26,13 +26,13 @@ ECS loggers reformat your application logs into ECS-compatible JSON, removing th
 
 For more information on adding an ECS logger to your application, refer to the guide for your framework:
 
-* [.NET](asciidocalypse://docs/ecs-dotnet/docs/reference/setup.md)
-* Go: [zap](asciidocalypse://docs/ecs-logging-go-zap/docs/reference/setup.md)
-* [Java](asciidocalypse://docs/ecs-logging-java/docs/reference/setup.md)
-* Node.js: [morgan](asciidocalypse://docs/ecs-logging-nodejs/docs/reference/winston.md)
-* [PHP](asciidocalypse://docs/ecs-logging-php/docs/reference/setup.md)
-* [Python](asciidocalypse://docs/ecs-logging-python/docs/reference/installation.md)
-* [Ruby](asciidocalypse://docs/ecs-logging-ruby/docs/reference/setup.md)
+* [.NET](ecs-dotnet://reference/setup.md)
+* Go: [zap](ecs-logging-go-zap://reference/setup.md)
+* [Java](ecs-logging-java://reference/setup.md)
+* Node.js: [morgan](ecs-logging-nodejs://reference/winston.md)
+* [PHP](ecs-logging-php://reference/setup.md)
+* [Python](ecs-logging-python://reference/installation.md)
+* [Ruby](ecs-logging-ruby://reference/setup.md)
 
 
 ## APM agent ECS reformatting [apm-agent-ecs-reformatting]
@@ -50,7 +50,7 @@ To set up log ECS reformatting:
 
 Log ECS reformatting is controlled by the `log_ecs_reformatting` configuration option, and is disabled by default. Refer to the guide for your framework for information on enabling:
 
-* [Java](asciidocalypse://docs/apm-agent-java/docs/reference/config-logging.md#config-log-ecs-reformatting)
+* [Java](apm-agent-java://reference/config-logging.md#config-log-ecs-reformatting)
 * [Ruby](asciidocalypse://docs/apm-agent-ruby/docs/reference/configuration.md#config-log-ecs-formatting)
 * [Python](asciidocalypse://docs/apm-agent-python/docs/reference/configuration.md#config-log_ecs_reformatting)
 
@@ -75,14 +75,14 @@ Install {{filebeat}} on the server you want to monitor by running the commands t
 :::::::{tab-set}
 
 ::::::{tab-item} DEB
-```sh
+```sh subs=true
 curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{version}}-darwin-x86_64.tar.gz
 tar xzvf filebeat-{{version}}-darwin-x86_64.tar.gz
 ```
 ::::::
 
 ::::::{tab-item} RPM
-```sh
+```sh subs=true
 curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{version}}-linux-x86_64.tar.gz
 tar xzvf filebeat-{{version}}-linux-x86_64.tar.gz
 ```
@@ -105,14 +105,14 @@ If script execution is disabled on your system, you need to set the execution po
 ::::::
 
 ::::::{tab-item} Linux
-```sh
+```sh subs=true
 curl -L -O https\://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{version}}-amd64.deb
 sudo dpkg -i filebeat-{{version}}-amd64.deb
 ```
 ::::::
 
 ::::::{tab-item} Windows
-```sh
+```sh subs=true
 curl -L -O https\://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{version}}-x86_64.rpm
 sudo rpm -vi filebeat-{{version}}-x86_64.rpm
 ```

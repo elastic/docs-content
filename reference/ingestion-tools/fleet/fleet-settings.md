@@ -6,7 +6,7 @@ mapped_pages:
 # Fleet settings [fleet-settings]
 
 ::::{note}
-The settings described here are configurable through the {{fleet}} UI. Refer to [{{fleet}} settings in {{kib}}](asciidocalypse://docs/reference/configuration-reference/fleet-settings.md) for a list of settings that you can configure in the `kibana.yml` configuration file.
+The settings described here are configurable through the {{fleet}} UI. Refer to [{{fleet}} settings in {{kib}}](kibana://reference/configuration-reference/fleet-settings.md) for a list of settings that you can configure in the `kibana.yml` configuration file.
 ::::
 
 
@@ -18,7 +18,7 @@ On the **Settings** tab in **Fleet**, you can configure global settings availabl
 Click **Edit hosts** and specify the host URLs your {{agent}}s will use to connect to a {{fleet-server}}.
 
 ::::{tip}
-If the **Edit hosts** option is grayed out, {{fleet-server}} hosts are configured outside of {{fleet}}. For more information, refer to [{{fleet}} settings in {{kib}}](asciidocalypse://docs/reference/configuration-reference/fleet-settings.md).
+If the **Edit hosts** option is grayed out, {{fleet-server}} hosts are configured outside of {{fleet}}. For more information, refer to [{{fleet}} settings in {{kib}}](kibana://reference/configuration-reference/fleet-settings.md).
 ::::
 
 
@@ -93,7 +93,7 @@ To add or edit an output:
 5. Click **Save and apply settings**.
 
 ::::{tip}
-If the options for editing an output are grayed out, outputs are configured outside of {{fleet}}. For more information, refer to [{{fleet}} settings in {{kib}}](asciidocalypse://docs/reference/configuration-reference/fleet-settings.md).
+If the options for editing an output are grayed out, outputs are configured outside of {{fleet}}. For more information, refer to [{{fleet}} settings in {{kib}}](kibana://reference/configuration-reference/fleet-settings.md).
 ::::
 
 

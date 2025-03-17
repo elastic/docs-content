@@ -1,9 +1,12 @@
 ---
+applies_to:
+  deployment:
+    ece: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-configuring-ece-templates.html
 ---
 
-# Configure deployment templates [ece-configuring-ece-templates]
+# Manage deployment templates [ece-configuring-ece-templates]
 
 Deployment templates combine components of the Elastic Stack, such as Elasticsearch nodes and Kibana instances, for different use cases. Compared to a one-size-fits-all approach to deploying the Elastic Stack, templates provide much greater flexibility and ensure that your deployments have the resources they need to support your use cases. To make the most of deployment templates, you must configure ECE for them.
 

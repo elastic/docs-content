@@ -8,7 +8,7 @@ mapped_pages:
 To access and send cases to external systems, you need the [appropriate license](https://www.elastic.co/subscriptions), and your role must have the **Cases** {{kib}} privilege as a user for the **{{observability}}** feature.
 
 ::::{note}
-If you are using an on-premises {{kib}} deployment and want your email notifications and external incident management systems to contain links back to {{kib}}, configure the [server.publicBaseUrl](../../../deploy-manage/deploy/self-managed/configure.md#server-publicBaseUrl) setting.
+If you are using an on-premises {{kib}} deployment and want your email notifications and external incident management systems to contain links back to {{kib}}, configure the [server.publicBaseUrl](kibana://reference/configuration-reference/general-settings.md#server-publicbaseurl) setting.
 ::::
 
 
@@ -16,7 +16,7 @@ For more details, refer to [feature access based on user privileges](../../../de
 
 :::{image} ../../../images/observability-cases-privileges.png
 :alt: cases privileges
-:class: screenshot
+:screenshot:
 :::
 
 Below are the minimum required privileges for some common use cases.

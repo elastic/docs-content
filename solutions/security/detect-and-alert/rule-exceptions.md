@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/detections-ui-exceptions.html
   - https://www.elastic.co/guide/en/serverless/current/security-rule-exceptions.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Rule exceptions [detections-ui-exceptions]
@@ -19,7 +23,7 @@ You can create exceptions that apply exclusively to a single rule. These types o
 
 :::{image} ../../../images/security-exception-item-example.png
 :alt: An exception item
-:class: screenshot
+:screenshot:
 :::
 
 ::::{note}
@@ -34,7 +38,7 @@ If you want an exception to apply to multiple rules, you can add an exception to
 
 :::{image} ../../../images/security-rule-exceptions-page.png
 :alt: Shared Exception Lists page
-:class: screenshot
+:screenshot:
 :::
 
 

@@ -37,7 +37,7 @@ In the example in *Figure 1*, `Service A` initiates four transactions and has sa
 
 :::{image} ../../../images/observability-dt-sampling-example-1.png
 :alt: Distributed tracing and head based sampling example one
-:class: screenshot
+:screenshot:
 :::
 
 In the example in *Figure 2*, `Service A` initiates four transactions and has a sample rate of `1` (`100%`). Again, the upstream sampling decision is respected, so the sample rate for all services will be `1` (`100%`).
@@ -46,7 +46,7 @@ In the example in *Figure 2*, `Service A` initiates four transactions and has a 
 
 :::{image} ../../../images/observability-dt-sampling-example-2.png
 :alt: Distributed tracing and head based sampling example two
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -64,7 +64,7 @@ In the example in *Figure 3*, `Service A` is an Elastic-monitored service that i
 
 :::{image} ../../../images/observability-dt-sampling-continuation-strategy-restart_external.png
 :alt: Distributed tracing and head based sampling with restart_external continuation strategy
-:class: screenshot
+:screenshot:
 :::
 
 Use the **`restart`** trace continuation strategy on an Elastic-monitored service to start a new trace regardless of whether the previous service had a `traceparent` header. This can be helpful if an Elastic-monitored service is publicly exposed, and you do not want tracing data to possibly be spoofed by user requests.
@@ -182,9 +182,9 @@ The transaction sample rate can be changed dynamically (no redeployment necessar
 
 Each agent provides a configuration value used to set the transaction sample rate. See the relevant agent’s documentation for more details:
 
-* Go: [`ELASTIC_APM_TRANSACTION_SAMPLE_RATE`](asciidocalypse://docs/apm-agent-go/docs/reference/configuration.md#config-transaction-sample-rate)
-* Java: [`transaction_sample_rate`](asciidocalypse://docs/apm-agent-java/docs/reference/config-core.md#config-transaction-sample-rate)
-* .NET: [`TransactionSampleRate`](asciidocalypse://docs/apm-agent-dotnet/docs/reference/config-core.md#config-transaction-sample-rate)
+* Go: [`ELASTIC_APM_TRANSACTION_SAMPLE_RATE`](apm-agent-go://reference/configuration.md#config-transaction-sample-rate)
+* Java: [`transaction_sample_rate`](apm-agent-java://reference/config-core.md#config-transaction-sample-rate)
+* .NET: [`TransactionSampleRate`](apm-agent-dotnet://reference/config-core.md#config-transaction-sample-rate)
 * Node.js: [`transactionSampleRate`](asciidocalypse://docs/apm-agent-nodejs/docs/reference/configuration.md#transaction-sample-rate)
 * PHP: [`transaction_sample_rate`](asciidocalypse://docs/apm-agent-php/docs/reference/configuration-reference.md#config-transaction-sample-rate)
 * Python: [`transaction_sample_rate`](asciidocalypse://docs/apm-agent-python/docs/reference/configuration.md#config-transaction-sample-rate)
@@ -198,7 +198,7 @@ Enable tail-based sampling with [Enable tail-based sampling](../../../solutions/
 Trace events are matched to policies in the order specified. Each policy list must conclude with a default policy — one that only specifies a sample rate. This default policy is used to catch remaining trace events that don’t match a stricter policy. Requiring this default policy ensures that traces are only dropped intentionally. If you enable tail-based sampling and send a transaction that does not match any of the policies, APM Server will reject the transaction with the error `no matching policy`.
 
 ::::{important}
-Please note that from version `8.3.1` APM Server implements a default storage limit of 3GB, but, due to how the limit is calculated and enforced the actual disk space may still grow slightly over the limit.
+Please note that from version `9.0.0` APM Server has an unlimited storage limit, but will stop writing when the disk where the database resides reaches 80% usage. Due to how the limit is calculated and enforced, the actual disk space may still grow slightly over this disk usage based limit, or any configured storage limit.
 ::::
 
 
@@ -229,7 +229,7 @@ This example defines three tail-based sampling polices:
 #### Top-level tail-based sampling settings [_top_level_tail_based_sampling_settings]
 
 
-##### Enable tail-based sampling [sampling-tail-enabled-{{input-type}}]
+##### Enable tail-based sampling [sampling-tail-enabled]
 
 Set to `true` to enable tail based sampling. Disabled by default. (bool)
 
@@ -239,7 +239,7 @@ Set to `true` to enable tail based sampling. Disabled by default. (bool)
 | Fleet-managed | `Enable tail-based sampling` |
 
 
-##### Interval [sampling-tail-interval-{{input-type}}]
+##### Interval [sampling-tail-interval]
 
 Synchronization interval for multiple APM Servers. Should be in the order of tens of seconds or low minutes. Default: `1m` (1 minute). (duration)
 
@@ -249,7 +249,7 @@ Synchronization interval for multiple APM Servers. Should be in the order of ten
 | Fleet-managed | `Interval` |
 
 
-##### Policies [sampling-tail-policies-{{input-type}}]
+##### Policies [sampling-tail-policies]
 
 Criteria used to match a root transaction to a sample rate.
 
@@ -261,7 +261,7 @@ Policies map trace events to a sample rate. Each policy must specify a sample ra
 | Fleet-managed | `Policies` |
 
 
-##### Storage limit [sampling-tail-storage_limit-{{input-type}}]
+##### Storage limit [sampling-tail-storage_limit]
 
 The amount of storage space allocated for trace events matching tail sampling policies. Caution: Setting this limit higher than the allowed space may cause APM Server to become unhealthy.
 
@@ -282,28 +282,28 @@ Default: `0GB`. (text)
 #### Policy settings [_policy_settings]
 
 
-##### **`sample_rate`** [sampling-tail-sample-rate-{{input-type}}]
+##### **`sample_rate`** [sampling-tail-sample-rate]
 
 The sample rate to apply to trace events matching this policy. Required in each policy.
 
 The sample rate must be greater than or equal to `0` and less than or equal to `1`. For example, a `sample_rate` of `0.01` means that 1% of trace events matching the policy will be sampled. A `sample_rate` of `1` means that 100% of trace events matching the policy will be sampled. (int)
 
 
-##### **`trace.name`** [sampling-tail-trace-name-{{input-type}}]
+##### **`trace.name`** [sampling-tail-trace-name]
 
 The trace name for events to match a policy. A match occurs when the configured `trace.name` matches the `transaction.name` of the root transaction of a trace. A root transaction is any transaction without a `parent.id`. (string)
 
 
-##### **`trace.outcome`** [sampling-tail-trace-outcome-{{input-type}}]
+##### **`trace.outcome`** [sampling-tail-trace-outcome]
 
 The trace outcome for events to match a policy. A match occurs when the configured `trace.outcome` matches a trace’s `event.outcome` field. Trace outcome can be `success`, `failure`, or `unknown`. (string)
 
 
-##### **`service.name`** [sampling-tail-service-name-{{input-type}}]
+##### **`service.name`** [sampling-tail-service-name]
 
 The service name for events to match a policy. (string)
 
 
-##### **`service.environment`** [sampling-tail-service-environment-{{input-type}}]
+##### **`service.environment`** [sampling-tail-service-environment]
 
 The service environment for events to match a policy. (string)

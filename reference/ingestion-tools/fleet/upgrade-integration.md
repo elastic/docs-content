@@ -27,7 +27,7 @@ In larger deployments, you should test integration upgrades on a sample {{agent}
 
     :::{image} images/upgrade-integration.png
     :alt: Settings tab under Integrations shows how to upgrade the integration
-    :class: screenshot
+    :screenshot:
     :::
 
 3. Before upgrading the integration, decide whether to upgrade integration policies to the latest version, too. To use new features and capabilities, you’ll need to upgrade existing integration policies. However, the upgrade may introduce changes, such as field changes, that require you to resolve conflicts.
@@ -53,16 +53,16 @@ Some integration packages, like System, are installed by default during {{fleet}
 
 The following integrations are installed automatically when you select certain options in the {{fleet}} UI. All of them have an option to upgrade integration policies automatically, too:
 
-* [Elastic Agent](asciidocalypse://docs/reference/elastic_agent.md) - installed automatically when the default **Collect agent logs** or **Collect agent metrics** option is enabled in an {{agent}} policy).
-* [Fleet Server](asciidocalypse://docs/reference/fleet_server.md) - installed automatically  when {{fleet-server}} is set up through the {{fleet}} UI.
-* [System](asciidocalypse://docs/reference/system.md) - installed automatically when the default **Collect system logs and metrics** option is enabled in an {{agent}} policy).
+* [Elastic Agent](asciidocalypse://docs/integration-docs/docs/reference/elastic_agent.md) - installed automatically when the default **Collect agent logs** or **Collect agent metrics** option is enabled in an {{agent}} policy).
+* [Fleet Server](asciidocalypse://docs/integration-docs/docs/reference/fleet_server.md) - installed automatically  when {{fleet-server}} is set up through the {{fleet}} UI.
+* [System](asciidocalypse://docs/integration-docs/docs/reference/system.md) - installed automatically when the default **Collect system logs and metrics** option is enabled in an {{agent}} policy).
 
-The [Elastic Defend](asciidocalypse://docs/reference/endpoint.md) integration also has an option to upgrade installation policies automatically.
+The [Elastic Defend](asciidocalypse://docs/integration-docs/docs/reference/endpoint.md) integration also has an option to upgrade installation policies automatically.
 
 Note that for the following integrations, when the integration is updated automatically the integration policy is upgraded automatically as well. This behavior cannot be disabled.
 
-* [Elastic APM](asciidocalypse://docs/reference/apm.md)
-* [Cloud Security Posture Management](asciidocalypse://docs/reference/cloud_security_posture.md#cloud_security_posture-cloud-security-posture-management-cspm)
+* [Elastic APM](asciidocalypse://docs/integration-docs/docs/reference/apm.md)
+* [Cloud Security Posture Management](asciidocalypse://docs/integration-docs/docs/reference/cloud_security_posture.md#cloud_security_posture-cloud-security-posture-management-cspm)
 * [Elastic Synthetics](/solutions/observability/apps/synthetic-monitoring.md)
 
 For integrations that support the option to auto-upgrade the integration policy, when this option is selected (the default), {{fleet}} automatically upgrades your policies when a new version of the integration is available. If there are conflicts during the upgrade, your integration policies will not be upgraded, and you’ll need to [upgrade integration policies manually](#upgrade-integration-policies-manually).
@@ -74,7 +74,7 @@ To keep integration policies up to data automatically:
 
     :::{image} images/upgrade-integration-policies-automatically.png
     :alt: Settings tab under Integrations shows how to keep integration policies up to date automatically
-    :class: screenshot
+    :screenshot:
     :::
 
     If this option isn’t available on the **Settings** tab, this feature is not available for the integration you’re viewing.
@@ -89,7 +89,7 @@ If you can’t upgrade integration policies when you upgrade the integration, up
 
     :::{image} images/upgrade-package-policy.png
     :alt: Policies tab under Integrations shows how to upgrade the package policy
-    :class: screenshot
+    :screenshot:
     :::
 
 2. Click **Upgrade** to begin the upgrade process.
@@ -98,7 +98,7 @@ If you can’t upgrade integration policies when you upgrade the integration, up
 
     :::{image} images/upgrade-policy-editor.png
     :alt: Upgrade integration example in the policy editor
-    :class: screenshot
+    :screenshot:
     :::
 
 3. Make any required configuration changes and, if necessary, resolve conflicts. For more information, refer to [Resolve conflicts](#resolve-conflicts).
@@ -118,14 +118,14 @@ If {{fleet}} detects a conflict while automatically upgrading an integration pol
 
     :::{image} images/upgrade-resolve-conflicts.png
     :alt: Resolve field conflicts in the policy editor
-    :class: screenshot
+    :screenshot:
     :::
 
     1. Under **Review field conflicts**, notice that you can click **previous configuration**  to view the raw JSON representation of the old integration policy and compare values. This feature is useful when fields have been deprecated or removed between releases.
 
         :::{image} images/upgrade-view-previous-config.png
         :alt: View previous configuration to resolve conflicts
-        :class: screenshot
+        :screenshot:
         :::
 
     2. In the policy editor, fix any errors and click **Upgrade integration**.

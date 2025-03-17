@@ -71,7 +71,7 @@ Don’t see the agent? Make sure your deployment includes an {{integrations-serv
 
 :::{image} images/integrations-server-hosted-container.png
 :alt: Hosted {integrations-server}
-:class: screenshot
+:screenshot:
 :::
 
 :::::

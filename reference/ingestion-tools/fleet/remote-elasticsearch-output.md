@@ -39,7 +39,7 @@ To configure a remote {{es}} cluster for your {{agent}} data:
     5. Back in your main cluster, paste the value you copied into the output **Service Token** field.
 
         ::::{note}
-        To prevent unauthorized access the {{es}} Service Token is stored as a secret value. While secret storage is recommended, you can choose to override this setting and store the password as plain text in the agent policy definition. Secret storage requires {{fleet-server}} version 8.12 or higher. This setting can also be stored as a secret value or as plain text for preconfigured outputs. See [Preconfiguration settings](asciidocalypse://docs/reference/configuration-reference/fleet-settings.md#_preconfiguration_settings_for_advanced_use_cases) in the {{kib}} Guide to learn more.
+        To prevent unauthorized access the {{es}} Service Token is stored as a secret value. While secret storage is recommended, you can choose to override this setting and store the password as plain text in the agent policy definition. Secret storage requires {{fleet-server}} version 8.12 or higher. This setting can also be stored as a secret value or as plain text for preconfigured outputs. See [Preconfiguration settings](kibana://reference/configuration-reference/fleet-settings.md#_preconfiguration_settings_for_advanced_use_cases) in the {{kib}} Guide to learn more.
         ::::
 
 6. Choose whether or not the remote output should be the default for agent integrations or for agent monitoring data. When set, {{agent}}s use this output to send data if no other output is set in the [agent policy](/reference/ingestion-tools/fleet/agent-policy.md).

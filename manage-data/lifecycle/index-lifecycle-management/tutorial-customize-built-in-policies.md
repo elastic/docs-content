@@ -42,7 +42,7 @@ To complete this tutorial, you’ll need:
 
         :::{image} ../../../images/elasticsearch-reference-tutorial-ilm-ess-add-warm-data-tier.png
         :alt: Add a warm data tier to your deployment
-        :class: screenshot
+        :screenshot:
         :::
 
     * Self-managed cluster: Assign `data_hot` and `data_warm` roles to nodes as described in [*Data tiers*](../data-tiers.md).
@@ -80,7 +80,7 @@ To view or change the rollover settings, click **Advanced settings** for the hot
 
 :::{image} ../../../images/elasticsearch-reference-tutorial-ilm-hotphaserollover-default.png
 :alt: View rollover defaults
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -96,21 +96,21 @@ The default `logs@lifecycle` policy is designed to prevent the creation of many 
 
     :::{image} ../../../images/elasticsearch-reference-tutorial-ilm-modify-default-warm-phase-rollover.png
     :alt: Add a warm phase with custom settings
-    :class: screenshot
+    :screenshot:
     :::
 
 2. In the warm phase, click the trash icon to enable the delete phase.
 
     :::{image} ../../../images/elasticsearch-reference-tutorial-ilm-enable-delete-phase.png
     :alt: Enable the delete phase
-    :class: screenshot
+    :screenshot:
     :::
 
     In the delete phase, set **Move data into phase when** to **90 days old**. This deletes indices 90 days after rollover.
 
     :::{image} ../../../images/elasticsearch-reference-tutorial-ilm-delete-rollover.png
     :alt: Add a delete phase
-    :class: screenshot
+    :screenshot:
     :::
 
 3. Click **Save as new policy**.

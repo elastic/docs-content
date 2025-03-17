@@ -2,6 +2,10 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/security/current/vuln-management-findings.html
   - https://www.elastic.co/guide/en/serverless/current/security-vuln-management-findings.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Findings page [security-vuln-management-findings]
@@ -10,7 +14,7 @@ The **Vulnerabilities** tab on the Findings page displays the vulnerabilities de
 
 :::{image} ../../../images/serverless--cloud-native-security-cnvm-findings-page.png
 :alt: The Vulnerabilities tab of the Findings page
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -41,7 +45,7 @@ Multiple groupings apply to your data in the order you selected them. For exampl
 
 :::{image} ../../../images/serverless--cloud-native-security-cnvm-findings-grouped.png
 :alt: The Vulnerabilities tab of the Findings page
-:class: screenshot
+:screenshot:
 :::
 
 

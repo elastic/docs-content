@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/configure-endpoint-integration-policy.html
   - https://www.elastic.co/guide/en/serverless/current/security-configure-endpoint-integration-policy.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Configure an integration policy for {{elastic-defend}}
@@ -82,7 +86,7 @@ If you have the appropriate license or project feature, you can customize these 
 
 :::{image} ../../../images/security-malware-protection.png
 :alt: Detail of malware protection section.
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -134,7 +138,7 @@ If you have the appropriate license or project feature, you can customize these 
 
 :::{image} ../../../images/security-ransomware-protection.png
 :alt: Detail of ransomware protection section.
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -163,7 +167,7 @@ If you have the appropriate license or project feature, you can customize these 
 
 :::{image} ../../../images/security-memory-protection.png
 :alt: Detail of memory protection section.
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -199,7 +203,7 @@ If you have the appropriate license or project feature, you can customize these 
 
 :::{image} ../../../images/security-behavior-protection.png
 :alt: Detail of behavior protection section.
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -216,7 +220,7 @@ In {{serverless-short}}, attack surface reduction requires the Endpoint Protecti
 
 :::{image} ../../../images/security-attack-surface-reduction.png
 :alt: Detail of attack surface reduction section.
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -226,7 +230,7 @@ In the **Settings** section, select which categories of events to collect on eac
 
 :::{image} ../../../images/security-event-collection.png
 :alt: Detail of event collection section.
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -245,7 +249,7 @@ If you don’t want to sync antivirus registration, you can set it manually with
 
 :::{image} ../../../images/security-register-as-antivirus.png
 :alt: Detail of Register as antivirus option.
-:class: screenshot
+:screenshot:
 :::
 
 

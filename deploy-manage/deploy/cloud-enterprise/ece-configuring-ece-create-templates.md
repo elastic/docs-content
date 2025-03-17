@@ -1,4 +1,8 @@
 ---
+navigation_title: Create templates
+applies_to:
+  deployment:
+    ece: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-configuring-ece-create-templates.html
 ---
@@ -22,7 +26,7 @@ Before you start creating your own deployment templates, you should have: [tagge
 3. Select **Create template**.
 4. Give your template a name and include a description that reflects its intended use.
 5. Select **Create template**. The **Configure instances** page opens.
-6. Choose whether or not [autoscaling](../../autoscaling.md) is enabled by default for deployments created using the template. Autoscaling adjusts resources available to the deployment automatically as loads change over time.
+6. Choose whether or not [autoscaling](/deploy-manage/autoscaling/autoscaling-in-ece-and-ech.md) is enabled by default for deployments created using the template. Autoscaling adjusts resources available to the deployment automatically as loads change over time.
 
     :::{image} ../../../images/cloud-enterprise-ece-create-template-autoscaling.png
     :alt: screencapture of the "Enable autoscaling by default" switch
@@ -51,7 +55,7 @@ Before you start creating your own deployment templates, you should have: [tagge
         * For data nodes, autoscaling up is supported based on the amount of available storage. You can set the default initial size of the node and the default maximum size that the node can be autoscaled up to.
         * For machine learning nodes, autoscaling is supported based on the expected memory requirements for machine learning jobs. You can set the default minimum size that the node can be scaled down to and the default maximum size that the node can be scaled up to. If autoscaling is not enabled for the deployment, the "minimum" value will instead be the default initial size of the machine learning node.
 
-        The default values provided by the deployment template can be adjusted at any time. Check our [Autoscaling example](../../autoscaling/ece-autoscaling-example.md) for details about these settings. Nodes and components that currently support autoscaling are indicated by a `supports autoscaling` badge on the **Configure instances** page.
+        The default values provided by the deployment template can be adjusted at any time. Check our [Autoscaling example](../../autoscaling/autoscaling-in-ece-and-ech.md#ec-autoscaling-example) for details about these settings. Nodes and components that currently support autoscaling are indicated by a `supports autoscaling` badge on the **Configure instances** page.
 
     * Add [fault tolerance](ece-ha.md) (high availability) by using more than one availability zone.
 

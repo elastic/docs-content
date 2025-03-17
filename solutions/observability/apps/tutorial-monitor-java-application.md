@@ -15,7 +15,7 @@ You’ll learn how to:
 * Create a sample Java application.
 * Ingest logs using {{filebeat}} and view your logs in {{kib}}.
 * Ingest metrics using the [Metricbeat Prometheus Module](asciidocalypse://docs/beats/docs/reference/metricbeat/metricbeat-module-prometheus.md) and view your metrics in {{kib}}.
-* Instrument your application using the [Elastic APM Java agent](asciidocalypse://docs/apm-agent-java/docs/reference/index.md).
+* Instrument your application using the [Elastic APM Java agent](apm-agent-java://reference/index.md).
 * Monitor your services using {{heartbeat}} and view your uptime data in {{kib}}.
 
 
@@ -917,7 +917,7 @@ You have now learned about parsing logs in either {{beats}} or {{es}}. What if w
 
 Writing out logs as plain text works and is easy to read for humans. However, first writing them out as plain text, parsing them using the `dissect` processors, and then creating a JSON again sounds tedious and burns unneeded CPU cycles.
 
-While log4j2 has a [JSONLayout](https://logging.apache.org/log4j/2.x/manual/layouts.md#JSONLayout), you can go further and use a Library called [ecs-logging-java](https://github.com/elastic/ecs-logging-java). The advantage of ECS logging is that it uses the [Elastic Common Schema](asciidocalypse://docs/ecs/docs/reference/index.md). ECS defines a standard set of fields used when storing event data in {{es}}, such as logs and metrics.
+While log4j2 has a [JSONLayout](https://logging.apache.org/log4j/2.x/manual/layouts.html#JSONLayout), you can go further and use a Library called [ecs-logging-java](https://github.com/elastic/ecs-logging-java). The advantage of ECS logging is that it uses the [Elastic Common Schema](asciidocalypse://docs/ecs/docs/reference/index.md). ECS defines a standard set of fields used when storing event data in {{es}}, such as logs and metrics.
 
 1. Instead of writing our logging standard, use an existing one. Let’s add the logging dependency to our Javalin application.
 
@@ -1288,9 +1288,9 @@ Visualize the number of log messages over time, split by the log level. Since th
 1. Log into {{kib}} and select **Visualize** → **Create Visualization**.
 2. Create a line chart and select `metricbeat-*` as the source.
 
-    The basic idea is to have a [max aggregation](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/aggregations/search-aggregations-metrics-max-aggregation.md) on the y-axis on the `prometheus.log4j2_events_total.rate` field, whereas the x-axis, is split by date using a [date_histogram aggregation](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/aggregations/search-aggregations-bucket-datehistogram-aggregation.md) on the `@timestamp` field.
+    The basic idea is to have a [max aggregation](elasticsearch://reference/data-analysis/aggregations/search-aggregations-metrics-max-aggregation.md) on the y-axis on the `prometheus.log4j2_events_total.rate` field, whereas the x-axis, is split by date using a [date_histogram aggregation](elasticsearch://reference/data-analysis/aggregations/search-aggregations-bucket-datehistogram-aggregation.md) on the `@timestamp` field.
 
-    There is one more split within each date histogram bucket, split by log level, using a [terms aggregation](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/aggregations/search-aggregations-bucket-terms-aggregation.md) on the `prometheus.labels.level`, which contains the log level. Also, increase the size of the log level to six to display every log level.
+    There is one more split within each date histogram bucket, split by log level, using a [terms aggregation](elasticsearch://reference/data-analysis/aggregations/search-aggregations-bucket-terms-aggregation.md) on the `prometheus.labels.level`, which contains the log level. Also, increase the size of the log level to six to display every log level.
 
     The final result looks like this.
 
@@ -1440,7 +1440,7 @@ You could now go ahead and open up the Applications UI and you should see the da
 
 If you do not want to change the startup options of your application, the standalone agent allows you to attach to running JVMs on a host.
 
-This requires you to download the standalone jar. You can find the link on the [official docs](asciidocalypse://docs/apm-agent-java/docs/reference/setup-attach-cli.md).
+This requires you to download the standalone jar. You can find the link on the [official docs](apm-agent-java://reference/setup-attach-cli.md).
 
 To list your locally running java application, you can run
 
@@ -1497,7 +1497,7 @@ A programmatic setup allows you to attach the agent via a line of java in your s
     }
     ```
 
-    We did not configure any endpoint or API tokens yet. While the [documentation](asciidocalypse://docs/apm-agent-java/docs/reference/setup-attach-api.md#setup-attach-api-configuration) recommends using the `src/main/resources/elasticapm.properties` file, I prefer the use of environment variables, as this prevents either committing API tokens to your source or merging another repository. Mechanisms like [vault](https://www.vaultproject.io/) allow you to manage your secrets in such a way.
+    We did not configure any endpoint or API tokens yet. While the [documentation](apm-agent-java://reference/setup-attach-api.md#setup-attach-api-configuration) recommends using the `src/main/resources/elasticapm.properties` file, I prefer the use of environment variables, as this prevents either committing API tokens to your source or merging another repository. Mechanisms like [vault](https://www.vaultproject.io/) allow you to manage your secrets in such a way.
 
     For our local deployment, I usually use something like [direnv](https://direnv.net/) for local setup. `direnv` is an extension for your local shell that loads/unloads environment variables when you enter a directory, like your application. `direnv` can do quite a bit more like loading the right node/ruby version or adding a directory to your $PATH variable.
 
@@ -1561,7 +1561,7 @@ A programmatic setup allows you to attach the agent via a line of java in your s
 
     This looks much better, having differences between endpoints.
 
-4. Add another endpoint to see the power of transactions, which polls another HTTP service. You may have heard of [wttr.in](https://wttr.in/), a service to poll weather information from. Let’s implement a proxy HTTP method that forwards the request to that endpoint. Let’s use [Apache HTTP client](https://hc.apache.org/httpcomponents-client-4.5.x/quickstart.md), one of the most typical HTTP clients out there.
+4. Add another endpoint to see the power of transactions, which polls another HTTP service. You may have heard of [wttr.in](https://wttr.in/), a service to poll weather information from. Let’s implement a proxy HTTP method that forwards the request to that endpoint. Let’s use [Apache HTTP client](https://hc.apache.org/httpcomponents-client-4.5.x/quickstart.html), one of the most typical HTTP clients out there.
 
     ```gradle
     implementation 'org.apache.httpcomponents:fluent-hc:4.5.12'
@@ -1610,7 +1610,7 @@ A programmatic setup allows you to attach the agent via a line of java in your s
 
 Instead of writing code to trace methods, you can also configure the agent to do this. Let’s try to figure out if logging is a bottleneck for our application and trace the request logger statements we added earlier.
 
-The agent can [trace methods](asciidocalypse://docs/apm-agent-java/docs/reference/config-core.md#config-trace-methods) based on their signature.
+The agent can [trace methods](apm-agent-java://reference/config-core.md#config-trace-methods) based on their signature.
 
 The interface to monitor would be the `io.javalin.http.RequestLogger` interface with the `handle` method. So let’s try `io.javalin.http.RequestLogger#handle` to identify the method to log and put this in your `.env`.
 
@@ -1661,7 +1661,7 @@ ELASTIC_APM_TRACE_METHODS="de.spinscale.javalin.Log4j2RequestLogger#handle"
 
 ### Automatic profiling of inferred spans [_automatic_profiling_of_inferred_spans]
 
-Once you have a bigger application with more code paths than our sample app, you can try to enable the [automatic profiling of inferred spans](asciidocalypse://docs/apm-agent-java/docs/reference/config-profiling.md#config-profiling-inferred-spans-enabled) by setting the following.
+Once you have a bigger application with more code paths than our sample app, you can try to enable the [automatic profiling of inferred spans](apm-agent-java://reference/config-profiling.md#config-profiling-inferred-spans-enabled) by setting the following.
 
 ```bash
 ELASTIC_APM_PROFILING_INFERRED_SPANS_ENABLED=true
@@ -1691,7 +1691,7 @@ Transaction ids are automatically added to logs. You can check the generated log
 Having the `trace.id` and `transaction.id` added, in the case of an error you will get an `error.id` field.
 
 ::::{important}
-We have not covered the [Elastic APM OpenTracing bridge](asciidocalypse://docs/apm-agent-java/docs/reference/opentracing-bridge.md) or looked into the [additional metrics](asciidocalypse://docs/apm-agent-java/docs/reference/metrics.md) the agent provides, which allows us to take a look at things like garbage collection or the memory footprint of our application.
+We have not covered the [Elastic APM OpenTracing bridge](apm-agent-java://reference/opentracing-bridge.md) or looked into the [additional metrics](apm-agent-java://reference/metrics.md) the agent provides, which allows us to take a look at things like garbage collection or the memory footprint of our application.
 
 ::::
 

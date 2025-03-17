@@ -11,7 +11,6 @@ mapped_urls:
   - https://www.elastic.co/guide/en/elastic-stack/current/upgrade-elastic-stack-for-elastic-cloud.html
   - https://www.elastic.co/guide/en/elastic-stack/current/upgrading-elastic-stack-on-prem.html
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-upgrading-stack.html
-  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-orchestration.html
 ---
 
 
@@ -29,7 +28,6 @@ mapped_urls:
 % - [ ] ./raw-migrated-files/stack-docs/elastic-stack/upgrade-elastic-stack-for-elastic-cloud.md
 % - [ ] ./raw-migrated-files/stack-docs/elastic-stack/upgrading-elastic-stack-on-prem.md
 % - [ ] ./raw-migrated-files/cloud-on-k8s/cloud-on-k8s/k8s-upgrading-stack.md
-% - [ ] ./raw-migrated-files/cloud-on-k8s/cloud-on-k8s/k8s-orchestration.md
 %      Notes: upgrade explanations
 
 % Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
@@ -415,3 +413,7 @@ The jobs can be deleted in the UI. After the last job is deleted, the index will
 :::
 
 ## Transform destination indices migration [transform-migration]
+=======
+
+% EEDUGON note: when working on this document, or in the ECK upgrade documentation we should include a link to [nodes orchestration](../deploy/cloud-on-k8s/nodes-orchestration.md) as reference to learn the details on how ECK orchestates / manages the upgrade of the individual instances.
+

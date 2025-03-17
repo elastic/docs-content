@@ -7,14 +7,14 @@ The AI Assistant uses generative AI to provide:
 
 :::{image} ../../../images/serverless-ai-assistant-overview.gif
 :alt: Observability AI assistant preview
-:class: screenshot
+:screenshot:
 :::
 
 The AI Assistant integrates with your large language model (LLM) provider through our supported Elastic connectors:
 
-* [OpenAI connector](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/openai-action-type.md) for OpenAI or Azure OpenAI Service.
-* [Amazon Bedrock connector](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/bedrock-action-type.md) for Amazon Bedrock, specifically for the Claude models.
-* [Google Gemini connector](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/gemini-action-type.md) for Google Gemini.
+* [OpenAI connector](kibana://reference/connectors-kibana/openai-action-type.md) for OpenAI or Azure OpenAI Service.
+* [Amazon Bedrock connector](kibana://reference/connectors-kibana/bedrock-action-type.md) for Amazon Bedrock, specifically for the Claude models.
+* [Google Gemini connector](kibana://reference/connectors-kibana/gemini-action-type.md) for Google Gemini.
 
 ::::{important}
 The AI Assistant is powered by an integration with your large language model (LLM) provider. LLMs are known to sometimes present incorrect information as if it’s correct. Elastic supports configuration and connection to the LLM provider and your knowledge base, but is not responsible for the LLM’s responses.
@@ -61,14 +61,14 @@ To set up the AI Assistant:
 
     * [OpenAI API keys](https://platform.openai.com/docs/api-reference)
     * [Azure OpenAI Service API keys](https://learn.microsoft.com/en-us/azure/cognitive-services/openai/reference)
-    * [Amazon Bedrock authentication keys and secrets](https://docs.aws.amazon.com/bedrock/latest/userguide/security-iam.md)
+    * [Amazon Bedrock authentication keys and secrets](https://docs.aws.amazon.com/bedrock/latest/userguide/security-iam.html)
     * [Google Gemini service account keys](https://cloud.google.com/iam/docs/keys-list-get)
 
 2. From **Project settings** → **Management** → **Connectors**, create a connector for your AI provider:
 
-    * [OpenAI](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/openai-action-type.md)
-    * [Amazon Bedrock](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/bedrock-action-type.md)
-    * [Google Gemini](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/gemini-action-type.md)
+    * [OpenAI](kibana://reference/connectors-kibana/openai-action-type.md)
+    * [Amazon Bedrock](kibana://reference/connectors-kibana/bedrock-action-type.md)
+    * [Google Gemini](kibana://reference/connectors-kibana/gemini-action-type.md)
 
 3. Authenticate communication between {{obs-serverless}} and the AI provider by providing the following information:
 
@@ -180,7 +180,7 @@ This opens the AI Assistant flyout, where you can ask the assistant questions ab
 
 :::{image} ../../../images/serverless-ai-assistant-chat.png
 :alt: Observability AI assistant chat
-:class: screenshot
+:screenshot:
 :::
 
 ::::{important}
@@ -235,20 +235,20 @@ For example, in the log details, you’ll see prompts for **What’s this messag
 
 :::{image} ../../../images/serverless-ai-assistant-logs-prompts.png
 :alt: Observability AI assistant example prompts for logs
-:class: screenshot
+:screenshot:
 :::
 
 Clicking a prompt generates a message specific to that log entry. You can continue a conversation from a contextual prompt by clicking **Start chat** to open the AI Assistant chat.
 
 :::{image} ../../../images/serverless-ai-assistant-logs.png
 :alt: Observability AI assistant example
-:class: screenshot
+:screenshot:
 :::
 
 
 ### Add the AI Assistant connector to alerting workflows [observability-ai-assistant-add-the-ai-assistant-connector-to-alerting-workflows]
 
-You can use the [Observability AI Assistant connector](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/obs-ai-assistant-action-type.md) to add AI-generated insights and custom actions to your alerting workflows. To do this:
+You can use the [Observability AI Assistant connector](kibana://reference/connectors-kibana/obs-ai-assistant-action-type.md) to add AI-generated insights and custom actions to your alerting workflows. To do this:
 
 1. [Create (or edit) an alerting rule](../../../solutions/observability/incident-management/create-manage-rules.md) and specify the conditions that must be met for the alert to fire.
 2. Under **Actions**, select the **Observability AI Assistant** connector type.
@@ -257,7 +257,7 @@ You can use the [Observability AI Assistant connector](asciidocalypse://docs/kib
 
 :::{image} ../../../images/serverless-obs-ai-assistant-action-high-cpu.png
 :alt: Add an Observability AI assistant action while creating a rule in the Observability UI
-:class: screenshot
+:screenshot:
 :::
 
 You can ask the assistant to generate a report of the alert that fired, recall any information or potential resolutions of past occurrences stored in the knowledge base, provide troubleshooting guidance and resolution steps, and also include other active alerts that may be related. As a last step, you can ask the assistant to trigger an action, such as sending the report (or any other message) to a Slack webhook.
@@ -274,7 +274,7 @@ When the alert fires, contextual details about the event—such as when the aler
 
 :::{image} ../../../images/serverless-obs-ai-assistant-output.png
 :alt: AI Assistant conversation created in response to an alert
-:class: screenshot
+:screenshot:
 :::
 
 ::::{important}
@@ -291,7 +291,7 @@ When asked to send a message to another connector, such as Slack, the AI Assista
 
 :::{image} ../../../images/serverless-obs-ai-assistant-slack-message.png
 :alt: Message sent by Slack by the AI Assistant includes a link to the conversation
-:class: screenshot
+:screenshot:
 :::
 
 The Observability AI Assistant connector is called when the alert fires and when it recovers.
@@ -311,4 +311,4 @@ Enabling that feature can be done from the **Settings** tab of the AI Assistant 
 
 ### Token limits [token-limits]
 
-Most LLMs have a set number of tokens they can manage in single a conversation. When you reach the token limit, the LLM will throw an error, and Elastic will display a "Token limit reached" error. The exact number of tokens that the LLM can support depends on the LLM provider and model you’re using. If you are using an OpenAI connector, you can monitor token usage in **OpenAI Token Usage** dashboard. For more information, refer to the [OpenAI Connector documentation](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/openai-action-type.md#openai-connector-token-dashboard).
+Most LLMs have a set number of tokens they can manage in single a conversation. When you reach the token limit, the LLM will throw an error, and Elastic will display a "Token limit reached" error. The exact number of tokens that the LLM can support depends on the LLM provider and model you’re using. If you are using an OpenAI connector, you can monitor token usage in **OpenAI Token Usage** dashboard. For more information, refer to the [OpenAI Connector documentation](kibana://reference/connectors-kibana/openai-action-type.md#openai-connector-token-dashboard).

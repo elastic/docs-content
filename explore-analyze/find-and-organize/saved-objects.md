@@ -10,16 +10,6 @@ mapped_urls:
 
 # Saved objects [saved-objects]
 
-% What needs to be done: Refine
-
-% Use migrated content from existing pages that map to this page:
-
-% - [ ] ./raw-migrated-files/docs-content/serverless/saved-objects.md
-% - [ ] ./raw-migrated-files/kibana/kibana/managing-saved-objects.md
-% - [ ] ./raw-migrated-files/kibana/kibana/saved-object-ids.md
-
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
-
 $$$managing-saved-objects-copy-to-space$$$
 
 $$$managing-saved-objects-export-objects$$$
@@ -44,7 +34,7 @@ You can find the **Saved Objects** page using the navigation menu or the [global
 
 :::{image} ../../images/kibana-management-saved-objects.png
 :alt: Saved Objects
-:class: screenshot
+:screenshot:
 :::
 
 ## Permissions [_required_permissions_5]
@@ -80,7 +70,7 @@ Import multiple objects in a single operation.
 4. Click **Import**.
 
 ::::{note}
-The [`savedObjects.maxImportExportSize`](/deploy-manage/deploy/self-managed/configure.md#savedObjects-maxImportExportSize) configuration setting limits the number of saved objects to include in the file. The [`savedObjects.maxImportPayloadBytes`](/deploy-manage/deploy/self-managed/configure.md#savedObjects-maxImportPayloadBytes) setting limits the overall size of the file that you can import.
+The [`savedObjects.maxImportExportSize`](kibana://reference/configuration-reference/general-settings.md#savedobjects-maximportexportsize) configuration setting limits the number of saved objects to include in the file. The [`savedObjects.maxImportPayloadBytes`](kibana://reference/configuration-reference/general-settings.md#savedobjects-maximportpayloadbytes) setting limits the overall size of the file that you can import.
 ::::
 
 
@@ -94,7 +84,7 @@ Export objects by selection or type.
 {{kib}} creates an NDJSON with all your saved objects. By default, the NDJSON includes child objects related to the saved objects. Exported dashboards include their associated {{data-sources}}.
 
 ::::{note}
-The [`savedObjects.maxImportExportSize`](/deploy-manage/deploy/self-managed/configure.md#savedObjects-maxImportExportSize) configuration setting limits the number of saved objects that you can export.
+The [`savedObjects.maxImportExportSize`](kibana://reference/configuration-reference/general-settings.md#savedobjects-maximportexportsize) configuration setting limits the number of saved objects that you can export.
 ::::
 
 
@@ -116,9 +106,8 @@ With each release, {{kib}} introduces changes to the way saved objects are store
 
 However, saved objects can only be imported into the same version, a newer minor on the same major, or the next major. Exported saved objects are not backward compatible and cannot be imported into an older version of {{kib}}. For example:
 
-|     |     |     |
-| --- | --- | --- |
 | Exporting version | Importing version | Compatible? |
+| --- | --- | --- |
 | 8.7.0 | 8.8.1 | Yes |
 | 7.8.1 | 8.3.0 | Yes |
 | 8.3.0 | 8.11.1 | Yes |
@@ -126,9 +115,9 @@ However, saved objects can only be imported into the same version, a newer minor
 | 7.8.1 | 9.0.0 | No |
 
 ## Saved Object IDs [saved-object-ids]
-::::{applies_to}
-:stack:
-::::
+```{applies_to}
+stack:
+```
 
 In the past, many saved object types could have the same ID in different [spaces](/deploy-manage/manage-spaces.md). For example, if you copied dashboard "123" from the one space to another space, the second dashboard would also have an ID of "123". While the saved object ID is not something that users would interact with directly, many aspects of {{kib}} rely on it, notably URLs. If you have a "deep link" URL to a saved dashboard, that URL includes the saved object ID.
 
@@ -149,7 +138,7 @@ After you upgrade, or if you set up a new {{kib}} instance using version 8.x or 
 
 #### Accessing saved objects using old URLs [saved-object-ids-impact-when-using-legacy-urls]
 
-When you upgrade {{kib}} and saved object IDs change, the "deep link" URLs to access those saved objects will also change. To reduce the impact, each existing URL is preserved with a special [legacy URL alias](asciidocalypse://docs/kibana/docs/extend/legacy-url-aliases.md). This means that if you use a bookmark for a saved object ID that was changed, you’ll be redirected to the new URL for that saved object.
+When you upgrade {{kib}} and saved object IDs change, the "deep link" URLs to access those saved objects will also change. To reduce the impact, each existing URL is preserved with a special [legacy URL alias](kibana://extend/legacy-url-aliases.md). This means that if you use a bookmark for a saved object ID that was changed, you’ll be redirected to the new URL for that saved object.
 
 
 #### Importing and copying saved objects [saved-object-ids-impact-when-using-import-and-copy]
