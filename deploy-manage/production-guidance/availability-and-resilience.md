@@ -1,11 +1,28 @@
 ---
+navigation_title: Design for resilience
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/high-availability-cluster-design.html
+applies_to:
+  deployment:
+    ess: all
+    ece: all
+    eck: all
+    self: all
 ---
 
-# Availability and resilience [high-availability-cluster-design]
+# Design for resilience [high-availability-cluster-design]
 
 Distributed systems like {{es}} are designed to keep working even if some of their components have failed. As long as there are enough well-connected nodes to take over their responsibilities, an {{es}} cluster can continue operating normally if some of its nodes are unavailable or disconnected.
+
+{{es}} implements high availability at three key levels:
+
+* Node level – Running multiple nodes within the cluster to avoid single points of failure and maintain operational stability.
+* Cluster level – Ensuring redundancy by distributing nodes across availability zones to prevent failures from affecting the entire cluster.
+* Index level – Configuring shard replication to protect against data loss and improve search performance by distributing queries across multiple copies.
+
+Each of these HA mechanisms contributes to {{es}}’s resilience and scalability. The appropriate strategy depends on factors such as data criticality, query patterns, and infrastructure constraints. It is up to you to determine the level of resiliency and high availability that best fits your use case. This sections provides detailed guidance on designing a production-ready {{es}} deployment that balances availability, performance, and scalability.
+
+## Cluster sizes
 
 There is a limit to how small a resilient cluster can be. All {{es}} clusters require the following components to function:
 
@@ -31,6 +48,4 @@ Depending on your needs and budget, an {{es}} cluster can consist of a single no
 
 * [Resilience in small clusters](availability-and-resilience/resilience-in-small-clusters.md)
 * [Resilience in larger clusters](availability-and-resilience/resilience-in-larger-clusters.md)
-
-
-
+* [Resilience in {{ech}} deployments](./availability-and-resilience/resiliente-in-ech.md)

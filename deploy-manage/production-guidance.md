@@ -10,12 +10,6 @@ applies_to:
     eck: all
     self: all
 ---
-$$$ec-best-practices-data$$$
-
-% start bringing https://www.elastic.co/guide/en/elasticsearch/reference/current/scalability.html here
-
-% try to merge https://www.elastic.co/guide/en/cloud/current/ec-planning.html and https://www.elastic.co/guide/en/cloud/current/ec-best-practices-data.html
-% mention all deployment types! what the user needs to be aware for orchestrated deployments.
 
 # Production guidance
 
@@ -35,15 +29,17 @@ By following this guidance, you can ensure your {{stack}} deployment is robust, 
 
 ## Deployment types
 
-Production guidelines described in this section apply to all [deployment types](/deploy-manage/deploy.md#choosing-your-deployment-type)-including {{ech}}, {{ece}}, {{eck}}, and self-managed clusters-**except** {{serverless-full}}. However, certain parts may be relevant only to self-managed clusters, as orchestration systems automate some of the configurations discussed here.
+Production guidelines and concepts described in this section apply to all [deployment types](/deploy-manage/deploy.md#choosing-your-deployment-type)-including {{ech}}, {{ece}}, {{eck}}, and self-managed clusters-**except** {{serverless-full}}.
 
-Check the headers of each document or section to confirm whether the content applies to your deployment type.
+However, certain parts may be relevant only to self-managed clusters, as orchestration systems automate some of the configurations discussed here. Check the headers of each document or section to confirm whether the content applies to your deployment type.
 
 ::::{note}
-**{{serverless-full}}** projects are fully managed and automatically scaled by Elastic. Your project’s performance and general data retention are controlled by the [Search AI Lake settings](/deploy/elastic-cloud/project-settings.md#elasticsearch-manage-project-search-ai-lake-settings).
+**{{serverless-full}}** projects are fully managed and automatically scaled by Elastic. Your project’s performance and general data retention are controlled by the [Search AI Lake settings](/deploy-manage/deploy/elastic-cloud/project-settings.md#elasticsearch-manage-project-search-ai-lake-settings).
 ::::
 
 ## Section overview
+
+This section is divided into {{es}} and {{kib}} production-ready concepts and best practices.
 
 **{{es}}**
 
@@ -51,8 +47,9 @@ Check the headers of each document or section to confirm whether the content app
   * [](./production-guidance/availability-and-resilience.md)
     * [](./production-guidance/availability-and-resilience/resilience-in-small-clusters.md)
     * [](./production-guidance/availability-and-resilience/resilience-in-larger-clusters.md)
+    * [](./production-guidance/availability-and-resilience/resilience-in-ech.md)
+  * [](./production-guidance/scaling-considerations.md)
   * [](./production-guidance/optimize-performance.md)
-  * [Scaling considerations](./production-guidance/plan-for-production-elastic-cloud.md)
 
 **{{kib}}**
 
@@ -60,10 +57,6 @@ Check the headers of each document or section to confirm whether the content app
     * [](./production-guidance/kibana-task-manager-scaling-considerations.md)
     * [](./production-guidance/kibana-alerting-production-considerations.md)
     * [](./production-guidance/kibana-reporting-production-considerations.md)
-
-
-
-
 
 ## Other sections
 
@@ -85,7 +78,7 @@ Other sections of the documentation provide important guidance for running {{sta
 
 ### Security and monitoring [security-and-monitoring] 
 
-As with any enterprise system, you need tools to secure, manage, and monitor your deployments. Security, monitoring, and administrative features that are integrated into {{es}} enable you to use [Kibana](../../get-started/the-stack.md) as a control center for managing a cluster.
+As with any enterprise system, you need tools to secure, manage, and monitor your deployments. Security, monitoring, and administrative features that are integrated into {{es}} enable you to use [Kibana](/get-started/the-stack.md) as a control center for managing a cluster.
 
 [Learn about securing an {{es}} cluster](./security.md).
 

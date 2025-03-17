@@ -1,6 +1,13 @@
 ---
+navigation_title: Performance optimizations
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/how-to.html
+applies_to:
+  deployment:
+    ess: all
+    ece: all
+    eck: all
+    self: all
 ---
 
 # Elasticsearch performance optimizations [how-to]
@@ -11,13 +18,13 @@ However, there are a number of optimizations you can make to improve performance
 
 This section provides recommendations for various use cases.
 
-* [*General recommendations*](general-recommendations.md)
-* [*Tune for indexing speed*](optimize-performance/indexing-speed.md)
-* [*Tune for search speed*](optimize-performance/search-speed.md)
-* [*Tune approximate kNN search*](optimize-performance/approximate-knn-search.md)
-* [*Tune for disk usage*](optimize-performance/disk-usage.md)
-* [*Size your shards*](optimize-performance/size-shards.md)
+* [General recommendations](general-recommendations.md)
+* [Size your shards](optimize-performance/size-shards.md)
+* [Tune for indexing speed](optimize-performance/indexing-speed.md)
+* [Tune for search speed](optimize-performance/search-speed.md)
+* [Tune approximate kNN search](optimize-performance/approximate-knn-search.md)
+* [Tune for disk usage](optimize-performance/disk-usage.md)
 
 % this one has been moved to manage data, not sure if it makes sense to mention here, as it's not about performance or prod recommendations
-% * [*Use {{es}} for time series data*](../../manage-data/use-case-use-elasticsearch-to-manage-time-series-data.md)
+% * [Use {{es}} for time series data](../../manage-data/use-case-use-elasticsearch-to-manage-time-series-data.md)
 

@@ -1,18 +1,24 @@
 ---
+navigation_title: Run Elasticsearch in production
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/scalability.html
+applies_to:
+  deployment:
+    ess: all
+    ece: all
+    eck: all
+    self: all
 ---
 
-# Getting ready for production (Elasticsearch) [scalability]
+# Getting ready for production [scalability]
 
-Many teams rely on {{es}} to run their key services. To keep these services running, you can design your {{es}} deployment to keep {{es}} available, even in case of large-scale outages. To keep it running fast, you also can design your deployment to be responsive to production workloads.
+Many teams rely on {{es}} to run their key services. To keep these services running, you can [design your {{es}} deployment for resilience](./availability-and-resilience.md), to keep {{es}} available even in case of large-scale outages. To keep it running fast, you can also design your deployment with [performance optimizations](./optimize-performance.md) that make it responsive to production workloads.
 
-{{es}} is built to be always available and to scale with your needs. It does this using a distributed architecture. By distributing your cluster, you can keep Elastic online and responsive to requests.
+{{es}} is built to be always available and to scale with your needs. It does this using a [distributed architecture](/deploy-manage/distributed-architecture.md). By distributing your cluster, you can keep Elastic online and responsive to requests.
 
-In case of failure, {{es}} offers tools for cross-cluster replication and cluster snapshots that can help you fall back or recover quickly. You can also use cross-cluster replication to serve requests based on the geographic location of your users and your resources.
+In case of failure, {{es}} offers tools for [cross-cluster replication](../tools/cross-cluster-replication.md) and [cluster snapshots](../tools/snapshot-and-restore.md) that can help you fall back or recover quickly. You can also use cross-cluster replication to serve requests based on the geographic location of your users and your resources.
 
 {{es}} also offers security and monitoring tools to help you keep your cluster highly available.
-
 
 ## Use multiple nodes and shards [use-multiple-nodes-shards] 
 
@@ -37,34 +43,21 @@ CCR provides a way to automatically synchronize indices from your primary cluste
 
 You can also use CCR to create secondary clusters to serve read requests in geo-proximity to your users.
 
-Learn more about [cross-cluster replication](../tools/cross-cluster-replication.md) and about [designing for resilience](availability-and-resilience.md).
+Learn more about [cross-cluster replication](../tools/cross-cluster-replication.md) and about [designing for resilience](./availability-and-resilience.md).
 
 ::::{tip} 
 You can also take [snapshots](../tools/snapshot-and-restore.md) of your cluster that can be restored in case of failure.
-
 ::::
 
-
-
-## Security and monitoring [security-and-monitoring] 
-
-As with any enterprise system, you need tools to secure, manage, and monitor your {{es}} clusters. Security, monitoring, and administrative features that are integrated into {{es}} enable you to use [Kibana](../../get-started/the-stack.md) as a control center for managing a cluster.
-
-[Learn about securing an {{es}} cluster](../security.md).
-
-[Learn about monitoring your cluster](../monitor.md).
-
-
-## Cluster design [cluster-design] 
-% moved to landing page.
+## Cluster design and performance optimizations [cluster-design] 
 
 {{es}} offers many options that allow you to configure your cluster to meet your organization’s goals, requirements, and restrictions. You can review the following guides to learn how to tune your cluster to meet your needs:
 
-* [Designing for resilience](availability-and-resilience.md)
-* [Tune for indexing speed](optimize-performance/indexing-speed.md)
-* [Tune for search speed](optimize-performance/search-speed.md)
-* [Tune for disk usage](optimize-performance/disk-usage.md)
-* [Tune for time series data](../../manage-data/use-case-use-elasticsearch-to-manage-time-series-data.md)
+::::{note}
+In orchestrated deployments, some of the settings mentioned in the referenced documents may not apply. Check the section headers to determine whether a topic is relevant to your deployment type.
+::::
+
+* [Designing for resilience](./availability-and-resilience.md)
+* [Performance optimizations](./optimize-performance.md) 
 
 Many {{es}} options come with different performance considerations and trade-offs. The best way to determine the optimal configuration for your use case is through [testing with your own data and queries](https://www.elastic.co/elasticon/conf/2016/sf/quantitative-cluster-sizing).
-

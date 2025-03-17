@@ -28,4 +28,4 @@ $$$grant-user-access$$$
 The documentation team is working to combine content pulled from the following pages:
 
 * [/raw-migrated-files/kibana/kibana/secure-reporting.md](/raw-migrated-files/kibana/kibana/secure-reporting.md)
-* [/raw-migrated-files/kibana/kibana/reporting-production-considerations.md](/raw-migrated-files/kibana/kibana/reporting-production-considerations.md)
+* [/raw-migrated-files/kibana/kibana/reporting-production-considerations.md](/deploy-manage/production-guidance/kibana-reporting-production-considerations.md)
