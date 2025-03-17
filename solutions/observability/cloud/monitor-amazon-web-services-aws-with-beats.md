@@ -2,6 +2,8 @@
 navigation_title: "Monitor {{aws}} with {{beats}}"
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/monitor-aws.html
+applies_to:
+  stack:
 ---
 
 
@@ -95,7 +97,7 @@ Replace `<sqs-arn>` with the ARN of the SQS queue, `<s3-bucket-arn>` with the AR
 ```
 
 
-## Step 3:  Enable Event Notification [aws-step-three]
+## Step 3:  Event Notification [aws-step-three]
 
 Now that your queue is created, go to the properties of the S3 bucket you created and click **Create event notification**.
 
