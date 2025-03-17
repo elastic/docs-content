@@ -46,7 +46,7 @@ To track CPU usage over time, we recommend enabling monitoring:
     * **CPU credits**: Your remaining CPU credits, measured in seconds of CPU time.
 
 
-{{ech}} grants [CPU credits](../../deploy-manage/monitor/monitoring-data/ec-vcpu-boost-instance.md) per deployment to provide smaller clusters with performance boosts when needed. High CPU usage can deplete these credits, which might lead to [performance degradation](../monitoring/performance.md) and [increased cluster response times](../monitoring/cluster-response-time.md).
+{{ech}} grants [CPU credits](../../deploy-manage/monitor/ec-vcpu-boost-instance.md) per deployment to provide smaller clusters with performance boosts when needed. High CPU usage can deplete these credits, which might lead to [performance degradation](../monitoring/performance.md) and [increased cluster response times](../monitoring/cluster-response-time.md).
 ::::::
 
 ::::::{tab-item} Self-managed

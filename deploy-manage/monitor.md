@@ -58,7 +58,7 @@ deployment:
 
 {{ece}} and {{ech}} provide out of the box tools for monitoring the health of your deployment and resolving health issues when they arise: 
 
-* [Cluster health information](/deploy-manage/monitor/cloud-health-perf#ec-es-cluster-health.md), including [health warnings](/deploy-manage/monitor/cloud-health-perf.md#ec-es-health-warnings)
+* [Cluster health information](/deploy-manage/monitor/cloud-health-perf.md#ec-es-cluster-health), including [health warnings](/deploy-manage/monitor/cloud-health-perf.md#ec-es-health-warnings)
 * [Cluster performance information](/deploy-manage/monitor/access-performance-metrics-on-elastic-cloud.md)
 * A [JVM memory pressure indicator](/deploy-manage/monitor/ec-memory-pressure.md)
 * [Preconfigured logs and metrics](/deploy-manage/monitor/cloud-health-perf.md#ec-es-health-preconfigured)
