@@ -22,7 +22,7 @@ To make informed scaling decisions, [cluster monitoring](/deploy-manage/monitor.
 
 ## Performance optimizations and scaling
 
-Scaling isn’t just about adding more nodes—it also involves [optimizing the cluster configuration for better performance](./production-guidance/optimize-performance.md). Adjustments such as shard and index tuning, query optimizations, caching strategies, and efficient resource allocation can improve performance without requiring additional hardware. These optimizations directly influence scaling strategies, as a well-tuned cluster can handle more workload with fewer resources.
+Scaling isn’t just about adding more nodes—it also involves [optimizing the cluster configuration for better performance](./optimize-performance.md). Adjustments such as shard and index tuning, query optimizations, caching strategies, and efficient resource allocation can improve performance without requiring additional hardware. These optimizations directly influence scaling strategies, as a well-tuned cluster can handle more workload with fewer resources.
 
 ## Scaling and fault tolerance
 

@@ -48,4 +48,4 @@ Depending on your needs and budget, an {{es}} cluster can consist of a single no
 
 * [Resilience in small clusters](availability-and-resilience/resilience-in-small-clusters.md)
 * [Resilience in larger clusters](availability-and-resilience/resilience-in-larger-clusters.md)
-* [Resilience in {{ech}} deployments](./availability-and-resilience/resiliente-in-ech.md)
+* [Resilience in {{ech}} deployments](./availability-and-resilience/resilience-in-ech.md)
