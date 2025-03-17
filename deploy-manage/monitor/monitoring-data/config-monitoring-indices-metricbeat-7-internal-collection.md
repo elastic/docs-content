@@ -3,9 +3,6 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/config-monitoring-indices-metricbeat-7-internal-collection.html
 applies_to:
   deployment:
-    ess: all
-    ece: all
-    eck: all
     self: all
 ---
 

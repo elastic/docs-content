@@ -706,8 +706,9 @@ toc:
               - file: monitor/monitoring-data/config-monitoring-data-streams-elastic-agent.md
               - file: monitor/monitoring-data/config-monitoring-data-streams-metricbeat-8.md
               - file: monitor/monitoring-data/config-monitoring-indices-metricbeat-7-internal-collection.md
-      - file: monitor/access-performance-metrics-on-elastic-cloud.md
+      - file: monitor/cloud-health-perf.md
         children:
+          - file: monitor/access-performance-metrics-on-elastic-cloud.md
           - file: monitor/ec-memory-pressure.md
           - file: monitor/ec-vcpu-boost-instance.md
       - file: monitor/orchestrators.md

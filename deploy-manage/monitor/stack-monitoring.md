@@ -12,16 +12,12 @@ applies_to:
 
 # Stack monitoring
 
-When you monitor a cluster, you collect data from the {{es}} nodes, {{ls}} nodes, {{kib}} instances, APM Server, and Beats in your cluster. You can also collect logs.
-
-All of the monitoring metrics are stored in {{es}}, which enables you to easily visualize the data in {{kib}}. By default, the monitoring metrics are stored in local indices.
-
-::::{tip}
-In production, we strongly recommend using a [separate monitoring cluster](#production-architecture). Using a separate monitoring cluster prevents production cluster outages from impacting your ability to access your monitoring data. It also prevents monitoring activities from impacting the performance of your production cluster. For the same reason, we also recommend using a separate {{kib}} instance for viewing the monitoring data.
-::::
+:::{include} _snippets/stack-monitoring-def.md
+:::
 
 ::::{admonition} Better monitoring with AutoOps
-If you’re using Elastic Cloud Hosted, then you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, real-time issue detection and resolution paths. For more information, refer to [Monitor with AutoOps](/deploy-manage/monitor/autoops.md).
+:::{include} _snippets/autoops.md
+:::
 ::::
 
 ## How it works
@@ -32,7 +28,7 @@ Monitoring documents are just ordinary JSON documents built by monitoring each {
 
 You can use {{agent}} or {{metricbeat}} to collect monitoring data and to ship it directly to the monitoring cluster. 
 
-In {{ece}} and {{ech}}, Elastic manages the installation and configuration of the monitoring agent for you.
+In {{ech}}, {{ece}}, and {{eck}}, Elastic manages the installation and configuration of the monitoring agent for you.
 
 ## Production architecture
 
