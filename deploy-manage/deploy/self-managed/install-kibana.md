@@ -56,4 +56,5 @@ Running different patch version releases of {{kib}} and {{es}} (e.g. {{kib}} 9.0
 
 ## Third-party dependencies
 
-Refer to [{{stack}} third-party dependencies](https://artifacts.elastic.co/reports/dependencies/dependencies-current.html) for a list of the external dependencies you can leverage.
+:::{include} /deploy-manage/deploy/self-managed/_snippets/third-party-dependencies.md
+:::
