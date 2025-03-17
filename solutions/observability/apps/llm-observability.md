@@ -20,6 +20,17 @@ Elastic’s LLM integrations now support the most widely adopted models, includi
 - [GCP Vertex AI](https://www.elastic.co/guide/en/integrations/current/gcp_vertexai.html)
 - [OpenAI](https://www.elastic.co/guide/en/integrations/current/openai.html)
 
+Depending on the LLM provider you choose, the following table shows which source you can use and which type of data -- log or metrics -- you can collect.
+
+| **LLM Provider**  | **Source**  | **Metrics** | **Logs** | **Notes** |
+|--------|------------|------------|
+| [AWS Bedrock][int-bedrock]| [AWS CloudWatch Logs][impl-bedrock] | ✅ | ✅ |  GA |
+| [Azure OpenAI][int-azure]| [Azure Monitor and Event Hubs][impl-azure] | ✅ | ✅ | GA |
+| [GCP Vertex AI][int-vertexai] | [GCP Cloud Monitoring][impl-vertexai]      | ✅ | 🚧 | GA, we are not able to collect meaningful information for request/response from logs due to dynamic generation, GCP are aware of this issue, not ETA yet |
+| [OpenAI][int-openai]| [OpenAI Usage API][openai-usage] | ✅| 🚧 | GA, cannot collect prompt/response logs until OpenAI provides support. |
+| [OpenTelemetry][int-wip-otel] | OTLP | 🚧 | 🚧 | This would support Elastic extensions of otel's GenAI semantic conventions |
+
+
 ## APM tracing for OpenAI models (via instrumentation)
 
 Elastic offers specialized OpenTelemetry Protocol (OTLP) tracing for applications leveraging OpeAI models hosted on OpenAI, Azure, and Amazon Bedrock, providing a detailed view of request flows. This tracing capability captures critical insights, including the specific models used, request duration, errors encountered, token consumption per request, and the interaction between prompts and responses. Ideal for troubleshooting, APM tracing allows you to find exactly where the issue is happening with precision and efficiency in your OpenAI-powered application. 
@@ -29,6 +40,19 @@ You can instrument the application with one of the following OpenTelemetry API:
 - [Python](https://github.com/elastic/elastic-otel-python)
 - [Node.js](https://github.com/elastic/elastic-otel-node)
 - [Java](https://github.com/elastic/elastic-otel-java)
+
+EDOT includes many types of instrumentation. The following table shows the status of instrumentation relevant to GenAI on a per-language basis:
+
+
+| **SDK**  | **Language** | **Instrumented Dependency** | **Traces** | **Metrics** | **Logs** | Status | **Notes** | 
+|-------|-----|----|-----|------|------|-----|------|
+| OpenAI | Python | [openai][edot-openai-py]| ✅ | ✅ | ✅ | ✅ | Tested on OpenAI, Azure and Ollama |
+| OpenAI| JS/Node | [openai][edot-openai-js] | ✅  | ✅ | ✅ | ✅ | Tested on OpenAI, Azure and Ollama|
+| OpenAI| Java| [com.openai:openai-java][edot-openai-java] | ✅ | ✅ | ✅| ✅| Tested on OpenAI, Azure and Ollama|
+| Langchain| JS/Node| [@langchain/core][wip-edot-langchain-js] | ✅ | 🚧| 🚧 | 🔒| Tested on OpenAI; Not yet finished |
+| (AWS) Boto| Python| [botocore][otel-bedrock-py]| ✅ | ✅ | ✅ | ✅ | Bedrock (not SageMaker) `InvokeModel*` and `Converse*` APIs Owner: Riccardo |
+| Cohere| Python| [cohere][wip-otel-cohere-py] | 🚧 | 🚧 | 🚧 | 🚧 | Owner: Leighton from Microsoft |
+| Google Cloud AI Platform | Python | [google-cloud-aiplatform][otel-vertexai-py] | ✅ | 🚧| 🚧| 🚧 | Vertex (not Gemini); Clashes with OpenLLMetry package |
 
 ## Getting started
 
