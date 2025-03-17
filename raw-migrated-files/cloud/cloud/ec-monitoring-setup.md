@@ -59,7 +59,7 @@ To learn more about what [Elasticsearch monitoring metrics](/deploy-manage/monit
 :alt: Node tab in Kibana under Stack Monitoring
 :::
 
-Some [performance metrics](../../../deploy-manage/monitor/monitoring-data/ec-saas-metrics-accessing.md) are also available directly in the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body) and don’t require looking at your monitoring deployment. If you’re ever in a rush to determine if there is a performance problem, you can get a quick overview by going to the **Performance** page from your deployment menu:
+Some [performance metrics](../../../deploy-manage/monitor/ec-saas-metrics-accessing.md) are also available directly in the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body) and don’t require looking at your monitoring deployment. If you’re ever in a rush to determine if there is a performance problem, you can get a quick overview by going to the **Performance** page from your deployment menu:
 
 :::{image} ../../../images/cloud-ec-ce-monitoring-performance.png
 :alt: Performance page of the Elastic Cloud console

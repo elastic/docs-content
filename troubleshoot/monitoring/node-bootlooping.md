@@ -125,7 +125,7 @@ To view any added plugins or bundles:
 
 Configuration change errors can occur when there is insufficient RAM configured for a data tier. In this case, the cluster typically also shows OOM (out of memory) errors. To resolve these, you need to increase the amount of heap memory, which is half of the amount of memory allocated to a cluster. You might also detect OOM in plan changes via their [related exit codes](/deploy-manage/maintenance/start-stop-services/start-stop-elasticsearch.md#fatal-errors) `127`, `137`, and `158`.
 
-Check the [{{es}} cluster size](/deploy-manage/deploy/elastic-cloud/ec-customize-deployment-components.md#ec-cluster-size) and the [JVM memory pressure indicator](/deploy-manage/monitor/monitoring-data/ec-memory-pressure.md) documentation to learn more.
+Check the [{{es}} cluster size](/deploy-manage/deploy/elastic-cloud/ec-customize-deployment-components.md#ec-cluster-size) and the [JVM memory pressure indicator](/deploy-manage/monitor/ec-memory-pressure.md) documentation to learn more.
 
 As well, you can read our detailed blog [Managing and troubleshooting {{es}} memory](https://www.elastic.co/blog/managing-and-troubleshooting-elasticsearch-memory).
 
