@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/turn-on-risk-engine.html
   - https://www.elastic.co/guide/en/serverless/current/security-turn-on-risk-engine.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Turn on the risk scoring engine
@@ -25,7 +29,7 @@ To preview risky entities, find **Entity Risk Score** in the navigation menu or 
 
 :::{image} ../../../images/security-preview-risky-entities.png
 :alt: Preview of risky entities
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -47,7 +51,7 @@ You can also choose to include `Closed` alerts in risk scoring calculations and 
 
 :::{image} ../../../images/security-turn-on-risk-engine.png
 :alt: Turn on entity risk scoring
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -66,7 +70,7 @@ If you upgraded to 8.11 from an earlier {{stack}} version, and you have the orig
 
 :::{image} ../../../images/security-risk-engine-upgrade-prompt.png
 :alt: Prompt to upgrade to the latest risk engine
-:class: screenshot
+:screenshot:
 :::
 
 1. Click **Manage** in the upgrade prompt, or find **Entity Risk Score** in the navigation menu.
@@ -74,7 +78,7 @@ If you upgraded to 8.11 from an earlier {{stack}} version, and you have the orig
 
     :::{image} ../../../images/security-risk-score-start-update.png
     :alt: Start the risk engine upgrade
-    :class: screenshot
+    :screenshot:
     :::
 
 3. On the confirmation message, click **Yes, update now**. The old transform is removed and the latest risk engine is installed.
@@ -82,7 +86,7 @@ If you upgraded to 8.11 from an earlier {{stack}} version, and you have the orig
 
     :::{image} ../../../images/security-turn-on-risk-engine.png
     :alt: Turn on entity risk scoring
-    :class: screenshot
+    :screenshot:
     :::
 
 

@@ -12,19 +12,19 @@ In **{{stack-manage-app}} > {{connectors-ui}}**, you can test a newly created co
 
 :::{image} ../../../images/kibana-connector-save-and-test.png
 :alt: Rule management page with the errors banner
-:class: screenshot
+:screenshot:
 :::
 
 or by directly opening the proper connector edit flyout:
 
 :::{image} ../../../images/kibana-email-connector-test.png
 :alt: Rule management page with the errors banner
-:class: screenshot
+:screenshot:
 :::
 
 :::{image} ../../../images/kibana-teams-connector-test.png
 :alt: Five clauses define the condition to detect
-:class: screenshot
+:screenshot:
 :::
 
 ## [preview] Troubleshooting connectors with the `kbn-action` tool [_troubleshooting_connectors_with_the_kbn_action_tool]

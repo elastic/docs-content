@@ -2,60 +2,11 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/cloud/current/ec-getting-started-search-use-cases-beats-logstash.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-getting-started-search-use-cases-beats-logstash.html
+applies_to:
+  stack: ga
 ---
 
 # Ingest data from Beats with Logstash as a proxy
-
-% What needs to be done: Refine
-
-% Scope notes: Merge ESS and ECE versions (should be pretty much identical)
-
-% Use migrated content from existing pages that map to this page:
-
-% - [ ] ./raw-migrated-files/cloud/cloud/ec-getting-started-search-use-cases-beats-logstash.md
-% - [ ] ./raw-migrated-files/cloud/cloud-enterprise/ece-getting-started-search-use-cases-beats-logstash.md
-
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
-
-$$$ec-beats-logstash-connect-securely$$$
-
-$$$ec-beats-logstash-elasticsearch$$$
-
-$$$ec-beats-logstash-filebeat$$$
-
-$$$ec-beats-logstash-listen$$$
-
-$$$ec-beats-logstash-logstash$$$
-
-$$$ec-beats-logstash-metricbeat-send$$$
-
-$$$ec-beats-logstash-metricbeat$$$
-
-$$$ec-beats-logstash-stdout$$$
-
-$$$ec-beats-logstash-trial$$$
-
-$$$ec-beats-logstash-view-kibana$$$
-
-$$$ece-beats-logstash-connect-securely$$$
-
-$$$ece-beats-logstash-deployment$$$
-
-$$$ece-beats-logstash-elasticsearch$$$
-
-$$$ece-beats-logstash-filebeat$$$
-
-$$$ece-beats-logstash-listen$$$
-
-$$$ece-beats-logstash-logstash$$$
-
-$$$ece-beats-logstash-metricbeat-send$$$
-
-$$$ece-beats-logstash-metricbeat$$$
-
-$$$ece-beats-logstash-stdout$$$
-
-$$$ece-beats-logstash-view-kibana$$$
 
 This guide explains how to ingest data from Filebeat and Metricbeat to {{ls}} as an intermediary, and then send that data to your {{ech}} or {{ece}} deployment. Using {{ls}} as a proxy limits your Elastic stack traffic through a single, external-facing firewall exception or rule. Consider the following features of this type of setup:
 
@@ -295,7 +246,7 @@ Now the Filebeat and Metricbeat are set up, let’s configure a {{ls}} pipeline 
     1. {{ls}} listens for Beats input on the default port of 5044. Only one line is needed to do this. {{ls}} can handle input from many Beats of the same and also of varying types (Metricbeat, Filebeat, and others).
     2. This sends output to the standard output, which displays through your command line interface. This plugin enables you to verify the data before you send it to {{es}}, in a later step.
 
-3. Save the new *beats.conf* file in your Logstash folder. To learn more about the file format and options, check [{{ls}} Configuration Examples](asciidocalypse://docs/logstash/docs/reference/config-examples.md).
+3. Save the new *beats.conf* file in your Logstash folder. To learn more about the file format and options, check [{{ls}} Configuration Examples](logstash://reference/config-examples.md).
 
 
 ## Output {{ls}} data to stdout [ec-beats-logstash-stdout]
@@ -529,7 +480,7 @@ In this section, you configure {{ls}} to send the Metricbeat and Filebeat data t
 ::::{note}
 In this guide, you manually launch each of the Elastic stack applications through the command line interface. In production, you may prefer to configure {{ls}}, Metricbeat, and Filebeat to run as System Services. Check the following pages for the steps to configure each application to run as a service:
 
-* [Running {{ls}} as a service on Debian or RPM](asciidocalypse://docs/logstash/docs/reference/running-logstash.md)
+* [Running {{ls}} as a service on Debian or RPM](logstash://reference/running-logstash.md)
 * [Metricbeat and systemd](asciidocalypse://docs/beats/docs/reference/metricbeat/running-with-systemd.md)
 * [Start filebeat](asciidocalypse://docs/beats/docs/reference/filebeat/filebeat-starting.md)
 

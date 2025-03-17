@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/endpoint-event-capture.html
   - https://www.elastic.co/guide/en/serverless/current/security-endpoint-event-capture.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Event capture and {{elastic-defend}} [endpoint-event-capture]

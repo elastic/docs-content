@@ -41,9 +41,10 @@ To change your subscription level:
 
 ### Feature usage notifications [ec_feature_usage_notifications]
 
-:::{applies_to}
-:hosted: all
-:::
+```{applies_to}
+deployment:
+  ess: all
+```
 
 If you try to change your subscription to a lower level, but you are using features that belong either to your current level or to a higher one, you need to make some changes before you can proceed, as described in **Review required feature changes**.
 

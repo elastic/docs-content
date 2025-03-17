@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/ai-for-security.html
   - https://www.elastic.co/guide/en/serverless/current/security-ai-for-security.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # AI for security

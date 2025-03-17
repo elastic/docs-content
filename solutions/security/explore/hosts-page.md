@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/hosts-overview.html
   - https://www.elastic.co/guide/en/serverless/current/security-hosts-overview.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Hosts page
@@ -10,7 +14,7 @@ The Hosts page provides a comprehensive overview of all hosts and host-related s
 
 :::{image} ../../../images/security-hosts-ov-pg.png
 :alt: Hosts page
-:class: screenshot
+:screenshot:
 :::
 
 The Hosts page has the following sections:
@@ -41,7 +45,7 @@ The tables within the **Events** and **Sessions** tabs include inline actions an
 
 :::{image} ../../../images/security-events-table.png
 :alt: Events table
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -58,7 +62,7 @@ The host details page includes the following sections:
 
 :::{image} ../../../images/security-hosts-detail-pg.png
 :alt: Host's details page
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -82,7 +86,7 @@ The host details flyout includes the following sections:
 
 :::{image} ../../../images/security-host-details-flyout.png
 :alt: Host details flyout
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -109,7 +113,7 @@ If more than 10 alerts contributed to the risk scoring calculation, the remainin
 
 :::{image} ../../../images/security-host-risk-inputs.png
 :alt: Host risk inputs
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -119,7 +123,7 @@ The **Asset Criticality** section displays the selected host’s [asset critical
 
 :::{image} ../../../images/security-host-asset-criticality.png
 :alt: Asset criticality
-:class: screenshot
+:screenshot:
 :::
 
 Click **Assign** to assign a criticality level to the selected host, or **Change** to change the currently assigned criticality level.
@@ -140,5 +144,5 @@ This section displays details such as the host ID, when the host was first and l
 
 :::{image} ../../../images/security-host-observed-data.png
 :alt: Host observed data
-:class: screenshot
+:screenshot:
 :::

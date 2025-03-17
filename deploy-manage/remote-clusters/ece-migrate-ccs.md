@@ -24,7 +24,7 @@ You can make this change in the user Cloud UI. The only drawback of this method 
 
    :::{image} ../../images/cloud-enterprise-ce-create-from-snapshot-updated.png
    :alt: Create a Deployment using a snapshot
-   :class: screenshot
+   :screenshot:
    :::
 
 4. Finally, [configure the remote clusters](/deploy-manage/remote-clusters/ece-remote-cluster-other-ece.md).

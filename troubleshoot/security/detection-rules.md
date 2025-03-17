@@ -5,6 +5,10 @@ mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/security-ts-detection-rules.html
   - https://www.elastic.co/guide/en/security/current/alerts-ui-monitor.html#troubleshoot-signals
   - https://www.elastic.co/guide/en/serverless/current/security-alerts-ui-monitor.html#troubleshoot-signals
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Troubleshoot detection rules [ts-detection-rules]
@@ -24,7 +28,7 @@ If a {{ml}} rule is failing, check to make sure the required {{ml}} jobs are run
 
    :::{image} ../../images/security-rules-ts-ml-job-stopped.png
    :alt: Rule details page with ML job stopped
-   :class: screenshot
+   :screenshot:
    :::
 
 2. If a required {{ml}} job isn’t running, turn on the **Run job** toggle next to it.
@@ -53,7 +57,7 @@ If you receive the following rule failure: `"An error occurred during rule execu
 ::::{dropdown} Indicator match rules are failing because the `maxClauseCount` limit is too low
 :name: IM-rule-heap-memory
 
-If you receive the following rule failure: `Bulk Indexing of signals failed: index: ".index-name" reason: "maxClauseCount is set to 1024" type: "too_many_clauses"`, this indicates that the limit for the total number of clauses that a query tree can have is too low. To update your maximum clause count, [increase the size of your {{es}} JVM heap memory](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/jvm-settings.md#set-jvm-heap-size). 1 GB of {{es}} JVM heap size or more is sufficient.
+If you receive the following rule failure: `Bulk Indexing of signals failed: index: ".index-name" reason: "maxClauseCount is set to 1024" type: "too_many_clauses"`, this indicates that the limit for the total number of clauses that a query tree can have is too low. To update your maximum clause count, [increase the size of your {{es}} JVM heap memory](elasticsearch://reference/elasticsearch/jvm-settings.md#set-jvm-heap-size). 1 GB of {{es}} JVM heap size or more is sufficient.
 ::::
 
 
@@ -83,7 +87,7 @@ Turning off `autocomplete:useTimeRange` could cause performance issues if the da
 :::::{dropdown} Warning about type conflicts and unmapped fields
 :name: rule-exceptions-field-conflicts
 
-A warning icon (![Field conflict warning icon](../../images/security-field-warning-icon.png "")) and message appear for fields with [type conflicts](#fields-with-conflicting-types) across multiple indices or  fields that are [unmapped](#unmapped-field-conflict). You can learn more about the conflict by clicking the warning message.
+A warning icon (![Field conflict warning icon](../../images/security-field-warning-icon.png "title =20x20")) and message appear for fields with [type conflicts](#fields-with-conflicting-types) across multiple indices or  fields that are [unmapped](#unmapped-field-conflict). You can learn more about the conflict by clicking the warning message.
 
 ::::{note}
 A field can have type conflicts *and* be unmapped in specified indices.
@@ -92,7 +96,7 @@ A field can have type conflicts *and* be unmapped in specified indices.
 
 :::{image} ../../images/security-warning-icon-message.png
 :alt: Shows the warning icon and message
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -104,7 +108,7 @@ In the following example, the selected field has been defined as different types
 
 :::{image} ../../images/security-warning-type-conflicts.png
 :alt: Warning for fields with type conflicts
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -116,7 +120,7 @@ In the following example, the selected field is unmapped across two indices.
 
 :::{image} ../../images/security-warning-unmapped-fields.png
 :alt: Warning for unmapped fields
-:class: screenshot
+:screenshot:
 :::
 
 :::::
@@ -177,7 +181,7 @@ For example, say an event occurred at 10:00 but wasn’t ingested into {{es}} un
 
 :::{image} ../../images/security-timestamp-override.png
 :alt: timestamp override
-:class: screenshot
+:screenshot:
 :::
 
 

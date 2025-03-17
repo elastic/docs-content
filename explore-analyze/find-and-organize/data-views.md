@@ -10,16 +10,6 @@ mapped_urls:
 
 # Data views [data-views]
 
-% What needs to be done: Align serverless/stateful
-
-% Use migrated content from existing pages that map to this page:
-
-% - [ ] ./raw-migrated-files/kibana/kibana/data-views.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/data-views.md
-% - [ ] ./raw-migrated-files/kibana/kibana/managing-data-views.md
-
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
-
 $$$field-formatters-numeric$$$
 
 $$$managing-fields$$$
@@ -54,7 +44,7 @@ If you collected data using one of the {{kib}} [ingest options](../../manage-dat
 
    :::{image} ../../images/kibana-discover-data-view.png
    :alt: How to set the {{data-source}} in Discover
-   :class: screenshot
+   :screenshot:
    :width: 50%
    :::
 
@@ -91,7 +81,7 @@ A temporary {{data-source}} remains in your space until you change apps, or unti
 
 :::{image} ../../images/ad-hoc-data-view.gif
 :alt: how to create an ad-hoc data view
-:class: screenshot
+:screenshot:
 :::
 
 ::::{note}
@@ -101,10 +91,10 @@ Temporary {{data-sources}} are not available in the **Management** menu.
 
 
 ### Use {{data-sources}} with rolled up data [rollup-data-view]
-::::{applies_to}
-:serverless: unavailable
-:stack: deprecated
-::::
+```{applies_to}
+serverless: unavailable
+stack: deprecated
+```
 
 ::::{admonition}
 :class: warning
@@ -123,10 +113,10 @@ For an example, refer to [Create and visualize rolled up data](/manage-data/life
 
 
 ### Use {{data-sources}} with {{ccs}} [management-cross-cluster-search]
-::::{applies_to}
-:serverless: unavailable
-:stack: ga
-::::
+```{applies_to}
+serverless: unavailable
+stack: ga
+```
 
 If your {{es}} clusters are configured for [{{ccs}}](../../solutions/search/cross-cluster-search.md), you can create a {{data-source}} to search across the clusters of your choosing. Specify data streams, indices, and aliases in a remote cluster using the following syntax:
 
@@ -476,7 +466,7 @@ Built-in validation is unsupported for scripted fields. When your scripts contai
 5. Select **Set format**, then enter the **Format** for the field.
 
 ::::{note}
-For numeric fields the default field formatters are based on the `meta.unit` field. The unit is associated with a [time unit](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/api-conventions.md#time-units), percent, or  byte. The convention for percents is to use value 1 to mean 100%.
+For numeric fields the default field formatters are based on the `meta.unit` field. The unit is associated with a [time unit](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#time-units), percent, or  byte. The convention for percents is to use value 1 to mean 100%.
 ::::
 
 
@@ -613,7 +603,7 @@ Numeric fields support **Bytes**, **Color**, **Duration**, **Histogram**, **Numb
 
 The **Bytes**, **Number**, and **Percentage** formatters enable you to choose the display formats of numbers in the field using the [Elastic numeral pattern](../../explore-analyze/numeral-formatting.md) syntax that {{kib}} maintains.
 
-The **Histogram** formatter is used only for the [histogram field type](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/histogram.md). When you use the **Histogram** formatter, you can apply the **Bytes**, **Number**, or **Percentage** format to aggregated data.
+The **Histogram** formatter is used only for the [histogram field type](elasticsearch://reference/elasticsearch/mapping-reference/histogram.md). When you use the **Histogram** formatter, you can apply the **Bytes**, **Number**, or **Percentage** format to aggregated data.
 
 You can specify the following types to the `Url` field formatter:
 

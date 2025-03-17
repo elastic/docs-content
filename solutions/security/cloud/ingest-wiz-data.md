@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/ingest-wiz-data.html
   - https://www.elastic.co/guide/en/serverless/current/ingest-wiz-data.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Ingest Wiz data

@@ -47,7 +47,7 @@ You can also use security to grant read only or all access to different roles. W
 
 :::{image} ../../../images/kibana-graph-read-only-badge.png
 :alt: Example of Graph's read only access indicator in Kibana's header
-:class: screenshot
+:screenshot:
 :width: 50%
 :::
 

@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/cspm-findings-page.html
   - https://www.elastic.co/guide/en/serverless/current/security-cspm-findings-page.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Findings page
@@ -14,7 +18,7 @@ The **Misconfigurations** tab on the Findings page displays the configuration ri
 
 :::{image} ../../../images/security-findings-page.png
 :alt: Findings page
-:class: screenshot
+:screenshot:
 :::
 
 

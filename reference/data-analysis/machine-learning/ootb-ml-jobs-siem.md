@@ -7,12 +7,11 @@ mapped_pages:
 
 These {{anomaly-jobs}} automatically detect file system and network anomalies on your hosts. They appear in the **Anomaly Detection** interface of the {{security-app}} in {{kib}} when you have data that matches their configuration. For more information, refer to [Anomaly detection with machine learning](/solutions/security/advanced-entity-analytics/anomaly-detection.md).
 
-
 ## Security: Authentication [security-authentication]
 
 Detect anomalous activity in your ECS-compatible authentication logs.
 
-In the {{ml-app}} app, these configurations are available only when data exists that matches the query specified in the [manifest file](https://github.com/elastic/kibana/blob/master/x-pack/plugins/ml/server/models/data_recognizer/modules/security_auth/manifest.json). In the {{security-app}}, it looks in the {{data-source}} specified in the [`securitySolution:defaultIndex` advanced setting](asciidocalypse://docs/reference/advanced-settings.md#securitysolution-defaultindex) for data that matches the query.
+In the {{ml-app}} app, these configurations are available only when data exists that matches the query specified in the [manifest file](https://github.com/elastic/kibana/blob/master/x-pack/plugins/ml/server/models/data_recognizer/modules/security_auth/manifest.json). In the {{security-app}}, it looks in the {{data-source}} specified in the [`securitySolution:defaultIndex` advanced setting](kibana://reference/advanced-settings.md#securitysolution-defaultindex) for data that matches the query.
 
 By default, when you create these job in the {{security-app}}, it uses a {{data-source}} that applies to multiple indices. To get the same results if you use the {{ml-app}} app, create a similar [{{data-source}}](https://github.com/elastic/kibana/blob/master/x-pack/plugins/ml/server/models/data_recognizer/modules/security_auth/manifest.json#L7) then select it in the job wizard.
 
@@ -26,12 +25,11 @@ By default, when you create these job in the {{security-app}}, it uses a {{data-
 | auth_rare_user | Looks for an unusual user name in the authentication logs. An unusual user name is one way of detecting credentialed access by means of a new or dormant user account. A user account that is normally inactive, because the user has left the organization, which becomes active, may be due to credentialed access using a compromised account password. Threat actors will sometimes also create new users as a means of persisting in a compromised web application. | [code](https://github.com/elastic/kibana/blob/master/x-pack/plugins/ml/server/models/data_recognizer/modules/security_auth/ml/auth_rare_user.json) | [code](https://github.com/elastic/kibana/blob/master/x-pack/plugins/ml/server/models/data_recognizer/modules/security_auth/ml/datafeed_auth_rare_user.json) |
 | suspicious_login_activity | Detect unusually high number of authentication attempts. | [code](https://github.com/elastic/kibana/blob/master/x-pack/plugins/ml/server/models/data_recognizer/modules/security_auth/ml/datafeed_suspicious_login_activity.json) | [code](https://github.com/elastic/kibana/blob/master/x-pack/plugins/ml/server/models/data_recognizer/modules/security_auth/ml/suspicious_login_activity.json) |
 
-
 ## Security: CloudTrail [security-cloudtrail-jobs]
 
 Detect suspicious activity recorded in your CloudTrail logs.
 
-In the {{ml-app}} app, these configurations are available only when data exists that matches the query specified in the [manifest file](https://github.com/elastic/kibana/blob/master/x-pack/plugins/ml/server/models/data_recognizer/modules/security_cloudtrail/manifest.json). In the {{security-app}}, it looks in the {{data-source}} specified in the [`securitySolution:defaultIndex` advanced setting](asciidocalypse://docs/reference/advanced-settings.md#securitysolution-defaultindex) for data that matches the query.
+In the {{ml-app}} app, these configurations are available only when data exists that matches the query specified in the [manifest file](https://github.com/elastic/kibana/blob/master/x-pack/plugins/ml/server/models/data_recognizer/modules/security_cloudtrail/manifest.json). In the {{security-app}}, it looks in the {{data-source}} specified in the [`securitySolution:defaultIndex` advanced setting](kibana://reference/advanced-settings.md#securitysolution-defaultindex) for data that matches the query.
 
 | Name | Description | Job (JSON) | Datafeed |
 | --- | --- | --- | --- |
@@ -41,26 +39,24 @@ In the {{ml-app}} app, these configurations are available only when data exists 
 | rare_method_for_a_country | Looks for AWS API calls that, while not inherently suspicious or abnormal, are sourcing from a geolocation (country) that is unusual. This can be the result of compromised credentials or keys. | [code](https://github.com/elastic/kibana/blob/master/x-pack/plugins/ml/server/models/data_recognizer/modules/siem_cloudtrail/ml/rare_method_for_a_country.json) | [code](https://github.com/elastic/kibana/blob/master/x-pack/plugins/ml/server/models/data_recognizer/modules/siem_cloudtrail/ml/datafeed_rare_method_for_a_country.json) |
 | rare_method_for_a_username | Looks for AWS API calls that, while not inherently suspicious or abnormal, are sourcing from a user context that does not normally call the method. This can be the result of compromised credentials or keys as someone uses a valid account to persist, move laterally, or exfil data. | [code](https://github.com/elastic/kibana/blob/master/x-pack/plugins/ml/server/models/data_recognizer/modules/siem_cloudtrail/ml/rare_method_for_a_username.json) | [code](https://github.com/elastic/kibana/blob/master/x-pack/plugins/ml/server/models/data_recognizer/modules/siem_cloudtrail/ml/datafeed_rare_method_for_a_username.json) |
 
-
 ## Security: Host [security-host-jobs]
 
 Anomaly detection jobs for host-based threat hunting and detection.
 
-In the {{ml-app}} app, these configurations are available only when data exists that matches the query specified in the [manifest file](https://github.com/elastic/kibana/blob/master/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_host/manifest.json). In the {{security-app}}, it looks in the {{data-source}} specified in the [`securitySolution:defaultIndex` advanced setting](asciidocalypse://docs/reference/advanced-settings.md#securitysolution-defaultindex) for data that matches the query.
+In the {{ml-app}} app, these configurations are available only when data exists that matches the query specified in the [manifest file](https://github.com/elastic/kibana/blob/master/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_host/manifest.json). In the {{security-app}}, it looks in the {{data-source}} specified in the [`securitySolution:defaultIndex` advanced setting](kibana://reference/advanced-settings.md#securitysolution-defaultindex) for data that matches the query.
 
-To access the host traffic anomalies dashboard in Kibana, go to: `Security -> Dashboards -> Host Traffic Anomalies`.
+To access the host traffic anomalies dashboard in Kibana, install the `Host Traffic Anomalies` integration by navigating to `Management -> Integrations`. Follow the instructions on the integration's `Overview` page to complete the installation. Once the dashboard is successfully installed and configured, you can find it under `Security -> Dashboards -> Host Traffic Anomalies`.
 
 | Name | Description | Job (JSON) | Datafeed |
 | --- | --- | --- | --- |
 | high_count_events_for_a_host_name | Looks for a sudden spike in host based traffic. This can be due to a range of security issues, such as a compromised system, DDoS attacks, malware infections, privilege escalation, or data exfiltration. | [code](https://github.com/elastic/kibana/blob/master/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_host/ml/high_count_events_for_a_host_name.json) | [code](https://github.com/elastic/kibana/blob/master/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_host/ml/datafeed_high_count_events_for_a_host_name.json) |
 | low_count_events_for_a_host_name | Looks for a sudden drop in host based traffic. This can be due to a range of security issues, such as a compromised system, a failed service, or a network misconfiguration. | [code](https://github.com/elastic/kibana/blob/master/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_host/ml/low_count_events_for_a_host_name.json) | [code](https://github.com/elastic/kibana/blob/master/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_host/ml/datafeed_low_count_events_for_a_host_name.json) |
 
-
 ## Security: Linux [security-linux-jobs]
 
 Anomaly detection jobs for Linux host-based threat hunting and detection.
 
-In the {{ml-app}} app, these configurations are available only when data exists that matches the query specified in the [manifest file](https://github.com/elastic/kibana/blob/master/x-pack/plugins/ml/server/models/data_recognizer/modules/security_linux/manifest.json). In the {{security-app}}, it looks in the {{data-source}} specified in the [`securitySolution:defaultIndex` advanced setting](asciidocalypse://docs/reference/advanced-settings.md#securitysolution-defaultindex) for data that matches the query.
+In the {{ml-app}} app, these configurations are available only when data exists that matches the query specified in the [manifest file](https://github.com/elastic/kibana/blob/master/x-pack/plugins/ml/server/models/data_recognizer/modules/security_linux/manifest.json). In the {{security-app}}, it looks in the {{data-source}} specified in the [`securitySolution:defaultIndex` advanced setting](kibana://reference/advanced-settings.md#securitysolution-defaultindex) for data that matches the query.
 
 | Name | Description | Job (JSON) | Datafeed |
 | --- | --- | --- | --- |
@@ -79,12 +75,11 @@ In the {{ml-app}} app, these configurations are available only when data exists 
 | v3_linux_system_user_discovery | Looks for commands related to system user or owner discovery from an unusual user context. This can be due to uncommon troubleshooting activity or due to a compromised account. A compromised account may be used to engage in system owner or user discovery to identify currently active or primary users of a system. This may be a precursor to additional discovery, credential dumping, or privilege elevation activity. | [code](https://github.com/elastic/kibana/blob/master/x-pack/plugins/ml/server/models/data_recognizer/modules/security_linux/ml/v3_linux_system_user_discovery.json) | [code](https://github.com/elastic/kibana/blob/master/x-pack/plugins/ml/server/models/data_recognizer/modules/security_linux/ml/datafeed_v3_linux_system_user_discovery.json) |
 | v3_rare_process_by_host_linux | Looks for processes that are unusual to a particular Linux host. Such unusual processes may indicate unauthorized software, malware, or persistence mechanisms. | [code](https://github.com/elastic/kibana/blob/master/x-pack/plugins/ml/server/models/data_recognizer/modules/security_linux/ml/v3_rare_process_by_host_linux.json) | [code](https://github.com/elastic/kibana/blob/master/x-pack/plugins/ml/server/models/data_recognizer/modules/security_linux/ml/datafeed_v3_rare_process_by_host_linux.json) |
 
-
 ## Security: Network [security-network-jobs]
 
 Detect anomalous network activity in your ECS-compatible network logs.
 
-In the {{ml-app}} app, these configurations are available only when data exists that matches the query specified in the [manifest file](https://github.com/elastic/kibana/blob/master/x-pack/plugins/ml/server/models/data_recognizer/modules/security_network/manifest.json). In the {{security-app}}, it looks in the {{data-source}} specified in the [`securitySolution:defaultIndex` advanced setting](asciidocalypse://docs/reference/advanced-settings.md#securitysolution-defaultindex) for data that matches the query.
+In the {{ml-app}} app, these configurations are available only when data exists that matches the query specified in the [manifest file](https://github.com/elastic/kibana/blob/master/x-pack/plugins/ml/server/models/data_recognizer/modules/security_network/manifest.json). In the {{security-app}}, it looks in the {{data-source}} specified in the [`securitySolution:defaultIndex` advanced setting](kibana://reference/advanced-settings.md#securitysolution-defaultindex) for data that matches the query.
 
 By default, when you create these jobs in the {{security-app}}, it uses a {{data-source}} that applies to multiple indices. To get the same results if you use the {{ml-app}} app, create a similar [{{data-source}}](https://github.com/elastic/kibana/blob/master/x-pack/plugins/ml/server/models/data_recognizer/modules/security_network/manifest.json#L7) then select it in the job wizard.
 
@@ -95,12 +90,11 @@ By default, when you create these jobs in the {{security-app}}, it uses a {{data
 | high_count_network_events | Looks for an unusually large spike in network traffic. Such a burst of traffic, if not caused by a surge in business activity, can be due to suspicious or malicious activity. Large-scale data exfiltration may produce a burst of network traffic; this could also be due to unusually large amounts of reconnaissance or enumeration traffic.  Denial-of-service attacks or traffic floods may also produce such a surge in traffic. | [code](https://github.com/elastic/kibana/blob/master/x-pack/plugins/ml/server/models/data_recognizer/modules/security_network/ml/high_count_network_events.json) | [code](https://github.com/elastic/kibana/blob/master/x-pack/plugins/ml/server/models/data_recognizer/modules/security_network/ml/datafeed_high_count_network_events.json) |
 | rare_destination_country | Looks for an unusual destination country name in the network logs. This can be due to initial access, persistence, command-and-control, or exfiltration activity. For example, when a user clicks on a link in a phishing email or opens a malicious document, a request may be sent to download and run a payload from a server in a country which does not normally appear in network traffic or business work-flows. Malware instances and persistence mechanisms may communicate with command-and-control (C2) infrastructure in their country of origin, which may be an unusual destination country for the source network. | [code](https://github.com/elastic/kibana/blob/master/x-pack/plugins/ml/server/models/data_recognizer/modules/security_network/ml/rare_destination_country.json) | [code](https://github.com/elastic/kibana/blob/master/x-pack/plugins/ml/server/models/data_recognizer/modules/security_network/ml/datafeed_rare_destination_country.json) |
 
-
 ## Security: {{packetbeat}} [security-packetbeat-jobs]
 
 Detect suspicious network activity in {{packetbeat}} data.
 
-In the {{ml-app}} app, these configurations are available only when data exists that matches the query specified in the [manifest file](https://github.com/elastic/kibana/blob/master/x-pack/plugins/ml/server/models/data_recognizer/modules/security_packetbeat/manifest.json). In the {{security-app}}, it looks in the {{data-source}} specified in the [`securitySolution:defaultIndex` advanced setting](asciidocalypse://docs/reference/advanced-settings.md#securitysolution-defaultindex) for data that matches the query.
+In the {{ml-app}} app, these configurations are available only when data exists that matches the query specified in the [manifest file](https://github.com/elastic/kibana/blob/master/x-pack/plugins/ml/server/models/data_recognizer/modules/security_packetbeat/manifest.json). In the {{security-app}}, it looks in the {{data-source}} specified in the [`securitySolution:defaultIndex` advanced setting](kibana://reference/advanced-settings.md#securitysolution-defaultindex) for data that matches the query.
 
 | Name | Description | Job (JSON) | Datafeed |
 | --- | --- | --- | --- |
@@ -110,12 +104,11 @@ In the {{ml-app}} app, these configurations are available only when data exists 
 | packetbeat_rare_urls | Looks for unusual web browsing URL activity that could indicate execution, persistence, command-and-control or data exfiltration activity. | [code](https://github.com/elastic/kibana/blob/master/x-pack/plugins/ml/server/models/data_recognizer/modules/siem_packetbeat/ml/packetbeat_rare_urls.json) | [code](https://github.com/elastic/kibana/blob/master/x-pack/plugins/ml/server/models/data_recognizer/modules/siem_packetbeat/ml/datafeed_packetbeat_rare_urls.json) |
 | packetbeat_rare_user_agent | Looks for unusual HTTP user agent activity that could indicate execution, persistence, command-and-control or data exfiltration activity. | [code](https://github.com/elastic/kibana/blob/master/x-pack/plugins/ml/server/models/data_recognizer/modules/siem_packetbeat/ml/packetbeat_rare_user_agent.json) | [code](https://github.com/elastic/kibana/blob/master/x-pack/plugins/ml/server/models/data_recognizer/modules/siem_packetbeat/ml/datafeed_packetbeat_rare_user_agent.json) |
 
-
 ## Security: Windows [security-windows-jobs]
 
 Anomaly detection jobs for Windows host-based threat hunting and detection.
 
-In the {{ml-app}} app, these configurations are available only when data exists that matches the query specified in the [manifest file](https://github.com/elastic/kibana/blob/master/x-pack/plugins/ml/server/models/data_recognizer/modules/security_windows/manifest.json). In the {{security-app}}, it looks in the {{data-source}} specified in the [`securitySolution:defaultIndex` advanced setting](asciidocalypse://docs/reference/advanced-settings.md#securitysolution-defaultindex) for data that matches the query.
+In the {{ml-app}} app, these configurations are available only when data exists that matches the query specified in the [manifest file](https://github.com/elastic/kibana/blob/master/x-pack/plugins/ml/server/models/data_recognizer/modules/security_windows/manifest.json). In the {{security-app}}, it looks in the {{data-source}} specified in the [`securitySolution:defaultIndex` advanced setting](kibana://reference/advanced-settings.md#securitysolution-defaultindex) for data that matches the query.
 
 If there are additional requirements such as installing the Windows System Monitor (Sysmon) or auditing process creation in the Windows security event log, they are listed for each job.
 
@@ -134,23 +127,22 @@ If there are additional requirements such as installing the Windows System Monit
 | v3_windows_rare_user_runas_event | Unusual user context switches can be due to privilege escalation. | [code](https://github.com/elastic/kibana/blob/master/x-pack/plugins/ml/server/models/data_recognizer/modules/security_windows/ml/v3_windows_rare_user_runas_event.json) | [code](https://github.com/elastic/kibana/blob/master/x-pack/plugins/ml/server/models/data_recognizer/modules/security_windows/ml/datafeed_v3_windows_rare_user_runas_event.json) |
 | v3_windows_rare_user_type10_remote_login | Unusual RDP (remote desktop protocol) user logins can indicate account takeover or credentialed access. | [code](https://github.com/elastic/kibana/blob/master/x-pack/plugins/ml/server/models/data_recognizer/modules/security_windows/ml/v3_windows_rare_user_type10_remote_login.json) | [code](https://github.com/elastic/kibana/blob/master/x-pack/plugins/ml/server/models/data_recognizer/modules/security_windows/ml/datafeed_v3_windows_rare_user_type10_remote_login.json) |
 
-
 ## Security: Elastic Integrations [security-integrations-jobs]
 
-[Elastic Integrations](asciidocalypse://docs/reference/index.md) are a streamlined way to add Elastic assets to your environment, such as data ingestion, {{transforms}}, and in this case, {{ml}} capabilities for Security.
+[Elastic Integrations](kibana://reference/index.md) are a streamlined way to add Elastic assets to your environment, such as data ingestion, {{transforms}}, and in this case, {{ml}} capabilities for Security.
 
 The following Integrations use {{ml}} to analyze patterns of user and entity behavior, and help detect and alert when there is related suspicious activity in your environment.
 
-* [Data Exfiltration Detection](asciidocalypse://docs/reference/ded.md)
-* [Domain Generation Algorithm Detection](asciidocalypse://docs/reference/dga.md)
-* [Lateral Movement Detection](asciidocalypse://docs/reference/lmd.md)
-* [Living off the Land Attack Detection](asciidocalypse://docs/reference/problemchild.md)
+* [Data Exfiltration Detection](integration-docs://reference/ded/index.md)
+* [Domain Generation Algorithm Detection](integration-docs://reference/dga/index.md)
+* [Lateral Movement Detection](integration-docs://reference/lmd/index.md)
+* [Living off the Land Attack Detection](integration-docs://reference/problemchild/index.md)
 
 **Domain Generation Algorithm (DGA) Detection**
 
 {{ml-cap}} solution package to detect domain generation algorithm (DGA) activity in your network data. Refer to the [subscription page](https://www.elastic.co/subscriptions) to learn more about the required subscription.
 
-To download, refer to the [documentation](asciidocalypse://docs/reference/dga.md).
+To download, refer to the [documentation](integration-docs://reference/dga/index.md).
 
 | Name | Description |
 | --- | --- |
@@ -162,7 +154,7 @@ The job configurations and datafeeds can be found [here](https://github.com/elas
 
 {{ml-cap}} solution package to detect Living off the Land (LotL) attacks in your environment. Refer to the [subscription page](https://www.elastic.co/subscriptions) to learn more about the required subscription. (Also known as ProblemChild).
 
-To download, refer to the [documentation](asciidocalypse://docs/reference/problemchild.md).
+To download, refer to the [documentation](integration-docs://reference/problemchild/index.md).
 
 | Name | Description |
 | --- | --- |
@@ -179,7 +171,7 @@ The job configurations and datafeeds can be found [here](https://github.com/elas
 
 {{ml-cap}} package to detect data exfiltration in your network and file data. Refer to the [subscription page](https://www.elastic.co/subscriptions) to learn more about the required subscription.
 
-To download, refer to the [documentation](asciidocalypse://docs/reference/ded.md).
+To download, refer to the [documentation](integration-docs://reference/ded/index.md).
 
 | Name | Description |
 | --- | --- |
@@ -197,7 +189,7 @@ The job configurations and datafeeds can be found [here](https://github.com/elas
 
 {{ml-cap}} package to detect lateral movement based on file transfer activity and Windows RDP events. Refer to the [subscription page](https://www.elastic.co/subscriptions) to learn more about the required subscription.
 
-To download, refer to the [documentation](asciidocalypse://docs/reference/lmd.md).
+To download, refer to the [documentation](integration-docs://reference/lmd/index.md).
 
 | Name | Description |
 | --- | --- |
@@ -214,4 +206,3 @@ To download, refer to the [documentation](asciidocalypse://docs/reference/lmd.md
 | lmd_high_mean_rdp_process_args | Detects unusually high number of process arguments in an RDP session. |
 
 The job configurations and datafeeds can be found [here](https://github.com/elastic/integrations/blob/main/packages/lmd/kibana/ml_module/lmd-ml.json).
-

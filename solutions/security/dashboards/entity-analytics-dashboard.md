@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/detection-entity-dashboard.html
   - https://www.elastic.co/guide/en/serverless/current/security-detection-entity-dashboard.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Entity Analytics dashboard
@@ -24,7 +28,7 @@ The dashboard includes the following sections:
 
 :::{image} ../../../images/security-entity-dashboard.png
 :alt: Entity dashboard
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -45,7 +49,7 @@ Displays user risk score data for your environment, including the total number o
 
 :::{image} ../../../images/security-user-score-data.png
 :alt: User risk table
-:class: screenshot
+:screenshot:
 :::
 
 Interact with the table to filter data, view more details, and take action:
@@ -54,7 +58,7 @@ Interact with the table to filter data, view more details, and take action:
 * Click a user name link to open the user details flyout.
 * Hover over a user name link to display inline actions: **Add to timeline**, which adds the selected value to Timeline, and **Copy to Clipboard**, which copies the user name value for you to paste later.
 * Click **View all** in the upper-right to display all user risk information on the Users page.
-* Click the number link in the **Alerts** column to view the alerts on the Alerts page. Hover over the number and select **Investigate in timeline** (![Investigate in timeline icon](../../../images/security-timeline-button-osquery.png "")) to launch Timeline with a query that includes the associated user name value.
+* Click the number link in the **Alerts** column to view the alerts on the Alerts page. Hover over the number and select **Investigate in timeline** (![Investigate in timeline icon](../../../images/security-timeline-button-osquery.png "title =20x20")) to launch Timeline with a query that includes the associated user name value.
 
 For more information about user risk scores, refer to [Entity risk scoring](/solutions/security/advanced-entity-analytics/entity-risk-scoring.md).
 
@@ -70,7 +74,7 @@ Displays host risk score data for your environment, including the total number o
 
 :::{image} ../../../images/security-host-score-data.png
 :alt: Host risk scores table
-:class: screenshot
+:screenshot:
 :::
 
 Interact with the table to filter data, view more details, and take action:
@@ -79,7 +83,7 @@ Interact with the table to filter data, view more details, and take action:
 * Click a host name link to open the host details flyout.
 * Hover over a host name link to display inline actions: **Add to timeline**, which adds the selected value to Timeline, and **Copy to Clipboard**, which copies the host name value for you to paste later.
 * Click **View all** in the upper-right to display all host risk information on the Hosts page.
-* Click the number link in the **Alerts** column to view the alerts on the Alerts page. Hover over the number and select **Investigate in timeline** (![Investigate in timeline icon](../../../images/security-timeline-button-osquery.png "")) to launch Timeline with a query that includes the associated host name value.
+* Click the number link in the **Alerts** column to view the alerts on the Alerts page. Hover over the number and select **Investigate in timeline** (![Investigate in timeline icon](../../../images/security-timeline-button-osquery.png "title =20x20")) to launch Timeline with a query that includes the associated host name value.
 
 For more information about host risk scores, refer to [Entity risk scoring](/solutions/security/advanced-entity-analytics/entity-risk-scoring.md).
 
@@ -105,7 +109,7 @@ The **Entities** table only shows a subset of the data available for each entity
 
 :::{image} ../../../images/security-entities-section.png
 :alt: Entities section
-:class: screenshot
+:screenshot:
 :::
 
 Entity data from different sources appears in the **Entities** section based on the following timelines:
@@ -120,7 +124,7 @@ Interact with the table to filter data and view more details:
 * Select the **Risk level** dropdown to filter the table by the selected user or host risk level.
 * Select the **Criticality** dropdown to filter the table by the selected asset criticality level.
 * Select the **Source** dropdown to filter the table by the data source.
-* Click the **View details** icon (![View details icon](../../../images/security-view-details-icon.png "")) to open the entity details flyout.
+* Click the **View details** icon (![View details icon](../../../images/security-view-details-icon.png "title =20x20")) to open the entity details flyout.
 
 
 ## Anomalies [entity-anomalies]
@@ -128,13 +132,13 @@ Interact with the table to filter data and view more details:
 Anomaly detection jobs identify suspicious or irregular behavior patterns. The Anomalies table displays the total number of anomalies identified by these prebuilt {{ml}} jobs (named in the **Anomaly name** column).
 
 ::::{admonition} Requirements
-To display anomaly results, you must [install and run](/explore-analyze/machine-learning/anomaly-detection/ml-ad-run-jobs.md) one or more [prebuilt anomaly detection jobs](asciidocalypse://docs/docs-content/docs/reference/security/prebuilt-jobs.md). You cannot add custom anomaly detection jobs to the Entity Analytics dashboard.
+To display anomaly results, you must [install and run](/explore-analyze/machine-learning/anomaly-detection/ml-ad-run-jobs.md) one or more [prebuilt anomaly detection jobs](/reference/security/prebuilt-anomaly-detection-jobs.md). You cannot add custom anomaly detection jobs to the Entity Analytics dashboard.
 ::::
 
 
 :::{image} ../../../images/security-anomalies-table.png
 :alt: Anomalies table
-:class: screenshot
+:screenshot:
 :::
 
 Interact with the table to view more details:

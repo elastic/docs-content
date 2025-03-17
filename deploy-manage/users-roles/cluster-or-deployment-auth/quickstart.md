@@ -69,7 +69,7 @@ Create a **Marketing** space for your marketing analysts to use.
 
     :::{image} ../../../images/kibana-tutorial-secure-access-example-1-space.png
     :alt: Create space UI
-    :class: screenshot
+    :screenshot:
     :::
 
 
@@ -107,7 +107,7 @@ To create the role:
 
     :::{image} ../../../images/kibana-tutorial-secure-access-example-1-role.png
     :alt: Create role UI
-    :class: screenshot
+    :screenshot:
     :::
 
 
@@ -124,7 +124,7 @@ Now that you created a role, create a user account.
 
 :::{image} ../../../images/kibana-tutorial-secure-access-example-1-user.png
 :alt: Create user UI
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -139,7 +139,7 @@ Verify that the user and role are working correctly.
 
     :::{image} ../../../images/kibana-tutorial-secure-access-example-1-test.png
     :alt: Verifying access to dashboards
-    :class: screenshot
+    :screenshot:
     :::
 
 

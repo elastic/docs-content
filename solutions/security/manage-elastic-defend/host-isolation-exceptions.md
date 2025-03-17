@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/host-isolation-exceptions.html
   - https://www.elastic.co/guide/en/serverless/current/security-host-isolation-exceptions.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Host isolation exceptions
@@ -51,7 +55,7 @@ The **Host isolation exceptions** page displays all the host isolation exception
 
 :::{image} ../../../images/security-host-isolation-exceptions-ui.png
 :alt: List of host isolation exceptions
-:class: screenshot
+:screenshot:
 :::
 
 

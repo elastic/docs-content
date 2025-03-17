@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/cspm-get-started-azure.html
   - https://www.elastic.co/guide/en/serverless/current/security-cspm-get-started-azure.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Get started with CSPM for Azure
@@ -27,11 +31,6 @@ You can set up CSPM for Azure by by enrolling an Azure organization (management 
 
 
 ## Agentless deployment [cspm-azure-agentless]
-
-::::{warning}
-This functionality is in beta and is subject to change. The design and code is less mature than official GA features and is being provided as-is with no warranties. Beta features are not subject to the support SLA of official GA features.
-::::
-
 
 1. Find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Search for `CSPM`, then click on the result.

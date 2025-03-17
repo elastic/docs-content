@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/cases-overview.html
   - https://www.elastic.co/guide/en/serverless/current/security-cases-overview.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Cases [security-cases-overview]
@@ -19,7 +23,7 @@ You can also send cases to these external systems by [configuring external conne
 
 :::{image} ../../../images/security-cases-home-page.png
 :alt: Case UI Home
-:class: screenshot
+:screenshot:
 :::
 
 ::::{note}

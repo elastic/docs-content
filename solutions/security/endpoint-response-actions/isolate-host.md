@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/host-isolation-ov.html
   - https://www.elastic.co/guide/en/serverless/current/security-isolate-host.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Isolate a host
@@ -27,7 +31,7 @@ Isolated hosts, however, can still send data to {{elastic-sec}}. You can also cr
 
 :::{image} ../../../images/security-isolated-host.png
 :alt: Endpoint page highlighting a host that's been isolated
-:class: screenshot
+:screenshot:
 :::
 
 You can isolate a host from a detection alert’s details flyout, from the Endpoints page, or from the endpoint response console. Once a host is successfully isolated, an `Isolated` status displays next to the `Agent status` field, which you can view on the alert details flyout or Endpoints list table.
@@ -45,7 +49,7 @@ All actions executed on a host are tracked in the host’s response actions hist
 ::::{dropdown} Isolate a host from a detection alert
 1. Open a detection alert:
 
-    * From the Alerts table or Timeline: Click **View details** (![View details icon](../../../images/security-view-details-icon.png "")).
+    * From the Alerts table or Timeline: Click **View details** (![View details icon](../../../images/security-view-details-icon.png "title =20x20")).
     * From a case with an attached alert: Click **Show alert details** (**>**).
 
 2. Click **Take action → Isolate host**.
@@ -107,7 +111,7 @@ After the host is successfully isolated, an **Isolated** status is added to the 
 :::{image} ../../../images/security-host-isolated-notif.png
 :alt: Host isolated notification message
 :width: 50%
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -116,7 +120,7 @@ After the host is successfully isolated, an **Isolated** status is added to the 
 ::::{dropdown} Release a host from a detection alert
 1. Open a detection alert:
 
-    * From the Alerts table or Timeline: Click **View details** (![View details icon](../../../images/security-view-details-icon.png "")).
+    * From the Alerts table or Timeline: Click **View details** (![View details icon](../../../images/security-view-details-icon.png "title =20x20")).
     * From a case with an attached alert: Click **Show alert details** (**>**).
 
 2. From the alert details flyout, click **Take action → Release host**.
@@ -156,7 +160,7 @@ After the host is successfully released, the **Isolated** status is removed from
 :::{image} ../../../images/security-host-released-notif.png
 :alt: Host released notification message
 :width: 50%
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -169,5 +173,5 @@ Go to the **Endpoints** page, click an endpoint’s name, then click the **Respo
 :::{image} ../../../images/security-response-actions-history-endpoint-details.png
 :alt: Response actions history page UI
 :width: 90%
-:class: screenshot
+:screenshot:
 :::

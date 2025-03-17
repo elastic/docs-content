@@ -14,7 +14,7 @@ You can manage the alerts for each rule in **{{stack-manage-app}}** > **{{rules-
 
 :::{image} ../../../images/kibana-stack-management-alerts-page.png
 :alt: Alerts page with multiple alerts
-:class: screenshot
+:screenshot:
 :::
 
 ::::{note}
@@ -34,7 +34,7 @@ By default, the list contains all the alerts that you have authority to view in 
 
 :::{image} ../../../images/kibana-stack-management-alerts-query-menu.png
 :alt: The Alerts page with the query menu open
-:class: screenshot
+:screenshot:
 :::
 
 Alternatively, view those alerts in the [{{security-app}}](../../../solutions/security/detect-and-alert/manage-detection-alerts.md).

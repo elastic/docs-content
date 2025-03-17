@@ -28,7 +28,7 @@ Population analysis is resource-efficient and scales well, enabling the analysis
 4. Choose a population field - it’s the `clientip` field in this example - and the metric you want to use for the analysis - `Mean(bytes)` in this example.
    :::{image} ../../../images/machine-learning-ml-population-wizard.png
    :alt: Creating a population job in Kibana
-   :class: screenshot
+   :screenshot:
    :::
 
 5. Click **Next**.
@@ -73,14 +73,14 @@ Use the **Anomaly Explorer** in {{kib}} to view the analysis results:
 
 :::{image} ../../../images/machine-learning-ml-population-anomalies.png
 :alt: Population results in the Anomaly Explorer
-:class: screenshot
+:screenshot:
 :::
 
 The results are often quite sparse. There might be just a few data points for the selected time period. Population analysis is particularly useful when you have many entities and the data for specific entitles is sporadic or sparse. If you click on a section in the timeline or swim lanes, you can see more details about the anomalies:
 
 :::{image} ../../../images/machine-learning-ml-population-anomaly.png
 :alt: Anomaly details for a specific user
-:class: screenshot
+:screenshot:
 :::
 
 In this example, the client IP address `167.145.234.154` received a high volume of bytes on the date and time shown. This event is anomalous because the mean is four times higher than the expected behavior of the population.

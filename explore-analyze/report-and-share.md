@@ -8,16 +8,6 @@ mapped_urls:
 
 # Reporting and sharing [reporting-getting-started]
 
-% What needs to be done: Refine
-
-% Scope notes: reference prod considerations
-
-% Use migrated content from existing pages that map to this page:
-
-% - [ ] ./raw-migrated-files/kibana/kibana/reporting-getting-started.md
-
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
-
 $$$install-reporting-packages$$$
 
 $$$set-reporting-server-host$$$
@@ -87,7 +77,7 @@ In the following dashboard, the shareable container is highlighted:
 
 :::{image} ../images/kibana-shareable-container.png
 :alt: Shareable Container
-:class: screenshot
+:screenshot:
 :::
 
 1. Open the saved Discover session, dashboard, visualization, or workpad you want to share.
@@ -132,14 +122,14 @@ To work around the limitations, use filters to create multiple smaller reports, 
 
 For more information on using Elasticsearch APIs directly, see [Scroll API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-scroll), [Point in time API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-open-point-in-time), [ES|QL](/explore-analyze/query-filter/languages/esql-rest.md) or [SQL](/explore-analyze/query-filter/languages/sql-rest-format.md#_csv) with CSV response data format. We recommend that you use an official Elastic language client: details for each programming language library that Elastic provides are in the [{{es}} Client documentation](https://www.elastic.co/guide/en/elasticsearch/client/index.html).
 
-[Reporting parameters](asciidocalypse://docs/kibana/docs/reference/configuration-reference/reporting-settings.md) can be adjusted to overcome some of these limiting scenarios. Results are dependent on data size, availability, and latency factors and are not guaranteed.
+[Reporting parameters](kibana://reference/configuration-reference/reporting-settings.md) can be adjusted to overcome some of these limiting scenarios. Results are dependent on data size, availability, and latency factors and are not guaranteed.
 
 
 ### PNG/PDF report limitations [pdf-limitations]
 
 We recommend using PNG/PDF reports to export moderate amounts of data only. The feature enables a high-level export capability, but it’s not intended for bulk export. If you need to export several pages of image data, consider using multiple report jobs to export a small number of pages at a time. If the screenshot of exported dashboard contains a large number of pixels, consider splitting the large dashboard into smaller artifacts to use less memory and CPU resources.
 
-For the most reliable configuration of PDF/PNG {{report-features}}, consider installing {{kib}} using [Docker](/deploy-manage/deploy/self-managed/install-with-docker.md) or using [Elastic Cloud](https://cloud.elastic.co).
+For the most reliable configuration of PDF/PNG {{report-features}}, consider installing {{kib}} using [Docker](/deploy-manage/deploy/self-managed/install-kibana-with-docker.md) or using [Elastic Cloud](https://cloud.elastic.co).
 
 
 ## Create JSON files [download-as-json]

@@ -10,7 +10,7 @@ APM agents collect details about external calls made from instrumented services.
 
 :::{image} ../../../images/observability-dependencies.png
 :alt: Dependencies view in the Applications UI
-:class: screenshot
+:screenshot:
 :::
 
 Many application issues are caused by slow or unresponsive downstream dependencies. And because a single, slow dependency can significantly impact the end-user experience, it’s important to be able to quickly identify these problems and determine the root cause.
@@ -19,7 +19,7 @@ Select a dependency to see detailed latency, throughput, and failed transaction 
 
 :::{image} ../../../images/observability-dependencies-drilldown.png
 :alt: Dependencies drilldown view in the Applications UI
-:class: screenshot
+:screenshot:
 :::
 
 When viewing a dependency, consider your pattern of usage with that dependency. If your usage pattern *hasn’t* increased or decreased, but the experience has been negatively affected—either with an increase in latency or errors—there’s likely a problem with the dependency that needs to be addressed.
@@ -39,12 +39,12 @@ The Dependency operations functionality is in beta and is subject to change. The
 
 :::{image} ../../../images/observability-operations.png
 :alt: operations view in the Applications UI
-:class: screenshot
+:screenshot:
 :::
 
 Selecting an operation displays the operation’s impact and performance trends over time, via key metrics like latency, throughput, and failed transaction rate. In addition, the [**Trace sample timeline**](../../../solutions/observability/apps/trace-sample-timeline.md) provides a visual drill-down into an end-to-end trace sample.
 
 :::{image} ../../../images/observability-operations-detail.png
 :alt: operations detail view in the Applications UI
-:class: screenshot
+:screenshot:
 :::

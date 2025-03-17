@@ -2,13 +2,17 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/value-lists-exceptions.html
   - https://www.elastic.co/guide/en/serverless/current/security-value-lists-exceptions.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Create and manage value lists [value-lists-exceptions]
 
 Value lists hold multiple values of the same Elasticsearch data type, such as IP addresses, which are used to determine when an exception prevents an alert from being generated. You can use value lists to define exceptions for detection rules; however, you cannot use value lists to define endpoint rule exceptions.
 
-Value lists are lists of items with the same {{es}} [data type](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/field-data-types.md). You can create value lists with these types:
+Value lists are lists of items with the same {{es}} [data type](elasticsearch://reference/elasticsearch/mapping-reference/field-data-types.md). You can create value lists with these types:
 
 * `Keywords` (many [ECS fields](asciidocalypse://docs/ecs/docs/reference/ecs-field-reference.md) are keywords)
 * `IP Addresses`
@@ -46,7 +50,7 @@ To create a value list:
 
     :::{image} ../../../images/security-upload-lists-ui.png
     :alt: Manage value lists flyout
-    :class: screenshot
+    :screenshot:
     :::
 
 4. Select the list type (**Keywords**, **IP addresses**, **IP ranges**, or **Text**) from the **Type of value list** drop-down.
@@ -80,7 +84,7 @@ You can edit, remove, or export existing value lists.
 
 :::{image} ../../../images/security-edit-value-lists.png
 :alt: Manage items in a value lists
-:class: screenshot
+:screenshot:
 :::
 
 ::::{tip}
@@ -93,10 +97,10 @@ You can also edit value lists while creating and managing exceptions that use va
 2. Click **Manage value lists**. The **Manage value lists** window opens.
 3. From the **Value lists** table, you can:
 
-    1. Click the **Export value list** button (![Export button from Manage value lists window](../../../images/security-export-value-list.png "")) to export the value list.
-    2. Click the **Remove value list** button (![Remove button from Manage value lists window](../../../images/security-remove-value-list.png "")) to delete the value list.
+    1. Click the **Export value list** button (![Export button from Manage value lists window](../../../images/security-export-value-list.png "title =20x20")) to export the value list.
+    2. Click the **Remove value list** button (![Remove button from Manage value lists window](../../../images/security-remove-value-list.png "title =20x20")) to delete the value list.
 
         :::{image} ../../../images/security-manage-value-list.png
         :alt: Import value list flyout with action buttons highlighted
-        :class: screenshot
+        :screenshot:
         :::

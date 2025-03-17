@@ -2,6 +2,14 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/cloud-posture-dashboard.html
   - https://www.elastic.co/guide/en/serverless/current/security-cloud-posture-dashboard-dash.html
+  - https://www.elastic.co/guide/en/serverless/current/security-cloud-posture-dashboard-dash-cspm.html
+  - https://www.elastic.co/guide/en/serverless/current/security-cloud-posture-dashboard-dash-kspm.html
+  - https://www.elastic.co/guide/en/security/current/cspm-posture-dashboard.html
+  - https://www.elastic.co/guide/en/security/current/cloud-nat-sec-posture-dashboard.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Cloud Security Posture dashboard
@@ -10,7 +18,7 @@ The Cloud Security Posture dashboard summarizes your cloud infrastructure’s ov
 
 :::{image} ../../../images/security-cloud-sec-dashboard.png
 :alt: The cloud Security dashboard
-:class: screenshot
+:screenshot:
 :::
 
 The Cloud Security Posture dashboard shows:
@@ -38,7 +46,7 @@ Below the summary section, each row shows the CSP for a benchmark that applies t
 
 :::{image} ../../../images/security-cloud-sec-dashboard-individual-row.png
 :alt: A row representing a single cluster in the Cloud Security Posture dashboard
-:class: screenshot
+:screenshot:
 :::
 
 

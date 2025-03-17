@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/overview-dashboard.html
   - https://www.elastic.co/guide/en/serverless/current/security-overview-dashboard.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Overview dashboard
@@ -31,7 +35,7 @@ The **Security news** section provides the latest {{elastic-sec}} news to help y
 
 Time-based histograms show the number of detections, alerts, and events that have occurred within the selected time range. To focus on a particular time, click and drag to select a time range, or choose a preset value. The **Stack by** menu lets you select which field is used to organize the data. For example, in the Alert trend histogram, stack by `kibana.alert.rule.name` to display alert counts by rule name within the specified time frame.
 
-Hover over histograms, graphs, and tables to display an **Inspect** button (![Inspect icon](../../../images/security-inspect-icon.png "")) or options menu (![Three-dot menu icon](../../../images/security-three-dot-icon.png "")). Click to inspect the visualization’s {{es}} queries, add it to a new or existing case, or open it in Lens for customization.
+Hover over histograms, graphs, and tables to display an **Inspect** button (![Inspect icon](../../../images/security-inspect-icon.png "title =20x20")) or options menu (![Three-dot menu icon](../../../images/security-three-dot-icon.png "title =20x20")). Click to inspect the visualization’s {{es}} queries, add it to a new or existing case, or open it in Lens for customization.
 
 
 ## Host and network events [_host_and_network_events]
@@ -40,7 +44,7 @@ View event and host counts grouped by data source, such as **Auditbeat** or **{{
 
 :::{image} ../../../images/security-events-count.png
 :alt: Host and network events on the Overview dashboard
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -57,6 +61,6 @@ For more information about connecting to threat intelligence sources, visit [Ena
 
 :::{image} ../../../images/security-threat-intelligence-view.png
 :alt: threat intelligence view
-:class: screenshot
+:screenshot:
 :::
 

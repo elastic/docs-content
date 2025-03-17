@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/vuln-management-get-started.html
   - https://www.elastic.co/guide/en/serverless/current/security-vuln-management-get-started.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Get started with CNVM
@@ -10,17 +14,11 @@ mapped_urls:
 This page explains how to set up Cloud Native Vulnerability Management (CNVM).
 
 ::::{admonition} Requirements
-* CNVM is available to all {{ecloud}} users. On-premise deployments require an [Enterprise subscription](https://www.elastic.co/pricing).
-* Requires {{stack}} and {{agent}} version 8.8 or higher.
-* Only works in the `Default` {{kib}} space. Installing the CNVM integration on a different {{kib}} space will not work.
+* {{stack}} users: {{stack}} version 8.8 or higher and an [Enterprise subscription](https://www.elastic.co/pricing).
+* CNVM only works in the `Default` {{kib}} space. Installing the CNVM integration on a different {{kib}} space will not work.
 * CNVM can only be deployed on ARM-based VMs.
-* To view vulnerability scan findings, you need at least `read` privileges for the following indices:
-
-    * `logs-cloud_security_posture.vulnerabilities-*`
-    * `logs-cloud_security_posture.vulnerabilities_latest-*`
-
 * You need an AWS user account with permissions to perform the following actions: run CloudFormation templates, create IAM Roles and InstanceProfiles, and create EC2 SecurityGroups and Instances.
-
+* Depending on whether you want to `read`, `write`, or `manage` CNVM data, you need [specific privileges](/solutions/security/cloud/cnvm-privilege-requirements.md).
 ::::
 
 
@@ -32,7 +30,7 @@ CNVM currently only supports AWS EC2 Linux workloads.
 
 ## Set up CNVM for AWS [vuln-management-setup]
 
-To set up the CNVM integration for AWS, install the integration on a new {{agent}} policy, sign into the AWS account you want to scan, and run the [CloudFormation](https://docs.aws.amazon.com/cloudformation/index.md) template.
+To set up the CNVM integration for AWS, install the integration on a new {{agent}} policy, sign into the AWS account you want to scan, and run the [CloudFormation](https://docs.aws.amazon.com/cloudformation/index.html) template.
 
 ::::{important}
 Do not add the integration to an existing {{agent}} policy. It should always be added to a new policy since it should not run on VMs with existing workloads. For more information, refer to [How CNVM works](/solutions/security/cloud/cloud-native-vulnerability-management.md#vuln-management-overview-how-it-works).

@@ -1,23 +1,28 @@
 ---
+navigation_title: Data tiers and autoscaling support
+applies_to:
+  deployment:
+    ece: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ce-add-support-for-node-roles-and-autoscaling.html
 ---
 
 # Updating custom templates to support node_roles and autoscaling [ce-add-support-for-node-roles-and-autoscaling]
 
-Custom deployment templates should be updated in order to take advantage of new Elastic Cloud Enterprise features, such as [Data tiers](../../../manage-data/lifecycle/data-tiers.md) (that is, the new cold and frozen data tiers) and [Deployment autoscaling](../../autoscaling.md). By updating these templates we also ensure forward compatibility with future Elastic Cloud Enterprise versions that will require certain fields such as `node_roles` and `id` to be present in the deployment configuration.
+Templates created in older versions of ECE should be updated in order to take advantage of new Elastic Cloud Enterprise features, such as [Data tiers](../../../manage-data/lifecycle/data-tiers.md), and [Deployment autoscaling](../../autoscaling.md). By updating these templates we also ensure forward compatibility with future Elastic Cloud Enterprise versions that will require certain fields such as `node_roles` and `id` to be present in the deployment configuration.
 
-System owned deployment templates have already been updated to support both data tiers with `node_roles` and autoscaling. However, the custom templates that you created need to be manually updated by following the steps in this guide.
-
+::::{note}
+System owned deployment templates are automatically updated during the ECE upgrade process to support both data tiers with `node_roles` and autoscaling. However, custom templates that you created must be manually updated by following the steps in this guide.
+::::
 
 ## Adding support for node_roles [ece_adding_support_for_node_roles]
 
-The `node_roles` field defines the roles that an Elasticsearch topology element can have, which is used in place of `node_type` when a new feature such as autoscaling is enabled, or when a new data tier is added. This field is supported on [Elastic stack versions 7.10 and above](asciidocalypse://docs/cloud/docs/reference/cloud-enterprise/changes-to-index-allocation-api.md).
+The `node_roles` field defines the roles that an Elasticsearch topology element can have, which is used in place of `node_type` when a new feature such as autoscaling is enabled, or when a new data tier is added. This field is supported on [Elastic stack versions 7.10 and above](cloud://reference/cloud-enterprise/changes-to-index-allocation-api.md).
 
 There are a number of fields that need to be added to each Elasticsearch node in order to support `node_roles`:
 
 * **id**: Unique identifier of the topology element. This field, along with the `node_roles`, identifies an Elasticsearch topology element.
-* **node_roles**: The list of node roles. Allowable roles are: `master`, `ingest`, `ml`, `data_hot`, `data_content`, `data_warm`, `data_cold`, `data_frozen`, `remote_cluster_client`, and `transform`. For details, check [Node roles](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/node-settings.md#node-roles).
+* **node_roles**: The list of node roles. Allowable roles are: `master`, `ingest`, `ml`, `data_hot`, `data_content`, `data_warm`, `data_cold`, `data_frozen`, `remote_cluster_client`, and `transform`. For details, check [Node roles](elasticsearch://reference/elasticsearch/configuration-reference/node-settings.md#node-roles).
 * **topology_element_control**: Controls for the topology element.
 
     * **min**: The absolute minimum size limit for a topology element. If the value is `0`, that means the topology element can be disabled.
@@ -1079,7 +1084,7 @@ Similar to the `node_roles` example, the following one is also based on the `def
 To add support for autoscaling, the deployment template has to meet the following requirements:
 
 1. Already has support for `node_roles`.
-2. Contains the `size`, `autoscaling_min`, and `autoscaling_max` fields, according to the rules specified in the [autoscaling requirements table](../../autoscaling/ece-autoscaling-api-example.md#ece-autoscaling-api-example-requirements-table).
+2. Contains the `size`, `autoscaling_min`, and `autoscaling_max` fields, according to the rules specified in the [autoscaling requirements table](../../autoscaling/autoscaling-in-ece-and-ech.md#ece-autoscaling-api-example-requirements-table).
 3. Contains the `autoscaling_enabled` fields on the `elasticsearch` resource.
 
 If necessary, the values chosen for each field can be based on the reference example.
@@ -1089,7 +1094,7 @@ If necessary, the values chosen for each field can be based on the reference exa
 
 To update a custom deployment template:
 
-1. Add the `autoscaling_min` and `autoscaling_max` fields to the Elasticsearch topology elements (check [Autoscaling through the API](../../autoscaling/ece-autoscaling-api-example.md)).
+1. Add the `autoscaling_min` and `autoscaling_max` fields to the Elasticsearch topology elements (check [Autoscaling through the API](../../autoscaling/autoscaling-in-ece-and-ech.md#ec-autoscaling-api-example)).
 2. Add the `autoscaling_enabled` fields to the `elasticsearch` resource. Set this field to `true` in case you want autoscaling enabled by default, and to `false` otherwise.
 
 

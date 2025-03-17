@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/detection-response-dashboard.html
   - https://www.elastic.co/guide/en/serverless/current/security-detection-response-dashboard.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Detection & Response dashboard
@@ -10,7 +14,7 @@ The Detection & Response dashboard provides focused visibility into the day-to-d
 
 :::{image} ../../../images/security-detection-response-dashboard.png
 :alt: Overview of Detection & Response dashboard
-:class: screenshot
+:screenshot:
 :::
 
 Interact with various dashboard elements:
