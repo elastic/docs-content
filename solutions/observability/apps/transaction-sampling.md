@@ -158,10 +158,9 @@ To demonstrate the performance overhead and requirements, here are some numbers 
 | 8.18               | c6id.4xlarge      | TBS enabled, EBS gp3 volume with 3000 IOPS     | 11990                                                                      | 530                                                                           | 26.57                                      | 33.6             |
 | 8.18               | c6id.4xlarge      | TBS enabled, local NVMe SSD from c6id instance | 43550                                                                      | 2940                                                                          | 28.76                                      | 109.6            |
 
-9.0 tail-based sampling implementation is significantly better in performance in general than in 8.18, as the storage layer is rewritten. It cleans up expired data more reliably, which is also easier on disk, memory and compute, highlighted by the difference in event indexing rate on slow disks between versions.
-In 8.18, when the database gets large, the slowdown can be disproportionate.
-The one outlier data point where 8.18 32GB NVMe is faster in ingest rate than 9.0 can be explained by the slower event indexing rate, as the balance between disk read and write changed.
+The tail-based sampling implementation in version 9.0 offers significantly better performance compared to version 8.18, primarily due to a rewritten storage layer. This new implementation cleans up expired data more reliably, resulting in reduced load on disk, memory, and compute resources. This improvement is particularly evident in the event indexing rate on slower disks.
 
+In version 8.18, as the database grows larger, the performance slowdown can become disproportionate. The one outlier data point where 8.18 with a 32GB NVMe disk shows a higher ingest rate than 9.0 can be attributed to the change in the balance between disk read and write operations, which results in a slower event indexing rate.
 ## Sampled data and visualizations [_sampled_data_and_visualizations]
 
 A sampled trace retains all data associated with it. A non-sampled trace drops all [span](../../../solutions/observability/apps/spans.md) and [transaction](../../../solutions/observability/apps/transactions.md) data1. Regardless of the sampling decision, all traces retain [error](../../../solutions/observability/apps/errors.md) data.
