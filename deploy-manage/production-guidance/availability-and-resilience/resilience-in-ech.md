@@ -5,7 +5,7 @@ applies_to:
     ess: all
 ---
 
-# Resiliency in Elastic Cloud Hosted deployments [ec-ha]
+# Resiliency in Elastic Cloud Hosted deployments
 
 With {{ech}}, your deployment can be spread across up to three separate availability zones, each hosted in an isolated infrastructure domain, such as separate data centers in the case of {{ech}}.
 
@@ -19,7 +19,7 @@ Why this matters:
 * Multiple availability zones help your deployment remain available. This includes your {{es}} cluster, provided that your cluster is sized so that it can sustain your workload on the remaining data centers and that your indices are configured to have at least one replica.
 * Multiple availability zones enable you to perform changes to resize your deployment with zero downtime.
 
-## Recommendations
+## Recommendations [ec-ha]
 
 We recommend that you use at least two availability zones for production and three for mission-critical systems. Just one zone might be sufficient, if your {{es}} cluster is mainly used for testing or development and downtime is acceptable, but should never be used for production.
 
