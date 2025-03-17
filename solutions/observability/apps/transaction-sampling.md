@@ -150,7 +150,7 @@ Terminology:
 * Memory Usage: The maximum Resident Set Size (RSS) of APM Server process observed throughout the benchmark.
 
 | APM Server version | EC2 instance size | TBS and disk configuration                     | Event ingestion rate (events/s) | Event indexing rate (events/s) | Memory usage (GB) | Disk usage (GB) |
-|--------------------|:------------------|:-----------------------------------------------|---------------------------------|:-------------------------------|-------------------|-----------------|
+|--------------------|-------------------|------------------------------------------------|---------------------------------|--------------------------------|-------------------|-----------------|
 | 9.0                | c6id.2xlarge      | TBS disabled                                   | 47220                           | 4720 (100% sampling)           | 0.98              | 0               |
 | 9.0                | c6id.2xlarge      | TBS enabled, EBS gp3 volume with 3000 IOPS     | 21310                           | 2360                           | 1.41              | 13.1            |
 | 9.0                | c6id.2xlarge      | TBS enabled, local NVMe SSD from c6id instance | 21210                           | 2460                           | 1.34              | 12.9            |
