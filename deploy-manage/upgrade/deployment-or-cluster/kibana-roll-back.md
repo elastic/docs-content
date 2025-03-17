@@ -1,6 +1,6 @@
 # Roll back to a previous version of {{kib}} [upgrade-migrations-rolling-back]
 
-If you’ve followed [preparing for migration](/deploy-manage/upgrade/deployment-or-cluster/kibana#preventing-migration-failures) and [resolving migration failures](../../../troubleshoot/kibana/migration-failures.md), and {{kib}} is still unable to successfully upgrade, rollback {{kib}} until you’re able to identify and fix the root cause.
+If you’ve followed [preparing for migration](/deploy-manage/upgrade/deployment-or-cluster/kibana#preventing-migration-failures.md) and [resolving migration failures](../../../troubleshoot/kibana/migration-failures.md), and {{kib}} is still unable to successfully upgrade, rollback {{kib}} until you’re able to identify and fix the root cause.
 
 ::::{warning} 
 Before you roll back {{kib}}, ensure that the version you want to roll back to is compatible with your {{es}} cluster. If the version you want to roll back to is not compatible, you must also rollback {{es}}. Any changes made after an upgrade are lost when you roll back to a previous version.
