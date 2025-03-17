@@ -1,0 +1,393 @@
+---
+navigation_title: "Search and filter with ES|QL"
+---
+
+# Tutorial: Full-text search and filtering with {{esql}}
+
+:::{tip}
+This tutorial presents examples in {{esql}} syntax. Refer to [the Query DSL version](query-dsl-full-text-filter-tutorial.md) for the equivalent examples in Query DSL syntax.
+:::
+
+This is a hands-on introduction to the basics of [full-text search](full-text.md) with Elasticsearch, also known as *lexical search*, and how to filter search results based on exact criteria. In this scenario, we're implementing a search function for a cooking blog. The blog contains recipes with various attributes including textual content, categorical data, and numerical ratings.
+
+## Requirements
+
+You'll need a running {{es}} cluster, together with {{kib}} to use the Dev Tools API Console. Refer to [choose your deployment type](/deploy-manage/deploy#choosing-your-deployment-type) for deployment options.
+
+Want to get started quickly? Run the following command in your terminal to set up a [single-node local cluster in Docker](get-started.md):
+
+```sh
+curl -fsSL https://elastic.co/start-local | sh
+```
+
+## Step 1: Create an index
+
+Create the `cooking_blog` index to get started:
+
+```console
+PUT /cooking_blog
+```
+
+Now define the mappings for the index:
+
+```console
+PUT /cooking_blog/_mapping
+{
+  "properties": {
+    "title": {
+      "type": "text",
+      "analyzer": "standard", <1>
+      "fields": { <2>
+        "keyword": {
+          "type": "keyword",
+          "ignore_above": 256 <3>
+        }
+      }
+    },
+    "description": {
+      "type": "text",
+      "fields": {
+        "keyword": {
+          "type": "keyword"
+        }
+      }
+    },
+    "author": {
+      "type": "text",
+      "fields": {
+        "keyword": {
+          "type": "keyword"
+        }
+      }
+    },
+    "date": {
+      "type": "date",
+      "format": "yyyy-MM-dd"
+    },
+    "category": {
+      "type": "text",
+      "fields": {
+        "keyword": {
+          "type": "keyword"
+        }
+      }
+    },
+    "tags": {
+      "type": "text",
+      "fields": {
+        "keyword": {
+          "type": "keyword"
+        }
+      }
+    },
+    "rating": {
+      "type": "float"
+    }
+  }
+}
+```
+
+1. The `standard` analyzer is used by default for `text` fields if an `analyzer` isn't specified. It's included here for demonstration purposes.
+2. [Multi-fields](elasticsearch://reference/elasticsearch/mapping-reference/multi-fields.md) are used here to index `text` fields as both `text` and `keyword` [data types](elasticsearch://reference/elasticsearch/mapping-reference/field-data-types.md). This enables both full-text search and exact matching/filtering on the same field. Note that if you used [dynamic mapping](../../manage-data/data-store/mapping/dynamic-field-mapping.md), these multi-fields would be created automatically.
+3. The [`ignore_above` parameter](elasticsearch://reference/elasticsearch/mapping-reference/ignore-above.md) prevents indexing values longer than 256 characters in the `keyword` field. Again this is the default value, but it's included here for demonstration purposes. It helps to save disk space and avoid potential issues with Lucene's term byte-length limit.
+
+::::{tip}
+Full-text search is powered by [text analysis](full-text/text-analysis-during-search.md). Text analysis normalizes and standardizes text data so it can be efficiently stored in an inverted index and searched in near real-time. Analysis happens at both [index and search time](../../manage-data/data-store/text-analysis/index-search-analysis.md). This tutorial won't cover analysis in detail, but it's important to understand how text is processed to create effective search queries.
+::::
+
+## Step 2: Perform basic full-text searches
+
+Full-text search involves executing text-based queries across one or more document fields. These queries calculate a relevance score for each matching document, based on how closely the document's content aligns with the search terms. Elasticsearch offers various query types, each with its own method for matching text and relevance scoring.
+
+:::{tip}
+ES|QL provides two ways to perform full-text searches:
+
+1. Full match function syntax: `match(field, "search terms")`
+1. Compact syntax using the colon operator: `field:"search terms"`
+
+Both are equivalent and can be used interchangeably. The compact syntax is more concise, while the function syntax allows for more configuration options. We'll use the compact syntax in most examples for brevity.
+:::
+
+### Basic full-text query
+
+Here's how to search the `description` field for "fluffy pancakes":
+
+```esql
+POST /_query?format=txt
+{
+  "query": """
+    FROM cooking_blog
+    | WHERE description:"fluffy pancakes"
+    | LIMIT 1000
+  """
+}
+```
+
+By default, like the Query DSL `match` query, ES|QL uses `OR` logic between terms. This means it will match documents that contain either "fluffy" or "pancakes", or both, in the description field.
+
+:::{tip}
+You can control which fields to include in the response using the `KEEP` command:
+
+```esql
+POST /_query?format=txt
+{
+  "query": """
+    FROM cooking_blog
+    | WHERE description:"fluffy pancakes"
+    | KEEP title, description, rating
+    | LIMIT 1000
+  """
+}
+```
+:::
+
+### Require all terms in a match query
+
+Sometimes you need to require that all search terms appear in the matching documents. Here's how to do that using the function syntax with the `operator` parameter:
+
+```esql
+POST /_query?format=txt
+{
+  "query": """
+    FROM cooking_blog
+    | WHERE match(description, "fluffy pancakes", {"operator": "AND"})
+    | LIMIT 1000
+  """
+}
+```
+
+This stricter search returns *zero hits* on our sample data, as no document contains both "fluffy" and "pancakes" in the description.
+
+### Specify a minimum number of terms to match
+
+Sometimes requiring all terms is too strict, but the default OR behavior is too lenient. You can specify a minimum number of terms that must match:
+
+```esql
+POST /_query?format=txt
+{
+  "query": """
+    FROM cooking_blog
+    | WHERE match(title, "fluffy pancakes breakfast", {"minimum_should_match": 2})
+    | LIMIT 1000
+  """
+}
+```
+
+This query searches the title field to match at least 2 of the 3 terms: "fluffy", "pancakes", or "breakfast".
+
+## Step 3: Search across multiple fields at once
+
+When users enter a search query, they often don't know (or care) whether their search terms appear in a specific field. ES|QL provides ways to search across multiple fields simultaneously:
+
+```esql
+POST /_query?format=txt
+{
+  "query": """
+    FROM cooking_blog
+    | WHERE title:"vegetarian curry" OR description:"vegetarian curry" OR tags:"vegetarian curry"
+    | LIMIT 1000
+  """
+}
+```
+
+This query searches for "vegetarian curry" across the title, description, and tags fields. Each field is treated with equal importance.
+
+However, in many cases, matches in certain fields (like the title) might be more relevant than others. We can adjust the importance of each field using scoring:
+
+```esql
+POST /_query?format=txt
+{
+  "query": """
+    FROM cooking_blog METADATA _score
+    | WHERE match(title, "vegetarian curry", {"boost": 2.0}) 
+        OR match(description, "vegetarian curry") 
+        OR match(tags, "vegetarian curry")
+    | KEEP title, description, tags, _score
+    | SORT _score DESC
+    | LIMIT 1000
+  """
+}
+```
+
+In this example, we're using the `boost` parameter to make matches in the title field twice as important as matches in other fields. We also request the `_score` metadata field to sort results by relevance.
+
+## Step 4: Filter and find exact matches
+
+Filtering allows you to narrow down your search results based on exact criteria. Unlike full-text searches, filters are binary (yes/no) and do not affect the relevance score. Filters execute faster than queries because excluded results don't need to be scored.
+
+```esql
+POST /_query?format=txt
+{
+  "query": """
+    FROM cooking_blog
+    | WHERE category.keyword == "Breakfast"
+    | KEEP title, author, rating, tags
+    | SORT rating DESC
+    | LIMIT 1000
+  """
+}
+```
+
+Note the use of `category.keyword` here. This refers to the [`keyword`](elasticsearch://reference/elasticsearch/mapping-reference/keyword.md) multi-field of the `category` field, ensuring an exact, case-sensitive match.
+
+### Search for posts within a date range
+
+Often users want to find content published within a specific time frame:
+
+```esql
+POST /_query?format=txt
+{
+  "query": """
+    FROM cooking_blog
+    | WHERE date >= "2023-05-01" AND date <= "2023-05-31"
+    | KEEP title, author, date, rating
+    | LIMIT 1000
+  """
+}
+```
+
+### Find exact matches
+
+Sometimes users want to search for exact terms to eliminate ambiguity in their search results:
+
+```esql
+POST /_query?format=txt
+{
+  "query": """
+    FROM cooking_blog
+    | WHERE tags.keyword == "vegetarian"
+    | KEEP title, author, rating, tags
+    | LIMIT 1000
+  """
+}
+```
+
+Like the `term` query in Query DSL, this has zero flexibility and is case-sensitive.
+
+## Step 5: Combine multiple search criteria
+
+Complex searches often require combining multiple search criteria:
+
+```esql
+POST /_query?format=txt
+{
+  "query": """
+    FROM cooking_blog METADATA _score
+    | WHERE rating >= 4.5
+      AND NOT category.keyword == "Dessert"
+      AND (title:"curry spicy" OR description:"curry spicy")
+    | SORT _score DESC
+    | KEEP title, author, rating, tags, description
+    | LIMIT 1000
+  """
+}
+```
+
+For more complex relevance scoring with combined criteria, you can use the `EVAL` command to calculate custom scores:
+
+```esql
+POST /_query?format=txt
+{
+  "query": """
+    FROM cooking_blog METADATA _score
+    | WHERE tags.keyword == "vegetarian" AND rating >= 4.5
+    | EVAL title_score = SCORE(match(title, "curry spicy")) * 2
+    | EVAL desc_score = SCORE(match(description, "curry spicy"))
+    | EVAL combined_score = title_score + desc_score
+    | EVAL category_boost = IF(category.keyword == "Main Course", 1.0, 0.0)
+    | EVAL date_boost = IF(date >= "now-1M/d", 0.5, 0.0)
+    | EVAL final_score = combined_score + category_boost + date_boost
+    | WHERE NOT category.keyword == "Dessert"
+    | WHERE final_score > 0
+    | SORT final_score DESC
+    | LIMIT 1000
+  """
+}
+```
+
+This ES|QL query uses an explicit scoring mechanism:
+1. Requires "vegetarian" tag and rating >= 4.5
+2. Computes separate scores for `title` and `description` matches
+3. Adds boosts for Main Course category and recent dates
+4. Excludes Desserts
+5. Sorts by the final combined score
+
+
+:::{warning}
+TODO
+
+This section shouldn't live in a tutorial, leaving it here for comments/suggestions if it might be useful
+:::
+
+## Optimizing your ES|QL queries
+
+ES|QL queries can be optimized for better performance and more relevant results. Here are some key optimization strategies:
+
+### Field filtering with KEEP
+
+Using `KEEP` early in your query pipeline can significantly improve performance by reducing the fields that need to be fetched:
+
+```esql
+POST /_query?format=txt
+{
+  "query": """
+    FROM cooking_blog
+    | KEEP title, description, rating
+    | WHERE title:"curry"
+    | LIMIT 1000
+  """
+}
+```
+
+However, there's an important caveat: if you need to filter on fields not included in `KEEP`, you should place your `WHERE` clauses before `KEEP`:
+
+```esql
+POST /_query?format=txt
+{
+  "query": """
+    FROM cooking_blog
+    | WHERE category.keyword == "Main Course" AND rating >= 4.0
+    | KEEP title, description, rating
+    | LIMIT 1000
+  """
+}
+```
+
+Placing `WHERE` before `KEEP` allows ES|QL to optimize field caps, only requesting the fields needed for filtering and display.
+
+### Optimal query order
+
+For best performance, structure your ES|QL queries in this general order:
+
+1. `FROM` to select your index
+2. `WHERE` clauses for filtering
+3. `KEEP` to select only needed fields
+4. Processing operations (`EVAL`, aggregations, etc.)
+5. `SORT` to order results
+6. `LIMIT` to restrict result count
+
+This order allows Elasticsearch to apply filters early, reducing the dataset before performing more expensive operations.
+
+### Use keyword fields for exact matching
+
+Always use the `.keyword` suffix for exact matching on text fields. This improves performance and ensures case-sensitive, exact matches:
+
+```esql
+POST /_query?format=txt
+{
+  "query": """
+    FROM cooking_blog
+    | WHERE tags.keyword == "vegetarian"
+    | LIMIT 1000
+  """
+}
+```
+
+## Learn more
+
+This tutorial introduced the basics of full-text search and filtering in ES|QL. Building a real-world search experience requires understanding many more advanced concepts and techniques. Here are some resources once you're ready to dive deeper:
+
+- [Full-text search](full-text.md): Learn about the core components of full-text search in Elasticsearch.
+  - [Text analysis](full-text/text-analysis-during-search.md): Understand how text is processed for full-text search.
+- [Query and filter data](/explore-analyze/query-filter.md): Understand all your options for searching and analyzing data in {{es}} in the Explore & Analyze section.
+- [Search your data](../search.md): Learn about more advanced search techniques including semantic search.

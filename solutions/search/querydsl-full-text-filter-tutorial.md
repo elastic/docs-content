@@ -1,22 +1,37 @@
-# Tutorial: Full-text search and filtering in Elasticsearch
+---
+mapped_urls:
+  - https://www.elastic.co/guide/en/elasticsearch/reference/current/full-text-filter-tutorial.html
+navigation_title: "Search and filter with Query DSL"
+applies_to:
+  stack:
+  serverless:
+---
 
-This is a hands-on introduction to the basics of [full-text search](full-text.md) with Elasticsearch, also known as *lexical search*, and how to filter search results based on exact criteria.
+# Tutorial: Full-text search and filtering with Query DSL [full-text-filter-tutorial]
 
-In this scenario, we're implementing a search function for a cooking blog. The blog contains recipes with various attributes including textual content, categorical data, and numerical ratings.
-
-:::{note}
-This tutorial presents examples in two different query languages:
-- **Query DSL**: The traditional JSON-based query language using the [`_search` API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search)
-- **ESQL (Elasticsearch Query Language)**: The newer SQL-like piped query language using the [`_query` API](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-esql)
-
-Each example is presented in both languages using tabs, allowing you to compare approaches and choose the syntax that works best for you.
-
-For a comprehensive overview of the different query languages available in Elasticsearch, see [](../../explore-analyze/query-filter/languages/querying-for-search.md).
+:::{tip}
+This tutorial presents examples in Query DSL syntax. Refer to [the {{esql}} version](esql-full-text-filter-tutorial.md) for the equivalent examples in {{esql}} syntax.
 :::
+
+This is a hands-on introduction to the basics of [full-text search](full-text.md) with {{es}}, also known as *lexical search*, using the [`_search` API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search) and [Query DSL](../../explore-analyze/query-filter/languages/querydsl.md). You’ll also learn how to filter data, to narrow down search results based on exact criteria.
+
+In this scenario, we’re implementing a search function for a cooking blog. The blog contains recipes with various attributes including textual content, categorical data, and numerical ratings.
+
+The goal is to create search queries that enable users to:
+
+* Find recipes based on ingredients they want to use or avoid
+* Discover dishes suitable for their dietary needs
+* Find highly-rated recipes in specific categories
+* Find recent recipes from their favorite authors
+
+To achieve these goals we’ll use different Elasticsearch queries to perform full-text search, apply filters, and combine multiple search criteria.
+
 
 ## Requirements [full-text-filter-tutorial-requirements]
 
-You’ll need a running {{es}} cluster, together with {{kib}} to use the Dev Tools API Console. Run the following command in your terminal to set up a [single-node local cluster in Docker](get-started.md):
+You’ll need a running {{es}} cluster, together with {{kib}} to use the Dev Tools API Console. Refer to [choose your deployment type](/deploy-manage/deploy#choosing-your-deployment-type) for deployment options.
+
+Want to get started quickly? Run the following command in your terminal to set up a [single-node local cluster in Docker](get-started.md):
 
 ```sh
 curl -fsSL https://elastic.co/start-local | sh
@@ -100,13 +115,33 @@ Full-text search is powered by [text analysis](full-text/text-analysis-during-se
 
 ::::
 
-## Step 3: Perform basic full-text searches
 
-Full-text search involves executing text-based queries across one or more document fields. These queries calculate a relevance score for each matching document, based on how closely the document's content aligns with the search terms. Elasticsearch offers various query types, each with its own method for matching text and [relevance scoring](../../explore-analyze/query-filter/languages/querydsl.md#relevance-scores).
 
-::::{tab-set}
-:::{tab-item} Query DSL
-### Basic match query
+## Step 2: Add sample blog posts to your index [full-text-filter-tutorial-index-data]
+
+Now you’ll need to index some example blog posts using the [Bulk API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-settings). Note that `text` fields are analyzed and multi-fields are generated at index time.
+
+```console
+POST /cooking_blog/_bulk?refresh=wait_for
+{"index":{"_id":"1"}}
+{"title":"Perfect Pancakes: A Fluffy Breakfast Delight","description":"Learn the secrets to making the fluffiest pancakes, so amazing you won't believe your tastebuds. This recipe uses buttermilk and a special folding technique to create light, airy pancakes that are perfect for lazy Sunday mornings.","author":"Maria Rodriguez","date":"2023-05-01","category":"Breakfast","tags":["pancakes","breakfast","easy recipes"],"rating":4.8}
+{"index":{"_id":"2"}}
+{"title":"Spicy Thai Green Curry: A Vegetarian Adventure","description":"Dive into the flavors of Thailand with this vibrant green curry. Packed with vegetables and aromatic herbs, this dish is both healthy and satisfying. Don't worry about the heat - you can easily adjust the spice level to your liking.","author":"Liam Chen","date":"2023-05-05","category":"Main Course","tags":["thai","vegetarian","curry","spicy"],"rating":4.6}
+{"index":{"_id":"3"}}
+{"title":"Classic Beef Stroganoff: A Creamy Comfort Food","description":"Indulge in this rich and creamy beef stroganoff. Tender strips of beef in a savory mushroom sauce, served over a bed of egg noodles. It's the ultimate comfort food for chilly evenings.","author":"Emma Watson","date":"2023-05-10","category":"Main Course","tags":["beef","pasta","comfort food"],"rating":4.7}
+{"index":{"_id":"4"}}
+{"title":"Vegan Chocolate Avocado Mousse","description":"Discover the magic of avocado in this rich, vegan chocolate mousse. Creamy, indulgent, and secretly healthy, it's the perfect guilt-free dessert for chocolate lovers.","author":"Alex Green","date":"2023-05-15","category":"Dessert","tags":["vegan","chocolate","avocado","healthy dessert"],"rating":4.5}
+{"index":{"_id":"5"}}
+{"title":"Crispy Oven-Fried Chicken","description":"Get that perfect crunch without the deep fryer! This oven-fried chicken recipe delivers crispy, juicy results every time. A healthier take on the classic comfort food.","author":"Maria Rodriguez","date":"2023-05-20","category":"Main Course","tags":["chicken","oven-fried","healthy"],"rating":4.9}
+```
+
+
+## Step 3: Perform basic full-text searches [full-text-filter-tutorial-match-query]
+
+Full-text search involves executing text-based queries across one or more document fields. These queries calculate a relevance score for each matching document, based on how closely the document’s content aligns with the search terms. {{es}} offers various query types, each with its own method for matching text and [relevance scoring](../../explore-analyze/query-filter/languages/querydsl.md#relevance-scores).
+
+
+### `match` query [_match_query]
 
 The [`match`](elasticsearch://reference/query-languages/query-dsl-match-query.md) query is the standard query for full-text, or "lexical", search. The query text will be analyzed according to the analyzer configuration specified on each field (or at query time).
 
@@ -126,51 +161,65 @@ GET /cooking_blog/_search
 ```
 
 1. By default, the `match` query uses `OR` logic between the resulting tokens. This means it will match documents that contain either "fluffy" or "pancakes", or both, in the description field.
-:::
 
-:::{tab-item} ES|QL
-### Basic match query
 
-In ESQL, the `MATCH` function provides similar full-text search capabilities. Here's how to search the `description` field for "fluffy pancakes":
+At search time, {{es}} defaults to the analyzer defined in the field mapping. In this example, we’re using the `standard` analyzer. Using a different analyzer at search time is an [advanced use case](../../manage-data/data-store/text-analysis/index-search-analysis.md#different-analyzers).
 
-```esql
-POST /_query?format=txt
+::::{dropdown} Example response
+```console-result
 {
-  "query": """
-    FROM cooking_blog
-    | WHERE description:"fluffy pancakes"
-    | LIMIT 1000
-  """
+  "took": 0,
+  "timed_out": false,
+  "_shards": {
+    "total": 1,
+    "successful": 1,
+    "skipped": 0,
+    "failed": 0
+  },
+  "hits": { <1>
+    "total": {
+      "value": 1,
+      "relation": "eq"
+    },
+    "max_score": 1.8378843, <2>
+    "hits": [
+      {
+        "_index": "cooking_blog",
+        "_id": "1",
+        "_score": 1.8378843, <3>
+        "_source": {
+          "title": "Perfect Pancakes: A Fluffy Breakfast Delight", <4>
+          "description": "Learn the secrets to making the fluffiest pancakes, so amazing you won't believe your tastebuds. This recipe uses buttermilk and a special folding technique to create light, airy pancakes that are perfect for lazy Sunday mornings.", <5>
+          "author": "Maria Rodriguez",
+          "date": "2023-05-01",
+          "category": "Breakfast",
+          "tags": [
+            "pancakes",
+            "breakfast",
+            "easy recipes"
+          ],
+          "rating": 4.8
+        }
+      }
+    ]
+  }
 }
 ```
 
-By default, like the Query DSL `match` query, the ESQL `MATCH` function uses `OR` logic between terms. This means it will match documents that contain either "fluffy" or "pancakes", or both, in the description field.
+1. The `hits` object contains the total number of matching documents and their relation to the total.
+2. `max_score` is the highest relevance score among all matching documents. In this example, we only have one matching document.
+3. `_score` is the relevance score for a specific document, indicating how well it matches the query. Higher scores indicate better matches. In this example the `max_score` is the same as the `_score`, as there is only one matching document.
+4. The title contains both "Fluffy" and "Pancakes", matching our search terms exactly.
+5. The description includes "fluffiest" and "pancakes", further contributing to the document’s relevance due to the analysis process.
 
-:::{tip}
-You can see exactly which fields to include in the response using the `KEEP` command:
 
-```esql
-POST /_query?format=txt
-{
-  "query": """
-    FROM cooking_blog
-    | WHERE description:"fluffy pancakes"
-    | KEEP title, description, rating
-    | LIMIT 1000
-  """
-}
-```
-:::
-:::
 ::::
 
-### Require all terms in a match query
 
-Sometimes you need to require that all search terms appear in the matching documents. Here's how to do that with both query languages:
 
-::::{tab-set}
-:::{tab-item} Query DSL
-Specify the `and` operator to require both terms in the `description` field:
+### Require all terms in a match query [_require_all_terms_in_a_match_query]
+
+Specify the `and` operator to require both terms in the `description` field. This stricter search returns *zero hits* on our sample data, as no document contains both "fluffy" and "pancakes" in the description.
 
 ```console
 GET /cooking_blog/_search
@@ -186,34 +235,37 @@ GET /cooking_blog/_search
 }
 ```
 
-This stricter search returns *zero hits* on our sample data, as no document contains both "fluffy" and "pancakes" in the description.
-:::
-
-:::{tab-item} ES|QL
-In ESQL, you can use the `operator` parameter to specify the `AND` operator:
-
-```esql
-POST /_query?format=txt
+::::{dropdown} Example response
+```console-result
 {
-  "query": """
-    FROM cooking_blog
-    | WHERE MATCH(description, "fluffy pancakes", {"operator": "AND"})
-    | LIMIT 1000
-  """
+  "took": 0,
+  "timed_out": false,
+  "_shards": {
+    "total": 1,
+    "successful": 1,
+    "skipped": 0,
+    "failed": 0
+  },
+  "hits": {
+    "total": {
+      "value": 0,
+      "relation": "eq"
+    },
+    "max_score": null,
+    "hits": []
+  }
 }
 ```
 
-This stricter search returns *zero hits* on our sample data, as no document contains both "fluffy" and "pancakes" in the description.
-:::
 ::::
 
-### Specify a minimum number of terms to match
 
-Sometimes requiring all terms is too strict, but the default OR behavior is too lenient. You can specify a minimum number of terms that must match:
 
-::::{tab-set}
-:::{tab-item} Query DSL
-Use the [`minimum_should_match`](elasticsearch://reference/query-languages/query-dsl-minimum-should-match.md) parameter to specify the minimum number of terms a document should have to be included in the search results:
+### Specify a minimum number of terms to match [_specify_a_minimum_number_of_terms_to_match]
+
+Use the [`minimum_should_match`](elasticsearch://reference/query-languages/query-dsl-minimum-should-match.md) parameter to specify the minimum number of terms a document should have to be included in the search results.
+
+Search the title field to match at least 2 of the 3 terms: "fluffy", "pancakes", or "breakfast". This is useful for improving relevance while allowing some flexibility.
 
 ```console
 GET /cooking_blog/_search
@@ -229,34 +281,12 @@ GET /cooking_blog/_search
 }
 ```
 
-This query searches the title field to match at least 2 of the 3 terms: "fluffy", "pancakes", or "breakfast".
-:::
 
-:::{tab-item} ES|QL
-In ESQL, you can use the `minimum_should_match` parameter in a similar way:
+## Step 4: Search across multiple fields at once [full-text-filter-tutorial-multi-match]
 
-```esql
-POST /_query?format=txt
-{
-  "query": """
-    FROM cooking_blog
-    | WHERE MATCH(title, "fluffy pancakes breakfast", {"minimum_should_match": 2})
-    | LIMIT 1000
-  """
-}
-```
+When users enter a search query, they often don’t know (or care) whether their search terms appear in a specific field. A [`multi_match`](elasticsearch://reference/query-languages/query-dsl-multi-match-query.md) query allows searching across multiple fields simultaneously.
 
-This query searches the title field to match at least 2 of the 3 terms: "fluffy", "pancakes", or "breakfast".
-:::
-::::
-
-## Step 4: Search across multiple fields at once
-
-When users enter a search query, they often don't know (or care) whether their search terms appear in a specific field. Both Query DSL and ESQL provide ways to search across multiple fields simultaneously:
-
-::::{tab-set}
-:::{tab-item} Query DSL
-A [`multi_match`](elasticsearch://reference/query-languages/query-dsl-multi-match-query.md) query allows searching across multiple fields simultaneously:
+Let’s start with a basic `multi_match` query:
 
 ```console
 GET /cooking_blog/_search
@@ -280,59 +310,87 @@ GET /cooking_blog/_search
   "query": {
     "multi_match": {
       "query": "vegetarian curry",
-      "fields": ["title^3", "description^2", "tags"]
+      "fields": ["title^3", "description^2", "tags"] <1>
     }
   }
 }
 ```
 
-The `^` syntax applies a boost to specific fields:
-* `title^3`: The title field is 3 times more important than an unboosted field
+1. The `^` syntax applies a boost to specific fields:* `title^3`: The title field is 3 times more important than an unboosted field
 * `description^2`: The description is 2 times more important
 * `tags`: No boost applied (equivalent to `^1`)
-:::
 
-:::{tab-item} ES|QL
-In ESQL, you can use multiple `MATCH` functions combined with OR operators to search across different fields:
+    These boosts help tune relevance, prioritizing matches in the title over the description, and matches in the description over tags.
 
-```esql
-POST /_query?format=txt
+
+
+
+Learn more about fields and per-field boosting in the [`multi_match` query](elasticsearch://reference/query-languages/query-dsl-multi-match-query.md) reference.
+
+::::{dropdown} Example response
+```console-result
 {
-  "query": """
-    FROM cooking_blog
-    | WHERE title:"vegetarian curry" OR description:"vegetarian curry" OR tags:"vegetarian curry"
-    | LIMIT 1000
-  """
+  "took": 0,
+  "timed_out": false,
+  "_shards": {
+    "total": 1,
+    "successful": 1,
+    "skipped": 0,
+    "failed": 0
+  },
+  "hits": {
+    "total": {
+      "value": 1,
+      "relation": "eq"
+    },
+    "max_score": 7.546015,
+    "hits": [
+      {
+        "_index": "cooking_blog",
+        "_id": "2",
+        "_score": 7.546015,
+        "_source": {
+          "title": "Spicy Thai Green Curry: A Vegetarian Adventure", <1>
+          "description": "Dive into the flavors of Thailand with this vibrant green curry. Packed with vegetables and aromatic herbs, this dish is both healthy and satisfying. Don't worry about the heat - you can easily adjust the spice level to your liking.", <2>
+          "author": "Liam Chen",
+          "date": "2023-05-05",
+          "category": "Main Course",
+          "tags": [
+            "thai",
+            "vegetarian",
+            "curry",
+            "spicy"
+          ], <3>
+          "rating": 4.6
+        }
+      }
+    ]
+  }
 }
 ```
 
-For field boosting in ESQL, we can use a more complex approach that makes use of the query's relevance scores:
+1. The title contains "Vegetarian" and "Curry", which matches our search terms. The title field has the highest boost (^3), contributing significantly to this document’s relevance score.
+2. The description contains "curry" and related terms like "vegetables", further increasing the document’s relevance.
+3. The tags include both "vegetarian" and "curry", providing an exact match for our search terms, albeit with no boost.
 
-```esql
-POST /_query?format=txt
-{
-  "query": """
-    FROM cooking_blog metadata _score
-    | WHERE title:"vegetarian curry" 
-        OR description:"vegetarian curry" 
-        OR tags:"vegetarian curry"
-    | KEEP title, description, tags, _score
-    | SORT _score DESC
-    | LIMIT 1000
-  """
-}
-```
 
-:::
+This result demonstrates how the `multi_match` query with field boosts helps users find relevant recipes across multiple fields. Even though the exact phrase "vegetarian curry" doesn’t appear in any single field, the combination of matches across fields produces a highly relevant result.
+
 ::::
 
-## Step 5: Filter and find exact matches
 
-Filtering allows you to narrow down your search results based on exact criteria. Unlike full-text searches, filters are binary (yes/no) and do not affect the relevance score. Filters execute faster than queries because excluded results don't need to be scored.
+::::{tip}
+The `multi_match` query is often recommended over a single `match` query for most text search use cases, as it provides more flexibility and better matches user expectations.
 
-::::{tab-set}
-:::{tab-item} Query DSL
-This [`bool`](elasticsearch://reference/query-languages/query-dsl-bool-query.md) query will return only blog posts in the "Breakfast" category:
+::::
+
+
+
+## Step 5: Filter and find exact matches [full-text-filter-tutorial-filtering]
+
+[Filtering](../../explore-analyze/query-filter/languages/querydsl.md#filter-context) allows you to narrow down your search results based on exact criteria. Unlike full-text searches, filters are binary (yes/no) and do not affect the relevance score. Filters execute faster than queries because excluded results don’t need to be scored.
+
+This [`bool`](elasticsearch://reference/query-languages/query-dsl-bool-query.md) query will return only blog posts in the "Breakfast" category.
 
 ```console
 GET /cooking_blog/_search
@@ -340,43 +398,29 @@ GET /cooking_blog/_search
   "query": {
     "bool": {
       "filter": [
-        { "term": { "category.keyword": "Breakfast" } }
+        { "term": { "category.keyword": "Breakfast" } }  <1>
       ]
     }
   }
 }
 ```
 
-Note the use of `category.keyword` here. This refers to the [`keyword`](elasticsearch://reference/elasticsearch/mapping-reference/keyword.md) multi-field of the `category` field, ensuring an exact, case-sensitive match.
-:::
+1. Note the use of `category.keyword` here. This refers to the [`keyword`](elasticsearch://reference/elasticsearch/mapping-reference/keyword.md) multi-field of the `category` field, ensuring an exact, case-sensitive match.
 
-:::{tab-item} ES|QL
-In ESQL, you can use the `WHERE` clause with a direct field comparison for exact matches:
 
-```esql
-POST /_query?format=txt
-{
-  "query": """
-    FROM cooking_blog
-    | WHERE category.keyword == "Breakfast"
-    | KEEP title, author, rating, tags
-    | SORT rating DESC
-    | LIMIT 1000
-  """
-}
-```
+::::{tip}
+The `.keyword` suffix accesses the unanalyzed version of a field, enabling exact, case-sensitive matching. This works in two scenarios:
 
-Just like in Query DSL, we use the `.keyword` field to ensure an exact, case-sensitive match.
-:::
+1. **When using dynamic mapping for text fields**. Elasticsearch automatically creates a `.keyword` sub-field.
+2. **When text fields are explicitly mapped with a `.keyword` sub-field**. For example, we explicitly mapped the `category` field in [Step 1](#full-text-filter-tutorial-create-index) of this tutorial.
+
 ::::
 
-### Search for posts within a date range
 
-Often users want to find content published within a specific time frame:
 
-::::{tab-set}
-:::{tab-item} Query DSL
-A [`range`](elasticsearch://reference/query-languages/query-dsl-range-query.md) query finds documents that fall within numeric or date ranges:
+### Search for posts within a date range [full-text-filter-tutorial-range-query]
+
+Often users want to find content published within a specific time frame. A [`range`](elasticsearch://reference/query-languages/query-dsl-range-query.md) query finds documents that fall within numeric or date ranges.
 
 ```console
 GET /cooking_blog/_search
@@ -384,80 +428,58 @@ GET /cooking_blog/_search
   "query": {
     "range": {
       "date": {
-        "gte": "2023-05-01",
-        "lte": "2023-05-31"
+        "gte": "2023-05-01", <1>
+        "lte": "2023-05-31" <2>
       }
     }
   }
 }
 ```
-:::
 
-:::{tab-item} ES|QL
-In ESQL, you can use comparison operators in the `WHERE` clause for date ranges:
+1. Greater than or equal to May 1, 2023.
+2. Less than or equal to May 31, 2023.
 
-```esql
-POST /_query?format=txt
-{
-  "query": """
-    FROM cooking_blog
-    | WHERE date >= "2023-05-01" AND date <= "2023-05-31"
-    | KEEP title, author, rating, tags
-    | LIMIT 1000
-  """
-}
-```
-:::
-::::
 
-### Find exact matches
 
-Sometimes users want to search for exact terms to eliminate ambiguity in their search results:
+### Find exact matches [full-text-filter-tutorial-term-query]
 
-::::{tab-set}
-:::{tab-item} Query DSL
-A [`term`](elasticsearch://reference/query-languages/query-dsl-term-query.md) query searches for an exact term in a field without analyzing it:
+Sometimes users want to search for exact terms to eliminate ambiguity in their search results. A [`term`](elasticsearch://reference/query-languages/query-dsl-term-query.md) query searches for an exact term in a field without analyzing it. Exact, case-sensitive matches on specific terms are often referred to as "keyword" searches.
+
+Here you’ll search for the author "Maria Rodriguez" in the `author.keyword` field.
 
 ```console
 GET /cooking_blog/_search
 {
   "query": {
     "term": {
-      "author.keyword": "Maria Rodriguez"
+      "author.keyword": "Maria Rodriguez" <1>
     }
   }
 }
 ```
 
-The `term` query has zero flexibility. For example, here the queries `maria` or `maria rodriguez` would have zero hits, due to case sensitivity.
-:::
+1. The `term` query has zero flexibility. For example, here the queries `maria` or `maria rodriguez` would have zero hits, due to case sensitivity.
 
-:::{tab-item} ES|QL
-In ESQL, exact matching can be done using the equality operator on keyword fields:
 
-```esql
-POST /_query?format=txt
-{
-  "query": """
-    FROM cooking_blog
-    | WHERE category.keyword == "Breakfast"
-    | KEEP title, author, rating, tags
-    | LIMIT 1000
-  """
-}
-```
+::::{tip}
+Avoid using the `term` query for [`text` fields](elasticsearch://reference/elasticsearch/mapping-reference/text.md) because they are transformed by the analysis process.
 
-Like the `term` query in Query DSL, this has zero flexibility and is case-sensitive.
-:::
 ::::
 
-## Step 6: Combine multiple search criteria
 
-Complex searches often require combining multiple search criteria:
 
-::::{tab-set}
-:::{tab-item} Query DSL
-A [`bool`](elasticsearch://reference/query-languages/query-dsl-bool-query.md) query allows you to combine multiple query clauses:
+## Step 6: Combine multiple search criteria [full-text-filter-tutorial-complex-bool]
+
+A [`bool`](elasticsearch://reference/query-languages/query-dsl-bool-query.md) query allows you to combine multiple query clauses to create sophisticated searches. In this tutorial scenario it’s useful for when users have complex requirements for finding recipes.
+
+Let’s create a query that addresses the following user needs:
+
+* Must be a vegetarian recipe
+* Should contain "curry" or "spicy" in the title or description
+* Should be a main course
+* Must not be a dessert
+* Must have a rating of at least 4.5
+* Should prefer recipes published in the last month
 
 ```console
 GET /cooking_blog/_search
@@ -497,7 +519,7 @@ GET /cooking_blog/_search
           }
         }
       ],
-      "must_not": [
+      "must_not": [ <1>
         {
           "term": {
             "category.keyword": "Dessert"
@@ -509,63 +531,68 @@ GET /cooking_blog/_search
 }
 ```
 
-The `must_not` clause excludes documents that match the specified criteria. This is a powerful tool for filtering out unwanted results.
-:::
+1. The `must_not` clause excludes documents that match the specified criteria. This is a powerful tool for filtering out unwanted results.
 
-:::{tab-item} ES|QL
-In ESQL, you can combine multiple criteria using logical operators (AND, OR, NOT):
 
-```console
-POST /_query?format=txt
+::::{dropdown} Example response
+```console-result
 {
-  "query": """
-    FROM cooking_blog metadata _score
-    | WHERE rating >= 4.5
-      AND NOT category.keyword == "Dessert"
-      AND (title:"curry spicy" OR description:"curry spicy")
-    | SORT _score DESC
-    | KEEP title, author, rating, tags, description
-    | LIMIT 1000
-  """
+  "took": 1,
+  "timed_out": false,
+  "_shards": {
+    "total": 1,
+    "successful": 1,
+    "skipped": 0,
+    "failed": 0
+  },
+  "hits": {
+    "total": {
+      "value": 1,
+      "relation": "eq"
+    },
+    "max_score": 7.444513,
+    "hits": [
+      {
+        "_index": "cooking_blog",
+        "_id": "2",
+        "_score": 7.444513,
+        "_source": {
+          "title": "Spicy Thai Green Curry: A Vegetarian Adventure", <1>
+          "description": "Dive into the flavors of Thailand with this vibrant green curry. Packed with vegetables and aromatic herbs, this dish is both healthy and satisfying. Don't worry about the heat - you can easily adjust the spice level to your liking.", <2>
+          "author": "Liam Chen",
+          "date": "2023-05-05",
+          "category": "Main Course", <3>
+          "tags": [ <4>
+            "thai",
+            "vegetarian", <5>
+            "curry",
+            "spicy"
+          ],
+          "rating": 4.6 <6>
+        }
+      }
+    ]
+  }
 }
 ```
 
-For more complex relevance scoring with combined criteria, you can use the `EVAL` command to calculate custom scores:
+1. The title contains "Spicy" and "Curry", matching our should condition. With the default [best_fields](elasticsearch://reference/query-languages/query-dsl-multi-match-query.md#type-best-fields) behavior, this field contributes most to the relevance score.
+2. While the description also contains matching terms, only the best matching field’s score is used by default.
+3. The recipe was published within the last month, satisfying our recency preference.
+4. The "Main Course" category satisfies another `should` condition.
+5. The "vegetarian" tag satisfies a `must` condition, while "curry" and "spicy" tags align with our `should` preferences.
+6. The rating of 4.6 meets our minimum rating requirement of 4.5.
 
-```console
-GET /_query/esql
-{
-  "query": "
-    FROM cooking_blog
-    | WHERE tags == \"vegetarian\" AND rating >= 4.5
-    | EVAL title_score = SCORE(MATCH(title, \"curry spicy\")) * 2
-    | EVAL desc_score = SCORE(MATCH(description, \"curry spicy\"))
-    | EVAL combined_score = title_score + desc_score
-    | EVAL category_boost = IF(category == \"Main Course\", 1.0, 0.0)
-    | EVAL date_boost = IF(date >= \"now-1M/d\", 0.5, 0.0)
-    | EVAL final_score = combined_score + category_boost + date_boost
-    | WHERE NOT category.keyword == \"Dessert\"
-    | WHERE final_score > 0
-    | SORT final_score DESC
-  "
-}
-```
 
-This ESQL query achieves the same goals as the complex bool query but with a more explicit scoring mechanism:
-1. Requires "vegetarian" tag and rating >= 4.5
-2. Computes separate scores for title and description matches
-3. Adds boosts for Main Course category and recent dates
-4. Excludes Desserts
-5. Sorts by the final combined score
-:::
 ::::
 
-## Learn more
 
-This tutorial introduced the basics of full-text search and filtering in Elasticsearch using both Query DSL and ESQL. Building a real-world search experience requires understanding many more advanced concepts and techniques. Here are some resources once you're ready to dive deeper:
 
-* [Full-text search](full-text.md): Learn about the core components of full-text search in Elasticsearch.
-* [Elasticsearch basics — Search and analyze data](../../explore-analyze/query-filter.md): Understand all your options for searching and analyzing data in Elasticsearch.
+## Learn more [full-text-filter-tutorial-learn-more]
+
+This tutorial introduced the basics of full-text search and filtering in {{es}}. Building a real-world search experience requires understanding many more advanced concepts and techniques. Here are some resources once you’re ready to dive deeper:
+
+* [Full-text search](full-text.md): Learn about the core components of full-text search in {{es}}.
+* [Elasticsearch basics — Search and analyze data](../../explore-analyze/query-filter.md): Understand all your options for searching and analyzing data in {{es}}.
 * [Text analysis](full-text/text-analysis-during-search.md): Understand how text is processed for full-text search.
 * [Search your data](../search.md): Learn about more advanced search techniques using the `_search` API, including semantic search.
-* [Elasticsearch SQL & ESQL](https://www.elastic.co/guide/en/elasticsearch/reference/current/esql.html): Learn more about the ESQL query language.
