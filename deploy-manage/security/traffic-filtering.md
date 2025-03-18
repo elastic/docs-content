@@ -1,4 +1,5 @@
 ---
+navigation_title: Traffic filtering
 applies_to:
   deployment: 
     ess: ga
@@ -12,9 +13,15 @@ mapped_urls:
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-traffic-filtering-deployment-configuration.html
 ---
 
-# Secure network access
+# Traffic filtering
 
 Traffic filtering allows you to limit how your deployments and clusters can be accessed. Add another layer of security to your installation and deployments by restricting inbound traffic to *only* the sources that you trust.
+
+Depending on your deployment type you can use different mechanisms to restrict traffic, such as [IP filters](./ip-traffic-filtering.md), [private links](./private-link-traffic-filters.md) provided by cloud platforms, or [Kubernetes network policies](./k8s-network-policies.md).
+
+::::{note}
+This section covers traffic filtering at the deployment level. If you need the IP addresses used by Elastic Cloud to configure them in your network firewalls, refer to [](./elastic-cloud-static-ips.md).
+::::
 
 :::::{tab-set}
 :group: deployment-type

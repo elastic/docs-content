@@ -13,7 +13,7 @@ mapped_pages:
 The Timeline schema lists all the JSON fields and objects required to create a Timeline or a Timeline template using the Create Timeline API.
 
 ::::{important}
-All column, dropzone, and filter fields must be [ECS fields](asciidocalypse://docs/ecs/docs/reference/index.md).
+All column, dropzone, and filter fields must be [ECS fields](ecs://reference/index.md).
 ::::
 
 

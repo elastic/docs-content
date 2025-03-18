@@ -26,7 +26,7 @@ For issues that you cannot fix yourself … we’re here to help. If you are an 
 
 In some cases, you can also retrieve this information via APIs:
 
-* For Beat instances, use the HTTP endpoint to retrieve the `uuid` property. For example, refer to [Configure an HTTP endpoint for {{filebeat}} metrics](asciidocalypse://docs/beats/docs/reference/filebeat/http-endpoint.md).
+* For Beat instances, use the HTTP endpoint to retrieve the `uuid` property. For example, refer to [Configure an HTTP endpoint for {{filebeat}} metrics](beats://reference/filebeat/http-endpoint.md).
 * For {{kib}} instances, use the [status endpoint](/troubleshoot/kibana/access.md) to retrieve the `uuid` property.
 * For {{ls}} nodes, use the [monitoring APIs root resource](https://www.elastic.co/guide/en/logstash/current/monitoring-logstash.html) to retrieve the `id` property.
 

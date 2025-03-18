@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/profiling-add-symbols.html
+applies_to:
+  stack:
 ---
 
 # Add symbols for native frames [profiling-add-symbols]

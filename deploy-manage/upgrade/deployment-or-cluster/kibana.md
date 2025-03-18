@@ -20,13 +20,13 @@ For more information, refer to [Migrate saved objects](../internal-upgrade-proce
 
 When upgrading several {{kib}} instances connected to the same {{es}} cluster, ensure that all outdated instances are shut down before starting the upgrade.
 
-Rolling upgrades are unsupported in {{kib}}. However, when outdated instances are shut down, you can start all upgraded instances in parallel, which allows all instances to participate in the upgrade migration in parallel.
+Rolling upgrades are unsupported in {{kib}}. However, when outdated instances are shut down, you can start all upgraded instances in parallel, which allows all instances to participate in the upgrade in parallel.
 
-For large deployments with more than 10 {{kib}} instances, and more than 10,000 saved objects, you can reduce the upgrade downtime by bringing up a single {{kib}} instance and waiting for it to complete the upgrade migration before bringing up the remaining instances.
+For large deployments with more than 10 {{kib}} instances, and more than 10,000 saved objects, you can reduce the upgrade downtime by bringing up a single {{kib}} instance and waiting for it to complete the upgrade before bringing up the remaining instances.
 
-## Preparing for migration [preventing-migration-failures]
+## Preparing for upgrading [preventing-migration-failures]
 
-Before you start, ensure you [take the upgrade preparation steps](../prepare-to-upgrade.md). Then, take these extra steps to ensure you are ready for migration.
+Before you start, ensure you [take the upgrade preparation steps](../prepare-to-upgrade.md). Then, take these extra steps to ensure you are ready to upgrade.
 
 
 ### Ensure your {{es}} cluster is healthy [_ensure_your_es_cluster_is_healthy]
@@ -44,7 +44,7 @@ A healthy cluster has:
 
 ### Ensure that all {{kib}} instances are the same [_ensure_that_all_kib_instances_are_the_same]
 
-When you perform an upgrade migration of different {{kib}} versions, the migration can fail. Ensure that all {{kib}} instances are running the same version, configuration, and plugins.
+When you perform an upgrade of different {{kib}} versions, the upgrade can fail. Ensure that all {{kib}} instances are running the same version, configuration, and plugins.
 
 ## Perform the upgrade [perform-kibana-upgrade]
 

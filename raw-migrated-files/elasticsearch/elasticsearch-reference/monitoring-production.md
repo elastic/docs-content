@@ -71,12 +71,12 @@ To store monitoring data in a separate cluster:
 3. (Optional) [Configure {{ls}} to collect data and send it to the monitoring cluster](logstash://reference/monitoring-logstash-legacy.md).
 4. (Optional) Configure the {{beats}} to collect data and send it to the monitoring cluster. Skip this step for {{beats}} that are managed by {{agent}}.
 
-    * [Auditbeat](asciidocalypse://docs/beats/docs/reference/auditbeat/monitoring.md)
-    * [Filebeat](asciidocalypse://docs/beats/docs/reference/filebeat/monitoring.md)
-    * [Heartbeat](asciidocalypse://docs/beats/docs/reference/heartbeat/monitoring.md)
-    * [Metricbeat](asciidocalypse://docs/beats/docs/reference/metricbeat/monitoring.md)
-    * [Packetbeat](asciidocalypse://docs/beats/docs/reference/packetbeat/monitoring.md)
-    * [Winlogbeat](asciidocalypse://docs/beats/docs/reference/winlogbeat/monitoring.md)
+    * [Auditbeat](beats://reference/auditbeat/monitoring.md)
+    * [Filebeat](beats://reference/filebeat/monitoring.md)
+    * [Heartbeat](beats://reference/heartbeat/monitoring.md)
+    * [Metricbeat](beats://reference/metricbeat/monitoring.md)
+    * [Packetbeat](beats://reference/packetbeat/monitoring.md)
+    * [Winlogbeat](beats://reference/winlogbeat/monitoring.md)
 
 5. (Optional) [Configure APM Server monitoring](/solutions/observability/apps/monitor-apm-server.md)
 6. (Optional) Configure {{kib}} to collect data and send it to the monitoring cluster:

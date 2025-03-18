@@ -59,9 +59,9 @@ See [install {{agent}} in containers](/reference/ingestion-tools/fleet/install-e
 
 {{filebeat}} is a lightweight shipper for forwarding and centralizing log data. Installed as a service on your servers, {{filebeat}} monitors the log files or locations that you specify, collects log events, and forwards them to your Observability project for indexing.
 
-* [{{filebeat}} overview](asciidocalypse://docs/beats/docs/reference/filebeat/filebeat-overview.md): General information on {{filebeat}} and how it works.
-* [{{filebeat}} quick start](asciidocalypse://docs/beats/docs/reference/filebeat/filebeat-installation-configuration.md): Basic installation instructions to get you started.
-* [Set up and run {{filebeat}}](asciidocalypse://docs/beats/docs/reference/filebeat/setting-up-running.md): Information on how to install, set up, and run {{filebeat}}.
+* [{{filebeat}} overview](beats://reference/filebeat/filebeat-overview.md): General information on {{filebeat}} and how it works.
+* [{{filebeat}} quick start](beats://reference/filebeat/filebeat-installation-configuration.md): Basic installation instructions to get you started.
+* [Set up and run {{filebeat}}](beats://reference/filebeat/setting-up-running.md): Information on how to install, set up, and run {{filebeat}}.
 
 
 ## Configure logs [observability-log-monitoring-configure-logs]

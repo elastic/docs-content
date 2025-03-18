@@ -1,258 +1,86 @@
-# Prepare to upgrade
+# Prepare to upgrade [upgrade-prep]
 
-% What needs to be done: Write from scratch
+There are a number of things you need to plan for before performing the actual upgrade, so create a test plan. Consider the following recommendations: 
 
-% Scope notes: Prerequisites and requirements
+* Plan for an appropriate amount of time to complete the upgrade. Depending on your configuration and the size of your cluster, the process can take up to a few weeks or more to complete.
+* Consider opening a [support case](https://support.elastic.co/) with Elastic to alert our Elastic Support team of your system change. If you need additional assistance, [Elastic Consulting Services](https://www.elastic.co/consulting) provides the technical expertise and step-by-step approach for upgrading your Elastic deployment.
+* Schedule a system maintenance window within your organization.
 
-⚠️ **This page is a work in progress.** ⚠️
+## Check system requirements [check-system-requirements] 
 
+Ensure the version you’re upgrading to for {{es}}, {{kib}}, and any ingest components supports your current operating system. Refer to the [Product and Operating System support matrix](https://www.elastic.co/support/matrix#matrix_os). 
 
-## Anomaly detection results migration
+### OpenJDK compatibility and FIPS compliance
 
-The {{anomaly-detect}} result indices `.ml-anomalies-*` created in {{es}} 7.x must be either reindexed, marked read-only, or deleted before upgrading to 9.x.
+By default, {{es}} is built using Java and includes a bundled version of [OpenJDK](https://openjdk.java.net/) within each distribution. While we strongly recommend using the bundled Java Virtual Machine (JVM) in all installations of {{es}}, if you choose to use your own JVM, ensure it’s compatible by reviewing the [Product and JVM support matrix](https://www.elastic.co/support/matrix#matrix_jvm). {{es}} 9.0 requires Java 21 and supports Java 24. 
 
-**Reindexing**: While {{anomaly-detect}} results are being reindexed, jobs continue to run and process new data. However, you cannot completely delete an {{anomaly-job}} that stores results in this index until the reindexing is complete.
+If you’re running {{es}} in FIPS 140-2 mode, {{es}} 9.0 has been tested with [Bouncy Castle's](https://www.bouncycastle.org/java.html) FIPS implementation and is the recommended Java security provider when running {{es}}. 
 
-**Marking indices as read-only**: This is useful for large indexes that contain the results of only one or a few {{anomaly-jobs}}. If you delete these jobs later, you will not be able to create a new job with the same name.
+## Conduct a component inventory
 
-**Deleting**: Delete jobs that are no longer needed in the {{ml-app}} app in {{kib}}. The result index is deleted when all jobs that store results in it have been deleted.
+It is very important to map all the components that are being used on the {{stack}}. When you upgrade your deployment, you also may need to upgrade all the other components. You should record whether each component is used, and if it is, also record the current version. While not comprehensive, here’s a list of components you should check: 
 
-:::{dropdown} Which indices require attention?
-To identify indices that require action, use the [Deprecation info API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-migration-deprecations-1):
+* {{es}}
+* {{es}} Hadoop
+* {{es}} plugins
+* {{es}} clients
+* {{kib}}
+* {{ls}}
+* {{ls}} plugins
+* {{beats}}
+* {{beats}} modules
+* {{apm-agent}}
+* APM server
+* {{agent}}
+* {{fleet}}
+* Security
+* Browsers
+* External services (Kafka, etc.)
 
-```
-GET /.ml-anomalies-*/_migration/deprecations
-```
-
-The response contains the list of critical deprecation warnings in the `index_settings` section:
-
-```json
-  "index_settings": {
-    ".ml-anomalies-shared": [
-      {
-        "level": "critical",
-        "message": "Index created before 8.0",
-        "url": "https://ela.st/es-deprecation-8-reindex",
-        "details": "This index was created with version 7.8.23 and is not compatible with 9.0. Reindex or remove the index before upgrading.",
-        "resolve_during_rolling_upgrade": false
-      }
-    ]
-  }
-```
+:::{tip}
+When you do your inventory, you can [enable audit logging](/deploy-manage/security/logging-configuration/enabling-audit-logs.md) to evaluate resources accessing your deployment.
 :::
 
-:::{dropdown} Reindexing anomaly result indices
-For an index with less than 10GB that contains results from multiple jobs that are still required, we recommend reindexing into a new format using UI. You can use the [Get index information API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-indices-1) to obtain the size of an index:
+## Test your development environment
 
-```
-GET _cat/indices/.ml-anomalies-custom-example?v&h=index,store.size
-```
+We highly recommend testing and upgrading in your development environment before your production environment. Therefore, it is crucial to ensure that both your development and production environments have the same settings. Consider checking the following components beforehand:
 
-The reindexing can be initiated in the {{kib}} Upgrade Assistant.
+* Enrichment information
+* Plugins
+* Mapping
+* Index lifecycle management (ILM)
+* Snapshot lifecycle management (SLM)
+* Index templates
+* {{ml-cap}} jobs
+* Inbound sample data
+* Live data
+* Performance
+* Outbound integrations
+* Dashboards
+* Alerts
+* Authentication
 
-If an index size is greater than 10 GB, it is recommended to use the Reindex API. Reindexing consists of the following steps:
+## Choose your upgrade path [choose-upgrade-path]
 
-1. Set the original index to read-only.
+The procedures you follow to upgrade depend on your infrastructure and deployment method. You’ve installed Elastic components using either Elastic-managed infrastructure or self-managed infrastructure. 
 
-```
-PUT .ml-anomalies-custom-example/_block/read_only
-```
+### Elastic-managed infrastructure 
 
-2. Create a new index from the legacy index.
+Elastic-managed infrastructure includes {{ecloud}} – the umbrella term for {{ech}} (ECH) and {{serverless-full}}. {{serverless-full}} (“Serverless”) is a fully managed cloud offering with three products: {{es-serverless}}, {{obs-serverless}}, and {{sec-serverless}}. All serverless products are built on top of the Search AI Lake. Customers on serverless receive the latest features automatically when updates are published and do not need to choose an upgrade path.  
 
-```
-POST _create_from/.ml-anomalies-custom-example/.reindexed-v9-ml-anomalies-custom-example
-```
+{{ech}} is Elastic’s cloud offering for managing {{stack}} deployments, built on top of {{es}}. A single click in the {{ecloud}} console can upgrade a deployment to a newer version.
 
-3. Reindex documents. To accelerate the reindexing process, it is recommended that the number of replicas be set to `0` before the reindexing and then set back to the original number once it is completed.
+### Self-managed infrastructure
 
-    1. Get the number of replicas.
+Self-managed infrastructure – either on-prem or on public cloud, includes: 
+* {{stack}} 
+* {{ece}} (ECE)
+* {{eck}} (ECK)
 
-    ```
-    GET /.reindexed-v9-ml-anomalies-custom-example/_settings
-    ```
+For ECE and ECK, ensure the operator is running a version compatible with the {{stack}} version you’re upgrading to. If not, you need to upgrade that before you can upgrade your cluster. 
 
-    Note the number of replicas in the response. For example:
+If you’re running the {{stack}} on your own self-managed infrastructure, you must upgrade each component individually. 
 
-    ```json
-    {
-      ".reindexed-v9-ml-anomalies-custom-example": {
-        "settings": {
-          "index": {
-            "number_of_replicas": "1",
-            "number_of_shards": "1"
-          }
-        }
-      }
-    }
-    ```
-
-    2. Set the number of replicas to `0.`
-
-    ```json
-    PUT /.reindexed-v9-ml-anomalies-custom-example/_settings
-    {
-      "index": {
-        "number_of_replicas": 0
-      }
-    }
-    ```
-
-    3. Start the reindexing process in asynchronous mode.
-
-    ```json
-    POST _reindex?wait_for_completion=false
-    {
-      "source": {
-        "index": ".ml-anomalies-custom-example"
-      },
-      "dest": {
-        "index": ".reindexed-v9-ml-anomalies-custom-example"
-      }
-    }
-    ```
-
-    The response will contain a `task_id`. You can check when the task is completed using the following command:
-
-    ```
-    GET _tasks/<task_id>
-    ```
-
-    4. Set the number of replicas to the original number when the reindexing is finished.
-
-    ```json
-    PUT /.reindexed-v9-ml-anomalies-custom-example/_settings
-    {
-      "index": {
-        "number_of_replicas": "<original_number_of_replicas>"
-      }
-    }
-    ```
-
-4. Get the aliases the original index is pointing to.
-
-```
-GET .ml-anomalies-custom-example/_alias
-```
-
-The response may contain multiple aliases if the results of multiple jobs are stored in the same index.
-
-```json
-{
-  ".ml-anomalies-custom-example": {
-    "aliases": {
-      ".ml-anomalies-example1": {
-        "filter": {
-          "term": {
-            "job_id": {
-              "value": "example1"
-            }
-          }
-        },
-        "is_hidden": true
-      },
-      ".ml-anomalies-example2": {
-        "filter": {
-          "term": {
-            "job_id": {
-              "value": "example2"
-            }
-          }
-        },
-        "is_hidden": true
-      }
-    }
-  }
-}
-```
-
-5. Now you can reassign the aliases to the new index and delete the original index in one step. Note that when adding the new index to the aliases, you must use the same `filter` and `is_hidden` parameters as for the original index.
-
-```json
-POST _aliases
-{
-  "actions": [
-    {
-      "add": {
-        "index": ".reindexed-v9-ml-anomalies-custom-example",
-        "alias": ".ml-anomalies-example1",
-        "filter": {
-          "term": {
-            "job_id": {
-              "value": "example1"
-            }
-          }
-        },
-        "is_hidden": true
-      }
-    },
-    {
-      "add": {
-        "index": ".reindexed-v9-ml-anomalies-custom-example",
-        "alias": ".ml-anomalies-example2",
-        "filter": {
-          "term": {
-            "job_id": {
-              "value": "example2"
-            }
-          }
-        },
-        "is_hidden": true
-      }
-    },
-    {
-      "remove": {
-        "index": ".ml-anomalies-custom-example",
-        "aliases": ".ml-anomalies-*"
-      }
-    },
-    {
-      "remove_index": {
-        "index": ".ml-anomalies-custom-example"
-      }
-    },
-    {
-      "add": {
-        "index": ".reindexed-v9-ml-anomalies-custom-example",
-        "alias": ".ml-anomalies-custom-example",
-        "is_hidden": true
-      }
-    }
-  ]
-}
-```
-:::
+% Refer to the diagram below for a visualization of the different deployment methods. 
 
 
-:::{dropdown} Marking anomaly result indices as read-only
-Legacy indices created in {{es}} 7.x can be made read-only and supported in {{es}} 9.x. Making an index with a large amount of historical results read-only allows for a quick migration to the next major release, since you don’t have to wait for the data to be reindexed into the new format. However, it has the limitation that even after deleting an {{anomaly-job}}, the historical results associated with this job are not completely deleted. Therefore, the system will prevent you from creating a new job with the same name.
-
-To set the index as read-only, add the write block to the index:
-
-```
-PUT .ml-anomalies-custom-example/_block/write
-```
-
-Indices created in {{es}} 7.x that have a write block will not raise a critical deprecation warning.
-:::
-
-:::{dropdown} Deleting anomaly result indices
-If an index contains results of the jobs that are no longer required. To list all jobs that stored results in an index, use the terms aggregation:
-
-```json
-GET .ml-anomalies-custom-example/_search
-{
-  "size": 0,
-  "aggs": {
-    "job_ids": {
-      "terms": {
-        "field": "job_id",
-        "size": 100
-      }
-    }
-  }
-}
-```
-
-The jobs can be deleted in the UI. After the last job is deleted, the index will be deleted as well.
-:::

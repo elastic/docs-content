@@ -20,7 +20,7 @@ Want to use {{agent}} instead? Refer to [Collecting monitoring data with {{agent
 :alt: Example monitoring architecture
 :::
 
-1. [Install {{metricbeat}}](asciidocalypse://docs/beats/docs/reference/metricbeat/metricbeat-installation-configuration.md). Ideally install a single {{metricbeat}} instance configured with `scope: cluster` and configure `hosts` to point to an endpoint (e.g. a load-balancing proxy) which directs requests to the master-ineligible nodes in the cluster. If this is not possible then install one {{metricbeat}} instance for each {{es}} node in the production cluster and use the default `scope: node`. When {{metricbeat}} is monitoring {{es}} with `scope: node` then you must install a {{metricbeat}} instance for each {{es}} node. If you don’t, some metrics will not be collected. {{metricbeat}} with `scope: node` collects most of the metrics from the elected master of the cluster, so you must scale up all your master-eligible nodes to account for this extra load and you should not use this mode if you have dedicated master nodes.
+1. [Install {{metricbeat}}](beats://reference/metricbeat/metricbeat-installation-configuration.md). Ideally install a single {{metricbeat}} instance configured with `scope: cluster` and configure `hosts` to point to an endpoint (e.g. a load-balancing proxy) which directs requests to the master-ineligible nodes in the cluster. If this is not possible then install one {{metricbeat}} instance for each {{es}} node in the production cluster and use the default `scope: node`. When {{metricbeat}} is monitoring {{es}} with `scope: node` then you must install a {{metricbeat}} instance for each {{es}} node. If you don’t, some metrics will not be collected. {{metricbeat}} with `scope: node` collects most of the metrics from the elected master of the cluster, so you must scale up all your master-eligible nodes to account for this extra load and you should not use this mode if you have dedicated master nodes.
 2. Enable the {{es}} module in {{metricbeat}} on each {{es}} node.
 
     For example, to enable the default configuration for the {{stack-monitor-features}} in the `modules.d` directory, run the following command:
@@ -29,7 +29,7 @@ Want to use {{agent}} instead? Refer to [Collecting monitoring data with {{agent
     metricbeat modules enable elasticsearch-xpack
     ```
 
-    For more information, refer to [{{es}} module](asciidocalypse://docs/beats/docs/reference/metricbeat/metricbeat-module-elasticsearch.md).
+    For more information, refer to [{{es}} module](beats://reference/metricbeat/metricbeat-module-elasticsearch.md).
 
 3. Configure the {{es}} module in {{metricbeat}} on each {{es}} node.
 
@@ -58,11 +58,11 @@ Want to use {{agent}} instead? Refer to [Collecting monitoring data with {{agent
 
     1. Create a user on the production cluster that has the [`remote_monitoring_collector` built-in role](../../users-roles/cluster-or-deployment-auth/built-in-roles.md). Alternatively, use the [`remote_monitoring_user` built-in user](../../users-roles/cluster-or-deployment-auth/built-in-users.md).
     2. Add the `username` and `password` settings to the {{es}} module configuration file.
-    3. If TLS is enabled on the HTTP layer of your {{es}} cluster, you must either use https as the URL scheme in the `hosts` setting or add the `ssl.enabled: true` setting. Depending on the TLS configuration of your {{es}} cluster, you might also need to specify [additional ssl.*](asciidocalypse://docs/beats/docs/reference/metricbeat/configuration-ssl.md) settings.
+    3. If TLS is enabled on the HTTP layer of your {{es}} cluster, you must either use https as the URL scheme in the `hosts` setting or add the `ssl.enabled: true` setting. Depending on the TLS configuration of your {{es}} cluster, you might also need to specify [additional ssl.*](beats://reference/metricbeat/configuration-ssl.md) settings.
 
 4. Optional: Disable the system module in {{metricbeat}}.
 
-    By default, the [system module](asciidocalypse://docs/beats/docs/reference/metricbeat/metricbeat-module-system.md) is enabled. The information it collects, however, is not shown on the **Monitoring** page in {{kib}}. Unless you want to use that information for other purposes, run the following command:
+    By default, the [system module](beats://reference/metricbeat/metricbeat-module-system.md) is enabled. The information it collects, however, is not shown on the **Monitoring** page in {{kib}}. Unless you want to use that information for other purposes, run the following command:
 
     ```sh
     metricbeat modules disable system
@@ -103,8 +103,8 @@ Want to use {{agent}} instead? Refer to [Collecting monitoring data with {{agent
     1. Create a user on the monitoring cluster that has the [`remote_monitoring_agent` built-in role](../../users-roles/cluster-or-deployment-auth/built-in-roles.md). Alternatively, use the [`remote_monitoring_user` built-in user](../../users-roles/cluster-or-deployment-auth/built-in-users.md).
     2. Add the `username` and `password` settings to the {{es}} output information in the {{metricbeat}} configuration file.
 
-    For more information about these configuration options, see [Configure the {{es}} output](asciidocalypse://docs/beats/docs/reference/metricbeat/elasticsearch-output.md).
+    For more information about these configuration options, see [Configure the {{es}} output](beats://reference/metricbeat/elasticsearch-output.md).
 
-6. [Start {{metricbeat}}](asciidocalypse://docs/beats/docs/reference/metricbeat/metricbeat-starting.md) on each node.
+6. [Start {{metricbeat}}](beats://reference/metricbeat/metricbeat-starting.md) on each node.
 7. [View the monitoring data in {{kib}}](kibana-monitoring-data.md).
 
