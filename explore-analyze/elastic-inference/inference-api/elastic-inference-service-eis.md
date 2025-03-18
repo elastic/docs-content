@@ -15,11 +15,9 @@ Refer to the [{{infer-cap}} APIs](https://www.elastic.co/docs/api/doc/elasticsea
 
 Creates an {{infer}} endpoint to perform an {{infer}} task with the `elastic` service.
 
-
 ## {{api-request-title}} [infer-service-elastic-api-request] 
 
 `PUT /_inference/<task_type>/<inference_id>`
-
 
 ## {{api-path-parms-title}} [infer-service-elastic-api-path-params] 
 
@@ -34,15 +32,12 @@ Creates an {{infer}} endpoint to perform an {{infer}} task with the `elastic` se
     * `chat_completion`,
     * `sparse_embedding`.
 
-
 ::::{note} 
 The `chat_completion` task type only supports streaming and only through the `_stream` API.
 
 For more information on how to use the `chat_completion` task type, please refer to the [chat completion documentation](chat-completion-inference-api.md).
 
 ::::
-
-
 
 ## {{api-request-body-title}} [infer-service-elastic-api-request-body] 
 
@@ -64,7 +59,6 @@ For more information on how to use the `chat_completion` task type, please refer
     `service_settings`
     :   (Required, object) Settings used to install the {{infer}} model.
 
-
 `model_id`
 :   (Required, string) The name of the model to use for the {{infer}} task.
 
@@ -77,9 +71,7 @@ For more information on how to use the `chat_completion` task type, please refer
     }
     ```
 
-
-
-## Elastic {{infer-cap}} Service example [inference-example-elastic] 
+## Elastic {{infer-cap}} Service example [inference-example-elastic]
 
 The following example shows how to create an {{infer}} endpoint called `elser-model-eis` to perform a `text_embedding` task type.
 
@@ -104,4 +96,3 @@ PUT /_inference/chat_completion/chat-completion-endpoint
     }
 }
 ```
-
