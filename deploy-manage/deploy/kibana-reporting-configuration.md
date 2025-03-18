@@ -50,7 +50,7 @@ Depending on your license, the type of users, and whether you prefer using the {
 The following configurations are required at {{es}}, {{kib}}, and OS levels to support {{report-features}}.
 
 ::::{important}
-These settings apply only to **self-managed deployments**. Orchestrated deployments include this configuration by default. For more details on different deployment options, refer to [](/deploy-manage/deploy.md).
+These steps apply only to **self-managed deployments**. Orchestrated deployments include this configuration by default. For more details on different deployment options, refer to [](/deploy-manage/deploy.md).
 ::::
 
 * [Secure the reporting endpoints](#securing-reporting)
@@ -212,6 +212,9 @@ reporting_user:
   deployment:
     self: all
 ```
+The following configurations are required at {{es}}, {{kib}}, and OS levels to support reporting features.
+
+These steps apply only to **self-managed deployments**. Orchestrated deployments include this configuration by default. For more details on different deployment options, refer to [](/deploy-manage/deploy.md).
 
 ### Secure the reporting endpoints [securing-reporting]
 
