@@ -135,13 +135,17 @@ Due to [OpenTelemetry tail-based sampling limitations](../../../solutions/observ
 
 ### Tail-based sampling performance and requirements [_tail_based_sampling_performance_and_requirements]
 
-Tail-based sampling (TBS), by definition, requires storing events locally temporarily, such that they can be retrieved and forwarded once sampling decision is made.
+Tail-based sampling (TBS), by definition, requires storing events locally temporarily, such that they can be retrieved and forwarded when a sampling decision is made.
 
-In APM Server implementation, the events are stored temporarily on disk instead of in memory for better scalability. Therefore, it requires local disk storage proportional to APM event ingestion rate, and additional memory to facilitate disk reads and writes. Insufficient [storage limit](../../../solutions/observability/apps/transaction-sampling.md#sampling-tail-storage_limit) causes sampling to be bypassed.
+In an APM Server implementation, the events are stored temporarily on disk instead of in memory for better scalability. Therefore, it requires local disk storage proportional to the APM event ingestion rate and additional memory to facilitate disk reads and writes. If the [storage limit](#sampling-tail-storage_limit) is insufficient, sampling will be bypassed.
 
 It is recommended to use fast disks, such as NVMe SSDs, when enabling tail-based sampling. Disk throughput and I/O may become performance bottlenecks for tail-based sampling and APM event ingestion overall. Disk writes are proportional to the event ingest rate, while disk reads are proportional to both the event ingest rate and the sampling rate.
 
-To demonstrate the performance overhead and requirements, here are some reference numbers from a standalone APM Server deployed on AWS EC2 under full load, receiving APM events containing only traces. These numbers assume no backpressure from Elasticsearch and a **10% sample rate in the tail sampling policy**. Please note that these figures are for reference only and may vary depending on factors such as sampling rate, average event size, and the average number of events per distributed trace.
+To demonstrate the performance overhead and requirements, here are some reference numbers from a standalone APM Server deployed on AWS EC2 under full load that is receiving APM events containing only traces. These numbers assume no backpressure from Elasticsearch and a **10% sample rate in the tail sampling policy**.
+
+:::{important}
+These figures are for reference only and may vary depending on factors such as sampling rate, average event size, and the average number of events per distributed trace.
+:::
 
 Terminology:
 
@@ -166,8 +170,8 @@ Terminology:
 
 When interpreting these numbers, note that:
 
-* The metrics are inter-related. For example, it is reasonable to see a higher memory usage and disk usage when event ingestion rate is higher.
-* Related to the previous point, event ingestion rate and event indexing rate competes for disk IO. It explains the outlier data point where 8.18 with a 32GB NVMe disk shows a higher ingest rate but a slower event indexing rate than in 9.0.
+* The metrics are inter-related. For example, it is reasonable to see higher memory usage and disk usage when the event ingestion rate is higher.
+* The event ingestion rate and event indexing rate competes for disk IO. This is why there is an outlier data point where APM Server version 8.18 with a 32GB NVMe disk shows a higher ingest rate but a slower event indexing rate than in 9.0.
 
 The tail-based sampling implementation in version 9.0 offers significantly better performance compared to version 8.18, primarily due to a rewritten storage layer. This new implementation compresses data, as well as cleans up expired data more reliably, resulting in reduced load on disk, memory, and compute resources. This improvement is particularly evident in the event indexing rate on slower disks. In version 8.18, as the database grows larger, the performance slowdown can become disproportionate.
 
