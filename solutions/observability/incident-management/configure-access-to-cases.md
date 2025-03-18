@@ -30,7 +30,7 @@ Below are the minimum required privileges for some common use cases.
     ::::{note}
     Roles without `All` **{{connectors-feature}}** feature privileges cannot create, add, delete, or modify case connectors.
 
-    By default, `All` for the **Cases** feature includes authority to delete cases, delete alerts and comments from cases, edit case settings, add case comments and attachments, and re-open cases unless you customize the sub-feature privileges.
+    By default, `All` for the **Cases** feature allows you to have full control over cases, including deleting them, editing case settings, and more. You can customize the sub-feature privileges to limit feature access.
 
     ::::
 
