@@ -121,7 +121,7 @@ Full-text search involves executing text-based queries across one or more docume
 ES|QL provides two ways to perform full-text searches:
 
 1. Full match function syntax: `match(field, "search terms")`
-1. Compact syntax using the colon operator: `field:"search terms"`
+1. Compact syntax using the match operator "`:`": `field:"search terms"`
 
 Both are equivalent and can be used interchangeably. The compact syntax is more concise, while the function syntax allows for more configuration options. We'll use the compact syntax in most examples for brevity.
 :::
@@ -273,8 +273,9 @@ POST /_query?format=txt
 {
   "query": """
     FROM cooking_blog
-    | WHERE tags.keyword:"vegetarian"
+    | WHERE author.keyword == "Maria Rodriguez"
     | KEEP title, author, rating, tags
+    | SORT rating DESC
     | LIMIT 1000
   """
 }
