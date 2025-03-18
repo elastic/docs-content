@@ -22,7 +22,7 @@ Before deploying and running ECK in production, review the basic and advanced se
 * [Node configuration](node-configuration.md): Configure the `elasticsearch.yml` of your {{es}} nodes.
 * [Volume claim templates](volume-claim-templates.md): Configure storage in your {{es}} nodes.
 * [Virtual memory](virtual-memory.md): Methods to accomplish {{es}} virtual memory system configuration requirement.
-* [Secure settings](/deploy-manage/security/secure-settings.md): Configure the {{es}} keystore through Kubernetes secrets.
+* [Secure settings](/deploy-manage/security/k8s-secure-settings.md): Configure the {{es}} keystore through Kubernetes secrets.
 * [Settings managed by ECK](settings-managed-by-eck.md): List of {{es}} settings that you shouldn't update.
 * [Custom configuration files and plugins](custom-configuration-files-plugins.md): Add extra configuration files or install plugins to your {{es}} nodes.
 * [Init containers for plugin downloads](init-containers-for-plugin-downloads.md): Use Kubernetes init containers to install plugins before starting {{es}}.

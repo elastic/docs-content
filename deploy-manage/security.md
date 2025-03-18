@@ -88,7 +88,6 @@ The documentation is organized into three main areas.
 As part of your overall security strategy, you can also do the following:
 
 * Prevent unauthorized access with [password protection and role-based access control](/deploy-manage/users-roles.md).
-* Maintain an [audit trail](/deploy-manage/security/logging-configuration/security-event-audit-logging.md) for security-related events.
 * Control access to dashboards and other saved objects in your UI using [Spaces](/deploy-manage/manage-spaces.md).
 * Connect a local cluster to a [remote cluster](/deploy-manage/remote-clusters.md) to enable [cross-cluster replication](/deploy-manage/tools/cross-cluster-replication.md) and [cross-cluster search](/solutions/search/cross-cluster-search.md).
 * Manage [API keys](/deploy-manage/api-keys.md) used for programmatic access to Elastic.
@@ -107,14 +106,14 @@ serverless: all
 
 Elastic Cloud has built-in security. For example, HTTPS communications between Elastic Cloud and the internet, as well as inter-node communications, are secured automatically, and cluster data is encrypted at rest. 
 
-You can augment Elastic Cloud security features in the following ways:
-* Configure [traffic filtering](./security/traffic-filtering.md) to prevent unauthorized access to your deployments. [Elastic Cloud Hosted]
-* Encrypt your deployment with a [customer-managed encryption key](./security/encrypt-deployment-with-customer-managed-encryption-key.md). [Elastic Cloud Hosted]
-* [Secure your settings](./security/secure-settings.md) using {{es}} and {{kib}} keystores. [Elastic Cloud Hosted]
+In {{ech}}, you can augment these security features in the following ways:
+* Configure [traffic filtering](./security/traffic-filtering.md) to prevent unauthorized access to your deployments.
+* Encrypt your deployment with a [customer-managed encryption key](./security/encrypt-deployment-with-customer-managed-encryption-key.md).
+* [Secure your settings](./security/secure-settings.md) using {{es}} and {{kib}} keystores.
 * Use the list of [Elastic Cloud static IPs](./security/elastic-cloud-static-ips.md) to allow or restrict communications in your infrastructure.
 
 ::::{note}
-While serverless projects are fully managed and secured by Elastic, additional security settings are available for you to configure individually for your {{ech}} deployments.
+Serverless projects are fully managed and secured by Elastic, and do not have any configurable security features at the project level.
 ::::
 
 Refer to [Elastic Cloud security](https://www.elastic.co/cloud/security) for more details about Elastic security and privacy programs.
@@ -172,10 +171,8 @@ deployment:
 
 ### Allow or deny Elastic Cloud IP ranges
 ```yaml {applies_to}
-serverless: all
 deployment:
   ess: all
-```
 
 Elastic Cloud publishes a list of IP addresses used by its services for both incoming and outgoing traffic. Users can use these lists to configure their network firewalls as needed to allow or restrict traffic related to Elastic Cloud services.
 
@@ -208,7 +205,7 @@ If you’re using Elastic Cloud Hosted, then you can reinforce this mechanism by
 ::::{note}
 Other deployment types don’t implement encryption at rest out of the box. For self-managed clusters, to implement encryption at rest, the hosts running the cluster must be configured with disk-level encryption, such as `dm-crypt`. In addition, snapshot targets must ensure that data is encrypted at rest as well.
 
-Configuring `dm-crypt` or similar technologies is outside the scope of this document, and issues related to disk encryption are outside the scope of support.
+Configuring `dm-crypt` or similar technologies is outside the scope of this documentation, and issues related to disk encryption are outside the scope of support.
 ::::
 
 ### Secure your settings
