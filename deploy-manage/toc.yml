@@ -741,7 +741,7 @@ toc:
             children:
               - file: monitor/logging-configuration/kibana-log-settings-examples.md
               - file: monitor/logging-configuration/kibana-logging-cli-configuration.md
-  - file: deploy/kibana-reporting-configuration.md
+  - file: kibana-reporting-configuration.md
   - file: cloud-organization.md
     children:
       - file: cloud-organization/billing.md
