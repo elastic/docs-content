@@ -80,12 +80,12 @@ Most of these methods require that you configure monitoring of {{es}} before mon
   * [Monitoring {{ls}} with legacy collection methods](logstash://reference/monitoring-logstash-legacy.md): Use {{metricbeat}} or legacy methods to collect monitoring data from {{ls}}.
 * **{{beats}}**:
 
-    * [{{auditbeat}}](asciidocalypse://docs/beats/docs/reference/auditbeat/monitoring.md)
-    * [{{filebeat}}](asciidocalypse://docs/beats/docs/reference/filebeat/monitoring.md)
-    * [{{heartbeat}}](asciidocalypse://docs/beats/docs/reference/heartbeat/monitoring.md)
-    * [{{metricbeat}}](asciidocalypse://docs/beats/docs/reference/metricbeat/monitoring.md)
-    * [{{packetbeat}}](asciidocalypse://docs/beats/docs/reference/packetbeat/monitoring.md)
-    * [{{winlogbeat}}](asciidocalypse://docs/beats/docs/reference/winlogbeat/monitoring.md)
+    * [Auditbeat](beats://reference/auditbeat/monitoring.md)
+    * [Filebeat](beats://reference/filebeat/monitoring.md)
+    * [Heartbeat](beats://reference/heartbeat/monitoring.md)
+    * [Metricbeat](beats://reference/metricbeat/monitoring.md)
+    * [Packetbeat](beats://reference/packetbeat/monitoring.md)
+    * [Winlogbeat](beats://reference/winlogbeat/monitoring.md)
 
 * [**APM Server**](/solutions/observability/apps/monitor-apm-server.md)
 
