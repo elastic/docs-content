@@ -53,3 +53,8 @@ Running different patch version releases of {{kib}} and {{es}} (e.g. {{kib}} 9.0
 
 :::{include} /deploy-manage/deploy/_snippets/installation-order.md
 :::
+
+## Third-party dependencies
+
+:::{include} /deploy-manage/deploy/self-managed/_snippets/third-party-dependencies.md
+:::
