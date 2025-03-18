@@ -16,7 +16,7 @@ This upgrade guide is for the Elastic APM integration. Only use this guide if bo
 
 Follow these steps to upgrade:
 
-1. Review the [Elastic APM release notes](/release-notes/elastic-apm/release-notes.md) and [Elastic {{observability}} release notes](/release-notes/elastic-observability/release-notes.md).
+1. Review the [Elastic APM release notes](apm-server://release-notes/index.md) and [Elastic {{observability}} release notes](/release-notes/elastic-observability/release-notes.md).
 2. Upgrade your {{ecloud}} instance to 9.0.0-beta1. See [Upgrade versions](../../../deploy-manage/upgrade/deployment-or-cluster.md) for details. The APM integration will automatically be upgraded to version 9.0.0-beta1 as a part of this process.
 
 ::::{note}

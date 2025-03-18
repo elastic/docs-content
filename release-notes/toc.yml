@@ -5,11 +5,6 @@ toc:
       - file: elastic-observability/known-issues.md
       - file: elastic-observability/breaking-changes.md
       - file: elastic-observability/deprecations.md
-  - file: elastic-apm/release-notes.md
-    children:
-      - file: elastic-apm/known-issues.md
-      - file: elastic-apm/breaking-changes.md
-      - file: elastic-apm/deprecations.md
   - file: elastic-security/release-notes.md
     children:
       - file: elastic-security/known-issues.md
