@@ -80,6 +80,7 @@ toc:
                     children:
                       - file: deploy/elastic-cloud/switch-from-apm-to-integrations-server-payload.md
                   - file: deploy/elastic-cloud/find-cloud-id.md
+              - file: deploy/elastic-cloud/ec-vcpu-boost-instance.md
               - file: deploy/elastic-cloud/change-hardware.md
               - file: deploy/elastic-cloud/manage-deployments-using-elastic-cloud-api.md
               - file: deploy/elastic-cloud/keep-track-of-deployment-activity.md
@@ -710,7 +711,6 @@ toc:
         children:
           - file: monitor/access-performance-metrics-on-elastic-cloud.md
           - file: monitor/ec-memory-pressure.md
-          - file: monitor/ec-vcpu-boost-instance.md
       - file: monitor/orchestrators.md
         children:
           - file: monitor/orchestrators/eck-metrics-configuration.md

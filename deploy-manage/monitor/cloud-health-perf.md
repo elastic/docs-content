@@ -60,7 +60,7 @@ In the normal course of using your {{ech}} and {{ece}} deployments, health warni
 #### Cluster restarts after out-of-memory failures [ec_cluster_restarts_after_out_of_memory_failures]
 ```{applies_to}
 deployment:
-  ech:
+  ess:
 ```
 
 For clusters that suffer out-of-memory failures, it can be difficult to determine whether the clusters are in a completely healthy state afterwards. For this reason, {{ech}} automatically reboots clusters that suffer out-of-memory failures.
@@ -82,15 +82,19 @@ The **Performance** page and the out-of-the-box logs allow you to monitor your c
 
 [Learn more about the performance page and the metrics it captures](/deploy-manage/monitor/access-performance-metrics-on-elastic-cloud.md).
 
+:::{tip}
+For {{ece}} deployments, you can use [platform monitoring](/deploy-manage/monitor/orchestrators/ece-platform-monitoring.md) to access preconfigured performance metrics.
+::: 
+
 ## JVM memory pressure indicator
 
 {{ech}} and {{ece}} also provide a [JVM memory pressure indicator](/deploy-manage/monitor/ec-memory-pressure.md) for each node in your cluster in your deployment overview. This indicator can help you to determine when you need to upgrade to a larger cluster.
 
 ## Preconfigured logs and metrics [ec-es-health-preconfigured]
 
-Both {{ech}} and {{ece}} offer preconfigured logs and metrics that you can access to get insight into your deployment's performance.
+Both {{ech}} and {{ece}} offer out-of-the-box logs and metrics that you can access to get insight into your deployment's performance.
 
-:::{tip} Monitoring in production environments
+:::{admonition} Monitoring in production environments
 In a production environment, it’s important set up dedicated health monitoring using [stack monitoring](/deploy-manage/monitor/stack-monitoring/ece-ech-stack-monitoring.md). Stack monitoring allows you to retain the logs and metrics that can be used to troubleshoot any health issues in your deployments. In the event of that you need to [contact our support team](/troubleshoot/index.md#contact-us), they can use the retained data to help diagnose any problems that you may encounter.
 
 You have the option of sending logs and metrics to a separate, specialized monitoring deployment, which ensures that they’re available in the event of a deployment outage. The monitoring deployment also gives you access to {{kib}} stack monitoring features, through which you can view health and performance data for all of your deployment resources.
@@ -104,7 +108,24 @@ The logs capture any activity related to your deployments, their component resou
 
 ### In {{ece}}
 
-In {{ece}}, you can use [platform monitoring](/deploy-manage/monitor/orchestrators/ece-platform-monitoring.md) to view deployment logs and metrics as well as proxy logs. From your deployment page, select either the **Elasticsearch**, **Kibana**, and **Integrations Server** components, and use the external links to access each service's logs and metrics, including the associated proxy logs.
+In {{ece}}, you can use [platform monitoring](/deploy-manage/monitor/orchestrators/ece-platform-monitoring.md) to view deployment logs and metrics, as well as proxy logs. From your deployment page, select either the **Elasticsearch**, **Kibana**, and **Integrations Server** components, and use the external links to access each service's logs and metrics.
+
+## vCPU credit monitoring
+
+```{applies_to}
+deployment:
+  ess:
+```
+
+Elastic Cloud allows smaller instance sizes to get temporarily boosted vCPU when under heavy load. [vCPU boosting](/deploy-manage/deploy/elastic-cloud/ec-vcpu-boost-instance.md) is governed by vCPU credits that instances can earn over time when vCPU usage is less than the assigned amount.
+
+You can check the **Monitoring > Performance > CPU Credits** section of the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body), and find the related metrics:
+
+:::{image} /images/cloud-metrics-credits.png
+:alt: CPU usage versus CPU credits over time
+:::
+
+If you need your cluster to be able to sustain a certain level of performance, you can't rely on CPU boosting to handle the workload except temporarily. To ensure that performance can be sustained, consider increasing the size of your cluster. Refer to [](/troubleshoot/monitoring/performance.md) for more guidance.
 
 ## Understanding deployment health [ec-health-best-practices]
 
