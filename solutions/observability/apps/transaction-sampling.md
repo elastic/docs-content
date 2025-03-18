@@ -141,7 +141,7 @@ In APM Server implementation, the events are stored temporarily on disk instead 
 
 It is recommended to use fast disks, such as NVMe SSDs, when enabling tail-based sampling. Disk throughput and I/O may become performance bottlenecks for tail-based sampling and APM event ingestion overall. Disk writes are proportional to the event ingest rate, while disk reads are proportional to both the event ingest rate and the sampling rate.
 
-To demonstrate the performance overhead and requirements, here are some reference numbers from a standalone APM Server deployed on AWS EC2 under full load, receiving APM events containing only traces. These numbers assume no backpressure from Elasticsearch and a 10% sample rate in the tail sampling policy. Please note that these figures are for reference only and may vary depending on factors such as sampling rate, average event size, and the average number of events per distributed trace.
+To demonstrate the performance overhead and requirements, here are some reference numbers from a standalone APM Server deployed on AWS EC2 under full load, receiving APM events containing only traces. These numbers assume no backpressure from Elasticsearch and a **10% sample rate in the tail sampling policy**. Please note that these figures are for reference only and may vary depending on factors such as sampling rate, average event size, and the average number of events per distributed trace.
 
 Terminology:
 
