@@ -4,7 +4,7 @@
 The topics in this section apply to customers running the {{stack}} on {{ece}} (ECE) or {{eck}} (ECK). 
 :::
 
-Elastic provides customers with two major self-managed orchestrators to manage the Elastic Stack. Before you can upgrade the products in the stack, you need to ensure your orchestrator is running a compatible version. If you’re running a version of your orchestrator that’s incompatible with the Elastic Stack version you’re upgrading to, you’ll need to upgrade the orchestrator first. 
+Elastic provides customers with two major self-managed orchestrators to manage the {{stack}}. Before upgrading the products in the stack, ensure your orchestrator is running a compatible version. If you’re running a version of your orchestrator that’s incompatible with the {{stack}} version you’re upgrading to, upgrade the orchestrator first. 
 
 Refer to one of these topics, depending on which orchestrator you have: 
 

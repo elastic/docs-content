@@ -10,7 +10,7 @@ There are a number of things you need to plan for before performing the actual u
 
 Ensure the version you’re upgrading to for {{es}}, {{kib}}, and any ingest components supports your current operating system. Refer to the [Product and Operating System support matrix](https://www.elastic.co/support/matrix#matrix_os). 
 
-**OpenJDK compatibility and FIPS compliance**
+### OpenJDK compatibility and FIPS compliance
 
 By default, {{es}} is built using Java and includes a bundled version of [OpenJDK](https://openjdk.java.net/) within each distribution. While we strongly recommend using the bundled Java Virtual Machine (JVM) in all installations of {{es}}, if you choose to use your own JVM, ensure it’s compatible by reviewing the [Product and JVM support matrix](https://www.elastic.co/support/matrix#matrix_jvm). {{es}} 9.0 requires Java 21 and supports Java 24. 
 
@@ -18,7 +18,7 @@ If you’re running {{es}} in FIPS 140-2 mode, {{es}} 9.0 has been tested with [
 
 ## Conduct a component inventory
 
-It is very important to map all the components that are being used on the {{stack}}. When you upgrade your deployment, you also may need to upgrade all the other components. You should record if each component is used, and if it is, also record the current version. While not comprehensive, here’s a list of components you should check: 
+It is very important to map all the components that are being used on the {{stack}}. When you upgrade your deployment, you also may need to upgrade all the other components. You should record whether each component is used, and if it is, also record the current version. While not comprehensive, here’s a list of components you should check: 
 
 * {{es}}
 * {{es}} Hadoop
@@ -77,7 +77,7 @@ Self-managed infrastructure – either on-prem or on public cloud, includes:
 * {{ece}} (ECE)
 * {{eck}} (ECK)
 
-For ECE and ECK, you must ensure the operator is running a compatible version with the {{stack}} version you’re upgrading to. If not, you need to upgrade that before you can upgrade your cluster. 
+For ECE and ECK, ensure the operator is running a version compatible with the {{stack}} version you’re upgrading to. If not, you need to upgrade that before you can upgrade your cluster. 
 
 If you’re running the {{stack}} on your own self-managed infrastructure, you must upgrade each component individually. 
 

@@ -6,7 +6,7 @@ navigation_title: "Upgrade on {{ech}}"
 
 Once you are [prepared to upgrade](../../../deploy-manage/upgrade/deployment-or-cluster.md), a single click in the {{ecloud}} console can upgrade a deployment to a newer version, add more processing capacity, change plugins, and enable or disable high availability, all at the same time. During the upgrade process, {{es}}, {{kib}}, and all of your deployment components are upgraded simultaneously.
 
-Minor version upgrades, upgrades from 8.18 to 9.x, and cluster configuration changes can be performed with no downtime. {{ecloud}} only supports upgrades to released versions. Release candidate builds and master snapshots are not supported.
+Minor version upgrades, upgrades from 8.18 to 9.0, and cluster configuration changes can be performed with no downtime. {{ecloud}} only supports upgrades to released versions. Release candidate builds and master snapshots are not supported.
 
 ::::{important} 
 Although it’s simple to upgrade an {{ecloud}} deployment, the new version might include breaking changes that affect your application. Ensure you review breaking changes and deprecation logs, make any necessary changes, and test against the new version before upgrading your production deployment.

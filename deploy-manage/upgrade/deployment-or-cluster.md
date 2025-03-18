@@ -1,7 +1,6 @@
 ---
 mapped_urls:
   - https://www.elastic.co/guide/en/kibana/current/upgrade.html
-  - https://www.elastic.co/guide/en/kibana/current/upgrade-migrations-rolling-back.html
   - https://www.elastic.co/guide/en/elastic-stack/current/upgrading-elastic-stack.html
   - https://www.elastic.co/guide/en/elastic-stack/current/upgrading-elasticsearch.html
   - https://www.elastic.co/guide/en/elastic-stack/current/upgrading-kibana.html
@@ -52,8 +51,6 @@ $$$rolling-upgrades$$$
 
 $$$upgrading-reindex$$$
 
-**This page is a work in progress.** The documentation team is working to combine content pulled from the following pages:
-
 % * [/raw-migrated-files/kibana/kibana/upgrade.md](/raw-migrated-files/kibana/kibana/upgrade.md)
 % * [/raw-migrated-files/kibana/kibana/upgrade-migrations-rolling-back.md](/raw-migrated-files/kibana/kibana/upgrade-migrations-rolling-back.md)
 % * [/raw-migrated-files/stack-docs/elastic-stack/upgrading-elastic-stack.md](/raw-migrated-files/stack-docs/elastic-stack/upgrading-elastic-stack.md)
@@ -69,108 +66,108 @@ $$$upgrading-reindex$$$
 
 # Upgrade your deployment or cluster [upgrade-deployment-cluster]
 
-When upgrading the version of an existing cluster, you perform either a minor or major upgrade. The difference is that a minor upgrade takes you from version 9.0 to 9.1, for example, while a major upgrade takes you from version 8 to 9. 
+When upgrading an existing cluster, you perform a minor or major upgrade. For example, a minor upgrade takes you from version 9.0.0 to 9.1.0, while a major upgrade takes you from version 8.0.0 to 9.0.0.
 
-The procedures you follow to upgrade depend on whether you’ve installed Elastic components using Elastic-managed infrastructure or self-managed infrastructure.
+Upgrade procedures depend on whether you installed Elastic components using Elastic-managed or self-managed infrastructure.
 
-If you’re running Elastic-managed infrastructure, your options are to:
+If you’re using Elastic-managed infrastructure, use the following options:
 
 * [Upgrade on {{ech}}](/deploy-manage/upgrade/deployment-or-cluster/upgrade-on-ech.md)
-* Upgrade on {{serverless-full}} (updates are automatic and require no user management)
+* Upgrade on [{{serverless-full}}](/deploy-manage/deploy/elastic-cloud/serverless.md), which is automatically performed by Elastic and requires no user management
 
-If you’re running your own self-managed infrastructure — either on-prem or on public cloud — your options are to:
+If you’re using self-managed infrastructure - either on-prem or public cloud - use the following options:
 
-* [Upgrade the {{stack}}](/deploy-manage/upgrade/deployment-or-cluster/self-managed.md) (upgrade each component individually)
+* [Upgrade the {{stack}}](/deploy-manage/upgrade/deployment-or-cluster/self-managed.md)
 * [Upgrade on {{ece}} (ECE)](/deploy-manage/upgrade/deployment-or-cluster/upgrade-on-ece.md)
 * [Upgrade on {{eck}} (ECK)](/deploy-manage/upgrade/deployment-or-cluster/upgrade-on-eck.md)
 
 ## Prepare to upgrade [prepare-to-upgrade]
 
-Before you upgrade Elastic, it's important to take some preparation steps. These steps vary based on your current version. 
+Before you upgrade, review and complete the necessary preparation steps, which vary by version. 
 
 :::{important}
-Upgrading from a release candidate build, such as 9.0.0-rc1 or 9.0.0-rc2, is not supported. Pre-releases should only be used for testing in a temporary environment.
+Upgrading from a release candidate build, such as 9.0.0-rc1, is unsupported. Use pre-releases only for testing in a temporary environment.
 :::
 
 ## Prepare to upgrade from 8.x [prepare-upgrade-from-8.x]
 
-To upgrade to 9.0 from 8.17 or earlier, you must first upgrade to the latest patch version of 8.18. This enables you to use the [Upgrade Assistant](prepare-to-upgrade/upgrade-assistant.md) to identify and resolve issues, reindex indices created before 8.0, and then perform a rolling upgrade. Upgrading to 8.18 before upgrading to 9.x is required even if you opt to do a full-cluster restart of your {{es}} cluster. If you're running a pre-8.x version, you might need to perform multiple upgrades or a full-cluster restart to get to 8.18 to prepare to upgrade to 9.0.
+To upgrade from 8.17.0 or earlier to 9.0.0, you must first upgrade to the latest 8.18 patch release. This enables you to use the [Upgrade Assistant](prepare-to-upgrade/upgrade-assistant.md) to identify and resolve issues, reindex indices created before 8.0.0, and perform a rolling upgrade. Upgrading to the latest 8.18 patch release is required even if you choose a full {{es}} cluster restart. If you're using 7.x and earlier, you may need to complete multiple upgrades or perform a full-cluster restart to reach the latest 8.18 patch release before upgrading to 9.0.0.
 
-Alternatively, you can create a new 9.0 deployment and reindex from remote. For more information, refer to [Reindex to upgrade](#reindex-to-upgrade).
+Alternatively, you can create a 9.0 deployment and reindex from remote. For more information, refer to [Reindex to upgrade](#reindex-to-upgrade).
 
 :::{note}
-{{beats}} and {{ls}} 8.18 are compatible with {{es}} 9.x to give you flexibility in scheduling the upgrade. {{es}} 8.x clients are also compatible with 9.x and use [REST API compatibility](elasticsearch://reference/elasticsearch/rest-apis/compatibility.md) by default to help ensure compatibility between 8.x clients and the 9.x {{es}} server. 
+For flexible upgrade scheduling, 8.18.0 {{beats}} and {{ls}} are compatible with 9.0.0 {{es}}. 
+By default, 8.x {{es}} clients are compatible with 9.0.0 and use [REST API compatibility](elasticsearch://reference/elasticsearch/rest-apis/compatibility.md) to maintain compatibility with the 9.0.0 {{es}} server. 
 :::
 
-With the exception of serverless, the following recommendations are best practices for all deployment methods.
+Review the best practices to upgrade your deployments.
 
-1. Run the [Upgrade Assistant](prepare-to-upgrade/upgrade-assistant.md) to prepare for your upgrade from 8.18 to 9.0. The Upgrade Assistant identifies deprecated settings, and guides you through resolving issues, and reindexing data streams and indices created before 8.0. 
+1. Run the [Upgrade Assistant](prepare-to-upgrade/upgrade-assistant.md), which identifies deprecated settings, helps resolve issues, and reindexes data streams and indices created in 8.0.0 and earlier.
 
     :::{note}
-    Please be aware that depending on your setup, if your indices change due to reindexing, you might need to change alerts, transforms, or other code that was targeting the old index.
+     Depending on your setup, reindexing can change your indices, and you may need to update alerts, transforms, or other code targeting the old index.
     :::
 
-2. Ensure you have a current [snapshot](/deploy-manage/tools/snapshot-and-restore/create-snapshots.md) before making configuration changes or reindexing. 
+2. Before you change configurations or reindex, ensure you have a current [snapshot](/deploy-manage/tools/snapshot-and-restore/create-snapshots.md). 
 
     :::{tip}
-    Tip: From version 8.3, snapshots are generally available as simple archives. Use the [archive functionality](/deploy-manage/upgrade/deployment-or-cluster/reading-indices-from-older-elasticsearch-versions.md) to search snapshots as old as version 5.0 without the need of an old {{es}} cluster. This ensures that data you store in {{es}} doesn’t have an end of life and is still accessible when you upgrade, without requiring a reindex process.
+    Tip: In 8.3.0 and later, snapshots are generally available as simple archives. Use the [archive functionality](/deploy-manage/upgrade/deployment-or-cluster/reading-indices-from-older-elasticsearch-versions.md) to search snapshots from 5.0.0 and later, without needing an old {{es}} cluster. This ensures that your {{es}} data remains accessible after upgrades, without requiring a reindex process.
     :::
 
-    You must resolve all critical issues before proceeding with the upgrade. If you make any additional changes, take a new snapshot to back up your data. 
+    To successfully upgrade, resolve all critical issues. If you make additional changes, create a snapshot to back up your data.
 
-3. Review the deprecation logs from the Upgrade Assistant to determine if your applications are using features that are not supported or behave differently in 9.x. 
+3. To identify if your applications use unsupported features or behave differently in 9.0.0, review the deprecation logs in the Upgrade Assistant. 
 
-4. Major version upgrades can include breaking changes that require you to take additional steps to ensure that your applications behave as expected after the upgrade. Review all breaking changes for each product you use to review more information about changes that could affect your application. Make sure you test against the new version before upgrading existing deployments.
+4. Major version upgrades can include breaking changes that require additional steps to ensure your applications function as expected. Review the breaking changes for each product you use to learn more about potential impacts on your application. Ensure you test with the new version before upgrading existing deployments.
 
-5. Make the recommended changes to ensure that your clients continue to operate as expected after the upgrade. 
+5. To ensure your clients continue to operate as expected after the upgrade, make the recommended changes. 
 
     :::{note}
-    As a temporary solution, you can submit requests to 9.x using the 8.x syntax with the REST API compatibility mode. While this enables you to submit requests that use the old syntax, it does not guarantee the same behavior. REST API compatibility should be a bridge to smooth out the upgrade process, not a long term strategy. For more information about how to best leverage REST API compatibility during an upgrade, refer to [REST API compatibility](elasticsearch://reference/elasticsearch/rest-apis/compatibility.md). 
+       As a temporary solution, use the 8.x syntax to submit requests to 9.0.0 with REST API compatibility mode. While this allows you to submit requests using the old syntax, it doesn’t guarantee the same behavior. REST API compatibility should serve as a bridge during the upgrade, not a long-term solution. For more details on how to effectively use REST API compatibility during an upgrade, refer to [REST API compatibility](elasticsearch://reference/elasticsearch/rest-apis/compatibility.md). 
     :::
 
-6. If you use any {{es}} plugins, make sure there is a version of each plugin that is compatible with the {{es}} version you're upgrading to.
+6. If you use {{es}} plugins, ensure each plugin is compatible with the {{es}} version you're upgrading.
 
-7. We recommend creating a 9.0 test deployment and test the upgrade in an isolated environment before upgrading your production deployment. Ensure that both your test and production environments have the same settings.
+7. Before upgrading your production deployment, we recommend creating a 9.0.0 test deployment and testing the upgrade in an isolated environment. Ensure the test and production environments use the same settings.
 
     :::{important}
-    You cannot downgrade {{es}} nodes after upgrading. If you cannot complete the upgrade process, you will need to [restore from the snapshot](/deploy-manage/tools/snapshot-and-restore/restore-snapshot.md).
+    After you upgrade, you cannot downgrade {{es}} nodes. If you can't complete the upgrade process, you must [restore from the snapshot](/deploy-manage/tools/snapshot-and-restore/restore-snapshot.md).
     :::
 
-8. If you use a separate [monitoring cluster](/deploy-manage/monitor/stack-monitoring/elasticsearch-monitoring-self-managed.md), you should upgrade the monitoring cluster before the production cluster. In general, the monitoring cluster and the clusters being monitored should be running the same version of the {{stack}}. A monitoring cluster cannot monitor production clusters running newer versions of the {{stack}}. If necessary, the monitoring cluster can monitor production clusters running the latest release of the previous major version.
+8. If you use a separate [monitoring cluster](/deploy-manage/monitor/stack-monitoring/elasticsearch-monitoring-self-managed.md), upgrade the monitoring cluster before the production cluster. The monitoring cluster and the clusters being monitored should be running the same version of the {{stack}}. Monitoring clusters are unable to monitor production clusters running newer versions of the {{stack}}. If necessary, the monitoring cluster can monitor production clusters running the latest release of the previous major version.
 
     :::{note}
-    If you use {{ccs}}, note that 9.0+ can only search remote clusters running the  previous minor version, the same version, or a newer minor version in the same major version. For more information, refer to [Cross-cluster search](../../solutions/search/cross-cluster-search.md).
+    If you use {{ccs}}, 9.0.0 and later can search only remote clusters running the previous minor version, the same version, or a newer minor version in the same major version. For more information, refer to [Cross-cluster search](../../solutions/search/cross-cluster-search.md).
 
-    If you use {{ccr}}, a cluster that contains follower indices must run the same or newer (compatible) version as the remote cluster. For more information and to view the version compatibility matrix, refer to [Cross cluster replication](/deploy-manage/tools/cross-cluster-replication.md). You can view your remote clusters from **Stack Management > Remote Clusters**.
+    If you use {{ccr}}, a cluster that contains follower indices must run the same or newer (compatible) version as the remote cluster. For more information and to view the version compatibility matrix, refer to [Cross cluster replication](/deploy-manage/tools/cross-cluster-replication.md). To view your remote clusters in {{kib}}, go to **Stack Management > Remote Clusters**.
     ::::
 
-9. Consider closing {{ml}} jobs before you start the upgrade process. While {{ml}} jobs can continue to run during a rolling upgrade, it increases the overhead on the cluster during the upgrade process.
+9. To reduce overhead on the cluster during the upgrade, close {{ml}} jobs. Although {{ml}} jobs can run during a rolling upgrade, doing so increases the cluster workload.
 
-10. If you have any anomaly detection result indices `.ml-anomalies-*` that were created in {{es}} 7.x, they must be reindexed, marked as read-only, or deleted before upgrading to 9.x. To learn how to do this, refer to [Anomaly detection results migration](#anomaly-migration). 
+10. If you have `.ml-anomalies-*`anomaly detection result indices created in {{es}} 7.x, reindex, mark as read-only, or delete them before you upgrade to 9.0.0. For more information, refer to [Migrate anomaly detection results](#anomaly-migration). 
 
-
-11. If you have any transform destination indices that were created in {{es}} 7.x, they must be reset, reindexed, or deleted before upgrading to 9.x. To learn how to do this, refer to [Transform destination indices migration](#transform-migration). 
-
-
-## Reindex to upgrade (optional) [reindex-to-upgrade]
-
-To create a new 9.0 deployment and reindex from remote:
-
-1. Provision an additional deployment running 9.0.
-2. Reindex your data into the new {{es}} cluster using the [reindex documents API](https://www.elastic.co/docs/api/doc/elasticsearch/v8/operation/operation-reindex) and temporarily send new index requests to both clusters.
-3. Verify that the new cluster performs as expected, fix any problems, and then permanently swap in the new cluster.
-4. Delete the old deployment. On {ecloud}, you are billed only for the time that the new deployment runs in parallel with your old deployment. Usage is billed on an hourly basis.
+11. If you have transform destination indices created in {{es}} 7.x, reset, reindex, or delete them before you upgrade to 9.0.0. For more information, refer to [Migrate transform destination indices](#transform-migration). 
 
 
-## Anomaly detection results migration [anomaly-migration]
+## Reindex to upgrade [reindex-to-upgrade]
 
-The {{anomaly-detect}} result indices `.ml-anomalies-*` created in {{es}} 7.x must be either reindexed, marked read-only, or deleted before upgrading to 9.x.
+Optionally create a 9.0.0 deployment and reindex from remote:
 
-**Reindexing**: While {{anomaly-detect}} results are being reindexed, jobs continue to run and process new data. However, you cannot completely delete an {{anomaly-job}} that stores results in this index until the reindexing is complete.
+1. Provision an additional deployment running 9.0.0.
+2. To reindex your data into the new {{es}} cluster, use the [reindex documents API](https://www.elastic.co/docs/api/doc/elasticsearch/v8/operation/operation-reindex) and temporarily send new index requests to both clusters.
+3. Verify the new cluster performs as expected, fix any problems, and then permanently swap in the new cluster.
+4. Delete the old deployment. On {ecloud}, you are billed only for the time the new deployment runs in parallel with your old deployment. Usage is billed on an hourly basis.
 
-**Marking indices as read-only**: This is useful for large indexes that contain the results of only one or a few {{anomaly-jobs}}. If you delete these jobs later, you will not be able to create a new job with the same name.
 
-**Deleting**: Delete jobs that are no longer needed in the {{ml-app}} app in {{kib}}. The result index is deleted when all jobs that store results in it have been deleted.
+## Migrate anomaly detection results [anomaly-migration]
+
+Reindex, mark as read-only, or delete the `.ml-anomalies-*` {{anomaly-detect}} result indices created in {{es}} 7.x.
+
+**Reindex**: While {{anomaly-detect}} results are being reindexed, jobs continue to run and process new data. You are unable to delete an {{anomaly-job}} that stores results in the index until the reindexing is complete.
+
+**Mark indices as read-only**: This is useful for large indexes that contain the results of one or two {{anomaly-jobs}}. If you delete these jobs later, you cannot create a new job with the same name.
+
+**Delete**: Delete jobs that are no longer needed in the {{ml-app}} app in {{kib}}. The result index is deleted when all jobs that store results in it have been deleted.
 
 :::{dropdown} Which indices require attention?
 To identify indices that require action, use the [Deprecation info API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-migration-deprecations-1):
@@ -412,8 +409,7 @@ GET .ml-anomalies-custom-example/_search
 The jobs can be deleted in the UI. After the last job is deleted, the index will be deleted as well.
 :::
 
-## Transform destination indices migration [transform-migration]
+## Migrate transform destination indices [transform-migration]
 =======
 
-% EEDUGON note: when working on this document, or in the ECK upgrade documentation we should include a link to [nodes orchestration](../deploy/cloud-on-k8s/nodes-orchestration.md) as reference to learn the details on how ECK orchestates / manages the upgrade of the individual instances.
 
