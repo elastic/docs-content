@@ -43,7 +43,6 @@ toc:
       - file: cloud/cloud-heroku/ech-manage-kibana-settings.md
       - file: cloud/cloud-heroku/ech-monitoring-setup.md
       - file: cloud/cloud-heroku/ech-monitoring.md
-      - file: cloud/cloud-heroku/ech-planning.md
       - file: cloud/cloud-heroku/ech-regional-deployment-aliases.md
       - file: cloud/cloud-heroku/ech-restoring-snapshots.md
       - file: cloud/cloud-heroku/ech-restrictions-monitoring.md
@@ -77,7 +76,6 @@ toc:
       - file: cloud/cloud/ec-monitoring-setup.md
       - file: cloud/cloud/ec-monitoring.md
       - file: cloud/cloud/ec-password-reset.md
-      - file: cloud/cloud/ec-planning.md
       - file: cloud/cloud/ec-regional-deployment-aliases.md
       - file: cloud/cloud/ec-restore-across-clusters.md
       - file: cloud/cloud/ec-restoring-snapshots.md
@@ -135,7 +133,6 @@ toc:
     children:
       - file: kibana/kibana/apm-settings-kb.md
       - file: kibana/kibana/logging-settings.md
-      - file: kibana/kibana/reporting-production-considerations.md
       - file: kibana/kibana/upgrade-migrations-rolling-back.md
       - file: kibana/kibana/upgrade.md      
       - file: kibana/kibana/xpack-security.md

@@ -65,7 +65,7 @@ You can also create a deployment using the [Elastic Cloud API](https://www.elast
 
 To make sure you’re all set for production, consider the following actions:
 
-* [Plan for your expected workloads](/deploy-manage/production-guidance/plan-for-production-elastic-cloud.md) and consider how many availability zones you’ll need.
+* [Plan for your expected workloads](/deploy-manage/production-guidance.md) and consider how many availability zones you’ll need.
 * [Create a deployment](/deploy-manage/deploy/elastic-cloud/create-an-elastic-cloud-hosted-deployment.md) on the region you need and with a hardware profile that matches your use case.
 * [Change your configuration](/deploy-manage/deploy/elastic-cloud/ec-customize-deployment-components.md) by turning on autoscaling, adding high availability, or adjusting components of the Elastic Stack.
 * [Add extensions and plugins](/deploy-manage/deploy/elastic-cloud/add-plugins-extensions.md) to use Elastic supported extensions or add your own custom dictionaries and scripts.
