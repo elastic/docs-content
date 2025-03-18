@@ -804,8 +804,7 @@ toc:
           - file: upgrade/orchestrator/upgrade-cloud-on-k8s.md
       - file: upgrade/prepare-to-upgrade.md
         children:
-          - file: upgrade/prepare-to-upgrade/upgrade-assistant.md
-          - file: upgrade/prepare-to-upgrade/index-compatibility.md
+          - file: upgrade/prepare-to-upgrade/upgrade-assistant.md      
       - file: upgrade/deployment-or-cluster.md
         children:
           - file: upgrade/deployment-or-cluster/upgrade-on-ech.md

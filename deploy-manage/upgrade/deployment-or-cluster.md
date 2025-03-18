@@ -10,6 +10,7 @@ mapped_urls:
   - https://www.elastic.co/guide/en/elastic-stack/current/upgrade-elastic-stack-for-elastic-cloud.html
   - https://www.elastic.co/guide/en/elastic-stack/current/upgrading-elastic-stack-on-prem.html
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-upgrading-stack.html
+  - https://www.elastic.co/guide/en/elasticsearch/reference/current/setup-upgrade.html
 ---
 
 
