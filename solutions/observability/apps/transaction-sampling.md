@@ -164,9 +164,12 @@ Terminology:
 | 8.18               | c6id.4xlarge      | TBS enabled, EBS gp3 volume with 3000 IOPS     | 11990                           | 530                            | 26.57             | 33.6            |
 | 8.18               | c6id.4xlarge      | TBS enabled, local NVMe SSD from c6id instance | 43550                           | 2940                           | 28.76             | 109.6           |
 
-The tail-based sampling implementation in version 9.0 offers significantly better performance compared to version 8.18, primarily due to a rewritten storage layer. This new implementation cleans up expired data more reliably, resulting in reduced load on disk, memory, and compute resources. This improvement is particularly evident in the event indexing rate on slower disks.
+When interpreting these numbers, note that:
 
-In version 8.18, as the database grows larger, the performance slowdown can become disproportionate. The one outlier data point where 8.18 with a 32GB NVMe disk shows a higher ingest rate than 9.0 can be attributed to the change in the balance between disk read and write operations, which results in a slower event indexing rate.
+* The metrics are inter-related. For example, it is reasonable to see a higher memory usage and disk usage when event ingestion rate is higher.
+* Related to the previous point, event ingestion rate and event indexing rate competes for disk IO. It explains the outlier data point where 8.18 with a 32GB NVMe disk shows a higher ingest rate but a slower event indexing rate than in 9.0.
+
+The tail-based sampling implementation in version 9.0 offers significantly better performance compared to version 8.18, primarily due to a rewritten storage layer. This new implementation compresses data, as well as cleans up expired data more reliably, resulting in reduced load on disk, memory, and compute resources. This improvement is particularly evident in the event indexing rate on slower disks. In version 8.18, as the database grows larger, the performance slowdown can become disproportionate.
 
 ## Sampled data and visualizations [_sampled_data_and_visualizations]
 
