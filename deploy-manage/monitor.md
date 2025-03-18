@@ -66,7 +66,7 @@ deployment:
 * [Preconfigured logs and metrics](/deploy-manage/monitor/cloud-health-perf.md#ec-es-health-preconfigured)
 
 {{ece}} only:
-* [Platform monitoring](/deploy-manage/monitor/orchestrators/ece-platform-monitoring), including logs, metrics, and proxy logs
+* [Platform monitoring](/deploy-manage/monitor/orchestrators/ece-platform-monitoring.md), including logs, metrics, and proxy logs
 
 :::{tip}
 Out of the box logs and metrics tools, including ECH preconfigured logs and metrics and ECE platform monitoring logs and metrics, are useful for providing information in a non-production environment. In a production environment, it’s important set up either AutoOps or stack monitoring to retain the logs and metrics that can be used to troubleshoot any health issues in your deployments. In the event of that you need to [contact our support team](/troubleshoot/index.md#contact-us), they can use the retained data to help diagnose any problems that you may encounter.
