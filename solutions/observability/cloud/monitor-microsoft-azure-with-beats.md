@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/monitor-azure.html
+applies_to:
+  stack:
 ---
 
 # Monitor Microsoft Azure with Beats [monitor-azure]

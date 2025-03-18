@@ -2,6 +2,7 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/observability/current/observability-introduction.html
   - https://www.elastic.co/guide/en/serverless/current/observability-serverless-observability-overview.html
+
 ---
 
 # What is Elastic {{observability}}? [observability-introduction]
@@ -77,13 +78,13 @@ On the {{observability}} **Overview** page, the **{{user-experience}}** chart pr
 
 You can then drill down into the {{user-experience}} dashboard by clicking **Show dashboard** too see data by URL, operating system, browser, and location.
 
- [Learn more about {{user-experience}} →](../../../solutions/observability/apps/real-user-monitoring-user-experience.md).
+ [Learn more about {{user-experience}} →](../../../solutions/observability/apps/real-user-monitoring-user-experience.md)
 
 ## Synthetic monitoring [synthetic-monitoring-overview]
 
 Simulate actions and requests that an end user would perform on your site at predefined intervals and in a controlled environment. The end result is rich, consistent, and repeatable data that you can trend and alert on.
 
-[Learn more about Synthetic monitoring →](../../../solutions/observability/apps/synthetic-monitoring.md).
+[Learn more about Synthetic monitoring →](../../../solutions/observability/apps/synthetic-monitoring.md)
 
 % Stateful only for Universal Profiling.
 
@@ -91,7 +92,7 @@ Simulate actions and requests that an end user would perform on your site at pre
 
 Build stack traces to get visibility into your system without application source code changes or instrumentation. Use flamegraphs to explore system performance and identify the most expensive lines of code, increase CPU resource efficiency, debug performance regressions, and reduce cloud spend.
 
-[Learn more about Universal Profiling →](../../../solutions/observability/infra-and-hosts/universal-profiling.md).
+[Learn more about Universal Profiling →](../../../solutions/observability/infra-and-hosts/universal-profiling.md)
 
 
 ## Alerting [observability-serverless-observability-overview-alerting]

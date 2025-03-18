@@ -82,7 +82,7 @@ The PagerDuty integration consists of the following parts:
 
 **AutoOps configuration**
 
-1. Add a new PagerDuty endpoint using the PagerDuty configuration application key.
+1. Add a new PagerDuty connector using the PagerDuty configuration application key.
 2. To receive Slack notifications, add a notification filter. Scroll down the Notification page and click **Add**.
 3. Fill in the filter details.
 4. Select the events that should be sent to this output.
@@ -100,8 +100,8 @@ To set up a webhook to send AutoOps notifications to a Slack channel, go through
 6. Toggle the **Activate Incoming Webhooks** to On.
 7. Click **Request to Add New Webhook**.
 8. Select a Slack channel from the list to receive the notifications and click **Allow**.
-9. Copy the webhook URL to set up the webhook notification endpoint in AutoOps.
-10. Add the webhook URL when creating the endpoint.
+9. Copy the webhook URL to set up the webhook notification connector in AutoOps.
+10. Add the webhook URL when creating the connector.
 
 
 ### VictorOps [ec-autoops-victorops]
@@ -115,7 +115,7 @@ The VictorOps integration consists of the following parts:
 
 **AutoOps configuration**
 
-1. Add a new PagerDuty endpoint using the PagerDuty configuration application key.
+1. Add a new PagerDuty connector using the PagerDuty configuration application key.
 2. To receive Slack notifications, add a notification filter. Scroll down the Notification page and click Add.
 3. Fill in the filter details.
 4. Select the events that should be sent to this output.
@@ -137,7 +137,7 @@ The Opsgenie integration consists of the following parts:
 
 1. Open AutoOps and go to **User Profile**. Then, select **Notifications**.
 2. Click **Add** and select **Opsgenie** from the dropdown list.
-3. Name your endpoint and add Api Key from opsgenie API configuration. Click the validate button to make sure that your notification setting is working. Don’t forget to save your notification endpoint!
+3. Name your connector and add Api Key from opsgenie API configuration. Click the validate button to make sure that your notification setting is working. Don’t forget to save your notification connector!
 4. To receive notifications on Opsgenie, you need to add a notification filter. Scroll down the **Notification** page and click **Add**.
 5. Fill in the filter details.
 6. Select events that should be sent to this output.
@@ -151,7 +151,7 @@ Save the URL displayed during the creation of the incoming webhook, as you will 
 
 **AutoOps configuration**
 
-1. Add a new MS team endpoint using the URL from Microsoft Teams.
+1. Add a new MS team connector using the URL from Microsoft Teams.
 2. To receive notifications into Microsoft Teams, you need to add a notification filter. Scroll down the Notification page and click Add.
 3. Fill in the filter details.
 4. Select events that should be sent to this output.
@@ -163,7 +163,7 @@ A webhook enables an application to provide other applications with real-time in
 
 **How to add a webhook notification**
 
-1. Go to **Settings** → **Notifications*** → ***Endpoint settings** and click **Add**.
+1. Go to **Settings** → **Notifications*** → ***Connector settings** and click **Add**.
 2. Select Webhook from the drop-dowon list and enter the following details:
 
     * Name: It must be a unique name for this webhook.
@@ -191,7 +191,7 @@ A webhook enables an application to provide other applications with real-time in
 5. Optionally, you can test the webhook integration by using the [webhook.site](https://webhook.site/#!/view/fe9d630e-2f01-44b7-9e41-ef9520fbe9a7).
 
 ::::{note}
-When the Endpoint settings have been completed, continue to set up the notification filter to define which events you’d like to be notified about.
+When the connector settings have been completed, continue to set up the notification filter to define which events you’d like to be notified about.
 ::::
 
 ## Notifications report [ec-notification-report]
