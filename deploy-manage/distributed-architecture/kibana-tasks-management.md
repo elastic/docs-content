@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/task-manager-production-considerations.html
+applies_to:
+  stack:
 ---
 
 # Kibana tasks management [task-manager-production-considerations]

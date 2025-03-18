@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/delayed-allocation.html
+applies_to:
+  stack:
 ---
 
 # Delaying allocation when a node leaves [delayed-allocation]

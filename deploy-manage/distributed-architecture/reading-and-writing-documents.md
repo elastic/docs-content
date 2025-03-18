@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-replication.html
+applies_to:
+  stack:
+  serverless:
 ---
 
 # Reading and writing documents [docs-replication]
