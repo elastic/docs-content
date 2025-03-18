@@ -24,51 +24,51 @@ The non-ECS fields listed below are beta and subject to change.
 
 | Alert field | Description |
 | --- | --- |
-| [`@timestamp`](asciidocalypse://docs/ecs/docs/reference/ecs-base.md#field-timestamp) | ECS field, represents the time when the alert was created or most recently updated. |
-| [`message`](asciidocalypse://docs/ecs/docs/reference/ecs-base.md#field-message) | ECS field copied from the source document, if present, for custom query and indicator match rules. |
-| [`tags`](asciidocalypse://docs/ecs/docs/reference/ecs-base.md#field-tags) | ECS field copied from the source document, if present, for custom query and indicator match rules. |
-| [`labels`](asciidocalypse://docs/ecs/docs/reference/ecs-base.md#field-labels) | ECS field copied from the source document, if present, for custom query and indicator match rules. |
-| [`ecs.version`](asciidocalypse://docs/ecs/docs/reference/ecs-ecs.md#field-ecs-version) | ECS mapping version of the alert. |
-| [`event.kind`](asciidocalypse://docs/ecs/docs/reference/ecs-allowed-values-event-kind.md) | ECS field, always `signal` for alert documents. |
-| [`event.category`](asciidocalypse://docs/ecs/docs/reference/ecs-allowed-values-event-category.md) | ECS field, copied from the source document, if present, for custom query and indicator match rules. |
-| [`event.type`](asciidocalypse://docs/ecs/docs/reference/ecs-allowed-values-event-type.md) | ECS field, copied from the source document, if present, for custom query and indicator match rules. |
-| [`event.outcome`](asciidocalypse://docs/ecs/docs/reference/ecs-allowed-values-event-outcome.md) | ECS field, copied from the source document, if present, for custom query and indicator match rules. |
-| [`agent.*`](asciidocalypse://docs/ecs/docs/reference/ecs-agent.md) | ECS `agent.*` fields copied from the source document, if present, for custom query and indicator match rules. |
-| [`client.*`](asciidocalypse://docs/ecs/docs/reference/ecs-client.md) | ECS `client.*` fields copied from the source document, if present, for custom query and indicator match rules. |
-| [`cloud.*`](asciidocalypse://docs/ecs/docs/reference/ecs-cloud.md) | ECS `cloud.*` fields copied from the source document, if present, for custom query and indicator match rules. |
-| [`container.*`](asciidocalypse://docs/ecs/docs/reference/ecs-container.md) | ECS `container.* fields` copied from the source document, if present, for custom query and indicator match rules. |
-| [`data_stream.*`](asciidocalypse://docs/ecs/docs/reference/ecs-data_stream.md) | ECS `data_stream.*` fields copied from the source document, if present, for custom query and indicator match rules.<br>NOTE: These fields may be constant keywords in the source documents, but are copied into the alert documents as keywords. |
-| [`destination.*`](asciidocalypse://docs/ecs/docs/reference/ecs-destination.md) | ECS `destination.*` fields copied from the source document, if present, for custom query and indicator match rules. |
-| [`dll.*`](asciidocalypse://docs/ecs/docs/reference/ecs-dll.md) | ECS `dll.*` fields copied from the source document, if present, for custom query and indicator match rules. |
-| [`dns.*`](asciidocalypse://docs/ecs/docs/reference/ecs-dns.md) | ECS `dns.*` fields copied from the source document, if present, for custom query and indicator match rules. |
-| [`error.*`](asciidocalypse://docs/ecs/docs/reference/ecs-error.md) | ECS `error.*` fields copied from the source document, if present, for custom query and indicator match rules. |
-| [`event.*`](asciidocalypse://docs/ecs/docs/reference/ecs-event.md) | ECS `event.*` fields copied from the source document, if present, for custom query and indicator match rules.<br>NOTE: categorization fields above (`event.kind`, `event.category`, `event.type`, `event.outcome`) are listed separately above. |
-| [`file.*`](asciidocalypse://docs/ecs/docs/reference/ecs-file.md) | ECS `file.*` fields copied from the source document, if present, for custom query and indicator match rules. |
-| [`group.*`](asciidocalypse://docs/ecs/docs/reference/ecs-group.md) | ECS `group.*` fields copied from the source document, if present, for custom query and indicator match rules. |
-| [`host.*`](asciidocalypse://docs/ecs/docs/reference/ecs-host.md) | ECS `host.*` fields copied from the source document, if present, for custom query and indicator match rules. |
-| [`http.*`](asciidocalypse://docs/ecs/docs/reference/ecs-http.md) | ECS `http.*` fields copied from the source document, if present, for custom query and indicator match rules. |
-| [`log.*`](asciidocalypse://docs/ecs/docs/reference/ecs-log.md) | ECS `log.*` fields copied from the source document, if present, for custom query and indicator match rules. |
-| [`network.*`](asciidocalypse://docs/ecs/docs/reference/ecs-network.md) | ECS `network.*` fields copied from the source document, if present, for custom query and indicator match rules. |
-| [`observer.*`](asciidocalypse://docs/ecs/docs/reference/ecs-observer.md) | ECS `observer.*` fields copied from the source document, if present, for custom query and indicator match rules. |
-| [`orchestrator.*`](asciidocalypse://docs/ecs/docs/reference/ecs-orchestrator.md) | ECS `orchestrator.*` fields copied from the source document, if present, for custom query and indicator match rules. |
-| [`organization.*`](asciidocalypse://docs/ecs/docs/reference/ecs-organization.md) | ECS `organization.*` fields copied from the source document, if present, for custom query and indicator match rules. |
-| [`package.*`](asciidocalypse://docs/ecs/docs/reference/ecs-package.md) | ECS `package.*` fields copied from the source document, if present, for custom query and indicator match rules. |
-| [`process.*`](asciidocalypse://docs/ecs/docs/reference/ecs-process.md) | ECS `process.*` fields copied from the source document, if present, for custom query and indicator match rules. |
-| [`registry.*`](asciidocalypse://docs/ecs/docs/reference/ecs-registry.md) | ECS `registry.*` fields copied from the source document, if present, for custom query and indicator match rules. |
-| [`related.*`](asciidocalypse://docs/ecs/docs/reference/ecs-related.md) | ECS `related.*` fields copied from the source document, if present, for custom query and indicator match rules. |
-| [`rule.*`](asciidocalypse://docs/ecs/docs/reference/ecs-rule.md) | ECS `rule.*` fields copied from the source document, if present, for custom query and indicator match rules.<br>NOTE: These fields are not related to the detection rule that generated the alert. |
-| [`server.*`](asciidocalypse://docs/ecs/docs/reference/ecs-server.md) | ECS `server.*` fields copied from the source document, if present, for custom query and indicator match rules. |
-| [`service.*`](asciidocalypse://docs/ecs/docs/reference/ecs-service.md) | ECS `service.*` fields copied from the source document, if present, for custom query and indicator match rules. |
-| [`source.*`](asciidocalypse://docs/ecs/docs/reference/ecs-source.md) | ECS `source.*` fields copied from the source document, if present, for custom query and indicator match rules. |
-| [`span.*`](asciidocalypse://docs/ecs/docs/reference/ecs-tracing.md#field-span-id) | ECS `span.*` fields copied from the source document, if present, for custom query and indicator match rules. |
-| [`threat.*`](asciidocalypse://docs/ecs/docs/reference/ecs-threat.md) | ECS `threat.*` fields copied from the source document, if present, for custom query and indicator match rules. |
-| [`tls.*`](asciidocalypse://docs/ecs/docs/reference/ecs-tls.md) | ECS `tls.*` fields copied from the source document, if present, for custom query and indicator match rules. |
-| [`trace.*`](asciidocalypse://docs/ecs/docs/reference/ecs-tracing.md) | ECS `trace.*` fields copied from the source document, if present, for custom query and indicator match rules. |
-| [`transaction.*`](asciidocalypse://docs/ecs/docs/reference/ecs-tracing.md#field-transaction-id) | ECS `transaction.*` fields copied from the source document, if present, for custom query and indicator match rules. |
-| [`url.*`](asciidocalypse://docs/ecs/docs/reference/ecs-url.md) | ECS `url.*` fields copied from the source document, if present, for custom query and indicator match rules. |
-| [`user.*`](asciidocalypse://docs/ecs/docs/reference/ecs-user.md) | ECS `user.*` fields copied from the source document, if present, for custom query and indicator match rules. |
-| [`user_agent.*`](asciidocalypse://docs/ecs/docs/reference/ecs-user_agent.md) | ECS `user_agent.*` fields copied from the source document, if present, for custom query and indicator match rules. |
-| [`vulnerability.*`](asciidocalypse://docs/ecs/docs/reference/ecs-vulnerability.md) | ECS `vulnerability.*` fields copied from the source document, if present, for custom query and indicator match rules. |
+| [`@timestamp`](ecs://reference/ecs-base.md#field-timestamp) | ECS field, represents the time when the alert was created or most recently updated. |
+| [`message`](ecs://reference/ecs-base.md#field-message) | ECS field copied from the source document, if present, for custom query and indicator match rules. |
+| [`tags`](ecs://reference/ecs-base.md#field-tags) | ECS field copied from the source document, if present, for custom query and indicator match rules. |
+| [`labels`](ecs://reference/ecs-base.md#field-labels) | ECS field copied from the source document, if present, for custom query and indicator match rules. |
+| [`ecs.version`](ecs://reference/ecs-ecs.md#field-ecs-version) | ECS mapping version of the alert. |
+| [`event.kind`](ecs://reference/ecs-allowed-values-event-kind.md) | ECS field, always `signal` for alert documents. |
+| [`event.category`](ecs://reference/ecs-allowed-values-event-category.md) | ECS field, copied from the source document, if present, for custom query and indicator match rules. |
+| [`event.type`](ecs://reference/ecs-allowed-values-event-type.md) | ECS field, copied from the source document, if present, for custom query and indicator match rules. |
+| [`event.outcome`](ecs://reference/ecs-allowed-values-event-outcome.md) | ECS field, copied from the source document, if present, for custom query and indicator match rules. |
+| [`agent.*`](ecs://reference/ecs-agent.md) | ECS `agent.*` fields copied from the source document, if present, for custom query and indicator match rules. |
+| [`client.*`](ecs://reference/ecs-client.md) | ECS `client.*` fields copied from the source document, if present, for custom query and indicator match rules. |
+| [`cloud.*`](ecs://reference/ecs-cloud.md) | ECS `cloud.*` fields copied from the source document, if present, for custom query and indicator match rules. |
+| [`container.*`](ecs://reference/ecs-container.md) | ECS `container.* fields` copied from the source document, if present, for custom query and indicator match rules. |
+| [`data_stream.*`](ecs://reference/ecs-data_stream.md) | ECS `data_stream.*` fields copied from the source document, if present, for custom query and indicator match rules.<br>NOTE: These fields may be constant keywords in the source documents, but are copied into the alert documents as keywords. |
+| [`destination.*`](ecs://reference/ecs-destination.md) | ECS `destination.*` fields copied from the source document, if present, for custom query and indicator match rules. |
+| [`dll.*`](ecs://reference/ecs-dll.md) | ECS `dll.*` fields copied from the source document, if present, for custom query and indicator match rules. |
+| [`dns.*`](ecs://reference/ecs-dns.md) | ECS `dns.*` fields copied from the source document, if present, for custom query and indicator match rules. |
+| [`error.*`](ecs://reference/ecs-error.md) | ECS `error.*` fields copied from the source document, if present, for custom query and indicator match rules. |
+| [`event.*`](ecs://reference/ecs-event.md) | ECS `event.*` fields copied from the source document, if present, for custom query and indicator match rules.<br>NOTE: categorization fields above (`event.kind`, `event.category`, `event.type`, `event.outcome`) are listed separately above. |
+| [`file.*`](ecs://reference/ecs-file.md) | ECS `file.*` fields copied from the source document, if present, for custom query and indicator match rules. |
+| [`group.*`](ecs://reference/ecs-group.md) | ECS `group.*` fields copied from the source document, if present, for custom query and indicator match rules. |
+| [`host.*`](ecs://reference/ecs-host.md) | ECS `host.*` fields copied from the source document, if present, for custom query and indicator match rules. |
+| [`http.*`](ecs://reference/ecs-http.md) | ECS `http.*` fields copied from the source document, if present, for custom query and indicator match rules. |
+| [`log.*`](ecs://reference/ecs-log.md) | ECS `log.*` fields copied from the source document, if present, for custom query and indicator match rules. |
+| [`network.*`](ecs://reference/ecs-network.md) | ECS `network.*` fields copied from the source document, if present, for custom query and indicator match rules. |
+| [`observer.*`](ecs://reference/ecs-observer.md) | ECS `observer.*` fields copied from the source document, if present, for custom query and indicator match rules. |
+| [`orchestrator.*`](ecs://reference/ecs-orchestrator.md) | ECS `orchestrator.*` fields copied from the source document, if present, for custom query and indicator match rules. |
+| [`organization.*`](ecs://reference/ecs-organization.md) | ECS `organization.*` fields copied from the source document, if present, for custom query and indicator match rules. |
+| [`package.*`](ecs://reference/ecs-package.md) | ECS `package.*` fields copied from the source document, if present, for custom query and indicator match rules. |
+| [`process.*`](ecs://reference/ecs-process.md) | ECS `process.*` fields copied from the source document, if present, for custom query and indicator match rules. |
+| [`registry.*`](ecs://reference/ecs-registry.md) | ECS `registry.*` fields copied from the source document, if present, for custom query and indicator match rules. |
+| [`related.*`](ecs://reference/ecs-related.md) | ECS `related.*` fields copied from the source document, if present, for custom query and indicator match rules. |
+| [`rule.*`](ecs://reference/ecs-rule.md) | ECS `rule.*` fields copied from the source document, if present, for custom query and indicator match rules.<br>NOTE: These fields are not related to the detection rule that generated the alert. |
+| [`server.*`](ecs://reference/ecs-server.md) | ECS `server.*` fields copied from the source document, if present, for custom query and indicator match rules. |
+| [`service.*`](ecs://reference/ecs-service.md) | ECS `service.*` fields copied from the source document, if present, for custom query and indicator match rules. |
+| [`source.*`](ecs://reference/ecs-source.md) | ECS `source.*` fields copied from the source document, if present, for custom query and indicator match rules. |
+| [`span.*`](ecs://reference/ecs-tracing.md#field-span-id) | ECS `span.*` fields copied from the source document, if present, for custom query and indicator match rules. |
+| [`threat.*`](ecs://reference/ecs-threat.md) | ECS `threat.*` fields copied from the source document, if present, for custom query and indicator match rules. |
+| [`tls.*`](ecs://reference/ecs-tls.md) | ECS `tls.*` fields copied from the source document, if present, for custom query and indicator match rules. |
+| [`trace.*`](ecs://reference/ecs-tracing.md) | ECS `trace.*` fields copied from the source document, if present, for custom query and indicator match rules. |
+| [`transaction.*`](ecs://reference/ecs-tracing.md#field-transaction-id) | ECS `transaction.*` fields copied from the source document, if present, for custom query and indicator match rules. |
+| [`url.*`](ecs://reference/ecs-url.md) | ECS `url.*` fields copied from the source document, if present, for custom query and indicator match rules. |
+| [`user.*`](ecs://reference/ecs-user.md) | ECS `user.*` fields copied from the source document, if present, for custom query and indicator match rules. |
+| [`user_agent.*`](ecs://reference/ecs-user_agent.md) | ECS `user_agent.*` fields copied from the source document, if present, for custom query and indicator match rules. |
+| [`vulnerability.*`](ecs://reference/ecs-vulnerability.md) | ECS `vulnerability.*` fields copied from the source document, if present, for custom query and indicator match rules. |
 | `kibana.alert.ancestors.*` | Type: object |
 | `kibana.alert.depth` | Type: Long |
 | `kibana.alert.new_terms` | The value of the new term that generated this alert.<br>Type: keyword |
