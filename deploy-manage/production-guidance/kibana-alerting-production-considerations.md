@@ -37,7 +37,7 @@ For detailed guidance, see [Alerting Troubleshooting](../../explore-analyze/aler
 
 ## Scaling guidance [alerting-scaling-guidance]
 
-As rules and actions leverage background tasks to perform the majority of work, scaling Alerting is possible by following the [Task Manager Scaling Guidance](production-guidance/kibana-task-manager-scaling-considerations.md#task-manager-scaling-guidance).
+As rules and actions leverage background tasks to perform the majority of work, scaling Alerting is possible by following the [Task Manager Scaling Guidance](kibana-task-manager-scaling-considerations.md#task-manager-scaling-guidance).
 
 When estimating the required task throughput, keep the following in mind:
 
