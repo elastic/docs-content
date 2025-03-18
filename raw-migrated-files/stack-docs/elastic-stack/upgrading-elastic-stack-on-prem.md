@@ -10,7 +10,7 @@ Once you are [prepared to upgrade](../../../deploy-manage/upgrade/deployment-or-
     3. Kibana: [upgrade instructions](../../../deploy-manage/upgrade/deployment-or-cluster.md)
     4. Java API Client: [dependency configuration](elasticsearch-java://reference/installation.md#maven)
     5. Logstash: [upgrade instructions](logstash://reference/upgrading-logstash.md)
-    6. Beats: [upgrade instructions](asciidocalypse://docs/beats/docs/reference/libbeat/upgrading.md)
+    6. Beats: [upgrade instructions](beats://reference/libbeat/upgrading.md)
     7. {{agent}}: [upgrade instructions](/reference/ingestion-tools/fleet/upgrade-elastic-agent.md)
 
 

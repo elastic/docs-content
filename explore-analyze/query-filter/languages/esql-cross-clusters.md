@@ -202,7 +202,7 @@ FROM *:my-index-000001
 
 ## Cross-cluster metadata [ccq-cluster-details]
 
-Using the `"include_ccs_metadata": true` option, users can request that ES|QL {{ccs}} responses include metadata about the search on each cluster (when the response format is JSON). Here we show an example using the async search endpoint. {{ccs-cap}} metadata is also present in the synchronous search endpoint response when requested.
+Using the `"include_ccs_metadata": true` option, users can request that ES|QL {{ccs}} responses include metadata about the search on each cluster (when the response format is JSON). Here we show an example using the async search endpoint. {{ccs-cap}} metadata is also present in the synchronous search endpoint response when requested. If the search returns partial results and there are partial shard or remote cluster failures, `_clusters` metadata containing the failures will be included in the response regardless of the `include_ccs_metadata` parameter.
 
 ```console
 POST /_query/async?format=json
@@ -289,8 +289,8 @@ Which returns:
 4. If you included indices from the local cluster you sent the request to in your {{ccs}}, it is identified as "(local)".
 5. How long (in milliseconds) the search took on each cluster. This can be useful to determine which clusters have slower response times than others.
 6. The shard details for the search on that cluster, including a count of shards that were skipped due to the can-match phase results. Shards are skipped when they cannot have any matching data and therefore are not included in the full ES|QL query.
-7. The `is_partial` field is set to `true` if the search has partial results for any reason, for example if it was interrupted before finishing using the [async query stop API](https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-async-query-stop-api.html).
-
+7. The `is_partial` field is set to `true` if the search has partial results for any reason, for example due to partial shard failures,
+failures in remote clusters, or if the async query was stopped by calling the [async query stop API](https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-async-query-stop-api.html).
 
 The cross-cluster metadata can be used to determine whether any data came back from a cluster. For instance, in the query below, the wildcard expression for `cluster-two` did not resolve to a concrete index (or indices). The cluster is, therefore, marked as *skipped* and the total number of shards searched is set to zero.
 
@@ -312,7 +312,7 @@ Which returns:
 {
   "is_running": false,
   "took": 55,
-  "is_partial": false,
+  "is_partial": true, <3>
   "columns": [
      ...
   ],
@@ -321,9 +321,9 @@ Which returns:
   ],
   "_clusters": {
     "total": 2,
-    "successful": 2,
+    "successful": 1,
     "running": 0,
-    "skipped": 0,
+    "skipped": 1, <1>
     "partial": 0,
     "failed": 0,
     "details": {
@@ -356,6 +356,7 @@ Which returns:
 
 1. This cluster is marked as *skipped*, since there were no matching indices on that cluster.
 2. Indicates that no shards were searched (due to not having any matching indices).
+3. Since one of the clusters is skipped, the search result is marked as partial.
 
 
 

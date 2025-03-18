@@ -38,7 +38,7 @@ Specifically:
 
 ## {{beats}} [air-gapped-beats]
 
-Elastic {{beats}} are light-weight data shippers. They do not require any special configuration in air-gapped environments. To learn more, refer to the [{{beats}} documentation](asciidocalypse://docs/beats/docs/reference/index.md).
+Elastic {{beats}} are light-weight data shippers. They do not require any special configuration in air-gapped environments. To learn more, refer to the [{{beats}} documentation](beats://reference/index.md).
 
 
 ## {{ls}} [air-gapped-logstash]

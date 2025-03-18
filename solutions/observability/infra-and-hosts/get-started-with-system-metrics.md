@@ -2,6 +2,9 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/observability/current/logs-metrics-get-started.html
   - https://www.elastic.co/guide/en/serverless/current/observability-get-started-with-metrics.html
+applies_to:
+  stack:
+  serverless:
 ---
 
 % Stateful get started is much more detailed, but I'm not sure it needs to be. I've considerably pared it down here, but we should go through the actual steps in here.

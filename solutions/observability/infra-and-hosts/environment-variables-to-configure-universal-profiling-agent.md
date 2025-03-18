@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/profiling-envs.html
+applies_to:
+  stack:
 ---
 
 # Environment variables to configure the Universal Profiling Agent [profiling-envs]
