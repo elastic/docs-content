@@ -7,7 +7,7 @@ mapped_urls:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/query-filter-context.html
 ---
 
-# QueryDSL
+# Query DSL
 
 $$$filter-context$$$
 
