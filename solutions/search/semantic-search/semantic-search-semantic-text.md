@@ -138,7 +138,7 @@ POST /_query?format=txt
 {
   "query": """
     FROM semantic-embeddings METADATA _score <1>
-    | WHERE content: "What causes muscle soreness after running?" <2>
+    | WHERE content: "How to avoid muscle soreness while running?" <2>
     | SORT _score DESC <3>
     | LIMIT 1000 <4>
   """

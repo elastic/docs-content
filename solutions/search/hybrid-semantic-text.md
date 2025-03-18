@@ -222,7 +222,7 @@ POST /_query?format=txt
 {
   "query": """
     FROM semantic-embeddings METADATA _score <1>
-    | WHERE content: "How to avoid muscle soreness while running?" OR match(semantic_text, "How to avoid muscle soreness while running?", { "boost": 0.75 }) <2> <3>
+    | WHERE content: "muscle soreness running?" OR match(semantic_text, "How to avoid muscle soreness while running?", { "boost": 0.75 }) <2> <3>
     | SORT _score DESC <4>
     | LIMIT 1000
   """
