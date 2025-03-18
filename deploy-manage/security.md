@@ -173,6 +173,7 @@ deployment:
 ```yaml {applies_to}
 deployment:
   ess: all
+```
 
 Elastic Cloud publishes a list of IP addresses used by its services for both incoming and outgoing traffic. Users can use these lists to configure their network firewalls as needed to allow or restrict traffic related to Elastic Cloud services.
 
