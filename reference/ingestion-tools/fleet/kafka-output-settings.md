@@ -51,7 +51,7 @@ Use this option to set the Kafka topic for each {{agent}} event.
 
 |     |     |
 | --- | --- |
-| $$$kafka-output-topics-default$$$<br>**Default topic**<br> | Set a default topic to use for events sent by {{agent}} to the Kafka output.<br><br>You can set a static topic, for example `elastic-agent`, or you can choose to set a topic dynamically based on an [Elastic Common Scheme (ECS)][Elastic Common Schema (ECS)](asciidocalypse://docs/ecs/docs/reference/index.md)) field. Available fields include:<br><br>* `data_stream_type`<br>* `data_stream.dataset`<br>* `data_stream.namespace`<br>* `@timestamp`<br>* `event-dataset`<br><br>You can also set a custom field. This is useful if you’re using the [`add_fields` processor](/reference/ingestion-tools/fleet/add_fields-processor.md) as part of your {{agent}} input. Otherwise, setting a custom field is not recommended.<br> |
+| $$$kafka-output-topics-default$$$<br>**Default topic**<br> | Set a default topic to use for events sent by {{agent}} to the Kafka output.<br><br>You can set a static topic, for example `elastic-agent`, or you can choose to set a topic dynamically based on an [Elastic Common Scheme (ECS)][Elastic Common Schema (ECS)](ecs://reference/index.md)) field. Available fields include:<br><br>* `data_stream_type`<br>* `data_stream.dataset`<br>* `data_stream.namespace`<br>* `@timestamp`<br>* `event-dataset`<br><br>You can also set a custom field. This is useful if you’re using the [`add_fields` processor](/reference/ingestion-tools/fleet/add_fields-processor.md) as part of your {{agent}} input. Otherwise, setting a custom field is not recommended.<br> |
 
 
 ### Header settings [_header_settings]

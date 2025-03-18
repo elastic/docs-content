@@ -21,7 +21,7 @@ To ingest data, you can use:
 ::::{important}
 If you use a third-party collector to ship data to {{elastic-sec}}, you must map its fields to the [Elastic Common Schema (ECS)](https://www.elastic.co/guide/en/ecs/current). Additionally, you must add its index to the {{elastic-sec}} indices (update the **`securitySolution:defaultIndex`** [advanced setting](/solutions/security/get-started/configure-advanced-settings.md#update-sec-indices)).
 
-{{elastic-sec}} uses the [`host.name`](asciidocalypse://docs/ecs/docs/reference/ecs-host.md) ECS field as the primary key for identifying hosts.
+{{elastic-sec}} uses the [`host.name`](ecs://reference/ecs-host.md) ECS field as the primary key for identifying hosts.
 
 ::::
 

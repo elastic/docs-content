@@ -37,7 +37,7 @@ For example, to display data that is stored in indices matching the index patter
 
 ## Add geoIP data [geoip-data]
 
-When the ECS [source.geo.location and destination.geo.location](asciidocalypse://docs/ecs/docs/reference/ecs-geo.md) fields are mapped, network data is displayed on the map.
+When the ECS [source.geo.location and destination.geo.location](ecs://reference/ecs-geo.md) fields are mapped, network data is displayed on the map.
 
 If you use Beats, configure a geoIP processor to add data to the relevant fields:
 
