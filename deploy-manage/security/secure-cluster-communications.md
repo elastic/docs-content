@@ -28,7 +28,7 @@ For {{ech}} and {{serverless-full}} deployments, communications security is full
 For ECE, ECK, and self-managed deployments, this page provides specific configuration guidance to secure the various communication channels between components.
 
 :::{tip}
-For a complete comparison of security feature availability and responsibility by deployment type, see [Security features by deployment type](../security.md#security-features-by-deployment-type).
+For a complete comparison of security feature availability and responsibility by deployment type, see [Security features by deployment type](/deploy-manage/security.md#comparison-table).
 :::
 
 ## Communication channels overview
