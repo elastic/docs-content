@@ -151,7 +151,7 @@ Terminology:
 
 | APM Server version | EC2 instance size | TBS and disk configuration                     | Event ingestion rate (events/s) | Event indexing rate (events/s) | Memory usage (GB) | Disk usage (GB) |
 |--------------------|-------------------|------------------------------------------------|---------------------------------|--------------------------------|-------------------|-----------------|
-| 9.0                | c6id.2xlarge      | TBS disabled                                   | 47220                           | 4720 (100% sampling)           | 0.98              | 0               |
+| 9.0                | c6id.2xlarge      | TBS disabled                                   | 47220                           | 47220 (100% sampling)          | 0.98              | 0               |
 | 9.0                | c6id.2xlarge      | TBS enabled, EBS gp3 volume with 3000 IOPS     | 21310                           | 2360                           | 1.41              | 13.1            |
 | 9.0                | c6id.2xlarge      | TBS enabled, local NVMe SSD from c6id instance | 21210                           | 2460                           | 1.34              | 12.9            |
 | 9.0                | c6id.4xlarge      | TBS disabled                                   | 142200                          | 142200 (100% sampling)         | 1.12              | 0               |
