@@ -69,7 +69,7 @@ By default, {{kib}} polls for tasks at a rate of 10 tasks every 3 seconds. This 
 
 In practice, a {{kib}} instance will only achieve the upper bound of `200/tpm` if the duration of task execution is below the polling rate of 3 seconds. For the most part, the duration of tasks is below that threshold, but it can vary greatly as {{es}} and {{kib}} usage grow and task complexity increases (such as alerts executing heavy queries across large datasets).
 
-By [estimating a rough throughput requirement](../distributed-architecture/kibana-tasks-management.md#task-manager-rough-throughput-estimation), you can estimate the number of {{kib}} instances required to reliably execute tasks in a timely manner. An appropriate number of {{kib}} instances can be estimated to match the required scale.
+By [estimating a rough throughput requirement](#task-manager-rough-throughput-estimation), you can estimate the number of {{kib}} instances required to reliably execute tasks in a timely manner. An appropriate number of {{kib}} instances can be estimated to match the required scale.
 
 For details on monitoring the health of {{kib}} Task Manager, follow the guidance in [Health monitoring](../monitor/kibana-task-manager-health-monitoring.md).
 
@@ -96,7 +96,7 @@ Scaling {{kib}} instances vertically causes higher resource usage in each {{kib}
 
 A recommended strategy is to follow these steps:
 
-1. Produce a [rough throughput estimate](../distributed-architecture/kibana-tasks-management.md#task-manager-rough-throughput-estimation) as a guide to provisioning as many {{kib}} instances as needed. Include any growth in tasks that you predict experiencing in the near future, and a buffer to better address ad-hoc tasks.
+1. Produce a [rough throughput estimate](#task-manager-rough-throughput-estimation) as a guide to provisioning as many {{kib}} instances as needed. Include any growth in tasks that you predict experiencing in the near future, and a buffer to better address ad-hoc tasks.
 2. After provisioning a deployment, assess whether the provisioned {{kib}} instances achieve the required throughput by evaluating the [Health monitoring](../monitor/kibana-task-manager-health-monitoring.md) as described in [Insufficient throughput to handle the scheduled workload](../../troubleshoot/kibana/task-manager.md#task-manager-theory-insufficient-throughput).
 3. If the throughput is insufficient, and {{kib}} instances exhibit low resource usage, incrementally scale vertically while [monitoring](../monitor/monitoring-data/kibana-page.md) the impact of these changes.
 4. If the throughput is insufficient, and {{kib}} instances are exhibiting high resource usage, incrementally scale horizontally by provisioning new {{kib}} instances and reassess.

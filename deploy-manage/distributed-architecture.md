@@ -6,14 +6,6 @@ applies_to:
   serverless:
 ---
 
-% Clarify which topics are relevant for which deployment types (see note from elastic.co/guide/en/elasticsearch/reference/current/nodes-shards.html)
-
-% Explain the role of orchestrators on the Clusters, nodes, and shards page, link up.
-
-% Split the kibana tasks management topic so it's concepts only - guidance goes to design guidance section.
-
-% Discovery and cluster formation content (7 pages): add introductory note to specify that the endpoints/settings are possibly for self-managed only, and review the content.
-
 # Distributed architecture [_data_store_architecture]
 
 {{es}} is a distributed document store. Instead of storing information as rows of columnar data, {{es}} stores complex data structures that have been serialized as JSON documents. When you have multiple {{es}} nodes in a cluster, stored documents are distributed across the cluster and can be accessed immediately from any node.
@@ -21,7 +13,7 @@ applies_to:
 The topics in this section provides information about the architecture of {{es}} and how it stores and retrieves data:
 
 ::::{note}
-{{serverless-full}} scales with your workload and automates nodes, shards, and replicas for you. Some of the content in this section does not apply to you if you are using {{serverless-full}}. Instead, the information in this section will provide you information about how the platform works for you. 
+{{serverless-full}} scales with your workload and automates nodes, shards, and replicas for you. Some of the content in this section does not apply to you if you are using {{serverless-full}}. Instead, the information in this section will provide you information about how the platform works for you.
 ::::
 
 * [Cluster, nodes, and shards](distributed-architecture/clusters-nodes-shards.md): Learn about the basic building blocks of an {{es}} cluster, including nodes, shards, primaries, and replicas.

@@ -6,7 +6,7 @@ applies_to:
 ---
 
 ::::{important}
-The information provided in this section is applicable to all deployment types. However, the configuration settings detailed here are only valid for self-managed {{es}} deployments. For {{ecloud}} and {{serverless}} deployments this seciton should only be used for general information.
+The information provided in this section is applicable to all deployment types. However, the configuration settings detailed here are only valid for self-managed {{es}} deployments. For {{ecloud}} and {{serverless-full}} deployments this seciton should only be used for general information.
 ::::
 
 # Discovery and cluster formation [modules-discovery]
