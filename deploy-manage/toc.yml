@@ -334,7 +334,6 @@ toc:
           - file: deploy/self-managed/access-kibana.md
           - file: deploy/self-managed/air-gapped-install.md
           - file: deploy/self-managed/tools-apis.md
-      - file: deploy/kibana-reporting-configuration.md
   - file: distributed-architecture.md
     children:
       - file: distributed-architecture/clusters-nodes-shards.md
@@ -742,6 +741,7 @@ toc:
             children:
               - file: monitor/logging-configuration/kibana-log-settings-examples.md
               - file: monitor/logging-configuration/kibana-logging-cli-configuration.md
+  - file: deploy/kibana-reporting-configuration.md
   - file: cloud-organization.md
     children:
       - file: cloud-organization/billing.md

@@ -38,12 +38,7 @@ Configuring reporting in your environment involves two main areas:
 
 ### Granting users access to {{report-features}}
 
-Depending on your license, the type of users, and whether you prefer using the {{kib}} UI or API, there are multiple ways to grant access to reporting functionality. Choose the method that best fits your use case:
-
-* [Grant users access using {{kib}} UI](#grant-user-access)
-* [Grant access with the role API](#reporting-roles-user-api)
-* [Grant users access with a Basic license](#grant-user-access-basic)
-* [Grant access using an external provider](#grant-user-access-external-provider)
+Depending on your license, the type of users, and whether you prefer using the {{kib}} UI or API, there are multiple ways to [grant access to reporting functionality](#grant-user-access).
 
 ### Applying system configuration
 
@@ -67,7 +62,11 @@ These steps apply only to **self-managed deployments**. Orchestrated deployments
     ess: all
 ```
 
-### Grant users access using {{kib}} UI
+Choose the method that best fits your use case.
+
+:::::{tab-set}
+
+::::{tab-item} Using {{kib}} UI
 
 When security is enabled, you grant users access to {{report-features}} with [{{kib}} application privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md), which allow you to create custom roles that control the spaces and applications where users generate reports.
 
@@ -83,10 +82,9 @@ When security is enabled, you grant users access to {{report-features}} with [{{
 
         Access to data is an index-level privilege. For each index that contains the data you want to include in reports, add a line, then give each index `read` and `view_index_metadata` privileges.
 
-        ::::{note}
+        :::{note}
         If you use index aliases, you must also grant `read` and `view_index_metadata` privileges to underlying indices to generate CSV reports.
-        ::::
-
+        :::
 
         For more information, refer to [Security privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md).
 
@@ -97,9 +95,9 @@ When security is enabled, you grant users access to {{report-features}} with [{{
     3. Click **Customize**, then click **Analytics**.
     4. For each application, select **All**, or to customize the privileges, select **Read** and **Customize sub-feature privileges**.
 
-        ::::{note}
+        :::{note}
         If you have a Basic license, sub-feature privileges are unavailable. For details, check out [Grant users access with a Basic license](#grant-user-access-basic).
-        ::::
+        :::
 
 
         :::{image} /images/kibana-kibana-privileges-with-reporting.png
@@ -107,9 +105,9 @@ When security is enabled, you grant users access to {{report-features}} with [{{
         :screenshot:
         :::
 
-        ::::{note}
+        :::{note}
         If the **Reporting** options for application features are unavailable, and the cluster license is higher than Basic, contact your administrator.
-        ::::
+        :::
 
     5. Click **Add {{kib}} privilege**.
 
@@ -125,13 +123,15 @@ When security is enabled, you grant users access to {{report-features}} with [{{
 Granting the privilege to generate reports also grants the user the privilege to view their reports in **Stack Management > Reporting**. Users can only access their own reports.
 
 
-### Grant access with the role API [reporting-roles-user-api]
+::::
+
+::::{tab-item} Using role API
 
 With [{{kib}} application privileges](#grant-user-access), you can use the [role APIs](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-roles) to grant access to the {{report-features}}, using **All** privileges, or sub-feature privileges.
 
-::::{note}
+:::{note}
 This API request needs to be run against the [Kibana API endpoint](https://www.elastic.co/guide/en/kibana/current/api.html).
-::::
+:::
 
 ```console
 PUT <kibana host>:<port>/api/security/role/custom_reporting_user
@@ -160,17 +160,35 @@ PUT <kibana host>:<port>/api/security/role/custom_reporting_user
 3. Grants access to generate CSV reports from saved Discover sessions in **Discover**.
 4. Grants access to generate PDF reports in **Canvas**.
 5. Grants access to generate PNG and PDF reports in **Visualize Library**.
+::::
 
-### Grant users access with a Basic license [grant-user-access-basic]
+::::{tab-item} External providers
 
-With a Basic license, you can grant users access with custom roles to {{report-features}} with [{{kib}} application privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md). However, with a Basic license, sub-feature privileges are unavailable. [Create a role](#grant-user-access), then select **All** privileges for the applications where users can create reports.
+If you are using an external identity provider, such as LDAP or Active Directory, you can assign roles to individual users or groups of users. Role mappings are configured in [`config/role_mapping.yml`](/deploy-manage/users-roles/cluster-or-deployment-auth/mapping-users-groups-to-roles.md).
+
+For example, assign the `kibana_admin` and `reporting_user` roles to the Bill Murray user:
+
+```yaml
+kibana_admin:
+  - "cn=Bill Murray,dc=example,dc=com"
+reporting_user:
+  - "cn=Bill Murray,dc=example,dc=com"
+```
+
+::::
+
+::::{tab-item} Basic license
+
+With a Basic license, sub-feature [application privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md) are unavailable, requiring you to select **All** privileges for the applications where users can create reports. You can grant users access through the Kibana UI or role API.
+
+Example using Kibana UI:
 
 :::{image} /images/kibana-kibana-privileges-with-reporting-basic.png
 :alt: Kibana privileges with Reporting options, Basic license
 :screenshot:
 :::
 
-With a Basic license, sub-feature application privileges are unavailable, but you can use the [role API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-role) to grant access to CSV {{report-features}}:
+Example using [role API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-roles) to grant access to CSV {{report-features}}:
 
 ```console
 PUT localhost:5601/api/security/role/custom_reporting_user
@@ -189,23 +207,13 @@ PUT localhost:5601/api/security/role/custom_reporting_user
   "metadata": {} <3>
 }
 ```
-
 1. Grants access to generate CSV reports from saved Discover sessions in **Discover**.
 2. Grants access to generate CSV reports from saved Discover session panels in **Dashboard**.
 3. Optional
 
-### Grant access using an external provider [grant-user-access-external-provider]
+::::
 
-If you are using an external identity provider, such as LDAP or Active Directory, you can assign roles to individual users or groups of users. Role mappings are configured in [`config/role_mapping.yml`](/deploy-manage/users-roles/cluster-or-deployment-auth/mapping-users-groups-to-roles.md).
-
-For example, assign the `kibana_admin` and `reporting_user` roles to the Bill Murray user:
-
-```yaml
-kibana_admin:
-  - "cn=Bill Murray,dc=example,dc=com"
-reporting_user:
-  - "cn=Bill Murray,dc=example,dc=com"
-```
+:::::
 
 ## System configuration
 ```yaml {applies_to}
