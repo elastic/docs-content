@@ -24,4 +24,3 @@ toc:
       - file: fleet-elastic-agent/known-issues.md
       - file: fleet-elastic-agent/breaking-changes.md
       - file: fleet-elastic-agent/deprecations.md
-  - file: search-ui-known-issues.md

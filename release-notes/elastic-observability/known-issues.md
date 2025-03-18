@@ -1,5 +1,5 @@
 ---
-navigation_title: "Elastic Observability"
+navigation_title: "Known issues"
 ---
 
 # Elastic {{observability}} known issues [elastic-observability-known-issues]

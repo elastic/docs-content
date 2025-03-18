@@ -21,9 +21,9 @@ To check for security updates, go to [Security announcements for the Elastic sta
 % ### Fixes [elastic-apm-next-fixes]
 
 ## 9.0.0 [elastic-apm-900-release-notes]
-**Release date:** April 1, 2025
+**Release date:** April 2, 2025
 
-### Features and enhancements [elastic-apm-900-features-enhancements]
+% ### Features and enhancements [elastic-apm-900-features-enhancements]
 
 ### Fixes [elastic-apm-900-fixes]
-* Fix overflow in validation of `apm-server.agent.config.cache.expiration` on 32-bit architectures [#15216](https://github.com/elastic/apm-server/pull/15216)
+* Fixes overflow in validation of `apm-server.agent.config.cache.expiration` on 32-bit architectures [#15216]({{apm-pull}}15216)
