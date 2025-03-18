@@ -47,7 +47,7 @@ This chart reports the maximum CPU values over the sampling period. [Logs and me
 :alt: Graph showing available CPU credits
 :::
 
-Shows your remaining CPU credits, measured in seconds of CPU time. CPU credits enable the boosting of CPU resources assigned to your cluster to improve performance temporarily when it is needed most. For more details check [How to use vCPU to boost your instance](ec-vcpu-boost-instance.md).
+Shows your remaining CPU credits, measured in seconds of CPU time. CPU credits enable the boosting of CPU resources assigned to your cluster to improve performance temporarily when it is needed most. For more details check [How to use vCPU to boost your instance](/deploy-manage/deploy/elastic-cloud/ec-vcpu-boost-instance.md).
 
 
 ### Number of requests [ec_number_of_requests]
