@@ -1,5 +1,5 @@
 ---
-navigation_title: Self-managed
+navigation_title: Configure security in a self-managed cluster
 applies_to:
   deployment:
     self: ga
@@ -7,7 +7,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/manually-configure-security.html
 ---
 
-# Manually configure security in a self-managed cluster [manually-configure-security]
+# Configure security in a self-managed cluster [manually-configure-security]
 
 :::{note}
 This page describes important aspects to consider and common end-to-end scenarios for securing your self-managed {{stack}}. For a more granular view of the available security options for your clusters and nodes, refer to [](secure-your-cluster-deployment.md).

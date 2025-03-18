@@ -242,7 +242,7 @@ Once you have upgraded from 8.17, you need to update your {{es}} clients and ing
 
 1. Java API Client: [dependency configuration](elasticsearch-java://reference/installation.md#maven)
 2. Logstash: [upgrade instructions](logstash://reference/upgrading-logstash.md)
-3. Beats: [upgrade instructions](asciidocalypse://docs/beats/docs/reference/libbeat/upgrading.md)
+3. Beats: [upgrade instructions](beats://reference/libbeat/upgrading.md)
 4. {{agent}}: [upgrade instructions](/reference/ingestion-tools/fleet/upgrade-elastic-agent.md)
 
 

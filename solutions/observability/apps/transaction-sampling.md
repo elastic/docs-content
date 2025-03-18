@@ -133,6 +133,54 @@ Tail-based sampling is implemented entirely in APM Server, and will work with tr
 
 Due to [OpenTelemetry tail-based sampling limitations](../../../solutions/observability/apps/limitations.md#apm-open-telemetry-tbs) when using [tailsamplingprocessor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/tailsamplingprocessor), we recommend using APM Server tail-based sampling instead.
 
+### Tail-based sampling performance and requirements [_tail_based_sampling_performance_and_requirements]
+
+Tail-based sampling (TBS), by definition, requires storing events locally temporarily, such that they can be retrieved and forwarded when a sampling decision is made.
+
+In an APM Server implementation, the events are stored temporarily on disk instead of in memory for better scalability. Therefore, it requires local disk storage proportional to the APM event ingestion rate and additional memory to facilitate disk reads and writes. If the [storage limit](#sampling-tail-storage_limit) is insufficient, sampling will be bypassed.
+
+It is recommended to use fast disks, ideally Solid State Drives (SSD) with high I/O per second (IOPS), when enabling tail-based sampling. Disk throughput and I/O may become performance bottlenecks for tail-based sampling and APM event ingestion overall. Disk writes are proportional to the event ingest rate, while disk reads are proportional to both the event ingest rate and the sampling rate.
+
+To demonstrate the performance overhead and requirements, here are some reference numbers from a standalone APM Server deployed on AWS EC2 under full load that is receiving APM events containing only traces. These numbers assume no backpressure from Elasticsearch and a **10% sample rate in the tail sampling policy**.
+
+:::{important}
+These figures are for reference only and may vary depending on factors such as sampling rate, average event size, and the average number of events per distributed trace.
+:::
+
+Terminology:
+
+* Event Ingestion Rate: The throughput from the APM agent to the APM Server using the Intake v2 protocol (the protocol used by Elastic APM agents), measured in events per second.
+* Event Indexing Rate: The throughput from the APM Server to Elasticsearch, measured in events per second or documents per second. Note that it should roughly be equal to Event Ingestion Rate * Sampling Rate.
+* Memory Usage: The maximum Resident Set Size (RSS) of APM Server process observed throughout the benchmark.
+
+#### APM Server 9.0
+
+| EC2 instance size | TBS and disk configuration                     | Event ingestion rate (events/s) | Event indexing rate (events/s) | Memory usage (GB) | Disk usage (GB) |
+|-------------------|------------------------------------------------|---------------------------------|--------------------------------|-------------------|-----------------|
+| c6id.2xlarge      | TBS disabled                                   | 47220                           | 47220 (100% sampling)          | 0.98              | 0               |
+| c6id.2xlarge      | TBS enabled, EBS gp3 volume with 3000 IOPS     | 21310                           | 2360                           | 1.41              | 13.1            |
+| c6id.2xlarge      | TBS enabled, local NVMe SSD from c6id instance | 21210                           | 2460                           | 1.34              | 12.9            |
+| c6id.4xlarge      | TBS disabled                                   | 142200                          | 142200 (100% sampling)         | 1.12              | 0               |
+| c6id.4xlarge      | TBS enabled, EBS gp3 volume with 3000 IOPS     | 32410                           | 3710                           | 1.71              | 19.4            |
+| c6id.4xlarge      | TBS enabled, local NVMe SSD from c6id instance | 37040                           | 4110                           | 1.73              | 23.6            |
+
+#### APM Server 8.18
+
+| EC2 instance size | TBS and disk configuration                     | Event ingestion rate (events/s) | Event indexing rate (events/s) | Memory usage (GB) | Disk usage (GB) |
+|-------------------|------------------------------------------------|---------------------------------|--------------------------------|-------------------|-----------------|
+| c6id.2xlarge      | TBS disabled                                   | 50260                           | 50270 (100% sampling)          | 0.98              | 0               |
+| c6id.2xlarge      | TBS enabled, EBS gp3 volume with 3000 IOPS     | 10960                           | 50                             | 5.24              | 24.3            |
+| c6id.2xlarge      | TBS enabled, local NVMe SSD from c6id instance | 11450                           | 820                            | 7.19              | 30.6            |
+| c6id.4xlarge      | TBS disabled                                   | 149200                          | 149200 (100% sampling)         | 1.14              | 0               |
+| c6id.4xlarge      | TBS enabled, EBS gp3 volume with 3000 IOPS     | 11990                           | 530                            | 26.57             | 33.6            |
+| c6id.4xlarge      | TBS enabled, local NVMe SSD from c6id instance | 43550                           | 2940                           | 28.76             | 109.6           |
+
+When interpreting these numbers, note that:
+
+* The metrics are inter-related. For example, it is reasonable to see higher memory usage and disk usage when the event ingestion rate is higher.
+* The event ingestion rate and event indexing rate competes for disk IO. This is why there is an outlier data point where APM Server version 8.18 with a 32GB NVMe SSD shows a higher ingest rate but a slower event indexing rate than in 9.0.
+
+The tail-based sampling implementation in version 9.0 offers significantly better performance compared to version 8.18, primarily due to a rewritten storage layer. This new implementation compresses data, as well as cleans up expired data more reliably, resulting in reduced load on disk, memory, and compute resources. This improvement is particularly evident in the event indexing rate on slower disks. In version 8.18, as the database grows larger, the performance slowdown can become disproportionate.
 
 ## Sampled data and visualizations [_sampled_data_and_visualizations]
 

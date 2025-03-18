@@ -44,7 +44,7 @@ Version 9.0.0-beta1 has not yet been released.
 
 Next, create a `heartbeat.yml` configuration file.
 
-The example below shows how to configure an `http` monitor, one of [three types of lightweight monitors](asciidocalypse://docs/beats/docs/reference/heartbeat/configuration-heartbeat-options.md#monitor-types).
+The example below shows how to configure an `http` monitor, one of [three types of lightweight monitors](beats://reference/heartbeat/configuration-heartbeat-options.md#monitor-types).
 
 ```yaml
 heartbeat.monitors:
@@ -60,7 +60,7 @@ heartbeat.monitors:
 1. Each `monitor` gets its own ID in the {{uptime-app}} and its own schedule entry. This allows tests to be run in parallel and analyzed separately.
 
 
-Read more about configuration options in [Configure {{heartbeat}} monitors](asciidocalypse://docs/beats/docs/reference/heartbeat/configuration-heartbeat-options.md).
+Read more about configuration options in [Configure {{heartbeat}} monitors](beats://reference/heartbeat/configuration-heartbeat-options.md).
 
 ::::{warning}
 **Do not use {{heartbeat}} to set up a *new* `browser` monitor.** Instead, use the [{{synthetics-app}}](get-started.md).
