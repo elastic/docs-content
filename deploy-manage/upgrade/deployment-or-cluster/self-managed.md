@@ -1,4 +1,4 @@
-# Upgrade Elastic on self-managed infrastructure
+# Upgrade Elastic on a self-managed cluster
 
 If you've installed the {{stack}} on your own self-managed infrastructure, once you're [prepared to upgrade](/deploy-manage/upgrade/deployment-or-cluster.md#prepare-to-upgrade), you'll need to upgrade each of your Elastic components individually. 
 
