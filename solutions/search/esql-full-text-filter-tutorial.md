@@ -273,7 +273,7 @@ POST /_query?format=txt
 {
   "query": """
     FROM cooking_blog
-    | WHERE tags.keyword == "vegetarian"
+    | WHERE tags.keyword:"vegetarian"
     | KEEP title, author, rating, tags
     | LIMIT 1000
   """
