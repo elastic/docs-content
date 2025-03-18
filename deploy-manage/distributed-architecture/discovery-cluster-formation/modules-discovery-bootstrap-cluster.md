@@ -25,7 +25,6 @@ If you leave `cluster.initial_master_nodes` in place once the cluster has formed
 
 ::::
 
-
 The simplest way to create a new cluster is for you to select one of your master-eligible nodes that will bootstrap itself into a single-node cluster, which all the other nodes will then join. This simple approach is not resilient to failures until the other master-eligible nodes have joined the cluster. For example, if you have a master-eligible node with [node name](../../deploy/self-managed/important-settings-configuration.md#node-name) `master-a` then configure it as follows (omitting `cluster.initial_master_nodes` from the configuration of all other nodes):
 
 ```yaml
@@ -45,7 +44,6 @@ cluster.initial_master_nodes:
 You must set `cluster.initial_master_nodes` to the same list of nodes on each node on which it is set in order to be sure that only a single cluster forms during bootstrapping. If `cluster.initial_master_nodes` varies across the nodes on which it is set then you may bootstrap multiple clusters. It is usually not possible to recover from this situation without losing data.
 ::::
 
-
 ::::{admonition} Node name formats must match
 :name: modules-discovery-bootstrap-cluster-fqdns
 
@@ -62,11 +60,9 @@ This message shows the node names `master-a.example.com` and `master-b.example.c
 
 ::::
 
-
 ## Choosing a cluster name [bootstrap-cluster-name]
 
 The [`cluster.name`](elasticsearch://reference/elasticsearch/configuration-reference/miscellaneous-cluster-settings.md#cluster-name) setting enables you to create multiple clusters which are separated from each other. Nodes verify that they agree on their cluster name when they first connect to each other, and Elasticsearch will only form a cluster from nodes that all have the same cluster name. The default value for the cluster name is `elasticsearch`, but it is recommended to change this to reflect the logical name of the cluster.
-
 
 ## Auto-bootstrapping in development mode [bootstrap-auto-bootstrap]
 
@@ -100,6 +96,3 @@ If you intended to form a new multi-node cluster but instead bootstrapped a coll
 6. Remove `cluster.initial_master_nodes` from every node’s configuration.
 
 ::::
-
-
-

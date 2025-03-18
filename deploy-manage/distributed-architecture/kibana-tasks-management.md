@@ -45,31 +45,17 @@ For detailed troubleshooting guidance, see [Troubleshooting](../../troubleshoot/
 
 ::::
 
-<<<<<<< HEAD
-
-
-=======
->>>>>>> f70338d9 (updates)
 ## Deployment considerations [_deployment_considerations]
 
 {{es}} and {{kib}} instances use the system clock to determine the current time. To ensure schedules are triggered when expected, synchronize the clocks of all nodes in the cluster using a time service such as [Network Time Protocol](http://www.ntp.org/).
 
-<<<<<<< HEAD
-
-=======
->>>>>>> f70338d9 (updates)
 ## Scaling guidance [task-manager-scaling-guidance]
 
 How you deploy {{kib}} largely depends on your use case. Predicting the throughout a deployment might require to support Task Management is difficult because features can schedule an unpredictable number of tasks at a variety of scheduled cadences.
 
 However, there is a relatively straight forward method you can follow to produce a rough estimate based on your expected usage.
 
-<<<<<<< HEAD
-
-### Default scale [task-manager-default-scaling]
-=======
 ### Default scale [task-manager-default-scaling] 
->>>>>>> f70338d9 (updates)
 
 By default, {{kib}} polls for tasks at a rate of 10 tasks every 3 seconds. This means that you can expect a single {{kib}} instance to support up to 200 *tasks per minute* (`200/tpm`).
 
@@ -79,21 +65,11 @@ By [estimating a rough throughput requirement](#task-manager-rough-throughput-es
 
 For details on monitoring the health of {{kib}} Task Manager, follow the guidance in [Health monitoring](../monitor/kibana-task-manager-health-monitoring.md).
 
-<<<<<<< HEAD
-
-### Scaling horizontally [task-manager-scaling-horizontally]
-
-At times, the sustainable approach might be to expand the throughput of your cluster by provisioning additional {{kib}} instances. By default, each additional {{kib}} instance will add an additional 10 tasks that your cluster can run concurrently, but you can also scale each {{kib}} instance vertically, if your diagnosis indicates that they can handle the additional workload.
-
-
-### Scaling vertically [task-manager-scaling-vertically]
-=======
 ### Scaling horizontally [task-manager-scaling-horizontally] 
 
 At times, the sustainable approach might be to expand the throughput of your cluster by provisioning additional {{kib}} instances. By default, each additional {{kib}} instance will add an additional 10 tasks that your cluster can run concurrently, but you can also scale each {{kib}} instance vertically, if your diagnosis indicates that they can handle the additional workload.
 
 ### Scaling vertically [task-manager-scaling-vertically] 
->>>>>>> f70338d9 (updates)
 
 Other times it, might be preferable to increase the throughput of individual {{kib}} instances.
 
@@ -101,12 +77,7 @@ Tweak the capacity with the [`xpack.task_manager.capacity`](kibana://reference/c
 
 Tweak the poll interval with the [`xpack.task_manager.poll_interval`](kibana://reference/configuration-reference/task-manager-settings.md#task-manager-settings) setting, which enables each {{kib}} instance to pull scheduled tasks at a higher rate. This setting can impact the performance of the {{es}} cluster as the workload will be higher.
 
-<<<<<<< HEAD
-
-### Choosing a scaling strategy [task-manager-choosing-scaling-strategy]
-=======
 ### Choosing a scaling strategy [task-manager-choosing-scaling-strategy] 
->>>>>>> f70338d9 (updates)
 
 Each scaling strategy comes with its own considerations, and the appropriate strategy largely depends on your use case.
 
@@ -123,12 +94,7 @@ Task Manager, like the rest of the Elastic Stack, is designed to scale horizonta
 
 Scaling horizontally requires a higher degree of coordination between {{kib}} instances. One way Task Manager coordinates with other instances is by delaying its polling schedule to avoid conflicts with other instances. By using [health monitoring](../monitor/kibana-task-manager-health-monitoring.md) to evaluate the [date of the `last_polling_delay`](../../troubleshoot/kibana/task-manager.md#task-manager-health-evaluate-the-runtime) across a deployment, you can estimate the frequency at which Task Manager resets its delay mechanism. A higher frequency suggests {{kib}} instances conflict at a high rate, which you can address by scaling vertically rather than horizontally, reducing the required coordination.
 
-<<<<<<< HEAD
-
-### Rough throughput estimation [task-manager-rough-throughput-estimation]
-=======
 ### Rough throughput estimation [task-manager-rough-throughput-estimation] 
->>>>>>> f70338d9 (updates)
 
 Predicting the required throughput a deployment might need to support Task Management is difficult, as features can schedule an unpredictable number of tasks at a variety of scheduled cadences. However, a rough lower bound can be estimated, which is then used as a guide.
 
@@ -138,11 +104,6 @@ A default {{kib}} instance can support up to `200/tpm`.
 
 #### Automatic estimation [_automatic_estimation]
 
-<<<<<<< HEAD
-#### Automatic estimation [_automatic_estimation]
-
-=======
->>>>>>> f70338d9 (updates)
 ::::{warning}
 This functionality is in technical preview and may be changed or removed in a future release. Elastic will work to fix any issues, but features in technical preview are not subject to the support SLA of official GA features.
 ::::
@@ -164,11 +125,6 @@ When evaluating the proposed {{kib}} instance number under `proposed.provisioned
 
 ::::
 
-<<<<<<< HEAD
-
-
-=======
->>>>>>> f70338d9 (updates)
 #### Manual estimation [_manual_estimation]
 
 By [evaluating the workload](../../troubleshoot/kibana/task-manager.md#task-manager-health-evaluate-the-workload), you can make a rough estimate as to the required throughput as a *tasks per minute* measurement.

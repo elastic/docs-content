@@ -3,30 +3,11 @@ mapped_urls:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules-allocation.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/shard-allocation-filtering.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/recovery-prioritization.html
+applies_to:
+  stack:
 ---
 
 # Index-level shard allocation
-
-% What needs to be done: Refine
-
-% Scope notes: also reference https://www.elastic.co/guide/en/elasticsearch/reference/current/allocation-total-shards.html and https://www.elastic.co/guide/en/elasticsearch/reference/current/data-tier-shard-filtering.html
-
-% Use migrated content from existing pages that map to this page:
-
-% - [ ] ./raw-migrated-files/elasticsearch/elasticsearch-reference/index-modules-allocation.md
-%      Notes: conceptual content
-% - [ ] ./raw-migrated-files/elasticsearch/elasticsearch-reference/shard-allocation-filtering.md
-%      Notes: conceptual content
-% - [ ] ./raw-migrated-files/elasticsearch/elasticsearch-reference/recovery-prioritization.md
-%      Notes: conceptual content
-
-⚠️ **This page is a work in progress.** ⚠️
-
-The documentation team is working to combine content pulled from the following pages:
-
-* [/raw-migrated-files/elasticsearch/elasticsearch-reference/index-modules-allocation.md](../../../raw-migrated-files/elasticsearch/elasticsearch-reference/index-modules-allocation.md)
-* [/raw-migrated-files/elasticsearch/elasticsearch-reference/shard-allocation-filtering.md](../../../raw-migrated-files/elasticsearch/elasticsearch-reference/shard-allocation-filtering.md)
-* [/raw-migrated-files/elasticsearch/elasticsearch-reference/recovery-prioritization.md](../../../raw-migrated-files/elasticsearch/elasticsearch-reference/recovery-prioritization.md)
 
 In Elasticsearch, per-index settings allow you to control the allocation of shards to nodes through index-level shard allocation settings. These settings enable you to specify preferences or constraints for where shards of a particular index should reside. This includes allocating shards to nodes with specific attributes or avoiding certain nodes. This level of control helps optimize resource utilization, balance load, and ensure data redundancy and availability according to your deployment's specific requirements. In addition to the content in this article, there are additional resources:
 
@@ -45,8 +26,7 @@ The `cluster.routing.allocation` settings are dynamic, enabling existing indices
 
 For example, you could use a custom node attribute to indicate a node’s performance characteristics and use shard allocation filtering to route shards for a particular index to the most appropriate class of hardware.
 
-
-### Enabling index-level shard allocation filtering [index-allocation-filters] 
+### Enabling index-level shard allocation filtering [index-allocation-filters]
 
 To filter based on a custom node attribute:
 
@@ -89,39 +69,25 @@ To filter based on a custom node attribute:
 
 ### Index allocation filter settings [index-allocation-settings]
 
-`index.routing.allocation.include.{{attribute}}`
-:   Assign the index to a node whose `{{attribute}}` has at least one of the comma-separated values.
-
-`index.routing.allocation.require.{{attribute}}`
-:   Assign the index to a node whose `{{attribute}}` has *all* of the comma-separated values.
-
-`index.routing.allocation.exclude.{{attribute}}`
-:   Assign the index to a node whose `{{attribute}}` has *none* of the comma-separated values.
+| Setting | Description |
+|---|---|
+|`index.routing.allocation.include.{{attribute}}`| Assign the index to a node whose `{{attribute}}` has at least one of the comma-separated values.|
+|`index.routing.allocation.require.{{attribute}}`| Assign the index to a node whose `{{attribute}}` has *all* of the comma-separated values.|
+|`index.routing.allocation.exclude.{{attribute}}`| Assign the index to a node whose `{{attribute}}` has *none* of the comma-separated values. |
 
 The index allocation settings support the following built-in attributes:
 
-`_name`
-:   Match nodes by node name
+| Attribute | Description|
+| --- | --- |
+|`_name`| Match nodes by node name |
+|`_host_ip`| Match nodes by host IP address (IP associated with hostname) |
+|`_publish_ip`| Match nodes by publish IP address |
+|`_ip`| Match either `_host_ip` or `_publish_ip` |
+| `_host`| Match nodes by hostname |
+|`_id`| Match nodes by node id |
+|`_tier`| Match nodes by the node’s [data tier](../../../manage-data/lifecycle/data-tiers.md) role. For more details see [data tier allocation filtering](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/data-tier-allocation-settings.md) |
 
-`_host_ip`
-:   Match nodes by host IP address (IP associated with hostname)
-
-`_publish_ip`
-:   Match nodes by publish IP address
-
-`_ip`
-:   Match either `_host_ip` or `_publish_ip`
-
-`_host`
-:   Match nodes by hostname
-
-`_id`
-:   Match nodes by node id
-
-`_tier`
-:   Match nodes by the node’s [data tier](../../../manage-data/lifecycle/data-tiers.md) role. For more details see [data tier allocation filtering](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/data-tier-allocation-settings.md)
-
-::::{note} 
+::::{note}
 `_tier` filtering is based on [node](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/node-settings.md) roles. Only a subset of roles are [data tier](../../../manage-data/lifecycle/data-tiers.md) roles, and the generic [data role](../../../deploy-manage/distributed-architecture/clusters-nodes-shards/node-roles.md#data-node-role) will match any tier filtering.
 ::::
 

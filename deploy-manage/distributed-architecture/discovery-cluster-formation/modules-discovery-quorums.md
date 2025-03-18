@@ -20,14 +20,11 @@ If you stop half or more of the nodes in the voting configuration at the same ti
 
 ::::
 
-
 After a master-eligible node has joined or left the cluster the elected master may issue a cluster-state update that adjusts the voting configuration to match, and this can take a short time to complete. It is important to wait for this adjustment to complete before removing more nodes from the cluster. See [Removing master-eligible nodes](../../maintenance/add-and-remove-elasticsearch-nodes.md#modules-discovery-removing-nodes) for more information.
-
 
 ## Master elections [_master_elections]
 
 Elasticsearch uses an election process to agree on an elected master node, both at startup and if the existing elected master fails. Any master-eligible node can start an election, and normally the first election that takes place will succeed. Elections only usually fail when two nodes both happen to start their elections at about the same time, so elections are scheduled randomly on each node to reduce the probability of this happening. Nodes will retry elections until a master is elected, backing off on failure, so that eventually an election will succeed (with arbitrarily high probability). The scheduling of master elections are controlled by the [master election settings](elasticsearch://reference/elasticsearch/configuration-reference/discovery-cluster-formation-settings.md#master-election-settings).
-
 
 ## Cluster maintenance, rolling restarts and migrations [_cluster_maintenance_rolling_restarts_and_migrations]
 
