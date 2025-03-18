@@ -2,7 +2,7 @@
 navigation_title: "Upgrade on {{eck}}"
 ---
 
-# Upgrade on {{eck}} (ECK)
+# Upgrade your deployment on {{eck}} (ECK)
 
 The ECK orchestrator can safely perform upgrades to newer versions of the {{stack}}. 
 
@@ -138,3 +138,6 @@ ECK will ensure that {{stack}} components are upgraded in the correct order. Upg
 
 Check out [Nodes orchestration](/deploy-manage/deploy/cloud-on-k8s/nodes-orchestration.md) for more information on how ECK manages upgrades and how to tune its behavior.
 
+## Next steps
+
+Once you've successfully upgraded your deployment, [upgrade your ingest components](/deploy-manage/upgrade/ingest-components.md), such as {{ls}}, {{agents}}, or {{beats}}. 
