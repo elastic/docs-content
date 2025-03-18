@@ -14,7 +14,6 @@ toc:
   - file: cloud-on-k8s/cloud-on-k8s/index.md
     children:
       - file: cloud-on-k8s/cloud-on-k8s/k8s-securing-stack.md
-      - file: cloud-on-k8s/cloud-on-k8s/k8s-upgrading-stack.md
   - file: cloud/cloud-enterprise/index.md
     children:
       - file: cloud/cloud-enterprise/ece_re_running_the_ece_upgrade.md
@@ -25,7 +24,6 @@ toc:
       - file: cloud/cloud-enterprise/ece-securing-ece.md
       - file: cloud/cloud-enterprise/ece-snapshots.md
       - file: cloud/cloud-enterprise/ece-terminate-deployment.md
-      - file: cloud/cloud-enterprise/ece-upgrade-deployment.md
       - file: cloud/cloud-enterprise/ece-upgrade.md
   - file: cloud/cloud-heroku/index.md
     children:
@@ -45,7 +43,6 @@ toc:
       - file: cloud/cloud-heroku/ech-restoring-snapshots.md
       - file: cloud/cloud-heroku/ech-security.md
       - file: cloud/cloud-heroku/ech-snapshot-restore.md
-      - file: cloud/cloud-heroku/ech-upgrade-deployment.md
   - file: cloud/cloud/index.md
     children:
       - file: cloud/cloud/ec_service_status_api.md
@@ -78,7 +75,6 @@ toc:
       - file: cloud/cloud/ec-select-subscription-level.md
       - file: cloud/cloud/ec-service-status.md
       - file: cloud/cloud/ec-snapshot-restore.md
-      - file: cloud/cloud/ec-upgrade-deployment.md
   - file: docs-content/serverless/index.md
     children:
       - file: docs-content/serverless/intro.md
@@ -119,9 +115,7 @@ toc:
     children:
       - file: kibana/kibana/apm-settings-kb.md
       - file: kibana/kibana/logging-settings.md
-      - file: kibana/kibana/reporting-production-considerations.md
-      - file: kibana/kibana/upgrade-migrations-rolling-back.md
-      - file: kibana/kibana/upgrade.md      
+      - file: kibana/kibana/reporting-production-considerations.md     
       - file: kibana/kibana/xpack-security.md
   - file: observability-docs/observability/index.md
     children:
@@ -130,8 +124,3 @@ toc:
   - file: stack-docs/elastic-stack/index.md
     children:
       - file: stack-docs/elastic-stack/installing-stack-demo-self.md
-      - file: stack-docs/elastic-stack/upgrade-elastic-stack-for-elastic-cloud.md
-      - file: stack-docs/elastic-stack/upgrading-elastic-stack-on-prem.md
-      - file: stack-docs/elastic-stack/upgrading-elastic-stack.md
-      - file: stack-docs/elastic-stack/upgrading-elasticsearch.md
-      - file: stack-docs/elastic-stack/upgrading-kibana.md
