@@ -18,8 +18,8 @@ Log in to your {{ecloud}} environment:
 
 1. Log in to the [{{ech}} console](https://cloud.elastic.co/login). 
 2. Select your deployment on the home page in the {{ech}} card or go to the **Deployments** page.
-    
-    Narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
+      
+   Narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
 
 
 To upgrade a deployment:
@@ -45,9 +45,6 @@ Security realm settings
     1. On the **Update security realm settings** window, edit the settings.
     2. Click **Update settings**. If the security realm settings are located in `user_settings_override`, contact support to help you upgrade.
 
-### Next steps [next-steps-ech]
+### Next steps
 
-Once you've successfully upgraded on {{ech}}, do the following: 
-
-* [Upgrade Elastic APM](../../../solutions/observability/apps/upgrade.md)
-* [Upgrade your ingest components](/deploy-manage/upgrade/ingest-components.md) 
+Once you've successfully upgraded on {{ech}}, [upgrade your ingest components](/deploy-manage/upgrade/ingest-components.md), such as {{ls}}, {{agents}}, or {{beats}}. 
