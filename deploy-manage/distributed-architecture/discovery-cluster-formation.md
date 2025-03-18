@@ -5,7 +5,9 @@ applies_to:
   stack:
 ---
 
-% Discovery and cluster formation content (7 pages): add introductory note to specify that the endpoints/settings are possibly for self-managed only, and review the content.
+::::{important}
+The information provided in this section is applicable to all deployment types. However, the configuration settings detailed here are only valid for self-managed {{es}} deployments. For {{ecloud}} and {{serverless}} deployments this seciton should only be used for general information.
+::::
 
 # Discovery and cluster formation [modules-discovery]
 

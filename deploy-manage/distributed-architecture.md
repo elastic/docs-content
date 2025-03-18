@@ -6,8 +6,6 @@ applies_to:
   serverless:
 ---
 
-% Update the overview so Kibana is represented too.
-
 % Clarify which topics are relevant for which deployment types (see note from elastic.co/guide/en/elasticsearch/reference/current/nodes-shards.html)
 
 % Explain the role of orchestrators on the Clusters, nodes, and shards page, link up.
@@ -34,4 +32,3 @@ The topics in this section provides information about the architecture of {{es}}
 * [Disocvery and cluster formation](distributed-architecture/discovery-cluster-formation.md): Learn about the cluster formation process including voting, adding nodes and publishing the cluster state.
 * [Shard request cache](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/shard-request-cache-settings.md): Learn how {{es}} caches search requests to improve performance.
 * [Kibana task management](distributed-architecture/kibana-tasks-management.md): Learn how {{kib}} runs background tasks and distribute work across multiple {{kib}} instances to be persistent and scale with your deployment.
-

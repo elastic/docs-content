@@ -71,31 +71,14 @@ Host names are allowed instead of IP addresses and are resolved by DNS as descri
 
 You can also add comments to this file. All comments must appear on their lines starting with `#` (i.e. comments cannot start in the middle of a line).
 
-<<<<<<< HEAD
-
-=======
->>>>>>> a4b41272 (update)
 #### EC2 hosts provider [ec2-hosts-provider]
 
 The [EC2 discovery plugin](elasticsearch://reference/elasticsearch-plugins/discovery-ec2.md) adds a hosts provider that uses the [AWS API](https://github.com/aws/aws-sdk-java) to find a list of seed nodes.
 
-<<<<<<< HEAD
-
-=======
->>>>>>> a4b41272 (update)
 #### Azure Classic hosts provider [azure-classic-hosts-provider]
 
 The [Azure Classic discovery plugin](elasticsearch://reference/elasticsearch-plugins/discovery-azure-classic.md) adds a hosts provider that uses the Azure Classic API find a list of seed nodes.
 
-<<<<<<< HEAD
-
 #### Google Compute Engine hosts provider [gce-hosts-provider]
 
 The [GCE discovery plugin](elasticsearch://reference/elasticsearch-plugins/discovery-gce.md) adds a hosts provider that uses the GCE API find a list of seed nodes.
-
-
-=======
-#### Google Compute Engine hosts provider [gce-hosts-provider] 
-
-The [GCE discovery plugin](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch-plugins/discovery-gce.md) adds a hosts provider that uses the GCE API find a list of seed nodes.
->>>>>>> a4b41272 (update)
