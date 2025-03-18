@@ -819,7 +819,7 @@ These rough calculations give you a lower bound to the required throughput, whic
 
 Given these inferred attributes, it would be safe to assume that a single {{kib}} instance with default settings **would not** provide the required throughput. It is possible that scaling horizontally by adding a couple more {{kib}} instances will.
 
-For details on scaling Task Manager, see [Scaling guidance](../../deploy-manage/production-guidance/.md#task-manager-scaling-guidance).
+For details on scaling Task Manager, see [Scaling guidance](../../deploy-manage/production-guidance/kibana-task-manager-scaling-considerations.md#task-manager-scaling-guidance).
 
 
 ### Evaluate the Capacity Estimation [task-manager-health-evaluate-the-capacity-estimation]
