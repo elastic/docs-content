@@ -96,7 +96,7 @@ When security is enabled, you grant users access to {{report-features}} with [{{
     4. For each application, select **All**, or to customize the privileges, select **Read** and **Customize sub-feature privileges**.
 
         :::{note}
-        If you have a Basic license, sub-feature privileges are unavailable. For details, check out [Grant users access with a Basic license](#grant-user-access-basic).
+        If you have a Basic license, sub-feature privileges are unavailable.
         :::
 
 
