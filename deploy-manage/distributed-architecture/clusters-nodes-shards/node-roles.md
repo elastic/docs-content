@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/node-roles-overview.html
+applies_to:
+  stack:
+  self:
 ---
 
 # Node roles [node-roles-overview]
@@ -8,7 +11,6 @@ mapped_pages:
 Any time that you start an instance of {{es}}, you are starting a *node*. A collection of connected nodes is called a [cluster](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md). If you are running a single node of {{es}}, then you have a cluster of one node. All nodes know about all the other nodes in the cluster and can forward client requests to the appropriate node.
 
 Each node performs one or more roles. Roles control the behavior of the node in the cluster.
-
 
 ## Set node roles [set-node-roles]
 
@@ -30,10 +32,7 @@ You define a node’s roles by setting `node.roles` in [`elasticsearch.yml`](../
 If you set `node.roles`, ensure you specify every node role your cluster needs. Every cluster requires the following node roles:
 
 * `master`
-*
-
-    `data_content` and `data_hot`<br> OR<br> `data`
-
+* `data_content` and `data_hot`<br> OR<br> `data`
 
 Some {{stack}} features also require specific node roles:
 

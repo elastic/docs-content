@@ -104,17 +104,14 @@ toc:
     children:
       - file: elasticsearch/elasticsearch-reference/documents-indices.md
       - file: elasticsearch/elasticsearch-reference/esql-using.md
-      - file: elasticsearch/elasticsearch-reference/index-modules-allocation.md
       - file: elasticsearch/elasticsearch-reference/index-modules-mapper.md
       - file: elasticsearch/elasticsearch-reference/ip-filtering.md
-      - file: elasticsearch/elasticsearch-reference/recovery-prioritization.md
       - file: elasticsearch/elasticsearch-reference/scalability.md
       - file: elasticsearch/elasticsearch-reference/search-with-synonyms.md
       - file: elasticsearch/elasticsearch-reference/secure-cluster.md
       - file: elasticsearch/elasticsearch-reference/security-files.md
       - file: elasticsearch/elasticsearch-reference/security-limitations.md
       - file: elasticsearch/elasticsearch-reference/semantic-search-inference.md
-      - file: elasticsearch/elasticsearch-reference/shard-allocation-filtering.md
       - file: elasticsearch/elasticsearch-reference/shard-request-cache.md
   - file: ingest-docs/fleet/index.md
   - file: ingest-docs/ingest-overview/index.md

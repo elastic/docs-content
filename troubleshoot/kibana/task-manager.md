@@ -50,7 +50,7 @@ For example:
 
 Refer to [Diagnose a root cause for drift](#task-manager-diagnosing-root-cause) for step-by-step instructions on identifying the correct resolution.
 
-*Drift* is often addressed by adjusting the scaling the deployment to better suit your usage. For details on scaling Task Manager, see [Scaling guidance](../../deploy-manage/distributed-architecture/kibana-tasks-management.md#task-manager-scaling-guidance).
+*Drift* is often addressed by adjusting the scaling the deployment to better suit your usage. For details on scaling Task Manager, see [Scaling guidance](../../deploy-manage//production-guidance/kibana-task-manager-scaling-considerations.md#task-manager-scaling-guidance).
 
 ## Diagnose a root cause for drift [task-manager-diagnosing-root-cause]
 
@@ -489,7 +489,7 @@ You can infer from these stats that this {{kib}} is using most of its capacity, 
 * The `p90` of `load` is at 100%, and `p50` is also quite high at 80%. This means that there is little to no room for maneuvering, and a spike of work might cause Task Manager to exceed its capacity.
 * Tasks run soon after their scheduled time, which is to be expected. A `poll_interval` of `3000` milliseconds would often experience a consistent drift of somewhere between `0` and `3000` milliseconds. A `p50 drift` of `2999` suggests that there is room for improvement, and you could benefit from a higher throughput.
 
-For details on achieving higher throughput by adjusting your scaling strategy, see [Scaling guidance](../../deploy-manage/distributed-architecture/kibana-tasks-management.md#task-manager-scaling-guidance).
+For details on achieving higher throughput by adjusting your scaling strategy, see [Scaling guidance](../../deploy-manage/production-guidance/kibana-task-manager-scaling-considerations.md#task-manager-scaling-guidance).
 
 $$$task-manager-theory-long-running-tasks$$$
 **Theory**: Tasks run for too long, overrunning their schedule
@@ -665,7 +665,7 @@ Keep in mind that these stats give you a glimpse at a moment in time, and even t
 
 Predicting the required throughput a deployment might need to support Task Manager is difficult, as features can schedule an unpredictable number of tasks at a variety of scheduled cadences.
 
-[Health monitoring](../../deploy-manage/monitor/kibana-task-manager-health-monitoring.md) provides statistics that make it easier to monitor the adequacy of the existing throughput. By evaluating the workload, the required throughput can be estimated, which is used when following the Task Manager [Scaling guidance](../../deploy-manage/distributed-architecture/kibana-tasks-management.md#task-manager-scaling-guidance).
+[Health monitoring](../../deploy-manage/monitor/kibana-task-manager-health-monitoring.md) provides statistics that make it easier to monitor the adequacy of the existing throughput. By evaluating the workload, the required throughput can be estimated, which is used when following the Task Manager [Scaling guidance](../../deploy-manage/production-guidance/kibana-task-manager-scaling-considerations.md#task-manager-scaling-guidance).
 
 Evaluating the preceding health stats in the previous example, you see the following output under `stats.workload.value`:
 
@@ -819,7 +819,7 @@ These rough calculations give you a lower bound to the required throughput, whic
 
 Given these inferred attributes, it would be safe to assume that a single {{kib}} instance with default settings **would not** provide the required throughput. It is possible that scaling horizontally by adding a couple more {{kib}} instances will.
 
-For details on scaling Task Manager, see [Scaling guidance](../../deploy-manage/distributed-architecture/kibana-tasks-management.md#task-manager-scaling-guidance).
+For details on scaling Task Manager, see [Scaling guidance](../../deploy-manage/production-guidance/kibana-task-manager-scaling-considerations.md#task-manager-scaling-guidance).
 
 
 ### Evaluate the Capacity Estimation [task-manager-health-evaluate-the-capacity-estimation]
@@ -828,7 +828,7 @@ Task Manager is constantly evaluating its runtime operations and workload. This 
 
 As the name suggests, these are estimates based on historical data and should not be used as predictions. These estimations should be evaluated alongside the detailed [Health monitoring](../../deploy-manage/monitor/kibana-task-manager-health-monitoring.md) stats before making changes to infrastructure. These estimations assume all {{kib}} instances are configured identically.
 
-We recommend using these estimations when following the Task Manager [Scaling guidance](../../deploy-manage/distributed-architecture/kibana-tasks-management.md#task-manager-scaling-guidance).
+We recommend using these estimations when following the Task Manager [Scaling guidance](../../deploy-manage/production-guidance/kibana-task-manager-scaling-considerations.md#task-manager-scaling-guidance).
 
 Evaluating the health stats in the previous example, you can see the following output under `stats.capacity_estimation.value`:
 
@@ -912,7 +912,7 @@ Evaluating by these estimates, we can infer some interesting attributes of our s
 
 You can infer from these estimates that the capacity in the current system is insufficient and at least one additional {{kib}} instance is required to keep up with the workload.
 
-For details on scaling Task Manager, see [Scaling guidance](../../deploy-manage/distributed-architecture/kibana-tasks-management.md#task-manager-scaling-guidance).
+For details on scaling Task Manager, see [Scaling guidance](../../deploy-manage/production-guidance/kibana-task-manager-scaling-considerations.md#task-manager-scaling-guidance).
 
 
 ### Inline scripts are disabled in {{es}} [task-manager-cannot-operate-when-inline-scripts-are-disabled]
