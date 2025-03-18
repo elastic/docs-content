@@ -812,6 +812,8 @@ toc:
             children:
               - file: upgrade/deployment-or-cluster/elasticsearch.md
               - file: upgrade/deployment-or-cluster/kibana.md
+                children:
+                  - file: upgrade/deployment-or-cluster/kibana-roll-back.md
           - file: upgrade/deployment-or-cluster/archived-settings.md
             children:
               - file: upgrade/deployment-or-cluster/reading-indices-from-older-elasticsearch-versions.md
