@@ -146,7 +146,7 @@ To demonstrate the performance overhead and requirements, here are some referenc
 Terminology:
 
 * Event Ingestion Rate: The throughput from the APM agent to the APM Server using the Intake v2 protocol (the protocol used by Elastic APM agents), measured in events per second.
-* Event Indexing Rate: The throughput from the APM Server to Elasticsearch, measured in events per second or documents per second.
+* Event Indexing Rate: The throughput from the APM Server to Elasticsearch, measured in events per second or documents per second. Note that it should roughly be equal to Event Ingestion Rate * Sampling Rate.
 * Memory Usage: The maximum Resident Set Size (RSS) of APM Server process observed throughout the benchmark.
 
 | APM Server version | EC2 instance size | TBS and disk configuration                     | Event ingestion rate (events/s) | Event indexing rate (events/s) | Memory usage (GB) | Disk usage (GB) |
