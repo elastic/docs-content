@@ -13,6 +13,10 @@ For {{ech}} deployments, cluster performance metrics are available directly in t
 
 For advanced views or production monitoring, [enable logging and monitoring](/deploy-manage/monitor/stack-monitoring/ece-ech-stack-monitoring.md). The monitoring application provides more advanced views for {{es}} and JVM metrics, and includes a configurable retention period.
 
+:::{tip}
+For {{ece}} deployments, you can use [platform monitoring](/deploy-manage/monitor/orchestrators/ece-platform-monitoring.md) to access preconfigured performance metrics.
+::: 
+
 To access cluster performance metrics:
 
 1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).

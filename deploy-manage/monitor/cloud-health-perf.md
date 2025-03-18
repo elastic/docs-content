@@ -88,15 +88,23 @@ The **Performance** page and the out-of-the-box logs allow you to monitor your c
 
 ## Preconfigured logs and metrics [ec-es-health-preconfigured]
 
-In a non-production environment, you may choose to rely on the logs and metrics that are available for your deployment by default. The deployment **Logs and metrics** page displays any current deployment health warnings, and from there you can also view standard log files from the last 24 hours.
-
-The logs capture any activity related to your deployments, their component resources, snapshotting behavior, and more. You can use the search bar to filter the logs by, for example, a specific instance (`instance-0000000005`), a configuration file (`roles.yml`), an operation type (`snapshot`, `autoscaling`), or a component (`kibana`, `ent-search`).
+Both {{ech}} and {{ece}} offer preconfigured logs and metrics that you can access to get insight into your deployment's performance.
 
 :::{tip} Monitoring in production environments
 In a production environment, it’s important set up dedicated health monitoring using [stack monitoring](/deploy-manage/monitor/stack-monitoring/ece-ech-stack-monitoring.md). Stack monitoring allows you to retain the logs and metrics that can be used to troubleshoot any health issues in your deployments. In the event of that you need to [contact our support team](/troubleshoot/index.md#contact-us), they can use the retained data to help diagnose any problems that you may encounter.
 
 You have the option of sending logs and metrics to a separate, specialized monitoring deployment, which ensures that they’re available in the event of a deployment outage. The monitoring deployment also gives you access to {{kib}} stack monitoring features, through which you can view health and performance data for all of your deployment resources.
 :::
+
+### In {{ech}}
+
+In a non-production {{ech}} environment, you may choose to rely on the logs and metrics that are available for your deployment by default. The deployment **Logs and metrics** page displays any current deployment health warnings, and from there you can also view standard log files from the last 24 hours.
+
+The logs capture any activity related to your deployments, their component resources, snapshotting behavior, and more. You can use the search bar to filter the logs by, for example, a specific instance (`instance-0000000005`), a configuration file (`roles.yml`), an operation type (`snapshot`, `autoscaling`), or a component (`kibana`, `ent-search`).
+
+### In {{ece}}
+
+In {{ece}}, you can use [platform monitoring](/deploy-manage/monitor/orchestrators/ece-platform-monitoring.md) to view deployment logs and metrics as well as proxy logs. From your deployment page, select either the **Elasticsearch**, **Kibana**, and **Integrations Server** components, and use the external links to access each service's logs and metrics, including the associated proxy logs.
 
 ## Understanding deployment health [ec-health-best-practices]
 
