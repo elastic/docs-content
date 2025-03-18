@@ -14,7 +14,7 @@ In Elasticsearch, per-index settings allow you to control the allocation of shar
 * [Shard allocation filtering](../../../deploy-manage/distributed-architecture/shard-allocation-relocation-recovery/index-level-shard-allocation.md): Controlling which shards are allocated to which nodes.
 * [Delayed allocation](../../../deploy-manage/distributed-architecture/shard-allocation-relocation-recovery/delaying-allocation-when-node-leaves.md): Delaying allocation of unassigned shards caused by a node leaving.
 * [Total shards per node](elasticsearch://reference/elasticsearch/index-settings/total-shards-per-node.md): A hard limit on the number of shards from the same index per node.
-* [Data tier allocation](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/data-tier-allocation-settings.md): Controls the allocation of indices to [data tiers](../../../manage-data/lifecycle/data-tiers.md).
+* [Data tier allocation](elasticsearch://reference/elasticsearch/index-settings/data-tier-allocation.md): Controls the allocation of indices to [data tiers](../../../manage-data/lifecycle/data-tiers.md).
 
 ## Index-level shard allocation filtering [shard-allocation-filtering]
 
@@ -85,7 +85,7 @@ The index allocation settings support the following built-in attributes:
 |`_ip`| Match either `_host_ip` or `_publish_ip` |
 | `_host`| Match nodes by hostname |
 |`_id`| Match nodes by node id |
-|`_tier`| Match nodes by the node’s [data tier](../../../manage-data/lifecycle/data-tiers.md) role. For more details see [data tier allocation filtering](elasticsearch://reference/elasticsearch/index-settings/data-tier-allocation-settings.md) |
+|`_tier`| Match nodes by the node’s [data tier](../../../manage-data/lifecycle/data-tiers.md) role. For more details see [data tier allocation filtering](elasticsearch://reference/elasticsearch/index-settings/data-tier-allocation.md) |
 
 ::::{note}
 `_tier` filtering is based on [node](elasticsearch://reference/elasticsearch/configuration-reference/node-settings.md) roles. Only a subset of roles are [data tier](../../../manage-data/lifecycle/data-tiers.md) roles, and the generic [data role](../../../deploy-manage/distributed-architecture/clusters-nodes-shards/node-roles.md#data-node-role) will match any tier filtering.
