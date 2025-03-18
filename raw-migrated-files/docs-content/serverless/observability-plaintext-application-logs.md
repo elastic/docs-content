@@ -116,7 +116,7 @@ output.elasticsearch:
     }
     ```
 
-    Refer to [Grant access using API keys](asciidocalypse://docs/beats/docs/reference/filebeat/beats-api-keys.md) for more information.
+    Refer to [Grant access using API keys](beats://reference/filebeat/beats-api-keys.md) for more information.
 
 
 
@@ -200,7 +200,7 @@ sudo ./filebeat -e
 ```
 
 ::::{note}
-You’ll be running {{filebeat}} as root, so you need to change ownership of the configuration file and any configurations enabled in the `modules.d` directory, or run {{filebeat}} with `--strict.perms=false` specified. Refer to [Config file ownership and permissions](asciidocalypse://docs/beats/docs/reference/libbeat/config-file-permissions.md).
+You’ll be running {{filebeat}} as root, so you need to change ownership of the configuration file and any configurations enabled in the `modules.d` directory, or run {{filebeat}} with `--strict.perms=false` specified. Refer to [Config file ownership and permissions](beats://reference/libbeat/config-file-permissions.md).
 
 ::::
 ::::::
@@ -212,7 +212,7 @@ sudo ./filebeat -e
 ```
 
 ::::{note}
-You’ll be running {{filebeat}} as root, so you need to change ownership of the configuration file and any configurations enabled in the `modules.d` directory, or run {{filebeat}} with `--strict.perms=false` specified. Refer to [Config file ownership and permissions](asciidocalypse://docs/beats/docs/reference/libbeat/config-file-permissions.md).
+You’ll be running {{filebeat}} as root, so you need to change ownership of the configuration file and any configurations enabled in the `modules.d` directory, or run {{filebeat}} with `--strict.perms=false` specified. Refer to [Config file ownership and permissions](beats://reference/libbeat/config-file-permissions.md).
 
 ::::
 ::::::
@@ -231,12 +231,12 @@ sudo service filebeat start
 ```
 
 ::::{note}
-If you use an init.d script to start {{filebeat}}, you can’t specify command line flags (refer to [Command reference](asciidocalypse://docs/beats/docs/reference/filebeat/command-line-options.md)). To specify flags, start {{filebeat}} in the foreground.
+If you use an init.d script to start {{filebeat}}, you can’t specify command line flags (refer to [Command reference](beats://reference/filebeat/command-line-options.md)). To specify flags, start {{filebeat}} in the foreground.
 
 ::::
 
 
-Also, refer to [{{filebeat}} and systemd](asciidocalypse://docs/beats/docs/reference/filebeat/running-with-systemd.md).
+Also, refer to [{{filebeat}} and systemd](beats://reference/filebeat/running-with-systemd.md).
 ::::::
 
 ::::::{tab-item} RPM
@@ -245,12 +245,12 @@ sudo service filebeat start
 ```
 
 ::::{note}
-If you use an init.d script to start {{filebeat}}, you can’t specify command line flags (refer to [Command reference](asciidocalypse://docs/beats/docs/reference/filebeat/command-line-options.md)). To specify flags, start {{filebeat}} in the foreground.
+If you use an init.d script to start {{filebeat}}, you can’t specify command line flags (refer to [Command reference](beats://reference/filebeat/command-line-options.md)). To specify flags, start {{filebeat}} in the foreground.
 
 ::::
 
 
-Also, refer to [{{filebeat}} and systemd](asciidocalypse://docs/beats/docs/reference/filebeat/running-with-systemd.md).
+Also, refer to [{{filebeat}} and systemd](beats://reference/filebeat/running-with-systemd.md).
 ::::::
 
 :::::::

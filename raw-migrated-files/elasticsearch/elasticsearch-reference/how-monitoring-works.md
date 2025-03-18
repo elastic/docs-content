@@ -23,12 +23,12 @@ To learn how to collect monitoring data, refer to:
 * [Monitoring {{ls}}](logstash://reference/monitoring-logstash-legacy.md)
 * Monitoring {{beats}}:
 
-    * [{{auditbeat}}](asciidocalypse://docs/beats/docs/reference/auditbeat/monitoring.md)
-    * [{{filebeat}}](asciidocalypse://docs/beats/docs/reference/filebeat/monitoring.md)
-    * [{{heartbeat}}](asciidocalypse://docs/beats/docs/reference/heartbeat/monitoring.md)
-    * [{{metricbeat}}](asciidocalypse://docs/beats/docs/reference/metricbeat/monitoring.md)
-    * [{{packetbeat}}](asciidocalypse://docs/beats/docs/reference/packetbeat/monitoring.md)
-    * [{{winlogbeat}}](asciidocalypse://docs/beats/docs/reference/winlogbeat/monitoring.md)
+    * [{{auditbeat}}](beats://reference/auditbeat/monitoring.md)
+    * [{{filebeat}}](beats://reference/filebeat/monitoring.md)
+    * [{{heartbeat}}](beats://reference/heartbeat/monitoring.md)
+    * [{{metricbeat}}](beats://reference/metricbeat/monitoring.md)
+    * [{{packetbeat}}](beats://reference/packetbeat/monitoring.md)
+    * [{{winlogbeat}}](beats://reference/winlogbeat/monitoring.md)
 
 * [Monitoring APM Server](/solutions/observability/apps/monitor-apm-server.md)
 * [Monitoring {{agent}}s](/reference/ingestion-tools/fleet/monitor-elastic-agent.md) {{fleet}}-managed agents) or [Configure monitoring for standalone {{agent}}s](/reference/ingestion-tools/fleet/elastic-agent-monitoring-configuration.md)

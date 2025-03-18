@@ -78,7 +78,7 @@ See the [{{agent}} command reference](/reference/ingestion-tools/fleet/agent-com
 
 ## Install and configure {{metricbeat}} to collect monitoring data [apm-install-config-metricbeat]
 
-1. Install {{metricbeat}} on the same server as {{agent}}. To learn how, see [Get started with {{metricbeat}}](asciidocalypse://docs/beats/docs/reference/metricbeat/metricbeat-installation-configuration.md). If you already have {{metricbeat}} installed, skip this step.
+1. Install {{metricbeat}} on the same server as {{agent}}. To learn how, see [Get started with {{metricbeat}}](beats://reference/metricbeat/metricbeat-installation-configuration.md). If you already have {{metricbeat}} installed, skip this step.
 2. Enable the `beat-xpack` module in {{metricbeat}}.
 
     For example, to enable the default configuration in the `modules.d` directory, run the following command, using the correct command syntax for your OS:
@@ -87,7 +87,7 @@ See the [{{agent}} command reference](/reference/ingestion-tools/fleet/agent-com
     metricbeat modules enable beat-xpack
     ```
 
-    For more information, see [Configure modules](asciidocalypse://docs/beats/docs/reference/metricbeat/configuration-metricbeat.md) and [beat module](asciidocalypse://docs/beats/docs/reference/metricbeat/metricbeat-module-beat.md).
+    For more information, see [Configure modules](beats://reference/metricbeat/configuration-metricbeat.md) and [beat module](beats://reference/metricbeat/metricbeat-module-beat.md).
 
 3. Configure the `beat-xpack` module in {{metricbeat}}.
 
@@ -122,7 +122,7 @@ See the [{{agent}} command reference](/reference/ingestion-tools/fleet/agent-com
 
 4. Optional: Disable the system module in the {{metricbeat}}.
 
-    By default, the [system module](asciidocalypse://docs/beats/docs/reference/metricbeat/metricbeat-module-system.md) is enabled. The information it collects, however, is not shown on the **{{stack-monitor-app}}** page in {{kib}}. Unless you want to use that information for other purposes, run the following command:
+    By default, the [system module](beats://reference/metricbeat/metricbeat-module-system.md) is enabled. The information it collects, however, is not shown on the **{{stack-monitor-app}}** page in {{kib}}. Unless you want to use that information for other purposes, run the following command:
 
     ```sh
     metricbeat modules disable system
@@ -165,7 +165,7 @@ See the [{{agent}} command reference](/reference/ingestion-tools/fleet/agent-com
     1. Create a user on the monitoring cluster that has the `remote_monitoring_agent` [built-in role](../../../deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md). Alternatively, if it’s available in your environment, use the `remote_monitoring_user` [built-in user](../../../deploy-manage/users-roles/cluster-or-deployment-auth/built-in-users.md).
     2. Add the `username` and `password` settings to the {{es}} output information in the {{metricbeat}} configuration file.
 
-    For more information about these configuration options, see [Configure the {{es}} output](asciidocalypse://docs/beats/docs/reference/metricbeat/elasticsearch-output.md).
+    For more information about these configuration options, see [Configure the {{es}} output](beats://reference/metricbeat/elasticsearch-output.md).
 
-6. [Start {{metricbeat}}](asciidocalypse://docs/beats/docs/reference/metricbeat/metricbeat-starting.md) to begin collecting APM monitoring data.
+6. [Start {{metricbeat}}](beats://reference/metricbeat/metricbeat-starting.md) to begin collecting APM monitoring data.
 7. [View the monitoring data in {{kib}}](../../../deploy-manage/monitor/stack-monitoring/kibana-monitoring-data.md).

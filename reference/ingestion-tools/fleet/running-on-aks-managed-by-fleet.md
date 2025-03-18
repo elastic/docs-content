@@ -16,7 +16,7 @@ On managed Kubernetes solutions like AKS, {{agent}} has no access to several dat
 2. **Audit logs** are available only on Kubernetes master nodes as well, hence cannot be collected by {{agent}}.
 3. Fields `orchestrator.cluster.name` and `orchestrator.cluster.url` are not populated. `orchestrator.cluster.name` field is used as a cluster selector for default Kubernetes dashboards, shipped with [Kubernetes integration](asciidocalypse://docs/integration-docs/docs/reference/kubernetes.md).
 
-    In this regard, you can use [`add_fields` processor](asciidocalypse://docs/beats/docs/reference/filebeat/add-fields.md) to add `orchestrator.cluster.name` and `orchestrator.cluster.url` fields for each [Kubernetes integration](asciidocalypse://docs/integration-docs/docs/reference/kubernetes.md)'s component:
+    In this regard, you can use [`add_fields` processor](beats://reference/filebeat/add-fields.md) to add `orchestrator.cluster.name` and `orchestrator.cluster.url` fields for each [Kubernetes integration](asciidocalypse://docs/integration-docs/docs/reference/kubernetes.md)'s component:
 
     ```yaml
     - add_fields:

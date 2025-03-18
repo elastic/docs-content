@@ -61,7 +61,7 @@ Using Automatic Import allows users to create new third-party data integrations 
 5. Define how your new integration will appear on the Integrations page by providing a **Title**, **Description**, and **Logo**.  Click **Next**.
 6. Define your integration’s package name, which will prefix the imported event fields.
 7. Define your **Data stream title**, **Data stream description**, and **Data stream name**. These fields appear on the integration’s configuration page to help identify the data stream it writes to.
-8. Select your [**Data collection method**](asciidocalypse://docs/beats/docs/reference/filebeat/configuration-filebeat-options.md). This determines how your new integration will ingest the data (for example, from an S3 bucket, an HTTP endpoint, or a file stream).
+8. Select your [**Data collection method**](beats://reference/filebeat/configuration-filebeat-options.md). This determines how your new integration will ingest the data (for example, from an S3 bucket, an HTTP endpoint, or a file stream).
 
    ::::{admonition} Importing CEL data
    :class: note

@@ -148,7 +148,7 @@ output.elasticsearch:
     }
     ```
 
-    Refer to [Grant access using API keys](asciidocalypse://docs/beats/docs/reference/filebeat/beats-api-keys.md) for more information.
+    Refer to [Grant access using API keys](beats://reference/filebeat/beats-api-keys.md) for more information.
 
 
 
@@ -187,13 +187,13 @@ processors:   <6>
 3. {{filebeat}} adds an "error.message" and "error.type: json" key in case of JSON unmarshalling errors.
 4. {{filebeat}} will recursively de-dot keys in the decoded JSON, and expand them into a hierarchical object structure.
 5. The `service.name` (required), `service.version` (optional) and `service.environment` (optional) of the service you’re collecting logs from, used for [Log correlation](../../../solutions/observability/logs/stream-application-logs.md#observability-correlate-application-logs-log-correlation).
-6. Processors enhance your data. See [processors](asciidocalypse://docs/beats/docs/reference/filebeat/filtering-enhancing-data.md) to learn more.
+6. Processors enhance your data. See [processors](beats://reference/filebeat/filtering-enhancing-data.md) to learn more.
 ::::::
 
 ::::::{tab-item} Kubernetes
 1. Make sure your application logs to stdout/stderr.
-2. Follow the [Run {{filebeat}} on Kubernetes](asciidocalypse://docs/beats/docs/reference/filebeat/running-on-kubernetes.md) guide.
-3. Enable [hints-based autodiscover](asciidocalypse://docs/beats/docs/reference/filebeat/configuration-autodiscover-hints.md) (uncomment the corresponding section in `filebeat-kubernetes.yaml`).
+2. Follow the [Run {{filebeat}} on Kubernetes](beats://reference/filebeat/running-on-kubernetes.md) guide.
+3. Enable [hints-based autodiscover](beats://reference/filebeat/configuration-autodiscover-hints.md) (uncomment the corresponding section in `filebeat-kubernetes.yaml`).
 4. Add these annotations to your pods that log using ECS-compatible JSON. This will make sure the logs are parsed appropriately.
 
     ```yaml
@@ -210,8 +210,8 @@ processors:   <6>
 
 ::::::{tab-item} Docker
 1. Make sure your application logs to stdout/stderr.
-2. Follow the [Run {{filebeat}} on Docker](asciidocalypse://docs/beats/docs/reference/filebeat/running-on-docker.md) guide.
-3. Enable [hints-based autodiscover](asciidocalypse://docs/beats/docs/reference/filebeat/configuration-autodiscover-hints.md).
+2. Follow the [Run {{filebeat}} on Docker](beats://reference/filebeat/running-on-docker.md) guide.
+3. Enable [hints-based autodiscover](beats://reference/filebeat/configuration-autodiscover-hints.md).
 4. Add these labels to your containers that log using ECS-compatible JSON. This will make sure the logs are parsed appropriately. In `docker-compose.yml`:
 
 ```yaml
@@ -276,7 +276,7 @@ sudo ./filebeat -e
 ```
 
 ::::{note}
-You’ll be running {{filebeat}} as root, so you need to change ownership of the configuration file and any configurations enabled in the `modules.d` directory, or run {{filebeat}} with `--strict.perms=false` specified. Refer to [Config file ownership and permissions](asciidocalypse://docs/beats/docs/reference/libbeat/config-file-permissions.md).
+You’ll be running {{filebeat}} as root, so you need to change ownership of the configuration file and any configurations enabled in the `modules.d` directory, or run {{filebeat}} with `--strict.perms=false` specified. Refer to [Config file ownership and permissions](beats://reference/libbeat/config-file-permissions.md).
 
 ::::
 ::::::
@@ -288,7 +288,7 @@ sudo ./filebeat -e
 ```
 
 ::::{note}
-You’ll be running {{filebeat}} as root, so you need to change ownership of the configuration file and any configurations enabled in the `modules.d` directory, or run {{filebeat}} with `--strict.perms=false` specified. Refer to [Config file ownership and permissions](asciidocalypse://docs/beats/docs/reference/libbeat/config-file-permissions.md).
+You’ll be running {{filebeat}} as root, so you need to change ownership of the configuration file and any configurations enabled in the `modules.d` directory, or run {{filebeat}} with `--strict.perms=false` specified. Refer to [Config file ownership and permissions](beats://reference/libbeat/config-file-permissions.md).
 
 ::::
 ::::::
@@ -307,12 +307,12 @@ sudo service filebeat start
 ```
 
 ::::{note}
-If you use an init.d script to start {{filebeat}}, you can’t specify command line flags (refer to [Command reference](asciidocalypse://docs/beats/docs/reference/filebeat/command-line-options.md)). To specify flags, start {{filebeat}} in the foreground.
+If you use an init.d script to start {{filebeat}}, you can’t specify command line flags (refer to [Command reference](beats://reference/filebeat/command-line-options.md)). To specify flags, start {{filebeat}} in the foreground.
 
 ::::
 
 
-Also, refer to [{{filebeat}} and systemd](asciidocalypse://docs/beats/docs/reference/filebeat/running-with-systemd.md).
+Also, refer to [{{filebeat}} and systemd](beats://reference/filebeat/running-with-systemd.md).
 ::::::
 
 ::::::{tab-item} RPM
@@ -321,12 +321,12 @@ sudo service filebeat start
 ```
 
 ::::{note}
-If you use an init.d script to start {{filebeat}}, you can’t specify command line flags (refer to [Command reference](asciidocalypse://docs/beats/docs/reference/filebeat/command-line-options.md)). To specify flags, start {{filebeat}} in the foreground.
+If you use an init.d script to start {{filebeat}}, you can’t specify command line flags (refer to [Command reference](beats://reference/filebeat/command-line-options.md)). To specify flags, start {{filebeat}} in the foreground.
 
 ::::
 
 
-Also, refer to [{{filebeat}} and systemd](asciidocalypse://docs/beats/docs/reference/filebeat/running-with-systemd.md).
+Also, refer to [{{filebeat}} and systemd](beats://reference/filebeat/running-with-systemd.md).
 ::::::
 
 :::::::
@@ -350,7 +350,7 @@ To add the custom logs integration to your project:
 
     ![Screenshot of advanced options location](../../../images/serverless-custom-logs-advanced-options.png "")
 
-8. In the **Processors** text box, add the following YAML configuration to add processors that enhance your data. See [processors](asciidocalypse://docs/beats/docs/reference/filebeat/filtering-enhancing-data.md) to learn more.
+8. In the **Processors** text box, add the following YAML configuration to add processors that enhance your data. See [processors](beats://reference/filebeat/filtering-enhancing-data.md) to learn more.
 
     ```yaml
     processors:

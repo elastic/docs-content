@@ -133,5 +133,5 @@ If you want to add your network’s internal IP addresses to the map, define geo
 
 
 ::::{tip}
-You can also enrich your data with other [host fields](asciidocalypse://docs/beats/docs/reference/packetbeat/add-host-metadata.md).
+You can also enrich your data with other [host fields](beats://reference/packetbeat/add-host-metadata.md).
 ::::

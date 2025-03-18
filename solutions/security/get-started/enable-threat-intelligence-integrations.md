@@ -51,10 +51,10 @@ There are a few scenarios when data won’t display in the Threat Intelligence v
 
 % Substeps in step 2 will require inline versioning. Remember to update them when we have more guidance on handling line-level differences.
 
-1. Set up the [{{filebeat}} agent](asciidocalypse://docs/beats/docs/reference/filebeat/filebeat-installation-configuration.md) and enable the Threat Intel module.
+1. Set up the [{{filebeat}} agent](beats://reference/filebeat/filebeat-installation-configuration.md) and enable the Threat Intel module.
 
     ::::{note}
-    For more information about enabling available threat intelligence filesets, refer to [Threat Intel module](asciidocalypse://docs/beats/docs/reference/filebeat/filebeat-module-threatintel.md).
+    For more information about enabling available threat intelligence filesets, refer to [Threat Intel module](beats://reference/filebeat/filebeat-module-threatintel.md).
 
     ::::
 
