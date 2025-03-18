@@ -136,7 +136,6 @@ toc:
       - file: kibana/kibana/apm-settings-kb.md
       - file: kibana/kibana/logging-settings.md
       - file: kibana/kibana/reporting-production-considerations.md
-      - file: kibana/kibana/secure-reporting.md
       - file: kibana/kibana/upgrade-migrations-rolling-back.md
       - file: kibana/kibana/upgrade.md      
       - file: kibana/kibana/xpack-security.md

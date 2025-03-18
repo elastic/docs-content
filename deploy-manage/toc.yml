@@ -331,7 +331,6 @@ toc:
           - file: deploy/self-managed/access-kibana.md
           - file: deploy/self-managed/air-gapped-install.md
           - file: deploy/self-managed/tools-apis.md
-      - file: deploy/kibana-reporting-configuration.md
   - file: distributed-architecture.md
     children:
       - file: distributed-architecture/clusters-nodes-shards.md
@@ -744,6 +743,7 @@ toc:
             children:
               - file: monitor/logging-configuration/kibana-log-settings-examples.md
               - file: monitor/logging-configuration/kibana-logging-cli-configuration.md
+  - file: kibana-reporting-configuration.md
   - file: cloud-organization.md
     children:
       - file: cloud-organization/billing.md
@@ -795,16 +795,17 @@ toc:
       - file: maintenance/add-and-remove-elasticsearch-nodes.md
   - file: upgrade.md
     children:
-      - file: upgrade/prepare-to-upgrade.md
-        children:
-          - file: upgrade/prepare-to-upgrade/upgrade-assistant.md
-          - file: upgrade/prepare-to-upgrade/index-compatibility.md
+      - file: upgrade/plan-upgrade.md
       - file: upgrade/orchestrator.md
         children:
           - file: upgrade/orchestrator/upgrade-cloud-enterprise.md
             children:
               - file: upgrade/orchestrator/re-running-the-ece-upgrade.md
           - file: upgrade/orchestrator/upgrade-cloud-on-k8s.md
+      - file: upgrade/prepare-to-upgrade.md
+        children:
+          - file: upgrade/prepare-to-upgrade/upgrade-assistant.md
+          - file: upgrade/prepare-to-upgrade/index-compatibility.md
       - file: upgrade/deployment-or-cluster.md
         children:
           - file: upgrade/deployment-or-cluster/upgrade-on-ech.md
@@ -813,12 +814,12 @@ toc:
           - file: upgrade/deployment-or-cluster/self-managed.md
             children:
               - file: upgrade/deployment-or-cluster/elasticsearch.md
+                children:
+                  - file: upgrade/deployment-or-cluster/archived-settings.md
+                  - file: upgrade/deployment-or-cluster/reading-indices-from-older-elasticsearch-versions.md
               - file: upgrade/deployment-or-cluster/kibana.md
                 children:
-                  - file: upgrade/deployment-or-cluster/kibana-roll-back.md
-          - file: upgrade/deployment-or-cluster/archived-settings.md
-            children:
-              - file: upgrade/deployment-or-cluster/reading-indices-from-older-elasticsearch-versions.md
+                  - file: upgrade/deployment-or-cluster/kibana-roll-back.md    
       - file: upgrade/ingest-components.md
       - file: upgrade/internal-upgrade-processes.md
         children:
