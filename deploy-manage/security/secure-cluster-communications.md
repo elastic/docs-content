@@ -1,4 +1,5 @@
 ---
+navigation_title: Manage TLS certificates 
 applies_to:
   deployment:
     self:
@@ -18,7 +19,7 @@ $$$encrypt-internode-communication$$$
 $$$generate-certificates$$$
 
 
-# Secure cluster communications
+# Manage TLS certificates
 
 This page explains how to secure communications between components in your {{stack}} deployment.
 
@@ -47,7 +48,7 @@ The transport layer is used for communication between {{es}} nodes in a cluster.
 
 **Deployment type notes:**
 - **Elastic Cloud, ECE, and Serverless**: Transport security is fully managed by Elastic. No configuration is required.
-- **ECK**: Transport security is automatically configured by the operator, but you can [customize its service and SSL certificates](/deploy-manage/deploy/cloud-on-k8s/transport-settings.md).
+- **ECK**: Transport security is automatically configured by the operator, but you can [customize its service and SSL certificates](/deploy-manage/security/k8s-transport-settings.md).
 - **Self-managed**: Transport security must be manually configured following the steps in [Set up basic security](set-up-basic-security.md).
 
 ## HTTP layer security

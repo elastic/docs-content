@@ -12,7 +12,7 @@ This section covers security settings for your {{eck}} orchestrator.
 **Orchestrator-level security**
 
 - [Restrict cross-namespace resources associations](/deploy-manage/deploy/cloud-on-k8s/restrict-cross-namespace-resource-associations.md)
-- [Isolate pods with network policies](/deploy-manage/deploy/cloud-on-k8s/network-policies.md)
+- [Isolate pods with network policies](/deploy-manage/security/k8s-network-policies.md)
 - [Secure the metrics endpoint](/deploy-manage/monitor/orchestrators/k8s-securing-metrics-endpoint.md)
 
 Also refer to [](/deploy-manage/deploy/cloud-on-k8s/configure.md) for more information about configuring {{eck}}.
