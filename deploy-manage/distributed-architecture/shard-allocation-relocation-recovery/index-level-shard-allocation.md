@@ -5,6 +5,7 @@ mapped_urls:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/recovery-prioritization.html
 applies_to:
   stack:
+  self:
 ---
 
 # Index-level shard allocation
