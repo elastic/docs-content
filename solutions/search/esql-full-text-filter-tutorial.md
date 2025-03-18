@@ -113,7 +113,7 @@ POST /cooking_blog/_bulk?refresh=wait_for
 {"title":"Crispy Oven-Fried Chicken","description":"Get that perfect crunch without the deep fryer! This oven-fried chicken recipe delivers crispy, juicy results every time. A healthier take on the classic comfort food.","author":"Maria Rodriguez","date":"2023-05-20","category":"Main Course","tags":["chicken","oven-fried","healthy"],"rating":4.9}
 ```
 
-## Step 5: Perform basic full-text searches
+## Step 3: Perform basic full-text searches
 
 Full-text search involves executing text-based queries across one or more document fields. These queries calculate a relevance score for each matching document, based on how closely the document's content aligns with the search terms. Elasticsearch offers various query types, each with its own method for matching text and relevance scoring.
 
@@ -193,7 +193,7 @@ POST /_query?format=txt
 
 This query searches the title field to match at least 2 of the 3 terms: "fluffy", "pancakes", or "breakfast".
 
-## Step 3: Search across multiple fields at once
+## Step 4: Search across multiple fields at once
 
 When users enter a search query, they often don't know (or care) whether their search terms appear in a specific field. ES|QL provides ways to search across multiple fields simultaneously:
 
@@ -229,7 +229,7 @@ POST /_query?format=txt
 
 In this example, we're using the `boost` parameter to make matches in the title field twice as important as matches in other fields. We also request the `_score` metadata field to sort results by relevance.
 
-## Step 4: Filter and find exact matches
+## Step 5: Filter and find exact matches
 
 Filtering allows you to narrow down your search results based on exact criteria. Unlike full-text searches, filters are binary (yes/no) and do not affect the relevance score. Filters execute faster than queries because excluded results don't need to be scored.
 
