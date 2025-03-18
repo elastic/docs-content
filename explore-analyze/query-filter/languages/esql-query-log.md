@@ -17,11 +17,11 @@ You can use these logs to investigate, analyze or troubleshoot your cluster’s 
 
 ES|QL query log reports task duration at coordinator level, but might not encompass the full task execution time observed on the client. For example, logs don’t surface HTTP network delays.
 
-Events that meet the specified threshold are emitted into [{{es}} logging](docs-content://deploy-manage/monitor/logging-configuration/update-elasticsearch-logging-levels.md). 
+Events that meet the specified threshold are emitted into [{{es}} logging](../../../deploy-manage/monitor/logging-configuration/update-elasticsearch-logging-levels.md). 
 
 These logs can be viewed in the following locations:
 
-* If [{{es}} monitoring](docs-content://deploy-manage/monitor/stack-monitoring.md) is enabled, from [Stack Monitoring](docs-content://deploy-manage/monitor/monitoring-data/visualizing-monitoring-data.md). Query log events have a `logger` value of `esql.querylog`.
+* If [{{es}} monitoring](../../../deploy-manage/monitor/stack-monitoring.md) is enabled, from [Stack Monitoring](../../../deploy-manage/monitor/monitoring-data/visualizing-monitoring-data.md). Query log events have a `logger` value of `esql.querylog`.
 * From local {{es}} service logs directory. Slow log files have a suffix of `_esql_querylog.json`.
 
 
@@ -119,7 +119,7 @@ PUT /_cluster/settings
 
 ## Best practices for query logging [troubleshoot-query-log]
 
-Logging slow requests can be resource intensive to your {{es}} cluster depending on the qualifying traffic’s volume. For example, emitted logs might increase the index disk usage of your [{{es}} monitoring](docs-content://deploy-manage/monitor/stack-monitoring.md) cluster. To reduce the impact of slow logs, consider the following:
+Logging slow requests can be resource intensive to your {{es}} cluster depending on the qualifying traffic’s volume. For example, emitted logs might increase the index disk usage of your [{{es}} monitoring](../../../deploy-manage/monitor/stack-monitoring.md) cluster. To reduce the impact of slow logs, consider the following:
 
 * Set high thresholds to reduce the number of logged events.
 * Enable slow logs only when troubleshooting.
