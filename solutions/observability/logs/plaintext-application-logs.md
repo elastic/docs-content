@@ -346,7 +346,7 @@ Learn about correlating plaintext logs in the agent-specific ingestion guides:
 * [.NET](apm-agent-dotnet://reference/logs.md)
 * [Node.js](apm-agent-nodejs://reference/logs.md)
 * [Python](apm-agent-python://reference/logs.md#log-correlation-ids)
-* [Ruby](asciidocalypse://docs/apm-agent-ruby/docs/reference/logs.md)
+* [Ruby](apm-agent-ruby://reference/logs.md)
 
 
 ## View logs [view-plaintext-logs]

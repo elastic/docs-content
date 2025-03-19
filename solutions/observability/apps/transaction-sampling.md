@@ -236,7 +236,7 @@ Each agent provides a configuration value used to set the transaction sample rat
 * Node.js: [`transactionSampleRate`](apm-agent-nodejs://reference/configuration.md#transaction-sample-rate)
 * PHP: [`transaction_sample_rate`](apm-agent-php://reference/configuration-reference.md#config-transaction-sample-rate)
 * Python: [`transaction_sample_rate`](apm-agent-python://reference/configuration.md#config-transaction-sample-rate)
-* Ruby: [`transaction_sample_rate`](asciidocalypse://docs/apm-agent-ruby/docs/reference/configuration.md#config-transaction-sample-rate)
+* Ruby: [`transaction_sample_rate`](apm-agent-ruby://reference/configuration.md#config-transaction-sample-rate)
 
 
 ## Configure tail-based sampling [apm-configure-tail-based-sampling]

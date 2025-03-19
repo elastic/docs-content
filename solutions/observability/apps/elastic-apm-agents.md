@@ -115,12 +115,12 @@ These events, called Transactions and Spans, are sent to Elastic, where they're 
 
 If you're ready to give Elastic APM a try, see [Get started with traces and APM](../../../solutions/observability/apps/get-started-with-apm.md).
 
-See the [Ruby agent reference](asciidocalypse://docs/apm-agent-ruby/docs/reference/index.md) for full documentation, including:
+See the [Ruby agent reference](apm-agent-ruby://reference/index.md) for full documentation, including:
 
-* [Supported technologies](asciidocalypse://docs/apm-agent-ruby/docs/reference/supported-technologies.md)
-* [Set up](asciidocalypse://docs/apm-agent-ruby/docs/reference/set-up-apm-ruby-agent.md)
-* [Configuration reference](asciidocalypse://docs/apm-agent-ruby/docs/reference/configuration.md)
-* [API reference](asciidocalypse://docs/apm-agent-ruby/docs/reference/api-reference.md)
+* [Supported technologies](apm-agent-ruby://reference/supported-technologies.md)
+* [Set up](apm-agent-ruby://reference/set-up-apm-ruby-agent.md)
+* [Configuration reference](apm-agent-ruby://reference/configuration.md)
+* [API reference](apm-agent-ruby://reference/api-reference.md)
 
 ::::{important}
 Not all APM agent configuration options are compatible with Elastic Cloud serverless.

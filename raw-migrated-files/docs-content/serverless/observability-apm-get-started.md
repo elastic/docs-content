@@ -412,8 +412,8 @@ To send APM data to Elastic, you must install an APM agent and configure it to s
 
         **Learn more in the {{apm-agent}} reference**
 
-        * [Supported technologies](asciidocalypse://docs/apm-agent-ruby/docs/reference/supported-technologies.md)
-        * [Advanced configuration](asciidocalypse://docs/apm-agent-ruby/docs/reference/configuration.md)
+        * [Supported technologies](apm-agent-ruby://reference/supported-technologies.md)
+        * [Advanced configuration](apm-agent-ruby://reference/configuration.md)
 
           </div>
           <div tabindex="0" role="tabpanel" id="apm-apm-get-started-opentelemetry-panel" aria-labelledby="apm-apm-get-started-opentelemetry-button" hidden="">

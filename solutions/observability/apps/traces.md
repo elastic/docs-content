@@ -246,7 +246,7 @@ elasticapm.get_trace_parent_header('new-transaction') <2>
 ::::::
 
 ::::::{tab-item} Ruby
-1. Start a span with [`with_span`](asciidocalypse://docs/apm-agent-ruby/docs/reference/api-reference.md#api-agent-with_span).
+1. Start a span with [`with_span`](apm-agent-ruby://reference/api-reference.md#api-agent-with_span).
 2. Get the active `TraceContext`.
 3. Send the `TraceContext` to the receiving service.
 
@@ -402,7 +402,7 @@ See the [`TraceParent` API](apm-agent-python://reference/api-reference.md#tracep
 ::::::
 
 ::::::{tab-item} Ruby
-Start a new transaction or span as a child of the incoming transaction or span with [`with_transaction`](asciidocalypse://docs/apm-agent-ruby/docs/reference/api-reference.md#api-agent-with_transaction) or [`with_span`](asciidocalypse://docs/apm-agent-ruby/docs/reference/api-reference.md#api-agent-with_span).
+Start a new transaction or span as a child of the incoming transaction or span with [`with_transaction`](apm-agent-ruby://reference/api-reference.md#api-agent-with_transaction) or [`with_span`](apm-agent-ruby://reference/api-reference.md#api-agent-with_span).
 
 Example:
 

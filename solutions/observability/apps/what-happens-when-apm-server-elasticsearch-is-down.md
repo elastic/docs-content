@@ -18,6 +18,6 @@ Some agents have internal queues or buffers that will temporarily store data if 
 * **Node.js agent** - No internal queue. Data is lost.
 * **PHP agent** - No internal queue. Data is lost.
 * **Python agent** - Internal [Transaction queue](apm-agent-python://reference/performance-tuning.md#tuning-queue) with configurable size and time between flushes.
-* **Ruby agent** - Internal queue with configurable size: [`api_buffer_size`](asciidocalypse://docs/apm-agent-ruby/docs/reference/configuration.md#config-api-buffer-size).
+* **Ruby agent** - Internal queue with configurable size: [`api_buffer_size`](apm-agent-ruby://reference/configuration.md#config-api-buffer-size).
 * **RUM agent** - No internal queue. Data is lost.
 * **.NET agent** - No internal queue. Data is lost.

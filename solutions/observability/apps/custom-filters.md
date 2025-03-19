@@ -37,7 +37,7 @@ Refer to the relevant agent’s documentation for more information and examples:
 * .NET: [Filter API](apm-agent-dotnet://reference/public-api.md#filter-api).
 * Node.js: [`addFilter()`](apm-agent-nodejs://reference/agent-api.md#apm-add-filter).
 * Python: [custom processors](apm-agent-python://reference/sanitizing-data.md).
-* Ruby: [`add_filter()`](asciidocalypse://docs/apm-agent-ruby/docs/reference/api-reference.md#api-agent-add-filter).
+* Ruby: [`add_filter()`](apm-agent-ruby://reference/api-reference.md#api-agent-add-filter).
 
 
 ## Tutorial: Use an ingest pipeline to redact sensitive information [apm-filters-ingest-pipeline-tutorial]

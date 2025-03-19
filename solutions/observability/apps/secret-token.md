@@ -67,7 +67,7 @@ Each Elastic {{apm-agent}} has a configuration option to set the value of the se
 * **Node.js agent**: [`Secret Token`](apm-agent-nodejs://reference/configuration.md#secret-token)
 * **PHP agent**: [`secret_token`](apm-agent-php://reference/configuration-reference.md#config-secret-token)
 * **Python agent**: [`secret_token`](apm-agent-python://reference/configuration.md#config-secret-token)
-* **Ruby agent**: [`secret_token`](asciidocalypse://docs/apm-agent-ruby/docs/reference/configuration.md#config-secret-token)
+* **Ruby agent**: [`secret_token`](apm-agent-ruby://reference/configuration.md#config-secret-token)
 
 In addition to setting the secret token, ensure the configured server URL uses `HTTPS` instead of `HTTP`:
 
@@ -77,4 +77,4 @@ In addition to setting the secret token, ensure the configured server URL uses `
 * **Node.js agent**: [`serverUrl`](apm-agent-nodejs://reference/configuration.md#server-url)
 * **PHP agent**: [`server_url`](apm-agent-php://reference/configuration-reference.md#config-server-url)
 * **Python agent**: [`server_url`](https://www.elastic.co/guide/en/apm/agent/python/current/)
-* **Ruby agent**: [`server_url`](asciidocalypse://docs/apm-agent-ruby/docs/reference/configuration.md#config-server-url)
+* **Ruby agent**: [`server_url`](apm-agent-ruby://reference/configuration.md#config-server-url)

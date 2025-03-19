@@ -57,7 +57,7 @@ When the APM server uses a certificate that is not chained to a publicly-trusted
 
 * **Go agent**: certificate pinning through [`ELASTIC_APM_SERVER_CERT`](apm-agent-go://reference/configuration.md#config-server-cert)
 * **Python agent**: certificate pinning through [`server_cert`](apm-agent-python://reference/configuration.md#config-server-cert)
-* **Ruby agent**: certificate pinning through [`server_ca_cert`](asciidocalypse://docs/apm-agent-ruby/docs/reference/configuration.md#config-ssl-ca-cert)
+* **Ruby agent**: certificate pinning through [`server_ca_cert`](apm-agent-ruby://reference/configuration.md#config-ssl-ca-cert)
 * **.NET agent**: [`ServerCert`](apm-agent-dotnet://reference/config-reporter.md#config-server-cert)
 * **Node.js agent**: custom CA setting through [`serverCaCertFile`](apm-agent-nodejs://reference/configuration.md#server-ca-cert-file)
 * **Java agent**: adding the certificate to the JVM `trustStore`. See [APM Server authentication](apm-agent-java://reference/ssl-configuration.md#ssl-server-authentication) for more details.
@@ -69,7 +69,7 @@ We do not recommend disabling {{apm-agent}} verification of the server’s certi
 * **Java agent**: [`verify_server_cert`](apm-agent-java://reference/config-reporter.md#config-verify-server-cert)
 * **PHP agent**: [`verify_server_cert`](apm-agent-php://reference/configuration-reference.md#config-verify-server-cert)
 * **Python agent**: [`verify_server_cert`](apm-agent-python://reference/configuration.md#config-verify-server-cert)
-* **Ruby agent**: [`verify_server_cert`](asciidocalypse://docs/apm-agent-ruby/docs/reference/configuration.md#config-verify-server-cert)
+* **Ruby agent**: [`verify_server_cert`](apm-agent-ruby://reference/configuration.md#config-verify-server-cert)
 * **Node.js agent**: [`verifyServerCert`](apm-agent-nodejs://reference/configuration.md#validate-server-cert)
 
 

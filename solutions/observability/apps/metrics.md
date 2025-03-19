@@ -30,7 +30,7 @@ For a full list of tracked metrics, see the relevant agent documentation:
 * [Java](apm-agent-java://reference/metrics.md)
 * [Node.js](apm-agent-nodejs://reference/metrics.md)
 * [Python](apm-agent-python://reference/metrics.md)
-* [Ruby](asciidocalypse://docs/apm-agent-ruby/docs/reference/metrics.md)
+* [Ruby](apm-agent-ruby://reference/metrics.md)
 
 
 ### Example system metric document [_example_system_metric_document]

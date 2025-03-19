@@ -56,7 +56,7 @@ Python agent
 :   [Configuration reference](apm-agent-python://reference/configuration.md)
 
 Ruby agent
-:   [Configuration reference](asciidocalypse://docs/apm-agent-ruby/docs/reference/configuration.md)
+:   [Configuration reference](apm-agent-ruby://reference/configuration.md)
 
 Real User Monitoring (RUM) agent
 :   [Configuration reference](apm-agent-rum-js://reference/configuration.md)

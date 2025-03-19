@@ -29,7 +29,7 @@ This setting supports [Central configuration](apm-agent-central-configuration.md
 * .NET: [`sanitizeFieldNames`](apm-agent-dotnet://reference/config-core.md#config-sanitize-field-names)
 * Node.js: [`sanitizeFieldNames`](apm-agent-nodejs://reference/configuration.md#sanitize-field-names)
 * Python: [`sanitize_field_names`](apm-agent-python://reference/configuration.md#config-sanitize-field-names)
-* Ruby: [`sanitize_field_names`](asciidocalypse://docs/apm-agent-ruby/docs/reference/configuration.md#config-sanitize-field-names)
+* Ruby: [`sanitize_field_names`](apm-agent-ruby://reference/configuration.md#config-sanitize-field-names)
 
 Alternatively, you can completely disable the capturing of HTTP headers. This setting also supports [Central configuration](apm-agent-central-configuration.md):
 
@@ -38,7 +38,7 @@ Alternatively, you can completely disable the capturing of HTTP headers. This se
 * .NET: [`CaptureHeaders`](apm-agent-dotnet://reference/config-http.md#config-capture-headers)
 * Node.js: [`captureHeaders`](apm-agent-nodejs://reference/configuration.md#capture-headers)
 * Python: [`capture_headers`](apm-agent-python://reference/configuration.md#config-capture-headers)
-* Ruby: [`capture_headers`](asciidocalypse://docs/apm-agent-ruby/docs/reference/configuration.md#config-capture-headers)
+* Ruby: [`capture_headers`](apm-agent-ruby://reference/configuration.md#config-capture-headers)
 
 
 ## HTTP bodies [apm-filters-http-body]
@@ -52,7 +52,7 @@ This setting supports [Central configuration](apm-agent-central-configuration.md
 * .NET: [`CaptureBody`](apm-agent-dotnet://reference/config-http.md#config-capture-body)
 * Node.js: [`captureBody`](apm-agent-nodejs://reference/configuration.md#capture-body)
 * Python: [`capture_body`](apm-agent-python://reference/configuration.md#config-capture-body)
-* Ruby: [`capture_body`](asciidocalypse://docs/apm-agent-ruby/docs/reference/configuration.md#config-capture-body)
+* Ruby: [`capture_body`](apm-agent-ruby://reference/configuration.md#config-capture-body)
 
 
 ## Personal data [apm-filters-personal-data]

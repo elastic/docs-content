@@ -41,5 +41,5 @@ Service environments are defined when configuring your APM agents. It’s vital 
 * **Node.js:** [`environment`](apm-agent-nodejs://reference/configuration.md#environment)
 * **PHP:** [`environment`](apm-agent-php://reference/configuration-reference.md#config-environment)
 * **Python:** [`environment`](apm-agent-python://reference/configuration.md#config-environment)
-* **Ruby:** [`environment`](asciidocalypse://docs/apm-agent-ruby/docs/reference/ingestion-tools/apm-agent-ruby/configuration.md#config-environment)
+* **Ruby:** [`environment`](apm-agent-ruby://reference/configuration.md#config-environment)
 * **Real User Monitoring (Elastic Stack only):** [`environment`](apm-agent-rum-js://reference/configuration.md#environment)

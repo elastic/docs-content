@@ -51,7 +51,7 @@ To set up log ECS reformatting:
 Log ECS reformatting is controlled by the `log_ecs_reformatting` configuration option, and is disabled by default. Refer to the guide for your framework for information on enabling:
 
 * [Java](apm-agent-java://reference/config-logging.md#config-log-ecs-reformatting)
-* [Ruby](asciidocalypse://docs/apm-agent-ruby/docs/reference/configuration.md#config-log-ecs-formatting)
+* [Ruby](apm-agent-ruby://reference/configuration.md#config-log-ecs-formatting)
 * [Python](apm-agent-python://reference/configuration.md#config-log_ecs_reformatting)
 
 
