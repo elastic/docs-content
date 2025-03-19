@@ -42,12 +42,12 @@ For more information, check [{{ech}} default provider instance configurations](c
 
 You can check the **Monitoring > Performance > CPU Credits** section of the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body), and find the related metrics:
 
-:::{image} ../../../images/cloud-metrics-credits.png
+:::{image} /images/cloud-metrics-credits.png
 :alt: CPU usage versus CPU credits over time
 :::
 
 
 ## What to do if my vCPU credits get depleted constantly? [ec_what_to_do_if_my_vcpu_credits_get_depleted_constantly]
 
-If you need your cluster to be able to sustain a certain level of performance, you cannot rely on CPU boosting to handle the workload except temporarily. To ensure that performance can be sustained, consider increasing the size of your cluster. Read [this page](../../../troubleshoot/monitoring/performance.md) for more guidance.
+If you need your cluster to be able to sustain a certain level of performance, you cannot rely on CPU boosting to handle the workload except temporarily. To ensure that performance can be sustained, consider increasing the size of your cluster. Refer to [](/troubleshoot/monitoring/performance.md) for more guidance.
 

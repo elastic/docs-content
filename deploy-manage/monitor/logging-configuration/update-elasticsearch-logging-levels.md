@@ -19,22 +19,12 @@ You can use {{es}}'s application logs to monitor your cluster and diagnose issue
 On [Docker](../../deploy/self-managed/install-elasticsearch-with-docker.md), log messages go to the console and are handled by the configured Docker logging driver. To access logs, run `docker logs`.
 ::::::
 
-::::::{tab-item} Debian (APT)
-For [Debian installations](../../deploy/self-managed/install-elasticsearch-with-debian-package.md), {{es}} writes logs to `/var/log/elasticsearch`.
+::::::{tab-item} Debian (APT) and RPM
+For [Debian](../../deploy/self-managed/install-elasticsearch-with-debian-package.md) and [RPM](../../deploy/self-managed/install-elasticsearch-with-rpm.md) installations, {{es}} writes logs to `/var/log/elasticsearch`.
 ::::::
 
-::::::{tab-item} RPM
-For [RPM installations](../../deploy/self-managed/install-elasticsearch-with-rpm.md), {{es}} writes logs to `/var/log/elasticsearch`.
-::::::
-
-::::::{tab-item} macOS
-For [macOS `.tar.gz`](../../deploy/self-managed/install-elasticsearch-from-archive-on-linux-macos.md) installations, {{es}} writes logs to `$ES_HOME/logs`.
-
-Files in `$ES_HOME` risk deletion during an upgrade. In production, we strongly recommend you set `path.logs` to a location outside of `$ES_HOME`. See [Path settings](../../deploy/self-managed/important-settings-configuration.md#path-settings).
-::::::
-
-::::::{tab-item} Linux
-For [Linux `.tar.gz`](../../deploy/self-managed/install-elasticsearch-from-archive-on-linux-macos.md) installations, {{es}} writes logs to `$ES_HOME/logs`.
+::::::{tab-item} macOS and Linux
+For [macOS and Linux `.tar.gz`](../../deploy/self-managed/install-elasticsearch-from-archive-on-linux-macos.md) installations, {{es}} writes logs to `$ES_HOME/logs`.
 
 Files in `$ES_HOME` risk deletion during an upgrade. In production, we strongly recommend you set `path.logs` to a location outside of `$ES_HOME`. See [Path settings](../../deploy/self-managed/important-settings-configuration.md#path-settings).
 ::::::

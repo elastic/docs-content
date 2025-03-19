@@ -6,7 +6,7 @@ Minor version upgrades, upgrades from 8.17 to 9.0.0-beta1, and cluster configura
 
 {{ech}} and {{ece}} do not support the ability to upgrade to or from release candidate builds, such as 8.0.0-rc1.
 
-If you use a separate [monitoring deployment](../../../deploy-manage/monitor/stack-monitoring/elastic-cloud-stack-monitoring.md), you should upgrade the monitoring deployment before the production deployment. In general, the monitoring deployment and the deployments being monitored should be running the same version of the Elastic Stack. A monitoring deployment cannot monitor production deployments running newer versions of the stack. If necessary, the monitoring deployment can monitor production deployments running the latest release of the previous major version.
+If you use a separate [monitoring deployment](../../../deploy-manage/monitor/stack-monitoring/ece-ech-stack-monitoring.md), you should upgrade the monitoring deployment before the production deployment. In general, the monitoring deployment and the deployments being monitored should be running the same version of the Elastic Stack. A monitoring deployment cannot monitor production deployments running newer versions of the stack. If necessary, the monitoring deployment can monitor production deployments running the latest release of the previous major version.
 
 ::::{important}
 Although it’s simple to upgrade an Elastic Cloud deployment, the new version might include breaking changes that affect your application. Make sure you review the deprecation logs, make any necessary changes, and test against the new version before upgrading your production deployment.

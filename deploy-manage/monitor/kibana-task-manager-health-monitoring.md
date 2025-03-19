@@ -99,7 +99,7 @@ The health monitoring API exposes three sections: `configuration`, `workload` an
 | Configuration | This section summarizes the current configuration of Task Manager.  This includes dynamic configurations that change over time, such as `poll_interval` and `max_workers`, which can adjust in reaction to changing load on the system. |
 | Workload | This section summarizes the work load across the cluster, including the tasks in the system, their types, and current status. |
 | Runtime | This section tracks execution performance of Task Manager, tracking task *drift*, worker *load*, and execution stats broken down by type, including duration and execution results. |
-| Capacity Estimation | This section provides a rough estimate about the sufficiency of its capacity. As the name suggests, these are estimates based on historical data and should not be used as predictions. Use these estimations when following the Task Manager [Scaling guidance](../distributed-architecture/kibana-tasks-management.md#task-manager-scaling-guidance). |
+| Capacity Estimation | This section provides a rough estimate about the sufficiency of its capacity. As the name suggests, these are estimates based on historical data and should not be used as predictions. Use these estimations when following the Task Manager [Scaling guidance](../production-guidance/kibana-task-manager-scaling-considerations.md#task-manager-scaling-guidance). |
 
 Each section has a `timestamp` and a `status` that indicates when the last update to this section took place and whether the health of this section was evaluated as `OK`, `Warning` or `Error`.
 

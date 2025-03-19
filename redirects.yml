@@ -24,6 +24,8 @@ redirects:
   'deploy-manage/deploy/self-managed/deploy-cluster.md': '!deploy-manage/deploy/self-managed/installing-elasticsearch.md'
   'deploy-manage/deploy/self-managed/configure.md': '!deploy-manage/deploy/self-managed/configure-kibana.md'
   'deploy-manage/security/manage-traffic-filtering-through-api.md': '!deploy-manage/security/ec-traffic-filtering-through-the-api.md'
+  'deploy-manage/monitor/stack-monitoring/elastic-cloud-stack-monitoring.md': '!deploy-manage/monitor/stack-monitoring/ece-ech-stack-monitoring.md'
+  'deploy-manage/monitor/stack-monitoring/ece-stack-monitoring.md': '!deploy-manage/monitor/stack-monitoring/ece-ech-stack-monitoring.md'
   'deploy-manage/deploy/kibana-reporting-configuration.md': '!deploy-manage/kibana-reporting-configuration.md'
 
   ## audit logging movement to security section
