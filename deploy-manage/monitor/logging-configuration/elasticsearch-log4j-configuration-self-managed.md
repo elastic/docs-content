@@ -8,16 +8,17 @@ applies_to:
 
 # {{es}} log4j configuration [logging]
 
-## Logging configuration [logging-configuration]
-
 ::::{important}
 Elastic strongly recommends using the Log4j 2 configuration that is shipped by default.
 ::::
 
-
 {{es}} uses [Log4j 2](https://logging.apache.org/log4j/2.x/) for logging. Log4j 2 can be configured using the log4j2.properties file. {{es}} exposes three properties, `${sys:es.logs.base_path}`, `${sys:es.logs.cluster_name}`, and `${sys:es.logs.node_name}` that can be referenced in the configuration file to determine the location of the log files. The property `${sys:es.logs.base_path}` will resolve to the log directory, `${sys:es.logs.cluster_name}` will resolve to the cluster name (used as the prefix of log filenames in the default configuration), and `${sys:es.logs.node_name}` will resolve to the node name (if the node name is explicitly set).
 
 For example, if your log directory (`path.logs`) is `/var/log/elasticsearch` and your cluster is named `production` then `${sys:es.logs.base_path}` will resolve to `/var/log/elasticsearch` and `${sys:es.logs.base_path}${sys:file.separator}${sys:es.logs.cluster_name}.log` will resolve to `/var/log/elasticsearch/production.log`.
+
+:::{tip}
+To learn how to configure logging levels, refer to [](/deploy-manage/monitor/logging-configuration/update-elasticsearch-logging-levels.md).
+:::
 
 ```properties
 ####### Server JSON ############################

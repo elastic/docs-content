@@ -14,6 +14,10 @@ You do not need to configure any additional settings to use the logging features
 
 If you are planning to ingest your logs using {{es}} or another tool, we recommend using the `json` layout, which produces logs in ECS format. In general, `pattern` layout is recommended when raw logs will be read by a human, and `json` layout when logs will be read by a machine.
 
+:::{note}
+You can't configure these settings in an {{ech}} deployment.
+:::
+
 The {{kib}} logging system has three main components: *loggers*, *appenders* and *layouts*. 
 
 * **Loggers** define what logging settings should be applied to a particular logger.
@@ -41,7 +45,7 @@ A log record will be logged by the logger if its level is higher than or equal t
 
 Logging set at a plugin level is always respected, regardless of the `root` logger level. In other words, if root logger is set to fatal and pluginA logging is set to `debug`, debug logs are only shown for pluginA, with other logs only reporting on `fatal`.
 
-The `all` and `off` levels can only be used in configuration, and are handy shortcuts that allow you to log every log record or disable logging entirely for a specific logger. These levels can also be specified using [CLI arguments](kibana-logging-cli-configuration.md#logging-cli-migration).
+The `all` and `off` levels can only be used in configuration, and are handy shortcuts that allow you to log every log record or disable logging entirely for a specific logger. These levels can also be specified using [CLI arguments](#logging-cli-migration).
 
 
 ## Layouts [logging-layouts]
