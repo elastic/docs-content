@@ -490,9 +490,9 @@ The agent will now monitor the performance of your application and record any un
 
 **Learn more in the agent reference**
 
-* [Supported technologies](asciidocalypse://docs/apm-agent-nodejs/docs/reference/supported-technologies.md)
-* [Babel/ES Modules](asciidocalypse://docs/apm-agent-nodejs/docs/reference/advanced-setup.md)
-* [Advanced configuration](asciidocalypse://docs/apm-agent-nodejs/docs/reference/configuring-agent.md)
+* [Supported technologies](apm-agent-nodejs://reference/supported-technologies.md)
+* [Babel/ES Modules](apm-agent-nodejs://reference/advanced-setup.md)
+* [Advanced configuration](apm-agent-nodejs://reference/configuring-agent.md)
 ::::::
 
 ::::::{tab-item} PHP
@@ -561,8 +561,8 @@ elastic_apm.bootstrap_php_part_file=<repo root>/agent/php/bootstrap_php_part.php
 
 **Learn more in the agent reference**
 
-* [Supported technologies](asciidocalypse://docs/apm-agent-php/docs/reference/supported-technologies.md)
-* [Configuration](asciidocalypse://docs/apm-agent-php/docs/reference/configuration.md)
+* [Supported technologies](apm-agent-php://reference/supported-technologies.md)
+* [Configuration](apm-agent-php://reference/configuration.md)
 ::::::
 
 ::::::{tab-item} Python
@@ -645,8 +645,8 @@ apm = ElasticAPM(app)
 
 **Learn more in the agent reference**
 
-* [Supported technologies](asciidocalypse://docs/apm-agent-python/docs/reference/supported-technologies.md)
-* [Advanced configuration](asciidocalypse://docs/apm-agent-python/docs/reference/configuration.md)
+* [Supported technologies](apm-agent-python://reference/supported-technologies.md)
+* [Advanced configuration](apm-agent-python://reference/configuration.md)
 ::::::
 
 ::::::{tab-item} Ruby
@@ -722,8 +722,8 @@ server_url: 'http://localhost:8200'
 
 **Learn more in the agent reference**
 
-* [Supported technologies](asciidocalypse://docs/apm-agent-ruby/docs/reference/supported-technologies.md)
-* [Advanced configuration](asciidocalypse://docs/apm-agent-ruby/docs/reference/configuration.md)
+* [Supported technologies](apm-agent-ruby://reference/supported-technologies.md)
+* [Advanced configuration](apm-agent-ruby://reference/configuration.md)
 ::::::
 
 ::::::{tab-item} RUM

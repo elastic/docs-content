@@ -104,11 +104,11 @@ The {{es}} configuration directory isn’t writable
 
 The following settings are incompatible with security auto configuration. If any of these settings exist, the node startup process skips configuring security automatically and the node starts normally.
 
-* [`node.roles`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/node-settings.md#node-roles) is set to a value where the node can’t be elected as `master`, or if the node can’t hold data
-* [`xpack.security.autoconfiguration.enabled`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/security-settings.md#general-security-settings) is set to `false`
-* [`xpack.security.enabled`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/security-settings.md#general-security-settings) has a value set
-* Any of the [`xpack.security.transport.ssl.*`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/security-settings.md#transport-tls-ssl-settings) or [`xpack.security.http.ssl.*`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/security-settings.md#http-tls-ssl-settings) settings have a value set in the `elasticsearch.yml` configuration file or in the `elasticsearch.keystore`
-* Any of the `discovery.type`, `discovery.seed_hosts`, or `cluster.initial_master_nodes` [discovery and cluster formation settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/discovery-cluster-formation-settings.md) have a value set
+* [`node.roles`](elasticsearch://reference/elasticsearch/configuration-reference/node-settings.md#node-roles) is set to a value where the node can’t be elected as `master`, or if the node can’t hold data
+* [`xpack.security.autoconfiguration.enabled`](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#general-security-settings) is set to `false`
+* [`xpack.security.enabled`](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#general-security-settings) has a value set
+* Any of the [`xpack.security.transport.ssl.*`](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#transport-tls-ssl-settings) or [`xpack.security.http.ssl.*`](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#http-tls-ssl-settings) settings have a value set in the `elasticsearch.yml` configuration file or in the `elasticsearch.keystore`
+* Any of the `discovery.type`, `discovery.seed_hosts`, or `cluster.initial_master_nodes` [discovery and cluster formation settings](elasticsearch://reference/elasticsearch/configuration-reference/discovery-cluster-formation-settings.md) have a value set
 
     ::::{note}
     Exceptions are when `discovery.type` is set to `single-node`, or when `cluster.initial_master_nodes` exists but contains only the name of the current node.
