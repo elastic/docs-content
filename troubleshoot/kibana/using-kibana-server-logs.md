@@ -41,7 +41,7 @@ logging.loggers:
 ```
 
 ::::{warning}
-Kibana’s `file` appender is configured to produce logs in [ECS JSON](ecs://reference/index.md) format. It’s the only format that includes the meta information necessary for [log correlation](asciidocalypse://docs/apm-agent-nodejs/docs/reference/logs.md) out-of-the-box.
+Kibana’s `file` appender is configured to produce logs in [ECS JSON](ecs://reference/index.md) format. It’s the only format that includes the meta information necessary for [log correlation](apm-agent-nodejs://reference/logs.md) out-of-the-box.
 ::::
 
 

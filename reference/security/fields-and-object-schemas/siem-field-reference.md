@@ -10,7 +10,7 @@ mapped_pages:
 
 # Elastic Security ECS field reference [siem-field-reference]
 
-This section lists [Elastic Common Schema](asciidocalypse://ecs/docs/reference/index.md) fields that provide an optimal SIEM and security analytics experience to users. These fields are used to display data, provide rule previews, enable detection by prebuilt detection rules, provide context during rule triage and investigation, escalate to cases, and more.
+This section lists [Elastic Common Schema](ecs://reference/index.md) fields that provide an optimal SIEM and security analytics experience to users. These fields are used to display data, provide rule previews, enable detection by prebuilt detection rules, provide context during rule triage and investigation, escalate to cases, and more.
 
 ::::{important}
 We recommend you use {{agent}} integrations or {{beats}}  to ship your data to {{elastic-sec}}. {{agent}} integrations and Beat modules (for example, [{{filebeat}} modules](beats://reference/filebeat/filebeat-modules.md)) are ECS-compliant, which means data they ship to {{elastic-sec}} will automatically populate the relevant ECS fields. If you plan to use a custom implementation to map your data to ECS fields (see [how to map data to ECS](ecs://reference/ecs-converting.md)), ensure the [always required fields](#siem-always-required-fields) are populated. Ideally, all relevant ECS fields should be populated as well.
