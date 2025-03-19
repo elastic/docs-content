@@ -76,7 +76,7 @@ Before you start creating your own deployment templates, you should have: [tagge
 9. On this page you can [configure index management](ece-configure-templates-index-management.md) by assigning attributes to each of the data nodes in the deployment template. In Kibana, you can configure an index lifecycle management (ILM) policy, based on the node attributes, to control how data moves across the nodes in your deployment.
 10. Select **Stack features**.
 11. You can select a [snapshot repository](../../tools/snapshot-and-restore/cloud-enterprise.md) to be used by default for deployment backups.
-12. You can choose to [enable logging and monitoring](../../monitor/stack-monitoring/ece-stack-monitoring.md) by default, so that deployment logs and metrics are send to a dedicated monitoring deployment, and so that additional log types, retention options, and Kibana visualizations are available on all deployments created using this template.
+12. You can choose to [enable logging and monitoring](../../monitor/stack-monitoring/ece-ech-stack-monitoring.md) by default, so that deployment logs and metrics are send to a dedicated monitoring deployment, and so that additional log types, retention options, and Kibana visualizations are available on all deployments created using this template.
 13. Select **Extensions**.
 14. Select any Elasticsearch extensions that you would like to be available automatically to all deployments created using the template.
 15. Select **Save and create template**.

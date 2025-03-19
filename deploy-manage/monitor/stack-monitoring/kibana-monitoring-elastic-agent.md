@@ -11,15 +11,13 @@ applies_to:
 
 # Collect monitoring data with Elastic Agent [monitoring-elastic-agent]
 
+You can use {{agent}} to collect data about {{kib}} and ship it to the monitoring cluster.
 
-In 8.5 and later, you can use {{agent}} to collect data about {{kib}} and ship it to the monitoring cluster, rather than [using {{metricbeat}}](/deploy-manage/monitor/stack-monitoring/kibana-monitoring-metricbeat.md) or routing data through the production cluster as described in [Legacy collection methods](/deploy-manage/monitor/stack-monitoring/kibana-monitoring-legacy.md).
-
-To learn about monitoring in general, see [Monitor a cluster](../../monitor.md).
-
+To learn about monitoring in general, refer to [](/deploy-manage/monitor/stack-monitoring.md).
 
 ## Prerequisites [_prerequisites]
 
-* Set up {{es}} monitoring and optionally create a monitoring cluster as described in the [{{es}} monitoring documentation](elasticsearch-monitoring-self-managed.md).
+* [Set up {{es}} monitoring](/deploy-manage/monitor/stack-monitoring/elasticsearch-monitoring-self-managed.md) and optionally [create a monitoring cluster](/deploy-manage/monitor/stack-monitoring/es-self-monitoring-prod.md). 
 * Create a user on the production cluster that has the `remote_monitoring_collector` [built-in role](../../users-roles/cluster-or-deployment-auth/built-in-roles.md).
 
 
@@ -47,12 +45,12 @@ To collect {{kib}} monitoring data, add a {{kib}} integration to an {{agent}} an
     * Under **Collect Kibana metrics**, make sure the hosts setting points to your Kibana host URLs. By default, the integration collects {{kib}} monitoring metrics from `localhost:5601`. If that host and port number are not correct, update the `hosts` setting. If you configured {{kib}} to use encrypted communications, you must access it via HTTPS. For example, use a `hosts` setting like `https://localhost:5601`.
     * If the Elastic {{security-features}} are enabled, expand **Advanced options** under the Hosts setting and enter the username and password of a user that has the `remote_monitoring_collector` role.
 
-6. Choose where to add the integration policy. Click **New hosts*** to add it to new agent policy or ***Existing hosts** to add it to an existing agent policy.
+6. Choose where to add the integration policy. Click **New hosts** to add it to new agent policy or **Existing hosts** to add it to an existing agent policy.
 7. Click **Save and continue**. This step takes a minute or two to complete. When it’s done, you’ll have an agent policy that contains an integration for collecting monitoring data from {{kib}}.
 8. If an {{agent}} is already assigned to the policy and deployed to the host where {{kib}} is running, you’re done. Otherwise, you need to deploy an {{agent}}. To deploy an {{agent}}:
 
-    1. Go to **{{fleet}} → Agents***, then click ***Add agent**.
+    1. Go to **{{fleet}} > Agents**, then click **Add agent**.
     2. Follow the steps in the **Add agent** flyout to download, install, and enroll the {{agent}}. Make sure you choose the agent policy you created earlier.
 
 9. Wait a minute or two until incoming data is confirmed.
-10. [View the monitoring data in {{kib}}](/deploy-manage/monitor/monitoring-data.md).
+10. [View the monitoring data in {{kib}}](/deploy-manage/monitor/stack-monitoring/kibana-monitoring-data.md).

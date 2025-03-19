@@ -12,15 +12,24 @@ applies_to:
 # Collecting monitoring data with Metricbeat [configuring-metricbeat]
 
 
-In 6.5 and later, you can use {{metricbeat}} to collect data about {{es}} and ship it to the monitoring cluster, rather than routing it through exporters as described in [Legacy collection methods](es-legacy-collection-methods.md).
+You can use {{metricbeat}} to collect data about {{es}} and ship it to the monitoring cluster.
 
+:::{tip}
 Want to use {{agent}} instead? Refer to [Collecting monitoring data with {{agent}}](collecting-monitoring-data-with-elastic-agent.md).
-
-:::{image} ../../../images/elasticsearch-reference-metricbeat.png
-:alt: Example monitoring architecture
 :::
 
-1. [Install {{metricbeat}}](beats://reference/metricbeat/metricbeat-installation-configuration.md). Ideally install a single {{metricbeat}} instance configured with `scope: cluster` and configure `hosts` to point to an endpoint (e.g. a load-balancing proxy) which directs requests to the master-ineligible nodes in the cluster. If this is not possible then install one {{metricbeat}} instance for each {{es}} node in the production cluster and use the default `scope: node`. When {{metricbeat}} is monitoring {{es}} with `scope: node` then you must install a {{metricbeat}} instance for each {{es}} node. If you don’t, some metrics will not be collected. {{metricbeat}} with `scope: node` collects most of the metrics from the elected master of the cluster, so you must scale up all your master-eligible nodes to account for this extra load and you should not use this mode if you have dedicated master nodes.
+:::{image} /images/elasticsearch-reference-metricbeat.png
+:alt: Example monitoring architecture
+:width: 550px
+:::
+
+1. [Install {{metricbeat}}](beats://reference/metricbeat/metricbeat-installation-configuration.md). 
+   
+   Ideally, install a single {{metricbeat}} instance configured with `scope: cluster` and configure `hosts` to point to an endpoint, such as a load-balancing proxy, which directs requests to the master-ineligible nodes in the cluster. 
+   
+   If this is not possible, then install one {{metricbeat}} instance for each {{es}} node in the production cluster and use the default `scope: node`. When {{metricbeat}} is monitoring {{es}} with `scope: node` then you must install a {{metricbeat}} instance for each {{es}} node. If you don’t, some metrics will not be collected. 
+   
+   {{metricbeat}} with `scope: node` collects most of the metrics from the elected master of the cluster, so you must scale up all your master-eligible nodes to account for this extra load. You should not use this mode if you have dedicated master nodes.
 2. Enable the {{es}} module in {{metricbeat}} on each {{es}} node.
 
     For example, to enable the default configuration for the {{stack-monitor-features}} in the `modules.d` directory, run the following command:
@@ -71,7 +80,9 @@ Want to use {{agent}} instead? Refer to [Collecting monitoring data with {{agent
 5. Identify where to send the monitoring data.
 
     ::::{tip}
-    In production environments, we strongly recommend using a separate cluster (referred to as the *monitoring cluster*) to store the data. Using a separate monitoring cluster prevents production cluster outages from impacting your ability to access your monitoring data. It also prevents monitoring activities from impacting the performance of your production cluster.
+    In production environments, we strongly recommend using a separate cluster (referred to as the *monitoring cluster*) to store the data. Using a separate monitoring cluster prevents production cluster outages from impacting your ability to access your monitoring data. It also prevents monitoring activities from impacting the performance of your production cluster. 
+
+    For more information, refer to [](/deploy-manage/monitor/stack-monitoring/es-self-monitoring-prod.md).
     ::::
 
 

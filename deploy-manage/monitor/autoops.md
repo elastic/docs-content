@@ -10,6 +10,8 @@ applies_to:
 
 AutoOps diagnoses issues in Elasticsearch by analyzing hundreds of metrics, providing root-cause analysis and accurate resolution paths. With AutoOps, customers can prevent and resolve issues, cut down administration time, and optimize resource utilization.
 
+AutoOps is currently only available for [{{ech}} deployments](/deploy-manage/deploy/elastic-cloud/cloud-hosted.md).
+
 :::{image} ../../images/cloud-autoops-overview-page.png
 :alt: The Overview page
 :::
@@ -41,23 +43,22 @@ AutoOps diagnoses issues in Elasticsearch by analyzing hundreds of metrics, prov
 
 ## AutoOps retention period [ec_autoops_retention_period]
 
-AutoOps currently has a four-day retention period for all Cloud Hosted customers.
+AutoOps currently has a four-day retention period for all {{ech}} customers.
 
 
 ## AutoOps scope [ec_autoops_scope]
 
-AutoOps currently monitors only {{es}}, not the entire {{stack}}. Any deployment information pertains solely to {{es}}. AutoOps supports {{es}} version according to the [supported Elastic Stack versions](https://www.elastic.co/support/eol). There are plans to expand AutoOps monitoring to the entire stack.
+AutoOps currently monitors only {{es}}, not the entire {{stack}}. Any deployment information pertains solely to {{es}}. AutoOps supports {{es}} versions according to the [supported {{es}} versions](https://www.elastic.co/support/eol). There are plans to expand AutoOps monitoring to the entire stack.
 
 
+## Section overview
 
+In this section, you'll find the following information:
 
-
-
-
-
-
-
-
-
-
-
+* How to [open AutoOps](/deploy-manage/monitor/autoops/ec-autoops-how-to-access.md) for your deployment.
+* The contents of [AutoOps events](/deploy-manage/monitor/autoops/ec-autoops-events.md).
+* The [views](/deploy-manage/monitor/autoops/views.md) AutoOps offers to gain insight into facets of your deployment.
+* [Notification settings](/deploy-manage/monitor/autoops/ec-autoops-notifications-settings.md) that allow you to specify when and how to be notified.
+* [Event settings](/deploy-manage/monitor/autoops/ec-autoops-event-settings.md) that allow you to fine-tune when events are triggered, and a method to [dismiss](/deploy-manage/monitor/autoops/ec-autoops-dismiss-event.md) certain categories of events.
+* The [regions](/deploy-manage/monitor/autoops/ec-autoops-regions.md) where AutoOps is available.
+* Additional [frequently asked questions](/deploy-manage/monitor/autoops/ec-autoops-faq.md).

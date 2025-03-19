@@ -12,15 +12,17 @@ applies_to:
 # Collect monitoring data with Metricbeat [monitoring-metricbeat]
 
 
-In 6.4 and later, you can use {{metricbeat}} to collect data about {{kib}} and ship it to the monitoring cluster, rather than routing it through the production cluster as described in [Legacy collection methods](/deploy-manage/monitor/stack-monitoring/kibana-monitoring-legacy.md).
+Yu can use {{metricbeat}} to collect data about {{kib}} and ship it to the monitoring cluster.
 
-:::{image} ../../../images/kibana-metricbeat.png
+To learn about monitoring in general, refer to [](/deploy-manage/monitor/stack-monitoring.md).
+
+:::{image} /images/kibana-metricbeat.png
 :alt: Example monitoring architecture
+:width: 450px
 :::
 
-To learn about monitoring in general, see [Monitor a cluster](../../monitor.md).
 
-1. Disable the default collection of {{kib}} monitoring metrics.<br>
+1. Disable the default collection of {{kib}} monitoring metrics.
 
     Add the following setting in the {{kib}} configuration file (`kibana.yml`):
 
@@ -52,9 +54,11 @@ To learn about monitoring in general, see [Monitor a cluster](../../monitor.md).
 
         For example, you can use the following APIs to review and change this setting:
 
-        ```js
+        ```console
         GET _cluster/settings
+        ```
 
+        ```console
         PUT _cluster/settings
         {
           "persistent": {
@@ -63,7 +67,7 @@ To learn about monitoring in general, see [Monitor a cluster](../../monitor.md).
         }
         ```
 
-        For more information, see [Monitoring settings in {{es}}](elasticsearch://reference/elasticsearch/configuration-reference/monitoring-settings.md) and [Cluster update settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings).
+        For more information, see [Monitoring settings in {{es}}](elasticsearch://reference/elasticsearch/configuration-reference/monitoring-settings.md) and [the Cluster update settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings).
 
 4. [Install {{metricbeat}}](beats://reference/metricbeat/metricbeat-installation-configuration.md) on the same server as {{kib}}.
 5. Enable the {{kib}} {{xpack}} module in {{metricbeat}}.<br>
@@ -111,6 +115,8 @@ To learn about monitoring in general, see [Monitor a cluster](../../monitor.md).
 
     ::::{tip}
     In production environments, we strongly recommend using a separate cluster (referred to as the *monitoring cluster*) to store the data. Using a separate monitoring cluster prevents production cluster outages from impacting your ability to access your monitoring data. It also prevents monitoring activities from impacting the performance of your production cluster.
+
+    For more information, refer to [](/deploy-manage/monitor/stack-monitoring/es-self-monitoring-prod.md).
     ::::
 
 
@@ -145,5 +151,5 @@ To learn about monitoring in general, see [Monitor a cluster](../../monitor.md).
     For more information about these configuration options, see [Configure the {{es}} output](beats://reference/metricbeat/elasticsearch-output.md).
 
 9. [Start {{metricbeat}}](beats://reference/metricbeat/metricbeat-starting.md).
-10. [View the monitoring data in {{kib}}](/deploy-manage/monitor/monitoring-data.md).
+10. [View the monitoring data in {{kib}}](/deploy-manage/monitor/stack-monitoring/kibana-monitoring-data.md).
 

@@ -22,5 +22,5 @@ To check for security updates, go to [Security announcements for the Elastic sta
 **Release date:** April 2, 2025
 
 ### Fixes [elastic-observability-900-fixes]
-* Fixes chat on the Alerts page ({{kibana-pull}}197126[#197126])
-* Fixes an error that could prevent the Observability Infrastructure Inventory view from loading after an upgrade due to missing versioning on inventory_view_saved_object ({{kibana-pull}}207007[#207007])
+* Fixes chat on the Alerts page [#197126]({{kib-pull}}197126)
+* Fixes an error that could prevent the Observability Infrastructure Inventory view from loading after an upgrade due to missing versioning on inventory_view_saved_object [#207007]({{kib-pull}}207007)

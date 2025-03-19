@@ -2,7 +2,7 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/security/master/release-notes-header-9.0.0.html#known-issue-9.0.0
 
-navigation_title: "Elastic Security"
+navigation_title: "Known issues"
 ---
 
 # {{elastic-sec}} known issues [elastic-security-known-issues]

@@ -8,7 +8,7 @@ applies_to:
 
 An {{es}} cluster can be upgraded one node at a time so upgrading does not interrupt service. Running multiple versions of {{es}} in the same cluster beyond the duration of an upgrade is not supported, as shards cannot be replicated from upgraded nodes to nodes running the older version.
 
-Before you start, [take the upgrade preparation steps](../../../deploy-manage/upgrade/prepare-to-upgrade.md). When performing a [rolling upgrade](#rolling-upgrades):
+Before you start, [take the upgrade preparation steps](/deploy-manage/upgrade/prepare-to-upgrade.md). When performing a [rolling upgrade](#rolling-upgrades):
 
 1. Upgrade the data nodes first, tier-by-tier, starting with the frozen tier, then the cold tier, then the warm tier, then the hot tier, and finally any other data nodes which are not in a tier. Complete the upgrade for all nodes in each data tier before moving to the next. This ensures {{ilm-init}} can continue to move data through the tiers during the upgrade. You can get the list of nodes in a specific tier with a `GET /_nodes` request, for example: `GET /_nodes/data_frozen:true/_none`.
 2. Upgrade all remaining nodes that are neither master-eligible nor data nodes. This includes dedicated ML nodes, dedicated ingest nodes, and dedicated coordinating nodes.

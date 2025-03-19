@@ -64,7 +64,7 @@ We strongly recommend using three availability zones with at least 1 GB {{es}} n
 1. [Log into the Cloud UI](/deploy-manage/deploy/cloud-enterprise/log-into-cloud-ui.md).
 2. Go to **Deployments** a select the **security-cluster**.
 3. Configure regular [snapshots](/deploy-manage/tools/snapshot-and-restore/create-snapshots.md) of the security deployment. This is critical if you plan to create any native users.
-4. Optional: [Enable monitoring](/deploy-manage/monitor/stack-monitoring/ece-stack-monitoring.md) on the security deployment to a dedicated monitoring deployment.
+4. Optional: [Enable monitoring](/deploy-manage/monitor/stack-monitoring/ece-ech-stack-monitoring.md) on the security deployment to a dedicated monitoring deployment.
 
 If you have authentication issues, you check out the security deployment {{es}} [logs](/deploy-manage/monitor/logging-configuration.md).
 

@@ -26,7 +26,7 @@ For large deployments with more than 10 {{kib}} instances, and more than 10,000 
 
 ## Preparing for upgrading [preventing-migration-failures]
 
-Before you start, ensure you [take the upgrade preparation steps](../prepare-to-upgrade.md). Then, take these extra steps to ensure you are ready to upgrade.
+Before you start, ensure you [take the upgrade preparation steps](/deploy-manage/upgrade/prepare-to-upgrade.md). Then, take these extra steps to ensure you are ready to upgrade.
 
 
 ### Ensure your {{es}} cluster is healthy [_ensure_your_es_cluster_is_healthy]
