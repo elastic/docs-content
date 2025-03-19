@@ -12,10 +12,14 @@ cross_links:
   - apm-agent-go
   - apm-agent-ios
   - apm-agent-java
+  - apm-agent-nodejs
+  - apm-agent-php
+  - apm-agent-python
+  - apm-agent-ruby
   - apm-agent-rum-js
   - apm-aws-lambda
   - apm-k8s-attacher
-  - asciidocalypse
+  - apm-server
   - beats
   - cloud
   - cloud-on-k8s
