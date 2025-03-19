@@ -6,9 +6,9 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-transport-settings.html
 ---
 
-# Transport settings [k8s-transport-settings]
+# Transport certificates on ECK [k8s-transport-settings]
 
-The transport module in Elasticsearch is used for internal communication between nodes within the cluster as well as communication between remote clusters. Check the [Elasticsearch documentation](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md) for details. For customization options of the HTTP layer, check [Services](accessing-services.md) and [TLS certificates](/deploy-manage/security/secure-http-communications.md).
+The transport module in Elasticsearch is used for internal communication between nodes within the cluster as well as communication between remote clusters. Check the [Elasticsearch documentation](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md) for details. For customization options of the HTTP layer, check [Services](../deploy/cloud-on-k8s/accessing-services.md) and [TLS certificates](/deploy-manage/security/secure-http-communications.md).
 
 ## Customize the Transport Service [k8s_customize_the_transport_service]
 
@@ -76,7 +76,7 @@ spec:
 When following the instructions in [Configure a custom Certificate Authority](#k8s-transport-ca) the issuance of certificates is orchestrated by the ECK operator and the operator needs access to the CAs private key. If this is undesirable it is also possible to configure node transport certificates without involving the ECK operator. The following two pre-requisites apply:
 
 1. The tooling used must be able to issue individual certificates for each Elasticsearch node and dynamically add or remove certificates as the cluster scales up and down.
-2. The ECK operator must be configured to be aware of the CA in use for the [remote cluster](../../remote-clusters/eck-remote-clusters.md#k8s-remote-clusters-connect-external) support to work.
+2. The ECK operator must be configured to be aware of the CA in use for the [remote cluster](../remote-clusters/eck-remote-clusters.md#k8s-remote-clusters-connect-external) support to work.
 
 The following example configuration using [cert-manager csi-driver](https://cert-manager.io/docs/projects/csi-driver/) and [trust-manager](https://cert-manager.io/docs/projects/trust-manager/) meets these two requirements:
 

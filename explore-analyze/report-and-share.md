@@ -33,7 +33,7 @@ $$$securing-reporting$$$
 
 ## Permissions
 
-To be able to share objects or generate reports, you must have a role that allows these actions on the specific {{es}} indices and {{kib}} applications containing the data that you want to share. Check [Configuring reporting](/deploy-manage/deploy/kibana-reporting-configuration.md) for more information.
+To be able to share objects or generate reports, you must have a role that allows these actions on the specific {{es}} indices and {{kib}} applications containing the data that you want to share. Check [Configuring reporting](/deploy-manage/kibana-reporting-configuration.md) for more information.
 
 ## Share with a direct link [share-a-direct-link]
 

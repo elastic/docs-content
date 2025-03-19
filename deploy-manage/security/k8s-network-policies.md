@@ -7,9 +7,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s_prerequisites.html
 ---
 
-% this section could be moved entirely to security. to be considered.
-
-# Network policies [k8s-network-policies]
+# Kubernetes network policies [k8s-network-policies]
 
 Kubernetes [network policies](https://kubernetes.io/docs/concepts/services-networking/network-policies/) allow you to isolate pods by restricting incoming and outgoing network connections to a trusted set of sources and destinations.
 
@@ -21,7 +19,7 @@ Note that network policies alone are not sufficient for security. You should com
 There are several efforts to support multi-tenancy on Kubernetes, including the [official working group for multi-tenancy](https://github.com/kubernetes-sigs/multi-tenancy) and community extensions such as [loft](https://loft.sh) and [kiosk](https://github.com/kiosk-sh/kiosk), that can make configuration and management easier. You might need to employ network policies such the ones described in this section to have fine-grained control over {{stack}} applications deployed by your tenants.
 ::::
 
-The following sections assume that the operator is installed in the `elastic-system` namespace with the [`namespaces` configuration](configure-eck.md) set to `team-a,team-b`. Each namespace is expected to be labelled as follows:
+The following sections assume that the operator is installed in the `elastic-system` namespace with the [`namespaces` configuration](../deploy/cloud-on-k8s/configure-eck.md) set to `team-a,team-b`. Each namespace is expected to be labelled as follows:
 
 ```sh
 kubectl label namespace elastic-system eck.k8s.elastic.co/operator-name=elastic-operator
