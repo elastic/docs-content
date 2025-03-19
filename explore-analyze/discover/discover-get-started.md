@@ -140,6 +140,19 @@ For geo point fields (![Geo point field icon](../../images/kibana-geoip-icon.png
 ![Map containing documents](../../images/kibana-discover-maps.png "")
 
 
+### Find and highlight values in the table [in-table-search]
+
+Use the in-table search to find and highlight specific values beyond what's currently visible on your screen.
+
+The in-table search looks for all matching values in all results and pages currently loaded in the table. The number of results loaded depends on the [Sample size](document-explorer.md#document-explorer-sample-size). If you load more results, the search automatically updates and reflects the new number of matching values, if any more are found.
+
+```{tip}
+You can navigate between results with your keyboard by pressing "Enter" to go to the next result, and "Shift + Enter" to go to the previous result.
+```
+
+![Using the in-table search and navigating through the matches](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/blt30bf5f8b9a45ab74/67c234a787966d9fbc994ce0/in-table-search-demo.gif)
+
+
 ### Compare documents [compare-documents-in-discover]
 
 You can use **Discover** to compare and diff the field values of multiple results or documents in the table.
@@ -166,6 +179,10 @@ You can quickly copy the content currently displayed in the table for one or sev
 2. Open the **Selected** menu in the table toolbar, and select **Copy selection as text** or **Copy documents as JSON**.
 
 The content is copied to your clipboard in the selected format. Fields that are not currently added to the table are ignored.
+
+:::{tip}
+You can copy the content of a single cell to your clipboard from the quick actions that appear when hovering over the cell.
+:::
 
 
 ### Explore individual result or document details in depth [look-inside-a-document]
