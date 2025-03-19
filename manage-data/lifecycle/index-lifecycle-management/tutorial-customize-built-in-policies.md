@@ -11,8 +11,12 @@ applies_to:
 {{es}} includes the following built-in {{ilm-init}} policies:
 
 * `logs@lifecycle`
+* `logs-otel@lifecycle`
 * `metrics@lifecycle`
+* `metrics-otel@lifecycle`
 * `synthetics@lifecycle`
+* `traces@lifecycle`
+* `traces-otel@lifecycle`
 
 {{agent}} uses these policies to manage backing indices for its data streams. This tutorial shows you how to use {{kib}}’s **Index Lifecycle Policies** to customize these policies based on your application’s performance, resilience, and retention requirements.
 
