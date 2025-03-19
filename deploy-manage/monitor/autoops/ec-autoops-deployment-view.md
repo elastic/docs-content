@@ -10,7 +10,7 @@ applies_to:
 
 The **Deployment** view is the event control panel that allows you to see which issues are affecting the {{es}} cluster and get a list of action items to address them.
 
-:::{image} ../../../images/cloud-autoops-deployment-view.png
+:::{image} /images/cloud-autoops-deployment-view.png
 :alt: The Deployment view
 :::
 
@@ -35,7 +35,7 @@ The **Events History** panel lists events that happened at some point and that h
 
 The **Deployment Info** panel provides a quick overview of the {{es}} cluster resources in the selected deployment, such as {{es}} version, cluster status (indicated by the colors green, yellow, or red) at the top right, number of nodes distributed by role, and resources metrics.
 
-:::{image} ../../../images/cloud-autoops-deployment-info.png
+:::{image} /images/cloud-autoops-deployment-info.png
 :alt: The AutoOps Deployment Info
 :::
 
@@ -44,7 +44,7 @@ The **Deployment Info** panel provides a quick overview of the {{es}} cluster re
 
 The **Performance** panel shows key performance metrics, aggregated at both the cluster level and the selected tier levels:
 
-:::{image} ../../../images/cloud-autoops-deployment-performance.png
+:::{image} /images/cloud-autoops-deployment-performance.png
 :alt: The AutoOps Deployment Performance
 :::
 

@@ -22,7 +22,7 @@ After you have created a new deployment, you should enable shipping logs and met
 4. Choose where to send your logs and metrics.
 
     ::::{important}
-    Anything used for production should go to a separate deployment you create only for monitoring. For development or testing, you can send monitoring data to the same deployment. Check [Enable logging and monitoring](../../../deploy-manage/monitor/stack-monitoring/elastic-cloud-stack-monitoring.md#ec-logging-and-monitoring-production).
+    Anything used for production should go to a separate deployment you create only for monitoring. For development or testing, you can send monitoring data to the same deployment. Check [Enable logging and monitoring](../../../deploy-manage/monitor/stack-monitoring/ece-ech-stack-monitoring.md).
     ::::
 
 5. Select **Save**.
@@ -59,7 +59,7 @@ To learn more about what [Elasticsearch monitoring metrics](/deploy-manage/monit
 :alt: Node tab in Kibana under Stack Monitoring
 :::
 
-Some [performance metrics](../../../deploy-manage/monitor/monitoring-data/ec-saas-metrics-accessing.md) are also available directly in the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body) and don’t require looking at your monitoring deployment. If you’re ever in a rush to determine if there is a performance problem, you can get a quick overview by going to the **Performance** page from your deployment menu:
+Some [performance metrics](/deploy-manage/monitor/access-performance-metrics-on-elastic-cloud.md) are also available directly in the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body) and don’t require looking at your monitoring deployment. If you’re ever in a rush to determine if there is a performance problem, you can get a quick overview by going to the **Performance** page from your deployment menu:
 
 :::{image} ../../../images/cloud-ec-ce-monitoring-performance.png
 :alt: Performance page of the Elastic Cloud console
@@ -104,7 +104,7 @@ You will get this request reported as a new log. Audit logs do not currently rep
 
 ## Get notified [ec_get_notified]
 
-You should take advantage of the default [Elastic Stack monitoring alerts](/deploy-manage/monitor/monitoring-data/kibana-alerts.md) that are available out-of-the-box. You don’t have to do anything other than enable shipping logs and metrics to have them made available to you (which you did earlier on).
+You should take advantage of the default [Elastic Stack monitoring alerts](/deploy-manage/monitor/monitoring-data/configure-stack-monitoring-alerts.md) that are available out-of-the-box. You don’t have to do anything other than enable shipping logs and metrics to have them made available to you (which you did earlier on).
 
 On top of these default alerts that write to indices you can investigate, you might want to add some custom actions, such as a [connector](kibana://reference/connectors-kibana.md) for Slack notifications. To set up these notifications, you first configure a Slack connector and then append it to the default alerts and actions. From Kibana:
 
@@ -115,7 +115,7 @@ On top of these default alerts that write to indices you can investigate, you mi
     3. Select **Save**.
 
 2. Go to **Stack Monitoring** and select **Enter setup mode**.
-3. Edit an alert rule, such as [CPU usage](/deploy-manage/monitor/monitoring-data/kibana-alerts.md#kibana-alerts-cpu-threshold):
+3. Edit an alert rule, such as [CPU usage](/deploy-manage/monitor/monitoring-data/configure-stack-monitoring-alerts.md#kibana-alerts-cpu-threshold):
 
     1. Select one of the alert rule fields and select **CPU Usage**.
     2. Choose **Edit rule** and scroll down to the bottom of the screen to select **Slack**.

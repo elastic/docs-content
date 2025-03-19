@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/shard-allocation-awareness.html
+applies_to:
+  stack:
+  self:
 ---
 
 # Shard allocation awareness [shard-allocation-awareness]

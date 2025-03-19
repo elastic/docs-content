@@ -1,16 +1,18 @@
+---
+mapped_urls:
+  - https://www.elastic.co/guide/en/elasticsearch/reference/current/monitoring-production.html
+applies_to:
+  deployment:
+    self: all
+---
+
 # Monitoring in a production environment [monitoring-production]
 
 In production, you should send monitoring data to a separate *monitoring cluster* so that historical data is available even when the nodes you are monitoring are not.
 
-::::{important}
-{{agent}} and {{metricbeat}} are the recommended methods for collecting and shipping monitoring data to a monitoring cluster.
+If you have at least a Gold subscription, using a dedicated monitoring cluster also enables you to monitor multiple clusters from a central location.
 
-If you have previously configured legacy collection methods, you should migrate to using [{{agent}}](../../../deploy-manage/monitor/stack-monitoring/collecting-monitoring-data-with-elastic-agent.md) or [{{metricbeat}}](../../../deploy-manage/monitor/stack-monitoring/collecting-monitoring-data-with-metricbeat.md) collection. Do not use legacy collection alongside other collection methods.
-
-::::
-
-
-If you have at least a Gold Subscription, using a dedicated monitoring cluster also enables you to monitor multiple clusters from a central location.
+## Set up your monitoring cluster and {{kib}} instance
 
 To store monitoring data in a separate cluster:
 
@@ -62,30 +64,7 @@ To store monitoring data in a separate cluster:
 
             Alternatively, use the `remote_monitoring_user` [built-in user](../../../deploy-manage/users-roles/cluster-or-deployment-auth/built-in-users.md).
 
-2. Configure your production cluster to collect data and send it to the monitoring cluster:
-
-    * [{{agent}} collection methods](../../../deploy-manage/monitor/stack-monitoring/collecting-monitoring-data-with-elastic-agent.md)
-    * [{{metricbeat}} collection methods](../../../deploy-manage/monitor/stack-monitoring/collecting-monitoring-data-with-metricbeat.md)
-    * [Legacy collection methods](../../../deploy-manage/monitor/stack-monitoring/es-legacy-collection-methods.md)
-
-3. (Optional) [Configure {{ls}} to collect data and send it to the monitoring cluster](logstash://reference/monitoring-logstash-legacy.md).
-4. (Optional) Configure the {{beats}} to collect data and send it to the monitoring cluster. Skip this step for {{beats}} that are managed by {{agent}}.
-
-    * [Auditbeat](beats://reference/auditbeat/monitoring.md)
-    * [Filebeat](beats://reference/filebeat/monitoring.md)
-    * [Heartbeat](beats://reference/heartbeat/monitoring.md)
-    * [Metricbeat](beats://reference/metricbeat/monitoring.md)
-    * [Packetbeat](beats://reference/packetbeat/monitoring.md)
-    * [Winlogbeat](beats://reference/winlogbeat/monitoring.md)
-
-5. (Optional) [Configure APM Server monitoring](/solutions/observability/apps/monitor-apm-server.md)
-6. (Optional) Configure {{kib}} to collect data and send it to the monitoring cluster:
-
-    * [{{agent}} collection methods](../../../deploy-manage/monitor/stack-monitoring/kibana-monitoring-elastic-agent.md)
-    * [{{metricbeat}} collection methods](../../../deploy-manage/monitor/stack-monitoring/kibana-monitoring-metricbeat.md)
-    * [Legacy collection methods](../../../deploy-manage/monitor/stack-monitoring/kibana-monitoring-legacy.md)
-
-7. (Optional) Create a dedicated {{kib}} instance for monitoring, rather than using a single {{kib}} instance to access both your production cluster and monitoring cluster.
+2. (Optional) Create a dedicated {{kib}} instance for monitoring, rather than using a single {{kib}} instance to access both your production cluster and monitoring cluster.
 
     ::::{note}
     If you log in to {{kib}} using SAML, Kerberos, PKI, OpenID Connect, or token authentication providers, a dedicated {{kib}} instance is **required**. The security tokens that are used in these contexts are cluster-specific; therefore you cannot use a single {{kib}} instance to connect to both production and monitoring clusters.
@@ -94,5 +73,10 @@ To store monitoring data in a separate cluster:
 
     1. (Optional) Disable the collection of monitoring data in this {{kib}} instance. Set the `xpack.monitoring.kibana.collection.enabled` setting to `false` in the `kibana.yml` file. For more information about this setting, see [Monitoring settings in {{kib}}](kibana://reference/configuration-reference/monitoring-settings.md).
 
-8. [Configure {{kib}} to retrieve and display the monitoring data](../../../deploy-manage/monitor/stack-monitoring/kibana-monitoring-data.md).
+## Send data to your cluster
 
+After your monitoring cluster is set up, configure your {{stack}} components to send data to the cluster. Refer to [](/deploy-manage/monitor/stack-monitoring.md) to learn about the available methods for each component.
+
+## Configure {{kib}} to retrieve and display the monitoring data
+
+After data is being shipped to your monitoring cluster, you can [configure {{kib}} to retrieve and display the monitoring data](../../../deploy-manage/monitor/stack-monitoring/kibana-monitoring-data.md).

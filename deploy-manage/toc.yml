@@ -80,6 +80,7 @@ toc:
                     children:
                       - file: deploy/elastic-cloud/switch-from-apm-to-integrations-server-payload.md
                   - file: deploy/elastic-cloud/find-cloud-id.md
+              - file: deploy/elastic-cloud/ec-vcpu-boost-instance.md
               - file: deploy/elastic-cloud/change-hardware.md
               - file: deploy/elastic-cloud/manage-deployments-using-elastic-cloud-api.md
               - file: deploy/elastic-cloud/keep-track-of-deployment-activity.md
@@ -657,12 +658,14 @@ toc:
         children:
           - file: monitor/autoops/ec-autoops-how-to-access.md
           - file: monitor/autoops/ec-autoops-events.md
-          - file: monitor/autoops/ec-autoops-overview-view.md
-          - file: monitor/autoops/ec-autoops-deployment-view.md
-          - file: monitor/autoops/ec-autoops-nodes-view.md
-          - file: monitor/autoops/ec-autoops-index-view.md
-          - file: monitor/autoops/ec-autoops-shards-view.md
-          - file: monitor/autoops/ec-autoops-template-optimizer.md
+          - file: monitor/autoops/views.md
+            children:
+              - file: monitor/autoops/ec-autoops-overview-view.md
+              - file: monitor/autoops/ec-autoops-deployment-view.md
+              - file: monitor/autoops/ec-autoops-nodes-view.md
+              - file: monitor/autoops/ec-autoops-index-view.md
+              - file: monitor/autoops/ec-autoops-shards-view.md
+              - file: monitor/autoops/ec-autoops-template-optimizer.md
           - file: monitor/autoops/ec-autoops-notifications-settings.md
           - file: monitor/autoops/ec-autoops-event-settings.md
           - file: monitor/autoops/ec-autoops-dismiss-event.md
@@ -670,22 +673,14 @@ toc:
           - file: monitor/autoops/ec-autoops-faq.md
       - file: monitor/stack-monitoring.md
         children:
-          - file: monitor/stack-monitoring/elastic-cloud-stack-monitoring.md
+          - file: monitor/stack-monitoring/ece-ech-stack-monitoring.md
           - file: monitor/stack-monitoring/eck-stack-monitoring.md
-            children:
-              - file: monitor/stack-monitoring/k8s_connect_to_an_external_monitoring_elasticsearch_cluster.md
-              - file: monitor/stack-monitoring/k8s_when_to_use_it.md
-              - file: monitor/stack-monitoring/k8s_how_it_works.md
-              - file: monitor/stack-monitoring/k8s_audit_logging.md
-              - file: monitor/stack-monitoring/k8s_override_the_beats_pod_template.md
-          - file: monitor/stack-monitoring/ece-stack-monitoring.md
-            children:
-              - file: monitor/stack-monitoring/ece-restrictions-monitoring.md
           - file: monitor/stack-monitoring/elasticsearch-monitoring-self-managed.md
             children:
               - file: monitor/stack-monitoring/collecting-monitoring-data-with-elastic-agent.md
               - file: monitor/stack-monitoring/collecting-monitoring-data-with-metricbeat.md
               - file: monitor/stack-monitoring/collecting-log-data-with-filebeat.md
+              - file: monitor/stack-monitoring/es-self-monitoring-prod.md
               - file: monitor/stack-monitoring/es-legacy-collection-methods.md
                 children:
                   - file: monitor/stack-monitoring/es-monitoring-collectors.md
@@ -697,8 +692,25 @@ toc:
             children:
               - file: monitor/stack-monitoring/kibana-monitoring-elastic-agent.md
               - file: monitor/stack-monitoring/kibana-monitoring-metricbeat.md
-              - file: monitor/stack-monitoring/kibana-monitoring-data.md
-              - file: monitor/stack-monitoring/kibana-monitoring-legacy.md
+              - file: monitor/stack-monitoring/kibana-monitoring-legacy.md 
+          - file: monitor/stack-monitoring/kibana-monitoring-data.md
+          - file: monitor/monitoring-data/visualizing-monitoring-data.md
+            children:
+              - file: monitor/monitoring-data/beats-page.md
+              - file: monitor/monitoring-data/elasticsearch-metrics.md
+              - file: monitor/monitoring-data/kibana-page.md
+              - file: monitor/monitoring-data/logstash-page.md
+              - file: monitor/monitoring-data/monitor-troubleshooting.md
+          - file: monitor/monitoring-data/configure-stack-monitoring-alerts.md
+          - file: monitor/monitoring-data/configuring-data-streamsindices-for-monitoring.md
+            children:
+              - file: monitor/monitoring-data/config-monitoring-data-streams-elastic-agent.md
+              - file: monitor/monitoring-data/config-monitoring-data-streams-metricbeat-8.md
+              - file: monitor/monitoring-data/config-monitoring-indices-metricbeat-7-internal-collection.md
+      - file: monitor/cloud-health-perf.md
+        children:
+          - file: monitor/access-performance-metrics-on-elastic-cloud.md
+          - file: monitor/ec-memory-pressure.md
       - file: monitor/orchestrators.md
         children:
           - file: monitor/orchestrators/eck-metrics-configuration.md
@@ -711,28 +723,6 @@ toc:
               - file: monitor/orchestrators/ece-monitoring-ece-access.md
               - file: monitor/orchestrators/ece-proxy-log-fields.md
               - file: monitor/orchestrators/ece-monitoring-ece-set-retention.md
-      - file: monitor/monitoring-data.md
-        children:
-          - file: monitor/monitoring-data/visualizing-monitoring-data.md
-            children:
-              - file: monitor/monitoring-data/beats-page.md
-              - file: monitor/monitoring-data/elasticsearch-metrics.md
-              - file: monitor/monitoring-data/kibana-alerts.md
-              - file: monitor/monitoring-data/kibana-page.md
-              - file: monitor/monitoring-data/logstash-page.md
-              - file: monitor/monitoring-data/monitor-troubleshooting.md
-          - file: monitor/monitoring-data/access-performance-metrics-on-elastic-cloud.md
-            children:
-              - file: monitor/monitoring-data/ec-saas-metrics-accessing.md
-                children:
-                  - file: monitor/monitoring-data/ec-memory-pressure.md
-                  - file: monitor/monitoring-data/ec-vcpu-boost-instance.md
-          - file: monitor/monitoring-data/configure-stack-monitoring-alerts.md
-          - file: monitor/monitoring-data/configuring-data-streamsindices-for-monitoring.md
-            children:
-              - file: monitor/monitoring-data/config-monitoring-data-streams-elastic-agent.md
-              - file: monitor/monitoring-data/config-monitoring-data-streams-metricbeat-8.md
-              - file: monitor/monitoring-data/config-monitoring-indices-metricbeat-7-internal-collection.md
       - file: monitor/kibana-task-manager-health-monitoring.md
       - file: monitor/logging-configuration.md
         children:

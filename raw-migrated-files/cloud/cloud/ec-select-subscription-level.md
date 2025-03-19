@@ -46,6 +46,9 @@ You can [change your subscription level](../../../deploy-manage/cloud-organizati
 `Field-level or document-level security`
 :   Remove any user role configurations based on field or document access [through the API](/deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level.md) or the Kibana Roles page.
 
+`ES|QL cross-cluster search`
+: Discontinue all ES|QL CCS queries or upgrade license tier to Enterprise
+
 ::::{note}
 After you have made your changes to the deployment, it can take up to one hour to clear the notification banner.
 ::::

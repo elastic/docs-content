@@ -10,7 +10,7 @@ applies_to:
 
 Some events that are triggered may not require your attention immediately, or at all. Users with the appropriate permissions can choose to dismiss an event, preventing AutoOps from opening it. This action can be reversed using the Dismiss events report.
 
-:::{image} ../../../images/cloud-autoops-dismiss-events.png
+:::{image} /images/cloud-autoops-dismiss-events.png
 :alt: Dismiss events
 :::
 
