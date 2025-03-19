@@ -7,11 +7,11 @@ mapped_pages:
 
 ## What is a shard? [what-is-a-shard]
 
-A shard is a basic unit of storage in {es}. Every index is divided into one or more shards to help distribute data and workload across nodes in a cluster. This division allows {es} to handle large datasets and perform operations like searches and indexing efficiently. For more detailed information on shards, see (this page)[/deploy-manage/distributed-architecture/clusters-nodes-shards].
+A shard is a basic unit of storage in {{es}}. Every index is divided into one or more shards to help distribute data and workload across nodes in a cluster. This division allows {{es}} to handle large datasets and perform operations like searches and indexing efficiently. For more detailed information on shards, see [this page](/deploy-manage/distributed-architecture/clusters-nodes-shards).
 
 ## General guidelines [sizing-shard-guidelines]
 
-Balancing the number and size of your shards is important for the performance and stability of an {es} cluster:
+Balancing the number and size of your shards is important for the performance and stability of an {{es}} cluster:
 
 * Too many shards can degrade search performance and make the cluster unstable. This is referred to as _oversharding_.
 * Very large shards can slow down search operations and prolong recovery times after failures.
@@ -27,7 +27,7 @@ To avoid either of these states, implement the following guidelines:
 
 To ensure that each node is working optimally, distribute shards evenly across nodes. Uneven distribution can cause some nodes to work harder than others, leading to performance degradation and instability. 
 
-While {es} automatically balances shards, you need to configure indices with an appropriate number of shards and replicas to allow for even distribution across nodes.
+While {{es}} automatically balances shards, you need to configure indices with an appropriate number of shards and replicas to allow for even distribution across nodes.
 
 If you are using [data streams](/manage-data/data-store/data-streams.md), each data stream is backed by a sequence of indices, each index potentially having multiple shards. 
 
