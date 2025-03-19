@@ -9,7 +9,7 @@ To keep your LLM-powered applications reliable, efficient, cost-effective, and e
 Elastic’s end-to-end LLM observability is delivered through the following methods: 
 
 - Metrics and logs ingestion for LLM APIs (via [Elastic integrations](https://www.elastic.co/guide/en/integrations/current/introduction.html))
-- APM tracing for OpenAI Models (via [instrumentation](https://github.com/elastic/opentelemetry))
+- APM tracing for OpenAI Models (via [instrumentation](https://elastic.github.io/opentelemetry/))
 
 ## Metrics and logs ingestion for LLM APIs (via Elastic integrations)
 
