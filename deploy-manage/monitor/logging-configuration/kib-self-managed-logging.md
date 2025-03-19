@@ -14,7 +14,7 @@ If you are planning to ingest your logs using {{es}} or another tool, we recomme
 
 The {{kib}} logging system has three main components: *loggers*, *appenders* and *layouts*. 
 
-* Loggers define what logging settings should be applied to a particular logger.
+* **Loggers** define what logging settings should be applied to a particular logger.
 * [Appenders](#logging-appenders) define where log messages are displayed (for example, stdout or console) and stored (for example, file on the disk).
 * [Layouts](#logging-layouts) define how log messages are formatted and what type of information they include.
 

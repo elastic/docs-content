@@ -14,7 +14,7 @@ The following logging features are available:
 
 ## For {{es}} [extra-logging-features-elasticsearch]
 
-* Application and component logging: Logs messages related to running {{es}}. 
+* **Application and component logging**: Logs messages related to running {{es}}. 
   
   You can [configure the log level for {{es}}](/deploy-manage/monitor/logging-configuration/update-elasticsearch-logging-levels.md), and, in self-managed clusters, [configure underlying Log4j settings](/deploy-manage/monitor/logging-configuration/elasticsearch-log4j-configuration-self-managed.md) to customize logging behavior.
 * [Deprecation logging](/deploy-manage/monitor/logging-configuration/elasticsearch-deprecation-logs.md): Deprecation logs record a message to the {{es}} log directory when you use deprecated {{es}} functionality. You can use the deprecation logs to update your application before upgrading {{es}} to a new major version.
@@ -22,6 +22,10 @@ The following logging features are available:
 * [Slow query and index logging](elasticsearch://reference/elasticsearch/index-settings/slow-log.md): Helps find and debug slow queries and indexing.
 
 ## For {{kib}} [extra-logging-features-kibana]
+
+* **Application and component logging**: Logs messages related to running {{kib}}. 
+  
+  You can [configure the log level for {{kib}}](/deploy-manage/monitor/logging-configuration/kibana-log-levels.md), and, in self-managed clusters, [configure underlying settings](/deploy-manage/monitor/logging-configuration/kib-self-managed-logging.md) to customize logging behavior.
 
 * [Audit logging](/deploy-manage/security/logging-configuration/enabling-audit-logs.md): Logs security-related events on your deployment.
 
