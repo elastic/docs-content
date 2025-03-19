@@ -51,7 +51,7 @@ For a list of provider fields that you can use in conditions, refer to [Kubernet
 2. For a pod with annotation `prometheus.io/scrape: "true"` the condition should be `${kubernetes.annotations.prometheus.io/scrape} == "true"`.
 3. For a pod with name `kube-scheduler-kind-control-plane` the condition should be `${kubernetes.pod.name} == "kube-scheduler-kind-control-plane"`.
 
-The `redis` input defined in the {{agent}} manifest only specifies the`info` metricset. To learn about other available metricsets and their configuration settings, refer to the [Redis module page](asciidocalypse://docs/beats/docs/reference/metricbeat/metricbeat-module-redis.md).
+The `redis` input defined in the {{agent}} manifest only specifies the`info` metricset. To learn about other available metricsets and their configuration settings, refer to the [Redis module page](beats://reference/metricbeat/metricbeat-module-redis.md).
 
 To deploy Redis, you can apply the following example manifest:
 
@@ -108,7 +108,7 @@ Before the 8.6 release, labels used in autodiscover conditions were dedoted in c
 
 
 ::::{warning}
-In some "As a Service" Kubernetes implementations, like GKE, the control plane nodes or even the Pods running on them won’t be visible. In these cases, it won’t be possible to use scheduler metricsets, necessary for this example. Refer [scheduler and controller manager](asciidocalypse://docs/beats/docs/reference/metricbeat/metricbeat-module-kubernetes.md#_scheduler_and_controllermanager) to find more information.
+In some "As a Service" Kubernetes implementations, like GKE, the control plane nodes or even the Pods running on them won’t be visible. In these cases, it won’t be possible to use scheduler metricsets, necessary for this example. Refer [scheduler and controller manager](beats://reference/metricbeat/metricbeat-module-kubernetes.md#_scheduler_and_controllermanager) to find more information.
 ::::
 
 

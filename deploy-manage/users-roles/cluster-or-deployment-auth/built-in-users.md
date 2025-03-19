@@ -159,7 +159,7 @@ xpack.monitoring.elasticsearch.username: beats_system
 xpack.monitoring.elasticsearch.password: beatspassword
 ```
 
-For example, see [Monitoring {{metricbeat}}](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-metricbeat/monitoring.md).
+For example, see [Monitoring {{metricbeat}}](beats://reference/metricbeat/monitoring.md).
 
 The `remote_monitoring_user` is used when {{metricbeat}} collects and stores monitoring data for the {{stack}}. See [*Monitoring in a production environment*](/deploy-manage/monitor/stack-monitoring/elasticsearch-monitoring-self-managed.md).
 

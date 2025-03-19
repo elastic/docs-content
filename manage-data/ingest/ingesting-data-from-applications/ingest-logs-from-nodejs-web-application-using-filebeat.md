@@ -306,7 +306,7 @@ For this example, Filebeat uses the following four decoding options.
   json.expand_keys: true
 ```
 
-To learn more about these settings, check [JSON input configuration options](asciidocalypse://docs/beats/docs/reference/filebeat/filebeat-input-log.md#filebeat-input-log-config-json) and [Decode JSON fields](asciidocalypse://docs/beats/docs/reference/filebeat/decode-json-fields.md) in the Filebeat Reference.
+To learn more about these settings, check [JSON input configuration options](beats://reference/filebeat/filebeat-input-log.md#filebeat-input-log-config-json) and [Decode JSON fields](beats://reference/filebeat/decode-json-fields.md) in the Filebeat Reference.
 
 Append the four JSON decoding options to the *Filebeat inputs* section of *filebeat.yml*, so that the section now looks like this:
 
@@ -342,7 +342,7 @@ Filebeat comes with predefined assets for parsing, indexing, and visualizing you
 ```
 
 ::::{important}
-Depending on variables including the installation location, environment, and local permissions, you might need to [change the ownership](asciidocalypse://docs/beats/docs/reference/libbeat/config-file-permissions.md) of filebeat.yml. You can also try running the command as *root*: *sudo ./filebeat setup -e* or you can disable strict permission checks by running the command with the `--strict.perms=false` option.
+Depending on variables including the installation location, environment, and local permissions, you might need to [change the ownership](beats://reference/libbeat/config-file-permissions.md) of filebeat.yml. You can also try running the command as *root*: *sudo ./filebeat setup -e* or you can disable strict permission checks by running the command with the `--strict.perms=false` option.
 ::::
 
 
@@ -443,7 +443,7 @@ In this command:
 * The *-c* flag specifies the path to the Filebeat config file.
 
 ::::{note}
-Just in case the command doesn’t work as expected, check the [Filebeat quick start](asciidocalypse://docs/beats/docs/reference/filebeat/filebeat-installation-configuration.md#start) for the detailed command syntax for your operating system. You can also try running the command as *root*: *sudo ./filebeat -e -c filebeat.yml*.
+Just in case the command doesn’t work as expected, check the [Filebeat quick start](beats://reference/filebeat/filebeat-installation-configuration.md#installation) for the detailed command syntax for your operating system. You can also try running the command as *root*: *sudo ./filebeat -e -c filebeat.yml*.
 ::::
 
 
@@ -526,5 +526,5 @@ You can add titles to the visualizations, resize and position them as you like, 
 
 2. As your final step, remember to stop Filebeat, the Node.js web server, and the client. Enter *CTRL + C* in the terminal window for each application to stop them.
 
-You now know how to monitor log files from a Node.js web application, deliver the log event data securely into an {{ech}} or {{ece}} deployment, and then visualize the results in Kibana in real time. Consult the [Filebeat documentation](asciidocalypse://docs/beats/docs/reference/filebeat/filebeat-overview.md) to learn more about the ingestion and processing options available for your data. You can also explore our [documentation](../../../manage-data/ingest.md) to learn all about ingesting data.
+You now know how to monitor log files from a Node.js web application, deliver the log event data securely into an {{ech}} or {{ece}} deployment, and then visualize the results in Kibana in real time. Consult the [Filebeat documentation](beats://reference/filebeat/filebeat-overview.md) to learn more about the ingestion and processing options available for your data. You can also explore our [documentation](../../../manage-data/ingest.md) to learn all about ingesting data.
 

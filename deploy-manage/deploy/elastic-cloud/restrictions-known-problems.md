@@ -26,7 +26,7 @@ When using {{ecloud}}, there are some limitations you should be aware of:
 * [Regions and Availability Zones](#ec-regions-and-availability-zone)
 % * [Known problems](#ec-known-problems)
 
-For limitations related to logging and monitoring, check the [Restrictions and limitations](../../monitor/stack-monitoring/elastic-cloud-stack-monitoring.md#ec-restrictions-monitoring) section of the logging and monitoring page.
+For limitations related to logging and monitoring, check the [Restrictions and limitations](../../monitor/stack-monitoring/ece-ech-stack-monitoring.md#restrictions-monitoring) section of the logging and monitoring page.
 
 % Occasionally, we also publish information about [Known problems](#ec-known-problems) with our {{ecloud}} or the Elastic Stack.
 

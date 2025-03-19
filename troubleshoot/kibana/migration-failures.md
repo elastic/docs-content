@@ -13,7 +13,7 @@ Migrating {{kib}} primarily involves migrating saved object documents to be comp
 
 If {{kib}} unexpectedly terminates while migrating a saved object index, {{kib}} automatically attempts to perform the migration again when the process restarts. Do not delete any saved objects indices to fix a failed migration. Unlike previous versions, {{kib}} 7.12.0 and later does not require deleting indices to release a failed migration lock.
 
-If upgrade migrations fail repeatedly, refer to [preparing for migration](../../deploy-manage/upgrade/deployment-or-cluster.md#preventing-migration-failures). When you address the root cause for the migration failure, {{kib}} automatically retries the migration. If you’re unable to resolve a failed migration, contact Support.
+If upgrade migrations fail repeatedly, refer to [preparing for migration](../../deploy-manage/upgrade/prepare-to-upgrade.md). When you address the root cause for the migration failure, {{kib}} automatically retries the migration. If you’re unable to resolve a failed migration, contact Support.
 
 
 ## Corrupt saved objects [_corrupt_saved_objects]

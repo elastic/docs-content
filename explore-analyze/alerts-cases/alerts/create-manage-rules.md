@@ -166,7 +166,7 @@ Some rule types cannot be exported through this interface:
 
 **Security rules** can be imported and exported using the [Security UI](../../../solutions/security/detect-and-alert/manage-detection-rules.md#import-export-rules-ui).
 
-**Stack monitoring rules** are [automatically created](../../../deploy-manage/monitor/monitoring-data/kibana-alerts.md) for you and therefore cannot be managed in **Saved Objects**.
+**Stack monitoring rules** are [automatically created](../../../deploy-manage/monitor/monitoring-data/configure-stack-monitoring-alerts.md) for you and therefore cannot be managed in **Saved Objects**.
 
 ::::
 

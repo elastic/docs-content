@@ -19,7 +19,7 @@ When using Elasticsearch Add-On for Heroku, there are some limitations you shoul
 * [Regions and Availability Zones](#ech-regions-and-availability-zone)
 * [Known problems](#ech-known-problems)
 
-For limitations related to logging and monitoring, check the [Restrictions and limitations](../../monitor/stack-monitoring/elastic-cloud-stack-monitoring.md) section of the logging and monitoring page.
+For limitations related to logging and monitoring, check the [Restrictions and limitations](../../monitor/stack-monitoring/ece-ech-stack-monitoring.md) section of the logging and monitoring page.
 
 Occasionally, we also publish information about [Known problems](#ech-known-problems) with our Elasticsearch Add-On for Heroku or the Elastic Stack.
 
@@ -53,7 +53,7 @@ Generally, if a feature is shown as available in the [Elasticsearch Add-On for H
 * Elasticsearch plugins, are not enabled by default for security purposes. Please reach out to support if you would like to enable Elasticsearch plugins support on your account.
 * Some Elasticsearch plugins do not apply to Elasticsearch Add-On for Heroku. For example, you won’t ever need to change discovery, as Elasticsearch Add-On for Heroku handles how nodes discover one another.
 * In Elasticsearch 5.0 and later, site plugins are no longer supported. This change does not affect the site plugins Elasticsearch Add-On for Heroku might provide out of the box, such as Kopf or Head, since these site plugins are serviced by our proxies and not Elasticsearch itself.
-* In Elasticsearch 5.0 and later, site plugins such as Kopf and Paramedic are no longer provided. We recommend that you use our [cluster performance metrics](../../monitor/stack-monitoring/elastic-cloud-stack-monitoring.md), [X-Pack monitoring features](../../monitor/stack-monitoring/elastic-cloud-stack-monitoring.md) and Kibana’s (6.3+) [Index Management UI](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-mgmt.html) if you want more detailed information or perform index management actions.
+* In Elasticsearch 5.0 and later, site plugins such as Kopf and Paramedic are no longer provided. We recommend that you use our [cluster performance metrics](../../monitor/stack-monitoring/ece-ech-stack-monitoring.md), [X-Pack monitoring features](../../monitor/stack-monitoring/ece-ech-stack-monitoring.md) and Kibana’s (6.3+) [Index Management UI](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-mgmt.html) if you want more detailed information or perform index management actions.
 
 
 ## Private Link and SSO to Kibana URLs [ech-restrictions-traffic-filters-kibana-sso]
