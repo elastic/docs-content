@@ -227,7 +227,7 @@ $distDataAsString = ElasticApm::getSerializedCurrentDistributedTracingData(); <1
 ::::::
 
 ::::::{tab-item} Python
-1. Start a transaction with [`begin_transaction()`](asciidocalypse://docs/apm-agent-python/docs/reference/api-reference.md#client-api-begin-transaction).
+1. Start a transaction with [`begin_transaction()`](apm-agent-python://reference/api-reference.md#client-api-begin-transaction).
 2. Get the `trace_parent` of the active transaction.
 3. Send the `trace_parent` to the receiving service.
 
@@ -397,7 +397,7 @@ client.begin_transaction('processors', trace_parent=parent) <2>
 
 
 ::::{tip}
-See the [`TraceParent` API](asciidocalypse://docs/apm-agent-python/docs/reference/api-reference.md#traceparent-api) for additional examples.
+See the [`TraceParent` API](apm-agent-python://reference/api-reference.md#traceparent-api) for additional examples.
 ::::
 ::::::
 

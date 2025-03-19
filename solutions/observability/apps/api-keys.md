@@ -113,7 +113,7 @@ You can now apply your newly created API keys in the configuration of each of yo
 * **Java agent**: [`api_key`](apm-agent-java://reference/config-reporter.md#config-api-key)
 * **Node.js agent**: [`apiKey`](asciidocalypse://docs/apm-agent-nodejs/docs/reference/configuration.md#api-key)
 * **PHP agent**: [`api_key`](asciidocalypse://docs/apm-agent-php/docs/reference/configuration-reference.md#config-api-key)
-* **Python agent**: [`api_key`](asciidocalypse://docs/apm-agent-python/docs/reference/configuration.md#config-api-key)
+* **Python agent**: [`api_key`](apm-agent-python://reference/configuration.md#config-api-key)
 * **Ruby agent**: [`api_key`](asciidocalypse://docs/apm-agent-ruby/docs/reference/configuration.md#config-api-key)
 
 

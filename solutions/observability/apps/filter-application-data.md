@@ -40,6 +40,6 @@ Service environments are defined when configuring your APM agents. It’s vital 
 * **.NET:** [`Environment`](apm-agent-dotnet://reference/config-core.md#config-environment)
 * **Node.js:** [`environment`](asciidocalypse://docs/apm-agent-nodejs/docs/reference/ingestion-tools/apm-agent-nodejs/configuration.md#environment)
 * **PHP:** [`environment`](asciidocalypse://docs/apm-agent-php/docs/reference/ingestion-tools/apm-agent-php/configuration-reference.md#config-environment)
-* **Python:** [`environment`](asciidocalypse://docs/apm-agent-python/docs/reference/ingestion-tools/apm-agent-python/configuration.md#config-environment)
+* **Python:** [`environment`](apm-agent-python://reference/ingestion-tools/apm-agent-python/configuration.md#config-environment)
 * **Ruby:** [`environment`](asciidocalypse://docs/apm-agent-ruby/docs/reference/ingestion-tools/apm-agent-ruby/configuration.md#config-environment)
 * **Real User Monitoring (Elastic Stack only):** [`environment`](apm-agent-rum-js://reference/configuration.md#environment)

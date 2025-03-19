@@ -235,7 +235,7 @@ Each agent provides a configuration value used to set the transaction sample rat
 * .NET: [`TransactionSampleRate`](apm-agent-dotnet://reference/config-core.md#config-transaction-sample-rate)
 * Node.js: [`transactionSampleRate`](asciidocalypse://docs/apm-agent-nodejs/docs/reference/configuration.md#transaction-sample-rate)
 * PHP: [`transaction_sample_rate`](asciidocalypse://docs/apm-agent-php/docs/reference/configuration-reference.md#config-transaction-sample-rate)
-* Python: [`transaction_sample_rate`](asciidocalypse://docs/apm-agent-python/docs/reference/configuration.md#config-transaction-sample-rate)
+* Python: [`transaction_sample_rate`](apm-agent-python://reference/configuration.md#config-transaction-sample-rate)
 * Ruby: [`transaction_sample_rate`](asciidocalypse://docs/apm-agent-ruby/docs/reference/configuration.md#config-transaction-sample-rate)
 
 

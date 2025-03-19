@@ -645,8 +645,8 @@ apm = ElasticAPM(app)
 
 **Learn more in the agent reference**
 
-* [Supported technologies](asciidocalypse://docs/apm-agent-python/docs/reference/supported-technologies.md)
-* [Advanced configuration](asciidocalypse://docs/apm-agent-python/docs/reference/configuration.md)
+* [Supported technologies](apm-agent-python://reference/supported-technologies.md)
+* [Advanced configuration](apm-agent-python://reference/configuration.md)
 ::::::
 
 ::::::{tab-item} Ruby

@@ -52,7 +52,7 @@ Log ECS reformatting is controlled by the `log_ecs_reformatting` configuration o
 
 * [Java](apm-agent-java://reference/config-logging.md#config-log-ecs-reformatting)
 * [Ruby](asciidocalypse://docs/apm-agent-ruby/docs/reference/configuration.md#config-log-ecs-formatting)
-* [Python](asciidocalypse://docs/apm-agent-python/docs/reference/configuration.md#config-log_ecs_reformatting)
+* [Python](apm-agent-python://reference/configuration.md#config-log_ecs_reformatting)
 
 
 ### Ingest logs [ingest-ecs-logs]

@@ -89,12 +89,12 @@ In addition to APM and error data, the Python agent also collects system and app
 
 If you’re ready to give Elastic APM a try, see [Get started with traces and APM](../../../solutions/observability/apps/get-started-with-apm.md).
 
-See the [Python agent reference](asciidocalypse://docs/apm-agent-python/docs/reference/index.md) for full documentation, including:
+See the [Python agent reference](apm-agent-python://reference/index.md) for full documentation, including:
 
-* [Supported technologies](asciidocalypse://docs/apm-agent-python/docs/reference/supported-technologies.md)
-* [Set up](asciidocalypse://docs/apm-agent-python/docs/reference/set-up-apm-python-agent.md)
-* [Configuration reference](asciidocalypse://docs/apm-agent-python/docs/reference/configuration.md)
-* [API reference](asciidocalypse://docs/apm-agent-python/docs/reference/api-reference.md)
+* [Supported technologies](apm-agent-python://reference/supported-technologies.md)
+* [Set up](apm-agent-python://reference/set-up-apm-python-agent.md)
+* [Configuration reference](apm-agent-python://reference/configuration.md)
+* [API reference](apm-agent-python://reference/api-reference.md)
 
 ::::{important}
 Not all APM agent configuration options are compatible with Elastic Cloud serverless.

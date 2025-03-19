@@ -53,7 +53,7 @@ PHP agent
 :   [Configuration reference](asciidocalypse://docs/apm-agent-php/docs/reference/configuration.md)
 
 Python agent
-:   [Configuration reference](asciidocalypse://docs/apm-agent-python/docs/reference/configuration.md)
+:   [Configuration reference](apm-agent-python://reference/configuration.md)
 
 Ruby agent
 :   [Configuration reference](asciidocalypse://docs/apm-agent-ruby/docs/reference/configuration.md)

@@ -70,7 +70,7 @@ Some Elastic {{apm-agent}}s can automatically reformat application logs to ECS f
 This feature is supported for the following {{apm-agent}}s:
 
 * [Ruby](asciidocalypse://docs/apm-agent-ruby/docs/reference/configuration.md#config-log-ecs-formatting)
-* [Python](asciidocalypse://docs/apm-agent-python/docs/reference/logs.md#log-reformatting)
+* [Python](apm-agent-python://reference/logs.md#log-reformatting)
 * [Java](apm-agent-java://reference/logs.md#log-reformatting)
 
 **![documentation icon](../../../images/serverless-documentation.svg "") Learn more in [ECS formatted logs](../../../solutions/observability/logs/ecs-formatted-application-logs.md)**
@@ -99,5 +99,5 @@ Learn more about log correlation in the agent-specific ingestion guides:
 * [Java](apm-agent-java://reference/logs.md#log-correlation-ids)
 * [.NET](apm-agent-dotnet://reference/logs.md)
 * [Node.js](asciidocalypse://docs/apm-agent-nodejs/docs/reference/logs.md)
-* [Python](asciidocalypse://docs/apm-agent-python/docs/reference/logs.md#log-correlation-ids)
+* [Python](apm-agent-python://reference/logs.md#log-correlation-ids)
 * [Ruby](asciidocalypse://docs/apm-agent-ruby/docs/reference/logs.md)
