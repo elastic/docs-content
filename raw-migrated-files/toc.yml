@@ -1,16 +1,6 @@
 project: 'Files to pull from'
 toc:
   - file: index.md
-  - file: apm-agent-android/apm-agent-android/index.md
-    children:
-      - file: apm-agent-android/apm-agent-android/release-notes.md
-  - file: apm-agent-ios/apm-agent-swift/index.md
-    children:
-      - file: apm-agent-ios/apm-agent-swift/release-notes-v1.0.0.md
-      - file: apm-agent-ios/apm-agent-swift/release-notes-v1.0.1.md
-  - file: apm-agent-ruby/apm-agent-ruby/index.md
-    children:
-      - file: apm-agent-ruby/apm-agent-ruby/release-notes-4.x.md
   - file: cloud-on-k8s/cloud-on-k8s/index.md
     children:
       - file: cloud-on-k8s/cloud-on-k8s/k8s-securing-stack.md
@@ -83,16 +73,13 @@ toc:
       - file: docs-content/serverless/general-billing-stop-project.md
       - file: docs-content/serverless/general-sign-up-trial.md
       - file: docs-content/serverless/intro.md
-      - file: docs-content/serverless/observability-ai-assistant.md
       - file: docs-content/serverless/observability-apm-get-started.md
       - file: docs-content/serverless/observability-ecs-application-logs.md
       - file: docs-content/serverless/observability-plaintext-application-logs.md
-      - file: docs-content/serverless/observability-stream-log-files.md
       - file: docs-content/serverless/project-setting-data.md
       - file: docs-content/serverless/project-settings-alerts.md
       - file: docs-content/serverless/project-settings-content.md
       - file: docs-content/serverless/security-detection-engine-overview.md
-      - file: docs-content/serverless/what-is-observability-serverless.md
   - file: elasticsearch-hadoop/elasticsearch-hadoop/index.md
     children:
       - file: elasticsearch-hadoop/elasticsearch-hadoop/doc-sections.md
@@ -109,18 +96,12 @@ toc:
       - file: elasticsearch/elasticsearch-reference/security-limitations.md
       - file: elasticsearch/elasticsearch-reference/semantic-search-inference.md
       - file: elasticsearch/elasticsearch-reference/shard-request-cache.md
-  - file: ingest-docs/fleet/index.md
-  - file: ingest-docs/ingest-overview/index.md
   - file: kibana/kibana/index.md
     children:
       - file: kibana/kibana/apm-settings-kb.md
       - file: kibana/kibana/logging-settings.md
-      - file: kibana/kibana/reporting-production-considerations.md     
+      - file: kibana/kibana/reporting-production-considerations.md
       - file: kibana/kibana/xpack-security.md
-  - file: observability-docs/observability/index.md
-    children:
-      - file: observability-docs/observability/index.md
-      - file: observability-docs/observability/obs-ai-assistant.md
   - file: stack-docs/elastic-stack/index.md
     children:
       - file: stack-docs/elastic-stack/installing-stack-demo-self.md
