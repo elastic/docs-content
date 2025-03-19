@@ -101,7 +101,7 @@ As well, a warning is displayed in {{kib}} if you try to add an integration that
 Examples of integrations that require {{agent}} to have administrative privileges are:
 
 * [{{elastic-defend}}](integration-docs://reference/endpoint/index.md)
-* [Auditd Manager](integration-docs://reference/auditd_manager.md)
+* [Auditd Manager](integration-docs://reference/auditd_manager/index.md)
 * [File Integrity Monitoring](integration-docs://reference/fim.md)
 * [Network Packet Capture](integration-docs://reference/network_traffic.md)
 * [System Audit](integration-docs://reference/system_audit.md)

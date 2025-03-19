@@ -62,7 +62,7 @@ The [Elastic Defend](integration-docs://reference/endpoint/index.md) integration
 Note that for the following integrations, when the integration is updated automatically the integration policy is upgraded automatically as well. This behavior cannot be disabled.
 
 * [Elastic APM](integration-docs://reference/apm/index.md)
-* [Cloud Security Posture Management](integration-docs://reference/cloud_security_posture.md#cloud_security_posture-cloud-security-posture-management-cspm)
+* [Cloud Security Posture Management](integration-docs://reference/cloud_security_posture/index.md#cloud-security-posture-management-cspm)
 * [Elastic Synthetics](/solutions/observability/apps/synthetic-monitoring.md)
 
 For integrations that support the option to auto-upgrade the integration policy, when this option is selected (the default), {{fleet}} automatically upgrades your policies when a new version of the integration is available. If there are conflicts during the upgrade, your integration policies will not be upgraded, and you’ll need to [upgrade integration policies manually](#upgrade-integration-policies-manually).
