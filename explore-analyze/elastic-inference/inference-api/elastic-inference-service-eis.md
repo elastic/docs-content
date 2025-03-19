@@ -38,7 +38,7 @@ Creates an {{infer}} endpoint to perform an {{infer}} task with the `elastic` se
 ::::{note} 
 The `chat_completion` task type only supports streaming and only through the `_stream` API.
 
-For more information on how to use the `chat_completion` task type, please refer to the [chat completion documentation](chat-completion-inference-api.md).
+For more information on how to use the `chat_completion` task type, refer to the [chat completion documentation](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-stream-inference).
 
 ::::
 
