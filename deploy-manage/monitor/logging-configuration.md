@@ -25,7 +25,7 @@ The following logging features are available:
 
 * **Application and component logging**: Logs messages related to running {{kib}}. 
   
-  You can [configure the log level for {{kib}}](/deploy-manage/monitor/logging-configuration/kibana-log-levels.md), and, in self-managed, ECE, or ECK deployments, [configure advanced settings](/deploy-manage/monitor/logging-configuration/kib-self-managed-logging.md) to customize logging behavior.
+  You can [configure the log level for {{kib}}](/deploy-manage/monitor/logging-configuration/kibana-log-levels.md), and, in self-managed, ECE, or ECK deployments, [configure advanced settings](/deploy-manage/monitor/logging-configuration/kib-advanced-logging.md) to customize logging behavior.
 
 * [Audit logging](/deploy-manage/security/logging-configuration/enabling-audit-logs.md): Logs security-related events on your deployment.
 
@@ -50,23 +50,23 @@ If you run {{kib}} as a service, the default location of the logs varies based o
 :::::::{tab-set}
 
 ::::::{tab-item} Docker
-On [Docker](../../deploy/self-managed/install-elasticsearch-with-docker.md), log messages go to the console and are handled by the configured Docker logging driver. To access logs, run `docker logs`.
+On [Docker](/deploy-manage/deploy/self-managed/install-elasticsearch-with-docker.md), log messages go to the console and are handled by the configured Docker logging driver. To access logs, run `docker logs`.
 ::::::
 
 ::::::{tab-item} Debian (APT) and RPM
-For [Debian](../../deploy/self-managed/install-elasticsearch-with-debian-package.md) and [RPM](../../deploy/self-managed/install-elasticsearch-with-rpm.md) installations, {{es}} writes logs to `/var/log/kibana`.
+For [Debian](/deploy-manage/deploy/self-managed/install-elasticsearch-with-debian-package.md) and [RPM](/deploy-manage/deploy/self-managed/install-elasticsearch-with-rpm.md) installations, {{es}} writes logs to `/var/log/kibana`.
 ::::::
 
 ::::::{tab-item} macOS and Linux
-For [macOS and Linux `.tar.gz`](../../deploy/self-managed/install-elasticsearch-from-archive-on-linux-macos.md) installations, {{es}} writes logs to `$KIBANA_HOME/logs`.
+For [macOS and Linux `.tar.gz`](/deploy-manage/deploy/self-managed/install-elasticsearch-from-archive-on-linux-macos.md) installations, {{es}} writes logs to `$KIBANA_HOME/logs`.
 
-Files in `$KIBANA_HOME` risk deletion during an upgrade. In production, you should configure a [different location for your logs](/deploy-manage/monitor/logging-configuration/kib-self-managed-logging.md).
+Files in `$KIBANA_HOME` risk deletion during an upgrade. In production, you should configure a [different location for your logs](/deploy-manage/monitor/logging-configuration/kib-advanced-logging.md).
 ::::::
 
 ::::::{tab-item} Windows .zip
-For [Windows `.zip`](../../deploy/self-managed/install-elasticsearch-with-zip-on-windows.md) installations, {{es}} writes logs to `%KIBANA_HOME%\logs`.
+For [Windows `.zip`](/deploy-manage/deploy/self-managed/install-elasticsearch-with-zip-on-windows.md) installations, {{es}} writes logs to `%KIBANA_HOME%\logs`.
 
-Files in `%KIBANA_HOME%` risk deletion during an upgrade. In production, you should configure a [different location for your logs](/deploy-manage/monitor/logging-configuration/kib-self-managed-logging.md).
+Files in `%KIBANA_HOME%` risk deletion during an upgrade. In production, you should configure a [different location for your logs](/deploy-manage/monitor/logging-configuration/kib-advanced-logging.md).
 ::::::
 
 :::::::
@@ -82,23 +82,23 @@ If you run {{es}} as a service, the default location of the logs varies based on
 :::::::{tab-set}
 
 ::::::{tab-item} Docker
-On [Docker](../../deploy/self-managed/install-elasticsearch-with-docker.md), log messages go to the console and are handled by the configured Docker logging driver. To access logs, run `docker logs`.
+On [Docker](/deploy-manage/deploy/self-managed/install-elasticsearch-with-docker.md), log messages go to the console and are handled by the configured Docker logging driver. To access logs, run `docker logs`.
 ::::::
 
 ::::::{tab-item} Debian (APT) and RPM
-For [Debian](../../deploy/self-managed/install-elasticsearch-with-debian-package.md) and [RPM](../../deploy/self-managed/install-elasticsearch-with-rpm.md) installations, {{es}} writes logs to `/var/log/elasticsearch`.
+For [Debian](/deploy-manage/deploy/self-managed/install-elasticsearch-with-debian-package.md) and [RPM](/deploy-manage/deploy/self-managed/install-elasticsearch-with-rpm.md) installations, {{es}} writes logs to `/var/log/elasticsearch`.
 ::::::
 
 ::::::{tab-item} macOS and Linux
-For [macOS and Linux `.tar.gz`](../../deploy/self-managed/install-elasticsearch-from-archive-on-linux-macos.md) installations, {{es}} writes logs to `$ES_HOME/logs`.
+For [macOS and Linux `.tar.gz`](/deploy-manage/deploy/self-managed/install-elasticsearch-from-archive-on-linux-macos.md) installations, {{es}} writes logs to `$ES_HOME/logs`.
 
-Files in `$ES_HOME` risk deletion during an upgrade. In production, we strongly recommend you set `path.logs` to a location outside of `$ES_HOME`. See [Path settings](../../deploy/self-managed/important-settings-configuration.md#path-settings).
+Files in `$ES_HOME` risk deletion during an upgrade. In production, we strongly recommend you set `path.logs` to a location outside of `$ES_HOME`. See [Path settings](/deploy-manage/deploy/self-managed/important-settings-configuration.md#path-settings).
 ::::::
 
 ::::::{tab-item} Windows .zip
-For [Windows `.zip`](../../deploy/self-managed/install-elasticsearch-with-zip-on-windows.md) installations, {{es}} writes logs to `%ES_HOME%\logs`.
+For [Windows `.zip`](/deploy-manage/deploy/self-managed/install-elasticsearch-with-zip-on-windows.md) installations, {{es}} writes logs to `%ES_HOME%\logs`.
 
-Files in `%ES_HOME%` risk deletion during an upgrade. In production, we strongly recommend you set `path.logs` to a location outside of `%ES_HOME%``. See [Path settings](../../deploy/self-managed/important-settings-configuration.md#path-settings).
+Files in `%ES_HOME%` risk deletion during an upgrade. In production, we strongly recommend you set `path.logs` to a location outside of `%ES_HOME%``. See [Path settings](/deploy-manage/deploy/self-managed/important-settings-configuration.md#path-settings).
 ::::::
 
 :::::::

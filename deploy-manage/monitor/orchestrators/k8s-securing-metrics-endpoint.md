@@ -220,7 +220,7 @@ By default a self-signed certificate will be generated for use by the metrics en
     EOF
     ```
 
-    If you're mounting the TLS secret to a different directory, the `metrics-cert-dir` setting in the operator configuration has to be adjusted accordingly.
+    1. If you're mounting the TLS secret to a different directory, the `metrics-cert-dir` setting in the operator configuration has to be adjusted accordingly.
 
 
 3. If required, patch the `ServiceMonitor`. This is required if you are adjusting the `insecureSkipVerify` field to `false`.
@@ -241,9 +241,8 @@ By default a self-signed certificate will be generated for use by the metrics en
     EOF
     ```
 
-## Next steps
+    1. See [](/deploy-manage/monitor/orchestrators/k8s-prometheus-requirements.md) for more information on creating the CA secret.
 
-Refer to [](k8s-prometheus-requirements.md) for more information on creating the CA secret.
 
 
 

@@ -17,4 +17,4 @@ A record will be logged by the logger if its level is higher than or equal to th
 
 To set the log level, add the `logging.root.level` setting to `kibana.yml`, specifying the log level that you want. `logging.root.level` defaults to `info`.
 
-In a self-managed cluster, these levels can also be specified using [CLI arguments](/deploy-manage/monitor/logging-configuration/kib-self-managed-logging.md#logging-cli-migration), and different log levels can be set for various loggers. [Learn more](/deploy-manage/monitor/logging-configuration/kib-self-managed-logging.md).
+In a self-managed cluster, these levels can also be specified using [CLI arguments](/deploy-manage/monitor/logging-configuration/kib-advanced-logging.md#logging-cli-migration), and different log levels can be set for various loggers. [Learn more](/deploy-manage/monitor/logging-configuration/kib-advanced-logging.md).

@@ -25,7 +25,7 @@ In this section, you'll learn the following about using ECE platform monitoring:
 * [](/deploy-manage/monitor/orchestrators/ece-proxy-log-fields.md): The fields that are included in proxy logs. Proxy logs capture the search and indexing requests that proxies have sent to the {{es}} cluster, and requests that proxies have sent to the {{kib}} instance.
 * [](ece-monitoring-ece-set-retention.md): How to set the retention period for the indices that {{ece}} collects.
 
-For information about troubleshooting {{ECE}} using these metrics, and guidance on capturing other diagnostic information like heap dumps and thread dumps, refer to [](/troubleshoot/deployments/cloud-enterprise/cloud-enterprise).
+For information about troubleshooting {{ECE}} using these metrics, and guidance on capturing other diagnostic information like heap dumps and thread dumps, refer to [](/troubleshoot/deployments/cloud-enterprise/cloud-enterprise.md).
 
 ::::{important} 
 The `logging-and-metrics` deployment is for use by your ECE installation only. You must not use this deployment to index monitoring data from your own Elasticsearch clusters or use it to index data from Beats and Logstash. Always create a separate, dedicated monitoring deployment for your own use.

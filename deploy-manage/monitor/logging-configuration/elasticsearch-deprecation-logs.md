@@ -11,7 +11,7 @@ applies_to:
 
 # Elasticsearch deprecation logs [logging]
 
-{{es}} writes deprecation logs to the [log directory](/deploy-manage/monitor/logging-configuration#access-kib-and-es-logs). These logs record a message when you use deprecated {{es}} functionality. You can use the deprecation logs to update your application before upgrading {{es}} to a new major version.
+{{es}} writes deprecation logs to the [log directory](/deploy-manage/monitor/logging-configuration.md#access-kib-and-es-logs). These logs record a message when you use deprecated {{es}} functionality. You can use the deprecation logs to update your application before upgrading {{es}} to a new major version.
 
 :::{tip}
 You can also access deprecation warnings in the [upgrade assistant](/deploy-manage/upgrade/prepare-to-upgrade/upgrade-assistant.md).

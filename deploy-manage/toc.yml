@@ -732,7 +732,7 @@ toc:
           - file: monitor/logging-configuration/kibana-logging.md
             children:
               - file: monitor/logging-configuration/kibana-log-levels.md
-              - file: monitor/logging-configuration/kib-self-managed-logging.md
+              - file: monitor/logging-configuration/kib-advanced-logging.md
                 children:
                   - file: monitor/logging-configuration/kibana-log-settings-examples.md
   - file: kibana-reporting-configuration.md

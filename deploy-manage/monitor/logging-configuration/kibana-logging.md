@@ -49,23 +49,23 @@ If you run {{kib}} as a service, the default location of the logs varies based o
 :::::::{tab-set}
 
 ::::::{tab-item} Docker
-On [Docker](../../deploy/self-managed/install-elasticsearch-with-docker.md), log messages go to the console and are handled by the configured Docker logging driver. To access logs, run `docker logs`.
+On [Docker](/deploy-manage/deploy/self-managed/install-elasticsearch-with-docker.md), log messages go to the console and are handled by the configured Docker logging driver. To access logs, run `docker logs`.
 ::::::
 
 ::::::{tab-item} Debian (APT) and RPM
-For [Debian](../../deploy/self-managed/install-elasticsearch-with-debian-package.md) and [RPM](../../deploy/self-managed/install-elasticsearch-with-rpm.md) installations, {{es}} writes logs to `/var/log/kibana`.
+For [Debian](/deploy-manage/deploy/self-managed/install-elasticsearch-with-debian-package.md) and [RPM](/deploy-manage/deploy/self-managed/install-elasticsearch-with-rpm.md) installations, {{es}} writes logs to `/var/log/kibana`.
 ::::::
 
 ::::::{tab-item} macOS and Linux
-For [macOS and Linux `.tar.gz`](../../deploy/self-managed/install-elasticsearch-from-archive-on-linux-macos.md) installations, {{es}} writes logs to `$KIBANA_HOME/logs`.
+For [macOS and Linux `.tar.gz`](/deploy-manage/deploy/self-managed/install-elasticsearch-from-archive-on-linux-macos.md) installations, {{es}} writes logs to `$KIBANA_HOME/logs`.
 
-Files in `$KIBANA_HOME` risk deletion during an upgrade. In production, you should configure a [different location for your logs](/deploy-manage/monitor/logging-configuration/kib-self-managed-logging.md).
+Files in `$KIBANA_HOME` risk deletion during an upgrade. In production, you should configure a [different location for your logs](/deploy-manage/monitor/logging-configuration/kib-advanced-logging.md).
 ::::::
 
 ::::::{tab-item} Windows .zip
-For [Windows `.zip`](../../deploy/self-managed/install-elasticsearch-with-zip-on-windows.md) installations, {{es}} writes logs to `%KIBANA_HOME%\logs`.
+For [Windows `.zip`](/deploy-manage/deploy/self-managed/install-elasticsearch-with-zip-on-windows.md) installations, {{es}} writes logs to `%KIBANA_HOME%\logs`.
 
-Files in `%KIBANA_HOME%` risk deletion during an upgrade. In production, you should configure a [different location for your logs](/deploy-manage/monitor/logging-configuration/kib-self-managed-logging.md).
+Files in `%KIBANA_HOME%` risk deletion during an upgrade. In production, you should configure a [different location for your logs](/deploy-manage/monitor/logging-configuration/kib-advanced-logging.md).
 ::::::
 
 :::::::
