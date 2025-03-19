@@ -12,6 +12,7 @@ cross_links:
   - apm-agent-go
   - apm-agent-ios
   - apm-agent-java
+  - apm-agent-python
   - apm-agent-rum-js
   - apm-aws-lambda
   - apm-k8s-attacher
