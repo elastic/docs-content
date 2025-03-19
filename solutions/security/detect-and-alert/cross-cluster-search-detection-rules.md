@@ -11,7 +11,6 @@ applies_to:
 
 ::::{admonition} Requirements
 * In {{stack}}, using cross-cluster search for {{esql}} rules requires an [Enterprise subscription](https://www.elastic.co/pricing).
-% * In serverless, behavioral detection integrations require the Security Analytics Complete [project feature](/deploy-manage/deploy/elastic-cloud/project-settings.md).
 * To learn more about the requirements for using cross-cluster search, refer to [Cross-cluster search](../../search/cross-cluster-search.md).
 
 ::::
