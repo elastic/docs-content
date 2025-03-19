@@ -8,7 +8,7 @@ You can contribute to various projects, including:
 
 - [Kibana](kibana://extend/index.md): Enhance our data visualization platform by contributing to Kibana.
 - [Logstash](logstash://extend/index.md): Help us improve the data processing pipeline with your contributions to Logstash.
-- [Beats](asciidocalypse://docs/beats/docs/extend/index.md): Add new features or beats to our lightweight data shippers.
+- [Beats](beats://extend/index.md): Add new features or beats to our lightweight data shippers.
 
 ## Creating Integrations
 

@@ -23,13 +23,13 @@ You can use these tools and APIs to interact with the following {{ece}} features
 **API**
 
 % ECE API links and information are still pending
-* [Elastic Cloud Enterprise RESTful API](asciidocalypse://docs/cloud/docs/reference/cloud-enterprise/restful-api.md)
+* [Elastic Cloud Enterprise RESTful API](cloud://reference/cloud-enterprise/restful-api.md)
 
 ## {{es}} API Console [ece-api-console]
 
 With the API console you can interact with a specific {{es}} deployment directly from the Cloud UI without having to authenticate again. This RESTful API access is limited to the specific cluster and works only for Elasticsearch API calls.
 
-::::{important} 
+::::{important}
 API console is intended for admin purposes. Avoid running normal workload like indexing or search requests.
 ::::
 
