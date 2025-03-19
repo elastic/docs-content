@@ -175,9 +175,9 @@ To send APM data to Elastic, you must install an APM agent and configure it to s
 
         **Learn more in the {{apm-agent}} reference**
 
-        * [Supported technologies](asciidocalypse://docs/apm-agent-nodejs/docs/reference/supported-technologies.md)
-        * [Babel/ES Modules](asciidocalypse://docs/apm-agent-nodejs/docs/reference/advanced-setup.md)
-        * [Advanced configuration](asciidocalypse://docs/apm-agent-nodejs/docs/reference/configuring-agent.md)
+        * [Supported technologies](apm-agent-nodejs://reference/supported-technologies.md)
+        * [Babel/ES Modules](apm-agent-nodejs://reference/advanced-setup.md)
+        * [Advanced configuration](apm-agent-nodejs://reference/configuring-agent.md)
 
           </div>
           <div tabindex="0" role="tabpanel" id="apm-apm-get-started-php-panel" aria-labelledby="apm-apm-get-started-php-button" hidden="">
@@ -247,12 +247,12 @@ To send APM data to Elastic, you must install an APM agent and configure it to s
 
         **Learn more in the {{apm-agent}} reference**
 
-        * [Supported technologies](asciidocalypse://docs/apm-agent-php/docs/reference/supported-technologies.md)
-        * [Configuration](asciidocalypse://docs/apm-agent-python/docs/reference/configuration.md)
+        * [Supported technologies](apm-agent-php://reference/supported-technologies.md)
+        * [Configuration](apm-agent-python://reference/configuration.md)
 
           </div>
           <div tabindex="0" role="tabpanel" id="apm-apm-get-started-python-panel" aria-labelledby="apm-apm-get-started-python-button" hidden="">
-        Django and Flask are two of several frameworks that the Elastic APM Python Agent supports. For a complete list of supported technologies, refer to the [Elastic APM Python Agent documentation](asciidocalypse://docs/apm-agent-python/docs/reference/supported-technologies.md).
+        Django and Flask are two of several frameworks that the Elastic APM Python Agent supports. For a complete list of supported technologies, refer to the [Elastic APM Python Agent documentation](apm-agent-python://reference/supported-technologies.md).
 
         *Django*
 
@@ -337,8 +337,8 @@ To send APM data to Elastic, you must install an APM agent and configure it to s
 
         **Learn more in the {{apm-agent}} reference**
 
-        * [Supported technologies](asciidocalypse://docs/apm-agent-python/docs/reference/supported-technologies.md)
-        * [Advanced configuration](asciidocalypse://docs/apm-agent-python/docs/reference/configuration.md)
+        * [Supported technologies](apm-agent-python://reference/supported-technologies.md)
+        * [Advanced configuration](apm-agent-python://reference/configuration.md)
 
           </div>
           <div tabindex="0" role="tabpanel" id="apm-apm-get-started-ruby-panel" aria-labelledby="apm-apm-get-started-ruby-button" hidden="">
@@ -412,8 +412,8 @@ To send APM data to Elastic, you must install an APM agent and configure it to s
 
         **Learn more in the {{apm-agent}} reference**
 
-        * [Supported technologies](asciidocalypse://docs/apm-agent-ruby/docs/reference/supported-technologies.md)
-        * [Advanced configuration](asciidocalypse://docs/apm-agent-ruby/docs/reference/configuration.md)
+        * [Supported technologies](apm-agent-ruby://reference/supported-technologies.md)
+        * [Advanced configuration](apm-agent-ruby://reference/configuration.md)
 
           </div>
           <div tabindex="0" role="tabpanel" id="apm-apm-get-started-opentelemetry-panel" aria-labelledby="apm-apm-get-started-opentelemetry-button" hidden="">
