@@ -110,7 +110,7 @@ After reindexing the data into the `semantic-embeddings` index, you can perform 
 :::{tab-item} Retrievers
 :sync: retrievers
 
-This example uses retrievers with [reciprocal rank fusion (RRF)](elasticsearch://reference/elasticsearch/rest-apis/reciprocal-rank-fusion.md). RRF is a technique that merges the rankings from both semantic and lexical queries, giving more weight to results that rank high in either search. This ensures that the final results are balanced and relevant.
+This example uses [retrievers syntax](retrievers-overview.md) with [reciprocal rank fusion (RRF)](elasticsearch://reference/elasticsearch/rest-apis/reciprocal-rank-fusion.md). RRF is a technique that merges the rankings from both semantic and lexical queries, giving more weight to results that rank high in either search. This ensures that the final results are balanced and relevant.
 
 ```console
 GET semantic-embeddings/_search
@@ -217,7 +217,7 @@ After performing the hybrid search, the query will return the top 10 documents t
 
 The ES|QL approach uses a combination of the match operator `:` and the match function `match()` to perform hybrid search.
 
-```esql
+```console
 POST /_query?format=txt
 {
   "query": """

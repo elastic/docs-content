@@ -133,7 +133,7 @@ GET semantic-embeddings/_search
 The ES|QL approach uses the [match (`:`) operator](elasticsearch://reference/query-languages/esql/esql-functions-operators.md#esql-search-operators), which automatically detects the `semantic_text` field and performs the search on it. The query uses `METADATA _score` to sort by `_score` in descending order.
 
 
-```esql
+```console
 POST /_query?format=txt
 {
   "query": """
