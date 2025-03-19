@@ -53,15 +53,15 @@ Some integration packages, like System, are installed by default during {{fleet}
 
 The following integrations are installed automatically when you select certain options in the {{fleet}} UI. All of them have an option to upgrade integration policies automatically, too:
 
-* [Elastic Agent](integration-docs://reference/elastic_agent.md) - installed automatically when the default **Collect agent logs** or **Collect agent metrics** option is enabled in an {{agent}} policy).
-* [Fleet Server](integration-docs://reference/fleet_server.md) - installed automatically  when {{fleet-server}} is set up through the {{fleet}} UI.
+* [Elastic Agent](integration-docs://reference/elastic_agent/index.md) - installed automatically when the default **Collect agent logs** or **Collect agent metrics** option is enabled in an {{agent}} policy).
+* [Fleet Server](integration-docs://reference/fleet_server/index.md) - installed automatically  when {{fleet-server}} is set up through the {{fleet}} UI.
 * [System](integration-docs://reference/system.md) - installed automatically when the default **Collect system logs and metrics** option is enabled in an {{agent}} policy).
 
-The [Elastic Defend](integration-docs://reference/endpoint.md) integration also has an option to upgrade installation policies automatically.
+The [Elastic Defend](integration-docs://reference/endpoint/index.md) integration also has an option to upgrade installation policies automatically.
 
 Note that for the following integrations, when the integration is updated automatically the integration policy is upgraded automatically as well. This behavior cannot be disabled.
 
-* [Elastic APM](integration-docs://reference/apm.md)
+* [Elastic APM](integration-docs://reference/apm/index.md)
 * [Cloud Security Posture Management](integration-docs://reference/cloud_security_posture.md#cloud_security_posture-cloud-security-posture-management-cspm)
 * [Elastic Synthetics](/solutions/observability/apps/synthetic-monitoring.md)
 
