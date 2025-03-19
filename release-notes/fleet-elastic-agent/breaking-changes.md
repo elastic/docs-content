@@ -81,7 +81,7 @@ For more information, check [#6542]({{agent-pull}}6542).
 * Removed `list` property from `GET enrollment_api_keys` response in favor of `items`
 * `GET/POST /settings`: `fleet_server_hosts` was removed from the response and body
 
-For more information, check [#198799]({{kibana-pull}}198799).
+For more information, check [#198799]({{kib-pull}}198799).
 ::::
 
 ::::{dropdown} Removed deprecated settings API endpoints in Fleet
@@ -89,17 +89,17 @@ For more information, check [#198799]({{kibana-pull}}198799).
 * Removed `list` property from `GET enrollment_api_keys` response in favor of `items`
 * `GET/POST /settings`: `fleet_server_hosts` was removed from the response and body
 
-For more information, check [#198799]({{kibana-pull}}198799).
+For more information, check [#198799]({{kib-pull}}198799).
 ::::
 
 ::::{dropdown} Removed deprecated `topics` property for kafka output in favor of the `topic` property
 Removed deprecated property `topics` from output APIs in response and requests (`(GET|POST|PUT) /api/fleet/outputs`) in favor of the `topic` property. 
 
-For more information, check [#199226]({{kibana-pull}}199226).
+For more information, check [#199226]({{kib-pull}}199226).
 ::::
 
 ::::{dropdown} Limit pagination size to 100 when retrieving full policy or `withAgentCount` in Fleet
 In addition to the new pagination limit size of 100, retrieving agent policies without agent count is now the new default behavior, and a new query parameter `withAgentCount` was added to retrieve the agent count.
 
-For more information, check [#196887]({{kibana-pull}}196887).
+For more information, check [#196887]({{kib-pull}}196887).
 ::::

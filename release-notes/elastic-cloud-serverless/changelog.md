@@ -390,7 +390,7 @@ For {{serverless-full}} API changes, refer to [APIs Changelog](https://www.elast
 * Improves handling of Opsgenie as the default connector in Elastic Observability Serverless [#201923]({{kib-pull}}201923)
 * Fixes issues with actions on charts in Elastic Observability Serverless [#202443]({{kib-pull}}202443)
 * Adds a flyout to the table view in Infrastructure Inventory in Elastic Observability Serverless [#202646]({{kib-pull}}202646)
-* Fixes service names with spaces not being URL-encoded properly for {{context.viewInAppUrl}} in Elastic Observability Serverless [#202890]({{kib-pull}}202890)
+* Fixes service names with spaces not being URL-encoded properly for `{{context.viewInAppUrl}}` in Elastic Observability Serverless [#202890]({{kib-pull}}202890)
 * Enhances access query logic to handle user ID and name conditions in Elastic Observability Serverless [#202833]({{kib-pull}}202833)
 * Fixes an APM rule error message when a KQL filter is invalid in Elastic Observability Serverless [#203096]({{kib-pull}}203096)
 * Restricts and rejects CEF logs in automatic import and redirects them to the CEF integration in Elastic Security Serverless [#201792]({{kib-pull}}201792)
