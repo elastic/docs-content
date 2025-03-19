@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/observability-dashboards.html
+applies_to:
+  serverless:
 ---
 
 # Get started with dashboards [observability-dashboards]

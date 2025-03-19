@@ -2,14 +2,13 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/observability/current/monitor-datasets.html
   - https://www.elastic.co/guide/en/serverless/current/observability-monitor-datasets.html
-
+applies_to:
+  stack: beta
+  serverless: beta
 navigation_title: "Data set quality"
 ---
 
 # Data set quality monitoring [observability-monitor-datasets]
-
-
-[beta]
 
 The **Data Set Quality** page provides an overview of your log, metric, trace, and synthetic data sets. Use this information to get an idea of your overall data set quality and find data sets that contain incorrectly parsed documents.
 

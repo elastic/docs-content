@@ -326,7 +326,7 @@ $$$azure-integration-modify-deployment$$$How can I modify my {{ecloud}} deployme
     * [Update {{stack}} user settings](edit-stack-settings.md) in the component YML files.
     * [Add or remove custom plugins](add-plugins-extensions.md).
     * [Configure IP filtering](../../security/traffic-filtering.md).
-    * [Monitor your {{ecloud}} deployment](../../monitor/stack-monitoring/elastic-cloud-stack-monitoring.md) to ensure it remains healthy.
+    * [Monitor your {{ecloud}} deployment](../../monitor/stack-monitoring/ece-ech-stack-monitoring.md) to ensure it remains healthy.
     * Add or remove API keys to use the [REST API](cloud://reference/cloud-hosted/ec-api-restful.md).
     * [And more](cloud-hosted.md)
 

@@ -30,6 +30,11 @@ In orchestrated deployments, audit logs must be shipped to a monitoring deployme
 
 When audit logging is enabled, security events are persisted to a dedicated `<clustername>_audit.json` file on the host’s file system, on every cluster node. For more information, refer to [{{es}} logfile audit output](./logfile-audit-output.md).
 
+## Before you  begin
+
+* If you're using ECE or ECH, then you need to [enable monitoring and logging](/deploy-manage/monitor/stack-monitoring/ece-ech-stack-monitoring.md) on your deployment. As part of enabling monitoring and logging, you choose a location where logs will be delivered.
+* In production environments, consider creating a separate monitoring cluster that can consume the logs.
+
 ## Enable audit logging [enable-audit-logging-procedure]
 
 To enable {{es}} or {{kib}} audit logs, configure `xpack.security.audit.enabled` to `true` in **all {{es}} or {{kib}} nodes**, then restart the nodes to apply the changes. For detailed instructions, select your deployment type:
@@ -53,10 +58,10 @@ Audit logs are disabled by default and must be explicitly enabled.
 1. Set `xpack.security.audit.enabled` to `true` in `kibana.yml`.
 2. Restart {{kib}}.
 
+To learn how to consume these logs in an {{es}} cluster, refer to [](/deploy-manage/monitor/stack-monitoring/collecting-log-data-with-filebeat.md).
 :::::
 
 :::::{tab-item} Elastic Cloud Hosted
-
 
 To enable audit logging in an {{ech}} deployment:
 

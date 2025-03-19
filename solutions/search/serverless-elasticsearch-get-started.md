@@ -110,7 +110,7 @@ If you’re already familiar with Elasticsearch, you can jump right into setting
     * [{{es}} API](ingest-for-search.md)
     * [Connector clients](elasticsearch://reference/ingestion-tools/search-connectors/index.md)
     * [File Uploader](/manage-data/ingest/upload-data-files.md)
-    * [{{beats}}](asciidocalypse://docs/beats/docs/reference/index.md)
+    * [{{beats}}](beats://reference/index.md)
     * [{{ls}}](logstash://reference/index.md)
     * [Elastic Open Web Crawler](https://github.com/elastic/crawler)
 

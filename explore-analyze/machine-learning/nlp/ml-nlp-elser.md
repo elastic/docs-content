@@ -57,7 +57,7 @@ The easiest and recommended way to download and deploy ELSER is to use the [{{in
 2. Create an {{infer}} endpoint with the ELSER service by running the following API request:
 
 ```console
-PUT _inference/sparse_embedding/my-elser-model
+PUT _inference/sparse_embedding/my-elser-endpoint
     {
       "service": "elasticsearch",
       "service_settings": {
@@ -67,7 +67,7 @@ PUT _inference/sparse_embedding/my-elser-model
           "max_number_of_allocations": 10
         },
         "num_threads": 1,
-        "model_id": ".elser_model_2_linux-x86_64"
+        "model_id": ".elser_model_2"
       }
     }
 ```

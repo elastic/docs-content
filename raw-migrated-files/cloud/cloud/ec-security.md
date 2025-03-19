@@ -7,7 +7,7 @@ The security of {{ech}} is described on the [{{ecloud}} security](https://www.el
     * Reset the [`elastic` user password](../../../deploy-manage/users-roles/cluster-or-deployment-auth/built-in-users.md).
     * Use third-party authentication providers and services like [SAML](../../../deploy-manage/users-roles/cluster-or-deployment-auth/saml.md), [OpenID Connect](../../../deploy-manage/users-roles/cluster-or-deployment-auth/openid-connect.md), or [Kerberos](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kerberos.md) to provide dynamic [role mappings](../../../deploy-manage/users-roles/cluster-or-deployment-auth/mapping-users-groups-to-roles.md) for role based or attribute based access control.
     * Use {{kib}} Spaces and roles to [secure access to {{kib}}](../../../deploy-manage/users-roles/cluster-or-deployment-auth/quickstart.md).
-    * Authorize and authenticate service accounts for {{beats}} by [granting access using API keys](asciidocalypse://docs/beats/docs/reference/filebeat/beats-api-keys.md).
+    * Authorize and authenticate service accounts for {{beats}} by [granting access using API keys](beats://reference/filebeat/beats-api-keys.md).
     * Roles can provide full, or read only, access to your data and can be created in Kibana or directly in Elasticsearch. Check [defining roles](../../../deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md) for full details.
 
 
