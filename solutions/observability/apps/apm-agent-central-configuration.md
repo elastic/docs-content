@@ -50,7 +50,7 @@ Node.js agent
 :   [Configuration reference](apm-agent-nodejs://reference/configuration.md)
 
 PHP agent
-:   [Configuration reference](asciidocalypse://docs/apm-agent-php/docs/reference/configuration.md)
+:   [Configuration reference](apm-agent-php://reference/configuration.md)
 
 Python agent
 :   [Configuration reference](apm-agent-python://reference/configuration.md)

@@ -67,7 +67,7 @@ We do not recommend disabling {{apm-agent}} verification of the server’s certi
 * **Go agent**: [`ELASTIC_APM_VERIFY_SERVER_CERT`](apm-agent-go://reference/configuration.md#config-verify-server-cert)
 * **.NET agent**: [`VerifyServerCert`](apm-agent-dotnet://reference/config-reporter.md#config-verify-server-cert)
 * **Java agent**: [`verify_server_cert`](apm-agent-java://reference/config-reporter.md#config-verify-server-cert)
-* **PHP agent**: [`verify_server_cert`](asciidocalypse://docs/apm-agent-php/docs/reference/configuration-reference.md#config-verify-server-cert)
+* **PHP agent**: [`verify_server_cert`](apm-agent-php://reference/configuration-reference.md#config-verify-server-cert)
 * **Python agent**: [`verify_server_cert`](apm-agent-python://reference/configuration.md#config-verify-server-cert)
 * **Ruby agent**: [`verify_server_cert`](asciidocalypse://docs/apm-agent-ruby/docs/reference/configuration.md#config-verify-server-cert)
 * **Node.js agent**: [`verifyServerCert`](apm-agent-nodejs://reference/configuration.md#validate-server-cert)

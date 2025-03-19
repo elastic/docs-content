@@ -38,7 +38,7 @@ To configure the number of spans recorded per transaction, see the relevant Agen
 * Java: [`transaction_max_spans`](apm-agent-java://reference/config-core.md#config-transaction-max-spans)
 * .NET: [`TransactionMaxSpans`](apm-agent-dotnet://reference/config-core.md#config-transaction-max-spans)
 * Node.js: [`transactionMaxSpans`](apm-agent-nodejs://reference/configuration.md#transaction-max-spans)
-* PHP: [`transaction_max_spans`](asciidocalypse://docs/apm-agent-php/docs/reference/configuration-reference.md#config-transaction-max-spans)
+* PHP: [`transaction_max_spans`](apm-agent-php://reference/configuration-reference.md#config-transaction-max-spans)
 * Python: [`transaction_max_spans`](apm-agent-python://reference/configuration.md#config-transaction-max-spans)
 * Ruby: [`transaction_max_spans`](asciidocalypse://docs/apm-agent-ruby/docs/reference/configuration.md#config-transaction-max-spans)
 

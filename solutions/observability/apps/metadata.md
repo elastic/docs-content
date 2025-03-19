@@ -31,7 +31,7 @@ Avoid defining too many user-specified labels. Defining too many unique fields i
 * Java: [`setLabel`](apm-agent-java://reference/public-api.md#api-transaction-add-tag)
 * .NET: [`SetLabel`](apm-agent-dotnet://reference/public-api.md#api-transaction-set-label)
 * Node.js: [`setLabel`](apm-agent-nodejs://reference/agent-api.md#apm-add-labels)
-* PHP: [`Transaction` `setLabel`](asciidocalypse://docs/apm-agent-php/docs/reference/public-api.md#api-transaction-interface-set-label) | [`Span` `setLabel`](asciidocalypse://docs/apm-agent-php/docs/reference/public-api.md#api-span-interface-set-label)
+* PHP: [`Transaction` `setLabel`](apm-agent-php://reference/public-api.md#api-transaction-interface-set-label) | [`Span` `setLabel`](apm-agent-php://reference/public-api.md#api-span-interface-set-label)
 * Python: [`elasticapm.label()`](apm-agent-python://reference/api-reference.md#api-label)
 * Ruby:  [`set_label`](asciidocalypse://docs/apm-agent-ruby/docs/reference/api-reference.md#api-agent-set-label)
 * Rum: [`addLabels`](apm-agent-rum-js://reference/agent-api.md#apm-add-labels)

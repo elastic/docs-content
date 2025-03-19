@@ -193,12 +193,12 @@ The Elastic APM PHP agent measures application performance and tracks errors. Th
 
 If you're ready to give Elastic APM a try, see [Get started with traces and APM](../../../solutions/observability/apps/get-started-with-apm.md).
 
-See the [PHP agent reference](asciidocalypse://docs/apm-agent-php/docs/reference/index.md)  for full documentation, including:
+See the [PHP agent reference](apm-agent-php://reference/index.md)  for full documentation, including:
 
-* [Supported technologies](asciidocalypse://docs/apm-agent-php/docs/reference/supported-technologies.md)
-* [Set up](asciidocalypse://docs/apm-agent-php/docs/reference/set-up-apm-php-agent.md)
-* [Configuration reference](asciidocalypse://docs/apm-agent-php/docs/reference/configuration.md)
-* [API reference](asciidocalypse://docs/apm-agent-php/docs/reference/public-api.md)
+* [Supported technologies](apm-agent-php://reference/supported-technologies.md)
+* [Set up](apm-agent-php://reference/set-up-apm-php-agent.md)
+* [Configuration reference](apm-agent-php://reference/configuration.md)
+* [API reference](apm-agent-php://reference/public-api.md)
 
 ::::{important}
 Not all APM agent configuration options are compatible with Elastic Cloud serverless.

@@ -880,7 +880,7 @@ To use the APK package (Alpine):
 apk add --allow-untrusted <package-file>.apk
 ```
 
-If you can’t find your distribution, you can install the agent by [building it from the source](asciidocalypse://docs/apm-agent-php/docs/reference/set-up-apm-php-agent.md).
+If you can’t find your distribution, you can install the agent by [building it from the source](apm-agent-php://reference/set-up-apm-php-agent.md).
 
 **Configure the agent**
 
@@ -906,8 +906,8 @@ Configure the agent using environment variables:
 
 **Learn more in the agent reference**
 
-* [Supported technologies](asciidocalypse://docs/apm-agent-php/docs/reference/supported-technologies.md)
-* [Configuration](asciidocalypse://docs/apm-agent-php/docs/reference/configuration.md)
+* [Supported technologies](apm-agent-php://reference/supported-technologies.md)
+* [Configuration](apm-agent-php://reference/configuration.md)
 ::::::
 
 ::::::{tab-item} Python

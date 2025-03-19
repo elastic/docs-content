@@ -561,8 +561,8 @@ elastic_apm.bootstrap_php_part_file=<repo root>/agent/php/bootstrap_php_part.php
 
 **Learn more in the agent reference**
 
-* [Supported technologies](asciidocalypse://docs/apm-agent-php/docs/reference/supported-technologies.md)
-* [Configuration](asciidocalypse://docs/apm-agent-php/docs/reference/configuration.md)
+* [Supported technologies](apm-agent-php://reference/supported-technologies.md)
+* [Configuration](apm-agent-php://reference/configuration.md)
 ::::::
 
 ::::::{tab-item} Python

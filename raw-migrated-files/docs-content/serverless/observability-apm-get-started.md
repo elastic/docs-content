@@ -247,7 +247,7 @@ To send APM data to Elastic, you must install an APM agent and configure it to s
 
         **Learn more in the {{apm-agent}} reference**
 
-        * [Supported technologies](asciidocalypse://docs/apm-agent-php/docs/reference/supported-technologies.md)
+        * [Supported technologies](apm-agent-php://reference/supported-technologies.md)
         * [Configuration](apm-agent-python://reference/configuration.md)
 
           </div>
