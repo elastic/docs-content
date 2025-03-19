@@ -17,7 +17,7 @@ Use the detection engine to create and manage rules and view the alerts these ru
 :screenshot:
 :::
 
-In addition to creating [your own rules](/solutions/security/detect-and-alert/create-detection-rule.md), enable [Elastic prebuilt rules](/solutions/security/detect-and-alert/install-manage-elastic-prebuilt-rules.md#load-prebuilt-rules) to immediately start detecting suspicious activity. For detailed information on all the prebuilt rules, see the [Prebuilt rule reference](security-docs://reference/prebuilt-rules/index.md) section. Once the prebuilt rules are loaded and running, [Tune detection rules](/solutions/security/detect-and-alert/tune-detection-rules.md) and [Add and manage exceptions](/solutions/security/detect-and-alert/add-manage-exceptions.md) explain how to modify the rules to reduce false positives and get a better set of actionable alerts. You can also use exceptions and value lists when creating or modifying your own rules.
+In addition to creating [your own rules](/solutions/security/detect-and-alert/create-detection-rule.md), enable [Elastic prebuilt rules](/solutions/security/detect-and-alert/install-manage-elastic-prebuilt-rules.md#load-prebuilt-rules) to immediately start detecting suspicious activity. For detailed information on all the prebuilt rules, refer to the [Prebuilt rule reference](security-docs://reference/prebuilt-rules/index.md) section. Once the prebuilt rules are loaded and running, read [Tune detection rules](/solutions/security/detect-and-alert/tune-detection-rules.md) and [Add and manage exceptions](/solutions/security/detect-and-alert/add-manage-exceptions.md) to learn how to modify the rules to reduce false positives and get a better set of actionable alerts. You can also use exceptions and value lists when creating or modifying your own rules.
 
 There are several special prebuilt rules you need to know about:
 
@@ -31,12 +31,12 @@ To use {{kib}} Alerting for detection alert notifications in the {{stack}}, you 
 ::::
 
 
-After rules have started running, you can monitor their executions to verify they are functioning correctly, as well as view, manage, and troubleshoot alerts (see [Manage detection alerts](/solutions/security/detect-and-alert/manage-detection-alerts.md) and [Monitor and troubleshoot rule executions](/troubleshoot/security/detection-rules.md)).
+After rules have started running, you can monitor their executions to verify they are functioning correctly, as well as view, manage, and troubleshoot alerts. To learn more, refer to [Manage detection alerts](/solutions/security/detect-and-alert/manage-detection-alerts.md) and [Monitor and troubleshoot rule executions](/troubleshoot/security/detection-rules.md).
 
 You can create and manage rules and alerts via the UI or the [Detections API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-security-detections-api).
 
 ::::{important}
-To make sure you can access Detections and manage rules, see [Detections requirements](/solutions/security/detect-and-alert/detections-requirements.md).
+To ensure you can access detections and manage rules, refer to [Detections requirements](/solutions/security/detect-and-alert/detections-requirements.md).
 
 ::::
 
