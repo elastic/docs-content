@@ -119,7 +119,7 @@ output.elasticsearch:
     }
     ```
 
-    Refer to [Grant access using API keys](asciidocalypse://docs/beats/docs/reference/filebeat/beats-api-keys.md) for more information.
+    Refer to [Grant access using API keys](beats://reference/filebeat/beats-api-keys.md) for more information.
 
 
 

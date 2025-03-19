@@ -20,7 +20,6 @@ cross_links:
   - apm-aws-lambda
   - apm-k8s-attacher
   - apm-server
-  - asciidocalypse
   - beats
   - cloud
   - cloud-on-k8s

@@ -157,7 +157,7 @@ You can customize the service settings before installation using environment var
 
 The {{es}} service can be configured prior to installation by setting the following environment variables (either using the [set command](https://technet.microsoft.com/en-us/library/cc754250(v=ws.10).aspx) from the command line, or through the **System Properties > Environment Variables** GUI).
 
-| Environment variable | Description | 
+| Environment variable | Description |
 | --- | --- |
 | `SERVICE_ID` | A unique identifier for the service. Useful if installing multiple instances on the same machine. Defaults to `elasticsearch-service-x64`. |
 | `SERVICE_USERNAME` | The user to run as, defaults to the local system account. |
@@ -186,8 +186,8 @@ Most changes (like JVM settings) made through the manager GUI will require a res
 
 ##### Considerations
 
-* By default, {{es}} automatically sizes JVM heap based on a node’s [roles](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/node-settings.md#node-roles) and total memory. We recommend this default sizing for most production environments. If needed, you can override default sizing by manually setting the heap size.
-  
+* By default, {{es}} automatically sizes JVM heap based on a node’s [roles](elasticsearch://reference/elasticsearch/configuration-reference/node-settings.md#node-roles) and total memory. We recommend this default sizing for most production environments. If needed, you can override default sizing by manually setting the heap size.
+
   When installing {{es}} on Windows as a service for the first time or running {{es}} from the command line, you can manually [Set the JVM heap size](elasticsearch://reference/elasticsearch/jvm-settings.md#set-jvm-heap-size). To resize the heap for an already installed service, use the manager GUI.
 
 * The service automatically configures a private temporary directory for use by {{es}} when it is running. This private temporary directory is configured as a sub-directory of the private temporary directory for the user running the installation. If the service will run under a different user, you can configure the location of the temporary directory that the service should use by setting the environment variable `ES_TMPDIR` to the preferred location before you execute the service installation.

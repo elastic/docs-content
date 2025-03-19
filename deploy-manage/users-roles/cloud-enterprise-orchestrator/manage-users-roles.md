@@ -21,7 +21,7 @@ Implementing RBAC in your environment benefits you in several ways:
     * Integrating with third-party authentication providers like [Active Directory](active-directory.md), [LDAP](ldap.md) or [SAML](saml.md).
 
 ::::{tip}
-This topic describes implementing RBAC at the {{ece}} installation level, which can be used to access the Cloud UI, and which can be set up to provide SSO capabilities to access deployments orchestrated by your {{ece}} installation. 
+This topic describes implementing RBAC at the {{ece}} installation level, which can be used to access the Cloud UI, and which can be set up to provide SSO capabilities to access deployments orchestrated by your {{ece}} installation.
 
 If you want to manage access to each deployment individually, then refer to [](/deploy-manage/users-roles/cluster-or-deployment-auth.md).
 ::::
@@ -32,7 +32,7 @@ With RBAC, interacting with API endpoints now requires a [bearer token](cloud://
 
 ## Before you begin [ece_before_you_begin_8]
 
-To prepare for RBAC, you should review the Elastic Cloud Enterprise [limitations and known issues](asciidocalypse://docs/cloud/docs/release-notes/cloud-enterprise/known-issues.md).
+To prepare for RBAC, you should review the Elastic Cloud Enterprise [limitations and known issues](cloud://release-notes/cloud-enterprise/known-issues.md).
 
 
 ## Available roles and permissions [ece-user-role-permissions]
