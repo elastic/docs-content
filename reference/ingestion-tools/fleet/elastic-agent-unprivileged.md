@@ -102,10 +102,10 @@ Examples of integrations that require {{agent}} to have administrative privilege
 
 * [{{elastic-defend}}](integration-docs://reference/endpoint/index.md)
 * [Auditd Manager](integration-docs://reference/auditd_manager/index.md)
-* [File Integrity Monitoring](integration-docs://reference/fim.md)
-* [Network Packet Capture](integration-docs://reference/network_traffic.md)
-* [System Audit](integration-docs://reference/system_audit.md)
-* [Universal Profiling Agent](integration-docs://reference/profiler_agent.md)
+* [File Integrity Monitoring](integration-docs://reference/fim/index.md)
+* [Network Packet Capture](integration-docs://reference/network_traffic/index.md)
+* [System Audit](integration-docs://reference/system_audit/index.md)
+* [Universal Profiling Agent](integration-docs://reference/profiler_agent/index.md)
 
 
 ## Viewing an {{agent}} privilege mode [unprivileged-view-mode]
