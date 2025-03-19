@@ -100,12 +100,12 @@ As well, a warning is displayed in {{kib}} if you try to add an integration that
 
 Examples of integrations that require {{agent}} to have administrative privileges are:
 
-* [{{elastic-defend}}](asciidocalypse://docs/integration-docs/docs/reference/endpoint.md)
-* [Auditd Manager](asciidocalypse://docs/integration-docs/docs/reference/auditd_manager.md)
-* [File Integrity Monitoring](asciidocalypse://docs/integration-docs/docs/reference/fim.md)
-* [Network Packet Capture](asciidocalypse://docs/integration-docs/docs/reference/network_traffic.md)
-* [System Audit](asciidocalypse://docs/integration-docs/docs/reference/system_audit.md)
-* [Universal Profiling Agent](asciidocalypse://docs/integration-docs/docs/reference/profiler_agent.md)
+* [{{elastic-defend}}](integration-docs://reference/endpoint/index.md)
+* [Auditd Manager](integration-docs://reference/auditd_manager/index.md)
+* [File Integrity Monitoring](integration-docs://reference/fim/index.md)
+* [Network Packet Capture](integration-docs://reference/network_traffic/index.md)
+* [System Audit](integration-docs://reference/system_audit/index.md)
+* [Universal Profiling Agent](integration-docs://reference/profiler_agent/index.md)
 
 
 ## Viewing an {{agent}} privilege mode [unprivileged-view-mode]

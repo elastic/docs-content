@@ -31,7 +31,7 @@ The document is divided in two main sections:
 
 #### Configure agent resources [_configure_agent_resources]
 
-The {{k8s}} {{observability}} is based on [Elastic {{k8s}} integration](asciidocalypse://docs/integration-docs/docs/reference/kubernetes.md), which collects metrics from several components:
+The {{k8s}} {{observability}} is based on [Elastic {{k8s}} integration](integration-docs://reference/kubernetes.md), which collects metrics from several components:
 
 * **Per node:**
 
