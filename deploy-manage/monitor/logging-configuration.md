@@ -6,57 +6,74 @@ applies_to:
     eck: all
     self: all
 ---
-# Logging configuration
+# Logging
 
-% What needs to be done: Write from scratch
+You can configure several types of logs in {{stack}} that can help you to gain insight into {{stack}} operations, diagnose issues, and track certain types of events.
 
-% GitHub issue: https://github.com/elastic/docs-projects/issues/350
+The following logging features are available: 
 
-⚠️ **This page is a work in progress.** ⚠️
+## For {{es}} [extra-logging-features-elasticsearch]
 
+* Application and component logging: Logs messages related to running {{es}}. 
+  
+  You can [configure the log level for {{es}}](/deploy-manage/monitor/logging-configuration/update-elasticsearch-logging-levels.md), and, in self-managed clusters, [configure underlying Log4j settings](/deploy-manage/monitor/logging-configuration/elasticsearch-log4j-configuration-self-managed.md) to customize logging behavior.
+* [Deprecation logging](/deploy-manage/monitor/logging-configuration/elasticsearch-deprecation-logs.md): Deprecation logs record a message to the {{es}} log directory when you use deprecated {{es}} functionality. You can use the deprecation logs to update your application before upgrading {{es}} to a new major version.
+* [Audit logging](/deploy-manage/security/logging-configuration/enabling-audit-logs.md): Logs security-related events on your deployment.
+* [Slow query and index logging](elasticsearch://reference/elasticsearch/index-settings/slow-log.md): Helps find and debug slow queries and indexing.
 
-## Logging features [ECE/ECH] [extra-logging-features]
+## For {{kib}} [extra-logging-features-kibana]
 
-When shipping logs to a monitoring deployment there are more logging features available to you. These features include:
+* [Audit logging](/deploy-manage/security/logging-configuration/enabling-audit-logs.md): Logs security-related events on your deployment.
 
+## Access {{kib}} and {{es}} logs
 
-### For {{es}} [extra-logging-features-elasticsearch]
+The way that you access your logs differs depending on your deployment method.
 
-* [Audit logging](/deploy-manage/security/logging-configuration/enabling-audit-logs.md) - logs security-related events on your deployment
-* [Slow query and index logging](elasticsearch://reference/elasticsearch/index-settings/slow-log.md) - helps find and debug slow queries and indexing
-* Verbose logging - helps debug stack issues by increasing component logs
+### Orchestrated deployments
 
-After you’ve enabled log delivery on your deployment, you can [add the Elasticsearch user settings](/deploy-manage/deploy/cloud-enterprise/edit-stack-settings.md) to enable these features.
+Access your logs using one of the following options: 
 
+* All orchestrated deployments: [](/deploy-manage/monitor/stack-monitoring.md)
+* {{ech}}: [Preconfigured logs and metrics](/deploy-manage/monitor/cloud-health-perf.md#ec-es-health-preconfigured)
+* {{ece}}: [Platform monitoring](/deploy-manage/monitor/orchestrators/ece-platform-monitoring.md)
 
-### For {{kib}} [extra-logging-features-kibana]
+### Self-managed deployments
 
-* [Audit logging](/deploy-manage/security/logging-configuration/enabling-audit-logs.md) - logs security-related events on your deployment
+#### {{kib}}
 
-After you’ve enabled log delivery on your deployment, you can [add the {{kib}} user settings](/deploy-manage/deploy/cloud-enterprise/edit-stack-settings.md) to enable this feature.
+If you run {{kib}} as a service, the default location of the logs varies based on your platform and installation method:
 
+:::::::{tab-set}
 
-### Other components [extra-logging-features-enterprise-search]
+::::::{tab-item} Docker
+On [Docker](../../deploy/self-managed/install-elasticsearch-with-docker.md), log messages go to the console and are handled by the configured Docker logging driver. To access logs, run `docker logs`.
+::::::
 
-Enabling log collection also supports collecting and indexing the following types of logs from other components in your deployments:
+::::::{tab-item} Debian (APT) and RPM
+For [Debian](../../deploy/self-managed/install-elasticsearch-with-debian-package.md) and [RPM](../../deploy/self-managed/install-elasticsearch-with-rpm.md) installations, {{es}} writes logs to `/var/log/kibana`.
+::::::
 
-**APM**
+::::::{tab-item} macOS and Linux
+For [macOS and Linux `.tar.gz`](../../deploy/self-managed/install-elasticsearch-from-archive-on-linux-macos.md) installations, {{es}} writes logs to `$KIBANA_HOME/logs`.
 
-* `apm*.log*`
+Files in `$KIBANA_HOME` risk deletion during an upgrade. In production, you should configure a [different location for your logs](/deploy-manage/monitor/logging-configuration/kib-self-managed-logging.md).
+::::::
 
-**Fleet and Elastic Agent**
+::::::{tab-item} Windows .zip
+For [Windows `.zip`](../../deploy/self-managed/install-elasticsearch-with-zip-on-windows.md) installations, {{es}} writes logs to `%KIBANA_HOME%\logs`.
 
-* `fleet-server-json.log-*`
-* `elastic-agent-json.log-*`
+Files in `%KIBANA_HOME%` risk deletion during an upgrade. In production, you should configure a [different location for your logs](/deploy-manage/monitor/logging-configuration/kib-self-managed-logging.md).
+::::::
 
-The `*` indicates that we also index the archived files of each type of log.
+:::::::
 
-Check the respective product documentation for more information about the logging capabilities of each product.
+If you run {{kib}} from the command line, {{es}} prints logs to the standard output (`stdout`).
 
-=====
+You can also consume logs using [stack monitoring](/deploy-manage/monitor/stack-monitoring/kibana-monitoring-self-managed.md).
 
+#### {{es}}
 
-You can use {{es}}'s application logs to monitor your cluster and diagnose issues. If you run {{es}} as a service, the default location of the logs varies based on your platform and installation method:
+If you run {{es}} as a service, the default location of the logs varies based on your platform and installation method:
 
 :::::::{tab-set}
 
@@ -81,4 +98,24 @@ Files in `%ES_HOME%` risk deletion during an upgrade. In production, we strongly
 ::::::
 
 :::::::
+
 If you run {{es}} from the command line, {{es}} prints logs to the standard output (`stdout`).
+
+You can also consume logs using [stack monitoring](/deploy-manage/monitor/stack-monitoring/elasticsearch-monitoring-self-managed.md).
+
+## Other components [extra-logging-features-enterprise-search]
+
+You can also collect and index the following types of logs from other components in your deployments:
+
+[**APM**](/solutions/observability/apps/configure-logging.md)
+
+* `apm*.log*`
+
+[**Fleet and Elastic Agent**](/reference/ingestion-tools/fleet/monitor-elastic-agent.md)
+
+* `fleet-server-json.log-*`
+* `elastic-agent-json.log-*`
+
+The `*` indicates that we also index the archived files of each type of log.
+
+In {{ech}} and {{ece}}, these types of logs are automatically ingested when [stack monitoring](/deploy-manage/monitor/stack-monitoring.md) is enabled.

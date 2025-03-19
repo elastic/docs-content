@@ -74,6 +74,13 @@ Out of the box logs and metrics tools, including ECH preconfigured logs and metr
 
 To learn more about the health and performance tools in {{ecloud}}, refer to [](/deploy-manage/monitor/cloud-health-perf.md).
 
+## {{kib}} task manager monitoring
+
+```{applies_to}
+stack: preview
+```
+The {{kib}} [task manager](/deploy-manage/distributed-architecture/kibana-tasks-management.md) has an internal monitoring mechanism to keep track of a variety of metrics, which can be consumed with either the health monitoring API or the {{kib}} server log. [Learn how to configure thresholds and consume related to {{kib}} task manager](/deploy-manage/monitor/kibana-task-manager-health-monitoring.md).
+
 ## Monitoring your orchestrator
 ```{applies_to}
 deployment:
@@ -94,7 +101,4 @@ Elastic monitors [{{ecloud}}](/deploy-manage/deploy/elastic-cloud.md) service me
 
 ## Logging
 
-TODO
-
-% * [*Elasticsearch application logging*](../../../deploy-manage/monitor/logging-configuration/update-elasticsearch-logging-levels.md)
-
+You can configure several types of logs in {{stack}} that can help you to gain insight into {{stack}} operations, diagnose issues, and track certain types of events. [Learn about the types of logs available, where to find them, and how to configure them](/deploy-manage/monitor/logging-configuration.md).
