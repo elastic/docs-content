@@ -10,7 +10,7 @@ applies_to:
 [Cross-cluster search](../../search/cross-cluster-search.md) is an {{es}} feature that allows one cluster (the *local* cluster) to query data in a separate cluster (the *remote* cluster). {{elastic-sec}}'s detection rules can perform a cross-cluster search to query data in remote clusters.
 
 ::::{admonition} Requirements
-* In {{stack}}, using cross-cluster search for ((esql)) rules requires an [Enterprise subscription](https://www.elastic.co/pricing).
+* In {{stack}}, using cross-cluster search for {{esql}} rules requires an [Enterprise subscription](https://www.elastic.co/pricing).
 % * In serverless, behavioral detection integrations require the Security Analytics Complete [project feature](/deploy-manage/deploy/elastic-cloud/project-settings.md).
 * To learn more about the requirements for using cross-cluster search, refer to [Cross-cluster search](../../search/cross-cluster-search.md).
 
