@@ -490,9 +490,9 @@ The agent will now monitor the performance of your application and record any un
 
 **Learn more in the agent reference**
 
-* [Supported technologies](asciidocalypse://docs/apm-agent-nodejs/docs/reference/supported-technologies.md)
-* [Babel/ES Modules](asciidocalypse://docs/apm-agent-nodejs/docs/reference/advanced-setup.md)
-* [Advanced configuration](asciidocalypse://docs/apm-agent-nodejs/docs/reference/configuring-agent.md)
+* [Supported technologies](apm-agent-nodejs://reference/supported-technologies.md)
+* [Babel/ES Modules](apm-agent-nodejs://reference/advanced-setup.md)
+* [Advanced configuration](apm-agent-nodejs://reference/configuring-agent.md)
 ::::::
 
 ::::::{tab-item} PHP

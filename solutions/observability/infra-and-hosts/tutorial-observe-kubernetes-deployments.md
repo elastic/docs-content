@@ -2,7 +2,7 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/monitor-kubernetes.html
 applies_to:
-  stack: 
+  stack:
 ---
 
 # Tutorial: Observe your Kubernetes deployments [monitor-kubernetes]
@@ -853,8 +853,8 @@ Configure the agent using environment variables:
 
 **Learn more in the agent reference**
 
-* [Supported technologies](asciidocalypse://docs/apm-agent-nodejs/docs/reference/supported-technologies.md)
-* [Configuring the agent](asciidocalypse://docs/apm-agent-nodejs/docs/reference/advanced-setup.md)
+* [Supported technologies](apm-agent-nodejs://reference/supported-technologies.md)
+* [Configuring the agent](apm-agent-nodejs://reference/advanced-setup.md)
 ::::::
 
 ::::::{tab-item} PHP

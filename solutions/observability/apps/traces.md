@@ -196,8 +196,8 @@ string outgoingDistributedTracingData =
 ::::::
 
 ::::::{tab-item} Node.js
-1. Start a transaction with [`apm.startTransaction()`](asciidocalypse://docs/apm-agent-nodejs/docs/reference/agent-api.md#apm-start-transaction), or a span with [`apm.startSpan()`](asciidocalypse://docs/apm-agent-nodejs/docs/reference/agent-api.md#apm-start-span).
-2. Get the serialized `traceparent` string of the started transaction/span with [`currentTraceparent`](asciidocalypse://docs/apm-agent-nodejs/docs/reference/agent-api.md#apm-current-traceparent).
+1. Start a transaction with [`apm.startTransaction()`](apm-agent-nodejs://reference/agent-api.md#apm-start-transaction), or a span with [`apm.startSpan()`](apm-agent-nodejs://reference/agent-api.md#apm-start-span).
+2. Get the serialized `traceparent` string of the started transaction/span with [`currentTraceparent`](apm-agent-nodejs://reference/agent-api.md#apm-current-traceparent).
 3. Encode the `traceparent` and send it to the receiving service inside your regular request.
 
 Example using raw UDP to communicate between two services, A and B:
@@ -345,7 +345,7 @@ var transaction2 = Agent.Tracer.StartTransaction("Transaction2", "TestTransactio
 
 ::::::{tab-item} Node.js
 1. Decode and store the `traceparent` in the receiving service.
-2. Pass in the `traceparent` as the `childOf` option to manually start a new transaction as a child of the received `traceparent` with [`apm.startTransaction()`](asciidocalypse://docs/apm-agent-nodejs/docs/reference/agent-api.md#apm-start-transaction).
+2. Pass in the `traceparent` as the `childOf` option to manually start a new transaction as a child of the received `traceparent` with [`apm.startTransaction()`](apm-agent-nodejs://reference/agent-api.md#apm-start-transaction).
 
 Example receiving a `traceparent` over raw UDP:
 

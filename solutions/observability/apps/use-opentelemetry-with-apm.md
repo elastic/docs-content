@@ -74,7 +74,7 @@ Find more details about how to use an OpenTelemetry API or SDK with an Elastic A
 
 * [**APM Java agent →**](apm-agent-java://reference/opentelemetry-bridge.md)
 * [**APM .NET agent →**](apm-agent-dotnet://reference/opentelemetry-bridge.md)
-* [**APM Node.js agent →**](asciidocalypse://docs/apm-agent-nodejs/docs/reference/opentelemetry-bridge.md)
+* [**APM Node.js agent →**](apm-agent-nodejs://reference/opentelemetry-bridge.md)
 * [**APM Python agent →**](apm-agent-python://reference/opentelemetry-api-bridge.md)
 
 

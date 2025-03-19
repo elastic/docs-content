@@ -33,7 +33,7 @@ By using an AWS Lambda extension, Elastic APM agents can send data to a local La
 
 To get started with the setup of Elastic APM for your Lambda functions, checkout the language-specific guides:
 
-* [Quick Start with APM on AWS Lambda - Node.js](asciidocalypse://docs/apm-agent-nodejs/docs/reference/lambda.md)
+* [Quick Start with APM on AWS Lambda - Node.js](apm-agent-nodejs://reference/lambda.md)
 * [Quick Start with APM on AWS Lambda - Python](apm-agent-python://reference/lambda-support.md)
 * [Quick Start with APM on AWS Lambda - Java](apm-agent-java://reference/aws-lambda.md)
 

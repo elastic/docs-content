@@ -35,7 +35,7 @@ Features of this approach:
 Refer to the relevant agent’s documentation for more information and examples:
 
 * .NET: [Filter API](apm-agent-dotnet://reference/public-api.md#filter-api).
-* Node.js: [`addFilter()`](asciidocalypse://docs/apm-agent-nodejs/docs/reference/agent-api.md#apm-add-filter).
+* Node.js: [`addFilter()`](apm-agent-nodejs://reference/agent-api.md#apm-add-filter).
 * Python: [custom processors](apm-agent-python://reference/sanitizing-data.md).
 * Ruby: [`add_filter()`](asciidocalypse://docs/apm-agent-ruby/docs/reference/api-reference.md#api-agent-add-filter).
 

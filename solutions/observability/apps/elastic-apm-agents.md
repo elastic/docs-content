@@ -59,12 +59,12 @@ These events, called Transactions and Spans, are sent to Elastic, where they're 
 
 If you’re ready to give Elastic APM a try, see [Get started with traces and APM](../../../solutions/observability/apps/get-started-with-apm.md).
 
-See the [Node.js agent reference](asciidocalypse://docs/apm-agent-nodejs/docs/reference/index.md) for full documentation, including:
+See the [Node.js agent reference](apm-agent-nodejs://reference/index.md) for full documentation, including:
 
-* [Supported technologies](asciidocalypse://docs/apm-agent-nodejs/docs/reference/supported-technologies.md)
-* [Set up](asciidocalypse://docs/apm-agent-nodejs/docs/reference/set-up.md)
-* [Configuration reference](asciidocalypse://docs/apm-agent-nodejs/docs/reference/advanced-setup.md)
-* [API reference](asciidocalypse://docs/apm-agent-nodejs/docs/reference/api.md)
+* [Supported technologies](apm-agent-nodejs://reference/supported-technologies.md)
+* [Set up](apm-agent-nodejs://reference/set-up.md)
+* [Configuration reference](apm-agent-nodejs://reference/advanced-setup.md)
+* [API reference](apm-agent-nodejs://reference/api.md)
 
 ::::{important}
 Not all APM agent configuration options are compatible with Elastic Cloud serverless.

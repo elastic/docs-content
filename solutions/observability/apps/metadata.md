@@ -30,7 +30,7 @@ Avoid defining too many user-specified labels. Defining too many unique fields i
 * Go: [`SetLabel`](apm-agent-go://reference/api-documentation.md#context-set-label)
 * Java: [`setLabel`](apm-agent-java://reference/public-api.md#api-transaction-add-tag)
 * .NET: [`SetLabel`](apm-agent-dotnet://reference/public-api.md#api-transaction-set-label)
-* Node.js: [`setLabel`](asciidocalypse://docs/apm-agent-nodejs/docs/reference/agent-api.md#apm-add-labels)
+* Node.js: [`setLabel`](apm-agent-nodejs://reference/agent-api.md#apm-add-labels)
 * PHP: [`Transaction` `setLabel`](asciidocalypse://docs/apm-agent-php/docs/reference/public-api.md#api-transaction-interface-set-label) | [`Span` `setLabel`](asciidocalypse://docs/apm-agent-php/docs/reference/public-api.md#api-span-interface-set-label)
 * Python: [`elasticapm.label()`](apm-agent-python://reference/api-reference.md#api-label)
 * Ruby:  [`set_label`](asciidocalypse://docs/apm-agent-ruby/docs/reference/api-reference.md#api-agent-set-label)
@@ -60,7 +60,7 @@ Setting a circular object, a large object, or a non JSON serializable object can
 * iOS: *coming soon*
 * Java: [`addCustomContext`](apm-agent-java://reference/public-api.md#api-transaction-add-custom-context)
 * .NET: *coming soon*
-* Node.js: [`setCustomContext`](asciidocalypse://docs/apm-agent-nodejs/docs/reference/agent-api.md#apm-set-custom-context)
+* Node.js: [`setCustomContext`](apm-agent-nodejs://reference/agent-api.md#apm-set-custom-context)
 * PHP: *coming soon*
 * Python: [`set_custom_context`](apm-agent-python://reference/api-reference.md#api-set-custom-context)
 * Ruby: [`set_custom_context`](asciidocalypse://docs/apm-agent-ruby/docs/reference/api-reference.md#api-agent-set-custom-context)
@@ -83,7 +83,7 @@ User context adds **indexed** user information to transactions and errors. Index
 * iOS: *coming soon*
 * Java: [`setUser`](apm-agent-java://reference/public-api.md#api-transaction-set-user)
 * .NET *coming soon*
-* Node.js: [`setUserContext`](asciidocalypse://docs/apm-agent-nodejs/docs/reference/agent-api.md#apm-set-user-context)
+* Node.js: [`setUserContext`](apm-agent-nodejs://reference/agent-api.md#apm-set-user-context)
 * PHP: *coming soon*
 * Python: [`set_user_context`](apm-agent-python://reference/api-reference.md#api-set-user-context)
 * Ruby: [`set_user`](asciidocalypse://docs/apm-agent-ruby/docs/reference/api-reference.md#api-agent-set-user)
