@@ -52,3 +52,33 @@ Enabling log collection also supports collecting and indexing the following type
 The `*` indicates that we also index the archived files of each type of log.
 
 Check the respective product documentation for more information about the logging capabilities of each product.
+
+=====
+
+
+You can use {{es}}'s application logs to monitor your cluster and diagnose issues. If you run {{es}} as a service, the default location of the logs varies based on your platform and installation method:
+
+:::::::{tab-set}
+
+::::::{tab-item} Docker
+On [Docker](../../deploy/self-managed/install-elasticsearch-with-docker.md), log messages go to the console and are handled by the configured Docker logging driver. To access logs, run `docker logs`.
+::::::
+
+::::::{tab-item} Debian (APT) and RPM
+For [Debian](../../deploy/self-managed/install-elasticsearch-with-debian-package.md) and [RPM](../../deploy/self-managed/install-elasticsearch-with-rpm.md) installations, {{es}} writes logs to `/var/log/elasticsearch`.
+::::::
+
+::::::{tab-item} macOS and Linux
+For [macOS and Linux `.tar.gz`](../../deploy/self-managed/install-elasticsearch-from-archive-on-linux-macos.md) installations, {{es}} writes logs to `$ES_HOME/logs`.
+
+Files in `$ES_HOME` risk deletion during an upgrade. In production, we strongly recommend you set `path.logs` to a location outside of `$ES_HOME`. See [Path settings](../../deploy/self-managed/important-settings-configuration.md#path-settings).
+::::::
+
+::::::{tab-item} Windows .zip
+For [Windows `.zip`](../../deploy/self-managed/install-elasticsearch-with-zip-on-windows.md) installations, {{es}} writes logs to `%ES_HOME%\logs`.
+
+Files in `%ES_HOME%` risk deletion during an upgrade. In production, we strongly recommend you set `path.logs` to a location outside of `%ES_HOME%``. See [Path settings](../../deploy/self-managed/important-settings-configuration.md#path-settings).
+::::::
+
+:::::::
+If you run {{es}} from the command line, {{es}} prints logs to the standard output (`stdout`).

@@ -11,6 +11,10 @@ applies_to:
 
 # Kibana logging [logging-configuration]
 
+You do not need to configure any additional settings to use the logging features in Kibana. Logging is enabled by default and will log at info level using the `pattern` layout, which outputs logs to `stdout`.
+
+However, if you are planning to ingest your logs using {{es}} or another tool, we recommend using the `json` layout, which produces logs in ECS format. In general, `pattern` layout is recommended when raw logs will be read by a human, and `json` layout when logs will be read by a machine.
+
 The {{kib}} logging system has three main components: *loggers*, *appenders* and *layouts*. These components allow us to log messages according to message type and level, to control how these messages are formatted and where the final logs will be displayed or stored.
 
 * [Loggers, Appenders and Layouts](#loggers-appenders-layout)
@@ -19,26 +23,26 @@ The {{kib}} logging system has three main components: *loggers*, *appenders* and
 * [Logger hierarchy](#logger-hierarchy)
 
 
-## Loggers, Appenders and Layouts [loggers-appenders-layout]
+## Loggers, appenders, and layouts [loggers-appenders-layout]
 
-*Loggers* define what logging settings should be applied to a particular logger.
+Loggers define what logging settings should be applied to a particular logger.
 
-*[Appenders](#logging-appenders)* define where log messages are displayed (eg. stdout or console) and stored (eg. file on the disk).
+[Appenders](#logging-appenders) define where log messages are displayed (for example, stdout or console) and stored (for example, file on the disk).
 
-*[Layouts](#logging-layouts)* define how log messages are formatted and what type of information they include.
+[Layouts](#logging-layouts) define how log messages are formatted and what type of information they include.
 
 
 ## Log level [log-level]
 
-Currently we support the following log levels: *off*, *fatal*, *error*, *warn*, *info*, *debug*, *trace*, *all*.
+{{kib}} logging supports the following log levels: `off`, `fatal`, `error`, `warn`, `info`, `debug`, `trace`, `all`.
 
-Levels are ordered, so *off* > *fatal* > *error* > *warn* > *info* > *debug* > *trace* > *all*.
+Levels are ordered, so `off` > `fatal` > `error` > `warn` > `info` > `debug` > `trace` > `all`.
 
 A log record will be logged by the logger if its level is higher than or equal to the level of its logger. For example: If the output of an API call is configured to log at the `info` level and the parameters passed to the API call are set to `debug`, with a global logging configuration in `kibana.yml` set to `debug`, both the output *and* parameters are logged. If the log level is set to `info`, the debug logs are ignored, meaning that you’ll only get a record for the API output and *not* for the parameters.
 
 Logging set at a plugin level is always respected, regardless of the `root` logger level. In other words, if root logger is set to fatal and pluginA logging is set to `debug`, debug logs are only shown for pluginA, with other logs only reporting on `fatal`.
 
-The *all* and *off* levels can only be used in configuration and are handy shortcuts that allow you to log every log record or disable logging entirely for a specific logger. These levels can also be specified using [cli arguments](kibana-logging-cli-configuration.md#logging-cli-migration).
+The `all` and `off` levels can only be used in configuration, and are handy shortcuts that allow you to log every log record or disable logging entirely for a specific logger. These levels can also be specified using [CLI arguments](kibana-logging-cli-configuration.md#logging-cli-migration).
 
 
 ## Layouts [logging-layouts]
@@ -47,52 +51,50 @@ Every appender should know exactly how to format log messages before they are wr
 
 There are two types of layout supported at the moment: [`pattern`](#pattern-layout) and [`json`](#json-layout).
 
-
 ### Pattern layout [pattern-layout]
 
-With `pattern` layout it’s possible to define a string pattern with special placeholders `%conversion_pattern` that will be replaced with data from the actual log message. By default the following pattern is used: `[%date][%level][%logger] %message`.
+With `pattern` layout, it’s possible to define a string pattern with special placeholders `%conversion_pattern` that will be replaced with data from the actual log message. By default, the following pattern is used: `[%date][%level][%logger] %message`.
 
 ::::{note}
-The `pattern` layout uses a sub-set of [log4j 2 pattern syntax](https://logging.apache.org/log4j/2.x/manual/layouts.html#PatternLayout) and **doesn’t implement** all `log4j 2` capabilities.
+The `pattern` layout uses a sub-set of [log4j 2 pattern syntax](https://logging.apache.org/log4j/2.x/manual/layouts.html#PatternLayout) and doesn’t implement all `log4j 2` capabilities.
 ::::
 
+The following conversions are provided out of the box:
 
-The conversions that are provided out of the box are:
+* **level**: Outputs the [level](#log-level) of the logging event. Example of `%level` output: `TRACE`, `DEBUG`, `INFO`.
 
-**level** Outputs the [level](#log-level) of the logging event. Example of `%level` output: `TRACE`, `DEBUG`, `INFO`.
+* **logger**: Outputs the name of the logger that published the logging event. Example of `%logger` output: `server`, `server.http`, `server.http.kibana`.
 
-**logger** Outputs the name of the logger that published the logging event. Example of `%logger` output: `server`, `server.http`, `server.http.kibana`.
+* **message**: Outputs the application supplied message associated with the logging event.
 
-**message** Outputs the application supplied message associated with the logging event.
+* **meta**: Outputs the entries of `meta` object data in ***json** format, if one is present in the event. Example of `%meta` output:
 
-**meta*** Outputs the entries of `meta` object data in ***json** format, if one is present in the event. Example of `%meta` output:
-
-```bash
-// Meta{from: 'v7', to: 'v8'}
-'{"from":"v7","to":"v8"}'
-// Meta empty object
-'{}'
-// no Meta provided
-''
-```
+    ```bash
+    // Meta{from: 'v7', to: 'v8'}
+    '{"from":"v7","to":"v8"}'
+    // Meta empty object
+    '{}'
+    // no Meta provided
+    ''
+    ```
 
 $$$date-format$$$
-**date** Outputs the date of the logging event. The date conversion specifier may be followed by a set of braces containing a name of predefined date format and canonical timezone name. Timezone name is expected to be one from [TZ database name](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). Timezone defaults to the host timezone when not explicitly specified. Example of `%date` output:
+* **date**: Outputs the date of the logging event. The date conversion specifier may be followed by a set of braces containing a name of predefined date format and canonical timezone name. Timezone name is expected to be one from [TZ database name](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). Timezone defaults to the host timezone when not explicitly specified. Example of `%date` output:
 
-$$$date-conversion-pattern-examples$$$
+    $$$date-conversion-pattern-examples$$$
 
-| Conversion pattern | Example |
-| --- | --- |
-| `%date` | `2012-02-01T14:30:22.011Z` uses `ISO8601` format by default |
-| `%date{{ISO8601}}` | `2012-02-01T14:30:22.011Z` |
-| `%date{{ISO8601_TZ}}` | `2012-02-01T09:30:22.011-05:00`   `ISO8601` with timezone |
-| `%date{{ISO8601_TZ}}{America/Los_Angeles}` | `2012-02-01T06:30:22.011-08:00` |
-| `%date{{ABSOLUTE}}` | `09:30:22.011` |
-| `%date{{ABSOLUTE}}{America/Los_Angeles}` | `06:30:22.011` |
-| `%date{{UNIX}}` | `1328106622` |
-| `%date{{UNIX_MILLIS}}` | `1328106622011` |
+    | Conversion pattern | Example |
+    | --- | --- |
+    | `%date` | `2012-02-01T14:30:22.011Z` uses `ISO8601` format by default |
+    | `%date{{ISO8601}}` | `2012-02-01T14:30:22.011Z` |
+    | `%date{{ISO8601_TZ}}` | `2012-02-01T09:30:22.011-05:00`   `ISO8601` with timezone |
+    | `%date{{ISO8601_TZ}}{America/Los_Angeles}` | `2012-02-01T06:30:22.011-08:00` |
+    | `%date{{ABSOLUTE}}` | `09:30:22.011` |
+    | `%date{{ABSOLUTE}}{America/Los_Angeles}` | `06:30:22.011` |
+    | `%date{{UNIX}}` | `1328106622` |
+    | `%date{{UNIX_MILLIS}}` | `1328106622011` |
 
-**pid** Outputs the process ID.
+* **pid**: Outputs the process ID.
 
 The pattern layout also offers a `highlight` option that allows you to highlight some parts of the log message with different colors. Highlighting is quite handy if log messages are forwarded to a terminal with color support.
 
