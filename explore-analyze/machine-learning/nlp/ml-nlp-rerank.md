@@ -44,7 +44,8 @@ Elastic Rerank is available in Elastic Stack version 8.17+:
 
 ## Download and deploy [ml-nlp-rerank-deploy]
 
-To download and deploy Elastic Rerank, use the [create inference API](../../elastic-inference/inference-api/elasticsearch-inference-integration.md) to create an {{es}} service `rerank` endpoint.
+To download and deploy Elastic Rerank, use the create inference API to create an {{es}} service `rerank` endpoint.
+% TBD URL for API
 
 ::::{tip}
 Refer to this [Python notebook](https://github.com/elastic/elasticsearch-labs/blob/main/notebooks/search/12-semantic-reranking-elastic-rerank.ipynb) for an end-to-end example using Elastic Rerank.
@@ -280,7 +281,7 @@ For detailed benchmark information, including complete dataset results and metho
 **Documentation**:
 
 * [Semantic re-ranking in {{es}} overview](../../../solutions/search/ranking/semantic-reranking.md#semantic-reranking-in-es)
-* [Inference API example](../../elastic-inference/inference-api/elasticsearch-inference-integration.md#inference-example-elastic-reranker)
+% TBD URL for API * [Inference API example](../../elastic-inference/inference-api/elasticsearch-inference-integration.md#inference-example-elastic-reranker)
 
 **Blogs**:
 
