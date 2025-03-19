@@ -7,24 +7,31 @@ mapped_pages:
 
 ## What is a shard? [what-is-a-shard]
 
-A shard is a basic unit of storage in {{es}}. Every index is divided into one or more shards to help distribute data and workload across nodes in a cluster. This division allows {{es}} to handle large datasets and perform operations like searches and indexing efficiently but not without cost. Each index and shard has some overhead and if you divide your data across too many shards then the overhead will degrade performance. Shards play several key roles in {{es}}:
+A shard is a basic unit of storage in {es}. Every index is divided into one or more shards to help distribute data and workload across nodes in a cluster. This division allows {es} to handle large datasets and perform operations like searches and indexing efficiently. For more detailed information on shards, see (this page)[/deploy-manage/distributed-architecture/clusters-nodes-shards].
 
-* **Data Distribution:** Each shard contains a portion of the data from the index. When you add more nodes to your cluster, {{es}} will spread the shards across the nodes, balancing the workload between them.
-* **Replication:** Shards can have replicas which are copies of the original shard. Replicas ensure data availability and improve search performance by allowing multiple nodes to handle requests for that shard.
-* **Parallel Processing:** Shards enable {{es}} to distribute indexing of documents, and process queries in parallel across shards, making ingestion and searches faster and more efficient.
+## General guidelines [sizing-shard-guidelines]
 
-By effectively using shards, {{es}} can scale horizontally and provide fault tolerance, ensuring your data is distributed and indexing and searches are processed efficiently.
+Balancing the number and size of your shards is important for the performance and stability of an {es} cluster:
 
-## Sizing Shard Guidelines [sizing-shard-guidelines]
+* Too many shards can degrade search performance and make the cluster unstable. This is referred to as _oversharding_.
+* Very large shards can slow down search operations and prolong recovery times after failures.
 
-Proper shard sizing is crucial for maintaining the performance and stability of an {{es}} cluster. _Oversharding_ occurs when data is distributed across an excessive number of shards (primary or replica), which can degrade search performance and make the cluster unstable. Conversely, very large shards may slow down search operations and prolong recovery times after failures. 
+To avoid either of these states, implement the following guidelines:
 
-To strike the right balance, the [general guidelines](#shard-size-recommendation) are to aim for shard sizes between 10GB and 50GB, keeping the per-shard document count below 200 million. To ensure that each node is working optimally, it's important to distribute shards evenly across nodes. Uneven distribution can cause some nodes to work harder than others, leading to performance degradation and instability. While Elasticsearch automatically balances shards, it’s important to configure your indices with an appropriate number of shards and replicas to facilitate even distribution across nodes.
+### General sizing guidelines
+
+* Aim for shard sizes between 10GB and 50GB
+* Keep the number of documents on each shard below 200 million
+
+### Shard distribution guidelines
+
+To ensure that each node is working optimally, distribute shards evenly across nodes. Uneven distribution can cause some nodes to work harder than others, leading to performance degradation and instability. 
+
+While {es} automatically balances shards, you need to configure indices with an appropriate number of shards and replicas to allow for even distribution across nodes.
 
 If you are using [data streams](/manage-data/data-store/data-streams.md), each data stream is backed by a sequence of indices, each index potentially having multiple shards. 
 
 Despite these general guidelines, it is good to develop a tailored [sharding strategy](#create-a-sharding-strategy) that considers your specific infrastructure, use case, and performance expectations. 
-
 
 ## Create a sharding strategy [create-a-sharding-strategy]
 
