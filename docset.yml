@@ -15,6 +15,7 @@ cross_links:
   - apm-agent-rum-js
   - apm-aws-lambda
   - apm-k8s-attacher
+  - apm-server
   - asciidocalypse
   - beats
   - cloud
