@@ -11,6 +11,9 @@ applies_to:
 
 # Update Elasticsearch logging levels [logging]
 
+$$$deprecation-logging$$$
+$$$_deprecation_logs_throttling$$$
+
 Log4j 2 log messages include a *level* field, which is one of the following (in order of increasing verbosity):
 
 * `FATAL`

@@ -25,7 +25,7 @@ The following logging features are available:
 
 * **Application and component logging**: Logs messages related to running {{kib}}. 
   
-  You can [configure the log level for {{kib}}](/deploy-manage/monitor/logging-configuration/kibana-log-levels.md), and, in self-managed clusters, [configure underlying settings](/deploy-manage/monitor/logging-configuration/kib-self-managed-logging.md) to customize logging behavior.
+  You can [configure the log level for {{kib}}](/deploy-manage/monitor/logging-configuration/kibana-log-levels.md), and, in self-managed, ECE, or ECK deployments, [configure advanced settings](/deploy-manage/monitor/logging-configuration/kib-self-managed-logging.md) to customize logging behavior.
 
 * [Audit logging](/deploy-manage/security/logging-configuration/enabling-audit-logs.md): Logs security-related events on your deployment.
 

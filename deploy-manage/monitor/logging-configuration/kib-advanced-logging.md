@@ -4,9 +4,11 @@ mapped_pages:
 applies_to:
   deployment:
     self: 
+    ece:
+    eck:
 ---
 
-# {{kib}} logging settings in self-managed clusters
+# Advanced {{kib}} logging settings
 
 You do not need to configure any additional settings to use the logging features in {{kib}}. Logging is enabled by default, and will log at info level using the `pattern` layout, which outputs logs to `stdout`.
 
