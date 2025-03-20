@@ -110,11 +110,6 @@ There are different distributions available:
 * production: `docker.elastic.co/package-registry/distribution:production` - Packages available in the production registry ([https://epr.elastic.co](https://epr.elastic.co)). Please note that this image is updated every time a new version of a package gets published.
 * lite: `docker.elastic.co/package-registry/distribution:lite` - Subset of the most commonly used packages available in the production registry ([https://epr.elastic.co](https://epr.elastic.co)). Please note that this image is updated every time a new version of a package gets published.
 
-::::{warning}
-Version 9.0.0-beta1 of the {{package-registry}} distribution has not yet been released.
-
-::::
-
 
 To update the distribution image, re-pull the image and then restart the docker container.
 
