@@ -123,7 +123,7 @@ prompts control insertion for field values, field names, function configuration,
 apply to a specific panel, and exposes visualization configuration such as date histogram interval controls to dashboard users.
 
 :::{note}
-Currently, only **Options list** control with static values are supported for ES|QL-based controls.
+Currently, only **Options lists** with static values are supported for ES|QL-based controls.
 :::
 
 1. While editing your ES|QL visualization's query, the autocomplete menu suggests adding a control.
