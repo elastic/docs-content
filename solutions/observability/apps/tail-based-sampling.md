@@ -132,3 +132,34 @@ The service name for events to match a policy. (string)
 ### **`service.environment`** [sampling-tail-service-environment-ref]
 
 The service environment for events to match a policy. (string)
+
+
+## Monitoring tail-based sampling [sampling-tail-monitoring-ref]
+
+APM Server produces metrics to monitor the performance and estimate the workload being processed by Tail-based sampling. In order to use these metrics, you need to [enable monitoring for the APM Server](/solutions/observability/apps/monitor-apm-server.md). The following metrics are produced by the Tail-based sampler (note that the metrics might have a different prefix, ex: `beat.stats` for ECH deployments, based on how the APM server is running):
+
+### `apm-server.sampling.tail.dynamic_service_groups` [sampling-tail-monitoring-dynamic-service-group-ref]
+
+The metric tracks the number of dynamic services that the Tail-based sampler is tracking per policy. The dynamic services are created for Tail-based samping policies which are defined without the `service.name`. 
+
+### `apm-server.sampling.tail.events.processed` [sampling-tail-monitoring-events-processed-ref]
+
+The metric tracks the total number of events (including both transaction and span) processed by the Tail-based sampler.
+
+### `apm-server.sampling.tail.events.stored` [sampling-tail-monitoring-events-stored-ref]
+
+The metric tracks the total number of events stored by the Tail-based sampler in the database. Events are stored because the full trace is not yet available to make the sampling decision. This value is directly proportional to the storage required by the Tail-based sampler to function.
+
+### `apm-server.sampling.tail.events.dropped` [sampling-tail-monitoring-events-dropped-ref]
+
+The metric tracks the total number of events dropped by the Tail-based sampler. Note that only the events that are actually dropped by the tail based sampler are reported as dropped. Addtionally, any events that were stored by the processor but never indexed will not be counted by this metric.
+
+### `apm-server.sampling.tail.storage.lsm_size` [sampling-tail-monitoring-storage-lsm-size-ref]
+
+This metric tracks the storage size of the Log Structured Merge trees used by the Tail-based sampling database in bytes. From 9.0, this metric is effectively equal to the total storage size used by the database. This is the most crucial metric to track storage requirements for Tail-based sampler, especially for big deployments with large distributed traces. Deployments using TBS extensively should setup alerts and monitoring on this metric.
+
+This metric can also be used to get an estimate on the storage requirements for Tail-based sampler before increasing load by extrapolating the metric based on the current usage. It is important to note that before doing any estimation the Tail-based sampler should be allowed to run for atleast a few TTL cycles and the estimate would only be useful for similar load patterns.
+
+### `apm-server.sampling.tail.storage.value_log_size` [sampling-tail-monitoring-storage-value-log-size-ref]
+
+This metric tracks the storage size for value log files used by the previous implementation of Tail-based sampler. The metric is depracated since 9.0 and should always report `0`.
