@@ -8,14 +8,6 @@ mapped_urls:
 
 # Troubleshooting
 
-
-% Scope notes: - Match new content type; TOC entry TBD - consider splitting out subsections?
-
-% see https://docs.elastic.dev/content-architecture/content-type/troubleshooting/entrypoint
-
-% TODO pull in product-specific tips etc. from other TS sections
-
-
 :::{admonition} WIP
 ⚠️ **This section is a work in progress.** ⚠️
 
