@@ -40,7 +40,7 @@ For the basic ports and protocols required for the installation to work, refer t
 
 Before starting, take a moment to familiarize yourself with the {{stack}} components.
 
-:::{image} ../../../images/elastic-stack-stack-install-final-state.png
+:::{image} /raw-migrated-files/images/elastic-stack-stack-install-final-state.png
 :alt: Image showing the relationships between stack components
 :::
 
@@ -619,7 +619,7 @@ View your system metrics data:
 2. In the query field, search for `Metrics System`.
 3. Select the `[Metrics System] Host overview` link. The {{kib}} Dashboard opens with visualizations of host metrics including CPU usage, memory usage, running processes, and others.
 
-    :::{image} ../../../images/elastic-stack-install-stack-metrics-dashboard.png
+    :::{image} /raw-migrated-files/images/elastic-stack-install-stack-metrics-dashboard.png
     :alt: The System metrics host overview showing CPU usage, memory usage, and other visualizations
     :::
 

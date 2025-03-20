@@ -17,7 +17,7 @@ To view the activity for a deployment:
     3. Select one of the resource filters to view activity for only that resource type.
 
 
-:::{image} ../../../images/cloud-heroku-ec-ce-activity-page.png
+:::{image} /raw-migrated-files/images/cloud-heroku-ec-ce-activity-page.png
 :alt: The Activity page
 :::
 
