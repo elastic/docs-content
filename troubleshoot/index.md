@@ -22,12 +22,12 @@ mapped_urls:
 The documentation team is actively working on the pages in this section.
 :::
 
-This section contains information about resolving common issues you might encounter with Elastic products, as well as troubleshooting resources and guidance.
+This section contains troubleshooting resources and guidance to help you resolve issues with Elastic products.
 
 If you can't find your issue here, explore the [additional resources](#troubleshoot-additional-resources) or [contact us](#contact-us).
 
 :::{note} 
-You might need to review the troubleshooting content for more than one product or topic area. In most Elastic deployments, you use multiple components from the [Elastic Stack](/get-started/the-stack.md), plus software to orchestrate your deployment. Because these components communicate with each other, you might see errors in one product that originate from another part of the stack, or from your deployment infrastructure. 
+You might need to review troubleshooting content for more than one product or topic area. Most Elastic deployments use multiple components from the [Elastic Stack](/get-started/the-stack.md), plus a deployment orchestrator. Check all topics relevant to your infrastructure. 
 :::
 
 * [{{es}}](/troubleshoot/elasticsearch/elasticsearch.md)
@@ -39,11 +39,6 @@ You might need to review the troubleshooting content for more than one product o
 * [{{ece}}](/troubleshoot/deployments/cloud-enterprise/cloud-enterprise.md)
 * [{{eck}}](/troubleshoot/deployments/cloud-on-k8s/kubernetes.md)
 
-## Error reference 
-:::{admonition} WIP
-Work in progress
-:::
-
 ## Additional resources [troubleshoot-additional-resources]
 
 * Find additional troubleshooting articles in the [Elastic Support Portal](https://support.elastic.co/).
@@ -52,14 +47,14 @@ Work in progress
 
 * Visit the [Elastic community forums](https://discuss.elastic.co) to get answers from experts in the community, including Elastic team members.
 
-* Use the top search bar to search all our docs for your issue. Some troubleshooting content is contained in other sections of the Elastic documentation.
+* Use the top bar to search all docs for your issue. Some troubleshooting content appears in other sections of the Elastic documentation.
 
 
 ## Contact us [contact-us]
 
 If you have an [Elastic subscription](https://www.elastic.co/pricing), you can contact Elastic support for assistance. You can reach us in the following ways: 
 
-* **Through the [Elastic Support Portal](https://support.elastic.co/):** The Elastic Support Portal is the central place where you can access all of your cases, subscriptions, and licenses. Within a few hours after subscribing, you receive an email with instructions on how to log in to the Support Portal, where you can track both current and archived cases.
+* **Through the [Elastic Support Portal](https://support.elastic.co/):** The Elastic Support Portal is the central place where you can access all of your cases, subscriptions, and licenses. Within a few hours after subscribing, you'll receive an email with instructions on how to log in to the Support Portal, where you can track both current and archived cases.
 
   You can access the portal [directly](https://support.elastic.co/) or by clicking the life preserver icon on any Elastic Cloud page.
 
@@ -67,7 +62,7 @@ If you have an [Elastic subscription](https://www.elastic.co/pricing), you can c
 * **By email:** [support@elastic.co](mailto:support@elastic.co)
 
   :::{tip}
-  If you contact us by email, use the email address you registered with so we can help you more quickly. If you are using a distribution list as your registered email, you can also register a second email address with us. Just open a case to let us know the name and email address you want to add.
+  If you contact us by email, use the email address you registered with so we can help you more quickly. If your registered email is a distribution list, you can register a second email address with us. Just open a case to let us know the name and email address you want to add.
   :::
 
 ## Working with support [troubleshoot-work-with-support]
