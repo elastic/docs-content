@@ -26,7 +26,7 @@ The {{es}} Add-on for Heroku has several limitations that do not apply to [other
 
 Not all features of {{ecloud}} are available to Heroku users. Specifically, you cannot create additional deployments or use different deployment templates.
 
-Generally, if a feature is shown as available in the [Elasticsearch Add-On for Heroku console](https://cloud.elastic.co?page=docs&placement=docs-body), you can use it.
+Generally, if a feature is shown as available in the [{{heroku}} console](https://cloud.elastic.co?page=docs&placement=docs-body), you can use it.
 
 [{{es}} Machine Learning](https://www.elastic.co/guide/en/machine-learning/current/index.html), [Elastic APM](/solutions/observability/apps/application-performance-monitoring-apm.md) and [Elastic Fleet Server](https://www.elastic.co/guide/en/fleet/current/fleet-overview.html) are not supported by the {{es}} Add-On for Heroku.
 
@@ -63,7 +63,7 @@ Find more information about {{ech}} on the following pages. This information is 
 
 ## Next steps [next-steps]
 
-After have provisioned your first deployment, you’re ready to index data into the deployment and explore the advanced capabilities of Elasticsearch Add-On for Heroku.
+After have provisioned your first deployment, you’re ready to index data into the deployment and explore the advanced capabilities of {{heroku}}.
 
 ### Index data [ech-ingest-data] 
 
@@ -71,7 +71,7 @@ There are several ways to ingest data into the deployment:
 
 * Use the sample data available from the {{kib}} home page without loading your own data. There are multiple data sets available and you can add them with one click.
 * Ingest your own data. [Learn more](/manage-data/ingest.md).
-* Have existing Elasticsearch data? Consider your [migration options](../../../manage-data/migrate.md).
+* Have existing {{es}} data? Consider your [migration options](../../../manage-data/migrate.md).
 
 
 ### Increase security [ech-increase-security] 
