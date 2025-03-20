@@ -308,99 +308,21 @@ For more complex relevance scoring with combined criteria, you can use the `EVAL
 POST /_query?format=txt
 {
   "query": """
-    FROM cooking_blog METADATA _score
-    | WHERE tags.keyword == "vegetarian" AND rating >= 4.5
-    | EVAL title_score = SCORE(match(title, "curry spicy")) * 2
-    | EVAL desc_score = SCORE(match(description, "curry spicy"))
-    | EVAL combined_score = title_score + desc_score
-    | EVAL category_boost = IF(category.keyword == "Main Course", 1.0, 0.0)
-    | EVAL date_boost = IF(date >= "now-1M/d", 0.5, 0.0)
-    | EVAL final_score = combined_score + category_boost + date_boost
-    | WHERE NOT category.keyword == "Dessert"
-    | WHERE final_score > 0
-    | SORT final_score DESC
+    FROM cooking_blog METADATA _score  # Request _score metadata for relevance scoring
+    | EVAL tags_concat = MV_CONCAT(tags.keyword, ",")  # Convert multi-valued tags field to a single string with comma delimiter
+    | WHERE tags_concat LIKE "*vegetarian*" AND rating >= 4.5  # Filter for vegetarian recipes with high ratings, using wildcards to find "vegetarian" within the concatenated tags
+    | WHERE match(title, "curry spicy", {"boost": 2.0}) OR match(description, "curry spicy")  # Full-text search with boosted title relevance (2x importance)
+    | EVAL category_boost = CASE(category.keyword == "Main Course", 1.0, 0.0)  # Add boost for Main Course category
+    | EVAL date_boost = CASE(DATE_DIFF("month", date, NOW()) <= 1, 0.5, 0.0)  # Add boost for recipes published in the last month
+    | EVAL custom_score = _score + category_boost + date_boost  # Combine all scores into final relevance score
+    | WHERE NOT category.keyword == "Dessert"  # Exclude desserts
+    | WHERE custom_score > 0  # Only include results with positive relevance
+    | SORT custom_score DESC  # Sort by custom relevance score (highest first)
     | LIMIT 1000
-  """
+    """
 }
 ```
 
-This ES|QL query uses an explicit scoring mechanism:
-1. Requires "vegetarian" tag and rating >= 4.5
-2. Computes separate scores for `title` and `description` matches
-3. Adds boosts for Main Course category and recent dates
-4. Excludes Desserts
-5. Sorts by the final combined score
-
-
-:::{warning}
-TODO
-
-This section shouldn't live in a tutorial, leaving it here for comments/suggestions if it might be useful
-:::
-
-## Optimizing your ES|QL queries
-
-ES|QL queries can be optimized for better performance and more relevant results. Here are some key optimization strategies:
-
-### Field filtering with KEEP
-
-Using `KEEP` early in your query pipeline can significantly improve performance by reducing the fields that need to be fetched:
-
-```esql
-POST /_query?format=txt
-{
-  "query": """
-    FROM cooking_blog
-    | KEEP title, description, rating
-    | WHERE title:"curry"
-    | LIMIT 1000
-  """
-}
-```
-
-However, there's an important caveat: if you need to filter on fields not included in `KEEP`, you should place your `WHERE` clauses before `KEEP`:
-
-```esql
-POST /_query?format=txt
-{
-  "query": """
-    FROM cooking_blog
-    | WHERE category.keyword == "Main Course" AND rating >= 4.0
-    | KEEP title, description, rating
-    | LIMIT 1000
-  """
-}
-```
-
-Placing `WHERE` before `KEEP` allows ES|QL to optimize field caps, only requesting the fields needed for filtering and display.
-
-### Optimal query order
-
-For best performance, structure your ES|QL queries in this general order:
-
-1. `FROM` to select your index
-2. `WHERE` clauses for filtering
-3. `KEEP` to select only needed fields
-4. Processing operations (`EVAL`, aggregations, etc.)
-5. `SORT` to order results
-6. `LIMIT` to restrict result count
-
-This order allows Elasticsearch to apply filters early, reducing the dataset before performing more expensive operations.
-
-### Use keyword fields for exact matching
-
-Always use the `.keyword` suffix for exact matching on text fields. This improves performance and ensures case-sensitive, exact matches:
-
-```esql
-POST /_query?format=txt
-{
-  "query": """
-    FROM cooking_blog
-    | WHERE tags.keyword == "vegetarian"
-    | LIMIT 1000
-  """
-}
-```
 
 ## Learn more
 
@@ -408,5 +330,4 @@ This tutorial introduced the basics of full-text search and filtering in ES|QL. 
 
 - [Full-text search](full-text.md): Learn about the core components of full-text search in Elasticsearch.
   - [Text analysis](full-text/text-analysis-during-search.md): Understand how text is processed for full-text search.
-- [Query and filter data](/explore-analyze/query-filter.md): Understand all your options for searching and analyzing data in {{es}} in the Explore & Analyze section.
-- [Search your data](../search.md): Learn about more advanced search techniques including semantic search.
+- [{{esql}} search functions](elasticsearch://reference/query-languages/esql/esql-functions-operators.md/esql-functions-operators.html#esql-search-functions): Explore the full list of search functions available in ES|QL.
