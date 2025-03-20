@@ -10,7 +10,7 @@ applies_to:
 
 An AutoOps event provides a detailed analysis of a specific issue, including why it was triggered and the steps needed to resolve it. 
 
-:::{image} /images/cloud-autoops-events.png
+:::{image} /deploy-manage/images/cloud-autoops-events.png
 :alt: AutoOps events
 :::
 

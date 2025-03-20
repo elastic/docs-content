@@ -42,13 +42,13 @@ Note the following terms:
 
 The following diagram shows the mapping between Microsoft Azure IDs, {{ecloud}} organization IDs, and your Elastic resources (deployments).
 
-:::{image} ../../../images/cloud-ec-azure-billing-mapping.png
+:::{image} /deploy-manage/images/cloud-ec-azure-billing-mapping.png
 :alt: Azure to {{ecloud}} mappings
 :::
 
 The following diagram shows how your {{ecloud}} organization costs are reported in Microsoft Azure. You can also refer to our [Billing FAQ](#ec-azure-integration-billing-faq) on this page.
 
-:::{image} ../../../images/cloud-ec-azure-billing-reporting.png
+:::{image} /deploy-manage/images/cloud-ec-azure-billing-reporting.png
 :alt: Azure to {{ecloud}} mappings
 :::
 
@@ -156,13 +156,13 @@ $$$azure-integration-change-subscription$$$How can I change my {{ecloud}} subscr
     3. In the {{ecloud}} console, select your account avatar icon at the top of the page, and then choose **Account & Billing**.
     4. Select the **Billing** tab and choose **Change my subscription**.
 
-        :::{image} ../../../images/cloud-ec-marketplace-azure009.png
+        :::{image} /deploy-manage/images/cloud-ec-marketplace-azure009.png
         :alt: The Elastic Account Billing page with Advanced Settings highlighted
         :::
 
     5. Select the [subscription level](https://elastic.co/pricing) that you’d like.
 
-        :::{image} ../../../images/cloud-ec-marketplace-azure006.png
+        :::{image} /deploy-manage/images/cloud-ec-marketplace-azure006.png
         :alt: The Update Subscription page showing Standard
         :::
 
@@ -175,7 +175,7 @@ $$$azure-integration-azure-user-management$$$Is the {{ecloud}} Azure Native ISV 
 
     When trying to access resources such as {{es}}, {{kib}}, or APM in a deployment that was created by another Azure user, the following error is shown:
 
-    :::{image} ../../../images/cloud-ec-marketplace-azure026.png
+    :::{image} /deploy-manage/images/cloud-ec-marketplace-azure026.png
     :alt: Error message displayed in the {{ecloud}} console: To access the resource {resource-name}
     :::
 
@@ -278,7 +278,7 @@ $$$azure-integration-billing-elastic-costs$$$Why can’t I see Elastic resources
 $$$azure-integration-billing-deployments$$$Why don’t I see my individual Elastic resources (deployments) in the Azure Marketplace Invoice?
 :   The way Azure Marketplace Billing Integration works today, the costs for Elastic resources (deployments) are reported for an {{ecloud}} organization as a single line item, reported against the Marketplace SaaS ID. This includes the Elastic deployments created using the Azure Portal, API, SDK, or CLI, and also the Elastic deployments created directly from the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body) in the respective {{ecloud}} organization. For granular Elastic resources costs refer to [Monitor and analyze your acccount usage](../../cloud-organization/billing/monitor-analyze-usage.md). As well, for more detail refer to [Integrated billing](#ec-azure-integration-billing-summary).
 
-    :::{image} ../../../images/cloud-ec-azure-billing-example.png
+    :::{image} /deploy-manage/images/cloud-ec-azure-billing-example.png
     :alt: Example billing report in the {{ecloud}} console
     :::
 
@@ -290,7 +290,7 @@ $$$azure-integration-billing-instance-values$$$Why can’t I find Instance ID an
 
     `Microsoft.SaaS` (Instance name) asset is shown in the Azure Marketplace invoice and represents costs related to an {{ecloud}} organization and not individual Elastic resources (deployments). To see the cost breakdown for individual Elastic resources (deployments), refer to [Monitor and analyze your acccount usage](../../cloud-organization/billing/monitor-analyze-usage.md).
 
-    :::{image} ../../../images/cloud-ec-azure-missing-instance-id.png
+    :::{image} /deploy-manage/images/cloud-ec-azure-missing-instance-id.png
     :alt: Instance ID not found error in Azure console
     :::
 
@@ -373,7 +373,7 @@ In the Azure console, configure the ingestion of Azure logs into either a new or
 
 * When creating a new deployment, use the **Logs & metrics** tab in Azure to specify the log type and a key/value tag pair. Any Azure resources that match on the tag value automatically send log data to the {{ecloud}} deployment, once it’s been created.
 
-:::{image} ../../../images/cloud-ec-marketplace-azure004.png
+:::{image} /deploy-manage/images/cloud-ec-marketplace-azure004.png
 :alt: The Logs & Metrics tab on the Create Elastic Resource page
 :::
 
@@ -409,7 +409,7 @@ $$$azure-integration-ingest-metrics$$$How do I ingest metrics from my Azure serv
 $$$azure-integration-vm-extensions$$$How can I monitor my Azure virtual machines in {{es}}?
 :   You can monitor your Azure virtual machines by installing the Elastic Agent VM extension. Once enabled, the VM extension downloads the Elastic Agent, installs it, and enrols it to the Fleet Server. The Elastic Agent will then send system related logs and metrics to the {{ecloud}} cluster where you can find pre-built system dashboards showing the health and performance of your virtual machines.
 
-    :::{image} ../../../images/cloud-ec-marketplace-azure010.png
+    :::{image} /deploy-manage/images/cloud-ec-marketplace-azure010.png
     :alt: A dashboard showing system metrics for the VM
     :::
 
@@ -422,7 +422,7 @@ $$$azure-integration-vm-extensions$$$How can I monitor my Azure virtual machines
     3. Select one or more virtual machines
     4. Choose **Install Extension** or **Uninstall Extension**.
 
-    :::{image} ../../../images/cloud-ec-marketplace-azure011.png
+    :::{image} /deploy-manage/images/cloud-ec-marketplace-azure011.png
     :alt: The Virtual Machines page in Azure
     :::
 
@@ -454,7 +454,7 @@ This section describes some scenarios that you may experience onboarding to {{ec
 $$$azure-integration-authorization-access$$$I receive an error message about not having the required authorization.
 :   When trying to access {{ecloud}} resources, you may get an error message indicating that *the user must have the required authorization.*
 
-    :::{image} ../../../images/cloud-ec-marketplace-azure026.png
+    :::{image} /deploy-manage/images/cloud-ec-marketplace-azure026.png
     :alt: Error message displayed in the {{ecloud}} console: To access the resource {resource-name}
     :::
 
@@ -484,7 +484,7 @@ $$$azure-integration-deployment-failed-traffic-filter$$$My {{ecloud}} deployment
     2. Go to the [Traffic filters page](https://cloud.elastic.co/deployment-features/traffic-filters).
     3. Edit the traffic filter and disable the **Include by default** option.
 
-        :::{image} ../../../images/cloud-ec-marketplace-azure-traffic-filter-option.png
+        :::{image} /deploy-manage/images/cloud-ec-marketplace-azure-traffic-filter-option.png
         :alt: The Include by default option under Add to Deployments on the Traffic Filter page
         :::
 
@@ -525,7 +525,7 @@ $$$azure-integration-support$$$How do I get support?
 
         The Elastic Support team responds based on the SLA response time of your subscription.
 
-        :::{image} ../../../images/cloud-ec-marketplace-azure005.png
+        :::{image} /deploy-manage/images/cloud-ec-marketplace-azure005.png
         :alt: The New Support Request page in Azure
         :::
 

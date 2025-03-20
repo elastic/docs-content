@@ -54,7 +54,7 @@ $$$faq-cost$$$Is there a way for me to estimate how much {{ecloud}} will cost?
 $$$faq-consumption$$$Where can I find a detailed view of my consumption?
 :   To make it easy to track the ongoing cost of {{ecloud}}, we’ve added line items to the downloadable [invoices](https://cloud.elastic.co/billing/overview?page=docs&placement=docs-body).
 
-    ![Example invoice](../../../images/cloud-ec-bill-example-new.png)
+    ![Example invoice](/deploy-manage/images/cloud-ec-bill-example-new.png)
 
     Additionally, on the {{ecloud}} [Usage](https://cloud.elastic.co/billing/usage?page=docs&placement=docs-body) page, the **Month-to-date usage** tile shows accrued costs and can help you to better estimate the next charge amount.
 

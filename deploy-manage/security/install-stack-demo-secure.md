@@ -884,7 +884,7 @@ View your system metrics data:
 2. In the query field, search for `Metrics System`.
 3. Select the `[Metrics System] Host overview` link. The {{kib}} Dashboard opens with visualizations of host metrics including CPU usage, memory usage, running processes, and more.
 
-    :::{image} /images/elastic-stack-install-stack-metrics-dashboard.png
+    :::{image} /deploy-manage/images/elastic-stack-install-stack-metrics-dashboard.png
     :alt: The System metrics host overview showing CPU usage, memory usage, and other visualizations
     :::
 

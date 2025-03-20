@@ -46,7 +46,7 @@ In the deployment edit page, you can configure the following settings and featur
 
     * From the **Size per zone** drop-down menu, select what best fits your requirements.
 
-        :::{image} ../../../images/cloud-enterprise-ec-customize-deployment2.png
+        :::{image} /deploy-manage/images/cloud-enterprise-ec-customize-deployment2.png
         :alt: Customize hot data and content tier nodes
         :::
 
@@ -54,7 +54,7 @@ In the deployment edit page, you can configure the following settings and featur
         
         The **Architecture** summary displays the total number of nodes per zone, where each circle color represents a different node type:
 
-        :::{image} ../../../images/cloud-enterprise-ec-number-of-nodes.png
+        :::{image} /deploy-manage/images/cloud-enterprise-ec-number-of-nodes.png
         :alt: Number of nodes per deployment size
         :::
 

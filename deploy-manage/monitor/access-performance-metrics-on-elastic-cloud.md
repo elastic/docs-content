@@ -31,7 +31,7 @@ The following metrics are available:
 
 ### CPU usage [ec_cpu_usage]
 
-:::{image} /images/cloud-metrics-cpu-usage.png
+:::{image} /deploy-manage/images/cloud-metrics-cpu-usage.png
 :alt: Graph showing CPU usage
 :::
 
@@ -43,7 +43,7 @@ This chart reports the maximum CPU values over the sampling period. [Logs and me
 
 ### CPU credits [ec_cpu_credits]
 
-:::{image} /images/cloud-metrics-cpu-credits.png
+:::{image} /deploy-manage/images/cloud-metrics-cpu-credits.png
 :alt: Graph showing available CPU credits
 :::
 
@@ -52,7 +52,7 @@ Shows your remaining CPU credits, measured in seconds of CPU time. CPU credits e
 
 ### Number of requests [ec_number_of_requests]
 
-:::{image} /images/cloud-metrics-number-of-requests.png
+:::{image} /deploy-manage/images/cloud-metrics-number-of-requests.png
 :alt: Graph showing the number of requests
 :::
 
@@ -61,7 +61,7 @@ Shows the number of requests that your cluster receives per second, separated in
 
 ### Search response times [ec_search_response_times]
 
-:::{image} /images/cloud-metrics-search-response-times.png
+:::{image} /deploy-manage/images/cloud-metrics-search-response-times.png
 :alt: Graph showing search response times
 :::
 
@@ -70,7 +70,7 @@ Indicates the amount of time that it takes for your {{es}} cluster to complete a
 
 ### Index response times [ec_index_response_times]
 
-:::{image} /images/cloud-metrics-index-response-times.png
+:::{image} /deploy-manage/images/cloud-metrics-index-response-times.png
 :alt: Graph showing index response times
 :::
 
@@ -79,7 +79,7 @@ Indicates the amount of time that it takes for your {{es}} cluster to complete a
 
 ### Memory pressure per node [ec_memory_pressure_per_node]
 
-:::{image} /images/cloud-metrics-memory-pressure-per-node.png
+:::{image} /deploy-manage/images/cloud-metrics-memory-pressure-per-node.png
 :alt: Graph showing memory pressure per node
 :::
 
@@ -88,7 +88,7 @@ Indicates the total memory used by the JVM heap over time. We’ve configured {{
 
 ### GC overhead per node [ec_gc_overhead_per_node]
 
-:::{image} /images/cloud-metrics-gc-overhead-per-node.png
+:::{image} /deploy-manage/images/cloud-metrics-gc-overhead-per-node.png
 :alt: Graph showing the garbage collection overhead per node
 :::
 
@@ -112,17 +112,17 @@ Work with the metrics shown in **Cluster Performance Metrics** section to help y
 
 * Hover on any part of a graph to get additional information. For example, hovering on a section of a graph that shows response times reveals the percentile that responses fall into at that point in time:
 
-    :::{image} /images/cloud-metrics-hover.png
+    :::{image} /deploy-manage/images/cloud-metrics-hover.png
     :alt: Hover over the metric graph
     :::
 
 * Zoom in on a graph by drawing a rectangle to select a specific time window. As you zoom in one metric, other performance metrics change to show data for the same time window.
 
-    :::{image} /images/cloud-metrics-zoom.png
+    :::{image} /deploy-manage/images/cloud-metrics-zoom.png
     :alt: Zoom the metric graph
     :::
 
-* Pan around with ![Pan in a metric graph](/images/cloud-metrics-pan.png "") to make sure that you can get the right parts of a metric graph as you zoom in.
-* Reset the metric graph axes with ![Reset the metric graph](/images/cloud-metrics-reset.png ""), which returns the graphs to their original scale.
+* Pan around with ![Pan in a metric graph](/deploy-manage/images/cloud-metrics-pan.png "") to make sure that you can get the right parts of a metric graph as you zoom in.
+* Reset the metric graph axes with ![Reset the metric graph](/deploy-manage/images/cloud-metrics-reset.png ""), which returns the graphs to their original scale.
 
 Cluster performance metrics are shown per node and are color-coded to indicate which running {{es}} instance they belong to.
