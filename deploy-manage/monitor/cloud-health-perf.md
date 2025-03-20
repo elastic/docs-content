@@ -45,7 +45,7 @@ You can also search and filter the table based on affected resources, such as in
 :alt: {{es}} Health page with details and troubleshooting
 :::
 
-For more information about specific errors, see [](/troubleshoot/elasticsearch.md). You can also [contact us](/troubleshoot/index.md#contact-us) if you need more help.
+For more information about specific errors, refer to [](/troubleshoot/elasticsearch.md). You can also [contact us](/troubleshoot/index.md#contact-us) if you need more help.
 
 ### Health warnings [ec-es-health-warnings]
 
