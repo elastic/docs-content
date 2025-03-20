@@ -50,7 +50,7 @@ A time series is a sequence of observations for a specific entity. Together, the
 * The price of a stock
 * Temperature and humidity readings from a weather sensor.
 
-:::{image} ../../../images/elasticsearch-reference-time-series-chart.svg
+:::{image} /manage-data/images/elasticsearch-reference-time-series-chart.svg
 :alt: time series chart
 :title: Time series of weather sensor readings plotted as a graph
 :::
@@ -146,7 +146,7 @@ In a TSDS, each backing index, including the most recent backing index, has a ra
 
 When you add a document to a TSDS, {{es}} adds the document to the appropriate backing index based on its `@timestamp` value. As a result, a TSDS can add documents to any TSDS backing index that can receive writes. This applies even if the index isn’t the most recent backing index.
 
-:::{image} ../../../images/elasticsearch-reference-time-bound-indices.svg
+:::{image} /manage-data/images/elasticsearch-reference-time-bound-indices.svg
 :alt: time bound indices
 :::
 

@@ -486,7 +486,7 @@ Now it’s time to create visualizations based off of the application log data.
 7. Drag and drop the **http.request.method** field onto the visualization builder.
 8. A stacked bar chart now shows the relative frequency of each of the three request methods used in our example, measured over time.
 
-    ![A screen capture of the Kibana "Bar vertical stacked" visualization with several bars. The X axis shows "Count of records" and the Y axis shows "@timestamp per 30 seconds". Each bar is divided into three HTTP request methods: GET](../../../images/cloud-ec-node-logs-methods.png "")
+    ![A screen capture of the Kibana "Bar vertical stacked" visualization with several bars. The X axis shows "Count of records" and the Y axis shows "@timestamp per 30 seconds". Each bar is divided into three HTTP request methods: GET](/manage-data/images/cloud-ec-node-logs-methods.png "")
 
 9. Select **Save and return** to add this visualization to your dashboard.
 
@@ -499,7 +499,7 @@ Let’s create a second visualization.
 5. In the chart settings area, under **Break down by**, select **Top values of http.request.headers.from** and set **Number of values** to *12*. In this example there are twelve different email addresses used in the HTTP *from* header, so this parameter sets all of them to appear in the chart legend.
 6. Select **Refresh**. A stacked bar chart now shows the relative frequency of each of the HTTP *from* headers over time.
 
-    ![A screen capture of the visualization builder](../../../images/cloud-ec-node-logs-content.png "")
+    ![A screen capture of the visualization builder](/manage-data/images/cloud-ec-node-logs-content.png "")
 
 7. Select **Save and return** to add this visualization to your dashboard.
 
@@ -509,7 +509,7 @@ And now for the final visualization.
 2. In the **CHART TYPE** dropdown box, select **Donut**.
 3. From the list of available fields, drag and drop the **http.request.method** field onto the visualization builder. A donut chart appears.
 
-    ![A screen capture of a donut chart divided into three sections](../../../images/cloud-ec-node-logs-donut.png "")
+    ![A screen capture of a donut chart divided into three sections](/manage-data/images/cloud-ec-node-logs-donut.png "")
 
 4. Select **Save and return** to add this visualization to your dashboard.
 5. Select **Save** and add a title to save your new dashboard.
@@ -522,7 +522,7 @@ You can add titles to the visualizations, resize and position them as you like, 
 
 1. Select **Refresh** on the Kibana dashboard. Since the application `webrequests.js` continues to run and send HTTP requests to the Node.js server, `webserver.js` continues to generate log data, and your Kibana visualizations update with that data with each page refresh.
 
-    ![A screen capture of the completed Kibana dashboard](../../../images/cloud-ec-node-logs-final-dashboard.png "")
+    ![A screen capture of the completed Kibana dashboard](/manage-data/images/cloud-ec-node-logs-final-dashboard.png "")
 
 2. As your final step, remember to stop Filebeat, the Node.js web server, and the client. Enter *CTRL + C* in the terminal window for each application to stop them.
 
