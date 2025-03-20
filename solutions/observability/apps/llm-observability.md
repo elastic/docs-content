@@ -79,7 +79,7 @@ Consider an enterprise utilizing an OpenAI model for real-time user interactions
 
 ### Addressing cost and usage concerns
 
-For cost-sensitive deployments, being acutely aware of which LLM configurations are more cost-effective is crucial. Elastic’s dashboards, pre-configured to display model usage patterns, help mitigate unnecessary spending effectively. You can use out-of-the-box dashboards for Azure OpenAI, OpenAI, Amazon Bedrock, and Google VertexAI models.
+For cost-sensitive deployments, being acutely aware of which LLM configurations are more cost-effective is crucial. Elastic’s dashboards, pre-configured to display model usage patterns, help mitigate unnecessary spending effectively. You can use out-of-the-box dashboards for metrics, logs, and traces.
 
 :::{image} ../../../images/llm-costs-usage-concerns.png
 :alt:  LLM cost and usage concerns
