@@ -420,8 +420,7 @@ PS > cd 'C:\Program Files\Filebeat'
 PS C:\Program Files\Filebeat> .\install-service-filebeat.ps1
 ```
 
-NOTE: If script execution is disabled on your system, you need to set the execution policy for the current session to allow the script to run. For
-example: `+PowerShell.exe -ExecutionPolicy UnRestricted -File .\install-service-filebeat.ps1+.`
+NOTE: If script execution is disabled on your system, you need to set the execution policy for the current session to allow the script to run. For example: `PowerShell.exe -ExecutionPolicy UnRestricted -File .\install-service-filebeat.ps1`.
 ::::::
 
 :::::::
