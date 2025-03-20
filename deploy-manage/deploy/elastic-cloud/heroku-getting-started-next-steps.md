@@ -30,5 +30,5 @@ You might want to add more layers of security to your deployment, such as:
 
 ## Scale or adjust your deployment [echscale_or_adjust_your_deployment] 
 
-You might find that you need a larger deployment for the workload. Or maybe you want to upgrade the Elasticsearch version for the latest features. Perhaps you’d like to add some plugins, enable APM, or machine learning. All of this can be done after provisioning by [changing your deployment configuration](cloud-hosted.md).
+You might find that you need a larger deployment for the workload. Or maybe you want to upgrade the Elasticsearch version for the latest features. Perhaps you’d like to add some plugins, enable APM, or machine learning. All of this can be done after provisioning by [changing your deployment configuration](/deploy-manage/deploy/elastic-cloud/manage-deployments.md).
 

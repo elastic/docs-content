@@ -21,3 +21,4 @@ Opening https://addons-sso.heroku.com/apps/e286f875-cbdb-47a9-b445-e94bnnnnnnnn/
 Alternatively, you can access the console by visiting the [Heroku Dashboard](https://dashboard.heroku.com/), selecting your app, and opening the Elasticsearch link.
 
 
+To learn how to access {{kib}}, refer to [](/deploy-manage/deploy/elastic-cloud/access-kibana.md).

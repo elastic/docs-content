@@ -35,8 +35,12 @@ For example: Migrate from the smallest, default `dachs-standard` plan to the lar
 
 ```bash
 heroku addons:upgrade foundelasticsearch:beagle-ha --app MY_APP
+```
+
+Response:
+```bash
 Changing foundelasticsearch-defined-nnnnn on MY_APP from foundelasticsearch:dachs-standard to foundelasticsearch:beagle-ha... done, $201/month
 ```
 
-Upgrading to a new plan may involve extending the existing cluster with new nodes and migrating data from the old nodes to the new ones. When the migration is finished, the old nodes are shut down and removed from the cluster. For HA clusters, you can continue to search and index documents while this plan change is happening.
+Upgrading to a new plan may involve extending the existing cluster with new nodes and migrating data from the old nodes to the new ones. When the migration is finished, the old nodes are shut down and removed from the cluster. For high availability clusters, you can continue to search and index documents while this plan change is happening.
 
