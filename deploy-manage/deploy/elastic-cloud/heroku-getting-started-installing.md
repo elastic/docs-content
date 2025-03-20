@@ -2,6 +2,9 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-getting-started-installing.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-getting-started-installing-version.html
+applies_to:
+  deployment:
+    ess:
 ---
 
 # Install the add-on [ech-getting-started-installing]

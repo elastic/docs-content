@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-getting-started-accessing.html
+applies_to:
+  deployment:
+    ess:
 ---
 
 # Access the console [ech-getting-started-accessing]

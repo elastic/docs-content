@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-working-with-elasticsearch.html
+applies_to:
+  deployment:
+    ess:
 ---
 
 # Work with {{es}} [ech-working-with-elasticsearch]

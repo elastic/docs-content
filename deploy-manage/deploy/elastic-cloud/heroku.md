@@ -6,7 +6,7 @@ mapped_urls:
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-restrictions.html
 applies_to:
   deployment:
-    ech:
+    ess:
 navigation_title: Heroku
 ---
 

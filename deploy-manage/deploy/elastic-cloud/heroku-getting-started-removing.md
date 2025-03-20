@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-getting-started-removing.html
+applies_to:
+  deployment:
+    ess:
 ---
 
 # Remove the add-on [ech-getting-started-removing]
