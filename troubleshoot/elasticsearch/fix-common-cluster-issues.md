@@ -42,6 +42,6 @@ If you're using {{ech}}, you can use AutoOps to monitor your cluster. AutoOps si
 
 ## Additional resources
 
-* [Troubleshoot {{es}}](/troubleshoot/elasticsearch/elasticsearch.md)
+* [Troubleshoot {{es}}](/troubleshoot/elasticsearch.md)
 * [Troubleshooting overview](/troubleshoot/index.md)
 

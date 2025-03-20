@@ -1,7 +1,7 @@
 project: 'Troubleshoot'
 toc:
   - file: index.md
-  - file: elasticsearch/elasticsearch.md
+  - file: elasticsearch.md
     children:
       - file: elasticsearch/clusters.md
         children:

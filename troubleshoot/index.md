@@ -22,7 +22,7 @@ If you can't find your issue here, explore the [additional resources](#troublesh
 You might need to review troubleshooting content for more than one product or topic area. Most Elastic deployments use multiple components from the [Elastic Stack](/get-started/the-stack.md), plus a deployment orchestrator. Check all topics relevant to your infrastructure. 
 :::
 
-* [{{es}}](/troubleshoot/elasticsearch/elasticsearch.md)
+* [{{es}}](/troubleshoot/elasticsearch.md)
 * [{{kib}}](/troubleshoot/kibana.md)
 * [Elastic {{observability}}](/troubleshoot/observability.md)
 * [{{elastic-sec}}](/troubleshoot/security.md)
