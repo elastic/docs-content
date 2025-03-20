@@ -45,7 +45,7 @@ You can also search and filter the table based on affected resources, such as in
 :alt: {{es}} Health page with details and troubleshooting
 :::
 
-For each issue you can either use a troubleshooting link or get a suggestion to contact support, in case you need help. The [troubleshooting documentation](/troubleshoot/elasticsearch/elasticsearch.md) for {{es}} provides more details on specific errors.
+For more information about specific errors, refer to [](/troubleshoot/elasticsearch.md). You can also [contact us](/troubleshoot/index.md#contact-us) if you need more help.
 
 ### Health warnings [ec-es-health-warnings]
 
@@ -131,23 +131,23 @@ If you need your cluster to be able to sustain a certain level of performance, y
 
 We’ve compiled some guidelines to help you ensure the health of your deployments over time. These can help you to better understand the available performance metrics, and to make decisions involving performance and high availability.
 
-[Why is my node(s) unavailable?](/troubleshoot/monitoring/unavailable-nodes.md)
+[](/troubleshoot/monitoring/unavailable-nodes.md)
 :   Learn about common symptoms and possible actions that you can take to resolve issues when one or more nodes become unhealthy or unavailable.
 
-[Why are my shards unavailable?](/troubleshoot/monitoring/unavailable-shards.md)
+[](/troubleshoot/monitoring/unavailable-shards.md)
 :   Provide instructions on how to troubleshoot issues related to unassigned shards.
 
-[Why is performance degrading over time?](/troubleshoot/monitoring/performance.md)
+[](/troubleshoot/monitoring/performance.md)
 :   Address performance degradation on a smaller size Elasticsearch cluster.
 
-[Is my cluster really highly available?](/troubleshoot/monitoring/high-availability.md)
+[](/troubleshoot/monitoring/high-availability.md)
 :   High availability involves more than setting multiple availability zones (although that’s really important!). Learn how to assess performance and workloads to determine if your deployment has adequate resources to mitigate a potential node failure.
 
-[How does high memory pressure affect performance?](/troubleshoot/monitoring/high-memory-pressure.md)
+[](/troubleshoot/monitoring/high-memory-pressure.md)
 :   Learn about typical memory usage patterns, how to assess when the deployment memory usage levels are problematic, how this impacts performance, and how to resolve memory-related issues.
 
-[Why are my cluster response times suddenly so much worse?](/troubleshoot/monitoring/cluster-response-time.md)
+[](/troubleshoot/monitoring/cluster-response-time.md)
 :   Learn about the common causes of increased query response times and decreased performance in your deployment.
 
-[Why did my node move to a different host?](/troubleshoot/monitoring/node-moves-outages.md)
+[](/troubleshoot/monitoring/node-moves-outages.md)
 :   Learn about why we may, from time to time, relocate your {{ech}} deployments across hosts.
