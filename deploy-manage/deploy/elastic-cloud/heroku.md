@@ -34,7 +34,7 @@ For other restrictions that apply to all of {{ecloud}}, refer to [](/deploy-mana
 
 ## Get started
 
-To get started with the {{es}} Add-on for Heroku, [install the add-on](/deploy-manage/deploy/elastic-cloud/ech-getting-started-installing.md).
+To get started with the {{es}} Add-on for Heroku, [install the add-on](/deploy-manage/deploy/elastic-cloud/heroku-getting-started-installing.md).
 
 After you install, you can access your deployment: 
 
@@ -70,7 +70,7 @@ After have provisioned your first deployment, you’re ready to index data into 
 There are several ways to ingest data into the deployment:
 
 * Use the sample data available from the {{kib}} home page without loading your own data. There are multiple data sets available and you can add them with one click.
-* Ingest your own data. [Learn more]().
+* Ingest your own data. [Learn more](/manage-data/ingest.md).
 * Have existing Elasticsearch data? Consider your [migration options](../../../manage-data/migrate.md).
 
 

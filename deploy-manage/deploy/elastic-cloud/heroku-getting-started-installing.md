@@ -37,18 +37,18 @@ If you want your add-on to run a specific version of Elasticsearch, use the `--e
 
 To find which Elasticsearch versions and plugins are currently available, you can omit the version to default to the latest one and add plugins later on from the [Elasticsearch Add-On for Heroku console](https://cloud.elastic.co?page=docs&placement=docs-body). To use your own custom plugins, you can upload and select these plugins in the console as well.
 
-For example: Install the add-on version 6.8.23 and include the phonetic analysis plugin for  MY_APP:
+For example: Install the add-on version {{stack-version}} and include the phonetic analysis plugin for  MY_APP:
 
-```bash
-heroku addons:create foundelasticsearch --elasticsearch-version 6.8.23 --plugins analysis-phonetic --app MY_APP
+```bash subs=true
+heroku addons:create foundelasticsearch --elasticsearch-version {{stack-version}} --plugins analysis-phonetic --app MY_APP
 ```
 
-After the add-on gets added, you can perform future version upgrades and plugin changes through the [console](ech-getting-started-accessing.md).
+After the add-on gets added, you can perform future version upgrades and plugin changes through the [console](heroku-getting-started-accessing.md).
 
 ## Next steps
 
 - [](/deploy-manage/deploy/elastic-cloud/heroku-getting-started-accessing.md)
 - [](/deploy-manage/deploy/elastic-cloud/heroku-working-with-elasticsearch.md)
-- [](deploy-manage/deploy/elastic-cloud/heroku.md#next-steps)
+- [](/deploy-manage/deploy/elastic-cloud/heroku.md#next-steps)
 
 To learn how to remove the add-on, refer to [](/deploy-manage/deploy/elastic-cloud/heroku-getting-started-removing.md).
