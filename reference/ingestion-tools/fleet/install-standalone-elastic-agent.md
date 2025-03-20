@@ -115,7 +115,7 @@ To install and run {{agent}} standalone:
 
     :::{tab-item} macOS
     
-    TIP: You must run this command as the root user because some integrations require root privileges to collect sensitive data.
+    You must run this command as the root user because some integrations require root privileges to collect sensitive data.
 
     ```shell
     sudo ./elastic-agent install
