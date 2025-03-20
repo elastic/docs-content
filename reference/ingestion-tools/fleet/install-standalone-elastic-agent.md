@@ -144,7 +144,6 @@ To install and run {{agent}} standalone:
 
     :::{tab-item} DEB
     
-    TIP: You must run this command as the root user because some integrations require root privileges to collect sensitive data.
 
     ```shell
     sudo systemctl enable elastic-agent <1>
