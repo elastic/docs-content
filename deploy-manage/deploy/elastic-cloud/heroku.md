@@ -61,7 +61,7 @@ Find more information about {{ech}} on the following pages. This information is 
 * [](/deploy-manage/cloud-organization/service-status.md)
 * [Get help](/troubleshoot/index.md)
 
-## Next steps [ech-getting-started-next-steps]
+## Next steps [next-steps]
 
 After have provisioned your first deployment, you’re ready to index data into the deployment and explore the advanced capabilities of Elasticsearch Add-On for Heroku.
 
