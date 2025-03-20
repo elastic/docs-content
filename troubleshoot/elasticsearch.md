@@ -15,7 +15,7 @@ If you're using {{ech}}, you can use AutoOps to monitor your cluster. AutoOps si
 ## General [troubleshooting-general]
 
 * [](/troubleshoot/elasticsearch/fix-common-cluster-issues.md)
-* [Cluster health API](https://www.elastic.co/docs/api/doc/elasticsearch/v8/group/endpoint-health_report)
+* [Cluster health API](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-health_report)
 
 
 ## Data [troubleshooting-data]
