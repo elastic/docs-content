@@ -9,7 +9,7 @@ To keep your LLM-powered applications reliable, efficient, cost-effective, and e
 Elastic’s end-to-end LLM observability is delivered through the following methods: 
 
 - Metrics and logs ingestion for LLM APIs (via [Elastic integrations](https://www.elastic.co/guide/en/integrations/current/introduction.html))
-- APM tracing for OpenAI Models (via [instrumentation](https://elastic.github.io/opentelemetry/))
+- APM tracing for LLM Models (via [instrumentation](https://elastic.github.io/opentelemetry/))
 
 ## Metrics and logs ingestion for LLM APIs (via Elastic integrations)
 
@@ -31,9 +31,9 @@ Depending on the LLM provider you choose, the following table shows which source
 | [OpenTelemetry][int-wip-otel] | OTLP | 🚧 | 🚧 | This would support Elastic extensions of otel's GenAI semantic conventions |
 
 
-## APM tracing for OpenAI models (via instrumentation)
+## APM tracing for LLM models (via instrumentation)
 
-Elastic offers specialized OpenTelemetry Protocol (OTLP) tracing for applications leveraging OpenAI models hosted on OpenAI, Azure, and Amazon Bedrock, providing a detailed view of request flows. This tracing capability captures critical insights, including the specific models used, request duration, errors encountered, token consumption per request, and the interaction between prompts and responses. Ideal for troubleshooting, APM tracing allows you to find exactly where the issue is happening with precision and efficiency in your OpenAI-powered application. 
+Elastic offers specialized OpenTelemetry Protocol (OTLP) tracing for applications leveraging LLM models hosted on OpenAI, Azure, and Amazon Bedrock, providing a detailed view of request flows. This tracing capability captures critical insights, including the specific models used, request duration, errors encountered, token consumption per request, and the interaction between prompts and responses. Ideal for troubleshooting, APM tracing allows you to find exactly where the issue is happening with precision and efficiency in your LLM-powered application. 
 
 You can instrument the application with one of the following Elastic Distributions of OpenTelemetry (EDOT):
 
@@ -49,10 +49,9 @@ EDOT includes many types of instrumentation. The following table shows the statu
 | OpenAI | Python | [openai][edot-openai-py]| ✅ | ✅ | ✅ | ✅ | Tested on OpenAI, Azure and Ollama |
 | OpenAI| JS/Node | [openai][edot-openai-js] | ✅  | ✅ | ✅ | ✅ | Tested on OpenAI, Azure and Ollama|
 | OpenAI| Java| [com.openai:openai-java][edot-openai-java] | ✅ | ✅ | ✅| ✅| Tested on OpenAI, Azure and Ollama|
-| Langchain| JS/Node| [@langchain/core][wip-edot-langchain-js] | ✅ | 🚧| 🚧 | 🔒| Tested on OpenAI; Not yet finished |
 | (AWS) Boto| Python| [botocore][otel-bedrock-py]| ✅ | ✅ | ✅ | ✅ | Bedrock (not SageMaker) `InvokeModel*` and `Converse*` APIs Owner: Riccardo |
-| Cohere| Python| [cohere][wip-otel-cohere-py] | 🚧 | 🚧 | 🚧 | 🚧 | Owner: Leighton from Microsoft |
-| Google Cloud AI Platform | Python | [google-cloud-aiplatform][otel-vertexai-py] | ✅ | 🚧| 🚧| 🚧 | Vertex (not Gemini); Clashes with OpenLLMetry package |
+| Google Cloud AI Platform | Python | [google-cloud-aiplatform][otel-vertexai-py] | ✅ | 🚧| 🚧| 🚧 |  |
+| Langchain| JS/Node| [@langchain/core][wip-edot-langchain-js] | ✅ | 🚧| 🚧 | 🔒| Tested on OpenAI; Not yet finished |
 
 ## Getting started
 
