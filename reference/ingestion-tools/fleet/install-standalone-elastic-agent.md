@@ -150,7 +150,8 @@ To install and run {{agent}} standalone:
     sudo systemctl enable elastic-agent <1>
     sudo systemctl start elastic-agent
     ```
-    The DEB package includes a service unit for Linux systems with systemd. On these systems, you can manage {{agent}} by using the usual systemd commands. If you don’t have systemd, run `sudo service elastic-agent start`.
+    
+    1. The DEB package includes a service unit for Linux systems with systemd. On these systems, you can manage {{agent}} by using the usual systemd commands. If you don’t have systemd, run `sudo service elastic-agent start`.
     :::
     
     :::{tab-item} RPM
@@ -163,7 +164,7 @@ To install and run {{agent}} standalone:
     sudo systemctl start elastic-agent
     ```
 
-    The RPM package includes a service unit for Linux systems with systemd. On these systems, you can manage {{agent}} by using the usual systemd commands. If you don’t have systemd, run `sudo service elastic-agent start`.
+    1. The RPM package includes a service unit for Linux systems with systemd. On these systems, you can manage {{agent}} by using the usual systemd commands. If you don’t have systemd, run `sudo service elastic-agent start`.
     :::
 
     ::::
