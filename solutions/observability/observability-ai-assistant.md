@@ -199,7 +199,7 @@ After creating the pipeline, complete the following steps:
 
     Once the pipeline is set up, perform a **Full Content Sync** of the connector. The inference pipeline will process the data as follows:
 
-    * As data comes in, ELSER is applied to the data, and embeddings (weights and tokens into a [sparse vector field](elasticsearch://reference/query-languages/query-dsl-sparse-vector-query.md)) are added to capture semantic meaning and context of the data.
+    * As data comes in, ELSER is applied to the data, and embeddings (weights and tokens into a [sparse vector field](elasticsearch://reference/query-languages/query-dsl/query-dsl-sparse-vector-query.md)) are added to capture semantic meaning and context of the data.
     * When you look at the ingested documents, you can see the embeddings are added to the `predicted_value` field in the documents.
 
 2. Check if AI Assistant can use the index (optional).

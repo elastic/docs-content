@@ -8,7 +8,7 @@ mapped_pages:
 
 # Lucene query syntax [lucene-query]
 
-Lucene query syntax is available to {{kib}} users who opt out of the [{{kib}} Query Language](kql.md). Full documentation for this syntax is available as part of {{es}} [query string syntax](elasticsearch://reference/query-languages/query-dsl-query-string-query.md#query-string-syntax).
+Lucene query syntax is available to {{kib}} users who opt out of the [{{kib}} Query Language](kql.md). Full documentation for this syntax is available as part of {{es}} [query string syntax](elasticsearch://reference/query-languages/query-dsl/query-dsl-query-string-query.md#query-string-syntax).
 
 The main reason to use the Lucene query syntax in {{kib}} is for advanced Lucene features, such as regular expressions or fuzzy term matching. However, Lucene syntax is not able to search nested objects or scripted fields.
 

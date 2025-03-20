@@ -97,17 +97,17 @@ To populate **Hosts** data, enable these modules:
 * [Auditbeat file integrity module - Linux, macOS, Windows](beats://reference/auditbeat/auditbeat-module-file_integrity.md)
 * [Filebeat system module - Linux system logs](beats://reference/filebeat/filebeat-module-system.md)
 * [Filebeat Santa module  - macOS security events](beats://reference/filebeat/filebeat-module-santa.md)
-* [Winlogbeat - Windows event logs](beats://reference/winlogbeat/_winlogbeat_overview.md)
+* [Winlogbeat - Windows event logs](beats://reference/winlogbeat/index.md)
 
 To populate **Network** data, enable Packetbeat protocols and Filebeat modules:
 
-* [{{packetbeat}}](beats://reference/packetbeat/packetbeat-overview.md)
+* [{{packetbeat}}](beats://reference/packetbeat/index.md)
 
     * [DNS](beats://reference/packetbeat/packetbeat-dns-options.md)
     * [TLS](beats://reference/packetbeat/configuration-tls.md)
     * [Other supported protocols](beats://reference/packetbeat/configuration-protocols.md)
 
-* [{{filebeat}}](beats://reference/filebeat/filebeat-overview.md)
+* [{{filebeat}}](beats://reference/filebeat/index.md)
 
     * [Zeek NMS module](beats://reference/filebeat/filebeat-module-zeek.md)
     * [Suricata IDS module](beats://reference/filebeat/filebeat-module-suricata.md)
