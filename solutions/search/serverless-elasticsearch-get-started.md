@@ -85,7 +85,7 @@ You won’t be able to view this API key again. If needed you'll need to generat
 
 The UI provides ready-to-use code examples for ingesting data via the REST API. Choose your preferred tool for making these requests:
 
-* [Console](https://www.elastic.co/guide/en/serverless/current/devtools-run-api-requests-in-the-console.html) in your project’s UI
+* [Console](/explore-analyze/query-filter/tools/console.md) in your project’s UI
 * Python
 * JavaScript
 * cURL

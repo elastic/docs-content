@@ -6,6 +6,7 @@ navigation_title: Console
 mapped_urls:
   - https://www.elastic.co/guide/en/kibana/current/console-kibana.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-api-console.html
+  - https://www.elastic.co/guide/en/serverless/current/devtools-run-api-requests-in-the-console.html
 ---
 
 # Run API requests with Console [console-kibana]
