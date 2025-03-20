@@ -44,7 +44,7 @@ To install and run {{agent}} standalone:
     :::{tab-item} Windows
     ```shell subs=true
     # PowerShell 5.0+
-    wget https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-{version}-windows-x86_64.zip -OutFile elastic-agent-{{stack-version}}-windows-x86_64.zip
+    wget https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-{{stack-version}}-windows-x86_64.zip -OutFile elastic-agent-{{stack-version}}-windows-x86_64.zip
     Expand-Archive .\elastic-agent-{{stack-version}}-windows-x86_64.zip
     ```
     Or manually:
