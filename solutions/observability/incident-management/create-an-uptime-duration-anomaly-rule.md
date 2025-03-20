@@ -25,7 +25,7 @@ The *anomaly score* is a value from `0` to `100`, which indicates the significan
 | **major** | Score `50` and above. |
 | **critical** | Score `75` and above. |
 
-:::{image} ../../../images/observability-response-durations-alert.png
+:::{image} /solutions/images/observability-response-durations-alert.png
 :alt: Uptime response duration rule
 :screenshot:
 :::
@@ -64,14 +64,14 @@ Some connector types are paid commercial features, while others are free. For a 
 
 After you select a connector, you must set the action frequency. You can choose to create a summary of alerts on each check interval or on a custom interval. For example, send email notifications that summarize the new, ongoing, and recovered alerts every twelve hours:
 
-:::{image} ../../../images/observability-duration-anomaly-alert-summary.png
+:::{image} /solutions/images/observability-duration-anomaly-alert-summary.png
 :alt: Action types
 :screenshot:
 :::
 
 Alternatively, you can set the action frequency such that you choose how often the action runs (for example, at each check interval, only when the alert status changes, or at a custom action interval). In this case, you must also select the specific threshold condition that affects when actions run: `Uptime Duration Anomaly` or `Recovered`.
 
-:::{image} ../../../images/observability-duration-anomaly-run-when-selection.png
+:::{image} /solutions/images/observability-duration-anomaly-run-when-selection.png
 :alt: Configure when a rule is triggered
 :screenshot:
 :::
@@ -81,7 +81,7 @@ Alternatively, you can set the action frequency such that you choose how often t
 
 Use the default notification message or customize it. You can add more context to the message by clicking the icon above the message text box and selecting from a list of available variables.
 
-:::{image} ../../../images/observability-duration-anomaly-alert-default-message.png
+:::{image} /solutions/images/observability-duration-anomaly-alert-default-message.png
 :alt: Default notification message for Uptime duration anomaly rules with open "Add variable" popup listing available action variables
 :screenshot:
 :::
@@ -91,7 +91,7 @@ Use the default notification message or customize it. You can add more context t
 
 To receive a notification when the alert recovers, select **Run when Recovered**. Use the default notification message or customize it. You can add more context to the message by clicking the icon above the message text box and selecting from a list of available variables.
 
-:::{image} ../../../images/observability-duration-anomaly-alert-recovery.png
+:::{image} /solutions/images/observability-duration-anomaly-alert-recovery.png
 :alt: Default recovery message for Uptime duration anomaly rules with open "Add variable" popup listing available action variables
 :screenshot:
 :::

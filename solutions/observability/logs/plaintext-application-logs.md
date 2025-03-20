@@ -98,7 +98,7 @@ output.elasticsearch:
   api_key: "id:api_key"
 ```
 
-1. Set the `hosts` to your deployment’s {{es}} endpoint. Copy the {{es}} endpoint from **Help menu (![help icon](../../../images/observability-help-icon.png "")) → Connection details**. For example, `https://my-deployment.es.us-central1.gcp.cloud.es.io:443`.
+1. Set the `hosts` to your deployment’s {{es}} endpoint. Copy the {{es}} endpoint from **Help menu (![help icon](/solutions/images/observability-help-icon.png "")) → Connection details**. For example, `https://my-deployment.es.us-central1.gcp.cloud.es.io:443`.
 2. From **Developer tools**, run the following command to create an API key that grants `manage` permissions for the `cluster` and the `filebeat-*` indices using:
 
     ```console

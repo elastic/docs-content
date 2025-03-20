@@ -80,7 +80,7 @@ For most users, the simplest option is to use a Google Cloud Shell script to aut
 4. Copy the command that appears, then click **Launch Google Cloud Shell**. It opens in a new window.
 5. Check the box to trust Elastic’s `cloudbeat` repo, then click **Confirm**
 
-:::{image} ../../../images/security-cspm-cloudshell-trust.png
+:::{image} /solutions/images/security-cspm-cloudshell-trust.png
 :alt: The cloud shell confirmation popup
 :::
 

@@ -24,7 +24,7 @@ In this guide, you’ll learn how to:
 
 Attack discovery can detect a wide range of threats by finding relationships among alerts that may indicate a coordinated attack. This enables you to comprehend how threats move through and affect your systems. Attack discovery generates a detailed summary of each potential threat, which can serve as the basis for further analysis. Learn how to [get started with Attack discovery](/solutions/security/ai/attack-discovery.md).
 
-:::{image} ../../../images/security-attck-disc-11-alerts-disc.png
+:::{image} /solutions/images/security-attck-disc-11-alerts-disc.png
 :alt: An Attack discovery card showing an attack with 11 related alerts
 :::
 
@@ -37,13 +37,13 @@ After Attack discovery outlines your threat landscape, use Elastic AI Assistant 
 
 From a discovery on the Attack discovery page, click **View in AI Assistant** to start a chat that includes the discovery as context.
 
-:::{image} ../../../images/security-attck-disc-remediate-threat.gif
+:::{image} /solutions/images/security-attck-disc-remediate-threat.gif
 :alt: A dialogue with AI Assistant that has the attack discovery as context
 :::
 
 AI Assistant can quickly compile essential data and provide suggestions to help you generate an incident report and plan an effective response. You can ask it to provide relevant data or answer questions, such as “How can I remediate this threat?” or “What {{esql}} query would isolate actions taken by this user?”
 
-:::{image} ../../../images/security-attck-disc-esql-query-gen-example.png
+:::{image} /solutions/images/security-attck-disc-esql-query-gen-example.png
 :alt: An AI Assistant dialogue in which the user asks for a purpose-built {{esql}} query
 :::
 
@@ -54,14 +54,14 @@ At any point in a conversation with AI Assistant, you can add data, narrative su
 
 ## Generate reports [use-case-incident-reporting-create-a-case-using-ai-assistant]
 
-From the AI Assistant dialog window, click **Add to case** (![Add to case icon](../../../images/security-icon-add-to-case.png "title =20x20")) next to a message to add the information in that message to a [case](/solutions/security/investigate/cases.md). Cases help centralize relevant details in one place for easy sharing with stakeholders.
+From the AI Assistant dialog window, click **Add to case** (![Add to case icon](/solutions/images/security-icon-add-to-case.png "title =20x20")) next to a message to add the information in that message to a [case](/solutions/security/investigate/cases.md). Cases help centralize relevant details in one place for easy sharing with stakeholders.
 
 If you add a message that contains a discovery to a case, AI Assistant automatically adds the attack summary and all associated alerts to the case. You can also add AI Assistant messages that contain remediation steps and relevant data to the case.
 
 
 ## Translate incident information to a different human language using AI Assistant [use-case-incident-reporting-translate]
 
-:::{image} ../../../images/security-attck-disc-translate-japanese.png
+:::{image} /solutions/images/security-attck-disc-translate-japanese.png
 :alt: An AI Assistant dialogue in which the assistant translates from English to Japanese
 :::
 

@@ -43,7 +43,7 @@ The {{stack}} provides the following components for monitoring Kubernetes:
 4. {{es}} for storing and searching your data.
 5. {{observability}} apps in {{kib}} for visualizing and managing your observability data.
 
-:::{image} ../../../images/observability-k8s-monitoring-architecture.png
+:::{image} /solutions/images/observability-k8s-monitoring-architecture.png
 :alt: Kubernetes monitoring architecture
 :::
 
@@ -56,7 +56,7 @@ The default installation of {{agent}} is deployed to Kubernetes as a DaemonSet t
 
 The default deployments include processors, when needed, for enriching events with cloud and host metadata.
 
-:::{image} ../../../images/observability-metadata-processors.png
+:::{image} /solutions/images/observability-metadata-processors.png
 :alt: Metadata processors for cloud
 :::
 
@@ -457,7 +457,7 @@ After configuring your integration, you need to download and update your manifes
 2. Click **Add {{agent}} to your hosts**.
 3. Under **Enroll in Fleet?**, select **Run standalone**.
 
-    :::{image} ../../../images/observability-run-standalone-option.png
+    :::{image} /solutions/images/observability-run-standalone-option.png
     :alt: Select run standalone under Enroll in Fleet
     :screenshot:
     :::
@@ -500,7 +500,7 @@ To view the performance and health metrics collected by {{agent}}, find **Infras
 
 On the **Infrastructure inventory** page, you can switch between different views to see an overview of the containers and pods running on Kubernetes:
 
-:::{image} ../../../images/observability-metrics-inventory.png
+:::{image} /solutions/images/observability-metrics-inventory.png
 :alt: Inventory page that shows Kubernetes pods
 :screenshot:
 :::
@@ -509,7 +509,7 @@ For more on using the Inventory page, refer to [View infrastructure metrics by r
 
 On the **Metrics Explorer** page, you can group and analyze metrics for the resources that you are monitoring.
 
-:::{image} ../../../images/observability-monitor-k8s-metrics-explorer.png
+:::{image} /solutions/images/observability-monitor-k8s-metrics-explorer.png
 :alt: Metrics dashboard that shows CPU usage for Kubernetes pods
 :screenshot:
 :::
@@ -523,14 +523,14 @@ Find `Logs Explorer` in the [global search field](/explore-analyze/find-and-orga
 
 With **Logs Explorer**, you can quickly search and filter your log data, get information about the structure of log fields, and display your findings in a visualization.
 
-:::{image} ../../../images/observability-log-explorer.png
+:::{image} /solutions/images/observability-log-explorer.png
 :alt: screenshot of the logs explorer main page
 :screenshot:
 :::
 
 From **Logs Explorer**, you can select the Kubernetes integration from the data selector to view your Kubernetes data.
 
-![screenshot of the logs explorer main page](../../../images/observability-logs-explorer-applications.png "")
+![screenshot of the logs explorer main page](/solutions/images/observability-logs-explorer-applications.png "")
 
 From here, you can filter your log data and dive deeper into individual logs to find and troubleshoot issues. For more information, refer to:
 
@@ -1167,7 +1167,7 @@ Application trace data is available in the **Service Inventory**. To open **Serv
 
 The **Applications** app allows you to monitor your software services and applications in real-time: visualize detailed performance information on your services, identify and analyze errors, and monitor host-level and agent-specific metrics like JVM and Go runtime metrics.
 
-:::{image} ../../../images/observability-apm-app-landing.png
+:::{image} /solutions/images/observability-apm-app-landing.png
 :alt: Applications UI Kubernetes
 :screenshot:
 :::
@@ -1176,7 +1176,7 @@ Having access to application-level insights with just a few clicks can drastical
 
 Best of all, because Kubernetes environment variables have been mapped to APM metadata events, you can filter your trace data by Kubernetes `namespace`, `node.name`, `pod.name`, and `pod.uid`.
 
-:::{image} ../../../images/observability-apm-app-kubernetes-filter.png
+:::{image} /solutions/images/observability-apm-app-kubernetes-filter.png
 :alt: Applications UI Kubernetes
 :screenshot:
 :::
