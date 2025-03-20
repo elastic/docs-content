@@ -19,7 +19,7 @@ Log rate analysis uses advanced statistical methods to identify reasons for incr
 
 You can find log rate analysis embedded in multiple applications. In {{kib}}, you can find it under **{{ml-app}}** > **AIOps Labs** or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Here, you can select the {{data-source}} or saved Discover session that you want to analyze.
 
-:::{image} ../../../images/kibana-ml-log-rate-analysis-before.png
+:::{image} /explore-analyze/images/kibana-ml-log-rate-analysis-before.png
 :alt: Log event histogram chart
 :screenshot:
 :::
@@ -28,7 +28,7 @@ Select a spike or drop in the log event histogram chart to start the analysis. I
 
 Brushes in the chart show the baseline time range and the deviation in the analyzed data. You can move the brushes to redefine both the baseline and the deviation and rerun the analysis with the modified values.
 
-:::{image} ../../../images/kibana-ml-log-rate-analysis.png
+:::{image} /explore-analyze/images/kibana-ml-log-rate-analysis.png
 :alt: Log rate spike explained
 :screenshot:
 :::
@@ -39,7 +39,7 @@ Log pattern analysis helps you to find patterns in unstructured log messages and
 
 You can find log pattern analysis under **{{ml-app}}** > **AIOps Labs** or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Here, you can select the {{data-source}} or saved Discover session that you want to analyze, or in **Discover** as an available action for any text field.
 
-:::{image} ../../../images/kibana-ml-log-pattern-analysis.png
+:::{image} /explore-analyze/images/kibana-ml-log-pattern-analysis.png
 :alt: Log pattern analysis UI
 :screenshot:
 :::
@@ -56,7 +56,7 @@ Change point detection uses the [change point aggregation](elasticsearch://refer
 
 You can find change point detection under **{{ml-app}}** > **AIOps Labs** or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Here, you can select the {{data-source}} or saved Discover session that you want to analyze.
 
-:::{image} ../../../images/kibana-ml-change-point-detection.png
+:::{image} /explore-analyze/images/kibana-ml-change-point-detection.png
 :alt: Change point detection UI
 :screenshot:
 :::
@@ -65,7 +65,7 @@ Select a function and a metric field, then pick a date range to start detecting 
 
 When a change point is detected, a row displays basic information including the timestamp of the change point, a preview chart, the type of change point, its p-value, the name and value of the split field. You can further examine the selected change point in a detailed view. A chart visualizes the identified change point within the analyzed time window, making the interpretation easier. If the analysis is split by a field, a separate chart is shown for every partition that has a detected change point. The chart displays the type of change point, its value, and the timestamp of the bucket where the change point has been detected. The corresponding `p-value` indicates the magnitude of the change; lower values indicate more significant changes. You can use the change point type selector to filter the results by specific types of change points.
 
-:::{image} ../../../images/kibana-ml-change-point-detection-selected.png
+:::{image} /explore-analyze/images/kibana-ml-change-point-detection-selected.png
 :alt: Selected change points
 :screenshot:
 :::

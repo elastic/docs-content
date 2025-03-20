@@ -24,7 +24,7 @@ Use **Vega** or **Vega-Lite** when you want to create visualizations with:
 
 These grammars have some limitations: they do not support tables, and can’t run queries conditionally.
 
-:::{image} ../../images/kibana-vega.png
+:::{image} /explore-analyze/images/kibana-vega.png
 :alt: Vega UI
 :screenshot:
 :::
@@ -222,14 +222,14 @@ To generate the data, **Vega-Lite** uses the `source_0` and `data_0`. `source_0`
 2. From the **View** dropdown, select **Vega debug**.
 3. From the dropdown, select **source_0**.
 
-   :::{image} ../../images/kibana-vega_lite_tutorial_4.png
+   :::{image} /explore-analyze/images/kibana-vega_lite_tutorial_4.png
    :alt: Table for data_0 with columns key
    :screenshot:
    :::
 
 4. To compare to the visually encoded data, select **data_0** from the dropdown.
 
-   :::{image} ../../images/kibana-vega_lite_tutorial_5.png
+   :::{image} /explore-analyze/images/kibana-vega_lite_tutorial_5.png
    :alt: Table for data_0 where the key is NaN instead of a string
    :screenshot:
    :::
@@ -260,7 +260,7 @@ In the **Vega-Lite** spec, add the `encoding` block:
 1. Click **Inspect**, then select **Vega Debug** from the **View** dropdown.
 2. From the dropdown, select **data_0**.
 
-   :::{image} ../../images/kibana-vega_lite_tutorial_6.png
+   :::{image} /explore-analyze/images/kibana-vega_lite_tutorial_6.png
    :alt: Table for data_0 showing that the column time_buckets.buckets.key is undefined
    :screenshot:
    :::
@@ -286,7 +286,7 @@ In the **Vega-Lite** spec, add a `transform` block, then click **Update**:
 1. Click **Inspect**, then select **Vega Debug** from the **View** dropdown.
 2. From the dropdown, select **data_0**.
 
-   :::{image} ../../images/kibana-vega_lite_tutorial_7.png
+   :::{image} /explore-analyze/images/kibana-vega_lite_tutorial_7.png
    :alt: Table showing data_0 with multiple pages of results
    :screenshot:
    :::
@@ -410,7 +410,7 @@ Add a `selection` block inside `mark: point`:
 
 Move your cursor around the stacked area chart. The points are able to indicate the nearest point.
 
-:::{image} ../../images/kibana-vega_lite_tutorial_2.png
+:::{image} /explore-analyze/images/kibana-vega_lite_tutorial_2.png
 :alt: Vega-Lite tutorial selection enabled
 :screenshot:
 :::
@@ -662,7 +662,7 @@ Add the `key` and `doc_count` fields as the X- and Y-axis values, then click **U
   ]
 ```
 
-:::{image} ../../images/kibana-vega_tutorial_3.png
+:::{image} /explore-analyze/images/kibana-vega_tutorial_3.png
 :alt: vega tutorial 3
 :screenshot:
 :::
@@ -752,7 +752,7 @@ To make the area chart interactive, locate the `marks` block, then update the `p
 
 To allow users to filter based on a time range, add a drag interaction, which requires additional signals and a rectangle overlay.
 
-:::{image} ../../images/kibana-vega_tutorial_4.png
+:::{image} /explore-analyze/images/kibana-vega_tutorial_4.png
 :alt: vega tutorial 4
 :screenshot:
 :::
@@ -1453,7 +1453,7 @@ Use the contextual **Inspect** tool to gain insights into different elements.
 
 **Vega** uses the [{{es}} search API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search) to get documents and aggregation results from {{es}}. To troubleshoot these requests, click **Inspect**, which shows the most recent requests. In case your specification has more than one request, you can switch between the views using the **View** dropdown.
 
-:::{image} ../../images/kibana-vega_tutorial_inspect_requests.png
+:::{image} /explore-analyze/images/kibana-vega_tutorial_inspect_requests.png
 :alt: vega tutorial inspect requests
 :screenshot:
 :::
@@ -1465,7 +1465,7 @@ With the **Vega debug** view, you can inspect the **Data sets** and **Signal Val
 
 The runtime data is read from the [runtime scope](https://vega.github.io/vega/docs/api/debugging/#scope).
 
-:::{image} ../../images/kibana-vega_tutorial_inspect_data_sets.png
+:::{image} /explore-analyze/images/kibana-vega_tutorial_inspect_data_sets.png
 :alt: vega tutorial inspect data sets
 :screenshot:
 :::
@@ -1477,7 +1477,7 @@ To debug more complex specs, access to the `view` variable.  For more informatio
 
 Because of the dynamic nature of the data in {{es}}, it is hard to help you with **Vega** specs unless you can share a dataset. To do this, click **Inspect**, select the **Vega debug** view, then select **Spec**.
 
-:::{image} ../../images/kibana-vega_tutorial_getting_help.png
+:::{image} /explore-analyze/images/kibana-vega_tutorial_getting_help.png
 :alt: vega tutorial getting help
 :screenshot:
 :::

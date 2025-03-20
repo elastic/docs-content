@@ -33,7 +33,7 @@ Select the data you want to explore, and then specify the time range in which to
    You can also [try {{esql}}](try-esql.md), that let's you query any data you have in {{es}} without specifying a {{data-source}} first.
    ::::
    If you’re using sample data, data views are automatically created and are ready to use.
-   :::{image} ../../images/kibana-discover-data-view.png
+   :::{image} /explore-analyze/images/kibana-discover-data-view.png
    :alt: How to set the {{data-source}} in Discover
    :screenshot:
    :width: 300px
@@ -58,7 +58,7 @@ You can later filter the data that shows in the chart and in the table by specif
 
 1. In the sidebar, check the available fields. It’s very common to have hundreds of fields. Use the search at the top of that sidebar to look for specific terms in the field names.
    In this example, we’ve entered `ma` in the search field to find the `manufacturer` field.
-   ![Fields list that displays the top five search results](../../images/kibana-discover-sidebar-available-fields.png "title =40%")
+   ![Fields list that displays the top five search results](/explore-analyze/images/kibana-discover-sidebar-available-fields.png "title =40%")
    ::::{tip}
    You can combine multiple keywords or characters. For example, `geo dest` finds `geo.dest` and `geo.src.dest`.
    ::::
@@ -67,9 +67,9 @@ You can later filter the data that shows in the chart and in the table by specif
   **Discover** shows the top 10 values and the number of records used to calculate those values.
 
 3. Select the **Plus** icon to add fields to the results table. You can also drag them from the list into the table.
-   ![How to add a field as a column in the table](../../images/kibana-discover-add-field.png "title =50%")
+   ![How to add a field as a column in the table](/explore-analyze/images/kibana-discover-add-field.png "title =50%")
    When you add fields to the table, the **Summary** column is replaced.
-   ![Document table with fields for manufacturer](../../images/kibana-document-table.png "")
+   ![Document table with fields for manufacturer](/explore-analyze/images/kibana-document-table.png "")
 
 4. Arrange the view to your liking to display the fields and data you care most about using the various display options of **Discover**. For example, you can change the order and size of columns, expand the table to be in full screen or collapse the chart and the list of fields. Check [Customize the Discover view](document-explorer.md).
 5. **Save** your changes to be able to open the same view later on and explore your data further.
@@ -125,19 +125,19 @@ In the following example, we’re adding 2 fields: A simple "Hello world" field,
 If a field can be [aggregated](../query-filter/aggregations.md), you can quickly visualize it in detail by opening it in **Lens** from **Discover**. **Lens** is the default visualization editor in {{kib}}.
 
 1. In the list of fields, find an aggregatable field. For example, with the sample data, you can look for `day_of_week`.
-   ![Top values for the day_of_week field](../../images/kibana-discover-day-of-week.png "title =60%")
+   ![Top values for the day_of_week field](/explore-analyze/images/kibana-discover-day-of-week.png "title =60%")
 
 2. In the popup, click **Visualize**.
    {{kib}} creates a **Lens** visualization best suited for this field.
 
 3. In **Lens**, from the **Available fields** list, drag and drop more fields to refine the visualization. In this example, we’re adding the `manufacturer.keyword` field onto the workspace, which automatically adds a breakdown of the top values to the visualization.
-   ![Visualization that opens from Discover based on your data](../../images/kibana-discover-from-visualize.png "")
+   ![Visualization that opens from Discover based on your data](/explore-analyze/images/kibana-discover-from-visualize.png "")
 
 4. Save the visualization if you’d like to add it to a dashboard or keep it in the Visualize library for later use.
 
-For geo point fields (![Geo point field icon](../../images/kibana-geoip-icon.png "")), if you click **Visualize**, your data appears in a map.
+For geo point fields (![Geo point field icon](/explore-analyze/images/kibana-geoip-icon.png "")), if you click **Visualize**, your data appears in a map.
 
-![Map containing documents](../../images/kibana-discover-maps.png "")
+![Map containing documents](/explore-analyze/images/kibana-discover-maps.png "")
 
 
 ### Find and highlight values in the table [in-table-search]
@@ -165,7 +165,7 @@ You can use **Discover** to compare and diff the field values of multiple result
    ::::
 
 
-   ![Comparison view in Discover](../../images/kibana-discover-compare-rows.png "")
+   ![Comparison view in Discover](/explore-analyze/images/kibana-discover-compare-rows.png "")
 
 4. Optionally, customize the **Comparison settings** to your liking. You can for example choose to not highlight the differences, to show them more granularly at the line, word, or character level, or even to hide fields where the value matches for all results.
 5. Exit the comparison view at any time using the **Exit comparison mode** button.
@@ -190,9 +190,9 @@ You can copy the content of a single cell to your clipboard from the quick actio
 $$$document-explorer-expand-documents$$$
 Dive into an individual document to view its fields and the documents that occurred before and after it.
 
-1. In the document table, click the expand icon ![double arrow icon to open a flyout with the document details](../../images/kibana-expand-icon-2.png "") to show document details.
+1. In the document table, click the expand icon ![double arrow icon to open a flyout with the document details](/explore-analyze/images/kibana-expand-icon-2.png "") to show document details.
 
-    ![Table view with document expanded](../../images/kibana-document-table-expanded.png "")
+    ![Table view with document expanded](/explore-analyze/images/kibana-document-table-expanded.png "")
 
 2. Scan through the fields and their values. You can filter the table in several ways:
 
@@ -215,7 +215,7 @@ Dive into an individual document to view its fields and the documents that occur
 
 One of the unique capabilities of **Discover** is the ability to combine free text search with filtering based on structured data. To search all fields, enter a simple string in the query bar.
 
-![Search field in Discover](../../images/kibana-discover-search-field.png "")
+![Search field in Discover](/explore-analyze/images/kibana-discover-search-field.png "")
 
 To search particular fields and build more complex queries, use the [Kibana Query language](../query-filter/languages/kql.md). As you type, KQL prompts you with the fields you can search and the operators you can use to build a structured query.
 
@@ -235,10 +235,10 @@ With the query input, you can filter data using the KQL or Lucene languages. You
 
 For example, exclude results from the ecommerce sample data view where day of week is not Wednesday:
 
-1. Click ![Add icon](../../images/kibana-add-icon.png "") next to the query bar.
+1. Click ![Add icon](/explore-analyze/images/kibana-add-icon.png "") next to the query bar.
 2. In the **Add filter** pop-up, set the field to **day_of_week**, the operator to **is not**, and the value to **Wednesday**.
 
-    ![Add filter dialog in Discover](../../images/kibana-discover-add-filter.png "")
+    ![Add filter dialog in Discover](/explore-analyze/images/kibana-discover-add-filter.png "")
 
 3. Click **Add filter**.
 4. Continue your exploration by adding more filters.

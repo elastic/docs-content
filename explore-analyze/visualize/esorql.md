@@ -13,9 +13,9 @@ You can add ES|QL visualizations to a dashboard directly from queries in Discove
 
 ## Edit and add from Discover [_edit_and_add_from_discover]
 
-In Discover, [typing ES|QL queries](../query-filter/languages/esql-kibana.md) automatically shows a visualization. The visualization type depends on the content of the query: histogram, bar charts, etc. You can manually make changes to that visualization and edit its type and display options using the pencil button ![pencil button](../../images/kibana-esql-icon-edit-visualization.svg "").
+In Discover, [typing ES|QL queries](../query-filter/languages/esql-kibana.md) automatically shows a visualization. The visualization type depends on the content of the query: histogram, bar charts, etc. You can manually make changes to that visualization and edit its type and display options using the pencil button ![pencil button](/explore-analyze/images/kibana-esql-icon-edit-visualization.svg "").
 
-You can then **Save** and add it to an existing or a new dashboard using the save button of the visualization ![save button](../../images/kibana-esql-icon-save-visualization.svg "").
+You can then **Save** and add it to an existing or a new dashboard using the save button of the visualization ![save button](/explore-analyze/images/kibana-esql-icon-save-visualization.svg "").
 
 
 ## Create from dashboard [_create_from_dashboard]

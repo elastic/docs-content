@@ -12,7 +12,7 @@ To change case closure options and add custom fields, templates, and connectors 
 
 To perform these tasks, you must have [full access](setup-cases.md) to the appropriate case and connector features in {{kib}}.
 
-:::{image} ../../../images/kibana-cases-settings.png
+:::{image} /explore-analyze/images/kibana-cases-settings.png
 :alt: View case settings
 :screenshot:
 :::
@@ -56,7 +56,7 @@ You can add optional and required fields for customized case collaboration. [8.1
 To create a custom field:
 
 1. In the **Custom fields** section, click **Add field**.
-   :::{image} ../../../images/kibana-cases-custom-fields-add.png
+   :::{image} /explore-analyze/images/kibana-cases-custom-fields-add.png
    :alt: Add a custom field in case settings
    :screenshot:
    :::
@@ -78,7 +78,7 @@ You can make the case creation process faster and more consistent by adding temp
 To create a template:
 
 1. In the **Templates** section, click **Add template**.
-   :::{image} ../../../images/kibana-cases-templates-add.png
+   :::{image} /explore-analyze/images/kibana-cases-templates-add.png
    :alt: Add a template in case settings
    :screenshot:
    :::

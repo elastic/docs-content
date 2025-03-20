@@ -53,7 +53,7 @@ Go to the **{{ml-app}} > Trained Models** page and synchronize your trained mode
 
 Deployed models can be evaluated in {{kib}} under **{{ml-app}}** > **Trained Models** by selecting the **Test model** action for the respective model.
 
-:::{image} ../../../images/machine-learning-ml-nlp-ner-test.png
+:::{image} /explore-analyze/images/machine-learning-ml-nlp-ner-test.png
 :alt: Test trained model UI
 :screenshot:
 :::
@@ -248,7 +248,7 @@ Optionally, adjust the time selector to cover the data points in the {{data-sour
 
 Update and save the visualization.
 
-:::{image} ../../../images/machine-learning-ml-nlp-tag-cloud.png
+:::{image} /explore-analyze/images/machine-learning-ml-nlp-tag-cloud.png
 :alt: Tag cloud created from Les Misérables
 :screenshot:
 :::

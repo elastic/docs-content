@@ -50,7 +50,7 @@ Click the **ES|QL help** button to open the in-product reference documentation f
 
 To make it easier to write queries, auto-complete offers suggestions with possible commands and functions:
 
-:::{image} ../../../images/elasticsearch-reference-esql-kibana-auto-complete.png
+:::{image} /explore-analyze/images/elasticsearch-reference-esql-kibana-auto-complete.png
 :alt: esql kibana auto complete
 :::
 
@@ -76,7 +76,7 @@ FROM kibana_sample_data_logs
 
 You can do that using the **Add line breaks on pipes** button from the query editor’s footer.
 
-:::{image} ../../../images/esql-line-breakdown.gif
+:::{image} /explore-analyze/images/esql-line-breakdown.gif
 :alt: Automatic line breaks for ES|QL queries
 :::
 
@@ -94,7 +94,7 @@ You can reuse your recent {{esql}} queries in the query bar. In the query bar, c
 
 You can then scroll through your recent queries:
 
-:::{image} ../../../images/elasticsearch-reference-esql-discover-query-history.png
+:::{image} /explore-analyze/images/elasticsearch-reference-esql-discover-query-history.png
 :alt: esql discover query history
 :::
 
@@ -102,7 +102,7 @@ You can then scroll through your recent queries:
 
 {{esql}} features in-app help and suggestions, so you can get started faster and don’t have to leave the application to check syntax.
 
-![The ES|QL syntax reference and the autocomplete menu](../../../images/kibana-esql-in-app-help.png "")
+![The ES|QL syntax reference and the autocomplete menu](/explore-analyze/images/kibana-esql-in-app-help.png "")
 
 
 ### Starred queries [esql-kibana-starred-queries]
@@ -115,7 +115,7 @@ From the **Recent** tab, you can star any queries you want.
 
 In the **Starred** tab, find all the queries you have previously starred.
 
-:::{image} ../../../images/elasticsearch-reference-esql-discover-query-starred.png
+:::{image} /explore-analyze/images/elasticsearch-reference-esql-discover-query-starred.png
 :alt: esql discover query starred
 :::
 
@@ -214,19 +214,19 @@ FROM kibana_sample_data_logs
 
 The resulting visualization is a bar chart showing the top 3 countries:
 
-:::{image} ../../../images/elasticsearch-reference-esql-kibana-bar-chart.png
+:::{image} /explore-analyze/images/elasticsearch-reference-esql-kibana-bar-chart.png
 :alt: esql kibana bar chart
 :::
 
-To make changes to the visualization, like changing the visualization type, axes and colors, click the pencil button (![esql icon edit visualization](../../../images/elasticsearch-reference-esql-icon-edit-visualization.svg "")). This opens an in-line editor:
+To make changes to the visualization, like changing the visualization type, axes and colors, click the pencil button (![esql icon edit visualization](/explore-analyze/images/elasticsearch-reference-esql-icon-edit-visualization.svg "")). This opens an in-line editor:
 
-:::{image} ../../../images/elasticsearch-reference-esql-kibana-in-line-editor.png
+:::{image} /explore-analyze/images/elasticsearch-reference-esql-kibana-in-line-editor.png
 :alt: esql kibana in line editor
 :::
 
-You can save the visualization to a new or existing dashboard by clicking the save button (![esql icon save visualization](../../../images/elasticsearch-reference-esql-icon-save-visualization.svg "")). Once saved to a dashboard, you’ll be taken to the Dashboards page. You can continue to make changes to the visualization. Click the options button in the top-right (![esql icon options](../../../images/elasticsearch-reference-esql-icon-options.svg "")) and select **Edit ES|QL visualization** to open the in-line editor:
+You can save the visualization to a new or existing dashboard by clicking the save button (![esql icon save visualization](/explore-analyze/images/elasticsearch-reference-esql-icon-save-visualization.svg "")). Once saved to a dashboard, you’ll be taken to the Dashboards page. You can continue to make changes to the visualization. Click the options button in the top-right (![esql icon options](/explore-analyze/images/elasticsearch-reference-esql-icon-options.svg "")) and select **Edit ES|QL visualization** to open the in-line editor:
 
-:::{image} ../../../images/elasticsearch-reference-esql-kibana-edit-on-dashboard.png
+:::{image} /explore-analyze/images/elasticsearch-reference-esql-kibana-edit-on-dashboard.png
 :alt: esql kibana edit on dashboard
 :::
 
@@ -235,19 +235,19 @@ You can save the visualization to a new or existing dashboard by clicking the sa
 
 You can use {{esql}} queries to create panels on your dashboards. To add a panel to a dashboard, under **Dashboards**, click the **Add panel** button and select {{esql}}.
 
-:::{image} ../../../images/elasticsearch-reference-esql-dashboard-panel.png
+:::{image} /explore-analyze/images/elasticsearch-reference-esql-dashboard-panel.png
 :alt: esql dashboard panel
 :::
 
-Check the {{esql}} query by clicking the Panel filters button (![Panel filters button on panel header](../../../images/elasticsearch-reference-dashboard_panel_filter_button.png "")):
+Check the {{esql}} query by clicking the Panel filters button (![Panel filters button on panel header](/explore-analyze/images/elasticsearch-reference-dashboard_panel_filter_button.png "")):
 
-:::{image} ../../../images/elasticsearch-reference-esql-dashboard-panel-query.png
+:::{image} /explore-analyze/images/elasticsearch-reference-esql-dashboard-panel-query.png
 :alt: esql dashboard panel query
 :::
 
-You can also edit the {{esql}} visualization from here. Click the options button in the top-right (![esql icon options](../../../images/elasticsearch-reference-esql-icon-options.svg "")) and select **Edit ESQL visualization** to open the in-line editor.
+You can also edit the {{esql}} visualization from here. Click the options button in the top-right (![esql icon options](/explore-analyze/images/elasticsearch-reference-esql-icon-options.svg "")) and select **Edit ESQL visualization** to open the in-line editor.
 
-:::{image} ../../../images/elasticsearch-reference-esql-dashboard-panel-edit-visualization.png
+:::{image} /explore-analyze/images/elasticsearch-reference-esql-dashboard-panel-edit-visualization.png
 :alt: esql dashboard panel edit visualization
 :::
 
@@ -256,19 +256,19 @@ You can also edit the {{esql}} visualization from here. Click the options button
 
 The {{esql}} [`ENRICH`](elasticsearch://reference/query-languages/esql/esql-commands.md#esql-enrich) command enables you to [enrich](elasticsearch://reference/query-languages/esql/esql-enrich-data.md) your query dataset with fields from another dataset. Before you can use `ENRICH`, you need to [create and execute an enrich policy](elasticsearch://reference/query-languages/esql/esql-enrich-data.md#esql-set-up-enrich-policy). If a policy exists, it will be suggested by auto-complete. If not, click **Click to create** to create one.
 
-:::{image} ../../../images/elasticsearch-reference-esql-kibana-enrich-autocomplete.png
+:::{image} /explore-analyze/images/elasticsearch-reference-esql-kibana-enrich-autocomplete.png
 :alt: esql kibana enrich autocomplete
 :::
 
 Next, you can enter a policy name, the policy type, source indices, and optionally a query:
 
-:::{image} ../../../images/elasticsearch-reference-esql-kibana-enrich-step-1.png
+:::{image} /explore-analyze/images/elasticsearch-reference-esql-kibana-enrich-step-1.png
 :alt: esql kibana enrich step 1
 :::
 
 Click **Next** to select the match field and enrich fields:
 
-:::{image} ../../../images/elasticsearch-reference-esql-kibana-enrich-step-2.png
+:::{image} /explore-analyze/images/elasticsearch-reference-esql-kibana-enrich-step-2.png
 :alt: esql kibana enrich step 2
 :::
 
@@ -289,7 +289,7 @@ FROM kibana_sample_data_logs
 
 You can use {{esql}} queries to create alerts. From Discover, click **Alerts** and select **Create search threshold rule**. This opens a panel that enables you to create a rule using an {{esql}} query. Next, you can test the query, add a connector, and save the rule.
 
-:::{image} ../../../images/elasticsearch-reference-esql-kibana-create-rule.png
+:::{image} /explore-analyze/images/elasticsearch-reference-esql-kibana-create-rule.png
 :alt: esql kibana create rule
 :::
 

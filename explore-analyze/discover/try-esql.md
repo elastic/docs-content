@@ -50,7 +50,7 @@ Let’s say we want to find out what operating system users have and how much RA
    ::::
 
 3. Click **▶Run**.
-   ![An image of the query result](../../images/kibana-esql-machine-os-ram.png "")
+   ![An image of the query result](/explore-analyze/images/kibana-esql-machine-os-ram.png "")
    ::::{note}
    {{esql}} keywords are not case sensitive.
    ::::
@@ -70,7 +70,7 @@ Let’s add `geo.dest` to our query, to find out the geographical destination of
    ::::{note}
    When you don’t specify any specific fields to retain using `KEEP`, the visualization isn’t broken down automatically. Instead, an additional option appears above the visualization and lets you select a field manually.
    ::::
-   ![An image of the extended query result](../../images/kibana-esql-limit.png "")
+   ![An image of the extended query result](/explore-analyze/images/kibana-esql-limit.png "")
 
 
 We will now take it a step further to sort the data by machine ram and filter out the `GB` destination.
@@ -87,7 +87,7 @@ We will now take it a step further to sort the data by machine ram and filter ou
 
 2. Click **▶Run** again. The table and visualization no longer show results for which the `geo.dest` field value is "GB", and the results are now sorted in descending order in the table based on the `machine.ram` field.
 
-    ![An image of the full query result](../../images/kibana-esql-full-query.png "")
+    ![An image of the full query result](/explore-analyze/images/kibana-esql-full-query.png "")
 
 3. Click **Save** to save the query and visualization to a dashboard.
 
@@ -114,7 +114,7 @@ FROM kibana_sample_data_ecommerce
 | KEEP customer_first_name, email, products._id.keyword
 ```
 
-:::{image} ../../images/kibana-esql-no-time-series.png
+:::{image} /explore-analyze/images/kibana-esql-no-time-series.png
 :alt: ESQL query without time series capabilities enabled
 :::
 
@@ -125,6 +125,6 @@ FROM kibana_sample_data_ecommerce
 | WHERE order_date >= ?_tstart and order_date <= ?_tend
 ```
 
-:::{image} ../../images/kibana-esql-custom-time-series.png
+:::{image} /explore-analyze/images/kibana-esql-custom-time-series.png
 :alt: ESQL query with a custom time field enabled
 :::
