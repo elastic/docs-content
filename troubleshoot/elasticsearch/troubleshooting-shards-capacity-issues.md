@@ -31,7 +31,7 @@ If you’re confident your changes won’t destabilize the cluster, you can temp
 
 3. Open your deployment’s side navigation menu (placed under the Elastic logo in the upper left corner) and go to **Dev Tools > Console**.
 
-    :::{image} ../../images/elasticsearch-reference-kibana-console.png
+    :::{image} /troubleshoot/images/elasticsearch-reference-kibana-console.png
     :alt: {{kib}} Console
     :screenshot:
     :::
@@ -241,7 +241,7 @@ If you’re confident your changes won’t destabilize the cluster, you can temp
 
 3. Open your deployment’s side navigation menu (placed under the Elastic logo in the upper left corner) and go to **Dev Tools > Console**.
 
-    :::{image} ../../images/kibana-console.png
+    :::{image} /troubleshoot/images/kibana-console.png
     :alt: {{kib}} Console
     :screenshot:
     :::
