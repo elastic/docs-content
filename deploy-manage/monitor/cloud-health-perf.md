@@ -74,7 +74,7 @@ deployment:
   ess:
 ```
 
-{{ess}} deployments offer an additional **Performance** page to get further information about your cluster performance. 
+{{ech}} deployments offer an additional **Performance** page to get further information about your cluster performance. 
 
 If you observe issues on search and ingest operations in terms of increased latency or throughput for queries, these might not be directly reported on the **Health** page, unless they are related to shard health or master node availability. 
 
