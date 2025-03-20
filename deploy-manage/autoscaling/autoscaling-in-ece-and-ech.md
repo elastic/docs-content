@@ -220,9 +220,8 @@ Note the following requirements when you run this API request:
 
 $$$ece-autoscaling-api-example-requirements-table$$$ 
 
-|     |     |     |     |
-| --- | --- | --- | --- |
 |  | `size` | `autoscaling_min` | `autoscaling_max` |
+| --- | --- | --- | --- |
 | data tier | ✓ | ✕ | ✓ |
 | machine learning node | ✕ | ✓ | ✓ |
 | coordinating and master nodes | ✓ | ✕ | ✕ |

@@ -187,9 +187,8 @@ The following tables provide the minimum resource requirements and scaling guide
 
 ### Resource requirements by number of agents [resource-requirements-by-number-agents]
 
-|     |     |     |     |
-| --- | --- | --- | --- |
 | Number of Agents | {{fleet-server}} Memory | {{fleet-server}} vCPU | {{es}} Hot Tier |
+| --- | --- | --- | --- |
 | 2,000 | 2GB | up to 8 vCPU | 32GB  RAM  &#124; 8 vCPU |
 | 5,000 | 4GB | up to 8 vCPU | 32GB  RAM  &#124; 8 vCPU |
 | 10,000 | 8GB | up to 8 vCPU | 128GB RAM  &#124; 32 vCPU |
