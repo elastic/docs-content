@@ -8,45 +8,22 @@ applies_to:
 
 # AutoOps events [ec-autoops-events]
 
-An AutoOps event provides a detailed analysis of a specific issue, including why it was triggered and the steps needed to resolve it. The following sections provide you with comprehensive insights and context around issues, the reasons why the event was created, as well as the affected nodes and indices with high indexing activity.
+An AutoOps event provides a detailed analysis of a specific issue, including why it was triggered and the steps needed to resolve it. 
 
-:::{image} ../../../images/cloud-autoops-events.png
+:::{image} /images/cloud-autoops-events.png
 :alt: AutoOps events
 :::
 
+The following sections provide you with comprehensive insights and context around issues, the reasons why the event was created, as well as the affected nodes and indices with high indexing activity.
 
-## What was detected [ec-autoops-what-was-detected]
-
-This section describes the reasons for which the event was created, as well as links to drill down into the issue.
-
-
-## Recommendations [ec-autoops-recommendations]
-
-AutoOps provides a set of recommendations. The sequence of their appearance indicates the suggested order of steps to address the issue.
-
-
-## Event duration [ec-autoops-event-duration]
-
-The time the event was detected (opened at) and the time AutoOps identified that the issue no longer exists (closed at). The closing of an event does not necessarily indicate that the customer resolved the issue, but rather that AutoOps no longer detects it.
-
-
-## Background and impact [ec-autoops-background-impact]
-
-Provides background and context as to why an event is important, and the impact it can have on performance and stability.
-
-
-## Event timeline chart [ec-autoops-event-timeline]
-
-This chart visually represents metrics related to an issue. It appears only for events with dynamic metrics. For example, load issues will have this section, while settings-related issues will not. The event timeline chart displays just the last 15 minutes.
-
-
-## Event severity [ec-autoops-event-severity]
-
-Events are categorized into three levels of severity - high, medium, and low - based on their potential impact on cluster performance and stability:
-
-* **High**: Events can immediately cause significant usability, performance and stability problems.
-* **Medium**: Events may lead to severe problems if not addressed.
-* **Low**: Events have minimal/not urgent impact.
+| Section | Description |
+| --- | --- |
+| What was detected | This section describes the reasons for which the event was created, as well as links to drill down into the issue. |
+| Recommendations | AutoOps provides a set of recommendations. The sequence of their appearance indicates the suggested order of steps to address the issue. |
+| Event duration | The time the event was detected (opened at) and the time AutoOps identified that the issue no longer exists (closed at). The closing of an event does not necessarily indicate that the customer resolved the issue, but rather that AutoOps no longer detects it. |
+| Background and impact | Provides background and context as to why an event is important, and the impact it can have on performance and stability. |
+| Event timeline chart | This chart visually represents metrics related to an issue. It appears only for events with dynamic metrics. For example, load issues will have this section, while settings-related issues will not. The event timeline chart displays just the last 15 minutes. |
+| Event severity | Events are categorized into three levels of severity - high, medium, and low - based on their potential impact on cluster performance and stability: <br><br>- **High**: Events can immediately cause significant usability, performance and stability problems.<br>- **Medium**: Events may lead to severe problems if not addressed.<br>- **Low**: Events have minimal/not urgent impact. |
 
 
 ## Event settings [ec-autoops-event-customize]

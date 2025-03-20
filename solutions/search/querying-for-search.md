@@ -26,7 +26,7 @@ Once you know which [search approaches](search-approaches.md) you need to use, y
 These query languages are complementary, not mutually exclusive. You can use different query languages for different parts of your application, based on your specific needs. This flexibility allows you to gradually adopt newer interfaces as your requirements evolve.
 
 ::::{note} 
-You can use the [{{es}} REST APIs](https://www.elastic.co/docs/api/doc/elasticsearch) to search your data using any HTTP client, including the [{{es}} client libraries](site-or-app/clients.md), or directly in [Console](https://www.elastic.co/guide/en/serverless/current/devtools-run-api-requests-in-the-console.html). You can also run searches using [Discover](/explore-analyze/discover.md) in the UI.
+You can use the [{{es}} REST APIs](https://www.elastic.co/docs/api/doc/elasticsearch) to search your data using any HTTP client, including the [{{es}} client libraries](site-or-app/clients.md), or directly in [Console](/explore-analyze/query-filter/tools/console.md). You can also run searches using [Discover](/explore-analyze/discover.md) in the UI.
 ::::
 
 

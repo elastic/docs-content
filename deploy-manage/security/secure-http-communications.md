@@ -228,7 +228,7 @@ deployment:
 ```
 
 :::{note}
-This section only covers TLS certificates for the HTTP layer. TLS certificates for the transport layer that are used for internal communications between Elasticsearch nodes are managed by ECK and cannot be changed. You can however set your own certificate authority for the [transport layer](/deploy-manage/deploy/cloud-on-k8s/transport-settings.md#k8s-transport-ca).
+This section only covers TLS certificates for the HTTP layer. TLS certificates for the transport layer that are used for internal communications between Elasticsearch nodes are managed by ECK and cannot be changed. You can however set your own certificate authority for the [transport layer](/deploy-manage/security/k8s-transport-settings.md#k8s-transport-ca).
 :::
 
 By default, the operator manages a self-signed certificate with a custom CA for each resource. The CA, the certificate and the private key are each stored in a separate `Secret`.

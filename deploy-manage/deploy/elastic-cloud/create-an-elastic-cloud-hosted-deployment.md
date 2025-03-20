@@ -71,5 +71,5 @@ To make sure you’re all set for production, consider the following actions:
 * [Add extensions and plugins](/deploy-manage/deploy/elastic-cloud/add-plugins-extensions.md) to use Elastic supported extensions or add your own custom dictionaries and scripts.
 * [Edit settings and defaults](/deploy-manage/deploy/elastic-cloud/edit-stack-settings.md) to fine tune the performance of specific features.
 * [Manage your deployment](/deploy-manage/deploy/elastic-cloud/manage-deployments.md) as a whole to restart, upgrade, stop routing, or delete.
-* [Set up monitoring](/deploy-manage/monitor/stack-monitoring/elastic-cloud-stack-monitoring.md) to learn how to configure your deployments for observability, which includes metric and log collection, troubleshooting views, and cluster alerts to automate performance monitoring.
+* [Set up monitoring](/deploy-manage/monitor/stack-monitoring/ece-ech-stack-monitoring.md) to learn how to configure your deployments for observability, which includes metric and log collection, troubleshooting views, and cluster alerts to automate performance monitoring.
 

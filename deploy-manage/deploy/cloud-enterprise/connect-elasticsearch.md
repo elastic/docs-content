@@ -86,7 +86,7 @@ To use the Cloud ID, you need:
     * A user ID and password that has permission to send data to your {{es}} cluster.
 
 ::::{important}
-        In our examples, we use the `elastic` superuser that every {{es}} cluster comes with. The password for the `elastic` user is provided when you create a deployment (and can also be [reset](../../users-roles/cluster-or-deployment-auth/built-in-users.md) if you forget it). On a production system, you should adapt these examples by creating a user that can write to and access only the minimally required indices. For each Beat, review the specific feature and role table, similar to the one in [Metricbeat](asciidocalypse://docs/beats/docs/reference/metricbeat/feature-roles.md) documentation.
+        In our examples, we use the `elastic` superuser that every {{es}} cluster comes with. The password for the `elastic` user is provided when you create a deployment (and can also be [reset](../../users-roles/cluster-or-deployment-auth/built-in-users.md) if you forget it). On a production system, you should adapt these examples by creating a user that can write to and access only the minimally required indices. For each Beat, review the specific feature and role table, similar to the one in [Metricbeat](beats://reference/metricbeat/feature-roles.md) documentation.
 ::::
 
 ### Example: Configure Beats with your Cloud ID [ece-cloud-id-beats]
@@ -94,7 +94,7 @@ To use the Cloud ID, you need:
 The following example shows how you can send operational data from Metricbeat to a new ECE deployment by using the Cloud ID. While this example uses Metricbeat, the same approach applies to other Beats.
 
 ::::{tip}
-For others, you can learn more about [getting started](asciidocalypse://docs/beats/docs/reference/index.md) with each Beat.
+For others, you can learn more about [getting started](beats://reference/index.md) with each Beat.
 ::::
 
 To get started with Metricbeat and {{ece}}:
@@ -102,8 +102,8 @@ To get started with Metricbeat and {{ece}}:
 1. [Log into the Cloud UI](log-into-cloud-ui.md).
 2. [Create a new deployment](create-deployment.md) and copy down the password for the `elastic` user.
 3. On the deployment overview page, copy down the Cloud ID.
-4. Set up the Beat of your choice, such as [Metricbeat](asciidocalypse://docs/beats/docs/reference/metricbeat/metricbeat-installation-configuration.md).
-5. [Configure the Beat output to send to Elastic Cloud](asciidocalypse://docs/beats/docs/reference/metricbeat/configure-cloud-id.md).
+4. Set up the Beat of your choice, such as [Metricbeat](beats://reference/metricbeat/metricbeat-installation-configuration.md).
+5. [Configure the Beat output to send to Elastic Cloud](beats://reference/metricbeat/configure-cloud-id.md).
 
     ::::{note}
     Make sure you replace the values for `cloud.id` and `cloud.auth` with your own information.

@@ -18,7 +18,7 @@ applies_to:
 
 [Autoscaling](/deploy-manage/autoscaling.md) in Elasticsearch enables dynamic resource allocation based on predefined policies. A key component of this mechanism is autoscaling deciders, which independently assess resource requirements and determine when scaling actions are necessary. Deciders analyze various factors, such as storage usage, indexing rates, and machine learning workloads, to ensure clusters maintain optimal performance without manual intervention.
 
-::::{admonition} Indirect use only 
+::::{admonition} Indirect use only
 This feature is designed for indirect use by {{ech}}, {{ece}}, and {{eck}}. Direct use is not supported.
 ::::
 
@@ -49,7 +49,7 @@ The [autoscaling](../../deploy-manage/autoscaling.md) reactive storage decider (
 
 The reactive storage decider is enabled for all policies governing data nodes and has no configuration options.
 
-The decider relies partially on using [data tier preference](../../manage-data/lifecycle/data-tiers.md#data-tier-allocation) allocation rather than node attributes. In particular, scaling a data tier into existence (starting the first node in a tier) will result in starting a node in any data tier that is empty if not using allocation based on data tier preference. Using the [ILM migrate](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-lifecycle-actions/ilm-migrate.md) action to migrate between tiers is the preferred way of allocating to tiers and fully supports scaling a tier into existence.
+The decider relies partially on using [data tier preference](../../manage-data/lifecycle/data-tiers.md#data-tier-allocation) allocation rather than node attributes. In particular, scaling a data tier into existence (starting the first node in a tier) will result in starting a node in any data tier that is empty if not using allocation based on data tier preference. Using the [ILM migrate](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-migrate.md) action to migrate between tiers is the preferred way of allocating to tiers and fully supports scaling a tier into existence.
 
 ## Proactive storage decider [autoscaling-proactive-storage-decider]
 
@@ -62,7 +62,7 @@ The estimation of expected additional data is based on past indexing that occurr
 ### Configuration settings [autoscaling-proactive-storage-decider-settings]
 
 `forecast_window`
-:   (Optional, [time value](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/api-conventions.md#time-units)) The window of time to use for forecasting. Defaults to 30 minutes.
+:   (Optional, [time value](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#time-units)) The window of time to use for forecasting. Defaults to 30 minutes.
 
 
 ### {{api-examples-title}} [autoscaling-proactive-storage-decider-examples]
@@ -96,7 +96,7 @@ The [autoscaling](../../deploy-manage/autoscaling.md) frozen shards decider (`fr
 ### Configuration settings [autoscaling-frozen-shards-decider-settings]
 
 `memory_per_shard`
-:   (Optional, [byte value](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/api-conventions.md#byte-units)) The memory needed per shard, in bytes. Defaults to 2000 shards per 64 GB node (roughly 32 MB per shard). Notice that this is total memory, not heap, assuming that the Elasticsearch default heap sizing mechanism is used and that nodes are not bigger than 64 GB.
+:   (Optional, [byte value](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#byte-units)) The memory needed per shard, in bytes. Defaults to 2000 shards per 64 GB node (roughly 32 MB per shard). Notice that this is total memory, not heap, assuming that the Elasticsearch default heap sizing mechanism is used and that nodes are not bigger than 64 GB.
 
 ## Frozen storage decider [autoscaling-frozen-storage-decider]
 
@@ -121,8 +121,8 @@ The [autoscaling](../../deploy-manage/autoscaling.md) {{ml}} decider (`ml`) calc
 
 The {{ml}} decider is enabled for policies governing `ml` nodes.
 
-::::{note} 
-For {{ml}} jobs to open when the cluster is not appropriately scaled, set `xpack.ml.max_lazy_ml_nodes` to the largest number of possible {{ml}} nodes (refer to [Advanced machine learning settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/machine-learning-settings.md#advanced-ml-settings) for more information). In {{ess}}, this is automatically set.
+::::{note}
+For {{ml}} jobs to open when the cluster is not appropriately scaled, set `xpack.ml.max_lazy_ml_nodes` to the largest number of possible {{ml}} nodes (refer to [Advanced machine learning settings](elasticsearch://reference/elasticsearch/configuration-reference/machine-learning-settings.md#advanced-ml-settings) for more information). In {{ess}}, this is automatically set.
 ::::
 
 
@@ -137,7 +137,7 @@ Both `num_anomaly_jobs_in_queue` and `num_analytics_jobs_in_queue` are designed 
 :   (Optional, integer) Specifies the number of queued {{dfanalytics-jobs}} to allow. Defaults to `0`.
 
 `down_scale_delay`
-:   (Optional, [time value](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/api-conventions.md#time-units)) Specifies the time to delay before scaling down. Defaults to 1 hour. If a scale down is possible for the entire time window, then a scale down is requested. If the cluster requires a scale up during the window, the window is reset.
+:   (Optional, [time value](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#time-units)) Specifies the time to delay before scaling down. Defaults to 1 hour. If a scale down is possible for the entire time window, then a scale down is requested. If the cluster requires a scale up during the window, the window is reset.
 
 
 ### {{api-examples-title}} [autoscaling-machine-learning-decider-examples]
@@ -168,12 +168,12 @@ The API returns the following result:
 
 ## Fixed decider [autoscaling-fixed-decider]
 
-::::{warning} 
+::::{warning}
 This functionality is in technical preview and may be changed or removed in a future release. Elastic will work to fix any issues, but features in technical preview are not subject to the support SLA of official GA features.
 ::::
 
 
-::::{warning} 
+::::{warning}
 The fixed decider is intended for testing only. Do not use this decider in production.
 ::::
 
@@ -183,10 +183,10 @@ The [autoscaling](../../deploy-manage/autoscaling.md) `fixed` decider responds w
 ### Configuration settings [_configuration_settings]
 
 `storage`
-:   (Optional, [byte value](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/api-conventions.md#byte-units)) Required amount of node-level storage. Defaults to `-1` (disabled).
+:   (Optional, [byte value](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#byte-units)) Required amount of node-level storage. Defaults to `-1` (disabled).
 
 `memory`
-:   (Optional, [byte value](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/api-conventions.md#byte-units)) Required amount of node-level memory. Defaults to `-1` (disabled).
+:   (Optional, [byte value](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#byte-units)) Required amount of node-level memory. Defaults to `-1` (disabled).
 
 `processors`
 :   (Optional, float) Required number of processors. Defaults to disabled.

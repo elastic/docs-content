@@ -2,6 +2,9 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/observability/current/inspect-metric-anomalies.html
   - https://www.elastic.co/guide/en/serverless/current/observability-detect-metric-anomalies.html
+applies_to:
+  stack:
+  serverless:
 ---
 
 # Detect metric anomalies [observability-detect-metric-anomalies]

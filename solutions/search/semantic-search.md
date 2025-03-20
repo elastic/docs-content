@@ -68,7 +68,8 @@ Refer to [vector queries and field types](vector.md#vector-queries-and-field-typ
 ### Blogs
 
 - [{{es}} new semantic_text mapping: Simplifying semantic search](https://www.elastic.co/search-labs/blog/semantic-search-simplified-semantic-text)
-- [Introducing Elastic Learned Sparse Encoder: Elastic's AI model for semantic search](https://www.elastic.co/blog/may-2023-launch-sparse-encoder-ai-model)
+- [GA information for `semantic_text`](https://www.elastic.co/search-labs/blog/semantic-text-ga) 
+- [Introducing ELSER: Elastic's AI model for semantic search](https://www.elastic.co/blog/may-2023-launch-sparse-encoder-ai-model)
 - [How to get the best of lexical and AI-powered search with Elastic's vector database](https://www.elastic.co/blog/lexical-ai-powered-search-elastic-vector-database)
 - Information retrieval blog series:
     - [Part 1: Steps to improve search relevance](https://www.elastic.co/blog/improving-information-retrieval-elastic-stack-search-relevance)

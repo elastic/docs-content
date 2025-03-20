@@ -13,7 +13,7 @@ Elastic Cloud Enterprise by default collects monitoring data for your installati
 * Logs for all core services that are a part of Elastic Cloud Enterprise and monitoring metrics for core Elastic Cloud Enterprise services, system processes on the host, and any third-party software
 * Logs and monitoring metrics for Elasticsearch clusters and for Kibana instances
 
-These monitoring indices are collected in addition to the [monitoring you might have enabled for specific clusters](../stack-monitoring/ece-stack-monitoring.md), which also provides monitoring metrics that you can access in Kibana (note that the `logging-and-metrics` deployment is used for monitoring data from system deployments only; for non-system deployments, monitoring data must be sent to a deployment other than `logging-and-metrics`).
+These monitoring indices are collected in addition to the [monitoring you might have enabled for specific clusters](/deploy-manage/monitor/stack-monitoring/ece-ech-stack-monitoring.md), which also provides monitoring metrics that you can access in Kibana (note that the `logging-and-metrics` deployment is used for monitoring data from system deployments only; for non-system deployments, monitoring data must be sent to a deployment other than `logging-and-metrics`).
 
 In this section:
 

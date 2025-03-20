@@ -22,6 +22,10 @@ You can drag or send fields of interest to a Timeline to create the desired quer
 In addition to Timelines, you can create and attach Timeline templates to [detection rules](/solutions/security/detect-and-alert.md). Timeline templates allow you to define the source event fields used when you investigate alerts in Timeline. You can select whether the fields use predefined values or values retrieved from the alert. For more information, refer to [Timeline templates](/solutions/security/investigate/timeline-templates.md).
 
 
+## Grant access to Timeline [timeline-privileges]
+
+You can control access to Timeline by setting the [{{kib}} privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md) for the **Timeline** feature under **Security**. 
+
 ## Create new or open existing Timeline [open-create-timeline]
 
 To make a new Timeline, choose one of the following:

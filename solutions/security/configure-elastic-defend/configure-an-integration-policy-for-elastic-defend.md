@@ -58,7 +58,7 @@ To configure an integration policy:
 
 ## Malware protection [malware-protection]
 
-{{elastic-defend}} malware prevention detects and stops malicious attacks by using a [machine learning model](/solutions/security/detect-and-alert.md#machine-learning-model) that looks for static attributes to determine if a file is malicious or benign.
+{{elastic-defend}} malware prevention detects and stops malicious attacks by using a machine learning model that looks for static attributes to determine if a file is malicious or benign.
 
 By default, malware protection is enabled on Windows, macOS, and Linux hosts. To disable malware protection, turn off the **Malware protections** toggle.
 

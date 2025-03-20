@@ -73,7 +73,7 @@ Learn more in the [Playground documentation](rag/playground.md) and try the [int
 
 Learn more about building RAG systems using {{es}} in these blog posts:
 
-* [Beyond RAG Basics: Advanced strategies for AI applications](https://www.elastic.co/blog/beyond-rag-basics-semantic-search-with-elasticsearch)
+* [Beyond RAG Basics: Advanced strategies for AI applications](https://www.elastic.co/blog/beyond-rag-basics)
 * [Building a RAG system with Gemma, Hugging Face, and Elasticsearch](https://www.elastic.co/search-labs/blog/building-a-rag-system-with-gemma-hugging-face-elasticsearch)
 * [Building an agentic RAG tool with Elasticsearch and Langchain](https://www.elastic.co/search-labs/blog/rag-agent-tool-elasticsearch-langchain)
 

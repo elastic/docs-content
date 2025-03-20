@@ -275,7 +275,7 @@ The following audit settings are supported:
 :   A list of action names or wildcards. The specified policy will not print audit events for actions matching these values.
 
 ::::{note}
-To enable auditing you must first [enable deployment logging](../../../deploy-manage/monitor/stack-monitoring/elastic-cloud-stack-monitoring.md).
+To enable auditing you must first [enable deployment logging](../../../deploy-manage/monitor/stack-monitoring/ece-ech-stack-monitoring.md).
 ::::
 
 
