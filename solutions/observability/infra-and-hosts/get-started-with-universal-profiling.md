@@ -51,9 +51,8 @@ The minimum supported versions of each interpreter are:
 
 The following deployment configuration example was tested to support profiling data from a fleet of up to 500 hosts, each with 8 or 16 CPU cores, for a total of roughly 6000 cores:
 
-|     |     |     |
-| --- | --- | --- |
 | Component | Size per zone (memory) | Zones |
+| --- | --- | --- |
 | {{es}} | 64 GB | 2 |
 | Kibana | 8 GB | 1 |
 | Integrations Server | 8 GB | 1 |

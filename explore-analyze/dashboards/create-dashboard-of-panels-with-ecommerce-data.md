@@ -263,7 +263,7 @@ To create a week-over-week comparison, shift **Count of records [1]** by one wee
 
    To use custom time shifts, enter the time value and increment, then press Enter. For example, enter **1w** to use the **1 week ago** time shift.
 
-   :::{image} ../../images/kibana-lens_time_shift.png
+   :::{image} /explore-analyze/images/kibana-lens_time_shift.png
    :alt: Line chart with week-over-week sales comparison
    :screenshot:
    :width: 50%
@@ -288,7 +288,7 @@ To compare time range changes as a percent, create a bar chart that compares the
 6. From the **Value format** dropdown, select **Percent**, then enter `0` in the **Decimals** field.
 7. Click **Close**.
 
-   :::{image} ../../images/kibana-lens_percent_chage.png
+   :::{image} /explore-analyze/images/kibana-lens_percent_chage.png
    :alt: Bar chart with percent change in sales between the current time and the previous week
    :screenshot:
    :width: 50%
@@ -321,7 +321,7 @@ To split the metric, add columns for each continent using the **Columns** field:
 
 1. From the **Available fields** list, drag **geoip.continent_name** to the **Split metrics by** field in the layer pane.
 
-   :::{image} ../../images/kibana-lens_table_over_time.png
+   :::{image} /explore-analyze/images/kibana-lens_table_over_time.png
    :alt: Date histogram table with groups for the customer count metric
    :screenshot:
    :width: 50%

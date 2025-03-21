@@ -53,7 +53,7 @@ To load the sample data:
    ::::
 
 5. Click **▶Run**.
-   ![An image of the query result](../../images/kibana-esql-machine-os-ram.png "")
+   ![An image of the query result](/explore-analyze/images/kibana-esql-machine-os-ram.png "")
    ::::{note}
    {{esql}} keywords are not case sensitive.
    ::::

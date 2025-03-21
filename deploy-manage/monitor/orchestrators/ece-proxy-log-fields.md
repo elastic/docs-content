@@ -13,9 +13,8 @@ These fields *are* subject to change, though the vast majority of them are gener
 ::::
 
 
-|     |     |
-| --- | --- |
 | Field | Description |
+| --- | --- |
 | `proxy_ip` | the IP on the connection, i.e. a proxy IP if the request has been proxied |
 | `request_end` | the time the request was returned in ms since unix epoch |
 | `status_code` | the HTTP status returned to the client |

@@ -129,6 +129,5 @@ Alternatively, if adding more nodes to the {{es}} cluster is not desired, inspec
 
 :::::::
 ::::{tip}
-If you’re using Elastic Cloud Hosted, then you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, real-time issue detection and resolution paths. For more information, refer to [Monitor with AutoOps](/deploy-manage/monitor/autoops.md).
-
+If you're using {{ech}}, you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, and real-time issue detection and resolution. For more information, refer to [](/deploy-manage/monitor/autoops.md).
 ::::

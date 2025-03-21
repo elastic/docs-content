@@ -62,9 +62,8 @@ In the links provided above, Elastic has performance tested hardware for each of
 
 This table shows our specific recommendations for nodes in a Hot/Frozen architecture.
 
-|     |     |     |     |     |
+| Type | AWS | Azure | GCP | Physical |
 | --- | --- | --- | --- | --- |
-| **Type** | **AWS** | **Azure** | **GCP** | **Physical** |
 | ![Hot data node](../../images/reference-architectures-hot.png "") | c6gd | f32sv2 | N2 | 16-32 vCPU<br>64 GB RAM<br>2-6 TB NVMe SSD |
 | ![Frozen data node](../../images/reference-architectures-frozen.png "") | i3en | e8dsv4 | N2 | 8 vCPU<br>64 GB RAM<br>6-20+ TB NVMe SSD<br>Depending on days cached |
 | ![Machine learning node](../../images/reference-architectures-machine-learning.png "") | m6gd | f16sv2 | N2 | 16 vCPU<br>64 GB RAM<br>256 GB SSD |

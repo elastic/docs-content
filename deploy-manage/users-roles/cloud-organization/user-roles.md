@@ -73,7 +73,7 @@ There are two ways for a user to access {{kib}} instances of an {{ech}} deployme
 
 The following table shows the default mapping:
 
-|  Cloud role  |  Cloud API `role_id`  |  Stack role   |
+| Cloud role | Cloud API `role_id` | Stack role |
 | --- | --- | --- |
 | Organization owner | `organization-admin` | superuser |
 | Billing admin | `billing-admin` | none |

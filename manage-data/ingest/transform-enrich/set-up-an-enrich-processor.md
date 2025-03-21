@@ -61,7 +61,7 @@ Once created, you can’t update or change an enrich policy. See [Update an enri
 
 Once the enrich policy is created, you need to execute it using the [execute enrich policy API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-enrich-execute-policy) or [Index Management in {{kib}}](../../lifecycle/index-lifecycle-management/index-management-in-kibana.md#manage-enrich-policies) to create an [enrich index](data-enrichment.md#enrich-index).
 
-:::{image} ../../../images/elasticsearch-reference-enrich-policy-index.svg
+:::{image} /manage-data/images/elasticsearch-reference-enrich-policy-index.svg
 :alt: enrich policy index
 :::
 
@@ -78,7 +78,7 @@ Enrich indices should only be used by the [enrich processor](elasticsearch://ref
 
 Once you have source indices, an enrich policy, and the related enrich index in place, you can set up an ingest pipeline that includes an enrich processor for your policy.
 
-:::{image} ../../../images/elasticsearch-reference-enrich-processor.svg
+:::{image} /manage-data/images/elasticsearch-reference-enrich-processor.svg
 :alt: enrich processor
 :::
 
@@ -101,7 +101,7 @@ You also can add other [processors](elasticsearch://reference/ingestion-tools/en
 
 You can now use your ingest pipeline to enrich and index documents.
 
-:::{image} ../../../images/elasticsearch-reference-enrich-process.svg
+:::{image} /manage-data/images/elasticsearch-reference-enrich-process.svg
 :alt: enrich process
 :::
 

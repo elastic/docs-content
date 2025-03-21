@@ -45,7 +45,7 @@ A common use case is a user searching FAQs, or a support agent searching a knowl
 
 The diagram below shows how documents are processed during ingestion.
 
-:::{image} ../../../images/elasticsearch-reference-document-enrichment-diagram.png
+:::{image} /explore-analyze/images/elasticsearch-reference-document-enrichment-diagram.png
 :alt: ML inference pipeline diagram
 :::
 
@@ -74,7 +74,7 @@ If you only see the `search-default-ingestion` pipeline, you will need to click 
 
 Once your index-specific ML {{infer}} pipeline is ready, you can add {{infer}} processors that use your ML trained models. To add an {{infer}} processor to the ML {{infer}} pipeline, click the **Add Inference Pipeline** button in the **Machine Learning Inference Pipelines** card.
 
-:::{image} ../../../images/elasticsearch-reference-document-enrichment-add-inference-pipeline.png
+:::{image} /explore-analyze/images/elasticsearch-reference-document-enrichment-add-inference-pipeline.png
 :alt: Add Inference Pipeline
 :screenshot:
 :::

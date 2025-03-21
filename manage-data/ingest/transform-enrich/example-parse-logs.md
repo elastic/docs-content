@@ -24,7 +24,7 @@ These logs contain a timestamp, IP address, and user agent. You want to give the
 
 1. In {{kib}}, open the main menu and click **Stack Management** > **Ingest Pipelines**.
 
-    :::{image} ../../../images/elasticsearch-reference-ingest-pipeline-list.png
+    :::{image} /manage-data/images/elasticsearch-reference-ingest-pipeline-list.png
     :alt: Kibana's Ingest Pipelines list view
     :screenshot:
     :::
@@ -53,7 +53,7 @@ These logs contain a timestamp, IP address, and user agent. You want to give the
 
     Your form should look similar to this:
 
-    :::{image} ../../../images/elasticsearch-reference-ingest-pipeline-processor.png
+    :::{image} /manage-data/images/elasticsearch-reference-ingest-pipeline-processor.png
     :alt: Processors for Ingest Pipelines
     :screenshot:
     :::

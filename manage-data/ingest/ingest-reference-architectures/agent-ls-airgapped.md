@@ -5,7 +5,7 @@ mapped_pages:
 
 # Elastic Agent to Logstash: Air-gapped environment [agent-ls-airgapped]
 
-:::{image} ../../../images/ingest-ea-ls-airgapped.png
+:::{image} /manage-data/images/ingest-ea-ls-airgapped.png
 :alt: Image showing {{agent}}
 :::
 

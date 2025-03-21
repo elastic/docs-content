@@ -4,7 +4,7 @@ applies_to:
   deployment:
     ess: ga
 mapped_pages:
-  - https://www.elastic.co/guide/en/serverless/current/intro.html#general-what-is-serverless-elastic-differences-between-serverless-projects-and-hosted-deployments-on-ecloud
+  - https://www.elastic.co/guide/en/serverless/current/intro.html
 ---
 
 # Elastic Cloud [intro]
@@ -38,9 +38,8 @@ For more information, refer to [](/deploy-manage/cloud-organization.md).
 You can have multiple hosted deployments and serverless projects in the same {{ecloud}} organization, and each deployment type has its own specificities.
 
 
-|     |     |     |
-| --- | --- | --- |
 | Option | Serverless | Hosted |
+| --- | --- | --- |
 | **Cluster management** | Fully managed by Elastic. | You provision and manage your hosted clusters. Shared responsibility with Elastic. |
 | **Scaling** | Autoscales out of the box. | Manual scaling or autoscaling available for you to enable. |
 | **Upgrades** | Automatically performed by Elastic. | You choose when to upgrade. |

@@ -23,13 +23,13 @@ For example, you can use the enrich processor to:
 
 Most processors are self-contained and only change *existing* data in incoming documents.
 
-:::{image} ../../../images/elasticsearch-reference-ingest-process.svg
+:::{image} /manage-data/images/elasticsearch-reference-ingest-process.svg
 :alt: ingest process
 :::
 
 The enrich processor adds *new* data to incoming documents and requires a few special components:
 
-:::{image} ../../../images/elasticsearch-reference-enrich-process.svg
+:::{image} /manage-data/images/elasticsearch-reference-enrich-process.svg
 :alt: enrich process
 :::
 
@@ -77,7 +77,7 @@ Use the **Enrich Policies** view to add data from your existing indices to incom
 * The enrich fields containing enrich data from the source indices that you want to add to incoming documents
 * An optional [query](elasticsearch://reference/query-languages/query-dsl-match-all-query.md).
 
-:::{image} ../../../images/elasticsearch-reference-management-enrich-policies.png
+:::{image} /manage-data/images/elasticsearch-reference-management-enrich-policies.png
 :alt: Enrich policies
 :screenshot:
 :::

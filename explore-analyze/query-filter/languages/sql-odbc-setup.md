@@ -32,14 +32,14 @@ For DSN management, ODBC provides the *ODBC Data Source Administrator* applicati
 To launch it, open the search menu - *Win + S* - and type "ODBC Data Sources (64-bit)" or "ODBC Data Sources (32-bit)" and press *Enter*:
 
 $$$launch_administrator$$$
-![launch administrator](../../../images/elasticsearch-reference-launch_administrator.png "")
+![launch administrator](/explore-analyze/images/elasticsearch-reference-launch_administrator.png "")
 
 Once launched, you can verify that the driver was installed correctly by clicking on the *Drivers* tab of the ODBC Data Source Administrator and checking that *Elasticsearch Driver* is present in the list of installed drivers.
 
 You should also see the version number of the installed driver.
 
 $$$administrator_drivers$$$
-![administrator drivers](../../../images/elasticsearch-reference-administrator_drivers.png "")
+![administrator drivers](/explore-analyze/images/elasticsearch-reference-administrator_drivers.png "")
 
 
 ## 2. Configure a DSN [dsn-configuration]
@@ -71,17 +71,17 @@ The configuration steps are similar for all the above points. Following is an ex
 Click on the *System DSN* tab, then on the *Add…​* button:
 
 $$$system_add$$$
-![administrator system add](../../../images/elasticsearch-reference-administrator_system_add.png "")
+![administrator system add](/explore-analyze/images/elasticsearch-reference-administrator_system_add.png "")
 
 A new window will open, listing all available installed drivers. Click on *{{es}} Driver*, to highlight it, then on the *Finish* button:
 
 $$$launch_editor$$$
-![administrator launch editor](../../../images/elasticsearch-reference-administrator_launch_editor.png "")
+![administrator launch editor](/explore-analyze/images/elasticsearch-reference-administrator_launch_editor.png "")
 
 This action closes the previously opened second window and open a new one instead, Elasticsearch SQL ODBC Driver’s DSN Editor:
 
 $$$dsn_editor$$$
-![dsn editor basic](../../../images/elasticsearch-reference-dsn_editor_basic.png "")
+![dsn editor basic](/explore-analyze/images/elasticsearch-reference-dsn_editor_basic.png "")
 
 This new window has three tabs, each responsible for a set of configuration parameters, as follows.
 
@@ -193,7 +193,7 @@ One of the following SSL options can be chosen:
   If using the file browser to locate the certificate - by pressing the *Browse…​* button - only files with *.pem* and *.der* extensions will be considered by default. Choose *All Files (*.*)* from the drop down, if your file ends with a different extension:
 
   $$$dsn_editor_cert$$$
-  ![dsn editor security cert](../../../images/elasticsearch-reference-dsn_editor_security_cert.png "")
+  ![dsn editor security cert](/explore-analyze/images/elasticsearch-reference-dsn_editor_security_cert.png "")
 
 
 
@@ -222,7 +222,7 @@ If connecting to the {{es}} node needs to go through a proxy, the following para
 
 
 $$$dsn_editor_proxy$$$
-![dsn editor proxy](../../../images/elasticsearch-reference-dsn_editor_proxy.png "")
+![dsn editor proxy](/explore-analyze/images/elasticsearch-reference-dsn_editor_proxy.png "")
 
 
 #### 2.5 Connection parameters [_2_5_connection_parameters]
@@ -299,7 +299,7 @@ The connection configuration can further be tweaked by the following parameters.
 
 
 $$$dsn_editor_misc$$$
-![dsn editor misc](../../../images/elasticsearch-reference-dsn_editor_misc.png "")
+![dsn editor misc](/explore-analyze/images/elasticsearch-reference-dsn_editor_misc.png "")
 
 
 #### 2.6 Logging parameters [_2_6_logging_parameters]
@@ -307,7 +307,7 @@ $$$dsn_editor_misc$$$
 For troubleshooting purposes, the Elasticsearch SQL ODBC Driver offers functionality to log the API calls that an application makes; this is enabled in the Administrator application:
 
 $$$administrator_tracing$$$
-![administrator tracing](../../../images/elasticsearch-reference-administrator_tracing.png "")
+![administrator tracing](/explore-analyze/images/elasticsearch-reference-administrator_tracing.png "")
 
 However, this only logs the ODBC API calls made by the application into the *Driver Manager* and not those made by the *Driver Manager* into the driver itself. To enable logging of the calls that the driver receives, as well as internal driver processing events, you can enable driver’s logging on Editor’s *Logging* tab:
 
@@ -328,7 +328,7 @@ However, this only logs the ODBC API calls made by the application into the *Dri
     Configure the verbosity of the logs.
 
     $$$administrator_logging$$$
-    ![dsn editor logging](../../../images/elasticsearch-reference-dsn_editor_logging.png "")
+    ![dsn editor logging](/explore-analyze/images/elasticsearch-reference-dsn_editor_logging.png "")
 
     When authentication is enabled, the password will be redacted from the logs.
 
@@ -344,7 +344,7 @@ Debug-logging can quickly lead to the creation of many very large files and gene
 Once the *Hostname*, the *Port* (if different from implicit default) and the SSL options are configured, you can test if the provided parameters are correct by pressing the *Test Connection* button. This will instruct the driver to connect to the {{es}} instance and perform a simple SQL test query. (This will thus require a running {{es}} instance with the SQL plugin enabled.)
 
 $$$dsn_editor_conntest$$$
-![dsn editor conntest](../../../images/elasticsearch-reference-dsn_editor_conntest.png "")
+![dsn editor conntest](/explore-analyze/images/elasticsearch-reference-dsn_editor_conntest.png "")
 
 ::::{note}
 When connection testing, all the configured parameters are taken into account, including the logging configuration. This will allow early detection of potential file/directory access rights conflicts.
@@ -363,7 +363,7 @@ Before saving a DSN configuration the provided file/directory paths are verified
 If everything is correct, the name of the newly created DSN will be listed as available to use:
 
 $$$system_added$$$
-![administrator system added](../../../images/elasticsearch-reference-administrator_system_added.png "")
+![administrator system added](/explore-analyze/images/elasticsearch-reference-administrator_system_added.png "")
 
 
 ## Alternative logging configuration [alternative_logging]
@@ -383,7 +383,7 @@ The definition of the environment variable needs to be done as follows:
 
 
 $$$env_var_logging$$$
-![env var log](../../../images/elasticsearch-reference-env_var_log.png "")
+![env var log](/explore-analyze/images/elasticsearch-reference-env_var_log.png "")
 
 ::::{note}
 When enabling the logging through the environment variable, the driver will create **one log file per process**.

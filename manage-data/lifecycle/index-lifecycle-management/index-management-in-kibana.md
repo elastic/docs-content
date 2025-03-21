@@ -28,7 +28,7 @@ To add these privileges, go to **Stack Management > Security > Roles** or use th
 
 Investigate your indices and perform operations from the **Indices** view.
 
-:::{image} ../../../images/elasticsearch-reference-management_index_labels.png
+:::{image} /manage-data/images/elasticsearch-reference-management_index_labels.png
 :alt: Index Management UI
 :screenshot:
 :::
@@ -37,7 +37,7 @@ Investigate your indices and perform operations from the **Indices** view.
 * To filter the list of indices, use the search bar or click a badge. Badges indicate if an index is a [follower index](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ccr-follow), a [rollup index](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-rollup-get-rollup-index-caps), or [frozen](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-unfreeze).
 * To drill down into the index [mappings](../../data-store/mapping.md), [settings](elasticsearch://reference/elasticsearch/index-settings/index.md), and statistics, click an index name. From this view, you can navigate to **Discover** to further explore the documents in the index.
 
-    :::{image} ../../../images/elasticsearch-reference-management_index_details.png
+    :::{image} /manage-data/images/elasticsearch-reference-management_index_details.png
     :alt: Index Management UI
     :screenshot:
     :::
@@ -52,7 +52,7 @@ The value in the **Indices** column indicates the number of backing indices. Cli
 
 A value in the data retention column indicates that the data stream is managed by a [data stream lifecycle policy](../data-stream.md). This value is the time period for which your data is guaranteed to be stored. Data older than this period can be deleted by Elasticsearch at a later time.
 
-:::{image} ../../../images/elasticsearch-reference-management-data-stream-fields.png
+:::{image} /manage-data/images/elasticsearch-reference-management-data-stream-fields.png
 :alt: Data stream details
 :screenshot:
 :::
@@ -65,7 +65,7 @@ A value in the data retention column indicates that the data stream is managed b
 
 Create, edit, clone, and delete your index templates in the **Index Templates** view. Changes made to an index template do not affect existing indices.
 
-:::{image} ../../../images/elasticsearch-reference-management-index-templates.png
+:::{image} /manage-data/images/elasticsearch-reference-management-index-templates.png
 :alt: Index templates
 :screenshot:
 :::
@@ -79,7 +79,7 @@ In this tutorial, you’ll create an index template and use it to configure two 
 
 1. In the **Index Templates** view, open the **Create template** wizard.
 
-    :::{image} ../../../images/elasticsearch-reference-management_index_create_wizard.png
+    :::{image} /manage-data/images/elasticsearch-reference-management_index_create_wizard.png
     :alt: Create wizard
     :screenshot:
     :::
@@ -96,7 +96,7 @@ In this tutorial, you’ll create an index template and use it to configure two 
 
     Component templates are optional. For this tutorial, do not add any component templates.
 
-    :::{image} ../../../images/elasticsearch-reference-management_index_component_template.png
+    :::{image} /manage-data/images/elasticsearch-reference-management_index_component_template.png
     :alt: Component templates page
     :screenshot:
     :::
@@ -104,7 +104,7 @@ In this tutorial, you’ll create an index template and use it to configure two 
 2. Define index settings. These are optional. For this tutorial, leave this section blank.
 3. Define a mapping that contains an [object](elasticsearch://reference/elasticsearch/mapping-reference/object.md) field named `geo` with a child [`geo_point`](elasticsearch://reference/elasticsearch/mapping-reference/geo-point.md) field named `coordinates`:
 
-    :::{image} ../../../images/elasticsearch-reference-management-index-templates-mappings.png
+    :::{image} /manage-data/images/elasticsearch-reference-management-index-templates-mappings.png
     :alt: Mapped fields page
     :screenshot:
     :::
@@ -194,7 +194,7 @@ Use the **Enrich Policies** view to add data from your existing indices to incom
 * The enrich fields containing enrich data from the source indices that you want to add to incoming documents
 * An optional [query](elasticsearch://reference/query-languages/query-dsl-match-all-query.md).
 
-:::{image} ../../../images/elasticsearch-reference-management-enrich-policies.png
+:::{image} /manage-data/images/elasticsearch-reference-management-enrich-policies.png
 :alt: Enrich policies
 :screenshot:
 :::
