@@ -32,10 +32,6 @@ mapped_urls:
 
 % Scope notes: this is just communication security - link to users + roles, spaces, monitoring, ++
 
-% Use migrated content from existing pages that map to this page:
-
-% - [ ] ./raw-migrated-files/elasticsearch/elasticsearch-reference/security-limitations.md
-
 $$$field-document-limitations$$$
 
 $$$alias-limitations$$$
@@ -50,9 +46,6 @@ $$$maintaining-audit-trail$$$
 **This page is a work in progress.** 
 :::
 
-% The documentation team is working to combine content pulled from the following pages:
-
-% * [/raw-migrated-files/elasticsearch/elasticsearch-reference/security-limitations.md](/raw-migrated-files/elasticsearch/elasticsearch-reference/security-limitations.md)
 
 # Security
 
