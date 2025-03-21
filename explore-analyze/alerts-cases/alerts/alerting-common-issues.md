@@ -71,7 +71,7 @@ By default, rules have a `5m` timeout. Rules that run longer than this timeout a
 
 and in the [details page](create-manage-rules.md#rule-details):
 
-:::{image} ../../../images/kibana-rule-details-timeout-error.png
+:::{image} /explore-analyze/images/kibana-rule-details-timeout-error.png
 :alt: Rule details page with timeout error
 :screenshot:
 :::

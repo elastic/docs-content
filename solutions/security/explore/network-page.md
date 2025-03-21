@@ -12,7 +12,7 @@ applies_to:
 
 The Network page provides key network activity metrics in an interactive map, and network event tables that enable interaction with Timeline. You can drag and drop items of interest from the Network view to Timeline for further investigation.
 
-:::{image} ../../../images/security-network-ui.png
+:::{image} /solutions/images/security-network-ui.png
 :alt: network ui
 :screenshot:
 :::
@@ -81,7 +81,7 @@ The IP’s details page includes the following sections:
 * **Alert metrics**: The total number of alerts by severity, rule, and status (`Open`, `Acknowledged`, or `Closed`).
 * **Data tables**: The same data tables as on the main Network page, except with values for the selected IP address instead of all IP addresses.
 
-:::{image} ../../../images/security-IP-detail-pg.png
+:::{image} /solutions/images/security-IP-detail-pg.png
 :alt: IP details page
 :screenshot:
 :::

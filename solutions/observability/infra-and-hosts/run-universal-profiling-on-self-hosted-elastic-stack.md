@@ -59,7 +59,7 @@ The backend is made up of two services: the collector and the symbolizer.
 * The collector receives profiling data from the Universal Profiling Agents and sends it to {{es}}. It listens on an HTTP server and serves a gRPC endpoint.
 * The symbolizer processes debug symbols that are not available on the Universal Profiling Agent, and symbolizes native frames from OS packages. It also listens on an HTTP server and serves an endpoint to upload private debug symbols. Refer to [Adding symbols](add-symbols-for-native-frames.md) for more information on the importance of adding symbols.
 
-:::{image} ../../../images/observability-profiling-self-managed-ingestion-architecture.png
+:::{image} /solutions/images/observability-profiling-self-managed-ingestion-architecture.png
 :alt: profiling self managed ingestion architecture
 :screenshot:
 :::

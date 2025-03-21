@@ -11,10 +11,11 @@ navigation_title: "Built-in users"
 
 The {{stack-security-features}} provide built-in user credentials to help you get up and running. These users have a fixed set of privileges and cannot be authenticated until their passwords have been set. The `elastic` user can be used to [set all of the built-in user passwords](/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-users.md#set-built-in-user-passwords).
 
+In orchestrated deployments (ECH, ECE, and ECK), the `elastic` user is managed by the platform, while other default users are not accessible to end users. To learn how to reset the `elastic` user in an {{ech}}, {{ece}}, or {{eck}} environment, refer to [](/deploy-manage/users-roles/cluster-or-deployment-auth/orchestrator-managed-users-overview.md).
+
 ::::{admonition} Create users with minimum privileges
 The built-in users serve specific purposes and are not intended for general use. In particular, do not use the `elastic` superuser unless full access to the cluster is absolutely required. On self-managed deployments, use the `elastic` user to create users that have the minimum necessary roles or privileges for their activities.
 ::::
-
 
 ::::{note}
 On {{ecloud}}, [operator privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/operator-privileges.md) are enabled. These privileges restrict some infrastructure functionality, even if a role would otherwise permit a user to complete an administrative task.

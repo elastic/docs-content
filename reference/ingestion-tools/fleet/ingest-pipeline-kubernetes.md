@@ -11,7 +11,7 @@ Custom pipelines can be used to add custom data processing, like adding fields, 
 
 ## Metadata enrichment for Kubernetes [_metadata_enrichment_for_kubernetes]
 
-The [{{k8s}} Integration](integration-docs://reference/kubernetes.md) is used to collect logs and metrics from Kubernetes clusters with {{agent}}. During the collection, the integration enhances the collected information with extra useful information that users can correlate with different Kubernetes assets. This additional information added on top of collected data, such as labels, annotations, ancestor names of Kubernetes assets, and others, are called metadata.
+The [{{k8s}} Integration](integration-docs://reference/kubernetes/index.md) is used to collect logs and metrics from Kubernetes clusters with {{agent}}. During the collection, the integration enhances the collected information with extra useful information that users can correlate with different Kubernetes assets. This additional information added on top of collected data, such as labels, annotations, ancestor names of Kubernetes assets, and others, are called metadata.
 
 The [{{k8s}} Provider](/reference/ingestion-tools/fleet/kubernetes-provider.md) offers the `add_resource_metadata` option to configure the metadata enrichment options.
 

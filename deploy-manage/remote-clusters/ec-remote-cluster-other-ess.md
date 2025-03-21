@@ -145,7 +145,7 @@ On the local cluster, add the remote cluster using {{kib}} or the {{es}} API.
 
     * **Server name**: This value can be found on the **Security** page of the {{ech}} deployment you want to use as a remote.
 
-      :::{image} ../../images/cloud-ce-copy-remote-cluster-parameters.png
+      :::{image} /deploy-manage/images/cloud-ce-copy-remote-cluster-parameters.png
       :alt: Remote Cluster Parameters in Deployment
       :screenshot:
       :::

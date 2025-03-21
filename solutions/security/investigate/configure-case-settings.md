@@ -13,7 +13,7 @@ applies_to:
 This page explains how to change case closure options, add custom fields, templates, and connectors for external incident management systems, and create custom observable types.
 First, find **Cases** in the navigation menu or search for `Security/Cases` by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then click **Settings**. In {{serverless-short}}, you can access case settings in an {{elastic-sec}} project, go to **Cases** → **Settings**.
 
-:::{image} ../../../images/security-cases-settings.png
+:::{image} /solutions/images/security-cases-settings.png
 :alt: Shows the case settings page
 :screenshot:
 :::
@@ -91,7 +91,7 @@ You can add optional and required fields for customized case collaboration.
 
 1. In the **Custom fields** section, click **Add field**.
 
-    :::{image} ../../../images/security-cases-add-custom-field.png
+    :::{image} /solutions/images/security-cases-add-custom-field.png
     :alt: Add a custom field in case settings
     :screenshot:
     :::
@@ -116,7 +116,7 @@ To create a template:
 
 1. In the **Templates** section, click **Add template**.
 
-    :::{image} ../../../images/security-cases-add-template.png
+    :::{image} /solutions/images/security-cases-add-template.png
     :alt: Add a template in case settings
     :screenshot:
     :::
@@ -156,7 +156,7 @@ Deleting a custom observable type deletes all instances of it.
 ::::
 
 
-:::{image} ../../../images/security-cases-observable-types.png
+:::{image} /solutions/images/security-cases-observable-types.png
 :alt: Add an observable type in case settings
 :screenshot:
 :::

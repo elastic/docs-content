@@ -21,7 +21,7 @@ You’ll need:
 
 We recommend you use the same version of {{es}}, {{kib}}, and APM Server. See [Installing the {{stack}}](../../../get-started/the-stack.md) for more information about installing these products.
 
-:::{image} ../../../images/observability-apm-architecture-diy.png
+:::{image} /solutions/images/observability-apm-architecture-diy.png
 :alt: Install Elastic APM yourself
 :::
 
@@ -765,7 +765,7 @@ For more information on how to combine Elastic and OpenTelemetry, see [OpenTelem
 
 Once you have at least one {{apm-agent}} sending data to APM Server, you can start visualizing your data in the [{{kib}} Applications UI](overviews.md).
 
-:::{image} ../../../images/observability-kibana-apm-sample-data.png
+:::{image} /solutions/images/observability-kibana-apm-sample-data.png
 :alt: Applications UI with data
 :screenshot:
 :::

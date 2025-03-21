@@ -28,7 +28,7 @@ Customize what the service map displays using either the query bar or the enviro
 If there’s a specific service that interests you, select that service to highlight its connections. Click **Focus map** to refocus the map on the selected service and lock the connection highlighting. Click the **Transactions** tab to jump to the Transaction overview for the selected service. You can also use the tabs at the top of the page to easily jump to the **Errors** or **Metrics** overview.
 
 
-:::{image} ../../../images/observability-service-maps-java.png
+:::{image} /solutions/images/observability-service-maps-java.png
 :alt: Example view of service maps in the Applications UI in Kibana
 :screenshot:
 :::
@@ -40,11 +40,11 @@ You can create machine learning jobs to calculate anomaly scores on APM transact
 
 |  |  |
 | --- | --- |
-| ![APM green service](../../../images/observability-green-service.png "") | Max anomaly score **≤25**. Service is healthy. |
-| ![APM yellow service](../../../images/observability-yellow-service.png "") | Max anomaly score **26-74**. Anomalous activity detected. Service may be degraded. |
-| ![APM red service](../../../images/observability-red-service.png "") | Max anomaly score **≥75**. Anomalous activity detected. Service is unhealthy. |
+| ![APM green service](/solutions/images/observability-green-service.png "") | Max anomaly score **≤25**. Service is healthy. |
+| ![APM yellow service](/solutions/images/observability-yellow-service.png "") | Max anomaly score **26-74**. Anomalous activity detected. Service may be degraded. |
+| ![APM red service](/solutions/images/observability-red-service.png "") | Max anomaly score **≥75**. Anomalous activity detected. Service is unhealthy. |
 
-:::{image} ../../../images/observability-apm-service-map-anomaly.png
+:::{image} /solutions/images/observability-apm-service-map-anomaly.png
 :alt: Example view of anomaly scores on service maps in the Applications UI
 :screenshot:
 :::

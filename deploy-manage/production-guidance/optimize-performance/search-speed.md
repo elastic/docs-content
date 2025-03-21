@@ -48,7 +48,7 @@ In particular, joins should be avoided. [`nested`](elasticsearch://reference/ela
 
 ## Search as few fields as possible [search-as-few-fields-as-possible]
 
-The more fields a [`query_string`](elasticsearch://reference/query-languages/query-dsl-query-string-query.md) or [`multi_match`](elasticsearch://reference/query-languages/query-dsl-multi-match-query.md) query targets, the slower it is. A common technique to improve search speed over multiple fields is to copy their values into a single field at index time, and then use this field at search time. This can be automated with the [`copy-to`](elasticsearch://reference/elasticsearch/mapping-reference/copy-to.md) directive of mappings without having to change the source of documents. Here is an example of an index containing movies that optimizes queries that search over both the name and the plot of the movie by indexing both values into the `name_and_plot` field.
+The more fields a [`query_string`](elasticsearch://reference/query-languages/query-dsl/query-dsl-query-string-query.md) or [`multi_match`](elasticsearch://reference/query-languages/query-dsl/query-dsl-multi-match-query.md) query targets, the slower it is. A common technique to improve search speed over multiple fields is to copy their values into a single field at index time, and then use this field at search time. This can be automated with the [`copy-to`](elasticsearch://reference/elasticsearch/mapping-reference/copy-to.md) directive of mappings without having to change the source of documents. Here is an example of an index containing movies that optimizes queries that search over both the name and the plot of the movie by indexing both values into the `name_and_plot` field.
 
 ```console
 PUT movies
@@ -146,13 +146,13 @@ GET index/_search
 
 ## Consider mapping identifiers as `keyword` [map-ids-as-keyword]
 
-Not all numeric data should be mapped as a [numeric](elasticsearch://reference/elasticsearch/mapping-reference/number.md) field data type. {{es}} optimizes numeric fields, such as `integer` or `long`, for [`range`](elasticsearch://reference/query-languages/query-dsl-range-query.md) queries. However, [`keyword`](elasticsearch://reference/elasticsearch/mapping-reference/keyword.md) fields are better for [`term`](elasticsearch://reference/query-languages/query-dsl-term-query.md) and other [term-level](elasticsearch://reference/query-languages/term-level-queries.md) queries.
+Not all numeric data should be mapped as a [numeric](elasticsearch://reference/elasticsearch/mapping-reference/number.md) field data type. {{es}} optimizes numeric fields, such as `integer` or `long`, for [`range`](elasticsearch://reference/query-languages/query-dsl/query-dsl-range-query.md) queries. However, [`keyword`](elasticsearch://reference/elasticsearch/mapping-reference/keyword.md) fields are better for [`term`](elasticsearch://reference/query-languages/query-dsl/query-dsl-term-query.md) and other [term-level](elasticsearch://reference/query-languages/query-dsl/term-level-queries.md) queries.
 
 Identifiers, such as an ISBN or a product ID, are rarely used in `range` queries. However, they are often retrieved using term-level queries.
 
 Consider mapping a numeric identifier as a `keyword` if:
 
-* You don’t plan to search for the identifier data using [`range`](elasticsearch://reference/query-languages/query-dsl-range-query.md) queries.
+* You don’t plan to search for the identifier data using [`range`](elasticsearch://reference/query-languages/query-dsl/query-dsl-range-query.md) queries.
 * Fast retrieval is important. `term` query searches on `keyword` fields are often faster than `term` searches on numeric fields.
 
 If you’re unsure which to use, you can use a [multi-field](elasticsearch://reference/elasticsearch/mapping-reference/multi-fields.md) to map the data as both a `keyword` *and* a numeric data type.
@@ -160,7 +160,7 @@ If you’re unsure which to use, you can use a [multi-field](elasticsearch://ref
 
 ## Avoid scripts [_avoid_scripts]
 
-If possible, avoid using [script](../../../explore-analyze/scripting.md)-based sorting, scripts in aggregations, and the [`script_score`](elasticsearch://reference/query-languages/query-dsl-script-score-query.md) query. See [Scripts, caching, and search speed](../../../explore-analyze/scripting/scripts-search-speed.md).
+If possible, avoid using [script](../../../explore-analyze/scripting.md)-based sorting, scripts in aggregations, and the [`script_score`](elasticsearch://reference/query-languages/query-dsl/query-dsl-script-score-query.md) query. See [Scripts, caching, and search speed](../../../explore-analyze/scripting/scripts-search-speed.md).
 
 
 ## Search rounded dates [_search_rounded_dates]

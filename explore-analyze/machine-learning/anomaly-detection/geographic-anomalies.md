@@ -27,7 +27,7 @@ This example uses the sample eCommerce orders and sample web logs data sets. For
 
 To get the best results from {{ml}} analytics, you must understand your data. You can use the **{{data-viz}}** in the **{{ml-app}}** app for this purpose. Search for specific fields or field types, such as geo-point fields in the sample data sets. You can see how many documents contain those fields within a specific time period and sample size. You can also see the number of distinct values, a list of example values, and preview them on a map. For example:
 
-:::{image} ../../../images/machine-learning-weblogs-data-visualizer-geopoint.jpg
+:::{image} /explore-analyze/images/machine-learning-weblogs-data-visualizer-geopoint.jpg
 :alt: A screenshot of a geo_point field in {{data-viz}}
 :screenshot:
 :::
@@ -45,7 +45,7 @@ To create an {{anomaly-job}} that uses the `lat_long` function, in {{kib}} you m
 
 For example, create a job that analyzes the sample eCommerce orders data set to find orders with unusual coordinates (`geoip.location` values) relative to the past behavior of each customer (`user` ID):
 
-:::{image} ../../../images/machine-learning-ecommerce-advanced-wizard-geopoint.jpg
+:::{image} /explore-analyze/images/machine-learning-ecommerce-advanced-wizard-geopoint.jpg
 :alt: A screenshot of creating an {{anomaly-job}} using the eCommerce data in {{kib}}
 :screenshot:
 :::
@@ -106,7 +106,7 @@ POST _ml/datafeeds/datafeed-ecommerce-geo/_start <4>
 
 Alternatively, create a job that analyzes the sample web logs data set to detect events with unusual coordinates (`geo.coordinates` values) or unusually high sums of transferred data (`bytes` values):
 
-:::{image} ../../../images/machine-learning-weblogs-advanced-wizard-geopoint.jpg
+:::{image} /explore-analyze/images/machine-learning-weblogs-advanced-wizard-geopoint.jpg
 :alt: A screenshot of creating an {{anomaly-job}} using the web logs data in {{kib}}
 :screenshot:
 :::
@@ -179,7 +179,7 @@ If you used APIs to create the jobs and {{dfeeds}}, you cannot see them in {{kib
 
 When you select a period that contains an anomaly in the **Anomaly Explorer** swim lane results, you can see a map of the typical and actual coordinates. For example, in the eCommerce sample data there is a user with anomalous shopping behavior:
 
-:::{image} ../../../images/machine-learning-ecommerce-anomaly-explorer-geopoint.jpg
+:::{image} /explore-analyze/images/machine-learning-ecommerce-anomaly-explorer-geopoint.jpg
 :alt: A screenshot of an anomalous event in the eCommerce data in Anomaly Explorer
 :screenshot:
 :::
@@ -188,7 +188,7 @@ A "typical" value indicates a centroid of a cluster of previously observed locat
 
 Likewise, there are time periods in the web logs sample data where there are both unusually high sums of data transferred and unusual geographical coordinates:
 
-:::{image} ../../../images/machine-learning-weblogs-anomaly-explorer-geopoint.jpg
+:::{image} /explore-analyze/images/machine-learning-weblogs-anomaly-explorer-geopoint.jpg
 :alt: A screenshot of an anomalous event in the web logs data in Anomaly Explorer
 :screenshot:
 :::
@@ -197,7 +197,7 @@ You can use the top influencer values to further filter your results and identif
 
 You can also view the anomaly in **Maps** by clicking **View in Maps** in the action menu in the anomaly table.
 
-:::{image} ../../../images/machine-learning-view-in-maps.jpg
+:::{image} /explore-analyze/images/machine-learning-view-in-maps.jpg
 :alt: A screenshot of the anomaly table with the Action menu opened and the "View in Maps" option selected
 :screenshot:
 :::
@@ -212,7 +212,7 @@ To integrate the results from your {{anomaly-job}} in **Maps**, click **Add laye
 
 For example, you can extend the map example from [Build a map to compare metrics by country or region](../../visualize/maps/maps-getting-started.md) to include a layer that uses your web logs {{anomaly-job}}:
 
-:::{image} ../../../images/machine-learning-weblogs-anomaly-map.jpg
+:::{image} /explore-analyze/images/machine-learning-weblogs-anomaly-map.jpg
 :alt: A screenshot of an anomaly within the Maps app
 :screenshot:
 :::

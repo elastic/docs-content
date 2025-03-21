@@ -42,7 +42,7 @@ You can add exceptions to a rule from the rule details page, the Alerts table, t
         2. In the Rules table, search for the rule that you want to add an exception to, then click its name to open the rule details.
         3. Scroll down the rule details page, select the **Rule exceptions** tab, then click **Add rule exception**.
 
-            :::{image} ../../../images/security-rule-exception-tab.png
+            :::{image} /solutions/images/security-rule-exception-tab.png
             :alt: Detail of rule exceptions tab
             :screenshot:
             :::
@@ -117,7 +117,7 @@ You can add exceptions to a rule from the rule details page, the Alerts table, t
 
         In the following example, the exception was created from the Rules page and prevents the rule from generating alerts when the `svchost.exe` process runs on hostname `siem-kibana`.
 
-        :::{image} ../../../images/security-add-exception-ui.png
+        :::{image} /solutions/images/security-add-exception-ui.png
         :alt: add exception ui
         :screenshot:
         :::
@@ -190,7 +190,7 @@ Additionally, to add an Endpoint exception to an endpoint protection rule, there
 
     The **Add Endpoint Exception** flyout opens.
 
-    :::{image} ../../../images/security-endpoint-add-exp.png
+    :::{image} /solutions/images/security-endpoint-add-exp.png
     :alt: endpoint add exp
     :screenshot:
     :::
@@ -203,7 +203,7 @@ Additionally, to add an Endpoint exception to an endpoint protection rule, there
 
 
     ::::{note}
-    * Fields with conflicts are marked with a warning icon (![Field conflict warning icon](../../../images/security-field-warning-icon.png "title =20x20")). Using these fields might cause unexpected exceptions behavior. For more information, refer to [Troubleshooting type conflicts and unmapped fields](../../../troubleshoot/security/detection-rules.md#rule-exceptions-field-conflicts).
+    * Fields with conflicts are marked with a warning icon (![Field conflict warning icon](/solutions/images/security-field-warning-icon.png "title =20x20")). Using these fields might cause unexpected exceptions behavior. For more information, refer to [Troubleshooting type conflicts and unmapped fields](../../../troubleshoot/security/detection-rules.md#rule-exceptions-field-conflicts).
     * The `is one of` and `is not one of` operators support identical, case-sensitive values. For example, if you want to match the values `Windows` and `windows`, add both values to the **Value** field.
 
     ::::
@@ -272,7 +272,7 @@ Only these objects require nested conditions to ensure the exception functions c
 
 Creates an exception that excludes all LFC-signed trusted processes:
 
-:::{image} ../../../images/security-nested-exp.png
+:::{image} /solutions/images/security-nested-exp.png
 :alt: nested exp
 :screenshot:
 :::
@@ -287,7 +287,7 @@ To view a rule’s exceptions:
 
     From the list, you can filter, edit, and delete exceptions. You can also toggle between **Active exceptions** and **Expired exceptions**.
 
-    :::{image} ../../../images/security-manage-default-rule-list.png
+    :::{image} /solutions/images/security-manage-default-rule-list.png
     :alt: A default rule list
     :screenshot:
     :::
@@ -303,7 +303,7 @@ Changes that you make to the exception also apply to other rules that use the ex
 ::::
 
 
-:::{image} ../../../images/security-exception-affects-multiple-rules.png
+:::{image} /solutions/images/security-exception-affects-multiple-rules.png
 :alt: Exception that affects multiple rules
 :screenshot:
 :::

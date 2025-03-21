@@ -32,10 +32,9 @@ Having a different log file for raw events also prevents event data from drownin
 
 The events log file is not collected by the {{agent}} monitoring. If the events log files are needed, they can be collected with the diagnostics or directly copied from the host running {{agent}}.
 
-|     |     |
+| Setting | Description |
 | --- | --- |
-| **Setting**<br> | **Description**<br> |
-| `agent.logging.level`<br> | The minimum log level.<br><br>Possible values:<br><br>* `error`: Logs errors and critical errors.<br>* `warning`: Logs warnings, errors, and critical errors.<br>* `info`: Logs informational messages, including the number of events that are published. Also logs any warnings, errors, or critical errors.<br>* `debug`: Logs debug messages, including a detailed printout of all events flushed. Also logs informational messages, warnings, errors, and critical errors. When the log level is `debug`, you can specify a list of **selectors** to display debug messages for specific components. If no selectors are specified, the `*` selector is used to display debug messages for all components.<br><br>Default: `info`<br> |
+| `agent.logging.level`<br> | The minimum log level.<br><br>Possible values:<br><br>• `error`: Logs errors and critical errors.<br>• `warning`: Logs warnings, errors, and critical errors.<br>• `info`: Logs informational messages, including the number of events that are published. Also logs any warnings, errors, or critical errors.<br>• `debug`: Logs debug messages, including a detailed printout of all events flushed. Also logs informational messages, warnings, errors, and critical errors. When the log level is `debug`, you can specify a list of **selectors** to display debug messages for specific components. If no selectors are specified, the `*` selector is used to display debug messages for all components.<br><br>Default: `info`<br> |
 | `agent.logging.selectors`<br> | Specify the selector tags that are used by different {{agent}} components for debugging. To debug the output for all components, use `*`. To display debug messages related to event publishing, set to `publish`. Multiple selectors can be chained.<br><br>Possible values: `[beat]`, `[publish]`, `[service]`<br> |
 | `agent.logging.to_stderr`<br> | Set to `true` to write all logging output to the `stderr` output—this is equivalent to using the `-e` command line option.<br><br>Default: `true`<br> |
 | `agent.logging.to_syslog`<br> | Set to `true` to write all logging output to the `syslog` output.<br><br>Default: `false`<br> |

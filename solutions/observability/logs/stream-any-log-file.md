@@ -272,7 +272,7 @@ inputs:
 
 Next, set the values for these fields:
 
-* `hosts` – Copy the {{es}} endpoint from **Help menu (![help icon](../../../images/observability-help-icon.png "")) → Connection details**. For example, `https://my-deployment.es.us-central1.gcp.cloud.es.io:443`.
+* `hosts` – Copy the {{es}} endpoint from **Help menu (![help icon](/solutions/images/observability-help-icon.png "")) → Connection details**. For example, `https://my-deployment.es.us-central1.gcp.cloud.es.io:443`.
 * `api-key` – Use an API key to grant the agent access to {{es}}. To create an API key for your agent, refer to the [Create API keys for standalone agents](/reference/ingestion-tools/fleet/grant-access-to-elasticsearch.md#create-api-key-standalone-agent) documentation.
 
     ::::{note}

@@ -78,7 +78,7 @@ The size and the number of nodes in a Kubernetes cluster can be large at times, 
 
 ### Step 2: Configure {{agent}} policy [_step_2_configure_agent_policy]
 
-The {{agent}} needs to be assigned to a policy to enable the proper inputs. To achieve Kubernetes observability, the policy needs to include the Kubernetes integration. Refer to [Create a policy](/reference/ingestion-tools/fleet/agent-policy.md#create-a-policy) and [Add an integration to a policy](/reference/ingestion-tools/fleet/agent-policy.md#add-integration) to learn how to configure the [Kubernetes integration](integration-docs://reference/kubernetes.md).
+The {{agent}} needs to be assigned to a policy to enable the proper inputs. To achieve Kubernetes observability, the policy needs to include the Kubernetes integration. Refer to [Create a policy](/reference/ingestion-tools/fleet/agent-policy.md#create-a-policy) and [Add an integration to a policy](/reference/ingestion-tools/fleet/agent-policy.md#add-integration) to learn how to configure the [Kubernetes integration](integration-docs://reference/kubernetes/index.md).
 
 
 ### Step 3: Enroll {{agent}} to the policy [_step_3_enroll_agent_to_the_policy]

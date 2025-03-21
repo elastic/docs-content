@@ -38,7 +38,7 @@ When you [configure inputs](/reference/ingestion-tools/fleet/elastic-agent-input
 | `elasticsearch/metrics` | Collects metrics about {{es}}. | [Elasticsearch module](beats://reference/metricbeat/metricbeat-module-elasticsearch.md) ({{metricbeat}} docs) |
 | `etcd/metrics` | This module targets Etcd V2 and V3. When using V2, metrics are collected using [Etcd v2 API](https://coreos.com/etcd/docs/latest/v2/api.md). When using V3, metrics are retrieved from the `/metrics`` endpoint as intended for [Etcd v3](https://coreos.com/etcd/docs/latest/metrics.md). | [Etcd module](beats://reference/metricbeat/metricbeat-module-etcd.md) ({{metricbeat}} docs) |
 | `gcp/metrics` | Periodically fetches monitoring metrics from Google Cloud Platform using [Stackdriver Monitoring API](https://cloud.google.com/monitoring/api/metrics_gcp) for Google Cloud Platform services. | [Google Cloud Platform module](beats://reference/metricbeat/metricbeat-module-gcp.md) ({{metricbeat}} docs) |
-| `haproxy/metrics` | Collects stats from [HAProxy](http://www.haproxy.org/). It supports collection from TCP sockets, UNIX sockets, or HTTP with or without basic authentication. | [HAProxy module](beats://reference/metricbeat/metricbeat-overview.md) ({{metricbeat}} docs) |
+| `haproxy/metrics` | Collects stats from [HAProxy](http://www.haproxy.org/). It supports collection from TCP sockets, UNIX sockets, or HTTP with or without basic authentication. | [HAProxy module](beats://reference/metricbeat/index.md) ({{metricbeat}} docs) |
 | `http/metrics` | Used to call arbitrary HTTP endpoints for which a dedicated Metricbeat module is not available. | [HTTP module](beats://reference/metricbeat/metricbeat-module-http.md) ({{metricbeat}} docs) |
 | `iis/metrics` | Periodically retrieve IIS web server related metrics. | [IIS module](beats://reference/metricbeat/metricbeat-module-iis.md) ({{metricbeat}} docs) |
 | `jolokia/metrics` | Collects metrics from [Jolokia agents](https://jolokia.org/reference/html/agents.html) running on a target JMX server or dedicated proxy server. | [Jolokia module](beats://reference/metricbeat/metricbeat-module-jolokia.md) ({{metricbeat}} docs) |
@@ -105,12 +105,12 @@ When you [configure inputs](/reference/ingestion-tools/fleet/elastic-agent-input
 | `netflow` | Reads NetFlow and IPFIX exported flows and options records over UDP. | [NetFlow input](beats://reference/filebeat/filebeat-input-netflow.md) ({{filebeat}} docs) |
 | `o365audit` | [beta] Retrieves audit messages from Office 365 and Azure AD activity logs. | [Office 365 Management Activity API input](beats://reference/filebeat/filebeat-input-o365audit.md) ({{filebeat}} docs) |
 | `osquery` | Collects and decodes the result logs written by [osqueryd](https://osquery.readthedocs.io/en/latest/introduction/using-osqueryd/) in the JSON format. | - |
-| `redis` | [beta] Reads entries from Redis slowlogs. | [Redis input](beats://reference/filebeat/filebeat-overview.md) ({{filebeat}} docs) |
+| `redis` | [beta] Reads entries from Redis slowlogs. | [Redis input](beats://reference/filebeat/index.md) ({{filebeat}} docs) |
 | `syslog` | Reads Syslog events as specified by RFC 3164 and RFC 5424, over TCP, UDP, or a Unix stream socket. | [Syslog input](beats://reference/filebeat/filebeat-input-syslog.md) ({{filebeat}} docs) |
 | `tcp` | Reads events over TCP. | [TCP input](beats://reference/filebeat/filebeat-input-tcp.md) ({{filebeat}} docs) |
 | `udp` | Reads events over UDP. | [UDP input](beats://reference/filebeat/filebeat-input-udp.md) ({{filebeat}} docs) |
-| `unix` | [beta] Reads events over a stream-oriented Unix domain socket. | [Unix input](beats://reference/filebeat/filebeat-overview.md) ({{filebeat}} docs) |
-| `winlog` | Reads from one or more event logs using Windows APIs, filters the events based on user-configured criteria, then sends the event data to the configured outputs ({{es}} or {{ls}}). | [Winlogbeat Overview](beats://reference/winlogbeat/_winlogbeat_overview.md) ({{winlogbeat}} docs) |
+| `unix` | [beta] Reads events over a stream-oriented Unix domain socket. | [Unix input](beats://reference/filebeat/index.md) ({{filebeat}} docs) |
+| `winlog` | Reads from one or more event logs using Windows APIs, filters the events based on user-configured criteria, then sends the event data to the configured outputs ({{es}} or {{ls}}). | [Winlogbeat Overview](beats://reference/winlogbeat/index.md) ({{winlogbeat}} docs) |
 
 ::::
 
@@ -132,7 +132,7 @@ When you [configure inputs](/reference/ingestion-tools/fleet/elastic-agent-input
 
 | Input | Description | Learn more |
 | --- | --- | --- |
-| `packet` | Sniffs the traffic between your servers, parses the application-level protocols on the fly, and correlates the messages into transactions. | [Packetbeat overview](beats://reference/packetbeat/packetbeat-overview.md) ({{packetbeat}} docs) |
+| `packet` | Sniffs the traffic between your servers, parses the application-level protocols on the fly, and correlates the messages into transactions. | [Packetbeat overview](beats://reference/packetbeat/index.md) ({{packetbeat}} docs) |
 
 ::::
 

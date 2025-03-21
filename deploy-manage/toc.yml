@@ -18,40 +18,14 @@ toc:
                   - file: deploy/elastic-cloud/google-cloud-platform-marketplace.md                  
                   - file: deploy/elastic-cloud/heroku.md
                     children:
-                      - file: deploy/elastic-cloud/ech-getting-started-installing.md
+                      - file: deploy/elastic-cloud/heroku-getting-started-installing.md
                         children:
-                          - file: deploy/elastic-cloud/ech-getting-started-installing-version.md
-                          - file: deploy/elastic-cloud/ech-getting-started-removing.md
-                      - file: deploy/elastic-cloud/ech-migrating.md
-                      - file: deploy/elastic-cloud/ech-getting-started-accessing.md
-                        children:
-                          - file: deploy/elastic-cloud/ech-access-kibana.md
-                      - file: deploy/elastic-cloud/ech-working-with-elasticsearch.md
-                      - file: deploy/elastic-cloud/ech-api-console.md
-                      - file: deploy/elastic-cloud/ech-getting-started-next-steps.md
-                      - file: deploy/elastic-cloud/ech-migrate-data2.md
-                        children:
-                          - file: deploy/elastic-cloud/ech-migrate-data-internal.md
-                      - file: deploy/elastic-cloud/ech-about.md
-                        children:
-                          - file: deploy/elastic-cloud/ech-licensing.md
-                          - file: deploy/elastic-cloud/ech-version-policy.md
-                          - file: deploy/elastic-cloud/ech-reference-hardware.md
-                            children:
-                              - file: deploy/elastic-cloud/ech-gcp-instance-configuration.md
-                              - file: deploy/elastic-cloud/ech-default-gcp-configurations.md
-                              - file: deploy/elastic-cloud/ech-aws-instance-configuration.md
-                              - file: deploy/elastic-cloud/ech-default-aws-configurations.md
-                              - file: deploy/elastic-cloud/ech-azure-instance-configuration.md
-                              - file: deploy/elastic-cloud/ech-default-azure-configurations.md
-                          - file: deploy/elastic-cloud/ech-reference-regions.md
-                          - file: deploy/elastic-cloud/ech-service-status.md
-                            children:
-                              - file: deploy/elastic-cloud/echsubscribe_to_individual_regionscomponents.md
-                              - file: deploy/elastic-cloud/echservice_status_api.md
-                          - file: deploy/elastic-cloud/ech-get-help.md
-                          - file: deploy/elastic-cloud/ech-restrictions.md
-                          - file: deploy/elastic-cloud/ech-whats-new.md
+                          - file: deploy/elastic-cloud/heroku-getting-started-removing.md
+                      - file: deploy/elastic-cloud/heroku-getting-started-accessing.md
+                      - file: deploy/elastic-cloud/heroku-working-with-elasticsearch.md
+                      - file: deploy/elastic-cloud/heroku-migrating.md
+                      - file: deploy/elastic-cloud/heroku-reference-hardware.md
+                      - file: deploy/elastic-cloud/heroku-reference-regions.md
           - file: deploy/elastic-cloud/serverless.md
             children:
               - file: deploy/elastic-cloud/differences-from-other-elasticsearch-offerings.md
