@@ -16,10 +16,8 @@ toc:
       - file: cloud-on-k8s/cloud-on-k8s/k8s-securing-stack.md
   - file: cloud/cloud-enterprise/index.md
     children:
-      - file: cloud/cloud-enterprise/ece_re_running_the_ece_upgrade.md
       - file: cloud/cloud-enterprise/ece-securing-clusters.md
       - file: cloud/cloud-enterprise/ece-securing-ece.md
-      - file: cloud/cloud-enterprise/ece-upgrade.md
   - file: cloud/cloud/index.md
     children:
       - file: cloud/cloud/ec-faq-technical.md
