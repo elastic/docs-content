@@ -237,8 +237,6 @@ When working with relevance scoring in {{esql}}, it's important to understand ho
 In current versions, when you include `METADATA _score`, both full-text search functions (like `match()` or the `:` operator) and filtering operations (like range conditions and exact matches) contribute to the relevance score. Full-text search functions provide variable scores based on relevance, while filtering operations add a constant score component.
 
 This behavior will change in future versions, where only full-text search functions will affect scoring, and filtering operations won't contribute to the score at all.
-
-Remember that including `METADATA _score` doesn't automatically sort your results by relevance - you must explicitly use `SORT _score DESC` when the order of results matters. 
 :::
 
 ## Step 5: Filter and find exact matches
