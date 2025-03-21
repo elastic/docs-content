@@ -504,6 +504,7 @@ toc:
       - file: security/secure-clients-integrations.md
         children:
           - file: security/httprest-clients-security.md
+      - file: security/limitations.md
   - file: users-roles.md
     children:
       - file: users-roles/cloud-organization.md

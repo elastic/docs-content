@@ -11,19 +11,10 @@ toc:
   - file: apm-agent-ruby/apm-agent-ruby/index.md
     children:
       - file: apm-agent-ruby/apm-agent-ruby/release-notes-4.x.md
-  - file: cloud-on-k8s/cloud-on-k8s/index.md
-    children:
-      - file: cloud-on-k8s/cloud-on-k8s/k8s-securing-stack.md
-  - file: cloud/cloud-enterprise/index.md
-    children:
-      - file: cloud/cloud-enterprise/ece-securing-clusters.md
-      - file: cloud/cloud-enterprise/ece-securing-ece.md
   - file: cloud/cloud/index.md
     children:
-      - file: cloud/cloud/ec-faq-technical.md
       - file: cloud/cloud/ec-monitoring-setup.md
       - file: cloud/cloud/ec-planning.md
-      - file: cloud/cloud/ec-security.md
   - file: docs-content/serverless/index.md
     children:
       - file: docs-content/serverless/observability-ai-assistant.md
@@ -34,15 +25,10 @@ toc:
       - file: docs-content/serverless/what-is-observability-serverless.md
   - file: elasticsearch/elasticsearch-reference/index.md
     children:
-      - file: elasticsearch/elasticsearch-reference/ip-filtering.md
       - file: elasticsearch/elasticsearch-reference/scalability.md
-      - file: elasticsearch/elasticsearch-reference/secure-cluster.md
-      - file: elasticsearch/elasticsearch-reference/security-files.md
-      - file: elasticsearch/elasticsearch-reference/security-limitations.md
   - file: kibana/kibana/index.md
     children:
       - file: kibana/kibana/reporting-production-considerations.md     
-      - file: kibana/kibana/xpack-security.md
   - file: observability-docs/observability/index.md
     children:
       - file: observability-docs/observability/index.md
