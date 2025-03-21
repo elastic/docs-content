@@ -27,26 +27,26 @@ Elastic does not endorse, promote or provide support for this application; for n
 First, you’ll need to choose ODBC as the source to load data from. Once launched, click on the *Get Data* button (under *Home* tab), then on the *More…​* button at the bottom of the list:
 
 $$$apps_pbi_fromodbc1$$$
-![apps pbi fromodbc1](../../../images/elasticsearch-reference-apps_pbi_fromodbc1.png "")
+![apps pbi fromodbc1](/explore-analyze/images/elasticsearch-reference-apps_pbi_fromodbc1.png "")
 
 In the new opened window scroll at the bottom of the *All* list and select the *ODBC* entry, then click on the *Connect* button:
 
 $$$apps_pbi_fromodbc2$$$
-![apps pbi fromodbc2](../../../images/elasticsearch-reference-apps_pbi_fromodbc2.png "")
+![apps pbi fromodbc2](/explore-analyze/images/elasticsearch-reference-apps_pbi_fromodbc2.png "")
 
 This will replace current window with a new *From ODBC* one, where you’ll have to select a previously configured DSN:
 
 $$$apps_pbi_dsn$$$
-![apps pbi dsn](../../../images/elasticsearch-reference-apps_pbi_dsn.png "")
+![apps pbi dsn](/explore-analyze/images/elasticsearch-reference-apps_pbi_dsn.png "")
 
 Once connected Power BI will read {{es}}'s catalog and offer the user a choice of tables (indices) to load data from. Clicking on one of the tables will load a preview of the data within:
 
 $$$apps_pbi_picktable$$$
-![apps pbi picktable](../../../images/elasticsearch-reference-apps_pbi_picktable.png "")
+![apps pbi picktable](/explore-analyze/images/elasticsearch-reference-apps_pbi_picktable.png "")
 
 Now tick the chosen table and click on the *Load* button. Power BI will now load and analyze the data, populating a list with the available columns. These can now be used to build the desired visualisation:
 
 $$$apps_pbi_loaded$$$
-![apps pbi loaded](../../../images/elasticsearch-reference-apps_pbi_loaded.png "")
+![apps pbi loaded](/explore-analyze/images/elasticsearch-reference-apps_pbi_loaded.png "")
 
 

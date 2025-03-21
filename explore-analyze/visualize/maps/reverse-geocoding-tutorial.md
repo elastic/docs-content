@@ -22,7 +22,7 @@ You’ll learn to:
 
 When you complete this tutorial, you’ll have a map that looks like this:
 
-:::{image} ../../../images/kibana-csa_regions_by_web_traffic.png
+:::{image} /explore-analyze/images/kibana-csa_regions_by_web_traffic.png
 :alt: Map showing custom regions
 :screenshot:
 :::
@@ -67,7 +67,7 @@ To get the CSA boundary data:
 
 Looking at the map, you get a sense of what constitutes a metro area in the eyes of the Census Bureau.
 
-:::{image} ../../../images/kibana-csa_regions.png
+:::{image} /explore-analyze/images/kibana-csa_regions.png
 :alt: Map showing metro area
 :screenshot:
 :::
@@ -147,12 +147,12 @@ To visualize CSA regions by web log traffic, the web log traffic must contain a 
 8. Set the data view to **Kibana Sample Data Logs**.
 9. Open the [time filter](../../query-filter/filtering.md), and set the time range to the last 30 days.
 10. Scan through the list of **Available fields** until you find the `csa.GEOID` field. You can also search for the field by name.
-11. Click ![Add icon](../../../images/kibana-add-icon.png "") to toggle the field into the document table.
+11. Click ![Add icon](/explore-analyze/images/kibana-add-icon.png "") to toggle the field into the document table.
 12. Find the *csa.NAME* field and add it to your document table.
 
 Your web log data now contains `csa.GEOID` and `csa.NAME` fields from the matching **csa** region. Web log traffic not contained in a CSA region does not have values for `csa.GEOID` and `csa.NAME` fields.
 
-:::{image} ../../../images/kibana-discover_enriched_web_log.png
+:::{image} /explore-analyze/images/kibana-discover_enriched_web_log.png
 :alt: View of data in Discover
 :screenshot:
 :::
@@ -187,7 +187,7 @@ Now that our web traffic contains CSA region identifiers, you’ll visualize CSA
     3. Click **Save and add to library**.
 
 
-:::{image} ../../../images/kibana-csa_regions_by_web_traffic.png
+:::{image} /explore-analyze/images/kibana-csa_regions_by_web_traffic.png
 :alt: Final map showing custom regions
 :screenshot:
 :::

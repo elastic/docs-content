@@ -12,7 +12,7 @@ AutoOps diagnoses issues in Elasticsearch by analyzing hundreds of metrics, prov
 
 AutoOps is currently only available for [{{ech}} deployments](/deploy-manage/deploy/elastic-cloud/cloud-hosted.md).
 
-:::{image} ../../images/cloud-autoops-overview-page.png
+:::{image} /deploy-manage/images/cloud-autoops-overview-page.png
 :alt: The Overview page
 :::
 

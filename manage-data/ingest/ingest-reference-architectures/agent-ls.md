@@ -5,7 +5,7 @@ mapped_pages:
 
 # Elastic Agent to Logstash to Elasticsearch [agent-ls]
 
-:::{image} ../../../images/ingest-ea-ls-es.png
+:::{image} /manage-data/images/ingest-ea-ls-es.png
 :alt: Image showing {{agent}} to {{ls}} to {{es}}
 :::
 

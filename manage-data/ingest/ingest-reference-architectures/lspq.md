@@ -5,7 +5,7 @@ mapped_pages:
 
 # Elastic Agent to Logstash to Elasticsearch: Logstash Persistent Queue (PQ) for buffering [lspq]
 
-:::{image} ../../../images/ingest-ea-lspq-es.png
+:::{image} /manage-data/images/ingest-ea-lspq-es.png
 :alt: Image showing {{agent}} collecting data
 :::
 

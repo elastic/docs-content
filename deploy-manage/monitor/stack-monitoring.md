@@ -36,7 +36,7 @@ You can collect and ship data directly to your monitoring cluster rather than ro
 
 The following diagram illustrates a typical monitoring architecture with separate production and monitoring clusters. This example shows {{metricbeat}}, but you can use {{agent}} instead.
 
-:::{image} /images/elasticsearch-reference-architecture.png
+:::{image} /deploy-manage/images/elasticsearch-reference-architecture.png
 :alt: A typical monitoring environment
 :::
 

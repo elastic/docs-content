@@ -5,7 +5,7 @@ mapped_pages:
 
 # Elastic Agent to Logstash for routing to multiple Elasticsearch clusters and additional destinations [ls-multi]
 
-:::{image} ../../../images/ingest-ea-ls-multi.png
+:::{image} /manage-data/images/ingest-ea-ls-multi.png
 :alt: Image showing {{agent}} collecting and routing data to multiple destinations
 :::
 

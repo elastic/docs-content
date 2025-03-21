@@ -32,7 +32,7 @@ Keep in mind that some features such as [Time Series Data Streams (TSDS)](../dat
 
 A data stream consists of one or more [hidden](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#index-hidden), auto-generated backing indices.
 
-:::{image} ../../images/elasticsearch-reference-data-streams-diagram.svg
+:::{image} /manage-data/images/elasticsearch-reference-data-streams-diagram.svg
 :alt: data streams diagram
 :::
 
@@ -49,7 +49,7 @@ The name pattern for the backing indices is an implementation detail and no inte
 
 When you submit a read request to a data stream, the stream routes the request to all its backing indices.
 
-:::{image} ../../images/elasticsearch-reference-data-streams-search-request.svg
+:::{image} /manage-data/images/elasticsearch-reference-data-streams-search-request.svg
 :alt: data streams search request
 :::
 
@@ -58,7 +58,7 @@ When you submit a read request to a data stream, the stream routes the request t
 
 The most recently created backing index is the data stream’s write index. The stream adds new documents to this index only.
 
-:::{image} ../../images/elasticsearch-reference-data-streams-index-request.svg
+:::{image} /manage-data/images/elasticsearch-reference-data-streams-index-request.svg
 :alt: data streams index request
 :::
 

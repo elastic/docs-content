@@ -10,7 +10,7 @@ mapped_pages:
 
 Vector layers display points, lines, and polygons.
 
-:::{image} ../../../images/kibana-vector_layer.png
+:::{image} /explore-analyze/images/kibana-vector_layer.png
 :alt: vector layer
 :screenshot:
 :::

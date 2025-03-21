@@ -5,7 +5,7 @@ mapped_pages:
 
 # Elastic Agent to Elasticsearch with Kafka as middleware message queue [agent-kafka-es]
 
-:::{image} ../../../images/ingest-ea-kafka.png
+:::{image} /manage-data/images/ingest-ea-kafka.png
 :alt: Image showing {{agent}} collecting data and using Kafka as a message queue enroute to {{es}}
 :::
 

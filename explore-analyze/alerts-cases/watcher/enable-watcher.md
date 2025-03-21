@@ -128,7 +128,7 @@ PUT _watcher/watch/test-alarm
 
 **In Elasticsearch versions before 7.0:**, you are not required to use the Elasticsearch keystore. Instead, you can use the console Elasticsearch settings editor for your deployment.
 
-:::{image} ../../../images/cloud-user-settings.png
+:::{image} /explore-analyze/images/cloud-user-settings.png
 :alt: Advanced Alerting configuration
 :::
 

@@ -18,7 +18,7 @@ $$$import-export-console-requests$$$
 
 **Console** is an interactive UI for sending requests to [{{es}} APIs](elasticsearch://reference/elasticsearch/rest-apis/index.md) and [{{kib}} APIs](https://www.elastic.co/docs/api) and viewing their responses.
 
-:::{image} ../../../images/kibana-console.png
+:::{image} /explore-analyze/images/kibana-console.png
 :alt: Console
 :screenshot:
 :::
@@ -27,7 +27,7 @@ To go to **Console**, find **Dev Tools** in the navigation menu or use the [glob
 
 You can also find Console directly on certain Search solution and Elasticsearch serverless project pages, where you can expand it from the footer. This Console, called **Persistent Console**, has the same capabilities and shares the same history as the Console in **Dev Tools**.
 
-:::{image} ../../../images/kibana-persistent-console.png
+:::{image} /explore-analyze/images/kibana-persistent-console.png
 :alt: Console
 :screenshot:
 :::
@@ -105,7 +105,7 @@ GET /_search
 
 Click **Variables** to create, edit, and delete variables.
 
-:::{image} ../../../images/kibana-variables.png
+:::{image} /explore-analyze/images/kibana-variables.png
 :alt: Variables
 :screenshot:
 :::
