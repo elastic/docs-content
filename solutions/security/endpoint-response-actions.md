@@ -311,7 +311,7 @@ This panel displays only the response actions that you have the user role or pri
 
 You can use this panel to build commands with less typing. Click the add icon (![Add icon](/solutions/images/security-add-command-icon.png "title =20x20")) to add a command to the input area, enter any additional parameters or a comment, then press **Return** to run the command.
 
-If the endpoint is running an older version of {{agent}}, some response actions may not be supported, as indicated by an informational icon and tooltip. [Upgrade {{agent}}](/reference/ingestion-tools/fleet/upgrade-elastic-agent.md) on the endpoint to be able to use the latest response actions.
+If the endpoint is running an older version of {{agent}}, some response actions may not be supported, as indicated by an informational icon and tooltip. [Upgrade {{agent}}](/reference/fleet/upgrade-elastic-agent.md) on the endpoint to be able to use the latest response actions.
 
 :::{image} /solutions/images/security-response-console-unsupported-command.png
 :alt: Unsupported response action with tooltip

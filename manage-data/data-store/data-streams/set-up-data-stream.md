@@ -21,7 +21,7 @@ You can also [convert an index alias to a data stream](#convert-index-alias-to-d
 ::::{important}
 If you use {{fleet}}, {{agent}}, or {{ls}}, skip this tutorial. They all set up data streams for you.
 
-For {{fleet}} and {{agent}}, check out this [data streams documentation](/reference/ingestion-tools/fleet/data-streams.md). For {{ls}}, check out the [data streams settings](logstash://reference/plugins-outputs-elasticsearch.md#plugins-outputs-elasticsearch-data_stream) for the `elasticsearch output` plugin.
+For {{fleet}} and {{agent}}, check out this [data streams documentation](/reference/fleet/data-streams.md). For {{ls}}, check out the [data streams settings](logstash://reference/plugins-outputs-elasticsearch.md#plugins-outputs-elasticsearch-data_stream) for the `elasticsearch output` plugin.
 
 ::::
 
@@ -150,7 +150,7 @@ PUT _component_template/my-settings
 
 Use your component templates to create an index template. Specify:
 
-* One or more index patterns that match the data stream’s name. We recommend using our [data stream naming scheme](/reference/ingestion-tools/fleet/data-streams.md#data-streams-naming-scheme).
+* One or more index patterns that match the data stream’s name. We recommend using our [data stream naming scheme](/reference/fleet/data-streams.md#data-streams-naming-scheme).
 * That the template is data stream enabled.
 * Any component templates that contain your mappings and index settings.
 * A priority higher than `200` to avoid collisions with built-in templates. See [Avoid index pattern collisions](../templates.md#avoid-index-pattern-collisions).
