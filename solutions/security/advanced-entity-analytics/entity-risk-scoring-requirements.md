@@ -31,6 +31,7 @@ To turn on the risk scoring engine, you need the following:
 
 - `manage_index_templates`
 - `manage_transform`
+- `manage_ingest_pipelines`
 
 #### Index
 
