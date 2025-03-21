@@ -22,7 +22,7 @@ You’ll learn to:
 
 When you complete this tutorial, you’ll have a map that looks like this:
 
-:::{image} ../../../images/kibana-construction_zones.png
+:::{image} /explore-analyze/images/kibana-construction_zones.png
 :alt: construction zones
 :screenshot:
 :::
@@ -367,12 +367,12 @@ To get to the fun of visualizing and alerting on Portland public transport vehic
 ::::::{tab-item} Existing agent policy
 If you already have an agent policy, get its identifier from the `View policy` action fly out
 
-:::{image} ../../../images/kibana-agent-policy-id.png
+:::{image} /explore-analyze/images/kibana-agent-policy-id.png
 :alt: agent policy id
 :screenshot:
 :::
 
-:::{image} ../../../images/kibana-policy_id.png
+:::{image} /explore-analyze/images/kibana-policy_id.png
 :alt: policy id
 :screenshot:
 :::
@@ -468,7 +468,7 @@ POST kbn:/api/data_views/data_view
 
 {{kib}} shows the fields in your data view.
 
-:::{image} ../../../images/kibana-data_view.png
+:::{image} /explore-analyze/images/kibana-data_view.png
 :alt: data view
 :screenshot:
 :::
@@ -486,7 +486,7 @@ You may want to tweak this Data View to adjust the field names and number or dat
 3. Open the [time filter](../../query-filter/filtering.md), and set the time range to the last 15 minutes.
 4. Expand a document and explore some of the fields that you will use later in this tutorial: `trimet.bearing`, `trimet.inCongestion`, `trimet.location`, and `trimet.vehicleID`.
 
-:::{image} ../../../images/kibana-discover.png
+:::{image} /explore-analyze/images/kibana-discover.png
 :alt: discover
 :screenshot:
 :::
@@ -532,7 +532,7 @@ Add a layer to show the vehicle routes for the last 15 minutes.
 
 At this point, you have a map with lines that represent the routes of the TriMet vehicles as they move around the city.
 
-:::{image} ../../../images/kibana-tracks_layer.png
+:::{image} /explore-analyze/images/kibana-tracks_layer.png
 :alt: tracks layer
 :screenshot:
 :::
@@ -568,7 +568,7 @@ Add a layer that uses attributes in the data to set the style and orientation of
     4. Set **Border width** to 0.
     5. Change **Symbol orientation** to use **By value** and the `trimet.bearing` field.
 
-       :::{image} ../../../images/kibana-top_hits_layer_style.png
+       :::{image} /explore-analyze/images/kibana-top_hits_layer_style.png
        :alt: top hits layer style
        :screenshot:
        :::
@@ -578,7 +578,7 @@ Add a layer that uses attributes in the data to set the style and orientation of
 
 Your map should automatically refresh every 10 seconds to show the latest vehicle positions and tracks.
 
-:::{image} ../../../images/kibana-tracks_and_top_hits.png
+:::{image} /explore-analyze/images/kibana-tracks_and_top_hits.png
 :alt: tracks and top hits
 :screenshot:
 :::
@@ -599,7 +599,7 @@ Add a layer for construction zones, which you will draw on the map. The construc
 4. Click **Create index**.
 5. Draw 2 or 3 construction zones on your map:
 
-    1. In the toolbar on left side of the map, select the bounding box icon ![bounding box icon](../../../images/kibana-bounding_box_icon.png "").
+    1. In the toolbar on left side of the map, select the bounding box icon ![bounding box icon](/explore-analyze/images/kibana-bounding_box_icon.png "").
     2. To draw a construction zone, click a start point on the map and drag.
     3. Click an endpoint to finish.
 
@@ -618,7 +618,7 @@ The map now represents an operational view of live public transport traffic.  Yo
 
 Your map is now complete for now, congratulations!
 
-:::{image} ../../../images/kibana-construction_zones.png
+:::{image} /explore-analyze/images/kibana-construction_zones.png
 :alt: construction zones
 :screenshot:
 :::
@@ -692,7 +692,7 @@ For this example, you will set the rule to check every minute. However, when run
 9. Set **Check every** to **1 minute**.
 10. Notify **Only on status change**.
 
-    :::{image} ../../../images/kibana-rule_configuration.png
+    :::{image} /explore-analyze/images/kibana-rule_configuration.png
     :alt: rule configuration
     :screenshot:
     :::
@@ -718,7 +718,7 @@ For this example, you will set the rule to check every minute. However, when run
     }
     ```
 
-    :::{image} ../../../images/kibana-alert_connector.png
+    :::{image} /explore-analyze/images/kibana-alert_connector.png
     :alt: alert connector
     :screenshot:
     :::
@@ -741,7 +741,7 @@ With the alert configured and running, in a few minutes your `trimet_alerts` ind
 * Enable the **Label** option with the `vehicleId` field
 * Add the `vehicleId`, `boundaryId`, `detectionTime`, and `vehicleTime` fields to the tooltip configuration to allow viewing alert details on the map.
 
-  :::{image} ../../../images/kibana-vehicle_alerts.png
+  :::{image} /explore-analyze/images/kibana-vehicle_alerts.png
   :alt: vehicle alerts
   :screenshot:
   :::

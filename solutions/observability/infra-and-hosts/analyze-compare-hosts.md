@@ -23,7 +23,7 @@ To access the **Hosts** page in:
 - **Elastic Stack,** find **Infrastructure** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 - **Serverless,** go to **Infrastructure → Hosts** in your Elastic Observability Serverless project. 
 
-:::{image} ../../../images/serverless-hosts.png
+:::{image} /solutions/images/serverless-hosts.png
 :alt: Screenshot of the Hosts page
 :screenshot:
 :::
@@ -91,7 +91,7 @@ To see metrics for a specific host, refer to [View host details](../../../soluti
 
 Metrics visualizations are powered by Lens, meaning you can continue your analysis in Lens if you require more flexibility. Hover your cursor over a visualization, then click the ellipsis icon in the upper-right corner to open the visualization in Lens.
 
-:::{image} ../../../images/serverless-hosts-open-in-lens.png
+:::{image} /solutions/images/serverless-hosts-open-in-lens.png
 :alt: Screenshot showing option to open in Lens
 :screenshot:
 :::
@@ -105,7 +105,7 @@ For more information about using Lens, refer to the [{{kib}} documentation about
 
 On the **Logs** tab of the **Hosts** page, view logs for the systems you are monitoring and search for specific log entries. This view shows logs for all of the hosts returned by the current query.
 
-:::{image} ../../../images/serverless-hosts-logs.png
+:::{image} /solutions/images/serverless-hosts-logs.png
 :alt: Screenshot showing Logs view
 :screenshot:
 :::
@@ -123,7 +123,7 @@ From the **Actions** menu, you can choose to:
 * View rule details.
 * View alert details.
 
-:::{image} ../../../images/serverless-hosts-view-alerts.png
+:::{image} /solutions/images/serverless-hosts-view-alerts.png
 :alt: Screenshot showing Alerts view
 :screenshot:
 :::
@@ -146,7 +146,7 @@ To learn more about creating and managing rules, refer to [Alerting](../../../so
 
 ## View host details [view-host-details]
 
-Without leaving the **Hosts** page, you can view enhanced metrics relating to each host running in your infrastructure. In the list of hosts, find the host you want to monitor, then click the **Toggle dialog with details** icon ![expand icon](../../../images/serverless-expand-icon.png "") to display the host details overlay.
+Without leaving the **Hosts** page, you can view enhanced metrics relating to each host running in your infrastructure. In the list of hosts, find the host you want to monitor, then click the **Toggle dialog with details** icon ![expand icon](/solutions/images/serverless-expand-icon.png "") to display the host details overlay.
 
 ::::{tip}
 To expand the overlay and view more detail, click **Open as page** in the upper-right corner.
@@ -167,7 +167,7 @@ Hover over a specific time period on a chart to compare the various metrics at t
 
 Click **Show all** to drill down into related data.
 
-:::{image} ../../../images/serverless-overview-overlay.png
+:::{image} /solutions/images/serverless-overview-overlay.png
 :alt: Host overview
 :screenshot:
 :::
@@ -180,7 +180,7 @@ The **Metadata** tab lists all the meta information relating to the host, includ
 
 This information can help when investigating events—for example, when filtering by operating system or architecture.
 
-:::{image} ../../../images/serverless-metadata-overlay.png
+:::{image} /solutions/images/serverless-metadata-overlay.png
 :alt: Host metadata
 :screenshot:
 :::
@@ -191,7 +191,7 @@ This information can help when investigating events—for example, when filterin
 :::::{dropdown} Metrics
 The **Metrics** tab shows host metrics organized by type and is more complete than the view available in the *Overview* tab.
 
-:::{image} ../../../images/serverless-metrics-overlay.png
+:::{image} /solutions/images/serverless-metrics-overlay.png
 :alt: Metrics
 :screenshot:
 :::
@@ -222,7 +222,7 @@ The processes listed in the **Top processes** table are based on an aggregation 
 | **Memory** | The percentage of memory (`system.process.memory.rss.pct`) the process occupied in main memory (RAM). |
 | **State** | The current state of the process and the total number of processes (`system.process.state`). Expected values are: `running`, `sleeping`, `dead`, `stopped`, `idle`, `zombie`, and `unknown`. |
 
-:::{image} ../../../images/serverless-processes-overlay.png
+:::{image} /solutions/images/serverless-processes-overlay.png
 :alt: Host processes
 :screenshot:
 :::
@@ -241,7 +241,7 @@ The **Universal Profiling** tab shows CPU usage down to the application code lev
 
 For more on Universal Profiling, refer to the [Universal Profiling](../../../solutions/observability/infra-and-hosts/universal-profiling.md) docs.
 
-:::{image} ../../../images/observability-universal-profiling-overlay.png
+:::{image} /solutions/images/observability-universal-profiling-overlay.png
 :alt: Host Universal Profiling
 :screenshot:
 :::
@@ -259,7 +259,7 @@ The **Logs** tab displays logs relating to the host that you have selected. By d
 
 To view the logs in the {{logs-app}} for a detailed analysis, click **Open in Logs**.
 
-:::{image} ../../../images/serverless-logs-overlay.png
+:::{image} /solutions/images/serverless-logs-overlay.png
 :alt: Host logs
 :screenshot:
 :::
@@ -274,7 +274,7 @@ Along with the name of each anomaly job, detected anomalies with a severity scor
 
 To drill down and analyze the metric anomaly, select **Actions** → **Open in Anomaly Explorer**. You can also select **Actions** → **Show in Inventory** to view the host Inventory page, filtered by the specific metric.
 
-:::{image} ../../../images/serverless-anomalies-overlay.png
+:::{image} /solutions/images/serverless-anomalies-overlay.png
 :alt: Anomalies
 :screenshot:
 :::
@@ -314,7 +314,7 @@ Other options include:
 * Add, remove, reorder, and resize columns.
 * Sort field names in ascending or descending order.
 
-:::{image} ../../../images/serverless-osquery-overlay.png
+:::{image} /solutions/images/serverless-osquery-overlay.png
 :alt: Osquery
 :screenshot:
 :::
@@ -342,7 +342,7 @@ There are a few reasons why you may see dashed lines in your charts.
 
 In this example, the data emission rate is lower than the Lens chart interval. A dashed line connects the known data points to make it easier to visualize trends in the data.
 
-:::{image} ../../../images/serverless-hosts-dashed.png
+:::{image} /solutions/images/serverless-hosts-dashed.png
 :alt: Screenshot showing dashed chart
 :screenshot:
 :::
@@ -360,7 +360,7 @@ Want to dig in further while maintaining the selected time duration? Hover over 
 
 A solid line indicates that the chart interval is set appropriately for the data transmission rate. In this example, a solid line turns into a dashed line—indicating missing data. You may want to investigate this time period to determine if there is an outage or issue.
 
-:::{image} ../../../images/serverless-hosts-missing-data.png
+:::{image} /solutions/images/serverless-hosts-missing-data.png
 :alt: Screenshot showing missing data
 :screenshot:
 :::
@@ -372,7 +372,7 @@ In the example shown in the screenshot, the data emission rate is lower than the
 
 This missing data can be hard to spot at first glance. The green boxes outline regular data emissions, while the missing data is outlined in pink. Similar to the above scenario, you may want to investigate the time period with the missing data to determine if there is an outage or issue.
 
-:::{image} ../../../images/serverless-hosts-dashed-and-missing.png
+:::{image} /solutions/images/serverless-hosts-dashed-and-missing.png
 :alt: Screenshot showing dashed lines and missing data
 :screenshot:
 :::
@@ -383,7 +383,7 @@ This missing data can be hard to spot at first glance. The green boxes outline r
 
 ### What does *this host has been detected by APM* mean? [observability-analyze-hosts-what-does-mean]
 
-In the Hosts view, you might see a question mark icon (![Question mark icon](../../../images/serverless-questionInCircle.svg "")) before a host name with a tooltip note stating that the host has been detected by APM.
+In the Hosts view, you might see a question mark icon (![Question mark icon](/solutions/images/serverless-questionInCircle.svg "")) before a host name with a tooltip note stating that the host has been detected by APM.
 
 When a host is detected by APM, but is not collecting full metrics (for example, through the [system integration](https://www.elastic.co/docs/current/integrations/system)), it will be listed as a host with the partial metrics collected by APM.
 

@@ -40,7 +40,7 @@ Modifying advanced settings can affect Kibana performance and cause problems tha
 
 To access advanced settings, go to **Stack Management** → **Advanced Settings**, then scroll down to **Security Solution** settings.
 
-:::{image} ../../../images/security-solution-advanced-settings.png
+:::{image} /solutions/images/security-solution-advanced-settings.png
 :alt: solution advanced settings
 :screenshot:
 :::

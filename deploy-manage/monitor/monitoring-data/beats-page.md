@@ -16,7 +16,7 @@ applies_to:
 
 If you are monitoring Beats, the **Stack Monitoring** page in {{kib}} contains a panel for Beats in the cluster overview.
 
-:::{image} /images/kibana-monitoring-beats.png
+:::{image} /deploy-manage/images/kibana-monitoring-beats.png
 :alt: Monitoring Beats
 :screenshot:
 :::
@@ -25,7 +25,7 @@ To view an overview of the Beats data in the cluster, click **Overview**. The ov
 
 To view a listing of the individual Beat instances in the cluster, click **Beats**. The table listing shows each Beat instance that reports data to the monitoring cluster. All columns are sortable. Clicking a Beat name takes you to the detail page. For example:
 
-:::{image} /images/kibana-monitoring-beats-detail.png
+:::{image} /deploy-manage/images/kibana-monitoring-beats-detail.png
 :alt: Monitoring details for Filebeat
 :screenshot:
 :::

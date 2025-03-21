@@ -12,7 +12,7 @@ applies_to:
 
 The Data Quality dashboard shows you whether your data is correctly mapped to the [Elastic Common Schema](ecs://reference/index.md) (ECS). Successful [mapping](/manage-data/data-store/mapping.md) enables you to search, visualize, and interact with your data throughout {{elastic-sec}} and {{kib}}.
 
-:::{image} ../../../images/security-data-qual-dash.png
+:::{image} /solutions/images/security-data-qual-dash.png
 :alt: The Data Quality dashboard
 :screenshot:
 :::
@@ -79,7 +79,7 @@ Click a node in the treemap to expand the corresponding index.
 
 After an index is checked, a **Pass** or **Fail** status appears. **Fail** indicates mapping problems in an index. To view index check details, including which fields weren’t successfully mapped, click the **Check now** button under **Actions**.
 
-:::{image} ../../../images/security-data-qual-dash-detail.png
+:::{image} /solutions/images/security-data-qual-dash-detail.png
 :alt: An expanded index with some failed results in the Data Quality dashboard
 :screenshot:
 :::
@@ -96,7 +96,7 @@ Fields in the **Same family** category have the correct search behavior, but mig
 
 You can review an index’s data quality history by clicking **View history** under **Actions**, or by clicking the **History** tab in the details flyout. You can filter the results by time and **Pass** / **Fail** status. Click a historical check to expand it and view more details.
 
-:::{image} ../../../images/security-data-qual-dash-history.png
+:::{image} /solutions/images/security-data-qual-dash-history.png
 :alt: The Data Quality dashboard
 :::
 

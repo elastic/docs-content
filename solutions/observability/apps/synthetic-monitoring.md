@@ -17,7 +17,7 @@ Synthetics periodically checks the status of your services and applications. Mon
 * [Lightweight HTTP/S, TCP, and ICMP monitors](../../../solutions/observability/apps/synthetic-monitoring.md#monitoring-uptime)
 * [Browser monitors](../../../solutions/observability/apps/synthetic-monitoring.md#monitoring-synthetics)
 
-:::{image} ../../../images/observability-synthetics-monitor-page.png
+:::{image} /solutions/images/observability-synthetics-monitor-page.png
 :alt: {{synthetics-app}} in {{kib}}
 :screenshot:
 :::

@@ -12,7 +12,7 @@ applies_to:
 
 
 ::::{note}
-![supported deployment methods](../../../images/observability-binary-yes-fm-no.svg "")
+![supported deployment methods](/solutions/images/observability-binary-yes-fm-no.svg "")
 
 Instrumentation of APM Server is not yet supported for Fleet-managed APM.
 

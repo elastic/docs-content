@@ -21,7 +21,7 @@ Exceptions, also referred to as *exception items*, contain the source event cond
 
 You can create exceptions that apply exclusively to a single rule. These types of exceptions can’t be used by other rules, and you must manage them from the rule’s details page. To learn more about creating and managing single-rule exceptions, refer to [Add and manage exceptions](add-manage-exceptions.md).
 
-:::{image} ../../../images/security-exception-item-example.png
+:::{image} /solutions/images/security-exception-item-example.png
 :alt: An exception item
 :screenshot:
 :::
@@ -36,7 +36,7 @@ You can also use [value lists](create-manage-value-lists.md) to define exception
 
 If you want an exception to apply to multiple rules, you can add an exception to a shared exception list. Shared exception lists allow you to group exceptions together and then associate them with multiple rules. Refer to [Create and manage shared exception lists](create-manage-shared-exception-lists.md) to learn more.
 
-:::{image} ../../../images/security-rule-exceptions-page.png
+:::{image} /solutions/images/security-rule-exceptions-page.png
 :alt: Shared Exception Lists page
 :screenshot:
 :::

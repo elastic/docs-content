@@ -8,7 +8,7 @@ applies_to:
 # SSL/TLS output settings [apm-configuration-ssl]
 
 ::::{note}
-![supported deployment methods](../../../images/observability-binary-yes-fm-no.svg "")
+![supported deployment methods](/solutions/images/observability-binary-yes-fm-no.svg "")
 
 These configuration options are only relevant to APM Server binary users. Fleet-managed users should see the [Fleet output settings](/reference/ingestion-tools/fleet/fleet-settings.md).
 

@@ -23,7 +23,7 @@ Refer to the [Troubleshoot missing alerts](../../../troubleshoot/security/detect
 
 To view a summary of all rule executions, including the most recent failures and execution times, select the **Rule Monitoring** tab on the **Rules** page. To access the tab, find **Detection rules (SIEM)** in the navigation menu or look for “Detection rules (SIEM)” using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to the **Rule Monitoring** tab.
 
-:::{image} ../../../images/security-monitor-table.png
+:::{image} /solutions/images/security-monitor-table.png
 :alt: monitor table
 :screenshot:
 :::
@@ -44,7 +44,7 @@ Each detection rule execution is logged, including the execution type, the execu
 
 To access a rule’s execution log, click the rule’s name to open its details, then scroll down and select the **Execution results** tab. Within the Execution log table, you can click the arrow at the end of a row to expand a long warning or error message.
 
-:::{image} ../../../images/security-rule-execution-logs.png
+:::{image} /solutions/images/security-rule-execution-logs.png
 :alt: Execution log table on the rule execution results tab
 :screenshot:
 :::
@@ -67,7 +67,7 @@ Use these controls to filter what’s included in the logs table:
 * The date and time picker sets the time range of rule executions included in the table. This is separate from the global date and time picker at the top of the rule details page.
 * The **Source event time range** button toggles the display of data pertaining to the time range of manual runs.
 * The **Show metrics columns** toggle includes more or less data in the table, pertaining to the timing of each rule execution.
-* The **Actions** column allows you to show alerts generated from a given rule execution. Click the filter icon (![Filter icon](../../../images/security-filter-icon.png "title =20x20")) to create a global search filter based on the rule execution’s ID value. This replaces any previously applied filters, changes the global date and time range to 24 hours before and after the rule execution, and displays a confirmation notification. You can revert this action by clicking **Restore previous filters** in the notification.
+* The **Actions** column allows you to show alerts generated from a given rule execution. Click the filter icon (![Filter icon](/solutions/images/security-filter-icon.png "title =20x20")) to create a global search filter based on the rule execution’s ID value. This replaces any previously applied filters, changes the global date and time range to 24 hours before and after the rule execution, and displays a confirmation notification. You can revert this action by clicking **Restore previous filters** in the notification.
 
 
 ### Manual runs table [manual-runs-table]
@@ -83,7 +83,7 @@ To access the table, navigate to the detection rules page, click the rule’s na
 
 To stop an active run, go to the appropriate row and click **Stop run** in the **Actions** column. Completed rule executions for each manual run are logged in the Execution log table.
 
-:::{image} ../../../images/security-manual-rule-run-table.png
+:::{image} /solutions/images/security-manual-rule-run-table.png
 :alt: Manual rule runs table on the rule execution results tab
 :screenshot:
 :::

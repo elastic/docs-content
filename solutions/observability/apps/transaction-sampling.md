@@ -35,7 +35,7 @@ In the example in *Figure 1*, `Service A` initiates four transactions and has sa
 
 **Figure 1. Upstream sampling decision is respected**
 
-:::{image} ../../../images/observability-dt-sampling-example-1.png
+:::{image} /solutions/images/observability-dt-sampling-example-1.png
 :alt: Distributed tracing and head based sampling example one
 :screenshot:
 :::
@@ -44,7 +44,7 @@ In the example in *Figure 2*, `Service A` initiates four transactions and has a 
 
 **Figure 2. Upstream sampling decision is respected**
 
-:::{image} ../../../images/observability-dt-sampling-example-2.png
+:::{image} /solutions/images/observability-dt-sampling-example-2.png
 :alt: Distributed tracing and head based sampling example two
 :screenshot:
 :::
@@ -62,7 +62,7 @@ In the example in *Figure 3*, `Service A` is an Elastic-monitored service that i
 
 **Figure 3. Using the `restart_external` trace continuation strategy**
 
-:::{image} ../../../images/observability-dt-sampling-continuation-strategy-restart_external.png
+:::{image} /solutions/images/observability-dt-sampling-continuation-strategy-restart_external.png
 :alt: Distributed tracing and head based sampling with restart_external continuation strategy
 :screenshot:
 :::
@@ -71,7 +71,7 @@ Use the **`restart`** trace continuation strategy on an Elastic-monitored servic
 
 In the example in *Figure 4*, `Service A` and `Service B` are Elastic-monitored services that use the default trace continuation strategy. `Service A` has a sample rate of `.25` (`25%`), and that sampling decision is respected in `Service B`. `Service C` is an Elastic-monitored service that uses the `restart` trace continuation strategy and has a sample rate of `1` (`100%`). Because it uses `restart`, the upstream sample rate is *not* respected in `Service C` and all four traces will be sampled as new traces in `Service C`. The end result will be five sampled traces.
 
-:::{image} ../../../images/observability-dt-sampling-continuation-strategy-restart.png
+:::{image} /solutions/images/observability-dt-sampling-continuation-strategy-restart.png
 :alt: Distributed tracing and head based sampling with restart continuation strategy
 :title: Using the `restart` trace continuation strategy
 :::
@@ -122,7 +122,7 @@ With tail-based sampling, all traces are observed and a sampling decision is onl
 
 In this example, `Service A` initiates four transactions. If our sample rate is `.5` (`50%`) for traces with a `success` outcome, and `1` (`100%`) for traces with a `failure` outcome, the sampled traces would look something like this:
 
-:::{image} ../../../images/observability-dt-sampling-example-3.png
+:::{image} /solutions/images/observability-dt-sampling-example-3.png
 :alt: Distributed tracing and tail based sampling example one
 :::
 

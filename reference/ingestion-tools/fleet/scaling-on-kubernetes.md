@@ -79,9 +79,8 @@ Based on our [{{agent}} Scaling tests](https://github.com/elastic/elastic-agent/
 
 Sample Elastic Agent Configurations:
 
-|     |     |     |
-| --- | --- | --- |
 | No of Pods in K8s Cluster | Leader Agent Resources | Rest of Agents |
+| --- | --- | --- |
 | 1000 | cpu: "1500m",  memory: "800Mi" | cpu: "300m",  memory: "600Mi" |
 | 3000 | cpu: "2000m",  memory: "1500Mi" | cpu: "400m",  memory: "800Mi" |
 | 5000 | cpu: "3000m",  memory: "2500Mi" | cpu: "500m",  memory: "900Mi" |
@@ -121,9 +120,8 @@ You can find more information in the document called [{{agent}} Manifests in ord
 
 Based on our [{{agent}} scaling tests](https://github.com/elastic/elastic-agent/blob/main/docs/elastic-agent-scaling-tests.md), the following table aims to assist users on how to configure their KSM Sharding as {{k8s}} cluster scales:
 
-|     |     |     |
-| --- | --- | --- |
 | No of Pods in K8s Cluster | No of KSM Shards | Agent Resources |
+| --- | --- | --- |
 | 1000 | No Sharding can be handled with default KSM config | limits: memory: 700Mi , cpu:500m |
 | 3000 | 4 Shards | limits: memory: 1400Mi , cpu:1500m |
 | 5000 | 6 Shards | limits: memory: 1400Mi , cpu:1500m |

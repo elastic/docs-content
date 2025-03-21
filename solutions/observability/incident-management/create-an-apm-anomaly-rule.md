@@ -22,7 +22,7 @@ For Observability serverless projects, the **Editor** role or higher is required
 
 You can create an anomaly rule to alert you when either the latency, throughput, or failed transaction rate of a service is abnormal. Anomaly rules can be set at different levels: environment, service, and/or transaction type. Add actions to raise alerts via services or third-party integrations (for example, send an email or create a Jira issue).
 
-:::{image} ../../../images/serverless-alerts-create-apm-anomaly.png
+:::{image} /solutions/images/serverless-alerts-create-apm-anomaly.png
 :alt: Create rule for APM anomaly alert
 :screenshot:
 :::
@@ -91,14 +91,14 @@ After you select a connector, you must set the action frequency. You can choose 
 
 Alternatively, you can set the action frequency to **For each alert** and specify the conditions each alert must meet for the action to run. For example, you can send an email only when the alert status changes to critical.
 
-:::{image} ../../../images/serverless-alert-action-frequency.png
+:::{image} /solutions/images/serverless-alert-action-frequency.png
 :alt: Configure when a rule is triggered
 :screenshot:
 :::
 
 With the **Run when** menu you can choose if an action runs when the threshold for an alert is reached, or when the alert is recovered. For example, you can add a corresponding action for each state to ensure you are alerted when the rule is triggered and also when it recovers.
 
-:::{image} ../../../images/serverless-alert-apm-action-frequency-recovered.png
+:::{image} /solutions/images/serverless-alert-apm-action-frequency-recovered.png
 :alt: Choose between threshold met or recovered
 :screenshot:
 :::
@@ -107,9 +107,9 @@ With the **Run when** menu you can choose if an action runs when the threshold f
 
 
 :::::{dropdown} Action variables
-Use the default notification message or customize it. You can add more context to the message by clicking the Add variable icon ![Add variable](../../../images/serverless-indexOpen.svg "") and selecting from a list of available variables.
+Use the default notification message or customize it. You can add more context to the message by clicking the Add variable icon ![Add variable](/solutions/images/serverless-indexOpen.svg "") and selecting from a list of available variables.
 
-:::{image} ../../../images/serverless-action-variables-popup.png
+:::{image} /solutions/images/serverless-action-variables-popup.png
 :alt: Action variables list
 :screenshot:
 :::

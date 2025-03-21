@@ -15,7 +15,7 @@ The AI Assistant uses generative AI to provide:
 * **Contextual insights** — open prompts throughout {{observability}} that explain errors and messages and suggest remediation.
 * **Chat** —  have conversations with the AI Assistant. Chat uses function calling to request, analyze, and visualize your data.
 
-:::{image} ../../images/observability-obs-assistant2.gif
+:::{image} /solutions/images/observability-obs-assistant2.gif
 :alt: Observability AI assistant preview
 :screenshot:
 :::
@@ -235,11 +235,11 @@ After every answer the LLM provides, let us know if the answer was helpful. Your
 
 ### Chat with the assistant [obs-ai-chat]
 
-Select the **AI Assistant** icon (![AI Assistant icon](../../images/observability-ai-assistant-icon.png "")) at the upper-right corner of any {{observability}} application to start the chat.
+Select the **AI Assistant** icon (![AI Assistant icon](/solutions/images/observability-ai-assistant-icon.png "")) at the upper-right corner of any {{observability}} application to start the chat.
 
 This opens the AI Assistant flyout, where you can ask the assistant questions about your instance:
 
-:::{image} ../../images/observability-obs-ai-chat.png
+:::{image} /solutions/images/observability-obs-ai-chat.png
 :alt: Observability AI assistant chat
 :screenshot:
 :::
@@ -312,14 +312,14 @@ AI Assistant contextual prompts throughout {{observability}} provide the followi
 
 For example, in the log details, you’ll see prompts for **What’s this message?** and **How do I find similar log messages?**:
 
-:::{image} ../../images/observability-obs-ai-logs-prompts.png
+:::{image} /solutions/images/observability-obs-ai-logs-prompts.png
 :alt: Observability AI assistant logs prompts
 :screenshot:
 :::
 
 Clicking a prompt generates a message specific to that log entry:
 
-:::{image} ../../images/observability-obs-ai-logs.gif
+:::{image} /solutions/images/observability-obs-ai-logs.gif
 :alt: Observability AI assistant example
 :screenshot:
 :::
@@ -336,7 +336,7 @@ Use the [Observability AI Assistant connector](kibana://reference/connectors-kib
 3. In the **Connector** list, select the AI connector you created when you set up the assistant.
 4. In the **Message** field, specify the message to send to the assistant:
 
-    :::{image} ../../images/observability-obs-ai-assistant-action-high-cpu.png
+    :::{image} /solutions/images/observability-obs-ai-assistant-action-high-cpu.png
     :alt: Add an Observability AI assistant action while creating a rule in the Observability UI
     :screenshot:
     :::
@@ -351,7 +351,7 @@ Currently only Slack, email, Jira, PagerDuty, or webhook actions are supported. 
 
 When the alert fires, contextual details about the event—such as when the alert fired, the service or host impacted, and the threshold breached—are sent to the AI Assistant, along with the message provided during configuration. The AI Assistant runs the tasks requested in the message and creates a conversation you can use to chat with the assistant:
 
-:::{image} ../../images/observability-obs-ai-assistant-output.png
+:::{image} /solutions/images/observability-obs-ai-assistant-output.png
 :alt: AI Assistant conversation created in response to an alert
 :screenshot:
 :::
@@ -372,7 +372,7 @@ The `server.publicBaseUrl` setting must be correctly specified under {{kib}} set
 ::::
 
 
-:::{image} ../../images/observability-obs-ai-assistant-slack-message.png
+:::{image} /solutions/images/observability-obs-ai-assistant-slack-message.png
 :alt: Message sent by Slack by the AI Assistant includes a link to the conversation
 :screenshot:
 :::

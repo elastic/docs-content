@@ -26,7 +26,7 @@ Response actions are supported on all endpoint platforms (Linux, macOS, and Wind
 ::::
 
 
-:::{image} ../../images/security-response-console.png
+:::{image} /solutions/images/security-response-console.png
 :alt: Response console UI
 :width: 90%
 :screenshot:
@@ -296,24 +296,24 @@ You can also get a list of commands in the [Help panel](/solutions/security/endp
 
 ## Help panel [help-panel]
 
-Click ![Help icon](../../images/security-help-icon.png "title =20x20") **Help** in the upper-right to open the **Help** panel, which lists available response action commands and parameters as a reference.
+Click ![Help icon](/solutions/images/security-help-icon.png "title =20x20") **Help** in the upper-right to open the **Help** panel, which lists available response action commands and parameters as a reference.
 
 ::::{note}
 This panel displays only the response actions that you have the user role or privileges to perform.
 ::::
 
 
-:::{image} ../../images/security-response-console-help-panel.png
+:::{image} /solutions/images/security-response-console-help-panel.png
 :alt: Help panel
 :width: 65%
 :screenshot:
 :::
 
-You can use this panel to build commands with less typing. Click the add icon (![Add icon](../../images/security-add-command-icon.png "title =20x20")) to add a command to the input area, enter any additional parameters or a comment, then press **Return** to run the command.
+You can use this panel to build commands with less typing. Click the add icon (![Add icon](/solutions/images/security-add-command-icon.png "title =20x20")) to add a command to the input area, enter any additional parameters or a comment, then press **Return** to run the command.
 
 If the endpoint is running an older version of {{agent}}, some response actions may not be supported, as indicated by an informational icon and tooltip. [Upgrade {{agent}}](/reference/ingestion-tools/fleet/upgrade-elastic-agent.md) on the endpoint to be able to use the latest response actions.
 
-:::{image} ../../images/security-response-console-unsupported-command.png
+:::{image} /solutions/images/security-response-console-unsupported-command.png
 :alt: Unsupported response action with tooltip
 :width: 65%
 :screenshot:
@@ -324,7 +324,7 @@ If the endpoint is running an older version of {{agent}}, some response actions 
 
 Click **Response actions history** to display a log of the response actions performed on the endpoint, such as isolating a host or terminating a process. You can filter the information displayed in this view. Refer to [](/solutions/security/endpoint-response-actions/response-actions-history.md) for more details.
 
-:::{image} ../../images/security-response-actions-history-console.png
+:::{image} /solutions/images/security-response-actions-history-console.png
 :alt: Response actions history with a few past actions
 :width: 85%
 :screenshot:

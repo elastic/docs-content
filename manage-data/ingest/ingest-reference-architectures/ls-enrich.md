@@ -5,7 +5,7 @@ mapped_pages:
 
 # Elastic Agent to Logstash (for enrichment) to Elasticsearch [ls-enrich]
 
-:::{image} ../../../images/ingest-ea-ls-enrich.png
+:::{image} /manage-data/images/ingest-ea-ls-enrich.png
 :alt: Image showing {{agent}} collecting data
 :::
 

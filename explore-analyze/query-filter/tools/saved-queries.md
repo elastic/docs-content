@@ -21,7 +21,7 @@ If you have insufficient privileges to manage saved queries, you will be unable 
 
 ## Save a query [_save_a_query]
 
-1. Once you’ve built a query worth saving, click the save query icon ![save query icon](../../../images/kibana-saved-query-icon.png "").
+1. Once you’ve built a query worth saving, click the save query icon ![save query icon](/explore-analyze/images/kibana-saved-query-icon.png "").
 2. In the menu, select the item to save the query.
 3. Enter a unique name.
 4. Choose whether to include or exclude filters and a time range. By default, filters are automatically included, but the time filter is not.

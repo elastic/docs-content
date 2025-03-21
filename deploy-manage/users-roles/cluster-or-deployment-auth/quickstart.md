@@ -67,7 +67,7 @@ Create a **Marketing** space for your marketing analysts to use.
 
     If you’ve followed the example above, you should end up with a space that looks like this:
 
-    :::{image} ../../../images/kibana-tutorial-secure-access-example-1-space.png
+    :::{image} /deploy-manage/images/kibana-tutorial-secure-access-example-1-space.png
     :alt: Create space UI
     :screenshot:
     :::
@@ -105,7 +105,7 @@ To create the role:
 
     If you’ve followed the example above, you should end up with a role that looks like this:
 
-    :::{image} ../../../images/kibana-tutorial-secure-access-example-1-role.png
+    :::{image} /deploy-manage/images/kibana-tutorial-secure-access-example-1-role.png
     :alt: Create role UI
     :screenshot:
     :::
@@ -122,7 +122,7 @@ Now that you created a role, create a user account.
 4. Assign the **marketing_dashboards_role** that you previously created to this new user.
 5. Click **Create user**.
 
-:::{image} ../../../images/kibana-tutorial-secure-access-example-1-user.png
+:::{image} /deploy-manage/images/kibana-tutorial-secure-access-example-1-user.png
 :alt: Create user UI
 :screenshot:
 :::
@@ -137,7 +137,7 @@ Verify that the user and role are working correctly.
 
     You’re taken into the `Marketing` space, and the main navigation shows only the **Dashboard** application.
 
-    :::{image} ../../../images/kibana-tutorial-secure-access-example-1-test.png
+    :::{image} /deploy-manage/images/kibana-tutorial-secure-access-example-1-test.png
     :alt: Verifying access to dashboards
     :screenshot:
     :::

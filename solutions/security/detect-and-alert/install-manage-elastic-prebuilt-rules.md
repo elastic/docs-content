@@ -35,7 +35,7 @@ Follow these guidelines to start using the {{security-app}}'s [prebuilt rules](s
 
     The badge next to **Add Elastic rules** shows the number of prebuilt rules available for installation.
 
-    :::{image} ../../../images/security-prebuilt-rules-add-badge.png
+    :::{image} /solutions/images/security-prebuilt-rules-add-badge.png
     :alt: The Add Elastic Rules page
     :screenshot:
     :::
@@ -49,15 +49,15 @@ Follow these guidelines to start using the {{security-app}}'s [prebuilt rules](s
 3. Do one of the following:
 
     * Install all available rules: Click **Install all** at the top of the page. (This doesn’t enable the rules; you still need to do that manually.)
-    * Install a single rule: In the rules table, either click **Install** to install a rule without enabling it, or click ![Vertical boxes button](../../../images/security-boxesVertical.svg "") → **Install and enable** to start running the rule once it’s installed.
-    * Install multiple rules: Select the rules, and then at the top of the page either click **Install *x* selected rule(s)** to install without enabling the rules, or click ![Vertical boxes button](../../../images/serverless-boxesVertical.svg "") → **Install and enable** to install and start running the rules.
+    * Install a single rule: In the rules table, either click **Install** to install a rule without enabling it, or click ![Vertical boxes button](/solutions/images/security-boxesVertical.svg "") → **Install and enable** to start running the rule once it’s installed.
+    * Install multiple rules: Select the rules, and then at the top of the page either click **Install *x* selected rule(s)** to install without enabling the rules, or click ![Vertical boxes button](/solutions/images/serverless-boxesVertical.svg "") → **Install and enable** to install and start running the rules.
 
     ::::{tip}
     Use the search bar and **Tags** filter to find the rules you want to install. For example, filter by `OS: Windows` if your environment only includes Windows endpoints. For more on tag categories, refer to [Prebuilt rule tags](/solutions/security/detect-and-alert/install-manage-elastic-prebuilt-rules.md#prebuilt-rule-tags).
     ::::
 
 
-    :::{image} ../../../images/security-prebuilt-rules-add.png
+    :::{image} /solutions/images/security-prebuilt-rules-add.png
     :alt: The Add Elastic Rules page
     :screenshot:
     :::
@@ -119,7 +119,7 @@ Elastic regularly updates prebuilt rules to optimize their performance and ensur
     ::::
 
 
-    :::{image} ../../../images/security-prebuilt-rules-update.png
+    :::{image} /solutions/images/security-prebuilt-rules-update.png
     :alt: The Rule Updates tab on the Rules page
     :screenshot:
     :::
@@ -130,7 +130,7 @@ Elastic regularly updates prebuilt rules to optimize their performance and ensur
 
     To accept the changes and install the updated version, select **Update**.
 
-    :::{image} ../../../images/security-prebuilt-rules-update-diff.png
+    :::{image} /solutions/images/security-prebuilt-rules-update-diff.png
     :alt: Prebuilt rule comparison
     :screenshot:
     :::

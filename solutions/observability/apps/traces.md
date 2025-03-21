@@ -33,19 +33,19 @@ When a service is working on a request, it checks for the existence of this HTTP
 
 In this example, Elastic’s Ruby agent communicates with Elastic’s Java agent. Both support the `traceparent` header, and trace data is successfully propagated.
 
-:::{image} ../../../images/observability-dt-trace-ex1.png
+:::{image} /solutions/images/observability-dt-trace-ex1.png
 :alt: How traceparent propagation works
 :::
 
 In this example, Elastic’s Ruby agent communicates with OpenTelemetry’s Java agent. Both support the `traceparent` header, and trace data is successfully propagated.
 
-:::{image} ../../../images/observability-dt-trace-ex2.png
+:::{image} /solutions/images/observability-dt-trace-ex2.png
 :alt: How traceparent propagation works
 :::
 
 In this example, the trace meets a piece of middleware that doesn’t propagate the `traceparent` header. The distributed trace ends and any further communication will result in a new trace.
 
-:::{image} ../../../images/observability-dt-trace-ex3.png
+:::{image} /solutions/images/observability-dt-trace-ex3.png
 :alt: How traceparent propagation works
 :::
 
@@ -77,7 +77,7 @@ Older Elastic agents use a unique `elastic-apm-traceparent` header. For backward
 
 APM's timeline visualization provides a visual deep-dive into each of your application’s traces:
 
-:::{image} ../../../images/observability-apm-distributed-tracing.png
+:::{image} /solutions/images/observability-apm-distributed-tracing.png
 :alt: Distributed tracing in the Applications UI
 :screenshot:
 :::
