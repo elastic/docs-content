@@ -32,7 +32,7 @@ FROM cooking_blog
 | LIMIT 1000
 ```
 
-If you want to run these queries in the [Dev Tools Console](/explore-analyze/query-filter/languages/esql-rest.md#esql-kibana-console), you'll need use the following syntax:
+If you want to run these queries in the [Dev Tools Console](/explore-analyze/query-filter/languages/esql-rest.md#esql-kibana-console), you'll need to use the following syntax:
 
 ```console
 POST /_query?format=txt
@@ -358,4 +358,4 @@ This tutorial introduced the basics of search and filtering in {{esql}}. Buildin
   - [Text analysis](full-text/text-analysis-during-search.md): Understand how text is processed for full-text search.
 - [{{esql}} search functions](elasticsearch://reference/query-languages/esql/esql-functions-operators.md#esql-search-functions): Explore the full list of search functions available in {{esql}}.
 - [Semantic search](/solutions/search/semantic-search.md): Understand your various options for semantic search in Elasticsearch.
-  - [The `semantic_text` workflow](/solutions/search/semantic-search.md#_semantic_text_workflow): Learn how to use the `semantic_text` field type for semantic search. This is the recommended approach for must users looking to perform semantic search in {{es}}, because it abstracts away the complexity of setting up inference endpoints and models.
+  - [The `semantic_text` workflow](/solutions/search/semantic-search.md#_semantic_text_workflow): Learn how to use the `semantic_text` field type for semantic search. This is the recommended approach for most users looking to perform semantic search in {{es}}, because it abstracts away the complexity of setting up inference endpoints and models.
