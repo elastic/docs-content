@@ -70,7 +70,7 @@ You can choose from three levels of resource usage for your trained model deploy
 
 Refer to the tables in the [Model deployment resource matrix](#model-deployment-resource-matrix) section to find out the setings for the level you selected.
 
-:::{image} ../../images/machine-learning-ml-nlp-deployment-id-elser-v2.png
+:::{image} /deploy-manage/images/machine-learning-ml-nlp-deployment-id-elser-v2.png
 :alt: ELSER deployment with adaptive resources enabled.
 :screenshot:
 :width: 500px

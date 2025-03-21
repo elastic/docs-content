@@ -10,14 +10,14 @@ mapped_urls:
 
 A service returning a 5xx code from a request handler, controller, etc., will not create an exception that an APM agent can catch, and will therefore not show up in this view.
 
-:::{image} ../../../images/observability-apm-errors-overview.png
+:::{image} /solutions/images/observability-apm-errors-overview.png
 :alt: APM Errors overview
 :screenshot:
 :::
 
 Selecting an error group ID or error message brings you to the **Error group**.
 
-:::{image} ../../../images/observability-apm-error-group.png
+:::{image} /solutions/images/observability-apm-error-group.png
 :alt: APM Error group
 :screenshot:
 :::

@@ -12,7 +12,7 @@ applies_to:
 
 The Rules page allows you to view and manage all prebuilt and custom detection rules.
 
-:::{image} ../../../images/security-all-rules.png
+:::{image} /solutions/images/security-all-rules.png
 :alt: The Rules page
 :screenshot:
 :::
@@ -58,7 +58,7 @@ The **Last response** column displays the current status of each rule, based on 
 * **Failed**: The rule encountered an error that prevented it from running. For example, a {{ml}} rule whose corresponding {{ml}} job wasn’t running.
 * **Warning**: Nothing prevented the rule from running, but it might have returned unexpected results. For example, a custom query rule tried to search an index pattern that couldn’t be found in {{es}}.
 
-For {{ml}} rules, an indicator icon (![Error icon from rules table](../../../images/security-rules-table-error-icon.png "title =20x20")) also appears in this column if a required {{ml}} job isn’t running. Click the icon to list the affected jobs, then click **Visit rule details page to investigate** to open the rule’s details page, where you can start the {{ml}} job.
+For {{ml}} rules, an indicator icon (![Error icon from rules table](/solutions/images/security-rules-table-error-icon.png "title =20x20")) also appears in this column if a required {{ml}} job isn’t running. Click the icon to list the affected jobs, then click **Visit rule details page to investigate** to open the rule’s details page, where you can start the {{ml}} job.
 
 
 ## Modify existing rules settings [edit-rules-settings]
@@ -175,7 +175,7 @@ You can snooze notifications temporarily or indefinitely. When actions are snooz
 
 You can snooze rule notifications from the **Installed Rules** tab, the rule details page, or the **Actions** tab when editing a rule.
 
-:::{image} ../../../images/security-rule-snoozing.png
+:::{image} /solutions/images/security-rule-snoozing.png
 :alt: Rules snooze options
 :screenshot:
 :::
@@ -243,14 +243,14 @@ Many detection rules are designed to work with specific [Elastic integrations](h
 
 Additionally, the **Setup guide** section provides guidance on setting up the rule’s requirements.
 
-:::{image} ../../../images/security-rule-details-prerequisites.png
+:::{image} /solutions/images/security-rule-details-prerequisites.png
 :alt: Rule details page with Related integrations
 :screenshot:
 :::
 
 You can also check rules' related integrations in the **Installed Rules** and **Rule Monitoring** tables. Click the **integrations** badge to display the related integrations in a popup.
 
-:::{image} ../../../images/security-rules-table-related-integrations.png
+:::{image} /solutions/images/security-rules-table-related-integrations.png
 :alt: Rules table with related integrations popup
 :screenshot:
 :::

@@ -15,7 +15,7 @@ applies_to:
 
 Powered by the APM Real user monitoring (RUM) agent, all it takes is a few lines of code to begin surfacing key user experience metrics.
 
-:::{image} ../../../images/observability-user-experience-tab.png
+:::{image} /solutions/images/observability-user-experience-tab.png
 :alt: {{user-experience}} tab
 :screenshot:
 :::
@@ -42,7 +42,7 @@ This high-level overview is your analysis starting point and answers questions l
 
 You won’t be able to fix any problems from viewing these metrics alone, but you’ll get a sense of the big picture as you dive deeper into your data.
 
-:::{image} ../../../images/observability-page-load-duration.png
+:::{image} /solutions/images/observability-page-load-duration.png
 :alt: {{user-experience}} page load duration metrics
 :screenshot:
 :::
@@ -52,7 +52,7 @@ You won’t be able to fix any problems from viewing these metrics alone, but yo
 
 {{user-experience}} metrics help you understand the perceived performance of your website. For example, first contentful paint is the timestamp when the browser begins rendering content. In other words, it’s around this time that a user first gets feedback that the page is loading.
 
-:::{image} ../../../images/observability-user-exp-metrics.png
+:::{image} /solutions/images/observability-user-exp-metrics.png
 :alt: {{user-experience}} metrics
 :screenshot:
 :::
@@ -121,7 +121,7 @@ Operating system, browser family, and geographic location can all have a massive
 
 Don’t forget, this data also influences search engine page rankings and placement in top stories for content sites — without requiring the use of AMP.
 
-:::{image} ../../../images/observability-visitor-breakdown.png
+:::{image} /solutions/images/observability-visitor-breakdown.png
 :alt: {{user-experience}} visitor breakdown
 :screenshot:
 :::
@@ -131,7 +131,7 @@ Don’t forget, this data also influences search engine page rankings and placem
 
 JavaScript errors can be detrimental to a users experience on your website. But variation in users' software and hardware makes it nearly impossible to test for every combination. And, as JavaScript continues to get more and more complex, the need for user experience monitoring and error reporting only increases. Error monitoring makes this visible by surfacing JavaScript errors that are occurring on your website in production.
 
-:::{image} ../../../images/observability-js-errors.png
+:::{image} /solutions/images/observability-js-errors.png
 :alt: {{user-experience}} JavaScript errors
 :screenshot:
 :::

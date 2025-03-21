@@ -12,7 +12,7 @@ When the conditions of a rule are met, it creates an alert. If the rule has acti
 
 You can manage the alerts for each rule in **{{stack-manage-app}}** > **{{rules-ui}}**. Alternatively, manage all your alerts in **{{stack-manage-app}}** > **Alerts**. [preview]
 
-:::{image} ../../../images/kibana-stack-management-alerts-page.png
+:::{image} /explore-analyze/images/kibana-stack-management-alerts-page.png
 :alt: Alerts page with multiple alerts
 :screenshot:
 :::
@@ -32,7 +32,7 @@ In **{{stack-manage-app}}** > **Alerts**, you can filter the list (for example, 
 
 By default, the list contains all the alerts that you have authority to view in the selected time period except those associated with Security rules. To view alerts for Security rules, click the query menu and select **Security rule types**:
 
-:::{image} ../../../images/kibana-stack-management-alerts-query-menu.png
+:::{image} /explore-analyze/images/kibana-stack-management-alerts-query-menu.png
 :alt: The Alerts page with the query menu open
 :screenshot:
 :::

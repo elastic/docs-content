@@ -198,5 +198,5 @@ logger.saml.name = org.elasticsearch.xpack.security.authc.saml
 logger.saml.level = DEBUG
 ```
 
-Refer to [configuring logging levels](../../../deploy-manage/monitor/logging-configuration/elasticsearch-log4j-configuration-self-managed.md#configuring-logging-levels) for more information.
+Refer to [configuring logging levels](/deploy-manage/monitor/logging-configuration/update-elasticsearch-logging-levels.md) for more information.
 

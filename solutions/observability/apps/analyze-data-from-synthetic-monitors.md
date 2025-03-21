@@ -24,7 +24,7 @@ When you use a single monitor configuration to create monitors in multiple locat
 ::::
 
 
-:::{image} ../../../images/observability-synthetics-monitor-page.png
+:::{image} /solutions/images/observability-synthetics-monitor-page.png
 :alt: Synthetics UI
 :screenshot:
 :::
@@ -41,16 +41,16 @@ When you go to an individual monitor’s page, you’ll see much more detail abo
 * The monitor’s **name** with a down arrow icon that you can use to quickly move between monitors.
 * The **location** of the monitor. If the same monitor configuration was used to create monitors in multiple locations, you’ll also see a down arrow icon that you can use to quickly move between locations that use the same configuration.
 * The latest **status** and when the monitor was **last run**.
-* The **![Beaker icon](../../../images/observability-beaker.svg "") Run test manually** button that allows you to run the test on demand before the next scheduled run.
+* The **![Beaker icon](/solutions/images/observability-beaker.svg "") Run test manually** button that allows you to run the test on demand before the next scheduled run.
 
     ::::{note}
     This is only available for monitors running on Elastic’s global managed testing infrastructure. It is not available for monitors running on {{private-location}}s.
 
     ::::
 
-* The **![Pencil icon](../../../images/observability-pencil.svg "") Edit monitor** button that allows you to edit the monitor’s configuration.
+* The **![Pencil icon](/solutions/images/observability-pencil.svg "") Edit monitor** button that allows you to edit the monitor’s configuration.
 
-:::{image} ../../../images/observability-synthetics-analyze-individual-monitor-header.png
+:::{image} /solutions/images/observability-synthetics-analyze-individual-monitor-header.png
 :alt: Header at the top of the individual monitor page for all monitor types in the {synthetics-app}
 :screenshot:
 :::
@@ -62,7 +62,7 @@ Each individual monitor’s page has three tabs: Overview, History, and Errors.
 
 The **Overview** tab has information about the monitor availability, duration, and any errors that have occurred since the monitor was created. The *Duration trends* chart displays the timing for each check that was performed in the last 30 days. This visualization helps you to gain insights into how quickly requests resolve by the targeted endpoint and gives you a sense of how frequently a host or endpoint was down.
 
-:::{image} ../../../images/observability-synthetics-analyze-individual-monitor-details.png
+:::{image} /solutions/images/observability-synthetics-analyze-individual-monitor-details.png
 :alt: Details in the Overview tab on the individual monitor page for all monitor types in the {synthetics-app}
 :screenshot:
 :::
@@ -70,18 +70,18 @@ The **Overview** tab has information about the monitor availability, duration, a
 
 ### History [synthetics-analyze-individual-monitors-history]
 
-The **History** tab has information on every time the monitor has run. It includes some high-level stats and a complete list of all test runs. Use the calendar icon (![Calendar icon](../../../images/observability-calendar.svg "")) and search bar to filter for runs that occurred in a specific time period.
+The **History** tab has information on every time the monitor has run. It includes some high-level stats and a complete list of all test runs. Use the calendar icon (![Calendar icon](/solutions/images/observability-calendar.svg "")) and search bar to filter for runs that occurred in a specific time period.
 
 For browser monitors, you can click on any run in the **Test runs** list to see the details for that run. Read more about what information is included the in [Details for one run](../../../solutions/observability/apps/analyze-data-from-synthetic-monitors.md#synthetics-analyze-one-run) section below.
 
-:::{image} ../../../images/observability-synthetics-analyze-individual-monitor-history.png
+:::{image} /solutions/images/observability-synthetics-analyze-individual-monitor-history.png
 :alt: The History tab on the individual monitor page for all monitor types in the {synthetics-app}
 :screenshot:
 :::
 
-If the monitor is configured to [retest on failure](../../../solutions/observability/apps/configure-synthetics-projects.md#synthetics-configuration-monitor), you’ll see retests listed in the **Test runs** table. Runs that are retests include a rerun icon (![Refresh icon](../../../images/observability-refresh.svg "")) next to the result badge.
+If the monitor is configured to [retest on failure](../../../solutions/observability/apps/configure-synthetics-projects.md#synthetics-configuration-monitor), you’ll see retests listed in the **Test runs** table. Runs that are retests include a rerun icon (![Refresh icon](/solutions/images/observability-refresh.svg "")) next to the result badge.
 
-:::{image} ../../../images/observability-synthetics-retest.png
+:::{image} /solutions/images/observability-synthetics-retest.png
 :alt: A failed run and a retest in the table of test runs in the {synthetics-app}
 :screenshot:
 :::
@@ -91,11 +91,11 @@ If the monitor is configured to [retest on failure](../../../solutions/observabi
 
 The **Errors** tab has information on failed runs. If the monitor is configured to [retest on failure](../../../solutions/observability/apps/configure-synthetics-projects.md#synthetics-configuration-monitor), failed runs will only result in an error if both the initial run and the rerun fail. This can reduce noise related to transient problems.
 
-The Errors tab includes a high-level overview of all alerts and a complete list of all failures. Use the calendar icon (![Calendar icon](../../../images/observability-calendar.svg "")) and search bar to filter for runs that occurred in a specific time period.
+The Errors tab includes a high-level overview of all alerts and a complete list of all failures. Use the calendar icon (![Calendar icon](/solutions/images/observability-calendar.svg "")) and search bar to filter for runs that occurred in a specific time period.
 
 For browser monitors, you can click on any run in the **Error** list to open an **Error details** page that includes most of the same information that is included the in [Details for one run](../../../solutions/observability/apps/analyze-data-from-synthetic-monitors.md#synthetics-analyze-one-run) section below.
 
-:::{image} ../../../images/observability-synthetics-analyze-individual-monitor-errors.png
+:::{image} /solutions/images/observability-synthetics-analyze-individual-monitor-errors.png
 :alt: The Errors tab on the individual monitor page for all monitor types in the {synthetics-app}
 :screenshot:
 :::
@@ -119,15 +119,15 @@ The journey page on the Overview tab includes:
 * **Duration by step** over the last 24 hours.
 * A list of the **last 10 test runs** that link to the [details for each run](../../../solutions/observability/apps/analyze-data-from-synthetic-monitors.md#synthetics-analyze-one-run).
 
-:::{image} ../../../images/observability-synthetics-analyze-journeys-over-time.png
+:::{image} /solutions/images/observability-synthetics-analyze-journeys-over-time.png
 :alt: Individual journey page for browser monitors in the {synthetics-app}
 :screenshot:
 :::
 
 From here, you can either drill down into:
 
-* The latest run of the full journey by clicking **![Inspect icon](../../../images/observability-inspect.svg "") View test run** or a past run in the list of **Last 10 test runs**. This will take you to the view described below in [Details for one run](../../../solutions/observability/apps/analyze-data-from-synthetic-monitors.md#synthetics-analyze-one-run).
-* An individual step in this run by clicking the performance breakdown icon (![Performance breakdown icon](../../../images/observability-apmTrace.svg "")) next to one of the steps. This will take you to the view described below in [Details for one step](../../../solutions/observability/apps/analyze-data-from-synthetic-monitors.md#synthetics-analyze-one-step).
+* The latest run of the full journey by clicking **![Inspect icon](/solutions/images/observability-inspect.svg "") View test run** or a past run in the list of **Last 10 test runs**. This will take you to the view described below in [Details for one run](../../../solutions/observability/apps/analyze-data-from-synthetic-monitors.md#synthetics-analyze-one-run).
+* An individual step in this run by clicking the performance breakdown icon (![Performance breakdown icon](/solutions/images/observability-apmTrace.svg "")) next to one of the steps. This will take you to the view described below in [Details for one step](../../../solutions/observability/apps/analyze-data-from-synthetic-monitors.md#synthetics-analyze-one-step).
 
 
 ### Details for one run [synthetics-analyze-one-run]
@@ -136,25 +136,25 @@ The page detailing one run for a journey includes more information on each step 
 
 At the top of the page, see the *Code executed* and any *Console* output for each step. If the step failed, this will also include a *Stacktrace* tab that you can use to diagnose the cause of errors.
 
-Navigate through each step using **![Previous icon](../../../images/observability-arrowLeft.svg "") Previous** and **Next ![Next icon](../../../images/observability-arrowRight.svg "")**.
+Navigate through each step using **![Previous icon](/solutions/images/observability-arrowLeft.svg "") Previous** and **Next ![Next icon](/solutions/images/observability-arrowRight.svg "")**.
 
-:::{image} ../../../images/observability-synthetics-analyze-one-run-code-executed.png
+:::{image} /solutions/images/observability-synthetics-analyze-one-run-code-executed.png
 :alt: Step carousel on a page detailing one run of a browser monitor in the {synthetics-app}
 :screenshot:
 :::
 
-Scroll down to dig into the steps in this journey run. Click the ![Arrow right icon](../../../images/observability-arrowRight.svg "") icon next to the step number to show details. The details include metrics for the step in the current run and the step in the last successful run. Read more about step-level metrics below in [Timing](../../../solutions/observability/apps/analyze-data-from-synthetic-monitors.md#synthetics-analyze-one-step-timing) and [Metrics](../../../solutions/observability/apps/analyze-data-from-synthetic-monitors.md#synthetics-analyze-one-step-metrics).
+Scroll down to dig into the steps in this journey run. Click the ![Arrow right icon](/solutions/images/observability-arrowRight.svg "") icon next to the step number to show details. The details include metrics for the step in the current run and the step in the last successful run. Read more about step-level metrics below in [Timing](../../../solutions/observability/apps/analyze-data-from-synthetic-monitors.md#synthetics-analyze-one-step-timing) and [Metrics](../../../solutions/observability/apps/analyze-data-from-synthetic-monitors.md#synthetics-analyze-one-step-metrics).
 
 This is particularly useful to compare the metrics for a failed step to the last time it completed successfully when trying to diagnose the reason it failed.
 
-![Step list on a page detailing one run of a browser monitor in the Synthetics UI](../../../images/observability-synthetics-analyze-one-run-compare-steps.png "")
+![Step list on a page detailing one run of a browser monitor in the Synthetics UI](/solutions/images/observability-synthetics-analyze-one-run-compare-steps.png "")
 
-Drill down to see even more details for an individual step by clicking the performance breakdown icon (![Performance breakdown icon](../../../images/observability-apmTrace.svg "")) next to one of the steps. This will take you to the view described below in [Details for one step](../../../solutions/observability/apps/analyze-data-from-synthetic-monitors.md#synthetics-analyze-one-step).
+Drill down to see even more details for an individual step by clicking the performance breakdown icon (![Performance breakdown icon](/solutions/images/observability-apmTrace.svg "")) next to one of the steps. This will take you to the view described below in [Details for one step](../../../solutions/observability/apps/analyze-data-from-synthetic-monitors.md#synthetics-analyze-one-step).
 
 
 ### Details for one step [synthetics-analyze-one-step]
 
-After clicking the performance breakdown icon (![Performance breakdown icon](../../../images/observability-apmTrace.svg "")) you’ll see more detail for an individual step.
+After clicking the performance breakdown icon (![Performance breakdown icon](/solutions/images/observability-apmTrace.svg "")) you’ll see more detail for an individual step.
 
 
 #### Screenshot [synthetics-analyze-one-step-screenshot]
@@ -169,7 +169,7 @@ Customize screenshot behavior for all monitors in the [configuration file](../..
 
 Screenshots can be particularly helpful to identify what went wrong when a step fails because of a change to the UI. You can compare the failed step to the last time the step successfully completed.
 
-:::{image} ../../../images/observability-synthetics-analyze-one-step-screenshot.png
+:::{image} /solutions/images/observability-synthetics-analyze-one-step-screenshot.png
 :alt: Screenshot for one step in a browser monitor in the {synthetics-app}
 :screenshot:
 :::
@@ -187,11 +187,11 @@ The **Timing** visualization shows a breakdown of the time spent in each part of
 * **Receive**: The time it took to receive the response from the server, which can be impacted by the size of the response.
 * **Send**: The time spent sending the request data to the server.
 
-Next to each network timing metric, there’s an icon that indicates whether the value is higher (![Value is higher icon](../../../images/observability-sortUp.svg "")), lower (![Value is lower icon](../../../images/observability-sortDown.svg "")), or the same (![Value is the same](../../../images/observability-minus.svg "")) compared to the median of all runs in the last 24 hours. Hover over the icon to see more details in a tooltip.
+Next to each network timing metric, there’s an icon that indicates whether the value is higher (![Value is higher icon](/solutions/images/observability-sortUp.svg "")), lower (![Value is lower icon](/solutions/images/observability-sortDown.svg "")), or the same (![Value is the same](/solutions/images/observability-minus.svg "")) compared to the median of all runs in the last 24 hours. Hover over the icon to see more details in a tooltip.
 
 This gives you an overview of how much time is spent (and how that time is spent) loading resources. This high-level information may not help you diagnose a problem on its own, but it could act as a signal to look at more granular information in the [Network requests](../../../solutions/observability/apps/analyze-data-from-synthetic-monitors.md#synthetics-analyze-one-step-network) section.
 
-:::{image} ../../../images/observability-synthetics-analyze-one-step-timing.png
+:::{image} /solutions/images/observability-synthetics-analyze-one-step-timing.png
 :alt: Network timing visualization for one step in a browser monitor in the {synthetics-app}
 :screenshot:
 :::
@@ -213,9 +213,9 @@ Largest contentful paint and Cumulative layout shift are part of Google’s [Cor
 ::::
 
 
-Next to each metric, there’s an icon that indicates whether the value is higher (![Value is higher icon](../../../images/observability-sortUp.svg "")), lower (![Value is lower icon](../../../images/observability-sortDown.svg "")), or the same (![Value is the same](../../../images/observability-minus.svg "")) compared to all runs over the last 24 hours. Hover over the icon to see more details in a tooltip.
+Next to each metric, there’s an icon that indicates whether the value is higher (![Value is higher icon](/solutions/images/observability-sortUp.svg "")), lower (![Value is lower icon](/solutions/images/observability-sortDown.svg "")), or the same (![Value is the same](/solutions/images/observability-minus.svg "")) compared to all runs over the last 24 hours. Hover over the icon to see more details in a tooltip.
 
-:::{image} ../../../images/observability-synthetics-analyze-one-step-metrics.png
+:::{image} /solutions/images/observability-synthetics-analyze-one-step-metrics.png
 :alt: Metrics visualization for one step in a browser monitor in the {synthetics-app}
 :screenshot:
 :::
@@ -227,7 +227,7 @@ The **Object weight** visualization shows the cumulative size of downloaded reso
 
 This provides a different kind of analysis. For example, you might have a large number of JavaScript files, each of which will need a separate download, but they may be collectively small. This could help you identify an opportunity to improve efficiency by combining multiple files into one.
 
-:::{image} ../../../images/observability-synthetics-analyze-one-step-object.png
+:::{image} /solutions/images/observability-synthetics-analyze-one-step-object.png
 :alt: Object visualization for one step in a browser monitor in the {synthetics-app}
 :screenshot:
 :::
@@ -241,13 +241,13 @@ The colored bars within each line indicate the time spent per resource. Each col
 
 Understanding each phase of a request can help you improve your site’s speed by reducing the time spent in each phase.
 
-:::{image} ../../../images/observability-synthetics-analyze-one-step-network.png
+:::{image} /solutions/images/observability-synthetics-analyze-one-step-network.png
 :alt: Network requests waterfall visualization for one step in a browser monitor in the {synthetics-app}
 :screenshot:
 :::
 
 Without leaving the waterfall chart, you can view data points relating to each resource: resource details, request headers, response headers, and certificate headers. On the waterfall chart, select a resource name, or any part of each row, to display the resource details overlay.
 
-For additional analysis, whether to check the content of a CSS file or to view a specific image, click the ![External link icon](../../../images/observability-popout.svg "") icon located beside each resource, to view its content in a new tab.
+For additional analysis, whether to check the content of a CSS file or to view a specific image, click the ![External link icon](/solutions/images/observability-popout.svg "") icon located beside each resource, to view its content in a new tab.
 
 You can also navigate between steps and checks at the top of the page to view the corresponding waterfall charts.

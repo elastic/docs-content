@@ -28,7 +28,7 @@ Categorization is a {{ml}} process that tokenizes a text field, clusters similar
 3. Select the **Categorization** wizard from the list.
 4. Choose a categorization detector - it’s the `count` function in this example - and the field you want to categorize - the `message` field in this example.
 
-    :::{image} ../../../images/machine-learning-categorization-wizard.png
+    :::{image} /explore-analyze/images/machine-learning-categorization-wizard.png
     :alt: Creating a categorization job in Kibana
     :screenshot:
     :::
@@ -69,7 +69,7 @@ PUT _ml/anomaly_detectors/it_ops_app_logs
 
 Use the **Anomaly Explorer** in {{kib}} to view the analysis results:
 
-:::{image} ../../../images/machine-learning-ml-category-anomalies.png
+:::{image} /explore-analyze/images/machine-learning-ml-category-anomalies.png
 :alt: Categorization results in the Anomaly Explorer
 :screenshot:
 :::
@@ -84,7 +84,7 @@ Another advanced option is the `categorization_filters` property, which can cont
 
 ## Per-partition categorization [ml-per-partition-categorization]
 
-If you enable per-partition categorization, categories are determined independently for each partition. For example, if your data includes messages from multiple types of logs from different applications, you can use a field like the ECS [`event.dataset` field](asciidocalypse://docs/ecs/docs/reference/ecs-event.md) as the `partition_field_name` and categorize the messages for each type of log separately.
+If you enable per-partition categorization, categories are determined independently for each partition. For example, if your data includes messages from multiple types of logs from different applications, you can use a field like the ECS [`event.dataset` field](ecs://reference/ecs-event.md) as the `partition_field_name` and categorize the messages for each type of log separately.
 
 If your job has multiple detectors, every detector that uses the `mlcategory` keyword must also define a `partition_field_name`. You must use the same `partition_field_name` value in all of these detectors. Otherwise, when you create or update a job and enable per-partition categorization, it fails.
 
@@ -96,7 +96,7 @@ Categorization uses English dictionary words to identify log message categories.
 
 If you use the categorization wizard in {{kib}}, you can see which categorization analyzer it uses and highlighted examples of the tokens that it identifies. You can also change the tokenization rules by customizing the way the categorization field values are interpreted:
 
-:::{image} ../../../images/machine-learning-ml-category-analyzer.png
+:::{image} /explore-analyze/images/machine-learning-ml-category-analyzer.png
 :alt: Editing the categorization analyzer in Kibana
 :screenshot:
 :::

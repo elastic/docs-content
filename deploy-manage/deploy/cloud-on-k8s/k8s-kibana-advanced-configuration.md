@@ -13,7 +13,7 @@ If you already looked at the [Elasticsearch on ECK](elasticsearch-configuration.
 * [Customize the Pod configuration](#k8s-kibana-pod-configuration)
 * [Customize the product configuration](#k8s-kibana-configuration)
 * [Manage HTTP settings](/deploy-manage/security/secure-http-communications.md#k8s-kibana-http-configuration)
-* [Use secure settings](k8s-kibana-secure-settings.md)
+* [Use secure settings](../../security/k8s-secure-settings.md)
 * [Install {{kib}} plugins](k8s-kibana-plugins.md)
 
 ## Pod configuration [k8s-kibana-pod-configuration]
@@ -97,7 +97,7 @@ kubectl get secret my-kibana-kb-config -o jsonpath='{ .data.kibana\.yml }' | bas
 ::::
 
 
-You can provide your own encryption keys using a secure setting, as described in [Secure settings](k8s-kibana-secure-settings.md).
+You can provide your own encryption keys using a secure setting, as described in [Secure settings](../../security/k8s-secure-settings.md).
 
 ::::{note}
 While most reconfigurations of your {{kib}} instances are carried out in rolling upgrade fashion, all version upgrades will cause {{kib}} downtime. This happens because you can only run a single version of {{kib}} at any given time. For more information, check [Upgrade {{kib}}](/deploy-manage/upgrade/deployment-or-cluster.md).

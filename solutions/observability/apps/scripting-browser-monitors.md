@@ -18,7 +18,7 @@ Start by learning the basics of synthetic monitoring, including how to:
 * [Work with params and secrets](../../../solutions/observability/apps/work-with-params-secrets.md)
 * [Use the Synthetics Recorder](../../../solutions/observability/apps/use-synthetics-recorder.md)
 
-:::{image} ../../../images/observability-synthetic-monitor-lifecycle.png
+:::{image} /solutions/images/observability-synthetic-monitor-lifecycle.png
 :alt: Diagram of the lifecycle of a synthetic monitor: write a test
 :screenshot:
 :::

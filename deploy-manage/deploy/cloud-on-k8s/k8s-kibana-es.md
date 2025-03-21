@@ -47,7 +47,7 @@ Refer to [*Connect to external Elastic resources*](connect-to-external-elastic-r
 
 ## Using secure settings [k8s_using_secure_settings]
 
-For example, use the [secure settings](k8s-kibana-secure-settings.md) mechanism to securely store the default `elastic` user’s `$PASSWORD` credential of the external {{es}} cluster as set under [Deploy an {{es}} cluster](elasticsearch-deployment-quickstart.md):
+For example, use the [secure settings](../../security/k8s-secure-settings.md) mechanism to securely store the default `elastic` user’s `$PASSWORD` credential of the external {{es}} cluster as set under [Deploy an {{es}} cluster](elasticsearch-deployment-quickstart.md):
 
 ```shell
 kubectl create secret generic kibana-elasticsearch-credentials --from-literal=elasticsearch.password=$PASSWORD

@@ -43,7 +43,7 @@ Create event filters from the **Hosts** page or the **Event filters** page.
     * To create an event filter from the **Event filters** page, click **Add event filter**.
 
 
-    :::{image} ../../../images/security-event-filter.png
+    :::{image} /solutions/images/security-event-filter.png
     :alt: Add event filter flyout
     :screenshot:
     :::
@@ -96,7 +96,7 @@ Create event filters from the **Hosts** page or the **Event filters** page.
 
 The **Event filters** page displays all the event filters that have been added to the {{security-app}}. To refine the list, use the search bar to search by filter name, description, comments, or field value.
 
-:::{image} ../../../images/security-event-filters-list.png
+:::{image} /solutions/images/security-event-filters-list.png
 :alt: event filters list
 :screenshot:
 :::

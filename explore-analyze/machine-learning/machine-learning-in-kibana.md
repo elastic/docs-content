@@ -13,7 +13,7 @@ As data sets increase in size and complexity, the human effort required to inspe
 
 {{kib}} includes a free **{{data-viz}}** to learn more about your data. In particular, if your data is stored in {{es}} and contains a time field, you can use the **{{data-viz}}** to identify possible fields for {{anomaly-detect}}:
 
-:::{image} ../../images/kibana-ml-data-visualizer-sample.png
+:::{image} /explore-analyze/images/kibana-ml-data-visualizer-sample.png
 :alt: {{data-viz}} for sample flight data
 :screenshot:
 :::
@@ -51,7 +51,7 @@ This functionality is in technical preview and may be changed or removed in a fu
 
 You can find the data drift view in **{{ml-app}}** > **{{data-viz}}** in {{kib}} or by using the [global search field](../../explore-analyze/find-and-organize/find-apps-and-objects.md). The data drift view shows you the differences in each field for two different time ranges in a given {{data-source}}. The view helps you to visualize the changes in your data over time and enables you to understand its behavior better.
 
-:::{image} ../../images/kibana-ml-data-drift.png
+:::{image} /explore-analyze/images/kibana-ml-data-drift.png
 :alt: Data drift view in {{kib}}
 :screenshot:
 :::

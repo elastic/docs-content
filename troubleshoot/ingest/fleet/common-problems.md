@@ -371,14 +371,14 @@ If you want to omit the raw events from the diagnostic, add the flag `--exclude-
 2. In the **Host** column, click the agent’s name.
 3. Select the **Diagnostics** tab and click the **Request diagnostics .zip** button.
 
-    :::{image} ../../../images/fleet-collect-agent-diagnostics1.png
+    :::{image} /troubleshoot/images/fleet-collect-agent-diagnostics1.png
     :alt: Collect agent diagnostics under agent details
     :screenshot:
     :::
 
 4. In the **Request Diagnostics** pop-up, select **Collect additional CPU metrics** if you’d like detailed CPU data.
 
-    :::{image} ../../../images/fleet-collect-agent-diagnostics2.png
+    :::{image} /troubleshoot/images/fleet-collect-agent-diagnostics2.png
     :alt: Collect agent diagnostics confirmation pop-up
     :screenshot:
     :::

@@ -34,7 +34,7 @@ The creator information is only available for dashboards created on or after ver
 ::::
 
 
-:::{image} ../../images/kibana-dashboard-filter-by-creator.png
+:::{image} /explore-analyze/images/kibana-dashboard-filter-by-creator.png
 :alt: Option to filter the list of dashboards by creator
 :::
 
@@ -51,7 +51,7 @@ All dashboards marked as favorite are gathered in the **Starred** tab so you can
 
 The list of starred dashboards is personal. Dashboards marked as favorite by other users only appear for those users.
 
-![List of starred dashboards](../../images/kibana-dashboard-starred-list.png "")
+![List of starred dashboards](/explore-analyze/images/kibana-dashboard-starred-list.png "")
 
 
 ## View dashboard usage [_view_dashboard_usage]
@@ -62,4 +62,4 @@ You can check how much a dashboard is being used by clicking its **View details*
 
 These details include a graph showing the total number of views during the last 90 days.
 
-![Graph showing the number of views during the last 90 days](../../images/kibana-dashboard-usage-count.png "")
+![Graph showing the number of views during the last 90 days](/explore-analyze/images/kibana-dashboard-usage-count.png "")

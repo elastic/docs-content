@@ -27,18 +27,18 @@ This setting supports [Central configuration](apm-agent-central-configuration.md
 * Go: [`ELASTIC_APM_SANITIZE_FIELD_NAMES`](apm-agent-go://reference/configuration.md#config-sanitize-field-names)
 * Java: [`sanitize_field_names`](apm-agent-java://reference/config-core.md#config-sanitize-field-names)
 * .NET: [`sanitizeFieldNames`](apm-agent-dotnet://reference/config-core.md#config-sanitize-field-names)
-* Node.js: [`sanitizeFieldNames`](asciidocalypse://docs/apm-agent-nodejs/docs/reference/configuration.md#sanitize-field-names)
-* Python: [`sanitize_field_names`](asciidocalypse://docs/apm-agent-python/docs/reference/configuration.md#config-sanitize-field-names)
-* Ruby: [`sanitize_field_names`](asciidocalypse://docs/apm-agent-ruby/docs/reference/configuration.md#config-sanitize-field-names)
+* Node.js: [`sanitizeFieldNames`](apm-agent-nodejs://reference/configuration.md#sanitize-field-names)
+* Python: [`sanitize_field_names`](apm-agent-python://reference/configuration.md#config-sanitize-field-names)
+* Ruby: [`sanitize_field_names`](apm-agent-ruby://reference/configuration.md#config-sanitize-field-names)
 
 Alternatively, you can completely disable the capturing of HTTP headers. This setting also supports [Central configuration](apm-agent-central-configuration.md):
 
 * Go: [`ELASTIC_APM_CAPTURE_HEADERS`](apm-agent-go://reference/configuration.md#config-capture-headers)
 * Java: [`capture_headers`](apm-agent-java://reference/config-core.md#config-capture-headers)
 * .NET: [`CaptureHeaders`](apm-agent-dotnet://reference/config-http.md#config-capture-headers)
-* Node.js: [`captureHeaders`](asciidocalypse://docs/apm-agent-nodejs/docs/reference/configuration.md#capture-headers)
-* Python: [`capture_headers`](asciidocalypse://docs/apm-agent-python/docs/reference/configuration.md#config-capture-headers)
-* Ruby: [`capture_headers`](asciidocalypse://docs/apm-agent-ruby/docs/reference/configuration.md#config-capture-headers)
+* Node.js: [`captureHeaders`](apm-agent-nodejs://reference/configuration.md#capture-headers)
+* Python: [`capture_headers`](apm-agent-python://reference/configuration.md#config-capture-headers)
+* Ruby: [`capture_headers`](apm-agent-ruby://reference/configuration.md#config-capture-headers)
 
 
 ## HTTP bodies [apm-filters-http-body]
@@ -50,9 +50,9 @@ This setting supports [Central configuration](apm-agent-central-configuration.md
 * Go: [`ELASTIC_APM_CAPTURE_BODY`](apm-agent-go://reference/configuration.md#config-capture-body)
 * Java: [`capture_body`](apm-agent-java://reference/config-core.md#config-capture-body)
 * .NET: [`CaptureBody`](apm-agent-dotnet://reference/config-http.md#config-capture-body)
-* Node.js: [`captureBody`](asciidocalypse://docs/apm-agent-nodejs/docs/reference/configuration.md#capture-body)
-* Python: [`capture_body`](asciidocalypse://docs/apm-agent-python/docs/reference/configuration.md#config-capture-body)
-* Ruby: [`capture_body`](asciidocalypse://docs/apm-agent-ruby/docs/reference/configuration.md#config-capture-body)
+* Node.js: [`captureBody`](apm-agent-nodejs://reference/configuration.md#capture-body)
+* Python: [`capture_body`](apm-agent-python://reference/configuration.md#config-capture-body)
+* Ruby: [`capture_body`](apm-agent-ruby://reference/configuration.md#config-capture-body)
 
 
 ## Personal data [apm-filters-personal-data]
@@ -95,5 +95,5 @@ Certain agents offer additional filtering and obfuscating options:
 
 **Agent configuration options**
 
-* (Node.js) Remove errors raised by the server-side process: disable with [captureExceptions](asciidocalypse://docs/apm-agent-nodejs/docs/reference/configuration.md#capture-exceptions).
+* (Node.js) Remove errors raised by the server-side process: disable with [captureExceptions](apm-agent-nodejs://reference/configuration.md#capture-exceptions).
 * (Java) Remove process arguments from transactions: disabled by default with [`include_process_args`](apm-agent-java://reference/config-reporter.md#config-include-process-args).
