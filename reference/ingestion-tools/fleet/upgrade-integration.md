@@ -55,7 +55,7 @@ The following integrations are installed automatically when you select certain o
 
 * [Elastic Agent](integration-docs://reference/elastic_agent/index.md) - installed automatically when the default **Collect agent logs** or **Collect agent metrics** option is enabled in an {{agent}} policy).
 * [Fleet Server](integration-docs://reference/fleet_server/index.md) - installed automatically  when {{fleet-server}} is set up through the {{fleet}} UI.
-* [System](integration-docs://reference/system.md) - installed automatically when the default **Collect system logs and metrics** option is enabled in an {{agent}} policy).
+* [System](integration-docs://reference/system/index.md) - installed automatically when the default **Collect system logs and metrics** option is enabled in an {{agent}} policy).
 
 The [Elastic Defend](integration-docs://reference/endpoint/index.md) integration also has an option to upgrade installation policies automatically.
 

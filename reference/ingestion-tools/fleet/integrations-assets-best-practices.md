@@ -36,7 +36,7 @@ The {{fleet}} integration assets are not supposed to work when sending arbitrary
 
 While it’s possible to include {{fleet}} and {{agent}} integration assets in a custom integration, this is not recommended nor supported. Assets from another integration should not be referenced directly from a custom integration.
 
-As an example scenario, one may want to ingest Redis logs from Kafka. This can be done using the [Redis integration](integration-docs://reference/redis-intro.md), but only certain files and paths are allowed. It’s technically possible to use the [Custom Kafka Logs integration](integration-docs://reference/kafka_log.md) with a custom ingest pipeline, referencing the ingest pipeline of the Redis integration to ingest logs into the index templates of the Custom Kafka Logs integration data streams.
+As an example scenario, one may want to ingest Redis logs from Kafka. This can be done using the [Redis integration](integration-docs://reference/redis-intro.md), but only certain files and paths are allowed. It’s technically possible to use the [Custom Kafka Logs integration](integration-docs://reference/kafka_log/index.md) with a custom ingest pipeline, referencing the ingest pipeline of the Redis integration to ingest logs into the index templates of the Custom Kafka Logs integration data streams.
 
 However, referencing assets of an integration from another custom integration is not recommended nor supported. A configuration as described above can break when the integration is upgraded, as can happen automatically.
 

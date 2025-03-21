@@ -32,7 +32,7 @@ Data is often messy and incomplete. [Ingest pipelines](../manage-data/ingest/tra
 
 ## Query [geospatial-query]
 
-[Geo queries](elasticsearch://reference/query-languages/geo-queries.md) answer location-driven questions. Find documents that intersect with, are within, are contained by, or do not intersect your query geometry. Combine geospatial queries with full text search queries for unparalleled searching experience. For example, "Show me all subscribers that live within 5 miles of our new gym location, that joined in the last year and have running mentioned in their profile".
+[Geo queries](elasticsearch://reference/query-languages/query-dsl/geo-queries.md) answer location-driven questions. Find documents that intersect with, are within, are contained by, or do not intersect your query geometry. Combine geospatial queries with full text search queries for unparalleled searching experience. For example, "Show me all subscribers that live within 5 miles of our new gym location, that joined in the last year and have running mentioned in their profile".
 
 
 ## ES|QL [esql-query]

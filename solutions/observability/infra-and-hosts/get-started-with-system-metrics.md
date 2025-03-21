@@ -63,14 +63,14 @@ In this step, add the System integration to monitor host logs and metrics.
 4. Configure the integration name and optionally add a description. Make sure that **Collect logs from System instances** and **Collect metrics from System instances** are turned on.
 5. Expand each configuration section to verify that the settings are correct for your host. For example, if you’re  deploying {{agent}} on macOS hosts, you need to add a new path to the *System syslog logs* section by clicking **Add row** and specifying `/var/log/system.log`.
 
-    :::{image} ../../../images/observability-kibana-agent-add-log-path.png
+    :::{image} /solutions/images/observability-kibana-agent-add-log-path.png
     :alt: Configuration page for adding log paths to the {{agent}} System integration
     :screenshot:
     :::
 
 6. Click **Save and continue**. This step takes a minute or two to complete. When it’s done, you’ll have an agent policy that contains a system integration policy for the configuration you just specified.
 
-    :::{image} ../../../images/observability-kibana-system-policy.png
+    :::{image} /solutions/images/observability-kibana-system-policy.png
     :alt: Configuration page for adding the {{agent}} System integration
     :screenshot:
     :::
@@ -107,7 +107,7 @@ The **Add agent** flyout has two options: **Enroll in {{fleet}}** and **Run stan
 
 2. Download, install, and enroll the {{agent}} on your host by selecting your host operating system and following the **Install {{agent}} on your host** step.
 
-    :::{image} ../../../images/observability-kibana-agent-flyout.png
+    :::{image} /solutions/images/observability-kibana-agent-flyout.png
     :alt: Add agent flyout in {{kib}}
     :screenshot:
     :::

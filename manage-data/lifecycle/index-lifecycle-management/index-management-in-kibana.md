@@ -192,7 +192,7 @@ Use the **Enrich Policies** view to add data from your existing indices to incom
 * The source indices that store enrich data as documents
 * The fields from the source indices used to match incoming documents
 * The enrich fields containing enrich data from the source indices that you want to add to incoming documents
-* An optional [query](elasticsearch://reference/query-languages/query-dsl-match-all-query.md).
+* An optional [query](elasticsearch://reference/query-languages/query-dsl/query-dsl-match-all-query.md).
 
 :::{image} /manage-data/images/elasticsearch-reference-management-enrich-policies.png
 :alt: Enrich policies

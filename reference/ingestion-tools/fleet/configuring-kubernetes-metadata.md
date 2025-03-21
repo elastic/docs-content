@@ -7,7 +7,7 @@ mapped_pages:
 
 Kubernetes [metadata](/solutions/observability/infra-and-hosts/tutorial-observe-kubernetes-deployments.md#beats-metadata) refer to contextual information extracted from Kubernetes resources. Metadata information enrich metrics and logs collected from a Kubernetes cluster, enabling deeper insights into Kubernetes environments.
 
-When the {{agent}}'s policy includes the [{{k8s}} Integration](integration-docs://reference/kubernetes.md) which configures the collection of Kubernetes related metrics and container logs, the mechanisms used for the metadata enrichment are:
+When the {{agent}}'s policy includes the [{{k8s}} Integration](integration-docs://reference/kubernetes/index.md) which configures the collection of Kubernetes related metrics and container logs, the mechanisms used for the metadata enrichment are:
 
 * [Kubernetes Provider](/reference/ingestion-tools/fleet/kubernetes-provider.md) for log collection
 * Kubernetes metadata enrichers for metrics

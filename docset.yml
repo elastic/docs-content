@@ -278,3 +278,4 @@ subs:
   apm_server_version: "9.0.0"
   version: "9.0.0"
   release-date: "2-April-2025"
+  heroku: "Elasticsearch Add-on for Heroku"

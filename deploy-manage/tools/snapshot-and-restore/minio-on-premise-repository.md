@@ -33,7 +33,7 @@ We recommend:
 * Using a single Minio endpoint with the Elastic Cloud Enterprise installation, to simplify repository management.
 * Securing access to the Minio endpoint with TLS.
 
-:::{image} ../../../images/cloud-enterprise-ece-minio-large-arch.png
+:::{image} /deploy-manage/images/cloud-enterprise-ece-minio-large-arch.png
 :alt: Architecture diagram
 :name: img-ece-minio-large-arch
 :::
@@ -104,7 +104,7 @@ You must add the new repository to Elastic Cloud Enterprise before it can be use
       }
     ```
 
-    :::{image} ../../../images/cloud-enterprise-ece-minio-repository.png
+    :::{image} /deploy-manage/images/cloud-enterprise-ece-minio-repository.png
     :alt: Create form
     :name: img-ece-minio-repository
     :::
@@ -113,7 +113,7 @@ You must add the new repository to Elastic Cloud Enterprise before it can be use
 
 The Minio repository is now available from the drop-down list of repositories when creating deployments.
 
-:::{image} ../../../images/cloud-enterprise-ece-minio-deployment.png
+:::{image} /deploy-manage/images/cloud-enterprise-ece-minio-deployment.png
 :alt: Create deployment
 :name: img-ece-minio-deployment
 :::

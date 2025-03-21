@@ -12,7 +12,7 @@ applies_to:
 
 The Hosts page provides a comprehensive overview of all hosts and host-related security events. Key performance indicator (KPI) charts, data tables, and interactive widgets let you view specific data, drill down for deeper insights, and interact with Timeline for further investigation.
 
-:::{image} ../../../images/security-hosts-ov-pg.png
+:::{image} /solutions/images/security-hosts-ov-pg.png
 :alt: Hosts page
 :screenshot:
 :::
@@ -43,7 +43,7 @@ Beneath the KPI charts are data tables, categorized by individual tabs, which ar
 
 The tables within the **Events** and **Sessions** tabs include inline actions and several customization options. To learn more about what you can do with the data in these tables, refer to [*Manage detection alerts*](/solutions/security/detect-and-alert/manage-detection-alerts.md).
 
-:::{image} ../../../images/security-events-table.png
+:::{image} /solutions/images/security-events-table.png
 :alt: Events table
 :screenshot:
 :::
@@ -60,7 +60,7 @@ The host details page includes the following sections:
 * **Alert metrics**: The total number of alerts by severity, rule, and status (`Open`, `Acknowledged`, or `Closed`).
 * **Data tables**: The same data tables as on the main Hosts page, except with values for the selected host instead of all hosts.
 
-:::{image} ../../../images/security-hosts-detail-pg.png
+:::{image} /solutions/images/security-hosts-detail-pg.png
 :alt: Host's details page
 :screenshot:
 :::
@@ -84,7 +84,7 @@ The host details flyout includes the following sections:
 * [Insights](/solutions/security/explore/hosts-page.md#host-details-insights), which displays vulnerabilities findings for the host.
 * [Observed data](/solutions/security/explore/hosts-page.md#host-observed-data), which displays host details.
 
-:::{image} ../../../images/security-host-details-flyout.png
+:::{image} /solutions/images/security-host-details-flyout.png
 :alt: Host details flyout
 :screenshot:
 :::
@@ -111,7 +111,7 @@ To expand the **Host risk summary** section, click **View risk contributions**. 
 
 If more than 10 alerts contributed to the risk scoring calculation, the remaining alerts' aggregate contribution score is displayed below the **Alerts** table.
 
-:::{image} ../../../images/security-host-risk-inputs.png
+:::{image} /solutions/images/security-host-risk-inputs.png
 :alt: Host risk inputs
 :screenshot:
 :::
@@ -121,7 +121,7 @@ If more than 10 alerts contributed to the risk scoring calculation, the remainin
 
 The **Asset Criticality** section displays the selected host’s [asset criticality level](/solutions/security/advanced-entity-analytics/asset-criticality.md). Asset criticality contributes to the overall [host risk score](/solutions/security/advanced-entity-analytics/entity-risk-scoring.md). The criticality level defines how impactful the host is when calculating the risk score.
 
-:::{image} ../../../images/security-host-asset-criticality.png
+:::{image} /solutions/images/security-host-asset-criticality.png
 :alt: Asset criticality
 :screenshot:
 :::
@@ -133,7 +133,7 @@ Click **Assign** to assign a criticality level to the selected host, or **Change
 
 The **Insights** section displays [Vulnerabilities Findings](/solutions/security/cloud/findings-page-3.md) for the host. Click **Vulnerabilities** to expand the flyout and view this data.
 
-:::{image} ../../../images/security--host-details-insights-expanded.png
+:::{image} /solutions/images/security--host-details-insights-expanded.png
 :alt: Host details flyout with the Vulnerabilities section expanded
 :::
 
@@ -142,7 +142,7 @@ The **Insights** section displays [Vulnerabilities Findings](/solutions/security
 
 This section displays details such as the host ID, when the host was first and last seen, the associated IP addresses and operating system, and the relevant Endpoint integration policy information.
 
-:::{image} ../../../images/security-host-observed-data.png
+:::{image} /solutions/images/security-host-observed-data.png
 :alt: Host observed data
 :screenshot:
 :::

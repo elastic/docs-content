@@ -9,7 +9,7 @@ mapped_urls:
 A *transaction* describes an event captured by an Elastic APM agent instrumenting a service. APM agents automatically collect performance metrics on HTTP requests, database queries, and much more.
 
 
-:::{image} ../../../images/observability-apm-transactions-overview.png
+:::{image} /solutions/images/observability-apm-transactions-overview.png
 :alt: Example view of transactions table in the Applications UI
 :screenshot:
 :::
@@ -51,7 +51,7 @@ The **Latency**, **Throughput**, **Failed transaction rate**, **Time spent by sp
 
 The **Transactions** table displays a list of *transaction groups* for the selected service. In other words, this view groups all transactions of the same name together, and only displays one entry for each group.
 
-:::{image} ../../../images/observability-apm-transactions-table.png
+:::{image} /solutions/images/observability-apm-transactions-table.png
 :alt: Example view of the transactions table in the Applications UI in Kibana
 :screenshot:
 :::
@@ -71,7 +71,7 @@ For further details, including troubleshooting and custom implementation instruc
 
 The transaction overview page is customized for the JavaScript RUM agent. Specifically, the page highlights **page load times** for your service:
 
-:::{image} ../../../images/observability-apm-geo-ui.png
+:::{image} /solutions/images/observability-apm-geo-ui.png
 :alt: average page load duration distribution
 :screenshot:
 :::
@@ -83,7 +83,7 @@ Additional RUM goodies, like core vitals, and visitor breakdown by browser, loca
 
 Selecting a transaction group will bring you to the **transaction** details. This page is visually similar to the transaction overview, but it shows data from all transactions within the selected transaction group.
 
-:::{image} ../../../images/observability-apm-transactions-overview.png
+:::{image} /solutions/images/observability-apm-transactions-overview.png
 :alt: Example view of response time distribution
 :screenshot:
 :::
@@ -93,7 +93,7 @@ Selecting a transaction group will bring you to the **transaction** details. Thi
 
 The latency distribution shows a plot of all transaction durations for the given time period. The following screenshot shows a typical distribution and indicates most of our requests were served quickly — awesome! The requests on the right are taking longer than average; we probably need to focus on them.
 
-:::{image} ../../../images/observability-apm-transaction-duration-dist.png
+:::{image} /solutions/images/observability-apm-transaction-duration-dist.png
 :alt: Example view of latency distribution graph
 :screenshot:
 :::
@@ -111,7 +111,7 @@ Each bucket presents up to ten trace samples in a **timeline**, trace sample **m
 
 Each sample has a trace timeline waterfall that shows how a typical request in that bucket executed. This waterfall is useful for understanding the parent/child hierarchy of transactions and spans, and ultimately determining *why* a request was slow. For large waterfalls, expand problematic transactions and collapse well-performing ones for easier problem isolation and troubleshooting.
 
-:::{image} ../../../images/observability-apm-transaction-sample.png
+:::{image} /solutions/images/observability-apm-transaction-sample.png
 :alt: Example view of transactions sample
 :screenshot:
 :::
@@ -153,7 +153,7 @@ If you’ve correlated your application’s logs and traces, you never have to s
 
 To learn how to correlate your logs with your instrumented services, see [Stream application logs](../../../solutions/observability/logs/stream-application-logs.md)
 
-:::{image} ../../../images/observability-apm-logs-tab.png
+:::{image} /solutions/images/observability-apm-logs-tab.png
 :alt: APM logs tab
 :screenshot:
 :::
@@ -163,7 +163,7 @@ To learn how to correlate your logs with your instrumented services, see [Stream
 
 Correlations surface attributes of your data that are potentially correlated with high-latency or erroneous transactions. To learn more, see [Find transaction latency and failure correlations](../../../solutions/observability/apps/find-transaction-latency-failure-correlations.md).
 
-:::{image} ../../../images/observability-correlations-hover.png
+:::{image} /solutions/images/observability-correlations-hover.png
 :alt: APM lattency correlations
 :screenshot:
 :::

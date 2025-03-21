@@ -59,7 +59,7 @@ To inspect hosts, run a query against one or more agents or policies, then view 
         ::::
 
 
-        :::{image} ../../../images/kibana-enter-query.png
+        :::{image} /solutions/images/kibana-enter-query.png
         :alt: Select saved query dropdown name showing query name and description
         :screenshot:
         :::
@@ -72,10 +72,10 @@ To inspect hosts, run a query against one or more agents or policies, then view 
 
 7. Review the results and do any of the following:
 
-    * Click **View in Discover** (![View in Discover icon](../../../images/kibana-discover-button-osquery.png "title =20x20")) to explore the results in **Discover**.
-    * Click **View in Lens** (![View in Lens icon](../../../images/kibana-lens-button-osquery.png "title =20x20")) to navigate to **Lens**, where you can use the drag-and-drop **Lens** editor to create visualizations.
-    * Click **Add to Case** (![Add to Case icon](../../../images/kibana-case-button-osquery.png "title =20x20")) to add the query results to a new or existing case.
-    * Click the view details icon (![View details icon](../../../images/kibana-view-osquery-details.png "title =20x20")) to examine the query ID and statement.
+    * Click **View in Discover** (![View in Discover icon](/solutions/images/kibana-discover-button-osquery.png "title =20x20")) to explore the results in **Discover**.
+    * Click **View in Lens** (![View in Lens icon](/solutions/images/kibana-lens-button-osquery.png "title =20x20")) to navigate to **Lens**, where you can use the drag-and-drop **Lens** editor to create visualizations.
+    * Click **Add to Case** (![Add to Case icon](/solutions/images/kibana-case-button-osquery.png "title =20x20")) to add the query results to a new or existing case.
+    * Click the view details icon (![View details icon](/solutions/images/kibana-view-osquery-details.png "title =20x20")) to examine the query ID and statement.
 
 8. To view more information about the request, such as failures, open the **Status** tab.
 
@@ -84,10 +84,10 @@ To inspect hosts, run a query against one or more agents or policies, then view 
 
 The **Live queries history** section on the **Live queries** tab shows a log of queries run over the last 30 days. From the Live queries table, you can:
 
-* Click the run icon (![Right-pointing triangle](../../../images/kibana-play-icon.png "")) to rerun a single query or a query pack.
-* Click the table icon (![Table icon](../../../images/kibana-table-icon.png "")) to examine the [results](#osquery-results) for a single query or a query pack. From the results table, you can also find the query [status](#osquery-status).
+* Click the run icon (![Right-pointing triangle](/solutions/images/kibana-play-icon.png "")) to rerun a single query or a query pack.
+* Click the table icon (![Table icon](/solutions/images/kibana-table-icon.png "")) to examine the [results](#osquery-results) for a single query or a query pack. From the results table, you can also find the query [status](#osquery-status).
 
-    :::{image} ../../../images/kibana-live-query-check-results.png
+    :::{image} /solutions/images/kibana-live-query-check-results.png
     :alt: Results of OSquery
     :screenshot:
     :::
@@ -142,7 +142,7 @@ You can run packs as live queries or schedule packs to run for one or more agent
 
     Details include the last time each query ran, how many results were returned, and the number of agents the query ran against. If there are errors, expand the row to view the details, including an option to view more information in the Logs.
 
-    :::{image} ../../../images/kibana-scheduled-pack.png
+    :::{image} /solutions/images/kibana-scheduled-pack.png
     :alt: Shows queries in the pack and details about each query
     :screenshot:
     :::
@@ -175,7 +175,7 @@ Once you save a query, you can only edit it from the **Saved queries** tab:
 
 3. Click **Test configuration** to test the query and any mapped fields:
 
-    * From the **Test query** panel, select agents or groups to test the query, then click **Submit** to run a live query. Result columns with the ![mapping](../../../images/kibana-mapped-icon.png "") icon are mapped. Hover over the icon to see the mapped ECS field.
+    * From the **Test query** panel, select agents or groups to test the query, then click **Submit** to run a live query. Result columns with the ![mapping](/solutions/images/kibana-mapped-icon.png "") icon are mapped. Hover over the icon to see the mapped ECS field.
 
 4. Click **Save** or **Update**.
 

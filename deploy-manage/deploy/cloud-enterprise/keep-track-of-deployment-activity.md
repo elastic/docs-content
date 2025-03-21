@@ -25,7 +25,7 @@ To view the activity for a deployment:
     3. Select one of the resource filters to view activity for only that resource type.
 
 
-:::{image} ../../../images/cloud-enterprise-ec-ce-activity-page.png
+:::{image} /deploy-manage/images/cloud-enterprise-ec-ce-activity-page.png
 :alt: The Activity page
 :::
 

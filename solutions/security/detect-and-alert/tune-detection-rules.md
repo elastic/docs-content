@@ -42,7 +42,7 @@ For example, to prevent the [Unusual Process Execution Path - Alternate Data Str
 
     The **Unusual Process Execution Path - Alternate Data Stream** rule details page is displayed.
 
-    :::{image} ../../../images/security-rule-details-page.png
+    :::{image} /solutions/images/security-rule-details-page.png
     :alt: Rule details page
     :screenshot:
     :::
@@ -54,7 +54,7 @@ For example, to prevent the [Unusual Process Execution Path - Alternate Data Str
     * **Operator**: `is`
     * **Value**: `myautomatedbuild`
 
-        :::{image} ../../../images/security-process-exception.png
+        :::{image} /solutions/images/security-process-exception.png
         :alt: Add Rule Exception UI
         :screenshot:
         :::
@@ -87,7 +87,7 @@ Another useful technique is to assign lower risk scores to rules triggered by au
     * Lower the `Risk score` (**Edit rule settings** → **About** tab).
     * Add an exception so the rule only matches the user or process name excluded in original prebuilt rules. (`user.name is not <user-name>` or `process.name is not <process-name>`).
 
-        :::{image} ../../../images/security-process-specific-exception.png
+        :::{image} /solutions/images/security-process-specific-exception.png
         :alt: Example of `is not` exception in the Add Rule Exception UI
         :screenshot:
         :::
