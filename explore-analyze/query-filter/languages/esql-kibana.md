@@ -33,7 +33,7 @@ To get started with {{esql}}, go to **Discover**. Next, select **Try ES|QL** fro
 
 ### The query bar [esql-kibana-query-bar]
 
-After switching to {{esql}} mode, the query bar shows a sample query. For example:
+After switching to {{esql}} mode, the query bar shows your previous KQL or Lucene query converted into {{esql}}. If the query was empty, it shows a sample query. For example:
 
 ```esql
 from kibana_sample_data_logs | limit 10
@@ -78,6 +78,7 @@ You can do that using the **Add line breaks on pipes** button from the query edi
 
 :::{image} /explore-analyze/images/esql-line-breakdown.gif
 :alt: Automatic line breaks for ES|QL queries
+:width: 50%
 :::
 
 You can adjust the editor’s height by dragging its bottom border to your liking.
@@ -235,21 +236,21 @@ You can save the visualization to a new or existing dashboard by clicking the sa
 
 You can use {{esql}} queries to create panels on your dashboards. To add a panel to a dashboard, under **Dashboards**, click the **Add panel** button and select {{esql}}.
 
-:::{image} /explore-analyze/images/elasticsearch-reference-esql-dashboard-panel.png
-:alt: esql dashboard panel
-:::
-
 Check the {{esql}} query by clicking the Panel filters button (![Panel filters button on panel header](/explore-analyze/images/elasticsearch-reference-dashboard_panel_filter_button.png "")):
 
 :::{image} /explore-analyze/images/elasticsearch-reference-esql-dashboard-panel-query.png
 :alt: esql dashboard panel query
+:width: 50%
 :::
 
 You can also edit the {{esql}} visualization from here. Click the options button in the top-right (![esql icon options](/explore-analyze/images/elasticsearch-reference-esql-icon-options.svg "")) and select **Edit ESQL visualization** to open the in-line editor.
 
 :::{image} /explore-analyze/images/elasticsearch-reference-esql-dashboard-panel-edit-visualization.png
 :alt: esql dashboard panel edit visualization
+:width: 50%
 :::
+
+You can also [Add dashboard controls from your ES|QL visualization's query](/explore-analyze/dashboards/add-controls.md#add-esql-control)
 
 
 ## Create an enrich policy [esql-kibana-enrich]
@@ -258,18 +259,21 @@ The {{esql}} [`ENRICH`](elasticsearch://reference/query-languages/esql/esql-comm
 
 :::{image} /explore-analyze/images/elasticsearch-reference-esql-kibana-enrich-autocomplete.png
 :alt: esql kibana enrich autocomplete
+:width: 50%
 :::
 
 Next, you can enter a policy name, the policy type, source indices, and optionally a query:
 
 :::{image} /explore-analyze/images/elasticsearch-reference-esql-kibana-enrich-step-1.png
 :alt: esql kibana enrich step 1
+:width: 50%
 :::
 
 Click **Next** to select the match field and enrich fields:
 
 :::{image} /explore-analyze/images/elasticsearch-reference-esql-kibana-enrich-step-2.png
 :alt: esql kibana enrich step 2
+:width: 50%
 :::
 
 Finally, click **Create and execute**.
@@ -291,6 +295,7 @@ You can use {{esql}} queries to create alerts. From Discover, click **Alerts** a
 
 :::{image} /explore-analyze/images/elasticsearch-reference-esql-kibana-create-rule.png
 :alt: esql kibana create rule
+:width: 50%
 :::
 
 

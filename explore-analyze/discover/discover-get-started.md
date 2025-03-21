@@ -251,6 +251,10 @@ You can use **Discover** with the Elasticsearch Query Language, ES|QL. When usin
 
 You can switch to the ES|QL mode of Discover from the application menu bar.
 
+:::{tip}
+If you've entered a KQL or Lucene query in the default mode of Discover, it automatically converts to ES|QL.
+:::
+
 Note that in ES|QL mode, the **Documents** tab is named **Results**.
 
 Learn more about how to use ES|QL queries in [Using ES|QL](try-esql.md).

@@ -10,7 +10,7 @@ mapped_pages:
 
 The Elasticsearch Query Language, {{esql}}, makes it easier to explore your data without leaving Discover.
 
-In this tutorial we’ll use the {{kib}} sample web logs in Discover and Lens to explore the data and create visualizations.
+The examples on this page use the {{kib}} sample web logs in Discover and Lens to explore the data and create visualizations. You can also install it by following [Add sample data](../index.md#gs-get-data-into-kibana).
 
 ::::{tip}
 For the complete {{esql}} documentation, refer to the [{{esql}} documentation](../query-filter/languages/esql.md). For a more detailed overview of {{esql}} in {{kib}}, refer to [Use {{esql}} in Kibana](../query-filter/languages/esql-kibana.md).
@@ -28,14 +28,17 @@ To view the {{esql}} option in **Discover**, the `enableESQL` setting must be en
 
 To load the sample data:
 
-1. [Install the web logs sample data](../index.md#gs-get-data-into-kibana).
-2. Go to **Discover**.
-3. Select **Try {{esql}}** from the application menu bar.
+1. Go to **Discover**.
+2. Select **Try {{esql}}** from the application menu bar.
 
-Let’s say we want to find out what operating system users have and how much RAM is on their machine.
+   :::{tip}
+   If you've entered a KQL or Lucene query in the default mode of Discover, it automatically converts to ES|QL.
+   :::
 
-1. Set the time range to **Last 7 days**.
-2. Copy the query below:
+   Let’s say we want to find out what operating system users have and how much RAM is on their machine.
+
+3. Set the time range to **Last 7 days**.
+4. Copy the query below:
 
     ```esql
     FROM kibana_sample_data_logs <1>
@@ -49,7 +52,7 @@ Let’s say we want to find out what operating system users have and how much RA
    Put each processing command on a new line for better readability.
    ::::
 
-3. Click **▶Run**.
+5. Click **▶Run**.
    ![An image of the query result](/explore-analyze/images/kibana-esql-machine-os-ram.png "")
    ::::{note}
    {{esql}} keywords are not case sensitive.
@@ -70,7 +73,7 @@ Let’s add `geo.dest` to our query, to find out the geographical destination of
    ::::{note}
    When you don’t specify any specific fields to retain using `KEEP`, the visualization isn’t broken down automatically. Instead, an additional option appears above the visualization and lets you select a field manually.
    ::::
-   ![An image of the extended query result](/explore-analyze/images/kibana-esql-limit.png "")
+   ![An image of the extended query result](../../images/kibana-esql-limit.png "")
 
 
 We will now take it a step further to sort the data by machine ram and filter out the `GB` destination.
@@ -87,7 +90,7 @@ We will now take it a step further to sort the data by machine ram and filter ou
 
 2. Click **▶Run** again. The table and visualization no longer show results for which the `geo.dest` field value is "GB", and the results are now sorted in descending order in the table based on the `machine.ram` field.
 
-    ![An image of the full query result](/explore-analyze/images/kibana-esql-full-query.png "")
+    ![An image of the full query result](../../images/kibana-esql-full-query.png "")
 
 3. Click **Save** to save the query and visualization to a dashboard.
 
@@ -114,7 +117,7 @@ FROM kibana_sample_data_ecommerce
 | KEEP customer_first_name, email, products._id.keyword
 ```
 
-:::{image} /explore-analyze/images/kibana-esql-no-time-series.png
+:::{image} ../../images/kibana-esql-no-time-series.png
 :alt: ESQL query without time series capabilities enabled
 :::
 
@@ -125,6 +128,14 @@ FROM kibana_sample_data_ecommerce
 | WHERE order_date >= ?_tstart and order_date <= ?_tend
 ```
 
-:::{image} /explore-analyze/images/kibana-esql-custom-time-series.png
+:::{image} ../../images/kibana-esql-custom-time-series.png
 :alt: ESQL query with a custom time field enabled
 :::
+
+
+### ES|QL and LOOKUP JOINs
+
+The ES|QL editor supports [`LOOKUP JOIN`](elasticsearch://reference/query-languages/esql/esql-commands.md#esql-lookup-join) commands and suggests lookup mode indices and join condition fields.
+
+![Using the LOOKUP JOIN command to autocomplete an ES|QL query](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/blte43a30a93241d650/67c23670045f5839e5bfd1e4/lookup-join-demo.gif)
+
