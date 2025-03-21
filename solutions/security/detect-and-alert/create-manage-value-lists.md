@@ -48,7 +48,7 @@ To create a value list:
 2. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 3. Click **Manage value lists**. The **Manage value lists** window opens.
 
-    :::{image} ../../../images/security-upload-lists-ui.png
+    :::{image} /solutions/images/security-upload-lists-ui.png
     :alt: Manage value lists flyout
     :screenshot:
     :::
@@ -78,11 +78,11 @@ You can edit, remove, or export existing value lists.
 
     * **Add individual items to the list**: Click **Create list item**, enter a value, then click **Add list item**.
     * **Bulk upload list items**: Drag or select the `csv` or `txt` file that contains the values that you want to add, then click **Upload**.
-    * **Edit a value**: In the Value column, go to the value you want to edit and click the **Edit** button (![Edit button from Manage value lists window](../../../images/security-edit-value-list-item.png "title =20x20")). When you’re done editing, click the **Save** button (![Save button from Manage value lists window](../../../images/security-save-value-list-item-changes.png "title =30x30")) to save your changes. Click the **Cancel** button (![Cancel button from Manage value lists window](../../../images/security-cancel-value-list-item-changes.png "title =30x30")) to revert your changes.
-    * **Remove a value**: Click the **Remove value** button (![Remove value list button from Manage value lists window](../../../images/security-remove-value-list-item.png "title =20x20")) to delete a value from the list.
+    * **Edit a value**: In the Value column, go to the value you want to edit and click the **Edit** button (![Edit button from Manage value lists window](/solutions/images/security-edit-value-list-item.png "title =20x20")). When you’re done editing, click the **Save** button (![Save button from Manage value lists window](/solutions/images/security-save-value-list-item-changes.png "title =30x30")) to save your changes. Click the **Cancel** button (![Cancel button from Manage value lists window](/solutions/images/security-cancel-value-list-item-changes.png "title =30x30")) to revert your changes.
+    * **Remove a value**: Click the **Remove value** button (![Remove value list button from Manage value lists window](/solutions/images/security-remove-value-list-item.png "title =20x20")) to delete a value from the list.
 
 
-:::{image} ../../../images/security-edit-value-lists.png
+:::{image} /solutions/images/security-edit-value-lists.png
 :alt: Manage items in a value lists
 :screenshot:
 :::
@@ -97,10 +97,10 @@ You can also edit value lists while creating and managing exceptions that use va
 2. Click **Manage value lists**. The **Manage value lists** window opens.
 3. From the **Value lists** table, you can:
 
-    1. Click the **Export value list** button (![Export button from Manage value lists window](../../../images/security-export-value-list.png "title =20x20")) to export the value list.
-    2. Click the **Remove value list** button (![Remove button from Manage value lists window](../../../images/security-remove-value-list.png "title =20x20")) to delete the value list.
+    1. Click the **Export value list** button (![Export button from Manage value lists window](/solutions/images/security-export-value-list.png "title =20x20")) to export the value list.
+    2. Click the **Remove value list** button (![Remove button from Manage value lists window](/solutions/images/security-remove-value-list.png "title =20x20")) to delete the value list.
 
-        :::{image} ../../../images/security-manage-value-list.png
+        :::{image} /solutions/images/security-manage-value-list.png
         :alt: Import value list flyout with action buttons highlighted
         :screenshot:
         :::

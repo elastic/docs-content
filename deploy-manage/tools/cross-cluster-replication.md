@@ -86,7 +86,7 @@ Disaster recovery provides your mission-critical applications with the tolerance
 
 In this configuration, data is replicated from the production datacenter to the disaster recovery datacenter. Because the follower indices replicate the leader index, your application can use the disaster recovery datacenter if the production datacenter is unavailable.
 
-:::{image} ../../images/elasticsearch-reference-ccr-arch-disaster-recovery.png
+:::{image} /deploy-manage/images/elasticsearch-reference-ccr-arch-disaster-recovery.png
 :alt: Production datacenter that replicates data to a disaster recovery datacenter
 :::
 
@@ -97,7 +97,7 @@ You can replicate data from one datacenter to multiple datacenters. This configu
 
 In the following diagram, data from Datacenter A is replicated to Datacenter B and Datacenter C, which both have a read-only copy of the leader index from Datacenter A.
 
-:::{image} ../../images/elasticsearch-reference-ccr-arch-multiple-dcs.png
+:::{image} /deploy-manage/images/elasticsearch-reference-ccr-arch-multiple-dcs.png
 :alt: Production datacenter that replicates data to two other datacenters
 :::
 
@@ -106,7 +106,7 @@ In the following diagram, data from Datacenter A is replicated to Datacenter B a
 
 You can replicate data across multiple datacenters to form a replication chain. In the following diagram, Datacenter A contains the leader index. Datacenter B replicates data from Datacenter A, and Datacenter C replicates from the follower indices in Datacenter B. The connection between these datacenters forms a chained replication pattern.
 
-:::{image} ../../images/elasticsearch-reference-ccr-arch-chain-dcs.png
+:::{image} /deploy-manage/images/elasticsearch-reference-ccr-arch-chain-dcs.png
 :alt: Three datacenters connected to form a replication chain
 :::
 
@@ -117,7 +117,7 @@ In a [bi-directional replication](https://www.elastic.co/blog/bi-directional-rep
 
 This configuration requires no manual intervention when a cluster or datacenter is unavailable. In the following diagram, if Datacenter A is unavailable, you can continue using Datacenter B without manual failover. When Datacenter A comes online, replication resumes between the clusters.
 
-:::{image} ../../images/elasticsearch-reference-ccr-arch-bi-directional.png
+:::{image} /deploy-manage/images/elasticsearch-reference-ccr-arch-bi-directional.png
 :alt: Bi-directional configuration where each cluster contains both a leader index and follower indices
 :::
 
@@ -130,7 +130,7 @@ Bringing data closer to your users or application server can reduce latency and 
 
 In the following diagram, data is replicated from one datacenter to three additional datacenters, each in their own region. The central datacenter contains the leader index, and the additional datacenters contain follower indices that replicate data in that particular region. This configuration puts data closer to the application accessing it.
 
-:::{image} ../../images/elasticsearch-reference-ccr-arch-data-locality.png
+:::{image} /deploy-manage/images/elasticsearch-reference-ccr-arch-data-locality.png
 :alt: A centralized datacenter replicated across three other datacenters
 :::
 
@@ -143,7 +143,7 @@ For example, a large global bank might have 100 {{es}} clusters around the world
 
 In the following diagram, data from three datacenters in different regions is replicated to a centralized reporting cluster. This configuration enables you to copy data from regional hubs to a central cluster, where you can run all reports locally.
 
-:::{image} ../../images/elasticsearch-reference-ccr-arch-central-reporting.png
+:::{image} /deploy-manage/images/elasticsearch-reference-ccr-arch-central-reporting.png
 :alt: Three clusters in different regions sending data to a centralized reporting cluster for analysis
 :::
 

@@ -110,16 +110,16 @@ For this example, let’s look for logs with a `WARN` or `ERROR` log level that 
 
 2. Click the current time range, select **Absolute**, and set the **Start date** to `Sep 14, 2023 @ 00:00:00.000`.
 
-    ![Set the time range start date](../../../images/serverless-logs-start-date.png "")
+    ![Set the time range start date](/solutions/images/serverless-logs-start-date.png "")
 
 3. Click the end of the current time range, select **Absolute**, and set the **End date** to `Sep 15, 2023 @ 23:59:59.999`.
 
-    ![Set the time range end date](../../../images/serverless-logs-end-date.png "")
+    ![Set the time range end date](/solutions/images/serverless-logs-end-date.png "")
 
 
 Under the **Documents** tab, you’ll see the filtered log data matching your query.
 
-:::{image} ../../../images/serverless-logs-kql-filter.png
+:::{image} /solutions/images/serverless-logs-kql-filter.png
 :alt: logs kql filter
 :screenshot:
 :::

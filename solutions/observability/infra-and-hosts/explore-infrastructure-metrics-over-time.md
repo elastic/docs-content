@@ -13,7 +13,7 @@ Additionally, for detailed analyses of your metrics, you can annotate and save v
 
 To open **Metrics Explorer**, find **Infrastructure** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
-:::{image} ../../../images/observability-metrics-explorer.png
+:::{image} /solutions/images/observability-metrics-explorer.png
 :alt: Metrics Explorer
 :screenshot:
 :::
@@ -40,7 +40,7 @@ As an example, let’s view the system load metrics for hosts we’re currently 
 
     There is now an individual graph displaying the average values of the metrics for each host.
 
-    :::{image} ../../../images/observability-metrics-explorer-filter.png
+    :::{image} /solutions/images/observability-metrics-explorer-filter.png
     :alt: Metrics Explorer query
     :screenshot:
     :::
@@ -59,7 +59,7 @@ As an example, let’s view the system load metrics for hosts we’re currently 
 
     In this visualization the max of `host.network.egress.bytes` is displayed, filtered by `host.name` and `system.network.name`.
 
-    :::{image} ../../../images/observability-metrics-time-series.png
+    :::{image} /solutions/images/observability-metrics-time-series.png
     :alt: Time series chart
     :screenshot:
     :::

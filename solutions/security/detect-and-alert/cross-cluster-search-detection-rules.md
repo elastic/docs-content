@@ -30,14 +30,14 @@ This section explains the general process for setting up cross-cluster search in
 
         For example, if the remote cluster’s name is `remote-security-data` and you want to query the `logs-*` indices, include both the `logs-*` and `remote-security-data:logs-*` index patterns and assign them the `read` privilege.
 
-        :::{image} ../../../images/security-ccs-local-role.png
+        :::{image} /solutions/images/security-ccs-local-role.png
         :alt: Local cluster role configuration
         :screenshot:
         :::
 
     2. **Remote cluster role**: Assign the `read` and `read_cross_cluster` privileges to the indices you want to search. You don’t need to include the remote cluster’s name here.
 
-        :::{image} ../../../images/security-ccs-remote-role.png
+        :::{image} /solutions/images/security-ccs-remote-role.png
         :alt: Remote cluster role configuration
         :screenshot:
         :::
@@ -54,7 +54,7 @@ This section explains the general process for setting up cross-cluster search in
 
     2. As this user, [configure a rule](create-detection-rule.md) that searches the remote indices: create or edit a rule, then enter the `<remote_cluster_name>:<index_name>` pattern in the **Source** section.
 
-        :::{image} ../../../images/security-ccs-rule-source.png
+        :::{image} /solutions/images/security-ccs-rule-source.png
         :alt: Rule source configuration
         :screenshot:
         :::

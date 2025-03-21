@@ -78,7 +78,7 @@ The listing of reports in **Stack Management > Reporting** allows you to inspect
 3. Click **Inspect query in Console** in the **Actions** menu.
 4. This will open the **Console** application, pre-filled with the queries used to generate the CSV export.
 
-:::{image} ../../images/inspect-query-from-csv-export.gif
+:::{image} /explore-analyze/images/inspect-query-from-csv-export.gif
 :alt: Inspect the query used for CSV export
 :screenshot:
 :::

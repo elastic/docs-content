@@ -14,7 +14,7 @@ The main reason to use the Lucene query syntax in {{kib}} is for advanced Lucene
 
 To use the Lucene syntax, open the **Saved query** menu, and then select **Language: KQL** > **Lucene**.
 
-![Click the circle icon for the saved query menu](../../../images/kibana-lucene.png "")
+![Click the circle icon for the saved query menu](/explore-analyze/images/kibana-lucene.png "")
 
 To perform a free text search, simply enter a text string. For example, if you’re searching web server logs, you could enter `safari` to search all fields:
 

@@ -35,7 +35,7 @@ The data represents two real airports, two fictitious flight routes, and fictiti
 
    You’re adding flight paths to this area, and this sets up the map for a good view of the data.
 
-   :::{image} ../../../images/kibana-fu_gs_new_england_map.png
+   :::{image} /explore-analyze/images/kibana-fu_gs_new_england_map.png
    :alt: fu gs new england map
    :screenshot:
    :::
@@ -63,7 +63,7 @@ For each GeoJSON file you downloaded, complete the following steps:
 
    At this point, you could consider the map complete, but there are a few additions and tweaks that you can make to tell a better story with your data.
 
-   :::{image} ../../../images/kibana-fu_gs_flight_paths.png
+   :::{image} /explore-analyze/images/kibana-fu_gs_flight_paths.png
    :alt: fu gs flight paths
    :screenshot:
    :::
@@ -92,7 +92,7 @@ Looking at the `Lightning detected` layer, it’s clear where lightning has stru
 
    With your new lightning heat map layer, your map should look like this:
 
-   :::{image} ../../../images/kibana-fu_gs_lightning_intensity.png
+   :::{image} /explore-analyze/images/kibana-fu_gs_lightning_intensity.png
    :alt: fu gs lightning intensity
    :screenshot:
    :::
@@ -112,7 +112,7 @@ When you’ve finished, again be sure to [save your work ](maps-getting-started.
 
 Your final map might look like this:
 
-:::{image} ../../../images/kibana-fu_gs_final_map.png
+:::{image} /explore-analyze/images/kibana-fu_gs_final_map.png
 :alt: fu gs final map
 :screenshot:
 :::

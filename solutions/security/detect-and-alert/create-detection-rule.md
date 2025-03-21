@@ -57,12 +57,12 @@ Additional configuration is required for detection rules using cross-cluster sea
 
             Searches the `winlogbeat-*` indices for `vssadmin.exe` executions with the `delete` and `shadow` arguments, which are used to delete a volume’s shadow copies.
 
-            :::{image} ../../../images/security-rule-query-example.png
+            :::{image} /solutions/images/security-rule-query-example.png
             :alt: Rule query example
             :screenshot:
             :::
 
-    3. You can use {{kib}} saved queries (![Saved query menu](../../../images/security-saved-query-menu.png "title =20x20")) and queries from saved Timelines (**Import query from saved Timeline**) as rule conditions.
+    3. You can use {{kib}} saved queries (![Saved query menu](/solutions/images/security-saved-query-menu.png "title =20x20")) and queries from saved Timelines (**Import query from saved Timeline**) as rule conditions.
 
         When you use a saved query, the **Load saved query "*query name*" dynamically on each rule execution** check box appears:
 
@@ -127,7 +127,7 @@ To create or edit {{ml}} rules, you need:
     2. Use the filter and query fields to create the criteria used for detecting alerts.
 
         ::::{note}
-        You can use {{kib}} saved queries (![Saved query menu](../../../images/security-saved-query-menu.png "title =20x20")) and queries from saved Timelines (**Import query from saved Timeline**) as rule conditions.
+        You can use {{kib}} saved queries (![Saved query menu](/solutions/images/security-saved-query-menu.png "title =20x20")) and queries from saved Timelines (**Import query from saved Timeline**) as rule conditions.
         ::::
 
     3. Use the **Group by** and **Threshold** fields to determine which source event field is used as a threshold and the threshold’s value.
@@ -194,7 +194,7 @@ To create or edit {{ml}} rules, you need:
 
             Searches the `winlogbeat-*` indices for sequences of a `msxsl.exe` process start event followed by an outbound network connection event that was started by the `msxsl.exe` process.
 
-            :::{image} ../../../images/security-eql-rule-query-example.png
+            :::{image} /solutions/images/security-eql-rule-query-example.png
             :alt: eql rule query example
             :screenshot:
             :::
@@ -203,7 +203,7 @@ To create or edit {{ml}} rules, you need:
             For sequence events, the {{security-app}} generates a single alert when all events listed in the sequence are detected. To see the matched sequence events in more detail, you can view the alert in the Timeline, and, if all events came from the same process, open the alert in Analyze Event view.
             ::::
 
-3. (Optional) Click the EQL settings icon (![EQL settings icon](../../../images/security-eql-settings-icon.png "title =20x20")) to configure additional fields used by [EQL search](/explore-analyze/query-filter/languages/eql.md#specify-a-timestamp-or-event-category-field):
+3. (Optional) Click the EQL settings icon (![EQL settings icon](/solutions/images/security-eql-settings-icon.png "title =20x20")) to configure additional fields used by [EQL search](/explore-analyze/query-filter/languages/eql.md#specify-a-timestamp-or-event-category-field):
 
     * **Event category field**: Contains the event classification, such as `process`, `file`, or `network`. This field is typically mapped as a field type in the [keyword family](elasticsearch://reference/elasticsearch/mapping-reference/keyword.md). Defaults to the `event.category` ECS field.
     * **Tiebreaker field**: Sets a secondary field for sorting events (in ascending, lexicographic order) if they have the same timestamp.
@@ -268,7 +268,7 @@ To create or edit {{ml}} rules, you need:
 
         For example, to create a rule that generates alerts when `host.name` **and** `destination.ip` field values in the `logs-*` or `packetbeat-*` {{elastic-sec}} indices are identical to the corresponding field values in the `mock-threat-list` indicator index, enter the rule parameters seen in the following image:
 
-        :::{image} ../../../images/security-indicator-rule-example.png
+        :::{image} /solutions/images/security-indicator-rule-example.png
         :alt: Indicator match rule settings
         :screenshot:
         :::
@@ -314,7 +314,7 @@ You uploaded a value list of known ransomware domains, and you want to be notifi
             ::::
 
 
-:::{image} ../../../images/security-indicator_value_list.png
+:::{image} /solutions/images/security-indicator_value_list.png
 :alt: indicator value list
 :screenshot:
 :::
@@ -371,7 +371,7 @@ To create an {{esql}} rule:
 
 
     ::::{tip}
-    Click the help icon (![Click the ES|QL help icon](../../../images/security-esql-help-ref-button.png "title =20x20")) to open the in-product reference documentation for all {{esql}} commands and functions.
+    Click the help icon (![Click the ES|QL help icon](/solutions/images/security-esql-help-ref-button.png "title =20x20")) to open the in-product reference documentation for all {{esql}} commands and functions.
     ::::
 
 3. (Optional) Use **Suppress alerts by** to reduce the number of repeated or duplicate alerts created by the rule. Refer to [Suppress detection alerts](/solutions/security/detect-and-alert/suppress-detection-alerts.md) for more information.
@@ -514,7 +514,7 @@ When configuring an {{esql}} rule’s **[Custom highlighted fields](/solutions/s
 
     4. **Severity override** (optional): Select to use source event values to override the **Default severity** in generated alerts. When selected, a UI component is displayed where you can map the source event field values to severity levels. The following example shows how to map severity levels to `host.name` values:
 
-        :::{image} ../../../images/security-severity-mapping-ui.png
+        :::{image} /solutions/images/security-severity-mapping-ui.png
         :alt: severity mapping ui
         :screenshot:
         :::
@@ -532,7 +532,7 @@ When configuring an {{esql}} rule’s **[Custom highlighted fields](/solutions/s
 
     6. **Risk score override** (optional): Select to use a source event value to override the **Default risk score** in generated alerts. When selected, a UI component is displayed to select the source field used for the risk score. For example, if you want to use the source event’s risk score in alerts:
 
-        :::{image} ../../../images/security-risk-source-field-ui.png
+        :::{image} /solutions/images/security-risk-source-field-ui.png
         :alt: risk source field ui
         :screenshot:
         :::
@@ -600,7 +600,7 @@ When configuring an {{esql}} rule’s **[Custom highlighted fields](/solutions/s
 
 2. Click **Continue**. The **Schedule rule** pane is displayed.
 
-    :::{image} ../../../images/security-schedule-rule.png
+    :::{image} /solutions/images/security-schedule-rule.png
     :alt: schedule rule
     :screenshot:
     :::
@@ -665,7 +665,7 @@ To use actions for alert notifications, you need the [appropriate license](https
 
 4. Complete the required connector type fields. Here is an example with {{jira}}:
 
-    :::{image} ../../../images/security-selected-action-type.png
+    :::{image} /solutions/images/security-selected-action-type.png
     :alt: selected action type
     :screenshot:
     :::
@@ -801,7 +801,7 @@ To preview rules, you must have the appropriate user role. Refer to [Detections 
 
 Click the **Rule preview** button while creating or editing a rule. The preview opens in a side panel, showing a histogram and table with the alerts you can expect, based on the defined rule settings and past events in your indices.
 
-:::{image} ../../../images/security-preview-rule.png
+:::{image} /solutions/images/security-preview-rule.png
 :alt: Rule preview
 :screenshot:
 :::
@@ -818,11 +818,11 @@ To interact with the rule preview:
 
 * Click **Refresh** to update the preview.
 
-    * When you edit the rule’s settings or the preview’s time range, the button changes from blue (![Blue circular refresh icon](../../../images/security-rule-preview-refresh-circle.png "title =20x20")) to green (![Green right-pointing arrow refresh icon](../../../images/security-rule-preview-refresh-arrow.png "title =20x20")) to indicate that the rule has been edited since the last preview.
+    * When you edit the rule’s settings or the preview’s time range, the button changes from blue (![Blue circular refresh icon](/solutions/images/security-rule-preview-refresh-circle.png "title =20x20")) to green (![Green right-pointing arrow refresh icon](/solutions/images/security-rule-preview-refresh-arrow.png "title =20x20")) to indicate that the rule has been edited since the last preview.
     * For a relative time range (such as `Last 1 hour`), refresh the preview to check for the latest results. (Previews don’t automatically refresh with new incoming data.)
 
-* Click the **View details** icon (![View details icon](../../../images/security-view-details-icon.png "title =20x20")) in the alerts table to view the details of a particular alert.
-* To resize the preview, hover between the rule settings and preview, then click and drag the border. You can also click the border, then the collapse icon (![Collapse icon](../../../images/security-collapse-right-icon.png "title =20x20")) to collapse and expand the preview.
+* Click the **View details** icon (![View details icon](/solutions/images/security-view-details-icon.png "title =20x20")) in the alerts table to view the details of a particular alert.
+* To resize the preview, hover between the rule settings and preview, then click and drag the border. You can also click the border, then the collapse icon (![Collapse icon](/solutions/images/security-collapse-right-icon.png "title =20x20")) to collapse and expand the preview.
 * To close the preview, click the **Rule preview** button again.
 
 

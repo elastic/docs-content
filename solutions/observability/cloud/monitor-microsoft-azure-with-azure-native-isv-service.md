@@ -59,7 +59,7 @@ Microsoft Azure allows you to find, deploy, and manage {{es}} from within the Az
     ::::
 
 
-    :::{image} ../../../images/observability-monitor-azure-native-create-elastic-resource.png
+    :::{image} /solutions/images/observability-monitor-azure-native-create-elastic-resource.png
     :alt: Screenshot of Elastic resource creation in Azure
     :screenshot:
     :::
@@ -67,7 +67,7 @@ Microsoft Azure allows you to find, deploy, and manage {{es}} from within the Az
 7. To create the {{es}} deployment, click **Create**.
 8. After deployment is complete, click **Go to resource**. Here you can view and configure your deployment details. To access the cluster, click **{{kib}}**.
 
-    :::{image} ../../../images/observability-monitor-azure-native-elastic-deployment.png
+    :::{image} /solutions/images/observability-monitor-azure-native-elastic-deployment.png
     :alt: Screenshot of deployment details for Elastic resource in Azure
     :screenshot:
     :::
@@ -83,7 +83,7 @@ To ingest Azure subscription and resource logs into Elastic, you use the Azure N
 1. In the Azure portal, go to your {{es}} resource page and click **Ingest logs and metrics from Azure Services**.
 2. Under **Logs**, select both checkboxes to collect subscription activity logs and Azure resource logs. Click **Save**.
 
-    :::{image} ../../../images/observability-monitor-azure-native-elastic-config-logs-metrics.png
+    :::{image} /solutions/images/observability-monitor-azure-native-elastic-config-logs-metrics.png
     :alt: Screenshot of logs and metrics configuration for Elastic resource in Azure
     :screenshot:
     :::
@@ -106,7 +106,7 @@ To ingest Azure subscription and resource logs into Elastic, you use the Azure N
 1. In the Azure portal, go to your {{es}} resource and click **Virtual machines**.
 2. Select the VMs that you want to collect logs and metrics from, click **Install Extension**, and then click **OK**.
 
-    :::{image} ../../../images/observability-monitor-azure-native-elastic-vms.png
+    :::{image} /solutions/images/observability-monitor-azure-native-elastic-vms.png
     :alt: Screenshot that shows VMs selected for logs and metrics collection
     :screenshot:
     :::

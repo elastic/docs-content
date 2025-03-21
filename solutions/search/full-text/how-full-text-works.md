@@ -7,7 +7,7 @@ applies_to:
 
 The following diagram illustrates the components of full-text search.
 
-:::{image} ../../../images/elasticsearch-reference-full-text-search-overview.svg
+:::{image} /solutions/images/elasticsearch-reference-full-text-search-overview.svg
 :alt: Components of full-text search from analysis to relevance scoring
 :width: 550px
 :::

@@ -36,7 +36,7 @@ This could be for any of these reasons:
 
 * You have explicitly chosen not to send these metrics. You may choose to limit the metrics sent to Elastic to save on space and improve cluster performance. For example, the System integration has options to choose which metrics you want to send. You can [edit the integration policy](/reference/ingestion-tools/fleet/edit-delete-integration-policy.md) to begin collecting the missing metrics. For example:
 
-  :::{image} ../../../images/observability-turn-on-system-metrics.png
+  :::{image} /troubleshoot/images/observability-turn-on-system-metrics.png
   :alt: Screenshot showing system cpu and diskio metrics selected for collection
   :screenshot:
   :::

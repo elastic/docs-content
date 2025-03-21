@@ -21,7 +21,7 @@ You can also send cases to these external systems by [configuring external conne
 * {{swimlane}}
 * {{webhook-cm}}
 
-:::{image} ../../../images/security-cases-home-page.png
+:::{image} /solutions/images/security-cases-home-page.png
 :alt: Case UI Home
 :screenshot:
 :::

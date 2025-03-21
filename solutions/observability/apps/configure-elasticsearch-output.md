@@ -12,7 +12,7 @@ applies_to:
 
 
 ::::{note}
-![supported deployment methods](../../../images/observability-binary-yes-fm-no.svg "")
+![supported deployment methods](/solutions/images/observability-binary-yes-fm-no.svg "")
 
 This documentation only applies to APM Server binary users. Fleet-managed users should see [Configure the {{es}} output](/reference/ingestion-tools/fleet/elasticsearch-output.md).
 
@@ -127,7 +127,7 @@ Instead of using a username and password, you can use API keys to secure communi
 
 You *must* set the API key to be configured to **Beats**. Base64 encoded API keys are not currently supported in this configuration. For details on how to create and configure a compatible API key, refer to [Create an API key for writing events](grant-access-using-api-keys.md#apm-beats-api-key-publish).
 
-:::{image} ../../../images/observability-apm-api-key-beats.png
+:::{image} /solutions/images/observability-apm-api-key-beats.png
 :alt: API key dropdown highlighting the Beats option
 :::
 

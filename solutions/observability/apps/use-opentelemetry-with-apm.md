@@ -33,7 +33,7 @@ This functionality is in technical preview and may be changed or removed in a fu
 
 Elastic offers several distributions of OpenTelemetry language SDKs. A *distribution* is a customized version of an upstream OpenTelemetry repository. Each Elastic Distribution of OpenTelemetry is a customized version of an [OpenTelemetry language SDK](https://opentelemetry.io/docs/languages/).
 
-:::{image} ../../../images/observability-apm-otel-distro.png
+:::{image} /solutions/images/observability-apm-otel-distro.png
 :alt: apm otel distro
 :screenshot:
 :::
@@ -61,7 +61,7 @@ For more details about OpenTelemetry distributions in general, visit the [OpenTe
 
 Use the OpenTelemetry API/SDKs with [Elastic APM agents](../../../solutions/observability/apps/fleet-managed-apm-server.md#_step_3_install_apm_agents) to translate OpenTelemetry API calls to Elastic APM API calls.
 
-:::{image} ../../../images/observability-apm-otel-api-sdk-elastic-agent.png
+:::{image} /solutions/images/observability-apm-otel-api-sdk-elastic-agent.png
 :alt: apm otel api sdk elastic agent
 :screenshot:
 :::
@@ -84,7 +84,7 @@ The {{stack}} natively supports the OpenTelemetry protocol (OTLP). This means tr
 
 You can set up an [OpenTelemetry Collector](https://opentelemetry.io/docs/collector/), instrument your application with an [OpenTelemetry language SDK](https://opentelemetry.io/docs/languages/) that sends data to the collector, and use the collector to process and export the data to APM Server.
 
-:::{image} ../../../images/observability-apm-otel-api-sdk-collector.png
+:::{image} /solutions/images/observability-apm-otel-api-sdk-collector.png
 :alt: apm otel api sdk collector
 :screenshot:
 :::

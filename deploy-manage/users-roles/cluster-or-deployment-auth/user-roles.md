@@ -27,7 +27,7 @@ You must authenticate users at the same level where you implement RBAC. For exam
 Role-based access control (RBAC) enables you to authorize users by assigning privileges to roles and assigning roles to users or groups. This is the primary way of controlling access to resources in {{stack}}.
 <br>
 
-:::{image} ../../../images/elasticsearch-reference-authorization.png
+:::{image} /deploy-manage/images/elasticsearch-reference-authorization.png
 :alt: This image illustrates role-based access control
 :::
 

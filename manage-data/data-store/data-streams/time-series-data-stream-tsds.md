@@ -89,7 +89,6 @@ Metrics differ from dimensions in that while dimensions generally remain constan
 To mark a field as a metric, you must specify a metric type using the `time_series_metric` mapping parameter. The following field types support the `time_series_metric` parameter:
 
 * [`aggregate_metric_double`](elasticsearch://reference/elasticsearch/mapping-reference/aggregate-metric-double.md)
-* [`histogram`](elasticsearch://reference/elasticsearch/mapping-reference/histogram.md)
 * All [numeric field types](elasticsearch://reference/elasticsearch/mapping-reference/number.md)
 
 Accepted metric types vary based on the field type:

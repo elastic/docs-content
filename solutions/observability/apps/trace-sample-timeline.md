@@ -8,7 +8,7 @@ mapped_urls:
 
 The trace sample timeline visualization is a high-level view of what your application was doing while it was trying to respond to a request. This makes it useful for visualizing where a selected transaction spent most of its time.
 
-:::{image} ../../../images/observability-apm-transaction-sample.png
+:::{image} /solutions/images/observability-apm-transaction-sample.png
 :alt: Example of distributed trace colors in the Applications UI
 :screenshot:
 :::
@@ -20,7 +20,7 @@ A [span](/solutions/observability/apps/spans.md) is the duration of a single eve
 ::::
 
 
-:::{image} ../../../images/observability-apm-span-detail.png
+:::{image} /solutions/images/observability-apm-span-detail.png
 :alt: Example view of a span detail in the Applications UI
 :screenshot:
 :::
@@ -43,19 +43,19 @@ The trace sample timeline features an **Investigate** button which provides a qu
 
 When a trace travels through multiple services it is known as a *distributed trace*. In APM, the colors in a distributed trace represent different services and are listed in the order they occur.
 
-:::{image} ../../../images/observability-apm-services-trace.png
+:::{image} /solutions/images/observability-apm-services-trace.png
 :alt: Example of distributed trace colors in the Applications UI
 :screenshot:
 :::
 
 As application architectures are shifting from monolithic to more distributed, service-based architectures, distributed tracing has become a crucial feature of modern application performance monitoring. It allows you to trace requests through your service architecture automatically, and visualize those traces in one single view in the Applications UI. From initial web requests to your front-end service, to queries made to your back-end services, this makes finding possible bottlenecks throughout your application much easier and faster.
 
-:::{image} ../../../images/observability-apm-distributed-tracing.png
+:::{image} /solutions/images/observability-apm-distributed-tracing.png
 :alt: Example view of the distributed tracing in the Applications UI
 :screenshot:
 :::
 
-Don’t forget; by definition, a distributed trace includes more than one transaction. When viewing distributed traces in the timeline waterfall, you’ll see this icon: ![APM icon](../../../images/observability-transaction-icon.png ""), which indicates the next transaction in the trace. For easier problem isolation, transactions can be collapsed in the waterfall by clicking the icon to the left of the transactions. Transactions can also be expanded and viewed in detail by clicking on them.
+Don’t forget; by definition, a distributed trace includes more than one transaction. When viewing distributed traces in the timeline waterfall, you’ll see this icon: ![APM icon](/solutions/images/observability-transaction-icon.png ""), which indicates the next transaction in the trace. For easier problem isolation, transactions can be collapsed in the waterfall by clicking the icon to the left of the transactions. Transactions can also be expanded and viewed in detail by clicking on them.
 
 After exploring these traces, you can return to the full trace by clicking **View full trace**.
 

@@ -43,11 +43,11 @@ Choose the data you want to visualize.
 
 Edit and delete.
 
-1. Hover over the panel and click ![Edit visualization icon](../../images/kibana-edit-visualization-icon.png "") to edit the visualization. The **Edit visualization** flyout appears.
+1. Hover over the panel and click ![Edit visualization icon](/explore-analyze/images/kibana-edit-visualization-icon.png "") to edit the visualization. The **Edit visualization** flyout appears.
 2. To change the aggregation **Quick function**, click the field in the flyout.
-3. To delete a field, click ![Actions menu icon to delete a field](../../images/kibana-trash_can.png "") next to the field.
-4. To duplicate a layer, click ![Actions menu to duplicate Lens visualization layers](../../images/kibana-vertical-actions-menu.png "") in the flyout, then select **Duplicate layer**.
-5. To clear the layer configuration, click ![Actions menu to clear Lens visualization layers](../../images/kibana-vertical-actions-menu.png "") in the flyout, then select **Clear layer**.
+3. To delete a field, click ![Actions menu icon to delete a field](/explore-analyze/images/kibana-trash_can.png "") next to the field.
+4. To duplicate a layer, click ![Actions menu to duplicate Lens visualization layers](/explore-analyze/images/kibana-vertical-actions-menu.png "") in the flyout, then select **Duplicate layer**.
+5. To clear the layer configuration, click ![Actions menu to clear Lens visualization layers](/explore-analyze/images/kibana-vertical-actions-menu.png "") in the flyout, then select **Clear layer**.
 6. Click **Apply and close**.
 
 ::::{tip}
@@ -119,7 +119,7 @@ To use a keyboard instead of a mouse, use the **Lens** fully accessible and cont
 
 1. Select the field in the fields list or layer pane. Most fields have an inner and outer select state. The inner state opens a panel with detailed information or options. The outer state allows you to drag the field. Tab through the fields until you get the outer state on the field.
 
-   :::{image} ../../images/kibana-lens_drag_drop_2.png
+   :::{image} /explore-analyze/images/kibana-lens_drag_drop_2.png
    :alt: Lens drag and drop focus state
    :screenshot:
    :::
@@ -131,7 +131,7 @@ To use a keyboard instead of a mouse, use the **Lens** fully accessible and cont
     * To reorder the fields on the layer pane, use the Up and Down arrows.
     * To duplicate an action, use the Left and Right arrows, then select the **Drop a field or click to add** field you want to use.
 
-      :::{image} ../../images/kibana-lens_drag_drop_3.gif
+      :::{image} /explore-analyze/images/kibana-lens_drag_drop_3.gif
       :alt: Using drag and drop to reorder
       :screenshot:
       :::
@@ -173,7 +173,7 @@ Formulas allow you to perform math on aggregated data. The most common formulas 
         ```
 
         ::::{tip}
-        For detailed information on formulas, click ![Formula reference icon](../../images/kibana-formula_reference.png "").
+        For detailed information on formulas, click ![Formula reference icon](/explore-analyze/images/kibana-formula_reference.png "").
         ::::
 
 3. To accurately display the formula, select **Percent** from the **Value format** dropdown.
@@ -350,7 +350,7 @@ The following component menus are available:
 
 #### Customize a visualization legend [customize-visualization-legend]
 
-When creating or editing a visualization, you can customize the way the legend gets displayed, and the data it displays. To do that, look for the ![Legend icon](../../images/kibana-legend-icon.svg "") icon.
+When creating or editing a visualization, you can customize the way the legend gets displayed, and the data it displays. To do that, look for the ![Legend icon](/explore-analyze/images/kibana-legend-icon.svg "") icon.
 
 :::{image} ../../images/kibana-legend-popover-8.16.0.png
 :alt: Menu with options to customize the legend of a visualization
@@ -397,7 +397,7 @@ All statistics are computed based on the selected time range and the aggregated 
 
 For example, if the metric plotted in the chart is `Median(system.memory)` and the time range is **last 24 hours**, when you show the **Max** statistic in the Legend, the value that shows corresponds to the `Max[Median(system.memory)]` for the last 24 hours.
 
-:::{image} ../../images/kibana-statistics-in-legends.png
+:::{image} /explore-analyze/images/kibana-statistics-in-legends.png
 :alt: Additional statistics shown in the legend of a memory consumption bar chart
 :::
 
@@ -637,7 +637,7 @@ In the color palette editor, if you select **Value type: Number** the colors are
 
 The **Primary metric** refers to the large number displayed in each tile.
 
-![Illustration of where to find the primary metric in a metric visualization.](../../images/kibana-lens_primaryMetric.png "")
+![Illustration of where to find the primary metric in a metric visualization.](/explore-analyze/images/kibana-lens_primaryMetric.png "")
 
 If you select **Value type: Percent**, the primary metric values are mapped to a range between 0 and 100 percent. The bounds of the range depend on your configuration.
 

@@ -22,7 +22,7 @@ To accomplish the above, Elastic APM agents instrument AWS Lambda functions and 
 
 Normally, during the execution of a Lambda function, there’s only a single language process running in the AWS Lambda execution environment. With an AWS Lambda extension, Lambda users run a *second* process alongside their main service/application process.
 
-:::{image} ../../../images/serverless-apm-agents-aws-lambda-functions-architecture.png
+:::{image} /solutions/images/serverless-apm-agents-aws-lambda-functions-architecture.png
 :alt: image showing data flow from lambda function
 :screenshot:
 :::

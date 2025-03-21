@@ -29,7 +29,7 @@ After the agent is installed and successfully streaming log data, you can view t
 1. From the navigation menu, go to **Discover** and select the **Logs Explorer** tab. The view shows all log datasets. Notice you can add fields, change the view, expand a document to see details, and perform other actions to explore your data.
 2. Click **All log datasets** and select **System** → **syslog** to show syslog logs.
 
-:::{image} ../../../images/serverless-log-explorer-select-syslogs.png
+:::{image} /solutions/images/serverless-log-explorer-select-syslogs.png
 :alt: Screen capture of the Logs Explorer showing syslog dataset selected
 :screenshot:
 :::

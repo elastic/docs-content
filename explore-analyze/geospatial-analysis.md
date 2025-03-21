@@ -77,7 +77,7 @@ Visualize geo data with [Kibana](visualize/maps.md). Add your map to a [dashboar
 
 This dashboard shows the effects of the [Cumbre Vieja eruption](https://www.elastic.co/blog/understanding-evolution-volcano-eruption-elastic-maps/).
 
-![Kibana dashboard showing Cumbre Vieja eruption from Aug 31 2021 to Dec 14 2021](../images/elasticsearch-reference-cumbre_vieja_eruption_dashboard.png "")
+![Kibana dashboard showing Cumbre Vieja eruption from Aug 31 2021 to Dec 14 2021](/explore-analyze/images/elasticsearch-reference-cumbre_vieja_eruption_dashboard.png "")
 
 
 ## Machine learning [geospatial-ml]

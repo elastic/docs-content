@@ -11,7 +11,7 @@ navigation_title: "Use a Synthetics project"
 
 A Synthetics project is the most powerful and sophisticated way to configure synthetic monitors. A Synthetics project lets you define your infrastructure as code, more commonly known as IaaC or Git-ops. With monitors created and managed in Synthetics projects, you organize your YAML configuration and JavaScript- or TypeScript-defined monitors on the filesystem, use Git for version control, and deploy via a CLI tool, usually executed on a CI/CD platform.
 
-:::{image} ../../../images/observability-synthetics-get-started-projects.png
+:::{image} /solutions/images/observability-synthetics-get-started-projects.png
 :alt: Diagram showing which pieces of software are used to configure monitors
 :::
 
@@ -82,7 +82,7 @@ Then, follow the prompts on screen to set up the correct default variables for y
         ::::
 
 
-        :::{image} ../../../images/serverless-synthetics-monitor-management-api-key.png
+        :::{image} /solutions/images/serverless-synthetics-monitor-management-api-key.png
         :alt: Project API Keys tab in Synthetics settings
         :screenshot:
         :::
@@ -125,7 +125,7 @@ Then, take a look at key files and directories inside your Synthetics project:
         ::::
 
 
-        :::{image} ../../../images/serverless-synthetics-monitor-management-api-key.png
+        :::{image} /solutions/images/serverless-synthetics-monitor-management-api-key.png
         :alt: Project API Keys tab in Synthetics settings
         :screenshot:
         :::

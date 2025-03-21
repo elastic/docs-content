@@ -58,7 +58,7 @@ On the Integrations page, you can select the **Beats only** filter to only view 
 ::::
 
 
-:::{image} ../../../images/security-add-integrations.png
+:::{image} /solutions/images/security-add-integrations.png
 :alt: Shows button to add integrations
 :screenshot:
 :::
