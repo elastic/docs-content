@@ -81,7 +81,7 @@ inputs: <7>
 9. For available input types, refer to [{{agent}} inputs](/reference/ingestion-tools/fleet/elastic-agent-inputs-list.md).
 10. Learn about [Data streams](/reference/ingestion-tools/fleet/data-streams.md) for time series data.
 11. Specify a unique ID for each individual input stream. Naming the ID by appending the associated `data_stream` dataset (for example `{{user-defined-unique-id}}-nginx.access` or `{{user-defined-unique-id}}-nginx.error`) is a recommended practice, but any unique ID will work.
-12. Refer to [Logs reference](asciidocalypse://docs/integration-docs/docs/reference/nginx.md#nginx-logs-reference) in the Nginx HTTP integration documentation for the logs available to ingest and exported fields.
+12. Refer to [Logs reference](integration-docs://reference/nginx/index.md#logs-reference) in the Nginx HTTP integration documentation for the logs available to ingest and exported fields.
 13. Path to the log files to be monitored.
 
 
@@ -135,7 +135,7 @@ inputs: <7>
 10. Learn about [Data streams](/reference/ingestion-tools/fleet/data-streams.md) for time series data.
 11. Specify a unique ID for each individual input stream. Naming the ID by appending the associated `data_stream` dataset (for example `{{user-defined-unique-id}}-nginx.stubstatus`) is a recommended practice, but any unique ID will work.
 12. A user-defined dataset. You can specify anything that makes sense to signify the source of the data.
-13. Refer to [Metrics reference](asciidocalypse://docs/integration-docs/docs/reference/nginx.md#nginx-metrics-reference) in the Nginx integration documentation for the type of metrics collected and exported fields.
+13. Refer to [Metrics reference](integration-docs://reference/nginx/index.md#metrics-reference) in the Nginx integration documentation for the type of metrics collected and exported fields.
 
 
 

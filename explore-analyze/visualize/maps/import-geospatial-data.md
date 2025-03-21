@@ -96,7 +96,7 @@ To open an existing index for drawing:
 
 When feature editing is open, a feature editing toolbox is displayed on the left side of the map.
 
-:::{image} ../../../images/kibana-drawing_layer.png
+:::{image} /explore-analyze/images/kibana-drawing_layer.png
 :alt: drawing layer
 :screenshot:
 :::

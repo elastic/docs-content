@@ -21,7 +21,7 @@ For versions 2.4.0 and 2.4.1, IPv6 should remain enabled on any host with the Pr
 
 When there are multiple hosts for each role, the inbound networking and ports can be represented by the following diagram:
 
-![ECE networking and ports](../../../images/cloud-enterprise-ece-networking-ports.png "")
+![ECE networking and ports](/deploy-manage/images/cloud-enterprise-ece-networking-ports.png "")
 
 | **Number** | **Host role** | **Inbound ports** | *Purpose* |
 | --- | --- | --- | --- |

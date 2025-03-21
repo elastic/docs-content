@@ -98,7 +98,7 @@ output.elasticsearch:
   api_key: "id:api_key"
 ```
 
-1. Set the `hosts` to your deployment’s {{es}} endpoint. Copy the {{es}} endpoint from **Help menu (![help icon](../../../images/observability-help-icon.png "")) → Connection details**. For example, `https://my-deployment.es.us-central1.gcp.cloud.es.io:443`.
+1. Set the `hosts` to your deployment’s {{es}} endpoint. Copy the {{es}} endpoint from **Help menu (![help icon](/solutions/images/observability-help-icon.png "")) → Connection details**. For example, `https://my-deployment.es.us-central1.gcp.cloud.es.io:443`.
 2. From **Developer tools**, run the following command to create an API key that grants `manage` permissions for the `cluster` and the `filebeat-*` indices using:
 
     ```console
@@ -119,7 +119,7 @@ output.elasticsearch:
     }
     ```
 
-    Refer to [Grant access using API keys](asciidocalypse://docs/beats/docs/reference/filebeat/beats-api-keys.md) for more information.
+    Refer to [Grant access using API keys](beats://reference/filebeat/beats-api-keys.md) for more information.
 
 
 
@@ -344,9 +344,9 @@ Learn about correlating plaintext logs in the agent-specific ingestion guides:
 * [Go](apm-agent-go://reference/logs.md)
 * [Java](apm-agent-java://reference/logs.md#log-correlation-ids)
 * [.NET](apm-agent-dotnet://reference/logs.md)
-* [Node.js](asciidocalypse://docs/apm-agent-nodejs/docs/reference/logs.md)
-* [Python](asciidocalypse://docs/apm-agent-python/docs/reference/logs.md#log-correlation-ids)
-* [Ruby](asciidocalypse://docs/apm-agent-ruby/docs/reference/logs.md)
+* [Node.js](apm-agent-nodejs://reference/logs.md)
+* [Python](apm-agent-python://reference/logs.md#log-correlation-ids)
+* [Ruby](apm-agent-ruby://reference/logs.md)
 
 
 ## View logs [view-plaintext-logs]

@@ -31,7 +31,7 @@ Create a {{ml}} job to categorize log messages automatically. {{ml-cap}} observe
 
 The **Categories** page lists all the log categories from the selected indices. You can filter the categories by indices. The screenshot below shows the categories from the `elastic.agent` log.
 
-:::{image} ../../../images/observability-log-categories.jpg
+:::{image} /solutions/images/observability-log-categories.jpg
 :alt: Log categories
 :screenshot:
 :::
@@ -46,7 +46,7 @@ The category row contains the following information:
 
 To view a log message under a particular category, click the arrow at the end of the row. To further examine a message, it can be viewed in the corresponding log event on the **Stream** page or displayed in its context.
 
-:::{image} ../../../images/observability-log-opened.png
+:::{image} /solutions/images/observability-log-opened.png
 :alt: Opened log category
 :screenshot:
 :::

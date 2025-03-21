@@ -27,26 +27,26 @@ Check the following sections to learn more:
 
 A [time series](time-series-data-stream-tsds.md#time-series) is a sequence of observations taken over time for a specific entity. The observed samples can be represented as a continuous function, where the time series dimensions remain constant and the time series metrics change over time.
 
-:::{image} ../../../images/elasticsearch-reference-time-series-function.png
+:::{image} /manage-data/images/elasticsearch-reference-time-series-function.png
 :alt: time series function
 :::
 
 In an Elasticsearch index, a single document is created for each timestamp, containing the immutable time series dimensions, together with the metrics names and the changing metrics values. For a single timestamp, several time series dimensions and metrics may be stored.
 
-:::{image} ../../../images/elasticsearch-reference-time-series-metric-anatomy.png
+:::{image} /manage-data/images/elasticsearch-reference-time-series-metric-anatomy.png
 :alt: time series metric anatomy
 :::
 
 For your most current and relevant data, the metrics series typically has a low sampling time interval, so it’s optimized for queries that require a high data resolution.
 
-:::{image} ../../../images/elasticsearch-reference-time-series-original.png
+:::{image} /manage-data/images/elasticsearch-reference-time-series-original.png
 :alt: time series original
 :title: Original metrics series
 :::
 
 Downsampling works on older, less frequently accessed data by replacing the original time series with both a data stream of a higher sampling interval and statistical representations of that data. Where the original metrics samples may have been taken, for example, every ten seconds, as the data ages you may choose to reduce the sample granularity to hourly or daily. You may choose to reduce the granularity of `cold` archival data to monthly or less.
 
-:::{image} ../../../images/elasticsearch-reference-time-series-downsampled.png
+:::{image} /manage-data/images/elasticsearch-reference-time-series-downsampled.png
 :alt: time series downsampled
 :title: Downsampled metrics series
 :::

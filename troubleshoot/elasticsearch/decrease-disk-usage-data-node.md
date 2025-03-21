@@ -34,7 +34,7 @@ Reducing the replicas of an index can potentially reduce search throughput and d
 
 5. For each index you chose, click on its name, then on the panel that appears click `Edit settings`, reduce the value of the `index.number_of_replicas` to the desired value and then click `Save`.
 
-    :::{image} ../../images/elasticsearch-reference-reduce_replicas.png
+    :::{image} /troubleshoot/images/elasticsearch-reference-reduce_replicas.png
     :alt: Reducing replicas
     :screenshot:
     :::

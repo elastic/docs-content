@@ -678,7 +678,7 @@ Because all of the example logs are in this range, you’ll get the following re
 
 ##### Range queries [observability-parse-log-data-range-queries]
 
-Use [range queries](elasticsearch://reference/query-languages/query-dsl-range-query.md) to query logs in a specific range.
+Use [range queries](elasticsearch://reference/query-languages/query-dsl/query-dsl-range-query.md) to query logs in a specific range.
 
 The following command searches for IP addresses greater than or equal to `192.168.1.100` and less than or equal to `192.168.1.102`.
 

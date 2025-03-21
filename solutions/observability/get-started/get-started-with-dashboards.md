@@ -13,7 +13,7 @@ You can also create new dashboards and visualizations based on your data views t
 
 In your Observability project, go to **Dashboards** to see installed dashboards or create your own. This example shows dashboards loaded by the System integration:
 
-:::{image} ../../../images/serverless-dashboards.png
+:::{image} /solutions/images/serverless-dashboards.png
 :alt: Screenshot showing list of System dashboards
 :screenshot:
 :::

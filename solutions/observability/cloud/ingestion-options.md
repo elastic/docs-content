@@ -26,7 +26,7 @@ You have a number of options for ingesting data with AWS. The following table he
 
 The high-level architecture is shown below.
 
-:::{image} ../../../images/observability-ingest-options-overview.png
+:::{image} /solutions/images/observability-ingest-options-overview.png
 :alt: Ingest options
 :screenshot:
 :::

@@ -8,7 +8,7 @@ mapped_pages:
 
 
 ::::{admonition}
-Integrations are available for a wide array of popular services and platforms. To see the full list of available integrations, go to the **Integrations** page in {{kib}}, or visit [Elastic Integrations](asciidocalypse://docs/integration-docs/docs/reference/index.md).
+Integrations are available for a wide array of popular services and platforms. To see the full list of available integrations, go to the **Integrations** page in {{kib}}, or visit [Elastic Integrations](integration-docs://reference/index.md).
 
 {{agent}} integrations provide a simple, unified way to collect data from popular apps and services, and protect systems from security threats.
 

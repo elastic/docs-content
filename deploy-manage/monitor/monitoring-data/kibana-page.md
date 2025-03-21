@@ -16,7 +16,7 @@ applies_to:
 
 To view the key metrics that indicate the overall health of {{kib}} itself, click **Overview** in the {{kib}} section of the **Stack Monitoring** page.
 
-:::{image} /images/kibana-monitoring-kibana-overview.png
+:::{image} /deploy-manage/images/kibana-monitoring-kibana-overview.png
 :alt: Kibana Overview
 :screenshot:
 :::

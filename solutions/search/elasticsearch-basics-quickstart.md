@@ -416,7 +416,7 @@ GET books/_search
 
 ### `match` query [getting-started-match-query]
 
-You can use the [`match` query](elasticsearch://reference/query-languages/query-dsl-match-query.md) to search for documents that contain a specific value in a specific field. This is the standard query for full-text searches.
+You can use the [`match` query](elasticsearch://reference/query-languages/query-dsl/query-dsl-match-query.md) to search for documents that contain a specific value in a specific field. This is the standard query for full-text searches.
 
 Run the following command to search the `books` index for documents containing `brave` in the `name` field:
 

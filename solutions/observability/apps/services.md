@@ -15,7 +15,7 @@ To help surface potential issues, services are sorted by their health status: **
 
 In addition to health status, active alerts for each service are prominently displayed in the service inventory table. Selecting an active alert badge brings you to the [**Alerts**](../../../solutions/observability/apps/create-apm-rules-alerts.md) tab where you can learn more about the active alert and take action.
 
-:::{image} ../../../images/observability-apm-services-overview.png
+:::{image} /solutions/images/observability-apm-services-overview.png
 :alt: Example view of services table the Applications UI in Kibana
 :screenshot:
 :::
@@ -45,7 +45,7 @@ The Service grouping functionality is in beta and is subject to change. The desi
 
 Group services together to build meaningful views that remove noise, simplify investigations across services, and combine related alerts.
 
-:::{image} ../../../images/observability-apm-service-group.png
+:::{image} /solutions/images/observability-apm-service-group.png
 :alt: Example view of service group in the Applications UI in Kibana
 :screenshot:
 :::

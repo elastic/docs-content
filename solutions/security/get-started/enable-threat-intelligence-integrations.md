@@ -22,7 +22,7 @@ To learn more about alerts with threat intelligence, visit [View alert details](
 
 You can connect to threat intelligence sources using an [{{agent}} integration](#agent-ti-integration), the [Threat Intel module](#ti-mod-integration), or a [custom integration](#custom-ti-integration).
 
-:::{image} ../../../images/getting-started-threat-intelligence-view.png
+:::{image} /solutions/images/getting-started-threat-intelligence-view.png
 :alt: The Threat Intelligence view on the Overview dashboard
 :screenshot:
 :::

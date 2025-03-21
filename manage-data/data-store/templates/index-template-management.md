@@ -11,7 +11,7 @@ applies_to:
 
 Create, edit, clone, and delete your index templates in the **Index Templates** view. Changes made to an index template do not affect existing indices.
 
-:::{image} ../../../images/elasticsearch-reference-management-index-templates.png
+:::{image} /manage-data/images/elasticsearch-reference-management-index-templates.png
 :alt: Index templates
 :screenshot:
 :::
@@ -28,7 +28,7 @@ In this tutorial, you’ll create an index template and use it to configure two 
 
 1. In the **Index Templates** view, open the **Create template** wizard.
 
-    :::{image} ../../../images/elasticsearch-reference-management_index_create_wizard.png
+    :::{image} /manage-data/images/elasticsearch-reference-management_index_create_wizard.png
     :alt: Create wizard
     :screenshot:
     :::
@@ -45,7 +45,7 @@ In this tutorial, you’ll create an index template and use it to configure two 
 
     Component templates are optional. For this tutorial, do not add any component templates.
 
-    :::{image} ../../../images/elasticsearch-reference-management_index_component_template.png
+    :::{image} /manage-data/images/elasticsearch-reference-management_index_component_template.png
     :alt: Component templates page
     :screenshot:
     :::
@@ -53,7 +53,7 @@ In this tutorial, you’ll create an index template and use it to configure two 
 2. Define index settings. These are optional. For this tutorial, leave this section blank.
 3. Define a mapping that contains an [object](elasticsearch://reference/elasticsearch/mapping-reference/object.md) field named `geo` with a child [`geo_point`](elasticsearch://reference/elasticsearch/mapping-reference/geo-point.md) field named `coordinates`:
 
-    :::{image} ../../../images/elasticsearch-reference-management-index-templates-mappings.png
+    :::{image} /manage-data/images/elasticsearch-reference-management-index-templates-mappings.png
     :alt: Mapped fields page
     :screenshot:
     :::

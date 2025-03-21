@@ -50,7 +50,7 @@ The value specified in the field rule can be one of the following types:
 | --- | --- | --- |
 | Simple String | Exactly matches the provided value. | `"esadmin"` |
 | Wildcard String | Matches the provided value using a wildcard. | `"*,dc=example,dc=com"` |
-| Regular Expression | Matches the provided value using a                       [Lucene regexp](elasticsearch://reference/query-languages/regexp-syntax.md). | `"/.*-admin[0-9]*/"` |
+| Regular Expression | Matches the provided value using a                       [Lucene regexp](elasticsearch://reference/query-languages/query-dsl/regexp-syntax.md). | `"/.*-admin[0-9]*/"` |
 | Number | Matches an equivalent numerical value. | `7` |
 | Null | Matches a null or missing value. | `null` |
 | Array | Tests each element in the array in                      accordance with the above definitions.                      If *any* of elements match, the match is successful. | `["admin", "operator"]` |

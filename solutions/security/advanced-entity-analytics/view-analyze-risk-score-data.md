@@ -31,7 +31,7 @@ From the Entity Analytics dashboard, you can access entity key performance indic
 
 If you have enabled the [entity store](entity-store.md), the dashboard also displays the [**Entities** section](../dashboards/entity-analytics-dashboard.md#entity-entities), where you can view all hosts and users along with their risk and asset criticality data.
 
-:::{image} ../../../images/security-entity-dashboard.png
+:::{image} /solutions/images/security-entity-dashboard.png
 :alt: Entity Analytics dashboard
 :screenshot:
 :::
@@ -58,7 +58,7 @@ To display entity risk score and asset criticality data in the Alerts table, sel
 
 Learn more about [customizing the Alerts table](../detect-and-alert/manage-detection-alerts.md#customize-the-alerts-table).
 
-:::{image} ../../../images/security-alerts-table-rs.png
+:::{image} /solutions/images/security-alerts-table-rs.png
 :alt: Risk scores in the Alerts table
 :screenshot:
 :::
@@ -77,14 +77,14 @@ If you change the entity’s criticality level after an alert is generated, that
 
     * `user.risk.calculated_level` or `host.risk.calculated_level` for entity risk level:
 
-        :::{image} ../../../images/security-filter-by-host-risk-level.png
+        :::{image} /solutions/images/security-filter-by-host-risk-level.png
         :alt: Alerts filtered by high host risk level
         :screenshot:
         :::
 
     * `user.asset.criticality` or `host.asset.criticality` for asset criticality level:
 
-        :::{image} ../../../images/security-filter-by-asset-criticality.png
+        :::{image} /solutions/images/security-filter-by-asset-criticality.png
         :alt: Filter alerts by asset criticality level
         :screenshot:
         :::
@@ -93,14 +93,14 @@ If you change the entity’s criticality level after an alert is generated, that
 
     * `host.risk.calculated_level` or `user.risk.calculated_level` for entity risk level:
 
-        :::{image} ../../../images/security-group-by-host-risk-level.png
+        :::{image} /solutions/images/security-group-by-host-risk-level.png
         :alt: Alerts grouped by host risk levels
         :screenshot:
         :::
 
     * `host.asset.criticality` or `user.asset.criticality` for asset criticality level:
 
-        :::{image} ../../../images/security-group-by-asset-criticality.png
+        :::{image} /solutions/images/security-group-by-asset-criticality.png
         :alt: Alerts grouped by entity asset criticality levels
         :screenshot:
         :::
@@ -116,7 +116,7 @@ If you change the entity’s criticality level after an alert is generated, that
             3. `@timestamp`: **New-Old**
 
 
-        :::{image} ../../../images/security-hrl-sort-by-host-risk-score.png
+        :::{image} /solutions/images/security-hrl-sort-by-host-risk-score.png
         :alt: High-risk alerts sorted by host risk score
         :screenshot:
         :::
@@ -127,7 +127,7 @@ If you change the entity’s criticality level after an alert is generated, that
 
 To access risk score data in the alert details flyout, select **Insights** → **Entities** on the **Overview** tab:
 
-:::{image} ../../../images/security-alerts-flyout-rs.png
+:::{image} /solutions/images/security-alerts-flyout-rs.png
 :alt: Risk scores in the Alerts flyout
 :screenshot:
 :::
@@ -139,14 +139,14 @@ On the Hosts and Users pages, you can access the risk score data:
 
 * In the **Host risk level** or **User risk level** column on the **All hosts** or **All users** tab:
 
-    :::{image} ../../../images/security-hosts-hr-level.png
+    :::{image} /solutions/images/security-hosts-hr-level.png
     :alt: Host risk level data on the All hosts tab of the Hosts page
     :screenshot:
     :::
 
 * On the **Host risk** or **User risk** tab:
 
-    :::{image} ../../../images/security-hosts-hr-data.png
+    :::{image} /solutions/images/security-hosts-hr-data.png
     :alt: Host risk data on the Host risk tab of the Hosts page
     :screenshot:
     :::
@@ -159,14 +159,14 @@ On the host details and user details pages, you can access the risk score data:
 
 * In the Overview section:
 
-    :::{image} ../../../images/security-host-details-overview.png
+    :::{image} /solutions/images/security-host-details-overview.png
     :alt: Host risk data in the Overview section of the host details page
     :screenshot:
     :::
 
 * On the **Host risk** or **User risk** tab:
 
-    :::{image} ../../../images/security-host-details-hr-tab.png
+    :::{image} /solutions/images/security-host-details-hr-tab.png
     :alt: Host risk data on the Host risk tab of the host details page
     :screenshot:
     :::
@@ -177,7 +177,7 @@ On the host details and user details pages, you can access the risk score data:
 
 In the host details and user details flyouts, you can access the risk score data in the risk summary section:
 
-:::{image} ../../../images/security-risk-summary.png
+:::{image} /solutions/images/security-risk-summary.png
 :alt: Host risk data in the Host risk summary section
 :screenshot:
 :::

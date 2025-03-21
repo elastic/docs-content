@@ -11,7 +11,7 @@ navigation_title: "Filters"
 
 Global filters are ways you can filter your APM data based on a specific time range or environment. When viewing a specific service, the filter persists as you move between tabs.
 
-:::{image} ../../../images/observability-global-filters.png
+:::{image} /solutions/images/observability-global-filters.png
 :alt: Global filters view
 :screenshot:
 :::
@@ -38,8 +38,8 @@ Service environments are defined when configuring your APM agents. It’s vital 
 * **iOS agent:** *Not yet supported*
 * **Java:** [`environment`](apm-agent-java://reference/config-core.md#config-environment)
 * **.NET:** [`Environment`](apm-agent-dotnet://reference/config-core.md#config-environment)
-* **Node.js:** [`environment`](asciidocalypse://docs/apm-agent-nodejs/docs/reference/ingestion-tools/apm-agent-nodejs/configuration.md#environment)
-* **PHP:** [`environment`](asciidocalypse://docs/apm-agent-php/docs/reference/ingestion-tools/apm-agent-php/configuration-reference.md#config-environment)
-* **Python:** [`environment`](asciidocalypse://docs/apm-agent-python/docs/reference/ingestion-tools/apm-agent-python/configuration.md#config-environment)
-* **Ruby:** [`environment`](asciidocalypse://docs/apm-agent-ruby/docs/reference/ingestion-tools/apm-agent-ruby/configuration.md#config-environment)
+* **Node.js:** [`environment`](apm-agent-nodejs://reference/configuration.md#environment)
+* **PHP:** [`environment`](apm-agent-php://reference/configuration-reference.md#config-environment)
+* **Python:** [`environment`](apm-agent-python://reference/configuration.md#config-environment)
+* **Ruby:** [`environment`](apm-agent-ruby://reference/configuration.md#config-environment)
 * **Real User Monitoring (Elastic Stack only):** [`environment`](apm-agent-rum-js://reference/configuration.md#environment)

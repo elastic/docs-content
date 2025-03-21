@@ -28,9 +28,9 @@ For a full list of tracked metrics, see the relevant agent documentation:
 
 * [Go](apm-agent-go://reference/metrics.md)
 * [Java](apm-agent-java://reference/metrics.md)
-* [Node.js](asciidocalypse://docs/apm-agent-nodejs/docs/reference/metrics.md)
-* [Python](asciidocalypse://docs/apm-agent-python/docs/reference/metrics.md)
-* [Ruby](asciidocalypse://docs/apm-agent-ruby/docs/reference/metrics.md)
+* [Node.js](apm-agent-nodejs://reference/metrics.md)
+* [Python](apm-agent-python://reference/metrics.md)
+* [Ruby](apm-agent-ruby://reference/metrics.md)
 
 
 ### Example system metric document [_example_system_metric_document]

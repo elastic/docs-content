@@ -32,14 +32,14 @@ If you're using {{stack}}, use the [action configuration settings](kibana://refe
 
 In **{{stack-manage-app}} > {{connectors-ui}}**, you can find a list of the connectors in the current space. You can use the search bar to find specific connectors by name and type. The **Type** dropdown also enables you to filter to a subset of connector types.
 
-:::{image} ../images/kibana-connector-filter-by-type.png
+:::{image} /deploy-manage/images/kibana-connector-filter-by-type.png
 :alt: Filtering the connector list by types of connectors
 :screenshot:
 :::
 
 You can delete individual connectors using the trash icon. Alternatively, select multiple connectors and delete them in bulk using the **Delete** button.
 
-:::{image} ../images/kibana-connector-delete.png
+:::{image} /deploy-manage/images/kibana-connector-delete.png
 :alt: Deleting connectors individually or in bulk
 :screenshot:
 :::
@@ -57,7 +57,7 @@ New connectors can be created with the **Create connector** button, which guides
 Some connector types are paid commercial features, while others are free. For a comparison of the Elastic subscription levels, go to [the subscription page](https://www.elastic.co/subscriptions).
 ::::
 
-:::{image} ../images/kibana-connector-select-type.png
+:::{image} /deploy-manage/images/kibana-connector-select-type.png
 :alt: Connector select type
 :screenshot:
 :width: 75%
@@ -79,7 +79,7 @@ To import and export connectors, use the [Saved Objects Management UI](/explore-
 
 If a connector is missing sensitive information after the import, a **Fix** button appears in **{{connectors-ui}}**.
 
-:::{image} ../images/kibana-connectors-with-missing-secrets.png
+:::{image} /deploy-manage/images/kibana-connectors-with-missing-secrets.png
 :alt: Connectors with missing secrets
 :screenshot:
 :::

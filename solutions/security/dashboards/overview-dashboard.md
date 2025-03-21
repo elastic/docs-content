@@ -12,7 +12,7 @@ applies_to:
 
 The Overview dashboard provides a high-level snapshot of alerts and events. It helps you assess overall system health and find anomalies that may require further investigation.
 
-:::{image} ../../../images/security-overview-pg.png
+:::{image} /solutions/images/security-overview-pg.png
 :alt: Overview dashboard
 :::
 
@@ -26,7 +26,7 @@ The **Security news** section provides the latest {{elastic-sec}} news to help y
 ::::
 
 
-:::{image} ../../../images/security-live-feed-ov-page.png
+:::{image} /solutions/images/security-live-feed-ov-page.png
 :alt: Overview dashboard with live feed section highlighted
 :::
 
@@ -35,14 +35,14 @@ The **Security news** section provides the latest {{elastic-sec}} news to help y
 
 Time-based histograms show the number of detections, alerts, and events that have occurred within the selected time range. To focus on a particular time, click and drag to select a time range, or choose a preset value. The **Stack by** menu lets you select which field is used to organize the data. For example, in the Alert trend histogram, stack by `kibana.alert.rule.name` to display alert counts by rule name within the specified time frame.
 
-Hover over histograms, graphs, and tables to display an **Inspect** button (![Inspect icon](../../../images/security-inspect-icon.png "title =20x20")) or options menu (![Three-dot menu icon](../../../images/security-three-dot-icon.png "title =20x20")). Click to inspect the visualization’s {{es}} queries, add it to a new or existing case, or open it in Lens for customization.
+Hover over histograms, graphs, and tables to display an **Inspect** button (![Inspect icon](/solutions/images/security-inspect-icon.png "title =20x20")) or options menu (![Three-dot menu icon](/solutions/images/security-three-dot-icon.png "title =20x20")). Click to inspect the visualization’s {{es}} queries, add it to a new or existing case, or open it in Lens for customization.
 
 
 ## Host and network events [_host_and_network_events]
 
 View event and host counts grouped by data source, such as **Auditbeat** or **{{elastic-defend}}**. Expand a category to view specific counts of host or network events from the selected source.
 
-:::{image} ../../../images/security-events-count.png
+:::{image} /solutions/images/security-events-count.png
 :alt: Host and network events on the Overview dashboard
 :screenshot:
 :::
@@ -59,7 +59,7 @@ For more information about connecting to threat intelligence sources, visit [Ena
 ::::
 
 
-:::{image} ../../../images/security-threat-intelligence-view.png
+:::{image} /solutions/images/security-threat-intelligence-view.png
 :alt: threat intelligence view
 :screenshot:
 :::

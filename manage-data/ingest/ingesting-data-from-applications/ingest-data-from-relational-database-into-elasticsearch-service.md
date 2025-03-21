@@ -402,7 +402,7 @@ In this section, we configure Logstash to send the MySQL data to Elasticsearch. 
 
     4. The Results pane lists the `client_name` records originating from your MySQL database, similar to the following example:
 
-        ![A picture showing query results with three records](../../../images/cloud-ec-logstash-db-results-scenarios.png "")
+        ![A picture showing query results with three records](/manage-data/images/cloud-ec-logstash-db-results-scenarios.png "")
 
 
 Now, you should have a good understanding of how to configure Logstash to ingest data from your relational database through the JDBC Plugin. You have some design considerations to track records that are new, modified, and deleted. You should have the basics needed to begin experimenting with your own database and Elasticsearch.

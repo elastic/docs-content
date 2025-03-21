@@ -24,7 +24,7 @@ The Indicators page collects data from enabled threat intelligence feeds and pro
 ::::
 
 
-:::{image} ../../../images/security-indicators-table.png
+:::{image} /solutions/images/security-indicators-table.png
 :alt: Shows the Indicators page
 :screenshot:
 :::
@@ -56,7 +56,7 @@ Install a threat intelligence integration to add indicators to the Indicators pa
 
 After you add indicators to the Indicators page, you can [examine](#examine-indicator-details), search, filter, and take action on indicator data. Indicators also appear in the Trend view, which shows the total values in the legend.
 
-:::{image} ../../../images/security-interact-with-indicators-table.gif
+:::{image} /solutions/images/security-interact-with-indicators-table.gif
 :alt: interact with indicators table
 :screenshot:
 :::
@@ -75,7 +75,7 @@ Learn more about an indicator by clicking **View details**, then opening the Ind
 * **Table**: The indicator data in table format.
 * **JSON**: The indicator data in JSON format.
 
-    :::{image} ../../../images/security-indicator-details-flyout.png
+    :::{image} /solutions/images/security-indicator-details-flyout.png
     :alt: Shows the Indicator details flyout
     :screenshot:
     :::
@@ -86,7 +86,7 @@ Learn more about an indicator by clicking **View details**, then opening the Ind
 
 Investigate an indicator in [Timeline](/solutions/security/investigate/timeline.md) to identify and predict related events in your environment. You can add an indicator to Timeline from the Indicators table or the Indicator details flyout.
 
-:::{image} ../../../images/security-indicator-query-timeline.png
+:::{image} /solutions/images/security-indicator-query-timeline.png
 :alt: Shows the results of an indicator being investigated in Timeline
 :screenshot:
 :::
@@ -100,7 +100,7 @@ The following image shows a file hash indictor being investigated in Timeline. T
 
 `threat.indicator.file.hash.sha256 : 116dd9071887611c19c24aedde270285a4cf97157b846e6343407cf3bcec115a`
 
-:::{image} ../../../images/security-indicator-in-timeline.png
+:::{image} /solutions/images/security-indicator-in-timeline.png
 :alt: Shows the results of an indicator being investigated in Timeline
 :screenshot:
 :::
@@ -127,7 +127,7 @@ To add indicators to cases:
     The indicator is added to the case as a new comment.
 
 
-:::{image} ../../../images/security-indicator-added-to-case.png
+:::{image} /solutions/images/security-indicator-added-to-case.png
 :alt: An indicator attached to a case
 :screenshot:
 :::
@@ -156,7 +156,7 @@ When you attach an indicator to a case, the indicator is added as a new comment 
 
 To remove an indicator attached to a case, click the **More actions** (**…​​**) menu → **Delete attachment** in the case comment.
 
-:::{image} ../../../images/security-remove-indicator.png
+:::{image} /solutions/images/security-remove-indicator.png
 :alt: Removing an indicator from a case
 :screenshot:
 :::

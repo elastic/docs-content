@@ -259,7 +259,7 @@ The Elastic Azure OpenAI integration comes with a built-in overview dashboard to
 
 From here, you’ll find visualizations of important metrics for your Azure OpenAI service, like the request rate, error rate, token usage, and chat completion latency. To zoom in on your data, click and drag across the bars in a visualization.
 
-![screenshot of the Azure OpenAI integration dashboard](../../../images/observability-azure-openai-dashboard.png "")
+![screenshot of the Azure OpenAI integration dashboard](/solutions/images/observability-azure-openai-dashboard.png "")
 
 For more on dashboards and visualization, refer to the [Dashboards and visualizations](../../../explore-analyze/dashboards.md) documentation.
 
@@ -268,11 +268,11 @@ For more on dashboards and visualization, refer to the [Dashboards and visualiza
 
 Find **Discover** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). From the data view drop-down, select either `logs-*` or `metrics-*` to view specific data. You can also create data views if, for example, you wanted to view both `logs-*` and `metrics-*` simultaneously.
 
-![screenshot of the Discover data view dropdown](../../../images/observability-discover-data-view-menu.png "")
+![screenshot of the Discover data view dropdown](/solutions/images/observability-discover-data-view-menu.png "")
 
 From here, filter your data and dive deeper into individual logs to find information and troubleshoot issues. For a list of Azure OpenAI fields you may want to filter by, refer to the [Azure OpenAI integration](https://docs.elastic.co/en/integrations/azure_openai#settings) docs.
 
-:::{image} ../../../images/observability-azure-openai-discover.png
+:::{image} /solutions/images/observability-azure-openai-discover.png
 :alt: screenshot of the discover main page
 :screenshot:
 :::
@@ -284,14 +284,14 @@ For more on using Discover and creating data views, refer to the [Discover](../.
 
 To view Azure OpenAI logs, open {{kib}} and go to **Logs Explorer** (find `Logs Explorer` in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md)). With **Logs Explorer**, you can quickly search and filter your log data, get information about the structure of log fields, and display your findings in a visualization.
 
-:::{image} ../../../images/observability-log-explorer.png
+:::{image} /solutions/images/observability-log-explorer.png
 :alt: screenshot of the logs explorer main page
 :screenshot:
 :::
 
 From **Logs Explorer**, you can select the Azure OpenAI integration from the data selector to view your Kubernetes data.
 
-![screenshot of the logs explorer data selector](../../../images/observability-azure-open-ai-data-selector.png "")
+![screenshot of the logs explorer data selector](/solutions/images/observability-azure-open-ai-data-selector.png "")
 
 From here, filter your log data and dive deeper into individual logs to find information and troubleshoot issues. For a list of Azure OpenAI fields you may want to filter by, refer to the [Azure OpenAI integration](https://docs.elastic.co/en/integrations/azure_openai#settings) documentation.
 
@@ -469,14 +469,14 @@ After ingesting your data, you can filter and explore it using Discover in {{kib
 * `numeric_labels.prompt_tokens`
 * `numeric_labels.token_count`
 
-:::{image} ../../../images/observability-azure-openai-apm-discover.png
+:::{image} /solutions/images/observability-azure-openai-apm-discover.png
 :alt: screenshot of the discover main page
 :screenshot:
 :::
 
 Then, use these fields to create visualizations and build dashboards. Refer to the [Dashboard and visualizations](../../../explore-analyze/dashboards.md) documentation for more information.
 
-:::{image} ../../../images/observability-azure-openai-apm-dashboard.png
+:::{image} /solutions/images/observability-azure-openai-apm-dashboard.png
 :alt: screenshot of the Azure OpenAI APM dashboard
 :screenshot:
 :::

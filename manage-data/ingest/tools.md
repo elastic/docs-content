@@ -41,7 +41,7 @@ Depending on the type of data you want to ingest, you have a number of methods a
 
 | Tools   | Usage           | Links to more information |
 | ------- | --------------- | ------------------------- |
-| Integrations | Ingest data using a variety of Elastic integrations. | [Elastic Integrations](asciidocalypse://docs/integration-docs/docs/reference/index.md) |
+| Integrations | Ingest data using a variety of Elastic integrations. | [Elastic Integrations](integration-docs://reference/index.md) |
 | File upload | Upload data from a file and inspect it before importing it into {{es}}. | [Upload data files](/manage-data/ingest/upload-data-files.md) |
 | APIs  | Ingest data through code by using the APIs of one of the language clients or the {{es}} HTTP APIs. | [Document APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-document) |
 | OpenTelemetry | Collect and send your telemetry data to Elastic Observability | [Elastic Distributions of OpenTelemetry](https://github.com/elastic/opentelemetry?tab=readme-ov-file#elastic-distributions-of-opentelemetry) |
