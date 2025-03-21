@@ -743,7 +743,6 @@ toc:
         children:
           - file: maintenance/ece/deployments-maintenance.md
             children:
-              - file: maintenance/ece/start-stop-routing-requests.md
               - file: maintenance/ece/pause-instance.md
           - file: maintenance/ece/maintenance-activities.md
             children:
@@ -759,6 +758,7 @@ toc:
           - file: maintenance/start-stop-services/restart-cloud-hosted-deployment.md
           - file: maintenance/start-stop-services/restart-an-ece-deployment.md
           - file: maintenance/start-stop-services/full-cluster-restart-rolling-restart-procedures.md
+      - file: maintenance/start-stop-routing-requests.md
       - file: maintenance/add-and-remove-elasticsearch-nodes.md
   - file: upgrade.md
     children:

@@ -17,7 +17,7 @@ The cloud proxy routes HTTP requests to its deployment’s individual product in
 It might be helpful to temporarily block upstream requests in order to protect some or all instances or products within your deployment. For example, you might stop request routing in the following cases:
 
 * If another team within your company starts streaming new data into your production {{integrations-server}} without previous load testing, both it and {{es}} might experience performance issues. You might consider stopping routing requests on all {{integrations-server}} instances in order to protect your downstream {{es}} instance.
-* If {{es}} is being overwhelmed by upstream requests, it might experience increased response times or even become unresponsive. This might impact your ability to resize components in your deployment and increase the duration of pending plans or increase the chance of plan changes failing. Because every {{es}} node is an [implicit coordinating node](/deploy-manage/distributed-architecture/clusters-nodes-shards/node-roles.md#set-node-roles), you should stop routing requests across all {{es}} nodes to completely block upstream traffic.
+* If {{es}} is being overwhelmed by upstream requests, it might experience increased response times or even become unresponsive. This might impact your ability to resize components in your deployment and increase the duration of pending plans or increase the chance of plan changes failing. Because every {{es}} node is an [implicit coordinating node](/deploy-manage/distributed-architecture/clusters-nodes-shards/node-roles.md#node-roles-list), you should stop routing requests across all {{es}} nodes to completely block upstream traffic.
 
 ## Considerations [request-routing-considerations]
 
