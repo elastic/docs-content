@@ -448,7 +448,7 @@ stringData:
 
 ### Elastic Agent input and Beats input plugins [k8s-logstash-plugin-considerations-agent-beats]
 
-When you use the [Elastic Agent input](logstash://reference/plugins-inputs-elastic_agent.md) or the [Beats input](logstash://reference/plugins-inputs-beats.md), set the [`ttl`](asciidocalypse://docs/beats/docs/reference/filebeat/logstash-output.md#_ttl) value on the Agent or Beat to ensure that load is distributed appropriately.
+When you use the [Elastic Agent input](logstash://reference/plugins-inputs-elastic_agent.md) or the [Beats input](logstash://reference/plugins-inputs-beats.md), set the [`ttl`](beats://reference/filebeat/logstash-output.md#_ttl) value on the Agent or Beat to ensure that load is distributed appropriately.
 
 
 

@@ -28,7 +28,7 @@ Detection rule investigation guides suggest steps for triaging, analyzing, and r
 ::::
 
 
-:::{image} ../../../images/security-osquery-investigation-guide.png
+:::{image} /solutions/images/security-osquery-investigation-guide.png
 :alt: Shows a live query in an investigation guide
 :screenshot:
 :::
@@ -44,7 +44,7 @@ You can only add Osquery to investigation guides for custom rules because prebui
 1. Go to the **Rules** page. To access it, find **Detection rules (SIEM)** in the main menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Select a rule to open the its details, then click **Edit rule settings**.
 3. Select the **About** tab, then expand the rule’s advanced settings.
-4. Scroll down to the Investigation guide section. In the toolbar, click the **Osquery** button (![Click the Osquery button](../../../images/security-osquery-button.png "title =20x20")).
+4. Scroll down to the Investigation guide section. In the toolbar, click the **Osquery** button (![Click the Osquery button](/solutions/images/security-osquery-button.png "title =20x20")).
 
     1. Add a descriptive label for the query; for example, `Search for executables`.
     2. Select a saved query or enter a new one.
@@ -60,7 +60,7 @@ You can only add Osquery to investigation guides for custom rules because prebui
         ::::
 
 
-        :::{image} ../../../images/security-setup-osquery-investigation-guide.png
+        :::{image} /solutions/images/security-setup-osquery-investigation-guide.png
         :alt: Shows results from running a query from an investigation guide
         :screenshot:
         :::
@@ -91,7 +91,7 @@ You can only add Osquery to investigation guides for custom rules because prebui
 
 7. Click **Save for later** to save the query for future use (optional).
 
-    :::{image} ../../../images/security-run-query-investigation-guide.png
+    :::{image} /solutions/images/security-run-query-investigation-guide.png
     :alt: Shows results from running a query from an investigation guide
     :screenshot:
     :::

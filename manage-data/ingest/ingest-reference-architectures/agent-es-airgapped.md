@@ -5,7 +5,7 @@ mapped_pages:
 
 # Elastic Agent to Elasticsearch: Air-gapped environment [agent-es-airgapped]
 
-:::{image} ../../../images/ingest-ea-es-airgapped.png
+:::{image} /manage-data/images/ingest-ea-es-airgapped.png
 :alt: Image showing {{agent}} and {{es}} in an air-gapped environment
 :::
 

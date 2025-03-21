@@ -22,7 +22,7 @@ To learn more about alerts with threat intelligence, visit [View alert details](
 
 You can connect to threat intelligence sources using an [{{agent}} integration](#agent-ti-integration), the [Threat Intel module](#ti-mod-integration), or a [custom integration](#custom-ti-integration).
 
-:::{image} ../../../images/getting-started-threat-intelligence-view.png
+:::{image} /solutions/images/getting-started-threat-intelligence-view.png
 :alt: The Threat Intelligence view on the Overview dashboard
 :screenshot:
 :::
@@ -51,10 +51,10 @@ There are a few scenarios when data won’t display in the Threat Intelligence v
 
 % Substeps in step 2 will require inline versioning. Remember to update them when we have more guidance on handling line-level differences.
 
-1. Set up the [{{filebeat}} agent](asciidocalypse://docs/beats/docs/reference/filebeat/filebeat-installation-configuration.md) and enable the Threat Intel module.
+1. Set up the [{{filebeat}} agent](beats://reference/filebeat/filebeat-installation-configuration.md) and enable the Threat Intel module.
 
     ::::{note}
-    For more information about enabling available threat intelligence filesets, refer to [Threat Intel module](asciidocalypse://docs/beats/docs/reference/filebeat/filebeat-module-threatintel.md).
+    For more information about enabling available threat intelligence filesets, refer to [Threat Intel module](beats://reference/filebeat/filebeat-module-threatintel.md).
 
     ::::
 
@@ -72,7 +72,7 @@ There are a few scenarios when data won’t display in the Threat Intelligence v
 2. Update the `securitySolution:defaultThreatIndex` [advanced setting](configure-advanced-settings.md#update-threat-intel-indices) by adding the appropriate index pattern name after the default {{fleet}} threat intelligence index pattern (`logs-ti*`), for example, `logs-ti*`,`custom-ti-index*`.
 
     ::::{note}
-    Threat intelligence indices aren’t required to be ECS compatible. However, we strongly recommend compatibility if you’d like your alerts to be enriched with relevant threat indicator information. You can find a list of ECS-compliant threat intelligence fields at [Threat Fields](asciidocalypse://docs/ecs/docs/reference/ecs-threat.md).
+    Threat intelligence indices aren’t required to be ECS compatible. However, we strongly recommend compatibility if you’d like your alerts to be enriched with relevant threat indicator information. You can find a list of ECS-compliant threat intelligence fields at [Threat Fields](ecs://reference/ecs-threat.md).
 
     ::::
 

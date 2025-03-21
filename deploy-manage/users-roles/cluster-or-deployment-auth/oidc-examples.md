@@ -32,7 +32,7 @@ For more information about OpenID connect in Azure, refer to [Azure OAuth 2.0 an
 
         1. Sign into the [Azure Portal](https://portal.azure.com/) and go to **Entra** (formerly Azure Active Directory). From there, select **App registrations** > **New registration** to register a new application.
 
-            :::{image} ../../../images/cloud-ec-oidc-new-app-azure.png
+            :::{image} /deploy-manage/images/cloud-ec-oidc-new-app-azure.png
             :alt: A screenshot of the Azure Owned Applications tab on the New Registration page
             :::
 
@@ -50,7 +50,7 @@ For more information about OpenID connect in Azure, refer to [Azure OAuth 2.0 an
 
         1. From the application that you created, go to **Certificates & secrets** and create a new secret under **Client secrets** > **New client secret**.
 
-            :::{image} ../../../images/cloud-ec-oidc-oauth-create-credentials-azure.png
+            :::{image} /deploy-manage/images/cloud-ec-oidc-oauth-create-credentials-azure.png
             :alt: A screenshot of the Azure Add a Client Secret dialog
             :::
 
@@ -66,7 +66,7 @@ For more information about OpenID connect in Azure, refer to [Azure OAuth 2.0 an
 
     To learn more about the available endpoints provided by Microsoft Azure, refer to the **Endpoints** details in the application that you configured.
 
-    :::{image} ../../../images/cloud-ec-oidc-endpoints-azure.png
+    :::{image} /deploy-manage/images/cloud-ec-oidc-endpoints-azure.png
     :alt: A screenshot of the Azure Endpoints dialog with fields for Display Name
     :::
 
@@ -166,7 +166,7 @@ For more information about OpenID connect in Google, refer to [Google OpenID Con
 
         1. Navigate to the **APIs & Services** and open the [Credentials](https://console.cloud.google.com/apis/credentials) tab to create your OAuth client ID.
 
-            :::{image} ../../../images/cloud-ec-oidc-oauth-create-credentials-google.png
+            :::{image} /deploy-manage/images/cloud-ec-oidc-oauth-create-credentials-google.png
             :alt: A screenshot of the Google  Cloud console Create Credentials dialog with the OAuth client ID field highlighted
             :::
 
@@ -280,7 +280,7 @@ For more information about OpenID connect in Okta, refer to [Okta OAuth 2.0 docu
 
         1. Go to **Applications** > **Add Application**.
 
-            :::{image} ../../../images/cloud-ec-oidc-new-app-okta.png
+            :::{image} /deploy-manage/images/cloud-ec-oidc-new-app-okta.png
             :alt: A screenshot of the Get Started tab on the Okta Create A New Application page
             :::
 

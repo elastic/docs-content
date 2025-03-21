@@ -36,7 +36,7 @@ If you’re using macOS, some versions may require you to grant Full Disk Access
 
 1. Find **Integrations** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
-    :::{image} ../../../images/security-endpoint-cloud-sec-integrations-page.png
+    :::{image} /solutions/images/security-endpoint-cloud-sec-integrations-page.png
     :alt: Search result for "{{elastic-defend}}" on the Integrations page.
     :screenshot:
     :::
@@ -48,7 +48,7 @@ If you’re using macOS, some versions may require you to grant Full Disk Access
     ::::
 
 
-    :::{image} ../../../images/security-endpoint-cloud-security-configuration.png
+    :::{image} /solutions/images/security-endpoint-cloud-security-configuration.png
     :alt: Add {{elastic-defend}} integration page
     :screenshot:
     :::
@@ -99,7 +99,7 @@ If you have upgraded to an {{stack}} version that includes {{fleet-server}} 7.13
 
 1. If you’re in the process of installing an {{agent}} integration (such as {{elastic-defend}}), the **Add agent** UI opens automatically. Otherwise, find **{{fleet}}** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), and select **Agents** → **Add agent**.
 
-    :::{image} ../../../images/security-endpoint-cloud-sec-add-agent.png
+    :::{image} /solutions/images/security-endpoint-cloud-sec-add-agent.png
     :alt: Add agent flyout on the Fleet page.
     :screenshot:
     :::
@@ -108,7 +108,7 @@ If you have upgraded to an {{stack}} version that includes {{fleet-server}} 7.13
 
     The selected agent policy should include the integration you want to install on the hosts covered by the agent policy (in this example, {{elastic-defend}}).
 
-    :::{image} ../../../images/security-endpoint-cloud-sec-add-agent-detail.png
+    :::{image} /solutions/images/security-endpoint-cloud-sec-add-agent-detail.png
     :alt: Add agent flyout with {{elastic-defend}} integration highlighted.
     :screenshot:
     :::

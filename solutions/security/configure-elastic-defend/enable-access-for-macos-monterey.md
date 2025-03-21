@@ -28,20 +28,20 @@ For macOS Monterey (12.x), {{elastic-endpoint}} will attempt to load a system ex
 
 The following message appears during installation:
 
-:::{image} ../../../images/security-system-ext-blocked.png
+:::{image} /solutions/images/security-system-ext-blocked.png
 :alt: system ext blocked
 :::
 
 1. Click **Open Security Preferences**.
 2. In the lower-left corner of the **Security & Privacy** pane, click the **Lock button**, then enter your credentials to authenticate.
 
-    :::{image} ../../../images/security-lock-button.png
+    :::{image} /solutions/images/security-lock-button.png
     :alt: lock button
     :::
 
 3. Click **Allow** to allow the {{elastic-endpoint}} system extension to load.
 
-    :::{image} ../../../images/security-allow-system-ext.png
+    :::{image} /solutions/images/security-allow-system-ext.png
     :alt: allow system ext
     :::
 
@@ -50,7 +50,7 @@ The following message appears during installation:
 
 After successfully loading the {{elastic-endpoint}} system extension,  an additional message appears, asking to allow {{elastic-endpoint}} to filter network content.
 
-:::{image} ../../../images/security-filter-network-content.png
+:::{image} /solutions/images/security-filter-network-content.png
 :alt: filter network content
 :::
 
@@ -70,7 +70,7 @@ The following instructions apply only to {{elastic-endpoint}} running version 8.
 1. Open the **System Preferences** application.
 2. Select **Security and Privacy**.
 
-    :::{image} ../../../images/security-sec-privacy-pane.png
+    :::{image} /solutions/images/security-sec-privacy-pane.png
     :alt: sec privacy pane
     :screenshot:
     :::
@@ -78,7 +78,7 @@ The following instructions apply only to {{elastic-endpoint}} running version 8.
 3. On the **Security and Privacy** pane, select the **Privacy** tab.
 4. From the left pane, select **Full Disk Access**.
 
-    :::{image} ../../../images/security-select-fda.png
+    :::{image} /solutions/images/security-select-fda.png
     :alt: Select Full Disk Access
     :screenshot:
     :::
@@ -86,7 +86,7 @@ The following instructions apply only to {{elastic-endpoint}} running version 8.
 5. In the lower-left corner of the pane, click the **Lock button**, then enter your credentials to authenticate.
 6. In the **Privacy** tab,  confirm that `ElasticEndpoint` AND `co.elastic.systemextension` are selected to properly enable Full Disk Access.
 
-    :::{image} ../../../images/security-select-endpoint-ext.png
+    :::{image} /solutions/images/security-select-endpoint-ext.png
     :alt: role+"screenshot"
     :::
 
@@ -99,7 +99,7 @@ In {{stack}}, if the endpoint is running {{elastic-endpoint}} version 7.17.0 or 
 4. Click **Open**.
 5. In the **Privacy** tab, confirm that `elastic-endpoint` AND `co.elastic.systemextension` are selected to properly enable Full Disk Access.
 
-:::{image} ../../../images/security-fda-7-16.png
+:::{image} /solutions/images/security-fda-7-16.png
 :alt: fda 7 16
 :::
 

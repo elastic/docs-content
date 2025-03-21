@@ -24,6 +24,10 @@ redirects:
   'deploy-manage/deploy/self-managed/deploy-cluster.md': '!deploy-manage/deploy/self-managed/installing-elasticsearch.md'
   'deploy-manage/deploy/self-managed/configure.md': '!deploy-manage/deploy/self-managed/configure-kibana.md'
   'deploy-manage/security/manage-traffic-filtering-through-api.md': '!deploy-manage/security/ec-traffic-filtering-through-the-api.md'
+  'deploy-manage/monitor/stack-monitoring/elastic-cloud-stack-monitoring.md': '!deploy-manage/monitor/stack-monitoring/ece-ech-stack-monitoring.md'
+  'deploy-manage/monitor/stack-monitoring/ece-stack-monitoring.md': '!deploy-manage/monitor/stack-monitoring/ece-ech-stack-monitoring.md'
+  'deploy-manage/deploy/kibana-reporting-configuration.md': '!deploy-manage/kibana-reporting-configuration.md'
+  'deploy-manage/monitor/logging-configuration/kibana-logging-cli-configuration.md': '!deploy-manage/monitor/logging-configuration/kib-advanced-logging.md'
 
   ## audit logging movement to security section
   'deploy-manage/monitor/logging-configuration/configuring-audit-logs.md': 'deploy-manage/security/logging-configuration/configuring-audit-logs.md'
@@ -58,6 +62,7 @@ redirects:
   'reference/security/elastic-defend/offline-endpoint.md': 'solutions/security/configure-elastic-defend/configure-offline-endpoints-air-gapped-environments.md'
   'reference/security/elastic-defend/uninstall-agent.md': 'solutions/security/configure-elastic-defend/uninstall-elastic-agent.md'
   'reference/security/fields-and-object-schemas/runtime-fields.md': 'solutions/security/get-started/create-runtime-fields-in-elastic-security.md'
+  'reference/security/prebuilt-anomaly-detection-jobs.md': 'reference/data-analysis/machine-learning/ootb-ml-jobs-siem.md'
 
   # Related to https://github.com/elastic/docs-content/pull/792
   'reference/elasticsearch.md': 'reference/index.md'

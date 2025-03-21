@@ -6,4 +6,3 @@ toc:
       - file: fields-and-object-schemas/timeline-object-schema.md
       - file: fields-and-object-schemas/alert-schema.md
   - file: endpoint-command-reference.md
-  - file: prebuilt-anomaly-detection-jobs.md

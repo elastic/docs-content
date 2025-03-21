@@ -89,7 +89,7 @@ Add the custom ingest pipeline to any other data streams you wish to update.
 
 Allow time for new data to be ingested before testing your pipeline. In a new window, open {{kib}} and navigate to **{{kib}} Dev tools**.
 
-Use an [exists query](elasticsearch://reference/query-languages/query-dsl-exists-query.md) to ensure that the new field, "test" is being applied to documents.
+Use an [exists query](elasticsearch://reference/query-languages/query-dsl/query-dsl-exists-query.md) to ensure that the new field, "test" is being applied to documents.
 
 ```console
 GET metrics-system.cpu-default/_search <1>
@@ -188,7 +188,7 @@ Let’s create a new custom ingest pipeline `logs@custom` that processes all log
     }
     ```
 
-3. Allow some time for new data to be ingested, and then use a new [exists query](elasticsearch://reference/query-languages/query-dsl-exists-query.md) to confirm that the new field "my-logs-field" is being applied to log event documents.
+3. Allow some time for new data to be ingested, and then use a new [exists query](elasticsearch://reference/query-languages/query-dsl/query-dsl-exists-query.md) to confirm that the new field "my-logs-field" is being applied to log event documents.
 
     For this example, we’ll check the System integration `system.syslog` dataset:
 

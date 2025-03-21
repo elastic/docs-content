@@ -18,37 +18,37 @@ The {{security-app}} is a highly interactive workspace designed for security ana
 
 Filter for alerts, events, processes, and other important security data by entering [{{kib}} Query Language (KQL)](/explore-analyze/query-filter/languages/kql.md) queries in the search bar, which appears at the top of each page throughout the app. A date/time filter set to `Today` is enabled by default, but can be changed to any time range.
 
-:::{image} ../../../images/security-search-bar.png
+:::{image} /solutions/images/security-search-bar.png
 :alt: search bar
 :screenshot:
 :::
 
-* To refine your search results, select **Add Filter** (![Add filter icon](../../../images/security-add-filter-icon.png "title =20x20")), then enter the field, operator (such as `is not` or `is between`), and value for your filter.
-* To save the current KQL query and any applied filters, select **Saved query menu** (![Saved query menu icon](../../../images/security-saved-query-menu-icon.png "title =20x20")), enter a name for the saved query, and select **Save saved query**.
+* To refine your search results, select **Add Filter** (![Add filter icon](/solutions/images/security-add-filter-icon.png "title =20x20")), then enter the field, operator (such as `is not` or `is between`), and value for your filter.
+* To save the current KQL query and any applied filters, select **Saved query menu** (![Saved query menu icon](/solutions/images/security-saved-query-menu-icon.png "title =20x20")), enter a name for the saved query, and select **Save saved query**.
 
 
 ## Navigation menu [navigation-menu-overview]
 
-The navigation menu contains direct links and expandable groups, identified by the group icon (![Group icon](../../../images/security-group-icon.png "title =20x20")).
+The navigation menu contains direct links and expandable groups, identified by the group icon (![Group icon](/solutions/images/security-group-icon.png "title =20x20")).
 
 * Click a top-level link to go directly to its landing page, which contains links and information for related pages.
-* Click a group’s icon (![Group icon](../../../images/security-group-icon.png "title =20x20")) to open its flyout menu, which displays links to related pages within that group. Click a link in the flyout to navigate to its landing page.
-* Click the **Collapse side navigation** icon (![Side menu collapse icon](../../../images/security-side-button.png "title =20x20")) to collapse and expand the main navigation menu.
+* Click a group’s icon (![Group icon](/solutions/images/security-group-icon.png "title =20x20")) to open its flyout menu, which displays links to related pages within that group. Click a link in the flyout to navigate to its landing page.
+* Click the **Collapse side navigation** icon (![Side menu collapse icon](/solutions/images/security-side-button.png "title =20x20")) to collapse and expand the main navigation menu.
 
 
 ## Visualization actions [visualization-actions]
 
-Many {{elastic-sec}} histograms, graphs, and tables display an **Inspect** button (![Inspect icon](../../../images/security-inspect-icon.png "title =20x20")) when you hover over them. Click to examine the {{es}} queries used to retrieve data throughout the app.
+Many {{elastic-sec}} histograms, graphs, and tables display an **Inspect** button (![Inspect icon](/solutions/images/security-inspect-icon.png "title =20x20")) when you hover over them. Click to examine the {{es}} queries used to retrieve data throughout the app.
 
-:::{image} ../../../images/security-inspect-icon-context.png
+:::{image} /solutions/images/security-inspect-icon-context.png
 :alt: Inspect icon
 :width: 400px
 :screenshot:
 :::
 
-Other visualizations display an options menu (![Three-dot menu icon](../../../images/security-three-dot-icon.png "title =20x20")), which allows you to inspect the visualization’s queries, add it to a new or existing case, or open it in Lens for customization.
+Other visualizations display an options menu (![Three-dot menu icon](/solutions/images/security-three-dot-icon.png "title =20x20")), which allows you to inspect the visualization’s queries, add it to a new or existing case, or open it in Lens for customization.
 
-:::{image} ../../../images/security-viz-options-menu-open.png
+:::{image} /solutions/images/security-viz-options-menu-open.png
 :alt: Options menu opened
 :width: 500px
 :screenshot:
@@ -59,15 +59,15 @@ Other visualizations display an options menu (![Three-dot menu icon](../../../im
 
 Throughout the {{security-app}}, you can hover over many data fields and values to display inline actions, which allow you to customize your view or investigate further based on that field or value.
 
-:::{image} ../../../images/security-inline-actions-menu.png
+:::{image} /solutions/images/security-inline-actions-menu.png
 :alt: Inline additional actions menu
 :width: 500px
 :screenshot:
 :::
 
-In some visualizations, these actions are available in the legend by clicking a value’s options icon (![Vertical three-dot icon](../../../images/security-three-dot-icon-vertical.png "title =20x20")).
+In some visualizations, these actions are available in the legend by clicking a value’s options icon (![Vertical three-dot icon](/solutions/images/security-three-dot-icon-vertical.png "title =20x20")).
 
-:::{image} ../../../images/security-inline-actions-legend.png
+:::{image} /solutions/images/security-inline-actions-legend.png
 :alt: Actions in a visualization legend
 :width: 650px
 :screenshot:
@@ -227,7 +227,7 @@ Use your keyboard to interact with draggable elements in the Elastic Security UI
 
 * Press the `Tab` key to apply keyboard focus to an element within a table. Or, use your mouse to click on an element and apply keyboard focus to it.
 
-:::{image} ../../../images/security-timeline-accessiblity-keyboard-focus.gif
+:::{image} /solutions/images/security-timeline-accessiblity-keyboard-focus.gif
 :alt: timeline accessiblity keyboard focus
 :width: 650px
 :screenshot:
@@ -235,7 +235,7 @@ Use your keyboard to interact with draggable elements in the Elastic Security UI
 
 * Press `Enter` on an element with keyboard focus to display its menu and press `Tab` to apply focus sequentially to menu options. The `f`, `o`, `a`, `t`, `c` hotkeys are automatically enabled during this process and offer an alternative way to interact with menu options.
 
-:::{image} ../../../images/security-timeline-accessiblity-keyboard-focus-hotkeys.gif
+:::{image} /solutions/images/security-timeline-accessiblity-keyboard-focus-hotkeys.gif
 :alt: timeline accessiblity keyboard focus hotkeys
 :width: 500px
 :screenshot:
@@ -243,14 +243,14 @@ Use your keyboard to interact with draggable elements in the Elastic Security UI
 
 * Press the spacebar once to begin dragging an element to a different location and press it a second time to drop it. Use the directional arrows to move the element around the UI.
 
-:::{image} ../../../images/security-timeline-ui-accessiblity-drag-n-drop.gif
+:::{image} /solutions/images/security-timeline-ui-accessiblity-drag-n-drop.gif
 :alt: timeline ui accessiblity drag n drop
 :screenshot:
 :::
 
 * If an event has an event renderer, press the `Shift` key and the down directional arrow to apply keyboard focus to the event renderer and `Tab` or `Shift` + `Tab` to navigate between fields. To return to the cells in the current row, press the up directional arrow. To move to the next row, press the down directional arrow.
 
-:::{image} ../../../images/security-timeline-accessiblity-event-renderers.gif
+:::{image} /solutions/images/security-timeline-accessiblity-event-renderers.gif
 :alt: timeline accessiblity event renderers
 :screenshot:
 :::
@@ -262,7 +262,7 @@ Use your keyboard to navigate through rows, columns, and menu options in the Ela
 
 * Use the directional arrows to move keyboard focus right, left, up, and down in a table.
 
-:::{image} ../../../images/security-timeline-accessiblity-directional-arrows.gif
+:::{image} /solutions/images/security-timeline-accessiblity-directional-arrows.gif
 :alt: timeline accessiblity directional arrows
 :width: 500px
 :screenshot:
@@ -270,7 +270,7 @@ Use your keyboard to navigate through rows, columns, and menu options in the Ela
 
 * Press the `Tab` key to navigate through a table cell with multiple elements, such as buttons, field names, and menus. Pressing the `Tab` key will sequentially apply keyboard focus to each element in the table cell.
 
-:::{image} ../../../images/security-timeline-accessiblity-tab-keys.gif
+:::{image} /solutions/images/security-timeline-accessiblity-tab-keys.gif
 :alt: timeline accessiblity tab keys
 :width: 400px
 :screenshot:
@@ -278,14 +278,14 @@ Use your keyboard to navigate through rows, columns, and menu options in the Ela
 
 * Use `CTRL + Home` to shift keyboard focus to the first cell in a row. Likewise, use `CTRL + End` to move keyboard focus to the last cell in the row.
 
-:::{image} ../../../images/security-timeline-accessiblity-shifting-keyboard-focus.gif
+:::{image} /solutions/images/security-timeline-accessiblity-shifting-keyboard-focus.gif
 :alt: timeline accessiblity shifting keyboard focus
 :screenshot:
 :::
 
 * Use the `Page Up` and `Page Down` keys to scroll through the page.
 
-:::{image} ../../../images/security-timeline-accessiblity-page-up-n-down.gif
+:::{image} /solutions/images/security-timeline-accessiblity-page-up-n-down.gif
 :alt: timeline accessiblity page up n down
 :screenshot:
 :::

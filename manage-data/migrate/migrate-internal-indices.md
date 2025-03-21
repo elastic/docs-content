@@ -51,28 +51,12 @@ To restore internal indices from a snapshot, the procedure is a bit different fr
 
 3. To restore internal {{es}} indices, you need to register the snapshot repository in `read-only` mode. 
 
-    ::::{tab-set}
-    
-    :::{tab-item} {{ech}}
     First, add the authentication information for the repository to the {{ech}} keystore, following the steps for your cloud provider:
     * [AWS S3](../../deploy-manage/tools/snapshot-and-restore/ec-aws-custom-repository.md#ec-snapshot-secrets-keystore)
     * [Google Cloud Storage](../../deploy-manage/tools/snapshot-and-restore/ec-gcs-snapshotting.md#ec-configure-gcs-keystore)
     * [Azure Blog storage](../../deploy-manage/tools/snapshot-and-restore/ec-azure-snapshotting.md#ec-configure-azure-keystore)
 
     Next, register a read-only repository. Open an {{es}} [API console](../../explore-analyze/query-filter/tools/console.md) and run the [Read-only URL repository](../../deploy-manage/tools/snapshot-and-restore/read-only-url-repository.md) API call.
-    :::
-    
-    :::{tab-item} Elasticsearch Add-On for Heroku
-    First, add the authentication information for the repository to the Elasticsearch Add-On for Heroku keystore, following the steps for your cloud provider:
-    * [AWS S3](../../deploy-manage/tools/snapshot-and-restore/ec-aws-custom-repository.md)
-    * [Google Cloud Storage](../../deploy-manage/tools/snapshot-and-restore/ec-gcs-snapshotting.md)
-    * [Azure Blog storage](../../deploy-manage/tools/snapshot-and-restore/ec-azure-snapshotting.md)
-
-    Next, register a read-only repository. Open an {{es}} [API console](../../explore-analyze/query-filter/tools/console.md) and run the [Read-only URL repository](../../deploy-manage/tools/snapshot-and-restore/read-only-url-repository.md) API call.
-
-    :::
-
-    ::::
 
 4. Once the repository has been registered and verified, you are ready to restore the internal indices to your new cluster, either all at once or individually.
 

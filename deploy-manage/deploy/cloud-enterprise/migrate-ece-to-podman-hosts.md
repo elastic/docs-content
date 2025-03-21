@@ -21,7 +21,7 @@ Using Docker or Podman as container runtime is a configuration local to the host
 ::::
 
 
-:::{image} ../../../images/cloud-enterprise-podman-migration-overview-1.png
+:::{image} /deploy-manage/images/cloud-enterprise-podman-migration-overview-1.png
 :alt: Migration Overview
 :::
 
@@ -42,13 +42,13 @@ Using Docker or Podman as container runtime is a configuration local to the host
 
     **Example 1** You want to migrate the Docker host `192.168.44.74` with the role `Allocator` to a podman host. Copy the role `allocator`.
 
-    :::{image} ../../../images/cloud-enterprise-podman-migration-fetch-roles-1.png
+    :::{image} /deploy-manage/images/cloud-enterprise-podman-migration-fetch-roles-1.png
     :alt: Migrate Allocator
     :::
 
     **Example 2** You want to migrate the Docker host `192.168.44.10` with the roles `Allocator`, `Controller`, `Director`, and `Proxy` to a podman host. Copy the roles `allocator`, `coordinator`, `director`, `proxy`.
 
-    :::{image} ../../../images/cloud-enterprise-podman-migration-fetch-roles-2.png
+    :::{image} /deploy-manage/images/cloud-enterprise-podman-migration-fetch-roles-2.png
     :alt: Migrate Allocator
     :::
 
@@ -423,13 +423,13 @@ Using Docker or Podman as container runtime is a configuration local to the host
 
         The following screenshot shows the state where the correct roles have been applied. Both hosts in ece-zone-1 have the same color.
 
-        :::{image} ../../../images/cloud-enterprise-podman-migration-correct-role-1.png
+        :::{image} /deploy-manage/images/cloud-enterprise-podman-migration-correct-role-1.png
         :alt: Correct role
         :::
 
         The following screenshot shows the state where incorrect roles have been applied. The hosts in ece-zone-1 do not have the same coloring.
 
-        :::{image} ../../../images/cloud-enterprise-podman-migration-wrong-role-1.png
+        :::{image} /deploy-manage/images/cloud-enterprise-podman-migration-wrong-role-1.png
         :alt: Wrong role
         :::
 
@@ -449,7 +449,7 @@ Using Docker or Podman as container runtime is a configuration local to the host
         ::::
 
 
-        :::{image} ../../../images/cloud-enterprise-podman-migration-move-instances-1.png
+        :::{image} /deploy-manage/images/cloud-enterprise-podman-migration-move-instances-1.png
         :alt: Move instances
         :::
 

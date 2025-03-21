@@ -33,7 +33,7 @@ processors:
 
 Adding the `add_fields` processor to an integration’s settings would add `your_service_name` as the `service.name` field:
 
-:::{image} ../../../images/serverless-add-field-processor.png
+:::{image} /solutions/images/serverless-add-field-processor.png
 :alt: Add the add_fields processor to an integration
 :screenshot:
 :::

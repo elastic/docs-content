@@ -39,9 +39,8 @@ Not suitable usage of egress static IPs to introduce network controls:
 ## Supported Regions [ec-regions] 
 
 ::::{dropdown} AWS
-|     |     |     |
+| Region | Ingress Static IPs | Egress Static IPs |
 | --- | --- | --- |
-| **Region** | **Ingress Static IPs** | **Egress Static IPs** |
 | aws-af-south-1 | No | Yes |
 | aws-ap-east-1 | No | Yes |
 | aws-ap-northeast-1 | No | Yes |
@@ -67,9 +66,8 @@ Not suitable usage of egress static IPs to introduce network controls:
 
 
 ::::{dropdown} Azure
-|     |     |     |
+| Region | Ingress Static IPs | Egress Static IPs |
 | --- | --- | --- |
-| **Region** | **Ingress Static IPs** | **Egress Static IPs** |
 | azure-australiaeast | Yes | Yes |
 | azure-brazilsouth | Yes | Yes |
 | azure-canadacentral | Yes | Yes |
@@ -91,9 +89,8 @@ Not suitable usage of egress static IPs to introduce network controls:
 
 
 ::::{dropdown} GCP
-|     |     |     |
+| Region | Ingress Static IPs | Egress Static IPs |
 | --- | --- | --- |
-| **Region** | **Ingress Static IPs** | **Egress Static IPs** |
 | gcp-asia-east1 | Yes | No |
 | gcp-asia-northeast1 | Yes | No |
 | gcp-asia-northeast3 | Yes | No |

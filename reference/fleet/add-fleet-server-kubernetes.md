@@ -113,9 +113,8 @@ In summary, you need:
 
 When {{es}} or {{fleet-server}} are deployed, components communicate over well-defined, pre-allocated ports. You may need to allow access to these ports. Refer to the following table for default port assignments:
 
-|     |     |
-| --- | --- |
 | Component communication | Default port |
+| --- | --- |
 | {{agent}} → {{fleet-server}} | 8220 |
 | {{fleet-server}} → {{es}} | 9200 |
 | {{fleet-server}} → {{kib}} (optional, for {{fleet}} setup) | 5601 |

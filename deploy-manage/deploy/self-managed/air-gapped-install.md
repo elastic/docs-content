@@ -19,7 +19,7 @@ Air-gapped install of {{es}} may require additional steps in order to access som
 
 Specifically:
 
-* To be able to use the GeoIP processor, refer to [the GeoIP processor documentation](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/enrich-processor/geoip-processor.md#manually-update-geoip-databases) for instructions on downloading and deploying the required databases.
+* To be able to use the GeoIP processor, refer to [the GeoIP processor documentation](elasticsearch://reference/ingestion-tools/enrich-processor/geoip-processor.md#manually-update-geoip-databases) for instructions on downloading and deploying the required databases.
 * Refer to [{{ml-cap}}](/deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-machine-learning) for instructions on deploying the Elastic Learned Sparse EncodeR (ELSER) natural language processing (NLP) model and other trained {{ml}} models.
 
 
@@ -38,12 +38,12 @@ Specifically:
 
 ## {{beats}} [air-gapped-beats]
 
-Elastic {{beats}} are light-weight data shippers. They do not require any special configuration in air-gapped environments. To learn more, refer to the [{{beats}} documentation](asciidocalypse://docs/beats/docs/reference/index.md).
+Elastic {{beats}} are light-weight data shippers. They do not require any special configuration in air-gapped environments. To learn more, refer to the [{{beats}} documentation](beats://reference/index.md).
 
 
 ## {{ls}} [air-gapped-logstash]
 
-{{ls}} is a versatile data shipping and processing application. It does not require any special configuration in air-gapped environments. To learn more, refer to the [{{ls}} documentation](asciidocalypse://docs/logstash/docs/reference/index.md).
+{{ls}} is a versatile data shipping and processing application. It does not require any special configuration in air-gapped environments. To learn more, refer to the [{{ls}} documentation](logstash://reference/index.md).
 
 
 ## {{agent}} [air-gapped-elastic-agent]
@@ -290,9 +290,9 @@ Air-gapped setup of this component is, essentially, identical to the setup of th
 Some {{ml}} features, like natural language processing (NLP), require you to deploy trained models. To learn about deploying {{ml}} models in an air-gapped environment, refer to:
 
 * [Deploy ELSER in an air-gapped environment](../../../explore-analyze/machine-learning/nlp/ml-nlp-elser.md#air-gapped-install).
-* [Install trained models in an air-gapped environment with Eland](asciidocalypse://docs/eland/docs/reference/machine-learning.md#ml-nlp-pytorch-air-gapped).
+* [Install trained models in an air-gapped environment with Eland](eland://reference/machine-learning.md#ml-nlp-pytorch-air-gapped).
 
 
 ## {{kib}} Product documentation for AI Assistants [air-gapped-kibana-product-documentation]
 
-Detailed install and configuration instructions are available in the [{{kib}} AI Assistants settings documentation](asciidocalypse://docs/kibana/docs/reference/configuration-reference/ai-assistant-settings.md).
+Detailed install and configuration instructions are available in the [{{kib}} AI Assistants settings documentation](kibana://reference/configuration-reference/ai-assistant-settings.md).

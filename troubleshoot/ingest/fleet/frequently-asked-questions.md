@@ -95,7 +95,7 @@ If {{elastic-agent}} is set up and running, but you don’t see data in {{kib}}:
 
 If you don’t see data for your host, it’s possible that the data is blocked in the network, or that a firewall or security problem is preventing the {{agent}} from sending the data.
 
-Although it’s redundant to install stand-alone {{metricbeat}}, you might want to try installing it to see if it’s able to send data successfully to {{es}}. For more information, see [{{metricbeat}} quick start](asciidocalypse://docs/beats/docs/reference/metricbeat/metricbeat-installation-configuration.md).
+Although it’s redundant to install stand-alone {{metricbeat}}, you might want to try installing it to see if it’s able to send data successfully to {{es}}. For more information, see [{{metricbeat}} quick start](beats://reference/metricbeat/metricbeat-installation-configuration.md).
 
 If {{metricbeat}} is able to send data to {{es}}, there is possibly a bug or problem with {{agent}}, and you should report it.
 

@@ -2,6 +2,8 @@
 navigation_title: "Kinesis data streams"
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/monitor-amazon-kinesis.html
+applies_to:
+  stack:
 ---
 
 
@@ -67,7 +69,7 @@ For more information {{agent}} and integrations, refer to the [{{fleet}} and {{a
 
 {{kib}} provides a full data analytics platform with out-of-the-box dashboards that you can clone and enhance to satisfy your custom visualization use cases. For example, to see an overview of your Kinesis data streams in {{kib}}, go to the **Dashboard** app and navigate to the **[Metrics AWS] Kinesis Overview** dashboard.
 
-:::{image} ../../../images/observability-kinesis-dashboard.png
+:::{image} /solutions/images/observability-kinesis-dashboard.png
 :alt: Screenshot showing the Kinesis overview dashboard
 :screenshot:
 :::

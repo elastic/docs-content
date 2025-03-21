@@ -2,6 +2,8 @@
 navigation_title: "Get started"
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/profiling-get-started.html
+applies_to:
+  stack:
 ---
 
 
@@ -49,9 +51,8 @@ The minimum supported versions of each interpreter are:
 
 The following deployment configuration example was tested to support profiling data from a fleet of up to 500 hosts, each with 8 or 16 CPU cores, for a total of roughly 6000 cores:
 
-|     |     |     |
-| --- | --- | --- |
 | Component | Size per zone (memory) | Zones |
+| --- | --- | --- |
 | {{es}} | 64 GB | 2 |
 | Kibana | 8 GB | 1 |
 | Integrations Server | 8 GB | 1 |
@@ -68,7 +69,7 @@ To set up Universal Profiling on your {{ecloud}} deployment, you need to [config
 
 After enabling Universal Profiling on your deployment for the first time, select any subheading under **Universal Profiling** in the navigation menu to open the following page:
 
-:::{image} ../../../images/observability-profiling-setup-popup.png
+:::{image} /solutions/images/observability-profiling-setup-popup.png
 :alt: profiling setup popup
 :screenshot:
 :::
@@ -118,7 +119,7 @@ To install the Universal Profiling Agent using the {{agent}} and the Universal P
 
 1. Copy the `secret token` and `Universal Profiling Collector url` from the Elastic Agent Integration
 
-    :::{image} ../../../images/observability-profiling-elastic-agent.png
+    :::{image} /solutions/images/observability-profiling-elastic-agent.png
     :alt: profiling elastic agent
     :screenshot:
     :::
@@ -130,7 +131,7 @@ To install the Universal Profiling Agent using the {{agent}} and the Universal P
     1. Add the Universal Profiling collector URL to the **Universal Profiling collector endpoint** field.
     2. Add the secret token to the **Authorization** field.
 
-        :::{image} ../../../images/observability-profililing-elastic-agent-creds.png
+        :::{image} /solutions/images/observability-profililing-elastic-agent-creds.png
         :alt: profililing elastic agent creds
         :screenshot:
         :::
@@ -146,7 +147,7 @@ After clicking **Set up Universal Profiling** in the previous step, you’ll see
 
 The following is an example of the provided instructions for {{k8s}}:
 
-:::{image} ../../../images/observability-profiling-k8s-hostagent.png
+:::{image} /solutions/images/observability-profiling-k8s-hostagent.png
 :alt: profiling k8s hostagent
 :screenshot:
 :::

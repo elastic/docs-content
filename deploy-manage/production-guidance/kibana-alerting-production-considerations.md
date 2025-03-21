@@ -11,7 +11,7 @@ mapped_pages:
 
 Alerting runs both rule checks and actions as persistent background tasks managed by the Task Manager.
 
-When relying on rules and actions as mission critical services, make sure you follow the [production considerations](../distributed-architecture/kibana-tasks-management.md) for Task Manager.
+When relying on rules and actions as mission critical services, make sure you follow the [production considerations](kibana-task-manager-scaling-considerations.md) for Task Manager.
 
 
 ## Running background rule checks and actions [alerting-background-tasks]
@@ -27,7 +27,7 @@ For more details on Task Manager, see [Running background tasks](../distributed-
 ::::{important}
 Rule and action tasks can run late or at an inconsistent schedule. This is typically a symptom of the specific usage of the cluster in question.
 
-You can address such issues by tweaking the [Task Manager settings](kibana://reference/configuration-reference/task-manager-settings.md#task-manager-settings) or scaling the deployment to better suit your use case.
+You can address such issues by tweaking the [Task Manager settings](kibana://reference/configuration-reference/task-manager-settings.md) or scaling the deployment to better suit your use case.
 
 For detailed guidance, see [Alerting Troubleshooting](../../explore-analyze/alerts-cases/alerts/alerting-troubleshooting.md).
 
@@ -37,14 +37,14 @@ For detailed guidance, see [Alerting Troubleshooting](../../explore-analyze/aler
 
 ## Scaling guidance [alerting-scaling-guidance]
 
-As rules and actions leverage background tasks to perform the majority of work, scaling Alerting is possible by following the [Task Manager Scaling Guidance](../distributed-architecture/kibana-tasks-management.md#task-manager-scaling-guidance).
+As rules and actions leverage background tasks to perform the majority of work, scaling Alerting is possible by following the [Task Manager Scaling Guidance](kibana-task-manager-scaling-considerations.md#task-manager-scaling-guidance).
 
 When estimating the required task throughput, keep the following in mind:
 
 * Each rule uses a single recurring task that is scheduled to run at the cadence defined by its check interval.
 * Each action uses a single task. However, because actions are taken per instance, alerts can generate a large number of non-recurring tasks.
 
-It is difficult to predict how much throughput is needed to ensure all rules and actions are executed at consistent schedules. By counting rules as recurring tasks and actions as non-recurring tasks, a rough throughput [can be estimated](../distributed-architecture/kibana-tasks-management.md#task-manager-rough-throughput-estimation) as a *tasks per minute* measurement.
+It is difficult to predict how much throughput is needed to ensure all rules and actions are executed at consistent schedules. By counting rules as recurring tasks and actions as non-recurring tasks, a rough throughput [can be estimated](kibana-task-manager-scaling-considerations.md#task-manager-rough-throughput-estimation) as a *tasks per minute* measurement.
 
 Predicting the buffer required to account for actions depends heavily on the rule types you use, the amount of alerts they might detect, and the number of actions you might choose to assign to action groups. With that in mind, regularly [monitor the health](../monitor/kibana-task-manager-health-monitoring.md) of your Task Manager instances.
 

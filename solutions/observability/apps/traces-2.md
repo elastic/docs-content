@@ -17,7 +17,7 @@ By default, transactions are sorted by *Impact*. Impact helps show the most used
 
 You can also use queries to filter and search the transactions shown on this page. Note that only properties available on root transactions are searchable. For example, you can’t search for `label.tier: 'high'`, as that field is only available on non-root transactions.
 
-:::{image} ../../../images/observability-apm-traces.png
+:::{image} /solutions/images/observability-apm-traces.png
 :alt: Example view of the Traces overview in Applications UI in Kibana
 :screenshot:
 :::
@@ -34,7 +34,7 @@ This functionality is in technical preview and may be changed or removed in a fu
 
 Curate your own custom queries, or use the [**Service Map**](../../../solutions/observability/apps/service-map.md) to find and select edges to automatically generate queries based on your selection:
 
-:::{image} ../../../images/observability-trace-explorer.png
+:::{image} /solutions/images/observability-trace-explorer.png
 :alt: Trace explorer
 :screenshot:
 :::

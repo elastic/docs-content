@@ -2,6 +2,8 @@
 navigation_title: "S3"
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/monitor-amazon-s3.html
+applies_to:
+  stack:
 ---
 
 
@@ -66,7 +68,7 @@ For more information {{agent}} and integrations, refer to the [{{fleet}} and {{a
 
 {{kib}} provides a full data analytics platform with out-of-the-box dashboards that you can clone and enhance to satisfy your custom visualization use cases. For example, to see an overview of your S3 metrics in {{kib}}, go to the **Dashboard** app and navigate to the **[Metrics AWS] S3 Overview** dashboard.
 
-:::{image} ../../../images/observability-s3-dashboard.png
+:::{image} /solutions/images/observability-s3-dashboard.png
 :alt: Screenshot showing the S3 dashboard
 :screenshot:
 :::

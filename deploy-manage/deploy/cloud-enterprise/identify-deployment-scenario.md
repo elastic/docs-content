@@ -18,7 +18,7 @@ The type of deployment is recommended for development, test, and small-scale use
 * 3 hosts with 128 GB RAM
 * 3 availability zones
 
-:::{image} ../../../images/cloud-enterprise-ece-pb-3.png
+:::{image} /deploy-manage/images/cloud-enterprise-ece-pb-3.png
 :alt: A small baseline installation with three hosts across three availability zones
 :::
 
@@ -42,7 +42,7 @@ This type of deployment is recommended for many production setups. You need:
 * 3 hosts with 16 GB RAM each for proxies
 * 3 availability zones
 
-:::{image} ../../../images/cloud-enterprise-ece-pb-6.png
+:::{image} /deploy-manage/images/cloud-enterprise-ece-pb-6.png
 :alt: A medium installation with nine to twelve hosts across three availability zones
 :::
 
@@ -65,7 +65,7 @@ This type of deployment is recommended for deployments with significant overall 
 * 3 hosts with 16 GB RAM each for proxies
 * 3 availability zones
 
-:::{image} ../../../images/cloud-enterprise-ece-pb-9.png
+:::{image} /deploy-manage/images/cloud-enterprise-ece-pb-9.png
 :alt: A large installation with nine to twelve hosts across three availability zones
 :::
 

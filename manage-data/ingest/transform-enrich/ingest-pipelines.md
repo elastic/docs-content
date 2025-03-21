@@ -12,7 +12,7 @@ applies_to:
 
 A pipeline consists of a series of configurable tasks called [processors](elasticsearch://reference/ingestion-tools/enrich-processor/index.md). Each processor runs sequentially, making specific changes to incoming documents. After the processors have run, {{es}} adds the transformed documents to your data stream or index.
 
-:::{image} ../../../images/elasticsearch-reference-ingest-process.svg
+:::{image} /manage-data/images/elasticsearch-reference-ingest-process.svg
 :alt: Ingest pipeline diagram
 :::
 
@@ -37,7 +37,7 @@ In {{kib}}, open the main menu and click **Stack Management > Ingest Pipelines**
 * Edit or clone existing pipelines
 * Delete pipelines
 
-:::{image} ../../../images/elasticsearch-reference-ingest-pipeline-list.png
+:::{image} /manage-data/images/elasticsearch-reference-ingest-pipeline-list.png
 :alt: Kibana's Ingest Pipelines list view
 :screenshot:
 :::
@@ -45,7 +45,7 @@ In {{kib}}, open the main menu and click **Stack Management > Ingest Pipelines**
 To create a pipeline, click **Create pipeline > New pipeline**. For an example tutorial, see [Example: Parse logs](example-parse-logs.md).
 
 ::::{tip}
-The **New pipeline from CSV** option lets you use a CSV to create an ingest pipeline that maps custom data to the [Elastic Common Schema (ECS)](https://www.elastic.co/guide/en/ecs/current). Mapping your custom data to ECS makes the data easier to search and lets you reuse visualizations from other datasets. To get started, check [Map custom data to ECS](asciidocalypse://docs/ecs/docs/reference/ecs-converting.md).
+The **New pipeline from CSV** option lets you use a CSV to create an ingest pipeline that maps custom data to the [Elastic Common Schema (ECS)](https://www.elastic.co/guide/en/ecs/current). Mapping your custom data to ECS makes the data easier to search and lets you reuse visualizations from other datasets. To get started, check [Map custom data to ECS](ecs://reference/ecs-converting.md).
 ::::
 
 
@@ -99,7 +99,7 @@ To unset the `version` number using the API, replace or update the pipeline with
 
 Before using a pipeline in production, we recommend you test it using sample documents. When creating or editing a pipeline in {{kib}}, click **Add documents**. In the **Documents** tab, provide sample documents and click **Run the pipeline**.
 
-:::{image} ../../../images/elasticsearch-reference-test-a-pipeline.png
+:::{image} /manage-data/images/elasticsearch-reference-test-a-pipeline.png
 :alt: Test a pipeline in Kibana
 :screenshot:
 :::
@@ -303,7 +303,7 @@ $$$pipeline-custom-logs-index-template$$$
 
     For example, if your dataset’s name was `my_app`, {{fleet}} adds new data to the `logs-my_app-default` data stream.
 
-    :::{image} ../../../images/elasticsearch-reference-custom-logs.png
+    :::{image} /manage-data/images/elasticsearch-reference-custom-logs.png
     :alt: Set up custom log integration in Fleet
     :screenshot:
     :::
@@ -337,7 +337,7 @@ $$$pipeline-custom-logs-configuration$$$
 
 4. In **Custom Configurations**, specify your pipeline in the `pipeline` policy setting.
 
-    :::{image} ../../../images/elasticsearch-reference-custom-logs-pipeline.png
+    :::{image} /manage-data/images/elasticsearch-reference-custom-logs-pipeline.png
     :alt: Custom pipeline configuration for custom log integration
     :screenshot:
     :::

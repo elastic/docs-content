@@ -22,10 +22,10 @@ toc:
       - file: machine-learning/ml-time-functions.md
   - file: observability/index.md
     children:
-      - file: observability/observability-host-metrics-serverless.md
-      - file: observability/observability-container-metrics-serverless.md
-      - file: observability/observability-kubernetes-pod-metrics-serverless.md
-      - file: observability/observability-aws-metrics-serverless.md
+      - file: observability/observability-host-metrics.md
+      - file: observability/observability-container-metrics.md
+      - file: observability/observability-kubernetes-pod-metrics.md
+      - file: observability/observability-aws-metrics.md
   - file: kibana/canvas-functions.md
     children:
       - file: kibana/tinymath-functions.md

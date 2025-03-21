@@ -2,6 +2,8 @@
 navigation_title: "Index lifecycle management"
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/profiling-index-lifecycle-management.html
+applies_to:
+  stack:
 ---
 
 
@@ -82,7 +84,7 @@ To apply a custom {{ilm-init}} policy, you must name the component template `pro
 
     If it does, click **Create component template**.
 
-    :::{image} ../../../images/observability-profiling-create-component-template.png
+    :::{image} /solutions/images/observability-profiling-create-component-template.png
     :alt: Create component template
     :screenshot:
     :::
