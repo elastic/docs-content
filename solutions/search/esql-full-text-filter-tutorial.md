@@ -223,7 +223,7 @@ POST /_query?format=txt
         OR match(description, "vegetarian curry")
         OR match(tags, "vegetarian curry")
     | KEEP title, description, tags, _score  # Include relevance score in results
-    | SORT _score DESC  # Including `METADATA _score` doesn't automatically sort your results by relevance, you must explicitly sort when the order of results matters
+    | SORT _score DESC  # You must explicitly sort by `_score` to see relevance-based results
     | LIMIT 1000
   """
 }
@@ -232,11 +232,11 @@ POST /_query?format=txt
 In this example, we're using the `boost` parameter to make matches in the title field twice as important as matches in other fields. We also request the `_score` metadata field to sort results by relevance.
 
 :::{tip}
-When working with relevance scoring in {{esql}}, it's important to understand how `_score` works. If you don't include `METADATA _score` in your query, you're only performing filtering operations with no relevance calculation.
+When working with relevance scoring in ES|QL, it's important to understand how `_score` works. If you don't include `METADATA _score` in your query, you're only performing filtering operations with no relevance calculation.
 
-In current versions, when you include `METADATA _score`, both full-text search functions (like `match()` or the `:` operator) and filtering operations (like range conditions and exact matches) contribute to the relevance score. Full-text search functions provide variable scores based on relevance, while filtering operations add a constant score component.
+When you include `METADATA _score`, only search functions contribute to the relevance score. Filtering operations (like range conditions and exact matches) don't affect the score.
 
-This behavior will change in future versions, where only full-text search functions will affect scoring, and filtering operations won't contribute to the score at all.
+Remember that including `METADATA _score` doesn't automatically sort your results by relevance. You must explicitly use `SORT _score DESC` or `SORT _score ASC` to order your results by relevance.
 :::
 
 ## Step 5: Filter and find exact matches
