@@ -291,13 +291,13 @@ For more complex relevance scoring with combined criteria, you can use the `EVAL
 
 ```esql
 FROM cooking_blog METADATA _score
+| WHERE NOT category.keyword == "Dessert"
 | EVAL tags_concat = MV_CONCAT(tags.keyword, ",")  # Convert multi-value field to string
 | WHERE tags_concat LIKE "*vegetarian*" AND rating >= 4.5  # Wildcard pattern matching
 | WHERE match(title, "curry spicy", {"boost": 2.0}) OR match(description, "curry spicy") # Uses full text functions, will update _score metadata field
 | EVAL category_boost = CASE(category.keyword == "Main Course", 1.0, 0.0)  # Conditional boost
 | EVAL date_boost = CASE(DATE_DIFF("month", date, NOW()) <= 1, 0.5, 0.0)  # Boost recent content
 | EVAL custom_score = _score + category_boost + date_boost  # Combine scores
-| WHERE NOT category.keyword == "Dessert"
 | WHERE custom_score > 0  # Filter based on custom score
 | SORT custom_score DESC
 | LIMIT 1000
