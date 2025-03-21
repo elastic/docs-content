@@ -117,6 +117,10 @@ Change the settings for the Options list and Range slider controls.
 2. On the **Edit control** flyout, change the options, then click **Save and close**.
 
 ## Add controls from your ES|QL visualization's query [add-esql-control]
+```{applies_to}
+stack: preview
+serverless: preview
+```
 
 You can bind controls to your ES|QL visualizations in dashboards. When creating an ES|QL visualization, the autocomplete suggestions 
 prompts control insertion for field values, field names, function configuration, and function names. This enables controls that only 
