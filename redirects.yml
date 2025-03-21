@@ -80,3 +80,5 @@ redirects:
   'reference/ingestion-tools/fleet/install-fleet-managed-elastic-agent.md': 'reference/fleet/install-fleet-managed-elastic-agent.md'
   'reference/ingestion-tools/fleet/install-standalone-elastic-agent.md': 'reference/fleet/install-standalone-elastic-agent.md'
   'reference/ingestion-tools/observability/apm.md': 'reference/apm/observability/apm.md'
+  'reference/ingestion-tools/observability/apm-settings.md': 'reference/apm/observability/apm-settings.md'
+  'reference/ingestion-tools/fleet/migrate-from-beats-to-elastic-agent.md': 'reference/fleet/migrate-from-beats-to-elastic-agent.md'
