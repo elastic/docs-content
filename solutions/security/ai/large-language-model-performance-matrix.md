@@ -22,7 +22,7 @@ This page describes the performance of various large language models (LLMs) for 
 
 Models from third-party LLM providers.
 
-| **Feature** | --- | **Assistant - General** | **Assistant - {{esql}} generation** | **Assistant - Alert questions** | **Assistant - Knowledge retrieval** | **Attack Discovery** | **AI-powered SIEM migration** |
+| **Feature** | - | **Assistant - General** | **Assistant - {{esql}} generation** | **Assistant - Alert questions** | **Assistant - Knowledge retrieval** | **Attack Discovery** | **AI-powered SIEM migration** |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | **Model** | **Claude 3: Opus** | Excellent | Excellent | Excellent | Good | Great | Good
 |  | **Claude 3.7: Sonnet**      | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent
