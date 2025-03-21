@@ -38,7 +38,7 @@ This Hot/Frozen – High Availability architecture is intended for organizations
 
 ## Architecture [hot-frozen-architecture-diagram]
 
-:::{image} ../../images/reference-architectures-hot-frozen.png
+:::{image} /deploy-manage/images/reference-architectures-hot-frozen.png
 :alt: A Hot/Frozen Highly available architecture
 :::
 
@@ -64,11 +64,11 @@ This table shows our specific recommendations for nodes in a Hot/Frozen architec
 
 | Type | AWS | Azure | GCP | Physical |
 | --- | --- | --- | --- | --- |
-| ![Hot data node](../../images/reference-architectures-hot.png "") | c6gd | f32sv2 | N2 | 16-32 vCPU<br>64 GB RAM<br>2-6 TB NVMe SSD |
-| ![Frozen data node](../../images/reference-architectures-frozen.png "") | i3en | e8dsv4 | N2 | 8 vCPU<br>64 GB RAM<br>6-20+ TB NVMe SSD<br>Depending on days cached |
-| ![Machine learning node](../../images/reference-architectures-machine-learning.png "") | m6gd | f16sv2 | N2 | 16 vCPU<br>64 GB RAM<br>256 GB SSD |
-| ![Master node](../../images/reference-architectures-master.png "") | c5d | f16sv2 | N2 | 8 vCPU<br>16 GB RAM<br>256 GB SSD |
-| ![Kibana node](../../images/reference-architectures-kibana.png "") | c6gd | f16sv2 | N2 | 8-16 vCPU<br>8 GB RAM<br>256 GB SSD |
+| ![Hot data node](/deploy-manage/images/reference-architectures-hot.png "") | c6gd | f32sv2 | N2 | 16-32 vCPU<br>64 GB RAM<br>2-6 TB NVMe SSD |
+| ![Frozen data node](/deploy-manage/images/reference-architectures-frozen.png "") | i3en | e8dsv4 | N2 | 8 vCPU<br>64 GB RAM<br>6-20+ TB NVMe SSD<br>Depending on days cached |
+| ![Machine learning node](/deploy-manage/images/reference-architectures-machine-learning.png "") | m6gd | f16sv2 | N2 | 16 vCPU<br>64 GB RAM<br>256 GB SSD |
+| ![Master node](/deploy-manage/images/reference-architectures-master.png "") | c5d | f16sv2 | N2 | 8 vCPU<br>16 GB RAM<br>256 GB SSD |
+| ![Kibana node](/deploy-manage/images/reference-architectures-kibana.png "") | c6gd | f16sv2 | N2 | 8-16 vCPU<br>8 GB RAM<br>256 GB SSD |
 
 
 ## Important considerations [hot-frozen-considerations]

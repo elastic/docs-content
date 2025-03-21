@@ -309,7 +309,7 @@ If you need to adjust `search_fields` at query request time, you can add a new p
 
 **Use case: I want to boost results given a certain proximity to the user**
 
-You can add additional template parameters to send the geo-coordinates of the user. Then use [`function_score`](elasticsearch://reference/query-languages/query-dsl-function-score-query.md) to boost documents which match a certain [`geo_distance`](elasticsearch://reference/query-languages/query-dsl-geo-distance-query.md) from the user.
+You can add additional template parameters to send the geo-coordinates of the user. Then use [`function_score`](elasticsearch://reference/query-languages/query-dsl/query-dsl-function-score-query.md) to boost documents which match a certain [`geo_distance`](elasticsearch://reference/query-languages/query-dsl/query-dsl-geo-distance-query.md) from the user.
 
 
 ## Result fields [search-application-client-client-features-result-fields]

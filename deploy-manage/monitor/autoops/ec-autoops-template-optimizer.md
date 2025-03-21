@@ -10,7 +10,7 @@ applies_to:
 
 The **Template Optimizer View** offers detailed recommendations for optimizing templates.
 
-:::{image} /images/cloud-autoops-template-optimizer.png
+:::{image} /deploy-manage/images/cloud-autoops-template-optimizer.png
 :alt: The Template Optimizer view
 :::
 

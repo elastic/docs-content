@@ -12,7 +12,7 @@ applies_to:
 
 
 ::::{note}
-![supported deployment methods](../../../images/observability-binary-yes-fm-yes.svg "")
+![supported deployment methods](/solutions/images/observability-binary-yes-fm-yes.svg "")
 
 APM agent central configuration is supported by all APM Server deployment methods, but some options are only supported for APM Server binary users.
 

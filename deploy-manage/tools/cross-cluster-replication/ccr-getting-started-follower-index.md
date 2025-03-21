@@ -25,7 +25,7 @@ To create a follower index from Stack Management in {{kib}}:
 
 When you index documents into your leader index, {{es}} replicates the documents in the follower index.
 
-:::{image} ../../../images/elasticsearch-reference-ccr-follower-index.png
+:::{image} /deploy-manage/images/elasticsearch-reference-ccr-follower-index.png
 :alt: The Cross-Cluster Replication page in {{kib}}
 :screenshot:
 :::

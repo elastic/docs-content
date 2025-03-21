@@ -21,7 +21,7 @@ You can track and manage alerts for your applications and SLOs from the **Alerts
 You can centrally manage rules from the [{{kib}} Management UI](../../../explore-analyze/alerts-cases/alerts/create-manage-rules.md) that provides a set of built-in [rule types](../../../explore-analyze/alerts-cases/alerts/rule-types.md) and [connectors](../../../deploy-manage/manage-connectors.md) for you to use. Click **Manage Rules**.
 ::::
 
-:::{image} ../../../images/serverless-observability-alerts-view.png
+:::{image} /solutions/images/serverless-observability-alerts-view.png
 :alt: Alerts page
 :screenshot:
 :::
@@ -42,7 +42,7 @@ There are a few ways to inspect the details for a specific alert.
 
 From the **Alerts** table, you can click on a specific alert to open the alert detail flyout to view a summary of the alert without leaving the page. There you’ll see the current status of the alert, its duration, and when it was last updated. To help you determine what caused the alert, you can view the expected and actual threshold values, and the rule that produced the alert.
 
-:::{image} ../../../images/serverless-alert-details-flyout.png
+:::{image} /solutions/images/serverless-alert-details-flyout.png
 :alt: Alerts detail (APM anomaly)
 :screenshot:
 :::
@@ -59,7 +59,7 @@ There are three common alert statuses:
 :   The conditions for the rule are no longer met and recovery actions should be generated.
 
 `untracked`
-:   The corresponding rule is disabled or you’ve marked the alert as untracked. To mark the alert as untracked, go to the **Alerts** table, click the ![More actions](../../../images/serverless-boxesHorizontal.svg "") icon to expand the *More actions* menu, and click **Mark as untracked**. When an alert is marked as untracked, actions are no longer generated. You can choose to move active alerts to this state when you disable or delete rules.
+:   The corresponding rule is disabled or you’ve marked the alert as untracked. To mark the alert as untracked, go to the **Alerts** table, click the ![More actions](/solutions/images/serverless-boxesHorizontal.svg "") icon to expand the *More actions* menu, and click **Mark as untracked**. When an alert is marked as untracked, actions are no longer generated. You can choose to move active alerts to this state when you disable or delete rules.
 
 ::::{note}
 **Flapping alerts**
@@ -72,12 +72,12 @@ The flapping state is possible only if you have enabled alert flapping detection
 To further inspect the rule:
 
 * From the alert detail flyout, click **View rule details**.
-* From the **Alerts** table, click the ![More actions](../../../images/serverless-boxesHorizontal.svg "") icon and select **View rule details**.
+* From the **Alerts** table, click the ![More actions](/solutions/images/serverless-boxesHorizontal.svg "") icon and select **View rule details**.
 
 To view the alert in the app that triggered it:
 
 * From the alert detail flyout, click **View in app**.
-* From the **Alerts** table, click the ![View in app](../../../images/serverless-eye.svg "") icon.
+* From the **Alerts** table, click the ![View in app](/solutions/images/serverless-eye.svg "") icon.
 
 
 ## Customize the alerts table [observability-view-alerts-customize-the-alerts-table]
@@ -95,7 +95,7 @@ You can also use the toolbar buttons in the upper-right to customize the display
 
 ## Add alerts to cases [observability-view-alerts-add-alerts-to-cases]
 
-From the **Alerts** table, you can add one or more alerts to a case. Click the ![More actions](../../../images/serverless-boxesHorizontal.svg "") icon to add the alert to a new or existing case. You can add an unlimited amount of alerts from any rule type.
+From the **Alerts** table, you can add one or more alerts to a case. Click the ![More actions](/solutions/images/serverless-boxesHorizontal.svg "") icon to add the alert to a new or existing case. You can add an unlimited amount of alerts from any rule type.
 
 ::::{note}
 Each case can have a maximum of 1,000 alerts.

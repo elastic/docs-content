@@ -15,7 +15,7 @@ Several types of {{es}} API keys exist:
 
 To manage API keys in {{kib}}, go to the **API Keys** management page using the navigation menu or the [global search field](../../explore-analyze/find-and-organize/find-apps-and-objects.md).
 
-![API Keys UI](../../images/kibana-api-keys.png "")
+![API Keys UI](/deploy-manage/images/kibana-api-keys.png "")
 
 
 ## Security privileges [api-keys-security-privileges]
@@ -33,7 +33,7 @@ To manage roles, go to the **Roles** management page using the navigation menu o
 
 To create an API key, go to the **API Keys** management page using the navigation menu or the [global search field](../../explore-analyze/find-and-organize/find-apps-and-objects.md), and select **Create API key**.
 
-![Create API Key UI](../../images/kibana-create-ccr-api-key.png "")
+![Create API Key UI](/deploy-manage/images/kibana-create-ccr-api-key.png "")
 
 Refer to the [Create API key](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-api-key) documentation to learn more about creating user API keys.
 

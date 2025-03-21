@@ -29,7 +29,7 @@ Before using the `symbtool` binary, create an [Elasticsearch API token](../../..
 
 You also need to copy the **Symbols** endpoint from the deployment overview page. Pass this URL using the `-u` or `--url` argument.
 
-:::{image} ../../../images/observability-profiling-symbolizer-url.png
+:::{image} /solutions/images/observability-profiling-symbolizer-url.png
 :alt: profiling symbolizer url
 :screenshot:
 :::

@@ -23,7 +23,7 @@ Depending upon how much data you have and what queries you plan to run, you need
 
 To change a cluster’s topology, from deployment management, select **Edit deployment** from the **Actions** dropdown. Next, select a storage and RAM setting from the **Size per zone** drop-down list, and save your changes. When downsizing the cluster, make sure to have enough resources to handle the current load, otherwise your cluster will be under stress.
 
-:::{image} ../../../images/cloud-ec-capacity.png
+:::{image} /deploy-manage/images/cloud-ec-capacity.png
 :alt: Capacity slider to adjust {{es}} cluster size
 :::
 
@@ -50,7 +50,7 @@ We recommend using at least 4GB RAM for dedicated master nodes.
 
 High availability is achieved by running a cluster with replicas in multiple data centers (availability zones), to prevent against downtime when infrastructure problems occur or when resizing or upgrading deployments. We offer the options of running in one, two, or three data centers.
 
-:::{image} ../../../images/cloud-ec-fault-tolerance.png
+:::{image} /deploy-manage/images/cloud-ec-fault-tolerance.png
 :alt: High availability features
 :::
 
@@ -72,7 +72,7 @@ The node capacity you choose is per data center. The reason for this is that the
 
 You can review your {{es}} shard activity from the {{ecloud}} Console. When viewing a hosted deployment details, at the bottom of the {{es}} page, you can hover over each part of the shard visualization for specific numbers.
 
-:::{image} ../../../images/cloud-ec-shard-activity.gif
+:::{image} /deploy-manage/images/cloud-ec-shard-activity.gif
 :alt: Shard activity
 :::
 

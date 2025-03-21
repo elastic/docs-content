@@ -22,5 +22,5 @@ The topics in this section provides information about the architecture of {{es}}
 * [Shard allocation, relocation, and recovery](distributed-architecture/shard-allocation-relocation-recovery.md): Learn how {{es}} allocates and balances shards across nodes.
   * [Shard allocation awareness](distributed-architecture/shard-allocation-relocation-recovery/shard-allocation-awareness.md): Learn how to use custom node attributes to distribute shards across different racks or availability zones.
 * [Disocvery and cluster formation](distributed-architecture/discovery-cluster-formation.md): Learn about the cluster formation process including voting, adding nodes and publishing the cluster state.
-* [Shard request cache](elasticsearch://reference/elasticsearch/configuration-reference/shard-request-cache-settings.md): Learn how {{es}} caches search requests to improve performance.
+* [Shard request cache](/deploy-manage/distributed-architecture/shard-request-cache.md): Learn how {{es}} caches search requests to improve performance.
 * [Kibana task management](distributed-architecture/kibana-tasks-management.md): Learn how {{kib}} runs background tasks and distribute work across multiple {{kib}} instances to be persistent and scale with your deployment.

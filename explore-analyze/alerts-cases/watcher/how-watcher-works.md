@@ -145,7 +145,7 @@ When the watch execution finishes, the execution result is recorded as a *Watch 
 
 The following diagram shows the watch execution process:
 
-:::{image} ../../../images/elasticsearch-reference-watch-execution.jpg
+:::{image} /explore-analyze/images/elasticsearch-reference-watch-execution.jpg
 :alt: watch execution
 :::
 

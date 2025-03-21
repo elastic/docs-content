@@ -180,12 +180,12 @@ Now it is time to perform semantic search!
 
 ## Search the data [deployed-search]
 
-Depending on the type of model you have deployed, you can query rank features with a [sparse vector](elasticsearch://reference/query-languages/query-dsl-sparse-vector-query.md) query, or dense vectors with a kNN search.
+Depending on the type of model you have deployed, you can query rank features with a [sparse vector](elasticsearch://reference/query-languages/query-dsl/query-dsl-sparse-vector-query.md) query, or dense vectors with a kNN search.
 
 :::::::{tab-set}
 
 ::::::{tab-item} ELSER
-ELSER text embeddings can be queried using a [sparse vector query](elasticsearch://reference/query-languages/query-dsl-sparse-vector-query.md). The sparse vector query enables you to query a [sparse vector](elasticsearch://reference/elasticsearch/mapping-reference/sparse-vector.md) field, by providing the inference ID associated with the NLP model you want to use, and the query text:
+ELSER text embeddings can be queried using a [sparse vector query](elasticsearch://reference/query-languages/query-dsl/query-dsl-sparse-vector-query.md). The sparse vector query enables you to query a [sparse vector](elasticsearch://reference/elasticsearch/mapping-reference/sparse-vector.md) field, by providing the inference ID associated with the NLP model you want to use, and the query text:
 
 ```console
 GET my-index/_search

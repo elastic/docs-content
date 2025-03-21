@@ -16,7 +16,7 @@ The new Inventory requires the Elastic Entity Model (EEM). To learn more, refer 
 ::::
 
 
-:::{image} ../../../images/observability-inventory-catalog.png
+:::{image} /solutions/images/observability-inventory-catalog.png
 :alt: Inventory catalog
 :screenshot:
 :::
@@ -70,7 +70,7 @@ For each entity, you can click the entity name and get a detailed view. For exam
 * Alerts
 * Dashboards
 
-:::{image} ../../../images/observability-inventory-entity-detailed-view.png
+:::{image} /solutions/images/observability-inventory-entity-detailed-view.png
 :alt: Inventory detailed view
 :screenshot:
 :::

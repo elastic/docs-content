@@ -12,7 +12,7 @@ Several features let you upload files. For example, you can add files to [cases]
 
 You can access and manage all of the files currently stored in {{kib}} from the **Files** page.
 
-:::{image} ../../images/serverless-file-management.png
+:::{image} /explore-analyze/images/serverless-file-management.png
 :alt: Files UI
 :screenshot:
 :::

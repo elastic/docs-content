@@ -116,6 +116,64 @@ Change the settings for the Options list and Range slider controls.
 1. Hover over the control you want to edit, then click ![The Edit control icon that opens the Edit control flyout](../../images/kibana-dashboard_controlsEditControl_8.3.0.png "").
 2. On the **Edit control** flyout, change the options, then click **Save and close**.
 
+## Add controls from your ES|QL visualization's query [add-esql-control]
+```{applies_to}
+stack: preview
+serverless: preview
+```
+
+You can bind controls to your ES|QL visualizations in dashboards. When creating an ES|QL visualization, the autocomplete suggestions 
+prompt control insertion for field values, field names, function configuration, and function names. This enables controls that only 
+apply to a specific panel, and exposes visualization configuration such as date histogram interval controls to dashboard users.
+
+:::{note}
+Currently, only **Options lists** with static values are supported for ES|QL-based controls.
+:::
+
+1. While editing your ES|QL visualization's query, the autocomplete menu suggests adding a control.
+
+   ![ESQL query prompting to add a control](/explore-analyze/images/esql-visualization-control-suggestion.png)
+
+2. A menu opens to let you configure the control. This is where you can specify:
+
+    * The name of the control. That is the name that will appear in your ES|QL query, prefixed with a `?` symbol.
+    * Values available to select for users with this control. You can add multiple values from suggested fields, or type in custom values.
+    * The label of the control. This is the label displayed for users viewing the dashboard for that control.
+    * The width of the control.
+
+    ![ESQL control settings](/explore-analyze/images/esql-visualization-control-settings.png "title =50%")
+
+3. Save the control. The panel closes and the control's name is inserted into your query.
+
+
+**Examples**
+
+* Integrate filtering into your ES|QL experience
+
+  ```esql
+  | WHERE field == ?value
+  ```
+
+* Fields in controls for dynamic group by
+
+  ```esql
+  | STATS count=COUNT(*) BY ?field
+  ```
+
+* Variable time ranges? Bind function configuration settings to a control
+
+  ```esql
+  | BUCKET(@timestamp, ?interval),
+  ```
+
+* Make the function itself dynamic
+
+  ```esql
+  | STATS metric = ?function
+  ```
+
+![Editing ES|QL controls from a dashboard](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/blte42dfaa404bfc2d6/67d2e31e2e4dc59da190d78f/dashboard-esql-controls.gif)
+
 
 ## Remove controls [remove-controls]
 

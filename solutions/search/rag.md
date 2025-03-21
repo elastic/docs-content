@@ -18,7 +18,7 @@ Retrieval Augmented Generation (RAG) is a technique for improving language model
 
 RAG is a form of [in-context learning](https://arxiv.org/abs/2301.00234), where the model learns from information provided at inference time. Compared to fine-tuning or continuous pre-training, RAG can be implemented more quickly and cheaply, and offers several advantages.
 
-:::{image} ../../images/elasticsearch-reference-rag-venn-diagram.svg
+:::{image} /solutions/images/elasticsearch-reference-rag-venn-diagram.svg
 :alt: RAG sits at the intersection of information retrieval and generative AI
 :width: 600px
 :::
@@ -42,7 +42,7 @@ Implementing RAG with {{es}} has several advantages:
 
 The following diagram illustrates a simple RAG system using {{es}}.
 
-:::{image} ../../images/elasticsearch-reference-rag-schema.svg
+:::{image} /solutions/images/elasticsearch-reference-rag-schema.svg
 :alt: Components of a simple RAG system using Elasticsearch
 :::
 

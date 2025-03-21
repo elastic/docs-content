@@ -26,7 +26,7 @@ If a {{ml}} rule is failing, check to make sure the required {{ml}} jobs are run
 
 1. Go to **Rules** → **Detection rules (SIEM)**, then select the {{ml}} rule. The required {{ml}} jobs and their statuses are listed in the **Definition** section.
 
-   :::{image} ../../images/security-rules-ts-ml-job-stopped.png
+   :::{image} /troubleshoot/images/security-rules-ts-ml-job-stopped.png
    :alt: Rule details page with ML job stopped
    :screenshot:
    :::
@@ -87,14 +87,14 @@ Turning off `autocomplete:useTimeRange` could cause performance issues if the da
 :::::{dropdown} Warning about type conflicts and unmapped fields
 :name: rule-exceptions-field-conflicts
 
-A warning icon (![Field conflict warning icon](../../images/security-field-warning-icon.png "title =20x20")) and message appear for fields with [type conflicts](#fields-with-conflicting-types) across multiple indices or  fields that are [unmapped](#unmapped-field-conflict). You can learn more about the conflict by clicking the warning message.
+A warning icon (![Field conflict warning icon](/troubleshoot/images/security-field-warning-icon.png "title =20x20")) and message appear for fields with [type conflicts](#fields-with-conflicting-types) across multiple indices or  fields that are [unmapped](#unmapped-field-conflict). You can learn more about the conflict by clicking the warning message.
 
 ::::{note}
 A field can have type conflicts *and* be unmapped in specified indices.
 ::::
 
 
-:::{image} ../../images/security-warning-icon-message.png
+:::{image} /troubleshoot/images/security-warning-icon-message.png
 :alt: Shows the warning icon and message
 :screenshot:
 :::
@@ -106,7 +106,7 @@ Type conflicts occur when a field is mapped to different types across multiple i
 
 In the following example, the selected field has been defined as different types across five indices.
 
-:::{image} ../../images/security-warning-type-conflicts.png
+:::{image} /troubleshoot/images/security-warning-type-conflicts.png
 :alt: Warning for fields with type conflicts
 :screenshot:
 :::
@@ -118,7 +118,7 @@ Unmapped fields are undefined within an index’s mapping definition. Using unma
 
 In the following example, the selected field is unmapped across two indices.
 
-:::{image} ../../images/security-warning-unmapped-fields.png
+:::{image} /troubleshoot/images/security-warning-unmapped-fields.png
 :alt: Warning for unmapped fields
 :screenshot:
 :::
@@ -179,7 +179,7 @@ You can reduce the number of missed alerts due to ingestion pipeline delay by sp
 
 For example, say an event occurred at 10:00 but wasn’t ingested into {{es}} until 10:10 due to an ingestion pipeline delay. If you created a rule to detect that event with an interval + additional look-back time of 6 minutes, and the rule executes at 10:12, it would still detect the event because the `event.ingested` timestamp was from 10:10, only 2 minutes before the rule executed and well within the rule’s 6-minute interval + additional look-back time.
 
-:::{image} ../../images/security-timestamp-override.png
+:::{image} /troubleshoot/images/security-timestamp-override.png
 :alt: timestamp override
 :screenshot:
 :::

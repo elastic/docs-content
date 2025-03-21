@@ -28,7 +28,7 @@ Conditions for each rule can be applied to specific metrics that you select. You
 
 In this example, the conditions state that you will receive a critical alert for hosts with a CPU usage of 120% or above and a warning alert if CPU usage is 100% or above. Note that you will receive an alert only if memory usage is 20% or above, as per the second condition.
 
-:::{image} ../../../images/observability-metrics-alert.png
+:::{image} /solutions/images/observability-metrics-alert.png
 :alt: Metric threshold alert
 :screenshot:
 :::
@@ -38,7 +38,7 @@ When you select **Alert me if there’s no data**, the rule is triggered if the 
 
 ## Filtering and grouping [filtering-and-grouping]
 
-:::{image} ../../../images/observability-metrics-alert-filters-and-group.png
+:::{image} /solutions/images/observability-metrics-alert-filters-and-group.png
 :alt: Metric threshold filter and group fields
 :screenshot:
 :::
@@ -89,14 +89,14 @@ Some connector types are paid commercial features, while others are free. For a 
 
 After you select a connector, you must set the action frequency. You can choose to create a summary of alerts on each check interval or on a custom interval. For example, send email notifications that summarize the new, ongoing, and recovered alerts each hour:
 
-:::{image} ../../../images/observability-action-alert-summary.png
+:::{image} /solutions/images/observability-action-alert-summary.png
 :alt: Action types
 :screenshot:
 :::
 
 Alternatively, you can set the action frequency such that you choose how often the action runs (for example, at each check interval, only when the alert status changes, or at a custom action interval). In this case, you must also select the specific threshold condition that affects when actions run: `Alert`, `Warning`, `No data`, or `Recovered` (a value that was once above a threshold has now dropped below it).
 
-:::{image} ../../../images/observability-metrics-threshold-run-when-selection.png
+:::{image} /solutions/images/observability-metrics-threshold-run-when-selection.png
 :alt: Configure when a rule is triggered
 :screenshot:
 :::
@@ -106,7 +106,7 @@ You can also further refine the conditions under which actions run by specifying
 * **If alert matches query**: Enter a KQL query that defines field-value pairs or query conditions that must be met for notifications to send. The query only searches alert documents in the indices specified for the rule.
 * **If alert is generated during timeframe**: Set timeframe details. Notifications are only sent if alerts are generated within the timeframe you define.
 
-:::{image} ../../../images/observability-metric-threshold-conditional-alerts.png
+:::{image} /solutions/images/observability-metric-threshold-conditional-alerts.png
 :alt: Configure a conditional alert
 :screenshot:
 :::
@@ -116,7 +116,7 @@ You can also further refine the conditions under which actions run by specifying
 
 Use the default notification message or customize it. You can add more context to the message by clicking the icon above the message text box and selecting from a list of available variables.
 
-:::{image} ../../../images/observability-metrics-threshold-alert-default-message.png
+:::{image} /solutions/images/observability-metrics-threshold-alert-default-message.png
 :alt: Default notification message for metric threshold rules with open "Add variable" popup listing available action variables
 :screenshot:
 :::

@@ -20,13 +20,13 @@ In this section, we’ll help you determine which option is best for you.
 
 ## {{agent}} and Elastic integrations [ingest-ea]
 
-A single [{{agent}}](https://www.elastic.co/guide/en/fleet/current) can collect multiple types of data when it is [installed](/reference/ingestion-tools/fleet/install-elastic-agents.md) on a host computer. You can use standalone {{agent}}s and manage them locally on the systems where they are installed, or you can manage all of your agents and policies with the [Fleet UI in {{kib}}](/reference/ingestion-tools/fleet/manage-elastic-agents-in-fleet.md).
+A single [{{agent}}](https://www.elastic.co/guide/en/fleet/current) can collect multiple types of data when it is [installed](/reference/fleet/install-elastic-agents.md) on a host computer. You can use standalone {{agent}}s and manage them locally on the systems where they are installed, or you can manage all of your agents and policies with the [Fleet UI in {{kib}}](/reference/fleet/manage-elastic-agents-in-fleet.md).
 
 Use {{agent}} with one of hundreds of [Elastic integrations](https://docs.elastic.co/en/integrations) to simplify collecting, transforming, and visualizing data. Integrations include default ingestion rules, dashboards, and visualizations to help you start analyzing your data right away. Check out the [Integration quick reference](https://docs.elastic.co/en/integrations/all_integrations) to search for available integrations that can reduce your time to value.
 
-{{agent}} is the best option for collecting timestamped data for most data sources and use cases. If your data requires additional processing before going to {{es}}, you can use [{{agent}} processors](/reference/ingestion-tools/fleet/agent-processors.md), [{{ls}}](https://www.elastic.co/guide/en/logstash/current), or additional processing features in {{es}}. Check out [additional processing](/manage-data/ingest/transform-enrich.md) to see options.
+{{agent}} is the best option for collecting timestamped data for most data sources and use cases. If your data requires additional processing before going to {{es}}, you can use [{{agent}} processors](/reference/fleet/agent-processors.md), [{{ls}}](https://www.elastic.co/guide/en/logstash/current), or additional processing features in {{es}}. Check out [additional processing](/manage-data/ingest/transform-enrich.md) to see options.
 
-Ready to try [{{agent}}](https://www.elastic.co/guide/en/fleet/current)? Check out the [installation instructions](/reference/ingestion-tools/fleet/install-elastic-agents.md).
+Ready to try [{{agent}}](https://www.elastic.co/guide/en/fleet/current)? Check out the [installation instructions](/reference/fleet/install-elastic-agents.md).
 
 
 ## {{beats}} [ingest-beats]
@@ -35,7 +35,7 @@ Ready to try [{{agent}}](https://www.elastic.co/guide/en/fleet/current)? Check o
 
 Beats require that you install a separate Beat for each type of data you want to collect. A single Elastic Agent installed on a host can collect and transport multiple types of data.
 
-**Best practice:** Use [{{agent}}](https://www.elastic.co/guide/en/fleet/current) whenever possible. If your data source is not yet supported by {{agent}}, use {{beats}}. Check out the {{beats}} and {{agent}} [comparison](/manage-data/ingest/tools.md#additional-capabilities-beats-and-agent) for more info. When you are ready to upgrade, check out [Migrate from {{beats}} to {{agent}}](/reference/ingestion-tools/fleet/migrate-from-beats-to-elastic-agent.md).
+**Best practice:** Use [{{agent}}](https://www.elastic.co/guide/en/fleet/current) whenever possible. If your data source is not yet supported by {{agent}}, use {{beats}}. Check out the {{beats}} and {{agent}} [comparison](/manage-data/ingest/tools.md#additional-capabilities-beats-and-agent) for more info. When you are ready to upgrade, check out [Migrate from {{beats}} to {{agent}}](/reference/fleet/migrate-from-beats-to-elastic-agent.md).
 
 
 ## OpenTelemetry (OTel) collectors [ingest-otel]

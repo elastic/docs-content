@@ -24,7 +24,7 @@ If your data is located outside of {{es}}, you cannot use {{kib}} to create your
 
 You can create {{anomaly-jobs}} by using the [create {{anomaly-jobs}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-put-job). {{kib}} also provides wizards to simplify the process, which vary depending on whether you are using the {{ml-app}} app, {{security-app}} or {{observability}} apps. To open **Anomaly Detection**, find **{{ml-app}}** in the main menu, or use the [global search field](../../find-and-organize/find-apps-and-objects.md).
 
-:::{image} ../../../images/machine-learning-ml-create-job.png
+:::{image} /explore-analyze/images/machine-learning-ml-create-job.png
 :alt: Create New Job
 :screenshot:
 :::
@@ -188,7 +188,7 @@ To reduce the number of snapshots consuming space on your cluster, at the end of
 
 You can see the list of model snapshots for each job with the [get model snapshots API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-get-model-snapshots) or in the **Model snapshots** tab on the **Job Management** page in {{kib}}:
 
-:::{image} ../../../images/machine-learning-ml-model-snapshots.png
+:::{image} /explore-analyze/images/machine-learning-ml-model-snapshots.png
 :alt: Example screenshot with a list of model snapshots
 :screenshot:
 :::

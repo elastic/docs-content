@@ -29,7 +29,7 @@ Isolated hosts, however, can still send data to {{elastic-sec}}. You can also cr
 ::::
 
 
-:::{image} ../../../images/security-isolated-host.png
+:::{image} /solutions/images/security-isolated-host.png
 :alt: Endpoint page highlighting a host that's been isolated
 :screenshot:
 :::
@@ -49,7 +49,7 @@ All actions executed on a host are tracked in the host’s response actions hist
 ::::{dropdown} Isolate a host from a detection alert
 1. Open a detection alert:
 
-    * From the Alerts table or Timeline: Click **View details** (![View details icon](../../../images/security-view-details-icon.png "title =20x20")).
+    * From the Alerts table or Timeline: Click **View details** (![View details icon](/solutions/images/security-view-details-icon.png "title =20x20")).
     * From a case with an attached alert: Click **Show alert details** (**>**).
 
 2. Click **Take action → Isolate host**.
@@ -108,7 +108,7 @@ Be aware that automatic host isolation can result in unintended consequences, su
 
 After the host is successfully isolated, an **Isolated** status is added to the endpoint. Active end users receive a notification that the computer has been isolated from the network:
 
-:::{image} ../../../images/security-host-isolated-notif.png
+:::{image} /solutions/images/security-host-isolated-notif.png
 :alt: Host isolated notification message
 :width: 50%
 :screenshot:
@@ -120,7 +120,7 @@ After the host is successfully isolated, an **Isolated** status is added to the 
 ::::{dropdown} Release a host from a detection alert
 1. Open a detection alert:
 
-    * From the Alerts table or Timeline: Click **View details** (![View details icon](../../../images/security-view-details-icon.png "title =20x20")).
+    * From the Alerts table or Timeline: Click **View details** (![View details icon](/solutions/images/security-view-details-icon.png "title =20x20")).
     * From a case with an attached alert: Click **Show alert details** (**>**).
 
 2. From the alert details flyout, click **Take action → Release host**.
@@ -157,7 +157,7 @@ The response console requires the appropriate [subscription](https://www.elastic
 
 After the host is successfully released, the **Isolated** status is removed from the endpoint. Active end users receive a notification that the computer has been reconnected to the network:
 
-:::{image} ../../../images/security-host-released-notif.png
+:::{image} /solutions/images/security-host-released-notif.png
 :alt: Host released notification message
 :width: 50%
 :screenshot:
@@ -170,7 +170,7 @@ To confirm if a host has been successfully isolated or released, check the respo
 
 Go to the **Endpoints** page, click an endpoint’s name, then click the **Response action history** tab. You can filter the information displayed in this view. Refer to [](/solutions/security/endpoint-response-actions/response-actions-history.md) for more details.
 
-:::{image} ../../../images/security-response-actions-history-endpoint-details.png
+:::{image} /solutions/images/security-response-actions-history-endpoint-details.png
 :alt: Response actions history page UI
 :width: 90%
 :screenshot:

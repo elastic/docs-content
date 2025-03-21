@@ -59,13 +59,13 @@ In the **Index settings** step, you can specify custom [index settings](elastics
 
 * Add custom field mappings that you can index on and search. In the **Mapped fields** tab, add a new field including the [field type](elasticsearch://reference/elasticsearch/mapping-reference/field-data-types.md):
 
-    :::{image} ../../../images/observability-custom-index-template-mapped-fields.png
+    :::{image} /solutions/images/observability-custom-index-template-mapped-fields.png
     :alt: Editing a component template to add a new mapped field
     :::
 
 * Add a [runtime field](../../../manage-data/data-store/mapping/runtime-fields.md) that is evaluated at query time. In the **Runtime fields** tab, click **Create runtime field** and provide a field name, type, and optionally a script:
 
-    :::{image} ../../../images/observability-custom-index-template-runtime-fields.png
+    :::{image} /solutions/images/observability-custom-index-template-runtime-fields.png
     :alt: Editing a component template to add a new runtime field
     :::
 

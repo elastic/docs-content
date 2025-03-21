@@ -19,7 +19,7 @@ Point-to-point layers are used in several common use cases:
 * Origin-destination flows for import/export/migration
 * Origin-destination for pick-up/drop-off data
 
-:::{image} ../../../images/kibana-point_to_point.png
+:::{image} /explore-analyze/images/kibana-point_to_point.png
 :alt: point to point
 :::
 

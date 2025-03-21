@@ -12,7 +12,7 @@ applies_to:
 
 Visualize and group detection alerts by specific parameters in the visualization section of the Alerts page.
 
-:::{image} ../../../images/security-alert-page-visualizations.png
+:::{image} /solutions/images/security-alert-page-visualizations.png
 :alt: Alerts page with visualizations section highlighted
 :screenshot:
 :::
@@ -29,16 +29,16 @@ Some view types don’t have the **Group by top** option. You can also leave **G
 ::::
 
 
-To reset a view to default settings, hover over it and click the options menu (![More actions](../../../images/security-three-dot-icon.png "title =20x20")) that appears, then select **Reset group by fields**.
+To reset a view to default settings, hover over it and click the options menu (![More actions](/solutions/images/security-three-dot-icon.png "title =20x20")) that appears, then select **Reset group by fields**.
 
 ::::{tip}
 The options menu also lets you inspect the visualization’s queries. For the trend and counts views, you can add the visualization to a new or existing case, or open it in Lens.
 ::::
 
 
-Click the collapse icon (![Collapse icon](../../../images/security-collapse-icon-horiz-down.png "title =20x20")) to minimize the visualization section and display a summary of key information instead.
+Click the collapse icon (![Collapse icon](/solutions/images/security-collapse-icon-horiz-down.png "title =20x20")) to minimize the visualization section and display a summary of key information instead.
 
-:::{image} ../../../images/security-alert-page-viz-collapsed.png
+:::{image} /solutions/images/security-alert-page-viz-collapsed.png
 :alt: Alerts page with visualizations section collapsed
 :screenshot:
 :::
@@ -54,7 +54,7 @@ On the Alerts page, the summary visualization displays by default and shows how 
 
 You can hover and click on elements within the summary — such as severity levels, rule names, and host names — to add filters with those values to the Alerts page.
 
-:::{image} ../../../images/security-alerts-viz-summary.png
+:::{image} /solutions/images/security-alerts-viz-summary.png
 :alt: Summary visualization for alerts
 :screenshot:
 :::
@@ -69,7 +69,7 @@ The **Group by top** menu is unavailable for the trend view.
 ::::
 
 
-:::{image} ../../../images/security-alerts-viz-trend.png
+:::{image} /solutions/images/security-alerts-viz-trend.png
 :alt: Trend visualization for alerts
 :screenshot:
 :::
@@ -79,7 +79,7 @@ The **Group by top** menu is unavailable for the trend view.
 
 The counts view shows the count of alerts in each group. By default, it groups alerts first by detection rule name (`kibana.alert.rule.name`), then by host name (`host.name`).
 
-:::{image} ../../../images/security-alerts-viz-counts.png
+:::{image} /solutions/images/security-alerts-viz-counts.png
 :alt: Counts visualization for alerts
 :screenshot:
 :::
@@ -89,7 +89,7 @@ The counts view shows the count of alerts in each group. By default, it groups a
 
 The treemap view shows the distribution of alerts as nested, proportionally-sized tiles. This view can help you quickly pinpoint the most prevalent and critical alerts.
 
-:::{image} ../../../images/security-alerts-viz-treemap.png
+:::{image} /solutions/images/security-alerts-viz-treemap.png
 :alt: Treemap visualization for alerts
 :screenshot:
 :::
@@ -110,7 +110,7 @@ Depending on the amount of alerts, some tiles and text might be very small. Hove
 
 You can click on the treemap to narrow down the alerts displayed in both the treemap and the alerts table below. Click the label above a group to display the alerts in that group, or click an individual tile to display the alerts related to that tile. This adds filters under the KQL search bar, which you can edit or remove to further customize the view.
 
-:::{image} ../../../images/security-treemap-click.gif
+:::{image} /solutions/images/security-treemap-click.gif
 :alt: Animation of clicking the treemap
 :screenshot:
 :::

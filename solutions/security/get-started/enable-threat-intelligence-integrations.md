@@ -22,7 +22,7 @@ To learn more about alerts with threat intelligence, visit [View alert details](
 
 You can connect to threat intelligence sources using an [{{agent}} integration](#agent-ti-integration), the [Threat Intel module](#ti-mod-integration), or a [custom integration](#custom-ti-integration).
 
-:::{image} ../../../images/getting-started-threat-intelligence-view.png
+:::{image} /solutions/images/getting-started-threat-intelligence-view.png
 :alt: The Threat Intelligence view on the Overview dashboard
 :screenshot:
 :::
@@ -35,7 +35,7 @@ There are a few scenarios when data won’t display in the Threat Intelligence v
 
 ## Add an {{agent}} integration [agent-ti-integration]
 
-1. Install a [{{fleet}}-managed {{agent}}](/reference/ingestion-tools/fleet/install-fleet-managed-elastic-agent.md) on the hosts you want to monitor.
+1. Install a [{{fleet}}-managed {{agent}}](/reference/fleet/install-fleet-managed-elastic-agent.md) on the hosts you want to monitor.
 2. In the Threat Intelligence view, click **Enable sources** to view the Integrations page. Scroll down and select **Elastic Agent only** to filter by {{agent}} integrations.
 
     ::::{tip}
