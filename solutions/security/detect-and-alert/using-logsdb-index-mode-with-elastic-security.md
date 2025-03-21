@@ -21,7 +21,7 @@ With logsdb index mode, the original `_source` field is not stored in the index 
 
 When the `_source` is reconstructed, [modifications](elasticsearch://reference/elasticsearch/mapping-reference/mapping-source-field.md#synthetic-source-modifications) are possible. Therefore, there could be a mismatch between users' expectations and how fields are formatted.
 
-Continue reading to learn how logsdb index mode affects CPU and storage usage and specific {elastic-sec} components. 
+Continue reading to learn how logsdb index mode affects CPU and storage usage and specific {{elastic-sec}} components. 
 
 ::::{note} 
 
