@@ -1,7 +1,7 @@
-name: "Issue report"
+name: "Docs issue"
 description: Report documentation issues such as inaccuracies, broken links, typos, or missing information.
 title: "[Issue]: "
-labels: ["Issue"]
+labels: ["triage"]
 body:
   - type: markdown
     attributes:
@@ -19,6 +19,7 @@ body:
         - Missing information
         - Could be improved
         - I can't find what I'm looking for
+        - Other
   - type: input
     id: link
     attributes:
