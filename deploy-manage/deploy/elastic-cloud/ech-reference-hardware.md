@@ -5,7 +5,7 @@ mapped_pages:
 
 # Elasticsearch Add-On for Heroku hardware [ech-reference-hardware]
 
-:::{image} ../../../images/cloud-heroku-ec-cloud-platform-hardware.png
+:::{image} /deploy-manage/images/cloud-heroku-ec-cloud-platform-hardware.png
 :alt: A banner showing a plane trailing several stylized UI sliders superimposed over  cloud hardware
 :::
 

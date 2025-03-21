@@ -20,7 +20,7 @@ This purpose of this section is to give a high level overview of the Elasticsear
 
 Every indexing operation in Elasticsearch is first resolved to a replication group using [routing](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-create), typically based on the document ID. Once the replication group has been determined, the operation is forwarded internally to the current *primary shard* of the group. This stage of indexing is referred to as the *coordinating stage*.
 
-:::{image} ../../images/elasticsearch-reference-data_processing_flow.png
+:::{image} /deploy-manage/images/elasticsearch-reference-data_processing_flow.png
 :alt: An example of a basic write model.
 :::
 

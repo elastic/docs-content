@@ -29,13 +29,13 @@ Follow these steps to configure SAML with Microsoft Entra ID as an identity prov
     2. Click **Enterprise applications** and then **New application** to register a new application.
     3. Click **Create your own application**, provide a name, and select the **Integrate any other application you don’t find in the gallery** option.
 
-        :::{image} ../../../images/cloud-ec-saml-azuread-create-app.png
+        :::{image} /deploy-manage/images/cloud-ec-saml-azuread-create-app.png
         :alt: The Azure Create your own application flyout
         :::
 
     4. Navigate to the new application, click **Users and groups**, and add all necessary users and groups. Only the users and groups that you add here will have SSO access to the {{stack}}.
 
-        :::{image} ../../../images/cloud-ec-saml-azuread-users-and-groups.png
+        :::{image} /deploy-manage/images/cloud-ec-saml-azuread-users-and-groups.png
         :alt: The Entra User and groups page
         :::
 
@@ -53,13 +53,13 @@ Follow these steps to configure SAML with Microsoft Entra ID as an identity prov
 
             For example, `https://saml-azure.kb.northeurope.azure.elastic-cloud.com:443/logout`.
 
-            :::{image} ../../../images/cloud-ec-saml-azuread-kibana-config.png
+            :::{image} /deploy-manage/images/cloud-ec-saml-azuread-kibana-config.png
             :alt: The Entra SAML configuration page with {{kib}} settings
             :::
 
     6. Navigate to **SAML-based Single sign-on**, open the **User Attributes & Claims** configuration, and update the fields to suit your needs. These settings control what information from  will be made available to the {{stack}} during SSO. This information can be used to identify a user in the {{stack}} and/or to assign different roles to users in the {{stack}}. We suggest that you configure a proper value for the `Unique User Identifier (Name ID)` claim that identifies the user uniquely and is not prone to changes.
 
-        :::{image} ../../../images/cloud-ec-saml-azuread-user-attributes.png
+        :::{image} /deploy-manage/images/cloud-ec-saml-azuread-user-attributes.png
         :alt: The Entra ID User Attributes & Claims page
         :::
 

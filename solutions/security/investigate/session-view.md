@@ -49,7 +49,7 @@ Session View is accessible from the **Hosts**, **Alerts**, and **Timelines** pag
 
 * On the Alerts page, scroll down to view the Alerts table. Look for alerts that have the **Open Session View** button in the **Actions** column:
 
-    :::{image} ../../../images/security-session-view-action-icon-detail.png
+    :::{image} /solutions/images/security-session-view-action-icon-detail.png
     :alt: Detail of the Open Session View button
     :screenshot:
     :::
@@ -61,7 +61,7 @@ Session View is accessible from the **Hosts**, **Alerts**, and **Timelines** pag
 
 The Session View UI has the following features:
 
-:::{image} ../../../images/security-session-view-terminal-labeled.png
+:::{image} /solutions/images/security-session-view-terminal-labeled.png
 :alt: Detail of Session view with labeled UI elements
 :screenshot:
 :::
@@ -78,23 +78,23 @@ The Session View UI has the following features:
 
 Session View includes additional badges not pictured above:
 
-* The alert badge for multiple alerts appears when a single event causes alerts of multiple types (![Gear icon](../../../images/security-sess-view-process-alert-icon.png "title =20x20") for `process` alerts, ![Page icon](../../../images/security-sess-view-file-alert-icon.png "title =20x20") for `file` alerts, and ![Page icon](../../../images/security-sess-view-network-alert-icon.png "title =20x20") for `network` alerts):
+* The alert badge for multiple alerts appears when a single event causes alerts of multiple types (![Gear icon](/solutions/images/security-sess-view-process-alert-icon.png "title =20x20") for `process` alerts, ![Page icon](/solutions/images/security-sess-view-file-alert-icon.png "title =20x20") for `file` alerts, and ![Page icon](/solutions/images/security-sess-view-network-alert-icon.png "title =20x20") for `network` alerts):
 
-    :::{image} ../../../images/security-session-view-alert-types-badge.png
+    :::{image} /solutions/images/security-session-view-alert-types-badge.png
     :alt: The alert badge for a command with all three alert types
     :screenshot:
     :::
 
 * The **Exec user change** badge highlights exec user changes, such as when a user escalates to root:
 
-    :::{image} ../../../images/security-session-view-exec-user-change-badge.png
+    :::{image} /solutions/images/security-session-view-exec-user-change-badge.png
     :alt: The Exec user change badge
     :screenshot:
     :::
 
 * The **Output** badge appears next to commands that generated terminal output. Click it to view that command’s output in terminal output view.
 
-    :::{image} ../../../images/security-session-view-output-badge.png
+    :::{image} /solutions/images/security-session-view-output-badge.png
     :alt: The Output badge
     :screenshot:
     :::
@@ -125,7 +125,7 @@ You can configure several additional settings by clicking **Advanced settings** 
 * `linux.advanced.tty_io.max_kilobytes_per_event`: The maximum number of kilobytes of output to send to {{es}} as a single event. Default: 512 KB. Additional data is captured as a new event.
 * `linux.advanced.tty_io.max_event_interval_seconds`: The maximum interval (in seconds) during which output is batched. Default: 30 seconds. Output will be sent to {{es}} at this interval (unless it first exceeds the `max_kilobytes_per_event` value, in which case it might be sent sooner).
 
-:::{image} ../../../images/security-session-view-output-viewer.png
+:::{image} /solutions/images/security-session-view-output-viewer.png
 :alt: Terminal output view
 :screenshot:
 :::

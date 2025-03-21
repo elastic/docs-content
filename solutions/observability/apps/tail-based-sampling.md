@@ -8,7 +8,7 @@ applies_to:
 # Tail-based sampling [apm-tail-based-sampling-config]
 
 ::::{note}
-![supported deployment methods](../../../images/observability-binary-yes-fm-yes.svg "")
+![supported deployment methods](/solutions/images/observability-binary-yes-fm-yes.svg "")
 
 Most options on this page are supported by all APM Server deployment methods when writing to {{es}}. If you are using a different [output](configure-output.md), tail-based sampling is *not* supported.
 

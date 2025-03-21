@@ -22,7 +22,7 @@ To find this tab in the Kibana UI:
 
 The tab is highlighted in this screenshot:
 
-:::{image} /images/elasticsearch-reference-ingest-pipeline-ent-search-ui.png
+:::{image} /solutions/images/elasticsearch-reference-ingest-pipeline-ent-search-ui.png
 :alt: ingest pipeline ent search ui
 :screenshot:
 :::

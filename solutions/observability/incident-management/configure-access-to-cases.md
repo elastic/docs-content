@@ -14,7 +14,7 @@ If you are using an on-premises {{kib}} deployment and want your email notificat
 
 For more details, refer to [feature access based on user privileges](../../../deploy-manage/manage-spaces.md#spaces-control-user-access).
 
-:::{image} ../../../images/observability-cases-privileges.png
+:::{image} /solutions/images/observability-cases-privileges.png
 :alt: cases privileges
 :screenshot:
 :::

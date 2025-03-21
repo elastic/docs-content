@@ -67,7 +67,7 @@ For more information {{agent}} and integrations, refer to the [{{fleet}} and {{a
 
 {{kib}} provides a full data analytics platform with out-of-the-box dashboards that you can clone and enhance to satisfy your custom visualization use cases. For example, to see an overview of your EC2 instance metrics in {{kib}}, go to the **Dashboard** app and navigate to the **[Metrics AWS] EC2 Overview** dashboard.
 
-:::{image} ../../../images/observability-ec2-overview-dashboard.png
+:::{image} /solutions/images/observability-ec2-overview-dashboard.png
 :alt: Screenshot showing the EC2 overview dashboard
 :screenshot:
 :::

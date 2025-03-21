@@ -50,7 +50,7 @@ Once you know the CIDR blocks for your testing sources, add them to your {{es}} 
 
 For example, if you had a {{private-location}} running with a public CIDR block of `1.2.3.4/32` and were running tests from the `Europe - United Kingdom` region, you would first create a traffic filter with the following:
 
-:::{image} ../../../images/observability-synthetics-traffic-filters-create-filter.png
+:::{image} /solutions/images/observability-synthetics-traffic-filters-create-filter.png
 :alt: Create a traffic filter in {{ecloud}}
 :screenshot:
 :::

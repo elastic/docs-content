@@ -18,7 +18,7 @@ To create a deployment in ECE:
 
     You can quickly create a deployment by setting the basic parameters shown in the UI. If you need more control, select **Advanced settings** to configure additional options, as detailed below.
 
-    :::{image} ../../../images/cloud-enterprise-ece-create-deployment.png
+    :::{image} /deploy-manage/images/cloud-enterprise-ece-create-deployment.png
     :alt: Create a deployment
     :::
 

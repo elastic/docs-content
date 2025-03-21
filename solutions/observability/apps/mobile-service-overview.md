@@ -30,7 +30,7 @@ Understand the impact of slow application load times and variations in applicati
 Note: due to the way crash rate is calculated (crashes per session) it is possible to have greater than 100% rate, due to fact that a session may contain multiple crashes.
 
 
-:::{image} ../../../images/observability-mobile-location.png
+:::{image} /solutions/images/observability-mobile-location.png
 :alt: mobile service overview centered on location map
 :screenshot:
 :::
@@ -41,7 +41,7 @@ Note: due to the way crash rate is calculated (crashes per session) it is possib
 Optimize your end-user experience and your application QA strategy based on your most used device models and operating system versions.
 
 
-:::{image} ../../../images/observability-mobile-most-used.png
+:::{image} /solutions/images/observability-mobile-most-used.png
 :alt: mobile service overview showing most used devices
 :screenshot:
 :::
@@ -56,7 +56,7 @@ The **Transactions** table displays a list of *transaction groups* for the selec
 By default, transaction groups are sorted by *Impact* to show the most used and slowest endpoints in your service. If there is a particular endpoint you are interested in, click **View transactions** to view a list of similar transactions on the [transactions overview](transactions-2.md) page.
 
 
-:::{image} ../../../images/observability-traffic-transactions.png
+:::{image} /solutions/images/observability-traffic-transactions.png
 :alt: Traffic and transactions
 :screenshot:
 :::
@@ -84,13 +84,13 @@ Displaying dependencies for services instrumented with the Real User Monitoring 
 ::::
 
 
-:::{image} ../../../images/observability-spans-dependencies.png
+:::{image} /solutions/images/observability-spans-dependencies.png
 :alt: Span type duration and dependencies
 :screenshot:
 :::
 
 
-:::{image} ../../../images/observability-mobile-tp.png
+:::{image} /solutions/images/observability-mobile-tp.png
 :alt: mobile service overview showing latency
 :screenshot:
 :::
