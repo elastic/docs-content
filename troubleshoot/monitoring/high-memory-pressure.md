@@ -1,5 +1,8 @@
 ---
 navigation_title: "High memory pressure"
+applies_to:
+  deployment:
+    ess: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-metrics-memory-pressure.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-metrics-memory-pressure.html

@@ -1,5 +1,9 @@
 ---
 navigation_title: "SAML single sign-on (SSO)"
+applies_to:
+  deployment:
+    ess: all
+  serverless: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-saml-sso.html
 ---

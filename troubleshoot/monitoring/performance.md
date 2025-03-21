@@ -1,5 +1,8 @@
 ---
 navigation_title: "Performance"
+applies_to:
+  deployment:
+    ess: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-scenario_why_is_performance_degrading_over_time.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/echscenario_why_is_performance_degrading_over_time.html

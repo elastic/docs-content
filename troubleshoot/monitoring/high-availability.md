@@ -1,5 +1,8 @@
 ---
 navigation_title: "Cluster performance metrics"
+applies_to:
+  deployment:
+    ess: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-scenario_is_my_cluster_really_highly_available.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/echscenario_is_my_cluster_really_highly_available.html
