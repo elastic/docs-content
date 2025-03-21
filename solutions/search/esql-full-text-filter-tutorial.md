@@ -134,9 +134,9 @@ Here's how to search the `description` field for "fluffy pancakes":
 POST /_query?format=txt
 {
   "query": """
-    FROM cooking_blog
-    | WHERE description:"fluffy pancakes"
-    | LIMIT 1000
+    FROM cooking_blog  # Specify the index to search
+    | WHERE description:"fluffy pancakes"  # Full-text search with OR logic by default
+    | LIMIT 1000  # Return up to 1000 results
   """
 }
 ```
@@ -152,7 +152,7 @@ POST /_query?format=txt
   "query": """
     FROM cooking_blog
     | WHERE description:"fluffy pancakes"
-    | KEEP title, description, rating
+    | KEEP title, description, rating  # Select only specific fields to include in response
     | LIMIT 1000
   """
 }
@@ -168,7 +168,7 @@ POST /_query?format=txt
 {
   "query": """
     FROM cooking_blog
-    | WHERE match(description, "fluffy pancakes", {"operator": "AND"})
+    | WHERE match(description, "fluffy pancakes", {"operator": "AND"})  # Require ALL terms to match instead of default OR
     | LIMIT 1000
   """
 }
@@ -185,7 +185,7 @@ POST /_query?format=txt
 {
   "query": """
     FROM cooking_blog
-    | WHERE match(title, "fluffy pancakes breakfast", {"minimum_should_match": 2})
+    | WHERE match(title, "fluffy pancakes breakfast", {"minimum_should_match": 2})  # At least 2 of the 3 terms must match
     | LIMIT 1000
   """
 }
@@ -202,7 +202,7 @@ POST /_query?format=txt
 {
   "query": """
     FROM cooking_blog
-    | WHERE title:"vegetarian curry" OR description:"vegetarian curry" OR tags:"vegetarian curry"
+    | WHERE title:"vegetarian curry" OR description:"vegetarian curry" OR tags:"vegetarian curry"  # Search across different fields with equal importance
     | LIMIT 1000
   """
 }
@@ -216,12 +216,12 @@ However, in many cases, matches in certain fields (like the title) might be more
 POST /_query?format=txt
 {
   "query": """
-    FROM cooking_blog METADATA _score
-    | WHERE match(title, "vegetarian curry", {"boost": 2.0}) 
-        OR match(description, "vegetarian curry") 
+    FROM cooking_blog METADATA _score  # Request score metadata for relevance ranking
+    | WHERE match(title, "vegetarian curry", {"boost": 2.0})  # Title matches are twice as important
+        OR match(description, "vegetarian curry")
         OR match(tags, "vegetarian curry")
     | KEEP title, description, tags, _score
-    | SORT _score DESC
+    | SORT _score DESC  # Order by relevance score (highest first)
     | LIMIT 1000
   """
 }
@@ -238,7 +238,7 @@ POST /_query?format=txt
 {
   "query": """
     FROM cooking_blog
-    | WHERE category.keyword == "Breakfast"
+    | WHERE category.keyword == "Breakfast"  # Exact match using keyword field (case-sensitive)
     | KEEP title, author, rating, tags
     | SORT rating DESC
     | LIMIT 1000
@@ -257,7 +257,7 @@ POST /_query?format=txt
 {
   "query": """
     FROM cooking_blog
-    | WHERE date >= "2023-05-01" AND date <= "2023-05-31"
+    | WHERE date >= "2023-05-01" AND date <= "2023-05-31"  # Inclusive date range filter
     | KEEP title, author, date, rating
     | LIMIT 1000
   """
@@ -273,7 +273,7 @@ POST /_query?format=txt
 {
   "query": """
     FROM cooking_blog
-    | WHERE author.keyword == "Maria Rodriguez"
+    | WHERE author.keyword == "Maria Rodriguez"  # Exact match on author
     | KEEP title, author, rating, tags
     | SORT rating DESC
     | LIMIT 1000
@@ -292,9 +292,9 @@ POST /_query?format=txt
 {
   "query": """
     FROM cooking_blog METADATA _score
-    | WHERE rating >= 4.5
-      AND NOT category.keyword == "Dessert"
-      AND (title:"curry spicy" OR description:"curry spicy")
+    | WHERE rating >= 4.5  # Numerical filter
+      AND NOT category.keyword == "Dessert"  # Exclusion filter
+      AND (title:"curry spicy" OR description:"curry spicy")  # Full-text search in multiple fields
     | SORT _score DESC
     | KEEP title, author, rating, tags, description
     | LIMIT 1000
@@ -302,22 +302,24 @@ POST /_query?format=txt
 }
 ```
 
+### Combine relevance scoring with custom criteria
+
 For more complex relevance scoring with combined criteria, you can use the `EVAL` command to calculate custom scores:
 
 ```esql
 POST /_query?format=txt
 {
   "query": """
-    FROM cooking_blog METADATA _score  # Request _score metadata for relevance scoring
-    | EVAL tags_concat = MV_CONCAT(tags.keyword, ",")  # Convert multi-valued tags field to a single string with comma delimiter
-    | WHERE tags_concat LIKE "*vegetarian*" AND rating >= 4.5  # Filter for vegetarian recipes with high ratings, using wildcards to find "vegetarian" within the concatenated tags
-    | WHERE match(title, "curry spicy", {"boost": 2.0}) OR match(description, "curry spicy")  # Full-text search with boosted title relevance (2x importance)
-    | EVAL category_boost = CASE(category.keyword == "Main Course", 1.0, 0.0)  # Add boost for Main Course category
-    | EVAL date_boost = CASE(DATE_DIFF("month", date, NOW()) <= 1, 0.5, 0.0)  # Add boost for recipes published in the last month
-    | EVAL custom_score = _score + category_boost + date_boost  # Combine all scores into final relevance score
-    | WHERE NOT category.keyword == "Dessert"  # Exclude desserts
-    | WHERE custom_score > 0  # Only include results with positive relevance
-    | SORT custom_score DESC  # Sort by custom relevance score (highest first)
+    FROM cooking_blog METADATA _score
+    | EVAL tags_concat = MV_CONCAT(tags.keyword, ",")  # Convert multi-value field to string
+    | WHERE tags_concat LIKE "*vegetarian*" AND rating >= 4.5  # Wildcard pattern matching
+    | WHERE match(title, "curry spicy", {"boost": 2.0}) OR match(description, "curry spicy")
+    | EVAL category_boost = CASE(category.keyword == "Main Course", 1.0, 0.0)  # Conditional boost
+    | EVAL date_boost = CASE(DATE_DIFF("month", date, NOW()) <= 1, 0.5, 0.0)  # Boost recent content
+    | EVAL custom_score = _score + category_boost + date_boost  # Combine scores
+    | WHERE NOT category.keyword == "Dessert"
+    | WHERE custom_score > 0  # Filter based on custom score
+    | SORT custom_score DESC
     | LIMIT 1000
     """
 }
