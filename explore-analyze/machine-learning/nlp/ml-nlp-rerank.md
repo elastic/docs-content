@@ -51,6 +51,10 @@ Refer to this [Python notebook](https://github.com/elastic/elasticsearch-labs/bl
 
 ::::
 
+::::{note}
+The relevance scores produced during reranking depend on the text similarity model used and can include negative values.
+::::
+
 ### Create an inference endpoint [ml-nlp-rerank-deploy-steps]
 
 1. In {{kib}}, navigate to the **Dev Console**.
