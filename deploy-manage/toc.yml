@@ -685,6 +685,7 @@ toc:
         children:
           - file: monitor/access-performance-metrics-on-elastic-cloud.md
           - file: monitor/ec-memory-pressure.md
+      - file: monitor/kibana-task-manager-health-monitoring.md
       - file: monitor/orchestrators.md
         children:
           - file: monitor/orchestrators/eck-metrics-configuration.md
@@ -697,7 +698,6 @@ toc:
               - file: monitor/orchestrators/ece-monitoring-ece-access.md
               - file: monitor/orchestrators/ece-proxy-log-fields.md
               - file: monitor/orchestrators/ece-monitoring-ece-set-retention.md
-      - file: monitor/kibana-task-manager-health-monitoring.md
       - file: monitor/logging-configuration.md
         children:
           - file: monitor/logging-configuration/elasticsearch-log4j-configuration-self-managed.md
@@ -705,8 +705,10 @@ toc:
           - file: monitor/logging-configuration/elasticsearch-deprecation-logs.md
           - file: monitor/logging-configuration/kibana-logging.md
             children:
-              - file: monitor/logging-configuration/kibana-log-settings-examples.md
-              - file: monitor/logging-configuration/kibana-logging-cli-configuration.md
+              - file: monitor/logging-configuration/kibana-log-levels.md
+              - file: monitor/logging-configuration/kib-advanced-logging.md
+                children:
+                  - file: monitor/logging-configuration/kibana-log-settings-examples.md
   - file: kibana-reporting-configuration.md
   - file: cloud-organization.md
     children:
