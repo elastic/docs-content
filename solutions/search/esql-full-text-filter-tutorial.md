@@ -2,7 +2,7 @@
 navigation_title: "Search and filter with ES|QL"
 ---
 
-# Tutorial: Full-text search and filtering with {{esql}}
+# Tutorial: Search and filter with {{esql}}
 
 :::{tip}
 This tutorial presents examples in {{esql}} syntax. Refer to [the Query DSL version](querydsl-full-text-filter-tutorial.md) for the equivalent examples in Query DSL syntax.
