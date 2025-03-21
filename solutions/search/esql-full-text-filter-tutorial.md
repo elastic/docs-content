@@ -330,4 +330,4 @@ This tutorial introduced the basics of full-text search and filtering in ES|QL. 
 
 - [Full-text search](full-text.md): Learn about the core components of full-text search in Elasticsearch.
   - [Text analysis](full-text/text-analysis-during-search.md): Understand how text is processed for full-text search.
-- [{{esql}} search functions](elasticsearch://reference/query-languages/esql/esql-functions-operators.md/esql-functions-operators.html#esql-search-functions): Explore the full list of search functions available in ES|QL.
+- [{{esql}} search functions](elasticsearch://reference/query-languages/esql/esql-functions-operators.md/esql-functions-operators.md#esql-search-functions): Explore the full list of search functions available in ES|QL.
