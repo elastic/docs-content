@@ -232,9 +232,13 @@ POST /_query?format=txt
 In this example, we're using the `boost` parameter to make matches in the title field twice as important as matches in other fields. We also request the `_score` metadata field to sort results by relevance.
 
 :::{tip}
-When working with relevance scoring in {{esql}}, it's important to understand how `_score` works. If you don't include `METADATA _score` in your query, you're only performing filtering operations with no relevance calculation. When you do include it, only full-text search functions like `match()` or the `:` operator will contribute to the relevance score. 
+When working with relevance scoring in {{esql}}, it's important to understand how `_score` works. If you don't include `METADATA _score` in your query, you're only performing filtering operations with no relevance calculation.
 
-Currently, filtering operations like range conditions and exact matches still contribute a constant score, which can affect results. This behavior will change in future versions, where these operations won't affect scoring at all. 
+In current versions, when you include `METADATA _score`, both full-text search functions (like `match()` or the `:` operator) and filtering operations (like range conditions and exact matches) contribute to the relevance score. Full-text search functions provide variable scores based on relevance, while filtering operations add a constant score component.
+
+This behavior will change in future versions, where only full-text search functions will affect scoring, and filtering operations won't contribute to the score at all.
+
+Remember that including `METADATA _score` doesn't automatically sort your results by relevance - you must explicitly use `SORT _score DESC` when the order of results matters. 
 :::
 
 ## Step 5: Filter and find exact matches
