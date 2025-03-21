@@ -47,7 +47,7 @@ We use an Availability Zone (AZ) concept in the architecture above. When running
 ::::
 
 
-The diagram illustrates an {{es}} cluster deployed across 3 availability zones (AZ). For production we recommend a minimum of 2 availability zones and 3 availability zones for mission critical applications. See [Plan for production](/deploy-manage/production-guidance.md) for more details. A cluster that is running in {{ecloud}} that has data nodes in only two AZs will create a third master-eligible node in a third AZ. High availability cannot be achieved without three zones for any distributed computing technology.
+The diagram illustrates an {{es}} cluster deployed across 3 availability zones (AZ). For production we recommend a minimum of 2 availability zones and 3 availability zones for mission critical applications. See [](/deploy-manage/production-guidance/availability-and-resilience/resilience-in-ech.md) for more details. A cluster that is running in {{ecloud}} that has data nodes in only two AZs will create a third master-eligible node in a third AZ. High availability cannot be achieved without three zones for any distributed computing technology.
 
 The number of data nodes shown for each tier (hot and frozen) is illustrative and would be scaled up depending on ingest volume and retention period. Hot nodes contain both primary and replica shards. By default, primary and replica shards are always guaranteed to be in different availability zones in {{ech}}, but when self-deploying [shard allocation awareness](../distributed-architecture/shard-allocation-relocation-recovery/shard-allocation-awareness.md) would need to be configured. Frozen nodes act as a large high-speed cache and retrieve data from the snapshot store as needed.
 

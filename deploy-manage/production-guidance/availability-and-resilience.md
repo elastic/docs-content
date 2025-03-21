@@ -14,11 +14,11 @@ applies_to:
 
 Distributed systems like {{es}} are designed to keep working even if some of their components have failed. As long as there are enough well-connected nodes to take over their responsibilities, an {{es}} cluster can continue operating normally if some of its nodes are unavailable or disconnected.
 
-{{es}} implements high availability at three key levels:
+{{es}} implements high availability (HA) at three key levels:
 
-* Node level – Running multiple nodes within the cluster to avoid single points of failure and maintain operational stability.
-* Cluster level – Ensuring redundancy by distributing nodes across availability zones to prevent failures from affecting the entire cluster.
-* Index level – Configuring shard replication to protect against data loss and improve search performance by distributing queries across multiple copies.
+* **Node level**: Running multiple nodes within the cluster to avoid single points of failure and maintain operational stability.
+* **Cluster level**: Ensuring redundancy by distributing nodes across availability zones to prevent failures from affecting the entire cluster.
+* **Index level**: Configuring shard replication to protect against data loss and improve search performance by distributing queries across multiple copies.
 
 Each of these HA mechanisms contributes to {{es}}’s resilience and scalability. The appropriate strategy depends on factors such as data criticality, query patterns, and infrastructure constraints. It is up to you to determine the level of resiliency and high availability that best fits your use case. This sections provides detailed guidance on designing a production-ready {{es}} deployment that balances availability, performance, and scalability.
 

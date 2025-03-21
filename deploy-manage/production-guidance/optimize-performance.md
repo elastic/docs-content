@@ -25,6 +25,4 @@ This section provides recommendations for various use cases.
 * [Tune approximate kNN search](optimize-performance/approximate-knn-search.md)
 * [Tune for disk usage](optimize-performance/disk-usage.md)
 
-% this one has been moved to manage data, not sure if it makes sense to mention here, as it's not about performance or prod recommendations
-% * [Use {{es}} for time series data](../../manage-data/use-case-use-elasticsearch-to-manage-time-series-data.md)
 

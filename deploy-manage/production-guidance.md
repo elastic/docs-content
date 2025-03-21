@@ -64,7 +64,7 @@ Other sections of the documentation provide important guidance for running {{sta
 
 ### Plan your data structure, availability, and formatting [ec_plan_your_data_structure_availability_and_formatting]
 
-* Build a [data architecture](/manage-data/lifecycle/data-tiers.md) that best fits your needs. Based on your own access and retention policies, you can add warm, cold, frozen data tiers, and automated deletion of old data.
+* Build a [data architecture](/manage-data/lifecycle/data-tiers.md) that best fits your needs. Based on your own access and retention policies, you can add warm, cold, and frozen data tiers, and automate deletion of old data.
 * Make your data [highly available](/deploy-manage/tools.md) for production environments or otherwise critical data stores, and take regular [backup snapshots](./tools/snapshot-and-restore.md), or consider [](./tools/cross-cluster-replication.md) to replicate indices across clusters.
 * Normalize event data to better analyze, visualize, and correlate your events by adopting the [Elastic Common Schema](asciidocalypse://docs/ecs/docs/reference/ecs-getting-started.md) (ECS). Elastic integrations use ECS out-of-the-box. If you are writing your own integrations, ECS is recommended.
 

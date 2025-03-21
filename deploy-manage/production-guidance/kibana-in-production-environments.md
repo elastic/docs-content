@@ -22,7 +22,7 @@ Additionally, the task manager enables distributed coordination across multiple 
 
 ::::{important} 
 * {{kib}} does not support rolling [upgrades](/deploy-manage/upgrade/deployment-or-cluster/kibana.md), and deploying mixed versions of {{kib}} can result in data loss or upgrade failures. Please shut down all instances of {{kib}} before performing an upgrade, and ensure all running {{kib}} instances have matching versions.
-* While {{kib}} isn’t terribly resource intensive, we still recommend running {{kib}} separate from  your {{es}} data or master nodes.
+* While {{kib}} isn’t resource intensive, we still recommend running {{kib}} separate from  your {{es}} data or master nodes.
 ::::
 
 ## Section overview
@@ -54,7 +54,7 @@ deployment:
   self: all
 ```
 
-To run multiple {{kib}} instances connected to the same {{es}} cluster, you need to adjust the configuration. See [Configuring {{kib}}](../deploy/self-managed/configure-kibana.md) for details on each setting.
+To run multiple {{kib}} instances connected to the same {{es}} cluster, you need to adjust the configuration. See the [{{kib}} configuration reference](kibana://reference/configuration-reference) for details on each setting.
 
 ::::{note}
 When adding multiple {{kib}} instances to the same deployment in {{ech}}, {{ece}}, or {{eck}}, the orchestrator applies the necessary configuration, requiring no manual setup.
@@ -132,10 +132,12 @@ elasticsearch.hosts:
   - http://elasticsearch2:9200
 ```
 
-Related configurations include `elasticsearch.sniffInterval`, `elasticsearch.sniffOnStart`, and `elasticsearch.sniffOnConnectionFault`. These can be used to automatically update the list of hosts as a cluster is resized.  Parameters can be found on the [settings page](kibana://reference/configuration-reference/general-settings.md).
+Related configurations include `elasticsearch.sniffInterval`, `elasticsearch.sniffOnStart`, and `elasticsearch.sniffOnConnectionFault`. These can be used to automatically update the list of hosts as a cluster is resized.  Parameters can be found in the [{{kib}} configuration reference](kibana://reference/configuration-reference/general-settings.md).
 
 ::::{note}
-The previous configuration can be useful when there is no load balancer or reverse proxy in front of {{es}}. If a load balancer is in place to distribute traffic among {{es}} instances, Kibana should be configured to connect to it instead. In orchestrated deployments, {{kib}} is automatically configured to connect to {{es}} through a load-balanced service.
+The previous configuration can be useful when there is no load balancer or reverse proxy in front of {{es}}. If a load balancer is in place to distribute traffic among {{es}} instances, Kibana should be configured to connect to it instead. 
+
+In [orchestrated deployments](/deploy-manage/deploy.md#about-orchestration), {{kib}} is automatically configured to connect to {{es}} through a load-balanced service.
 ::::
 
 ## Memory [memory] 

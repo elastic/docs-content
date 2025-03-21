@@ -10,7 +10,7 @@ applies_to:
 # Kibana reporting production considerations [reporting-production-considerations]
 
 
-To generate reports, {{kib}} uses the Chromium web browser, which runs on the server in headless mode. Chromium is an open-source project not related to Elastic, and is embedded into {{kib}}. Chromium may require [additional OS dependencies](/deploy-manage/kibana-reporting-configuration.md#install-reporting-packages) to run properly.
+To generate [reports](/explore-analyze/report-and-share.md), {{kib}} uses the Chromium web browser, which runs on the server in headless mode. Chromium is an open-source project not related to Elastic, and is embedded into {{kib}}. Chromium may require [additional OS dependencies](/deploy-manage/deploy/kibana-reporting-configuration.md#install-reporting-packages) to run properly.
 
 ::::{note} 
 Chromium is not embedded into {{kib}} for the Darwin (Mac OS) architecture. When running on Darwin, Reporting will download Chromium into the proper area of the {{kib}} installation path the first time the server starts. To separately download and install the browser, see [Manually install the Chromium browser for Darwin](../../explore-analyze/report-and-share/reporting-troubleshooting-pdf.md#reporting-manual-chromium-install).
