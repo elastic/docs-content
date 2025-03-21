@@ -43,7 +43,6 @@ toc:
       - file: elasticsearch/elasticsearch-reference/secure-cluster.md
       - file: elasticsearch/elasticsearch-reference/security-files.md
       - file: elasticsearch/elasticsearch-reference/security-limitations.md
-      - file: elasticsearch/elasticsearch-reference/shard-request-cache.md
   - file: kibana/kibana/index.md
     children:
       - file: kibana/kibana/reporting-production-considerations.md     

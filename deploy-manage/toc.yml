@@ -318,6 +318,7 @@ toc:
           - file: distributed-architecture/shard-allocation-relocation-recovery/index-level-shard-allocation.md
             children:
               - file: distributed-architecture/shard-allocation-relocation-recovery/delaying-allocation-when-node-leaves.md
+      - file: distributed-architecture/shard-request-cache.md
       - file: distributed-architecture/discovery-cluster-formation.md
         children:
           - file: distributed-architecture/discovery-cluster-formation/discovery-hosts-providers.md
