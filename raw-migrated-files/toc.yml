@@ -29,7 +29,6 @@ toc:
       - file: cloud/cloud/ec-security.md
   - file: docs-content/serverless/index.md
     children:
-      - file: docs-content/serverless/elasticsearch-http-apis.md
       - file: docs-content/serverless/observability-ai-assistant.md
       - file: docs-content/serverless/observability-apm-get-started.md
       - file: docs-content/serverless/observability-ecs-application-logs.md
