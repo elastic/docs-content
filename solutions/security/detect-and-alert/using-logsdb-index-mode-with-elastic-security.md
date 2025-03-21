@@ -21,13 +21,13 @@ With logsdb index mode, the original `_source` field is not stored in the index 
 
 When the `_source` is reconstructed, [modifications](elasticsearch://reference/elasticsearch/mapping-reference/mapping-source-field.md#synthetic-source-modifications) are possible. Therefore, there could be a mismatch between users' expectations and how fields are formatted.
 
-Continue reading to find out how this affects specific {{elastic-sec}} components.
+Continue reading to learn how logsdb index mode affects CPU and storage usage and specific {elastic-sec} components. 
 
 ::::{note} 
 
 The following statement applies to {{stack}} users only:
 
-Logsdb index mode is fully supported, and is recommended for all {{elastic-sec}} deployments. Users with existing {elastic-sec} deployments are advised to fully understand and accept the documented changes to detection alert documents, runtime fields, and rule actions (refer to the sections below), and ensure that their deployment has sufficient excess hot data tier CPU  capacity to support the logsdb ingest and indexing process. Enabling logsdb index mode without sufficient excess hot data tier CPU capacity may result in data ingestion backups and/or security detection rule timeouts and errors.
+Logsdb index mode is fully supported, and is recommended for all {{elastic-sec}} deployments. Users with existing {{elastic-sec}} deployments are advised to fully understand and accept the documented changes to detection alert documents, runtime fields, and rule actions (refer to the sections below), and ensure that their deployment has sufficient excess hot data tier CPU  capacity to support the logsdb ingest and indexing process. Enabling logsdb index mode without sufficient excess hot data tier CPU capacity may result in data ingestion backups and/or security detection rule timeouts and errors.
 
 ::::
 
