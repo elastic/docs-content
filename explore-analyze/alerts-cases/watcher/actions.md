@@ -158,7 +158,7 @@ Where `<id>` is the id of the watch and `<action_ids>` is a comma-separated list
 
 The following diagram illustrates the throttling decisions made for each action of a watch during its execution:
 
-:::{image} ../../../images/elasticsearch-reference-action-throttling.jpg
+:::{image} /explore-analyze/images/elasticsearch-reference-action-throttling.jpg
 :alt: action throttling
 :::
 

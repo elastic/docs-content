@@ -46,9 +46,8 @@ Use Elastic APM agents or an OpenTelemetry language SDK to instrument a service 
 
 ### Availability [apm-collect-data-availability]
 
-|     |     |     |
+| Language | Elastic APM agent | Elastic Distributions of OpenTelemetry (EDOT) |
 | --- | --- | --- |
-| **Language** | **Elastic APM agent** | **Elastic Distributions of OpenTelemetry (EDOT)** |
 | **Android** | Android agent | ![Not available](../../../images/observability-cross.svg "") |
 | **Go** | Go agent | ![Not available](../../../images/observability-cross.svg "") |
 | **iOS** | iOS agent | ![Not available](../../../images/observability-cross.svg "") |

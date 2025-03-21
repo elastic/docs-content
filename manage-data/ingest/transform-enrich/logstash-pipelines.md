@@ -8,11 +8,11 @@ applies_to:
 
 # Logstash pipelines [logstash-pipelines]
 
-This content applies to: [![Elasticsearch](../../../images/serverless-es-badge.svg "")](../../../solutions/search.md) [![Observability](../../../images/serverless-obs-badge.svg "")](../../../solutions/observability.md) [![Security](../../../images/serverless-sec-badge.svg "")](../../../solutions/security/elastic-security-serverless.md)
+This content applies to: [![Elasticsearch](/manage-data/images/serverless-es-badge.svg "")](../../../solutions/search.md) [![Observability](/manage-data/images/serverless-obs-badge.svg "")](../../../solutions/observability.md) [![Security](/manage-data/images/serverless-sec-badge.svg "")](../../../solutions/security/elastic-security-serverless.md)
 
 In **{{project-settings}} → {{manage-app}} → {{ls-pipelines-app}}**, you can control multiple {{ls}} instances and pipeline configurations.
 
-:::{image} ../../../images/serverless-logstash-pipelines-management.png
+:::{image} /manage-data/images/serverless-logstash-pipelines-management.png
 :alt: {{ls-pipelines-app}}"
 :screenshot:
 :::

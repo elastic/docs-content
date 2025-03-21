@@ -63,9 +63,8 @@ The URL parameter takes precedence over the HTTP headers. If neither is specifie
 ::::
 
 
-|     |     |     |
+| `format` | HTTP header | Description |
 | --- | --- | --- |
-| **`format`** | **HTTP header** | **Description** |
 | Human readable |
 | `csv` | `text/csv` | [Comma-separated values](https://en.wikipedia.org/wiki/Comma-separated_values) |
 | `json` | `application/json` | [JSON](https://www.json.org/) (JavaScript Object Notation) human-readable format |

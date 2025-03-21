@@ -10,7 +10,7 @@ mapped_pages:
 
 {{classification-cap}} is a {{ml}} process that predicts the class or category of a data point in a data set. For a simple example, consider how the shapes in the following graph can be differentiated and classified as "circles" and "triangles":
 
-:::{image} ../../../images/machine-learning-classification-vis.png
+:::{image} /explore-analyze/images/machine-learning-classification-vis.png
 :alt: Classification process
 :::
 
@@ -94,7 +94,7 @@ The multiclass confusion matrix provides a summary of the performance of the {{c
 
 This is an example of a confusion matrix for a binary problem:
 
-:::{image} ../../../images/machine-learning-confusion-matrix-binary.jpg
+:::{image} /explore-analyze/images/machine-learning-confusion-matrix-binary.jpg
 :alt: Confusion matrix of a binary problem
 :::
 
@@ -102,7 +102,7 @@ It is a two by two matrix because there are only two classes (`true` and `false`
 
 As the number of classes increases, the confusion matrix becomes more complex:
 
-:::{image} ../../../images/machine-learning-confusion-matrix-multiclass.jpg
+:::{image} /explore-analyze/images/machine-learning-confusion-matrix-multiclass.jpg
 :alt: Confusion matrix of a multiclass problem
 :::
 
@@ -134,7 +134,7 @@ The `class_score` is a function of the `class_probability` and has a value that 
 
 If your objective is to maximize accuracy, the scores are weighted to maximize the proportion of correct predictions in the training data set.
 
-:::{image} ../../../images/machine-learning-confusion-matrix-binary-accuracy.jpg
+:::{image} /explore-analyze/images/machine-learning-confusion-matrix-binary-accuracy.jpg
 :alt: A confusion matrix with the correct predictions highlighted
 :screenshot:
 :::
@@ -145,7 +145,7 @@ If there is an imbalanced class distribution in your training data, focusing on 
 
 By default, {{classanalysis}} jobs accept a slight degradation of the overall accuracy in return for greater sensitivity to classes that are predicted incorrectly. That is to say, their objective is to maximize the minimum recall. For example, in the context of a multi-class confusion matrix, the predictions of interest are in each row:
 
-:::{image} ../../../images/machine-learning-confusion-matrix-multiclass-recall.jpg
+:::{image} /explore-analyze/images/machine-learning-confusion-matrix-multiclass-recall.jpg
 :alt: A confusion matrix with a row highlighted
 :screenshot:
 :::
@@ -160,19 +160,19 @@ The model that you created is stored as {{es}} documents in internal indices. In
 
 1. To deploy {{dfanalytics}} model in a pipeline, navigate to  **Machine Learning** > **Model Management** > **Trained models** in the main menu, or use the [global search field](../../find-and-organize/find-apps-and-objects.md) in {{kib}}.
 2. Find the model you want to deploy in the list and click **Deploy model** in the **Actions** menu.
-   :::{image} ../../../images/machine-learning-ml-dfa-trained-models-ui.png
+   :::{image} /explore-analyze/images/machine-learning-ml-dfa-trained-models-ui.png
    :alt: The trained models UI in {{kib}}
    :screenshot:
    :::
 
 3. Create an {{infer}} pipeline to be able to use the model against new data through the pipeline. Add a name and a description or use the default values.
-   :::{image} ../../../images/machine-learning-ml-dfa-inference-pipeline.png
+   :::{image} /explore-analyze/images/machine-learning-ml-dfa-inference-pipeline.png
    :alt: Creating an inference pipeline
    :screenshot:
    :::
 
 4. Configure the pipeline processors or use the default settings.
-   :::{image} ../../../images/machine-learning-ml-dfa-inference-processor.png
+   :::{image} /explore-analyze/images/machine-learning-ml-dfa-inference-processor.png
    :alt: Configuring an inference processor
    :screenshot:
    :::
@@ -280,7 +280,7 @@ To predict whether a specific flight is delayed:
 
 1. Create a {{dfanalytics-job}}.
    You can use the wizard on the **{{ml-app}}** > **Data Frame Analytics** tab in {{kib}} or the [create {{dfanalytics-jobs}}](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-put-data-frame-analytics) API.
-   :::{image} ../../../images/machine-learning-flights-classification-job-1.jpg
+   :::{image} /explore-analyze/images/machine-learning-flights-classification-job-1.jpg
    :alt: Creating a {{dfanalytics-job}} in {{kib}}
    :screenshot:
    :::
@@ -290,7 +290,7 @@ To predict whether a specific flight is delayed:
       3. Choose `FlightDelay` as the dependent variable, which is the field that we want to predict with the {{classanalysis}}.
       4. Add `Cancelled`, `FlightDelayMin`, and `FlightDelayType` to the list of excluded fields. It is recommended to exclude fields that either contain erroneous data or describe the `dependent_variable`.
         The wizard includes a scatterplot matrix, which enables you to explore the relationships between the numeric fields. The color of each point is affected by the value of the {{depvar}} for that document, as shown in the legend. You can highlight an area in one of the charts and the corresponding area is also highlighted in the rest of the charts. You can use this matrix to help you decide which fields to include or exclude.
-   :::{image} ../../../images/machine-learning-flights-classification-scatterplot.png
+   :::{image} /explore-analyze/images/machine-learning-flights-classification-scatterplot.png
    :alt: A scatterplot matrix for three fields in {{kib}}
    :screenshot:
    :::
@@ -355,7 +355,7 @@ POST _ml/data_frame/analytics/model-flight-delays-classification/_start
 
 3. Check the job stats to follow the progress in {{kib}} or use the [get {{dfanalytics-jobs}} statistics API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-get-data-frame-analytics-stats).
 
-:::{image} ../../../images/machine-learning-flights-classification-details.jpg
+:::{image} /explore-analyze/images/machine-learning-flights-classification-details.jpg
 :alt: Statistics for a {{dfanalytics-job}} in {{kib}}
 :screenshot:
 :::
@@ -464,7 +464,7 @@ Now you have a new index that contains a copy of your source data with predictio
 
 When you view the {{classification}} results in {{kib}}, it shows the contents of the destination index in a tabular format. It also provides information about the analysis details, model evaluation metrics, total {{feat-imp}} values, and a scatterplot matrix.
 
-:::{image} ../../../images/machine-learning-flights-classification-results.jpg
+:::{image} /explore-analyze/images/machine-learning-flights-classification-results.jpg
 :alt: Destination index table for a classification job in {{kib}}
 :screenshot:
 :::
@@ -516,14 +516,14 @@ The class with the highest score is the prediction. In this example, `false` has
 
 If you chose to calculate {{feat-imp}}, the destination index also contains `ml.feature_importance` objects. Every field that is included in the analysis (known as a *feature* of the data point) is assigned a {{feat-imp}} value. It has both a magnitude and a direction (positive or negative), which indicates how each field affects a particular prediction. Only the most significant values (in this case, the top 10) are stored in the index. However, the trained model metadata also contains the average magnitude of the {{feat-imp}} values for each field across all the training data. You can view this summarized information in {{kib}}:
 
-:::{image} ../../../images/machine-learning-flights-classification-total-importance.jpg
+:::{image} /explore-analyze/images/machine-learning-flights-classification-total-importance.jpg
 :alt: Total {{feat-imp}} values in {{kib}}
 :screenshot:
 :::
 
 You can also see the {{feat-imp}} values for each individual prediction in the form of a decision plot:
 
-:::{image} ../../../images/machine-learning-flights-classification-importance.png
+:::{image} /explore-analyze/images/machine-learning-flights-classification-importance.png
 :alt: A decision plot for {{feat-imp}} values in {{kib}}
 :screenshot:
 :::
@@ -671,7 +671,7 @@ Though you can look at individual results and compare the predicted value (`ml.F
 
 {{kib}} provides a *normalized confusion matrix* that contains the percentage of occurrences where the analysis classified data points correctly with their actual class and the percentage of occurrences where it misclassified them.
 
-:::{image} ../../../images/machine-learning-flights-classification-evaluation.png
+:::{image} /explore-analyze/images/machine-learning-flights-classification-evaluation.png
 :alt: Evaluation of a classification job in {{kib}}
 :screenshot:
 :::
@@ -686,7 +686,7 @@ Likewise if you select other quadrants in the matrix, it shows the number of doc
 
 {{kib}} also provides the *receiver operating characteristic (ROC) curve* as part of the model evaluation. The plot compares the true positive rate (y-axis) to the false positive rate (x-axis) for each class; in this example, `true` and `false`. From this plot, the area under the curve (AUC) value is computed. It is a number between 0 and 1. The higher the AUC, the better the model is at predicting the classes correctly.
 
-:::{image} ../../../images/machine-learning-flights-classification-roc-curve.jpg
+:::{image} /explore-analyze/images/machine-learning-flights-classification-roc-curve.jpg
 :alt: Evaluation of a classification job in {{kib}} – ROC curve
 :screenshot:
 :::

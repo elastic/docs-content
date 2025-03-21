@@ -45,7 +45,7 @@ The `min_age` value is relative to the rollover time, not the index creation tim
 
 You can create the policy through {{kib}} or with the [create or update policy](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-put-lifecycle) API. To create the policy from {{kib}}, open the menu and go to **Stack Management > Index Lifecycle Policies**. Click **Create policy**.
 
-:::{image} ../../../images/elasticsearch-reference-create-policy.png
+:::{image} /manage-data/images/elasticsearch-reference-create-policy.png
 :alt: Create policy page
 :screenshot:
 :::
@@ -97,7 +97,7 @@ To enable the {{ilm-init}} to manage the data stream, the template configures on
 
 You can use the {{kib}} Create template wizard to add the template. From Kibana, open the menu and go to **Stack Management > Index Management**. In the **Index Templates** tab, click **Create template**.
 
-:::{image} ../../../images/elasticsearch-reference-create-index-template.png
+:::{image} /manage-data/images/elasticsearch-reference-create-index-template.png
 :alt: Create template page
 :::
 
@@ -236,7 +236,7 @@ To enable automatic rollover, the template configures two {{ilm-init}} settings:
 
 You can use the {{kib}} Create template wizard to add the template. To access the wizard, open the menu and go to **Stack Management > Index Management**. In the **Index Templates** tab, click **Create template**.
 
-![Create template page](../../../images/elasticsearch-reference-create-template-wizard.png "")
+![Create template page](/manage-data/images/elasticsearch-reference-create-template-wizard.png "")
 
 The create template request for the example template looks like this:
 

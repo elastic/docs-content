@@ -519,7 +519,7 @@ If you cannot connect to Elastic Maps Service from the {{kib}} server or browser
 
     Once {{hosted-ems}} is running, follow instructions from the webpage at `localhost:8080` to define a configuration file and optionally download a more detailed basemaps database.
 
-   :::{image} ../../../images/kibana-elastic-maps-server-instructions.png
+   :::{image} /explore-analyze/images/kibana-elastic-maps-server-instructions.png
    :alt: Set-up instructions
    :screenshot:
    :::
@@ -601,7 +601,7 @@ services:
 
 {{hosted-ems}} hosts vector layer boundaries and vector tile basemaps for the entire planet. Boundaries include world countries, global administrative regions, and specific country regions. Basemaps up to zoom level 8 are bundled in the Docker image. These basemaps are sufficient for maps and dashboards at the country level. To present maps with higher detail, follow the instructions of the front page to download and configure the appropriate basemaps database. The most detailed basemaps at zoom level 14 are good for street level maps, but require ~90GB of disk space.
 
-:::{image} ../../../images/kibana-elastic-maps-server-basemaps.png
+:::{image} /explore-analyze/images/kibana-elastic-maps-server-basemaps.png
 :alt: Basemaps download options
 :screenshot:
 :::

@@ -28,7 +28,7 @@ For example, when monitoring a set of servers, a rule might:
 
 Each project type supports a specific set of rule types. Each *rule type* provides its own way of defining the conditions to detect, but an expression formed by a series of clauses is a common pattern. For example, in an {{es}} query rule, you specify an index, a query, and a threshold, which uses a metric aggregation operation (`count`, `average`, `max`, `min`, or `sum`):
 
-:::{image} ../../images/serverless-es-query-rule-conditions.png
+:::{image} /explore-analyze/images/serverless-es-query-rule-conditions.png
 :alt: UI for defining rule conditions in an {{es}} query rule
 :screenshot:
 :::
@@ -56,14 +56,14 @@ Each action uses a connector, which provides connection information for a {{kib}
 
 After you select a connector, set the *action frequency*. If you want to reduce the number of notifications you receive without affecting their timeliness, some rule types support alert summaries. For example, if you create an {{es}} query rule, you can set the action frequency such that you receive summaries of the new, ongoing, and recovered alerts on a custom interval:
 
-:::{image} ../../images/serverless-es-query-rule-action-summary.png
+:::{image} /explore-analyze/images/serverless-es-query-rule-action-summary.png
 :alt: UI for defining rule conditions in an {{es}} query rule
 :screenshot:
 :::
 
 Alternatively, you can set the action frequency such that the action runs for each alert. If the rule type does not support alert summaries, this is your only available option. You must choose when the action runs (for example, at each check interval, only when the alert status changes, or at a custom action interval). You must also choose an action group, which affects whether the action runs. Each rule type has a specific set of valid action groups. For example, you can set *Run when* to `Query matched` or `Recovered` for the {{es}} query rule:
 
-:::{image} ../../images/serverless-es-query-rule-recovery-action.png
+:::{image} /explore-analyze/images/serverless-es-query-rule-recovery-action.png
 :alt: UI for defining a recovery action
 :screenshot:
 :::
@@ -93,7 +93,7 @@ To get notified only once when a server exceeds the threshold, you can set the a
 
 You can pass rule values to an action at the time a condition is detected. To view the list of variables available for your rule, click the "add rule variable" button:
 
-:::{image} ../../images/serverless-es-query-rule-action-variables.png
+:::{image} /explore-analyze/images/serverless-es-query-rule-action-variables.png
 :alt: Passing rule values to an action
 :screenshot:
 :::
@@ -110,7 +110,7 @@ Using the server monitoring example, each server with average CPU > 0.9 is track
 
 A rule consists of conditions, actions, and a schedule. When conditions are met, alerts are created that render actions and invoke them. To make action setup and update easier, actions use connectors that centralize the information used to connect with {{kib}} services and third-party integrations. The following example ties these concepts together:
 
-:::{image} ../../images/serverless-rule-concepts-summary.svg
+:::{image} /explore-analyze/images/serverless-rule-concepts-summary.svg
 :alt: Rules
 :screenshot:
 :::
