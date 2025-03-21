@@ -337,9 +337,8 @@ POST /cooking_blog/_doc
 Once the document has been processed by the underlying model running on the inference endpoint, you can perform semantic searches. Here's an example natural language query against the `semantic_description` field:
 
 ```esql
-FROM cooking_blog METADATA _score
+FROM cooking_blog
 | WHERE semantic_description:"What are some easy to prepare but nutritious plant-based meals?"
-| SORT _score DESC
 | LIMIT 5
   
 ```
