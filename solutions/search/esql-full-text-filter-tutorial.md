@@ -382,7 +382,7 @@ POST /_query?format=txt
 ```
 
 :::{tip}
-Follow this [tutorial](/solutions/search/semantic-search/semantic-search-semantic-text.md#semantic-text-semantic-search) if you'd like to test this workflow against a large dataset.
+Follow this [tutorial](/solutions/search/semantic-search/semantic-search-semantic-text.md) if you'd like to test this workflow against a large dataset.
 :::
 
 ## Learn more
