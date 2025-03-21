@@ -25,7 +25,7 @@ Multi get and multi term vectors API throw IndexNotFoundException when trying to
 
 ## Filtered index aliases [_filtered_index_aliases]
 
-Aliases containing filters are not a secure way to restrict access to individual documents, due to the limitations described in [Index and field names can be leaked when using aliases](../../../deploy-manage/security.md#alias-limitations). The {{stack-security-features}} provide a secure way to restrict access to documents through the [document-level security](../../../deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level.md) feature.
+Aliases containing filters are not a secure way to restrict access to individual documents, due to the limitations described in [Index and field names can be leaked when using aliases](/deploy-manage/security.md#alias-limitations). The {{stack-security-features}} provide a secure way to restrict access to documents through the [document-level security](/deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level.md) feature.
 
 
 ## Field and document level security limitations [field-document-limitations]
@@ -42,7 +42,7 @@ Until this limitation is addressed, avoid index and field names that contain con
 
 ## LDAP realm [_ldap_realm]
 
-The [LDAP Realm](../../../deploy-manage/users-roles/cluster-or-deployment-auth/ldap.md) does not currently support the discovery of nested LDAP Groups. For example, if a user is a member of `group_1` and `group_1` is a member of `group_2`, only `group_1` will be discovered. However, the [Active Directory Realm](../../../deploy-manage/users-roles/cluster-or-deployment-auth/active-directory.md) **does** support transitive group membership.
+The [LDAP Realm](/deploy-manage/users-roles/cluster-or-deployment-auth/ldap.md) does not currently support the discovery of nested LDAP Groups. For example, if a user is a member of `group_1` and `group_1` is a member of `group_2`, only `group_1` will be discovered. However, the [Active Directory Realm](/deploy-manage/users-roles/cluster-or-deployment-auth/active-directory.md) **does** support transitive group membership.
 
 
 ## Resource sharing check for users and API keys [can-access-resources-check]
