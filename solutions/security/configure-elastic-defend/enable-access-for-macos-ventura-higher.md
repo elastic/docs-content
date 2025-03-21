@@ -28,7 +28,7 @@ For macOS Ventura (13.0) and later, {{elastic-endpoint}} will attempt to load a 
 
 The following message appears during installation:
 
-:::{image} ../../../images/security-system_extension_blocked_warning_ven.png
+:::{image} /solutions/images/security-system_extension_blocked_warning_ven.png
 :alt: system extension blocked warning ven
 :screenshot:
 :::
@@ -36,21 +36,21 @@ The following message appears during installation:
 1. Click **Open System Settings**.
 2. In the left pane, click **Privacy & Security**.
 
-    :::{image} ../../../images/security-privacy_security_ven.png
+    :::{image} /solutions/images/security-privacy_security_ven.png
     :alt: privacy security ven
     :screenshot:
     :::
 
 3. On the right pane, scroll down to the Security section. Click **Allow** to allow the ElasticEndpoint system extension to load.
 
-    :::{image} ../../../images/security-allow_system_extension_ven.png
+    :::{image} /solutions/images/security-allow_system_extension_ven.png
     :alt: allow system extension ven
     :screenshot:
     :::
 
 4. Enter your username and password and click **Modify Settings** to save your changes.
 
-    :::{image} ../../../images/security-enter_login_details_to_confirm_ven.png
+    :::{image} /solutions/images/security-enter_login_details_to_confirm_ven.png
     :alt: enter login details to confirm ven
     :screenshot:
     :::
@@ -61,7 +61,7 @@ The following message appears during installation:
 
 After successfully loading the ElasticEndpoint system extension, an additional message appears, asking to allow {{elastic-endpoint}} to filter network content.
 
-:::{image} ../../../images/security-allow_network_filter_ven.png
+:::{image} /solutions/images/security-allow_network_filter_ven.png
 :alt: allow network filter ven
 :screenshot:
 :::
@@ -75,7 +75,7 @@ Click **Allow** to enable content filtering for the ElasticEndpoint system exten
 
 If you have not granted Full Disk Access, the following notification prompt will appear.
 
-:::{image} ../../../images/security-allow_full_disk_access_notification_ven.png
+:::{image} /solutions/images/security-allow_full_disk_access_notification_ven.png
 :alt: allow full disk access notification ven
 :screenshot:
 :::
@@ -90,21 +90,21 @@ The following instructions apply only to {{elastic-endpoint}} version 8.0.0 and 
 1. Open the **System Settings** application.
 2. In the left pane, select **Privacy & Security**.
 
-    :::{image} ../../../images/security-privacy_security_ven.png
+    :::{image} /solutions/images/security-privacy_security_ven.png
     :alt: privacy security ven
     :screenshot:
     :::
 
 3. From the right pane, select **Full Disk Access**.
 
-    :::{image} ../../../images/security-select_fda_ven.png
+    :::{image} /solutions/images/security-select_fda_ven.png
     :alt: Select Full Disk Access
     :screenshot:
     :::
 
 4. Enable `ElasticEndpoint` and `co.elastic` to properly enable Full Disk Access.
 
-    :::{image} ../../../images/security-allow_fda_ven.png
+    :::{image} /solutions/images/security-allow_fda_ven.png
     :alt: allow fda ven
     :screenshot:
     :::
@@ -115,7 +115,7 @@ If the endpoint is running {{elastic-endpoint}} version 7.17.0 or earlier:
 1. Click the **+** button to view **Finder**.
 2. The system may prompt you to enter your username and password if you haven’t already.
 
-    :::{image} ../../../images/security-enter_login_details_to_confirm_ven.png
+    :::{image} /solutions/images/security-enter_login_details_to_confirm_ven.png
     :alt: enter login details to confirm ven
     :screenshot:
     :::
@@ -124,7 +124,7 @@ If the endpoint is running {{elastic-endpoint}} version 7.17.0 or earlier:
 4. Click **Open**.
 5. In the **Privacy** tab, confirm that `ElasticEndpoint` and `co.elastic.systemextension` are selected to properly enable Full Disk Access.
 
-    :::{image} ../../../images/security-verify_fed_granted_ven.png
+    :::{image} /solutions/images/security-verify_fed_granted_ven.png
     :alt: Select Full Disk Access
     :screenshot:
     :::

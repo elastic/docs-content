@@ -12,8 +12,8 @@ applies_to:
 
 To ingest data, you can use:
 
-* The [{{agent}}](/reference/ingestion-tools/fleet/index.md) with the **{{elastic-defend}}** integration, which protects your hosts and sends logs, metrics, and endpoint security data to {{elastic-sec}}. See [Install {{elastic-defend}}](/solutions/security/configure-elastic-defend/install-elastic-defend.md).
-* The {{agent}} with integrations, which are available in the [Elastic Package Registry (EPR)](/reference/ingestion-tools/fleet/index.md#package-registry-intro). To install an integration that works with {{elastic-sec}}, go to the {{kib}} Home page or navigation menu and click **Add integrations**. On the Integrations page, click the **Security** category filter, then select an integration to view the installation instructions. For more information on integrations, refer to [{{integrations}}](https://docs.elastic.co/en/integrations).
+* The [{{agent}}](/reference/fleet/index.md) with the **{{elastic-defend}}** integration, which protects your hosts and sends logs, metrics, and endpoint security data to {{elastic-sec}}. See [Install {{elastic-defend}}](/solutions/security/configure-elastic-defend/install-elastic-defend.md).
+* The {{agent}} with integrations, which are available in the [Elastic Package Registry (EPR)](/reference/fleet/index.md#package-registry-intro). To install an integration that works with {{elastic-sec}}, go to the {{kib}} Home page or navigation menu and click **Add integrations**. On the Integrations page, click the **Security** category filter, then select an integration to view the installation instructions. For more information on integrations, refer to [{{integrations}}](https://docs.elastic.co/en/integrations).
 * **{{beats}}** shippers installed for each system you want to monitor.
 * The {{agent}} to send data from Splunk to {{elastic-sec}}. See [Get started with data from Splunk](/solutions/observability/get-started/add-data-from-splunk.md).
 * Third-party collectors configured to ship ECS-compliant data. [*Elastic Security ECS field reference*](/reference/security/fields-and-object-schemas/siem-field-reference.md) provides a list of ECS fields used in {{elastic-sec}}.
@@ -58,7 +58,7 @@ On the Integrations page, you can select the **Beats only** filter to only view 
 ::::
 
 
-:::{image} ../../../images/security-add-integrations.png
+:::{image} /solutions/images/security-add-integrations.png
 :alt: Shows button to add integrations
 :screenshot:
 :::
@@ -97,17 +97,17 @@ To populate **Hosts** data, enable these modules:
 * [Auditbeat file integrity module - Linux, macOS, Windows](beats://reference/auditbeat/auditbeat-module-file_integrity.md)
 * [Filebeat system module - Linux system logs](beats://reference/filebeat/filebeat-module-system.md)
 * [Filebeat Santa module  - macOS security events](beats://reference/filebeat/filebeat-module-santa.md)
-* [Winlogbeat - Windows event logs](beats://reference/winlogbeat/_winlogbeat_overview.md)
+* [Winlogbeat - Windows event logs](beats://reference/winlogbeat/index.md)
 
 To populate **Network** data, enable Packetbeat protocols and Filebeat modules:
 
-* [{{packetbeat}}](beats://reference/packetbeat/packetbeat-overview.md)
+* [{{packetbeat}}](beats://reference/packetbeat/index.md)
 
     * [DNS](beats://reference/packetbeat/packetbeat-dns-options.md)
     * [TLS](beats://reference/packetbeat/configuration-tls.md)
     * [Other supported protocols](beats://reference/packetbeat/configuration-protocols.md)
 
-* [{{filebeat}}](beats://reference/filebeat/filebeat-overview.md)
+* [{{filebeat}}](beats://reference/filebeat/index.md)
 
     * [Zeek NMS module](beats://reference/filebeat/filebeat-module-zeek.md)
     * [Suricata IDS module](beats://reference/filebeat/filebeat-module-suricata.md)

@@ -64,7 +64,7 @@ With **Role mappings**, you can:
 * View your configured role mappings
 * Create, edit, or delete role mappings
 
-![Role mappings](../../../images/kibana-role-mappings-grid.png "")
+![Role mappings](/deploy-manage/images/kibana-role-mappings-grid.png "")
 
 ### Required permissions [_required_permissions_8]
 
@@ -87,11 +87,11 @@ Let’s create a `sales-users` role mapping, which assigns a `sales` role to use
 
 1. Give the role mapping a name, and assign the `sales` role:
 
-  ![Create role mapping, step 1](../../../images/kibana-role-mappings-create-step-1.png "")
+  ![Create role mapping, step 1](/deploy-manage/images/kibana-role-mappings-create-step-1.png "")
 
 2. Define the two rules, making sure to set the group to **Any are true**:
 
-  ![Create role mapping, step 2](../../../images/kibana-role-mappings-create-step-2.gif "")
+  ![Create role mapping, step 2](/deploy-manage/images/kibana-role-mappings-create-step-2.gif "")
 
 1. When you're finished defining rules, click **Save role mapping**.
 

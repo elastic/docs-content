@@ -10,7 +10,7 @@ mapped_pages:
 
 To share a dashboard with a larger audience, click **Share** in the toolbar. For detailed information about the sharing options, refer to [Reporting](../report-and-share.md).
 
-:::{image} ../../images/share-dashboard-copy-link.gif
+:::{image} /explore-analyze/images/share-dashboard-copy-link.gif
 :alt: getting a shareable link for a dashboard
 :::
 
@@ -28,6 +28,6 @@ You can export dashboards from **Stack Management** > **Saved Objects**. To conf
 2. Enable **Include related objects** if you want that objects associated to the selected dashboard, such as data views and visualizations, also get exported. This option is enabled by default and recommended if you plan to import that dashboard again in a different space or cluster.
 3. Select **Export**.
 
-![Option to export a dashboard](../../images/kibana-dashboard-export-saved-object.png "")
+![Option to export a dashboard](/explore-analyze/images/kibana-dashboard-export-saved-object.png "")
 
 To automate {{kib}}, you can export dashboards as NDJSON using the [Export saved objects API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-saved-objects). It is important to export dashboards with all necessary references.

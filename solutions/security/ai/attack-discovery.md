@@ -33,7 +33,7 @@ This page describes:
 
 The `Attack Discovery: All` privilege allows you to use Attack Discovery.
 
-![attack-discovery-rbac](../../../images/security-attck-disc-rbac.png)
+![attack-discovery-rbac](/solutions/images/security-attck-disc-rbac.png)
 
 ## Generate discoveries [attack-discovery-generate-discoveries]
 
@@ -48,7 +48,7 @@ When you access Attack Discovery for the first time, you’ll need to select an 
    :::
 
 
-    :::{image} ../../../images/security-attck-disc-select-model-empty.png
+    :::{image} /solutions/images/security-attck-disc-select-model-empty.png
     :alt: attck disc select model empty
     :::
 
@@ -57,11 +57,11 @@ When you access Attack Discovery for the first time, you’ll need to select an 
 It may take from a few seconds up to several minutes to generate discoveries, depending on the number of alerts and the model you selected.
 
 ::::{important}
-By default, Attack Discovery analyzes up to 100 alerts within this timeframe, but you can expand this up to 500 by clicking the settings icon (![Settings icon](../../../images/security-icon-settings.png "title=20px")) next to the model selection menu and adjusting the **Alerts** slider. Note that sending more alerts than your chosen LLM can handle may result in an error.
+By default, Attack Discovery analyzes up to 100 alerts within this timeframe, but you can expand this up to 500 by clicking the settings icon (![Settings icon](/solutions/images/security-icon-settings.png "title=20px")) next to the model selection menu and adjusting the **Alerts** slider. Note that sending more alerts than your chosen LLM can handle may result in an error.
 ::::
 
 
-:::{image} ../../../images/security-attck-disc-alerts-number-menu.png
+:::{image} /solutions/images/security-attck-disc-alerts-number-menu.png
 :alt: Attack Discovery's settings menu
 :width: 600px
 :::
@@ -82,7 +82,7 @@ Each discovery includes the following information describing the potential threa
 2. The number of associated alerts and which parts of the [MITRE ATT&CK matrix](https://attack.mitre.org/) they correspond to.
 3. The implicated entities (users and hosts), and what suspicious activity was observed for each.
 
-:::{image} ../../../images/security-attck-disc-example-disc.png
+:::{image} /solutions/images/security-attck-disc-example-disc.png
 :alt: Attack Discovery detail view
 :::
 
@@ -92,11 +92,11 @@ Each discovery includes the following information describing the potential threa
 There are several ways you can incorporate discoveries into your {{elastic-sec}} workflows:
 
 * Click an entity’s name to open the user or host details flyout and view more details that may be relevant to your investigation.
-* Hover over an entity’s name to either add the entity to Timeline (![Add to timeline icon](../../../images/security-icon-add-to-timeline.png "title=70%")) or copy its field name and value to the clipboard (![Copy to clipboard icon](../../../images/security-icon-copy.png "title=70%")).
+* Hover over an entity’s name to either add the entity to Timeline (![Add to timeline icon](/solutions/images/security-icon-add-to-timeline.png "title=70%")) or copy its field name and value to the clipboard (![Copy to clipboard icon](/solutions/images/security-icon-copy.png "title=70%")).
 * Click **Take action**, then select **Add to new case** or **Add to existing case** to add a discovery to a [case](/solutions/security/investigate/cases.md). This makes it easy to share the information with your team and other stakeholders.
 * Click **Investigate in timeline** to explore the discovery in [Timeline](/solutions/security/investigate/timeline.md).
 * Click **View in AI Assistant** to attach the discovery to a conversation with AI Assistant. You can then ask follow-up questions about the discovery or associated alerts.
 
-:::{image} ../../../images/security-add-discovery-to-assistant.gif
+:::{image} /solutions/images/security-add-discovery-to-assistant.gif
 :alt: Attack Discovery view in AI Assistant
 :::

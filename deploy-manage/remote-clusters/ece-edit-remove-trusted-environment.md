@@ -28,7 +28,7 @@ With this method, you can only remove trusted environments relying exclusively o
 2. In the list of trusted environments, locate the one you want to remove.
 3. Remove it using the corresponding `delete` icon.
 
-   :::{image} ../../images/cloud-enterprise-delete-trust-environment.png
+   :::{image} /deploy-manage/images/cloud-enterprise-delete-trust-environment.png
    :alt: button for deleting a trusted environment
    :::
 
@@ -42,7 +42,7 @@ With this method, you can only remove trusted environments relying exclusively o
 2. In the list of trusted environments, locate the one you want to edit.
 3. Open its details by selecting the `Edit` icon.
 
-   :::{image} ../../images/cloud-enterprise-edit-trust-environment.png
+   :::{image} /deploy-manage/images/cloud-enterprise-edit-trust-environment.png
    :alt: button for editing a trusted environment
    :::
 

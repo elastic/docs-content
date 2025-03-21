@@ -11,7 +11,7 @@ You have a smaller {{es}} cluster and you’ve noticed that performance seems to
 
 When you look in the **Cluster Performance Metrics** section of the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body), you get the following metrics:
 
-:::{image} /images/cloud-metrics-credits.png
+:::{image} /troubleshoot/images/cloud-metrics-credits.png
 :alt: CPU usage versus CPU credits over time
 :::
 

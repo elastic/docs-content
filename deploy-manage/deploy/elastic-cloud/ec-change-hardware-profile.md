@@ -28,20 +28,20 @@ Note that if there’s no indication that a newer version is available, that mea
 
 1. On the deployment overview page, next to your current hardware profile where there is indication of a newer available version, select **Edit**.
 
-    :::{image} ../../../images/cloud-ec-new-hardware-profile-version.png
+    :::{image} /deploy-manage/images/cloud-ec-new-hardware-profile-version.png
     :alt: Badge indicating new hardware profile version
     :width: 50%
     :::
 
 2. Preview the changes for the new hardware profile version.
 
-    :::{image} ../../../images/cloud-ec-preview-hardware-profile.png
+    :::{image} /deploy-manage/images/cloud-ec-preview-hardware-profile.png
     :alt: Notification showing that a new profile version is there
     :::
 
     The configuration screen summarizes hardware changes for each component of your deployment.
 
-    :::{image} ../../../images/cloud-ec-preview-profile-changes.png
+    :::{image} /deploy-manage/images/cloud-ec-preview-profile-changes.png
     :alt: Preview of the changes between the 2 versions of the hardware profile
     :::
 
@@ -55,7 +55,7 @@ When the current hardware profile of your deployment isn’t the most optimal on
 1. On the deployment overview page, next to your current hardware profile, select **Edit**.
 2. Select the hardware profile you wish to change to. The configuration screen summarizes hardware changes for each component of your deployment.
 
-    :::{image} ../../../images/cloud-ec-preview-different-profile-changes.png
+    :::{image} /deploy-manage/images/cloud-ec-preview-different-profile-changes.png
     :alt: Preview of the changes between the 2 hardware profiles
     :::
 

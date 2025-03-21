@@ -42,7 +42,7 @@ If you have a lot of log partitions, use the following to filter your data:
 * Hover over a time range to see the log rate for each partition.
 * Click or hover on a partition name to show, hide, or highlight the partition values.
 
-:::{image} ../../../images/observability-anomalies-chart.png
+:::{image} /solutions/images/observability-anomalies-chart.png
 :alt: Anomalies chart
 :screenshot:
 :::

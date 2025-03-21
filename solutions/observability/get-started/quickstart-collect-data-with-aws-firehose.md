@@ -153,7 +153,7 @@ The following table shows the type of data ingested by the supported AWS service
 1. In {{kib}}, go to the **Observability** UI and click **Add Data**.
 2. Under **What do you want to monitor?** select **Cloud**, **AWS**, and then select **AWS Firehose**.
 
-    :::{image} ../../../images/observability-quickstart-aws-firehose-entry-point.png
+    :::{image} /solutions/images/observability-quickstart-aws-firehose-entry-point.png
     :alt: AWS Firehose entry point
     :screenshot:
     :::
@@ -171,7 +171,7 @@ The following table shows the type of data ingested by the supported AWS service
 2. In your {{obs-serverless}} project, go to **Add Data**.
 3. Under **What do you want to monitor?** select **Cloud**, **AWS**, and then select **AWS Firehose**.
 
-    :::{image} ../../../images/serverless-quickstart-aws-firehose-entry-point.png
+    :::{image} /solutions/images/serverless-quickstart-aws-firehose-entry-point.png
     :alt: AWS Firehose entry point
     :screenshot:
     :::
@@ -187,14 +187,14 @@ The following table shows the type of data ingested by the supported AWS service
 
 After installation is complete and all relevant data is flowing into Elastic, the **Visualize your data** section allows you to access the different dashboards for the various services.
 
-:::{image} ../../../images/observability-quickstart-aws-firehose-dashboards.png
+:::{image} /solutions/images/observability-quickstart-aws-firehose-dashboards.png
 :alt: AWS Firehose dashboards
 :screenshot:
 :::
 
 Here is an example of the VPC Flow logs dashboard:
 
-:::{image} ../../../images/observability-quickstart-aws-firehose-vpc-flow.png
+:::{image} /solutions/images/observability-quickstart-aws-firehose-vpc-flow.png
 :alt: AWS Firehose VPC flow
 :screenshot:
 :::

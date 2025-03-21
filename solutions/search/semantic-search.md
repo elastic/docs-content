@@ -27,7 +27,7 @@ You have several options for using NLP models for semantic search in the {{stack
 
 This diagram summarizes the relative complexity of each workflow:
 
-:::{image} ../../images/elasticsearch-reference-semantic-options.svg
+:::{image} /solutions/images/elasticsearch-reference-semantic-options.svg
 :alt: Overview of semantic search workflows in {{es}}
 :::
 

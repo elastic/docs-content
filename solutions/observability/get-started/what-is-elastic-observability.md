@@ -11,7 +11,7 @@ mapped_urls:
 
 [Elastic {{observability}}](https://www.elastic.co/observability) provides a single stack to unify your logs, infrastructure metrics, application traces, user experience data, synthetics, and universal profiling. Ingest your data directly to {{es}}, where you can further process and enhance the data, before visualizing it and adding alerts in {{kib}}.
 
-:::{image} ../../../images/observability-what-is-observability.svg
+:::{image} /solutions/images/observability-what-is-observability.svg
 :alt: Elastic {{observability}} overview diagram
 :::
 
@@ -21,7 +21,7 @@ Analyze log data from your hosts, services, Kubernetes, Apache, and many more.
 
 In **Logs Explorer** (powered by Discover), you can quickly search and filter your log data, get information about the structure of the fields, and display your findings in a visualization.
 
-:::{image} ../../../images/serverless-log-explorer-overview.png
+:::{image} /solutions/images/serverless-log-explorer-overview.png
 :alt: Logs Explorer showing log events
 :screenshot:
 :::
@@ -39,7 +39,7 @@ Instrument your code and collect performance data and errors at runtime by insta
 
 The **Service** inventory provides a quick, high-level overview of the health and general performance of all instrumented services.
 
-:::{image} ../../../images/serverless-services-inventory.png
+:::{image} /solutions/images/serverless-services-inventory.png
 :alt: Service inventory showing health and performance of instrumented services
 :screenshot:
 :::
@@ -53,7 +53,7 @@ Monitor system and service metrics from your servers, Docker, Kubernetes, Promet
 
 On the {{observability}} **Overview** page, the **Hosts** table shows your top hosts with the most significant resource footprints. These metrics help you evaluate host efficiency and determine if resource consumption is impacting end users.
 
-:::{image} ../../../images/observability-metrics-summary.png
+:::{image} /solutions/images/observability-metrics-summary.png
 :alt: Summary of Hosts on the {{observability}} overview page
 :screenshot:
 :::
@@ -71,7 +71,7 @@ Quantify and analyze the perceived performance of your web application with {{us
 
 On the {{observability}} **Overview** page, the **{{user-experience}}** chart provides a snapshot of core web vitals for the service with the most traffic.
 
-:::{image} ../../../images/observability-obs-overview-ue.png
+:::{image} /solutions/images/observability-obs-overview-ue.png
 :alt: Summary of {{user-experience}} metrics on the {{observability}} overview page
 :screenshot:
 :::
@@ -101,7 +101,7 @@ Stay aware of potential issues in your environments with Observability’s alert
 
 On the **Alerts** page, the **Alerts** table provides a snapshot of alerts occurring within the specified time frame. The table includes the alert status, when it was last updated, the reason for the alert, and more.
 
-:::{image} ../../../images/serverless-observability-alerts-overview.png
+:::{image} /solutions/images/serverless-observability-alerts-overview.png
 :alt: Summary of Alerts on the Observability overview page
 :screenshot:
 :::
@@ -115,7 +115,7 @@ Set clear, measurable targets for your service performance, based on factors lik
 
 From the SLO overview list, you can see all of your SLOs and a quick summary of what’s happening in each one:
 
-:::{image} ../../../images/serverless-slo-dashboard.png
+:::{image} /solutions/images/serverless-slo-dashboard.png
 :alt: Dashboard showing list of SLOs
 :screenshot:
 :::
@@ -126,7 +126,7 @@ From the SLO overview list, you can see all of your SLOs and a quick summary of 
 
 Collect and share information about observability issues by creating cases. Cases allow you to track key investigation details, add assignees and tags to your cases, set their severity and status, and add alerts, comments, and visualizations. You can also send cases to third-party systems, such as ServiceNow and Jira.
 
-:::{image} ../../../images/serverless-cases.png
+:::{image} /solutions/images/serverless-cases.png
 :alt: Screenshot showing list of cases
 :screenshot:
 :::
@@ -141,7 +141,7 @@ Reduce the time and effort required to detect, understand, investigate, and reso
 * Find and investigate the causes of unusual spikes or drops in log rates.
 * Detect distribution changes, trend changes, and other statistically significant change points in a metric of your time series data.
 
-:::{image} ../../../images/serverless-log-rate-analysis.png
+:::{image} /solutions/images/serverless-log-rate-analysis.png
 :alt: Log rate analysis page showing log rate spike
 :screenshot:
 :::

@@ -37,7 +37,7 @@ This could be for any of these reasons:
 
 * You have explicitly chosen not to send these metrics. You may choose to limit the metrics sent to Elastic to save on space and improve cluster performance. For example, the System integration has options to choose which metrics you want to send. You can [edit the integration policy](https://www.elastic.co/guide/en/fleet/current/edit-or-delete-integration-policy.html) to begin collecting the missing metrics. For example:
 
-    :::{image} ../../../images/serverless-turn-on-system-metrics.png
+    :::{image} /solutions/images/serverless-turn-on-system-metrics.png
     :alt: Screenshot showing system cpu and diskio metrics selected for collection
     :screenshot:
     :::

@@ -30,14 +30,14 @@ You need to have a compatible visualization on **Dashboard** to create an {{anom
 3. Select **Create {{anomaly-job}}**. The option is only displayed if the visualization can be converted to an {{anomaly-job}} configuration.
 4. (Optional) Select the layer from which the {{anomaly-job}} is created.
 
-:::{image} ../../../images/machine-learning-create-ad-job-from-lens.jpg
+:::{image} /explore-analyze/images/machine-learning-create-ad-job-from-lens.jpg
 :alt: A screenshot of a chart with the Options menu opened
 :screenshot:
 :::
 
 If the visualization has multiple compatible layers, you can select which layer to use for creating the {{anomaly-job}}.
 
-:::{image} ../../../images/machine-learning-select-layer-for-job.jpg
+:::{image} /explore-analyze/images/machine-learning-select-layer-for-job.jpg
 :alt: A screenshot of a chart with the Options menu opened
 :screenshot:
 :::

@@ -37,7 +37,7 @@ You can manage custom roles from within your project, in **{{project-settings}} 
 
 Cluster privileges grant access to monitoring and management features in {{es}}. They also enable some stack management capabilities in your project.
 
-:::{image} ../../images/serverless-custom-roles-cluster-privileges.png
+:::{image} /deploy-manage/images/serverless-custom-roles-cluster-privileges.png
 :alt: Create a custom role and define {{es}} cluster privileges
 :screenshot:
 :::
@@ -49,7 +49,7 @@ Refer to [cluster privileges](/deploy-manage/users-roles/cluster-or-deployment-a
 
 Each role can grant access to multiple data indices, and each index can have a different set of privileges. Typically, you will grant the `read` and `view_index_metadata` privileges to each index that you expect your users to work with. For example, grant access to indices that match an `acme-marketing-*` pattern:
 
-:::{image} ../../images/serverless-custom-roles-index-privileges.png
+:::{image} /deploy-manage/images/serverless-custom-roles-index-privileges.png
 :alt: Create a custom role and define {{es}} index privileges
 :screenshot:
 :::
@@ -81,7 +81,7 @@ Document-level and field-level security affords you even more granularity when i
 
 When you create a custom role, click **Add Kibana privilege** to grant access to specific features. The features that are available vary depending on the project type. For example, in {{es-serverless}}:
 
-:::{image} ../../images/serverless-custom-roles-kibana-privileges.png
+:::{image} /deploy-manage/images/serverless-custom-roles-kibana-privileges.png
 :alt: Create a custom role and define {{kib}} privileges
 :screenshot:
 :::

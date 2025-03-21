@@ -26,7 +26,7 @@ Population analysis is resource-efficient and scales well, enabling the analysis
 2. Click **Create job**, select the {{data-source}} you want to analyze.
 3. Select the **Population** wizard from the list.
 4. Choose a population field - it’s the `clientip` field in this example - and the metric you want to use for the analysis - `Mean(bytes)` in this example.
-   :::{image} ../../../images/machine-learning-ml-population-wizard.png
+   :::{image} /explore-analyze/images/machine-learning-ml-population-wizard.png
    :alt: Creating a population job in Kibana
    :screenshot:
    :::
@@ -71,14 +71,14 @@ PUT _ml/anomaly_detectors/population
 
 Use the **Anomaly Explorer** in {{kib}} to view the analysis results:
 
-:::{image} ../../../images/machine-learning-ml-population-anomalies.png
+:::{image} /explore-analyze/images/machine-learning-ml-population-anomalies.png
 :alt: Population results in the Anomaly Explorer
 :screenshot:
 :::
 
 The results are often quite sparse. There might be just a few data points for the selected time period. Population analysis is particularly useful when you have many entities and the data for specific entitles is sporadic or sparse. If you click on a section in the timeline or swim lanes, you can see more details about the anomalies:
 
-:::{image} ../../../images/machine-learning-ml-population-anomaly.png
+:::{image} /explore-analyze/images/machine-learning-ml-population-anomaly.png
 :alt: Anomaly details for a specific user
 :screenshot:
 :::

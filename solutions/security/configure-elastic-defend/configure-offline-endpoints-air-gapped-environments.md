@@ -89,7 +89,7 @@ Set the `advanced.artifacts.global.base_url` advanced setting for each [{{elasti
 * `mac.advanced.artifacts.global.base_url`
 * `windows.advanced.artifacts.global.base_url`
 
-:::{image} ../../../images/security-offline-adv-settings.png
+:::{image} /solutions/images/security-offline-adv-settings.png
 :alt: Integration policy advanced settings
 :screenshot:
 :::
@@ -171,7 +171,7 @@ Set the `advanced.artifacts.global.base_url` advanced setting for each [{{elasti
 * `mac.advanced.artifacts.global.base_url`
 * `windows.advanced.artifacts.global.base_url`
 
-:::{image} ../../../images/security-offline-adv-settings.png
+:::{image} /solutions/images/security-offline-adv-settings.png
 :alt: Integration policy advanced settings
 :screenshot:
 :::
@@ -206,7 +206,7 @@ Replace `https://artifacts.security.elastic.co` in the command above with your l
 
 After updating the {{elastic-endpoint}} configuration to read from the mirror server, use {{kib}}'s [Discover view](../../../explore-analyze/discover.md) to search the `metrics-*` data view for `endpoint.policy` response documents, then check the installed version (`Endpoint.policy.applied.artifacts.global.version`) and compare with the output from the command above:
 
-:::{image} ../../../images/security-offline-endpoint-version-discover.png
+:::{image} /solutions/images/security-offline-endpoint-version-discover.png
 :alt: Searching for `endpoint.policy` in Discover
 :screenshot:
 :::
