@@ -23,7 +23,7 @@ The Endpoints page allows administrators to view and manage endpoints that are r
 
 The **Endpoints** list displays all hosts running {{elastic-defend}} and their relevant integration details. Endpoints appear in chronological order, with newly added endpoints at the top.
 
-:::{image} ../../../images/security-endpoints-pg.png
+:::{image} /solutions/images/security-endpoints-pg.png
 :alt: Endpoints page
 :screenshot:
 :::
@@ -64,7 +64,7 @@ The Endpoints list provides the following data:
 
 Click any link in the **Endpoint** column to display host details in a flyout. You can also use the **Take Action** menu button to perform the same actions as those listed in the Actions context menu, such as isolating the host, viewing host details, and viewing or reassigning the agent policy.
 
-:::{image} ../../../images/security-host-flyout.png
+:::{image} /solutions/images/security-host-flyout.png
 :alt: Endpoint details flyout
 :screenshot:
 :::
@@ -74,7 +74,7 @@ Click any link in the **Endpoint** column to display host details in a flyout. Y
 
 The endpoint details flyout also includes the **Response actions history** tab, which provides a log of the [response actions](/solutions/security/endpoint-response-actions.md) performed on the endpoint, such as isolating a host or terminating a process. You can use the tools at the top to filter the information displayed in this view. Refer to [](/solutions/security/endpoint-response-actions/response-actions-history.md) for more details.
 
-:::{image} ../../../images/security-response-actions-history-endpoint-details.png
+:::{image} /solutions/images/security-response-actions-history-endpoint-details.png
 :alt: Response actions history with a few past actions
 :screenshot:
 :::
@@ -91,7 +91,7 @@ Users must have permission to read/write to {{fleet}} APIs to make changes to th
 ::::
 
 
-:::{image} ../../../images/security-integration-pg.png
+:::{image} /solutions/images/security-integration-pg.png
 :alt: Integration page
 :screenshot:
 :::
@@ -103,7 +103,7 @@ Advanced settings are not recommended for most users.
 ::::
 
 
-:::{image} ../../../images/security-integration-advanced-settings.png
+:::{image} /solutions/images/security-integration-advanced-settings.png
 :alt: Integration page
 :screenshot:
 :::
@@ -130,7 +130,7 @@ If you need help troubleshooting a configuration failure, refer to [](/troublesh
 ::::
 
 
-:::{image} ../../../images/security-config-status.png
+:::{image} /solutions/images/security-config-status.png
 :alt: Config status details
 :screenshot:
 :::
@@ -140,7 +140,7 @@ If you need help troubleshooting a configuration failure, refer to [](/troublesh
 
 To filter the Endpoints list, use the search bar to enter a query using [{{kib}} Query Language (KQL)](/explore-analyze/query-filter/languages/kql.md). To refresh the search results, click **Refresh**.
 
-:::{image} ../../../images/security-filter-endpoints.png
+:::{image} /solutions/images/security-filter-endpoints.png
 :alt: filter endpoints
 :screenshot:
 :::

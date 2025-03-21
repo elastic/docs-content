@@ -120,7 +120,7 @@ The goal of {{oldetection}} is to find the most unusual documents in an index. L
    In this example, we’ll use the web logs sample data and pivot the data such that we get a new index that contains a network usage summary for each client IP.
    In particular, create a {{transform}} that calculates the number of occasions when a specific client IP communicated with the network (`@timestamp.value_count`), the sum of the bytes that are exchanged between the network and the client’s machine (`bytes.sum`), the maximum exchanged bytes during a single occasion (`bytes.max`), and the total number of requests (`request.value_count`) initiated by a specific client IP.
    You can preview the {{transform}} before you create it in **{{stack-manage-app}}** > **Transforms**:
-   :::{image} ../../../images/machine-learning-logs-transform-preview.jpg
+   :::{image} /explore-analyze/images/machine-learning-logs-transform-preview.jpg
    :alt: Creating a {{transform}} in {{kib}}
    :screenshot:
    :::
@@ -237,13 +237,13 @@ POST _transform/logs-by-clientip/_start
 4. Create a {{dfanalytics-job}} to detect outliers in the new entity-centric index.
 
    In the wizard on the **Machine Learning** > **Data Frame Analytics** page in {{kib}}, select your new {{data-source}} then use the default values for {{oldetection}}. For example:
-   :::{image} ../../../images/machine-learning-weblog-outlier-job-1.jpg
+   :::{image} /explore-analyze/images/machine-learning-weblog-outlier-job-1.jpg
    :alt: Create a {{dfanalytics-job}} in {{kib}}
    :screenshot:
    :::
 
    The wizard includes a scatterplot matrix, which enables you to explore the relationships between the fields. You can use that information to help you decide which fields to include or exclude from the analysis.
-   :::{image} ../../../images/machine-learning-weblog-outlier-scatterplot.jpg
+   :::{image} /explore-analyze/images/machine-learning-weblog-outlier-scatterplot.jpg
    :alt: A scatterplot matrix for three fields in {{kib}}
    :screenshot:
    :::
@@ -291,7 +291,7 @@ PUT _ml/data_frame/analytics/weblog-outliers
 6. View the results of the {{oldetection}} analysis.
    The {{dfanalytics}} job creates an index that contains the original data and {{olscores}} for each document. The {{olscore}} indicates how different each entity is from other entities.
    In {{kib}}, you can view the results from the {{dfanalytics}} job and sort them on the outlier score:
-   :::{image} ../../../images/machine-learning-outliers.jpg
+   :::{image} /explore-analyze/images/machine-learning-outliers.jpg
    :alt: View {{oldetection}} results in {{kib}}
    :screenshot:
    :::
@@ -340,7 +340,7 @@ GET weblog-outliers/_search?q="111.237.144.54"
 
    {{kib}} also provides a scatterplot matrix in the results. Outliers with a score that exceeds the threshold are highlighted in each chart. The outlier score threshold can be set by using the slider under the matrix:
 
-:::{image} ../../../images/machine-learning-outliers-scatterplot.jpg
+:::{image} /explore-analyze/images/machine-learning-outliers-scatterplot.jpg
 :alt: View scatterplot in {{oldetection}} results
 :screenshot:
 :::

@@ -54,7 +54,7 @@ To run Osquery from an alert:
         ::::
 
 
-        :::{image} ../../../images/security-setup-query.png
+        :::{image} /solutions/images/security-setup-query.png
         :alt: Shows how to set up a single query
         :screenshot:
         :::

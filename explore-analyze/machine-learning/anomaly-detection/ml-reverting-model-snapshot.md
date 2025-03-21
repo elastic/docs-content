@@ -13,7 +13,7 @@ mapped_pages:
 1. In {{kib}}, navigate to **Jobs**. To open **Jobs**, find **{{ml-app}} > Anomaly Detection** in the main menu, or use the [global search field](../../find-and-organize/find-apps-and-objects.md).
 2. Locate the {{anomaly-job}} whose model you want to revert in the job table.
 3. Open the job details and navigate to the **Model Snapshots** tab.
-   :::{image} ../../../images/machine-learning-anomaly-job-model-snapshots.jpg
+   :::{image} /explore-analyze/images/machine-learning-anomaly-job-model-snapshots.jpg
    :alt: A screenshot of a job with the Model Snapshots tab opened
    :screenshot:
    :::
@@ -22,7 +22,7 @@ mapped_pages:
 5. Optional: Select if you want to replay the analysis based on the data in your index after the revert has been applied. If you don’t select this option, there will be no {{anomaly-detect}} results after the snapshot was taken and the job results end at the point in time of the snapshot. If you select this option, you can then optionally select one or both of the next two options:
    * You can select whether you want the job to continue running in real time after the replay, or to just replay existing data after the snapshot.
    * You can select a time range you want to avoid during the replay by declaring a calendar event. This way, you can skip any problematic time frame that you want the {{anomaly-job}} to avoid.
-   :::{image} ../../../images/machine-learning-revert-model-snapshot.jpg
+   :::{image} /explore-analyze/images/machine-learning-revert-model-snapshot.jpg
    :alt: A screenshot of a revert model snapshot flyout
    :screenshot:
    :::

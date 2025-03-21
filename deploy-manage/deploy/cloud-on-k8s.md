@@ -80,12 +80,12 @@ Alpha, beta, and stable API versions follow the same [conventions used by Kubern
 
 ECK is compatible with the following Elastic Stack applications:
 
-* Elasticsearch, Kibana, APM Server: 7.17+, 8+
+* Elasticsearch, Kibana, APM Server: 7.17+, 8+, 9+
 * Enterprise Search: 7.17+, 8+
-* Beats: 7.17+, 8+
-* Elastic Agent: 7.10+ (standalone), 7.17+ (Fleet), 8+
-* Elastic Maps Server: 7.17+, 8+
-* Logstash: 8.7+
+* Beats: 7.17+, 8+, 9+
+* Elastic Agent: 7.10+ (standalone), 7.17+ (Fleet), 8+, 9+
+* Elastic Maps Server: 7.17+, 8+, 9+
+* Logstash: 8.7+, 9+
 
 Elastic Stack application images for the OpenShift-certified Elasticsearch (ECK) Operator are only available from version 7.10 and later.
 

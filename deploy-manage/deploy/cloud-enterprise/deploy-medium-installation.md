@@ -15,7 +15,7 @@ This type of installation is recommended for many production setups. You need:
 * 3 hosts with 256 GB RAM each for allocators
 * 3 availability zones
 
-:::{image} ../../../images/cloud-enterprise-ece-pb-6.png
+:::{image} /deploy-manage/images/cloud-enterprise-ece-pb-6.png
 :alt: A medium installation with nine to twelve hosts across three availability zones
 :::
 

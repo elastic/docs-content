@@ -22,12 +22,14 @@ If you’re using {{agent}}, do not deploy {{filebeat}} for log collection. Inst
 1. Verify that {{es}} is running and that the monitoring cluster is ready to receive data from {{filebeat}}.
 
     ::::{tip}
-    In production environments, we strongly recommend using a separate cluster (referred to as the *monitoring cluster*) to store the data. Using a separate monitoring cluster prevents production cluster outages from impacting your ability to access your monitoring data. It also prevents monitoring activities from impacting the performance of your production cluster. See [*Monitoring in a production environment*](elasticsearch-monitoring-self-managed.md).
+    In production environments, we strongly recommend using a separate cluster (referred to as the *monitoring cluster*) to store the data. Using a separate monitoring cluster prevents production cluster outages from impacting your ability to access your monitoring data. It also prevents monitoring activities from impacting the performance of your production cluster. 
+    
+    For more information, refer to [](/deploy-manage/monitor/stack-monitoring/es-self-monitoring-prod.md).
     ::::
 
 2. Identify which logs you want to monitor.
 
-    The {{filebeat}} {{es}} module can handle [audit logs](../../security/logging-configuration/logfile-audit-output.md), [deprecation logs](../logging-configuration/elasticsearch-log4j-configuration-self-managed.md#deprecation-logging), [gc logs](elasticsearch://reference/elasticsearch/jvm-settings.md#gc-logging), [server logs](../logging-configuration/elasticsearch-log4j-configuration-self-managed.md), and [slow logs](elasticsearch://reference/elasticsearch/index-settings/slow-log.md). For more information about the location of your {{es}} logs, see the [path.logs](../../deploy/self-managed/important-settings-configuration.md#path-settings) setting.
+    The {{filebeat}} {{es}} module can handle [audit logs](../../security/logging-configuration/logfile-audit-output.md), [deprecation logs](/deploy-manage/monitor/logging-configuration/elasticsearch-deprecation-logs.md), [gc logs](elasticsearch://reference/elasticsearch/jvm-settings.md#gc-logging), [server logs](../logging-configuration/elasticsearch-log4j-configuration-self-managed.md), and [slow logs](elasticsearch://reference/elasticsearch/index-settings/slow-log.md). For more information about the location of your {{es}} logs, see the [path.logs](../../deploy/self-managed/important-settings-configuration.md#path-settings) setting.
 
     ::::{important}
     If there are both structured (`*.json`) and unstructured (plain text) versions of the logs, you must use the structured logs. Otherwise, they might not appear in the appropriate context in {{kib}}.

@@ -19,7 +19,7 @@ Selecting a non-mobile [**service**](../../../solutions/observability/apps/servi
 
 For insight into the health of your services, you can compare how a service performs relative to a previous time frame or to the expected bounds from the corresponding {{anomaly-job}}. For example, has latency been slowly increasing over time, did the service experience a sudden spike, is the throughput similar to what the {{ml}} job expects — enabling a comparison can provide the answer.
 
-:::{image} ../../../images/observability-time-series-expected-bounds-comparison.png
+:::{image} /solutions/images/observability-time-series-expected-bounds-comparison.png
 :alt: Time series and expected bounds comparison
 :screenshot:
 :::
@@ -39,7 +39,7 @@ The expected bounds comparison is powered by [machine learning](../../../solutio
 
 Response times for the service. You can filter the **Latency** chart to display the average, 95th, or 99th percentile latency times for the service.
 
-:::{image} ../../../images/observability-latency.png
+:::{image} /solutions/images/observability-latency.png
 :alt: Service latency
 :screenshot:
 :::
@@ -70,7 +70,7 @@ If there is no HTTP status, both transactions and spans are considered successfu
 
 The **Errors** table provides a high-level view of each error message when it first and last occurred, along with the total number of occurrences. This makes it very easy to quickly see which errors affect your services and take actions to rectify them. To do so, click **View errors**.
 
-:::{image} ../../../images/observability-error-rate.png
+:::{image} /solutions/images/observability-error-rate.png
 :alt: failed transaction rate and errors
 :screenshot:
 :::
@@ -101,7 +101,7 @@ The cold start rate chart is currently supported for [AWS Lambda](../../../solut
 The **Instances** table displays a list of all the available service instances within the selected time range. Depending on how the service runs, the instance could be a host or a container. The table displays latency, throughput, failed transaction, CPU usage, and memory usage for each instance. By default, instances are sorted by *Throughput*.
 
 
-:::{image} ../../../images/observability-all-instances.png
+:::{image} /solutions/images/observability-all-instances.png
 :alt: All instances
 :screenshot:
 :::
@@ -112,7 +112,7 @@ The **Instances** table displays a list of all the available service instances w
 To view metadata relating to the service agent, and if relevant, the container and cloud provider, click on each icon located at the top of the page beside the service name.
 
 
-:::{image} ../../../images/observability-metadata-icons.png
+:::{image} /solutions/images/observability-metadata-icons.png
 :alt: Service metadata
 :screenshot:
 :::

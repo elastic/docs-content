@@ -23,13 +23,13 @@ Create an SLO burn rate rule to get alerts when the burn rate is too high over a
 
 Choose which SLO to monitor and then define multiple burn rate windows with appropriate severity. For each period, the burn rate is computed as the error rate divided by the error budget. When the burn rates for both periods surpass the threshold, an alert is triggered. Add actions to raise alerts via services or third-party integrations e.g. mail, Slack, Jira.
 
-:::{image} ../../../images/serverless-slo-alerts-create-rule.png
+:::{image} /solutions/images/serverless-slo-alerts-create-rule.png
 :alt: Create rule for failed transaction rate threshold
 :screenshot:
 :::
 
 ::::{tip}
-These steps show how to use the **Alerts** UI. You can also create an SLO burn rate rule directly from **Observability*** → ***SLOs**. Click the more options icon (![More options](../../../images/serverless-boxesVertical.svg "")) to the right of the SLO you want to add a burn rate rule for, and select **![Bell](../../../images/serverless-bell.svg "") Create new alert rule** from the menu.
+These steps show how to use the **Alerts** UI. You can also create an SLO burn rate rule directly from **Observability*** → ***SLOs**. Click the more options icon (![More options](/solutions/images/serverless-boxesVertical.svg "")) to the right of the SLO you want to add a burn rate rule for, and select **![Bell](/solutions/images/serverless-bell.svg "") Create new alert rule** from the menu.
 
 When you use the UI to create an SLO, a default SLO burn rate alert rule is created automatically. The burn rate rule will use the default configuration and no connector. You must configure a connector if you want to receive alerts for SLO breaches.
 
@@ -99,14 +99,14 @@ After you select a connector, you must set the action frequency. You can choose 
 
 Alternatively, you can set the action frequency to **For each alert** and specify the conditions each alert must meet for the action to run. For example, you can send an email only when the alert status changes to critical.
 
-:::{image} ../../../images/serverless-alert-action-frequency.png
+:::{image} /solutions/images/serverless-alert-action-frequency.png
 :alt: Configure when a rule is triggered
 :screenshot:
 :::
 
 With the **Run when** menu you can choose if an action runs for a specific severity (critical, high, medium, low), or when the alert is recovered. For example, you can add a corresponding action for each severity you want an alert for, and also for when the alert recovers.
 
-:::{image} ../../../images/serverless-slo-action-frequency.png
+:::{image} /solutions/images/serverless-slo-action-frequency.png
 :alt: Choose between severity or recovered
 :screenshot:
 :::
@@ -115,9 +115,9 @@ With the **Run when** menu you can choose if an action runs for a specific sever
 
 
 :::::{dropdown} Action variables
-Use the default notification message or customize it. You can add more context to the message by clicking the Add variable icon ![Add variable](../../../images/serverless-indexOpen.svg "") and selecting from a list of available variables.
+Use the default notification message or customize it. You can add more context to the message by clicking the Add variable icon ![Add variable](/solutions/images/serverless-indexOpen.svg "") and selecting from a list of available variables.
 
-:::{image} ../../../images/serverless-action-variables-popup.png
+:::{image} /solutions/images/serverless-action-variables-popup.png
 :alt: Action variables list
 :screenshot:
 :::

@@ -41,7 +41,7 @@ To centralize your logs in {{es}}, you need to have an S3 bucket. {{filebeat}}, 
 
 In the [AWS S3 console](https://s3.console.aws.amazon.com/s3), click on **Create bucket**. Give the bucket a **name** and specify the **region** in which you want it deployed.
 
-:::{image} ../../../images/observability-creating-a-s3-bucket.png
+:::{image} /solutions/images/observability-creating-a-s3-bucket.png
 :alt: S3 bucket creation
 :::
 
@@ -58,7 +58,7 @@ Make sure that the queue is created in the same region as the S3 bucket.
 ::::
 
 
-:::{image} ../../../images/observability-creating-a-queue.png
+:::{image} /solutions/images/observability-creating-a-queue.png
 :alt: Queue Creation
 :::
 
@@ -103,13 +103,13 @@ Now that your queue is created, go to the properties of the S3 bucket you create
 
 Specify that you want to send a notification on every object creation event.
 
-:::{image} ../../../images/observability-configure-event-notification.png
+:::{image} /solutions/images/observability-configure-event-notification.png
 :alt: Event Notification Setting
 :::
 
 Set the destination as the SQS queue you just created.
 
-:::{image} ../../../images/observability-configure-notification-output.png
+:::{image} /solutions/images/observability-configure-notification-output.png
 :alt: Event Notification Setting
 :::
 
@@ -305,13 +305,13 @@ Start {{filebeat}} to collect the logs.
 
 Here’s what we’ve achieved so far:
 
-:::{image} ../../../images/observability-one-bucket-archi.png
+:::{image} /solutions/images/observability-one-bucket-archi.png
 :alt: Current Architecture
 :::
 
 Now, let’s configure the `s3access` fileset. The goal here is to be able to monitor how people access the bucket we created. To do this, we’ll create another bucket and another queue. The new architecture will look like this:
 
-:::{image} ../../../images/observability-two-buckets-archi.png
+:::{image} /solutions/images/observability-two-buckets-archi.png
 :alt: Architecture with Access Logging Enabled
 :::
 
@@ -319,7 +319,7 @@ Create a new S3 bucket and SQS queue. Ensure that the event notifications on the
 
 Now go back to the first bucket, and go to **Properties** > **Server access logging**. Specify that you want to ship the access logs to the bucket you most recently created.
 
-:::{image} ../../../images/observability-Server-Access-Logging.png
+:::{image} /solutions/images/observability-Server-Access-Logging.png
 :alt: Enabling Server Access Logging
 :::
 
@@ -364,7 +364,7 @@ Now that the logs are being shipped to {{es}} we can visualize them in {{kib}}. 
 
 The filesets we used in the previous steps also come with pre-built dashboards that you can use to visualize the data. In {{kib}}, find **Dashboards** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Search for S3 and select the dashboard called: **[Filebeat AWS] S3 Server Access Log Overview**:
 
-:::{image} ../../../images/observability-S3-Server-Access-Logs.png
+:::{image} /solutions/images/observability-S3-Server-Access-Logs.png
 :alt: S3 Server Access Log Overview
 :::
 
@@ -572,18 +572,18 @@ You can now start {{metricbeat}}:
 
 Now that the metrics are being streamed to {{es}} we can visualize them in {{kib}}. To open **Infrastructure inventory**, find **Infrastructure** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Make sure to show the **AWS** source and the **EC2 Instances**:
 
-:::{image} ../../../images/observability-EC2-instances.png
+:::{image} /solutions/images/observability-EC2-instances.png
 :alt: Your EC2 Infrastructure
 :::
 
 The metricsets we used in the previous steps also comes with pre-built dashboard that you can use to visualize the data. In {{kib}}, find **Dashboards** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Search for EC2 and select the dashboard called: **[Metricbeat AWS] EC2 Overview**:
 
-:::{image} ../../../images/observability-ec2-dashboard.png
+:::{image} /solutions/images/observability-ec2-dashboard.png
 :alt: EC2 Overview
 :::
 
 If you want to track your billings on AWS, you can also check the **[Metricbeat AWS] Billing Overview** dashboard:
 
-:::{image} ../../../images/observability-aws-billing.png
+:::{image} /solutions/images/observability-aws-billing.png
 :alt: Billing Overview
 :::

@@ -310,4 +310,4 @@ Congratulations! You have successfully set up monitoring for nginx using standal
 ## What’s next? [_whats_next_2]
 
 * Learn more about [{{fleet}} and {{agent}}](/reference/ingestion-tools/fleet/index.md).
-* Learn more about [{{integrations}}](asciidocalypse://docs/integration-docs/docs/reference/index.md).
+* Learn more about [{{integrations}}](integration-docs://reference/index.md).

@@ -8,6 +8,8 @@ mapped_urls:
 
 # Tutorial: Securing a self-managed {{stack}} [install-stack-demo-secure]
 
+TBD: This one feels duplicate (it comes from elastic-stack original book)
+
 This tutorial is a follow-on to [installing a self-managed {{stack}}](/deploy-manage/deploy/self-managed.md) with a multi-node {{es}} cluster, {{kib}}, {{fleet-server}} and {{agent}}. In a production environment, it’s recommended after completing the {{kib}} setup to proceed directly to this tutorial to configure your SSL certificates. These steps guide you through that process, and then describe how to configure {{fleet-server}} and {{agent}} with the certificates in place.
 
 **Securing the {{stack}}**
@@ -882,7 +884,7 @@ View your system metrics data:
 2. In the query field, search for `Metrics System`.
 3. Select the `[Metrics System] Host overview` link. The {{kib}} Dashboard opens with visualizations of host metrics including CPU usage, memory usage, running processes, and more.
 
-    :::{image} /images/elastic-stack-install-stack-metrics-dashboard.png
+    :::{image} /deploy-manage/images/elastic-stack-install-stack-metrics-dashboard.png
     :alt: The System metrics host overview showing CPU usage, memory usage, and other visualizations
     :::
 

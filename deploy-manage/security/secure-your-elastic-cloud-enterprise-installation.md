@@ -7,7 +7,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-securing-considerations.html
 ---
 
-# Secure your {{ece}} orchestrator [ece-securing-considerations]
+# Secure your {{ece}} installation [ece-securing-considerations]
 
 This section covers security settings for your {{ece}} orchestrator.
 

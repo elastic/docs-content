@@ -206,7 +206,7 @@ inputs:
 
 ### Condition syntax [condition-syntax]
 
-The conditions supported by {{agent}} are based on [EQL](elasticsearch://reference/query-languages/eql-syntax.md)'s boolean syntax, but add support for variables from providers and functions to manipulate the values.
+The conditions supported by {{agent}} are based on [EQL](elasticsearch://reference/query-languages/eql/eql-syntax.md)'s boolean syntax, but add support for variables from providers and functions to manipulate the values.
 
 **Supported operators:**
 

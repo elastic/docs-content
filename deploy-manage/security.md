@@ -59,7 +59,6 @@ $$$maintaining-audit-trail$$$
 **This page is a work in progress.** 
 :::
 
-
 % The documentation team is working to combine content pulled from the following pages:
 
 % * [/raw-migrated-files/elasticsearch/elasticsearch-reference/security-files.md](/raw-migrated-files/elasticsearch/elasticsearch-reference/security-files.md)
@@ -75,64 +74,184 @@ $$$maintaining-audit-trail$$$
 
 # Security
 
-This overview page helps you understand Elastic's security capabilities across different deployment types. You'll find:
+An Elastic implementation comprises many moving parts: {{es}} nodes forming the cluster, {{kib}} instances, additional stack components such as Logstash and Beats, and various clients and integrations, all communicating with your cluster.
 
-- Key security features for protecting your Elastic deployment
-- Security capabilities specific to each deployment type
-- Comparison tables showing feature availability and configurability by deployment type
-- Links to detailed implementation guides
-
-## Security overview
-
-An Elastic implementation comprises many moving parts: {{es}} nodes forming the cluster, {{kib}} instances, additional stack components such as Logstash and Beats, and various clients and integrations communicating with your deployment.
-
-To keep your data secured, Elastic offers comprehensive security features that:
-- Prevent unauthorized access to your deployment
-- Encrypt communications between components
-- Protect data at rest
-- Secure sensitive settings and saved objects
-
-:::{note}
-The availability and configurability of security features vary by deployment type. Refer to [Security by deployment type](#security-features-by-deployment-type) for a comparison table.
-:::
-
-## Security topics
+To keep your data secured, Elastic offers security features that prevent bad actors from tampering with your data, and encrypt communications to, from, and within your cluster. Regardless of your deployment type, Elastic sets up certain security features for you automatically.
 
 The documentation is organized into three main areas.
 
-On every page, you'll see deployment type indicators that show which content applies to specific deployment types. Focus on sections tagged with your deployment type and look for subsections specifically addressing your deployment model.
+* [Secure your orchestrator](security/secure-hosting-environment.md): Setup security in your [{{ece}}](/deploy-manage/security/secure-your-elastic-cloud-enterprise-installation.md) or [{{eck}}](/deploy-manage/security/secure-your-eck-installation.md) installations.
+* [Secure your cluster or deployment](./security/secure-your-cluster-deployment.md): Learn about how to manage basic Elastic security features. You’ll also learn how to implement advanced security measures.
+* [Secure your clients and integrations](security/secure-clients-integrations.md): Secure communications between your applications and the {{stack}}.
 
-### 1. Secure your orchestrator
+::::{note}
+As part of your overall security strategy, you can also do the following:
 
-The [security of your orchestrator](security/secure-hosting-environment.md) forms the foundation of your overall security posture. This section covers environment-specific security controls:
+* Prevent unauthorized access with [password protection and role-based access control](/deploy-manage/users-roles.md).
+* Control access to dashboards and other saved objects in your UI using [Spaces](/deploy-manage/manage-spaces.md).
+* Connect a local cluster to a [remote cluster](/deploy-manage/remote-clusters.md) to enable [cross-cluster replication](/deploy-manage/tools/cross-cluster-replication.md) and [cross-cluster search](/solutions/search/cross-cluster-search.md).
+* Manage [API keys](/deploy-manage/api-keys.md) used for programmatic access to Elastic.
+::::
 
-- [**Elastic Cloud Hosted and Serverless**](security/secure-your-elastic-cloud-organization.md)
-- [**Elastic Cloud Enterprise**](security/secure-your-elastic-cloud-enterprise-installation.md)
-- [**Elastic Cloud on Kubernetes**](security/secure-your-eck-installation.md)
+The availability and configurability of security features vary by deployment type. On every page, you'll see deployment type indicators that show which content applies to specific deployment types. Focus on sections tagged with your deployment type and look for subsections specifically addressing your deployment model.
 
-:::{note}
-There is no orchestration layer for self-managed deployments because you directly control the host environment. Refer to [](security/manually-configure-security-in-self-managed-cluster.md) to learn more about securing self-managed installations.
-:::
+At the end of this doc, there's also a [comparison table](#comparison-table) showing feature availability and configurability by deployment type.
 
-### 2. Secure your deployments and clusters
+## Managed security in Elastic Cloud
+```yaml {applies_to}
+deployment:
+  ess: all
+serverless: all
+```
 
-[Secure your deployments](security/secure-your-cluster-deployment.md) with features available across all deployment types:
+Elastic Cloud has built-in security. For example, HTTPS communications between Elastic Cloud and the internet, as well as inter-node communications, are secured automatically, and cluster data is encrypted at rest. 
 
-- [**Traffic filtering**](security/traffic-filtering.md): IP filtering, private links, and static IPs
-- [**Secure communications**](security/secure-cluster-communications.md): TLS configuration, certificates management
-- [**Data protection**](security/data-security.md): Encryption at rest, secure settings, saved objects
-- [**Security event audit logging**](security/logging-configuration/security-event-audit-logging.md): {{es}} and {{kib}} audit logs
-- [**Session management**](security/kibana-session-management.md): Kibana session controls
-- [**FIPS 140-2 compliance**](security/fips-140-2.md): Federal security standards
+In {{ech}}, you can augment these security features in the following ways:
+* Configure [traffic filtering](./security/traffic-filtering.md) to prevent unauthorized access to your deployments.
+* Encrypt your deployment with a [customer-managed encryption key](./security/encrypt-deployment-with-customer-managed-encryption-key.md).
+* [Secure your settings](./security/secure-settings.md) using {{es}} and {{kib}} keystores.
+* Use the list of [Elastic Cloud static IPs](./security/elastic-cloud-static-ips.md) to allow or restrict communications in your infrastructure.
 
-### 3. Secure your clients and integrations
+::::{note}
+Serverless projects are fully managed and secured by Elastic, and do not have any configurable security features at the project level.
+::::
 
-[Secure your clients and integrations](security/secure-clients-integrations.md) to ensure secure communication between your applications and Elastic:
+Refer to [Elastic Cloud security](https://www.elastic.co/cloud/security) for more details about Elastic security and privacy programs.
 
-- [**Client security**](security/httprest-clients-security.md): Best practices for securely connecting applications to {{es}}
-- **Integration security**: Secure configuration for Beats, Logstash, and other integrations
+## Cluster or deployment security features
 
-## Security features by deployment type
+You can configure the following aspects of your Elastic implementation to maintain and enhance security:
+
+### Manage TLS certificates
+```yaml {applies_to}
+deployment:
+  ece: all
+  eck: all
+  self: all
+```
+
+TLS certificates apply security controls to network communications. TLS is the modern name for what used to be called Secure Sockets Layer (SSL).
+
+TLS certificates are used in two places:
+* **The HTTP layer**: Used for communication between your cluster or deployment and the internet.
+* **The transport layer**: Used mainly for inter-node communications, and in certain cases for cluster to cluster communication.
+
+The way that TLS certificates are managed depends on your deployment type:
+
+* In self-managed {{es}} clusters, you [manage both of these certificates yourself](./security/secure-cluster-communications.md). You can also [Configure Kibana and Elasticsearch to use mutual TLS](./security/secure-http-communications.md#elasticsearch-mutual-tls).
+* In {{ece}}, you can use one or more [proxy certificates](./security/secure-your-elastic-cloud-enterprise-installation/manage-security-certificates.md) to secure the HTTP layer. These certificates are managed at the ECE installation level. Transport-level encryption is managed by ECE and certificates can’t be changed.
+* In {{eck}}, you can [manage certificates for the HTTP layer](./security/secure-http-communications.md#k8s-custom-http-certificate). Certificates for the transport layer are managed by ECK and can’t be changed. However, you can set your own certificate authority, customize certificate contents, and provide your own certificate generation tools using [transport settings](./security/k8s-transport-settings.md).
+
+::::{tip}
+Elastic Cloud manages TLS certificates for you.
+::::
+
+#### Enable cipher suites for stronger encryption
+
+TBD  - to refine
+Refer to [](./security/enabling-cipher-suites-for-stronger-encryption.md) for more details.
+(These cipher_suites settings are used for a bunch of different auth realms as well as http/transport layer)
+
+### Restrict connections using traffic filtering
+```yaml {applies_to}
+deployment:
+  ess: all
+  ece: all
+  eck: all
+  self: all
+```
+
+[Traffic filtering](./security/traffic-filtering.md) allows you to limit how your deployments can be accessed. Add another layer of security to your installation and deployments by restricting inbound traffic to only the sources that you trust.
+
+* For all deployment types, you can configure [IP-based traffic filters](./security/ip-traffic-filtering.md).
+
+* For Elastic Cloud Hosted, you can also configure [private link traffic filters](./security/private-link-traffic-filters.md).
+
+* For {{eck}}, you can use [Kubernetes network policies](./security/k8s-network-policies.md).
+
+### Allow or deny Elastic Cloud IP ranges
+```yaml {applies_to}
+deployment:
+  ess: all
+```
+
+Elastic Cloud publishes a list of IP addresses used by its services for both incoming and outgoing traffic. Users can use these lists to configure their network firewalls as needed to allow or restrict traffic related to Elastic Cloud services.
+
+[Learn more about Elastic Cloud static IPs](./security/elastic-cloud-static-ips.md).
+
+### Manage Kibana sessions
+```yaml {applies_to}
+deployment:
+  ess: all
+  ece: all
+  eck: all
+  self: all
+```
+
+Control the timeout and lifespan of logged-in sessions to Kibana, as well as the number of concurrent sessions each user can have.
+
+[Learn more about {{kib}} session management](./security/kibana-session-management.md).
+
+### Encryption at rest
+```yaml {applies_to}
+serverless: all
+deployment:
+  ess: all
+```
+
+By default, Elastic Cloud already encrypts your deployment data, project data, and snapshots at rest.
+
+If you’re using Elastic Cloud Hosted, then you can reinforce this mechanism by providing your own encryption key, also known as [Bring Your Own Key (BYOK)](./security/encrypt-deployment-with-customer-managed-encryption-key.md).
+
+::::{note}
+Other deployment types don’t implement encryption at rest out of the box. For self-managed clusters, to implement encryption at rest, the hosts running the cluster must be configured with disk-level encryption, such as `dm-crypt`. In addition, snapshot targets must ensure that data is encrypted at rest as well.
+
+Configuring `dm-crypt` or similar technologies is outside the scope of this documentation, and issues related to disk encryption are outside the scope of support.
+::::
+
+### Secure your settings
+```yaml {applies_to}
+deployment:
+  ess: all
+  ece: all
+  eck: all
+  self: all
+```
+
+Some of the settings that you configure in Elasticsearch Service are sensitive, such as passwords, and relying on file system permissions to protect these settings is insufficient. Learn how to configure secure settings in the {{es}} keystore or {{kib}} keystore.
+
+[Learn more about storing settings in a keystore](./security/secure-settings.md).
+
+
+### Secure saved objects
+```yaml {applies_to}
+deployment:
+  ess: all
+  ece: all
+  eck: all
+  self: all
+```
+
+Kibana stores entities such as dashboards, visualizations, alerts, actions, and advanced settings as saved objects, which are kept in a dedicated, internal {{es}} index. If such an object includes sensitive information, for example a PagerDuty integration key or email server credentials used by the alert action, {{kib}} encrypts it and makes sure it cannot be accidentally leaked or tampered with.
+
+Encrypting sensitive information means that a malicious party with access to the Kibana internal indices won’t be able to extract that information without also knowing the encryption key.
+
+[Learn how to configure and rotate the saved object encryption key](./security/secure-saved-objects.md).
+
+
+### Other topics
+```yaml {applies_to}
+deployment:
+  ess: all
+  ece: all
+  eck: all
+  self: all
+```
+
+TBD / to determine if needed
+
+% we need to refine this table, but the idea is awesome IMO
+## Security features by deployment type [comparison-table]
 
 Security feature availability varies by deployment type, with each feature having one of the following statuses:
 
@@ -221,12 +340,3 @@ Select your deployment type below to see what's available and how implementation
 :::
 
 ::::
-
-## Next steps
-
-Refer to the following sections for detailed instructions about securing your hosting environment:
-
-* [Elastic Cloud Hosted and Serverless security setup](/deploy-manage/security/secure-your-elastic-cloud-organization.md)
-* [Elastic Cloud Enterprise (ECE) security setup](/deploy-manage/security/secure-your-elastic-cloud-enterprise-installation.md)
-* [Elastic Cloud on Kubernetes (ECK) security setup](/deploy-manage/security/secure-your-eck-installation.md)
-* [Self-managed cluster security setup](/deploy-manage/security/manually-configure-security-in-self-managed-cluster.md)

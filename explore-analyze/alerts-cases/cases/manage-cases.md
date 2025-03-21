@@ -15,7 +15,7 @@ To perform these tasks, you must have [full access](setup-cases.md) to the appro
 Open a new case to keep track of issues and share their details with colleagues.
 
 1. Go to **Management > {{stack-manage-app}} > Cases**, then click **Create case**.
-   :::{image} ../../../images/kibana-cases-create.png
+   :::{image} /explore-analyze/images/kibana-cases-create.png
    :alt: Create a case in {{stack-manage-app}}
    :screenshot:
    :::
@@ -76,7 +76,7 @@ When you subsequently add assignees to cases, they receive an email.
 
 After you create a case, you can upload and manage files on the **Files** tab:
 
-:::{image} ../../../images/kibana-cases-files.png
+:::{image} /explore-analyze/images/kibana-cases-files.png
 :alt: A list of files attached to a case
 :screenshot:
 :::
@@ -96,7 +96,7 @@ Uploaded files are also accessible in **{{stack-manage-app}} > Files**. When you
 
 You can also optionally add visualizations. For example, you can portray event and alert data through charts and graphs.
 
-:::{image} ../../../images/kibana-cases-visualization.png
+:::{image} /explore-analyze/images/kibana-cases-visualization.png
 :alt: Adding a visualization as a comment within a case
 :screenshot:
 :::

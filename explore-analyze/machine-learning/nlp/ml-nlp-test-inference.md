@@ -12,7 +12,7 @@ When the model is deployed on at least one node in the cluster, you can begin to
 
 The simplest method to test your model against new data is to use the **Test model** action in {{kib}}. You can either provide some input text or use a field of an existing index in your cluster to test the model:
 
-:::{image} ../../../images/machine-learning-ml-nlp-test-ner.png
+:::{image} /explore-analyze/images/machine-learning-ml-nlp-test-ner.png
 :alt: Testing a sentence with two named entities against a NER trained model in the *{{ml}}* app
 :screenshot:
 :::

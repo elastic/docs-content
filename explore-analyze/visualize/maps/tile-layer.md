@@ -10,7 +10,7 @@ mapped_pages:
 
 Tile layers display image tiles served from a tile server.
 
-:::{image} ../../../images/kibana-tile_layer.png
+:::{image} /explore-analyze/images/kibana-tile_layer.png
 :alt: tile layer
 :screenshot:
 :::
