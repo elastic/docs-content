@@ -1,7 +1,8 @@
 ---
 navigation_title: "Unavailable nodes"
-applies:
-  hosted:
+applies_to:
+  deployment:
+    ess: all
 mapped_urls:
   - https://www.elastic.co/guide/en/cloud/current/ec-scenario_why_is_my_node_unavailable.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/echscenario_why_is_my_node_unavailable.html

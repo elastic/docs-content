@@ -1,5 +1,8 @@
 ---
 navigation_title: "Cluster response time"
+applies_to:
+  deployment:
+    ess: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-scenario_why_are_my_cluster_response_times_suddenly_so_much_worse.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/echscenario_why_are_my_cluster_response_times_suddenly_so_much_worse.html
