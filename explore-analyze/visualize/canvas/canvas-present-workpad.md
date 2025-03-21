@@ -35,6 +35,6 @@ Change how often the data refreshes on your workpad.
 1. Click **View > Auto refresh settings**.
 2. Select the interval you want to use, or **Set a custom interval**.
 
-    To manually refresh the data, click ![Canvas refresh data button](../../../images/kibana-canvas-refresh-data.png "").
+    To manually refresh the data, click ![Canvas refresh data button](/explore-analyze/images/kibana-canvas-refresh-data.png "").
 
 

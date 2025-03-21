@@ -18,7 +18,7 @@ You can use {{metricbeat}} to collect data about {{es}} and ship it to the monit
 Want to use {{agent}} instead? Refer to [Collecting monitoring data with {{agent}}](collecting-monitoring-data-with-elastic-agent.md).
 :::
 
-:::{image} /images/elasticsearch-reference-metricbeat.png
+:::{image} /deploy-manage/images/elasticsearch-reference-metricbeat.png
 :alt: Example monitoring architecture
 :width: 550px
 :::

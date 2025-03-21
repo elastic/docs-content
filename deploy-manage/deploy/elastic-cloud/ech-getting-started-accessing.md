@@ -7,7 +7,7 @@ mapped_pages:
 
 You use the console to manage your cluster from a web browser. Tasks that are available from the console include upgrading versions, configuring security features, working with custom plugins, and more.
 
-:::{image} ../../../images/cloud-heroku-ech-console.png
+:::{image} /deploy-manage/images/cloud-heroku-ech-console.png
 :alt: [Elasticsearch Add-On for Heroku console](https://cloud.elastic.co?page=docs&placement=docs-body)
 :::
 

@@ -32,7 +32,7 @@ Edit, import, export, and copy your saved objects. These objects include dashboa
 
 You can find the **Saved Objects** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
-:::{image} ../../images/kibana-management-saved-objects.png
+:::{image} /explore-analyze/images/kibana-management-saved-objects.png
 :alt: Saved Objects
 :screenshot:
 :::
@@ -49,7 +49,7 @@ Granting access to `Saved Objects Management` authorizes users to manage all sav
 ## View and delete [saved-objects-view-and-delete]
 
 * To view and edit a saved object in its associated application, click the object title.
-* To show objects that use this object, so you know the impact of deleting it, click the actions icon ![More actions](../../images/serverless-boxesHorizontal.svg "") and then select **Relationships**.
+* To show objects that use this object, so you know the impact of deleting it, click the actions icon ![More actions](/explore-analyze/images/serverless-boxesHorizontal.svg "") and then select **Relationships**.
 * To delete one or more objects, select their checkboxes, and then click **Delete**.
 
 
@@ -92,7 +92,7 @@ The [`savedObjects.maxImportExportSize`](kibana://reference/configuration-refere
 
 Copy saved objects and their related objects between spaces.
 
-1. Click the actions icon ![Actions](../../images/serverless-boxesHorizontal.svg "").
+1. Click the actions icon ![Actions](/explore-analyze/images/serverless-boxesHorizontal.svg "").
 2. Click **Copy to spaces**.
 3. Specify whether to automatically overwrite any objects that already exist in the target spaces, or resolve them on a per-object basis.
 4. Select the spaces in which to copy the object.

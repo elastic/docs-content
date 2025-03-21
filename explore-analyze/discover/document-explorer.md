@@ -10,7 +10,7 @@ mapped_pages:
 
 Fine tune your explorations by customizing **Discover** to bring out the the best view of your documents.
 
-:::{image} ../../images/kibana-hello-field.png
+:::{image} /explore-analyze/images/kibana-hello-field.png
 :alt: A view of the Discover app
 :screenshot:
 :::
@@ -26,7 +26,7 @@ Fine tune your explorations by customizing **Discover** to bring out the the bes
 
 Customize the appearance of the document table and its contents to your liking.
 
-![Options to customize the table in Discover](../../images/kibana-discover-customize-table.png "")
+![Options to customize the table in Discover](/explore-analyze/images/kibana-discover-customize-table.png "")
 
 
 ### Reorder and resize the columns [document-explorer-columns]
@@ -57,7 +57,7 @@ When the number of results returned by your search query (displayed at the top o
 
 On the last page of the table, a message indicates that you’ve reached the end of the loaded search results. From that message, you can choose to load more results to continue exploring.
 
-![Limit sample size in Discover](../../images/kibana-discover-limit-sample-size.png "title =50%")
+![Limit sample size in Discover](/explore-analyze/images/kibana-discover-limit-sample-size.png "title =50%")
 
 
 ### Sort the fields [document-explorer-sort-data]
@@ -69,11 +69,11 @@ To add or remove a sort on a single field, click the column header, and then sel
 To sort by multiple fields:
 
 1. Click the **Sort fields** option.
-   ![Pop-up in document table for sorting columns](../../images/kibana-document-explorer-sort-data.png "title =50%")
+   ![Pop-up in document table for sorting columns](/explore-analyze/images/kibana-document-explorer-sort-data.png "title =50%")
 
 2. To add fields to the sort, select their names from the dropdown menu.
    By default, columns are sorted in the order they are added.
-   :::{image} ../../images/kibana-document-explorer-multi-field.png
+   :::{image} /explore-analyze/images/kibana-document-explorer-multi-field.png
    :alt: Multi field sort in the document table
    :screenshot:
    :width: 50%
@@ -98,7 +98,7 @@ Narrow your results to a subset of documents so you’re comparing just the data
 
 1. Select the documents you want to compare.
 2. Click the **Selected** option, and then select **Show selected documents only**.
-   :::{image} ../../images/kibana-document-explorer-compare-data.png
+   :::{image} /explore-analyze/images/kibana-document-explorer-compare-data.png
    :alt: Compare data in the document table
    :screenshot:
    :width: 50%
@@ -112,7 +112,7 @@ You can also compare individual field values using the [**Compare selected** opt
 
 To change the numbers of results you want to display on each page, use the **Rows per page** menu. The default is 100 results per page.
 
-:::{image} ../../images/kibana-document-table-rows-per-page.png
+:::{image} /explore-analyze/images/kibana-document-table-rows-per-page.png
 :alt: Menu with options for setting the number of results in the document table
 :screenshot:
 :::

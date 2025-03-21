@@ -96,7 +96,7 @@ To add a warm, cold, or frozen tier when you create a deployment:
 2. Click **+ Add capacity** for any data tiers to add.
 3. Click **Create deployment** at the bottom of the page to save your changes.
 
-:::{image} ../../images/elasticsearch-reference-ess-advanced-config-data-tiers.png
+:::{image} /manage-data/images/elasticsearch-reference-ess-advanced-config-data-tiers.png
 :alt: {{ecloud}}'s deployment Advanced configuration page
 :screenshot:
 :::
@@ -160,7 +160,7 @@ To make sure that all data can be migrated from the data tier you want to disabl
 
     3. Filter the list of instances by the Data tier you want to disable.
 
-        :::{image} ../../images/cloud-ec-ce-remove-tier-filter-instances.png
+        :::{image} /manage-data/images/cloud-ec-ce-remove-tier-filter-instances.png
         :alt: A screenshot showing a filtered instance list
         :::
 
@@ -176,7 +176,7 @@ To make sure that all data can be migrated from the data tier you want to disabl
 
     3. Filter the list of instances by the Data tier you want to disable.
 
-        :::{image} ../../images/cloud-enterprise-ec-ce-remove-tier-filter-instances.png
+        :::{image} /manage-data/images/cloud-enterprise-ec-ce-remove-tier-filter-instances.png
         :alt: A screenshot showing a filtered instance list
         :::
 
@@ -199,7 +199,7 @@ To make sure that all data can be migrated from the data tier you want to disabl
 
     Parse the output, looking for shards allocated to the nodes to be removed from the cluster. Note that `Instance #2` is shown as `instance-0000000002` in the output.
 
-    :::{image} ../../images/cloud-enterprise-ec-ce-remove-tier-filtered-cat-shards.png
+    :::{image} /manage-data/images/cloud-enterprise-ec-ce-remove-tier-filtered-cat-shards.png
     :alt: A screenshot showing a filtered shard list
     :::
 
@@ -347,7 +347,7 @@ When data reaches the `cold` or `frozen` phases, it is automatically converted t
 
         In the example we have a list of 4 indices, which need to be moved away from the frozen tier.
 
-        :::{image} ../../images/cloud-enterprise-ec-ce-remove-tier-filter-snapshot-indices.png
+        :::{image} /manage-data/images/cloud-enterprise-ec-ce-remove-tier-filter-snapshot-indices.png
         :alt: A screenshot showing a snapshot indices list
         :::
 
@@ -375,7 +375,7 @@ When data reaches the `cold` or `frozen` phases, it is automatically converted t
 
     In the example we are removing the alias for the `frozen-index-1` index.
 
-    :::{image} ../../images/cloud-enterprise-ec-ce-remove-tier-remove-alias.png
+    :::{image} /manage-data/images/cloud-enterprise-ec-ce-remove-tier-remove-alias.png
     :alt: A screenshot showing the process of removing a searchable snapshot indice alias
     :::
 
@@ -403,7 +403,7 @@ When data reaches the `cold` or `frozen` phases, it is automatically converted t
 
         In the example we are restoring `frozen-index-1` from the snapshot in `found-snapshots` (default snapshot repository) and placing it in the warm tier.
 
-        :::{image} ../../images/cloud-enterprise-ec-ce-remove-tier-restore-snapshot.png
+        :::{image} /manage-data/images/cloud-enterprise-ec-ce-remove-tier-restore-snapshot.png
         :alt: A screenshot showing the process of restoring a searchable snapshot to a regular index
         :::
 
@@ -426,7 +426,7 @@ When data reaches the `cold` or `frozen` phases, it is automatically converted t
 
         In the example we are deleting the snapshots associated with the `policy_with_frozen_phase`.
 
-        :::{image} ../../images/cloud-enterprise-ec-ce-remove-tier-remove-snapshots.png
+        :::{image} /manage-data/images/cloud-enterprise-ec-ce-remove-tier-remove-snapshots.png
         :alt: A screenshot showing the process of deleting snapshots
         :::
 

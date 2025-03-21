@@ -217,7 +217,7 @@ When the connector settings have been completed, continue to set up the notifica
 
 From the **Notifications** report, you can check all the notifications sent. The report lists all the events that were set up in the notification filters and provide their status.
 
-:::{image} /images/cloud-autoops-notifications-report.png
+:::{image} /deploy-manage/images/cloud-autoops-notifications-report.png
 :alt: The Notifications report
 :::
 
@@ -232,6 +232,6 @@ The notification can have one of the following statuses:
 
 The notification status appears also in the event details window.
 
-:::{image} /images/cloud-autoops-notification-status.png
+:::{image} /deploy-manage/images/cloud-autoops-notification-status.png
 :alt: Notification status
 :::

@@ -106,7 +106,7 @@ After switching to {{esql}} mode, the query bar shows a sample query. You can re
 
 To make it easier to write queries, auto-complete offers suggestions with possible commands and functions:
 
-:::{image} ../../../images/elasticsearch-reference-esql-kibana-auto-complete.png
+:::{image} /explore-analyze/images/elasticsearch-reference-esql-kibana-auto-complete.png
 :alt: esql kibana auto complete
 :::
 
@@ -119,7 +119,7 @@ You can adjust the editor’s height by dragging its bottom border to your likin
 
 Each {{esql}} query starts with a [source command](elasticsearch://reference/query-languages/esql/esql-commands.md#esql-source-commands). A source command produces a table, typically with data from {{es}}.
 
-:::{image} ../../../images/elasticsearch-reference-source-command.svg
+:::{image} /explore-analyze/images/elasticsearch-reference-source-command.svg
 :alt: A source command producing a table from {{es}}
 :::
 
@@ -146,7 +146,7 @@ from sample_data
 
 A source command can be followed by one or more [processing commands](elasticsearch://reference/query-languages/esql/esql-commands.md#esql-processing-commands), separated by a pipe character: `|`. Processing commands change an input table by adding, removing, or changing rows and columns. Processing commands can perform filtering, projection, aggregation, and more.
 
-:::{image} ../../../images/elasticsearch-reference-esql-limit.png
+:::{image} /explore-analyze/images/elasticsearch-reference-esql-limit.png
 :alt: A processing command changing an input table
 :::
 
@@ -170,7 +170,7 @@ FROM sample_data | LIMIT 3
 
 ### Sort a table [esql-getting-started-sort]
 
-:::{image} ../../../images/elasticsearch-reference-esql-sort.png
+:::{image} /explore-analyze/images/elasticsearch-reference-esql-sort.png
 :alt: A processing command sorting an input table
 :::
 
@@ -208,7 +208,7 @@ There are many other processing commands, like [`KEEP`](elasticsearch://referenc
 
 You can chain processing commands, separated by a pipe character: `|`. Each processing command works on the output table of the previous command. The result of a query is the table produced by the final processing command.
 
-:::{image} ../../../images/elasticsearch-reference-esql-sort-limit.png
+:::{image} /explore-analyze/images/elasticsearch-reference-esql-sort-limit.png
 :alt: Processing commands can be chained
 :::
 
@@ -311,7 +311,7 @@ FROM sample_data
 
 {{esql}} enables you to [enrich](elasticsearch://reference/query-languages/esql/esql-enrich-data.md) a table with data from indices in {{es}}, using the [`ENRICH`](elasticsearch://reference/query-languages/esql/esql-commands.md#esql-enrich) command.
 
-:::{image} ../../../images/elasticsearch-reference-esql-enrich.png
+:::{image} /explore-analyze/images/elasticsearch-reference-esql-enrich.png
 :alt: esql enrich
 :::
 

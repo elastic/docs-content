@@ -22,21 +22,21 @@ Alternatively, you can use APIs like [get trained models](https://www.elastic.co
 
 2. Find the model you want to deploy in the list and click **Deploy model** in the **Actions** menu.
 
-:::{image} ../../../images/machine-learning-ml-dfa-trained-models-ui.png
+:::{image} /explore-analyze/images/machine-learning-ml-dfa-trained-models-ui.png
 :alt: The trained models UI in {{kib}}
 :screenshot:
 :::
 
 3. Create an {{infer}} pipeline to be able to use the model against new data through the pipeline. Add a name and a description or use the default values.
 
-:::{image} ../../../images/machine-learning-ml-dfa-inference-pipeline.png
+:::{image} /explore-analyze/images/machine-learning-ml-dfa-inference-pipeline.png
 :alt: Creating an inference pipeline
 :screenshot:
 :::
 
 4. Configure the pipeline processors or use the default settings.
 
-:::{image} ../../../images/machine-learning-ml-dfa-inference-processor.png
+:::{image} /explore-analyze/images/machine-learning-ml-dfa-inference-processor.png
 :alt: Configuring an inference processor
 :screenshot:
 :::

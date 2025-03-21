@@ -72,7 +72,7 @@ You can create and manage index lifecycle policies through [{{kib}} Management](
 
 Default {{ilm}} policies are created automatically when you use {{agent}}, {{beats}}, or the {{ls}} {{es}} output plugin to send data to the {{stack}}.
 
-![index lifecycle policies](../../images/elasticsearch-reference-index-lifecycle-policies.png)
+![index lifecycle policies](/manage-data/images/elasticsearch-reference-index-lifecycle-policies.png)
 
 ::::{tip}
 To automatically back up your indices and manage snapshots, use [snapshot lifecycle policies](/deploy-manage/tools/snapshot-and-restore/create-snapshots.md#automate-snapshots-slm).

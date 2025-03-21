@@ -381,7 +381,7 @@ Now it’s time to create visualizations based off of the Python application log
 8. In the chart settings area, under **Break down by**, select **Top values of log.level** and set **Number of values** to *4*. Since there are four log severity levels, this parameter sets all of them to appear in the chart legend.
 9. Select **Refresh**. A stacked bar chart now shows the relative frequency of each of the four log severity levels over time.
 
-    ![A screen capture of the Kibana "Bar vertical stacked" visualization with several bars. The X axis shows "Count of records" and the Y axis shows "@timestamp per 30 seconds". Each bar is divided into the four log severity levels.](../../../images/cloud-ec-python-logs-levels.png "")
+    ![A screen capture of the Kibana "Bar vertical stacked" visualization with several bars. The X axis shows "Count of records" and the Y axis shows "@timestamp per 30 seconds". Each bar is divided into the four log severity levels.](/manage-data/images/cloud-ec-python-logs-levels.png "")
 
 10. Select **Save and return** to add this visualization to your dashboard.
 
@@ -394,7 +394,7 @@ Let’s create a second visualization.
 5. In the chart settings area, under **Break down by**, select **Top values of http.request.body.content** and set **Number of values** to *12*. Since there are twelve different log messages, this parameter sets all of them to appear in the chart legend.
 6. Select **Refresh**. A stacked bar chart now shows the relative frequency of each of the log messages over time.
 
-    ![A screen capture of the visualization builder](../../../images/cloud-ec-python-logs-content.png "")
+    ![A screen capture of the visualization builder](/manage-data/images/cloud-ec-python-logs-content.png "")
 
 7. Select **Save and return** to add this visualization to your dashboard.
 
@@ -404,7 +404,7 @@ And now for the final visualization.
 2. In the **Visualization type dropdown** dropdown, select **Donut**.
 3. From the list of available fields, drag and drop the **log.level** field onto the visualization builder. A donut chart appears.
 
-    ![A screen capture of a donut chart divided into four sections](../../../images/cloud-ec-python-logs-donut.png "")
+    ![A screen capture of a donut chart divided into four sections](/manage-data/images/cloud-ec-python-logs-donut.png "")
 
 4. Select **Save and return** to add this visualization to your dashboard.
 5. Select **Save** and add a title to save your new dashboard.
@@ -417,7 +417,7 @@ You can add titles to the visualizations, resize and position them as you like, 
 
 1. Select **Refresh** on the Kibana dashboard. Since *elvis.py* continues to run and generate log data, your Kibana visualizations update with each refresh.
 
-    ![A screen capture of the completed Kibana dashboard](../../../images/cloud-ec-python-logs-final-dashboard.png "")
+    ![A screen capture of the completed Kibana dashboard](/manage-data/images/cloud-ec-python-logs-final-dashboard.png "")
 
 2. As your final step, remember to stop Filebeat and the Python script. Enter *CTRL + C* in both your Filebeat terminal and in your `elvis.py` terminal.
 
