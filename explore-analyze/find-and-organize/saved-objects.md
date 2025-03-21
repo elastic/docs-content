@@ -127,7 +127,7 @@ We have made several enhancements to minimize the impact, and this document desc
 
 ### Impact upon upgrading to version 8.x or later [saved-object-ids-impact-upon-upgrading]
 
-Every time you upgrade {{kib}}, [saved objects are migrated to a new format](/deploy-manage/upgrade/internal-upgrade-processes/saved-object-migrations.md). When you first upgrade to version 8.x or later, this migration process will start enforcing globally unique saved object IDs.
+Every time you upgrade {{kib}}, [saved objects are migrated to a new format](/deploy-manage/upgrade/deployment-or-cluster/saved-object-migrations.md). When you first upgrade to version 8.x or later, this migration process will start enforcing globally unique saved object IDs.
 
 In practical terms, **any old saved objects that exist in a custom space will have their IDs changed to a new UUID**, while saved objects in the Default space will be unchanged. This is how we can ensure that every saved object ID is unique. For example: if you had dashboard "123" in the Default space and dashboard "123" in Another space, after the upgrade you would have dashboard "123" in the Default space and dashboard "456" in Another space.
 
