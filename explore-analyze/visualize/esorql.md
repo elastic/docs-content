@@ -41,10 +41,10 @@ When editing an {{esql}} visualization, you can customize the appearance of the 
 
 1. Click one of the fields representing an axis of the chart to open its details.
 
-   ![Click on the axis field to open its details](/images/esql-visualization-customize-axis.png)
+   ![Click on the axis field to open its details](/explore-analyze/images/esql-visualization-customize-axis.png)
 
 2. Define the appearance of your choice from the available options.
 
-   ![Appearance customization options for ESQL charts](/images/esql-visualization-customization-options.png)
+   ![Appearance customization options for ESQL charts](/explore-analyze/images/esql-visualization-customization-options.png)
 
 3. Return to the previous menu, then **Apply and close** the configuration to save your changes.

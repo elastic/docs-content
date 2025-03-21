@@ -132,7 +132,7 @@ Currently, only **Options lists** with static values are supported for ES|QL-bas
 
 1. While editing your ES|QL visualization's query, the autocomplete menu suggests adding a control.
 
-   ![ESQL query prompting to add a control](/images/esql-visualization-control-suggestion.png)
+   ![ESQL query prompting to add a control](/explore-analyze/images/esql-visualization-control-suggestion.png)
 
 2. A menu opens to let you configure the control. This is where you can specify:
 
@@ -141,7 +141,7 @@ Currently, only **Options lists** with static values are supported for ES|QL-bas
     * The label of the control. This is the label displayed for users viewing the dashboard for that control.
     * The width of the control.
 
-    ![ESQL control settings](/images/esql-visualization-control-settings.png "title =50%")
+    ![ESQL control settings](/explore-analyze/images/esql-visualization-control-settings.png "title =50%")
 
 3. Save the control. The panel closes and the control's name is inserted into your query.
 
