@@ -182,7 +182,7 @@ Sometimes you need to require that all search terms appear in the matching docum
 
 ```esql
 FROM cooking_blog
-| WHERE match(description, "fluffy pancakes", {"operator": "AND"})  # Require ALL terms to match instead of default OR
+| WHERE match(description, "fluffy pancakes", {"operator": "AND"})  # Require ALL terms to match
 | LIMIT 1000
 ```
 
@@ -194,7 +194,7 @@ Sometimes requiring all terms is too strict, but the default OR behavior is too 
 
 ```esql
 FROM cooking_blog
-| WHERE match(title, "fluffy pancakes breakfast", {"minimum_should_match": 2})  # At least 2 of the 3 terms must match
+| WHERE match(title, "fluffy pancakes breakfast", {"minimum_should_match": 2})
 | LIMIT 1000
 ```
 
@@ -206,7 +206,7 @@ When users enter a search query, they often don't know (or care) whether their s
 
 ```esql
 FROM cooking_blog
-| WHERE title:"vegetarian curry" OR description:"vegetarian curry" OR tags:"vegetarian curry"  # Search across different fields with equal importance
+| WHERE title:"vegetarian curry" OR description:"vegetarian curry" OR tags:"vegetarian curry"
 | LIMIT 1000
 ```
 
@@ -223,8 +223,6 @@ FROM cooking_blog METADATA _score  # Request _score metadata for relevance-based
 | SORT _score DESC  # You must explicitly sort by `_score` to see relevance-based results
 | LIMIT 1000
 ```
-
-In this example, we're using the `boost` parameter to make matches in the title field twice as important as matches in other fields. We also request the `_score` metadata field to sort results by relevance.
 
 :::{tip}
 When working with relevance scoring in ES|QL, it's important to understand how `_score` works. If you don't include `METADATA _score` in your query, you're only performing filtering operations with no relevance calculation.
