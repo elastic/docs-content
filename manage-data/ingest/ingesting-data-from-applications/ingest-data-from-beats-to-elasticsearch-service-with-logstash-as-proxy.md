@@ -12,7 +12,7 @@ This guide explains how to ingest data from Filebeat and Metricbeat to {{ls}} as
 
 * You can send multiple instances of Beats data through your local network’s demilitarized zone (DMZ) to {{ls}}. {{ls}} then acts as a proxy through your firewall to send the Beats data to your deployment, as shown in the following diagram:
 
-    ![A diagram showing data from multiple Beats into Logstash](../../../images/cloud-ec-logstash-beats-dataflow.png "")
+    ![A diagram showing data from multiple Beats into Logstash](/manage-data/images/cloud-ec-logstash-beats-dataflow.png "")
 
 * This proxying reduces the firewall exceptions or rules necessary for Beats to communicate with your {{ech}} or {{ece}} deployment. It’s common to have many Beats dispersed across a network, each installed close to the data that it monitors, and each Beat individually communicating with a deployment. Multiple Beats support multiple servers. Rather than configure each Beat to send its data directly to your {{ech}} or {{ece}} deployment, you can use {{ls}} to proxy this traffic through one firewall exception or rule.
 * This setup is not suitable in simple scenarios when there is only one or a couple of Beats in use. {{ls}} makes the most sense for proxying when there are many Beats.
@@ -499,7 +499,7 @@ In this section, you log into {{ech}} or {{ece}}, open Kibana, and view the Kiba
 3. In the search box, search for *metricbeat system*. The search results show several dashboards available for you to explore.
 4. In the search results, choose *[Metricbeat System] Overview ECS*. A Metricbeat dashboard opens:
 
-![A screencapture of the Kibana dashboard named Metricbeat System Overview ECS](../../../images/cloud-ec-logstash-beats-metricbeat-dashboard.png "")
+![A screencapture of the Kibana dashboard named Metricbeat System Overview ECS](/manage-data/images/cloud-ec-logstash-beats-metricbeat-dashboard.png "")
 
 **View the Filebeat dashboard**
 
@@ -507,7 +507,7 @@ In this section, you log into {{ech}} or {{ece}}, open Kibana, and view the Kiba
 2. In the search box, search for *filebeat system*.
 3. In the search results, choose *[Filebeat System] Syslog dashboard ECS*. A Filebeat dashboard displaying your Filebeat data:
 
-![A screencapture of the Kibana dashboard named Filebeat System ECS](../../../images/cloud-ec-logstash-beats-filebeat-dashboard.png "")
+![A screencapture of the Kibana dashboard named Filebeat System ECS](/manage-data/images/cloud-ec-logstash-beats-filebeat-dashboard.png "")
 
 Now, you should have a good understanding of how to configure {{ls}} to ingest data from multiple Beats. You have the basics needed to begin experimenting with your own combination of Beats and modules.
 

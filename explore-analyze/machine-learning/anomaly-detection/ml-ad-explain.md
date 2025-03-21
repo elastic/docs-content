@@ -40,7 +40,7 @@ Anomaly scores are in the range of 0 and 100. The values close to 100 signify th
 
 The process when the anomaly detection algorithm adjusts the anomaly scores of past records when new data comes in is called *renormalization*. The `renormalization_window_days` configuration parameter specifies the time interval for this adjustment. The **Single Metric Viewer** in Kibana highlights the renormalization change.
 
-:::{image} ../../../images/machine-learning-renormalization-score-reduction.jpg
+:::{image} /explore-analyze/images/machine-learning-renormalization-score-reduction.jpg
 :alt: Example of a record score reduction in {{kib}}
 :screenshot:
 :::
@@ -53,7 +53,7 @@ Two more factors may lead to a reduction of the initial score: a high variance i
 
 Real-world anomalies often show the impacts of several factors. The **Anomaly explanation** section in the Single Metric Viewer can help you interpret an anomaly in its context.
 
-:::{image} ../../../images/machine-learning-detailed-single-metric.jpg
+:::{image} /explore-analyze/images/machine-learning-detailed-single-metric.jpg
 :alt: Detailed view of the Single Metric Viewer in {{kib}}
 :screenshot:
 :::

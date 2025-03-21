@@ -15,7 +15,7 @@ When a [tokenizer](anatomy-of-an-analyzer.md#analyzer-anatomy-tokenizer) convert
 
 Using these, you can create a [directed acyclic graph](https://en.wikipedia.org/wiki/Directed_acyclic_graph), called a *token graph*, for a stream. In a token graph, each position represents a node. Each token represents an edge or arc, pointing to the next position.
 
-:::{image} ../../../images/elasticsearch-reference-token-graph-qbf-ex.svg
+:::{image} /manage-data/images/elasticsearch-reference-token-graph-qbf-ex.svg
 :alt: token graph qbf ex
 :::
 
@@ -25,7 +25,7 @@ Some [token filters](anatomy-of-an-analyzer.md#analyzer-anatomy-token-filters) c
 
 In the following graph, `quick` and its synonym `fast` both have a position of `0`. They span the same positions.
 
-:::{image} ../../../images/elasticsearch-reference-token-graph-qbf-synonym-ex.svg
+:::{image} /manage-data/images/elasticsearch-reference-token-graph-qbf-synonym-ex.svg
 :alt: token graph qbf synonym ex
 :::
 
@@ -43,7 +43,7 @@ Some tokenizers, such as the [`nori_tokenizer`](elasticsearch://reference/elasti
 
 In the following graph, `domain name system` and its synonym, `dns`, both have a position of `0`. However, `dns` has a `positionLength` of `3`. Other tokens in the graph have a default `positionLength` of `1`.
 
-:::{image} ../../../images/elasticsearch-reference-token-graph-dns-synonym-ex.svg
+:::{image} /manage-data/images/elasticsearch-reference-token-graph-dns-synonym-ex.svg
 :alt: token graph dns synonym ex
 :::
 
@@ -60,7 +60,7 @@ A user runs a search for the following phrase using the `match_phrase` query:
 
 During [search analysis](index-search-analysis.md), `dns`, a synonym for `domain name system`, is added to the query string’s token stream. The `dns` token has a `positionLength` of `3`.
 
-:::{image} ../../../images/elasticsearch-reference-token-graph-dns-synonym-ex.svg
+:::{image} /manage-data/images/elasticsearch-reference-token-graph-dns-synonym-ex.svg
 :alt: token graph dns synonym ex
 :::
 
@@ -88,7 +88,7 @@ This means these filters will produce invalid token graphs for streams containin
 
 In the following graph, `dns` is a multi-position synonym for `domain name system`. However, `dns` has the default `positionLength` value of `1`, resulting in an invalid graph.
 
-:::{image} ../../../images/elasticsearch-reference-token-graph-dns-invalid-ex.svg
+:::{image} /manage-data/images/elasticsearch-reference-token-graph-dns-invalid-ex.svg
 :alt: token graph dns invalid ex
 :::
 
