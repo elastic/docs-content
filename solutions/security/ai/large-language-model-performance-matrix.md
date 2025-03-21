@@ -12,8 +12,8 @@ applies_to:
 
 This page describes the performance of various large language models (LLMs) for different use cases in {{elastic-sec}}, based on our internal testing. To learn more about these use cases, refer to [Attack discovery](/solutions/security/ai/attack-discovery.md) or [AI Assistant](/solutions/security/ai/ai-assistant.md).
 
-::::{note}
-`Excellent` is the best rating, followed by `Great`, then by `Good`, and finally by `Poor`.
+::::{important}
+`Excellent` is the best rating, followed by `Great`, then by `Good`, and finally by `Poor`. Models rated `Excellent` or `Great` should produce quality results. Models rated `Good` or `Poor` are not recommended for that use case.
 ::::
 
 
