@@ -227,7 +227,7 @@ FROM cooking_blog METADATA _score  # Request _score metadata for relevance-based
 :::{tip}
 When working with relevance scoring in ES|QL, it's important to understand how `_score` works. If you don't include `METADATA _score` in your query, you're only performing filtering operations with no relevance calculation.
 
-When you include `METADATA _score`, only search functions contribute to the relevance score. Filtering operations (like range conditions and exact matches) don't affect the score.
+When you include `METADATA _score`, search functions included in WHERE conditions contribute to the relevance score. Filtering operations (like range conditions and exact matches) don't affect the score.
 
 Remember that including `METADATA _score` doesn't automatically sort your results by relevance. You must explicitly use `SORT _score DESC` or `SORT _score ASC` to order your results by relevance.
 :::
@@ -293,7 +293,7 @@ For more complex relevance scoring with combined criteria, you can use the `EVAL
 FROM cooking_blog METADATA _score
 | EVAL tags_concat = MV_CONCAT(tags.keyword, ",")  # Convert multi-value field to string
 | WHERE tags_concat LIKE "*vegetarian*" AND rating >= 4.5  # Wildcard pattern matching
-| WHERE match(title, "curry spicy", {"boost": 2.0}) OR match(description, "curry spicy")
+| WHERE match(title, "curry spicy", {"boost": 2.0}) OR match(description, "curry spicy") # Uses full text functions, will update _score metadata field
 | EVAL category_boost = CASE(category.keyword == "Main Course", 1.0, 0.0)  # Conditional boost
 | EVAL date_boost = CASE(DATE_DIFF("month", date, NOW()) <= 1, 0.5, 0.0)  # Boost recent content
 | EVAL custom_score = _score + category_boost + date_boost  # Combine scores
