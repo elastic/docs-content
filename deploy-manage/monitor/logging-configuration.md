@@ -71,7 +71,7 @@ Files in `%KIBANA_HOME%` risk deletion during an upgrade. In production, you sho
 
 :::::::
 
-If you run {{kib}} from the command line, {{es}} prints logs to the standard output (`stdout`).
+If you run {{kib}} from the command line, {{kib}} prints logs to the standard output (`stdout`).
 
 You can also consume logs using [stack monitoring](/deploy-manage/monitor/stack-monitoring/kibana-monitoring-self-managed.md).
 

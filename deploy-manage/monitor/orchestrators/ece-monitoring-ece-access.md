@@ -39,7 +39,7 @@ To access logs and metrics for your deployment:
     If you have a license from 2018 or earlier, you might receive a warning that your cluster license is about to expire. Don’t panic, it isn’t really. Elastic Cloud Enterprise manages the cluster licenses so that you don’t have to. In rare cases, such as when a cluster is overloaded, it can take longer for Elastic Cloud Enterprise to reapply the cluster license. If you have a license from 2019 and later, you’ll receive a warning only when your full platform license is about to expire, which you’ll need to renew.
     ::::
 
-4. Select one of the links and log in with the `elastic` user. If you do not know the password, you can [reset it first](../../users-roles/cluster-or-deployment-auth/built-in-users.md).
+4. Select one of the links and log in with the `elastic` user of the `logging-and-metrics` deployment. If you do not know the password, you can [reset it first](../../users-roles/cluster-or-deployment-auth/built-in-users.md).
 
     ::::{tip} 
     The password you specify must be for the `elastic` user on the `logging-and-metrics` cluster, where the logging and metrics indices are collected. If you need to reset the password for the user, make sure you reset for the `logging-and-metrics` cluster.

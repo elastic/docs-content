@@ -63,6 +63,8 @@ Additionally, there are two ways to consume these metrics:
 ```{applies_to}
 deployment:
   self:
+  ece:
+  eck:
 ```
 
 In self-managed deployments, you can configure health stats to be logged in the {{kib}} `DEBUG` logger at a regular cadence. To enable Task Manager debug logging in your {{kib}} instance, add the following to your `kibana.yml`:
