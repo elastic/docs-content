@@ -378,7 +378,7 @@ POST /_query?format=txt
 ```
 
 :::{tip}
-Follow this [tutorial](/solutions/search/semantic-search/semantic-search-semantic-text#semantic-text-semantic-search) if you'd like to test this workflow against a large dataset.
+Follow this [tutorial](/solutions/search/semantic-search/semantic-search-semantic-text.md#semantic-text-semantic-search) if you'd like to test this workflow against a large dataset.
 :::
 
 ## Learn more
@@ -390,4 +390,4 @@ This tutorial introduced the basics of full-text search and filtering in {{esql}
 - [{{esql}} search functions](elasticsearch://reference/query-languages/esql/esql-functions-operators.md#esql-search-functions): Explore the full list of search functions available in {{esql}}.
 % semantic search stuff
 - [Semantic search](/solutions/search/semantic-search.md): Understand your various options for semantic search in Elasticsearch.
-  - [The `semantic_text` workflow](/solutions/search/semantic-search#_semantic_text_workflow): Learn how to use the `semantic_text` field type for semantic search. This is the recommended approach for must users looking to perform semantic search in {{es}}, because it abstracts away the complexity of setting up inference endpoints and models.
+  - [The `semantic_text` workflow](/solutions/search/semantic-search.md#_semantic_text_workflow): Learn how to use the `semantic_text` field type for semantic search. This is the recommended approach for must users looking to perform semantic search in {{es}}, because it abstracts away the complexity of setting up inference endpoints and models.
