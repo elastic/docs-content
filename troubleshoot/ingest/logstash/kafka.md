@@ -2,6 +2,9 @@
 navigation_title: "Kafka"
 mapped_pages:
   - https://www.elastic.co/guide/en/logstash/current/ts-plugins.html
+applies_to:
+  stack: ga
+  serverless: ga
 ---
 
 # Troubleshoot Logstash plugin for Kafka [ts-kafka]

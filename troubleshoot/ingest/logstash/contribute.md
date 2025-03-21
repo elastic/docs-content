@@ -1,5 +1,8 @@
 ---
 navigation_title: Contribute and discuss
+applies_to:
+  stack: ga
+  serverless: ga
 ---
 
 # Contribute to Logstash repositories and discuss issues [ts-other]

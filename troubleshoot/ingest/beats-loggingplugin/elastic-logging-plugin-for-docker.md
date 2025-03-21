@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/beats/loggingplugin/current/log-driver-troubleshooting.html
+applies_to:
+  stack: ga
+  serverless: ga
 ---
 
 # Elastic Logging Plugin for Docker [log-driver-troubleshooting]

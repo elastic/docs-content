@@ -2,6 +2,9 @@
 navigation_title: "Plugins"
 mapped_pages:
   - https://www.elastic.co/guide/en/logstash/current/ts-plugins-general.html
+applies_to:
+  stack: ga
+  serverless: ga
 ---
 
 # Troubleshoot Logstash plugins [ts-plugins-general]
