@@ -22,17 +22,18 @@ This page describes the performance of various large language models (LLMs) for 
 
 Models from third-party LLM providers.
 
-| **Feature** |  | **Assistant - General** | **Assistant - {{esql}} generation** | **Assistant - Alert questions** | **Assistant - Knowledge retrieval** | **Attack Discovery** |
-| --- | --- | --- | --- | --- | --- | --- |
-| **Model** | **Claude 3: Opus** | Excellent | Excellent | Excellent | Good | Great |
-|  | **Claude 3.5: Sonnet v2** | Excellent | Excellent | Excellent | Excellent | Great |
-|  | **Claude 3.5: Sonnet** | Excellent | Excellent | Excellent | Excellent | Excellent |
-|  | **Claude 3.5: Haiku** | Excellent | Excellent | Excellent | Excellent | Poor |
-|  | **Claude 3: Haiku** | Excellent | Excellent | Excellent | Excellent | Poor |
-|  | **GPT-4o** | Excellent | Excellent | Excellent | Excellent | Great |
-|  | **GPT-4o-mini** | Excellent | Great | Great | Great | Poor |
-|  | **Gemini 1.5 Pro 002** | Excellent | Excellent | Excellent | Excellent | Excellent |
-|  | **Gemini 1.5 Flash 002** | Excellent | Poor | Good | Excellent | Poor |
+| **Feature** |  | **Assistant - General** | **Assistant - {{esql}} generation** | **Assistant - Alert questions** | **Assistant - Knowledge retrieval** | **Attack Discovery** | **AI-powered SIEM migration** |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| **Model** | **Claude 3: Opus** | Excellent | Excellent | Excellent | Good | Great | Good
+|  | **Claude 3.7: Sonnet**      | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent
+|  | **Claude 3.5: Sonnet v2**   | Excellent | Excellent | Excellent | Excellent | Great | Excellent
+|  | **Claude 3.5: Sonnet**      | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent
+|  | **Claude 3.5: Haiku**       | Excellent | Excellent | Excellent | Excellent | Poor | Poor
+|  | **Claude 3: Haiku**         | Excellent | Excellent | Excellent | Excellent | Poor | Poor
+|  | **GPT-4o**                  | Excellent | Excellent | Excellent | Excellent | Great | Great
+|  | **GPT-4o-mini**             | Excellent | Great | Great | Great | Poor | Good
+|  | **Gemini 1.5 Pro 002**      | Excellent | Excellent | Excellent | Excellent | Excellent | Great
+|  | **Gemini 1.5 Flash 002**    | Excellent | Poor | Good | Excellent | Poor | Excellent
 
 
 ## Open-source models [_open_source_models]
