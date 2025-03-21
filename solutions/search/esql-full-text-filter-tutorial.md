@@ -22,6 +22,31 @@ Want to get started quickly? Run the following command in your terminal to set u
 curl -fsSL https://elastic.co/start-local | sh
 ```
 
+## Running {{esql}} queries
+
+In this tutorial, you'll see {{esql}} examples in the following format:
+
+```esql
+FROM cooking_blog
+| WHERE description:"fluffy pancakes"
+| LIMIT 1000
+```
+
+If you want to run these queries in the [Dev Tools Console](/explore-analyze/query-filter/languages/esql-rest.md#esql-kibana-console), you'll need use the following syntax:
+
+```console
+POST /_query?format=txt
+{
+  "query": """
+    FROM cooking_blog 
+    | WHERE description:"fluffy pancakes"  
+    | LIMIT 1000 
+  """
+}
+```
+
+If you'd prefer to use your favorite programming language, refer to [Client libraries](/solutions/search/site-or-app/clients.md) for a list of official and community-supported clients.
+
 ## Step 1: Create an index
 
 Create the `cooking_blog` index to get started:
@@ -133,14 +158,9 @@ Both are equivalent and can be used interchangeably. The compact syntax is more 
 Here's how to search the `description` field for "fluffy pancakes":
 
 ```esql
-POST /_query?format=txt
-{
-  "query": """
-    FROM cooking_blog  # Specify the index to search
-    | WHERE description:"fluffy pancakes"  # Full-text search with OR logic by default
-    | LIMIT 1000  # Return up to 1000 results
-  """
-}
+FROM cooking_blog  # Specify the index to search
+| WHERE description:"fluffy pancakes"  # Full-text search with OR logic by default
+| LIMIT 1000  # Return up to 1000 results
 ```
 
 By default, like the Query DSL `match` query, {{esql}} uses `OR` logic between terms. This means it will match documents that contain either "fluffy" or "pancakes", or both, in the description field.
@@ -149,15 +169,10 @@ By default, like the Query DSL `match` query, {{esql}} uses `OR` logic between t
 You can control which fields to include in the response using the `KEEP` command:
 
 ```esql
-POST /_query?format=txt
-{
-  "query": """
-    FROM cooking_blog
-    | WHERE description:"fluffy pancakes"
-    | KEEP title, description, rating  # Select only specific fields to include in response
-    | LIMIT 1000
-  """
-}
+FROM cooking_blog
+| WHERE description:"fluffy pancakes"
+| KEEP title, description, rating  # Select only specific fields to include in response
+| LIMIT 1000
 ```
 :::
 
@@ -166,14 +181,9 @@ POST /_query?format=txt
 Sometimes you need to require that all search terms appear in the matching documents. Here's how to do that using the function syntax with the `operator` parameter:
 
 ```esql
-POST /_query?format=txt
-{
-  "query": """
-    FROM cooking_blog
-    | WHERE match(description, "fluffy pancakes", {"operator": "AND"})  # Require ALL terms to match instead of default OR
-    | LIMIT 1000
-  """
-}
+FROM cooking_blog
+| WHERE match(description, "fluffy pancakes", {"operator": "AND"})  # Require ALL terms to match instead of default OR
+| LIMIT 1000
 ```
 
 This stricter search returns *zero hits* on our sample data, as no document contains both "fluffy" and "pancakes" in the description.
@@ -183,14 +193,9 @@ This stricter search returns *zero hits* on our sample data, as no document cont
 Sometimes requiring all terms is too strict, but the default OR behavior is too lenient. You can specify a minimum number of terms that must match:
 
 ```esql
-POST /_query?format=txt
-{
-  "query": """
-    FROM cooking_blog
-    | WHERE match(title, "fluffy pancakes breakfast", {"minimum_should_match": 2})  # At least 2 of the 3 terms must match
-    | LIMIT 1000
-  """
-}
+FROM cooking_blog
+| WHERE match(title, "fluffy pancakes breakfast", {"minimum_should_match": 2})  # At least 2 of the 3 terms must match
+| LIMIT 1000
 ```
 
 This query searches the title field to match at least 2 of the 3 terms: "fluffy", "pancakes", or "breakfast".
@@ -200,14 +205,9 @@ This query searches the title field to match at least 2 of the 3 terms: "fluffy"
 When users enter a search query, they often don't know (or care) whether their search terms appear in a specific field. {{esql}} provides ways to search across multiple fields simultaneously:
 
 ```esql
-POST /_query?format=txt
-{
-  "query": """
-    FROM cooking_blog
-    | WHERE title:"vegetarian curry" OR description:"vegetarian curry" OR tags:"vegetarian curry"  # Search across different fields with equal importance
-    | LIMIT 1000
-  """
-}
+FROM cooking_blog
+| WHERE title:"vegetarian curry" OR description:"vegetarian curry" OR tags:"vegetarian curry"  # Search across different fields with equal importance
+| LIMIT 1000
 ```
 
 This query searches for "vegetarian curry" across the title, description, and tags fields. Each field is treated with equal importance.
@@ -215,18 +215,13 @@ This query searches for "vegetarian curry" across the title, description, and ta
 However, in many cases, matches in certain fields (like the title) might be more relevant than others. We can adjust the importance of each field using scoring:
 
 ```esql
-POST /_query?format=txt
-{
-  "query": """
-    FROM cooking_blog METADATA _score  # Request _score metadata for relevance-based results
-    | WHERE match(title, "vegetarian curry", {"boost": 2.0})  # Title matches are twice as important
-        OR match(description, "vegetarian curry")
-        OR match(tags, "vegetarian curry")
-    | KEEP title, description, tags, _score  # Include relevance score in results
-    | SORT _score DESC  # You must explicitly sort by `_score` to see relevance-based results
-    | LIMIT 1000
-  """
-}
+FROM cooking_blog METADATA _score  # Request _score metadata for relevance-based results
+| WHERE match(title, "vegetarian curry", {"boost": 2.0})  # Title matches are twice as important
+    OR match(description, "vegetarian curry")
+    OR match(tags, "vegetarian curry")
+| KEEP title, description, tags, _score  # Include relevance score in results
+| SORT _score DESC  # You must explicitly sort by `_score` to see relevance-based results
+| LIMIT 1000
 ```
 
 In this example, we're using the `boost` parameter to make matches in the title field twice as important as matches in other fields. We also request the `_score` metadata field to sort results by relevance.
@@ -244,16 +239,11 @@ Remember that including `METADATA _score` doesn't automatically sort your result
 Filtering allows you to narrow down your search results based on exact criteria. Unlike full-text searches, filters are binary (yes/no) and do not affect the relevance score. Filters execute faster than queries because excluded results don't need to be scored.
 
 ```esql
-POST /_query?format=txt
-{
-  "query": """
-    FROM cooking_blog
-    | WHERE category.keyword == "Breakfast"  # Exact match using keyword field (case-sensitive)
-    | KEEP title, author, rating, tags
-    | SORT rating DESC
-    | LIMIT 1000
-  """
-}
+FROM cooking_blog
+| WHERE category.keyword == "Breakfast"  # Exact match using keyword field(case-sensitive)
+| KEEP title, author, rating, tags
+| SORT rating DESC
+| LIMIT 1000
 ```
 
 Note the use of `category.keyword` here. This refers to the [`keyword`](elasticsearch://reference/elasticsearch/mapping-reference/keyword.md) multi-field of the `category` field, ensuring an exact, case-sensitive match.
@@ -263,15 +253,10 @@ Note the use of `category.keyword` here. This refers to the [`keyword`](elastics
 Often users want to find content published within a specific time frame:
 
 ```esql
-POST /_query?format=txt
-{
-  "query": """
-    FROM cooking_blog
-    | WHERE date >= "2023-05-01" AND date <= "2023-05-31"  # Inclusive date range filter
-    | KEEP title, author, date, rating
-    | LIMIT 1000
-  """
-}
+FROM cooking_blog
+| WHERE date >= "2023-05-01" AND date <= "2023-05-31"  # Inclusive date range filter
+| KEEP title, author, date, rating
+| LIMIT 1000
 ```
 
 ### Find exact matches
@@ -279,16 +264,11 @@ POST /_query?format=txt
 Sometimes users want to search for exact terms to eliminate ambiguity in their search results:
 
 ```esql
-POST /_query?format=txt
-{
-  "query": """
-    FROM cooking_blog
-    | WHERE author.keyword == "Maria Rodriguez"  # Exact match on author
-    | KEEP title, author, rating, tags
-    | SORT rating DESC
-    | LIMIT 1000
-  """
-}
+FROM cooking_blog
+| WHERE author.keyword == "Maria Rodriguez"  # Exact match on author
+| KEEP title, author, rating, tags
+| SORT rating DESC
+| LIMIT 1000
 ```
 
 Like the `term` query in Query DSL, this has zero flexibility and is case-sensitive.
@@ -298,18 +278,13 @@ Like the `term` query in Query DSL, this has zero flexibility and is case-sensit
 Complex searches often require combining multiple search criteria:
 
 ```esql
-POST /_query?format=txt
-{
-  "query": """
-    FROM cooking_blog METADATA _score
-    | WHERE rating >= 4.5  # Numerical filter
-      AND NOT category.keyword == "Dessert"  # Exclusion filter
-      AND (title:"curry spicy" OR description:"curry spicy")  # Full-text search in multiple fields
-    | SORT _score DESC
-    | KEEP title, author, rating, tags, description
-    | LIMIT 1000
-  """
-}
+FROM cooking_blog METADATA _score
+| WHERE rating >= 4.5  # Numerical filter
+    AND NOT category.keyword == "Dessert"  # Exclusion filter
+    AND (title:"curry spicy" OR description:"curry spicy")  # Full-text search in multiple fields
+| SORT _score DESC
+| KEEP title, author, rating, tags, description
+| LIMIT 1000
 ```
 
 ### Combine relevance scoring with custom criteria
@@ -317,22 +292,18 @@ POST /_query?format=txt
 For more complex relevance scoring with combined criteria, you can use the `EVAL` command to calculate custom scores:
 
 ```esql
-POST /_query?format=txt
-{
-  "query": """
-    FROM cooking_blog METADATA _score
-    | EVAL tags_concat = MV_CONCAT(tags.keyword, ",")  # Convert multi-value field to string
-    | WHERE tags_concat LIKE "*vegetarian*" AND rating >= 4.5  # Wildcard pattern matching
-    | WHERE match(title, "curry spicy", {"boost": 2.0}) OR match(description, "curry spicy")
-    | EVAL category_boost = CASE(category.keyword == "Main Course", 1.0, 0.0)  # Conditional boost
-    | EVAL date_boost = CASE(DATE_DIFF("month", date, NOW()) <= 1, 0.5, 0.0)  # Boost recent content
-    | EVAL custom_score = _score + category_boost + date_boost  # Combine scores
-    | WHERE NOT category.keyword == "Dessert"
-    | WHERE custom_score > 0  # Filter based on custom score
-    | SORT custom_score DESC
-    | LIMIT 1000
-    """
-}
+FROM cooking_blog METADATA _score
+| EVAL tags_concat = MV_CONCAT(tags.keyword, ",")  # Convert multi-value field to string
+| WHERE tags_concat LIKE "*vegetarian*" AND rating >= 4.5  # Wildcard pattern matching
+| WHERE match(title, "curry spicy", {"boost": 2.0}) OR match(description, "curry spicy")
+| EVAL category_boost = CASE(category.keyword == "Main Course", 1.0, 0.0)  # Conditional boost
+| EVAL date_boost = CASE(DATE_DIFF("month", date, NOW()) <= 1, 0.5, 0.0)  # Boost recent content
+| EVAL custom_score = _score + category_boost + date_boost  # Combine scores
+| WHERE NOT category.keyword == "Dessert"
+| WHERE custom_score > 0  # Filter based on custom score
+| SORT custom_score DESC
+| LIMIT 1000
+  
 ```
 
 ## Bonus: Semantic search with ES|QL
@@ -367,29 +338,24 @@ POST /cooking_blog/_doc
 
 Once the document has been processed by the underlying model running on the inference endpoint, you can perform semantic searches. Here's an example natural language query against the `semantic_description` field:
 
-```console
-POST /_query?format=txt
-{
-  "query": """
-    FROM cooking_blog METADATA _score
-    | WHERE semantic_description:"What are some easy to prepare but nutritious plant-based meals?"
-    | SORT _score DESC
-    | LIMIT 5
-    """
-}
+```esql
+FROM cooking_blog METADATA _score
+| WHERE semantic_description:"What are some easy to prepare but nutritious plant-based meals?"
+| SORT _score DESC
+| LIMIT 5
+  
 ```
 
 :::{tip}
-Follow this [tutorial](/solutions/search/semantic-search/semantic-search-semantic-text.md) if you'd like to test this workflow against a large dataset.
+Follow this [tutorial](/solutions/search/semantic-search/semantic-search-semantic-text.md) if you'd like to test out the semantic search workflow against a large dataset.
 :::
 
 ## Learn more
 
-This tutorial introduced the basics of full-text search and filtering in {{esql}}. Building a real-world search experience requires understanding many more advanced concepts and techniques. Here are some resources once you're ready to dive deeper:
+This tutorial introduced the basics of search and filtering in {{esql}}. Building a real-world search experience requires understanding many more advanced concepts and techniques. Here are some resources once you're ready to dive deeper:
 
 - [Full-text search](full-text.md): Learn about the core components of full-text search in Elasticsearch.
   - [Text analysis](full-text/text-analysis-during-search.md): Understand how text is processed for full-text search.
 - [{{esql}} search functions](elasticsearch://reference/query-languages/esql/esql-functions-operators.md#esql-search-functions): Explore the full list of search functions available in {{esql}}.
-% semantic search stuff
 - [Semantic search](/solutions/search/semantic-search.md): Understand your various options for semantic search in Elasticsearch.
   - [The `semantic_text` workflow](/solutions/search/semantic-search.md#_semantic_text_workflow): Learn how to use the `semantic_text` field type for semantic search. This is the recommended approach for must users looking to perform semantic search in {{es}}, because it abstracts away the complexity of setting up inference endpoints and models.
