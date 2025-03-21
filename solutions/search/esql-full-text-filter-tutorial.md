@@ -335,7 +335,7 @@ POST /_query?format=txt
 
 ## Bonus: Semantic search with ES|QL
 
-ES|QL also supports semantic search when your mappings include fields of the [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) type:
+ES|QL also supports semantic search when your mappings include fields of the [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) type. This example mapping update adds a new field called `semantic_description` with the type `semantic_text`:
 
 ```console
 PUT /cooking_blog/_mapping
@@ -348,9 +348,7 @@ PUT /cooking_blog/_mapping
 }
 ```
 
-This mapping update adds a new field called `semantic_description` with the type `semantic_text`, which enables vector-based semantic search using the specified embedding model.
-
-Next, index a document with content in the semantic field:
+Next, index a document with content into the new field:
 
 ```console
 POST /cooking_blog/_doc
@@ -365,7 +363,7 @@ POST /cooking_blog/_doc
 }
 ```
 
-Then you can perform semantic searches that find results based on meaning, not just keywords:
+Once the document has been processed by the underlying model running on the inference endpoint, you can perform semantic searches. Here's an example natural language query against the `semantic_description` field:
 
 ```console
 POST /_query?format=txt
@@ -379,7 +377,9 @@ POST /_query?format=txt
 }
 ```
 
-Follow this [tutorial](/solutions/search/semantic-search/semantic-search-semantic-text#semantic-text-semantic-search) to learn how to use semantic search in Elasticsearch, using Query DSL or ES|QL.
+:::{tip}
+Follow this [tutorial](/solutions/search/semantic-search/semantic-search-semantic-text#semantic-text-semantic-search) if you'd like to test this workflow against a large dataset.
+:::
 
 ## Learn more
 
