@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-getting-started-accessing.html
+applies_to:
+  deployment:
+    ess:
 ---
 
 # Access the console [ech-getting-started-accessing]
@@ -18,6 +21,7 @@ heroku addons:open foundelasticsearch --app MY_APP
 Opening https://addons-sso.heroku.com/apps/e286f875-cbdb-47a9-b445-e94bnnnnnnnn/addons/9b883e93-3db3-4491-b620-c3dfnnnnnnnn...
 ```
 
-Alternatively, you can access the console by visiting the [Heroku Dashboard](https://dashboard.heroku.com/), selecting your app, and opening the Elasticsearch link.
+Alternatively, you can access the console by visiting the [Heroku Dashboard](https://dashboard.heroku.com/), selecting your app, and opening the {{es}} link.
 
 
+To learn how to access {{kib}}, refer to [](/deploy-manage/deploy/elastic-cloud/access-kibana.md).
