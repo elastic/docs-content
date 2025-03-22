@@ -15,16 +15,16 @@ The AI Assistant uses generative AI to provide:
 * **Contextual insights** — open prompts throughout {{observability}} that explain errors and messages and suggest remediation.
 * **Chat** —  have conversations with the AI Assistant. Chat uses function calling to request, analyze, and visualize your data.
 
-:::{image} ../../images/observability-obs-assistant2.gif
+:::{image} /solutions/images/observability-obs-assistant2.gif
 :alt: Observability AI assistant preview
-:class: screenshot
+:screenshot:
 :::
 
 The AI Assistant integrates with your large language model (LLM) provider through our supported {{stack}} connectors:
 
-* [OpenAI connector](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/openai-action-type.md) for OpenAI or Azure OpenAI Service.
-* [Amazon Bedrock connector](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/bedrock-action-type.md) for Amazon Bedrock, specifically for the Claude models.
-* [Google Gemini connector](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/gemini-action-type.md) for Google Gemini.
+* [OpenAI connector](kibana://reference/connectors-kibana/openai-action-type.md) for OpenAI or Azure OpenAI Service.
+* [Amazon Bedrock connector](kibana://reference/connectors-kibana/bedrock-action-type.md) for Amazon Bedrock, specifically for the Claude models.
+* [Google Gemini connector](kibana://reference/connectors-kibana/gemini-action-type.md) for Google Gemini.
 
 ::::{important}
 The AI Assistant is powered by an integration with your large language model (LLM) provider. LLMs are known to sometimes present incorrect information as if it’s correct. Elastic supports configuration and connection to the LLM provider and your knowledge base, but is not responsible for the LLM’s responses.
@@ -44,7 +44,7 @@ Also, the data you provide to the Observability AI assistant is *not* anonymized
 The AI assistant requires the following:
 
 * {{stack}} version 8.9 and later.
-* A self-deployed connector service if [search connectors](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/search-connectors/self-managed-connectors.md) are used to populate external data into the knowledge base.
+* A self-deployed connector service if [search connectors](elasticsearch://reference/ingestion-tools/search-connectors/self-managed-connectors.md) are used to populate external data into the knowledge base.
 * An account with a third-party generative AI provider that preferably supports function calling. If your AI provider does not support function calling, you can configure AI Assistant settings under **Stack Management** to simulate function calling, but this might affect performance.
 
     Refer to the [connector documentation](../../deploy-manage/manage-connectors.md) for your provider to learn about supported and default models.
@@ -81,14 +81,14 @@ To set up the AI Assistant:
 
     * [OpenAI API keys](https://platform.openai.com/docs/api-reference)
     * [Azure OpenAI Service API keys](https://learn.microsoft.com/en-us/azure/cognitive-services/openai/reference)
-    * [Amazon Bedrock authentication keys and secrets](https://docs.aws.amazon.com/bedrock/latest/userguide/security-iam.md)
+    * [Amazon Bedrock authentication keys and secrets](https://docs.aws.amazon.com/bedrock/latest/userguide/security-iam.html)
     * [Google Gemini service account keys](https://cloud.google.com/iam/docs/keys-list-get)
 
 2. Create a connector for your AI provider. Refer to the connector documentation to learn how:
 
-    * [OpenAI](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/openai-action-type.md)
-    * [Amazon Bedrock](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/bedrock-action-type.md)
-    * [Google Gemini](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/gemini-action-type.md)
+    * [OpenAI](kibana://reference/connectors-kibana/openai-action-type.md)
+    * [Amazon Bedrock](kibana://reference/connectors-kibana/bedrock-action-type.md)
+    * [Google Gemini](kibana://reference/connectors-kibana/gemini-action-type.md)
 
 3. Authenticate communication between {{observability}} and the AI provider by providing the following information:
 
@@ -147,16 +147,16 @@ To add external data to the knowledge base in {{kib}}:
 ### Use search connectors [obs-ai-search-connectors]
 
 ::::{tip}
-The [search connectors](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/search-connectors/index.md) described in this section differ from the [Stack management → Connectors](../../deploy-manage/manage-connectors.md) configured during the [AI Assistant setup](#obs-ai-set-up). Search connectors are only needed when importing external data into the Knowledge base of the AI Assistant, while the stack connector to the LLM is required for the AI Assistant to work.
+The [search connectors](elasticsearch://reference/ingestion-tools/search-connectors/index.md) described in this section differ from the [Stack management → Connectors](../../deploy-manage/manage-connectors.md) configured during the [AI Assistant setup](#obs-ai-set-up). Search connectors are only needed when importing external data into the Knowledge base of the AI Assistant, while the stack connector to the LLM is required for the AI Assistant to work.
 
 ::::
 
 
-[Connectors](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/search-connectors/index.md) allow you to index content from external sources thereby making it available for the AI Assistant. This can greatly improve the relevance of the AI Assistant’s responses. Data can be integrated from sources such as GitHub, Confluence, Google Drive, Jira, AWS S3, Microsoft Teams, Slack, and more.
+[Connectors](elasticsearch://reference/ingestion-tools/search-connectors/index.md) allow you to index content from external sources thereby making it available for the AI Assistant. This can greatly improve the relevance of the AI Assistant’s responses. Data can be integrated from sources such as GitHub, Confluence, Google Drive, Jira, AWS S3, Microsoft Teams, Slack, and more.
 
 UI affordances for creating and managing search connectors are available in the Search Solution in {{kib}}. You can also use the {{es}} [Connector APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-connector) to create and manage search connectors.
 
-The infrastructure for deploying connectors must be [self-managed](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/search-connectors/self-managed-connectors.md). 
+The infrastructure for deploying connectors must be [self-managed](elasticsearch://reference/ingestion-tools/search-connectors/self-managed-connectors.md).
 
 By default, the AI Assistant queries all search connector indices. To override this behavior and customize which indices are queried, adjust the **Search connector index pattern** setting on the [AI Assistant Settings](#obs-ai-settings) page. This allows precise control over which data sources are included in AI Assistant knowledge base.
 
@@ -171,9 +171,9 @@ To create a connector in the {{kib}} UI and make its content available to the AI
 
 2. Follow the instructions to create a new connector.
 
-    For example, if you create a [GitHub connector](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/search-connectors/es-connectors-github.md) you have to set a `name`, attach it to a new or existing `index`, add your `personal access token` and include the `list of repositories` to synchronize.
+    For example, if you create a [GitHub connector](elasticsearch://reference/ingestion-tools/search-connectors/es-connectors-github.md) you have to set a `name`, attach it to a new or existing `index`, add your `personal access token` and include the `list of repositories` to synchronize.
 
-    Learn more about configuring and [using connectors](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/search-connectors/connectors-ui-in-kibana.md) in the Elasticsearch documentation.
+    Learn more about configuring and [using connectors](elasticsearch://reference/ingestion-tools/search-connectors/connectors-ui-in-kibana.md) in the Elasticsearch documentation.
 
 
 After creating your connector, create the embeddings needed by the AI Assistant. You can do this using either:
@@ -199,7 +199,7 @@ After creating the pipeline, complete the following steps:
 
     Once the pipeline is set up, perform a **Full Content Sync** of the connector. The inference pipeline will process the data as follows:
 
-    * As data comes in, ELSER is applied to the data, and embeddings (weights and tokens into a [sparse vector field](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/query-dsl-sparse-vector-query.md)) are added to capture semantic meaning and context of the data.
+    * As data comes in, ELSER is applied to the data, and embeddings (weights and tokens into a [sparse vector field](elasticsearch://reference/query-languages/query-dsl/query-dsl-sparse-vector-query.md)) are added to capture semantic meaning and context of the data.
     * When you look at the ingested documents, you can see the embeddings are added to the `predicted_value` field in the documents.
 
 2. Check if AI Assistant can use the index (optional).
@@ -210,7 +210,7 @@ After creating the pipeline, complete the following steps:
 
 #### Use a `semantic_text` field type to create AI Assistant embeddings [obs-ai-search-connectors-semantic-text]
 
-To create the embeddings needed by the AI Assistant using a [`semantic_text`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/semantic-text.md) field type:
+To create the embeddings needed by the AI Assistant using a [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) field type:
 
 1. Open the previously created connector, and select the **Mappings** tab.
 2. Select **Add field**.
@@ -235,13 +235,13 @@ After every answer the LLM provides, let us know if the answer was helpful. Your
 
 ### Chat with the assistant [obs-ai-chat]
 
-Select the **AI Assistant** icon (![AI Assistant icon](../../images/observability-ai-assistant-icon.png "")) at the upper-right corner of any {{observability}} application to start the chat.
+Select the **AI Assistant** icon (![AI Assistant icon](/solutions/images/observability-ai-assistant-icon.png "")) at the upper-right corner of any {{observability}} application to start the chat.
 
 This opens the AI Assistant flyout, where you can ask the assistant questions about your instance:
 
-:::{image} ../../images/observability-obs-ai-chat.png
+:::{image} /solutions/images/observability-obs-ai-chat.png
 :alt: Observability AI assistant chat
-:class: screenshot
+:screenshot:
 :::
 
 ::::{important}
@@ -312,16 +312,16 @@ AI Assistant contextual prompts throughout {{observability}} provide the followi
 
 For example, in the log details, you’ll see prompts for **What’s this message?** and **How do I find similar log messages?**:
 
-:::{image} ../../images/observability-obs-ai-logs-prompts.png
+:::{image} /solutions/images/observability-obs-ai-logs-prompts.png
 :alt: Observability AI assistant logs prompts
-:class: screenshot
+:screenshot:
 :::
 
 Clicking a prompt generates a message specific to that log entry:
 
-:::{image} ../../images/observability-obs-ai-logs.gif
+:::{image} /solutions/images/observability-obs-ai-logs.gif
 :alt: Observability AI assistant example
-:class: screenshot
+:screenshot:
 :::
 
 Continue a conversation from a contextual prompt by clicking **Start chat** to open the AI Assistant chat.
@@ -329,16 +329,16 @@ Continue a conversation from a contextual prompt by clicking **Start chat** to o
 
 ### Add the AI Assistant connector to alerting workflows [obs-ai-connector]
 
-Use the [Observability AI Assistant connector](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/obs-ai-assistant-action-type.md) to add AI-generated insights and custom actions to your alerting workflows as follows:
+Use the [Observability AI Assistant connector](kibana://reference/connectors-kibana/obs-ai-assistant-action-type.md) to add AI-generated insights and custom actions to your alerting workflows as follows:
 
 1. [Create (or edit) an alerting rule](incident-management/create-manage-rules.md) and specify the conditions that must be met for the alert to fire.
 2. Under **Actions**, select the **Observability AI Assistant** connector type.
 3. In the **Connector** list, select the AI connector you created when you set up the assistant.
 4. In the **Message** field, specify the message to send to the assistant:
 
-    :::{image} ../../images/observability-obs-ai-assistant-action-high-cpu.png
+    :::{image} /solutions/images/observability-obs-ai-assistant-action-high-cpu.png
     :alt: Add an Observability AI assistant action while creating a rule in the Observability UI
-    :class: screenshot
+    :screenshot:
     :::
 
 
@@ -351,9 +351,9 @@ Currently only Slack, email, Jira, PagerDuty, or webhook actions are supported. 
 
 When the alert fires, contextual details about the event—such as when the alert fired, the service or host impacted, and the threshold breached—are sent to the AI Assistant, along with the message provided during configuration. The AI Assistant runs the tasks requested in the message and creates a conversation you can use to chat with the assistant:
 
-:::{image} ../../images/observability-obs-ai-assistant-output.png
+:::{image} /solutions/images/observability-obs-ai-assistant-output.png
 :alt: AI Assistant conversation created in response to an alert
-:class: screenshot
+:screenshot:
 :::
 
 ::::{important}
@@ -372,9 +372,9 @@ The `server.publicBaseUrl` setting must be correctly specified under {{kib}} set
 ::::
 
 
-:::{image} ../../images/observability-obs-ai-assistant-slack-message.png
+:::{image} /solutions/images/observability-obs-ai-assistant-slack-message.png
 :alt: Message sent by Slack by the AI Assistant includes a link to the conversation
-:class: screenshot
+:screenshot:
 :::
 
 The Observability AI Assistant connector is called when the alert fires and when it recovers.
@@ -403,7 +403,7 @@ It is possible to make the Elastic official documentation available to the AI As
 Enabling that feature can be done from the **Settings** tab of the AI Assistant Settings page, using the "Install Elastic Documentation" action.
 
 ::::{important}
-Installing the product documentation in air gapped environments requires specific installation and configuration instructions, which are available in the [{{kib}} Kibana AI Assistants settings documentation](asciidocalypse://docs/kibana/docs/reference/configuration-reference/ai-assistant-settings.md).
+Installing the product documentation in air gapped environments requires specific installation and configuration instructions, which are available in the [{{kib}} Kibana AI Assistants settings documentation](kibana://reference/configuration-reference/ai-assistant-settings.md).
 ::::
 
 
@@ -413,4 +413,4 @@ Installing the product documentation in air gapped environments requires specifi
 
 ### Token limits [obs-ai-token-limits]
 
-Most LLMs have a set number of tokens they can manage in single a conversation. When you reach the token limit, the LLM will throw an error, and Elastic will display a "Token limit reached" error in Kibana. The exact number of tokens that the LLM can support depends on the LLM provider and model you’re using. If you use an OpenAI connector, monitor token utilization in **OpenAI Token Usage** dashboard. For more information, refer to the [OpenAI Connector documentation](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/openai-action-type.md#openai-connector-token-dashboard).
+Most LLMs have a set number of tokens they can manage in single a conversation. When you reach the token limit, the LLM will throw an error, and Elastic will display a "Token limit reached" error in Kibana. The exact number of tokens that the LLM can support depends on the LLM provider and model you’re using. If you use an OpenAI connector, monitor token utilization in **OpenAI Token Usage** dashboard. For more information, refer to the [OpenAI Connector documentation](kibana://reference/connectors-kibana/openai-action-type.md#openai-connector-token-dashboard).

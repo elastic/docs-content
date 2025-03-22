@@ -13,7 +13,7 @@ Geospatial fields in {{es}} have certain restrictions that need to be addressed 
 
 ## Convert to GeoJSON or Shapefile [_convert_to_geojson_or_shapefile] 
 
-Use [ogr2ogr](https://gdal.org/programs/ogr2ogr.md) (part of the [GDAL/OGR](https://gdal.org) suite) to convert datasets into a GeoJSON or Esri Shapefile. For example, use the following commands to convert a GPX file into JSON:
+Use [ogr2ogr](https://gdal.org/programs/ogr2ogr.html) (part of the [GDAL/OGR](https://gdal.org) suite) to convert datasets into a GeoJSON or Esri Shapefile. For example, use the following commands to convert a GPX file into JSON:
 
 ```sh
 # Example GPX file from https://www.topografix.com/gpx_sample_files.asp
@@ -33,7 +33,7 @@ $ ogr2ogr -f "GeoJSON" "routes.geo.json" "fells_loop.gpx" "routes"
 
 {{es}} only supports WGS84 Coordinate Reference System. Use `ogr2ogr` to convert from other coordinate systems to WGS84.
 
-On the following example, `ogr2ogr` transforms a shapefile from [NAD83](https://epsg.org/crs_4269/NAD83.md) to [WGS84](https://epsg.org/crs_4326/WGS-84.md). The input CRS is detected automatically thanks to the `.prj` sidecar file in the source dataset.
+On the following example, `ogr2ogr` transforms a shapefile from [NAD83](https://epsg.org/crs_4269/NAD83.html) to [WGS84](https://epsg.org/crs_4326/WGS-84.html). The input CRS is detected automatically thanks to the `.prj` sidecar file in the source dataset.
 
 ```sh
 # Example NAD83 file from https://www2.census.gov/geo/tiger/GENZ2018/shp/cb_2018_us_county_5m.zip
@@ -86,7 +86,7 @@ A dataset containing records with a very large amount of parts as the one from t
 
 Some machine generated datasets are stored with more decimals than are strictly necessary. For reference, the GeoJSON RFC 7946 [coordinate precision section](https://datatracker.ietf.org/doc/html/rfc7946#section-11.2) specifies six digits to be a common default to around 10 centimeters on the ground. The file uploader in the Maps application will automatically reduce the precision to 6 decimals but for big datasets it is better to do this before uploading.
 
-`ogr2ogr` generates GeoJSON files with 7 decimal degrees when requesting `RFC7946` compliant files but using the `COORDINATE_PRECISION` [GeoJSON layer creation option](https://gdal.org/drivers/vector/geojson.md#layer-creation-options) it can be downsized even more if that is OK for the usage of the data.
+`ogr2ogr` generates GeoJSON files with 7 decimal degrees when requesting `RFC7946` compliant files but using the `COORDINATE_PRECISION` [GeoJSON layer creation option](https://gdal.org/drivers/vector/geojson.html#layer-creation-options) it can be downsized even more if that is OK for the usage of the data.
 
 ```sh
 # Example NAD83 file from https://www2.census.gov/geo/tiger/GENZ2018/shp/cb_2018_us_county_5m.zip
@@ -171,7 +171,7 @@ $ du -h cb_2018_us_county_5m*.geo.json
 
 The Maps application expects valid GeoJSON or Shapefile datasets. Apart from the mentioned CRS requirement, geometries need to be valid. Both `ogr2ogr` and `mapshaper` have options to try to fix invalid geometries:
 
-* OGR [`-makevalid`](https://gdal.org/programs/ogr2ogr.md#cmdoption-ogr2ogr-makevalid) option
+* OGR [`-makevalid`](https://gdal.org/programs/ogr2ogr.html#cmdoption-ogr2ogr-makevalid) option
 * Mapshaper [`-clean`](https://github.com/mbloch/mapshaper/wiki/Command-Reference#-clean) command
 
 

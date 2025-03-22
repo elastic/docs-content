@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/blocklist.html
   - https://www.elastic.co/guide/en/serverless/current/security-blocklist.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Blocklist
@@ -67,9 +71,9 @@ By default, a blocklist entry is recognized globally across all hosts running {{
 
 The **Blocklist** page displays all the blocklist entries that have been added to the {{security-app}}. To refine the list, use the search bar to search by name, description, or field value.
 
-:::{image} ../../../images/security-blocklist.png
+:::{image} /solutions/images/security-blocklist.png
 :alt: blocklist
-:class: screenshot
+:screenshot:
 :::
 
 

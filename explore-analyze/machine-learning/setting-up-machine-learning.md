@@ -14,8 +14,8 @@ mapped_pages:
 To use the {{stack}} {{ml-features}}, you must have:
 
 * the [appropriate subscription](https://www.elastic.co/subscriptions) level or the free trial period activated
-* `xpack.ml.enabled` set to its default value of `true` on every node in the cluster (refer to [{{ml-cap}} settings in {{es}}](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/machine-learning-settings.md))
-* `ml` value defined in the list of `node.roles` on the [{{ml}} nodes](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/node-settings.md#ml-node)
+* `xpack.ml.enabled` set to its default value of `true` on every node in the cluster (refer to [{{ml-cap}} settings in {{es}}](elasticsearch://reference/elasticsearch/configuration-reference/machine-learning-settings.md))
+* `ml` value defined in the list of `node.roles` on the [{{ml}} nodes](elasticsearch://reference/elasticsearch/configuration-reference/node-settings.md#ml-node)
 * {{ml}} features visible in the {{kib}} space
 * security privileges assigned to the user that:
 
@@ -66,20 +66,20 @@ Granting `All` or `Read` {{kib}} feature privilege for {{ml-app}} will also gran
 
 #### Feature visibility in Spaces [kib-visibility-spaces]
 
-In {{kib}}, the {{ml-features}} must be visible in your [space](../../deploy-manage/manage-spaces.md#spaces-control-feature-visibility). To manage which features are visible in your space, go to **{{stack-manage-app}}** > **{{kib}}** > **Spaces** or use the [global search field](../find-and-organize/find-apps-and-objects.md) to locate **Spaces** directly.
+In {{kib}}, the {{ml-features}} must be visible in your [space](../../deploy-manage/manage-spaces.md). To manage which features are visible in your space, go to **{{stack-manage-app}}** > **{{kib}}** > **Spaces** or use the [global search field](../find-and-organize/find-apps-and-objects.md) to locate **Spaces** directly.
 
-:::{image} ../../images/machine-learning-spaces.jpg
+:::{image} /explore-analyze/images/machine-learning-spaces.jpg
 :alt: Manage spaces in {{kib}}
-:class: screenshot
+:screenshot:
 :::
 
 In addition to index privileges, source {{data-sources}} must also exist in the same space as your {{ml}} jobs. You can configure these under **{{data-sources-caps}}**. To open **{{data-sources-caps}}**, find **{{stack-manage-app}}** > **{{kib}}** in the main menu, or use the [global search field](../find-and-organize/find-apps-and-objects.md).
 
 Each {{ml}} job and trained model can be assigned to all, one, or multiple spaces. This can be configured in **Machine Learning**. To open **Machine Learning**, find **{{stack-manage-app}} > Alerts and Insights** in the main menu, or use the [global search field](../find-and-organize/find-apps-and-objects.md). You can edit the spaces that a job or model is assigned to by clicking the icons in the **Spaces** column.
 
-:::{image} ../../images/machine-learning-assign-job-spaces.jpg
+:::{image} /explore-analyze/images/machine-learning-assign-job-spaces.jpg
 :alt: Assign machine learning jobs to spaces
-:class: screenshot
+:screenshot:
 :::
 
 #### {{kib}} user [kib-security-privileges]

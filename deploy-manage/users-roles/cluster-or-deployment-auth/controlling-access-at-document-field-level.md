@@ -20,15 +20,15 @@ You can control access to data within a data stream or index by adding field and
 
 **Document level security** restricts the documents that users have read access to. In particular, it restricts which documents can be accessed from document-based read APIs.
 
-::::{note} 
+::::{note}
 Document and field level security is currently meant to operate with read-only privileged accounts. Users with document and field level security enabled for a data stream or index should not perform write operations.
 ::::
 
 A role can define both field and document level permissions on a per-index basis. A role that doesn’t specify field level permissions grants access to ALL fields. Similarly, a role that doesn’t specify document level permissions grants access to ALL documents in the index.
 
-On this page, you'll learn how to implement [document level security](#document-level-security) and [field level security](#field-level-security). 
+On this page, you'll learn how to implement [document level security](#document-level-security) and [field level security](#field-level-security).
 
-You'll also learn the following: 
+You'll also learn the following:
 * How [multiple roles with document and field level security](#multiple-roles-dls-fls) interact
 * Considerations for using document and field level security when [searching across clusters using cross-cluster API keys](#ccx-apikeys-dls-fls).
 
@@ -36,7 +36,7 @@ The examples on this page use the [Role management API](https://www.elastic.co/d
 
 
 :::{{admonition}} Document and field level security in {{serverless-full}}
-This topic explains how to apply document and field level security in {{stack}}. You can also apply document and field level security in {{serverless-full}} projects. 
+This topic explains how to apply document and field level security in {{stack}}. You can also apply document and field level security in {{serverless-full}} projects.
 
 In {{serverless-full}}, you can only manage document and field level security using the {{ecloud}} console. However, document level security is still managed using queries, and you can use the queries on this page as a guideline.
 
@@ -54,7 +54,7 @@ The specified document query:
 * Accepts queries written as either string values or nested JSON
 * Supports the majority of the {{es}} [Query DSL](/explore-analyze/query-filter/languages/querydsl.md), with [some limitations](../../../deploy-manage/security.md#field-document-limitations) for field and document level security
 
-::::{important} 
+::::{important}
 Omitting the `query` parameter entirely disables document level security for the respective indices permission entry.
 ::::
 
@@ -188,15 +188,15 @@ POST /_security/role/example3
 
 ### Pre-processing documents to add security details [set-security-user-processor]
 
-To guarantee that a user reads only their own documents, it makes sense to set up document level security. In this scenario, each document must have the username or role name associated with it, so that this information can be used by the role query for document level security. This is a situation where the [set security user processor](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/enrich-processor/ingest-node-set-security-user-processor.md) ingest processor can help.
+To guarantee that a user reads only their own documents, it makes sense to set up document level security. In this scenario, each document must have the username or role name associated with it, so that this information can be used by the role query for document level security. This is a situation where the [set security user processor](elasticsearch://reference/ingestion-tools/enrich-processor/ingest-node-set-security-user-processor.md) ingest processor can help.
 
-::::{note} 
+::::{note}
 Document level security doesn’t apply to write APIs. You must use unique ids for each user that uses the same data stream or index, otherwise they might overwrite other users' documents. The ingest processor just adds properties for the current authenticated user to the documents that are being indexed.
 ::::
 
-The [set security user processor](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/enrich-processor/ingest-node-set-security-user-processor.md) attaches user-related details (such as `username`,  `roles`, `email`, `full_name` and `metadata` ) from the current authenticated user to the current document by pre-processing the ingest. When you index data with an ingest pipeline, user details are automatically attached to the document. If the authenticating credential is an API key, the API key `id`, `name` and `metadata` (if it exists and is non-empty) are also attached to the document.
+The [set security user processor](elasticsearch://reference/ingestion-tools/enrich-processor/ingest-node-set-security-user-processor.md) attaches user-related details (such as `username`,  `roles`, `email`, `full_name` and `metadata` ) from the current authenticated user to the current document by pre-processing the ingest. When you index data with an ingest pipeline, user details are automatically attached to the document. If the authenticating credential is an API key, the API key `id`, `name` and `metadata` (if it exists and is non-empty) are also attached to the document.
 
-For more information, see [Ingest pipelines](/manage-data/ingest/transform-enrich/ingest-pipelines.md) and [Set security user](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/enrich-processor/ingest-node-set-security-user-processor.md).
+For more information, see [Ingest pipelines](/manage-data/ingest/transform-enrich/ingest-pipelines.md) and [Set security user](elasticsearch://reference/ingestion-tools/enrich-processor/ingest-node-set-security-user-processor.md).
 
 
 ## Field level security [field-level-security]
@@ -222,7 +222,7 @@ POST /_security/role/test_role1
 
 Access to the following metadata fields is always allowed: `_id`, `_type`, `_parent`, `_routing`, `_timestamp`, `_ttl`, `_size` and `_index`. If you specify an empty list of fields, only these metadata fields are accessible.
 
-::::{note} 
+::::{note}
 Omitting the fields entry entirely disables field level security.
 ::::
 
@@ -387,13 +387,13 @@ The resulting permission is equal to:
 }
 ```
 
-::::{note} 
-Field-level security should not be set on [`alias`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/field-alias.md) fields. To secure a concrete field, its field name must be used directly.
+::::{note}
+Field-level security should not be set on [`alias`](elasticsearch://reference/elasticsearch/mapping-reference/field-alias.md) fields. To secure a concrete field, its field name must be used directly.
 ::::
 
 ## Multiple roles with document and field level security [multiple-roles-dls-fls]
 
-A user can have many roles and each role can define different permissions on the same data stream or index. When assigning users multiple roles, be careful that you don’t inadvertently grant wider access than intended. 
+A user can have many roles and each role can define different permissions on the same data stream or index. When assigning users multiple roles, be careful that you don’t inadvertently grant wider access than intended.
 
 **Document level security** takes into account each role held by the user and combines each document level security query for a given data stream or index with an "OR". This means that only one of the role queries must match for a document to be returned. For example, if a role grants access to an index without document level security and another grants access with document level security, document level security is not applied; the user with both roles has access to all of the documents in the index.
 
@@ -401,7 +401,7 @@ A user can have many roles and each role can define different permissions on the
 
 For example, let’s say `role_a` grants access to only the `address` field of the documents in `index1`; it doesn’t specify any document restrictions. Conversely, `role_b` limits access to a subset of the documents in `index1`; it doesn’t specify any field restrictions. If you assign a user both roles, `role_a` gives the user access to all documents and `role_b` gives the user access to all fields.
 
-::::{important} 
+::::{important}
 If you need to restrict access to both documents and fields, consider splitting documents by index instead.
 ::::
 

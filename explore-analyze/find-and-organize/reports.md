@@ -14,9 +14,9 @@ For example, in **Discover**, you can create and download comma-separated values
 
 To view and manage reports, go to **Management** > **Reporting**.
 
-:::{image} ../../images/serverless-reports-management.png
+:::{image} /explore-analyze/images/serverless-reports-management.png
 :alt: {{reports-app}}
-:class: screenshot
+:screenshot:
 :::
 
 You can download or view details about the report by clicking the icons in the actions menu.

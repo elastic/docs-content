@@ -1,27 +1,6 @@
 project: 'Deploy and manage'
 toc:
   - file: index.md
-  - file: distributed-architecture.md
-    children:
-      - file: distributed-architecture/clusters-nodes-shards.md
-        children:
-          - file: distributed-architecture/clusters-nodes-shards/node-roles.md
-      - file: distributed-architecture/reading-and-writing-documents.md
-      - file: distributed-architecture/shard-allocation-relocation-recovery.md
-        children:
-          - file: distributed-architecture/shard-allocation-relocation-recovery/shard-allocation-awareness.md
-          - file: distributed-architecture/shard-allocation-relocation-recovery/index-level-shard-allocation.md
-            children:
-              - file: distributed-architecture/shard-allocation-relocation-recovery/delaying-allocation-when-node-leaves.md
-      - file: distributed-architecture/discovery-cluster-formation.md
-        children:
-          - file: distributed-architecture/discovery-cluster-formation/discovery-hosts-providers.md
-          - file: distributed-architecture/discovery-cluster-formation/modules-discovery-quorums.md
-          - file: distributed-architecture/discovery-cluster-formation/modules-discovery-voting.md
-          - file: distributed-architecture/discovery-cluster-formation/modules-discovery-bootstrap-cluster.md
-          - file: distributed-architecture/discovery-cluster-formation/cluster-state-overview.md
-          - file: distributed-architecture/discovery-cluster-formation/cluster-fault-detection.md
-      - file: distributed-architecture/kibana-tasks-management.md
   - file: deploy.md
     children:
       - file: deploy/deployment-comparison.md
@@ -39,40 +18,14 @@ toc:
                   - file: deploy/elastic-cloud/google-cloud-platform-marketplace.md                  
                   - file: deploy/elastic-cloud/heroku.md
                     children:
-                      - file: deploy/elastic-cloud/ech-getting-started-installing.md
+                      - file: deploy/elastic-cloud/heroku-getting-started-installing.md
                         children:
-                          - file: deploy/elastic-cloud/ech-getting-started-installing-version.md
-                          - file: deploy/elastic-cloud/ech-getting-started-removing.md
-                      - file: deploy/elastic-cloud/ech-migrating.md
-                      - file: deploy/elastic-cloud/ech-getting-started-accessing.md
-                        children:
-                          - file: deploy/elastic-cloud/ech-access-kibana.md
-                      - file: deploy/elastic-cloud/ech-working-with-elasticsearch.md
-                      - file: deploy/elastic-cloud/ech-api-console.md
-                      - file: deploy/elastic-cloud/ech-getting-started-next-steps.md
-                      - file: deploy/elastic-cloud/ech-migrate-data2.md
-                        children:
-                          - file: deploy/elastic-cloud/ech-migrate-data-internal.md
-                      - file: deploy/elastic-cloud/ech-about.md
-                        children:
-                          - file: deploy/elastic-cloud/ech-licensing.md
-                          - file: deploy/elastic-cloud/ech-version-policy.md
-                          - file: deploy/elastic-cloud/ech-reference-hardware.md
-                            children:
-                              - file: deploy/elastic-cloud/ech-gcp-instance-configuration.md
-                              - file: deploy/elastic-cloud/ech-default-gcp-configurations.md
-                              - file: deploy/elastic-cloud/ech-aws-instance-configuration.md
-                              - file: deploy/elastic-cloud/ech-default-aws-configurations.md
-                              - file: deploy/elastic-cloud/ech-azure-instance-configuration.md
-                              - file: deploy/elastic-cloud/ech-default-azure-configurations.md
-                          - file: deploy/elastic-cloud/ech-reference-regions.md
-                          - file: deploy/elastic-cloud/ech-service-status.md
-                            children:
-                              - file: deploy/elastic-cloud/echsubscribe_to_individual_regionscomponents.md
-                              - file: deploy/elastic-cloud/echservice_status_api.md
-                          - file: deploy/elastic-cloud/ech-get-help.md
-                          - file: deploy/elastic-cloud/ech-restrictions.md
-                          - file: deploy/elastic-cloud/ech-whats-new.md
+                          - file: deploy/elastic-cloud/heroku-getting-started-removing.md
+                      - file: deploy/elastic-cloud/heroku-getting-started-accessing.md
+                      - file: deploy/elastic-cloud/heroku-working-with-elasticsearch.md
+                      - file: deploy/elastic-cloud/heroku-migrating.md
+                      - file: deploy/elastic-cloud/heroku-reference-hardware.md
+                      - file: deploy/elastic-cloud/heroku-reference-regions.md
           - file: deploy/elastic-cloud/serverless.md
             children:
               - file: deploy/elastic-cloud/differences-from-other-elasticsearch-offerings.md
@@ -101,6 +54,7 @@ toc:
                     children:
                       - file: deploy/elastic-cloud/switch-from-apm-to-integrations-server-payload.md
                   - file: deploy/elastic-cloud/find-cloud-id.md
+              - file: deploy/elastic-cloud/ec-vcpu-boost-instance.md
               - file: deploy/elastic-cloud/change-hardware.md
               - file: deploy/elastic-cloud/manage-deployments-using-elastic-cloud-api.md
               - file: deploy/elastic-cloud/keep-track-of-deployment-activity.md
@@ -117,49 +71,34 @@ toc:
                   - file: deploy/cloud-enterprise/ece-software-prereq.md
                   - file: deploy/cloud-enterprise/ece-sysconfig.md
                   - file: deploy/cloud-enterprise/ece-networking-prereq.md
+                  - file: deploy/cloud-enterprise/ece-users-permissions.md
                   - file: deploy/cloud-enterprise/ece-ha.md
                   - file: deploy/cloud-enterprise/ece-roles.md
                   - file: deploy/cloud-enterprise/ece-load-balancers.md
-                  - file: deploy/cloud-enterprise/ece-users-permissions.md
                   - file: deploy/cloud-enterprise/ece-jvm.md
                   - file: deploy/cloud-enterprise/ece-wildcard-dns.md
                   - file: deploy/cloud-enterprise/ece-manage-capacity.md
               - file: deploy/cloud-enterprise/install.md
                 children:
                   - file: deploy/cloud-enterprise/identify-deployment-scenario.md
-                  - file: deploy/cloud-enterprise/install-ece-on-public-cloud.md
+                  - file: deploy/cloud-enterprise/configure-operating-system.md
                     children:
-                      - file: deploy/cloud-enterprise/configure-operating-system-cloud.md
-                        children:
-                          - file: deploy/cloud-enterprise/configure-host-ubuntu-cloud.md
-                          - file: deploy/cloud-enterprise/configure-host-rhel-cloud.md
-                          - file: deploy/cloud-enterprise/configure-host-suse-cloud.md
-                      - file: deploy/cloud-enterprise/install-ece-cloud.md
-                        children:
-                          - file: deploy/cloud-enterprise/deploy-small-installation-cloud.md
-                          - file: deploy/cloud-enterprise/deploy-medium-installation-cloud.md
-                          - file: deploy/cloud-enterprise/deploy-large-installation-cloud.md
-                          - file: deploy/cloud-enterprise/fresh-installation-of-ece-using-podman-hosts-cloud.md
-                  - file: deploy/cloud-enterprise/install-ece-on-own-premises.md
+                      - file: deploy/cloud-enterprise/configure-host-ubuntu.md
+                      - file: deploy/cloud-enterprise/configure-host-rhel.md
+                      - file: deploy/cloud-enterprise/configure-host-suse.md
+                  - file: deploy/cloud-enterprise/install-ece-procedures.md
                     children:
-                      - file: deploy/cloud-enterprise/configure-operating-system-onprem.md
-                        children:
-                          - file: deploy/cloud-enterprise/configure-host-ubuntu-onprem.md
-                          - file: deploy/cloud-enterprise/configure-host-rhel-onprem.md
-                          - file: deploy/cloud-enterprise/configure-host-suse-onprem.md
-                      - file: deploy/cloud-enterprise/install-ece-onprem.md
-                        children:
-                          - file: deploy/cloud-enterprise/deploy-small-installation-onprem.md
-                          - file: deploy/cloud-enterprise/deploy-medium-installation-onprem.md
-                          - file: deploy/cloud-enterprise/deploy-large-installation-onprem.md
-                          - file: deploy/cloud-enterprise/fresh-installation-of-ece-using-podman-hosts-onprem.md
-                  - file: deploy/cloud-enterprise/alternative-install-ece-with-ansible.md
+                      - file: deploy/cloud-enterprise/deploy-small-installation.md
+                      - file: deploy/cloud-enterprise/deploy-medium-installation.md
+                      - file: deploy/cloud-enterprise/deploy-large-installation.md
+                      - file: deploy/cloud-enterprise/fresh-installation-of-ece-using-podman-hosts.md
+                      - file: deploy/cloud-enterprise/migrate-ece-to-podman-hosts.md
                   - file: deploy/cloud-enterprise/log-into-cloud-ui.md
+                  - file: deploy/cloud-enterprise/post-installation-steps.md
                   - file: deploy/cloud-enterprise/install-ece-on-additional-hosts.md
                     children:
                       - file: deploy/cloud-enterprise/generate-roles-tokens.md
-                  - file: deploy/cloud-enterprise/migrate-ece-to-podman-hosts.md
-                  - file: deploy/cloud-enterprise/post-installation-steps.md
+                  - file: deploy/cloud-enterprise/alternative-install-ece-with-ansible.md
                   - file: deploy/cloud-enterprise/statistics-collected-by-cloud-enterprise.md
               - file: deploy/cloud-enterprise/air-gapped-install.md
                 children:
@@ -183,35 +122,40 @@ toc:
                       - file: deploy/cloud-enterprise/ce-add-support-for-node-roles-autoscaling.md
                       - file: deploy/cloud-enterprise/ece-ce-add-support-for-integrations-server.md
                       - file: deploy/cloud-enterprise/ece-configuring-ece-instance-configurations-default.md
-                      - file: deploy/cloud-enterprise/ece-include-additional-kibana-plugin.md
                   - file: deploy/cloud-enterprise/change-ece-api-url.md
                   - file: deploy/cloud-enterprise/change-endpoint-urls.md
                   - file: deploy/cloud-enterprise/enable-custom-endpoint-aliases.md
-                    children:
-                      - file: deploy/cloud-enterprise/ece-regional-deployment-aliases.md
                   - file: deploy/cloud-enterprise/configure-allocator-affinity.md
                   - file: deploy/cloud-enterprise/change-allocator-disconnect-timeout.md
                   - file: deploy/cloud-enterprise/manage-elastic-stack-versions.md
-                  - file: deploy/cloud-enterprise/migrate-ece-on-podman-hosts-to-selinux-enforce.md
+                  - file: deploy/cloud-enterprise/ece-include-additional-kibana-plugin.md
           - file: deploy/cloud-enterprise/working-with-deployments.md
             children:
               - file: deploy/cloud-enterprise/deployment-templates.md
               - file: deploy/cloud-enterprise/create-deployment.md
-              - file: deploy/cloud-enterprise/edit-stack-settings.md
-              - file: deploy/cloud-enterprise/customize-deployment.md
-              - file: deploy/cloud-enterprise/resize-deployment.md
+              - file: deploy/cloud-enterprise/access-kibana.md
+              - file: deploy/cloud-enterprise/connect-elasticsearch.md
+              - file: deploy/cloud-enterprise/configure-deployment.md
                 children:
+                  - file: deploy/cloud-enterprise/customize-deployment.md
+                  - file: deploy/cloud-enterprise/edit-stack-settings.md
+                    children:
+                      - file: deploy/cloud-enterprise/edit-stack-settings-elasticsearch.md
+                      - file: deploy/cloud-enterprise/edit-stack-settings-kibana.md
+                      - file: deploy/cloud-enterprise/edit-stack-settings-apm.md
+                      - file: deploy/cloud-enterprise/edit-stack-settings-enterprise.md
+                  - file: deploy/cloud-enterprise/resize-deployment.md
+                  - file: deploy/cloud-enterprise/add-plugins.md
+                  - file: deploy/cloud-enterprise/add-custom-bundles-plugins.md
+                  - file: deploy/cloud-enterprise/ece-regional-deployment-aliases.md
                   - file: deploy/cloud-enterprise/resource-overrides.md
-              - file: deploy/cloud-enterprise/add-plugins.md
-              - file: deploy/cloud-enterprise/add-custom-bundles-plugins.md
-              - file: deploy/cloud-enterprise/manage-integrations-server.md
-                children:
-                  - file: deploy/cloud-enterprise/switch-from-apm-to-integrations-server-payload.md
-              - file: deploy/cloud-enterprise/find-cloud-id.md
-              - file: deploy/cloud-enterprise/find-endpoint-url.md
-              - file: deploy/cloud-enterprise/advanced-cluster-configuration.md
+                  - file: deploy/cloud-enterprise/advanced-cluster-configuration.md
               - file: deploy/cloud-enterprise/search-filter-deployments.md
               - file: deploy/cloud-enterprise/keep-track-of-deployment-activity.md
+              - file: deploy/cloud-enterprise/manage-integrations-server.md
+                children:
+                  - file: deploy/cloud-enterprise/ece-integrations-server-api-example.md
+                  - file: deploy/cloud-enterprise/switch-from-apm-to-integrations-server-payload.md
           - file: deploy/cloud-enterprise/tools-apis.md
       - file: deploy/cloud-on-k8s.md
         children:
@@ -242,7 +186,6 @@ toc:
                     children:
                       - file: deploy/cloud-on-k8s/k8s-service-mesh-istio.md
                       - file: deploy/cloud-on-k8s/k8s-service-mesh-linkerd.md
-                  - file: deploy/cloud-on-k8s/network-policies.md
                   - file: deploy/cloud-on-k8s/webhook-namespace-selectors.md
           - file: deploy/cloud-on-k8s/manage-deployments.md
             children:
@@ -263,7 +206,6 @@ toc:
                       - file: deploy/cloud-on-k8s/settings-managed-by-eck.md
                       - file: deploy/cloud-on-k8s/custom-configuration-files-plugins.md
                       - file: deploy/cloud-on-k8s/init-containers-for-plugin-downloads.md
-                      - file: deploy/cloud-on-k8s/transport-settings.md
                       - file: deploy/cloud-on-k8s/update-strategy.md
                       - file: deploy/cloud-on-k8s/pod-disruption-budget.md
                       - file: deploy/cloud-on-k8s/advanced-elasticsearch-node-scheduling.md
@@ -275,8 +217,6 @@ toc:
                     children:
                       - file: deploy/cloud-on-k8s/k8s-kibana-es.md
                       - file: deploy/cloud-on-k8s/k8s-kibana-advanced-configuration.md
-                      - file: deploy/cloud-on-k8s/k8s-kibana-secure-settings.md
-                      - file: deploy/cloud-on-k8s/k8s-kibana-http-configuration.md
                       - file: deploy/cloud-on-k8s/k8s-kibana-plugins.md
                   - file: deploy/cloud-on-k8s/customize-pods.md
                   - file: deploy/cloud-on-k8s/manage-compute-resources.md
@@ -326,8 +266,9 @@ toc:
           - file: deploy/cloud-on-k8s/tools-apis.md
       - file: deploy/self-managed.md
         children:
-          - file: deploy/self-managed/deploy-cluster.md
+          - file: deploy/self-managed/installing-elasticsearch.md
             children:
+              - file: deploy/self-managed/local-development-installation-quickstart.md
               - file: deploy/self-managed/important-system-configuration.md
                 children:
                   - file: deploy/self-managed/setting-system-settings.md
@@ -338,47 +279,55 @@ toc:
                   - file: deploy/self-managed/networkaddress-cache-ttl.md
                   - file: deploy/self-managed/executable-jna-tmpdir.md
                   - file: deploy/self-managed/system-config-tcpretries.md
-              - file: deploy/self-managed/installing-elasticsearch.md
+                  - file: deploy/self-managed/bootstrap-checks.md
+              - file: deploy/self-managed/install-elasticsearch-from-archive-on-linux-macos.md
+              - file: deploy/self-managed/install-elasticsearch-with-zip-on-windows.md
+              - file: deploy/self-managed/install-elasticsearch-with-debian-package.md
+              - file: deploy/self-managed/install-elasticsearch-with-rpm.md
+              - file: deploy/self-managed/install-elasticsearch-with-docker.md
                 children:
-                  - file: deploy/self-managed/install-elasticsearch-from-archive-on-linux-macos.md
-                  - file: deploy/self-managed/install-elasticsearch-with-zip-on-windows.md
-                  - file: deploy/self-managed/install-elasticsearch-with-debian-package.md
-                  - file: deploy/self-managed/install-elasticsearch-with-rpm.md
-                  - file: deploy/self-managed/install-elasticsearch-with-docker.md
-              - file: deploy/self-managed/local-development-installation-quickstart.md
-              - file: deploy/self-managed/bootstrap-checks.md
-                children:
-                  - file: deploy/self-managed/bootstrap-checks-heap-size.md
-                  - file: deploy/self-managed/bootstrap-checks-file-descriptor.md
-                  - file: deploy/self-managed/bootstrap-checks-memory-lock.md
-                  - file: deploy/self-managed/max-number-threads-check.md
-                  - file: deploy/self-managed/bootstrap-checks-max-file-size.md
-                  - file: deploy/self-managed/max-size-virtual-memory-check.md
-                  - file: deploy/self-managed/bootstrap-checks-max-map-count.md
-                  - file: deploy/self-managed/bootstrap-checks-client-jvm.md
-                  - file: deploy/self-managed/bootstrap-checks-serial-collector.md
-                  - file: deploy/self-managed/bootstrap-checks-syscall-filter.md
-                  - file: deploy/self-managed/bootstrap-checks-onerror.md
-                  - file: deploy/self-managed/bootstrap-checks-early-access.md
-                  - file: deploy/self-managed/bootstrap-checks-all-permission.md
-                  - file: deploy/self-managed/bootstrap-checks-discovery-configuration.md
+                  - file: deploy/self-managed/install-elasticsearch-docker-basic.md
+                  - file: deploy/self-managed/install-elasticsearch-docker-compose.md
+                  - file: deploy/self-managed/install-elasticsearch-docker-prod.md
+                  - file: deploy/self-managed/install-elasticsearch-docker-configure.md
+
           - file: deploy/self-managed/configure-elasticsearch.md
             children:
               - file: deploy/self-managed/important-settings-configuration.md
-              - file: deploy/self-managed/other-configuration-settings.md
               - file: deploy/self-managed/plugins.md
           - file: deploy/self-managed/install-kibana.md
             children:
-              - file: deploy/self-managed/install-from-archive-on-linux-macos.md
-              - file: deploy/self-managed/install-on-windows.md
-              - file: deploy/self-managed/install-with-debian-package.md
-              - file: deploy/self-managed/install-with-rpm.md
-              - file: deploy/self-managed/install-with-docker.md
-              - file: deploy/self-managed/configure.md
-              - file: deploy/self-managed/access.md
+              - file: deploy/self-managed/install-kibana-from-archive-on-linux-macos.md
+              - file: deploy/self-managed/install-kibana-on-windows.md
+              - file: deploy/self-managed/install-kibana-with-debian-package.md
+              - file: deploy/self-managed/install-kibana-with-rpm.md
+              - file: deploy/self-managed/install-kibana-with-docker.md
+          - file: deploy/self-managed/configure-kibana.md
+          - file: deploy/self-managed/access-kibana.md
           - file: deploy/self-managed/air-gapped-install.md
           - file: deploy/self-managed/tools-apis.md
-      - file: deploy/kibana-reporting-configuration.md
+  - file: distributed-architecture.md
+    children:
+      - file: distributed-architecture/clusters-nodes-shards.md
+        children:
+          - file: distributed-architecture/clusters-nodes-shards/node-roles.md
+      - file: distributed-architecture/reading-and-writing-documents.md
+      - file: distributed-architecture/shard-allocation-relocation-recovery.md
+        children:
+          - file: distributed-architecture/shard-allocation-relocation-recovery/shard-allocation-awareness.md
+          - file: distributed-architecture/shard-allocation-relocation-recovery/index-level-shard-allocation.md
+            children:
+              - file: distributed-architecture/shard-allocation-relocation-recovery/delaying-allocation-when-node-leaves.md
+      - file: distributed-architecture/shard-request-cache.md
+      - file: distributed-architecture/discovery-cluster-formation.md
+        children:
+          - file: distributed-architecture/discovery-cluster-formation/discovery-hosts-providers.md
+          - file: distributed-architecture/discovery-cluster-formation/modules-discovery-quorums.md
+          - file: distributed-architecture/discovery-cluster-formation/modules-discovery-voting.md
+          - file: distributed-architecture/discovery-cluster-formation/modules-discovery-bootstrap-cluster.md
+          - file: distributed-architecture/discovery-cluster-formation/cluster-state-overview.md
+          - file: distributed-architecture/discovery-cluster-formation/cluster-fault-detection.md
+      - file: distributed-architecture/kibana-tasks-management.md
   - file: production-guidance.md
     children:
       - file: production-guidance/getting-ready-for-production-elasticsearch.md
@@ -484,96 +433,78 @@ toc:
               - file: tools/cross-cluster-replication/_perform_update_or_delete_by_query.md
   - file: autoscaling.md
     children:
-      - file: autoscaling/ech-autoscaling.md
-        children:
-          - file: autoscaling/ech-autoscaling-example.md
-      - file: autoscaling/ec-autoscaling.md
-        children:
-          - file: autoscaling/ec-autoscaling-example.md
-          - file: autoscaling/ec-autoscaling-api-example.md
-      - file: autoscaling/ece-autoscaling.md
-        children:
-          - file: autoscaling/ece-autoscaling-example.md
-          - file: autoscaling/ece-autoscaling-api-example.md
-      - file: autoscaling/autoscaling-stateless-applications-on-eck.md
-      - file: autoscaling/deployments-autoscaling-on-eck.md
+      - file: autoscaling/autoscaling-in-ece-and-ech.md
+      - file: autoscaling/autoscaling-in-eck.md
       - file: autoscaling/autoscaling-deciders.md
       - file: autoscaling/trained-model-autoscaling.md
-  - file: remote-clusters.md
-    children:
-      - file: remote-clusters/ec-enable-ccs.md
-        children:
-          - file: remote-clusters/ec-remote-cluster-same-ess.md
-          - file: remote-clusters/ec-remote-cluster-other-ess.md
-          - file: remote-clusters/ec-remote-cluster-ece.md
-          - file: remote-clusters/ec-remote-cluster-self-managed.md
-          - file: remote-clusters/ec-enable-ccs-for-eck.md
-          - file: remote-clusters/ec-edit-remove-trusted-environment.md
-          - file: remote-clusters/ec-migrate-ccs.md
-      - file: remote-clusters/ece-enable-ccs.md
-        children:
-          - file: remote-clusters/ece-remote-cluster-same-ece.md
-          - file: remote-clusters/ece-remote-cluster-other-ece.md
-          - file: remote-clusters/ece-remote-cluster-ece-ess.md
-          - file: remote-clusters/ece-remote-cluster-self-managed.md
-          - file: remote-clusters/ece-enable-ccs-for-eck.md
-          - file: remote-clusters/ece-edit-remove-trusted-environment.md
-          - file: remote-clusters/ece-migrate-ccs.md
-      - file: remote-clusters/remote-clusters-self-managed.md
-        children:
-          - file: remote-clusters/remote-clusters-api-key.md
-          - file: remote-clusters/remote-clusters-cert.md
-          - file: remote-clusters/remote-clusters-migrate.md
-          - file: remote-clusters/remote-clusters-settings.md
-      - file: remote-clusters/eck-remote-clusters.md
   - file: security.md
-    children:
-      - file: security/secure-your-elastic-cloud-enterprise-installation.md
+    children: 
+      - file: security/secure-hosting-environment.md
         children:
-          - file: security/secure-your-elastic-cloud-enterprise-installation/manage-security-certificates.md
-          - file: security/secure-your-elastic-cloud-enterprise-installation/allow-x509-certificates-signed-with-sha-1.md
-          - file: security/secure-your-elastic-cloud-enterprise-installation/configure-tls-version.md
+          - file: security/secure-your-elastic-cloud-enterprise-installation.md
+            children:
+              - file: security/secure-your-elastic-cloud-enterprise-installation/manage-security-certificates.md
+              - file: security/secure-your-elastic-cloud-enterprise-installation/allow-x509-certificates-signed-with-sha-1.md
+              - file: security/secure-your-elastic-cloud-enterprise-installation/configure-tls-version.md
+              - file: security/secure-your-elastic-cloud-enterprise-installation/migrate-ece-on-podman-hosts-to-selinux-enforce.md
+          - file: security/secure-your-eck-installation.md
       - file: security/secure-your-cluster-deployment.md
         children:
-          - file: security/secure-endpoints.md
-            children:
-              - file: security/secure-http-communications.md
-              - file: security/traffic-filtering.md
-                children:
-                  - file: security/ip-traffic-filtering.md
-                  - file: security/private-link-traffic-filters.md
-                    children:
-                      - file: security/aws-privatelink-traffic-filters.md
-                      - file: security/azure-private-link-traffic-filters.md
-                      - file: security/gcp-private-service-connect-traffic-filters.md
-                      - file: security/claim-traffic-filter-link-id-ownership-through-api.md
-                  - file: security/manage-traffic-filtering-through-api.md
-              - file: security/elastic-cloud-static-ips.md
-          - file: security/kibana-session-management.md
           - file: security/secure-cluster-communications.md
             children:
+              - file: security/secure-http-communications.md
+              - file: security/k8s-transport-settings.md
               - file: security/security-certificates-keys.md
                 children:
                   - file: security/updating-certificates.md
                     children:
                       - file: security/same-ca.md
                       - file: security/different-ca.md
-          - file: security/secure-clients-integrations.md
+              - file: security/supported-ssltls-versions-by-jdk-version.md
+              - file: security/enabling-cipher-suites-for-stronger-encryption.md
+          - file: security/traffic-filtering.md
             children:
-              - file: security/httprest-clients-security.md
-          - file: security/encrypt-deployment.md
+              - file: security/ip-traffic-filtering.md
+                children:
+                  - file: security/ec-traffic-filtering-through-the-api.md
+                  - file: security/ece-traffic-filtering-through-the-api.md
+              - file: security/private-link-traffic-filters.md
+                children:
+                  - file: security/aws-privatelink-traffic-filters.md
+                  - file: security/azure-private-link-traffic-filters.md
+                  - file: security/gcp-private-service-connect-traffic-filters.md
+                  - file: security/claim-traffic-filter-link-id-ownership-through-api.md
+              - file: security/k8s-network-policies.md
+          - file: security/elastic-cloud-static-ips.md
+          - file: security/kibana-session-management.md
+          - file: security/data-security.md
             children:
               - file: security/encrypt-deployment-with-customer-managed-encryption-key.md
           - file: security/secure-settings.md
+            children:
+              - file: security/k8s-secure-settings.md
           - file: security/secure-saved-objects.md
+          - file: security/logging-configuration/security-event-audit-logging.md
+            children:
+              - file: security/logging-configuration/enabling-audit-logs.md
+              - file: security/logging-configuration/configuring-audit-logs.md
+                children:
+                  - file: security/logging-configuration/logfile-audit-events-ignore-policies.md
+                  - file: security/logging-configuration/logfile-audit-output.md
+              - file: security/logging-configuration/auditing-search-queries.md
+              - file: security/logging-configuration/correlating-kibana-elasticsearch-audit-logs.md
           - file: security/manually-configure-security-in-self-managed-cluster.md
             children:
               - file: security/set-up-minimal-security.md
               - file: security/set-up-basic-security.md
               - file: security/set-up-basic-security-plus-https.md
-          - file: security/enabling-cipher-suites-for-stronger-encryption.md
-          - file: security/supported-ssltls-versions-by-jdk-version.md
+              - file: security/using-kibana-with-security.md
+              - file: security/install-stack-demo-secure.md
           - file: security/fips-140-2.md
+      - file: security/secure-clients-integrations.md
+        children:
+          - file: security/httprest-clients-security.md
+      - file: security/limitations.md
   - file: users-roles.md
     children:
       - file: users-roles/cloud-organization.md
@@ -670,18 +601,47 @@ toc:
       - file: api-keys/elastic-cloud-api-keys.md
       - file: api-keys/elastic-cloud-enterprise-api-keys.md
   - file: manage-connectors.md
+  - file: remote-clusters.md
+    children:
+      - file: remote-clusters/ec-enable-ccs.md
+        children:
+          - file: remote-clusters/ec-remote-cluster-same-ess.md
+          - file: remote-clusters/ec-remote-cluster-other-ess.md
+          - file: remote-clusters/ec-remote-cluster-ece.md
+          - file: remote-clusters/ec-remote-cluster-self-managed.md
+          - file: remote-clusters/ec-enable-ccs-for-eck.md
+          - file: remote-clusters/ec-edit-remove-trusted-environment.md
+          - file: remote-clusters/ec-migrate-ccs.md
+      - file: remote-clusters/ece-enable-ccs.md
+        children:
+          - file: remote-clusters/ece-remote-cluster-same-ece.md
+          - file: remote-clusters/ece-remote-cluster-other-ece.md
+          - file: remote-clusters/ece-remote-cluster-ece-ess.md
+          - file: remote-clusters/ece-remote-cluster-self-managed.md
+          - file: remote-clusters/ece-enable-ccs-for-eck.md
+          - file: remote-clusters/ece-edit-remove-trusted-environment.md
+          - file: remote-clusters/ece-migrate-ccs.md
+      - file: remote-clusters/remote-clusters-self-managed.md
+        children:
+          - file: remote-clusters/remote-clusters-api-key.md
+          - file: remote-clusters/remote-clusters-cert.md
+          - file: remote-clusters/remote-clusters-migrate.md
+          - file: remote-clusters/remote-clusters-settings.md
+      - file: remote-clusters/eck-remote-clusters.md
   - file: monitor.md
     children:
       - file: monitor/autoops.md
         children:
           - file: monitor/autoops/ec-autoops-how-to-access.md
           - file: monitor/autoops/ec-autoops-events.md
-          - file: monitor/autoops/ec-autoops-overview-view.md
-          - file: monitor/autoops/ec-autoops-deployment-view.md
-          - file: monitor/autoops/ec-autoops-nodes-view.md
-          - file: monitor/autoops/ec-autoops-index-view.md
-          - file: monitor/autoops/ec-autoops-shards-view.md
-          - file: monitor/autoops/ec-autoops-template-optimizer.md
+          - file: monitor/autoops/views.md
+            children:
+              - file: monitor/autoops/ec-autoops-overview-view.md
+              - file: monitor/autoops/ec-autoops-deployment-view.md
+              - file: monitor/autoops/ec-autoops-nodes-view.md
+              - file: monitor/autoops/ec-autoops-index-view.md
+              - file: monitor/autoops/ec-autoops-shards-view.md
+              - file: monitor/autoops/ec-autoops-template-optimizer.md
           - file: monitor/autoops/ec-autoops-notifications-settings.md
           - file: monitor/autoops/ec-autoops-event-settings.md
           - file: monitor/autoops/ec-autoops-dismiss-event.md
@@ -689,22 +649,14 @@ toc:
           - file: monitor/autoops/ec-autoops-faq.md
       - file: monitor/stack-monitoring.md
         children:
-          - file: monitor/stack-monitoring/elastic-cloud-stack-monitoring.md
+          - file: monitor/stack-monitoring/ece-ech-stack-monitoring.md
           - file: monitor/stack-monitoring/eck-stack-monitoring.md
-            children:
-              - file: monitor/stack-monitoring/k8s_connect_to_an_external_monitoring_elasticsearch_cluster.md
-              - file: monitor/stack-monitoring/k8s_when_to_use_it.md
-              - file: monitor/stack-monitoring/k8s_how_it_works.md
-              - file: monitor/stack-monitoring/k8s_audit_logging.md
-              - file: monitor/stack-monitoring/k8s_override_the_beats_pod_template.md
-          - file: monitor/stack-monitoring/ece-stack-monitoring.md
-            children:
-              - file: monitor/stack-monitoring/ece-restrictions-monitoring.md
           - file: monitor/stack-monitoring/elasticsearch-monitoring-self-managed.md
             children:
               - file: monitor/stack-monitoring/collecting-monitoring-data-with-elastic-agent.md
               - file: monitor/stack-monitoring/collecting-monitoring-data-with-metricbeat.md
               - file: monitor/stack-monitoring/collecting-log-data-with-filebeat.md
+              - file: monitor/stack-monitoring/es-self-monitoring-prod.md
               - file: monitor/stack-monitoring/es-legacy-collection-methods.md
                 children:
                   - file: monitor/stack-monitoring/es-monitoring-collectors.md
@@ -716,8 +668,26 @@ toc:
             children:
               - file: monitor/stack-monitoring/kibana-monitoring-elastic-agent.md
               - file: monitor/stack-monitoring/kibana-monitoring-metricbeat.md
-              - file: monitor/stack-monitoring/kibana-monitoring-data.md
-              - file: monitor/stack-monitoring/kibana-monitoring-legacy.md
+              - file: monitor/stack-monitoring/kibana-monitoring-legacy.md 
+          - file: monitor/stack-monitoring/kibana-monitoring-data.md
+          - file: monitor/monitoring-data/visualizing-monitoring-data.md
+            children:
+              - file: monitor/monitoring-data/beats-page.md
+              - file: monitor/monitoring-data/elasticsearch-metrics.md
+              - file: monitor/monitoring-data/kibana-page.md
+              - file: monitor/monitoring-data/logstash-page.md
+              - file: monitor/monitoring-data/monitor-troubleshooting.md
+          - file: monitor/monitoring-data/configure-stack-monitoring-alerts.md
+          - file: monitor/monitoring-data/configuring-data-streamsindices-for-monitoring.md
+            children:
+              - file: monitor/monitoring-data/config-monitoring-data-streams-elastic-agent.md
+              - file: monitor/monitoring-data/config-monitoring-data-streams-metricbeat-8.md
+              - file: monitor/monitoring-data/config-monitoring-indices-metricbeat-7-internal-collection.md
+      - file: monitor/cloud-health-perf.md
+        children:
+          - file: monitor/access-performance-metrics-on-elastic-cloud.md
+          - file: monitor/ec-memory-pressure.md
+      - file: monitor/kibana-task-manager-health-monitoring.md
       - file: monitor/orchestrators.md
         children:
           - file: monitor/orchestrators/eck-metrics-configuration.md
@@ -730,29 +700,6 @@ toc:
               - file: monitor/orchestrators/ece-monitoring-ece-access.md
               - file: monitor/orchestrators/ece-proxy-log-fields.md
               - file: monitor/orchestrators/ece-monitoring-ece-set-retention.md
-      - file: monitor/monitoring-data.md
-        children:
-          - file: monitor/monitoring-data/visualizing-monitoring-data.md
-            children:
-              - file: monitor/monitoring-data/beats-page.md
-              - file: monitor/monitoring-data/elasticsearch-metrics.md
-              - file: monitor/monitoring-data/kibana-alerts.md
-              - file: monitor/monitoring-data/kibana-page.md
-              - file: monitor/monitoring-data/logstash-page.md
-              - file: monitor/monitoring-data/monitor-troubleshooting.md
-          - file: monitor/monitoring-data/access-performance-metrics-on-elastic-cloud.md
-            children:
-              - file: monitor/monitoring-data/ec-saas-metrics-accessing.md
-                children:
-                  - file: monitor/monitoring-data/ec-memory-pressure.md
-                  - file: monitor/monitoring-data/ec-vcpu-boost-instance.md
-          - file: monitor/monitoring-data/configure-stack-monitoring-alerts.md
-          - file: monitor/monitoring-data/configuring-data-streamsindices-for-monitoring.md
-            children:
-              - file: monitor/monitoring-data/config-monitoring-data-streams-elastic-agent.md
-              - file: monitor/monitoring-data/config-monitoring-data-streams-metricbeat-8.md
-              - file: monitor/monitoring-data/config-monitoring-indices-metricbeat-7-internal-collection.md
-      - file: monitor/kibana-task-manager-health-monitoring.md
       - file: monitor/logging-configuration.md
         children:
           - file: monitor/logging-configuration/elasticsearch-log4j-configuration-self-managed.md
@@ -760,17 +707,11 @@ toc:
           - file: monitor/logging-configuration/elasticsearch-deprecation-logs.md
           - file: monitor/logging-configuration/kibana-logging.md
             children:
-              - file: monitor/logging-configuration/kibana-log-settings-examples.md
-              - file: monitor/logging-configuration/kibana-logging-cli-configuration.md
-          - file: monitor/logging-configuration/security-event-audit-logging.md
-            children:
-              - file: monitor/logging-configuration/enabling-audit-logs.md
-              - file: monitor/logging-configuration/configuring-audit-logs.md
+              - file: monitor/logging-configuration/kibana-log-levels.md
+              - file: monitor/logging-configuration/kib-advanced-logging.md
                 children:
-                  - file: monitor/logging-configuration/logfile-audit-events-ignore-policies.md
-                  - file: monitor/logging-configuration/logfile-audit-output.md
-              - file: monitor/logging-configuration/auditing-search-queries.md
-              - file: monitor/logging-configuration/correlating-kibana-elasticsearch-audit-logs.md
+                  - file: monitor/logging-configuration/kibana-log-settings-examples.md
+  - file: kibana-reporting-configuration.md
   - file: cloud-organization.md
     children:
       - file: cloud-organization/billing.md
@@ -803,7 +744,6 @@ toc:
         children:
           - file: maintenance/ece/deployments-maintenance.md
             children:
-              - file: maintenance/ece/start-stop-routing-requests.md
               - file: maintenance/ece/pause-instance.md
           - file: maintenance/ece/maintenance-activities.md
             children:
@@ -819,17 +759,20 @@ toc:
           - file: maintenance/start-stop-services/restart-cloud-hosted-deployment.md
           - file: maintenance/start-stop-services/restart-an-ece-deployment.md
           - file: maintenance/start-stop-services/full-cluster-restart-rolling-restart-procedures.md
+      - file: maintenance/start-stop-routing-requests.md
       - file: maintenance/add-and-remove-elasticsearch-nodes.md
   - file: upgrade.md
     children:
-      - file: upgrade/prepare-to-upgrade.md
-        children:
-          - file: upgrade/prepare-to-upgrade/upgrade-assistant.md
-          - file: upgrade/prepare-to-upgrade/index-compatibility.md
+      - file: upgrade/plan-upgrade.md
       - file: upgrade/orchestrator.md
         children:
           - file: upgrade/orchestrator/upgrade-cloud-enterprise.md
+            children:
+              - file: upgrade/orchestrator/re-running-the-ece-upgrade.md
           - file: upgrade/orchestrator/upgrade-cloud-on-k8s.md
+      - file: upgrade/prepare-to-upgrade.md
+        children:
+          - file: upgrade/prepare-to-upgrade/upgrade-assistant.md      
       - file: upgrade/deployment-or-cluster.md
         children:
           - file: upgrade/deployment-or-cluster/upgrade-on-ech.md
@@ -838,14 +781,14 @@ toc:
           - file: upgrade/deployment-or-cluster/self-managed.md
             children:
               - file: upgrade/deployment-or-cluster/elasticsearch.md
+                children:
+                  - file: upgrade/deployment-or-cluster/archived-settings.md
+                  - file: upgrade/deployment-or-cluster/reading-indices-from-older-elasticsearch-versions.md
               - file: upgrade/deployment-or-cluster/kibana.md
-          - file: upgrade/deployment-or-cluster/archived-settings.md
-            children:
-              - file: upgrade/deployment-or-cluster/reading-indices-from-older-elasticsearch-versions.md
-      - file: upgrade/ingest-components.md
-      - file: upgrade/internal-upgrade-processes.md
-        children:
-          - file: upgrade/internal-upgrade-processes/saved-object-migrations.md
+                children:
+                  - file: upgrade/deployment-or-cluster/saved-object-migrations.md
+                  - file: upgrade/deployment-or-cluster/kibana-roll-back.md    
+      - file: upgrade/ingest-components.md        
   - file: uninstall.md
     children:
       - file: uninstall/uninstall-elastic-cloud-enterprise.md

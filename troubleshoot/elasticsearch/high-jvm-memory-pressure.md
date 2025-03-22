@@ -8,8 +8,7 @@ mapped_pages:
 High JVM memory usage can degrade cluster performance and trigger [circuit breaker errors](circuit-breaker-errors.md). To prevent this, we recommend taking steps to reduce memory pressure if a node’s JVM memory usage consistently exceeds 85%.
 
 ::::{tip}
-If you’re using Elastic Cloud Hosted, then you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, real-time issue detection and resolution paths. For more information, refer to [Monitor with AutoOps](/deploy-manage/monitor/autoops.md).
-
+If you're using {{ech}}, you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, and real-time issue detection and resolution. For more information, refer to [](/deploy-manage/monitor/autoops.md).
 ::::
 
 
@@ -57,7 +56,7 @@ As memory usage increases, garbage collection becomes more frequent and takes lo
 
 **Capture a JVM heap dump**
 
-To determine the exact reason for the high JVM memory pressure, capture a heap dump of the JVM while its memory usage is high, and also capture the [garbage collector logs](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/jvm-settings.md#gc-logging) covering the same time period.
+To determine the exact reason for the high JVM memory pressure, capture a heap dump of the JVM while its memory usage is high, and also capture the [garbage collector logs](elasticsearch://reference/elasticsearch/jvm-settings.md#gc-logging) covering the same time period.
 
 
 ## Reduce JVM memory pressure [reduce-jvm-memory-pressure]
@@ -71,12 +70,12 @@ Every shard uses memory. In most cases, a small set of large shards uses fewer r
 $$$avoid-expensive-searches$$$
 **Avoid expensive searches**
 
-Expensive searches can use large amounts of memory. To better track expensive searches on your cluster, enable [slow logs](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/slow-log.md).
+Expensive searches can use large amounts of memory. To better track expensive searches on your cluster, enable [slow logs](elasticsearch://reference/elasticsearch/index-settings/slow-log.md).
 
-Expensive searches may have a large [`size` argument](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/paginate-search-results.md), use aggregations with a large number of buckets, or include [expensive queries](../../explore-analyze/query-filter/languages/querydsl.md#query-dsl-allow-expensive-queries). To prevent expensive searches, consider the following setting changes:
+Expensive searches may have a large [`size` argument](elasticsearch://reference/elasticsearch/rest-apis/paginate-search-results.md), use aggregations with a large number of buckets, or include [expensive queries](../../explore-analyze/query-filter/languages/querydsl.md#query-dsl-allow-expensive-queries). To prevent expensive searches, consider the following setting changes:
 
-* Lower the `size` limit using the [`index.max_result_window`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index-modules.md#index-max-result-window) index setting.
-* Decrease the maximum number of allowed aggregation buckets using the [search.max_buckets](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/search-settings.md#search-settings-max-buckets) cluster setting.
+* Lower the `size` limit using the [`index.max_result_window`](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#index-max-result-window) index setting.
+* Decrease the maximum number of allowed aggregation buckets using the [search.max_buckets](elasticsearch://reference/elasticsearch/configuration-reference/search-settings.md#search-settings-max-buckets) cluster setting.
 * Disable expensive queries using the [`search.allow_expensive_queries`](../../explore-analyze/query-filter/languages/querydsl.md#query-dsl-allow-expensive-queries) cluster setting.
 * Set a default search timeout using the [`search.default_search_timeout`](../../solutions/search/the-search-api.md#search-timeout) cluster setting.
 
@@ -97,7 +96,7 @@ PUT _cluster/settings
 
 **Prevent mapping explosions**
 
-Defining too many fields or nesting fields too deeply can lead to [mapping explosions](../../manage-data/data-store/mapping.md#mapping-limit-settings) that use large amounts of memory. To prevent mapping explosions, use the [mapping limit settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/mapping-limit.md) to limit the number of field mappings.
+Defining too many fields or nesting fields too deeply can lead to [mapping explosions](../../manage-data/data-store/mapping.md#mapping-limit-settings) that use large amounts of memory. To prevent mapping explosions, use the [mapping limit settings](elasticsearch://reference/elasticsearch/index-settings/mapping-limit.md) to limit the number of field mappings.
 
 **Spread out bulk requests**
 

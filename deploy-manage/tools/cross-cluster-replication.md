@@ -1,10 +1,12 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/elasticsearch/reference/current/xpack-ccr.html
 applies_to:
   deployment:
-    eck: 
-    ess: 
-    ece: 
-    self: 
+    eck:
+    ess:
+    ece:
+    self:
 ---
 
 # Cross-cluster replication [xpack-ccr]
@@ -84,7 +86,7 @@ Disaster recovery provides your mission-critical applications with the tolerance
 
 In this configuration, data is replicated from the production datacenter to the disaster recovery datacenter. Because the follower indices replicate the leader index, your application can use the disaster recovery datacenter if the production datacenter is unavailable.
 
-:::{image} ../../images/elasticsearch-reference-ccr-arch-disaster-recovery.png
+:::{image} /deploy-manage/images/elasticsearch-reference-ccr-arch-disaster-recovery.png
 :alt: Production datacenter that replicates data to a disaster recovery datacenter
 :::
 
@@ -95,7 +97,7 @@ You can replicate data from one datacenter to multiple datacenters. This configu
 
 In the following diagram, data from Datacenter A is replicated to Datacenter B and Datacenter C, which both have a read-only copy of the leader index from Datacenter A.
 
-:::{image} ../../images/elasticsearch-reference-ccr-arch-multiple-dcs.png
+:::{image} /deploy-manage/images/elasticsearch-reference-ccr-arch-multiple-dcs.png
 :alt: Production datacenter that replicates data to two other datacenters
 :::
 
@@ -104,7 +106,7 @@ In the following diagram, data from Datacenter A is replicated to Datacenter B a
 
 You can replicate data across multiple datacenters to form a replication chain. In the following diagram, Datacenter A contains the leader index. Datacenter B replicates data from Datacenter A, and Datacenter C replicates from the follower indices in Datacenter B. The connection between these datacenters forms a chained replication pattern.
 
-:::{image} ../../images/elasticsearch-reference-ccr-arch-chain-dcs.png
+:::{image} /deploy-manage/images/elasticsearch-reference-ccr-arch-chain-dcs.png
 :alt: Three datacenters connected to form a replication chain
 :::
 
@@ -115,7 +117,7 @@ In a [bi-directional replication](https://www.elastic.co/blog/bi-directional-rep
 
 This configuration requires no manual intervention when a cluster or datacenter is unavailable. In the following diagram, if Datacenter A is unavailable, you can continue using Datacenter B without manual failover. When Datacenter A comes online, replication resumes between the clusters.
 
-:::{image} ../../images/elasticsearch-reference-ccr-arch-bi-directional.png
+:::{image} /deploy-manage/images/elasticsearch-reference-ccr-arch-bi-directional.png
 :alt: Bi-directional configuration where each cluster contains both a leader index and follower indices
 :::
 
@@ -128,7 +130,7 @@ Bringing data closer to your users or application server can reduce latency and 
 
 In the following diagram, data is replicated from one datacenter to three additional datacenters, each in their own region. The central datacenter contains the leader index, and the additional datacenters contain follower indices that replicate data in that particular region. This configuration puts data closer to the application accessing it.
 
-:::{image} ../../images/elasticsearch-reference-ccr-arch-data-locality.png
+:::{image} /deploy-manage/images/elasticsearch-reference-ccr-arch-data-locality.png
 :alt: A centralized datacenter replicated across three other datacenters
 :::
 
@@ -141,7 +143,7 @@ For example, a large global bank might have 100 {{es}} clusters around the world
 
 In the following diagram, data from three datacenters in different regions is replicated to a centralized reporting cluster. This configuration enables you to copy data from regional hubs to a central cluster, where you can run all reports locally.
 
-:::{image} ../../images/elasticsearch-reference-ccr-arch-central-reporting.png
+:::{image} /deploy-manage/images/elasticsearch-reference-ccr-arch-central-reporting.png
 :alt: Three clusters in different regions sending data to a centralized reporting cluster for analysis
 :::
 
@@ -184,7 +186,7 @@ When you create a follower index, you cannot use it until it is fully initialize
 Remote recovery is a network intensive process that transfers all of the Lucene segment files from the leader cluster to the follower cluster. The follower requests that a recovery session be initiated on the primary shard in the leader cluster. The follower then requests file chunks concurrently from the leader. By default, the process concurrently requests five 1MB file chunks. This default behavior is designed to support leader and follower clusters with high network latency between them.
 
 ::::{tip}
-You can modify dynamic [remote recovery settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/cross-cluster-replication-settings.md#ccr-recovery-settings) to rate-limit the transmitted data and manage the resources consumed by remote recoveries.
+You can modify dynamic [remote recovery settings](elasticsearch://reference/elasticsearch/configuration-reference/cross-cluster-replication-settings.md#ccr-recovery-settings) to rate-limit the transmitted data and manage the resources consumed by remote recoveries.
 ::::
 
 
@@ -193,11 +195,11 @@ Use the [recovery API](https://www.elastic.co/docs/api/doc/elasticsearch/operati
 
 ## Replicating a leader requires soft deletes [ccr-leader-requirements]
 
-{{ccr-cap}} works by replaying the history of individual write operations that were performed on the shards of the leader index. {{es}} needs to retain the [history of these operations](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/history-retention.md) on the leader shards so that they can be pulled by the follower shard tasks. The underlying mechanism used to retain these operations is *soft deletes*.
+{{ccr-cap}} works by replaying the history of individual write operations that were performed on the shards of the leader index. {{es}} needs to retain the [history of these operations](elasticsearch://reference/elasticsearch/index-settings/history-retention.md) on the leader shards so that they can be pulled by the follower shard tasks. The underlying mechanism used to retain these operations is *soft deletes*.
 
 A soft delete occurs whenever an existing document is deleted or updated. By retaining these soft deletes up to configurable limits, the history of operations can be retained on the leader shards and made available to the follower shard tasks as it replays the history of operations.
 
-The [`index.soft_deletes.retention_lease.period`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index-modules.md#ccr-index-soft-deletes-retention-period) setting defines the maximum time to retain a shard history retention lease before it is considered expired. This setting determines how long the cluster containing your follower index can be offline, which is 12 hours by default. If a shard copy recovers after its retention lease expires, but the missing operations are still available on the leader index, then {{es}} will establish a new lease and copy the missing operations. However {{es}} does not guarantee to retain unleased operations, so it is also possible that some of the missing operations have been discarded by the leader and are now completely unavailable. If this happens then the follower cannot recover automatically so you must [recreate it](cross-cluster-replication/ccr-recreate-follower-index.md).
+The [`index.soft_deletes.retention_lease.period`](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#ccr-index-soft-deletes-retention-period) setting defines the maximum time to retain a shard history retention lease before it is considered expired. This setting determines how long the cluster containing your follower index can be offline, which is 12 hours by default. If a shard copy recovers after its retention lease expires, but the missing operations are still available on the leader index, then {{es}} will establish a new lease and copy the missing operations. However {{es}} does not guarantee to retain unleased operations, so it is also possible that some of the missing operations have been discarded by the leader and are now completely unavailable. If this happens then the follower cannot recover automatically so you must [recreate it](cross-cluster-replication/ccr-recreate-follower-index.md).
 
 Soft deletes must be enabled for indices that you want to use as leader indices. Soft deletes are enabled by default on new indices created on or after {{es}} 7.0.0.
 
@@ -221,13 +223,13 @@ This following sections provide more information about how to configure and use 
 
 {{ccr-cap}} is designed to replicate user-generated indices only, and doesn’t currently replicate any of the following:
 
-* [System indices](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/api-conventions.md#system-indices)
+* [System indices](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#system-indices)
 * [Machine learning jobs](../../explore-analyze/machine-learning.md)
 * [index templates](../../manage-data/data-store/templates.md)
 * [{{ilm-cap}}](../../manage-data/lifecycle/index-lifecycle-management.md) and [{{slm}}](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-slm) polices
 * [User permissions and role mappings](../users-roles/cluster-or-deployment-auth/mapping-users-groups-to-roles.md)
 * [Snapshot repository settings](snapshot-and-restore/self-managed.md)
-* [Cluster settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md)
+* [Cluster settings](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md)
 * [Searchable snapshot](snapshot-and-restore/searchable-snapshots.md)
 
 If you want to replicate any of this data, you must replicate it to a remote cluster manually.

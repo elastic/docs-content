@@ -5,12 +5,12 @@ mapped_pages:
 
 # Common issues [ece-issues]
 
-This set of common symptoms and resolutions can help you to diagnose unexpected behavior with Elastic Cloud Enterprise. You can also refer to the list of product [Limitations and known problems](asciidocalypse://docs/cloud/docs/release-notes/cloud-enterprise/known-issues.md).
+This set of common symptoms and resolutions can help you to diagnose unexpected behavior with Elastic Cloud Enterprise. You can also refer to the list of product [Limitations and known problems](cloud://release-notes/cloud-enterprise/known-issues.md).
 
 
 ## Emergency token not spinning up the coordinator role [ece_emergency_token_not_spinning_up_the_coordinator_role]
 
-**Symptom:** You have no access to API and UI because all coordinators are lost. More than half of the director hosts are available. If you have 5 directors, 3 directors must be available. If you lost more than half of the directors, contact the support. If all directors are lost, [re-install ECE](../../../deploy-manage/deploy/cloud-enterprise/install-ece-cloud.md).
+**Symptom:** You have no access to API and UI because all coordinators are lost. More than half of the director hosts are available. If you have 5 directors, 3 directors must be available. If you lost more than half of the directors, contact the support. If all directors are lost, [re-install ECE](../../../deploy-manage/deploy/cloud-enterprise/install.md).
 
 **Resolution:** Use the emergency token provided during the installation of the genesis ECE nodes. You must explicitly specify the roles with the parameter `--roles`, for example `"coordinator,director,proxy"`. Otherwise, the host does not run any role.
 
@@ -102,7 +102,7 @@ To check if you are affected and to resolve this issue:
 
     A quick check in the AWS EC2 Dashboard confirms that `192.168.40.73` is a private IP address, which is not accessible externally:
 
-    :::{image} ../../../images/cloud-enterprise-ece-aws-private-ip.png
+    :::{image} /troubleshoot/images/cloud-enterprise-ece-aws-private-ip.png
     :alt: Private IP address information in AWS EC2 Dashboard
     :::
 
@@ -111,7 +111,7 @@ To check if you are affected and to resolve this issue:
     * For the Cloud UI, use the public host name or public IP. In this example, the Cloud UI is accessible externally at `ec2-54-162-168-86.compute-1.amazonaws.com:12400`.
     * For Elasticsearch and Kibana, [update your cluster endpoint](../../../deploy-manage/deploy/cloud-enterprise/change-endpoint-urls.md) to use the public IP address. In this example, you can use `54.162.168.86`:
 
-        :::{image} ../../../images/cloud-enterprise-ece-aws-public-ip.png
+        :::{image} /troubleshoot/images/cloud-enterprise-ece-aws-public-ip.png
         :alt: Public IP address is used for cluster endpoints in the Cloud UI
         :::
 

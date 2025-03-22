@@ -8,7 +8,7 @@ applies_to:
 # Use environment variables in the configuration [apm-config-env]
 
 ::::{note}
-![supported deployment methods](../../../images/observability-binary-yes-fm-no.svg "")
+![supported deployment methods](/solutions/images/observability-binary-yes-fm-no.svg "")
 
 This documentation is only relevant for APM Server binary users.
 

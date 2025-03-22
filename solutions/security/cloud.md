@@ -2,16 +2,13 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/cloud-native-security-overview.html
   - https://www.elastic.co/guide/en/serverless/current/security-cloud-native-security-overview.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Cloud Security
-
-% What needs to be done: Align serverless/stateful
-
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/security-docs/security/cloud-native-security-overview.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/security-cloud-native-security-overview.md
 
 Elastic Security for Cloud helps you improve your cloud security posture by comparing your cloud configuration to best practices, and scanning for vulnerabilities. It also helps you monitor and investigate your cloud workloads inside and outside Kubernetes.
 
@@ -37,13 +34,6 @@ Allows you to identify configuration risks in the various components that make u
 Scans your cloud workloads for known vulnerabilities. When it finds a vulnerability, it supports your risk assessment by quickly providing information such as the vulnerability’s CVSS and severity, which software versions it affects, and whether a fix is available.
 
 [Read the CNVM docs](/solutions/security/cloud/cloud-native-vulnerability-management.md).
-
-
-## Cloud Workload Protection for Kubernetes [_cloud_workload_protection_for_kubernetes] 
-
-Provides cloud-native runtime protections for containerized environments by identifying and (optionally) blocking unexpected system behavior in Kubernetes containers. These capabilities are sometimes referred to as container drift detection and prevention. The solution also captures detailed process and file telemetry from monitored containers, allowing you to set up custom alerts and protection rules.
-
-[Read the CWP for Kubernetes docs](/solutions/security/cloud/cloud-workload-protection-for-kubernetes.md).
 
 
 ## Cloud Workload Protection for VMs [_cloud_workload_protection_for_vms] 

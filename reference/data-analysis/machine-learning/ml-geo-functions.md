@@ -64,7 +64,7 @@ For example, JSON data might contain the following transaction coordinates:
 }
 ```
 
-In {{es}}, location data is likely to be stored in `geo_point` fields. For more information, see [`geo_point` data type](asciidocalypse://docs/reference/elasticsearch/mapping-reference/geo-point.md). This data type is supported natively in {{ml-features}}. Specifically, when pulling data from a `geo_point` field, a {{dfeed}} will transform the data into the appropriate `lat,lon` string format before sending to the {{anomaly-job}}.
+In {{es}}, location data is likely to be stored in `geo_point` fields. For more information, see [`geo_point` data type](elasticsearch://reference/elasticsearch/mapping-reference/geo-point.md). This data type is supported natively in {{ml-features}}. Specifically, when pulling data from a `geo_point` field, a {{dfeed}} will transform the data into the appropriate `lat,lon` string format before sending to the {{anomaly-job}}.
 
 For more information, see [Altering data in your {{dfeed}} with runtime fields](/explore-analyze/machine-learning/anomaly-detection/ml-configuring-transform.md).
 

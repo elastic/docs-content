@@ -18,14 +18,14 @@ You can view the status of deployment actions and get additional information on 
 2. You can view the **Deployment history** here and refresh the page for updates as the application deploys. It should take around 5 minutes to deploy — if the deployment fails for any reason, the create events will be rolled back, and you will be able to see an explanation for which event failed.
 
 ::::{note}
-For example, if you don’t increase the visibility timeout for an SQS queue as described in [Amazon S3 (via SQS event notifications)](asciidocalypse://docs/elastic-serverless-forwarder/docs/reference/index.md#aws-serverless-forwarder-inputs-s3), you will see a `CREATE_FAILED`**Status** for the event, and the **Status reason** provides additional detail.
+For example, if you don’t increase the visibility timeout for an SQS queue as described in [Amazon S3 (via SQS event notifications)](elastic-serverless-forwarder://reference/index.md#aws-serverless-forwarder-inputs-s3), you will see a `CREATE_FAILED`**Status** for the event, and the **Status reason** provides additional detail.
 ::::
 
 
 
 ## Prevent unexpected costs [preventing-unexpected-costs]
 
-It is important to monitor the Elastic Serverless Forwarder Lambda function for timeouts to prevent unexpected costs. You can use the [AWS Lambda integration](https://docs.elastic.co/en/integrations/aws/lambda) for this. If the timeouts are constant, you should throttle the Lambda function to stop its execution before proceeding with any troubleshooting steps. In most cases, constant timeouts will cause the records and messages from the event triggers to go back to their sources and trigger the function again, which will cause further timeouts and force a loop that will incure unexpected high costs. For more information on throttling Lambda functions, refer to [AWS docs](https://docs.aws.amazon.com/lambda/latest/operatorguide/throttling.md).
+It is important to monitor the Elastic Serverless Forwarder Lambda function for timeouts to prevent unexpected costs. You can use the [AWS Lambda integration](https://docs.elastic.co/en/integrations/aws/lambda) for this. If the timeouts are constant, you should throttle the Lambda function to stop its execution before proceeding with any troubleshooting steps. In most cases, constant timeouts will cause the records and messages from the event triggers to go back to their sources and trigger the function again, which will cause further timeouts and force a loop that will incure unexpected high costs. For more information on throttling Lambda functions, refer to [AWS docs](https://docs.aws.amazon.com/lambda/latest/operatorguide/throttling.html).
 
 
 ## Increase debug information [_increase_debug_information]

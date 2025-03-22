@@ -19,9 +19,9 @@ A rollup job is a periodic task that aggregates data from indices specified by a
 
 You can go to the **Rollup Jobs** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
-:::{image} ../../../images/kibana-management_rollup_list.png
+:::{image} /manage-data/images/kibana-management_rollup_list.png
 :alt: List of currently active rollup jobs
-:class: screenshot
+:screenshot:
 :::
 
 ## Required permissions [_required_permissions_4]
@@ -36,18 +36,18 @@ To add the privilege, go to the **Roles** management page using the navigation m
 
 When defining the index pattern, you must enter a name that is different than the output rollup index. Otherwise, the job will attempt to capture the data in the rollup index. For example, if your index pattern is `metricbeat-*`, you can name your rollup index `rollup-metricbeat`, but not `metricbeat-rollup`.
 
-:::{image} ../../../images/kibana-management_create_rollup_job.png
+:::{image} /manage-data/images/kibana-management_create_rollup_job.png
 :alt: Wizard that walks you through creation of a rollup job
-:class: screenshot
+:screenshot:
 :::
 
 ## Start, stop, and delete rollup jobs [manage-rollup-job]
 
 Once you’ve saved a rollup job, you’ll see it the **Rollup Jobs** overview page, where you can drill down for further investigation. The **Manage** menu enables you to start, stop, and delete the rollup job. You must first stop a rollup job before deleting it.
 
-:::{image} ../../../images/kibana-management_rollup_job_details.png
+:::{image} /manage-data/images/kibana-management_rollup_job_details.png
 :alt: Rollup job details
-:class: screenshot
+:screenshot:
 :::
 
 You can’t change a rollup job after you’ve created it. To select additional fields or redefine terms, you must delete the existing job, and then create a new one with the updated specifications. Be sure to use a different name for the new rollup job—reusing the same name can lead to problems with mismatched job configurations. Refer to [rollup job configuration](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-rollup-put-job).
@@ -104,9 +104,9 @@ Your next step is to visualize your rolled up data in a vertical bar chart. Most
 6. On the dashboard, click **Create visualization**.
 7. Choose `rollup_logstash,kibana_sample_data_logs` as your source to see both the raw and rolled up data.
 
-    :::{image} ../../../images/kibana-management-create-rollup-bar-chart.png
+    :::{image} /manage-data/images/kibana-management-create-rollup-bar-chart.png
     :alt: Create visualization of rolled up data
-    :class: screenshot
+    :screenshot:
     :::
 
 8. Select **Bar** in the chart type dropdown.
@@ -115,7 +115,7 @@ Your next step is to visualize your rolled up data in a vertical bar chart. Most
 
     {{kib}} creates a vertical bar chart of your data. Select a section of the chart to zoom in.
 
-    :::{image} ../../../images/kibana-management_rollup_job_dashboard.png
+    :::{image} /manage-data/images/kibana-management_rollup_job_dashboard.png
     :alt: Dashboard with rolled up data
-    :class: screenshot
+    :screenshot:
     :::

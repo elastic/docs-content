@@ -30,9 +30,9 @@ In order to get the shards assigned we need to call the [migrate to data tiers r
 
 3. Open your deployment’s side navigation menu (placed under the Elastic logo in the upper left corner) and go to **Dev Tools > Console**.
 
-    :::{image} ../../images/elasticsearch-reference-kibana-console.png
+    :::{image} /troubleshoot/images/elasticsearch-reference-kibana-console.png
     :alt: {{kib}} Console
-    :class: screenshot
+    :screenshot:
     :::
 
 4. First, let’s [stop](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-stop) {{ilm}}
@@ -83,7 +83,7 @@ In order to get the shards assigned we need to call the [migrate to data tiers r
     ```
 
     1. The ILM policies that were updated.
-    2. The indices that were migrated to [tier preference](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/data-tier-allocation.md#tier-preference-allocation-filter) routing.
+    2. The indices that were migrated to [tier preference](elasticsearch://reference/elasticsearch/index-settings/data-tier-allocation.md#tier-preference-allocation-filter) routing.
     3. The legacy index templates that were updated to not contain custom routing settings for the provided data attribute.
     4. The composable index templates that were updated to not contain custom routing settings for the provided data attribute.
     5. The component templates that were updated to not contain custom routing settings for the provided data attribute.
@@ -160,7 +160,7 @@ In order to get the shards assigned we need to make sure the deployment is using
     ```
 
     1. The ILM policies that were updated.
-    2. The indices that were migrated to [tier preference](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/data-tier-allocation.md#tier-preference-allocation-filter) routing.
+    2. The indices that were migrated to [tier preference](elasticsearch://reference/elasticsearch/index-settings/data-tier-allocation.md#tier-preference-allocation-filter) routing.
     3. The legacy index templates that were updated to not contain custom routing settings for the provided data attribute.
     4. The composable index templates that were updated to not contain custom routing settings for the provided data attribute.
     5. The component templates that were updated to not contain custom routing settings for the provided data attribute.

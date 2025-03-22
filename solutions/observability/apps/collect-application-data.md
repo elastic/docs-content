@@ -17,7 +17,7 @@ mapped_urls:
 
 ::::{note}
 
-![documentation icon](../../../images/serverless-documentation.svg "") Want to get started quickly? See [Get started with traces and APM](../../../solutions/observability/apps/get-started-with-apm.md).
+![documentation icon](/solutions/images/serverless-documentation.svg "") Want to get started quickly? See [Get started with traces and APM](../../../solutions/observability/apps/get-started-with-apm.md).
 
 ::::
 
@@ -46,24 +46,23 @@ Use Elastic APM agents or an OpenTelemetry language SDK to instrument a service 
 
 ### Availability [apm-collect-data-availability]
 
-|     |     |     |
+| Language | Elastic APM agent | Elastic Distributions of OpenTelemetry (EDOT) |
 | --- | --- | --- |
-| **Language** | **Elastic APM agent** | **Elastic Distributions of OpenTelemetry (EDOT)** |
-| **Android** | Android agent | ![Not available](../../../images/observability-cross.svg "") |
-| **Go** | Go agent | ![Not available](../../../images/observability-cross.svg "") |
-| **iOS** | iOS agent | ![Not available](../../../images/observability-cross.svg "") |
+| **Android** | Android agent | ![Not available](/solutions/images/observability-cross.svg "") |
+| **Go** | Go agent | ![Not available](/solutions/images/observability-cross.svg "") |
+| **iOS** | iOS agent | ![Not available](/solutions/images/observability-cross.svg "") |
 | **Java** | Java agent | EDOT Java |
 | **.NET** | .NET agent | [preview] EDOT .NET |
 | **Node.js** | Node.js agent | [preview] EDOT Node.js |
 | **PHP** | PHP agent | [preview] EDOT PHP |
 | **Python** | Python agent | [preview] EDOT Python |
-| **Ruby** | Ruby agent | ![Not available](../../../images/observability-cross.svg "") |
+| **Ruby** | Ruby agent | ![Not available](/solutions/images/observability-cross.svg "") |
 
 
 ## Service-specific options [_service_specific_options]
 
 Elastic also offers several tools to help you collect data from specific services:
 
-* **Kubernetes**: The Elastic APM attacher for Kubernetes simplifies the instrumentation and configuration of your application pods. Read more in the [APM attacher for Kubernetes docs](asciidocalypse://docs/apm-k8s-attacher/docs/reference/index.md).
-* **AWS Lambda Functions**: Helps you monitor your AWS Lambda functions. Read more in the [APM Architecture for AWS Lambda docs](asciidocalypse://docs/apm-aws-lambda/docs/reference/index.md).
+* **Kubernetes**: The Elastic APM attacher for Kubernetes simplifies the instrumentation and configuration of your application pods. Read more in the [APM attacher for Kubernetes docs](apm-k8s-attacher://reference/index.md).
+* **AWS Lambda Functions**: Helps you monitor your AWS Lambda functions. Read more in the [APM Architecture for AWS Lambda docs](apm-aws-lambda://reference/index.md).
 * [8.15.0] **Jaeger**: Helps you to switch an existing Jaeger setup from the default Jaeger backend to the {{stack}}. Read more in [Integrate with Jaeger](../../../solutions/observability/apps/integrate-with-jaeger-deprecated.md).

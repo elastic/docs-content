@@ -16,9 +16,9 @@ For Observability serverless projects, the **Editor** role or higher is required
 
 To change case closure options and add custom fields, templates, and connectors for external incident management systems, go to **Cases** → **Settings**.
 
-:::{image} ../../../images/observability-cases-settings.png
+:::{image} /solutions/images/observability-cases-settings.png
 :alt: View case settings
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -55,9 +55,9 @@ After creating a connector, you can set your cases to [automatically close](../.
 1. From the **Incident management system** list, select **Add new connector**.
 2. Select the system to send cases to: **{{sn}}**, **{{jira}}**, **{{ibm-r}}**, **{{swimlane}}**, **TheHive**, or **{{webhook-cm}}**.
 
-    :::{image} ../../../images/serverless-observability-cases-add-connector.png
+    :::{image} /solutions/images/serverless-observability-cases-add-connector.png
     :alt: Add a connector to send cases to an external source
-    :class: screenshot
+    :screenshot:
     :::
 
 3. Enter your required settings. For connector configuration details, refer to:
@@ -99,9 +99,9 @@ To create a custom field:
 
 1. In the **Custom fields** section, click **Add field**.
 
-    :::{image} ../../../images/observability-cases-add-custom-field.png
+    :::{image} /solutions/images/observability-cases-add-custom-field.png
     :alt: Add a custom field in case settings
-    :class: screenshot
+    :screenshot:
     :::
 
 2. You must provide a field label and type (text or toggle). You can optionally designate it as a required field and provide a default value.
@@ -124,9 +124,9 @@ To create a template:
 
 1. In the **Templates** section, click **Add template**.
 
-    :::{image} ../../../images/serverless-observability-cases-templates.png
+    :::{image} /solutions/images/serverless-observability-cases-templates.png
     :alt: Add a case template
-    :class: screenshot
+    :screenshot:
     :::
 
 2. You must provide a template name and case severity. You can optionally add template tags and a description, values for each case field, and a case connector.

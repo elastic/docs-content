@@ -9,9 +9,9 @@ mapped_pages:
 Use the information in this section to troubleshoot common problems and find answers for frequently asked questions.
 
 
-## Logging [ruby-ts-logging] 
+## Logging [ruby-ts-logging]
 
-The client provides several options for logging that can help when things go wrong. Check out the extensive documentation on [Logging](asciidocalypse://docs/elasticsearch-ruby/docs/reference/advanced-config.md#logging).
+The client provides several options for logging that can help when things go wrong. Check out the extensive documentation on [Logging](elasticsearch-ruby://reference/advanced-config.md#logging).
 
 If you are having trouble sending a request to {{es}} with the client, we suggest enabling `tracing` on the client and testing the cURL command that appears in your terminal:
 
@@ -25,14 +25,14 @@ ransport-ruby/8.2.1 (RUBY_VERSION: 3.2.2; linux x86_64; Faraday v2.7.4), Content
 Testing the cURL command can help find out if there’s a connection issue or if the issue is in the client code.
 
 
-## Troubleshooting connection issues [ruby-ts-connection] 
+## Troubleshooting connection issues [ruby-ts-connection]
 
-When working with multiple hosts, you might want to enable the `retry_on_failure` or `retry_on_status` options to perform a failed request on another node (refer to [Retrying on Failures](asciidocalypse://docs/elasticsearch-ruby/docs/reference/advanced-config.md#retry-failures)).
+When working with multiple hosts, you might want to enable the `retry_on_failure` or `retry_on_status` options to perform a failed request on another node (refer to [Retrying on Failures](elasticsearch-ruby://reference/advanced-config.md#retry-failures)).
 
 For optimal performance, use a HTTP library which supports persistent ("keep-alive") connections, such as [patron](https://github.com/toland/patron) or [Typhoeus](https://github.com/typhoeus/typhoeus). Require the library (`require 'patron'`) in your code for Faraday 1.x or the adapter (`require 'faraday/patron'`) for Faraday 2.x, and it will be automatically used.
 
 
-## Adapter is not registered on Faraday [ruby-ts-adapter] 
+## Adapter is not registered on Faraday [ruby-ts-adapter]
 
 If you see a message like:
 
@@ -60,13 +60,13 @@ gem 'faraday-typhoeus'
 
 Migrating to Faraday 2 solves the issue as long as the adapter is included (unless you’re using the default one `net-http`). Alternatively, you can lock the version of Faraday in your project to 1.x: `gem 'faraday', '~> 1'`
 
-::::{important} 
+::::{important}
 Migrating to Faraday v2 requires at least Ruby `2.6`. Faraday v1 requires `2.4`.
 ::::
 
 
 
-## More Help [_more_help] 
+## More Help [_more_help]
 
 If you need more help, visit the [Elastic community forums](https://discuss.elastic.co/) and get answers from the experts in the community, including people from Elastic.
 

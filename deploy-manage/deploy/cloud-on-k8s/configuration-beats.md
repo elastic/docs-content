@@ -73,7 +73,7 @@ stringData:
       hosts: ["quickstart-es-http.default.svc:9200"]
 ```
 
-For more details, check the [Beats configuration](asciidocalypse://docs/beats/docs/reference/libbeat/config-file-format.md) section.
+For more details, check the [Beats configuration](beats://reference/libbeat/config-file-format.md) section.
 
 
 ## Customize the connection to an Elasticsearch cluster [k8s-beat-connect-es]
@@ -154,7 +154,7 @@ stringData:
   AGENT_NAME_VAR: id_007
 ```
 
-Check [Beats documentation](asciidocalypse://docs/beats/docs/reference/filebeat/keystore.md) for more details.
+Check [Beats documentation](beats://reference/filebeat/keystore.md) for more details.
 
 
 ## Set Beat output [k8s-beat-set-beat-output]
@@ -204,7 +204,7 @@ Consider picking the `Recreate` strategy if you are using a `hostPath` volume as
 
 ## Role Based Access Control for Beats [k8s-beat-role-based-access-control-for-beats]
 
-Some Beats features (such as [autodiscover](asciidocalypse://docs/beats/docs/reference/filebeat/configuration-autodiscover.md) or Kubernetes module [metricsets](asciidocalypse://docs/beats/docs/reference/metricbeat/metricbeat-metricset-kubernetes-apiserver.md)) require that Beat Pods interact with Kubernetes APIs. Specific permissions are needed to allow this functionality. Standard Kubernetes [RBAC](https://kubernetes.io/docs/reference/access-authn-authz/rbac/) rules apply. For example, to allow for autodiscover:
+Some Beats features (such as [autodiscover](beats://reference/filebeat/configuration-autodiscover.md) or Kubernetes module [metricsets](beats://reference/metricbeat/metricbeat-metricset-kubernetes-apiserver.md)) require that Beat Pods interact with Kubernetes APIs. Specific permissions are needed to allow this functionality. Standard Kubernetes [RBAC](https://kubernetes.io/docs/reference/access-authn-authz/rbac/) rules apply. For example, to allow for autodiscover:
 
 ```yaml
 apiVersion: beat.k8s.elastic.co/v1beta1

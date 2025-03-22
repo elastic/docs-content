@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/invest-guide-run-osquery.html
   - https://www.elastic.co/guide/en/serverless/current/security-invest-guide-run-osquery.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Run Osquery from investigation guides [security-invest-guide-run-osquery]
@@ -17,16 +21,16 @@ Detection rule investigation guides suggest steps for triaging, analyzing, and r
 
 ::::{admonition} Requirements
 * The [Osquery manager integration](/solutions/security/investigate/manage-integration.md) must be installed.
-* {{agent}}'s [status](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/monitor-elastic-agent.md) must be `Healthy`. Refer to [{{fleet}} Troubleshooting](/troubleshoot/ingest/fleet/common-problems.md) if it isn’t.
+* {{agent}}'s [status](/reference/fleet/monitor-elastic-agent.md) must be `Healthy`. Refer to [{{fleet}} Troubleshooting](/troubleshoot/ingest/fleet/common-problems.md) if it isn’t.
 * In {{stack}}, your role must have [Osquery feature privileges](/solutions/security/investigate/osquery.md).
 * In {{serverless-short}}, you must have the appropriate user role to use this feature.
 
 ::::
 
 
-:::{image} ../../../images/security-osquery-investigation-guide.png
+:::{image} /solutions/images/security-osquery-investigation-guide.png
 :alt: Shows a live query in an investigation guide
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -40,7 +44,7 @@ You can only add Osquery to investigation guides for custom rules because prebui
 1. Go to the **Rules** page. To access it, find **Detection rules (SIEM)** in the main menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Select a rule to open the its details, then click **Edit rule settings**.
 3. Select the **About** tab, then expand the rule’s advanced settings.
-4. Scroll down to the Investigation guide section. In the toolbar, click the **Osquery** button (![Click the Osquery button](../../../images/security-osquery-button.png "title =20x20")).
+4. Scroll down to the Investigation guide section. In the toolbar, click the **Osquery** button (![Click the Osquery button](/solutions/images/security-osquery-button.png "title =20x20")).
 
     1. Add a descriptive label for the query; for example, `Search for executables`.
     2. Select a saved query or enter a new one.
@@ -52,13 +56,13 @@ You can only add Osquery to investigation guides for custom rules because prebui
     3. Expand the **Advanced** section to set a timeout period for the query, and view or set [mapped ECS fields](/solutions/security/investigate/osquery.md#osquery-map-fields) included in the results from the live query (optional).
 
         ::::{note}
-        Overwriting the query’s default timeout period allows you to support queries that take longer to run. The default and minimum supported value for the **Timeout** field is `60`. The maximum supported value is `900`.
+        Overwriting the query’s default timeout period allows you to support queries that take longer to run. The default and minimum supported value for the **Timeout** field is `60`. The maximum supported value is `86400` (24 hours).
         ::::
 
 
-        :::{image} ../../../images/security-setup-osquery-investigation-guide.png
+        :::{image} /solutions/images/security-setup-osquery-investigation-guide.png
         :alt: Shows results from running a query from an investigation guide
-        :class: screenshot
+        :screenshot:
         :::
 
 5. Click **Save changes** to add the query to the rule’s investigation guide.
@@ -76,7 +80,7 @@ You can only add Osquery to investigation guides for custom rules because prebui
     2. Expand the **Advanced** section to set a timeout period for the query, and view or set [mapped ECS fields](/solutions/security/investigate/osquery.md#osquery-map-fields) included in the results from the live query (optional).
 
         ::::{note}
-        Overwriting the query’s default timeout period allows you to support queries that take longer to run. The default and minimum supported value for the **Timeout** field is `60`. The maximum supported value is `900`.
+        Overwriting the query’s default timeout period allows you to support queries that take longer to run. The default and minimum supported value for the **Timeout** field is `60`. The maximum supported value is `86400` (24 hours).
         ::::
 
 6. Click **Submit** to run the query. Query results display in the flyout.
@@ -87,7 +91,7 @@ You can only add Osquery to investigation guides for custom rules because prebui
 
 7. Click **Save for later** to save the query for future use (optional).
 
-    :::{image} ../../../images/security-run-query-investigation-guide.png
+    :::{image} /solutions/images/security-run-query-investigation-guide.png
     :alt: Shows results from running a query from an investigation guide
-    :class: screenshot
+    :screenshot:
     :::

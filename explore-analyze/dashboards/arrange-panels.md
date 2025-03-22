@@ -14,7 +14,7 @@ Compare the data in your panels side-by-side, organize panels by priority, resiz
 
 In the toolbar, click **Edit**, then use the following options:
 
-* To move, hover over the panel, click and hold ![The move control icon](../../images/kibana-move-control.png ""), then drag to the new location.
+* To move, hover over the panel, click and hold ![The move control icon](/explore-analyze/images/kibana-move-control.png ""), then drag to the new location.
 * To resize, click the resize control, then drag to the new dimensions.
 * To maximize to full screen, open the panel menu and click **Maximize**.
 

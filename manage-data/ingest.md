@@ -30,7 +30,7 @@ Elastic offer tools designed to ingest specific types of general content. The co
 * To index **documents** directly into {{es}}, use the {{es}} [document APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-document).
 * To send **application data** directly to {{es}}, use an [{{es}} language client](https://www.elastic.co/guide/en/elasticsearch/client/index.html).
 * To index **web page content**, use the Elastic [web crawler](https://www.elastic.co/web-crawler).
-* To sync **data from third-party sources**, use [connectors](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/search-connectors/index.md). A connector syncs content from an original data source to an {{es}} index. Using connectors you can create *searchable*, read-only replicas of your data sources.
+* To sync **data from third-party sources**, use [connectors](elasticsearch://reference/ingestion-tools/search-connectors/index.md). A connector syncs content from an original data source to an {{es}} index. Using connectors you can create *searchable*, read-only replicas of your data sources.
 * To index **single files** for testing in a non-production environment, use the {{kib}} [file uploader](ingest/upload-data-files.md).
 
 If you would like to try things out before you add your own data, try using our [sample data](ingest/sample-data.md).

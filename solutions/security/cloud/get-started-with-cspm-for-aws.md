@@ -2,37 +2,13 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/cspm-get-started.html
   - https://www.elastic.co/guide/en/serverless/current/security-cspm-get-started.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Get started with CSPM for AWS
-
-% What needs to be done: Align serverless/stateful
-
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/security-docs/security/cspm-get-started.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/security-cspm-get-started.md
-
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
-
-$$$cspm-aws-agent-based$$$
-
-$$$cspm-aws-agentless$$$
-
-$$$cspm-finish-manual$$$
-
-$$$cspm-setup-organization-manual$$$
-
-$$$cspm-use-a-shared-credentials-file$$$
-
-$$$cspm-use-iam-arn$$$
-
-$$$cspm-use-instance-role$$$
-
-$$$cspm-use-keys-directly$$$
-
-$$$cspm-use-temp-credentials$$$
-
 
 ## Overview [cspm-overview]
 
@@ -56,11 +32,6 @@ You can set up CSPM for AWS either by enrolling a single cloud account, or by en
 
 ## Agentless deployment [cspm-aws-agentless]
 
-::::{warning}
-This functionality is in beta and is subject to change. The design and code is less mature than official GA features and is being provided as-is with no warranties. Beta features are not subject to the support SLA of official GA features.
-::::
-
-
 1. Find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Search for `CSPM`, then click on the result.
 3. Click **Add Cloud Security Posture Management (CSPM)**.
@@ -71,14 +42,17 @@ This functionality is in beta and is subject to change. The design and code is l
 
     1. Option 1: Direct access keys/CloudFormation (Recommended). Under **Preferred method**, select **Direct access keys**. Expand the **Steps to Generate AWS Account Credentials** section, then follow the displayed instructions to automatically create the necessary credentials using CloudFormation.
 
-        ::::{note}
-        If you don’t want to monitor every account in your organization, specify which to monitor using the `OrganizationalUnitIDs` field that appears after you click **Launch CloudFormation**.
-        ::::
+       ::::{note}
+       If you don’t want to monitor every account in your organization, specify which to monitor using the `OrganizationalUnitIDs` field that appears after you click **Launch CloudFormation**.
+       ::::
 
     2. Option 2: Temporary keys. To authenticate using temporary keys, refer to the instructions for [temporary keys](/solutions/security/cloud/get-started-with-cspm-for-aws.md#cspm-use-temp-credentials).
 
 8. Once you’ve selected an authentication method and provided all necessary credentials, click **Save and continue** to finish deployment. Your data should start to appear within a few minutes.
 
+::::{admonition} Important
+Agentless deployment does not work if you are using [Traffic filtering](/deploy-manage/security/traffic-filtering.md).
+::::
 
 ## Agent-based deployment [cspm-aws-agent-based]
 
@@ -94,7 +68,7 @@ This functionality is in beta and is subject to change. The design and code is l
 
 ### Set up cloud account access [cspm-set-up-cloud-access-section]
 
-The CSPM integration requires access to AWS’s built-in [`SecurityAudit` IAM policy](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_job-functions.md#jf_security-auditor) in order to discover and evaluate resources in your cloud account. There are several ways to provide access.
+The CSPM integration requires access to AWS’s built-in [`SecurityAudit` IAM policy](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_job-functions.html#jf_security-auditor) in order to discover and evaluate resources in your cloud account. There are several ways to provide access.
 
 For most use cases, the simplest option is to use AWS CloudFormation to automatically provision the necessary resources and permissions in your AWS account. This method, as well as several manual options, are described below.
 
@@ -110,9 +84,9 @@ For most use cases, the simplest option is to use AWS CloudFormation to automati
 7. (Optional) Switch to the AWS region where you want to deploy using the controls in the upper right corner.
 8. Tick the checkbox under **Capabilities** to authorize the creation of necessary resources.
 
-    :::{image} ../../../images/security-cspm-cloudformation-template.png
-    :alt: The Add permissions screen in AWS
-    :::
+   :::{image} /solutions/images/security-cspm-cloudformation-template.png
+   :alt: The Add permissions screen in AWS
+   :::
 
 9. At the bottom of the template, select **Create stack**.
 
@@ -242,7 +216,7 @@ When deploying to an organization using any of the authentication methods below,
 * [IAM role Amazon Resource Name (ARN)](/solutions/security/cloud/get-started-with-cspm-for-aws.md#cspm-use-iam-arn)
 
 ::::{important}
-Whichever method you use to authenticate, make sure AWS’s built-in [`SecurityAudit` IAM policy](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_job-functions.md#jf_security-auditor) is attached.
+Whichever method you use to authenticate, make sure AWS’s built-in [`SecurityAudit` IAM policy](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_job-functions.html#jf_security-auditor) is attached.
 ::::
 
 
@@ -254,7 +228,7 @@ If you are deploying to an AWS organization instead of an AWS account, you shoul
 ::::
 
 
-Follow AWS’s [IAM roles for Amazon EC2](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/iam-roles-for-amazon-ec2.md) documentation to create an IAM role using the IAM console, which automatically generates an instance profile.
+Follow AWS’s [IAM roles for Amazon EC2](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/iam-roles-for-amazon-ec2.html) documentation to create an IAM role using the IAM console, which automatically generates an instance profile.
 
 1. Create an IAM role:
 
@@ -262,15 +236,15 @@ Follow AWS’s [IAM roles for Amazon EC2](https://docs.aws.amazon.com/AWSEC2/lat
     2. On the **Select trusted entity** page, under **Trusted entity type**, select **AWS service**.
     3. Under **Use case**, select **EC2**. Click **Next**.
 
-        :::{image} ../../../images/security-cspm-aws-auth-1.png
-        :alt: The Select trusted entity screen in AWS
-        :::
+       :::{image} /solutions/images/security-cspm-aws-auth-1.png
+       :alt: The Select trusted entity screen in AWS
+       :::
 
     4. On the **Add permissions** page, search for and select `SecurityAudit`. Click **Next**.
 
-        :::{image} ../../../images/security-cspm-aws-auth-2.png
-        :alt: The Add permissions screen in AWS
-        :::
+       :::{image} /solutions/images/security-cspm-aws-auth-2.png
+       :alt: The Add permissions screen in AWS
+       :::
 
     5. On the **Name, review, and create** page, name your role, then click **Create role**.
 
@@ -279,9 +253,9 @@ Follow AWS’s [IAM roles for Amazon EC2](https://docs.aws.amazon.com/AWSEC2/lat
     1. In AWS, select an EC2 instance.
     2. Select **Actions > Security > Modify IAM role**.
 
-        :::{image} ../../../images/security-cspm-aws-auth-3.png
-        :alt: The EC2 page in AWS
-        :::
+       :::{image} /solutions/images/security-cspm-aws-auth-3.png
+       :alt: The EC2 page in AWS
+       :::
 
     3. On the **Modify IAM role** page, search for and select your new IAM role.
     4. Click **Update IAM role**.
@@ -298,7 +272,7 @@ Make sure to deploy the CSPM integration to this EC2 instance. When completing s
 
 Access keys are long-term credentials for an IAM user or AWS account root user. To use access keys as credentials, you must provide the `Access key ID` and the `Secret Access Key`. After you provide credentials, [finish manual setup](/solutions/security/cloud/get-started-with-cspm-for-aws.md#cspm-finish-manual).
 
-For more details, refer to [Access Keys and Secret Access Keys](https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.md).
+For more details, refer to [Access Keys and Secret Access Keys](https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html).
 
 ::::{important}
 You must select **Programmatic access** when creating the IAM user.
@@ -313,7 +287,7 @@ You can configure temporary security credentials in AWS to last for a specified 
 Because temporary security credentials are short term, once they expire, you will need to generate new ones and manually update the integration’s configuration to continue collecting cloud posture data. Update the credentials before they expire to avoid data loss.
 
 ::::{note}
-IAM users with multi-factor authentication (MFA) enabled need to submit an MFA code when calling `GetSessionToken`. For more details, refer to AWS’s [Temporary Security Credentials](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.md) documentation.
+IAM users with multi-factor authentication (MFA) enabled need to submit an MFA code when calling `GetSessionToken`. For more details, refer to AWS’s [Temporary Security Credentials](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html) documentation.
 ::::
 
 
@@ -323,7 +297,7 @@ You can use the AWS CLI to generate temporary credentials. For example, you coul
 sts get-session-token --serial-number arn:aws:iam::1234:mfa/your-email@example.com --duration-seconds 129600 --token-code 123456
 ```
 
-The output from this command includes the following fields, which you should provide when configuring the KSPM integration:
+The output from this command includes the following fields, which you should provide when configuring the CSPM integration:
 
 * `Access key ID`: The first part of the access key.
 * `Secret Access Key`: The second part of the access key.
@@ -334,7 +308,7 @@ After you provide credentials, [finish manual setup](/solutions/security/cloud/g
 
 #### Option 4 - Shared credentials file [cspm-use-a-shared-credentials-file]
 
-If you use different AWS credentials for different tools or applications, you can use profiles to define multiple access keys in the same configuration file. For more details, refer to AWS' [Shared Credentials Files](https://docs.aws.amazon.com/sdkref/latest/guide/file-format.md) documentation.
+If you use different AWS credentials for different tools or applications, you can use profiles to define multiple access keys in the same configuration file. For more details, refer to AWS' [Shared Credentials Files](https://docs.aws.amazon.com/sdkref/latest/guide/file-format.html) documentation.
 
 Instead of providing the `Access key ID` and `Secret Access Key` to the integration, provide the information required to locate the access keys within the shared credentials file:
 

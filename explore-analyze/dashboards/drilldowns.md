@@ -72,7 +72,7 @@ Create a drilldown that opens the **Detailed logs** dashboard from the **[Logs] 
 4. In the data table panel, hover over a value, click **+**, then select `View details`.
    :::{image} ../../images/kibana-dashboard_drilldownOnPanel_8.3.png
    :alt: Drilldown on data table that navigates to another dashboard
-   :class: screenshot
+   :screenshot:
    :::
 
 
@@ -158,7 +158,7 @@ Create a drilldown that opens **Discover** from the [**Sample web logs**](../ind
 7. On the **[Logs] Bytes distribution** bar vertical stacked chart, click a bar, then select **View bytes distribution in Discover**.
    :::{image} ../../images/kibana-dashboard_discoverDrilldown_8.3.png
    :alt: Drilldown on bar vertical stacked chart that navigates to Discover
-   :class: screenshot
+   :screenshot:
    :::
 
 

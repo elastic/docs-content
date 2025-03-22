@@ -8,21 +8,21 @@ mapped_pages:
 
 # Clusters [maps-grid-aggregation]
 
-Clusters use [Geotile grid aggregation](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/aggregations/search-aggregations-bucket-geotilegrid-aggregation.md) or [Geohex grid aggregation](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/aggregations/search-aggregations-bucket-geohexgrid-aggregation.md) to group your documents into grids. You can calculate metrics for each gridded cell.
+Clusters use [Geotile grid aggregation](elasticsearch://reference/data-analysis/aggregations/search-aggregations-bucket-geotilegrid-aggregation.md) or [Geohex grid aggregation](elasticsearch://reference/data-analysis/aggregations/search-aggregations-bucket-geohexgrid-aggregation.md) to group your documents into grids. You can calculate metrics for each gridded cell.
 
 Symbolize cluster metrics as:
 
 **Clusters**
-:   Uses [Geotile grid aggregation](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/aggregations/search-aggregations-bucket-geotilegrid-aggregation.md) to group your documents into grids. Creates a [vector layer](vector-layer.md) with a cluster symbol for each gridded cell. The cluster location is the weighted centroid for all documents in the gridded cell.
+:   Uses [Geotile grid aggregation](elasticsearch://reference/data-analysis/aggregations/search-aggregations-bucket-geotilegrid-aggregation.md) to group your documents into grids. Creates a [vector layer](vector-layer.md) with a cluster symbol for each gridded cell. The cluster location is the weighted centroid for all documents in the gridded cell.
 
 **Grids**
-:   Uses [Geotile grid aggregation](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/aggregations/search-aggregations-bucket-geotilegrid-aggregation.md) to group your documents into grids. Creates a [vector layer](vector-layer.md) with a bounding box polygon for each gridded cell.
+:   Uses [Geotile grid aggregation](elasticsearch://reference/data-analysis/aggregations/search-aggregations-bucket-geotilegrid-aggregation.md) to group your documents into grids. Creates a [vector layer](vector-layer.md) with a bounding box polygon for each gridded cell.
 
 **Heat map**
-:   Uses [Geotile grid aggregation](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/aggregations/search-aggregations-bucket-geotilegrid-aggregation.md) to group your documents into grids. Creates a [heat map layer](heatmap-layer.md) that clusters the weighted centroids for each gridded cell.
+:   Uses [Geotile grid aggregation](elasticsearch://reference/data-analysis/aggregations/search-aggregations-bucket-geotilegrid-aggregation.md) to group your documents into grids. Creates a [heat map layer](heatmap-layer.md) that clusters the weighted centroids for each gridded cell.
 
 **Hexbins**
-:   Uses [Geohex grid aggregation](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/aggregations/search-aggregations-bucket-geohexgrid-aggregation.md) to group your documents into H3 hexagon grids. Creates a [vector layer](vector-layer.md) with a hexagon polygon for each gridded cell.
+:   Uses [Geohex grid aggregation](elasticsearch://reference/data-analysis/aggregations/search-aggregations-bucket-geohexgrid-aggregation.md) to group your documents into H3 hexagon grids. Creates a [vector layer](vector-layer.md) with a hexagon polygon for each gridded cell.
 
 To enable a clusters layer:
 

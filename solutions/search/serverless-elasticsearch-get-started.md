@@ -68,7 +68,7 @@ Once your project is set up, you’ll be directed to a page where you can create
 1. Enter a name for your index.
 2. Click **Create my index**. You can also create the index by clicking on **Code** to view and run code through the command line.
 
-    :::{image} ../../images/serverless-get-started-create-an-index.png
+    :::{image} /solutions/images/serverless-get-started-create-an-index.png
     :alt: Create an index.
     :::
 
@@ -85,7 +85,7 @@ You won’t be able to view this API key again. If needed you'll need to generat
 
 The UI provides ready-to-use code examples for ingesting data via the REST API. Choose your preferred tool for making these requests:
 
-* [Console](https://www.elastic.co/guide/en/serverless/current/devtools-run-api-requests-in-the-console.html) in your project’s UI
+* [Console](/explore-analyze/query-filter/tools/console.md) in your project’s UI
 * Python
 * JavaScript
 * cURL
@@ -95,7 +95,7 @@ The UI provides ready-to-use code examples for ingesting data via the REST API. 
 
 To get started using the in-product tutorial, navigate to the **Getting Started** page and follow the on-screen steps.
 
-:::{image} ../../images/serverless-getting-started-page.png
+:::{image} /solutions/images/serverless-getting-started-page.png
 :alt: Getting Started page.
 :::
 
@@ -108,10 +108,10 @@ If you’re already familiar with Elasticsearch, you can jump right into setting
 2. Ingest your data. Elasticsearch provides several methods for ingesting data:
 
     * [{{es}} API](ingest-for-search.md)
-    * [Connector clients](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/search-connectors/index.md)
+    * [Connector clients](elasticsearch://reference/ingestion-tools/search-connectors/index.md)
     * [File Uploader](/manage-data/ingest/upload-data-files.md)
-    * [{{beats}}](asciidocalypse://docs/beats/docs/reference/index.md)
-    * [{{ls}}](asciidocalypse://docs/logstash/docs/reference/index.md)
+    * [{{beats}}](beats://reference/index.md)
+    * [{{ls}}](logstash://reference/index.md)
     * [Elastic Open Web Crawler](https://github.com/elastic/crawler)
 
 

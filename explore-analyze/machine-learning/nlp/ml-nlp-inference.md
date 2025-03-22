@@ -19,13 +19,13 @@ After you [deploy a trained model in your cluster](ml-nlp-deploy-models.md), you
 
 In {{kib}}, you can create and edit pipelines in **{{stack-manage-app}}** > **Ingest Pipelines**. To open **Ingest Pipelines**, find **{{stack-manage-app}}** in the main menu, or use the [global search field](../../find-and-organize/find-apps-and-objects.md).
 
-:::{image} ../../../images/machine-learning-ml-nlp-pipeline-lang.png
+:::{image} /explore-analyze/images/machine-learning-ml-nlp-pipeline-lang.png
 :alt: Creating a pipeline in the Stack Management app
-:class: screenshot
+:screenshot:
 :::
 
 1. Click **Create pipeline** or edit an existing pipeline.
-2. Add an [{{infer}} processor](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/enrich-processor/inference-processor.md) to your pipeline:
+2. Add an [{{infer}} processor](elasticsearch://reference/ingestion-tools/enrich-processor/inference-processor.md) to your pipeline:
 
     1. Click **Add a processor** and select the **{{infer-cap}}** processor type.
     2. Set **Model ID** to the name of your trained model, for example `elastic__distilbert-base-cased-finetuned-conll03-english` or `lang_ident_model_1`.
@@ -39,7 +39,7 @@ In {{kib}}, you can create and edit pipelines in **{{stack-manage-app}}** > **In
             }
             ```
 
-        2. You can also optionally add [classification configuration options](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/enrich-processor/inference-processor.md#inference-processor-classification-opt) in the **{{infer-cap}} configuration** section. For example, to include the top five language predictions:
+        2. You can also optionally add [classification configuration options](elasticsearch://reference/ingestion-tools/enrich-processor/inference-processor.md#inference-processor-classification-opt) in the **{{infer-cap}} configuration** section. For example, to include the top five language predictions:
 
             ```js
             {
@@ -51,7 +51,7 @@ In {{kib}}, you can create and edit pipelines in **{{stack-manage-app}}** > **In
 
     4. Click **Add** to save the processor.
 
-3. Optional: Add a [set processor](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/enrich-processor/set-processor.md) to index the ingest timestamp.
+3. Optional: Add a [set processor](elasticsearch://reference/ingestion-tools/enrich-processor/set-processor.md) to index the ingest timestamp.
 
     1. Click **Add a processor** and select the **Set** processor type.
     2. Choose a name for the field (such as `event.ingested`) and set its value to `{{{_ingest.timestamp}}}`. For more details, refer to [Access ingest metadata in a processor](../../../manage-data/ingest/transform-enrich/ingest-pipelines.md#access-ingest-metadata).
@@ -117,7 +117,7 @@ PUT ner-test
 ```
 
 ::::{tip}
-To use the `annotated_text` data type in this example, you must install the [mapper annotated text plugin](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch-plugins/mapper-annotated-text.md). For more installation details, refer to [Add plugins provided with {{ech}}](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch-plugins/cloud/ec-adding-elastic-plugins.md).
+To use the `annotated_text` data type in this example, you must install the [mapper annotated text plugin](elasticsearch://reference/elasticsearch-plugins/mapper-annotated-text.md). For more installation details, refer to [Add plugins provided with {{ech}}](elasticsearch://reference/elasticsearch-plugins/plugin-management.md).
 ::::
 
 You can then use the new pipeline to index some documents. For example, use a bulk indexing request with the `pipeline` query parameter for your NER pipeline:
@@ -171,18 +171,18 @@ Set the reindex `size` option to a value smaller than the `queue_capacity` for t
 
 Before you can verify the results of the pipelines, you must [create {{data-sources}}](../../find-and-organize/data-views.md). Then you can explore your data in **Discover**:
 
-:::{image} ../../../images/machine-learning-ml-nlp-discover-ner.png
+:::{image} /explore-analyze/images/machine-learning-ml-nlp-discover-ner.png
 :alt: A document from the NER pipeline in the Discover app
-:class: screenshot
+:screenshot:
 :::
 
 The `ml.inference.predicted_value` field contains the output from the {{infer}} processor. In this NER example, there are two documents that contain the `Elastic` organization entity.
 
 In this {{lang-ident}} example, the `ml.inference.predicted_value` contains the ISO identifier of the language with the highest probability and the `ml.inference.top_classes` fields contain the top five most probable languages and their scores:
 
-:::{image} ../../../images/machine-learning-ml-nlp-discover-lang.png
+:::{image} /explore-analyze/images/machine-learning-ml-nlp-discover-lang.png
 :alt: A document from the {{lang-ident}} pipeline in the Discover app
-:class: screenshot
+:screenshot:
 :::
 
 To learn more about ingest pipelines and all of the other processors that you can add, refer to [Ingest pipelines](../../../manage-data/ingest/transform-enrich/ingest-pipelines.md).

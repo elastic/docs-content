@@ -53,9 +53,9 @@ Go to the **{{ml-app}} > Trained Models** page and synchronize your trained mode
 
 Deployed models can be evaluated in {{kib}} under **{{ml-app}}** > **Trained Models** by selecting the **Test model** action for the respective model.
 
-:::{image} ../../../images/machine-learning-ml-nlp-ner-test.png
+:::{image} /explore-analyze/images/machine-learning-ml-nlp-ner-test.png
 :alt: Test trained model UI
-:class: screenshot
+:screenshot:
 :::
 
 ::::{dropdown} **Test the model by using the _infer API**
@@ -113,7 +113,7 @@ Using the example text "Elastic is headquartered in Mountain View, California.",
 
 ## Add the NER model to an {{infer}} ingest pipeline [ex-ner-ingest]
 
-You can perform bulk {{infer}} on documents as they are ingested by using an [{{infer}} processor](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/enrich-processor/inference-processor.md) in your ingest pipeline. The novel *Les Misérables* by Victor Hugo is used as an example for {{infer}} in the following example. [Download](https://github.com/elastic/stack-docs/blob/8.5/docs/en/stack/ml/nlp/data/les-miserables-nd.json) the novel text split by paragraph as a JSON file, then upload it by using the [Data Visualizer](../../../manage-data/ingest/upload-data-files.md). Give the new index the name `les-miserables` when uploading the file.
+You can perform bulk {{infer}} on documents as they are ingested by using an [{{infer}} processor](elasticsearch://reference/ingestion-tools/enrich-processor/inference-processor.md) in your ingest pipeline. The novel *Les Misérables* by Victor Hugo is used as an example for {{infer}} in the following example. [Download](https://github.com/elastic/stack-docs/blob/8.5/docs/en/stack/ml/nlp/data/les-miserables-nd.json) the novel text split by paragraph as a JSON file, then upload it by using the [Data Visualizer](../../../manage-data/ingest/upload-data-files.md). Give the new index the name `les-miserables` when uploading the file.
 
 Now create an ingest pipeline either in the [Stack management UI](ml-nlp-inference.md#ml-nlp-inference-processor) or by using the API:
 
@@ -248,7 +248,7 @@ Optionally, adjust the time selector to cover the data points in the {{data-sour
 
 Update and save the visualization.
 
-:::{image} ../../../images/machine-learning-ml-nlp-tag-cloud.png
+:::{image} /explore-analyze/images/machine-learning-ml-nlp-tag-cloud.png
 :alt: Tag cloud created from Les Misérables
-:class: screenshot
+:screenshot:
 :::

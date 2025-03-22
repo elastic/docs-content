@@ -3,6 +3,10 @@ navigation_title: "Synthetics"
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/synthetics-troubleshooting.html
   - https://www.elastic.co/guide/en/serverless/current/observability-synthetics-troubleshooting.html
+applies_to:
+  stack: all
+  serverless:
+    observability: all
 ---
 
 # Troubleshoot Synthetics [synthetics-troubleshooting]

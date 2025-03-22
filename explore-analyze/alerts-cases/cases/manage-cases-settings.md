@@ -12,9 +12,9 @@ To change case closure options and add custom fields, templates, and connectors 
 
 To perform these tasks, you must have [full access](setup-cases.md) to the appropriate case and connector features in {{kib}}.
 
-:::{image} ../../../images/kibana-cases-settings.png
+:::{image} /explore-analyze/images/kibana-cases-settings.png
 :alt: View case settings
-:class: screenshot
+:screenshot:
 :::
 
 ## Case closures [case-closures]
@@ -43,7 +43,7 @@ You can create connectors in **{{stack-manage-app}} > {{connectors-ui}}**, as de
 
 1. From the **Incident management system** list, select **Add new connector**.
 2. Select an external incident management system.
-3. Enter your required settings. Refer to [{{ibm-r}}](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/resilient-action-type.md), [Jira](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/jira-action-type.md), [{{sn-itsm}}](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/servicenow-action-type.md), [{{sn-sir}}](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/servicenow-sir-action-type.md), [Swimlane](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/swimlane-action-type.md), [{{hive}}](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/thehive-action-type.md), or [{{webhook-cm}}](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/cases-webhook-action-type.md) for connector configuration details.
+3. Enter your required settings. Refer to [{{ibm-r}}](kibana://reference/connectors-kibana/resilient-action-type.md), [Jira](kibana://reference/connectors-kibana/jira-action-type.md), [{{sn-itsm}}](kibana://reference/connectors-kibana/servicenow-action-type.md), [{{sn-sir}}](kibana://reference/connectors-kibana/servicenow-sir-action-type.md), [Swimlane](kibana://reference/connectors-kibana/swimlane-action-type.md), [{{hive}}](kibana://reference/connectors-kibana/thehive-action-type.md), or [{{webhook-cm}}](kibana://reference/connectors-kibana/cases-webhook-action-type.md) for connector configuration details.
 
 You can subsequently choose the connector when you create cases and use it in case templates. To change the default connector for new cases, select the connector from the **Incident management system** list.
 
@@ -56,9 +56,9 @@ You can add optional and required fields for customized case collaboration. [8.1
 To create a custom field:
 
 1. In the **Custom fields** section, click **Add field**.
-   :::{image} ../../../images/kibana-cases-custom-fields-add.png
+   :::{image} /explore-analyze/images/kibana-cases-custom-fields-add.png
    :alt: Add a custom field in case settings
-   :class: screenshot
+   :screenshot:
    :::
 
 2. You must provide a field label and type (text or toggle). You can optionally designate it as a required field and provide a default value.
@@ -78,9 +78,9 @@ You can make the case creation process faster and more consistent by adding temp
 To create a template:
 
 1. In the **Templates** section, click **Add template**.
-   :::{image} ../../../images/kibana-cases-templates-add.png
+   :::{image} /explore-analyze/images/kibana-cases-templates-add.png
    :alt: Add a template in case settings
-   :class: screenshot
+   :screenshot:
    :::
 
 2. You must provide a template name and case severity. You can optionally add template tags and a description, values for each case field, and a case connector.

@@ -5,8 +5,33 @@ mapped_pages:
 
 # Size your shards [size-your-shards]
 
-Each index in {{es}} is divided into one or more shards, each of which may be replicated across multiple nodes to protect against hardware failures. If you are using [Data streams](../../../manage-data/data-store/data-streams.md) then each data stream is backed by a sequence of indices. There is a limit to the amount of data you can store on a single node so you can increase the capacity of your cluster by adding nodes and increasing the number of indices and shards to match. However, each index and shard has some overhead and if you divide your data across too many shards then the overhead can become overwhelming. A cluster with too many indices or shards is said to suffer from *oversharding*. An oversharded cluster will be less efficient at responding to searches and in extreme cases it may even become unstable.
+## What is a shard? [what-is-a-shard]
 
+A shard is a basic unit of storage in {{es}}. Every index is divided into one or more shards to help distribute data and workload across nodes in a cluster. This division allows {{es}} to handle large datasets and perform operations like searches and indexing efficiently. For more detailed information on shards, see [this page](/deploy-manage/distributed-architecture/clusters-nodes-shards.md).
+
+## General guidelines [sizing-shard-guidelines]
+
+Balancing the number and size of your shards is important for the performance and stability of an {{es}} cluster:
+
+* Too many shards can degrade search performance and make the cluster unstable. This is referred to as _oversharding_.
+* Very large shards can slow down search operations and prolong recovery times after failures.
+
+To avoid either of these states, implement the following guidelines:
+
+### General sizing guidelines
+
+* Aim for shard sizes between 10GB and 50GB
+* Keep the number of documents on each shard below 200 million
+
+### Shard distribution guidelines
+
+To ensure that each node is working optimally, distribute shards evenly across nodes. Uneven distribution can cause some nodes to work harder than others, leading to performance degradation and instability. 
+
+While {{es}} automatically balances shards, you need to configure indices with an appropriate number of shards and replicas to allow for even distribution across nodes.
+
+If you are using [data streams](/manage-data/data-store/data-streams.md), each data stream is backed by a sequence of indices, each index potentially having multiple shards. 
+
+Despite these general guidelines, it is good to develop a tailored [sharding strategy](#create-a-sharding-strategy) that considers your specific infrastructure, use case, and performance expectations. 
 
 ## Create a sharding strategy [create-a-sharding-strategy]
 
@@ -28,14 +53,14 @@ Keep the following things in mind when building your sharding strategy.
 
 ### Searches run on a single thread per shard [single-thread-per-shard]
 
-Most searches hit multiple shards. Each shard runs the search on a single CPU thread. While a shard can run multiple concurrent searches, searches across a large number of shards can deplete a node’s [search thread pool](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/thread-pool-settings.md). This can result in low throughput and slow search speeds.
+Most searches hit multiple shards. Each shard runs the search on a single CPU thread. While a shard can run multiple concurrent searches, searches across a large number of shards can deplete a node’s [search thread pool](elasticsearch://reference/elasticsearch/configuration-reference/thread-pool-settings.md). This can result in low throughput and slow search speeds.
 
 
 ### Each index, shard, segment and field has overhead [each-shard-has-overhead]
 
 Every index and every shard requires some memory and CPU resources. In most cases, a small set of large shards uses fewer resources than many small shards.
 
-Segments play a big role in a shard’s resource usage. Most shards contain several segments, which store its index data. {{es}} keeps some segment metadata in heap memory so it can be quickly retrieved for searches. As a shard grows, its segments are [merged](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/merge.md) into fewer, larger segments. This decreases the number of segments, which means less metadata is kept in heap memory.
+Segments play a big role in a shard’s resource usage. Most shards contain several segments, which store its index data. {{es}} keeps some segment metadata in heap memory so it can be quickly retrieved for searches. As a shard grows, its segments are [merged](elasticsearch://reference/elasticsearch/index-settings/merge.md) into fewer, larger segments. This decreases the number of segments, which means less metadata is kept in heap memory.
 
 Every mapped field also carries some overhead in terms of memory usage and disk space. By default {{es}} will automatically create a mapping for every field in every document it indexes, but you can switch off this behaviour to [take control of your mappings](../../../manage-data/data-store/mapping/explicit-mapping.md).
 
@@ -54,7 +79,7 @@ Where applicable, use the following best practices as starting points for your s
 
 ### Delete indices, not documents [delete-indices-not-documents]
 
-Deleted documents aren’t immediately removed from {{es}}'s file system. Instead, {{es}} marks the document as deleted on each related shard. The marked document will continue to use resources until it’s removed during a periodic [segment merge](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/merge.md).
+Deleted documents aren’t immediately removed from {{es}}'s file system. Instead, {{es}} marks the document as deleted on each related shard. The marked document will continue to use resources until it’s removed during a periodic [segment merge](elasticsearch://reference/elasticsearch/index-settings/merge.md).
 
 When possible, delete entire indices instead. {{es}} can immediately remove deleted indices directly from the file system and free up resources.
 
@@ -67,8 +92,8 @@ One advantage of this setup is [automatic rollover](../../../manage-data/lifecyc
 
 {{ilm-init}} also makes it easy to change your sharding strategy over time:
 
-* **Want to decrease the shard count for new indices?**<br> Change the [`index.number_of_shards`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index-modules.md#index-number-of-shards) setting in the data stream’s [matching index template](../../../manage-data/data-store/data-streams/modify-data-stream.md#data-streams-change-mappings-and-settings).
-* **Want larger shards or fewer backing indices?**<br> Increase your {{ilm-init}} policy’s [rollover threshold](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-lifecycle-actions/ilm-rollover.md).
+* **Want to decrease the shard count for new indices?**<br> Change the [`index.number_of_shards`](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#index-number-of-shards) setting in the data stream’s [matching index template](../../../manage-data/data-store/data-streams/modify-data-stream.md#data-streams-change-mappings-and-settings).
+* **Want larger shards or fewer backing indices?**<br> Increase your {{ilm-init}} policy’s [rollover threshold](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-rollover.md).
 * **Need indices that span shorter intervals?**<br> Offset the increased shard count by deleting older indices sooner. You can do this by lowering the `min_age` threshold for your policy’s [delete phase](../../../manage-data/lifecycle/index-lifecycle-management/index-lifecycle.md).
 
 Every new backing index is an opportunity to further tune your strategy.
@@ -82,7 +107,7 @@ There is no hard limit on the physical size of a shard, and each shard can in th
 
 You may be able to use larger shards depending on your network and use case, and smaller shards may be appropriate for certain use cases.
 
-If you use {{ilm-init}}, set the [rollover action](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-lifecycle-actions/ilm-rollover.md)'s `max_primary_shard_size` threshold to `50gb` to avoid shards larger than 50GB and `min_primary_shard_size` threshold to `10gb` to avoid shards smaller than 10GB.
+If you use {{ilm-init}}, set the [rollover action](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-rollover.md)'s `max_primary_shard_size` threshold to `50gb` to avoid shards larger than 50GB and `min_primary_shard_size` threshold to `10gb` to avoid shards smaller than 10GB.
 
 To see the current size of your shards, use the [cat shards API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-shards).
 
@@ -133,7 +158,7 @@ GET _cat/shards?v=true
 
 ### Add enough nodes to stay within the cluster shard limits [shard-count-per-node-recommendation]
 
-[Cluster shard limits](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/miscellaneous-cluster-settings.md#cluster-shard-limit) prevent creation of more than 1000 non-frozen shards per node, and 3000 frozen shards per dedicated frozen node. Make sure you have enough nodes of each type in your cluster to handle the number of shards you need.
+[Cluster shard limits](elasticsearch://reference/elasticsearch/configuration-reference/miscellaneous-cluster-settings.md#cluster-shard-limit) prevent creation of more than 1000 non-frozen shards per node, and 3000 frozen shards per dedicated frozen node. Make sure you have enough nodes of each type in your cluster to handle the number of shards you need.
 
 
 ### Allow enough heap for field mappers and overheads [field-count-recommendation]
@@ -223,7 +248,7 @@ Note that the above rules do not necessarily guarantee the performance of search
 
 If too many shards are allocated to a specific node, the node can become a hotspot. For example, if a single node contains too many shards for an index with a high indexing volume, the node is likely to have issues.
 
-To prevent hotspots, use the [`index.routing.allocation.total_shards_per_node`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/total-shards-per-node.md#total-shards-per-node) index setting to explicitly limit the number of shards on a single node. You can configure `index.routing.allocation.total_shards_per_node` using the [update index settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-settings).
+To prevent hotspots, use the [`index.routing.allocation.total_shards_per_node`](elasticsearch://reference/elasticsearch/index-settings/total-shards-per-node.md#total-shards-per-node) index setting to explicitly limit the number of shards on a single node. You can configure `index.routing.allocation.total_shards_per_node` using the [update index settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-settings).
 
 ```console
 PUT my-index-000001/_settings
@@ -237,7 +262,7 @@ PUT my-index-000001/_settings
 
 ### Avoid unnecessary mapped fields [avoid-unnecessary-fields]
 
-By default {{es}} [automatically creates a mapping](../../../manage-data/data-store/mapping/dynamic-mapping.md) for every field in every document it indexes. Every mapped field corresponds to some data structures on disk which are needed for efficient search, retrieval, and aggregations on this field. Details about each mapped field are also held in memory. In many cases this overhead is unnecessary because a field is not used in any searches or aggregations. Use [*Explicit mapping*](../../../manage-data/data-store/mapping/explicit-mapping.md) instead of dynamic mapping to avoid creating fields that are never used. If a collection of fields are typically used together, consider using [`copy_to`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/copy-to.md) to consolidate them at index time. If a field is only rarely used, it may be better to make it a [Runtime field](../../../manage-data/data-store/mapping/runtime-fields.md) instead.
+By default {{es}} [automatically creates a mapping](../../../manage-data/data-store/mapping/dynamic-mapping.md) for every field in every document it indexes. Every mapped field corresponds to some data structures on disk which are needed for efficient search, retrieval, and aggregations on this field. Details about each mapped field are also held in memory. In many cases this overhead is unnecessary because a field is not used in any searches or aggregations. Use [*Explicit mapping*](../../../manage-data/data-store/mapping/explicit-mapping.md) instead of dynamic mapping to avoid creating fields that are never used. If a collection of fields are typically used together, consider using [`copy_to`](elasticsearch://reference/elasticsearch/mapping-reference/copy-to.md) to consolidate them at index time. If a field is only rarely used, it may be better to make it a [Runtime field](../../../manage-data/data-store/mapping/runtime-fields.md) instead.
 
 You can get information about which fields are being used with the [Field usage stats](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-field-usage-stats) API, and you can analyze the disk usage of mapped fields using the [Analyze index disk usage](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-disk-usage) API. Note however that unnecessary mapped fields also carry some memory overhead as well as their disk usage.
 
@@ -273,7 +298,7 @@ DELETE my-index-000001
 
 ### Force merge during off-peak hours [force-merge-during-off-peak-hours]
 
-If you no longer write to an index, you can use the [force merge API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-forcemerge) to [merge](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/merge.md) smaller segments into larger ones. This can reduce shard overhead and improve search speeds. However, force merges are resource-intensive. If possible, run the force merge during off-peak hours.
+If you no longer write to an index, you can use the [force merge API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-forcemerge) to [merge](elasticsearch://reference/elasticsearch/index-settings/merge.md) smaller segments into larger ones. This can reduce shard overhead and improve search speeds. However, force merges are resource-intensive. If possible, run the force merge during off-peak hours.
 
 ```console
 POST my-index-000001/_forcemerge
@@ -284,7 +309,7 @@ POST my-index-000001/_forcemerge
 
 If you no longer write to an index, you can use the [shrink index API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-shrink) to reduce its shard count.
 
-{{ilm-init}} also has a [shrink action](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-lifecycle-actions/ilm-shrink.md) for indices in the warm phase.
+{{ilm-init}} also has a [shrink action](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-shrink.md) for indices in the warm phase.
 
 
 ### Combine smaller indices [combine-smaller-indices]
@@ -311,7 +336,7 @@ Here’s how to resolve common shard-related errors.
 
 ### this action would add [x] total shards, but this cluster currently has [y]/[z] maximum shards open; [troubleshooting-max-shards-open]
 
-The [`cluster.max_shards_per_node`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/miscellaneous-cluster-settings.md#cluster-max-shards-per-node) cluster setting limits the maximum number of open shards for a cluster. This error indicates an action would exceed this limit.
+The [`cluster.max_shards_per_node`](elasticsearch://reference/elasticsearch/configuration-reference/miscellaneous-cluster-settings.md#cluster-max-shards-per-node) cluster setting limits the maximum number of open shards for a cluster. This error indicates an action would exceed this limit.
 
 If you’re confident your changes won’t destabilize the cluster, you can temporarily increase the limit using the [cluster update settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings) and retry the action.
 

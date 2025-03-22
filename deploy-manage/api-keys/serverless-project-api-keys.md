@@ -14,9 +14,9 @@ In serverless projects, the following types of API keys exist:
 
 You can manage your keys in **{{project-settings}} → {{manage-app}} → {{api-keys-app}}**:
 
-:::{image} ../../images/serverless-api-key-management.png
+:::{image} /deploy-manage/images/serverless-api-key-management.png
 :alt: API keys UI
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -24,9 +24,9 @@ You can manage your keys in **{{project-settings}} → {{manage-app}} → {{api-
 
 In **{{api-keys-app}}**, click **Create API key**:
 
-:::{image} ../../images/serverless-create-personal-api-key.png
+:::{image} /deploy-manage/images/serverless-create-personal-api-key.png
 :alt: Create API key UI
-:class: screenshot
+:screenshot:
 :width: 50%
 :::
 

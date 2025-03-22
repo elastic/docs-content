@@ -28,7 +28,7 @@ Use filter pills to focus in on the specific data you want.
 
 :::{image} ../../images/kibana-dashboard_filter_pills_8.15.0.png
 :alt: Filter pills
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -45,7 +45,7 @@ You can interact with some panel visualizations to explore specific data more in
 
 As an alternative to the main query bar, you can filter dashboard data by defining individual conditions on specific fields and values, and by combining these conditions together in a filter pill.
 
-:::{image} ../../images/kibana-dashboard-filter-editor.png
+:::{image} /explore-analyze/images/kibana-dashboard-filter-editor.png
 :alt: Filter editor with 2 conditions
 :::
 
@@ -54,7 +54,7 @@ As an alternative to the main query bar, you can filter dashboard data by defini
 
 The query bar lets you build filters using [{{kib}} Query Language (KQL)](../query-filter/languages/kql.md). When typing, it dynamically suggests matching fields, operators, and values to help you get the exact results that you want.
 
-:::{image} ../../images/kibana-dashboard-filter-kql.png
+:::{image} /explore-analyze/images/kibana-dashboard-filter-kql.png
 :alt: KQL filter dynamically suggesting values
 :::
 
@@ -68,7 +68,7 @@ The data visible in a dashboard highly depends on the time range that is applied
 
 The global time range menu is located right next to the query bar, in the dashboard’s header. With this menu, you can select the time range to apply, and set the frequency for refreshing the dashboard data. Setting the time range is a common action in {{kib}}. Refer to [Set the time range](../query-filter/filtering.md) for more details.
 
-:::{image} ../../images/kibana-dashboard-global-time-range.png
+:::{image} /explore-analyze/images/kibana-dashboard-global-time-range.png
 :alt: Time range menu with multiple time range suggestions
 :::
 
@@ -77,7 +77,7 @@ The global time range menu is located right next to the query bar, in the dashbo
 
 **To apply a panel-level time range:**
 
-1. Hover over the panel and click ![Settings icon](../../images/kibana-settings-icon-hover-action.png ""). The **Settings** flyout appears.
+1. Hover over the panel and click ![Settings icon](/explore-analyze/images/kibana-settings-icon-hover-action.png ""). The **Settings** flyout appears.
 2. Turn on **Apply a custom time range**.
 3. Enter the time range you want to view, then click **Apply**.
 
@@ -112,7 +112,7 @@ Filter the data with one or more options that you select.
 
 :::{image} ../../images/kibana-dashboard_controlsOptionsList_8.7.0.png
 :alt: Options list control
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -129,7 +129,7 @@ Filter the data within a specified range of values.
 
 :::{image} ../../images/kibana-dashboard_controlsRangeSlider_8.3.0.png
 :alt: Range slider control
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -145,7 +145,7 @@ Filter the data within a specified range of time.
 
 :::{image} ../../images/dashboard_timeslidercontrol_8.17.0.gif
 :alt: Time slider control
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -182,7 +182,7 @@ You can view it in more details and edit it by clicking the filter.
 
 You can display dashboards in full screen mode to gain visual space and view or show visualizations without the rest of the {{kib}} interface.
 
-:::{image} ../../images/kibana-dashboard-full-screen.png
+:::{image} /explore-analyze/images/kibana-dashboard-full-screen.png
 :alt: A dashboard in full screen mode
 :::
 
@@ -193,6 +193,6 @@ When sharing a dashboard with a link while a panel is in maximized view, the gen
 ::::
 
 
-:::{image} ../../images/kibana-dashboard-panel-maximized.png
+:::{image} /explore-analyze/images/kibana-dashboard-panel-maximized.png
 :alt: A maximized panel in a dashboard
 :::

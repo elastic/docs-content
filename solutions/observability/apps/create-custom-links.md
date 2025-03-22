@@ -43,9 +43,9 @@ The URL your link points to. URLs support dynamic field name variables, encapsul
 
 Because everyone’s data is different, you’ll need to examine your traces to see what metadata is available for use. To do this, select a trace in the Applications UI, and click **Metadata** in the **Trace Sample** table.
 
-:::{image} ../../../images/observability-example-metadata.png
+:::{image} /solutions/images/observability-example-metadata.png
 :alt: Example metadata
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -101,9 +101,9 @@ Open a GitHub issue with pre-populated metadata from the selected trace sample.
 
 This link opens a new GitHub issue in the apm-agent-rum repository. It populates the issue body with relevant metadata from the currently active trace. Clicking this link results in the following issue being created:
 
-:::{image} ../../../images/observability-create-github-issue.png
+:::{image} /solutions/images/observability-create-github-issue.png
 :alt: Example github issue
-:class: screenshot
+:screenshot:
 :::
 
 |     |     |
@@ -128,9 +128,9 @@ Create a Jira task with pre-populated metadata from the selected trace sample.
 
 This link creates a new task on the Engineering board in Jira. It populates the issue body with relevant metadata from the currently active trace. Clicking this link results in the following task being created in Jira:
 
-:::{image} ../../../images/observability-create-jira-issue.png
+:::{image} /solutions/images/observability-create-jira-issue.png
 :alt: Example jira issue
-:class: screenshot
+:screenshot:
 :::
 
 |     |     |
@@ -138,7 +138,7 @@ This link creates a new task on the Engineering board in Jira. It populates the 
 | Label | `Open a task in Jira` |
 | Link | `https://test-site-33.atlassian.net/secure/CreateIssueDetails!init.jspa?pid=10000&issuetype=10001&summary=Created+via+APM&description=Investigate+the+following+APM+trace%3A%0D%0A%0D%0Aservice.name%3A+{{service.name}}%0D%0Atransaction.id%3A+{{transaction.id}}%0D%0Acontainer.id%3A+{{container.id}}%0D%0Aurl.full%3A+{{url.full}}` |
 
-See the [Jira application administration knowledge base](https://confluence.atlassian.com/jirakb/how-to-create-issues-using-direct-html-links-in-jira-server-159474.md) for a full list of supported query parameters.
+See the [Jira application administration knowledge base](https://confluence.atlassian.com/jirakb/how-to-create-issues-using-direct-html-links-in-jira-server-159474.html) for a full list of supported query parameters.
 
 
 ### Dashboards [custom-links-examples-kib]

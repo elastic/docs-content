@@ -1,4 +1,7 @@
 ---
+applies_to:
+  deployment:
+    ece: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-migrate-to-podman.html
 ---
@@ -18,26 +21,15 @@ Using Docker or Podman as container runtime is a configuration local to the host
 ::::
 
 
-:::{image} ../../../images/cloud-enterprise-podman-migration-overview-1.png
+:::{image} /deploy-manage/images/cloud-enterprise-podman-migration-overview-1.png
 :alt: Migration Overview
 :::
 
 ::::{note}
-When copy-pasting commands, verify that characters like quotes (“) are encoded correctly in the console where you copy the command to.
+* When copy-pasting commands, verify that characters like quotes (“) are encoded correctly in the console where you copy the command to.
+* Steps that run commands starting with `sudo` can be run as any sudoers user. Otherwise, the corresponding user is mentioned as part of the step description.
+* Avoid customizing the host Docker path `/mnt/data/docker` when using SELinux. Otherwise the ECE installer script needs to be adjusted.
 ::::
-
-
-::::{note}
-Steps that run commands starting with `sudo` can be run as any sudoers user.
-::::
-
-
-::::{note}
-Avoid customizing the host Docker path `/mnt/data/docker` when using SELinux. Otherwise the ECE installer script needs to be adjusted.
-::::
-
-
-Otherwise, when the file content changes, the corresponding user is mentioned as part of the step description.
 
 1. Make sure you are running a healthy x-node ECE environment ready to be upgraded. All nodes use the Docker container runtime.
 2. Upgrade to ECE 3.3.0+ following the [Upgrade your installation](../../upgrade/orchestrator/upgrade-cloud-enterprise.md) guideline. Skip this step if your existing ECE installation already runs ECE >= 3.3.0.
@@ -50,13 +42,13 @@ Otherwise, when the file content changes, the corresponding user is mentioned as
 
     **Example 1** You want to migrate the Docker host `192.168.44.74` with the role `Allocator` to a podman host. Copy the role `allocator`.
 
-    :::{image} ../../../images/cloud-enterprise-podman-migration-fetch-roles-1.png
+    :::{image} /deploy-manage/images/cloud-enterprise-podman-migration-fetch-roles-1.png
     :alt: Migrate Allocator
     :::
 
     **Example 2** You want to migrate the Docker host `192.168.44.10` with the roles `Allocator`, `Controller`, `Director`, and `Proxy` to a podman host. Copy the roles `allocator`, `coordinator`, `director`, `proxy`.
 
-    :::{image} ../../../images/cloud-enterprise-podman-migration-fetch-roles-2.png
+    :::{image} /deploy-manage/images/cloud-enterprise-podman-migration-fetch-roles-2.png
     :alt: Migrate Allocator
     :::
 
@@ -393,7 +385,7 @@ Otherwise, when the file content changes, the corresponding user is mentioned as
 
     1. Use the ECE installer script together with the `--podman` flag to add the additional host as a podman-based host.
 
-        Refer to the official [Install Elastic Cloud Enterprise on an additional host](install-ece-on-additional-hosts.md) and [Install ECE online](install-ece-onprem.md) documentation to adapt the command line parameters to your environment including fetching the role token.
+        Refer to the official [Install Elastic Cloud Enterprise on an additional host](install-ece-on-additional-hosts.md) and [Install ECE online](./install.md) documentation to adapt the command line parameters to your environment including fetching the role token.
 
         [JVM heap sizes](ece-jvm.md) describes recommended JVM options.
 
@@ -431,13 +423,13 @@ Otherwise, when the file content changes, the corresponding user is mentioned as
 
         The following screenshot shows the state where the correct roles have been applied. Both hosts in ece-zone-1 have the same color.
 
-        :::{image} ../../../images/cloud-enterprise-podman-migration-correct-role-1.png
+        :::{image} /deploy-manage/images/cloud-enterprise-podman-migration-correct-role-1.png
         :alt: Correct role
         :::
 
         The following screenshot shows the state where incorrect roles have been applied. The hosts in ece-zone-1 do not have the same coloring.
 
-        :::{image} ../../../images/cloud-enterprise-podman-migration-wrong-role-1.png
+        :::{image} /deploy-manage/images/cloud-enterprise-podman-migration-wrong-role-1.png
         :alt: Wrong role
         :::
 
@@ -457,7 +449,7 @@ Otherwise, when the file content changes, the corresponding user is mentioned as
         ::::
 
 
-        :::{image} ../../../images/cloud-enterprise-podman-migration-move-instances-1.png
+        :::{image} /deploy-manage/images/cloud-enterprise-podman-migration-move-instances-1.png
         :alt: Move instances
         :::
 

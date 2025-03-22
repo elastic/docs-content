@@ -26,9 +26,9 @@ The `{{query}}` variable represents the user’s question, rewritten as an {{es}
 
 The following screenshot shows the query editor in the Playground UI. In this simple example, the `books` index has two fields: `author` and `name`. Selecting a field adds it to the `fields` array in the query.
 
-:::{image} ../../../images/kibana-query-interface.png
+:::{image} /solutions/images/kibana-query-interface.png
 :alt: View and modify queries
-:class: screenshot
+:screenshot:
 :::
 
 Certain fields in your documents may be hidden. Learn more about [hidden fields](#playground-hidden-fields).

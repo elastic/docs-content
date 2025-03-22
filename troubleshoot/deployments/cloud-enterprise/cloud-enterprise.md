@@ -2,7 +2,6 @@
 navigation_title: "Elastic Cloud Enterprise"
 mapped_urls:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-troubleshooting.html
-  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-find.html
 ---
 
 # Troubleshoot Elastic Cloud Enterprise
@@ -25,7 +24,7 @@ The **Deployments** page in the Cloud UI provides several ways to find deploymen
 * Search for partial or whole deployment names or IDs in the search text box
 * Add filters to the **Deployments** view to filter for specific conditions:
 
-    :::{image} ../../../images/cloud-enterprise-deployment-filter.png
+    :::{image} /troubleshoot/images/cloud-enterprise-deployment-filter.png
     :alt: Add a filter
     :::
 

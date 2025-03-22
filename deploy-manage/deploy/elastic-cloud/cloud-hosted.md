@@ -77,7 +77,7 @@ You can use these presets, or start from them to get the unique configuration yo
 
 Building a rich search experience, gaining actionable insight into your environment, or protecting your systems and endpoints? You can implement each of these major use cases, and more, with the solutions that are pre-built in each Elastic deployment.
 
-:::{image} ../../../images/cloud-ec-stack-components.png
+:::{image} /deploy-manage/images/cloud-ec-stack-components.png
 :alt: Elastic Stack components and solutions with Enterprise Search
 :width: 75%
 :::
@@ -122,8 +122,8 @@ Find more information about {{ech}} on the following pages:
 
 * [Subscription Levels](/deploy-manage/license.md)
 * [Version Policy](/deploy-manage/deploy/elastic-cloud/available-stack-versions.md)
-* [{{ech}} Hardware](asciidocalypse://docs/cloud/docs/reference/cloud-hosted/hardware.md)
-* [{{ech}} Regions](asciidocalypse://docs/cloud/docs/reference/cloud-hosted/regions.md)
+* [{{ech}} Hardware](cloud://reference/cloud-hosted/hardware.md)
+* [{{ech}} Regions](cloud://reference/cloud-hosted/regions.md)
 * [Service Status](/deploy-manage/cloud-organization/service-status.md)
 * [Getting help](/troubleshoot/index.md)
 * [Restrictions and known problems](/deploy-manage/deploy/elastic-cloud/restrictions-known-problems.md)

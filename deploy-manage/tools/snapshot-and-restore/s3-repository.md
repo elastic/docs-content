@@ -1,16 +1,16 @@
---- 
+---
 mapped_urls:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/repository-s3.html
 applies_to:
   deployment:
-    self: 
+    self:
 ---
 
 # S3 repository [repository-s3]
 
 You can use AWS S3 as a repository for [Snapshot/Restore](../snapshot-and-restore.md).
 
-::::{note} 
+::::{note}
 If you are looking for a hosted solution of Elasticsearch on AWS, please visit [https://www.elastic.co/cloud/](https://www.elastic.co/cloud/).
 ::::
 
@@ -18,7 +18,7 @@ See [this video](https://www.youtube.com/watch?v=ACqfyzWf-xs) for a walkthrough 
 
 ## Getting started [repository-s3-usage]
 
-To register an S3 repository, specify the type as `s3` when creating the repository. The repository defaults to using [ECS IAM Role](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-iam-roles.md) credentials for authentication. You can also use [Kubernetes service accounts](#iam-kubernetes-service-accounts) for authentication.
+To register an S3 repository, specify the type as `s3` when creating the repository. The repository defaults to using [ECS IAM Role](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-iam-roles.html) credentials for authentication. You can also use [Kubernetes service accounts](#iam-kubernetes-service-accounts) for authentication.
 
 The only mandatory setting is the bucket name:
 
@@ -87,7 +87,7 @@ The following list contains the available client settings. Those that must be st
 :   An S3 session token. If set, the `access_key` and `secret_key` settings must also be specified.
 
 `endpoint`
-:   The S3 service endpoint to connect to. This defaults to `s3.amazonaws.com` but the [AWS documentation](https://docs.aws.amazon.com/general/latest/gr/rande.md#s3_region) lists alternative S3 endpoints. If you are using an [S3-compatible service](#repository-s3-compatible-services) then you should set this to the service’s endpoint.
+:   The S3 service endpoint to connect to. This defaults to `s3.amazonaws.com` but the [AWS documentation](https://docs.aws.amazon.com/general/latest/gr/rande.html#s3_region) lists alternative S3 endpoints. If you are using an [S3-compatible service](#repository-s3-compatible-services) then you should set this to the service’s endpoint.
 
 `protocol`
 :   The protocol to use to connect to S3. Valid values are either `http` or `https`. Defaults to `https`. When using HTTPS, this repository type validates the repository’s certificate chain using the JVM-wide truststore. Ensure that the root certificate authority is in this truststore using the JVM’s `keytool` tool. If you have a custom certificate authority for your S3 repository and you use the {{es}} [bundled JDK](../../deploy/self-managed/installing-elasticsearch.md#jvm-version), then you will need to reinstall your CA certificate every time you upgrade {{es}}.
@@ -108,7 +108,7 @@ The following list contains the available client settings. Those that must be st
 :   The password to connect to the `proxy.host` with.
 
 `read_timeout`
-:   ([time value](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/api-conventions.md#time-units)) The maximum time {{es}} will wait to receive the next byte of data over an established, open connection to the repository before it closes the connection. The default value is 50 seconds.
+:   ([time value](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#time-units)) The maximum time {{es}} will wait to receive the next byte of data over an established, open connection to the repository before it closes the connection. The default value is 50 seconds.
 
 `max_connections`
 :   The maximum number of concurrent connections to S3. The default value is `50`.
@@ -120,9 +120,9 @@ The following list contains the available client settings. Those that must be st
 :   Whether retries should be throttled (i.e. should back off). Must be `true` or `false`. Defaults to `true`.
 
 `path_style_access`
-:   Whether to force the use of the path style access pattern. If `true`, the path style access pattern will be used. If `false`, the access pattern will be automatically determined by the AWS Java SDK (See [AWS documentation](https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/s3/AmazonS3Builder.md#setPathStyleAccessEnabled-java.lang.Boolean-) for details). Defaults to `false`.
+:   Whether to force the use of the path style access pattern. If `true`, the path style access pattern will be used. If `false`, the access pattern will be automatically determined by the AWS Java SDK (See [AWS documentation](https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/s3/AmazonS3Builder.html#setPathStyleAccessEnabled-java.lang.Boolean-) for details). Defaults to `false`.
 
-::::{note} 
+::::{note}
 :name: repository-s3-path-style-deprecation
 
 In versions `7.0`, `7.1`, `7.2` and `7.3` all bucket operations used the [now-deprecated](https://aws.amazon.com/blogs/aws/amazon-s3-path-deprecation-plan-the-rest-of-the-story/) path style access pattern. If your deployment requires the path style access pattern then you should set this setting to `true` when upgrading.
@@ -130,13 +130,13 @@ In versions `7.0`, `7.1`, `7.2` and `7.3` all bucket operations used the [now-de
 
 
 `disable_chunked_encoding`
-:   Whether chunked encoding should be disabled or not. If `false`, chunked encoding is enabled and will be used where appropriate. If `true`, chunked encoding is disabled and will not be used, which may mean that snapshot operations consume more resources and take longer to complete. It should only be set to `true` if you are using a storage service that does not support chunked encoding. See the [AWS Java SDK documentation](https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/s3/AmazonS3Builder.md#disableChunkedEncoding--) for details. Defaults to `false`.
+:   Whether chunked encoding should be disabled or not. If `false`, chunked encoding is enabled and will be used where appropriate. If `true`, chunked encoding is disabled and will not be used, which may mean that snapshot operations consume more resources and take longer to complete. It should only be set to `true` if you are using a storage service that does not support chunked encoding. See the [AWS Java SDK documentation](https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/s3/AmazonS3Builder.html#disableChunkedEncoding--) for details. Defaults to `false`.
 
 `region`
-:   Allows specifying the signing region to use. Specificing this setting manually should not be necessary for most use cases. Generally, the SDK will correctly guess the signing region to use. It should be considered an expert level setting to support S3-compatible APIs that require [v4 signatures](https://docs.aws.amazon.com/general/latest/gr/signature-version-4.md) and use a region other than the default `us-east-1`. Defaults to empty string which means that the SDK will try to automatically determine the correct signing region.
+:   Allows specifying the signing region to use. Specificing this setting manually should not be necessary for most use cases. Generally, the SDK will correctly guess the signing region to use. It should be considered an expert level setting to support S3-compatible APIs that require [v4 signatures](https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html) and use a region other than the default `us-east-1`. Defaults to empty string which means that the SDK will try to automatically determine the correct signing region.
 
 `signer_override`
-:   Allows specifying the name of the signature algorithm to use for signing requests by the S3 client. Specifying this setting should not be necessary for most use cases. It should be considered an expert level setting to support S3-compatible APIs that do not support the signing algorithm that the SDK automatically determines for them. See the [AWS Java SDK documentation](https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/ClientConfiguration.md#setSignerOverride-java.lang.String-) for details. Defaults to empty string which means that no signing algorithm override will be used.
+:   Allows specifying the name of the signature algorithm to use for signing requests by the S3 client. Specifying this setting should not be necessary for most use cases. It should be considered an expert level setting to support S3-compatible APIs that do not support the signing algorithm that the SDK automatically determines for them. See the [AWS Java SDK documentation](https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/ClientConfiguration.html#setSignerOverride-java.lang.String-) for details. Defaults to empty string which means that no signing algorithm override will be used.
 
 
 ## Repository settings [repository-s3-repository]
@@ -159,7 +159,7 @@ The following settings are supported:
 `bucket`
 :   (Required) Name of the S3 bucket to use for snapshots.
 
-    The bucket name must adhere to Amazon’s [S3 bucket naming rules](https://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.md#bucketnamingrules).
+    The bucket name must adhere to Amazon’s [S3 bucket naming rules](https://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html#bucketnamingrules).
 
 
 `client`
@@ -168,22 +168,22 @@ The following settings are supported:
 `base_path`
 :   Specifies the path to the repository data within its bucket. Defaults to an empty string, meaning that the repository is at the root of the bucket. The value of this setting should not start or end with a `/`.
 
-    ::::{note} 
+    ::::{note}
     Don’t set `base_path` when configuring a snapshot repository for {{ECE}}. {{ECE}} automatically generates the `base_path` for each deployment so that multiple deployments may share the same bucket.
     ::::
 
 
 `chunk_size`
-:   ([byte value](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/api-conventions.md#byte-units)) The maximum size of object that {{es}} will write to the repository when creating a snapshot. Files which are larger than `chunk_size` will be chunked into several smaller objects. {{es}} may also split a file across multiple objects to satisfy other constraints such as the `max_multipart_parts` limit. Defaults to `5TB` which is the [maximum size of an object in AWS S3](https://docs.aws.amazon.com/AmazonS3/latest/userguide/qfacts.md).
+:   ([byte value](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#byte-units)) The maximum size of object that {{es}} will write to the repository when creating a snapshot. Files which are larger than `chunk_size` will be chunked into several smaller objects. {{es}} may also split a file across multiple objects to satisfy other constraints such as the `max_multipart_parts` limit. Defaults to `5TB` which is the [maximum size of an object in AWS S3](https://docs.aws.amazon.com/AmazonS3/latest/userguide/qfacts.html).
 
 `compress`
 :   When set to `true` metadata files are stored in compressed format. This setting doesn’t affect index files that are already compressed by default. Defaults to `true`.
 
 `max_restore_bytes_per_sec`
-:   (Optional, [byte value](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/api-conventions.md#byte-units)) Maximum snapshot restore rate per node. Defaults to unlimited. Note that restores are also throttled through [recovery settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/index-recovery-settings.md).
+:   (Optional, [byte value](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#byte-units)) Maximum snapshot restore rate per node. Defaults to unlimited. Note that restores are also throttled through [recovery settings](elasticsearch://reference/elasticsearch/configuration-reference/index-recovery-settings.md).
 
 `max_snapshot_bytes_per_sec`
-:   (Optional, [byte value](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/api-conventions.md#byte-units)) Maximum snapshot creation rate per node. Defaults to `40mb` per second. Note that if the [recovery settings for managed services](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/index-recovery-settings.md#recovery-settings-for-managed-services) are set, then it defaults to unlimited, and the rate is additionally throttled through [recovery settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/index-recovery-settings.md).
+:   (Optional, [byte value](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#byte-units)) Maximum snapshot creation rate per node. Defaults to `40mb` per second. Note that if the [recovery settings for managed services](elasticsearch://reference/elasticsearch/configuration-reference/index-recovery-settings.md#recovery-settings-for-managed-services) are set, then it defaults to unlimited, and the rate is additionally throttled through [recovery settings](elasticsearch://reference/elasticsearch/configuration-reference/index-recovery-settings.md).
 
 `readonly`
 :   (Optional, Boolean) If `true`, the repository is read-only. The cluster can retrieve and restore snapshots from the repository but not write to the repository or create snapshots in it.
@@ -192,7 +192,7 @@ The following settings are supported:
 
     If `false`, the cluster can write to the repository and create snapshots in it. Defaults to `false`.
 
-    ::::{important} 
+    ::::{important}
     If you register the same snapshot repository with multiple clusters, only one cluster should have write access to the repository. Having multiple clusters write to the repository at the same time risks corrupting the contents of the repository.
 
     ::::
@@ -202,36 +202,36 @@ The following settings are supported:
 :   When set to `true` files are encrypted on server side using AES256 algorithm. Defaults to `false`.
 
 `buffer_size`
-:   ([byte value](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/api-conventions.md#byte-units)) Minimum threshold below which the chunk is uploaded using a single request. Beyond this threshold, the S3 repository will use the [AWS Multipart Upload API](https://docs.aws.amazon.com/AmazonS3/latest/dev/uploadobjusingmpu.md) to split the chunk into several parts, each of `buffer_size` length, and to upload each part in its own request. Note that setting a buffer size lower than `5mb` is not allowed since it will prevent the use of the Multipart API and may result in upload errors. It is also not possible to set a buffer size greater than `5gb` as it is the maximum upload size allowed by S3. Defaults to `100mb` or `5%` of JVM heap, whichever is smaller.
+:   ([byte value](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#byte-units)) Minimum threshold below which the chunk is uploaded using a single request. Beyond this threshold, the S3 repository will use the [AWS Multipart Upload API](https://docs.aws.amazon.com/AmazonS3/latest/dev/uploadobjusingmpu.html) to split the chunk into several parts, each of `buffer_size` length, and to upload each part in its own request. Note that setting a buffer size lower than `5mb` is not allowed since it will prevent the use of the Multipart API and may result in upload errors. It is also not possible to set a buffer size greater than `5gb` as it is the maximum upload size allowed by S3. Defaults to `100mb` or `5%` of JVM heap, whichever is smaller.
 
 `max_multipart_parts`
-:   (integer) The maximum number of parts that {{es}} will write during a multipart upload of a single object. Files which are larger than `buffer_size × max_multipart_parts` will be chunked into several smaller objects. {{es}} may also split a file across multiple objects to satisfy other constraints such as the `chunk_size` limit. Defaults to `10000` which is the [maximum number of parts in a multipart upload in AWS S3](https://docs.aws.amazon.com/AmazonS3/latest/userguide/qfacts.md).
+:   (integer) The maximum number of parts that {{es}} will write during a multipart upload of a single object. Files which are larger than `buffer_size × max_multipart_parts` will be chunked into several smaller objects. {{es}} may also split a file across multiple objects to satisfy other constraints such as the `chunk_size` limit. Defaults to `10000` which is the [maximum number of parts in a multipart upload in AWS S3](https://docs.aws.amazon.com/AmazonS3/latest/userguide/qfacts.html).
 
 `canned_acl`
-:   The S3 repository supports all [S3 canned ACLs](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.md#canned-acl) : `private`, `public-read`, `public-read-write`, `authenticated-read`, `log-delivery-write`, `bucket-owner-read`, `bucket-owner-full-control`. Defaults to `private`. You could specify a canned ACL using the `canned_acl` setting. When the S3 repository creates buckets and objects, it adds the canned ACL into the buckets and objects.
+:   The S3 repository supports all [S3 canned ACLs](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#canned-acl) : `private`, `public-read`, `public-read-write`, `authenticated-read`, `log-delivery-write`, `bucket-owner-read`, `bucket-owner-full-control`. Defaults to `private`. You could specify a canned ACL using the `canned_acl` setting. When the S3 repository creates buckets and objects, it adds the canned ACL into the buckets and objects.
 
 `storage_class`
 :   Sets the S3 storage class for objects written to the repository. Values may be `standard`, `reduced_redundancy`, `standard_ia`, `onezone_ia` and `intelligent_tiering`. Defaults to `standard`. See [S3 storage classes](#repository-s3-storage-classes) for more information.
 
 `delete_objects_max_size`
-:   (integer) Sets the maxmimum batch size, betewen 1 and 1000, used for `DeleteObjects` requests. Defaults to 1000 which is the maximum number supported by the [AWS DeleteObjects API](https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteObjects.md).
+:   (integer) Sets the maxmimum batch size, betewen 1 and 1000, used for `DeleteObjects` requests. Defaults to 1000 which is the maximum number supported by the [AWS DeleteObjects API](https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteObjects.html).
 
 `max_multipart_upload_cleanup_size`
-:   (integer) Sets the maximum number of possibly-dangling multipart uploads to clean up in each batch of snapshot deletions. Defaults to `1000` which is the maximum number supported by the [AWS ListMultipartUploads API](https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListMultipartUploads.md). If set to `0`, {{es}} will not attempt to clean up dangling multipart uploads.
+:   (integer) Sets the maximum number of possibly-dangling multipart uploads to clean up in each batch of snapshot deletions. Defaults to `1000` which is the maximum number supported by the [AWS ListMultipartUploads API](https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListMultipartUploads.html). If set to `0`, {{es}} will not attempt to clean up dangling multipart uploads.
 
 `throttled_delete_retry.delay_increment`
-:   ([time value](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/api-conventions.md#time-units)) This value is used as the delay before the first retry and the amount the delay is incremented by on each subsequent retry. Default is 50ms, minimum is 0ms.
+:   ([time value](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#time-units)) This value is used as the delay before the first retry and the amount the delay is incremented by on each subsequent retry. Default is 50ms, minimum is 0ms.
 
 `throttled_delete_retry.maximum_delay`
-:   ([time value](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/api-conventions.md#time-units)) This is the upper bound on how long the delays between retries will grow to. Default is 5s, minimum is 0ms.
+:   ([time value](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#time-units)) This is the upper bound on how long the delays between retries will grow to. Default is 5s, minimum is 0ms.
 
 `throttled_delete_retry.maximum_number_of_retries`
 :   (integer) Sets the number times to retry a throttled snapshot deletion. Defaults to `10`, minimum value is `0` which will disable retries altogether. Note that if retries are enabled in the Azure client, each of these retries comprises that many client-level retries.
 
 `get_register_retry_delay`
-:   ([time value](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/api-conventions.md#time-units)) Sets the time to wait before trying again if an attempt to read a [linearizable register](#repository-s3-linearizable-registers) fails. Defaults to `5s`.
+:   ([time value](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#time-units)) Sets the time to wait before trying again if an attempt to read a [linearizable register](#repository-s3-linearizable-registers) fails. Defaults to `5s`.
 
-::::{note} 
+::::{note}
 The option of defining client settings in the repository settings as documented below is considered deprecated, and will be removed in a future version.
 ::::
 
@@ -267,7 +267,7 @@ You may use an S3 Lifecycle Policy to adjust the storage class of existing objec
 
 You may use the `intelligent_tiering` storage class to automatically manage the class of objects, but you must not enable the optional Archive Access or Deep Archive Access tiers. If you use these tiers then you may permanently lose access to your repository contents.
 
-For more information about S3 storage classes, see [AWS Storage Classes Guide](https://docs.aws.amazon.com/AmazonS3/latest/dev/storage-class-intro.md).
+For more information about S3 storage classes, see [AWS Storage Classes Guide](https://docs.aws.amazon.com/AmazonS3/latest/dev/storage-class-intro.html).
 
 
 ## Recommended S3 permissions [repository-s3-permissions]
@@ -352,7 +352,7 @@ You may further restrict the permissions by specifying a prefix within the bucke
 The bucket needs to exist to register a repository for snapshots. If you did not create the bucket then the repository registration will fail.
 
 
-#### Using IAM roles for Kubernetes service accounts for authentication [iam-kubernetes-service-accounts] 
+#### Using IAM roles for Kubernetes service accounts for authentication [iam-kubernetes-service-accounts]
 
 If you want to use [Kubernetes service accounts](https://aws.amazon.com/blogs/opensource/introducing-fine-grained-iam-roles-service-accounts/) for authentication, you need to add a symlink to the `$AWS_WEB_IDENTITY_TOKEN_FILE` environment variable (which should be automatically set by a Kubernetes pod) in the S3 repository config directory, so the repository can have the read access for the service account (a repository can’t read any files outside its config directory). For example:
 
@@ -361,7 +361,7 @@ mkdir -p "${ES_PATH_CONF}/repository-s3"
 ln -s $AWS_WEB_IDENTITY_TOKEN_FILE "${ES_PATH_CONF}/repository-s3/aws-web-identity-token-file"
 ```
 
-::::{important} 
+::::{important}
 The symlink must be created on all data and master eligible nodes and be readable by the `elasticsearch` user. By default, {{es}} runs as user `elasticsearch` using uid:gid `1000:0`.
 ::::
 
@@ -371,7 +371,7 @@ If the symlink exists, it will be used by default by all S3 repositories that do
 
 ## AWS VPC bandwidth settings [repository-s3-aws-vpc]
 
-AWS instances resolve S3 endpoints to a public IP. If the Elasticsearch instances reside in a private subnet in an AWS VPC then all traffic to S3 will go through the VPC’s NAT instance. If your VPC’s NAT instance is a smaller instance size (e.g. a t2.micro) or is handling a high volume of network traffic your bandwidth to S3 may be limited by that NAT instance’s networking bandwidth limitations. Instead we recommend creating a [VPC endpoint](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-endpoints.md) that enables connecting to S3 in instances that reside in a private subnet in an AWS VPC. This will eliminate any limitations imposed by the network bandwidth of your VPC’s NAT instance.
+AWS instances resolve S3 endpoints to a public IP. If the Elasticsearch instances reside in a private subnet in an AWS VPC then all traffic to S3 will go through the VPC’s NAT instance. If your VPC’s NAT instance is a smaller instance size (e.g. a t2.micro) or is handling a high volume of network traffic your bandwidth to S3 may be limited by that NAT instance’s networking bandwidth limitations. Instead we recommend creating a [VPC endpoint](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-endpoints.html) that enables connecting to S3 in instances that reside in a private subnet in an AWS VPC. This will eliminate any limitations imposed by the network bandwidth of your VPC’s NAT instance.
 
 Instances residing in a public subnet in an AWS VPC will connect to S3 via the VPC’s internet gateway and not be bandwidth limited by the VPC’s NAT instance.
 
@@ -388,9 +388,9 @@ There are many systems, including some from very well-known storage vendors, whi
 
 You can perform some basic checks of the suitability of your storage system using the [repository analysis API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-repository-analyze). If this API does not complete successfully, or indicates poor performance, then your storage system is not fully compatible with AWS S3 and therefore unsuitable for use as a snapshot repository. However, these checks do not guarantee full compatibility.
 
-Most storage systems can be configured to log the details of their interaction with {{es}}. If you are investigating a suspected incompatibility with AWS S3, it is usually simplest to collect these logs and provide them to the supplier of your storage system for further analysis. If the incompatibility is not clear from the logs emitted by the storage system, configure {{es}} to log every request it makes to the S3 API by [setting the logging level](../../monitor/logging-configuration/elasticsearch-log4j-configuration-self-managed.md#configuring-logging-levels) of the `com.amazonaws.request` logger to `DEBUG`.
+Most storage systems can be configured to log the details of their interaction with {{es}}. If you are investigating a suspected incompatibility with AWS S3, it is usually simplest to collect these logs and provide them to the supplier of your storage system for further analysis. If the incompatibility is not clear from the logs emitted by the storage system, configure {{es}} to log every request it makes to the S3 API by [setting the logging level](/deploy-manage/monitor/logging-configuration/update-elasticsearch-logging-levels.md) of the `com.amazonaws.request` logger to `DEBUG`.
 
-To prevent leaking sensitive information such as credentials and keys in logs, {{es}} rejects configuring this logger at high verbosity unless [insecure network trace logging](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/networking-settings.md#http-rest-request-tracer) is enabled. To do so, you must explicitly enable it on each node by setting the system property `es.insecure_network_trace_enabled` to `true`.
+To prevent leaking sensitive information such as credentials and keys in logs, {{es}} rejects configuring this logger at high verbosity unless [insecure network trace logging](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md#http-rest-request-tracer) is enabled. To do so, you must explicitly enable it on each node by setting the system property `es.insecure_network_trace_enabled` to `true`.
 
 Once enabled, you can configure the `com.amazonaws.request` logger:
 
@@ -403,7 +403,7 @@ PUT /_cluster/settings
 }
 ```
 
-Collect the Elasticsearch logs covering the time period of the failed analysis from all nodes in your cluster and share them with the supplier of your storage system along with the analysis response so they can use them to determine the problem. See the [AWS Java SDK](https://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/java-dg-../../monitor/logging-configuration/elasticsearch-log4j-configuration-self-managed.md) documentation for further information, including details about other loggers that can be used to obtain even more verbose logs. When you have finished collecting the logs needed by your supplier, set the logger settings back to `null` to return to the default logging configuration and disable insecure network trace logging again. See [Logger](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/miscellaneous-cluster-settings.md#cluster-logger) and [Cluster update settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings) for more information.
+Collect the Elasticsearch logs covering the time period of the failed analysis from all nodes in your cluster and share them with the supplier of your storage system along with the analysis response so they can use them to determine the problem. See the [AWS Java SDK](https://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/java-dg-logging.html) documentation for further information, including details about other loggers that can be used to obtain even more verbose logs. When you have finished collecting the logs needed by your supplier, set the logger settings back to `null` to return to the default logging configuration and disable insecure network trace logging again. See [Logger](elasticsearch://reference/elasticsearch/configuration-reference/miscellaneous-cluster-settings.md#cluster-logger) and [Cluster update settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings) for more information.
 
 
 ## Linearizable register implementation [repository-s3-linearizable-registers]

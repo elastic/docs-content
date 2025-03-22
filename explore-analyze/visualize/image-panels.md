@@ -24,7 +24,7 @@ You can upload images from your computer, select previously uploaded images, or 
 
 :::{image} ../../images/kibana-dashboard_addImageEditor_8.7.0.png
 :alt: Add image editor
-:class: screenshot
+:screenshot:
 :::
 
 To manage your uploaded image files, go to the **Files** management page using the navigation menu or the [global search field](../../explore-analyze/find-and-organize/find-apps-and-objects.md).

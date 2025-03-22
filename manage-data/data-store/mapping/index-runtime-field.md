@@ -10,14 +10,14 @@ applies_to:
 
 Runtime fields are defined by the context where they run. For example, you can define runtime fields in the [context of a search query](define-runtime-fields-in-search-request.md) or within the [`runtime` section](map-runtime-field.md) of an index mapping. If you decide to index a runtime field for greater performance, just move the full runtime field definition (including the script) to the context of an index mapping. {{es}} automatically uses these indexed fields to drive queries, resulting in a fast response time. This capability means you can write a script only once, and apply it to any context that supports runtime fields.
 
-::::{note} 
+::::{note}
 Indexing a `composite` runtime field is currently not supported.
 ::::
 
 
 You can then use runtime fields to limit the number of fields that {{es}} needs to calculate values for. Using indexed fields in tandem with runtime fields provides flexibility in the data that you index and how you define queries for other fields.
 
-::::{important} 
+::::{important}
 After indexing a runtime field, you cannot update the included script. If you need to change the script, create a new field with the updated script.
 ::::
 
@@ -85,7 +85,7 @@ PUT my-index-000001/_mapping
 }
 ```
 
-You retrieve the calculated values using the [`fields`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/retrieve-selected-fields.md) parameter on the `_search` API:
+You retrieve the calculated values using the [`fields`](elasticsearch://reference/elasticsearch/rest-apis/retrieve-selected-fields.md) parameter on the `_search` API:
 
 ```console
 GET my-index-000001/_search
@@ -157,7 +157,7 @@ POST my-index-000001/_bulk?refresh=true
 { "timestamp": 1516297294000, "temperature": 202, "voltage": 4.0, "node": "c"}
 ```
 
-You can now retrieve calculated values in a search query, and find documents based on precise values. The following range query returns all documents where the calculated `voltage_corrected` is greater than or equal to `16`, but less than or equal to `20`. Again, use the [`fields`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/retrieve-selected-fields.md) parameter on the `_search` API to retrieve the fields you want:
+You can now retrieve calculated values in a search query, and find documents based on precise values. The following range query returns all documents where the calculated `voltage_corrected` is greater than or equal to `16`, but less than or equal to `20`. Again, use the [`fields`](elasticsearch://reference/elasticsearch/rest-apis/retrieve-selected-fields.md) parameter on the `_search` API to retrieve the fields you want:
 
 ```console
 POST my-index-000001/_search

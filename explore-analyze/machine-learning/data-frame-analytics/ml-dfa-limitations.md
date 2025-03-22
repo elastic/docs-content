@@ -37,7 +37,7 @@ You cannot update {{dfanalytics}} configurations. Instead, delete the {{dfanalyt
 
 ### {{dfanalytics-cap}} memory limitation [dfa-dataframe-size-limitations]
 
-{{dfanalytics-cap}} can only perform analyses that fit into the memory available for {{ml}}. Overspill to disk is not currently possible. For general {{ml}} settings, see [{{ml-cap}} settings in {{es}}](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/machine-learning-settings.md).
+{{dfanalytics-cap}} can only perform analyses that fit into the memory available for {{ml}}. Overspill to disk is not currently possible. For general {{ml}} settings, see [{{ml-cap}} settings in {{es}}](elasticsearch://reference/elasticsearch/configuration-reference/machine-learning-settings.md).
 
 When you create a {{dfanalytics-job}} and the inference step of the process fails due to the model is too large to fit into JVM, follow the steps in [this GitHub issue](https://github.com/elastic/elasticsearch/issues/76093) for a workaround.
 

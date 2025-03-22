@@ -22,7 +22,7 @@ While {{kib}} isn’t terribly resource intensive, we still recommend running {{
 
 ## Load balancing across multiple {{kib}} instances [load-balancing-kibana] 
 
-To serve multiple {{kib}} installations behind a load balancer, you must change the configuration. See [Configuring {{kib}}](../deploy/self-managed/configure.md) for details on each setting.
+To serve multiple {{kib}} installations behind a load balancer, you must change the configuration. See [Configuring {{kib}}](../deploy/self-managed/configure-kibana.md) for details on each setting.
 
 These settings must be unique across each {{kib}} instance:
 
@@ -92,7 +92,7 @@ elasticsearch.hosts:
   - http://elasticsearch2:9200
 ```
 
-Related configurations include `elasticsearch.sniffInterval`, `elasticsearch.sniffOnStart`, and `elasticsearch.sniffOnConnectionFault`. These can be used to automatically update the list of hosts as a cluster is resized.  Parameters can be found on the [settings page](../deploy/self-managed/configure.md).
+Related configurations include `elasticsearch.sniffInterval`, `elasticsearch.sniffOnStart`, and `elasticsearch.sniffOnConnectionFault`. These can be used to automatically update the list of hosts as a cluster is resized.  Parameters can be found on the [settings page](kibana://reference/configuration-reference/general-settings.md).
 
 
 ## Memory [memory] 

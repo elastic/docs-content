@@ -6,15 +6,14 @@ mapped_pages:
 
 # Symptom: High CPU usage [high-cpu-usage]
 
-{{es}} uses [thread pools](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/thread-pool-settings.md) to manage CPU resources for concurrent operations. High CPU usage typically means one or more thread pools are running low.
+{{es}} uses [thread pools](elasticsearch://reference/elasticsearch/configuration-reference/thread-pool-settings.md) to manage CPU resources for concurrent operations. High CPU usage typically means one or more thread pools are running low.
 
 If a thread pool is depleted, {{es}} will [reject requests](rejected-requests.md) related to the thread pool. For example, if the `search` thread pool is depleted, {{es}} will reject search requests until more threads are available.
 
 You might experience high CPU usage if a [data tier](../../manage-data/lifecycle/data-tiers.md), and therefore the nodes assigned to that tier, is experiencing more traffic than other tiers. This imbalance in resource utilization is also known as [hot spotting](hotspotting.md).
 
 ::::{tip}
-If you’re using Elastic Cloud Hosted, then you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, real-time issue detection and resolution paths. For more information, refer to [Monitor with AutoOps](/deploy-manage/monitor/autoops.md).
-
+If you're using {{ech}}, you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, and real-time issue detection and resolution. For more information, refer to [](/deploy-manage/monitor/autoops.md).
 ::::
 
 
@@ -36,23 +35,23 @@ To track CPU usage over time, we recommend enabling monitoring:
 :::::::{tab-set}
 
 ::::::{tab-item} {{ech}}
-* (Recommended) Enable [logs and metrics](../../deploy-manage/monitor/stack-monitoring/elastic-cloud-stack-monitoring.md). When logs and metrics are enabled, monitoring information is visible on {{kib}}'s [Stack Monitoring](../../deploy-manage/monitor/monitoring-data/visualizing-monitoring-data.md) page.
+* (Recommended) Enable [logs and metrics](../../deploy-manage/monitor/stack-monitoring/ece-ech-stack-monitoring.md). When logs and metrics are enabled, monitoring information is visible on {{kib}}'s [Stack Monitoring](../../deploy-manage/monitor/monitoring-data/visualizing-monitoring-data.md) page.
 
-    You can also enable the [CPU usage threshold alert](../../deploy-manage/monitor/monitoring-data/kibana-alerts.md) to be notified about potential issues through email.
+    You can also enable the [CPU usage threshold alert](../../deploy-manage/monitor/monitoring-data/configure-stack-monitoring-alerts.md) to be notified about potential issues through email.
 
-* From your deployment menu, view the [**Performance**](../../deploy-manage/monitor/monitoring-data/access-performance-metrics-on-elastic-cloud.md) page. On this page, you can view two key metrics:
+* From your deployment menu, view the [**Performance**](../../deploy-manage/monitor/access-performance-metrics-on-elastic-cloud.md) page. On this page, you can view two key metrics:
 
     * **CPU usage**: Your deployment’s CPU usage, represented as a percentage.
     * **CPU credits**: Your remaining CPU credits, measured in seconds of CPU time.
 
 
-{{ech}} grants [CPU credits](../../deploy-manage/monitor/monitoring-data/ec-vcpu-boost-instance.md) per deployment to provide smaller clusters with performance boosts when needed. High CPU usage can deplete these credits, which might lead to [performance degradation](../monitoring/performance.md) and [increased cluster response times](../monitoring/cluster-response-time.md).
+{{ech}} grants [CPU credits](/deploy-manage/deploy/elastic-cloud/ec-vcpu-boost-instance.md) per deployment to provide smaller clusters with performance boosts when needed. High CPU usage can deplete these credits, which might lead to [performance degradation](../monitoring/performance.md) and [increased cluster response times](../monitoring/cluster-response-time.md).
 ::::::
 
 ::::::{tab-item} Self-managed
 * Enable [{{es}} monitoring](../../deploy-manage/monitor/stack-monitoring.md). When logs and metrics are enabled, monitoring information is visible on {{kib}}'s [Stack Monitoring](../../deploy-manage/monitor/monitoring-data/visualizing-monitoring-data.md) page.
 
-    You can also enable the [CPU usage threshold alert](../../deploy-manage/monitor/monitoring-data/kibana-alerts.md) to be notified about potential issues through email.
+    You can also enable the [CPU usage threshold alert](../../deploy-manage/monitor/monitoring-data/configure-stack-monitoring-alerts.md) to be notified about potential issues through email.
 ::::::
 
 :::::::

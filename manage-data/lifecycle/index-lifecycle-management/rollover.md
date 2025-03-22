@@ -20,7 +20,7 @@ We recommend using [data streams](https://www.elastic.co/docs/api/doc/elasticsea
 Each data stream requires an [index template](../../data-store/templates.md) that contains:
 
 * A name or wildcard (`*`) pattern for the data stream.
-* The data stream’s timestamp field. This field must be mapped as a [`date`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/date.md) or [`date_nanos`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/date_nanos.md) field data type and must be included in every document indexed to the data stream.
+* The data stream’s timestamp field. This field must be mapped as a [`date`](elasticsearch://reference/elasticsearch/mapping-reference/date.md) or [`date_nanos`](elasticsearch://reference/elasticsearch/mapping-reference/date_nanos.md) field data type and must be included in every document indexed to the data stream.
 * The mappings and settings applied to each backing index when it’s created.
 
 Data streams are designed for append-only data, where the data stream name can be used as the operations (read, write, rollover, shrink etc.) target. If your use case requires data to be updated in place, you can instead manage your time series data using [index aliases](../../data-store/aliases.md). However, there are a few more configuration steps and concepts:
@@ -29,28 +29,28 @@ Data streams are designed for append-only data, where the data stream name can b
 * An *index alias* that references the entire set of indices.
 * A single index designated as the *write index*. This is the active index that handles all write requests. On each rollover, the new index becomes the write index.
 
-::::{note} 
+::::{note}
 When an index is rolled over, the previous index’s age is updated to reflect the rollover time. This date, rather than the index’s `creation_date`, is used in {{ilm}} `min_age` phase calculations. [Learn more](../../../troubleshoot/elasticsearch/index-lifecycle-management-errors.md#min-age-calculation).
 
 ::::
 
 
 
-## Automatic rollover [ilm-automatic-rollover] 
+## Automatic rollover [ilm-automatic-rollover]
 
 {{ilm-init}} and the data stream lifecycle (in [preview]]) enable you to automatically roll over to a new index based on conditions like the index size, document count, or age. When a rollover is triggered, a new index is created, the write alias is updated to point to the new index, and all subsequent updates are written to the new index.
 
-::::{tip} 
+::::{tip}
 Rolling over to a new index based on size, document count, or age is preferable to time-based rollovers. Rolling over at an arbitrary time often results in many small indices, which can have a negative impact on performance and resource usage.
 ::::
 
 
-::::{important} 
+::::{important}
 Empty indices will not be rolled over, even if they have an associated `max_age` that would otherwise result in a roll over occurring. A policy can override this behavior, and explicitly opt in to rolling over empty indices, by adding a `"min_docs": 0` condition. This can also be disabled on a cluster-wide basis by setting `indices.lifecycle.rollover.only_if_has_documents` to `false`.
 ::::
 
 
-::::{important} 
+::::{important}
 The rollover action implicitly always rolls over a data stream or alias if one or more shards contain 200000000 or more documents. Normally a shard will reach 50GB long before it reaches 200M documents, but this isn’t the case for space efficient data sets. Search performance will very likely suffer if a shard contains more than 200M documents. This is the reason of the builtin limit.
 ::::
 

@@ -262,6 +262,8 @@ Many L7 load balancers handle HTTP and gRPC traffic separately and rely on expli
 * Use the `otlp` exporter in the OTel collector. Set annotation `nginx.ingress.kubernetes.io/backend-protocol: "GRPC"` on the K8s Ingress object proxying to APM Server.
 * Use the `otlphttp` exporter in the OTel collector. Set annotation `nginx.ingress.kubernetes.io/backend-protocol: "HTTP"` (or `"HTTPS"` if APM Server expects TLS) on the K8s Ingress object proxying to APM Server.
 
+The preferred approach is to deploy a L4 (TCP) load balancer (e.g. [NLB](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/introduction.html) on AWS) in front of APM Server, which forwards raw TCP traffic transparently without protocol inspection.
+
 For more information on how to configure an AWS ALB to support gRPC, see this AWS blog post: [Application Load Balancer Support for End-to-End HTTP/2 and gRPC](https://aws.amazon.com/blogs/aws/new-application-load-balancer-support-for-end-to-end-http-2-and-grpc/).
 
 For more information on how APM Server services gRPC requests, see [Muxing gRPC and HTTP/1.1](https://github.com/elastic/apm-server/blob/main/dev_docs/otel.md#muxing-grpc-and-http11).

@@ -21,7 +21,7 @@ The following APIs support {{ccs}}:
 * [Search template](search-templates.md)
 * [Multi search template](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-msearch-template)
 * [Field capabilities](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-field-caps)
-* [Painless execute API](asciidocalypse://docs/elasticsearch/docs/reference/scripting-languages/painless/painless-api-examples.md)
+* [Painless execute API](elasticsearch://reference/scripting-languages/painless/painless-api-examples.md)
 * [Resolve Index API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-resolve-index)
 * [preview] [EQL search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-eql-search)
 * [preview] [SQL search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-sql-query)
@@ -979,7 +979,7 @@ In Elasticsearch 8.15, the default value for `skip_unavailable` was changed from
 If `skip_unavailable` is `true`, a {{ccs}}:
 
 * Skips the remote cluster if its nodes are unavailable during the search. The response’s `_clusters.skipped` value contains a count of any skipped clusters and the `_clusters.details` section of the response will show a `skipped` status.
-* Ignores errors returned by the remote cluster, such as errors related to unavailable shards or indices. This can include errors related to search parameters such as [`allow_no_indices`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/api-conventions.md#api-multi-index) and [`ignore_unavailable`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/api-conventions.md#api-multi-index).
+* Ignores errors returned by the remote cluster, such as errors related to unavailable shards or indices. This can include errors related to search parameters such as [`allow_no_indices`](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#api-multi-index) and [`ignore_unavailable`](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#api-multi-index).
 * Ignores the [`allow_partial_search_results`](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search#operation-search-allow_partial_search_results) parameter and the related `search.default_allow_partial_results` cluster setting when searching the remote cluster. This means searches on the remote cluster may return partial results.
 
 You can modify the `skip_unavailable` setting by editing the `cluster.remote.<cluster_alias>` settings in the elasticsearch.yml config file. For example:
@@ -1007,7 +1007,7 @@ If at least one shard from a cluster provides search results, those results will
 Because {{ccs}} involves sending requests to remote clusters, any network delays can impact search speed. To avoid slow searches, {{ccs}} offers two options for handling network delays:
 
 [Minimize network roundtrips](#ccs-min-roundtrips)
-:   By default, {{es}} reduces the number of network roundtrips between remote clusters. This reduces the impact of network delays on search speed. However, {{es}} can’t reduce network roundtrips for large search requests, such as those including a [scroll](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/paginate-search-results.md#scroll-search-results) or [inner hits](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/retrieve-inner-hits.md).
+:   By default, {{es}} reduces the number of network roundtrips between remote clusters. This reduces the impact of network delays on search speed. However, {{es}} can’t reduce network roundtrips for large search requests, such as those including a [scroll](elasticsearch://reference/elasticsearch/rest-apis/paginate-search-results.md#scroll-search-results) or [inner hits](elasticsearch://reference/elasticsearch/rest-apis/retrieve-inner-hits.md).
 
     See [Considerations for choosing whether to minimize roundtrips in a {{ccs}}](#ccs-min-roundtrips) to learn how this option works.
 
@@ -1047,19 +1047,19 @@ Here’s how {{ccs}} works when you minimize network roundtrips.
 
 1. You send a {{ccs}} request to your local cluster. A coordinating node in that cluster receives and parses the request.
 
-    ![ccs min roundtrip client request](../../images/elasticsearch-reference-ccs-min-roundtrip-client-request.svg "")
+    ![ccs min roundtrip client request](/solutions/images/elasticsearch-reference-ccs-min-roundtrip-client-request.svg "")
 
 2. The coordinating node sends a single search request to each cluster, including the local cluster. Each cluster performs the search request independently, applying its own cluster-level settings to the request.
 
-    ![ccs min roundtrip cluster search](../../images/elasticsearch-reference-ccs-min-roundtrip-cluster-search.svg "")
+    ![ccs min roundtrip cluster search](/solutions/images/elasticsearch-reference-ccs-min-roundtrip-cluster-search.svg "")
 
 3. Each remote cluster sends its search results back to the coordinating node.
 
-    ![ccs min roundtrip cluster results](../../images/elasticsearch-reference-ccs-min-roundtrip-cluster-results.svg "")
+    ![ccs min roundtrip cluster results](/solutions/images/elasticsearch-reference-ccs-min-roundtrip-cluster-results.svg "")
 
 4. After collecting results from each cluster, the coordinating node returns the final results in the {{ccs}} response.
 
-    ![ccs min roundtrip client response](../../images/elasticsearch-reference-ccs-min-roundtrip-client-response.svg "")
+    ![ccs min roundtrip client response](/solutions/images/elasticsearch-reference-ccs-min-roundtrip-client-response.svg "")
 
 
 
@@ -1069,15 +1069,15 @@ Here’s how {{ccs}} works when you don’t minimize network roundtrips.
 
 1. You send a {{ccs}} request to your local cluster. A coordinating node in that cluster receives and parses the request.
 
-    ![ccs min roundtrip client request](../../images/elasticsearch-reference-ccs-min-roundtrip-client-request.svg "")
+    ![ccs min roundtrip client request](/solutions/images/elasticsearch-reference-ccs-min-roundtrip-client-request.svg "")
 
 2. The coordinating node sends a "search shards" transport layer request to each remote cluster to have them to perform a "can match" search to determine which shards on each cluster should be searched.
 
-    ![ccs min roundtrip cluster search](../../images/elasticsearch-reference-ccs-min-roundtrip-cluster-search.svg "")
+    ![ccs min roundtrip cluster search](/solutions/images/elasticsearch-reference-ccs-min-roundtrip-cluster-search.svg "")
 
 3. Each remote cluster sends its response back to the coordinating node. This response contains information about the indices and shards the {{ccs}} request will be executed on.
 
-    ![ccs min roundtrip cluster results](../../images/elasticsearch-reference-ccs-min-roundtrip-cluster-results.svg "")
+    ![ccs min roundtrip cluster results](/solutions/images/elasticsearch-reference-ccs-min-roundtrip-cluster-results.svg "")
 
 4. The coordinating node sends a search request to each shard, including those in its own cluster. Each shard performs the search request independently.
 
@@ -1087,15 +1087,15 @@ Here’s how {{ccs}} works when you don’t minimize network roundtrips.
     ::::
 
 
-    ![ccs dont min roundtrip shard search](../../images/elasticsearch-reference-ccs-dont-min-roundtrip-shard-search.svg "")
+    ![ccs dont min roundtrip shard search](/solutions/images/elasticsearch-reference-ccs-dont-min-roundtrip-shard-search.svg "")
 
 5. Each shard sends its search results back to the coordinating node.
 
-    ![ccs dont min roundtrip shard results](../../images/elasticsearch-reference-ccs-dont-min-roundtrip-shard-results.svg "")
+    ![ccs dont min roundtrip shard results](/solutions/images/elasticsearch-reference-ccs-dont-min-roundtrip-shard-results.svg "")
 
 6. After collecting results from each cluster, the coordinating node returns the final results in the {{ccs}} response.
 
-    ![ccs min roundtrip client response](../../images/elasticsearch-reference-ccs-min-roundtrip-client-response.svg "")
+    ![ccs min roundtrip client response](/solutions/images/elasticsearch-reference-ccs-min-roundtrip-client-response.svg "")
 
 
 

@@ -2,6 +2,8 @@
 navigation_title: "Universal Profiling"
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/profiling-troubleshooting.html
+applies_to:
+  stack: all
 ---
 
 

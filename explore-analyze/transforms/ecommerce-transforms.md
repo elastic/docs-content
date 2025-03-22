@@ -22,16 +22,16 @@ mapped_pages:
    For example, you might want to group the data by product ID and calculate the total number of sales for each product and its average price. Alternatively, you might want to look at the behavior of individual customers and calculate how much each customer spent in total and how many different categories of products they purchased. Or you might want to take the currencies or geographies into consideration. What are the most interesting ways you can transform and interpret this data?
 
    Go to **Management** > **Stack Management** > **Data** > **Transforms** in {{kib}} and use the wizard to create a {{transform}}:
-   :::{image} ../../images/elasticsearch-reference-ecommerce-pivot1.png
+   :::{image} /explore-analyze/images/elasticsearch-reference-ecommerce-pivot1.png
    :alt: Creating a simple {{transform}} in {{kib}}
-   :class: screenshot
+   :screenshot:
    :::
 
-   Group the data by customer ID and add one or more aggregations to learn more about each customer’s orders. For example, let’s calculate the sum of products they purchased, the total price of their purchases, the maximum number of products that they purchased in a single order, and their total number of orders. We’ll accomplish this by using the [`sum` aggregation](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/aggregations/search-aggregations-metrics-sum-aggregation.md) on the `total_quantity` and `taxless_total_price` fields, the [`max` aggregation](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/aggregations/search-aggregations-metrics-max-aggregation.md) on the `total_quantity` field, and the [`cardinality` aggregation](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/aggregations/search-aggregations-metrics-cardinality-aggregation.md) on the `order_id` field:
+   Group the data by customer ID and add one or more aggregations to learn more about each customer’s orders. For example, let’s calculate the sum of products they purchased, the total price of their purchases, the maximum number of products that they purchased in a single order, and their total number of orders. We’ll accomplish this by using the [`sum` aggregation](elasticsearch://reference/data-analysis/aggregations/search-aggregations-metrics-sum-aggregation.md) on the `total_quantity` and `taxless_total_price` fields, the [`max` aggregation](elasticsearch://reference/data-analysis/aggregations/search-aggregations-metrics-max-aggregation.md) on the `total_quantity` field, and the [`cardinality` aggregation](elasticsearch://reference/data-analysis/aggregations/search-aggregations-metrics-cardinality-aggregation.md) on the `order_id` field:
 
-   :::{image} ../../images/elasticsearch-reference-ecommerce-pivot2.png
+   :::{image} /explore-analyze/images/elasticsearch-reference-ecommerce-pivot2.png
    :alt: Adding multiple aggregations to a {{transform}} in {{kib}}
-   :class: screenshot
+   :screenshot:
    :::
 
    ::::{tip}
@@ -94,15 +94,15 @@ mapped_pages:
    1. Supply a {{transform}} ID, the name of the destination index and optionally a description. If the destination index does not exist, it will be created automatically when you start the {{transform}}.
    2. Decide whether you want the {{transform}} to run once or continuously. Since this sample data index is unchanging, let’s use the default behavior and just run the {{transform}} once. If you want to try it out, however, go ahead and click on **Continuous mode**. You must choose a field that the {{transform}} can use to check which entities have changed. In general, it’s a good idea to use the ingest timestamp field. In this example, however, you can use the `order_date` field.
    3. Optionally, you can configure a retention policy that applies to your {{transform}}. Select a date field that is used to identify old documents in the destination index and provide a maximum age. Documents that are older than the configured value are removed from the destination index.
-   :::{image} ../../images/elasticsearch-reference-ecommerce-pivot3.png
+   :::{image} /explore-analyze/images/elasticsearch-reference-ecommerce-pivot3.png
    :alt: Adding transfrom ID and retention policy to a {{transform}} in {{kib}}
-   :class: screenshot
+   :screenshot:
    :::
 
    In {{kib}}, before you finish creating the {{transform}}, you can copy the preview {{transform}} API request to your clipboard. This information is useful later when you’re deciding whether you want to manually create the destination index.
-   :::{image} ../../images/elasticsearch-reference-ecommerce-pivot4.png
+   :::{image} /explore-analyze/images/elasticsearch-reference-ecommerce-pivot4.png
    :alt: Copy the Dev Console statement of the transform preview to the clipboard
-   :class: screenshot
+   :screenshot:
    :::
 
    If you prefer, you can use the [create {{transforms}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-transform-put-transform).
@@ -171,7 +171,7 @@ mapped_pages:
    ::::
 
 5. Optional: Create the destination index.
-   If the destination index does not exist, it is created the first time you start your {{transform}}. A pivot transform deduces the mappings for the destination index from the source indices and the transform aggregations. If there are fields in the destination index that are derived from scripts (for example, if you use [`scripted_metrics`](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/aggregations/search-aggregations-metrics-scripted-metric-aggregation.md) or [`bucket_scripts`](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/aggregations/search-aggregations-pipeline-bucket-script-aggregation.md) aggregations), they’re created with [dynamic mappings](../../manage-data/data-store/mapping/dynamic-mapping.md). You can use the preview {{transform}} API to preview the mappings it will use for the destination index. In {{kib}}, if you copied the API request to your clipboard, paste it into the console, then refer to the `generated_dest_index` object in the API response.
+   If the destination index does not exist, it is created the first time you start your {{transform}}. A pivot transform deduces the mappings for the destination index from the source indices and the transform aggregations. If there are fields in the destination index that are derived from scripts (for example, if you use [`scripted_metrics`](elasticsearch://reference/data-analysis/aggregations/search-aggregations-metrics-scripted-metric-aggregation.md) or [`bucket_scripts`](elasticsearch://reference/data-analysis/aggregations/search-aggregations-pipeline-bucket-script-aggregation.md) aggregations), they’re created with [dynamic mappings](../../manage-data/data-store/mapping/dynamic-mapping.md). You can use the preview {{transform}} API to preview the mappings it will use for the destination index. In {{kib}}, if you copied the API request to your clipboard, paste it into the console, then refer to the `generated_dest_index` object in the API response.
    ::::{note}
    {{transforms-cap}} might have more configuration options provided by the APIs than the options available in {{kib}}. For example, you can set an ingest pipeline for `dest` by calling the [Create {{transform}}](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-transform-put-transform). For all the {{transform}} configuration options, refer to the [documentation](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-transform).
    ::::
@@ -294,9 +294,9 @@ mapped_pages:
    ::::
 
    You can start, stop, reset, and manage {{transforms}} in {{kib}}:
-   :::{image} ../../images/elasticsearch-reference-manage-transforms.png
+   :::{image} /explore-analyze/images/elasticsearch-reference-manage-transforms.png
    :alt: Managing {{transforms}} in {{kib}}
-   :class: screenshot
+   :screenshot:
    :::
 
    Alternatively, you can use the [start {{transforms}}](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-transform-start-transform), [stop {{transforms}}](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-transform-stop-transform) and [reset {{transforms}}](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-transform-reset-transform) APIs.
@@ -316,16 +316,16 @@ mapped_pages:
 
 7. Explore the data in your new index.
    For example, use the **Discover** application in {{kib}}:
-   :::{image} ../../images/elasticsearch-reference-ecommerce-results.png
+   :::{image} /explore-analyze/images/elasticsearch-reference-ecommerce-results.png
    :alt: Exploring the new index in {{kib}}
-   :class: screenshot
+   :screenshot:
    :::
 
 8. Optional: Create another {{transform}}, this time using the `latest` method.
    This method populates the destination index with the latest documents for each unique key value. For example, you might want to find the latest orders (sorted by the `order_date` field) for each customer or for each country and region.
-   :::{image} ../../images/elasticsearch-reference-ecommerce-latest1.png
+   :::{image} /explore-analyze/images/elasticsearch-reference-ecommerce-latest1.png
    :alt: Creating a latest {{transform}} in {{kib}}
-   :class: screenshot
+   :screenshot:
    :::
 
    ::::{dropdown} API example

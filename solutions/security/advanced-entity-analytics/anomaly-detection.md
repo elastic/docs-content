@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/machine-learning.html
   - https://www.elastic.co/guide/en/serverless/current/security-machine-learning.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Anomaly detection
@@ -16,9 +20,9 @@ You can view the details of detected anomalies within the `Anomalies` table widg
 
 If you have the appropriate role, you can use the **ML job settings** interface on the **Alerts**, **Rules**, and **Rule Exceptions** pages to view, start, and stop {{elastic-sec}} {{ml}} jobs.
 
-:::{image} ../../../images/security-ml-ui.png
+:::{image} /solutions/images/security-ml-ui.png
 :alt: ML job settings UI on the Alerts page
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -26,18 +30,18 @@ If you have the appropriate role, you can use the **ML job settings** interface 
 
 You can also check the status of {{ml}} detection rules, and start or stop their associated {{ml}} jobs:
 
-* On the **Rules** page, the **Last response** column displays the rule’s current [status](/solutions/security/detect-and-alert/manage-detection-rules.md#rule-status). An indicator icon (![Error icon from rules table](../../../images/security-rules-table-error-icon.png "")) also appears if a required {{ml}} job isn’t running. Click the icon to list the affected jobs, then click **Visit rule details page to investigate** to open the rule’s details page.
+* On the **Rules** page, the **Last response** column displays the rule’s current [status](/solutions/security/detect-and-alert/manage-detection-rules.md#rule-status). An indicator icon (![Error icon from rules table](/solutions/images/security-rules-table-error-icon.png "title =20x20")) also appears if a required {{ml}} job isn’t running. Click the icon to list the affected jobs, then click **Visit rule details page to investigate** to open the rule’s details page.
 
-    :::{image} ../../../images/security-rules-table-ml-job-error.png
+    :::{image} /solutions/images/security-rules-table-ml-job-error.png
     :alt: Rules table {{ml}} job error
-    :class: screenshot
+    :screenshot:
     :::
 
 * On a rule’s details page, check the **Definition** section to confirm whether the required {{ml}} jobs are running. Switch the toggles on or off to run or stop each job.
 
-    :::{image} ../../../images/security-rules-ts-ml-job-stopped.png
+    :::{image} /solutions/images/security-rules-ts-ml-job-stopped.png
     :alt: Rule details page with ML job stopped
-    :class: screenshot
+    :screenshot:
     :::
 
 
@@ -56,7 +60,7 @@ Or
 
 * You install one or more of the [Advanced Analytics integrations](/solutions/security/advanced-entity-analytics/behavioral-detection-use-cases.md#ml-integrations).
 
-[Prebuilt job reference](asciidocalypse://docs/docs-content/docs/reference/security/prebuilt-jobs.md) describes all available {{ml}} jobs and lists which ECS fields are required on your hosts when you are not using {{beats}} or the {{agent}} to ship your data. For information on tuning anomaly results to reduce the number of false positives, see [Optimizing anomaly results](/solutions/security/advanced-entity-analytics/optimizing-anomaly-results.md).
+[](/reference/data-analysis/machine-learning/ootb-ml-jobs-siem.md) describes all available {{ml}} jobs and lists which ECS fields are required on your hosts when you are not using {{beats}} or the {{agent}} to ship your data. For information on tuning anomaly results to reduce the number of false positives, see [Optimizing anomaly results](/solutions/security/advanced-entity-analytics/optimizing-anomaly-results.md).
 
 ::::{note}
 Machine learning jobs look back and analyze two weeks of historical data prior to the time they are enabled. After jobs are enabled, they continuously analyze incoming data. When jobs are stopped and restarted within the two-week time frame, previously analyzed data is not processed again.

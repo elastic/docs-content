@@ -26,7 +26,7 @@ When you enable {{ilm}} for {{beats}} or the {{ls}} {{es}} output plugin, the ne
 
 To create a lifecycle policy from {{kib}}, open the menu and go to **Stack Management > Index Lifecycle Policies**. Click **Create policy**.
 
-![Create policy page](../../../images/elasticsearch-reference-create-policy.png "")
+![Create policy page](/manage-data/images/elasticsearch-reference-create-policy.png "")
 
 You specify the lifecycle phases for the policy and the actions to perform in each phase.
 
@@ -80,7 +80,7 @@ An `index.lifecycle.rollover_alias` setting is only required if using {{ilm}} wi
 
 You can use the {{kib}} Create template wizard to create a template. To access the wizard, open the menu and go to **Stack Management > Index Management**. In the **Index Templates** tab, click **Create template**.
 
-![Create template page](../../../images/elasticsearch-reference-create-template-wizard-my_template.png "")
+![Create template page](/manage-data/images/elasticsearch-reference-create-template-wizard-my_template.png "")
 
 The wizard invokes the [create or update index template API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-index-template) to add templates to a cluster.
 
@@ -205,7 +205,7 @@ To switch an index’s lifecycle policy, follow these steps:
 
 2. The remove policy API removes all {{ilm-init}} metadata from the index and doesn’t consider the index’s lifecycle status. This can leave indices in an undesired state.
 
-    For example, the [`forcemerge`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-lifecycle-actions/ilm-forcemerge.md) action temporarily closes an index before reopening it. Removing an index’s {{ilm-init}} policy during a `forcemerge` can leave the index closed indefinitely.
+    For example, the [`forcemerge`](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-forcemerge.md) action temporarily closes an index before reopening it. Removing an index’s {{ilm-init}} policy during a `forcemerge` can leave the index closed indefinitely.
 
     After policy removal, use the [get index API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get) to check an index’s state . Target a data stream or alias to get the state of all its indices.
 

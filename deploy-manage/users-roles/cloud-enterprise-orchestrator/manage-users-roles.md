@@ -21,18 +21,18 @@ Implementing RBAC in your environment benefits you in several ways:
     * Integrating with third-party authentication providers like [Active Directory](active-directory.md), [LDAP](ldap.md) or [SAML](saml.md).
 
 ::::{tip}
-This topic describes implementing RBAC at the {{ece}} installation level, which can be used to access the Cloud UI, and which can be set up to provide SSO capabilities to access deployments orchestrated by your {{ece}} installation. 
+This topic describes implementing RBAC at the {{ece}} installation level, which can be used to access the Cloud UI, and which can be set up to provide SSO capabilities to access deployments orchestrated by your {{ece}} installation.
 
 If you want to manage access to each deployment individually, then refer to [](/deploy-manage/users-roles/cluster-or-deployment-auth.md).
 ::::
 
 ::::{important}
-With RBAC, interacting with API endpoints now requires a [bearer token](asciidocalypse://docs/cloud/docs/reference/cloud-enterprise/ece-api-command-line.md) or [API key](../../api-keys/elastic-cloud-enterprise-api-keys.md#ece-api-keys).
+With RBAC, interacting with API endpoints now requires a [bearer token](cloud://reference/cloud-enterprise/ece-api-command-line.md) or [API key](../../api-keys/elastic-cloud-enterprise-api-keys.md#ece-api-keys).
 ::::
 
 ## Before you begin [ece_before_you_begin_8]
 
-To prepare for RBAC, you should review the Elastic Cloud Enterprise [limitations and known issues](asciidocalypse://docs/cloud/docs/release-notes/cloud-enterprise/known-issues.md).
+To prepare for RBAC, you should review the Elastic Cloud Enterprise [limitations and known issues](cloud://release-notes/cloud-enterprise/known-issues.md).
 
 
 ## Available roles and permissions [ece-user-role-permissions]
@@ -64,7 +64,7 @@ We strongly recommend using three availability zones with at least 1 GB {{es}} n
 1. [Log into the Cloud UI](/deploy-manage/deploy/cloud-enterprise/log-into-cloud-ui.md).
 2. Go to **Deployments** a select the **security-cluster**.
 3. Configure regular [snapshots](/deploy-manage/tools/snapshot-and-restore/create-snapshots.md) of the security deployment. This is critical if you plan to create any native users.
-4. Optional: [Enable monitoring](/deploy-manage/monitor/stack-monitoring/ece-stack-monitoring.md) on the security deployment to a dedicated monitoring deployment.
+4. Optional: [Enable monitoring](/deploy-manage/monitor/stack-monitoring/ece-ech-stack-monitoring.md) on the security deployment to a dedicated monitoring deployment.
 
 If you have authentication issues, you check out the security deployment {{es}} [logs](/deploy-manage/monitor/logging-configuration.md).
 

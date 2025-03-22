@@ -50,18 +50,18 @@ To get the best results from {{ml}} analytics, you must understand your data. Yo
 6. Optional: You can change the random sampling behavior, which affects the number of documents per shard that are used in the {{data-viz}}. You can use automatic random sampling that balances accuracy and speed, manual sampling where you can chose a value for the sampling percentage, or you can turn the feaure off to use the full data set. There is a relatively small number of documents in the {{kib}} sample data, so you can turn random sampling off. For larger data sets, keep in mind that using a large sample size increases query run times and increases the load on the cluster.
 7. Explore the fields in the {{data-viz}}.
 
-   You can filter the list by field names or [field types](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/field-data-types.md). The {{data-viz}} indicates how many of the documents in the sample for the selected time period contain each field.
+   You can filter the list by field names or [field types](elasticsearch://reference/elasticsearch/mapping-reference/field-data-types.md). The {{data-viz}} indicates how many of the documents in the sample for the selected time period contain each field.
 
    In particular, look at the `clientip`, `response.keyword`, and `url.keyword` fields, since we’ll use them in our {{anomaly-jobs}}. For these fields, the {{data-viz}} provides the number of distinct values, a list of the top values, and the number and percentage of documents that contain the field. For example:
-   :::{image} ../../../images/machine-learning-ml-gs-data-keyword.jpg
+   :::{image} /explore-analyze/images/machine-learning-ml-gs-data-keyword.jpg
    :alt: {{data-viz}} output for ip and keyword fields
-   :class: screenshot
+   :screenshot:
    :::
 
    For numeric fields, the {{data-viz}} provides information about the minimum, median, maximum, and top values, the number of distinct values, and their distribution. You can use the distribution chart to get a better idea of how the values in the data are clustered. For example:
-   :::{image} ../../../images/machine-learning-ml-gs-data-metric.jpg
+   :::{image} /explore-analyze/images/machine-learning-ml-gs-data-metric.jpg
    :alt: {{data-viz}} for sample web logs
-   :class: screenshot
+   :screenshot:
    :::
 
 ::::{tip}
@@ -115,9 +115,9 @@ After the {{dfeeds}} are started and the {{anomaly-jobs}} have processed some da
 Depending on the capacity of your machine, you might need to wait a few seconds for the {{ml}} analysis to generate initial results.
 ::::
 
-:::{image} ../../../images/machine-learning-ml-gs-web-results.jpg
+:::{image} /explore-analyze/images/machine-learning-ml-gs-web-results.jpg
 :alt: Create jobs for the sample web logs
-:class: screenshot
+:screenshot:
 :::
 
 The {{ml-features}} analyze the input stream of data, model its behavior, and perform analysis based on the detectors in each job. When an event occurs outside of the model, that event is identified as an anomaly. You can immediately see that all three jobs have found anomalies, which are indicated by red blocks in the swim lanes for each job.
@@ -134,9 +134,9 @@ Let’s start by looking at this simple job in the **Single Metric Viewer**:
 2. Click the chart icon in the **Actions** column for your `low_request_rate` job to view its results in the **Single Metric Viewer**.
 3. Use the relative mode of the date picker to select a start date one week in the past and an end date one month in the future to cover the majority of the analyzed data points.
 
-:::{image} ../../../images/machine-learning-ml-gs-job1-analysis.jpg
+:::{image} /explore-analyze/images/machine-learning-ml-gs-job1-analysis.jpg
 :alt: Single Metric Viewer for low_request_rate job
-:class: screenshot
+:screenshot:
 :::
 
 This view contains a chart that represents the actual and expected values over time. It is available only if the job has `model_plot_config` enabled. It can display only a single time series.
@@ -158,9 +158,9 @@ You might notice a high spike in the time series. It’s not highlighted as an a
 
 For each anomaly, you can see key details such as the time, the actual and expected ("typical") values, and their probability in the **Anomalies** section of the viewer. For example:
 
-:::{image} ../../../images/machine-learning-ml-gs-job1-anomalies.jpg
+:::{image} /explore-analyze/images/machine-learning-ml-gs-job1-anomalies.jpg
 :alt: Single Metric Viewer Anomalies for low_request_rate job
-:class: screenshot
+:screenshot:
 :::
 
 In the **Actions** column, there are additional options, such as **Raw data** which generates a query for the relevant documents in **Discover**. You can optionally add more links in the actions menu with [custom URLs](ml-configuring-url.md).
@@ -171,9 +171,9 @@ The **Anomaly explanation** section gives you further insights about each anomal
 
 You can optionally annotate your job results by drag-selecting a period of time in the **Single Metric Viewer** and adding a description. Annotations are notes that refer to events in a specific time period. They can be created by the user or generated automatically by the {{anomaly-job}} to reflect model changes and noteworthy occurrences.
 
-:::{image} ../../../images/machine-learning-ml-gs-user-annotation.jpg
+:::{image} /explore-analyze/images/machine-learning-ml-gs-user-annotation.jpg
 :alt: A user annotation in the Single Metric Viewer
-:class: screenshot
+:screenshot:
 :::
 
 After you have identified anomalies, often the next step is to try to determine the context of those situations. For example, are there other factors that are contributing to the problem? Are the anomalies confined to particular applications or servers? You can begin to troubleshoot these situations by layering additional jobs or creating multi-metric jobs.
@@ -198,36 +198,36 @@ Let’s start by looking at the `response_code_rates` job in the **Anomaly Explo
 
 For this particular job, you can choose to see separate swim lanes for each client IP or response code. For example:
 
-:::{image} ../../../images/machine-learning-ml-gs-job2-explorer.jpg
+:::{image} /explore-analyze/images/machine-learning-ml-gs-job2-explorer.jpg
 :alt: Anomaly explorer for response_code_rates job
-:class: screenshot
+:screenshot:
 :::
 
 Since the job uses `response.keyword` as its *partition field*, the analysis is segmented such that you have completely different baselines for each distinct value of that field. By looking at temporal patterns on a per entity basis, you might spot things that might have otherwise been hidden in the lumped view.
 
 Under the anomaly timeline, there is a section that contains annotations. You can filter the type of events by using the selector on the right side of the **Annotations** section.
 
-:::{image} ../../../images/machine-learning-ml-gs-annotations.jpg
+:::{image} /explore-analyze/images/machine-learning-ml-gs-annotations.jpg
 :alt: Annotations section in the Anomaly Explorer
-:class: screenshot
+:screenshot:
 :::
 
 On the left side of the **Anomaly Explorer**, there is a list of the top influencers for all of the detected anomalies in that same time period. The list includes maximum anomaly scores, which in this case are aggregated for each influencer, for each bucket, across all detectors. There is also a total sum of the anomaly scores for each influencer. You can use this list to help you narrow down the contributing factors and focus on the most anomalous entities.
 
 Click on a section in the swim lanes to obtain more information about the anomalies in that time period. For example, click on the red section in the swim lane for the `response.keyword` value of `404`:
 
-:::{image} ../../../images/machine-learning-ml-gs-job2-explorer-anomaly.jpg
+:::{image} /explore-analyze/images/machine-learning-ml-gs-job2-explorer-anomaly.jpg
 :alt: Anomaly charts for the response_code_rates job
-:class: screenshot
+:screenshot:
 :::
 
 You can see exact times when anomalies occurred. If there are multiple detectors or metrics in the job, you can see which caught the anomaly. You can also switch to viewing this time series in the **Single Metric Viewer** by clicking the **View Series** button in the **Actions** menu.
 
 Below the charts, there is a table that provides more information, such as the typical and actual values and the influencers that contributed to the anomaly. For example:
 
-:::{image} ../../../images/machine-learning-ml-gs-job2-explorer-table.jpg
+:::{image} /explore-analyze/images/machine-learning-ml-gs-job2-explorer-table.jpg
 :alt: Anomaly tables for the response_code_rates job
-:class: screenshot
+:screenshot:
 :::
 
 If your job has multiple detectors, the table aggregates the anomalies to show the highest severity anomaly per detector and entity, which is the field value that is displayed in the **found for** column. To view all the anomalies without any aggregation, set the **Interval** to `Show all`.
@@ -244,18 +244,18 @@ The final sample job (`url_scanning`) is a *population {{anomaly-job}}*. As we s
 
 If you examine the results from the `url_scanning` {{anomaly-job}} in the **Anomaly Explorer**, you’ll notice its charts have a different format. For example:
 
-:::{image} ../../../images/machine-learning-ml-gs-job3-explorer.jpg
+:::{image} /explore-analyze/images/machine-learning-ml-gs-job3-explorer.jpg
 :alt: Anomaly charts for the url_scanning job
-:class: screenshot
+:screenshot:
 :::
 
 In this case, the metrics for each client IP are analyzed relative to other client IPs in each bucket and we can once again see that the `30.156.16.164` client IP is behaving abnormally.
 
 If you want to play with another example of a population {{anomaly-job}}, add the sample eCommerce orders data set. Its `high_sum_total_sales` job determines which customers have made unusual amounts of purchases relative to other customers in each bucket of time. In this example, there are anomalous events found for two customers:
 
-:::{image} ../../../images/machine-learning-ml-gs-job4-explorer.jpg
+:::{image} /explore-analyze/images/machine-learning-ml-gs-job4-explorer.jpg
 :alt: Anomaly charts for the high_sum_total_sales job
-:class: screenshot
+:screenshot:
 :::
 
 ## Create forecasts [sample-data-forecasts]
@@ -266,29 +266,29 @@ To create a forecast in {{kib}}:
 
 1. View your job results (for example, for the `low_request_rate` job) in the **Single Metric Viewer**. To find that view, click the **View series** button in the **Actions** column on the **Anomaly Detection** page.
 2. Click **Forecast**.
-   :::{image} ../../../images/machine-learning-ml-gs-forecast.png
+   :::{image} /explore-analyze/images/machine-learning-ml-gs-forecast.png
    :alt: Create a forecast from the Single Metric Viewer
-   :class: screenshot
+   :screenshot:
    :::
 
-3. Specify a duration for your forecast. This value indicates how far to extrapolate beyond the last record that was processed. You must use [time units](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/api-conventions.md#time-units). In this example, the duration is one week (`1w`):
-   :::{image} ../../../images/machine-learning-ml-gs-duration.png
+3. Specify a duration for your forecast. This value indicates how far to extrapolate beyond the last record that was processed. You must use [time units](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#time-units). In this example, the duration is one week (`1w`):
+   :::{image} /explore-analyze/images/machine-learning-ml-gs-duration.png
    :alt: Specify a duration of 1w
-   :class: screenshot
+   :screenshot:
    :::
 
 4. View the forecast in the **Single Metric Viewer**:
-   :::{image} ../../../images/machine-learning-ml-gs-forecast-results.png
+   :::{image} /explore-analyze/images/machine-learning-ml-gs-forecast-results.png
    :alt: View a forecast from the Single Metric Viewer
-   :class: screenshot
+   :screenshot:
    :::
 
    The yellow line in the chart represents the predicted data values. The shaded yellow area represents the bounds for the predicted values, which also gives an indication of the confidence of the predictions. Note that the bounds generally increase with time (that is to say, the confidence levels decrease), since you are forecasting further into the future. Eventually if the confidence levels are too low, the forecast stops.
 
 5. Optional: Compare the forecast to actual data.
-   :::{image} ../../../images/machine-learning-ml-gs-forecast-actual.png
+   :::{image} /explore-analyze/images/machine-learning-ml-gs-forecast-actual.png
    :alt: View a forecast over actual data in the Single Metric Viewer
-   :class: screenshot
+   :screenshot:
    :::
 
 As the job processes more data, you can click the **Forecast** button again and choose to see one of your forecasts overlaid on the actual data. The chart then contains the actual data values, the bounds for the expected values, the anomalies, the forecast data values, and the bounds for the forecast. This combination of actual and forecast data gives you an indication of how well the {{ml-features}} can extrapolate the future behavior of the data.
@@ -313,6 +313,6 @@ If you’re now thinking about where {{anomaly-detect}} can be most impactful fo
 
 In general, it is a good idea to start with single metric {{anomaly-jobs}} for your key performance indicators. After you examine these simple analysis results, you will have a better idea of what the influencers might be. You can create multi-metric jobs and split the data or create more complex analysis functions as necessary. For examples of more complicated configuration options, see [Examples](/explore-analyze/machine-learning/anomaly-detection/anomaly-how-tos.md).
 
-If you want to find more sample jobs, see [Supplied configurations](ootb-ml-jobs.md). In particular, there are sample jobs for [Apache](asciidocalypse://docs/docs-content/docs/reference/data-analysis/machine-learning/ootb-ml-jobs-apache.md) and [Nginx](asciidocalypse://docs/docs-content/docs/reference/data-analysis/machine-learning/ootb-ml-jobs-nginx.md) that are quite similar to the examples in this tutorial.
+If you want to find more sample jobs, see [Supplied configurations](ootb-ml-jobs.md). In particular, there are sample jobs for [Apache](/reference/data-analysis/machine-learning/ootb-ml-jobs-apache.md) and [Nginx](/reference/data-analysis/machine-learning/ootb-ml-jobs-nginx.md) that are quite similar to the examples in this tutorial.
 
 If you encounter problems, we’re here to help. If you are an existing Elastic customer with a support contract, please create a ticket in the [Elastic Support portal](http://support.elastic.co). Or post in the [Elastic forum](https://discuss.elastic.co/).

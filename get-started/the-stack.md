@@ -4,6 +4,7 @@ mapped_urls:
   - https://www.elastic.co/guide/en/kibana/current/introduction.html
   - https://www.elastic.co/guide/en/kibana/current/index.html
   - https://www.elastic.co/guide/en/elastic-stack/current/installing-elastic-stack.html
+  - https://www.elastic.co/guide/en/elastic-stack/current/overview.html
 ---
 
 # The {{stack}}
@@ -16,7 +17,13 @@ $$$kibana-navigation-search$$$
 
 What is the {{stack}}? It’s a fast and highly scalable set of components — {{es}}, {{kib}}, {{beats}}, {{ls}}, and others — that together enable you to securely take data from any source, in any format, and then search, analyze, and visualize it.
 
-You have many options for [deploying the {{stack}}](./deployment-options.md) to suit your needs. You can deploy it on your own hardware, in the cloud, or use a managed service on {{ecloud}}.
+The products in the {{es}} are designed to be used together and releases are synchronized to simplify the installation and upgrade process.
+
+You have many options for deploying the {{stack}} to suit your needs. You can deploy it on your own hardware, in the cloud, or use a managed service on {{ecloud}}.
+
+:::{tip}
+To learn how to deploy {{es}}, {{kib}}, and supporting orchestration technologies, refer to [](/deploy-manage/index.md). To learn how to deploy additional ingest and consume components, refer to the documentation for the component.
+:::
 
 ![Components of the Elastic Stack](../images/stack-components-diagram.svg)
 
@@ -35,7 +42,7 @@ $$$stack-components-agent$$$
 
     {{fleet}} enables you to centrally manage {{agents}} and their policies. Use {{fleet}} to monitor the state of all your {{agents}}, manage agent policies, and upgrade {{agent}} binaries or integrations.
 
-    [Learn more about {{fleet}} and {{agent}}](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/index.md).
+    [Learn more about {{fleet}} and {{agent}}](/reference/fleet/index.md).
 
 
 $$$stack-components-apm$$$
@@ -46,7 +53,7 @@ APM
 $$$stack-components-beats$$$
 
 {{beats}}
-:   {{beats}} are data shippers that you install as agents on your servers to send operational data to {{es}}. {{beats}} are available for many standard observability data scenarios, including audit data, log files and journals, cloud data, availability, metrics, network traffic, and Windows event logs. [Learn more about {{beats}}](asciidocalypse://docs/beats/docs/reference/index.md).
+:   {{beats}} are data shippers that you install as agents on your servers to send operational data to {{es}}. {{beats}} are available for many standard observability data scenarios, including audit data, log files and journals, cloud data, availability, metrics, network traffic, and Windows event logs. [Learn more about {{beats}}](beats://reference/index.md).
 
 $$$stack-components-ingest-pipelines$$$
 
@@ -56,7 +63,7 @@ $$$stack-components-ingest-pipelines$$$
 $$$stack-components-logstash$$$
 
 {{ls}}
-:   {{ls}} is a data collection engine with real-time pipelining capabilities. It can dynamically unify data from disparate sources and normalize the data into destinations of your choice. {{ls}} supports a broad array of input, filter, and output plugins, with many native codecs further simplifying the ingestion process. [Learn more about {{ls}}](asciidocalypse://docs/logstash/docs/reference/index.md).
+:   {{ls}} is a data collection engine with real-time pipelining capabilities. It can dynamically unify data from disparate sources and normalize the data into destinations of your choice. {{ls}} supports a broad array of input, filter, and output plugins, with many native codecs further simplifying the ingestion process. [Learn more about {{ls}}](logstash://reference/index.md).
 
 
 ### Store [_store]
@@ -81,3 +88,20 @@ $$$stack-components-elasticsearch-clients$$$
 {{es}} clients
 :   The clients provide a convenient mechanism to manage API requests and responses to and from {{es}} from popular languages such as Java, Ruby, Go, Python, and others. Both official and community contributed clients are available. [Learn more about the {{es}} clients](https://www.elastic.co/guide/en/elasticsearch/client/index.html).
 
+## Version compatibility
+```{applies_to}
+deployment:
+  self:
+```
+
+:::{include} /deploy-manage/deploy/_snippets/stack-version-compatibility.md
+:::
+
+## Installation order
+```{applies_to}
+deployment:
+  self:
+```
+
+:::{include} /deploy-manage/deploy/_snippets/installation-order.md
+:::

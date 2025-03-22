@@ -8,7 +8,7 @@ mapped_pages:
 
 Distributing copies of the data (index shard replicas) on different nodes can parallelize processing requests thus speeding up search queries. This can be achieved by increasing the number of replica shards up to the maximum value (total number of nodes minus one) which also serves the purpose to protect against hardware failure. If the index has a preferred tier, Elasticsearch will only place the copies of the data for that index on nodes in the target tier.
 
-If a warning is encountered with not enough nodes to allocate all shard replicas, you can influence this behavior by adding more nodes to the cluster (or tier if tiers are in use), or by reducing the [`index.number_of_replicas`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index-modules.md#dynamic-index-number-of-replicas) index setting.
+If a warning is encountered with not enough nodes to allocate all shard replicas, you can influence this behavior by adding more nodes to the cluster (or tier if tiers are in use), or by reducing the [`index.number_of_replicas`](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#dynamic-index-number-of-replicas) index setting.
 
 In order to fix this follow the next steps:
 
@@ -28,9 +28,9 @@ One way to get the replica shards assigned is to add an availability zone. This 
 
 3. Open your deployment’s side navigation menu (placed under the Elastic logo in the upper left corner) and go to **Dev Tools > Console**.
 
-    :::{image} ../../images/elasticsearch-reference-kibana-console.png
+    :::{image} /troubleshoot/images/elasticsearch-reference-kibana-console.png
     :alt: {{kib}} Console
-    :class: screenshot
+    :screenshot:
     :::
 
 
@@ -57,9 +57,9 @@ The response will look like this:
 
 Now that you know the tier, you want to increase the number of nodes in that tier so that the replicas can be allocated. To do this you can either increase the size per zone to increase the number of nodes in the availability zone(s) you were already using, or increase the number of availability zones. Go back to the deployment’s landing page by clicking on the three horizontal bars on the top left of the screen and choosing **Manage this deployment**. On that page click the **Manage** button, and choose **Edit deployment**. Note that you must be logged in to [https://cloud.elastic.co/](https://cloud.elastic.co/) in order to do this. In the {{es}} section, find the tier where the replica shards could not be assigned.
 
-:::{image} ../../images/elasticsearch-reference-ess-advanced-config-data-tiers.png
+:::{image} /troubleshoot/images/elasticsearch-reference-ess-advanced-config-data-tiers.png
 :alt: {{kib}} Console
-:class: screenshot
+:screenshot:
 :::
 
 * Option 1: Increase the size per zone
@@ -71,10 +71,10 @@ Now that you know the tier, you want to increase the number of nodes in that tie
     * Find the **Availability zones** selection. If it is less than 3, you can select a higher number of availability zones for that tier.
 
 
-If it is not possible to increase the size per zone or the number of availability zones, you can reduce the number of replicas of your index data. We’ll achieve this by inspecting the [`index.number_of_replicas`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index-modules.md#dynamic-index-number-of-replicas) index setting index setting and decreasing the configured value.
+If it is not possible to increase the size per zone or the number of availability zones, you can reduce the number of replicas of your index data. We’ll achieve this by inspecting the [`index.number_of_replicas`](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#dynamic-index-number-of-replicas) index setting index setting and decreasing the configured value.
 
 1. Access {{kib}} as described above.
-2. Inspect the [`index.number_of_replicas`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index-modules.md#dynamic-index-number-of-replicas) index setting.
+2. Inspect the [`index.number_of_replicas`](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#dynamic-index-number-of-replicas) index setting.
 
     ```console
     GET /my-index-000001/_settings/index.number_of_replicas
@@ -150,9 +150,9 @@ The response will look like this:
 1. Represents a comma separated list of data tier node roles this index is allowed to be allocated on, the first one in the list being the one with the higher priority i.e. the tier the index is targeting. e.g. in this example the tier preference is `data_warm,data_hot` so the index is targeting the `warm` tier and more nodes with the `data_warm` role are needed in the {{es}} cluster.
 
 
-Alternatively, if adding more nodes to the {{es}} cluster is not desired, inspect the [`index.number_of_replicas`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index-modules.md#dynamic-index-number-of-replicas) index setting and decrease the configured value:
+Alternatively, if adding more nodes to the {{es}} cluster is not desired, inspect the [`index.number_of_replicas`](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#dynamic-index-number-of-replicas) index setting and decrease the configured value:
 
-1. Inspect the [`index.number_of_replicas`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index-modules.md#dynamic-index-number-of-replicas) index setting for the index with unassigned replica shards:
+1. Inspect the [`index.number_of_replicas`](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#dynamic-index-number-of-replicas) index setting for the index with unassigned replica shards:
 
     ```console
     GET /my-index-000001/_settings/index.number_of_replicas
@@ -206,6 +206,5 @@ Alternatively, if adding more nodes to the {{es}} cluster is not desired, inspec
 
 :::::::
 ::::{tip}
-If you’re using Elastic Cloud Hosted, then you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, real-time issue detection and resolution paths. For more information, refer to [Monitor with AutoOps](/deploy-manage/monitor/autoops.md).
-
+If you're using {{ech}}, you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, and real-time issue detection and resolution. For more information, refer to [](/deploy-manage/monitor/autoops.md).
 ::::

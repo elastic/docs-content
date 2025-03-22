@@ -48,9 +48,9 @@ Use **Icon** to symbolize Points as icons.
 
 Available icons
 
-:::{image} ../../../images/kibana-maki-icons.png
+:::{image} /explore-analyze/images/kibana-maki-icons.png
 :alt: maki icons
-:class: screenshot
+:screenshot:
 :::
 
 Custom Icons

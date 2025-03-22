@@ -2,6 +2,9 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/observability/current/collect-data-with-aws-firehose.html
   - https://www.elastic.co/guide/en/serverless/current/collect-data-with-aws-firehose.html
+applies_to:
+  stack:
+  serverless:
 ---
 
 # Quickstart: Collect data with AWS Firehose [collect-data-with-aws-firehose]
@@ -150,9 +153,9 @@ The following table shows the type of data ingested by the supported AWS service
 1. In {{kib}}, go to the **Observability** UI and click **Add Data**.
 2. Under **What do you want to monitor?** select **Cloud**, **AWS**, and then select **AWS Firehose**.
 
-    :::{image} ../../../images/observability-quickstart-aws-firehose-entry-point.png
+    :::{image} /solutions/images/observability-quickstart-aws-firehose-entry-point.png
     :alt: AWS Firehose entry point
-    :class: screenshot
+    :screenshot:
     :::
 
 3. Click **Create Firehose Stream in AWS** to create a CloudFormation stack from the CloudFormation template.
@@ -168,9 +171,9 @@ The following table shows the type of data ingested by the supported AWS service
 2. In your {{obs-serverless}} project, go to **Add Data**.
 3. Under **What do you want to monitor?** select **Cloud**, **AWS**, and then select **AWS Firehose**.
 
-    :::{image} ../../../images/serverless-quickstart-aws-firehose-entry-point.png
+    :::{image} /solutions/images/serverless-quickstart-aws-firehose-entry-point.png
     :alt: AWS Firehose entry point
-    :class: screenshot
+    :screenshot:
     :::
 
 4. Click **Create Firehose Stream in AWS** to create a CloudFormation stack from the CloudFormation template.
@@ -184,16 +187,16 @@ The following table shows the type of data ingested by the supported AWS service
 
 After installation is complete and all relevant data is flowing into Elastic, the **Visualize your data** section allows you to access the different dashboards for the various services.
 
-:::{image} ../../../images/observability-quickstart-aws-firehose-dashboards.png
+:::{image} /solutions/images/observability-quickstart-aws-firehose-dashboards.png
 :alt: AWS Firehose dashboards
-:class: screenshot
+:screenshot:
 :::
 
 Here is an example of the VPC Flow logs dashboard:
 
-:::{image} ../../../images/observability-quickstart-aws-firehose-vpc-flow.png
+:::{image} /solutions/images/observability-quickstart-aws-firehose-vpc-flow.png
 :alt: AWS Firehose VPC flow
-:class: screenshot
+:screenshot:
 :::
 
 Refer to [What is Elastic {{observability}}?](../../../solutions/observability/get-started/what-is-elastic-observability.md) for a description of other useful features.

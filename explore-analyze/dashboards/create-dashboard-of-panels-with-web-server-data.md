@@ -14,7 +14,7 @@ When you’re done, you’ll have a complete overview of the sample web logs dat
 
 :::{image} ../../images/kibana-lens_logsDashboard_8.4.0.png
 :alt: Logs dashboard
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -37,7 +37,7 @@ Open the visualization editor, then make sure the correct fields appear.
 
    :::{image} ../../images/kibana-lens_dataViewDropDown_8.4.0.png
    :alt: Data view dropdown
-   :class: screenshot
+   :screenshot:
    :::
 
 
@@ -51,9 +51,9 @@ To create the visualizations in this tutorial, you’ll use the following fields
 
 Click a field name to view more details, such as its top values and distribution.
 
-:::{image} ../../images/tutorial-field-more-info.gif
+:::{image} /explore-analyze/images/tutorial-field-more-info.gif
 :alt: Clicking a field name to view more details
-:class: screenshot
+:screenshot:
 :width: 50%
 :::
 
@@ -68,14 +68,14 @@ The only number function that you can use with **clientip** is **Unique count**,
 
    :::{image} ../../images/kibana-visualization-type-dropdown-8.16.0.png
    :alt: Visualization type dropdown
-   :class: screenshot
+   :screenshot:
    :::
 
 2. From the **Available fields** list, drag **clientip** to the workspace or layer pane.
 
    :::{image} ../../images/kibana-tutorial-unique-count-of-client-ip-8.16.0.png
    :alt: Metric visualization of the clientip field
-   :class: screenshot
+   :screenshot:
    :::
 
    In the layer pane, **Unique count of clientip** appears because the editor automatically applies the **Unique count** function to the **clientip** field. **Unique count** is the only numeric function that works with IP addresses.
@@ -101,9 +101,9 @@ To visualize the **bytes** field over time:
 
 3. To zoom in on the data, click and drag your cursor across the bars.
 
-   :::{image} ../../images/kibana-lens_end_to_end_3_1_1.gif
+   :::{image} /explore-analyze/images/kibana-lens_end_to_end_3_1_1.gif
    :alt: Zoom in on the data
-   :class: screenshot
+   :screenshot:
    :::
 
 
@@ -118,7 +118,7 @@ To increase the minimum time interval:
 1. In the layer pane, click **timestamp**.
 2. Change the **Minimum interval** to **1d**, then click **Close**.
 
-    You can increase and decrease the minimum interval, but you are unable to decrease the interval below the configured [**Advanced Settings**](asciidocalypse://docs/kibana/docs/reference/advanced-settings.md).
+    You can increase and decrease the minimum interval, but you are unable to decrease the interval below the configured [**Advanced Settings**](kibana://reference/advanced-settings.md).
 
 
 To save space on the dashboard, hide the axis labels.
@@ -127,7 +127,7 @@ To save space on the dashboard, hide the axis labels.
 
    :::{image} ../../images/kibana-line-chart-left-axis-8.16.0.png
    :alt: Left axis menu
-   :class: screenshot
+   :screenshot:
    :width: 50%
    :::
 
@@ -135,7 +135,7 @@ To save space on the dashboard, hide the axis labels.
 
    :::{image} ../../images/kibana-line-chart-bottom-axis-8.16.0.png
    :alt: Bottom axis menu
-   :class: screenshot
+   :screenshot:
    :width: 50%
    :::
 
@@ -143,12 +143,12 @@ To save space on the dashboard, hide the axis labels.
 
 Since you removed the axis labels, add a panel title:
 
-1. Hover over the panel and click ![Settings icon](../../images/kibana-settings-icon-hover-action.png ""). The **Settings** flyout appears.
+1. Hover over the panel and click ![Settings icon](/explore-analyze/images/kibana-settings-icon-hover-action.png ""). The **Settings** flyout appears.
 2. In the **Title** field, enter `Median of bytes`, then click **Apply**.
 
    :::{image} ../../images/kibana-lens_lineChartMetricOverTime_8.4.0.png
    :alt: Line chart that displays metric data over time
-   :class: screenshot
+   :screenshot:
    :width: 50%
    :::
 
@@ -169,7 +169,7 @@ The **Top values** function ranks the unique values of a field by another functi
 
    :::{image} ../../images/kibana-tutorial-top-values-of-field-8.16.0.png
    :alt: Vertical bar chart with top values of request.keyword by most unique visitors
-   :class: screenshot
+   :screenshot:
    :width: 50%
    :::
 
@@ -182,7 +182,7 @@ The chart labels are unable to display because the **request.keyword** field con
 
    :::{image} ../../images/kibana-table-with-request-keyword-and-client-ip-8.16.0.png
    :alt: Table with top values of request.keyword by most unique visitors
-   :class: screenshot
+   :screenshot:
    :width: 50%
    :::
 
@@ -194,7 +194,7 @@ The chart labels are unable to display because the **request.keyword** field con
 
        :::{image} ../../images/kibana-lens_tableTopFieldValues_7.16.png
        :alt: Table that displays the top field values
-       :class: screenshot
+       :screenshot:
        :width: 50%
        :::
 
@@ -229,9 +229,9 @@ Specify the file size ranges:
     * **Ranges** — `10240` → `+∞`
     * **Label** — `Above 10KB`
 
-      :::{image} ../../images/kibana-lens_end_to_end_6_1.png
+      :::{image} /explore-analyze/images/kibana-lens_end_to_end_6_1.png
       :alt: Custom ranges configuration
-      :class: screenshot
+      :screenshot:
       :::
 
 4. From the **Value format** dropdown, select **Bytes (1024)**, then click **Close**.
@@ -242,7 +242,7 @@ To display the values as a percentage of the sum of all values, use the **Pie** 
 
    :::{image} ../../images/kibana-lens_pieChartCompareSubsetOfDocs_7.16.png
    :alt: Pie chart that compares a subset of documents to all documents
-   :class: screenshot
+   :screenshot:
    :width: 50%
    :::
 
@@ -250,7 +250,7 @@ To display the values as a percentage of the sum of all values, use the **Pie** 
 
 Add a panel title:
 
-1. Hover over the panel and click ![Settings icon](../../images/kibana-settings-icon-hover-action.png ""). The **Settings** flyout appears.
+1. Hover over the panel and click ![Settings icon](/explore-analyze/images/kibana-settings-icon-hover-action.png ""). The **Settings** flyout appears.
 2. In the **Title** field, enter `Sum of bytes from large requests`, then click **Apply**.
 
 
@@ -271,7 +271,7 @@ The distribution of a number can help you find patterns. For example, you can an
 
    :::{image} ../../images/kibana-lens_barChartDistributionOfNumberField_7.16.png
    :alt: Bar chart that displays the distribution of a number field
-   :class: screenshot
+   :screenshot:
    :width: 60%
    :::
 
@@ -279,7 +279,7 @@ The distribution of a number can help you find patterns. For example, you can an
 
 Add a panel title:
 
-1. Hover over the panel and click ![Settings icon](../../images/kibana-settings-icon-hover-action.png ""). The **Settings** flyout appears.
+1. Hover over the panel and click ![Settings icon](/explore-analyze/images/kibana-settings-icon-hover-action.png ""). The **Settings** flyout appears.
 2. In the **Title** field, enter `Website traffic`, then click **Apply**.
 
 
@@ -317,9 +317,9 @@ Add the user geography grouping:
 1. From the **Available fields** list, drag **geo.srcdest** to the workspace.
 2. To change the **Group by** order, drag **Top 3 values of geo.srcdest** in the layer pane so that appears first.
 
-   :::{image} ../../images/kibana-lens_end_to_end_7_2.png
+   :::{image} /explore-analyze/images/kibana-lens_end_to_end_7_2.png
    :alt: Treemap visualization
-   :class: screenshot
+   :screenshot:
    :width: 50%
    :::
 
@@ -331,7 +331,7 @@ Remove the documents that do not match the filter criteria:
 
    :::{image} ../../images/kibana-lens_treemapMultiLevelChart_7.16.png
    :alt: Treemap visualization
-   :class: screenshot
+   :screenshot:
    :width: 50%
    :::
 
@@ -339,7 +339,7 @@ Remove the documents that do not match the filter criteria:
 
 Add a panel title:
 
-1. Hover over the panel and click ![Settings icon](../../images/kibana-settings-icon-hover-action.png ""). The **Settings** flyout appears.
+1. Hover over the panel and click ![Settings icon](/explore-analyze/images/kibana-settings-icon-hover-action.png ""). The **Settings** flyout appears.
 2. In the **Title** field, enter `Page views by location and referrer`, then click **Apply**.
 
 
@@ -356,7 +356,7 @@ Decrease the size of the following panels, then move the panels to the first row
 
   :::{image} ../../images/kibana-lens_logsDashboard_8.4.0.png
   :alt: Logs dashboard
-  :class: screenshot
+  :screenshot:
   :::
 
 
@@ -370,6 +370,6 @@ Now that you have a complete overview of your web server data, save the dashboar
 3. Select **Store time with dashboard**.
 4. Click **Save**. You will be identified as the **creator** of the dashboard. If you or another user edit the dashboard, you can also view the **last editor** when checking the dashboard information.
 
-:::{image} ../../images/kibana-dashboard-creator-editor.png
+:::{image} /explore-analyze/images/kibana-dashboard-creator-editor.png
 :alt: Information panel of a dashboard showing its creator and last editor
 :::

@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/asset-criticality.html
   - https://www.elastic.co/guide/en/serverless/current/security-asset-criticality.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Asset criticality [asset-criticality]
@@ -39,31 +43,31 @@ You can view, assign, change, or unassign asset criticality from the following p
 
 * The [host details page](../explore/hosts-page.md#host-details-page) and [user details page](../explore/users-page.md#user-details-page):
 
-    :::{image} ../../../images/security-assign-asset-criticality-host-details.png
+    :::{image} /solutions/images/security-assign-asset-criticality-host-details.png
     :alt: Assign asset criticality from the host details page
-    :class: screenshot
+    :screenshot:
     :::
 
 * The [host details flyout](../explore/hosts-page.md#host-details-flyout) and [user details flyout](../explore/users-page.md#user-details-flyout):
 
-    :::{image} ../../../images/security-assign-asset-criticality-host-flyout.png
+    :::{image} /solutions/images/security-assign-asset-criticality-host-flyout.png
     :alt: Assign asset criticality from the host details flyout
-    :class: screenshot
+    :screenshot:
     :::
 
 * The host details flyout and user details flyout in [Timeline](../investigate/timeline.md):
 
-    :::{image} ../../../images/security-assign-asset-criticality-timeline.png
+    :::{image} /solutions/images/security-assign-asset-criticality-timeline.png
     :alt: Assign asset criticality from the host details flyout in Timeline
-    :class: screenshot
+    :screenshot:
     :::
 
 
 If you have enabled the [entity store](entity-store.md), you can also view asset criticality assignments in the [**Entities** section](../dashboards/entity-analytics-dashboard.md#entity-entities) of the Entity Analytics dashboard:
 
-:::{image} ../../../images/security-entities-section.png
+:::{image} /solutions/images/security-entities-section.png
 :alt: Entities section
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -134,8 +138,8 @@ To view the impact of asset criticality on an entity’s risk score, follow thes
 2. Click **View risk contributions** to open the flyout’s left panel.
 3. In the **Risk contributions** section, verify the entity’s criticality level from the time the alert was generated.
 
-:::{image} ../../../images/security-asset-criticality-impact.png
+:::{image} /solutions/images/security-asset-criticality-impact.png
 :alt: View asset criticality impact on host risk score
-:class: screenshot
+:screenshot:
 :::
 
