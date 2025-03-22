@@ -9,7 +9,7 @@ applies_to:
     self: all
 ---
 
-# Disk usage [tune-for-disk-usage]
+# Tune for disk usage [tune-for-disk-usage]
 
 This page provides strategies to reduce the storage footprint of your Elasticsearch indices. Disk usage is influenced by field mappings, index settings, document structure, and how you manage segments and shards. Use these recommendations to improve compression, eliminate unnecessary data, and optimize storage for your specific use case.
 

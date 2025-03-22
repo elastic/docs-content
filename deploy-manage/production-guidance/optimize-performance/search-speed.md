@@ -9,7 +9,7 @@ applies_to:
     self: all
 ---
 
-# Search speed [tune-for-search-speed]
+# Tune for search speed [tune-for-search-speed]
 
 This page provides guidance on tuning {{es}} for faster search performance. While hardware and system-level settings play an important role, the structure of your documents and the design of your queries often have the biggest impact. Use these recommendations to optimize field mappings, caching behavior, and query design for high-throughput, low-latency search at scale.
 

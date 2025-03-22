@@ -9,7 +9,7 @@ applies_to:
     self: all
 ---
 
-# Indexing speed [tune-for-indexing-speed]
+# Tune for indexing speed [tune-for-indexing-speed]
 
 Elasticsearch offers a wide range of indexing performance optimizations, especially useful for high-throughput ingestion workloads. This page provides practical recommendations to help you maximize indexing speed, from bulk sizing and refresh intervals to hardware and thread management.
 
