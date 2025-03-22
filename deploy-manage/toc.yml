@@ -354,7 +354,7 @@ toc:
       - file: distributed-architecture/kibana-tasks-management.md
   - file: production-guidance.md
     children:
-      - file: production-guidance/getting-ready-for-production-elasticsearch.md
+      - file: production-guidance/elasticsearch-in-production-environments.md
         children:
           - file: production-guidance/availability-and-resilience.md
             children:

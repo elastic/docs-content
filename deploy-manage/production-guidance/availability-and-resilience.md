@@ -24,9 +24,9 @@ Distributed systems like {{es}} are designed to keep working even if some of the
 Each of these HA mechanisms contributes to {{es}}’s resilience and scalability. The appropriate strategy depends on factors such as data criticality, query patterns, and infrastructure constraints. It is up to you to determine the level of resiliency and high availability that best fits your use case. This section provides detailed guidance on designing a production-ready {{es}} deployment that balances availability, performance, and scalability.
 
 ::::{note}
-* In the context of {{es}} deployments, an `availability zone`, or simply `zone`, represents an isolated failure domain within your infrastructure. Depending on the design of your cluster, this could be a physically separate data center, a different section within the same data center, distinct server racks, or logically separated node groups. The goal of using availability zones is to minimize the risk of a single point of failure affecting the entire deployment.
+In the context of {{es}} deployments, an `availability zone`, or simply `zone`, represents an isolated failure domain within your infrastructure. Depending on the design of your cluster, this could be a physically separate data center, a different section within the same data center, distinct server racks, or logically separated node groups. The goal of using availability zones is to minimize the risk of a single point of failure affecting the entire deployment.
 
-* For example, in {{ech}}, availability zones correspond to the cloud provider’s availability zones. Each of these is typically a physically separate data center, ensuring redundancy and fault tolerance at the infrastructure level.
+For example, in {{ech}}, availability zones correspond to the cloud provider’s availability zones. Each of these is typically a physically separate data center, ensuring redundancy and fault tolerance at the infrastructure level.
 ::::
 
 ## Cluster sizes

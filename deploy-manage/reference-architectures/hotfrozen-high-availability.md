@@ -110,6 +110,6 @@ You can [contact us](https://www.elastic.co/contact) for an estimate and recomme
 
 ## Resources and references [hot-frozen-resources]
 
-* [{{es}} - Get ready for production](/deploy-manage/production-guidance/getting-ready-for-production-elasticsearch.md)
+* [{{es}} - Get ready for production](/deploy-manage/production-guidance/elasticsearch-in-production-environments.md)
 * [{{ech}} - Preparing a deployment for production](/deploy-manage/deploy/elastic-cloud/cloud-hosted.md)
 * [Size your shards](/deploy-manage/production-guidance/optimize-performance/size-shards.md)

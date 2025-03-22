@@ -106,7 +106,7 @@ $$$glossary-cloud-ui$$$ Cloud UI
 :   Provides web-based access to manage your {{ece}} installation, supported by the [administration console](/reference/glossary/index.md#glossary-admin-console).
 
 $$$glossary-cluster$$$ cluster
-:   1. A group of one or more connected {{es}} [nodes](/reference/glossary/index.md#glossary-node). See [Clusters, nodes, and shards](/deploy-manage/production-guidance/getting-ready-for-production-elasticsearch.md).
+:   1. A group of one or more connected {{es}} [nodes](/reference/glossary/index.md#glossary-node). See [Clusters, nodes, and shards](/deploy-manage/production-guidance/elasticsearch-in-production-environments.md).
 2. A layer type and display option in the **Maps** application. Clusters display a cluster symbol across a grid on the map, one symbol per grid cluster. The cluster location is the weighted centroid for all documents in the grid cell.
 3. In {{eck}}, it can refer to either an [Elasticsearch cluster](/deploy-manage/maintenance/add-and-remove-elasticsearch-nodes.md) or a Kubernetes cluster depending on the context.
 
@@ -536,7 +536,7 @@ $$$glossary-no-op$$$ no-op
 :   In {{ecloud}}, the application of a rolling update on your deployment without actually applying any configuration changes. This type of update can be useful to resolve certain health warnings.
 
 $$$glossary-node$$$ node
-:   1. A single {{es}} server. One or more nodes can form a [cluster](/reference/glossary/index.md#glossary-cluster). See [Clusters, nodes, and shards](/deploy-manage/production-guidance/getting-ready-for-production-elasticsearch.md).
+:   1. A single {{es}} server. One or more nodes can form a [cluster](/reference/glossary/index.md#glossary-cluster). See [Clusters, nodes, and shards](/deploy-manage/production-guidance/elasticsearch-in-production-environments.md).
 2. In {{eck}}, it can refer to either an [Elasticsearch Node](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-node.html) or a [Kubernetes Node](https://kubernetes.io/docs/concepts/architecture/nodes/) depending on the context. ECK maps an Elasticsearch node to a Kubernetes Pod which can get scheduled onto any available Kubernetes node that can satisfy the [resource requirements](/deploy-manage/deploy/cloud-on-k8s/manage-compute-resources.md) and [node constraints](https://kubernetes.io/docs/concepts/configuration/assign-pod-node/) defined in the [pod template](/deploy-manage/deploy/cloud-on-k8s/customize-pods.md).
 
 $$$NodeSet$$$NodeSet
@@ -581,7 +581,7 @@ $$$glossary-plugin$$$ plugin
 :   A self-contained software package that implements one of the stages in the {{ls}} event processing [pipeline](/reference/glossary/index.md#glossary-pipeline). The list of available plugins includes [input plugins](/reference/glossary/index.md#glossary-input-plugin), [output plugins](/reference/glossary/index.md#glossary-output-plugin), [codec plugins](/reference/glossary/index.md#glossary-codec-plugin), and [filter plugins](/reference/glossary/index.md#glossary-filter-plugin). The plugins are implemented as Ruby [gems](/reference/glossary/index.md#glossary-gem) and hosted on [RubyGems.org](https://rubygems.org). You define the stages of an event processing [pipeline](/reference/glossary/index.md#glossary-pipeline) by configuring plugins.
 
 $$$glossary-primary-shard$$$ primary shard
-:   Lucene instance containing some or all data for an [index](/reference/glossary/index.md#glossary-index). When you index a [document](/reference/glossary/index.md#glossary-document), {{es}} adds the document to primary shards before [replica shards](/reference/glossary/index.md#glossary-replica-shard). See [Clusters, nodes, and shards](/deploy-manage/production-guidance/getting-ready-for-production-elasticsearch.md).
+:   Lucene instance containing some or all data for an [index](/reference/glossary/index.md#glossary-index). When you index a [document](/reference/glossary/index.md#glossary-document), {{es}} adds the document to primary shards before [replica shards](/reference/glossary/index.md#glossary-replica-shard). See [Clusters, nodes, and shards](/deploy-manage/production-guidance/elasticsearch-in-production-environments.md).
 
 $$$glossary-proxy$$$ proxy
 :   A highly available, TLS-enabled proxy layer that routes user requests, mapping cluster IDs that are passed in request URLs for the container to the cluster nodes handling the user requests.
@@ -619,7 +619,7 @@ $$$glossary-remote-cluster$$$ remote cluster
 :   A separate [cluster](/reference/glossary/index.md#glossary-cluster), often in a different data center or locale, that contains [indices](/reference/glossary/index.md#glossary-index) that can be replicated or searched by the [local cluster](/reference/glossary/index.md#glossary-local-cluster). The connection to a remote cluster is unidirectional. See [Remote clusters](/deploy-manage/remote-clusters/remote-clusters-self-managed.md).
 
 $$$glossary-replica-shard$$$ replica shard
-:   Copy of a [primary shard](/reference/glossary/index.md#glossary-primary-shard). Replica shards can improve search performance and resiliency by distributing data across multiple [nodes](/reference/glossary/index.md#glossary-node). See [Clusters, nodes, and shards](/deploy-manage/production-guidance/getting-ready-for-production-elasticsearch.md).
+:   Copy of a [primary shard](/reference/glossary/index.md#glossary-primary-shard). Replica shards can improve search performance and resiliency by distributing data across multiple [nodes](/reference/glossary/index.md#glossary-node). See [Clusters, nodes, and shards](/deploy-manage/production-guidance/elasticsearch-in-production-environments.md).
 
 $$$glossary-roles-token$$$ roles token
 :   Enables a host to join an existing {{ece}} installation and grants permission to hosts to hold certain roles, such as the [allocator](/reference/glossary/index.md#glossary-allocator) role. Used when installing {{ece}} on additional hosts, a roles token helps secure {{ece}} by making sure that only authorized hosts become part of the installation.
@@ -682,7 +682,7 @@ $$$glossary-services-forwarder$$$ services forwarder
 :   Routes data internally in an {{ece}} installation.
 
 $$$glossary-shard$$$ shard
-:   Lucene instance containing some or all data for an [index](/reference/glossary/index.md#glossary-index). {{es}} automatically creates and manages these Lucene instances. There are two types of shards: [primary](/reference/glossary/index.md#glossary-primary-shard) and [replica](/reference/glossary/index.md#glossary-replica-shard). See [Clusters, nodes, and shards](/deploy-manage/production-guidance/getting-ready-for-production-elasticsearch.md).
+:   Lucene instance containing some or all data for an [index](/reference/glossary/index.md#glossary-index). {{es}} automatically creates and manages these Lucene instances. There are two types of shards: [primary](/reference/glossary/index.md#glossary-primary-shard) and [replica](/reference/glossary/index.md#glossary-replica-shard). See [Clusters, nodes, and shards](/deploy-manage/production-guidance/elasticsearch-in-production-environments.md).
 
 $$$glossary-shareable$$$ shareable
 :   A Canvas workpad that can be embedded on any webpage. Shareables enable you to display Canvas visualizations on internal wiki pages or public websites.
