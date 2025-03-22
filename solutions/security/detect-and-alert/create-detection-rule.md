@@ -833,7 +833,7 @@ This option is offered for all rule types except indicator match rules.
 ::::
 
 
-When previewing a rule, you can also examine the {{es}} queries that are submitted when the rule runs. Use this information to identify and troubleshoot potential rule issues and confirm that your rule is retrieving the expected data.data.
+When previewing a rule, you can also examine the {{es}} queries that are submitted when the rule runs. Use this information to identify and troubleshoot potential rule issues and confirm that your rule is retrieving the expected data.
 
 To learn more about your rule’s {{es}} queries, preview its results and do the following:
 
