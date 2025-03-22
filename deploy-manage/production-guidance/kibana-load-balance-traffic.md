@@ -11,15 +11,9 @@ This page provides guidance on scaling {{kib}} by distributing traffic across mu
 
 For scaling considerations related to background tasks, and the alerting framework, refer to [](./kibana-task-manager-scaling-considerations.md), and [](./kibana-alerting-production-considerations.md).
 
-::::{note}
 The configurations provided in this section are required only for self-managed deployments. Orchestration systems automatically apply the necessary settings when multiple Kibana instances belong to the same deployment.
-::::
 
 ## Load balancing across multiple {{kib}} instances [load-balancing-kibana]
-```yaml {applies_to}
-deployment:
-  self: all
-```
 
 To run multiple {{kib}} instances connected to the same {{es}} cluster, you need to adjust the configuration. See the [{{kib}} configuration reference](kibana://reference/configuration-reference) for details on each setting.
 
@@ -70,10 +64,6 @@ When adding multiple {{kib}} instances to the same deployment in {{ech}}, {{ece}
   ```
 
 ## Accessing multiple load-balanced {{kib}} deployments [accessing-load-balanced-kibana] 
-```yaml {applies_to}
-deployment:
-  self: all
-```
 
 To access multiple load-balanced {{kib}} deployments from the same browser, explicitly set `xpack.security.cookieName` to the same value across all {{kib}} instances within the same cluster, and use different values for other clusters.
 
@@ -84,10 +74,6 @@ In this context, a Kibana cluster or deployment refers to multiple Kibana instan
 ::::
 
 ## High availability across multiple {{es}} nodes [high-availability]
-```yaml {applies_to}
-deployment:
-  self: all
-```
 
 {{kib}} can be configured to connect to multiple {{es}} nodes in the same cluster.  In situations where a node becomes unavailable, {{kib}} will transparently connect to an available node and continue operating.  Requests to available hosts will be routed in a round robin fashion (except for Dev Tools which will connect only to the first node available).
 

@@ -10,7 +10,7 @@ applies_to:
     self: all
 ---
 
-# Run Kibana in production [production]
+# Run Kibana in production
 
 How you deploy {{kib}} largely depends on your use case. If you are the only user, you can run {{kib}} on your local machine and configure it to point to whatever {{es}} instance you want to interact with. Conversely, if you have a large number of heavy {{kib}} users, you might need to load balance across multiple {{kib}} instances that are all connected to the same {{es}} cluster or deployment.
 

@@ -27,7 +27,6 @@ If you lose this index, all scheduled alerts and actions are lost.
 ::::
 
 
-
 ## Running background tasks [task-manager-background-tasks]
 
 {{kib}} background tasks are managed as follows:
