@@ -1,14 +1,17 @@
 ---
 mapped_urls:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/full-text-filter-tutorial.html
-navigation_title: "Full-text search and filtering"
+navigation_title: "Search and filter with Query DSL"
 applies_to:
   stack:
   serverless:
 ---
 
-# Tutorial: Full-text search and filtering in {{es}} [full-text-filter-tutorial]
+# Tutorial: Full-text search and filtering with Query DSL [full-text-filter-tutorial]
 
+:::{tip}
+This tutorial presents examples in Query DSL syntax. Refer to [the {{esql}} version](esql-full-text-filter-tutorial.md) for the equivalent examples in {{esql}} syntax.
+:::
 
 This is a hands-on introduction to the basics of [full-text search](full-text.md) with {{es}}, also known as *lexical search*, using the [`_search` API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search) and [Query DSL](../../explore-analyze/query-filter/languages/querydsl.md). You’ll also learn how to filter data, to narrow down search results based on exact criteria.
 
@@ -26,7 +29,9 @@ To achieve these goals we’ll use different Elasticsearch queries to perform fu
 
 ## Requirements [full-text-filter-tutorial-requirements]
 
-You’ll need a running {{es}} cluster, together with {{kib}} to use the Dev Tools API Console. Run the following command in your terminal to set up a [single-node local cluster in Docker](get-started.md):
+You’ll need a running {{es}} cluster, together with {{kib}} to use the Dev Tools API Console. Refer to [choose your deployment type](/deploy-manage/deploy.md#choosing-your-deployment-type) for deployment options.
+
+Want to get started quickly? Run the following command in your terminal to set up a [single-node local cluster in Docker](get-started.md):
 
 ```sh
 curl -fsSL https://elastic.co/start-local | sh
@@ -591,4 +596,3 @@ This tutorial introduced the basics of full-text search and filtering in {{es}}.
 * [Elasticsearch basics — Search and analyze data](../../explore-analyze/query-filter.md): Understand all your options for searching and analyzing data in {{es}}.
 * [Text analysis](full-text/text-analysis-during-search.md): Understand how text is processed for full-text search.
 * [Search your data](../search.md): Learn about more advanced search techniques using the `_search` API, including semantic search.
-

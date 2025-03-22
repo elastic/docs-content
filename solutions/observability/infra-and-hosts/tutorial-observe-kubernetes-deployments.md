@@ -60,7 +60,7 @@ The default deployments include processors, when needed, for enriching events wi
 :alt: Metadata processors for cloud
 :::
 
-For more on these processors, refer to the [`add_cloud_metadata`](/reference/ingestion-tools/fleet/add-cloud-metadata-processor.md) and [`add_host_metadata`](/reference/ingestion-tools/fleet/add_host_metadata-processor.md) documentation.
+For more on these processors, refer to the [`add_cloud_metadata`](/reference/fleet/add-cloud-metadata-processor.md) and [`add_host_metadata`](/reference/fleet/add_host_metadata-processor.md) documentation.
 
 By default, the Kubernetes integration enriches logs and metrics with valuable metadata.
 
@@ -421,7 +421,7 @@ Provide the following information to collect Kubernetes events metrics:
 
 Collecting and parsing Kubernetes container logs is on by default. Containers running within Kubernetes pods publish logs to stdout or stderr. These logs are written to a location known to kubelet. The container parser is enabled by default. You can enable additional parsers in **advanced settings**.
 
-Metadata enrichment is also enabled by default, and is based on the Kubernetes provider. Use the `add_resource_metadata` block of the Kubernetes provider to configure it. Refer to the [Kubernetes provider](/reference/ingestion-tools/fleet/kubernetes-provider.md) docs for more on configuring the provider.
+Metadata enrichment is also enabled by default, and is based on the Kubernetes provider. Use the `add_resource_metadata` block of the Kubernetes provider to configure it. Refer to the [Kubernetes provider](/reference/fleet/kubernetes-provider.md) docs for more on configuring the provider.
 
 Refer to [Kubernetes container logs](https://docs.elastic.co/en/integrations/kubernetes/container-logs) for more on collecting container logs.
 
@@ -466,7 +466,7 @@ After configuring your integration, you need to download and update your manifes
 
 After downloading the manifest, open it and update the `ES_USERNAME` and `ES_PASSWORD` environment variables in the DaemonSet to match your {{es}} credentials.
 
-You can also further modify the manifest to fit your needs. For example, you might want to enable autodiscovery to automatically discover container logs. Refer to the [autodiscovery docs](/reference/ingestion-tools/fleet/elastic-agent-kubernetes-autodiscovery.md) in the {{fleet}} guide for more on enabling autodiscovery in your manifest.
+You can also further modify the manifest to fit your needs. For example, you might want to enable autodiscovery to automatically discover container logs. Refer to the [autodiscovery docs](/reference/fleet/elastic-agent-kubernetes-autodiscovery.md) in the {{fleet}} guide for more on enabling autodiscovery in your manifest.
 
 Once you are ready to deploy your {{agent}}:
 
@@ -483,7 +483,7 @@ Once you are ready to deploy your {{agent}}:
     ```
 
 
-Refer to [Debug standalone Elastic Agents](/reference/ingestion-tools/fleet/debug-standalone-agents.md) if you run into any issues with configuring or installing your {{agent}}.
+Refer to [Debug standalone Elastic Agents](/reference/fleet/debug-standalone-agents.md) if you run into any issues with configuring or installing your {{agent}}.
 
 
 ## Part 3: Explore logs and metrics [monitor-kubernetes-explore]

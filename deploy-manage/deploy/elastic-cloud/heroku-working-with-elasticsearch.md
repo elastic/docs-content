@@ -43,6 +43,6 @@ In this example, the index `my_index` is created dynamically when the first docu
 These examples use the `elastic` user. If you didn’t copy down the password for the `elastic` user, you can [reset the password](/deploy-manage/users-roles/cluster-or-deployment-auth/manage-elastic-user-cloud.md).
 :::
 
-For more examples, refer to the [document APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-document). You can also use [clients](/reference/elasticsearch/clients/index.md) to interact with these APIs.
+For more examples, refer to the [document APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-document). You can also use [clients](/reference/elasticsearch-clients/index.md) to interact with these APIs.
 
 To learn more about working with data in {{es}}, refer to [](/manage-data/index.md).

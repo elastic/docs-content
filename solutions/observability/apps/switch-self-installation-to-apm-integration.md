@@ -25,7 +25,7 @@ Review the [Elastic APM release notes](apm-server://release-notes/index.md) and 
 
 ## Add a {{fleet}} Server [apm-integration-upgrade-2]
 
-{{fleet}} Server is a component of the {{stack}} used to centrally manage {{agent}}s. The APM integration requires a {{fleet}} Server to be running and accessible to your hosts. Add a {{fleet}} Server by following [this guide](/reference/ingestion-tools/fleet/deployment-models.md).
+{{fleet}} Server is a component of the {{stack}} used to centrally manage {{agent}}s. The APM integration requires a {{fleet}} Server to be running and accessible to your hosts. Add a {{fleet}} Server by following [this guide](/reference/fleet/deployment-models.md).
 
 ::::{tip}
 If you’re upgrading a self-managed deployment of the {{stack}}, you’ll need to enable [{{es}} security](../../../deploy-manage/deploy/self-managed/installing-elasticsearch.md) and the [API key service](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md).
@@ -44,7 +44,7 @@ It’s possible to install the Elastic APM integration on the same {{agent}} tha
 ::::
 
 
-The {{fleet}}-managed {{agent}} will run the Elastic APM integration on your edge nodes, next to your applications. To install a {{fleet}}-managed {{agent}}, follow [this guide](/reference/ingestion-tools/fleet/install-fleet-managed-elastic-agent.md).
+The {{fleet}}-managed {{agent}} will run the Elastic APM integration on your edge nodes, next to your applications. To install a {{fleet}}-managed {{agent}}, follow [this guide](/reference/fleet/install-fleet-managed-elastic-agent.md).
 
 
 ## Add the APM integration [apm-integration-upgrade-4]

@@ -69,7 +69,25 @@ toc:
     in_nav: true
   - toc: troubleshoot
   - toc: release-notes
-  - toc: reference
+  - file: reference/index.md
+    in_nav: true
+    children:
+      - toc: reference/security
+      - toc: reference/observability
+      - toc: reference/search
+      - toc: reference/elasticsearch
+      # The next one should be child of ☝️
+      - toc: reference/elasticsearch-clients
+      - toc: reference/ingestion-tools
+      # The next two should be children of ☝️
+      - toc: reference/fleet
+      - toc: reference/apm
+      # The next one should be child of ☝️
+      - toc: reference/apm-agents
+      - toc: reference/ecs
+      - toc: reference/data-analysis
+      - toc: reference/cloud
+      - toc: reference/glossary
   - toc: extend
   - toc: raw-migrated-files
   - hidden: 404.md

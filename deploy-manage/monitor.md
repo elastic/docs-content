@@ -74,6 +74,13 @@ Out of the box logs and metrics tools, including ECH preconfigured logs and metr
 
 To learn more about the health and performance tools in {{ecloud}}, refer to [](/deploy-manage/monitor/cloud-health-perf.md).
 
+## {{kib}} task manager monitoring
+
+```{applies_to}
+stack: preview
+```
+The {{kib}} [task manager](/deploy-manage/distributed-architecture/kibana-tasks-management.md) has an internal monitoring mechanism to keep track of a variety of metrics, which can be consumed with either the health monitoring API or the {{kib}} server log. [Learn how to configure thresholds and consume related to {{kib}} task manager](/deploy-manage/monitor/kibana-task-manager-health-monitoring.md).
+
 ## Monitoring your orchestrator
 ```{applies_to}
 deployment:
@@ -81,11 +88,17 @@ deployment:
   eck:
 ```
 
-TODO
+In addition to monitoring your cluster or deployment health and performance, you need to monitor your orchestrator. Monitoring is especially important for orchestrators hosted on infrastructure that you control.
+
+Learn how to enable monitoring of your orchestrator:
+
+* [ECK operator metrics](/deploy-manage/monitor/orchestrators/eck-metrics-configuration.md): Open and secure a metrics endpoint that can be used to monitor the operator’s performance and health. This endpoint can be scraped by third-party Kubernetes monitoring tools.
+* [ECK platform monitoring](/deploy-manage/monitor/orchestrators/ece-platform-monitoring.md): Learn about how ECE collects monitoring data for your installation in the `logging-and-metrics` deployment, and how to access monitoring data.
+
+:::{admonition} Monitoring {{ecloud}}
+Elastic monitors [{{ecloud}}](/deploy-manage/deploy/elastic-cloud.md) service metrics and performance as part of [our shared responsibility](https://www.elastic.co/cloud/shared-responsibility). We provide service availability information on our [service status page](/deploy-manage/cloud-organization/service-status.md).
+:::
 
 ## Logging
 
-TODO
-
-% * [*Elasticsearch application logging*](../../../deploy-manage/monitor/logging-configuration/update-elasticsearch-logging-levels.md)
-
+You can configure several types of logs in {{stack}} that can help you to gain insight into {{stack}} operations, diagnose issues, and track certain types of events. [Learn about the types of logs available, where to find them, and how to configure them](/deploy-manage/monitor/logging-configuration.md).

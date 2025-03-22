@@ -52,14 +52,14 @@ Air-gapped install of {{agent}} depends on the [{{package-registry}}](/deploy-ma
 
 Additionally, if the {{agent}} {{elastic-defend}} integration is used, then access to the [Elastic Endpoint Artifact Repository](/deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-elastic-endpoint-artifact-repository) is necessary in order to deploy updates for some of the detection and prevention capabilities.
 
-To learn more about install and configuration, refer to the [{{agent}} install documentation](/reference/ingestion-tools/fleet/install-elastic-agents.md). Make sure to check the requirements specific to running {{agents}} in an [air-gapped environment](/reference/ingestion-tools/fleet/air-gapped.md).
+To learn more about install and configuration, refer to the [{{agent}} install documentation](/reference/fleet/install-elastic-agents.md). Make sure to check the requirements specific to running {{agents}} in an [air-gapped environment](/reference/fleet/air-gapped.md).
 
 
 ## {{fleet-server}} [air-gapped-fleet]
 
 {{fleet-server}} is a required middleware component for any scalable deployment of the {{agent}}. The air-gapped dependencies of {{fleet-server}} are the same as those of the [{{agent}}](/deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-elastic-agent).
 
-To learn more about installing {{fleet-server}}, refer to the [{{fleet-server}} set up documentation](/reference/ingestion-tools/fleet/fleet-server.md).
+To learn more about installing {{fleet-server}}, refer to the [{{fleet-server}} set up documentation](/reference/fleet/fleet-server.md).
 
 
 ## Elastic APM [air-gapped-elastic-apm]
@@ -77,7 +77,7 @@ Refer to [Connect to {{ems}}](../../../explore-analyze/visualize/maps/maps-conne
 
 ## {{package-registry}} [air-gapped-elastic-package-registry]
 
-Air-gapped install of the EPR is possible using any OCI-compatible runtime like Podman (a typical choice for RHEL-like Linux systems) or Docker. Links to the official container image and usage guide is available on the [Air-gapped environments](/reference/ingestion-tools/fleet/air-gapped.md) page in the {{fleet}} and {{agent}} Guide.
+Air-gapped install of the EPR is possible using any OCI-compatible runtime like Podman (a typical choice for RHEL-like Linux systems) or Docker. Links to the official container image and usage guide is available on the [Air-gapped environments](/reference/fleet/air-gapped.md) page in the {{fleet}} and {{agent}} Guide.
 
 ::::{note}
 Besides setting up the EPR service, you also need to [configure {{kib}}](/deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-kibana) to use this service. If using TLS with the EPR service, it is also necessary to set up {{kib}} to trust the certificate presented by the EPR.
@@ -160,7 +160,7 @@ WantedBy=default.target
 
 ## {{artifact-registry}} [air-gapped-elastic-artifact-registry]
 
-Air-gapped install of the {{artifact-registry}} is necessary in order to enable {{agent}} deployments to perform self-upgrades and install certain components which are needed for some of the data integrations (that is, in addition to what is also retrieved from the EPR). To learn more, refer to [Host your own artifact registry for binary downloads](/reference/ingestion-tools/fleet/air-gapped.md#host-artifact-registry) in the {{fleet}} and {{elastic-agent}} Guide.
+Air-gapped install of the {{artifact-registry}} is necessary in order to enable {{agent}} deployments to perform self-upgrades and install certain components which are needed for some of the data integrations (that is, in addition to what is also retrieved from the EPR). To learn more, refer to [Host your own artifact registry for binary downloads](/reference/fleet/air-gapped.md#host-artifact-registry) in the {{fleet}} and {{elastic-agent}} Guide.
 
 ::::{note}
 When setting up own web server, such as NGINX, to function as the {{artifact-registry}}, it is recommended not to use TLS as there are, currently, no direct ways to establish certificate trust between {{agents}} and this service.
