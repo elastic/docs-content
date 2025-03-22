@@ -17,7 +17,7 @@ The query bar comes with a handy autocomplete that helps find the fields and eve
 
 When you type, you can begin to see some of the transaction fields available for filtering:
 
-:::{image} ../../../images/observability-apm-query-bar.png
+:::{image} /solutions/images/observability-apm-query-bar.png
 :alt: Example of the Kibana Query bar in Applications UI in Kibana
 :screenshot:
 :::
@@ -56,19 +56,19 @@ processor.event: "transaction" AND transaction.name: "<TRANSACTION_NAME_HERE>" a
 
 In this example, we’re interested in viewing all of the `APIRestController#customers` transactions that took between 13 and 14 milliseconds. Here’s what Discover returns:
 
-:::{image} ../../../images/observability-advanced-discover.png
+:::{image} /solutions/images/observability-advanced-discover.png
 :alt: View all transactions in bucket
 :screenshot:
 :::
 
 You can now explore the data until you find a specific transaction that you’re interested in. Copy that transaction’s `transaction.id` and paste it into APM to view the data in the context of the APM:
 
-:::{image} ../../../images/observability-specific-transaction-search.png
+:::{image} /solutions/images/observability-specific-transaction-search.png
 :alt: View specific transaction in Applications UI
 :screenshot:
 :::
 
-:::{image} ../../../images/observability-specific-transaction.png
+:::{image} /solutions/images/observability-specific-transaction.png
 :alt: View specific transaction in Applications UI
 :screenshot:
 :::

@@ -19,7 +19,7 @@ Lightweight monitors can be configured using either the [Synthetics UI](../../..
 
 To use the UI, go to the Synthetics UI in {{kib}} or in your Observability Serverless project to create and configure monitors. For step-by-step instructions, refer to [Use the Synthetics UI](../../../solutions/observability/apps/create-monitors-in-synthetics-app.md).
 
-:::{image} ../../../images/observability-synthetics-get-started-ui-lightweight.png
+:::{image} /solutions/images/observability-synthetics-get-started-ui-lightweight.png
 :alt: Synthetics Create monitor UI
 :screenshot:
 :::

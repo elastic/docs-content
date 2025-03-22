@@ -18,40 +18,14 @@ toc:
                   - file: deploy/elastic-cloud/google-cloud-platform-marketplace.md                  
                   - file: deploy/elastic-cloud/heroku.md
                     children:
-                      - file: deploy/elastic-cloud/ech-getting-started-installing.md
+                      - file: deploy/elastic-cloud/heroku-getting-started-installing.md
                         children:
-                          - file: deploy/elastic-cloud/ech-getting-started-installing-version.md
-                          - file: deploy/elastic-cloud/ech-getting-started-removing.md
-                      - file: deploy/elastic-cloud/ech-migrating.md
-                      - file: deploy/elastic-cloud/ech-getting-started-accessing.md
-                        children:
-                          - file: deploy/elastic-cloud/ech-access-kibana.md
-                      - file: deploy/elastic-cloud/ech-working-with-elasticsearch.md
-                      - file: deploy/elastic-cloud/ech-api-console.md
-                      - file: deploy/elastic-cloud/ech-getting-started-next-steps.md
-                      - file: deploy/elastic-cloud/ech-migrate-data2.md
-                        children:
-                          - file: deploy/elastic-cloud/ech-migrate-data-internal.md
-                      - file: deploy/elastic-cloud/ech-about.md
-                        children:
-                          - file: deploy/elastic-cloud/ech-licensing.md
-                          - file: deploy/elastic-cloud/ech-version-policy.md
-                          - file: deploy/elastic-cloud/ech-reference-hardware.md
-                            children:
-                              - file: deploy/elastic-cloud/ech-gcp-instance-configuration.md
-                              - file: deploy/elastic-cloud/ech-default-gcp-configurations.md
-                              - file: deploy/elastic-cloud/ech-aws-instance-configuration.md
-                              - file: deploy/elastic-cloud/ech-default-aws-configurations.md
-                              - file: deploy/elastic-cloud/ech-azure-instance-configuration.md
-                              - file: deploy/elastic-cloud/ech-default-azure-configurations.md
-                          - file: deploy/elastic-cloud/ech-reference-regions.md
-                          - file: deploy/elastic-cloud/ech-service-status.md
-                            children:
-                              - file: deploy/elastic-cloud/echsubscribe_to_individual_regionscomponents.md
-                              - file: deploy/elastic-cloud/echservice_status_api.md
-                          - file: deploy/elastic-cloud/ech-get-help.md
-                          - file: deploy/elastic-cloud/ech-restrictions.md
-                          - file: deploy/elastic-cloud/ech-whats-new.md
+                          - file: deploy/elastic-cloud/heroku-getting-started-removing.md
+                      - file: deploy/elastic-cloud/heroku-getting-started-accessing.md
+                      - file: deploy/elastic-cloud/heroku-working-with-elasticsearch.md
+                      - file: deploy/elastic-cloud/heroku-migrating.md
+                      - file: deploy/elastic-cloud/heroku-reference-hardware.md
+                      - file: deploy/elastic-cloud/heroku-reference-regions.md
           - file: deploy/elastic-cloud/serverless.md
             children:
               - file: deploy/elastic-cloud/differences-from-other-elasticsearch-offerings.md
@@ -80,6 +54,7 @@ toc:
                     children:
                       - file: deploy/elastic-cloud/switch-from-apm-to-integrations-server-payload.md
                   - file: deploy/elastic-cloud/find-cloud-id.md
+              - file: deploy/elastic-cloud/ec-vcpu-boost-instance.md
               - file: deploy/elastic-cloud/change-hardware.md
               - file: deploy/elastic-cloud/manage-deployments-using-elastic-cloud-api.md
               - file: deploy/elastic-cloud/keep-track-of-deployment-activity.md
@@ -343,6 +318,7 @@ toc:
           - file: distributed-architecture/shard-allocation-relocation-recovery/index-level-shard-allocation.md
             children:
               - file: distributed-architecture/shard-allocation-relocation-recovery/delaying-allocation-when-node-leaves.md
+      - file: distributed-architecture/shard-request-cache.md
       - file: distributed-architecture/discovery-cluster-formation.md
         children:
           - file: distributed-architecture/discovery-cluster-formation/discovery-hosts-providers.md
@@ -534,6 +510,7 @@ toc:
       - file: security/secure-clients-integrations.md
         children:
           - file: security/httprest-clients-security.md
+      - file: security/limitations.md
   - file: users-roles.md
     children:
       - file: users-roles/cloud-organization.md
@@ -663,12 +640,14 @@ toc:
         children:
           - file: monitor/autoops/ec-autoops-how-to-access.md
           - file: monitor/autoops/ec-autoops-events.md
-          - file: monitor/autoops/ec-autoops-overview-view.md
-          - file: monitor/autoops/ec-autoops-deployment-view.md
-          - file: monitor/autoops/ec-autoops-nodes-view.md
-          - file: monitor/autoops/ec-autoops-index-view.md
-          - file: monitor/autoops/ec-autoops-shards-view.md
-          - file: monitor/autoops/ec-autoops-template-optimizer.md
+          - file: monitor/autoops/views.md
+            children:
+              - file: monitor/autoops/ec-autoops-overview-view.md
+              - file: monitor/autoops/ec-autoops-deployment-view.md
+              - file: monitor/autoops/ec-autoops-nodes-view.md
+              - file: monitor/autoops/ec-autoops-index-view.md
+              - file: monitor/autoops/ec-autoops-shards-view.md
+              - file: monitor/autoops/ec-autoops-template-optimizer.md
           - file: monitor/autoops/ec-autoops-notifications-settings.md
           - file: monitor/autoops/ec-autoops-event-settings.md
           - file: monitor/autoops/ec-autoops-dismiss-event.md
@@ -676,22 +655,14 @@ toc:
           - file: monitor/autoops/ec-autoops-faq.md
       - file: monitor/stack-monitoring.md
         children:
-          - file: monitor/stack-monitoring/elastic-cloud-stack-monitoring.md
+          - file: monitor/stack-monitoring/ece-ech-stack-monitoring.md
           - file: monitor/stack-monitoring/eck-stack-monitoring.md
-            children:
-              - file: monitor/stack-monitoring/k8s_connect_to_an_external_monitoring_elasticsearch_cluster.md
-              - file: monitor/stack-monitoring/k8s_when_to_use_it.md
-              - file: monitor/stack-monitoring/k8s_how_it_works.md
-              - file: monitor/stack-monitoring/k8s_audit_logging.md
-              - file: monitor/stack-monitoring/k8s_override_the_beats_pod_template.md
-          - file: monitor/stack-monitoring/ece-stack-monitoring.md
-            children:
-              - file: monitor/stack-monitoring/ece-restrictions-monitoring.md
           - file: monitor/stack-monitoring/elasticsearch-monitoring-self-managed.md
             children:
               - file: monitor/stack-monitoring/collecting-monitoring-data-with-elastic-agent.md
               - file: monitor/stack-monitoring/collecting-monitoring-data-with-metricbeat.md
               - file: monitor/stack-monitoring/collecting-log-data-with-filebeat.md
+              - file: monitor/stack-monitoring/es-self-monitoring-prod.md
               - file: monitor/stack-monitoring/es-legacy-collection-methods.md
                 children:
                   - file: monitor/stack-monitoring/es-monitoring-collectors.md
@@ -703,8 +674,26 @@ toc:
             children:
               - file: monitor/stack-monitoring/kibana-monitoring-elastic-agent.md
               - file: monitor/stack-monitoring/kibana-monitoring-metricbeat.md
-              - file: monitor/stack-monitoring/kibana-monitoring-data.md
-              - file: monitor/stack-monitoring/kibana-monitoring-legacy.md
+              - file: monitor/stack-monitoring/kibana-monitoring-legacy.md 
+          - file: monitor/stack-monitoring/kibana-monitoring-data.md
+          - file: monitor/monitoring-data/visualizing-monitoring-data.md
+            children:
+              - file: monitor/monitoring-data/beats-page.md
+              - file: monitor/monitoring-data/elasticsearch-metrics.md
+              - file: monitor/monitoring-data/kibana-page.md
+              - file: monitor/monitoring-data/logstash-page.md
+              - file: monitor/monitoring-data/monitor-troubleshooting.md
+          - file: monitor/monitoring-data/configure-stack-monitoring-alerts.md
+          - file: monitor/monitoring-data/configuring-data-streamsindices-for-monitoring.md
+            children:
+              - file: monitor/monitoring-data/config-monitoring-data-streams-elastic-agent.md
+              - file: monitor/monitoring-data/config-monitoring-data-streams-metricbeat-8.md
+              - file: monitor/monitoring-data/config-monitoring-indices-metricbeat-7-internal-collection.md
+      - file: monitor/cloud-health-perf.md
+        children:
+          - file: monitor/access-performance-metrics-on-elastic-cloud.md
+          - file: monitor/ec-memory-pressure.md
+      - file: monitor/kibana-task-manager-health-monitoring.md
       - file: monitor/orchestrators.md
         children:
           - file: monitor/orchestrators/eck-metrics-configuration.md
@@ -717,29 +706,6 @@ toc:
               - file: monitor/orchestrators/ece-monitoring-ece-access.md
               - file: monitor/orchestrators/ece-proxy-log-fields.md
               - file: monitor/orchestrators/ece-monitoring-ece-set-retention.md
-      - file: monitor/monitoring-data.md
-        children:
-          - file: monitor/monitoring-data/visualizing-monitoring-data.md
-            children:
-              - file: monitor/monitoring-data/beats-page.md
-              - file: monitor/monitoring-data/elasticsearch-metrics.md
-              - file: monitor/monitoring-data/kibana-alerts.md
-              - file: monitor/monitoring-data/kibana-page.md
-              - file: monitor/monitoring-data/logstash-page.md
-              - file: monitor/monitoring-data/monitor-troubleshooting.md
-          - file: monitor/monitoring-data/access-performance-metrics-on-elastic-cloud.md
-            children:
-              - file: monitor/monitoring-data/ec-saas-metrics-accessing.md
-                children:
-                  - file: monitor/monitoring-data/ec-memory-pressure.md
-                  - file: monitor/monitoring-data/ec-vcpu-boost-instance.md
-          - file: monitor/monitoring-data/configure-stack-monitoring-alerts.md
-          - file: monitor/monitoring-data/configuring-data-streamsindices-for-monitoring.md
-            children:
-              - file: monitor/monitoring-data/config-monitoring-data-streams-elastic-agent.md
-              - file: monitor/monitoring-data/config-monitoring-data-streams-metricbeat-8.md
-              - file: monitor/monitoring-data/config-monitoring-indices-metricbeat-7-internal-collection.md
-      - file: monitor/kibana-task-manager-health-monitoring.md
       - file: monitor/logging-configuration.md
         children:
           - file: monitor/logging-configuration/elasticsearch-log4j-configuration-self-managed.md
@@ -747,8 +713,10 @@ toc:
           - file: monitor/logging-configuration/elasticsearch-deprecation-logs.md
           - file: monitor/logging-configuration/kibana-logging.md
             children:
-              - file: monitor/logging-configuration/kibana-log-settings-examples.md
-              - file: monitor/logging-configuration/kibana-logging-cli-configuration.md
+              - file: monitor/logging-configuration/kibana-log-levels.md
+              - file: monitor/logging-configuration/kib-advanced-logging.md
+                children:
+                  - file: monitor/logging-configuration/kibana-log-settings-examples.md
   - file: kibana-reporting-configuration.md
   - file: cloud-organization.md
     children:
@@ -782,7 +750,6 @@ toc:
         children:
           - file: maintenance/ece/deployments-maintenance.md
             children:
-              - file: maintenance/ece/start-stop-routing-requests.md
               - file: maintenance/ece/pause-instance.md
           - file: maintenance/ece/maintenance-activities.md
             children:
@@ -798,6 +765,7 @@ toc:
           - file: maintenance/start-stop-services/restart-cloud-hosted-deployment.md
           - file: maintenance/start-stop-services/restart-an-ece-deployment.md
           - file: maintenance/start-stop-services/full-cluster-restart-rolling-restart-procedures.md
+      - file: maintenance/start-stop-routing-requests.md
       - file: maintenance/add-and-remove-elasticsearch-nodes.md
   - file: upgrade.md
     children:
@@ -810,8 +778,7 @@ toc:
           - file: upgrade/orchestrator/upgrade-cloud-on-k8s.md
       - file: upgrade/prepare-to-upgrade.md
         children:
-          - file: upgrade/prepare-to-upgrade/upgrade-assistant.md
-          - file: upgrade/prepare-to-upgrade/index-compatibility.md
+          - file: upgrade/prepare-to-upgrade/upgrade-assistant.md      
       - file: upgrade/deployment-or-cluster.md
         children:
           - file: upgrade/deployment-or-cluster/upgrade-on-ech.md
@@ -825,11 +792,9 @@ toc:
                   - file: upgrade/deployment-or-cluster/reading-indices-from-older-elasticsearch-versions.md
               - file: upgrade/deployment-or-cluster/kibana.md
                 children:
+                  - file: upgrade/deployment-or-cluster/saved-object-migrations.md
                   - file: upgrade/deployment-or-cluster/kibana-roll-back.md    
-      - file: upgrade/ingest-components.md
-      - file: upgrade/internal-upgrade-processes.md
-        children:
-          - file: upgrade/internal-upgrade-processes/saved-object-migrations.md
+      - file: upgrade/ingest-components.md        
   - file: uninstall.md
     children:
       - file: uninstall/uninstall-elastic-cloud-enterprise.md

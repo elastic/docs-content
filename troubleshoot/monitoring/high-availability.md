@@ -13,7 +13,7 @@ You created a new {{ech}} deployment that uses three availability zones and inde
 
 To answer this question, let’s take a look at CPU usage in the **Cluster Performance Metrics** section in the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body):
 
-:::{image} /images/cloud-metrics-cpu.png
+:::{image} /troubleshoot/images/cloud-metrics-cpu.png
 :alt: CPU usage over time
 :::
 

@@ -40,7 +40,7 @@ To complete this tutorial, you’ll need:
 
     * {{ech}}: Elastic Stack deployments on {{ecloud}} include a hot tier by default. To add a warm tier, edit your deployment and click **Add capacity** for the warm data tier.
 
-        :::{image} ../../../images/elasticsearch-reference-tutorial-ilm-ess-add-warm-data-tier.png
+        :::{image} /manage-data/images/elasticsearch-reference-tutorial-ilm-ess-add-warm-data-tier.png
         :alt: Add a warm data tier to your deployment
         :screenshot:
         :::
@@ -78,7 +78,7 @@ The `logs@lifecycle` policy uses the recommended rollover defaults: Start writin
 
 To view or change the rollover settings, click **Advanced settings** for the hot phase. Then disable **Use recommended defaults** to display the rollover settings.
 
-:::{image} ../../../images/elasticsearch-reference-tutorial-ilm-hotphaserollover-default.png
+:::{image} /manage-data/images/elasticsearch-reference-tutorial-ilm-hotphaserollover-default.png
 :alt: View rollover defaults
 :screenshot:
 :::
@@ -94,21 +94,21 @@ The default `logs@lifecycle` policy is designed to prevent the creation of many 
     2. Enable **Set replicas** and change **Number of replicas** to **1**.
     3. Enable **Force merge data** and set **Number of segments** to **1**.
 
-    :::{image} ../../../images/elasticsearch-reference-tutorial-ilm-modify-default-warm-phase-rollover.png
+    :::{image} /manage-data/images/elasticsearch-reference-tutorial-ilm-modify-default-warm-phase-rollover.png
     :alt: Add a warm phase with custom settings
     :screenshot:
     :::
 
 2. In the warm phase, click the trash icon to enable the delete phase.
 
-    :::{image} ../../../images/elasticsearch-reference-tutorial-ilm-enable-delete-phase.png
+    :::{image} /manage-data/images/elasticsearch-reference-tutorial-ilm-enable-delete-phase.png
     :alt: Enable the delete phase
     :screenshot:
     :::
 
     In the delete phase, set **Move data into phase when** to **90 days old**. This deletes indices 90 days after rollover.
 
-    :::{image} ../../../images/elasticsearch-reference-tutorial-ilm-delete-rollover.png
+    :::{image} /manage-data/images/elasticsearch-reference-tutorial-ilm-delete-rollover.png
     :alt: Add a delete phase
     :screenshot:
     :::

@@ -19,7 +19,7 @@ After you [deploy a trained model in your cluster](ml-nlp-deploy-models.md), you
 
 In {{kib}}, you can create and edit pipelines in **{{stack-manage-app}}** > **Ingest Pipelines**. To open **Ingest Pipelines**, find **{{stack-manage-app}}** in the main menu, or use the [global search field](../../find-and-organize/find-apps-and-objects.md).
 
-:::{image} ../../../images/machine-learning-ml-nlp-pipeline-lang.png
+:::{image} /explore-analyze/images/machine-learning-ml-nlp-pipeline-lang.png
 :alt: Creating a pipeline in the Stack Management app
 :screenshot:
 :::
@@ -171,7 +171,7 @@ Set the reindex `size` option to a value smaller than the `queue_capacity` for t
 
 Before you can verify the results of the pipelines, you must [create {{data-sources}}](../../find-and-organize/data-views.md). Then you can explore your data in **Discover**:
 
-:::{image} ../../../images/machine-learning-ml-nlp-discover-ner.png
+:::{image} /explore-analyze/images/machine-learning-ml-nlp-discover-ner.png
 :alt: A document from the NER pipeline in the Discover app
 :screenshot:
 :::
@@ -180,7 +180,7 @@ The `ml.inference.predicted_value` field contains the output from the {{infer}} 
 
 In this {{lang-ident}} example, the `ml.inference.predicted_value` contains the ISO identifier of the language with the highest probability and the `ml.inference.top_classes` fields contain the top five most probable languages and their scores:
 
-:::{image} ../../../images/machine-learning-ml-nlp-discover-lang.png
+:::{image} /explore-analyze/images/machine-learning-ml-nlp-discover-lang.png
 :alt: A document from the {{lang-ident}} pipeline in the Discover app
 :screenshot:
 :::

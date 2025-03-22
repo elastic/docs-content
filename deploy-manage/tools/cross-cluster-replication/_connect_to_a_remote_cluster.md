@@ -14,7 +14,7 @@ applies_to:
 
 To replicate an index on a remote cluster (Cluster A) to a local cluster (Cluster B), you configure Cluster A as a remote on Cluster B.
 
-:::{image} ../../../images/elasticsearch-reference-ccr-tutorial-clusters.png
+:::{image} /deploy-manage/images/elasticsearch-reference-ccr-tutorial-clusters.png
 :alt: ClusterA contains the leader index and ClusterB contains the follower index
 :::
 

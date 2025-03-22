@@ -33,19 +33,19 @@ When a service is working on a request, it checks for the existence of this HTTP
 
 In this example, Elastic’s Ruby agent communicates with Elastic’s Java agent. Both support the `traceparent` header, and trace data is successfully propagated.
 
-:::{image} ../../../images/observability-dt-trace-ex1.png
+:::{image} /solutions/images/observability-dt-trace-ex1.png
 :alt: How traceparent propagation works
 :::
 
 In this example, Elastic’s Ruby agent communicates with OpenTelemetry’s Java agent. Both support the `traceparent` header, and trace data is successfully propagated.
 
-:::{image} ../../../images/observability-dt-trace-ex2.png
+:::{image} /solutions/images/observability-dt-trace-ex2.png
 :alt: How traceparent propagation works
 :::
 
 In this example, the trace meets a piece of middleware that doesn’t propagate the `traceparent` header. The distributed trace ends and any further communication will result in a new trace.
 
-:::{image} ../../../images/observability-dt-trace-ex3.png
+:::{image} /solutions/images/observability-dt-trace-ex3.png
 :alt: How traceparent propagation works
 :::
 
@@ -77,7 +77,7 @@ Older Elastic agents use a unique `elastic-apm-traceparent` header. For backward
 
 APM's timeline visualization provides a visual deep-dive into each of your application’s traces:
 
-:::{image} ../../../images/observability-apm-distributed-tracing.png
+:::{image} /solutions/images/observability-apm-distributed-tracing.png
 :alt: Distributed tracing in the Applications UI
 :screenshot:
 :::
@@ -196,8 +196,8 @@ string outgoingDistributedTracingData =
 ::::::
 
 ::::::{tab-item} Node.js
-1. Start a transaction with [`apm.startTransaction()`](asciidocalypse://docs/apm-agent-nodejs/docs/reference/agent-api.md#apm-start-transaction), or a span with [`apm.startSpan()`](asciidocalypse://docs/apm-agent-nodejs/docs/reference/agent-api.md#apm-start-span).
-2. Get the serialized `traceparent` string of the started transaction/span with [`currentTraceparent`](asciidocalypse://docs/apm-agent-nodejs/docs/reference/agent-api.md#apm-current-traceparent).
+1. Start a transaction with [`apm.startTransaction()`](apm-agent-nodejs://reference/agent-api.md#apm-start-transaction), or a span with [`apm.startSpan()`](apm-agent-nodejs://reference/agent-api.md#apm-start-span).
+2. Get the serialized `traceparent` string of the started transaction/span with [`currentTraceparent`](apm-agent-nodejs://reference/agent-api.md#apm-current-traceparent).
 3. Encode the `traceparent` and send it to the receiving service inside your regular request.
 
 Example using raw UDP to communicate between two services, A and B:
@@ -227,7 +227,7 @@ $distDataAsString = ElasticApm::getSerializedCurrentDistributedTracingData(); <1
 ::::::
 
 ::::::{tab-item} Python
-1. Start a transaction with [`begin_transaction()`](asciidocalypse://docs/apm-agent-python/docs/reference/api-reference.md#client-api-begin-transaction).
+1. Start a transaction with [`begin_transaction()`](apm-agent-python://reference/api-reference.md#client-api-begin-transaction).
 2. Get the `trace_parent` of the active transaction.
 3. Send the `trace_parent` to the receiving service.
 
@@ -246,7 +246,7 @@ elasticapm.get_trace_parent_header('new-transaction') <2>
 ::::::
 
 ::::::{tab-item} Ruby
-1. Start a span with [`with_span`](asciidocalypse://docs/apm-agent-ruby/docs/reference/api-reference.md#api-agent-with_span).
+1. Start a span with [`with_span`](apm-agent-ruby://reference/api-reference.md#api-agent-with_span).
 2. Get the active `TraceContext`.
 3. Send the `TraceContext` to the receiving service.
 
@@ -345,7 +345,7 @@ var transaction2 = Agent.Tracer.StartTransaction("Transaction2", "TestTransactio
 
 ::::::{tab-item} Node.js
 1. Decode and store the `traceparent` in the receiving service.
-2. Pass in the `traceparent` as the `childOf` option to manually start a new transaction as a child of the received `traceparent` with [`apm.startTransaction()`](asciidocalypse://docs/apm-agent-nodejs/docs/reference/agent-api.md#apm-start-transaction).
+2. Pass in the `traceparent` as the `childOf` option to manually start a new transaction as a child of the received `traceparent` with [`apm.startTransaction()`](apm-agent-nodejs://reference/agent-api.md#apm-start-transaction).
 
 Example receiving a `traceparent` over raw UDP:
 
@@ -360,7 +360,7 @@ agent.startTransaction('my-service-b-transaction', { childOf: traceparent }) <2>
 
 ::::::{tab-item} PHP
 1. Receive the distributed tracing data on the server side.
-2. Begin a new transaction using the agent’s public API. For example, use [`ElasticApm::beginCurrentTransaction`](asciidocalypse://docs/apm-agent-php/docs/reference/public-api.md#api-elasticapm-class-begin-current-transaction) and pass the received distributed tracing data (serialized as string) as a parameter. This will create a new transaction as a child of the incoming trace context.
+2. Begin a new transaction using the agent’s public API. For example, use [`ElasticApm::beginCurrentTransaction`](apm-agent-php://reference/public-api.md#api-elasticapm-class-begin-current-transaction) and pass the received distributed tracing data (serialized as string) as a parameter. This will create a new transaction as a child of the incoming trace context.
 3. Don’t forget to eventually end the transaction on the server side.
 
 Example:
@@ -397,12 +397,12 @@ client.begin_transaction('processors', trace_parent=parent) <2>
 
 
 ::::{tip}
-See the [`TraceParent` API](asciidocalypse://docs/apm-agent-python/docs/reference/api-reference.md#traceparent-api) for additional examples.
+See the [`TraceParent` API](apm-agent-python://reference/api-reference.md#traceparent-api) for additional examples.
 ::::
 ::::::
 
 ::::::{tab-item} Ruby
-Start a new transaction or span as a child of the incoming transaction or span with [`with_transaction`](asciidocalypse://docs/apm-agent-ruby/docs/reference/api-reference.md#api-agent-with_transaction) or [`with_span`](asciidocalypse://docs/apm-agent-ruby/docs/reference/api-reference.md#api-agent-with_span).
+Start a new transaction or span as a child of the incoming transaction or span with [`with_transaction`](apm-agent-ruby://reference/api-reference.md#api-agent-with_transaction) or [`with_span`](apm-agent-ruby://reference/api-reference.md#api-agent-with_span).
 
 Example:
 

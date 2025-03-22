@@ -17,7 +17,7 @@ In **{{stack-manage-app}}** > **{{rules-ui}}**, click **Create rule**. Select th
 
 When you create an {{es}} query rule, your choice of query type affects the information you must provide. For example:
 
-:::{image} ../../../images/kibana-rule-types-es-query-conditions.png
+:::{image} /explore-analyze/images/kibana-rule-types-es-query-conditions.png
 :alt: Define the condition to detect
 :screenshot:
 :::
@@ -70,14 +70,14 @@ Use the **Test query** feature to verify that your query is valid.
 
 If you use query DSL, KQL, or Lucene, the query runs against the selected indices using the configured time window. The number of documents that match the query is displayed. For example:
 
-:::{image} ../../../images/kibana-rule-types-es-query-valid.png
+:::{image} /explore-analyze/images/kibana-rule-types-es-query-valid.png
 :alt: Test {{es}} query returns number of matches when valid
 :screenshot:
 :::
 
 If you use an ES|QL query, a table is displayed. For example:
 
-:::{image} ../../../images/kibana-rule-types-esql-query-valid.png
+:::{image} /explore-analyze/images/kibana-rule-types-esql-query-valid.png
 :alt: Test ES|QL query returns a table when valid
 :screenshot:
 :::
@@ -96,14 +96,14 @@ For each action, you must choose a connector, which provides connection informat
 
 After you select a connector, you must set the action frequency. You can choose to create a summary of alerts on each check interval or on a custom interval. For example, send email notifications that summarize the new, ongoing, and recovered alerts at a custom interval:
 
-:::{image} ../../../images/kibana-es-query-rule-action-summary.png
+:::{image} /explore-analyze/images/kibana-es-query-rule-action-summary.png
 :alt: UI for defining alert summary action in an {{es}} query rule
 :screenshot:
 :::
 
 Alternatively, you can set the action frequency such that actions run for each alert. Choose how often the action runs (at each check interval, only when the alert status changes, or at a custom action interval). You must also choose an action group, which indicates whether the action runs when the query is matched or when the alert is recovered. Each connector supports a specific set of actions for each action group. For example:
 
-:::{image} ../../../images/kibana-es-query-rule-action-query-matched.png
+:::{image} /explore-analyze/images/kibana-es-query-rule-action-query-matched.png
 :alt: UI for defining a recovery action
 :screenshot:
 :::
@@ -125,7 +125,7 @@ Elasticsearch query rule '{{rule.name}}' is active:
 
 Rules use rule action variables and Mustache templates to pass contextual details into the alert notifications. There is a set of [variables common to all rules](create-manage-rules.md#defining-rules-actions-variables) and a set that is specific to this rule. To view the list of variables in {{kib}}, click the "add rule variable" button. For example:
 
-:::{image} ../../../images/kibana-es-query-rule-action-variables.png
+:::{image} /explore-analyze/images/kibana-es-query-rule-action-variables.png
 :alt: Passing rule values to an action
 :screenshot:
 :::

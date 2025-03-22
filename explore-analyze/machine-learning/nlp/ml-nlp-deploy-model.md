@@ -14,7 +14,7 @@ You can deploy a model multiple times by assigning a unique deployment ID when s
 
 You can optimize your deplyoment for typical use cases, such as search and ingest. When you optimize for ingest, the throughput will be higher, which increases the number of {{infer}} requests that can be performed in parallel. When you optimize for search, the latency will be lower during search processes. When you have dedicated deployments for different purposes, you ensure that the search speed remains unaffected by ingest workloads, and vice versa. Having separate deployments for search and ingest mitigates performance issues resulting from interactions between the two, which can be hard to diagnose.
 
-:::{image} ../../../images/machine-learning-ml-nlp-deployment-id-elser-v2.png
+:::{image} /explore-analyze/images/machine-learning-ml-nlp-deployment-id-elser-v2.png
 :alt: Model deployment on the Trained Models UI.
 :screenshot:
 :::
@@ -37,4 +37,4 @@ For the resource levels when adaptive resources are enabled, refer to <[*Trained
 
 Each allocation of a model deployment has a dedicated queue to buffer {{infer}} requests. The size of this queue is determined by the `queue_capacity` parameter in the [start trained model deployment API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-start-trained-model-deployment). When the queue reaches its maximum capacity, new requests are declined until some of the queued requests are processed, creating available capacity once again. When multiple ingest pipelines reference the same deployment, the queue can fill up, resulting in rejected requests. Consider using dedicated deployments to prevent this situation.
 
-{{infer-cap}} requests originating from search, such as the [`text_expansion` query](elasticsearch://reference/query-languages/query-dsl-text-expansion-query.md), have a higher priority compared to non-search requests. The {{infer}} ingest processor generates normal priority requests. If both a search query and an ingest processor use the same deployment, the search requests with higher priority skip ahead in the queue for processing before the lower priority ingest requests. This prioritization accelerates search responses while potentially slowing down ingest where response time is less critical.
+{{infer-cap}} requests originating from search, such as the [`text_expansion` query](elasticsearch://reference/query-languages/query-dsl/query-dsl-text-expansion-query.md), have a higher priority compared to non-search requests. The {{infer}} ingest processor generates normal priority requests. If both a search query and an ingest processor use the same deployment, the search requests with higher priority skip ahead in the queue for processing before the lower priority ingest requests. This prioritization accelerates search responses while potentially slowing down ingest where response time is less critical.

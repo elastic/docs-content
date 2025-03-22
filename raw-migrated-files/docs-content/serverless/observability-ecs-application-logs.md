@@ -42,8 +42,8 @@ To set up log ECS reformatting:
 Log ECS reformatting is controlled by the `log_ecs_reformatting` configuration option, and is disabled by default. Refer to the guide for your framework for information on enabling:
 
 * [Java](apm-agent-java://reference/config-logging.md#config-log-ecs-reformatting)
-* [Ruby](asciidocalypse://docs/apm-agent-ruby/docs/reference/configuration.md#config-log-ecs-formatting)
-* [Python](asciidocalypse://docs/apm-agent-python/docs/reference/configuration.md#config-log_ecs_reformatting)
+* [Ruby](apm-agent-ruby://reference/configuration.md#config-log-ecs-formatting)
+* [Python](apm-agent-python://reference/configuration.md#config-log_ecs_reformatting)
 
 
 ### Ingest logs [observability-ecs-application-logs-ingest-logs]
@@ -127,7 +127,7 @@ output.elasticsearch:
   api_key: "id:api_key"
 ```
 
-1. Set the `hosts` to your project’s {{es}} endpoint. Locate your project’s endpoint by clicking the help icon (![Help icon](../../../images/serverless-help.svg "")) and selecting **Endpoints**. Add the **{{es}} endpoint** to your configuration.
+1. Set the `hosts` to your project’s {{es}} endpoint. Locate your project’s endpoint by clicking the help icon (![Help icon](/raw-migrated-files/images/serverless-help.svg "")) and selecting **Endpoints**. Add the **{{es}} endpoint** to your configuration.
 2. From **Developer tools**, run the following command to create an API key that grants `manage` permissions for the `cluster` and the `filebeat-*` indices using:
 
     ```shell
@@ -348,7 +348,7 @@ To add the custom logs integration to your project:
 6. Add the **Log file path**. For example, `/var/log/your-logs.log`.
 7. Under **Custom log file**, click **Advanced options**.
 
-    ![Screenshot of advanced options location](../../../images/serverless-custom-logs-advanced-options.png "")
+    ![Screenshot of advanced options location](/raw-migrated-files/images/serverless-custom-logs-advanced-options.png "")
 
 8. In the **Processors** text box, add the following YAML configuration to add processors that enhance your data. See [processors](beats://reference/filebeat/filtering-enhancing-data.md) to learn more.
 

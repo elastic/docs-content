@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-fault-detection.html
+applies_to:
+  stack:
 ---
 
 # Cluster fault detection [cluster-fault-detection]

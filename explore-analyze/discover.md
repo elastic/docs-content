@@ -13,7 +13,7 @@ You have questions about your data. What pages on your website contain a specifi
 $$$save-your-search$$$
 With **Discover**, you can quickly search and filter your data, get information about the structure of the fields, and display your findings in a visualization. You can also customize and save your Discover sessions and place them on a dashboard.
 
-:::{image} ../images/kibana-hello-field.png
+:::{image} /explore-analyze/images/kibana-hello-field.png
 :alt: A view of the Discover app
 :screenshot:
 :::

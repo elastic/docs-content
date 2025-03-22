@@ -19,7 +19,7 @@ You can also create a deployment using the [Elastic Cloud API](https://www.elast
 
 1. Log in to your [cloud.elastic.co](https://cloud.elastic.co/login) account and select **Create deployment** from the {{ecloud}} main page:
 
-    :::{image} ../../../images/cloud-ec-login-first-deployment.png
+    :::{image} /deploy-manage/images/cloud-ec-login-first-deployment.png
     :alt: Log in to create a deployment
     :::
 
@@ -29,7 +29,7 @@ You can also create a deployment using the [Elastic Cloud API](https://www.elast
 
 1. From the main **Settings**, you can change the cloud provider and region that host your deployment, the stack version, and the hardware profile, or restore data from another deployment (**Restore snapshot data**):
 
-    :::{image} ../../../images/cloud-ec-create-deployment.png
+    :::{image} /deploy-manage/images/cloud-ec-create-deployment.png
     :alt: Create deployment
     :width: 50%
     :::
@@ -57,7 +57,7 @@ You can also create a deployment using the [Elastic Cloud API](https://www.elast
 
     At any time, you can manage and [adjust the configuration](configure.md) of your deployment to your needs, add extra layers of [security](../../users-roles/cluster-or-deployment-auth.md), or (highly recommended) set up [health monitoring](../../monitor/stack-monitoring.md).
 
-    :::{image} ../../../images/cloud-ec-deployment-mainpage.png
+    :::{image} /deploy-manage/images/cloud-ec-deployment-mainpage.png
     :alt: ESS Deployment main page
     :::
 
@@ -71,5 +71,5 @@ To make sure you’re all set for production, consider the following actions:
 * [Add extensions and plugins](/deploy-manage/deploy/elastic-cloud/add-plugins-extensions.md) to use Elastic supported extensions or add your own custom dictionaries and scripts.
 * [Edit settings and defaults](/deploy-manage/deploy/elastic-cloud/edit-stack-settings.md) to fine tune the performance of specific features.
 * [Manage your deployment](/deploy-manage/deploy/elastic-cloud/manage-deployments.md) as a whole to restart, upgrade, stop routing, or delete.
-* [Set up monitoring](/deploy-manage/monitor/stack-monitoring/elastic-cloud-stack-monitoring.md) to learn how to configure your deployments for observability, which includes metric and log collection, troubleshooting views, and cluster alerts to automate performance monitoring.
+* [Set up monitoring](/deploy-manage/monitor/stack-monitoring/ece-ech-stack-monitoring.md) to learn how to configure your deployments for observability, which includes metric and log collection, troubleshooting views, and cluster alerts to automate performance monitoring.
 

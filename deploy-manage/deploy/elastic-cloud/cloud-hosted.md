@@ -77,7 +77,7 @@ You can use these presets, or start from them to get the unique configuration yo
 
 Building a rich search experience, gaining actionable insight into your environment, or protecting your systems and endpoints? You can implement each of these major use cases, and more, with the solutions that are pre-built in each Elastic deployment.
 
-:::{image} ../../../images/cloud-ec-stack-components.png
+:::{image} /deploy-manage/images/cloud-ec-stack-components.png
 :alt: Elastic Stack components and solutions with Enterprise Search
 :width: 75%
 :::

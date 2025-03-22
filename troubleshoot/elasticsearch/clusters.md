@@ -2,17 +2,11 @@
 navigation_title: Clusters
 ---
 
-# Troubleshoot Elasticsearch clusters
-
-:::{admonition} WIP
-⚠️ **This page is a work in progress.** ⚠️
-
-The documentation team is working on this section. Contributions welcome!
-:::
+# Troubleshoot {{es}} clusters
 
 Use the topics in this section to troubleshoot {{es}} clusters:
 
-* [](/troubleshoot/elasticsearch/clusters.md)
+* [](/troubleshoot/elasticsearch/fix-common-cluster-issues.md)
 * [](/troubleshoot/elasticsearch/troubleshooting-unstable-cluster.md)
 * [](/troubleshoot/elasticsearch/troubleshooting-unbalanced-cluster.md)
 * [](/troubleshoot/elasticsearch/remote-clusters.md)

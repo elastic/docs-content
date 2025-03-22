@@ -29,7 +29,7 @@ Here's a quick reference overview of vector search field types and queries avail
 
 ## Dense vector search
 
-Dense neural embeddings capture semantic meaning by translating content into fixed-length vectors of floating-point bumbers. Similar content maps to nearby points in the vector space, making them ideal for:
+Dense neural embeddings capture semantic meaning by translating content into fixed-length vectors of floating-point numbers. Similar content maps to nearby points in the vector space, making them ideal for:
 - Finding semantically similar content
 - Matching questions with answers
 - Image similarity search
