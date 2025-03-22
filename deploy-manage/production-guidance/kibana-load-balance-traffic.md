@@ -88,7 +88,7 @@ elasticsearch.hosts:
 Related configurations include `elasticsearch.sniffInterval`, `elasticsearch.sniffOnStart`, and `elasticsearch.sniffOnConnectionFault`. These can be used to automatically update the list of hosts as a cluster is resized.  Parameters can be found in the [{{kib}} configuration reference](kibana://reference/configuration-reference/general-settings.md).
 
 ::::{note}
-The previous configuration can be useful when there is no load balancer or reverse proxy in front of {{es}}. If a load balancer is in place to distribute traffic among {{es}} instances, Kibana should be configured to connect to it instead. 
+This configuration can be useful when there is no load balancer or reverse proxy in front of {{es}}. If a load balancer is in place to distribute traffic among {{es}} instances, {{kib}} should be configured to connect to it instead. 
 
 In [orchestrated deployments](/deploy-manage/deploy.md#about-orchestration), {{kib}} is automatically configured to connect to {{es}} through load-balanced services—such as platform proxies in ECE or ECH, or Kubernetes services in the case of ECK.
 ::::
