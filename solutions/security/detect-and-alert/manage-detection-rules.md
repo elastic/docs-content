@@ -259,7 +259,7 @@ You can also check rules' related integrations in the **Installed Rules** and **
 You can hide the **integrations** badge in the rules tables by turning off the `securitySolution:showRelatedIntegrations` [advanced setting](/solutions/security/get-started/configure-advanced-settings.md#show-related-integrations). 
 ::::
 
-## Managing detection rules as code [manage-rule-dac]
+## Manage rules as code [manage-rule-dac]
 
 Utilize the [Detection-as-Code](https://dac-reference.readthedocs.io/en/latest/dac_concept_and_workflows.html) (DaC) principles to externally manage your detection rules. 
 
