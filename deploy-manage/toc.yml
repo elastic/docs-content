@@ -372,6 +372,8 @@ toc:
               - file: production-guidance/optimize-performance/size-shards.md
       - file: production-guidance/kibana-in-production-environments.md
         children:
+          - file: production-guidance/kibana-load-balance-traffic.md
+          - file: production-guidance/kibana-configure-memory.md
           - file: production-guidance/kibana-task-manager-scaling-considerations.md
           - file: production-guidance/kibana-alerting-production-considerations.md
           - file: production-guidance/kibana-reporting-production-considerations.md

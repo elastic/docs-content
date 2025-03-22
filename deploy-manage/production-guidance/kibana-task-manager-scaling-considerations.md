@@ -1,5 +1,5 @@
 ---
-navigation_title: Task manager
+navigation_title: Manage background tasks
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/task-manager-production-considerations.html
 applies_to:
@@ -10,7 +10,7 @@ applies_to:
     self: all
 ---
 
-# Kibana task manager: Scaling and production considerations [task-manager-production-considerations]
+# Kibana task manager: performance and scaling guide [task-manager-production-considerations]
 
 {{kib}} Task Manager is leveraged by features such as Alerting, Actions, and Reporting to run mission critical work as persistent background tasks. These background tasks distribute work across multiple {{kib}} instances. This has three major benefits:
 
