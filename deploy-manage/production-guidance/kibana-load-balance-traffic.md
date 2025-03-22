@@ -1,12 +1,7 @@
 ---
 navigation_title: "High availability and load balancing"
-mapped_pages:
-  - https://www.elastic.co/guide/en/kibana/current/production.html
 applies_to:
   deployment:
-    ess: all
-    ece: all
-    eck: all
     self: all
 ---
 
@@ -14,7 +9,11 @@ applies_to:
 
 This page provides guidance on scaling {{kib}} by distributing traffic across multiple instances, accessing multiple load-balanced deployments, and configuring high availability with multiple {{es}} nodes.
 
-For scaling considerations related to background tasks, refer to [Kibana Task Manager: Scaling and performance](./kibana-task-manager-scaling-considerations.md). To learn how to tune and scale the alerting framework, see [Kibana alerting: Scaling and production considerations](./kibana-alerting-production-considerations.md).
+For scaling considerations related to background tasks, and the alerting framework, refer to [](./kibana-task-manager-scaling-considerations.md), and [](./kibana-alerting-production-considerations.md).
+
+::::{note}
+The configurations provided in this section are required only for self-managed deployments. Orchestration systems automatically apply the necessary settings when multiple Kibana instances belong to the same deployment.
+::::
 
 ## Load balancing across multiple {{kib}} instances [load-balancing-kibana]
 ```yaml {applies_to}
@@ -105,5 +104,5 @@ Related configurations include `elasticsearch.sniffInterval`, `elasticsearch.sni
 ::::{note}
 The previous configuration can be useful when there is no load balancer or reverse proxy in front of {{es}}. If a load balancer is in place to distribute traffic among {{es}} instances, Kibana should be configured to connect to it instead. 
 
-In [orchestrated deployments](/deploy-manage/deploy.md#about-orchestration), {{kib}} is automatically configured to connect to {{es}} through a load-balanced service.
+In [orchestrated deployments](/deploy-manage/deploy.md#about-orchestration), {{kib}} is automatically configured to connect to {{es}} through load-balanced services—such as platform proxies in ECE or ECH, or Kubernetes services in the case of ECK.
 ::::

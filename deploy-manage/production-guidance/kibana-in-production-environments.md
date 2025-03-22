@@ -33,13 +33,13 @@ This section provides guidance on key configurations and optimizations for runni
 
 Topics covered include:
 
-* [High availability and traffic distribution](./kibana-load-balance-traffic.md): Learn how to load balance traffic across multiple {{kib}} instances, how to balance traffic to different deployments, and how to distribute {{kib}} traffic across multiple {{es}} instances.
+* [High availability and traffic distribution](./kibana-load-balance-traffic.md): For self-managed deployments, learn how to load balance traffic across multiple {{kib}} instances, how to balance traffic to different deployments, and how to distribute {{kib}} traffic across multiple {{es}} instances.
 
 * [Configure {{kib}} memory usage](./kibana-configure-memory.md): Configure {{kib}} memory limit in self-managed deployments.
 
-* [Manage {{kib}} background tasks](./kibana-task-manager-scaling-considerations.md): Learn how {{kib}} runs background tasks like alerting and reporting, and get guidance on scaling and throughput tuning for reliable task execution.
+* [Manage {{kib}} background tasks](./kibana-task-manager-scaling-considerations.md): Learn how {{kib}} runs background tasks like alerting and reporting, and get guidance on scaling and throughput tuning for reliable task execution. Applicable to all deployment types.
 
-* [Optimize {{kib}} alerting performance](./kibana-alerting-production-considerations.md): Learn how {{kib}} runs alerting rules and actions using background tasks, and how to scale alerting by tuning task throughput and circuit breakers.
+* [Optimize {{kib}} alerting performance](./kibana-alerting-production-considerations.md): Learn how {{kib}} runs alerting rules and actions using background tasks, and how to scale alerting by tuning task throughput and circuit breakers. Applicable to all deployment types.
 
 * [Kibana reporting production setup](./kibana-reporting-production-considerations.md): Learn how {{kib}} generates reports using a headless version of Chromium, and how to configure your environment securely for production, including sandboxing and OS compatibility.
 

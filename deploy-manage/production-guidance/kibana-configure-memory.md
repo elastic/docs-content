@@ -1,7 +1,5 @@
 ---
 navigation_title: "Configure memory"
-mapped_pages:
-  - https://www.elastic.co/guide/en/kibana/current/production.html
 applies_to:
   deployment:
     self: all
@@ -22,5 +20,5 @@ The option accepts a limit in MB:
 ```
 
 ::::{note}
-In orchestrated deployments—such as those managed with {{ech}}, {{ece}}, or {{eck}}—you should not override Kibana’s default memory limit using `--max-old-space-size`. Instead, set the desired {{kib}} memory size at the deployment level. This automatically adjusts the container’s memory allocation and ensures more consistent and predictable performance.
+In orchestrated environments like {{ech}}, {{ece}}, or {{eck}}, you should not override Kibana’s default memory limit using `--max-old-space-size`. Instead, set the desired {{kib}} memory size at the deployment level. This automatically adjusts the container’s memory allocation and ensures more consistent and predictable performance.
 ::::
