@@ -10,7 +10,7 @@ applies_to:
 
 # {{es}} scaling considerations
 
-Knowing when and how to scale your deployment is critical, especially when unexpected workloads hits. Adding more nodes or adjusting resources is not always the best solution—scaling should be based on real workload patterns and informed decision-making.
+Knowing when and how to scale your deployment is critical, especially when unexpected workloads hit. Adding more nodes or adjusting resources is not always the best solution—scaling should be based on real workload patterns and informed decision-making.
 
 In orchestrated or managed deployments, [Autoscaling](/deploy-manage/autoscaling.md) can automatically adjust cluster resources based on demand, reducing operational overhead. However, in self-managed environments, scaling is a manual process, requiring careful planning to adapt to workload changes and ensure the cluster remains performant and resilient.
 
@@ -40,12 +40,27 @@ Although the previous is the general recommendation, you should design your clus
 
 ## How to scale
 
-Refer to the following documents depending on your deployment type:
+Scaling Elasticsearch depends on how you deploy it. Refer to the appropriate guides below based on your deployment type.
 
-* [](/deploy-manage/autoscaling.md): Autoscaling is available for {{ech}}, {{ece}} and {{eck}} deployments. Autoscaling on ECK requires an enterprise license.
-* [Configure {{ech}} deployments](/deploy-manage/deploy/elastic-cloud/configure.md): You can change your deployment resources or even the [hardware profile](/deploy-manage/deploy/elastic-cloud/ec-change-hardware-profile.md) of your instances.
-* [Resize an ECE deployment](/deploy-manage/deploy/cloud-enterprise/resize-deployment.md)
-* [Configure ECK deployments](/deploy-manage/deploy/cloud-on-k8s/configure-deployments.md): Change the amount of instances of any component, or [customize compute resources](/deploy-manage/deploy/cloud-on-k8s/manage-compute-resources.md).
-* In self-managed deployments, scaling up or down requires manually [adding](/deploy-manage/deploy/self-managed/installing-elasticsearch.md) or [removing](/deploy-manage/uninstall.md) instances from your deployment.
+### Orchestrated deployments
 
+These platforms offer built-in autoscaling and flexible resource management:
 
+* [Autoscaling](/deploy-manage/autoscaling.md): Available in {{ech}}, {{ece}}, and {{eck}}.  
+
+  ::::{note}
+  An enterprise license is required for ECK autoscaling._
+  ::::
+
+* [Configure {{ech}} deployments](/deploy-manage/deploy/elastic-cloud/configure.md): Change instance sizes, increase capacity, or [select a different hardware profile](/deploy-manage/deploy/elastic-cloud/ec-change-hardware-profile.md).
+
+* [Resize an ECE deployment](/deploy-manage/deploy/cloud-enterprise/resize-deployment.md): Adjust deployment size or topology in the Elastic Cloud Enterprise console.
+
+* [Configure ECK deployments](/deploy-manage/deploy/cloud-on-k8s/configure-deployments.md): Change the number of Elasticsearch nodes, [customize compute resources](/deploy-manage/deploy/cloud-on-k8s/manage-compute-resources.md), or configure `nodeSets` to adjust the cluster architecture and topology.
+
+### Self-managed deployments
+
+In self-managed environments, scaling requires manual intervention:
+
+* [Add {{es}} nodes](/deploy-manage/deploy/self-managed/installing-elasticsearch.md)
+* [Uninstall {{es}} nodes](/deploy-manage/uninstall.md)

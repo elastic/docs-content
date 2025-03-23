@@ -25,3 +25,7 @@ Use the following topics to explore relevant strategies:
 * [Tune approximate kNN search](optimize-performance/approximate-knn-search.md)
 * [Tune for disk usage](optimize-performance/disk-usage.md)
 * [Size your shards](optimize-performance/size-shards.md)
+
+::::{note}
+Many {{es}} options come with different performance considerations and trade-offs. The best way to determine the optimal configuration for your use case is through [testing with your own data and queries](https://www.elastic.co/elasticon/conf/2016/sf/quantitative-cluster-sizing).
+::::

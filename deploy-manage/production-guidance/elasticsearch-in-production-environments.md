@@ -23,71 +23,51 @@ Many teams rely on {{es}} to run their key services. To ensure these services re
 
 In cases where built-in resilience mechanisms aren't enough, {{es}} offers tools—such as [cross-cluster replication](../tools/cross-cluster-replication.md) and [snapshot and restore](../tools/snapshot-and-restore.md)—to help you fall back or recover quickly. You can also use cross-cluster replication to serve requests based on the geographic location of your users and resources.
 
-{{es}} also offers [authentication and authorization](/deploy-manage/users-roles.md), [security](/deploy-manage/security.md) and [monitoring tools](/deploy-manage/monitor.md) to help you keep your cluster highly available and secure.
+Explore the following topics to learn how to build, scale, and optimize your production deployment:
 
-In this section you'll learn (TBD, work in progress):
+* [Designing for resilience](./availability-and-resilience.md): Learn the foundations of resilience in {{es}} and what it takes to keep your deployment available during hardware failures, outages, or node disruptions. This section covers key concepts like multiple nodes, shards, and replicas—and how to combine them to build resilient architectures.
 
-* [Designing for resilience](./availability-and-resilience.md)
+* [Scaling considerations](./scaling-considerations.md): Understand when and how to scale your {{es}} deployment effectively. This section explains how to monitor cluster health, optimize performance, and make informed scaling decisions—whether you’re scaling manually in self-managed environments or relying on autoscaling in orchestrated deployments.
 
-  When you move to production, you need to introduce multiple nodes and shards to your cluster.
-  
-  Nodes and shards are what make {{es}} [resilient](./availability-and-resilience.md) and [scalable](./scaling-considerations.md).
-  
-  The size and number of these nodes and [shards](./optimize-performance/size-shards.md) depends on your data, your use case, and your budget.
-
-* [Scaling considerations](./scaling-considerations.md)
-
-* [Performance optimizations](./optimize-performance.md) 
+* [Performance optimizations](./optimize-performance.md): Learn how to improve {{es}} performance across different use cases, including indexing, search, disk usage, and approximate kNN. This section provides targeted recommendations to help you tune your cluster based on workload patterns and resource constraints.
 
 ::::{important}
 In orchestrated deployments, some of the settings mentioned in the referenced documents may not apply. Check the section headers to determine whether a topic is relevant to your deployment type.
 ::::
 
-TBD / decide what to do with these sentences:
-
-Many {{es}} options come with different performance considerations and trade-offs. The best way to determine the optimal configuration for your use case is through [testing with your own data and queries](https://www.elastic.co/elasticon/conf/2016/sf/quantitative-cluster-sizing).
-
-Learn more about [nodes and shards](../distributed-architecture/clusters-nodes-shards.md) and [reference architectures](/deploy-manage/reference-architectures.md).
-
-
+% Shaina, not sure if this makes sense here, but I wanted to introduce the different levels of knowledge needed by deployment types
+% I've realized that this look kind of similar to /deploy-manage/distributed-architecture/clusters-nodes-shards.md
 ## Responsibilities and deployment types
 
 Your responsibilities when running {{es}} in production depend on the [deployment type](/deploy-manage/deploy.md#choosing-your-deployment-type). Depending on the platform, some aspects—like scaling or cluster configuration—are managed for you, while others may require your attention and knowledge:
 
 * **Self-managed {{es}}**: You are responsible for setting up and managing nodes, clusters, shards, and replicas. This includes managing the underlying infrastructure, scaling, and ensuring high availability through failover and backup strategies.
 
-* **{{ech}}**: Elastic can [autoscale](../autoscaling.md) resources in response to workload changes. Choose from different hardware profiles and deployment architectures to apply sensible defaults for your use case. A good understanding of nodes, shards, and replicas is important, as you are still responsible for managing your data and ensuring cluster performance.
+* **{{ech}}**: Elastic can [autoscale](../autoscaling.md) resources in response to workload changes. You can choose from different hardware profiles and deployment architectures to apply sensible defaults for your use case. A good understanding of nodes, shards, and replicas is important, as you are still responsible for managing your data and ensuring cluster performance.
 
-* **{{serverless-full}}**: You don’t need to worry about nodes, shards, or replicas. These resources are 100% automated on the serverless platform, which is designed to scale with your workload.
+* **{{ece}}**: Similar to {{ech}}, ECE manages {{es}} deployments and automates cluster operations, including scaling and orchestration. However, you are responsible for maintaining the platform itself, including the ECE hosts, operating system updates, and software upgrades. At deployment level, you must also manage data, monitor performance, and handle shard strategies and capacity planning.
 
-  Your project’s performance and general data retention are controlled by the [Search AI Lake settings](/deploy-manage/deploy/elastic-cloud/project-settings.md#elasticsearch-manage-project-search-ai-lake-settings).
+* **{{eck}}**: ECK gives you powerful orchestration capabilities for {{es}} on Kubernetes. While it simplifies lifecycle management and enables [autoscaling](../autoscaling.md), you are responsible for the Kubernetes environment and the {{es}} deployments. That includes infrastructure sizing, sharding strategies, performance monitoring, and availability planning. Think of ECK as closer to a self-managed deployment, but with orchestration and automation benefits.
 
-  ::::{note}
-  For {{ech}} and {{serverless-short}} refer to [shared responsibility](https://www.elastic.co/cloud/shared-responsibility)
-  ::::
+* **{{serverless-full}}**: You don’t need to worry about nodes, shards, or replicas. These resources are 100% automated on the serverless platform, which is designed to scale with your workload. Project performance and data retention are controlled through the [Search AI Lake settings](/deploy-manage/deploy/elastic-cloud/project-settings.md#elasticsearch-manage-project-search-ai-lake-settings).
 
-* **{{ece}}**: (TBD)
+::::{note}
+To understand what Elastic manages and what you're responsible for in {{ech}} and {{serverless-short}}, refer to the [Shared Responsibility Model](https://www.elastic.co/cloud/shared-responsibility). It outlines the security, availability, and operational responsibilities between Elastic and you.
+::::
 
-* **{{eck}}**: ECK is a self-managed orchestrator.
+## Additional guidance for production environments
 
-## Other sections
-
-Other sections of the documentation offer valuable guidance and recommendations for running {{es}} in production.
+The following topics, covered in other sections of the documentation, offer valuable guidance for running {{es}} in production.
 
 ### Plan your data structure and formatting [ec_plan_your_data_structure_availability_and_formatting]
 
 * Build a [data architecture](/manage-data/lifecycle/data-tiers.md) that best fits your needs. Based on your own access and retention policies, you can add warm, cold, and frozen data tiers, and automate deletion of old data.
 * Normalize event data to better analyze, visualize, and correlate your events by adopting the [Elastic Common Schema](asciidocalypse://docs/ecs/docs/reference/ecs-getting-started.md) (ECS). Elastic integrations use ECS out-of-the-box. If you are writing your own integrations, ECS is recommended.
-
-### Optimize data storage and retention [ec_optimize_data_storage_and_retention]
-
-Besides the optimizations suggested in [](./optimize-performance/disk-usage.md):
-
 * Once you have your data tiers deployed and you have data flowing, you can [manage the index lifecycle](/manage-data/lifecycle/index-lifecycle-management.md).
 
-::::{tip}
-[Elastic integrations](https://www.elastic.co/integrations) provide default index lifecycle policies, and you can [build your own policies for your custom integrations](/manage-data/lifecycle/index-lifecycle-management/tutorial-automate-rollover.md).
-::::
+  ::::{tip}
+  [Elastic integrations](https://www.elastic.co/integrations) provide default index lifecycle policies, and you can [build your own policies for your custom integrations](/manage-data/lifecycle/index-lifecycle-management/tutorial-automate-rollover.md).
+  ::::
 
 ### Security and monitoring [security-and-monitoring] 
 

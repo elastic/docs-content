@@ -10,13 +10,6 @@ applies_to:
 ---
 
 % scope: the scope of this page is just a brief introduction to prod guidance at elastic stack level, links to ES and KIB,
-
-% pending (for shaina's review):
-% to link to other product's prod guidance when we find them
-% pending to link reference architectures / security / authentication (maybe better from the ES / Kib docs)
-
-% other product to link ECE-HA (orchestrator level): /deploy-manage/deploy/cloud-enterprise/ece-ha.md
-
 # Production guidance
 
 Running the {{stack}} in production requires careful planning to ensure resilience, performance, and scalability. This section outlines best practices and recommendations for optimizing {{es}} and {{kib}} in production environments.
@@ -41,6 +34,13 @@ However, certain parts may be relevant only to self-managed clusters, as orchest
 **{{serverless-full}}** projects are fully managed and automatically scaled by Elastic. Your project’s performance and general data retention are controlled by the [Search AI Lake settings](/deploy-manage/deploy/elastic-cloud/project-settings.md#elasticsearch-manage-project-search-ai-lake-settings).
 ::::
 
-## Other products guidance
+## Production guidance for other Elastic products
+(TBD / Work in progress)
+While this section focuses on {{es}} and {{kib}}, the following topics offer production considerations for other Elastic products and components:
 
-* []()
+* [High availability on ECE orchestrator](/deploy-manage/deploy/cloud-enterprise/ece-ha.md)
+
+* Fleet server scalability: https://www.elastic.co/guide/en/fleet/current/fleet-server-scalability.html
+* Deploying and scaling Logstash: https://www.elastic.co/guide/en/logstash/current/deploying-and-scaling.html
+
+* APM scalability and performance: https://www.elastic.co/guide/en/observability/current/apm-processing-and-performance.html

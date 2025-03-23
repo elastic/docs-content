@@ -10,7 +10,6 @@ applies_to:
     self: all
 ---
 
-% In the future we could consider merging the ECE/ECH resiliency doc with the content of the 2 original ES docs about resilience (small and large clusters), as some of the topics and concepts overlap
 # Design for resilience [high-availability-cluster-design]
 
 Distributed systems like {{es}} are designed to keep working even if some of their components have failed. As long as there are enough well-connected nodes to take over their responsibilities, an {{es}} cluster can continue operating normally if some of its nodes are unavailable or disconnected.
@@ -28,6 +27,8 @@ In the context of {{es}} deployments, an `availability zone`, or simply `zone`, 
 
 For example, in {{ech}}, availability zones correspond to the cloud provider’s availability zones. Each of these is typically a physically separate data center, ensuring redundancy and fault tolerance at the infrastructure level.
 ::::
+
+Learn more about [nodes and shards](/deploy-manage/distributed-architecture/clusters-nodes-shards.md) and [reference architectures](/deploy-manage/reference-architectures.md).
 
 ## Cluster sizes
 
