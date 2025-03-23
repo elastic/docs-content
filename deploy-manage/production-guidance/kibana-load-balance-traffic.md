@@ -1,5 +1,7 @@
 ---
 navigation_title: "High availability and load balancing"
+mapped_pages:
+  - https://www.elastic.co/guide/en/kibana/current/production.html
 applies_to:
   deployment:
     self: all
@@ -15,7 +17,7 @@ The configurations provided in this section are required only for self-managed d
 
 ## Load balancing across multiple {{kib}} instances [load-balancing-kibana]
 
-To run multiple {{kib}} instances connected to the same {{es}} cluster, you need to adjust the configuration. See the [{{kib}} configuration reference](kibana://reference/configuration-reference) for details on each setting.
+To run multiple {{kib}} instances connected to the same {{es}} cluster, you need to adjust the configuration. See the [{{kib}} configuration reference](kibana://reference/configuration-reference.md) for details on each setting.
 
 ::::{note}
 When adding multiple {{kib}} instances to the same deployment in {{ech}}, {{ece}}, or {{eck}}, the orchestrator applies the necessary configuration, requiring no manual setup.

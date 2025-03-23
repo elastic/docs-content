@@ -24,7 +24,7 @@ Why this matters:
 ECH and ECE orchestators automatically handle several aspects of cluster resilience that are discussed in the self-managed resiliency guidance for [small](./resilience-in-small-clusters.md) and [large](./resilience-in-larger-clusters.md) clusters:
 
 * Configuring master-eligible nodes:
-  * Setting up a [voting-only tiebreaker](/distributed-architecture/clusters-nodes-shards/node-roles.md#voting-only-node) when the cluster spans to two availability zones.
+  * Setting up a [voting-only tiebreaker](/deploy-manage/distributed-architecture/clusters-nodes-shards/node-roles.md#voting-only-node) when the cluster spans to two availability zones.
   * Promoting [dedicated master nodes](/deploy-manage/distributed-architecture/clusters-nodes-shards/node-roles.md#dedicated-master-node) as the cluster grows to improve stability and fault tolerance.
 * Enabling [shard allocation awareness](../../distributed-architecture/shard-allocation-relocation-recovery/shard-allocation-awareness.md) to maintain resilience during whole-zone failures.
 * Automatically assigning [node roles](/deploy-manage/distributed-architecture/clusters-nodes-shards/node-roles.md) based on the configured [data tiers](/manage-data/lifecycle/data-tiers.md).

@@ -1,7 +1,5 @@
 ---
 navigation_title: "Run Kibana in production"
-mapped_pages:
-  - https://www.elastic.co/guide/en/kibana/current/production.html
 applies_to:
   deployment:
     ess: all

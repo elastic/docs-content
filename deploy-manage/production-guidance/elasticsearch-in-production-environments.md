@@ -62,7 +62,7 @@ The following topics, covered in other sections of the documentation, offer valu
 ### Plan your data structure and formatting [ec_plan_your_data_structure_availability_and_formatting]
 
 * Build a [data architecture](/manage-data/lifecycle/data-tiers.md) that best fits your needs. Based on your own access and retention policies, you can add warm, cold, and frozen data tiers, and automate deletion of old data.
-* Normalize event data to better analyze, visualize, and correlate your events by adopting the [Elastic Common Schema](asciidocalypse://docs/ecs/docs/reference/ecs-getting-started.md) (ECS). Elastic integrations use ECS out-of-the-box. If you are writing your own integrations, ECS is recommended.
+* Normalize event data to better analyze, visualize, and correlate your events by adopting the [Elastic Common Schema](ecs://reference/ecs-getting-started.md) (ECS). Elastic integrations use ECS out-of-the-box. If you are writing your own integrations, ECS is recommended.
 * Once you have your data tiers deployed and you have data flowing, you can [manage the index lifecycle](/manage-data/lifecycle/index-lifecycle-management.md).
 
   ::::{tip}
