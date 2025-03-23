@@ -92,8 +92,7 @@ This table shows our specific recommendations for nodes in a Hot/Frozen architec
 
 **Kibana:**
 
-* If self-deploying outside of {{ech}}, ensure that {{kib}} is configured for [high availability](/deploy-manage/production-guidance/kibana-in-production-environments.md#high-availability).
-
+* If self-deploying outside of {{ech}}, ensure that {{kib}} is configured for [high availability](/deploy-manage/production-guidance/kibana-load-balance-traffic.md#high-availability).
 
 ## How many nodes of each do you need? [hot-frozen-estimate]
 
