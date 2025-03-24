@@ -40,5 +40,5 @@ If you are looking for production guidance for Elastic products other than {{es}
 
 * [High availability on ECE orchestrator](/deploy-manage/deploy/cloud-enterprise/ece-ha.md)
 * [APM scalability and performance](/troubleshoot/observability/apm/processing-performance.md)
-* [Fleet server scalability](ingest-docs://reference/fleet/fleet-server-scalability.md)
+* [Fleet server scalability](/reference/fleet/fleet-server-scalability.md)
 * [Deploying and scaling Logstash](logstash://reference/deploying-scaling-logstash.md)
