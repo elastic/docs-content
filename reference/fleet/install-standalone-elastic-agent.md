@@ -111,27 +111,31 @@ To install and run {{agent}} standalone:
     On macOS, Linux (tar package), and Windows, run the `install` command to install {{agent}} as a managed service and start the service. The DEB and RPM packages include a service unit for Linux systems with systemd, so just enable then start the service.
     ::::
 
-    ::::{tab-set}
+    :::::{tab-set}
 
-    :::{tab-item} macOS
+    ::::{tab-item} macOS
 
+    :::{tip}
     You must run this command as the root user because some integrations require root privileges to collect sensitive data.
+    :::
 
     ```shell
     sudo ./elastic-agent install
     ```
-    :::
+    ::::
 
-    :::{tab-item} Linux
+    ::::{tab-item} Linux
 
+    :::{tip}
     You must run this command as the root user because some integrations require root privileges to collect sensitive data.
+    :::
 
     ```shell
     sudo ./elastic-agent install
     ```
-    :::
+    ::::
 
-    :::{tab-item} Windows
+    ::::{tab-item} Windows
 
     Open a PowerShell prompt as an Administrator (right-click the PowerShell icon and select **Run As Administrator**).
 
@@ -140,11 +144,9 @@ To install and run {{agent}} standalone:
     ```shell
     .\elastic-agent.exe install
     ```
-    :::
+    ::::
 
-    :::{tab-item} DEB
-
-    You must run this command as the root user because some integrations require root privileges to collect sensitive data.
+    ::::{tab-item} DEB
 
     ```shell
     sudo systemctl enable elastic-agent <1>
@@ -152,12 +154,9 @@ To install and run {{agent}} standalone:
     ```
     
     1. The DEB package includes a service unit for Linux systems with systemd. On these systems, you can manage {{agent}} by using the usual systemd commands. If you don’t have systemd, run `sudo service elastic-agent start`.
-    :::
+    ::::
 
-    :::{tab-item} RPM
-
-    You must run this command as the root user because some integrations require root privileges to collect sensitive data.
-
+    ::::{tab-item} RPM
 
     ```shell
     sudo systemctl enable elastic-agent <1>
@@ -165,9 +164,9 @@ To install and run {{agent}} standalone:
     ```
 
     1. The RPM package includes a service unit for Linux systems with systemd. On these systems, you can manage {{agent}} by using the usual systemd commands. If you don’t have systemd, run `sudo service elastic-agent start`.
-    :::
-
     ::::
+
+    :::::
 
 Refer to [Installation layout](/reference/fleet/installation-layout.md) for the location of installed {{agent}} files.
 
