@@ -146,7 +146,7 @@ Elastic regularly updates prebuilt rules to optimize their performance and ensur
 
     To accept the changes and install the updated version, select **Update rule**.
 
-    :::{image} /solutions/images/security-prebuilt-rules-update-diff.png
+    :::{image} /solutions/images/security-prebuilt-rules-update-diff-basic.png
     :alt: Prebuilt rule comparison
     :screenshot:
     :::
