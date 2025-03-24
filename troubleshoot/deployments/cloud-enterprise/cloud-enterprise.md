@@ -1,5 +1,8 @@
 ---
 navigation_title: "Elastic Cloud Enterprise"
+applies_to:
+  deployment:
+    ece: all
 mapped_urls:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-troubleshooting.html
 ---
