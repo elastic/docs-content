@@ -239,7 +239,7 @@ During the routine system maintenance performed by Elastic, it might happen that
 
 **Resolutions**
 
-Configure an [highly available cluster](/deploy-manage/production-guidance/plan-for-production-elastic-cloud.md) to keep your service running. Also, consider taking the following actions to bring your deployment back to health and recover your data from the snapshot.
+Configure an [highly available cluster](/deploy-manage/production-guidance.md) to keep your service running. Also, consider taking the following actions to bring your deployment back to health and recover your data from the snapshot.
 
 * [Close the red indices](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-close)
 * [Restore the indices](/deploy-manage/tools/snapshot-and-restore.md) from the last successful snapshot
