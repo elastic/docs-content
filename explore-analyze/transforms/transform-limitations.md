@@ -85,7 +85,7 @@ The {{transform}} retrieves data in batches which means it calculates several bu
 
 ### Handling dynamic adjustments for many terms [transform-dynamic-adjustments-limitations]
 
-For each checkpoint, entities are identified that have changed since the last time the check was performed. This list of changed entities is supplied as a [terms query](elasticsearch://reference/query-languages/query-dsl-terms-query.md) to the {{transform}} composite aggregation, one page at a time. Then updates are applied to the destination index for each page of entities.
+For each checkpoint, entities are identified that have changed since the last time the check was performed. This list of changed entities is supplied as a [terms query](elasticsearch://reference/query-languages/query-dsl/query-dsl-terms-query.md) to the {{transform}} composite aggregation, one page at a time. Then updates are applied to the destination index for each page of entities.
 
 The page `size` is defined by `max_page_search_size` which is also used to define the number of buckets returned by the composite aggregation search. The default value is 500, the minimum is 10.
 

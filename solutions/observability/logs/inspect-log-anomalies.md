@@ -35,14 +35,14 @@ Create a {{ml}} job to detect anomalous log entry rates automatically.
 
 ## Anomalies chart [anomalies-chart]
 
-The Anomalies chart shows an overall, color-coded visualization of the log entry rate, partitioned according to the value of the Elastic Common Schema (ECS) [`event.dataset`](asciidocalypse://docs/ecs/docs/reference/ecs-event.md) field. This chart helps you quickly spot increases or decreases in each partition’s log rate.
+The Anomalies chart shows an overall, color-coded visualization of the log entry rate, partitioned according to the value of the Elastic Common Schema (ECS) [`event.dataset`](ecs://reference/ecs-event.md) field. This chart helps you quickly spot increases or decreases in each partition’s log rate.
 
 If you have a lot of log partitions, use the following to filter your data:
 
 * Hover over a time range to see the log rate for each partition.
 * Click or hover on a partition name to show, hide, or highlight the partition values.
 
-:::{image} ../../../images/observability-anomalies-chart.png
+:::{image} /solutions/images/observability-anomalies-chart.png
 :alt: Anomalies chart
 :screenshot:
 :::

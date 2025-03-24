@@ -5,8 +5,33 @@ mapped_pages:
 
 # Size your shards [size-your-shards]
 
-Each index in {{es}} is divided into one or more shards, each of which may be replicated across multiple nodes to protect against hardware failures. If you are using [Data streams](../../../manage-data/data-store/data-streams.md) then each data stream is backed by a sequence of indices. There is a limit to the amount of data you can store on a single node so you can increase the capacity of your cluster by adding nodes and increasing the number of indices and shards to match. However, each index and shard has some overhead and if you divide your data across too many shards then the overhead can become overwhelming. A cluster with too many indices or shards is said to suffer from *oversharding*. An oversharded cluster will be less efficient at responding to searches and in extreme cases it may even become unstable.
+## What is a shard? [what-is-a-shard]
 
+A shard is a basic unit of storage in {{es}}. Every index is divided into one or more shards to help distribute data and workload across nodes in a cluster. This division allows {{es}} to handle large datasets and perform operations like searches and indexing efficiently. For more detailed information on shards, see [this page](/deploy-manage/distributed-architecture/clusters-nodes-shards.md).
+
+## General guidelines [sizing-shard-guidelines]
+
+Balancing the number and size of your shards is important for the performance and stability of an {{es}} cluster:
+
+* Too many shards can degrade search performance and make the cluster unstable. This is referred to as _oversharding_.
+* Very large shards can slow down search operations and prolong recovery times after failures.
+
+To avoid either of these states, implement the following guidelines:
+
+### General sizing guidelines
+
+* Aim for shard sizes between 10GB and 50GB
+* Keep the number of documents on each shard below 200 million
+
+### Shard distribution guidelines
+
+To ensure that each node is working optimally, distribute shards evenly across nodes. Uneven distribution can cause some nodes to work harder than others, leading to performance degradation and instability. 
+
+While {{es}} automatically balances shards, you need to configure indices with an appropriate number of shards and replicas to allow for even distribution across nodes.
+
+If you are using [data streams](/manage-data/data-store/data-streams.md), each data stream is backed by a sequence of indices, each index potentially having multiple shards. 
+
+Despite these general guidelines, it is good to develop a tailored [sharding strategy](#create-a-sharding-strategy) that considers your specific infrastructure, use case, and performance expectations. 
 
 ## Create a sharding strategy [create-a-sharding-strategy]
 

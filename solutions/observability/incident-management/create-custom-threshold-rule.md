@@ -22,7 +22,7 @@ Create a custom threshold rule to trigger an alert when an {{obs-serverless}} da
 2. Click **Manage Rules** → **Create rule**.
 3. Under **Select rule type**, select **Custom threshold**.
 
-:::{image} ../../../images/serverless-custom-threshold-rule.png
+:::{image} /solutions/images/serverless-custom-threshold-rule.png
 :alt: Rule details (custom threshold)
 :screenshot:
 :::
@@ -130,7 +130,7 @@ The behavior of the alert depends on whether any **group alerts by** fields are 
 ::::{note} 
 **How to untrack decommissioned hosts**
 
-If a host (for example, `host-1`) is decommissioned, you probably no longer want to see "no data" alerts about it. To mark an alert as untracked: Go to the Alerts table, click the ![More actions](../../../images/serverless-boxesHorizontal.svg "") icon to expand the "More actions" menu, and click *Mark as untracked*.
+If a host (for example, `host-1`) is decommissioned, you probably no longer want to see "no data" alerts about it. To mark an alert as untracked: Go to the Alerts table, click the ![More actions](/solutions/images/serverless-boxesHorizontal.svg "") icon to expand the "More actions" menu, and click *Mark as untracked*.
 
 ::::
 
@@ -179,7 +179,7 @@ For more information on creating connectors, refer to [Connectors](../../../depl
 :::::{dropdown} Action frequency
 After you select a connector, you must set the action frequency. You can choose to create a summary of alerts on each check interval or on a custom interval. Alternatively, you can set the action frequency such that you choose how often the action runs (for example, at each check interval, only when the alert status changes, or at a custom action interval). In this case, you must also select the specific threshold condition that affects when actions run: `Alert`, `No Data`, or `Recovered`.
 
-:::{image} ../../../images/serverless-custom-threshold-run-when.png
+:::{image} /solutions/images/serverless-custom-threshold-run-when.png
 :alt: Configure when a rule is triggered
 :screenshot:
 :::
@@ -189,7 +189,7 @@ You can also further refine the conditions under which actions run by specifying
 * **If alert matches query**: Enter a KQL query that defines field-value pairs or query conditions that must be met for notifications to send. The query only searches alert documents in the indices specified for the rule.
 * **If alert is generated during timeframe**: Set timeframe details. Notifications are only sent if alerts are generated within the timeframe you define.
 
-:::{image} ../../../images/serverless-logs-threshold-conditional-alert.png
+:::{image} /solutions/images/serverless-logs-threshold-conditional-alert.png
 :alt: Configure a conditional alert
 :screenshot:
 :::
@@ -198,9 +198,9 @@ You can also further refine the conditions under which actions run by specifying
 
 
 :::::{dropdown} Action variables
-Use the default notification message or customize it. You can add more context to the message by clicking the Add variable icon ![Add variable](../../../images/serverless-indexOpen.svg "") and selecting from a list of available variables.
+Use the default notification message or customize it. You can add more context to the message by clicking the Add variable icon ![Add variable](/solutions/images/serverless-indexOpen.svg "") and selecting from a list of available variables.
 
-:::{image} ../../../images/serverless-action-variables-popup.png
+:::{image} /solutions/images/serverless-action-variables-popup.png
 :alt: Action variables list
 :screenshot:
 :::

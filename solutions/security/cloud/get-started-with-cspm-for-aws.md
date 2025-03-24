@@ -84,7 +84,7 @@ For most use cases, the simplest option is to use AWS CloudFormation to automati
 7. (Optional) Switch to the AWS region where you want to deploy using the controls in the upper right corner.
 8. Tick the checkbox under **Capabilities** to authorize the creation of necessary resources.
 
-   :::{image} ../../../images/security-cspm-cloudformation-template.png
+   :::{image} /solutions/images/security-cspm-cloudformation-template.png
    :alt: The Add permissions screen in AWS
    :::
 
@@ -236,13 +236,13 @@ Follow AWS’s [IAM roles for Amazon EC2](https://docs.aws.amazon.com/AWSEC2/lat
     2. On the **Select trusted entity** page, under **Trusted entity type**, select **AWS service**.
     3. Under **Use case**, select **EC2**. Click **Next**.
 
-       :::{image} ../../../images/security-cspm-aws-auth-1.png
+       :::{image} /solutions/images/security-cspm-aws-auth-1.png
        :alt: The Select trusted entity screen in AWS
        :::
 
     4. On the **Add permissions** page, search for and select `SecurityAudit`. Click **Next**.
 
-       :::{image} ../../../images/security-cspm-aws-auth-2.png
+       :::{image} /solutions/images/security-cspm-aws-auth-2.png
        :alt: The Add permissions screen in AWS
        :::
 
@@ -253,7 +253,7 @@ Follow AWS’s [IAM roles for Amazon EC2](https://docs.aws.amazon.com/AWSEC2/lat
     1. In AWS, select an EC2 instance.
     2. Select **Actions > Security > Modify IAM role**.
 
-       :::{image} ../../../images/security-cspm-aws-auth-3.png
+       :::{image} /solutions/images/security-cspm-aws-auth-3.png
        :alt: The EC2 page in AWS
        :::
 

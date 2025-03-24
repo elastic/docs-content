@@ -31,7 +31,7 @@ The pattern set here only restricts what the {{uptime-app}} displays. You can st
 ::::
 
 
-:::{image} ../../../images/observability-heartbeat-indices.png
+:::{image} /solutions/images/observability-heartbeat-indices.png
 :alt: {{heartbeat}} indices
 :screenshot:
 :::
@@ -45,7 +45,7 @@ Click **Create connector** and follow the prompts to select a connector type and
 
 For more information about each connector, see [action types and connectors](../../../deploy-manage/manage-connectors.md).
 
-:::{image} ../../../images/observability-alert-connector.png
+:::{image} /solutions/images/observability-alert-connector.png
 :alt: Rule connector
 :screenshot:
 :::
@@ -62,7 +62,7 @@ You can modify certificate thresholds to control how Uptime displays your TLS va
 
 A standard security requirement is to make sure that your TLS certificates have not been valid for longer than a year. To help you keep track of which certificates you may want to refresh, modify the **Age limit** value to `365` days.
 
-:::{image} ../../../images/observability-cert-expiry-settings.png
+:::{image} /solutions/images/observability-cert-expiry-settings.png
 :alt: Certificate expiry settings
 :screenshot:
 :::

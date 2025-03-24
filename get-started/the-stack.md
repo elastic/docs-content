@@ -42,7 +42,7 @@ $$$stack-components-agent$$$
 
     {{fleet}} enables you to centrally manage {{agents}} and their policies. Use {{fleet}} to monitor the state of all your {{agents}}, manage agent policies, and upgrade {{agent}} binaries or integrations.
 
-    [Learn more about {{fleet}} and {{agent}}](/reference/ingestion-tools/fleet/index.md).
+    [Learn more about {{fleet}} and {{agent}}](/reference/fleet/index.md).
 
 
 $$$stack-components-apm$$$
@@ -53,7 +53,7 @@ APM
 $$$stack-components-beats$$$
 
 {{beats}}
-:   {{beats}} are data shippers that you install as agents on your servers to send operational data to {{es}}. {{beats}} are available for many standard observability data scenarios, including audit data, log files and journals, cloud data, availability, metrics, network traffic, and Windows event logs. [Learn more about {{beats}}](asciidocalypse://docs/beats/docs/reference/index.md).
+:   {{beats}} are data shippers that you install as agents on your servers to send operational data to {{es}}. {{beats}} are available for many standard observability data scenarios, including audit data, log files and journals, cloud data, availability, metrics, network traffic, and Windows event logs. [Learn more about {{beats}}](beats://reference/index.md).
 
 $$$stack-components-ingest-pipelines$$$
 

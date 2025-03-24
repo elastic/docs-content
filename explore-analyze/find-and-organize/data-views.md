@@ -42,7 +42,7 @@ If you collected data using one of the {{kib}} [ingest options](../../manage-dat
 
 1. Open **Lens** or **Discover**, and then open the data view menu.
 
-   :::{image} ../../images/kibana-discover-data-view.png
+   :::{image} /explore-analyze/images/kibana-discover-data-view.png
    :alt: How to set the {{data-source}} in Discover
    :screenshot:
    :width: 50%
@@ -51,7 +51,7 @@ If you collected data using one of the {{kib}} [ingest options](../../manage-dat
 2. Click **Create a {{data-source}}**.
 3. Give your {{data-source}} a name.
 4. Start typing in the **Index pattern** field, and {{kib}} looks for the names of indices, data streams, and aliases that match your input. You can view all available sources or only the sources that the data view targets.
-   ![Create data view](../../images/kibana-create-data-view.png "")
+   ![Create data view](/explore-analyze/images/kibana-create-data-view.png "")
 
     * To match multiple sources, use a wildcard (*). `filebeat-*` matches `filebeat-apache-a`, `filebeat-apache-b`, and so on.
     * To match multiple single sources, enter their names, separated by a comma.  Do not include a space after the comma. `filebeat-a,filebeat-b` matches two indices.
@@ -79,7 +79,7 @@ Want to explore your data or create a visualization without saving it as a data 
 
 A temporary {{data-source}} remains in your space until you change apps, or until you save it.
 
-:::{image} ../../images/ad-hoc-data-view.gif
+:::{image} /explore-analyze/images/ad-hoc-data-view.gif
 :alt: how to create an ad-hoc data view
 :screenshot:
 :::
@@ -169,7 +169,7 @@ Deleting a {{data-source}} breaks all visualizations, saved Discover sessions, a
 
 
 1. Go to the **Data Views** management page using the navigation menu or the [global search field](../../explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. Find the {{data-source}} that you want to delete, and then click ![Delete icon](../../images/kibana-delete.png "") in the **Actions** column.
+2. Find the {{data-source}} that you want to delete, and then click ![Delete icon](/explore-analyze/images/kibana-delete.png "") in the **Actions** column.
 
 
 ## {{data-source}} field cache [data-view-field-cache]
@@ -233,7 +233,7 @@ Return `Hello World!`:
 emit("Hello World!");
 ```
 
-![Runtime field with keyword type](../../images/kibana-runtime_field.png "")
+![Runtime field with keyword type](/explore-analyze/images/kibana-runtime_field.png "")
 
 
 #### Perform a calculation on a single field [perform-a-calculation-on-a-single-field]
@@ -273,7 +273,7 @@ emit('subfield_a', 'Hello');
 emit('subfield_b', 42);
 ```
 
-![Runtime field with composite type](../../images/kibana-runtime_field_composite.png "")
+![Runtime field with composite type](/explore-analyze/images/kibana-runtime_field_composite.png "")
 
 
 #### Replace nulls with blanks [replace-nulls-with-blanks]
@@ -461,7 +461,7 @@ Built-in validation is unsupported for scripted fields. When your scripts contai
 
 1. Go to the **Data Views** management page using the navigation menu or the [global search field](../../explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Click the data view that contains the field you want to change.
-3. Find the field, then open the edit options (![Data field edit icon](../../images/kibana-edit_icon.png "")).
+3. Find the field, then open the edit options (![Data field edit icon](/explore-analyze/images/kibana-edit_icon.png "")).
 4. Select **Set custom label**, then enter a **Custom label** for the field.
 5. Select **Set format**, then enter the **Format** for the field.
 

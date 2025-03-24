@@ -12,7 +12,7 @@ Search across the layers in your map to focus on just the data you want. Combine
 
 This image shows an example of global search and global time narrowing results.
 
-:::{image} ../../../images/kibana-global_search_bar.png
+:::{image} /explore-analyze/images/kibana-global_search_bar.png
 :alt: global search and global time narrowing results
 :screenshot:
 :::
@@ -30,7 +30,7 @@ Only layers requesting data from {{es}} are narrowed by global search and global
 
 ## Narrow layers by global search [maps-narrow-layer-by-global-search]
 
-Layers that request data from {{es}} are narrowed when you submit a search. Layers narrowed by semi-structured search and filters contain the filter icon ![filter icon](../../../images/kibana-filter_icon.png "") next to the layer name in the legend.
+Layers that request data from {{es}} are narrowed when you submit a search. Layers narrowed by semi-structured search and filters contain the filter icon ![filter icon](/explore-analyze/images/kibana-filter_icon.png "") next to the layer name in the legend.
 
 To prevent the global search from applying to a layer, configure the following:
 
@@ -40,11 +40,11 @@ To prevent the global search from applying to a layer, configure the following:
 
 ## Narrow layers by global time [maps-narrow-layer-by-global-time]
 
-Layers that request data from {{es}} using a [data view](../../find-and-organize/data-views.md) with a configured time field are narrowed by the [global time](../../query-filter/filtering.md). These layers contain the clock icon ![clock icon](../../../images/kibana-clock_icon.png "") next to the layer name in the legend.
+Layers that request data from {{es}} using a [data view](../../find-and-organize/data-views.md) with a configured time field are narrowed by the [global time](../../query-filter/filtering.md). These layers contain the clock icon ![clock icon](/explore-analyze/images/kibana-clock_icon.png "") next to the layer name in the legend.
 
 Use the time slider to quickly select time slices within the global time range:
 
-1. Click ![timeslider icon](../../../images/kibana-timeslider_toggle_icon.png "") to open the time slider.
+1. Click ![timeslider icon](/explore-analyze/images/kibana-timeslider_toggle_icon.png "") to open the time slider.
 2. Click previous and next buttons to advance the time slice backward or forward.
 3. Click play to animate your spatial temporal data.
 

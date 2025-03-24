@@ -26,7 +26,7 @@ First mark the repository as read-only on the secondary deployments:
 
 3. Open your deployment’s side navigation menu (placed under the Elastic logo in the upper left corner) and go to **Stack Management > Snapshot and Restore > Repositories**.
 
-    :::{image} ../../images/elasticsearch-reference-repositories.png
+    :::{image} /troubleshoot/images/elasticsearch-reference-repositories.png
     :alt: {{kib}} Console
     :screenshot:
     :::
@@ -39,7 +39,7 @@ Note that we’re now configuring the primary (current) deployment.
 
 1. Open the primary deployment’s side navigation menu (placed under the Elastic logo in the upper left corner) and go to **Stack Management > Snapshot and Restore > Repositories**.
 
-    :::{image} ../../images/elasticsearch-reference-repositories.png
+    :::{image} /troubleshoot/images/elasticsearch-reference-repositories.png
     :alt: {{kib}} Console
     :screenshot:
     :::

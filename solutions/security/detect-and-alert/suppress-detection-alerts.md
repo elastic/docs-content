@@ -67,7 +67,7 @@ You can configure alert suppression when you create or edit a supported rule typ
 
         For example, if a rule runs every 5 minutes but you don’t need alerts that frequently, you can set the suppression time period to a longer time, such as 1 hour. If the rule meets its criteria, it creates an alert at that time, and for the next hour, it’ll suppress any subsequent qualifying events.
 
-        :::{image} ../../../images/security-alert-suppression-options.png
+        :::{image} /solutions/images/security-alert-suppression-options.png
         :alt: Alert suppression options
         :::
 
@@ -102,21 +102,21 @@ After an alert is moved to the `Closed` status, it will no longer suppress new a
 
 * **Alerts** table — Icon in the **Rule** column. Hover to display the number of suppressed alerts:
 
-    :::{image} ../../../images/security-suppressed-alerts-table.png
+    :::{image} /solutions/images/security-suppressed-alerts-table.png
     :alt: Suppressed alerts icon and tooltip in Alerts table
     :screenshot:
     :::
 
 * **Alerts** table — Column for suppressed alerts count. Select **Fields** to open the fields browser, then add `kibana.alert.suppression.docs_count` to the table.
 
-    :::{image} ../../../images/security-suppressed-alerts-table-column.png
+    :::{image} /solutions/images/security-suppressed-alerts-table-column.png
     :alt: Suppressed alerts count field column in Alerts table
     :screenshot:
     :::
 
 * Alert details flyout — **Insights** → **Correlations** section:
 
-    :::{image} ../../../images/security-suppressed-alerts-details.png
+    :::{image} /solutions/images/security-suppressed-alerts-details.png
     :alt: Suppressed alerts in the Correlations section within the alert details flyout
     :screenshot:
     :::
@@ -129,7 +129,7 @@ With alert suppression, detection alerts aren’t created for the grouped source
 
 * **Alerts** table — Select **Investigate in timeline** in the **Actions** column.
 
-    :::{image} ../../../images/security-timeline-button.png
+    :::{image} /solutions/images/security-timeline-button.png
     :alt: Investigate in timeline button
     :screenshot:
     :::

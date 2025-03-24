@@ -12,7 +12,7 @@ applies_to:
 
 The Detection rule monitoring dashboard provides visualizations to help you monitor the overall health and performance of {{elastic-sec}}'s detection rules. Consult this dashboard for a high-level view of whether your rules are running successfully and how long they’re taking to run, search data, and create alerts.
 
-:::{image} ../../../images/security-rule-monitoring-overview.png
+:::{image} /solutions/images/security-rule-monitoring-overview.png
 :alt: Overview of Detection rule monitoring dashboard
 :screenshot:
 :::
@@ -47,7 +47,7 @@ The following visualizations are included:
 
 ## Visualization panel actions [rule-visualization-actions]
 
-Open a panel’s options menu (![Options menu](../../../images/security-three-dot-icon.png "title =20x20")) customize the panel or use its data for further analysis and investigation:
+Open a panel’s options menu (![Options menu](/solutions/images/security-three-dot-icon.png "title =20x20")) customize the panel or use its data for further analysis and investigation:
 
 * **Edit panel settings**: Customize the panel’s display settings. Options vary by visualization type.
 * **Inspect**: Examine the panel’s underlying data and queries.
