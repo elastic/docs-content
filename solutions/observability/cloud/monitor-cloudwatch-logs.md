@@ -44,7 +44,7 @@ AWS PrivateLink is not supported. Make sure the deployment is on AWS, because th
 
 ## Step 2: Select a CloudWatch log group to monitor [firehose-cloudwatch-step-two]
 
-:::{image} ../../../images/observability-firehose-cloudwatch-log-group.png
+:::{image} /solutions/images/observability-firehose-cloudwatch-log-group.png
 :alt: CloudWatch log group
 :::
 
@@ -88,7 +88,7 @@ With the function ready to go, you can invoke it a few times to generate sample 
 
 Visit the function’s log group. Usually, the AWS console offers a handy link to jump straight to the log group it created for this function’s logs. You should get something similar to the following:
 
-:::{image} ../../../images/observability-firehose-cloudwatch-sample-logs.png
+:::{image} /solutions/images/observability-firehose-cloudwatch-sample-logs.png
 :alt: CloudWatch log group with sample logs
 :::
 
@@ -97,7 +97,7 @@ Take note of the log group name for this Lambda function, as you will need it in
 
 ## Step 3: Create a stream in Amazon Data Firehose [firehose-cloudwatch-step-three]
 
-:::{image} ../../../images/observability-firehose-cloudwatch-firehose-stream.png
+:::{image} /solutions/images/observability-firehose-cloudwatch-firehose-stream.png
 :alt: Amazon Firehose Stream
 :::
 
@@ -135,7 +135,7 @@ The Firehose stream is now ready to send logs to your Elastic Cloud deployment.
 
 ## Step 4: Send Lambda function log events to a Firehose stream [firehose-cloudwatch-step-four]
 
-:::{image} ../../../images/observability-firehose-cloudwatch-subscription-filter.png
+:::{image} /solutions/images/observability-firehose-cloudwatch-subscription-filter.png
 :alt: CloudWatch subscription filter
 :::
 
@@ -211,7 +211,7 @@ On the [AWS console](https://console.aws.amazon.com/), navigate to your Firehose
 
 If everything is running smoothly, this list is empty. If there’s an error, you can check the details. The following example shows a delivery stream that fails to send records to the Elastic stack due to bad authentication settings:
 
-:::{image} ../../../images/observability-firehose-cloudwatch-destination-errors.png
+:::{image} /solutions/images/observability-firehose-cloudwatch-destination-errors.png
 :alt: Firehose destination errors
 :::
 
@@ -223,7 +223,7 @@ The Firehose delivery stream reports:
 
 ## Step 5: Visualize your logs in {{kib}} [firehose-cloudwatch-step-five]
 
-:::{image} ../../../images/observability-firehose-cloudwatch-data-stream.png
+:::{image} /solutions/images/observability-firehose-cloudwatch-data-stream.png
 :alt: Vizualize logs in Kibana
 :::
 
@@ -231,6 +231,6 @@ With the logs streaming to the Elastic stack, you can now visualize them in {{ki
 
 In {{kib}}, navigate to the **Discover** page and select the index pattern that matches the Firehose stream name. Here is a sample of logs from the Lambda function you forwarded to the `logs-aws.generic-default` data stream:
 
-:::{image} ../../../images/observability-firehose-cloudwatch-verify-discover.png
+:::{image} /solutions/images/observability-firehose-cloudwatch-verify-discover.png
 :alt: Sample logs in Discover
 :::

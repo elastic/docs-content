@@ -36,5 +36,5 @@ Here’s a list of integrations for various behavioral detection use cases:
 * [Living off the Land Attack Detection](https://docs.elastic.co/en/integrations/problemchild)
 * [Network Beaconing Identification](https://docs.elastic.co/en/integrations/beaconing)
 
-To learn more about {{ml}} jobs enabled by these integrations, refer to the [Prebuilt anomaly detection jobs page](/reference/security/prebuilt-anomaly-detection-jobs.md).
+To learn more about {{ml}} jobs enabled by these integrations, refer to [](/reference/data-analysis/machine-learning/ootb-ml-jobs-siem.md).
 

@@ -69,7 +69,7 @@ Connections through Cloud IDs are only supported in Beats and Logstash.
 
 Cloud IDs are available in every deployment page, as showed below:
 
-:::{image} ../../../images/cloud-enterprise-ec-ce-cloud-id.png
+:::{image} /deploy-manage/images/cloud-enterprise-ec-ce-cloud-id.png
 :alt: The Cloud ID and `elastic` user information shown when you create a deployment
 :::
 

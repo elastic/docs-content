@@ -69,13 +69,13 @@ Double-click the downloaded `.msi` package to launch a GUI wizard that will guid
 
 You will first be presented with a welcome screen:
 
-:::{image} ../../../images/elasticsearch-reference-installer_started.png
+:::{image} /explore-analyze/images/elasticsearch-reference-installer_started.png
 :alt: Installer Welcome Screen
 :::
 
 Clicking **Next** will present the End User License Agreement. You will need to accept the license agreement in order to continue the installation.
 
-:::{image} ../../../images/elasticsearch-reference-installer_accept_license.png
+:::{image} /explore-analyze/images/elasticsearch-reference-installer_accept_license.png
 :alt: Installer EULA Screen
 :::
 
@@ -86,7 +86,7 @@ The default installation path is of the format: **%ProgramFiles%\Elastic\ODBCDri
 ::::
 
 
-:::{image} ../../../images/elasticsearch-reference-installer_choose_destination.png
+:::{image} /explore-analyze/images/elasticsearch-reference-installer_choose_destination.png
 :alt: Installer Driver Path
 :::
 
@@ -97,19 +97,19 @@ You will require elevated privileges (administrator) for installation.
 ::::
 
 
-:::{image} ../../../images/elasticsearch-reference-installer_ready_install.png
+:::{image} /explore-analyze/images/elasticsearch-reference-installer_ready_install.png
 :alt: Installer Begin
 :::
 
 Assuming the installation takes place without error you should see progress screen, followed by the finish screen:
 
-:::{image} ../../../images/elasticsearch-reference-installer_installing.png
+:::{image} /explore-analyze/images/elasticsearch-reference-installer_installing.png
 :alt: Installer Installing
 :::
 
 On the finish screen you can launch the ODBC Data Source Administration screen by checking the dialog checkbox. This will automatically launch the configuration screen on close (either 32 bit or 64 bit) where you can configure a DSN.
 
-:::{image} ../../../images/elasticsearch-reference-installer_finish.png
+:::{image} /explore-analyze/images/elasticsearch-reference-installer_finish.png
 :alt: Installer Complete
 :::
 
@@ -180,7 +180,7 @@ An installed program can be uninstalled by pressing the Windows key and typing `
 
 Once opened, find the Elasticsearch ODBC Driver installation within the list of installed applications, click and choose `Uninstall`:
 
-:::{image} ../../../images/elasticsearch-reference-uninstall.png
+:::{image} /explore-analyze/images/elasticsearch-reference-uninstall.png
 :alt: uninstall
 :name: odbc-msi-installer-uninstall
 :::

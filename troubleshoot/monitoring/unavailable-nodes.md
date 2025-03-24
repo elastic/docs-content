@@ -1,6 +1,6 @@
 ---
 navigation_title: "Unavailable nodes"
-applies: 
+applies:
   hosted:
 mapped_urls:
   - https://www.elastic.co/guide/en/cloud/current/ec-scenario_why_is_my_node_unavailable.html
@@ -53,7 +53,7 @@ If your issue is not addressed here, then [contact Elastic support for help](/tr
 
 3. On your deployment page, scroll down to **Instances** and check if the disk allocation for your {{es}} instance is over 90%.
 
-    :::{image} /images/cloud-ec-full-disk-single-node.png
+    :::{image} /troubleshoot/images/cloud-ec-full-disk-single-node.png
     :alt: Full disk on single-node deployment
     :::
 
@@ -78,7 +78,7 @@ If your {{es}} cluster is unhealthy and reports a status of red, then increasing
 
     From your deployment menu, go to the **Edit** page and increase the **Size per zone** for your Hot data and Content tiers.
 
-    :::{image} /images/cloud-ec-increase-size-per-zone.png
+    :::{image} /troubleshoot/images/cloud-ec-increase-size-per-zone.png
     :alt: Increase size per zone
     :::
 
@@ -94,13 +94,13 @@ If your {{es}} cluster is unhealthy and reports a status of red, then increasing
 1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
 2. From the {{es}} Service panel, click the **Quick link** icon corresponding to the deployment that you want to manage.
 
-    :::{image} /images/cloud-ec-quick-link-to-deployment.png
+    :::{image} /troubleshoot/images/cloud-ec-quick-link-to-deployment.png
     :alt: Quick link to the deployment page
     :::
 
 3. On your deployment page, scroll down to **Instances** and check if the disk allocation for any of your {{es}} instances is over 90%.
 
-    :::{image} /images/cloud-ec-full-disk-multiple-nodes.png
+    :::{image} /troubleshoot/images/cloud-ec-full-disk-multiple-nodes.png
     :alt: Full disk on multiple-nodes deployment
     :::
 
@@ -125,13 +125,13 @@ If your {{es}} cluster is unhealthy and reports a status of red, the scale up co
 
     1. On your deployment page, scroll down to **Instances** and identify the node attribute of the instances that are running out of disk space.
 
-        :::{image} /images/cloud-ec-node-attribute.png
+        :::{image} /troubleshoot/images/cloud-ec-node-attribute.png
         :alt: Instance node attribute
         :::
 
     2. Use the node types identified at step 1 to find out the corresponding data tier.
 
-        :::{image} /images/cloud-ec-node-types-data-tiers.png
+        :::{image} /troubleshoot/images/cloud-ec-node-types-data-tiers.png
         :alt: Node type and corresponding attribute
         :::
 
@@ -159,7 +159,7 @@ If your {{es}} cluster is unhealthy and reports a status of red, the scale up co
 
 3. On your deployment page, scroll down to **Instances** and check if the JVM memory pressure for your {{es}} instances is high.
 
-    :::{image} /images/cloud-ec-deployment-instances-config.png
+    :::{image} /troubleshoot/images/cloud-ec-deployment-instances-config.png
     :alt: Deployment instances configuration
     :::
 
@@ -225,7 +225,7 @@ By default, the allowed CPU usage threshold is set at 85%.
 
 3. Identify the IDs of your master nodes. On your deployment page, scroll down to **Instances** and filter your instance configuration by master. The IDs of your master nodes are in the title. In this example, the IDs are 21, 26 and 27:
 
-    :::{image} /images/cloud-ec-instances-filtered-by-master-id.png
+    :::{image} /troubleshoot/images/cloud-ec-instances-filtered-by-master-id.png
     :alt: Instances configuration filtered by master nodes ID
     :::
 

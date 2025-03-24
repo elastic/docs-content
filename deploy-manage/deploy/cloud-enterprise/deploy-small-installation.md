@@ -14,7 +14,7 @@ The type of installation is recommended for development, test, and small-scale u
 * 3 hosts with 128 GB RAM
 * 3 availability zones
 
-:::{image} ../../../images/cloud-enterprise-ece-pb-3.png
+:::{image} /deploy-manage/images/cloud-enterprise-ece-pb-3.png
 :alt: A small baseline installation with three hosts across three availability zones
 :::
 

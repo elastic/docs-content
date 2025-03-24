@@ -28,7 +28,7 @@ A formerly-healthy cluster might have unassigned shards because nodes have dropp
 
 If a cluster has unassigned shards, you might see an error message such as this on the Elastic Cloud console:
 
-:::{image} /images/cloud-ec-unhealthy-deployment.png
+:::{image} /troubleshoot/images/cloud-ec-unhealthy-deployment.png
 :alt: Unhealthy deployment error message
 :::
 
@@ -177,13 +177,13 @@ If you are shipping logs and metrics to a monitoring deployment, go through the 
 4. Click **Save**. It might take a few minutes to apply the configuration changes.
 5. Click **View** to open the Kibana UI and get more details on metrics and logs.
 
-:::{image} /images/cloud-ec-logs-metrics-page.png
+:::{image} /troubleshoot/images/cloud-ec-logs-metrics-page.png
 :alt: Log and metrics page
 :::
 
 The unhealthy indices appear with a red or yellow status.
 
-:::{image} /images/cloud-ec-red-yellow-indices.png
+:::{image} /troubleshoot/images/cloud-ec-red-yellow-indices.png
 :alt: Unhealthy indices in red or yellow status
 :::
 

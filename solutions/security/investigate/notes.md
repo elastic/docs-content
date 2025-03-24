@@ -22,11 +22,11 @@ You can control access to notes by setting the [{{kib}} privileges](../../../dep
 
 ## View and add notes to alerts and events [notes-alerts-events]
 
-Open the alert or event details flyout to access the **Notes** tab, where you can view existing notes and add new ones. To quickly open the tab, click the **Add note** action (![Add note action](../../../images/security-create-note-icon.png "title =20x20")) in the Alerts or Events table. Then, enter a note into the text box, and click **Add note** to create it.
+Open the alert or event details flyout to access the **Notes** tab, where you can view existing notes and add new ones. To quickly open the tab, click the **Add note** action (![Add note action](/solutions/images/security-create-note-icon.png "title =20x20")) in the Alerts or Events table. Then, enter a note into the text box, and click **Add note** to create it.
 
 After notes are created, the **Add note** icon displays a notification dot. In the details flyout for alerts, the alert summary in the right panel also shows how many notes are attached to the alert.
 
-:::{image} ../../../images/security-new-note-alert-event.png
+:::{image} /solutions/images/security-new-note-alert-event.png
 :alt: New note added to an alert
 :screenshot:
 :::
@@ -43,7 +43,7 @@ Open the **Notes** Timeline tab, where you can view existing notes for the Timel
 
 After notes are created, the **Notes** Timeline tab displays the total number of notes attached to the Timeline.
 
-:::{image} ../../../images/security-new-note-timeline-tab.png
+:::{image} /solutions/images/security-new-note-timeline-tab.png
 :alt: New note added to a Timeline
 :screenshot:
 :::
@@ -57,10 +57,10 @@ Use the **Notes** page to view and interact with all existing notes. To access t
 * Filter notes by the user who created them or by the object they’re attached to (notes can be attached to alerts, events, or Timelines)
 * Examine the contents of a note (click the text in the **Note content** column)
 * Delete one or more notes
-* Examine the alert or event that a note is attached to (click the **Expand alert/event details** ![Preview alert or event action](../../../images/security-notes-page-document-details.png "title =20x20") icon)
-* Open the Timeline that the note is attached to (click the **Open saved timeline** ![Open Timeline action](../../../images/security-notes-page-timeline-details.png "title =20x20") icon)
+* Examine the alert or event that a note is attached to (click the **Expand alert/event details** ![Preview alert or event action](/solutions/images/security-notes-page-document-details.png "title =20x20") icon)
+* Open the Timeline that the note is attached to (click the **Open saved timeline** ![Open Timeline action](/solutions/images/security-notes-page-timeline-details.png "title =20x20") icon)
 
-:::{image} ../../../images/security-notes-management-page.png
+:::{image} /solutions/images/security-notes-management-page.png
 :alt: Notes management page
 :screenshot:
 :::

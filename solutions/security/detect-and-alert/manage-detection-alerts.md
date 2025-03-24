@@ -12,7 +12,7 @@ applies_to:
 
 The Alerts page displays all detection alerts. From the Alerts page, you can filter alerts, view alerting trends, change the status of alerts, add alerts to cases, and start investigating and analyzing alerts.
 
-:::{image} ../../../images/security-alert-page.png
+:::{image} /solutions/images/security-alert-page.png
 :alt: Alerts page overview
 :screenshot:
 :::
@@ -24,7 +24,7 @@ The Alerts page offers various ways for you to organize and triage detection ale
 
 * View an alert’s details. Click the **View details** button from the Alerts table to open the alert details flyout. Learn more at [View detection alert details](/solutions/security/detect-and-alert/view-detection-alert-details.md).
 
-    :::{image} ../../../images/security-view-alert-details.png
+    :::{image} /solutions/images/security-view-alert-details.png
     :alt: View details button
     :screenshot:
     :::
@@ -37,7 +37,7 @@ The Alerts page offers various ways for you to organize and triage detection ale
 * Visualize and group alerts by specific fields in the visualization section. Use the buttons on the left to select a view type (**Summary**, **Trend**, **Counts**, or **Treemap**), and use the menus on the right to select the ECS fields used for grouping alerts. Refer to [Visualize detection alerts](/solutions/security/detect-and-alert/visualize-detection-alerts.md) for more on each view type.
 * Hover over a value to display available [inline actions](/solutions/security/get-started/elastic-security-ui.md#inline-actions), such as **Filter In**, **Filter Out**, and **Add to timeline**. Click the expand icon for more options, including **Show top *x*** and **Copy to Clipboard**. The available options vary based on the type of data.
 
-    :::{image} ../../../images/security-inline-actions-menu.png
+    :::{image} /solutions/images/security-inline-actions-menu.png
     :alt: Inline additional actions menu
     :screenshot:
     :::
@@ -49,7 +49,7 @@ The Alerts page offers various ways for you to organize and triage detection ale
     ::::
 
 
-    :::{image} ../../../images/security-additional-filters.png
+    :::{image} /solutions/images/security-additional-filters.png
     :alt: Alerts table with Additional filters menu highlighted
     :screenshot:
     :::
@@ -61,7 +61,7 @@ The Alerts page offers various ways for you to organize and triage detection ale
 
 By default, the drop-down controls on the Alerts page filter alerts by **Status**, **Severity**, **User**, and **Host**. You can edit them to filter by different fields, as well as remove, add, and reorder them if you prefer a different order.
 
-:::{image} ../../../images/security-alert-page-dropdown-controls.png
+:::{image} /solutions/images/security-alert-page-dropdown-controls.png
 :alt: Alerts page with drop-down controls highlighted
 :screenshot:
 :::
@@ -75,13 +75,13 @@ By default, the drop-down controls on the Alerts page filter alerts by **Status*
 ::::
 
 
-1. Click the three-dot icon next to the controls (![More actions](../../../images/security-three-dot-icon-blue.png "title =20x20")), then select **Edit Controls**.
+1. Click the three-dot icon next to the controls (![More actions](/solutions/images/security-three-dot-icon-blue.png "title =20x20")), then select **Edit Controls**.
 2. Do any of the following:
 
-    * To reorder controls, click and drag a control by its handle (![Reorder](../../../images/security-handle-icon.png "title =20x20")).
-    * To remove a control, hover over it and select **Remove control** (![Remove](../../../images/security-red-x-icon.png "title =20x20")).
-    * To edit a control, hover over it and select **Edit control** (![Edit](../../../images/security-pencil-icon.png "title =20x20")).
-    * To add a new control, click **Add Controls** (![Add](../../../images/security-add-icon-blue.png "title =20x20")). If you already have four controls, you must first remove one to make room for the new one.
+    * To reorder controls, click and drag a control by its handle (![Reorder](/solutions/images/security-handle-icon.png "title =20x20")).
+    * To remove a control, hover over it and select **Remove control** (![Remove](/solutions/images/security-red-x-icon.png "title =20x20")).
+    * To edit a control, hover over it and select **Edit control** (![Edit](/solutions/images/security-pencil-icon.png "title =20x20")).
+    * To add a new control, click **Add Controls** (![Add](/solutions/images/security-add-icon-blue.png "title =20x20")). If you already have four controls, you must first remove one to make room for the new one.
 
 3. If you’re editing or adding a control, do the following in the configuration flyout that opens:
 
@@ -89,7 +89,7 @@ By default, the drop-down controls on the Alerts page filter alerts by **Status*
     2. Enter a **Label** to identify the control.
     3. Click **Save and close**.
 
-4. Click **Save pending changes** (![Save](../../../images/security-save-icon-blue.png "title =20x20")).
+4. Click **Save pending changes** (![Save](/solutions/images/security-save-icon-blue.png "title =20x20")).
 
 
 ## Group alerts [group-alerts]
@@ -98,7 +98,7 @@ You can group alerts by rule name, user name, host name, source IP address, or a
 
 Select up to three fields for grouping alerts. The groups will nest in the order you selected them, and the nesting order is displayed above the table next to **Group alerts by**.
 
-:::{image} ../../../images/security-group-alerts.png
+:::{image} /solutions/images/security-group-alerts.png
 :alt: Alerts table with Group alerts by drop-down
 :screenshot:
 :::
@@ -108,9 +108,9 @@ Each group displays information such as the alerts' severity and how many users,
 To interact with grouped alerts:
 
 * Select the **Take actions** menu to perform a bulk action on all alerts in a group, such as [changing their status](/solutions/security/detect-and-alert/manage-detection-alerts.md#detection-alert-status).
-* Click a group’s name or the expand icon (![Grouped alerts expand](../../../images/security-expand-icon-vertical-right.png "title =20x20")) to display alerts within that group. You can filter and customize this view like any other alerts table.
+* Click a group’s name or the expand icon (![Grouped alerts expand](/solutions/images/security-expand-icon-vertical-right.png "title =20x20")) to display alerts within that group. You can filter and customize this view like any other alerts table.
 
-    :::{image} ../../../images/security-group-alerts-expand.png
+    :::{image} /solutions/images/security-group-alerts-expand.png
     :alt: Expanded alert group with alerts table
     :screenshot:
     :::
@@ -127,7 +127,7 @@ Use the toolbar buttons in the upper-left of the Alerts table to customize the c
 
 Click the **Full screen** button in the upper-right to view the table in full-screen mode.
 
-:::{image} ../../../images/security-alert-table-toolbar-buttons.png
+:::{image} /solutions/images/security-alert-table-toolbar-buttons.png
 :alt: Alerts table with toolbar buttons highlighted
 :screenshot:
 :::
@@ -137,7 +137,7 @@ Use the view options drop-down in the upper-right of the Alerts table to control
 * **Grid view**: Displays alerts in a traditional table view with columns for each field
 * **Event rendered view**: Display alerts in a descriptive event flow that includes relevant details and context about the event.
 
-:::{image} ../../../images/security-event-rendered-view.png
+:::{image} /solutions/images/security-event-rendered-view.png
 :alt: Alerts table with the Event rendered view enabled
 :screenshot:
 :::
@@ -176,7 +176,7 @@ To change an alert’s status, do one of the following:
 * In the Alerts table, click **More actions** (**…​**) in the alert’s row, then select a status.
 * In the Alerts table, select the alerts you want to change, click **Selected *x* alerts** at the upper-left above the table, and then select a status.
 
-    :::{image} ../../../images/security-alert-change-status.png
+    :::{image} /solutions/images/security-alert-change-status.png
     :alt: Bulk action menu with multiple alerts selected
     :screenshot:
     :::
@@ -210,7 +210,7 @@ To apply or remove alert tags on individual alerts, do one of the following:
 
 To apply or remove alert tags on multiple alerts, select the alerts you want to change, then click **Selected *x* alerts** at the upper-left above the table. Click **Apply alert tags**, select or unselect tags, then click **Apply tags**.
 
-:::{image} ../../../images/security-bulk-apply-alert-tag.png
+:::{image} /solutions/images/security-bulk-apply-alert-tag.png
 :alt: Bulk action menu with multiple alerts selected
 :screenshot:
 :::
@@ -234,14 +234,14 @@ Users are not notified when they’ve been assigned to, or unassigned from, aler
 
 Show users that have been assigned to alerts by adding the **Assignees** column to the Alerts table (**Fields** → `kibana.alert.workflow_assignee_ids`). Up to four assigned users can appear in the **Assignees** column. If an alert is assigned to five or more users, a number appears instead.
 
-:::{image} ../../../images/security-alert-assigned-alerts.png
+:::{image} /solutions/images/security-alert-assigned-alerts.png
 :alt: Alert assignees in the Alerts table
 :screenshot:
 :::
 
 Assigned users are automatically displayed in the alert details flyout. Up to two assigned users can be shown in the flyout. If an alert is assigned to three or more users, a numbered badge displays instead.
 
-:::{image} ../../../images/security-alert-flyout-assignees.png
+:::{image} /solutions/images/security-alert-flyout-assignees.png
 :alt: Alert assignees in the alert details flyout
 :screenshot:
 :::
@@ -251,7 +251,7 @@ Assigned users are automatically displayed in the alert details flyout. Up to tw
 
 Click the **Assignees** filter above the Alerts table, then select the users you want to filter by.
 
-:::{image} ../../../images/security-alert-filter-assigned-alerts.png
+:::{image} /solutions/images/security-alert-filter-assigned-alerts.png
 :alt: Filtering assigned alerts
 :screenshot:
 :::
@@ -270,14 +270,14 @@ For information about exceptions and how to use them, refer to [Add and manage e
 
 * To view a single alert in Timeline, click the **Investigate in timeline** button in the Alerts table. Alternatively, select **Take action** → **Investigate in timeline** in the alert details flyout.
 
-    :::{image} ../../../images/security-timeline-button.png
+    :::{image} /solutions/images/security-timeline-button.png
     :alt: Investigate in timeline button
     :screenshot:
     :::
 
 * To view multiple alerts in Timeline (up to 2,000), select the checkboxes next to the alerts, then click **Selected *x* alerts** → **Investigate in timeline**.
 
-    :::{image} ../../../images/security-bulk-add-alerts-to-timeline.png
+    :::{image} /solutions/images/security-bulk-add-alerts-to-timeline.png
     :alt: Bulk add alerts to timeline button
     :::
 

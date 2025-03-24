@@ -20,7 +20,7 @@ You can also manage inference endpoints using the UI.
 
 The **Inference endpoints** page provides an interface for managing inference endpoints.
 
-:::{image} ../../images/kibana-inference-endpoints-ui.png
+:::{image} /explore-analyze/images/kibana-inference-endpoints-ui.png
 :alt: Inference endpoints UI
 :screenshot:
 :::

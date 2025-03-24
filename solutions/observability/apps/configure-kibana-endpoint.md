@@ -12,7 +12,7 @@ applies_to:
 
 
 ::::{note}
-![supported deployment methods](../../../images/observability-binary-yes-fm-no.svg "")
+![supported deployment methods](/solutions/images/observability-binary-yes-fm-no.svg "")
 
 You must configure the {{kib}} endpoint when running the APM Server binary with a non-{{es}} output. Configuring the {{kib}} endpoint allows the APM Server to communicate with {{kib}} and ensure that the APM integration was properly set up. It is also required for APM agent configuration when using an output other than {{es}}.
 

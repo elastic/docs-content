@@ -10,7 +10,7 @@ navigation_title: "Use the Synthetics UI"
 
 You can create synthetic monitors directly in the UI by opening an Observability project and navigating to **Synthetics**.
 
-:::{image} ../../../images/observability-synthetics-get-started-ui.png
+:::{image} /solutions/images/observability-synthetics-get-started-ui.png
 :alt: Diagram showing which pieces of software are used to configure monitors
 :::
 
@@ -49,7 +49,7 @@ To use the UI to add a lightweight monitor:
     :::::{note}
     If you’ve [added a {{private-location}}](../../../solutions/observability/apps/monitor-resources-on-private-networks.md), you’ll see your the {{private-location}} in the list of *Locations*.
 
-    :::{image} ../../../images/serverless-private-locations-monitor-locations.png
+    :::{image} /solutions/images/serverless-private-locations-monitor-locations.png
     :alt: Screenshot of Monitor locations options including a {private-location}
     :screenshot:
     :::
@@ -61,7 +61,7 @@ To use the UI to add a lightweight monitor:
 7. (Optional) Click **Run test** to verify that the test is valid.
 8. Click **Create monitor**.
 
-    :::{image} ../../../images/observability-synthetics-get-started-ui-lightweight.png
+    :::{image} /solutions/images/observability-synthetics-get-started-ui-lightweight.png
     :alt: Synthetics Create monitor UI
     :screenshot:
     :::
@@ -90,7 +90,7 @@ To use the UI to add a browser monitor:
 4. Set the *Frequency*.
 5. Add steps to the **Script editor** code block directly. The `journey` keyword isn’t required, and variables like `page` and `params` will be part of your script’s scope. You cannot `import` any dependencies when using inline browser monitors.
 
-    :::{image} ../../../images/observability-synthetics-ui-inline-script.png
+    :::{image} /solutions/images/observability-synthetics-ui-inline-script.png
     :alt: Configure a synthetic monitor using an inline script in Elastic {{fleet}}
     :screenshot:
     :::

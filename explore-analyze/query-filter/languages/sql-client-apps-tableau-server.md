@@ -36,19 +36,19 @@ Restart Tableau Server.
 To load data into a workbook, add a **New Data Source** from the **Data** menu or using the icon. In the **Connectors** tab of the **Connect to Data** modal, select **Elasticsearch by Elastic**.
 
 $$$apps_tableau_server_from_connector$$$
-![Select Elasticsearch as the data source](../../../images/elasticsearch-reference-apps_tableau_server_from_connector.png "")
+![Select Elasticsearch as the data source](/explore-analyze/images/elasticsearch-reference-apps_tableau_server_from_connector.png "")
 
 Enter the information for your {{es}} instance, and click **Sign In**.
 
 $$$apps_tableau_server_connect$$$
-![Sign in](../../../images/elasticsearch-reference-apps_tableau_server_connect.png "")
+![Sign in](/explore-analyze/images/elasticsearch-reference-apps_tableau_server_connect.png "")
 
 In the main window, select your {{es}} instance as the **Database**. Then select a table to load.
 
 $$$apps_tableau_server_prepare$$$
-![Select a table to load](../../../images/elasticsearch-reference-apps_tableau_server_prepare.png "")
+![Select a table to load](/explore-analyze/images/elasticsearch-reference-apps_tableau_server_prepare.png "")
 
 Finally, generate a report.
 
 $$$apps_tableau_server_report$$$
-![Generate a report](../../../images/elasticsearch-reference-apps_tableau_server_report.png "")
+![Generate a report](/explore-analyze/images/elasticsearch-reference-apps_tableau_server_report.png "")

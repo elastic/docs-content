@@ -4,6 +4,7 @@ mapped_urls:
   - https://www.elastic.co/guide/en/cloud/current/ec-subscription-overview.html
   - https://www.elastic.co/guide/en/cloud/current/ec-select-subscription-level.html
   - https://www.elastic.co/guide/en/cloud/current/ec-licensing.html
+  - https://www.elastic.co/guide/en/cloud-heroku/current/ech-licensing.html
 applies_to:
   deployment:
     ess: all

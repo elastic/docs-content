@@ -31,7 +31,7 @@ The **Health** page provides the following information:
 * Health issues for {{kib}}, Enterprise Search, APM, and plan changes are reported in the health banner.
 * Health issues for {{es}} clusters are broken down into a table with more details on Severity, Description and Affected capabilities.
 
-:::{image} /images/cloud-es-health-page.png
+:::{image} /deploy-manage/images/cloud-es-health-page.png
 :alt: {{es}} Health page
 :::
 
@@ -41,11 +41,11 @@ The **Health** page provides the following information:
 
 You can also search and filter the table based on affected resources, such as indices, repositories, nodes, or SLM policies. Individual issues can be further expanded to get more details and guided troubleshooting.
 
-:::{image} /images/cloud-es-health-page-table.png
+:::{image} /deploy-manage/images/cloud-es-health-page-table.png
 :alt: {{es}} Health page with details and troubleshooting
 :::
 
-For each issue you can either use a troubleshooting link or get a suggestion to contact support, in case you need help. The [troubleshooting documentation](/troubleshoot/elasticsearch/elasticsearch.md) for {{es}} provides more details on specific errors.
+For more information about specific errors, refer to [](/troubleshoot/elasticsearch.md). You can also [contact us](/troubleshoot/index.md#contact-us) if you need more help.
 
 ### Health warnings [ec-es-health-warnings]
 
@@ -74,7 +74,7 @@ deployment:
   ess:
 ```
 
-{{ess}} deployments offer an additional **Performance** page to get further information about your cluster performance. 
+{{ech}} deployments offer an additional **Performance** page to get further information about your cluster performance. 
 
 If you observe issues on search and ingest operations in terms of increased latency or throughput for queries, these might not be directly reported on the **Health** page, unless they are related to shard health or master node availability. 
 
@@ -121,7 +121,7 @@ Elastic Cloud allows smaller instance sizes to get temporarily boosted vCPU when
 
 You can check the **Monitoring > Performance > CPU Credits** section of the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body), and find the related metrics:
 
-:::{image} /images/cloud-metrics-credits.png
+:::{image} /deploy-manage/images/cloud-metrics-credits.png
 :alt: CPU usage versus CPU credits over time
 :::
 
@@ -131,23 +131,23 @@ If you need your cluster to be able to sustain a certain level of performance, y
 
 We’ve compiled some guidelines to help you ensure the health of your deployments over time. These can help you to better understand the available performance metrics, and to make decisions involving performance and high availability.
 
-[Why is my node(s) unavailable?](/troubleshoot/monitoring/unavailable-nodes.md)
+[](/troubleshoot/monitoring/unavailable-nodes.md)
 :   Learn about common symptoms and possible actions that you can take to resolve issues when one or more nodes become unhealthy or unavailable.
 
-[Why are my shards unavailable?](/troubleshoot/monitoring/unavailable-shards.md)
+[](/troubleshoot/monitoring/unavailable-shards.md)
 :   Provide instructions on how to troubleshoot issues related to unassigned shards.
 
-[Why is performance degrading over time?](/troubleshoot/monitoring/performance.md)
+[](/troubleshoot/monitoring/performance.md)
 :   Address performance degradation on a smaller size Elasticsearch cluster.
 
-[Is my cluster really highly available?](/troubleshoot/monitoring/high-availability.md)
+[](/troubleshoot/monitoring/high-availability.md)
 :   High availability involves more than setting multiple availability zones (although that’s really important!). Learn how to assess performance and workloads to determine if your deployment has adequate resources to mitigate a potential node failure.
 
-[How does high memory pressure affect performance?](/troubleshoot/monitoring/high-memory-pressure.md)
+[](/troubleshoot/monitoring/high-memory-pressure.md)
 :   Learn about typical memory usage patterns, how to assess when the deployment memory usage levels are problematic, how this impacts performance, and how to resolve memory-related issues.
 
-[Why are my cluster response times suddenly so much worse?](/troubleshoot/monitoring/cluster-response-time.md)
+[](/troubleshoot/monitoring/cluster-response-time.md)
 :   Learn about the common causes of increased query response times and decreased performance in your deployment.
 
-[Why did my node move to a different host?](/troubleshoot/monitoring/node-moves-outages.md)
+[](/troubleshoot/monitoring/node-moves-outages.md)
 :   Learn about why we may, from time to time, relocate your {{ech}} deployments across hosts.

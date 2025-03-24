@@ -42,7 +42,7 @@ For more information, check [{{ech}} default provider instance configurations](c
 
 You can check the **Monitoring > Performance > CPU Credits** section of the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body), and find the related metrics:
 
-:::{image} /images/cloud-metrics-credits.png
+:::{image} /deploy-manage/images/cloud-metrics-credits.png
 :alt: CPU usage versus CPU credits over time
 :::
 
