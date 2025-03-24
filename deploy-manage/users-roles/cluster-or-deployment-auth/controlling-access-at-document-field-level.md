@@ -52,7 +52,7 @@ The specified document query:
 * Expects the same format as if it was defined in the search request
 * Supports [templating a role query](#templating-role-query) that can access the details of the currently authenticated user
 * Accepts queries written as either string values or nested JSON
-* Supports the majority of the {{es}} [Query DSL](/explore-analyze/query-filter/languages/querydsl.md), with [some limitations](../../../deploy-manage/security.md#field-document-limitations) for field and document level security
+* Supports the majority of the {{es}} [Query DSL](/explore-analyze/query-filter/languages/querydsl.md), with [some limitations](/deploy-manage/security/limitations.md#field-document-limitations) for field and document level security
 
 ::::{important}
 Omitting the `query` parameter entirely disables document level security for the respective indices permission entry.

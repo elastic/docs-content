@@ -14,14 +14,14 @@ applies_to:
 
 Add another layer of security by defining custom encryption rules for your cluster's data, {{kib}} saved objects, and settings.
 
-**In {{ecloud}}**:
+## In {{ecloud}}
 
-{{ech}} deployments and serverless projects are already encrypted at rest by default. This includes their data, objects, and settings. For serverless projects, security is fully-managed by Elastic. For {{ech}} deployments, some settings are available for you to customize the default security measures in place:
+{{ech}} deployments and {{serverless-full}} projects are already encrypted at rest by default. This includes their data, objects, and settings. For serverless projects, security is fully-managed by Elastic. For {{ech}} deployments, some settings are available for you to customize the default security measures in place:
 
 - Instead of the default, Elastic-managed encryption, you can choose to use a [customer-managed encryption key](encrypt-deployment-with-customer-managed-encryption-key.md) from one of our supported providers' KMS to encrypt your {{ech}} deployments.
 - Store sensitive settings using the [{{es}} keystore](secure-settings.md).
 
-**In {{ece}}, {{eck}} and self-managed installations**:
+## In {{ece}}, {{eck}} and self-managed installations
 
 There is no encryption at rest out of the box for deployments orchestrated using [{{ece}}](secure-your-elastic-cloud-enterprise-installation.md) and [{{eck}}](secure-your-eck-installation.md), and for [self-managed clusters](manually-configure-security-in-self-managed-cluster.md). You must instead configure disk-level encryption on your hosts. 
 
@@ -34,6 +34,3 @@ However, some native features are available for you to protect sensitive data an
 - Store sensitive settings using the [{{es}} or {{kib}} keystores](secure-settings.md).
 - Enable [encryption for {{kib}} saved objects](secure-saved-objects.md).
 - Customize [{{kib}} session parameters](kibana-session-management.md).
-
-
-
