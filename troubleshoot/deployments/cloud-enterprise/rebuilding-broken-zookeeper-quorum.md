@@ -10,7 +10,7 @@ mapped_pages:
 # Rebuilding a broken Zookeeper quorum [ece-troubleshooting-zookeeper-quorum]
 
 ::::{warning} 
-This article covers an advanced recovery method involving directly modifying Zookeeper. This process can potentially corrupt your data. Elastic recommends only following this outline after receiving [confirmation by Elastic Support](ask-for-help.md).
+This article covers an advanced recovery method involving directly modifying Zookeeper. This process can potentially corrupt your data. Elastic recommends only following this outline after receiving [confirmation by Elastic Support](/troubleshoot/index.md#contact-us).
 ::::
 
 
