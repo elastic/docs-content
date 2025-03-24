@@ -15,5 +15,5 @@ applies_to:
 # Cloud Security Posture dashboard
 
 
-:::{include} _snippets/cspm-dashboard.md
+:::{include} ../cloud_snippets/cspm-dashboard.md
 :::
