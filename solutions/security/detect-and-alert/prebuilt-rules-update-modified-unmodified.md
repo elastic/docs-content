@@ -19,7 +19,7 @@ This page provides instructions for updating modified and unmodified prebuilt ru
 
 To update rules:
 
-1. Find **Detection rules (SIEM)** in the navigation menu or by using the {kibana-ref}/introduction.html#kibana-navigation-search[global search field].
+1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. In the **Rules** table, select the **Rule Updates** tab.
 
     ::::{note}

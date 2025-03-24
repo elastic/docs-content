@@ -119,10 +119,11 @@ You can then modify the duplicated rules and, if required, delete the prebuilt o
 
 ## Update Elastic prebuilt rules [update-prebuilt-rules]
 
+::::{important}
+
 % Need serverless product tier reqs
 
-::::{important}
-The following steps are only applicable if you have an https://www.elastic.co/subscriptions/cloud[Platinum] subscription subscription or lower. If you have an Enterprise subscription, follow the guidelines in [Update modified and unmodified Elastic prebuilt rules](/solutions/security/detect-and-alert/prebuilt-rules-update-modified-unmodified.md) instead. 
+The following steps are only applicable if you have a [Platinum](https://www.elastic.co/pricing) subscription or lower. If you have an Enterprise subscription, follow the guidelines in [Update modified and unmodified Elastic prebuilt rules](/solutions/security/detect-and-alert/prebuilt-rules-update-modified-unmodified.md) instead. 
 ::::
 
 Elastic regularly updates prebuilt rules to optimize their performance and ensure they detect the latest threats and techniques. When updated versions are available for your installed prebuilt rules, the **Rule Updates** tab appears on the **Rules** page, allowing you to update your installed rules with the latest versions.
