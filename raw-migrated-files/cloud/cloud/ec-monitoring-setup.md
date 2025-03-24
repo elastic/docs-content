@@ -55,13 +55,13 @@ To learn more about what [Elasticsearch monitoring metrics](/deploy-manage/monit
 * The **Overview** tab includes information about the search and indexing performance of Elasticsearch and also provides log entries.
 * The **Nodes** tab can help you monitor cluster CPU performance, JVM strain, and free disk space.
 
-:::{image} ../../../images/cloud-ec-ce-monitoring-nodes.png
+:::{image} /raw-migrated-files/images/cloud-ec-ce-monitoring-nodes.png
 :alt: Node tab in Kibana under Stack Monitoring
 :::
 
 Some [performance metrics](/deploy-manage/monitor/access-performance-metrics-on-elastic-cloud.md) are also available directly in the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body) and don’t require looking at your monitoring deployment. If you’re ever in a rush to determine if there is a performance problem, you can get a quick overview by going to the **Performance** page from your deployment menu:
 
-:::{image} ../../../images/cloud-ec-ce-monitoring-performance.png
+:::{image} /raw-migrated-files/images/cloud-ec-ce-monitoring-performance.png
 :alt: Performance page of the Elastic Cloud console
 :::
 
@@ -78,26 +78,26 @@ If you suspect a performance issue, you can use your monitoring deployment to in
     1. Go to **Stack Management** > **Data Views** (formerly *Index Patterns*).
     2. Create a [data view](/explore-analyze/find-and-organize/data-views.md) for `elastic-cloud-logs*` and set **Timestamp field** to `@timestamp`:
 
-        :::{image} ../../../images/cloud-ec-ce-monitoring-logs.png
+        :::{image} /raw-migrated-files/images/cloud-ec-ce-monitoring-logs.png
         :alt: Create data view example in Kibana
         :::
 
 
 Navigate to the **Discover** or **Stream** pages to check if you’ve misconfigured your SAML authentication setup by filtering for `WARN` and `ERROR` level logs and viewing the specific `message` fields, for example:
 
-:::{image} ../../../images/cloud-ec-ce-monitoring-saml.png
+:::{image} /raw-migrated-files/images/cloud-ec-ce-monitoring-saml.png
 :alt: Log error in Stream page showing failed SAML authentication
 :::
 
 You can also use this page to test how problematic proxy traffic requests show up in audit logs. To illustrate, create a spurious test request from the [Elasticsearch API console](cloud://reference/cloud-hosted/ec-api-console.md):
 
-:::{image} ../../../images/cloud-ec-ce-monitoring-api-console.png
+:::{image} /raw-migrated-files/images/cloud-ec-ce-monitoring-api-console.png
 :alt: Elasticsearch API console showing a spurious request that fails
 :::
 
 You will get this request reported as a new log. Audit logs do not currently report the HTTP response status code, but they do report a correlating `event.action` column:
 
-:::{image} ../../../images/cloud-ec-ce-monitoring-new-log.png
+:::{image} /raw-migrated-files/images/cloud-ec-ce-monitoring-new-log.png
 :alt: New log entry that shows failed spurious request issued from the API console
 :::
 
@@ -122,7 +122,7 @@ On top of these default alerts that write to indices you can investigate, you mi
     3. Optional: Set up a customized message that helps you identify what the message is for.
     4. Select **Save**.
 
-    :::{image} ../../../images/cloud-ec-ce-monitoring-connector-action.png
+    :::{image} /raw-migrated-files/images/cloud-ec-ce-monitoring-connector-action.png
     :alt: Alert rule example showing settings to send a Slack notification based on CPU Usage
     :::
 
@@ -139,7 +139,7 @@ As a managed service, {{ecloud}} is here to help you manage the maintenance and 
 
 When issues come up that you need to troubleshoot, you’ll frequently start with the same queries to determine which rabbit hole to investigate further, such as [`_cluster/health`](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-health) to determine overall deployment health.
 
-:::{image} ../../../images/cloud-ec-ce-monitoring-ongoing.png
+:::{image} /raw-migrated-files/images/cloud-ec-ce-monitoring-ongoing.png
 :alt: Elasticsearch API console showing queries useful for monitoring
 :::
 

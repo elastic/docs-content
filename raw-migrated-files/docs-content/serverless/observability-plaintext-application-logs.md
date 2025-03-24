@@ -95,7 +95,7 @@ output.elasticsearch:
   api_key: "id:api_key"
 ```
 
-1. Set the `hosts` to your project’s {{es}} endpoint. Locate your project’s endpoint by clicking the help icon (![Help icon](../../../images/serverless-help.svg "")) and selecting **Endpoints**. Add the **{{es}} endpoint** to your configuration.
+1. Set the `hosts` to your project’s {{es}} endpoint. Locate your project’s endpoint by clicking the help icon (![Help icon](/raw-migrated-files/images/serverless-help.svg "")) and selecting **Endpoints**. Add the **{{es}} endpoint** to your configuration.
 2. From **Developer tools**, run the following command to create an API key that grants `manage` permissions for the `cluster` and the `filebeat-*` indices using:
 
     ```shell
