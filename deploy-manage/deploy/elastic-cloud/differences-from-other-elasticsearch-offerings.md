@@ -10,6 +10,29 @@ applies_to:
 
 This guide compares Elastic Cloud Hosted deployments with Elastic Cloud Serverless projects, highlighting key features and capabilities across different project types. Use this information to understand what's available in each deployment option or to plan migrations between platforms.
 
+## Architectural differences
+
+Elastic Cloud Serverless takes a fundamentally different approach to running the Elastic Stack compared to Elastic Cloud Hosted:
+
+| Aspect | Elastic Cloud Hosted | Elastic Cloud Serverless |
+|--------|----------------------|--------------------------|
+| Management model | Self-service infrastructure | Fully managed service |
+| Project organization | Single deployments with multiple capabilities | Separate projects for Elasticsearch, Observability, and Security |
+| Scaling | Manual or automated with configuration | Fully automated |
+| Infrastructure decisions | User manages capacity | Automatically managed by Elastic |
+| Pricing model | Based on provisioned resources | Based on actual usage |
+| Cloud providers | AWS, GCP, Azure | AWS, Azure (in preview) |
+| Upgrades | User-controlled timing | Automatically performed by Elastic |
+| User management | Elastic Cloud-managed and native Kibana users | Elastic Cloud-managed users only |
+| Backups | User-managed with Snapshot & Restore | Automatically backed up by Elastic |
+| Solutions | Full Elastic Stack per deployment | Single solution per project |
+
+In Serverless, Elastic automatically manages:
+* Cluster scaling and optimization
+* Node management and allocation
+* Shard distribution and replication
+* Resource utilization and monitoring
+
 ## Compare features [elasticsearch-differences-serverless-infrastructure-management]
 
 $$$elasticsearch-differences-serverless-feature-categories$$$
@@ -94,25 +117,6 @@ These fundamental platform capabilities apply to both deployment models:
 | Observability Logs UI                  | ✅                                | ❌                                | Not available in Security projects           |
 | Defend for Containers integration      | ✅                                | ❌                                | Not supported in Serverless architecture     |
 | Kibana navigation                      | Standard layout                   | Different layout                  | UI differences in Security projects          |
-
-## Architectural differences
-
-Elastic Cloud Serverless takes a fundamentally different approach to running the Elastic Stack compared to Elastic Cloud Hosted:
-
-| Aspect | Elastic Cloud Hosted | Elastic Cloud Serverless |
-|--------|----------------------|--------------------------|
-| Management model | Self-service infrastructure | Fully managed service |
-| Project organization | Single deployments with multiple capabilities | Separate projects for Elasticsearch, Observability, and Security |
-| Scaling | Manual or automated with configuration | Fully automated |
-| Infrastructure decisions | User manages capacity | Automatically managed by Elastic |
-| Pricing model | Based on provisioned resources | Based on actual usage |
-| Cloud providers | AWS, GCP, Azure | AWS, Azure (in preview) |
-
-In Serverless, Elastic automatically manages:
-* Cluster scaling and optimization
-* Node management and allocation
-* Shard distribution and replication
-* Resource utilization and monitoring
 
 ## Elasticsearch index sizing guidelines [elasticsearch-differences-serverless-index-size]
 
