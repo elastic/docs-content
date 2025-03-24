@@ -15,10 +15,10 @@ body:
       description: What type of issue are you reporting?
       multiple: false
       options:
-        - Not clear
+        - Inaccurate
         - Missing information
-        - Could be improved
         - I can't find what I'm looking for
+        - Other
         - Other
   - type: input
     id: link
