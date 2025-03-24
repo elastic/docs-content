@@ -1,0 +1,43 @@
+name: "Docs issue"
+description: Report documentation issues such as inaccuracies, broken links, typos, or missing information.
+title: "[Issue]: "
+labels: ["triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Hi 👋. Thanks for taking the time to fill out this issue report!
+        This form will create an issue that Elastic's docs team will triage and prioritize.
+        You can also open a PR instead.
+  - type: dropdown
+    attributes:
+      label: Type of issue
+      description: What type of issue are you reporting?
+      multiple: false
+      options:
+        - Inaccurate
+        - Missing information
+        - I can't find what I'm looking for
+        - Other
+        - Other
+  - type: input
+    id: link
+    attributes:
+      label: What documentation page is affected
+      description: Include a link to the page where you're seeing the problem.
+    validations:
+      required: true
+  - type: textarea
+    id: related
+    attributes:
+      label: What happened?
+      description: Describe the issue you're experiencing. Screenshots are valuable too!
+    validations:
+      required: true
+  - type: textarea
+    id: moreinfo
+    attributes:
+      label: Additional info
+      description: Anything else we should know?
+    validations:
+      required: false
