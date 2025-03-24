@@ -94,7 +94,7 @@ TIP: Refer to the [Troubleshoot gaps](../../../troubleshoot/security/detection-r
 
 The Gaps table provides you with information that you can use to assess the scope and severity of rule execution gaps. To control what's shown in the table, you can filter the table by gap status, select a time range for viewing gap data, and sort multiple columns. 
 
-:::{image} /solutions/images/gaps-table.png
+:::{image} /solutions/images/security-gaps-table.png
 :alt: Gaps table on the rule execution results tab
 :screenshot:
 :::
