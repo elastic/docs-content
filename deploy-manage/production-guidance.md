@@ -34,13 +34,11 @@ However, certain parts may be relevant only to self-managed clusters, as orchest
 **{{serverless-full}}** projects are fully managed and automatically scaled by Elastic. Your project’s performance and general data retention are controlled by the [Search AI Lake settings](/deploy-manage/deploy/elastic-cloud/project-settings.md#elasticsearch-manage-project-search-ai-lake-settings).
 ::::
 
-## Production guidance for other Elastic products
-(TBD / Work in progress)
-While this section focuses on {{es}} and {{kib}}, the following topics offer production considerations for other Elastic products and components:
+## Other Elastic products
+
+If you are looking for production guidance for Elastic products other than {{es}} or {{kib}}, check out the following resources:
 
 * [High availability on ECE orchestrator](/deploy-manage/deploy/cloud-enterprise/ece-ha.md)
-
-* Fleet server scalability: https://www.elastic.co/guide/en/fleet/current/fleet-server-scalability.html
-* Deploying and scaling Logstash: https://www.elastic.co/guide/en/logstash/current/deploying-and-scaling.html
-
-* APM scalability and performance: https://www.elastic.co/guide/en/observability/current/apm-processing-and-performance.html
+* [APM scalability and performance](/troubleshoot/observability/apm/processing-performance.md)
+* [Fleet server scalability](ingest-docs://reference/fleet/fleet-server-scalability.md)
+* [Deploying and scaling Logstash](logstash://reference/deploying-scaling-logstash.md)

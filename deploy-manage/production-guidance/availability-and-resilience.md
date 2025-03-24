@@ -17,7 +17,7 @@ Distributed systems like {{es}} are designed to keep working even if some of the
 {{es}} implements high availability (HA) at three key levels:
 
 * **Node level**: Running multiple nodes within the cluster to avoid single points of failure and maintain operational stability.
-* **Cluster level**: Ensuring redundancy by distributing nodes and shards across availability zones to prevent failures from affecting the entire cluster.
+* **Zone level**: Distributing nodes and shards across availability zones to tolerate multi-node failures at infrastructure level and maintain service continuity.
 * **Index level**: Configuring shard replication to protect against data loss and improve search performance by distributing queries across multiple copies.
 
 Each of these HA mechanisms contributes to {{es}}’s resilience and scalability. The appropriate strategy depends on factors such as data criticality, query patterns, and infrastructure constraints. It is up to you to determine the level of resiliency and high availability that best fits your use case. This section provides detailed guidance on designing a production-ready {{es}} deployment that balances availability, performance, and scalability.
@@ -64,3 +64,19 @@ The following pages give some recommendations for building resilient clusters of
 In addition, the following page outlines how {{ech}} and {{ece}} orchestrators implement resilience, and offers guidance to ensure your deployments follow best practices:
 
 * [Resilience in {{ech}} and {{ece}} deployments](./availability-and-resilience/resilience-in-ech.md)
+
+## Clients traffic distribution
+
+When designing a resilient {{es}} cluster, it’s critical to ensure that clients traffic—whether from {{kib}}, Logstash, Beats, {{agent}}, or other applications—is not routed to a single node. Relying on one node introduces a single point of failure, which can compromise data availability if that node becomes unavailable.
+
+To avoid this, traffic should be distributed across multiple nodes using one of the following common approaches:
+
+* Send traffic to all {{es}} nodes: A simple and effective strategy, especially in small clusters.
+* Send traffic to a dedicated subset of nodes: For example, route client requests only to hot nodes, or to coordinating-only nodes in clusters using [data tiers](/manage-data/lifecycle/data-tiers.md).
+* Use an external load balancer or reverse proxy: This can manage routing and failover logic outside the cluster itself, and it's the default method in orchestrated platforms such as {{ech}}, {{ece}}, and {{eck}}.
+
+Refer to resilience in [small clusters](availability-and-resilience/resilience-in-small-clusters.md) and [larger clusters](availability-and-resilience/resilience-in-larger-clusters.md) for more details and recommendations.
+
+::::{note}
+To ensure high availability in {{kib}}, configure it to send requests to [multiple {{es}} nodes](./kibana-load-balance-traffic.md#high-availability).
+::::

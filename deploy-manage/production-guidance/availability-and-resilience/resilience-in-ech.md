@@ -11,7 +11,7 @@ applies_to:
 With {{ech}} (ECH) and {{ece}} (ECE), your deployment can be spread across up to three separate availability zones, each hosted in an isolated infrastructure domain, such as separate data centers in the case of {{ech}}.
 
 ::::{note}
-While this document focuses on how {{ech}} handles resilience, all the concepts and suggestions are also applicable to other deployment types. For example, in {{eck}}, you can configure [availability zone distribution and node scheduling](/deploy-manage/deploy/cloud-on-k8s/advanced-elasticsearch-node-scheduling.md) through your Kubernetes platform.
+While this document focuses on how ECH and ECE handle resilience, all the concepts and suggestions described in this section are also applicable to other deployment types. For example, in {{eck}}, you can configure [availability zone distribution and node scheduling](/deploy-manage/deploy/cloud-on-k8s/advanced-elasticsearch-node-scheduling.md) through your Kubernetes platform.
 ::::
 
 Why this matters:
