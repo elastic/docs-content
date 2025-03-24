@@ -12,7 +12,7 @@ mapped_pages:
 Computer [hot spotting](https://en.wikipedia.org/wiki/Hot_spot_(computer_programming)) may occur in {{es}} when resource utilizations are unevenly distributed across [nodes](elasticsearch://reference/elasticsearch/configuration-reference/node-settings.md). Temporary spikes are not usually considered problematic, but ongoing significantly unique utilization may lead to cluster bottlenecks and should be reviewed.
 
 ::::{tip}
-If you're using {{ech}}, you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, and real-time issue detection and resolution. For more information, refer to [](/deploy-manage/monitor/autoops.md).
+If you're using {{ech}}, you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, and real-time issue detection with resolution paths. For more information, refer to [](/deploy-manage/monitor/autoops.md).
 ::::
 
 
