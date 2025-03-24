@@ -22,10 +22,6 @@ toc:
       - file: docs-content/serverless/observability-plaintext-application-logs.md
       - file: docs-content/serverless/observability-stream-log-files.md
       - file: docs-content/serverless/what-is-observability-serverless.md
-  - file: elasticsearch/elasticsearch-reference/index.md
-    children:
-      - file: elasticsearch/elasticsearch-reference/scalability.md
-  - file: kibana/kibana/index.md
   - file: observability-docs/observability/index.md
     children:
       - file: observability-docs/observability/index.md
