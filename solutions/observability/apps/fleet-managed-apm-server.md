@@ -14,7 +14,7 @@ You need {{es}} for storing and searching your data, and {{kib}} for visualizing
 
 * {{es}} cluster and {{kib}} (version 9.0) with a basic license or higher. [Learn how to install the {{stack}} on your own hardware](../../../get-started/the-stack.md).
 * Secure, encrypted connection between {{kib}} and {{es}}. For more information, see [Start the {{stack}} with security enabled](../../../deploy-manage/deploy/self-managed/installing-elasticsearch.md).
-* Internet connection for {{kib}} to download integration packages from the {{package-registry}}. Make sure the {{kib}} server can connect to `https://epr.elastic.co` on port `443`. If your environment has network traffic restrictions, there are ways to work around this requirement. See [Air-gapped environments](/reference/ingestion-tools/fleet/air-gapped.md) for more information.
+* Internet connection for {{kib}} to download integration packages from the {{package-registry}}. Make sure the {{kib}} server can connect to `https://epr.elastic.co` on port `443`. If your environment has network traffic restrictions, there are ways to work around this requirement. See [Air-gapped environments](/reference/fleet/air-gapped.md) for more information.
 * {{kib}} user with `All` privileges on {{fleet}} and {{integrations}}. Since many Integrations assets are shared across spaces, users need the {{kib}} privileges in all spaces.
 * In the {{es}} configuration, the [built-in API key service](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#api-key-service-settings) must be enabled. (`xpack.security.authc.api_key.enabled: true`)
 * In the {{kib}} configuration, the saved objects encryption key must be set. {{fleet}} requires this setting in order to save API keys and encrypt them in {{kib}}. You can either set `xpack.encryptedSavedObjects.encryptionKey` to an alphanumeric value of at least 32 characters, or run the [`kibana-encryption-keys` command](kibana://reference/commands/kibana-encryption-keys.md) to generate the key.
@@ -60,7 +60,7 @@ You can install only a single {{agent}} per host, which means you cannot run {{f
 ::::
 
 
-1. In {{fleet}}, open the **Settings** tab. For more information about these settings, see [{{fleet}} settings](/reference/ingestion-tools/fleet/fleet-settings.md).
+1. In {{fleet}}, open the **Settings** tab. For more information about these settings, see [{{fleet}} settings](/reference/fleet/fleet-settings.md).
 2. Under **Fleet Server hosts**, click **Edit hosts** and specify one or more host URLs your {{agent}}s will use to connect to {{fleet-server}}. For example, `https://192.0.2.1:8220`, where `192.0.2.1` is the host IP where you will install {{fleet-server}}. Save and apply your settings.
 
     ::::{tip}
@@ -82,8 +82,8 @@ You can install only a single {{agent}} per host, which means you cannot run {{f
 * Choose **Quick Start** if you want {{fleet}} to generate a {{fleet-server}} policy and enrollment token for you. The {{fleet-server}} policy will include a {{fleet-server}} integration plus a system integration for monitoring {{agent}}. This option generates self-signed certificates and is not recommended for production use cases.
 * Choose **Advanced** if you want to either:
 
-    * Use your own {{fleet-server}} policy. You can create a new {{fleet-server}} policy or select an existing one. Alternatively you can [create a {{fleet-server}} policy without using the UI](/reference/ingestion-tools/fleet/create-policy-no-ui.md), and select the policy here.
-    * Use your own TLS certificates to encrypt traffic between {{agent}}s and {{fleet-server}}. To learn how to generate certs, refer to [Configure SSL/TLS for self-managed {{fleet-server}}s](/reference/ingestion-tools/fleet/secure-connections.md).
+    * Use your own {{fleet-server}} policy. You can create a new {{fleet-server}} policy or select an existing one. Alternatively you can [create a {{fleet-server}} policy without using the UI](/reference/fleet/create-policy-no-ui.md), and select the policy here.
+    * Use your own TLS certificates to encrypt traffic between {{agent}}s and {{fleet-server}}. To learn how to generate certs, refer to [Configure SSL/TLS for self-managed {{fleet-server}}s](/reference/fleet/secure-connections.md).
 
 * It’s recommended you generate a unique service token for each {{fleet-server}}. For other ways to generate service tokens, see [`elasticsearch-service-tokens`](elasticsearch://reference/elasticsearch/command-line-tools/service-tokens-command.md).
 * If you are providing your own certificates:
@@ -91,7 +91,7 @@ You can install only a single {{agent}} per host, which means you cannot run {{f
     * Before running the `install` command, make sure you replace the values in angle brackets.
     * Note that the URL specified by `--url` must match the DNS name used to generate the certificate specified by `--fleet-server-cert`.
 
-* The `install` command installs the {{agent}} as a managed service and enrolls it in a {{fleet-server}} policy. For more {{fleet-server}} commands, see [{{agent}} command reference](/reference/ingestion-tools/fleet/agent-command-reference.md).
+* The `install` command installs the {{agent}} as a managed service and enrolls it in a {{fleet-server}} policy. For more {{fleet-server}} commands, see [{{agent}} command reference](/reference/fleet/agent-command-reference.md).
 
 If installation is successful, you’ll see confirmation that {{fleet-server}} connected. Click **Continue enrolling Elastic Agent** to begin enrolling your agents in {{fleet-server}}.
 
@@ -100,7 +100,7 @@ If you’re unable to add a {{fleet}}-managed agent, click the **Agents** tab an
 ::::
 
 
-For more information, refer to [{{fleet-server}}](/reference/ingestion-tools/fleet/fleet-server.md).
+For more information, refer to [{{fleet-server}}](/reference/fleet/fleet-server.md).
 
 
 ## Step 2: Add and configure the APM integration [add-apm-integration]
@@ -148,7 +148,7 @@ If you don’t have a {{fleet}} setup already in place, the easiest way to get s
 An internet connection is required to install the APM integration via the Fleet UI in Kibana.
 
 ::::{dropdown} If you don’t have an internet connection
-If your environment has network traffic restrictions, there are other ways to install the APM integration. See [Air-gapped environments](/reference/ingestion-tools/fleet/air-gapped.md) for more information.
+If your environment has network traffic restrictions, there are other ways to install the APM integration. See [Air-gapped environments](/reference/fleet/air-gapped.md) for more information.
 
 Option 1: Update `kibana.yml`
 :   Update `kibana.yml` to include the following, then restart {{kib}}.

@@ -8,7 +8,7 @@ applies_to:
 
 # Example: Enrich your data by matching a value to a range [range-enrich-policy-type]
 
-A `range` [enrich policy](data-enrichment.md#enrich-policy) uses a [`term` query](elasticsearch://reference/query-languages/query-dsl-term-query.md) to match a number, date, or IP address in incoming documents to a range of the same type in the enrich index. Matching a range to a range is not supported.
+A `range` [enrich policy](data-enrichment.md#enrich-policy) uses a [`term` query](elasticsearch://reference/query-languages/query-dsl/query-dsl-term-query.md) to match a number, date, or IP address in incoming documents to a range of the same type in the enrich index. Matching a range to a range is not supported.
 
 The following example creates a `range` enrich policy that adds a descriptive network name and responsible department to incoming documents based on an IP address. It then adds the enrich policy to a processor in an ingest pipeline.
 

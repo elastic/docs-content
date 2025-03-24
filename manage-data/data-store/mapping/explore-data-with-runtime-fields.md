@@ -238,7 +238,7 @@ If the script didn’t include this condition, the query would fail on any shard
 
 ### Search for documents in a specific range [runtime-examples-grok-range]
 
-You can also run a [range query](elasticsearch://reference/query-languages/query-dsl-range-query.md) that operates on the `timestamp` field. The following query returns any documents where the `timestamp` is greater than or equal to `2020-04-30T14:31:27-05:00`:
+You can also run a [range query](elasticsearch://reference/query-languages/query-dsl/query-dsl-range-query.md) that operates on the `timestamp` field. The following query returns any documents where the `timestamp` is greater than or equal to `2020-04-30T14:31:27-05:00`:
 
 ```console
 GET my-index-000001/_search

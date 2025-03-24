@@ -30,6 +30,6 @@ Refer to [Test an analyzer](../../../manage-data/data-store/text-analysis/test-a
 
 * **Full-text search query**: Query text is analyzed [the same way as the indexed text](../../../manage-data/data-store/text-analysis/index-search-analysis.md), and the resulting tokens are used to search the inverted index.
 
-    Query DSL supports a number of [full-text queries](elasticsearch://reference/query-languages/full-text-queries.md).
+    Query DSL supports a number of [full-text queries](elasticsearch://reference/query-languages/query-dsl/full-text-queries.md).
 
     As of 8.17, {{esql}} also supports [full-text search](elasticsearch://reference/query-languages/esql/esql-functions-operators.md#esql-search-functions) functions.

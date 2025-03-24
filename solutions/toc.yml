@@ -8,10 +8,11 @@ toc:
           - file: search/run-elasticsearch-locally.md
           - file: search/serverless-elasticsearch-get-started.md
           - file: search/search-connection-details.md
-          - file: search/api-quickstarts.md
-            children:
-              - file: search/elasticsearch-basics-quickstart.md
-              - file: search/querydsl-full-text-filter-tutorial.md
+      - file: search/api-quickstarts.md
+        children:
+          - file: search/elasticsearch-basics-quickstart.md
+          - file: search/querydsl-full-text-filter-tutorial.md
+          - file: search/esql-full-text-filter-tutorial.md
       - file: search/ingest-for-search.md
         children:
           - file: search/search-pipelines.md

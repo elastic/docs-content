@@ -166,10 +166,10 @@ To create or edit {{ml}} rules, you need:
 2. To create an event correlation rule using EQL, select **Event Correlation** on the **Create new rule** page, then:
 
     1. Define which {{es}} indices or data view the rule searches when querying for events.
-    2. Write an [EQL query](elasticsearch://reference/query-languages/eql-syntax.md) that searches for matching events or a series of matching events.
+    2. Write an [EQL query](elasticsearch://reference/query-languages/eql/eql-syntax.md) that searches for matching events or a series of matching events.
 
         ::::{tip}
-        To find events that are missing in a sequence, use the [missing events](elasticsearch://reference/query-languages/eql-syntax.md#eql-missing-events) syntax.
+        To find events that are missing in a sequence, use the [missing events](elasticsearch://reference/query-languages/eql/eql-syntax.md#eql-missing-events) syntax.
         ::::
 
 
