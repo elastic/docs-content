@@ -18,7 +18,7 @@ In Discover, [typing ES|QL queries](../query-filter/languages/esql-kibana.md) au
 You can then **Save** and add it to an existing or a new dashboard using the save button of the visualization ![save button](/explore-analyze/images/kibana-esql-icon-save-visualization.svg "").
 
 
-## Create from dashboard [_create_from_dashboard]
+## Create from dashboard [_create_from_dashboard] 
 
 1. From your dashboard, select **Add panel**.
 2. Choose **ES|QL** under **Visualizations**. An ES|QL editor appears and lets you configure your query and its associated visualization. The **Suggestions** panel can help you find alternative ways to configure the visualization.
@@ -34,6 +34,9 @@ You can then **Save** and add it to an existing or a new dashboard using the sav
 4. You can bind controls to your ES|QL visualizations in dashboards by creating [ES|QL controls](../dashboards/add-controls.md#add-esql-control).
 5. Select **Apply and close** to save the visualization to the dashboard.
 
+::::{tip}
+You can create an ES|QL visualization from dashboards even if you haven't specified a data view and have no existing dashboards. Just go to **Dashboards** and click **Try ES|QL**. A new dashboard is created with an ES|QL chart that you can interact with and configure like any other visualization.
+::::
 
 ## Customize the appearance of your {{esql}} visualization
 
