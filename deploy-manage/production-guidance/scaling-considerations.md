@@ -10,7 +10,7 @@ applies_to:
 
 # {{es}} scaling considerations
 
-Knowing when and how to scale your deployment is critical, especially when unexpected workloads hit. Adding more nodes or adjusting resources is not always the best solution—scaling should be based on real workload patterns and informed decision-making.
+Knowing when and how to scale your deployment is critical, especially when unexpected workloads hit. Adding more nodes or adjusting resources is not always the best solution. Instead, scaling should be based on real workload patterns and informed decision-making.
 
 In orchestrated or managed deployments, [Autoscaling](/deploy-manage/autoscaling.md) can automatically adjust cluster resources based on demand, reducing operational overhead. However, in self-managed environments, scaling is a manual process, requiring careful planning to adapt to workload changes and ensure the cluster remains performant and resilient.
 
@@ -22,25 +22,25 @@ To make informed scaling decisions, [cluster monitoring](/deploy-manage/monitor.
 
 ## Performance optimizations and scaling
 
-Scaling isn’t just about adding more nodes—it also involves [optimizing the cluster configuration for better performance](./optimize-performance.md). Adjustments such as shard and index tuning, query optimizations, caching strategies, and efficient resource allocation can improve performance without requiring additional hardware. These optimizations directly influence scaling strategies, as a well-tuned cluster can handle more workload with fewer resources.
+Scaling isn’t just about adding more nodes—it also involves [optimizing the cluster configuration for better performance](./optimize-performance.md). Adjustments such as shard and index tuning, query optimizations, caching strategies, and efficient resource allocation can improve performance without requiring additional hardware. These optimizations directly influence scaling strategies, because a well-tuned cluster can handle more workload with fewer resources.
 
 ## Scaling and fault tolerance
 
 When adding zones for fault tolerance or high availability (HA), it might seem like you’re also scaling up. While additional zones might improve the performance, they should not be relied upon for additional capacity.
 
 In {{ech}} and {{ece}}, the concept of zones is intended for:
-* High Availability (2 zones)
-* Fault Tolerance (3 zones)
+* High availability (two zones)
+* Fault tolerance (three zones)
 
 Neither will work if the cluster relies on the resources from those zones to be operational.
 
-Fo true HA at zone level, the recommended approach is to **first scale up** resources within a single zone until the cluster can take the full load (add some buffer to be prepared for a peak of requests), **then scale out** by adding additional zones depending on your requirements: 2 zones for High Availability, 3 zones for Fault Tolerance.
+For true HA at the zone level, the recommended approach is to **first scale up** resources within a single zone until the cluster can take the full load (add some buffer to be prepared for a peak of requests), **then scale out** by adding additional zones depending on your requirements: two zones for high availability, three zones for fault tolerance.
 
 Although the previous is the general recommendation, you should design your cluster to best support your HA requirements. Just make sure you fully understand the implications of your choices and plan accordingly.
 
 ## How to scale
 
-Scaling Elasticsearch depends on how you deploy it. Refer to the appropriate guides below based on your deployment type.
+Scaling {{es}} depends on how you deploy it. Refer to the appropriate guides below based on your deployment type.
 
 ### Orchestrated deployments
 
@@ -49,7 +49,7 @@ These platforms offer built-in autoscaling and flexible resource management:
 * [Autoscaling](/deploy-manage/autoscaling.md): Available in {{ech}}, {{ece}}, and {{eck}}.  
 
   ::::{note}
-  An enterprise license is required for ECK autoscaling._
+  An enterprise license is required for ECK autoscaling.
   ::::
 
 * [Configure {{ech}} deployments](/deploy-manage/deploy/elastic-cloud/configure.md): Change instance sizes, increase capacity, or [select a different hardware profile](/deploy-manage/deploy/elastic-cloud/ec-change-hardware-profile.md).

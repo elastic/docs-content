@@ -11,7 +11,7 @@ applies_to:
 
 # General recommendations [general-recommendations]
 
-This page offers general best practices to improve performance and avoid common issues when working with Elasticsearch.
+This page offers general best practices to improve performance and avoid common issues when working with {{es}}.
 
 ## Don’t return large result sets [large-size]
 

@@ -11,7 +11,7 @@ applies_to:
 With {{ech}} (ECH) and {{ece}} (ECE), your deployment can be spread across up to three separate availability zones, each hosted in an isolated infrastructure domain, such as separate data centers in the case of {{ech}}.
 
 ::::{note}
-While this document focuses on how ECH and ECE handle resilience, all the concepts and suggestions described in this section are also applicable to other deployment types. For example, in {{eck}}, you can configure [availability zone distribution and node scheduling](/deploy-manage/deploy/cloud-on-k8s/advanced-elasticsearch-node-scheduling.md) through your Kubernetes platform.
+While this document focuses on how ECH and ECE handle resilience, all the concepts and recommendations described in this section are also applicable to other deployment types. For example, in {{eck}}, you can configure [availability zone distribution and node scheduling](/deploy-manage/deploy/cloud-on-k8s/advanced-elasticsearch-node-scheduling.md) through your Kubernetes platform.
 ::::
 
 Why this matters:
@@ -35,9 +35,9 @@ ECH and ECE orchestators automatically handle several aspects of cluster resilie
 
 We recommend that you use at least two availability zones for production and three for mission-critical systems. Just one zone might be sufficient, if your {{es}} cluster is mainly used for testing or development and downtime is acceptable, but should never be used for production.
 
-Additionally, using a single availability zone leaves your cluster vulnerable to data loss if backups are unavailable—whether due to failed or incomplete snapshots, missing indices, or expired retention policies that remove the data before it’s needed.
+Additionally, using a single availability zone leaves your cluster vulnerable to data loss if backups are unavailable, whether due to failed or incomplete snapshots, missing indices, or expired retention policies that remove the data before it’s needed.
 
-With multiple {{es}} nodes in multiple availability zones you have the recommended hardware, the next thing to consider is having the recommended index replication. Each index, with the exception of searchable snapshot indexes, should have one or more replicas. Use the index settings API to find any indices with no replica:
+With multiple {{es}} nodes in multiple availability zones you have the recommended hardware, the next thing to consider is the number of replicas for each index. Each index, with the exception of searchable snapshot indexes, should have one or more replicas. Use the [index settings API](https://www.elastic.co/docs/api/doc/elasticsearch/v8/operation/operation-indices-get-settings-1) to find any indices with no replica:
 
 ```sh
 GET _all/_settings/index.number_of_replicas
@@ -45,7 +45,7 @@ GET _all/_settings/index.number_of_replicas
 
 A high availability (HA) cluster requires at least three master-eligible nodes. For clusters that have fewer than six {{es}} nodes, any data node in the hot tier will also be a master-eligible node. You can achieve this by having hot nodes (serving as both data and master-eligible nodes) in three availability zones, or by having data nodes in two zones and a tiebreaker.
 
-For clusters that have six {{es}} nodes and beyond, dedicated master-eligible nodes are introduced. When your cluster grows, consider separating dedicated master-eligible nodes from dedicated data nodes. We recommend using **at least 4GB RAM** for dedicated master nodes.
+For clusters that have six {{es}} nodes and beyond, dedicated master-eligible nodes are introduced. When your cluster grows, consider separating dedicated master-eligible nodes from dedicated data nodes. We recommend using at least 4GB of RAM for dedicated master nodes.
 
 ::::{note}
 In {{ece}}, you can customize the threshold at which dedicated master-eligible nodes are introduced by modifying the [deployment templates](/deploy-manage/deploy/cloud-enterprise/deployment-templates.md).

@@ -13,7 +13,7 @@ This page provides guidance on scaling {{kib}} by distributing traffic across mu
 
 For scaling considerations related to background tasks, and the alerting framework, refer to [](./kibana-task-manager-scaling-considerations.md), and [](./kibana-alerting-production-considerations.md).
 
-The configurations provided in this section are required only for self-managed deployments. Orchestration systems automatically apply the necessary settings when multiple Kibana instances belong to the same deployment.
+The configurations provided in this section are required only for self-managed deployments. Orchestration systems automatically apply the necessary settings when multiple {{kib}} instances belong to the same deployment.
 
 ## Load balancing across multiple {{kib}} instances [load-balancing-kibana]
 

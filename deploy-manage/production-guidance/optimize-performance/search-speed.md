@@ -14,8 +14,11 @@ applies_to:
 This page provides guidance on tuning {{es}} for faster search performance. While hardware and system-level settings play an important role, the structure of your documents and the design of your queries often have the biggest impact. Use these recommendations to optimize field mappings, caching behavior, and query design for high-throughput, low-latency search at scale.
 
 ::::{note}
-Search performance in {{es}} depends on a combination of factors, including how expensive individual queries are, how many searches run in parallel, the number of indices and shards involved, and the overall sharding strategy and shard size. These variables influence how the system should be tuned—for example, optimizing for a small number of complex queries differs significantly from optimizing for many lightweight, concurrent searches.
-Make sure to consider also your cluster’s shard count, index layout, and overall data distribution when tuning for indexing speed. Refer to [](./size-shards.md) for more details about sharing strategies and recommendations.
+Search performance in {{es}} depends on a combination of factors, including how expensive individual queries are, how many searches run in parallel, the number of indices and shards involved, and the overall sharding strategy and shard size. 
+
+These variables influence how the system should be tuned. For example, optimizing for a small number of complex queries differs significantly from optimizing for many lightweight, concurrent searches.
+
+Make sure to also consider your cluster’s shard count, index layout, and overall data distribution when tuning for indexing speed. Refer to [](./size-shards.md) for more details about sharing strategies and recommendations.
 ::::
 
 
@@ -52,7 +55,7 @@ You can check the current value in `KiB` using `lsblk -o NAME,RA,MOUNTPOINT,TYPE
 `blockdev` expects values in 512 byte sectors whereas `lsblk` reports values in `KiB`. As an example, to temporarily set readahead to `128KiB` for `/dev/nvme0n1`, specify `blockdev --setra 256 /dev/nvme0n1`.
 ::::
 
-The disk readahead cannot be adjusted in {{ech}}, as it is controlled at Linux kernel level. However, it can be modified in {{ece}}, Kubernetes, or self-managed nodes.
+The disk readahead cannot be adjusted in {{ech}}, as it is controlled at the Linux kernel level. However, it can be modified in {{ece}}, Kubernetes, or self-managed nodes.
 
 ## Use faster hardware [search-use-faster-hardware]
 
@@ -61,7 +64,7 @@ If your searches are I/O-bound, consider increasing the size of the filesystem c
 If your searches are CPU-bound, consider using a larger number of faster CPUs.
 
 ::::{note}
-In {{ech}} and {{ece}}, you can choose the underlying hardware by selecting different hardware profiles or deployment templates. Refer to [ECH>Change hardware](/deploy-manage/deploy/elastic-cloud/change-hardware.md) and [ECE deployment templates](/deploy-manage/deploy/cloud-enterprise/configure-deployment-templates.md) for more details.
+In {{ech}} and {{ece}}, you can choose the underlying hardware by selecting different hardware profiles or deployment templates. Refer to [ECH > Change hardware](/deploy-manage/deploy/elastic-cloud/change-hardware.md) and [ECE deployment templates](/deploy-manage/deploy/cloud-enterprise/configure-deployment-templates.md) for more details.
 ::::
 
 ### Local vs. remote storage [_local_vs_remote_storage_2]

@@ -26,9 +26,9 @@ For detailed, component-specific guidance, refer to:
 
 ## Deployment types
 
-Production guidelines and concepts described in this section apply to all [deployment types](/deploy-manage/deploy.md#choosing-your-deployment-type)-including {{ech}}, {{ece}}, {{eck}}, and self-managed clusters-**except** {{serverless-full}}.
+Production guidelines and concepts described in this section apply to all [deployment types](/deploy-manage/deploy.md#choosing-your-deployment-type)—including {{ech}}, {{ece}}, {{eck}}, and self-managed clusters—**except** {{serverless-full}}.
 
-However, certain parts may be relevant only to self-managed clusters, as orchestration systems automate some of the configurations discussed here. Check the headers of each document or section to confirm whether the content applies to your deployment type.
+However, certain parts may be relevant only to self-managed clusters, as orchestration systems automate some of the configurations discussed here. Check the [badges](/get-started/versioning-availability.md#availability-of-features) on each document or section to confirm whether the content applies to your deployment type.
 
 ::::{note}
 **{{serverless-full}}** projects are fully managed and automatically scaled by Elastic. Your project’s performance and general data retention are controlled by the [Search AI Lake settings](/deploy-manage/deploy/elastic-cloud/project-settings.md#elasticsearch-manage-project-search-ai-lake-settings).

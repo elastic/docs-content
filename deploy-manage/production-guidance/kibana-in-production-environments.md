@@ -49,5 +49,5 @@ Not all recommendations in this section apply to every [deployment type](/deploy
 
 In addition to the guidance provided in this section, other areas of the documentation cover important aspects for running {{kib}} in production, such as:
 
-* [Secure your cluster deployment](/deploy-manage/security/secure-your-cluster-deployment.md)
+* [Secure your cluster or deployment](/deploy-manage/security/secure-your-cluster-deployment.md)
 * [Authentication and authorization](/deploy-manage/users-roles/cluster-or-deployment-auth.md)

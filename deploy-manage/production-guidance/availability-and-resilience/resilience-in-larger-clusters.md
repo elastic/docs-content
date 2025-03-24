@@ -14,7 +14,9 @@ It’s not unusual for nodes to share common infrastructure, such as network int
 ::::{note}
 This document focuses on self-managed {{es}} deployments and describes how {{es}} handles zone-aware resilience internally, including behavior during network partitions, shard allocation strategies, and the role of master-eligible nodes.
 
-While this information may also be useful for other deployment types like {{eck}}, for details on how similar principles are implemented in {{ech}} and {{ece}}, refer to [](./resilience-in-ech.md).
+This information might also be useful for other deployment types, such as {{eck}}. 
+
+For details on how similar principles are implemented in {{ech}} and {{ece}}, refer to [](./resilience-in-ech.md).
 ::::
 
 {{es}} expects node-to-node connections to be reliable, have low latency, and have adequate bandwidth. Many {{es}} tasks require multiple round-trips between nodes. A slow or unreliable interconnect may have a significant effect on the performance and stability of your cluster.

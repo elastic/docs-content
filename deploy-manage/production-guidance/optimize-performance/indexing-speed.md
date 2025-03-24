@@ -11,7 +11,7 @@ applies_to:
 
 # Tune for indexing speed [tune-for-indexing-speed]
 
-Elasticsearch offers a wide range of indexing performance optimizations, especially useful for high-throughput ingestion workloads. This page provides practical recommendations to help you maximize indexing speed, from bulk sizing and refresh intervals to hardware and thread management.
+{{es}} offers a wide range of indexing performance optimizations, which are especially useful for high-throughput ingestion workloads. This page provides practical recommendations to help you maximize indexing speed, from bulk sizing and refresh intervals to hardware and thread management.
 
 ::::{note}
 Indexing performance is also affected by your sharding and indexing strategies. Whether you’re indexing into a single index or hundreds in parallel, and how many shards each index has, can significantly influence indexing speed.
@@ -88,7 +88,7 @@ If indexing is I/O-bound, consider increasing the size of the filesystem cache (
 Stripe your index across multiple SSDs by configuring a RAID 0 array. Remember that it will increase the risk of failure since the failure of any one SSD destroys the index. However this is typically the right tradeoff to make: optimize single shards for maximum performance, and then add replicas across different nodes so there’s redundancy for any node failures. You can also use [snapshot and restore](../../tools/snapshot-and-restore.md) to backup the index for further insurance.
 
 ::::{note}
-In {{ech}} and {{ece}}, you can choose the underlying hardware by selecting different hardware profiles or deployment templates. Refer to [ECH>Change hardware](/deploy-manage/deploy/elastic-cloud/change-hardware.md) and [ECE deployment templates](/deploy-manage/deploy/cloud-enterprise/configure-deployment-templates.md) for more details.
+In {{ech}} and {{ece}}, you can choose the underlying hardware by selecting different hardware profiles or deployment templates. Refer to [ECH > Change hardware](/deploy-manage/deploy/elastic-cloud/change-hardware.md) and [ECE deployment templates](/deploy-manage/deploy/cloud-enterprise/configure-deployment-templates.md) for more details.
 ::::
 
 ### Local vs. remote storage [_local_vs_remote_storage]
@@ -104,7 +104,7 @@ Directly-attached (local) storage generally performs better than remote storage 
 Some remote storage performs very poorly, especially under the kind of load that {{es}} imposes. However, with careful tuning, it is sometimes possible to achieve acceptable performance using remote storage too. Before committing to a particular storage architecture, benchmark your system with a realistic workload to determine the effects of any tuning parameters. If you cannot achieve the performance you expect, work with the vendor of your storage system to identify the problem.
 
 ::::{note}
-For {{eck}} deployments refer to the [ECK storage recommendations](/deploy-manage/deploy/cloud-on-k8s/storage-recommendations.md) for a complete overview of storage options in Kubernetes, along with their implications and best practices. In Kubernetes, remote storage solutions are commonly used and well-supported.
+For {{eck}} deployments, refer to the [ECK storage recommendations](/deploy-manage/deploy/cloud-on-k8s/storage-recommendations.md) for a complete overview of storage options in Kubernetes, along with their implications and best practices. In Kubernetes, remote storage solutions are commonly used and well-supported.
 ::::
 
 ## Indexing buffer size [_indexing_buffer_size]

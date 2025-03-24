@@ -28,7 +28,7 @@ In the context of {{es}} deployments, an `availability zone`, or simply `zone`, 
 For example, in {{ech}}, availability zones correspond to the cloud provider’s availability zones. Each of these is typically a physically separate data center, ensuring redundancy and fault tolerance at the infrastructure level.
 ::::
 
-Learn more about [nodes and shards](/deploy-manage/distributed-architecture/clusters-nodes-shards.md) and [reference architectures](/deploy-manage/reference-architectures.md).
+Learn more about [nodes and shards](/deploy-manage/distributed-architecture/clusters-nodes-shards.md), or view [reference architectures](/deploy-manage/reference-architectures.md) for high availability deployments.
 
 ## Cluster sizes
 
@@ -61,19 +61,17 @@ The following pages give some recommendations for building resilient clusters of
 * [Resilience in small clusters](availability-and-resilience/resilience-in-small-clusters.md)
 * [Resilience in larger clusters](availability-and-resilience/resilience-in-larger-clusters.md)
 
-In addition, the following page outlines how {{ech}} and {{ece}} orchestrators implement resilience, and offers guidance to ensure your deployments follow best practices:
+In addition, [Resilience in {{ech}} and {{ece}} deployments](./availability-and-resilience/resilience-in-ech.md) outlines how ECH and ECE orchestrators implement resilience, and offers guidance to ensure your deployments follow best practices.
 
-* [Resilience in {{ech}} and {{ece}} deployments](./availability-and-resilience/resilience-in-ech.md)
+## Client traffic distribution
 
-## Clients traffic distribution
+When designing a resilient {{es}} cluster, avoid routing client traffic, whether from {{kib}}, Logstash, Beats, {{agent}}, or other applications, to a single node. Relying on one node introduces a single point of failure, which can compromise data availability if that node becomes unavailable.
 
-When designing a resilient {{es}} cluster, it’s critical to ensure that clients traffic—whether from {{kib}}, Logstash, Beats, {{agent}}, or other applications—is not routed to a single node. Relying on one node introduces a single point of failure, which can compromise data availability if that node becomes unavailable.
+To avoid this, traffic should be distributed across multiple nodes using one of the following approaches:
 
-To avoid this, traffic should be distributed across multiple nodes using one of the following common approaches:
-
-* Send traffic to all {{es}} nodes: A simple and effective strategy, especially in small clusters.
-* Send traffic to a dedicated subset of nodes: For example, route client requests only to hot nodes, or to coordinating-only nodes in clusters using [data tiers](/manage-data/lifecycle/data-tiers.md).
-* Use an external load balancer or reverse proxy: This can manage routing and failover logic outside the cluster itself, and it's the default method in orchestrated platforms such as {{ech}}, {{ece}}, and {{eck}}.
+* **Send traffic to all {{es}} nodes**: A simple and effective strategy, especially in small clusters.
+* **Send traffic to a dedicated subset of nodes**: For example, route client requests only to hot nodes, or to coordinating-only nodes in clusters using [data tiers](/manage-data/lifecycle/data-tiers.md).
+* **Use an external load balancer or reverse proxy**: This can manage routing and failover logic outside the cluster itself, and it's the default method in orchestrated platforms such as {{ech}}, {{ece}}, and {{eck}}.
 
 Refer to resilience in [small clusters](availability-and-resilience/resilience-in-small-clusters.md) and [larger clusters](availability-and-resilience/resilience-in-larger-clusters.md) for more details and recommendations.
 

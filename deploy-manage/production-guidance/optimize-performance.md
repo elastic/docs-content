@@ -10,10 +10,10 @@ applies_to:
     self: all
 ---
 
-# Elasticsearch performance optimizations [how-to]
+# {{es}} performance optimizations [how-to]
 
 % investigate if any of the optimizations apply to serverless also.
-Elasticsearch’s default settings provide a good out-of-box experience for basic operations like full text search, highlighting, aggregations, and indexing.
+{{es}}'s default settings provide a good out-of-box experience for basic operations like full text search, highlighting, aggregations, and indexing.
 
 However, there are a number of optimizations you can make to improve performance for your use case. This section includes both deployment-level configuration suggestions and usage-level guidance to optimize the performance of your cluster.
 

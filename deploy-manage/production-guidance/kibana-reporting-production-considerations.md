@@ -53,4 +53,4 @@ xpack.screenshotting.browser.chromium.disableSandbox: true
 
 ### Docker [reporting-docker-sandbox] 
 
-When running {{kib}} inside a Docker container, all container processes are run within a user namespace with seccomp-bpf and AppArmor profiles that prevent the Chromium sandbox from being used. In this case,  we recommend disabling the sandbox, since the container already provides equivalent isolation.
+When running {{kib}} inside a Docker container, all container processes are run within a user namespace with `seccomp-bpf` and `AppArmor` profiles that prevent the Chromium sandbox from being used. In this case,  we recommend disabling the sandbox, since the container already provides equivalent isolation.
