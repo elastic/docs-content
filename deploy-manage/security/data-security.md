@@ -21,7 +21,7 @@ Add another layer of security by defining custom encryption rules for your clust
 - Instead of the default, Elastic-managed encryption, you can choose to use a [customer-managed encryption key](encrypt-deployment-with-customer-managed-encryption-key.md) from one of our supported providers' KMS to encrypt your {{ech}} deployments.
 - Store sensitive settings using the [{{es}} keystore](secure-settings.md).
 
-## In {{ece}}, {{eck}} and self-managed installations
+## In ECE, ECK, and self-managed installations
 
 There is no encryption at rest out of the box for deployments orchestrated using [{{ece}}](secure-your-elastic-cloud-enterprise-installation.md) and [{{eck}}](secure-your-eck-installation.md), and for [self-managed clusters](manually-configure-security-in-self-managed-cluster.md). You must instead configure disk-level encryption on your hosts. 
 
