@@ -47,7 +47,6 @@ You can configure the following aspects of your Elastic cluster or deployment to
 
 ## Configure security in a self-managed cluster
 
-
 Since {{es}} 8.0, security is enabled and configured by default. However, security auto configuration [might be skipped](/deploy-manage/security/manually-configure-security-in-self-managed-cluster.md#stack-skip-auto-configuration) in certain scenarios. In these cases, you can [manually configure security](/deploy-manage/security/manually-configure-security-in-self-managed-cluster.md).
 
 ## FIPS 140-2 compliant mode
