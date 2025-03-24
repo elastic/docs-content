@@ -12,6 +12,10 @@ This guide compares Elastic Cloud Hosted deployments with Elastic Cloud Serverle
 
 ## Compare features [elasticsearch-differences-serverless-infrastructure-management]
 
+$$$elasticsearch-differences-serverless-feature-categories$$$
+$$$elasticsearch-differences-serverless-features-replaced$$$
+$$$elasticsearch-differences-serverless-feature-planned$$$
+
 ### Core platform capabilities
 
 These fundamental platform capabilities apply to both deployment models:
