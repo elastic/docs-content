@@ -19,16 +19,16 @@ To perform an offline installation without a private Docker registry, you have t
     docker pull docker.elastic.co/cloud-assets/kibana:7.17.27-0
     docker pull docker.elastic.co/cloud-assets/apm:7.17.27-0
     docker pull docker.elastic.co/cloud-assets/enterprise-search:7.17.27-0
-    docker pull docker.elastic.co/cloud-release/elasticsearch-cloud-ess:8.17.1
-    docker pull docker.elastic.co/cloud-release/kibana-cloud:8.17.1
-    docker pull docker.elastic.co/cloud-release/elastic-agent-cloud:8.17.1
-    docker pull docker.elastic.co/cloud-release/enterprise-search-cloud:8.17.1
+    docker pull docker.elastic.co/cloud-release/elasticsearch-cloud-ess:8.17.4
+    docker pull docker.elastic.co/cloud-release/kibana-cloud:8.17.4
+    docker pull docker.elastic.co/cloud-release/elastic-agent-cloud:8.17.4
+    docker pull docker.elastic.co/cloud-release/enterprise-search-cloud:8.17.4
     ```
 
     For example, for Elastic Cloud Enterprise 3.8.1 and the Elastic Stack versions it shipped with, you need:
 
     * Elastic Cloud Enterprise 3.8.1
-    * Elasticsearch 8.17.1, Kibana 8.17.1, and APM 8.17.1
+    * Elasticsearch 8.17.4, Kibana 8.17.4, and APM 8.17.4
 
 2. Create .tar files of the images:
 
@@ -38,10 +38,10 @@ To perform an offline installation without a private Docker registry, you have t
     docker save -o kibana.7.17.27-0.tar docker.elastic.co/cloud-assets/kibana:7.17.27-0
     docker save -o apm.7.17.27-0.tar docker.elastic.co/cloud-assets/apm:7.17.27-0
     docker save -o enterprise-search.7.17.27-0.tar docker.elastic.co/cloud-assets/enterprise-search:7.17.27-0
-    docker save -o es.8.17.1.tar docker.elastic.co/cloud-release/elasticsearch-cloud-ess:8.17.1
-    docker save -o kibana.8.17.1.tar docker.elastic.co/cloud-release/kibana-cloud:8.17.1
-    docker save -o apm.8.17.1.tar docker.elastic.co/cloud-release/elastic-agent-cloud:8.17.1
-    docker save -o enterprise-search.8.17.1.tar docker.elastic.co/cloud-release/enterprise-search-cloud:8.17.1
+    docker save -o es.8.17.4.tar docker.elastic.co/cloud-release/elasticsearch-cloud-ess:8.17.4
+    docker save -o kibana.8.17.4.tar docker.elastic.co/cloud-release/kibana-cloud:8.17.4
+    docker save -o apm.8.17.4.tar docker.elastic.co/cloud-release/elastic-agent-cloud:8.17.4
+    docker save -o enterprise-search.8.17.4.tar docker.elastic.co/cloud-release/enterprise-search-cloud:8.17.4
     ```
 
 3. Copy the .tar files to a location on your network where they are available to each host where you plan to install Elastic Cloud Enterprise. Alternatively, you can copy the .tar files to each host directly.
@@ -53,10 +53,10 @@ To perform an offline installation without a private Docker registry, you have t
     docker load < FILE_PATH/kibana.7.17.27-0.tar
     docker load < FILE_PATH/apm.7.17.27-0.tar
     docker load < FILE_PATH/enterprise-search.7.17.27-0.tar
-    docker load < FILE_PATH/es.8.17.1.tar
-    docker load < FILE_PATH/kibana.8.17.1.tar
-    docker load < FILE_PATH/apm.8.17.1.tar
-    docker load < FILE_PATH/enterprise-search.8.17.1.tar
+    docker load < FILE_PATH/es.8.17.4.tar
+    docker load < FILE_PATH/kibana.8.17.4.tar
+    docker load < FILE_PATH/apm.8.17.4.tar
+    docker load < FILE_PATH/enterprise-search.8.17.4.tar
     ```
 
 5. Optional: Remove the .tar files after installation.
