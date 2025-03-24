@@ -51,7 +51,7 @@ To update rules:
     Elastic updates containing a rule type change cannot be edited. Before updating the rule, duplicate it if you need to record changes that you made to the rule fields.  
     ::::
 
-    :::{image} /solutions/images/prebuilt-rules-update-diff-advanced.png
+    :::{image} /solutions/images/security-prebuilt-rules-update-diff-advanced.png
     :alt: Prebuilt rule comparison
     :screenshot:
     :::

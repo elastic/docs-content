@@ -66,6 +66,9 @@ For {{ml}} rules, an indicator icon (![Error icon from rules table](/solutions/i
 ::::{admonition} Requirements
 
 * You can edit custom rules and bulk-modify them with any [{{stack}} subscription](https://www.elastic.co/pricing) or [{{serverless-short}} project tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md). Editing [rule notifications](/solutions/security/detect-and-alert/create-detection-rule.md#rule-notifications) (notifications and response actions) for prebuilt rules can also be done with any {{stack}} subscription or {{serverless-short}} project tier.
+
+% Need serverless req
+
 * You must have an [Enterprise subscription](https://www.elastic.co/pricing) to edit all prebuilt rule settings (except for the **Author** and **License** fields) and bulk-modify them. 
 
 ::::
@@ -179,6 +182,7 @@ You can snooze rule notifications from the **Installed Rules** tab, the rule det
 
 :::{image} /solutions/images/security-rule-snoozing.png
 :alt: Rules snooze options
+:width: 75%
 :screenshot:
 :::
 

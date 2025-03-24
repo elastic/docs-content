@@ -106,7 +106,7 @@ Each prebuilt rule includes several tags identifying the rule’s purpose, detec
 
 % Need serverless product tier reqs
 
-Without an https://www.elastic.co/subscriptions/cloud[Enterprise] subscription, you can't modify most settings on Elastic prebuilt rules. You can only edit [rule actions](/solutions/security/detect-and-alert/create-detection-rule.md#rule-schedule) and [add exceptions](/solutions/security/detect-and-alert/add-manage-exceptions.md). If you want to modify other settings on a prebuilt rule, you must first duplicate it, then make your changes to the duplicated rule. Note that your customized rule is entirely separate from the original prebuilt rule, and will not get updates from Elastic if the prebuilt rule is updated.
+Without an [Enterprise subscription](https://www.elastic.co/pricing) subscription, you can't modify most settings on Elastic prebuilt rules. You can only edit [rule actions](/solutions/security/detect-and-alert/create-detection-rule.md#rule-schedule) and [add exceptions](/solutions/security/detect-and-alert/add-manage-exceptions.md). If you want to modify other settings on a prebuilt rule, you must first duplicate it, then make your changes to the duplicated rule. Note that your customized rule is entirely separate from the original prebuilt rule, and will not get updates from Elastic if the prebuilt rule is updated.
 
 1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. In the **Rules** table, select the **Elastic rules** filter.
@@ -122,7 +122,7 @@ You can then modify the duplicated rules and, if required, delete the prebuilt o
 % Need serverless product tier reqs
 
 ::::{important}
-The following steps are only applicable if you have an https://www.elastic.co/subscriptions/cloud[Platinum] subscription subscription or lower. If you have an Enterprise subscription, follow the guidelines in <prebuilt-rules-update-modified-unmodified> instead. 
+The following steps are only applicable if you have an https://www.elastic.co/subscriptions/cloud[Platinum] subscription subscription or lower. If you have an Enterprise subscription, follow the guidelines in [Update modified and unmodified Elastic prebuilt rules](/solutions/security/detect-and-alert/prebuilt-rules-update-modified-unmodified.md) instead. 
 ::::
 
 Elastic regularly updates prebuilt rules to optimize their performance and ensure they detect the latest threats and techniques. When updated versions are available for your installed prebuilt rules, the **Rule Updates** tab appears on the **Rules** page, allowing you to update your installed rules with the latest versions.
