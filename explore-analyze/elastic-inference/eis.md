@@ -99,4 +99,7 @@ All EIS requests are handled by one of these AWS regions:
 * `us-east-1`
 * `us-west-2`
 
+However, projects and deployments can use the Elastic LLM regardless of their cloud provider or region.
+The request routing does not restrict the location of your deployments.
+
 For more details on AWS regions, refer to the [AWS Global Infrastructure](https://aws.amazon.com/about-aws/global-infrastructure/regions_az/).
