@@ -33,7 +33,7 @@ Some of the unique benefits of {{ecloud}} include:
 
 For more information, refer to [](/deploy-manage/cloud-organization.md).
 
-## Compare {{ech}} and {{serverless-short}}[general-what-is-serverless-elastic-differences-between-serverless-projects-and-hosted-deployments-on-ecloud]
+## Compare {{ech}} and {{serverless-short}} [general-what-is-serverless-elastic-differences-between-serverless-projects-and-hosted-deployments-on-ecloud]
 
 Refer to [Compare Cloud Hosted and Serverless](/deploy-manage/deploy/elastic-cloud/differences-from-other-elasticsearch-offerings.md) for a detailed comparison between {{ech}} deployments and {{serverless-short}} projects.
 
