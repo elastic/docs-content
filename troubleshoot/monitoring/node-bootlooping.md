@@ -10,7 +10,7 @@ mapped_pages:
 
 When you attempt to apply a configuration change to a deployment, the attempt may fail with an error indicating that the change could not be applied, and deployment resources may be unable to restart. In some cases, bootlooping may result, where the deployment resources cycle through a continual reboot process.
 
-:::{image} /images/cloud-ec-ce-configuration-change-failure.png
+:::{image} /troubleshoot/images/cloud-ec-ce-configuration-change-failure.png
 :alt: A screen capture of the deployment page showing an error: Latest change to {{es}} configuration failed.
 :::
 

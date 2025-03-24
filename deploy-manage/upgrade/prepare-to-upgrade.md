@@ -327,4 +327,376 @@ The jobs can be deleted in the UI. After the last job is deleted, the index will
 :::
 
 ## Migrate transform destination indices [transform-migration]
-=======
+
+The transform destination indices created in {{es}} 7.x must be either reset, reindexed, or deleted before upgrading to 9.x.
+
+**Resetting**: You can reset the transform to delete all state, checkpoints, and the destination index (if it was created by the transform). The next time you start the transform, it will reprocess all data from the source index, creating a new destination index in {{es}} 8.x compatible with 9.x. However, if data had been deleted from the source index, you will lose all previously computed results that had been stored in the destination index.
+
+**Reindexing**: You can reindex the destination index and then update the transform to write to the new destination index. This is useful if there are results that you want to retain that may not exist in the source index. To prevent the transform and reindex tasks from conflicting with one another, you can either pause the transform while the reindex runs, or you can write to the new destination index while the reindex backfills old results.
+
+**Deleting**: You can delete any transform that are no longer being used. Once the transform is deleted, you can either delete the destination index or make it read-only.
+
+:::{dropdown} Which indices require attention?
+To identify indices that require action, use the [Deprecation info API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-migration-deprecations-1):
+
+```json
+GET /_migration/deprecations
+```
+
+The response contains the list of critical deprecation warnings in the `index_settings` section:
+
+```json
+"index_settings": {
+    "my-destination-index": [
+      {
+        "level": "critical",
+        "message": "One or more Transforms write to this index with a compatibility version < 9.0",
+        "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/migrating-9.0.html#breaking_90_transform_destination_index",
+        "details": "Transforms [my-transform] write to this index with version [7.8.23].",
+        "resolve_during_rolling_upgrade": false
+      }
+    ]
+  }
+```
+:::
+
+:::{dropdown} Resetting the transform
+If the index was created by the transform, you can use the [Transform Reset API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-transform-reset-transform) to delete the destination index and recreate it the next time the transform runs.
+
+If the index was not created by the transform, and you still want to reset it, you can manually delete and recreate the index, then call the Reset API.
+
+```json
+POST _transform/my-transform/_reset
+```
+:::
+
+:::{dropdown} Reindexing the transform’s destination index while the transform is paused
+When Kibana Upgrade Assistant reindexes the documents, Kibana will put a write block on the old destination index, copy the results to a new index, delete the old index, and create an alias to the new index. During this time, the transform will pause and wait for the destination to become writable again. If you do not want the transform to pause, continue to reindexing the transform’s destination index while the transform is running.
+
+If an index is less than 10GB of size, we recommend using Kibana’s Upgrade Assistant to automatically migrate the index.
+
+If an index size is greater than 10 GB it is recommended to use the Reindex API. Reindexing consists of the following steps:
+
+You can use the [Get index information API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-indices-1) to obtain the size of an index:
+
+```
+GET _cat/indices/.transform-destination-example?v&h=index,store.size
+```
+
+The reindexing can be initiated in the Kibana Upgrade Assistant.
+
+If an index size is greater than 10 GB, it is recommended to use the Reindex API. Reindexing consists of the following steps:
+
+1. Set the original index to read-only.
+
+```
+PUT .transform-destination-example/_block/read_only
+```
+
+2. Create a new index from the legacy index.
+
+```
+POST _create_from/.transform-destination-example/.reindexed-v9-transform-destination-example
+```
+
+3. Reindex documents. To accelerate the reindexing process, it is recommended that the number of replicas be set to 0 before the reindexing and then set back to the original number once it is completed.
+
+    1. Get the number of replicas.
+
+    ```
+    GET /.reindexed-v9-transform-destination-example/_settings
+    ```
+
+    Note the number of replicas in the response. For example:
+
+    ```json
+    {
+      ".reindexed-v9-transform-destination-example": {
+        "settings": {
+          "index": {
+            "number_of_replicas": "1",
+            "number_of_shards": "1"
+          }
+        }
+      }
+    }
+    ```
+
+    2. Set the number of replicas to `0.`
+
+    ```json
+    PUT /.reindexed-v9-transform-destination-example/_settings
+    {
+      "index": {
+        "number_of_replicas": 0
+      }
+    }
+    ```
+
+    3. Start the reindexing process in asynchronous mode.
+
+    ```json
+    POST _reindex?wait_for_completion=false
+    {
+      "source": {
+        "index": ".transform-destination-example"
+      },
+      "dest": {
+        "index": ".reindexed-v9-transform-destination-example"
+      }
+    }
+    ```
+
+    The response will contain a `task_id`. You can check when the task is completed using the following command:
+
+    ```
+    GET _tasks/<task_id>
+    ```
+
+    4. Set the number of replicas to the original number when the reindexing is finished.
+
+    ```json
+    PUT /.reindexed-v9-transform-destination-example/_settings
+    {
+      "index": {
+        "number_of_replicas": "<original_number_of_replicas>"
+      }
+    }
+    ```
+
+4. Get the aliases the original index is pointing to.
+
+```
+GET .transform-destination-example/_alias
+```
+
+The response may contain multiple aliases if the results of multiple jobs are stored in the same index.
+
+```json
+{
+  ".transform-destination-example": {
+    "aliases": {
+      ".transform-destination-example1": {
+        "filter": {
+          "term": {
+            "job_id": {
+              "value": "example1"
+            }
+          }
+        },
+        "is_hidden": true
+      },
+      ".transform-destination-example2": {
+        "filter": {
+          "term": {
+            "job_id": {
+              "value": "example2"
+            }
+          }
+        },
+        "is_hidden": true
+      }
+    }
+  }
+}
+```
+
+5. Now you can reassign the aliases to the new index and delete the original index in one step. Note that when adding the new index to the aliases, you must use the same `filter` and `is_hidden` parameters as for the original index.
+
+```json
+POST _aliases
+{
+  "actions": [
+    {
+      "add": {
+        "index": ".reindexed-v9-transform-destination-example",
+        "alias": ".transform-destination-example1",
+        "filter": {
+          "term": {
+            "job_id": {
+              "value": "example1"
+            }
+          }
+        },
+        "is_hidden": true
+      }
+    },
+    {
+      "add": {
+        "index": ".reindexed-v9-transform-destination-example",
+        "alias": ".transform-destination-example2",
+        "filter": {
+          "term": {
+            "job_id": {
+              "value": "example2"
+            }
+          }
+        },
+        "is_hidden": true
+      }
+    },
+    {
+      "remove": {
+        "index": ".transform-destination-example",
+        "aliases": ".transform-destination-*"
+      }
+    },
+    {
+      "remove_index": {
+        "index": ".transform-destination-example"
+      }
+    },
+    {
+      "add": {
+        "index": ".reindexed-v9-transform-destination-example",
+        "alias": ".transform-destination-example",
+        "is_hidden": true
+      }
+    }
+  ]
+}
+```
+:::
+
+
+:::{dropdown} Reindexing the transform’s destination index while the transform is running
+If you want the transform and the reindex task to write documents to the new destination index at the same time:
+
+1. Set the original index to read-only.
+
+```
+POST _create_from/my-destination-index/my-new-destination-index
+```
+
+2. Update the transform to write to the new destination index:
+
+```
+POST _transform/my-transform/_update
+{
+ "dest": {
+   "index": "my-new-destination-index"
+ }
+}
+```
+
+3. Reindex documents. To accelerate the reindexing process, it is recommended that the number of replicas be set to 0 before the reindexing and then set back to the original number once it is completed.
+
+    1. Get the number of replicas.
+
+    ```
+    GET /my-destination-index/_settings
+    ```
+
+    2. Note the number of replicas in the response. For example:
+
+    ```json
+    {
+      "my-destination-index":: {
+        "settings": {
+          "index": {
+            "number_of_replicas": "1",
+            "number_of_shards": "1"
+          }
+        }
+      }
+    }
+    ```
+
+    3. Set the number of replicas to `0.`
+
+    ```json
+    PUT /my-destination-index/_settings
+    {
+      "index": {
+        "number_of_replicas": 0
+      }
+    }
+    ```
+
+    4. Start the reindexing process in asynchronous mode. Set the `op_type` to `create` so the reindex does not overwrite work that the transform is doing.
+
+    ```json
+    POST _reindex
+    {
+      "conflicts": "proceed",
+      "source": {
+        "index": "my-destination-index"
+      },
+      "dest": {
+        "index": "my-new-destination-index",
+        "op_type": "create"
+      }
+    }
+    ```
+
+    The response will contain a `task_id`. You can check when the task is completed using the following command:
+
+    ```
+    GET _tasks/<task_id>
+    ```
+
+    5. Set the number of replicas to the original number when the reindexing is finished.
+
+    ```json
+    PUT /my-new-destination-index/_settings
+    {
+      "index": {
+        "number_of_replicas": "<original_number_of_replicas>"
+      }
+    }
+    ```
+
+4. Get the aliases the original index is pointing to.
+
+    ```json
+    GET my-destination-index/_alias
+    {
+      "my-destination-index": {
+        "aliases": {
+          "my-destination-alias": {},
+        }
+      }
+    }
+    ```
+
+5. Now you can reassign the aliases to the new index and delete the original index in one step. Note that when adding the new index to the aliases, you must use the same `filter` and `is_hidden` parameters as for the original index.
+
+    ```json
+    POST _aliases
+    {
+      "actions": [
+        {
+          "add": {
+            "index": "my-new-destination-index",
+            "alias": "my-destination-alias"
+          }
+        },
+        {
+          "remove": {
+            "index": "my-destination-index",
+            "aliases": "my-destination-alias"
+          }
+        },
+        {
+          "remove_index": {
+            "index": "my-destination-index"
+          }
+        }
+      ]
+    }
+    ```
+
+:::
+
+:::{dropdown} Deleting the transform
+You can use the [Transform Delete API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-transform-delete-transform) to delete the transform and stop it from writing to the destination index.
+
+```json
+DELETE _transform/my-transform
+```
+If the destination index is no longer needed, it can be deleted alongside the transform.
+
+```json
+DELETE _transform/my-transform?delete_dest_index
+```
+:::

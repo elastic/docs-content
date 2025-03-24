@@ -12,7 +12,7 @@ Vector tooltips display attributes for the features at your mouse location. Thes
 
 If more than one feature exists at a location, the tooltip displays the attributes for the top feature, and notes the number of features at that location. The following image has a tooltip with three features at the current location: a green circle from the **Total Sales Revenue** layer, a blue New York State polygon from **United States** layer, and a red United States Country polygon from the **World Countries** layer. The tooltip displays attributes for the top feature, the green circle, from the **Total Sales Revenue** layer.
 
-:::{image} ../../../images/kibana-multifeature_tooltip.png
+:::{image} /explore-analyze/images/kibana-multifeature_tooltip.png
 :alt: multifeature tooltip
 :screenshot:
 :::
@@ -33,7 +33,7 @@ You can lock a tooltip in place by clicking a location on the map. With locked t
 
 This image shows a locked tooltip with features from three layers. The tooltip displays attributes for the second feature, the blue New York State polygon.  The tooltip includes controls for paging through the features and a dropdown menu for filtering the features by layer.
 
-:::{image} ../../../images/kibana-locked_tooltip.png
+:::{image} /explore-analyze/images/kibana-locked_tooltip.png
 :alt: locked tooltip
 :screenshot:
 :::

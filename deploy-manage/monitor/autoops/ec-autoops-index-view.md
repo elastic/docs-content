@@ -10,7 +10,7 @@ applies_to:
 
 The **Indices** view provides detailed statistics for each {{es}} index in your deployment.
 
-:::{image} /images/cloud-autoops-index-view.png
+:::{image} /deploy-manage/images/cloud-autoops-index-view.png
 :alt: The Indices view
 :::
 

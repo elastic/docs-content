@@ -62,7 +62,7 @@ If you have an allocator that meets several criteria, such as an allocator with 
 
 4. Enter values into the **Key** and **Value** fields, and then select **Add tag**. For example: You could add `SSD: true` and `highCPU: true` tags from our [example tags](#allocator-sample-tags) if your allocator meets these criteria.
 
-    :::{image} ../../../images/cloud-enterprise-ece-tagging-ui.png
+    :::{image} /deploy-manage/images/cloud-enterprise-ece-tagging-ui.png
     :alt: Adding key-value pairs as an allocator tags
     :::
 

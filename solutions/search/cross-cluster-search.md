@@ -1047,19 +1047,19 @@ Here’s how {{ccs}} works when you minimize network roundtrips.
 
 1. You send a {{ccs}} request to your local cluster. A coordinating node in that cluster receives and parses the request.
 
-    ![ccs min roundtrip client request](../../images/elasticsearch-reference-ccs-min-roundtrip-client-request.svg "")
+    ![ccs min roundtrip client request](/solutions/images/elasticsearch-reference-ccs-min-roundtrip-client-request.svg "")
 
 2. The coordinating node sends a single search request to each cluster, including the local cluster. Each cluster performs the search request independently, applying its own cluster-level settings to the request.
 
-    ![ccs min roundtrip cluster search](../../images/elasticsearch-reference-ccs-min-roundtrip-cluster-search.svg "")
+    ![ccs min roundtrip cluster search](/solutions/images/elasticsearch-reference-ccs-min-roundtrip-cluster-search.svg "")
 
 3. Each remote cluster sends its search results back to the coordinating node.
 
-    ![ccs min roundtrip cluster results](../../images/elasticsearch-reference-ccs-min-roundtrip-cluster-results.svg "")
+    ![ccs min roundtrip cluster results](/solutions/images/elasticsearch-reference-ccs-min-roundtrip-cluster-results.svg "")
 
 4. After collecting results from each cluster, the coordinating node returns the final results in the {{ccs}} response.
 
-    ![ccs min roundtrip client response](../../images/elasticsearch-reference-ccs-min-roundtrip-client-response.svg "")
+    ![ccs min roundtrip client response](/solutions/images/elasticsearch-reference-ccs-min-roundtrip-client-response.svg "")
 
 
 
@@ -1069,15 +1069,15 @@ Here’s how {{ccs}} works when you don’t minimize network roundtrips.
 
 1. You send a {{ccs}} request to your local cluster. A coordinating node in that cluster receives and parses the request.
 
-    ![ccs min roundtrip client request](../../images/elasticsearch-reference-ccs-min-roundtrip-client-request.svg "")
+    ![ccs min roundtrip client request](/solutions/images/elasticsearch-reference-ccs-min-roundtrip-client-request.svg "")
 
 2. The coordinating node sends a "search shards" transport layer request to each remote cluster to have them to perform a "can match" search to determine which shards on each cluster should be searched.
 
-    ![ccs min roundtrip cluster search](../../images/elasticsearch-reference-ccs-min-roundtrip-cluster-search.svg "")
+    ![ccs min roundtrip cluster search](/solutions/images/elasticsearch-reference-ccs-min-roundtrip-cluster-search.svg "")
 
 3. Each remote cluster sends its response back to the coordinating node. This response contains information about the indices and shards the {{ccs}} request will be executed on.
 
-    ![ccs min roundtrip cluster results](../../images/elasticsearch-reference-ccs-min-roundtrip-cluster-results.svg "")
+    ![ccs min roundtrip cluster results](/solutions/images/elasticsearch-reference-ccs-min-roundtrip-cluster-results.svg "")
 
 4. The coordinating node sends a search request to each shard, including those in its own cluster. Each shard performs the search request independently.
 
@@ -1087,15 +1087,15 @@ Here’s how {{ccs}} works when you don’t minimize network roundtrips.
     ::::
 
 
-    ![ccs dont min roundtrip shard search](../../images/elasticsearch-reference-ccs-dont-min-roundtrip-shard-search.svg "")
+    ![ccs dont min roundtrip shard search](/solutions/images/elasticsearch-reference-ccs-dont-min-roundtrip-shard-search.svg "")
 
 5. Each shard sends its search results back to the coordinating node.
 
-    ![ccs dont min roundtrip shard results](../../images/elasticsearch-reference-ccs-dont-min-roundtrip-shard-results.svg "")
+    ![ccs dont min roundtrip shard results](/solutions/images/elasticsearch-reference-ccs-dont-min-roundtrip-shard-results.svg "")
 
 6. After collecting results from each cluster, the coordinating node returns the final results in the {{ccs}} response.
 
-    ![ccs min roundtrip client response](../../images/elasticsearch-reference-ccs-min-roundtrip-client-response.svg "")
+    ![ccs min roundtrip client response](/solutions/images/elasticsearch-reference-ccs-min-roundtrip-client-response.svg "")
 
 
 

@@ -12,7 +12,7 @@ When you start an instance of {{es}}, you are starting a *node*. An {{es}} *clus
 
 If you are running a single instance of {{es}}, you have a cluster of one node. All primary shards reside on the single node. No replica shards can be allocated, therefore the cluster state remains yellow. The cluster is fully functional but is at risk of data loss in the event of a failure.
 
-:::{image} ../../images/elasticsearch-reference-elas_0202.png
+:::{image} /deploy-manage/images/elasticsearch-reference-elas_0202.png
 :alt: A cluster with one node and three primary shards
 :::
 
@@ -20,7 +20,7 @@ You add nodes to a cluster to increase its capacity and reliability. By default,
 
 When you add more nodes to a cluster, it automatically allocates replica shards. When all primary and replica shards are active, the cluster state changes to green.
 
-:::{image} ../../images/elasticsearch-reference-elas_0204.png
+:::{image} /deploy-manage/images/elasticsearch-reference-elas_0204.png
 :alt: A cluster with three nodes
 :::
 

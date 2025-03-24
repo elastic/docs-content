@@ -14,7 +14,7 @@ In addition to the more detailed [cluster performance metrics](/deploy-manage/mo
 
 The percentage number used in the JVM memory pressure indicator is actually the fill rate of the old generation pool. For a detailed explanation of why this metric is used, refer to [Understanding memory pressure](https://www.elastic.co/blog/found-understanding-memory-pressure-indicator/).
 
-:::{image} /images/cloud-memory-pressure-indicator.png
+:::{image} /deploy-manage/images/cloud-memory-pressure-indicator.png
 :alt: Memory pressure indicator
 :::
 

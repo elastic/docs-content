@@ -68,7 +68,7 @@ The script also generates an {{agent}} configuration file that you can use with 
 1. In {{kib}}, go to the **Observability** UI and click **Add Data**.
 2. Under **What do you want to monitor?** select **Host**, and then select **Elastic Agent: Logs & Metrics**.
 
-    :::{image} ../../../images/observability-quickstart-monitor-hosts-entry-point.png
+    :::{image} /solutions/images/observability-quickstart-monitor-hosts-entry-point.png
     :alt: Host monitoring entry point
     :screenshot:
     :::
@@ -92,7 +92,7 @@ The script also generates an {{agent}} configuration file that you can use with 
 2. In your {{obs-serverless}} project, go to **Add Data**.
 3. Under **What do you want to monitor?** select **Host**, and then select **Elastic Agent: Logs & Metrics**.
 
-    :::{image} ../../../images/serverless-quickstart-monitor-hosts-entry-point.png
+    :::{image} /solutions/images/serverless-quickstart-monitor-hosts-entry-point.png
     :alt: Host monitoring entry point
     :screenshot:
     :::
@@ -141,7 +141,7 @@ After installation is complete and all relevant data is flowing into Elastic, th
 
 For example, you can navigate the **Host overview** dashboard to explore detailed metrics about system usage and throughput. Metrics that indicate a possible problem are highlighted in red.
 
-:::{image} ../../../images/observability-quickstart-host-overview.png
+:::{image} /solutions/images/observability-quickstart-host-overview.png
 :alt: Host overview dashboard
 :screenshot:
 :::
