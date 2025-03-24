@@ -84,6 +84,10 @@ Use these controls to filter what’s included in the logs table:
 
 ### Gaps table [gaps-table]
 
+::::{warning}
+This functionality is in beta and is subject to change. The design and code is less mature than official GA features and is being provided as-is with no warranties. Beta features are not subject to the support SLA of official GA features.
+::::
+
 Gaps in rule executions are periods of time where a rule didn’t run as expected. These gaps can be caused by various disruptions, including system updates, rule failures, or simply turning off a rule. Addressing them is essential for maintaining consistent coverage and avoiding missed alerts.
 
 TIP: Refer to the [Troubleshoot gaps](../../../troubleshoot/security/detection-rules.md#troubleshoot-gaps) section for strategies for avoiding gaps.
