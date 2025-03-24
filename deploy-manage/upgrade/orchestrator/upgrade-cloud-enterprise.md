@@ -13,7 +13,7 @@ Periodically, you might need to upgrade an Elastic Cloud Enterprise installation
 Before initiating the ECE upgrade process, consult the [Support matrix](https://www.elastic.co/support/matrix#elastic-cloud-enterprise) to make sure that the Operating System (OS) and Docker or Podman versions you run are compatible with the ECE version you’re about to upgrade to. We recommend that Docker, Podman, and the operating system be at the target version before starting the ECE upgrade procedure.
 
 :::{note}
-During the upgrade window, there might be a short period of time during which you run a combination of versions which is not explicitly supported. For example, if you are on ECE 3.5 with Docker version 20.10 on Ubuntu 20.04, and plan to upgrade to ECE 3.7 on the same OS, you will need to upgrade Docker to version 24.0 first. In this case, and only during your upgrade window, we support the mixed OS/Docker versions. In general, this won’t be a problem. However, should anything become a blocker for the upgrade, [reach out to support for help](/troubleshoot/deployments/cloud-enterprise/ask-for-help.md).
+During the upgrade window, there might be a short period of time during which you run a combination of versions which is not explicitly supported. For example, if you are on ECE 3.5 with Docker version 20.10 on Ubuntu 20.04, and plan to upgrade to ECE 3.7 on the same OS, you will need to upgrade Docker to version 24.0 first. In this case, and only during your upgrade window, we support the mixed OS/Docker versions. In general, this won’t be a problem. However, should anything become a blocker for the upgrade, [reach out to support for help](/troubleshoot/index.md#contact-us).
 :::
 
 ## The upgrade version matrix [ece-upgrade-version-matrix]
@@ -43,7 +43,7 @@ The upgrade process creates a `frc-upgraders-monitor` container on the host wher
 * Monitor the upgrade process to ensure that all `frc-upgraders-upgrader` containers perform their part of the upgrade as expected and report their status.
 * After all hosts have been upgraded successfully, clean up temporary artifacts created during the upgrade process, and remove the old containers.
 
-The entire process is designed to be failsafe.  Containers get upgraded sequentially and the upgrade status of each container is tracked. The upgrade process also monitors that each new container is viable and continues to run as expected. If there is an issue with any part of the upgrade, [the entire process is rolled back](../../../troubleshoot/deployments/cloud-enterprise/common-issues.md#ece-troubleshooting-upgrade).
+The entire process is designed to be failsafe.  Containers get upgraded sequentially and the upgrade status of each container is tracked. The upgrade process also monitors that each new container is viable and continues to run as expected. If there is an issue with any part of the upgrade, [the entire process is rolled back](/troubleshoot/deployments/cloud-enterprise/common-issues.md#ece-troubleshooting-upgrade).
 
 ## Recommendations [ece-upgrade-recommendations]
 
@@ -101,7 +101,7 @@ If your ECE installation is still using the default, auto-generated certificates
     }
     ```
 
-If the license version is not 4 or higher, you must request an updated license from [Elastic Support](../../../troubleshoot/deployments/cloud-enterprise/ask-for-help.md). Once you receive your new license, make sure Elastic Cloud Enterprise is upgraded to at least version 2.5.0, and then upload the new license in the Settings page under the Platform menu.
+If the license version is not 4 or higher, you must request an updated license from [Elastic Support](/troubleshoot/index.md#contact-us). Once you receive your new license, make sure Elastic Cloud Enterprise is upgraded to at least version 2.5.0, and then upload the new license in the Settings page under the Platform menu.
 
 In versions from 2.6 to 2.10 included, some or all platform certificates are generated with a 398-day expiration. Installations that ran on these versions, even temporarily, must have their certificates rotated manually before expiry. For details, check our [KB article](https://support.elastic.co/knowledge/ECE-Certificate-Rotation).
 
