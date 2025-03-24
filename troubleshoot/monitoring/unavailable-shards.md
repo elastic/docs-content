@@ -33,7 +33,7 @@ If a cluster has unassigned shards, you might see an error message such as this 
 :::
 
 :::{important}
- If you’re using Elastic Cloud Hosted, then you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, real-time issue detection and resolution paths. For more information, refer to [Monitor with AutoOps](/deploy-manage/monitor/autoops.md).
+ If you’re using Elastic Cloud Hosted, then you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, and real-time issue detection with resolution paths. For more information, refer to [Monitor with AutoOps](/deploy-manage/monitor/autoops.md).
 :::
 
 If your issue is not addressed here, then [contact Elastic support for help](/troubleshoot/index.md).
@@ -239,7 +239,7 @@ During the routine system maintenance performed by Elastic, it might happen that
 
 **Resolutions**
 
-Configure an [highly available cluster](/deploy-manage/production-guidance/plan-for-production-elastic-cloud.md) to keep your service running. Also, consider taking the following actions to bring your deployment back to health and recover your data from the snapshot.
+Configure an [highly available cluster](/deploy-manage/production-guidance.md) to keep your service running. Also, consider taking the following actions to bring your deployment back to health and recover your data from the snapshot.
 
 * [Close the red indices](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-close)
 * [Restore the indices](/deploy-manage/tools/snapshot-and-restore.md) from the last successful snapshot
