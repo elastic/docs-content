@@ -5,7 +5,7 @@ The AI Assistant uses generative AI to provide:
 * **Chat**: Have conversations with the AI Assistant. Chat uses function calling to request, analyze, and visualize your data.
 * **Contextual insights**: Open prompts throughout {{obs-serverless}} that explain errors and messages and suggest remediation.
 
-:::{image} ../../../images/serverless-ai-assistant-overview.gif
+:::{image} /raw-migrated-files/images/serverless-ai-assistant-overview.gif
 :alt: Observability AI assistant preview
 :screenshot:
 :::
@@ -174,11 +174,11 @@ After every answer the LLM provides, let us know if the answer was helpful. Your
 
 ### Chat with the assistant [observability-ai-assistant-chat-with-the-assistant]
 
-Click the AI Assistant button (![AI Assistant icon](../../../images/serverless-ai-assistant-button.png "")) in the upper-right corner where available to start the chat.
+Click the AI Assistant button (![AI Assistant icon](/raw-migrated-files/images/serverless-ai-assistant-button.png "")) in the upper-right corner where available to start the chat.
 
 This opens the AI Assistant flyout, where you can ask the assistant questions about your instance:
 
-:::{image} ../../../images/serverless-ai-assistant-chat.png
+:::{image} /raw-migrated-files/images/serverless-ai-assistant-chat.png
 :alt: Observability AI assistant chat
 :screenshot:
 :::
@@ -233,14 +233,14 @@ AI Assistant contextual prompts throughout {{obs-serverless}} provide the follow
 
 For example, in the log details, you’ll see prompts for **What’s this message?** and **How do I find similar log messages?**:
 
-:::{image} ../../../images/serverless-ai-assistant-logs-prompts.png
+:::{image} /raw-migrated-files/images/serverless-ai-assistant-logs-prompts.png
 :alt: Observability AI assistant example prompts for logs
 :screenshot:
 :::
 
 Clicking a prompt generates a message specific to that log entry. You can continue a conversation from a contextual prompt by clicking **Start chat** to open the AI Assistant chat.
 
-:::{image} ../../../images/serverless-ai-assistant-logs.png
+:::{image} /raw-migrated-files/images/serverless-ai-assistant-logs.png
 :alt: Observability AI assistant example
 :screenshot:
 :::
@@ -255,7 +255,7 @@ You can use the [Observability AI Assistant connector](kibana://reference/connec
 3. In the **Connector** list, select the AI connector you created when you set up the assistant.
 4. In the **Message** field, specify the message to send to the assistant:
 
-:::{image} ../../../images/serverless-obs-ai-assistant-action-high-cpu.png
+:::{image} /raw-migrated-files/images/serverless-obs-ai-assistant-action-high-cpu.png
 :alt: Add an Observability AI assistant action while creating a rule in the Observability UI
 :screenshot:
 :::
@@ -272,7 +272,7 @@ Currently you can only send messages to Slack, email, Jira, PagerDuty, or a webh
 
 When the alert fires, contextual details about the event—such as when the alert fired, the service or host impacted, and the threshold breached—are sent to the AI Assistant, along with the message provided during configuration. The AI Assistant runs the tasks requested in the message and creates a conversation you can use to chat with the assistant:
 
-:::{image} ../../../images/serverless-obs-ai-assistant-output.png
+:::{image} /raw-migrated-files/images/serverless-obs-ai-assistant-output.png
 :alt: AI Assistant conversation created in response to an alert
 :screenshot:
 :::
@@ -289,7 +289,7 @@ Note that overly broad prompts may result in the request exceeding token limits.
 
 When asked to send a message to another connector, such as Slack, the AI Assistant attempts to include a link to the generated conversation.
 
-:::{image} ../../../images/serverless-obs-ai-assistant-slack-message.png
+:::{image} /raw-migrated-files/images/serverless-obs-ai-assistant-slack-message.png
 :alt: Message sent by Slack by the AI Assistant includes a link to the conversation
 :screenshot:
 :::

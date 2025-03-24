@@ -134,7 +134,7 @@ There are situations where you may need or want to move your installed {{agents}
 
 In {{ecloud}}, you can migrate your {{agents}} by taking a snapshot of your source deployment, and restoring it on a target deployment.
 
-To make a seamless migration, after restoring from a snapshot there are some additional steps required, such as updating settings and resetting the agent policy. Check [Migrate Elastic Agents](/reference/ingestion-tools/fleet/migrate-elastic-agent.md) for details.
+To make a seamless migration, after restoring from a snapshot there are some additional steps required, such as updating settings and resetting the agent policy. Check [Migrate Elastic Agents](/reference/fleet/migrate-elastic-agent.md) for details.
 
 
 ## Regions and Availability Zones [ec-regions-and-availability-zone]

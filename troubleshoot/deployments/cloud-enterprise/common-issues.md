@@ -1,4 +1,7 @@
 ---
+applies_to:
+  deployment:
+    ece: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-issues.html
 ---
@@ -149,5 +152,5 @@ To determine the root cause of an upgrade failure, the following logs are availa
 `HOST_STORAGE_PATH/logs/upgrader-logs/upgrader.log`
 :   Available on every host that attempted the upgrade. This log file can tell you about the specific issues that caused the upgrade to fail on a host.
 
-In rare cases, a manual rollback of the upgrade might be required. Check [Getting help](ask-for-help.md).
+In rare cases, a manual rollback of the upgrade might be required. For more help, [contact us](/troubleshoot/index.md#contact-us).
 

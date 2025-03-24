@@ -318,6 +318,7 @@ toc:
           - file: distributed-architecture/shard-allocation-relocation-recovery/index-level-shard-allocation.md
             children:
               - file: distributed-architecture/shard-allocation-relocation-recovery/delaying-allocation-when-node-leaves.md
+      - file: distributed-architecture/shard-request-cache.md
       - file: distributed-architecture/discovery-cluster-formation.md
         children:
           - file: distributed-architecture/discovery-cluster-formation/discovery-hosts-providers.md
@@ -503,6 +504,7 @@ toc:
       - file: security/secure-clients-integrations.md
         children:
           - file: security/httprest-clients-security.md
+      - file: security/limitations.md
   - file: users-roles.md
     children:
       - file: users-roles/cloud-organization.md
@@ -742,7 +744,6 @@ toc:
         children:
           - file: maintenance/ece/deployments-maintenance.md
             children:
-              - file: maintenance/ece/start-stop-routing-requests.md
               - file: maintenance/ece/pause-instance.md
           - file: maintenance/ece/maintenance-activities.md
             children:
@@ -758,6 +759,7 @@ toc:
           - file: maintenance/start-stop-services/restart-cloud-hosted-deployment.md
           - file: maintenance/start-stop-services/restart-an-ece-deployment.md
           - file: maintenance/start-stop-services/full-cluster-restart-rolling-restart-procedures.md
+      - file: maintenance/start-stop-routing-requests.md
       - file: maintenance/add-and-remove-elasticsearch-nodes.md
   - file: upgrade.md
     children:
@@ -784,11 +786,9 @@ toc:
                   - file: upgrade/deployment-or-cluster/reading-indices-from-older-elasticsearch-versions.md
               - file: upgrade/deployment-or-cluster/kibana.md
                 children:
+                  - file: upgrade/deployment-or-cluster/saved-object-migrations.md
                   - file: upgrade/deployment-or-cluster/kibana-roll-back.md    
-      - file: upgrade/ingest-components.md
-      - file: upgrade/internal-upgrade-processes.md
-        children:
-          - file: upgrade/internal-upgrade-processes/saved-object-migrations.md
+      - file: upgrade/ingest-components.md        
   - file: uninstall.md
     children:
       - file: uninstall/uninstall-elastic-cloud-enterprise.md
