@@ -40,7 +40,7 @@ If the repository is still in use (for example by mounted searchable snapshots),
 ::::
 
 
-:::{image} ../../../images/cloud-ec-elasticsearch-snapshots-of-other-deployments.png
+:::{image} /deploy-manage/images/cloud-ec-elasticsearch-snapshots-of-other-deployments.png
 :alt: View of the old snapshot repository in the Cloud UI
 :::
 

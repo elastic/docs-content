@@ -14,7 +14,7 @@ navigation_title: "Track deployments with annotations"
 
 ::::
 
-:::{image} ../../../images/observability-apm-transaction-annotation.png
+:::{image} /solutions/images/observability-apm-transaction-annotation.png
 :alt: Example view of transactions annotation in the Applications UI
 :screenshot:
 :::

@@ -131,7 +131,7 @@ watch -n 5 curl -i https://<your cloudfront distribution>.cloudfront.net
 
 Navigate to Kibana and visualize the first WAF logs in your {{stack}}.
 
-:::{image} ../../../images/observability-firehose-waf-logs.png
+:::{image} /solutions/images/observability-firehose-waf-logs.png
 :alt: Firehose WAF logs in Kibana
 :screenshot:
 :::

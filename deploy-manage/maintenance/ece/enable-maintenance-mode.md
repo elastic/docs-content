@@ -22,6 +22,6 @@ After the allocator enters maintenance mode, no new Elasticsearch nodes or Kiban
 If you want to make the allocator fully active again, select **Disable Maintenance Mode**. Confirm the action.
 
 ::::{tip}
-If you need the existing instances to stop routing requests, refer to the [stop routing request documentation](start-stop-routing-requests.md) to learn more.
+If you need the existing instances to stop routing requests, refer to the [stop routing request documentation](../start-stop-routing-requests.md) to learn more.
 
 ::::

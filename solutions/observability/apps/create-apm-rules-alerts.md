@@ -45,7 +45,7 @@ Active alerts are displayed and grouped in multiple ways in the Applications UI.
 
 If you’re using the [service groups](../../../solutions/observability/apps/services.md#service-groups) feature, you can view alerts by service group. From the service group overview page, click the red alert indicator to open the **Alerts** tab with a predefined filter that matches the filter used when creating the service group.
 
-:::{image} ../../../images/observability-apm-service-group.png
+:::{image} /solutions/images/observability-apm-service-group.png
 :alt: Example view of service group in the Applications UI in Kibana
 :screenshot:
 :::
@@ -55,7 +55,7 @@ If you’re using the [service groups](../../../solutions/observability/apps/ser
 
 Alerts can be viewed within the context of any service. After selecting a service, go to the **Alerts** tab to view any alerts that are active for the selected service.
 
-:::{image} ../../../images/observability-active-alert-service.png
+:::{image} /solutions/images/observability-active-alert-service.png
 :alt: View active alerts by service
 :screenshot:
 :::

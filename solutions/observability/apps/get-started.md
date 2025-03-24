@@ -24,7 +24,7 @@ This approach works well if you want to create both browser monitors and lightwe
 
 Get started in [Create monitors in a Synthetics project](../../../solutions/observability/apps/create-monitors-with-project-monitors.md).
 
-:::{image} ../../../images/observability-synthetics-get-started-projects.png
+:::{image} /solutions/images/observability-synthetics-get-started-projects.png
 :alt: Diagram showing which pieces of software are used to configure monitors
 :::
 
@@ -35,7 +35,7 @@ You can create monitors directly in the user interface. This approach works well
 
 Get started in [Create monitors in the Synthetics UI](../../../solutions/observability/apps/create-monitors-in-synthetics-app.md).
 
-:::{image} ../../../images/observability-synthetics-get-started-ui.png
+:::{image} /solutions/images/observability-synthetics-get-started-ui.png
 :alt: Diagram showing which pieces of software are used to configure monitors
 :::
 

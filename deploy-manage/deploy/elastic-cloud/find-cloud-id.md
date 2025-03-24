@@ -10,7 +10,7 @@ mapped_pages:
 
 The Cloud ID reduces the number of steps required to start sending data from Beats or Logstash to your hosted Elasticsearch cluster on {{ecloud}}. Because we made it easier to send data, you can start exploring visualizations in Kibana on {{ecloud}} that much more quickly.
 
-:::{image} ../../../images/cloud-ec-ce-cloud-id-beats-logstash.png
+:::{image} /deploy-manage/images/cloud-ec-ce-cloud-id-beats-logstash.png
 :alt: Exploring data from Beats or Logstash in Kibana after sending it to a hosted Elasticsearch cluster
 :::
 
@@ -18,7 +18,7 @@ The Cloud ID works by assigning a unique ID to your hosted Elasticsearch cluster
 
 You include your Cloud ID along with your {{ecloud}} user credentials (defined in `cloud.auth`) when you run Beats or Logstash locally, and then let {{ecloud}} handle all of the remaining connection details to send the data to your hosted cluster on {{ecloud}} safely and securely.
 
-:::{image} ../../../images/cloud-ec-ce-cloud-id.png
+:::{image} /deploy-manage/images/cloud-ec-ce-cloud-id.png
 :alt: The Cloud ID and `elastic` user information shown when you create a deployment
 :::
 

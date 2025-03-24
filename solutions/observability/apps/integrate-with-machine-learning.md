@@ -21,7 +21,7 @@ Results from machine learning jobs are shown in multiple places throughout the A
 * The transaction duration chart will show the expected bounds and add an annotation when the anomaly score is 75 or above.
 * Service Maps will display a color-coded anomaly indicator based on the detected anomaly score.
 
-    :::{image} ../../../images/observability-apm-service-map-anomaly.png
+    :::{image} /solutions/images/observability-apm-service-map-anomaly.png
     :alt: Example view of anomaly scores on service maps in the Applications UI
     :screenshot:
     :::

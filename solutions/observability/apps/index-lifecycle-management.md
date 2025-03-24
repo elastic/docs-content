@@ -67,7 +67,7 @@ The **Data Streams** view in {{kib}} shows you data streams, index templates, an
 3. Search for `traces-apm` to see all data streams associated with APM trace data.
 4. In this example, I only have one data stream because I’m only using the `default` namespace. You may have more if your setup includes multiple namespaces.
 
-    :::{image} ../../../images/observability-data-stream-overview.png
+    :::{image} /solutions/images/observability-data-stream-overview.png
     :alt: Data streams info
     :screenshot:
     :::
@@ -101,7 +101,7 @@ To apply your new index lifecycle policy to the `traces-apm-*` data stream, edit
 
 4. Continue to **Review** and ensure your request looks similar to the image below. If it does, click **Create component template**.
 
-    :::{image} ../../../images/observability-create-component-template.png
+    :::{image} /solutions/images/observability-create-component-template.png
     :alt: Create component template
     :screenshot:
     :::

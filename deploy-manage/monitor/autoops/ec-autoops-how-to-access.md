@@ -20,6 +20,6 @@ To access AutoOps from your Elastic Cloud console, follow these steps:
 3. Click **Manage** on the right side of the selected deployment.
 4. On the deployment details page, click **Open AutoOps**.
 
-:::{image} /images/cloud-autoops-how-to-access.png
+:::{image} /deploy-manage/images/cloud-autoops-how-to-access.png
 :alt: How to access AutoOps
 :::

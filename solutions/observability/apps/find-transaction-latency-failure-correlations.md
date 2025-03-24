@@ -43,7 +43,7 @@ Active queries *are* applied to correlations.
 
 The correlations on the **Latency correlations** tab help you discover which attributes are contributing to increased transaction latency.
 
-:::{image} ../../../images/observability-correlations-hover.png
+:::{image} /solutions/images/observability-correlations-hover.png
 :alt: APM latency correlations
 :screenshot:
 :::
@@ -70,7 +70,7 @@ The chart highlights the failed transactions in the overall latency distribution
 
 For example, in the screenshot below, there are attributes such as a specific node and pod name that have medium impact on the failed transactions.
 
-:::{image} ../../../images/observability-correlations-failed-transactions.png
+:::{image} /solutions/images/observability-correlations-failed-transactions.png
 :alt: Failed transaction correlations
 :screenshot:
 :::

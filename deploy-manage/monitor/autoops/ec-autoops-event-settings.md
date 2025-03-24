@@ -23,7 +23,7 @@ The event settings include:
 * Index patterns to exclude - AutoOps will exclude system indices to prevent unnecessary events from opening. You can add or remove indices from the list.
 * Data roles tier to exclude from indications - Add threshold based on the type of data tier.
 
-:::{image} /images/cloud-autoops-event-settings.png
+:::{image} /deploy-manage/images/cloud-autoops-event-settings.png
 :alt: Event settings
 :::
 
@@ -34,7 +34,7 @@ The **Event Settings** report provides a list of all the events for which the se
 
 From the **Event Settings** report, you can click **Add** to add new settings, or select the edit icon to modify the existing settings.
 
-:::{image} /images/cloud-autoops-events-settings-report.png
+:::{image} /deploy-manage/images/cloud-autoops-events-settings-report.png
 :alt: Event settings report
 :::
 

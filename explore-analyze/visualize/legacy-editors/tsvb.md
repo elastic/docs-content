@@ -17,7 +17,7 @@ With **TSVB**, you can:
 * Use custom functions and some math on aggregations.
 * Customize the data with labels and colors.
 
-:::{image} ../../../images/kibana-tsvb-screenshot.png
+:::{image} /explore-analyze/images/kibana-tsvb-screenshot.png
 :alt: TSVB overview
 :screenshot:
 :::
@@ -232,7 +232,7 @@ Performing math across data series is unsupported in **TSVB**. To calculate the 
 
 1. Click **Clone Series**, then choose a color for the new series.
 
-   :::{image} ../../../images/kibana-tsvb_clone_series.png
+   :::{image} /explore-analyze/images/kibana-tsvb_clone_series.png
    :alt: Clone Series action
    :screenshot:
    :::

@@ -51,7 +51,7 @@ In the following graph, `domain name system` and its synonym, `dns`, both have a
 
 [Indexing](index-search-analysis.md) ignores the `positionLength` attribute and does not support token graphs containing multi-position tokens.
 
-However, queries, such as the [`match`](elasticsearch://reference/query-languages/query-dsl-match-query.md) or [`match_phrase`](elasticsearch://reference/query-languages/query-dsl-match-query-phrase.md) query, can use these graphs to generate multiple sub-queries from a single query string.
+However, queries, such as the [`match`](elasticsearch://reference/query-languages/query-dsl/query-dsl-match-query.md) or [`match_phrase`](elasticsearch://reference/query-languages/query-dsl/query-dsl-match-query-phrase.md) query, can use these graphs to generate multiple sub-queries from a single query string.
 
 :::::{dropdown} Example
 A user runs a search for the following phrase using the `match_phrase` query:

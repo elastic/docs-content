@@ -73,7 +73,7 @@ Elastic enables you to easily manage users in {{kib}} on the **Stack Management 
 4. Optional: assign [roles](/deploy-manage/users-roles/cluster-or-deployment-auth/user-roles.md) to the user.
 5. Click **Create user**.
 
-:::{image} ../../../images/kibana-tutorial-secure-access-example-1-user.png
+:::{image} /deploy-manage/images/kibana-tutorial-secure-access-example-1-user.png
 :alt: Create user UI
 :screenshot:
 :::

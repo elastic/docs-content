@@ -96,7 +96,7 @@ Failed to connect to {host} port {port} after 0 ms: Connection refused
 
 #### Solution [logs-troubleshooting-kib-not-accessible-solution]
 
-The host needs access to {{kib}} or your project. Port `443` must be open and the deployment’s {{es}} endpoint must be reachable. Locate your project’s endpoint from **Help menu (![help icon](../../images/observability-help-icon.png "")) → Connection details**.
+The host needs access to {{kib}} or your project. Port `443` must be open and the deployment’s {{es}} endpoint must be reachable. Locate your project’s endpoint from **Help menu (![help icon](/troubleshoot/images/observability-help-icon.png "")) → Connection details**.
 
 Run the following command, replacing the URL with your endpoint, and you should get an authentication error with more details on resolving your issue:
 
@@ -164,7 +164,7 @@ If the **Waiting for Logs to be shipped…​** step never completes, logs are n
 
 #### Solution [logs-troubleshooting-wait-for-logs-solution]
 
-Inspect the {{agent}} logs for errors. See the [Debug standalone {{agent}}s](/reference/ingestion-tools/fleet/debug-standalone-agents.md#inspect-standalone-agent-logs) documentation for more on finding errors in {{agent}} logs.
+Inspect the {{agent}} logs for errors. See the [Debug standalone {{agent}}s](/reference/fleet/debug-standalone-agents.md#inspect-standalone-agent-logs) documentation for more on finding errors in {{agent}} logs.
 
 
 ## Mapping and pipeline issues [logs-common-mapping-troubleshooting]

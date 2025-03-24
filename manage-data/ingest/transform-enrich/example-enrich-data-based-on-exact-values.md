@@ -8,7 +8,7 @@ applies_to:
 
 # Example: Enrich your data based on exact values [match-enrich-policy-type]
 
-`match` [enrich policies](data-enrichment.md#enrich-policy) match enrich data to incoming documents based on an exact value, such as a email address or ID, using a [`term` query](elasticsearch://reference/query-languages/query-dsl-term-query.md).
+`match` [enrich policies](data-enrichment.md#enrich-policy) match enrich data to incoming documents based on an exact value, such as a email address or ID, using a [`term` query](elasticsearch://reference/query-languages/query-dsl/query-dsl-term-query.md).
 
 The following example creates a `match` enrich policy that adds user name and contact information to incoming documents based on an email address. It then adds the `match` enrich policy to a processor in an ingest pipeline.
 

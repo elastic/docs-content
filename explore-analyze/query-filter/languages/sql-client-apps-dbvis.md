@@ -29,40 +29,40 @@ Elastic does not endorse, promote or provide support for this application.
 
 Setup the {{es}} JDBC driver through **Tools** > **Driver Manager**:
 
-![dbvis 1 driver manager](../../../images/elasticsearch-reference-dbvis-1-driver-manager.png "")
+![dbvis 1 driver manager](/explore-analyze/images/elasticsearch-reference-dbvis-1-driver-manager.png "")
 
 Select **Elasticsearch** driver template from the left sidebar to create a new user driver:
 
-![dbvis 2 driver manager elasticsearch](../../../images/elasticsearch-reference-dbvis-2-driver-manager-elasticsearch.png "")
+![dbvis 2 driver manager elasticsearch](/explore-analyze/images/elasticsearch-reference-dbvis-2-driver-manager-elasticsearch.png "")
 
 Download the driver locally:
 
-![dbvis 3 driver manager download](../../../images/elasticsearch-reference-dbvis-3-driver-manager-download.png "")
+![dbvis 3 driver manager download](/explore-analyze/images/elasticsearch-reference-dbvis-3-driver-manager-download.png "")
 
 and check its availability status:
 
-![dbvis 4 driver manager ready](../../../images/elasticsearch-reference-dbvis-4-driver-manager-ready.png "")
+![dbvis 4 driver manager ready](/explore-analyze/images/elasticsearch-reference-dbvis-4-driver-manager-ready.png "")
 
 
 ## Create a new connection [_create_a_new_connection]
 
 Once the {{es}} driver is in place, create a new connection:
 
-![dbvis 5 new conn](../../../images/elasticsearch-reference-dbvis-5-new-conn.png "")
+![dbvis 5 new conn](/explore-analyze/images/elasticsearch-reference-dbvis-5-new-conn.png "")
 
 by double-clicking the {{es}} entry in the list of available drivers:
 
-![dbvis 6 new conn elasticsearch](../../../images/elasticsearch-reference-dbvis-6-new-conn-elasticsearch.png "")
+![dbvis 6 new conn elasticsearch](/explore-analyze/images/elasticsearch-reference-dbvis-6-new-conn-elasticsearch.png "")
 
 Enter the connection details, then press **Connect** and the driver version (as that of the cluster) should show up under **Connection Message**.
 
-![dbvis 7 new conn connect](../../../images/elasticsearch-reference-dbvis-7-new-conn-connect.png "")
+![dbvis 7 new conn connect](/explore-analyze/images/elasticsearch-reference-dbvis-7-new-conn-connect.png "")
 
 
 ## Execute SQL queries [_execute_sql_queries]
 
 The setup is done. DbVisualizer can be used to run queries against {{es}} and explore its content:
 
-![dbvis 8 data](../../../images/elasticsearch-reference-dbvis-8-data.png "")
+![dbvis 8 data](/explore-analyze/images/elasticsearch-reference-dbvis-8-data.png "")
 
 
