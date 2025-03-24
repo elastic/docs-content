@@ -12,9 +12,6 @@ applies_to:
     self: all
 ---
 
-% pending to determine if we should link to Kibana-load-balancing across multiple ES nodes from the es prod docs
-% pending to link reference architectures
-
 # Run {{es}} in production [scalability]
 
 Many teams rely on {{es}} to run their key services. To ensure these services remain available and responsive under production workloads, you can design your deployment with the appropriate level of resilience, and apply performance optimizations tailored to your environment and use case.
