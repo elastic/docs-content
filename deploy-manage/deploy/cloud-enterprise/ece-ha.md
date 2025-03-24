@@ -63,12 +63,12 @@ Refer to [](../../reference-architectures.md) for information about {{es}} archi
 
 You should configure and use [{{es}} snapshots](/deploy-manage/tools/snapshot-and-restore.md). Snapshots provide a way to backup and restore your {{es}} indices. They can be used to copy indices for testing, to recover from failures or accidental deletions, or to migrate data to other deployments. We recommend configuring an [{{ece}}-level repository](../../tools/snapshot-and-restore/cloud-enterprise.md) to apply across all deployments. See [Work with snapshots](../../tools/snapshot-and-restore.md) for more guidance.
 
-## Furthermore considerations [ece-ece-ha-5-other]
+## Further considerations [ece-ece-ha-5-other]
 
-* Make sure you have three Zookeepers - by default, on the Director host - for your ECE installation. Similar to three Elasticsearch master nodes can form a quorum, three Zookeepers can forum the quorum for high availability purposes. Backing up Zookeeper data directory is also recommended, read [this doc](../../../troubleshoot/deployments/cloud-enterprise/rebuilding-broken-zookeeper-quorum.md) for more guidance.
+* Make sure you have three Zookeepers - by default, on the Director host - for your ECE installation. Similar to three Elasticsearch master nodes can form a quorum, three Zookeepers can forum the quorum for high availability purposes. Backing up the Zookeeper data directory is also recommended: refer to [](/troubleshoot/deployments/cloud-enterprise/rebuilding-broken-zookeeper-quorum.md) for more guidance.
 
 * Make sure that if you’re using a [private Docker registry server](ece-install-offline-with-registry.md) or are using any [custom bundles and plugins](../../../solutions/search/full-text/search-with-synonyms.md) hosted on a web server, that these are available to all ECE allocators, so that they can continue to be accessed in the event of a network partition or zone outage.
 
-* Don’t delete containers unless guided by Elastic Support or there’s public documentation explicitly describing this as required action. Otherwise, it can cause issues and you may lose access or functionality of your {{ece}} platform. See [Troubleshooting container engines](../../../troubleshoot/deployments/cloud-enterprise/troubleshooting-container-engines.md) for more information.
+* Don’t delete containers unless guided by Elastic Support or there’s public documentation explicitly describing this as required action. Otherwise, it can cause issues and you may lose access or functionality of your {{ece}} platform. See [](/troubleshoot/deployments/cloud-enterprise/troubleshooting-container-engines.md) for more information.
 
-If in doubt, please [contact support for help](../../../troubleshoot/deployments/cloud-enterprise/ask-for-help.md).
+If in doubt, please [contact support for help](/troubleshoot/index.md#contact-us).

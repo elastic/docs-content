@@ -192,7 +192,6 @@ toc:
       - file: deployments/cloud-enterprise/run-ece-diagnostics-tool.md
       - file: deployments/cloud-enterprise/heap-dumps.md
       - file: deployments/cloud-enterprise/thread-dumps.md
-      - file: deployments/cloud-enterprise/ask-for-help.md
   - file: deployments/cloud-on-k8s/kubernetes.md
     children:
       - file: deployments/cloud-on-k8s/common-problems.md
