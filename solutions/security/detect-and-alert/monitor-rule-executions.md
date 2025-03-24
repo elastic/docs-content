@@ -37,9 +37,9 @@ To sort the rules list, click any column header. To sort in descending order, cl
 
 For detailed information on a rule, the alerts it generated, and associated errors, click on its name in the table. This also allows you to perform the same actions that are available on the [**Installed Rules** tab](manage-detection-rules.md), such as modifying or deleting rules, activating or deactivating rules, exporting or importing rules, and duplicating prebuilt rules.
 
-For information about gaps in rule executions (which are periods of time when a rule didn't run as expected), use the panel above the table. The **Total rules with gaps:** field tells you how many rules have unfilled or partially filled gaps. The drop-down menu on the left allows you to select a time range for viewing gap data. The **Only rules with gaps** filter on the right lets only display rules with unfilled or partially filled gaps. 
+For information about rule execution gaps (which are periods of time when a rule didn't run as expected), use the panel above the table. The time filter on the left allows you to select a time range for viewing gap data. The **Total rules with gaps:** field tells you how many rules have unfilled or partially filled gaps within the selected time range. The **Only rules with gaps** filter on the right lets you only display rules with unfilled or partially filled gaps. 
 
-Within the table, the **Last Gap (if any)** column conveys how long the most recent gap for a rule lasted. The **Unfilled gaps duration** column shows whether a rule still has gaps and provides a total sum of the remaining unfilled or partially filled gaps. If a rule has no gaps, the column displays a dash (`––`).
+Within the table, the **Last Gap (if any)** column conveys how long the most recent gap for a rule lasted. The **Unfilled gaps duration** column shows whether a rule still has gaps and provides a total sum of the remaining unfilled or partially filled gaps. If a rule has no gaps, these columns displays a dash (`––`).
 
 
 TIP: For a detailed view of a rule's gaps, go to the **Execution results** tab and check the [Gaps table](/solutions/security/detect-and-alert/monitor-rule-executions.md#gaps-table).
@@ -89,7 +89,7 @@ Gaps in rule executions are periods of time where a rule didn’t run as expecte
 
 TIP: Refer to the [Troubleshoot gaps](../../../troubleshoot/security/detection-rules.md#troubleshoot-gaps) section for strategies for avoiding gaps.
 
-The Gaps table provides you with information that you can use to assess the scope and severity of rule execution gaps. To control what's shown in the table, you can filter the table by gap status, select a time range for viewing gap data, and sort multiple columns. 
+Use the information in the Gaps table to assess the scope and severity of rule execution gaps. To control what's shown in the table, you can filter the table by gap status, select a time range for viewing gap data, and sort multiple columns. 
 
 :::{image} /solutions/images/security-gaps-table.png
 :alt: Gaps table on the rule execution results tab
