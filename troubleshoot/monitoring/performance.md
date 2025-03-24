@@ -11,7 +11,7 @@ You have a smaller {{es}} cluster and you’ve noticed that performance seems to
 
 When you look in the **Cluster Performance Metrics** section of the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body), you get the following metrics:
 
-:::{image} /images/cloud-metrics-credits.png
+:::{image} /troubleshoot/images/cloud-metrics-credits.png
 :alt: CPU usage versus CPU credits over time
 :::
 
@@ -20,5 +20,5 @@ Between just after 00:10 and 00:20, excessively high CPU usage consumes all CPU 
 If you need your cluster to be able to sustain a certain level of performance, you cannot rely on CPU boosting to handle the workload except temporarily. To ensure that performance can be sustained, consider increasing the size of your cluster.
 
 :::{important}
- If you’re using Elastic Cloud Hosted, then you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, real-time issue detection and resolution paths. For more information, refer to [Monitor with AutoOps](/deploy-manage/monitor/autoops.md).
+ If you’re using Elastic Cloud Hosted, then you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, and real-time issue detection with resolution paths. For more information, refer to [Monitor with AutoOps](/deploy-manage/monitor/autoops.md).
 :::

@@ -102,7 +102,15 @@ POST _tasks/<task_id>/_cancel
 
 ## Perform hybrid search [hybrid-search-perform-search]
 
-After reindexing the data into the `semantic-embeddings` index, you can perform hybrid search by using [reciprocal rank fusion (RRF)](elasticsearch://reference/elasticsearch/rest-apis/reciprocal-rank-fusion.md). RRF is a technique that merges the rankings from both semantic and lexical queries, giving more weight to results that rank high in either search. This ensures that the final results are balanced and relevant.
+After reindexing the data into the `semantic-embeddings` index, you can perform hybrid search to combine semantic and lexical search results. Choose between [retrievers](retrievers-overview.md) or [{{esql}}](/explore-analyze/query-filter/languages/esql.md) syntax to execute the query.
+
+::::{tab-set}
+:group: query-type
+
+:::{tab-item} Query DSL
+:sync: retrievers
+
+This example uses [retrievers syntax](retrievers-overview.md) with [reciprocal rank fusion (RRF)](elasticsearch://reference/elasticsearch/rest-apis/reciprocal-rank-fusion.md). RRF is a technique that merges the rankings from both semantic and lexical queries, giving more weight to results that rank high in either search. This ensures that the final results are balanced and relevant.
 
 ```console
 GET semantic-embeddings/_search
@@ -141,7 +149,7 @@ GET semantic-embeddings/_search
 4. The `semantic_text` field is used to perform the semantic search.
 
 
-After performing the hybrid search, the query will return the top 10 documents that match both semantic and lexical search criteria. The results include detailed information about each document:
+After performing the hybrid search, the query will return the combined top 10 documents for both semantic and lexical search criteria. The results include detailed information about each document.
 
 ```console-result
 {
@@ -202,3 +210,30 @@ After performing the hybrid search, the query will return the top 10 documents t
   }
 }
 ```
+:::
+
+:::{tab-item} ES|QL
+:sync: esql
+
+The ES|QL approach uses a combination of the match operator `:` and the match function `match()` to perform hybrid search.
+
+```console
+POST /_query?format=txt
+{
+  "query": """
+    FROM semantic-embeddings METADATA _score <1>
+    | WHERE content: "muscle soreness running?" OR match(semantic_text, "How to avoid muscle soreness while running?", { "boost": 0.75 }) <2> <3>
+    | SORT _score DESC <4>
+    | LIMIT 1000
+  """
+}
+```
+1. The `METADATA _score` clause is used to return the score of each document
+2. The [match (`:`) operator](elasticsearch://reference/query-languages/esql/esql-functions-operators.md#esql-search-operators) is used on the `content` field for standard keyword matching
+3. Semantic search using the `match()` function on the `semantic_text` field with a boost of `0.75`
+4. Sorts by descending score and limits to 1000 results
+:::
+::::
+
+
+

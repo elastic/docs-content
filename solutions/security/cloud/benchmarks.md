@@ -21,7 +21,7 @@ applies_to:
 
 The Benchmarks page lets you view the cloud security posture (CSP) benchmark rules for the [Cloud security posture management](/solutions/security/cloud/cloud-security-posture-management.md) (CSPM) and [Kubernetes security posture management](/solutions/security/cloud/kubernetes-security-posture-management.md) (KSPM) integrations.
 
-:::{image} ../../../images/security-benchmark-rules.png
+:::{image} /solutions/images/security-benchmark-rules.png
 :alt: Benchmarks page
 :screenshot:
 :::

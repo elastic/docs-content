@@ -1,4 +1,5 @@
 project: 'Elastic documentation'
+max_toc_depth: 2
 
 features:
   primary-nav: true
@@ -56,17 +57,11 @@ cross_links:
 toc:
   - file: index.md
   - toc: get-started
-    in_nav: true
   - toc: solutions
-    in_nav: true
   - toc: manage-data
-    in_nav: true
   - toc: explore-analyze
-    in_nav: true
   - toc: deploy-manage
-    in_nav: true
   - toc: cloud-account
-    in_nav: true
   - toc: troubleshoot
   - toc: release-notes
   - toc: reference
@@ -278,3 +273,4 @@ subs:
   apm_server_version: "9.0.0"
   version: "9.0.0"
   release-date: "2-April-2025"
+  heroku: "Elasticsearch Add-on for Heroku"

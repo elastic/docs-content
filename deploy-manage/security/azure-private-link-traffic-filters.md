@@ -147,12 +147,12 @@ Follow these high-level steps to add Private Link rules to your deployments.
 2. Select **JSON View**.
 3. Copy the value of the **properties.resourceGUID** property.
 
-:::{image} /images/cloud-ec-private-link-azure-json-view.png
+:::{image} /deploy-manage/images/cloud-ec-private-link-azure-json-view.png
 :alt: Private endpoint JSON View
 :screenshot:
 :::
 
-:::{image} /images/cloud-ec-private-link-azure-properties.png
+:::{image} /deploy-manage/images/cloud-ec-private-link-azure-properties.png
 :alt: Private endpoint Properties
 :screenshot:
 :::
@@ -317,7 +317,7 @@ Azure supports inter-region Private Link as described in the [Azure documentatio
 
 This means your deployment on {{ecloud}} can be in a different region than the Private Link endpoints or the clients that consume the deployment endpoints.
 
-:::{image} /images/cloud-ce-azure-inter-region-pl.png
+:::{image} /deploy-manage/images/cloud-ce-azure-inter-region-pl.png
 :alt: Inter-region Private Link
 :screenshot:
 :::

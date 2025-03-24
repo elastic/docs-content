@@ -83,7 +83,7 @@ By default, any deployment that you create trusts all other deployments in the s
 * Trust all my deployments - All of your organization’s deployments created while this option is selected already trust each other. If you keep this option, that includes any deployments you’ll create in the future. You can directly jump to [Connect to the remote cluster](/deploy-manage/remote-clusters/ec-remote-cluster-same-ess.md#ec_connect_to_the_remote_cluster) to finalize the CCS or CCR configuration.
 * Trust no deployment - New deployments won’t trust any other deployment when they are created. You can instead configure trust individually for each of them in their security settings, as described in the next section.
 
-:::{image} ../../images/cloud-ec-account-trust-management.png
+:::{image} /deploy-manage/images/cloud-ec-account-trust-management.png
 :alt: Trust management at the account Level
 :screenshot:
 :::
@@ -181,7 +181,7 @@ On the local cluster, add the remote cluster using {{kib}} or the {{es}} API.
 
     * **Server name**: This value can be found on the **Security** page of the {{ech}} deployment you want to use as a remote.
 
-      :::{image} ../../images/cloud-ce-copy-remote-cluster-parameters.png
+      :::{image} /deploy-manage/images/cloud-ce-copy-remote-cluster-parameters.png
       :alt: Remote Cluster Parameters in Deployment
       :screenshot:
       :::

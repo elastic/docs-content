@@ -9,7 +9,7 @@ mapped_urls:
 
 # Maintenance windows
 
-This content applies to: [![Observability](../../../images/serverless-obs-badge.svg "")](../../../solutions/observability.md) [![Security](../../../images/serverless-sec-badge.svg "")](../../../solutions/security/elastic-security-serverless.md)
+This content applies to: [![Observability](/explore-analyze/images/serverless-obs-badge.svg "")](../../../solutions/observability.md) [![Security](/explore-analyze/images/serverless-sec-badge.svg "")](../../../solutions/security/elastic-security-serverless.md)
 
 
 ::::{warning}
@@ -40,7 +40,7 @@ In **Management > {{stack-manage-app}} > Maintenance Windows** or **{{project-se
 
 When you create a maintenance window, you must provide a name and a schedule. You can optionally configure it to repeat daily, monthly, yearly, or on a custom interval.
 
-:::{image} ../../../images/kibana-create-maintenance-window.png
+:::{image} /explore-analyze/images/kibana-create-maintenance-window.png
 :alt: The Create Maintenance Window user interface in {{kib}}
 :screenshot:
 :::
@@ -49,7 +49,7 @@ By default, maintenance windows affect all categories of rules. The category-spe
 
 If you turn on **Filter alerts**, you can use KQL to filter the alerts affected by the maintenance window:
 
-:::{image} ../../../images/kibana-create-maintenance-window-filter.png
+:::{image} /explore-analyze/images/kibana-create-maintenance-window-filter.png
 :alt: The Create Maintenance Window user interface in {{kib}} with alert filters turned on
 :screenshot:
 :::

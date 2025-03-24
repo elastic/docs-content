@@ -52,7 +52,7 @@ Using Automatic Import allows users to create new third-party data integrations 
 1. In {{elastic-sec}}, click **Add integrations**.
 2. Under **Can’t find an integration?** click **Create new integration**.
 
-   :::{image} ../../../images/security-auto-import-create-new-integration-button.png
+   :::{image} /solutions/images/security-auto-import-create-new-integration-button.png
    :alt: The Integrations page with the Create new integration button highlighted
    :::
 
@@ -79,7 +79,7 @@ Using Automatic Import allows users to create new third-party data integrations 
 10. Click **Analyze logs**, then wait for processing to complete. This may take several minutes.
 11. After processing is complete, the pipeline’s field mappings appear, including ECS and custom fields.
 
-    :::{image} ../../../images/security-auto-import-review-integration-page.png
+    :::{image} /solutions/images/security-auto-import-review-integration-page.png
     :alt: The Automatic Import Review page showing proposed field mappings
     :::
 
@@ -93,13 +93,13 @@ Using Automatic Import allows users to create new third-party data integrations 
     ::::
 
 
-    :::{image} ../../../images/security-auto-import-edit-pipeline.gif
+    :::{image} /solutions/images/security-auto-import-edit-pipeline.gif
     :alt: A gif showing the user clicking the edit pipeline button and viewing the ingest pipeline flyout
     :::
 
 13. Click **Add to Elastic**. After the **Success** message appears, your new integration will be available on the Integrations page.
 
-    :::{image} ../../../images/security-auto-import-success-message.png
+    :::{image} /solutions/images/security-auto-import-success-message.png
     :alt: The automatic import success message
     :::
 

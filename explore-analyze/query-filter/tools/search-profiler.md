@@ -21,7 +21,7 @@ Find the **{{searchprofiler}}** by navigating to the **Developer tools** page us
 
 The following example shows the results of profiling the `match_all` query. If you take a closer look at the information for the `.security_7` sample index, the **Cumulative time** field shows you that the query took 0.028ms to execute.
 
-:::{image} ../../../images/kibana-overview.png
+:::{image} /explore-analyze/images/kibana-overview.png
 :alt: {{searchprofiler}} visualization
 :screenshot:
 :::
@@ -45,7 +45,7 @@ To query a specific index or type, you can use the **Index** filter.
 
 In the following example, the query is executed against the indices `.security-7` and `kibana_sample_data_ecommerce`. This is equivalent making a request to `GET /test,kibana_1/_search`.
 
-:::{image} ../../../images/kibana-filter.png
+:::{image} /explore-analyze/images/kibana-filter.png
 :alt: Filtering by index and type
 :screenshot:
 :::
@@ -107,7 +107,7 @@ To understand how the query trees are displayed inside the **{{searchprofiler}}*
 
 4. Click **Profile** to profile the query and visualize the results.
 
-    :::{image} ../../../images/kibana-gs8.png
+    :::{image} /explore-analyze/images/kibana-gs8.png
     :alt: Profiling the more complicated query
     :screenshot:
     :::
@@ -124,7 +124,7 @@ To understand how the query trees are displayed inside the **{{searchprofiler}}*
 
 6. Click **View details** to view the timing breakdown.
 
-    :::{image} ../../../images/kibana-gs10.png
+    :::{image} /explore-analyze/images/kibana-gs10.png
     :alt: Drilling into the first shard's details
     :screenshot:
     :::
@@ -283,7 +283,7 @@ To see how this works, copy and paste the following profile response into the qu
 
 Your output should look similar to this:
 
-:::{image} ../../../images/kibana-search-profiler-json.png
+:::{image} /explore-analyze/images/kibana-search-profiler-json.png
 :alt: Rendering pre-captured profiler JSON
 :screenshot:
 :::

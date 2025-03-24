@@ -100,7 +100,7 @@ When security is enabled, you grant users access to {{report-features}} with [{{
         :::
 
 
-        :::{image} /images/kibana-kibana-privileges-with-reporting.png
+        :::{image} /deploy-manage/images/kibana-kibana-privileges-with-reporting.png
         :alt: Kibana privileges with Reporting options, Gold or higher license
         :screenshot:
         :::
@@ -183,7 +183,7 @@ With a Basic license, sub-feature [application privileges](/deploy-manage/users-
 
 Example using Kibana UI:
 
-:::{image} /images/kibana-kibana-privileges-with-reporting-basic.png
+:::{image} /deploy-manage/images/kibana-kibana-privileges-with-reporting-basic.png
 :alt: Kibana privileges with Reporting options, Basic license
 :screenshot:
 :::

@@ -42,11 +42,11 @@ Learn more about Observability rules and how to create them:
 You start by defining the rule and how often it should be evaluated. You can extend these rules by adding an appropriate action (for example, send an email or create an issue) to be triggered when the rule conditions are met. These actions are defined within each rule and implemented by the appropriate connector for that action e.g. Slack, Jira. You can create any rules from scratch using the **Manage Rules** page, or you can create specific rule types from their respective UIs and benefit from some of the details being pre-filled (for example, Name and Tags).
 
 * For APM alert types, you can select **Alerts and rules** and create rules directly from the **Services**, **Traces**, and **Dependencies** UIs.
-* For SLO alert types, from the **SLOs** page open the **More actions** menu ![action menu](../../../images/serverless-boxesHorizontal.svg "") for an SLO and select **Create new alert rule**. Alternatively, when you create a new SLO, the **Create new SLO burn rate alert rule** checkbox is enabled by default and will prompt you to [Create SLO burn rate rule](../../../solutions/observability/incident-management/create-an-slo-burn-rate-rule.md) upon saving the SLO.
+* For SLO alert types, from the **SLOs** page open the **More actions** menu ![action menu](/solutions/images/serverless-boxesHorizontal.svg "") for an SLO and select **Create new alert rule**. Alternatively, when you create a new SLO, the **Create new SLO burn rate alert rule** checkbox is enabled by default and will prompt you to [Create SLO burn rate rule](../../../solutions/observability/incident-management/create-an-slo-burn-rate-rule.md) upon saving the SLO.
 
-After a rule is created, you can open the **More actions** menu ![More actions](../../../images/serverless-boxesHorizontal.svg "") and select **Edit rule** to check or change the definition, and/or add or modify actions.
+After a rule is created, you can open the **More actions** menu ![More actions](/solutions/images/serverless-boxesHorizontal.svg "") and select **Edit rule** to check or change the definition, and/or add or modify actions.
 
-:::{image} ../../../images/serverless-alerts-edit-rule.png
+:::{image} /solutions/images/serverless-alerts-edit-rule.png
 :alt: Edit rule (failed transaction rate)
 :screenshot:
 :::
@@ -64,7 +64,7 @@ From the action menu you can also:
 
 Click on an individual rule on the **{{rules-app}}** page to view details including the rule name, status, definition, execution history, related alerts, and more.
 
-:::{image} ../../../images/serverless-alerts-detail-apm-anomaly.png
+:::{image} /solutions/images/serverless-alerts-detail-apm-anomaly.png
 :alt: Rule details (APM anomaly)
 :screenshot:
 :::

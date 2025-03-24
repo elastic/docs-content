@@ -1,11 +1,18 @@
 ---
+navigation_title: Manage background tasks
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/task-manager-production-considerations.html
+applies_to:
+  deployment:
+    ess: all
+    ece: all
+    eck: all
+    self: all
 ---
 
-# Kibana task manager scaling considerations [task-manager-production-considerations]
+# Kibana task manager: performance and scaling guide [task-manager-production-considerations]
 
-{{kib}} Task Manager is leveraged by features such as Alerting, Actions, and Reporting to run mission critical work as persistent background tasks. These background tasks distribute work across multiple {{kib}} instances. This has three major benefits:
+{{kib}} Task Manager is leveraged by features such as [alerting](/explore-analyze/alerts-cases/alerts.md), [actions](/explore-analyze/alerts-cases/alerts.md#rules-actions), and [reporting](/explore-analyze/report-and-share.md) to run mission critical work as persistent background tasks. These background tasks distribute work across multiple {{kib}} instances. This has three major benefits:
 
 * **Persistence**: All task state and scheduling is stored in {{es}}, so if you restart {{kib}}, tasks will pick up where they left off.
 * **Scaling**: Multiple {{kib}} instances can read from and update the same task queue in {{es}}, allowing the work load to be distributed across instances. If a {{kib}} instance no longer has capacity to run tasks, you can increase capacity by adding additional {{kib}} instances.
@@ -17,9 +24,7 @@ Task definitions for alerts and actions are stored in the index called `.kibana_
 You must have at least one replica of this index for production deployments.
 
 If you lose this index, all scheduled alerts and actions are lost.
-
 ::::
-
 
 
 ## Running background tasks [task-manager-background-tasks]

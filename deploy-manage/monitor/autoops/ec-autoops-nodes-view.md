@@ -10,7 +10,7 @@ applies_to:
 
 The **Nodes** view provides a thorough overview on the essential metrics for all monitored deployment nodes. You can delve into specific nodes to observe metrics over extended periods. This includes data on the indexing rate and latency, search rate and latency, as well as details concerning thread pools, data, circuit breakers, network, disk, and additional elements.
 
-:::{image} /images/cloud-autoops-node-view.png
+:::{image} /deploy-manage/images/cloud-autoops-node-view.png
 :alt: The Node view
 :::
 

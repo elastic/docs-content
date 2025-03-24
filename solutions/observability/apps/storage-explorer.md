@@ -9,7 +9,7 @@ applies_to:
 
 Analyze your APM data and manage costs with **storage explorer**. For example, analyze the storage footprint of each of your services to see which are producing large amounts of data—​then change the sample rate of a service to lower the amount of data ingested. Or, expand the time filter to visualize data trends over time so that you can better forecast and prepare for future storage needs.
 
-:::{image} ../../../images/observability-storage-explorer-overview.png
+:::{image} /solutions/images/observability-storage-explorer-overview.png
 :alt: APM Storage Explorer
 :screenshot:
 :::
@@ -42,7 +42,7 @@ The service statistics table provides detailed information on each service:
 * The estimated **size on disk**. This storage size includes both primary and replica shards and is calculated by prorating the total size of your indices by the service’s document count divided by the total number of documents.
 * Number of **transactions**, **spans**, **errors**, and **metrics** — doc count and size on disk.
 
-:::{image} ../../../images/observability-storage-explorer-expanded.png
+:::{image} /solutions/images/observability-storage-explorer-expanded.png
 :alt: APM Storage Explorer service breakdown
 :screenshot:
 :::
