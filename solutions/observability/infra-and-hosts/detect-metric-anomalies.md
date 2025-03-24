@@ -72,7 +72,7 @@ After creating {{ml}} jobs, you cannot change the settings. You can recreate the
 ::::
 
 
-:::{image} ../../../images/serverless-metrics-ml-jobs.png
+:::{image} /solutions/images/serverless-metrics-ml-jobs.png
 :alt: Infrastructure {{ml-app}} anomalies
 :screenshot:
 :::
@@ -94,7 +94,7 @@ These predefined {{anomaly-jobs}} use [custom rules](https://www.elastic.co/guid
 
 On the **Infrastructure inventory** page, click **Show history** to view the metric values within the selected time frame. Detected anomalies with an anomaly score equal to 50 or higher are highlighted in red. To examine the detected anomalies, use the Anomaly Explorer.
 
-:::{image} ../../../images/serverless-metrics-history-chart.png
+:::{image} /solutions/images/serverless-metrics-history-chart.png
 :alt: History
 :screenshot:
 :::

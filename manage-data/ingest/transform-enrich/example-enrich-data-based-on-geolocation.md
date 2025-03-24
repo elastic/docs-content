@@ -8,7 +8,7 @@ applies_to:
 
 # Example: Enrich your data based on geolocation [geo-match-enrich-policy-type]
 
-`geo_match` [enrich policies](data-enrichment.md#enrich-policy) match enrich data to incoming documents based on a geographic location, using a [`geo_shape` query](elasticsearch://reference/query-languages/query-dsl-geo-shape-query.md).
+`geo_match` [enrich policies](data-enrichment.md#enrich-policy) match enrich data to incoming documents based on a geographic location, using a [`geo_shape` query](elasticsearch://reference/query-languages/query-dsl/query-dsl-geo-shape-query.md).
 
 The following example creates a `geo_match` enrich policy that adds postal codes to incoming documents based on a set of coordinates. It then adds the `geo_match` enrich policy to a processor in an ingest pipeline.
 
@@ -71,7 +71,7 @@ Use the [create or update pipeline API](https://www.elastic.co/docs/api/doc/elas
 * Your enrich policy.
 * The `field` of incoming documents used to match the geoshape of documents from the enrich index.
 * The `target_field` used to store appended enrich data for incoming documents. This field contains the `match_field` and `enrich_fields` specified in your enrich policy.
-* The `shape_relation`, which indicates how the processor matches geoshapes in incoming documents to geoshapes in documents from the enrich index. See [Spatial Relations](elasticsearch://reference/query-languages/query-dsl-shape-query.md#_spatial_relations) for valid options and more information.
+* The `shape_relation`, which indicates how the processor matches geoshapes in incoming documents to geoshapes in documents from the enrich index. See [Spatial Relations](elasticsearch://reference/query-languages/query-dsl/query-dsl-shape-query.md#_spatial_relations) for valid options and more information.
 
 ```console
 PUT /_ingest/pipeline/postal_lookup

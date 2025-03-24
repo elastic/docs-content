@@ -636,7 +636,7 @@ Congratulations! You’ve successfully updated the SSL certificates between {{es
 
 Now that {{kib}} is up and running, you can proceed to install {{fleet-server}}, which will manage the {{agent}} that we’ll set up in a later step.
 
-If you’d like to learn more about these steps, refer to [Deploy on-premises and self-managed](/reference/ingestion-tools/fleet/add-fleet-server-on-prem.md) in the {{fleet}} and {{agent}} Guide. You can find detailed steps to generate and configure certificates in [Configure SSL/TLS for self-managed Fleet Servers](/reference/ingestion-tools/fleet/secure-connections.md).
+If you’d like to learn more about these steps, refer to [Deploy on-premises and self-managed](/reference/fleet/add-fleet-server-on-prem.md) in the {{fleet}} and {{agent}} Guide. You can find detailed steps to generate and configure certificates in [Configure SSL/TLS for self-managed Fleet Servers](/reference/fleet/secure-connections.md).
 
 1. Log in to the first {{es}} node and use the certificate utility to generate a certificate bundle for {{fleet-server}}. In the command, replace `<DNS name>` and `IP address` with the name and IP address of your {{fleet-server}} host:
 
@@ -696,7 +696,7 @@ If you’d like to learn more about these steps, refer to [Deploy on-premises an
 
         The URL is the inet value that you copied from the `ifconfig` output.
 
-        For details about default port assignments, refer to [Default port assignments](/reference/ingestion-tools/fleet/add-fleet-server-on-prem.md#default-port-assignments-on-prem) in the on-premises {{fleet-server}} install documentation.
+        For details about default port assignments, refer to [Default port assignments](/reference/fleet/add-fleet-server-on-prem.md#default-port-assignments-on-prem) in the on-premises {{fleet-server}} install documentation.
 
     3. Click **Add host**.
 
@@ -743,7 +743,7 @@ If you’d like to learn more about these steps, refer to [Deploy on-premises an
           --fleet-server-port=8220
         ```
 
-        For details about all of the install command options, refer to [`elastic-agent install`](/reference/ingestion-tools/fleet/agent-command-reference.md#elastic-agent-install-command) in the {{agent}} command reference.
+        For details about all of the install command options, refer to [`elastic-agent install`](/reference/fleet/agent-command-reference.md#elastic-agent-install-command) in the {{agent}} command reference.
 
 19. After you’ve made the required updates, run the `elastic-agent install` command to install {{fleet-server}}.
 
@@ -754,7 +754,7 @@ If you’d like to learn more about these steps, refer to [Deploy on-premises an
     ```
 
     ::::{tip}
-    Wondering why the command refers to {{agent}} rather than {{fleet-server}}? {{fleet-server}} is actually a subprocess that runs inside {{agent}} with a special {{fleet-server}} policy. Refer to [What is {{fleet-server}}](/reference/ingestion-tools/fleet/fleet-server.md) to learn more.
+    Wondering why the command refers to {{agent}} rather than {{fleet-server}}? {{fleet-server}} is actually a subprocess that runs inside {{agent}} with a special {{fleet-server}} policy. Refer to [What is {{fleet-server}}](/reference/fleet/fleet-server.md) to learn more.
     ::::
 
 20. Return to the {{kib}} **Add a Fleet Server** flyout and wait for confirmation that {{fleet-server}} has connected.
@@ -793,7 +793,7 @@ Before proceeding to install {{agent}}, there are a few steps needed to update t
 
 ## Step 7: Install {{agent}} [install-stack-demo-secure-agent]
 
-Next, we’ll install {{agent}} on another host and use the System integration to monitor system logs and metrics. You can find additional details about these steps in [Configure SSL/TLS for self-managed Fleet Servers](/reference/ingestion-tools/fleet/secure-connections.md).
+Next, we’ll install {{agent}} on another host and use the System integration to monitor system logs and metrics. You can find additional details about these steps in [Configure SSL/TLS for self-managed Fleet Servers](/reference/fleet/secure-connections.md).
 
 1. Log in to the host where you’d like to set up {{agent}}.
 2. Create a directory for the {{es}} certificate file:

@@ -37,7 +37,7 @@ Conditions for each rule can be applied to specific metrics relating to the inve
 
 In this example, Kubernetes Pods is the selected inventory type. The conditions state that you will receive a critical alert for any pods within the `ingress-nginx` namespace with a memory usage of 95% or above and a warning alert if memory usage is 90% or above. The chart shows the results of applying the rule to the last 20 minutes of data. Note that the chart time range is 20 times the value of the look-back window specified in the `FOR THE LAST` field.
 
-:::{image} ../../../images/serverless-inventory-alert.png
+:::{image} /solutions/images/serverless-inventory-alert.png
 :alt: Inventory rule
 :screenshot:
 :::
@@ -86,14 +86,14 @@ For more information on creating connectors, refer to [Connectors](../../../depl
 :::::{dropdown} Action frequency
 After you select a connector, you must set the action frequency. You can choose to create a summary of alerts on each check interval or on a custom interval. For example, send email notifications that summarize the new, ongoing, and recovered alerts each hour:
 
-:::{image} ../../../images/serverless-action-alert-summary.png
+:::{image} /solutions/images/serverless-action-alert-summary.png
 :alt: Action types
 :screenshot:
 :::
 
 Alternatively, you can set the action frequency such that you choose how often the action runs (for example, at each check interval, only when the alert status changes, or at a custom action interval). In this case, you define precisely when the alert is triggered by selecting a specific threshold condition: `Alert`, `Warning`, or `Recovered` (a value that was once above a threshold has now dropped below it).
 
-:::{image} ../../../images/serverless-inventory-threshold-run-when-selection.png
+:::{image} /solutions/images/serverless-inventory-threshold-run-when-selection.png
 :alt: Configure when an alert is triggered
 :screenshot:
 :::
@@ -103,7 +103,7 @@ You can also further refine the conditions under which actions run by specifying
 * **If alert matches query**: Enter a KQL query that defines field-value pairs or query conditions that must be met for notifications to send. The query only searches alert documents in the indices specified for the rule.
 * **If alert is generated during timeframe**: Set timeframe details. Notifications are only sent if alerts are generated within the timeframe you define.
 
-:::{image} ../../../images/serverless-conditional-alerts.png
+:::{image} /solutions/images/serverless-conditional-alerts.png
 :alt: Configure a conditional alert
 :screenshot:
 :::
@@ -112,9 +112,9 @@ You can also further refine the conditions under which actions run by specifying
 
 
 :::::{dropdown} Action variables
-Use the default notification message or customize it. You can add more context to the message by clicking the Add variable icon ![Add variable](../../../images/serverless-indexOpen.svg "") and selecting from a list of available variables.
+Use the default notification message or customize it. You can add more context to the message by clicking the Add variable icon ![Add variable](/solutions/images/serverless-indexOpen.svg "") and selecting from a list of available variables.
 
-:::{image} ../../../images/serverless-action-variables-popup.png
+:::{image} /solutions/images/serverless-action-variables-popup.png
 :alt: Action variables list
 :screenshot:
 :::

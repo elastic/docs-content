@@ -37,7 +37,7 @@ You can also set **Advanced options** such as the number of consecutive runs tha
 
 In this example, the conditions are met when any of the TLS certificates on sites we’re monitoring is expiring within 30 days or is older than 730 days. These conditions are evaluated every 6 hours, and you will only receive an alert when the conditions are met three times consecutively.
 
-:::{image} ../../../images/observability-tls-rule-synthetics-conditions.png
+:::{image} /solutions/images/observability-tls-rule-synthetics-conditions.png
 :alt: Conditions and advanced options defining a Synthetics TLS certificate rule
 :screenshot:
 :::
@@ -74,14 +74,14 @@ Some connector types are paid commercial features, while others are free. For a 
 
 After you select a connector, you must set the action frequency. You can choose to create a summary of alerts on each check interval or on a custom interval. For example, send email notifications that summarize the new, ongoing, and recovered alerts each hour:
 
-:::{image} ../../../images/observability-tls-rule-synthetics-action-types-summary.png
+:::{image} /solutions/images/observability-tls-rule-synthetics-action-types-summary.png
 :alt: tls rule synthetics action types summary
 :screenshot:
 :::
 
 Alternatively, you can set the action frequency such that you choose how often the action runs (for example, at each check interval, only when the alert status changes, or at a custom action interval). In this case, you must also select the specific threshold condition that affects when actions run: the *Synthetics TLS certificate* changes or when it is *Recovered* (went from down to up).
 
-:::{image} ../../../images/observability-tls-rule-synthetics-action-types-each-alert.png
+:::{image} /solutions/images/observability-tls-rule-synthetics-action-types-each-alert.png
 :alt: tls rule synthetics action types each alert
 :screenshot:
 :::
@@ -91,7 +91,7 @@ You can also further refine the conditions under which actions run by specifying
 * **If alert matches query**: Enter a KQL query that defines field-value pairs or query conditions that must be met for notifications to send. The query only searches alert documents in the indices specified for the rule.
 * **If alert is generated during timeframe**: Set timeframe details. Notifications are only sent if alerts are generated within the timeframe you define.
 
-:::{image} ../../../images/observability-tls-rule-synthetics-action-types-more-options.png
+:::{image} /solutions/images/observability-tls-rule-synthetics-action-types-more-options.png
 :alt: tls rule synthetics action types more options
 :screenshot:
 :::
@@ -101,7 +101,7 @@ You can also further refine the conditions under which actions run by specifying
 
 Use the default notification message or customize it. You can add more context to the message by clicking the icon above the message text box and selecting from a list of available variables.
 
-:::{image} ../../../images/observability-tls-rule-synthetics-action-variables.png
+:::{image} /solutions/images/observability-tls-rule-synthetics-action-variables.png
 :alt: tls rule synthetics action variables
 :screenshot:
 :::
@@ -180,7 +180,7 @@ You can specify the following thresholds for your rule:
 
 In this example, the conditions are met when any of the TLS certificates on sites we’re monitoring is expiring within 30 days or is older than 730 days. These conditions are evaluated every 6 hours, and you will only receive an alert when the conditions are met three times consecutively.
 
-:::{image} ../../../images/observability-tls-rule-uptime-conditions.png
+:::{image} /solutions/images/observability-tls-rule-uptime-conditions.png
 :alt: Monitor status rule
 :screenshot:
 :::
@@ -219,14 +219,14 @@ Some connector types are paid commercial features, while others are free. For a 
 
 After you select a connector, you must set the action frequency. You can choose to create a summary of alerts on each check interval or on a custom interval. For example, send email notifications that summarize the new, ongoing, and recovered alerts each hour:
 
-:::{image} ../../../images/observability-tls-rule-uptime-action-types-summary.png
+:::{image} /solutions/images/observability-tls-rule-uptime-action-types-summary.png
 :alt: tls rule uptime action types summary
 :screenshot:
 :::
 
 Alternatively, you can set the action frequency such that you choose how often the action runs (for example, at each check interval, only when the alert status changes, or at a custom action interval). In this case, you must also select the specific threshold condition that affects when actions run: *Uptime TLS Alert* or *Recovered* (went from down to up).
 
-:::{image} ../../../images/observability-tls-rule-uptime-action-types-each-alert.png
+:::{image} /solutions/images/observability-tls-rule-uptime-action-types-each-alert.png
 :alt: tls rule uptime action types each alert
 :screenshot:
 :::
@@ -236,7 +236,7 @@ You can also further refine the conditions under which actions run by specifying
 * **If alert matches query**: Enter a KQL query that defines field-value pairs or query conditions that must be met for notifications to send. The query only searches alert documents in the indices specified for the rule.
 * **If alert is generated during timeframe**: Set timeframe details. Notifications are only sent if alerts are generated within the timeframe you define.
 
-:::{image} ../../../images/observability-tls-rule-uptime-action-types-more-options.png
+:::{image} /solutions/images/observability-tls-rule-uptime-action-types-more-options.png
 :alt: tls rule uptime action types more options
 :screenshot:
 :::
@@ -246,7 +246,7 @@ You can also further refine the conditions under which actions run by specifying
 
 Use the default notification message or customize it. You can add more context to the message by clicking the icon above the message text box and selecting from a list of available variables.
 
-:::{image} ../../../images/observability-tls-rule-uptime-default-message.png
+:::{image} /solutions/images/observability-tls-rule-uptime-default-message.png
 :alt: Default notification message for TLS rules with open "Add variable" popup listing available action variables
 :screenshot:
 :::

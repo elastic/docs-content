@@ -18,7 +18,7 @@ mapped_pages:
 * Ensure the health of your deployment over time
 
   * [Keep track of your deployment's activity](keep-track-of-deployment-activity.md) or [Enable logging and monitoring](../../monitor/stack-monitoring/ece-ech-stack-monitoring.md) of the deployment performance.
-  * Perform maintenance operations to ensure the health of your deployment, such as [restarting your deployment](../../maintenance/start-stop-services/restart-cloud-hosted-deployment.md) or [stopping routing](../../maintenance/ece/start-stop-routing-requests.md).
+  * Perform maintenance operations to ensure the health of your deployment, such as [restarting your deployment](../../maintenance/start-stop-services/restart-cloud-hosted-deployment.md) or [stopping routing](../../maintenance/start-stop-routing-requests.md).
 
 * Manage the lifecycle of your deployment:
 

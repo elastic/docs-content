@@ -17,7 +17,7 @@ This example uses a single server hosted in GCP to run the following components:
 * LM Studio with the [Mistral-Nemo-Instruct-2407](https://huggingface.co/mistralai/Mistral-Nemo-Instruct-2407) model
 * A reverse proxy using Nginx to authenticate to Elastic Cloud
 
-:::{image} ../../../images/security-lms-studio-arch-diagram.png
+:::{image} /solutions/images/security-lms-studio-arch-diagram.png
 :alt: Architecture diagram for this guide
 :::
 
@@ -124,7 +124,7 @@ For security reasons, before downloading a model, verify that it is from a trust
 ::::
 
 
-:::{image} ../../../images/security-lms-model-select.png
+:::{image} /solutions/images/security-lms-model-select.png
 :alt: The LM Studio model selection interface
 :::
 
@@ -152,19 +152,19 @@ Once you’ve downloaded a model, use the following commands in your CLI:
 3. List all downloaded models: `lms ls`
 4. Load a model: `lms load`.
 
-:::{image} ../../../images/security-lms-cli-welcome.png
+:::{image} /solutions/images/security-lms-cli-welcome.png
 :alt: The CLI interface during execution of initial LM Studio commands
 :::
 
 After the model loads, you should see a `Model loaded successfully` message in the CLI. Select a model using the arrow and **Enter** keys.
 
-:::{image} ../../../images/security-lms-studio-model-loaded-msg.png
+:::{image} /solutions/images/security-lms-studio-model-loaded-msg.png
 :alt: The CLI message that appears after a model loads
 :::
 
 To verify which model is loaded, use the `lms ps` command.
 
-:::{image} ../../../images/security-lms-ps-command.png
+:::{image} /solutions/images/security-lms-ps-command.png
 :alt: The CLI message that appears after running lms ps
 :::
 
@@ -182,7 +182,7 @@ Refer to the following video to see how to load a model using LM Studio’s GUI.
 
 You can monitor the performance of the host running LM Studio using Elastic’s [Custom Logs integration](https://docs.elastic.co/en/integrations/log). This can also help with troubleshooting. Note that the default path for LM Studio logs is `/tmp/lmstudio-server-log.txt`, as in the following screenshot:
 
-:::{image} ../../../images/security-lms-custom-logs-config.png
+:::{image} /solutions/images/security-lms-custom-logs-config.png
 :alt: The configuration window for the custom logs integration
 :::
 
@@ -200,7 +200,7 @@ Finally, configure the connector:
 7. Under **API key**, enter the secret token specified in your Nginx configuration file.
 8. Click **Save**.
 
-:::{image} ../../../images/security-lms-edit-connector.png
+:::{image} /solutions/images/security-lms-edit-connector.png
 :alt: The Edit connector page in the {{security-app}}
 :::
 

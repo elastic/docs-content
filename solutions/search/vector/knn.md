@@ -103,7 +103,7 @@ To run an approximate kNN search, use the [`knn` option](https://www.elastic.co/
     ...
     ```
 
-3. Run the search using the [`knn` option](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search#operation-search-body-application-json-knn) or the [`knn` query](elasticsearch://reference/query-languages/query-dsl-knn-query.md) (expert case).
+3. Run the search using the [`knn` option](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search#operation-search-body-application-json-knn) or the [`knn` query](elasticsearch://reference/query-languages/query-dsl/query-dsl-knn-query.md) (expert case).
 
     ```console
     POST image-index/_search
@@ -1005,7 +1005,7 @@ POST /my-index/_search
 
 You can use this option when you want to rescore on each shard and want more fine-grained control on the rescoring than the `rescore_vector` option provides.
 
-Use rescore per shard with the [knn query](elasticsearch://reference/query-languages/query-dsl-knn-query.md) and [script_score query ](elasticsearch://reference/query-languages/query-dsl-script-score-query.md). Generally, this means that there will be more rescoring per shard, but this can increase overall recall at the cost of compute.
+Use rescore per shard with the [knn query](elasticsearch://reference/query-languages/query-dsl/query-dsl-knn-query.md) and [script_score query ](elasticsearch://reference/query-languages/query-dsl/query-dsl-script-score-query.md). Generally, this means that there will be more rescoring per shard, but this can increase overall recall at the cost of compute.
 
 ```console
 POST /my-index/_search
@@ -1075,10 +1075,10 @@ To run an exact kNN search, use a `script_score` query with a vector function.
     ...
     ```
 
-3. Use the [search API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search) to run a `script_score` query containing a [vector function](elasticsearch://reference/query-languages/query-dsl-script-score-query.md#vector-functions).
+3. Use the [search API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search) to run a `script_score` query containing a [vector function](elasticsearch://reference/query-languages/query-dsl/query-dsl-script-score-query.md#vector-functions).
 
     ::::{tip}
-    To limit the number of matched documents passed to the vector function, we recommend you specify a filter query in the `script_score.query` parameter. If needed, you can use a [`match_all` query](elasticsearch://reference/query-languages/query-dsl-match-all-query.md) in this parameter to match all documents. However, matching all documents can significantly increase search latency.
+    To limit the number of matched documents passed to the vector function, we recommend you specify a filter query in the `script_score.query` parameter. If needed, you can use a [`match_all` query](elasticsearch://reference/query-languages/query-dsl/query-dsl-match-all-query.md) in this parameter to match all documents. However, matching all documents can significantly increase search latency.
     ::::
 
 

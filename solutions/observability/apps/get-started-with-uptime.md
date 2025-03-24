@@ -18,7 +18,7 @@ applies_to:
 
 {{heartbeat}} is a lightweight daemon that you install on a remote server to periodically check the status of your services and determine if they are available. It gathers performance data, formats it, and sends the data to the {{stack}}.
 
-:::{image} ../../../images/observability-synthetics-get-started-heartbeat.png
+:::{image} /solutions/images/observability-synthetics-get-started-heartbeat.png
 :alt: Diagram showing which pieces of software are used to configure monitors
 :::
 
