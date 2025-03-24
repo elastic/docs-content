@@ -51,7 +51,7 @@ For clusters that have six {{es}} nodes and beyond, dedicated master-eligible no
 In {{ece}}, you can customize the threshold at which dedicated master-eligible nodes are introduced by modifying the [deployment templates](/deploy-manage/deploy/cloud-enterprise/deployment-templates.md).
 ::::
 
-## Important considerations
+## Summary
 
 * Clusters that use only one availability zone are not highly available and are at risk of data loss. To safeguard against data loss, you must use at least two availability zones.
 * Indices with no replica, except for searchable snapshot indices, are not highly available. You should use replicas to mitigate against possible data loss.

@@ -28,13 +28,7 @@ Explore the following topics to learn how to build, scale, and optimize your pro
 
 * [Performance optimizations](./optimize-performance.md): Learn how to improve {{es}} performance across different use cases, including indexing, search, disk usage, and approximate kNN. This section provides targeted recommendations to help you tune your cluster based on workload patterns and resource constraints.
 
-::::{important}
-In orchestrated deployments, some of the settings mentioned in the referenced documents might not apply. Check the [badges](/get-started/versioning-availability.md#availability-of-features) on each section to determine whether a topic is relevant to your deployment type.
-::::
-
-% Shaina, not sure if this makes sense here, but I wanted to introduce the different levels of knowledge needed by deployment types
-% I've realized that this look kind of similar to /deploy-manage/distributed-architecture/clusters-nodes-shards.md
-## Responsibilities and deployment types
+## Deployment models and operational responsibilities
 
 Your responsibilities when running {{es}} in production depend on the [deployment type](/deploy-manage/deploy.md#choosing-your-deployment-type). Depending on the platform, some aspects, such as scaling or cluster configuration, are managed for you, while others might require your attention and knowledge:
 
@@ -60,7 +54,7 @@ The following topics, covered in other sections of the documentation, offer valu
 
 * Build a [data architecture](/manage-data/lifecycle/data-tiers.md) that best fits your needs. Based on your own access and retention policies, you can add warm, cold, and frozen data tiers, and automate deletion of old data.
 * Normalize event data to better analyze, visualize, and correlate your events by adopting the [Elastic Common Schema](ecs://reference/ecs-getting-started.md) (ECS). Elastic integrations use ECS out-of-the-box. If you are writing your own integrations, ECS is recommended.
-* When you have data flowing, you can [manage the data lifecycle](/manage-data/lifecycle.md).
+* Consider [data streams](/manage-data/data-store/data-streams.md) and [index lifecycle management](/manage-data/lifecycle/index-lifecycle-management.md) to manage and retain your data efficiently over time.
 
   ::::{tip}
   [Elastic integrations](https://www.elastic.co/integrations) provide default index lifecycle policies, and you can [build your own policies for your custom integrations](/manage-data/lifecycle/index-lifecycle-management/tutorial-automate-rollover.md).

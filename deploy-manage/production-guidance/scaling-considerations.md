@@ -14,6 +14,12 @@ Knowing when and how to scale your deployment is critical, especially when unexp
 
 In orchestrated or managed deployments, [Autoscaling](/deploy-manage/autoscaling.md) can automatically adjust cluster resources based on demand, reducing operational overhead. However, in self-managed environments, scaling is a manual process, requiring careful planning to adapt to workload changes and ensure the cluster remains performant and resilient.
 
+In orchestrated or managed deployments, [Autoscaling](/deploy-manage/autoscaling.md) can automatically adjust cluster resources based on demand, reducing operational overhead. However, if you choose not to use it, or in self-managed environments, scaling becomes a manual process that requires careful planning to adapt to workload changes and ensure the cluster remains performant and resilient.
+
+::::{note}
+In **{{serverless-full}}** projects, Elastic manages all scaling and performance tuning automatically. You don't need to configure nodes, resources, or autoscaling parameters.
+::::
+
 Refer to [Sizing {{es}}: Scaling up and out](https://www.elastic.co/blog/found-sizing-elasticsearch) to identify which questions to ask yourself when determining which cluster size is the best fit for your {{es}} use case.
 
 ## Monitoring and scaling decisions
