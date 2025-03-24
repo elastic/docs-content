@@ -64,8 +64,8 @@ For {{ml}} rules, an indicator icon (![Error icon from rules table](/solutions/i
 ## Modify existing rules settings [edit-rules-settings]
 
 ::::{admonition} Requirements
-* You can edit custom rules and bulk-modify them with any {{subscriptions}}[{stack} subscription] and {{serverless-short}} feature tier. Editing [rule notifications](/solutions/security/detect-and-alert/create-detection-rule.md#rule-notifications)  (notifications and response actions) for prebuilt rules can also be done with any {{stack}} subscription or {{serverless-short}} feature tier.
-*  You must have an {{subscriptions}}[Enterprise subscription] to edit all prebuilt rule settings (except for the **Author** and **License** fields) and bulk-modify them. 
+* You can edit custom rules and bulk-modify them with any [{stack} subscription]({{subscriptions}}) and {{serverless-short}} feature tier. Editing [rule notifications](/solutions/security/detect-and-alert/create-detection-rule.md#rule-notifications)  (notifications and response actions) for prebuilt rules can also be done with any {{stack}} subscription or {{serverless-short}} feature tier.
+*  You must have an [Enterprise subscription]({{subscriptions}}) to edit all prebuilt rule settings (except for the **Author** and **License** fields) and bulk-modify them. 
 ::::
 
 
@@ -75,9 +75,9 @@ For {{ml}} rules, an indicator icon (![Error icon from rules table](/solutions/i
     * Edit a single rule: Select the **All actions** menu (**…​**) on a rule, then select **Edit rule settings**. Alternatively, open the rule’s details page and click **Edit rule settings**. The **Edit rule settings** view opens, where you can modify the [rule’s settings](/solutions/security/detect-and-alert/create-detection-rule.md).
     * Bulk edit multiple rules: Select the rules you want to edit, then select an action from the **Bulk actions** menu:
 
-    ::::{note}
-    Similarly, rules will be skipped if they can’t be modified by a bulk edit. For example, if you try to apply a tag to rules that already have that tag, or apply an index pattern to rules that use data views.
-    ::::
+        ::::{note}
+        Rules will be skipped if they can’t be modified by a bulk edit. For example, if you try to apply a tag to rules that already have that tag, or apply an index pattern to rules that use data views.
+        ::::
 
         * **Index patterns**: Add or delete the index patterns used by all selected rules.
         * **Tags**: Add or delete tags on all selected rules.
