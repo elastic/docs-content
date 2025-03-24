@@ -26,7 +26,7 @@ Each monitored {{stack}} component is considered unique in the cluster based on 
 
 Monitoring documents are just ordinary JSON documents built by monitoring each {{stack}} component at a specified collection interval. If you want to alter how these documents are structured or stored, refer to [Configuring data streams/indices for monitoring](/deploy-manage/monitor/monitoring-data/configuring-data-streamsindices-for-monitoring.md).
 
-You can use {{agent}} or {{metricbeat}} to collect monitoring data and to ship it directly to the monitoring cluster. 
+You can use {{agent}} or {{metricbeat}} to collect monitoring data and to ship it directly to the monitoring cluster.
 
 In {{ech}}, {{ece}}, and {{eck}}, Elastic manages the installation and configuration of the monitoring agent for you.
 
@@ -48,7 +48,7 @@ In general, the monitoring cluster and the clusters being monitored should be ru
 
 ## Configure and use stack monitoring
 
-Refer to the following topics to learn how to configure stack monitoring: 
+Refer to the following topics to learn how to configure stack monitoring:
 
 ### Configure for ECH, ECE, and ECK deployments
 
@@ -61,7 +61,7 @@ Refer to the following topics to learn how to configure stack monitoring:
 * **{{es}}**:
   * [](/deploy-manage/monitor/stack-monitoring/collecting-monitoring-data-with-elastic-agent.md) (recommended): Uses a single agent to gather logs and metrics. Can be managed from a central location in {{fleet}}.
   * [](/deploy-manage/monitor/stack-monitoring/collecting-monitoring-data-with-metricbeat.md): Uses a lightweight {{beats}} shipper to gather metrics. May be preferred if you have an existing investment in {{beats}} or are not yet ready to use {{agent}}.
-  * [](/deploy-manage/monitor/stack-monitoring/collecting-log-data-with-filebeat.md): Uses a lightweight {{beats}} shipper to gather logs. 
+  * [](/deploy-manage/monitor/stack-monitoring/collecting-log-data-with-filebeat.md): Uses a lightweight {{beats}} shipper to gather logs.
   * [](/deploy-manage/monitor/stack-monitoring/es-legacy-collection-methods.md): Uses internal exporters to gather metrics. Not recommended. If you have previously configured legacy collection methods, you should migrate to using {{agent}} or {{metricbeat}}.
 * **{{kib}}**:
   * [](/deploy-manage/monitor/stack-monitoring/kibana-monitoring-elastic-agent.md) (recommended): Uses a single agent to gather logs and metrics. Can be managed from a central location in {{fleet}}.
@@ -89,13 +89,13 @@ Most of these methods require that you configure monitoring of {{es}} before mon
 
 * [**APM Server**](/solutions/observability/apps/monitor-apm-server.md)
 
-* **{{agent}}s**: 
-  * [{{fleet}}-managed {{agent}}s](/reference/ingestion-tools/fleet/monitor-elastic-agent.md) 
-  * [Standalone {{agent}}s](/reference/ingestion-tools/fleet/elastic-agent-monitoring-configuration.md)
+* **{{agent}}s**:
+  * [{{fleet}}-managed {{agent}}s](/reference/fleet/monitor-elastic-agent.md)
+  * [Standalone {{agent}}s](/reference/fleet/elastic-agent-monitoring-configuration.md)
 
 ### Access, view, and use monitoring data
 
 * [](/deploy-manage/monitor/stack-monitoring/kibana-monitoring-data.md): After you collect monitoring data for one or more products in the {{stack}}, configure {{kib}} to retrieve that information and display it in on the **Stack Monitoring** page.
 * [](/deploy-manage/monitor/monitoring-data/visualizing-monitoring-data.md): View health and performance data for {{stack}} components in real time, as well as analyze past performance.
 * [](/deploy-manage/monitor/monitoring-data/configure-stack-monitoring-alerts.md): Configure alerts that trigger based on stack monitoring metrics.
-* [](/deploy-manage/monitor/monitoring-data/configuring-data-streamsindices-for-monitoring.md): Adjust the data streams and indices used by stack monitoring. 
+* [](/deploy-manage/monitor/monitoring-data/configuring-data-streamsindices-for-monitoring.md): Adjust the data streams and indices used by stack monitoring.

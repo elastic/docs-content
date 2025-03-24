@@ -101,15 +101,23 @@ POST _tasks/<task_id>/_cancel
 
 ## Semantic search [semantic-text-semantic-search]
 
-After the data set has been enriched with the embeddings, you can query the data using semantic search. Provide the `semantic_text` field name and the query text in a `semantic` query type. The {{infer}} endpoint used to generate the embeddings for the `semantic_text` field will be used to process the query text.
+After the data has been indexed with the embeddings, you can query the data using semantic search. Choose between [Query DSL](/explore-analyze/query-filter/languages/querydsl.md) or [{{esql}}](/explore-analyze/query-filter/languages/esql.md) syntax to execute the query.
 
-```console
+::::{tab-set}
+:group: query-type
+
+:::{tab-item} Query DSL
+:sync: dsl
+
+The Query DSL approach uses the `semantic` query type with the `semantic_text` field:
+
+```esql
 GET semantic-embeddings/_search
 {
   "query": {
     "semantic": {
       "field": "content", <1>
-      "query": "How to avoid muscle soreness while running?" <2>
+      "query": "What causes muscle soreness after running?" <2>
     }
   }
 }
@@ -117,9 +125,32 @@ GET semantic-embeddings/_search
 
 1. The `semantic_text` field on which you want to perform the search.
 2. The query text.
+:::
+
+:::{tab-item} ES|QL
+:sync: esql
+
+The ES|QL approach uses the [match (`:`) operator](elasticsearch://reference/query-languages/esql/esql-functions-operators.md#esql-search-operators), which automatically detects the `semantic_text` field and performs the search on it. The query uses `METADATA _score` to sort by `_score` in descending order.
 
 
-As a result, you receive the top 10 documents that are closest in meaning to the query from the `semantic-embedding` index.
+```console
+POST /_query?format=txt
+{
+  "query": """
+    FROM semantic-embeddings METADATA _score <1>
+    | WHERE content: "How to avoid muscle soreness while running?" <2>
+    | SORT _score DESC <3>
+    | LIMIT 1000 <4>
+  """
+}
+```
+1. The `METADATA _score` clause is used to return the score of each document
+2. The [match (`:`) operator](elasticsearch://reference/query-languages/esql/esql-functions-operators.md#esql-search-operators) is used on the `content` field for standard keyword matching
+3. Sorts by descending score to display the most relevant results first
+4. Limits the results to 1000 documents
+
+:::
+::::
 
 
 ## Further examples and reading [semantic-text-further-examples]

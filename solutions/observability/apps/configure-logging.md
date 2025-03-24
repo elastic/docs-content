@@ -14,7 +14,7 @@ applies_to:
 ::::{note}
 ![supported deployment methods](/solutions/images/observability-binary-yes-fm-no.svg "")
 
-These configuration options are only relevant to APM Server binary users. Fleet-managed users should see [View {{agent}} logs](/reference/ingestion-tools/fleet/monitor-elastic-agent.md) to learn how to view logs and change the logging level of {{agent}}.
+These configuration options are only relevant to APM Server binary users. Fleet-managed users should see [View {{agent}} logs](/reference/fleet/monitor-elastic-agent.md) to learn how to view logs and change the logging level of {{agent}}.
 
 ::::
 
