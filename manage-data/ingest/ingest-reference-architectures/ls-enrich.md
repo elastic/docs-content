@@ -37,8 +37,8 @@ For info on {{ls}} for enriching data, check out these sections in the [Logstash
 
 * [{{ls}} {{agent}} input](logstash://reference/plugins-inputs-elastic_agent.md)
 * [{{ls}} plugins for enriching data](logstash://reference/lookup-enrichment.md)
-* [Logstash filter plugins](logstash://reference/filter-plugins.md)
-* [{{ls}} {{es}} output](logstash://reference/plugins-outputs-elasticsearch.md)
+* [Logstash filter plugins](logstash-docs-md://lsr/filter-plugins.md)
+* [{{ls}} {{es}} output](logstash-docs-md://lsr/plugins-outputs-elasticsearch.md)
 
 Info on {{es}}:
 
