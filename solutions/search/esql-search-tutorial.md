@@ -206,11 +206,11 @@ This query searches the title field to match at least 2 of the 3 terms: "fluffy"
 
 ## Step 4: Semantic search and hybrid search
 
-### Index semantic content using `semantic_text` field
+### Index semantic content
 
-{{es}} provides a powerful [semantic search](/solutions/search/semantic-search.md) capability that allows you to search for documents based on the meaning of the text, rather than just the presence of specific keywords. This is particularly useful when you want to find documents that are conceptually similar to a given query, even if they don't contain the exact search terms.
+{{es}} allows you to semantically search for documents based on the meaning of the text, rather than just the presence of specific keywords. This is useful when you want to find documents that are conceptually similar to a given query, even if they don't contain the exact search terms.
 
-ES|QL also supports semantic search when your mappings include fields of the [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) type. This example mapping update adds a new field called `semantic_description` with the type `semantic_text`:
+ES|QL supports semantic search when your mappings include fields of the [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) type. This example mapping update adds a new field called `semantic_description` with the type `semantic_text`:
 
 ```console
 PUT /cooking_blog/_mapping
