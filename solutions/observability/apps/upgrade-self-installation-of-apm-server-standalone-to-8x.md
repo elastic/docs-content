@@ -25,6 +25,7 @@ This upgrade guide is for the standalone method of running APM Server. Only use 
 2. Review the [Elastic APM release notes](apm-server://release-notes/index.md) and [Elastic {{observability}} release notes](/release-notes/elastic-observability/release-notes.md).
 
 
+
 ## Upgrade steps [_upgrade_steps]
 
 1. **Upgrade the {{stack}} to version 9.0**
@@ -49,6 +50,8 @@ This upgrade guide is for the standalone method of running APM Server. Only use 
 
     Additional details are available in [start the APM Server](apm-server-binary.md#apm-server-starting).
 
-5. **(Optional) Upgrade to the APM integration**
+5. When upgrading from 7.x to 9.0 if you reindex 7.x indices, you need to either add [ILM privileges](https://www.elastic.co/guide/en/apm/guide/7.17/privileges-to-setup-beats.html#_set_up_ilm) for `reindexed-v*-apm*` indices or set the indices to `readonly`.
+
+6. **(Optional) Upgrade to the APM integration**
 
     Got time for one more upgrade? See [Switch to the Elastic APM integration](switch-to-elastic-apm-integration.md).

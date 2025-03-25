@@ -6,7 +6,7 @@ mapped_pages:
 
 
 
-# Upgrade a self-installation of the APM integration to 8.x [apm-upgrade-8.0-self-integration]
+# Upgrade a self-installation of the APM integration to 9.0 [apm-upgrade-9.0-self-integration]
 
 
 This upgrade guide is for the Elastic APM integration. Only use this guide if both of the following are true:
@@ -34,3 +34,5 @@ This upgrade guide is for the Elastic APM integration. Only use this guide if bo
     3. Choose **Upgrade agent** from the **Actions** menu next to the agent you want to upgrade. The **Upgrade agent** option is grayed out when an upgrade is unavailable, or the {{kib}} version is lower than the agent version.
 
     For more details, or for bulk upgrade instructions, see [Upgrade {{agent}}](/reference/fleet/upgrade-elastic-agent.md)
+
+3. When upgrading from 7.x to 9.0 if you reindex 7.x indices, you need to either add [ILM privileges](https://www.elastic.co/guide/en/apm/guide/7.17/privileges-to-setup-beats.html#_set_up_ilm) for `reindexed-v*-apm*` indices or set the indices to `readonly`.
