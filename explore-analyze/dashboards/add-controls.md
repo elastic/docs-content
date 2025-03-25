@@ -14,15 +14,15 @@ There are three types of controls:
 
 * [**Options list**](#create-and-add-options-list-and-range-slider-controls) — Adds a dropdown that allows to filter data by selecting one or more values.
   For example, if you are using the **[Logs] Web Traffic** dashboard from the sample web logs data, you can add an options list for the `machine.os.keyword` field that allows you to display only the logs generated from `osx` and `ios` operating systems.
-  ![Options list control for the `machine.os.keyword` field with the `osx` and `ios` options selected](../../images/kibana-dashboard_controlsOptionsList_8.7.0.png "title =50%")
+  ![Options list control for the `machine.os.keyword` field with the `osx` and `ios` options selected](/explore-analyze/images/kibana-dashboard_controlsOptionsList_8.7.0.png "title =50%")
 
 * [**Range slider**](#create-and-add-options-list-and-range-slider-controls) — Adds a slider that allows to filter the data within a specified range of values. This type of control only works with numeric fields.
   For example, if you are using the **[Logs] Web Traffic** dashboard from the sample web logs data, you can add a range slider for the `hour_of_day` field that allows you to display only the log data from 9:00AM to 5:00PM.
-  ![Range slider control for the `hour_of_day` field with a range of `9` to `17` selected](../../images/kibana-dashboard_controlsRangeSlider_8.3.0.png "title =50%")
+  ![Range slider control for the `hour_of_day` field with a range of `9` to `17` selected](/explore-analyze/images/kibana-dashboard_controlsRangeSlider_8.3.0.png "title =50%")
 
 * [**Time slider**](#add-time-slider-controls) — Adds a time range slider that allows to filter the data within a specified range of time, advance the time range backward and forward by a unit that you can define, and animate your change in data over the specified time range.
   For example, you are using the **[Logs] Web Traffic** dashboard from the sample web logs data, and the global time filter is **Last 7 days**. When you add the time slider, you can click the previous and next buttons to advance the time range backward or forward, and click the play button to watch how the data changes over the last 7 days.
-  ![Time slider control for the the Last 7 days](../../images/dashboard_timeslidercontrol_8.17.0.gif)
+  ![Time slider control for the the Last 7 days](/explore-analyze/images/dashboard_timeslidercontrol_8.17.0.gif)
 
 
 
@@ -32,7 +32,7 @@ To add interactive Options list and Range slider controls, create the controls, 
 
 1. Open or create a new dashboard.
 2. In **Edit** mode, select **Controls** > **Add control** in the dashboard toolbar.
-   ![Controls button in the toolbar with the Add Control option selected](../../images/kibana-dashboard-add-control-8.15.0.png "title =60%")
+   ![Controls button in the toolbar with the Add Control option selected](/explore-analyze/images/kibana-dashboard-add-control-8.15.0.png "title =60%")
 
 3. On the **Create control** flyout, from the **Data view** dropdown, select the data view that contains the field you want to use for the **Control**.
 4. In the **Field** list, select the field you want to filter on.
@@ -77,7 +77,7 @@ You can add one interactive time slider control to a dashboard.
 
 1. Open or create a new dashboard.
 2. In **Edit** mode, select **Controls** > **Add time slider control**.
-   ![Controls button in the toolbar with the Add a time slider option selected](../../images/kibana-dashboard-add-time-slider-control-8.15.0.png "title =50%")
+   ![Controls button in the toolbar with the Add a time slider option selected](/explore-analyze/images/kibana-dashboard-add-time-slider-control-8.15.0.png "title =50%")
 
 3. The time slider control uses the time range from the global time filter. To change the time range in the time slider control, [change the global time filter](../query-filter/filtering.md).
 4. Save the dashboard. The control can now be used.
@@ -88,7 +88,7 @@ You can add one interactive time slider control to a dashboard.
 Several settings that apply to all controls of the same dashboard are available.
 
 1. In **Edit** mode, select **Controls** > **Settings**.
-   ![Controls button in the toolbar with the Settings option selected](../../images/kibana-dashboard-controls-settings-8.15.0.png "title =60%")
+   ![Controls button in the toolbar with the Settings option selected](/explore-analyze/images/kibana-dashboard-controls-settings-8.15.0.png "title =60%")
 
 2. On the **Control settings** flyout, configure the following settings:
 
@@ -113,7 +113,7 @@ Several settings that apply to all controls of the same dashboard are available.
 
 Change the settings for the Options list and Range slider controls.
 
-1. Hover over the control you want to edit, then click ![The Edit control icon that opens the Edit control flyout](../../images/kibana-dashboard_controlsEditControl_8.3.0.png "").
+1. Hover over the control you want to edit, then click ![The Edit control icon that opens the Edit control flyout](/explore-analyze/images/kibana-dashboard_controlsEditControl_8.3.0.png "").
 2. On the **Edit control** flyout, change the options, then click **Save and close**.
 
 ## Add controls from your ES|QL visualization's query [add-esql-control]
@@ -122,8 +122,8 @@ stack: preview
 serverless: preview
 ```
 
-You can bind controls to your ES|QL visualizations in dashboards. When creating an ES|QL visualization, the autocomplete suggestions 
-prompt control insertion for field values, field names, function configuration, and function names. This enables controls that only 
+You can bind controls to your ES|QL visualizations in dashboards. When creating an ES|QL visualization, the autocomplete suggestions
+prompt control insertion for field values, field names, function configuration, and function names. This enables controls that only
 apply to a specific panel, and exposes visualization configuration such as date histogram interval controls to dashboard users.
 
 :::{note}
@@ -179,5 +179,5 @@ Currently, only **Options lists** with static values are supported for ES|QL-bas
 
 Remove controls from your dashboard.
 
-1. Hover over the control you want to remove, then click ![The Remove control icon that removes the control from the dashboard](../../images/kibana-dashboard_controlsRemoveControl_8.3.0.png "").
+1. Hover over the control you want to remove, then click ![The Remove control icon that removes the control from the dashboard](/explore-analyze/images/kibana-dashboard_controlsRemoveControl_8.3.0.png "").
 2. On the **Delete control?** window, click **Delete**.

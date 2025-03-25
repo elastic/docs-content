@@ -26,7 +26,7 @@ Dashboard drilldowns enable you to open a dashboard from another dashboard, taki
 
 For example, if you have a dashboard that shows the logs and metrics for multiple data centers, you can create a drilldown that navigates from the dashboard that shows multiple data centers, to a dashboard that shows a single data center or server.
 
-![Drilldown on data table that navigates to another dashboard](../../images/kibana-dashboard_drilldownOnDataTable_8.3.gif "")
+![Drilldown on data table that navigates to another dashboard](/explore-analyze/images/kibana-dashboard_drilldownOnDataTable_8.3.gif "")
 
 The panels you create using the following editors support dashboard drilldowns:
 
@@ -70,7 +70,7 @@ Create a drilldown that opens the **Detailed logs** dashboard from the **[Logs] 
 
 3. Save the dashboard.
 4. In the data table panel, hover over a value, click **+**, then select `View details`.
-   :::{image} ../../images/kibana-dashboard_drilldownOnPanel_8.3.png
+   :::{image} /explore-analyze/images/kibana-dashboard_drilldownOnPanel_8.3.png
    :alt: Drilldown on data table that navigates to another dashboard
    :screenshot:
    :::
@@ -81,7 +81,7 @@ Create a drilldown that opens the **Detailed logs** dashboard from the **[Logs] 
 
 URL drilldowns enable you to navigate from a dashboard to external websites. Destination URLs can be dynamic, depending on the dashboard context or user interaction with a panel. To create URL drilldowns, you add [variables](/explore-analyze/dashboards/drilldowns.md) to a URL template, which configures the behavior of the drilldown. All panels that you create with the visualization editors support dashboard drilldowns.
 
-![Drilldown on pie chart that navigates to Github](../../images/kibana-dashboard_urlDrilldownGoToGitHub_8.3.gif "")
+![Drilldown on pie chart that navigates to Github](/explore-analyze/images/kibana-dashboard_urlDrilldownGoToGitHub_8.3.gif "")
 
 Some panels support multiple interactions, also known as triggers. The [variables](#url-template-variable) you use to create a [URL template](#url-templating-language) depends on the trigger you choose. URL drilldowns support these types of triggers:
 
@@ -123,11 +123,11 @@ For example, if you have a dashboard that shows data from a Github repository, y
 7. Save the dashboard.
 8. On the donut chart panel, click any chart slice, then select **Show on Github**.
 
-    ![URL drilldown popup](../../images/kibana-dashboard_urlDrilldownPopup_8.3.png "")
+    ![URL drilldown popup](/explore-analyze/images/kibana-dashboard_urlDrilldownPopup_8.3.png "")
 
 9. In the list of {{kib}} repository issues, verify that the slice value appears.
 
-    ![Open ios issues in the elastic/kibana repository on Github](../../images/kibana-dashboard_urlDrilldownGithub_8.3.png "")
+    ![Open ios issues in the elastic/kibana repository on Github](/explore-analyze/images/kibana-dashboard_urlDrilldownGithub_8.3.png "")
 
 
 
@@ -137,7 +137,7 @@ Discover drilldowns enable you to open **Discover** from a **Lens** dashboard pa
 
 For example, when you create a Discover drilldown for a pie chart, you can click a slice in the pie chart, and only the documents for the slice appear in **Discover**.
 
-![Drilldown on bar vertical stacked chart that navigates to Discover](../../images/kibana-dashboard_discoverDrilldown_8.3.gif "")
+![Drilldown on bar vertical stacked chart that navigates to Discover](/explore-analyze/images/kibana-dashboard_discoverDrilldown_8.3.gif "")
 
 ::::{note}
 Discover drilldowns are supported only by **Lens** panels. To open all of the **Lens** dashboard panel data in **Discover**, check [Open panel data in Discover](../visualize/manage-panels.md#explore-the-underlying-documents).
@@ -156,7 +156,7 @@ Create a drilldown that opens **Discover** from the [**Sample web logs**](../ind
 5. Click **Create drilldown**.
 6. Save the dashboard.
 7. On the **[Logs] Bytes distribution** bar vertical stacked chart, click a bar, then select **View bytes distribution in Discover**.
-   :::{image} ../../images/kibana-dashboard_discoverDrilldown_8.3.png
+   :::{image} /explore-analyze/images/kibana-dashboard_discoverDrilldown_8.3.png
    :alt: Drilldown on bar vertical stacked chart that navigates to Discover
    :screenshot:
    :::

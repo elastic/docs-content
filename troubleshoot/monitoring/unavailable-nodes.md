@@ -137,7 +137,7 @@ If your {{es}} cluster is unhealthy and reports a status of red, the scale up co
 
     3. From your deployment menu, go to the **Edit** page and increase the **Size per zone** for the data tiers identified at step 2.
 
-        :::{image} /images/cloud-ec-increase-size-per-zone.png
+        :::{image} /troubleshoot/images/cloud-ec-increase-size-per-zone.png
         :alt: Increase size per zone
         :::
 
@@ -153,7 +153,7 @@ If your {{es}} cluster is unhealthy and reports a status of red, the scale up co
 1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
 2. From the {{es}} Service panel, click the **Quick link** icon corresponding to the deployment that you want to manage.
 
-    :::{image} /images/cloud-ec-quick-link-to-deployment.png
+    :::{image} /troubleshoot/images/cloud-ec-quick-link-to-deployment.png
     :alt: Quick link to the deployment page
     :::
 
@@ -219,7 +219,7 @@ By default, the allowed CPU usage threshold is set at 85%.
 1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
 2. From the {{es}} Service panel, click the **Quick link** icon corresponding to the deployment that you want to manage.
 
-    :::{image} /images/cloud-ec-quick-link-to-deployment.png
+    :::{image} /troubleshoot/images/cloud-ec-quick-link-to-deployment.png
     :alt: Quick link to the deployment page
     :::
 
