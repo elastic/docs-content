@@ -14,7 +14,6 @@ toc:
   - file: cloud/cloud/index.md
     children:
       - file: cloud/cloud/ec-monitoring-setup.md
-      - file: cloud/cloud/ec-planning.md
   - file: docs-content/serverless/index.md
     children:
       - file: docs-content/serverless/observability-ai-assistant.md
@@ -23,12 +22,6 @@ toc:
       - file: docs-content/serverless/observability-plaintext-application-logs.md
       - file: docs-content/serverless/observability-stream-log-files.md
       - file: docs-content/serverless/what-is-observability-serverless.md
-  - file: elasticsearch/elasticsearch-reference/index.md
-    children:
-      - file: elasticsearch/elasticsearch-reference/scalability.md
-  - file: kibana/kibana/index.md
-    children:
-      - file: kibana/kibana/reporting-production-considerations.md     
   - file: observability-docs/observability/index.md
     children:
       - file: observability-docs/observability/index.md

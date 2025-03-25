@@ -28,6 +28,7 @@ redirects:
   'deploy-manage/monitor/stack-monitoring/ece-stack-monitoring.md': '!deploy-manage/monitor/stack-monitoring/ece-ech-stack-monitoring.md'
   'deploy-manage/deploy/kibana-reporting-configuration.md': '!deploy-manage/kibana-reporting-configuration.md'
   'deploy-manage/monitor/logging-configuration/kibana-logging-cli-configuration.md': '!deploy-manage/monitor/logging-configuration/kib-advanced-logging.md'
+  'deploy-manage/production-guidance/getting-ready-for-production-elasticsearch.md': '!deploy-manage/production-guidance/elasticsearch-in-production-environments.md'
 
   ## audit logging movement to security section
   'deploy-manage/monitor/logging-configuration/configuring-audit-logs.md': 'deploy-manage/security/logging-configuration/configuring-audit-logs.md'

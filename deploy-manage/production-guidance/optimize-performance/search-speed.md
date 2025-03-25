@@ -1,17 +1,49 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/tune-for-search-speed.html
+applies_to:
+  deployment:
+    ess: all
+    ece: all
+    eck: all
+    self: all
 ---
 
-# Search speed [tune-for-search-speed]
+# Tune for search speed [tune-for-search-speed]
+
+This page provides guidance on tuning {{es}} for faster search performance. While hardware and system-level settings play an important role, the structure of your documents and the design of your queries often have the biggest impact. Use these recommendations to optimize field mappings, caching behavior, and query design for high-throughput, low-latency search at scale.
+
+::::{note}
+Search performance in {{es}} depends on a combination of factors, including how expensive individual queries are, how many searches run in parallel, the number of indices and shards involved, and the overall sharding strategy and shard size. 
+
+These variables influence how the system should be tuned. For example, optimizing for a small number of complex queries differs significantly from optimizing for many lightweight, concurrent searches.
+
+Make sure to also consider your cluster’s shard count, index layout, and overall data distribution when tuning for indexing speed. Refer to [](./size-shards.md) for more details about sharing strategies and recommendations.
+::::
 
 
 ## Give memory to the filesystem cache [_give_memory_to_the_filesystem_cache_2]
+```yaml {applies_to}
+deployment:
+  self: all
+  eck: all
+```
 
-Elasticsearch heavily relies on the filesystem cache in order to make search fast. In general, you should make sure that at least half the available memory goes to the filesystem cache so that Elasticsearch can keep hot regions of the index in physical memory.
+{{es}} heavily relies on the filesystem cache in order to make search fast. In general, you should make sure that at least half the available memory goes to the filesystem cache so that {{es}} can keep hot regions of the index in physical memory.
 
+By default, {{es}} automatically sets its [JVM heap size](/deploy-manage/deploy/self-managed/important-settings-configuration.md#heap-size-settings) to follow this best practice. However, in self-managed or {{eck}} deployments, you have the flexibility to allocate even more memory to the filesystem cache, which can lead to performance improvements depending on your workload.
+
+::::{note}
+On Linux, the filesystem cache uses any memory not actively used by applications. To allocate memory to the cache, ensure that enough system memory remains available and is not consumed by {{es}} or other processes. 
+::::
 
 ## Avoid page cache thrashing by using modest readahead values on Linux [_avoid_page_cache_thrashing_by_using_modest_readahead_values_on_linux]
+```yaml {applies_to}
+deployment:
+  self: all
+  eck: all
+  ece: all
+```
 
 Search can cause a lot of randomized read I/O. When the underlying block device has a high readahead value, there may be a lot of unnecessary read I/O done, especially when files are accessed using memory mapping (see [storage types](elasticsearch://reference/elasticsearch/index-settings/store.md#file-system)).
 
@@ -23,7 +55,7 @@ You can check the current value in `KiB` using `lsblk -o NAME,RA,MOUNTPOINT,TYPE
 `blockdev` expects values in 512 byte sectors whereas `lsblk` reports values in `KiB`. As an example, to temporarily set readahead to `128KiB` for `/dev/nvme0n1`, specify `blockdev --setra 256 /dev/nvme0n1`.
 ::::
 
-
+The disk readahead cannot be adjusted in {{ech}}, as it is controlled at the Linux kernel level. However, it can be modified in {{ece}}, Kubernetes, or self-managed nodes.
 
 ## Use faster hardware [search-use-faster-hardware]
 
@@ -31,13 +63,25 @@ If your searches are I/O-bound, consider increasing the size of the filesystem c
 
 If your searches are CPU-bound, consider using a larger number of faster CPUs.
 
+::::{note}
+In {{ech}} and {{ece}}, you can choose the underlying hardware by selecting different hardware profiles or deployment templates. Refer to [ECH > Change hardware](/deploy-manage/deploy/elastic-cloud/change-hardware.md) and [ECE deployment templates](/deploy-manage/deploy/cloud-enterprise/configure-deployment-templates.md) for more details.
+::::
 
 ### Local vs. remote storage [_local_vs_remote_storage_2]
+```yaml {applies_to}
+deployment:
+  self: all
+  eck: all
+  ece: all
+```
 
 Directly-attached (local) storage generally performs better than remote storage because it is simpler to configure well and avoids communications overheads.
 
 Some remote storage performs very poorly, especially under the kind of load that {{es}} imposes. However, with careful tuning, it is sometimes possible to achieve acceptable performance using remote storage too. Before committing to a particular storage architecture, benchmark your system with a realistic workload to determine the effects of any tuning parameters. If you cannot achieve the performance you expect, work with the vendor of your storage system to identify the problem.
 
+::::{note}
+For {{eck}} deployments refer to the [ECK storage recommendations](/deploy-manage/deploy/cloud-on-k8s/storage-recommendations.md) for a complete overview of storage options in Kubernetes, along with their implications and best practices. In Kubernetes, remote storage solutions are commonly used and well-supported.
+::::
 
 ## Document modeling [_document_modeling]
 
@@ -70,7 +114,6 @@ PUT movies
   }
 }
 ```
-
 
 ## Pre-index data [_pre_index_data]
 
@@ -142,7 +185,6 @@ GET index/_search
   }
 }
 ```
-
 
 ## Consider mapping identifiers as `keyword` [map-ids-as-keyword]
 
@@ -298,7 +340,6 @@ If the machine running Elasticsearch is restarted, the filesystem cache will be 
 ::::{warning}
 Loading data into the filesystem cache eagerly on too many indices or too many files will make search *slower* if the filesystem cache is not large enough to hold all the data. Use with caution.
 ::::
-
 
 
 ## Use index sorting to speed up conjunctions [_use_index_sorting_to_speed_up_conjunctions]
