@@ -10,8 +10,6 @@ mapped_pages:
 
 If a thread pool is depleted, {{es}} will [reject requests](rejected-requests.md) related to the thread pool. For example, if the `search` thread pool is depleted, {{es}} will reject search requests until more threads are available.
 
-You might experience high CPU usage if a [data tier](../../manage-data/lifecycle/data-tiers.md), and therefore the nodes assigned to that tier, is experiencing more traffic than other tiers. This imbalance in resource utilization is also known as [hot spotting](hotspotting.md).
-
 ::::{tip}
 If you're using {{ech}}, you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, and real-time issue detection with resolution paths. For more information, refer to [](/deploy-manage/monitor/autoops.md).
 ::::
@@ -70,17 +68,54 @@ This API returns a breakdown of any hot threads in plain text. High CPU usage fr
 
 The following tips outline the most common causes of high CPU usage and their solutions.
 
-**Scale your cluster**
+**Check JVM garbage collection**
 
-Heavy indexing and search loads can deplete smaller thread pools. To better handle heavy workloads, add more nodes to your cluster or upgrade your existing nodes to increase capacity.
+High CPU usage is often caused by excessive JVM garbage collection (GC) activity. This excessive GC typically arises from configuration problems or inefficient queries causing increased heap memory usage.
 
-**Spread out bulk requests**
+For optimal JVM performance, garbage collection should meet these criteria:
 
-While more efficient than individual requests, large [bulk indexing](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-bulk) or [multi-search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-msearch) requests still require CPU resources. If possible, submit smaller requests and allow more time between them.
+1. Young GC completes quickly (ideally within 50 ms).
+2. Young GC does not occur too frequently (approximately once every 10 seconds).
+3. Old GC completes quickly (ideally within 1 second).
+4. Old GC does not occur too frequently (once every 10 minutes or less frequently).
 
-**Cancel long-running searches**
+Excessive JVM garbage collection usually indicates high heap memory usage. Common potential reasons for increased heap memory usage include:
 
-Long-running searches can block threads in the `search` thread pool. To check for these searches, use the [task management API](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-tasks).
+* Oversharding of indices
+* Very large aggregation queries
+* Excessively large bulk indexing requests
+* Inefficient or incorrect mapping definitions
+* Improper heap size configuration
+* Misconfiguration of JVM new generation ratio (-XX:NewRatio)
+
+**Hot spotting**
+
+You might experience high CPU usage on specific data nodes or an entire [data tier](/manage-data/lifecycle/data-tiers.md) if traffic isn’t evenly distributed—a scenario known as [hot spotting](hotspotting.md). This commonly occurs when read or write applications don’t properly balance requests across nodes, or when indices receiving heavy write activity (like hot-tier indices) have their shards concentrated on just one or a few nodes.
+
+For details on diagnosing and resolving these issues, see [hot spotting](hotspotting.md).
+
+**Oversharding**
+
+If your Elasticsearch cluster contains a large number of shards, you might be facing an oversharding issue.
+
+Oversharding occurs when there are too many shards, causing each shard to be smaller than optimal. While Elasticsearch doesn’t have a strict minimum shard size, an excessive number of small shards can negatively impact performance. Each shard consumes cluster resources since Elasticsearch must maintain metadata and manage shard states across all nodes.
+
+If you have too many small shards, you can address this by:
+
+* Removing empty or unused indices.
+* Deleting or closing indices containing outdated or unnecessary data.
+* Reindexing smaller shards into fewer, larger shards to optimize cluster performance.
+
+See [Size your shards](/deploy-manage/production-guidance/optimize-performance/size-shards.md) for more information.
+
+### Additional recommendations
+
+To further reduce CPU load or mitigate temporary spikes in resource usage, consider these steps:
+
+* Scale your cluster: Heavy indexing and search loads can deplete smaller thread pools.Add nodes or upgrade existing ones to handle increased indexing and search loads more effectively.
+* Spread out bulk requests: Submit smaller [bulk indexing](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-bulk-1) or multi-search requests and space them out to avoid overwhelming thread pools.
+* Cancel long-running searches: Regularly use the task management API to identify and cancel searches that consume excessive CPU time. To check
+for these searches, use the [task management API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-tasks-list).
 
 ```console
 GET _tasks?actions=*search&detailed
