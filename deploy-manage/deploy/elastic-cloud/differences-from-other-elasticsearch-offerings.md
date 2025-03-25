@@ -59,10 +59,10 @@ These fundamental platform capabilities apply to both deployment models:
 | **Deployment monitoring** | AutoOps or monitoring cluster | Managed | Monitoring is handled by Elastic |
 | **Hardware configuration** | Limited control | Managed | Hardware choices are managed by Elastic |
 | **High availability** | ✅ | ✅ | Automatic resilience |
+| **Network security** | Public IP traffic filtering, private connectivity (VPCs, PrivateLink) | **Planned** |  [View roadmap](https://www.elastic.co/cloud/serverless/roadmap) |
 | **Node management** | User-controlled | Managed | No node configuration access by design |
-| **Private Link** | ✅ | **Planned** | [View roadmap](https://www.elastic.co/cloud/serverless/roadmap) |
 | **Snapshot/restore** | ✅ | **Planned** | User-initiated snapshots are planned - [View roadmap](https://www.elastic.co/cloud/serverless/roadmap) |
-| **Traffic filtering and VPCs** | ✅ | **Planned** | [View roadmap](https://www.elastic.co/cloud/serverless/roadmap) |
+
 
 ### Elasticsearch
 
