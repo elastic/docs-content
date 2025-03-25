@@ -100,11 +100,11 @@ Beginning in version 9.0, for {{agents}} to have the full functionality that was
 
 #### Basic flavor [elastic-agent-basic-flavor-container]
 
-For containerized environments, the basic {{agent}} flavor is installed using the `elastic-agent-slim` command with an agent container package. This flavor contains the same set of components described in [Basic flavor](#elastic-agent-basic-flavor) above.
+For containerized environments, the basic {{agent}} flavor is installed using the `elastic-agent-slim` command with an agent container package. This flavor contains the same set of components described in [Basic flavor](#elastic-agent-basic-flavor-regular) above.
 
 #### Servers flavor [elastic-agent-servers-flavor-container]
 
-For containerized environments, the servers {{agent}} flavor is installed using the default `elastic-agent` command with an agent container package. This flavor contains the same set of components described in [Servers flavor](#elastic-agent-servers-flavor) above.
+For containerized environments, the servers {{agent}} flavor is installed using the default `elastic-agent` command with an agent container package. This flavor contains the same set of components described in [Servers flavor](#elastic-agent-servers-flavor-regular) above.
 
 #### Wolfi flavor [elastic-agent-wolfi-flavor]
 
@@ -112,7 +112,7 @@ For containerized environments, you also have the option of using a hardened [Wo
 
 #### Complete flavor [elastic-agent-complete-flavor]
 
-For containerized environments, the complete {{agent}} flavor is identical to the servers flavor, and also includes additional dependencies to run browser monitors through Elastic Synthetics. Refer to [Synthetic monitoring via Elastic Agent and Fleet](/solutions/observability/apps/get-started.md) for more information.
+For containerized environments, the complete {{agent}} flavor includes all of the components in the servers flavor, and also includes additional dependencies to run browser monitors through Elastic Synthetics. Refer to [Synthetic monitoring via Elastic Agent and Fleet](/solutions/observability/apps/get-started.md) for more information.
 
 ## Resource requirements [elastic-agent-installation-resource-requirements]
 
