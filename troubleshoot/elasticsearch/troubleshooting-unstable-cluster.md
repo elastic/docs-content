@@ -15,7 +15,7 @@ Normally, a node will only leave a cluster if deliberately shut down. If a node 
 * The master may appear busy due to frequent cluster state updates.
 
 ::::{tip}
-If you're using {{ech}}, you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, and real-time issue detection and resolution. For more information, refer to [](/deploy-manage/monitor/autoops.md).
+If you're using {{ech}}, you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, and real-time issue detection with resolution paths. For more information, refer to [](/deploy-manage/monitor/autoops.md).
 ::::
 
 

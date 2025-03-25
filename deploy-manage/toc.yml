@@ -330,23 +330,29 @@ toc:
       - file: distributed-architecture/kibana-tasks-management.md
   - file: production-guidance.md
     children:
-      - file: production-guidance/getting-ready-for-production-elasticsearch.md
+      - file: production-guidance/elasticsearch-in-production-environments.md
+        children:
+          - file: production-guidance/availability-and-resilience.md
+            children:
+              - file: production-guidance/availability-and-resilience/resilience-in-small-clusters.md
+              - file: production-guidance/availability-and-resilience/resilience-in-larger-clusters.md
+              - file: production-guidance/availability-and-resilience/resilience-in-ech.md
+          - file: production-guidance/scaling-considerations.md
+          - file: production-guidance/optimize-performance.md
+            children:
+              - file: production-guidance/general-recommendations.md
+              - file: production-guidance/optimize-performance/indexing-speed.md
+              - file: production-guidance/optimize-performance/search-speed.md
+              - file: production-guidance/optimize-performance/approximate-knn-search.md
+              - file: production-guidance/optimize-performance/disk-usage.md
+              - file: production-guidance/optimize-performance/size-shards.md
       - file: production-guidance/kibana-in-production-environments.md
-      - file: production-guidance/plan-for-production-elastic-cloud.md
-      - file: production-guidance/availability-and-resilience.md
         children:
-          - file: production-guidance/availability-and-resilience/resilience-in-small-clusters.md
-          - file: production-guidance/availability-and-resilience/resilience-in-larger-clusters.md
-      - file: production-guidance/optimize-performance.md
-        children:
-          - file: production-guidance/optimize-performance/indexing-speed.md
-          - file: production-guidance/optimize-performance/search-speed.md
-          - file: production-guidance/optimize-performance/approximate-knn-search.md
-          - file: production-guidance/optimize-performance/disk-usage.md
-          - file: production-guidance/optimize-performance/size-shards.md
-      - file: production-guidance/kibana-task-manager-scaling-considerations.md
-      - file: production-guidance/kibana-alerting-production-considerations.md
-      - file: production-guidance/general-recommendations.md
+          - file: production-guidance/kibana-load-balance-traffic.md
+          - file: production-guidance/kibana-configure-memory.md
+          - file: production-guidance/kibana-task-manager-scaling-considerations.md
+          - file: production-guidance/kibana-alerting-production-considerations.md
+          - file: production-guidance/kibana-reporting-production-considerations.md
   - file: reference-architectures.md
     children:
       - file: reference-architectures/hotfrozen-high-availability.md

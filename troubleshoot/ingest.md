@@ -1,5 +1,8 @@
 ---
 navigation_title: "Ingest tools"
+applies_to:
+  stack: ga
+  serverless: ga
 ---
 
 # Troubleshoot ingestion tools

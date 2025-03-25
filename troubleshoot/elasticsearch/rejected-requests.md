@@ -12,7 +12,7 @@ When {{es}} rejects a request, it stops the operation and returns an error with 
 * High [indexing pressure](elasticsearch://reference/elasticsearch/index-settings/pressure.md) that exceeds the [`indexing_pressure.memory.limit`](elasticsearch://reference/elasticsearch/index-settings/pressure.md#memory-limits).
 
 ::::{tip}
-If you're using Elastic Cloud Hosted, then you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, real-time issue detection and resolution paths. For more information, refer to [Monitor with AutoOps](/deploy-manage/monitor/autoops.md).
+If you're using Elastic Cloud Hosted, then you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, and real-time issue detection with resolution paths. For more information, refer to [Monitor with AutoOps](/deploy-manage/monitor/autoops.md).
 
 ::::
 

@@ -1,5 +1,8 @@
 ---
 navigation_title: "Monitoring"
+applies_to:
+  deployment:
+    self: all
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/monitor-troubleshooting.html
 ---

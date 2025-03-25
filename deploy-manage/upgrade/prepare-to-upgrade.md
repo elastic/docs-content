@@ -156,12 +156,13 @@ POST _create_from/.ml-anomalies-custom-example/.reindexed-v9-ml-anomalies-custom
     }
     ```
 
-    2. Set the number of replicas to `0.`
+    2. Set the number of replicas to `0`. You must also set the `auto_expand_replicas` parameter to `false` to change the number of replicas:
 
     ```json
     PUT /.reindexed-v9-ml-anomalies-custom-example/_settings
     {
       "index": {
+        "auto_expand_replicas": false,
         "number_of_replicas": 0
       }
     }
@@ -187,13 +188,14 @@ POST _create_from/.ml-anomalies-custom-example/.reindexed-v9-ml-anomalies-custom
     GET _tasks/<task_id>
     ```
 
-    4. Set the number of replicas to the original number when the reindexing is finished.
+    4. Set the number of replicas to the original number when the reindexing is finished. Optionally, you can set the `auto_expand_replicas` parameter back to its default value (`0-1`) to allow the number of replicas to be automatically adjusted based on the number of data nodes in the cluster.
 
     ```json
     PUT /.reindexed-v9-ml-anomalies-custom-example/_settings
     {
       "index": {
-        "number_of_replicas": "<original_number_of_replicas>"
+        "number_of_replicas": "<original_number_of_replicas>",
+        "auto_expand_replicas": "0-1"
       }
     }
     ```
