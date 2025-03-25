@@ -34,7 +34,7 @@ To use Automatic Import, you must provide a sample of the data you wish to impor
 * You can upload a sample of arbitrary size. The LLM will detect its format and select up to 100 documents for detailed analysis.
 * ```
 * The more variety in your sample, the more accurate the pipeline will be. For best results, include a wide range of unique log entries in your sample instead of repeating similar logs.
-* Ideally, each field name should describe what the field represents. However if this isn't the case, the LLM will still attempt to create descriptive field names based on field formats and values.
+* When uploading a CSV, a header with column names will be automatically recognized. However if the header is not present, the LLM will still attempt to create descriptive field names based on field formats and values.
 * For JSON and NDJSON samples, each object in your sample should represent an event, and you should avoid deeply nested object structures.
 * When you select `API (CEL input)` as one of the sources, you will be prompted to provide the associated OpenAPI specification (OAS) file to generate a CEL program that consumes this API.
 
