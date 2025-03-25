@@ -29,7 +29,7 @@ Click [here](https://elastic.navattic.com/automatic-import) to access an interac
 ::::
 
 ::::{admonition} Notes on sample data
-To use Automatic Import, you must provide a sample of the data you wish to import. An LLM will process that sample and automatically create an integration suitable for processing the data represented by the sample. **Any structured or unstructured format is acceptable, including but not limited to JSON, NDJSON, CSV, Syslog, and CEL.** 
+To use Automatic Import, you must provide a sample of the data you wish to import. An LLM will process that sample and automatically create an integration suitable for processing the data represented by the sample. **Any structured or unstructured format is acceptable, including but not limited to JSON, NDJSON, CSV, Syslog.** 
 
 * You can upload a sample of arbitrary size. The LLM will detect its format and select up to 100 documents for detailed analysis.
 * ```
