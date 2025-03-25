@@ -206,7 +206,7 @@ This query searches the title field to match at least 2 of the 3 terms: "fluffy"
 
 ## Step 4: Semantic search and hybrid search
 
-#### Index semantic content using `semantic_text` field
+### Index semantic content using `semantic_text` field
 
 {{es}} provides a powerful [semantic search](/solutions/search/semantic-search.md) capability that allows you to search for documents based on the meaning of the text, rather than just the presence of specific keywords. This is particularly useful when you want to find documents that are conceptually similar to a given query, even if they don't contain the exact search terms.
 
@@ -238,7 +238,7 @@ POST /cooking_blog/_doc
 }
 ```
 
-#### Perform semantic search
+### Perform semantic search
 
 Once the document has been processed by the underlying model running on the inference endpoint, you can perform semantic searches. Here's an example natural language query against the `semantic_description` field:
 
@@ -252,7 +252,7 @@ FROM cooking_blog
 Follow this [tutorial](/solutions/search/semantic-search/semantic-search-semantic-text.md) if you'd like to test out the semantic search workflow against a large dataset.
 :::
 
-#### Hybrid search with full-text and semantic queries
+### Hybrid search with full-text and semantic queries
 
 You can combine full-text and semantic queries. In this example we combine full-text and semantic search with custom weights:
 
