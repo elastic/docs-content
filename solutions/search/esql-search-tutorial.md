@@ -165,8 +165,7 @@ FROM cooking_blog  # Specify the index to search
 
 :::{note}
 The results ordering isn't by relevance, as we haven't requested the `_score` metadata field. We'll cover relevance scoring in the next section.
-:::if you want the most relevant results first, you have to sort by _scoreWhe
-
+:::
 
 By default, like the Query DSL `match` query, {{esql}} uses `OR` logic between terms. This means it will match documents that contain either "fluffy" or "pancakes", or both, in the description field.
 
