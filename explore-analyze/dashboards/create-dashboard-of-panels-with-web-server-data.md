@@ -12,7 +12,7 @@ Learn the most common ways to create a dashboard from your own data. The tutoria
 
 When you’re done, you’ll have a complete overview of the sample web logs data.
 
-:::{image} ../../images/kibana-lens_logsDashboard_8.4.0.png
+:::{image} /explore-analyze/images/kibana-lens_logsDashboard_8.4.0.png
 :alt: Logs dashboard
 :screenshot:
 :::
@@ -35,7 +35,7 @@ Open the visualization editor, then make sure the correct fields appear.
 1. On the dashboard, click **Create visualization**.
 2. Make sure the **{{kib}} Sample Data Logs** {{data-source}} appears.
 
-   :::{image} ../../images/kibana-lens_dataViewDropDown_8.4.0.png
+   :::{image} /explore-analyze/images/kibana-lens_dataViewDropDown_8.4.0.png
    :alt: Data view dropdown
    :screenshot:
    :::
@@ -66,14 +66,14 @@ The only number function that you can use with **clientip** is **Unique count**,
 
 1. Open the **Visualization type** dropdown, then select **Metric**.
 
-   :::{image} ../../images/kibana-visualization-type-dropdown-8.16.0.png
+   :::{image} /explore-analyze/images/kibana-visualization-type-dropdown-8.16.0.png
    :alt: Visualization type dropdown
    :screenshot:
    :::
 
 2. From the **Available fields** list, drag **clientip** to the workspace or layer pane.
 
-   :::{image} ../../images/kibana-tutorial-unique-count-of-client-ip-8.16.0.png
+   :::{image} /explore-analyze/images/kibana-tutorial-unique-count-of-client-ip-8.16.0.png
    :alt: Metric visualization of the clientip field
    :screenshot:
    :::
@@ -125,7 +125,7 @@ To save space on the dashboard, hide the axis labels.
 
 1. Open the **Left axis** menu, then select **None** from the **Axis title** dropdown.
 
-   :::{image} ../../images/kibana-line-chart-left-axis-8.16.0.png
+   :::{image} /explore-analyze/images/kibana-line-chart-left-axis-8.16.0.png
    :alt: Left axis menu
    :screenshot:
    :width: 50%
@@ -133,7 +133,7 @@ To save space on the dashboard, hide the axis labels.
 
 2. Open the **Bottom axis** menu, then select **None** from the **Axis title** dropdown.
 
-   :::{image} ../../images/kibana-line-chart-bottom-axis-8.16.0.png
+   :::{image} /explore-analyze/images/kibana-line-chart-bottom-axis-8.16.0.png
    :alt: Bottom axis menu
    :screenshot:
    :width: 50%
@@ -146,7 +146,7 @@ Since you removed the axis labels, add a panel title:
 1. Hover over the panel and click ![Settings icon](/explore-analyze/images/kibana-settings-icon-hover-action.png ""). The **Settings** flyout appears.
 2. In the **Title** field, enter `Median of bytes`, then click **Apply**.
 
-   :::{image} ../../images/kibana-lens_lineChartMetricOverTime_8.4.0.png
+   :::{image} /explore-analyze/images/kibana-lens_lineChartMetricOverTime_8.4.0.png
    :alt: Line chart that displays metric data over time
    :screenshot:
    :width: 50%
@@ -167,7 +167,7 @@ The **Top values** function ranks the unique values of a field by another functi
 
 3. Drag **request.keyword** to the workspace.
 
-   :::{image} ../../images/kibana-tutorial-top-values-of-field-8.16.0.png
+   :::{image} /explore-analyze/images/kibana-tutorial-top-values-of-field-8.16.0.png
    :alt: Vertical bar chart with top values of request.keyword by most unique visitors
    :screenshot:
    :width: 50%
@@ -180,7 +180,7 @@ The chart labels are unable to display because the **request.keyword** field con
 
 1. Open the **Visualization type** dropdown, then select **Table**.
 
-   :::{image} ../../images/kibana-table-with-request-keyword-and-client-ip-8.16.0.png
+   :::{image} /explore-analyze/images/kibana-table-with-request-keyword-and-client-ip-8.16.0.png
    :alt: Table with top values of request.keyword by most unique visitors
    :screenshot:
    :width: 50%
@@ -192,7 +192,7 @@ The chart labels are unable to display because the **request.keyword** field con
     2. In the **Name** field, enter `Page URL`.
     3. Click **Close**.
 
-       :::{image} ../../images/kibana-lens_tableTopFieldValues_7.16.png
+       :::{image} /explore-analyze/images/kibana-lens_tableTopFieldValues_7.16.png
        :alt: Table that displays the top field values
        :screenshot:
        :width: 50%
@@ -240,7 +240,7 @@ To display the values as a percentage of the sum of all values, use the **Pie** 
 
 1. Open the **Visualization Type** dropdown, then select **Pie**.
 
-   :::{image} ../../images/kibana-lens_pieChartCompareSubsetOfDocs_7.16.png
+   :::{image} /explore-analyze/images/kibana-lens_pieChartCompareSubsetOfDocs_7.16.png
    :alt: Pie chart that compares a subset of documents to all documents
    :screenshot:
    :width: 50%
@@ -269,7 +269,7 @@ The distribution of a number can help you find patterns. For example, you can an
 4. From the **Available fields** list, drag **hour_of_day** to **Horizontal axis** field in the layer pane.
 5. In the layer pane, click **hour_of_day**, then slide the **Intervals granularity** slider until the horizontal axis displays hourly intervals.
 
-   :::{image} ../../images/kibana-lens_barChartDistributionOfNumberField_7.16.png
+   :::{image} /explore-analyze/images/kibana-lens_barChartDistributionOfNumberField_7.16.png
    :alt: Bar chart that displays the distribution of a number field
    :screenshot:
    :width: 60%
@@ -329,7 +329,7 @@ Remove the documents that do not match the filter criteria:
 1. In the layer pane, click **Top 3 values of geo.srcdest**.
 2. Click **Advanced**, deselect **Group other values as "Other"**, then click **Close**.
 
-   :::{image} ../../images/kibana-lens_treemapMultiLevelChart_7.16.png
+   :::{image} /explore-analyze/images/kibana-lens_treemapMultiLevelChart_7.16.png
    :alt: Treemap visualization
    :screenshot:
    :width: 50%
@@ -354,7 +354,7 @@ Decrease the size of the following panels, then move the panels to the first row
 * **Sum of bytes from large requests**
 * **Website traffic**
 
-  :::{image} ../../images/kibana-lens_logsDashboard_8.4.0.png
+  :::{image} /explore-analyze/images/kibana-lens_logsDashboard_8.4.0.png
   :alt: Logs dashboard
   :screenshot:
   :::

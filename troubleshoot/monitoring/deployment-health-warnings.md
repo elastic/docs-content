@@ -1,5 +1,9 @@
 ---
 navigation_title: "Deployment health warnings"
+applies_to:
+  deployment:
+    ess: all
+    ece: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-deployment-no-op.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-deployment-no-op.html
