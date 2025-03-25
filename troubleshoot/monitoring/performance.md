@@ -1,5 +1,8 @@
 ---
 navigation_title: "Performance"
+applies_to:
+  deployment:
+    ess: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-scenario_why_is_performance_degrading_over_time.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/echscenario_why_is_performance_degrading_over_time.html
@@ -20,5 +23,5 @@ Between just after 00:10 and 00:20, excessively high CPU usage consumes all CPU 
 If you need your cluster to be able to sustain a certain level of performance, you cannot rely on CPU boosting to handle the workload except temporarily. To ensure that performance can be sustained, consider increasing the size of your cluster.
 
 :::{important}
- If you’re using Elastic Cloud Hosted, then you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, real-time issue detection and resolution paths. For more information, refer to [Monitor with AutoOps](/deploy-manage/monitor/autoops.md).
+ If you’re using Elastic Cloud Hosted, then you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, and real-time issue detection with resolution paths. For more information, refer to [Monitor with AutoOps](/deploy-manage/monitor/autoops.md).
 :::

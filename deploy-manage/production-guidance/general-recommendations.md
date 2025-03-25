@@ -1,15 +1,21 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/general-recommendations.html
+applies_to:
+  deployment:
+    ess: all
+    ece: all
+    eck: all
+    self: all
 ---
 
 # General recommendations [general-recommendations]
 
+This page offers general best practices to improve performance and avoid common issues when working with {{es}}.
 
 ## Don’t return large result sets [large-size]
 
 Elasticsearch is designed as a search engine, which makes it very good at getting back the top documents that match a query. However, it is not as good for workloads that fall into the database domain, such as retrieving all documents that match a particular query. If you need to do this, make sure to use the [Scroll](elasticsearch://reference/elasticsearch/rest-apis/paginate-search-results.md#scroll-search-results) API.
-
 
 ## Avoid large documents [maximum-document-size]
 

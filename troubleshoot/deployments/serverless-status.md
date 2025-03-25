@@ -1,5 +1,7 @@
 ---
 navigation_title: "Check status"
+applies_to:
+  serverless: all
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/general-serverless-status.html
 ---
