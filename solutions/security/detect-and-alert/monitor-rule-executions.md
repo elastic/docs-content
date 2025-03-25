@@ -104,7 +104,7 @@ The Gaps table has the following columns:
 * **Event time covered**: How much progress the manual run has made filling the gap. 
 
     ::::{note} 
-    If you stop a manual run that's filling a gap, the gap’s status is set to `Partially filled`. To fill the remaining gap, you can select the **Fill remaining gap** action or [manually run](/solutions/security/detect-and-alert/manage-detection-rules.md#manually-run-rules) the rule over the gap's time frame.
+    If you stop a manual run that's hasn't finished filling a gap, the gap’s status will be set to `Partially filled`. To fill the remaining gap, you can select the **Fill remaining gap** action or [manually run](/solutions/security/detect-and-alert/manage-detection-rules.md#manually-run-rules) the rule over the gap's time frame.
     ::::
 
 * **Range**: When the gap started and ended. 
