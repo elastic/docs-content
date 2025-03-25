@@ -79,10 +79,10 @@ When you select **Save changes** on the **Edit deployment** page, the orchestrat
 * **Grow and shrink**: The orchestrator creates new instances with the new configuration, then migrates the data, and eventually deletes the original ones. This strategy is automatically selected when adding or removing master-eligible instances.
 * **Rolling grow and shrink**: Similar to grow and shrink, but creating one instance at a time. This strategy can take a lot longer than grow and shrink.
 
-The `Extended maintenance` optional flag will make ECE to [stop routing requests](../../maintenance/ece/start-stop-routing-requests.md) to all instances during the plan execution. The cluster will be unavailable for external connections while the configuration changes are in progress.
+The `Extended maintenance` optional flag will make ECE to [stop routing requests](../../maintenance/start-stop-routing-requests.md) to all instances during the plan execution. The cluster will be unavailable for external connections while the configuration changes are in progress.
 
 ::::{note}
-If you enable the **Extended maintenance** optional flag, ECE will [stop routing requests](../../maintenance/ece/start-stop-routing-requests.md) to all instances during the plan execution, making the cluster unavailable for external connections while configuration changes are in progress.
+If you enable the **Extended maintenance** optional flag, ECE will [stop routing requests](../../maintenance/start-stop-routing-requests.md) to all instances during the plan execution, making the cluster unavailable for external connections while configuration changes are in progress.
 
 This option introduces downtime and is rarely needed. Use it only when you need to block all traffic to the cluster during the update.
 ::::

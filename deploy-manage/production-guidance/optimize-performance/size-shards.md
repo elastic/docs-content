@@ -1,13 +1,17 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/size-your-shards.html
+applies_to:
+  deployment:
+    ess: all
+    ece: all
+    eck: all
+    self: all
 ---
 
-# Size your shards [size-your-shards]
+# Size your shards
 
-## What is a shard? [what-is-a-shard]
-
-A shard is a basic unit of storage in {{es}}. Every index is divided into one or more shards to help distribute data and workload across nodes in a cluster. This division allows {{es}} to handle large datasets and perform operations like searches and indexing efficiently. For more detailed information on shards, see [this page](/deploy-manage/distributed-architecture/clusters-nodes-shards.md).
+A shard is a basic unit of storage in {{es}}. Every index is divided into one or more shards to help distribute data and workload across nodes in a cluster. This division allows {{es}} to handle large datasets and perform operations like searches and indexing efficiently. For more detailed information on shards, refer to [nodes and shards](/deploy-manage/distributed-architecture/clusters-nodes-shards.md).
 
 ## General guidelines [sizing-shard-guidelines]
 

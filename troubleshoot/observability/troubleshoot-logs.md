@@ -39,7 +39,7 @@ You need permission to manage API keys
 You need to either:
 
 * Ask an administrator to update your user role to at least **Developer** by going to the user icon on the header bar and opening **Organization** → **Members**. Read more about user roles in [](/deploy-manage/users-roles/cloud-organization/user-roles.md). After your use role is updated, restart the onboarding flow.
-* Get an API key from an administrator and manually add the API to the {{agent}} configuration. See [Configure the {{agent}}](../../raw-migrated-files/docs-content/serverless/observability-stream-log-files.md#observability-stream-log-files-step-3-configure-the-agent) for more on manually updating the configuration and adding the API key.
+* Get an API key from an administrator and manually add the API to the {{agent}} configuration. See [Configure the {{agent}}](/solutions/observability/logs/stream-any-log-file.md#logs-stream-agent-config) for more on manually updating the configuration and adding the API key.
 ::::
 
 ::::{tab-item} {{stack}}
@@ -164,7 +164,7 @@ If the **Waiting for Logs to be shipped…​** step never completes, logs are n
 
 #### Solution [logs-troubleshooting-wait-for-logs-solution]
 
-Inspect the {{agent}} logs for errors. See the [Debug standalone {{agent}}s](/reference/ingestion-tools/fleet/debug-standalone-agents.md#inspect-standalone-agent-logs) documentation for more on finding errors in {{agent}} logs.
+Inspect the {{agent}} logs for errors. See the [Debug standalone {{agent}}s](/reference/fleet/debug-standalone-agents.md#inspect-standalone-agent-logs) documentation for more on finding errors in {{agent}} logs.
 
 
 ## Mapping and pipeline issues [logs-common-mapping-troubleshooting]

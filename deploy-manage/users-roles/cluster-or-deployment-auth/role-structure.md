@@ -160,7 +160,7 @@ The remote indices privileges entry has an extra mandatory `clusters` field comp
 }
 ```
 
-1. A list of remote cluster aliases. It supports literal strings as well as [wildcards](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#api-multi-index) and [regular expressions](elasticsearch://reference/query-languages/regexp-syntax.md). This field is required.
+1. A list of remote cluster aliases. It supports literal strings as well as [wildcards](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#api-multi-index) and [regular expressions](elasticsearch://reference/query-languages/query-dsl/regexp-syntax.md). This field is required.
 2. A list of data streams, indices, and aliases to which the permissions in this entry apply. Supports wildcards (`*`).
 3. The index level privileges the owners of the role have on the associated data streams and indices specified in the `names` argument.
 4. Specification for document fields the owners of the role have read access to. See [Setting up field and document level security](/deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level.md) for details.
@@ -186,7 +186,7 @@ The following describes the structure of a remote cluster permissions entry:
 }
 ```
 
-1. A list of remote cluster aliases. It supports literal strings as well as [wildcards](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#api-multi-index) and [regular expressions](elasticsearch://reference/query-languages/regexp-syntax.md). This field is required.
+1. A list of remote cluster aliases. It supports literal strings as well as [wildcards](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#api-multi-index) and [regular expressions](elasticsearch://reference/query-languages/query-dsl/regexp-syntax.md). This field is required.
 2. The cluster level privileges for the remote cluster. The allowed values here are a subset of the [cluster privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-cluster). The [builtin privileges API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-get-builtin-privileges) can be used to determine which privileges are allowed here. This field is required.
 
 

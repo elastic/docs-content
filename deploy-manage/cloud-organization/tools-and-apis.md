@@ -37,7 +37,7 @@ Other Products
     * [APM event intake API Reference](/solutions/observability/apps/elastic-apm-events-intake-api.md)
     * [App Search API Reference](https://www.elastic.co/guide/en/app-search/current/api-reference.html)
     * [Elastic Security APIs](https://www.elastic.co/guide/en/security/current/security-apis.html)
-    * [Fleet APIs](/reference/ingestion-tools/fleet/fleet-api-docs.md)
+    * [Fleet APIs](/reference/fleet/fleet-api-docs.md)
     * [Logstash APIs](https://www.elastic.co/guide/en/logstash/current/monitoring-logstash.html)
     * [Workplace Search API Reference](https://www.elastic.co/guide/en/workplace-search/current/workplace-search-api-overview.html)
 

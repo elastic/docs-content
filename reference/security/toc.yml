@@ -1,0 +1,8 @@
+toc:
+  - file: index.md
+  - file: fields-and-object-schemas/index.md
+    children:
+      - file: fields-and-object-schemas/siem-field-reference.md
+      - file: fields-and-object-schemas/timeline-object-schema.md
+      - file: fields-and-object-schemas/alert-schema.md
+  - file: endpoint-command-reference.md

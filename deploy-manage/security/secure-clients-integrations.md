@@ -6,7 +6,7 @@ mapped_pages:
 # Secure clients and integrations [security-clients-integrations]
 
 :::{warning}
-**This page is a work in progress.** 
+**This page is a work in progress.**
 :::
 
 
@@ -17,7 +17,7 @@ The {{es}} {{security-features}} enable you to secure your {{es}} cluster. But {
 * [Apache Hadoop](elasticsearch-hadoop://reference/security.md)
 * [Auditbeat](beats://reference/auditbeat/securing-auditbeat.md)
 * [Filebeat](beats://reference/filebeat/securing-filebeat.md)
-* [{{fleet}} & {{agent}}](/reference/ingestion-tools/fleet/secure.md)
+* [{{fleet}} & {{agent}}](/reference/fleet/secure.md)
 * [Heartbeat](beats://reference/heartbeat/securing-heartbeat.md)
 * [{{kib}}](../security.md)
 * [Logstash](logstash://reference/secure-connection.md)

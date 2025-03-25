@@ -104,7 +104,7 @@ It is not uncommon for performance issues on {{ech}} to be caused by an undersiz
 To help diagnose high CPU usage you can also use the {{es}} [nodes hot threads API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-hot-threads), which identifies the threads on each node that have the highest CPU usage or that have been executing for a longer than normal period of time.
 
 ::::{tip}
-Got an overwhelmed cluster that needs to be upsized? [Try enabling maintenance mode first](/deploy-manage/maintenance/ece/start-stop-routing-requests.md). It will likely help with configuration changes.
+Got an overwhelmed cluster that needs to be upsized? [Try enabling maintenance mode first](/deploy-manage/maintenance/start-stop-routing-requests.md). It will likely help with configuration changes.
 ::::
 
 

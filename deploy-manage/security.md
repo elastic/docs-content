@@ -10,7 +10,6 @@ mapped_urls:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-securing-ece.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-security.html
   - https://www.elastic.co/guide/en/kibana/current/using-kibana-with-security.html
-  - https://www.elastic.co/guide/en/elasticsearch/reference/current/security-limitations.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/es-security-principles.html
   - https://www.elastic.co/guide/en/cloud/current/ec-faq-technical.html
 ---
@@ -25,25 +24,13 @@ mapped_urls:
 
 % Note that the encryption happens at the file system level.
 
+% We do provide [static IP ranges](../../../deploy-manage/security/elastic-cloud-static-ips.md), but they should be used with caution as noted in the documentation. IP addresses assigned to cloud resources can change without notice. This could be initiated by cloud providers with no knowledge to us. For this reason, we generally do not recommend that you use firewall rules to allow or restrict certain IP ranges. If you do wish to secure communication for deployment endpoints on {{ech}}, please use [Private Link](../../../deploy-manage/security/traffic-filtering.md). However, in situations where using Private Link services do not meet requirements (for example, secure traffic **from** Elastic Cloud), static IP ranges can be used.
+
 % What needs to be done: Refine
 
 % GitHub issue: https://github.com/elastic/docs-projects/issues/346
 
 % Scope notes: this is just communication security - link to users + roles, spaces, monitoring, ++
-
-% Use migrated content from existing pages that map to this page:
-
-% - [ ] ./raw-migrated-files/elasticsearch/elasticsearch-reference/security-files.md
-%      Notes: redirect only
-% - [ ] ./raw-migrated-files/elasticsearch/elasticsearch-reference/secure-cluster.md
-% - [ ] ./raw-migrated-files/kibana/kibana/xpack-security.md
-% - [ ] ./raw-migrated-files/cloud-on-k8s/cloud-on-k8s/k8s-securing-stack.md
-% - [ ] ./raw-migrated-files/cloud/cloud-enterprise/ece-securing-ece.md
-% - [ ] ./raw-migrated-files/cloud/cloud-heroku/ech-security.md
-% - [ ] ./raw-migrated-files/kibana/kibana/using-kibana-with-security.md
-% - [ ] ./raw-migrated-files/elasticsearch/elasticsearch-reference/security-limitations.md
-% - [ ] ./raw-migrated-files/elasticsearch/elasticsearch-reference/es-security-principles.md
-% - [ ] ./raw-migrated-files/cloud/cloud/ec-faq-technical.md
 
 $$$field-document-limitations$$$
 
@@ -59,18 +46,6 @@ $$$maintaining-audit-trail$$$
 **This page is a work in progress.** 
 :::
 
-% The documentation team is working to combine content pulled from the following pages:
-
-% * [/raw-migrated-files/elasticsearch/elasticsearch-reference/security-files.md](/raw-migrated-files/elasticsearch/elasticsearch-reference/security-files.md)
-% * [/raw-migrated-files/elasticsearch/elasticsearch-reference/secure-cluster.md](/raw-migrated-files/elasticsearch/elasticsearch-reference/secure-cluster.md)
-% * [/raw-migrated-files/kibana/kibana/xpack-security.md](/raw-migrated-files/kibana/kibana/xpack-security.md)
-% * [/raw-migrated-files/cloud-on-k8s/cloud-on-k8s/k8s-securing-stack.md](/raw-migrated-files/cloud-on-k8s/cloud-on-k8s/k8s-securing-stack.md)
-% * [/raw-migrated-files/cloud/cloud-enterprise/ece-securing-ece.md](/raw-migrated-files/cloud/cloud-enterprise/ece-securing-ece.md)
-% * [/raw-migrated-files/cloud/cloud-heroku/ech-security.md](/raw-migrated-files/cloud/cloud-heroku/ech-security.md)
-% * [/raw-migrated-files/kibana/kibana/using-kibana-with-security.md](/raw-migrated-files/kibana/kibana/using-kibana-with-security.md)
-% * [/raw-migrated-files/elasticsearch/elasticsearch-reference/security-limitations.md](/raw-migrated-files/elasticsearch/elasticsearch-reference/security-limitations.md)
-% * [/raw-migrated-files/elasticsearch/elasticsearch-reference/es-security-principles.md](/raw-migrated-files/elasticsearch/elasticsearch-reference/es-security-principles.md)
-% * [/raw-migrated-files/cloud/cloud/ec-faq-technical.md](/raw-migrated-files/cloud/cloud/ec-faq-technical.md)
 
 # Security
 
