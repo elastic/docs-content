@@ -3,7 +3,7 @@ applies_to:
   stack: ga
   serverless: ga
 ---
-  
+
 # Aggregation-based [add-aggregation-based-visualization-panels]
 
 Aggregation-based visualizations are the core {{kib}} panels, and are not optimized for a specific use case.
@@ -103,7 +103,7 @@ To create the bar chart, add a [bucket aggregation](../supported-chart-types.md#
     2. From the **Aggregation** dropdown, select **Date Histogram**.
     3. Click **Update**.
 
-        ![Bar chart with sample logs data](../../../images/kibana-aggBased_barChartTutorial1_8.4.png "")
+        ![Bar chart with sample logs data](/explore-analyze/images/kibana-aggBased_barChartTutorial1_8.4.png "")
 
 2. To show the top five log traffic sources, add a sub-bucket aggregation.
 
@@ -116,7 +116,7 @@ To create the bar chart, add a [bucket aggregation](../supported-chart-types.md#
     2. From the **Sub aggregation** dropdown, select **Terms**.
     3. From the **Field** dropdown, select **geo.src**.
     4. Click **Update**.
-       ![Bar chart with sample logs data](../../../images/kibana-aggBased_barChartTutorial2_8.4.png "")
+       ![Bar chart with sample logs data](/explore-analyze/images/kibana-aggBased_barChartTutorial2_8.4.png "")
 
 
 
