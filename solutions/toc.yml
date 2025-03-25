@@ -12,7 +12,7 @@ toc:
         children:
           - file: search/elasticsearch-basics-quickstart.md
           - file: search/querydsl-full-text-filter-tutorial.md
-          - file: search/esql-full-text-filter-tutorial.md
+          - file: search/esql-search-tutorial.md
       - file: search/ingest-for-search.md
         children:
           - file: search/search-pipelines.md

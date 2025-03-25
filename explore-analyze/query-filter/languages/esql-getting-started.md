@@ -423,5 +423,5 @@ For more about data processing with {{esql}}, refer to [Data processing with DIS
 
 To learn more about {{esql}}, refer to [{{esql}} reference](elasticsearch://reference/query-languages/esql.md).
 
-Learn more about using {{esql}} for Search use cases in this tutorial: [Search and filter with {{esql}}](/solutions/search/esql-full-text-filter-tutorial.md).
+Learn more about using {{esql}} for Search use cases in this tutorial: [Search and filter with {{esql}}](/solutions/search/esql-search-tutorial.md).
 
