@@ -58,7 +58,7 @@ The list of starred dashboards is personal. Dashboards marked as favorite by oth
 
 You can check how much a dashboard is being used by clicking its **View details** icon in your list of dashboards.
 
-![View details icon in the list of dashboards](../../images/kibana-view-details-dashboards-8.16.0.png "")
+![View details icon in the list of dashboards](/explore-analyze/images/kibana-view-details-dashboards-8.16.0.png "")
 
 These details include a graph showing the total number of views during the last 90 days.
 

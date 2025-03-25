@@ -22,7 +22,7 @@ You can upload images from your computer, select previously uploaded images, or 
 2. In the **Add panel** flyout, select **Image**. The **Add image** flyout appears and lets you add and configure the image you want to display.
 3. Add your image and configure the settings, and then click **Save**.
 
-:::{image} ../../images/kibana-dashboard_addImageEditor_8.7.0.png
+:::{image} /explore-analyze/images/kibana-dashboard_addImageEditor_8.7.0.png
 :alt: Add image editor
 :screenshot:
 :::

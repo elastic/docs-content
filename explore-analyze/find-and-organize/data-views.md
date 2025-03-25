@@ -215,7 +215,7 @@ To add runtime fields to your data views, open the data view you want to change,
 
     * To view the other available fields, use the **Document ID** arrows.
     * To filter the fields list, enter the keyword in **Filter fields**.
-    * To pin frequently used fields to the top of the list, hover over the field, then click ![Icon to pin field to the top of the list](../../images/kibana-stackManagement-indexPatterns-pinRuntimeField-7.15.png "").
+    * To pin frequently used fields to the top of the list, hover over the field, then click ![Icon to pin field to the top of the list](/explore-analyze/images/kibana-stackManagement-indexPatterns-pinRuntimeField-7.15.png "").
 
 7. Click **Create field**.
 
