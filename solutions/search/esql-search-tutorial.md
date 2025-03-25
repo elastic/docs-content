@@ -204,7 +204,7 @@ FROM cooking_blog
 
 This query searches the title field to match at least 2 of the 3 terms: "fluffy", "pancakes", or "breakfast".
 
-### Step 4: Semantic search and hybrid search
+## Step 4: Semantic search and hybrid search
 
 #### Index semantic content using `semantic_text` field
 
@@ -381,5 +381,5 @@ This tutorial introduced the basics of search and filtering in {{esql}}. Buildin
 
 ### Related blog posts
 
-% TODO* https://www.elastic.co/blog/esql-you-know-for-search-scoring-semantic-search[ES|QL, you know for Search] - Introducing scoring and semantic search
-- https://www.elastic.co/blog/introducing-full-text-filtering-with-esql[Introducing full text filtering in ES|QL] - Overview of text filtering capabilities
+% TODO - https://www.elastic.co/blog/esql-you-know-for-search-scoring-semantic-search[ES|QL, you know for Search]: Introducing scoring and semantic search
+- [Introducing full text filtering in ES|QL](https://www.elastic.co/blog/introducing-full-text-filtering-with-esql): Overview of text filtering capabilities
