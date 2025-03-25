@@ -22,4 +22,11 @@ This section includes recipes that provide configuration examples for some commo
 Compared to other configuration examples that are consistently tested, like [fleet-managed Elastic Agent on ECK](configuration-examples-fleet.md), [standalone Elastic Agent on ECK](configuration-examples-standalone.md), or [Beats on ECK](/deploy-manage/deploy/cloud-on-k8s/configuration-examples-beats.md), the recipes in this section are not regularly tested by our automation system, and therefore should not be considered to be production-ready.
 ::::
 
+:::{note}
+**Support Scope for Ingress Controllers**
+
+Ingress is a standard Kubernetes concept. While ECK-managed workloads can be publicly exposed via ingresses and we provide example ingress configuration recipes, setting up an Ingress controller requires in-house Kubernetes expertise. If configuring ingress presents challenges, we recommend using a standard Load Balancer (LB) as an alternative solution.
+:::
+
+
 
