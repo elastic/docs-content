@@ -1,5 +1,7 @@
 ---
 navigation_title: "Trace {{es}} query"
+applies_to:
+  stack: all
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/kibana-troubleshooting-trace-query.html
 ---
