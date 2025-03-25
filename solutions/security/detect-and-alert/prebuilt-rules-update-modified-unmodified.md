@@ -9,9 +9,7 @@ applies_to:
 
 ::::{admonition} Requirements
 
-% Need Serverless req
-
-You must have an [Enterprise subscription](https://www.elastic.co/pricing) or [{{serverless-short}} project tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md) to access this feature. If you have a Platinum subscription or lower, follow the guidelines in [Update Elastic prebuilt rules](/solutions/security/detect-and-alert/install-manage-elastic-prebuilt-rules.md#update-prebuilt-rules) instead.
+You must have an [Enterprise subscription](https://www.elastic.co/pricing) on {{stack}} or a [Complete project tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md) subscription on {{serverless-short}} to access this feature. If you have a [Platinum](https://www.elastic.co/pricing) subscription  or lower on  {{stack}} or an [Essentials project tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md) subscription on {{serverless-short}}, follow the guidelines in [Update Elastic prebuilt rules](/solutions/security/detect-and-alert/install-manage-elastic-prebuilt-rules.md#update-prebuilt-rules) instead.
 
 ::::
 
