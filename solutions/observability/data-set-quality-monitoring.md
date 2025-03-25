@@ -80,7 +80,7 @@ To use Discover to find ignored fields in individual logs:
 1. Find data sets with degraded documents using the **Degraded Docs** column of the data sets table.
 2. Click the percentage in the **Degraded Docs** column to open the data set in Discover.
 
-The **Documents** table in Discover is automatically filtered to show documents that were not parsed correctly. Under the **actions** column, you’ll find the degraded document icon (![degraded document icon](../../images/serverless-indexClose.svg "")).
+The **Documents** table in Discover is automatically filtered to show documents that were not parsed correctly. Under the **actions** column, you’ll find the degraded document icon (![degraded document icon](/solutions/images/serverless-indexClose.svg "")).
 
 Now that you know which documents contain ignored fields, examine them more closely to find the origin of the issue:
 
