@@ -7,7 +7,7 @@ applies:
   hosted: all
 ---
 
-# Manage your Cloud account
+# Manage your Cloud account and preferences
 
 Your {{ecloud}} account allows you to manage your personal settings, including your email address, password, and authentication methods. You can perform the following tasks at any time from your user profile:
 
@@ -20,6 +20,8 @@ If you use password-based login, then you can perform the following additional t
 * [Configure multifactor authentication](/cloud-account/multifactor-authentication.md)
 
 Additionally, you can manage your organization membership, including joining or leaving an organization. Refer to [Join or leave an organization](/cloud-account/join-or-leave-an-organization.md) for more information.
+
+Some options also let you set personal preferences and customize the interface, such as [using dark mode](dark-mode.md) in your projects and deployments.
 
 ::::{tip} 
 This section focuses on the actions you can take as an individual user to manage your own account. It does not cover organization-wide settings, such as managing user permissions or configuring organization-level access controls, which are handled by the organization administrators.
