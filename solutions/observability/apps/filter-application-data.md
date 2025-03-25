@@ -11,7 +11,7 @@ navigation_title: "Filters"
 
 Global filters are ways you can filter your APM data based on a specific time range or environment. When viewing a specific service, the filter persists as you move between tabs.
 
-:::{image} ../../../images/observability-global-filters.png
+:::{image} /solutions/images/observability-global-filters.png
 :alt: Global filters view
 :screenshot:
 :::

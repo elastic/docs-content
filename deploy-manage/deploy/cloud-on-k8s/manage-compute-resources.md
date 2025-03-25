@@ -323,7 +323,7 @@ To avoid this, explicitly define the requests and limits mandated by your enviro
 
 [Metricbeat](beats.md) can collect the percentage of both the CPU and the memory limits used by each Pod (or total node allocatable if resource is not limited). The two relevant metrics are `kubernetes.pod.cpu.usage.limit.pct` for CPU, and `kubernetes.pod.memory.usage.node.pct` for memory.
 
-:::{image} ../../../images/cloud-on-k8s-metrics-explorer-cpu.png
+:::{image} /deploy-manage/images/cloud-on-k8s-metrics-explorer-cpu.png
 :alt: cgroup CPU perforamce chart
 :screenshot:
 :::
@@ -353,7 +353,7 @@ nodeSets:
 
 The **Cgroup usage** curve shows that the CPU usage of this container has been steadily increasing up to 2 cores. Then, while the container was still requesting more CPU, the **Cgroup Throttling** curve shows how much the Elasticsearch container has been throttled:
 
-:::{image} ../../../images/cloud-on-k8s-cgroups-cfs-stats.png
+:::{image} /deploy-manage/images/cloud-on-k8s-cgroups-cfs-stats.png
 :alt: cgroup CPU perforamce chart
 :screenshot:
 :::

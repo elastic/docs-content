@@ -47,7 +47,7 @@ Microsoft Azure allows you to find, deploy, and manage {{es}} from within the Az
 4. Enter the **Subscription**, **Resource group**, and the **Resource name**.
 5. Select a region and then click **Review + create**.
 
-    ![Create Elastic resource](../../../images/observability-monitor-azure-create-elastic-resource.png "")
+    ![Create Elastic resource](/solutions/images/observability-monitor-azure-create-elastic-resource.png "")
 
     ::::{note}
     We will cover **logs** and **infrastructure metrics** later in this tutorial.
@@ -57,13 +57,13 @@ Microsoft Azure allows you to find, deploy, and manage {{es}} from within the Az
 6. To create the {{es}} deployment, click **Create**.
 7. After your deployment is complete, click **Go to resource**. Here you can see and configure your deployment details. To access the cluster, click **{{kib}}**.
 
-    ![Elastic resource](../../../images/observability-monitor-azure-elastic-deployment.png "")
+    ![Elastic resource](/solutions/images/observability-monitor-azure-elastic-deployment.png "")
 
 
 1. To single sign-on directly into Elastic, select your Azure account.
 2. To see if there is any available data, click **Observability**. There should be no data yet, but next, you will ingest logs.
 
-    ![{{kib}} {{observability}} page (no data)](../../../images/observability-monitor-azure-kibana-observability-page-empty.png "")
+    ![{{kib}} {{observability}} page (no data)](/solutions/images/observability-monitor-azure-kibana-observability-page-empty.png "")
 
 
 
@@ -73,11 +73,11 @@ To ingest Azure subscription and resource logs into Elastic using the Microsoft 
 
 1. On to the {{es}} resource page in Azure, click **Ingest logs and metrics from Azure Services**.
 
-    ![Click on Ingest logs and metrics from Azure Services](../../../images/observability-monitor-azure-elastic-click-ingest-logs.png "")
+    ![Click on Ingest logs and metrics from Azure Services](/solutions/images/observability-monitor-azure-elastic-click-ingest-logs.png "")
 
 2. Check both checkboxes and click **Save**.
 
-    ![Elastic configure logs and metrics](../../../images/observability-monitor-azure-elastic-config-logs-metrics.png "")
+    ![Elastic configure logs and metrics](/solutions/images/observability-monitor-azure-elastic-config-logs-metrics.png "")
 
     ::::{note}
     This configuration can also be applied during the Elastic resource creation. To make the concepts clearer, this tutorial separates the two steps.
@@ -98,11 +98,11 @@ To ingest Azure subscription and resource logs into Elastic using the Microsoft 
 
 1. Go to your Elastic resource and click **Virtual machines**.
 
-    ![Elastic resource](../../../images/observability-monitor-azure-elastic-deployment.png "")
+    ![Elastic resource](/solutions/images/observability-monitor-azure-elastic-deployment.png "")
 
 2. Select the VMs that you want to collect logs and metrics from, click **Install Extension**, and then click **OK**.
 
-    ![Select VMs to collect logs and metrics from](../../../images/observability-monitor-azure-elastic-vms.png "")
+    ![Select VMs to collect logs and metrics from](/solutions/images/observability-monitor-azure-elastic-vms.png "")
 
 3. Wait until it is installed and sending data (if the list does not update, click **Refresh** ). To see the logs from the VM, open **Logs Explorer** (find `Logs Explorer` in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md)).
 
@@ -127,21 +127,21 @@ The Azure Monitor REST API allows you to get insights into your Azure resources 
 
 1. Go to the [Azure Management Portal](https://portal.azure.com/). Search and click on **Azure Active Directory**.
 
-    ![Search and click on Azure Active Directory](../../../images/observability-monitor-azure-search-active-directory.png "")
+    ![Search and click on Azure Active Directory](/solutions/images/observability-monitor-azure-search-active-directory.png "")
 
 2. Click on **App registrations** in the navigation pane of the selected Active Directory and then click on **New registration**.
 
-    ![Click on App registrations](../../../images/observability-monitor-azure-click-app-registration.png "")
+    ![Click on App registrations](/solutions/images/observability-monitor-azure-click-app-registration.png "")
 
 3. Type the name of your application (this tutorial uses `monitor-azure`) and click on **Register** (leave all the other options with the default value).
 
-    ![Register an application](../../../images/observability-monitor-azure-register-app.png "")
+    ![Register an application](/solutions/images/observability-monitor-azure-register-app.png "")
 
     Copy the **Application (client) ID**, and save it for future reference. This id is required to configure {{metricbeat}} to connect to your Azure account.
 
 4. Click on **Certificates & secrets**. Then, click on **New client secret** to create a new security key.
 
-    ![Click on new client secret](../../../images/observability-monitor-azure-click-client-secret.png "")
+    ![Click on new client secret](/solutions/images/observability-monitor-azure-click-client-secret.png "")
 
 5. Type a key description and select a key duration in the expire list. Click on **Add** to create a client secret. The next page will display the key value under the **Value** field. Copy the secret and save it (along with your Client ID) for future reference.
 
@@ -158,7 +158,7 @@ After creating the Azure service principal you need to grant it the correct perm
 
 1. On Azure Portal, search and click on **Subscriptions**.
 
-    ![Search and click on Subscriptions](../../../images/observability-monitor-azure-search-subscriptions.png "")
+    ![Search and click on Subscriptions](/solutions/images/observability-monitor-azure-search-subscriptions.png "")
 
 2. In the Subscriptions page, click on your subscription.
 3. Click on **Access control (IAM)** in the subscription navigation pane.
@@ -166,7 +166,7 @@ After creating the Azure service principal you need to grant it the correct perm
 5. Select the **Reader** role.
 6. In the **Select** field, type the description name of the configured service principal (`monitor-azure`).
 
-    ![Add role assignment](../../../images/observability-monitor-azure-add-role-assignment.png "")
+    ![Add role assignment](/solutions/images/observability-monitor-azure-add-role-assignment.png "")
 
 7. Select the application and click on save to grant the service principal access to your subscription.
 
@@ -177,15 +177,15 @@ To configure {{metricbeat}} you need the {{es}} cluster details.
 
 1. On the {{es}} resource page, click **Manage changes in {{ecloud}}**.
 
-    ![Elastic resource](../../../images/observability-monitor-azure-elastic-deployment.png "")
+    ![Elastic resource](/solutions/images/observability-monitor-azure-elastic-deployment.png "")
 
 2. Copy the **Cloud ID** and keep it safe. You will use it later.
 
-    ![{{ecloud}} deployment](../../../images/observability-monitor-azure-kibana-deployment.png "")
+    ![{{ecloud}} deployment](/solutions/images/observability-monitor-azure-kibana-deployment.png "")
 
 3. Click **Security** and then click **Reset password**. Confirm, and copy the password. Keep it safe as you will use it later.
 
-    ![{{ecloud}} security](../../../images/observability-monitor-azure-kibana-security.png "")
+    ![{{ecloud}} security](/solutions/images/observability-monitor-azure-kibana-security.png "")
 
 
 You can run {{metricbeat}} on any machine. This tutorial uses a small Azure VM, **B2s** (2 vCPUs, 4 GB memory), with an Ubuntu distribution.
@@ -372,4 +372,4 @@ Extra Azure charges on metric queries my be generated by this module. Please see
 
 6. Finally, log into {{kib}} and open the **[{{metricbeat}} Azure] Billing overview** dashboard. Keep in mind it collects data every 24 hours.
 
-    ![{{metricbeat}} azure billing overview dashboard](../../../images/observability-monitor-azure-billing-overview-dashboard.png "")
+    ![{{metricbeat}} azure billing overview dashboard](/solutions/images/observability-monitor-azure-billing-overview-dashboard.png "")

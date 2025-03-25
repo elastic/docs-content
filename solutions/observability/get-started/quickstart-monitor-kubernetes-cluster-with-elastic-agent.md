@@ -63,7 +63,7 @@ The kubectl command installs the standalone Elastic Agent in your Kubernetes clu
 1. In {{kib}}, go to the **Observability** UI and click **Add Data**.
 2. Under **What do you want to monitor?** select **Kubernetes**, and then select **Elastic Agent: Logs & Metrics**.
 
-    :::{image} ../../../images/observability-quickstart-k8s-entry-point.png
+    :::{image} /solutions/images/observability-quickstart-k8s-entry-point.png
     :alt: Kubernetes entry point
     :screenshot:
     :::
@@ -87,7 +87,7 @@ The kubectl command installs the standalone Elastic Agent in your Kubernetes clu
 2. In your {{obs-serverless}} project, go to **Add Data**.
 3. Under **What do you want to monitor?** select **Kubernetes**, and then select **Elastic Agent: Logs & Metrics**.
 
-    :::{image} ../../../images/serverless-quickstart-k8s-entry-point.png
+    :::{image} /solutions/images/serverless-quickstart-k8s-entry-point.png
     :alt: Kubernetes entry point
     :screenshot:
     :::
@@ -108,7 +108,7 @@ The kubectl command installs the standalone Elastic Agent in your Kubernetes clu
 
 After installation is complete and all relevant data is flowing into Elastic, the **Visualize your data** section allows you to access the Kubernetes Cluster Overview dashboard that can be used to monitor the health of the cluster.
 
-:::{image} ../../../images/observability-quickstart-k8s-overview.png
+:::{image} /solutions/images/observability-quickstart-k8s-overview.png
 :alt: Kubernetes overview dashboard
 :screenshot:
 :::

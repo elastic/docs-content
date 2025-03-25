@@ -28,13 +28,13 @@ With a Superuser account, complete the following steps:
 
 1. In {{kib}}, go to the **Applications** app and click **Settings** → **Schema**.
 
-    :::{image} ../../../images/observability-schema-agent.png
+    :::{image} /solutions/images/observability-schema-agent.png
     :alt: switch to {{agent}}
     :::
 
 2. Click **Switch to {{agent}}**. Make a note of the `apm-server.yml` user settings that are incompatible with {{agent}}. Check the confirmation box and click **Switch to {{agent}}**.
 
-    :::{image} ../../../images/observability-agent-settings-migration.png
+    :::{image} /solutions/images/observability-agent-settings-migration.png
     :alt: {{agent}} settings migration
     :::
 
@@ -55,7 +55,7 @@ Certain {{es}} output configuration options are not available with the APM integ
 
 Go to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body), select your deployment and click **Edit**. Here you can edit the number and size of each availability zone.
 
-:::{image} ../../../images/observability-scale-apm.png
+:::{image} /solutions/images/observability-scale-apm.png
 :alt: scale APM
 :::
 

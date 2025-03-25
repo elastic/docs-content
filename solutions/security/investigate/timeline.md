@@ -14,7 +14,7 @@ Use Timeline as your workspace for investigations and threat hunting. You can ad
 
 You can drag or send fields of interest to a Timeline to create the desired query. For example, you can add fields from tables and histograms on the **Overview**, **Alerts**, **Hosts**, and **Network** pages, as well as from other Timelines. Alternatively, you can add a query directly in Timeline by expanding the [query builder](/solutions/security/investigate/timeline.md#narrow-expand) and clicking **+ Add field**.
 
-:::{image} ../../../images/security-timeline-ui-updated.png
+:::{image} /solutions/images/security-timeline-ui-updated.png
 :alt: example Timeline with several events
 :screenshot:
 :::
@@ -31,19 +31,19 @@ You can control access to Timeline by setting the [{{kib}} privileges](../../../
 To make a new Timeline, choose one of the following:
 
 * Find **Timelines** in the main menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then click **Create new Timeline**.
-* Go to the Timeline bar (which is at the bottom of most pages), click the ![Add new button](../../../images/security-add-new-timeline-button.png "title =20x20") button, then click **Create new Timeline template**.
+* Go to the Timeline bar (which is at the bottom of most pages), click the ![Add new button](/solutions/images/security-add-new-timeline-button.png "title =20x20") button, then click **Create new Timeline template**.
 * From an open Timeline or Timeline template, click **New** → **New Timeline**.
 
 To open an existing Timeline, choose one of the following:
 
 * Go to the Timelines page, then click a Timeline’s title.
-* Go to the Timeline bar, click the ![Add new button](../../../images/security-add-new-timeline-button.png "title =20x20") button, then click **Open Timeline**.
+* Go to the Timeline bar, click the ![Add new button](/solutions/images/security-add-new-timeline-button.png "title =20x20") button, then click **Open Timeline**.
 * From an open Timeline or Timeline template, click **Open**, then select the appropriate Timeline.
 
 To avoid losing your changes, you must save the Timeline before moving to a different {{security-app}} page. If you change an existing Timeline, you can use the **Save as new timeline** toggle to make a new copy of the Timeline without overwriting the original one.
 
 ::::{tip}
-Click the star icon (![Favorite icon](../../../images/security-favorite-icon.png "title =20x20")) to favorite your Timeline and quickly find it later.
+Click the star icon (![Favorite icon](/solutions/images/security-favorite-icon.png "title =20x20")) to favorite your Timeline and quickly find it later.
 ::::
 
 
@@ -60,9 +60,9 @@ To further inspect an event or detection alert, click the **View details** butto
 
 ## Configure Timeline event context and display [conf-timeline-display]
 
-Many types of events automatically appear in preconfigured views that provide relevant contextual information, called **Event renderers**. All event renderers are turned off by default. To turn them on, use the **Event renderers** toggle at the top of the results pane. To only turn on specific event renderers, click the gear (![Customize event renderer button](../../../images/security-customize-event-renderers.png "title =20x20")) icon next to the toggle, and select the ones you want enabled. Close the **Customize event renderers** pane when you’re done. Your changes are automatically applied to Timeline.
+Many types of events automatically appear in preconfigured views that provide relevant contextual information, called **Event renderers**. All event renderers are turned off by default. To turn them on, use the **Event renderers** toggle at the top of the results pane. To only turn on specific event renderers, click the gear (![Customize event renderer button](/solutions/images/security-customize-event-renderers.png "title =20x20")) icon next to the toggle, and select the ones you want enabled. Close the **Customize event renderers** pane when you’re done. Your changes are automatically applied to Timeline.
 
-:::{image} ../../../images/security-timeline-ui-renderer.png
+:::{image} /solutions/images/security-timeline-ui-renderer.png
 :alt: example timeline with the event renderer highlighted
 :screenshot:
 :::
@@ -85,9 +85,9 @@ You can also modify a Timeline’s display in other ways:
 
 The Timeline table shows fields that are available for alerts and events in the selected data view. You can modify the table to display fields that interest you. Use the sidebar to search for specific fields or scroll through it to find fields of interest. Fields that you select display as columns in the table.
 
-To add a field from the sidebar, hover over it, and click the **Add field as a column** button (![Add a field as a column button](../../../images/security-add-field-button.png "title =20x20")), or drag and drop the field into the table. To remove a field, hover over it, and click the **Remove field as a column** button (![Remove a field as a column button](../../../images/security-remove-field-button.png "title =20x20")).
+To add a field from the sidebar, hover over it, and click the **Add field as a column** button (![Add a field as a column button](/solutions/images/security-add-field-button.png "title =20x20")), or drag and drop the field into the table. To remove a field, hover over it, and click the **Remove field as a column** button (![Remove a field as a column button](/solutions/images/security-remove-field-button.png "title =20x20")).
 
-:::{image} ../../../images/security-timeline-sidebar.png
+:::{image} /solutions/images/security-timeline-sidebar.png
 :alt: Shows the sidebar that allows you to configure the columns that display in Timeline
 :screenshot:
 :::
@@ -95,10 +95,10 @@ To add a field from the sidebar, hover over it, and click the **Add field as a c
 
 ## Use the Timeline query builder [narrow-expand]
 
-Expand the query builder by clicking the query builder button (![Query builder button](../../../images/security-query-builder-button.png "title =20x20")) to the right of the KQL query bar. Drop in fields to build a query that filters Timeline results. The fields' relative placement specifies their logical relationships: horizontally adjacent filters use `AND`, while vertically adjacent filters use `OR`.
+Expand the query builder by clicking the query builder button (![Query builder button](/solutions/images/security-query-builder-button.png "title =20x20")) to the right of the KQL query bar. Drop in fields to build a query that filters Timeline results. The fields' relative placement specifies their logical relationships: horizontally adjacent filters use `AND`, while vertically adjacent filters use `OR`.
 
 ::::{tip}
-Collapse the query builder and provide more space for Timeline results by clicking the query builder button (![Query builder button](../../../images/security-query-builder-button.png "title =20x20")).
+Collapse the query builder and provide more space for Timeline results by clicking the query builder button (![Query builder button](/solutions/images/security-query-builder-button.png "title =20x20")).
 ::::
 
 
@@ -109,7 +109,7 @@ Collapse the query builder and provide more space for Timeline results by clicki
 
 Click a filter to access additional operations such as **Add filter**, **Clear all**, **Load saved query**, and more:
 
-:::{image} ../../../images/security-timeline-ui-filter-options.png
+:::{image} /solutions/images/security-timeline-ui-filter-options.png
 :alt: timeline ui filter options
 :screenshot:
 :::
@@ -119,7 +119,7 @@ Here are examples of various types of filters:
 Field with value
 :   Filters for events with the specified field value:
 
-    :::{image} ../../../images/security-timeline-filter-value.png
+    :::{image} /solutions/images/security-timeline-filter-value.png
     :alt: timeline filter value
     :screenshot:
     :::
@@ -128,7 +128,7 @@ Field with value
 Field exists
 :   Filters for events containing the specified field:
 
-    :::{image} ../../../images/security-timeline-field-exists.png
+    :::{image} /solutions/images/security-timeline-field-exists.png
     :alt: timeline field exists
     :screenshot:
     :::
@@ -137,7 +137,7 @@ Field exists
 Exclude results
 :   Filters for events that do not contain the specified field value (`field with value` filter) or the specified field (`field exists` filter):
 
-    :::{image} ../../../images/security-timeline-filter-exclude.png
+    :::{image} /solutions/images/security-timeline-filter-exclude.png
     :alt: timeline filter exclude
     :screenshot:
     :::
@@ -146,7 +146,7 @@ Exclude results
 Temporarily disable
 :   The filter is not used in the query until it is enabled again:
 
-    :::{image} ../../../images/security-timeline-disable-filter.png
+    :::{image} /solutions/images/security-timeline-disable-filter.png
     :alt: timeline disable filter
     :screenshot:
     :::
@@ -216,7 +216,7 @@ When forming EQL queries, you can write a basic query to return a list of events
 
 The following image shows what matched ordered events look like in the Timeline table. Events that belong to the same sequence are matched together in groups and shaded red or blue. Matched events are also ordered from oldest to newest in each sequence.
 
-:::{image} ../../../images/security-correlation-tab-eql-query.png
+:::{image} /solutions/images/security-correlation-tab-eql-query.png
 :alt: a Timeline's correlation tab
 :screenshot:
 :::
@@ -265,10 +265,10 @@ You can use {{esql}} in Timeline by opening the **{{esql}}** tab. From there, yo
 ::::
 
 
-* Click the help icon (![ES|QL reference button](../../../images/security-esql-help-ref-button.png "title =20x20")) on the far right side of the query editor to open the in-product reference documentation for all {{esql}} commands and functions.
+* Click the help icon (![ES|QL reference button](/solutions/images/security-esql-help-ref-button.png "title =20x20")) on the far right side of the query editor to open the in-product reference documentation for all {{esql}} commands and functions.
 * Visualize query results using [Discover](/explore-analyze/discover.md) functionality.
 
-:::{image} ../../../images/security-esql-tab.png
+:::{image} /solutions/images/security-esql-tab.png
 :alt: Example of the ES|QL tab in Timeline
 :screenshot:
 :::

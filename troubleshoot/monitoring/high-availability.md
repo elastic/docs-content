@@ -9,11 +9,11 @@ mapped_pages:
 
 % TODO: Edit edit edit
 
-You created a new {{ech}} deployment that uses three availability zones and index replicas, because you want to use the [cluster for production](/deploy-manage/production-guidance/plan-for-production-elastic-cloud.md#ec-ha). It’s a mission-critical deployment and you need it to be able to handle user requests at all times. Your cluster has been up and running for some time and it seems to handle its workload well. But is this cluster really highly available, given its current workload?
+You created a new {{ech}} deployment that uses three availability zones and index replicas, because you want to use the [cluster for production](/deploy-manage/production-guidance/availability-and-resilience/resilience-in-ech.md). It’s a mission-critical deployment and you need it to be able to handle user requests at all times. Your cluster has been up and running for some time and it seems to handle its workload well. But is this cluster really highly available, given its current workload?
 
 To answer this question, let’s take a look at CPU usage in the **Cluster Performance Metrics** section in the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body):
 
-:::{image} /images/cloud-metrics-cpu.png
+:::{image} /troubleshoot/images/cloud-metrics-cpu.png
 :alt: CPU usage over time
 :::
 
@@ -24,5 +24,5 @@ This CPU usage graph indicates that your cluster is load-balancing between the n
 Even if your cluster is performing well, you still need to make sure that there is sufficient spare capacity to deal with the outage of an entire availability zone. For this cluster to remain highly available at all times, you either need to increase its size or reduce its workload.
 
 :::{important}
- If you’re using Elastic Cloud Hosted, then you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, real-time issue detection and resolution paths. For more information, refer to [Monitor with AutoOps](/deploy-manage/monitor/autoops.md).
+ If you’re using Elastic Cloud Hosted, then you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, and real-time issue detection with resolution paths. For more information, refer to [Monitor with AutoOps](/deploy-manage/monitor/autoops.md).
 :::

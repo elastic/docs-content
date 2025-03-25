@@ -19,7 +19,7 @@ Shared exception lists allow you to group exceptions together and then apply the
 % ::::
 
 
-:::{image} ../../../images/security-rule-exceptions-page.png
+:::{image} /solutions/images/security-rule-exceptions-page.png
 :alt: Shared Exception Lists page
 :screenshot:
 :::
@@ -109,7 +109,7 @@ Apply shared exception lists to rules:
     2. Scroll down the page, and then select the **Rule exceptions** tab.
     3. Navigate to the exception items that are included in the shared exception list. Click the **Affects shared list** link to view the associated shared exception lists.
 
-        :::{image} ../../../images/security-associated-shared-exception-list.png
+        :::{image} /solutions/images/security-associated-shared-exception-list.png
         :alt: Associated shared exceptions
         :screenshot:
         :::
@@ -128,7 +128,7 @@ The Shared Exception Lists page displays each shared exception list on an indivi
 
 To view the details of an exception item within a shared exception list, expand a row.
 
-:::{image} ../../../images/security-view-filter-shared-exception.png
+:::{image} /solutions/images/security-view-filter-shared-exception.png
 :alt: Associated shared exceptions
 :screenshot:
 :::
@@ -160,7 +160,7 @@ To export or delete an exception list, select the required action button on the 
 * If an exception list is linked to any rules, you’ll get a warning asking you to confirm the deletion.
 * If an exception list contains expired exceptions, you can choose whether to include them in the exported file.
 
-:::{image} ../../../images/security-actions-exception-list.png
+:::{image} /solutions/images/security-actions-exception-list.png
 :alt: Detail of Exception lists table with export and delete buttons highlighted
 :screenshot:
 :::

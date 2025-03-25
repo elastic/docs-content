@@ -18,40 +18,14 @@ toc:
                   - file: deploy/elastic-cloud/google-cloud-platform-marketplace.md                  
                   - file: deploy/elastic-cloud/heroku.md
                     children:
-                      - file: deploy/elastic-cloud/ech-getting-started-installing.md
+                      - file: deploy/elastic-cloud/heroku-getting-started-installing.md
                         children:
-                          - file: deploy/elastic-cloud/ech-getting-started-installing-version.md
-                          - file: deploy/elastic-cloud/ech-getting-started-removing.md
-                      - file: deploy/elastic-cloud/ech-migrating.md
-                      - file: deploy/elastic-cloud/ech-getting-started-accessing.md
-                        children:
-                          - file: deploy/elastic-cloud/ech-access-kibana.md
-                      - file: deploy/elastic-cloud/ech-working-with-elasticsearch.md
-                      - file: deploy/elastic-cloud/ech-api-console.md
-                      - file: deploy/elastic-cloud/ech-getting-started-next-steps.md
-                      - file: deploy/elastic-cloud/ech-migrate-data2.md
-                        children:
-                          - file: deploy/elastic-cloud/ech-migrate-data-internal.md
-                      - file: deploy/elastic-cloud/ech-about.md
-                        children:
-                          - file: deploy/elastic-cloud/ech-licensing.md
-                          - file: deploy/elastic-cloud/ech-version-policy.md
-                          - file: deploy/elastic-cloud/ech-reference-hardware.md
-                            children:
-                              - file: deploy/elastic-cloud/ech-gcp-instance-configuration.md
-                              - file: deploy/elastic-cloud/ech-default-gcp-configurations.md
-                              - file: deploy/elastic-cloud/ech-aws-instance-configuration.md
-                              - file: deploy/elastic-cloud/ech-default-aws-configurations.md
-                              - file: deploy/elastic-cloud/ech-azure-instance-configuration.md
-                              - file: deploy/elastic-cloud/ech-default-azure-configurations.md
-                          - file: deploy/elastic-cloud/ech-reference-regions.md
-                          - file: deploy/elastic-cloud/ech-service-status.md
-                            children:
-                              - file: deploy/elastic-cloud/echsubscribe_to_individual_regionscomponents.md
-                              - file: deploy/elastic-cloud/echservice_status_api.md
-                          - file: deploy/elastic-cloud/ech-get-help.md
-                          - file: deploy/elastic-cloud/ech-restrictions.md
-                          - file: deploy/elastic-cloud/ech-whats-new.md
+                          - file: deploy/elastic-cloud/heroku-getting-started-removing.md
+                      - file: deploy/elastic-cloud/heroku-getting-started-accessing.md
+                      - file: deploy/elastic-cloud/heroku-working-with-elasticsearch.md
+                      - file: deploy/elastic-cloud/heroku-migrating.md
+                      - file: deploy/elastic-cloud/heroku-reference-hardware.md
+                      - file: deploy/elastic-cloud/heroku-reference-regions.md
           - file: deploy/elastic-cloud/serverless.md
             children:
               - file: deploy/elastic-cloud/differences-from-other-elasticsearch-offerings.md
@@ -344,6 +318,7 @@ toc:
           - file: distributed-architecture/shard-allocation-relocation-recovery/index-level-shard-allocation.md
             children:
               - file: distributed-architecture/shard-allocation-relocation-recovery/delaying-allocation-when-node-leaves.md
+      - file: distributed-architecture/shard-request-cache.md
       - file: distributed-architecture/discovery-cluster-formation.md
         children:
           - file: distributed-architecture/discovery-cluster-formation/discovery-hosts-providers.md
@@ -355,23 +330,29 @@ toc:
       - file: distributed-architecture/kibana-tasks-management.md
   - file: production-guidance.md
     children:
-      - file: production-guidance/getting-ready-for-production-elasticsearch.md
+      - file: production-guidance/elasticsearch-in-production-environments.md
+        children:
+          - file: production-guidance/availability-and-resilience.md
+            children:
+              - file: production-guidance/availability-and-resilience/resilience-in-small-clusters.md
+              - file: production-guidance/availability-and-resilience/resilience-in-larger-clusters.md
+              - file: production-guidance/availability-and-resilience/resilience-in-ech.md
+          - file: production-guidance/scaling-considerations.md
+          - file: production-guidance/optimize-performance.md
+            children:
+              - file: production-guidance/general-recommendations.md
+              - file: production-guidance/optimize-performance/indexing-speed.md
+              - file: production-guidance/optimize-performance/search-speed.md
+              - file: production-guidance/optimize-performance/approximate-knn-search.md
+              - file: production-guidance/optimize-performance/disk-usage.md
+              - file: production-guidance/optimize-performance/size-shards.md
       - file: production-guidance/kibana-in-production-environments.md
-      - file: production-guidance/plan-for-production-elastic-cloud.md
-      - file: production-guidance/availability-and-resilience.md
         children:
-          - file: production-guidance/availability-and-resilience/resilience-in-small-clusters.md
-          - file: production-guidance/availability-and-resilience/resilience-in-larger-clusters.md
-      - file: production-guidance/optimize-performance.md
-        children:
-          - file: production-guidance/optimize-performance/indexing-speed.md
-          - file: production-guidance/optimize-performance/search-speed.md
-          - file: production-guidance/optimize-performance/approximate-knn-search.md
-          - file: production-guidance/optimize-performance/disk-usage.md
-          - file: production-guidance/optimize-performance/size-shards.md
-      - file: production-guidance/kibana-task-manager-scaling-considerations.md
-      - file: production-guidance/kibana-alerting-production-considerations.md
-      - file: production-guidance/general-recommendations.md
+          - file: production-guidance/kibana-load-balance-traffic.md
+          - file: production-guidance/kibana-configure-memory.md
+          - file: production-guidance/kibana-task-manager-scaling-considerations.md
+          - file: production-guidance/kibana-alerting-production-considerations.md
+          - file: production-guidance/kibana-reporting-production-considerations.md
   - file: reference-architectures.md
     children:
       - file: reference-architectures/hotfrozen-high-availability.md
@@ -529,6 +510,7 @@ toc:
       - file: security/secure-clients-integrations.md
         children:
           - file: security/httprest-clients-security.md
+      - file: security/limitations.md
   - file: users-roles.md
     children:
       - file: users-roles/cloud-organization.md
@@ -711,6 +693,7 @@ toc:
         children:
           - file: monitor/access-performance-metrics-on-elastic-cloud.md
           - file: monitor/ec-memory-pressure.md
+      - file: monitor/kibana-task-manager-health-monitoring.md
       - file: monitor/orchestrators.md
         children:
           - file: monitor/orchestrators/eck-metrics-configuration.md
@@ -723,7 +706,6 @@ toc:
               - file: monitor/orchestrators/ece-monitoring-ece-access.md
               - file: monitor/orchestrators/ece-proxy-log-fields.md
               - file: monitor/orchestrators/ece-monitoring-ece-set-retention.md
-      - file: monitor/kibana-task-manager-health-monitoring.md
       - file: monitor/logging-configuration.md
         children:
           - file: monitor/logging-configuration/elasticsearch-log4j-configuration-self-managed.md
@@ -731,8 +713,10 @@ toc:
           - file: monitor/logging-configuration/elasticsearch-deprecation-logs.md
           - file: monitor/logging-configuration/kibana-logging.md
             children:
-              - file: monitor/logging-configuration/kibana-log-settings-examples.md
-              - file: monitor/logging-configuration/kibana-logging-cli-configuration.md
+              - file: monitor/logging-configuration/kibana-log-levels.md
+              - file: monitor/logging-configuration/kib-advanced-logging.md
+                children:
+                  - file: monitor/logging-configuration/kibana-log-settings-examples.md
   - file: kibana-reporting-configuration.md
   - file: cloud-organization.md
     children:
@@ -766,7 +750,6 @@ toc:
         children:
           - file: maintenance/ece/deployments-maintenance.md
             children:
-              - file: maintenance/ece/start-stop-routing-requests.md
               - file: maintenance/ece/pause-instance.md
           - file: maintenance/ece/maintenance-activities.md
             children:
@@ -782,6 +765,7 @@ toc:
           - file: maintenance/start-stop-services/restart-cloud-hosted-deployment.md
           - file: maintenance/start-stop-services/restart-an-ece-deployment.md
           - file: maintenance/start-stop-services/full-cluster-restart-rolling-restart-procedures.md
+      - file: maintenance/start-stop-routing-requests.md
       - file: maintenance/add-and-remove-elasticsearch-nodes.md
   - file: upgrade.md
     children:
@@ -808,11 +792,9 @@ toc:
                   - file: upgrade/deployment-or-cluster/reading-indices-from-older-elasticsearch-versions.md
               - file: upgrade/deployment-or-cluster/kibana.md
                 children:
+                  - file: upgrade/deployment-or-cluster/saved-object-migrations.md
                   - file: upgrade/deployment-or-cluster/kibana-roll-back.md    
-      - file: upgrade/ingest-components.md
-      - file: upgrade/internal-upgrade-processes.md
-        children:
-          - file: upgrade/internal-upgrade-processes/saved-object-migrations.md
+      - file: upgrade/ingest-components.md        
   - file: uninstall.md
     children:
       - file: uninstall/uninstall-elastic-cloud-enterprise.md

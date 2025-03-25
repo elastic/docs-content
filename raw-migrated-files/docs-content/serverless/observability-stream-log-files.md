@@ -9,12 +9,12 @@ The **Admin** role or higher is required to onboard log data. To learn more, ref
 
 
 <div style="display:none">
-:::{image} ../../../images/serverless-logs-stream-logs-api-key-beats.png
+:::{image} /raw-migrated-files/images/serverless-logs-stream-logs-api-key-beats.png
 :alt: logs stream logs api key beats
 :screenshot:
 :::
 
-:::{image} ../../../images/serverless-log-copy-es-endpoint.png
+:::{image} /raw-migrated-files/images/serverless-log-copy-es-endpoint.png
 :alt: Copy a project's Elasticsearch endpoint
 :screenshot:
 :::
@@ -255,7 +255,7 @@ You need to set the values for the following fields:
     3. Click **View** next to *Endpoints*.
     4. Copy the *Elasticsearch endpoint*.
 
-    :::{image} ../../../images/serverless-log-copy-es-endpoint.png
+    :::{image} /raw-migrated-files/images/serverless-log-copy-es-endpoint.png
     :alt: Copy a project's Elasticsearch endpoint
     :screenshot:
     :::
@@ -295,7 +295,7 @@ You need to set the values for the following fields:
 
     3. You *must* set the API key to configure {{beats}}. Immediately after the API key is generated and while it is still being displayed, click the **Encoded** button next to the API key and select **Beats** from the list in the tooltip. Base64 encoded API keys are not currently supported in this configuration.
 
-        :::{image} ../../../images/serverless-logs-stream-logs-api-key-beats.png
+        :::{image} /raw-migrated-files/images/serverless-logs-stream-logs-api-key-beats.png
         :alt: logs stream logs api key beats
         :screenshot:
         :::
@@ -466,7 +466,7 @@ If you’re not seeing your log files in your project, verify the following in t
 * The path to your logs file under `paths` is correct.
 * Your API key is in `<id>:<key>` format. If not, your API key may be in an unsupported format, and you’ll need to create an API key in **Beats** format.
 
-If you’re still running into issues, refer to [{{agent}} troubleshooting](../../../troubleshoot/ingest/fleet/common-problems.md) and [Configure standalone Elastic Agents](/reference/ingestion-tools/fleet/configure-standalone-elastic-agents.md).
+If you’re still running into issues, refer to [{{agent}} troubleshooting](../../../troubleshoot/ingest/fleet/common-problems.md) and [Configure standalone Elastic Agents](/reference/fleet/configure-standalone-elastic-agents.md).
 
 
 ## Next steps [observability-stream-log-files-next-steps]
