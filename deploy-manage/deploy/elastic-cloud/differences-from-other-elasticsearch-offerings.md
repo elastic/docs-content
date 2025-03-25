@@ -15,18 +15,18 @@ This guide compares Elastic Cloud Hosted deployments with Elastic Cloud Serverle
 
 Elastic Cloud Serverless takes a fundamentally different approach to running the Elastic Stack compared to Elastic Cloud Hosted:
 
-| Aspect | Elastic Cloud Hosted | Elastic Cloud Serverless |
+| **Aspect** | Elastic Cloud Hosted | Elastic Cloud Serverless |
 |--------|----------------------|--------------------------|
-| Management model | Self-service infrastructure | Fully managed service |
-| Project organization | Single deployments with multiple capabilities | Separate projects for Elasticsearch, Observability, and Security |
-| Scaling | Manual or automated with configuration | Fully automated |
-| Infrastructure decisions | User manages capacity | Automatically managed by Elastic |
-| Pricing model | Based on provisioned resources | Based on actual usage |
-| Cloud providers | AWS, GCP, Azure | AWS, Azure (in preview) |
-| Upgrades | User-controlled timing | Automatically performed by Elastic |
-| User management | Elastic Cloud-managed and native Kibana users | Elastic Cloud-managed users only |
-| Backups | User-managed with Snapshot & Restore | Automatically backed up by Elastic |
-| Solutions | Full Elastic Stack per deployment | Single solution per project |
+| **Management model** | Self-service infrastructure | Fully managed service |
+| **Project organization** | Single deployments with multiple capabilities | Separate projects for Elasticsearch, Observability, and Security |
+| **Scaling** | Manual or automated with configuration | Fully automated |
+| **Infrastructure decisions** | User manages capacity | Automatically managed by Elastic |
+| **Pricing model** | Based on provisioned resources | Based on actual usage |
+| **Cloud providers** | AWS, GCP, Azure | AWS, Azure (in preview) |
+| **Upgrades** | User-controlled timing | Automatically performed by Elastic |
+| **User management** | Elastic Cloud-managed and native Kibana users | Elastic Cloud-managed users only |
+| **Backups** | User-managed with Snapshot & Restore | Automatically backed up by Elastic |
+| **Solutions** | Full Elastic Stack per deployment | Single solution per project |
 
 In Serverless, Elastic automatically manages:
 * Cluster scaling and optimization
@@ -45,94 +45,94 @@ $$$elasticsearch-differences-serverless-feature-planned$$$
 
 These fundamental platform capabilities apply to both deployment models:
 
-| Feature  | Elastic Cloud Hosted | Serverless projects| Notes  |
+| **Feature**  | Elastic Cloud Hosted | Serverless projects| Notes  |
 |----------|----------------------|--------------------|--------|
-| Audit logging | ✅ | **Planned** | [View roadmap](https://www.elastic.co/cloud/serverless/roadmap) |
-| Authentication realms | ✅ | ✅ | Through Elastic Cloud only in Serverless |
-| BYO-Key for Encryption at Rest | ✅ | **Planned** | [View roadmap](https://www.elastic.co/cloud/serverless/roadmap) |
-| Cloud provider support | AWS, GCP, Azure | AWS, Azure (in preview), GCP (planned) | Azure: [Preview details](https://www.elastic.co/blog/elastic-cloud-serverless-microsoft-azure-tech-preview) |
-| Cluster scaling | Manual with autoscaling option | Managed | Automatic scaling eliminates capacity planning - [Learn more](https://www.elastic.co/blog/elastic-serverless-architecture) |
-| Custom plugins and bundles | ✅ | ❌ | Not supported in Serverless |
-| Custom roles | ✅ | ✅ | Fully supported in both |
-| Deployment health monitoring | AutoOps or monitoring cluster | Managed by Elastic | No monitoring cluster required in Serverless |
-| Deployment model | Single deployments with multiple solutions | Separate projects for specific use cases | Fundamental architectural difference - [Learn more](https://www.elastic.co/blog/elastic-serverless-architecture) |
-| Deployment monitoring | AutoOps or monitoring cluster | Managed | Monitoring is handled by Elastic |
-| Hardware configuration | Limited control | Managed | Hardware choices are managed by Elastic |
-| High availability | ✅ | ✅ | Automatic resilience |
-| Node management | User-controlled | Managed | No node configuration access by design |
-| Private Link | ✅ | **Planned** | [View roadmap](https://www.elastic.co/cloud/serverless/roadmap) |
-| Snapshot/restore | ✅ | **Planned** | User-initiated snapshots are planned - [View roadmap](https://www.elastic.co/cloud/serverless/roadmap) |
-| Traffic filtering and VPCs | ✅ | **Planned** | [View roadmap](https://www.elastic.co/cloud/serverless/roadmap) |
+| **Audit logging** | ✅ | **Planned** | [View roadmap](https://www.elastic.co/cloud/serverless/roadmap) |
+| **Authentication realms** | ✅ | ✅ | Through Elastic Cloud only in Serverless |
+| **BYO-Key for Encryption at Rest** | ✅ | **Planned** | [View roadmap](https://www.elastic.co/cloud/serverless/roadmap) |
+| **Cloud provider support** | AWS, GCP, Azure | AWS, Azure (in preview), GCP (planned) | Azure: [Preview details](https://www.elastic.co/blog/elastic-cloud-serverless-microsoft-azure-tech-preview) |
+| **Cluster scaling** | Manual with autoscaling option | Managed | Automatic scaling eliminates capacity planning - [Learn more](https://www.elastic.co/blog/elastic-serverless-architecture) |
+| **Custom plugins and bundles** | ✅ | ❌ | Not supported in Serverless |
+| **Custom roles** | ✅ | ✅ | Fully supported in both |
+| **Deployment health monitoring** | AutoOps or monitoring cluster | Managed by Elastic | No monitoring cluster required in Serverless |
+| **Deployment model** | Single deployments with multiple solutions | Separate projects for specific use cases | Fundamental architectural difference - [Learn more](https://www.elastic.co/blog/elastic-serverless-architecture) |
+| **Deployment monitoring** | AutoOps or monitoring cluster | Managed | Monitoring is handled by Elastic |
+| **Hardware configuration** | Limited control | Managed | Hardware choices are managed by Elastic |
+| **High availability** | ✅ | ✅ | Automatic resilience |
+| **Node management** | User-controlled | Managed | No node configuration access by design |
+| **Private Link** | ✅ | **Planned** | [View roadmap](https://www.elastic.co/cloud/serverless/roadmap) |
+| **Snapshot/restore** | ✅ | **Planned** | User-initiated snapshots are planned - [View roadmap](https://www.elastic.co/cloud/serverless/roadmap) |
+| **Traffic filtering and VPCs** | ✅ | **Planned** | [View roadmap](https://www.elastic.co/cloud/serverless/roadmap) |
 
 ### Elasticsearch
 
-| Feature | Elastic Cloud Hosted | Serverless Elasticsearch projects | Serverless notes |
+| **Feature** | Elastic Cloud Hosted | Serverless Elasticsearch projects | Serverless notes |
 |---------|----------------------|-----------------------------------|------------------|
-| Behavioral analytics | UI and APIs | ❌ | Not supported in Serverless |
-| Clone index API | ✅ | **Planned** | [View roadmap](https://www.elastic.co/cloud/serverless/roadmap) |
-| Cross-cluster replication | ✅ | **Planned** | Planned as cross-project replication - [View roadmap](https://www.elastic.co/cloud/serverless/roadmap) |
-| Cross-cluster search | ✅ | **Planned** | Planned as cross-project search - [View roadmap](https://www.elastic.co/cloud/serverless/roadmap) |
-| Data lifecycle management | ILM and data stream lifecycle | Data stream lifecycle only | No data tiers in Serverless |
-| Elastic connectors (for search) | Self-managed or hosted (discontinued in 9.0) | Self-managed only | Managed connectors not available |
-| Elasticsearch for Apache Hadoop | ✅ | ❌ | Not supported in Serverless |
-| Enterprise Search (App Search & Workplace Search) | ✅ (discontinued in 9.0) | ❌ | Not available in Serverless |
-| Kibana Alerts | ✅ | ✅ | |
-| Reindexing from remote | ✅ | **Planned** | [View roadmap](https://www.elastic.co/cloud/serverless/roadmap) |
-| Repository management | ✅ | Managed | Automatically managed by Elastic |
-| Scripted metric aggregations | ✅ | ❌ | Not supported in Serverless |
-| Search applications | UI and APIs | Maintenance mode (beta), API only | UI not available in Serverless |
-| Shard management | User-configurable | Managed by Elastic | No manual shard allocation in Serverless |
-| Watcher | ✅ | ❌ | Use Kibana Alerts instead |
-| Web crawler | Self-managed or hosted (discontinued in 9.0) | Self-managed only | Managed crawler not available |
+| **Behavioral analytics** | UI and APIs | ❌ | Not supported in Serverless |
+| **Clone index API** | ✅ | **Planned** | [View roadmap](https://www.elastic.co/cloud/serverless/roadmap) |
+| **Cross-cluster replication** | ✅ | **Planned** | Planned as cross-project replication - [View roadmap](https://www.elastic.co/cloud/serverless/roadmap) |
+| **Cross-cluster search** | ✅ | **Planned** | Planned as cross-project search - [View roadmap](https://www.elastic.co/cloud/serverless/roadmap) |
+| **Data lifecycle management** | ILM and data stream lifecycle | Data stream lifecycle only | No data tiers in Serverless |
+| **Elastic connectors (for search)** | Self-managed or hosted (discontinued in 9.0) | Self-managed only | Managed connectors not available |
+| **Elasticsearch for Apache Hadoop** | ✅ | ❌ | Not supported in Serverless |
+| **Enterprise Search (App Search & Workplace Search)** | ✅ (discontinued in 9.0) | ❌ | Not available in Serverless |
+| **Kibana Alerts** | ✅ | ✅ | |
+| **Reindexing from remote** | ✅ | **Planned** | [View roadmap](https://www.elastic.co/cloud/serverless/roadmap) |
+| **Repository management** | ✅ | Managed | Automatically managed by Elastic |
+| **Scripted metric aggregations** | ✅ | ❌ | Not supported in Serverless |
+| **Search applications** | UI and APIs | Maintenance mode (beta), API only | UI not available in Serverless |
+| **Shard management** | User-configurable | Managed by Elastic | No manual shard allocation in Serverless |
+| **Watcher** | ✅ | ❌ | Use Kibana Alerts instead |
+| **Web crawler** | Self-managed or hosted (discontinued in 9.0) | Self-managed only | Managed crawler not available |
 
 ### Observability
 
-| Feature | Elastic Cloud Hosted | Serverless Observability projects | Serverless notes |
+| **Feature** | Elastic Cloud Hosted | Serverless Observability projects | Serverless notes |
 |---------|----------------------|-----------------------------------|------------------|
-| Agent policies | ✅ | ✅ | |
-| APM Agent Central Configuration | ✅ | ❌ | Not currently available |
-| APM integration | ✅ | Limited | Limited to distributed tracing and infrastructure monitoring capabilities |
-| APM Tail-based sampling | ✅ | ❌ | Consider OpenTelemetry alternative |
-| Android agent/SDK instrumentation | ✅ | ❌ | Not currently available |
-| Custom ingest pipelines | ✅ | Limited | Some advanced processors not available |
-| Custom roles for Kibana Spaces | ✅ | **Planned** | [View roadmap](https://www.elastic.co/cloud/serverless/roadmap) |
-| Data stream lifecycle | ✅ | ✅ | Primary lifecycle management method in Serverless |
-| Fleet server | Self-hosted or hosted | ✅ | Fully managed by Elastic |
-| Index lifecycle management | ✅ | ❌ | Use data stream lifecycle instead |
-| iOS agent/SDK instrumentation | ✅ | ❌ | Not currently available |
-| Kibana Alerts | ✅ | ✅ | |
-| Logs management | ✅ | ✅ | |
-| Metrics monitoring | ✅ | ✅ | |
-| Real User Monitoring (RUM) | ✅ | **Planned** | [View roadmap](https://www.elastic.co/cloud/serverless/roadmap) |
-| Universal Profiling | ✅ | ❌ | Not currently available |
-| Uptime monitoring | ✅ | ✅ | |
-| Watcher | ✅ | ❌ | Use Kibana Alerts instead |
+| **Agent policies** | ✅ | ✅ | |
+| **APM Agent Central Configuration** | ✅ | ❌ | Not currently available |
+| **APM integration** | ✅ | Limited | Limited to distributed tracing and infrastructure monitoring capabilities |
+| **APM Tail-based sampling** | ✅ | ❌ | Consider OpenTelemetry alternative |
+| **Android agent/SDK instrumentation** | ✅ | ❌ | Not currently available |
+| **Custom ingest pipelines** | ✅ | Limited | Some advanced processors not available |
+| **Custom roles for Kibana Spaces** | ✅ | **Planned** | [View roadmap](https://www.elastic.co/cloud/serverless/roadmap) |
+| **Data stream lifecycle** | ✅ | ✅ | Primary lifecycle management method in Serverless |
+| **Fleet server** | Self-hosted or hosted | ✅ | Fully managed by Elastic |
+| **Index lifecycle management** | ✅ | ❌ | Use data stream lifecycle instead |
+| **iOS agent/SDK instrumentation** | ✅ | ❌ | Not currently available |
+| **Kibana Alerts** | ✅ | ✅ | |
+| **Logs management** | ✅ | ✅ | |
+| **Metrics monitoring** | ✅ | ✅ | |
+| **Real User Monitoring (RUM)** | ✅ | **Planned** | [View roadmap](https://www.elastic.co/cloud/serverless/roadmap) |
+| **Universal Profiling** | ✅ | ❌ | Not currently available |
+| **Uptime monitoring** | ✅ | ✅ | |
+| **Watcher** | ✅ | ❌ | Use Kibana Alerts instead |
 
 ### Security
 
-| Feature | Elastic Cloud Hosted | Serverless Security projects | Serverless notes |
+| **Feature** | Elastic Cloud Hosted | Serverless Security projects | Serverless notes |
 |---------|---------------------|------------------------------|------------------|
-| API keys | ✅ | ✅ | |
-| Defend for Containers integration | ✅ (being deprecated in 9.0) | ❌ | Not supported in Serverless architecture |
-| Endpoint security | ✅ | ✅ | |
-| Field and document level security | ✅ | ✅ | |
-| Kibana Alerts | ✅ | ✅ | |
-| Kibana navigation | Standard layout | Different layout | UI differences in Security projects |
-| LogsDB | Optional | ✅ | Enabled by default, cannot be disabled |
-| Observability Logs UI | ✅ | ❌ | Not available in Security projects |
-| Role-based access control | ✅ | Limited | Core RBAC functionality supported - [Learn more](https://www.elastic.co/guide/en/serverless/current/security-rbac.html) |
-| SIEM capabilities | ✅ | ✅ | Core functionality supported |
-| Watcher | ✅ | ❌ | Use Kibana Alerts instead |
+| **API keys** | ✅ | ✅ | |
+| **Defend for Containers integration** | ✅ (being deprecated in 9.0) | ❌ | Not supported in Serverless architecture |
+| **Endpoint security** | ✅ | ✅ | |
+| **Field and document level security** | ✅ | ✅ | |
+| **Kibana Alerts** | ✅ | ✅ | |
+| **Kibana navigation** | Standard layout | Different layout | UI differences in Security projects |
+| **LogsDB** | Optional | ✅ | Enabled by default, cannot be disabled |
+| **Observability Logs UI** | ✅ | ❌ | Not available in Security projects |
+| **Role-based access control** | ✅ | Limited | Core RBAC functionality supported - [Learn more](https://www.elastic.co/guide/en/serverless/current/security-rbac.html) |
+| **SIEM capabilities** | ✅ | ✅ | Core functionality supported |
+| **Watcher** | ✅ | ❌ | Use Kibana Alerts instead |
 
 ## Elasticsearch index sizing guidelines [elasticsearch-differences-serverless-index-size]
 
 To ensure optimal performance in Serverless Elasticsearch projects, follow these sizing recommendations:
 
-| Use case | Maximum index size | Project configuration |
+| **Use case** | Maximum index size | Project configuration |
 | --- | --- | --- |
-| Vector search | 150GB | Vector optimized |
-| General search (non data-stream) | 300GB | General purpose |
-| Other uses (non data-stream) | 600GB | General purpose |
+| **Vector search** | 150GB | Vector optimized |
+| **General search (non data-stream)** | 300GB | General purpose |
+| **Other uses (non data-stream)** | 600GB | General purpose |
 
 For large datasets that exceed the recommended maximum size, consider splitting your data across smaller indices and using an alias to search them collectively.
 
