@@ -8,9 +8,7 @@ navigation_title: "Search and filter with ES|QL"
 This tutorial presents examples in {{esql}} syntax. Refer to [the Query DSL version](querydsl-full-text-filter-tutorial.md) for the equivalent examples in Query DSL syntax.
 :::
 
-This is a hands-on introduction to the basics of [full-text search](full-text.md) with Elasticsearch, also known as *lexical search*, and how to filter search results based on exact criteria. In this scenario, we're implementing a search function for a cooking blog. The blog contains recipes with various attributes including textual content, categorical data, and numerical ratings.
-
-This tutorial covers full-text search and [semantic search](#bonus-semantic-search-with-esql).
+This is a hands-on introduction to the basics of full-text search and semantic search. In this scenario, we're implementing search for a cooking blog. The blog contains recipes with various attributes including textual content, categorical data, and numerical ratings.
 
 ## Requirements
 
