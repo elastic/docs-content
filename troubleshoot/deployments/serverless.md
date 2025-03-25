@@ -1,5 +1,7 @@
 ---
 navigation_title: "Serverless"
+applies_to:
+  serverless: all
 ---
 
 # Troubleshoot {{serverless-full}}
