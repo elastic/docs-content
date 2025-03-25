@@ -1,6 +1,7 @@
 ---
 navigation_title: "Elastic Serverless Forwarder"
 applies_to:
+  stack: all
   serverless: all
 mapped_pages:
   - https://www.elastic.co/guide/en/esf/current/aws-serverless-troubleshooting.html
