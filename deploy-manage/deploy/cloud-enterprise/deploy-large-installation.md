@@ -21,7 +21,7 @@ This type of installation is recommended for deployments with significant overal
 * 3 hosts with 16 GB RAM each for proxies
 * 3 availability zones
 
-:::{image} ../../../images/cloud-enterprise-ece-pb-9.png
+:::{image} /deploy-manage/images/cloud-enterprise-ece-pb-9.png
 :alt: A large installation with nine to twelve hosts across three availability zones
 :::
 

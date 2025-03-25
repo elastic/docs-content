@@ -12,7 +12,7 @@ applies_to:
 
 The Elastic AI Assistant utilizes generative AI to bolster your cybersecurity operations team. It allows users to interact with {{elastic-sec}} for tasks such as alert investigation, incident response, and query generation or conversion using natural language and much more.
 
-:::{image} ../../../images/security-assistant-basic-view.png
+:::{image} /solutions/images/security-assistant-basic-view.png
 :alt: Image of AI Assistant chat window
 :screenshot:
 :::
@@ -61,7 +61,7 @@ While AI Assistant is compatible with many different models, refer to the [Large
 
 To open AI Assistant, select the **AI Assistant** button in the top toolbar from anywhere in the {{security-app}}. You can also use the keyboard shortcut **Cmd + ;** (or **Ctrl + ;** on Windows).
 
-:::{image} ../../../images/security-ai-assistant-button.png
+:::{image} /solutions/images/security-ai-assistant-button.png
 :alt: AI Assistant button
 :screenshot:
 :::
@@ -87,24 +87,24 @@ Use these features to adjust and act on your conversations with AI Assistant:
 * (Optional) Select a *System Prompt* at the beginning of a conversation by using the **Select Prompt** menu. System Prompts provide context to the model, informing its response. To create a System Prompt, open the System Prompts dropdown menu and click **+ Add new System Prompt…​**.
 * (Optional) Select a *Quick Prompt* at the bottom of the chat window to get help writing a prompt for a specific purpose, such as summarizing an alert or converting a query from a legacy SIEM to {{elastic-sec}}.
 
-    :::{image} ../../../images/security-quick-prompts.png
+    :::{image} /solutions/images/security-quick-prompts.png
     :alt: Quick Prompts highlighted below a conversation
     :screenshot:
     :::
 
 * System Prompts and Quick Prompts can also be configured from the corresponding tabs on the **Security AI settings** page.
 
-    :::{image} ../../../images/security-assistant-settings-system-prompts.png
+    :::{image} /solutions/images/security-assistant-settings-system-prompts.png
     :alt: The Security AI settings menu's System Prompts tab
     :::
 
 * Quick Prompt availability varies based on context—for example, the **Alert summarization** Quick Prompt appears when you open AI Assistant while viewing an alert. To customize existing Quick Prompts and create new ones, click **Add Quick Prompt**.
 * In an active conversation, you can use the inline actions that appear on messages to incorporate AI Assistant’s responses into your workflows:
 
-    * **Add note to timeline** (![Add note icon](../../../images/security-icon-add-note.png "title =20x20")): Add the selected text to your currently active Timeline as a note.
-    * **Add to existing case** (![Add to case icon](../../../images/security-icon-add-to-case.png "title =20x20")): Add a comment to an existing case using the selected text.
-    * **Copy to clipboard** (![Copy to clipboard icon](../../../images/security-icon-copy.png "title =20x20")): Copy the text to clipboard to paste elsewhere. Also helpful for resubmitting a previous prompt.
-    * **Add to timeline** (![Add to timeline icon](../../../images/security-icon-add-to-timeline.png "title =20x20")): Add a filter or query to Timeline using the text. This button appears for particular queries in AI Assistant’s responses.
+    * **Add note to timeline** (![Add note icon](/solutions/images/security-icon-add-note.png "title =20x20")): Add the selected text to your currently active Timeline as a note.
+    * **Add to existing case** (![Add to case icon](/solutions/images/security-icon-add-to-case.png "title =20x20")): Add a comment to an existing case using the selected text.
+    * **Copy to clipboard** (![Copy to clipboard icon](/solutions/images/security-icon-copy.png "title =20x20")): Copy the text to clipboard to paste elsewhere. Also helpful for resubmitting a previous prompt.
+    * **Add to timeline** (![Add to timeline icon](/solutions/images/security-icon-add-to-timeline.png "title =20x20")): Add a filter or query to Timeline using the text. This button appears for particular queries in AI Assistant’s responses.
 
 
 Be sure to specify which language you’d like AI Assistant to use when writing a query. For example: "Can you generate an Event Query Language query to find four failed logins followed by a successful login?"
@@ -140,11 +140,11 @@ To modify Anonymization settings, you need the **Elastic AI Assistant: All** pri
 The **Anonymization** tab of the Security AI settings menu allows you to define default data anonymization behavior for events you send to AI Assistant. Fields with **Allowed*** toggled on are included in events provided to AI Assistant. ***Allowed*** fields with ***Anonymized** set to **Yes** are included, but with their values obfuscated.
 
 ::::{note}
-You can access anonymization settings directly from the **Attack Discovery** page by clicking the settings (![Settings icon](../../../images/security-icon-settings.png "title =20x20")) button next to the model selection dropdown menu.
+You can access anonymization settings directly from the **Attack Discovery** page by clicking the settings (![Settings icon](/solutions/images/security-icon-settings.png "title =20x20")) button next to the model selection dropdown menu.
 ::::
 
 
-:::{image} ../../../images/security-assistant-anonymization-menu.png
+:::{image} /solutions/images/security-assistant-anonymization-menu.png
 :alt: AI Assistant's settings menu
 :screenshot:
 :::

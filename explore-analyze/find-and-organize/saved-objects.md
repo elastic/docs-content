@@ -32,7 +32,7 @@ Edit, import, export, and copy your saved objects. These objects include dashboa
 
 You can find the **Saved Objects** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
-:::{image} ../../images/kibana-management-saved-objects.png
+:::{image} /explore-analyze/images/kibana-management-saved-objects.png
 :alt: Saved Objects
 :screenshot:
 :::
@@ -49,7 +49,7 @@ Granting access to `Saved Objects Management` authorizes users to manage all sav
 ## View and delete [saved-objects-view-and-delete]
 
 * To view and edit a saved object in its associated application, click the object title.
-* To show objects that use this object, so you know the impact of deleting it, click the actions icon ![More actions](../../images/serverless-boxesHorizontal.svg "") and then select **Relationships**.
+* To show objects that use this object, so you know the impact of deleting it, click the actions icon ![More actions](/explore-analyze/images/serverless-boxesHorizontal.svg "") and then select **Relationships**.
 * To delete one or more objects, select their checkboxes, and then click **Delete**.
 
 
@@ -92,7 +92,7 @@ The [`savedObjects.maxImportExportSize`](kibana://reference/configuration-refere
 
 Copy saved objects and their related objects between spaces.
 
-1. Click the actions icon ![Actions](../../images/serverless-boxesHorizontal.svg "").
+1. Click the actions icon ![Actions](/explore-analyze/images/serverless-boxesHorizontal.svg "").
 2. Click **Copy to spaces**.
 3. Specify whether to automatically overwrite any objects that already exist in the target spaces, or resolve them on a per-object basis.
 4. Select the spaces in which to copy the object.
@@ -127,7 +127,7 @@ We have made several enhancements to minimize the impact, and this document desc
 
 ### Impact upon upgrading to version 8.x or later [saved-object-ids-impact-upon-upgrading]
 
-Every time you upgrade {{kib}}, [saved objects are migrated to a new format](/deploy-manage/upgrade/internal-upgrade-processes/saved-object-migrations.md). When you first upgrade to version 8.x or later, this migration process will start enforcing globally unique saved object IDs.
+Every time you upgrade {{kib}}, [saved objects are migrated to a new format](/deploy-manage/upgrade/deployment-or-cluster/saved-object-migrations.md). When you first upgrade to version 8.x or later, this migration process will start enforcing globally unique saved object IDs.
 
 In practical terms, **any old saved objects that exist in a custom space will have their IDs changed to a new UUID**, while saved objects in the Default space will be unchanged. This is how we can ensure that every saved object ID is unique. For example: if you had dashboard "123" in the Default space and dashboard "123" in Another space, after the upgrade you would have dashboard "123" in the Default space and dashboard "456" in Another space.
 

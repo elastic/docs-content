@@ -24,7 +24,7 @@ The APM Server receives performance data from your APM agents, validates and pro
 
 Fleet is a web-based UI in {{kib}} that is used to centrally manage {{agent}}s. In this deployment model, use {{agent}} to spin up APM Server instances that can be centrally-managed in a custom-curated user interface.
 
-:::{image} ../../../images/observability-fm-ov.png
+:::{image} /solutions/images/observability-fm-ov.png
 :alt: APM Server fleet overview
 :::
 
@@ -55,7 +55,7 @@ Fleet-managed APM Server does *not* support all the outputs that are supported b
 
 Install, configure, and run the APM Server binary wherever you need it.
 
-:::{image} ../../../images/observability-bin-ov.png
+:::{image} /solutions/images/observability-bin-ov.png
 :alt: APM Server binary overview
 :::
 
@@ -88,7 +88,7 @@ Install, configure, and run the APM Server binary wherever you need it.
 
 This decision tree highlights key factors to help you make an informed decision about implementing Elastic APM. It provides practical guidance and is not intended to serve as a comprehensive reference of all possible implementations and capabilities.
 
-:::{image} ../../../images/observability-apm-help-me-decide.svg
+:::{image} /solutions/images/observability-apm-help-me-decide.svg
 :alt: APM decision tree
 :screenshot:
 :::

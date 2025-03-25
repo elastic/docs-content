@@ -12,7 +12,7 @@ applies_to:
 
 The Users page provides a comprehensive overview of user data to help you understand authentication and user behavior within your environment. Key performance indicator (KPI) charts, data tables, and interactive widgets let you view specific data and drill down for deeper insights.
 
-:::{image} ../../../images/security-users-page.png
+:::{image} /solutions/images/security-users-page.png
 :alt: User's page
 :screenshot:
 :::
@@ -54,7 +54,7 @@ The user details page includes the following sections:
 * **Alert metrics**: The total number of alerts by severity, rule, and status (`Open`, `Acknowledged`, or `Closed`).
 * **Data tables**: The same data tables as on the main Users page, except with values for the selected user instead of for all users.
 
-:::{image} ../../../images/security-user-details-pg.png
+:::{image} /solutions/images/security-user-details-pg.png
 :alt: User details page
 :screenshot:
 :::
@@ -78,7 +78,7 @@ The user details flyout includes the following sections:
 * [Insights](/solutions/security/explore/users-page.md#user-insights), which displays misconfiguration findings for the user.
 * [Observed data](/solutions/security/explore/users-page.md#user-observed-data), which displays user details.
 
-:::{image} ../../../images/security-user-details-flyout.png
+:::{image} /solutions/images/security-user-details-flyout.png
 :alt: User details flyout
 :screenshot:
 :::
@@ -105,7 +105,7 @@ To expand the **User risk summary** section, click **View risk contributions**. 
 
 If more than 10 alerts contributed to the risk scoring calculation, the remaining alerts' aggregate contribution score is displayed below the **Alerts** table.
 
-:::{image} ../../../images/security-user-risk-inputs.png
+:::{image} /solutions/images/security-user-risk-inputs.png
 :alt: User risk inputs
 :screenshot:
 :::
@@ -115,7 +115,7 @@ If more than 10 alerts contributed to the risk scoring calculation, the remainin
 
 The **Asset Criticality** section displays the selected user’s [asset criticality level](/solutions/security/advanced-entity-analytics/asset-criticality.md). Asset criticality contributes to the overall [user risk score](/solutions/security/advanced-entity-analytics/entity-risk-scoring.md). The criticality level defines how impactful the user is when calculating the risk score.
 
-:::{image} ../../../images/security-user-asset-criticality.png
+:::{image} /solutions/images/security-user-asset-criticality.png
 :alt: Asset criticality
 :screenshot:
 :::
@@ -132,7 +132,7 @@ The **Insights** section displays [Misconfiguration Findings](/solutions/securit
 
 This section displays details such as the user ID, when the user was first and last seen, and the associated IP addresses and operating system.
 
-:::{image} ../../../images/security-user-observed-data.png
+:::{image} /solutions/images/security-user-observed-data.png
 :alt: User observed data
 :screenshot:
 :::

@@ -34,7 +34,7 @@ To create an anomaly detection rule:
 4. Specify a name and optional tags for the rule. You can use these tags later to filter alerts.
 5. Verify that the correct job is selected and configure the alert details:
 
-    :::{image} ../../../images/serverless-anomaly-detection-alert.png
+    :::{image} /solutions/images/serverless-anomaly-detection-alert.png
     :alt: Anomaly detection alert settings
     :screenshot:
     :::
@@ -113,14 +113,14 @@ After you select a connector, you must set the action frequency. You can choose 
 
 Alternatively, you can set the action frequency to **For each alert** and specify the conditions each alert must meet for the action to run. For example, you can send an email only when alert status changes to critical.
 
-:::{image} ../../../images/serverless-alert-action-frequency.png
+:::{image} /solutions/images/serverless-alert-action-frequency.png
 :alt: Configure when a rule is triggered
 :screenshot:
 :::
 
 With the **Run when** menu you can choose if an action runs when the the anomaly score matched the condition or was recovered. For example, you can add a corresponding action for each state to ensure you are alerted when the anomaly score was matched and also when it recovers.
 
-:::{image} ../../../images/serverless-alert-anomaly-action-frequency-recovered.png
+:::{image} /solutions/images/serverless-alert-anomaly-action-frequency-recovered.png
 :alt: Choose between anomaly score matched condition or recovered
 :screenshot:
 :::
@@ -129,9 +129,9 @@ With the **Run when** menu you can choose if an action runs when the the anomaly
 
 
 :::::{dropdown} Action variables
-Use the default notification message or customize it. You can add more context to the message by clicking the Add variable icon ![Add variable](../../../images/serverless-indexOpen.svg "") and selecting from a list of available variables.
+Use the default notification message or customize it. You can add more context to the message by clicking the Add variable icon ![Add variable](/solutions/images/serverless-indexOpen.svg "") and selecting from a list of available variables.
 
-:::{image} ../../../images/serverless-action-variables-popup.png
+:::{image} /solutions/images/serverless-action-variables-popup.png
 :alt: Action variables list
 :screenshot:
 :::

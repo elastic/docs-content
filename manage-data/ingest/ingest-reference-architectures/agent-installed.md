@@ -5,7 +5,7 @@ mapped_pages:
 
 # Elastic Agent to Elasticsearch: Agent installed [agent-installed]
 
-:::{image} ../../../images/ingest-ea-agent-installed.png
+:::{image} /manage-data/images/ingest-ea-agent-installed.png
 :alt: Image showing {{agent}} collecting data and sending to {{es}}
 :::
 

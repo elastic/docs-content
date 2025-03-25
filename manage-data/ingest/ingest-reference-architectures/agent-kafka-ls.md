@@ -5,7 +5,7 @@ mapped_pages:
 
 # Elastic Agent to Logstash to Kafka to Logstash to Elasticsearch: Kafka as middleware message queue [agent-kafka-ls]
 
-:::{image} ../../../images/ingest-ls-kafka-ls.png
+:::{image} /manage-data/images/ingest-ls-kafka-ls.png
 :alt: Image showing connections between {{agent}} and {{es}} using a Kafka messaging queue
 :::
 

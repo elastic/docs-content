@@ -155,7 +155,7 @@ PUT _ingest/pipeline/logs-example-default
 
 The previous command sets the following values for your ingest pipeline:
 
-* `_ingest/pipeline/logs-example-default`: The name of the pipeline,`logs-example-default`, needs to match the name of your data stream. You’ll set up your data stream in the next section. For more information, refer to the [data stream naming scheme](/reference/ingestion-tools/fleet/data-streams.md#data-streams-naming-scheme).
+* `_ingest/pipeline/logs-example-default`: The name of the pipeline,`logs-example-default`, needs to match the name of your data stream. You’ll set up your data stream in the next section. For more information, refer to the [data stream naming scheme](/reference/fleet/data-streams.md#data-streams-naming-scheme).
 * `field`: The field you’re extracting data from, `message` in this case.
 * `pattern`: The pattern of the elements in your log data. The `%{@timestamp} %{{message}}` pattern extracts the timestamp, `2023-08-08T13:45:12.123Z`, to the `@timestamp` field, while the rest of the message, `WARN 192.168.1.101 Disk usage exceeds 90%.`, stays in the `message` field. The dissect processor looks for the space as a separator defined by the pattern.
 
@@ -255,7 +255,7 @@ The example index template above sets the following component templates:
 
 #### Create a data stream [observability-parse-log-data-create-a-data-stream]
 
-Create your data stream using the [data stream naming scheme](/reference/ingestion-tools/fleet/data-streams.md#data-streams-naming-scheme). Name your data stream to match the name of your ingest pipeline, `logs-example-default` in this case. Post the example log to your data stream with this command:
+Create your data stream using the [data stream naming scheme](/reference/fleet/data-streams.md#data-streams-naming-scheme). Name your data stream to match the name of your ingest pipeline, `logs-example-default` in this case. Post the example log to your data stream with this command:
 
 ```console
 POST logs-example-default/_doc
@@ -678,7 +678,7 @@ Because all of the example logs are in this range, you’ll get the following re
 
 ##### Range queries [observability-parse-log-data-range-queries]
 
-Use [range queries](elasticsearch://reference/query-languages/query-dsl-range-query.md) to query logs in a specific range.
+Use [range queries](elasticsearch://reference/query-languages/query-dsl/query-dsl-range-query.md) to query logs in a specific range.
 
 The following command searches for IP addresses greater than or equal to `192.168.1.100` and less than or equal to `192.168.1.102`.
 

@@ -8,9 +8,8 @@ mapped_pages:
 
 # Data Types [sql-data-types]
 
-|     |     |     |     |
+| {{es}} type | Elasticsearch SQL type | SQL type | SQL precision |
 | --- | --- | --- | --- |
-| **{{es}} type** | **Elasticsearch SQL type** | **SQL type** | **SQL precision** |
 | Core types |
 | [`null`](elasticsearch://reference/elasticsearch/mapping-reference/null-value.md) | `null` | NULL | 0 |
 | [`boolean`](elasticsearch://reference/elasticsearch/mapping-reference/boolean.md) | `boolean` | BOOLEAN | 1 |
@@ -47,9 +46,8 @@ In addition to the types above, Elasticsearch SQL also supports at *runtime* SQL
 $$$es-sql-only-types$$$
 The table below indicates these types:
 
-|     |     |
+| SQL type | SQL precision |
 | --- | --- |
-| **SQL type** | **SQL precision** |
 | `date` | 29 |
 | `time` | 18 |
 | `interval_year` | 7 |

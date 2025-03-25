@@ -288,7 +288,7 @@ Scripts calculate field values dynamically, which adds a little overhead to the 
 
 ## Aggregation caches [agg-caches]
 
-For faster responses, {{es}} caches the results of frequently run aggregations in the [shard request cache](elasticsearch://reference/elasticsearch/configuration-reference/shard-request-cache-settings.md). To get cached results, use the same [`preference` string](elasticsearch://reference/elasticsearch/rest-apis/search-shard-routing.md#shard-and-node-preference) for each search. If you don’t need search hits, [set `size` to `0`](#return-only-agg-results) to avoid filling the cache.
+For faster responses, {{es}} caches the results of frequently run aggregations in the [shard request cache](/deploy-manage/distributed-architecture/shard-request-cache.md). To get cached results, use the same [`preference` string](elasticsearch://reference/elasticsearch/rest-apis/search-shard-routing.md#shard-and-node-preference) for each search. If you don’t need search hits, [set `size` to `0`](#return-only-agg-results) to avoid filling the cache.
 
 {{es}} routes searches with the same preference string to the same shards. If the shards' data doesn’t change between searches, the shards return cached aggregation results.
 

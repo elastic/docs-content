@@ -1,5 +1,8 @@
 ---
 navigation_title: "Diagnostics"
+applies_to:
+  deployment:
+    ece: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-run-ece-diagnostics.html
 ---

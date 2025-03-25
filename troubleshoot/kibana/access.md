@@ -1,5 +1,7 @@
 ---
 navigation_title: "Server status"
+applies_to:
+  stack: all
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/access.html#status
 ---
@@ -43,7 +45,7 @@ The status page displays information about the server resource usage and install
 
 To view the {{kib}} status page, use the status endpoint. For example, `localhost:5601/status`.
 
-:::{image} ../../images/kibana-kibana-status-page-7_14_0.png
+:::{image} /troubleshoot/images/kibana-kibana-status-page-7_14_0.png
 :alt: Kibana server status page
 :screenshot:
 :::

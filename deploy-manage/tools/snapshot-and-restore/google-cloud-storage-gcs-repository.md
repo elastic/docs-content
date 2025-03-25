@@ -50,7 +50,7 @@ To save deployment snapshots to the custom GCS repository:
 
 1. Add a [secure setting](../../security/secure-settings.md) named `gcs.client.acme-snapshots.credentials_file` as a JSON block. Make sure that the client name is the same one you provided when configuring the snapshot repository.
 
-    :::{image} ../../../images/cloud-enterprise-ece-secure-settings.png
+    :::{image} /deploy-manage/images/cloud-enterprise-ece-secure-settings.png
     :alt: GCS client secret configuration
     :::
 

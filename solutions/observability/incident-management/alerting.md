@@ -22,12 +22,12 @@ Once you’ve defined your rules, you can monitor any alerts triggered by these 
 
 On the **Alerts** page, the Alerts table provides a snapshot of alerts occurring within the specified time frame. The table includes the alert status, when it was last updated, the reason for the alert, and more.
 
-:::{image} ../../../images/serverless-observability-alerts-overview.png
+:::{image} /solutions/images/serverless-observability-alerts-overview.png
 :alt: Summary of Alerts
 :screenshot:
 :::
 
-You can filter this table by alert status or time period, customize the visible columns, and search for specific alerts (for example, alerts related to a specific service or environment) using KQL. Select **View alert detail** from the **More actions** menu ![action menu](../../../images/serverless-boxesHorizontal.svg ""), or click the Reason link for any alert to [view alert](../../../solutions/observability/incident-management/view-alerts.md) in detail, and you can then either **View in app** or **View rule details**.
+You can filter this table by alert status or time period, customize the visible columns, and search for specific alerts (for example, alerts related to a specific service or environment) using KQL. Select **View alert detail** from the **More actions** menu ![action menu](/solutions/images/serverless-boxesHorizontal.svg ""), or click the Reason link for any alert to [view alert](../../../solutions/observability/incident-management/view-alerts.md) in detail, and you can then either **View in app** or **View rule details**.
 
 
 ## Next steps [observability-alerting-next-steps]

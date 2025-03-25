@@ -36,7 +36,7 @@ Open a new case to keep track of issues and share the details with colleagues. T
 8. After you’ve completed all of the required fields, click **Create case**.
 
 ::::{tip}
-You can also create a case from an alert or add an alert to an existing case. From the **Alerts** page, click the **More options** ![More actions](../../../images/serverless-boxesHorizontal.svg "") icon and choose either **Add to existing case** or **Create new case**, and select or complete the details as required.
+You can also create a case from an alert or add an alert to an existing case. From the **Alerts** page, click the **More options** ![More actions](/solutions/images/serverless-boxesHorizontal.svg "") icon and choose either **Add to existing case** or **Create new case**, and select or complete the details as required.
 
 ::::
 
@@ -46,7 +46,7 @@ You can also create a case from an alert or add an alert to an existing case. Fr
 
 After you create a case, you can upload and manage files on the **Files** tab:
 
-:::{image} ../../../images/serverless-cases-files-tab.png
+:::{image} /solutions/images/serverless-cases-files-tab.png
 :alt: A list of files attached to a case
 :screenshot:
 :::
@@ -73,7 +73,7 @@ There is a 10 MiB size limit for images. For all other MIME types, the limit is 
 
 ## Send cases to external incident management systems [observability-create-a-new-case-send-cases-to-external-incident-management-systems]
 
-To send a case to an external system, click the ![push](../../../images/serverless-importAction.svg "") button in the *External incident management system* section of the individual case page. This information is not sent automatically. If you make further changes to the shared case fields, you should push the case again.
+To send a case to an external system, click the ![push](/solutions/images/serverless-importAction.svg "") button in the *External incident management system* section of the individual case page. This information is not sent automatically. If you make further changes to the shared case fields, you should push the case again.
 
 For more information about configuring connections to external incident management systems, refer to [Configure case settings](../../../solutions/observability/incident-management/configure-case-settings.md).
 

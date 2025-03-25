@@ -50,14 +50,14 @@ When you add filters to a Timeline template, the items are color coded to indica
 Regular Timeline filter
 :   Clicking **Convert to template field** changes the filter to a template filter:
 
-    :::{image} ../../../images/security-template-filter-value.png
+    :::{image} /solutions/images/security-template-filter-value.png
     :alt: Timeline template filter value
     :screenshot:
     :::
 
 
 Template filter
-:::{image} ../../../images/security-timeline-template-filter.png
+:::{image} /solutions/images/security-timeline-template-filter.png
 :alt: timeline template filter
 :screenshot:
 :::
@@ -65,7 +65,7 @@ Template filter
 
 When you [convert a template to a Timeline](/solutions/security/investigate/timeline-templates.md#man-templates-ui), template filters with placeholders are disabled:
 
-:::{image} ../../../images/security-invalid-filter.png
+:::{image} /solutions/images/security-invalid-filter.png
 :alt: Invalid events filter
 :screenshot:
 :::
@@ -78,7 +78,7 @@ To enable the filter, either specify a value or change it to a field’s existin
 1. Choose one of the following:
 
     * Find **Timelines** in the main menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Next, select the **Templates** tab, then click **Create new Timeline template**.
-    * Go to the Timeline bar (which is at the bottom of most pages), click the ![Click the add new button](../../../images/security-add-new-timeline-button.png "title =20x20") button, then click **Create new Timeline template**.
+    * Go to the Timeline bar (which is at the bottom of most pages), click the ![Click the add new button](/solutions/images/security-add-new-timeline-button.png "title =20x20") button, then click **Create new Timeline template**.
     * From an open Timeline  or Timeline template, click **New** → **New Timeline template**.
 
 2. To add filters, click **Add field**, and then select the required option:
@@ -86,7 +86,7 @@ To enable the filter, either specify a value or change it to a field’s existin
     * **Add field**: Add a regular Timeline filter.
     * **Add template field**: Add a template filter with a value placeholder.
 
-        :::{image} ../../../images/security-create-a-timeline-template-field.png
+        :::{image} /solutions/images/security-create-a-timeline-template-field.png
         :alt: Shows an example of a Timeline template
         :screenshot:
         :::
@@ -104,7 +104,7 @@ To create a template for process-related alerts on a specific host:
 * Add a regular filter for the host name: `host.name: "Linux_stafordshire-061"`
 * Add template filter for process names: `process.name: "{process.name}"`
 
-:::{image} ../../../images/security-template-query-example.png
+:::{image} /solutions/images/security-template-query-example.png
 :alt: template query example
 :screenshot:
 :::
@@ -118,7 +118,7 @@ You can view, duplicate, export, delete, and create templates from existing Time
 
 1. Find **Timelines** in the main menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then select the **Templates** tab.
 
-    :::{image} ../../../images/security-all-actions-timeline-ui.png
+    :::{image} /solutions/images/security-all-actions-timeline-ui.png
     :alt: All actions Timeline UI
     :screenshot:
     :::

@@ -53,14 +53,14 @@ You can filter the logs on the following:
 
 You want to see what IP addresses are trying to hit your web servers. Then, you want to understand which IP addresses you’re getting the most `REJECT` actions from. You can expand the `source.ip` field and quickly get a breakdown that shows `185.156.73.54` is the most rejected for the last 3 or more hours you’ve turned on VPC flow logs.
 
-:::{image} ../../../images/observability-discover-ip-addresses.png
+:::{image} /solutions/images/observability-discover-ip-addresses.png
 :alt: IP addresses in Discover
 :screenshot:
 :::
 
 You can also create a visualization by choosing **Visualize**. You get the following donut chart, which you can add to a dashboard.
 
-:::{image} ../../../images/observability-discover-visualize-chart.png
+:::{image} /solutions/images/observability-discover-visualize-chart.png
 :alt: Visualization chart in Discover
 :screenshot:
 :::
@@ -69,7 +69,7 @@ On top of the IP addresses, you also want to know what port is being hit on your
 
 If you select the destination port field, the pop-up shows that port `8081` is being targeted. This port is generally used for the administration of Apache Tomcat. This is a potential security issue, however port `8081` is turned off for outside traffic, hence the `REJECT`.
 
-:::{image} ../../../images/observability-discover-destination-port.png
+:::{image} /solutions/images/observability-discover-destination-port.png
 :alt: Destination port in Discover
 :screenshot:
 :::
@@ -82,14 +82,14 @@ Elastic Observability provides the ability to detect anomalies on logs using Mac
 * Log rate: Automatically detects anomalous log entry rates
 * Categorization: Automatically categorizes log messages
 
-:::{image} ../../../images/observability-ml-anomalies-detection.png
+:::{image} /solutions/images/observability-ml-anomalies-detection.png
 :alt: Anomalies detection with ML
 :screenshot:
 :::
 
 For your VPC flow log, you can enable both features. When you look at what was detected for anomalous log entry rates, you get the following results:
 
-:::{image} ../../../images/observability-ml-anomalies-results.png
+:::{image} /solutions/images/observability-ml-anomalies-results.png
 :alt: Anomalies results with ML
 :screenshot:
 :::
@@ -98,14 +98,14 @@ Elastic detected a spike in logs when you turned on VPC flow logs for your appli
 
 You can drill down into this anomaly with ML and analyze further.
 
-:::{image} ../../../images/observability-ml-anomalies-explorer.png
+:::{image} /solutions/images/observability-ml-anomalies-explorer.png
 :alt: Anomalies explorer in ML
 :screenshot:
 :::
 
 Because you know that a spike exists, you can also use the Elastic AIOps Labs Explain Log Rate Spikes capability. By grouping them, you can see what is causing some of the spikes.
 
-:::{image} ../../../images/observability-ml-spike.png
+:::{image} /solutions/images/observability-ml-spike.png
 :alt: Spikes in ML
 :screenshot:
 :::
@@ -117,7 +117,7 @@ Elastic provides an out-of-the-box dashboard to show the top IP addresses hittin
 
 You can enhance this baseline dashboard with the visualizations you find in Discover.
 
-:::{image} ../../../images/observability-flow-log-dashboard.png
+:::{image} /solutions/images/observability-flow-log-dashboard.png
 :alt: Flow logs dashboard
 :screenshot:
 :::

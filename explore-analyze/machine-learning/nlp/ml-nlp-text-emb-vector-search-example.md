@@ -57,7 +57,7 @@ Go to the **{{ml-app}} > Trained Models** page and synchronize your trained mode
 
 Deployed models can be evaluated in {{kib}} under **{{ml-app}}** > **Trained Models** by selecting the **Test model** action for the respective model.
 
-:::{image} ../../../images/machine-learning-ml-nlp-text-emb-test.png
+:::{image} /explore-analyze/images/machine-learning-ml-nlp-text-emb-test.png
 :alt: Test trained model UI
 :screenshot:
 :::
@@ -105,7 +105,7 @@ The data set `msmarco-passagetest2019-top1000` is a subset of the MS MARCO Passa
 
 Upload the file by using the [Data Visualizer](../../../manage-data/ingest/upload-data-files.md). Name the first column `id` and the second one `text`. The index name is `collection`. After the upload is done, you can see an index named `collection` with 182469 documents.
 
-:::{image} ../../../images/machine-learning-ml-nlp-text-emb-data.png
+:::{image} /explore-analyze/images/machine-learning-ml-nlp-text-emb-data.png
 :alt: Importing the data
 :screenshot:
 :::
@@ -197,7 +197,7 @@ GET _tasks/<task_id>
 
 You can also open the model stat UI to follow the progress.
 
-:::{image} ../../../images/machine-learning-ml-nlp-text-emb-reindex.png
+:::{image} /explore-analyze/images/machine-learning-ml-nlp-text-emb-reindex.png
 :alt: Model status UI
 :screenshot:
 :::

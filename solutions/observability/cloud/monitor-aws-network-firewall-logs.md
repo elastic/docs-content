@@ -43,7 +43,7 @@ AWS PrivateLink is not supported. Make sure the deployment is on AWS, because th
 
 ## Step 2: Select a resource [firehose-firewall-step-two]
 
-:::{image} ../../../images/observability-firehose-networkfirewall-firewall.png
+:::{image} /solutions/images/observability-firehose-networkfirewall-firewall.png
 :alt: AWS Network Firewall
 :::
 
@@ -54,7 +54,7 @@ Creating a Network Firewall is not trivial and is beyond the scope of this guide
 
 ## Step 3: Create a stream in Amazon Data Firehose [firehose-firewall-step-three]
 
-:::{image} ../../../images/observability-firehose-networkfirewall-stream.png
+:::{image} /solutions/images/observability-firehose-networkfirewall-stream.png
 :alt: Firehose stream
 :::
 
@@ -89,7 +89,7 @@ The Firehose stream is ready to send logs to our Elastic Cloud deployment.
 
 ## Step 4: Enable logging [firehose-firewall-step-four]
 
-:::{image} ../../../images/observability-firehose-networkfirewall-logging.png
+:::{image} /solutions/images/observability-firehose-networkfirewall-logging.png
 :alt: AWS Network Firewall logging
 :::
 
@@ -109,7 +109,7 @@ At this point, the Network Firewall will start sending logs to the Firehose stre
 
 ## Step 5: Visualize your Network Firewall logs in {{kib}} [firehose-firewall-step-five]
 
-:::{image} ../../../images/observability-firehose-networkfirewall-data-stream.png
+:::{image} /solutions/images/observability-firehose-networkfirewall-data-stream.png
 :alt: Firehose monitor Network Firewall logs
 :::
 
@@ -117,7 +117,7 @@ With the new logging settings in place, the Network Firewall starts sending log 
 
 Navigate to {{kib}} and choose **Visualize your logs with Discover**.
 
-:::{image} ../../../images/observability-firehose-networkfirewall-discover.png
+:::{image} /solutions/images/observability-firehose-networkfirewall-discover.png
 :alt: Visualize Network Firewall logs with Discover
 :screenshot:
 :::

@@ -25,7 +25,7 @@ You can use a PUT request to update your deployment, changing both the deploymen
 
    You can also find the template in the [list of templates available for each region](cloud://reference/cloud-hosted/ec-regions-templates-instances.md).
 
-   :::{image} ../../images/cloud-ec-migrate-deployment-template(2).png
+   :::{image} /deploy-manage/images/cloud-ec-migrate-deployment-template(2).png
    :alt: Deployment Template ID
    :screenshot:
    :::
@@ -271,7 +271,7 @@ You can make this change in the user [{{ecloud}} Console](https://cloud.elastic.
 1. From the deployment menu, open the **Snapshots** page and click **Take Snapshot now**. Wait for the snapshot to finish.
 2. From the main **Deployments** page, click **Create deployment**. Next to **Settings** toggle on **Restore snapshot data**, and then select your deployment and the snapshot that you created.
 
-    :::{image} ../../images/cloud-ec-create-from-snapshot-updated.png
+    :::{image} /deploy-manage/images/cloud-ec-create-from-snapshot-updated.png
     :alt: Create a Deployment using a snapshot
     :screenshot:
     :::
