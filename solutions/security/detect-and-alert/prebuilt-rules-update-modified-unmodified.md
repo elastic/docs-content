@@ -59,7 +59,7 @@ To update rules:
 
 4. From the **Rule Updates** tab, do one of the following to update prebuilt rules:
 
-    * Update all available rules: Click **Update all**. If any rules have conflicts, you will be prompted to take <<resolve-reduce-rule-conflicts,additional action>>.
+    * Update all available rules: Click **Update all**. If any rules have conflicts, you will be prompted to take [additional attention](/solutions/security/detect-and-alert/prebuilt-rules-update-modified-unmodified.md#resolve-reduce-rule-conflicts).
     * Update a single rule without conflicts: Click **Update rule** for that rule. 
     * Update multiple rules: Select the rules and click **Update _x_ selected rule(s)**. If any rules have conflicts, you will be prompted to take additional action.
 
