@@ -1,7 +1,11 @@
 ---
 navigation_title: "Error: Server not ready"
 applies_to:
-  stack: all
+  deployment:
+    ess: all
+    ece: all
+    self: all
+    eck: all
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/access.html#not-ready
 ---
