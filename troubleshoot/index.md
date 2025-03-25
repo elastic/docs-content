@@ -5,6 +5,7 @@ mapped_urls:
   - https://www.elastic.co/guide/en/starting-with-the-elasticsearch-platform-and-its-solutions/current/troubleshooting-and-faqs.html
   - https://www.elastic.co/guide/en/cloud/current/ec-get-help.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-get-help.html
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-getting-help.html
 ---
 
 # Troubleshooting

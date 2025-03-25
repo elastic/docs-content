@@ -1,9 +1,15 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/tune-knn-search.html
+applies_to:
+  deployment:
+    ess: all
+    ece: all
+    eck: all
+    self: all
 ---
 
-# Approximate kNN search [tune-knn-search]
+# Tune approximate kNN search [tune-knn-search]
 
 {{es}} supports [approximate k-nearest neighbor search](../../../solutions/search/vector/knn.md#approximate-knn) for efficiently finding the *k* nearest vectors to a query vector. Since approximate kNN search works differently from other queries, there are special considerations around its performance.
 
