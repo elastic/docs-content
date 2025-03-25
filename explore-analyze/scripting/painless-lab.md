@@ -16,7 +16,7 @@ The **Painless Lab** is an interactive code editor that lets you test and debug 
 
 Find **Painless Lab** by navigating to the **Developer tools** page using the navigation menu or the [global search field](../../explore-analyze/find-and-organize/find-apps-and-objects.md).
 
-:::{image} ../../images/kibana-painless-lab.png
+:::{image} /explore-analyze/images/kibana-painless-lab.png
 :alt: Painless Lab
 :screenshot:
 :::

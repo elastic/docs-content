@@ -86,7 +86,7 @@ If you are using a separate monitoring cluster, you do not need to turn on data 
 
 On the **Stack Monitoring** page, you’ll see cluster alerts that require your attention and a summary of the available monitoring metrics for {{es}}, Logstash, {{kib}}, and Beats. To view additional information, click the **Overview**, **Nodes**, **Indices**, or **Instances** links.  For more information about these metrics, refer to [](../monitoring-data/visualizing-monitoring-data.md). For information about configuring alerts for these metrics, refer to [](/deploy-manage/monitor/monitoring-data/configure-stack-monitoring-alerts.md).
 
-:::{image} /images/kibana-monitoring-dashboard.png
+:::{image} /deploy-manage/images/kibana-monitoring-dashboard.png
 :alt: Monitoring dashboard
 :screenshot:
 :::

@@ -96,7 +96,7 @@ For example, to create an API key that can be used to ingest APM events and read
 
 Click **Create APM Agent key** and copy the Base64 encoded API key. You will need this for the next step, and you will not be able to view it again.
 
-:::{image} ../../../images/observability-apm-ui-api-key.png
+:::{image} /solutions/images/observability-apm-ui-api-key.png
 :alt: Applications UI API key
 :screenshot:
 :::

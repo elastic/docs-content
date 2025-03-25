@@ -18,7 +18,7 @@ You can use the [search API](https://www.elastic.co/docs/api/doc/elasticsearch/o
 
 ## Run a search [run-an-es-search]
 
-The following request searches `my-index-000001` using a [`match`](elasticsearch://reference/query-languages/query-dsl-match-query.md) query. This query matches documents with a `user.id` value of `kimchy`.
+The following request searches `my-index-000001` using a [`match`](elasticsearch://reference/query-languages/query-dsl/query-dsl-match-query.md) query. This query matches documents with a `user.id` value of `kimchy`.
 
 ```console
 GET /my-index-000001/_search
@@ -87,10 +87,10 @@ You can use the following options to customize your searches.
 
 **Query DSL**<br> [Query DSL](../../explore-analyze/query-filter/languages/querydsl.md) supports a variety of query types you can mix and match to get the results you want. Query types include:
 
-* [Boolean](elasticsearch://reference/query-languages/query-dsl-bool-query.md) and other [compound queries](elasticsearch://reference/query-languages/compound-queries.md), which let you combine queries and match results based on multiple criteria
-* [Term-level queries](elasticsearch://reference/query-languages/term-level-queries.md) for filtering and finding exact matches
-* [Full text queries](elasticsearch://reference/query-languages/full-text-queries.md), which are commonly used in search engines
-* [Geo](elasticsearch://reference/query-languages/geo-queries.md) and [spatial queries](elasticsearch://reference/query-languages/shape-queries.md)
+* [Boolean](elasticsearch://reference/query-languages/query-dsl/query-dsl-bool-query.md) and other [compound queries](elasticsearch://reference/query-languages/query-dsl/compound-queries.md), which let you combine queries and match results based on multiple criteria
+* [Term-level queries](elasticsearch://reference/query-languages/query-dsl/term-level-queries.md) for filtering and finding exact matches
+* [Full text queries](elasticsearch://reference/query-languages/query-dsl/full-text-queries.md), which are commonly used in search engines
+* [Geo](elasticsearch://reference/query-languages/query-dsl/geo-queries.md) and [spatial queries](elasticsearch://reference/query-languages/query-dsl/shape-queries.md)
 
 **Aggregations**<br> You can use [search aggregations](../../explore-analyze/query-filter/aggregations.md) to get statistics and other analytics for your search results. Aggregations help you answer questions like:
 
@@ -104,7 +104,7 @@ You can use the following options to customize your searches.
 
 **Retrieve selected fields**<br> The search response’s `hits.hits` property includes the full document [`_source`](elasticsearch://reference/elasticsearch/mapping-reference/mapping-source-field.md) for each hit. To retrieve only a subset of the `_source` or other fields, see [Retrieve selected fields](elasticsearch://reference/elasticsearch/rest-apis/retrieve-selected-fields.md).
 
-**Sort search results**<br> By default, search hits are sorted by `_score`, a [relevance score](../../explore-analyze/query-filter/languages/querydsl.md#relevance-scores) that measures how well each document matches the query. To customize the calculation of these scores, use the [`script_score`](elasticsearch://reference/query-languages/query-dsl-script-score-query.md) query. To sort search hits by other field values, see [Sort search results](elasticsearch://reference/elasticsearch/rest-apis/sort-search-results.md).
+**Sort search results**<br> By default, search hits are sorted by `_score`, a [relevance score](../../explore-analyze/query-filter/languages/querydsl.md#relevance-scores) that measures how well each document matches the query. To customize the calculation of these scores, use the [`script_score`](elasticsearch://reference/query-languages/query-dsl/query-dsl-script-score-query.md) query. To sort search hits by other field values, see [Sort search results](elasticsearch://reference/elasticsearch/rest-apis/sort-search-results.md).
 
 **Run an async search**<br> {{es}} searches are designed to run on large volumes of data quickly, often returning results in milliseconds. For this reason, searches are *synchronous* by default. The search request waits for complete results before returning a response.
 

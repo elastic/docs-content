@@ -40,7 +40,7 @@ In Jamf, create a configuration profile for {{elastic-endpoint}}. Follow these s
 
 4. Save the configuration.
 
-:::{image} ../../../images/security-system-extension-jamf.png
+:::{image} /solutions/images/security-system-extension-jamf.png
 :alt: system extension jamf
 :screenshot:
 :::
@@ -71,7 +71,7 @@ In Jamf, create a configuration profile for {{elastic-endpoint}}. Follow these s
 
 6. Save the configuration.
 
-:::{image} ../../../images/security-content-filtering-jamf.png
+:::{image} /solutions/images/security-content-filtering-jamf.png
 :alt: content filtering jamf
 :screenshot:
 :::
@@ -94,7 +94,7 @@ In Jamf, create a configuration profile for {{elastic-endpoint}}. Follow these s
 
 5. Save the configuration.
 
-:::{image} ../../../images/security-notifications-jamf.png
+:::{image} /solutions/images/security-notifications-jamf.png
 :alt: notifications jamf
 :screenshot:
 :::
@@ -141,7 +141,7 @@ In Jamf, create a configuration profile for {{elastic-endpoint}}. Follow these s
 
 5. Save the configuration.
 
-:::{image} ../../../images/security-fda-jamf.png
+:::{image} /solutions/images/security-fda-jamf.png
 :alt: fda jamf
 :screenshot:
 :::

@@ -14,7 +14,7 @@ To use **Timelion**, you define a graph by chaining functions together, using th
 * Perform math across two or more time series
 * Visualize the results
 
-![Timelion](../../../images/kibana-timelion.png "")
+![Timelion](/explore-analyze/images/kibana-timelion.png "")
 
 
 ## Timelion expressions [_timelion_expressions]
@@ -219,7 +219,7 @@ Move the legend to the north west position  with two columns, then click **Updat
   .legend(columns=2, position=nw)
 ```
 
-:::{image} ../../../images/kibana-timelion-customize04.png
+:::{image} /explore-analyze/images/kibana-timelion-customize04.png
 :alt: Final time series visualization
 :screenshot:
 :::
@@ -342,7 +342,7 @@ Customize and format the visualization using the following functions, then click
   .legend(columns=2, position=nw)
 ```
 
-:::{image} ../../../images/kibana-timelion-math05.png
+:::{image} /explore-analyze/images/kibana-timelion-math05.png
 :alt: Final visualization that displays inbound and outbound network traffic
 :screenshot:
 :::
@@ -527,7 +527,7 @@ Customize and format the visualization using the following functions, then click
   .legend(columns=4, position=nw)
 ```
 
-:::{image} ../../../images/kibana-timelion-conditional04.png
+:::{image} /explore-analyze/images/kibana-timelion-conditional04.png
 :alt: Final visualization that displays outliers and patterns over time
 :screenshot:
 :::

@@ -13,7 +13,7 @@ The **Explore data** view in {{kib}} enables you to select and filter result dat
 
 Based on your synthetic monitoring, user experience, and mobile experience data, you can create multi-series visualizations of performance and device distributions, key performance indicators (KPI) over time, and core web vitals of your web applications.
 
-:::{image} ../../images/observability-exploratory-view.png
+:::{image} /troubleshoot/images/observability-exploratory-view.png
 :alt: Explore {{data-source}} for Monitor duration
 :screenshot:
 :::
@@ -73,7 +73,7 @@ To create a multi-series visualization:
 
 Based on the Uptime data you are sending to your deployment, you can create various visualizations relating to monitor durations, pings over time, or any of the [available data types](#data-types).
 
-:::{image} ../../images/observability-exploratory-view-uptime.png
+:::{image} /troubleshoot/images/observability-exploratory-view-uptime.png
 :alt: Explore data for Uptime
 :screenshot:
 :::
@@ -88,7 +88,7 @@ Based on the Uptime data you are sending to your deployment, you can create vari
 
 Based on the {{user-experience}} data from your instrumented applications, you can create detailed visualizations for performance distributions, key performance indicators (KPI) over time, and for core web vitals of your web applications.
 
-:::{image} ../../images/observability-exploratory-view-ux-page-load-time.png
+:::{image} /troubleshoot/images/observability-exploratory-view-ux-page-load-time.png
 :alt: Explore data for {{user-experience}} (page load time)
 :screenshot:
 :::

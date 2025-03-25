@@ -254,7 +254,7 @@ To install the integration on unmanaged clusters:
 7. Select the {{agent}} policy where you want to add the integration.
 8. Click **Save and continue**, then **Add agent to your hosts**. The **Add agent** wizard appears and provides a DaemonSet manifest `.yaml` file with pre-populated configuration information, such as the `Fleet ID` and `Fleet URL`.
 
-:::{image} ../../../images/security-kspm-add-agent-wizard.png
+:::{image} /solutions/images/security-kspm-add-agent-wizard.png
 :alt: The KSPM integration's Add agent wizard
 :screenshot:
 :::

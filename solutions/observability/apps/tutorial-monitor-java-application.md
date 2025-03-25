@@ -377,23 +377,50 @@ To read the log file and send it to {{es}}, {{filebeat}} is required. To downloa
 :::::::{tab-set}
 
 ::::::{tab-item} DEB
-Version 9.0.0-beta1 of Filebeat has not yet been released.
+```shell subs=true
+curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{stack-version}}-amd64.deb
+sudo dpkg -i filebeat-{{stack-version}}-amd64.deb
+```
 ::::::
 
 ::::::{tab-item} RPM
-Version 9.0.0-beta1 of Filebeat has not yet been released.
+```shell subs=true
+curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{stack-version}}-x86_64.rpm
+sudo rpm -vi filebeat-{{stack-version}}-x86_64.rpm
+```
 ::::::
 
 ::::::{tab-item} MacOS
-Version 9.0.0-beta1 of Filebeat has not yet been released.
+```shell subs=true
+curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{stack-version}}-darwin-x86_64.tar.gz
+tar xzvf filebeat-{{stack-version}}-darwin-x86_64.tar.gz
+```
 ::::::
 
 ::::::{tab-item} Linux
-Version 9.0.0-beta1 of Filebeat has not yet been released.
+```shell subs=true
+curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{stack-version}}-linux-x86_64.tar.gz
+tar xzvf filebeat-{{stack-version}}-linux-x86_64.tar.gz
+```
 ::::::
 
 ::::::{tab-item} Windows
-Version 9.0.0-beta1 of Filebeat has not yet been released.
+1. Download the [Filebeat Windows zip file](https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{stack-version}}-windows-x86_64.zip).
+
+2. Extract the contents of the zip file into `C:\Program Files`.
+
+3. Rename the `filebeat-[version]-windows-x86_64` directory to `Filebeat`.
+
+4. Open a PowerShell prompt as an Administrator (right-click the PowerShell icon and select *Run As Administrator*).
+
+5. From the PowerShell prompt, run the following commands to install Filebeat as a Windows service:
+
+```shell subs=true
+PS > cd 'C:\Program Files\Filebeat'
+PS C:\Program Files\Filebeat> .\install-service-filebeat.ps1
+```
+
+NOTE: If script execution is disabled on your system, you need to set the execution policy for the current session to allow the script to run. For example: `PowerShell.exe -ExecutionPolicy UnRestricted -File .\install-service-filebeat.ps1`.
 ::::::
 
 :::::::
@@ -548,7 +575,7 @@ This command results in roughly 8,000 requests per second, and the equivalent nu
 
     There is a summary of the documents at the top, but let’s take a look at a single document.
 
-    ![{{kib}} single document view](../../../images/observability-monitor-java-app-kibana-single-document.png "")
+    ![{{kib}} single document view](/solutions/images/observability-monitor-java-app-kibana-single-document.png "")
 
     You can see that a lot more data is indexed than just the event. There is information about the offset in the file, information about the component shipping the logs, the name of the shipper’s name in the output, and there is a `message` field containing log line contents.
 
@@ -587,7 +614,7 @@ This command results in roughly 8,000 requests per second, and the equivalent nu
 
 3. To view a continuous stream of log messages, click **Stream live**. You can also highlight specific terms, as shown here.
 
-    ![{{kib}} Logs UI Streaming](../../../images/observability-monitor-java-app-kibana-streaming.png "")
+    ![{{kib}} Logs UI Streaming](/solutions/images/observability-monitor-java-app-kibana-streaming.png "")
 
     Looking at one of the documents being indexed, you can see that the log message is contained in a single field. Verify this by looking at one of those documents.
 
@@ -1097,23 +1124,50 @@ To send metrics to {{es}}, {{metricbeat}} is required. To download and install {
 :::::::{tab-set}
 
 ::::::{tab-item} DEB
-Version 9.0.0-beta1 of Metricbeat has not yet been released.
+```shell subs=true
+curl -L -O https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-{{stack-version}}-amd64.deb
+sudo dpkg -i metricbeat-{{stack-version}}-amd64.deb
+```
 ::::::
 
 ::::::{tab-item} RPM
-Version 9.0.0-beta1 of Metricbeat has not yet been released.
+```shell subs=true
+curl -L -O https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-{{stack-version}}-x86_64.rpm
+sudo rpm -vi metricbeat-{{stack-version}}-x86_64.rpm
+```
 ::::::
 
 ::::::{tab-item} MacOS
-Version 9.0.0-beta1 of Metricbeat has not yet been released.
+```shell subs=true
+curl -L -O https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-{{stack-version}}-darwin-x86_64.tar.gz
+tar xzvf metricbeat-{{stack-version}}-darwin-x86_64.tar.gz
+```
 ::::::
 
 ::::::{tab-item} Linux
-Version 9.0.0-beta1 of Metricbeat has not yet been released.
+```shell subs=true
+curl -L -O https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-{{stack-version}}-linux-x86_64.tar.gz
+tar xzvf metricbeat-{{stack-version}}-linux-x86_64.tar.gz
+```
 ::::::
 
 ::::::{tab-item} Windows
-Version 9.0.0-beta1 of Metricbeat has not yet been released.
+1. Download the [Metricbeat Windows zip file](https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-{{stack-version}}-windows-x86_64.zip).
+
+2. Extract the contents of the zip file into `C:\Program Files`.
+
+3. Rename the `metricbeat-[version]-windows-x86_64` directory to `Metricbeat`.
+
+4. Open a PowerShell prompt as an Administrator (right-click the PowerShell icon and select *Run As Administrator*).
+
+5. From the PowerShell prompt, run the following commands to install Metricbeat as a Windows service:
+
+  ```shell subs=true
+  PS > cd 'C:\Program Files\Metricbeat'
+  PS C:\Program Files\Metricbeat> .\install-service-metricbeat.ps1
+  ```
+
+NOTE: If script execution is disabled on your system, you need to set the execution policy for the current session to allow the script to run. For example: `PowerShell.exe -ExecutionPolicy UnRestricted -File .\install-service-metricbeat.ps1`.
 ::::::
 
 :::::::
@@ -1294,7 +1348,7 @@ Visualize the number of log messages over time, split by the log level. Since th
 
     The final result looks like this.
 
-    ![Date Histogram of the log rate per log level](../../../images/observability-monitor-java-app-metrics-kibana-create-visualization-log-rate.png "")
+    ![Date Histogram of the log rate per log level](/solutions/images/observability-monitor-java-app-metrics-kibana-create-visualization-log-rate.png "")
 
 
 
@@ -1364,7 +1418,7 @@ Let’s look at the `process_files_open_files` metric. This should be a rather s
 
     Now let’s build a visualization using [Lens](../../../explore-analyze/dashboards.md) in {{kib}}.
 
-    ![Lens visualization](../../../images/observability-monitor-java-app-metrics-kibana-create-visualization-open-files.png "")
+    ![Lens visualization](/solutions/images/observability-monitor-java-app-metrics-kibana-create-visualization-open-files.png "")
 
 5. Below `Add filter`, select the `metricbeat-*` index pattern. This will likely use `filebeat-*` as the default.
 
@@ -1376,7 +1430,7 @@ Let’s look at the `process_files_open_files` metric. This should be a rather s
 
 7. Click **Metrics Explorer**, you can start exploring your data for specific hosts or the CPU usage across your nodes.
 
-    ![Metrics UI Log Counter](../../../images/observability-monitor-java-app-metrics-ui-prometheus-event-counter.png "")
+    ![Metrics UI Log Counter](/solutions/images/observability-monitor-java-app-metrics-ui-prometheus-event-counter.png "")
 
     This is an area chart of the total events counter the Javalin app emits. It’s rising because there is a component polling an endpoint that, in turn, produces another log message. The steeper peek was due to sending more requests. But where is the sudden drop-off coming from? A JVM restart. As those metrics are not persisted, they reset on a JVM restart. With that in mind, it’s often better to log the `rate` instead of the `counter` field.
 
@@ -1399,7 +1453,7 @@ Despite a heavily fragmented APM landscape, the terminology often is similar. Th
 
 A transaction encapsulates a series of spans, which contain information about the execution of a piece of code. Let’s take a look at this screenshot from the {{kib}} Applications UI.
 
-![A transaction with spans](../../../images/observability-monitor-java-app-apm-transactions.png "")
+![A transaction with spans](/solutions/images/observability-monitor-java-app-apm-transactions.png "")
 
 This is a Spring Boot application. The `UserProfileController.showProfile()` method is called, which is marked as the transaction. There are two spans within. First, a request is sent to {{es}} using the {{es}} REST client, and after the response is rendered using Thymeleaf. The request to {{es}} is faster than the rendering in this case.
 
@@ -1527,7 +1581,7 @@ A programmatic setup allows you to attach the agent via a line of java in your s
 
     Wait a few minutes and let’s finally take a look at the Applications UI.
 
-    ![Javalin App Applications UI](../../../images/observability-monitor-java-app-apm-ui-javalin-app.png "")
+    ![Javalin App Applications UI](/solutions/images/observability-monitor-java-app-apm-ui-javalin-app.png "")
 
     As you can see, this is quite the difference to the Spring Boot application shown earlier. The different endpoints are not listed; we can see the requests per minute though including errors.
 
@@ -1557,7 +1611,7 @@ A programmatic setup allows you to attach the agent via a line of java in your s
 
 3. Restart your app and see data flowing in. Test a few different endpoints, especially the one that throws exceptions and the one that triggers a 404.
 
-    ![Applications UI with correct transaction names](../../../images/observability-monitor-java-app-apm-ui-javalin-with-transaction-names.png "")
+    ![Applications UI with correct transaction names](/solutions/images/observability-monitor-java-app-apm-ui-javalin-with-transaction-names.png "")
 
     This looks much better, having differences between endpoints.
 
@@ -1591,11 +1645,11 @@ A programmatic setup allows you to attach the agent via a line of java in your s
 
     In the overview, you can see that most time is spent in the HTTP client, which is not surprising.
 
-    ![Overview](../../../images/observability-monitor-java-app-apm-ui-javalin-wttr-1.png "")
+    ![Overview](/solutions/images/observability-monitor-java-app-apm-ui-javalin-wttr-1.png "")
 
     Our transactions for the `/weather/Munich` now contain a span, showing how much time is spent on retrieving the weather data. Because the HTTP client is instrumented automatically, there is no need to do anything.
 
-    ![Transaction with span](../../../images/observability-monitor-java-app-apm-ui-javalin-wttr-2.png "")
+    ![Transaction with span](/solutions/images/observability-monitor-java-app-apm-ui-javalin-wttr-2.png "")
 
     If the `city` parameter if that URL is of high cardinality, this will result in a high amount of URLs mentioned instead of the generic endpoint. If you would like to prevent this, a possibility would be to use `ctx.matchedPath()` to log every call to the weather API as `GET /weather/:city`. This however requires some refactoring by removing the `app.before()` handler and replacing it with a `app.after()` handler.
 
@@ -1651,7 +1705,7 @@ ELASTIC_APM_TRACE_METHODS="de.spinscale.javalin.Log4j2RequestLogger#handle"
 
 3. Restart your app, and see how much time your logging takes.
 
-    ![Logging caller trace](../../../images/observability-monitor-java-app-apm-ui-logging-trace.png "")
+    ![Logging caller trace](/solutions/images/observability-monitor-java-app-apm-ui-logging-trace.png "")
 
     The request logger takes roughly 400 microseconds. The whole request takes about 1.3 milliseconds. Approximately a third of the processing of our request goes into logging.
 
@@ -1713,23 +1767,50 @@ To send uptime data to {{es}}, {{heartbeat}} (the polling component) is required
 :::::::{tab-set}
 
 ::::::{tab-item} DEB
-Version 9.0.0-beta1 of Heartbeat has not yet been released.
+```shell subs=true
+curl -L -O https://artifacts.elastic.co/downloads/beats/heartbeat/heartbeat-{{stack-version}}-amd64.deb
+sudo dpkg -i heartbeat-{{stack-version}}-amd64.deb
+```
 ::::::
 
 ::::::{tab-item} RPM
-Version 9.0.0-beta1 of Heartbeat has not yet been released.
+```shell subs=true
+curl -L -O https://artifacts.elastic.co/downloads/beats/heartbeat/heartbeat-{{stack-version}}-x86_64.rpm
+sudo rpm -vi heartbeat-{{stack-version}}-x86_64.rpm
+```
 ::::::
 
 ::::::{tab-item} MacOS
-Version 9.0.0-beta1 of Heartbeat has not yet been released.
+```shell subs=true
+curl -L -O https://artifacts.elastic.co/downloads/beats/heartbeat/heartbeat-{{stack-version}}-darwin-x86_64.tar.gz
+tar xzvf heartbeat-{{stack-version}}-darwin-x86_64.tar.gz
+```
 ::::::
 
 ::::::{tab-item} Linux
-Version 9.0.0-beta1 of Heartbeat has not yet been released.
+```shell subs=true
+curl -L -O https://artifacts.elastic.co/downloads/beats/heartbeat/heartbeat-{{stack-version}}-linux-x86_64.tar.gz
+tar xzvf heartbeat-{{stack-version}}-linux-x86_64.tar.gz
+```
 ::::::
 
 ::::::{tab-item} Windows
-Version 9.0.0-beta1 of Heartbeat has not yet been released.
+1. Download the [Heartbeat Windows zip file](https://artifacts.elastic.co/downloads/beats/heartbeat/heartbeat-{{stack-version}}-windows-x86_64.zip).
+
+2. Extract the contents of the zip file into `C:\Program Files`.
+
+3. Rename the `heartbeat-[version]-windows-x86_64` directory to `Heartbeat`.
+
+4. Open a PowerShell prompt as an Administrator (right-click the PowerShell icon and select *Run As Administrator*).
+
+5. From the PowerShell prompt, run the following commands to install Heartbeat as a Windows service:
+
+  ```shell subs=true
+  PS > cd 'C:\Program Files\Heartbeat'
+  PS C:\Program Files\Heartbeat> .\install-service-heartbeat.ps1
+  ```
+
+NOTE: If script execution is disabled on your system, you need to set the execution policy for the current session to allow the script to run. For example: `PowerShell.exe -ExecutionPolicy UnRestricted -File .\install-service-heartbeat.ps1`.
 ::::::
 
 :::::::
@@ -1861,7 +1942,7 @@ By default, Windows log files are stored in `C:\ProgramData\heartbeat\Logs`.
 :::::::
 To view the {{uptime-app}}, select **{{observability}}** → **Uptime**. The overview looks like this.
 
-![Uptime Overview](../../../images/observability-monitor-java-app-uptime-overview.png "")
+![Uptime Overview](/solutions/images/observability-monitor-java-app-uptime-overview.png "")
 
 You can see the list of monitors and a global overview. Let’s see the details for one of those alerts. Click **Javalin Web Application**.
 

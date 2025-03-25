@@ -113,7 +113,7 @@ To change the mapping of an existing field, refer to [Changing the mapping of a 
 
 ## Check the field’s values [troubleshooting-check-field-values]
 
-Use the [`exists` query](elasticsearch://reference/query-languages/query-dsl-exists-query.md) to check whether there are documents that return a value for a field. Check that `count` in the response is not 0.
+Use the [`exists` query](elasticsearch://reference/query-languages/query-dsl/query-dsl-exists-query.md) to check whether there are documents that return a value for a field. Check that `count` in the response is not 0.
 
 ```console
 GET /my-index-000001/_count

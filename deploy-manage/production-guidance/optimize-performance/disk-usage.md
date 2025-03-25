@@ -1,10 +1,17 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/tune-for-disk-usage.html
+applies_to:
+  deployment:
+    ess: all
+    ece: all
+    eck: all
+    self: all
 ---
 
-# Disk usage [tune-for-disk-usage]
+# Tune for disk usage [tune-for-disk-usage]
 
+This page provides strategies to reduce the storage footprint of your Elasticsearch indices. Disk usage is influenced by field mappings, index settings, document structure, and how you manage segments and shards. Use these recommendations to improve compression, eliminate unnecessary data, and optimize storage for your specific use case.
 
 ## Disable the features you do not need [_disable_the_features_you_do_not_need]
 
@@ -60,6 +67,7 @@ Larger shards are going to be more efficient at storing data. To increase the si
 
 Keep in mind that large shard sizes come with drawbacks, such as long full recovery times.
 
+Refer to [](./size-shards.md) for more information about sharding strategies.
 
 ## Disable `_source` [disable-source]
 

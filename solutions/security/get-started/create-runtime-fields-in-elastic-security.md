@@ -26,14 +26,14 @@ To create a runtime field:
 
     * In the Alerts table, click the **Fields** toolbar button in the table’s upper-left. From the **Fields** browser, click **Create field**. The **Create field** flyout opens.
 
-        :::{image} ../../../images/security-fields-browser.png
+        :::{image} /solutions/images/security-fields-browser.png
         :alt: Fields browser
         :screenshot:
         :::
 
     * In Timeline, go to the bottom of the sidebar, then click **Add a field**. The **Create field** flyout opens.
 
-        :::{image} ../../../images/security-create-runtime-fields-timeline.png
+        :::{image} /solutions/images/security-create-runtime-fields-timeline.png
         :alt: Create runtime fields button in Timeline
         :screenshot:
         :::

@@ -31,7 +31,7 @@ The **Health** page provides the following information:
 * Health issues for {{kib}}, Enterprise Search, APM, and plan changes are reported in the health banner.
 * Health issues for {{es}} clusters are broken down into a table with more details on Severity, Description and Affected capabilities.
 
-:::{image} /images/cloud-es-health-page.png
+:::{image} /deploy-manage/images/cloud-es-health-page.png
 :alt: {{es}} Health page
 :::
 
@@ -41,7 +41,7 @@ The **Health** page provides the following information:
 
 You can also search and filter the table based on affected resources, such as indices, repositories, nodes, or SLM policies. Individual issues can be further expanded to get more details and guided troubleshooting.
 
-:::{image} /images/cloud-es-health-page-table.png
+:::{image} /deploy-manage/images/cloud-es-health-page-table.png
 :alt: {{es}} Health page with details and troubleshooting
 :::
 
@@ -121,7 +121,7 @@ Elastic Cloud allows smaller instance sizes to get temporarily boosted vCPU when
 
 You can check the **Monitoring > Performance > CPU Credits** section of the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body), and find the related metrics:
 
-:::{image} /images/cloud-metrics-credits.png
+:::{image} /deploy-manage/images/cloud-metrics-credits.png
 :alt: CPU usage versus CPU credits over time
 :::
 

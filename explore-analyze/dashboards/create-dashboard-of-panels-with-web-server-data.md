@@ -51,7 +51,7 @@ To create the visualizations in this tutorial, you’ll use the following fields
 
 Click a field name to view more details, such as its top values and distribution.
 
-:::{image} ../../images/tutorial-field-more-info.gif
+:::{image} /explore-analyze/images/tutorial-field-more-info.gif
 :alt: Clicking a field name to view more details
 :screenshot:
 :width: 50%
@@ -101,7 +101,7 @@ To visualize the **bytes** field over time:
 
 3. To zoom in on the data, click and drag your cursor across the bars.
 
-   :::{image} ../../images/kibana-lens_end_to_end_3_1_1.gif
+   :::{image} /explore-analyze/images/kibana-lens_end_to_end_3_1_1.gif
    :alt: Zoom in on the data
    :screenshot:
    :::
@@ -143,7 +143,7 @@ To save space on the dashboard, hide the axis labels.
 
 Since you removed the axis labels, add a panel title:
 
-1. Hover over the panel and click ![Settings icon](../../images/kibana-settings-icon-hover-action.png ""). The **Settings** flyout appears.
+1. Hover over the panel and click ![Settings icon](/explore-analyze/images/kibana-settings-icon-hover-action.png ""). The **Settings** flyout appears.
 2. In the **Title** field, enter `Median of bytes`, then click **Apply**.
 
    :::{image} ../../images/kibana-lens_lineChartMetricOverTime_8.4.0.png
@@ -229,7 +229,7 @@ Specify the file size ranges:
     * **Ranges** — `10240` → `+∞`
     * **Label** — `Above 10KB`
 
-      :::{image} ../../images/kibana-lens_end_to_end_6_1.png
+      :::{image} /explore-analyze/images/kibana-lens_end_to_end_6_1.png
       :alt: Custom ranges configuration
       :screenshot:
       :::
@@ -250,7 +250,7 @@ To display the values as a percentage of the sum of all values, use the **Pie** 
 
 Add a panel title:
 
-1. Hover over the panel and click ![Settings icon](../../images/kibana-settings-icon-hover-action.png ""). The **Settings** flyout appears.
+1. Hover over the panel and click ![Settings icon](/explore-analyze/images/kibana-settings-icon-hover-action.png ""). The **Settings** flyout appears.
 2. In the **Title** field, enter `Sum of bytes from large requests`, then click **Apply**.
 
 
@@ -279,7 +279,7 @@ The distribution of a number can help you find patterns. For example, you can an
 
 Add a panel title:
 
-1. Hover over the panel and click ![Settings icon](../../images/kibana-settings-icon-hover-action.png ""). The **Settings** flyout appears.
+1. Hover over the panel and click ![Settings icon](/explore-analyze/images/kibana-settings-icon-hover-action.png ""). The **Settings** flyout appears.
 2. In the **Title** field, enter `Website traffic`, then click **Apply**.
 
 
@@ -317,7 +317,7 @@ Add the user geography grouping:
 1. From the **Available fields** list, drag **geo.srcdest** to the workspace.
 2. To change the **Group by** order, drag **Top 3 values of geo.srcdest** in the layer pane so that appears first.
 
-   :::{image} ../../images/kibana-lens_end_to_end_7_2.png
+   :::{image} /explore-analyze/images/kibana-lens_end_to_end_7_2.png
    :alt: Treemap visualization
    :screenshot:
    :width: 50%
@@ -339,7 +339,7 @@ Remove the documents that do not match the filter criteria:
 
 Add a panel title:
 
-1. Hover over the panel and click ![Settings icon](../../images/kibana-settings-icon-hover-action.png ""). The **Settings** flyout appears.
+1. Hover over the panel and click ![Settings icon](/explore-analyze/images/kibana-settings-icon-hover-action.png ""). The **Settings** flyout appears.
 2. In the **Title** field, enter `Page views by location and referrer`, then click **Apply**.
 
 
@@ -370,6 +370,6 @@ Now that you have a complete overview of your web server data, save the dashboar
 3. Select **Store time with dashboard**.
 4. Click **Save**. You will be identified as the **creator** of the dashboard. If you or another user edit the dashboard, you can also view the **last editor** when checking the dashboard information.
 
-:::{image} ../../images/kibana-dashboard-creator-editor.png
+:::{image} /explore-analyze/images/kibana-dashboard-creator-editor.png
 :alt: Information panel of a dashboard showing its creator and last editor
 :::

@@ -23,7 +23,7 @@ When you view your {{ml}} results, each bucket has an anomaly score. This score 
 
 The {{ml}} analytics enhance the anomaly score for each bucket by considering contiguous buckets. This extra *multi-bucket analysis* effectively uses a sliding window to evaluate the events in each bucket relative to the larger context of recent events. When you review your {{ml}} results, there is a `multi_bucket_impact` property that indicates how strongly the final anomaly score is influenced by multi-bucket analysis. In {{kib}}, anomalies with medium or high multi-bucket impact are depicted in the **Anomaly Explorer** and the **Single Metric Viewer** with a cross symbol instead of a dot. For example:
 
-:::{image} ../../../images/machine-learning-multibucketanalysis.jpg
+:::{image} /explore-analyze/images/machine-learning-multibucketanalysis.jpg
 :alt: Examples of anomalies with multi-bucket impact in {{kib}}
 :screenshot:
 :::
@@ -34,7 +34,7 @@ Both the **Anomaly Explorer** and the **Single Metric Viewer** contain an **Anom
 
 If you have [{{anomaly-detect-cap}} alert rules](https://www.elastic.co/guide/en/machine-learning/current/creating-anomaly-alert-rules.html) applied to an {{anomaly-job}} and an alert has occured for the rule, you can view how the alert correlates with the {{anomaly-detect}} results in the **Anomaly Explorer** by using the **Anomaly timeline** swimlane and the **Alerts** panel. The **Alerts** panel contains a line chart with the alerts count over time. The cursor on the line chart is in sync with the anomaly swimlane making it easier to review anomalous buckets with the spike produced by the alerts. The panel also contains aggregated information for each alert rule associated with the job selection such as the total number of active, recovered, and untracked alerts for the selected job and time range. An alert context menu is displayed when an anomaly swimlane cell is selected with alerts in the chosen time range. The context menu contains the alert counters for the selected time buckets.
 
-:::{image} ../../../images/machine-learning-anomaly-explorer-alerts.png
+:::{image} /explore-analyze/images/machine-learning-anomaly-explorer-alerts.png
 :alt: Alerts table in the Anomaly Explorer
 :screenshot:
 :::
@@ -49,7 +49,7 @@ The influencer results show which entities were anomalous and when. One influenc
 
 For example, the `high_sum_total_sales` {{anomaly-job}} for the eCommerce orders sample data uses `customer_full_name.keyword` and `category.keyword` as influencers. You can examine the influencer results with the [get influencers API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-get-influencers). Alternatively, you can use the **Anomaly Explorer** in {{kib}}:
 
-:::{image} ../../../images/machine-learning-influencers.jpg
+:::{image} /explore-analyze/images/machine-learning-influencers.jpg
 :alt: Influencers in the {{kib}} Anomaly Explorer
 :screenshot:
 :::

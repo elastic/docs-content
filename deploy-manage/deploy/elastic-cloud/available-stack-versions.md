@@ -4,6 +4,7 @@ applies_to:
     ess: ga
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-version-policy.html
+  - https://www.elastic.co/guide/en/cloud-heroku/current/ech-version-policy.html
 ---
 
 # Available stack versions [ec-version-policy]
