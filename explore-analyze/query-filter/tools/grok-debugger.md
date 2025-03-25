@@ -45,7 +45,7 @@ If you’re using {{stack-security-features}}, you must have the `manage_pipelin
 
    You’ll see the simulated event that results from applying the grok pattern.
 
-   :::{image} ../../../images/kibana-grok-debugger-overview.png
+   :::{image} /explore-analyze/images/kibana-grok-debugger-overview.png
    :alt: Grok Debugger
    :screenshot:
    :::
@@ -87,7 +87,7 @@ Follow this example to define a custom pattern.
 
    You’ll see the simulated output event that results from applying the grok pattern that contains the custom pattern:
 
-   :::{image} ../../../images/kibana-grok-debugger-custom-pattern.png
+   :::{image} /explore-analyze/images/kibana-grok-debugger-custom-pattern.png
    :alt: Debugging a custom pattern
    :screenshot:
    :::

@@ -11,7 +11,7 @@ mapped_urls:
 
 {{ece}} (ECE) is an Elastic self-managed solution for deploying, orchestrating, and managing {{es}} clusters at scale. It provides a centralized platform that allows organizations to run {{es}}, {{kib}}, and other {{stack}} components across multiple machines.
 
-ECE evolves from the Elastic hosted Cloud SaaS offering into a standalone product. You can deploy ECE on public or private clouds, virtual machines, or your own premises.
+ECE evolves from the [{{ech}}](./elastic-cloud.md) offering into a standalone product. You can deploy ECE on public or private clouds, virtual machines, or your own premises.
 
 With {{ece}}, you can:
 
@@ -51,7 +51,7 @@ The section covers the following tasks:
 * [Work with deployments](./cloud-enterprise/working-with-deployments.md)
   - Use [](./cloud-enterprise/deployment-templates.md) to [](./cloud-enterprise/create-deployment.md)
   - [](./cloud-enterprise/customize-deployment.md)
-  - Use the deployment [Cloud ID](./cloud-enterprise/find-cloud-id.md) and [Endpoint URLs](./cloud-enterprise/find-endpoint-url.md) for clients connection
+  - [Connect your applications to {{es}}](./cloud-enterprise/connect-elasticsearch.md)
 
 * Learn about [](./cloud-enterprise/tools-apis.md) that you can use with ECE
 

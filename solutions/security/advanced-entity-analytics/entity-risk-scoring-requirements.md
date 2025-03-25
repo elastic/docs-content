@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/ers-requirements.html
   - https://www.elastic.co/guide/en/serverless/current/security-ers-requirements.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Entity risk scoring requirements

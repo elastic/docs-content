@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/response-actions-history.html
   - https://www.elastic.co/guide/en/serverless/current/security-response-actions-history.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Response actions history
@@ -21,7 +25,7 @@ To access the response actions history for all endpoints, find **Response action
 
 All of these contexts contain the same information and features. The following image shows the **Response actions history** page for all endpoints:
 
-:::{image} ../../../images/security-response-actions-history-page.png
+:::{image} /solutions/images/security-response-actions-history-page.png
 :alt: Response actions history page UI
 :screenshot:
 :::

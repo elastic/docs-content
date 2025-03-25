@@ -43,7 +43,7 @@ Set the following privileges for the SLO Editor role:
 2. Click **Add index privilege**.
 3. In the **Indices** field, add the indices for which you plan to create SLOs. Then, add `read` and `view_index_metadata` to the **Privileges** field. The following example shows `logs-*`, but you can specify any indices.
 
-    :::{image} ../../../images/observability-slo-es-priv-editor.png
+    :::{image} /solutions/images/observability-slo-es-priv-editor.png
     :alt: Cluster and index privileges for SLO Editor role
     :screenshot:
     :::
@@ -52,7 +52,7 @@ Set the following privileges for the SLO Editor role:
 5. From the **Spaces** dropdown, either select any specific spaces you want the role to apply to, or select **All Spaces**.
 6. Set **Observability → SLOs** to `All`.
 
-    :::{image} ../../../images/observability-slo-kibana-priv-all.png
+    :::{image} /solutions/images/observability-slo-kibana-priv-all.png
     :alt: SLO Kibana all privileges
     :screenshot:
     :::
@@ -66,7 +66,7 @@ Set the following privileges for the SLO Read role:
 
 1. Under **Index privileges** in the **Elasticsearch** section, add `.slo-observability-*` to the **Indices** field and `read` and `view_index_metadata` to the **Privileges** field.
 
-    :::{image} ../../../images/observability-slo-es-priv-viewer.png
+    :::{image} /solutions/images/observability-slo-es-priv-viewer.png
     :alt: Index privileges for SLO Viewer role
     :screenshot:
     :::
@@ -75,7 +75,7 @@ Set the following privileges for the SLO Read role:
 3. From the **Spaces** dropdown, either select any specific spaces you want the role to apply to, or select **All Spaces**.
 4. Set **Observability → SLOs** to `Read`.
 
-    :::{image} ../../../images/observability-slo-kibana-priv-read.png
+    :::{image} /solutions/images/observability-slo-kibana-priv-read.png
     :alt: SLO Kibana read privileges
     :screenshot:
     :::

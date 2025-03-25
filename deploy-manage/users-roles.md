@@ -21,8 +21,8 @@ The methods that you use to authenticate users and control access depends on the
 Preventing unauthorized access is only one element of a complete security strategy. To secure your Elastic environment, you can also do the following:
  
 * Restrict the nodes and clients that can connect to the cluster using [traffic filters](/deploy-manage/security/traffic-filtering.md). 
-* Take steps to maintain your data integrity and confidentiality by [encrypting HTTP and inter-node communications](/deploy-manage/security/secure-endpoints.md), as well as [encrypting your data at rest](/deploy-manage/security/encrypt-deployment.md).
-* Maintain an [audit trail](/deploy-manage/monitor/logging-configuration/security-event-audit-logging.md) for security-related events.
+* Take steps to maintain your data integrity and confidentiality by [encrypting HTTP and inter-node communications](/deploy-manage/security/secure-cluster-communications.md), as well as [encrypting your data at rest](/deploy-manage/security/data-security.md).
+* Maintain an [audit trail](/deploy-manage/security/logging-configuration/security-event-audit-logging.md) for security-related events.
 * Control access to dashboards and other saved objects in your UI using [{{kib}} spaces](/deploy-manage/manage-spaces.md). 
 * Connect your cluster to a [remote cluster](/deploy-manage/remote-clusters.md) to enable cross-cluster replication and search.
 * Manage [API keys](/deploy-manage/api-keys.md) used for programmatic access to Elastic.
@@ -30,10 +30,11 @@ Preventing unauthorized access is only one element of a complete security strate
 
 ## Cloud organization level
 
-:::{applies_to}
-:hosted: all
-:serverless: all
-:::
+```{applies_to}
+deployment:
+  ess: all
+serverless: all
+```
 
 If you’re using {{ecloud}}, then you can perform the following tasks to control access to your Cloud organization, your Cloud Hosted deployments, and your Cloud Serverless projects:
 
@@ -51,9 +52,10 @@ For {{ech}} deployments, you can configure SSO at the organization level, the de
 
 ## Orchestrator level
 
-:::{applies_to}
-:ece: all
-:::
+```{applies_to}
+deployment:
+  ece: all
+```
 
 Control access to your {{ece}} [orchestrator](/deploy-manage/deploy/cloud-enterprise/deploy-an-orchestrator.md) and deployments. 
 
@@ -78,9 +80,9 @@ You can't manage users and roles for {{eck}} clusters at the orchestrator level.
 
 ## Project level
 
-:::{applies_to}
-:serverless: all
-:::
+```{applies_to}
+serverless: all
+```
 
 As an extension of the [predefined instance access roles](/deploy-manage/users-roles/cloud-organization/user-roles.md#ec_instance_access_roles) offered for {{serverless-short}} projects, you can create custom roles at the project level to provide more granular control, and provide users with only the access they need within specific projects.
 
@@ -88,12 +90,13 @@ As an extension of the [predefined instance access roles](/deploy-manage/users-r
 
 ## Cluster or deployment level
 
-:::{applies_to}
-:ece: all
-:hosted: all
-:eck: all
-:stack: all
-:::
+```{applies_to}
+deployment:
+  ece: all
+  ess: all
+  eck: all
+  self: all
+```
 
 Set up authentication and authorization at the cluster or deployment level, and learn about the underlying security technologies that Elasticsearch uses to authenticate and authorize requests internally and across services.
 

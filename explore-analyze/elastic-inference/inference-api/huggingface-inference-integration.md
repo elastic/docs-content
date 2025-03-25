@@ -15,11 +15,9 @@ Refer to the [{{infer-cap}} APIs](https://www.elastic.co/docs/api/doc/elasticsea
 
 Creates an {{infer}} endpoint to perform an {{infer}} task with the `hugging_face` service.
 
-
 ## {{api-request-title}} [infer-service-hugging-face-api-request] 
 
 `PUT /_inference/<task_type>/<inference_id>`
-
 
 ## {{api-path-parms-title}} [infer-service-hugging-face-api-path-params] 
 
@@ -32,8 +30,6 @@ Creates an {{infer}} endpoint to perform an {{infer}} task with the `hugging_fac
     Available task types:
 
     * `text_embedding`.
-
-
 
 ## {{api-request-body-title}} [infer-service-hugging-face-api-request-body] 
 
@@ -52,7 +48,6 @@ Creates an {{infer}} endpoint to perform an {{infer}} task with the `hugging_fac
     `strategy`
     :   (Optional, string) Specifies the chunking strategy. It could be either `sentence` or `word`.
 
-
 `service`
 :   (Required, string) The type of service supported for the specified task type. In this case, `hugging_face`.
 
@@ -63,7 +58,6 @@ Creates an {{infer}} endpoint to perform an {{infer}} task with the `hugging_fac
 
     `api_key`
     :   (Required, string) A valid access token of your Hugging Face account. You can find your Hugging Face access tokens or you can create a new one [on the settings page](https://huggingface.co/settings/tokens).
-
         ::::{important} 
         You need to provide the API key only once, during the {{infer}} model creation. The [Get {{infer}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-get) does not retrieve your API key. After creating the {{infer}} model, you cannot change the associated API key. If you want to use a different API key, delete the {{infer}} model and recreate it with the same name and the updated API key.
         ::::

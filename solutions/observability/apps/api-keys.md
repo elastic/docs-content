@@ -96,7 +96,7 @@ For example, to create an API key that can be used to ingest APM events and read
 
 Click **Create APM Agent key** and copy the Base64 encoded API key. You will need this for the next step, and you will not be able to view it again.
 
-:::{image} ../../../images/observability-apm-ui-api-key.png
+:::{image} /solutions/images/observability-apm-ui-api-key.png
 :alt: Applications UI API key
 :screenshot:
 :::
@@ -110,11 +110,11 @@ You can now apply your newly created API keys in the configuration of each of yo
 * **Go agent**: [`ELASTIC_APM_API_KEY`](apm-agent-go://reference/configuration.md#config-api-key)
 * **.NET agent**: [`ApiKey`](apm-agent-dotnet://reference/config-reporter.md#config-api-key)
 * **iOS**: [`withApiKey`](apm-agent-ios://reference/configuration.md#withapikey)
-* **Java agent**: [`api_key`](asciidocalypse://docs/apm-agent-java/docs/reference/config-reporter.md#config-api-key)
-* **Node.js agent**: [`apiKey`](asciidocalypse://docs/apm-agent-nodejs/docs/reference/configuration.md#api-key)
-* **PHP agent**: [`api_key`](asciidocalypse://docs/apm-agent-php/docs/reference/configuration-reference.md#config-api-key)
-* **Python agent**: [`api_key`](asciidocalypse://docs/apm-agent-python/docs/reference/configuration.md#config-api-key)
-* **Ruby agent**: [`api_key`](asciidocalypse://docs/apm-agent-ruby/docs/reference/configuration.md#config-api-key)
+* **Java agent**: [`api_key`](apm-agent-java://reference/config-reporter.md#config-api-key)
+* **Node.js agent**: [`apiKey`](apm-agent-nodejs://reference/configuration.md#api-key)
+* **PHP agent**: [`api_key`](apm-agent-php://reference/configuration-reference.md#config-api-key)
+* **Python agent**: [`api_key`](apm-agent-python://reference/configuration.md#config-api-key)
+* **Ruby agent**: [`api_key`](apm-agent-ruby://reference/configuration.md#config-api-key)
 
 
 ## Alternate API key creation methods [apm-configure-api-key-alternative]

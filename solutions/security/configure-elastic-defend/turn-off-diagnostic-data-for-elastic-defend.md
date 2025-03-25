@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/endpoint-diagnostic-data.html
   - https://www.elastic.co/guide/en/serverless/current/security-endpoint-diagnostic-data.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Turn off diagnostic data for {{elastic-defend}} [endpoint-diagnostic-data]

@@ -26,7 +26,7 @@ When using {{ecloud}}, there are some limitations you should be aware of:
 * [Regions and Availability Zones](#ec-regions-and-availability-zone)
 % * [Known problems](#ec-known-problems)
 
-For limitations related to logging and monitoring, check the [Restrictions and limitations](../../monitor/stack-monitoring/elastic-cloud-stack-monitoring.md#ec-restrictions-monitoring) section of the logging and monitoring page.
+For limitations related to logging and monitoring, check the [Restrictions and limitations](../../monitor/stack-monitoring/ece-ech-stack-monitoring.md#restrictions-monitoring) section of the logging and monitoring page.
 
 % Occasionally, we also publish information about [Known problems](#ec-known-problems) with our {{ecloud}} or the Elastic Stack.
 
@@ -45,17 +45,17 @@ To learn more about the features that are supported by {{ecloud}}, check [Elasti
 The following restrictions apply when using APIs in {{ecloud}}:
 
 {{ecloud}} API
-:   The {{ecloud}} API is subject to a restriction on the volume of API requests that can be submitted per user, per second. Check [Rate limiting](asciidocalypse://docs/cloud/docs/reference/cloud-hosted/ec-api-rate-limiting.md) for details.
+:   The {{ecloud}} API is subject to a restriction on the volume of API requests that can be submitted per user, per second. Check [Rate limiting](cloud://reference/cloud-hosted/ec-api-rate-limiting.md) for details.
 
 $$$ec-restrictions-apis-elasticsearch$$$
 
 Elasticsearch APIs
-:   The Elasticsearch APIs do not natively enforce rate limiting. However, all requests to the Elasticsearch cluster are subject to Elasticsearch configuration settings, such as the [network HTTP setting](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md#http-settings) `http:max_content_length` which restricts the maximum size of an HTTP request body. This setting has a default value of 100MB, hence restricting API request payloads to that size. This setting is not currently configurable in {{ecloud}}. For a list of which Elasticsearch settings are supported on Cloud, check [Add Elasticsearch user settings](edit-stack-settings.md). To learn about using the Elasticsearch APIs in {{ecloud}}, check [Access the Elasticsearch API console](asciidocalypse://docs/cloud/docs/reference/cloud-hosted/ec-api-console.md). And, for full details about the Elasticsearch APIs and their endpoints, check the [Elasticsearch API reference documentation](elasticsearch://reference/elasticsearch/rest-apis/index.md).
+:   The Elasticsearch APIs do not natively enforce rate limiting. However, all requests to the Elasticsearch cluster are subject to Elasticsearch configuration settings, such as the [network HTTP setting](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md#http-settings) `http:max_content_length` which restricts the maximum size of an HTTP request body. This setting has a default value of 100MB, hence restricting API request payloads to that size. This setting is not currently configurable in {{ecloud}}. For a list of which Elasticsearch settings are supported on Cloud, check [Add Elasticsearch user settings](edit-stack-settings.md). To learn about using the Elasticsearch APIs in {{ecloud}}, check [Access the Elasticsearch API console](cloud://reference/cloud-hosted/ec-api-console.md). And, for full details about the Elasticsearch APIs and their endpoints, check the [Elasticsearch API reference documentation](elasticsearch://reference/elasticsearch/rest-apis/index.md).
 
 $$$ec-restrictions-apis-kibana$$$
 
 Kibana APIs
-:   There are no rate limits restricting your use of the Kibana APIs. However, Kibana features are affected by the [Kibana configuration settings](../self-managed/configure.md), not all of which are supported in {{ecloud}}. For a list of what settings are currently supported, check [Add Kibana user settings](edit-stack-settings.md). For all details about using the Kibana APIs, check the [Kibana API reference documentation](https://www.elastic.co/guide/en/kibana/current/api.html).
+:   There are no rate limits restricting your use of the Kibana APIs. However, Kibana features are affected by the [Kibana configuration settings](kibana://reference/configuration-reference.md), not all of which are supported in {{ecloud}}. For a list of what settings are currently supported, check [Add Kibana user settings](edit-stack-settings.md). For all details about using the Kibana APIs, check the [Kibana API reference documentation](https://www.elastic.co/docs/api/doc/kibana/).
 
 
 ## Transport client [ec-restrictions-transport-client]
@@ -134,7 +134,7 @@ There are situations where you may need or want to move your installed {{agents}
 
 In {{ecloud}}, you can migrate your {{agents}} by taking a snapshot of your source deployment, and restoring it on a target deployment.
 
-To make a seamless migration, after restoring from a snapshot there are some additional steps required, such as updating settings and resetting the agent policy. Check [Migrate Elastic Agents](/reference/ingestion-tools/fleet/migrate-elastic-agent.md) for details.
+To make a seamless migration, after restoring from a snapshot there are some additional steps required, such as updating settings and resetting the agent policy. Check [Migrate Elastic Agents](/reference/fleet/migrate-elastic-agent.md) for details.
 
 
 ## Regions and Availability Zones [ec-regions-and-availability-zone]

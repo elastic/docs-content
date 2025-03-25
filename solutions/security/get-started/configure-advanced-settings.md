@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/advanced-settings.html
   - https://www.elastic.co/guide/en/serverless/current/security-advanced-settings.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Configure advanced settings [security-advanced-settings]
@@ -36,7 +40,7 @@ Modifying advanced settings can affect Kibana performance and cause problems tha
 
 To access advanced settings, go to **Stack Management** → **Advanced Settings**, then scroll down to **Security Solution** settings.
 
-:::{image} ../../../images/security-solution-advanced-settings.png
+:::{image} /solutions/images/security-solution-advanced-settings.png
 :alt: solution advanced settings
 :screenshot:
 :::
@@ -61,7 +65,7 @@ Index patterns use wildcards to specify a set of indices. For example, the `file
 ::::
 
 
-All of the default index patterns match [{{beats}}](asciidocalypse://docs/beats/docs/reference/index.md) and [{{agent}}](/reference/ingestion-tools/fleet/index.md) indices. This means all data shipped via {{beats}} and the {{agent}} is automatically added to the {{security-app}}.
+All of the default index patterns match [{{beats}}](beats://reference/index.md) and [{{agent}}](/reference/fleet/index.md) indices. This means all data shipped via {{beats}} and the {{agent}} is automatically added to the {{security-app}}.
 
 You can add or remove any indices and index patterns as required. In {{serverless-short}}, the maximum number of items that you can include in a comma-delimited list is 50. In {{stack}}, there is no limit. For more information on {{es}} indices, refer to [Data in: documents and indices](/manage-data/data-store/index-basics.md).
 

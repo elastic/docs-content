@@ -19,12 +19,12 @@ Use the information in this section to inspect Elasticsearch requests and find s
 
 Maps uses the [{{es}} vector tile search API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search-mvt) and the [{{es}} search API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search) to get documents and aggregation results from {{es}}. Use **Vector tiles** inspector to view {{es}} vector tile search API requests. Use **Requests** inspector to view {{es}} search API requests.
 
-:::{image} ../../../images/kibana-vector_tile_inspector.png
+:::{image} /explore-analyze/images/kibana-vector_tile_inspector.png
 :alt: vector tile inspector
 :screenshot:
 :::
 
-:::{image} ../../../images/kibana-requests_inspector.png
+:::{image} /explore-analyze/images/kibana-requests_inspector.png
 :alt: requests inspector
 :screenshot:
 :::
@@ -47,7 +47,7 @@ Maps uses the [{{es}} vector tile search API](https://www.elastic.co/docs/api/do
     * Ensure your geospatial field is searchable and aggregatable.
     * If your geospatial field type does not match your Elasticsearch mapping, click the **Refresh** button to refresh the field list from Elasticsearch.
 
-* Data views with thousands of fields can exceed the default maximum payload size. Increase [`server.maxPayload`](../../../deploy-manage/deploy/self-managed/configure.md) for large data views.
+* Data views with thousands of fields can exceed the default maximum payload size. Increase [`server.maxPayload`](kibana://reference/configuration-reference/general-settings.md) for large data views.
 
 
 ### Features are not displayed [_features_are_not_displayed]

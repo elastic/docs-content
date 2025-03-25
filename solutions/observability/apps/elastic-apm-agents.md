@@ -33,12 +33,12 @@ Spans are grouped in transactions—by default, one for each incoming HTTP reque
 
 If you're ready to give Elastic APM a try, see [Get started with traces and APM](../../../solutions/observability/apps/get-started-with-apm.md).
 
-See the [Java agent reference](asciidocalypse://docs/apm-agent-java/docs/reference/index.md) for full documentation, including:
+See the [Java agent reference](apm-agent-java://reference/index.md) for full documentation, including:
 
-* [Supported technologies](asciidocalypse://docs/apm-agent-java/docs/reference/supported-technologies.md)
-* [Set up](asciidocalypse://docs/apm-agent-java/docs/reference/set-up-apm-java-agent.md)
-* [Configuration reference](asciidocalypse://docs/apm-agent-java/docs/reference/configuration.md)
-* [API reference](asciidocalypse://docs/apm-agent-java/docs/reference/tracing-apis.md)
+* [Supported technologies](apm-agent-java://reference/supported-technologies.md)
+* [Set up](apm-agent-java://reference/set-up-apm-java-agent.md)
+* [Configuration reference](apm-agent-java://reference/configuration.md)
+* [API reference](apm-agent-java://reference/tracing-apis.md)
 
 ::::{important}
 Not all APM agent configuration options are compatible with Elastic Cloud serverless.
@@ -59,12 +59,12 @@ These events, called Transactions and Spans, are sent to Elastic, where they're 
 
 If you’re ready to give Elastic APM a try, see [Get started with traces and APM](../../../solutions/observability/apps/get-started-with-apm.md).
 
-See the [Node.js agent reference](asciidocalypse://docs/apm-agent-nodejs/docs/reference/index.md) for full documentation, including:
+See the [Node.js agent reference](apm-agent-nodejs://reference/index.md) for full documentation, including:
 
-* [Supported technologies](asciidocalypse://docs/apm-agent-nodejs/docs/reference/supported-technologies.md)
-* [Set up](asciidocalypse://docs/apm-agent-nodejs/docs/reference/set-up.md)
-* [Configuration reference](asciidocalypse://docs/apm-agent-nodejs/docs/reference/advanced-setup.md)
-* [API reference](asciidocalypse://docs/apm-agent-nodejs/docs/reference/api.md)
+* [Supported technologies](apm-agent-nodejs://reference/supported-technologies.md)
+* [Set up](apm-agent-nodejs://reference/set-up.md)
+* [Configuration reference](apm-agent-nodejs://reference/advanced-setup.md)
+* [API reference](apm-agent-nodejs://reference/api.md)
 
 ::::{important}
 Not all APM agent configuration options are compatible with Elastic Cloud serverless.
@@ -89,12 +89,12 @@ In addition to APM and error data, the Python agent also collects system and app
 
 If you’re ready to give Elastic APM a try, see [Get started with traces and APM](../../../solutions/observability/apps/get-started-with-apm.md).
 
-See the [Python agent reference](asciidocalypse://docs/apm-agent-python/docs/reference/index.md) for full documentation, including:
+See the [Python agent reference](apm-agent-python://reference/index.md) for full documentation, including:
 
-* [Supported technologies](asciidocalypse://docs/apm-agent-python/docs/reference/supported-technologies.md)
-* [Set up](asciidocalypse://docs/apm-agent-python/docs/reference/set-up-apm-python-agent.md)
-* [Configuration reference](asciidocalypse://docs/apm-agent-python/docs/reference/configuration.md)
-* [API reference](asciidocalypse://docs/apm-agent-python/docs/reference/api-reference.md)
+* [Supported technologies](apm-agent-python://reference/supported-technologies.md)
+* [Set up](apm-agent-python://reference/set-up-apm-python-agent.md)
+* [Configuration reference](apm-agent-python://reference/configuration.md)
+* [API reference](apm-agent-python://reference/api-reference.md)
 
 ::::{important}
 Not all APM agent configuration options are compatible with Elastic Cloud serverless.
@@ -115,12 +115,12 @@ These events, called Transactions and Spans, are sent to Elastic, where they're 
 
 If you're ready to give Elastic APM a try, see [Get started with traces and APM](../../../solutions/observability/apps/get-started-with-apm.md).
 
-See the [Ruby agent reference](asciidocalypse://docs/apm-agent-ruby/docs/reference/index.md) for full documentation, including:
+See the [Ruby agent reference](apm-agent-ruby://reference/index.md) for full documentation, including:
 
-* [Supported technologies](asciidocalypse://docs/apm-agent-ruby/docs/reference/supported-technologies.md)
-* [Set up](asciidocalypse://docs/apm-agent-ruby/docs/reference/set-up-apm-ruby-agent.md)
-* [Configuration reference](asciidocalypse://docs/apm-agent-ruby/docs/reference/configuration.md)
-* [API reference](asciidocalypse://docs/apm-agent-ruby/docs/reference/api-reference.md)
+* [Supported technologies](apm-agent-ruby://reference/supported-technologies.md)
+* [Set up](apm-agent-ruby://reference/set-up-apm-ruby-agent.md)
+* [Configuration reference](apm-agent-ruby://reference/configuration.md)
+* [API reference](apm-agent-ruby://reference/api-reference.md)
 
 ::::{important}
 Not all APM agent configuration options are compatible with Elastic Cloud serverless.
@@ -193,12 +193,12 @@ The Elastic APM PHP agent measures application performance and tracks errors. Th
 
 If you're ready to give Elastic APM a try, see [Get started with traces and APM](../../../solutions/observability/apps/get-started-with-apm.md).
 
-See the [PHP agent reference](asciidocalypse://docs/apm-agent-php/docs/reference/index.md)  for full documentation, including:
+See the [PHP agent reference](apm-agent-php://reference/index.md)  for full documentation, including:
 
-* [Supported technologies](asciidocalypse://docs/apm-agent-php/docs/reference/supported-technologies.md)
-* [Set up](asciidocalypse://docs/apm-agent-php/docs/reference/set-up-apm-php-agent.md)
-* [Configuration reference](asciidocalypse://docs/apm-agent-php/docs/reference/configuration.md)
-* [API reference](asciidocalypse://docs/apm-agent-php/docs/reference/public-api.md)
+* [Supported technologies](apm-agent-php://reference/supported-technologies.md)
+* [Set up](apm-agent-php://reference/set-up-apm-php-agent.md)
+* [Configuration reference](apm-agent-php://reference/configuration.md)
+* [API reference](apm-agent-php://reference/public-api.md)
 
 ::::{important}
 Not all APM agent configuration options are compatible with Elastic Cloud serverless.

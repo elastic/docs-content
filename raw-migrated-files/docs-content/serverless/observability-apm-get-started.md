@@ -118,12 +118,12 @@ To send APM data to Elastic, you must install an APM agent and configure it to s
         java -javaagent:/path/to/elastic-apm-agent-<version>.jar -Delastic.apm.service_name=my-cool-service -Delastic.apm.application_packages=org.example,org.another.example -Delastic.apm.server_url=http://127.0.0.1:8200 -jar my-application.jar
         ```
 
-        Refer to [Manual setup with `-javaagent` flag](asciidocalypse://docs/apm-agent-java/docs/reference/setup-javaagent.md) to learn more.
+        Refer to [Manual setup with `-javaagent` flag](apm-agent-java://reference/setup-javaagent.md) to learn more.
 
         **Alternate setup methods**
 
-        * **Automatic setup with `apm-agent-attach-cli.jar`** Automatically set up the agent without needing to alter the configuration of your JVM or application server. This method requires no changes to application code or JVM options, and allows attaching to a running JVM. Refer to the [Java agent documentation](asciidocalypse://docs/apm-agent-java/docs/reference/setup-attach-cli.md) for more information on this setup method.
-        * **Programmatic API setup to self-attach** Set up the agent with a one-line code change and an extra `apm-agent-attach` dependency. This method requires no changes to JVM options, and the agent artifact is embedded within the packaged application binary. Refer to the [Java agent documentation](asciidocalypse://docs/apm-agent-java/docs/reference/setup-attach-api.md) for more information on this setup method.
+        * **Automatic setup with `apm-agent-attach-cli.jar`** Automatically set up the agent without needing to alter the configuration of your JVM or application server. This method requires no changes to application code or JVM options, and allows attaching to a running JVM. Refer to the [Java agent documentation](apm-agent-java://reference/setup-attach-cli.md) for more information on this setup method.
+        * **Programmatic API setup to self-attach** Set up the agent with a one-line code change and an extra `apm-agent-attach` dependency. This method requires no changes to JVM options, and the agent artifact is embedded within the packaged application binary. Refer to the [Java agent documentation](apm-agent-java://reference/setup-attach-api.md) for more information on this setup method.
 
           </div>
           <div tabindex="0" role="tabpanel" id="apm-apm-get-started-net-panel" aria-labelledby="apm-apm-get-started-net-button" hidden="">
@@ -175,9 +175,9 @@ To send APM data to Elastic, you must install an APM agent and configure it to s
 
         **Learn more in the {{apm-agent}} reference**
 
-        * [Supported technologies](asciidocalypse://docs/apm-agent-nodejs/docs/reference/supported-technologies.md)
-        * [Babel/ES Modules](asciidocalypse://docs/apm-agent-nodejs/docs/reference/advanced-setup.md)
-        * [Advanced configuration](asciidocalypse://docs/apm-agent-nodejs/docs/reference/configuring-agent.md)
+        * [Supported technologies](apm-agent-nodejs://reference/supported-technologies.md)
+        * [Babel/ES Modules](apm-agent-nodejs://reference/advanced-setup.md)
+        * [Advanced configuration](apm-agent-nodejs://reference/configuring-agent.md)
 
           </div>
           <div tabindex="0" role="tabpanel" id="apm-apm-get-started-php-panel" aria-labelledby="apm-apm-get-started-php-button" hidden="">
@@ -247,12 +247,12 @@ To send APM data to Elastic, you must install an APM agent and configure it to s
 
         **Learn more in the {{apm-agent}} reference**
 
-        * [Supported technologies](asciidocalypse://docs/apm-agent-php/docs/reference/supported-technologies.md)
-        * [Configuration](asciidocalypse://docs/apm-agent-python/docs/reference/configuration.md)
+        * [Supported technologies](apm-agent-php://reference/supported-technologies.md)
+        * [Configuration](apm-agent-python://reference/configuration.md)
 
           </div>
           <div tabindex="0" role="tabpanel" id="apm-apm-get-started-python-panel" aria-labelledby="apm-apm-get-started-python-button" hidden="">
-        Django and Flask are two of several frameworks that the Elastic APM Python Agent supports. For a complete list of supported technologies, refer to the [Elastic APM Python Agent documentation](asciidocalypse://docs/apm-agent-python/docs/reference/supported-technologies.md).
+        Django and Flask are two of several frameworks that the Elastic APM Python Agent supports. For a complete list of supported technologies, refer to the [Elastic APM Python Agent documentation](apm-agent-python://reference/supported-technologies.md).
 
         *Django*
 
@@ -337,8 +337,8 @@ To send APM data to Elastic, you must install an APM agent and configure it to s
 
         **Learn more in the {{apm-agent}} reference**
 
-        * [Supported technologies](asciidocalypse://docs/apm-agent-python/docs/reference/supported-technologies.md)
-        * [Advanced configuration](asciidocalypse://docs/apm-agent-python/docs/reference/configuration.md)
+        * [Supported technologies](apm-agent-python://reference/supported-technologies.md)
+        * [Advanced configuration](apm-agent-python://reference/configuration.md)
 
           </div>
           <div tabindex="0" role="tabpanel" id="apm-apm-get-started-ruby-panel" aria-labelledby="apm-apm-get-started-ruby-button" hidden="">
@@ -412,8 +412,8 @@ To send APM data to Elastic, you must install an APM agent and configure it to s
 
         **Learn more in the {{apm-agent}} reference**
 
-        * [Supported technologies](asciidocalypse://docs/apm-agent-ruby/docs/reference/supported-technologies.md)
-        * [Advanced configuration](asciidocalypse://docs/apm-agent-ruby/docs/reference/configuration.md)
+        * [Supported technologies](apm-agent-ruby://reference/supported-technologies.md)
+        * [Advanced configuration](apm-agent-ruby://reference/configuration.md)
 
           </div>
           <div tabindex="0" role="tabpanel" id="apm-apm-get-started-opentelemetry-panel" aria-labelledby="apm-apm-get-started-opentelemetry-button" hidden="">

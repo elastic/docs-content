@@ -9,7 +9,7 @@ mapped_pages:
 # Create a log threshold rule [logs-threshold-alert]
 
 
-:::{image} ../../../images/observability-log-threshold-alert.png
+:::{image} /solutions/images/observability-log-threshold-alert.png
 :alt: Log threshold alert configuration
 :screenshot:
 :::
@@ -60,7 +60,7 @@ When group by fields are selected, but no documents contain the selected field(s
 ::::
 
 
-:::{image} ../../../images/observability-log-threshold-alert-group-by.png
+:::{image} /solutions/images/observability-log-threshold-alert-group-by.png
 :alt: Log threshold rule group by
 :screenshot:
 :::
@@ -70,7 +70,7 @@ When group by fields are selected, but no documents contain the selected field(s
 
 To determine how many log entries would match each part of your configuration, you can view a chart preview for each condition. This is useful for determining how many log entries would match each part of your configuration. When a group by is set, the chart displays a bar per group. To view the preview, select the arrow next to the condition.
 
-:::{image} ../../../images/observability-log-threshold-alert-chart-previews.png
+:::{image} /solutions/images/observability-log-threshold-alert-chart-previews.png
 :alt: Log threshold chart previews
 :screenshot:
 :::
@@ -84,7 +84,7 @@ To understand how one query compares to another query, create a ratio rule. This
 
 The following example triggers an alert when there are twice as many error logs to warning logs.
 
-:::{image} ../../../images/observability-log-threshold-alert-ratio.png
+:::{image} /solutions/images/observability-log-threshold-alert-ratio.png
 :alt: Log threshold ratio rule
 :screenshot:
 :::
@@ -127,7 +127,7 @@ Some connector types are paid commercial features, while others are free. For a 
 
 After you select a connector, you must set the action frequency. You can choose to create a summary of alerts on each check interval or on a custom interval. Alternatively, you can set the action frequency such that you choose how often the action runs (for example, at each check interval, only when the alert status changes, or at a custom action interval). In this case, you must also select the specific threshold condition that affects when actions run: `Fired` or `Recovered`.
 
-:::{image} ../../../images/observability-log-threshold-run-when-selection.png
+:::{image} /solutions/images/observability-log-threshold-run-when-selection.png
 :alt: Configure when a rule is triggered
 :screenshot:
 :::
@@ -137,7 +137,7 @@ You can also further refine the conditions under which actions run by specifying
 * **If alert matches query**: Enter a KQL query that defines field-value pairs or query conditions that must be met for notifications to send. The query only searches alert documents in the indices specified for the rule.
 * **If alert is generated during timeframe**: Set timeframe details. Notifications are only sent if alerts are generated within the timeframe you define.
 
-:::{image} ../../../images/observability-logs-threshold-conditional-alert.png
+:::{image} /solutions/images/observability-logs-threshold-conditional-alert.png
 :alt: Configure a conditional alert
 :screenshot:
 :::
@@ -147,7 +147,7 @@ You can also further refine the conditions under which actions run by specifying
 
 Use the default notification message or customize it. You can add more context to the message by clicking the icon above the message text box and selecting from a list of available variables.
 
-:::{image} ../../../images/observability-logs-threshold-alert-default-message.png
+:::{image} /solutions/images/observability-logs-threshold-alert-default-message.png
 :alt: Default notification message for log threshold rules with open "Add variable" popup listing available action variables
 :screenshot:
 :::
@@ -191,7 +191,7 @@ When setting a **group by**, we recommend using the **more than** comparator for
 
 When a rule check is performed, a query is built based on the configuration of the rule. For the vast majority of cases it shouldn’t be necessary to know what these queries are. However, to determine an optimal configuration or to aid with debugging, it might be useful to see the structure of these queries. Below is an example {{es}} query for the following configuration:
 
-:::{image} ../../../images/observability-log-threshold-alert-es-query-ungrouped.png
+:::{image} /solutions/images/observability-log-threshold-alert-es-query-ungrouped.png
 :alt: Log threshold ungrouped {{es}} query example
 :screenshot:
 :::
@@ -243,7 +243,7 @@ When a rule check is performed, a query is built based on the configuration of t
 2. Taken from the **Timestamp** setting
 
 
-:::{image} ../../../images/observability-log-threshold-alert-es-query-grouped.png
+:::{image} /solutions/images/observability-log-threshold-alert-es-query-grouped.png
 :alt: Log threshold grouped {{es}} query example
 :screenshot:
 :::

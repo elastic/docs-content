@@ -1,4 +1,5 @@
 ---
+navigation_title: Configure plugins and extensions
 applies_to:
   deployment:
     ece:
@@ -7,6 +8,10 @@ applies_to:
 # Add plugins and extensions [ece-adding-plugins]
 
 Plugins extend the core functionality of {{es}}. {{ece}} makes it easy to add plugins to your deployment by providing a number of plugins that work with your version of {{es}}. One advantage of these plugins is that you generally don’t have to worry about upgrading plugins when upgrading to a new {{es}} version, unless there are breaking changes. The plugins are upgraded along with the rest of your deployment.
+
+::::{note}
+This page refers to {{es}} plugins that come built-in with the {{ece}} platform. For details on adding other plugins, refer to [](./add-custom-bundles-plugins.md).
+::::
 
 Adding plugins to a deployment is as simple as selecting it from the list of available plugins, but different versions of {{es}} support different plugins. Plugins are available for different purposes, such as:
 
@@ -21,7 +26,7 @@ You can also [create](elasticsearch://extend/index.md) and add custom plugins.
 To add plugins when creating a new deployment:
 
 1. [Log into the Cloud UI](/deploy-manage/deploy/cloud-enterprise/log-into-cloud-ui.md) and select **Create deployment**.
-2. Make your initial deployment selections, then select **Customize Deployment**.
+2. Make your initial deployment selections, then select **Advanced settings**.
 3. Beneath the {{es}} master node, expand the **Manage plugins and settings** caret.
 4. Select the plugins you want.
 5. Select **Create deployment**.

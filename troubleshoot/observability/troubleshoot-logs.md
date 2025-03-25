@@ -3,6 +3,10 @@ navigation_title: Logs
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/logs-troubleshooting.html
   - https://www.elastic.co/guide/en/serverless/current/observability-troubleshoot-logs.html
+applies_to:
+  stack: all
+  serverless:
+    observability: all
 ---
 
 # Troubleshoot logs [logs-troubleshooting]
@@ -35,7 +39,7 @@ You need permission to manage API keys
 You need to either:
 
 * Ask an administrator to update your user role to at least **Developer** by going to the user icon on the header bar and opening **Organization** → **Members**. Read more about user roles in [](/deploy-manage/users-roles/cloud-organization/user-roles.md). After your use role is updated, restart the onboarding flow.
-* Get an API key from an administrator and manually add the API to the {{agent}} configuration. See [Configure the {{agent}}](../../raw-migrated-files/docs-content/serverless/observability-stream-log-files.md#observability-stream-log-files-step-3-configure-the-agent) for more on manually updating the configuration and adding the API key.
+* Get an API key from an administrator and manually add the API to the {{agent}} configuration. See [Configure the {{agent}}](/solutions/observability/logs/stream-any-log-file.md#logs-stream-agent-config) for more on manually updating the configuration and adding the API key.
 ::::
 
 ::::{tab-item} {{stack}}
@@ -92,7 +96,7 @@ Failed to connect to {host} port {port} after 0 ms: Connection refused
 
 #### Solution [logs-troubleshooting-kib-not-accessible-solution]
 
-The host needs access to {{kib}} or your project. Port `443` must be open and the deployment’s {{es}} endpoint must be reachable. Locate your project’s endpoint from **Help menu (![help icon](../../images/observability-help-icon.png "")) → Connection details**.
+The host needs access to {{kib}} or your project. Port `443` must be open and the deployment’s {{es}} endpoint must be reachable. Locate your project’s endpoint from **Help menu (![help icon](/troubleshoot/images/observability-help-icon.png "")) → Connection details**.
 
 Run the following command, replacing the URL with your endpoint, and you should get an authentication error with more details on resolving your issue:
 
@@ -160,7 +164,7 @@ If the **Waiting for Logs to be shipped…​** step never completes, logs are n
 
 #### Solution [logs-troubleshooting-wait-for-logs-solution]
 
-Inspect the {{agent}} logs for errors. See the [Debug standalone {{agent}}s](/reference/ingestion-tools/fleet/debug-standalone-agents.md#inspect-standalone-agent-logs) documentation for more on finding errors in {{agent}} logs.
+Inspect the {{agent}} logs for errors. See the [Debug standalone {{agent}}s](/reference/fleet/debug-standalone-agents.md#inspect-standalone-agent-logs) documentation for more on finding errors in {{agent}} logs.
 
 
 ## Mapping and pipeline issues [logs-common-mapping-troubleshooting]

@@ -17,7 +17,7 @@ mapped_urls:
 
 {{kib}} creates a default space for you. When you create more spaces, users are asked to choose a space when they log in, and can change their current space at any time from the top menu.
 
-:::{image} ../images/kibana-change-space.png
+:::{image} /deploy-manage/images/kibana-change-space.png
 :alt: Change current space menu
 :screenshot:
 :::
@@ -131,7 +131,7 @@ You can create a custom experience for users by configuring the {{kib}} landing 
 
 To configure the landing page, use the default route setting in [Stack Management > {{kib}} > Advanced settings](kibana://reference/advanced-settings.md#kibana-general-settings). For example, you might set the default route to `/app/dashboards`.
 
-:::{image} ../images/kibana-spaces-configure-landing-page.png
+:::{image} /deploy-manage/images/kibana-spaces-configure-landing-page.png
 :alt: Configure space-level landing page
 :screenshot:
 :::

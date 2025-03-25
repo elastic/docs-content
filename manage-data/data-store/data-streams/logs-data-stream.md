@@ -96,7 +96,7 @@ On existing data streams, `logsdb` mode is applied on [rollover](../data-streams
 
 ### Optimized routing on sort fields [logsdb-sort-routing]
 
-To reduce the storage footprint of `logsdb` indexes, you can enable routing optimizations. A routing optimization uses the fields in the sort configuration (except for `@timestamp`) to route documents to shards.
+If you have the required [subscription](https://www.elastic.co/subscriptions), you can enable routing optimizations to reduce the storage footprint of `logsdb` indexes. A routing optimization uses the fields in the sort configuration (except for `@timestamp`) to route documents to shards.
 
 In benchmarks, routing optimizations reduced storage requirements by 20% compared to the default `logsdb` configuration, with a negligible penalty to ingestion performance (1-4%). Routing optimizations can benefit data streams that are expected to grow substantially over time. Exact results depend on the sort configuration and the nature of the logged data.
 

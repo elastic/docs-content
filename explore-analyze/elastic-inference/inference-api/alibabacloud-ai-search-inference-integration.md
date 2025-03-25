@@ -76,7 +76,11 @@ Creates an {{infer}} endpoint to perform an {{infer}} task with the `alibabaclou
         * `ops-qwen-turbo`
         * `qwen-turbo`
         * `qwen-plus`
-        * `qwen-max` ÷ `qwen-max-longcontext`
+        * `qwen-max`
+        * `deepseek-r1`
+        * `deepseek-v3`
+        * `deepseek-r1-distill-qwen-7b`
+        * `deepseek-r1-distill-qwen-14b`
 
         For the supported `completion` service_ids, refer to the [documentation](https://help.aliyun.com/zh/open-search/search-platform/developer-reference/text-generation-api-details).
 

@@ -1,11 +1,23 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/high-availability-cluster-design-large-clusters.html
+applies_to:
+  deployment:
+    self: all
+    eck: all
 ---
 
 # Resilience in larger clusters [high-availability-cluster-design-large-clusters]
 
 It’s not unusual for nodes to share common infrastructure, such as network interconnects or a power supply. If so, you should plan for the failure of this infrastructure and ensure that such a failure would not affect too many of your nodes. It is common practice to group all the nodes sharing some infrastructure into *zones* and to plan for the failure of any whole zone at once.
+
+::::{note}
+This document focuses on self-managed {{es}} deployments and describes how {{es}} handles zone-aware resilience internally, including behavior during network partitions, shard allocation strategies, and the role of master-eligible nodes.
+
+This information might also be useful for other deployment types, such as {{eck}}. 
+
+For details on how similar principles are implemented in {{ech}} and {{ece}}, refer to [](./resilience-in-ech.md).
+::::
 
 {{es}} expects node-to-node connections to be reliable, have low latency, and have adequate bandwidth. Many {{es}} tasks require multiple round-trips between nodes. A slow or unreliable interconnect may have a significant effect on the performance and stability of your cluster.
 

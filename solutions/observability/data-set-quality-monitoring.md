@@ -2,7 +2,9 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/observability/current/monitor-datasets.html
   - https://www.elastic.co/guide/en/serverless/current/observability-monitor-datasets.html
-
+applies_to:
+  stack: beta
+  serverless: beta
 navigation_title: "Data set quality"
 applies_to:
   stack: beta
@@ -15,7 +17,7 @@ applies_to:
 
 **Required roles and privileges**
 
-With the `viewer` role, you can view the Data Sets Quality summary.
+With the `viewer` role, users can view the Data Sets Quality summary.
 
 You need the `monitor` [index privilege](../../deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-indices) for the `logs-*-*` index to view the Active Data Sets and Estimated Data summaries on the Data set quality page.
 ::::
@@ -28,9 +30,9 @@ The quality of your data sets is based on the percentage of degraded documents i
 
 From the data set table, you’ll find information for each data set such as its namespace, when the data set was last active, and the percentage of degraded docs. The percentage of degraded documents determines the data set’s quality according to the following scale:
 
-* Good (![Good icon](../../images/serverless-green-dot-icon.png "")): 0% of the documents in the data set are degraded.
-* Degraded (![Degraded icon](../../images/serverless-yellow-dot-icon.png "")): Greater than 0% and up to 3% of the documents in the data set are degraded.
-* Poor (![Poor icon](../../images/serverless-red-dot-icon.png "")): Greater than 3% of the documents in the data set are degraded.
+* Good (![Good icon](/solutions/images/serverless-green-dot-icon.png "")): 0% of the documents in the data set are degraded.
+* Degraded (![Degraded icon](/solutions/images/serverless-yellow-dot-icon.png "")): Greater than 0% and up to 3% of the documents in the data set are degraded.
+* Poor (![Poor icon](/solutions/images/serverless-red-dot-icon.png "")): Greater than 3% of the documents in the data set are degraded.
 
 Opening the details of a specific data set shows the degraded documents history, a summary for the data set, and other details that can help you determine if you need to investigate any issues.
 
@@ -82,7 +84,7 @@ The **Documents** table in Discover is automatically filtered to show documents 
 
 Now that you know which documents contain ignored fields, examine them more closely to find the origin of the issue:
 
-1. Under the **actions** column, click ![expand icon](../../images/serverless-expand.svg "") to open the document details.
+1. Under the **actions** column, click ![expand icon](/solutions/images/serverless-expand.svg "") to open the document details.
 2. Select the **JSON** tab.
 3. Scroll towards the end of the JSON to find the `ignored_field_values`.
 

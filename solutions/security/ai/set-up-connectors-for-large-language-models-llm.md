@@ -2,16 +2,13 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/llm-connector-guides.html
   - https://www.elastic.co/guide/en/serverless/current/security-llm-connector-guides.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Set up connectors for large language models (LLM)
-
-% What needs to be done: Lift-and-shift
-
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/security-docs/security/llm-connector-guides.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/security-llm-connector-guides.md
 
 This section contains instructions for setting up connectors for LLMs so you can use [Elastic AI Assistant](/solutions/security/ai/ai-assistant.md) and [Attack discovery](/solutions/security/ai/attack-discovery.md).
 

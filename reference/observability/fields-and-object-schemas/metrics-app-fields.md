@@ -5,7 +5,7 @@ mapped_pages:
 
 # Infrastructure app fields [metrics-app-fields]
 
-This section lists the required fields the {{infrastructure-app}} uses to display data. Please note that some of the fields listed are not [ECS fields](asciidocalypse://docs/ecs/docs/reference/index.md#_what_is_ecs).
+This section lists the required fields the {{infrastructure-app}} uses to display data. Please note that some of the fields listed are not [ECS fields](ecs://reference/index.md#_what_is_ecs).
 
 
 ## Additional field details [_additional_field_details]

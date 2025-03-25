@@ -12,7 +12,7 @@ In this tutorial, you’ll use the ecommerce sample data to analyze sales trends
 
 When you’re done, you’ll have a complete overview of the sample web logs data.
 
-:::{image} ../../images/kibana-lens_timeSeriesDataTutorialDashboard_8.3.png
+:::{image} /explore-analyze/images/kibana-lens_timeSeriesDataTutorialDashboard_8.3.png
 :alt: Final dashboard with eCommerce sample data
 :screenshot:
 :::
@@ -47,7 +47,7 @@ To analyze the data with a custom time interval, create a bar chart that shows y
 
 2. To zoom in on the data, click and drag your cursor across the bars.
 
-   :::{image} ../../images/kibana-lens_clickAndDragZoom_7.16.gif
+   :::{image} /explore-analyze/images/kibana-lens_clickAndDragZoom_7.16.gif
    :alt: Cursor clicking and dragging across the bars to zoom in on the data
    :screenshot:
    :::
@@ -82,7 +82,7 @@ To identify the 75th percentile of orders, add a reference line:
 
 4. Click **Close**.
 
-   :::{image} ../../images/kibana-lens_barChartCustomTimeInterval_8.3.png
+   :::{image} /explore-analyze/images/kibana-lens_barChartCustomTimeInterval_8.3.png
    :alt: Orders per day
    :screenshot:
    :::
@@ -110,7 +110,7 @@ To copy a function, you drag it to the **Add or drag-and-drop a field** area wit
 
 1. Drag the **95th** field to **Add or drag-and-drop a field** for **Vertical axis**.
 
-   :::{image} ../../images/drag-and-drop-a-field-8.16.0.gif
+   :::{image} /explore-analyze/images/drag-and-drop-a-field-8.16.0.gif
    :alt: Easily duplicate the items with drag and drop
    :screenshot:
    :::
@@ -120,7 +120,7 @@ To copy a function, you drag it to the **Add or drag-and-drop a field** area wit
 4. To create the `50th` and `10th` percentiles, repeat the duplication steps.
 5. Open the **Left Axis** menu, select **Custom** from the **Axis title** dropdown, then enter `Percentiles for product prices` in the **Axis title** field.
 
-   :::{image} ../../images/kibana-lens_lineChartMultipleDataSeries_7.16.png
+   :::{image} /explore-analyze/images/kibana-lens_lineChartMultipleDataSeries_7.16.png
    :alt: Percentiles for product prices chart
    :screenshot:
    :::
@@ -153,14 +153,14 @@ Add a layer to display the customer traffic:
     2. In the **Series color** field, enter `#D36086`.
     3. Click **Right** for the **Axis side**, then click **Close**.
 
-       :::{image} ../../images/kibana-lens_advancedTutorial_numberOfCustomers_8.5.0.png
+       :::{image} /explore-analyze/images/kibana-lens_advancedTutorial_numberOfCustomers_8.5.0.png
        :alt: Number of customers area chart in Lens
        :::
 
 4. From the **Available fields** list, drag **order_date** to the **Horizontal Axis** field in the second layer.
 5. To change the position of the legend, open the **Legend** menu, then select the **Alignment** arrow that points up.
 
-   :::{image} ../../images/kibana-lens_mixedXYChart_7.16.png
+   :::{image} /explore-analyze/images/kibana-lens_mixedXYChart_7.16.png
    :alt: Layer visualization type menu
    :screenshot:
    :::
@@ -200,7 +200,7 @@ For each order category, create a filter:
 6. Click **Close**.
 7. Open the **Legend** menu, then select the **Alignment** arrow that points up.
 
-   :::{image} ../../images/kibana-lens_areaPercentageNumberOfOrdersByCategory_8.3.png
+   :::{image} /explore-analyze/images/kibana-lens_areaPercentageNumberOfOrdersByCategory_8.3.png
    :alt: Prices share by category
    :screenshot:
    :::
@@ -236,7 +236,7 @@ Filter the results to display the data for only Saturday and Sunday:
 4. Click **Close**.
 5. Open the **Legend** menu, then click **Hide** next to **Display**.
 
-   :::{image} ../../images/kibana-lens_areaChartCumulativeNumberOfSalesOnWeekend_7.16.png
+   :::{image} /explore-analyze/images/kibana-lens_areaChartCumulativeNumberOfSalesOnWeekend_7.16.png
    :alt: Area chart with cumulative sum of orders made on the weekend
    :screenshot:
    :width: 50%
@@ -263,7 +263,7 @@ To create a week-over-week comparison, shift **Count of records [1]** by one wee
 
    To use custom time shifts, enter the time value and increment, then press Enter. For example, enter **1w** to use the **1 week ago** time shift.
 
-   :::{image} ../../images/kibana-lens_time_shift.png
+   :::{image} /explore-analyze/images/kibana-lens_time_shift.png
    :alt: Line chart with week-over-week sales comparison
    :screenshot:
    :width: 50%
@@ -288,7 +288,7 @@ To compare time range changes as a percent, create a bar chart that compares the
 6. From the **Value format** dropdown, select **Percent**, then enter `0` in the **Decimals** field.
 7. Click **Close**.
 
-   :::{image} ../../images/kibana-lens_percent_chage.png
+   :::{image} /explore-analyze/images/kibana-lens_percent_chage.png
    :alt: Bar chart with percent change in sales between the current time and the previous week
    :screenshot:
    :width: 50%
@@ -321,7 +321,7 @@ To split the metric, add columns for each continent using the **Columns** field:
 
 1. From the **Available fields** list, drag **geoip.continent_name** to the **Split metrics by** field in the layer pane.
 
-   :::{image} ../../images/kibana-lens_table_over_time.png
+   :::{image} /explore-analyze/images/kibana-lens_table_over_time.png
    :alt: Date histogram table with groups for the customer count metric
    :screenshot:
    :width: 50%
@@ -339,7 +339,7 @@ Now that you have a complete overview of your eCommerce sales data, save the das
 3. Select **Store time with dashboard**.
 4. Click **Save**.
 
-:::{image} ../../images/kibana-lens_timeSeriesDataTutorialDashboard_8.3.png
+:::{image} /explore-analyze/images/kibana-lens_timeSeriesDataTutorialDashboard_8.3.png
 :alt: Final dashboard with eCommerce sample data
 :screenshot:
 :::

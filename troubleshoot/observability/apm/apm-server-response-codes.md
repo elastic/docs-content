@@ -1,6 +1,10 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-common-response-codes.html
+applies_to:
+  stack: all
+  serverless:
+    observability: all
 ---
 
 # APM Server response codes [apm-common-response-codes]
@@ -8,17 +12,47 @@ mapped_pages:
 
 ## HTTP 400: Data decoding error / Data validation error [apm-bad-request] 
 
-The most likely cause for this error is using incompatible versions of {{apm-agent}} and APM Server. See the [agent/server compatibility matrix](../../../solutions/observability/apps/apm-agent-compatibility.md) to verify compatibility.
+::::{tab-set}
+
+:::{tab-item} {{stack}}
+The most likely cause for this error is using incompatible versions of {{apm-agent}} and APM Server. See the [agent/server compatibility matrix](/solutions/observability/apps/apm-agent-compatibility.md) to verify compatibility.
+:::
+
+:::{tab-item} {{serverless-short}}
+The most likely cause for this error is using an incompatible version of an {{apm-agent}}. See [minimum supported APM agent versions](/solutions/observability/apps/elastic-apm-agents.md#observability-apm-agents-elastic-apm-agents-minimum-supported-versions) to verify compatibility.
+:::
+
+::::
 
 
 ## HTTP 400: Event too large [apm-event-too-large] 
 
-APM agents communicate with the APM server by sending events in an HTTP request. Each event is sent as its own line in the HTTP request body. If events are too large, you should consider increasing the [Max event size](../../../solutions/observability/apps/general-configuration-options.md#apm-max_event_size) setting in the APM integration, and adjusting relevant settings in the agent.
+::::{tab-set}
+
+:::{tab-item} {{stack}}
+APM agents communicate with the APM server by sending events in an HTTP request. Each event is sent as its own line in the HTTP request body. If events are too large, you should consider increasing the [Max event size](/solutions/observability/apps/general-configuration-options.md#apm-max_event_size) setting in the APM integration, and adjusting relevant settings in the agent.
+:::
+
+:::{tab-item} {{serverless-short}}
+APM agents communicate with the Managed intake service by sending events in an HTTP request. Each event is sent as its own line in the HTTP request body. If events are too large, you can reduce the size of the events that your APM agents send by: [enabling span compression](/solutions/observability/apps/spans.md) or [reducing collected stack trace information](/solutions/observability/apps/reduce-storage.md#observability-apm-reduce-stacktrace).
+:::
+
+::::
 
 
 ## HTTP 401: Invalid token [apm-unauthorized] 
 
-Either the [Secret token](../../../solutions/observability/apps/secret-token.md) in the request header doesn’t match the secret token configured in the APM integration, or the [API keys](../../../solutions/observability/apps/api-keys.md) is invalid.
+::::{tab-set}
+
+:::{tab-item} {{stack}}
+Either the [Secret token](/solutions/observability/apps/secret-token.md) in the request header doesn’t match the secret token configured in the APM integration, or the [API keys](/solutions/observability/apps/api-keys.md) is invalid.
+:::
+
+:::{tab-item} {{serverless-short}}
+The API key is invalid.
+:::
+
+::::
 
 
 ## HTTP 403: Forbidden request [apm-forbidden] 

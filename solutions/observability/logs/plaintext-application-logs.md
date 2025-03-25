@@ -43,14 +43,14 @@ Install {{filebeat}} on the server you want to monitor by running the commands t
 :::::::{tab-set}
 
 ::::::{tab-item} DEB
-```sh
+```sh subs=true
 curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{version}}-darwin-x86_64.tar.gz
 tar xzvf filebeat-{{version}}-darwin-x86_64.tar.gz
 ```
 ::::::
 
 ::::::{tab-item} RPM
-```sh
+```sh subs=true
 curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{version}}-linux-x86_64.tar.gz
 tar xzvf filebeat-{{version}}-linux-x86_64.tar.gz
 ```
@@ -63,7 +63,7 @@ tar xzvf filebeat-{{version}}-linux-x86_64.tar.gz
 4. Open a PowerShell prompt as an Administrator (right-click the PowerShell icon and select **Run As Administrator**).
 5. From the PowerShell prompt, run the following commands to install {{filebeat}} as a Windows service:
 
-    ```powershell
+    ```powershell subs=true
     PS > cd 'C:\Program Files\{{filebeat}}'
     PS C:\Program Files\{filebeat}> .\install-service-filebeat.ps1
     ```
@@ -73,14 +73,14 @@ If script execution is disabled on your system, you need to set the execution po
 ::::::
 
 ::::::{tab-item} Linux
-```sh
+```sh subs=true
 curl -L -O https\://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{version}}-amd64.deb
 sudo dpkg -i filebeat-{{version}}-amd64.deb
 ```
 ::::::
 
 ::::::{tab-item} Windows
-```sh
+```sh subs=true
 curl -L -O https\://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{version}}-x86_64.rpm
 sudo rpm -vi filebeat-{{version}}-x86_64.rpm
 ```
@@ -98,7 +98,7 @@ output.elasticsearch:
   api_key: "id:api_key"
 ```
 
-1. Set the `hosts` to your deployment’s {{es}} endpoint. Copy the {{es}} endpoint from **Help menu (![help icon](../../../images/observability-help-icon.png "")) → Connection details**. For example, `https://my-deployment.es.us-central1.gcp.cloud.es.io:443`.
+1. Set the `hosts` to your deployment’s {{es}} endpoint. Copy the {{es}} endpoint from **Help menu (![help icon](/solutions/images/observability-help-icon.png "")) → Connection details**. For example, `https://my-deployment.es.us-central1.gcp.cloud.es.io:443`.
 2. From **Developer tools**, run the following command to create an API key that grants `manage` permissions for the `cluster` and the `filebeat-*` indices using:
 
     ```console
@@ -119,7 +119,7 @@ output.elasticsearch:
     }
     ```
 
-    Refer to [Grant access using API keys](asciidocalypse://docs/beats/docs/reference/filebeat/beats-api-keys.md) for more information.
+    Refer to [Grant access using API keys](beats://reference/filebeat/beats-api-keys.md) for more information.
 
 
 
@@ -232,7 +232,7 @@ By default, Windows log files are stored in `C:\ProgramData\filebeat\Logs`.
 
 #### Step 5: Parse logs with an ingest pipeline [step-5-plaintext-parse-logs-with-an-ingest-pipeline]
 
-Use an ingest pipeline to parse the contents of your logs into structured, [Elastic Common Schema (ECS)](asciidocalypse://docs/ecs/docs/reference/index.md)-compatible fields.
+Use an ingest pipeline to parse the contents of your logs into structured, [Elastic Common Schema (ECS)](ecs://reference/index.md)-compatible fields.
 
 Create an ingest pipeline that defines a [dissect processor](elasticsearch://reference/ingestion-tools/enrich-processor/dissect-processor.md) to extract structured ECS fields from your log messages. In your project, navigate to **Developer Tools** and using a command similar to the following example:
 
@@ -251,10 +251,10 @@ PUT _ingest/pipeline/filebeat* <1>
 }
 ```
 
-1. `_ingest/pipeline/filebeat*`: The name of the pipeline. Update the pipeline name to match the name of your data stream. For more information, refer to [Data stream naming scheme](/reference/ingestion-tools/fleet/data-streams.md#data-streams-naming-scheme).
+1. `_ingest/pipeline/filebeat*`: The name of the pipeline. Update the pipeline name to match the name of your data stream. For more information, refer to [Data stream naming scheme](/reference/fleet/data-streams.md#data-streams-naming-scheme).
 2. `processors.dissect`: Adds a [dissect processor](elasticsearch://reference/ingestion-tools/enrich-processor/dissect-processor.md) to extract structured fields from your log message.
 3. `field`: The field you’re extracting data from, `message` in this case.
-4. `pattern`: The pattern of the elements in your log data. The pattern varies depending on your log format. `%{@timestamp}` is required. `%{log.level}`, `%{host.ip}`, and `%{{message}}` are common [ECS](asciidocalypse://docs/ecs/docs/reference/index.md) fields. This pattern would match a log file in this format: `2023-11-07T09:39:01.012Z ERROR 192.168.1.110 Server hardware failure detected.`
+4. `pattern`: The pattern of the elements in your log data. The pattern varies depending on your log format. `%{@timestamp}` is required. `%{log.level}`, `%{host.ip}`, and `%{{message}}` are common [ECS](ecs://reference/index.md) fields. This pattern would match a log file in this format: `2023-11-07T09:39:01.012Z ERROR 192.168.1.110 Server hardware failure detected.`
 
 
 Refer to [Extract structured fields](../../../solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-extract-structured-fields) for more on using ingest pipelines to parse your log data.
@@ -294,7 +294,7 @@ To add the custom logs integration to your project:
 
 #### Step 2: Add an ingest pipeline to your integration [step-2-plaintext-add-an-ingest-pipeline-to-your-integration]
 
-To aggregate or search for information in plaintext logs, use an ingest pipeline with your integration to parse the contents of your logs into structured, [Elastic Common Schema (ECS)](asciidocalypse://docs/ecs/docs/reference/index.md)-compatible fields.
+To aggregate or search for information in plaintext logs, use an ingest pipeline with your integration to parse the contents of your logs into structured, [Elastic Common Schema (ECS)](ecs://reference/index.md)-compatible fields.
 
 1. From the custom logs integration, select **Integration policies** tab.
 2. Select the integration policy you created in the previous section.
@@ -320,7 +320,7 @@ To aggregate or search for information in plaintext logs, use an ingest pipeline
 
     1. `processors.dissect`: Adds a [dissect processor](elasticsearch://reference/ingestion-tools/enrich-processor/dissect-processor.md) to extract structured fields from your log message.
     2. `field`: The field you’re extracting data from, `message` in this case.
-    3. `pattern`: The pattern of the elements in your log data. The pattern varies depending on your log format. `%{@timestamp}`, `%{log.level}`, `%{host.ip}`, and `%{{message}}` are common [ECS](asciidocalypse://docs/ecs/docs/reference/index.md) fields. This pattern would match a log file in this format: `2023-11-07T09:39:01.012Z ERROR 192.168.1.110 Server hardware failure detected.`
+    3. `pattern`: The pattern of the elements in your log data. The pattern varies depending on your log format. `%{@timestamp}`, `%{log.level}`, `%{host.ip}`, and `%{{message}}` are common [ECS](ecs://reference/index.md) fields. This pattern would match a log file in this format: `2023-11-07T09:39:01.012Z ERROR 192.168.1.110 Server hardware failure detected.`
 
 6. Click **Create pipeline**.
 7. Save and deploy your integration.
@@ -342,11 +342,11 @@ Log correlation works on two levels:
 Learn about correlating plaintext logs in the agent-specific ingestion guides:
 
 * [Go](apm-agent-go://reference/logs.md)
-* [Java](asciidocalypse://docs/apm-agent-java/docs/reference/logs.md#log-correlation-ids)
+* [Java](apm-agent-java://reference/logs.md#log-correlation-ids)
 * [.NET](apm-agent-dotnet://reference/logs.md)
-* [Node.js](asciidocalypse://docs/apm-agent-nodejs/docs/reference/logs.md)
-* [Python](asciidocalypse://docs/apm-agent-python/docs/reference/logs.md#log-correlation-ids)
-* [Ruby](asciidocalypse://docs/apm-agent-ruby/docs/reference/logs.md)
+* [Node.js](apm-agent-nodejs://reference/logs.md)
+* [Python](apm-agent-python://reference/logs.md#log-correlation-ids)
+* [Ruby](apm-agent-ruby://reference/logs.md)
 
 
 ## View logs [view-plaintext-logs]

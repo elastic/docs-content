@@ -3,9 +3,10 @@ navigation_title: "{{elastic-defend}}"
 mapped_pages:
   - https://www.elastic.co/guide/en/security/current/ts-management.html
   - https://www.elastic.co/guide/en/serverless/current/security-troubleshoot-endpoints.html
-applies:
-  serverless: all
-  hosted: all
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Troubleshoot {{elastic-defend}} [ts-management]
@@ -26,7 +27,7 @@ Integration policy response information is also available from the **Endpoints**
 ::::
 
 
-:::{image} ../../images/security-unhealthy-agent-fleet.png
+:::{image} /troubleshoot/images/security-unhealthy-agent-fleet.png
 :alt: Agent details page in {{fleet}} with Unhealthy status and integration failures
 :screenshot:
 :::
@@ -77,7 +78,7 @@ To resolve the potential system deadlock error:
 
 If you encounter a `“Required transform failed”` notice on the Endpoints page, you can usually resolve the issue by restarting the transform. Refer to [Transforming data](../../explore-analyze/transforms.md) for more information about transforms.
 
-:::{image} ../../images/security-endpoints-transform-failed.png
+:::{image} /troubleshoot/images/security-endpoints-transform-failed.png
 :alt: Endpoints page with Required transform failed notice
 :screenshot:
 :::
@@ -91,7 +92,7 @@ To restart a transform that’s not running:
     * `stopped`: Select **Start** to restart the transform.
     * `failed`: Select **Stop** to first stop the transform, and then select **Start** to restart it.
 
-      :::{image} ../../images/security-transforms-start.png
+      :::{image} /troubleshoot/images/security-transforms-start.png
       :alt: Transforms page with Start option selected
       :screenshot:
       :::

@@ -12,15 +12,6 @@ mapped_urls:
 
 # Explore and analyze
 
-% What needs to be done: Write from scratch
-
-% Use migrated content from existing pages that map to this page:
-
-% - [ ] ./raw-migrated-files/docs-content/serverless/elasticsearch-explore-your-data.md
-% - [ ] ./raw-migrated-files/kibana/kibana/introduction.md
-
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
-
 $$$elasticsearch-explore-your-data-visualizations-save-to-the-visualize-library$$$
 
 The Elasticsearch platform and its UI, also known as Kibana, provide a comprehensive suite of tools to help you search, interact with, explore, and analyze your data effectively. These features empower you to gain deep insights, uncover trends, and take actionable steps based on your findings. This page is an overview of the key capabilities.

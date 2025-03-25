@@ -14,28 +14,28 @@ The purpose of {{feat-imp}} is to help you determine whether the predictions are
 
 You can see the average magnitude of the {{feat-imp}} values for each field across all the training data in {{kib}} or by using the [get trained model API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-get-trained-models). For example, {{kib}} shows the total feature importance for each field in {{regression}} or binary {{classanalysis}} results as follows:
 
-:::{image} ../../../images/machine-learning-flights-regression-total-importance.jpg
+:::{image} /explore-analyze/images/machine-learning-flights-regression-total-importance.jpg
 :alt: Total {{feat-imp}} values for a {{regression}} {{dfanalytics-job}} in {{kib}}
 :screenshot:
 :::
 
 If the {{classanalysis}} involves more than two classes, {{kib}} uses colors to show how the impact of each field varies by class. For example:
 
-:::{image} ../../../images/machine-learning-diamonds-classification-total-importance.png
+:::{image} /explore-analyze/images/machine-learning-diamonds-classification-total-importance.png
 :alt: Total {{feat-imp}} values for a {{classification}} {{dfanalytics-job}} in {{kib}}
 :screenshot:
 :::
 
 You can also examine the feature importance values for each individual prediction. In {{kib}}, you can see these values in JSON objects or decision plots. For {{reganalysis}}, each decision plot starts at a shared baseline, which is the average of the prediction values for all the data points in the training data set. When you add all of the feature importance values for a particular data point to that baseline, you arrive at the numeric prediction value. If a {{feat-imp}} value is negative, it reduces the prediction value. If a {{feat-imp}} value is positive, it increases the prediction value. For example:
 
-:::{image} ../../../images/machine-learning-flights-regression-decision-plot.png
+:::{image} /explore-analyze/images/machine-learning-flights-regression-decision-plot.png
 :alt: Feature importance values for a {{regression}} {{dfanalytics-job}} in {{kib}}
 :screenshot:
 :::
 
 For {{classanalysis}}, the sum of the {{feat-imp}} values approximates the predicted logarithm of odds for each data point. The simplest way to understand {{feat-imp}} in the context of {{classanalysis}} is to look at the decision plots in {{kib}}. For each data point, there is a chart which shows the relative impact of each feature on the prediction probability for that class. This information helps you to understand which features reduces or increase the prediction probability. For example:
 
-:::{image} ../../../images/machine-learning-flights-classification-decision-plot.png
+:::{image} /explore-analyze/images/machine-learning-flights-classification-decision-plot.png
 :alt: A decision plot in {{kib}}for a {{classification}} {{dfanalytics-job}}
 :screenshot:
 :::

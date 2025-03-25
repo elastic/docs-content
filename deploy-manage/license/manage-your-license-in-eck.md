@@ -84,7 +84,7 @@ data:
 
 You can easily create this secret using `kubectl` built-in support for secrets. Note that it must be in the same namespace as the operator:
 
-```shell script
+```shell
 kubectl create secret generic eck-license --from-file=my-license-file.json -n elastic-system
 kubectl label secret eck-license "license.k8s.elastic.co/scope"=operator -n elastic-system
 ```
