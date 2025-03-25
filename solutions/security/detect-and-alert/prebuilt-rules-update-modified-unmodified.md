@@ -77,7 +77,7 @@ To update rules:
 
 This table describes statuses that might appear for rule fields being updated.  
 
-|     |     |
+| Status | Description |
 | --- | --- |
 | **Ready for update** | Displays when there are no conflicts to resolve.<br><br>Further action is not required for the field. It is ready to be updated.<br> |
 | **No update** | Displays when the field is not being updated by Elastic, but the current field value differs from the original one. This typically happens when the field's value was changed after the prebuilt rule was initially installed.<br><br>Further action is not required for the field. It is ready to be updated.<br><br> **Tip**: You can still change the final field update, if needed. To do so, make your changes in the **Final update** section and save them.<br><br> |
