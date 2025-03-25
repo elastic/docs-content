@@ -68,6 +68,52 @@ If you are using {{agent}} with [{{serverless-full}}](/deploy-manage/deploy/elas
 When you set up {{agent}}, you might not yet have all input configuration details available. To solve this problem, the input configuration accepts variables and conditions that get evaluated at runtime using information from the running environment, allowing you to apply configurations dynamically. To learn more, refer to [Variables and conditions in input configurations](./dynamic-input-configuration.md).
 ::::
 
+## {{agent}} installation flavors [elastic-agent-installation-packages]
+
+{{agent}} distribution packages are offered in multiple flavors. This gives you control over the set of components included in the package and the size of the package footprint when it's installed.
+
+### Flavors for regular package installs
+
+#### Basic flavor [elastic-agent-basic-flavor-regular]
+
+The basic {{agent}} flavor is installed by default using the `elastic-agent install` command with an agent package: `.zip`, .`tar.gz`, `.deb`, `.rpm`, or `.msi`. This flavor includes only the following components:
+
+* `agentbeat` - used to implement all [{{beats}}](beats://reference/index.md)-based integrations.
+* `endpoint-security` - used to implement [{{elastic-defend}}](../../solutions/security/configure-elastic-defend.md).
+* `pf-host-agent` - used to collect profiling data from hosts as part of Elastic [Universal Profiling](../../solutions/observability/infra-and-hosts/get-started-with-universal-profiling.md).
+
+This basic package is suitable for most use cases and it offers a reduced size on disk.
+
+#### Servers flavor [elastic-agent-servers-flavor-regular]
+
+The servers {{agent}} flavor is installed using the `elastic-agent install --install-servers` command, or for RPM and DEB packages the `ELATIC_AGENT_FLAVOR=servers` command. In addition to components included in the basic flavor, this flavor also includes:
+
+* `apm-server` - implements the Elastic [APM Server](../../solutions/observability/apps/get-started-with-apm.md).
+* `cloudbeat` - implements [Cloud Security Posture Management (CSPM)](../../solutions/security/cloud/cloud-security-posture-management.md) integrations.
+* `fleet-server`, implements [Fleet Server](../fleet/fleet-server.md) for managing {{agents}}.
+* `pf-elastic-symbolizer` - a server side component of Elastic [Universal Profiling](../../solutions/observability/infra-and-hosts/get-started-with-universal-profiling.md).
+* `pf-elastic-collector` - a server side component of Elastic [Universal Profiling](../../solutions/observability/infra-and-hosts/get-started-with-universal-profiling.md).
+
+Beginning in version 9.0, for {{agents}} to have the full functionality that was supported by default in pre-9.x versions, you need to install the servers {[agent]} flavor.
+
+### Flavors for container package installs 
+
+#### Basic flavor [elastic-agent-basic-flavor-container]
+
+For containerized environments, the basic {{agent}} flavor is installed using the `elastic-agent-slim` command with an agent container package. This flavor contains the same set of components described in [Basic flavor](#elastic-agent-basic-flavor) above.
+
+#### Servers flavor [elastic-agent-servers-flavor-container]
+
+For containerized environments, the servers {{agent}} flavor is installed using the default `elastic-agent` command with an agent container package. This flavor contains the same set of components described in [Servers flavor](#elastic-agent-servers-flavor) above.
+
+#### Wolfi flavor [elastic-agent-wolfi-flavor]
+
+For containerized environments, you also have the option of using a hardened [Wolfi](https://github.com/wolfi-dev/) container image. These images require Docker version 20.10.10 or later. For details about why the Wolfi images have been introduced, refer to our article [Reducing CVEs in Elastic container images](https://www.elastic.co/blog/reducing-cves-in-elastic-container-images).
+
+#### Complete flavor [elastic-agent-complete-flavor]
+
+For containerized environments, the complete {{agent}} flavor is identical to the servers flavor, and also includes additional dependencies to run browser monitors through Elastic Synthetics. Refer to [Synthetic monitoring via Elastic Agent and Fleet](/solutions/observability/apps/get-started.md) for more information.
+
 ## Resource requirements [elastic-agent-installation-resource-requirements]
 
 The {{agent}} resources consumption is influenced by the number of integration and the environment its been running on.

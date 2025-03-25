@@ -34,9 +34,25 @@ Considerations:
 
 ## Step 1: Pull the image [_step_1_pull_the_image]
 
-There are two images for Elastic Agent, elastic-agent and elastic-agent-complete. The elastic-agent image contains all the binaries for running Beats, while the elastic-agent-complete image contains these binaries plus additional dependencies to run browser monitors through Elastic Synthetics. Refer to [Synthetic monitoring via Elastic Agent and Fleet](/solutions/observability/apps/get-started.md) for more information.
+There are various flavors of images for {{agent}}, elastic-agent and elastic-agent-complete. Refer to [Install {{agents}}](./install-elastic-agents.md) for full details about each flavor.
 
 Run the `docker pull` command against the Elastic Docker registry:
+
+
+
+### Basic flavor
+
+```terminal
+docker pull docker.elastic.co/elastic-agent/elastic-agent-slim:9.0.0-beta1
+```
+
+Alternately, you can use the hardened [Wolfi](https://github.com/wolfi-dev/) image. Using Wolfi images requires Docker version 20.10.10 or later. For details about why the Wolfi images have been introduced, refer to our article [Reducing CVEs in Elastic container images](https://www.elastic.co/blog/reducing-cves-in-elastic-container-images).
+
+```terminal
+docker pull docker.elastic.co/elastic-agent/elastic-agent-slim-wolfi:9.0.0-beta1
+```
+
+### Server flavor
 
 ```terminal
 docker pull docker.elastic.co/elastic-agent/elastic-agent:9.0.0-beta1
@@ -47,6 +63,8 @@ Alternately, you can use the hardened [Wolfi](https://github.com/wolfi-dev/) ima
 ```terminal
 docker pull docker.elastic.co/elastic-agent/elastic-agent-wolfi:9.0.0-beta1
 ```
+
+### Complete flavor
 
 If you want to run Synthetics tests, run the docker pull command to fetch the elastic-agent-complete image:
 
