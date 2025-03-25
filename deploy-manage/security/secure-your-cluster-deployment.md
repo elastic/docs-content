@@ -55,7 +55,6 @@ deployment:
   self:
   eck:
 ```
-```
 
 The Federal Information Processing Standard (FIPS) Publication 140-2, (FIPS PUB 140-2), titled "Security Requirements for Cryptographic Modules" is a U.S. government computer security standard used to approve cryptographic modules. You can run a self-managed cluster or {{eck}} cluster in FIPS-compliant mode:
 
