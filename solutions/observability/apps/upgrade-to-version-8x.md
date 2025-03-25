@@ -3,9 +3,9 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-upgrading-to-8.x.html
 ---
 
-# Upgrade to version 8.x [apm-upgrading-to-8.x]
+# Upgrade to version 9.0 [apm-upgrading-to-9.0]
 
-This guide explains the upgrade process for version 9.0.0-beta1. For a detailed look at what’s new, see:
+This guide explains the upgrade process for version 9.0. For a detailed look at what’s new, see:
 
 * [Elastic {{observability}} release notes](https://www.elastic.co/guide/en/observability/current/whats-new.html)
 * [What’s new in {{kib}}](https://www.elastic.co/guide/en/kibana/current/whats-new.html)

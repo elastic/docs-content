@@ -17,7 +17,7 @@ This upgrade guide is for the standalone method of running APM Server. Only use 
 
 ## Prerequisites [_prerequisites_8]
 
-1. Prior to upgrading to version 9.0.0-beta1, {{es}}, {{kib}}, and APM Server must be upgraded to version 7.17.
+1. Prior to upgrading to version 9.0, {{es}}, {{kib}}, and APM Server must be upgraded to version 7.17.
 
     * To upgrade {{es}} and {{kib}}, see the [{{stack}} Installation and Upgrade Guide](https://www.elastic.co/guide/en/elastic-stack/7.17/upgrading-elastic-stack.html)
     * To upgrade APM Server to version 7.17, see [upgrade to version 7.17](https://www.elastic.co/guide/en/apm/guide/7.17/upgrading-to-717.html).
@@ -27,11 +27,11 @@ This upgrade guide is for the standalone method of running APM Server. Only use 
 
 ## Upgrade steps [_upgrade_steps]
 
-1. **Upgrade the {{stack}} to version 9.0.0-beta1**
+1. **Upgrade the {{stack}} to version 9.0**
 
     The {{stack}} ({{es}} and {{kib}}) must be upgraded before APM Server. See the [{{stack}} Installation and Upgrade Guide](../../../deploy-manage/upgrade/deployment-or-cluster.md) for guidance.
 
-2. **Install the 9.0.0-beta1 APM Server release**
+2. **Install the 9.0 APM Server release**
 
     See [install](apm-server-binary.md#apm-installing) to find the command that works with your system.
 
