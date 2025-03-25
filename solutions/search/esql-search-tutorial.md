@@ -256,9 +256,6 @@ Follow this [tutorial](/solutions/search/semantic-search/semantic-search-semanti
 
 You can combine full-text and semantic queries. In this example we combine full-text and semantic search with custom weights:
 
-[source,esql]
-----
-
 ```esql
 FROM cooking_blog METADATA _score
 | WHERE match(semantic_description, "easy to prepare vegetarian meals", { "boost": 0.75 })
