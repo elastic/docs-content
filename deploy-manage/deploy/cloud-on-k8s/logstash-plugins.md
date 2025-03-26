@@ -99,7 +99,7 @@ In the plugin documentation, these plugin settings are typically identified by `
 
 To use these in your manifest, create a ConfigMap or Secret representing the asset, a Volume in your `podTemplate.spec` containing the ConfigMap or Secret, and mount that Volume with a VolumeMount in your `podTemplateSpec.container` section of your {{ls}} resource.
 
-This example illustrates configuring a ConfigMap from a ruby source file, and including it in a [`logstash-filter-ruby`](logstash://reference/plugins-filters-ruby.md) plugin.
+This example illustrates configuring a ConfigMap from a ruby source file, and including it in a [`logstash-filter-ruby`](logstash-docs-md://lsr/plugins-filters-ruby.md) plugin.
 
 First, create the ConfigMap.
 
@@ -143,7 +143,7 @@ spec:
 
 ### Larger read-only assets (1 MiB+) [k8s-logstash-working-with-plugins-large-ro]
 
-Some plugins require or allow access to static read-only files that exceed the 1 MiB (mebibyte) limit imposed by ConfigMap and Secret. For example, you may need JAR files to load drivers when using a JDBC or JMS plugin, or a large [`logstash-filter-translate`](logstash://reference/plugins-filters-translate.md) dictionary.
+Some plugins require or allow access to static read-only files that exceed the 1 MiB (mebibyte) limit imposed by ConfigMap and Secret. For example, you may need JAR files to load drivers when using a JDBC or JMS plugin, or a large [`logstash-filter-translate`](logstash-docs-md://lsr/plugins-filters-translate.md) dictionary.
 
 You can add files using:
 
@@ -239,7 +239,7 @@ After you build and deploy the custom image, include it in the {{ls}} manifest. 
 
 ### Writable storage [k8s-logstash-working-with-plugins-writable]
 
-Some {{ls}} plugins need access to writable storage. This could be for checkpointing to keep track of events already processed, a place to temporarily write events before sending a batch of events, or just to actually write events to disk in the case of [`logstash-output-file`](logstash://reference/plugins-outputs-file.md).
+Some {{ls}} plugins need access to writable storage. This could be for checkpointing to keep track of events already processed, a place to temporarily write events before sending a batch of events, or just to actually write events to disk in the case of [`logstash-output-file`](logstash-docs-md://lsr/plugins-outputs-file.md).
 
 {{ls}} on ECK by default supplies a small 1.5 GiB (gibibyte) default persistent volume to each pod. This volume is called `logstash-data` and is located at `/usr/logstash/data`, and is typically the default location for most plugin use cases. This volume is stable across restarts of {{ls}} pods and is suitable for many use cases.
 
@@ -345,7 +345,7 @@ spec:
 * They **must** specify `pipeline.workers=1` for any pipelines that use them.
 * The number of pods cannot be scaled above 1.
 
-Examples of aggregating filters include [`logstash-filter-aggregate`](logstash://reference/plugins-filters-aggregate.md), [`logstash-filter-csv`](logstash://reference/plugins-filters-csv.md) when `autodetect_column_names` set to `true`, and any [`logstash-filter-ruby`](logstash://reference/plugins-filters-ruby.md) implementations that perform aggregations.
+Examples of aggregating filters include [`logstash-filter-aggregate`](logstash-docs-md://lsr/plugins-filters-aggregate.md), [`logstash-filter-csv`](logstash-docs-md://lsr/plugins-filters-csv.md) when `autodetect_column_names` set to `true`, and any [`logstash-filter-ruby`](logstash-docs-md://lsr/plugins-filters-ruby.md) implementations that perform aggregations.
 
 
 ### Input plugins: events pushed to {{ls}} [k8s-logstash-inputs-data-pushed]
@@ -370,7 +370,7 @@ Examples of these plugins include [`logstash-input-jdbc`](logstash-docs-md://lsr
 
 For example, a {{ls}} installation that uses a [`logstash-input-kafka`](logstash-docs-md://lsr/plugins-inputs-kafka.md) plugin to retrieve data can scale the number of pods up to the number of partitions used, as a partition can have at most one consumer belonging to the same consumer group. Any pods created beyond that threshold cannot be scheduled to receive data.
 
-Examples of these plugins include [`logstash-input-kafka`](logstash-docs-md://lsr/plugins-inputs-kafka.md), [`logstash-input-azure_event_hubs`](logstash://reference/plugins-inputs-azure_event_hubs.md), and [`logstash-input-kinesis`](logstash-docs-md://lsr/plugins-inputs-kinesis.md).
+Examples of these plugins include [`logstash-input-kafka`](logstash-docs-md://lsr/plugins-inputs-kafka.md), [`logstash-input-azure_event_hubs`](logstash-docs-md://lsr/plugins-inputs-azure_event_hubs.md), and [`logstash-input-kinesis`](logstash-docs-md://lsr/plugins-inputs-kinesis.md).
 
 
 
@@ -419,7 +419,7 @@ stringData:
 
 ### Elastic_integration filter plugin [k8s-logstash-plugin-considerations-integration-filter]
 
-The [`elastic_integration filter`](logstash://reference/plugins-filters-elastic_integration.md) plugin allows the use of [`ElasticsearchRef`](configuration-logstash.md#k8s-logstash-esref) and environment variables.
+The [`elastic_integration filter`](logstash-docs-md://lsr/plugins-filters-elastic_integration.md) plugin allows the use of [`ElasticsearchRef`](configuration-logstash.md#k8s-logstash-esref) and environment variables.
 
 ```json
   elastic_integration {
@@ -456,7 +456,7 @@ When you use the [Elastic Agent input](logstash-docs-md://lsr/plugins-inputs-ela
 
 If you need plugins in addition to those included in the standard {{ls}} distribution, you can add them. Create a custom Docker image that includes the installed plugins, using the `bin/logstash-plugin install` utility to add more plugins to the image so that they can be used by {{ls}} pods.
 
-This sample Dockerfile installs the [`logstash-filter-tld`](logstash://reference/plugins-filters-tld.md) plugin to the official {{ls}} Docker image:
+This sample Dockerfile installs the [`logstash-filter-tld`](logstash-docs-md://lsr/plugins-filters-tld.md) plugin to the official {{ls}} Docker image:
 
 ```shell
 FROM docker.elastic.co/logstash/logstash:8.16.1

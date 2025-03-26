@@ -120,7 +120,7 @@ As an example, you might want to use {{ls}} to route all `metrics` events to the
 
 However, if when you combine all `metrics` events there are events that have the `data_stream.dataset` field set to different values, indexing will fail with a message stating that the field does not accept any other values. For example, the error might say something like `failed to parse field [data_stream.dataset] of type [constant_keyword]` or `[constant_keyword] field [data_stream.dataset] only accepts values that are equal to the value defined in the mappings`. This is because the `data_stream.dataset` field’s mapping is set to `constant_keyword`, which expects all values of the fields in the index to be the same.
 
-To prevent losing data due to failed indexing, add a [Logstash mutate filter](logstash://reference/plugins-filters-mutate.md) to update the value of `data_stream.dataset`. Then, you can send all metrics events to one custom metrics data stream:
+To prevent losing data due to failed indexing, add a [Logstash mutate filter](logstash-docs-md://lsr/plugins-filters-mutate.md) to update the value of `data_stream.dataset`. Then, you can send all metrics events to one custom metrics data stream:
 
 ```json
 filter {
