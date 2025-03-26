@@ -1,11 +1,32 @@
+---
+applies_to:
+  deployment:
+    eck: all
+---
+
 # Tools and APIs
 
-% What needs to be done: Write from scratch
+Review key resources that can be used to interact with and manage your {{eck}} operator and deployments.
 
-% GitHub issue: https://github.com/elastic/docs-projects/issues/310
+## APIs
 
-⚠️ **This page is a work in progress.** ⚠️
+You can use the following APIs in an {{eck}} environment:
 
-You can use these tools and APIs to interact with the following {{eck}} features:
+### Orchestration APIs
+
+You can use the [{{eck}} API](cloud-on-k8s://reference/api-docs.md) to create and manage {{stack}} components using Elastic-provided [Custom Resource Definitions (CRDs)](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/#customresourcedefinitions).
+
+
+### APIs to interact with data and solution features
+
+The following APIs allow you to interact with your {{es}} cluster, its data, and the features available to you in your {{eck}} deployments.
+
+:::{include} /deploy-manage/deploy/_snippets/core-apis.md
+:::
+
+:::{include} /deploy-manage/deploy/_snippets/other-apis.md
+:::
+
+## Tools
 
 * [ECK diagnostics tool](/troubleshoot/deployments/cloud-on-k8s/run-eck-diagnostics.md): Use the `eck-diagnostics` command line tool to create a diagnostic archive to help troubleshoot issues with ECK. 

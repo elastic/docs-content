@@ -7,46 +7,38 @@ mapped_pages:
 ---
 # Tools and APIs
 
-% What needs to be done: Write from scratch
-
-% GitHub issue: https://github.com/elastic/docs-projects/issues/310
-
- ⚠️ **This page is a work in progress.** ⚠️
-
-You can use these tools and APIs to interact with the following {{ece}} features:
+Review key resources that can be used to interact with and manage your {{ece}} installation and deployments.
 
 
-* [ECE scripts](cloud://reference/cloud-enterprise/scripts.md): Use the `elastic-cloud-enterprise.sh` script to install {{ece}} or modify your installation.
-* [ECE diagnostics tool](/troubleshoot/deployments/cloud-enterprise/run-ece-diagnostics-tool.md): Collect logs and metrics that you can send to Elastic Support for troubleshooting and investigation purposes.
+## APIs
 
-**API**
+You can use the following APIs in an {{ece}} environment:
 
-% ECE API links and information are still pending
-* [Elastic Cloud Enterprise RESTful API](cloud://reference/cloud-enterprise/restful-api.md)
+### Orchestration APIs
+
+You can use the [{{ece}} RESTful API](https://www.elastic.co/docs/api/doc/cloud-enterprise/) to manage both your {{stack}} deployments and the ECE platform.
+
+Refer to [{{es}} API conventions](cloud://reference/cloud-enterprise/restful-api.md) to learn about headers and request body conventions, and view examples.
+
+### APIs to interact with data and solution features
+
+The following APIs allow you to interact with your {{es}} cluster, its data, and the features available to you in your {{ece}} deployments.
+
+:::{include} /deploy-manage/deploy/_snippets/core-apis.md
+:::
+
+:::{include} /deploy-manage/deploy/_snippets/other-apis.md
+:::
 
 ## {{es}} API Console [ece-api-console]
 
-With the {{es}} API console, you can interact with a specific {{es}} deployment directly from the Cloud UI without having to authenticate again. This RESTful API access is limited to the specific cluster and works only for {{es}} API calls.
-
-You can find this console in the Cloud UI when selecting a specific deployment to manage. From the {{es}} menu, select **API Console**.
-
-:::{note}
-This API Console is different from the [Dev Tools Console](/explore-analyze/query-filter/tools/console.md) available in {{kib}}, from which you can call {{es}} and {{kib}} APIs. On the ECE API Console, you cannot run {{kib}} APIs.
-
-This API console is intended for admin purposes. Avoid running normal workload like indexing or search requests.
+:::{include} /deploy-manage/deploy/_snippets/cloud-api-console.md
 :::
 
 ## Elastic Cloud Control: command-line interface for {{ecloud}}
 
-Elastic Cloud Control (ECCTL) is the command-line interface for {{ecloud}} APIs. It wraps typical operations commonly needed by operators within a single command line tool.
-
-ECCTL provides the following benefits: 
-
-- Easier to use than the {{ecloud}} Console or using the RESTful API directly
-- Helps you automate the deployment lifecycle
-- Provides a foundation for integration with other tools
-
-Find more details in the [ECCTL documentation](ecctl://reference/index.md).
+:::{include} /deploy-manage/deploy/_snippets/ecctl.md
+:::
 
 ## Provision hosted deployments with Terraform
 ```{applies_to}
@@ -55,10 +47,11 @@ deployment:
 serverless: unavailable
 ```
 
-The {{ecloud}} Terraform provider allows you to provision and manage {{ech}} and {{ece}} deployments as code, and introduce DevOps-driven methodologies to manage and deploy the {{stack}} and solutions.
+:::{include} /deploy-manage/deploy/_snippets/tpec.md
+:::
 
-To get started, see the [{{ecloud}} Terraform provider documentation](https://registry.terraform.io/providers/elastic/ec/latest/docs).
+## Other tools
 
-
-
+* [ECE scripts](cloud://reference/cloud-enterprise/scripts.md): Use these scripts to install {{ece}} or modify your installation.
+* [ECE diagnostics tool](/troubleshoot/deployments/cloud-enterprise/run-ece-diagnostics-tool.md): Collect logs and metrics that you can send to Elastic Support for troubleshooting and investigation purposes.
 
