@@ -183,7 +183,7 @@ It takes a few minutes for {{agent}} to enroll in {{fleet}}, download the config
 
 VPC flow logs are sent to an S3 bucket, which sends a notification to the SQS queue. When {{agent}} detects a new message in the queue, it uses the information in the message to retrieve flow logs from the S3 bucket. {{agent}} processes each message, parses it into fields, and then sends the data to {{es}}.
 
-:::{image} ../../../images/observability-agent-tut-one-bucket-archi.png
+:::{image} /solutions/images/observability-agent-tut-one-bucket-archi.png
 :alt: Diagram of the current logging architecture for VPC flow logs
 :::
 
@@ -202,7 +202,7 @@ You create a new S3 bucket and queue for the access logs, then configure the old
 
 When you’re done, your monitoring architecture will look like this:
 
-:::{image} ../../../images/observability-agent-tut-two-buckets-archi.png
+:::{image} /solutions/images/observability-agent-tut-two-buckets-archi.png
 :alt: Diagram of the logging architecture with access logging enabled
 :::
 
@@ -245,14 +245,14 @@ Notice that you can filter on a specific data stream. For example, set `data_str
 
 The AWS integration also comes with pre-built dashboards that you can use to visualize the data. In {{kib}}, open the main menu and click **Dashboard**. Search for `VPC Flow` and select the dashboard called **[Logs AWS] VPC Flow Log Overview**:
 
-:::{image} ../../../images/observability-agent-tut-vpcflowlog-dashboard.png
+:::{image} /solutions/images/observability-agent-tut-vpcflowlog-dashboard.png
 :alt: Screenshot of the VPC Flow Log Overview dashboard
 :screenshot:
 :::
 
 Next, open the dashboard called **[Logs AWS] S3 Server Access Log Overview**:
 
-:::{image} ../../../images/observability-agent-tut-s3accesslog-dashboard.png
+:::{image} /solutions/images/observability-agent-tut-s3accesslog-dashboard.png
 :alt: Screenshot of the S3 Server Access Log Overview dashboard
 :screenshot:
 :::
@@ -303,7 +303,7 @@ It takes a few minutes for {{agent}} to update its configuration and start colle
 
 Now that the metrics are streaming into {{es}}, you can visualize them in {{kib}}. Find **Discover** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Select the `metrics-*` data view, then filter on `data_stream.dataset: "aws.ec2_metrics"`:
 
-:::{image} ../../../images/observability-agent-tut-ec2-metrics-discover.png
+:::{image} /solutions/images/observability-agent-tut-ec2-metrics-discover.png
 :alt: Screenshot of the Discover app showing EC2 metrics
 :screenshot:
 :::
@@ -312,14 +312,14 @@ The AWS integration also comes with pre-built dashboards that you can use to vis
 
 Search for EC2 and select the dashboard called **[Metrics AWS] EC2 Overview**:
 
-:::{image} ../../../images/observability-agent-tut-ec2-overview-dashboard.png
+:::{image} /solutions/images/observability-agent-tut-ec2-overview-dashboard.png
 :alt: Screenshot of the EC2 Overview dashboard
 :screenshot:
 :::
 
 To track your AWS billing, open the **[Metrics AWS] Billing Overview** dashboard:
 
-:::{image} ../../../images/observability-agent-tut-billing-dashboard.png
+:::{image} /solutions/images/observability-agent-tut-billing-dashboard.png
 :alt: Screenshot of the Billing Overview dashboard
 :screenshot:
 :::

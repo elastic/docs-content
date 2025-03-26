@@ -1,5 +1,8 @@
 ---
 navigation_title: "Node moves and outages"
+applies_to:
+  deployment:
+    ess: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-deployment-node-move.html
 ---

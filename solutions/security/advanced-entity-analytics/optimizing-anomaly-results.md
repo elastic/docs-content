@@ -40,7 +40,7 @@ For example, to filter out results from a housekeeping process, named `maintenan
 6. Click **Add item**.
 7. In the **Items** textbox, enter the name of the process for which you want to filter out anomaly results (`maintenanceservice.exe` in our example).
 
-    :::{image} ../../../images/security-filter-add-item.png
+    :::{image} /solutions/images/security-filter-add-item.png
     :alt: filter add item
     :screenshot:
     :::
@@ -60,7 +60,7 @@ For example, to filter out results from a housekeeping process, named `maintenan
 
     The **Create Rule** window is displayed.
 
-    :::{image} ../../../images/security-rule-scope.png
+    :::{image} /solutions/images/security-rule-scope.png
     :alt: rule scope
     :screenshot:
     :::
@@ -105,7 +105,7 @@ Running the cloned job can take some time. Only run the job after you have compl
 7. Click **Next** until the **Job details** page is displayed.
 8. Enter a Job ID for the cloned job that indicates it is an iteration of the original one. For example, append a number or a username to the original job name, such as `windows-rare-network-process-2`.
 
-    :::{image} ../../../images/security-cloned-job-details.png
+    :::{image} /solutions/images/security-cloned-job-details.png
     :alt: cloned job details
     :screenshot:
     :::
@@ -115,7 +115,7 @@ Running the cloned job can take some time. Only run the job after you have compl
 
     The **Start <job name>** window is displayed.
 
-    :::{image} ../../../images/security-start-job-window.png
+    :::{image} /solutions/images/security-start-job-window.png
     :alt: start job window
     :screenshot:
     :::
@@ -140,7 +140,7 @@ Depending on your anomaly detection results, you may want to set a minimum event
 
     The **Create Rule** window is displayed.
 
-    :::{image} ../../../images/security-ml-rule-threshold.png
+    :::{image} /solutions/images/security-ml-rule-threshold.png
     :alt: ml rule threshold
     :screenshot:
     :::

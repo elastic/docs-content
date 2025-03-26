@@ -33,7 +33,7 @@ $$$securing-reporting$$$
 
 ## Permissions
 
-To be able to share objects or generate reports, you must have a role that allows these actions on the specific {{es}} indices and {{kib}} applications containing the data that you want to share. Check [Configuring reporting](/deploy-manage/deploy/kibana-reporting-configuration.md) for more information.
+To be able to share objects or generate reports, you must have a role that allows these actions on the specific {{es}} indices and {{kib}} applications containing the data that you want to share. Check [Configuring reporting](/deploy-manage/kibana-reporting-configuration.md) for more information.
 
 ## Share with a direct link [share-a-direct-link]
 
@@ -48,7 +48,7 @@ To access the object shared with the link, users need to authenticate.
 
 Anonymous users can also access the link if you have configured [Anonymous authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-authentication.md#anonymous-authentication) and your anonymous service account has privileges to access what you want to share.
 
-:::{image} ../images/share-dashboard.gif
+:::{image} /explore-analyze/images/share-dashboard.gif
 :alt: getting a shareable link for a dashboard
 :::
 
@@ -75,7 +75,7 @@ To change the output size, change the size of the browser, which resizes the sha
 
 In the following dashboard, the shareable container is highlighted:
 
-:::{image} ../images/kibana-shareable-container.png
+:::{image} /explore-analyze/images/kibana-shareable-container.png
 :alt: Shareable Container
 :screenshot:
 :::

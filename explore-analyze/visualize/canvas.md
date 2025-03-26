@@ -19,7 +19,7 @@ With **Canvas**, you can:
 * Pull your data directly from {{es}}, then show it off with charts, graphs, progress monitors, and more.
 * Focus the data you want to display with filters.
 
-:::{image} ../../images/kibana-canvas_logWebTrafficWorkpadTemplate_7.17.0.png
+:::{image} /explore-analyze/images/kibana-canvas_logWebTrafficWorkpadTemplate_7.17.0.png
 :alt: Logs Web Traffic workpad template
 :::
 

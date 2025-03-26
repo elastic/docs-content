@@ -11,7 +11,7 @@ applies_to:
 
 The **Inspect** view in {{kib}} allows you to view information about all requests that were made to collect the data displayed on the current page.
 
-:::{image} ../../images/observability-inspect-flyout.png
+:::{image} /troubleshoot/images/observability-inspect-flyout.png
 :alt: Inspector flyout in the {{uptime-app}}
 :screenshot:
 :::
@@ -34,7 +34,7 @@ To enable inspect across apps:
 3. Turn on the **Inspect ES queries** option.
 4. Click **Save changes**.
 
-:::{image} ../../images/observability-inspect-enable.png
+:::{image} /troubleshoot/images/observability-inspect-enable.png
 :alt: {{kib}} Advanced Settings {{observability}} section with Inspect ES queries enabled
 :screenshot:
 :::
@@ -46,7 +46,7 @@ Open the inspect flyout by clicking **Inspect** in the top bar.
 
 Click the **Request** dropdown to see all the requests used to make the current page work. Select one to see information about the request below.
 
-:::{image} ../../images/observability-inspect-flyout-dropdown.png
+:::{image} /troubleshoot/images/observability-inspect-flyout-dropdown.png
 :alt: Inspector flyout dropdown for selecting a request to inspect
 :screenshot:
 :::
@@ -76,21 +76,21 @@ Query time
 Request timestamp
 :   Time when the start of the request has been logged.
 
-:::{image} ../../images/observability-inspect-flyout-statistics.png
+:::{image} /troubleshoot/images/observability-inspect-flyout-statistics.png
 :alt: Inspector flyout Statistics tab
 :screenshot:
 :::
 
 The **Request** tab shows the exact syntax used in the request. You can click **Copy to clipboard** to copy the request or **Open in Console** to open it in the [{{kib}} console](../../explore-analyze/query-filter/tools/console.md).
 
-:::{image} ../../images/observability-inspect-flyout-request.png
+:::{image} /troubleshoot/images/observability-inspect-flyout-request.png
 :alt: Inspector flyout Request tab with exact syntax
 :screenshot:
 :::
 
 The **Response** tab shows the exact response used in the visualizations on the page. You can click **Copy to clipboard** to copy the response.
 
-:::{image} ../../images/observability-inspect-flyout-response.png
+:::{image} /troubleshoot/images/observability-inspect-flyout-response.png
 :alt: Inspector flyout Response tab with exact response
 :screenshot:
 :::

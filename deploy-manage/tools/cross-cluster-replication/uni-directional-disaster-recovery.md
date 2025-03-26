@@ -22,7 +22,7 @@ Learn how to failover and failback between two clusters based on uni-directional
 * Failover - If `clusterA` goes offline, `clusterB` needs to "promote" follower indices to regular indices to allow write operations. All ingestion will need to be redirected to `clusterB`, this is controlled by the clients ({{ls}}, {{beats}}, {{agents}}, etc).
 * Failback - When `clusterA` is back online, it assumes the role of a follower and replicates the leader indices from `clusterB`.
 
-:::{image} ../../../images/elasticsearch-reference-ccr-uni-directional-disaster-recovery.png
+:::{image} /deploy-manage/images/elasticsearch-reference-ccr-uni-directional-disaster-recovery.png
 :alt: Uni-directional cross cluster replication failover and failback
 :::
 

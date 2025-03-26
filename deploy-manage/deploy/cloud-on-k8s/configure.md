@@ -27,7 +27,7 @@ The following guides cover common ECK configuration tasks:
 
 * [Service meshes](./service-meshes.md): Connect ECK and managed Elastic Stack applications to some of the most popular [service mesh](https://www.cncf.io/blog/2017/04/26/service-mesh-critical-component-cloud-native-stack/) implementations in the Kubernetes ecosystem.
 
-* [Network policies](./network-policies.md): Use [Kubernetes network policies](https://kubernetes.io/docs/concepts/services-networking/network-policies/) to isolate pods by restricting incoming and outgoing network connections to a trusted set of sources and destinations.
+* [Network policies](./../../security/k8s-network-policies.md): Use [Kubernetes network policies](https://kubernetes.io/docs/concepts/services-networking/network-policies/) to isolate pods by restricting incoming and outgoing network connections to a trusted set of sources and destinations.
 
 * [](./webhook-namespace-selectors.md): Restrict the namespaces that the validation webhook applies to, allowing multiple operators to coexist efficiently in the same cluster.
 

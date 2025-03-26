@@ -22,7 +22,7 @@ To create an API key:
 1. Go to **Stack Management** in the main menu and find **API Keys** or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Click **Create API key**.
 
-    :::{image} ../../../images/observability-server-api-key-create.png
+    :::{image} /solutions/images/observability-server-api-key-create.png
     :alt: API key creation
     :screenshot:
     :::
@@ -68,7 +68,7 @@ To create an API key:
 5. Click **Create API key**.
 6. You *must* set the API key to be configured to {{beats}}. Immediately after the API key is generated and while it is still being displayed, click the **Encoded** button next to the API key and select **Beats** from the list in the tooltip. Base64 encoded API keys are not currently supported in this configuration.
 
-    :::{image} ../../../images/observability-apm-api-key-beats.png
+    :::{image} /solutions/images/observability-apm-api-key-beats.png
     :alt: API key dropdown highlighting the Beats option
     :::
 
@@ -88,7 +88,7 @@ output.elasticsearch:
 
 To open **API keys**, find **Stack Management** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Click **Create API key**.
 
-:::{image} ../../../images/observability-server-api-key-create.png
+:::{image} /solutions/images/observability-server-api-key-create.png
 :alt: API key creation
 :screenshot:
 :::

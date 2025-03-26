@@ -44,7 +44,7 @@ From the deployment main page, you can quickly access the following configuratio
 
 * Select **{{es}} > snapshots** to associate a [snapshots repository](../../tools/snapshot-and-restore/cloud-enterprise.md#ece-manage-repositories-clusters) with the deployment.
 
-* Select **Monitoring > Logs and metrics** to set up [Stack monitoring](../../monitor/stack-monitoring/ece-stack-monitoring.md) for your deployment, forwarding its logs and metrics to a dedicated monitoring deployment. 
+* Select **Monitoring > Logs and metrics** to set up [Stack monitoring](../../monitor/stack-monitoring/ece-ech-stack-monitoring.md) for your deployment, forwarding its logs and metrics to a dedicated monitoring deployment. 
 
   ::::{note}
   In addition to the monitoring of clusters that is described here, don’t forget that {{ece}} also provides [monitoring information for your entire installation](../../../deploy-manage/monitor/orchestrators/ece-platform-monitoring.md).

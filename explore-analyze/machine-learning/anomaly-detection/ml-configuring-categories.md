@@ -28,7 +28,7 @@ Categorization is a {{ml}} process that tokenizes a text field, clusters similar
 3. Select the **Categorization** wizard from the list.
 4. Choose a categorization detector - it’s the `count` function in this example - and the field you want to categorize - the `message` field in this example.
 
-    :::{image} ../../../images/machine-learning-categorization-wizard.png
+    :::{image} /explore-analyze/images/machine-learning-categorization-wizard.png
     :alt: Creating a categorization job in Kibana
     :screenshot:
     :::
@@ -69,7 +69,7 @@ PUT _ml/anomaly_detectors/it_ops_app_logs
 
 Use the **Anomaly Explorer** in {{kib}} to view the analysis results:
 
-:::{image} ../../../images/machine-learning-ml-category-anomalies.png
+:::{image} /explore-analyze/images/machine-learning-ml-category-anomalies.png
 :alt: Categorization results in the Anomaly Explorer
 :screenshot:
 :::
@@ -96,7 +96,7 @@ Categorization uses English dictionary words to identify log message categories.
 
 If you use the categorization wizard in {{kib}}, you can see which categorization analyzer it uses and highlighted examples of the tokens that it identifies. You can also change the tokenization rules by customizing the way the categorization field values are interpreted:
 
-:::{image} ../../../images/machine-learning-ml-category-analyzer.png
+:::{image} /explore-analyze/images/machine-learning-ml-category-analyzer.png
 :alt: Editing the categorization analyzer in Kibana
 :screenshot:
 :::
