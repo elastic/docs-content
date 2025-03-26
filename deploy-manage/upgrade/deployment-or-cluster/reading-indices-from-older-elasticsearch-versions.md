@@ -1,11 +1,16 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/archive-indices.html
+applies_to:
+  stack:
+  deployment:
+    ess:
+    self:
 ---
 
 # Reading indices from older {{es}} versions [archive-indices]
 
-{{es}} has full query and write support for indices created in the previous major version. If you have indices created in {{es}} versions 5, 6, or 7, you can now use the archive functionality to import them into newer {{es}} versions as well.
+{{es}} has full query and write support for indices created in the previous major version. If you have indices created in {{es}} versions 5 or 6, you can use the archive functionality to import them into newer {{es}} versions as well.
 
 The archive functionality provides slower read-only access to older {{es}} data, for compliance or regulatory reasons, the occasional lookback or investigation, or to rehydrate parts of it. Access to the data is expected to be infrequent, and can therefore happen with limited performance and query capabilities.
 
@@ -14,7 +19,7 @@ For this, {{es}} can access older snapshot repositories going back to version 5.
 
 ## Supported field types [archive-indices-supported-field-types]
 
-Old mappings are imported as much as possible into {{es}} 9, but only provide regular query capabilities on a select subset of fields:
+Old mappings are imported as close as possible into {{es}} 9, but only provide regular query capabilities on a select subset of fields:
 
 * [Numeric types](elasticsearch://reference/elasticsearch/mapping-reference/number.md)
 * [`boolean` type](elasticsearch://reference/elasticsearch/mapping-reference/boolean.md)
@@ -46,7 +51,7 @@ Due to `_source` access, the data can also be [reindexed](https://www.elastic.co
 
 ## Upgrade older {{es}} clusters [_how_to_upgrade_older_es_clusters]
 
-To upgrade older {{es}} 5, 6, or 7 clusters: 
+To upgrade older {{es}} 5 or 6 clusters: 
 
 1. Take a snapshot of the indices in the old cluster. 
 2. Delete any indices created before 8.0.0. 
