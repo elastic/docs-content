@@ -12,7 +12,11 @@ Review key resources that can be used to interact with and manage your {{ece}} i
 
 ## APIs
 
-You can use the following APIs in an {{ece}} environment:
+You can use the following APIs in an {{ece}} environment.
+
+:::{tip}
+Refer to [](/deploy-manage/api-keys.md) to learn how to generate API keys for your environment.
+:::
 
 ### Orchestration APIs
 
@@ -23,6 +27,10 @@ Refer to [{{es}} API conventions](cloud://reference/cloud-enterprise/restful-api
 ### APIs to interact with data and solution features
 
 The following APIs allow you to interact with your {{es}} cluster, its data, and the features available to you in your {{ece}} deployments.
+
+:::{tip}
+Refer to [{{es}} API conventions](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md) to learn about headers and request body conventions, and to view examples.
+:::
 
 :::{include} /deploy-manage/deploy/_snippets/core-apis.md
 :::
