@@ -1,15 +1,12 @@
-You create a server certificate and private key for {{kib}}. {{kib}} uses this server certificate and corresponding private key when receiving connections from web browsers.
+To secure browser access to {{kib}}, you need to generate a TLS certificate and private key for the server. {{kib}} uses these to encrypt HTTP traffic and establish trust with connecting browsers or API clients.
 
-When you obtain a server certificate, you must set its subject alternative name (SAN) correctly to ensure that browsers will trust it. You can set one or more SANs to the {{kib}} server’s fully-qualified domain name (FQDN), hostname, or IP address. When choosing the SAN, pick whichever attribute you’ll use to connect to {{kib}} in your browser, which is likely the FQDN.
-
-The following instructions create a Certificate Signing Request (CSR) for {{kib}}. A CSR contains information that a CA uses to generate and sign a security certificate. The certificate can be trusted (signed by a public, trusted CA) or untrusted (signed by an internal CA). A self-signed or internally-signed certificate is acceptable for development environments and building a proof of concept, but should not be used in a production environment.
-
-::::{warning}
-Before going to production, use a trusted CA such as [Let’s Encrypt](https://letsencrypt.org/) or your organization’s internal CA to sign the certificate. Using a signed certificate establishes browser trust for connections to {{kib}} for internal access or on the public internet.
+::::{important}
+When creating or requesting a TLS certificate, make sure to include one or more valid **Subject Alternative Names (SANs)** that match how users will access {{kib}}, typically a fully qualified domain name (FQDN), hostname, or IP address. Most browsers will reject the certificate if none of the SANs match the address used to connect.
 ::::
 
+The following steps guide you through creating a Certificate Signing Request (CSR) for {{kib}}. A CSR is used to obtain a TLS certificate from a Certificate Authority (CA). For production environments, use a trusted CA such as [Let’s Encrypt](https://letsencrypt.org/) or your organization’s internal CA to ensure browser trust.
 
-1. Generate a server certificate and private key for {{kib}}.
+1. Generate a CSR and private key for {{kib}}.
 
     ```shell
     ./bin/elasticsearch-certutil csr -name kibana-server -dns example.com,www.example.com
@@ -26,8 +23,8 @@ Before going to production, use a trusted CA such as [Let’s Encrypt](https://l
     ```
 
 2. Unzip the `csr-bundle.zip` file to obtain the `kibana-server.csr` unsigned security certificate and the `kibana-server.key` unencrypted private key.
-3. Send the `kibana-server.csr` certificate signing request to your internal CA or trusted CA for signing to obtain a signed certificate. The signed file can be in different formats, such as a `.crt` file like `kibana-server.crt`.
-4. Open `kibana.yml` and add the following lines to configure {{kib}} to access the server certificate and unencrypted private key.
+3. Submit the `kibana-server.csr` certificate signing request to your organization’s security team or certificate authority to obtain a signed certificate. The resulting certificate might be in different formats, such as a `.crt` file like `kibana-server.crt`.
+4. Open `kibana.yml` and add the following lines to configure {{kib}} HTTPS endpoint to use the server certificate and unencrypted private key.
 
     ```yaml
     server.ssl.certificate: $KBN_PATH_CONF/kibana-server.crt
@@ -38,7 +35,7 @@ Before going to production, use a trusted CA such as [Let’s Encrypt](https://l
     `$KBN_PATH_CONF` contains the path for the {{kib}} configuration files. If you installed {{kib}} using archive distributions (`zip` or `tar.gz`), the path defaults to `$KBN_HOME/config`. If you used package distributions (Debian or RPM), the path defaults to `/etc/kibana`.
     ::::
 
-5. Add the following line to `kibana.yml` to enable TLS for inbound connections.
+5. Add the following line to `kibana.yml` to enable HTTPS for incoming connections.
 
     ```yaml
     server.ssl.enabled: true
@@ -46,7 +43,4 @@ Before going to production, use a trusted CA such as [Let’s Encrypt](https://l
 
 6. Start {{kib}}.
 
-::::{note}
-After making these changes, you must always access {{kib}} via HTTPS. For example, `https://<your_kibana_host>.com`.
-::::
-
+    After making these changes, you must always access {{kib}} through HTTPS. For example, `https://<your_kibana_host>.com:5601`.

@@ -16,9 +16,9 @@ Enabling TLS on the HTTP layer ensures that all client communications with your 
 
 This document provides guidance on how to:
 
-* Generate and configure TLS certificates for the HTTP endpoints of your {{es}} nodes.
-* Configure {{kib}} to securely connect to {{es}} over HTTPS by trusting the Certificate Authority (CA) used by {{es}}.
-* Generate and configure TLS certificates for the {{kib}} HTTP interface to secure {{kib}} access.
+* [Generate and configure TLS certificates for the HTTP endpoints of your {{es}} nodes](#encrypt-http-communication).
+* [Configure {{kib}} to securely connect to {{es}} over HTTPS](#encrypt-kibana-elasticsearch) by trusting the Certificate Authority (CA) used by {{es}}.
+* [Generate and configure TLS certificates for the {{kib}} HTTP interface to secure {{kib}} access](#encrypt-kibana-browser).
 
 ::::{note}
 This guide uses the `elasticsearch-certutil` tool to generate Certificate Authorities (CAs) and TLS certificates. However, using this tool is not required. You can use publicly trusted certificates, your organization's internal certificate management system, or any other method that produces valid certificates.
@@ -26,26 +26,15 @@ This guide uses the `elasticsearch-certutil` tool to generate Certificate Author
 If you already have certificates available, you can skip the certificate generation steps and proceed directly to the {{es}} and {{kib}} configuration steps.
 ::::
 
-## `elasticsearch-certutil`
+::::{tip}
+When running `elasticsearch-certutil` in `http` mode, the tool prompts you to choose how to generate the TLS certificates. One key question is whether you want to generate a Certificate Signing Request (CSR).
 
-When you run the `elasticsearch-certutil` tool in `http` mode, the tool asks several questions about how you want to generate certificates. While there are numerous options, the following choices result in certificates that should work for most environments.
+* Answer `n` to skip the CSR and sign your certificates using a Certificate Authority (CA) [you previously created](./set-up-basic-security.md#generate-the-certificate-authority). You’ll be prompted to provide the path to your CA, which the tool will use to generate a `.p12` certificate. The steps in this guide follow this workflow for {{es}} certificates.
+* Answer `y` to generate a CSR that can be signed by your organization's internal CA or external certificate provider. This is common in environments where trust is managed centrally. The steps in this guide follow this workflow for {{kib}} certificate.
 
-::::{admonition} Signing certificates
-:name: signing-certificates
-
-The first question that the `elasticsearch-certutil` tool prompts you with is whether you want to generate a Certificate Signing Request (CSR). Answer `n` if you want to sign your own certificates, or `y` if you want to sign certificates with a central CA.
-
-
-#### Sign your own certificates [_sign_your_own_certificates]
-
-If you want to use the CA that you created when [Generating the certificate authority](secure-cluster-communications.md#generate-certificates) answer `n` when asked if you want to generate a CSR. You then specify the location of your CA, which the tool uses to sign and generate a `.p12` certificate. The steps in this procedure follow this workflow.
-
-
-#### Sign certificates with a central CA [_sign_certificates_with_a_central_ca]
-
-If you work in an environment with a central security team, they can likely generate a certificate for you. Infrastructure within your organization might already be configured to trust an existing CA, so it may be easier for clients to connect to {{es}} if you use a CSR and send that request to the team that controls your CA. To use a central CA, answer `y` to the first question.
-
+Both workflows are supported. Choose the one that best fits your infrastructure and trust model.
 ::::
+
 
 ## Prerequisites [basic-setup-https-prerequisites]
 
@@ -59,12 +48,12 @@ If you prefer to use a separate CA for HTTP, you can generate a new one using th
 elasticsearch-certutil ca --out http-ca.p12
 ```
 
-Then, use this CA to sign your HTTP certificates instead.
+Then, use this CA to sign your HTTP certificates in the next section and for {{kib}} HTTP endpoint.
 
 ## Generate and configure TLS certificates for {{es}} nodes [encrypt-http-communication]
-
 % Encrypt HTTP client communications for {{es}}
-Doing this will encrypt all client communications with the cluster. Clients will have to be configured to use `https` protocol when connecting to {{es}}, and will need the CA certificate associated to the {{es}} certificates for trusting purposes.
+
+Once TLS is enabled, all client communications with the cluster will be encrypted. Clients must connect using `https` and be configured to trust the Certificate Authority (CA) that signed the {{es}} certificates.
 
 1. On **every** node in your cluster, stop {{es}} and {{kib}} if they are running.
 2. On any single node, from the directory where you installed {{es}}, run the {{es}} HTTP certificate tool to generate TLS certificates for your nodes.
@@ -132,11 +121,9 @@ Doing this will encrypt all client communications with the cluster. Clients will
 
 ## Encrypt HTTP client communications for {{kib}} [encrypt-kibana-http]
 
-Browsers send traffic to {{kib}} and {{kib}} sends traffic to {{es}}. These communication channels are configured separately to use TLS. You encrypt traffic between {{kib}} and {{es}}, and then encrypt traffic between your browser and {{kib}}.
-
 {{kib}} handles two separate types of HTTP traffic that should be encrypted:
-* Outgoing traffic from {{kib}} to {{es}} – {{kib}} acts as an HTTP client and must be configured to trust the TLS certificate used by {{es}}.
-* Incoming traffic from browsers to {{kib}} – {{kib}} also acts as an HTTP server, and you should configure a TLS certificate for its public-facing endpoint to secure browser access.
+* **Outgoing requests from {{kib}} to {{es}}**: {{kib}} acts as an HTTP client and must be configured to trust the TLS certificate used by {{es}}.
+* **Incoming requests from browsers or API clients to {{kib}}**: {{kib}} acts as an HTTP server, and you should configure a TLS certificate for its public-facing endpoint to secure clients traffic.
 
 
 ### Encrypt traffic between {{kib}} and {{es}} [encrypt-kibana-elasticsearch]
@@ -148,9 +135,6 @@ Browsers send traffic to {{kib}} and {{kib}} sends traffic to {{es}}. These comm
 
 
 ### Encrypt traffic between your browser and {{kib}} [encrypt-kibana-browser]
-
-In order to ensure clients communication to {{kib}} are encrypted, you have to create a TLS certificate for {{kib}} and, the same way as with {{es}}, configure the clients to use `https` when connecting to {{kib}} and trust the CA used to sign {{kib}} certificate.
-(WORK IN PROGRESS)
 
 :::{include} /deploy-manage/security/_snippets/kibana-https-setup.md
 :::
