@@ -49,8 +49,8 @@ Make a request to the API, following the [documentation](https://github.com/olla
    curl http://localhost:11434/api/generate -d '{
   "model": "llama3.2",
   "prompt": "What is the capital of France?"
-}'
-   ```
+  }'
+  ```
 
    The API returns a response similar to this:
 
