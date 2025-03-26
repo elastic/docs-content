@@ -83,6 +83,8 @@ To install and run {{agent}} standalone:
 
     The commands shown are for AMD platforms, but ARM packages are also available. Refer to the {{agent}} [downloads page](https://www.elastic.co/downloads/elastic-agent) for the full list of available packages.
 
+
+
 2. Modify settings in the `elastic-agent.yml` as required.
 
     To get started quickly and avoid errors, use {{kib}} to create and download a standalone configuration file rather than trying to build it by hand. For more information, refer to [Create a standalone {{agent}} policy](/reference/fleet/create-standalone-agent-policy.md).
@@ -122,6 +124,9 @@ To install and run {{agent}} standalone:
     ```shell
     sudo ./elastic-agent install
     ```
+
+    By default the {{agent}} basic flavor is installed. To install the servers flavor, add the `--ìnstall-servers` parameter. Refer to [{{agent}} installation flavors](./install-elastic-agents.md#elastic-agent-installation-flavors) for details.
+
     ::::
 
     ::::{tab-item} Linux
@@ -132,7 +137,10 @@ To install and run {{agent}} standalone:
 
     ```shell
     sudo ./elastic-agent install
-    ```
+    ``` 
+
+    By default the {{agent}} basic flavor is installed. To install the servers flavor, add the `--ìnstall-servers` parameter. Refer to [{{agent}} installation flavors](./install-elastic-agents.md#elastic-agent-installation-flavors) for details.
+
     ::::
 
     ::::{tab-item} Windows
@@ -144,6 +152,9 @@ To install and run {{agent}} standalone:
     ```shell
     .\elastic-agent.exe install
     ```
+
+    By default the {{agent}} basic flavor is installed. To install the servers flavor, add the `--ìnstall-servers` parameter. Refer to [{{agent}} installation flavors](./install-elastic-agents.md#elastic-agent-installation-flavors) for details.
+
     ::::
 
     ::::{tab-item} DEB
@@ -154,6 +165,9 @@ To install and run {{agent}} standalone:
     ```
     
     1. The DEB package includes a service unit for Linux systems with systemd. On these systems, you can manage {{agent}} by using the usual systemd commands. If you don’t have systemd, run `sudo service elastic-agent start`.
+
+    By default the {{agent}} basic flavor is installed. To install the servers flavor add the `ELATIC_AGENT_FLAVOR=servers` parameter to both commands. Refer to [{{agent}} installation flavors](./install-elastic-agents.md#elastic-agent-installation-flavors) for details.
+
     ::::
 
     ::::{tab-item} RPM
@@ -164,6 +178,9 @@ To install and run {{agent}} standalone:
     ```
 
     1. The RPM package includes a service unit for Linux systems with systemd. On these systems, you can manage {{agent}} by using the usual systemd commands. If you don’t have systemd, run `sudo service elastic-agent start`.
+
+    By default the {{agent}} basic flavor is installed. To install the servers flavor add the `ELATIC_AGENT_FLAVOR=servers` parameter to both commands. Refer to [{{agent}} installation flavors](./install-elastic-agents.md#elastic-agent-installation-flavors) for details.
+
     ::::
 
     :::::

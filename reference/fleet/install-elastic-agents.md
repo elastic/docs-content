@@ -68,7 +68,7 @@ If you are using {{agent}} with [{{serverless-full}}](/deploy-manage/deploy/elas
 When you set up {{agent}}, you might not yet have all input configuration details available. To solve this problem, the input configuration accepts variables and conditions that get evaluated at runtime using information from the running environment, allowing you to apply configurations dynamically. To learn more, refer to [Variables and conditions in input configurations](./dynamic-input-configuration.md).
 ::::
 
-## {{agent}} installation flavors [elastic-agent-installation-packages]
+## {{agent}} installation flavors [elastic-agent-installation-flavors]
 
 {{agent}} distribution packages are offered in multiple flavors. This gives you control over the set of components included in the package and the size of the package footprint when it's installed.
 
