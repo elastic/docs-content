@@ -19,7 +19,7 @@ By default, 8.x {{es}} clients are compatible with 9.0.0 and use [REST API compa
 
 Review the best practices to upgrade your deployments.
 
-1. Run the [Upgrade Assistant](prepare-to-upgrade/upgrade-assistant.md), which identifies deprecated settings, helps resolve issues, and reindexes data streams and indices created in 8.0.0 and earlier.
+1. Run the [Upgrade Assistant](prepare-to-upgrade/upgrade-assistant.md), which identifies deprecated settings, helps resolve issues, reindexes data streams and indices created in 8.0.0 and earlier, or marks them as read-only.
 
     :::{note}
      Depending on your setup, reindexing can change your indices, and you may need to update alerts, transforms, or other code targeting the old index.
@@ -54,9 +54,11 @@ Review the best practices to upgrade your deployments.
 8. If you use a separate [monitoring cluster](/deploy-manage/monitor/stack-monitoring/elasticsearch-monitoring-self-managed.md), upgrade the monitoring cluster before the production cluster. The monitoring cluster and the clusters being monitored should be running the same version of the {{stack}}. Monitoring clusters are unable to monitor production clusters running newer versions of the {{stack}}. If necessary, the monitoring cluster can monitor production clusters running the latest release of the previous major version.
 
     :::{note}
-    If you use {{ccs}}, 9.0.0 and later can search only remote clusters running the previous minor version, the same version, or a newer minor version in the same major version. For more information, refer to [Cross-cluster search](../../solutions/search/cross-cluster-search.md).
+    If you use {{ccs}}, 9.0.0 and later can search only remote clusters running the previous minor version, the same version, or a newer minor version in the same major version. For more information, refer to [{{ccs-cap}}](../../solutions/search/cross-cluster-search.md).
 
-    If you use {{ccr}}, a cluster that contains follower indices must run the same or newer (compatible) version as the remote cluster. For more information and to view the version compatibility matrix, refer to [Cross cluster replication](/deploy-manage/tools/cross-cluster-replication.md). To view your remote clusters in {{kib}}, go to **Stack Management > Remote Clusters**.
+    If you use {{ccr}}, a cluster that contains follower indices must run the same or newer (compatible) version as the remote cluster. For more information and to view the version compatibility matrix, refer to [{{ccr-cap}}](/deploy-manage/tools/cross-cluster-replication.md). To view your remote clusters in {{kib}}, go to **Stack Management > Remote Clusters**. 
+    
+    In addition, if you have {{ccr-init}} data streams, refer to [Upgrade uni-directional {{ccr}} clusters with followed data streams](#upgrade-ccr-data-streams) for specific instructions on reindexing.   
     ::::
 
 9. To reduce overhead on the cluster during the upgrade, close {{ml}} jobs. Although {{ml}} jobs can run during a rolling upgrade, doing so increases the cluster workload.
@@ -73,7 +75,36 @@ Optionally create a 9.0.0 deployment and reindex from remote:
 1. Provision an additional deployment running 9.0.0.
 2. To reindex your data into the new {{es}} cluster, use the [reindex documents API](https://www.elastic.co/docs/api/doc/elasticsearch/v8/operation/operation-reindex) and temporarily send new index requests to both clusters.
 3. Verify the new cluster performs as expected, fix any problems, and then permanently swap in the new cluster.
-4. Delete the old deployment. On {ecloud}, you are billed only for the time the new deployment runs in parallel with your old deployment. Usage is billed on an hourly basis.
+4. Delete the old deployment. On {{ecloud}}, you are billed only for the time the new deployment runs in parallel with your old deployment. Usage is billed on an hourly basis.
+
+## Upgrade uni-directional {{ccr}} clusters with followed data streams [upgrade-ccr-data-streams]
+
+When moving to a new major version of {{es}}, you must perform specific actions to ensure that indices — including those that back a data stream — are compatible with the latest Lucene version. With a {{ccr-init}}-enabled cluster, consider whether you want to keep your older data writable or read only to ensure you make changes to the cluster in the correct order. 
+
+:::{note}
+{{ccr-init}}-replicated data streams only allow writing to the most recent backing index as ILM automatically injects an unfollow event after every rollover. Therefore, you can't reindex data streams while {{ccr-init}} is replicating the target backing indices.
+:::
+
+### Migrate read-only historical data
+
+If you want to keep your older data as read only: 
+
+1. Issue a rollover for all replicated data streams on the follower cluster to ensure the write index will be compatible with the version you're upgrading to. 
+2. Run the Upgrade Assistant on the {{ccr-init}} follower cluster and resolve any data stream deprecation notices, selecting the option to not reindex and allow the backing indices to become read-only after upgrading.
+3. Upgrade the {{ccr-init}} follower cluster to the appropriate version. Ensure you take a snapshot before starting the upgrade.
+4. Run the Upgrade Assistant on the {{ccr-init}} leader cluster and repeat the same steps as the follower cluster, opting to not reindex.
+5. Upgrade the leader cluster and ensure {{ccr-init}} replication is healthy.
+
+### Migrate read-write historical data
+
+If you need to write directly to non-write backing indices of data streams in a {{ccr-init}}-replicated cluster pair:
+
+1. Before upgrading, remove the data stream and all follower indices from the {{ccr-init}} follower.
+2. Run the Upgrade Assistant and select the “Reindex” option. 
+3. Once the reindexing is complete and the leader cluster is upgraded, re-add the newly reindexed backing indexes as follower indices on the {{ccr-init}} follower.
+
+
+
 
 
 ## Migrate anomaly detection results [anomaly-migration]
