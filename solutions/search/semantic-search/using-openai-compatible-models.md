@@ -46,14 +46,13 @@ If the model is installed successfully, you get a positive response.
 2. When the model is running, an API endpoint is enbaled by default on port `11434`.
 Make a request to the API, following the [documentation](https://github.com/ollama/ollama/blob/main/docs/api.md):
    ```curl
-   curl http://localhost:11434/api/generate -d '{
-  "model": "llama3.2",
-  "prompt": "What is the capital of France?"
-  }'
-  ```
-
+    curl http://localhost:11434/api/generate -d '{
+   "model": "llama3.2",
+   "prompt": "What is the capital of France?"
+   }'
+   ```
+  
    The API returns a response similar to this:
-
    ```json
    {"model":"llama3.2","created_at":"2025-03-26T10:07:05.500614Z","response":"The","done":false}
    {"model":"llama3.2","created_at":"2025-03-26T10:07:05.519131Z","response":" capital","done":false}
@@ -69,26 +68,58 @@ Make a request to the API, following the [documentation](https://github.com/olla
 
 As the created endpoint works in a local environment, it cannot be accessed from another point - like your Elastic Cloud instance - via the internet.
 [ngrok](https://ngrok.com/) enables you to expose a port offering a public IP.
-Create an ngrok account and follow the [official setup guide](https://dashboard.ngrok.com/get-started/setup).
 
-When the ngrok agent is installed and configured, you can expose the port Ollama is using by running the floowing command:
+1. Create an ngrok account and follow the [official setup guide](https://dashboard.ngrok.com/get-started/setup).
+2. When the ngrok agent is installed and configured, you can expose the port Ollama is using by running the floowing command:
+   ```shell
+   ngrok http 11434 --host-header="localhost:11434"
+   ```
+   The command returns a public link that works while the ngrok and the Ollama server run locally:
+   ```shell
+   Session Status                online                                                                                                                                                                              
+   Account                       xxxx@yourEmailProvider.com (Plan: Free)                                                                                                                                             
+   Version                       3.18.4                                                                                                                                                                              
+   Region                        United States (us)                                                                                                                                                                  
+   Latency                       561ms                                                                                                                                                                               
+   Web Interface                 http://127.0.0.1:4040                                                                                                                                                               
+   Forwarding                    https://your-ngrok-url.ngrok-free.app -> http://localhost:11434                                                                                                                   
+   
+   
+   Connections                   ttl     opn     rt1     rt5     p50     p90                                                                                                                                         
+                                 0       0       0.00    0.00    0.00    0.00
+   ```
 
-```shell
-ngrok http 11434 --host-header="localhost:11434"
-```
+3. Save the URL that ngrok generated in the line of `Forwarding`.
+4. Make a request to the endpoint again using the URL ngrok generated:
+   ```curl
+    curl https://your-ngrok-endpoint.ngrok-free.app/api/generate -d '{
+   "model": "llama3.2",
+   "prompt": "What is the capital of France?"
+   }'
+   ```
+   The API returns a response similar to the previous one.
 
-The command returns a public link that works while the ngrok and the Ollama server run locally:
+## Connecting the local LLM to Playground
 
-```shell
-Session Status                online                                                                                                                                                                              
-Account                       xxxx@yourEmailProvider.com (Plan: Free)                                                                                                                                             
-Version                       3.18.4                                                                                                                                                                              
-Region                        United States (us)                                                                                                                                                                  
-Latency                       561ms                                                                                                                                                                               
-Web Interface                 http://127.0.0.1:4040                                                                                                                                                               
-Forwarding                    https://your-ngrok-url.ngrok-free.app -> http://localhost:11434                                                                                                                   
+Create a connector that uses the public URL you created.
 
+1. In Kibana, go to **Search > Playground**, and click **Connect to an LLM**.
+2. Select **OpenAI** on the fly-out.
+3. Provide a name for the connector.
+4. Select **Other (OpenAI Compatible Service)** for the OpenAI provider under **Connector settings**.
+5. Copy the ngrok-generated URL to the **URL** field.
+6. Specify the default model, for example, `llama3.2`.
+7. Provide a random string for the API key, it won't be used for the requests.
+8. **Save**.
+   :::{image} /solutions/images/elasticsearch-openai-compatible-connector.png
+   :alt: Configuring an LLM connector in Playground
+   :title: Configuring an LLM connector in Playground
+   :name: configuring-llm-connector-playground
+   :::
+9. Click **Add data sources** and connect your index.
 
-Connections                   ttl     opn     rt1     rt5     p50     p90                                                                                                                                         
-                              0       0       0.00    0.00    0.00    0.00
-```
+You have access to Playground using the LLM you are running locally.
+
+## Further reading
+
+* [Unsing Ollama with the {{infer}} API](https://www.elastic.co/search-labs/blog/ollama-with-inference-api#expose-endpoint-to-the-internet-using-ngrok): a more comprehensive, end-to-end tutorial of using Ollama with {{es}}.
