@@ -36,8 +36,8 @@ Some token filters can add tokens that span multiple positions. These can includ
 
 However, only some token filters, known as *graph token filters*, accurately record the `positionLength` for multi-position tokens. These filters include:
 
-* [`synonym_graph`](elasticsearch://reference/data-analysis/text-analysis/analysis-synonym-graph-tokenfilter.md)
-* [`word_delimiter_graph`](elasticsearch://reference/data-analysis/text-analysis/analysis-word-delimiter-graph-tokenfilter.md)
+* [`synonym_graph`](elasticsearch://reference/text-analysis/analysis-synonym-graph-tokenfilter.md)
+* [`word_delimiter_graph`](elasticsearch://reference/text-analysis/analysis-word-delimiter-graph-tokenfilter.md)
 
 Some tokenizers, such as the [`nori_tokenizer`](elasticsearch://reference/elasticsearch-plugins/analysis-nori-tokenizer.md), also accurately decompose compound tokens into multi-position tokens.
 
@@ -81,8 +81,8 @@ This means the query matches documents containing either `dns is fragile` *or* `
 
 The following token filters can add tokens that span multiple positions but only record a default `positionLength` of `1`:
 
-* [`synonym`](elasticsearch://reference/data-analysis/text-analysis/analysis-synonym-tokenfilter.md)
-* [`word_delimiter`](elasticsearch://reference/data-analysis/text-analysis/analysis-word-delimiter-tokenfilter.md)
+* [`synonym`](elasticsearch://reference/text-analysis/analysis-synonym-tokenfilter.md)
+* [`word_delimiter`](elasticsearch://reference/text-analysis/analysis-word-delimiter-tokenfilter.md)
 
 This means these filters will produce invalid token graphs for streams containing such tokens.
 

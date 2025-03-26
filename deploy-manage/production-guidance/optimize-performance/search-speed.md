@@ -14,7 +14,7 @@ applies_to:
 This page provides guidance on tuning {{es}} for faster search performance. While hardware and system-level settings play an important role, the structure of your documents and the design of your queries often have the biggest impact. Use these recommendations to optimize field mappings, caching behavior, and query design for high-throughput, low-latency search at scale.
 
 ::::{note}
-Search performance in {{es}} depends on a combination of factors, including how expensive individual queries are, how many searches run in parallel, the number of indices and shards involved, and the overall sharding strategy and shard size. 
+Search performance in {{es}} depends on a combination of factors, including how expensive individual queries are, how many searches run in parallel, the number of indices and shards involved, and the overall sharding strategy and shard size.
 
 These variables influence how the system should be tuned. For example, optimizing for a small number of complex queries differs significantly from optimizing for many lightweight, concurrent searches.
 
@@ -34,7 +34,7 @@ deployment:
 By default, {{es}} automatically sets its [JVM heap size](/deploy-manage/deploy/self-managed/important-settings-configuration.md#heap-size-settings) to follow this best practice. However, in self-managed or {{eck}} deployments, you have the flexibility to allocate even more memory to the filesystem cache, which can lead to performance improvements depending on your workload.
 
 ::::{note}
-On Linux, the filesystem cache uses any memory not actively used by applications. To allocate memory to the cache, ensure that enough system memory remains available and is not consumed by {{es}} or other processes. 
+On Linux, the filesystem cache uses any memory not actively used by applications. To allocate memory to the cache, ensure that enough system memory remains available and is not consumed by {{es}} or other processes.
 ::::
 
 ## Avoid page cache thrashing by using modest readahead values on Linux [_avoid_page_cache_thrashing_by_using_modest_readahead_values_on_linux]
@@ -117,7 +117,7 @@ PUT movies
 
 ## Pre-index data [_pre_index_data]
 
-You should leverage patterns in your queries to optimize the way data is indexed. For instance, if all your documents have a `price` field and most queries run [`range`](elasticsearch://reference/data-analysis/aggregations/search-aggregations-bucket-range-aggregation.md) aggregations on a fixed list of ranges, you could make this aggregation faster by pre-indexing the ranges into the index and using a [`terms`](elasticsearch://reference/data-analysis/aggregations/search-aggregations-bucket-terms-aggregation.md) aggregations.
+You should leverage patterns in your queries to optimize the way data is indexed. For instance, if all your documents have a `price` field and most queries run [`range`](elasticsearch://reference/aggregations/search-aggregations-bucket-range-aggregation.md) aggregations on a fixed list of ranges, you could make this aggregation faster by pre-indexing the ranges into the index and using a [`terms`](elasticsearch://reference/aggregations/search-aggregations-bucket-terms-aggregation.md) aggregations.
 
 For instance, if documents look like:
 

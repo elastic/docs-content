@@ -28,23 +28,55 @@ To install and run {{agent}} standalone:
     ::::{tab-set}
 
     :::{tab-item} macOS
-    Version 9.0.0-beta1 of {{agent}} has not yet been released.
+    ```shell subs=true
+    curl -L -O https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-{{stack-version}}-darwin-x86_64.tar.gz
+    tar xzvf elastic-agent-{{stack-version}}-darwin-x86_64.tar.gz
+    ```
     :::
 
     :::{tab-item} Linux
-    Version 9.0.0-beta1 of {{agent}} has not yet been released.
+    ```shell subs=true
+    curl -L -O https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-{{stack-version}}-linux-x86_64.tar.gz
+    tar xzvf elastic-agent-{{stack-version}}-linux-x86_64.tar.gz
+    ```
     :::
 
     :::{tab-item} Windows
-    Version 9.0.0-beta1 of {{agent}} has not yet been released.
+    ```shell subs=true
+    # PowerShell 5.0+
+    wget https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-{{stack-version}}-windows-x86_64.zip -OutFile elastic-agent-{{stack-version}}-windows-x86_64.zip
+    Expand-Archive .\elastic-agent-{{stack-version}}-windows-x86_64.zip
+    ```
+    Or manually:
+
+    1. Download the {{agent}} Windows zip file from the [download page](https://www.elastic.co/downloads/beats/elastic-agent).
+
+    2. Extract the contents of the zip file.
     :::
 
     :::{tab-item} DEB
-    Version 9.0.0-beta1 of {{agent}} has not yet been released.
+    IMPORTANT:
+
+    * To simplify upgrading to future versions of {{agent}}, we recommended that you use the tarball distribution instead of the DEB distribution.
+    * You can install {{agent}} in an `unprivileged` mode that does not require `root` privileges. Refer to [Run {{agent}} without administrative privileges](./elastic-agent-unprivileged.md) for details.
+
+    ```shell subs=true
+    curl -L -O https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-{{stack-version}}-amd64.deb
+    sudo dpkg -i elastic-agent-{{stack-version}}-amd64.deb
+    ```
     :::
 
     :::{tab-item} RPM
-    Version 9.0.0-beta1 of {{agent}} has not yet been released.
+    IMPORTANT:
+    
+    * To simplify upgrading to future versions of {{agent}}, we recommended that you use the tarball distribution instead of the RPM distribution.
+    * You can install {{agent}} in an `unprivileged` mode that does not require `root` privileges. Refer to [Run {{agent}} without administrative privileges](./elastic-agent-unprivileged.md) for details.
+
+
+    ```shell subs=true
+    curl -L -O https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-{{stack-version}}-x86_64.rpm
+    sudo rpm -vi elastic-agent-{{stack-version}}-x86_64.rpm
+    ```
     :::
 
     ::::
@@ -79,31 +111,31 @@ To install and run {{agent}} standalone:
     On macOS, Linux (tar package), and Windows, run the `install` command to install {{agent}} as a managed service and start the service. The DEB and RPM packages include a service unit for Linux systems with systemd, so just enable then start the service.
     ::::
 
-    ::::{tab-set}
+    :::::{tab-set}
 
-    :::{tab-item} macOS
+    ::::{tab-item} macOS
 
-    ::::{tip}
+    :::{tip}
     You must run this command as the root user because some integrations require root privileges to collect sensitive data.
-    ::::
+    :::
 
     ```shell
     sudo ./elastic-agent install
     ```
-    :::
-
-    :::{tab-item} Linux
-
-    ::::{tip}
-    You must run this command as the root user because some integrations require root privileges to collect sensitive data.
     ::::
+
+    ::::{tab-item} Linux
+
+    :::{tip}
+    You must run this command as the root user because some integrations require root privileges to collect sensitive data.
+    :::
 
     ```shell
     sudo ./elastic-agent install
     ```
-    :::
+    ::::
 
-    :::{tab-item} Windows
+    ::::{tab-item} Windows
 
     Open a PowerShell prompt as an Administrator (right-click the PowerShell icon and select **Run As Administrator**).
 
@@ -112,27 +144,19 @@ To install and run {{agent}} standalone:
     ```shell
     .\elastic-agent.exe install
     ```
-    :::
-
-    :::{tab-item} DEB
-
-    ::::{tip}
-    You must run this command as the root user because some integrations require root privileges to collect sensitive data.
     ::::
+
+    ::::{tab-item} DEB
 
     ```shell
     sudo systemctl enable elastic-agent <1>
     sudo systemctl start elastic-agent
     ```
+    
     1. The DEB package includes a service unit for Linux systems with systemd. On these systems, you can manage {{agent}} by using the usual systemd commands. If you don’t have systemd, run `sudo service elastic-agent start`.
-    :::
-
-    :::{tab-item} RPM
-
-    ::::{tip}
-    You must run this command as the root user because some integrations require root privileges to collect sensitive data.
     ::::
 
+    ::::{tab-item} RPM
 
     ```shell
     sudo systemctl enable elastic-agent <1>
@@ -140,9 +164,9 @@ To install and run {{agent}} standalone:
     ```
 
     1. The RPM package includes a service unit for Linux systems with systemd. On these systems, you can manage {{agent}} by using the usual systemd commands. If you don’t have systemd, run `sudo service elastic-agent start`.
-    :::
-
     ::::
+
+    :::::
 
 Refer to [Installation layout](/reference/fleet/installation-layout.md) for the location of installed {{agent}} files.
 

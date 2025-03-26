@@ -17,7 +17,7 @@ To run this type of {{anomaly-job}}, you must have [{{ml-features}} set up](../s
 * two comma-separated numbers of the form `latitude,longitude`,
 * a [`geo_point`](elasticsearch://reference/elasticsearch/mapping-reference/geo-point.md) field,
 * a [`geo_shape`](elasticsearch://reference/elasticsearch/mapping-reference/geo-shape.md) field that contains point values, or
-* a [`geo_centroid`](elasticsearch://reference/data-analysis/aggregations/search-aggregations-metrics-geocentroid-aggregation.md) aggregation
+* a [`geo_centroid`](elasticsearch://reference/aggregations/search-aggregations-metrics-geocentroid-aggregation.md) aggregation
 
 The latitude and longitude must be in the range -180 to 180 and represent a point on the surface of the Earth.
 

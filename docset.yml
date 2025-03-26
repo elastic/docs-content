@@ -6,6 +6,7 @@ features:
 
 exclude:
   - 'README.md'
+  - 'raw-migrated-files/**'
 
 cross_links:
   - apm-agent-android
@@ -66,7 +67,6 @@ toc:
   - toc: release-notes
   - toc: reference
   - toc: extend
-  - toc: raw-migrated-files
   - hidden: 404.md
 
 subs:
