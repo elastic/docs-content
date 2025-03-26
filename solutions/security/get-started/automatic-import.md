@@ -32,7 +32,6 @@ Click [here](https://elastic.navattic.com/automatic-import) to access an interac
 To use Automatic Import, you must provide a sample of the data you wish to import. An LLM will process that sample and automatically create an integration suitable for processing the data represented by the sample. **Any structured or unstructured format is acceptable, including but not limited to JSON, NDJSON, CSV, Syslog.** 
 
 * You can upload a sample of arbitrary size. The LLM will detect its format and select up to 100 documents for detailed analysis.
-* ```
 * The more variety in your sample, the more accurate the pipeline will be. For best results, include a wide range of unique log entries in your sample instead of repeating similar logs.
 * When uploading a CSV, a header with column names will be automatically recognized. However if the header is not present, the LLM will still attempt to create descriptive field names based on field formats and values.
 * For JSON and NDJSON samples, each object in your sample should represent an event, and you should avoid deeply nested object structures.
