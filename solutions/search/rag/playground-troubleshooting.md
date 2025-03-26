@@ -14,7 +14,7 @@ This functionality is in technical preview and may be changed or removed in a fu
 
 
 Dense vectors are not searchable
-:   Embeddings must be generated using the [inference processor](elasticsearch://reference/ingestion-tools/enrich-processor/inference-processor.md) with an ML node.
+:   Embeddings must be generated using the [inference processor](elasticsearch://reference/enrich-processor/inference-processor.md) with an ML node.
 
 Context length error
 :   You’ll need to adjust the size of the context you’re sending to the model. Refer to [Optimize model context](playground-context.md).
