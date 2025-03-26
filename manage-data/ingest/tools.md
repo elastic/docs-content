@@ -53,5 +53,5 @@ Depending on the type of data you want to ingest, you have a number of methods a
 | Application logs | Ingest application logs using Filebeat, {{agent}}, or the APM agent, or reformat application logs into Elastic Common Schema (ECS) logs and then ingest them using Filebeat or {{agent}}.  | [Stream application logs](/solutions/observability/logs/stream-application-logs.md) <br> [ECS formatted application logs](/solutions/observability/logs/ecs-formatted-application-logs.md) |
 | Elastic Serverless forwarder for AWS | Ship logs from your AWS environment to cloud-hosted, self-managed Elastic environments, or {{ls}}. | [Elastic Serverless Forwarder](elastic-serverless-forwarder://reference/index.md) |
 | Connectors | Use connectors to extract data from an original data source and sync it to an {{es}} index. | [Ingest content with Elastic connectors
-](elasticsearch://reference/ingestion-tools/search-connectors/index.md) <br> [Connector clients](elasticsearch://reference/ingestion-tools/search-connectors/index.md) |
+](elasticsearch://reference/search-connectors/index.md) <br> [Connector clients](elasticsearch://reference/search-connectors/index.md) |
 | Web crawler | Discover, extract, and index searchable content from websites and knowledge bases using the web crawler. | [Elastic Open Web Crawler](https://github.com/elastic/crawler#readme) |

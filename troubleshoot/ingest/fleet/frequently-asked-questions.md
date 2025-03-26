@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/fleet-faq.html
+applies_to:
+  stack: ga
+  serverless: ga
 ---
 
 # Frequently asked questions [fleet-faq]

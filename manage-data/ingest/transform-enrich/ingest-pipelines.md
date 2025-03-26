@@ -10,7 +10,7 @@ applies_to:
 
 {{es}} ingest pipelines let you perform common transformations on your data before indexing. For example, you can use pipelines to remove fields, extract values from text, and enrich your data.
 
-A pipeline consists of a series of configurable tasks called [processors](elasticsearch://reference/ingestion-tools/enrich-processor/index.md). Each processor runs sequentially, making specific changes to incoming documents. After the processors have run, {{es}} adds the transformed documents to your data stream or index.
+A pipeline consists of a series of configurable tasks called [processors](elasticsearch://reference/enrich-processor/index.md). Each processor runs sequentially, making specific changes to incoming documents. After the processors have run, {{es}} adds the transformed documents to your data stream or index.
 
 :::{image} /manage-data/images/elasticsearch-reference-ingest-process.svg
 :alt: Ingest pipeline diagram
@@ -49,7 +49,7 @@ The **New pipeline from CSV** option lets you use a CSV to create an ingest pipe
 ::::
 
 
-You can also use the [ingest APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-ingest) to create and manage pipelines. The following [create pipeline API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ingest-put-pipeline) request creates a pipeline containing two [`set`](elasticsearch://reference/ingestion-tools/enrich-processor/set-processor.md) processors followed by a [`lowercase`](elasticsearch://reference/ingestion-tools/enrich-processor/lowercase-processor.md) processor. The processors run sequentially in the order specified.
+You can also use the [ingest APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-ingest) to create and manage pipelines. The following [create pipeline API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ingest-put-pipeline) request creates a pipeline containing two [`set`](elasticsearch://reference/enrich-processor/set-processor.md) processors followed by a [`lowercase`](elasticsearch://reference/enrich-processor/lowercase-processor.md) processor. The processors run sequentially in the order specified.
 
 ```console
 PUT _ingest/pipeline/my-pipeline
@@ -350,7 +350,7 @@ If you run {{agent}} standalone, you can apply pipelines using an [index templat
 
 ## Pipelines for search indices [pipelines-in-enterprise-search]
 
-When you create Elasticsearch indices for search use cases, for example, using the [web crawler^](https://www.elastic.co/guide/en/enterprise-search/current/crawler.html) or [connectors](elasticsearch://reference/ingestion-tools/search-connectors/index.md), these indices are automatically set up with specific ingest pipelines. These processors help optimize your content for search. See [*Ingest pipelines in Search*](../../../solutions/search/ingest-for-search.md) for more information.
+When you create Elasticsearch indices for search use cases, for example, using the [web crawler^](https://www.elastic.co/guide/en/enterprise-search/current/crawler.html) or [connectors](elasticsearch://reference/search-connectors/index.md), these indices are automatically set up with specific ingest pipelines. These processors help optimize your content for search. See [*Ingest pipelines in Search*](../../../solutions/search/ingest-for-search.md) for more information.
 
 
 ## Access source fields in a processor [access-source-fields]
@@ -390,7 +390,7 @@ PUT _ingest/pipeline/my-pipeline
 Use dot notation to access object fields.
 
 ::::{important}
-If your document contains flattened objects, use the [`dot_expander`](elasticsearch://reference/ingestion-tools/enrich-processor/dot-expand-processor.md) processor to expand them first. Other ingest processors cannot access flattened objects.
+If your document contains flattened objects, use the [`dot_expander`](elasticsearch://reference/enrich-processor/dot-expand-processor.md) processor to expand them first. Other ingest processors cannot access flattened objects.
 ::::
 
 
@@ -768,7 +768,7 @@ PUT _ingest/pipeline/my-pipeline
 
 ## Conditionally apply pipelines [conditionally-apply-pipelines]
 
-Combine an `if` condition with the [`pipeline`](elasticsearch://reference/ingestion-tools/enrich-processor/pipeline-processor.md) processor to apply other pipelines to documents based on your criteria. You can use this pipeline as the [default pipeline](ingest-pipelines.md#set-default-pipeline) in an [index template](../../data-store/templates.md) used to configure multiple data streams or indices.
+Combine an `if` condition with the [`pipeline`](elasticsearch://reference/enrich-processor/pipeline-processor.md) processor to apply other pipelines to documents based on your criteria. You can use this pipeline as the [default pipeline](ingest-pipelines.md#set-default-pipeline) in an [index template](../../data-store/templates.md) used to configure multiple data streams or indices.
 
 ```console
 PUT _ingest/pipeline/one-pipeline-to-rule-them-all
