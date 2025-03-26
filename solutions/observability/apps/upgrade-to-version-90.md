@@ -30,10 +30,10 @@ Starting in version 7.14, there are two ways to run Elastic APM. Determine which
 
 **Self-installation (non-{{ecloud}} users) upgrade guides**
 
-* [Self-installation standalone](upgrade-self-installation-of-apm-server-standalone-to-8x.md)
-* [Self-installation APM integration](upgrade-self-installation-of-apm-integration-to-8x.md)
+* [Self-installation standalone](upgrade-self-installation-of-apm-server-standalone-to-90.md)
+* [Self-installation APM integration](upgrade-self-installation-of-apm-integration-to-90.md)
 
 **{{ecloud}} upgrade guides**
 
-* [{{ecloud}} standalone](upgrade-elastic-cloud-apm-server-standalone-to-8.md)
-* [{{ecloud}} APM integration](upgrade-elastic-cloud-with-apm-integration-to-80.md)
+* [{{ecloud}} standalone](upgrade-elastic-cloud-apm-server-standalone-to-90.md)
+* [{{ecloud}} APM integration](upgrade-elastic-cloud-with-apm-integration-to-90.md)
