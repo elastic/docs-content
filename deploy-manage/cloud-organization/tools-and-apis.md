@@ -9,7 +9,7 @@ navigation_title: Tools and APIs
 You can use the [{{ecloud}} API](https://www.elastic.co/docs/api/doc/cloud/) to manage your {{ecloud}} organization, members, costs, billing, and more. 
 
 * Refer to [](/deploy-manage/api-keys/elastic-cloud-api-keys.md) to learn how to generate an API key to access this API.
-* Refer to [{{ecloud}} RESTful API](cloud://reference/cloud-hosted/ec-api-reference.md) for usage information and examples.
+* Refer to [{{ecloud}} RESTful API](cloud://reference/cloud-hosted/ec-api-restful.md) for usage information and examples.
 
 For {{ecloud}} [service status](/deploy-manage/cloud-organization/service-status.md) updates, you can use the [Service Status API](https://status.elastic.co/api/).
 
