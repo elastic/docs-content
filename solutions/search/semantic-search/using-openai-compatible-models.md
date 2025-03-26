@@ -45,7 +45,7 @@ When the installation is complete, test the model.
 If the model is installed successfully, you get a positive response.
 2. When the model is running, an API endpoint is enbaled by default on port `11434`.
 Make a request to the API, following the [documentation](https://github.com/ollama/ollama/blob/main/docs/api.md):
-   ```curl
+   ```shell
     curl http://localhost:11434/api/generate -d '{
    "model": "llama3.2",
    "prompt": "What is the capital of France?"
@@ -91,7 +91,7 @@ As the created endpoint works in a local environment, it cannot be accessed from
 
 3. Save the URL that ngrok generated in the line of `Forwarding`.
 4. Make a request to the endpoint again using the URL ngrok generated:
-   ```curl
+   ```shell
     curl https://your-ngrok-endpoint.ngrok-free.app/api/generate -d '{
    "model": "llama3.2",
    "prompt": "What is the capital of France?"
