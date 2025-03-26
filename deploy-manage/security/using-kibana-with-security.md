@@ -4,6 +4,7 @@ applies_to:
     self: ga
 mapped_urls:
   - https://www.elastic.co/guide/en/kibana/current/using-kibana-with-security.html
+  - https://www.elastic.co/guide/en/kibana/current/Security-production-considerations.html
 ---
 
 % Kibana security had 2 original docs:
@@ -91,7 +92,7 @@ You should use SSL/TLS encryption to ensure that traffic between browsers and th
 
 ### Enabling mutual TLS between {{kib}} and {{es}}
 
-Refer to [](/deploy-manage/security/secure-http-communications.md#elasticsearch-mutual-tls) for information on how to enable mutual TLS between {{kib}} and {{es}}.
+Refer to [](/deploy-manage/security/secure-cluster-communications.md#elasticsearch-mutual-tls) for information on how to enable mutual TLS between {{kib}} and {{es}}.
 
 ### Use {{stack}} {{security-features}} [configuring-kibana-shield]
 

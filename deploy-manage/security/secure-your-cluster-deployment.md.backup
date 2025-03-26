@@ -13,7 +13,6 @@ mapped_pages:
 
 It's important to protect your {{es}} cluster and the data it contains. Implementing a defense in depth strategy provides multiple layers of security to help safeguard your system.
 
-
 :::{include} /deploy-manage/security/_snippets/complete-security.md
 :::
 
@@ -37,8 +36,6 @@ Everything starts with the security feature activation in {{es}}, which enables 
 ::::{note}
 Orchestrated deployments automatically configures security by default, the elastic user password, TLS certificates, and configure {{kib}} to access {{es}} in a secure way. Disabling security is not an option in managed deployments.
 ::::
-
-Since {{es}} 8.0, security is enabled and configured by default. However, security auto configuration [might be skipped](/deploy-manage/security/manually-configure-security-in-self-managed-cluster.md#stack-skip-auto-configuration) in certain scenarios. In these cases, you can [manually configure security](/deploy-manage/security/manually-configure-security-in-self-managed-cluster.md).
 
 In self-managed clusters, there are two ways to perform the initial security setup, depending on your needs:
 
@@ -99,7 +96,7 @@ If you need mutual (bidirectional) TLS on the HTTP layer, then you’ll need to 
 
 You then configure {{kib}} and Beats to communicate with {{es}} using TLS so that all communications are encrypted. This level of security is strong, and ensures that any communications in and out of your cluster are secure.
 
-[Set up basic security plus HTTPS traffic](secure-cluster-communications.md)
+[Set up basic security plus HTTPS traffic](secure-http-communications.md)
 
 
 
@@ -122,6 +119,10 @@ You then configure {{kib}} and Beats to communicate with {{es}} using TLS so tha
 
 :::{include} /deploy-manage/security/_snippets/audit-logging.md
 :::
+
+## Configure security in a self-managed cluster
+
+Since {{es}} 8.0, security is enabled and configured by default. However, security auto configuration [might be skipped](/deploy-manage/security/manually-configure-security-in-self-managed-cluster.md#stack-skip-auto-configuration) in certain scenarios. In these cases, you can [manually configure security](/deploy-manage/security/manually-configure-security-in-self-managed-cluster.md).
 
 ## FIPS 140-2 compliant mode
 ```{applies_to}
@@ -178,7 +179,7 @@ If you need mutual (bidirectional) TLS on the HTTP layer, then you’ll need to 
 
 You then configure {{kib}} and Beats to communicate with {{es}} using TLS so that all communications are encrypted. This level of security is strong, and ensures that any communications in and out of your cluster are secure.
 
-[Set up basic security plus HTTPS traffic](secure-cluster-communications.md)
+[Set up basic security plus HTTPS traffic](secure-http-communications.md)
 
 ### Network access
 

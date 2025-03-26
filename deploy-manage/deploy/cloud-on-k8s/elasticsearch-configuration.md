@@ -38,7 +38,7 @@ Before deploying and running ECK in production, review the basic and advanced se
 
 ## TLS/SSL Certificates
 
-* [Secure HTTP communications](/deploy-manage/security/secure-http-communications.md): Customize the service and TLS certificates used for transport traffic.
+* [Secure HTTP communications](/deploy-manage/security/secure-cluster-communications.md): Customize the service and TLS certificates used for transport traffic.
 * [Transport settings](../../security/k8s-transport-settings.md): Customize the service and TLS certificates used for transport traffic.
 
 ## Traffic handling

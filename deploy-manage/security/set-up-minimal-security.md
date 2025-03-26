@@ -1,5 +1,5 @@
 ---
-navigation_title: "Secure an unsecured cluster"
+navigation_title: "Manual security setup"
 applies_to:
   deployment:
     self: ga
@@ -10,7 +10,7 @@ mapped_pages:
 % alternative title: Manual security setup
 % Scope: Just enabling security, resetting passwords, and configuring kibana. Manual approach, opposite to automatic security configuration
 % Original title: Set up minimal security
-# Set up minimal security [security-minimal-setup]
+# Manual security setup [security-minimal-setup]
 
 ::::{important}
 You only need to complete the following steps if you’re running an existing, unsecured cluster and want to enable the {{es}} {{security-features}}.

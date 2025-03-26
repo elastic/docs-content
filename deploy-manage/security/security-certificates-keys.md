@@ -8,7 +8,7 @@ mapped_pages:
 
 % Scope: Automatic setup
 % Original title: Start the Elastic Stack with security enabled automatically
-# Self-managed certificates and keys [configuring-stack-security]
+# Automatic security setup [configuring-stack-security]
 
 When you start {{es}} for the first time, the following security configuration occurs automatically:
 

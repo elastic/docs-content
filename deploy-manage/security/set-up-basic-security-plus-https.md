@@ -1,5 +1,5 @@
 ---
-navigation_title: "Basic / HTTP SSL"
+navigation_title: "Set up HTTP TLS"
 applies_to:
   deployment:
     self: ga
@@ -10,10 +10,14 @@ mapped_pages:
 
 % Scope: HTTP certificates setup / manual configuration / multi or single node cluster
 % original title: Set up basic security for the Elastic Stack plus secured HTTPS traffic
-# Set up basic security plus HTTPS [security-basic-setup-https]
+# Set up HTTP TLS [security-basic-setup-https]
 
+Enabling TLS on the HTTP layer ensures that all client communications with your cluster are encrypted, providing an additional layer of security.
 
-When you enable TLS on the HTTP layer it provides an additional layer of security to ensure that all communications to and from your cluster are encrypted.
+This documents describes the following topics:
+- Generate and configure TLS certificates for {{es}} HTTP endpoint
+- How to configure {{kib}} to connect to {{es}} using HTTPS, and adding the CA certificate of {{es}} to the list of trusted CAs in {{kib}}
+- Generate and configure TLS certificate for {{kib}} using
 
 When you run the `elasticsearch-certutil` tool in `http` mode, the tool asks several questions about how you want to generate certificates. While there are numerous options, the following choices result in certificates that should work for most environments.
 
@@ -34,16 +38,17 @@ If you work in an environment with a central security team, they can likely gene
 
 ::::
 
-
 ## Prerequisites [basic-setup-https-prerequisites]
 
-Complete all steps in [Set up basic security for the Elastic Stack](secure-cluster-communications.md).
+If security feature wasn't already enabled in your cluster, complete all steps in [Manual security setup](./set-up-minimal-security.md).
 
+## Generate and configure TLS certificates for {{es}} nodes [encrypt-http-communication]
 
-## Encrypt HTTP client communications for {{es}} [encrypt-http-communication]
+% Encrypt HTTP client communications for {{es}}
+Doing this will encrypt all client communications with the cluster. Clients will have to be configured to use `https` protocol when connecting to {{es}}, and will need the CA certificate associated to the {{es}} certificates for trusting purposes.
 
 1. On **every** node in your cluster, stop {{es}} and {{kib}} if they are running.
-2. On any single node, from the directory where you installed {{es}}, run the {{es}} HTTP certificate tool to generate a Certificate Signing Request (CSR).
+2. On any single node, from the directory where you installed {{es}}, run the {{es}} HTTP certificate tool to generate TLS certificates for your nodes.
 
     ```shell
     ./bin/elasticsearch-certutil http
@@ -106,103 +111,34 @@ Complete all steps in [Set up basic security for the Elastic Stack](secure-clust
 
 **Next**: [Encrypt HTTP client communications for {{kib}}](#encrypt-kibana-http)
 
-
 ## Encrypt HTTP client communications for {{kib}} [encrypt-kibana-http]
 
 Browsers send traffic to {{kib}} and {{kib}} sends traffic to {{es}}. These communication channels are configured separately to use TLS. You encrypt traffic between {{kib}} and {{es}}, and then encrypt traffic between your browser and {{kib}}.
 
+{{kib}} handles two separate types of HTTP traffic that should be encrypted:
+* Outgoing traffic from {{kib}} to {{es}} – {{kib}} acts as an HTTP client and must be configured to trust the TLS certificate used by {{es}}.
+* Incoming traffic from browsers to {{kib}} – {{kib}} also acts as an HTTP server, and you should configure a TLS certificate for its public-facing endpoint to secure browser access.
+
+
 ### Encrypt traffic between {{kib}} and {{es}} [encrypt-kibana-elasticsearch]
 
-When you ran the `elasticsearch-certutil` tool with the `http` option, it created a `/kibana` directory containing an `elasticsearch-ca.pem` file. You use this file to configure {{kib}} to trust the {{es}} CA for the HTTP layer.
-
-1. Copy the `elasticsearch-ca.pem` file to the {{kib}} configuration directory, as defined by the `$KBN_PATH_CONF` path.
-2. Open `kibana.yml` and add the following line to specify the location of the security certificate for the HTTP layer.
-
-    ```yaml
-    elasticsearch.ssl.certificateAuthorities: $KBN_PATH_CONF/elasticsearch-ca.pem
-    ```
-
-3. Add the following line to specify the HTTPS URL for your {{es}} cluster.
-
-    ```yaml
-    elasticsearch.hosts: https://<your_elasticsearch_host>:9200
-    ```
-
-4. Restart {{kib}}.
-
-:::::{admonition} Connect to a secure monitoring cluster
-If the Elastic monitoring features are enabled and you configured a separate {{es}} monitoring cluster, you can also configure {{kib}} to connect to the monitoring cluster via HTTPS. The steps are the same, but each setting is prefixed by `monitoring`. For example, `monitoring.ui.elasticsearch.hosts` and `monitoring.ui.elasticsearch.ssl.truststore.path`.
-
-::::{note}
-You must create a separate `elasticsearch-ca.pem` security file for the monitoring cluster.
-::::
-
-
-:::::
-
+:::{include} /deploy-manage/security/_snippets/kibana-client-https-setup.md
+:::
 
 **Next**: [Encrypt traffic between your browser and {{kib}}](#encrypt-kibana-browser)
 
 
 ### Encrypt traffic between your browser and {{kib}} [encrypt-kibana-browser]
 
-You create a server certificate and private key for {{kib}}. {{kib}} uses this server certificate and corresponding private key when receiving connections from web browsers.
+In order to ensure clients communication to {{kib}} are encrypted, you have to create a TLS certificate for {{kib}} and, the same way as with {{es}}, configure the clients to use `https` when connecting to {{kib}} and trust the CA used to sign {{kib}} certificate.
+(WORK IN PROGRESS)
 
-When you obtain a server certificate, you must set its subject alternative name (SAN) correctly to ensure that browsers will trust it. You can set one or more SANs to the {{kib}} server’s fully-qualified domain name (FQDN), hostname, or IP address. When choosing the SAN, pick whichever attribute you’ll use to connect to {{kib}} in your browser, which is likely the FQDN.
-
-The following instructions create a Certificate Signing Request (CSR) for {{kib}}. A CSR contains information that a CA uses to generate and sign a security certificate. The certificate can be trusted (signed by a public, trusted CA) or untrusted (signed by an internal CA). A self-signed or internally-signed certificate is acceptable for development environments and building a proof of concept, but should not be used in a production environment.
-
-::::{warning}
-Before going to production, use a trusted CA such as [Let’s Encrypt](https://letsencrypt.org/) or your organization’s internal CA to sign the certificate. Using a signed certificate establishes browser trust for connections to {{kib}} for internal access or on the public internet.
-::::
-
-
-1. Generate a server certificate and private key for {{kib}}.
-
-    ```shell
-    ./bin/elasticsearch-certutil csr -name kibana-server -dns example.com,www.example.com
-    ```
-
-    The CSR has a common name (CN) of `kibana-server`, a SAN of `example.com`, and another SAN of `www.example.com`.
-
-    This command generates a `csr-bundle.zip` file by default with the following contents:
-
-    ```txt
-    /kibana-server
-    |_ kibana-server.csr
-    |_ kibana-server.key
-    ```
-
-2. Unzip the `csr-bundle.zip` file to obtain the `kibana-server.csr` unsigned security certificate and the `kibana-server.key` unencrypted private key.
-3. Send the `kibana-server.csr` certificate signing request to your internal CA or trusted CA for signing to obtain a signed certificate. The signed file can be in different formats, such as a `.crt` file like `kibana-server.crt`.
-4. Open `kibana.yml` and add the following lines to configure {{kib}} to access the server certificate and unencrypted private key.
-
-    ```yaml
-    server.ssl.certificate: $KBN_PATH_CONF/kibana-server.crt
-    server.ssl.key: $KBN_PATH_CONF/kibana-server.key
-    ```
-
-    ::::{note}
-    `$KBN_PATH_CONF` contains the path for the {{kib}} configuration files. If you installed {{kib}} using archive distributions (`zip` or `tar.gz`), the path defaults to `$KBN_HOME/config`. If you used package distributions (Debian or RPM), the path defaults to `/etc/kibana`.
-    ::::
-
-5. Add the following line to `kibana.yml` to enable TLS for inbound connections.
-
-    ```yaml
-    server.ssl.enabled: true
-    ```
-
-6. Start {{kib}}.
-
-::::{note}
-After making these changes, you must always access {{kib}} via HTTPS. For example, `https://<your_kibana_host>.com`.
-::::
-
+:::{include} /deploy-manage/security/_snippets/kibana-https-setup.md
+:::
 
 **Next**: [Configure {{beats}} security](#configure-beats-security)
 
-
-
+% All this should be already in beats repository, including roles, etc
 ## Configure {{beats}} security [configure-beats-security]
 
 {{beats}} are open source data shippers that you install as agents on your servers to send operational data to {{es}}. Each Beat is a separately installable product. The following steps cover configuring security for {{metricbeat}}. Follow these steps for each [additional Beat](beats://reference/index.md) you want to configure security for.

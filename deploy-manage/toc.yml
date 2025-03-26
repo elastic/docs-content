@@ -460,7 +460,6 @@ toc:
           - file: security/set-up-minimal-security.md
           - file: security/secure-cluster-communications.md
             children:
-              - file: security/secure-http-communications.md
               - file: security/set-up-basic-security.md
               - file: security/set-up-basic-security-plus-https.md
               - file: security/updating-certificates.md
@@ -507,9 +506,7 @@ toc:
               - file: security/logging-configuration/correlating-kibana-elasticsearch-audit-logs.md
           - file: security/fips-140-2.md
           - file: security/install-stack-demo-secure.md
-          - file: security/manually-configure-security-in-self-managed-cluster.md
-            children:
-              - file: security/using-kibana-with-security.md
+          - file: security/using-kibana-with-security.md
       - file: security/secure-clients-integrations.md
       - file: security/httprest-clients-security.md
       - file: security/limitations.md
