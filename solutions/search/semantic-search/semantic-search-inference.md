@@ -29,7 +29,7 @@ The following examples use the:
 * `ops-text-embedding-zh-001` model for [AlibabaCloud AI](https://help.aliyun.com/zh/open-search/search-platform/developer-reference/text-embedding-api-details)
 
 You can use any Cohere and OpenAI models, they are all supported by the {{infer}} API.
-% TBD URL: For a list of recommended models available on HuggingFace, refer to [the supported model list](../../../explore-analyze/elastic-inference/inference-api/huggingface-inference-integration.md#inference-example-hugging-face-supported-models).
+For a list of recommended models available on HuggingFace, refer to the supported model list in the [API documentation](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put-hugging-face).
 
 Click the name of the service you want to use on any of the widgets below to review the corresponding instructions.
 
