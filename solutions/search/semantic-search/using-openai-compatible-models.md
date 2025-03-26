@@ -22,15 +22,15 @@ Using Llama models ensures that your interactions remain private, as the models 
 In this tutorial, you learn how to:
 
 * download and run Ollama,
-* use ngrok to access your local web server that hosts Ollama over the internet
+* use ngrok to expose your local web server hosting Ollama over the internet
 * connect your local LLM to Playground
 
 ## Download and run Ollama
 
 1. [Download Ollama](https://ollama.com/download).
 2. Install Ollama using the downloaded file.
-Enable the command line tool for Ollama during the installation.
-3. Choose a model of the [list of supported LLMs](https://ollama.com/library).
+Enable the command line tool for Ollama during installation.
+3. Choose a model from the [list of supported LLMs](https://ollama.com/library).
 This tutorial uses `llama 3.2`.
 4. Run the following command:
    ```shell
@@ -39,12 +39,12 @@ This tutorial uses `llama 3.2`.
 
 ### Test the installed model
 
-When the installation is complete, test the model.
+After installation, test the model.
 
 1. Run `ollama run llama3.2` and ask a question, for example, "Are you working?"
-If the model is installed successfully, you get a positive response.
-2. When the model is running, an API endpoint is enbaled by default on port `11434`.
-Make a request to the API, following the [documentation](https://github.com/ollama/ollama/blob/main/docs/api.md):
+If the model is installed successfully, you receive a valid response.
+2. When the model is running, an API endpoint is enabled by default on port `11434`.
+To test it, make a request to the API using the following command:
    ```shell
     curl http://localhost:11434/api/generate -d '{
    "model": "llama3.2",
@@ -52,6 +52,7 @@ Make a request to the API, following the [documentation](https://github.com/olla
    }'
    ```
   
+   Refer to the API [documentation](https://github.com/ollama/ollama/blob/main/docs/api.md) to learn more.
    The API returns a response similar to this:
    ```json
    {"model":"llama3.2","created_at":"2025-03-26T10:07:05.500614Z","response":"The","done":false}
@@ -66,15 +67,15 @@ Make a request to the API, following the [documentation](https://github.com/olla
 
 ## Expose the endpoint using ngrok
 
-As the created endpoint works in a local environment, it cannot be accessed from another point - like your Elastic Cloud instance - via the internet.
-[ngrok](https://ngrok.com/) enables you to expose a port offering a public IP.
+Since the created endpoint only works locally, it cannot be accessed from external services (for example, your Elastic Cloud instance).
+[ngrok](https://ngrok.com/) enables you to expose a local port with a public URL.
 
 1. Create an ngrok account and follow the [official setup guide](https://dashboard.ngrok.com/get-started/setup).
-2. When the ngrok agent is installed and configured, you can expose the port Ollama is using by running the floowing command:
+2. After installing and configuring the ngrok agent, expose the Ollama port by running:
    ```shell
    ngrok http 11434 --host-header="localhost:11434"
    ```
-   The command returns a public link that works while the ngrok and the Ollama server run locally:
+   The command returns a public link that works as long as ngrok and the Ollama server are running locally:
    ```shell
    Session Status                online                                                                                                                                                                              
    Account                       xxxx@yourEmailProvider.com (Plan: Free)                                                                                                                                             
@@ -89,27 +90,27 @@ As the created endpoint works in a local environment, it cannot be accessed from
                                  0       0       0.00    0.00    0.00    0.00
    ```
 
-3. Save the URL that ngrok generated in the line of `Forwarding`.
-4. Make a request to the endpoint again using the URL ngrok generated:
+3. Copy the ngrok-generated URL from the `Forwarding` line.
+4. Test the endpoint again using the new URL:
    ```shell
     curl https://your-ngrok-endpoint.ngrok-free.app/api/generate -d '{
    "model": "llama3.2",
    "prompt": "What is the capital of France?"
    }'
    ```
-   The API returns a response similar to the previous one.
+   The response should be similar to the previous one.
 
 ## Connecting the local LLM to Playground
 
-Create a connector that uses the public URL you created.
+Now, create a connector using the public URL from ngrok.
 
 1. In Kibana, go to **Search > Playground**, and click **Connect to an LLM**.
 2. Select **OpenAI** on the fly-out.
 3. Provide a name for the connector.
-4. Select **Other (OpenAI Compatible Service)** for the OpenAI provider under **Connector settings**.
-5. Copy the ngrok-generated URL to the **URL** field.
+4. Under **Connector settings**, select **Other (OpenAI Compatible Service)** as the OpenAI provider.
+5. Paste the ngrok-generated URL into the **URL** field.
 6. Specify the default model, for example, `llama3.2`.
-7. Provide a random string for the API key, it won't be used for the requests.
+7. Provide any random string for the API key (it will not be used for requests).
 8. **Save**.
    :::{image} /solutions/images/elasticsearch-openai-compatible-connector.png
    :alt: Configuring an LLM connector in Playground
@@ -117,8 +118,8 @@ Create a connector that uses the public URL you created.
    :::
 9. Click **Add data sources** and connect your index.
 
-You have access to Playground using the LLM you are running locally.
+You can now use Playground with the LLM running locally.
 
 ## Further reading
 
-* [Unsing Ollama with the {{infer}} API](https://www.elastic.co/search-labs/blog/ollama-with-inference-api#expose-endpoint-to-the-internet-using-ngrok): a more comprehensive, end-to-end tutorial of using Ollama with {{es}}.
+* [Unsing Ollama with the {{infer}} API](https://www.elastic.co/search-labs/blog/ollama-with-inference-api#expose-endpoint-to-the-internet-using-ngrok): A more comprehensive, end-to-end guide to using Ollama with {{es}}.
