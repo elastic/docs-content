@@ -87,16 +87,16 @@ Use these features to adjust and act on your conversations with AI Assistant:
 * (Optional) Select a *System Prompt* at the beginning of a conversation by using the **Select Prompt** menu. System Prompts provide context to the model, informing its response. To create a System Prompt, open the System Prompts dropdown menu and click **+ Add new System Prompt…​**.
 * (Optional) Select a *Quick Prompt* at the bottom of the chat window to get help writing a prompt for a specific purpose, such as summarizing an alert or converting a query from a legacy SIEM to {{elastic-sec}}.
 
-   ::::{image} ../../../images/security-quick-prompts.png
+   :::{image} ../../images/security-quick-prompts.png
    :alt: Quick Prompts highlighted below a conversation
    :screenshot:
-   ::::
+   :::
 
 * System Prompts and Quick Prompts can also be configured from the corresponding tabs on the **Security AI settings** page.
 
-   ::::{image} ../../../images/security-assistant-settings-system-prompts.png
+   :::{image} ../../images/security-assistant-settings-system-prompts.png
    :alt: The Security AI settings menu's System Prompts tab
-   ::::
+   :::
 
 * Quick Prompt availability varies based on context—for example, the **Alert summarization** Quick Prompt appears when you open AI Assistant while viewing an alert. To customize existing Quick Prompts and create new ones, click **Add Quick Prompt**.
 * In an active conversation, you can use the inline actions that appear on messages to incorporate AI Assistant’s responses into your workflows:
