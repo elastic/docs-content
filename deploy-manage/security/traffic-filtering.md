@@ -19,8 +19,9 @@ Traffic filtering allows you to limit how your deployments and clusters can be a
 
 Depending on your deployment type you can use different mechanisms to restrict traffic, such as [IP filters](./ip-traffic-filtering.md), [private links](./private-link-traffic-filters.md) provided by cloud platforms, or [Kubernetes network policies](./k8s-network-policies.md).
 
+
 ::::{note}
-This section covers traffic filtering at the deployment level. If you need the IP addresses used by Elastic Cloud to configure them in your network firewalls, refer to [](./elastic-cloud-static-ips.md).
+This section covers traffic filtering at the deployment level. If you need the IP addresses used by {{ech}} to configure them in your network firewalls, refer to [](./elastic-cloud-static-ips.md).
 ::::
 
 :::::{tab-set}
