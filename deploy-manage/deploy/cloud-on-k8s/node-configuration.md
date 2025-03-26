@@ -35,7 +35,7 @@ spec:
 ```
 
 ::::{warning} 
-ECK parses Elasticsearch configuration and normalizes it to YAML. Consequently, some Elasticsearch configuration schema are impossible to express with ECK and, therefore, must be set using https://www.elastic.co/guide/en/elasticsearch/reference/current/settings.html#cluster-setting-types[dynamic cluster settings]. For example:
+ECK parses Elasticsearch configuration and normalizes it to YAML. Consequently, some Elasticsearch configuration schema are impossible to express with ECK and, therefore, must be set using [dynamic cluster settings](/deploy-manage/deploy/self-managed/configure-elasticsearch.md#cluster-setting-types). For example:
 ```yaml
 spec:
   nodeSets:
