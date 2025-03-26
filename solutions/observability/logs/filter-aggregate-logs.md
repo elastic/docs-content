@@ -214,7 +214,7 @@ The filtered results should show `WARN` and `ERROR` logs that occurred within th
 
 ## Aggregate logs [logs-aggregate]
 
-Use aggregation to analyze and summarize your log data to find patterns and gain insight. [Bucket aggregations](elasticsearch://reference/data-analysis/aggregations/bucket.md) organize log data into meaningful groups making it easier to identify patterns, trends, and anomalies within your logs.
+Use aggregation to analyze and summarize your log data to find patterns and gain insight. [Bucket aggregations](elasticsearch://reference/aggregations/bucket.md) organize log data into meaningful groups making it easier to identify patterns, trends, and anomalies within your logs.
 
 For example, you might want to understand error distribution by analyzing the count of logs per log level.
 
