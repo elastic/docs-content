@@ -19,6 +19,7 @@ This upgrade guide is for the Elastic APM integration. Only use this guide if bo
 
 1. Prior to upgrading to version 9.0, {{es}}, and {{kib}} must be upgraded to version 8.18. To upgrade {{es}} and {{kib}}, see the [{{stack}} Installation and Upgrade Guide](https://www.elastic.co/guide/en/elastic-stack/8.18/upgrading-elastic-stack.html)
 2. Review the [Elastic APM release notes](apm-server://release-notes/index.md) and [Elastic {{observability}} release notes](/release-notes/elastic-observability/release-notes.md).
+3. Review the [Elastic APM breaking changes](apm-server://release-notes/breaking-changes.md).
 
 
 ## Upgrade steps [_upgrade_steps_2]

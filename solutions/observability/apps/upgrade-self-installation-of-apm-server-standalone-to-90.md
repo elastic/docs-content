@@ -23,6 +23,7 @@ This upgrade guide is for the standalone method of running APM Server. Only use 
     * To upgrade APM Server to version 8.18, see [upgrade to version 8.18](https://www.elastic.co/guide/en/observability/8.18/apm-upgrading-to-8.x.html).
 
 2. Review the [Elastic APM release notes](apm-server://release-notes/index.md) and [Elastic {{observability}} release notes](/release-notes/elastic-observability/release-notes.md).
+3. Review the [Elastic APM breaking changes](apm-server://release-notes/breaking-changes.md).
 
 
 
