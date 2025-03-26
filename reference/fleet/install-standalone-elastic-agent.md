@@ -78,10 +78,8 @@ To install and run {{agent}} standalone:
     curl -L -O https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-{{stack-version}}-amd64.deb
     ELASTIC_AGENT_FLAVOR=servers sudo -E dpkg -i elastic-agent-{{stack-version}}-amd64.deb
     ```
-   
-    ::::{note}
-    If you need to uninstall an {{agent}} package on Debian Linux, note that the `dpkg -r` command to remove a package leaves the flavor file in place. Instead, `dpkg -P` must to be used to purge all package content and reset the flavor.
-    ::::
+    
+    **NOTE:** If you need to uninstall an {{agent}} package on Debian Linux, note that the `dpkg -r` command to remove a package leaves the flavor file in place. Instead, `dpkg -P` must to be used to purge all package content and reset the flavor.
 
     :::
 
