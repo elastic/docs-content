@@ -8,7 +8,11 @@ navigation_title: "Search and filter with ES|QL"
 This tutorial presents examples in {{esql}} syntax. Refer to [the Query DSL version](querydsl-full-text-filter-tutorial.md) for the equivalent examples in Query DSL syntax.
 :::
 
-This is a hands-on introduction to the basics of full-text search and semantic search. In this scenario, we're implementing search for a cooking blog. The blog contains recipes with various attributes including textual content, categorical data, and numerical ratings.
+This is a hands-on introduction to the basics of full-text search and semantic search, using [{{esql}}](/explore-analyze/query-filter/languages/esql.md).
+
+% TODO For an overview of all the search capabilities in {{esql}}, refer to [Search with {{esql}}](elasticsearch://reference/query-languages/esql/esql-for-search.md).
+
+In this scenario, we're implementing search for a cooking blog. The blog contains recipes with various attributes including textual content, categorical data, and numerical ratings.
 
 ## Requirements
 
@@ -145,12 +149,12 @@ Full-text search involves executing text-based queries across one or more docume
 :::{tip}
 {{esql}} provides two ways to perform full-text searches:
 
-1. Full match function syntax: `match(field, "search terms")`
-1. Compact syntax using the match operator "`:`": `field:"search terms"`
+1. Full [match function](elasticsearch://reference/query-languages/esql/esql-functions-operators#esql-match) syntax: `match(field, "search terms")`
+1. Compact syntax using the [match operator](elasticsearch://reference/query-languages/esql/esql-functions-operators#esql-search-operators): `field:"search terms"`
 
 Both are equivalent and can be used interchangeably. The compact syntax is more concise, while the function syntax allows for more configuration options. We'll use the compact syntax in most examples for brevity.
 
-Refer to [`match`](elasticsearch://reference/query-languages/query-dsl/query-dsl-match-query.md#match-field-params) in the Query DSL documentation for advanced parameters you can use with the function syntax.
+Refer to the [match function](elasticsearch://reference/query-languages/esql/esql-functions-operators#esql-match) reference docs for advanced parameters available with the function syntax.
 :::
 
 ### Basic full-text query
@@ -252,7 +256,7 @@ FROM cooking_blog
 Follow this [tutorial](/solutions/search/semantic-search/semantic-search-semantic-text.md) if you'd like to test out the semantic search workflow against a large dataset.
 :::
 
-### Hybrid search with full-text and semantic queries
+### Perform hybrid search
 
 You can combine full-text and semantic queries. In this example we combine full-text and semantic search with custom weights:
 
@@ -374,12 +378,12 @@ FROM cooking_blog METADATA _score
 
 This tutorial introduced the basics of search and filtering in {{esql}}. Building a real-world search experience requires understanding many more advanced concepts and techniques. Here are some resources once you're ready to dive deeper:
 
+% TODO [Search with {{esql}}](): Learn about all your options for search use cases with {{esql}}.
 - [{{esql}} search functions](elasticsearch://reference/query-languages/esql/esql-functions-operators.md#esql-search-functions): Explore the full list of search functions available in {{esql}}.
 - [Semantic search](/solutions/search/semantic-search.md): Understand your various options for semantic search in Elasticsearch.
   - [The `semantic_text` workflow](/solutions/search/semantic-search.md#_semantic_text_workflow): Learn how to use the `semantic_text` field type for semantic search. This is the recommended approach for most users looking to perform semantic search in {{es}}, because it abstracts away the complexity of setting up inference endpoints and models.
 
-
 ### Related blog posts
 
-% TODO - https://www.elastic.co/blog/esql-you-know-for-search-scoring-semantic-search[ES|QL, you know for Search]: Introducing scoring and semantic search
+% TODO [[uncomment once blog is live]] - https://www.elastic.co/blog/esql-you-know-for-search-scoring-semantic-search[ES|QL, you know for Search]: Introducing scoring and semantic search
 - [Introducing full text filtering in ES|QL](https://www.elastic.co/blog/introducing-full-text-filtering-with-esql): Overview of text filtering capabilities
