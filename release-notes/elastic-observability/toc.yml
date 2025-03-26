@@ -1,6 +1,5 @@
 toc:
   - file: release-notes.md
-    children:
-      - file: known-issues.md
-      - file: breaking-changes.md
-      - file: deprecations.md
+  - file: known-issues.md
+  - file: breaking-changes.md
+  - file: deprecations.md

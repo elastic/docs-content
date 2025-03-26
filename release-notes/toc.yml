@@ -1,21 +1,7 @@
 toc:
   - file: index.md
-  - file: elastic-observability/release-notes.md
-    children:
-      - file: elastic-observability/known-issues.md
-      - file: elastic-observability/breaking-changes.md
-      - file: elastic-observability/deprecations.md
-  - file: elastic-security/release-notes.md
-    children:
-      - file: elastic-security/known-issues.md
-      - file: elastic-security/breaking-changes.md
-      - file: elastic-security/deprecations.md
-  - file: elastic-cloud-serverless/changelog.md
-    children:
-      - file: elastic-cloud-serverless/known-issues.md
-      - file: elastic-cloud-serverless/deprecations.md
-  - file: fleet-elastic-agent/release-notes.md
-    children:
-      - file: fleet-elastic-agent/known-issues.md
-      - file: fleet-elastic-agent/breaking-changes.md
-      - file: fleet-elastic-agent/deprecations.md
+  - toc: intro
+  - toc: elastic-observability
+  - toc: elastic-security
+  - toc: elastic-cloud-serverless
+  - toc: fleet-elastic-agent

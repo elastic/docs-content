@@ -8,9 +8,11 @@ navigation_title: "Search and filter with ES|QL"
 This tutorial presents examples in {{esql}} syntax. Refer to [the Query DSL version](querydsl-full-text-filter-tutorial.md) for the equivalent examples in Query DSL syntax.
 :::
 
-This is a hands-on introduction to the basics of [full-text search](full-text.md) with Elasticsearch, also known as *lexical search*, and how to filter search results based on exact criteria. In this scenario, we're implementing a search function for a cooking blog. The blog contains recipes with various attributes including textual content, categorical data, and numerical ratings.
+This is a hands-on introduction to the basics of full-text search and semantic search, using [{{esql}}](/explore-analyze/query-filter/languages/esql.md).
 
-This tutorial covers lexical search, with a brief [introductory section on semantic search](#bonus-semantic-search-with-esql) at the end.
+% TODO For an overview of all the search capabilities in {{esql}}, refer to [Search with {{esql}}](elasticsearch://reference/query-languages/esql/esql-for-search.md).
+
+In this scenario, we're implementing search for a cooking blog. The blog contains recipes with various attributes including textual content, categorical data, and numerical ratings.
 
 ## Requirements
 
@@ -147,10 +149,12 @@ Full-text search involves executing text-based queries across one or more docume
 :::{tip}
 {{esql}} provides two ways to perform full-text searches:
 
-1. Full match function syntax: `match(field, "search terms")`
-1. Compact syntax using the match operator "`:`": `field:"search terms"`
+1. Full [match function](elasticsearch://reference/query-languages/esql/esql-functions-operators.md#esql-match) syntax: `match(field, "search terms")`
+1. Compact syntax using the [match operator `:`](elasticsearch://reference/query-languages/esql/esql-functions-operators.md#esql-search-operators): `field:"search terms"`
 
 Both are equivalent and can be used interchangeably. The compact syntax is more concise, while the function syntax allows for more configuration options. We'll use the compact syntax in most examples for brevity.
+
+Refer to the [match function](elasticsearch://reference/query-languages/esql/esql-functions-operators.md#esql-match) reference docs for advanced parameters available with the function syntax.
 :::
 
 ### Basic full-text query
@@ -162,6 +166,10 @@ FROM cooking_blog  # Specify the index to search
 | WHERE description:"fluffy pancakes"  # Full-text search with OR logic by default
 | LIMIT 1000  # Return up to 1000 results
 ```
+
+:::{note}
+The results ordering isn't by relevance, as we haven't requested the `_score` metadata field. We'll cover relevance scoring in the next section.
+:::
 
 By default, like the Query DSL `match` query, {{esql}} uses `OR` logic between terms. This means it will match documents that contain either "fluffy" or "pancakes", or both, in the description field.
 
@@ -200,7 +208,67 @@ FROM cooking_blog
 
 This query searches the title field to match at least 2 of the 3 terms: "fluffy", "pancakes", or "breakfast".
 
-## Step 4: Search across multiple fields at once
+## Step 4: Semantic search and hybrid search
+
+### Index semantic content
+
+{{es}} allows you to semantically search for documents based on the meaning of the text, rather than just the presence of specific keywords. This is useful when you want to find documents that are conceptually similar to a given query, even if they don't contain the exact search terms.
+
+ES|QL supports semantic search when your mappings include fields of the [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) type. This example mapping update adds a new field called `semantic_description` with the type `semantic_text`:
+
+```console
+PUT /cooking_blog/_mapping
+{
+  "properties": {
+    "semantic_description": {
+      "type": "semantic_text"
+    }
+  }
+}
+```
+
+Next, index a document with content into the new field:
+
+```console
+POST /cooking_blog/_doc
+{
+  "title": "Mediterranean Quinoa Bowl",
+  "semantic_description": "A protein-rich bowl with quinoa, chickpeas, fresh vegetables, and herbs. This nutritious Mediterranean-inspired dish is easy to prepare and perfect for a quick, healthy dinner.",
+  "author": "Jamie Oliver",
+  "date": "2023-06-01",
+  "category": "Main Course",
+  "tags": ["vegetarian", "healthy", "mediterranean", "quinoa"],
+  "rating": 4.7
+}
+```
+
+### Perform semantic search
+
+Once the document has been processed by the underlying model running on the inference endpoint, you can perform semantic searches. Here's an example natural language query against the `semantic_description` field:
+
+```esql
+FROM cooking_blog
+| WHERE semantic_description:"What are some easy to prepare but nutritious plant-based meals?"
+| LIMIT 5 
+```
+
+:::{tip}
+Follow this [tutorial](/solutions/search/semantic-search/semantic-search-semantic-text.md) if you'd like to test out the semantic search workflow against a large dataset.
+:::
+
+### Perform hybrid search
+
+You can combine full-text and semantic queries. In this example we combine full-text and semantic search with custom weights:
+
+```esql
+FROM cooking_blog METADATA _score
+| WHERE match(semantic_description, "easy to prepare vegetarian meals", { "boost": 0.75 })
+    OR match(tags, "vegetarian", { "boost": 0.25 })
+| SORT _score DESC
+| LIMIT 5
+```
+
+## Step 5: Search across multiple fields at once
 
 When users enter a search query, they often don't know (or care) whether their search terms appear in a specific field. {{esql}} provides ways to search across multiple fields simultaneously:
 
@@ -225,14 +293,14 @@ FROM cooking_blog METADATA _score  # Request _score metadata for relevance-based
 ```
 
 :::{tip}
-When working with relevance scoring in ES|QL, it's important to understand how `_score` works. If you don't include `METADATA _score` in your query, you're only performing filtering operations with no relevance calculation.
+When working with relevance scoring in ES|QL, it's important to understand `_score`. If you don't include `METADATA _score` in your query, you won't see relevance scores in your results. This means you won't be able to sort by relevance or filter based on relevance scores.
 
 When you include `METADATA _score`, search functions included in WHERE conditions contribute to the relevance score. Filtering operations (like range conditions and exact matches) don't affect the score.
 
-Remember that including `METADATA _score` doesn't automatically sort your results by relevance. You must explicitly use `SORT _score DESC` or `SORT _score ASC` to order your results by relevance.
+If you want the most relevant results first, you must sort by `_score`, by explicitly using `SORT _score DESC` or `SORT _score ASC`.
 :::
 
-## Step 5: Filter and find exact matches
+## Step 6: Filter and find exact matches
 
 Filtering allows you to narrow down your search results based on exact criteria. Unlike full-text searches, filters are binary (yes/no) and do not affect the relevance score. Filters execute faster than queries because excluded results don't need to be scored.
 
@@ -271,7 +339,7 @@ FROM cooking_blog
 
 Like the `term` query in Query DSL, this has zero flexibility and is case-sensitive.
 
-## Step 6: Combine multiple search criteria
+## Step 7: Combine multiple search criteria
 
 Complex searches often require combining multiple search criteria:
 
@@ -304,55 +372,18 @@ FROM cooking_blog METADATA _score
   
 ```
 
-## Bonus: Semantic search with ES|QL
-
-ES|QL also supports semantic search when your mappings include fields of the [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) type. This example mapping update adds a new field called `semantic_description` with the type `semantic_text`:
-
-```console
-PUT /cooking_blog/_mapping
-{
-  "properties": {
-    "semantic_description": {
-      "type": "semantic_text"
-    }
-  }
-}
-```
-
-Next, index a document with content into the new field:
-
-```console
-POST /cooking_blog/_doc
-{
-  "title": "Mediterranean Quinoa Bowl",
-  "semantic_description": "A protein-rich bowl with quinoa, chickpeas, fresh vegetables, and herbs. This nutritious Mediterranean-inspired dish is easy to prepare and perfect for a quick, healthy dinner.",
-  "author": "Jamie Oliver",
-  "date": "2023-06-01",
-  "category": "Main Course",
-  "tags": ["vegetarian", "healthy", "mediterranean", "quinoa"],
-  "rating": 4.7
-}
-```
-
-Once the document has been processed by the underlying model running on the inference endpoint, you can perform semantic searches. Here's an example natural language query against the `semantic_description` field:
-
-```esql
-FROM cooking_blog
-| WHERE semantic_description:"What are some easy to prepare but nutritious plant-based meals?"
-| LIMIT 5
-  
-```
-
-:::{tip}
-Follow this [tutorial](/solutions/search/semantic-search/semantic-search-semantic-text.md) if you'd like to test out the semantic search workflow against a large dataset.
-:::
-
 ## Learn more
+
+### Documentation
 
 This tutorial introduced the basics of search and filtering in {{esql}}. Building a real-world search experience requires understanding many more advanced concepts and techniques. Here are some resources once you're ready to dive deeper:
 
-- [Full-text search](full-text.md): Learn about the core components of full-text search in Elasticsearch.
-  - [Text analysis](full-text/text-analysis-during-search.md): Understand how text is processed for full-text search.
+% TODO [Search with {{esql}}](): Learn about all your options for search use cases with {{esql}}.
 - [{{esql}} search functions](elasticsearch://reference/query-languages/esql/esql-functions-operators.md#esql-search-functions): Explore the full list of search functions available in {{esql}}.
 - [Semantic search](/solutions/search/semantic-search.md): Understand your various options for semantic search in Elasticsearch.
   - [The `semantic_text` workflow](/solutions/search/semantic-search.md#_semantic_text_workflow): Learn how to use the `semantic_text` field type for semantic search. This is the recommended approach for most users looking to perform semantic search in {{es}}, because it abstracts away the complexity of setting up inference endpoints and models.
+
+### Related blog posts
+
+% TODO [[uncomment once blog is live]] - https://www.elastic.co/blog/esql-you-know-for-search-scoring-semantic-search[ES|QL, you know for Search]: Introducing scoring and semantic search
+- [Introducing full text filtering in ES|QL](https://www.elastic.co/blog/introducing-full-text-filtering-with-esql): Overview of text filtering capabilities
