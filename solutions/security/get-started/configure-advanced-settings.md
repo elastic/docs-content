@@ -38,7 +38,7 @@ Modifying advanced settings can affect Kibana performance and cause problems tha
 
 ## Access advanced settings [security-advanced-settings-access-advanced-settings]
 
-To access advanced settings, go to **Stack Management** → **Advanced Settings**, then scroll down to **Security Solution** settings.
+To access advanced settings, go to **Stack Management** → **Advanced Settings** in {{stack}} or **Project Settings** → **Stack Management** → **Advanced Settings** in {{serverless-short}}, then scroll down to **Security Solution** settings.
 
 :::{image} /solutions/images/security-solution-advanced-settings.png
 :alt: solution advanced settings
@@ -191,7 +191,7 @@ The `securitySolution:alertTags` field determines which options display in the a
 
 ## Set the maximum notes limit for alerts and events [max-notes-alerts-events]
 
-The `securitySolution:maxUnassociatedNotes` field determines the maximum number of [notes](/solutions/security/investigate/notes.md) that you can attach to alerts and events. The maximum limit and default value is 1000.
+The `securitySolution:maxUnassociatedNotes` field determines the maximum number of [notes](/solutions/security/investigate/notes.md) that you can attach to alerts and events. The maximum limit and default value is 10000.
 
 
 ## Exclude cold and frozen data from rules [exclude-cold-frozen-data-rule-executions]
