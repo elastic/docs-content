@@ -107,7 +107,7 @@ To install custom configuration files you can:
 1. Add the configuration data into a ConfigMap or Secret.
 2. Use volumes and volume mounts in your manifest to mount the contents of the ConfigMap or Secret as files in your {{es}} nodes.
 
-The next example shows how to add a synonyms file for the [synonym token filter](elasticsearch://reference/data-analysis/text-analysis/analysis-synonym-tokenfilter.md) in Elasticsearch. But you can **use the same approach for any kind of file you want to mount into the configuration directory of Elasticsearch**, like adding CA certificates of external systems.
+The next example shows how to add a synonyms file for the [synonym token filter](elasticsearch://reference/text-analysis/analysis-synonym-tokenfilter.md) in Elasticsearch. But you can **use the same approach for any kind of file you want to mount into the configuration directory of Elasticsearch**, like adding CA certificates of external systems.
 
 1. Create the ConfigMap or Secret with the data:
 

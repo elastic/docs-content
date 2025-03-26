@@ -163,13 +163,11 @@ toc:
         children:
           - file: ingest/fleet/common-problems.md
           - file: ingest/fleet/frequently-asked-questions.md
-      - file: ingest/beats-loggingplugin/elastic-logging-plugin-for-docker.md      
+      - file: ingest/beats-loggingplugin/elastic-logging-plugin-for-docker.md
+      - file: ingest/elastic-serverless-forwarder.md      
   - file: deployments/elastic-cloud.md
     children:
       - file: deployments/serverless.md
-        children:
-          - file: deployments/serverless-status.md
-          - file: deployments/esf/elastic-serverless-forwarder.md
       - file: deployments/elastic-cloud/sso.md
       - file: monitoring/unavailable-nodes.md
       - file: monitoring/unavailable-shards.md
@@ -189,6 +187,8 @@ toc:
       - file: deployments/cloud-enterprise/troubleshooting-container-engines.md
       - file: deployments/cloud-enterprise/verify-zookeeper-sync-status.md
       - file: deployments/cloud-enterprise/rebuilding-broken-zookeeper-quorum.md
+      - file: deployments/cloud-enterprise/deployment-health-warnings.md
+      - file: deployments/cloud-enterprise/node-bootlooping.md
       - file: deployments/cloud-enterprise/run-ece-diagnostics-tool.md
       - file: deployments/cloud-enterprise/heap-dumps.md
       - file: deployments/cloud-enterprise/thread-dumps.md

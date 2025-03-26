@@ -63,7 +63,7 @@ Use the [execute enrich policy API](https://www.elastic.co/docs/api/doc/elastics
 POST /_enrich/policy/networks-policy/_execute?wait_for_completion=false
 ```
 
-Use the [create or update pipeline API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ingest-put-pipeline) to create an ingest pipeline. In the pipeline, add an [enrich processor](elasticsearch://reference/ingestion-tools/enrich-processor/enrich-processor.md) that includes:
+Use the [create or update pipeline API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ingest-put-pipeline) to create an ingest pipeline. In the pipeline, add an [enrich processor](elasticsearch://reference/enrich-processor/enrich-processor.md) that includes:
 
 * Your enrich policy.
 * The `field` of incoming documents used to match documents from the enrich index.

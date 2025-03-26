@@ -314,7 +314,7 @@ To import a JVM trust store:
             }
     ```
 
-4. To use this bundle, you can refer it in the [GeoIP processor](elasticsearch://reference/ingestion-tools/enrich-processor/geoip-processor.md) of an ingest pipeline as `MyGeoLite2-City.mmdb` under `database_file` such as:
+4. To use this bundle, you can refer it in the [GeoIP processor](elasticsearch://reference/enrich-processor/geoip-processor.md) of an ingest pipeline as `MyGeoLite2-City.mmdb` under `database_file` such as:
 
     ```sh
     ...

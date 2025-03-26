@@ -292,7 +292,7 @@ The response includes the document where the log format doesn’t match, but the
 
 ## Define a runtime field with a dissect pattern [runtime-examples-dissect]
 
-If you don’t need the power of regular expressions, you can use [dissect patterns](elasticsearch://reference/ingestion-tools/enrich-processor/dissect-processor.md) instead of grok patterns. Dissect patterns match on fixed delimiters but are typically faster than grok.
+If you don’t need the power of regular expressions, you can use [dissect patterns](elasticsearch://reference/enrich-processor/dissect-processor.md) instead of grok patterns. Dissect patterns match on fixed delimiters but are typically faster than grok.
 
 You can use dissect to achieve the same results as parsing the Apache logs with a [grok pattern](#runtime-examples-grok). Instead of matching on a log pattern, you include the parts of the string that you want to discard. Paying special attention to the parts of the string you want to discard will help build successful dissect patterns.
 
