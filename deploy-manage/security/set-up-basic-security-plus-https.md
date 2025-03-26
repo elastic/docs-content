@@ -12,12 +12,21 @@ mapped_pages:
 % original title: Set up basic security for the Elastic Stack plus secured HTTPS traffic
 # Set up HTTP TLS [security-basic-setup-https]
 
-Enabling TLS on the HTTP layer ensures that all client communications with your cluster are encrypted, providing an additional layer of security.
+Enabling TLS on the HTTP layer ensures that all client communications with your cluster are encrypted, adding a critical layer of security.
 
-This documents describes the following topics:
-- Generate and configure TLS certificates for {{es}} HTTP endpoint
-- How to configure {{kib}} to connect to {{es}} using HTTPS, and adding the CA certificate of {{es}} to the list of trusted CAs in {{kib}}
-- Generate and configure TLS certificate for {{kib}} using
+This document provides guidance on how to:
+
+* Generate and configure TLS certificates for the HTTP endpoints of your {{es}} nodes.
+* Configure {{kib}} to securely connect to {{es}} over HTTPS by trusting the Certificate Authority (CA) used by {{es}}.
+* Generate and configure TLS certificates for the {{kib}} HTTP interface to secure {{kib}} access.
+
+::::{note}
+This guide uses the `elasticsearch-certutil` tool to generate Certificate Authorities (CAs) and TLS certificates. However, using this tool is not required. You can use publicly trusted certificates, your organization's internal certificate management system, or any other method that produces valid certificates.
+
+If you already have certificates available, you can skip the certificate generation steps and proceed directly to the {{es}} and {{kib}} configuration steps.
+::::
+
+## `elasticsearch-certutil`
 
 When you run the `elasticsearch-certutil` tool in `http` mode, the tool asks several questions about how you want to generate certificates. While there are numerous options, the following choices result in certificates that should work for most environments.
 
@@ -41,6 +50,16 @@ If you work in an environment with a central security team, they can likely gene
 ## Prerequisites [basic-setup-https-prerequisites]
 
 If security feature wasn't already enabled in your cluster, complete all steps in [Manual security setup](./set-up-minimal-security.md).
+
+For multi-node clusters, ensure you have completed the [transport TLS setup](./set-up-basic-security.md). As part of that process, you will have created a Certificate Authority (CA) that this guide reuses to issue HTTP certificates. 
+
+If you prefer to use a separate CA for HTTP, you can generate a new one using the same process. For example:
+
+```bash
+elasticsearch-certutil ca --out http-ca.p12
+```
+
+Then, use this CA to sign your HTTP certificates instead.
 
 ## Generate and configure TLS certificates for {{es}} nodes [encrypt-http-communication]
 
