@@ -10,18 +10,6 @@ applies_to:
 
 # Automatic import
 
-% What needs to be done: Align serverless/stateful
-
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/security-docs/security/automatic-import.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/security-automatic-import.md
-
-::::{warning}
-This feature is in technical preview. It may change in the future, and you should exercise caution when using it in production environments. Elastic will work to fix any issues, but features in technical preview are not subject to the support SLA of GA features.
-::::
-
-
 Automatic Import helps you quickly parse, ingest, and create [ECS mappings](https://www.elastic.co/elasticsearch/common-schema) for data from sources that don’t yet have prebuilt Elastic integrations. This can accelerate your migration to {{elastic-sec}}, and help you quickly add new data sources to an existing SIEM solution in {{elastic-sec}}. Automatic Import uses a large language model (LLM) with specialized instructions to quickly analyze your source data and create a custom integration.
 
 While Elastic has 400+ [prebuilt data integrations](https://docs.elastic.co/en/integrations), Automatic Import helps you extend data coverage to other security-relevant technologies and applications. Elastic integrations (including those created by Automatic Import) normalize data to [the Elastic Common Schema (ECS)](ecs://reference/index.md), which creates uniformity across dashboards, search, alerts, machine learning, and more.
@@ -32,11 +20,31 @@ Click [here](https://elastic.navattic.com/automatic-import) to access an interac
 
 
 ::::{admonition} Requirements
-* A working [LLM connector](/solutions/security/ai/set-up-connectors-for-large-language-models-llm.md). Recommended models: `Claude 3.5 Sonnet`; `GPT-4o`; `Gemini-1.5-pro-002`.
+
+* A working [LLM connector](/solutions/security/ai/set-up-connectors-for-large-language-models-llm.md). 
 * {{stack}} users: An [Enterprise](https://www.elastic.co/pricing) subscription.
 * {{serverless-short}} users: a [Security Analytics Complete subscription](/deploy-manage/deploy/elastic-cloud/project-settings.md).
-* A sample of the data you want to import, in a structured or unstructured format (including JSON, NDJSON, and Syslog).
-* To import data from a REST API: its OpenAPI specification (OAS) file.
+* A sample of the data you want to import.
+
+::::
+
+::::{admonition} Notes on sample data
+To use Automatic Import, you must provide a sample of the data you wish to import. An LLM will process that sample and automatically create an integration suitable for processing the data represented by the sample. **Any structured or unstructured format is acceptable, including but not limited to JSON, NDJSON, CSV, Syslog.** 
+
+* You can upload a sample of arbitrary size. The LLM will detect its format and select up to 100 documents for detailed analysis.
+* The more variety in your sample, the more accurate the pipeline will be. For best results, include a wide range of unique log entries in your sample instead of repeating similar logs.
+* When uploading a CSV, a header with column names will be automatically recognized. However if the header is not present, the LLM will still attempt to create descriptive field names based on field formats and values.
+* For JSON and NDJSON samples, each object in your sample should represent an event, and you should avoid deeply nested object structures.
+* When you select `API (CEL input)` as one of the sources, you will be prompted to provide the associated OpenAPI specification (OAS) file to generate a CEL program that consumes this API.
+
+::::{warning}
+Note that CEL generation in Automatic Import is in beta and is subject to change. The design and code is less mature than official GA features and is being provided as-is with no warranties. Beta features are not subject to the support SLA of official GA features.
+::::
+
+::::
+
+::::{admonition} Recommended models
+You can use Automatic Import with any LLM, however model performance varies. Model performance for Automatic Import is similar to model performance for Attack Discovery; models that perform well for Attack Discovery perform well for Automatic Import. Refer to the [large language model performance matrix](/solutions/security/ai/large-language-model-performance-matrix.md).
 
 ::::
 
@@ -69,13 +77,6 @@ Using Automatic Import allows users to create new third-party data integrations 
    ::::
 
 9. Upload a sample of your data. Make sure to include all the types of events that you want the new integration to handle.
-
-   ::::{admonition} Best practices for sample data
-   * For JSON and NDJSON samples, each object in your sample should represent an event, and you should avoid deeply nested object structures.
-   * The more variety in your sample, the more accurate the pipeline will be. Include a wide range of unique log entries instead of just repeating the same type of entry. Automatic Import will select up to 100 different events from your sample to use as the basis for the new integration.
-   * Ideally, each field name should describe what the field does.
-   ::::
-
 10. Click **Analyze logs**, then wait for processing to complete. This may take several minutes.
 11. After processing is complete, the pipeline’s field mappings appear, including ECS and custom fields.
 
