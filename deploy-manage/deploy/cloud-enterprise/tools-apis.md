@@ -4,8 +4,9 @@ applies_to:
     ece: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-api-console.html
+navigation_title: "Tools and APIs"
 ---
-# Tools and APIs
+# Tools and APIs for {{ece}}
 
 Review key resources that can be used to interact with and manage your {{ece}} installation and deployments.
 

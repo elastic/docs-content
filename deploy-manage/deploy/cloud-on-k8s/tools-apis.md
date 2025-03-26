@@ -2,9 +2,10 @@
 applies_to:
   deployment:
     eck: all
+navigation_title: "Tools and APIs"
 ---
 
-# Tools and APIs
+# Tools and APIs for {{eck}}
 
 Review key resources that can be used to interact with and manage your {{eck}} operator and deployments.
 
