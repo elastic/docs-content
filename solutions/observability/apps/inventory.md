@@ -12,13 +12,13 @@ mapped_pages:
 Inventory provides a single place to observe the status of your entire ecosystem of hosts, containers, and services at a glance, even just from logs. From there, you can monitor and understand the health of your entities, check what needs attention, and start your investigations.
 
 ::::{note}
-The new Inventory requires the Elastic Entity Model (EEM). To learn more, refer to [Elastic Entity Model](asciidocalypse://docs/docs-content/docs/reference/observability/elastic-entity-model.md).
+The new Inventory requires the Elastic Entity Model (EEM). To learn more, refer to [Elastic Entity Model](/reference/observability/elastic-entity-model.md).
 ::::
 
 
-:::{image} ../../../images/observability-inventory-catalog.png
+:::{image} /solutions/images/observability-inventory-catalog.png
 :alt: Inventory catalog
-:class: screenshot
+:screenshot:
 :::
 
 Inventory is currently available for hosts, containers, and services, but it will scale to support all of your entities.
@@ -70,9 +70,9 @@ For each entity, you can click the entity name and get a detailed view. For exam
 * Alerts
 * Dashboards
 
-:::{image} ../../../images/observability-inventory-entity-detailed-view.png
+:::{image} /solutions/images/observability-inventory-entity-detailed-view.png
 :alt: Inventory detailed view
-:class: screenshot
+:screenshot:
 :::
 
 If you open an entity of type `host` or `container` that does not have infrastructure data, some of the visualizations will be blank and some features on the page will not be fully populated.

@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/endpoint-event-capture.html
   - https://www.elastic.co/guide/en/serverless/current/security-endpoint-event-capture.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Event capture and {{elastic-defend}} [endpoint-event-capture]
@@ -45,7 +49,7 @@ For complete capture of all or specific Windows security events, consider the [C
 
 Drivers are registered in the system as system services. You can capture this with Windows event ID 4697 using the [Custom Windows Event Logs](https://docs.elastic.co/en/integrations/winlog) integration.
 
-Also consider capturing Windows event ID 6 using {{winlogbeat}}'s [Sysmon module](asciidocalypse://docs/beats/docs/reference/winlogbeat/winlogbeat-module-sysmon.md).
+Also consider capturing Windows event ID 6 using {{winlogbeat}}'s [Sysmon module](beats://reference/winlogbeat/winlogbeat-module-sysmon.md).
 
 
 ## System configuration file creation, modification, and deletion [_system_configuration_file_creation_modification_and_deletion] 

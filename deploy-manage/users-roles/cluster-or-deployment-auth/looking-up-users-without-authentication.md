@@ -3,8 +3,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/user-lookup.html
 applies_to:
   deployment:
-    ess: 
-    ece: 
+    ess:
+    ece:
     eck:
     self:
 ---
@@ -28,18 +28,18 @@ See the [run_as](submitting-requests-on-behalf-of-other-users.md) and [delegated
 
 * The reserved, [`native`](native.md) and [`file`](file-based.md) realms always support user lookup.
 * The [`ldap`](ldap.md) realm supports user lookup when the realm is configured in [*user search* mode](ldap.md#ldap-realm-configuration). User lookup is not support when the realm is configured with `user_dn_templates`.
-* User lookup support in the [`active_directory`](active-directory.md) realm requires that the realm be configured with a [`bind_dn`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/security-settings.md#ref-ad-settings) and a bind password.
+* User lookup support in the [`active_directory`](active-directory.md) realm requires that the realm be configured with a [`bind_dn`](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#ref-ad-settings) and a bind password.
 
 The `pki`, `saml`, `oidc`, `kerberos` and `jwt` realms do not support user lookup.
 
-::::{note} 
-If you want to use a realm only for user lookup and prevent users from authenticating against that realm, you can [configure the realm](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/security-settings.md#ref-realm-settings) and set `authentication.enabled` to `false`
+::::{note}
+If you want to use a realm only for user lookup and prevent users from authenticating against that realm, you can [configure the realm](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#ref-realm-settings) and set `authentication.enabled` to `false`
 ::::
 
 
 The user lookup feature is an internal capability that is used to implement the `run_as` and delegated authorization features - there are no APIs for user lookup. If you want to test your user lookup configuration, then you can do this with `run_as`. Use the [Authenticate](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-authenticate) API, authenticate as a `superuser` (e.g. the builtin `elastic` user) and specify the [`es-security-runas-user` request header](submitting-requests-on-behalf-of-other-users.md).
 
-::::{note} 
+::::{note}
 The [Get users](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-get-user) API and [User profiles](user-profiles.md) feature are alternative ways to retrieve information about a {{stack}} user. Those APIs are not related to the user lookup feature.
 ::::
 

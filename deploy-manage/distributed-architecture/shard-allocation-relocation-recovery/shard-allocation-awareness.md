@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/shard-allocation-awareness.html
+applies_to:
+  stack:
+  self:
 ---
 
 # Shard allocation awareness [shard-allocation-awareness]
@@ -23,7 +26,7 @@ Learn more about [designing resilient clusters](../../production-guidance/availa
 
 To enable shard allocation awareness:
 
-1. Specify the location of each node with a [custom node attribute](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/node-settings.md#custom-node-attributes). For example, if you want Elasticsearch to distribute shards across different racks, you might use an awareness attribute called `rack_id`.
+1. Specify the location of each node with a [custom node attribute](elasticsearch://reference/elasticsearch/configuration-reference/node-settings.md#custom-node-attributes). For example, if you want Elasticsearch to distribute shards across different racks, you might use an awareness attribute called `rack_id`.
 
     You can set custom attributes in two ways:
 
@@ -62,14 +65,14 @@ To enable shard allocation awareness:
 
 With this example configuration, if you start two nodes with `node.attr.rack_id` set to `rack_one` and create an index with 5 primary shards and 1 replica of each primary, all primaries and replicas are allocated across the two node.
 
-:::{image} ../../../images/elasticsearch-reference-shard-allocation-awareness-one-rack.png
+:::{image} /deploy-manage/images/elasticsearch-reference-shard-allocation-awareness-one-rack.png
 :alt: All primaries and replicas are allocated across two nodes in the same rack
 :title: All primaries and replicas allocated across two nodes in the same rack
 :::
 
 If you add two nodes with `node.attr.rack_id` set to `rack_two`, {{es}} moves shards to the new nodes, ensuring (if possible) that no two copies of the same shard are in the same rack.
 
-:::{image} ../../../images/elasticsearch-reference-shard-allocation-awareness-two-racks.png
+:::{image} /deploy-manage/images/elasticsearch-reference-shard-allocation-awareness-two-racks.png
 :alt: Primaries and replicas are allocated across four nodes in two racks with no two copies of the same shard in the same rack
 :title: Primaries and replicas allocated across four nodes in two racks, with no two copies of the same shard in the same rack
 :::

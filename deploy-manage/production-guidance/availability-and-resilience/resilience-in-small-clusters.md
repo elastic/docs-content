@@ -1,17 +1,27 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/high-availability-cluster-small-clusters.html
+applies_to:
+  deployment:
+    self: all
+    eck: all
 ---
 
 # Resilience in small clusters [high-availability-cluster-small-clusters]
 
 In smaller clusters, it is most important to be resilient to single-node failures. This section gives some guidance on making your cluster as resilient as possible to the failure of an individual node.
 
+::::{note}
+This document focuses on self-managed {{es}} deployments and describes resilience strategies for clusters with one to a few nodes. While the guidance is tailored to these environments, many of the core concepts, such as master elections, replica configuration, and client request distribution, are also relevant to other deployment types, like {{eck}}.
+
+For a more in-depth description of how resilience is handled in {{ech}} and {{ece}}, refer to [](./resilience-in-ech.md).
+::::
+
 ## One-node clusters [high-availability-cluster-design-one-node]
 
 If your cluster consists of one node, that single node must do everything. To accommodate this, {{es}} assigns nodes every role by default.
 
-A single node cluster is not resilient. If the node fails, the cluster will stop working. Because there are no replicas in a one-node cluster, you cannot store your data redundantly. However, by default at least one replica is required for a [`green` cluster health status](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-health). To ensure your cluster can report a `green` status, override the default by setting [`index.number_of_replicas`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index-modules.md) to `0` on every index.
+A single node cluster is not resilient. If the node fails, the cluster will stop working. Because there are no replicas in a one-node cluster, you cannot store your data redundantly. However, by default at least one replica is required for a [`green` cluster health status](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-health). To ensure your cluster can report a `green` status, override the default by setting [`index.number_of_replicas`](elasticsearch://reference/elasticsearch/index-settings/index-modules.md) to `0` on every index.
 
 If the node fails, you may need to restore an older copy of any lost indices from a [snapshot](../../tools/snapshot-and-restore.md).
 
@@ -20,7 +30,7 @@ Because they are not resilient to any failures, we do not recommend using one-no
 
 ## Two-node clusters [high-availability-cluster-design-two-nodes]
 
-If you have two nodes, we recommend they both be data nodes. You should also ensure every shard is stored redundantly on both nodes by setting [`index.number_of_replicas`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index-modules.md) to `1` on every index that is not a [searchable snapshot index](../../tools/snapshot-and-restore/searchable-snapshots.md). This is the default behaviour but may be overridden by an [index template](../../../manage-data/data-store/templates.md). [Auto-expand replicas](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index-modules.md) can also achieve the same thing, but it’s not necessary to use this feature in such a small cluster.
+If you have two nodes, we recommend they both be data nodes. You should also ensure every shard is stored redundantly on both nodes by setting [`index.number_of_replicas`](elasticsearch://reference/elasticsearch/index-settings/index-modules.md) to `1` on every index that is not a [searchable snapshot index](../../tools/snapshot-and-restore/searchable-snapshots.md). This is the default behaviour but may be overridden by an [index template](../../../manage-data/data-store/templates.md). [Auto-expand replicas](elasticsearch://reference/elasticsearch/index-settings/index-modules.md) can also achieve the same thing, but it’s not necessary to use this feature in such a small cluster.
 
 We recommend you set only one of your two nodes to be [master-eligible](../../distributed-architecture/clusters-nodes-shards/node-roles.md#master-node-role). This means you can be certain which of your nodes is the elected master of the cluster. The cluster can tolerate the loss of the other master-ineligible node. If you set both nodes to master-eligible, two nodes are required for a master election. Since the election will fail if either node is unavailable, your cluster cannot reliably tolerate the loss of either node.
 

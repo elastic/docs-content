@@ -16,8 +16,7 @@ You can generate diagnostic information using this tool before you contact [Elas
 See this [this video](https://www.youtube.com/watch?v=Bb6SaqhqYHw) for a walkthrough of capturing an {{es}} diagnostic.
 
 ::::{tip}
-If you’re using Elastic Cloud Hosted, then you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, real-time issue detection and resolution paths. For more information, refer to [Monitor with AutoOps](/deploy-manage/monitor/autoops.md).
-
+If you're using {{ech}}, you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, and real-time issue detection with resolution paths. For more information, refer to [](/deploy-manage/monitor/autoops.md).
 ::::
 
 
@@ -73,9 +72,9 @@ To capture an {{es}} diagnostic:
 
     You can execute the script in three [modes](https://github.com/elastic/support-diagnostics#diagnostic-types):
 
-    * `local` (default, recommended): Polls the [{{es}} API](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/index.md), gathers operating system info, and captures cluster and GC logs.
+    * `local` (default, recommended): Polls the [{{es}} API](elasticsearch://reference/elasticsearch/rest-apis/index.md), gathers operating system info, and captures cluster and GC logs.
     * `remote`: Establishes an ssh session to the applicable target server to pull the same information as `local`.
-    * `api`: Polls the [{{es}} API](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/index.md). All other data must be collected manually.
+    * `api`: Polls the [{{es}} API](elasticsearch://reference/elasticsearch/rest-apis/index.md). All other data must be collected manually.
 
     ::::
 

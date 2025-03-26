@@ -16,9 +16,9 @@ The monitor detail screen displays several panels of information.
 
 The **Status** panel displays a summary of the latest information regarding your monitor. You can view its availability, monitor ID, type, and any assigned tags. You can click a link to visit the targeted URL, view when the TLS certificate expires, and determine the amount of time elapsed since the last check.
 
-:::{image} ../../../images/observability-uptime-status-panel.png
+:::{image} /solutions/images/observability-uptime-status-panel.png
 :alt: Uptime status panel
-:class: screenshot
+:screenshot:
 :::
 
 The **Monitoring from** list displays service availability per monitoring location, along with the amount of time elapsed since data was received from that location. The availability percentage is the percentage of successful checks made during the selected time period.
@@ -32,9 +32,9 @@ The **Monitor duration** chart displays the timing for each check that was perfo
 
 Included on this chart is the {{anomaly-detect}} ({{ml}}) integration. For more information, see [Inspect Uptime duration anomalies](inspect-uptime-duration-anomalies.md).
 
-:::{image} ../../../images/observability-monitor-duration-chart.png
+:::{image} /solutions/images/observability-monitor-duration-chart.png
 :alt: Monitor duration chart
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -42,9 +42,9 @@ Included on this chart is the {{anomaly-detect}} ({{ml}}) integration. For more 
 
 The **Pings over time** chart is a graphical representation of the check statuses over time. Hover over the charts to display crosshairs with specific numeric data.
 
-:::{image} ../../../images/observability-pings-over-time.png
+:::{image} /solutions/images/observability-pings-over-time.png
 :alt: Pings over time chart
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -54,8 +54,8 @@ The **History** table lists the total count of this monitor’s checks for the s
 
 This table can help you gain insights into more granular details about recent individual data points that {{heartbeat}} is logging about your host or endpoint.
 
-:::{image} ../../../images/observability-uptime-history.png
+:::{image} /solutions/images/observability-uptime-history.png
 :alt: Monitor history list
-:class: screenshot
+:screenshot:
 :::
 

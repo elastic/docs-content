@@ -31,9 +31,9 @@ $$$kibana-privileges-all$$$
 
 From the role management screen:
 
-:::{image} ../../../images/kibana-assign-base-privilege.png
+:::{image} /deploy-manage/images/kibana-assign-base-privilege.png
 :alt: Assign base privilege
-:class: screenshot
+:screenshot:
 :::
 
 Using the [role APIs](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-roles):
@@ -76,9 +76,9 @@ Some features allow for finer access control than the `all` and `read` privilege
 
 From the role management screen:
 
-:::{image} ../../../images/kibana-assign-subfeature-privilege.png
+:::{image} /deploy-manage/images/kibana-assign-subfeature-privilege.png
 :alt: Assign feature privilege
-:class: screenshot
+:screenshot:
 :::
 
 Using the [role APIs](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-roles):

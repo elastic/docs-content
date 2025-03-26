@@ -43,6 +43,6 @@ $dt
 Now open a PowerShell shell and simply execute the script:
 
 $$$apps_excel_exed$$$
-![apps ps exed](../../../images/elasticsearch-reference-apps_ps_exed.png "")
+![apps ps exed](/explore-analyze/images/elasticsearch-reference-apps_ps_exed.png "")
 
 

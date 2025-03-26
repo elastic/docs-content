@@ -2,6 +2,9 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/observability/current/monitor-k8s-otel-edot.html
   - https://www.elastic.co/guide/en/serverless/current/monitor-k8s-otel-edot.html
+applies_to:
+  stack:
+  serverless:
 ---
 
 # Quickstart: Unified Kubernetes Observability with Elastic Distributions of OpenTelemetry (EDOT) [monitor-k8s-otel-edot]
@@ -63,9 +66,9 @@ For a more detailed description of the components and advanced configuration, re
 1. In {{kib}}, go to the **Observability** UI and click **Add Data**.
 2. Under **What do you want to monitor?** select **Kubernetes**, and then select **OpenTelemetry: Full Observability**.
 
-    :::{image} ../../../images/observability-quickstart-k8s-otel-entry-point.png
+    :::{image} /solutions/images/observability-quickstart-k8s-otel-entry-point.png
     :alt: Kubernetes-OTel entry point
-    :class: screenshot
+    :screenshot:
     :::
 
 3. Follow the on-screen instructions to install all needed components.
@@ -93,9 +96,9 @@ For a more detailed description of the components and advanced configuration, re
 2. In your {{obs-serverless}} project, go to **Add Data**.
 3. Under **What do you want to monitor?** select **Kubernetes**, and then select **OpenTelemetry: Full Observability**.
 
-    :::{image} ../../../images/serverless-quickstart-k8s-otel-entry-point.png
+    :::{image} /solutions/images/serverless-quickstart-k8s-otel-entry-point.png
     :alt: Kubernetes-OTel entry point
-    :class: screenshot
+    :screenshot:
     :::
 
 4. Follow the on-screen instructions to install all needed components.
@@ -125,9 +128,9 @@ For a more detailed description of the components and advanced configuration, re
 
 After installation is complete and all relevant data is flowing into Elastic, the **Visualize your data** section provides a link to the **[OTEL][Metrics Kubernetes]Cluster Overview** dashboard used to monitor the health of the cluster.
 
-:::{image} ../../../images/observability-quickstart-k8s-otel-dashboard.png
+:::{image} /solutions/images/observability-quickstart-k8s-otel-dashboard.png
 :alt: Kubernetes overview dashboard
-:class: screenshot
+:screenshot:
 :::
 
 

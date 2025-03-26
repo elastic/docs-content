@@ -54,7 +54,7 @@ $ ./java -cp [PATH_TO_CLI_JAR]/elasticsearch-sql-cli-[VERSION].jar org.elasticse
 The jar name will be different for each Elasticsearch version (for example `elasticsearch-sql-cli-7.3.2.jar`), thus the generic `VERSION` specified in the example above. Furthermore, if not running the command from the folder where the SQL CLI jar resides, you’d have to provide the full path, as well.
 
 
-## CLI commands [cli-commands] 
+## CLI commands [cli-commands]
 
 Apart from SQL queries, CLI can also execute some specific commands:
 
@@ -83,7 +83,7 @@ fetch separator set to "---------------------"
 ```
 
 `lenient = <boolean>` (default `false`)
-:   If `false`, Elasticsearch SQL returns an error for fields containing [array values](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/array.md). If `true`, Elasticsearch SQL returns the first value from the array with no guarantee of consistent results.
+:   If `false`, Elasticsearch SQL returns an error for fields containing [array values](elasticsearch://reference/elasticsearch/mapping-reference/array.md). If `true`, Elasticsearch SQL returns the first value from the array with no guarantee of consistent results.
 
 ```sql
 sql> lenient = true;

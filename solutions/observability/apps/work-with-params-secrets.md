@@ -40,9 +40,9 @@ From any page in the Synthetics UI:
 2. Go to the **Global parameters** tab.
 3. Define parameters.
 
-:::{image} ../../../images/observability-synthetics-params-secrets-kibana-define.png
+:::{image} /solutions/images/observability-synthetics-params-secrets-kibana-define.png
 :alt: Global parameters tab on the Synthetics Settings page
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -119,16 +119,16 @@ journey("My Journey", ({ page, params }) => {
 
 To use a param in a lightweight monitor that is created in the Synthetics UI, wrap the name of the param in `${}` (for example, `${my_url}`).
 
-:::{image} ../../../images/serverless-synthetics-params-secrets-kibana-use-lightweight.png
+:::{image} /solutions/images/serverless-synthetics-params-secrets-kibana-use-lightweight.png
 :alt: Use a param in a lightweight monitor created in the Synthetics UI
-:class: screenshot
+:screenshot:
 :::
 
 To use a param in a browser monitor that is created in the Synthetics UI, add `params.` before the name of the param (for example, `params.my_url`).
 
-:::{image} ../../../images/observability-synthetics-params-secrets-kibana-use-lightweight.png
+:::{image} /solutions/images/observability-synthetics-params-secrets-kibana-use-lightweight.png
 :alt: Use a param in a lightweight monitor created in the Synthetics UI
-:class: screenshot
+:screenshot:
 :::
 
 

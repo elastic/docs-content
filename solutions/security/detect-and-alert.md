@@ -2,33 +2,22 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/detection-engine-overview.html
   - https://www.elastic.co/guide/en/serverless/current/security-detection-engine-overview.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
-# Detections and alerts
-
-% What needs to be done: Align serverless/stateful
-
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/security-docs/security/detection-engine-overview.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/security-detection-engine-overview.md
-
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
-
-$$$support-indicator-rules$$$
-
-$$$detections-permissions$$$
-
-$$$machine-learning-model$$$
+# Detections and alerts [security-detection-engine-overview]
 
 Use the detection engine to create and manage rules and view the alerts these rules create. Rules periodically search indices (such as `logs-*` and `filebeat-*`) for suspicious source events and create alerts when a rule’s conditions are met. When an alert is created, its status is `Open`. To help track investigations, an alert’s [status](/solutions/security/detect-and-alert/manage-detection-alerts.md#detection-alert-status) can be set as `Open`, `Acknowledged`, or `Closed`.
 
-:::{image} ../../images/security-alert-page.png
+:::{image} /solutions/images/security-alert-page.png
 :alt: Alerts page
-:class: screenshot
+:screenshot:
 :::
 
-In addition to creating [your own rules](/solutions/security/detect-and-alert/create-detection-rule.md), enable [Elastic prebuilt rules](/solutions/security/detect-and-alert/install-manage-elastic-prebuilt-rules.md#load-prebuilt-rules) to immediately start detecting suspicious activity. For detailed information on all the prebuilt rules, see the [*Prebuilt rule reference*](asciidocalypse://docs/docs-content/docs/reference/security/prebuilt-rules.md) section. Once the prebuilt rules are loaded and running, [*Tune detection rules*](/solutions/security/detect-and-alert/tune-detection-rules.md) and [Add and manage exceptions](/solutions/security/detect-and-alert/add-manage-exceptions.md) explain how to modify the rules to reduce false positives and get a better set of actionable alerts. You can also use exceptions and value lists when creating or modifying your own rules.
+In addition to creating [your own rules](/solutions/security/detect-and-alert/create-detection-rule.md), enable [Elastic prebuilt rules](/solutions/security/detect-and-alert/install-manage-elastic-prebuilt-rules.md#load-prebuilt-rules) to immediately start detecting suspicious activity. For detailed information on all the prebuilt rules, see the [Prebuilt rule reference](security-docs://reference/prebuilt-rules/index.md) section. Once the prebuilt rules are loaded and running, [Tune detection rules](/solutions/security/detect-and-alert/tune-detection-rules.md) and [Add and manage exceptions](/solutions/security/detect-and-alert/add-manage-exceptions.md) explain how to modify the rules to reduce false positives and get a better set of actionable alerts. You can also use exceptions and value lists when creating or modifying your own rules.
 
 There are several special prebuilt rules you need to know about:
 
@@ -38,22 +27,26 @@ There are several special prebuilt rules you need to know about:
 If you want to receive notifications via external systems, such as Slack or email, when alerts are created, use the {{kib}} [Alerting and Actions](/explore-analyze/alerts-cases.md) framework.
 
 ::::{note}
-To use {{kib}} Alerting for detection alert notifications, you need the [appropriate license](https://www.elastic.co/subscriptions).
+To use {{kib}} Alerting for detection alert notifications in the {{stack}}, you need the [appropriate license](https://www.elastic.co/subscriptions).
 ::::
 
 
-After rules have started running, you can monitor their executions to verify they are functioning correctly, as well as view, manage, and troubleshoot alerts (see [*Manage detection alerts*](/solutions/security/detect-and-alert/manage-detection-alerts.md) and [*Monitor and troubleshoot rule executions*](/troubleshoot/security/detection-rules.md)).
+After rules have started running, you can monitor their executions to verify they are functioning correctly, as well as view, manage, and troubleshoot alerts (see [Manage detection alerts](/solutions/security/detect-and-alert/manage-detection-alerts.md) and [Monitor and troubleshoot rule executions](/troubleshoot/security/detection-rules.md)).
 
 You can create and manage rules and alerts via the UI or the [Detections API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-security-detections-api).
 
 ::::{important}
-To make sure you can access Detections and manage rules, see [*Detections requirements*](/solutions/security/detect-and-alert/detections-requirements.md).
+To make sure you can access Detections and manage rules, see [Detections requirements](/solutions/security/detect-and-alert/detections-requirements.md).
 
 ::::
 
 
 
 ## Compatibility with cold and frozen tier nodes [cold-tier-detections]
+
+```yaml {applies_to}
+stack:
+```
 
 Cold and frozen [data tiers](/manage-data/lifecycle/data-tiers.md) hold time series data that is only accessed occasionally. In {{stack}} version >=7.11.0, {{elastic-sec}} supports cold but not frozen tier data for the following {{es}} indices:
 
@@ -81,43 +74,9 @@ In addition, the following support restrictions are in place:
 
 ## Detections configuration and index privilege prerequisites [detections-permissions]
 
-[*Detections requirements*](/solutions/security/detect-and-alert/detections-requirements.md) provides detailed information on all the permissions required to initiate and use the Detections feature.
+[Detections requirements](/solutions/security/detect-and-alert/detections-requirements.md) provides detailed information on all the permissions required to initiate and use the Detections feature.
 
-
-## Malware prevention [malware-prevention]
-
-Malware, short for malicious software, is any software program designed to damage or execute unauthorized actions on a computer system. Examples of malware include viruses, worms, Trojan horses, adware, scareware, and spyware. Some malware, such as viruses, can severely damage a computer’s hard drive by deleting files or directory information. Other malware, such as spyware, can obtain user data without their knowledge.
-
-Malware may be stealthy and appear as legitimate executable code, scripts, active content, and other software. It is also often embedded in non-malicious files, non-suspicious websites, and standard programs — sometimes making the root source difficult to identify. If infected and not resolved promptly, malware can cause irreparable damage to a computer network.
-
-For information on how to enable malware protection on your host, see [Malware Protection](/solutions/security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md#malware-protection).
-
-
-### Machine learning model [machine-learning-model]
-
-To determine if a file is malicious or benign, a machine learning model looks for static attributes of files (without executing the file) that include file structure, layout, and content. This includes information such as file header data, imports, exports, section names, and file size. These attributes are extracted from millions of benign and malicious file samples, which then are passed to a machine-learning algorithm that distinguishes a benign file from a malicious one. The machine learning model is updated as new data is procured and analyzed.
-
-
-### Threshold [_threshold]
-
-A malware threshold determines the action the agent should take if malware is detected. The Elastic Agent uses a recommended threshold level that generates a balanced number of alerts with a low probability of undetected malware. This threshold also minimizes the number of false positive alerts.
-
-
-## Ransomware prevention [ransomware-prevention]
-
-Ransomware is computer malware that installs discreetly on a user’s computer and encrypts data until a specified amount of money (ransom) is paid. Ransomware is usually similar to other malware in its delivery and execution, infecting systems through spear-phishing or drive-by downloads. If not resolved immediately, ransomware can cause irreparable damage to an entire computer network.
-
-Behavioral ransomware prevention on the Elastic Endpoint detects and stops ransomware attacks on Windows systems by analyzing data from low-level system processes, and is effective across an array of widespread ransomware families — including those targeting the system’s master boot record.
-
-For information on how to enable ransomware protection on your host, see [Ransomware protection](/solutions/security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md#ransomware-protection).
-
-::::{note}
-Ransomware prevention is a paid feature and is enabled by default if you have a [Platinum or Enterprise license](https://www.elastic.co/pricing).
-::::
-
-
-
-### Resolve UI error messages [_resolve_ui_error_messages]
+## Resolve UI error messages [_resolve_ui_error_messages]
 
 Depending on your privileges and whether detection system indices have already been created for the {{kib}} space, you might get one of these error messages when you open the **Alerts** or **Rules** page:
 
@@ -141,5 +100,5 @@ Depending on your privileges and whether detection system indices have already b
 
 ## Using logsdb index mode [detections-logsdb-index-mode]
 
-To learn how your rules and alerts are affected by using the [logsdb index mode](/manage-data/data-store/data-streams/logs-data-stream.md), refer to [*Using logsdb index mode with {{elastic-sec}}*](/solutions/security/detect-and-alert/using-logsdb-index-mode-with-elastic-security.md).
+To learn how your rules and alerts are affected by using the [logsdb index mode](/manage-data/data-store/data-streams/logs-data-stream.md), refer to [Using logsdb index mode with {{elastic-sec}}](/solutions/security/detect-and-alert/using-logsdb-index-mode-with-elastic-security.md).
 

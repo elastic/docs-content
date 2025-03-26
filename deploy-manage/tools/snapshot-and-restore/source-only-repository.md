@@ -3,7 +3,7 @@ mapped_urls:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshots-source-only-repository.html
 applies_to:
   deployment:
-    self: 
+    self:
 ---
 
 # Source-only repository [snapshots-source-only-repository]
@@ -14,7 +14,7 @@ Unlike other repository types, a source-only repository doesn’t directly store
 
 When you take a snapshot using a source-only repository, {{es}} creates a source-only snapshot in the delegated storage repository. This snapshot only contains stored fields and metadata. It doesn’t include index or doc values structures and isn’t immediately searchable when restored. To search the restored data, you first have to [reindex](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-reindex) it into a new data stream or index.
 
-::::{important} 
+::::{important}
 Source-only snapshots are only supported if the `_source` field is enabled and no source-filtering is applied. As a result, indices adopting synthetic source cannot be restored. When you restore a source-only snapshot:
 
 * The restored index is read-only and can only serve `match_all` search or scroll requests to enable reindexing.
@@ -41,7 +41,7 @@ PUT _snapshot/my_src_only_repository
 ## Repository settings [source-only-repository-settings]
 
 `chunk_size`
-:   (Optional, [byte value](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/api-conventions.md#byte-units)) Maximum size of files in snapshots. In snapshots, files larger than this are broken down into chunks of this size or smaller. Defaults to `null` (unlimited file size).
+:   (Optional, [byte value](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#byte-units)) Maximum size of files in snapshots. In snapshots, files larger than this are broken down into chunks of this size or smaller. Defaults to `null` (unlimited file size).
 
 `compress`
 :   (Optional, Boolean) If `true`, metadata files, such as index mappings and settings, are compressed in snapshots. Data files are not compressed. Defaults to `true`.
@@ -56,10 +56,10 @@ PUT _snapshot/my_src_only_repository
 :   (Optional, integer) Maximum number of snapshots the repository can contain. Defaults to `Integer.MAX_VALUE`, which is `2^31-1` or `2147483647`.
 
 `max_restore_bytes_per_sec`
-:   (Optional, [byte value](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/api-conventions.md#byte-units)) Maximum snapshot restore rate per node. Defaults to unlimited. Note that restores are also throttled through [recovery settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/index-recovery-settings.md).
+:   (Optional, [byte value](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#byte-units)) Maximum snapshot restore rate per node. Defaults to unlimited. Note that restores are also throttled through [recovery settings](elasticsearch://reference/elasticsearch/configuration-reference/index-recovery-settings.md).
 
 `max_snapshot_bytes_per_sec`
-:   (Optional, [byte value](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/api-conventions.md#byte-units)) Maximum snapshot creation rate per node. Defaults to `40mb` per second. Note that if the [recovery settings for managed services](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/index-recovery-settings.md#recovery-settings-for-managed-services) are set, then it defaults to unlimited, and the rate is additionally throttled through [recovery settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/index-recovery-settings.md).
+:   (Optional, [byte value](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#byte-units)) Maximum snapshot creation rate per node. Defaults to `40mb` per second. Note that if the [recovery settings for managed services](elasticsearch://reference/elasticsearch/configuration-reference/index-recovery-settings.md#recovery-settings-for-managed-services) are set, then it defaults to unlimited, and the rate is additionally throttled through [recovery settings](elasticsearch://reference/elasticsearch/configuration-reference/index-recovery-settings.md).
 
 `readonly`
 :   (Optional, Boolean) If `true`, the repository is read-only. The cluster can retrieve and restore snapshots from the repository but not write to the repository or create snapshots in it.
@@ -68,7 +68,7 @@ PUT _snapshot/my_src_only_repository
 
     If `false`, the cluster can write to the repository and create snapshots in it. Defaults to `false`.
 
-    ::::{important} 
+    ::::{important}
     If you register the same snapshot repository with multiple clusters, only one cluster should have write access to the repository. Having multiple clusters write to the repository at the same time risks corrupting the contents of the repository.
 
     ::::

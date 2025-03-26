@@ -5,7 +5,9 @@ mapped_pages:
 
 # Logs Stream [tail-logs]
 
-::::{admonition} There’s a new, better way to explore your logs!
+::::{note}
+**There’s a new, better way to explore your logs!**
+
 The Logs Stream app and dashboard panel are deactivated by default. We recommend viewing and inspecting your logs with [Logs Explorer](logs-explorer.md) as it provides more features, better performance, and more intuitive navigation.
 
 To activate the Logs Stream app, refer to [Activate Logs Stream](#activate-logs-stream).
@@ -40,9 +42,9 @@ Additionally, click **Highlights** and enter a term you would like to locate wit
 
 When you have searched and filtered your logs for a specific log event, you may want to examine the metadata and the structured fields associated with that event. To view the **Log event document details** fly-out, hover over the log event, click **View actions for line**, and then select **View details**. To further enhance the workflow of monitoring logs, the icons next to each field value enable you to filter the logs per that value.
 
-:::{image} ../../../images/observability-log-event-details.png
+:::{image} /solutions/images/observability-log-event-details.png
 :alt: Log event details
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -52,9 +54,9 @@ Once your logs are filtered, and you find an interesting log line, the real cont
 
 Hover over the log event, click **View actions for line**, and then select **View in context**. The context is preserved and helps you find the root cause as soon as possible.
 
-:::{image} ../../../images/observability-contextual-logs.png
+:::{image} /solutions/images/observability-contextual-logs.png
 :alt: Contextual log event
-:class: screenshot
+:screenshot:
 :::
 
 

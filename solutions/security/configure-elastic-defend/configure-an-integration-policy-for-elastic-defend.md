@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/configure-endpoint-integration-policy.html
   - https://www.elastic.co/guide/en/serverless/current/security-configure-endpoint-integration-policy.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Configure an integration policy for {{elastic-defend}}
@@ -54,7 +58,7 @@ To configure an integration policy:
 
 ## Malware protection [malware-protection]
 
-{{elastic-defend}} malware prevention detects and stops malicious attacks by using a [machine learning model](/solutions/security/detect-and-alert.md#machine-learning-model) that looks for static attributes to determine if a file is malicious or benign.
+{{elastic-defend}} malware prevention detects and stops malicious attacks by using a machine learning model that looks for static attributes to determine if a file is malicious or benign.
 
 By default, malware protection is enabled on Windows, macOS, and Linux hosts. To disable malware protection, turn off the **Malware protections** toggle.
 
@@ -80,9 +84,9 @@ If you have the appropriate license or project feature, you can customize these 
 ::::
 
 
-:::{image} ../../../images/security-malware-protection.png
+:::{image} /solutions/images/security-malware-protection.png
 :alt: Detail of malware protection section.
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -132,9 +136,9 @@ If you have the appropriate license or project feature, you can customize these 
 ::::
 
 
-:::{image} ../../../images/security-ransomware-protection.png
+:::{image} /solutions/images/security-ransomware-protection.png
 :alt: Detail of ransomware protection section.
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -161,9 +165,9 @@ If you have the appropriate license or project feature, you can customize these 
 ::::
 
 
-:::{image} ../../../images/security-memory-protection.png
+:::{image} /solutions/images/security-memory-protection.png
 :alt: Detail of memory protection section.
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -197,9 +201,9 @@ If you have the appropriate license or project feature, you can customize these 
 ::::
 
 
-:::{image} ../../../images/security-behavior-protection.png
+:::{image} /solutions/images/security-behavior-protection.png
 :alt: Detail of behavior protection section.
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -214,9 +218,9 @@ In {{serverless-short}}, attack surface reduction requires the Endpoint Protecti
 
 **Credential hardening**: Prevents attackers from stealing credentials stored in Windows system process memory. Turn on the toggle to remove any overly permissive access rights that aren’t required for standard interaction with the Local Security Authority Subsystem Service (LSASS). This feature enforces the principle of least privilege without interfering with benign system activity that is related to LSASS.
 
-:::{image} ../../../images/security-attack-surface-reduction.png
+:::{image} /solutions/images/security-attack-surface-reduction.png
 :alt: Detail of attack surface reduction section.
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -224,9 +228,9 @@ In {{serverless-short}}, attack surface reduction requires the Endpoint Protecti
 
 In the **Settings** section, select which categories of events to collect on each operating system. Most categories are collected by default.
 
-:::{image} ../../../images/security-event-collection.png
+:::{image} /solutions/images/security-event-collection.png
 :alt: Detail of event collection section.
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -243,9 +247,9 @@ By default, the **Sync with malware protection level** is selected to automatica
 
 If you don’t want to sync antivirus registration, you can set it manually with **Enabled** or **Disabled**.
 
-:::{image} ../../../images/security-register-as-antivirus.png
+:::{image} /solutions/images/security-register-as-antivirus.png
 :alt: Detail of Register as antivirus option.
-:class: screenshot
+:screenshot:
 :::
 
 

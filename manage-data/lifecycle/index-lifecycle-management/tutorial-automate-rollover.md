@@ -18,7 +18,7 @@ When you continuously index timestamped documents into {{es}}, you typically use
 
 To automate rollover and management of a data stream with {{ilm-init}}, you:
 
-1. [Create a lifecycle policy](/manage-data/lifecycle/index-lifecycle-management/tutorial-automate-rollover.md#ilm-gs-create-policy) that defines the appropriate [phases](index-lifecycle.md) and [actions](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-lifecycle-actions/index.md).
+1. [Create a lifecycle policy](/manage-data/lifecycle/index-lifecycle-management/tutorial-automate-rollover.md#ilm-gs-create-policy) that defines the appropriate [phases](index-lifecycle.md) and [actions](elasticsearch://reference/elasticsearch/index-lifecycle-actions/index.md).
 2. [Create an index template](/manage-data/lifecycle/index-lifecycle-management/tutorial-automate-rollover.md#ilm-gs-apply-policy) to [create the data stream](/manage-data/lifecycle/index-lifecycle-management/tutorial-automate-rollover.md#ilm-gs-create-the-data-stream) and apply the ILM policy and the indices settings and mappings configurations for the backing indices.
 3. [Verify indices are moving through the lifecycle phases](/manage-data/lifecycle/index-lifecycle-management/tutorial-automate-rollover.md#ilm-gs-check-progress) as expected.
 
@@ -45,9 +45,9 @@ The `min_age` value is relative to the rollover time, not the index creation tim
 
 You can create the policy through {{kib}} or with the [create or update policy](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-put-lifecycle) API. To create the policy from {{kib}}, open the menu and go to **Stack Management > Index Lifecycle Policies**. Click **Create policy**.
 
-:::{image} ../../../images/elasticsearch-reference-create-policy.png
+:::{image} /manage-data/images/elasticsearch-reference-create-policy.png
 :alt: Create policy page
-:class: screenshot
+:screenshot:
 :::
 
 ::::{dropdown} API example
@@ -97,7 +97,7 @@ To enable the {{ilm-init}} to manage the data stream, the template configures on
 
 You can use the {{kib}} Create template wizard to add the template. From Kibana, open the menu and go to **Stack Management > Index Management**. In the **Index Templates** tab, click **Create template**.
 
-:::{image} ../../../images/elasticsearch-reference-create-index-template.png
+:::{image} /manage-data/images/elasticsearch-reference-create-index-template.png
 :alt: Create template page
 :::
 
@@ -236,7 +236,7 @@ To enable automatic rollover, the template configures two {{ilm-init}} settings:
 
 You can use the {{kib}} Create template wizard to add the template. To access the wizard, open the menu and go to **Stack Management > Index Management**. In the **Index Templates** tab, click **Create template**.
 
-![Create template page](../../../images/elasticsearch-reference-create-template-wizard.png "")
+![Create template page](/manage-data/images/elasticsearch-reference-create-template-wizard.png "")
 
 The create template request for the example template looks like this:
 

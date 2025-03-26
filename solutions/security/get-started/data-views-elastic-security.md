@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/data-views-in-sec.html
   - https://www.elastic.co/guide/en/serverless/current/security-data-views-in-sec.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # {{data-sources-cap}} and {{elastic-sec}} [security-data-views-in-sec]
@@ -18,7 +22,7 @@ Custom indices are not included in the [default {{data-source}}](/solutions/secu
 
 You can tell which {{data-source}} is active by clicking the **{{data-source-cap}}** menu at the upper right of {{elastic-sec}} pages that display event or alert data, such as Overview, Alerts, Timelines, or Hosts. To switch to another {{data-source}}, click **Choose {{data-source}}**, select one of the options, and click **Save**.
 
-:::{image} ../../../images/security-dataview-button-highlighted.png
+:::{image} /solutions/images/security-dataview-button-highlighted.png
 :alt: image highlighting how to open the data view selection menu
 :::
 
@@ -31,7 +35,7 @@ To learn how to modify, create, or delete another {{data-source}} refer to [{{ki
 
 You can also temporarily modify the active {{data-source}} from the **{{data-source-cap}}** menu by clicking **Advanced options**, then adding or removing index patterns.
 
-:::{image} ../../../images/security-dataview-filter-example.gif
+:::{image} /solutions/images/security-dataview-filter-example.gif
 :alt: video showing how to filter the active data view
 :::
 
@@ -50,7 +54,7 @@ The default {{data-source}} is defined by the `securitySolution:defaultIndex` se
 The first time a user visits {{elastic-sec}} within a given {{kib}} [space](/deploy-manage/manage-spaces.md), the default {{data-source}} generates in that space and becomes active.
 
 ::::{note}
-In {{stack}}, your {{kib}} space must have the **Data View Management** [feature visibility](/deploy-manage/manage-spaces.md#spaces-control-feature-visibility) setting enabled for the default {{data-source}} to generate and become active in your space.
+In {{stack}}, your {{kib}} space must have the **Data View Management** [feature visibility](/deploy-manage/manage-spaces.md) setting enabled for the default {{data-source}} to generate and become active in your space.
 ::::
 
 

@@ -1,5 +1,8 @@
 ---
 navigation_title: "Container engines"
+applies_to:
+  deployment:
+    ece: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-troubleshooting-containers.html
 ---
@@ -16,7 +19,7 @@ Do not restart the Docker daemon unless directly prescribed by Elastic Support u
 
 ## Use supported configuration [ece-troubleshooting-containers-supported]
 
-Make sure to use a combination of [Linux operating systems](../../../deploy-manage/deploy/cloud-enterprise/configure-operating-system-cloud.md) and container engine version that is supported, following our official [Support matrix](https://www.elastic.co/support/matrix#elastic-cloud-enterprise). Using unsupported combinations can cause a plethora of either intermediate or potentially permanent issues with you {{ece}} environment, such as failures to create [system deployments](../../../deploy-manage/deploy/cloud-enterprise/system-deployments-configuration.md), to upgrade workload deployments, proxy timeouts, data loss, and more.
+Make sure to use a combination of [Linux operating systems](../../../deploy-manage/deploy/cloud-enterprise/configure-operating-system.md) and container engine version that is supported, following our official [Support matrix](https://www.elastic.co/support/matrix#elastic-cloud-enterprise). Using unsupported combinations can cause a plethora of either intermediate or potentially permanent issues with you {{ece}} environment, such as failures to create [system deployments](../../../deploy-manage/deploy/cloud-enterprise/system-deployments-configuration.md), to upgrade workload deployments, proxy timeouts, data loss, and more.
 
 
 ## Troubleshoot unhealthy containers [ece-troubleshooting-containers-unhealthy]
@@ -64,4 +67,4 @@ It is **not** safe to restart the following without explicit steps from Elastic 
 
 For unhealthy Zookeeper, instead see [verify Zookeeper sync status](verify-zookeeper-sync-status.md) and [resolving Zookeeper quorum](rebuilding-broken-zookeeper-quorum.md).
 
-For any {{ece}} system container not listed, kindly reach out to [Elastic Support](ask-for-help.md) for advisement.
+For any {{ece}} system container not listed, reach out to [Elastic Support](/troubleshoot/index.md#contact-us).

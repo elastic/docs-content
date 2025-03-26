@@ -35,18 +35,18 @@ In the example in *Figure 1*, `Service A` initiates four transactions and has sa
 
 **Figure 1. Upstream sampling decision is respected**
 
-:::{image} ../../../images/observability-dt-sampling-example-1.png
+:::{image} /solutions/images/observability-dt-sampling-example-1.png
 :alt: Distributed tracing and head based sampling example one
-:class: screenshot
+:screenshot:
 :::
 
 In the example in *Figure 2*, `Service A` initiates four transactions and has a sample rate of `1` (`100%`). Again, the upstream sampling decision is respected, so the sample rate for all services will be `1` (`100%`).
 
 **Figure 2. Upstream sampling decision is respected**
 
-:::{image} ../../../images/observability-dt-sampling-example-2.png
+:::{image} /solutions/images/observability-dt-sampling-example-2.png
 :alt: Distributed tracing and head based sampling example two
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -62,16 +62,16 @@ In the example in *Figure 3*, `Service A` is an Elastic-monitored service that i
 
 **Figure 3. Using the `restart_external` trace continuation strategy**
 
-:::{image} ../../../images/observability-dt-sampling-continuation-strategy-restart_external.png
+:::{image} /solutions/images/observability-dt-sampling-continuation-strategy-restart_external.png
 :alt: Distributed tracing and head based sampling with restart_external continuation strategy
-:class: screenshot
+:screenshot:
 :::
 
 Use the **`restart`** trace continuation strategy on an Elastic-monitored service to start a new trace regardless of whether the previous service had a `traceparent` header. This can be helpful if an Elastic-monitored service is publicly exposed, and you do not want tracing data to possibly be spoofed by user requests.
 
 In the example in *Figure 4*, `Service A` and `Service B` are Elastic-monitored services that use the default trace continuation strategy. `Service A` has a sample rate of `.25` (`25%`), and that sampling decision is respected in `Service B`. `Service C` is an Elastic-monitored service that uses the `restart` trace continuation strategy and has a sample rate of `1` (`100%`). Because it uses `restart`, the upstream sample rate is *not* respected in `Service C` and all four traces will be sampled as new traces in `Service C`. The end result will be five sampled traces.
 
-:::{image} ../../../images/observability-dt-sampling-continuation-strategy-restart.png
+:::{image} /solutions/images/observability-dt-sampling-continuation-strategy-restart.png
 :alt: Distributed tracing and head based sampling with restart continuation strategy
 :title: Using the `restart` trace continuation strategy
 :::
@@ -122,7 +122,7 @@ With tail-based sampling, all traces are observed and a sampling decision is onl
 
 In this example, `Service A` initiates four transactions. If our sample rate is `.5` (`50%`) for traces with a `success` outcome, and `1` (`100%`) for traces with a `failure` outcome, the sampled traces would look something like this:
 
-:::{image} ../../../images/observability-dt-sampling-example-3.png
+:::{image} /solutions/images/observability-dt-sampling-example-3.png
 :alt: Distributed tracing and tail based sampling example one
 :::
 
@@ -133,6 +133,54 @@ Tail-based sampling is implemented entirely in APM Server, and will work with tr
 
 Due to [OpenTelemetry tail-based sampling limitations](../../../solutions/observability/apps/limitations.md#apm-open-telemetry-tbs) when using [tailsamplingprocessor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/tailsamplingprocessor), we recommend using APM Server tail-based sampling instead.
 
+### Tail-based sampling performance and requirements [_tail_based_sampling_performance_and_requirements]
+
+Tail-based sampling (TBS), by definition, requires storing events locally temporarily, such that they can be retrieved and forwarded when a sampling decision is made.
+
+In an APM Server implementation, the events are stored temporarily on disk instead of in memory for better scalability. Therefore, it requires local disk storage proportional to the APM event ingestion rate and additional memory to facilitate disk reads and writes. If the [storage limit](#sampling-tail-storage_limit) is insufficient, sampling will be bypassed.
+
+It is recommended to use fast disks, ideally Solid State Drives (SSD) with high I/O per second (IOPS), when enabling tail-based sampling. Disk throughput and I/O may become performance bottlenecks for tail-based sampling and APM event ingestion overall. Disk writes are proportional to the event ingest rate, while disk reads are proportional to both the event ingest rate and the sampling rate.
+
+To demonstrate the performance overhead and requirements, here are some reference numbers from a standalone APM Server deployed on AWS EC2 under full load that is receiving APM events containing only traces. These numbers assume no backpressure from Elasticsearch and a **10% sample rate in the tail sampling policy**.
+
+:::{important}
+These figures are for reference only and may vary depending on factors such as sampling rate, average event size, and the average number of events per distributed trace.
+:::
+
+Terminology:
+
+* Event Ingestion Rate: The throughput from the APM agent to the APM Server using the Intake v2 protocol (the protocol used by Elastic APM agents), measured in events per second.
+* Event Indexing Rate: The throughput from the APM Server to Elasticsearch, measured in events per second or documents per second. Note that it should roughly be equal to Event Ingestion Rate * Sampling Rate.
+* Memory Usage: The maximum Resident Set Size (RSS) of APM Server process observed throughout the benchmark.
+
+#### APM Server 9.0
+
+| EC2 instance size | TBS and disk configuration                     | Event ingestion rate (events/s) | Event indexing rate (events/s) | Memory usage (GB) | Disk usage (GB) |
+|-------------------|------------------------------------------------|---------------------------------|--------------------------------|-------------------|-----------------|
+| c6id.2xlarge      | TBS disabled                                   | 47220                           | 47220 (100% sampling)          | 0.98              | 0               |
+| c6id.2xlarge      | TBS enabled, EBS gp3 volume with 3000 IOPS     | 21310                           | 2360                           | 1.41              | 13.1            |
+| c6id.2xlarge      | TBS enabled, local NVMe SSD from c6id instance | 21210                           | 2460                           | 1.34              | 12.9            |
+| c6id.4xlarge      | TBS disabled                                   | 142200                          | 142200 (100% sampling)         | 1.12              | 0               |
+| c6id.4xlarge      | TBS enabled, EBS gp3 volume with 3000 IOPS     | 32410                           | 3710                           | 1.71              | 19.4            |
+| c6id.4xlarge      | TBS enabled, local NVMe SSD from c6id instance | 37040                           | 4110                           | 1.73              | 23.6            |
+
+#### APM Server 8.18
+
+| EC2 instance size | TBS and disk configuration                     | Event ingestion rate (events/s) | Event indexing rate (events/s) | Memory usage (GB) | Disk usage (GB) |
+|-------------------|------------------------------------------------|---------------------------------|--------------------------------|-------------------|-----------------|
+| c6id.2xlarge      | TBS disabled                                   | 50260                           | 50270 (100% sampling)          | 0.98              | 0               |
+| c6id.2xlarge      | TBS enabled, EBS gp3 volume with 3000 IOPS     | 10960                           | 50                             | 5.24              | 24.3            |
+| c6id.2xlarge      | TBS enabled, local NVMe SSD from c6id instance | 11450                           | 820                            | 7.19              | 30.6            |
+| c6id.4xlarge      | TBS disabled                                   | 149200                          | 149200 (100% sampling)         | 1.14              | 0               |
+| c6id.4xlarge      | TBS enabled, EBS gp3 volume with 3000 IOPS     | 11990                           | 530                            | 26.57             | 33.6            |
+| c6id.4xlarge      | TBS enabled, local NVMe SSD from c6id instance | 43550                           | 2940                           | 28.76             | 109.6           |
+
+When interpreting these numbers, note that:
+
+* The metrics are inter-related. For example, it is reasonable to see higher memory usage and disk usage when the event ingestion rate is higher.
+* The event ingestion rate and event indexing rate competes for disk IO. This is why there is an outlier data point where APM Server version 8.18 with a 32GB NVMe SSD shows a higher ingest rate but a slower event indexing rate than in 9.0.
+
+The tail-based sampling implementation in version 9.0 offers significantly better performance compared to version 8.18, primarily due to a rewritten storage layer. This new implementation compresses data, as well as cleans up expired data more reliably, resulting in reduced load on disk, memory, and compute resources. This improvement is particularly evident in the event indexing rate on slower disks. In version 8.18, as the database grows larger, the performance slowdown can become disproportionate.
 
 ## Sampled data and visualizations [_sampled_data_and_visualizations]
 
@@ -182,13 +230,13 @@ The transaction sample rate can be changed dynamically (no redeployment necessar
 
 Each agent provides a configuration value used to set the transaction sample rate. See the relevant agent’s documentation for more details:
 
-* Go: [`ELASTIC_APM_TRANSACTION_SAMPLE_RATE`](asciidocalypse://docs/apm-agent-go/docs/reference/configuration.md#config-transaction-sample-rate)
-* Java: [`transaction_sample_rate`](asciidocalypse://docs/apm-agent-java/docs/reference/config-core.md#config-transaction-sample-rate)
-* .NET: [`TransactionSampleRate`](asciidocalypse://docs/apm-agent-dotnet/docs/reference/config-core.md#config-transaction-sample-rate)
-* Node.js: [`transactionSampleRate`](asciidocalypse://docs/apm-agent-nodejs/docs/reference/configuration.md#transaction-sample-rate)
-* PHP: [`transaction_sample_rate`](asciidocalypse://docs/apm-agent-php/docs/reference/configuration-reference.md#config-transaction-sample-rate)
-* Python: [`transaction_sample_rate`](asciidocalypse://docs/apm-agent-python/docs/reference/configuration.md#config-transaction-sample-rate)
-* Ruby: [`transaction_sample_rate`](asciidocalypse://docs/apm-agent-ruby/docs/reference/configuration.md#config-transaction-sample-rate)
+* Go: [`ELASTIC_APM_TRANSACTION_SAMPLE_RATE`](apm-agent-go://reference/configuration.md#config-transaction-sample-rate)
+* Java: [`transaction_sample_rate`](apm-agent-java://reference/config-core.md#config-transaction-sample-rate)
+* .NET: [`TransactionSampleRate`](apm-agent-dotnet://reference/config-core.md#config-transaction-sample-rate)
+* Node.js: [`transactionSampleRate`](apm-agent-nodejs://reference/configuration.md#transaction-sample-rate)
+* PHP: [`transaction_sample_rate`](apm-agent-php://reference/configuration-reference.md#config-transaction-sample-rate)
+* Python: [`transaction_sample_rate`](apm-agent-python://reference/configuration.md#config-transaction-sample-rate)
+* Ruby: [`transaction_sample_rate`](apm-agent-ruby://reference/configuration.md#config-transaction-sample-rate)
 
 
 ## Configure tail-based sampling [apm-configure-tail-based-sampling]
@@ -198,7 +246,7 @@ Enable tail-based sampling with [Enable tail-based sampling](../../../solutions/
 Trace events are matched to policies in the order specified. Each policy list must conclude with a default policy — one that only specifies a sample rate. This default policy is used to catch remaining trace events that don’t match a stricter policy. Requiring this default policy ensures that traces are only dropped intentionally. If you enable tail-based sampling and send a transaction that does not match any of the policies, APM Server will reject the transaction with the error `no matching policy`.
 
 ::::{important}
-Please note that from version `8.3.1` APM Server implements a default storage limit of 3GB, but, due to how the limit is calculated and enforced the actual disk space may still grow slightly over the limit.
+Please note that from version `9.0.0` APM Server has an unlimited storage limit, but will stop writing when the disk where the database resides reaches 80% usage. Due to how the limit is calculated and enforced, the actual disk space may still grow slightly over this disk usage based limit, or any configured storage limit.
 ::::
 
 
@@ -229,7 +277,7 @@ This example defines three tail-based sampling polices:
 #### Top-level tail-based sampling settings [_top_level_tail_based_sampling_settings]
 
 
-##### Enable tail-based sampling [sampling-tail-enabled-{{input-type}}]
+##### Enable tail-based sampling [sampling-tail-enabled]
 
 Set to `true` to enable tail based sampling. Disabled by default. (bool)
 
@@ -239,7 +287,7 @@ Set to `true` to enable tail based sampling. Disabled by default. (bool)
 | Fleet-managed | `Enable tail-based sampling` |
 
 
-##### Interval [sampling-tail-interval-{{input-type}}]
+##### Interval [sampling-tail-interval]
 
 Synchronization interval for multiple APM Servers. Should be in the order of tens of seconds or low minutes. Default: `1m` (1 minute). (duration)
 
@@ -249,7 +297,7 @@ Synchronization interval for multiple APM Servers. Should be in the order of ten
 | Fleet-managed | `Interval` |
 
 
-##### Policies [sampling-tail-policies-{{input-type}}]
+##### Policies [sampling-tail-policies]
 
 Criteria used to match a root transaction to a sample rate.
 
@@ -261,7 +309,7 @@ Policies map trace events to a sample rate. Each policy must specify a sample ra
 | Fleet-managed | `Policies` |
 
 
-##### Storage limit [sampling-tail-storage_limit-{{input-type}}]
+##### Storage limit [sampling-tail-storage_limit]
 
 The amount of storage space allocated for trace events matching tail sampling policies. Caution: Setting this limit higher than the allowed space may cause APM Server to become unhealthy.
 
@@ -282,28 +330,28 @@ Default: `0GB`. (text)
 #### Policy settings [_policy_settings]
 
 
-##### **`sample_rate`** [sampling-tail-sample-rate-{{input-type}}]
+##### **`sample_rate`** [sampling-tail-sample-rate]
 
 The sample rate to apply to trace events matching this policy. Required in each policy.
 
 The sample rate must be greater than or equal to `0` and less than or equal to `1`. For example, a `sample_rate` of `0.01` means that 1% of trace events matching the policy will be sampled. A `sample_rate` of `1` means that 100% of trace events matching the policy will be sampled. (int)
 
 
-##### **`trace.name`** [sampling-tail-trace-name-{{input-type}}]
+##### **`trace.name`** [sampling-tail-trace-name]
 
 The trace name for events to match a policy. A match occurs when the configured `trace.name` matches the `transaction.name` of the root transaction of a trace. A root transaction is any transaction without a `parent.id`. (string)
 
 
-##### **`trace.outcome`** [sampling-tail-trace-outcome-{{input-type}}]
+##### **`trace.outcome`** [sampling-tail-trace-outcome]
 
 The trace outcome for events to match a policy. A match occurs when the configured `trace.outcome` matches a trace’s `event.outcome` field. Trace outcome can be `success`, `failure`, or `unknown`. (string)
 
 
-##### **`service.name`** [sampling-tail-service-name-{{input-type}}]
+##### **`service.name`** [sampling-tail-service-name]
 
 The service name for events to match a policy. (string)
 
 
-##### **`service.environment`** [sampling-tail-service-environment-{{input-type}}]
+##### **`service.environment`** [sampling-tail-service-environment]
 
 The service environment for events to match a policy. (string)

@@ -1,7 +1,8 @@
 ---
 navigation_title: "Common issues"
-applies:
-  eck: all
+applies_to:
+  deployment:
+    eck: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-common-problems.html
 ---
@@ -244,7 +245,7 @@ If you are using one of the affected versions of OLM and upgrading OLM to a newe
 
 ## If you upgraded Elasticsearch to the wrong version [k8s-common-problems-version-downgrade]
 
-If you accidentally upgrade one of your Elasticsearch clusters to a version that does not exist or a version to which a direct upgrade is not possible from your currently deployed version, a validation will prevent you from going back to the previous version. The reason for this validation is that ECK will not allow downgrades as this is not supported by Elasticsearch and once the data directory of Elasticsearch has been upgraded there is no way back to the old version without a [snapshot restore](/deploy-manage/upgrade/prepare-to-upgrade/index-compatibility.md).
+If you accidentally upgrade one of your Elasticsearch clusters to a version that does not exist or a version to which a direct upgrade is not possible from your currently deployed version, a validation will prevent you from going back to the previous version. The reason for this validation is that ECK will not allow downgrades as this is not supported by Elasticsearch and once the data directory of Elasticsearch has been upgraded there is no way back to the old version without a [snapshot restore](/deploy-manage/tools/snapshot-and-restore.md).
 
 These two upgrading scenarios, however, are exceptions because Elasticsearch never started up successfully. If you annotate the Elasticsearch resource with `eck.k8s.elastic.co/disable-downgrade-validation=true` ECK allows you to go back to the old version at your own risk. If you also attempted an upgrade of other related Elastic Stack applications at the same time you can use the same annotation to go back. Remove the annotation afterwards to prevent accidental downgrades and reduced availability.
 

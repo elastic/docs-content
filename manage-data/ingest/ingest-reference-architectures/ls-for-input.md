@@ -5,7 +5,7 @@ mapped_pages:
 
 # Logstash to Elasticsearch [ls-for-input]
 
-:::{image} ../../../images/ingest-ls-es.png
+:::{image} /manage-data/images/ingest-ls-es.png
 :alt: Image showing {{ls}} collecting data and sending to {{es}}
 :::
 
@@ -29,8 +29,8 @@ Info on {{ls}} and {{ls}} input and output plugins:
 
 * [{{ls}} plugin support matrix](https://www.elastic.co/support/matrix#logstash_plugins)
 * [{{ls}} Reference](https://www.elastic.co/guide/en/logstash/current)
-* [{{ls}} input plugins](asciidocalypse://docs/logstash/docs/reference/input-plugins.md)
-* [{{es}} output plugin](asciidocalypse://docs/logstash/docs/reference/plugins-outputs-elasticsearch.md)
+* [{{ls}} input plugins](logstash-docs-md://lsr/input-plugins.md)
+* [{{es}} output plugin](logstash-docs-md://lsr/plugins-outputs-elasticsearch.md)
 
 Info on {{es}} and ingest pipelines:
 

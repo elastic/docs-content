@@ -2,44 +2,19 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/cloud/current/ec-getting-started-search-use-cases-python-logs.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-getting-started-search-use-cases-python-logs.html
+applies_to:
+  stack: ga
 ---
 
 # Ingest logs from a Python application using Filebeat
 
-% What needs to be done: Refine
-
-% Scope notes: Merge ESS and ECE versions (should be pretty much identical)
-
-% Use migrated content from existing pages that map to this page:
-
-% - [ ] ./raw-migrated-files/cloud/cloud/ec-getting-started-search-use-cases-python-logs.md
-% - [ ] ./raw-migrated-files/cloud/cloud-enterprise/ece-getting-started-search-use-cases-python-logs.md
-
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
-
-$$$ec-python-logs-create-script$$$
-
-$$$ec-python-logs-filebeat$$$
-
-$$$ec-python-logs-send-ess$$$
-
-$$$ec-python-logs-view-kibana$$$
-
-$$$ece-python-logs-create-script$$$
-
-$$$ece-python-logs-filebeat$$$
-
-$$$ece-python-logs-send-ess$$$
-
-$$$ece-python-logs-view-kibana$$$
-
-This guide demonstrates how to ingest logs from a Python application and deliver them securely into an {{ech}} deployment. You’ll set up Filebeat to monitor a JSON-structured log file that has standard Elastic Common Schema (ECS) formatted fields, and you’ll then view real-time visualizations of the log events in {{kib}} as they occur. While Python is used for this example, this approach to monitoring log output is applicable across many client types. Check the list of [available ECS logging plugins](asciidocalypse://docs/ecs-logging/docs/reference/intro.md).
+This guide demonstrates how to ingest logs from a Python application and deliver them securely into an {{ech}} deployment. You’ll set up Filebeat to monitor a JSON-structured log file that has standard Elastic Common Schema (ECS) formatted fields, and you’ll then view real-time visualizations of the log events in {{kib}} as they occur. While Python is used for this example, this approach to monitoring log output is applicable across many client types. Check the list of [available ECS logging plugins](ecs-logging://reference/intro.md).
 
 *Time required: 1 hour*
 
 ## Prerequisites [ec_prerequisites_2]
 
-To complete these steps you need to have [Python](https://www.python.org/) installed on your system as well as the [Elastic Common Schema (ECS) logger](asciidocalypse://docs/ecs-logging-python/docs/reference/installation.md) for the Python logging library.
+To complete these steps you need to have [Python](https://www.python.org/) installed on your system as well as the [Elastic Common Schema (ECS) logger](ecs-logging-python://reference/installation.md) for the Python logging library.
 
 To install *ecs-logging-python*, run:
 
@@ -136,11 +111,11 @@ In this step, you’ll create a Python script that generates logs in JSON format
 
     This Python script randomly generates one of twelve log messages, continuously, at a random interval of between 1 and 10 seconds. The log messages are written to file `elvis.json`, each with a timestamp, a log level of *info*, *warning*, *error*, or *critical*, and other data. Just to add some variance to the log data, the *info* message *Elvis has left the building* is set to be the most probable log event.
 
-    For simplicity, there is just one log file and it is written to the local directory where `elvis.py` is located. In a production environment you may have multiple log files, associated with different modules and loggers, and likely stored in `/var/log` or similar. To learn more about configuring logging in Python, check [Logging facility for Python](https://docs.python.org/3/library/logging.md).
+    For simplicity, there is just one log file and it is written to the local directory where `elvis.py` is located. In a production environment you may have multiple log files, associated with different modules and loggers, and likely stored in `/var/log` or similar. To learn more about configuring logging in Python, check [Logging facility for Python](https://docs.python.org/3/library/logging.html).
 
     Having your logs written in a JSON format with ECS fields allows for easy parsing and analysis, and for standardization with other applications. A standard, easily parsible format becomes increasingly important as the volume and type of data captured in your logs expands over time.
 
-    Together with the standard fields included for each log entry is an extra *http.request.body.content* field. This extra field is there just to give you some additional, interesting data to work with, and also to demonstrate how you can add optional fields to your log data. Check the [ECS Field Reference](asciidocalypse://docs/ecs/docs/reference/ecs-field-reference.md) for the full list of available fields.
+    Together with the standard fields included for each log entry is an extra *http.request.body.content* field. This extra field is there just to give you some additional, interesting data to work with, and also to demonstrate how you can add optional fields to your log data. Check the [ECS Field Reference](ecs://reference/ecs-field-reference.md) for the full list of available fields.
 
 2. Let’s give the Python script a test run. Open a terminal instance in the location where you saved *elvis.py* and run the following:
 
@@ -226,7 +201,7 @@ For this example, Filebeat uses the following four decoding options.
   json.expand_keys: true
 ```
 
-To learn more about these settings, check [JSON input configuration options](asciidocalypse://docs/beats/docs/reference/filebeat/filebeat-input-log.md#filebeat-input-log-config-json) and [Decode JSON fields](asciidocalypse://docs/beats/docs/reference/filebeat/decode-json-fields.md) in the Filebeat Reference.
+To learn more about these settings, check [JSON input configuration options](beats://reference/filebeat/filebeat-input-log.md#filebeat-input-log-config-json) and [Decode JSON fields](beats://reference/filebeat/decode-json-fields.md) in the Filebeat Reference.
 
 Append the four JSON decoding options to the *Filebeat inputs* section of *filebeat.yml*, so that the section now looks like this:
 
@@ -262,7 +237,7 @@ Filebeat comes with predefined assets for parsing, indexing, and visualizing you
 ```
 
 ::::{important}
-Depending on variables including the installation location, environment, and local permissions, you might need to [change the ownership](asciidocalypse://docs/beats/docs/reference/libbeat/config-file-permissions.md) of filebeat.yml. You can also try running the command as *root*: *sudo ./filebeat setup -e* or you can disable strict permission checks by running the command with the `--strict.perms=false` option.
+Depending on variables including the installation location, environment, and local permissions, you might need to [change the ownership](beats://reference/libbeat/config-file-permissions.md) of filebeat.yml. You can also try running the command as *root*: *sudo ./filebeat setup -e* or you can disable strict permission checks by running the command with the `--strict.perms=false` option.
 ::::
 
 
@@ -368,7 +343,7 @@ In this command:
 * The *-c* flag specifies the path to the Filebeat config file.
 
 ::::{note}
-Just in case the command doesn’t work as expected, check the [Filebeat quick start](asciidocalypse://docs/beats/docs/reference/filebeat/filebeat-installation-configuration.md#start) for the detailed command syntax for your operating system. You can also try running the command as *root*: *sudo ./filebeat -e -c filebeat.yml*.
+Just in case the command doesn’t work as expected, check the [Filebeat quick start](beats://reference/filebeat/filebeat-installation-configuration.md#installation) for the detailed command syntax for your operating system. You can also try running the command as *root*: *sudo ./filebeat -e -c filebeat.yml*.
 ::::
 
 
@@ -406,7 +381,7 @@ Now it’s time to create visualizations based off of the Python application log
 8. In the chart settings area, under **Break down by**, select **Top values of log.level** and set **Number of values** to *4*. Since there are four log severity levels, this parameter sets all of them to appear in the chart legend.
 9. Select **Refresh**. A stacked bar chart now shows the relative frequency of each of the four log severity levels over time.
 
-    ![A screen capture of the Kibana "Bar vertical stacked" visualization with several bars. The X axis shows "Count of records" and the Y axis shows "@timestamp per 30 seconds". Each bar is divided into the four log severity levels.](../../../images/cloud-ec-python-logs-levels.png "")
+    ![A screen capture of the Kibana "Bar vertical stacked" visualization with several bars. The X axis shows "Count of records" and the Y axis shows "@timestamp per 30 seconds". Each bar is divided into the four log severity levels.](/manage-data/images/cloud-ec-python-logs-levels.png "")
 
 10. Select **Save and return** to add this visualization to your dashboard.
 
@@ -419,7 +394,7 @@ Let’s create a second visualization.
 5. In the chart settings area, under **Break down by**, select **Top values of http.request.body.content** and set **Number of values** to *12*. Since there are twelve different log messages, this parameter sets all of them to appear in the chart legend.
 6. Select **Refresh**. A stacked bar chart now shows the relative frequency of each of the log messages over time.
 
-    ![A screen capture of the visualization builder](../../../images/cloud-ec-python-logs-content.png "")
+    ![A screen capture of the visualization builder](/manage-data/images/cloud-ec-python-logs-content.png "")
 
 7. Select **Save and return** to add this visualization to your dashboard.
 
@@ -429,7 +404,7 @@ And now for the final visualization.
 2. In the **Visualization type dropdown** dropdown, select **Donut**.
 3. From the list of available fields, drag and drop the **log.level** field onto the visualization builder. A donut chart appears.
 
-    ![A screen capture of a donut chart divided into four sections](../../../images/cloud-ec-python-logs-donut.png "")
+    ![A screen capture of a donut chart divided into four sections](/manage-data/images/cloud-ec-python-logs-donut.png "")
 
 4. Select **Save and return** to add this visualization to your dashboard.
 5. Select **Save** and add a title to save your new dashboard.
@@ -442,9 +417,9 @@ You can add titles to the visualizations, resize and position them as you like, 
 
 1. Select **Refresh** on the Kibana dashboard. Since *elvis.py* continues to run and generate log data, your Kibana visualizations update with each refresh.
 
-    ![A screen capture of the completed Kibana dashboard](../../../images/cloud-ec-python-logs-final-dashboard.png "")
+    ![A screen capture of the completed Kibana dashboard](/manage-data/images/cloud-ec-python-logs-final-dashboard.png "")
 
 2. As your final step, remember to stop Filebeat and the Python script. Enter *CTRL + C* in both your Filebeat terminal and in your `elvis.py` terminal.
 
-You now know how to monitor log files from a Python application, deliver the log event data securely into an {{ech}} or {{ece}} deployment, and then visualize the results in Kibana in real time. Consult the [Filebeat documentation](asciidocalypse://docs/beats/docs/reference/filebeat/filebeat-overview.md) to learn more about the ingestion and processing options available for your data. You can also explore our [documentation](../../../manage-data/ingest.md) to learn all about all about ingesting data.
+You now know how to monitor log files from a Python application, deliver the log event data securely into an {{ech}} or {{ece}} deployment, and then visualize the results in Kibana in real time. Consult the [Filebeat documentation](beats://reference/filebeat/index.md) to learn more about the ingestion and processing options available for your data. You can also explore our [documentation](../../../manage-data/ingest.md) to learn all about all about ingesting data.
 

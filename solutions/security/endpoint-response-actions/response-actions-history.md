@@ -2,22 +2,19 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/response-actions-history.html
   - https://www.elastic.co/guide/en/serverless/current/security-response-actions-history.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Response actions history
 
-% What needs to be done: Align serverless/stateful
 
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/security-docs/security/response-actions-history.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/security-response-actions-history.md
-
-{{elastic-sec}} keeps a log of the [response actions](/solutions/security/endpoint-response-actions.md) performed on endpoints, such as isolating a host or terminating a process. The log displays when each command was performed, the host on which the action was performed, the {{kib}} user who requested the action, any comments added to the action, and the action’s current status.
+{{elastic-sec}} keeps a log of the [response actions](/solutions/security/endpoint-response-actions.md) performed on endpoints, such as isolating a host or terminating a process. The log displays when each command was performed, the host on which the action was performed, the user who requested the action, any comments added to the action, and the action’s current status.
 
 ::::{admonition} Requirement
-You must have the **Response Actions History** [privilege](/solutions/security/configure-elastic-defend/elastic-defend-feature-privileges.md) to access this feature.
-
+You must have the **Response Actions History** [privilege](/solutions/security/configure-elastic-defend/elastic-defend-feature-privileges.md) or the appropriate user role to access this feature.
 ::::
 
 
@@ -28,9 +25,9 @@ To access the response actions history for all endpoints, find **Response action
 
 All of these contexts contain the same information and features. The following image shows the **Response actions history** page for all endpoints:
 
-:::{image} ../../../images/security-response-actions-history-page.png
+:::{image} /solutions/images/security-response-actions-history-page.png
 :alt: Response actions history page UI
-:class: screenshot
+:screenshot:
 :::
 
 To filter and expand the information in the response actions history:

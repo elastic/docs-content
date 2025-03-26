@@ -2,40 +2,19 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/rules-ui-management.html
   - https://www.elastic.co/guide/en/serverless/current/security-rules-ui-management.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
-# Manage detection rules
-
-% What needs to be done: Align serverless/stateful
-
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/security-docs/security/rules-ui-management.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/security-rules-ui-management.md
-
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
-
-$$$sort-filter-rules$$$
-
-$$$manually-run-rules$$$
-
-$$$import-export-rules-ui$$$
-
-$$$edit-rules-settings$$$
-
-$$$manage-rules-ui$$$
-
-$$$rule-prerequisites$$$
-
-$$$rule-status$$$
-
-$$$snooze-rule-actions$$$
+# Manage detection rules [security-rules-ui-management]
 
 The Rules page allows you to view and manage all prebuilt and custom detection rules.
 
-:::{image} ../../../images/security-all-rules.png
+:::{image} /solutions/images/security-all-rules.png
 :alt: The Rules page
-:class: screenshot
+:screenshot:
 :::
 
 On the Rules page, you can:
@@ -79,17 +58,15 @@ The **Last response** column displays the current status of each rule, based on 
 * **Failed**: The rule encountered an error that prevented it from running. For example, a {{ml}} rule whose corresponding {{ml}} job wasn’t running.
 * **Warning**: Nothing prevented the rule from running, but it might have returned unexpected results. For example, a custom query rule tried to search an index pattern that couldn’t be found in {{es}}.
 
-For {{ml}} rules, an indicator icon (![Error icon from rules table](../../../images/security-rules-table-error-icon.png "")) also appears in this column if a required {{ml}} job isn’t running. Click the icon to list the affected jobs, then click **Visit rule details page to investigate** to open the rule’s details page, where you can start the {{ml}} job.
+For {{ml}} rules, an indicator icon (![Error icon from rules table](/solutions/images/security-rules-table-error-icon.png "title =20x20")) also appears in this column if a required {{ml}} job isn’t running. Click the icon to list the affected jobs, then click **Visit rule details page to investigate** to open the rule’s details page, where you can start the {{ml}} job.
 
 
 ## Modify existing rules settings [edit-rules-settings]
 
-You can edit an existing rule’s settings, and can bulk edit settings for multiple rules at once.
-
-::::{note}
-For prebuilt Elastic rules, you can’t modify most settings. You can only edit [rule actions](/solutions/security/detect-and-alert/create-detection-rule.md#rule-schedule) and [add exceptions](/solutions/security/detect-and-alert/add-manage-exceptions.md). If you try to bulk edit with both prebuilt and custom rules selected, the action will affect only the rules that can be modified.
-
-Similarly, rules will be skipped if they can’t be modified by a bulk edit. For example, if you try to apply a tag to rules that already have that tag, or apply an index pattern to rules that use data views.
+::::{admonition} Requirements
+* You can edit custom rules and bulk-modify them with any [{{stack}} subscription](https://www.elastic.co/pricing) or [{{serverless-short}} project tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md). 
+* You can edit [rule notifications](/solutions/security/detect-and-alert/create-detection-rule.md#rule-notifications) (notifications and response actions) for prebuilt rules with any {{stack}} subscription or {{serverless-short}} project tier.
+* You must have an [Enterprise subscription](https://www.elastic.co/pricing)  {{stack}} or a [Complete project tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md) subscription on {{serverless-short}} to edit all prebuilt rule settings (except for the **Author** and **License** fields) and bulk-modify them. 
 
 ::::
 
@@ -97,8 +74,12 @@ Similarly, rules will be skipped if they can’t be modified by a bulk edit. For
 1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Do one of the following:
 
-    * Edit a single rule: Select the **All actions** menu (**…​**) on a rule, then select **Edit rule settings**. The **Edit rule settings** view opens, where you can modify the [rule’s settings](/solutions/security/detect-and-alert/create-detection-rule.md).
+    * Edit a single rule: Select the **All actions** menu (**…​**) on a rule, then select **Edit rule settings**. Alternatively, open the rule’s details page and click **Edit rule settings**. The **Edit rule settings** view opens, where you can modify the [rule’s settings](/solutions/security/detect-and-alert/create-detection-rule.md).
     * Bulk edit multiple rules: Select the rules you want to edit, then select an action from the **Bulk actions** menu:
+
+        ::::{note}
+        Rules will be skipped if they can’t be modified by a bulk edit. For example, if you try to apply a tag to rules that already have that tag, or apply an index pattern to rules that use data views.
+        ::::
 
         * **Index patterns**: Add or delete the index patterns used by all selected rules.
         * **Tags**: Add or delete tags on all selected rules.
@@ -106,19 +87,19 @@ Similarly, rules will be skipped if they can’t be modified by a bulk edit. For
         * **Add rule actions**: Add [rule actions](/solutions/security/detect-and-alert/create-detection-rule.md#rule-notifications) on all selected rules. If you add multiple actions, you can specify an action frequency for each of them. To overwrite the frequency of existing actions select the option to **Overwrite all selected rules actions**.
 
         ::::{important}
-        After upgrading to 8.8 or later, frequency settings for rule actions created in 8.7 or earlier are moved from the rule level to the action level. The action schedules remain the same and will continue to run on their previously specified frequency (`On each rule execution`, `Hourly`, `Daily`, or `Weekly`).
+        After upgrading to {{stack}} 8.8 or later, frequency settings for rule actions created in 8.7 or earlier are moved from the rule level to the action level. The action schedules remain the same and will continue to run on their previously specified frequency (`On each rule execution`, `Hourly`, `Daily`, or `Weekly`).
         ::::
 
 
-    ::::{note}
-    Rule actions won’t run during a [maintenance window](/explore-analyze/alerts-cases/alerts/maintenance-windows.md). They’ll resume running after the maintenance window ends.
-    ::::
+        :::{note}
+        Rule actions won’t run during a [maintenance window](/explore-analyze/alerts-cases/alerts/maintenance-windows.md). They’ll resume running after the maintenance window ends.
+        ::::
 
 
-    * **Update rule schedules**: Update the [schedules](/solutions/security/detect-and-alert/create-detection-rule.md#rule-schedule) and look-back times on all selected rules.
-    * **Apply Timeline template**: Apply a specified [Timeline template](/solutions/security/investigate/timeline-templates.md) to the selected rules. You can also choose **None** to remove Timeline templates from the selected rules.
+        * **Update rule schedules**: Update the [schedules](/solutions/security/detect-and-alert/create-detection-rule.md#rule-schedule) and look-back times on all selected rules.
+        * **Apply Timeline template**: Apply a specified [Timeline template](/solutions/security/investigate/timeline-templates.md) to the selected rules. You can also choose **None** to remove Timeline templates from the selected rules.
 
-3. On the flyout that opens, update the rule settings and actions.
+3. On the page or flyout that opens, update the rule settings and actions.
 
     ::::{tip}
     To [snooze](/solutions/security/detect-and-alert/manage-detection-rules.md#snooze-rule-actions) rule actions, go to the **Actions** tab and click the bell icon.
@@ -130,7 +111,7 @@ Similarly, rules will be skipped if they can’t be modified by a bulk edit. For
 
 ## Manage rules [manage-rules-ui]
 
-You can duplicate, enable, disable, delete, and snooze actions for rules:
+You can duplicate, enable, disable, delete, and do more to rules:
 
 ::::{note}
 When duplicating a rule with exceptions, you can choose to duplicate the rule and its exceptions (active and expired), the rule and active exceptions only, or only the rule. If you duplicate the rule and its exceptions, copies of the exceptions are created and added to the duplicated rule’s [default rule list](/solutions/security/detect-and-alert/rule-exceptions.md). If the original rule used exceptions from a shared exception list, the duplicated rule will reference the same shared exception list.
@@ -147,7 +128,7 @@ When duplicating a rule with exceptions, you can choose to duplicate the rule an
 
 
 
-## Run rules manually [manually-run-rules]
+## Run rules manually [manually-run-rules] 
 
 ::::{warning}
 This functionality is in beta and is subject to change. The design and code is less mature than official GA features and is being provided as-is with no warranties. Beta features are not subject to the support SLA of official GA features.
@@ -196,23 +177,21 @@ You can snooze notifications temporarily or indefinitely. When actions are snooz
 
 You can snooze rule notifications from the **Installed Rules** tab, the rule details page, or the **Actions** tab when editing a rule.
 
-:::{image} ../../../images/security-rule-snoozing.png
+:::{image} /solutions/images/security-rule-snoozing.png
 :alt: Rules snooze options
-:class: screenshot
+:width: 75%
+:screenshot:
 :::
 
 
 ## Export and import rules [import-export-rules-ui]
 
-You can export custom detection rules to an `.ndjson` file, which you can then import into another {{elastic-sec}} environment.
-
-::::{note}
-You cannot export Elastic prebuilt rules, but you can duplicate a prebuilt rule, then export the duplicated rule.
-
-If you try to export with both prebuilt and custom rules selected, only the custom rules are exported.
-
+::::{admonition} Requirements
+* You can export and import custom rules and prebuilt rules (modified and unmodified) with any [{{stack}} subscription](https://www.elastic.co/pricing) or [{{serverless-short}} project tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md).
+*  At minimum, your role needs `Read` privileges for the **Action and Connectors** feature to import rules with actions. To overwrite or add new connectors, you need `All` privileges. Refer to [Enable and access detections](/solutions/security/detect-and-alert/detections-requirements.md#enable-detections-ui) to learn more about the required privileges for managing rules.
 ::::
 
+You can export custom detection rules to an `.ndjson` file, which you can then import into another {{elastic-sec}} environment.
 
 The `.ndjson` file also includes any actions, connectors, and exception lists related to the exported rules. However, other configuration items require additional handling when exporting and importing rules:
 
@@ -223,59 +202,54 @@ The `.ndjson` file also includes any actions, connectors, and exception lists re
 * **Actions and connectors**: Rule actions and connectors are included in the exported file, but sensitive information about the connector (such as authentication credentials) *is not* included. You must re-add missing connector details after importing detection rules.
 
     ::::{tip}
-    You can also use {{kib}}'s [Saved Objects](/explore-analyze/find-and-organize/saved-objects.md#saved-objects-export) UI to export and import necessary connectors before importing detection rules.
+    You can also use the [Saved Objects](/explore-analyze/find-and-organize/saved-objects.md#saved-objects-export) UI to export and import necessary connectors before importing detection rules.
     ::::
 
 * **Value lists**: Any value lists used for rule exceptions are *not* included in rule exports or imports. Use the [Manage value lists](/solutions/security/detect-and-alert/create-manage-value-lists.md#edit-value-lists) UI to export and import value lists separately.
 
-To export and import detection rules:
+### Export rules [export-rules-ui]
 
 1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. To export rules:
+2. Do one of the following:
 
-    1. In the Rules table, select the rules you want to export.
-    2. Select **Bulk actions** → **Export**, then save the exported file.
+    * Export a single rule: Find the rule in the Rules table, then select **All actions** → **Export**. Alternatively, export the rule from its details page (click on the rule name to open its details, then click **All actions** → **Export**).
+    * Export multiple rules: In the Rules table, select the rules you want to export, then click **Bulk actions → Export**.
 
-3. To import rules:
+The rules are exported to an `.ndjson` file.
 
-    ::::{note}
-    To import rules with actions, you need at least `Read` privileges for the `Action and Connectors` feature. To overwrite or add new connectors, you need `All` privileges for the `Actions and Connectors` feature. To import rules without actions,  you don’t need `Actions and Connectors` privileges. Refer to [Enable and access detections](/solutions/security/detect-and-alert/detections-requirements.md#enable-detections-ui) for more information.
-    ::::
+### Import rules [impr=ort-rules-ui]
 
+1. Above the Rules table, click *Import rules*.
+2. In the Import rules modal: 
 
-    1. Click **Import rules**.
-    2. Drag and drop the file that contains the detection rules.
+    1. Drag and drop the `.ndjson` file that contains the exported rules. 
+    2. (Optional) Select the appropriate options to overwrite existing data:
 
-        ::::{note}
-        Imported rules must be in an `.ndjson` file.
-        ::::
+        * **Overwrite existing detection rules with conflicting "rule_id"**: Updates existing rules if they match the `rule_id` value of any rules in the import file. Configuration data included with the rules, such as actions, is also overwritten.
+        * **Overwrite existing exception lists with conflicting "list_id"**: Replaces existing exception lists with exception lists from the import file if they have a matching `list_id` value.
+        * **Overwrite existing connectors with conflicting action "id"**: Updates existing connectors if they match the `action id` value of any rule actions in the import file. Configuration data included with the actions is also overwritten.
 
-    3. (Optional) Select **Overwrite existing detection rules with conflicting "rule_id"** to update existing rules if they match the `rule_id` value of any rules in the import file. Configuration data included with the rules, such as actions, is also overwritten.
-    4. (Optional) Select **Overwrite existing exception lists with conflicting "list_id"** to replace existing exception lists with exception lists from the import file if they have a matching `list_id` value.
-    5. (Optional) Select **Overwrite existing connectors with conflicting action "id"** to update existing connectors if they match the `action id` value of any rule actions in the import file. Configuration data included with the actions is also overwritten.
-    6. Click **Import rule**.
-    7. (Optional) If a connector is missing sensitive information after the import, a warning displays and you’re prompted to fix the connector. In the warning, click **Go to connector**. On the Connectors page, find the connector that needs to be updated, click **Fix**, then add the necessary details.
+The imported rules are added to the Rules table. 
 
-
-
+ 
 ## Confirm rule prerequisites [rule-prerequisites]
 
 Many detection rules are designed to work with specific [Elastic integrations](https://docs.elastic.co/en/integrations) and data fields. These prerequisites are identified in **Related integrations** and **Required fields** on a rule’s details page. **Related integrations** also displays each integration’s installation status and includes links for installing and configuring the listed integrations.
 
 Additionally, the **Setup guide** section provides guidance on setting up the rule’s requirements.
 
-:::{image} ../../../images/security-rule-details-prerequisites.png
+:::{image} /solutions/images/security-rule-details-prerequisites.png
 :alt: Rule details page with Related integrations
-:class: screenshot
+:screenshot:
 :::
 
 You can also check rules' related integrations in the **Installed Rules** and **Rule Monitoring** tables. Click the **integrations** badge to display the related integrations in a popup.
 
-:::{image} ../../../images/security-rules-table-related-integrations.png
+:::{image} /solutions/images/security-rules-table-related-integrations.png
 :alt: Rules table with related integrations popup
-:class: screenshot
+:screenshot:
 :::
 
 ::::{tip}
-You can hide the **integrations** badge in the rules tables. To do this, turn off `securitySolution:showRelatedIntegrations` [advanced setting](/solutions/security/get-started/configure-advanced-settings.md#show-related-integrations).
+You can hide the **integrations** badge in the Rules tables by turning off the `securitySolution:showRelatedIntegrations` [advanced setting](/solutions/security/get-started/configure-advanced-settings.md#show-related-integrations). 
 ::::

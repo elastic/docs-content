@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/security-spaces.html
   - https://www.elastic.co/guide/en/serverless/current/security-spaces.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Spaces and {{elastic-sec}} [security-spaces]

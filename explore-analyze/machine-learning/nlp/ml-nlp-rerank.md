@@ -44,9 +44,9 @@ Elastic Rerank is available in Elastic Stack version 8.17+:
 
 ## Download and deploy [ml-nlp-rerank-deploy]
 
-To download and deploy Elastic Rerank, use the [create inference API](../../../solutions/search/inference-api/elasticsearch-inference-integration.md) to create an {{es}} service `rerank` endpoint.
+To download and deploy Elastic Rerank, use the [create inference API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put-elasticsearch) to create an {{es}} service `rerank` endpoint.
 
-::::{tip} 
+::::{tip}
 Refer to this [Python notebook](https://github.com/elastic/elasticsearch-labs/blob/main/notebooks/search/12-semantic-reranking-elastic-rerank.ipynb) for an end-to-end example using Elastic Rerank.
 
 ::::
@@ -73,7 +73,7 @@ PUT _inference/rerank/my-rerank-model
 ```
 
 ::::{note}
-The API request automatically downloads and deploys the model. This example uses [autoscaling](ml-nlp-auto-scale.md) through adaptive allocation.
+The API request automatically downloads and deploys the model. This example uses [autoscaling](../../../deploy-manage/autoscaling/trained-model-autoscaling.md) through adaptive allocation.
 ::::
 
 ::::{note}
@@ -166,7 +166,7 @@ For a file-based access, follow these steps:
 * English language only
 * Maximum context window of 512 tokens
 
-    When using the [`semantic_text` field type](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/semantic-text.md), text is divided into chunks. By default, each chunk contains 250 words (approximately 400 tokens). Be cautious when increasing the chunk size - if the combined length of your query and chunk text exceeds 512 tokens, the model won’t have access to the full content.
+    When using the [`semantic_text` field type](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md), text is divided into chunks. By default, each chunk contains 250 words (approximately 400 tokens). Be cautious when increasing the chunk size - if the combined length of your query and chunk text exceeds 512 tokens, the model won’t have access to the full content.
 
     When the combined inputs exceed the 512 token limit, a balanced truncation strategy is used. If both the query and input text are longer than 255 tokens each then both are truncated, otherwise the longest is truncated.
 
@@ -280,7 +280,7 @@ For detailed benchmark information, including complete dataset results and metho
 **Documentation**:
 
 * [Semantic re-ranking in {{es}} overview](../../../solutions/search/ranking/semantic-reranking.md#semantic-reranking-in-es)
-* [Inference API example](../../../solutions/search/inference-api/elasticsearch-inference-integration.md#inference-example-elastic-reranker)
+* [Inference API example](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put-elasticsearch)
 
 **Blogs**:
 

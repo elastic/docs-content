@@ -2,6 +2,8 @@
 navigation_title: "Monitor {{aws}} with Elastic Serverless Forwarder"
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/monitor-aws-esf.html
+applies_to:
+  stack:
 ---
 
 
@@ -9,7 +11,7 @@ mapped_pages:
 # Monitor Amazon Web Services (AWS) with Elastic Serverless Forwarder [monitor-aws-esf]
 
 
-The Elastic Serverless Forwarder (ESF) is an Amazon Web Services (AWS) Lambda function that ships logs from your AWS environment to Elastic. Elastic Serverless Forwarder is published in the AWS Serverless Application Repository (SAR). For more information on ESF, check the [Elastic Serverless Forwarder Guide](asciidocalypse://docs/elastic-serverless-forwarder/docs/reference/index.md).
+The Elastic Serverless Forwarder (ESF) is an Amazon Web Services (AWS) Lambda function that ships logs from your AWS environment to Elastic. Elastic Serverless Forwarder is published in the AWS Serverless Application Repository (SAR). For more information on ESF, check the [Elastic Serverless Forwarder Guide](elastic-serverless-forwarder://reference/index.md).
 
 
 ## What you’ll learn [aws-esf-what-you-learn]
@@ -33,7 +35,7 @@ Create an [{{ech}}](https://cloud.elastic.co/registration?page=docs&placement=do
 2. Specify the AWS region in which you want it deployed.
 3. Enter the bucket name.
 
-For more details, refer to the Amazon documentation on how to [Create your first S3 bucket](https://docs.aws.amazon.com/AmazonS3/latest/userguide/creating-bucket.md).
+For more details, refer to the Amazon documentation on how to [Create your first S3 bucket](https://docs.aws.amazon.com/AmazonS3/latest/userguide/creating-bucket.html).
 
 
 ## Step 2: Enable AWS VPC flow logs to be sent to your S3 bucket [esf-step-two]
@@ -44,7 +46,7 @@ For more details, refer to the Amazon documentation on how to [Create your first
 4. For **Destination**, select **Send to an S3 bucket**.
 5. For **S3 bucket ARN**, enter the name of the S3 bucket you created in the previous step.
 
-For more details, refer to the Amazon documentation on how to [Create a flow log that publishes to Amazon S3](https://docs.aws.amazon.com/vpc/latest/userguide/flow-logs-s3.md).
+For more details, refer to the Amazon documentation on how to [Create a flow log that publishes to Amazon S3](https://docs.aws.amazon.com/vpc/latest/userguide/flow-logs-s3.html).
 
 
 ## Step 3: Create an SQS queue and notifications for VPC flow logs [esf-step-three]
@@ -87,7 +89,7 @@ The Amazon Simple Queue Service (SQS) event notification on Amazon S3 serves as 
 
 3. Go to the properties of the S3 bucket containing the VPC flow logs and enable event notification.
 
-For more details, refer to the AWS documentation on how to [Configure a bucket for notifications](https://docs.aws.amazon.com/AmazonS3/latest/userguide/ways-to-add-notification-config-to-bucket.md).
+For more details, refer to the AWS documentation on how to [Configure a bucket for notifications](https://docs.aws.amazon.com/AmazonS3/latest/userguide/ways-to-add-notification-config-to-bucket.html).
 
 
 ## Step 4: Install the Elastic AWS integration [esf-step-four]

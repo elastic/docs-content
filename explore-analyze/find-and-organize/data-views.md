@@ -10,16 +10,6 @@ mapped_urls:
 
 # Data views [data-views]
 
-% What needs to be done: Align serverless/stateful
-
-% Use migrated content from existing pages that map to this page:
-
-% - [ ] ./raw-migrated-files/kibana/kibana/data-views.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/data-views.md
-% - [ ] ./raw-migrated-files/kibana/kibana/managing-data-views.md
-
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
-
 $$$field-formatters-numeric$$$
 
 $$$managing-fields$$$
@@ -52,16 +42,16 @@ If you collected data using one of the {{kib}} [ingest options](../../manage-dat
 
 1. Open **Lens** or **Discover**, and then open the data view menu.
 
-   :::{image} ../../images/kibana-discover-data-view.png
+   :::{image} /explore-analyze/images/kibana-discover-data-view.png
    :alt: How to set the {{data-source}} in Discover
-   :class: screenshot
+   :screenshot:
    :width: 50%
    :::
 
 2. Click **Create a {{data-source}}**.
 3. Give your {{data-source}} a name.
 4. Start typing in the **Index pattern** field, and {{kib}} looks for the names of indices, data streams, and aliases that match your input. You can view all available sources or only the sources that the data view targets.
-   ![Create data view](../../images/kibana-create-data-view.png "")
+   ![Create data view](/explore-analyze/images/kibana-create-data-view.png "")
 
     * To match multiple sources, use a wildcard (*). `filebeat-*` matches `filebeat-apache-a`, `filebeat-apache-b`, and so on.
     * To match multiple single sources, enter their names, separated by a comma.  Do not include a space after the comma. `filebeat-a,filebeat-b` matches two indices.
@@ -89,9 +79,9 @@ Want to explore your data or create a visualization without saving it as a data 
 
 A temporary {{data-source}} remains in your space until you change apps, or until you save it.
 
-:::{image} ../../images/ad-hoc-data-view.gif
+:::{image} /explore-analyze/images/ad-hoc-data-view.gif
 :alt: how to create an ad-hoc data view
-:class: screenshot
+:screenshot:
 :::
 
 ::::{note}
@@ -101,10 +91,10 @@ Temporary {{data-sources}} are not available in the **Management** menu.
 
 
 ### Use {{data-sources}} with rolled up data [rollup-data-view]
-::::{applies_to}
-:serverless: unavailable
-:stack: deprecated
-::::
+```{applies_to}
+serverless: unavailable
+stack: deprecated
+```
 
 ::::{admonition}
 :class: warning
@@ -123,10 +113,10 @@ For an example, refer to [Create and visualize rolled up data](/manage-data/life
 
 
 ### Use {{data-sources}} with {{ccs}} [management-cross-cluster-search]
-::::{applies_to}
-:serverless: unavailable
-:stack: ga
-::::
+```{applies_to}
+serverless: unavailable
+stack: ga
+```
 
 If your {{es}} clusters are configured for [{{ccs}}](../../solutions/search/cross-cluster-search.md), you can create a {{data-source}} to search across the clusters of your choosing. Specify data streams, indices, and aliases in a remote cluster using the following syntax:
 
@@ -179,7 +169,7 @@ Deleting a {{data-source}} breaks all visualizations, saved Discover sessions, a
 
 
 1. Go to the **Data Views** management page using the navigation menu or the [global search field](../../explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. Find the {{data-source}} that you want to delete, and then click ![Delete icon](../../images/kibana-delete.png "") in the **Actions** column.
+2. Find the {{data-source}} that you want to delete, and then click ![Delete icon](/explore-analyze/images/kibana-delete.png "") in the **Actions** column.
 
 
 ## {{data-source}} field cache [data-view-field-cache]
@@ -225,7 +215,7 @@ To add runtime fields to your data views, open the data view you want to change,
 
     * To view the other available fields, use the **Document ID** arrows.
     * To filter the fields list, enter the keyword in **Filter fields**.
-    * To pin frequently used fields to the top of the list, hover over the field, then click ![Icon to pin field to the top of the list](../../images/kibana-stackManagement-indexPatterns-pinRuntimeField-7.15.png "").
+    * To pin frequently used fields to the top of the list, hover over the field, then click ![Icon to pin field to the top of the list](/explore-analyze/images/kibana-stackManagement-indexPatterns-pinRuntimeField-7.15.png "").
 
 7. Click **Create field**.
 
@@ -243,7 +233,7 @@ Return `Hello World!`:
 emit("Hello World!");
 ```
 
-![Runtime field with keyword type](../../images/kibana-runtime_field.png "")
+![Runtime field with keyword type](/explore-analyze/images/kibana-runtime_field.png "")
 
 
 #### Perform a calculation on a single field [perform-a-calculation-on-a-single-field]
@@ -283,7 +273,7 @@ emit('subfield_a', 'Hello');
 emit('subfield_b', 42);
 ```
 
-![Runtime field with composite type](../../images/kibana-runtime_field_composite.png "")
+![Runtime field with composite type](/explore-analyze/images/kibana-runtime_field_composite.png "")
 
 
 #### Replace nulls with blanks [replace-nulls-with-blanks]
@@ -471,12 +461,12 @@ Built-in validation is unsupported for scripted fields. When your scripts contai
 
 1. Go to the **Data Views** management page using the navigation menu or the [global search field](../../explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Click the data view that contains the field you want to change.
-3. Find the field, then open the edit options (![Data field edit icon](../../images/kibana-edit_icon.png "")).
+3. Find the field, then open the edit options (![Data field edit icon](/explore-analyze/images/kibana-edit_icon.png "")).
 4. Select **Set custom label**, then enter a **Custom label** for the field.
 5. Select **Set format**, then enter the **Format** for the field.
 
 ::::{note}
-For numeric fields the default field formatters are based on the `meta.unit` field. The unit is associated with a [time unit](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/api-conventions.md#time-units), percent, or  byte. The convention for percents is to use value 1 to mean 100%.
+For numeric fields the default field formatters are based on the `meta.unit` field. The unit is associated with a [time unit](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#time-units), percent, or  byte. The convention for percents is to use value 1 to mean 100%.
 ::::
 
 
@@ -613,7 +603,7 @@ Numeric fields support **Bytes**, **Color**, **Duration**, **Histogram**, **Numb
 
 The **Bytes**, **Number**, and **Percentage** formatters enable you to choose the display formats of numbers in the field using the [Elastic numeral pattern](../../explore-analyze/numeral-formatting.md) syntax that {{kib}} maintains.
 
-The **Histogram** formatter is used only for the [histogram field type](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/histogram.md). When you use the **Histogram** formatter, you can apply the **Bytes**, **Number**, or **Percentage** format to aggregated data.
+The **Histogram** formatter is used only for the [histogram field type](elasticsearch://reference/elasticsearch/mapping-reference/histogram.md). When you use the **Histogram** formatter, you can apply the **Bytes**, **Number**, or **Percentage** format to aggregated data.
 
 You can specify the following types to the `Url` field formatter:
 

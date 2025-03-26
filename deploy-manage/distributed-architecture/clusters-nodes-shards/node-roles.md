@@ -1,14 +1,16 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/node-roles-overview.html
+applies_to:
+  stack:
+  self:
 ---
 
 # Node roles [node-roles-overview]
 
-Any time that you start an instance of {{es}}, you are starting a *node*. A collection of connected nodes is called a [cluster](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md). If you are running a single node of {{es}}, then you have a cluster of one node. All nodes know about all the other nodes in the cluster and can forward client requests to the appropriate node.
+Any time that you start an instance of {{es}}, you are starting a *node*. A collection of connected nodes is called a [cluster](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md). If you are running a single node of {{es}}, then you have a cluster of one node. All nodes know about all the other nodes in the cluster and can forward client requests to the appropriate node.
 
 Each node performs one or more roles. Roles control the behavior of the node in the cluster.
-
 
 ## Set node roles [set-node-roles]
 
@@ -30,10 +32,7 @@ You define a node’s roles by setting `node.roles` in [`elasticsearch.yml`](../
 If you set `node.roles`, ensure you specify every node role your cluster needs. Every cluster requires the following node roles:
 
 * `master`
-*
-
-    `data_content` and `data_hot`<br> OR<br> `data`
-
+* `data_content` and `data_hot`<br> OR<br> `data`
 
 Some {{stack}} features also require specific node roles:
 
@@ -61,14 +60,14 @@ Similarly, each master-eligible node maintains the following data on disk:
 * the index metadata for every index in the cluster, and
 * the cluster-wide metadata, such as settings and index templates.
 
-Each node checks the contents of its data path at startup. If it discovers unexpected data then it will refuse to start. This is to avoid importing unwanted [dangling indices](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/local-gateway.md#dangling-indices) which can lead to a red cluster health. To be more precise, nodes without the `data` role will refuse to start if they find any shard data on disk at startup, and nodes without both the `master` and `data` roles will refuse to start if they have any index metadata on disk at startup.
+Each node checks the contents of its data path at startup. If it discovers unexpected data then it will refuse to start. This is to avoid importing unwanted [dangling indices](elasticsearch://reference/elasticsearch/configuration-reference/local-gateway.md#dangling-indices) which can lead to a red cluster health. To be more precise, nodes without the `data` role will refuse to start if they find any shard data on disk at startup, and nodes without both the `master` and `data` roles will refuse to start if they have any index metadata on disk at startup.
 
 It is possible to change the roles of a node by adjusting its `elasticsearch.yml` file and restarting it. This is known as *repurposing* a node. In order to satisfy the checks for unexpected data described above, you must perform some extra steps to prepare a node for repurposing when starting the node without the `data` or `master` roles.
 
-* If you want to repurpose a data node by removing the `data` role then you should first use an [allocation filter](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#cluster-shard-allocation-filtering) to safely migrate all the shard data onto other nodes in the cluster.
-* If you want to repurpose a node to have neither the `data` nor `master` roles then it is simplest to start a brand-new node with an empty data path and the desired roles. You may find it safest to use an [allocation filter](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#cluster-shard-allocation-filtering) to migrate the shard data elsewhere in the cluster first.
+* If you want to repurpose a data node by removing the `data` role then you should first use an [allocation filter](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#cluster-shard-allocation-filtering) to safely migrate all the shard data onto other nodes in the cluster.
+* If you want to repurpose a node to have neither the `data` nor `master` roles then it is simplest to start a brand-new node with an empty data path and the desired roles. You may find it safest to use an [allocation filter](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#cluster-shard-allocation-filtering) to migrate the shard data elsewhere in the cluster first.
 
-If it is not possible to follow these extra steps then you may be able to use the [`elasticsearch-node repurpose`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/command-line-tools/node-tool.md#node-tool-repurpose) tool to delete any excess data that prevents a node from starting.
+If it is not possible to follow these extra steps then you may be able to use the [`elasticsearch-node repurpose`](elasticsearch://reference/elasticsearch/command-line-tools/node-tool.md#node-tool-repurpose) tool to delete any excess data that prevents a node from starting.
 
 
 ## Available node roles [node-roles-list]
@@ -160,7 +159,7 @@ In a multi-tier deployment architecture, you use specialized data roles to assig
 
 If you want to include a node in all tiers, or if your cluster does not use multiple tiers, then you can use the generic `data` role.
 
-[Cluster shard limits](../../deploy/self-managed/configure-elasticsearch.md#cluster-shard-limit) prevent creation of more than 1000 non-frozen shards per node, and 3000 frozen shards per dedicated frozen node. Make sure you have enough nodes of each type in your cluster to handle the number of shards you need.
+[Cluster shard limits](elasticsearch://reference/elasticsearch/configuration-reference/miscellaneous-cluster-settings.md#cluster-shard-limit) prevent creation of more than 1000 non-frozen shards per node, and 3000 frozen shards per dedicated frozen node. Make sure you have enough nodes of each type in your cluster to handle the number of shards you need.
 
 ::::{warning}
 If you assign a node to a specific tier using a specialized data role, then you shouldn’t also assign it the generic `data` role. The generic `data` role takes precedence over specialized data roles.
@@ -222,7 +221,7 @@ node.roles: [ data_warm ]
 
 Cold data nodes are part of the cold tier. When you no longer need to search time series data regularly, it can move from the warm tier to the cold tier. While still searchable, this tier is typically optimized for lower storage costs rather than search speed.
 
-For better storage savings, you can keep [fully mounted indices](../../tools/snapshot-and-restore/searchable-snapshots.md#fully-mounted) of [{{search-snaps}}](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-lifecycle-actions/ilm-searchable-snapshot.md) on the cold tier. Unlike regular indices, these fully mounted indices don’t require replicas for reliability. In the event of a failure, they can recover data from the underlying snapshot instead. This potentially halves the local storage needed for the data. A snapshot repository is required to use fully mounted indices in the cold tier. Fully mounted indices are read-only.
+For better storage savings, you can keep [fully mounted indices](../../tools/snapshot-and-restore/searchable-snapshots.md#fully-mounted) of [{{search-snaps}}](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-searchable-snapshot.md) on the cold tier. Unlike regular indices, these fully mounted indices don’t require replicas for reliability. In the event of a failure, they can recover data from the underlying snapshot instead. This potentially halves the local storage needed for the data. A snapshot repository is required to use fully mounted indices in the cold tier. Fully mounted indices are read-only.
 
 Alternatively, you can use the cold tier to store regular indices with replicas instead of using {{search-snaps}}. This lets you store older data on less expensive hardware but doesn’t reduce required disk space compared to the warm tier.
 

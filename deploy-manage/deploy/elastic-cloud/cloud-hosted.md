@@ -77,7 +77,7 @@ You can use these presets, or start from them to get the unique configuration yo
 
 Building a rich search experience, gaining actionable insight into your environment, or protecting your systems and endpoints? You can implement each of these major use cases, and more, with the solutions that are pre-built in each Elastic deployment.
 
-:::{image} ../../../images/cloud-ec-stack-components.png
+:::{image} /deploy-manage/images/cloud-ec-stack-components.png
 :alt: Elastic Stack components and solutions with Enterprise Search
 :width: 75%
 :::
@@ -106,7 +106,7 @@ Of course, you can choose to follow your own path and use Elastic components ava
 
 **Adjust the capacity and capabilities of your deployments for production**
 
-There are a few things that can help you make sure that your production deployments remain available, healthy, and ready to handle your data in a scalable way over time, with the expected level of performance. Check [](/deploy-manage/production-guidance/plan-for-production-elastic-cloud.md).
+There are a few things that can help you make sure that your production deployments remain available, healthy, and ready to handle your data in a scalable way over time, with the expected level of performance. Check [](/deploy-manage/production-guidance.md).
 
 **Secure your environment**
 
@@ -122,8 +122,8 @@ Find more information about {{ech}} on the following pages:
 
 * [Subscription Levels](/deploy-manage/license.md)
 * [Version Policy](/deploy-manage/deploy/elastic-cloud/available-stack-versions.md)
-* [{{ech}} Hardware](asciidocalypse://docs/cloud/docs/reference/cloud-hosted/hardware.md)
-* [{{ech}} Regions](asciidocalypse://docs/cloud/docs/reference/cloud-hosted/regions.md)
+* [{{ech}} Hardware](cloud://reference/cloud-hosted/hardware.md)
+* [{{ech}} Regions](cloud://reference/cloud-hosted/regions.md)
 * [Service Status](/deploy-manage/cloud-organization/service-status.md)
 * [Getting help](/troubleshoot/index.md)
 * [Restrictions and known problems](/deploy-manage/deploy/elastic-cloud/restrictions-known-problems.md)

@@ -2,6 +2,8 @@
 navigation_title: "APM Server binary debugging"
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-enable-apm-server-debugging.html
+applies_to:
+  stack: all
 ---
 
 
@@ -9,8 +11,8 @@ mapped_pages:
 # Enable APM Server binary debugging [apm-enable-apm-server-debugging]
 
 
-::::{note} 
-Fleet-managed users should see [View {{agent}} logs](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/monitor-elastic-agent.md) to learn how to view logs and change the logging level of {{agent}}.
+::::{note}
+Fleet-managed users should see [View {{agent}} logs](/reference/fleet/monitor-elastic-agent.md) to learn how to view logs and change the logging level of {{agent}}.
 ::::
 
 

@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/entity-risk-scoring.html
   - https://www.elastic.co/guide/en/serverless/current/security-entity-risk-scoring.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Entity risk scoring [security-entity-risk-scoring]

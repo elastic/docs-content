@@ -1,20 +1,22 @@
 ---
 navigation_title: "Node bootlooping"
+applies_to:
+  deployment:
+    ess: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-config-change-errors.html
-  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-config-change-errors.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-config-change-errors.html
 ---
 
-# Troubleshoot node bootlooping [ec-config-change-errors]
+# Troubleshoot node bootlooping in {{ech}} [ec-config-change-errors]
 
 When you attempt to apply a configuration change to a deployment, the attempt may fail with an error indicating that the change could not be applied, and deployment resources may be unable to restart. In some cases, bootlooping may result, where the deployment resources cycle through a continual reboot process.
 
-:::{image} /images/cloud-ec-ce-configuration-change-failure.png
+:::{image} /troubleshoot/images/cloud-ec-ce-configuration-change-failure.png
 :alt: A screen capture of the deployment page showing an error: Latest change to {{es}} configuration failed.
 :::
 
-To help diagnose these and any other types of issues in your deployments, we recommend [setting up monitoring](/deploy-manage/monitor/stack-monitoring/elastic-cloud-stack-monitoring.md). Then, you can easily view your deployment health and access log files to troubleshoot this configuration failure.
+To help diagnose these and any other types of issues in your deployments, we recommend [setting up monitoring](/deploy-manage/monitor/stack-monitoring/ece-ech-stack-monitoring.md). Then, you can easily view your deployment health and access log files to troubleshoot this configuration failure.
 
 To confirm if your Elasticsearch cluster is bootlooping, you can check the most recent plan under your [Deployment Activity page](/deploy-manage/deploy/elastic-cloud/keep-track-of-deployment-activity.md) for the error:
 
@@ -39,7 +41,7 @@ Following are some frequent causes of a failed configuration change:
 If you’re unable to remediate the failing plan’s root cause, you can attempt to reset the deployment to the latest successful {{es}} configuration by performing a [no-op plan](/troubleshoot/monitoring/deployment-health-warnings.md). For an example, see this [video walkthrough](https://www.youtube.com/watch?v=8MnXZ9egBbQ).
 
 :::{important}
- If you’re using Elastic Cloud Hosted, then you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, real-time issue detection and resolution paths. For more information, refer to [Monitor with AutoOps](/deploy-manage/monitor/autoops.md).
+ If you’re using Elastic Cloud Hosted, then you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, and real-time issue detection with resolution paths. For more information, refer to [Monitor with AutoOps](/deploy-manage/monitor/autoops.md).
 :::
 
 ## Secure settings [ec-config-change-errors-secure-settings]
@@ -125,9 +127,9 @@ To view any added plugins or bundles:
 
 Configuration change errors can occur when there is insufficient RAM configured for a data tier. In this case, the cluster typically also shows OOM (out of memory) errors. To resolve these, you need to increase the amount of heap memory, which is half of the amount of memory allocated to a cluster. You might also detect OOM in plan changes via their [related exit codes](/deploy-manage/maintenance/start-stop-services/start-stop-elasticsearch.md#fatal-errors) `127`, `137`, and `158`.
 
-Check the [{{es}} cluster size](/deploy-manage/deploy/elastic-cloud/ec-customize-deployment-components.md#ec-cluster-size) and the [JVM memory pressure indicator](/deploy-manage/monitor/monitoring-data/ec-memory-pressure.md) documentation to learn more.
+Check the [{{es}} cluster size](/deploy-manage/deploy/elastic-cloud/ec-customize-deployment-components.md#ec-cluster-size) and the [JVM memory pressure indicator](/deploy-manage/monitor/ec-memory-pressure.md) documentation to learn more.
 
-As well, you can read our detailed blog [Managing and troubleshooting {{es}} memory](https://www.elastic.co/blog/managing-and-troubleshooting-elasticsearch-memory).
+You can also read our detailed blog [Managing and troubleshooting {{es}} memory](https://www.elastic.co/blog/managing-and-troubleshooting-elasticsearch-memory).
 
 
 ## Existing index [ec-config-change-errors-existing-index]
@@ -146,4 +148,4 @@ To resolve this:
 
 ## Insufficient Storage [ec-config-change-errors-insufficient-storage]
 
-Configuration change errors can occur when there is insufficient disk space for a data tier. To resolve this, you need to increase the size of that tier to ensure it provides enough storage to accommodate the data in your cluster tier considering the [high watermark](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#disk-based-shard-allocation). For troubleshooting walkthrough, see [Fix watermark errors](/troubleshoot/elasticsearch/fix-watermark-errors.md).
+Configuration change errors can occur when there is insufficient disk space for a data tier. To resolve this, you need to increase the size of that tier to ensure it provides enough storage to accommodate the data in your cluster tier considering the [high watermark](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#disk-based-shard-allocation). For troubleshooting walkthrough, see [Fix watermark errors](/troubleshoot/elasticsearch/fix-watermark-errors.md).

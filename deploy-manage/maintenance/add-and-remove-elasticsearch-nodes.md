@@ -12,15 +12,15 @@ When you start an instance of {{es}}, you are starting a *node*. An {{es}} *clus
 
 If you are running a single instance of {{es}}, you have a cluster of one node. All primary shards reside on the single node. No replica shards can be allocated, therefore the cluster state remains yellow. The cluster is fully functional but is at risk of data loss in the event of a failure.
 
-:::{image} ../../images/elasticsearch-reference-elas_0202.png
+:::{image} /deploy-manage/images/elasticsearch-reference-elas_0202.png
 :alt: A cluster with one node and three primary shards
 :::
 
-You add nodes to a cluster to increase its capacity and reliability. By default, a node is both a data node and eligible to be elected as the master node that controls the cluster. You can also configure a new node for a specific purpose, such as handling ingest requests. For more information, see [Nodes](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/node-settings.md).
+You add nodes to a cluster to increase its capacity and reliability. By default, a node is both a data node and eligible to be elected as the master node that controls the cluster. You can also configure a new node for a specific purpose, such as handling ingest requests. For more information, see [Nodes](elasticsearch://reference/elasticsearch/configuration-reference/node-settings.md).
 
 When you add more nodes to a cluster, it automatically allocates replica shards. When all primary and replica shards are active, the cluster state changes to green.
 
-:::{image} ../../images/elasticsearch-reference-elas_0204.png
+:::{image} /deploy-manage/images/elasticsearch-reference-elas_0204.png
 :alt: A cluster with three nodes
 :::
 
@@ -43,37 +43,8 @@ To add a node to a cluster running on multiple machines, you must also set [`dis
 
 ::::
 
-When {{es}} starts for the first time, the security auto-configuration process binds the HTTP layer to `0.0.0.0`, but only binds the transport layer to localhost. This intended behavior ensures that you can start a single-node cluster with security enabled by default without any additional configuration.
-
-Before enrolling a new node, additional actions such as binding to an address other than `localhost` or satisfying bootstrap checks are typically necessary in production clusters. During that time, an auto-generated enrollment token could expire, which is why enrollment tokens aren’t generated automatically.
-
-Additionally, only nodes on the same host can join the cluster without additional configuration. If you want nodes from another host to join your cluster, you need to set `transport.host` to a [supported value](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/networking-settings.md#network-interface-values) (such as uncommenting the suggested value of `0.0.0.0`), or an IP address that’s bound to an interface where other hosts can reach it. Refer to [transport settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/networking-settings.md#transport-settings) for more information.
-
-To enroll new nodes in your cluster, create an enrollment token with the `elasticsearch-create-enrollment-token` tool on any existing node in your cluster. You can then start a new node with the `--enrollment-token` parameter so that it joins an existing cluster.
-
-1. In a separate terminal from where {{es}} is running, navigate to the directory where you installed {{es}} and run the [`elasticsearch-create-enrollment-token`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/command-line-tools/create-enrollment-token.md) tool to generate an enrollment token for your new nodes.
-
-    ```sh
-    bin\elasticsearch-create-enrollment-token -s node
-    ```
-
-    Copy the enrollment token, which you’ll use to enroll new nodes with your {{es}} cluster.
-
-2. From the installation directory of your new node, start {{es}} and pass the enrollment token with the `--enrollment-token` parameter.
-
-    ```sh
-    bin\elasticsearch --enrollment-token <enrollment-token>
-    ```
-
-    {{es}} automatically generates certificates and keys in the following directory:
-
-    ```sh
-    config\certs
-    ```
-
-3. Repeat the previous step for any new nodes that you want to enroll.
-
-For more information about discovery and shard allocation, refer to [*Discovery and cluster formation*](../distributed-architecture/discovery-cluster-formation.md) and [Cluster-level shard allocation and routing settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md).
+:::{include} /deploy-manage/deploy/self-managed/_snippets/enroll-nodes.md
+:::
 
 ## Master-eligible nodes [add-elasticsearch-nodes-master-eligible]
 
@@ -122,7 +93,7 @@ Adding an exclusion for a node creates an entry for that node in the voting conf
 GET /_cluster/state?filter_path=metadata.cluster_coordination.voting_config_exclusions
 ```
 
-This list is limited in size by the `cluster.max_voting_config_exclusions` setting, which defaults to `10`. See [Discovery and cluster formation settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/discovery-cluster-formation-settings.md). Since voting configuration exclusions are persistent and limited in number, they must be cleaned up. Normally an exclusion is added when performing some maintenance on the cluster, and the exclusions should be cleaned up when the maintenance is complete. Clusters should have no voting configuration exclusions in normal operation.
+This list is limited in size by the `cluster.max_voting_config_exclusions` setting, which defaults to `10`. See [Discovery and cluster formation settings](elasticsearch://reference/elasticsearch/configuration-reference/discovery-cluster-formation-settings.md). Since voting configuration exclusions are persistent and limited in number, they must be cleaned up. Normally an exclusion is added when performing some maintenance on the cluster, and the exclusions should be cleaned up when the maintenance is complete. Clusters should have no voting configuration exclusions in normal operation.
 
 If a node is excluded from the voting configuration because it is to be shut down permanently, its exclusion can be removed after it is shut down and removed from the cluster. Exclusions can also be cleared if they were created in error or were only required temporarily by specifying `?wait_for_removal=false`.
 

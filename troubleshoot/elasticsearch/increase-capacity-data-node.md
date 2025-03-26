@@ -15,30 +15,30 @@ In order to increase the disk capacity of the data nodes in your cluster:
 2. On the **Hosted deployments** panel, click the gear under the `Manage deployment` column that corresponds to the name of your deployment.
 3. If autoscaling is available but not enabled, please enable it. You can do this by clicking the button `Enable autoscaling` on a banner like the one below:
 
-    :::{image} ../../images/elasticsearch-reference-autoscaling_banner.png
+    :::{image} /troubleshoot/images/elasticsearch-reference-autoscaling_banner.png
     :alt: Autoscaling banner
-    :class: screenshot
+    :screenshot:
     :::
 
     Or you can go to `Actions > Edit deployment`, check the checkbox `Autoscale` and click `save` at the bottom of the page.
 
-    :::{image} ../../images/elasticsearch-reference-enable_autoscaling.png
+    :::{image} /troubleshoot/images/elasticsearch-reference-enable_autoscaling.png
     :alt: Enabling autoscaling
-    :class: screenshot
+    :screenshot:
     :::
 
 4. If autoscaling has succeeded the cluster should return to `healthy` status. If the cluster is still out of disk, please check if autoscaling has reached its limits. You will be notified about this by the following banner:
 
-    :::{image} ../../images/elasticsearch-reference-autoscaling_limits_banner.png
+    :::{image} /troubleshoot/images/elasticsearch-reference-autoscaling_limits_banner.png
     :alt: Autoscaling banner
-    :class: screenshot
+    :screenshot:
     :::
 
     or you can go to `Actions > Edit deployment` and look for the label `LIMIT REACHED` as shown below:
 
-    :::{image} ../../images/elasticsearch-reference-reached_autoscaling_limits.png
+    :::{image} /troubleshoot/images/elasticsearch-reference-reached_autoscaling_limits.png
     :alt: Autoscaling limits reached
-    :class: screenshot
+    :screenshot:
     :::
 
     If you are seeing the banner click `Update autoscaling settings` to go to the `Edit` page. Otherwise, you are already in the `Edit` page, click `Edit settings` to increase the autoscaling limits. After you perform the change click `save` at the bottom of the page.
@@ -47,7 +47,7 @@ In order to increase the disk capacity of the data nodes in your cluster:
 ::::::{tab-item} Self-managed
 In order to increase the data node capacity in your cluster, you will need to calculate the amount of extra disk space needed.
 
-1. First, retrieve the relevant disk thresholds that will indicate how much space should be available. The relevant thresholds are the [high watermark](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#cluster-routing-watermark-high) for all the tiers apart from the frozen one and the [frozen flood stage watermark](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#cluster-routing-flood-stage-frozen) for the frozen tier. The following example demonstrates disk shortage in the hot tier, so we will only retrieve the high watermark:
+1. First, retrieve the relevant disk thresholds that will indicate how much space should be available. The relevant thresholds are the [high watermark](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#cluster-routing-watermark-high) for all the tiers apart from the frozen one and the [frozen flood stage watermark](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#cluster-routing-flood-stage-frozen) for the frozen tier. The following example demonstrates disk shortage in the hot tier, so we will only retrieve the high watermark:
 
     ```console
     GET _cluster/settings?include_defaults&filter_path=*.cluster.routing.allocation.disk.watermark.high*
@@ -74,7 +74,7 @@ In order to increase the data node capacity in your cluster, you will need to ca
     }
     ```
 
-    The above means that in order to resolve the disk shortage we need to either drop our disk usage below the 90% or have more than 150GB available, read more on how this threshold works [here](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#cluster-routing-watermark-high).
+    The above means that in order to resolve the disk shortage we need to either drop our disk usage below the 90% or have more than 150GB available, read more on how this threshold works [here](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#cluster-routing-watermark-high).
 
 2. The next step is to find out the current disk usage, this will indicate how much extra space is needed. For simplicity, our example has one node, but you can apply the same for every node over the relevant threshold.
 

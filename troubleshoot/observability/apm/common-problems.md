@@ -2,6 +2,10 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-common-problems.html
   - https://www.elastic.co/guide/en/serverless/current/observability-apm-troubleshooting.html
+applies_to:
+  stack: all
+  serverless:
+    observability: all
 ---
 
 # Common problems [apm-common-problems]
@@ -37,7 +41,7 @@ If no data shows up in {{es}}, first make sure that your APM components are prop
 ::::::{tab-item} Fleet-managed
 **Is {{agent}} healthy?**
 
-In {{kib}} open **{{fleet}}** and find the host that is running the APM integration; confirm that its status is **Healthy**. If it isn’t, check the {{agent}} logs to diagnose potential causes. See [Monitor {{agent}}s](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/monitor-elastic-agent.md) to learn more.
+In {{kib}} open **{{fleet}}** and find the host that is running the APM integration; confirm that its status is **Healthy**. If it isn’t, check the {{agent}} logs to diagnose potential causes. See [Monitor {{agent}}s](/reference/fleet/monitor-elastic-agent.md) to learn more.
 
 **Is APM Server happy?**
 
@@ -223,9 +227,9 @@ You will see this warning if your results have more than `1000` unique transacti
 
 **More information**
 
-While this can happen with any APM agent, it typically occurs with the RUM agent. For more information on how to correctly set `transaction.name` in the RUM agent, see [custom initial page load transaction names](asciidocalypse://docs/apm-agent-rum-js/docs/reference/custom-transaction-name.md).
+While this can happen with any APM agent, it typically occurs with the RUM agent. For more information on how to correctly set `transaction.name` in the RUM agent, see [custom initial page load transaction names](apm-agent-rum-js://reference/custom-transaction-name.md).
 
-The RUM agent can also set the `transaction.name` when observing for transaction events. See [`apm.observe()`](asciidocalypse://docs/apm-agent-rum-js/docs/reference/agent-api.md#observe) for more information.
+The RUM agent can also set the `transaction.name` when observing for transaction events. See [`apm.observe()`](apm-agent-rum-js://reference/agent-api.md#observe) for more information.
 
 If your problem is occurring in a different APM agent, the tips above still apply. See the relevant [Agent API documentation](https://www.elastic.co/guide/en/apm/agent) to adjust how you’re naming your transactions.
 
@@ -266,7 +270,7 @@ As an example, some APM agents store cookie values in `http.request.cookies`. Si
 stack: all
 ```
 
-If the service map is not showing an expected connection between the client and server, it’s likely because you haven’t configured [`distributedTracingOrigins`](asciidocalypse://docs/apm-agent-rum-js/docs/reference/distributed-tracing.md).
+If the service map is not showing an expected connection between the client and server, it’s likely because you haven’t configured [`distributedTracingOrigins`](apm-agent-rum-js://reference/distributed-tracing.md).
 
 This setting is necessary, for example, for cross-origin requests. If you have a basic web application that provides data via an API on `localhost:4000`, and serves HTML from `localhost:4001`, you’d need to set `distributedTracingOrigins: ['https://localhost:4000']` to ensure the origin is monitored as a part of distributed tracing. In other words, `distributedTracingOrigins` is consulted prior to the APM agent adding the distributed tracing `traceparent` header to each request.
 
@@ -289,25 +293,4 @@ It’s likely that there is a problem correlating APM and infrastructure data. T
 To fix this, make sure these two fields match exactly.
 
 For example, if the APM agent is not configured to use the correct host name, the host name might be set to the container name or the Kubernetes pod name. To get the correct host name, you need to set some additional configuration options, specifically `system.kubernetes.node.name` as described in [Kubernetes data](../../../solutions/observability/apps/elastic-apm-events-intake-api.md#apm-api-kubernetes-data).
-
-
-## Common response codes [observability-apm-troubleshooting-common-response-codes]
-```yaml {applies_to}
-serverless: all
-```
-
-
-### HTTP 400: Data decoding error / Data validation error [bad-request]
-
-The most likely cause for this error is using an incompatible version of an {{apm-agent}}. See [minimum supported APM agent versions](../../../solutions/observability/apps/elastic-apm-agents.md#observability-apm-agents-elastic-apm-agents-minimum-supported-versions) to verify compatibility.
-
-
-### HTTP 400: Event too large [event-too-large]
-
-APM agents communicate with the Managed intake service by sending events in an HTTP request. Each event is sent as its own line in the HTTP request body. If events are too large, you can reduce the size of the events that your APM agents send by: [enabling span compression](../../../solutions/observability/apps/spans.md) or [reducing collected stack trace information](../../../solutions/observability/apps/reduce-storage.md#observability-apm-reduce-stacktrace).
-
-
-### HTTP 401: Invalid token [unauthorized]
-
-The API key is invalid.
 

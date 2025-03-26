@@ -1,9 +1,13 @@
 ---
+navigation_title: Without a private Docker registry
+applies_to:
+  deployment:
+    ece: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-install-offline-no-registry.html
 ---
 
-# Without a private Docker registry [ece-install-offline-no-registry]
+# Air-gapped install without a private Docker registry [ece-install-offline-no-registry]
 
 To perform an offline installation without a private Docker registry, you have to download the available Docker Images on each host.
 
@@ -65,6 +69,10 @@ To perform an offline installation without a private Docker registry, you have t
 7. Copy the installation script to each host where you plan to install Elastic Cloud Enterprise or make it available on your network.
 8. Invoke the installation script on each host:
 
+   ::::{note}
+   The installation commands for this method are the same as in a standard installation. Refer to [](./install-ece-procedures.md) for details on the installation steps and the parameters required by the installation script, which vary based on your installation size.
+   ::::
+
     1. On the first host:
 
         ```sh
@@ -79,4 +87,4 @@ To perform an offline installation without a private Docker registry, you have t
           --roles-token 'TOKEN'
         ```
 
-
+   Once the installation is complete, refer to [](./log-into-cloud-ui.md) to access Cloud UI.

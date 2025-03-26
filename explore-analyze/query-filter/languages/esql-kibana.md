@@ -21,7 +21,7 @@ This guide shows you how to use {{esql}} in Kibana. To follow along with the que
 
 ## Enable or disable {{esql}} [esql-kibana-enable]
 
-{{esql}} is enabled by default in {{kib}}. It can be disabled using the `enableESQL` setting from the [Advanced Settings](asciidocalypse://docs/kibana/docs/reference/advanced-settings.md).
+{{esql}} is enabled by default in {{kib}}. It can be disabled using the `enableESQL` setting from the [Advanced Settings](kibana://reference/advanced-settings.md).
 
 This will hide the {{esql}} user interface from various applications. However, users will be able to access existing {{esql}} artifacts like saved searches and visualizations.
 
@@ -33,15 +33,15 @@ To get started with {{esql}}, go to **Discover**. Next, select **Try ES|QL** fro
 
 ### The query bar [esql-kibana-query-bar]
 
-After switching to {{esql}} mode, the query bar shows a sample query. For example:
+After switching to {{esql}} mode, the query bar shows your previous KQL or Lucene query converted into {{esql}}. If the query was empty, it shows a sample query. For example:
 
 ```esql
 from kibana_sample_data_logs | limit 10
 ```
 
-Every query starts with a [source command](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/esql-commands.md). In this query, the source command is [`FROM`](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/esql-commands.md#esql-from). `FROM` retrieves data from data streams, indices, or aliases. In this example, the data is retrieved from `kibana_sample_data_logs`.
+Every query starts with a [source command](elasticsearch://reference/query-languages/esql/esql-commands.md). In this query, the source command is [`FROM`](elasticsearch://reference/query-languages/esql/esql-commands.md#esql-from). `FROM` retrieves data from data streams, indices, or aliases. In this example, the data is retrieved from `kibana_sample_data_logs`.
 
-A source command can be followed by one or more [processing commands](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/esql-commands.md). In this query, the processing command is [`LIMIT`](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/esql-commands.md#esql-limit). `LIMIT` limits the number of rows that are retrieved.
+A source command can be followed by one or more [processing commands](elasticsearch://reference/query-languages/esql/esql-commands.md). In this query, the processing command is [`LIMIT`](elasticsearch://reference/query-languages/esql/esql-commands.md#esql-limit). `LIMIT` limits the number of rows that are retrieved.
 
 ::::{tip}
 Click the **ES|QL help** button to open the in-product reference documentation for all commands and functions or to get recommended queries that will help you get started.
@@ -50,7 +50,7 @@ Click the **ES|QL help** button to open the in-product reference documentation f
 
 To make it easier to write queries, auto-complete offers suggestions with possible commands and functions:
 
-:::{image} ../../../images/elasticsearch-reference-esql-kibana-auto-complete.png
+:::{image} /explore-analyze/images/elasticsearch-reference-esql-kibana-auto-complete.png
 :alt: esql kibana auto complete
 :::
 
@@ -76,8 +76,9 @@ FROM kibana_sample_data_logs
 
 You can do that using the **Add line breaks on pipes** button from the query editor’s footer.
 
-:::{image} ../../../images/esql-line-breakdown.gif
+:::{image} /explore-analyze/images/esql-line-breakdown.gif
 :alt: Automatic line breaks for ES|QL queries
+:width: 50%
 :::
 
 You can adjust the editor’s height by dragging its bottom border to your liking.
@@ -94,7 +95,7 @@ You can reuse your recent {{esql}} queries in the query bar. In the query bar, c
 
 You can then scroll through your recent queries:
 
-:::{image} ../../../images/elasticsearch-reference-esql-discover-query-history.png
+:::{image} /explore-analyze/images/elasticsearch-reference-esql-discover-query-history.png
 :alt: esql discover query history
 :::
 
@@ -102,7 +103,7 @@ You can then scroll through your recent queries:
 
 {{esql}} features in-app help and suggestions, so you can get started faster and don’t have to leave the application to check syntax.
 
-![The ES|QL syntax reference and the autocomplete menu](../../../images/kibana-esql-in-app-help.png "")
+![The ES|QL syntax reference and the autocomplete menu](/explore-analyze/images/kibana-esql-in-app-help.png "")
 
 
 ### Starred queries [esql-kibana-starred-queries]
@@ -115,7 +116,7 @@ From the **Recent** tab, you can star any queries you want.
 
 In the **Starred** tab, find all the queries you have previously starred.
 
-:::{image} ../../../images/elasticsearch-reference-esql-discover-query-starred.png
+:::{image} /explore-analyze/images/elasticsearch-reference-esql-discover-query-starred.png
 :alt: esql discover query starred
 :::
 
@@ -129,7 +130,7 @@ the 10,000 row limit only applies to the number of rows that are retrieved by th
 ::::
 
 
-Each row shows two columns for the example query: a column with the `@timestamp` field and a column with the full document. To display specific fields from the documents, use the [`KEEP`](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/esql-commands.md#esql-keep) command:
+Each row shows two columns for the example query: a column with the `@timestamp` field and a column with the full document. To display specific fields from the documents, use the [`KEEP`](elasticsearch://reference/query-languages/esql/esql-commands.md#esql-keep) command:
 
 ```esql
 FROM kibana_sample_data_logs
@@ -151,7 +152,7 @@ The maximum number of columns in Discover is 50. If a query returns more than 50
 
 ### Sorting [_sorting]
 
-To sort on one of the columns, click the column name you want to sort on and select the sort order. Note that this performs client-side sorting. It only sorts the rows that were retrieved by the query, which may not be the full dataset because of the (implicit) limit. To sort the full data set, use the [`SORT`](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/esql-commands.md#esql-sort) command:
+To sort on one of the columns, click the column name you want to sort on and select the sort order. Note that this performs client-side sorting. It only sorts the rows that were retrieved by the query, which may not be the full dataset because of the (implicit) limit. To sort the full data set, use the [`SORT`](elasticsearch://reference/query-languages/esql/esql-commands.md#esql-sort) command:
 
 ```esql
 FROM kibana_sample_data_logs
@@ -179,7 +180,7 @@ FROM my_index
 | WHERE custom_timestamp >= ?_tstart AND custom_timestamp < ?_tend
 ```
 
-You can also use the `?_tstart` and `?_tend` parameters with the [`BUCKET`](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/esql-functions-operators.md#esql-bucket) function to create auto-incrementing time buckets in {{esql}} [visualizations](#esql-kibana-visualizations). For example:
+You can also use the `?_tstart` and `?_tend` parameters with the [`BUCKET`](elasticsearch://reference/query-languages/esql/esql-functions-operators.md#esql-bucket) function to create auto-incrementing time buckets in {{esql}} [visualizations](#esql-kibana-visualizations). For example:
 
 ```esql
 FROM kibana_sample_data_logs
@@ -191,7 +192,7 @@ This example uses `50` buckets, which is the maximum number of buckets.
 
 #### WHERE command [_where_command]
 
-You can also limit the time range using the [`WHERE`](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/esql-commands.md#esql-where) command and the [`NOW`](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/esql-functions-operators.md#esql-now) function. For example, if the timestamp field is called `timestamp`, to query the last 15 minutes of data:
+You can also limit the time range using the [`WHERE`](elasticsearch://reference/query-languages/esql/esql-commands.md#esql-where) command and the [`NOW`](elasticsearch://reference/query-languages/esql/esql-functions-operators.md#esql-now) function. For example, if the timestamp field is called `timestamp`, to query the last 15 minutes of data:
 
 ```esql
 FROM kibana_sample_data_logs
@@ -214,19 +215,19 @@ FROM kibana_sample_data_logs
 
 The resulting visualization is a bar chart showing the top 3 countries:
 
-:::{image} ../../../images/elasticsearch-reference-esql-kibana-bar-chart.png
+:::{image} /explore-analyze/images/elasticsearch-reference-esql-kibana-bar-chart.png
 :alt: esql kibana bar chart
 :::
 
-To make changes to the visualization, like changing the visualization type, axes and colors, click the pencil button (![esql icon edit visualization](../../../images/elasticsearch-reference-esql-icon-edit-visualization.svg "")). This opens an in-line editor:
+To make changes to the visualization, like changing the visualization type, axes and colors, click the pencil button (![esql icon edit visualization](/explore-analyze/images/elasticsearch-reference-esql-icon-edit-visualization.svg "")). This opens an in-line editor:
 
-:::{image} ../../../images/elasticsearch-reference-esql-kibana-in-line-editor.png
+:::{image} /explore-analyze/images/elasticsearch-reference-esql-kibana-in-line-editor.png
 :alt: esql kibana in line editor
 :::
 
-You can save the visualization to a new or existing dashboard by clicking the save button (![esql icon save visualization](../../../images/elasticsearch-reference-esql-icon-save-visualization.svg "")). Once saved to a dashboard, you’ll be taken to the Dashboards page. You can continue to make changes to the visualization. Click the options button in the top-right (![esql icon options](../../../images/elasticsearch-reference-esql-icon-options.svg "")) and select **Edit ES|QL visualization** to open the in-line editor:
+You can save the visualization to a new or existing dashboard by clicking the save button (![esql icon save visualization](/explore-analyze/images/elasticsearch-reference-esql-icon-save-visualization.svg "")). Once saved to a dashboard, you’ll be taken to the Dashboards page. You can continue to make changes to the visualization. Click the options button in the top-right (![esql icon options](/explore-analyze/images/elasticsearch-reference-esql-icon-options.svg "")) and select **Edit ES|QL visualization** to open the in-line editor:
 
-:::{image} ../../../images/elasticsearch-reference-esql-kibana-edit-on-dashboard.png
+:::{image} /explore-analyze/images/elasticsearch-reference-esql-kibana-edit-on-dashboard.png
 :alt: esql kibana edit on dashboard
 :::
 
@@ -235,41 +236,44 @@ You can save the visualization to a new or existing dashboard by clicking the sa
 
 You can use {{esql}} queries to create panels on your dashboards. To add a panel to a dashboard, under **Dashboards**, click the **Add panel** button and select {{esql}}.
 
-:::{image} ../../../images/elasticsearch-reference-esql-dashboard-panel.png
-:alt: esql dashboard panel
-:::
+Check the {{esql}} query by clicking the Panel filters button (![Panel filters button on panel header](/explore-analyze/images/elasticsearch-reference-dashboard_panel_filter_button.png "")):
 
-Check the {{esql}} query by clicking the Panel filters button (![Panel filters button on panel header](../../../images/elasticsearch-reference-dashboard_panel_filter_button.png "")):
-
-:::{image} ../../../images/elasticsearch-reference-esql-dashboard-panel-query.png
+:::{image} /explore-analyze/images/elasticsearch-reference-esql-dashboard-panel-query.png
 :alt: esql dashboard panel query
+:width: 50%
 :::
 
-You can also edit the {{esql}} visualization from here. Click the options button in the top-right (![esql icon options](../../../images/elasticsearch-reference-esql-icon-options.svg "")) and select **Edit ESQL visualization** to open the in-line editor.
+You can also edit the {{esql}} visualization from here. Click the options button in the top-right (![esql icon options](/explore-analyze/images/elasticsearch-reference-esql-icon-options.svg "")) and select **Edit ESQL visualization** to open the in-line editor.
 
-:::{image} ../../../images/elasticsearch-reference-esql-dashboard-panel-edit-visualization.png
+:::{image} /explore-analyze/images/elasticsearch-reference-esql-dashboard-panel-edit-visualization.png
 :alt: esql dashboard panel edit visualization
+:width: 50%
 :::
+
+You can also [Add dashboard controls from your ES|QL visualization's query](/explore-analyze/dashboards/add-controls.md#add-esql-control)
 
 
 ## Create an enrich policy [esql-kibana-enrich]
 
-The {{esql}} [`ENRICH`](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/esql-commands.md#esql-enrich) command enables you to [enrich](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/esql-enrich-data.md) your query dataset with fields from another dataset. Before you can use `ENRICH`, you need to [create and execute an enrich policy](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/esql-enrich-data.md#esql-set-up-enrich-policy). If a policy exists, it will be suggested by auto-complete. If not, click **Click to create** to create one.
+The {{esql}} [`ENRICH`](elasticsearch://reference/query-languages/esql/esql-commands.md#esql-enrich) command enables you to [enrich](elasticsearch://reference/query-languages/esql/esql-enrich-data.md) your query dataset with fields from another dataset. Before you can use `ENRICH`, you need to [create and execute an enrich policy](elasticsearch://reference/query-languages/esql/esql-enrich-data.md#esql-set-up-enrich-policy). If a policy exists, it will be suggested by auto-complete. If not, click **Click to create** to create one.
 
-:::{image} ../../../images/elasticsearch-reference-esql-kibana-enrich-autocomplete.png
+:::{image} /explore-analyze/images/elasticsearch-reference-esql-kibana-enrich-autocomplete.png
 :alt: esql kibana enrich autocomplete
+:width: 50%
 :::
 
 Next, you can enter a policy name, the policy type, source indices, and optionally a query:
 
-:::{image} ../../../images/elasticsearch-reference-esql-kibana-enrich-step-1.png
+:::{image} /explore-analyze/images/elasticsearch-reference-esql-kibana-enrich-step-1.png
 :alt: esql kibana enrich step 1
+:width: 50%
 :::
 
 Click **Next** to select the match field and enrich fields:
 
-:::{image} ../../../images/elasticsearch-reference-esql-kibana-enrich-step-2.png
+:::{image} /explore-analyze/images/elasticsearch-reference-esql-kibana-enrich-step-2.png
 :alt: esql kibana enrich step 2
+:width: 50%
 :::
 
 Finally, click **Create and execute**.
@@ -289,15 +293,16 @@ FROM kibana_sample_data_logs
 
 You can use {{esql}} queries to create alerts. From Discover, click **Alerts** and select **Create search threshold rule**. This opens a panel that enables you to create a rule using an {{esql}} query. Next, you can test the query, add a connector, and save the rule.
 
-:::{image} ../../../images/elasticsearch-reference-esql-kibana-create-rule.png
+:::{image} /explore-analyze/images/elasticsearch-reference-esql-kibana-create-rule.png
 :alt: esql kibana create rule
+:width: 50%
 :::
 
 
 ## Limitations [esql-kibana-limitations]
 
-* The user interface to filter data is not enabled when Discover is in {{esql}} mode. To filter data, write a query that uses the [`WHERE`](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/esql-commands.md#esql-where) command instead.
+* The user interface to filter data is not enabled when Discover is in {{esql}} mode. To filter data, write a query that uses the [`WHERE`](elasticsearch://reference/query-languages/esql/esql-commands.md#esql-where) command instead.
 * Discover shows no more than 10,000 rows. This limit only applies to the number of rows that are retrieved by the query and displayed in Discover. Queries and aggregations run on the full data set.
 * Discover shows no more than 50 columns. If a query returns more than 50 columns, Discover only shows the first 50.
 * CSV export from Discover shows no more than 10,000 rows. This limit only applies to the number of rows that are retrieved by the query and displayed in Discover. Queries and aggregations run on the full data set.
-* Querying many indices at once without any filters can cause an error in kibana which looks like `[esql] > Unexpected error from Elasticsearch: The content length (536885793) is bigger than the maximum allowed string (536870888)`. The response from {{esql}} is too long. Use [`DROP`](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/esql-commands.md#esql-drop) or [`KEEP`](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/esql-commands.md#esql-keep) to limit the number of fields returned.
+* Querying many indices at once without any filters can cause an error in kibana which looks like `[esql] > Unexpected error from Elasticsearch: The content length (536885793) is bigger than the maximum allowed string (536870888)`. The response from {{esql}} is too long. Use [`DROP`](elasticsearch://reference/query-languages/esql/esql-commands.md#esql-drop) or [`KEEP`](elasticsearch://reference/query-languages/esql/esql-commands.md#esql-keep) to limit the number of fields returned.

@@ -2,16 +2,13 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/assistant-triage.html
   - https://www.elastic.co/guide/en/serverless/current/security-triage-alerts-with-elastic-ai-assistant.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Triage alerts
-
-% What needs to be done: Lift-and-shift
-
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/security-docs/security/assistant-triage.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/security-triage-alerts-with-elastic-ai-assistant.md
 
 Elastic AI Assistant can help you enhance and streamline your alert triage workflows by assessing multiple recent alerts in your environment, and helping you interpret an alert and its context.
 
@@ -35,20 +32,20 @@ Once you have chosen an alert to investigate:
 2. In the alert details flyout, click **Chat** to launch the AI assistant. Data related to the selected alert is automatically added to the prompt.
 3. Click **Alert (from summary)** to view which alert fields will be shared with AI Assistant.
 
-    ::::{note}
-    For more information about selecting which fields to send, and to learn about anonymizing your data, refer to [AI Assistant](/solutions/security/ai/ai-assistant.md).
-    ::::
+   :::{note}
+   For more information about selecting which fields to send, and to learn about anonymizing your data, refer to [AI Assistant](/solutions/security/ai/ai-assistant.md).
+   :::
 
 4. (Optional) Click a quick prompt to use it as a starting point for your query, for example **Alert summarization**. Improve the quality of AI Assistant’s response by customizing the prompt and adding detail.
 
-    Once you’ve submitted your query, AI Assistant will process the information and provide a detailed response. Depending on your prompt and the alert data that you included, its response can include a thorough analysis of the alert that highlights key elements such as the nature of the potential threat, potential impact, and suggested response actions.
+   Once you’ve submitted your query, AI Assistant will process the information and provide a detailed response. Depending on your prompt and the alert data that you included, its response can include a thorough analysis of the alert that highlights key elements such as the nature of the potential threat, potential impact, and suggested response actions.
 
 5. (Optional) Ask AI Assistant follow-up questions, provide additional information for further analysis, and request clarification. The response is not a static report.
 
 
 ## Generate triage reports [ai-triage-reportgen]
 
-Elastic AI Assistant can streamline the documentation and report generation process by providing clear records of security incidents, their scope and impact, and your remediation efforts. You can use AI Assistant to create summaries or reports for stakeholders that include key event details, findings, and diagrams. Once the AI Assistant has finished analyzing one or more alerts, you can generate reports by using prompts such as:
+Elastic AI Assistant can streamline the documentation and report generation process by providing clear records of security incidents, their scope and impact, and your remediation efforts. You can use AI Assistant to create summaries or reports for stakeholders that include key event details, findings, and diagrams. Once AI Assistant has finished analyzing one or more alerts, you can generate reports by using prompts such as:
 
 * “Generate a detailed report about this incident including timeline, impact analysis, and response actions. Also, include a diagram of events.”
 * “Generate a summary of this incident/alert and include diagrams of events.”
@@ -56,7 +53,7 @@ Elastic AI Assistant can streamline the documentation and report generation proc
 
 After you review the report, click **Add to existing case** at the top of AI Assistant’s response. This allows you to save a record of the report and make it available to your team.
 
-:::{image} ../../../images/security-ai-triage-add-to-case.png
+:::{image} /solutions/images/security-ai-triage-add-to-case.png
 :alt: An AI Assistant dialogue with the add to existing case button highlighted
-:class: screenshot
+:screenshot:
 :::

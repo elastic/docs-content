@@ -8,7 +8,7 @@ applies_to:
 # APM Server and systemd [apm-running-with-systemd]
 
 ::::{important}
-These commands only apply to the APM Server binary installation method. Fleet-managed users should see [Start and stop {{agent}}s on edge hosts](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/start-stop-elastic-agent.md).
+These commands only apply to the APM Server binary installation method. Fleet-managed users should see [Start and stop {{agent}}s on edge hosts](/reference/fleet/start-stop-elastic-agent.md).
 ::::
 
 
@@ -74,7 +74,7 @@ To override these variables, create a drop-in unit file in the `/etc/systemd/sys
 
 For example a file with the following content placed in `/etc/systemd/system/apm-server.service.d/debug.conf` would override `BEAT_LOG_OPTS` to enable debug for {{es}} output.
 
-```text
+```ini
 [Service]
 Environment="BEAT_LOG_OPTS=-d elasticsearch"
 ```

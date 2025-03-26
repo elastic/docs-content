@@ -10,9 +10,9 @@ Elastic APM provides performance and error monitoring for AWS Lambda functions. 
 
 To set up Lambda monitoring, refer to [AWS Lambda functions](/solutions/observability/apps/monitoring-aws-lambda-functions.md).
 
-:::{image} ../../../images/observability-lambda-overview.png
+:::{image} /solutions/images/observability-lambda-overview.png
 :alt: lambda overview
-:class: screenshot
+:screenshot:
 :::
 
 
