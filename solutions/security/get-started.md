@@ -10,7 +10,7 @@ This section describes how to set up {{elastic-sec}}, install {{agent}} and the 
 * [Detect threats in my data with SIEM](https://www.elastic.co/getting-started/security/detect-threats-in-my-data-with-siem)
 
 ::::{note}
-If you're migrating to Elastic's SIEM from Splunk, you can use our AI-powered [SIEM migration tool](../security/get-started/siem-migration.md). 
+If you're migrating to Elastic's SIEM from Splunk, you can use our  [SIEM migration tool](../security/get-started/siem-migration.md). 
 ::::
 
 * [Secure my hosts with endpoint security](https://www.elastic.co/getting-started/security/secure-my-hosts-with-endpoint-security)

@@ -9,6 +9,7 @@ Elastic's AI-powered SIEM migration helps you quickly convert SIEM rules from th
 You can ingest your data before migrating your rules, or migrate your rules first, in which case the tool will recommend which data sources you need to power your migrated rules. 
 
 ::::{admonition} Requirements
+* The `SIEM migrations: All` Security sub-feature privilege.
 * A working [LLM connector](/solutions/security/ai/set-up-connectors-for-large-language-models-llm.md).
 * {{stack}} users: an [Enterprise](https://www.elastic.co/pricing) subscription. 
 * {{Stack}} users: {{ml}} must be enabled.
@@ -49,7 +50,7 @@ You can ingest your data before migrating your rules, or migrate your rules firs
    If the file is large, you may need to separate it into multiple parts and upload them individually to avoid exceeding your LLM's context window.
    ::::
 
-6. After you upload your Splunk rules, SIEM migration will detect whether they use any Splunk macros or lookups. If so, follow the instructions which appear to export and upload them. Alternatively, you can complete this step later — however, until you upload them, some of your migrated rules will have a `partially translated` status.
+6. After you upload your Splunk rules, SIEM migration will detect whether they use any Splunk macros or lookups. If so, follow the instructions which appear to export and upload them. Alternatively, you can complete this step later — however, until you upload them, some of your migrated rules will have a `partially translated` status. If you upload them now, you don't have to wait on the page for them to be processed — a notification will appear when processing is complete.
 
 7. Click **Translate** to start the rule translation process. You don't need to stay on this page. A notification will appear when the process is complete. 
 
@@ -62,10 +63,16 @@ This section describes the **Translated rules** page's interface and explains ho
 
 When you upload a new batch of rules, they are assigned a name and number, for example `SIEM rule migration 1`, or `SIEM rule migration 2`. Use the **Migrations** dropdown menu in the upper right to select which batch appears. 
 
+::::{image} ../../../images/security-siem-migration-processed-rules.png
+:alt: The translated rules page
+:width: 850px
+:screenshot:
+::::
+
 The table's fields are as follows:
 
 * **Name:** The names of Elastic authored rules cannot be edited until after rule installation. To edit the name of a custom translated rule, click the name and select **Edit**.
-* **Status:** The rule's translation status. Hover over the tooltip next to the column title for more information.
+* **Status:** The rule's translation status.
 * **Risk Score:** For Elastic authored rules, risk scores are predefined. For custom translated rules, risk scores are defined as follows:
   * If the source rule has a field comparable to Elastic's risk score, we use that value.
   * Otherwise, if the source rule has a field comparable to Elastic's rule severity field, we base the risk score on that value according to these [guidelines](/solutions/security/detect-and-alert/create-detection-rule.md#custom-highlighted-esql-fields).
@@ -95,6 +102,12 @@ You cannot edit Elastic authored rules using this interface, but after they are 
 ### Edit a custom rule
 
 Click the rule's name to open the rule's details flyout to the **Translation** tab, which shows the source rule alongside the translated — or partially translated — Elastic version. You can update any part of the rule. When finished, click **Save**.
+
+::::{image} ../../../images/security-siem-migration-edit-rule.png
+:alt: The rule details flyout
+:width: 850px
+:screenshot:
+::::
 
 ::::{note}
 If you haven't yet ingested your data, you will likely encounter `Unknown index` or `Unknown column` errors while editing. You can ignore these and add your data later.
