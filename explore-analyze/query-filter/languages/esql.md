@@ -26,7 +26,6 @@ You can author {{esql}} queries to find specific events, perform statistical ana
 The new {{esql}} execution engine was designed with performance in mind — it operates on blocks at a time instead of per row, targets vectorization and cache locality, and embraces specialization and multi-threading. It is a separate component from the existing Elasticsearch aggregation framework with different performance characteristics.
 ::::
 
-
 ## How does it work? [search-analyze-data-esql]
 
 The {{es}} Query Language ({{esql}}) makes use of "pipes" (|) to manipulate and transform data in a step-by-step fashion. This approach allows you to compose a series of operations, where the output of one operation becomes the input for the next, enabling complex data transformations and analysis.
@@ -41,16 +40,21 @@ Learn more about using {{esql}} for Search use cases in this tutorial: [Search a
 
 Find more details about {{esql}} in the following documentation pages:
 - [{{esql}} reference](elasticsearch://reference/query-languages/esql.md):
-  - Reference documentation for the [{{esql}} syntax](elasticsearch://reference/query-languages/esql/esql-syntax.md), [commands](elasticsearch://reference/query-languages/esql/esql-commands.md), and [functions and operators](elasticsearch://reference/query-languages/esql/esql-functions-operators.md).
-  - Information about working with [metadata fields](elasticsearch://reference/query-languages/esql/esql-metadata-fields.md) and [multivalued fields](elasticsearch://reference/query-languages/esql/esql-multivalued-fields.md).
-  - Guidance for [data processing with DISSECT and GROK](elasticsearch://reference/query-languages/esql/esql-process-data-with-dissect-grok.md) and [data enrichment with ENRICH](elasticsearch://reference/query-languages/esql/esql-enrich-data.md).
+  - Reference documentation for the [{{esql}} syntax](elasticsearch://reference/query-languages/esql/esql-syntax.md):
+    - Reference for [commands](elasticsearch://reference/query-languages/esql/esql-commands.md), and [functions and operators](elasticsearch://reference/query-languages/esql/esql-functions-operators.md)
+    - How to work with [metadata fields](elasticsearch://reference/query-languages/esql/esql-metadata-fields.md) and [multivalued fields](elasticsearch://reference/query-languages/esql/esql-multivalued-fields.md)
+    - How to work with [DISSECT and GROK](elasticsearch://reference/query-languages/esql/esql-process-data-with-dissect-grok.md), [ENRICH](elasticsearch://reference/query-languages/esql/esql-enrich-data.md), and [LOOKUP join](elasticsearch://reference/query-languages/esql/esql-lookup-join.md)
+
 
 - Using {{esql}}:
   - An overview of using the [`_query` API endpoint](/explore-analyze/query-filter/languages/esql-rest.md).
+  - [Using {{esql}} for search](/solutions/search/esql-for-search.md).
   - [Using {{esql}} in {{kib}}](../../../explore-analyze/query-filter/languages/esql-kibana.md).
   - [Using {{esql}} in {{elastic-sec}}](/explore-analyze/query-filter/languages/esql-elastic-security.md).
+  - [Using {{esql}} with multiple indices](/explore-analyze/query-filter/languages/esql-multi-index.md).
   - [Using {{esql}} across clusters](/explore-analyze/query-filter/languages/esql-cross-clusters.md).
   - [Task management](/explore-analyze/query-filter/languages/esql-task-management.md).
+
 
 - [Limitations](elasticsearch://reference/query-languages/esql/limitations.md): The current limitations of {{esql}}.
 
