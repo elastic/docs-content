@@ -43,7 +43,7 @@ spec:
     # ...
     config:
       cluster.max_shards_per_node: 1000
-      cluster.max_shards_per_node.frozen: 1000 # <= This won't work because cluster.max_shards_per_node is defined as a scalar value on the previous line
+      cluster.max_shards_per_node.frozen: 1000 # This won't work because cluster.max_shards_per_node is defined as a scalar value on the previous line
     # ...
 ```
 ::::
