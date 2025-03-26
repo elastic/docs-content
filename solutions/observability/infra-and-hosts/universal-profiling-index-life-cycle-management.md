@@ -84,7 +84,7 @@ To apply a custom {{ilm-init}} policy, you must name the component template `pro
 
     If it does, click **Create component template**.
 
-    :::{image} ../../../images/observability-profiling-create-component-template.png
+    :::{image} /solutions/images/observability-profiling-create-component-template.png
     :alt: Create component template
     :screenshot:
     :::

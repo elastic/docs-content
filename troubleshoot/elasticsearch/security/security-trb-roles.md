@@ -53,7 +53,7 @@ mapped_pages:
     logger.authc.level = DEBUG
     ```
 
-    Refer to [configuring logging levels](../../../deploy-manage/monitor/logging-configuration/elasticsearch-log4j-configuration-self-managed.md#configuring-logging-levels) for more information.
+    Refer to [](/deploy-manage/monitor/logging-configuration/update-elasticsearch-logging-levels.md) for more information.
 
     A successful authentication should produce debug statements that list groups and role mappings.
 

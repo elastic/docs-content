@@ -22,7 +22,7 @@ Each endpoint, URL, and service represents a *monitor*.
 
 To get started with your analysis, use the automated filter options, such as location, port, scheme, and tags, or define a custom filter by field, URL, monitor ID, and other attributes.
 
-:::{image} ../../../images/observability-uptime-filter-bar.png
+:::{image} /solutions/images/observability-uptime-filter-bar.png
 :alt: Uptime filter bar
 :screenshot:
 :::
@@ -34,7 +34,7 @@ The snapshot panel displays the overall status of the environment you’re monit
 
 Next to the counts, a histogram shows a count of **Pings over time** with a breakdown of `Up` and `Down` counts per time bucket.
 
-:::{image} ../../../images/observability-monitors-chart.png
+:::{image} /solutions/images/observability-monitors-chart.png
 :alt: Monitors chart
 :screenshot:
 :::
@@ -51,7 +51,7 @@ Use monitor tags to display a custom assortment of monitors; for example, consid
 
 Expand the table row for a specific monitor on the list to view additional information such as which alerts are configured for the monitor, a recent error and when it occurred, the date and time of any recent test runs, and it’s URL.
 
-:::{image} ../../../images/observability-monitors-list.png
+:::{image} /solutions/images/observability-monitors-list.png
 :alt: Monitors list
 :screenshot:
 :::

@@ -101,6 +101,13 @@ helm install es-quickstart elastic/eck-elasticsearch -n elastic-stack --create-n
 
 ## Adding Ingress to the Elastic stack [k8s-eck-stack-ingress] 
 
+:::{admonition} Support scope for Ingress Controllers
+[Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/) is a standard Kubernetes concept. While ECK-managed workloads can be publicly exposed using ingress resources, and we provide [example configurations](/deploy-manage/deploy/cloud-on-k8s/recipes.md), setting up an Ingress controller requires in-house Kubernetes expertise. 
+
+If ingress configuration is challenging or unsupported in your environment, consider using standard `LoadBalancer` services as a simpler alternative.
+:::
+
+
 Both {{es}} and {{kib}} support [Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/), which can be enabled using the following options:
 
 **If an individual chart is used (not eck-stack)**

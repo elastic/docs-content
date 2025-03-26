@@ -10,19 +10,19 @@ mapped_pages:
 
 In **{{stack-manage-app}} > {{connectors-ui}}**, you can test a newly created connector by navigating to the Test tab of Connector Edit flyout or by clicking "Save & test" button on Create flyout:
 
-:::{image} ../../../images/kibana-connector-save-and-test.png
+:::{image} /explore-analyze/images/kibana-connector-save-and-test.png
 :alt: Rule management page with the errors banner
 :screenshot:
 :::
 
 or by directly opening the proper connector edit flyout:
 
-:::{image} ../../../images/kibana-email-connector-test.png
+:::{image} /explore-analyze/images/kibana-email-connector-test.png
 :alt: Rule management page with the errors banner
 :screenshot:
 :::
 
-:::{image} ../../../images/kibana-teams-connector-test.png
+:::{image} /explore-analyze/images/kibana-teams-connector-test.png
 :alt: Five clauses define the condition to detect
 :screenshot:
 :::

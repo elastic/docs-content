@@ -39,7 +39,7 @@ To use this feature, you need:
 3. Select an LLM connector, or [add](../ai/set-up-connectors-for-large-language-models-llm.md) a new one.
 4. Click **Scan**. After a brief processing period, any detected AV products will appear under **Insights**.
 
-:::{image} ../../../images/serverless-endpoint-insights-results.png
+:::{image} /solutions/images/serverless-endpoint-insights-results.png
 :alt: Endpoint Insights results with the "Create trusted app" button highlighted
 :::
 

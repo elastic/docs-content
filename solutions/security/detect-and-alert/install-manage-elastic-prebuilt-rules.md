@@ -22,7 +22,8 @@ Follow these guidelines to start using the {{security-app}}'s [prebuilt rules](s
 
 ::::{note}
 * Most prebuilt rules don’t start running by default. You can use the **Install and enable** option to start running rules as you install them, or first install the rules, then enable them manually. After installation, only a few prebuilt rules will be enabled by default, such as the Endpoint Security rule.
-* You can’t modify most settings on Elastic prebuilt rules. You can only edit [rule actions](/solutions/security/detect-and-alert/create-detection-rule.md#rule-notifications) and [add exceptions](/solutions/security/detect-and-alert/add-manage-exceptions.md). If you want to modify other settings on a prebuilt rule, you must first duplicate it, then make your changes to the duplicated rule. However, your customized rule is entirely separate from the original prebuilt rule, and will not get updates from Elastic if the prebuilt rule is updated.
+
+* Without an [Enterprise subscription](https://www.elastic.co/pricing) subscription on {{stack}} or a [Complete project tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md) subscription on {{serverless-short}}, you can't modify most settings on Elastic prebuilt rules. You must first duplicate them, then make your changes to the duplicated rules. Refer to [Select and duplicate all prebuilt rules](/solutions/security/detect-and-alert/install-manage-elastic-prebuilt-rules.md#select-all-prebuilt-rules) to learn more. 
 * On {{stack}}, automatic updates of Elastic prebuilt rules are supported for the current {{elastic-sec}} version and the latest three previous minor releases. For example, if you’re on {{elastic-sec}} 9.0, you’ll be able to use the Rules UI to update your prebuilt rules until {{elastic-sec}} 9.4 is released. After that point, you can still manually download and install updated prebuilt rules, but you must upgrade to the latest {{elastic-sec}} version to receive automatic updates.
 
 ::::
@@ -35,7 +36,7 @@ Follow these guidelines to start using the {{security-app}}'s [prebuilt rules](s
 
     The badge next to **Add Elastic rules** shows the number of prebuilt rules available for installation.
 
-    :::{image} ../../../images/security-prebuilt-rules-add-badge.png
+    :::{image} /solutions/images/security-prebuilt-rules-add-badge.png
     :alt: The Add Elastic Rules page
     :screenshot:
     :::
@@ -49,15 +50,15 @@ Follow these guidelines to start using the {{security-app}}'s [prebuilt rules](s
 3. Do one of the following:
 
     * Install all available rules: Click **Install all** at the top of the page. (This doesn’t enable the rules; you still need to do that manually.)
-    * Install a single rule: In the rules table, either click **Install** to install a rule without enabling it, or click ![Vertical boxes button](../../../images/security-boxesVertical.svg "") → **Install and enable** to start running the rule once it’s installed.
-    * Install multiple rules: Select the rules, and then at the top of the page either click **Install *x* selected rule(s)** to install without enabling the rules, or click ![Vertical boxes button](../../../images/serverless-boxesVertical.svg "") → **Install and enable** to install and start running the rules.
+    * Install a single rule: In the rules table, either click **Install** to install a rule without enabling it, or click ![Vertical boxes button](/solutions/images/security-boxesVertical.svg "") → **Install and enable** to start running the rule once it’s installed.
+    * Install multiple rules: Select the rules, and then at the top of the page either click **Install *x* selected rule(s)** to install without enabling the rules, or click ![Vertical boxes button](/solutions/images/serverless-boxesVertical.svg "") → **Install and enable** to install and start running the rules.
 
     ::::{tip}
     Use the search bar and **Tags** filter to find the rules you want to install. For example, filter by `OS: Windows` if your environment only includes Windows endpoints. For more on tag categories, refer to [Prebuilt rule tags](/solutions/security/detect-and-alert/install-manage-elastic-prebuilt-rules.md#prebuilt-rule-tags).
     ::::
 
 
-    :::{image} ../../../images/security-prebuilt-rules-add.png
+    :::{image} /solutions/images/security-prebuilt-rules-add.png
     :alt: The Add Elastic Rules page
     :screenshot:
     :::
@@ -70,6 +71,7 @@ Follow these guidelines to start using the {{security-app}}'s [prebuilt rules](s
 
 Once you enable a rule, it starts running on its configured schedule. To confirm that it’s running successfully, check its **Last response** status in the rules table, or open the rule’s details page and check the [**Execution results**](/solutions/security/detect-and-alert/monitor-rule-executions.md#rule-execution-logs) tab.
 
+If you have an [Enterprise subscription](https://www.elastic.co/pricing) subscription on {{stack}} or a [Complete project tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md) subscription on {{serverless-short}}, you can also [edit the prebuilt rules](/solutions/security/detect-and-alert/manage-detection-rules.md#edit-rules-settings) that you've installed.
 
 ## Prebuilt rule tags [prebuilt-rule-tags]
 
@@ -96,18 +98,27 @@ Each prebuilt rule includes several tags identifying the rule’s purpose, detec
 
 
 
-## Select and duplicate all prebuilt rules [select-all-prebuilt-rules]
+## Select and duplicate prebuilt rules [select-all-prebuilt-rules]
+
+Without an [Enterprise subscription](https://www.elastic.co/pricing) subscription on {{stack}} or a [Complete project tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md) subscription on {{serverless-short}}, you can't modify most settings on Elastic prebuilt rules. You can only edit [rule actions](/solutions/security/detect-and-alert/create-detection-rule.md#rule-schedule) and [add exceptions](/solutions/security/detect-and-alert/add-manage-exceptions.md). If you want to modify other settings on a prebuilt rule, you must first duplicate it, then make your changes to the duplicated rule. Note that your customized rule is entirely separate from the original prebuilt rule, and will not get updates from Elastic if the prebuilt rule is updated.
 
 1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. In the **Rules** table, select the **Elastic rules** filter.
-3. Click **Select all *x* rules** above the rules table.
+3. Select one or more rules, or click **Select all *x* rules** above the Rules table. 
 4. Click **Bulk actions** → **Duplicate**.
-5. Select whether to duplicate the rules' exceptions, then click **Duplicate**.
+5. (Optional) Select whether to duplicate the rules' exceptions, then click **Duplicate**.
 
-You can then modify the duplicated rules and, if required, delete the prebuilt ones. However, your customized rules are entirely separate from the original prebuilt rules, and will not get updates from Elastic if the prebuilt rules are updated.
+You can then modify the duplicated rules and, if required, delete the prebuilt ones. 
 
 
 ## Update Elastic prebuilt rules [update-prebuilt-rules]
+
+::::{important}
+
+The following steps are only applicable if you have a [Platinum](https://www.elastic.co/pricing) subscription  or lower on  {{stack}} or an [Essentials project tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md) subscription on {{serverless-short}}. 
+
+If you have an Enterprise subscription on {{stack}} or a Complete project tier subscription on {{serverless-short}}, follow the guidelines in [Update modified and unmodified Elastic prebuilt rules](/solutions/security/detect-and-alert/prebuilt-rules-update-modified-unmodified.md) instead. 
+::::
 
 Elastic regularly updates prebuilt rules to optimize their performance and ensure they detect the latest threats and techniques. When updated versions are available for your installed prebuilt rules, the **Rule Updates** tab appears on the **Rules** page, allowing you to update your installed rules with the latest versions.
 
@@ -119,18 +130,18 @@ Elastic regularly updates prebuilt rules to optimize their performance and ensur
     ::::
 
 
-    :::{image} ../../../images/security-prebuilt-rules-update.png
+    :::{image} /solutions/images/security-prebuilt-rules-update.png
     :alt: The Rule Updates tab on the Rules page
     :screenshot:
     :::
 
 3. (Optional) To examine the details of a rule’s latest version before you update it, select the rule name. This opens the rule details flyout.
 
-    Select the **Updates** tab to view rule changes field by field, or the **JSON view** tab to view changes for the entire rule in JSON format. Both tabs display side-by-side comparisons of the **Current rule** (what you currently have installed) and the **Elastic update** version (what you can choose to install). Deleted characters are highlighted in red; added characters are highlighted in green.
+    Select the **Elastic update overview** tab to view rule changes field by field, or the **JSON view** tab to view changes for the entire rule in JSON format. Both tabs display side-by-side comparisons of the **Current rule** (what you currently have installed) and the **Elastic update** version (what you can choose to install). Deleted characters are highlighted in red; added characters are highlighted in green.
 
-    To accept the changes and install the updated version, select **Update**.
+    To accept the changes and install the updated version, select **Update rule**.
 
-    :::{image} ../../../images/security-prebuilt-rules-update-diff.png
+    :::{image} /solutions/images/security-prebuilt-rules-update-diff-basic.png
     :alt: Prebuilt rule comparison
     :screenshot:
     :::

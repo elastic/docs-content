@@ -16,28 +16,28 @@ To provide context to your dashboard panels, add **Text** panels that display im
 
 For example, when you enter:
 
-:::{image} ../../images/kibana-markdown_example_1.png
+:::{image} /explore-analyze/images/kibana-markdown_example_1.png
 :alt: Markdown text with links
 :screenshot:
 :::
 
 The following instructions are displayed:
 
-:::{image} ../../images/kibana-markdown_example_2.png
+:::{image} /explore-analyze/images/kibana-markdown_example_2.png
 :alt: Panel with markdown link text
 :screenshot:
 :::
 
 Or when you enter:
 
-:::{image} ../../images/kibana-markdown_example_3.png
+:::{image} /explore-analyze/images/kibana-markdown_example_3.png
 :alt: Markdown text with image file
 :screenshot:
 :::
 
 The following image is displayed:
 
-:::{image} ../../images/kibana-markdown_example_4.png
+:::{image} /explore-analyze/images/kibana-markdown_example_4.png
 :alt: Panel with markdown image
 :screenshot:
 :::

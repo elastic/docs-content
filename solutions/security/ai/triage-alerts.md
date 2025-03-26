@@ -53,7 +53,7 @@ Elastic AI Assistant can streamline the documentation and report generation proc
 
 After you review the report, click **Add to existing case** at the top of AI Assistant’s response. This allows you to save a record of the report and make it available to your team.
 
-:::{image} ../../../images/security-ai-triage-add-to-case.png
+:::{image} /solutions/images/security-ai-triage-add-to-case.png
 :alt: An AI Assistant dialogue with the add to existing case button highlighted
 :screenshot:
 :::

@@ -127,7 +127,7 @@ POST /amazon-reviews/_search
 
 In this simple example, we’re sending a raw vector for the query text. In a real-world scenario you won’t know the query text ahead of time. You’ll need to generate query vectors, on the fly, using the same embedding model that generated the document vectors.
 
-For this you’ll need to deploy a text embedding model in {{es}} and use the [`query_vector_builder` parameter](elasticsearch://reference/query-languages/query-dsl-knn-query.md#knn-query-top-level-parameters). Alternatively, you can generate vectors client-side and send them directly with the search request.
+For this you’ll need to deploy a text embedding model in {{es}} and use the [`query_vector_builder` parameter](elasticsearch://reference/query-languages/query-dsl/query-dsl-knn-query.md#knn-query-top-level-parameters). Alternatively, you can generate vectors client-side and send them directly with the search request.
 
 Learn how to [use a deployed text embedding model](dense-versus-sparse-ingest-pipelines.md) for semantic search.
 

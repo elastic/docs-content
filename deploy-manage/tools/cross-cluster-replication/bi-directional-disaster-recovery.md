@@ -24,7 +24,7 @@ This tutorial works with {{ls}} as the source of ingestion. It takes advantage o
 * Setting up bi-directional cross-cluster replication with exclusion patterns.
 * Setting up {{ls}} with multiple hosts to allow automatic load balancing and switching during disasters.
 
-:::{image} ../../../images/elasticsearch-reference-ccr-bi-directional-disaster-recovery.png
+:::{image} /deploy-manage/images/elasticsearch-reference-ccr-bi-directional-disaster-recovery.png
 :alt: Bi-directional cross cluster replication failover and failback
 :::
 

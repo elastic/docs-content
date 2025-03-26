@@ -12,7 +12,7 @@ applies_to:
 
 Automatic Import helps you quickly parse, ingest, and create [ECS mappings](https://www.elastic.co/elasticsearch/common-schema) for data from sources that don’t yet have prebuilt Elastic integrations. This can accelerate your migration to {{elastic-sec}}, and help you quickly add new data sources to an existing SIEM solution in {{elastic-sec}}. Automatic Import uses a large language model (LLM) with specialized instructions to quickly analyze your source data and create a custom integration.
 
-While Elastic has 400+ [prebuilt data integrations](https://docs.elastic.co/en/integrations), Automatic Import helps you extend data coverage to other security-relevant technologies and applications. Elastic integrations (including those created by Automatic Import) normalize data to [the Elastic Common Schema (ECS)](asciidocalypse://docs/ecs/docs/reference/index.md), which creates uniformity across dashboards, search, alerts, machine learning, and more.
+While Elastic has 400+ [prebuilt data integrations](https://docs.elastic.co/en/integrations), Automatic Import helps you extend data coverage to other security-relevant technologies and applications. Elastic integrations (including those created by Automatic Import) normalize data to [the Elastic Common Schema (ECS)](ecs://reference/index.md), which creates uniformity across dashboards, search, alerts, machine learning, and more.
 
 ::::{tip}
 Click [here](https://elastic.navattic.com/automatic-import) to access an interactive demo that shows the feature in action, before setting it up yourself.
@@ -60,7 +60,7 @@ Using Automatic Import allows users to create new third-party data integrations 
 1. In {{elastic-sec}}, click **Add integrations**.
 2. Under **Can’t find an integration?** click **Create new integration**.
 
-   :::{image} ../../../images/security-auto-import-create-new-integration-button.png
+   :::{image} /solutions/images/security-auto-import-create-new-integration-button.png
    :alt: The Integrations page with the Create new integration button highlighted
    :::
 
@@ -69,7 +69,7 @@ Using Automatic Import allows users to create new third-party data integrations 
 5. Define how your new integration will appear on the Integrations page by providing a **Title**, **Description**, and **Logo**.  Click **Next**.
 6. Define your integration’s package name, which will prefix the imported event fields.
 7. Define your **Data stream title**, **Data stream description**, and **Data stream name**. These fields appear on the integration’s configuration page to help identify the data stream it writes to.
-8. Select your [**Data collection method**](asciidocalypse://docs/beats/docs/reference/filebeat/configuration-filebeat-options.md). This determines how your new integration will ingest the data (for example, from an S3 bucket, an HTTP endpoint, or a file stream).
+8. Select your [**Data collection method**](beats://reference/filebeat/configuration-filebeat-options.md). This determines how your new integration will ingest the data (for example, from an S3 bucket, an HTTP endpoint, or a file stream).
 
    ::::{admonition} Importing CEL data
    :class: note
@@ -80,7 +80,7 @@ Using Automatic Import allows users to create new third-party data integrations 
 10. Click **Analyze logs**, then wait for processing to complete. This may take several minutes.
 11. After processing is complete, the pipeline’s field mappings appear, including ECS and custom fields.
 
-    :::{image} ../../../images/security-auto-import-review-integration-page.png
+    :::{image} /solutions/images/security-auto-import-review-integration-page.png
     :alt: The Automatic Import Review page showing proposed field mappings
     :::
 
@@ -94,13 +94,13 @@ Using Automatic Import allows users to create new third-party data integrations 
     ::::
 
 
-    :::{image} ../../../images/security-auto-import-edit-pipeline.gif
+    :::{image} /solutions/images/security-auto-import-edit-pipeline.gif
     :alt: A gif showing the user clicking the edit pipeline button and viewing the ingest pipeline flyout
     :::
 
 13. Click **Add to Elastic**. After the **Success** message appears, your new integration will be available on the Integrations page.
 
-    :::{image} ../../../images/security-auto-import-success-message.png
+    :::{image} /solutions/images/security-auto-import-success-message.png
     :alt: The automatic import success message
     :::
 

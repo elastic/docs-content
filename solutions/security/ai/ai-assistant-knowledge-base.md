@@ -30,7 +30,7 @@ AI Assistant’s Knowledge Base feature enables AI Assistant to recall specific 
 
 The `Elastic AI Assistant: All` role privilege allows you to use AI Assistant and access its settings. It has two sub-privileges, `Field Selection and Anonymization`, which allows you to customize which alert fields are sent to AI Assistant and Attack Discovery, and `Knowledge Base`, which allows you to edit and create new Knowledge Base entries.
 
-:::{image} ../../../images/security-knowledge-base-rbac.png
+:::{image} /solutions/images/security-knowledge-base-rbac.png
 :alt: Knowledge base's RBAC settings
 :::
 
@@ -49,13 +49,13 @@ You must individually enable Knowledge Base for each {{kib}} space where you wan
 
 Open a conversation with AI Assistant, select a large language model, then click **Setup Knowledge Base**. If the button doesn’t appear, Knowledge Base is already enabled.
 
-:::{image} ../../../images/security-knowledge-base-assistant-setup-button.png
+:::{image} /solutions/images/security-knowledge-base-assistant-setup-button.png
 :alt: An AI Assistant conversation showing the Setup Knowledge Base button
 :::
 
 Knowledge base setup may take several minutes. It will continue in the background if you close the conversation. After setup is complete, you can access Knowledge Base settings from AI Assistant’s conversation settings menu (access the conversation settings menu by clicking the three dots button next to the model selection dropdown).
 
-:::{image} ../../../images/security-knowledge-base-assistant-menu-dropdown.png
+:::{image} /solutions/images/security-knowledge-base-assistant-menu-dropdown.png
 :alt: AI Assistant's dropdown menu with the Knowledge Base option highlighted
 :::
 
@@ -65,7 +65,7 @@ Knowledge base setup may take several minutes. It will continue in the backgroun
 1. To open **Security AI settings**, use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) to find "AI Assistant for Security."
 2. On the **Knowledge Base** tab, click **Setup Knowledge Base**. If the button doesn’t appear, Knowledge Base is already enabled.
 
-:::{image} ../../../images/security-knowledge-base-assistant-settings-kb-tab.png
+:::{image} /solutions/images/security-knowledge-base-assistant-settings-kb-tab.png
 :alt: AI Assistant's settings menu open to the Knowledge Base tab
 :::
 
@@ -131,7 +131,7 @@ Indices added to Knowledge Base must have at least one field mapped as [semantic
 8. Under **Query Instruction**, describe how AI Assistant should query this index to retrieve relevant information.
 9. Under **Output Fields**, list the fields which should be sent to AI Assistant. If none are listed, all fields will be sent.
 
-:::{image} ../../../images/security-knowledge-base-add-index-config.png
+:::{image} /solutions/images/security-knowledge-base-add-index-config.png
 :alt: Knowledge base's Edit index entry menu
 :::
 

@@ -45,7 +45,7 @@ The supported save policies are:
 
 You can also use security to grant read only or all access to different roles. When security is used to grant read only access, the following  indicator in Kibana is displayed. For more information on granting access to Kibana, see [Granting access to {{kib}}](../../../deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md).
 
-:::{image} ../../../images/kibana-graph-read-only-badge.png
+:::{image} /explore-analyze/images/kibana-graph-read-only-badge.png
 :alt: Example of Graph's read only access indicator in Kibana's header
 :screenshot:
 :width: 50%

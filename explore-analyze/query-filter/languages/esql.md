@@ -35,7 +35,7 @@ You can use it:
 - In your queries to {{es}} APIs, using the [`_query` endpoint](/explore-analyze/query-filter/languages/esql-rest.md) that accepts queries written in {{esql}} syntax.
 - Within various {{kib}} tools such as Discover and Dashboards, to explore your data and build powerful visualizations.
 
-% Learn more in [Getting started with {{esql}}](/solutions/search/get-started.md), or try [our training course](https://www.elastic.co/training/introduction-to-esql).
+Learn more about using {{esql}} for Search use cases in this tutorial: [Search and filter with {{esql}}](/solutions/search/esql-full-text-filter-tutorial.md).
 
 ## Next steps
 

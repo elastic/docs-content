@@ -69,7 +69,7 @@ Follow these steps to collect logs and metrics using the EDOT Collector:
 1. In {{kib}}, go to the **Observability** UI and click **Add Data**.
 2. Under **What do you want to monitor?** select **Host**, and then select **OpenTelemetry: Logs & Metrics**.
 
-    :::{image} ../../../images/observability-quickstart-monitor-hosts-otel-entry-point.png
+    :::{image} /solutions/images/observability-quickstart-monitor-hosts-otel-entry-point.png
     :alt: Host monitoring entry point
     :screenshot:
     :::
@@ -99,7 +99,7 @@ Logs are collected from setup onward, so you won’t see logs that occurred befo
 3. Select **Collect and analyze logs**, and then select **OpenTelemetry**.
 4. Under **What do you want to monitor?** select **Host**, and then select **Elastic Agent: Logs & Metrics**.
 
-    :::{image} ../../../images/serverless-quickstart-monitor-hosts-otel-entry-point.png
+    :::{image} /solutions/images/serverless-quickstart-monitor-hosts-otel-entry-point.png
     :alt: Host monitoring entry point
     :screenshot:
     :::

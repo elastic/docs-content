@@ -32,7 +32,7 @@ machine.os.keyword : "osx"
 
 the `kibana_sample_data_flights` layer is empty because the index `kibana_sample_data_flights` does not contain the field `machine.os.keyword` and no documents match the query.
 
-:::{image} ../../../images/kibana-global_search_multiple_indices_query1.png
+:::{image} /explore-analyze/images/kibana-global_search_multiple_indices_query1.png
 :alt: global search multiple indices query1
 :screenshot:
 :::
@@ -45,7 +45,7 @@ machine.os.keyword : "osx" or _index : "kibana_sample_data_flights"
 
 the `kibana_sample_data_flights` layer includes data.
 
-:::{image} ../../../images/kibana-global_search_multiple_indices_query2.png
+:::{image} /explore-analyze/images/kibana-global_search_multiple_indices_query2.png
 :alt: global search multiple indices query2
 :screenshot:
 :::

@@ -45,7 +45,7 @@ Do not add the integration to an existing {{agent}} policy. It should always be 
 3. Click **Add Cloud Native Vulnerability Management**.
 4. Give your integration a name that matches its purpose or the AWS account region you want to scan for vulnerabilities (for example, `uswest2-aws-account`.)
 
-   :::{image} ../../../images/security-cnvm-setup-1.png
+   :::{image} /solutions/images/security-cnvm-setup-1.png
    :alt: The CNVM integration setup page
    :::
 
@@ -69,7 +69,7 @@ The integration will only scan VMs in the region you select. To scan multiple re
 1. Switch back to the tab where you have {{kib}} open.
 2. Click **Launch CloudFormation**. The CloudFormation page appears.
 
-   :::{image} ../../../images/security-cnvm-cloudformation.png
+   :::{image} /solutions/images/security-cnvm-cloudformation.png
    :alt: The cloud formation template
    :::
 
