@@ -1,5 +1,5 @@
 ---
-navigation_title: "Set up basic security"
+navigation_title: "Basic / Transport SSL"
 applies_to:
   deployment:
     self: ga
@@ -8,7 +8,8 @@ mapped_pages:
 ---
 
 
-
+% Scope: TLS certificates setup / multi-node cluster / manual configuration
+% original title: Set up basic security for the Elastic Stack
 # Set up basic security [security-basic-setup]
 
 

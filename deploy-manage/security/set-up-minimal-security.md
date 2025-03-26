@@ -1,5 +1,5 @@
 ---
-navigation_title: "Set up minimal security"
+navigation_title: "Secure an unsecured cluster"
 applies_to:
   deployment:
     self: ga
@@ -7,15 +7,14 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/security-minimal-setup.html
 ---
 
-
-
+% alternative title: Manual security setup
+% Scope: Just enabling security, resetting passwords, and configuring kibana. Manual approach, opposite to automatic security configuration
+% Original title: Set up minimal security
 # Set up minimal security [security-minimal-setup]
-
 
 ::::{important}
 You only need to complete the following steps if you’re running an existing, unsecured cluster and want to enable the {{es}} {{security-features}}.
 ::::
-
 
 In {{es}} 8.0 and later, security is [enabled automatically](../deploy/self-managed/installing-elasticsearch.md) when you start {{es}} for the first time.
 
@@ -137,5 +136,7 @@ Congratulations! You enabled password protection for your local cluster to preve
 If your cluster has multiple nodes, then you must configure Transport Layer Security (TLS) between nodes. [Production mode](../deploy/self-managed/bootstrap-checks.md#dev-vs-prod-mode) clusters will not start if you do not enable TLS.
 
 [Set up basic security for the {{stack}}](secure-cluster-communications.md) to secure all internal communication between nodes in your cluster.
+
+TBD -> Previous link should point to TRANSPORT SSL (basic)
 
 

@@ -1,10 +1,13 @@
 ---
+navigation_title: Automatic security setup
 applies_to:
   self: ga
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/configuring-stack-security.html
 ---
 
+% Scope: Automatic setup
+% Original title: Start the Elastic Stack with security enabled automatically
 # Self-managed certificates and keys [configuring-stack-security]
 
 When you start {{es}} for the first time, the following security configuration occurs automatically:
@@ -240,5 +243,3 @@ The following settings are incompatible with security auto configuration. If any
     Exceptions are when `discovery.type` is set to `single-node`, or when `cluster.initial_master_nodes` exists but contains only the name of the current node.
 
     ::::
-
-

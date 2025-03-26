@@ -1,5 +1,5 @@
 ---
-navigation_title: "Set up basic security plus HTTPS"
+navigation_title: "Basic / HTTP SSL"
 applies_to:
   deployment:
     self: ga
@@ -8,7 +8,8 @@ mapped_pages:
 ---
 
 
-
+% Scope: HTTP certificates setup / manual configuration / multi or single node cluster
+% original title: Set up basic security for the Elastic Stack plus secured HTTPS traffic
 # Set up basic security plus HTTPS [security-basic-setup-https]
 
 
