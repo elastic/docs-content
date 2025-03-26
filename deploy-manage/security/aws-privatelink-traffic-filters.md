@@ -135,7 +135,7 @@ The mapping will be different for your region. Our production VPC Service for `u
 
     Use [the service name for your region](/deploy-manage/security/aws-privatelink-traffic-filters.md#ec-private-link-service-names-aliases).
 
-    :::{image} /images/cloud-ec-private-link-service.png
+    :::{image} /deploy-manage/images/cloud-ec-private-link-service.png
     :alt: PrivateLink
     :screenshot:
     :::
@@ -146,7 +146,7 @@ The mapping will be different for your region. Our production VPC Service for `u
 
     1. Create a *Private hosted zone*. Consult  *Private hosted zone domain name* in *PrivateLink service names and aliases* for the name of the zone. For example, in *us-east-1* use `vpce.us-east-1.aws.elastic-cloud.com` as the zone domain name. Don’t forget to associate the zone with your VPC.
 
-        :::{image} /images/cloud-ec-private-link-private-hosted-zone-example.png
+        :::{image} /deploy-manage/images/cloud-ec-private-link-private-hosted-zone-example.png
         :alt: Private hosted zone example
         :screenshot:
         :::
@@ -155,7 +155,7 @@ The mapping will be different for your region. Our production VPC Service for `u
 
         Follow the [AWS instructions](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resource-record-sets-creating.html) for details on creating a CNAME record which points to your VPC endpoint DNS name.
 
-        :::{image} /images/cloud-ec-private-link-cname.png
+        :::{image} /deploy-manage/images/cloud-ec-private-link-cname.png
         :alt: PrivateLink CNAME
         :screenshot:
         :::
@@ -212,7 +212,7 @@ Follow these high-level steps to add private link rules to your deployments.
 
 Having trouble finding your VPC endpoint ID? You can find it in the AWS console.
 
-:::{image} /images/cloud-ec-private-link-endpoint-id.png
+:::{image} /deploy-manage/images/cloud-ec-private-link-endpoint-id.png
 :alt: VPC Endpoint ID
 :screenshot:
 :::

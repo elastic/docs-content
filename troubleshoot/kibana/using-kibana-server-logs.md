@@ -1,5 +1,11 @@
 ---
 navigation_title: "Server logs"
+applies_to:
+  deployment:
+    ess: all
+    ece: all
+    self: all
+    eck: all
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/kibana-troubleshooting-kibana-server-logs.html
 ---
@@ -41,7 +47,7 @@ logging.loggers:
 ```
 
 ::::{warning}
-Kibana’s `file` appender is configured to produce logs in [ECS JSON](ecs://reference/index.md) format. It’s the only format that includes the meta information necessary for [log correlation](asciidocalypse://docs/apm-agent-nodejs/docs/reference/logs.md) out-of-the-box.
+Kibana’s `file` appender is configured to produce logs in [ECS JSON](ecs://reference/index.md) format. It’s the only format that includes the meta information necessary for [log correlation](apm-agent-nodejs://reference/logs.md) out-of-the-box.
 ::::
 
 

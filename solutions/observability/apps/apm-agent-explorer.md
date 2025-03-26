@@ -15,14 +15,14 @@ This functionality is in beta and is subject to change. The design and code is l
 
 APM agent explorer provides a centralized panel to identify APM agent deployment details, like service name, environment, instances, and agent name, version, and documentation.
 
-:::{image} ../../../images/observability-apm-agent-explorer.png
+:::{image} /solutions/images/observability-apm-agent-explorer.png
 :alt: APM agent explorer
 :screenshot:
 :::
 
 Select an APM agent to expand it and view the details of each agent instance.
 
-:::{image} ../../../images/observability-apm-agent-explorer-flyout.png
+:::{image} /solutions/images/observability-apm-agent-explorer-flyout.png
 :alt: APM agent explorer flyout
 :screenshot:
 :::

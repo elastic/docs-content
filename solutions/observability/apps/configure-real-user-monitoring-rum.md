@@ -12,7 +12,7 @@ applies_to:
 
 
 ::::{note}
-![supported deployment methods](../../../images/observability-binary-yes-fm-yes.svg "")
+![supported deployment methods](/solutions/images/observability-binary-yes-fm-yes.svg "")
 
 Most options in this section are supported by all APM Server deployment methods.
 
@@ -142,7 +142,7 @@ Default: `"^/webpack"` (excludes stack trace frames that have a filename startin
 ## Source map configuration options [apm-rum-source-map]
 
 ::::{admonition}
-![supported deployment methods](../../../images/observability-binary-yes-fm-no.svg "")
+![supported deployment methods](/solutions/images/observability-binary-yes-fm-no.svg "")
 
 Source maps are supported by all APM Server deployment methods, however, the options in this section are only supported by the APM Server binary.
 

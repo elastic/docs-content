@@ -1,5 +1,5 @@
 ---
-navigation_title: "Fleet and Elastic Agent"
+navigation_title: "Known issues"
 ---
 
 # {{fleet}} and {{agent}} known issues [fleet-elastic-agent-known-issues]

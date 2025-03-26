@@ -102,9 +102,9 @@ If none of these parameters are specified, the [`standard` analyzer](elasticsear
 
 ## Specify the search analyzer for a query [specify-search-query-analyzer]
 
-When writing a [full-text query](elasticsearch://reference/query-languages/full-text-queries.md), you can use the `analyzer` parameter to specify a search analyzer. If provided, this overrides any other search analyzers.
+When writing a [full-text query](elasticsearch://reference/query-languages/query-dsl/full-text-queries.md), you can use the `analyzer` parameter to specify a search analyzer. If provided, this overrides any other search analyzers.
 
-The following [search API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search) request sets the `stop` analyzer as the search analyzer for a [`match`](elasticsearch://reference/query-languages/query-dsl-match-query.md) query.
+The following [search API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search) request sets the `stop` analyzer as the search analyzer for a [`match`](elasticsearch://reference/query-languages/query-dsl/query-dsl-match-query.md) query.
 
 ```console
 GET my-index-000001/_search

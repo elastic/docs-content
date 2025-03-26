@@ -26,7 +26,7 @@ When using {{ecloud}}, there are some limitations you should be aware of:
 * [Regions and Availability Zones](#ec-regions-and-availability-zone)
 % * [Known problems](#ec-known-problems)
 
-For limitations related to logging and monitoring, check the [Restrictions and limitations](../../monitor/stack-monitoring/elastic-cloud-stack-monitoring.md#ec-restrictions-monitoring) section of the logging and monitoring page.
+For limitations related to logging and monitoring, check the [Restrictions and limitations](../../monitor/stack-monitoring/ece-ech-stack-monitoring.md#restrictions-monitoring) section of the logging and monitoring page.
 
 % Occasionally, we also publish information about [Known problems](#ec-known-problems) with our {{ecloud}} or the Elastic Stack.
 
@@ -134,7 +134,7 @@ There are situations where you may need or want to move your installed {{agents}
 
 In {{ecloud}}, you can migrate your {{agents}} by taking a snapshot of your source deployment, and restoring it on a target deployment.
 
-To make a seamless migration, after restoring from a snapshot there are some additional steps required, such as updating settings and resetting the agent policy. Check [Migrate Elastic Agents](/reference/ingestion-tools/fleet/migrate-elastic-agent.md) for details.
+To make a seamless migration, after restoring from a snapshot there are some additional steps required, such as updating settings and resetting the agent policy. Check [Migrate Elastic Agents](/reference/fleet/migrate-elastic-agent.md) for details.
 
 
 ## Regions and Availability Zones [ec-regions-and-availability-zone]

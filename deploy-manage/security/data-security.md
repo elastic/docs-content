@@ -8,7 +8,9 @@ applies_to:
   serverless: ga
 ---
 
-# Secure data, objects, and settings
+# Encrypt your deployment data
+
+(orphan now, we should put this content somewhere)
 
 Add another layer of security by defining custom encryption rules for your cluster's data, {{kib}} saved objects, and settings.
 

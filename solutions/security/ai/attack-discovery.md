@@ -33,7 +33,7 @@ This page describes:
 
 The `Attack Discovery: All` privilege allows you to use Attack Discovery.
 
-![attack-discovery-rbac](../../../images/security-attck-disc-rbac.png)
+![attack-discovery-rbac](/solutions/images/security-attck-disc-rbac.png)
 
 ## Set up Attack Discovery
 
@@ -69,7 +69,7 @@ You’ll need to select an LLM connector before you can analyze alerts. Attack D
    :::
 
 
-    :::{image} ../../../images/security-attck-disc-select-model-empty.png
+    :::{image} /solutions/images/security-attck-disc-select-model-empty.png
     :alt: attck disc select model empty
     :::
 
@@ -90,7 +90,7 @@ Each discovery includes the following information describing the potential threa
 2. The number of associated alerts and which parts of the [MITRE ATT&CK matrix](https://attack.mitre.org/) they correspond to.
 3. The implicated entities (users and hosts), and what suspicious activity was observed for each.
 
-:::{image} ../../../images/security-attck-disc-example-disc.png
+:::{image} /solutions/images/security-attck-disc-example-disc.png
 :alt: Attack Discovery detail view
 :::
 
@@ -100,11 +100,11 @@ Each discovery includes the following information describing the potential threa
 There are several ways you can incorporate discoveries into your {{elastic-sec}} workflows:
 
 * Click an entity’s name to open the user or host details flyout and view more details that may be relevant to your investigation.
-* Hover over an entity’s name to either add the entity to Timeline (![Add to timeline icon](../../../images/security-icon-add-to-timeline.png "title=70%")) or copy its field name and value to the clipboard (![Copy to clipboard icon](../../../images/security-icon-copy.png "title=70%")).
+* Hover over an entity’s name to either add the entity to Timeline (![Add to timeline icon](/solutions/images/security-icon-add-to-timeline.png "title=70%")) or copy its field name and value to the clipboard (![Copy to clipboard icon](/solutions/images/security-icon-copy.png "title=70%")).
 * Click **Take action**, then select **Add to new case** or **Add to existing case** to add a discovery to a [case](/solutions/security/investigate/cases.md). This makes it easy to share the information with your team and other stakeholders.
 * Click **Investigate in timeline** to explore the discovery in [Timeline](/solutions/security/investigate/timeline.md).
 * Click **View in AI Assistant** to attach the discovery to a conversation with AI Assistant. You can then ask follow-up questions about the discovery or associated alerts.
 
-:::{image} ../../../images/security-add-discovery-to-assistant.gif
+:::{image} /solutions/images/security-add-discovery-to-assistant.gif
 :alt: Attack Discovery view in AI Assistant
 :::

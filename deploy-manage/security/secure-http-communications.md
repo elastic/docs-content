@@ -132,7 +132,7 @@ If you haven’t already, start {{kib}} and connect it to {{es}} using the [enro
 
     This role mapping will assign the `kibana_system` role to any user that matches the included mapping rule, which is set to equal the client certificate’s DN attribute:
 
-    ![Role mapping for the {{kib}} client certificate](/images/kibana-mutual-tls-role-mapping.png "")
+    ![Role mapping for the {{kib}} client certificate](/deploy-manage/images/kibana-mutual-tls-role-mapping.png "")
 
     For more information, see [](/deploy-manage/users-roles/cluster-or-deployment-auth/mapping-users-groups-to-roles.md).
 
@@ -228,7 +228,7 @@ deployment:
 ```
 
 :::{note}
-This section only covers TLS certificates for the HTTP layer. TLS certificates for the transport layer that are used for internal communications between Elasticsearch nodes are managed by ECK and cannot be changed. You can however set your own certificate authority for the [transport layer](/deploy-manage/deploy/cloud-on-k8s/transport-settings.md#k8s-transport-ca).
+This section only covers TLS certificates for the HTTP layer. TLS certificates for the transport layer that are used for internal communications between Elasticsearch nodes are managed by ECK and cannot be changed. You can however set your own certificate authority for the [transport layer](/deploy-manage/security/k8s-transport-settings.md#k8s-transport-ca).
 :::
 
 By default, the operator manages a self-signed certificate with a custom CA for each resource. The CA, the certificate and the private key are each stored in a separate `Secret`.

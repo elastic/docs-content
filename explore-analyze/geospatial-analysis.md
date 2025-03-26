@@ -32,7 +32,7 @@ Data is often messy and incomplete. [Ingest pipelines](../manage-data/ingest/tra
 
 ## Query [geospatial-query]
 
-[Geo queries](elasticsearch://reference/query-languages/geo-queries.md) answer location-driven questions. Find documents that intersect with, are within, are contained by, or do not intersect your query geometry. Combine geospatial queries with full text search queries for unparalleled searching experience. For example, "Show me all subscribers that live within 5 miles of our new gym location, that joined in the last year and have running mentioned in their profile".
+[Geo queries](elasticsearch://reference/query-languages/query-dsl/geo-queries.md) answer location-driven questions. Find documents that intersect with, are within, are contained by, or do not intersect your query geometry. Combine geospatial queries with full text search queries for unparalleled searching experience. For example, "Show me all subscribers that live within 5 miles of our new gym location, that joined in the last year and have running mentioned in their profile".
 
 
 ## ES|QL [esql-query]
@@ -77,7 +77,7 @@ Visualize geo data with [Kibana](visualize/maps.md). Add your map to a [dashboar
 
 This dashboard shows the effects of the [Cumbre Vieja eruption](https://www.elastic.co/blog/understanding-evolution-volcano-eruption-elastic-maps/).
 
-![Kibana dashboard showing Cumbre Vieja eruption from Aug 31 2021 to Dec 14 2021](../images/elasticsearch-reference-cumbre_vieja_eruption_dashboard.png "")
+![Kibana dashboard showing Cumbre Vieja eruption from Aug 31 2021 to Dec 14 2021](/explore-analyze/images/elasticsearch-reference-cumbre_vieja_eruption_dashboard.png "")
 
 
 ## Machine learning [geospatial-ml]

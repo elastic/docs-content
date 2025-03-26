@@ -41,7 +41,7 @@ To centralize your logs in {{es}}, you need to have an S3 bucket. {{filebeat}}, 
 
 In the [AWS S3 console](https://s3.console.aws.amazon.com/s3), click on **Create bucket**. Give the bucket a **name** and specify the **region** in which you want it deployed.
 
-:::{image} ../../../images/observability-creating-a-s3-bucket.png
+:::{image} /solutions/images/observability-creating-a-s3-bucket.png
 :alt: S3 bucket creation
 :::
 
@@ -58,7 +58,7 @@ Make sure that the queue is created in the same region as the S3 bucket.
 ::::
 
 
-:::{image} ../../../images/observability-creating-a-queue.png
+:::{image} /solutions/images/observability-creating-a-queue.png
 :alt: Queue Creation
 :::
 
@@ -103,13 +103,13 @@ Now that your queue is created, go to the properties of the S3 bucket you create
 
 Specify that you want to send a notification on every object creation event.
 
-:::{image} ../../../images/observability-configure-event-notification.png
+:::{image} /solutions/images/observability-configure-event-notification.png
 :alt: Event Notification Setting
 :::
 
 Set the destination as the SQS queue you just created.
 
-:::{image} ../../../images/observability-configure-notification-output.png
+:::{image} /solutions/images/observability-configure-notification-output.png
 :alt: Event Notification Setting
 :::
 
@@ -126,23 +126,50 @@ Download and install {{filebeat}}.
 :::::::{tab-set}
 
 ::::::{tab-item} DEB
-Version 9.0.0-beta1 of Filebeat has not yet been released.
+```shell subs=true
+curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{stack-version}}-amd64.deb
+sudo dpkg -i filebeat-{{stack-version}}-amd64.deb
+```
 ::::::
 
 ::::::{tab-item} RPM
-Version 9.0.0-beta1 of Filebeat has not yet been released.
+```shell subs=true
+curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{stack-version}}-x86_64.rpm
+sudo rpm -vi filebeat-{{stack-version}}-x86_64.rpm
+```
 ::::::
 
 ::::::{tab-item} MacOS
-Version 9.0.0-beta1 of Filebeat has not yet been released.
+```shell subs=true
+curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{stack-version}}-darwin-x86_64.tar.gz
+tar xzvf filebeat-{{stack-version}}-darwin-x86_64.tar.gz
+```
 ::::::
 
 ::::::{tab-item} Linux
-Version 9.0.0-beta1 of Filebeat has not yet been released.
+```shell subs=true
+curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{stack-version}}-linux-x86_64.tar.gz
+tar xzvf filebeat-{{stack-version}}-linux-x86_64.tar.gz
+```
 ::::::
 
 ::::::{tab-item} Windows
-Version 9.0.0-beta1 of Filebeat has not yet been released.
+1. Download the [Filebeat Windows zip file](https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{stack-version}}-windows-x86_64.zip).
+
+2. Extract the contents of the zip file into `C:\Program Files`.
+
+3. Rename the `filebeat-[version]-windows-x86_64` directory to `Filebeat`.
+
+4. Open a PowerShell prompt as an Administrator (right-click the PowerShell icon and select *Run As Administrator*).
+
+5. From the PowerShell prompt, run the following commands to install Filebeat as a Windows service:
+
+  ```shell subs=true
+  PS > cd 'C:\Program Files\Filebeat'
+  PS C:\Program Files\Filebeat> .\install-service-filebeat.ps1
+  ```
+
+NOTE: If script execution is disabled on your system, you need to set the execution policy for the current session to allow the script to run. For example: `PowerShell.exe -ExecutionPolicy UnRestricted -File .\install-service-filebeat.ps1`.
 ::::::
 
 :::::::
@@ -305,13 +332,13 @@ Start {{filebeat}} to collect the logs.
 
 Here’s what we’ve achieved so far:
 
-:::{image} ../../../images/observability-one-bucket-archi.png
+:::{image} /solutions/images/observability-one-bucket-archi.png
 :alt: Current Architecture
 :::
 
 Now, let’s configure the `s3access` fileset. The goal here is to be able to monitor how people access the bucket we created. To do this, we’ll create another bucket and another queue. The new architecture will look like this:
 
-:::{image} ../../../images/observability-two-buckets-archi.png
+:::{image} /solutions/images/observability-two-buckets-archi.png
 :alt: Architecture with Access Logging Enabled
 :::
 
@@ -319,7 +346,7 @@ Create a new S3 bucket and SQS queue. Ensure that the event notifications on the
 
 Now go back to the first bucket, and go to **Properties** > **Server access logging**. Specify that you want to ship the access logs to the bucket you most recently created.
 
-:::{image} ../../../images/observability-Server-Access-Logging.png
+:::{image} /solutions/images/observability-Server-Access-Logging.png
 :alt: Enabling Server Access Logging
 :::
 
@@ -364,7 +391,7 @@ Now that the logs are being shipped to {{es}} we can visualize them in {{kib}}. 
 
 The filesets we used in the previous steps also come with pre-built dashboards that you can use to visualize the data. In {{kib}}, find **Dashboards** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Search for S3 and select the dashboard called: **[Filebeat AWS] S3 Server Access Log Overview**:
 
-:::{image} ../../../images/observability-S3-Server-Access-Logs.png
+:::{image} /solutions/images/observability-S3-Server-Access-Logs.png
 :alt: S3 Server Access Log Overview
 :::
 
@@ -394,23 +421,50 @@ Download and install {{metricbeat}}.
 :::::::{tab-set}
 
 ::::::{tab-item} DEB
-Version 9.0.0-beta1 of Metricbeat has not yet been released.
+```shell subs=true
+curl -L -O https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-{{stack-version}}-amd64.deb
+sudo dpkg -i metricbeat-{{stack-version}}-amd64.deb
+```
 ::::::
 
 ::::::{tab-item} RPM
-Version 9.0.0-beta1 of Metricbeat has not yet been released.
+```shell subs=true
+curl -L -O https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-{{stack-version}}-x86_64.rpm
+sudo rpm -vi metricbeat-{{stack-version}}-x86_64.rpm
+```
 ::::::
 
 ::::::{tab-item} MacOS
-Version 9.0.0-beta1 of Metricbeat has not yet been released.
+```shell subs=true
+curl -L -O https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-{{stack-version}}-darwin-x86_64.tar.gz
+tar xzvf metricbeat-{{stack-version}}-darwin-x86_64.tar.gz
+```
 ::::::
 
 ::::::{tab-item} Linux
-Version 9.0.0-beta1 of Metricbeat has not yet been released.
+```shell subs=true
+curl -L -O https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-{{stack-version}}-linux-x86_64.tar.gz
+tar xzvf metricbeat-{{stack-version}}-linux-x86_64.tar.gz
+```
 ::::::
 
 ::::::{tab-item} Windows
-Version 9.0.0-beta1 of Metricbeat has not yet been released.
+1. Download the [Metricbeat Windows zip file](https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-{{stack-version}}-windows-x86_64.zip).
+
+2. Extract the contents of the zip file into `C:\Program Files`.
+
+3. Rename the `metricbeat-[version]-windows-x86_64` directory to `Metricbeat`.
+
+4. Open a PowerShell prompt as an Administrator (right-click the PowerShell icon and select *Run As Administrator*).
+
+5. From the PowerShell prompt, run the following commands to install Metricbeat as a Windows service:
+
+  ```shell subs=true
+  PS > cd 'C:\Program Files\Metricbeat'
+  PS C:\Program Files\Metricbeat> .\install-service-metricbeat.ps1
+  ```
+
+NOTE: If script execution is disabled on your system, you need to set the execution policy for the current session to allow the script to run. For example: `PowerShell.exe -ExecutionPolicy UnRestricted -File .\install-service-metricbeat.ps1`.
 ::::::
 
 :::::::
@@ -572,18 +626,18 @@ You can now start {{metricbeat}}:
 
 Now that the metrics are being streamed to {{es}} we can visualize them in {{kib}}. To open **Infrastructure inventory**, find **Infrastructure** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Make sure to show the **AWS** source and the **EC2 Instances**:
 
-:::{image} ../../../images/observability-EC2-instances.png
+:::{image} /solutions/images/observability-EC2-instances.png
 :alt: Your EC2 Infrastructure
 :::
 
 The metricsets we used in the previous steps also comes with pre-built dashboard that you can use to visualize the data. In {{kib}}, find **Dashboards** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Search for EC2 and select the dashboard called: **[Metricbeat AWS] EC2 Overview**:
 
-:::{image} ../../../images/observability-ec2-dashboard.png
+:::{image} /solutions/images/observability-ec2-dashboard.png
 :alt: EC2 Overview
 :::
 
 If you want to track your billings on AWS, you can also check the **[Metricbeat AWS] Billing Overview** dashboard:
 
-:::{image} ../../../images/observability-aws-billing.png
+:::{image} /solutions/images/observability-aws-billing.png
 :alt: Billing Overview
 :::
