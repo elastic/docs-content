@@ -24,7 +24,7 @@ Depending on your deployment type and context, you have several options for moni
 
 ```{applies_to}
 deployment:
-  ech:
+  ess:
 ```
 
 :::{include} /deploy-manage/monitor/_snippets/autoops.md
@@ -34,7 +34,7 @@ deployment:
 
 ```{applies_to}
 deployment:
-  ech:
+  ess:
   ece:
   eck:
   self:
@@ -53,7 +53,7 @@ In {{ece}} and {{ech}}, Elastic manages the installation and configuration of th
 ```{applies_to}
 deployment:
   ece:
-  ech:
+  ess:
 ```
 
 {{ece}} and {{ech}} provide out of the box tools for monitoring the health of your deployment and resolving health issues when they arise: 

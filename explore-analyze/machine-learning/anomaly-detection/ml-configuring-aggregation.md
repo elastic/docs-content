@@ -34,13 +34,13 @@ There are a number of requirements for using aggregations in {{dfeeds}}.
 
 * If your [{{dfeed}} uses aggregations with nested `terms` aggs](#aggs-dfeeds) and model plot is not enabled for the {{anomaly-job}}, neither the **Single Metric Viewer** nor the **Anomaly Explorer** can plot and display an anomaly chart. In these cases, an explanatory message is shown instead of the chart.
 * Your {{dfeed}} can contain multiple aggregations, but only the ones with names that match values in the job configuration are fed to the job.
-* Using [scripted metric](elasticsearch://reference/data-analysis/aggregations/search-aggregations-metrics-scripted-metric-aggregation.md) aggregations is not supported in {{dfeeds}}.
+* Using [scripted metric](elasticsearch://reference/aggregations/search-aggregations-metrics-scripted-metric-aggregation.md) aggregations is not supported in {{dfeeds}}.
 
 ## Recommendations [aggs-recommendations-dfeeds]
 
 * When your detectors use [metric](/reference/data-analysis/machine-learning/ml-metric-functions.md) or [sum](/reference/data-analysis/machine-learning/ml-sum-functions.md) analytical functions, it’s recommended to set the `date_histogram` or `composite` aggregation interval to a tenth of the bucket span. This creates finer, more granular time buckets, which are ideal for this type of analysis.
 * When your detectors use [count](/reference/data-analysis/machine-learning/ml-count-functions.md) or [rare](/reference/data-analysis/machine-learning/ml-rare-functions.md) functions, set the interval to the same value as the bucket span.
-* If you have multiple influencers or partition fields or if your field cardinality is more than 1000, use [composite aggregations](elasticsearch://reference/data-analysis/aggregations/search-aggregations-bucket-composite-aggregation.md).
+* If you have multiple influencers or partition fields or if your field cardinality is more than 1000, use [composite aggregations](elasticsearch://reference/aggregations/search-aggregations-bucket-composite-aggregation.md).
 
     To determine the cardinality of your data, you can run searches such as:
 
@@ -254,10 +254,10 @@ Use the following format to define a composite aggregation in your {{dfeed}}:
 
 You can also use complex nested aggregations in {{dfeeds}}.
 
-The next example uses the [`derivative` pipeline aggregation](elasticsearch://reference/data-analysis/aggregations/search-aggregations-pipeline-derivative-aggregation.md) to find the first order derivative of the counter `system.network.out.bytes` for each value of the field `beat.name`.
+The next example uses the [`derivative` pipeline aggregation](elasticsearch://reference/aggregations/search-aggregations-pipeline-derivative-aggregation.md) to find the first order derivative of the counter `system.network.out.bytes` for each value of the field `beat.name`.
 
 ::::{note}
-`derivative` or other pipeline aggregations may not work within `composite` aggregations. See [composite aggregations and pipeline aggregations](elasticsearch://reference/data-analysis/aggregations/search-aggregations-bucket-composite-aggregation.md#search-aggregations-bucket-composite-aggregation-pipeline-aggregations).
+`derivative` or other pipeline aggregations may not work within `composite` aggregations. See [composite aggregations and pipeline aggregations](elasticsearch://reference/aggregations/search-aggregations-bucket-composite-aggregation.md#search-aggregations-bucket-composite-aggregation-pipeline-aggregations).
 ::::
 
 ```js

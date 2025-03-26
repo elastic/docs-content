@@ -1,5 +1,8 @@
 ---
 navigation_title: "Graph"
+applies_to:
+  stack: all
+  serverless: all
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/graph-troubleshooting.html
 ---

@@ -66,7 +66,7 @@ PUT my-index
 4. The field type which is text in this example.
 
 
-To learn how to optimize space, refer to the [Saving disk space by excluding the ELSER tokens from document source](/manage-data/ingest/transform-enrich/ingest-pipelines.md) with an [{{infer}} processor](elasticsearch://reference/ingestion-tools/enrich-processor/inference-processor.md) to use ELSER to infer against the data that is being ingested in the pipeline.
+To learn how to optimize space, refer to the [Saving disk space by excluding the ELSER tokens from document source](/manage-data/ingest/transform-enrich/ingest-pipelines.md) with an [{{infer}} processor](elasticsearch://reference/enrich-processor/inference-processor.md) to use ELSER to infer against the data that is being ingested in the pipeline.
 
 ```console
 PUT _ingest/pipeline/elser-v2-test

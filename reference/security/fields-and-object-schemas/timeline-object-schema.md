@@ -19,7 +19,7 @@ All column, dropzone, and filter fields must be [ECS fields](ecs://reference/ind
 
 This screenshot maps the Timeline UI components to their JSON objects:
 
-:::{image} ../../../images/security-timeline-object-ui.png
+:::{image} /reference/images/security-timeline-object-ui.png
 :alt: timeline object ui
 :screenshot:
 :::
