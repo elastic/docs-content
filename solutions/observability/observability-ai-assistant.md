@@ -44,7 +44,7 @@ Also, the data you provide to the Observability AI assistant is *not* anonymized
 The AI assistant requires the following:
 
 * {{stack}} version 8.9 and later.
-* A self-deployed connector service if [search connectors](elasticsearch://reference/ingestion-tools/search-connectors/self-managed-connectors.md) are used to populate external data into the knowledge base.
+* A self-deployed connector service if [search connectors](elasticsearch://reference/search-connectors/self-managed-connectors.md) are used to populate external data into the knowledge base.
 * An account with a third-party generative AI provider that preferably supports function calling. If your AI provider does not support function calling, you can configure AI Assistant settings under **Stack Management** to simulate function calling, but this might affect performance.
 
     Refer to the [connector documentation](../../deploy-manage/manage-connectors.md) for your provider to learn about supported and default models.
@@ -147,16 +147,16 @@ To add external data to the knowledge base in {{kib}}:
 ### Use search connectors [obs-ai-search-connectors]
 
 ::::{tip}
-The [search connectors](elasticsearch://reference/ingestion-tools/search-connectors/index.md) described in this section differ from the [Stack management → Connectors](../../deploy-manage/manage-connectors.md) configured during the [AI Assistant setup](#obs-ai-set-up). Search connectors are only needed when importing external data into the Knowledge base of the AI Assistant, while the stack connector to the LLM is required for the AI Assistant to work.
+The [search connectors](elasticsearch://reference/search-connectors/index.md) described in this section differ from the [Stack management → Connectors](../../deploy-manage/manage-connectors.md) configured during the [AI Assistant setup](#obs-ai-set-up). Search connectors are only needed when importing external data into the Knowledge base of the AI Assistant, while the stack connector to the LLM is required for the AI Assistant to work.
 
 ::::
 
 
-[Connectors](elasticsearch://reference/ingestion-tools/search-connectors/index.md) allow you to index content from external sources thereby making it available for the AI Assistant. This can greatly improve the relevance of the AI Assistant’s responses. Data can be integrated from sources such as GitHub, Confluence, Google Drive, Jira, AWS S3, Microsoft Teams, Slack, and more.
+[Connectors](elasticsearch://reference/search-connectors/index.md) allow you to index content from external sources thereby making it available for the AI Assistant. This can greatly improve the relevance of the AI Assistant’s responses. Data can be integrated from sources such as GitHub, Confluence, Google Drive, Jira, AWS S3, Microsoft Teams, Slack, and more.
 
 UI affordances for creating and managing search connectors are available in the Search Solution in {{kib}}. You can also use the {{es}} [Connector APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-connector) to create and manage search connectors.
 
-The infrastructure for deploying connectors must be [self-managed](elasticsearch://reference/ingestion-tools/search-connectors/self-managed-connectors.md).
+The infrastructure for deploying connectors must be [self-managed](elasticsearch://reference/search-connectors/self-managed-connectors.md).
 
 By default, the AI Assistant queries all search connector indices. To override this behavior and customize which indices are queried, adjust the **Search connector index pattern** setting on the [AI Assistant Settings](#obs-ai-settings) page. This allows precise control over which data sources are included in AI Assistant knowledge base.
 
@@ -171,9 +171,9 @@ To create a connector in the {{kib}} UI and make its content available to the AI
 
 2. Follow the instructions to create a new connector.
 
-    For example, if you create a [GitHub connector](elasticsearch://reference/ingestion-tools/search-connectors/es-connectors-github.md) you have to set a `name`, attach it to a new or existing `index`, add your `personal access token` and include the `list of repositories` to synchronize.
+    For example, if you create a [GitHub connector](elasticsearch://reference/search-connectors/es-connectors-github.md) you have to set a `name`, attach it to a new or existing `index`, add your `personal access token` and include the `list of repositories` to synchronize.
 
-    Learn more about configuring and [using connectors](elasticsearch://reference/ingestion-tools/search-connectors/connectors-ui-in-kibana.md) in the Elasticsearch documentation.
+    Learn more about configuring and [using connectors](elasticsearch://reference/search-connectors/connectors-ui-in-kibana.md) in the Elasticsearch documentation.
 
 
 After creating your connector, create the embeddings needed by the AI Assistant. You can do this using either:

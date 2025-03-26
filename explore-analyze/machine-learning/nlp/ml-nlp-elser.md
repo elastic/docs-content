@@ -284,7 +284,7 @@ To learn more about ELSER performance, refer to the [Benchmark information](#els
 
 ## Pre-cleaning input text [pre-cleaning]
 
-The quality of the input text significantly affects the quality of the embeddings. To achieve the best results, it’s recommended to clean the input text before generating embeddings. The exact preprocessing you may need to do heavily depends on your text. For example, if your text contains HTML tags, use the [HTML strip processor](elasticsearch://reference/ingestion-tools/enrich-processor/htmlstrip-processor.md) in an ingest pipeline to remove unnecessary elements. Always review and clean your input text before ingestion to eliminate any irrelevant entities that might affect the results.
+The quality of the input text significantly affects the quality of the embeddings. To achieve the best results, it’s recommended to clean the input text before generating embeddings. The exact preprocessing you may need to do heavily depends on your text. For example, if your text contains HTML tags, use the [HTML strip processor](elasticsearch://reference/enrich-processor/htmlstrip-processor.md) in an ingest pipeline to remove unnecessary elements. Always review and clean your input text before ingestion to eliminate any irrelevant entities that might affect the results.
 
 ## Recommendations for using ELSER [elser-recommendations]
 

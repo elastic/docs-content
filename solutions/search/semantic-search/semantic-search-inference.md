@@ -597,7 +597,7 @@ PUT alibabacloud-ai-search-embeddings
 
 ## Create an ingest pipeline with an inference processor [infer-service-inference-ingest-pipeline]
 
-Create an [ingest pipeline](../../../manage-data/ingest/transform-enrich/ingest-pipelines.md) with an [{{infer}} processor](elasticsearch://reference/ingestion-tools/enrich-processor/inference-processor.md) and use the model you created above to infer against the data that is being ingested in the pipeline.
+Create an [ingest pipeline](../../../manage-data/ingest/transform-enrich/ingest-pipelines.md) with an [{{infer}} processor](elasticsearch://reference/enrich-processor/inference-processor.md) and use the model you created above to infer against the data that is being ingested in the pipeline.
 
 :::::::{tab-set}
 
