@@ -8,6 +8,7 @@ mapped_pages:
 ---
 
 % alternative title: Manual security setup
+$ Set up minimal security
 % Scope: Just enabling security, resetting passwords, and configuring kibana. Manual approach, opposite to automatic security configuration
 % Original title: Set up minimal security
 # Manual security setup [security-minimal-setup]

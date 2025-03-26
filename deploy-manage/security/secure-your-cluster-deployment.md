@@ -13,7 +13,6 @@ mapped_pages:
 
 It's important to protect your {{es}} cluster and the data it contains. Implementing a defense in depth strategy provides multiple layers of security to help safeguard your system.
 
-
 :::{include} /deploy-manage/security/_snippets/complete-security.md
 :::
 
@@ -28,18 +27,24 @@ You must secure [other {{stack}} components](/deploy-manage/security/secure-clie
 
 You can configure the following aspects of your Elastic cluster or deployment to maintain and enhance security:
 
-## Security activation [manually-configure-security]
+## Enable security [manually-configure-security]
 
 % Intro to link automatic setup and manual setup process of security
 
 Everything starts with the security feature activation in {{es}}, which enables authentication and authorization, TLS encryption of communications, and all other security related functionality described in this section.
 
 ::::{note}
+{{ech}}, {{ece}},
 Orchestrated deployments automatically configures security by default, the elastic user password, TLS certificates, and configure {{kib}} to access {{es}} in a secure way. Disabling security is not an option in managed deployments.
 ::::
 
-Since {{es}} 8.0, security is enabled and configured by default. However, security auto configuration [might be skipped](/deploy-manage/security/manually-configure-security-in-self-managed-cluster.md#stack-skip-auto-configuration) in certain scenarios. In these cases, you can [manually configure security](/deploy-manage/security/manually-configure-security-in-self-managed-cluster.md).
+In self-managed clusters, security is enabled and automatically configured by default since {{es}} 8.0. However, security auto configuration [might be skipped](./security-certificates-keys.md#stack-skip-auto-configuration) in certain scenarios. In these cases, you can [manually configure security](./set-up-minimal-security.md).
 
+Security needs vary depending on whether you’re developing locally on your laptop or securing all communications in a production environment. Regardless of where you’re deploying the {{stack}} ("ELK"), running a secure cluster is incredibly important to protect your data. That’s why security is [enabled and configured by default](../deploy/self-managed/installing-elasticsearch.md) since {{es}} 8.0.
+
+
+guides links
+{{kib}} needs to be manually configured
 In self-managed clusters, there are two ways to perform the initial security setup, depending on your needs:
 
 * Automatic security setup: {{es}} security requires TLS certificates to be configured for inter-node communications (transport layer), and in order to facilitate the initial setup, there's an automatic configuration.
@@ -49,58 +54,29 @@ In self-managed clusters, there are two ways to perform the initial security set
   * Basic transport TLS security: for multi-node clusters only, as single-node clusters don't need to talk with other nodes.
   * HTTP TLS: optional but highly recommended
 
+### Security auto configuration
+
+explain what it involves
+
+Link to the guide that includes kibana setup
 Refer to [skipxxxx]() to understand in what cases autoconfiguration works and when a manual configuration will be expected.
+
+
+### Manual configuration
+
+If you’re securing an existing unsecured cluster, or prefer to use your own TLS certificates, follow the manual approach. It involves enabling different layers of protection in sequence, depending on your cluster architecture and security requirements.
+
+- **Start with [minimal security](set-up-minimal-security.md)**: Enables password-based authentication for built-in users and configures {{kib}} to connect securely. Suitable for single-node clusters, but not sufficient for production.
+
+- **Then [configure transport TLS](secure-cluster-communications.md)**: Required for multi-node clusters running in [production mode](../deploy/self-managed/bootstrap-checks.md#dev-vs-prod-mode). This secures communication between nodes and prevents unauthorized nodes from joining the cluster.
+
+- **Finally, [configure HTTP TLS](set-up-basic-security-plus-https.md)**: Secures all client communications over HTTPS, including traffic between {{kib}} and {{es}}, and between browsers and {{kib}}.
+
+Each step builds on the previous one. For production environments, it’s strongly recommended to complete all three.
 
 Kibana also supports HTTPS.
 
 Mutual authentication is also an option.
-
-### Security basics (a decidir)
-
-For {{es}} to be able to start with security enabled, the following is necessary:
-
-
-single nodes and multiple-nodes.
-What is required, what is optional. Single-node vs multi-node
-Consider Kibana HTTPS
-
-Security gives access to users and roles and certificates, links
-
-Security needs vary depending on whether you’re developing locally on your laptop or securing all communications in a production environment. Regardless of where you’re deploying the {{stack}} ("ELK"), running a secure cluster is incredibly important to protect your data. That’s why security is [enabled and configured by default](../deploy/self-managed/installing-elasticsearch.md) since {{es}} 8.0.
-
-A decidir esto tambien:
-
-
-### Minimal security ({{es}} Development) [security-minimal-overview]
-
-::::{important}
-The minimal security scenario is not sufficient for [production mode](../deploy/self-managed/bootstrap-checks.md#dev-vs-prod-mode) clusters. If your cluster has multiple nodes, you must enable minimal security and then [configure Transport Layer Security (TLS)](secure-cluster-communications.md) between nodes.
-::::
-
-If you’ve been working with {{es}} and want to enable security on your existing, unsecured cluster, start here. You’ll set passwords for the built-in users to prevent unauthorized access to your local cluster, and also configure password authentication for {{kib}}.
-
-[Set up minimal security](set-up-minimal-security.md)
-
-### Basic security ({{es}} + {{kib}}) [security-basic-overview]
-
-This scenario configures TLS for communication between nodes. This security layer requires that nodes verify security certificates, which prevents unauthorized nodes from joining your {{es}} cluster.
-
-Your external HTTP traffic between {{es}} and {{kib}} won’t be encrypted, but internode communication will be secured.
-
-[Set up basic security](secure-cluster-communications.md)
-
-### Basic security plus secured HTTPS traffic ({{stack}}) [security-basic-https-overview]
-
-This scenario builds on the one for basic security and secures all HTTP traffic with TLS. In addition to configuring TLS on the transport interface of your {{es}} cluster, you configure TLS on the HTTP interface for both {{es}} and {{kib}}.
-
-::::{note}
-If you need mutual (bidirectional) TLS on the HTTP layer, then you’ll need to configure mutual authenticated encryption.
-::::
-
-You then configure {{kib}} and Beats to communicate with {{es}} using TLS so that all communications are encrypted. This level of security is strong, and ensures that any communications in and out of your cluster are secure.
-
-[Set up basic security plus HTTPS traffic](secure-cluster-communications.md)
-
 
 
 ## Communication and network security
