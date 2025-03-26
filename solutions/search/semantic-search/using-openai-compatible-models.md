@@ -113,8 +113,7 @@ Create a connector that uses the public URL you created.
 8. **Save**.
    :::{image} /solutions/images/elasticsearch-openai-compatible-connector.png
    :alt: Configuring an LLM connector in Playground
-   :title: Configuring an LLM connector in Playground
-   :name: configuring-llm-connector-playground
+   :screenshot:
    :::
 9. Click **Add data sources** and connect your index.
 
