@@ -8,10 +8,12 @@ mapped_pages:
 
 # {{ecloud}} Static IPs [ec-static-ips]
 
-{{ecloud}} provides a range of static IP addresses that enable you to allow or deny IP ranges. There are two types of static IP addresses, [ingress](#ec-ingress) and [egress](#ec-egress), and they each have their own set of use cases. In general, static IPs can be used to introduce network controls (for example, firewall rules) for traffic that goes to and from {{ecloud}} deployments over the Internet. Use of static IPs is not applicable to private cloud service provider connections (for example, AWS/Azure PrivateLink, GCP Private Service Connect). It is important to note that static IP addresses are [subject to change](#ec-warning), and not all [cloud provider regions](#ec-regions) are currently fully supported for ingress and egress static IPs.
+{{ecloud}} provides a range of static IP addresses that enable you to allow or deny IP ranges. There are two types of static IP addresses, [ingress](#ec-ingress) and [egress](#ec-egress), and they each have their own set of use cases. In general, static IPs can be used to introduce network controls (for example, firewall rules) for traffic that goes to and from {{ecloud}} deployments over the Internet. Use of static IPs is not applicable to private cloud service provider connections (for example, AWS/Azure PrivateLink, GCP Private Service Connect). 
+
+Static IP addresses are [subject to change](#ec-warning), and not all [cloud provider regions](#ec-regions) are currently fully supported for ingress and egress static IPs. For this reason, we generally do not recommend that you use firewall rules to allow or restrict certain IP ranges. Consider using [private link](/deploy-manage/security/private-link-traffic-filters.md) traffic filters for deployment endpoints on {{ech}}. However, in situations where using Private Link services do not meet requirements (for example, secure traffic **from** {{ecloud}}), static IP ranges can be used.
 
 
-## Ingress Static IPs: Traffic To {{ecloud}} [ec-ingress] 
+## Ingress Static IPs: Traffic to {{ecloud}} [ec-ingress] 
 
 Suitable usage of ingress static IPs to introduce network controls:
 
@@ -118,7 +120,7 @@ Not suitable usage of egress static IPs to introduce network controls:
 ::::{warning} 
 :name: ec-warning
 
-Static IP ranges are subject to change. You will need to update your firewall rules when they change to prevent service disruptions. We will announce changes at least 8 weeks in advance (see [example](https://status.elastic.co/incidents/1xs411x77wgh)). Please subscribe to the [{{ecloud}} Status Page](https://status.elastic.co/) to remain up to date with any changes to the Static IP ranges which you will need to update at your side.
+Static IP ranges are subject to change. You will need to update your firewall rules when they change to prevent service disruptions. We will announce changes at least 8 weeks in advance (see [example](https://status.elastic.co/incidents/1xs411x77wgh)). Please subscribe to the [{{ecloud}} status page](https://status.elastic.co/) to remain up to date with any changes to the Static IP ranges which you will need to update at your side.
 ::::
 
 

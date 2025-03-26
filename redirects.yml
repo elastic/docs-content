@@ -86,3 +86,5 @@ redirects:
 
 ## troubleshoot
   'troubleshoot/deployments/cloud-enterprise/ask-for-help.md': 'troubleshoot/index.md'
+  'troubleshoot/deployments/serverless-status.md': 'troubleshoot/deployments/serverless.md'
+  'troubleshoot/deployments/esf/elastic-serverless-forwarder.md': 'troubleshoot/ingest/elastic-serverless-forwarder.md'

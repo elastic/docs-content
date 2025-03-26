@@ -14,7 +14,7 @@ The following diagram illustrates the components of full-text search.
 
 At a high level, full-text search involves the following:
 
-* [**Text analysis**](../../../manage-data/data-store/text-analysis.md): Analysis consists of a pipeline of sequential transformations. Text is transformed into a format optimized for searching using techniques such as stemming, lowercasing, and stop word elimination. {{es}} contains a number of built-in [analyzers](elasticsearch://reference/data-analysis/text-analysis/analyzer-reference.md) and tokenizers, including options to analyze specific language text. You can also create custom analyzers.
+* [**Text analysis**](../../../manage-data/data-store/text-analysis.md): Analysis consists of a pipeline of sequential transformations. Text is transformed into a format optimized for searching using techniques such as stemming, lowercasing, and stop word elimination. {{es}} contains a number of built-in [analyzers](elasticsearch://reference/text-analysis/analyzer-reference.md) and tokenizers, including options to analyze specific language text. You can also create custom analyzers.
 ::::{tip}
 Refer to [Test an analyzer](../../../manage-data/data-store/text-analysis/test-an-analyzer.md) to learn how to test an analyzer and inspect the tokens and metadata it generates.
 ::::
