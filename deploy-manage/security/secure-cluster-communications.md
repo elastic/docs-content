@@ -46,20 +46,25 @@ The transport layer is responsible for internal communication between {{es}} nod
 The way that transport layer security is managed depends on your deployment type:
 
 ::::{tab-set}
+:group: deployments
 
 :::{tab-item} ECH and Serverless
+:sync: ech
 {{es}} transport security is fully managed by Elastic, and no configuration is required.
 :::
 
 :::{tab-item} ECE
+:sync: ece
 {{es}} transport security is fully managed by {{ece}} platform, and no configuration is required.
 :::
 
 :::{tab-item} ECK
+:sync: eck
 {{es}} transport security and TLS certificates are automatically configured by the operator, but you can still [customize its service and CA certificates](/deploy-manage/security/k8s-transport-settings.md).
 :::
 
 :::{tab-item} Self-managed
+:sync: self
 {{es}} transport security can be [automatically configured](security-certificates-keys.md), or manually set up by following the steps in [Set up basic security](set-up-basic-security.md).
 :::
 
@@ -76,13 +81,18 @@ While HTTP TLS encryption is optional in self-managed environments, it is strong
 The way that HTTP layer security is managed depends on your deployment type:
 
 ::::{tab-set}
+:group: deployments
 
 :::{tab-item} ECH and Serverless
+:sync: ech
+
 HTTP TLS for {{es}} and {{kib}} is fully managed by Elastic. No configuration is required.
 {{kib}} instances are automatically configured to connect securely to {{es}}, without requiring manual setup.
 :::
 
 :::{tab-item} ECE
+:sync: ece
+
 HTTP TLS for deployments is managed at the platform proxy level. Refer to these guides for ECE-specific security customizations:
 * [Manage security certificates in ECE](./secure-your-elastic-cloud-enterprise-installation/manage-security-certificates.md)
 * [Allow x509 Certificates Signed with SHA-1](./secure-your-elastic-cloud-enterprise-installation/allow-x509-certificates-signed-with-sha-1.md)
@@ -92,12 +102,16 @@ HTTP TLS for deployments is managed at the platform proxy level. Refer to these 
 :::
 
 :::{tab-item} ECK
+:sync: eck
+
 HTTP TLS is automatically enabled for {{es}} and {{kib}} using self-signed certificates, with [several options available for customization](./k8s-https-settings.md), including custom certificates and domain names.
 
 {{kib}} instances are automatically configured to connect securely to {{es}}, without requiring manual setup.
 :::
 
 :::{tab-item} Self-managed
+:sync: self
+
 HTTP TLS certificates for {{es}} can be [automatically configured](security-certificates-keys.md), or manually set up by following the steps in [Set up HTTP SSL](./set-up-basic-security-plus-https.md).
 
 {{kib}} acts as both an HTTP client to {{es}} and a server for browser access. It performs operations on behalf of users, so it must be properly configured to trust the {{es}} certificates, and to present its own TLS certificate for secure browser connections. These configurations must be performed manually in self-managed deployments.
@@ -112,22 +126,31 @@ For environments with stricter security requirements, refer to [Mutual TLS authe
 Managing certificates is critical for secure communications. Certificates have limited lifetimes and must be renewed before expiry to prevent service disruptions. Each deployment type provides different tools or responsibilities for managing certificates lifecycle.
 
 ::::{tab-set}
+:group: deployments
 
 :::{tab-item} ECH and Serverless
+:sync: ech
+
 Certificate lifecycle is fully managed by Elastic, including renewal and rotation.
 :::
 
 :::{tab-item} ECE
+:sync: ece
+
 In ECE, the platform automatically renews internal certificates. However, you must manually renew your custom proxy and Cloud UI certificates. For more details, refer to [Manage security certificates](secure-your-elastic-cloud-enterprise-installation/manage-security-certificates.md).
 :::
 
 :::{tab-item} ECK
+:sync: eck
+
 ECK provides flexible options for managing SSL certificates in your deployments, including automatic certificate generation and rotation, integration with external tools like `cert-manager`, or using your own custom certificates. Custom HTTP certificates require manual management.
 
 TBD, add links to cert validity settings and cert configuration
 :::
 
 :::{tab-item} Self-managed
+:sync: self
+
 You are responsible for certificate lifecycle management, including monitoring expiration dates, renewing certificates, and redeploying them as needed. If you used Elastic tools to generate your certificates, refer to [Update TLS certificates](./updating-certificates.md) for guidance on rotating or replacing them.
 :::
 
