@@ -41,7 +41,7 @@ To use [Elastic Agent](https://www.elastic.co/guide/en/fleet/current) and [Elast
     * [{{es}} document APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-document)
     * [{{es}} language clients](https://www.elastic.co/guide/en/elasticsearch/client/index.html)
     * [Elastic web crawler](https://www.elastic.co/web-crawler)
-    * [Elastic connectors](elasticsearch://reference/ingestion-tools/search-connectors/index.md)
+    * [Elastic connectors](elasticsearch://reference/search-connectors/index.md)
 
 
 
@@ -101,6 +101,6 @@ Bring your ideas and use {{es}} and the {{stack}} to store, search, and visualiz
     * [{{es}} document APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-document)
     * [{{es}} language clients](https://www.elastic.co/guide/en/elasticsearch/client/index.html)
     * [Elastic web crawler](https://www.elastic.co/web-crawler)
-    * [Elastic connectors](elasticsearch://reference/ingestion-tools/search-connectors/index.md)
+    * [Elastic connectors](elasticsearch://reference/search-connectors/index.md)
 
 * [Tutorial: Get started with vector search and generative AI](https://www.elastic.co/guide/en/starting-with-the-elasticsearch-platform-and-its-solutions/current/getting-started-general-purpose.html)

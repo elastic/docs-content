@@ -19,7 +19,7 @@ The Redis output is not yet supported by {{fleet}}-managed APM Server.
 ::::
 
 
-The Redis output inserts the events into a Redis list or a Redis channel. This output plugin is compatible with the [Redis input plugin](logstash://reference/plugins-inputs-redis.md) for {{ls}}.
+The Redis output inserts the events into a Redis list or a Redis channel. This output plugin is compatible with the [Redis input plugin](logstash-docs-md://lsr/plugins-inputs-redis.md) for {{ls}}.
 
 To use this output, edit the APM Server configuration file to disable the {{es}} output by commenting it out, and enable the Redis output by adding `output.redis`.
 

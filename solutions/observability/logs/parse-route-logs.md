@@ -132,9 +132,9 @@ When looking into issues, you want to filter for logs by when the issue occurred
 
 #### Use an ingest pipeline to extract the `@timestamp` field [observability-parse-log-data-use-an-ingest-pipeline-to-extract-the-timestamp-field]
 
-Ingest pipelines consist of a series of processors that perform common transformations on incoming documents before they are indexed. To extract the `@timestamp` field from the example log, use an ingest pipeline with a [dissect processor](elasticsearch://reference/ingestion-tools/enrich-processor/dissect-processor.md). The dissect processor extracts structured fields from unstructured log messages based on a pattern you set.
+Ingest pipelines consist of a series of processors that perform common transformations on incoming documents before they are indexed. To extract the `@timestamp` field from the example log, use an ingest pipeline with a [dissect processor](elasticsearch://reference/enrich-processor/dissect-processor.md). The dissect processor extracts structured fields from unstructured log messages based on a pattern you set.
 
-Elastic can parse string timestamps that are in `yyyy-MM-dd'T'HH:mm:ss.SSSZ` and `yyyy-MM-dd` formats into date fields. Since the log example’s timestamp is in one of these formats, you don’t need additional processors. More complex or nonstandard timestamps require a [date processor](elasticsearch://reference/ingestion-tools/enrich-processor/date-processor.md) to parse the timestamp into a date field.
+Elastic can parse string timestamps that are in `yyyy-MM-dd'T'HH:mm:ss.SSSZ` and `yyyy-MM-dd` formats into date fields. Since the log example’s timestamp is in one of these formats, you don’t need additional processors. More complex or nonstandard timestamps require a [date processor](elasticsearch://reference/enrich-processor/date-processor.md) to parse the timestamp into a date field.
 
 Use the following command to extract the timestamp from the `message` field into the `@timestamp` field:
 
@@ -306,7 +306,7 @@ You can now use the `@timestamp` field to sort your logs by the date and time th
 Check the following common issues and solutions with timestamps:
 
 * **Timestamp failure:** If your data has inconsistent date formats, set `ignore_failure` to `true` for your date processor. This processes logs with correctly formatted dates and ignores those with issues.
-* **Incorrect timezone:** Set your timezone using the `timezone` option on the [date processor](elasticsearch://reference/ingestion-tools/enrich-processor/date-processor.md).
+* **Incorrect timezone:** Set your timezone using the `timezone` option on the [date processor](elasticsearch://reference/enrich-processor/date-processor.md).
 * **Incorrect timestamp format:** Your timestamp can be a Java time pattern or one of the following formats: ISO8601, UNIX, UNIX_MS, or TAI64N. For more information on timestamp formats, refer to the [mapping date format](elasticsearch://reference/elasticsearch/mapping-reference/mapping-date-format.md).
 
 
@@ -746,7 +746,7 @@ You’ll get the following results only showing logs in the range you’ve set:
 
 ## Reroute log data to specific data streams [observability-parse-log-data-reroute-log-data-to-specific-data-streams]
 
-By default, an ingest pipeline sends your log data to a single data stream. To simplify log data management, use a [reroute processor](elasticsearch://reference/ingestion-tools/enrich-processor/reroute-processor.md) to route data from the generic data stream to a target data stream. For example, you might want to send high-severity logs to a specific data stream to help with categorization.
+By default, an ingest pipeline sends your log data to a single data stream. To simplify log data management, use a [reroute processor](elasticsearch://reference/enrich-processor/reroute-processor.md) to route data from the generic data stream to a target data stream. For example, you might want to send high-severity logs to a specific data stream to help with categorization.
 
 This section shows you how to use a reroute processor to send the high-severity logs (`WARN` or `ERROR`) from the following example logs to a specific data stream and keep the regular logs (`DEBUG` and `INFO`) in the default data stream:
 

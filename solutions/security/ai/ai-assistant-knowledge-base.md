@@ -18,7 +18,7 @@ AI Assistant’s Knowledge Base feature enables AI Assistant to recall specific 
 
 
 ::::{admonition} Requirements
-* To use Knowledge Base, the `Elastic AI Assistant: All` privilege. 
+* To use Knowledge Base, the `Elastic AI Assistant: All` privilege.
 * To edit global Knowledge Base entries (information that will affect the AI Assistant experience for other users in the {{kib}} space), the `Allow Changes to Global Entries` privilege.
 * You must [enable machine learning](/solutions/security/advanced-entity-analytics/machine-learning-job-rule-requirements.md) with a minimum ML node size of 4 GB.
 
@@ -146,7 +146,7 @@ Refer to the following video for an example of adding an index to Knowledge Base
 
 You can use an {{es}} connector or web crawler to create an index that contains data you want to add to Knowledge Base.
 
-This section provides an example of adding a threat intelligence feed to Knowledge Base using a web crawler. For more information on adding data to {{es}} using a connector, refer to [Ingest data with Elastic connectors](elasticsearch://reference/ingestion-tools/search-connectors/index.md). For more information on web crawlers, refer to [Elastic web crawler](https://www.elastic.co/guide/en/enterprise-search/current/crawler.html).
+This section provides an example of adding a threat intelligence feed to Knowledge Base using a web crawler. For more information on adding data to {{es}} using a connector, refer to [Ingest data with Elastic connectors](elasticsearch://reference/search-connectors/index.md). For more information on web crawlers, refer to [Elastic web crawler](https://www.elastic.co/guide/en/enterprise-search/current/crawler.html).
 
 
 #### Use a web crawler to add threat intelligence to Knowledge Base [_use_a_web_crawler_to_add_threat_intelligence_to_knowledge_base]
