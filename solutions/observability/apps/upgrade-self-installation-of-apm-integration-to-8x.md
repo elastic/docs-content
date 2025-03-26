@@ -17,7 +17,7 @@ This upgrade guide is for the Elastic APM integration. Only use this guide if bo
 
 ## Prerequisites [_prerequisites_9]
 
-1. Prior to upgrading to version 9.0, {{es}}, and {{kib}} must be upgraded to version 7.17. To upgrade {{es}} and {{kib}}, see the [{{stack}} Installation and Upgrade Guide](https://www.elastic.co/guide/en/elastic-stack/7.17/upgrading-elastic-stack.html)
+1. Prior to upgrading to version 9.0, {{es}}, and {{kib}} must be upgraded to version 8.18. To upgrade {{es}} and {{kib}}, see the [{{stack}} Installation and Upgrade Guide](https://www.elastic.co/guide/en/elastic-stack/8.18/upgrading-elastic-stack.html)
 2. Review the [Elastic APM release notes](apm-server://release-notes/index.md) and [Elastic {{observability}} release notes](/release-notes/elastic-observability/release-notes.md).
 
 
@@ -35,4 +35,4 @@ This upgrade guide is for the Elastic APM integration. Only use this guide if bo
 
     For more details, or for bulk upgrade instructions, see [Upgrade {{agent}}](/reference/fleet/upgrade-elastic-agent.md)
 
-3. When upgrading from 7.x to 9.0 if you reindex 7.x indices, you need to either add [ILM privileges](https://www.elastic.co/guide/en/apm/guide/7.17/privileges-to-setup-beats.html#_set_up_ilm) for `reindexed-v*-apm*` indices or set the indices to `readonly`.
+3. When upgrading from 8.18 to 9.0, if you have 7.x indices, you need to either set the indices to `readonly`, or if reindexing, add [ILM privileges](https://www.elastic.co/guide/en/apm/guide/7.17/privileges-to-setup-beats.html#_set_up_ilm) for `reindexed-v*-apm*` indices.
