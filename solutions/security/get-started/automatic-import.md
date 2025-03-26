@@ -37,7 +37,7 @@ To use Automatic Import, you must provide a sample of the data you wish to impor
 * For JSON and NDJSON samples, each object in your sample should represent an event, and you should avoid deeply nested object structures.
 * When you select `API (CEL input)` as one of the sources, you will be prompted to provide the associated OpenAPI specification (OAS) file to generate a CEL program that consumes this API.
 
-::::{admonition}
+::::{warning}
 Note that CEL generation in Automatic Import is in beta and is subject to change. The design and code is less mature than official GA features and is being provided as-is with no warranties. Beta features are not subject to the support SLA of official GA features.
 ::::
 
