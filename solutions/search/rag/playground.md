@@ -31,8 +31,6 @@ Watch these video tutorials to help you get started:
 
 ::::
 
-
-
 ## How Playground works [playground-how-it-works]
 
 Here’s a simpified overview of how Playground works:
@@ -61,7 +59,12 @@ Here’s a simpified overview of how Playground works:
 
     * User can also **Download the code** to integrate into application
 
+## Elastic LLM [elastic-llm]
 
+Playground includes a preconfigured LLM connector that you can use out of the box.
+Using the Elastic LLM enables you to use Playground without having an account with an LLM provider or setting up an LLM connector.
+Elastic LLM is hosted as a service and may incur additional costs.
+For more details, refer to the [pricing page](https://www.elastic.co/pricing).
 
 ## Availability and prerequisites [playground-availability-prerequisites]
 
@@ -76,7 +79,7 @@ To use Playground, you’ll need the following:
 
     * See [ingest data](playground.md#playground-getting-started-ingest) if you’d like to ingest sample data.
 
-3. An account with a **supported LLM provider**. Playground supports the following:
+3. An account with a **supported LLM provider** or you can use the preconfigured Elastic LLM. Playground supports the following:
 
     * **Amazon Bedrock**
 
@@ -99,7 +102,6 @@ To use Playground, you’ll need the following:
         * Google Gemini 1.5 Pro
         * Google Gemini 1.5 Flash
 
-
 ::::{tip}
 :name: playground-local-llms
 
@@ -110,8 +112,6 @@ You can also use locally hosted LLMs that are compatible with the OpenAI SDK. On
 
 ::::
 
-
-
 ## Getting started [playground-getting-started]
 
 :::{image} /solutions/images/kibana-get-started.png
@@ -119,8 +119,12 @@ You can also use locally hosted LLMs that are compatible with the OpenAI SDK. On
 :screenshot:
 :::
 
-
 ### Connect to LLM provider [playground-getting-started-connect]
+
+:::{note}
+If you use the preconfigured [Elastic LLM](#elastic-llm) connector, you can skip this step. Your LLM connector is ready to use.
+
+:::
 
 To get started with Playground, you need to create a [connector](../../../deploy-manage/manage-connectors.md) for your LLM provider. You can also connect to [locally hosted LLMs](playground.md#playground-local-llms) which are compatible with the OpenAI API, by using the OpenAI connector.
 
