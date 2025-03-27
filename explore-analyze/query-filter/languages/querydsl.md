@@ -42,9 +42,9 @@ Because aggregations leverage the same data structures used for search, they are
 
 The following aggregation types are available:
 
-* [Metric](elasticsearch://reference/data-analysis/aggregations/metrics.md): Calculate metrics, such as a sum or average, from field values.
-* [Bucket](elasticsearch://reference/data-analysis/aggregations/bucket.md): Group documents into buckets based on field values, ranges, or other criteria.
-* [Pipeline](elasticsearch://reference/data-analysis/aggregations/pipeline.md): Run aggregations on the results of other aggregations.
+* [Metric](elasticsearch://reference/aggregations/metrics.md): Calculate metrics, such as a sum or average, from field values.
+* [Bucket](elasticsearch://reference/aggregations/bucket.md): Group documents into buckets based on field values, ranges, or other criteria.
+* [Pipeline](elasticsearch://reference/aggregations/pipeline.md): Run aggregations on the results of other aggregations.
 
 Run aggregations by specifying the [search API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search)'s `aggs` parameter. Learn more in [Run an aggregation](/explore-analyze/query-filter/aggregations.md#run-an-agg).
 
@@ -132,7 +132,7 @@ Filter context applies when a query clause is passed to a `filter` parameter, su
 
 * `filter` or `must_not` parameters in [`bool`](elasticsearch://reference/query-languages/query-dsl/query-dsl-bool-query.md)  queries
 * `filter` parameter in [`constant_score`](elasticsearch://reference/query-languages/query-dsl/query-dsl-constant-score-query.md) queries
-* [`filter`](elasticsearch://reference/data-analysis/aggregations/search-aggregations-bucket-filter-aggregation.md) aggregations
+* [`filter`](elasticsearch://reference/aggregations/search-aggregations-bucket-filter-aggregation.md) aggregations
 
 Filters optimize query performance and efficiency, especially for structured data queries and when combined with full-text searches.
 

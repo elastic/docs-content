@@ -113,7 +113,7 @@ PUT my-index
 
 ## Generate text embeddings [deployed-generate-embeddings]
 
-Once you have created the mappings for the index, you can generate text embeddings from your input text. This can be done by using an [ingest pipeline](../../../manage-data/ingest/transform-enrich/ingest-pipelines.md) with an [inference processor](elasticsearch://reference/ingestion-tools/enrich-processor/inference-processor.md). The ingest pipeline processes the input data and indexes it into the destination index. At index time, the inference ingest processor uses the trained model to infer against the data ingested through the pipeline. After you created the ingest pipeline with the inference processor, you can ingest your data through it to generate the model output.
+Once you have created the mappings for the index, you can generate text embeddings from your input text. This can be done by using an [ingest pipeline](../../../manage-data/ingest/transform-enrich/ingest-pipelines.md) with an [inference processor](elasticsearch://reference/enrich-processor/inference-processor.md). The ingest pipeline processes the input data and indexes it into the destination index. At index time, the inference ingest processor uses the trained model to infer against the data ingested through the pipeline. After you created the ingest pipeline with the inference processor, you can ingest your data through it to generate the model output.
 
 :::::::{tab-set}
 

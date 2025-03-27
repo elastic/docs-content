@@ -66,7 +66,7 @@ Change the fields list to display a different {{data-source}}, different time ra
 
 * If the fields list is empty, change the [time filter](../query-filter/filtering.md).
 * To add fields, open the {{data-source}} dropdown, then select **Add a field to this {{data-source}}**.
-  ![Dropdown menu located next to {{data-source}} field with items for adding and managing fields](../../images/kibana-lens_dataViewDropDown_8.4.0.png "")
+  ![Dropdown menu located next to {{data-source}} field with items for adding and managing fields](/explore-analyze/images/kibana-lens_dataViewDropDown_8.4.0.png "")
   For more information about adding fields to {{data-sources}} and examples, refer to [Explore your data with runtime fields](../find-and-organize/data-views.md#runtime-fields).
 
 
@@ -194,7 +194,7 @@ For a time shift example, refer to [Compare time ranges](../dashboards/create-da
 
 To create partition charts, such as pie charts, configure one or more **Slice by** dimensions to define the partitions, and a **Metric** dimension to define the size. To create partition charts with multiple metrics, use the layer settings. Multiple metrics are unsupported for mosaic visualizations.
 
-1. In the layer pane, click ![Actions menu for the partition visualization layer](../../images/kibana-lens_layerActions_8.5.0.png ""), then select **Layer settings**.
+1. In the layer pane, click ![Actions menu for the partition visualization layer](/explore-analyze/images/kibana-lens_layerActions_8.5.0.png ""), then select **Layer settings**.
 2. Select **Multiple metrics**.
 3. Click **X**.
 
@@ -208,7 +208,7 @@ This functionality is in technical preview and may be changed or removed in a fu
 
 Data sampling allows you to improve the visualization loading time. To decrease the loading time, use a lower sampling percentage, which also decreases the accuracy. Use low sampling percentages on large datasets.
 
-1. In the **Edit visualization** flyout, click ![Actions menu for the partition visualization layer](../../images/kibana-lens_layerActions_8.5.0.png ""), then select **Layer settings**.
+1. In the **Edit visualization** flyout, click ![Actions menu for the partition visualization layer](/explore-analyze/images/kibana-lens_layerActions_8.5.0.png ""), then select **Layer settings**.
 2. To select the **Sampling** percentage, use the slider.
 3. Click **Apply and close**.
 4. Click **Save**.
@@ -223,7 +223,7 @@ This functionality is in technical preview and may be changed or removed in a fu
 
 Annotations allow you to call out specific points in your visualizations that are important, such as significant changes in the data. You can add annotations for any {{data-source}}, add text and icons, specify the line format and color, and more.
 
-:::{image} ../../images/kibana-lens_annotations_8.2.0.png
+:::{image} /explore-analyze/images/kibana-lens_annotations_8.2.0.png
 :alt: Lens annotations
 :screenshot:
 :::
@@ -240,15 +240,15 @@ Create a new annotation layer.
 1. In the layer pane, click **Add layer > Annotations > New annotation**.
 2. Select the {{data-source}} for the annotation.
 3. From the fields list, drag a field to the **Add an annotation** field.
-4. To use global filters in the annotation, click ![Actions menu for the annotations layer](../../images/kibana-lens_layerActions_8.5.0.png ""), then select **Keep global filters** from the dropdown.
+4. To use global filters in the annotation, click ![Actions menu for the annotations layer](/explore-analyze/images/kibana-lens_layerActions_8.5.0.png ""), then select **Keep global filters** from the dropdown.
 
-    When you add the visualization to dashboards, ![Visualization modifier popup](../../images/kibana-lens_visualizationModifierPopup_8.8.0.png "") appears, which allows you to view settings changes to the visualization.
+    When you add the visualization to dashboards, ![Visualization modifier popup](/explore-analyze/images/kibana-lens_visualizationModifierPopup_8.8.0.png "") appears, which allows you to view settings changes to the visualization.
 
 
 Create static annotations.
 
 1. Select **Static date**.
-2. In the **Annotation date** field, click ![Annodation date icon in Lens](../../images/kibana-lens_annotationDateIcon_8.6.0.png ""), then select the date.
+2. In the **Annotation date** field, click ![Annodation date icon in Lens](/explore-analyze/images/kibana-lens_annotationDateIcon_8.6.0.png ""), then select the date.
 3. To display the annotation as a time range, select **Apply as range**, then specify the **From** and **To** dates.
 
 Create custom query annotations.
@@ -269,7 +269,7 @@ Specify the annotation appearance.
 
 Save the annotation group to the library.
 
-1. In the layer pane, on your annotation layer, click ![Save button on annotations layer](../../images/kibana-lens_saveAnnotationLayerButton_8.9.0.png "").
+1. In the layer pane, on your annotation layer, click ![Save button on annotations layer](/explore-analyze/images/kibana-lens_saveAnnotationLayerButton_8.9.0.png "").
 2. Enter the **Title**, **Description**, and add any applicable [**Tags**](../find-and-organize/tags.md).
 3. Click **Save group**.
 
@@ -285,7 +285,7 @@ With reference lines, you can identify specific values in your visualizations wi
 
 For example, to track the number of bytes in the 75th percentile, add a shaded **Percentile** reference line to your time series visualization.
 
-:::{image} ../../images/kibana-lens_referenceLine_7.16.png
+:::{image} /explore-analyze/images/kibana-lens_referenceLine_7.16.png
 :alt: Lens drag and drop focus state
 :screenshot:
 :::
@@ -352,7 +352,7 @@ The following component menus are available:
 
 When creating or editing a visualization, you can customize the way the legend gets displayed, and the data it displays. To do that, look for the ![Legend icon](/explore-analyze/images/kibana-legend-icon.svg "") icon.
 
-:::{image} ../../images/kibana-legend-popover-8.16.0.png
+:::{image} /explore-analyze/images/kibana-legend-popover-8.16.0.png
 :alt: Menu with options to customize the legend of a visualization
 :::
 

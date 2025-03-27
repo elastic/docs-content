@@ -6,7 +6,7 @@ navigation_title: Limitations
 
 # Security limitations [security-limitations]
 
-
+Review the following {{es}} security limitations. Depending on your organization's security requirements, you might want to restrict, adjust, or find workaround or alternatives for some of these features and resources.
 
 ## Plugins [_plugins]
 
@@ -20,12 +20,12 @@ navigation_title: Limitations
 
 ## Multi document APIs [_multi_document_apis]
 
-Multi get and multi term vectors API throw IndexNotFoundException when trying to access non existing indices that the user is not authorized for. By doing that they leak information regarding the fact that the data stream or index doesn’t exist, while the user is not authorized to know anything about those data streams or indices.
+Multi get and multi term vectors API throw `IndexNotFoundException` when trying to access non existing indices that the user is not authorized for. By doing that they leak information regarding the fact that the data stream or index doesn’t exist, while the user is not authorized to know anything about those data streams or indices.
 
 
 ## Filtered index aliases [_filtered_index_aliases]
 
-Aliases containing filters are not a secure way to restrict access to individual documents, due to the limitations described in [Index and field names can be leaked when using aliases](/deploy-manage/security.md#alias-limitations). The {{stack-security-features}} provide a secure way to restrict access to documents through the [document-level security](/deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level.md) feature.
+Aliases containing filters are not a secure way to restrict access to individual documents, due to the limitations described in [Index and field names can be leaked when using aliases](#alias-limitations). The {{stack-security-features}} provide a secure way to restrict access to documents through the [document-level security](/deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level.md) feature.
 
 
 ## Field and document level security limitations [field-document-limitations]
