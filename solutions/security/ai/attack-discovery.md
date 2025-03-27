@@ -31,20 +31,20 @@ This page describes:
 
 ## Role-based access control (RBAC) for Attack Discovery [attack-discovery-rbac]
 
-The `Attack Discovery: All` privilege allows you to use Attack Discovery.
+You need the `Attack Discovery: All` privilege to use Attack Discovery.
 
 ![attack-discovery-rbac](/solutions/images/security-attck-disc-rbac.png)
 
 ## Set up Attack Discovery
 
-By default, Attack Discovery analyzes up to 100 alerts from the last 24 hours, but you can expand this up to 500 alerts, and customize which alerts it analyzes using the settings menu. To open it, click the gear icon next to the **Generate** button.
+By default, Attack Discovery analyzes up to 100 alerts from the last 24 hours, but you can customize how many and which alerts it analyzes using the settings menu. To open it, click the gear icon next to the **Generate** button.
 
 ::::{image} ../../../images/security-attack-discovery-settings.png
 :alt: Attack Discovery's settings menu
 :width: 500px
 ::::
 
-From the settings menu, you can filter which alerts get processed by Attack Discovery using KQL queries, the time and date selector, and the **Number of alerts** slider. Note that sending more alerts than your chosen LLM can handle may result in an error. Under **Alert summary** you can view a summary of the selected alerts grouped by various fields, and under **Alerts preview** you can see more details about the selected alerts.
+You can select which alerts Attack Discovery will process by filtering based on a KQL query, the time and date selector, and the **Number of alerts** slider. Note that sending more alerts than your chosen LLM can handle may result in an error. Under **Alert summary** you can view a summary of the selected alerts grouped by various fields, and under **Alerts preview** you can see more details about the selected alerts.
 
 :::{admonition} How to add non-ecs fields to Attack Discovery
 Attack Discovery is designed for use with alerts based on data that complies with ECS, and by default only analyses ECS-compliant fields. However you can enable Attack Discovery to review additional fields by following these steps:
