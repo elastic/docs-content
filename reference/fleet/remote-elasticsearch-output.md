@@ -5,7 +5,7 @@ mapped_pages:
 
 # Remote Elasticsearch output [remote-elasticsearch-output]
 
-Beginning in version 8.12.0, you can send {{agent}} data to a remote {{es}} cluster. This is especially useful for data that you want to keep separate and independent from the deployment where you use {{fleet}} to manage the agents.
+Remote {{es}} outputs allow you to send {{agent}} data to a remote {{es}} cluster. This is especially useful for data that you want to keep separate and independent from the deployment where you use {{fleet}} to manage the agents.
 
 A remote {{es}} cluster supports the same [output settings](/reference/fleet/es-output-settings.md) as your main {{es}} cluster.
 
