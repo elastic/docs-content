@@ -34,7 +34,7 @@ To configure a remote {{es}} cluster for your {{agent}} data:
 5. Create a service token to access the remote cluster.
 
     1. Below the **Service Token** field, copy the API request.
-    2. In the remote cluster, open the {{kib}} menu and go to **Management → Dev Tools**.
+    2. In the remote cluster, open the {{kib}} menu and go to **Management > Dev Tools**.
     3. Run the API request.
     4. Copy the value for the generated token.
     5. Back in your main cluster, paste the value you copied into the output **Service Token** field.
@@ -44,7 +44,7 @@ To configure a remote {{es}} cluster for your {{agent}} data:
         ::::
 
 6. Choose whether integrations should automatically be synchronized on the remote {{es}} cluster. Refer to [Automatic integrations synchronization](#automatic-integrations-synchronization) below to configure this feature.
-7. Choose whether or not the remote output should be the default for agent integrations or for agent monitoring data. When set, {{agent}}s use this output to send data if no other output is set in the [agent policy](/reference/ingestion-tools/fleet/agent-policy.md).
+7. Choose whether or not the remote output should be the default for agent integrations or for agent monitoring data. When set, {{agents}} use this output to send data if no other output is set in the [agent policy](/reference/ingestion-tools/fleet/agent-policy.md).
 8. Select which [performance tuning settings](/reference/ingestion-tools/fleet/es-output-settings.md#es-output-settings-performance-tuning-settings) you’d prefer in order to optimize {{agent}} for throughput, scale, or latency, or leave the default `balanced` setting.
 9. Add any [advanced YAML configuration settings](/reference/ingestion-tools/fleet/es-output-settings.md#es-output-settings-yaml-config) that you’d like for the output.
 10. Click **Save and apply settings**.
@@ -63,19 +63,23 @@ If you have chosen not to automatically synchronize integrations, you need to ma
 
 ## Automatic integrations synchronization
 
-Beginning in version 9.1.0, you can choose to keep integrations synced between your main {{es}} cluster and remote {{es}} clusters.
+```{applies_to}
+stack: ga 9.1
+```
+
+When enabled, this feature keeps integrations synced between your main {{es}} cluster and remote {{es}} clusters.
 
 ### Requirements
 
-This feature requires setting up [{{ccr}}](/deploy-manage/tools/cross-cluster-replication.md), which is available to Platinum and Enterprise [subscriptions](https://www.elastic.co/subscriptions). Remote clusters must be running the same version of Elasticsearch as the main cluster or a newer version that is compatible with {{ccr}}.
+This feature requires setting up [{{ccr}}](/deploy-manage/tools/cross-cluster-replication.md), which is available to Platinum and Enterprise [subscriptions](https://www.elastic.co/subscriptions). Remote clusters must be running the same version of {{es}} as the main cluster or a newer version that is compatible with {{ccr}}.
 
-Remote clusters require access to [{{package-registry}}](/reference/ingestion-tools/fleet/index.md#package-registry-intro) to install integrations.
+Remote clusters require access to the [{{package-registry}}](/reference/ingestion-tools/fleet/index.md#package-registry-intro) to install integrations.
 
 ### Configuration
 
 1. Configure {{ccr}} on the remote cluster.
 
-    1. In the remote cluster, open the {{kib}} menu and go to **Stack Management → Remote Clusters**.
+    1. In the remote cluster, open the {{kib}} menu and go to **Stack Management > Remote Clusters**.
     2. Refer to [Remote clusters](https://www.elastic.co/guide/en/elasticsearch/reference/current/remote-clusters.html) to add your main cluster (where the remote {{es}} output is configured) as a remote cluster.
     3. Go to **Stack Management > Cross-Cluster Replication**.
     4. Create a follower index named `fleet-synced-integrations-ccr-<output name>` that replicates the `fleet-synced-integrations` leader index on the main cluster.
@@ -85,7 +89,7 @@ Remote clusters require access to [{{package-registry}}](/reference/ingestion-to
 3. Create an API key to access Kibana on the remote cluster.
 
     1. Below the **Remote Kibana API Key** field, copy the API request.
-    2. In the remote cluster, open the {{kib}} menu and go to **Management → Dev Tools**.
+    2. In the remote cluster, open the {{kib}} menu and go to **Management > Dev Tools**.
     3. Run the API request.
     4. Copy the encoded value of the generated API key.
     5. Back in the main cluster, paste the value you copied into the output **Remote Kibana API Key** field.
