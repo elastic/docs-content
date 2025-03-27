@@ -1342,9 +1342,9 @@ Visualize the number of log messages over time, split by the log level. Since th
 1. Log into {{kib}} and select **Visualize** → **Create Visualization**.
 2. Create a line chart and select `metricbeat-*` as the source.
 
-    The basic idea is to have a [max aggregation](elasticsearch://reference/data-analysis/aggregations/search-aggregations-metrics-max-aggregation.md) on the y-axis on the `prometheus.log4j2_events_total.rate` field, whereas the x-axis, is split by date using a [date_histogram aggregation](elasticsearch://reference/data-analysis/aggregations/search-aggregations-bucket-datehistogram-aggregation.md) on the `@timestamp` field.
+    The basic idea is to have a [max aggregation](elasticsearch://reference/aggregations/search-aggregations-metrics-max-aggregation.md) on the y-axis on the `prometheus.log4j2_events_total.rate` field, whereas the x-axis, is split by date using a [date_histogram aggregation](elasticsearch://reference/aggregations/search-aggregations-bucket-datehistogram-aggregation.md) on the `@timestamp` field.
 
-    There is one more split within each date histogram bucket, split by log level, using a [terms aggregation](elasticsearch://reference/data-analysis/aggregations/search-aggregations-bucket-terms-aggregation.md) on the `prometheus.labels.level`, which contains the log level. Also, increase the size of the log level to six to display every log level.
+    There is one more split within each date histogram bucket, split by log level, using a [terms aggregation](elasticsearch://reference/aggregations/search-aggregations-bucket-terms-aggregation.md) on the `prometheus.labels.level`, which contains the log level. Also, increase the size of the log level to six to display every log level.
 
     The final result looks like this.
 

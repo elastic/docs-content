@@ -31,7 +31,7 @@ These logs contain a timestamp, IP address, and user agent. You want to give the
 
 2. Click **Create pipeline > New pipeline**.
 3. Set **Name** to `my-pipeline` and optionally add a description for the pipeline.
-4. Add a [grok processor](elasticsearch://reference/ingestion-tools/enrich-processor/grok-processor.md) to parse the log message:
+4. Add a [grok processor](elasticsearch://reference/enrich-processor/grok-processor.md) to parse the log message:
 
     1. Click **Add a processor** and select the **Grok** processor type.
     2. Set **Field** to `message` and **Patterns** to the following [grok pattern](../../../explore-analyze/scripting/grok.md):
@@ -47,9 +47,9 @@ These logs contain a timestamp, IP address, and user agent. You want to give the
 
     | Processor type | Field | Additional options | Description |
     | --- | --- | --- | --- |
-    | [**Date**](elasticsearch://reference/ingestion-tools/enrich-processor/date-processor.md) | `@timestamp` | **Formats**: `dd/MMM/yyyy:HH:mm:ss Z` | `Format '@timestamp' as 'dd/MMM/yyyy:HH:mm:ss Z'` |
-    | [**GeoIP**](elasticsearch://reference/ingestion-tools/enrich-processor/geoip-processor.md) | `source.ip` | **Target field**: `source.geo` | `Add 'source.geo' GeoIP data for 'source.ip'` |
-    | [**User agent**](elasticsearch://reference/ingestion-tools/enrich-processor/user-agent-processor.md) | `user_agent` |  | `Extract fields from 'user_agent'` |
+    | [**Date**](elasticsearch://reference/enrich-processor/date-processor.md) | `@timestamp` | **Formats**: `dd/MMM/yyyy:HH:mm:ss Z` | `Format '@timestamp' as 'dd/MMM/yyyy:HH:mm:ss Z'` |
+    | [**GeoIP**](elasticsearch://reference/enrich-processor/geoip-processor.md) | `source.ip` | **Target field**: `source.geo` | `Add 'source.geo' GeoIP data for 'source.ip'` |
+    | [**User agent**](elasticsearch://reference/enrich-processor/user-agent-processor.md) | `user_agent` |  | `Extract fields from 'user_agent'` |
 
     Your form should look similar to this:
 

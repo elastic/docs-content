@@ -508,8 +508,7 @@ toc:
               - file: security/install-stack-demo-secure.md
           - file: security/fips-140-2.md
       - file: security/secure-clients-integrations.md
-        children:
-          - file: security/httprest-clients-security.md
+      - file: security/httprest-clients-security.md
       - file: security/limitations.md
   - file: users-roles.md
     children:
