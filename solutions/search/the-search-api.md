@@ -119,7 +119,7 @@ Instead of indexing your data and then searching it, you can define [runtime fie
 
 For example, the following query defines a runtime field called `day_of_week`. The included script calculates the day of the week based on the value of the `@timestamp` field, and uses `emit` to return the calculated value.
 
-The query also includes a [terms aggregation](elasticsearch://reference/data-analysis/aggregations/search-aggregations-bucket-terms-aggregation.md) that operates on `day_of_week`.
+The query also includes a [terms aggregation](elasticsearch://reference/aggregations/search-aggregations-bucket-terms-aggregation.md) that operates on `day_of_week`.
 
 ```console
 GET /my-index-000001/_search

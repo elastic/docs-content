@@ -4,6 +4,7 @@ applies_to:
   serverless: ga
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/painlesslab.html
+  - https://www.elastic.co/guide/en/serverless/current/devtools-debug-painless-scripts.html
 ---
 
 # Painless lab [painlesslab]

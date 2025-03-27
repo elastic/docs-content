@@ -3,14 +3,12 @@ navigation_title: "Node bootlooping"
 applies_to:
   deployment:
     ess: all
-    ece: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-config-change-errors.html
-  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-config-change-errors.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-config-change-errors.html
 ---
 
-# Troubleshoot node bootlooping [ec-config-change-errors]
+# Troubleshoot node bootlooping in {{ech}} [ec-config-change-errors]
 
 When you attempt to apply a configuration change to a deployment, the attempt may fail with an error indicating that the change could not be applied, and deployment resources may be unable to restart. In some cases, bootlooping may result, where the deployment resources cycle through a continual reboot process.
 
@@ -131,7 +129,7 @@ Configuration change errors can occur when there is insufficient RAM configured 
 
 Check the [{{es}} cluster size](/deploy-manage/deploy/elastic-cloud/ec-customize-deployment-components.md#ec-cluster-size) and the [JVM memory pressure indicator](/deploy-manage/monitor/ec-memory-pressure.md) documentation to learn more.
 
-As well, you can read our detailed blog [Managing and troubleshooting {{es}} memory](https://www.elastic.co/blog/managing-and-troubleshooting-elasticsearch-memory).
+You can also read our detailed blog [Managing and troubleshooting {{es}} memory](https://www.elastic.co/blog/managing-and-troubleshooting-elasticsearch-memory).
 
 
 ## Existing index [ec-config-change-errors-existing-index]

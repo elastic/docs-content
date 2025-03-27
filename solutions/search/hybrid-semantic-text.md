@@ -14,8 +14,7 @@ This tutorial demonstrates how to perform hybrid search, combining semantic sear
 
 In hybrid search, semantic search retrieves results based on the meaning of the text, while full-text search focuses on exact word matches. By combining both methods, hybrid search delivers more relevant results, particularly in cases where relying on a single approach may not be sufficient.
 
-The recommended way to use hybrid search in the {{stack}} is following the `semantic_text` workflow. This tutorial uses the [`elasticsearch` service](../../explore-analyze/elastic-inference/inference-api/elasticsearch-inference-integration.md) for demonstration, but you can use any service and their supported models offered by the {{infer-cap}} API.
-
+The recommended way to use hybrid search in the {{stack}} is following the `semantic_text` workflow. This tutorial uses the [`elasticsearch` service](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put-elasticsearch) for demonstration, but you can use any service and their supported models offered by the {{infer-cap}} API.
 
 ## Create an index mapping [hybrid-search-create-index-mapping]
 

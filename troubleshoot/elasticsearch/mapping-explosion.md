@@ -66,6 +66,6 @@ Mapping explosion is not easily resolved, so it is better prevented via the abov
 * Disable [dynamic mappings](../../manage-data/data-store/mapping.md).
 * [Reindex](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-reindex) into an index with a corrected mapping, either via [index template](../../manage-data/data-store/templates.md) or [explicitly set](../../manage-data/data-store/mapping.md).
 * If index is unneeded and/or historical, consider [deleting](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-delete).
-* [Export](logstash://reference/plugins-inputs-elasticsearch.md) and [re-import](logstash://reference/plugins-outputs-elasticsearch.md) data into a mapping-corrected index after [pruning](logstash://reference/plugins-filters-prune.md) problematic fields via Logstash.
+* [Export](logstash-docs-md://lsr/plugins-inputs-elasticsearch.md) and [re-import](logstash-docs-md://lsr/plugins-outputs-elasticsearch.md) data into a mapping-corrected index after [pruning](logstash-docs-md://lsr/plugins-filters-prune.md) problematic fields via Logstash.
 
 [Splitting index](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-split) would not resolve the core issue.
