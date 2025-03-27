@@ -27,58 +27,20 @@ You must secure [other {{stack}} components](/deploy-manage/security/secure-clie
 
 You can configure the following aspects of your Elastic cluster or deployment to maintain and enhance security:
 
-## Enable security [manually-configure-security]
+## Enable and set up security [manually-configure-security]
 
-% Intro to link automatic setup and manual setup process of security
-
-Everything starts with the security feature activation in {{es}}, which enables authentication and authorization, TLS encryption of communications, and all other security related functionality described in this section.
+The first step in securing your deployment is ensuring that the {{es}} security feature is enabled and properly set up. {{es}} security provides authentication, authorization, TLS encryption, and other capabilities described in this section.
 
 ::::{note}
-{{ech}}, {{ece}},
-Orchestrated deployments automatically configures security by default, the elastic user password, TLS certificates, and configure {{kib}} to access {{es}} in a secure way. Disabling security is not an option in managed deployments.
+Deployments managed by {{eck}}, {{ece}}, {{ech}}, and {{serverless-short}} automatically configure security by default. This includes setting the `elastic` user password, generating TLS certificates, and configuring {{kib}} to connect to {{es}} securely. Disabling security is not supported in these deployment types.
 ::::
 
-In self-managed clusters, security is enabled and automatically configured by default since {{es}} 8.0. However, security auto configuration [might be skipped](./security-certificates-keys.md#stack-skip-auto-configuration) in certain scenarios. In these cases, you can [manually configure security](./set-up-minimal-security.md).
+In self-managed clusters, security is [enabled and configured by default](./security-certificates-keys.md) since {{es}} 8.0, but some additional setup steps are still required. Follow the guide to complete the configuration and understand how the automatic setup works.
 
-Security needs vary depending on whether you’re developing locally on your laptop or securing all communications in a production environment. Regardless of where you’re deploying the {{stack}} ("ELK"), running a secure cluster is incredibly important to protect your data. That’s why security is [enabled and configured by default](../deploy/self-managed/installing-elasticsearch.md) since {{es}} 8.0.
+If the automatic setup is skipped, or if you prefer full control, you can [configure security manually](./self-setup.md#manual-configuration).
 
-
-guides links
-{{kib}} needs to be manually configured
-In self-managed clusters, there are two ways to perform the initial security setup, depending on your needs:
-
-* Automatic security setup: {{es}} security requires TLS certificates to be configured for inter-node communications (transport layer), and in order to facilitate the initial setup, there's an automatic configuration.
-
-* Manual security setup: If you are configuring security in an unsecured cluster, or if you want to use your own certificates, you can follow the manual approach, which consists of three steps, depending whether your cluster is a single-node or multi-node cluster:
-  * Minimal security
-  * Basic transport TLS security: for multi-node clusters only, as single-node clusters don't need to talk with other nodes.
-  * HTTP TLS: optional but highly recommended
-
-### Security auto configuration
-
-explain what it involves
-
-Link to the guide that includes kibana setup
-Refer to [skipxxxx]() to understand in what cases autoconfiguration works and when a manual configuration will be expected.
-
-
-### Manual configuration
-
-If you’re securing an existing unsecured cluster, or prefer to use your own TLS certificates, follow the manual approach. It involves enabling different layers of protection in sequence, depending on your cluster architecture and security requirements.
-
-- **Start with [minimal security](set-up-minimal-security.md)**: Enables password-based authentication for built-in users and configures {{kib}} to connect securely. Suitable for single-node clusters, but not sufficient for production.
-
-- **Then [configure transport TLS](secure-cluster-communications.md)**: Required for multi-node clusters running in [production mode](../deploy/self-managed/bootstrap-checks.md#dev-vs-prod-mode). This secures communication between nodes and prevents unauthorized nodes from joining the cluster.
-
-- **Finally, [configure HTTP TLS](set-up-basic-security-plus-https.md)**: Secures all client communications over HTTPS, including traffic between {{kib}} and {{es}}, and between browsers and {{kib}}.
-
-Each step builds on the previous one. For production environments, it’s strongly recommended to complete all three.
-
-Kibana also supports HTTPS.
-
-Mutual authentication is also an option.
-
-
+For an overview of both approaches, refer to [Security configuration for self-managed deployments](./self-setup.md).
+ 
 ## Communication and network security
 
 :::{include} /deploy-manage/security/_snippets/cluster-communication-network.md

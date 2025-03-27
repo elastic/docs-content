@@ -456,17 +456,21 @@ toc:
           - file: security/secure-your-eck-installation.md
       - file: security/secure-your-cluster-deployment.md
         children:
-          - file: security/security-certificates-keys.md
-          - file: security/set-up-minimal-security.md
+          - file: security/self-setup.md
+            children:
+              - file: security/security-certificates-keys.md
+              - file: security/set-up-minimal-security.md
           - file: security/secure-cluster-communications.md
             children:
-              - file: security/set-up-basic-security.md
-              - file: security/set-up-basic-security-plus-https.md
-              - file: security/updating-certificates.md
+              - file: security/self-tls.md
                 children:
-                  - file: security/same-ca.md
-                  - file: security/different-ca.md
-              - file: security/kibana-es-mutual-tls.md
+                  - file: security/set-up-basic-security.md
+                  - file: security/set-up-basic-security-plus-https.md
+                  - file: security/updating-certificates.md
+                    children:
+                      - file: security/same-ca.md
+                      - file: security/different-ca.md
+                      - file: security/kibana-es-mutual-tls.md
               - file: security/eck-tls.md
                 children:
                   - file: security/k8s-https-settings.md
