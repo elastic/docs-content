@@ -20,7 +20,7 @@ The AI Assistant uses generative AI to provide:
 :screenshot:
 :::
 
-The AI Assistant includes Elastic LLM, a preconfigured large language model (LLM) connector.
+By default AI Assistant uses Elastic LLM, a preconfigured large language model (LLM) connector that works out of the box.
 It also integrates with your LLM provider through our supported {{stack}} connectors:
 
 * [OpenAI connector](kibana://reference/connectors-kibana/openai-action-type.md) for OpenAI or Azure OpenAI Service.
@@ -49,7 +49,7 @@ The AI assistant requires the following:
 
 * {{stack}} version 8.9 and later.
 * A self-deployed connector service if [search connectors](elasticsearch://reference/search-connectors/self-managed-connectors.md) are used to populate external data into the knowledge base.
-* An account with a third-party generative AI provider that preferably supports function calling. If your AI provider does not support function calling, you can configure AI Assistant settings under **Stack Management** to simulate function calling, but this might affect performance. If you use the preconfigured Elastic LLM connector, you don't need an account of a third-party genAI provider.
+* If not using the default Elastic LLM connector, an account with a third-party generative AI provider that preferably supports function calling. If your provider does not support function calling, you can configure AI Assistant settings under **Stack Management** to simulate function calling, but this might affect performance.
 
     Refer to the [connector documentation](../../deploy-manage/manage-connectors.md) for your provider to learn about supported and default models.
 

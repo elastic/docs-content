@@ -77,7 +77,7 @@ To use Playground, you’ll need the following:
 
     * See [ingest data](playground.md#playground-getting-started-ingest) if you’d like to ingest sample data.
 
-3. An account with a **supported LLM provider** or you can use the preconfigured Elastic LLM. Playground supports the following:
+3. If not using the default Elastic LLM connector, an account with a supported LLM provider:
 
     * **Amazon Bedrock**
 
