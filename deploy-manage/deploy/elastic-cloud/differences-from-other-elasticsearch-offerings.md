@@ -101,7 +101,6 @@ This table compares Observability capabilities between Elastic Cloud Hosted depl
 | **APM integration** | ✅ | ✅ | Managed intake provided as part of serverless service |
 | **APM Tail-based sampling** | ✅ | ❌ | - Not available in Serverless <br>- Consider OpenTelemetry tail sampling processor as an alternative |
 | **Android agent/SDK instrumentation** | ✅ | ❌ | Not available in Serverless |
-| **Custom ingest pipelines** | ✅ | Limited | Some advanced processors not available |
 | **Custom roles for Kibana Spaces** | ✅ | **Planned** | Coming in a future release |
 | **Data stream lifecycle** | ✅ | ✅ | Primary lifecycle management method in Serverless |
 | **Fleet server** | - Self-hosted <br>- Hosted | ✅ | Fully managed by Elastic |
