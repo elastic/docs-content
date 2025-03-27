@@ -12,39 +12,37 @@ applies_to:
 
 This page covers the requirements and guidelines for using the entity risk scoring, asset criticality, and entity store features, as well as their known limitations.
 
-To use these features in {{stack}}, your role must have certain cluster, index, and {{kib}} privileges. In serverless, you need the appropriate user roles or a custom role with the right privileges.
+To use these features in {{stack}}, your role must have certain cluster, index, and {{kib}} privileges. In {{serverless-short}}, you need the appropriate user roles or a custom role with the right privileges.
 
-In {{stack}}, these features require a [Platinum subscription](https://www.elastic.co/pricing) or higher. In serverless, they require the Security Analytics Complete [project feature](/deploy-manage/deploy/elastic-cloud/project-settings.md).
+In {{stack}}, these features require a [Platinum subscription](https://www.elastic.co/pricing) or higher. In {{serverless-short}}, they require the Security Analytics Complete [project feature](/deploy-manage/deploy/elastic-cloud/project-settings.md).
 
 
 ## Entity risk scoring [_entity_risk_scoring]
 
-To turn on the risk scoring engine, you need the following:
+To install or run the risk scoring engine, you need the following:
 
 * In {{stack}}, you need the appropriate [privileges](#_privileges).
-* In serverless, you need either the appropriate [predefined Security user role](#ers_roles) or a [custom role](/deploy-manage/users-roles/cloud-organization/user-roles.md) with the right [privileges](#_privileges).
+* In {{serverless-short}}, you need either the appropriate [predefined Security user role](#ers_roles) or a [custom role](/deploy-manage/users-roles/cloud-organization/user-roles.md) with the right [privileges](#_privileges).
 
 
 ### Privileges [_privileges]
 
-#### Cluster
 
-- `manage_index_templates`
-- `manage_transform`
+| Action | Cluster Privileges | Index Privileges | Kibana Privileges |
+| --- | --- | --- | --- |
+| Install the risk engine | `manage_index_templates`<br> `manage_transform`<br> `manage_ingest_pipelines` | `All` for `risk-score.risk-score-*` | **Read** for the **Security** feature |
+| Run the risk engine | `manage_transform` | N/A | **Read** for the **Security** feature |
 
-#### Index
-
-`All` privilege for `risk-score.risk-score-*`
-
-#### {{kib}}
-
-**Read** for the **Security** feature
 
 ### Predefined roles [ers_roles]
+```yaml {applies_to}
+serverless: all
+```
 
-* Platform engineer
-* Detections admin
-* Admin
+| Action | Predefined role |
+| --- | --- |
+| Install the risk engine | - Platform engineer<br>- Admin |
+| Run the risk engine | - Platform engineer<br>- Detections admin<br>- Admin |
 
 
 ### {{es}} resource guidelines [_es_resource_guidelines]
@@ -69,7 +67,7 @@ Follow these guidelines to ensure clusters have adequate memory to handle data v
 To use asset criticality, you need the following:
 
 * In {{stack}}, you need the appropriate [privileges](#_privileges_2) for the `.asset-criticality.asset-criticality-<space-id>` index.
-* In serverless, you need either the appropriate [predefined Security user role](#ac_roles) or a [custom role](/deploy-manage/users-roles/cloud-organization/user-roles.md) with the right [privileges](#_privileges_2) for the `.asset-criticality.asset-criticality-<space-id>` index.
+* In {{serverless-short}}, you need either the appropriate [predefined Security user role](#ac_roles) or a [custom role](/deploy-manage/users-roles/cloud-organization/user-roles.md) with the right [privileges](#_privileges_2) for the `.asset-criticality.asset-criticality-<space-id>` index.
 
 ### Privileges [_privileges_2]
 
@@ -81,6 +79,9 @@ To use asset criticality, you need the following:
 | Unassign asset criticality | `delete` |
 
 ### Predefined roles [ac_roles]
+```yaml {applies_to}
+serverless: all
+```
 
 | Action | Predefined role |
 | --- | --- |
