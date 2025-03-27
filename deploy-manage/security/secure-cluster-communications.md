@@ -23,7 +23,7 @@ For ECE, ECK, and self-managed deployments, this page provides specific configur
 For a complete comparison of security feature availability and responsibility by deployment type, see [Security features by deployment type](/deploy-manage/security.md#comparison-table).
 :::
 
-## Communication channels overview
+## Communication channels overview [communication-channels]
 
 Both {{es}} and {{kib}}, the core components of the {{stack}}, expose service endpoints that must be secured. {{es}} handles traffic at two levels:
 * The **transport layer**, used for internal communication between nodes in the cluster.

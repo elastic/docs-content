@@ -7,9 +7,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/security-minimal-setup.html
 ---
 
-% alternative title: Manual security setup
-% Set up minimal security
-% Scope: Just enabling security, resetting passwords, and configuring kibana. Manual approach, opposite to automatic security configuration
+% Scope: enable security, reset passwords and configure kibana to use authentication. Alternative approach to the automatic security configuration.
 % Original title: Set up minimal security
 # Minimal security setup [security-minimal-setup]
 

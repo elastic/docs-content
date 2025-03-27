@@ -1,5 +1,5 @@
 ---
-navigation_title: Kibana > Elasticsearch mutual TLS
+navigation_title: Mutual authentication
 applies_to:
   deployment:
     self: all

@@ -29,7 +29,7 @@ If you already have certificates available, you can skip the certificate generat
 ::::{tip}
 When running `elasticsearch-certutil` in `http` mode, the tool prompts you to choose how to generate the TLS certificates. One key question is whether you want to generate a Certificate Signing Request (CSR).
 
-* Answer `n` to skip the CSR and sign your certificates using a Certificate Authority (CA) [you previously created](./set-up-basic-security.md#generate-the-certificate-authority). You’ll be prompted to provide the path to your CA, which the tool will use to generate a `.p12` certificate. The steps in this guide follow this workflow for {{es}} certificates.
+* Answer `n` to skip the CSR and sign your certificates using a Certificate Authority (CA) [you previously created](./set-up-basic-security.md#generate-certificates). You’ll be prompted to provide the path to your CA, which the tool will use to generate a `.p12` certificate. The steps in this guide follow this workflow for {{es}} certificates.
 * Answer `y` to generate a CSR that can be signed by your organization's internal CA or external certificate provider. This is common in environments where trust is managed centrally. The steps in this guide follow this workflow for {{kib}} certificate.
 
 Both workflows are supported. Choose the one that best fits your infrastructure and trust model.

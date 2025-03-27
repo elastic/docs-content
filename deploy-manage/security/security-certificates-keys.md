@@ -207,7 +207,7 @@ When you start {{es}} for the first time, the node startup process tries to auto
 * Whether security is already configured
 * If the startup process can modify the node configuration
 
-If any of those checks fail, there’s a good indication that you [manually configured security](manually-configure-security-in-self-managed-cluster.md), or don’t want security to be configured automatically. In these cases, the node starts normally using the existing configuration.
+If any of those checks fail, there’s a good indication that you manually configured security, or don’t want security to be configured automatically. In these cases, the node starts normally using the existing configuration.
 
 ::::{important}
 If you redirect {{es}} output to a file, security autoconfiguration is skipped. Autoconfigured credentials can only be viewed on the terminal the first time you start {{es}}. If you need to redirect output to a file, start {{es}} without redirection the first time and use redirection on all subsequent starts.
