@@ -1,3 +1,12 @@
+---
+applies_to:
+  stack:
+  deployment:
+    eck:
+    ess:
+    ece:
+    self:
+--- 
 # Prepare to upgrade
 
 Before you upgrade, review and complete the necessary preparation steps, which vary by version. 
@@ -8,7 +17,7 @@ Upgrading from a release candidate build, such as 9.0.0-rc1, is unsupported. Use
 
 ## Prepare to upgrade from 8.x [prepare-upgrade-from-8.x]
 
-To upgrade from 8.17.0 or earlier to 9.0.0, you must first upgrade to the latest 8.18 patch release. This enables you to use the [Upgrade Assistant](prepare-to-upgrade/upgrade-assistant.md) to identify and resolve issues, reindex indices created before 8.0.0, and perform a rolling upgrade. Upgrading to the latest 8.18 patch release is required even if you choose a full {{es}} cluster restart. If you're using 7.x and earlier, you may need to complete multiple upgrades or perform a full-cluster restart to reach the latest 8.18 patch release before upgrading to 9.0.0.
+To upgrade from 8.17.0 or earlier to 9.0.0, you must first upgrade to the latest 8.18 patch release. This allows you to use the [Upgrade Assistant](prepare-to-upgrade/upgrade-assistant.md) to identify and resolve issues, reindex indices created before 8.0.0, and perform a rolling upgrade. Upgrading to the latest 8.18 patch release is required even if you choose a full {{es}} cluster restart. If you're using 7.x and earlier, you may need to complete multiple upgrades or perform a full-cluster restart to reach the latest 8.18 patch release before upgrading to 9.0.0.
 
 Alternatively, you can create a 9.0 deployment and reindex from remote. For more information, refer to [Reindex to upgrade](#reindex-to-upgrade).
 
@@ -17,9 +26,9 @@ For flexible upgrade scheduling, 8.18.0 {{beats}} and {{ls}} are compatible with
 By default, 8.x {{es}} clients are compatible with 9.0.0 and use [REST API compatibility](elasticsearch://reference/elasticsearch/rest-apis/compatibility.md) to maintain compatibility with the 9.0.0 {{es}} server. 
 :::
 
-Review the best practices to upgrade your deployments.
+Review the following best practices to upgrade your deployments.
 
-1. Run the [Upgrade Assistant](prepare-to-upgrade/upgrade-assistant.md), which identifies deprecated settings, helps resolve issues, and reindexes data streams and indices created in 8.0.0 and earlier.
+1. Run the [Upgrade Assistant](prepare-to-upgrade/upgrade-assistant.md), which identifies deprecated settings in your configuration and guides you through resolving issues that could prevent a successful upgrade. The Upgrade Assistant also helps resolve issues with older indices created before version 8.0.0, providing the option to reindex older indices or mark them as read-only. To prevent upgrade failures, we strongly recommend you **do not** skip this step.     
 
     :::{note}
      Depending on your setup, reindexing can change your indices, and you may need to update alerts, transforms, or other code targeting the old index.
@@ -28,7 +37,7 @@ Review the best practices to upgrade your deployments.
 2. Before you change configurations or reindex, ensure you have a current [snapshot](/deploy-manage/tools/snapshot-and-restore/create-snapshots.md). 
 
     :::{tip}
-    Tip: In 8.3.0 and later, snapshots are generally available as simple archives. Use the [archive functionality](/deploy-manage/upgrade/deployment-or-cluster/reading-indices-from-older-elasticsearch-versions.md) to search snapshots from 5.0.0 and later, without needing an old {{es}} cluster. This ensures that your {{es}} data remains accessible after upgrades, without requiring a reindex process.
+    Tip: In 8.3.0 and later, snapshots are generally available as simple archives. Use the [archive functionality](/deploy-manage/upgrade/deployment-or-cluster/reading-indices-from-older-elasticsearch-versions.md) to search snapshots from 5.0.0 and later without needing an old {{es}} cluster. This ensures that your {{es}} data remains accessible after upgrading, without requiring a reindex process.
     :::
 
     To successfully upgrade, resolve all critical issues. If you make additional changes, create a snapshot to back up your data.
@@ -37,7 +46,7 @@ Review the best practices to upgrade your deployments.
 
 4. Major version upgrades can include breaking changes that require additional steps to ensure your applications function as expected. Review the breaking changes for each product you use to learn more about potential impacts on your application. Ensure you test with the new version before upgrading existing deployments.
 
-5. To ensure your clients continue to operate as expected after the upgrade, make the recommended changes. 
+5. Make the recommended changes to ensure your clients continue operating as expected after the upgrade. 
 
     :::{note}
        As a temporary solution, use the 8.x syntax to submit requests to 9.0.0 with REST API compatibility mode. While this allows you to submit requests using the old syntax, it doesn’t guarantee the same behavior. REST API compatibility should serve as a bridge during the upgrade, not a long-term solution. For more details on how to effectively use REST API compatibility during an upgrade, refer to [REST API compatibility](elasticsearch://reference/elasticsearch/rest-apis/compatibility.md). 
@@ -51,17 +60,19 @@ Review the best practices to upgrade your deployments.
     After you upgrade, you cannot downgrade {{es}} nodes. If you can't complete the upgrade process, you must [restore from the snapshot](/deploy-manage/tools/snapshot-and-restore/restore-snapshot.md).
     :::
 
-8. If you use a separate [monitoring cluster](/deploy-manage/monitor/stack-monitoring/elasticsearch-monitoring-self-managed.md), upgrade the monitoring cluster before the production cluster. The monitoring cluster and the clusters being monitored should be running the same version of the {{stack}}. Monitoring clusters are unable to monitor production clusters running newer versions of the {{stack}}. If necessary, the monitoring cluster can monitor production clusters running the latest release of the previous major version.
+8. If you use a separate [monitoring cluster](/deploy-manage/monitor/stack-monitoring/elasticsearch-monitoring-self-managed.md), upgrade the monitoring cluster before the production cluster. The monitoring cluster and the clusters being monitored should be running the same version of the {{stack}}. Monitoring clusters cannot monitor production clusters running newer versions of the {{stack}}. If necessary, the monitoring cluster can monitor production clusters running the latest release of the previous major version.
 
     :::{note}
-    If you use {{ccs}}, 9.0.0 and later can search only remote clusters running the previous minor version, the same version, or a newer minor version in the same major version. For more information, refer to [Cross-cluster search](../../solutions/search/cross-cluster-search.md).
+    If you use {{ccs}}, 9.0.0 and later can search only remote clusters running the previous minor version, the same version, or a newer minor version in the same major version. For more information, refer to [{{ccs-cap}}](../../solutions/search/cross-cluster-search.md).
 
-    If you use {{ccr}}, a cluster that contains follower indices must run the same or newer (compatible) version as the remote cluster. For more information and to view the version compatibility matrix, refer to [Cross cluster replication](/deploy-manage/tools/cross-cluster-replication.md). To view your remote clusters in {{kib}}, go to **Stack Management > Remote Clusters**.
+    If you use {{ccr}}, a cluster that contains follower indices must run the same or newer (compatible) version as the remote cluster. For more information and to view the version compatibility matrix, refer to [{{ccr-cap}}](/deploy-manage/tools/cross-cluster-replication.md). To view your remote clusters in {{kib}}, go to **Stack Management > Remote Clusters**. 
+    
+    In addition, if you have {{ccr-init}} data streams, refer to [Upgrade uni-directional {{ccr}} clusters with followed data streams](#upgrade-ccr-data-streams) for specific instructions on reindexing.   
     ::::
 
 9. To reduce overhead on the cluster during the upgrade, close {{ml}} jobs. Although {{ml}} jobs can run during a rolling upgrade, doing so increases the cluster workload.
 
-10. If you have `.ml-anomalies-*`anomaly detection result indices created in {{es}} 7.x, reindex, mark as read-only, or delete them before you upgrade to 9.0.0. For more information, refer to [Migrate anomaly detection results](#anomaly-migration). 
+10. If you have `.ml-anomalies-*`anomaly detection result indices created in {{es}} 7.x, reindex them, mark them as read-only, or delete them before you upgrade to 9.0.0. For more information, refer to [Migrate anomaly detection results](#anomaly-migration). 
 
 11. If you have transform destination indices created in {{es}} 7.x, reset, reindex, or delete them before you upgrade to 9.0.0. For more information, refer to [Migrate transform destination indices](#transform-migration). 
 
@@ -73,14 +84,43 @@ Optionally create a 9.0.0 deployment and reindex from remote:
 1. Provision an additional deployment running 9.0.0.
 2. To reindex your data into the new {{es}} cluster, use the [reindex documents API](https://www.elastic.co/docs/api/doc/elasticsearch/v8/operation/operation-reindex) and temporarily send new index requests to both clusters.
 3. Verify the new cluster performs as expected, fix any problems, and then permanently swap in the new cluster.
-4. Delete the old deployment. On {ecloud}, you are billed only for the time the new deployment runs in parallel with your old deployment. Usage is billed on an hourly basis.
+4. Delete the old deployment. On {{ecloud}}, you are billed only for the time the new deployment runs in parallel with your old deployment. Usage is billed on an hourly basis.
+
+## Upgrade uni-directional {{ccr}} clusters with followed data streams [upgrade-ccr-data-streams]
+
+When moving to a new major version of {{es}}, you must perform specific actions to ensure that indices — including those that back a data stream — are compatible with the latest Lucene version. With a {{ccr-init}}-enabled cluster, consider whether you want to keep your older data writable or read-only to ensure you make changes to the cluster in the correct order. 
+
+:::{note}
+{{ccr-init}}-replicated data streams only allow writing to the most recent backing index, as ILM automatically injects an unfollow event after every rollover. Therefore, you can't reindex {{ccr-init}}-followed data streams since older backing indices are no longer replicated by {{ccr-init}}.
+:::
+
+### Migrate read-only historical data
+
+If you want to keep your older data as read-only: 
+
+1. Issue a rollover for all replicated data streams on the follower cluster to ensure the write index is compatible with the version you're upgrading to. 
+2. Run the Upgrade Assistant on the {{ccr-init}} follower cluster and resolve any data stream deprecation notices, selecting the option to not reindex and allow the backing indices to become read-only after upgrading.
+3. Upgrade the {{ccr-init}} follower cluster to the appropriate version. Ensure you take a snapshot before starting the upgrade.
+4. Run the Upgrade Assistant on the {{ccr-init}} leader cluster and repeat the same steps as the follower cluster, opting not to reindex.
+5. Upgrade the leader cluster and ensure {{ccr-init}} replication is healthy.
+
+### Migrate read-write historical data
+
+If you need to write directly to non-write backing indices of data streams in a {{ccr-init}}-replicated cluster pair:
+
+1. Before upgrading, remove the data stream and all follower indices from the {{ccr-init}} follower.
+2. Run the Upgrade Assistant and select the “Reindex” option. 
+3. Once the reindexing is complete and the leader cluster is upgraded, re-add the newly reindexed backing indexes as follower indices on the {{ccr-init}} follower.
+
+
+
 
 
 ## Migrate anomaly detection results [anomaly-migration]
 
 Reindex, mark as read-only, or delete the `.ml-anomalies-*` {{anomaly-detect}} result indices created in {{es}} 7.x.
 
-**Reindex**: While {{anomaly-detect}} results are being reindexed, jobs continue to run and process new data. You are unable to delete an {{anomaly-job}} that stores results in the index until the reindexing is complete.
+**Reindex**: While {{anomaly-detect}} results are being reindexed, jobs continue to run and process new data. You cannot delete an {{anomaly-job}} that stores results in the index until the reindexing is complete.
 
 **Mark indices as read-only**: This is useful for large indexes that contain the results of one or two {{anomaly-jobs}}. If you delete these jobs later, you cannot create a new job with the same name.
 
@@ -111,15 +151,15 @@ The response contains the list of critical deprecation warnings in the `index_se
 :::
 
 :::{dropdown} Reindexing anomaly result indices
-For an index with less than 10GB that contains results from multiple jobs that are still required, we recommend reindexing into a new format using UI. You can use the [Get index information API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-indices-1) to obtain the size of an index:
+For an index with less than 10 GB that contains results from multiple jobs that are still required, we recommend reindexing into a new format using the UI. You can use the [Get index information API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-indices-1) to obtain the size of an index:
 
 ```
 GET _cat/indices/.ml-anomalies-custom-example?v&h=index,store.size
 ```
 
-The reindexing can be initiated in the {{kib}} Upgrade Assistant.
+Use the Upgrade Assistant to initiate reindexing.
 
-If an index size is greater than 10 GB, it is recommended to use the Reindex API. Reindexing consists of the following steps:
+If an index size is greater than 10 GB, we recommend using the Reindex API. Reindexing consists of the following steps:
 
 1. Set the original index to read-only.
 
@@ -133,7 +173,7 @@ PUT .ml-anomalies-custom-example/_block/read_only
 POST _create_from/.ml-anomalies-custom-example/.reindexed-v9-ml-anomalies-custom-example
 ```
 
-3. Reindex documents. To accelerate the reindexing process, it is recommended that the number of replicas be set to `0` before the reindexing and then set back to the original number once it is completed.
+3. Reindex documents. To accelerate the reindexing process, we recommend setting the number of replicas to `0` before reindexing, then set it back to the original number once completed.
 
     1. Get the number of replicas.
 
@@ -237,7 +277,7 @@ The response may contain multiple aliases if the results of multiple jobs are st
 }
 ```
 
-5. Now you can reassign the aliases to the new index and delete the original index in one step. Note that when adding the new index to the aliases, you must use the same `filter` and `is_hidden` parameters as for the original index.
+5. Now you can reassign the aliases to the new index and delete the original index in one step. Note that when adding the new index to the aliases, you must use the same `filter` and `is_hidden` parameters as the original index.
 
 ```json
 POST _aliases
@@ -334,9 +374,9 @@ The transform destination indices created in {{es}} 7.x must be either reset, re
 
 **Resetting**: You can reset the transform to delete all state, checkpoints, and the destination index (if it was created by the transform). The next time you start the transform, it will reprocess all data from the source index, creating a new destination index in {{es}} 8.x compatible with 9.x. However, if data had been deleted from the source index, you will lose all previously computed results that had been stored in the destination index.
 
-**Reindexing**: You can reindex the destination index and then update the transform to write to the new destination index. This is useful if there are results that you want to retain that may not exist in the source index. To prevent the transform and reindex tasks from conflicting with one another, you can either pause the transform while the reindex runs, or you can write to the new destination index while the reindex backfills old results.
+**Reindexing**: You can reindex the destination index and then update the transform to write to the new destination index. This is useful if there are results that you want to retain that may not exist in the source index. To prevent the transform and reindex tasks from conflicting with one another, you can either pause the transform while the reindex runs, or write to the new destination index while the reindex backfills old results.
 
-**Deleting**: You can delete any transform that are no longer being used. Once the transform is deleted, you can either delete the destination index or make it read-only.
+**Deleting**: You can delete any transform that's no longer being used. Once the transform is deleted, you can delete the destination index or make it read-only.
 
 :::{dropdown} Which indices require attention?
 To identify indices that require action, use the [Deprecation info API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-migration-deprecations-1):
@@ -365,7 +405,7 @@ The response contains the list of critical deprecation warnings in the `index_se
 :::{dropdown} Resetting the transform
 If the index was created by the transform, you can use the [Transform Reset API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-transform-reset-transform) to delete the destination index and recreate it the next time the transform runs.
 
-If the index was not created by the transform, and you still want to reset it, you can manually delete and recreate the index, then call the Reset API.
+If the index was not created by the transform and you still want to reset it, you can manually delete and recreate the index, then call the Reset API.
 
 ```json
 POST _transform/my-transform/_reset
@@ -373,21 +413,17 @@ POST _transform/my-transform/_reset
 :::
 
 :::{dropdown} Reindexing the transform’s destination index while the transform is paused
-When Kibana Upgrade Assistant reindexes the documents, Kibana will put a write block on the old destination index, copy the results to a new index, delete the old index, and create an alias to the new index. During this time, the transform will pause and wait for the destination to become writable again. If you do not want the transform to pause, continue to reindexing the transform’s destination index while the transform is running.
+When the Upgrade Assistant reindexes the documents, {{kib}} will put a write block on the old destination index, copy the results to a new index, delete the old index, and create an alias to the new index. During this time, the transform will pause and wait for the destination to become writable again. If you do not want the transform to pause, continue to reindexing the transform’s destination index while the transform is running.
 
-If an index is less than 10GB of size, we recommend using Kibana’s Upgrade Assistant to automatically migrate the index.
-
-If an index size is greater than 10 GB it is recommended to use the Reindex API. Reindexing consists of the following steps:
-
-You can use the [Get index information API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-indices-1) to obtain the size of an index:
+If an index size is less than 10 GB, we recommend using the Upgrade Assistant to automatically migrate the index. You can use the [Get index information API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-indices-1) to obtain the size of an index:
 
 ```
 GET _cat/indices/.transform-destination-example?v&h=index,store.size
 ```
 
-The reindexing can be initiated in the Kibana Upgrade Assistant.
+Use the Upgrade Assistant to initiate reindexing.
 
-If an index size is greater than 10 GB, it is recommended to use the Reindex API. Reindexing consists of the following steps:
+If an index size is greater than 10 GB, we recommend using the Reindex API. Reindexing consists of the following steps:
 
 1. Set the original index to read-only.
 
@@ -401,7 +437,7 @@ PUT .transform-destination-example/_block/read_only
 POST _create_from/.transform-destination-example/.reindexed-v9-transform-destination-example
 ```
 
-3. Reindex documents. To accelerate the reindexing process, it is recommended that the number of replicas be set to 0 before the reindexing and then set back to the original number once it is completed.
+3. Reindex documents. To accelerate the reindexing process, we recommend setting the number of replicas to 0 before reindexing, then set it back to the original number once completed.
 
     1. Get the number of replicas.
 
@@ -503,7 +539,7 @@ The response may contain multiple aliases if the results of multiple jobs are st
 }
 ```
 
-5. Now you can reassign the aliases to the new index and delete the original index in one step. Note that when adding the new index to the aliases, you must use the same `filter` and `is_hidden` parameters as for the original index.
+5. Now you can reassign the aliases to the new index and delete the original index in one step. Note that when adding the new index to the aliases, you must use the same `filter` and `is_hidden` parameters as the original index.
 
 ```json
 POST _aliases
@@ -581,7 +617,7 @@ POST _transform/my-transform/_update
 }
 ```
 
-3. Reindex documents. To accelerate the reindexing process, it is recommended that the number of replicas be set to 0 before the reindexing and then set back to the original number once it is completed.
+3. Reindex documents. To accelerate the reindexing process, we recommend setting the number of replicas to 0 before reindexing, then set it back to the original number once completed.
 
     1. Get the number of replicas.
 
@@ -661,7 +697,7 @@ POST _transform/my-transform/_update
     }
     ```
 
-5. Now you can reassign the aliases to the new index and delete the original index in one step. Note that when adding the new index to the aliases, you must use the same `filter` and `is_hidden` parameters as for the original index.
+5. Now you can reassign the aliases to the new index and delete the original index in one step. Note that when adding the new index to the aliases, you must use the same `filter` and `is_hidden` parameters as the original index.
 
     ```json
     POST _aliases
@@ -696,7 +732,7 @@ You can use the [Transform Delete API](https://www.elastic.co/docs/api/doc/elast
 ```json
 DELETE _transform/my-transform
 ```
-If the destination index is no longer needed, it can be deleted alongside the transform.
+If the destination index is no longer needed, it can be deleted with the transform.
 
 ```json
 DELETE _transform/my-transform?delete_dest_index
