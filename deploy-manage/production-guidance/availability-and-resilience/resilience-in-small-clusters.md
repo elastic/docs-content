@@ -1,11 +1,21 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/high-availability-cluster-small-clusters.html
+applies_to:
+  deployment:
+    self: all
+    eck: all
 ---
 
 # Resilience in small clusters [high-availability-cluster-small-clusters]
 
 In smaller clusters, it is most important to be resilient to single-node failures. This section gives some guidance on making your cluster as resilient as possible to the failure of an individual node.
+
+::::{note}
+This document focuses on self-managed {{es}} deployments and describes resilience strategies for clusters with one to a few nodes. While the guidance is tailored to these environments, many of the core concepts, such as master elections, replica configuration, and client request distribution, are also relevant to other deployment types, like {{eck}}.
+
+For a more in-depth description of how resilience is handled in {{ech}} and {{ece}}, refer to [](./resilience-in-ech.md).
+::::
 
 ## One-node clusters [high-availability-cluster-design-one-node]
 

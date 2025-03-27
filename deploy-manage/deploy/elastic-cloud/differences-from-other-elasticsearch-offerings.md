@@ -207,6 +207,7 @@ Managed settings
 
 ## Learn more
 
+
 - [Elastic Cloud Serverless roadmap](https://www.elastic.co/cloud/serverless/roadmap): See upcoming features and development plans
 - [Elasticsearch Serverless API reference](https://www.elastic.co/docs/api/doc/elasticsearch-serverless): Check out the complete list of available APIs in Elastic Cloud Serverless
 - [Project settings](/deploy-manage/deploy/elastic-cloud/project-settings.md): Configure project settings in Elastic Cloud Serverless
@@ -214,3 +215,4 @@ Managed settings
 - [Elastic Cloud pricing](https://www.elastic.co/pricing/): Understand pricing for Elastic Cloud Hosted and Serverless projects
   - [Serverless project billing](/deploy-manage/cloud-organization/billing/serverless-project-billing-dimensions.md): Understand billing dimensions for Serverless projects
   - [Elastic Cloud Hosted billing](/deploy-manage/cloud-organization/billing/cloud-hosted-deployment-billing-dimensions.md): Understand billing dimensions for Elastic Cloud Hosted deployments
+

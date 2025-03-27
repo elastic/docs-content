@@ -24,9 +24,9 @@ Have an index with lat/lon pairs but no geo_point mapping? Use [runtime fields](
 
 Data is often messy and incomplete. [Ingest pipelines](../manage-data/ingest/transform-enrich/ingest-pipelines.md) lets you clean, transform, and augment your data before indexing.
 
-* Use [CSV](elasticsearch://reference/ingestion-tools/enrich-processor/csv-processor.md) together with [explicit mapping](../manage-data/data-store/mapping/explicit-mapping.md) to index CSV files with geo data. Kibana’s [Import CSV](visualize/maps/import-geospatial-data.md) feature can help with this.
-* Use [GeoIP](elasticsearch://reference/ingestion-tools/enrich-processor/geoip-processor.md) to add geographical location of an IPv4 or IPv6 address.
-* Use [geo-grid processor](elasticsearch://reference/ingestion-tools/enrich-processor/ingest-geo-grid-processor.md) to convert grid tiles or hexagonal cell ids to bounding boxes or polygons which describe their shape.
+* Use [CSV](elasticsearch://reference/enrich-processor/csv-processor.md) together with [explicit mapping](../manage-data/data-store/mapping/explicit-mapping.md) to index CSV files with geo data. Kibana’s [Import CSV](visualize/maps/import-geospatial-data.md) feature can help with this.
+* Use [GeoIP](elasticsearch://reference/enrich-processor/geoip-processor.md) to add geographical location of an IPv4 or IPv6 address.
+* Use [geo-grid processor](elasticsearch://reference/enrich-processor/ingest-geo-grid-processor.md) to convert grid tiles or hexagonal cell ids to bounding boxes or polygons which describe their shape.
 * Use [geo_match enrich policy](../manage-data/ingest/transform-enrich/example-enrich-data-based-on-geolocation.md) for reverse geocoding. For example, use [reverse geocoding](visualize/maps/reverse-geocoding-tutorial.md) to visualize metropolitan areas by web traffic.
 
 
@@ -48,22 +48,22 @@ Data is often messy and incomplete. [Ingest pipelines](../manage-data/ingest/tra
 
 ## Aggregate [geospatial-aggregate]
 
-[Aggregations](query-filter/aggregations.md) summarizes your data as metrics, statistics, or other analytics. Use [bucket aggregations](elasticsearch://reference/data-analysis/aggregations/bucket.md) to group documents into buckets, also called bins, based on field values, ranges, or other criteria. Then, use [metric aggregations](elasticsearch://reference/data-analysis/aggregations/metrics.md) to calculate metrics, such as a sum or average, from field values in each bucket. Compare metrics across buckets to gain insights from your data.
+[Aggregations](query-filter/aggregations.md) summarizes your data as metrics, statistics, or other analytics. Use [bucket aggregations](elasticsearch://reference/aggregations/bucket.md) to group documents into buckets, also called bins, based on field values, ranges, or other criteria. Then, use [metric aggregations](elasticsearch://reference/aggregations/metrics.md) to calculate metrics, such as a sum or average, from field values in each bucket. Compare metrics across buckets to gain insights from your data.
 
 Geospatial bucket aggregations:
 
-* [Geo-distance aggregation](elasticsearch://reference/data-analysis/aggregations/search-aggregations-bucket-geodistance-aggregation.md) evaluates the distance of each geo_point location from an origin point and determines the buckets it belongs to based on the ranges (a document belongs to a bucket if the distance between the document and the origin falls within the distance range of the bucket).
-* [Geohash grid aggregation](elasticsearch://reference/data-analysis/aggregations/search-aggregations-bucket-geohashgrid-aggregation.md) groups geo_point and geo_shape values into buckets that represent a grid.
-* [Geohex grid aggregation](elasticsearch://reference/data-analysis/aggregations/search-aggregations-bucket-geohexgrid-aggregation.md) groups geo_point and geo_shape values into buckets that represent an H3 hexagonal cell.
-* [Geotile grid aggregation](elasticsearch://reference/data-analysis/aggregations/search-aggregations-bucket-geotilegrid-aggregation.md) groups geo_point and geo_shape values into buckets that represent a grid. Each cell corresponds to a [map tile](https://en.wikipedia.org/wiki/Tiled_web_map) as used by many online map sites.
+* [Geo-distance aggregation](elasticsearch://reference/aggregations/search-aggregations-bucket-geodistance-aggregation.md) evaluates the distance of each geo_point location from an origin point and determines the buckets it belongs to based on the ranges (a document belongs to a bucket if the distance between the document and the origin falls within the distance range of the bucket).
+* [Geohash grid aggregation](elasticsearch://reference/aggregations/search-aggregations-bucket-geohashgrid-aggregation.md) groups geo_point and geo_shape values into buckets that represent a grid.
+* [Geohex grid aggregation](elasticsearch://reference/aggregations/search-aggregations-bucket-geohexgrid-aggregation.md) groups geo_point and geo_shape values into buckets that represent an H3 hexagonal cell.
+* [Geotile grid aggregation](elasticsearch://reference/aggregations/search-aggregations-bucket-geotilegrid-aggregation.md) groups geo_point and geo_shape values into buckets that represent a grid. Each cell corresponds to a [map tile](https://en.wikipedia.org/wiki/Tiled_web_map) as used by many online map sites.
 
 Geospatial metric aggregations:
 
-* [Geo-bounds aggregation](elasticsearch://reference/data-analysis/aggregations/search-aggregations-metrics-geobounds-aggregation.md) computes the geographic bounding box containing all values for a Geopoint or Geoshape field.
-* [Geo-centroid aggregation](elasticsearch://reference/data-analysis/aggregations/search-aggregations-metrics-geocentroid-aggregation.md) computes the weighted centroid from all coordinate values for geo fields.
-* [Geo-line aggregation](elasticsearch://reference/data-analysis/aggregations/search-aggregations-metrics-geo-line.md) aggregates all geo_point values within a bucket into a LineString ordered by the chosen sort field. Use geo_line aggregation to create [vehicle tracks](visualize/maps/asset-tracking-tutorial.md).
+* [Geo-bounds aggregation](elasticsearch://reference/aggregations/search-aggregations-metrics-geobounds-aggregation.md) computes the geographic bounding box containing all values for a Geopoint or Geoshape field.
+* [Geo-centroid aggregation](elasticsearch://reference/aggregations/search-aggregations-metrics-geocentroid-aggregation.md) computes the weighted centroid from all coordinate values for geo fields.
+* [Geo-line aggregation](elasticsearch://reference/aggregations/search-aggregations-metrics-geo-line.md) aggregates all geo_point values within a bucket into a LineString ordered by the chosen sort field. Use geo_line aggregation to create [vehicle tracks](visualize/maps/asset-tracking-tutorial.md).
 
-Combine aggregations to perform complex geospatial analysis. For example, to calculate the most recent GPS tracks per flight, use a [terms aggregation](elasticsearch://reference/data-analysis/aggregations/search-aggregations-bucket-terms-aggregation.md) to group documents into buckets per aircraft. Then use geo-line aggregation to compute a track for each aircraft. In another example, use geotile grid aggregation to group documents into a grid. Then use geo-centroid aggregation to find the weighted centroid of each grid cell.
+Combine aggregations to perform complex geospatial analysis. For example, to calculate the most recent GPS tracks per flight, use a [terms aggregation](elasticsearch://reference/aggregations/search-aggregations-bucket-terms-aggregation.md) to group documents into buckets per aircraft. Then use geo-line aggregation to compute a track for each aircraft. In another example, use geotile grid aggregation to group documents into a grid. Then use geo-centroid aggregation to find the weighted centroid of each grid cell.
 
 
 ## Integrate [geospatial-integrate]

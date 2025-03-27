@@ -136,10 +136,10 @@ An index with invalid synonym rules cannot be reopened, making it inoperable whe
 ::::
 
 
-{{es}} uses synonyms as part of the [analysis process](../../../manage-data/data-store/text-analysis.md). You can use two types of [token filter](elasticsearch://reference/data-analysis/text-analysis/token-filter-reference.md) to include synonyms:
+{{es}} uses synonyms as part of the [analysis process](../../../manage-data/data-store/text-analysis.md). You can use two types of [token filter](elasticsearch://reference/text-analysis/token-filter-reference.md) to include synonyms:
 
-* [Synonym graph](elasticsearch://reference/data-analysis/text-analysis/analysis-synonym-graph-tokenfilter.md): It is recommended to use it, as it can correctly handle multi-word synonyms ("hurriedly", "in a hurry").
-* [Synonym](elasticsearch://reference/data-analysis/text-analysis/analysis-synonym-tokenfilter.md): Not recommended if you need to use multi-word synonyms.
+* [Synonym graph](elasticsearch://reference/text-analysis/analysis-synonym-graph-tokenfilter.md): It is recommended to use it, as it can correctly handle multi-word synonyms ("hurriedly", "in a hurry").
+* [Synonym](elasticsearch://reference/text-analysis/analysis-synonym-tokenfilter.md): Not recommended if you need to use multi-word synonyms.
 
 Check each synonym token filter documentation for configuration details and instructions on adding it to an analyzer.
 
