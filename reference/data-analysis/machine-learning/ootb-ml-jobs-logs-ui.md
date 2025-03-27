@@ -14,7 +14,7 @@ Detect anomalies in log entries via the Logs UI.
 
 | Name | Description | Job (JSON) | Datafeed |
 | --- | --- | --- | --- |
-| log_entry_rate | Detects anomalies in the log entry ingestion rate | [code](https://github.com/elastic/kibana/blob/master/x-pack/plugins/ml/server/models/data_recognizer/modules/logs_ui_analysis/ml/log_entry_rate.json) | [code](https://github.com/elastic/kibana/blob/master/x-pack/plugins/ml/server/models/data_recognizer/modules/logs_ui_analysis/ml/datafeed_log_entry_rate.json) |
+| log_entry_rate | Detects anomalies in the log entry ingestion rate | [code](https://github.com/elastic/kibana/blob/master/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/logs_ui_analysis/ml/log_entry_rate.json) | [code](https://github.com/elastic/kibana/blob/master/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/logs_ui_analysis/ml/datafeed_log_entry_rate.json) |
 
 
 ## Log entry categories [logs-ui-categories]
@@ -23,5 +23,5 @@ Detect anomalies in count of log entries by category.
 
 | Name | Description | Job (JSON) | Datafeed |
 | --- | --- | --- | --- |
-| log_entry_categories_count | Detects anomalies in count of log entries by category | [code](https://github.com/elastic/kibana/blob/master/x-pack/plugins/ml/server/models/data_recognizer/modules/logs_ui_categories/ml/log_entry_categories_count.json) | [code](https://github.com/elastic/kibana/blob/master/x-pack/plugins/ml/server/models/data_recognizer/modules/logs_ui_categories/ml/datafeed_log_entry_categories_count.json) |
+| log_entry_categories_count | Detects anomalies in count of log entries by category | [code](https://github.com/elastic/kibana/blob/master/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/logs_ui_categories/ml/log_entry_categories_count.json) | [code](https://github.com/elastic/kibana/blob/master/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/logs_ui_categories/ml/datafeed_log_entry_categories_count.json) |
 
