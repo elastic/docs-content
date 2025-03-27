@@ -45,7 +45,7 @@ QLYL4zLEby3vRxq65+xofVBJAaM=
 
 You can provide your own CA and certificates instead of the self-signed certificate to connect to Elastic stack applications through HTTPS using a Kubernetes secret.
 
-Check [Setup your own certificate](/deploy-manage/security/secure-http-communications.md#k8s-setting-up-your-own-certificate) to learn how to do that.
+Check [Setup your own certificate](./set-up-basic-security-plus-https.md#encrypt-http-communication) to learn how to do that with `elasticsearch-certutil` tool.
 
 #### Custom self-signed certificate using OpenSSL [k8s_custom_self_signed_certificate_using_openssl]
 

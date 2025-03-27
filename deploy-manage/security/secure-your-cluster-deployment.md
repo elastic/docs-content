@@ -28,18 +28,13 @@ You must secure [other {{stack}} components](/deploy-manage/security/secure-clie
 You can configure the following aspects of your Elastic cluster or deployment to maintain and enhance security:
 
 ## Enable and set up security [manually-configure-security]
+```{applies_to}
+deployment:
+  self: all
+```
 
-The first step in securing your deployment is ensuring that the {{es}} security feature is enabled and properly set up. {{es}} security provides authentication, authorization, TLS encryption, and other capabilities described in this section.
-
-::::{note}
-Deployments managed by {{eck}}, {{ece}}, {{ech}}, and {{serverless-short}} automatically configure security by default. This includes setting the `elastic` user password, generating TLS certificates, and configuring {{kib}} to connect to {{es}} securely. Disabling security is not supported in these deployment types.
-::::
-
-In self-managed clusters, security is [enabled and configured by default](./security-certificates-keys.md) since {{es}} 8.0, but some additional setup steps are still required. Follow the guide to complete the configuration and understand how the automatic setup works.
-
-If the automatic setup is skipped, or if you prefer full control, you can [configure security manually](./self-setup.md#manual-configuration).
-
-For an overview of both approaches, refer to [Security configuration for self-managed deployments](./self-setup.md).
+:::{include} /deploy-manage/security/_snippets/enable-security.md
+:::
  
 ## Communication and network security
 
@@ -79,72 +74,3 @@ The Federal Information Processing Standard (FIPS) Publication 140-2, (FIPS PUB 
 
 :::{include} /deploy-manage/security/_snippets/cluster-comparison.md
 :::
-
-## Old content
-
-### Common security scenarios
-
-:::{image} /deploy-manage/images/elasticsearch-reference-elastic-security-overview.png
-:alt: Elastic Security layers
-:::
-
-#### Minimal security ({{es}} Development) [security-minimal-overview]
-
-::::{important}
-The minimal security scenario is not sufficient for [production mode](../deploy/self-managed/bootstrap-checks.md#dev-vs-prod-mode) clusters. If your cluster has multiple nodes, you must enable minimal security and then [configure Transport Layer Security (TLS)](secure-cluster-communications.md) between nodes.
-::::
-
-If you’ve been working with {{es}} and want to enable security on your existing, unsecured cluster, start here. You’ll set passwords for the built-in users to prevent unauthorized access to your local cluster, and also configure password authentication for {{kib}}.
-
-[Set up minimal security](set-up-minimal-security.md)
-
-#### Basic security ({{es}} + {{kib}}) [security-basic-overview]
-
-This scenario configures TLS for communication between nodes. This security layer requires that nodes verify security certificates, which prevents unauthorized nodes from joining your {{es}} cluster.
-
-Your external HTTP traffic between {{es}} and {{kib}} won’t be encrypted, but internode communication will be secured.
-
-[Set up basic security](secure-cluster-communications.md)
-
-#### Basic security plus secured HTTPS traffic ({{stack}}) [security-basic-https-overview]
-
-This scenario builds on the one for basic security and secures all HTTP traffic with TLS. In addition to configuring TLS on the transport interface of your {{es}} cluster, you configure TLS on the HTTP interface for both {{es}} and {{kib}}.
-
-::::{note}
-If you need mutual (bidirectional) TLS on the HTTP layer, then you’ll need to configure mutual authenticated encryption.
-::::
-
-You then configure {{kib}} and Beats to communicate with {{es}} using TLS so that all communications are encrypted. This level of security is strong, and ensures that any communications in and out of your cluster are secure.
-
-[Set up basic security plus HTTPS traffic](secure-cluster-communications.md)
-
-### Network access
-
-Control which systems can access your Elastic deployments and clusters through traffic filtering and network controls:
-
-- **IP traffic filtering**: Restrict access based on IP addresses or CIDR ranges.
-- **Private link filters**: Secure connectivity through AWS PrivateLink, Azure Private Link, or GCP Private Service Connect.
-- **Static IPs**: Use static IP addresses for predictable firewall rules.
-- **Remote cluster access**: Secure cross-cluster operations.
-
-Refer to [](traffic-filtering.md).
-
-
-### Cluster communication
-
-- **HTTP and HTTPs**
-- **TLS certificates and keys**
-
-
-### Data, objects and settings security
-
-- **Bring your own encryption key**: Use your own encryption key instead of the default encryption at rest provided by Elastic.
-- **{{es}} and {{kib}} keystores**: Secure sensitive settings using keystores
-- **{{kib}} saved objects**: Customize the encryption for {{kib}} objects such as dashboards.
-- **{{kib}} session management**: Customize {{kib}} session expiration settings.
-
-Refer to [](data-security.md).
-
-### User roles
-
-[Define roles](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md) for your users and [assign appropriate privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md) to ensure that users have access only to the resources that they need. This process determines whether the user behind an incoming request is allowed to run that request.

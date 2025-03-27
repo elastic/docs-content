@@ -7,7 +7,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/security-basic-setup-https.html
 ---
 
-# Setup security in self-managed deployments
+# Set up security in self-managed deployments
 
 There are two approaches to configuring security in self-managed deployments of the Elastic Stack:
 
@@ -36,7 +36,7 @@ If you’re securing an existing unsecured cluster, or prefer to use your own TL
 
 * **Start with [minimal security](set-up-minimal-security.md)**: Enables password-based authentication for built-in users and configures {{kib}} to connect using credentials. Suitable for single-node clusters, but not sufficient for production or multi-node clusters.
 
-* **Then [configure transport TLS](secure-cluster-communications.md)**: Required for multi-node clusters running in [production mode](../deploy/self-managed/bootstrap-checks.md#dev-vs-prod-mode). Secures communication between nodes and prevents unauthorized nodes from joining the cluster.
+* **Then [configure transport TLS](./set-up-basic-security.md)**: Required for multi-node clusters running in [production mode](../deploy/self-managed/bootstrap-checks.md#dev-vs-prod-mode). Secures communication between nodes and prevents unauthorized nodes from joining the cluster.
 
 * **Finally, [configure HTTP TLS](set-up-basic-security-plus-https.md)**: Secures all client communications over HTTPS, including traffic between {{kib}} and {{es}}, and between browsers and {{kib}}. Recommended for all clusters, even single-node setups.
 

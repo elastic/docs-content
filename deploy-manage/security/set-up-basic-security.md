@@ -11,7 +11,7 @@ mapped_pages:
 % original title: Set up basic security for the Elastic Stack
 # Set up transport TLS [security-basic-setup]
 
-When you start {{es}} for the first time, passwords are generated for the `elastic` user and TLS is automatically configured for you. If you configure security manually *before* starting your {{es}} nodes, the auto-configuration process will respect your security configuration. You can adjust your TLS configuration at any time, such as [updating node certificates](updating-certificates.md).
+When you start {{es}} for the first time, passwords are generated for the `elastic` user and TLS is automatically configured for you. If you configure security manually before starting your {{es}} nodes, the auto-configuration process will respect your security configuration. You can adjust your TLS configuration at any time, such as [updating node certificates](updating-certificates.md).
 
 ::::{important}
 If your cluster has multiple nodes, then you must configure TLS between nodes. [Production mode](../deploy/self-managed/bootstrap-checks.md#dev-vs-prod-mode) clusters will not start if you do not enable TLS.
@@ -28,7 +28,7 @@ Transport Layer Security (TLS) is the name of an industry standard protocol for 
 
 Transport Protocol is the name of the protocol that {{es}} nodes use to communicate with one another. This name is specific to {{es}} and distinguishes the transport port (default `9300`) from the HTTP port (default `9200`). Nodes communicate with one another using the transport port, and REST clients communicate with {{es}} using the HTTP port.
 
-Although the word *transport* appears in both contexts, they mean different things. It’s possible to apply TLS to both the {{es}} transport port and the HTTP port. We know that these overlapping terms can be confusing, so to clarify, in this scenario we’re applying TLS to the {{es}} transport port. In [](secure-http-communications.md), we’ll apply TLS to the {{es}} HTTP port.
+Although the word *transport* appears in both contexts, they mean different things. It’s possible to apply TLS to both the {{es}} transport port and the HTTP port. We know that these overlapping terms can be confusing, so to clarify, in this scenario we’re applying TLS to the {{es}} transport port. In [](./set-up-basic-security-plus-https.md), we’ll apply TLS to the {{es}} HTTP port.
 
 ::::
 
@@ -135,6 +135,6 @@ Complete the following steps **for each node in your cluster**. To join the same
 
 Congratulations! You’ve encrypted communications between the nodes in your cluster and can pass the [TLS bootstrap check](../deploy/self-managed/bootstrap-checks.md#bootstrap-checks-tls).
 
-To add another layer of security, [Set up basic security for the Elastic Stack plus secured HTTPS traffic](secure-http-communications.md). In addition to configuring TLS on the transport interface of your {{es}} cluster, you configure TLS on the HTTP interface for both {{es}} and {{kib}}.
+To add another layer of security, [Set up basic security for the Elastic Stack plus secured HTTPS traffic](./set-up-basic-security-plus-https.md). In addition to configuring TLS on the transport interface of your {{es}} cluster, you configure TLS on the HTTP interface for both {{es}} and {{kib}}.
 
 

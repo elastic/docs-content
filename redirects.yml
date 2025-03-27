@@ -19,7 +19,7 @@ redirects:
       'spaces-control-feature-visibility':
   'deploy-manage/deploy/cloud-enterprise/deploy-large-installation-cloud.md': '!deploy-manage/deploy/cloud-enterprise/deploy-large-installation.md'
   'deploy-manage/deploy/cloud-enterprise/find-cloud-id.md': '!deploy-manage/deploy/cloud-enterprise/connect-elasticsearch.md'
-  'deploy-manage/deploy/cloud-on-k8s/k8s-kibana-http-configuration.md': '!deploy-manage/security/secure-http-communications.md'
+  'deploy-manage/deploy/cloud-on-k8s/k8s-kibana-http-configuration.md': '!deploy-manage/security/k8s-https-settings.md'
   'deploy-manage/deploy/self-managed/install-with-docker.md': '!deploy-manage/deploy/self-managed/install-kibana-with-docker.md'
   'deploy-manage/deploy/self-managed/deploy-cluster.md': '!deploy-manage/deploy/self-managed/installing-elasticsearch.md'
   'deploy-manage/deploy/self-managed/configure.md': '!deploy-manage/deploy/self-managed/configure-kibana.md'
@@ -37,8 +37,8 @@ redirects:
   'deploy-manage/monitor/logging-configuration/auditing-search-queries.md': 'deploy-manage/security/logging-configuration/auditing-search-queries.md'
   'deploy-manage/monitor/logging-configuration/logfile-audit-output.md': 'deploy-manage/security/logging-configuration/logfile-audit-output.md'
 
-  ## temporary hack due to moved anchors
-  'deploy-manage/security/secure-http-communications.md': '!deploy-manage/security/secure-http-communications.md'
+  ## temporary hack due to moved anchors (maybe could be removed)
+  'deploy-manage/security/secure-http-communications.md': '!deploy-manage/security/secure-cluster-communications.md'
 
 ## explore-analyze
   'explore-analyze/machine-learning/nlp/ml-nlp-auto-scale.md': '!deploy-manage/autoscaling/trained-model-autoscaling.md'

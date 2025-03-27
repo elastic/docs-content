@@ -116,7 +116,7 @@ HTTP TLS certificates for {{es}} can be [automatically configured](security-cert
 
 {{kib}} acts as both an HTTP client to {{es}} and a server for browser access. It performs operations on behalf of users, so it must be properly configured to trust the {{es}} certificates, and to present its own TLS certificate for secure browser connections. These configurations must be performed manually in self-managed deployments.
 
-For environments with stricter security requirements, refer to [Mutual TLS authentication between {{kib}} and {{es}}](secure-http-communications.md#elasticsearch-mutual-tls).
+For environments with stricter security requirements, refer to [Mutual TLS authentication between {{kib}} and {{es}}](./kibana-es-mutual-tls.md).
 :::
 
 ::::

@@ -35,7 +35,7 @@ Set an encryption key so that sessions are not invalidated. You can optionally c
     {{kib}}'s reporting and saved objects features also have encryption key settings. Refer to [`xpack.reporting.encryptionKey`](kibana://reference/configuration-reference/reporting-settings.md#xpack-reporting-encryptionkey) and [`xpack.encryptedSavedObjects.encryptionKey`](kibana://reference/configuration-reference/security-settings.md#xpack-encryptedsavedobjects-encryptionkey) respectively.
 
 2. Optional: [Configure {{kib}}'s session expiration settings](/deploy-manage/security/kibana-session-management.md).
-3. Optional: [Configure {{kib}} to authenticate to {{es}} with a client certificate](/deploy-manage/security/secure-cluster-communications.md).
+3. Optional: [Configure {{kib}} to authenticate to {{es}} with a client certificate (mutual authentication)](/deploy-manage/security/kibana-es-mutual-tls.md).
 4. Restart {{kib}}.
 
 
@@ -92,7 +92,7 @@ You should use SSL/TLS encryption to ensure that traffic between browsers and th
 
 ### Enabling mutual TLS between {{kib}} and {{es}}
 
-Refer to [](/deploy-manage/security/secure-cluster-communications.md#elasticsearch-mutual-tls) for information on how to enable mutual TLS between {{kib}} and {{es}}.
+Refer to [Mutual TLS authentication between {{kib}} and {{es}}](/deploy-manage/security/kibana-es-mutual-tls.md) for information on how to enable mutual TLS between {{kib}} and {{es}}.
 
 ### Use {{stack}} {{security-features}} [configuring-kibana-shield]
 

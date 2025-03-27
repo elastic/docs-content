@@ -73,7 +73,7 @@ Once TLS is enabled, all client communications with the cluster will be encrypte
 
         Each certificate will have its own private key, and will be issued for a specific hostname or IP address.
 
-    7. When prompted, enter the name of the first node in your cluster. Use the same node name that you used when [generating node certificates](secure-cluster-communications.md#generate-certificates).
+    7. When prompted, enter the name of the first node in your cluster.
     8. Enter all hostnames used to connect to your first node. These hostnames will be added as DNS names in the Subject Alternative Name (SAN) field in your certificate.
 
         List every hostname and variant used to connect to your cluster over HTTPS.
@@ -108,7 +108,7 @@ Once TLS is enabled, all client communications with the cluster will be encrypte
         xpack.security.http.ssl.keystore.path: http.p12
         ```
 
-    3. Add the password for your private key to the secure settings in {{es}}.
+    3. Add the password for your private key to the [secure settings](/deploy-manage/security/secure-settings.md) in {{es}}.
 
         ```shell
         ./bin/elasticsearch-keystore add xpack.security.http.ssl.keystore.secure_password
