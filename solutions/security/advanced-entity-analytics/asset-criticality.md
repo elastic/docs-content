@@ -48,14 +48,14 @@ You can view, assign, change, or unassign asset criticality from the following p
     :screenshot:
     :::
 
-* The [host details flyout](../explore/hosts-page.md#host-details-flyout) and [user details flyout](../explore/users-page.md#user-details-flyout):
+* The [entity details flyout](/solutions/security/advanced-entity-analytics/view-entity-details.md#entity-details-flyout):
 
     :::{image} /solutions/images/security-assign-asset-criticality-host-flyout.png
     :alt: Assign asset criticality from the host details flyout
     :screenshot:
     :::
 
-* The host details flyout and user details flyout in [Timeline](../investigate/timeline.md):
+* The entity details flyout in [Timeline](../investigate/timeline.md):
 
     :::{image} /solutions/images/security-assign-asset-criticality-timeline.png
     :alt: Assign asset criticality from the host details flyout in Timeline
@@ -77,8 +77,8 @@ You can bulk assign asset criticality to multiple entities by importing a CSV, T
 
 The file must contain three columns, with each entity record listed on a separate row:
 
-1. The first column should indicate whether the entity is a `host` or a `user`.
-2. The second column should specify the entity’s `host.name` or `user.name`.
+1. The first column should indicate whether the entity is a `host`, `user`, or `service`.
+2. The second column should specify the entity’s `host.name`, `user.name`, or `service.name`.
 3. The third column should specify one of the following asset criticality levels:
 
     * `extreme_impact`
@@ -95,6 +95,7 @@ File structure example:
 user,user-001,low_impact
 user,user-002,medium_impact
 host,host-001,extreme_impact
+service,service-001,extreme_impact
 ```
 
 To import a file:
@@ -134,7 +135,7 @@ The risk scoring engine dynamically factors in an entity’s asset criticality, 
 
 To view the impact of asset criticality on an entity’s risk score, follow these steps:
 
-1. Open the [host details flyout](../explore/hosts-page.md#host-details-flyout) or [user details flyout](../explore/users-page.md#user-details-flyout). The risk summary section shows asset criticality’s contribution to the overall risk score.
+1. Open the [entity details flyout](/solutions/security/advanced-entity-analytics/view-entity-details.md#entity-details-flyout). The risk summary section shows asset criticality’s contribution to the overall risk score.
 2. Click **View risk contributions** to open the flyout’s left panel.
 3. In the **Risk contributions** section, verify the entity’s criticality level from the time the alert was generated.
 

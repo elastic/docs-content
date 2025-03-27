@@ -1,5 +1,4 @@
 toc:
   - file: changelog.md
-    children:
-      - file: known-issues.md
-      - file: deprecations.md
+  - file: known-issues.md
+  - file: deprecations.md

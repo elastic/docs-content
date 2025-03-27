@@ -12,10 +12,7 @@ This guide shows how you can use {{esql}} to query and aggregate your data.
 
 ::::{tip}
 This getting started is also available as an [interactive Python notebook](https://github.com/elastic/elasticsearch-labs/blob/main/notebooks/esql/esql-getting-started.ipynb) in the `elasticsearch-labs` GitHub repository.
-
 ::::
-
-
 
 ## Prerequisites [esql-getting-started-prerequisites]
 
@@ -426,3 +423,7 @@ For more about data processing with {{esql}}, refer to [Data processing with DIS
 
 To learn more about {{esql}}, refer to [{{esql}} reference](elasticsearch://reference/query-languages/esql.md).
 
+Learn more about using {{esql}} for Search use cases:
+
+- [Search and filter with {{esql}}](/solutions/search/esql-search-tutorial.md): A hands-on tutorial that shows you how to use {{esql}} to search and filter data.
+- [Using {{esql}} for search](/solutions/search/esql-for-search.md): An overview of your options for using {{esql}} for search use cases.

@@ -27,6 +27,8 @@ redirects:
   'deploy-manage/monitor/stack-monitoring/elastic-cloud-stack-monitoring.md': '!deploy-manage/monitor/stack-monitoring/ece-ech-stack-monitoring.md'
   'deploy-manage/monitor/stack-monitoring/ece-stack-monitoring.md': '!deploy-manage/monitor/stack-monitoring/ece-ech-stack-monitoring.md'
   'deploy-manage/deploy/kibana-reporting-configuration.md': '!deploy-manage/kibana-reporting-configuration.md'
+  'deploy-manage/monitor/logging-configuration/kibana-logging-cli-configuration.md': '!deploy-manage/monitor/logging-configuration/kib-advanced-logging.md'
+  'deploy-manage/production-guidance/getting-ready-for-production-elasticsearch.md': '!deploy-manage/production-guidance/elasticsearch-in-production-environments.md'
 
   ## audit logging movement to security section
   'deploy-manage/monitor/logging-configuration/configuring-audit-logs.md': 'deploy-manage/security/logging-configuration/configuring-audit-logs.md'
@@ -62,3 +64,27 @@ redirects:
   'reference/security/elastic-defend/uninstall-agent.md': 'solutions/security/configure-elastic-defend/uninstall-elastic-agent.md'
   'reference/security/fields-and-object-schemas/runtime-fields.md': 'solutions/security/get-started/create-runtime-fields-in-elastic-security.md'
   'reference/security/prebuilt-anomaly-detection-jobs.md': 'reference/data-analysis/machine-learning/ootb-ml-jobs-siem.md'
+
+  # Related to https://github.com/elastic/docs-content/pull/792
+  'reference/elasticsearch.md': 'reference/index.md'
+  'reference/elasticsearch/clients/index.md': 'reference/elasticsearch-clients/index.md'
+  'reference/ingestion-tools/apm/apm-agents.md': 'reference/apm-agents/index.md'
+  'reference/ingestion-tools/fleet/add-integration-to-policy.md': 'reference/fleet/add-integration-to-policy.md'
+  'reference/ingestion-tools/fleet/agent-policy.md': 'reference/fleet/agent-policy.md'
+  'reference/ingestion-tools/fleet/air-gapped.md': 'reference/fleet/air-gapped.md'
+  'reference/ingestion-tools/fleet/data-streams-pipeline-tutorial.md': 'reference/fleet/data-streams-pipeline-tutorial.md'
+  'reference/ingestion-tools/fleet/data-streams.md': 'reference/fleet/data-streams.md'
+  'reference/ingestion-tools/fleet/fleet-server.md': 'reference/fleet/fleet-server.md'
+  'reference/ingestion-tools/fleet/fleet-settings.md': 'reference/fleet/fleet-settings.md'
+  'reference/ingestion-tools/fleet/index.md': 'reference/fleet/index.md'
+  'reference/ingestion-tools/fleet/install-elastic-agents.md': 'reference/fleet/install-elastic-agents.md'
+  'reference/ingestion-tools/fleet/install-fleet-managed-elastic-agent.md': 'reference/fleet/install-fleet-managed-elastic-agent.md'
+  'reference/ingestion-tools/fleet/install-standalone-elastic-agent.md': 'reference/fleet/install-standalone-elastic-agent.md'
+  'reference/ingestion-tools/observability/apm.md': 'reference/apm/observability/apm.md'
+  'reference/ingestion-tools/observability/apm-settings.md': 'reference/apm/observability/apm-settings.md'
+  'reference/ingestion-tools/fleet/migrate-from-beats-to-elastic-agent.md': 'reference/fleet/migrate-from-beats-to-elastic-agent.md'
+
+## troubleshoot
+  'troubleshoot/deployments/cloud-enterprise/ask-for-help.md': 'troubleshoot/index.md'
+  'troubleshoot/deployments/serverless-status.md': 'troubleshoot/deployments/serverless.md'
+  'troubleshoot/deployments/esf/elastic-serverless-forwarder.md': 'troubleshoot/ingest/elastic-serverless-forwarder.md'

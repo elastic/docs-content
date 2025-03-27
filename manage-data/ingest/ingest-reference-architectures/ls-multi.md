@@ -57,13 +57,13 @@ output {
 Info on configuring {{agent}}:
 
 * [Fleet and Elastic Agent Guide](https://www.elastic.co/guide/en/fleet/current)
-* [Configuring outputs for {{agent}}](/reference/ingestion-tools/fleet/elastic-agent-output-configuration.md)
+* [Configuring outputs for {{agent}}](/reference/fleet/elastic-agent-output-configuration.md)
 
 Info on {{ls}} and {{ls}} outputs:
 
 * [{{ls}} Reference](https://www.elastic.co/guide/en/logstash/current)
-* [{{ls}} {{es}} output plugin](logstash://reference/plugins-outputs-elasticsearch.md)
-* [{{ls}} output plugins](logstash://reference/output-plugins.md)
+* [{{ls}} {{es}} output plugin](logstash-docs-md://lsr/plugins-outputs-elasticsearch.md)
+* [{{ls}} output plugins](logstash-docs-md://lsr/output-plugins.md)
 
 Info on {{es}}:
 

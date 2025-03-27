@@ -122,19 +122,6 @@ toc:
       - file: elastic-inference/inference-api.md
         children:
           - file: elastic-inference/inference-api/elastic-inference-service-eis.md
-          - file: elastic-inference/inference-api/alibabacloud-ai-search-inference-integration.md
-          - file: elastic-inference/inference-api/amazon-bedrock-inference-integration.md
-          - file: elastic-inference/inference-api/anthropic-inference-integration.md
-          - file: elastic-inference/inference-api/azure-ai-studio-inference-integration.md
-          - file: elastic-inference/inference-api/azure-openai-inference-integration.md
-          - file: elastic-inference/inference-api/chat-completion-inference-api.md
-          - file: elastic-inference/inference-api/cohere-inference-integration.md
-          - file: elastic-inference/inference-api/elasticsearch-inference-integration.md
-          - file: elastic-inference/inference-api/elser-inference-integration.md
-          - file: elastic-inference/inference-api/google-ai-studio-inference-integration.md
-          - file: elastic-inference/inference-api/google-vertex-ai-inference-integration.md
-          - file: elastic-inference/inference-api/huggingface-inference-integration.md
-          - file: elastic-inference/inference-api/jinaai-inference-integration.md
   - file: machine-learning.md
     children:
       - file: machine-learning/setting-up-machine-learning.md
