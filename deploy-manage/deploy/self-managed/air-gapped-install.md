@@ -19,7 +19,7 @@ Air-gapped install of {{es}} may require additional steps in order to access som
 
 Specifically:
 
-* To be able to use the GeoIP processor, refer to [the GeoIP processor documentation](elasticsearch://reference/ingestion-tools/enrich-processor/geoip-processor.md#manually-update-geoip-databases) for instructions on downloading and deploying the required databases.
+* To be able to use the GeoIP processor, refer to [the GeoIP processor documentation](elasticsearch://reference/enrich-processor/geoip-processor.md#manually-update-geoip-databases) for instructions on downloading and deploying the required databases.
 * Refer to [{{ml-cap}}](/deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-machine-learning) for instructions on deploying the Elastic Learned Sparse EncodeR (ELSER) natural language processing (NLP) model and other trained {{ml}} models.
 
 
