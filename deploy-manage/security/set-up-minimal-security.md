@@ -15,7 +15,7 @@ mapped_pages:
 You only need to complete the following steps if you’re running an existing, unsecured cluster and want to enable the {{es}} {{security-features}}.
 ::::
 
-In {{es}} 8.0 and later, security is [enabled automatically](./security-certificates-keys.md) when you start {{es}} for the first time.
+In {{es}} 8.0 and later, security is [enabled automatically](./self-auto-setup.md) when you start {{es}} for the first time.
 
 If you’re running an existing {{es}} cluster where security is disabled, you can manually enable the {{es}} {{security-features}} and then create passwords for [built-in users](/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-users.md). You can add more users later, but using the built-in users simplifies the process of enabling security for your cluster.
 

@@ -458,7 +458,7 @@ toc:
         children:
           - file: security/self-setup.md
             children:
-              - file: security/security-certificates-keys.md
+              - file: security/self-auto-setup.md
               - file: security/set-up-minimal-security.md
           - file: security/secure-cluster-communications.md
             children:

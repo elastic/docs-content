@@ -18,7 +18,7 @@ Use the following guides to manage TLS certificates:
 * [Mutual TLS authentication between {{kib}} and {{es}}](./kibana-es-mutual-tls.md): Strengthen security by requiring {{kib}} to use an additional client certificate in the communication to {{es}}.
 * [Update TLS certificates](./updating-certificates.md): Renew or replace existing TLS certificates before they expire.
 
-As an alternative to the manual configuration, consider the [automatic security configuration](./security-certificates-keys.md) procedure, which includes automatic generation of TLS certificates for {{es}} HTTP and transport endpoints.
+As an alternative to the manual configuration, consider the [automatic security configuration](./self-auto-setup.md) procedure, which includes automatic generation of TLS certificates for {{es}} HTTP and transport endpoints.
 
 ## Certificates maintenance and rotation
 

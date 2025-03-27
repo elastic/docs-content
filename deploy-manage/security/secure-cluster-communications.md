@@ -65,7 +65,7 @@ The way that transport layer security is managed depends on your deployment type
 
 :::{tab-item} Self-managed
 :sync: self
-{{es}} transport security can be [automatically configured](security-certificates-keys.md), or manually set up by following the steps in [Set up basic security](set-up-basic-security.md).
+{{es}} transport security can be [automatically configured](self-auto-setup.md), or manually set up by following the steps in [Set up basic security](set-up-basic-security.md).
 :::
 
 ::::
@@ -112,7 +112,7 @@ HTTP TLS is automatically enabled for {{es}} and {{kib}} using self-signed certi
 :::{tab-item} Self-managed
 :sync: self
 
-HTTP TLS certificates for {{es}} can be [automatically configured](security-certificates-keys.md), or manually set up by following the steps in [Set up HTTP SSL](./set-up-basic-security-plus-https.md).
+HTTP TLS certificates for {{es}} can be [automatically configured](self-auto-setup.md), or manually set up by following the steps in [Set up HTTP SSL](./set-up-basic-security-plus-https.md).
 
 {{kib}} acts as both an HTTP client to {{es}} and a server for browser access. It performs operations on behalf of users, so it must be properly configured to trust the {{es}} certificates, and to present its own TLS certificate for secure browser connections. These configurations must be performed manually in self-managed deployments.
 
