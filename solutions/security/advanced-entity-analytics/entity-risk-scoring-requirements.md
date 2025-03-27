@@ -58,7 +58,7 @@ Follow these guidelines to ensure clusters have adequate memory to handle data v
 
 ### Known limitations [_known_limitations]
 
-* The risk scoring engine uses an internal user role to score all hosts and users, and doesn’t respect privileges applied to custom users or roles. After you turn on the risk scoring engine for a {{kib}} space, all alerts in the space will contribute to host and user risk scores.
+* The risk scoring engine uses an internal user role to score all hosts, users, and services, and doesn’t respect privileges applied to custom users or roles. After you turn on the risk scoring engine for a {{kib}} space, all alerts in the space will contribute to host, user, and service risk scores.
 * You cannot customize alert data views or risk weights associated with alerts and asset criticality levels.
 
 
