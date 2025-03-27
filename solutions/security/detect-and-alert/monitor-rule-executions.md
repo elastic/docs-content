@@ -37,7 +37,7 @@ To sort the rules list, click any column header. To sort in descending order, cl
 
 For detailed information on a rule, the alerts it generated, and associated errors, click on its name in the table. This also allows you to perform the same actions that are available on the [**Installed Rules** tab](manage-detection-rules.md), such as modifying or deleting rules, activating or deactivating rules, exporting or importing rules, and duplicating prebuilt rules.
 
-For information about rule execution gaps (which are periods of time when a rule didn't run as expected), use the panel above the table. The time filter on the left allows you to select a time range for viewing gap data. The **Total rules with gaps:** field tells you how many rules have unfilled or partially filled gaps within the selected time range. The **Only rules with gaps** filter on the right lets you only display rules with unfilled or partially filled gaps. 
+For information about rule execution gaps (which are periods of time when a rule didn't run), use the panel above the table. The time filter on the left allows you to select a time range for viewing gap data. The **Total rules with gaps:** field tells you how many rules have unfilled or partially filled gaps within the selected time range. The **Only rules with gaps** filter on the right lets you only display rules with unfilled or partially filled gaps. 
 
 Within the table, the **Last Gap (if any)** column conveys how long the most recent gap for a rule lasted. The **Unfilled gaps duration** column shows whether a rule still has gaps and provides a total sum of the remaining unfilled or partially filled gaps. If a rule has no gaps, these columns displays a dash (`––`).
 
@@ -85,7 +85,7 @@ Use these controls to filter what’s included in the logs table:
 This functionality is in beta and is subject to change. The design and code is less mature than official GA features and is being provided as-is with no warranties. Beta features are not subject to the support SLA of official GA features.
 ::::
 
-Gaps in rule executions are periods of time where a rule didn’t run as expected. These gaps can be caused by various disruptions, including system updates, rule failures, or simply turning off a rule. Addressing them is essential for maintaining consistent coverage and avoiding missed alerts.
+Gaps in rule executions are periods of time where a rule didn’t run. Gaps can be caused by various disruptions, including system updates, rule failures, or simply turning off a rule. Addressing them is essential for maintaining consistent coverage and avoiding missed alerts.
 
 TIP: Refer to the [Troubleshoot gaps](../../../troubleshoot/security/detection-rules.md#troubleshoot-gaps) section for strategies for avoiding gaps.
 
