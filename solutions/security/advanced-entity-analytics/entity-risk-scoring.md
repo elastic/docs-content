@@ -12,7 +12,7 @@ applies_to:
 
 Entity risk scoring is an advanced {{elastic-sec}} analytics feature that helps security analysts detect changes in an entity’s risk posture, hunt for new threats, and prioritize incident response.
 
-Entity risk scoring allows you to monitor risk score changes of hosts and users in your environment. When generating advanced scoring analytics, the risk scoring engine utilizes threats from its end-to-end XDR use cases, such as SIEM, cloud, and endpoint. It leverages the Elastic SIEM detection engine to generate host and user risk scores from the last 30 days.
+Entity risk scoring allows you to monitor risk score changes of hosts, users, and services in your environment. When generating advanced scoring analytics, the risk scoring engine utilizes threats from its end-to-end XDR use cases, such as SIEM, cloud, and endpoint. It leverages the Elastic SIEM detection engine to generate host, user, and service risk scores from the last 30 days.
 
 It also generates risk scores on a recurring interval, and allows for easy onboarding and management. The engine is built to factor in risks from all {{elastic-sec}} use cases, and allows you to customize and control how and when risk is calculated.
 
@@ -43,7 +43,7 @@ Entities without any alerts, or with only `Closed` alerts, are not assigned a ri
     When [turning on the risk engine](turn-on-risk-scoring-engine.md), you can choose to also include `Closed` alerts in risk scoring calculations.
     ::::
 
-2. The engine groups alerts by `host.name` or `user.name`, and aggregates the individual alert risk scores (`kibana.alert.risk_score`) such that alerts with higher risk scores contribute more than alerts with lower risk scores. The resulting aggregated risk score is assigned to the **Alerts** category in the entity’s [risk summary](/solutions/security/explore/hosts-page.md#host-risk-summary).
+2. The engine groups alerts by `host.name`, `user.name`, or `service.name`, and aggregates the individual alert risk scores (`kibana.alert.risk_score`) such that alerts with higher risk scores contribute more than alerts with lower risk scores. The resulting aggregated risk score is assigned to the **Alerts** category in the entity’s [risk summary](/solutions/security/advanced-entity-analytics/view-entity-details.md#entity-risk-summary).
 3. The engine then verifies the entity’s [asset criticality level](asset-criticality.md). If there is no asset criticality assigned, the entity risk score remains equal to the aggregated score from the **Alerts** category. If a criticality level is assigned, the engine updates the risk score based on the default risk weight for each criticality level. The asset criticality risk input is assigned to the **Asset Criticality** category in the entity’s risk summary.
 
     | Asset criticality level | Default risk weight |

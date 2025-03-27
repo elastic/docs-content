@@ -634,6 +634,7 @@ toc:
             children:
               - file: security/advanced-entity-analytics/entity-risk-scoring-requirements.md
               - file: security/advanced-entity-analytics/turn-on-risk-scoring-engine.md
+              - file: security/advanced-entity-analytics/view-entity-details.md
               - file: security/advanced-entity-analytics/asset-criticality.md
               - file: security/advanced-entity-analytics/entity-store.md
               - file: security/advanced-entity-analytics/view-analyze-risk-score-data.md

@@ -30,7 +30,7 @@ The Alerts page offers various ways for you to organize and triage detection ale
     :::
 
 * View the rule that created an alert. Click a name in the **Rule** column to open the rule’s details.
-* View the details of the host and user associated with the alert. In the Alerts table, click a host name to open the [host details flyout](/solutions/security/explore/hosts-page.md#host-details-flyout), or a user name to open the [user details flyout](/solutions/security/explore/users-page.md#user-details-flyout).
+* View the details of the entity associated with the alert. In the Alerts table, click an entity name to open the [entity details flyout](/solutions/security/advanced-entity-analytics/view-entity-details.md#entity-details-flyout).
 * Filter for a specific rule in the KQL bar (for example, `kibana.alert.rule.name :"SSH (Secure Shell) from the Internet"`). KQL autocomplete is available for `.alerts-security.alerts-*` indices.
 * Use the date and time filter to define a specific time range. By default, this filter is set to search the last 24 hours.
 * Use the drop-down filter controls to filter alerts by up to four fields. By default, you can filter alerts by **Status**, **Severity**, **User**, and **Host**, and you can [edit the controls](/solutions/security/detect-and-alert/manage-detection-alerts.md#drop-down-filter-controls) to use other fields.
