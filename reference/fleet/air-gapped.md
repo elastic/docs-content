@@ -105,10 +105,10 @@ The {{package-registry}} can be deployed and hosted onsite using one of the avai
 
 There are different distributions available:
 
-* 9.0.0-beta1 (recommended): `docker.elastic.co/package-registry/distribution:9.0.0-beta1` - Selection of packages from the production repository released with {{stack}} 9.0.0-beta1.
-* lite-9.0.0-beta1: `docker.elastic.co/package-registry/distribution:lite-9.0.0-beta1` - Subset of the most commonly used packages from the production repository released with {{stack}} 9.0.0-beta1. This image is a good candidate to start using {{fleet}} in air-gapped environments.
-* production: `docker.elastic.co/package-registry/distribution:production` - Packages available in the production registry ([https://epr.elastic.co](https://epr.elastic.co)). Please note that this image is updated every time a new version of a package gets published.
-* lite: `docker.elastic.co/package-registry/distribution:lite` - Subset of the most commonly used packages available in the production registry ([https://epr.elastic.co](https://epr.elastic.co)). Please note that this image is updated every time a new version of a package gets published.
+* {{stack-version}} (recommended): *docker.elastic.co/package-registry/distribution:{{stack-version}}* - Selection of packages from the production repository released with {{stack}} {{stack-version}}.
+* lite-{{stack-version}}: *docker.elastic.co/package-registry/distribution:lite-{{stack-version}}* - Subset of the most commonly used packages from the production repository released with {{stack}} {{stack-version}}. This image is a good candidate to start using {{fleet}} in air-gapped environments.
+* production: *docker.elastic.co/package-registry/distribution:production* - Packages available in the production registry ([https://epr.elastic.co](https://epr.elastic.co)). Please note that this image is updated every time a new version of a package gets published.
+* lite: *docker.elastic.co/package-registry/distribution:lite* - Subset of the most commonly used packages available in the production registry ([https://epr.elastic.co](https://epr.elastic.co)). Please note that this image is updated every time a new version of a package gets published.
 
 
 To update the distribution image, re-pull the image and then restart the docker container.
@@ -122,14 +122,14 @@ These steps use the standard Docker CLI, but you can create a Kubernetes manifes
 
 1. Pull the Docker image from the public Docker registry:
 
-    ```sh
-    docker pull docker.elastic.co/package-registry/distribution:9.0.0-beta1
+    ```sh subs=true
+    docker pull docker.elastic.co/package-registry/distribution:{{stack-version}}
     ```
 
 2. Save the Docker image locally:
 
-    ```sh
-    docker save -o package-registry-9.0.0-beta1.tar docker.elastic.co/package-registry/distribution:9.0.0-beta1
+    ```sh subs=true
+    docker save -o package-registry-{{stack-version}}.tar docker.elastic.co/package-registry/distribution:{{stack-version}}
     ```
 
     ::::{tip}
@@ -138,22 +138,22 @@ These steps use the standard Docker CLI, but you can create a Kubernetes manifes
 
 3. Transfer the image to the air-gapped environment and load it:
 
-    ```sh
-    docker load -i package-registry-9.0.0-beta1.tar
+    ```sh subs=true
+    docker load -i package-registry-{{stack-version}}.tar
     ```
 
 4. Run the {{package-registry}}:
 
-    ```sh
-    docker run -it -p 8080:8080 docker.elastic.co/package-registry/distribution:9.0.0-beta1
+    ```sh subs=true
+    docker run -it -p 8080:8080 docker.elastic.co/package-registry/distribution:{{stack-version}}
     ```
 
 5. (Optional) You can monitor the health of your {{package-registry}} with requests to the root path:
 
-    ```sh
+    ```sh subs=true
     docker run -it -p 8080:8080 \
         --health-cmd "curl -f -L http://127.0.0.1:8080/health" \
-        docker.elastic.co/package-registry/distribution:9.0.0-beta1
+        docker.elastic.co/package-registry/distribution:{{stack-version}}
     ```
 
 
@@ -173,14 +173,14 @@ You can configure the {{package-registry}} to listen on a secure HTTPS port usin
 
 For example, given a key and a certificate pair available in `/etc/ssl`, you can start the {{package-registry}} listening on the 443 port using the following command:
 
-```sh
+```sh subs=true
 docker run -it -p 443:443 \
   -v /etc/ssl/package-registry.key:/etc/ssl/package-registry.key:ro \
   -v /etc/ssl/package-registry.crt:/etc/ssl/package-registry.crt:ro \
   -e EPR_ADDRESS=0.0.0.0:443 \
   -e EPR_TLS_KEY=/etc/ssl/package-registry.key \
   -e EPR_TLS_CERT=/etc/ssl/package-registry.crt \
-  docker.elastic.co/package-registry/distribution:9.0.0-beta1
+  docker.elastic.co/package-registry/distribution:{{stack-version}}
 ```
 
 The {{package-registry}} supports TLS versions from 1.0 to 1.3. The minimum version accepted can be configured with `EPR_TLS_MIN_VERSION`, it defaults to 1.0. If you want to restrict the supported versions from 1.2 to 1.3, you can use `EPR_TLS_MIN_VERSION=1.2`.
@@ -205,49 +205,49 @@ To make binaries available in an air-gapped environment, you can host your own c
 
     1. Download the latest release artifacts from the public {{artifact-registry}} at `https://artifacts.elastic.co/downloads/`. For example, the following cURL commands download all the artifacts that may be needed to upgrade {{agent}}s running on Linux x86_64. You may replace `x86_64` with `arm64` for the ARM64 version. The exact list depends on which integrations you’re using.  Make sure to also download the corresponding sha512, and PGP Signature (.asc) files for each binary.  These are used for file integrity validations during installations and upgrades.
 
-        ```shell
-        curl -O https://artifacts.elastic.co/downloads/apm-server/apm-server-9.0.0-beta1-linux-x86_64.tar.gz
-        curl -O https://artifacts.elastic.co/downloads/apm-server/apm-server-9.0.0-beta1-linux-x86_64.tar.gz.sha512
-        curl -O https://artifacts.elastic.co/downloads/apm-server/apm-server-9.0.0-beta1-linux-x86_64.tar.gz.asc
-        curl -O https://artifacts.elastic.co/downloads/beats/auditbeat/auditbeat-9.0.0-beta1-linux-x86_64.tar.gz
-        curl -O https://artifacts.elastic.co/downloads/beats/auditbeat/auditbeat-9.0.0-beta1-linux-x86_64.tar.gz.sha512
-        curl -O https://artifacts.elastic.co/downloads/beats/auditbeat/auditbeat-9.0.0-beta1-linux-x86_64.tar.gz.asc
-        curl -O https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-9.0.0-beta1-linux-x86_64.tar.gz
-        curl -O https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-9.0.0-beta1-linux-x86_64.tar.gz.sha512
-        curl -O https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-9.0.0-beta1-linux-x86_64.tar.gz.asc
-        curl -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-9.0.0-beta1-linux-x86_64.tar.gz
-        curl -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-9.0.0-beta1-linux-x86_64.tar.gz.sha512
-        curl -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-9.0.0-beta1-linux-x86_64.tar.gz.asc
-        curl -O https://artifacts.elastic.co/downloads/beats/heartbeat/heartbeat-9.0.0-beta1-linux-x86_64.tar.gz
-        curl -O https://artifacts.elastic.co/downloads/beats/heartbeat/heartbeat-9.0.0-beta1-linux-x86_64.tar.gz.sha512
-        curl -O https://artifacts.elastic.co/downloads/beats/heartbeat/heartbeat-9.0.0-beta1-linux-x86_64.tar.gz.asc
-        curl -O https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-9.0.0-beta1-linux-x86_64.tar.gz
-        curl -O https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-9.0.0-beta1-linux-x86_64.tar.gz.sha512
-        curl -O https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-9.0.0-beta1-linux-x86_64.tar.gz.asc
-        curl -O https://artifacts.elastic.co/downloads/beats/osquerybeat/osquerybeat-9.0.0-beta1-linux-x86_64.tar.gz
-        curl -O https://artifacts.elastic.co/downloads/beats/osquerybeat/osquerybeat-9.0.0-beta1-linux-x86_64.tar.gz.sha512
-        curl -O https://artifacts.elastic.co/downloads/beats/osquerybeat/osquerybeat-9.0.0-beta1-linux-x86_64.tar.gz.asc
-        curl -O https://artifacts.elastic.co/downloads/beats/packetbeat/packetbeat-9.0.0-beta1-linux-x86_64.tar.gz
-        curl -O https://artifacts.elastic.co/downloads/beats/packetbeat/packetbeat-9.0.0-beta1-linux-x86_64.tar.gz.sha512
-        curl -O https://artifacts.elastic.co/downloads/beats/packetbeat/packetbeat-9.0.0-beta1-linux-x86_64.tar.gz.asc
-        curl -O https://artifacts.elastic.co/downloads/cloudbeat/cloudbeat-9.0.0-beta1-linux-x86_64.tar.gz
-        curl -O https://artifacts.elastic.co/downloads/cloudbeat/cloudbeat-9.0.0-beta1-linux-x86_64.tar.gz.sha512
-        curl -O https://artifacts.elastic.co/downloads/cloudbeat/cloudbeat-9.0.0-beta1-linux-x86_64.tar.gz.asc
-        curl -O https://artifacts.elastic.co/downloads/endpoint-dev/endpoint-security-9.0.0-beta1-linux-x86_64.tar.gz
-        curl -O https://artifacts.elastic.co/downloads/endpoint-dev/endpoint-security-9.0.0-beta1-linux-x86_64.tar.gz.sha512
-        curl -O https://artifacts.elastic.co/downloads/endpoint-dev/endpoint-security-9.0.0-beta1-linux-x86_64.tar.gz.asc
-        curl -O https://artifacts.elastic.co/downloads/fleet-server/fleet-server-9.0.0-beta1-linux-x86_64.tar.gz
-        curl -O https://artifacts.elastic.co/downloads/fleet-server/fleet-server-9.0.0-beta1-linux-x86_64.tar.gz.sha512
-        curl -O https://artifacts.elastic.co/downloads/fleet-server/fleet-server-9.0.0-beta1-linux-x86_64.tar.gz.asc
-        curl -O https://artifacts.elastic.co/downloads/prodfiler/pf-host-agent-9.0.0-beta1-linux-x86_64.tar.gz
-        curl -O https://artifacts.elastic.co/downloads/prodfiler/pf-host-agent-9.0.0-beta1-linux-x86_64.tar.gz.sha512
-        curl -O https://artifacts.elastic.co/downloads/prodfiler/pf-host-agent-9.0.0-beta1-linux-x86_64.tar.gz.asc
-        curl -O https://artifacts.elastic.co/downloads/prodfiler/pf-elastic-collector-9.0.0-beta1-linux-x86_64.tar.gz
-        curl -O https://artifacts.elastic.co/downloads/prodfiler/pf-elastic-collector-9.0.0-beta1-linux-x86_64.tar.gz.sha512
-        curl -O https://artifacts.elastic.co/downloads/prodfiler/pf-elastic-collector-9.0.0-beta1-linux-x86_64.tar.gz.asc
-        curl -O https://artifacts.elastic.co/downloads/prodfiler/pf-elastic-symbolizer-9.0.0-beta1-linux-x86_64.tar.gz
-        curl -O https://artifacts.elastic.co/downloads/prodfiler/pf-elastic-symbolizer-9.0.0-beta1-linux-x86_64.tar.gz.sha512
-        curl -O https://artifacts.elastic.co/downloads/prodfiler/pf-elastic-symbolizer-9.0.0-beta1-linux-x86_64.tar.gz.asc
+        ```shell subs=true
+        curl -O https://artifacts.elastic.co/downloads/apm-server/apm-server-{{stack-version}}-linux-x86_64.tar.gz
+        curl -O https://artifacts.elastic.co/downloads/apm-server/apm-server-{{stack-version}}-linux-x86_64.tar.gz.sha512
+        curl -O https://artifacts.elastic.co/downloads/apm-server/apm-server-{{stack-version}}-linux-x86_64.tar.gz.asc
+        curl -O https://artifacts.elastic.co/downloads/beats/auditbeat/auditbeat-{{stack-version}}-linux-x86_64.tar.gz
+        curl -O https://artifacts.elastic.co/downloads/beats/auditbeat/auditbeat-{{stack-version}}-linux-x86_64.tar.gz.sha512
+        curl -O https://artifacts.elastic.co/downloads/beats/auditbeat/auditbeat-{{stack-version}}-linux-x86_64.tar.gz.asc
+        curl -O https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-{{stack-version}}-linux-x86_64.tar.gz
+        curl -O https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-{{stack-version}}-linux-x86_64.tar.gz.sha512
+        curl -O https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-{{stack-version}}-linux-x86_64.tar.gz.asc
+        curl -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{stack-version}}-linux-x86_64.tar.gz
+        curl -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{stack-version}}-linux-x86_64.tar.gz.sha512
+        curl -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{stack-version}}-linux-x86_64.tar.gz.asc
+        curl -O https://artifacts.elastic.co/downloads/beats/heartbeat/heartbeat-{{stack-version}}-linux-x86_64.tar.gz
+        curl -O https://artifacts.elastic.co/downloads/beats/heartbeat/heartbeat-{{stack-version}}-linux-x86_64.tar.gz.sha512
+        curl -O https://artifacts.elastic.co/downloads/beats/heartbeat/heartbeat-{{stack-version}}-linux-x86_64.tar.gz.asc
+        curl -O https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-{{stack-version}}-linux-x86_64.tar.gz
+        curl -O https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-{{stack-version}}-linux-x86_64.tar.gz.sha512
+        curl -O https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-{{stack-version}}-linux-x86_64.tar.gz.asc
+        curl -O https://artifacts.elastic.co/downloads/beats/osquerybeat/osquerybeat-{{stack-version}}-linux-x86_64.tar.gz
+        curl -O https://artifacts.elastic.co/downloads/beats/osquerybeat/osquerybeat-{{stack-version}}-linux-x86_64.tar.gz.sha512
+        curl -O https://artifacts.elastic.co/downloads/beats/osquerybeat/osquerybeat-{{stack-version}}-linux-x86_64.tar.gz.asc
+        curl -O https://artifacts.elastic.co/downloads/beats/packetbeat/packetbeat-{{stack-version}}-linux-x86_64.tar.gz
+        curl -O https://artifacts.elastic.co/downloads/beats/packetbeat/packetbeat-{{stack-version}}-linux-x86_64.tar.gz.sha512
+        curl -O https://artifacts.elastic.co/downloads/beats/packetbeat/packetbeat-{{stack-version}}-linux-x86_64.tar.gz.asc
+        curl -O https://artifacts.elastic.co/downloads/cloudbeat/cloudbeat-{{stack-version}}-linux-x86_64.tar.gz
+        curl -O https://artifacts.elastic.co/downloads/cloudbeat/cloudbeat-{{stack-version}}-linux-x86_64.tar.gz.sha512
+        curl -O https://artifacts.elastic.co/downloads/cloudbeat/cloudbeat-{{stack-version}}-linux-x86_64.tar.gz.asc
+        curl -O https://artifacts.elastic.co/downloads/endpoint-dev/endpoint-security-{{stack-version}}-linux-x86_64.tar.gz
+        curl -O https://artifacts.elastic.co/downloads/endpoint-dev/endpoint-security-{{stack-version}}-linux-x86_64.tar.gz.sha512
+        curl -O https://artifacts.elastic.co/downloads/endpoint-dev/endpoint-security-{{stack-version}}-linux-x86_64.tar.gz.asc
+        curl -O https://artifacts.elastic.co/downloads/fleet-server/fleet-server-{{stack-version}}-linux-x86_64.tar.gz
+        curl -O https://artifacts.elastic.co/downloads/fleet-server/fleet-server-{{stack-version}}-linux-x86_64.tar.gz.sha512
+        curl -O https://artifacts.elastic.co/downloads/fleet-server/fleet-server-{{stack-version}}-linux-x86_64.tar.gz.asc
+        curl -O https://artifacts.elastic.co/downloads/prodfiler/pf-host-agent-{{stack-version}}-linux-x86_64.tar.gz
+        curl -O https://artifacts.elastic.co/downloads/prodfiler/pf-host-agent-{{stack-version}}-linux-x86_64.tar.gz.sha512
+        curl -O https://artifacts.elastic.co/downloads/prodfiler/pf-host-agent-{{stack-version}}-linux-x86_64.tar.gz.asc
+        curl -O https://artifacts.elastic.co/downloads/prodfiler/pf-elastic-collector-{{stack-version}}-linux-x86_64.tar.gz
+        curl -O https://artifacts.elastic.co/downloads/prodfiler/pf-elastic-collector-{{stack-version}}-linux-x86_64.tar.gz.sha512
+        curl -O https://artifacts.elastic.co/downloads/prodfiler/pf-elastic-collector-{{stack-version}}-linux-x86_64.tar.gz.asc
+        curl -O https://artifacts.elastic.co/downloads/prodfiler/pf-elastic-symbolizer-{{stack-version}}-linux-x86_64.tar.gz
+        curl -O https://artifacts.elastic.co/downloads/prodfiler/pf-elastic-symbolizer-{{stack-version}}-linux-x86_64.tar.gz.sha512
+        curl -O https://artifacts.elastic.co/downloads/prodfiler/pf-elastic-symbolizer-{{stack-version}}-linux-x86_64.tar.gz.asc
         ```
 
     2. On your HTTP file server, group the artifacts into directories and sub-directories that follow the same convention used by the {{artifact-registry}}:

@@ -12,9 +12,9 @@ If you have appropriate {{heartbeat}} data in {{es}}, you can enable this {{anom
 
 Detect latency issues in heartbeat monitors.
 
-These configurations are available in {{kib}} only if data exists that matches the recognizer query specified in the [manifest file](https://github.com/elastic/kibana/blob/master/x-pack/plugins/ml/server/models/data_recognizer/modules/uptime_heartbeat/manifest.json).
+These configurations are available in {{kib}} only if data exists that matches the recognizer query specified in the [manifest file](https://github.com/elastic/kibana/blob/master/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/uptime_heartbeat/manifest.json).
 
 | Name | Description | Job (JSON) | Datafeed |
 | --- | --- | --- | --- |
-| high_latency_by_geo | Identify periods of increased latency across geographical regions | [code](https://github.com/elastic/kibana/blob/master/x-pack/plugins/ml/server/models/data_recognizer/modules/uptime_heartbeat/ml/high_latency_by_geo.json) | [code](https://github.com/elastic/kibana/blob/master/x-pack/plugins/ml/server/models/data_recognizer/modules/uptime_heartbeat/ml/datafeed_high_latency_by_geo.json) |
+| high_latency_by_geo | Identify periods of increased latency across geographical regions | [code](https://github.com/elastic/kibana/blob/master/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/uptime_heartbeat/ml/high_latency_by_geo.json) | [code](https://github.com/elastic/kibana/blob/master/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/uptime_heartbeat/ml/datafeed_high_latency_by_geo.json) |
 
