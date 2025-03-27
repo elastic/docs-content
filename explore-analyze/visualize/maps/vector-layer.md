@@ -32,7 +32,7 @@ To add a vector layer to your map, click **Add layer**, then select one of the f
     Results are limited to the `index.max_result_window` index setting, which defaults to 10000. Select the appropriate **Scaling** option for your use case.
 
     * **Limit results to 10,000** The layer displays features from the first `index.max_result_window` documents. Results exceeding `index.max_result_window` are not displayed.
-    * **Show clusters when results exceed 10,000** When results exceed `index.max_result_window`, the layer uses [GeoTile grid aggregation](elasticsearch://reference/data-analysis/aggregations/search-aggregations-bucket-geotilegrid-aggregation.md) to group your documents into clusters and displays metrics for each cluster. When results are less then `index.max_result_window`, the layer displays features from individual documents.
+    * **Show clusters when results exceed 10,000** When results exceed `index.max_result_window`, the layer uses [GeoTile grid aggregation](elasticsearch://reference/aggregations/search-aggregations-bucket-geotilegrid-aggregation.md) to group your documents into clusters and displays metrics for each cluster. When results are less then `index.max_result_window`, the layer displays features from individual documents.
     * **Use vector tiles.** Vector tiles partition your map into tiles. Each tile request is limited to the `index.max_result_window` index setting. When a tile exceeds `index.max_result_window`, results exceeding `index.max_result_window` are not contained in the tile and a dashed rectangle outlining the bounding box containing all geo values within the tile is displayed.
 
 

@@ -21,12 +21,12 @@ Use when
 Info on configuring {{agent}}:
 
 * [Fleet and Elastic Agent Guide](https://www.elastic.co/guide/en/fleet/current)
-* [Configuring outputs for {{agent}}](/reference/ingestion-tools/fleet/elastic-agent-output-configuration.md)
+* [Configuring outputs for {{agent}}](/reference/fleet/elastic-agent-output-configuration.md)
 
 For info on {{ls}} plugins:
 
-* [{{agent}} input](logstash://reference/plugins-inputs-elastic_agent.md)
-* [{{es}} output plugin](logstash://reference/plugins-outputs-elasticsearch.md)
+* [{{agent}} input](logstash-docs-md://lsr/plugins-inputs-elastic_agent.md)
+* [{{es}} output plugin](logstash-docs-md://lsr/plugins-outputs-elasticsearch.md)
 
 For info on using {{ls}} for buffering and data resiliency, check out this section in the [Logstash Reference](https://www.elastic.co/guide/en/logstash/current):
 

@@ -21,6 +21,11 @@ You can then **Save** and add it to an existing or a new dashboard using the sav
 ## Create from dashboard [_create_from_dashboard]
 
 1. From your dashboard, select **Add panel**.
+
+   ::::{tip}
+   If you haven't created a [data view](/explore-analyze/find-and-organize/data-views.md) and you don't have a dashboard yet, the **Dashboards** page offers you the possibility to **Try ES|QL** right away. By selecting this option, a dashboard is created with an ES|QL visualization that you can interact with and configure using ES|QL.
+   ::::
+
 2. Choose **ES|QL** under **Visualizations**. An ES|QL editor appears and lets you configure your query and its associated visualization. The **Suggestions** panel can help you find alternative ways to configure the visualization.
 
    ::::{tip}
@@ -33,7 +38,6 @@ You can then **Save** and add it to an existing or a new dashboard using the sav
 
 4. You can bind controls to your ES|QL visualizations in dashboards by creating [ES|QL controls](../dashboards/add-controls.md#add-esql-control).
 5. Select **Apply and close** to save the visualization to the dashboard.
-
 
 ## Customize the appearance of your {{esql}} visualization
 

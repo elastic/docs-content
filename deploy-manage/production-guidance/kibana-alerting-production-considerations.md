@@ -1,12 +1,18 @@
 ---
-navigation_title: "Alerting"
+navigation_title: "Optimize alerting performance"
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/alerting-production-considerations.html
+applies_to:
+  deployment:
+    ess: all
+    ece: all
+    eck: all
+    self: all
 ---
 
 
 
-# Kibana alerting production considerations [alerting-production-considerations]
+# Kibana alerting: performance and scaling [alerting-production-considerations]
 
 
 Alerting runs both rule checks and actions as persistent background tasks managed by the Task Manager.

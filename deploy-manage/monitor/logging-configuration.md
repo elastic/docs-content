@@ -10,12 +10,12 @@ applies_to:
 
 You can configure several types of logs in {{stack}} that can help you to gain insight into {{stack}} operations, diagnose issues, and track certain types of events.
 
-The following logging features are available: 
+The following logging features are available:
 
 ## For {{es}} [extra-logging-features-elasticsearch]
 
-* **Application and component logging**: Logs messages related to running {{es}}. 
-  
+* **Application and component logging**: Logs messages related to running {{es}}.
+
   You can [configure the log level for {{es}}](/deploy-manage/monitor/logging-configuration/update-elasticsearch-logging-levels.md), and, in self-managed clusters, [configure underlying Log4j settings](/deploy-manage/monitor/logging-configuration/elasticsearch-log4j-configuration-self-managed.md) to customize logging behavior.
 * [Deprecation logging](/deploy-manage/monitor/logging-configuration/elasticsearch-deprecation-logs.md): Deprecation logs record a message to the {{es}} log directory when you use deprecated {{es}} functionality. You can use the deprecation logs to update your application before upgrading {{es}} to a new major version.
 * [Audit logging](/deploy-manage/security/logging-configuration/enabling-audit-logs.md): Logs security-related events on your deployment.
@@ -23,8 +23,8 @@ The following logging features are available:
 
 ## For {{kib}} [extra-logging-features-kibana]
 
-* **Application and component logging**: Logs messages related to running {{kib}}. 
-  
+* **Application and component logging**: Logs messages related to running {{kib}}.
+
   You can [configure the log level for {{kib}}](/deploy-manage/monitor/logging-configuration/kibana-log-levels.md), and, in self-managed, ECE, or ECK deployments, [configure advanced settings](/deploy-manage/monitor/logging-configuration/kib-advanced-logging.md) to customize logging behavior.
 
 * [Audit logging](/deploy-manage/security/logging-configuration/enabling-audit-logs.md): Logs security-related events on your deployment.
@@ -35,7 +35,7 @@ The way that you access your logs differs depending on your deployment method.
 
 ### Orchestrated deployments
 
-Access your logs using one of the following options: 
+Access your logs using one of the following options:
 
 * All orchestrated deployments: [](/deploy-manage/monitor/stack-monitoring.md)
 * {{ech}}: [Preconfigured logs and metrics](/deploy-manage/monitor/cloud-health-perf.md#ec-es-health-preconfigured)
@@ -115,7 +115,7 @@ You can also collect and index the following types of logs from other components
 
 * `apm*.log*`
 
-[**Fleet and Elastic Agent**](/reference/ingestion-tools/fleet/monitor-elastic-agent.md)
+[**Fleet and Elastic Agent**](/reference/fleet/monitor-elastic-agent.md)
 
 * `fleet-server-json.log-*`
 * `elastic-agent-json.log-*`

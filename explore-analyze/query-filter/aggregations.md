@@ -17,13 +17,13 @@ An aggregation summarizes your data as metrics, statistics, or other analytics. 
 
 {{es}} organizes aggregations into three categories:
 
-* [Metric](elasticsearch://reference/data-analysis/aggregations/metrics.md) aggregations that calculate metrics, such as a sum or average, from field values.
-* [Bucket](elasticsearch://reference/data-analysis/aggregations/bucket.md) aggregations that group documents into buckets, also called bins, based on field values, ranges, or other criteria.
-* [Pipeline](elasticsearch://reference/data-analysis/aggregations/pipeline.md) aggregations that take input from other aggregations instead of documents or fields.
+* [Metric](elasticsearch://reference/aggregations/metrics.md) aggregations that calculate metrics, such as a sum or average, from field values.
+* [Bucket](elasticsearch://reference/aggregations/bucket.md) aggregations that group documents into buckets, also called bins, based on field values, ranges, or other criteria.
+* [Pipeline](elasticsearch://reference/aggregations/pipeline.md) aggregations that take input from other aggregations instead of documents or fields.
 
 ## Run an aggregation [run-an-agg]
 
-You can run aggregations as part of a [search](../../solutions/search/querying-for-search.md) by specifying the [search API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search)'s `aggs` parameter. The following search runs a [terms aggregation](elasticsearch://reference/data-analysis/aggregations/search-aggregations-bucket-terms-aggregation.md) on `my-field`:
+You can run aggregations as part of a [search](../../solutions/search/querying-for-search.md) by specifying the [search API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search)'s `aggs` parameter. The following search runs a [terms aggregation](elasticsearch://reference/aggregations/search-aggregations-bucket-terms-aggregation.md) on `my-field`:
 
 ```console
 GET /my-index-000001/_search
@@ -137,7 +137,7 @@ GET /my-index-000001/_search
 
 ## Run sub-aggregations [run-sub-aggs]
 
-Bucket aggregations support bucket or metric sub-aggregations. For example, a terms aggregation with an [avg](elasticsearch://reference/data-analysis/aggregations/search-aggregations-metrics-avg-aggregation.md) sub-aggregation calculates an average value for each bucket of documents. There is no level or depth limit for nesting sub-aggregations.
+Bucket aggregations support bucket or metric sub-aggregations. For example, a terms aggregation with an [avg](elasticsearch://reference/aggregations/search-aggregations-metrics-avg-aggregation.md) sub-aggregation calculates an average value for each bucket of documents. There is no level or depth limit for nesting sub-aggregations.
 
 ```console
 GET /my-index-000001/_search
@@ -244,7 +244,7 @@ GET /my-index-000001/_search?typed_keys
 The response returns the aggregation type as a prefix to the aggregation’s name.
 
 ::::{important}
-Some aggregations return a different aggregation type from the type in the request. For example, the terms, [significant terms](elasticsearch://reference/data-analysis/aggregations/search-aggregations-bucket-significantterms-aggregation.md), and [percentiles](elasticsearch://reference/data-analysis/aggregations/search-aggregations-metrics-percentile-aggregation.md) aggregations return different aggregations types depending on the data type of the aggregated field.
+Some aggregations return a different aggregation type from the type in the request. For example, the terms, [significant terms](elasticsearch://reference/aggregations/search-aggregations-bucket-significantterms-aggregation.md), and [percentiles](elasticsearch://reference/aggregations/search-aggregations-metrics-percentile-aggregation.md) aggregations return different aggregations types depending on the data type of the aggregated field.
 ::::
 
 ```console-result
@@ -284,11 +284,11 @@ GET /my-index-000001/_search?size=0
 }
 ```
 
-Scripts calculate field values dynamically, which adds a little overhead to the aggregation. In addition to the time spent calculating, some aggregations like [`terms`](elasticsearch://reference/data-analysis/aggregations/search-aggregations-bucket-terms-aggregation.md) and [`filters`](elasticsearch://reference/data-analysis/aggregations/search-aggregations-bucket-filters-aggregation.md) can’t use some of their optimizations with runtime fields. In total, performance costs for using a runtime field varies from aggregation to aggregation.
+Scripts calculate field values dynamically, which adds a little overhead to the aggregation. In addition to the time spent calculating, some aggregations like [`terms`](elasticsearch://reference/aggregations/search-aggregations-bucket-terms-aggregation.md) and [`filters`](elasticsearch://reference/aggregations/search-aggregations-bucket-filters-aggregation.md) can’t use some of their optimizations with runtime fields. In total, performance costs for using a runtime field varies from aggregation to aggregation.
 
 ## Aggregation caches [agg-caches]
 
-For faster responses, {{es}} caches the results of frequently run aggregations in the [shard request cache](elasticsearch://reference/elasticsearch/configuration-reference/shard-request-cache-settings.md). To get cached results, use the same [`preference` string](elasticsearch://reference/elasticsearch/rest-apis/search-shard-routing.md#shard-and-node-preference) for each search. If you don’t need search hits, [set `size` to `0`](#return-only-agg-results) to avoid filling the cache.
+For faster responses, {{es}} caches the results of frequently run aggregations in the [shard request cache](/deploy-manage/distributed-architecture/shard-request-cache.md). To get cached results, use the same [`preference` string](elasticsearch://reference/elasticsearch/rest-apis/search-shard-routing.md#shard-and-node-preference) for each search. If you don’t need search hits, [set `size` to `0`](#return-only-agg-results) to avoid filling the cache.
 
 {{es}} routes searches with the same preference string to the same shards. If the shards' data doesn’t change between searches, the shards return cached aggregation results.
 

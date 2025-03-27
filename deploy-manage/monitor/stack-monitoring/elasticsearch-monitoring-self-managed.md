@@ -20,7 +20,7 @@ To use the {{monitor-features}} with the {{security-features}} enabled, you need
 
 You can collect monitoring and logging data in the following ways: 
 
-* [Collect monitoring data with Elastic Agent](/deploy-manage/monitor/stack-monitoring/collecting-monitoring-data-with-elastic-agent.md)
+* [Collect monitoring data with Elastic Agent](/deploy-manage/monitor/stack-monitoring/collecting-monitoring-data-with-elastic-agent.md) (recommended)
 * [Collect monitoring data with Metricbeat](/deploy-manage/monitor/stack-monitoring/collecting-monitoring-data-with-metricbeat.md)
 * [Collect log data with Filebeat](/deploy-manage/monitor/stack-monitoring/collecting-log-data-with-filebeat.md)
 

@@ -40,7 +40,7 @@ If you send pre-aggregated data to a job for analysis, you must ensure that the 
 
 ### Scripted metric aggregations are not supported [_scripted_metric_aggregations_are_not_supported]
 
-Using [scripted metric aggregations](elasticsearch://reference/data-analysis/aggregations/search-aggregations-metrics-scripted-metric-aggregation.md) in {{dfeeds}} is not supported. Refer to the [Aggregating data for faster performance](ml-configuring-aggregation.md) page to learn more about aggregations in {{dfeeds}}.
+Using [scripted metric aggregations](elasticsearch://reference/aggregations/search-aggregations-metrics-scripted-metric-aggregation.md) in {{dfeeds}} is not supported. Refer to the [Aggregating data for faster performance](ml-configuring-aggregation.md) page to learn more about aggregations in {{dfeeds}}.
 
 ### Fields named "by", "count", or "over" cannot be used to split data [_fields_named_by_count_or_over_cannot_be_used_to_split_data]
 
@@ -124,7 +124,7 @@ In {{kib}}, **Anomaly Explorer** and **Single Metric Viewer** charts are not dis
 
 * for anomalies that were due to categorization (if model plot is not enabled),
 * if the {{dfeed}} uses scripted fields and model plot is not enabled (except for scripts that define metric fields),
-* if the {{dfeed}} uses [composite aggregations](elasticsearch://reference/data-analysis/aggregations/search-aggregations-bucket-composite-aggregation.md) that have composite sources other than `terms` and `date_histogram`,
+* if the {{dfeed}} uses [composite aggregations](elasticsearch://reference/aggregations/search-aggregations-bucket-composite-aggregation.md) that have composite sources other than `terms` and `date_histogram`,
 * if your [{{dfeed}} uses aggregations with nested `terms` aggs](ml-configuring-aggregation.md#aggs-dfeeds) and model plot is not enabled,
 * `freq_rare` functions,
 * `info_content`, `high_info_content`, `low_info_content` functions,

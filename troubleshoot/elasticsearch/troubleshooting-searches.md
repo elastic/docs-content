@@ -2,6 +2,7 @@
 navigation_title: Searches
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/troubleshooting-searches.html
+  - https://www.elastic.co/guide/en/serverless/current/devtools-dev-tools-troubleshooting.html
 ---
 
 # Troubleshoot searches [troubleshooting-searches]
@@ -126,7 +127,7 @@ GET /my-index-000001/_count
 }
 ```
 
-If the field is aggregatable, you can use [aggregations](../../explore-analyze/query-filter/aggregations.md) to check the field’s values. For `keyword` fields, you can use a [terms aggregation](elasticsearch://reference/data-analysis/aggregations/search-aggregations-bucket-terms-aggregation.md) to retrieve the field’s most common values:
+If the field is aggregatable, you can use [aggregations](../../explore-analyze/query-filter/aggregations.md) to check the field’s values. For `keyword` fields, you can use a [terms aggregation](elasticsearch://reference/aggregations/search-aggregations-bucket-terms-aggregation.md) to retrieve the field’s most common values:
 
 ```console
 GET /my-index-000001/_search?filter_path=aggregations
@@ -143,7 +144,7 @@ GET /my-index-000001/_search?filter_path=aggregations
 }
 ```
 
-For numeric fields, you can use the [stats aggregation](elasticsearch://reference/data-analysis/aggregations/search-aggregations-metrics-stats-aggregation.md) to get an idea of the field’s value distribution:
+For numeric fields, you can use the [stats aggregation](elasticsearch://reference/aggregations/search-aggregations-metrics-stats-aggregation.md) to get an idea of the field’s value distribution:
 
 ```console
 GET my-index-000001/_search?filter_path=aggregations

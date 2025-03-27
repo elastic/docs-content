@@ -1,5 +1,8 @@
 ---
 navigation_title: "Cluster response time"
+applies_to:
+  deployment:
+    ess: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-scenario_why_are_my_cluster_response_times_suddenly_so_much_worse.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/echscenario_why_are_my_cluster_response_times_suddenly_so_much_worse.html
@@ -22,5 +25,5 @@ So what caused the sudden increase in response times? The key to the puzzle lies
 This cluster was sized to handle a certain number of user requests. As the user requests exceeded the maximum throughput that a cluster of this size could sustain, response times increased. To avoid such a slowdown, you either need to control the volume of user requests that reaches the {{es}} cluster or you need to size your cluster to be able to accommodate a sudden increase in user requests.
 
 :::{important}
- If you’re using Elastic Cloud Hosted, then you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, real-time issue detection and resolution paths. For more information, refer to [Monitor with AutoOps](/deploy-manage/monitor/autoops.md).
+ If you’re using Elastic Cloud Hosted, then you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, and real-time issue detection with resolution paths. For more information, refer to [Monitor with AutoOps](/deploy-manage/monitor/autoops.md).
 :::

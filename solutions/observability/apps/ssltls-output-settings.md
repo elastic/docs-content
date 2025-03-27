@@ -10,7 +10,7 @@ applies_to:
 ::::{note}
 ![supported deployment methods](/solutions/images/observability-binary-yes-fm-no.svg "")
 
-These configuration options are only relevant to APM Server binary users. Fleet-managed users should see the [Fleet output settings](/reference/ingestion-tools/fleet/fleet-settings.md).
+These configuration options are only relevant to APM Server binary users. Fleet-managed users should see the [Fleet output settings](/reference/fleet/fleet-settings.md).
 
 ::::
 

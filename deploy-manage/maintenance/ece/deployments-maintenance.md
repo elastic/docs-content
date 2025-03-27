@@ -12,7 +12,7 @@ In some circumstances, you might need to temporarily restrict access to a node s
 
 These actions act as a maintenance mode for cluster node. Performing these actions can stop the cluster from becoming unresponsive so that you can resolve operational issues much more effectively.
 
-* [**Stop routing to the instance**](start-stop-routing-requests.md): Block requests from being routed to the cluster node. This is a less invasive action than pausing the cluster.
+* [**Stop routing to the instance**](/deploy-manage/maintenance/start-stop-routing-requests.md): Block requests from being routed to the cluster node. This is a less invasive action than pausing the cluster.
 * [**Pause an instance**](pause-instance.md): Suspend the node immediately by stopping the container that the node runs on without completing existing requests. This is a more aggressive action to regain control of an unresponsive node.
 
 As an alternative, to quickly add capacity to a deployment if it is unhealthy or at capacity, you can also [override the resource limit for a deployment](../../deploy/cloud-enterprise/resource-overrides.md).
