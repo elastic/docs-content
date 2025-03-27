@@ -37,7 +37,7 @@ The following conditions apply to index templates:
 * `profiling-*`
 * `security_solution-*-*`
 
-[{{agent}}](/reference/ingestion-tools/fleet/index.md) uses these templates to create data streams. Index templates created by {{fleet}} integrations use similar overlapping index patterns and have a priority up to `200`.
+[{{agent}}](/reference/fleet/index.md) uses these templates to create data streams. Index templates created by {{fleet}} integrations use similar overlapping index patterns and have a priority up to `200`.
 
 If you use {{fleet}} or {{agent}}, assign your index templates a priority lower than `100` to avoid overriding these templates. Otherwise, to avoid accidentally applying the templates, do one or more of the following:
 

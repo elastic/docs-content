@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/signals-to-cases.html
   - https://www.elastic.co/guide/en/serverless/current/security-signals-to-cases.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Add detection alerts to cases [security-signals-to-cases]
@@ -15,7 +19,7 @@ From the Alerts table, you can attach one or more alerts to a [new case](/soluti
 ::::
 
 
-:::{image} ../../../images/security-add-alert-to-case.gif
+:::{image} /solutions/images/security-add-alert-to-case.gif
 :alt: add alert to case
 :screenshot:
 :::
@@ -41,7 +45,7 @@ To add alerts to a new case:
 5. Select a connector. If you’ve previously added one, that connector displays as the default selection. Otherwise, the default setting is `No connector selected`.
 6. Click **Create case** after you’ve completed all of the required fields. A confirmation message is displayed with an option to view the new case. Click the link in the notification or go to the Cases page to view the case.
 
-:::{image} ../../../images/security-add-alert-to-new-case.png
+:::{image} /solutions/images/security-add-alert-to-new-case.png
 :alt: add alert to new case
 :screenshot:
 :::
@@ -63,7 +67,7 @@ To add alerts to an existing case:
     ::::
 
 
-:::{image} ../../../images/security-add-alert-to-existing-case.png
+:::{image} /solutions/images/security-add-alert-to-existing-case.png
 :alt: Select case dialog listing existing cases
 :screenshot:
 :::

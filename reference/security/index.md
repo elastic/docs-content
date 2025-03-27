@@ -1,3 +1,10 @@
+---
+applies_to:
+  stack: all
+  serverless:
+    security: all
+---
+
 # Security
 
 This section of the documentation contains reference information for [{{elastic-sec}}](/solutions/security.md) features, including:

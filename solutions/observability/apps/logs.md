@@ -14,7 +14,7 @@ If you’ve correlated your application’s logs and traces, you never have to s
 
 To learn how to correlate your logs with your instrumented services, refer to [Stream application logs](../../../solutions/observability/logs/stream-application-logs.md).
 
-:::{image} ../../../images/observability-logs.png
+:::{image} /solutions/images/observability-logs.png
 :alt: Example view of the Logs tab in Applications UI
 :screenshot:
 :::

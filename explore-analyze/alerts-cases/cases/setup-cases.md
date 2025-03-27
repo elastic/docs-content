@@ -20,7 +20,7 @@ To access cases in **{{stack-manage-app}}**, you must have the appropriate {{kib
 ::::{note}
 The **{{connectors-feature}}** feature privilege is required to create, add, delete, and modify case connectors and to send updates to external systems.
 
-By default, `All` for the **Cases** feature includes authority to delete cases and comments, edit case settings, add case comments and attachments, and re-open cases unless you customize the sub-feature privileges.
+By default, `All` for the **Cases** feature allows you to have full control over cases, including deleting them, editing case settings, and more. You can customize the sub-feature privileges to limit feature access.
 
 ::::
 
@@ -58,5 +58,5 @@ You can customize sub-feature privileges for deleting cases and comments, editin
 For more details, refer to [{{kib}} privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md).
 
 ::::{note}
-If you are using an on-premises {{kib}} deployment and you want the email notifications and the external incident management systems to contain links back to {{kib}}, you must configure the [`server.publicBaseUrl`](../../../deploy-manage/deploy/self-managed/configure.md#server-publicBaseUrl) setting.
+If you are using an on-premises {{kib}} deployment and you want the email notifications and the external incident management systems to contain links back to {{kib}}, you must configure the [`server.publicBaseUrl`](kibana://reference/configuration-reference/general-settings.md#server-publicbaseurl) setting.
 ::::

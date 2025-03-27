@@ -7,14 +7,14 @@ applies_to:
 
 The following diagram illustrates the components of full-text search.
 
-:::{image} ../../../images/elasticsearch-reference-full-text-search-overview.svg
+:::{image} /solutions/images/elasticsearch-reference-full-text-search-overview.svg
 :alt: Components of full-text search from analysis to relevance scoring
 :width: 550px
 :::
 
 At a high level, full-text search involves the following:
 
-* [**Text analysis**](../../../manage-data/data-store/text-analysis.md): Analysis consists of a pipeline of sequential transformations. Text is transformed into a format optimized for searching using techniques such as stemming, lowercasing, and stop word elimination. {{es}} contains a number of built-in [analyzers](elasticsearch://reference/data-analysis/text-analysis/analyzer-reference.md) and tokenizers, including options to analyze specific language text. You can also create custom analyzers.
+* [**Text analysis**](../../../manage-data/data-store/text-analysis.md): Analysis consists of a pipeline of sequential transformations. Text is transformed into a format optimized for searching using techniques such as stemming, lowercasing, and stop word elimination. {{es}} contains a number of built-in [analyzers](elasticsearch://reference/text-analysis/analyzer-reference.md) and tokenizers, including options to analyze specific language text. You can also create custom analyzers.
 ::::{tip}
 Refer to [Test an analyzer](../../../manage-data/data-store/text-analysis/test-an-analyzer.md) to learn how to test an analyzer and inspect the tokens and metadata it generates.
 ::::
@@ -30,6 +30,6 @@ Refer to [Test an analyzer](../../../manage-data/data-store/text-analysis/test-a
 
 * **Full-text search query**: Query text is analyzed [the same way as the indexed text](../../../manage-data/data-store/text-analysis/index-search-analysis.md), and the resulting tokens are used to search the inverted index.
 
-    Query DSL supports a number of [full-text queries](elasticsearch://reference/query-languages/full-text-queries.md).
+    Query DSL supports a number of [full-text queries](elasticsearch://reference/query-languages/query-dsl/full-text-queries.md).
 
     As of 8.17, {{esql}} also supports [full-text search](elasticsearch://reference/query-languages/esql/esql-functions-operators.md#esql-search-functions) functions.

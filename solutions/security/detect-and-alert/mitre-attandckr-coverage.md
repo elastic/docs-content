@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/rules-coverage.html
   - https://www.elastic.co/guide/en/serverless/current/security-rules-coverage.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # MITRE ATT&CK® coverage [security-rules-coverage]
@@ -20,7 +24,7 @@ You can map custom rules to tactics in **Advanced settings** when creating or ed
 ::::
 
 
-:::{image} ../../../images/security-rules-coverage.png
+:::{image} /solutions/images/security-rules-coverage.png
 :alt: MITRE ATT&CK® coverage page
 :screenshot:
 :::

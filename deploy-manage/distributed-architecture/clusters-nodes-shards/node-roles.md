@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/node-roles-overview.html
+applies_to:
+  stack:
+  self:
 ---
 
 # Node roles [node-roles-overview]
@@ -8,7 +11,6 @@ mapped_pages:
 Any time that you start an instance of {{es}}, you are starting a *node*. A collection of connected nodes is called a [cluster](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md). If you are running a single node of {{es}}, then you have a cluster of one node. All nodes know about all the other nodes in the cluster and can forward client requests to the appropriate node.
 
 Each node performs one or more roles. Roles control the behavior of the node in the cluster.
-
 
 ## Set node roles [set-node-roles]
 
@@ -30,10 +32,7 @@ You define a node’s roles by setting `node.roles` in [`elasticsearch.yml`](../
 If you set `node.roles`, ensure you specify every node role your cluster needs. Every cluster requires the following node roles:
 
 * `master`
-*
-
-    `data_content` and `data_hot`<br> OR<br> `data`
-
+* `data_content` and `data_hot`<br> OR<br> `data`
 
 Some {{stack}} features also require specific node roles:
 
@@ -160,7 +159,7 @@ In a multi-tier deployment architecture, you use specialized data roles to assig
 
 If you want to include a node in all tiers, or if your cluster does not use multiple tiers, then you can use the generic `data` role.
 
-[Cluster shard limits](../../deploy/self-managed/configure-elasticsearch.md#cluster-shard-limit) prevent creation of more than 1000 non-frozen shards per node, and 3000 frozen shards per dedicated frozen node. Make sure you have enough nodes of each type in your cluster to handle the number of shards you need.
+[Cluster shard limits](elasticsearch://reference/elasticsearch/configuration-reference/miscellaneous-cluster-settings.md#cluster-shard-limit) prevent creation of more than 1000 non-frozen shards per node, and 3000 frozen shards per dedicated frozen node. Make sure you have enough nodes of each type in your cluster to handle the number of shards you need.
 
 ::::{warning}
 If you assign a node to a specific tier using a specialized data role, then you shouldn’t also assign it the generic `data` role. The generic `data` role takes precedence over specialized data roles.

@@ -17,7 +17,7 @@ System owned deployment templates are automatically updated during the ECE upgra
 
 ## Adding support for node_roles [ece_adding_support_for_node_roles]
 
-The `node_roles` field defines the roles that an Elasticsearch topology element can have, which is used in place of `node_type` when a new feature such as autoscaling is enabled, or when a new data tier is added. This field is supported on [Elastic stack versions 7.10 and above](asciidocalypse://docs/cloud/docs/reference/cloud-enterprise/changes-to-index-allocation-api.md).
+The `node_roles` field defines the roles that an Elasticsearch topology element can have, which is used in place of `node_type` when a new feature such as autoscaling is enabled, or when a new data tier is added. This field is supported on [Elastic stack versions 7.10 and above](cloud://reference/cloud-enterprise/changes-to-index-allocation-api.md).
 
 There are a number of fields that need to be added to each Elasticsearch node in order to support `node_roles`:
 

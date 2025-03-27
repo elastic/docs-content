@@ -18,7 +18,7 @@ To provide monitoring dashboards, alerting, and root cause analysis on pipelines
 
 Using the APM Server, connect all your OpenTelemetry native CI/CD tools directly to Elastic {{observability}}.
 
-:::{image} ../../images/observability-simple-arch-observability.png
+:::{image} /solutions/images/observability-simple-arch-observability.png
 :alt: Simple architecture of CI/CD observability with Elastic
 :title: Architecture of CI/CD observability with Elastic
 :::
@@ -28,7 +28,7 @@ A more advanced CI/CD observability architecture includes an OpenTelemetry Colle
 * Low latency between the CI/CD tools and the collector is particularly beneficial to ephemeral tools like the otel-cli.
 * The ability to route the observability signals to multiple backends in addition to Elastic {{observability}}.
 
-:::{image} ../../images/observability-advanced-arch-observability.png
+:::{image} /solutions/images/observability-advanced-arch-observability.png
 :alt: Advanced architecture of CI/CD observability with Elastic
 :title: Advanced architecture of CI/CD observability with Elastic
 :::
@@ -45,19 +45,19 @@ Elastic {{observability}} helps CI/CD administrators monitor their platform by p
 
 The Jenkins health dashboards provide insights on the build executions, the failures, the provisioning of build agents, the active and idle workers, or the JVM health.
 
-:::{image} ../../images/observability-ci-cd-overview.png
+:::{image} /solutions/images/observability-ci-cd-overview.png
 :alt: CI/CD overview
 :title: Jenkins KPIs in Elastic {{observability}}
 :screenshot:
 :::
 
-:::{image} ../../images/observability-jenkins-kpis.png
+:::{image} /solutions/images/observability-jenkins-kpis.png
 :alt: Jenkins KPIs
 :title: Jenkins Provisioning KPIs in Elastic {{observability}}
 :screenshot:
 :::
 
-:::{image} ../../images/observability-jenkins-jvm-indicators.png
+:::{image} /solutions/images/observability-jenkins-jvm-indicators.png
 :alt: Jenkins JVM health indicators
 :title: Jenkins JVM health indicators in Elastic {{observability}}
 :screenshot:
@@ -72,7 +72,7 @@ Elastic {{observability}} enables troubleshooting CI platform outages by providi
 
 In the following image, a Jenkins CI build failed, and its exceptions are reported as errors. Select any of those errors to view the specific information. In this case, it’s errors relating to the CI agent that stopped.
 
-:::{image} ../../images/observability-jenkins-pipeline-build.png
+:::{image} /solutions/images/observability-jenkins-pipeline-build.png
 :alt: Jenkins pipeline builds
 :title: Jenkins pipeline build error in Elastic {{observability}}
 :screenshot:
@@ -80,13 +80,13 @@ In the following image, a Jenkins CI build failed, and its exceptions are report
 
 The Errors overview screen provides a high-level view of the exceptions that CI builds catch. Similar errors are grouped to quickly see which ones are affecting your services and allow you to take action to rectify them.
 
-:::{image} ../../images/observability-jenkins-pipeline-errors.png
+:::{image} /solutions/images/observability-jenkins-pipeline-errors.png
 :alt: Jenkins pipeline build errors
 :title: Jenkins jobs and pipelines errors in Elastic {{observability}}
 :screenshot:
 :::
 
-:::{image} ../../images/observability-concourse-ci-traces.png
+:::{image} /solutions/images/observability-concourse-ci-traces.png
 :alt: Concourse CI traces view
 :title: Concourse CI pipeline execution as a trace in Elastic {{observability}}
 :screenshot:
@@ -106,7 +106,7 @@ The visualization of CI/CD pipelines as distributed traces in Elastic {{observab
 
 The Applications Services view in Elastic {{observability}} provides a view of all your instrumented CI/CD servers with insights on their KPIs.
 
-:::{image} ../../images/observability-jenkins-servers.png
+:::{image} /solutions/images/observability-jenkins-servers.png
 :alt: Jenkins servers view
 :title: Jenkins servers in Elastic {{observability}}
 :screenshot:
@@ -114,7 +114,7 @@ The Applications Services view in Elastic {{observability}} provides a view of a
 
 The Service page provides more granular insights into your CI/CD workflows by breaking down health and performance metrics by pipeline. To quickly view which pipelines experience the most errors, are the most frequently executed, or are the slowest, you can sort and filter the list.
 
-:::{image} ../../images/observability-jenkins-server.png
+:::{image} /solutions/images/observability-jenkins-server.png
 :alt: Jenkins server view
 :title: A Jenkins server in Elastic {{observability}}
 :screenshot:
@@ -125,7 +125,7 @@ The Service page provides more granular insights into your CI/CD workflows by br
 
 Once you’ve identified the pipeline you want to troubleshoot, you can drill down to get more detailed information about its performance over time. The pipeline summary shows a breakdown of duration and failure rates across the pipeline’s individual builds and jobs to spot slowdowns or failures.
 
-:::{image} ../../images/observability-jenkins-pipeline-overview.png
+:::{image} /solutions/images/observability-jenkins-pipeline-overview.png
 :alt: Jenkins pipeline overview
 :title: Performance overview of a Jenkins pipeline in Elastic {{observability}}
 :screenshot:
@@ -133,7 +133,7 @@ Once you’ve identified the pipeline you want to troubleshoot, you can drill do
 
 The pipelines and traditional jobs are instrumented automatically. If you spot a slow or failing build and need to understand what’s happening, you can drill into the trace view of the build to look for the high duration jobs or jobs with errors. You can then dig into the details to understand the source of the error.
 
-:::{image} ../../images/observability-jenkins-pipeline-trace.png
+:::{image} /solutions/images/observability-jenkins-pipeline-trace.png
 :alt: Trace of a Jenkins pipeline build
 :title: A Jenkins pipeline build as a trace in Elastic {{observability}}
 :screenshot:
@@ -141,7 +141,7 @@ The pipelines and traditional jobs are instrumented automatically. If you spot a
 
 To investigate further, you can view the details of the build captured as labels.
 
-:::{image} ../../images/observability-jenkins-pipeline-context.png
+:::{image} /solutions/images/observability-jenkins-pipeline-context.png
 :alt: Attributes of a Jenkins pipeline execution
 :title: Contextual attributes of a Jenkins pipeline execution in Elastic {{observability}}
 :screenshot:
@@ -184,14 +184,14 @@ Visualizing logs both in Elastic and through Jenkins is recommended because it p
 
 The Jenkins OpenTelemetry Plugin provides pipeline log storage in {{es}} while enabling you to visualize the logs in {{kib}} and continue to display them through the Jenkins pipeline build console.
 
-:::{image} ../../images/observability-ci-cd-visualize-logs-kibana-and-jenkins-console.png
+:::{image} /solutions/images/observability-ci-cd-visualize-logs-kibana-and-jenkins-console.png
 :alt: Jenkins Console Output page displaying both log contents and a link to view logs in Elastic {{observability}}
 :screenshot:
 :::
 
 This more advanced setup requires connecting the Jenkins Controller to {{es}} with read permissions on the `logs-apm.app` and preferably on the Metadata of the {{ilm-init}} policy of this index template (by default it’s the `logs-apm.app_logs-default_policy` policy). Use "Validate {{es}} configuration" to verify the setup.
 
-:::{image} ../../images/observability-ci-cd-visualize-logs-kibana-and-jenkins-architecture.png
+:::{image} /solutions/images/observability-ci-cd-visualize-logs-kibana-and-jenkins-architecture.png
 :alt: Architecture diagram for storing pipeline logs in Elastic and visualizing logs in both Elastic and Jenkins
 :title: Architecture for storing pipeline logs in Elastic and visualizing logs in both Elastic and Jenkins
 :::
@@ -201,12 +201,12 @@ This more advanced setup requires connecting the Jenkins Controller to {{es}} wi
 
 Visualizing logs exclusively in {{kib}} involves a simpler setup that doesn’t require access to {{es}} from the Jenkins Controller. This is because the Jenkins pipeline build console displays a hyperlink to the {{kib}} logs visualization screen instead of displaying the logs in the Jenkins UI.
 
-:::{image} ../../images/observability-ci-cd-visualize-logs-kibana-console.png
+:::{image} /solutions/images/observability-ci-cd-visualize-logs-kibana-console.png
 :alt: Jenkins Console Output page with link to view logs in Elastic {{observability}}
 :screenshot:
 :::
 
-:::{image} ../../images/observability-ci-cd-visualize-logs-kibana-architecture.png
+:::{image} /solutions/images/observability-ci-cd-visualize-logs-kibana-architecture.png
 :alt: Architecture diagram for storing pipeline logs in Elastic and visualizing logs exclusively in Elastic
 :title: Architecture for storing pipeline logs in Elastic and visualizing logs exclusively in Elastic
 :::
@@ -224,7 +224,7 @@ Observing CI/CD pipelines is achieved by instrumenting the different CI/CD and D
 
 1. On the Jenkins UI, go to **Manage Jenkins** > **Manage Plugins**.
 
-    :::{image} ../../images/observability-jenkins-plugin-manager.png
+    :::{image} /solutions/images/observability-jenkins-plugin-manager.png
     :alt: Jenkins Plugin Manager
     :screenshot:
     :::
@@ -246,7 +246,7 @@ The OpenTelemetry plugin needs to be configured to report data to an OpenTelemet
 
     * If using the Elastic APM secret token authorization, select a **Bearer Authentication Token**, and add the token as a Jenkins secret text credential.
 
-        :::{image} ../../images/observability-configure-otel-plugin.png
+        :::{image} /solutions/images/observability-configure-otel-plugin.png
         :alt: Configure OTEL plugin
         :screenshot:
         :::
@@ -259,7 +259,7 @@ The OpenTelemetry plugin needs to be configured to report data to an OpenTelemet
 
 1. Go to **Add Visualisation Observability Backend** and define the URL for your {{kib}} server.
 
-    :::{image} ../../images/observability-kibana-url.png
+    :::{image} /solutions/images/observability-kibana-url.png
     :alt: Define {{kib}} URL
     :screenshot:
     :::
@@ -289,7 +289,7 @@ For instance, you can follow the below steps:
 
 * Import the dashboard in the {{kib}} UI
 
-:::{image} ../../images/observability-jenkins-dashboard-import.png
+:::{image} /solutions/images/observability-jenkins-dashboard-import.png
 :alt: Import {{kib}} dashboard
 :title: Import dashboard in {{kib}}
 :screenshot:
@@ -297,13 +297,13 @@ For instance, you can follow the below steps:
 
 * The new dashboard is now ready to be used:
 
-:::{image} ../../images/observability-jenkins-dashboard-ready.png
+:::{image} /solutions/images/observability-jenkins-dashboard-ready.png
 :alt: Jenkins dashboard in {{kib}}
 :title: Jenkins dashboard in {{kib}} is ready
 :screenshot:
 :::
 
-:::{image} ../../images/observability-jenkins-dashboard.png
+:::{image} /solutions/images/observability-jenkins-dashboard.png
 :alt: Jenkins dashboard
 :title: Jenkins dashboard in {{kib}}
 :screenshot:
@@ -357,7 +357,7 @@ You can also trigger your Maven builds from the CI platform and visualize the en
 
 When invoking Maven builds with Jenkins, it’s unnecessary to use environment variables to configure the Maven build (`OTEL_EXPORTER_OTLP_ENDPOINT…`) to rely on the Jenkins capability to inject OpenTelemetry configuration as environment variables. For more details, refer to [Install the OpenTelemetry plugin](#ci-cd-install-jenkins).
 
-:::{image} ../../images/observability-jenkins-maven-pipeline.png
+:::{image} /solutions/images/observability-jenkins-maven-pipeline.png
 :alt: Maven builds in Jenkins
 :title: A Jenkins pipeline executing Maven builds
 :screenshot:
@@ -374,7 +374,7 @@ You can configure your Ansible playbooks with the [Ansible OpenTelemetry callbac
 
 The context propagation from the Jenkins job or pipeline is passed to the Ansible run. Therefore, everything that happens in the CI is also shown in the traces.
 
-:::{image} ../../images/observability-jenkins-ansible-pipeline.png
+:::{image} /solutions/images/observability-jenkins-ansible-pipeline.png
 :alt: Ansible playbooks in Jenkins
 :title: Visibility into your Ansible playbooks
 :screenshot:
@@ -382,7 +382,7 @@ The context propagation from the Jenkins job or pipeline is passed to the Ansibl
 
 This integration feeds, out of the box, the Service Map with all the services that are connected to the Ansible Playbook. All of these features can help you quickly and visually assess your services used in your provisioning and Continuous Deployment.
 
-:::{image} ../../images/observability-ansible-service-map.png
+:::{image} /solutions/images/observability-ansible-service-map.png
 :alt: Ansible service map view
 :title: ServiceMap view of a Jenkins pipeline execution instrumented with the Ansible plugin
 :screenshot:
@@ -397,13 +397,13 @@ AWX requires an Execution Environment with the Ansible and Python packages insta
 
 To inject the environment variables and service details, use custom credential types and assign the credentials to the Playbook template. This gives you the flexibility to reuse the endpoint details for Elastic APM and also standardize on custom fields for reporting purposes.
 
-:::{image} ../../images/observability-ansible-automation-apm-endpoint.png
+:::{image} /solutions/images/observability-ansible-automation-apm-endpoint.png
 :alt: Applications Services Endpoint in Ansible Tower
 :title: An Applications Services Endpoint in Ansible AWX/Tower
 :screenshot:
 :::
 
-:::{image} ../../images/observability-ansible-automation-apm-service-details.png
+:::{image} /solutions/images/observability-ansible-automation-apm-service-details.png
 :alt: Custom fields in Ansible Tower
 :title: Custom fileds in Ansible AWX/Tower
 :screenshot:
@@ -457,13 +457,13 @@ export OTEL_TRACES_EXPORTER="otlp"
 make login build push
 ```
 
-:::{image} ../../images/observability-jenkins-makefile.png
+:::{image} /solutions/images/observability-jenkins-makefile.png
 :alt: Jenkins build executing an instrumented Makefile
 :title: A Jenkins build executing a Makefile instrumented with the otel-cli in Elastic {{observability}}
 :screenshot:
 :::
 
-:::{image} ../../images/observability-jenkins-service-map.png
+:::{image} /solutions/images/observability-jenkins-service-map.png
 :alt: Jenkins service map view
 :title: ServiceMap view of a Jenkins pipeline execution instrumented with the otel-cli
 :screenshot:
@@ -483,7 +483,7 @@ OTEL_SERVICE_NAME=pytest_otel \
 pytest --otel-session-name='My_Test_cases'
 ```
 
-:::{image} ../../images/observability-pytest-otel-pipeline.png
+:::{image} /solutions/images/observability-pytest-otel-pipeline.png
 :alt: Pytest tests
 :title: Visibility into your Pytest tests
 :screenshot:
@@ -503,7 +503,7 @@ Context propagation is supported; therefore, you can benefit from the integratio
 
 Once Concourse CI tracing is configured, Concourse CI pipeline executions are reported in Elastic {{observability}}.
 
-:::{image} ../../images/observability-jenkins-concourse.png
+:::{image} /solutions/images/observability-jenkins-concourse.png
 :alt: Concourse CI pipeline execution
 :title: A Concourse CI pipeline execution in Elastic {{observability}}
 :screenshot:
@@ -520,7 +520,7 @@ Elastic {{observability}} exposes HTTP APIs to check the health of services. You
 
 The following example shows a canary deployment pipeline that leverages Elastic health check HTTP APIs to automate the quality check before rolling out the deployment from the canary to the entire set of instances:
 
-:::{image} ../../images/observability-ci-cd-canary-deployment-pipeline.png
+:::{image} /solutions/images/observability-ci-cd-canary-deployment-pipeline.png
 :alt: Canary Deployment Pipeline
 :::
 

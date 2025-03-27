@@ -2,6 +2,10 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/handle-no-results-found-message.html
   - https://www.elastic.co/guide/en/serverless/current/observability-handle-no-results-found-message.html
+applies_to:
+  stack: all
+  serverless:
+    observability: all
 ---
 
 # Understand "no results found" message [handle-no-results-found-message]
@@ -30,9 +34,9 @@ This could be for any of these reasons:
   Follow our OpenTelemetry quickstart under **Observability** → **Add data** to make sure OpenTelemetry data is correctly mapped to ECS-compliant fields.
   ::::
 
-* You have explicitly chosen not to send these metrics. You may choose to limit the metrics sent to Elastic to save on space and improve cluster performance. For example, the System integration has options to choose which metrics you want to send. You can [edit the integration policy](/reference/ingestion-tools/fleet/edit-delete-integration-policy.md) to begin collecting the missing metrics. For example:
+* You have explicitly chosen not to send these metrics. You may choose to limit the metrics sent to Elastic to save on space and improve cluster performance. For example, the System integration has options to choose which metrics you want to send. You can [edit the integration policy](/reference/fleet/edit-delete-integration-policy.md) to begin collecting the missing metrics. For example:
 
-  :::{image} ../../../images/observability-turn-on-system-metrics.png
+  :::{image} /troubleshoot/images/observability-turn-on-system-metrics.png
   :alt: Screenshot showing system cpu and diskio metrics selected for collection
   :screenshot:
   :::

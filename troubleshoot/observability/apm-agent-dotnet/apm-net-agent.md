@@ -2,6 +2,10 @@
 navigation_title: "APM .NET agent"
 mapped_pages:
   - https://www.elastic.co/guide/en/apm/agent/dotnet/current/troubleshooting.html
+applies_to:
+  stack: all
+  serverless:
+    observability: all
 ---
 
 # Troubleshoot APM .NET agent
@@ -231,13 +235,13 @@ When debugging applications using Visual Studio and IISExpress, the same require
 
 For example:
 
-:::{image} /images/apm-agent-dotnet-classic-pipeline.png
+:::{image} /troubleshoot/images/apm-agent-dotnet-classic-pipeline.png
 :alt: Classic Managed Pipeline Mode in Properties
 :::
 
 Should be changed to:
 
-:::{image} /images/apm-agent-dotnet-integrated-pipeline.png
+:::{image} /troubleshoot/images/apm-agent-dotnet-integrated-pipeline.png
 :alt: Integrated Managed Pipeline Mode in Properties
 :::
 

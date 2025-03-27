@@ -5,7 +5,7 @@ mapped_pages:
 
 # HTTP/REST clients and security [http-clients]
 
-The {{es}} {{security-features}} work with standard HTTP [basic authentication](https://en.wikipedia.org/wiki/Basic_access_authentication) headers to authenticate users. Since Elasticsearch is stateless, this header must be sent with every request:
+The {{es}} {{security-features}} work with standard HTTP [basic authentication](https://en.wikipedia.org/wiki/Basic_access_authentication) headers to authenticate users. Since {{es}} is stateless, this header must be sent with every request:
 
 ```shell
 Authorization: Basic <TOKEN> <1>
@@ -73,7 +73,7 @@ For more information about using {{security-features}} with the language specifi
 * [Java](elasticsearch-java://reference/_basic_authentication.md)
 * [JavaScript](elasticsearch-js://reference/connecting.md)
 * [.NET](elasticsearch-net://reference/configuration.md)
-* [Perl](https://metacpan.org/pod/Search::Elasticsearch::Cxn::HTTPTiny#CONFIGURATION)
+* [Perl](https://metacpan.org/pod/Search::{{es}}::Cxn::HTTPTiny#CONFIGURATION)
 * [PHP](elasticsearch-php://reference/connecting.md)
 * [Python](https://elasticsearch-py.readthedocs.io/en/master/#ssl-and-authentication)
 * [Ruby](https://github.com/elasticsearch/elasticsearch-ruby/tree/master/elasticsearch-transport#authentication)

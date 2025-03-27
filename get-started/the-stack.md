@@ -25,7 +25,7 @@ You have many options for deploying the {{stack}} to suit your needs. You can de
 To learn how to deploy {{es}}, {{kib}}, and supporting orchestration technologies, refer to [](/deploy-manage/index.md). To learn how to deploy additional ingest and consume components, refer to the documentation for the component.
 :::
 
-![Components of the Elastic Stack](../images/stack-components-diagram.svg)
+![Components of the Elastic Stack](/get-started/images/stack-components-diagram.svg)
 
 ### Ingest [_ingest]
 
@@ -42,7 +42,7 @@ $$$stack-components-agent$$$
 
     {{fleet}} enables you to centrally manage {{agents}} and their policies. Use {{fleet}} to monitor the state of all your {{agents}}, manage agent policies, and upgrade {{agent}} binaries or integrations.
 
-    [Learn more about {{fleet}} and {{agent}}](/reference/ingestion-tools/fleet/index.md).
+    [Learn more about {{fleet}} and {{agent}}](/reference/fleet/index.md).
 
 
 $$$stack-components-apm$$$
@@ -53,7 +53,7 @@ APM
 $$$stack-components-beats$$$
 
 {{beats}}
-:   {{beats}} are data shippers that you install as agents on your servers to send operational data to {{es}}. {{beats}} are available for many standard observability data scenarios, including audit data, log files and journals, cloud data, availability, metrics, network traffic, and Windows event logs. [Learn more about {{beats}}](asciidocalypse://docs/beats/docs/reference/index.md).
+:   {{beats}} are data shippers that you install as agents on your servers to send operational data to {{es}}. {{beats}} are available for many standard observability data scenarios, including audit data, log files and journals, cloud data, availability, metrics, network traffic, and Windows event logs. [Learn more about {{beats}}](beats://reference/index.md).
 
 $$$stack-components-ingest-pipelines$$$
 
@@ -88,3 +88,20 @@ $$$stack-components-elasticsearch-clients$$$
 {{es}} clients
 :   The clients provide a convenient mechanism to manage API requests and responses to and from {{es}} from popular languages such as Java, Ruby, Go, Python, and others. Both official and community contributed clients are available. [Learn more about the {{es}} clients](https://www.elastic.co/guide/en/elasticsearch/client/index.html).
 
+## Version compatibility
+```{applies_to}
+deployment:
+  self:
+```
+
+:::{include} /deploy-manage/deploy/_snippets/stack-version-compatibility.md
+:::
+
+## Installation order
+```{applies_to}
+deployment:
+  self:
+```
+
+:::{include} /deploy-manage/deploy/_snippets/installation-order.md
+:::

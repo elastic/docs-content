@@ -44,7 +44,7 @@ Private Service Connect filtering is supported only for Google Cloud regions.
 ::::
 
 
-Private Service Connect establishes a secure connection between two Google Cloud VPCs. The VPCs can belong to separate accounts, for example a service provider and their service consumers. Google Cloud routes the Private Service Connect traffic within the Google Cloud data centers and never exposes it to the public internet. In such a configuration, Elastic Cloud is the third-party service provider and the customers are service consumers.
+Private Service Connect establishes a secure connection between two Google Cloud VPCs. The VPCs can belong to separate accounts, for example a service provider and their service consumers. Google Cloud routes the Private Service Connect traffic within the Google Cloud data centers and never exposes it to the public internet. In such a configuration, {{ecloud}} is the third-party service provider and the customers are service consumers.
 
 Private Link is a connection between a Private Service Connect Endpoint and a Service Attachment. [Learn more about using Private Service Connect on Google Cloud](https://cloud.google.com/vpc/docs/private-service-connect#benefits-services).
 
@@ -85,11 +85,11 @@ Service Attachments are set up by Elastic in all supported GCP regions under the
 ::::
 
 
-The process of setting up the Private link connection to your clusters is split between Google Cloud (e.g. by using Google Cloud console), and Elastic Cloud UI. These are the high-level steps:
+The process of setting up the Private link connection to your clusters is split between Google Cloud (e.g. by using Google Cloud console), and {{ecloud}} UI. These are the high-level steps:
 
-| Google Cloud console | Elastic Cloud UI |
+| Google Cloud console | {{ecloud}} UI |
 | --- | --- |
-| 1. Create a Private Service Connect endpoint using Elastic Cloud Service Attachment URI. |  |
+| 1. Create a Private Service Connect endpoint using {{ecloud}} Service Attachment URI. |  |
 | 2. Create a DNS record pointing to the Private Service Connect endpoint. |  |
 |  | 3. Create a Private Service Connect rule set with the **PSC Connection ID**. |
 |  | 4. Associate the Private Service Connect rule set with your deployments. |
@@ -120,14 +120,14 @@ The process of setting up the Private link connection to your clusters is split 
 
 3. Test the connection.
 
-    Find out the Elasticsearch cluster ID of your deployment. You can do that by selecting **Copy cluster id** in the Cloud UI. It looks something like `9c794b7c08fa494b9990fa3f6f74c2f8`.
+    Find out the {{es}} cluster ID of your deployment. You can do that by selecting **Copy cluster id** in the Cloud UI. It looks something like `9c794b7c08fa494b9990fa3f6f74c2f8`.
 
     ::::{tip}
-    The Elasticsearch cluster ID is **different** from the deployment ID, custom alias endpoint, and Cloud ID values that feature prominently in the user console.
+    The {{es}} cluster ID is **different** from the deployment ID, custom alias endpoint, and Cloud ID values that feature prominently in the user console.
     ::::
 
 
-    To access your Elasticsearch cluster over Private Link:,
+    To access your {{es}} cluster over Private Link:,
 
     * If you have a [custom endpoint alias](/deploy-manage/deploy/elastic-cloud/custom-endpoint-aliases.md) configured, you can use the custom endpoint URL to connect.
 
@@ -146,7 +146,7 @@ The process of setting up the Private link connection to your clusters is split 
         `https://6b111580caaa4a9e84b18ec7c600155e.psc.asia-southeast1.gcp.elastic-cloud.com:9243`
 
 
-    You can test the Google Cloud console part of the setup with the following command (substitute the region and Elasticsearch ID with your cluster):
+    You can test the Google Cloud console part of the setup with the following command (substitute the region and {{es}} ID with your cluster):
 
     ```sh
     $ curl -v https://6b111580caaa4a9e84b18ec7c600155e.psc.asia-southeast1.gcp.elastic-cloud.com:9243
@@ -219,7 +219,7 @@ Use the alias you’ve set up as CNAME A record to access your deployment.
 ::::
 
 
-For example, if your Elasticsearch ID is `6b111580caaa4a9e84b18ec7c600155e` and it is located in `asia-southeast1` region you can access it under `https://6b111580caaa4a9e84b18ec7c600155e.psc.asia-southeast1.gcp.elastic-cloud.com:9243`.
+For example, if your {{es}} ID is `6b111580caaa4a9e84b18ec7c600155e` and it is located in `asia-southeast1` region you can access it under `https://6b111580caaa4a9e84b18ec7c600155e.psc.asia-southeast1.gcp.elastic-cloud.com:9243`.
 
 ```sh
 $ curl -u 'username:password' -v https://6b111580caaa4a9e84b18ec7c600155e.psc.asia-southeast1.gcp.elastic-cloud.com:9243
@@ -229,11 +229,11 @@ $ curl -u 'username:password' -v https://6b111580caaa4a9e84b18ec7c600155e.psc.as
 ```
 
 ::::{note}
-If you are using Private Service Connect together with Fleet, and enrolling the Elastic Agent with a Private Service Connect URL, you need to configure Fleet Server to use and propagate the Private Service Connect URL by updating the **Fleet Server hosts** field in the **Fleet settings** section of Kibana. Otherwise, Elastic Agent will reset to use a default address instead of the Private Service Connect URL. The URL needs to follow this pattern: `https://<Fleet component ID/deployment alias>.fleet.<private zone DNS name>:443`.
+If you are using Private Service Connect together with Fleet, and enrolling the Elastic Agent with a Private Service Connect URL, you need to configure Fleet Server to use and propagate the Private Service Connect URL by updating the **Fleet Server hosts** field in the **Fleet settings** section of {{kib}}. Otherwise, Elastic Agent will reset to use a default address instead of the Private Service Connect URL. The URL needs to follow this pattern: `https://<Fleet component ID/deployment alias>.fleet.<private zone DNS name>:443`.
 
-Similarly, the Elasticsearch host needs to be updated to propagate the Private Service Connect URL. The Elasticsearch URL needs to follow this pattern: `https://<Elasticsearch cluster ID/deployment alias>.es.<private zone DNS name>:443`.
+Similarly, the {{es}} host needs to be updated to propagate the Private Service Connect URL. The {{es}} URL needs to follow this pattern: `https://<{{es}} cluster ID/deployment alias>.es.<private zone DNS name>:443`.
 
-The settings `xpack.fleet.agents.fleet_server.hosts` and `xpack.fleet.outputs` that are needed to enable this configuration in {{kib}} are currently available on-prem only, and not in the [Kibana settings in {{ecloud}}](/deploy-manage/deploy/elastic-cloud/edit-stack-settings.md).
+The settings `xpack.fleet.agents.fleet_server.hosts` and `xpack.fleet.outputs` that are needed to enable this configuration in {{kib}} are currently available on-prem only, and not in the [{{kib}} settings in {{ecloud}}](/deploy-manage/deploy/elastic-cloud/edit-stack-settings.md).
 
 ::::
 

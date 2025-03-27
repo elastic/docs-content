@@ -36,7 +36,7 @@ Other [traffic filtering](/deploy-manage/security/traffic-filtering.md) methods 
 :::::{tab-set}
 :group: deployment-type
 
-::::{tab-item} Elastic Cloud
+::::{tab-item} {{ecloud}}
 :sync: cloud
 
 Traffic filtering, by IP address or CIDR block, is one of the security layers available in {{ecloud}}. It allows you to limit how your deployments can be accessed. We have two types of filters available for filtering by IP address or CIDR block: Ingress/Inbound and Egress/Outbound (Beta, API only).
@@ -129,10 +129,10 @@ To delete a rule set with all its rules:
 
 ::::
 
-::::{tab-item} Elastic Cloud Enterprise
+::::{tab-item} {{ece}}
 :sync: cloud-enterprise
 
-Follow the step described here to set up ingress or inbound IP filters through the Elastic Cloud Enterprise console.
+Follow the step described here to set up ingress or inbound IP filters through the {{ece}} console.
 
 
 **1. Create an IP filter rule set**
@@ -216,7 +216,7 @@ You can apply IP filtering to application clients, node clients, or transport cl
 If a node’s IP address is on the denylist, the {{es}} {{security-features}} allow the connection to {{es}} but it is be dropped immediately and no requests are processed.
 
 :::{note}
-Elasticsearch installations are not designed to be publicly accessible over the Internet. IP Filtering and the other capabilities of the {{es}} {{security-features}} do not change this condition.
+{{es}} installations are not designed to be publicly accessible over the Internet. IP Filtering and the other capabilities of the {{es}} {{security-features}} do not change this condition.
 :::
 
 
@@ -277,7 +277,7 @@ xpack.security.http.filter.enabled: true
 
 **Specifying TCP transport profiles**
 
-[TCP transport profiles](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md#transport-profiles) enable Elasticsearch to bind on multiple hosts. The {{es}} {{security-features}} enable you to apply different IP filtering on different profiles.
+[TCP transport profiles](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md#transport-profiles) enable {{es}} to bind on multiple hosts. The {{es}} {{security-features}} enable you to apply different IP filtering on different profiles.
 
 ```yaml
 xpack.security.transport.filter.allow: 172.16.0.0/24

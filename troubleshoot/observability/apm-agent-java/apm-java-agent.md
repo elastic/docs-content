@@ -2,6 +2,10 @@
 navigation_title: "APM Java Agent"
 mapped_pages:
   - https://www.elastic.co/guide/en/apm/agent/java/current/trouble-shooting.html
+applies_to:
+  stack: all
+  serverless:
+    observability: all
 ---
 
 # Troubleshoot APM Java Agent [trouble-shooting]

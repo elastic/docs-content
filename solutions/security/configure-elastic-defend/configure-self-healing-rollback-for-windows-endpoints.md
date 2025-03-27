@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/self-healing-rollback.html
   - https://www.elastic.co/guide/en/serverless/current/security-self-healing-rollback.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Configure self-healing rollback for Windows endpoints

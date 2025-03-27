@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/assistant-connect-to-openai.html
   - https://www.elastic.co/guide/en/serverless/current/security-connect-to-openai.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Connect to OpenAI

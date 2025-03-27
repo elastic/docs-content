@@ -28,7 +28,7 @@ The data tiers that you use, and the way that you use them, depends on the data�
 * [Frozen tier](/manage-data/lifecycle/data-tiers.md#frozen-tier) nodes hold time series data that is accessed rarely and never updated. The frozen tier stores [partially mounted indices](/deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md#partially-mounted) of [{{search-snaps}}](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-searchable-snapshot.md) exclusively. This extends the storage capacity even further — by up to 20 times compared to the warm tier.
 
 ::::{tip}
-The performance of an {{es}} node is often limited by the performance of the underlying storage and hardware profile. For example hardware profiles, refer to Elastic Cloud’s [instance configurations](asciidocalypse://docs/cloud/docs/reference/cloud-hosted/hardware.md). Review our recommendations for optimizing your storage for [indexing](/deploy-manage/production-guidance/optimize-performance/indexing-speed.md#indexing-use-faster-hardware) and [search](/deploy-manage/production-guidance/optimize-performance/search-speed.md#search-use-faster-hardware).
+The performance of an {{es}} node is often limited by the performance of the underlying storage and hardware profile. For example hardware profiles, refer to Elastic Cloud’s [instance configurations](cloud://reference/cloud-hosted/hardware.md). Review our recommendations for optimizing your storage for [indexing](/deploy-manage/production-guidance/optimize-performance/indexing-speed.md#indexing-use-faster-hardware) and [search](/deploy-manage/production-guidance/optimize-performance/search-speed.md#search-use-faster-hardware).
 ::::
 
 ::::{important}
@@ -96,7 +96,7 @@ To add a warm, cold, or frozen tier when you create a deployment:
 2. Click **+ Add capacity** for any data tiers to add.
 3. Click **Create deployment** at the bottom of the page to save your changes.
 
-:::{image} ../../images/elasticsearch-reference-ess-advanced-config-data-tiers.png
+:::{image} /manage-data/images/elasticsearch-reference-ess-advanced-config-data-tiers.png
 :alt: {{ecloud}}'s deployment Advanced configuration page
 :screenshot:
 :::
@@ -115,7 +115,7 @@ To add a data tier to an existing deployment:
 Disabling a data tier, attempting to scale nodes down in size, reducing availability zones, or reverting an [autoscaling](/deploy-manage/autoscaling.md) change can all result in cluster instability, cluster inaccessibility, and even data corruption or loss in extreme cases.
 
 To avoid this, especially for [production environments](/deploy-manage/production-guidance.md), and in addition to making configuration changes to your indices and ILM as described on this page:
-* Review the disk size, CPU, JVM memory pressure, and other [performance metrics](/deploy-manage/monitor/monitoring-data/access-performance-metrics-on-elastic-cloud.md) of your deployment **before** attempting to perform the scaling down action. 
+* Review the disk size, CPU, JVM memory pressure, and other [performance metrics](/deploy-manage/monitor/access-performance-metrics-on-elastic-cloud.md) of your deployment **before** attempting to perform the scaling down action. 
 * Make sure that you have enough resources and [availability zones](/deploy-manage/production-guidance/availability-and-resilience.md) to handle your workloads after scaling down.
 * Check that your [deployment hardware profile](/deploy-manage/deploy/elastic-cloud/ec-change-hardware-profile.md) (for {{ech}}) or [deployment template](/deploy-manage/deploy/cloud-enterprise/configure-deployment-templates.md) (for {{ece}}) is correct for your business use case. For example, if you need to scale due to CPU pressure increases and are using a *Storage Optimized* hardware profile, consider switching to a *CPU Optimized* configuration instead. 
 
@@ -160,7 +160,7 @@ To make sure that all data can be migrated from the data tier you want to disabl
 
     3. Filter the list of instances by the Data tier you want to disable.
 
-        :::{image} ../../images/cloud-ec-ce-remove-tier-filter-instances.png
+        :::{image} /manage-data/images/cloud-ec-ce-remove-tier-filter-instances.png
         :alt: A screenshot showing a filtered instance list
         :::
 
@@ -176,7 +176,7 @@ To make sure that all data can be migrated from the data tier you want to disabl
 
     3. Filter the list of instances by the Data tier you want to disable.
 
-        :::{image} ../../images/cloud-enterprise-ec-ce-remove-tier-filter-instances.png
+        :::{image} /manage-data/images/cloud-enterprise-ec-ce-remove-tier-filter-instances.png
         :alt: A screenshot showing a filtered instance list
         :::
 
@@ -199,7 +199,7 @@ To make sure that all data can be migrated from the data tier you want to disabl
 
     Parse the output, looking for shards allocated to the nodes to be removed from the cluster. Note that `Instance #2` is shown as `instance-0000000002` in the output.
 
-    :::{image} ../../images/cloud-enterprise-ec-ce-remove-tier-filtered-cat-shards.png
+    :::{image} /manage-data/images/cloud-enterprise-ec-ce-remove-tier-filtered-cat-shards.png
     :alt: A screenshot showing a filtered shard list
     :::
 
@@ -347,7 +347,7 @@ When data reaches the `cold` or `frozen` phases, it is automatically converted t
 
         In the example we have a list of 4 indices, which need to be moved away from the frozen tier.
 
-        :::{image} ../../images/cloud-enterprise-ec-ce-remove-tier-filter-snapshot-indices.png
+        :::{image} /manage-data/images/cloud-enterprise-ec-ce-remove-tier-filter-snapshot-indices.png
         :alt: A screenshot showing a snapshot indices list
         :::
 
@@ -375,7 +375,7 @@ When data reaches the `cold` or `frozen` phases, it is automatically converted t
 
     In the example we are removing the alias for the `frozen-index-1` index.
 
-    :::{image} ../../images/cloud-enterprise-ec-ce-remove-tier-remove-alias.png
+    :::{image} /manage-data/images/cloud-enterprise-ec-ce-remove-tier-remove-alias.png
     :alt: A screenshot showing the process of removing a searchable snapshot indice alias
     :::
 
@@ -403,7 +403,7 @@ When data reaches the `cold` or `frozen` phases, it is automatically converted t
 
         In the example we are restoring `frozen-index-1` from the snapshot in `found-snapshots` (default snapshot repository) and placing it in the warm tier.
 
-        :::{image} ../../images/cloud-enterprise-ec-ce-remove-tier-restore-snapshot.png
+        :::{image} /manage-data/images/cloud-enterprise-ec-ce-remove-tier-restore-snapshot.png
         :alt: A screenshot showing the process of restoring a searchable snapshot to a regular index
         :::
 
@@ -426,7 +426,7 @@ When data reaches the `cold` or `frozen` phases, it is automatically converted t
 
         In the example we are deleting the snapshots associated with the `policy_with_frozen_phase`.
 
-        :::{image} ../../images/cloud-enterprise-ec-ce-remove-tier-remove-snapshots.png
+        :::{image} /manage-data/images/cloud-enterprise-ec-ce-remove-tier-remove-snapshots.png
         :alt: A screenshot showing the process of deleting snapshots
         :::
 

@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/assistant-connect-to-bedrock.html
   - https://www.elastic.co/guide/en/serverless/current/security-connect-to-bedrock.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Connect to Amazon Bedrock

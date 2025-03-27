@@ -36,15 +36,15 @@ Learn about the core components of full-text search:
 
 * [Text fields](elasticsearch://reference/elasticsearch/mapping-reference/text.md)
 * [Text analysis](full-text/text-analysis-during-search.md)
-    * [Tokenizers](elasticsearch://reference/data-analysis/text-analysis/tokenizer-reference.md)
-    * [Analyzers](elasticsearch://reference/data-analysis/text-analysis/analyzer-reference.md)
+    * [Tokenizers](elasticsearch://reference/text-analysis/tokenizer-reference.md)
+    * [Analyzers](elasticsearch://reference/text-analysis/analyzer-reference.md)
 
 
 **{{es}} query languages**
 
 Learn how to build full-text search queries using {{es}}'s query languages:
 
-* [Full-text queries using Query DSL](elasticsearch://reference/query-languages/full-text-queries.md)
+* [Full-text queries using Query DSL](elasticsearch://reference/query-languages/query-dsl/full-text-queries.md)
 * [Full-text search functions in {{esql}}](elasticsearch://reference/query-languages/esql/esql-functions-operators.md#esql-search-functions)
 
 **Advanced topics**

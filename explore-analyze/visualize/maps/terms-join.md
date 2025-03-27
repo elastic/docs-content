@@ -20,7 +20,7 @@ Term joins are available for the following [vector layers](vector-layer.md):
 
 The [choropleth layer example](maps-getting-started.md#maps-add-choropleth-layer) uses a term join to shade world countries by web log traffic. Darker shades symbolize countries with more web log traffic, and lighter shades symbolize countries with less traffic.
 
-:::{image} ../../../images/kibana-gs_add_cloropeth_layer.png
+:::{image} /explore-analyze/images/kibana-gs_add_cloropeth_layer.png
 :alt: gs add cloropeth layer
 :screenshot:
 :::
@@ -31,7 +31,7 @@ A term join uses a shared key to combine vector features, the left source, with 
 
 The cloropeth example uses the shared key, [ISO 3166-1 alpha-2 code](https://wikipedia.org/wiki/ISO_3166-1_alpha-2), to join world countries and web log traffic. ISO 3166-1 alpha-2 code is an international standard that identifies countries by a two-letter country code. For example, **Sweden** has an ISO 3166-1 alpha-2 code of **SE**.
 
-:::{image} ../../../images/kibana-terms_join_shared_key_config.png
+:::{image} /explore-analyze/images/kibana-terms_join_shared_key_config.png
 :alt: terms join shared key config
 :screenshot:
 :::
@@ -62,14 +62,14 @@ In the following example, **iso2** property defines the shared key for the left 
 
 The right source uses the Kibana sample data set "Sample web logs". In this data set, the **geo.src** field contains the ISO 3166-1 alpha-2 code of the country of origin.
 
-A [terms aggregation](elasticsearch://reference/data-analysis/aggregations/search-aggregations-bucket-terms-aggregation.md) groups the sample web log documents by **geo.src** and calculates metrics for each term.
+A [terms aggregation](elasticsearch://reference/aggregations/search-aggregations-bucket-terms-aggregation.md) groups the sample web log documents by **geo.src** and calculates metrics for each term.
 
 The METRICS configuration defines two metric aggregations:
 
 * The count of all documents in the terms bucket.
 * The average of the field "bytes" for all documents in the terms bucket.
 
-:::{image} ../../../images/kibana-terms_join_metric_config.png
+:::{image} /explore-analyze/images/kibana-terms_join_metric_config.png
 :alt: terms join metric config
 :screenshot:
 :::

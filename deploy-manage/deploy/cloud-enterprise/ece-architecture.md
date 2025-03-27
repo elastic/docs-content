@@ -15,7 +15,7 @@ Elastic Cloud Enterprise has a service-oriented architecture that lets you:
 * Access services through the API.
 * Deploy each service independently in its own Docker container.
 
-:::{image} ../../../images/cloud-enterprise-ece-architecture.png
+:::{image} /deploy-manage/images/cloud-enterprise-ece-architecture.png
 :alt: Elastic Cloud Enterprise high level architecture
 :::
 

@@ -163,7 +163,7 @@ To help you better understand the available autoscaling settings, this example d
 
         The fault tolerance for the data tier is set to 2 availability zones.
 
-        :::{image} ../../images/cloud-enterprise-ec-ce-autoscaling-data-summary2.png
+        :::{image} /deploy-manage/images/cloud-enterprise-ec-ce-autoscaling-data-summary2.png
         :alt: A screenshot showing sizing information for the autoscaled data tier
         :::
 
@@ -181,7 +181,7 @@ To help you better understand the available autoscaling settings, this example d
 
         The fault tolerance for the machine learning instance is set to 1 availability zone.
 
-        :::{image} ../../images/cloud-enterprise-ec-ce-autoscaling-ml-summary2.png
+        :::{image} /deploy-manage/images/cloud-enterprise-ec-ce-autoscaling-ml-summary2.png
         :alt: A screenshot showing sizing information for the autoscaled machine learning node
         :::
 
@@ -198,7 +198,7 @@ This example demonstrates how to use the {{ecloud}} RESTful API to create a depl
 
 The example deployment has a hot data and content tier, warm data tier, cold data tier, and a machine learning node, all of which will scale within the defined parameters. To learn about the autoscaling settings, check [Deployment autoscaling](../autoscaling.md) and [Autoscaling example](#ec-autoscaling-example).
 
-To learn more about the {{ece}} API, see the [RESTful API](asciidocalypse://docs/cloud/docs/reference/cloud-enterprise/restful-api.md) documentation. For details on the {{ech}} API, check [RESTful API](asciidocalypse://docs/cloud/docs/reference/cloud-hosted/ec-api-restful.md).
+To learn more about the {{ece}} API, see the [RESTful API](cloud://reference/cloud-enterprise/restful-api.md) documentation. For details on the {{ech}} API, check [RESTful API](cloud://reference/cloud-hosted/ec-api-restful.md).
 
 ### Requirements [ec_requirements] 
 
@@ -220,9 +220,8 @@ Note the following requirements when you run this API request:
 
 $$$ece-autoscaling-api-example-requirements-table$$$ 
 
-|     |     |     |     |
-| --- | --- | --- | --- |
 |  | `size` | `autoscaling_min` | `autoscaling_max` |
+| --- | --- | --- | --- |
 | data tier | ✓ | ✕ | ✓ |
 | machine learning node | ✕ | ✓ | ✓ |
 | coordinating and master nodes | ✓ | ✕ | ✕ |

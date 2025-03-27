@@ -26,7 +26,7 @@ $$$glossary-advanced-settings$$$ Advanced Settings
 :   Enables you to control the appearance and behavior of {{kib}} by setting the date format, default index, and other attributes. Part of {{kib}} Stack Management. See [Advanced Settings](kibana://reference/advanced-settings.md).
 
 $$$glossary-agent-policy$$$ Agent policy
-:   A collection of inputs and settings that defines the data to be collected by {{agent}}. An agent policy can be applied to a single agent or shared by a group of agents; this makes it easier to manage many agents at scale. See [{{agent}} policies](/reference/ingestion-tools/fleet/agent-policy.md).
+:   A collection of inputs and settings that defines the data to be collected by {{agent}}. An agent policy can be applied to a single agent or shared by a group of agents; this makes it easier to manage many agents at scale. See [{{agent}} policies](/reference/fleet/agent-policy.md).
 
 $$$glossary-alias$$$ alias
 :   Secondary name for a group of [data streams](/reference/glossary/index.md#glossary-data-stream) or [indices](/reference/glossary/index.md#glossary-index). Most {{es}} APIs accept an alias in place of a data stream or index. See [Aliases](/manage-data/data-store/aliases.md).
@@ -106,7 +106,7 @@ $$$glossary-cloud-ui$$$ Cloud UI
 :   Provides web-based access to manage your {{ece}} installation, supported by the [administration console](/reference/glossary/index.md#glossary-admin-console).
 
 $$$glossary-cluster$$$ cluster
-:   1. A group of one or more connected {{es}} [nodes](/reference/glossary/index.md#glossary-node). See [Clusters, nodes, and shards](/deploy-manage/production-guidance/getting-ready-for-production-elasticsearch.md).
+:   1. A group of one or more connected {{es}} [nodes](/reference/glossary/index.md#glossary-node). See [Clusters, nodes, and shards](/deploy-manage/production-guidance/elasticsearch-in-production-environments.md).
 2. A layer type and display option in the **Maps** application. Clusters display a cluster symbol across a grid on the map, one symbol per grid cluster. The cluster location is the weighted centroid for all documents in the grid cell.
 3. In {{eck}}, it can refer to either an [Elasticsearch cluster](/deploy-manage/maintenance/add-and-remove-elasticsearch-nodes.md) or a Kubernetes cluster depending on the context.
 
@@ -189,7 +189,7 @@ $$$glossary-ml-datafeed$$$ datafeed
 :   {{anomaly-jobs-cap}} can analyze either a one-off batch of data or continuously in real time. {{dfeeds-cap}} retrieve data from {{es}} for analysis.
 
 $$$glossary-dataset$$$ dataset
-:   A collection of data that has the same structure. The name of a dataset typically signifies its source. See [data stream naming scheme](/reference/ingestion-tools/fleet/data-streams.md).
+:   A collection of data that has the same structure. The name of a dataset typically signifies its source. See [data stream naming scheme](/reference/fleet/data-streams.md).
 
 $$$glossary-delete-phase$$$ delete phase
 :   Last possible phase in the [index lifecycle](/reference/glossary/index.md#glossary-index-lifecycle). In the delete phase, an [index](/reference/glossary/index.md#glossary-index) is no longer needed and can safely be deleted. See [Index lifecycle](/manage-data/lifecycle/index-lifecycle-management/index-lifecycle.md).
@@ -231,7 +231,7 @@ $$$glossary-edge$$$ edge
 :   A connection between nodes in a graph that shows that they are related. The line weight indicates the strength of the relationship.  See [Graph](/explore-analyze/visualize/graph.md).
 
 $$$glossary-elastic-agent$$$ {{agent}}
-:   A single, unified way to add monitoring for logs, metrics, and other types of data to a host. It can also protect hosts from security threats, query data from operating systems, forward data from remote services or hardware, and more. See [{{agent}} overview](/reference/ingestion-tools/fleet/index.md).
+:   A single, unified way to add monitoring for logs, metrics, and other types of data to a host. It can also protect hosts from security threats, query data from operating systems, forward data from remote services or hardware, and more. See [{{agent}} overview](/reference/fleet/index.md).
 
 $$$glossary-ece$$$ {{ece}} (ECE)
 :   The official enterprise offering to host and manage the {{stack}} yourself at scale. Can be installed on a public cloud platform, such as AWS, GCP or Microsoft Azure, on your own private cloud, or on bare metal.
@@ -315,7 +315,7 @@ $$$glossary-fleet-server$$$ {{fleet-server}}
 :   {{fleet-server}} is a component used to centrally manage {{agent}}s. It serves as a control plane for updating agent policies, collecting status information, and coordinating actions across agents.
 
 $$$glossary-fleet$$$ Fleet
-:   Fleet provides a way to centrally manage {{agent}}s at scale. There are two parts: The Fleet app in {{kib}} provides a web-based UI to add and remotely manage agents, while the {{fleet-server}} provides the backend service that manages agents. See [{{agent}} overview](/reference/ingestion-tools/fleet/index.md).
+:   Fleet provides a way to centrally manage {{agent}}s at scale. There are two parts: The Fleet app in {{kib}} provides a web-based UI to add and remotely manage agents, while the {{fleet-server}} provides the backend service that manages agents. See [{{agent}} overview](/reference/fleet/index.md).
 
 $$$glossary-flush$$$ flush
 :   Writes data from the [transaction log](elasticsearch://reference/elasticsearch/index-settings/translog.md) to disk for permanent storage.
@@ -536,7 +536,7 @@ $$$glossary-no-op$$$ no-op
 :   In {{ecloud}}, the application of a rolling update on your deployment without actually applying any configuration changes. This type of update can be useful to resolve certain health warnings.
 
 $$$glossary-node$$$ node
-:   1. A single {{es}} server. One or more nodes can form a [cluster](/reference/glossary/index.md#glossary-cluster). See [Clusters, nodes, and shards](/deploy-manage/production-guidance/getting-ready-for-production-elasticsearch.md).
+:   1. A single {{es}} server. One or more nodes can form a [cluster](/reference/glossary/index.md#glossary-cluster). See [Clusters, nodes, and shards](/deploy-manage/production-guidance/elasticsearch-in-production-environments.md).
 2. In {{eck}}, it can refer to either an [Elasticsearch Node](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-node.html) or a [Kubernetes Node](https://kubernetes.io/docs/concepts/architecture/nodes/) depending on the context. ECK maps an Elasticsearch node to a Kubernetes Pod which can get scheduled onto any available Kubernetes node that can satisfy the [resource requirements](/deploy-manage/deploy/cloud-on-k8s/manage-compute-resources.md) and [node constraints](https://kubernetes.io/docs/concepts/configuration/assign-pod-node/) defined in the [pod template](/deploy-manage/deploy/cloud-on-k8s/customize-pods.md).
 
 $$$NodeSet$$$NodeSet
@@ -581,7 +581,7 @@ $$$glossary-plugin$$$ plugin
 :   A self-contained software package that implements one of the stages in the {{ls}} event processing [pipeline](/reference/glossary/index.md#glossary-pipeline). The list of available plugins includes [input plugins](/reference/glossary/index.md#glossary-input-plugin), [output plugins](/reference/glossary/index.md#glossary-output-plugin), [codec plugins](/reference/glossary/index.md#glossary-codec-plugin), and [filter plugins](/reference/glossary/index.md#glossary-filter-plugin). The plugins are implemented as Ruby [gems](/reference/glossary/index.md#glossary-gem) and hosted on [RubyGems.org](https://rubygems.org). You define the stages of an event processing [pipeline](/reference/glossary/index.md#glossary-pipeline) by configuring plugins.
 
 $$$glossary-primary-shard$$$ primary shard
-:   Lucene instance containing some or all data for an [index](/reference/glossary/index.md#glossary-index). When you index a [document](/reference/glossary/index.md#glossary-document), {{es}} adds the document to primary shards before [replica shards](/reference/glossary/index.md#glossary-replica-shard). See [Clusters, nodes, and shards](/deploy-manage/production-guidance/getting-ready-for-production-elasticsearch.md).
+:   Lucene instance containing some or all data for an [index](/reference/glossary/index.md#glossary-index). When you index a [document](/reference/glossary/index.md#glossary-document), {{es}} adds the document to primary shards before [replica shards](/reference/glossary/index.md#glossary-replica-shard). See [Clusters, nodes, and shards](/deploy-manage/production-guidance/elasticsearch-in-production-environments.md).
 
 $$$glossary-proxy$$$ proxy
 :   A highly available, TLS-enabled proxy layer that routes user requests, mapping cluster IDs that are passed in request URLs for the container to the cluster nodes handling the user requests.
@@ -619,7 +619,7 @@ $$$glossary-remote-cluster$$$ remote cluster
 :   A separate [cluster](/reference/glossary/index.md#glossary-cluster), often in a different data center or locale, that contains [indices](/reference/glossary/index.md#glossary-index) that can be replicated or searched by the [local cluster](/reference/glossary/index.md#glossary-local-cluster). The connection to a remote cluster is unidirectional. See [Remote clusters](/deploy-manage/remote-clusters/remote-clusters-self-managed.md).
 
 $$$glossary-replica-shard$$$ replica shard
-:   Copy of a [primary shard](/reference/glossary/index.md#glossary-primary-shard). Replica shards can improve search performance and resiliency by distributing data across multiple [nodes](/reference/glossary/index.md#glossary-node). See [Clusters, nodes, and shards](/deploy-manage/production-guidance/getting-ready-for-production-elasticsearch.md).
+:   Copy of a [primary shard](/reference/glossary/index.md#glossary-primary-shard). Replica shards can improve search performance and resiliency by distributing data across multiple [nodes](/reference/glossary/index.md#glossary-node). See [Clusters, nodes, and shards](/deploy-manage/production-guidance/elasticsearch-in-production-environments.md).
 
 $$$glossary-roles-token$$$ roles token
 :   Enables a host to join an existing {{ece}} installation and grants permission to hosts to hold certain roles, such as the [allocator](/reference/glossary/index.md#glossary-allocator) role. Used when installing {{ece}} on additional hosts, a roles token helps secure {{ece}} by making sure that only authorized hosts become part of the installation.
@@ -682,7 +682,7 @@ $$$glossary-services-forwarder$$$ services forwarder
 :   Routes data internally in an {{ece}} installation.
 
 $$$glossary-shard$$$ shard
-:   Lucene instance containing some or all data for an [index](/reference/glossary/index.md#glossary-index). {{es}} automatically creates and manages these Lucene instances. There are two types of shards: [primary](/reference/glossary/index.md#glossary-primary-shard) and [replica](/reference/glossary/index.md#glossary-replica-shard). See [Clusters, nodes, and shards](/deploy-manage/production-guidance/getting-ready-for-production-elasticsearch.md).
+:   Lucene instance containing some or all data for an [index](/reference/glossary/index.md#glossary-index). {{es}} automatically creates and manages these Lucene instances. There are two types of shards: [primary](/reference/glossary/index.md#glossary-primary-shard) and [replica](/reference/glossary/index.md#glossary-replica-shard). See [Clusters, nodes, and shards](/deploy-manage/production-guidance/elasticsearch-in-production-environments.md).
 
 $$$glossary-shareable$$$ shareable
 :   A Canvas workpad that can be embedded on any webpage. Shareables enable you to display Canvas visualizations on internal wiki pages or public websites.
@@ -721,7 +721,7 @@ $$$glossary-stack-alert$$$ stack rule
 :   The general purpose rule types {{kib}} provides out of the box. Refer to [Stack rules](/explore-analyze/alerts-cases/alerts/rule-types.md#stack-rules).
 
 $$$glossary-standalone$$$ standalone
-:   This mode allows manual configuration and management of {{agent}}s locally on the systems where they are installed. See [Install standalone {{agent}}s](/reference/ingestion-tools/fleet/install-standalone-elastic-agent.md).
+:   This mode allows manual configuration and management of {{agent}}s locally on the systems where they are installed. See [Install standalone {{agent}}s](/reference/fleet/install-standalone-elastic-agent.md).
 
 $$$glossary-stunnel$$$ stunnel
 :   Securely tunnels all traffic in an {{ece}} installation.

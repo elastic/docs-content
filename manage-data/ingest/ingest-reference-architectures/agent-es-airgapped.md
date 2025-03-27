@@ -5,7 +5,7 @@ mapped_pages:
 
 # Elastic Agent to Elasticsearch: Air-gapped environment [agent-es-airgapped]
 
-:::{image} ../../../images/ingest-ea-es-airgapped.png
+:::{image} /manage-data/images/ingest-ea-es-airgapped.png
 :alt: Image showing {{agent}} and {{es}} in an air-gapped environment
 :::
 
@@ -25,5 +25,5 @@ Use when
 Info for air-gapped environments:
 
 * [Installing the {{stack}} in an air-gapped environment](../../../deploy-manage/deploy/cloud-enterprise/air-gapped-install.md)
-* [Using a proxy server with Elastic Agent and Fleet](/reference/ingestion-tools/fleet/fleet-agent-proxy-support.md)
+* [Using a proxy server with Elastic Agent and Fleet](/reference/fleet/fleet-agent-proxy-support.md)
 

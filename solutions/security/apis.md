@@ -1,3 +1,10 @@
+---
+applies_to:
+  stack: all
+  serverless:
+    security: all
+---
+
 # APIs
 
 You can use these APIs to interface with {{elastic-sec}} features:
