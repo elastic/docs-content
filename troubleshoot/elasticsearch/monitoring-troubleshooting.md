@@ -8,8 +8,9 @@ mapped_pages:
 
 Use the information in this section to troubleshoot common problems and find answers for frequently asked questions. See also [Troubleshooting monitoring in {{ls}}](logstash://reference/monitoring-troubleshooting.md).
 
-For issues that you cannot fix yourself … we’re here to help. If you are an existing Elastic customer with a support contract, please create a ticket in the [Elastic Support portal](https://support.elastic.co/customers/s/login/). Or post in the [Elastic forum](https://discuss.elastic.co/).
-
+:::{tip}
+If you can't find your issue here, explore the other [troubleshooting topics](/troubleshoot/index.md) or [contact us](/troubleshoot/index.md#contact-us).
+:::
 
 ## No monitoring data is visible in {{kib}} [monitoring-troubleshooting-no-data]
 
