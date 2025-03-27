@@ -38,25 +38,25 @@ There are two images for Elastic Agent, elastic-agent and elastic-agent-complete
 
 Run the `docker pull` command against the Elastic Docker registry:
 
-```terminal
-docker pull docker.elastic.co/elastic-agent/elastic-agent:9.0.0-beta1
+```terminal subs=true
+docker pull docker.elastic.co/elastic-agent/elastic-agent:{{stack-version}}
 ```
 
 Alternately, you can use the hardened [Wolfi](https://github.com/wolfi-dev/) image. Using Wolfi images requires Docker version 20.10.10 or later. For details about why the Wolfi images have been introduced, refer to our article [Reducing CVEs in Elastic container images](https://www.elastic.co/blog/reducing-cves-in-elastic-container-images).
 
-```terminal
-docker pull docker.elastic.co/elastic-agent/elastic-agent-wolfi:9.0.0-beta1
+```terminal subs=true
+docker pull docker.elastic.co/elastic-agent/elastic-agent-wolfi:{{stack-version}}
 ```
 
 If you want to run Synthetics tests, run the docker pull command to fetch the elastic-agent-complete image:
 
-```terminal
-docker pull docker.elastic.co/elastic-agent/elastic-agent-complete:9.0.0-beta1
+```terminal subs=true
+docker pull docker.elastic.co/elastic-agent/elastic-agent-complete:{{stack-version}}
 ```
 To run Synthetics tests using the hardened [Wolfi](https://github.com/wolfi-dev/) image, run:
 
-```terminal
-docker pull docker.elastic.co/elastic-agent/elastic-agent-complete-wolfi:9.0.0-beta1
+```terminal subs=true
+docker pull docker.elastic.co/elastic-agent/elastic-agent-complete-wolfi:{{stack-version}}
 ```
 
 ## Step 2: Optional: Verify the image [_step_2_optional_verify_the_image]
@@ -65,25 +65,25 @@ Although it’s optional, we highly recommend verifying the signatures included 
 
 Elastic images are signed with Cosign which is part of the [Sigstore](https://www.sigstore.dev) project. Cosign supports container signing, verification, and storage in an OCI registry. Install the appropriate Cosign application for your operating system.
 
-Run the following commands to verify the **elastic-agent** container image signature for Elastic Agent v9.0.0-beta1:
+Run the following commands to verify the **elastic-agent** container image signature for Elastic Agent v{{stack-version}}:
 
-```terminal
+```terminal subs=true
 wget https://artifacts.elastic.co/cosign.pub <1>
-cosign verify --key cosign.pub docker.elastic.co/elastic-agent/elastic-agent:9.0.0-beta1 <2>
+cosign verify --key cosign.pub docker.elastic.co/elastic-agent/elastic-agent:{{stack-version}} <2>
 ```
 1. Download the Elastic public key to verify container signature
 2. Verify the container against the Elastic public key
 
 If you’re using the elastic-agent-complete image, run the commands as follows:
 
-```terminal
+```terminal subs=true
 wget https://artifacts.elastic.co/cosign.pub
-cosign verify --key cosign.pub docker.elastic.co/elastic-agent/elastic-agent-complete:9.0.0-beta1
+cosign verify --key cosign.pub docker.elastic.co/elastic-agent/elastic-agent-complete:{{stack-version}}
 ```
 The command prints the check results and the signature payload in JSON format, for example:
 
-```terminal
-Verification for docker.elastic.co/elastic-agent/elastic-agent-complete:9.0.0-beta1 --
+```terminal subs=true
+Verification for docker.elastic.co/elastic-agent/elastic-agent-complete:{{stack-version}} --
 The following checks were performed on each of these signatures:
   - The cosign claims were validated
   - Existence of the claims in the transparency log was verified offline
@@ -94,8 +94,8 @@ The following checks were performed on each of these signatures:
 
 The Elastic Agent container command offers a wide variety of options. To see the full list, run:
 
-```terminal
-docker run --rm docker.elastic.co/elastic-agent/elastic-agent:9.0.0-beta1 elastic-agent container -h
+```terminal subs=true
+docker run --rm docker.elastic.co/elastic-agent/elastic-agent:{{stack-version}} elastic-agent container -h
 ```
 
 ## Step 4: Run the Elastic Agent image [_step_4_run_the_elastic_agent_image]
@@ -105,12 +105,12 @@ docker run --rm docker.elastic.co/elastic-agent/elastic-agent:9.0.0-beta1 elasti
 
 :::{tab-item} Elastic Cloud
 
-```terminal
+```terminal subs=true
 docker run \
   --env FLEET_ENROLL=1 \ <1>
   --env FLEET_URL=<fleet-server-host-url> \ <2>
   --env FLEET_ENROLLMENT_TOKEN=<enrollment-token> \ <3>
-  --rm docker.elastic.co/elastic-agent/elastic-agent:9.0.0-beta1 <4>
+  --rm docker.elastic.co/elastic-agent/elastic-agent:{{stack-version}} <4>
 ```
 
 1. Set to 1 to enroll the {{agent}} into {{fleet-server}}.
@@ -125,14 +125,14 @@ Refer to [Environment variables](/reference/fleet/agent-environment-variables.md
 
 If you’re running a self-managed cluster and want to run your own {{fleet-server}}, run the following command, which will spin up both {{agent}} and {{fleet-server}} in a container:
 
-```terminal
+```terminal subs=true
 docker run \
   --env FLEET_SERVER_ENABLE=true \ <1>
   --env FLEET_SERVER_ELASTICSEARCH_HOST=<elasticsearch-host> \ <2>
   --env FLEET_SERVER_SERVICE_TOKEN=<service-token> \ <3>
   --env FLEET_SERVER_POLICY_ID=<fleet-server-policy> \ <4>
   -p 8220:8220 \ <5>
-  --rm docker.elastic.co/elastic-agent/elastic-agent:9.0.0-beta1 <6>
+  --rm docker.elastic.co/elastic-agent/elastic-agent:{{stack-version}} <6>
 ```
 
 1. Set to 1 to bootstrap Fleet Server on this Elastic Agent.
@@ -167,8 +167,8 @@ If you’d like to run {{agent}} in a Docker container on a read-only file syste
 
 For example:
 
-```bash
-docker run --rm --mount source=$(pwd)/state,destination=/state -e {STATE_PATH}=/state --read-only docker.elastic.co/elastic-agent/elastic-agent:9.0.0-beta1 <1>
+```bash subs=true
+docker run --rm --mount source=$(pwd)/state,destination=/state -e {STATE_PATH}=/state --read-only docker.elastic.co/elastic-agent/elastic-agent:{{stack-version}} <1>
 ```
 
 1. Where `{STATE_PATH}` is the path to a stateful directory to mount where {{agent}} application data can be stored.
@@ -210,11 +210,11 @@ You can also add `type=tmpfs` to the mount parameter (`--mount type=tmpfs,destin
 
 You can run {{agent}} in docker-compose. The example below shows how to enroll an {{agent}}:
 
-```yaml
+```yaml subs=true
 version: "3"
 services:
   elastic-agent:
-    image: docker.elastic.co/elastic-agent/elastic-agent:9.0.0-beta1 <1>
+    image: docker.elastic.co/elastic-agent/elastic-agent:{{stack-version}} <1>
     container_name: elastic-agent
     restart: always
     user: root                                                       <2>
