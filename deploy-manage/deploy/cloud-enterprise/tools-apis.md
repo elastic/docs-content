@@ -62,5 +62,5 @@ serverless: unavailable
 ## Other tools
 
 * [ECE scripts](cloud://reference/cloud-enterprise/scripts.md): Use these scripts to install {{ece}} or modify your installation.
-* [ECE diagnostics tool](/troubleshoot/deployments/cloud-enterprise/run-ece-diagnostics-tool.md): Collect logs and metrics that you can send to Elastic Support for troubleshooting and investigation purposes.
-
+* [ECE diagnostics tool](/troubleshoot/deployments/cloud-enterprise/run-ece-diagnostics-tool.md): Collect logs and metrics related to your ECE installation that you can send to Elastic Support for troubleshooting and investigation purposes.
+* [{{es}} Support Diagnostic tool](/troubleshoot/elasticsearch/diagnostic.md): Captures a point-in-time snapshot of cluster statistics and most {{es}} settings for troubleshooting purposes.
