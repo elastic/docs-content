@@ -15,7 +15,7 @@ To use the [synthetic `_source`](elasticsearch://reference/elasticsearch/mapping
 ::::
 
 
-This topic explains the impact of using logsdb index mode with {{elastic-sec}} and {{sec-serverless}}.
+This topic explains the impact of using logsdb index mode with {{elastic-sec}} and {{sec-serverless}}. You must have the appropriate subscription to use this feature in {{stack}}. In {{serverless-short}}, logsdb index mode is enabled by default. 
 
 With logsdb index mode, the original `_source` field is not stored in the index but can be reconstructed using [synthetic `_source`](elasticsearch://reference/elasticsearch/mapping-reference/mapping-source-field.md#synthetic-source).
 
