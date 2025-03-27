@@ -99,7 +99,7 @@ For more information, see [{{dfeeds-cap}}](ml-ad-run-jobs.md#ml-ad-datafeeds), [
 
 ::::
 
-If you want to see all of the configuration details for your jobs and {{dfeeds}}, you can do so on the **Machine Learning** > **Anomaly Detection** > **Jobs** page. Alternatively, you can see the configuration files in [GitHub ](https://github.com/elastic/kibana/tree/master/x-pack/plugins/ml/server/models/data_recognizer/modules/sample_data_weblogs). For the purposes of this tutorial, however, here’s a quick overview of the goal of each job:
+If you want to see all of the configuration details for your jobs and {{dfeeds}}, you can do so on the **Machine Learning** > **Anomaly Detection** > **Jobs** page. Alternatively, you can see the configuration files in [GitHub ](https://github.com/elastic/kibana/tree/master/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/sample_data_weblogs). For the purposes of this tutorial, however, here’s a quick overview of the goal of each job:
 
 * `low_request_rate` uses the `low_count` function to find unusually low request rates
 * `response_code_rates` uses the `count` function and partitions the analysis by `response.keyword` values to find unusual event rates by HTTP response code
