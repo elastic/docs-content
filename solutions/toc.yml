@@ -8,10 +8,11 @@ toc:
           - file: search/run-elasticsearch-locally.md
           - file: search/serverless-elasticsearch-get-started.md
           - file: search/search-connection-details.md
-          - file: search/api-quickstarts.md
-            children:
-              - file: search/elasticsearch-basics-quickstart.md
-              - file: search/querydsl-full-text-filter-tutorial.md
+      - file: search/api-quickstarts.md
+        children:
+          - file: search/elasticsearch-basics-quickstart.md
+          - file: search/querydsl-full-text-filter-tutorial.md
+          - file: search/esql-search-tutorial.md
       - file: search/ingest-for-search.md
         children:
           - file: search/search-pipelines.md
@@ -66,6 +67,7 @@ toc:
         children:
           - file: search/the-search-api.md
           - file: search/async-search-api.md
+          - file: search/esql-for-search.md
           - file: search/retrievers-overview.md
             children:
               - file: search/retrievers-examples.md
@@ -490,6 +492,8 @@ toc:
               - file: security/detect-and-alert/launch-timeline-from-investigation-guides.md
               - file: security/detect-and-alert/exclude-cold-frozen-data-from-individual-rules.md
           - file: security/detect-and-alert/install-manage-elastic-prebuilt-rules.md
+            children:
+              - file: security/detect-and-alert/prebuilt-rules-update-modified-unmodified.md
           - file: security/detect-and-alert/manage-detection-rules.md
           - file: security/detect-and-alert/monitor-rule-executions.md
           - file: security/detect-and-alert/rule-exceptions.md
@@ -573,6 +577,7 @@ toc:
           - file: security/cloud/cloud-native-vulnerability-management.md
             children:
               - file: security/cloud/get-started-with-cnvm.md
+              - file: security/cloud/cnvm-privilege-requirements.md
               - file: security/cloud/findings-page-3.md
               - file: security/dashboards/cloud-native-vulnerability-management-dashboard.md
               - file: security/cloud/cnvm-frequently-asked-questions-faq.md

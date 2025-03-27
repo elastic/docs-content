@@ -25,20 +25,20 @@ The default list of sanitized fields attempts to target common field names for d
 This setting supports [Central configuration](apm-agent-central-configuration.md), which means the list of sanitized fields can be updated without needing to redeploy your services:
 
 * Go: [`ELASTIC_APM_SANITIZE_FIELD_NAMES`](apm-agent-go://reference/configuration.md#config-sanitize-field-names)
-* Java: [`sanitize_field_names`](asciidocalypse://docs/apm-agent-java/docs/reference/config-core.md#config-sanitize-field-names)
+* Java: [`sanitize_field_names`](apm-agent-java://reference/config-core.md#config-sanitize-field-names)
 * .NET: [`sanitizeFieldNames`](apm-agent-dotnet://reference/config-core.md#config-sanitize-field-names)
-* Node.js: [`sanitizeFieldNames`](asciidocalypse://docs/apm-agent-nodejs/docs/reference/configuration.md#sanitize-field-names)
-* Python: [`sanitize_field_names`](asciidocalypse://docs/apm-agent-python/docs/reference/configuration.md#config-sanitize-field-names)
-* Ruby: [`sanitize_field_names`](asciidocalypse://docs/apm-agent-ruby/docs/reference/configuration.md#config-sanitize-field-names)
+* Node.js: [`sanitizeFieldNames`](apm-agent-nodejs://reference/configuration.md#sanitize-field-names)
+* Python: [`sanitize_field_names`](apm-agent-python://reference/configuration.md#config-sanitize-field-names)
+* Ruby: [`sanitize_field_names`](apm-agent-ruby://reference/configuration.md#config-sanitize-field-names)
 
 Alternatively, you can completely disable the capturing of HTTP headers. This setting also supports [Central configuration](apm-agent-central-configuration.md):
 
 * Go: [`ELASTIC_APM_CAPTURE_HEADERS`](apm-agent-go://reference/configuration.md#config-capture-headers)
-* Java: [`capture_headers`](asciidocalypse://docs/apm-agent-java/docs/reference/config-core.md#config-capture-headers)
+* Java: [`capture_headers`](apm-agent-java://reference/config-core.md#config-capture-headers)
 * .NET: [`CaptureHeaders`](apm-agent-dotnet://reference/config-http.md#config-capture-headers)
-* Node.js: [`captureHeaders`](asciidocalypse://docs/apm-agent-nodejs/docs/reference/configuration.md#capture-headers)
-* Python: [`capture_headers`](asciidocalypse://docs/apm-agent-python/docs/reference/configuration.md#config-capture-headers)
-* Ruby: [`capture_headers`](asciidocalypse://docs/apm-agent-ruby/docs/reference/configuration.md#config-capture-headers)
+* Node.js: [`captureHeaders`](apm-agent-nodejs://reference/configuration.md#capture-headers)
+* Python: [`capture_headers`](apm-agent-python://reference/configuration.md#config-capture-headers)
+* Ruby: [`capture_headers`](apm-agent-ruby://reference/configuration.md#config-capture-headers)
 
 
 ## HTTP bodies [apm-filters-http-body]
@@ -48,18 +48,18 @@ By default, the body of HTTP requests is not recorded. Request bodies often cont
 This setting supports [Central configuration](apm-agent-central-configuration.md), which means the list of sanitized fields can be updated without needing to redeploy your services:
 
 * Go: [`ELASTIC_APM_CAPTURE_BODY`](apm-agent-go://reference/configuration.md#config-capture-body)
-* Java: [`capture_body`](asciidocalypse://docs/apm-agent-java/docs/reference/config-core.md#config-capture-body)
+* Java: [`capture_body`](apm-agent-java://reference/config-core.md#config-capture-body)
 * .NET: [`CaptureBody`](apm-agent-dotnet://reference/config-http.md#config-capture-body)
-* Node.js: [`captureBody`](asciidocalypse://docs/apm-agent-nodejs/docs/reference/configuration.md#capture-body)
-* Python: [`capture_body`](asciidocalypse://docs/apm-agent-python/docs/reference/configuration.md#config-capture-body)
-* Ruby: [`capture_body`](asciidocalypse://docs/apm-agent-ruby/docs/reference/configuration.md#config-capture-body)
+* Node.js: [`captureBody`](apm-agent-nodejs://reference/configuration.md#capture-body)
+* Python: [`capture_body`](apm-agent-python://reference/configuration.md#config-capture-body)
+* Ruby: [`capture_body`](apm-agent-ruby://reference/configuration.md#config-capture-body)
 
 
 ## Personal data [apm-filters-personal-data]
 
 By default, the APM Server captures some personal data associated with trace events:
 
-* `client.ip`: The client’s IP address. Typically derived from the HTTP headers of incoming requests. `client.ip` is also used in conjunction with the [`geoip` processor](elasticsearch://reference/ingestion-tools/enrich-processor/geoip-processor.md) to assign geographical information to trace events. To learn more about how `client.ip` is derived, see [Deriving an incoming request’s `client.ip` address](anonymous-authentication.md#apm-derive-client-ip).
+* `client.ip`: The client’s IP address. Typically derived from the HTTP headers of incoming requests. `client.ip` is also used in conjunction with the [`geoip` processor](elasticsearch://reference/enrich-processor/geoip-processor.md) to assign geographical information to trace events. To learn more about how `client.ip` is derived, see [Deriving an incoming request’s `client.ip` address](anonymous-authentication.md#apm-derive-client-ip).
 * `user_agent`: User agent data, including the client operating system, device name, vendor, and version.
 
 The capturing of this data can be turned off by setting **Capture personal data** to `false`.
@@ -71,7 +71,7 @@ This setting only prevents APM Server from capturing already ingested personal d
 
 ## Real user monitoring data [apm-filters-real-user-data]
 
-Protecting user data is important. For that reason, individual RUM instrumentations can be disabled in the RUM agent with the [`disableInstrumentations`](asciidocalypse://docs/apm-agent-rum-js/docs/reference/configuration.md#disable-instrumentations) configuration variable. Disabled instrumentations produce no spans or transactions.
+Protecting user data is important. For that reason, individual RUM instrumentations can be disabled in the RUM agent with the [`disableInstrumentations`](apm-agent-rum-js://reference/configuration.md#disable-instrumentations) configuration variable. Disabled instrumentations produce no spans or transactions.
 
 | Disable | Configuration value |
 | --- | --- |
@@ -95,5 +95,5 @@ Certain agents offer additional filtering and obfuscating options:
 
 **Agent configuration options**
 
-* (Node.js) Remove errors raised by the server-side process: disable with [captureExceptions](asciidocalypse://docs/apm-agent-nodejs/docs/reference/configuration.md#capture-exceptions).
-* (Java) Remove process arguments from transactions: disabled by default with [`include_process_args`](asciidocalypse://docs/apm-agent-java/docs/reference/config-reporter.md#config-include-process-args).
+* (Node.js) Remove errors raised by the server-side process: disable with [captureExceptions](apm-agent-nodejs://reference/configuration.md#capture-exceptions).
+* (Java) Remove process arguments from transactions: disabled by default with [`include_process_args`](apm-agent-java://reference/config-reporter.md#config-include-process-args).

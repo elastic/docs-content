@@ -66,7 +66,7 @@ xpack.security.authc.providers:
     enabled: false
 ```
 
-:::{image} ../../../images/kibana-kibana-login.png
+:::{image} /deploy-manage/images/kibana-kibana-login.png
 :alt: Login Selector UI
 :screenshot:
 :::

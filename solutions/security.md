@@ -4,6 +4,10 @@ mapped_urls:
   - https://www.elastic.co/guide/en/security/current/index.html
   - https://www.elastic.co/guide/en/security/current/es-overview.html
   - https://www.elastic.co/guide/en/serverless/current/security-overview.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # {{elastic-sec}} overview [es-overview]

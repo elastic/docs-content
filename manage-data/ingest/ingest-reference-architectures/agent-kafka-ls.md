@@ -5,7 +5,7 @@ mapped_pages:
 
 # Elastic Agent to Logstash to Kafka to Logstash to Elasticsearch: Kafka as middleware message queue [agent-kafka-ls]
 
-:::{image} ../../../images/ingest-ls-kafka-ls.png
+:::{image} /manage-data/images/ingest-ls-kafka-ls.png
 :alt: Image showing connections between {{agent}} and {{es}} using a Kafka messaging queue
 :::
 
@@ -32,10 +32,10 @@ Info on {{agent}} and agent integrations:
 Info on {{ls}} and {{ls}} Kafka plugins:
 
 * [{{ls}} Reference](https://www.elastic.co/guide/en/logstash/current)
-* [{{ls}} {{agent}} input](logstash://reference/plugins-inputs-elastic_agent.md)
-* [{{ls}} Kafka input](logstash://reference/plugins-inputs-kafka.md)
-* [{{ls}} Kafka output](logstash://reference/plugins-outputs-kafka.md)
-* [{{ls}} Elasticsearch output](logstash://reference/plugins-outputs-elasticsearch.md)
+* [{{ls}} {{agent}} input](logstash-docs-md://lsr/plugins-inputs-elastic_agent.md)
+* [{{ls}} Kafka input](logstash-docs-md://lsr/plugins-inputs-kafka.md)
+* [{{ls}} Kafka output](logstash-docs-md://lsr/plugins-outputs-kafka.md)
+* [{{ls}} Elasticsearch output](logstash-docs-md://lsr/plugins-outputs-elasticsearch.md)
 
 Info on {{es}}:
 

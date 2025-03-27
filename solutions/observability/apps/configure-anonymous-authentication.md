@@ -12,7 +12,7 @@ applies_to:
 
 
 ::::{note}
-![supported deployment methods](../../../images/observability-binary-yes-fm-yes.svg "")
+![supported deployment methods](/solutions/images/observability-binary-yes-fm-yes.svg "")
 
 Most options on this page are supported by all APM Server deployment methods.
 

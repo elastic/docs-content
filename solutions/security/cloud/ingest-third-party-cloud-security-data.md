@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/ingest-third-party-cloud-security-data.html
   - https://www.elastic.co/guide/en/serverless/current/ingest-third-party-cloud-security-data.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Ingest third-party cloud security data

@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/executable-jna-tmpdir.html
+applies_to:
+  deployment:
+    self:
 ---
 
 # Ensure JNA temporary directory permits executables [executable-jna-tmpdir]
@@ -14,7 +17,7 @@ This is only relevant for Linux.
 
 By default, {{es}} will create its temporary directory within `/tmp`. However, some hardened Linux installations mount `/tmp` with the `noexec` option by default. This prevents JNA and `libffi` from working correctly. For instance, at startup JNA may fail to load with an `java.lang.UnsatisfiedLinkerError` exception or with a message that says something similar to `failed to map segment from shared object`, or `libffi` may report a message such as `failed to allocate closure`. Note that the exception messages can differ between JVM versions. Additionally, the components of {{es}} that rely on execution of native code via JNA may fail with messages indicating that it is `because JNA is not available`.
 
-To resolve these problems, either remove the `noexec` option from your `/tmp` filesystem, or configure {{es}} to use a different location for its temporary directory by setting the [`$ES_TMPDIR`](important-settings-configuration.md#es-tmpdir) environment variable. For instance:
+To resolve these problems, either remove the `noexec` option from your `/tmp` filesystem, or configure {{es}} to use a different location for its temporary directory by setting the [`$ES_TMPDIR`](/deploy-manage/deploy/self-managed/important-settings-configuration.md#es-tmpdir) environment variable. For instance:
 
 * If you are running {{es}} directly from a shell, set `$ES_TMPDIR` as follows:
 

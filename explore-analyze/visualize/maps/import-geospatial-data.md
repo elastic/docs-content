@@ -96,7 +96,7 @@ To open an existing index for drawing:
 
 When feature editing is open, a feature editing toolbox is displayed on the left side of the map.
 
-:::{image} ../../../images/kibana-drawing_layer.png
+:::{image} /explore-analyze/images/kibana-drawing_layer.png
 :alt: drawing layer
 :screenshot:
 :::
@@ -114,7 +114,7 @@ To draw features:
 
 ## Upload data with IP addresses [_upload_data_with_ip_addresses]
 
-The GeoIP processor adds information about the geographical location of IP addresses. See [GeoIP processor](elasticsearch://reference/ingestion-tools/enrich-processor/geoip-processor.md) for details. For private IP addresses, see [Enriching data with GeoIPs from internal, private IP addresses](https://www.elastic.co/blog/enriching-elasticsearch-data-geo-ips-internal-private-ip-addresses).
+The GeoIP processor adds information about the geographical location of IP addresses. See [GeoIP processor](elasticsearch://reference/enrich-processor/geoip-processor.md) for details. For private IP addresses, see [Enriching data with GeoIPs from internal, private IP addresses](https://www.elastic.co/blog/enriching-elasticsearch-data-geo-ips-internal-private-ip-addresses).
 
 
 ## Upload data with GDAL [_upload_data_with_gdal]

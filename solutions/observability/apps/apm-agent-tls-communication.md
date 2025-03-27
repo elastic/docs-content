@@ -56,21 +56,21 @@ If APM agents are authenticating themselves using a certificate that cannot be a
 When the APM server uses a certificate that is not chained to a publicly-trusted certificate (e.g. self-signed), additional configuration is required in the {{apm-agent}}:
 
 * **Go agent**: certificate pinning through [`ELASTIC_APM_SERVER_CERT`](apm-agent-go://reference/configuration.md#config-server-cert)
-* **Python agent**: certificate pinning through [`server_cert`](asciidocalypse://docs/apm-agent-python/docs/reference/configuration.md#config-server-cert)
-* **Ruby agent**: certificate pinning through [`server_ca_cert`](asciidocalypse://docs/apm-agent-ruby/docs/reference/configuration.md#config-ssl-ca-cert)
+* **Python agent**: certificate pinning through [`server_cert`](apm-agent-python://reference/configuration.md#config-server-cert)
+* **Ruby agent**: certificate pinning through [`server_ca_cert`](apm-agent-ruby://reference/configuration.md#config-ssl-ca-cert)
 * **.NET agent**: [`ServerCert`](apm-agent-dotnet://reference/config-reporter.md#config-server-cert)
-* **Node.js agent**: custom CA setting through [`serverCaCertFile`](asciidocalypse://docs/apm-agent-nodejs/docs/reference/configuration.md#server-ca-cert-file)
-* **Java agent**: adding the certificate to the JVM `trustStore`. See [APM Server authentication](asciidocalypse://docs/apm-agent-java/docs/reference/ssl-configuration.md#ssl-server-authentication) for more details.
+* **Node.js agent**: custom CA setting through [`serverCaCertFile`](apm-agent-nodejs://reference/configuration.md#server-ca-cert-file)
+* **Java agent**: adding the certificate to the JVM `trustStore`. See [APM Server authentication](apm-agent-java://reference/ssl-configuration.md#ssl-server-authentication) for more details.
 
 We do not recommend disabling {{apm-agent}} verification of the server’s certificate, but it is possible:
 
 * **Go agent**: [`ELASTIC_APM_VERIFY_SERVER_CERT`](apm-agent-go://reference/configuration.md#config-verify-server-cert)
 * **.NET agent**: [`VerifyServerCert`](apm-agent-dotnet://reference/config-reporter.md#config-verify-server-cert)
-* **Java agent**: [`verify_server_cert`](asciidocalypse://docs/apm-agent-java/docs/reference/config-reporter.md#config-verify-server-cert)
-* **PHP agent**: [`verify_server_cert`](asciidocalypse://docs/apm-agent-php/docs/reference/configuration-reference.md#config-verify-server-cert)
-* **Python agent**: [`verify_server_cert`](asciidocalypse://docs/apm-agent-python/docs/reference/configuration.md#config-verify-server-cert)
-* **Ruby agent**: [`verify_server_cert`](asciidocalypse://docs/apm-agent-ruby/docs/reference/configuration.md#config-verify-server-cert)
-* **Node.js agent**: [`verifyServerCert`](asciidocalypse://docs/apm-agent-nodejs/docs/reference/configuration.md#validate-server-cert)
+* **Java agent**: [`verify_server_cert`](apm-agent-java://reference/config-reporter.md#config-verify-server-cert)
+* **PHP agent**: [`verify_server_cert`](apm-agent-php://reference/configuration-reference.md#config-verify-server-cert)
+* **Python agent**: [`verify_server_cert`](apm-agent-python://reference/configuration.md#config-verify-server-cert)
+* **Ruby agent**: [`verify_server_cert`](apm-agent-ruby://reference/configuration.md#config-verify-server-cert)
+* **Node.js agent**: [`verifyServerCert`](apm-agent-nodejs://reference/configuration.md#validate-server-cert)
 
 
 ## Client certificate authentication [apm-agent-client-cert]

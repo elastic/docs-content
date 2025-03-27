@@ -17,7 +17,7 @@ In **{{stack-manage-app}}** > **{{rules-ui}}**, click **Create rule**. Select th
 
 When you create an index threshold rule, you must define the conditions for the rule to detect. For example:
 
-:::{image} ../../../images/kibana-rule-types-index-threshold-conditions.png
+:::{image} /explore-analyze/images/kibana-rule-types-index-threshold-conditions.png
 :alt: Defining index threshold rule conditions in {{kib}}
 :screenshot:
 :::
@@ -45,14 +45,14 @@ For each action, you must choose a connector, which provides connection informat
 
 After you select a connector, you must set the action frequency. You can choose to create a summary of alerts on each check interval or on a custom interval. For example, summarize the new, ongoing, and recovered alerts at a custom interval:
 
-:::{image} ../../../images/kibana-rule-types-index-threshold-example-action-summary.png
+:::{image} /explore-analyze/images/kibana-rule-types-index-threshold-example-action-summary.png
 :alt: UI for defining alert summary action in an index threshold rule
 :screenshot:
 :::
 
 Alternatively, you can set the action frequency such that actions run for each alert. Choose how often the action runs (at each check interval, only when the alert status changes, or at a custom action interval). You must also choose an action group, which indicates whether the action runs when the threshold is met or when the alert is recovered. Each connector supports a specific set of actions for each action group. For example:
 
-:::{image} ../../../images/kibana-rule-types-index-threshold-example-action.png
+:::{image} /explore-analyze/images/kibana-rule-types-index-threshold-example-action.png
 :alt: UI for defining an action for each alert
 :screenshot:
 :::
@@ -90,31 +90,31 @@ In this example, you will use the {{kib}} [sample weblog data set](/explore-anal
 
     1. Provide a rule name.
     2. Select an index. Click **Index**, and set **Indices to query** to `kibana_sample_data_logs`. Set the **Time field** to `@timestamp`.
-       :::{image} ../../../images/kibana-rule-types-index-threshold-example-index.png
+       :::{image} /explore-analyze/images/kibana-rule-types-index-threshold-example-index.png
        :alt: Choosing an index
        :screenshot:
        :::
 
     3. To detect the number of bytes served during the time window, click **When** and select `sum` as the aggregation, and `bytes` as the field to aggregate.
-       :::{image} ../../../images/kibana-rule-types-index-threshold-example-aggregation.png
+       :::{image} /explore-analyze/images/kibana-rule-types-index-threshold-example-aggregation.png
        :alt: Choosing the aggregation
        :screenshot:
        :::
 
     4. To detect the four sites that have the most traffic, click **Over** and select `top`, enter `4`, and select `host.keyword` as the field.
-       :::{image} ../../../images/kibana-rule-types-index-threshold-example-grouping.png
+       :::{image} /explore-analyze/images/kibana-rule-types-index-threshold-example-grouping.png
        :alt: Choosing the groups
        :screenshot:
        :::
 
     5. To trigger the rule when any of the top four sites exceeds 420,000 bytes over a 24 hour period, select `is above` and enter `420000`. Then click **For the last**, enter `24`, and select `hours`.
-       :::{image} ../../../images/kibana-rule-types-index-threshold-example-threshold.png
+       :::{image} /explore-analyze/images/kibana-rule-types-index-threshold-example-threshold.png
        :alt: Setting the threshold
        :screenshot:
        :::
 
     6. Schedule the rule to check every four hours.
-       :::{image} ../../../images/kibana-rule-types-index-threshold-example-preview.png
+       :::{image} /explore-analyze/images/kibana-rule-types-index-threshold-example-preview.png
        :alt: Setting the check interval
        :screenshot:
        :::
@@ -125,7 +125,7 @@ In this example, you will use the {{kib}} [sample weblog data set](/explore-anal
     8. Define the actions for your rule.
 
         You can add one or more actions to your rule to generate notifications when its conditions are met and when they are no longer met. For each action, you must select a connector, set the action frequency, and compose the notification details. For example, add an action that uses a server log connector to write an entry to the Kibana server log:
-       :::{image} ../../../images/kibana-rule-types-index-threshold-example-action.png
+       :::{image} /explore-analyze/images/kibana-rule-types-index-threshold-example-action.png
        :alt: Add an action to the rule
        :screenshot:
        :::
@@ -135,7 +135,7 @@ In this example, you will use the {{kib}} [sample weblog data set](/explore-anal
     9. Save the rule.
 
 3. Find the rule and view its details in **{{stack-manage-app}} > {{rules-ui}}**. For example, you can see the status of the rule and its alerts:
-   :::{image} ../../../images/kibana-rule-types-index-threshold-example-alerts.png
+   :::{image} /explore-analyze/images/kibana-rule-types-index-threshold-example-alerts.png
    :alt: View the list of alerts for the rule
    :screenshot:
    :::

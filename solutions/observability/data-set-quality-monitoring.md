@@ -10,9 +10,6 @@ applies_to:
 
 # Data set quality monitoring [observability-monitor-datasets]
 
-
-[beta]
-
 The **Data Set Quality** page provides an overview of your log, metric, trace, and synthetic data sets. Use this information to get an idea of your overall data set quality and find data sets that contain incorrectly parsed documents.
 
 To open **Data Set Quality**, find **Stack Management** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). By default, the page only shows log data sets. To see other data set types, select them from the **Type** menu.
@@ -29,9 +26,9 @@ The quality of your data sets is based on the percentage of degraded documents i
 
 From the data set table, you’ll find information for each data set such as its namespace, when the data set was last active, and the percentage of degraded docs. The percentage of degraded documents determines the data set’s quality according to the following scale:
 
-* Good (![Good icon](../../images/serverless-green-dot-icon.png "")): 0% of the documents in the data set are degraded.
-* Degraded (![Degraded icon](../../images/serverless-yellow-dot-icon.png "")): Greater than 0% and up to 3% of the documents in the data set are degraded.
-* Poor (![Poor icon](../../images/serverless-red-dot-icon.png "")): Greater than 3% of the documents in the data set are degraded.
+* Good (![Good icon](/solutions/images/serverless-green-dot-icon.png "")): 0% of the documents in the data set are degraded.
+* Degraded (![Degraded icon](/solutions/images/serverless-yellow-dot-icon.png "")): Greater than 0% and up to 3% of the documents in the data set are degraded.
+* Poor (![Poor icon](/solutions/images/serverless-red-dot-icon.png "")): Greater than 3% of the documents in the data set are degraded.
 
 Opening the details of a specific data set shows the degraded documents history, a summary for the data set, and other details that can help you determine if you need to investigate any issues.
 
@@ -45,7 +42,7 @@ The Data Set Quality page has a couple of different ways to help you find ignore
 
 To open the details page for a data set with poor or degraded quality and view ignored fields:
 
-1. From the data set table, click ![expand icon](../../images/serverless-expand.svg "") next to a data set with poor or degraded quality.
+1. From the data set table, click ![expand icon](/solutions/images/serverless-expand.svg "") next to a data set with poor or degraded quality.
 2. From the details, scroll down to **Quality issues**.
 
 The **Quality issues** section shows fields that have been ignored, the number of documents that contain ignored fields, and the timestamp of last occurrence of the field being ignored.
@@ -62,7 +59,7 @@ The **Documents** table in Discover is automatically filtered to show documents 
 
 Now that you know which documents contain ignored fields, examine them more closely to find the origin of the issue:
 
-1. Under the **actions** column, click ![expand icon](../../images/serverless-expand.svg "") to open the document details.
+1. Under the **actions** column, click ![expand icon](/solutions/images/serverless-expand.svg "") to open the document details.
 2. Select the **JSON** tab.
 3. Scroll towards the end of the JSON to find the `ignored_field_values`.
 

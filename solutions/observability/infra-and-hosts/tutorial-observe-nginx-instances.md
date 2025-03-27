@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/monitor-nginx.html
+applies_to:
+  stack: 
 ---
 
 # Tutorial: Observe your nginx instances [monitor-nginx]
@@ -187,7 +189,7 @@ The nginx integration has a built-in dashboard that shows the full picture of yo
 
 The **Metrics Nginx overview** shows visual representations of total requests, processed requests, heartbeat/up, active connections, reading/writing/waiting rates, request rate, accepts and handled rates, and drops rate.
 
-:::{image} ../../../images/observability-nginx-metrics-dashboard.png
+:::{image} /solutions/images/observability-nginx-metrics-dashboard.png
 :alt: nginx metrics dashboard
 :screenshot:
 :::
@@ -221,14 +223,14 @@ The nginx integration has built-in dashboards that show the full picture of your
 
 The **Nginx logs overview** dashboard shows visual representations of geographical log details, response codes over time, errors over time, the top pages sending logs, data volume, a breakdown of which operating systems are sending logs, and a breakdown of which browsers are sending logs.
 
-:::{image} ../../../images/observability-nginx-logs-overview-dashboard.png
+:::{image} /solutions/images/observability-nginx-logs-overview-dashboard.png
 :alt: nginx logs overview dashboard
 :screenshot:
 :::
 
 The **Nginx access and error logs** dashboard shows your access logs over time, and lists your access and error logs.
 
-:::{image} ../../../images/observability-nginx-logs-access-error-dashboard.png
+:::{image} /solutions/images/observability-nginx-logs-access-error-dashboard.png
 :alt: nginx access and error logs dashboard
 :screenshot:
 :::

@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/ingest-aws-securityhub-data.html
   - https://www.elastic.co/guide/en/serverless/current/ingest-aws-securityhub-data.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Ingest AWS Security Hub data
@@ -13,7 +17,7 @@ In order to enrich your {{elastic-sec}} workflows with third-party cloud securit
 * Ensure you have `read` privileges for the `security_solution-*.misconfiguration_latest` index.
 * While configuring the AWS Security Hub integration, turn on **Collect AWS Security Hub Findings from AWS**. We recommend you also set the **Initial Interval** value to `2160h` (equivalent to 90 days) to ingest existing logs.
 
-:::{image} ../../../images/security-aws-config-finding-logs.png
+:::{image} /solutions/images/security-aws-config-finding-logs.png
 :alt: AWS Security Hub integration settings showing the findings toggle
 :::
 

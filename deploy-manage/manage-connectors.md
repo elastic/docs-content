@@ -12,7 +12,7 @@ applies_to:
 Connectors serve as a central place to store connection information for both Elastic and third-party systems. They enable the linking of actions to rules, which execute as background tasks on the {{kib}} server when rule conditions are met. This allows rules to route actions to various destinations such as log files, ticketing systems, and messaging tools. Different {{kib}} apps may have their own rule types, but they typically share connectors. The **{{stack-manage-app}} > {{connectors-ui}}** provides a central location to view and manage all connectors in the current space.
 
 ::::{note}
-This page is about {{kib}} connectors that integrate with services like generative AI model providers. If you’re looking for Search connectors that synchronize third-party data into {{es}}, refer to [Connector clients](elasticsearch://reference/ingestion-tools/search-connectors/index.md).
+This page is about {{kib}} connectors that integrate with services like generative AI model providers. If you’re looking for Search connectors that synchronize third-party data into {{es}}, refer to [Connector clients](elasticsearch://reference/search-connectors/index.md).
 
 ::::
 
@@ -32,14 +32,14 @@ If you're using {{stack}}, use the [action configuration settings](kibana://refe
 
 In **{{stack-manage-app}} > {{connectors-ui}}**, you can find a list of the connectors in the current space. You can use the search bar to find specific connectors by name and type. The **Type** dropdown also enables you to filter to a subset of connector types.
 
-:::{image} ../images/kibana-connector-filter-by-type.png
+:::{image} /deploy-manage/images/kibana-connector-filter-by-type.png
 :alt: Filtering the connector list by types of connectors
 :screenshot:
 :::
 
 You can delete individual connectors using the trash icon. Alternatively, select multiple connectors and delete them in bulk using the **Delete** button.
 
-:::{image} ../images/kibana-connector-delete.png
+:::{image} /deploy-manage/images/kibana-connector-delete.png
 :alt: Deleting connectors individually or in bulk
 :screenshot:
 :::
@@ -57,7 +57,7 @@ New connectors can be created with the **Create connector** button, which guides
 Some connector types are paid commercial features, while others are free. For a comparison of the Elastic subscription levels, go to [the subscription page](https://www.elastic.co/subscriptions).
 ::::
 
-:::{image} ../images/kibana-connector-select-type.png
+:::{image} /deploy-manage/images/kibana-connector-select-type.png
 :alt: Connector select type
 :screenshot:
 :width: 75%
@@ -79,7 +79,7 @@ To import and export connectors, use the [Saved Objects Management UI](/explore-
 
 If a connector is missing sensitive information after the import, a **Fix** button appears in **{{connectors-ui}}**.
 
-:::{image} ../images/kibana-connectors-with-missing-secrets.png
+:::{image} /deploy-manage/images/kibana-connectors-with-missing-secrets.png
 :alt: Connectors with missing secrets
 :screenshot:
 :::

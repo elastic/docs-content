@@ -16,8 +16,7 @@ To prevent a full disk, when a node reaches this watermark, {{es}} [blocks write
 {{es}} will automatically remove the write block when the affected node’s disk usage falls below the [high disk watermark](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#cluster-routing-watermark-high). To achieve this, {{es}} attempts to rebalance some of the affected node’s shards to other nodes in the same data tier.
 
 ::::{tip}
-If you’re using Elastic Cloud Hosted, then you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, real-time issue detection and resolution paths. For more information, refer to [Monitor with AutoOps](/deploy-manage/monitor/autoops.md).
-
+If you're using {{ech}}, you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, and real-time issue detection with resolution paths. For more information, refer to [](/deploy-manage/monitor/autoops.md).
 ::::
 
 
@@ -97,7 +96,7 @@ To resolve watermark errors permanently, perform one of the following actions:
 * update related [ILM policy](../../manage-data/lifecycle/index-lifecycle-management.md) to push indices through to later [data tiers](../../manage-data/lifecycle/data-tiers.md)
 
 ::::{tip}
-On {{ech}} and {{ece}}, indices may need to be temporarily deleted via its [Elasticsearch API Console](asciidocalypse://docs/cloud/docs/reference/cloud-hosted/ec-api-console.md) to later [snapshot restore](../../deploy-manage/tools/snapshot-and-restore/restore-snapshot.md) in order to resolve [cluster health](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-health) `status:red` which will block [attempted changes](../../deploy-manage/deploy/elastic-cloud/keep-track-of-deployment-activity.md). If you experience issues with this resolution flow on {{ech}}, kindly reach out to [Elastic Support](https://support.elastic.co) for assistance.
+On {{ech}} and {{ece}}, indices may need to be temporarily deleted via its [Elasticsearch API Console](cloud://reference/cloud-hosted/ec-api-console.md) to later [snapshot restore](../../deploy-manage/tools/snapshot-and-restore/restore-snapshot.md) in order to resolve [cluster health](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-health) `status:red` which will block [attempted changes](../../deploy-manage/deploy/elastic-cloud/keep-track-of-deployment-activity.md). If you experience issues with this resolution flow on {{ech}}, kindly reach out to [Elastic Support](https://support.elastic.co) for assistance.
 ::::
 
 

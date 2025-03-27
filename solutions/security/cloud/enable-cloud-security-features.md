@@ -2,7 +2,8 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/security-enable-cloudsec.html
 applies_to:
-  serverless: all
+  serverless:
+    security: all
 ---
 
 # Enable cloud security features in {{serverless-short}} [security-enable-cloudsec]

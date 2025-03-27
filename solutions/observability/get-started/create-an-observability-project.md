@@ -2,6 +2,8 @@
 navigation_title: "Create an Observability project"
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/observability-create-an-observability-project.html
+applies_to:
+  serverless:
 ---
 
 % Serverless only

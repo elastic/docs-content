@@ -1,0 +1,9 @@
+* [Secure your settings](/deploy-manage/security/secure-settings.md): Some of the settings that you configure in Elastic are sensitive, such as passwords, and relying on file system permissions to protect these settings is insufficient. Learn how to configure secure settings in the {{es}} keystore or {{kib}} keystore.
+* [Secure saved objects](/deploy-manage/security/secure-saved-objects.md): {{kib}} stores entities such as dashboards, visualizations, alerts, actions, and advanced settings as saved objects, which are kept in a dedicated, internal {{es}} index. If such an object includes sensitive information, for example a PagerDuty integration key or email server credentials used by the alert action, {{kib}} encrypts it and makes sure it cannot be accidentally leaked or tampered with. You can configure and rotate the saved object encryption key for additional security.
+* [Encrypt data at rest](/deploy-manage/security/data-security.md): By default, {{ecloud}} already encrypts your {{ech}} deployment data, Serverless project data, and snapshots at rest. If you’re using ECH, then you can reinforce this mechanism by providing your own encryption key, also known as [Bring Your Own Key (BYOK)](/deploy-manage/security/encrypt-deployment-with-customer-managed-encryption-key.md). 
+    
+    ::::{note}
+    Other deployment types don’t implement encryption at rest out of the box. For self-managed clusters, to implement encryption at rest, the hosts running the cluster must be configured with disk-level encryption, such as `dm-crypt`. In addition, snapshot targets must ensure that data is encrypted at rest as well.
+
+    Configuring `dm-crypt` or similar technologies is outside the scope of this documentation, and issues related to disk encryption are outside the scope of support.
+    ::::

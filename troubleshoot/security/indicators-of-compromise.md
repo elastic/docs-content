@@ -3,6 +3,10 @@ navigation_title: "Indicators of compromise"
 mapped_pages:
   - https://www.elastic.co/guide/en/security/current/indicators-of-compromise.html
   - https://www.elastic.co/guide/en/serverless/current/security-indicators-of-compromise.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 

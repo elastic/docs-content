@@ -2,6 +2,10 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/security/current/vuln-management-faq.html
   - https://www.elastic.co/guide/en/serverless/current/security-vuln-management-faq.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Frequently asked questions (FAQ)

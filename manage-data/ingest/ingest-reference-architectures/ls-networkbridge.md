@@ -5,7 +5,7 @@ mapped_pages:
 
 # Elastic Agent to Logstash to Elasticsearch: Logstash as a proxy [ls-networkbridge]
 
-:::{image} ../../../images/ingest-ea-ls-bridge.png
+:::{image} /manage-data/images/ingest-ea-ls-bridge.png
 :alt: Image showing {{agent}}s collecting data and sending to {{ls}} for proxying before sending on to {{es}}
 :::
 
@@ -24,12 +24,12 @@ Example
 Info on configuring {{agent}}:
 
 * [Fleet and Elastic Agent Guide](https://www.elastic.co/guide/en/fleet/current)
-* [Configuring outputs for {{agent}}](/reference/ingestion-tools/fleet/elastic-agent-output-configuration.md)
+* [Configuring outputs for {{agent}}](/reference/fleet/elastic-agent-output-configuration.md)
 
 Info on {{ls}} and {{ls}} plugins:
 
 * [{{ls}} Reference](https://www.elastic.co/guide/en/logstash/current)
-* [{{es}} output plugin](logstash://reference/plugins-outputs-elasticsearch.md)
+* [{{es}} output plugin](logstash-docs-md://lsr/plugins-outputs-elasticsearch.md)
 
 Info on {{es}}:
 

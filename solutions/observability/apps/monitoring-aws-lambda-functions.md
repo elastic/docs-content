@@ -22,7 +22,7 @@ To accomplish the above, Elastic APM agents instrument AWS Lambda functions and 
 
 Normally, during the execution of a Lambda function, there’s only a single language process running in the AWS Lambda execution environment. With an AWS Lambda extension, Lambda users run a *second* process alongside their main service/application process.
 
-:::{image} ../../../images/serverless-apm-agents-aws-lambda-functions-architecture.png
+:::{image} /solutions/images/serverless-apm-agents-aws-lambda-functions-architecture.png
 :alt: image showing data flow from lambda function
 :screenshot:
 :::
@@ -33,8 +33,8 @@ By using an AWS Lambda extension, Elastic APM agents can send data to a local La
 
 To get started with the setup of Elastic APM for your Lambda functions, checkout the language-specific guides:
 
-* [Quick Start with APM on AWS Lambda - Node.js](asciidocalypse://docs/apm-agent-nodejs/docs/reference/lambda.md)
-* [Quick Start with APM on AWS Lambda - Python](asciidocalypse://docs/apm-agent-python/docs/reference/lambda-support.md)
-* [Quick Start with APM on AWS Lambda - Java](asciidocalypse://docs/apm-agent-java/docs/reference/aws-lambda.md)
+* [Quick Start with APM on AWS Lambda - Node.js](apm-agent-nodejs://reference/lambda.md)
+* [Quick Start with APM on AWS Lambda - Python](apm-agent-python://reference/lambda-support.md)
+* [Quick Start with APM on AWS Lambda - Java](apm-agent-java://reference/aws-lambda.md)
 
 Or, see the [architecture guide](apm-aws-lambda://reference/index.md) to learn more about how the extension works, performance impacts, and more.

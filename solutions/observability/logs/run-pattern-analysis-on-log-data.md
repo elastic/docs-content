@@ -23,11 +23,11 @@ To run a log pattern analysis:
 3. If you don’t see any results, expand the time range, for example, to **Last 15 days**.
 4. In the **Available fields** list, select the text field you want to analyze, then click **Run pattern analysis**.
 
-    ![Run log pattern analysis](../../../images/serverless-run-log-pattern-analysis.png "")
+    ![Run log pattern analysis](/solutions/images/serverless-run-log-pattern-analysis.png "")
 
     The results of the analysis are shown in a table:
 
-    :::{image} ../../../images/serverless-log-pattern-analysis.png
+    :::{image} /solutions/images/serverless-log-pattern-analysis.png
     :alt: Log pattern analysis of the message field
     :screenshot:
     :::

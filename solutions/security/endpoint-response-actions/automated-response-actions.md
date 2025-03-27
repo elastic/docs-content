@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/automated-response-actions.html
   - https://www.elastic.co/guide/en/serverless/current/security-automated-response-actions.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Automated response actions

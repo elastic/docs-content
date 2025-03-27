@@ -2,45 +2,31 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/interactive-investigation-guides.html
   - https://www.elastic.co/guide/en/serverless/current/security-interactive-investigation-guides.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
-# Launch Timeline from investigation guides
-
-% What needs to be done: Align serverless/stateful
-
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/security-docs/security/interactive-investigation-guides.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/security-interactive-investigation-guides.md
-
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
-
-$$$add-ig-actions-rule$$$
-
-$$$query-button-syntax$$$
+# Launch Timeline from investigation guides [security-interactive-investigation-guides]
 
 Detection rule investigation guides suggest steps for triaging, analyzing, and responding to potential security issues. For custom rules, you can create an interactive investigation guide that includes buttons for launching runtime queries in [Timeline](/solutions/security/investigate/timeline.md), using alert data and hard-coded literal values. This allows you to start detailed Timeline investigations directly from an alert using relevant data.
 
-::::{important}
-Interactive investigation guides are compatible between {{stack}} versions 8.7.0 and later. Query buttons created in 8.6.x use different syntax and won’t render correctly in later versions, and vice versa.
-::::
-
-
-:::{image} ../../../images/security-ig-alert-flyout.png
+:::{image} /solutions/images/security-ig-alert-flyout.png
 :alt: Alert details flyout with interactive investigation guide
 :screenshot:
 :::
 
 Under the Investigation section, click **Show investigation guide** to open the **Investigation** tab in the left panel of the alert details flyout.
 
-:::{image} ../../../images/security-ig-alert-flyout-invest-tab.png
+:::{image} /solutions/images/security-ig-alert-flyout-invest-tab.png
 :alt: Alert details flyout with interactive investigation guide
 :screenshot:
 :::
 
 The **Investigation** tab displays query buttons, and each query button displays the number of event documents found. Click the query button to automatically load the query in Timeline, based on configuration settings in the investigation guide.
 
-:::{image} ../../../images/security-ig-timeline.png
+:::{image} /solutions/images/security-ig-timeline.png
 :alt: Timeline with query pre-loaded from investigation guide action
 :screenshot:
 :::
@@ -57,14 +43,14 @@ You can configure an interactive investigation guide when you [create a new rule
 
 1. When configuring the rule’s settings (the **About rule** step for a new rule, or the **About** tab for an existing rule), expand the **Advanced settings**, then scroll down to the **Investigation guide** Markdown editor.
 
-    :::{image} ../../../images/security-ig-investigation-guide-editor.png
+    :::{image} /solutions/images/security-ig-investigation-guide-editor.png
     :alt: Investigation guide editor field
     :screenshot:
     :::
 
-2. Place the editor cursor where you want to add the query button in the investigation guide, then select the Investigate icon (![Investigate icon](../../../images/security-ig-investigate-icon.png "")) in the toolbar. The **Add investigation query** builder form appears.
+2. Place the editor cursor where you want to add the query button in the investigation guide, then select the Investigate icon (![Investigate icon](/solutions/images/security-ig-investigate-icon.png "title =20x20")) in the toolbar. The **Add investigation query** builder form appears.
 
-    :::{image} ../../../images/security-ig-investigation-query-builder.png
+    :::{image} /solutions/images/security-ig-investigation-query-builder.png
     :alt: Add investigation guide UI
     :screenshot:
     :::
@@ -77,7 +63,7 @@ You can configure an interactive investigation guide when you [create a new rule
 
         To use a field value from the alert as a query parameter, enter the field name surrounded by double curly brackets — such as `{{kibana.alert.example}}` — as a custom option for the filter value.
 
-        :::{image} ../../../images/security-ig-filters-field-custom-value.png
+        :::{image} /solutions/images/security-ig-filters-field-custom-value.png
         :alt: Add investigation guide UI
         :screenshot:
         :::
@@ -106,7 +92,7 @@ The following syntax defines a query button in an interactive investigation guid
 | `relativeFrom`, `relativeTo` | (Optional) The start and end, respectively, of the relative time range for the query. Times are relative to the alert’s creation time, represented as `now` in [date math](elasticsearch://reference/elasticsearch/rest-apis/common-options.md#date-math) format. For example, selecting **Last 15 minutes** in the query builder form creates the syntax `"relativeFrom": "now-15m", "relativeTo": "now"`. |
 
 ::::{note}
-Some characters must be escaped with a backslash, such as `\"` for a quotation mark and `\\` for a literal backslash. Divide Windows paths with double backslashes (for example, `C:\\Windows\\explorer.exe`), and paths that already include double backslashes might require four backslashes for each divider. A clickable error icon (![Error icon](../../../images/security-ig-error-icon.png "")) displays below the Markdown editor if there are any syntax errors.
+Some characters must be escaped with a backslash, such as `\"` for a quotation mark and `\\` for a literal backslash. Divide Windows paths with double backslashes (for example, `C:\\Windows\\explorer.exe`), and paths that already include double backslashes might require four backslashes for each divider. A clickable error icon (![Error icon](/solutions/images/security-ig-error-icon.png "title =20x20")) displays below the Markdown editor if there are any syntax errors.
 ::::
 
 
@@ -135,7 +121,7 @@ This example creates the following Timeline query, as illustrated below:
 
 `(event.id : <alert value>)`<br> `OR (event.action : "rename" AND process.pid : <alert value>)`
 
-:::{image} ../../../images/security-ig-timeline-query.png
+:::{image} /solutions/images/security-ig-timeline-query.png
 :alt: Timeline query
 :screenshot:
 :::
@@ -145,7 +131,7 @@ This example creates the following Timeline query, as illustrated below:
 
 When viewing an interactive investigation guide in contexts unconnected to a specific alert (such a rule’s details page), queries open as [Timeline templates](/solutions/security/investigate/timeline-templates.md), and `parameter` fields are treated as Timeline template fields.
 
-:::{image} ../../../images/security-ig-timeline-template-fields.png
+:::{image} /solutions/images/security-ig-timeline-template-fields.png
 :alt: Timeline template
 :screenshot:
 :::

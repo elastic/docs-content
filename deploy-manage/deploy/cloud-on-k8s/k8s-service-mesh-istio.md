@@ -35,7 +35,7 @@ The operator itself must be connected to the service mesh to deploy and manage E
 
 2. Install ECK:
 
-    ```sh
+    ```sh subs=true
     kubectl create -f https://download.elastic.co/downloads/eck/{{eck_version}}/crds.yaml
     kubectl apply -f https://download.elastic.co/downloads/eck/{{eck_version}}/operator.yaml
     ```

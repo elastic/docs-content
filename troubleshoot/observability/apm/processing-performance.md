@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-processing-and-performance.html
+applies_to:
+  stack: all
 ---
 
 # Processing and performance [apm-processing-and-performance]

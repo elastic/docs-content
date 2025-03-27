@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/cspm-findings-page.html
   - https://www.elastic.co/guide/en/serverless/current/security-cspm-findings-page.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Findings page
@@ -12,7 +16,7 @@ $$$cspm-findings-page-filter-findings$$$
 
 The **Misconfigurations** tab on the Findings page displays the configuration risks identified by the [CSPM](/solutions/security/cloud/cloud-security-posture-management.md) and [KSPM](/solutions/security/cloud/kubernetes-security-posture-management.md) integrations, as well as data from [third-party integrations](/solutions/security/cloud/ingest-third-party-cloud-security-data.md).
 
-:::{image} ../../../images/security-findings-page.png
+:::{image} /solutions/images/security-findings-page.png
 :alt: Findings page
 :screenshot:
 :::

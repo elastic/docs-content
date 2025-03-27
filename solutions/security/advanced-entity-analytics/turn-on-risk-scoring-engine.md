@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/turn-on-risk-engine.html
   - https://www.elastic.co/guide/en/serverless/current/security-turn-on-risk-engine.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Turn on the risk scoring engine
@@ -23,7 +27,7 @@ The preview is limited to two risk scores per {{kib}} instance or serverless pro
 
 To preview risky entities, find **Entity Risk Score** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
-:::{image} ../../../images/security-preview-risky-entities.png
+:::{image} /solutions/images/security-preview-risky-entities.png
 :alt: Preview of risky entities
 :screenshot:
 :::
@@ -45,7 +49,7 @@ If you’re installing the risk scoring engine for the first time:
 
 You can also choose to include `Closed` alerts in risk scoring calculations and specify a date and time range for the calculation.
 
-:::{image} ../../../images/security-turn-on-risk-engine.png
+:::{image} /solutions/images/security-turn-on-risk-engine.png
 :alt: Turn on entity risk scoring
 :screenshot:
 :::
@@ -64,7 +68,7 @@ If you upgraded to 8.11 from an earlier {{stack}} version, and you have the orig
 * The **Host risk** tab on the Hosts page
 * The **Host risk** tab on a host’s details page
 
-:::{image} ../../../images/security-risk-engine-upgrade-prompt.png
+:::{image} /solutions/images/security-risk-engine-upgrade-prompt.png
 :alt: Prompt to upgrade to the latest risk engine
 :screenshot:
 :::
@@ -72,7 +76,7 @@ If you upgraded to 8.11 from an earlier {{stack}} version, and you have the orig
 1. Click **Manage** in the upgrade prompt, or find **Entity Risk Score** in the navigation menu.
 2. On the Entity Risk Score page, click **Start update** next to the **Update available** label.
 
-    :::{image} ../../../images/security-risk-score-start-update.png
+    :::{image} /solutions/images/security-risk-score-start-update.png
     :alt: Start the risk engine upgrade
     :screenshot:
     :::
@@ -80,7 +84,7 @@ If you upgraded to 8.11 from an earlier {{stack}} version, and you have the orig
 3. On the confirmation message, click **Yes, update now**. The old transform is removed and the latest risk engine is installed.
 4. When the installation is complete, confirm that the **Entity risk score** toggle is on.
 
-    :::{image} ../../../images/security-turn-on-risk-engine.png
+    :::{image} /solutions/images/security-turn-on-risk-engine.png
     :alt: Turn on entity risk scoring
     :screenshot:
     :::

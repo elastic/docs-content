@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/artifact-control.html
   - https://www.elastic.co/guide/en/serverless/current/security-protection-artifact-control.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Configure updates for protection artifacts [artifact-control]

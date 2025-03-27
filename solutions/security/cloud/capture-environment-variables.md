@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/environment-variable-capture.html
   - https://www.elastic.co/guide/en/serverless/current/security-environment-variable-capture.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Capture environment variables
@@ -34,6 +38,6 @@ To view environment variables in the **Events** table:
 1. Click the **Events** tab on the **Hosts**, **Network**, or **Users** pages, then click **Fields** in the Events table.
 2. Search for the `process.env_vars` field, select it, and click **Close**. A new column appears containing captured environment variable data.
 
-:::{image} ../../../images/security-env-var-capture-detail.png
+:::{image} /solutions/images/security-env-var-capture-detail.png
 :alt: The Events table with the "process.env_vars" column highlighted
 :::

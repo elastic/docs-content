@@ -2,52 +2,11 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/cloud/current/ec-getting-started-search-use-cases-node-logs.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-getting-started-search-use-cases-node-logs.html
+applies_to:
+  stack: ga
 ---
 
 # Ingest logs from a Node.js web application using Filebeat
-
-% What needs to be done: Refine
-
-% Scope notes: Merge ESS and ECE versions (should be pretty much identical)
-
-% Use migrated content from existing pages that map to this page:
-
-% - [ ] ./raw-migrated-files/cloud/cloud/ec-getting-started-search-use-cases-node-logs.md
-% - [ ] ./raw-migrated-files/cloud/cloud-enterprise/ece-getting-started-search-use-cases-node-logs.md
-
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
-
-$$$ec-node-logs-connect-securely$$$
-
-$$$ec-node-logs-create-request-script$$$
-
-$$$ec-node-logs-create-server-script$$$
-
-$$$ec-node-logs-filebeat$$$
-
-$$$ec-node-logs-prerequisites$$$
-
-$$$ec-node-logs-send-ess$$$
-
-$$$ec-node-logs-trial$$$
-
-$$$ec-node-logs-view-kibana$$$
-
-$$$ece-node-logs-connect-securely$$$
-
-$$$ece-node-logs-create-request-script$$$
-
-$$$ece-node-logs-create-server-script$$$
-
-$$$ece-node-logs-deployment$$$
-
-$$$ece-node-logs-filebeat$$$
-
-$$$ece-node-logs-prerequisites$$$
-
-$$$ece-node-logs-send-ess$$$
-
-$$$ece-node-logs-view-kibana$$$
 
 This guide demonstrates how to ingest logs from a Node.js web application and deliver them securely into an {{ech}} or {{ece}} deployment. You’ll set up Filebeat to monitor a JSON-structured log file that has standard Elastic Common Schema (ECS) formatted fields, and you’ll then view real-time visualizations of the log events in Kibana as requests are made to the Node.js server. While Node.js is used for this example, this approach to monitoring log output is applicable across many client types. Check the list of [available ECS logging plugins](ecs-logging://reference/intro.md#_get_started).
 
@@ -347,7 +306,7 @@ For this example, Filebeat uses the following four decoding options.
   json.expand_keys: true
 ```
 
-To learn more about these settings, check [JSON input configuration options](asciidocalypse://docs/beats/docs/reference/filebeat/filebeat-input-log.md#filebeat-input-log-config-json) and [Decode JSON fields](asciidocalypse://docs/beats/docs/reference/filebeat/decode-json-fields.md) in the Filebeat Reference.
+To learn more about these settings, check [JSON input configuration options](beats://reference/filebeat/filebeat-input-log.md#filebeat-input-log-config-json) and [Decode JSON fields](beats://reference/filebeat/decode-json-fields.md) in the Filebeat Reference.
 
 Append the four JSON decoding options to the *Filebeat inputs* section of *filebeat.yml*, so that the section now looks like this:
 
@@ -383,7 +342,7 @@ Filebeat comes with predefined assets for parsing, indexing, and visualizing you
 ```
 
 ::::{important}
-Depending on variables including the installation location, environment, and local permissions, you might need to [change the ownership](asciidocalypse://docs/beats/docs/reference/libbeat/config-file-permissions.md) of filebeat.yml. You can also try running the command as *root*: *sudo ./filebeat setup -e* or you can disable strict permission checks by running the command with the `--strict.perms=false` option.
+Depending on variables including the installation location, environment, and local permissions, you might need to [change the ownership](beats://reference/libbeat/config-file-permissions.md) of filebeat.yml. You can also try running the command as *root*: *sudo ./filebeat setup -e* or you can disable strict permission checks by running the command with the `--strict.perms=false` option.
 ::::
 
 
@@ -484,7 +443,7 @@ In this command:
 * The *-c* flag specifies the path to the Filebeat config file.
 
 ::::{note}
-Just in case the command doesn’t work as expected, check the [Filebeat quick start](asciidocalypse://docs/beats/docs/reference/filebeat/filebeat-installation-configuration.md#start) for the detailed command syntax for your operating system. You can also try running the command as *root*: *sudo ./filebeat -e -c filebeat.yml*.
+Just in case the command doesn’t work as expected, check the [Filebeat quick start](beats://reference/filebeat/filebeat-installation-configuration.md#installation) for the detailed command syntax for your operating system. You can also try running the command as *root*: *sudo ./filebeat -e -c filebeat.yml*.
 ::::
 
 
@@ -527,7 +486,7 @@ Now it’s time to create visualizations based off of the application log data.
 7. Drag and drop the **http.request.method** field onto the visualization builder.
 8. A stacked bar chart now shows the relative frequency of each of the three request methods used in our example, measured over time.
 
-    ![A screen capture of the Kibana "Bar vertical stacked" visualization with several bars. The X axis shows "Count of records" and the Y axis shows "@timestamp per 30 seconds". Each bar is divided into three HTTP request methods: GET](../../../images/cloud-ec-node-logs-methods.png "")
+    ![A screen capture of the Kibana "Bar vertical stacked" visualization with several bars. The X axis shows "Count of records" and the Y axis shows "@timestamp per 30 seconds". Each bar is divided into three HTTP request methods: GET](/manage-data/images/cloud-ec-node-logs-methods.png "")
 
 9. Select **Save and return** to add this visualization to your dashboard.
 
@@ -540,7 +499,7 @@ Let’s create a second visualization.
 5. In the chart settings area, under **Break down by**, select **Top values of http.request.headers.from** and set **Number of values** to *12*. In this example there are twelve different email addresses used in the HTTP *from* header, so this parameter sets all of them to appear in the chart legend.
 6. Select **Refresh**. A stacked bar chart now shows the relative frequency of each of the HTTP *from* headers over time.
 
-    ![A screen capture of the visualization builder](../../../images/cloud-ec-node-logs-content.png "")
+    ![A screen capture of the visualization builder](/manage-data/images/cloud-ec-node-logs-content.png "")
 
 7. Select **Save and return** to add this visualization to your dashboard.
 
@@ -550,7 +509,7 @@ And now for the final visualization.
 2. In the **CHART TYPE** dropdown box, select **Donut**.
 3. From the list of available fields, drag and drop the **http.request.method** field onto the visualization builder. A donut chart appears.
 
-    ![A screen capture of a donut chart divided into three sections](../../../images/cloud-ec-node-logs-donut.png "")
+    ![A screen capture of a donut chart divided into three sections](/manage-data/images/cloud-ec-node-logs-donut.png "")
 
 4. Select **Save and return** to add this visualization to your dashboard.
 5. Select **Save** and add a title to save your new dashboard.
@@ -563,9 +522,9 @@ You can add titles to the visualizations, resize and position them as you like, 
 
 1. Select **Refresh** on the Kibana dashboard. Since the application `webrequests.js` continues to run and send HTTP requests to the Node.js server, `webserver.js` continues to generate log data, and your Kibana visualizations update with that data with each page refresh.
 
-    ![A screen capture of the completed Kibana dashboard](../../../images/cloud-ec-node-logs-final-dashboard.png "")
+    ![A screen capture of the completed Kibana dashboard](/manage-data/images/cloud-ec-node-logs-final-dashboard.png "")
 
 2. As your final step, remember to stop Filebeat, the Node.js web server, and the client. Enter *CTRL + C* in the terminal window for each application to stop them.
 
-You now know how to monitor log files from a Node.js web application, deliver the log event data securely into an {{ech}} or {{ece}} deployment, and then visualize the results in Kibana in real time. Consult the [Filebeat documentation](asciidocalypse://docs/beats/docs/reference/filebeat/filebeat-overview.md) to learn more about the ingestion and processing options available for your data. You can also explore our [documentation](../../../manage-data/ingest.md) to learn all about ingesting data.
+You now know how to monitor log files from a Node.js web application, deliver the log event data securely into an {{ech}} or {{ece}} deployment, and then visualize the results in Kibana in real time. Consult the [Filebeat documentation](beats://reference/filebeat/index.md) to learn more about the ingestion and processing options available for your data. You can also explore our [documentation](../../../manage-data/ingest.md) to learn all about ingesting data.
 

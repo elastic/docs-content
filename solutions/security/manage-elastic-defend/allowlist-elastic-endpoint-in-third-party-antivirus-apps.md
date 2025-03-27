@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/allowlist-endpoint-3rd-party-av-apps.html
   - https://www.elastic.co/guide/en/serverless/current/security-allowlist-endpoint.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 

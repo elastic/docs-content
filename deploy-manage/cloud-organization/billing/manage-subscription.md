@@ -4,6 +4,7 @@ mapped_urls:
   - https://www.elastic.co/guide/en/cloud/current/ec-subscription-overview.html
   - https://www.elastic.co/guide/en/cloud/current/ec-select-subscription-level.html
   - https://www.elastic.co/guide/en/cloud/current/ec-licensing.html
+  - https://www.elastic.co/guide/en/cloud-heroku/current/ech-licensing.html
 applies_to:
   deployment:
     ess: all
@@ -41,9 +42,10 @@ To change your subscription level:
 
 ### Feature usage notifications [ec_feature_usage_notifications]
 
-:::{applies_to}
-:hosted: all
-:::
+```{applies_to}
+deployment:
+  ess: all
+```
 
 If you try to change your subscription to a lower level, but you are using features that belong either to your current level or to a higher one, you need to make some changes before you can proceed, as described in **Review required feature changes**.
 

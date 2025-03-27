@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/profiling-self-managed-running.html
+applies_to:
+  stack:
 ---
 
 # Step 4: Run the backend applications [profiling-self-managed-running]

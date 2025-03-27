@@ -22,7 +22,7 @@ You can upload files, view their fields and metrics, and optionally import them 
 
 To use the Data Visualizer, click **Upload a file** on the {{es}} **Getting Started** page or navigate to the **Integrations** view and search for **Upload a file**. Clicking **Upload a file** opens the Data Visualizer UI.
 
-:::{image} /images/serverless-file-uploader-UI.png
+:::{image} /manage-data/images/serverless-file-uploader-UI.png
 :alt: File upload UI
 :screenshot:
 :::

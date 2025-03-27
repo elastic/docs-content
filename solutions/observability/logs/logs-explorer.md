@@ -44,7 +44,7 @@ Refer to the [Discover](../../../explore-analyze/discover.md) documentation for 
 
 The actions column provides additional information about your logs.
 
-**Expand:** ![The icon to expand log details](../../../images/observability-expand-icon.png "") Open the log details to get an in-depth look at an individual log file.
+**Expand:** ![The icon to expand log details](/solutions/images/observability-expand-icon.png "") Open the log details to get an in-depth look at an individual log file.
 
 **Degraded document indicator:** ![The icon that shows ignored fields](../../../images/observability-pagesSelect-icon.png "") This indicator shows if any of the document’s fields were ignored when it was indexed. Ignored fields could indicate malformed fields or other issues with your document. Use this information to investigate and determine why fields are being ignored.
 
@@ -53,7 +53,7 @@ The actions column provides additional information about your logs.
 
 ## View log details [view-log-details]
 
-Click the expand icon ![icon to open log details](../../../images/observability-expand-icon.png "") to get an in-depth look at an individual log file.
+Click the expand icon ![icon to open log details](/solutions/images/observability-expand-icon.png "") to get an in-depth look at an individual log file.
 
 These details provide immediate feedback and context for what’s happening and where it’s happening for each log. From here, you can quickly debug errors and investigate the services where errors have occurred.
 

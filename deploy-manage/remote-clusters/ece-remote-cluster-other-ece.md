@@ -104,7 +104,7 @@ If you later need to update the remote connection with different permissions, yo
     3. Click **Copy root certificate** and paste it into a new file. The root certificate is the last certificate shown in the chain.
     4. Save that file as `.crt`. It is now ready to be uploaded.
 
-        :::{image} ../../images/cloud-enterprise-remote-clusters-proxy-certificate.png
+        :::{image} /deploy-manage/images/cloud-enterprise-remote-clusters-proxy-certificate.png
         :alt: Certificate to copy from the chain
         :::
 
@@ -224,7 +224,7 @@ On the local cluster, add the remote cluster using {{kib}} or the {{es}} API.
 
     * **Server name**: This value can be found on the **Security** page of the {{ece}} deployment you want to use as a remote.
 
-      :::{image} ../../images/cloud-enterprise-ce-copy-remote-cluster-parameters.png
+      :::{image} /deploy-manage/images/cloud-enterprise-ce-copy-remote-cluster-parameters.png
       :alt: Remote Cluster Parameters in Deployment
       :screenshot:
       :::

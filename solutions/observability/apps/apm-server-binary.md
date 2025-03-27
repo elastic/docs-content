@@ -21,7 +21,7 @@ You’ll need:
 
 We recommend you use the same version of {{es}}, {{kib}}, and APM Server. See [Installing the {{stack}}](../../../get-started/the-stack.md) for more information about installing these products.
 
-:::{image} ../../../images/observability-apm-architecture-diy.png
+:::{image} /solutions/images/observability-apm-architecture-diy.png
 :alt: Install Elastic APM yourself
 :::
 
@@ -38,7 +38,7 @@ To download and install APM Server, use the commands below that work with your s
 $$$apm-deb$$$
 **deb:**
 
-```shell
+```shell subs=true
 curl -L -O https://artifacts.elastic.co/downloads/apm-server/apm-server-{{apm_server_version}}-amd64.deb
 sudo dpkg -i apm-server-{{apm_server_version}}-amd64.deb
 ```
@@ -46,7 +46,7 @@ sudo dpkg -i apm-server-{{apm_server_version}}-amd64.deb
 $$$apm-rpm$$$
 **RPM:**
 
-```shell
+```shell subs=true
 curl -L -O https://artifacts.elastic.co/downloads/apm-server/apm-server-{{apm_server_version}}-x86_64.rpm
 sudo rpm -vi apm-server-{{apm_server_version}}-x86_64.rpm
 ```
@@ -54,7 +54,7 @@ sudo rpm -vi apm-server-{{apm_server_version}}-x86_64.rpm
 $$$apm-linux$$$
 **Other Linux:**
 
-```shell
+```shell subs=true
 curl -L -O https://artifacts.elastic.co/downloads/apm-server/apm-server-{{apm_server_version}}-linux-x86_64.tar.gz
 tar xzvf apm-server-{{apm_server_version}}-linux-x86_64.tar.gz
 ```
@@ -62,7 +62,7 @@ tar xzvf apm-server-{{apm_server_version}}-linux-x86_64.tar.gz
 $$$apm-mac$$$
 **Mac:**
 
-```shell
+```shell subs=true
 curl -L -O https://artifacts.elastic.co/downloads/apm-server/apm-server-{{apm_server_version}}-darwin-x86_64.tar.gz
 tar xzvf apm-server-{{apm_server_version}}-darwin-x86_64.tar.gz
 ```
@@ -383,12 +383,12 @@ Different application servers have different ways of setting the `-javaagent` fl
 java -javaagent:/path/to/elastic-apm-agent-<version>.jar -Delastic.apm.service_name=my-cool-service -Delastic.apm.application_packages=org.example,org.another.example -Delastic.apm.server_url=http://127.0.0.1:8200 -jar my-application.jar
 ```
 
-Refer to [Manual setup with `-javaagent` flag](asciidocalypse://docs/apm-agent-java/docs/reference/setup-javaagent.md) to learn more.
+Refer to [Manual setup with `-javaagent` flag](apm-agent-java://reference/setup-javaagent.md) to learn more.
 
 **Alternate setup methods**
 
-* **Automatic setup with `apm-agent-attach-cli.jar`**<br> Automatically set up the agent without needing to alter the configuration of your JVM or application server. This method requires no changes to application code or JVM options, and allows attaching to a running JVM. Refer to the [Java agent documentation](asciidocalypse://docs/apm-agent-java/docs/reference/setup-attach-cli.md) for more information on this setup method.
-* **Programmatic API setup to self-attach**<br> Set up the agent with a one-line code change and an extra `apm-agent-attach` dependency. This method requires no changes to JVM options, and the agent artifact is embedded within the packaged application binary. Refer to the [Java agent documentation](asciidocalypse://docs/apm-agent-java/docs/reference/setup-attach-api.md) for more information on this setup method.
+* **Automatic setup with `apm-agent-attach-cli.jar`**<br> Automatically set up the agent without needing to alter the configuration of your JVM or application server. This method requires no changes to application code or JVM options, and allows attaching to a running JVM. Refer to the [Java agent documentation](apm-agent-java://reference/setup-attach-cli.md) for more information on this setup method.
+* **Programmatic API setup to self-attach**<br> Set up the agent with a one-line code change and an extra `apm-agent-attach` dependency. This method requires no changes to JVM options, and the agent artifact is embedded within the packaged application binary. Refer to the [Java agent documentation](apm-agent-java://reference/setup-attach-api.md) for more information on this setup method.
 ::::::
 
 ::::::{tab-item} .NET
@@ -445,9 +445,9 @@ The agent will now monitor the performance of your application and record any un
 
 **Learn more in the agent reference**
 
-* [Supported technologies](asciidocalypse://docs/apm-agent-nodejs/docs/reference/supported-technologies.md)
-* [Babel/ES Modules](asciidocalypse://docs/apm-agent-nodejs/docs/reference/advanced-setup.md)
-* [Advanced configuration](asciidocalypse://docs/apm-agent-nodejs/docs/reference/configuring-agent.md)
+* [Supported technologies](apm-agent-nodejs://reference/supported-technologies.md)
+* [Babel/ES Modules](apm-agent-nodejs://reference/advanced-setup.md)
+* [Advanced configuration](apm-agent-nodejs://reference/configuring-agent.md)
 ::::::
 
 ::::::{tab-item} PHP
@@ -516,8 +516,8 @@ elastic_apm.bootstrap_php_part_file=<repo root>/agent/php/bootstrap_php_part.php
 
 **Learn more in the agent reference**
 
-* [Supported technologies](asciidocalypse://docs/apm-agent-php/docs/reference/supported-technologies.md)
-* [Configuration](asciidocalypse://docs/apm-agent-php/docs/reference/configuration.md)
+* [Supported technologies](apm-agent-php://reference/supported-technologies.md)
+* [Configuration](apm-agent-php://reference/configuration.md)
 ::::::
 
 ::::::{tab-item} Python
@@ -600,8 +600,8 @@ apm = ElasticAPM(app)
 
 **Learn more in the agent reference**
 
-* [Supported technologies](asciidocalypse://docs/apm-agent-python/docs/reference/supported-technologies.md)
-* [Advanced configuration](asciidocalypse://docs/apm-agent-python/docs/reference/configuration.md)
+* [Supported technologies](apm-agent-python://reference/supported-technologies.md)
+* [Advanced configuration](apm-agent-python://reference/configuration.md)
 ::::::
 
 ::::::{tab-item} Ruby
@@ -677,8 +677,8 @@ server_url: 'http://localhost:8200'
 
 **Learn more in the agent reference**
 
-* [Supported technologies](asciidocalypse://docs/apm-agent-ruby/docs/reference/supported-technologies.md)
-* [Advanced configuration](asciidocalypse://docs/apm-agent-ruby/docs/reference/configuration.md)
+* [Supported technologies](apm-agent-ruby://reference/supported-technologies.md)
+* [Advanced configuration](apm-agent-ruby://reference/configuration.md)
 ::::::
 
 ::::::{tab-item} RUM
@@ -749,8 +749,8 @@ const apm = initApm({
 
 **Learn more in the agent reference**
 
-* [Supported technologies](asciidocalypse://docs/apm-agent-rum-js/docs/reference/supported-technologies.md)
-* [Advanced configuration](asciidocalypse://docs/apm-agent-rum-js/docs/reference/configuration.md)
+* [Supported technologies](apm-agent-rum-js://reference/supported-technologies.md)
+* [Advanced configuration](apm-agent-rum-js://reference/configuration.md)
 ::::::
 
 ::::::{tab-item} OpenTelemetry
@@ -765,7 +765,7 @@ For more information on how to combine Elastic and OpenTelemetry, see [OpenTelem
 
 Once you have at least one {{apm-agent}} sending data to APM Server, you can start visualizing your data in the [{{kib}} Applications UI](overviews.md).
 
-:::{image} ../../../images/observability-kibana-apm-sample-data.png
+:::{image} /solutions/images/observability-kibana-apm-sample-data.png
 :alt: Applications UI with data
 :screenshot:
 :::

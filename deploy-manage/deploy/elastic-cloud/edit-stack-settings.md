@@ -59,7 +59,7 @@ Change how {{es}} runs by providing your own user settings. {{ech}} appends thes
 
 {{ech}} automatically rejects `elasticsearch.yml` settings that could break your cluster.
 
-For a list of supported settings, check [Supported {{es}} settings](elasticsearch://reference/elasticsearch/configuration-reference/elastic-cloud-hosted-elasticsearch-settings.md).
+For a list of supported settings, check [Supported {{es}} settings](elasticsearch://reference/elasticsearch/configuration-reference/index.md).
 
 ::::{warning}
 You can also update [dynamic cluster settings](../../../deploy-manage/deploy/self-managed/configure-elasticsearch.md#dynamic-cluster-setting) using {{es}}'s [update cluster settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings). However, {{ech}} doesn’t reject unsafe setting changes made using this API. Use it with caution.

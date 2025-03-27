@@ -46,7 +46,7 @@ With {{filebeat}} or {{agent}}, you can ingest plaintext logs, including existin
 
 For plaintext logs to be useful, you need to use {{filebeat}} or {{agent}} to parse the log data.
 
-**![documentation icon](../../../images/serverless-documentation.svg "") Learn more in [Plaintext logs](../../../solutions/observability/logs/plaintext-application-logs.md)**
+**![documentation icon](/solutions/images/serverless-documentation.svg "") Learn more in [Plaintext logs](../../../solutions/observability/logs/plaintext-application-logs.md)**
 
 
 ### ECS formatted logs [observability-correlate-application-logs-ecs-formatted-logs]
@@ -60,7 +60,7 @@ Add ECS logging plugins to your logging libraries to format your logs into ECS-c
 
 To use ECS logging, you need to modify your application and its log configuration.
 
-**![documentation icon](../../../images/serverless-documentation.svg "") Learn more in [ECS formatted logs](../../../solutions/observability/logs/ecs-formatted-application-logs.md)**
+**![documentation icon](/solutions/images/serverless-documentation.svg "") Learn more in [ECS formatted logs](../../../solutions/observability/logs/ecs-formatted-application-logs.md)**
 
 
 #### {{apm-agent}} log reformatting [observability-correlate-application-logs-apm-agent-log-reformatting]
@@ -69,11 +69,11 @@ Some Elastic {{apm-agent}}s can automatically reformat application logs to ECS f
 
 This feature is supported for the following {{apm-agent}}s:
 
-* [Ruby](asciidocalypse://docs/apm-agent-ruby/docs/reference/configuration.md#config-log-ecs-formatting)
-* [Python](asciidocalypse://docs/apm-agent-python/docs/reference/logs.md#log-reformatting)
-* [Java](asciidocalypse://docs/apm-agent-java/docs/reference/logs.md#log-reformatting)
+* [Ruby](apm-agent-ruby://reference/configuration.md#config-log-ecs-formatting)
+* [Python](apm-agent-python://reference/logs.md#log-reformatting)
+* [Java](apm-agent-java://reference/logs.md#log-reformatting)
 
-**![documentation icon](../../../images/serverless-documentation.svg "") Learn more in [ECS formatted logs](../../../solutions/observability/logs/ecs-formatted-application-logs.md)**
+**![documentation icon](/solutions/images/serverless-documentation.svg "") Learn more in [ECS formatted logs](../../../solutions/observability/logs/ecs-formatted-application-logs.md)**
 
 
 ### {{apm-agent}} log sending [observability-correlate-application-logs-apm-agent-log-sending]
@@ -82,7 +82,7 @@ Automatically capture and send logs directly to the managed intake service using
 
 Log sending is supported in the Java {{apm-agent}}.
 
-**![documentation icon](../../../images/serverless-documentation.svg "") Learn more in [{{apm-agent}} log sending](../../../solutions/observability/logs/apm-agent-log-sending.md)**
+**![documentation icon](/solutions/images/serverless-documentation.svg "") Learn more in [{{apm-agent}} log sending](../../../solutions/observability/logs/apm-agent-log-sending.md)**
 
 
 ## Log correlation [observability-correlate-application-logs-log-correlation]
@@ -96,8 +96,8 @@ Correlate your application logs with trace events to:
 Learn more about log correlation in the agent-specific ingestion guides:
 
 * [Go](apm-agent-go://reference/logs.md)
-* [Java](asciidocalypse://docs/apm-agent-java/docs/reference/logs.md#log-correlation-ids)
+* [Java](apm-agent-java://reference/logs.md#log-correlation-ids)
 * [.NET](apm-agent-dotnet://reference/logs.md)
-* [Node.js](asciidocalypse://docs/apm-agent-nodejs/docs/reference/logs.md)
-* [Python](asciidocalypse://docs/apm-agent-python/docs/reference/logs.md#log-correlation-ids)
-* [Ruby](asciidocalypse://docs/apm-agent-ruby/docs/reference/logs.md)
+* [Node.js](apm-agent-nodejs://reference/logs.md)
+* [Python](apm-agent-python://reference/logs.md#log-correlation-ids)
+* [Ruby](apm-agent-ruby://reference/logs.md)

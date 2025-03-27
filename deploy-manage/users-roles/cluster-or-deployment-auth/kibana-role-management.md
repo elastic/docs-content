@@ -43,7 +43,7 @@ Document-level and field-level security affords you even more granularity when i
     2. `read` and `view_index_metadata` in the **Privileges** field.
 
 <br>
-:::{image} ../../../images/kibana-create-role-index-example.png
+:::{image} /deploy-manage/images/kibana-create-role-index-example.png
 :alt: Create role with index privileges
 :screenshot:
 :::
@@ -74,7 +74,7 @@ Document-level and field-level security affords you even more granularity when i
     ::::
 
 <br>
-:::{image} ../../../images/kibana-create-role-dls-example.png
+:::{image} /deploy-manage/images/kibana-create-role-dls-example.png
 :alt: Create role with DLS index privileges
 :screenshot:
 :::
@@ -97,7 +97,7 @@ You can assign the same privileges, document-level, and field-level as for [loca
     3. The allowed actions in the **Privileges** field. (e.g. `read` and `view_index_metadata`)
 
 <br>
-:::{image} ../../../images/kibana-create-role-remote-index-example.png
+:::{image} /deploy-manage/images/kibana-create-role-remote-index-example.png
 :alt: Create role with remote index privileges
 :screenshot:
 :::
@@ -107,7 +107,7 @@ You can assign the same privileges, document-level, and field-level as for [loca
 To assign {{kib}} privileges to the role, click **Add {{kib}} privilege** in the {{kib}} section.
 
 <br>
-:::{image} ../../../images/kibana-spaces-roles.png
+:::{image} /deploy-manage/images/kibana-spaces-roles.png
 :alt: Add {{kib}} privileges
 :screenshot:
 :width: 650px
@@ -127,7 +127,7 @@ When using the **Customize by feature** option, you can choose either **All**, *
 To apply your changes, click **Add {{kib}} privilege**. The privilege shows up under the {{kib}} privileges section of the role.
 
 <br>
-:::{image} ../../../images/kibana-create-space-privilege.png
+:::{image} /deploy-manage/images/kibana-create-space-privilege.png
 :alt: Add {{kib}} privilege
 :screenshot:
 :::
@@ -165,7 +165,7 @@ To view a summary of the privileges granted, click **View privilege summary**.
 5. Click **Add {{kib}} privilege**.
 
 <br>
-:::{image} ../../../images/kibana-privilege-example-1.png
+:::{image} /deploy-manage/images/kibana-privilege-example-1.png
 :alt: Privilege example 1
 :screenshot:
 :width: 650px
@@ -183,7 +183,7 @@ To view a summary of the privileges granted, click **View privilege summary**.
 7. Click **Add {{kib}} privilege**.
 
 <br>
-:::{image} ../../../images/kibana-privilege-example-2.png
+:::{image} /deploy-manage/images/kibana-privilege-example-2.png
 :alt: Privilege example 2
 :screenshot:
 :::
@@ -200,7 +200,7 @@ To view a summary of the privileges granted, click **View privilege summary**.
 7. Click **Add {{kib}} privilege**.
 
 <br>
-:::{image} ../../../images/kibana-privilege-example-3.png
+:::{image} /deploy-manage/images/kibana-privilege-example-3.png
 :alt: Privilege example 3
 :screenshot:
 :::

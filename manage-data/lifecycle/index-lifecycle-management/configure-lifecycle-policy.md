@@ -26,7 +26,7 @@ When you enable {{ilm}} for {{beats}} or the {{ls}} {{es}} output plugin, the ne
 
 To create a lifecycle policy from {{kib}}, open the menu and go to **Stack Management > Index Lifecycle Policies**. Click **Create policy**.
 
-![Create policy page](../../../images/elasticsearch-reference-create-policy.png "")
+![Create policy page](/manage-data/images/elasticsearch-reference-create-policy.png "")
 
 You specify the lifecycle phases for the policy and the actions to perform in each phase.
 
@@ -80,7 +80,7 @@ An `index.lifecycle.rollover_alias` setting is only required if using {{ilm}} wi
 
 You can use the {{kib}} Create template wizard to create a template. To access the wizard, open the menu and go to **Stack Management > Index Management**. In the **Index Templates** tab, click **Create template**.
 
-![Create template page](../../../images/elasticsearch-reference-create-template-wizard-my_template.png "")
+![Create template page](/manage-data/images/elasticsearch-reference-create-template-wizard-my_template.png "")
 
 The wizard invokes the [create or update index template API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-index-template) to add templates to a cluster.
 
