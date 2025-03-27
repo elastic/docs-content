@@ -59,12 +59,10 @@ Here’s a simpified overview of how Playground works:
 
     * User can also **Download the code** to integrate into application
 
-## Elastic LLM [elastic-llm]
+## Elastic LLM [elastic-llm-playground]
 
-Playground includes a preconfigured LLM connector that you can use out of the box.
-Using the Elastic LLM enables you to use Playground without having an account with an LLM provider or setting up an LLM connector.
-Elastic LLM is hosted as a service and may incur additional costs.
-For more details, refer to the [pricing page](https://www.elastic.co/pricing).
+:::{include} ../../_snippets/elastic-llm.md
+:::
 
 ## Availability and prerequisites [playground-availability-prerequisites]
 
@@ -122,7 +120,7 @@ You can also use locally hosted LLMs that are compatible with the OpenAI SDK. On
 ### Connect to LLM provider [playground-getting-started-connect]
 
 :::{note}
-If you use the preconfigured [Elastic LLM](#elastic-llm) connector, you can skip this step. Your LLM connector is ready to use.
+If you use the preconfigured [Elastic LLM](#elastic-llm-playground) connector, you can skip this step. Your LLM connector is ready to use.
 
 :::
 

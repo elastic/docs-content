@@ -20,7 +20,8 @@ The AI Assistant uses generative AI to provide:
 :screenshot:
 :::
 
-The AI Assistant integrates with your large language model (LLM) provider through our supported {{stack}} connectors:
+The AI Assistant includes Elastic LLM, a preconfigured large language model (LLM) connector.
+It also integrates with your LLM provider through our supported {{stack}} connectors:
 
 * [OpenAI connector](kibana://reference/connectors-kibana/openai-action-type.md) for OpenAI or Azure OpenAI Service.
 * [Amazon Bedrock connector](kibana://reference/connectors-kibana/bedrock-action-type.md) for Amazon Bedrock, specifically for the Claude models.
@@ -37,7 +38,10 @@ Also, the data you provide to the Observability AI assistant is *not* anonymized
 
 ::::
 
+## Elastic LLM [elastic-llm-ai-assistant]
 
+:::{include} ../_snippets/elastic-llm.md
+:::
 
 ## Requirements [obs-ai-requirements]
 
@@ -45,7 +49,7 @@ The AI assistant requires the following:
 
 * {{stack}} version 8.9 and later.
 * A self-deployed connector service if [search connectors](elasticsearch://reference/search-connectors/self-managed-connectors.md) are used to populate external data into the knowledge base.
-* An account with a third-party generative AI provider that preferably supports function calling. If your AI provider does not support function calling, you can configure AI Assistant settings under **Stack Management** to simulate function calling, but this might affect performance.
+* An account with a third-party generative AI provider that preferably supports function calling. If your AI provider does not support function calling, you can configure AI Assistant settings under **Stack Management** to simulate function calling, but this might affect performance. If you use the preconfigured Elastic LLM connector, you don't need an account of a third-party genAI provider.
 
     Refer to the [connector documentation](../../deploy-manage/manage-connectors.md) for your provider to learn about supported and default models.
 
@@ -74,6 +78,11 @@ Elastic does not control third-party tools, and assumes no responsibility or lia
 
 
 ## Set up the AI Assistant [obs-ai-set-up]
+
+:::{note}
+If you use the preconfigured [Elastic LLM](#elastic-llm-ai-assistant) connector, you can skip this step. Your LLM connector is ready to use.
+
+:::
 
 To set up the AI Assistant:
 
