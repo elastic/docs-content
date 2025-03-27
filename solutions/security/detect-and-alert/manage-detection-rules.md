@@ -66,7 +66,7 @@ For {{ml}} rules, an indicator icon (![Error icon from rules table](/solutions/i
 ::::{admonition} Requirements
 * You can edit custom rules and bulk-modify them with any [{{stack}} subscription](https://www.elastic.co/pricing) or [{{serverless-short}} project tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md). 
 * You can edit [rule notifications](/solutions/security/detect-and-alert/create-detection-rule.md#rule-notifications) (notifications and response actions) for prebuilt rules with any {{stack}} subscription or {{serverless-short}} project tier.
-* You must have an [Enterprise subscription](https://www.elastic.co/pricing)  {{stack}} or a [Complete project tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md) subscription on {{serverless-short}} to edit all prebuilt rule settings (except for the **Author** and **License** fields) and bulk-modify them. 
+* You must have an [Enterprise subscription](https://www.elastic.co/pricing) {{stack}} or a [Complete project tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md) subscription on {{serverless-short}} to edit all prebuilt rule settings (except for the **Author** and **License** fields) and bulk-modify them. 
 
 ::::
 
@@ -152,7 +152,7 @@ Before manually running rules, make sure you properly understand and plan for ru
 
 The rule runs over the time range that you selected. Note that all [rule actions](/solutions/security/detect-and-alert/create-detection-rule.md#rule-notifications), except for **Summary of alerts** actions that run at a custom frequency.
 
-Go to the  [Manual runs table](/solutions/security/detect-and-alert/monitor-rule-executions.md#manual-runs-table) on the **Execution results** tab to track the manual rule executions. If you manually ran the rule over a gap, you can also monitor the gap fill's progress from the [Gaps table](/solutions/security/detect-and-alert/monitor-rule-executions.md#gaps-table).
+Go to the [Manual runs table](/solutions/security/detect-and-alert/monitor-rule-executions.md#manual-runs-table) on the **Execution results** tab to track the manual rule executions. If you manually ran the rule over a gap, you can also monitor the gap fill's progress from the [Gaps table](/solutions/security/detect-and-alert/monitor-rule-executions.md#gaps-table).
 
 ::::{note}
 Be mindful of the following:
@@ -184,7 +184,7 @@ You can snooze rule notifications from the **Installed Rules** tab, the rule det
 
 ::::{admonition} Requirements
 * You can export and import custom rules and prebuilt rules (modified and unmodified) with any [{{stack}} subscription](https://www.elastic.co/pricing) or [{{serverless-short}} project tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md).
-*  At minimum, your role needs `Read` privileges for the **Action and Connectors** feature to import rules with actions. To overwrite or add new connectors, you need `All` privileges. Refer to [Enable and access detections](/solutions/security/detect-and-alert/detections-requirements.md#enable-detections-ui) to learn more about the required privileges for managing rules.
+* At minimum, your role needs `Read` privileges for the **Action and Connectors** feature to import rules with actions. To overwrite or add new connectors, you need `All` privileges. Refer to [Enable and access detections](/solutions/security/detect-and-alert/detections-requirements.md#enable-detections-ui) to learn more about the required privileges for managing rules.
 ::::
 
 You can export custom detection rules to an `.ndjson` file, which you can then import into another {{elastic-sec}} environment.
