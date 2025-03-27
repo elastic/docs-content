@@ -1,3 +1,12 @@
+---
+applies_to:
+  stack:
+  deployment:
+    eck:
+    ess:
+    ece:
+    self:
+--- 
 # Prepare to upgrade
 
 Before you upgrade, review and complete the necessary preparation steps, which vary by version. 
@@ -142,7 +151,7 @@ The response contains the list of critical deprecation warnings in the `index_se
 :::
 
 :::{dropdown} Reindexing anomaly result indices
-For an index with less than 10 GB that contains results from multiple jobs that are still required, we recommend reindexing into a new format using UI. You can use the [Get index information API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-indices-1) to obtain the size of an index:
+For an index with less than 10 GB that contains results from multiple jobs that are still required, we recommend reindexing into a new format using the UI. You can use the [Get index information API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-indices-1) to obtain the size of an index:
 
 ```
 GET _cat/indices/.ml-anomalies-custom-example?v&h=index,store.size
@@ -406,11 +415,7 @@ POST _transform/my-transform/_reset
 :::{dropdown} Reindexing the transform’s destination index while the transform is paused
 When the Upgrade Assistant reindexes the documents, {{kib}} will put a write block on the old destination index, copy the results to a new index, delete the old index, and create an alias to the new index. During this time, the transform will pause and wait for the destination to become writable again. If you do not want the transform to pause, continue to reindexing the transform’s destination index while the transform is running.
 
-If an index size is less than 10 GB, we recommend using the Upgrade Assistant to automatically migrate the index.
-
-If an index size is greater than 10 GB, we recommend using the Reindex API. Reindexing consists of the following steps:
-
-You can use the [Get index information API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-indices-1) to obtain the size of an index:
+If an index size is less than 10 GB, we recommend using the Upgrade Assistant to automatically migrate the index. You can use the [Get index information API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-indices-1) to obtain the size of an index:
 
 ```
 GET _cat/indices/.transform-destination-example?v&h=index,store.size
