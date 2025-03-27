@@ -38,6 +38,10 @@ On the customer VPC side, the inter-availability zone data transfer, within the 
 
 If Elastic and your VPC overlap in two AZs or less, you can create subnets and VPC PrivateLink endpoints in your VPC within the same availability zones where Elastic PrivateLink service has presence.
 
+### Transport client
+
+Transport client is not supported over PrivateLink connections.
+
 ## PrivateLink service names and aliases [ec-private-link-service-names-aliases]
 
 PrivateLink Service is set up by Elastic in all supported AWS regions under the following service names:
