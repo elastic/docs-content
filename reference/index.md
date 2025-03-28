@@ -5,7 +5,7 @@ mapped_pages:
 
 # Reference [api-reference]
 
-Explore the comprehensive reference documentation for the Elastic Stack, designed to equip you with the knowledge necessary to effectively manage and optimize your data infrastructure. Whether you are configuring security protocols, enhancing search functionalities, or integrating with cloud services, our detailed manuals, API guides, and configuration settings provide the essential information you need. This section serves as your foundational resource for leveraging the full potential of the Elastic Stack.
+Explore the reference documentation for the Elastic Stack. Whether you are configuring security protocols, enhancing search functionalities, or integrating with cloud services, our detailed manuals, API guides, and configuration settings provide the information you need.
 
 ## Security
 
@@ -27,7 +27,7 @@ Explore reference content on Search UI and how you can develop fast, modern, and
 
 ## Elaticsearch and index management
 
-Customize your Elastic Stack setup with our configuration reference guides. From JVM settings to Elasticsearch privileges and index lifecycle actions, find the detailed information you need to configure your environment to meet your specific needs.
+Customize your Elastic Stack setup with our configuration reference guides. From JVM settings, our client documentation, Elasticsearch privileges and index lifecycle actions, find the detailed information you need to configure your environment to meet your specific needs.
 
 **Learn more in [Elasticsearch and index management](elasticsearch://reference/index.md)**
 
@@ -36,12 +36,6 @@ Customize your Elastic Stack setup with our configuration reference guides. From
 Streamline data ingestion with tools like Fleet and Elastic Agent, APM, and Beats. Explore processor references and Logstash plugins to efficiently manage your data flow.
 
 **Learn more in [Ingestion tools](ingestion-tools/index.md)**
-
-## Elastic Integrations
-
-Integrate seamlessly with various platforms using Elastic integrations. Discover connectors for Kibana, Elasticsearch for Apache Hadoop, and more to expand your data capabilities.
-
-**Learn more in [Integrations](integrations://extend/index.md)**
 
 ## Kibana
 
@@ -57,13 +51,13 @@ Extend the functionality of your Elastic Stack with a variety of plugins. From a
 
 ## Query Languages
 
-Master data querying with our comprehensive guides on QueryDSL, ES|QL, SQL, EQL, and Kibana Query Language. Leverage scripting languages like Painless for advanced data manipulation.
+Master data querying with our comprehensive guides on QueryDSL, ES|QL, SQL, EQL, and Kibana Query Language. 
 
 **Learn more in [Query languages](elasticsearch://reference/query-languages/index.md)**
 
 ## Scripting Languages
 
-Explore our reference documentation on Painless scripting. Painless is the default scripting language for Elasticsearch, designed for safe and efficient execution. Access syntax references, function libraries, and best practices to of Painless scripting.
+Access syntax references, function libraries, and best practices to of Painless scripting.
 
 **Learn more in [Painless scripting](elasticsearch://reference/scripting-languages/painless/painless.md)**
 
@@ -81,7 +75,7 @@ Standardize your data with ECS. Access logging libraries, field references, and 
 
 ## Cloud
 
-Leverage the power of the cloud with Elastic Cloud solutions. Explore Elastic Cloud on Kubernetes, Elastic Cloud Enterprise, and Elastic Cloud Hosted to scale your operations effortlessly.
+Leverage the power of the cloud with Elastic Cloud solutions. Explore Elastic Cloud on Kubernetes, Elastic Cloud Enterprise, and Elastic Cloud Hosted to scale your operations.
 
 **Learn more in [Cloud](cloud://reference/index.md)**
 
