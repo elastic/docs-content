@@ -110,12 +110,11 @@ This table compares Observability capabilities between Elastic Cloud Hosted depl
 | **Index lifecycle management** | ✅ | ❌ | Use **data stream lifecycle** instead |
 | **iOS agent/SDK instrumentation** | ✅ | ❌ | Not available in Serverless |
 | **Kibana Alerts** | ✅ | ✅ | |
-| **LogsDB** | ✅ Optional | ✅ | - Enabled by default <br>- Cannot be disabled |
+| **LogsDB index mode** | ✅ | ✅ | - Reduces storage footprint <br> - Enabled by default <br>- Cannot be disabled |
 | **Logs management** | ✅ | ✅ | |
 | **Metrics monitoring** | ✅ | ✅ | |
 | **Observability SLO** | ✅ | ✅ | |
 | **Real User Monitoring (RUM)** | ✅ | **Planned** | Coming in a future release |
-| **Synthetic _source** | ✅ | ✅ | Part of complete **LogsDB** capabilities |
 | **Universal Profiling** | ✅ | ❌ | Not available in Serverless |
 | **Uptime monitoring** | ❌ | ❌ | - Deprecated in all deployment types <br>- Use **Synthetics app** instead |
 | **Watcher** | ✅ | ❌ | Use **Kibana Alerts** instead |
