@@ -298,6 +298,39 @@ ingress:
 
 For symbolizer, the connection routing should be configured to use the HTTP protocol. There is usually no need to customize annotations for this type of service, but the chart provides similar configuration options.
 
+### Input TLS configuration [_input_tls_configuration]
+
+Terminating the TLS connection is not currently supported at the application level, even if the `pf-elastic-collector` and `pf-elastic-symbolizer` configurations include an `ssl` section.
+Instead, you should use an ingress-controller to terminate TLS connections and forward unencrypted traffic to the backend services.
+
+To enable TLS termination, configure the `tls` section in the `ingress` resource, as shown in the previous section.
+Both the collector and symbolizer Helm charts support an `ingress.tls` section, which lets you specify the TLS secret name and hosts that the certificate should be used for.
+
+We recommend using a certificate manager like [cert-manager](https://cert-manager.io/) to automate certificate provisioning and renewal for ingress resources.
+
+Refer to the [Kubernetes Ingress documentation](https://kubernetes.github.io/ingress-nginx/user-guide/tls/#tlshttps) for an example of how to configure TLS termination with NGINX ingress controller.
+
+In general, the steps are:
+
+1. Store your TLS certificate in a Kubernetes secret in the same namespace as the collector and/or symbolizer.
+
+   ```bash
+   kubectl -n universal-profiling create secret tls my-tls-secret --cert=path/to/cert.pem --key=path/to/key.pem
+   ```
+
+2. Configure the `ingress.tls` section in the Helm values file used to run the backend applications, for example:
+
+    ```yaml
+    ingress:
+      <other configs...>
+      tls:
+        - secretName: my-tls-secret
+          hosts:
+            - my-host.com
+    ```
+
+3. Deploy the charts using `helm upgrade` and passing in the updated values files.
+
 
 ### Output TLS configuration [_output_tls_configuration]
 
