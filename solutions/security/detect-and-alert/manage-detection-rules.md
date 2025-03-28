@@ -66,7 +66,7 @@ For {{ml}} rules, an indicator icon (![Error icon from rules table](/solutions/i
 ::::{admonition} Requirements
 * You can edit custom rules and bulk-modify them with any [{{stack}} subscription](https://www.elastic.co/pricing) or [{{serverless-short}} project tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md). 
 * You can edit [rule notifications](/solutions/security/detect-and-alert/create-detection-rule.md#rule-notifications) (notifications and response actions) for prebuilt rules with any {{stack}} subscription or {{serverless-short}} project tier.
-* You must have an [Enterprise subscription](https://www.elastic.co/pricing)  {{stack}} or a [Complete project tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md) subscription on {{serverless-short}} to edit all prebuilt rule settings (except for the **Author** and **License** fields) and bulk-modify them. 
+* You must have an [Enterprise subscription](https://www.elastic.co/pricing) {{stack}} or a [Complete project tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md) subscription on {{serverless-short}} to edit all prebuilt rule settings (except for the **Author** and **License** fields) and bulk-modify them. 
 
 ::::
 
@@ -130,12 +130,7 @@ When duplicating a rule with exceptions, you can choose to duplicate the rule an
 
 ## Run rules manually [manually-run-rules] 
 
-::::{warning}
-This functionality is in beta and is subject to change. The design and code is less mature than official GA features and is being provided as-is with no warranties. Beta features are not subject to the support SLA of official GA features.
-::::
-
-
-Manually run enabled rules for a specified period of time for testing purposes or additional rule coverage.
+Manually run enabled rules for a specified period of time to deliberately test them, provide additional rule coverage, or fill gaps in rule executions.
 
 ::::{important}
 Before manually running rules, make sure you properly understand and plan for rule dependencies. Incorrect scheduling can lead to inconsistent rule results.
@@ -151,19 +146,16 @@ Before manually running rules, make sure you properly understand and plan for ru
 3. Specify when the manual run starts and ends. The default selection is the current day starting three hours in the past. The rule will search for events during the selected time range.
 4. Click **Run** to manually run the rule.
 
-    ::::{note}
-    Manual runs can produce multiple rule executions. This is determined by the manual run’s time range and the rule’s execution schedule.
-    ::::
+The rule will run over the time range that you selected. Note that all [rule actions](/solutions/security/detect-and-alert/create-detection-rule.md#rule-notifications) will also be activated, except for **Summary of alerts** actions that run at a custom frequency.
 
-
-The manual run’s details are shown in the [Manual runs](/solutions/security/detect-and-alert/monitor-rule-executions.md#manual-runs-table) table on the **Execution results** tab. Changes you make to the manual run or rule settings will display in the Manual runs table after the current run completes.
+Go to the [Manual runs table](/solutions/security/detect-and-alert/monitor-rule-executions.md#manual-runs-table) on the **Execution results** tab to track the manual rule executions. If you manually ran the rule over a gap, you can also monitor the gap fill's progress from the [Gaps table](/solutions/security/detect-and-alert/monitor-rule-executions.md#gaps-table).
 
 ::::{note}
 Be mindful of the following:
 
-* Rule actions are not activated during manual runs.
-* Except for threshold rules, duplicate alerts aren’t created if you manually run a rule during a time range that was already covered by a scheduled run.
-* Manual runs are executed with low priority and limited concurrency, meaning they might take longer to complete. This can be especially apparent for rules requiring multiple executions.
+* Any changes that you make to the manual run or rule settings will display in the Manual runs table after the current run completes.
+* Except for threshold rules, duplicate alerts aren't created if you manually run a rule during a time range that was already covered by a scheduled run.
+* Manually running a custom query rule with suppression may incorrectly inflate the number of suppressed alerts.
 
 ::::
 
@@ -188,7 +180,7 @@ You can snooze rule notifications from the **Installed Rules** tab, the rule det
 
 ::::{admonition} Requirements
 * You can export and import custom rules and prebuilt rules (modified and unmodified) with any [{{stack}} subscription](https://www.elastic.co/pricing) or [{{serverless-short}} project tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md).
-*  At minimum, your role needs `Read` privileges for the **Action and Connectors** feature to import rules with actions. To overwrite or add new connectors, you need `All` privileges. Refer to [Enable and access detections](/solutions/security/detect-and-alert/detections-requirements.md#enable-detections-ui) to learn more about the required privileges for managing rules.
+* At minimum, your role needs `Read` privileges for the **Action and Connectors** feature to import rules with actions. To overwrite or add new connectors, you need `All` privileges. Refer to [Enable and access detections](/solutions/security/detect-and-alert/detections-requirements.md#enable-detections-ui) to learn more about the required privileges for managing rules.
 ::::
 
 You can export custom detection rules to an `.ndjson` file, which you can then import into another {{elastic-sec}} environment.
