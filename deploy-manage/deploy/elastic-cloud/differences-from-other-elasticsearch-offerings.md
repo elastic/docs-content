@@ -73,6 +73,7 @@ This table compares Elasticsearch capabilities between Elastic Cloud Hosted depl
 
 | **Feature** | Elastic Cloud Hosted | Serverless Elasticsearch projects | Serverless notes |
 |---------|----------------------|-----------------------------------|------------------|
+| **AI Assistant** | ✅ | ✅ | |
 | **Behavioral analytics** | ✅ (deprecated in 9.0) | ❌ | Not available in Serverless |
 | **Clone index API** | ✅ | **Planned** | Coming in a future release |
 | **Cross-cluster replication** | ✅ | **Planned** | Coming in a future release |
@@ -96,7 +97,7 @@ This table compares Observability capabilities between Elastic Cloud Hosted depl
 
 | **Feature** | Elastic Cloud Hosted | Serverless Observability projects | Serverless notes |
 |---------|----------------------|-----------------------------------|------------------|
-| **Fleet Agent policies** | ✅ | ✅ | |
+| **AI Assistant** | ✅ | ✅ | |
 | **APM integration** | ✅ | ✅ | Use **Managed Intake Service** (supports Elastic APM and OTLP protocols) |
 | **APM Agent Central Configuration** | ✅ | ❌ | Not available in Serverless |
 | **APM Tail-based sampling** | ✅ | ❌ | - Not available in Serverless <br>- Consider **OpenTelemetry** tail sampling processor as an alternative |
@@ -106,6 +107,7 @@ This table compares Observability capabilities between Elastic Cloud Hosted depl
 | **Data stream lifecycle** | ✅ | ✅ | Primary lifecycle management method in Serverless |
 | **Elastic Serverless Forwarder** | ✅ | ❌ | |
 | **Elastic Synthetics Private Locations** | ✅ | ✅ | |
+| **Fleet Agent policies** | ✅ | ✅ | |
 | **Fleet server** | - Self-hosted <br>- Hosted | ✅ | Fully managed by Elastic |
 | **Index lifecycle management** | ✅ | ❌ | Use **data stream lifecycle** instead |
 | **iOS agent/SDK instrumentation** | ✅ | ❌ | Not available in Serverless |
@@ -124,7 +126,10 @@ This table compares Security capabilities between Elastic Cloud Hosted deploymen
 
 | **Feature** | Elastic Cloud Hosted | Serverless Security projects | Serverless notes |
 |---------|---------------------|------------------------------|------------------|
+| **Advanced Entity Analytics** | ✅ | ✅ | |
+| **AI Assistant** | ✅ | ✅ | |
 | **API keys** | ✅ | ✅ | |
+| **Cloud Security** | ✅ | ✅ | |
 | **Defend for Containers integration** | ✅ (deprecated in 9.0) | ❌ | Not available in Serverless |
 | **Endpoint security** | ✅ | ✅ | |
 | **Kibana Alerts** | ✅ | ✅ | |
