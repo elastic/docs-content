@@ -41,9 +41,9 @@ For information about rule execution gaps (which are periods of time when a rule
 
 Within the table, the **Last Gap (if any)** column conveys how long the most recent gap for a rule lasted. The **Unfilled gaps duration** column shows whether a rule still has gaps and provides a total sum of the remaining unfilled or partially filled gaps. The total sum can change based on the time range that you select in the panel above the table. If a rule has no gaps, the columns display a dash (`––`).
 
-
-TIP: For a detailed view of a rule's gaps, go to the **Execution results** tab and check the [Gaps table](/solutions/security/detect-and-alert/monitor-rule-executions.md#gaps-table).
-
+::::{tip} 
+For a detailed view of a rule's gaps, go to the **Execution results** tab and check the [Gaps table](/solutions/security/detect-and-alert/monitor-rule-executions.md#gaps-table).
+::::
 
 ## Execution results tab [rule-execution-logs]
 
