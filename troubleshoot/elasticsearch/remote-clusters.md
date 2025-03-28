@@ -1,10 +1,14 @@
 ---
+applies_to:
+  stack: 
+  deployment:
+    eck: 
+    ess: 
+    ece: 
+    self: 
 navigation_title: Remote clusters
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/remote-clusters-troubleshooting.html
-applies_to:
-  deployment:
-    self: ga
 ---
 
 
