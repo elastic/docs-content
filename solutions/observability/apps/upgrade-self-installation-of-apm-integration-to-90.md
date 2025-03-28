@@ -6,7 +6,7 @@ mapped_pages:
 
 
 
-# Upgrade a self-installation of the APM integration to 8.x [apm-upgrade-8.0-self-integration]
+# Upgrade a self-installation of the APM integration to 9.0 [apm-upgrade-9.0-self-integration]
 
 
 This upgrade guide is for the Elastic APM integration. Only use this guide if both of the following are true:
@@ -17,20 +17,23 @@ This upgrade guide is for the Elastic APM integration. Only use this guide if bo
 
 ## Prerequisites [_prerequisites_9]
 
-1. Prior to upgrading to version 9.0.0-beta1, {{es}}, and {{kib}} must be upgraded to version 7.17. To upgrade {{es}} and {{kib}}, see the [{{stack}} Installation and Upgrade Guide](https://www.elastic.co/guide/en/elastic-stack/7.17/upgrading-elastic-stack.html)
+1. Prior to upgrading to version 9.0, {{es}}, and {{kib}} must be upgraded to version 8.18. To upgrade {{es}} and {{kib}}, see the [{{stack}} Installation and Upgrade Guide](https://www.elastic.co/guide/en/elastic-stack/8.18/upgrading-elastic-stack.html)
 2. Review the [Elastic APM release notes](apm-server://release-notes/index.md) and [Elastic {{observability}} release notes](/release-notes/elastic-observability/release-notes.md).
+3. Review the [Elastic APM breaking changes](apm-server://release-notes/breaking-changes.md).
 
 
 ## Upgrade steps [_upgrade_steps_2]
 
-1. Upgrade the {{stack}} to version 9.0.0-beta1.
+1. Upgrade the {{stack}} to version 9.0.
 
     The {{stack}} ({{es}} and {{kib}}) must be upgraded before {{agent}}. See the [{{stack}} Installation and Upgrade Guide](../../../deploy-manage/upgrade/deployment-or-cluster.md) for guidance.
 
-2. Upgrade {{agent}} to version 9.0.0-beta1. As a part of this process, the APM integration will automatically upgrade to version 9.0.0-beta1.
+2. Upgrade {{agent}} to version 9.0 As a part of this process, the APM integration will automatically upgrade to version 9.0.
 
     1. In {{fleet}}, select **Agents**.
     2. Under **Agents**, click **Upgrade available** to see a list of agents that you can upgrade.
     3. Choose **Upgrade agent** from the **Actions** menu next to the agent you want to upgrade. The **Upgrade agent** option is grayed out when an upgrade is unavailable, or the {{kib}} version is lower than the agent version.
 
     For more details, or for bulk upgrade instructions, see [Upgrade {{agent}}](/reference/fleet/upgrade-elastic-agent.md)
+
+3. When upgrading from 8.18 to 9.0, if you have 7.x indices, you need to either set the indices to `readonly`, or if reindexing, add [ILM privileges](https://www.elastic.co/guide/en/apm/guide/7.17/privileges-to-setup-beats.html#_set_up_ilm) for `reindexed-v*-apm*` indices.
