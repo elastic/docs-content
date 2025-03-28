@@ -1,4 +1,11 @@
 ---
+applies_to:
+  stack: 
+  deployment:
+    eck: 
+    ess: 
+    ece: 
+    self: 
 navigation_title: Apache Hadoop
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/hadoop/current/troubleshooting.html
@@ -65,19 +72,11 @@ When encountering a performance issue, do some benchmarking first, in as much is
 
 Indexing performance depends *heavily* on the type of data being targeted and its mapping. Same goes for searching but add the query definition to the mix. As mentioned before, experiment and measure the various parts of your dataset to find the sweet-spot of your environment before importing/searching big amounts of data.
 
-## Getting help [help]
+## Get help [help]
 
-If you need help, there is a strong, helpful community of users on the [forum](https://discuss.elastic.co/c/elasticsearch-and-hadoop) and [IRC](http://www.elastic.co/community/) who are happy to help out.
+For more help, you can [contact us](/troubleshoot/index.md#contact-us). Use the tips in this section when emailing us or using the Elastic Support Portal.
 
-If something is not working, there are two possibilities:
-
-* there is a bug
-* you are doing something wrong
-
-Whichever it is, a **clear** description of the problem will help other users to help you. The more complete your report is, the quickest you will receive help from users!
-
-
-### What information is useful? [_what_information_is_useful]
+### Provide details[_what_information_is_useful]
 
 * OS & JVM version
 * Hadoop / Spark version / distribution
@@ -86,18 +85,9 @@ Whichever it is, a **clear** description of the problem will help other users to
 * the job or script that is causing the issue
 * Hadoop / Spark cluster size
 * {{es}} cluster size
-* the size of the dataset and a snippet of it in its raw format (CSV, TSV, etc..)
+* the size of the dataset and a snippet of it in its raw format (CSV, TSV, etc.)
 
-If you don’t provide all of the information, then it may be difficult for others to figure out where the issue is.
+### Use a paste site [_where_do_i_post_my_information]
 
-
-### Where do I post my information? [_where_do_i_post_my_information]
-
-Please don’t paste long lines of code in the mailing list or the IRC – it is difficult to read, and people will be less likely to take the time to help.
-
-Use one of the plethora of paste sites such as [pastebin](http://pastebin.com/) or [gist](http://gist.github.com/gists) (which we recommend):
-
-[TBC: FANCY QUOTE]
-Please see the Elasticsearch [help](http://www.elastic.co/help/) page for tips on how to create a detailed user report, fast and easy.
-
+Don't paste long lines of code in emails or the Elastic Support Portal. Instead, use a sharing or pasting utility such as [GitHub Gist](https://gist.github.com/).
 
