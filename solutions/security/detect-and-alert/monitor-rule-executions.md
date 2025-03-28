@@ -87,7 +87,9 @@ This functionality is in beta and is subject to change. The design and code is l
 
 Gaps in rule executions are periods of time where a rule didn’t run. They can be caused by various disruptions, including system updates, rule failures, or simply turning off a rule. Addressing gaps is essential for maintaining consistent coverage and avoiding missed alerts.
 
-TIP: Refer to the [Troubleshoot gaps](../../../troubleshoot/security/detection-rules.md#troubleshoot-gaps) section for strategies for avoiding gaps.
+::::{tip}
+Refer to the [Troubleshoot gaps](../../../troubleshoot/security/detection-rules.md#troubleshoot-gaps) section for strategies for avoiding gaps.
+::::
 
 Use the information in the Gaps table to assess the scope and severity of rule execution gaps. To control what's shown in the table, you can filter the table by gap status, select a time range for viewing gap data, and sort multiple columns. 
 
@@ -100,7 +102,7 @@ The Gaps table has the following columns:
 
 * **Status**: The current state of the gap. It can be `Filled`, `Partially filled`, or `Unfilled`.
 * **Detected at**: The date and time the gap was first discovered.
-* **Manual fill tasks**: The status of the manual run that’s filling the gap. For more details about the manual run, refer to its entry in the <<manual-runs-table,manual run table>>.
+* **Manual fill tasks**: The status of the manual run that’s filling the gap. For more details about the manual run, refer to its entry in the [Manual runs table](/solutions/security/detect-and-alert/monitor-rule-executions).
 * **Event time covered**: How much progress the manual run has made filling the gap. 
 
     ::::{note} 
