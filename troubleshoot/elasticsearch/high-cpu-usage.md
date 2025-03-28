@@ -1,4 +1,11 @@
 ---
+applies_to:
+  stack: 
+  deployment:
+    eck: 
+    ess: 
+    ece: 
+    self: 
 navigation_title: High CPU usage
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/high-cpu-usage.html

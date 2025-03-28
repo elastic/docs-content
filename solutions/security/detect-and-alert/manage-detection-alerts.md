@@ -35,7 +35,7 @@ The Alerts page offers various ways for you to organize and triage detection ale
 * Use the date and time filter to define a specific time range. By default, this filter is set to search the last 24 hours.
 * Use the drop-down filter controls to filter alerts by up to four fields. By default, you can filter alerts by **Status**, **Severity**, **User**, and **Host**, and you can [edit the controls](/solutions/security/detect-and-alert/manage-detection-alerts.md#drop-down-filter-controls) to use other fields.
 * Visualize and group alerts by specific fields in the visualization section. Use the buttons on the left to select a view type (**Summary**, **Trend**, **Counts**, or **Treemap**), and use the menus on the right to select the ECS fields used for grouping alerts. Refer to [Visualize detection alerts](/solutions/security/detect-and-alert/visualize-detection-alerts.md) for more on each view type.
-* Hover over a value to display available [inline actions](/solutions/security/get-started/elastic-security-ui.md#inline-actions), such as **Filter In**, **Filter Out**, and **Add to timeline**. Click the expand icon for more options, including **Show top *x*** and **Copy to Clipboard**. The available options vary based on the type of data.
+* Hover over a value to display available [inline actions](/solutions/security/get-started/elastic-security-ui.md#inline-actions). Click the expand icon for more options, including **Show top *x*** and **Copy to Clipboard**. The available options vary based on the type of data.
 
     :::{image} /solutions/images/security-inline-actions-menu.png
     :alt: Inline additional actions menu

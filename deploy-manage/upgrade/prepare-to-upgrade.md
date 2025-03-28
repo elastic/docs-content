@@ -6,10 +6,10 @@ applies_to:
     ess:
     ece:
     self:
---- 
+---
 # Prepare to upgrade
 
-Before you upgrade, review and complete the necessary preparation steps, which vary by version. 
+Before you upgrade, review and complete the necessary preparation steps, which vary by version.
 
 :::{important}
 Upgrading from a release candidate build, such as 9.0.0-rc1, is unsupported. Use pre-releases only for testing in a temporary environment.
@@ -22,19 +22,19 @@ To upgrade from 8.17.0 or earlier to 9.0.0, you must first upgrade to the latest
 Alternatively, you can create a 9.0 deployment and reindex from remote. For more information, refer to [Reindex to upgrade](#reindex-to-upgrade).
 
 :::{note}
-For flexible upgrade scheduling, 8.18.0 {{beats}} and {{ls}} are compatible with 9.0.0 {{es}}. 
-By default, 8.x {{es}} clients are compatible with 9.0.0 and use [REST API compatibility](elasticsearch://reference/elasticsearch/rest-apis/compatibility.md) to maintain compatibility with the 9.0.0 {{es}} server. 
+For flexible upgrade scheduling, 8.18.0 {{beats}} and {{ls}} are compatible with 9.0.0 {{es}}.
+By default, 8.x {{es}} clients are compatible with 9.0.0 and use [REST API compatibility](elasticsearch://reference/elasticsearch/rest-apis/compatibility.md) to maintain compatibility with the 9.0.0 {{es}} server.
 :::
 
 Review the following best practices to upgrade your deployments.
 
-1. Run the [Upgrade Assistant](prepare-to-upgrade/upgrade-assistant.md), which identifies deprecated settings in your configuration and guides you through resolving issues that could prevent a successful upgrade. The Upgrade Assistant also helps resolve issues with older indices created before version 8.0.0, providing the option to reindex older indices or mark them as read-only. To prevent upgrade failures, we strongly recommend you **do not** skip this step.     
+1. Run the [Upgrade Assistant](prepare-to-upgrade/upgrade-assistant.md), which identifies deprecated settings in your configuration and guides you through resolving issues that could prevent a successful upgrade. The Upgrade Assistant also helps resolve issues with older indices created before version 8.0.0, providing the option to reindex older indices or mark them as read-only. To prevent upgrade failures, we strongly recommend you **do not** skip this step.
 
     :::{note}
      Depending on your setup, reindexing can change your indices, and you may need to update alerts, transforms, or other code targeting the old index.
     :::
 
-2. Before you change configurations or reindex, ensure you have a current [snapshot](/deploy-manage/tools/snapshot-and-restore/create-snapshots.md). 
+1. Before you change configurations or reindex, ensure you have a current [snapshot](/deploy-manage/tools/snapshot-and-restore/create-snapshots.md).
 
     :::{tip}
     Tip: In 8.3.0 and later, snapshots are generally available as simple archives. Use the [archive functionality](/deploy-manage/upgrade/deployment-or-cluster/reading-indices-from-older-elasticsearch-versions.md) to search snapshots from 5.0.0 and later without needing an old {{es}} cluster. This ensures that your {{es}} data remains accessible after upgrading, without requiring a reindex process.
@@ -42,39 +42,58 @@ Review the following best practices to upgrade your deployments.
 
     To successfully upgrade, resolve all critical issues. If you make additional changes, create a snapshot to back up your data.
 
-3. To identify if your applications use unsupported features or behave differently in 9.0.0, review the deprecation logs in the Upgrade Assistant. 
+1. To identify if your applications use unsupported features or behave differently in 9.0.0, review the deprecation logs in the Upgrade Assistant.
 
-4. Major version upgrades can include breaking changes that require additional steps to ensure your applications function as expected. Review the breaking changes for each product you use to learn more about potential impacts on your application. Ensure you test with the new version before upgrading existing deployments.
+1. Major version upgrades can include breaking changes that require additional steps to ensure your applications function as expected. Review the breaking changes for each product you use to learn more about potential impacts on your application. Ensure you test with the new version before upgrading existing deployments.
 
-5. Make the recommended changes to ensure your clients continue operating as expected after the upgrade. 
+1. Make the recommended changes to ensure your clients continue operating as expected after the upgrade.
 
     :::{note}
-       As a temporary solution, use the 8.x syntax to submit requests to 9.0.0 with REST API compatibility mode. While this allows you to submit requests using the old syntax, it doesn’t guarantee the same behavior. REST API compatibility should serve as a bridge during the upgrade, not a long-term solution. For more details on how to effectively use REST API compatibility during an upgrade, refer to [REST API compatibility](elasticsearch://reference/elasticsearch/rest-apis/compatibility.md). 
+       As a temporary solution, use the 8.x syntax to submit requests to 9.0.0 with REST API compatibility mode. While this allows you to submit requests using the old syntax, it doesn’t guarantee the same behavior. REST API compatibility should serve as a bridge during the upgrade, not a long-term solution. For more details on how to effectively use REST API compatibility during an upgrade, refer to [REST API compatibility](elasticsearch://reference/elasticsearch/rest-apis/compatibility.md).
     :::
 
-6. If you use {{es}} plugins, ensure each plugin is compatible with the {{es}} version you're upgrading.
+1. If you use {{es}} plugins, ensure each plugin is compatible with the {{es}} version you're upgrading.
 
-7. Before upgrading your production deployment, we recommend creating a 9.0.0 test deployment and testing the upgrade in an isolated environment. Ensure the test and production environments use the same settings.
+1. Before upgrading your production deployment, test the upgrade using an isolated environment. Ensure the test and production environments use the same settings.
+
+    :::{note}
+    The upgraded version of {{es}} may interact with its environment in different ways from the version you are currently running. It is possible that your environment behaves incorrectly in a way that does not matter to the version of {{es}} that you are currently running, but which does matter to the upgraded version. In this case, the upgraded version will not work correctly until you address the incorrect behaviour in your environment.
+    :::
+
+    :::{tip}
+    During your upgrade tests, pay particular attention to the following aspects:
+
+    **Cluster stability**
+    :    Does the new version of {{es}} form a stable healthy cluster?
+
+    **Indexing and search performance**
+    :    Does the new version of {{es}} perform the same (or better) than the current one on your specific workload and data?
+
+    **Snapshots**
+    :    Do all of your snapshot repositories work correctly and pass [repository analysis](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-repository-analyze)?
+    :::
+
+1. Create a snapshot of your production deployment before starting the upgrade.
 
     :::{important}
-    After you upgrade, you cannot downgrade {{es}} nodes. If you can't complete the upgrade process, you must [restore from the snapshot](/deploy-manage/tools/snapshot-and-restore/restore-snapshot.md).
+    After you start to upgrade your {{es}} cluster, you cannot downgrade any of its nodes. If you can't complete the upgrade process, you must [restore from a snapshot](/deploy-manage/tools/snapshot-and-restore/restore-snapshot.md) which was taken before starting the upgrade.
     :::
 
-8. If you use a separate [monitoring cluster](/deploy-manage/monitor/stack-monitoring/elasticsearch-monitoring-self-managed.md), upgrade the monitoring cluster before the production cluster. The monitoring cluster and the clusters being monitored should be running the same version of the {{stack}}. Monitoring clusters cannot monitor production clusters running newer versions of the {{stack}}. If necessary, the monitoring cluster can monitor production clusters running the latest release of the previous major version.
+1. If you use a separate [monitoring cluster](/deploy-manage/monitor/stack-monitoring/elasticsearch-monitoring-self-managed.md), upgrade the monitoring cluster before the production cluster. The monitoring cluster and the clusters being monitored should be running the same version of the {{stack}}. Monitoring clusters cannot monitor production clusters running newer versions of the {{stack}}. If necessary, the monitoring cluster can monitor production clusters running the latest release of the previous major version.
 
     :::{note}
     If you use {{ccs}}, 9.0.0 and later can search only remote clusters running the previous minor version, the same version, or a newer minor version in the same major version. For more information, refer to [{{ccs-cap}}](../../solutions/search/cross-cluster-search.md).
 
-    If you use {{ccr}}, a cluster that contains follower indices must run the same or newer (compatible) version as the remote cluster. For more information and to view the version compatibility matrix, refer to [{{ccr-cap}}](/deploy-manage/tools/cross-cluster-replication.md). To view your remote clusters in {{kib}}, go to **Stack Management > Remote Clusters**. 
-    
-    In addition, if you have {{ccr-init}} data streams, refer to [Upgrade uni-directional {{ccr}} clusters with followed data streams](#upgrade-ccr-data-streams) for specific instructions on reindexing.   
+    If you use {{ccr}}, a cluster that contains follower indices must run the same or newer (compatible) version as the remote cluster. For more information and to view the version compatibility matrix, refer to [{{ccr-cap}}](/deploy-manage/tools/cross-cluster-replication.md). To view your remote clusters in {{kib}}, go to **Stack Management > Remote Clusters**.
+
+    In addition, if you have {{ccr-init}} data streams, refer to [Upgrade uni-directional {{ccr}} clusters with followed data streams](#upgrade-ccr-data-streams) for specific instructions on reindexing.
     ::::
 
-9. To reduce overhead on the cluster during the upgrade, close {{ml}} jobs. Although {{ml}} jobs can run during a rolling upgrade, doing so increases the cluster workload.
+1. To reduce overhead on the cluster during the upgrade, close {{ml}} jobs. Although {{ml}} jobs can run during a rolling upgrade, doing so increases the cluster workload.
 
-10. If you have `.ml-anomalies-*`anomaly detection result indices created in {{es}} 7.x, reindex them, mark them as read-only, or delete them before you upgrade to 9.0.0. For more information, refer to [Migrate anomaly detection results](#anomaly-migration). 
+1. If you have `.ml-anomalies-*`anomaly detection result indices created in {{es}} 7.x, reindex them, mark them as read-only, or delete them before you upgrade to 9.0.0. For more information, refer to [Migrate anomaly detection results](#anomaly-migration).
 
-11. If you have transform destination indices created in {{es}} 7.x, reset, reindex, or delete them before you upgrade to 9.0.0. For more information, refer to [Migrate transform destination indices](#transform-migration). 
+1. If you have transform destination indices created in {{es}} 7.x, reset, reindex, or delete them before you upgrade to 9.0.0. For more information, refer to [Migrate transform destination indices](#transform-migration).
 
 
 ## Reindex to upgrade [reindex-to-upgrade]
@@ -88,7 +107,7 @@ Optionally create a 9.0.0 deployment and reindex from remote:
 
 ## Upgrade uni-directional {{ccr}} clusters with followed data streams [upgrade-ccr-data-streams]
 
-When moving to a new major version of {{es}}, you must perform specific actions to ensure that indices — including those that back a data stream — are compatible with the latest Lucene version. With a {{ccr-init}}-enabled cluster, consider whether you want to keep your older data writable or read-only to ensure you make changes to the cluster in the correct order. 
+When moving to a new major version of {{es}}, you must perform specific actions to ensure that indices — including those that back a data stream — are compatible with the latest Lucene version. With a {{ccr-init}}-enabled cluster, consider whether you want to keep your older data writable or read-only to ensure you make changes to the cluster in the correct order.
 
 :::{note}
 {{ccr-init}}-replicated data streams only allow writing to the most recent backing index, as ILM automatically injects an unfollow event after every rollover. Therefore, you can't reindex {{ccr-init}}-followed data streams since older backing indices are no longer replicated by {{ccr-init}}.
@@ -96,9 +115,9 @@ When moving to a new major version of {{es}}, you must perform specific actions 
 
 ### Migrate read-only historical data
 
-If you want to keep your older data as read-only: 
+If you want to keep your older data as read-only:
 
-1. Issue a rollover for all replicated data streams on the follower cluster to ensure the write index is compatible with the version you're upgrading to. 
+1. Issue a rollover for all replicated data streams on the follower cluster to ensure the write index is compatible with the version you're upgrading to.
 2. Run the Upgrade Assistant on the {{ccr-init}} follower cluster and resolve any data stream deprecation notices, selecting the option to not reindex and allow the backing indices to become read-only after upgrading.
 3. Upgrade the {{ccr-init}} follower cluster to the appropriate version. Ensure you take a snapshot before starting the upgrade.
 4. Run the Upgrade Assistant on the {{ccr-init}} leader cluster and repeat the same steps as the follower cluster, opting not to reindex.
@@ -109,7 +128,7 @@ If you want to keep your older data as read-only:
 If you need to write directly to non-write backing indices of data streams in a {{ccr-init}}-replicated cluster pair:
 
 1. Before upgrading, remove the data stream and all follower indices from the {{ccr-init}} follower.
-2. Run the Upgrade Assistant and select the “Reindex” option. 
+2. Run the Upgrade Assistant and select the “Reindex” option.
 3. Once the reindexing is complete and the leader cluster is upgraded, re-add the newly reindexed backing indexes as follower indices on the {{ccr-init}} follower.
 
 
