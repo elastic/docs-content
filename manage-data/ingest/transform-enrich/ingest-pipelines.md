@@ -10,9 +10,9 @@ applies_to:
 
 {{es}} ingest pipelines let you perform common transformations on your data before indexing. For example, you can use pipelines to remove fields, extract values from text, and enrich your data.
 
-A pipeline consists of a series of configurable tasks called [processors](elasticsearch://reference/ingestion-tools/enrich-processor/index.md). Each processor runs sequentially, making specific changes to incoming documents. After the processors have run, {{es}} adds the transformed documents to your data stream or index.
+A pipeline consists of a series of configurable tasks called [processors](elasticsearch://reference/enrich-processor/index.md). Each processor runs sequentially, making specific changes to incoming documents. After the processors have run, {{es}} adds the transformed documents to your data stream or index.
 
-:::{image} ../../../images/elasticsearch-reference-ingest-process.svg
+:::{image} /manage-data/images/elasticsearch-reference-ingest-process.svg
 :alt: Ingest pipeline diagram
 :::
 
@@ -37,7 +37,7 @@ In {{kib}}, open the main menu and click **Stack Management > Ingest Pipelines**
 * Edit or clone existing pipelines
 * Delete pipelines
 
-:::{image} ../../../images/elasticsearch-reference-ingest-pipeline-list.png
+:::{image} /manage-data/images/elasticsearch-reference-ingest-pipeline-list.png
 :alt: Kibana's Ingest Pipelines list view
 :screenshot:
 :::
@@ -49,7 +49,7 @@ The **New pipeline from CSV** option lets you use a CSV to create an ingest pipe
 ::::
 
 
-You can also use the [ingest APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-ingest) to create and manage pipelines. The following [create pipeline API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ingest-put-pipeline) request creates a pipeline containing two [`set`](elasticsearch://reference/ingestion-tools/enrich-processor/set-processor.md) processors followed by a [`lowercase`](elasticsearch://reference/ingestion-tools/enrich-processor/lowercase-processor.md) processor. The processors run sequentially in the order specified.
+You can also use the [ingest APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-ingest) to create and manage pipelines. The following [create pipeline API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ingest-put-pipeline) request creates a pipeline containing two [`set`](elasticsearch://reference/enrich-processor/set-processor.md) processors followed by a [`lowercase`](elasticsearch://reference/enrich-processor/lowercase-processor.md) processor. The processors run sequentially in the order specified.
 
 ```console
 PUT _ingest/pipeline/my-pipeline
@@ -99,7 +99,7 @@ To unset the `version` number using the API, replace or update the pipeline with
 
 Before using a pipeline in production, we recommend you test it using sample documents. When creating or editing a pipeline in {{kib}}, click **Add documents**. In the **Documents** tab, provide sample documents and click **Run the pipeline**.
 
-:::{image} ../../../images/elasticsearch-reference-test-a-pipeline.png
+:::{image} /manage-data/images/elasticsearch-reference-test-a-pipeline.png
 :alt: Test a pipeline in Kibana
 :screenshot:
 :::
@@ -249,9 +249,9 @@ output.elasticsearch:
 
 ## Pipelines for {{fleet}} and {{agent}} [pipelines-for-fleet-elastic-agent]
 
-{{agent}} integrations ship with default ingest pipelines that preprocess and enrich data before indexing. [{{fleet}}](/reference/ingestion-tools/fleet/index.md) applies these pipelines using [index templates](../../data-store/templates.md) that include [pipeline index settings](ingest-pipelines.md#set-default-pipeline). {{es}} matches these templates to your {{fleet}} data streams based on the [stream’s naming scheme](/reference/ingestion-tools/fleet/data-streams.md#data-streams-naming-scheme).
+{{agent}} integrations ship with default ingest pipelines that preprocess and enrich data before indexing. [{{fleet}}](/reference/fleet/index.md) applies these pipelines using [index templates](../../data-store/templates.md) that include [pipeline index settings](ingest-pipelines.md#set-default-pipeline). {{es}} matches these templates to your {{fleet}} data streams based on the [stream’s naming scheme](/reference/fleet/data-streams.md#data-streams-naming-scheme).
 
-Each default integration pipeline calls a nonexistent, unversioned `*@custom` ingest pipeline. If unaltered, this pipeline call has no effect on your data. However, you can modify this call to create custom pipelines for integrations that persist across upgrades. Refer to [Tutorial: Transform data with custom ingest pipelines](/reference/ingestion-tools/fleet/data-streams-pipeline-tutorial.md) to learn more.
+Each default integration pipeline calls a nonexistent, unversioned `*@custom` ingest pipeline. If unaltered, this pipeline call has no effect on your data. However, you can modify this call to create custom pipelines for integrations that persist across upgrades. Refer to [Tutorial: Transform data with custom ingest pipelines](/reference/fleet/data-streams-pipeline-tutorial.md) to learn more.
 
 {{fleet}} doesn’t provide a default ingest pipeline for the **Custom logs** integration, but you can specify a pipeline for this integration using an [index template](ingest-pipelines.md#pipeline-custom-logs-index-template) or a [custom configuration](ingest-pipelines.md#pipeline-custom-logs-configuration).
 
@@ -303,7 +303,7 @@ $$$pipeline-custom-logs-index-template$$$
 
     For example, if your dataset’s name was `my_app`, {{fleet}} adds new data to the `logs-my_app-default` data stream.
 
-    :::{image} ../../../images/elasticsearch-reference-custom-logs.png
+    :::{image} /manage-data/images/elasticsearch-reference-custom-logs.png
     :alt: Set up custom log integration in Fleet
     :screenshot:
     :::
@@ -337,7 +337,7 @@ $$$pipeline-custom-logs-configuration$$$
 
 4. In **Custom Configurations**, specify your pipeline in the `pipeline` policy setting.
 
-    :::{image} ../../../images/elasticsearch-reference-custom-logs-pipeline.png
+    :::{image} /manage-data/images/elasticsearch-reference-custom-logs-pipeline.png
     :alt: Custom pipeline configuration for custom log integration
     :screenshot:
     :::
@@ -345,12 +345,12 @@ $$$pipeline-custom-logs-configuration$$$
 
 **{{agent}} standalone**
 
-If you run {{agent}} standalone, you can apply pipelines using an [index template](../../data-store/templates.md) that includes the [`index.default_pipeline`](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#index-default-pipeline) or [`index.final_pipeline`](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#index-final-pipeline) index setting. Alternatively, you can specify the `pipeline` policy setting in your `elastic-agent.yml` configuration. See [Install standalone {{agent}}s](/reference/ingestion-tools/fleet/install-standalone-elastic-agent.md).
+If you run {{agent}} standalone, you can apply pipelines using an [index template](../../data-store/templates.md) that includes the [`index.default_pipeline`](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#index-default-pipeline) or [`index.final_pipeline`](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#index-final-pipeline) index setting. Alternatively, you can specify the `pipeline` policy setting in your `elastic-agent.yml` configuration. See [Install standalone {{agent}}s](/reference/fleet/install-standalone-elastic-agent.md).
 
 
 ## Pipelines for search indices [pipelines-in-enterprise-search]
 
-When you create Elasticsearch indices for search use cases, for example, using the [web crawler^](https://www.elastic.co/guide/en/enterprise-search/current/crawler.html) or [connectors](elasticsearch://reference/ingestion-tools/search-connectors/index.md), these indices are automatically set up with specific ingest pipelines. These processors help optimize your content for search. See [*Ingest pipelines in Search*](../../../solutions/search/ingest-for-search.md) for more information.
+When you create Elasticsearch indices for search use cases, for example, using the [web crawler^](https://www.elastic.co/guide/en/enterprise-search/current/crawler.html) or [connectors](elasticsearch://reference/search-connectors/index.md), these indices are automatically set up with specific ingest pipelines. These processors help optimize your content for search. See [*Ingest pipelines in Search*](../../../solutions/search/ingest-for-search.md) for more information.
 
 
 ## Access source fields in a processor [access-source-fields]
@@ -390,7 +390,7 @@ PUT _ingest/pipeline/my-pipeline
 Use dot notation to access object fields.
 
 ::::{important}
-If your document contains flattened objects, use the [`dot_expander`](elasticsearch://reference/ingestion-tools/enrich-processor/dot-expand-processor.md) processor to expand them first. Other ingest processors cannot access flattened objects.
+If your document contains flattened objects, use the [`dot_expander`](elasticsearch://reference/enrich-processor/dot-expand-processor.md) processor to expand them first. Other ingest processors cannot access flattened objects.
 ::::
 
 
@@ -768,7 +768,7 @@ PUT _ingest/pipeline/my-pipeline
 
 ## Conditionally apply pipelines [conditionally-apply-pipelines]
 
-Combine an `if` condition with the [`pipeline`](elasticsearch://reference/ingestion-tools/enrich-processor/pipeline-processor.md) processor to apply other pipelines to documents based on your criteria. You can use this pipeline as the [default pipeline](ingest-pipelines.md#set-default-pipeline) in an [index template](../../data-store/templates.md) used to configure multiple data streams or indices.
+Combine an `if` condition with the [`pipeline`](elasticsearch://reference/enrich-processor/pipeline-processor.md) processor to apply other pipelines to documents based on your criteria. You can use this pipeline as the [default pipeline](ingest-pipelines.md#set-default-pipeline) in an [index template](../../data-store/templates.md) used to configure multiple data streams or indices.
 
 ```console
 PUT _ingest/pipeline/one-pipeline-to-rule-them-all

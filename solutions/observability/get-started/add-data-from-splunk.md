@@ -16,7 +16,7 @@ Apache, AWS CloudTrail, Nginx, and Zeek integrations offer the ability to seamle
 
 These integrations work by using the `httpjson` input in {{agent}} to run a Splunk search via the Splunk REST API and then extract the raw event from the results.  The raw event is then processed via the {{agent}}.  The Splunk search is customizable and the interval between searches is customizable.  These integrations only get new data since the last query, not historical data.
 
-:::{image} ../../../images/observability-elastic-agent-splunk.png
+:::{image} /solutions/images/observability-elastic-agent-splunk.png
 :alt: Splunk integration components
 :screenshot:
 :::
@@ -45,7 +45,7 @@ Find **Integrations** in the main menu or use the [global search field](/explore
 
 Enable "Collect logs from third-party REST API" and disable both "Collect logs from Nginx instances" and "Collect metrics from Nginx instances".
 
-:::{image} ../../../images/observability-kibana-fleet-third-party-rest-api.png
+:::{image} /solutions/images/observability-kibana-fleet-third-party-rest-api.png
 :alt: {{fleet}} showing enabling third-party REST API
 :screenshot:
 :::
@@ -61,7 +61,7 @@ The Splunk username and password must be of a user with a role or capability to 
 
 SSL Configuration is available under the "Advanced options".  These may be necessary if Splunk Enterprise server uses self-signed certificates.  See [SSL Options](beats://reference/filebeat/configuration-ssl.md) for valid configuration options.
 
-:::{image} ../../../images/observability-kibana-fleet-third-party-rest-settings.png
+:::{image} /solutions/images/observability-kibana-fleet-third-party-rest-settings.png
 :alt: {{fleet}} showing enabling third-party REST API settings
 :screenshot:
 :::
@@ -79,7 +79,7 @@ Be aware that each time the {{agent}} connects to the Splunk Enterprise REST API
 
 Tags may be added in the "Advanced options".  For example, if you’d like to tag events coming from Splunk with a *Splunk* tag, you can add it here.  By default, the forward tag is present to indicate that events are being forwarded via an intermediary, i.e. Splunk.
 
-:::{image} ../../../images/observability-kibana-fleet-third-party-rest-dataset-settings.png
+:::{image} /solutions/images/observability-kibana-fleet-third-party-rest-dataset-settings.png
 :alt: {{fleet}} showing enabling third-party REST API settings
 :screenshot:
 :::

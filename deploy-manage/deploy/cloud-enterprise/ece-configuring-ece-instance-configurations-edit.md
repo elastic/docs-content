@@ -42,7 +42,7 @@ If you edit instance configurations, so that they match fewer allocators, instan
 
         For example: Enter `SSD` and `true`, if you tagged your allocators with this tag, or enter whatever tag you are using to identify allocators that can host Elasticsearch data nodes for incoming data.
 
-        :::{image} ../../../images/cloud-enterprise-ece-query-ui.png
+        :::{image} /deploy-manage/images/cloud-enterprise-ece-query-ui.png
         :alt: Creating a query that filters on allocator tags
         :::
 

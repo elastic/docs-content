@@ -13,7 +13,7 @@ Lucene, the Java libraries on which {{es}} is based, introduced the concept of p
 
 Sitting between {{es}} and the disk is the filesystem cache. Documents in the in-memory indexing buffer ([Figure 1](#img-pre-refresh)) are written to a new segment ([Figure 2](#img-post-refresh)). The new segment is written to the filesystem cache first (which is cheap) and only later is it flushed to disk (which is expensive). However, after a file is in the cache, it can be opened and read just like any other file.
 
-:::{image} /images/elasticsearch-reference-lucene-in-memory-buffer.png
+:::{image} /manage-data/images/elasticsearch-reference-lucene-in-memory-buffer.png
 :alt: A Lucene index with new documents in the in-memory buffer
 :title: A Lucene index with new documents in the in-memory buffer
 :name: img-pre-refresh
@@ -21,7 +21,7 @@ Sitting between {{es}} and the disk is the filesystem cache. Documents in the in
 
 Lucene allows new segments to be written and opened, making the documents they contain visible to search ​without performing a full commit. This is a much lighter process than a commit to disk, and can be done frequently without degrading performance.
 
-:::{image} /images/elasticsearch-reference-lucene-written-not-committed.png
+:::{image} /manage-data/images/elasticsearch-reference-lucene-written-not-committed.png
 :alt: The buffer contents are written to a segment, which is searchable, but is not yet committed
 :title: The buffer contents are written to a segment, which is searchable, but is not yet committed
 :name: img-post-refresh

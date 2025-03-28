@@ -5,7 +5,7 @@ mapped_pages:
 
 # Elastic Agent to Elasticsearch: APIs for collection [agent-apis]
 
-:::{image} ../../../images/ingest-ea-apis.png
+:::{image} /manage-data/images/ingest-ea-apis.png
 :alt: Image showing {{agent}} collecting data using APIs and sending to {{es}}
 :::
 

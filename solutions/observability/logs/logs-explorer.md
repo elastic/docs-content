@@ -18,7 +18,7 @@ With **Logs Explorer**, you can quickly search and filter your log data, get inf
 
 To open **Logs Explorer**, find `Logs Explorer` in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
-:::{image} ../../../images/observability-log-explorer.png
+:::{image} /solutions/images/observability-log-explorer.png
 :alt: Screen capture of the Logs Explorer
 :screenshot:
 :::
@@ -35,7 +35,7 @@ By default, Logs Explorer shows all of your logs, according to the index pattern
 
 If you need to focus on logs from a specific integration, select the integration from the logs menu:
 
-:::{image} ../../../images/observability-log-menu.png
+:::{image} /solutions/images/observability-log-menu.png
 :alt: Screen capture of log menu
 :screenshot:
 :::
@@ -54,25 +54,25 @@ Refer to the [Discover](../../../explore-analyze/discover.md) documentation for 
 
 The actions column provides access to additional information about your logs.
 
-**Expand:** ![The icon to expand log details](../../../images/observability-expand-icon.png "") Open the log details to get an in-depth look at an individual log file.
+**Expand:** ![The icon to expand log details](/solutions/images/observability-expand-icon.png "") Open the log details to get an in-depth look at an individual log file.
 
-**Degraded document indicator:** ![The icon that shows ignored fields](../../../images/observability-pagesSelect-icon.png "") Shows if any of the document’s fields were ignored when it was indexed. Ignored fields could indicate malformed fields or other issues with your document. Use this information to investigate and determine why fields are being ignored.
+**Degraded document indicator:** ![The icon that shows ignored fields](/solutions/images/observability-pagesSelect-icon.png "") Shows if any of the document’s fields were ignored when it was indexed. Ignored fields could indicate malformed fields or other issues with your document. Use this information to investigate and determine why fields are being ignored.
 
-**Stacktrace indicator:** ![The icon that shows if a document contains stack traces](../../../images/observability-apmTrace-icon.png "") Shows if the document contains stack traces. This indicator makes it easier to navigate through your documents and know if they contain additional information in the form of stack traces.
+**Stacktrace indicator:** ![The icon that shows if a document contains stack traces](/solutions/images/observability-apmTrace-icon.png "") Shows if the document contains stack traces. This indicator makes it easier to navigate through your documents and know if they contain additional information in the form of stack traces.
 
 
 ## View log details [view-log-details]
 
-Click the expand icon ![icon to open log details](../../../images/observability-expand-icon.png "") to get an in-depth look at an individual log file.
+Click the expand icon ![icon to open log details](/solutions/images/observability-expand-icon.png "") to get an in-depth look at an individual log file.
 
 These details provide immediate feedback and context for what’s happening and where it’s happening for each log. From here, you can quickly debug errors and investigate the services where errors have occurred.
 
 The following actions help you filter and focus on specific fields in the log details:
 
-* **Filter for value (![filter for value icon](../../../images/observability-plusInCircle.png "")):** Show logs that contain the specific field value.
-* **Filter out value (![filter out value icon](../../../images/observability-minusInCircle.png "")):** Show logs that do **not** contain the specific field value.
-* **Filter for field present (![filter for present icon](../../../images/observability-filter.png "")):** Show logs that contain the specific field.
-* **Toggle column in table (![toggle column in table icon](../../../images/observability-listAdd.png "")):** Add or remove a column for the field to the main Logs Explorer table.
+* **Filter for value (![filter for value icon](/solutions/images/observability-plusInCircle.png "")):** Show logs that contain the specific field value.
+* **Filter out value (![filter out value icon](/solutions/images/observability-minusInCircle.png "")):** Show logs that do **not** contain the specific field value.
+* **Filter for field present (![filter for present icon](/solutions/images/observability-filter.png "")):** Show logs that contain the specific field.
+* **Toggle column in table (![toggle column in table icon](/solutions/images/observability-listAdd.png "")):** Add or remove a column for the field to the main Logs Explorer table.
 
 
 ## View log data set details [view-log-data-set-details]

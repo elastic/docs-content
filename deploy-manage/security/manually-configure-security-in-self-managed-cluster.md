@@ -35,7 +35,7 @@ Even with security enabled, never expose {{es}} to public internet traffic. Usin
 
 ## Common security scenarios
 
-:::{image} ../../images/elasticsearch-reference-elastic-security-overview.png
+:::{image} /deploy-manage/images/elasticsearch-reference-elastic-security-overview.png
 :alt: Elastic Security layers
 :::
 

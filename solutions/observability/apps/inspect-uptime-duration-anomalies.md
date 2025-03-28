@@ -26,7 +26,7 @@ Create a {{ml}} job to detect anomalous monitor duration rates automatically.
 
 When an anomaly is detected, the duration is displayed on the **Monitor duration** chart, along with the duration times. The colors represent the criticality of the anomaly: red (critical) and yellow (minor).
 
-:::{image} ../../../images/observability-inspect-uptime-duration-anomalies.png
+:::{image} /solutions/images/observability-inspect-uptime-duration-anomalies.png
 :alt: inspect uptime duration anomalies
 :screenshot:
 :::

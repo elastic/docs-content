@@ -16,7 +16,7 @@ applies_to:
 
 You can drill down into the status of your {{es}} cluster in {{kib}} by clicking the [Overview](#cluster-overview-page), [Nodes](#nodes-page), [Indices](#indices-overview-page) and [Logs](#logs-monitor-page) links on the **Stack Monitoring** page.
 
-:::{image} /images/kibana-monitoring-elasticsearch.png
+:::{image} /deploy-manage/images/kibana-monitoring-elasticsearch.png
 :alt: Monitoring clusters
 :screenshot:
 :::
@@ -35,7 +35,7 @@ Conditions that require your attention are listed at the top of the Clusters pag
 
 The panel at the top shows the current cluster statistics, the charts show the search and indexing performance over time, and the table at the bottom shows information about any shards that are being recovered. If you use {{filebeat}} to collect log data from this cluster, you can also see its recent logs.
 
-:::{image} /images/kibana-monitoring-overview.png
+:::{image} /deploy-manage/images/kibana-monitoring-overview.png
 :alt: Elasticsearch Cluster Overview
 :screenshot:
 :::

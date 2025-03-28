@@ -14,7 +14,7 @@ Index time
 :   When a document is indexed, any [`text`](elasticsearch://reference/elasticsearch/mapping-reference/text.md) field values are analyzed.
 
 Search time
-:   When running a [full-text search](elasticsearch://reference/query-languages/full-text-queries.md) on a `text` field, the query string (the text the user is searching for) is analyzed. Search time is also called *query time*.
+:   When running a [full-text search](elasticsearch://reference/query-languages/query-dsl/full-text-queries.md) on a `text` field, the query string (the text the user is searching for) is analyzed. Search time is also called *query time*.
 
     For more details on text analysis at search time, refer to [Text analysis during search](/solutions/search/full-text/text-analysis-during-search.md).
 

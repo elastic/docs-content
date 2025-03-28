@@ -73,7 +73,7 @@ RLIKE constant_exp <2>
 
 **Description**: This operator is similar to `LIKE`, but the user is not limited to search for a string based on a fixed pattern with the percent sign (`%`) and underscore (`_`); the pattern in this case is a regular expression which allows the construction of more flexible patterns.
 
-For supported syntax, see [*Regular expression syntax*](elasticsearch://reference/query-languages/regexp-syntax.md).
+For supported syntax, see [*Regular expression syntax*](elasticsearch://reference/query-languages/query-dsl/regexp-syntax.md).
 
 ```sql
 SELECT author, name FROM library WHERE name RLIKE 'Child.* Dune';
@@ -95,9 +95,8 @@ When using `LIKE`/`RLIKE`, do consider using [full-text search predicates](sql-f
 
 For example:
 
-|     |     |
+| LIKE/RLIKE | QUERY/MATCH |
 | --- | --- |
-| **LIKE/RLIKE** | **QUERY/MATCH** |
 | ``foo LIKE 'bar'`` | ``MATCH(foo, 'bar')`` |
 | ``foo LIKE 'bar' AND tar LIKE 'goo'`` | ``MATCH('foo^2, tar^5', 'bar goo', 'operator=and')`` |
 | ``foo LIKE 'barr'`` | ``QUERY('foo: bar~')`` |

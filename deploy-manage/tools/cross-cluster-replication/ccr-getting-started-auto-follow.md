@@ -26,7 +26,7 @@ To create an auto-follow pattern from Stack Management in {{kib}}:
 
 As new indices matching these patterns are created on the remote, {{es}} automatically replicates them to local follower indices.
 
-:::{image} ../../../images/elasticsearch-reference-auto-follow-patterns.png
+:::{image} /deploy-manage/images/elasticsearch-reference-auto-follow-patterns.png
 :alt: The Auto-follow patterns page in {{kib}}
 :screenshot:
 :::

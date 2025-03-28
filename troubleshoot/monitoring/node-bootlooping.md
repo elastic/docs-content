@@ -1,16 +1,18 @@
 ---
 navigation_title: "Node bootlooping"
+applies_to:
+  deployment:
+    ess: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-config-change-errors.html
-  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-config-change-errors.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-config-change-errors.html
 ---
 
-# Troubleshoot node bootlooping [ec-config-change-errors]
+# Troubleshoot node bootlooping in {{ech}} [ec-config-change-errors]
 
 When you attempt to apply a configuration change to a deployment, the attempt may fail with an error indicating that the change could not be applied, and deployment resources may be unable to restart. In some cases, bootlooping may result, where the deployment resources cycle through a continual reboot process.
 
-:::{image} /images/cloud-ec-ce-configuration-change-failure.png
+:::{image} /troubleshoot/images/cloud-ec-ce-configuration-change-failure.png
 :alt: A screen capture of the deployment page showing an error: Latest change to {{es}} configuration failed.
 :::
 
@@ -39,7 +41,7 @@ Following are some frequent causes of a failed configuration change:
 If you’re unable to remediate the failing plan’s root cause, you can attempt to reset the deployment to the latest successful {{es}} configuration by performing a [no-op plan](/troubleshoot/monitoring/deployment-health-warnings.md). For an example, see this [video walkthrough](https://www.youtube.com/watch?v=8MnXZ9egBbQ).
 
 :::{important}
- If you’re using Elastic Cloud Hosted, then you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, real-time issue detection and resolution paths. For more information, refer to [Monitor with AutoOps](/deploy-manage/monitor/autoops.md).
+ If you’re using Elastic Cloud Hosted, then you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, and real-time issue detection with resolution paths. For more information, refer to [Monitor with AutoOps](/deploy-manage/monitor/autoops.md).
 :::
 
 ## Secure settings [ec-config-change-errors-secure-settings]
@@ -127,7 +129,7 @@ Configuration change errors can occur when there is insufficient RAM configured 
 
 Check the [{{es}} cluster size](/deploy-manage/deploy/elastic-cloud/ec-customize-deployment-components.md#ec-cluster-size) and the [JVM memory pressure indicator](/deploy-manage/monitor/ec-memory-pressure.md) documentation to learn more.
 
-As well, you can read our detailed blog [Managing and troubleshooting {{es}} memory](https://www.elastic.co/blog/managing-and-troubleshooting-elasticsearch-memory).
+You can also read our detailed blog [Managing and troubleshooting {{es}} memory](https://www.elastic.co/blog/managing-and-troubleshooting-elasticsearch-memory).
 
 
 ## Existing index [ec-config-change-errors-existing-index]

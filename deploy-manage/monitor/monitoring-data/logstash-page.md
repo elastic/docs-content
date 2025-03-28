@@ -16,7 +16,7 @@ applies_to:
 
 If you are monitoring Logstash nodes, click **Overview** in the Logstash section of the **Stack Monitoring** page in {{kib}}. You can view the overall health of the Logstash nodes.
 
-:::{image} /images/kibana-monitoring-logstash-overview.png
+:::{image} /deploy-manage/images/kibana-monitoring-logstash-overview.png
 :alt: Logstash Overview
 :screenshot:
 :::

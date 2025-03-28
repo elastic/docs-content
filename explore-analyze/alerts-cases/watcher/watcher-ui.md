@@ -13,7 +13,7 @@ Go to the **Watcher** page using the navigation menu or the [global search field
 * [Deactivate and delete a watch](#watcher-deactivate)
 * [Create an advanced watch using API syntax](#watcher-create-advanced-watch)
 
-![Watcher list](../../../images/kibana-watches.png "")
+![Watcher list](/explore-analyze/images/kibana-watches.png "")
 
 [Alerting on cluster and index events](../../../explore-analyze/alerts-cases/watcher.md) is a good source for detailed information on how watches work. If you are using the UI to create a threshold watch, take a look at the different watcher actions. If you are creating an advanced watch, you should be familiar with the parts of a watch—input, schedule, condition, and actions.
 
@@ -50,7 +50,7 @@ The following example walks you through creating a threshold alert. The alert is
 3. In the **Indices to query** field, enter `metricbeat-*` and select `@timestamp` as the time field.
 4. Use the default schedule to run the watch every 1 minute.
 
-    ![Input and schedule for threshold alert](../../../images/kibana-create-threshold-alert-created.png "")
+    ![Input and schedule for threshold alert](/explore-analyze/images/kibana-create-threshold-alert-created.png "")
 
 ### Add a condition [_add_a_condition]
 
@@ -65,7 +65,7 @@ You should now see a panel with default conditions and a visualization of the da
 
     As you change the condition, the visualization is automatically updated. The black line represents the threshold (25%), while the green fluctuating line represents the change in CPU over the set time period.
 
-    ![Condition for threshold alert](../../../images/kibana-threshold-alert-condition.png "")
+    ![Condition for threshold alert](/explore-analyze/images/kibana-threshold-alert-condition.png "")
 
 ### Add an action [_add_an_action]
 
@@ -106,13 +106,13 @@ From this page you can drill down into a watch to investigate its history and st
 
 The **Execution history** tab shows each time the watch is triggered and the results of the query, whether the condition was met, and what actions were taken.
 
-![Execution history tab](../../../images/kibana-execution-history.png "")
+![Execution history tab](/explore-analyze/images/kibana-execution-history.png "")
 
 ### Acknowledge action status [_acknowledge_action_status]
 
 The **Action statuses** tab lists all actions associated with the watch and the state of each action. Some actions can be acknowledged, which will prevent too many executions of that action for the relevant watch. See [Acknowledgement and throttling](../../../explore-analyze/alerts-cases/watcher/actions.md#actions-ack-throttle) for details.
 
-![Action status tab](../../../images/kibana-alerts-status.png "")
+![Action status tab](/explore-analyze/images/kibana-alerts-status.png "")
 
 ## Deactivate and delete a watch [watcher-deactivate]
 
@@ -129,7 +129,7 @@ Advanced watches are for users who are more familiar with {{es}} query syntax an
 
 On the Watch overview page, click **Create** and choose **Create advanced watch**. An advanced watch requires a name and ID.  Name is a user-friendly way to identify the watch, and ID refers to the identifier used by {{es}}.  Refer to [Watch definition](../../../explore-analyze/alerts-cases/watcher/how-watcher-works.md#watch-definition) for how to input the watch JSON.
 
-![Create advanced watch](../../../images/kibana-advanced-watch-create.png "")
+![Create advanced watch](/explore-analyze/images/kibana-advanced-watch-create.png "")
 
 ### Simulate the watch [_simulate_the_watch]
 
@@ -144,7 +144,7 @@ Some watches, such as those using basic auth credentials, contain passwords. For
 
 After starting the simulation, you’ll see a results screen. For more information on the fields in the response, see the [Execute watch API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-watcher-execute-watch).
 
-![Create advanced watch](../../../images/kibana-advanced-watch-simulate.png "")
+![Create advanced watch](/explore-analyze/images/kibana-advanced-watch-simulate.png "")
 
 ### Examples of advanced watches [_examples_of_advanced_watches]
 

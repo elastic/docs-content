@@ -15,7 +15,7 @@ The advanced settings determine:
 * Which indices {{elastic-sec}} uses to retrieve data
 * {{ml-cap}} anomaly score display threshold
 * The navigation menu style used throughout the {{security-app}}
-* Whether the news feed is displayed on the [*Overview dashboard*](/solutions/security/dashboards/overview-dashboard.md)
+* Whether the news feed is displayed on the [Overview dashboard](/solutions/security/dashboards/overview-dashboard.md)
 * The default time interval used to filter {{elastic-sec}} pages
 * The default {{elastic-sec}} pages refresh time
 * Which IP reputation links appear on [IP detail](/solutions/security/explore/network-page.md) pages
@@ -38,9 +38,9 @@ Modifying advanced settings can affect Kibana performance and cause problems tha
 
 ## Access advanced settings [security-advanced-settings-access-advanced-settings]
 
-To access advanced settings, go to **Stack Management** → **Advanced Settings**, then scroll down to **Security Solution** settings.
+To access advanced settings, go to **Stack Management** → **Advanced Settings** in {{stack}} or **Project Settings** → **Stack Management** → **Advanced Settings** in {{serverless-short}}, then scroll down to **Security Solution** settings.
 
-:::{image} ../../../images/security-solution-advanced-settings.png
+:::{image} /solutions/images/security-solution-advanced-settings.png
 :alt: solution advanced settings
 :screenshot:
 :::
@@ -65,7 +65,7 @@ Index patterns use wildcards to specify a set of indices. For example, the `file
 ::::
 
 
-All of the default index patterns match [{{beats}}](beats://reference/index.md) and [{{agent}}](/reference/ingestion-tools/fleet/index.md) indices. This means all data shipped via {{beats}} and the {{agent}} is automatically added to the {{security-app}}.
+All of the default index patterns match [{{beats}}](beats://reference/index.md) and [{{agent}}](/reference/fleet/index.md) indices. This means all data shipped via {{beats}} and the {{agent}} is automatically added to the {{security-app}}.
 
 You can add or remove any indices and index patterns as required. In {{serverless-short}}, the maximum number of items that you can include in a comma-delimited list is 50. In {{stack}}, there is no limit. For more information on {{es}} indices, refer to [Data in: documents and indices](/manage-data/data-store/index-basics.md).
 
@@ -75,7 +75,7 @@ If you leave the `-*elastic-cloud-logs-*` index pattern selected, all Elastic cl
 
 
 ::::{important}
-{{elastic-sec}} requires [ECS-compliant data](https://www.elastic.co/guide/en/ecs/current). If you use third-party data collectors to ship data to {{es}}, the data must be mapped to ECS. [*Elastic Security ECS field reference*](/reference/security/fields-and-object-schemas/siem-field-reference.md) lists ECS fields used in {{elastic-sec}}.
+{{elastic-sec}} requires [ECS-compliant data](https://www.elastic.co/guide/en/ecs/current). If you use third-party data collectors to ship data to {{es}}, the data must be mapped to ECS. [Elastic Security ECS field reference](/reference/security/fields-and-object-schemas/siem-field-reference.md) lists ECS fields used in {{elastic-sec}}.
 ::::
 
 
@@ -191,7 +191,7 @@ The `securitySolution:alertTags` field determines which options display in the a
 
 ## Set the maximum notes limit for alerts and events [max-notes-alerts-events]
 
-The `securitySolution:maxUnassociatedNotes` field determines the maximum number of [notes](/solutions/security/investigate/notes.md) that you can attach to alerts and events. The maximum limit and default value is 1000.
+The `securitySolution:maxUnassociatedNotes` field determines the maximum number of [notes](/solutions/security/investigate/notes.md) that you can attach to alerts and events. The maximum limit and default value is 10000.
 
 
 ## Exclude cold and frozen data from rules [exclude-cold-frozen-data-rule-executions]

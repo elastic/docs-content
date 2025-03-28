@@ -38,7 +38,7 @@ This Hot/Frozen – High Availability architecture is intended for organizations
 
 ## Architecture [hot-frozen-architecture-diagram]
 
-:::{image} ../../images/reference-architectures-hot-frozen.png
+:::{image} /deploy-manage/images/reference-architectures-hot-frozen.png
 :alt: A Hot/Frozen Highly available architecture
 :::
 
@@ -47,7 +47,7 @@ We use an Availability Zone (AZ) concept in the architecture above. When running
 ::::
 
 
-The diagram illustrates an {{es}} cluster deployed across 3 availability zones (AZ). For production we recommend a minimum of 2 availability zones and 3 availability zones for mission critical applications. See [Plan for production](/deploy-manage/production-guidance/plan-for-production-elastic-cloud.md) for more details. A cluster that is running in {{ecloud}} that has data nodes in only two AZs will create a third master-eligible node in a third AZ. High availability cannot be achieved without three zones for any distributed computing technology.
+The diagram illustrates an {{es}} cluster deployed across 3 availability zones (AZ). For production we recommend a minimum of 2 availability zones and 3 availability zones for mission critical applications. See [](/deploy-manage/production-guidance/availability-and-resilience/resilience-in-ech.md) for more details. A cluster that is running in {{ecloud}} that has data nodes in only two AZs will create a third master-eligible node in a third AZ. High availability cannot be achieved without three zones for any distributed computing technology.
 
 The number of data nodes shown for each tier (hot and frozen) is illustrative and would be scaled up depending on ingest volume and retention period. Hot nodes contain both primary and replica shards. By default, primary and replica shards are always guaranteed to be in different availability zones in {{ech}}, but when self-deploying [shard allocation awareness](../distributed-architecture/shard-allocation-relocation-recovery/shard-allocation-awareness.md) would need to be configured. Frozen nodes act as a large high-speed cache and retrieve data from the snapshot store as needed.
 
@@ -62,14 +62,13 @@ In the links provided above, Elastic has performance tested hardware for each of
 
 This table shows our specific recommendations for nodes in a Hot/Frozen architecture.
 
-|     |     |     |     |     |
+| Type | AWS | Azure | GCP | Physical |
 | --- | --- | --- | --- | --- |
-| **Type** | **AWS** | **Azure** | **GCP** | **Physical** |
-| ![Hot data node](../../images/reference-architectures-hot.png "") | c6gd | f32sv2 | N2 | 16-32 vCPU<br>64 GB RAM<br>2-6 TB NVMe SSD |
-| ![Frozen data node](../../images/reference-architectures-frozen.png "") | i3en | e8dsv4 | N2 | 8 vCPU<br>64 GB RAM<br>6-20+ TB NVMe SSD<br>Depending on days cached |
-| ![Machine learning node](../../images/reference-architectures-machine-learning.png "") | m6gd | f16sv2 | N2 | 16 vCPU<br>64 GB RAM<br>256 GB SSD |
-| ![Master node](../../images/reference-architectures-master.png "") | c5d | f16sv2 | N2 | 8 vCPU<br>16 GB RAM<br>256 GB SSD |
-| ![Kibana node](../../images/reference-architectures-kibana.png "") | c6gd | f16sv2 | N2 | 8-16 vCPU<br>8 GB RAM<br>256 GB SSD |
+| ![Hot data node](/deploy-manage/images/reference-architectures-hot.png "") | c6gd | f32sv2 | N2 | 16-32 vCPU<br>64 GB RAM<br>2-6 TB NVMe SSD |
+| ![Frozen data node](/deploy-manage/images/reference-architectures-frozen.png "") | i3en | e8dsv4 | N2 | 8 vCPU<br>64 GB RAM<br>6-20+ TB NVMe SSD<br>Depending on days cached |
+| ![Machine learning node](/deploy-manage/images/reference-architectures-machine-learning.png "") | m6gd | f16sv2 | N2 | 16 vCPU<br>64 GB RAM<br>256 GB SSD |
+| ![Master node](/deploy-manage/images/reference-architectures-master.png "") | c5d | f16sv2 | N2 | 8 vCPU<br>16 GB RAM<br>256 GB SSD |
+| ![Kibana node](/deploy-manage/images/reference-architectures-kibana.png "") | c6gd | f16sv2 | N2 | 8-16 vCPU<br>8 GB RAM<br>256 GB SSD |
 
 
 ## Important considerations [hot-frozen-considerations]
@@ -93,8 +92,7 @@ This table shows our specific recommendations for nodes in a Hot/Frozen architec
 
 **Kibana:**
 
-* If self-deploying outside of {{ech}}, ensure that {{kib}} is configured for [high availability](/deploy-manage/production-guidance/kibana-in-production-environments.md#high-availability).
-
+* If self-deploying outside of {{ech}}, ensure that {{kib}} is configured for [high availability](/deploy-manage/production-guidance/kibana-load-balance-traffic.md#high-availability).
 
 ## How many nodes of each do you need? [hot-frozen-estimate]
 
@@ -110,6 +108,6 @@ You can [contact us](https://www.elastic.co/contact) for an estimate and recomme
 
 ## Resources and references [hot-frozen-resources]
 
-* [{{es}} - Get ready for production](/deploy-manage/production-guidance/getting-ready-for-production-elasticsearch.md)
+* [{{es}} - Get ready for production](/deploy-manage/production-guidance/elasticsearch-in-production-environments.md)
 * [{{ech}} - Preparing a deployment for production](/deploy-manage/deploy/elastic-cloud/cloud-hosted.md)
 * [Size your shards](/deploy-manage/production-guidance/optimize-performance/size-shards.md)

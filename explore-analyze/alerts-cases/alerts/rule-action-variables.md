@@ -435,4 +435,4 @@ You can create the following Mustache template in the email action for your rule
 
 When rendered into Markdown and then HTML and viewed in an email client, it looks like this:
 
-![Email template rendered in an email client](../../../images/kibana-email-mustache-template-rendered.png "")
+![Email template rendered in an email client](/explore-analyze/images/kibana-email-mustache-template-rendered.png "")

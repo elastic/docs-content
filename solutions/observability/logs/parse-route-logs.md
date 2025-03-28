@@ -132,9 +132,9 @@ When looking into issues, you want to filter for logs by when the issue occurred
 
 #### Use an ingest pipeline to extract the `@timestamp` field [observability-parse-log-data-use-an-ingest-pipeline-to-extract-the-timestamp-field]
 
-Ingest pipelines consist of a series of processors that perform common transformations on incoming documents before they are indexed. To extract the `@timestamp` field from the example log, use an ingest pipeline with a [dissect processor](elasticsearch://reference/ingestion-tools/enrich-processor/dissect-processor.md). The dissect processor extracts structured fields from unstructured log messages based on a pattern you set.
+Ingest pipelines consist of a series of processors that perform common transformations on incoming documents before they are indexed. To extract the `@timestamp` field from the example log, use an ingest pipeline with a [dissect processor](elasticsearch://reference/enrich-processor/dissect-processor.md). The dissect processor extracts structured fields from unstructured log messages based on a pattern you set.
 
-Elastic can parse string timestamps that are in `yyyy-MM-dd'T'HH:mm:ss.SSSZ` and `yyyy-MM-dd` formats into date fields. Since the log example’s timestamp is in one of these formats, you don’t need additional processors. More complex or nonstandard timestamps require a [date processor](elasticsearch://reference/ingestion-tools/enrich-processor/date-processor.md) to parse the timestamp into a date field.
+Elastic can parse string timestamps that are in `yyyy-MM-dd'T'HH:mm:ss.SSSZ` and `yyyy-MM-dd` formats into date fields. Since the log example’s timestamp is in one of these formats, you don’t need additional processors. More complex or nonstandard timestamps require a [date processor](elasticsearch://reference/enrich-processor/date-processor.md) to parse the timestamp into a date field.
 
 Use the following command to extract the timestamp from the `message` field into the `@timestamp` field:
 
@@ -155,7 +155,7 @@ PUT _ingest/pipeline/logs-example-default
 
 The previous command sets the following values for your ingest pipeline:
 
-* `_ingest/pipeline/logs-example-default`: The name of the pipeline,`logs-example-default`, needs to match the name of your data stream. You’ll set up your data stream in the next section. For more information, refer to the [data stream naming scheme](/reference/ingestion-tools/fleet/data-streams.md#data-streams-naming-scheme).
+* `_ingest/pipeline/logs-example-default`: The name of the pipeline,`logs-example-default`, needs to match the name of your data stream. You’ll set up your data stream in the next section. For more information, refer to the [data stream naming scheme](/reference/fleet/data-streams.md#data-streams-naming-scheme).
 * `field`: The field you’re extracting data from, `message` in this case.
 * `pattern`: The pattern of the elements in your log data. The `%{@timestamp} %{{message}}` pattern extracts the timestamp, `2023-08-08T13:45:12.123Z`, to the `@timestamp` field, while the rest of the message, `WARN 192.168.1.101 Disk usage exceeds 90%.`, stays in the `message` field. The dissect processor looks for the space as a separator defined by the pattern.
 
@@ -255,7 +255,7 @@ The example index template above sets the following component templates:
 
 #### Create a data stream [observability-parse-log-data-create-a-data-stream]
 
-Create your data stream using the [data stream naming scheme](/reference/ingestion-tools/fleet/data-streams.md#data-streams-naming-scheme). Name your data stream to match the name of your ingest pipeline, `logs-example-default` in this case. Post the example log to your data stream with this command:
+Create your data stream using the [data stream naming scheme](/reference/fleet/data-streams.md#data-streams-naming-scheme). Name your data stream to match the name of your ingest pipeline, `logs-example-default` in this case. Post the example log to your data stream with this command:
 
 ```console
 POST logs-example-default/_doc
@@ -306,7 +306,7 @@ You can now use the `@timestamp` field to sort your logs by the date and time th
 Check the following common issues and solutions with timestamps:
 
 * **Timestamp failure:** If your data has inconsistent date formats, set `ignore_failure` to `true` for your date processor. This processes logs with correctly formatted dates and ignores those with issues.
-* **Incorrect timezone:** Set your timezone using the `timezone` option on the [date processor](elasticsearch://reference/ingestion-tools/enrich-processor/date-processor.md).
+* **Incorrect timezone:** Set your timezone using the `timezone` option on the [date processor](elasticsearch://reference/enrich-processor/date-processor.md).
 * **Incorrect timestamp format:** Your timestamp can be a Java time pattern or one of the following formats: ISO8601, UNIX, UNIX_MS, or TAI64N. For more information on timestamp formats, refer to the [mapping date format](elasticsearch://reference/elasticsearch/mapping-reference/mapping-date-format.md).
 
 
@@ -678,7 +678,7 @@ Because all of the example logs are in this range, you’ll get the following re
 
 ##### Range queries [observability-parse-log-data-range-queries]
 
-Use [range queries](elasticsearch://reference/query-languages/query-dsl-range-query.md) to query logs in a specific range.
+Use [range queries](elasticsearch://reference/query-languages/query-dsl/query-dsl-range-query.md) to query logs in a specific range.
 
 The following command searches for IP addresses greater than or equal to `192.168.1.100` and less than or equal to `192.168.1.102`.
 
@@ -746,7 +746,7 @@ You’ll get the following results only showing logs in the range you’ve set:
 
 ## Reroute log data to specific data streams [observability-parse-log-data-reroute-log-data-to-specific-data-streams]
 
-By default, an ingest pipeline sends your log data to a single data stream. To simplify log data management, use a [reroute processor](elasticsearch://reference/ingestion-tools/enrich-processor/reroute-processor.md) to route data from the generic data stream to a target data stream. For example, you might want to send high-severity logs to a specific data stream to help with categorization.
+By default, an ingest pipeline sends your log data to a single data stream. To simplify log data management, use a [reroute processor](elasticsearch://reference/enrich-processor/reroute-processor.md) to route data from the generic data stream to a target data stream. For example, you might want to send high-severity logs to a specific data stream to help with categorization.
 
 This section shows you how to use a reroute processor to send the high-severity logs (`WARN` or `ERROR`) from the following example logs to a specific data stream and keep the regular logs (`DEBUG` and `INFO`) in the default data stream:
 

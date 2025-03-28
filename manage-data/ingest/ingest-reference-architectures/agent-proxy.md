@@ -5,11 +5,11 @@ mapped_pages:
 
 # Elastic Agent to proxy to Elasticsearch [agent-proxy]
 
-:::{image} ../../../images/ingest-ea-proxy-fs-es.png
+:::{image} /manage-data/images/ingest-ea-proxy-fs-es.png
 :alt: Image showing connections between {{agent}} and {{es}} using a proxy when Fleet Server is managed by Elastic
 :::
 
-:::{image} ../../../images/ingest-ea-fs-proxy-es.png
+:::{image} /manage-data/images/ingest-ea-fs-proxy-es.png
 :alt: Image showing connections between {{agent}} and {{es}} using a proxy
 :::
 
@@ -39,7 +39,7 @@ Info on {{agent}} and agent integrations:
 
 Info on using a proxy server:
 
-* [Using a proxy server with {{agent}} and {{fleet}}](/reference/ingestion-tools/fleet/fleet-agent-proxy-support.md)
+* [Using a proxy server with {{agent}} and {{fleet}}](/reference/fleet/fleet-agent-proxy-support.md)
 
 Info on {{es}}:
 

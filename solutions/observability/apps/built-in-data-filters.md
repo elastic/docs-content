@@ -59,7 +59,7 @@ This setting supports [Central configuration](apm-agent-central-configuration.md
 
 By default, the APM Server captures some personal data associated with trace events:
 
-* `client.ip`: The client’s IP address. Typically derived from the HTTP headers of incoming requests. `client.ip` is also used in conjunction with the [`geoip` processor](elasticsearch://reference/ingestion-tools/enrich-processor/geoip-processor.md) to assign geographical information to trace events. To learn more about how `client.ip` is derived, see [Deriving an incoming request’s `client.ip` address](anonymous-authentication.md#apm-derive-client-ip).
+* `client.ip`: The client’s IP address. Typically derived from the HTTP headers of incoming requests. `client.ip` is also used in conjunction with the [`geoip` processor](elasticsearch://reference/enrich-processor/geoip-processor.md) to assign geographical information to trace events. To learn more about how `client.ip` is derived, see [Deriving an incoming request’s `client.ip` address](anonymous-authentication.md#apm-derive-client-ip).
 * `user_agent`: User agent data, including the client operating system, device name, vendor, and version.
 
 The capturing of this data can be turned off by setting **Capture personal data** to `false`.

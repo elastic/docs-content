@@ -11,7 +11,7 @@ When you upgrade {{kib}}, you also upgrade the {{observability}} and {{elastic-s
 ::::{warning}
 {{kib}} automatically runs saved object migrations when required. To roll back to an earlier version in case of an upgrade failure, you **must** have a [backup snapshot](../../tools/snapshot-and-restore.md) that includes the `kibana` feature state. Snapshots include this feature state by default.
 
-For more information, refer to [Migrate saved objects](../internal-upgrade-processes/saved-object-migrations.md).
+For more information, refer to [Migrate saved objects](saved-object-migrations.md).
 
 ::::
 

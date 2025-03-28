@@ -10,7 +10,7 @@ mapped_pages:
 
 Heat map layers cluster point data to show locations with higher densities.
 
-:::{image} ../../../images/kibana-heatmap_layer.png
+:::{image} /explore-analyze/images/kibana-heatmap_layer.png
 :alt: heatmap layer
 :screenshot:
 :::

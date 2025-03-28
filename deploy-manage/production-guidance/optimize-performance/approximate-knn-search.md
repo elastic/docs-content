@@ -1,9 +1,15 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/tune-knn-search.html
+applies_to:
+  deployment:
+    ess: all
+    ece: all
+    eck: all
+    self: all
 ---
 
-# Approximate kNN search [tune-knn-search]
+# Tune approximate kNN search [tune-knn-search]
 
 {{es}} supports [approximate k-nearest neighbor search](../../../solutions/search/vector/knn.md#approximate-knn) for efficiently finding the *k* nearest vectors to a query vector. Since approximate kNN search works differently from other queries, there are special considerations around its performance.
 
@@ -45,7 +51,7 @@ Here are estimates for different element types and quantization levels:
 * `element_type: float`: `num_vectors * num_dimensions * 4`
 * `element_type: float` with `quantization: int8`: `num_vectors * (num_dimensions + 4)`
 * `element_type: float` with `quantization: int4`: `num_vectors * (num_dimensions/2 + 4)`
-* `element_type: float` with `quantization: bbq`: `num_vectors * (num_dimensions/8 + 12)`
+* `element_type: float` with `quantization: bbq`: `num_vectors * (num_dimensions/8 + 14)`
 * `element_type: byte`: `num_vectors * num_dimensions`
 * `element_type: bit`: `num_vectors * (num_dimensions/8)`
 
