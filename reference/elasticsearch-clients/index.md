@@ -17,7 +17,6 @@ navigation_title: Clients
 - [Python](elasticsearch-py://reference/index.md)
   - [Eland](eland://reference/index.md): Python client and toolkit for DataFrames and machine learning
 - [Ruby](elasticsearch-ruby://reference/index.md)
-- [Rust](elasticsearch-rs://reference/index.md)
 
 ::::{tip}
 Learn how to [connect to your {{es}} endpoint](/solutions/search/search-connection-details.md).
