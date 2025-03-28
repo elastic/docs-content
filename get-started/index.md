@@ -7,7 +7,8 @@ mapped_pages:
 ---
 # Get started
 
-## Overview
+## Overview [what-is-es]
+$$$what-is-kib$$$
 
 [{{es}}](https://github.com/elastic/elasticsearch) is a distributed search and analytics engine, scalable data store, and vector database built on Apache Lucene. It’s optimized for speed and relevance on production-scale workloads. Use {{es}} to search, index, store, and analyze data of all shapes and sizes in near real time. [{{kib}}](https://github.com/elastic/kibana) is the graphical user interface for {{es}}. It’s a powerful tool for visualizing and analyzing your data, and for managing and monitoring the Elastic Stack. 
 
