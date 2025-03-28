@@ -300,19 +300,19 @@ For symbolizer, the connection routing should be configured to use the HTTP prot
 
 ### Input TLS configuration [_input_tls_configuration]
 
-Currently, terminating the TLS connection is not supported at the application level, even if the `pf-elastic-collector` or `pf-elastic-symbolizer` configurations do have an `ssl` section.
-An ingress-controller should be used to terminate TLS connections and forward the unencrypted traffic to the backend services.
+Terminating the TLS connection is not currently supported at the application level, even if the `pf-elastic-collector` and `pf-elastic-symbolizer` configurations include an `ssl` section.
+Instead, you should use an ingress-controller to terminate TLS connections and forward unencrypted traffic to the backend services.
 
-The `ingress` resource shown in the previous section should be configured with the `tls` section to enable TLS termination.
-To do so, the collector and symbolizer Helm charts have a `ingress.tls` section that can be used to configure the TLS secret name and the hosts that the TLS certificate should be used for.
+To enable TLS termination, configure the `tls` section in the `ingress` resource, as shown in the previous section.
+Both the collector and symbolizer Helm charts support an `ingress.tls` section, which lets you specify the TLS secret name and hosts that the certificate should be used for.
 
-It is recommended to use a certificate manager like cert-manager to automatically provision and renew certificates for the ingress resources.
+We recommend using a certificate manager like [cert-manager](https://cert-manager.io/) to automate certificate provisioning and renewal for ingress resources.
 
-Refer to the [Kubernetes Ingress documentation](https://kubernetes.github.io/ingress-nginx/user-guide/tls/#tlshttps) as an example on how to configure TLS termination with NGINX ingress controller.
+Refer to the [Kubernetes Ingress documentation](https://kubernetes.github.io/ingress-nginx/user-guide/tls/#tlshttps) for an example of how to configure TLS termination with NGINX ingress controller.
 
 In general, the steps are:
 
-1. Store a TLS certificate in a Kubernetes secret in the same namespace running collector and/or symbolizer.
+1. Store your TLS certificate in a Kubernetes secret in the same namespace as the collector and/or symbolizer.
 
    ```bash
    kubectl -n universal-profiling create secret tls my-tls-secret --cert=path/to/cert.pem --key=path/to/key.pem
