@@ -127,7 +127,6 @@ This table compares Security capabilities between Elastic Cloud Hosted deploymen
 | **API keys** | ✅ | ✅ | |
 | **Defend for Containers integration** | ✅ (deprecated in 9.0) | ❌ | Not available in Serverless |
 | **Endpoint security** | ✅ | ✅ | |
-| **Field and document level security** | ✅ | ✅ | |
 | **Kibana Alerts** | ✅ | ✅ | |
 | **Kibana navigation** | Standard layout | Different layout | UI differences in Security projects |
 | **LogsDB** | Optional | ✅ | - Enabled by default <br>- Cannot be disabled |
