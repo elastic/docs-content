@@ -118,7 +118,9 @@ The Gaps table has the following columns:
 
 You can [manually run](/solutions/security/detect-and-alert/manage-detection-rules.md#manually-run-rules) enabled rules for a specified period of time to deliberately test them, provide additional rule coverage, or fill gaps in rule executions. Each manual run can produce multiple rule executions, depending on the time range of the run and the rule's execution schedule. 
 
-NOTE: Manual runs are executed with low priority and limited concurrency, meaning they might take longer to complete. This can be especially apparent for rules requiring multiple executions.
+::::{note}
+Manual runs are executed with low priority and limited concurrency, meaning they might take longer to complete. This can be especially apparent for rules requiring multiple executions.
+::::
 
 The Manual runs table tracks manual rule executions and provides important details such as:
 
