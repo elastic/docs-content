@@ -6,7 +6,7 @@ mapped_pages:
 
 
 
-# Upgrade a self-installation of APM Server standalone to 8.x [apm-upgrade-8.0-self-standalone]
+# Upgrade a self-installation of APM Server standalone to 9.0 [apm-upgrade-9.0-self-standalone]
 
 
 This upgrade guide is for the standalone method of running APM Server. Only use this guide if both of the following are true:
