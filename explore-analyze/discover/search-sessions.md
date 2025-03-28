@@ -8,10 +8,8 @@ mapped_pages:
 
 # Run a search session in the background [search-sessions]
 
-::::{admonition} Deprecated in 8.15.0.
-:class: warning
-
-Search Sessions are deprecated and will be removed in a future version.
+::::{admonition} Deprecated and disabled by default
+Search Sessions are deprecated. They are disabled by default and will be removed in a future version. You can enable search sessions again by setting [`data.search.sessions.enabled`](kibana://reference/configuration-reference/search-sessions-settings.md) to `true` in the `kibana.yml` configuration file.
 ::::
 
 

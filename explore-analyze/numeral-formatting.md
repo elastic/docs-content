@@ -57,9 +57,9 @@ The default percentage formatter in {{kib}} is `0,0.[000]%`, which shows up to t
 | -0.43 | 0 % | en (English) | -43 % |
 
 
-## Bytes and bits [_bytes_and_bits]
+## Bytes and Bits [_bytes_and_bits]
 
-The bytes and bits formatters will shorten the input by adding a suffix like `GB` or `TB`. Bytes and bits formatters include the following suffixes:
+The Bytes and Bits formatters will shorten the input by adding a suffix like `GB` or `TB`. Bytes and Bits formatters include the following suffixes:
 
 `b`
 :   Bytes with binary values and suffixes. 1024 = `1KB`
