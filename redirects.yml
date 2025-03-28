@@ -40,7 +40,7 @@ redirects:
   ## temporary hack due to moved anchors (maybe could be removed)
   'deploy-manage/security/secure-http-communications.md': '!deploy-manage/security/secure-cluster-communications.md'
   'deploy-manage/security/manually-configure-security-in-self-managed-cluster.md': '!deploy-manage/security/self-setup.md'
-
+  'deploy-manage/security/security-certificates-keys.md': '!deploy-manage/security/self-auto-setup.md'
 ## explore-analyze
   'explore-analyze/machine-learning/nlp/ml-nlp-auto-scale.md': '!deploy-manage/autoscaling/trained-model-autoscaling.md'
 

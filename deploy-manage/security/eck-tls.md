@@ -23,7 +23,7 @@ HTTP TLS is automatically enabled for {{es}} and {{kib}} using self-signed certi
 
 {{kib}} instances are automatically configured to connect securely to {{es}}, without requiring manual setup.
 
-## Certificates maintenance and rotation
+## Certificates lifecycle
 
 ECK provides flexible options for managing SSL certificates in your deployments, including automatic certificate generation and rotation, integration with external tools like `cert-manager`, or using your own custom certificates. Custom HTTP certificates require manual management.
 

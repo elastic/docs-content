@@ -133,9 +133,4 @@ Congratulations! You enabled password protection for your local cluster to preve
 
 If your cluster has multiple nodes, then you must [configure Transport Layer Security (TLS) between nodes](./set-up-basic-security.md). [Production mode](../deploy/self-managed/bootstrap-checks.md#dev-vs-prod-mode) clusters will not start if you do not enable TLS.
 
-Regardless of your cluster being a [single-node](../deploy/self-managed/bootstrap-checks.md#single-node-discovery) or a multi-node cluster it's highly recommended to secure the HTTP layer
-
-If you’re running a , then you can stop here.
-
-
-
+Regardless of your cluster being a [single-node](../deploy/self-managed/bootstrap-checks.md#single-node-discovery) or a multi-node cluster, it's highly recommended to [secure the HTTP layer](./set-up-basic-security-plus-https.md) with TLS certificates.

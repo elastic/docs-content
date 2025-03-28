@@ -26,10 +26,10 @@ For a complete comparison of security feature availability and responsibility by
 ## Communication channels overview [communication-channels]
 
 Both {{es}} and {{kib}}, the core components of the {{stack}}, expose service endpoints that must be secured. {{es}} handles traffic at two levels:
-* The **transport layer**, used for internal communication between nodes in the cluster.
-* The **HTTP layer**, used by external clients — including Kibana — to send requests via the REST API.
+* The **transport layer** (defaults to port `9300`), used for internal communication between nodes in the cluster.
+* The **HTTP layer** (defaults to port `9200`), used by external clients — including Kibana — to send requests via the REST API.
 
-Additionally, {{kib}} functions as a web server, exposing its own **HTTP endpoint** to users, and also acts as a client when sending requests to {{es}}.
+Additionally, {{kib}} functions as a web server, exposing its own **HTTP endpoint** (defaults to port `5601`) to users, and also acts as a client when sending requests to {{es}}.
 
 To ensure secure operation, it’s important to understand the communication channels and their specific security requirements.
 
@@ -41,7 +41,7 @@ To ensure secure operation, it’s important to understand the communication cha
 
 ### Transport layer security
 
-The transport layer is responsible for internal communication between {{es}} nodes in the cluster. Securing this layer prevents unauthorized nodes from joining your cluster and protects internode traffic.
+Securing {{es}} transport layer, also known as transport protocol, prevents unauthorized nodes from joining your cluster and protects internode traffic.
 
 The way that transport layer security is managed depends on your deployment type:
 
@@ -121,7 +121,7 @@ For environments with stricter security requirements, refer to [Mutual TLS authe
 
 ::::
 
-## Maintaining and rotating TLS certificates [generate-certificates]
+## Certificates lifecycle [generate-certificates]
 
 Managing certificates is critical for secure communications. Certificates have limited lifetimes and must be renewed before expiry to prevent service disruptions. Each deployment type provides different tools or responsibilities for managing certificates lifecycle.
 
