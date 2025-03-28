@@ -4,7 +4,8 @@ mapped_pages:
 ---
 
 # Use cases [introduction]
-
+$$$what-is-kib$$$
+$$$what-is-es$$$
 The {{stack}} is used for a wide and growing range of use cases. Here are a few examples:
 
 ## Observability
