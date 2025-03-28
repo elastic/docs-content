@@ -104,7 +104,7 @@ This table compares Observability capabilities between Elastic Cloud Hosted depl
 | **AWS Firehose integration** | ✅ | ✅ | |
 | **Custom roles for Kibana Spaces** | ✅ | **Planned** | Coming in a future release |
 | **Data stream lifecycle** | ✅ | ✅ | Primary lifecycle management method in Serverless |
-| **Elastic Serverless Forwarder** | ✅ | ✅ | |
+| **Elastic Serverless Forwarder** | ✅ | ❌ | |
 | **Elastic Synthetics Private Locations** | ✅ | ✅ | |
 | **Fleet server** | - Self-hosted <br>- Hosted | ✅ | Fully managed by Elastic |
 | **Index lifecycle management** | ✅ | ❌ | Use **data stream lifecycle** instead |
