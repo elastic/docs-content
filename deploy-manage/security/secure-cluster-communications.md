@@ -35,9 +35,9 @@ To ensure secure operation, it’s important to understand the communication cha
 
 | **Channel** | **Description** | **TLS requirements** |
 |-------------|-----------------|--------------------|
-| [{{es}} transport layer](#transport-layer-security) | Communication between {{es}} nodes within a cluster | Mutual TLS/SSL required for multi-node clusters |
-| [{{es}} HTTP layer](#http-layer-security) | Communication between external clients and {{es}} through the REST API | TLS/SSL optional (but recommended) |
-| [{{kib}} HTTP layer](#http-layer-security) | Communication between external browsers and {{kib}} through the REST API | TLS/SSL optional (but recommended) |
+| [{{es}} transport layer](#encrypt-internode-communication) | Communication between {{es}} nodes within a cluster | Mutual TLS/SSL required for multi-node clusters |
+| [{{es}} HTTP layer](#encrypt-http-communication) | Communication between external clients and {{es}} through the REST API | TLS/SSL optional (but recommended) |
+| [{{kib}} HTTP layer](#encrypt-http-communication) | Communication between external browsers and {{kib}} through the REST API | TLS/SSL optional (but recommended) |
 
 ### Transport layer security [encrypt-internode-communication]
 
