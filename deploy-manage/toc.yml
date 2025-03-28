@@ -460,6 +460,7 @@ toc:
             children:
               - file: security/self-auto-setup.md
               - file: security/set-up-minimal-security.md
+              - file: security/install-stack-demo-secure.md
           - file: security/secure-cluster-communications.md
             children:
               - file: security/self-tls.md
@@ -509,7 +510,6 @@ toc:
               - file: security/logging-configuration/auditing-search-queries.md
               - file: security/logging-configuration/correlating-kibana-elasticsearch-audit-logs.md
           - file: security/fips-140-2.md
-          - file: security/install-stack-demo-secure.md
           - file: security/using-kibana-with-security.md
       - file: security/secure-clients-integrations.md
       - file: security/httprest-clients-security.md

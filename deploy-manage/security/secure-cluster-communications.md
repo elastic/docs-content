@@ -39,7 +39,7 @@ To ensure secure operation, it’s important to understand the communication cha
 | [{{es}} HTTP layer](#http-layer-security) | Communication between external clients and {{es}} through the REST API | TLS/SSL optional (but recommended) |
 | [{{kib}} HTTP layer](#http-layer-security) | Communication between external browsers and {{kib}} through the REST API | TLS/SSL optional (but recommended) |
 
-### Transport layer security
+### Transport layer security [encrypt-internode-communication]
 
 Securing {{es}} transport layer, also known as transport protocol, prevents unauthorized nodes from joining your cluster and protects internode traffic.
 
@@ -70,7 +70,7 @@ The way that transport layer security is managed depends on your deployment type
 
 ::::
 
-### HTTP layer security
+### HTTP layer security [encrypt-http-communication]
 
 The HTTP layer includes the service endpoints exposed by both {{es}} and {{kib}}, supporting communications such as REST API requests, browser access to {{kib}}, and {{kib}}’s own traffic to {{es}}. Securing these endpoints helps prevent unauthorized access and protects sensitive data in transit.
 

@@ -11,7 +11,10 @@ mapped_urls:
 % https://www.elastic.co/guide/en/kibana/current/using-kibana-with-security.html
 % https://www.elastic.co/guide/en/kibana/current/Security-production-considerations.html
 % Scope: TBD
+
 # Configure security in {{kib}} [using-kibana-with-security]
+
+% check and move part of this if needed
 
 When you start {{es}} for the first time, {{stack-security-features}} are enabled on your cluster and TLS is configured automatically. The security configuration process generates a password for the `elastic` user and an enrollment token for {{kib}}. [Start the {{stack}} with security enabled](/deploy-manage/security/self-auto-setup.md) and then enroll {{kib}} as part of the configuration process.
 
@@ -40,6 +43,10 @@ Set an encryption key so that sessions are not invalidated. You can optionally c
 
 
 ## Create roles and users [security-create-roles]
+
+% ensure we have references to users and roles
+
+% check if part of this process should be merged with the other guides
 
 Configure roles for your {{kib}} users to control what data those users can access.
 
@@ -83,24 +90,9 @@ Configure roles for your {{kib}} users to control what data those users can acce
     ::::
 
 ## Additional Kibana security configurations [Security-production-considerations]
+% deleting a lot here...
 
-To secure your {{kib}} installation in production, consider these high-priority topics to ensure that only authorized users can access {{kib}}.
-
-### Enable SSL/TLS [enabling-ssl]
-
-You should use SSL/TLS encryption to ensure that traffic between browsers and the {{kib}} server cannot be viewed or tampered with by third parties. See [encrypt HTTP client communications for {{kib}}](/deploy-manage/security/set-up-basic-security-plus-https.md#encrypt-kibana-http).
-
-### Enabling mutual TLS between {{kib}} and {{es}}
-
-Refer to [Mutual TLS authentication between {{kib}} and {{es}}](/deploy-manage/security/kibana-es-mutual-tls.md) for information on how to enable mutual TLS between {{kib}} and {{es}}.
-
-### Use {{stack}} {{security-features}} [configuring-kibana-shield]
-
-You can use {{stack}} {{security-features}} to control what {{es}} data users can access through {{kib}}.
-
-When {{security-features}} are enabled, {{kib}} users have to log in. They must have a role granting [{{kib}} privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md) and access to the indices that they will be working with in {{kib}}.
-
-If a user loads a {{kib}} dashboard that accesses data in an index that they are not authorized to view, they get an error that indicates the index does not exist.
+% Important sentence to include!!!
 
 For more information on granting access to {{kib}}, see [](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md).
 
