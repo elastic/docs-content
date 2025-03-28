@@ -146,10 +146,6 @@ Before manually running rules, make sure you properly understand and plan for ru
 3. Specify when the manual run starts and ends. The default selection is the current day starting three hours in the past. The rule will search for events during the selected time range.
 4. Click **Run** to manually run the rule.
 
-    ::::{note}
-    Manual runs can produce multiple rule executions. This is determined by the manual run’s time range and the rule’s execution schedule.
-    ::::
-
 The rule will run over the time range that you selected. Note that all [rule actions](/solutions/security/detect-and-alert/create-detection-rule.md#rule-notifications) will also be activated, except for **Summary of alerts** actions that run at a custom frequency.
 
 Go to the [Manual runs table](/solutions/security/detect-and-alert/monitor-rule-executions.md#manual-runs-table) on the **Execution results** tab to track the manual rule executions. If you manually ran the rule over a gap, you can also monitor the gap fill's progress from the [Gaps table](/solutions/security/detect-and-alert/monitor-rule-executions.md#gaps-table).
