@@ -102,7 +102,7 @@ The Gaps table has the following columns:
 
 * **Status**: The current state of the gap. It can be `Filled`, `Partially filled`, or `Unfilled`.
 * **Detected at**: The date and time the gap was first discovered.
-* **Manual fill tasks**: The status of the manual run that’s filling the gap. For more details about the manual run, refer to its entry in the [Manual runs table](/solutions/security/detect-and-alert/monitor-rule-executions).
+* **Manual fill tasks**: The status of the manual run that’s filling the gap. For more details about the manual run, refer to its entry in the [Manual runs table](/solutions/security/detect-and-alert/monitor-rule-executions.md#manual-runs-table).
 * **Event time covered**: How much progress the manual run has made filling the gap. 
 
     ::::{note} 
