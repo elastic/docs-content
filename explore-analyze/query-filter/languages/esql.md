@@ -54,6 +54,7 @@ Find more details about {{esql}} in the following documentation pages:
   - [Using {{esql}} with multiple indices](/explore-analyze/query-filter/languages/esql-multi-index.md).
   - [Using {{esql}} across clusters](/explore-analyze/query-filter/languages/esql-cross-clusters.md).
   - [Task management](/explore-analyze/query-filter/languages/esql-task-management.md).
+  - [Query log](/explore-analyze/query-filter/languages/esql-query-log.md).
 
 
 - [Limitations](elasticsearch://reference/query-languages/esql/limitations.md): The current limitations of {{esql}}.
