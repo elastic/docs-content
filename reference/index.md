@@ -9,19 +9,19 @@ Explore the comprehensive reference documentation for the Elastic Stack, designe
 
 ## Security
 
-Ensure your data is protected with robust security features. Learn about fields and object schemas, endpoint command references, and observability tools to maintain a secure environment.
+Access detailed reference documentation on field and object schemas as well as the diffferent commands used to manage and troubleshoot Elastic Endpoint.
 
 **Learn more in [Security](security/index.md)**
 
 ## Observability
 
-Access detailed reference documentation to enhance your understanding of system performance and health monitoring within the Elastic Stack. Explore Logs Explorer fields and Infrastructure app fields to gain precise insights into system logs and infrastructure metrics. Additionally, utilize the Elastic Entity Model documentation to achieve real-time data visibility and operational efficiency, ensuring comprehensive observability across your environment.
+Access detailed reference documentation on field and object schemas as well as the Elastic Entity Model.
 
 **Learn more in [Observability](observability/index.md)**
 
 ## Search
 
-Explore manuals on Search UI, Elasticsearch management, index management, configuration settings, and REST APIs to optimize your search experience.
+Explore reference content on Search UI and how you can develop fast, modern, and engaging search experiences.
 
 **Learn more in [Search](search/index.md)**
 
