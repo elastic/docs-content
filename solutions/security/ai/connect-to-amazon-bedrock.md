@@ -13,7 +13,7 @@ applies_to:
 This page provides step-by-step instructions for setting up an Amazon Bedrock connector for the first time. This connector type enables you to leverage large language models (LLMs) within {{kib}}. You’ll first need to configure AWS, then configure the connector in {{kib}}.
 
 ::::{note}
-Only Amazon Bedrock’s `Anthropic` models are supported: `Claude` and `Claude instant`.
+All models in Amazon Bedrock's `Claude` model group are supported.
 ::::
 
 
@@ -99,7 +99,7 @@ Make sure the supported Amazon Bedrock LLMs are enabled:
 1. Search the AWS console for Amazon Bedrock.
 2. From the Amazon Bedrock page, click **Get started**.
 3. Select **Model access** from the left navigation menu, then click **Manage model access**.
-4. Check the boxes for **Claude** and/or **Claude Instant**, depending which model or models you plan to use.
+4. Check the box for the model or models you plan to use.
 5. Click **Save changes**.
 
 The following video demonstrates these steps (click to watch).
@@ -115,11 +115,13 @@ Finally, configure the connector in {{kib}}:
 2. Find the **Connectors** page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Then click **Create Connector**, and select **Amazon Bedrock**.
 3. Name your connector.
 4. (Optional) Configure the Amazon Bedrock connector to use a different AWS region where Anthropic models are supported by editing the **URL** field, for example by changing `us-east-1` to `eu-central-1`.
-5. (Optional) Add one of the following strings if you want to use a model other than the default:
+5. (Optional) Add one of the following strings if you want to use a model other than the default. Note that these URLs should have a prefix of `us.` or `eu.`, depending on your region, for example `us.anthropic.claude-3-5-sonnet-20240620-v1:0` or `eu.anthropic.claude-3-5-sonnet-20240620-v1:0`.
 
-    * For Haiku: `anthropic.claude-3-haiku-20240307-v1:0`
-    * For Sonnet: `anthropic.claude-3-sonnet-20240229-v1:0`
-    * For Opus: `anthropic.claude-3-opus-20240229-v1:0`
+    * Sonnet 3.5: `us.anthropic.claude-3-5-sonnet-20240620-v1:0` or `eu.anthropic.claude-3-5-sonnet-20240620-v1:0`
+    * Sonnet 3.5 v2: `us.anthropic.claude-3-5-sonnet-20241022-v2:0` or `eu.anthropic.claude-3-5-sonnet-20241022-v2:0`
+    * Sonnet 3.7: `us.anthropic.claude-3-7-sonnet-20250219-v1:0` or `eu.anthropic.claude-3-7-sonnet-20250219-v1:0`
+    * Haiku 3.5: `us.anthropic.claude-3-5-haiku-20241022-v1:0` or `eu.anthropic.claude-3-5-haiku-20241022-v1:0`
+    * Opus: `us.anthropic.claude-3-opus-20240229-v1:0` or `eu.anthropic.claude-3-opus-20240229-v1:0`
 
 6. Enter the **Access Key** and **Secret** that you generated earlier, then click **Save**.
 
