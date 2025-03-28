@@ -63,11 +63,14 @@ Review the following best practices to upgrade your deployments.
     :::{tip}
     During your upgrade tests, pay particular attention to the following aspects:
 
-    **Cluster stability**: Does the new version of {{es}} form a stable healthy cluster?
+    **Cluster stability**
+    :    Does the new version of {{es}} form a stable healthy cluster?
 
-    **Indexing and search performance**: Does the new version of {{es}} perform the same (or better) than the current one on your specific workload and data?
+    **Indexing and search performance**
+    :    Does the new version of {{es}} perform the same (or better) than the current one on your specific workload and data?
 
-    **Snapshots**: Do all of your snapshot repositories work correctly and pass [repository analysis](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-repository-analyze)?
+    **Snapshots**
+    :    Do all of your snapshot repositories work correctly and pass [repository analysis](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-repository-analyze)?
     :::
 
 1. Create a snapshot of your production deployment before starting the upgrade.
