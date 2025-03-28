@@ -4,44 +4,63 @@ applies_to:
     ece: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-api-console.html
+navigation_title: "Tools and APIs"
 ---
-# Tools and APIs
+# Tools and APIs for {{ece}}
 
-% What needs to be done: Write from scratch
+Review key resources that can be used to interact with and manage your {{ece}} installation and deployments.
 
-% GitHub issue: https://github.com/elastic/docs-projects/issues/310
 
- ⚠️ **This page is a work in progress.** ⚠️
+## APIs
 
-You can use these tools and APIs to interact with the following {{ece}} features:
+You can use the following APIs in an {{ece}} environment.
 
-* [{{ecloud}} Control (ecctl)](ecctl://reference/index.md): Wraps typical operations commonly needed by operators within a single command line tool.
-* [ECE scripts](cloud://reference/cloud-enterprise/scripts.md): Use the `elastic-cloud-enterprise.sh` script to install {{ece}} or modify your installation.
-* [ECE diagnostics tool](/troubleshoot/deployments/cloud-enterprise/run-ece-diagnostics-tool.md): Collect logs and metrics that you can send to Elastic Support for troubleshooting and investigation purposes.
-* [Elasticsearch API console](#ece-api-console)
+:::{tip}
+Refer to [](/deploy-manage/api-keys.md) to learn how to generate API keys for your environment.
+:::
 
-**API**
+### Orchestration APIs
 
-% ECE API links and information are still pending
-* [Elastic Cloud Enterprise RESTful API](cloud://reference/cloud-enterprise/restful-api.md)
+You can use the [{{ece}} RESTful API](https://www.elastic.co/docs/api/doc/cloud-enterprise/) to manage both your {{stack}} deployments and the ECE platform.
+
+Refer to [{{es}} API conventions](cloud://reference/cloud-enterprise/restful-api.md) to learn about headers and request body conventions, and view examples.
+
+### APIs to interact with data and solution features
+
+The following APIs allow you to interact with your {{es}} cluster, its data, and the features available to you in your {{ece}} deployments.
+
+:::{tip}
+Refer to [{{es}} API conventions](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md) to learn about headers and request body conventions, and to view examples.
+:::
+
+:::{include} /deploy-manage/deploy/_snippets/core-apis.md
+:::
+
+:::{include} /deploy-manage/deploy/_snippets/other-apis.md
+:::
 
 ## {{es}} API Console [ece-api-console]
 
-With the API console you can interact with a specific {{es}} deployment directly from the Cloud UI without having to authenticate again. This RESTful API access is limited to the specific cluster and works only for Elasticsearch API calls.
-
-::::{important}
-API console is intended for admin purposes. Avoid running normal workload like indexing or search requests.
-::::
-
-You can find this console in Cloud UI when selecting a specific deployment to manage. From the {{es}} menu, select **API Console**.
-
-:::{note}
-This API Console is different from the [Dev Tools Console](/explore-analyze/query-filter/tools/console.md) available in {{kib}}, from which you can call {{es}} and {{kib}} APIs. On the ECE API Console, you cannot run Kibana APIs.
+:::{include} /deploy-manage/deploy/_snippets/cloud-api-console.md
 :::
 
-To learn more about what kinds of {{es}} API calls you can make from the Cloud UI, check the [Elasticsearch API Reference](elasticsearch://reference/elasticsearch/rest-apis/index.md) documentation.
+## Elastic Cloud Control: command-line interface for {{ecloud}}
 
+:::{include} /deploy-manage/deploy/_snippets/ecctl.md
+:::
 
+## Provision hosted deployments with Terraform
+```{applies_to}
+deployment:
+  ess: ga
+serverless: unavailable
+```
 
+:::{include} /deploy-manage/deploy/_snippets/tpec.md
+:::
 
+## Other tools
 
+* [ECE scripts](cloud://reference/cloud-enterprise/scripts.md): Use these scripts to install {{ece}} or modify your installation.
+* [ECE diagnostics tool](/troubleshoot/deployments/cloud-enterprise/run-ece-diagnostics-tool.md): Collect logs and metrics related to your ECE installation that you can send to Elastic Support for troubleshooting and investigation purposes.
+* [{{es}} Support Diagnostic tool](/troubleshoot/elasticsearch/diagnostic.md): Captures a point-in-time snapshot of cluster statistics and most {{es}} settings for troubleshooting purposes.

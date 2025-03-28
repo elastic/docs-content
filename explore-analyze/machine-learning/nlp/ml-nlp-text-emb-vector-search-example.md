@@ -112,7 +112,7 @@ Upload the file by using the [Data Visualizer](../../../manage-data/ingest/uploa
 
 ## Add the text embedding model to an {{infer}} ingest pipeline [ex-text-emb-ingest]
 
-Process the initial data with an [{{infer}} processor](elasticsearch://reference/ingestion-tools/enrich-processor/inference-processor.md). It adds an embedding for each passage. For this, create a text embedding ingest pipeline and then reindex the initial data with this pipeline.
+Process the initial data with an [{{infer}} processor](elasticsearch://reference/enrich-processor/inference-processor.md). It adds an embedding for each passage. For this, create a text embedding ingest pipeline and then reindex the initial data with this pipeline.
 
 Now create an ingest pipeline either in the [{{stack-manage-app}} UI](ml-nlp-inference.md#ml-nlp-inference-processor) or by using the API:
 

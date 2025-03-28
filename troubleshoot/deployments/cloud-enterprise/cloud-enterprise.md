@@ -9,15 +9,8 @@ mapped_urls:
 
 # Troubleshoot Elastic Cloud Enterprise
 
-:::{admonition} WIP
-⚠️ **This page is a work in progress.** ⚠️
-
-The documentation team is working on restructuring this section. It currently reflects a legacy product-centric structure.
-:::
-
 ## Finding deployments [ts-ece-find]
 
-% TODO compare to https://github.com/elastic/docs-content/tree/main/deploy-manage/deploy/cloud-enterprise/search-filter-deployments.md
 
 When you installed Elastic Cloud Enterprise and [logged into the Cloud UI](../../../deploy-manage/deploy/cloud-enterprise/log-into-cloud-ui.md) for the first time, you were greeted by two deployments. We’ve also shown you how to [create your own first deployment](../../../deploy-manage/deploy/cloud-enterprise/create-deployment.md), but that still only makes a few deployments. What if you had hundreds of deployments to look after or maybe even a thousand? How would you find the ones that need your attention?
 

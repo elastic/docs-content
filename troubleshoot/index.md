@@ -10,12 +10,6 @@ mapped_urls:
 
 # Troubleshooting
 
-:::{admonition} WIP
-⚠️ **This section is a work in progress.** ⚠️
-
-The documentation team is actively working on the pages in this section.
-:::
-
 This section contains troubleshooting resources and guidance to help you resolve issues with Elastic products.
 
 If you can't find your issue here, explore the [additional resources](#troubleshoot-additional-resources) or [contact us](#contact-us).

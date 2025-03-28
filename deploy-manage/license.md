@@ -2,8 +2,8 @@
 applies_to:
   deployment:
     ece:
-    ech:
     ess:
+    eck:
     self:
   serverless:
 ---

@@ -1,12 +1,13 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/dependencies-versions.html
+  - https://www.elastic.co/guide/en/elastic-stack/current/installing-stack-demo-self.html
 applies_to:
   deployment:
     self:
 ---
 
-# Self-managed cluster 
+# Self-managed cluster
 
 If you want to install Elastic on your own premises without the assistance of an [orchestrator](/deploy-manage/deploy.md#about-orchestration), then you can deploy a self-managed cluster. If you deploy a self-managed cluster, then you have complete control and responsibility over every aspect of your Elastic deployment.
 
@@ -15,7 +16,7 @@ To quickly set up {{es}} and {{kib}} in Docker for local development or testing,
 :::{admonition} Simplify the deployment process
 Self-managed clusters are useful for local development, and for exploring Elastic features. However, Elastic offers several deployment options that can simplify the process of deploying and managing multi-node deployments, especially in production. They also allow you to deploy and manage multiple deployments from a single surface.
 
-Managed by Elastic: 
+Managed by Elastic:
 * [{{serverless-full}}](/deploy-manage/deploy/elastic-cloud/serverless.md)
 * [{{ech}}](/deploy-manage/deploy/elastic-cloud/cloud-hosted.md)
 
@@ -32,7 +33,7 @@ This section focuses on deploying {{es}} and {{kib}} without an orchestrator.
 
 Depending on your use case, you might need to deploy other components, such as APM, Fleet, or Logstash. Deploying those components is not covered in this section. [Learn more about optional components](/get-started/the-stack.md).
 
-This section covers the following tasks: 
+This section covers the following tasks:
 
 ### Deploying Elasticsearch
 
@@ -60,7 +61,7 @@ After you deploy {{es}}, you can install {{kib}}. {{kib}} provides the user inte
 
 ### Installing in air gapped environments
 
-Some components of the {{stack}} require additional configuration and local dependencies in order to deploy in environments without internet access. 
+Some components of the {{stack}} require additional configuration and local dependencies in order to deploy in environments without internet access.
 
 Refer to [](/deploy-manage/deploy/self-managed/air-gapped-install.md) to learn how to install {{es}}, {{kib}}, and optional components in an environment without internet access.
 

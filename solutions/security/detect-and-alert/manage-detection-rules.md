@@ -64,9 +64,9 @@ For {{ml}} rules, an indicator icon (![Error icon from rules table](/solutions/i
 ## Modify existing rules settings [edit-rules-settings]
 
 ::::{admonition} Requirements
-
-* You can edit custom rules and bulk-modify them with any [{{stack}} subscription](https://www.elastic.co/pricing) or [{{serverless-short}} project tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md). Editing [rule notifications](/solutions/security/detect-and-alert/create-detection-rule.md#rule-notifications)  (notifications and response actions) for prebuilt rules can also be done with any {{stack}} subscription or {{serverless-short}} project tier.
-* You must have an [Enterprise subscription](https://www.elastic.co/pricing) to edit all prebuilt rule settings (except for the **Author** and **License** fields) and bulk-modify them. 
+* You can edit custom rules and bulk-modify them with any [{{stack}} subscription](https://www.elastic.co/pricing) or [{{serverless-short}} project tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md). 
+* You can edit [rule notifications](/solutions/security/detect-and-alert/create-detection-rule.md#rule-notifications) (notifications and response actions) for prebuilt rules with any {{stack}} subscription or {{serverless-short}} project tier.
+* You must have an [Enterprise subscription](https://www.elastic.co/pricing)  {{stack}} or a [Complete project tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md) subscription on {{serverless-short}} to edit all prebuilt rule settings (except for the **Author** and **License** fields) and bulk-modify them. 
 
 ::::
 
@@ -179,6 +179,7 @@ You can snooze rule notifications from the **Installed Rules** tab, the rule det
 
 :::{image} /solutions/images/security-rule-snoozing.png
 :alt: Rules snooze options
+:width: 75%
 :screenshot:
 :::
 
@@ -252,3 +253,11 @@ You can also check rules' related integrations in the **Installed Rules** and **
 ::::{tip}
 You can hide the **integrations** badge in the Rules tables by turning off the `securitySolution:showRelatedIntegrations` [advanced setting](/solutions/security/get-started/configure-advanced-settings.md#show-related-integrations). 
 ::::
+
+## Manage rules as code [manage-rule-dac]
+
+Utilize the [Detection-as-Code](https://dac-reference.readthedocs.io/en/latest/dac_concept_and_workflows.html) (DaC) principles to externally manage your detection rules. 
+
+The {{elastic-sec}} Labs team uses the [detection-rules](https://github.com/elastic/detection-rules) repo to develop, test, and release {{elastic-sec}}'s[ prebuilt rules](https://github.com/elastic/detection-rules/tree/main/rules). The repo provides DaC features and allows you to customize settings to simplify the setup for managing user rules with the DaCe pipeline.
+
+To get started, refer to the [DaC documentation](https://github.com/elastic/detection-rules/blob/main/README.md#detections-as-code-dac).
