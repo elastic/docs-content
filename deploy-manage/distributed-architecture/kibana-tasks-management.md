@@ -5,9 +5,9 @@ applies_to:
   stack:
 ---
 
-# Kibana tasks management [task-manager-production-considerations]
+# Kibana task management [task-manager-production-considerations]
 
-{{kib}} Task Manager is leveraged by features such as Alerting, Actions, and Reporting to run mission critical work as persistent background tasks. These background tasks distribute work across multiple {{kib}} instances. This has three major benefits:
+{{kib}} Task Manager is used by features such as Alerting, Actions, and Reporting to run mission critical work as persistent background tasks. These background tasks distribute work across multiple {{kib}} instances. This has three major benefits:
 
 * **Persistence**: All task state and scheduling is stored in {{es}}, so if you restart {{kib}}, tasks will pick up where they left off.
 * **Scaling**: Multiple {{kib}} instances can read from and update the same task queue in {{es}}, allowing the work load to be distributed across instances. If a {{kib}} instance no longer has capacity to run tasks, you can increase capacity by adding additional {{kib}} instances. For more information on scaling, see [Kibana task manager scaling considerations](../../deploy-manage/production-guidance/kibana-task-manager-scaling-considerations.md#task-manager-scaling-guidance).
