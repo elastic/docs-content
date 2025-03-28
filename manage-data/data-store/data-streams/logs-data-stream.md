@@ -29,7 +29,7 @@ To create a logs data stream, set your [template](../templates.md) `index.mode` 
 ```console
 PUT _index_template/my-index-template
 {
-  "index_patterns": ["logs-*"],
+  "index_patterns": ["my-datastream-*"],
   "data_stream": { },
   "template": {
      "settings": {
