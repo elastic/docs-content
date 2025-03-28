@@ -117,7 +117,6 @@ This table compares Observability capabilities between Elastic Cloud Hosted depl
 | **Real User Monitoring (RUM)** | ✅ | **Planned** | Coming in a future release |
 | **Universal Profiling** | ✅ | ❌ | Not available in Serverless |
 | **Uptime monitoring** | ❌ | ❌ | - Deprecated in all deployment types <br>- Use **Synthetics app** instead |
-| **Watcher** | ✅ | ❌ | Use **Kibana Alerts** instead |
 
 ### Security
 
@@ -132,10 +131,8 @@ This table compares Security capabilities between Elastic Cloud Hosted deploymen
 | **Kibana Alerts** | ✅ | ✅ | |
 | **Kibana navigation** | Standard layout | Different layout | UI differences in Security projects |
 | **LogsDB** | Optional | ✅ | - Enabled by default <br>- Cannot be disabled |
-| **Observability Logs UI** | ✅ | ❌ | Not available in Security projects |
 | **Role-based access control** | ✅ | Limited | Core RBAC functionality supported - [Learn more](https://www.elastic.co/guide/en/serverless/current/security-rbac.html) |
 | **SIEM capabilities** | ✅ | ✅ | Core functionality supported |
-| **Watcher** | ✅ | ❌ | Use **Kibana Alerts** instead |
 
 ## Elasticsearch index sizing guidelines [elasticsearch-differences-serverless-index-size]
 
