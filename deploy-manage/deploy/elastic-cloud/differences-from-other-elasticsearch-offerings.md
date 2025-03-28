@@ -78,7 +78,7 @@ This table compares Elasticsearch capabilities between Elastic Cloud Hosted depl
 | **Cross-cluster replication** | ✅ | **Planned** | Coming in a future release |
 | **Cross-cluster search** | ✅ | **Planned** | Coming in a future release |
 | **Data lifecycle management** | - ILM <br>- Data stream lifecycle | Data stream lifecycle only | - No data tiers in Serverless <br>- Optimized for common lifecycle management needs |
-| **Elastic connectors (for search)** | ✅ (discontinued in 9.0) | Self-managed only | - Managed connectors not available <br>- Use [self-managed connectors](elasticsearch://reference/ingestion-tools/search-connectors/self-managed-connectors.md) |
+| **Elastic connectors (for search)** | ✅ (discontinued in 9.0) | Self-managed only | - Managed connectors not available <br>- Use [**self-managed connectors**](elasticsearch://reference/ingestion-tools/search-connectors/self-managed-connectors.md) |
 | **Elasticsearch for Apache Hadoop** | ✅ | ❌ | Not supported in Serverless |
 | **Enterprise Search (App Search & Workplace Search)** | ✅ (discontinued in 9.0) | ❌ | Not available in Serverless |
 | **Kibana Alerts** | ✅ | ✅ | |
@@ -87,8 +87,8 @@ This table compares Elasticsearch capabilities between Elastic Cloud Hosted depl
 | **Scripted metric aggregations** | ✅ | ❌ | Not supported in Serverless |
 | **Search applications** | UI and APIs | Maintenance mode (beta), API only | UI not available in Serverless |
 | **Shard management** | User-configurable | Managed by Elastic | No manual shard allocation in Serverless |
-| **Watcher** | ✅ | ❌ | Use Kibana Alerts instead, which provides rich integrations across use cases |
-| **Web crawler** | ✅ (discontinued with Enterprise Search in 9.0) | Self-managed only | Use [self-managed crawler](https://github.com/elastic/crawler) |
+| **Watcher** | ✅ | ❌ | Use **Kibana Alerts** instead, which provides rich integrations across use cases |
+| **Web crawler** | ✅ (discontinued with Enterprise Search in 9.0) | Self-managed only | Use [**self-managed crawler**](https://github.com/elastic/crawler) |
 
 ### Observability
 
@@ -96,23 +96,29 @@ This table compares Observability capabilities between Elastic Cloud Hosted depl
 
 | **Feature** | Elastic Cloud Hosted | Serverless Observability projects | Serverless notes |
 |---------|----------------------|-----------------------------------|------------------|
-| **Agent policies** | ✅ | ✅ | |
+| **Fleet Agent policies** | ✅ | ✅ | |
+| **APM integration** | ✅ | ✅ | Use **Managed Intake Service** (supports Elastic APM and OTLP protocols) |
 | **APM Agent Central Configuration** | ✅ | ❌ | Not available in Serverless |
-| **APM integration** | ✅ | ✅ | Managed intake provided as part of serverless service |
-| **APM Tail-based sampling** | ✅ | ❌ | - Not available in Serverless <br>- Consider OpenTelemetry tail sampling processor as an alternative |
+| **APM Tail-based sampling** | ✅ | ❌ | - Not available in Serverless <br>- Consider **OpenTelemetry** tail sampling processor as an alternative |
 | **Android agent/SDK instrumentation** | ✅ | ❌ | Not available in Serverless |
+| **AWS Firehose integration** | ✅ | ✅ | |
 | **Custom roles for Kibana Spaces** | ✅ | **Planned** | Coming in a future release |
 | **Data stream lifecycle** | ✅ | ✅ | Primary lifecycle management method in Serverless |
+| **Elastic Serverless Forwarder** | ✅ | ✅ | |
+| **Elastic Synthetics Private Locations** | ✅ | ✅ | |
 | **Fleet server** | - Self-hosted <br>- Hosted | ✅ | Fully managed by Elastic |
-| **Index lifecycle management** | ✅ | ❌ | Use data stream lifecycle instead |
+| **Index lifecycle management** | ✅ | ❌ | Use **data stream lifecycle** instead |
 | **iOS agent/SDK instrumentation** | ✅ | ❌ | Not available in Serverless |
 | **Kibana Alerts** | ✅ | ✅ | |
+| **LogsDB** | ✅ Optional | ✅ | - Enabled by default <br>- Cannot be disabled |
 | **Logs management** | ✅ | ✅ | |
 | **Metrics monitoring** | ✅ | ✅ | |
+| **Observability SLO** | ✅ | ✅ | |
 | **Real User Monitoring (RUM)** | ✅ | **Planned** | Coming in a future release |
+| **Synthetic _source** | ✅ | ✅ | Part of complete **LogsDB** capabilities |
 | **Universal Profiling** | ✅ | ❌ | Not available in Serverless |
-| **Uptime monitoring** | ❌ | ❌ | - Deprecated in all deployment types <br>- Use Synthetics app instead |
-| **Watcher** | ✅ | ❌ | Use Kibana Alerts instead |
+| **Uptime monitoring** | ❌ | ❌ | - Deprecated in all deployment types <br>- Use **Synthetics app** instead |
+| **Watcher** | ✅ | ❌ | Use **Kibana Alerts** instead |
 
 ### Security
 
@@ -130,7 +136,7 @@ This table compares Security capabilities between Elastic Cloud Hosted deploymen
 | **Observability Logs UI** | ✅ | ❌ | Not available in Security projects |
 | **Role-based access control** | ✅ | Limited | Core RBAC functionality supported - [Learn more](https://www.elastic.co/guide/en/serverless/current/security-rbac.html) |
 | **SIEM capabilities** | ✅ | ✅ | Core functionality supported |
-| **Watcher** | ✅ | ❌ | Use Kibana Alerts instead |
+| **Watcher** | ✅ | ❌ | Use **Kibana Alerts** instead |
 
 ## Elasticsearch index sizing guidelines [elasticsearch-differences-serverless-index-size]
 
@@ -207,7 +213,6 @@ Managed settings
 
 ## Learn more
 
-
 - [Elastic Cloud Serverless roadmap](https://www.elastic.co/cloud/serverless/roadmap): See upcoming features and development plans
 - [Elasticsearch Serverless API reference](https://www.elastic.co/docs/api/doc/elasticsearch-serverless): Check out the complete list of available APIs in Elastic Cloud Serverless
 - [Project settings](/deploy-manage/deploy/elastic-cloud/project-settings.md): Configure project settings in Elastic Cloud Serverless
@@ -215,4 +220,3 @@ Managed settings
 - [Elastic Cloud pricing](https://www.elastic.co/pricing/): Understand pricing for Elastic Cloud Hosted and Serverless projects
   - [Serverless project billing](/deploy-manage/cloud-organization/billing/serverless-project-billing-dimensions.md): Understand billing dimensions for Serverless projects
   - [Elastic Cloud Hosted billing](/deploy-manage/cloud-organization/billing/cloud-hosted-deployment-billing-dimensions.md): Understand billing dimensions for Elastic Cloud Hosted deployments
-
