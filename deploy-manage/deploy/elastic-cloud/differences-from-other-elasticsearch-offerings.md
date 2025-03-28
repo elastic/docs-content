@@ -52,7 +52,7 @@ This table compares the core platform capabilities between Elastic Cloud Hosted 
 | **BYO-Key for Encryption at Rest** | ✅ | **Planned** | Coming in a future release; data in Serverless is stored on cloud-provider encrypted object storage |
 | **Cloud provider support** | - AWS <br>- GCP <br>- Azure | - AWS <br>- Azure (in preview) <br>- GCP (planned) | Azure: [Preview details](https://www.elastic.co/blog/elastic-cloud-serverless-microsoft-azure-tech-preview) |
 | **Cluster scaling** | Manual with autoscaling option | Managed | Automatic scaling eliminates capacity planning - [Learn more](https://www.elastic.co/blog/elastic-serverless-architecture) |
-| **Custom plugins and bundles** | ✅ | ❌ | Not supported in Serverless |
+| **Custom plugins and bundles** | ✅ | ❌ | Not available in Serverless |
 | **Custom roles** | ✅ | ✅ | Fully supported in both |
 | **Deployment health monitoring** | AutoOps or monitoring cluster | Managed by Elastic | - No monitoring cluster required <br>- Automatically handled by Elastic |
 | **Deployment model** | Single deployments with multiple solutions | Separate projects for specific use cases | Fundamental architectural difference - [Learn more](https://www.elastic.co/blog/elastic-serverless-architecture) |
@@ -73,18 +73,18 @@ This table compares Elasticsearch capabilities between Elastic Cloud Hosted depl
 
 | **Feature** | Elastic Cloud Hosted | Serverless Elasticsearch projects | Serverless notes |
 |---------|----------------------|-----------------------------------|------------------|
-| **Behavioral analytics** | ✅ (deprecated in 9.0) | ❌ | Not supported in Serverless |
+| **Behavioral analytics** | ✅ (deprecated in 9.0) | ❌ | Not available in Serverless |
 | **Clone index API** | ✅ | **Planned** | Coming in a future release |
 | **Cross-cluster replication** | ✅ | **Planned** | Coming in a future release |
 | **Cross-cluster search** | ✅ | **Planned** | Coming in a future release |
 | **Data lifecycle management** | - ILM <br>- Data stream lifecycle | Data stream lifecycle only | - No data tiers in Serverless <br>- Optimized for common lifecycle management needs |
 | **Elastic connectors (for search)** | ✅ (discontinued in 9.0) | Self-managed only | - Managed connectors not available <br>- Use [**self-managed connectors**](elasticsearch://reference/ingestion-tools/search-connectors/self-managed-connectors.md) |
-| **Elasticsearch for Apache Hadoop** | ✅ | ❌ | Not supported in Serverless |
+| **Elasticsearch for Apache Hadoop** | ✅ | ❌ | Not available in Serverless |
 | **Enterprise Search (App Search & Workplace Search)** | ✅ (discontinued in 9.0) | ❌ | Not available in Serverless |
 | **Kibana Alerts** | ✅ | ✅ | |
 | **Reindexing from remote** | ✅ | **Planned** | Coming in a future release |
 | **Repository management** | ✅ | Managed | Automatically managed by Elastic |
-| **Scripted metric aggregations** | ✅ | ❌ | Not supported in Serverless |
+| **Scripted metric aggregations** | ✅ | ❌ | Not available in Serverless |
 | **Search applications** | UI and APIs | Maintenance mode (beta), API only | UI not available in Serverless |
 | **Shard management** | User-configurable | Managed by Elastic | No manual shard allocation in Serverless |
 | **Watcher** | ✅ | ❌ | Use **Kibana Alerts** instead, which provides rich integrations across use cases |
@@ -125,7 +125,7 @@ This table compares Security capabilities between Elastic Cloud Hosted deploymen
 | **Feature** | Elastic Cloud Hosted | Serverless Security projects | Serverless notes |
 |---------|---------------------|------------------------------|------------------|
 | **API keys** | ✅ | ✅ | |
-| **Defend for Containers integration** | ✅ (deprecated in 9.0) | ❌ | Not supported in Serverless architecture |
+| **Defend for Containers integration** | ✅ (deprecated in 9.0) | ❌ | Not available in Serverless |
 | **Endpoint security** | ✅ | ✅ | |
 | **Field and document level security** | ✅ | ✅ | |
 | **Kibana Alerts** | ✅ | ✅ | |
