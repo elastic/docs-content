@@ -25,20 +25,23 @@ Refer to our [customer success stories](https://www.elastic.co/customers/success
 
 Elasticsearch provides multiple deployment options:
 
-1. **Elastic Cloud**: Fully managed Elasticsearch service, hassle-free with automatic updates. Ideal for those seeking scalability and ease of use. [Learn more about Elastic Cloud](../deploy-manage/deploy/elastic-cloud.md).  
+* **Elastic Cloud**: Fully managed Elasticsearch service, hassle-free with automatic updates. Ideal for those seeking scalability and ease of use. [Learn more about Elastic Cloud](../deploy-manage/deploy/elastic-cloud.md).  
    **Get started**: [Sign up here](https://cloud.elastic.co/registration?page=docs&placement=docs-body).
-2. **Serverless**: A deployment option designed for flexibility and efficiency, allowing you to scale resources automatically without worrying about infrastructure. Perfect for unpredictable workloads. [Learn more about Elasticsearch Serverless](../deploy-manage/deploy/elastic-cloud/serverless.md).  
+* **Serverless**: A deployment option designed for flexibility and efficiency, allowing you to scale resources automatically without worrying about infrastructure. Perfect for unpredictable workloads. [Learn more about Elasticsearch Serverless](../deploy-manage/deploy/elastic-cloud/serverless.md).  
    **Get started**: [Sign up here](https://cloud.elastic.co/registration?page=docs&placement=docs-body).
-3. **Self-Managed**: Deploy Elasticsearch on-premise or on your infrastructure. Ideal for those who prefer complete control. [Learn about self-managed deployment](https://www.elastic.co/downloads/elasticsearch).  
+* **Self-Managed**: Deploy Elasticsearch on-premise or on your infrastructure. Ideal for those who prefer complete control. [Learn about self-managed deployment](../deploy-manage/deploy/self-managed.md).  
    **Get started**: [Download Elasticsearch here](../deploy-manage/deploy/self-managed/local-development-installation-quickstart.md).
 
 ## Step 2: Explore the solutions
 
 Elasticsearch supports diverse use cases. Select a solution and follow its dedicated getting-started guide:
 
-1. **Search**: Create seamless search experiences for apps, websites, or workplaces. [Get started with Search](../solutions/search/get-started.md).
-2. **Observability**: Monitor logs, metrics, and traces to gain insight into your systems. [Get started with Observability](../solutions/observability/get-started.md).
-3. **Security**: Detect and respond to threats with real-time analytics. [Get started with Security](../solutions/security/get-started.md).
+|     |     |
+| --- | --- |
+|  |  |
+| ![elasticsearch](https://www.elastic.co/docs/assets/images/elasticsearch.png "elasticsearch =50%") | **Elasticsearch**<br> Create seamless search experiences for apps, websites, or workplaces.<br><br>[**Get started →**](../solutions/search/get-started.md)<br> |
+| ![observability](https://www.elastic.co/docs/assets/images/observability.png "observability =50%") | **Observability**<br> Monitor logs, metrics, and traces to gain insight into your systems.<br><br>[**Get started →**](../solutions/observability/get-started.md)<br> |
+| ![security](https://www.elastic.co/docs/assets/images/security.png "security =50%") | **Security**<br> Monitor logs, metrics, and traces to gain insight into your systems.<br><br>[**Get started →**](../solutions/security/get-started.md)<br> |
 
 ## Next steps
 
