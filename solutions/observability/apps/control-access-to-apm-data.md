@@ -266,9 +266,9 @@ Using the table below, assign each role the following privileges:
 | Index privileges | index: `production-*-apm`, privilege: `read` | index: `staging-*-apm`, privilege: `read` |
 | Kibana privileges | space: `production`, feature privileges: `APM and User Experience: read` | space: `staging`, feature privileges: `APM and User Experience: read` |
 
-:::{image} ../../../images/observability-apm-roles-config.png
+:::{image} /solutions/images/observability-apm-roles-config.png
 :alt: APM role config example
-:class: screenshot
+:screenshot:
 :::
 
 Alternatively, you can use the {{es}} [Create or update roles API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-role):

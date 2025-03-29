@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/inspect-uptime-duration-anomalies.html
+applies_to:
+  stack: all
 ---
 
 # Inspect uptime duration anomalies [inspect-uptime-duration-anomalies]
@@ -24,8 +26,8 @@ Create a {{ml}} job to detect anomalous monitor duration rates automatically.
 
 When an anomaly is detected, the duration is displayed on the **Monitor duration** chart, along with the duration times. The colors represent the criticality of the anomaly: red (critical) and yellow (minor).
 
-:::{image} ../../../images/observability-inspect-uptime-duration-anomalies.png
+:::{image} /solutions/images/observability-inspect-uptime-duration-anomalies.png
 :alt: inspect uptime duration anomalies
-:class: screenshot
+:screenshot:
 :::
 

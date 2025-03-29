@@ -1,6 +1,7 @@
 ---
+mapped_urls:
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-manage-repositories.html
 navigation_title: "Elastic Cloud Enterprise"
-
 applies_to:
   deployment:
     ece: 

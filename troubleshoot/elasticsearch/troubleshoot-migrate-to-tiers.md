@@ -1,4 +1,11 @@
 ---
+applies_to:
+  stack: 
+  deployment:
+    eck: 
+    ess: 
+    ece: 
+    self: 
 navigation_title: Incomplete migration to data tiers
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/troubleshoot-migrate-to-tiers.html
@@ -16,13 +23,13 @@ In order to fix this follow the next steps:
 
 :::::::{tab-set}
 
-::::::{tab-item} Elasticsearch Service
+::::::{tab-item} {{ech}}
 In order to get the shards assigned we need to call the [migrate to data tiers routing](../../manage-data/lifecycle/data-tiers.md) API which will resolve the conflicting routing configurations towards using the standardized [data tiers](../../manage-data/lifecycle/data-tiers.md). This will also future-proof the system by migrating the index templates and ILM policies if needed.
 
 **Use {{kib}}**
 
 1. Log in to the [{{ecloud}} console](https://cloud.elastic.co?page=docs&placement=docs-body).
-2. On the **Elasticsearch Service** panel, click the name of your deployment.
+2. On the **Hosted deployments** panel, click the name of your deployment.
 
     ::::{note}
     If the name of your deployment is disabled your {{kib}} instances might be unhealthy, in which case please contact [Elastic Support](https://support.elastic.co). If your deployment doesn’t include {{kib}}, all you need to do is [enable it first](../../deploy-manage/deploy/elastic-cloud/access-kibana.md).
@@ -30,9 +37,9 @@ In order to get the shards assigned we need to call the [migrate to data tiers r
 
 3. Open your deployment’s side navigation menu (placed under the Elastic logo in the upper left corner) and go to **Dev Tools > Console**.
 
-    :::{image} ../../images/elasticsearch-reference-kibana-console.png
+    :::{image} /troubleshoot/images/elasticsearch-reference-kibana-console.png
     :alt: {{kib}} Console
-    :class: screenshot
+    :screenshot:
     :::
 
 4. First, let’s [stop](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-stop) {{ilm}}
@@ -83,7 +90,7 @@ In order to get the shards assigned we need to call the [migrate to data tiers r
     ```
 
     1. The ILM policies that were updated.
-    2. The indices that were migrated to [tier preference](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/data-tier-allocation.md#tier-preference-allocation-filter) routing.
+    2. The indices that were migrated to [tier preference](elasticsearch://reference/elasticsearch/index-settings/data-tier-allocation.md#tier-preference-allocation-filter) routing.
     3. The legacy index templates that were updated to not contain custom routing settings for the provided data attribute.
     4. The composable index templates that were updated to not contain custom routing settings for the provided data attribute.
     5. The component templates that were updated to not contain custom routing settings for the provided data attribute.
@@ -160,7 +167,7 @@ In order to get the shards assigned we need to make sure the deployment is using
     ```
 
     1. The ILM policies that were updated.
-    2. The indices that were migrated to [tier preference](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/data-tier-allocation.md#tier-preference-allocation-filter) routing.
+    2. The indices that were migrated to [tier preference](elasticsearch://reference/elasticsearch/index-settings/data-tier-allocation.md#tier-preference-allocation-filter) routing.
     3. The legacy index templates that were updated to not contain custom routing settings for the provided data attribute.
     4. The composable index templates that were updated to not contain custom routing settings for the provided data attribute.
     5. The component templates that were updated to not contain custom routing settings for the provided data attribute.

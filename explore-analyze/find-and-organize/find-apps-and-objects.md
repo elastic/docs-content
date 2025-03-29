@@ -10,9 +10,9 @@ mapped_pages:
 
 To quickly find apps and the objects you create, use the search field in the global header. Search suggestions include deep links into applications, allowing you to directly navigate to the views you need most.
 
-:::{image} ../../images/kibana-app-navigation-search.png
+:::{image} /explore-analyze/images/kibana-app-navigation-search.png
 :alt: Example of searching for apps
-:class: screenshot
+:screenshot:
 :width: 60%
 :::
 
@@ -31,9 +31,9 @@ You can search for objects by type, name, and tag. To get the most from the sear
 
 This example searches for visualizations with the tag `design` .
 
-:::{image} ../../images/kibana-tags-search.png
+:::{image} /explore-analyze/images/kibana-tags-search.png
 :alt: Example of searching for tags
-:class: screenshot
+:screenshot:
 :width: 60%
 :::
 

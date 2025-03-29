@@ -52,7 +52,7 @@ The steps to follow depend on whether the Certificate Authority (CA) of the remo
 
 ::::{dropdown} The CA is public
 1. [Log into the Cloud UI](../deploy/cloud-enterprise/log-into-cloud-ui.md).
-2. On the deployments page, select your deployment.
+2. On the **Deployments** page, select your deployment.
 
     Narrow the list by name, ID, or choose from several other filters. To further define the list, use a combination of filters.
 
@@ -80,7 +80,7 @@ If you later need to update the remote connection with different permissions, yo
 
 ::::{dropdown} The CA is private
 1. [Log into the Cloud UI](../deploy/cloud-enterprise/log-into-cloud-ui.md).
-2. On the deployments page, select your deployment.
+2. On the **Deployments** page, select your deployment.
 
     Narrow the list by name, ID, or choose from several other filters. To further define the list, use a combination of filters.
 
@@ -104,7 +104,7 @@ If you later need to update the remote connection with different permissions, yo
     3. Click **Copy root certificate** and paste it into a new file. The root certificate is the last certificate shown in the chain.
     4. Save that file as `.crt`. It is now ready to be uploaded.
 
-        :::{image} ../../images/cloud-enterprise-remote-clusters-proxy-certificate.png
+        :::{image} /deploy-manage/images/cloud-enterprise-remote-clusters-proxy-certificate.png
         :alt: Certificate to copy from the chain
         :::
 
@@ -224,9 +224,9 @@ On the local cluster, add the remote cluster using {{kib}} or the {{es}} API.
 
     * **Server name**: This value can be found on the **Security** page of the {{ece}} deployment you want to use as a remote.
 
-      :::{image} ../../images/cloud-enterprise-ce-copy-remote-cluster-parameters.png
+      :::{image} /deploy-manage/images/cloud-enterprise-ce-copy-remote-cluster-parameters.png
       :alt: Remote Cluster Parameters in Deployment
-      :class: screenshot
+      :screenshot:
       :::
 
       ::::{note}
@@ -321,4 +321,4 @@ The response includes just the remote clusters from the same ECE environment. In
 
 ## Configure roles and users [ece_configure_roles_and_users_2]
 
-To use a remote cluster for {{ccr}} or {{ccs}}, you need to create user roles with [remote indices privileges](../users-roles/cluster-or-deployment-auth/defining-roles.md#roles-remote-indices-priv) on the local cluster. Refer to [Configure roles and users](remote-clusters-api-key.md#remote-clusters-privileges-api-key).
+To use a remote cluster for {{ccr}} or {{ccs}}, you need to create user roles with [remote indices privileges](../users-roles/cluster-or-deployment-auth/role-structure.md#roles-remote-indices-priv) on the local cluster. Refer to [Configure roles and users](remote-clusters-api-key.md#remote-clusters-privileges-api-key).

@@ -1,4 +1,8 @@
 ---
+navigation_title: Create templates
+applies_to:
+  deployment:
+    ece: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-configuring-ece-create-templates.html
 ---
@@ -22,9 +26,9 @@ Before you start creating your own deployment templates, you should have: [tagge
 3. Select **Create template**.
 4. Give your template a name and include a description that reflects its intended use.
 5. Select **Create template**. The **Configure instances** page opens.
-6. Choose whether or not [autoscaling](../../autoscaling.md) is enabled by default for deployments created using the template. Autoscaling adjusts resources available to the deployment automatically as loads change over time.
+6. Choose whether or not [autoscaling](/deploy-manage/autoscaling/autoscaling-in-ece-and-ech.md) is enabled by default for deployments created using the template. Autoscaling adjusts resources available to the deployment automatically as loads change over time.
 
-    :::{image} ../../../images/cloud-enterprise-ece-create-template-autoscaling.png
+    :::{image} /deploy-manage/images/cloud-enterprise-ece-create-template-autoscaling.png
     :alt: screencapture of the "Enable autoscaling by default" switch
     :::
 
@@ -32,36 +36,36 @@ Before you start creating your own deployment templates, you should have: [tagge
 
     * Select which [instance configuration](ece-configuring-ece-instance-configurations-create.md) to assign to the template. This allows you to optimize the performance of your deployments by matching a machine type to a use case. A hot data and content tier, for example, is best suited to be allocated with an instance configuration having fast SSD storage, while warm and cold data tiers should be allocated with an instance configuration with larger storage but likely less performant, lower cost hardware.
 
-        :::{image} ../../../images/cloud-enterprise-ece-create-template-instance-configuration.png
+        :::{image} /deploy-manage/images/cloud-enterprise-ece-create-template-instance-configuration.png
         :alt: screencapture of the "Initial size per zone" dropdown box
         :::
 
     * Adjust the default, initial amount of memory and storage. Increasing memory and storage also improves performance by increasing the CPU resources that get assigned relative to the size of the instance, meaning that a 32 GB instance gets twice as much CPU resource as a 16 GB one. These resources are just template defaults that can be adjusted further before you create actual deployments.
 
-        :::{image} ../../../images/cloud-enterprise-ece-create-template-initial-size.png
+        :::{image} /deploy-manage/images/cloud-enterprise-ece-create-template-initial-size.png
         :alt: screencapture of the "Initial size per zone" dropdown box
         :::
 
     * Configure autoscaling settings for the deployment.
 
-        :::{image} ../../../images/cloud-enterprise-ece-create-template-max-autoscaling.png
+        :::{image} /deploy-manage/images/cloud-enterprise-ece-create-template-max-autoscaling.png
         :alt: screencapture of the "Maximum autoscaling size per zone" dropdown box
         :::
 
         * For data nodes, autoscaling up is supported based on the amount of available storage. You can set the default initial size of the node and the default maximum size that the node can be autoscaled up to.
         * For machine learning nodes, autoscaling is supported based on the expected memory requirements for machine learning jobs. You can set the default minimum size that the node can be scaled down to and the default maximum size that the node can be scaled up to. If autoscaling is not enabled for the deployment, the "minimum" value will instead be the default initial size of the machine learning node.
 
-        The default values provided by the deployment template can be adjusted at any time. Check our [Autoscaling example](../../autoscaling/ece-autoscaling-example.md) for details about these settings. Nodes and components that currently support autoscaling are indicated by a `supports autoscaling` badge on the **Configure instances** page.
+        The default values provided by the deployment template can be adjusted at any time. Check our [Autoscaling example](../../autoscaling/autoscaling-in-ece-and-ech.md#ec-autoscaling-example) for details about these settings. Nodes and components that currently support autoscaling are indicated by a `supports autoscaling` badge on the **Configure instances** page.
 
     * Add [fault tolerance](ece-ha.md) (high availability) by using more than one availability zone.
 
-        :::{image} ../../../images/cloud-enterprise-ece-create-template-availability-zones.png
+        :::{image} /deploy-manage/images/cloud-enterprise-ece-create-template-availability-zones.png
         :alt: screencapture of the "Availability zones" radio buttons
         :::
 
     * Add user settings to configure how Elasticsearch and other components run. Check [Editing your user settings](edit-stack-settings.md) for details about what settings are available.
 
-        :::{image} ../../../images/cloud-enterprise-ece-create-template-user-settings.png
+        :::{image} /deploy-manage/images/cloud-enterprise-ece-create-template-user-settings.png
         :alt: screencapture of the "User settings" expandable section
         :::
 
@@ -72,7 +76,7 @@ Before you start creating your own deployment templates, you should have: [tagge
 9. On this page you can [configure index management](ece-configure-templates-index-management.md) by assigning attributes to each of the data nodes in the deployment template. In Kibana, you can configure an index lifecycle management (ILM) policy, based on the node attributes, to control how data moves across the nodes in your deployment.
 10. Select **Stack features**.
 11. You can select a [snapshot repository](../../tools/snapshot-and-restore/cloud-enterprise.md) to be used by default for deployment backups.
-12. You can choose to [enable logging and monitoring](../../monitor/stack-monitoring/ece-stack-monitoring.md) by default, so that deployment logs and metrics are send to a dedicated monitoring deployment, and so that additional log types, retention options, and Kibana visualizations are available on all deployments created using this template.
+12. You can choose to [enable logging and monitoring](../../monitor/stack-monitoring/ece-ech-stack-monitoring.md) by default, so that deployment logs and metrics are send to a dedicated monitoring deployment, and so that additional log types, retention options, and Kibana visualizations are available on all deployments created using this template.
 13. Select **Extensions**.
 14. Select any Elasticsearch extensions that you would like to be available automatically to all deployments created using the template.
 15. Select **Save and create template**.

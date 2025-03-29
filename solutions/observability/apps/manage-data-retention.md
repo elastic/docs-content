@@ -49,7 +49,7 @@ To find Synthetics data streams:
 :::{tab-item} Serverless
 :sync: serverless
 
-1. Navigate to **Project settings** → **Management*** → ***Index Management** → **Data Streams**.
+1. Navigate to **Project settings** → **Management** → **Index Management** → **Data Streams**.
 2. Filter the list of data streams for those containing the term `synthetics`.
 
     1. In the UI there will be three types of browser data streams: `synthetics-browser-*`, `synthetics-browser.network-*`, and `synthetics-browser.screenshot-*`.
@@ -58,4 +58,4 @@ To find Synthetics data streams:
 
 ::::
 
-Then, you can refer to [Tutorial: Customize data retention for integrations](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/data-streams-ilm-tutorial.md) to learn how to apply a custom {{ilm-init}} policy to the browser data streams.
+Then, you can refer to [Tutorial: Customize data retention for integrations](/reference/fleet/data-streams-ilm-tutorial.md) to learn how to apply a custom {{ilm-init}} policy to the browser data streams.

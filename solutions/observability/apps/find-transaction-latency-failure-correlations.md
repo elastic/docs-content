@@ -19,9 +19,6 @@ To find correlations:
 
 Select a service on the **Services** page in the Applications UI then select a transaction group from the **Transactions** tab.
 
-::::{note}
-Queries within the Applications UI are also applied to the correlations.
-::::
 
 :::
 
@@ -33,13 +30,12 @@ Queries within the Applications UI are also applied to the correlations.
 3. Select the **Transactions** tab.
 4. Select a transaction group in the **Transactions** table.
 
-::::{note}
-Active queries *are* applied to correlations.
+:::
 
 ::::
 
-:::
-
+:::: {note}
+Active queries *are* applied to correlations.
 ::::
 
 
@@ -47,9 +43,9 @@ Active queries *are* applied to correlations.
 
 The correlations on the **Latency correlations** tab help you discover which attributes are contributing to increased transaction latency.
 
-:::{image} ../../../images/observability-correlations-hover.png
+:::{image} /solutions/images/observability-correlations-hover.png
 :alt: APM latency correlations
-:class: screenshot
+:screenshot:
 :::
 
 The progress bar indicates the status of the asynchronous analysis, which performs statistical searches across a large number of attributes. For large time ranges and services with high transaction throughput, this might take some time. To improve performance, reduce the time range.
@@ -68,15 +64,15 @@ In this example screenshot, there are transactions that are skewed to the right 
 
 ## Find failed transaction correlations [correlations-error-rate]
 
-The correlations on the **Failed transaction correlations** tab help you discover which attributes are most influential in distinguishing between transaction failures and successes. In this context, the success or failure of a transaction is determined by its [event.outcome](asciidocalypse://docs/ecs/docs/reference/ecs-event.md#field-event-outcome) value. For example, APM agents set the `event.outcome` to `failure` when an HTTP transaction returns a `5xx` status code.
+The correlations on the **Failed transaction correlations** tab help you discover which attributes are most influential in distinguishing between transaction failures and successes. In this context, the success or failure of a transaction is determined by its [event.outcome](ecs://reference/ecs-event.md#field-event-outcome) value. For example, APM agents set the `event.outcome` to `failure` when an HTTP transaction returns a `5xx` status code.
 
 The chart highlights the failed transactions in the overall latency distribution for the transaction group. If there are attributes that have a statistically significant correlation with failed transactions, they are listed in a table. The table is sorted by scores, which are mapped to high, medium, or low impact levels. Attributes with high impact levels are more likely to contribute to failed transactions. By default, the attribute with the highest score is added to the chart. To see a different attribute in the chart, select its row in the table.
 
 For example, in the screenshot below, there are attributes such as a specific node and pod name that have medium impact on the failed transactions.
 
-:::{image} ../../../images/observability-correlations-failed-transactions.png
+:::{image} /solutions/images/observability-correlations-failed-transactions.png
 :alt: Failed transaction correlations
-:class: screenshot
+:screenshot:
 :::
 
 Select the `+` filter to create a new query in the Applications UI for transactions with one or more of these attributes. If you are unfamiliar with a field, click the icon beside its name to view its most popular values and optionally filter on those values too. Each time that you add another attribute, it is filtering out more and more noise and bringing you closer to a diagnosis.

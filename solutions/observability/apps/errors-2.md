@@ -6,25 +6,20 @@ mapped_urls:
 
 # Errors [apm-errors]
 
-::::{tip}
-[Errors](/solutions/observability/apps/errors.md) are groups of exceptions with a similar exception or log message.
-::::
-
-
 *Errors* are groups of exceptions with a similar exception or log message. The **Errors** overview provides a high-level view of the exceptions that APM agents catch, or that users manually report with APM agent APIs. Like errors are grouped together to make it easy to quickly see which errors are affecting your services, and to take actions to rectify them.
 
 A service returning a 5xx code from a request handler, controller, etc., will not create an exception that an APM agent can catch, and will therefore not show up in this view.
 
-:::{image} ../../../images/observability-apm-errors-overview.png
+:::{image} /solutions/images/observability-apm-errors-overview.png
 :alt: APM Errors overview
-:class: screenshot
+:screenshot:
 :::
 
 Selecting an error group ID or error message brings you to the **Error group**.
 
-:::{image} ../../../images/observability-apm-error-group.png
+:::{image} /solutions/images/observability-apm-error-group.png
 :alt: APM Error group
-:class: screenshot
+:screenshot:
 :::
 
 The error group details page visualizes the number of error occurrences over time and compared to a recent time range. This allows you to quickly determine if the error rate is changing or remaining constant. You’ll also see the top 5 affected transactions—​enabling you to quickly narrow down which transactions are most impacted by the selected error.

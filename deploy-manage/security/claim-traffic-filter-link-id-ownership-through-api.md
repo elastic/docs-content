@@ -1,11 +1,14 @@
 ---
+applies_to:
+  deployment:
+    ess: ga
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-claim-traffic-filter-link-id-through-the-api.html
 ---
 
 # Claim traffic filter link ID ownership through the API [ec-claim-traffic-filter-link-id-through-the-api]
 
-This example demonstrates how to use the Elasticsearch Service RESTful API to claim different types of private link ID (AWS PrivateLink, Azure Private Link, and GCP Private Service Connect). We cover the following examples:
+This example demonstrates how to use the {{ecloud}} RESTful API to claim different types of private link ID (AWS PrivateLink, Azure Private Link, and GCP Private Service Connect). We cover the following examples:
 
 * [Claim a traffic filter link id](#ec-claim-a-traffic-filter-link-id)
 

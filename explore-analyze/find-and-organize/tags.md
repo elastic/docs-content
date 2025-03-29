@@ -9,21 +9,14 @@ mapped_urls:
 
 # Tags [managing-tags]
 
-% What needs to be done: Refine
-
-% Use migrated content from existing pages that map to this page:
-
-% - [ ] ./raw-migrated-files/docs-content/serverless/tags.md
-% - [ ] ./raw-migrated-files/kibana/kibana/managing-tags.md
-
 
 Use tags to categorize your saved objects, then filter for related objects based on shared tags.
 
 To get started, go to the **Tags** management page using the navigation menu or the [global search field](../../explore-analyze/find-and-organize/find-apps-and-objects.md).
 
-:::{image} ../../images/kibana-tag-management-section.png
+:::{image} /explore-analyze/images/kibana-tag-management-section.png
 :alt: Tags management
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -57,12 +50,12 @@ Create a tag to assign to your saved objects.
 To assign and remove tags, you must have `write` permission on the objects to which you assign the tags.
 
 1. Find the tag you want to assign.
-2. Click the actions icon ![Actions icon](../../images/kibana-actions_icon.png ""), and then select **Manage assignments**.
+2. Click the actions icon ![Actions icon](/explore-analyze/images/kibana-actions_icon.png ""), and then select **Manage assignments**.
 3. Select the objects to which you want to assign or remove tags.
 
-   :::{image} ../../images/kibana-manage-assignments-flyout.png
+   :::{image} /explore-analyze/images/kibana-manage-assignments-flyout.png
    :alt: Assign flyout
-   :class: screenshot
+   :screenshot:
    :width: 50%
    :::
 
@@ -73,7 +66,7 @@ To assign and remove tags, you must have `write` permission on the objects to wh
 
 When you delete a tag, you remove it from all saved objects that use it.
 
-1. Click the actions icon ![Actions icon](../../images/kibana-actions_icon.png ""), and then select **Delete**.
+1. Click the actions icon ![Actions icon](/explore-analyze/images/kibana-actions_icon.png ""), and then select **Delete**.
 2. Click **Delete tag**.
 
 ::::{tip}

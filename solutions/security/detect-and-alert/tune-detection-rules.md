@@ -2,28 +2,13 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/tuning-detection-signals.html
   - https://www.elastic.co/guide/en/serverless/current/security-tune-detection-signals.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
-# Tune detection rules
-
-% What needs to be done: Lift-and-shift
-
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/security-docs/security/tuning-detection-signals.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/security-tune-detection-signals.md
-
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
-
-$$$tune-indicator-rules$$$
-
-$$$filter-rule-process$$$
-
-$$$tune-authorized-processes$$$
-
-$$$tune-network-rules$$$
-
-$$$tune-windows-rules$$$
+# Tune detection rules [security-tune-detection-signals]
 
 Using the {{security-app}}, you can tune prebuilt and custom detection rules to optimize alert generation. To reduce noise, you can:
 
@@ -57,9 +42,9 @@ For example, to prevent the [Unusual Process Execution Path - Alternate Data Str
 
     The **Unusual Process Execution Path - Alternate Data Stream** rule details page is displayed.
 
-    :::{image} ../../../images/security-rule-details-page.png
+    :::{image} /solutions/images/security-rule-details-page.png
     :alt: Rule details page
-    :class: screenshot
+    :screenshot:
     :::
 
 3. Select the **Rule exceptions** tab, then click **Add rule exception**.
@@ -69,9 +54,9 @@ For example, to prevent the [Unusual Process Execution Path - Alternate Data Str
     * **Operator**: `is`
     * **Value**: `myautomatedbuild`
 
-        :::{image} ../../../images/security-process-exception.png
+        :::{image} /solutions/images/security-process-exception.png
         :alt: Add Rule Exception UI
-        :class: screenshot
+        :screenshot:
         :::
 
 5. Click **Add rule exception**.
@@ -102,9 +87,9 @@ Another useful technique is to assign lower risk scores to rules triggered by au
     * Lower the `Risk score` (**Edit rule settings** → **About** tab).
     * Add an exception so the rule only matches the user or process name excluded in original prebuilt rules. (`user.name is not <user-name>` or `process.name is not <process-name>`).
 
-        :::{image} ../../../images/security-process-specific-exception.png
+        :::{image} /solutions/images/security-process-specific-exception.png
         :alt: Example of `is not` exception in the Add Rule Exception UI
-        :class: screenshot
+        :screenshot:
         :::
 
 4. Click **Add rule exception**.
@@ -154,7 +139,7 @@ Take the following steps to tune indicator match rules:
 
 
 
-### Noise from common cloud-based network traffic [_noise_from_common_cloud_based_network_traffic]
+### Noise from common cloud-based network traffic [security-tune-detection-signals-noise-from-common-cloud-based-network-traffic]
 
 In cloud-based organizations, remote workers sometimes access services over the internet. The security policies of home networks probably differ from the security policies of managed corporate networks, and these rules might need tuning to reduce noise from legitimate administrative activities:
 

@@ -1,9 +1,10 @@
 # Upgrade
 
-% What needs to be done: Write from scratch
+Upgrading to the latest version provides access to the newest Elastic features, enhancements, performance improvements, and bug fixes. These updates reduce costs, speed up threat response, and improve investigative and analytical data tools. 
 
-% GitHub issue: https://github.com/elastic/docs-projects/issues/355
+When Elastic releases new versions, older versions reach their end of life on a set schedule. To keep your deployment supported, stay up to date. For more information, refer to [Product End of Life Dates](https://www.elastic.co/support/eol).
 
-% Scope notes: Can have version-specific child pages  Connection between upgrading your orchestrator and your cluster
+:::{note}
+Upgrading from a release candidate build, such as 9.0.0-rc1, is unsupported. Use pre-releases only for testing in a temporary environment.
+:::
 
-⚠️ **This page is a work in progress.** ⚠️

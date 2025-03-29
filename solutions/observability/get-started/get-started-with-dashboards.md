@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/observability-dashboards.html
+applies_to:
+  serverless:
 ---
 
 # Get started with dashboards [observability-dashboards]
@@ -11,9 +13,9 @@ You can also create new dashboards and visualizations based on your data views t
 
 In your Observability project, go to **Dashboards** to see installed dashboards or create your own. This example shows dashboards loaded by the System integration:
 
-:::{image} ../../../images/serverless-dashboards.png
+:::{image} /solutions/images/serverless-dashboards.png
 :alt: Screenshot showing list of System dashboards
-:class: screenshot
+:screenshot:
 :::
 
 Notice you can filter the list of dashboards:

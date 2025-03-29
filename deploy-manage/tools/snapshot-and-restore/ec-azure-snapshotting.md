@@ -1,4 +1,7 @@
 ---
+mapped_urls:
+  - https://www.elastic.co/guide/en/cloud/current/ec-azure-snapshotting.html
+  - https://www.elastic.co/guide/en/cloud-heroku/current/ech-azure-snapshotting.html
 applies_to:
   deployment:
     ess: 
@@ -21,7 +24,7 @@ For deployments with **Elastic Stack version 7.17 and earlier**, you’ll need t
 1. Refer to [Azure Repository Plugin](https://www.elastic.co/guide/en/elasticsearch/plugins/7.17/repository-azure.html) to download the version of the plugin that matches your Elastic Stack version.
 2. Upload the plugin to your deployment:
 
-    1. Log in to the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body).
+    1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
     2. Open the **Features > Extensions** page and select **Upload extension**.
     3. Specify the plugin name (`repository-azure`) and the version.
     4. Select **An installable plugin (Compiled, no source code)**.
@@ -36,7 +39,7 @@ For deployments with **Elastic Stack version 7.17 and earlier**, you’ll need t
 
 Create an entry for the Azure client in the Elasticsearch keystore:
 
-1. Log in to the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body).
+1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
 2. Navigate to the **Security** page of the deployment you wish to configure.
 3. Locate **Elasticsearch keystore** and select **Add settings**.
 4. With **Type** set to **Single string**, add the following keys and their values:

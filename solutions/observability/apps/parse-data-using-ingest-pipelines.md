@@ -10,7 +10,7 @@ Ingest pipelines preprocess and enrich APM documents before indexing them. For e
 The default APM pipelines are defined in {{es}} apm-data plugin index templates. {{es}} then uses the index pattern in these index templates to match pipelines to APM data streams.
 
 
-## Custom ingest pipelines [custom-ingest-pipelines] 
+## Custom ingest pipelines [custom-ingest-pipelines]
 
 Elastic APM supports custom ingest pipelines. A custom pipeline allows you to transform data to better match your specific use case. This can be useful, for example, to ensure data security by removing or obfuscating sensitive information.
 
@@ -19,12 +19,12 @@ Each data stream ships with a default pipeline. This default pipeline calls an i
 In addition, ingest pipelines can also be used to direct application metrics (`metrics-apm.app.*`) to a data stream with a different dataset, e.g. to combine metrics for two applications. Sending other APM data to alternate data streams, like traces (`traces-apm.*`), logs (`logs-apm.*`), and internal metrics (`metrics-apm.internal*`) is not currently supported.
 
 
-## `@custom` ingest pipeline naming convention [custom-ingest-pipeline-naming] 
+## `@custom` ingest pipeline naming convention [custom-ingest-pipeline-naming]
 
 `@custom` pipelines are specific to each data stream and follow a similar naming convention: `<type>-<dataset>@custom`. As a reminder, the default APM data streams are:
 
 * Application traces: `traces-apm-<namespace>`
-* RUM and iOS agent application traces: `traces-apm.rum-<namespace>`
+* RUM and iOS agent application traces (Elastic Stack only): `traces-apm.rum-<namespace>`
 * APM internal metrics: `metrics-apm.internal-<namespace>`
 * APM transaction metrics: `metrics-apm.transaction.<metricset.interval>-<namespace>`
 * APM service destination metrics: `metrics-apm.service_destination.<metricset.interval>-<namespace>`
@@ -39,7 +39,7 @@ To match a custom ingest pipeline with a data stream, follow the `<type>-<datase
 The `@custom` pipeline can directly contain processors or you can use the pipeline processor to call other pipelines that can be shared across multiple data streams or integrations. The `@custom` pipeline will persist across all version upgrades.
 
 
-## Create a `@custom` ingest pipeline [custom-ingest-pipeline-create] 
+## Create a `@custom` ingest pipeline [custom-ingest-pipeline-create]
 
 The process for creating a custom ingest pipeline is as follows:
 

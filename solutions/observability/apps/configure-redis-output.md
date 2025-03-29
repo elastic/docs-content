@@ -2,6 +2,8 @@
 navigation_title: "Redis"
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-redis-output.html
+applies_to:
+  stack: all
 ---
 
 
@@ -9,15 +11,15 @@ mapped_pages:
 # Configure the Redis output [apm-redis-output]
 
 
-::::{admonition}
-![supported deployment methods](../../../images/observability-binary-yes-fm-no.svg "")
+::::{note}
+![supported deployment methods](/solutions/images/observability-binary-yes-fm-no.svg "")
 
 The Redis output is not yet supported by {{fleet}}-managed APM Server.
 
 ::::
 
 
-The Redis output inserts the events into a Redis list or a Redis channel. This output plugin is compatible with the [Redis input plugin](asciidocalypse://docs/logstash/docs/reference/plugins-inputs-redis.md) for {{ls}}.
+The Redis output inserts the events into a Redis list or a Redis channel. This output plugin is compatible with the [Redis input plugin](logstash-docs-md://lsr/plugins-inputs-redis.md) for {{ls}}.
 
 To use this output, edit the APM Server configuration file to disable the {{es}} output by commenting it out, and enable the Redis output by adding `output.redis`.
 

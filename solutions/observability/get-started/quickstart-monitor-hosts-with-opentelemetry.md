@@ -2,6 +2,9 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/observability/current/quickstart-monitor-hosts-with-otel.html
   - https://www.elastic.co/guide/en/serverless/current/quickstart-monitor-hosts-with-otel.html
+applies_to:
+  stack:
+  serverless:
 ---
 
 # Quickstart: Monitor hosts with OpenTelemetry [quickstart-monitor-hosts-with-otel]
@@ -50,25 +53,25 @@ In this quickstart guide, you’ll learn how to monitor your hosts using the Ela
 
 ## Limitations [_limitations]
 
-Refer to [Elastic OpenTelemetry Collector limitations](https://github.com/elastic/opentelemetry/blob/main/docs/collector-limitations.md) for known limitations when using the EDOT Collector.
+Refer to [Elastic OpenTelemetry Collector limitations](https://github.com/elastic/opentelemetry/blob/main/docs/EDOT-collector/edot-collector-limitations.md) for known limitations when using the EDOT Collector.
 
 
 ## Collect your data [_collect_your_data]
 
 Follow these steps to collect logs and metrics using the EDOT Collector:
 
-::::{tab-set}
+:::::{tab-set}
 :group: stack-serverless
 
-:::{tab-item} Elastic Stack
+::::{tab-item} Elastic Stack
 :sync: stack
 
 1. In {{kib}}, go to the **Observability** UI and click **Add Data**.
 2. Under **What do you want to monitor?** select **Host**, and then select **OpenTelemetry: Logs & Metrics**.
 
-    :::{image} ../../../images/observability-quickstart-monitor-hosts-otel-entry-point.png
+    :::{image} /solutions/images/observability-quickstart-monitor-hosts-otel-entry-point.png
     :alt: Host monitoring entry point
-    :class: screenshot
+    :screenshot:
     :::
 
 3. Select the appropriate platform.
@@ -86,9 +89,9 @@ Follow these steps to collect logs and metrics using the EDOT Collector:
 Logs are collected from setup onward, so you won’t see logs that occurred before starting the EDOT Collector.
 ::::
 
-:::
+::::
 
-:::{tab-item} Serverless
+::::{tab-item} Serverless
 :sync: serverless
 
 1. [Create a new {{obs-serverless}} project](../../../solutions/observability/get-started/create-an-observability-project.md), or open an existing one.
@@ -96,9 +99,9 @@ Logs are collected from setup onward, so you won’t see logs that occurred befo
 3. Select **Collect and analyze logs**, and then select **OpenTelemetry**.
 4. Under **What do you want to monitor?** select **Host**, and then select **Elastic Agent: Logs & Metrics**.
 
-    :::{image} ../../../images/serverless-quickstart-monitor-hosts-otel-entry-point.png
+    :::{image} /solutions/images/serverless-quickstart-monitor-hosts-otel-entry-point.png
     :alt: Host monitoring entry point
-    :class: screenshot
+    :screenshot:
     :::
 
 5. Select the appropriate platform, and complete the following:
@@ -110,9 +113,9 @@ Logs are collected from setup onward, so you won’t see logs that occurred befo
 
 Logs are collected from setup onward, so you won’t see logs that occurred before starting the EDOT Collector. The default log path is `/var/log/*`. To update the path, modify `otel.yml`.
 
-:::
-
 ::::
+
+:::::
 
 
 Under **Visualize your data**, you’ll see links to **Logs Explorer** to view your logs and **Hosts** to view your host metrics.

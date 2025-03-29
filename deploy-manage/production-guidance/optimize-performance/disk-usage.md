@@ -1,10 +1,17 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/tune-for-disk-usage.html
+applies_to:
+  deployment:
+    ess: all
+    ece: all
+    eck: all
+    self: all
 ---
 
-# Disk usage [tune-for-disk-usage]
+# Tune for disk usage [tune-for-disk-usage]
 
+This page provides strategies to reduce the storage footprint of your Elasticsearch indices. Disk usage is influenced by field mappings, index settings, document structure, and how you manage segments and shards. Use these recommendations to improve compression, eliminate unnecessary data, and optimize storage for your specific use case.
 
 ## Disable the features you do not need [_disable_the_features_you_do_not_need]
 
@@ -24,12 +31,12 @@ PUT index
 }
 ```
 
-[`text`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/text.md) fields store normalization factors in the index to facilitate document scoring. If you only need matching capabilities on a `text` field but do not care about the produced scores, you can use the [`match_only_text`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/text.md#match-only-text-field-type) type instead. This field type saves significant space by dropping scoring and positional information.
+[`text`](elasticsearch://reference/elasticsearch/mapping-reference/text.md) fields store normalization factors in the index to facilitate document scoring. If you only need matching capabilities on a `text` field but do not care about the produced scores, you can use the [`match_only_text`](elasticsearch://reference/elasticsearch/mapping-reference/text.md#match-only-text-field-type) type instead. This field type saves significant space by dropping scoring and positional information.
 
 
 ## Don’t use default dynamic string mappings [default-dynamic-string-mapping]
 
-The default [dynamic string mappings](../../../manage-data/data-store/mapping/dynamic-mapping.md) will index string fields both as [`text`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/text.md) and [`keyword`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/keyword.md). This is wasteful if you only need one of them. Typically an `id` field will only need to be indexed as a `keyword` while a `body` field will only need to be indexed as a `text` field.
+The default [dynamic string mappings](../../../manage-data/data-store/mapping/dynamic-mapping.md) will index string fields both as [`text`](elasticsearch://reference/elasticsearch/mapping-reference/text.md) and [`keyword`](elasticsearch://reference/elasticsearch/mapping-reference/keyword.md). This is wasteful if you only need one of them. Typically an `id` field will only need to be indexed as a `keyword` while a `body` field will only need to be indexed as a `text` field.
 
 This can be disabled by either configuring explicit mappings on string fields or setting up dynamic templates that will map string fields as either `text` or `keyword`.
 
@@ -60,15 +67,16 @@ Larger shards are going to be more efficient at storing data. To increase the si
 
 Keep in mind that large shard sizes come with drawbacks, such as long full recovery times.
 
+Refer to [](./size-shards.md) for more information about sharding strategies.
 
 ## Disable `_source` [disable-source]
 
-The [`_source`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/mapping-source-field.md) field stores the original JSON body of the document. If you don’t need access to it you can disable it. However, APIs that needs access to `_source` such as update, highlight and reindex won’t work.
+The [`_source`](elasticsearch://reference/elasticsearch/mapping-reference/mapping-source-field.md) field stores the original JSON body of the document. If you don’t need access to it you can disable it. However, APIs that needs access to `_source` such as update, highlight and reindex won’t work.
 
 
 ## Use `best_compression` [best-compression]
 
-The `_source` and stored fields can easily take a non negligible amount of disk space. They can be compressed more aggressively by using the `best_compression` [codec](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index-modules.md#index-codec).
+The `_source` and stored fields can easily take a non negligible amount of disk space. They can be compressed more aggressively by using the `best_compression` [codec](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#index-codec).
 
 
 ## Force merge [_force_merge]
@@ -90,14 +98,14 @@ The [shrink API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/ope
 
 ## Use the smallest numeric type that is sufficient [_use_the_smallest_numeric_type_that_is_sufficient]
 
-The type that you pick for [numeric data](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/number.md) can have a significant impact on disk usage. In particular, integers should be stored using an integer type (`byte`, `short`, `integer` or `long`) and floating points should either be stored in a `scaled_float` if appropriate or in the smallest type that fits the use-case: using `float` over `double`, or `half_float` over `float` will help save storage.
+The type that you pick for [numeric data](elasticsearch://reference/elasticsearch/mapping-reference/number.md) can have a significant impact on disk usage. In particular, integers should be stored using an integer type (`byte`, `short`, `integer` or `long`) and floating points should either be stored in a `scaled_float` if appropriate or in the smallest type that fits the use-case: using `float` over `double`, or `half_float` over `float` will help save storage.
 
 
 ## Use index sorting to colocate similar documents [_use_index_sorting_to_colocate_similar_documents]
 
 When Elasticsearch stores `_source`, it compresses multiple documents at once in order to improve the overall compression ratio. For instance it is very common that documents share the same field names, and quite common that they share some field values, especially on fields that have a low cardinality or a [zipfian](https://en.wikipedia.org/wiki/Zipf%27s_law) distribution.
 
-By default documents are compressed together in the order that they are added to the index. If you enabled [index sorting](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/sorting.md) then instead they are compressed in sorted order. Sorting documents with similar structure, fields, and values together should improve the compression ratio.
+By default documents are compressed together in the order that they are added to the index. If you enabled [index sorting](elasticsearch://reference/elasticsearch/index-settings/sorting.md) then instead they are compressed in sorted order. Sorting documents with similar structure, fields, and values together should improve the compression ratio.
 
 
 ## Put fields in the same order in documents [_put_fields_in_the_same_order_in_documents]

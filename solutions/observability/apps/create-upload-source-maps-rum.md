@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-source-map-how-to.html
+applies_to:
+  stack: all
 ---
 
 # Create and upload source maps (RUM) [apm-source-map-how-to]
@@ -11,16 +13,16 @@ For best results, uploading source maps should become a part of your deployment 
 
 Here’s an example of an exception stack trace in the Applications UI when using minified code. As you can see, it’s not very helpful.
 
-:::{image} ../../../images/observability-source-map-before.png
+:::{image} /solutions/images/observability-source-map-before.png
 :alt: Applications UI without source mapping
-:class: screenshot
+:screenshot:
 :::
 
 With a source map, minified files are mapped back to the original source code, allowing you to maintain the speed advantage of minified code, without losing the ability to quickly and easily debug your application. Here’s the same example as before, but with a source map uploaded and applied:
 
-:::{image} ../../../images/observability-source-map-after.png
+:::{image} /solutions/images/observability-source-map-after.png
 :alt: Applications UI with source mapping
-:class: screenshot
+:screenshot:
 :::
 
 Follow the steps below to enable source mapping your error stack traces in the Applications UI:
@@ -56,7 +58,7 @@ It can also be any other unique string that indicates a specific version of your
 
 ## Generate a source map [apm-source-map-rum-generate]
 
-To be compatible with Elastic APM, source maps must follow the [source map revision 3 proposal spec](https://sourcemaps.info/spec.md).
+To be compatible with Elastic APM, source maps must follow the [source map revision 3 proposal spec](https://sourcemaps.info/spec.html).
 
 Source maps can be generated and configured in many different ways. For example, parcel automatically generates source maps by default. If you’re using webpack, some configuration may be needed to generate a source map:
 

@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-high-availability.html
+applies_to:
+  stack: all
 ---
 
 # High Availability [apm-high-availability]
@@ -13,8 +15,8 @@ In case of temporal issues, like unavailable {{es}} or a sudden high workload, A
 
 If {{es}} goes down, the APM Server will eventually deny incoming requests. Both the APM Server and {{apm-agent}}(s) will issue logs accordingly.
 
-::::{tip} 
-Fleet-managed APM Server users might also be interested in [Fleet/Agent proxy support](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/fleet-agent-proxy-support.md).
+::::{tip}
+Fleet-managed APM Server users might also be interested in [Fleet/Agent proxy support](/reference/fleet/fleet-agent-proxy-support.md).
 ::::
 
 

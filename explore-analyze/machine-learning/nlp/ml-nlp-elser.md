@@ -21,7 +21,7 @@ While ELSER V2 is generally available, ELSER V1 is in [preview] and will remain 
 
 ## Tokens - not synonyms [elser-tokens]
 
-ELSER expands the indexed and searched passages into collections of terms that are learned to co-occur frequently within a diverse set of training data. The terms that the text is expanded into by the model *are not* synonyms for the search terms; they are learned associations capturing relevance. These expanded terms are weighted as some of them are more significant than others. Then the {{es}} [sparse vector](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/sparse-vector.md) (or [rank features](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/rank-features.md)) field type is used to store the terms and weights at index time, and to search against later.
+ELSER expands the indexed and searched passages into collections of terms that are learned to co-occur frequently within a diverse set of training data. The terms that the text is expanded into by the model *are not* synonyms for the search terms; they are learned associations capturing relevance. These expanded terms are weighted as some of them are more significant than others. Then the {{es}} [sparse vector](elasticsearch://reference/elasticsearch/mapping-reference/sparse-vector.md) (or [rank features](elasticsearch://reference/elasticsearch/mapping-reference/rank-features.md)) field type is used to store the terms and weights at index time, and to search against later.
 
 This approach provides a more understandable search experience compared to vector embeddings. However, attempting to directly interpret the tokens and weights can be misleading, as the expansion essentially results in a vector in a very high-dimensional space. Consequently, certain tokens, especially those with low weight, contain information that is intertwined with other low-weight tokens in the representation. In this regard, they function similarly to a dense vector representation, making it challenging to separate their individual contributions. This complexity can potentially lead to misinterpretations if not carefully considered during analysis.
 
@@ -33,13 +33,13 @@ To use ELSER, you must have the [appropriate subscription](https://www.elastic.c
 The minimum dedicated ML node size for deploying and using the ELSER model is 4 GB in {{ech}} if [deployment autoscaling](../../../deploy-manage/autoscaling.md) is turned off. Turning on autoscaling is recommended because it allows your deployment to dynamically adjust resources based on demand. Better performance can be achieved by using more allocations or more threads per allocation, which requires bigger ML nodes. Autoscaling provides bigger nodes when required. If autoscaling is turned off, you must provide suitably sized nodes yourself.
 ::::
 
-Enabling trained model autoscaling for your ELSER deployment is recommended. Refer to [*Trained model autoscaling*](ml-nlp-auto-scale.md) to learn more.
+Enabling trained model autoscaling for your ELSER deployment is recommended. Refer to [*Trained model autoscaling*](../../../deploy-manage/autoscaling/trained-model-autoscaling.md) to learn more.
 
 ## ELSER v2 [elser-v2]
 
 Compared to the initial version of the model, ELSER v2 offers improved retrieval accuracy and more efficient indexing. This enhancement is attributed to the extension of the training data set, which includes high-quality question and answer pairs and the improved FLOPS regularizer which reduces the cost of computing the similarity between a query and a document.
 
-ELSER v2 has two versions: one cross-platform version which runs on any hardware and one version which is optimized for Intel® silicon. The **Model Management** > **Trained Models** page shows you which version of ELSER v2 is recommended to deploy based on your cluster’s hardware. However, the recommended way to use ELSER is through the [{{infer}} API](../../../solutions/search/inference-api/elser-inference-integration.md) as a service which makes it easier to download and deploy the model and you don’t need to select from different versions.
+ELSER v2 has two versions: one cross-platform version which runs on any hardware and one version which is optimized for Intel® silicon. The **Model Management** > **Trained Models** page shows you which version of ELSER v2 is recommended to deploy based on your cluster’s hardware. However, the recommended way to use ELSER is through the [{{infer}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put-elasticsearch) as a service which makes it easier to download and deploy the model and you don't need to select from different versions.
 
 If you want to learn more about the ELSER V2 improvements, refer to [this blog post](https://www.elastic.co/search-labs/blog/introducing-elser-v2-part-1).
 
@@ -57,7 +57,7 @@ The easiest and recommended way to download and deploy ELSER is to use the [{{in
 2. Create an {{infer}} endpoint with the ELSER service by running the following API request:
 
 ```console
-PUT _inference/sparse_embedding/my-elser-model
+PUT _inference/sparse_embedding/my-elser-endpoint
     {
       "service": "elasticsearch",
       "service_settings": {
@@ -67,14 +67,14 @@ PUT _inference/sparse_embedding/my-elser-model
           "max_number_of_allocations": 10
         },
         "num_threads": 1,
-        "model_id": ".elser_model_2_linux-x86_64"
+        "model_id": ".elser_model_2"
       }
     }
 ```
 
-The API request automatically initiates the model download and then deploy the model. This example uses [autoscaling](ml-nlp-auto-scale.md) through adaptive allocation.
+The API request automatically initiates the model download and then deploy the model. This example uses [autoscaling](../../../deploy-manage/autoscaling/trained-model-autoscaling.md) through adaptive allocation.
 
-Refer to the [ELSER {{infer}} integration documentation](../../../solutions/search/inference-api/elser-inference-integration.md) to learn more about the available settings.
+Refer to the [ELSER {{infer}} integration documentation](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put-elser) to learn more about the available settings.
 
 After you created the ELSER {{infer}} endpoint, it’s ready to be used for semantic search. The easiest way to perform semantic search in the {{stack}} is to [follow the `semantic_text` workflow](../../../solutions/search/semantic-search/semantic-search-semantic-text.md).
 
@@ -95,9 +95,9 @@ You can also download and deploy ELSER either from **{{ml-app}}** > **Trained Mo
 1. In {{kib}}, navigate to **{{ml-app}}** > **Trained Models**. ELSER can be found in the list of trained models. There are two versions available: one portable version which runs on any hardware and one version which is optimized for Intel® silicon. You can see which model is recommended to use based on your hardware configuration.
 2. Click the **Add trained model** button. Select the ELSER model version you want to use in the opening modal window. The model that is recommended for you based on your hardware configuration is highlighted. Click **Download**. You can check the download status on the **Notifications** page.
 
-    :::{image} ../../../images/machine-learning-ml-nlp-elser-v2-download.png
+    :::{image} /explore-analyze/images/machine-learning-ml-nlp-elser-v2-download.png
     :alt: Downloading ELSER
-    :class: screenshot
+    :screenshot:
     :::
 
     Alternatively, click the **Download model** button under **Actions** in the trained model list.
@@ -105,9 +105,9 @@ You can also download and deploy ELSER either from **{{ml-app}}** > **Trained Mo
 3. After the download is finished, start the deployment by clicking the **Start deployment** button.
 4. Provide a deployment ID, select the priority, and set the number of allocations and threads per allocation values.
 
-    :::{image} ../../../images/machine-learning-ml-nlp-deployment-id-elser-v2.png
+    :::{image} /explore-analyze/images/machine-learning-ml-nlp-deployment-id-elser-v2.png
     :alt: Deploying ELSER
-    :class: screenshot
+    :screenshot:
     :::
 
 5. Click **Start**.
@@ -125,16 +125,16 @@ Alternatively, you can download and deploy ELSER to an {{infer}} pipeline using 
 3. Navigate to the **Pipelines** tab.
 4. Under **{{ml-app}} {{infer-cap}} Pipelines**, click the **Deploy** button to begin downloading the ELSER model. This may take a few minutes depending on your network.
 
-    :::{image} ../../../images/machine-learning-ml-nlp-deploy-elser-v2-es.png
+    :::{image} /explore-analyze/images/machine-learning-ml-nlp-deploy-elser-v2-es.png
     :alt: Deploying ELSER in Elasticsearch
-    :class: screenshot
+    :screenshot:
     :::
 
 5. Once the model is downloaded, click the **Start single-threaded** button to start the model with basic configuration or select the **Fine-tune performance** option to navigate to the **Trained Models** page where you can configure the model deployment.
 
-    :::{image} ../../../images/machine-learning-ml-nlp-start-elser-v2-es.png
+    :::{image} /explore-analyze/images/machine-learning-ml-nlp-start-elser-v2-es.png
     :alt: Start ELSER in Elasticsearch
-    :class: screenshot
+    :screenshot:
     :::
 
 ::::
@@ -172,7 +172,7 @@ POST _ml/trained_models/.elser_model_2/deployment/_start?deployment_id=for_searc
 If you want to deploy ELSER in a restricted or closed network, you have two options:
 
 * create your own HTTP/HTTPS endpoint with the model artifacts on it,
-* put the model artifacts into a directory inside the config directory on all [master-eligible nodes](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/node-settings.md#master-node).
+* put the model artifacts into a directory inside the config directory on all [master-eligible nodes](elasticsearch://reference/elasticsearch/configuration-reference/node-settings.md#master-node).
 
 ### Model artifact files [elser-model-artifacts]
 
@@ -269,9 +269,9 @@ You can use data from an existing index to test the model. Select the index, the
 
 The results contain a list of ten random values for the selected field along with a score showing how relevant each document is to the query. The higher the score, the more relevant the document is. You can reload example documents by clicking **Reload examples**.
 
-:::{image} ../../../images/machine-learning-ml-nlp-elser-v2-test.png
+:::{image} /explore-analyze/images/machine-learning-ml-nlp-elser-v2-test.png
 :alt: Testing ELSER
-:class: screenshot
+:screenshot:
 :::
 
 ## Performance considerations [performance]
@@ -284,7 +284,7 @@ To learn more about ELSER performance, refer to the [Benchmark information](#els
 
 ## Pre-cleaning input text [pre-cleaning]
 
-The quality of the input text significantly affects the quality of the embeddings. To achieve the best results, it’s recommended to clean the input text before generating embeddings. The exact preprocessing you may need to do heavily depends on your text. For example, if your text contains HTML tags, use the [HTML strip processor](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/enrich-processor/htmlstrip-processor.md) in an ingest pipeline to remove unnecessary elements. Always review and clean your input text before ingestion to eliminate any irrelevant entities that might affect the results.
+The quality of the input text significantly affects the quality of the embeddings. To achieve the best results, it’s recommended to clean the input text before generating embeddings. The exact preprocessing you may need to do heavily depends on your text. For example, if your text contains HTML tags, use the [HTML strip processor](elasticsearch://reference/enrich-processor/htmlstrip-processor.md) in an ingest pipeline to remove unnecessary elements. Always review and clean your input text before ingestion to eliminate any irrelevant entities that might affect the results.
 
 ## Recommendations for using ELSER [elser-recommendations]
 
@@ -292,7 +292,7 @@ To gain the biggest value out of ELSER trained models, consider to follow this l
 
 * If quick response time is important for your use case, keep {{ml}} resources available at all times by setting `min_allocations` to `1`.
 * Setting `min_allocations` to `0` can save on costs for non-critical use cases or testing environments.
-* Enabling [autoscaling](ml-nlp-auto-scale.md) through adaptive allocations or adaptive resources makes it possible for {{es}} to scale up or down the available resources of your ELSER deployment based on the load on the process.
+* Enabling [autoscaling](../../../deploy-manage/autoscaling/trained-model-autoscaling.md) through adaptive allocations or adaptive resources makes it possible for {{es}} to scale up or down the available resources of your ELSER deployment based on the load on the process.
 * Use dedicated, optimized ELSER {{infer}} endpoints for ingest and search use cases.
   * When deploying a trained model in {{kib}}, you can select for which case you want to optimize your ELSER deployment.
   * If you use the trained model or {{infer}} APIs and want to optimize your ELSER trained model deployment or {{infer}} endpoint for ingest, set the number of threads to `1` (`"num_threads": 1`).
@@ -306,7 +306,7 @@ To gain the biggest value out of ELSER trained models, consider to follow this l
 ## Benchmark information [elser-benchmarks]
 
 ::::{important}
-The recommended way to use ELSER is through the [{{infer}} API](../../../solutions/search/inference-api/elser-inference-integration.md) as a service.
+The recommended way to use ELSER is through the {{infer}} API as a service.
 ::::
 
 The following sections provide information about how ELSER performs on different hardwares and compares the model performance to {{es}} BM25 and other strong baselines.
@@ -325,7 +325,7 @@ The metric that is used to evaluate ELSER’s ranking ability is the Normalized 
 
 The table below shows the performance of ELSER V2 compared to BM 25. ELSER V2 has 10 wins, 1 draw, 1 loss and an average improvement in NDCG@10 of 18%.
 
-:::{image} ../../../images/machine-learning-ml-nlp-bm25-elser-v2.png
+:::{image} /explore-analyze/images/machine-learning-ml-nlp-bm25-elser-v2.png
 :alt: ELSER V2 benchmarks compared to BM25
 :::
 *NDCG@10 for BEIR data sets for BM25 and ELSER V2  - higher values are better*
@@ -348,18 +348,18 @@ The length of the documents in your particular dataset will have a significant i
 
 Refer to [this blog post](https://www.elastic.co/search-labs/blog/introducing-elser-v2-part-1) to learn more about ELSER V2 improved performance.
 
-:::{image} ../../../images/machine-learning-ml-nlp-elser-bm-summary.png
+:::{image} /explore-analyze/images/machine-learning-ml-nlp-elser-bm-summary.png
 :alt: Summary of ELSER V1 and V2 benchmark reports
 :::
 
 **The optimized model** results show a nearly linear growth up until 8 allocations, after which performance improvements become smaller. In this case, the performance at 8 allocations was 22 docs/s, while the performance of 16 allocations was 26 docs/s, indicating a 20% performance increase due to virtual cores.
 
-:::{image} ../../../images/machine-learning-ml-nlp-elser-v2-opt-bm-results.png
+:::{image} /explore-analyze/images/machine-learning-ml-nlp-elser-v2-opt-bm-results.png
 :alt: ELSER V2 optimized benchmarks
 :::
 
 **The cross-platform** model performance of 8 and 16 allocations are respectively 14 docs/s and 16 docs/s, indicating a performance improvement due to virtual cores of 12%.
 
-:::{image} ../../../images/machine-learning-ml-nlp-elser-v2-cp-bm-results.png
+:::{image} /explore-analyze/images/machine-learning-ml-nlp-elser-v2-cp-bm-results.png
 :alt: ELSER V2 cross-platform benchmarks
 :::

@@ -57,9 +57,9 @@ From the {{ecloud}} Console you can customize {{es}}, {{kib}}, and related produ
 
 Change how {{es}} runs by providing your own user settings. {{ech}} appends these settings to each node’s `elasticsearch.yml` configuration file.
 
-{{ech}} automatically rejects `elasticsearch.yml` settings that could break your cluster. 
+{{ech}} automatically rejects `elasticsearch.yml` settings that could break your cluster.
 
-For a list of supported settings, check [Supported {{es}} settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/elastic-cloud-hosted-elasticsearch-settings.md).
+For a list of supported settings, check [Supported {{es}} settings](elasticsearch://reference/elasticsearch/configuration-reference/index.md).
 
 ::::{warning}
 You can also update [dynamic cluster settings](../../../deploy-manage/deploy/self-managed/configure-elasticsearch.md#dynamic-cluster-setting) using {{es}}'s [update cluster settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings). However, {{ech}} doesn’t reject unsafe setting changes made using this API. Use it with caution.
@@ -69,9 +69,9 @@ You can also update [dynamic cluster settings](../../../deploy-manage/deploy/sel
 To add or edit user settings:
 
 1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
-2. Find your deployment on the home page in the **Hosted deployments** card and select **Manage** to access it directly. Or, select **Hosted deployments** to go to the deployments page to view all of your deployments.
+2. Find your deployment on the home page in the **Hosted deployments** card and select **Manage** to access it directly. Or, select **Hosted deployments** to go to the **Deployments** page to view all of your deployments.
 
-    On the deployments page you can narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
+    On the **Deployments** page you can narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
 
 3. From your deployment menu, go to the **Edit** page.
 4. In the **Elasticsearch** section, select **Manage user settings and extensions**.
@@ -88,14 +88,14 @@ In some cases, you may get a warning saying "User settings are different across 
 
 Be aware that some settings that could break your cluster if set incorrectly and that the syntax might change between major versions.
 
-For a list of supported settings, check [Kibana settings](asciidocalypse://docs/kibana/docs/reference/cloud/elastic-cloud-kibana-settings.md).
+For a list of supported settings, check [Kibana settings](kibana://reference/cloud/elastic-cloud-kibana-settings.md).
 
 To change Kibana settings:
 
 1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
-2. Find your deployment on the home page in the **Hosted deployments** card and select **Manage** to access it directly. Or, select **Hosted deployments** to go to the deployments page to view all of your deployments.
+2. Find your deployment on the home page in the **Hosted deployments** card and select **Manage** to access it directly. Or, select **Hosted deployments** to go to the **Deployments** page to view all of your deployments.
 
-    On the deployments page you can narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
+    On the **Deployments** page you can narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
 
 3. From your deployment menu, go to the **Edit** page.
 4. In the **Kibana** section, select **Edit user settings**. For deployments with existing user settings, you may have to expand the **Edit kibana.yml** caret instead.

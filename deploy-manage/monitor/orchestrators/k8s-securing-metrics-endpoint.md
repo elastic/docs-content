@@ -3,23 +3,25 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-securing-the-metrics-endpoint.html
 applies_to:
   deployment:
-    eck: all
+    eck: 
 ---
 
 # Securing the metrics endpoint [k8s-securing-the-metrics-endpoint]
 
-The ECK operator provides a metrics endpoint that can be used to monitor the operator’s performance and health. By default, the metrics endpoint is not enabled and is not secured. To enable the metrics endpoint follow the previous instructions. To enable RBAC and TLS on the metrics endpoint, follow the instructions in the following sections depending on whether you installed ECK through the Helm chart or the manifests.
+If you're using ECK 2.16 or earlier, then after you [enable your metrics endpoint](/deploy-manage/monitor/orchestrators/k8s-enabling-metrics-endpoint.md), you need to secure it. To enable RBAC and TLS on the metrics endpoint, follow the instructions in the following sections depending on whether you installed ECK through the Helm chart or the manifests.
+
+The ECK operator metrics endpoint is secured by default beginning in version 3.0.0. If you're using ECK 3.0.0 or later, then you might want to use the information on this page to provide your own TLS certificate.
 
 ## Using the operator Helm chart [k8s_using_the_operator_helm_chart_2]
 
-If you installed ECK through the Helm chart commands listed in [Install ECK using the Helm chart](../../deploy/cloud-on-k8s/install-using-helm-chart.md), you can now set `config.metrics.secureMode.enabled` to `true` and both RBAC and TLS/HTTPs will be enabled for the metrics endpoint.
+If you installed ECK through the Helm chart commands listed in [](../../deploy/cloud-on-k8s/install-using-helm-chart.md), you can set `config.metrics.secureMode.enabled` to `true` and both RBAC and TLS/HTTPs will be enabled for the metrics endpoint.
 
 ### Using your own TLS certificate for the metrics endpoint when using the Helm chart [k8s_using_your_own_tls_certificate_for_the_metrics_endpoint_when_using_the_helm_chart]
 
-By default a self-signed certificate will be generated for use by the metrics endpoint. If you want to use your own TLS certificate for the metrics endpoint you can provide the `config.metrics.secureMode.tls.certificateSecret` to the Helm chart. The `certificateSecret` should be the name of an existing Kubernetes `Secret` that contains both the TLS certificate and the TLS private key. The following keys are supported within the secret:
+By default, a self-signed certificate will be generated for use by the metrics endpoint. If you want to use your own TLS certificate for the metrics endpoint, you can provide the `config.metrics.secureMode.tls.certificateSecret` to the Helm chart. The `certificateSecret` should be the name of an existing Kubernetes `Secret` that contains both the TLS certificate and the TLS private key. The following keys are supported within the secret:
 
-* `tls.crt` - The PEM-encoded TLS certificate
-* `tls.key` - The PEM-encoded TLS private key
+* `tls.crt`: The PEM-encoded TLS certificate
+* `tls.key`: The PEM-encoded TLS private key
 
 The easiest way to create this secret is to use the `kubectl create secret tls` command. For example:
 
@@ -27,7 +29,7 @@ The easiest way to create this secret is to use the `kubectl create secret tls` 
 kubectl create secret tls eck-metrics-tls-certificate -n elastic-system --cert=/path/to/tls.crt --key=/path/to/tls.key
 ```
 
-Providing this secret is sufficient to use your own certificate if it is from a trusted Certificate Authority. If the certificate is not signed by a trusted CA and you are using Prometheus to scrape the metrics you have 2 options:
+Providing this secret is sufficient to use your own certificate if it is from a trusted Certificate Authority. If the certificate is not signed by a trusted CA and you are using Prometheus to scrape the metrics, you have the following options:
 
 * Disable TLS verification.
 
@@ -40,116 +42,116 @@ Providing this secret is sufficient to use your own certificate if it is from a 
     * Set the `spec.secrets` field of the `Prometheus` custom resource, or `prometheus.prometheusSpec.secrets` when using the Helm chart such that the CA secret is mounted into the Prometheus pod at `serviceMonitor.caMountDirectory` (assuming you are using the Prometheus operator). See the [ECK Helm chart values file](https://github.com/elastic/cloud-on-k8s/tree/2.16/deploy/eck-operator/values.yaml) for more information.
 
 
-See the [Prometheus requirements section](k8s-prometheus-requirements.md) for more information on creating the CA secret.
+Refer to [](k8s-prometheus-requirements.md) for more information on creating the CA secret.
 
 
 
 ## Using the operator manifests [k8s_using_the_operator_manifests_2]
 
-If you installed ECK through using the manifests using the commands listed in [*Deploy ECK in your Kubernetes cluster*](../../deploy/cloud-on-k8s/install-using-yaml-manifest-quickstart.md) some additional changes will be required to enable secure metrics.
+If you installed ECK through using the manifests using the commands listed in [](../../deploy/cloud-on-k8s/install-using-yaml-manifest-quickstart.md), some additional changes are required to enable secure metrics.
 
-Enable the metrics port in the `ConfigMap` and set the `metrics-secure` setting to `true`.
+1. Enable the metrics port in the `ConfigMap` and set the `metrics-secure` setting to `true`.
 
-```shell
-cat <<EOF | kubectl apply -f -
-kind: ConfigMap
-apiVersion: v1
-metadata:
-  name: elastic-operator
-  namespace: elastic-system
-data:
-  eck.yaml: |-
-    log-verbosity: 0
-    metrics-port: 8081
-    metrics-host: 0.0.0.0
-    metrics-secure: true
-    container-registry: docker.elastic.co
-    max-concurrent-reconciles: 3
-    ca-cert-validity: 8760h
-    ca-cert-rotate-before: 24h
-    cert-validity: 8760h
-    cert-rotate-before: 24h
-    disable-config-watch: false
-    exposed-node-labels: [topology.kubernetes.io/.*,failure-domain.beta.kubernetes.io/.*]
-    set-default-security-context: auto-detect
-    kube-client-timeout: 60s
-    elasticsearch-client-timeout: 180s
-    disable-telemetry: false
-    distribution-channel: all-in-one
-    validate-storage-class: true
-    enable-webhook: true
-    webhook-name: elastic-webhook.k8s.elastic.co
-    webhook-port: 9443
-    operator-namespace: elastic-system
-    enable-leader-election: true
-    elasticsearch-observation-interval: 10s
-    ubi-only: false
-EOF
-```
+    ```yaml
+    cat <<EOF | kubectl apply -f -
+    kind: ConfigMap
+    apiVersion: v1
+    metadata:
+      name: elastic-operator
+      namespace: elastic-system
+    data:
+      eck.yaml: |-
+        log-verbosity: 0
+        metrics-port: 8081
+        metrics-host: 0.0.0.0
+        metrics-secure: true
+        container-registry: docker.elastic.co
+        max-concurrent-reconciles: 3
+        ca-cert-validity: 8760h
+        ca-cert-rotate-before: 24h
+        cert-validity: 8760h
+        cert-rotate-before: 24h
+        disable-config-watch: false
+        exposed-node-labels: [topology.kubernetes.io/.*,failure-domain.beta.kubernetes.io/.*]
+        set-default-security-context: auto-detect
+        kube-client-timeout: 60s
+        elasticsearch-client-timeout: 180s
+        disable-telemetry: false
+        distribution-channel: all-in-one
+        validate-storage-class: true
+        enable-webhook: true
+        webhook-name: elastic-webhook.k8s.elastic.co
+        webhook-port: 9443
+        operator-namespace: elastic-system
+        enable-leader-election: true
+        elasticsearch-observation-interval: 10s
+        ubi-only: false
+    EOF
+    ```
 
-Add an additional `ClusterRole` and `ClusterRoleBinding` for the ECK operator.
+2. Add an additional `ClusterRole` and `ClusterRoleBinding` for the ECK operator.
 
-```shell
-cat <<EOF | kubectl apply -f -
-apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRole
-metadata:
-  name: elastic-operator-metrics-auth-role
-rules:
-- apiGroups:
-  - authentication.k8s.io
-  resources:
-  - tokenreviews
-  verbs:
-  - create
-- apiGroups:
-  - authorization.k8s.io
-  resources:
-  - subjectaccessreviews
-  verbs:
-  - create
----
-apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRoleBinding
-metadata:
-  name: elastic-operator-metrics-auth-rolebinding
-roleRef:
-  apiGroup: rbac.authorization.k8s.io
-  kind: ClusterRole
-  name: elastic-operator-metrics-auth-role
-subjects:
-- kind: ServiceAccount
-  name: elastic-operator
-  namespace: elastic-system
-EOF
-```
+    ```yaml
+    cat <<EOF | kubectl apply -f -
+    apiVersion: rbac.authorization.k8s.io/v1
+    kind: ClusterRole
+    metadata:
+      name: elastic-operator-metrics-auth-role
+    rules:
+    - apiGroups:
+      - authentication.k8s.io
+      resources:
+      - tokenreviews
+      verbs:
+      - create
+    - apiGroups:
+      - authorization.k8s.io
+      resources:
+      - subjectaccessreviews
+      verbs:
+      - create
+    ---
+    apiVersion: rbac.authorization.k8s.io/v1
+    kind: ClusterRoleBinding
+    metadata:
+      name: elastic-operator-metrics-auth-rolebinding
+    roleRef:
+      apiGroup: rbac.authorization.k8s.io
+      kind: ClusterRole
+      name: elastic-operator-metrics-auth-role
+    subjects:
+    - kind: ServiceAccount
+      name: elastic-operator
+      namespace: elastic-system
+    EOF
+    ```
 
-Add a `Service` to expose the metrics endpoint.
+3. Add a `Service` to expose the metrics endpoint.
 
-```shell
-cat <<EOF | kubectl apply -f -
-apiVersion: v1
-kind: Service
-metadata:
-  labels:
-    control-plane: elastic-operator
-    app.kubernetes.io/component: metrics
-  name: elastic-operator-metrics
-  namespace: elastic-system
-spec:
-  ports:
-  - name: https
-    port: 8080
-    protocol: TCP
-    targetPort: metrics
-  selector:
-    control-plane: elastic-operator
-EOF
-```
+    ```yaml
+    cat <<EOF | kubectl apply -f -
+    apiVersion: v1
+    kind: Service
+    metadata:
+      labels:
+        control-plane: elastic-operator
+        app.kubernetes.io/component: metrics
+      name: elastic-operator-metrics
+      namespace: elastic-system
+    spec:
+      ports:
+      - name: https
+        port: 8080
+        protocol: TCP
+        targetPort: metrics
+      selector:
+        control-plane: elastic-operator
+    EOF
+    ```
 
-If using the Prometheus operator, add a `ServiceMonitor` to allow scraping of the metrics endpoint by Prometheus.
+4. If you're using the [Prometheus operator](https://prometheus-operator.dev/), add a `ServiceMonitor` to allow Prometheus to scrape the metrics endpoint.
 
-```shell
+```yaml
 cat <<EOF | kubectl apply -f -
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
@@ -179,66 +181,68 @@ EOF
 
 By default a self-signed certificate will be generated for use by the metrics endpoint. If you want to use your own TLS certificate for the metrics endpoint you will need to follow the previous instructions to enable secure metrics as well as the following steps:
 
-* Create a `Secret` containing the TLS certificate and TLS private key. The following keys are supported within the secret:
-* `tls.crt` - The PEM-encoded TLS certificate
-* `tls.key` - The PEM-encoded TLS private key
+1. Create a `Secret` containing the TLS certificate and TLS private key. The following keys are supported within the secret:
+   
+   * `tls.crt` - The PEM-encoded TLS certificate
+   * `tls.key` - The PEM-encoded TLS private key
 
-The easiest way to create this secret is to use the `kubectl create secret tls` command. For example:
+   The easiest way to create this secret is to use the `kubectl create secret tls` command. For example:
 
-```sh
-kubectl create secret tls my-tls-secret -n elastic-system --cert=/path/to/tls.crt --key=/path/to/tls.key
-```
+    ```sh
+    kubectl create secret tls my-tls-secret -n elastic-system --cert=/path/to/tls.crt --key=/path/to/tls.key
+    ```
 
-Patch the `StatefulSet` to include the `tls.crt` and `tls.key` as a volume and mount it into the `manager` container.
+2. Patch the `StatefulSet` to include the `tls.crt` and `tls.key` as a volume and mount it into the `manager` container.
 
-```shell
-kubectl patch sts -n elastic-system elastic-operator --patch-file=/dev/stdin <<-EOF
-spec:
-  template:
+    ```yaml
+    kubectl patch sts -n elastic-system elastic-operator --patch-file=/dev/stdin <<-EOF
     spec:
-      containers:
-        - name: manager
-          volumeMounts:
-          - mountPath: "/tmp/k8s-metrics-server/serving-certs" <1>
-            name: tls-certificate
-            readOnly: true
-      volumes:
-      - name: conf
-        configMap:
-          name: elastic-operator
-      - name: cert
-        secret:
-          defaultMode: 420
-          secretName: elastic-webhook-server-cert
-      - name: tls-certificate
-        secret:
-          defaultMode: 420
-          secretName: eck-metrics-tls-certificate
-EOF
-```
+      template:
+        spec:
+          containers:
+            - name: manager
+              volumeMounts:
+              - mountPath: "/tmp/k8s-metrics-server/serving-certs" <1>
+                name: tls-certificate
+                readOnly: true
+          volumes:
+          - name: conf
+            configMap:
+              name: elastic-operator
+          - name: cert
+            secret:
+              defaultMode: 420
+              secretName: elastic-webhook-server-cert
+          - name: tls-certificate
+            secret:
+              defaultMode: 420
+              secretName: eck-metrics-tls-certificate
+    EOF
+    ```
 
-1. If mounting the TLS secret to a different directory the `metrics-cert-dir` setting in the operator configuration has to be adjusted accordingly.
+    1. If you're mounting the TLS secret to a different directory, the `metrics-cert-dir` setting in the operator configuration has to be adjusted accordingly.
 
 
-Potentially patch the `ServiceMonitor`. This will only need to be done if you are adjusting the `insecureSkipVerify` field to `false`.
+3. If required, patch the `ServiceMonitor`. This is required if you are adjusting the `insecureSkipVerify` field to `false`.
 
-```shell
-kubectl patch servicemonitor -n elastic-system elastic-operator --patch-file=/dev/stdin <<-EOF
-spec:
-  endpoints:
-  - port: https
-    path: /metrics
-    scheme: https
-    interval: 30s
-    tlsConfig:
-      insecureSkipVerify: false
-      caFile: /etc/prometheus/secrets/{secret-name}/ca.crt <1>
-      serverName: elastic-operator-metrics.elastic-system.svc
-    bearerTokenFile: /var/run/secrets/kubernetes.io/serviceaccount/token
-EOF
-```
+    ```shell
+    kubectl patch servicemonitor -n elastic-system elastic-operator --patch-file=/dev/stdin <<-EOF
+    spec:
+      endpoints:
+      - port: https
+        path: /metrics
+        scheme: https
+        interval: 30s
+        tlsConfig:
+          insecureSkipVerify: false
+          caFile: /etc/prometheus/secrets/{secret-name}/ca.crt <1>
+          serverName: elastic-operator-metrics.elastic-system.svc
+        bearerTokenFile: /var/run/secrets/kubernetes.io/serviceaccount/token
+    EOF
+    ```
 
-1. See the [Prometheus requirements section](k8s-prometheus-requirements.md) for more information on creating the CA secret.
+    1. See [](/deploy-manage/monitor/orchestrators/k8s-prometheus-requirements.md) for more information on creating the CA secret.
+
 
 
 

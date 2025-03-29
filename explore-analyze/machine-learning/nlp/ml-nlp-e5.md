@@ -13,7 +13,7 @@ EmbEddings from bidirEctional Encoder rEpresentations - or E5 -  is a {{nlp}} mo
 
 [Semantic search](../../../solutions/search/semantic-search.md) provides you search results based on contextual meaning and user intent, rather than exact keyword matches.
 
-E5 has two versions: one cross-platform version which runs on any hardware and one version which is optimized for Intel® silicon. The **Model Management** > **Trained Models** page shows you which version of E5 is recommended to deploy based on your cluster’s hardware. However, the recommended way to use E5 is through the [{{infer}} API](../../../solutions/search/inference-api/elasticsearch-inference-integration.md) as a service which makes it easier to download and deploy the model and you don’t need to select from different versions.
+E5 has two versions: one cross-platform version which runs on any hardware and one version which is optimized for Intel® silicon. The **Model Management** > **Trained Models** page shows you which version of E5 is recommended to deploy based on your cluster’s hardware. However, the recommended way to use E5 is through the [{{infer}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put-elasticsearch) as a service which makes it easier to download and deploy the model and you don’t need to select from different versions.
 
 Refer to the model cards of the [multilingual-e5-small](https://huggingface.co/elastic/multilingual-e5-small) and the [multilingual-e5-small-optimized](https://huggingface.co/elastic/multilingual-e5-small-optimized) models on HuggingFace for further information including licensing.
 
@@ -21,7 +21,7 @@ Refer to the model cards of the [multilingual-e5-small](https://huggingface.co/e
 
 To use E5, you must have the [appropriate subscription](https://www.elastic.co/subscriptions) level for semantic search or the trial period activated.
 
-Enabling trained model autoscaling for your E5 deployment is recommended. Refer to [*Trained model autoscaling*](ml-nlp-auto-scale.md) to learn more.
+Enabling trained model autoscaling for your E5 deployment is recommended. Refer to [*Trained model autoscaling*](../../../deploy-manage/autoscaling/trained-model-autoscaling.md) to learn more.
 
 ## Download and deploy E5 [download-deploy-e5]
 
@@ -42,9 +42,9 @@ PUT _inference/text_embedding/my-e5-model
     }
 ```
 
-    The API request automatically initiates the model download and then deploy the model.
+The API request automatically initiates the model download and then deploy the model.
 
-Refer to the [`elasticsearch` {{infer}} service documentation](../../../solutions/search/inference-api/elasticsearch-inference-integration.md) to learn more about the available settings.
+Refer to the `elasticsearch` [{{infer}} service documentation](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put-elasticsearch) to learn more about the available settings.
 
 After you created the E5 {{infer}} endpoint, it’s ready to be used for semantic search. The easiest way to perform semantic search in the {{stack}} is to [follow the `semantic_text` workflow](../../../solutions/search/semantic-search/semantic-search-semantic-text.md).
 
@@ -63,9 +63,9 @@ For most cases, the preferred version is the **Intel and Linux optimized** model
 1. In {{kib}}, navigate to **{{ml-app}}** > **Trained Models** from the main menu, or use the [global search field](../../find-and-organize/find-apps-and-objects.md). E5 can be found in the list of trained models. There are two versions available: one portable version which runs on any hardware and one version which is optimized for Intel® silicon. You can see which model is recommended to use based on your hardware configuration.
 2. Click the **Add trained model** button. Select the E5 model version you want to use in the opening modal window. The model that is recommended for you based on your hardware configuration is highlighted. Click **Download**. You can check the download status on the **Notifications** page.
 
-    :::{image} ../../../images/machine-learning-ml-nlp-e5-download.png
+    :::{image} /explore-analyze/images/machine-learning-ml-nlp-e5-download.png
     :alt: Downloading E5
-    :class: screenshot
+    :screenshot:
     :::
 
     Alternatively, click the **Download model** button under **Actions** in the trained model list.
@@ -73,9 +73,9 @@ For most cases, the preferred version is the **Intel and Linux optimized** model
 3. After the download is finished, start the deployment by clicking the **Start deployment** button.
 4. Provide a deployment ID, select the priority, and set the number of allocations and threads per allocation values.
 
-    :::{image} ../../../images/machine-learning-ml-nlp-deployment-id-e5.png
+    :::{image} /explore-analyze/images/machine-learning-ml-nlp-deployment-id-e5.png
     :alt: Deploying E5
-    :class: screenshot
+    :screenshot:
     :::
 
 5. Click Start.
@@ -93,16 +93,16 @@ Alternatively, you can download and deploy the E5 model to an {{infer}} pipeline
 3. Navigate to the **Pipelines** tab.
 4. Under **{{ml-app}} {{infer-cap}} Pipelines**, click the **Deploy** button in the **Improve your results with E5** section to begin downloading the E5 model. This may take a few minutes depending on your network.
 
-    :::{image} ../../../images/machine-learning-ml-nlp-deploy-e5-es.png
+    :::{image} /explore-analyze/images/machine-learning-ml-nlp-deploy-e5-es.png
     :alt: Deploying E5 in Elasticsearch
-    :class: screenshot
+    :screenshot:
     :::
 
 5. Once the model is downloaded, click the **Start single-threaded** button to start the model with basic configuration or select the **Fine-tune performance** option to navigate to the **Trained Models** page where you can configure the model deployment.
 
-    :::{image} ../../../images/machine-learning-ml-nlp-start-e5-es.png
+    :::{image} /explore-analyze/images/machine-learning-ml-nlp-start-e5-es.png
     :alt: Start E5 in Elasticsearch
-    :class: screenshot
+    :screenshot:
     :::
 
 When your E5 model is deployed and started, it is ready to be used in a pipeline.

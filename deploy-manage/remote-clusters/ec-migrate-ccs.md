@@ -23,11 +23,11 @@ You can use a PUT request to update your deployment, changing both the deploymen
 
 1. First, choose the new template you want to use and obtain its ID. This template ID can be obtained from the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body) **Create Deployment** page by selecting **Equivalent API request** and inspecting the result for the field `deployment_template`. For example, we are going to use the "Storage optimized" deployment template, and in our GCP region the id is `gcp-storage-optimized-v5`.
 
-   You can also find the template in the [list of templates available for each region](asciidocalypse://docs/cloud/docs/reference/cloud-hosted/ec-regions-templates-instances.md).
+   You can also find the template in the [list of templates available for each region](cloud://reference/cloud-hosted/ec-regions-templates-instances.md).
 
-   :::{image} ../../images/cloud-ec-migrate-deployment-template(2).png
+   :::{image} /deploy-manage/images/cloud-ec-migrate-deployment-template(2).png
    :alt: Deployment Template ID
-   :class: screenshot
+   :screenshot:
    :::
 
 2. Make a request to update your deployment with two changes:
@@ -271,9 +271,9 @@ You can make this change in the user [{{ecloud}} Console](https://cloud.elastic.
 1. From the deployment menu, open the **Snapshots** page and click **Take Snapshot now**. Wait for the snapshot to finish.
 2. From the main **Deployments** page, click **Create deployment**. Next to **Settings** toggle on **Restore snapshot data**, and then select your deployment and the snapshot that you created.
 
-    :::{image} ../../images/cloud-ec-create-from-snapshot-updated.png
+    :::{image} /deploy-manage/images/cloud-ec-create-from-snapshot-updated.png
     :alt: Create a Deployment using a snapshot
-    :class: screenshot
+    :screenshot:
     :::
 
 

@@ -4,6 +4,7 @@ toc:
   - file: data-store.md
     children:
       - file: data-store/index-basics.md
+      - file: data-store/near-real-time-search.md
       - file: data-store/data-streams.md
         children:
           - file: data-store/data-streams/set-up-data-stream.md

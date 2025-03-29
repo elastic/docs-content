@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/universal-profiling.html
+applies_to:
+  stack: 
 ---
 
 # Universal Profiling [universal-profiling]
@@ -42,9 +44,9 @@ In the following screenshot, you can see that unsymbolized frames *do not* show 
 
 Adding symbols for unsymbolized frames is currently a manual operation. See [Add symbols for native frames](add-symbols-for-native-frames.md).
 
-:::{image} ../../../images/observability-profiling-stacktraces-unsymbolized.png
+:::{image} /solutions/images/observability-profiling-stacktraces-unsymbolized.png
 :alt: profiling stacktraces unsymbolized
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -52,9 +54,9 @@ Adding symbols for unsymbolized frames is currently a manual operation. See [Add
 
 The stacktraces view shows graphs of stacktraces grouped by threads, traces, hosts, deployments, and containers:
 
-:::{image} ../../../images/observability-profiling-stacktraces-default-view.png
+:::{image} /solutions/images/observability-profiling-stacktraces-default-view.png
 :alt: profiling stacktraces default view
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -83,9 +85,9 @@ Hover and click each of the stacked bar chart sections to show details. You can 
 
 Below the top graph, there are individual graphs that show the individual trend-line for each of the items:
 
-:::{image} ../../../images/observability-profiling-stacktraces-smaller-graphs.png
+:::{image} /solutions/images/observability-profiling-stacktraces-smaller-graphs.png
 :alt: profiling stacktraces smaller graphs
-:class: screenshot
+:screenshot:
 :::
 
 The percentage displayed in the top-right corner of every individual graph is the relative number of occurrences of every time over the total of samples in the group.
@@ -99,9 +101,9 @@ The individual graphs are ordered in decreasing order, from top to bottom, left 
 
 In the **Traces** tab, clicking **Show more** at the bottom of one of the individual graphs shows the full stacktrace.
 
-:::{image} ../../../images/observability-profiling-stacktraces-show-more.png
+:::{image} /solutions/images/observability-profiling-stacktraces-show-more.png
 :alt: profiling stacktraces show more
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -109,9 +111,9 @@ In the **Traces** tab, clicking **Show more** at the bottom of one of the indivi
 
 The flamegraph view groups hierarchical data (stacktraces) into rectangles stacked onto or next to each other. The size of each rectangle represents the relative weight of a child compared to its parent.
 
-:::{image} ../../../images/observability-profiling-flamegraph-view.png
+:::{image} /solutions/images/observability-profiling-flamegraph-view.png
 :alt: profiling flamegraph view
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -141,9 +143,9 @@ The summary square in the bottom-left corner of the graph lets you shift the vis
 
 Hovering your mouse over a rectangle in the flamegraph displays the frame’s details in the window. To see more frame information, click on the **Show more information** icon after pinning the tooltip.
 
-:::{image} ../../../images/observability-profiling-flamegraph-detailed-view.png
+:::{image} /solutions/images/observability-profiling-flamegraph-detailed-view.png
 :alt: profiling flamegraph detailed view
-:class: screenshot
+:screenshot:
 :::
 
 Below the graph area, you can use the search bar to find specific text in the flamegraph; here you can search binaries, function or file names, and move over the occurrences.
@@ -153,15 +155,15 @@ Below the graph area, you can use the search bar to find specific text in the fl
 
 The functions view presents an ordered list of functions that Universal Profiling samples most often. From this view, you can spot the functions that are running the most across your entire infrastructure, applying filters to drill down into individual components.
 
-:::{image} ../../../images/observability-profiling-functions-default-view.png
+:::{image} /solutions/images/observability-profiling-functions-default-view.png
 :alt: profiling functions default view
-:class: screenshot
+:screenshot:
 :::
 
 
 ## Filtering [profiling-filtering-intro]
 
-In all of the Universal Profiling views, the search bar accepts a filter in the {{kib}} Query Language (https://www.elastic.co/guide/en/kibana/current/kuery-query.html[KQL]).
+In all of the Universal Profiling views, the search bar accepts a filter in the {{kib}} Query Language [KQL](/explore-analyze/query-filter/languages/kql.md).
 
 Most notably, you may want to filter on:
 
@@ -182,16 +184,16 @@ Hitting refresh on each data filter triggers a frequency comparison that highlig
 
 In differential functions, the right-most column of functions has green or orange score calculator that represents the relative difference of position as the heaviest CPU hitting functions.
 
-:::{image} ../../../images/observability-profiling-functions-differential-view.png
+:::{image} /solutions/images/observability-profiling-functions-differential-view.png
 :alt: profiling functions differential view
-:class: screenshot
+:screenshot:
 :::
 
 In differential flamegraphs, the difference with the baseline is highlighted with color and hue. A vivid green colored rectangle indicates that a frame has been seen in *less* samples compared to the baseline, which means an improvement. A vivid red colored rectangle indicates a frame has been seen in more samples being recorded on CPU, indicating a potential performance regression.
 
-:::{image} ../../../images/observability-profiling-flamegraph-differential-view.png
+:::{image} /solutions/images/observability-profiling-flamegraph-differential-view.png
 :alt: profiling flamegraph differential view
-:class: screenshot
+:screenshot:
 :::
 
 

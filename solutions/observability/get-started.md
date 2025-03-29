@@ -3,7 +3,9 @@ mapped_urls:
   - https://www.elastic.co/guide/en/serverless/current/observability-get-started.html
   - https://www.elastic.co/guide/en/observability/current/observability-get-started.html
   - https://www.elastic.co/guide/en/observability/current/index.html
-
+applies_to:
+  stack: ga
+  serverless: ga
 navigation_title: "Get started"
 ---
 
@@ -24,9 +26,9 @@ Learn about key features available to help you get value from your observability
 
 ## Get started with your use case [get-started-with-use-case]
 
-Learn how to spin up a deployment on {{ech}} or create an Observability serverless project and use Elastic Observability to gain deeper insight into the behavior of your applications and systems.
+Learn how to spin up a deployment on {{ech}} or create an Observability Serverless project and use Elastic Observability to gain deeper insight into the behavior of your applications and systems.
 
-:::{image} ../../images/observability-get-started.svg
+:::{image} /solutions/images/observability-get-started.svg
 :alt: get started
 :::
 

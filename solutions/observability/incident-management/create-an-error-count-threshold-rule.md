@@ -9,8 +9,7 @@ navigation_title: "Error count threshold"
 # Create an error count threshold rule [observability-create-error-count-threshold-alert-rule]
 
 
-::::{admonition} Required role
-:class: note
+::::{note}
 
 For Observability serverless projects, the **Editor** role or higher is required to create error count threshold rules. To learn more, refer to [Assign user roles and privileges](../../../deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
 
@@ -19,13 +18,13 @@ For Observability serverless projects, the **Editor** role or higher is required
 
 Create an error count threshold rule to alert you when the number of errors in a service exceeds a defined threshold. Threshold rules can be set at different levels: environment, service, transaction type, and/or transaction name.
 
-:::{image} ../../../images/serverless-alerts-create-rule-error-count.png
+:::{image} /solutions/images/serverless-alerts-create-rule-error-count.png
 :alt: Create rule for error count threshold alert
-:class: screenshot
+:screenshot:
 :::
 
 ::::{tip}
-These steps show how to use the **Alerts** UI. You can also create an error count threshold rule directly from any page within **Applications***. Click the ***Alerts and rules*** button, and select ***Create error count rule***. When you create a rule this way, the ***Name** and **Tags** fields will be prepopulated but you can still change these.
+These steps show how to use the **Alerts** UI. You can also create an error count threshold rule directly from any page within **Applications**. Click the **Alerts and rules** button, and select **Create error count rule**. When you create a rule this way, the **Name** and **Tags** fields will be prepopulated but you can still change these.
 
 ::::
 
@@ -36,7 +35,7 @@ To create your error count threshold rule:
 2. Select **Manage Rules** from the **Alerts** page, and select **Create rule**.
 3. Enter a **Name** for your rule, and any optional **Tags** for more granular reporting (leave blank if unsure).
 4. Select the **Error count threshold** rule type from the APM use case.
-5. Select the appropriate **Service**, **Environment***, and ***Error Grouping Key*** (or leave ***ALL** to include all options). Alternatively, you can select **Use KQL Filter** and enter a KQL expression to limit the scope of your rule.
+5. Select the appropriate **Service**, **Environment**, and **Error Grouping Key** (or leave **ALL** to include all options). Alternatively, you can select **Use KQL Filter** and enter a KQL expression to limit the scope of your rule.
 6. Enter the error threshold in **Is Above** (defaults to 25 errors).
 7. Define the period to be assessed in **For the last** (defaults to last 5 minutes).
 8. Choose how to **Group alerts by**. Every unique value will create an alert.
@@ -90,27 +89,27 @@ After you select a connector, you must set the action frequency. You can choose 
 
 Alternatively, you can set the action frequency to **For each alert** and specify the conditions each alert must meet for the action to run. For example, you can send an email only when the alert status changes to critical.
 
-:::{image} ../../../images/serverless-alert-action-frequency.png
+:::{image} /solutions/images/serverless-alert-action-frequency.png
 :alt: Configure when a rule is triggered
-:class: screenshot
+:screenshot:
 :::
 
 With the **Run when** menu you can choose if an action runs when the threshold for an alert is reached, or when the alert is recovered. For example, you can add a corresponding action for each state to ensure you are alerted when the rule is triggered and also when it recovers.
 
-:::{image} ../../../images/serverless-alert-apm-action-frequency-recovered.png
+:::{image} /solutions/images/serverless-alert-apm-action-frequency-recovered.png
 :alt: Choose between threshold met or recovered
-:class: screenshot
+:screenshot:
 :::
 
 :::::
 
 
 :::::{dropdown} Action variables
-Use the default notification message or customize it. You can add more context to the message by clicking the Add variable icon ![Add variable](../../../images/serverless-indexOpen.svg "") and selecting from a list of available variables.
+Use the default notification message or customize it. You can add more context to the message by clicking the Add variable icon ![Add variable](/solutions/images/serverless-indexOpen.svg "") and selecting from a list of available variables.
 
-:::{image} ../../../images/serverless-action-variables-popup.png
+:::{image} /solutions/images/serverless-action-variables-popup.png
 :alt: Action variables list
-:class: screenshot
+:screenshot:
 :::
 
 The following variables are specific to this rule type. You can also specify [variables common to all rules](../../../explore-analyze/alerts-cases/alerts/rule-action-variables.md).
@@ -168,7 +167,7 @@ This guide will create an alert for an error group ID based on the following cri
 * Check every 1 minute
 * Send the alert via email to the site reliability team
 
-From any page in **Applications**, select **Alerts and rules*** → ***Create threshold rule** → **Error count rule**. Change the name of the alert (if you wish), but do not edit the tags.
+From any page in **Applications**, select **Alerts and rules** → **Create threshold rule** → **Error count rule**. Change the name of the alert (if you wish), but do not edit the tags.
 
 Based on the criteria above, define the following rule details:
 
@@ -182,6 +181,6 @@ Based on the criteria above, define the following rule details:
 
 Next, select the **Email** connector and click **Create a connector**. Fill out the required details: sender, host, port, etc., and select **Save**.
 
-A default message is provided as a starting point for your alert. You can use the Mustache template syntax (`{{variable}}`) to pass additional alert values at the time a condition is detected to an action. A list of available variables can be accessed by clicking the Add variable icon ![Add variable](../../../images/serverless-indexOpen.svg "").
+A default message is provided as a starting point for your alert. You can use the Mustache template syntax (`{{variable}}`) to pass additional alert values at the time a condition is detected to an action. A list of available variables can be accessed by clicking the Add variable icon ![Add variable](/solutions/images/serverless-indexOpen.svg "").
 
 Select **Save**. The alert has been created and is now active!

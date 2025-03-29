@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/agent-tamper-protection.html
   - https://www.elastic.co/guide/en/serverless/current/security-agent-tamper-protection.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Prevent {{agent}} uninstallation
@@ -20,9 +24,9 @@ When enabled, {{agent}} and {{elastic-endpoint}} can only be uninstalled on the 
 ::::
 
 
-:::{image} ../../../images/security-agent-tamper-protection.png
+:::{image} /solutions/images/security-agent-tamper-protection.png
 :alt: Agent tamper protection setting highlighted on Agent policy settings page
-:class: screenshot
+:screenshot:
 :::
 
 

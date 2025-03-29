@@ -2,6 +2,8 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/observability/current/apm-open-telemetry-resource-attributes.html
   - https://www.elastic.co/guide/en/serverless/current/observability-apm-agents-opentelemetry-resource-attributes.html
+applies_to:
+  stack: all
 ---
 
 # Resource attributes [apm-open-telemetry-resource-attributes]

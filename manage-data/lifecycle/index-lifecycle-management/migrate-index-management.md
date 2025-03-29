@@ -26,10 +26,10 @@ To configure ILM Migration in the console:
 ::::{tab-set}
 
 :::{tab-item} {{ech}}
-1. Log in to the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body).
+1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
 2. From the **Deployments** page, select your deployment.
 
-    On the deployments page you can narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
+    On the **Deployments** page you can narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
 
 3. Near the top of the deployment overview, you should get a message to migrate from index curation to index lifecycle management (ILM) along with a **Start migration** button.
 4. Select which index curation pattern you wish to migrate.
@@ -40,7 +40,7 @@ To configure ILM Migration in the console:
 1. [Log into the Cloud UI](../../../deploy-manage/deploy/cloud-enterprise/log-into-cloud-ui.md).
 2. From the **Deployments** page, select your deployment.
 
-    On the deployments page you can narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
+    On the **Deployments** page you can narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
 
 3. Near the top of the deployment overview, you should get a message to migrate from index curation to index lifecycle management (ILM) along with a **Start migration** button.
 4. Select which index curation pattern you wish to migrate.

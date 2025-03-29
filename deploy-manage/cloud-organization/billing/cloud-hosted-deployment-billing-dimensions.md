@@ -60,7 +60,7 @@ Data transfer out of deployments and between nodes of the cluster is hard to con
 
 The largest contributor to inter-node data transfer is usually shard movement between nodes in a cluster.  The only way to prevent shard movement is by having a single node in a single availability zone. This solution is only possible for clusters up to 64GB RAM and is not recommended as it creates a risk of data loss. [Oversharding](/deploy-manage/production-guidance/optimize-performance/size-shards.md) can cause excessive shard movement. Avoiding oversharding can also help control costs and improve performance. Note that creating snapshots generates inter-node data transfer. The *storage* cost of snapshots is detailed later in this document.
 
-The exact root cause of unusual data transfer is not always something we can identify as it can have many causes, some of which are out of our control and not associated with Cloud configuration changes.  It may help to [enable monitoring](../../monitor/stack-monitoring/elastic-cloud-stack-monitoring.md) and examine index and shard activity on your cluster.
+The exact root cause of unusual data transfer is not always something we can identify as it can have many causes, some of which are out of our control and not associated with Cloud configuration changes.  It may help to [enable monitoring](../../monitor/stack-monitoring/ece-ech-stack-monitoring.md) and examine index and shard activity on your cluster.
 
 
 ## Storage [storage] 
@@ -90,7 +90,7 @@ As is common with Cloud providers, we meter and bill snapshot storage using two 
 
 ### How can I control the storage cost? [ec_how_can_i_control_the_storage_cost] 
 
-Snapshots in Elasticsearch Service save data incrementally at each snapshot event. This means that the effective snapshot size may be larger than the size of the current indices. The snapshot size increases as data is added or updated in the cluster, and deletions do not reduce the snapshot size until the snapshot containing that data is removed.
+Snapshots in {{ech}} save data incrementally at each snapshot event. This means that the effective snapshot size may be larger than the size of the current indices. The snapshot size increases as data is added or updated in the cluster, and deletions do not reduce the snapshot size until the snapshot containing that data is removed.
 
 API requests are executed every time a snapshot is taken or restored, affecting usage costs. In the event that you have any automated processes that use the Elasticsearch API to create or restore snapshots, these should be set so as to avoid unexpected charges.
 

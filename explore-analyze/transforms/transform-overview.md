@@ -40,18 +40,18 @@ Imagine that you run a webshop that sells clothes. Every order creates a documen
 
 If you want to check the sales in the different categories in your last fiscal year, define a {{transform}} that groups the data by the product categories (women’s shoes, men’s clothing, etc.) and the order date. Use the last year as the interval for the order date. Then add a sum aggregation on the ordered quantity. The result is an entity-centric index that shows the number of sold items in every product category in the last year.
 
-:::{image} ../../images/elasticsearch-reference-pivot-preview.png
+:::{image} /explore-analyze/images/elasticsearch-reference-pivot-preview.png
 :alt: Example of a pivot {{transform}} preview in {{kib}}
-:class: screenshot
+:screenshot:
 :::
 
 ## Latest {{transforms}} [latest-transform-overview]
 
 You can use the `latest` type of {{transform}} to copy the most recent documents into a new index. You must identify one or more fields as the unique key for grouping your data, as well as a date field that sorts the data chronologically. For example, you can use this type of {{transform}} to keep track of the latest purchase for each customer or the latest event for each host.
 
-:::{image} ../../images/elasticsearch-reference-latest-preview.png
+:::{image} /explore-analyze/images/elasticsearch-reference-latest-preview.png
 :alt: Example of a latest {{transform}} preview in {{kib}}
-:class: screenshot
+:screenshot:
 :::
 
 As in the case of a pivot, a latest {{transform}} can run once or continuously. It performs a composite aggregation on the data in the source index and stores the output in the destination index. If the {{transform}} runs continuously, new unique key values are automatically added to the destination index and the most recent documents for existing key values are automatically updated at each checkpoint.

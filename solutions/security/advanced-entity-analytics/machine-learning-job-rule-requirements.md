@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/ml-requirements.html
   - https://www.elastic.co/guide/en/serverless/current/security-ml-requirements.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Machine learning job and rule requirements
@@ -12,7 +16,7 @@ To run and create {{ml}} jobs and rules in serverless, you need the appropriate 
 * There must be at least one {{ml}} node in your cluster
 * The `machine_learning_admin` user role
 
-Additionally, to configure [alert suppression](/solutions/security/detect-and-alert/suppress-detection-alerts.md) for {{ml}} rules, your role needs the following [index privilege](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md#adding_index_privileges):
+Additionally, to configure [alert suppression](/solutions/security/detect-and-alert/suppress-detection-alerts.md) for {{ml}} rules, your role needs the following [index privilege](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md#adding_index_privileges):
 
 * `read` permission for the `.ml-anomalies-*` index
 

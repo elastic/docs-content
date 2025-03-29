@@ -2,6 +2,8 @@
 navigation_title: "Get started"
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/uptime-get-started.html
+applies_to:
+  stack: all
 ---
 
 
@@ -16,7 +18,7 @@ mapped_pages:
 
 {{heartbeat}} is a lightweight daemon that you install on a remote server to periodically check the status of your services and determine if they are available. It gathers performance data, formats it, and sends the data to the {{stack}}.
 
-:::{image} ../../../images/observability-synthetics-get-started-heartbeat.png
+:::{image} /solutions/images/observability-synthetics-get-started-heartbeat.png
 :alt: Diagram showing which pieces of software are used to configure monitors
 :::
 
@@ -42,7 +44,7 @@ Version 9.0.0-beta1 has not yet been released.
 
 Next, create a `heartbeat.yml` configuration file.
 
-The example below shows how to configure an `http` monitor, one of [three types of lightweight monitors](asciidocalypse://docs/beats/docs/reference/heartbeat/configuration-heartbeat-options.md#monitor-types).
+The example below shows how to configure an `http` monitor, one of [three types of lightweight monitors](beats://reference/heartbeat/configuration-heartbeat-options.md#monitor-types).
 
 ```yaml
 heartbeat.monitors:
@@ -58,7 +60,7 @@ heartbeat.monitors:
 1. Each `monitor` gets its own ID in the {{uptime-app}} and its own schedule entry. This allows tests to be run in parallel and analyzed separately.
 
 
-Read more about configuration options in [Configure {{heartbeat}} monitors](asciidocalypse://docs/beats/docs/reference/heartbeat/configuration-heartbeat-options.md).
+Read more about configuration options in [Configure {{heartbeat}} monitors](beats://reference/heartbeat/configuration-heartbeat-options.md).
 
 ::::{warning}
 **Do not use {{heartbeat}} to set up a *new* `browser` monitor.** Instead, use the [{{synthetics-app}}](get-started.md).

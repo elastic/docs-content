@@ -2,6 +2,8 @@
 navigation_title: "{{ech}}"
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-configure-cloud-id.html
+applies_to:
+  stack: all
 ---
 
 
@@ -9,8 +11,8 @@ mapped_pages:
 # Configure the output for {{ech}} [apm-configure-cloud-id]
 
 
-::::{admonition}
-![supported deployment methods](../../../images/observability-binary-yes-fm-no.svg "")
+::::{note}
+![supported deployment methods](/solutions/images/observability-binary-yes-fm-no.svg "")
 
 This documentation only applies to APM Server binary users.
 

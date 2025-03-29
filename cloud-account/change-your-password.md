@@ -8,7 +8,7 @@ applies:
 
 # Change your password [ec-change-password]
 
-If you created a password when you signed up for a {{ecloud}} account, or you added the password-based login method to your account, then you can change your password if needed.
+If you created a password when you signed up for an {{ecloud}} account, or you added the password-based login method to your account, then you can change your password if needed.
 
 If you know your current password:
 

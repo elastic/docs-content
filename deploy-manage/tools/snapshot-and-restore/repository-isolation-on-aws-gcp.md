@@ -1,4 +1,6 @@
 ---
+mapped_urls:
+  - https://www.elastic.co/guide/en/cloud/current/ec-snapshot-repository-aws-gcp-migration.html
 applies_to:
   deployment:
     ess: 
@@ -31,7 +33,7 @@ If the repository is still in use (for example by mounted searchable snapshots),
 ::::
 
 
-:::{image} ../../../images/cloud-ec-elasticsearch-snapshots-of-other-deployments-aws-gcp.png
+:::{image} /deploy-manage/images/cloud-ec-elasticsearch-snapshots-of-other-deployments-aws-gcp.png
 :alt: View of the old snapshot repository in the Cloud UI
 :::
 

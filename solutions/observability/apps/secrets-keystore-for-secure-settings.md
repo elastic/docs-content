@@ -2,6 +2,8 @@
 navigation_title: "Secrets keystore"
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-keystore.html
+applies_to:
+  stack: all
 ---
 
 
@@ -9,7 +11,7 @@ mapped_pages:
 # Secrets keystore for secure settings [apm-keystore]
 
 
-::::{important} 
+::::{important}
 The APM Server keystore only applies to the APM Server binary installation method.
 ::::
 
@@ -35,13 +37,13 @@ Notice that the APM Server keystore differs from the {{es}} keystore. Whereas th
 
 To create and manage keys, use the `keystore` command. See the [command reference](apm-server-command-reference.md#apm-keystore-command) for the full command syntax, including optional flags.
 
-::::{note} 
+::::{note}
 The `keystore` command must be run by the same user who will run APM Server.
 ::::
 
 
 
-## Create a keystore [apm-creating-keystore] 
+## Create a keystore [apm-creating-keystore]
 
 To create a secrets keystore, use:
 
@@ -52,7 +54,7 @@ apm-server keystore create
 APM Server creates the keystore in the directory defined by the `path.data` configuration setting.
 
 
-## Add keys [apm-add-keys-to-keystore] 
+## Add keys [apm-add-keys-to-keystore]
 
 To store sensitive values, such as authentication credentials for {{es}}, use the `keystore add` command:
 
@@ -75,7 +77,7 @@ cat /file/containing/setting/value | apm-server keystore add ES_PWD --stdin --fo
 ```
 
 
-## List keys [apm-list-settings] 
+## List keys [apm-list-settings]
 
 To list the keys defined in the keystore, use:
 
@@ -84,7 +86,7 @@ apm-server keystore list
 ```
 
 
-## Remove keys [apm-remove-settings] 
+## Remove keys [apm-remove-settings]
 
 To remove a key from the keystore, use:
 

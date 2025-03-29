@@ -1,4 +1,7 @@
 ---
+applies_to:
+  deployment:
+    ece: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-networking-prereq.html
 ---
@@ -18,7 +21,9 @@ For versions 2.4.0 and 2.4.1, IPv6 should remain enabled on any host with the Pr
 
 When there are multiple hosts for each role, the inbound networking and ports can be represented by the following diagram:
 
-![ECE networking and ports](../../../images/cloud-enterprise-ece-networking-ports.png "")
+![ECE networking and ports](/deploy-manage/images/cloud-enterprise-ece-networking-ports.png "")
+
+**Inbound traffic from any source**
 
 | **Number** | **Host role** | **Inbound ports** | *Purpose* |
 | --- | --- | --- | --- |
@@ -29,11 +34,12 @@ When there are multiple hosts for each role, the inbound networking and ports ca
 | 3 | Proxy | 9400, 9443 | Elasticsearch Cross Cluster Search and Cross Cluster Replication with TLS authentication (9400) or API key authentication (9443), also required by load balancers. Can be blocked if [CCR/CCS](../../remote-clusters/ece-enable-ccs.md) is not used.<br> |
 | 7 | Coordinator | 12400/12443 | Cloud UI console to API  (HTTP/HTTPS)<br> |
 
-In addition to the following list, you should open 12898-12908 and 13898-13908 on the director host for ZooKeeper leader and election activity.
+**Inbound traffic from other ECE hosts**
 
 | **Number** | **Host role** | **Inbound ports** | *Purpose* |
 | --- | --- | --- | --- |
 | 1 | Director | 2112 | ZooKeeper ensemble discovery/joining (TCP)<br> |
+| 1 | Director | 12898-12908, 13898-13908 | ZooKeeper leader and election activity |
 | 4 | Director | 12191-12201 | Client forwarder to ZooKeeper, one port per director (TLS tunnels)<br> |
 | 5 | Allocator | 19000-19999 | Elasticsearch node to node and Proxy to Elasticsearch for CCR/CCS (Node Transport 6.x+/TLS 6.x+)<br> |
 | 7 | Coordinator | 22191-22195 | Connections to initial coordinator from allocators and proxies, one port per coordinator, up to five (TCP)<br> |

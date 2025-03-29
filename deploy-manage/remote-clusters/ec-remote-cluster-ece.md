@@ -55,9 +55,9 @@ The steps to follow depend on whether the Certificate Authority (CA) of the remo
 
 ::::{dropdown} The CA is public
 1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
-2. On the home page, find your hosted deployment and select **Manage** to access it directly. Or, select **Hosted deployments** to go to the deployments page to view all of your deployments.
+2. On the home page, find your hosted deployment and select **Manage** to access it directly. Or, select **Hosted deployments** to go to the **Deployments** page to view all of your deployments.
 
-    On the deployments page you can narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
+    On the **Deployments** page you can narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
 
 3. From the deployment menu, select **Security**.
 4. Locate **Remote connections** and select **Add an API key**.
@@ -83,9 +83,9 @@ If you later need to update the remote connection with different permissions, yo
 
 ::::{dropdown} The CA is private
 1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
-2. On the home page, find your hosted deployment and select **Manage** to access it directly. Or, select **Hosted deployments** to go to the deployments page to view all of your deployments.
+2. On the home page, find your hosted deployment and select **Manage** to access it directly. Or, select **Hosted deployments** to go to the **Deployments** page to view all of your deployments.
 
-    On the deployments page you can narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
+    On the **Deployments** page you can narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
 
 3. Access the **Security** page of the deployment.
 4. Select **Remote Connections > Add trusted environment** and choose **{{ece}}**. Then click **Next**.
@@ -107,7 +107,7 @@ If you later need to update the remote connection with different permissions, yo
     3. Click **Copy root certificate** and paste it into a new file. The root certificate is the last certificate shown in the chain.
     4. Save that file as `.crt`. It is now ready to be uploaded.
 
-        :::{image} ../../images/cloud-remote-clusters-proxy-certificate.png
+        :::{image} /deploy-manage/images/cloud-remote-clusters-proxy-certificate.png
         :alt: Certificate to copy from the chain
         :::
 
@@ -207,9 +207,9 @@ On the local cluster, add the remote cluster using {{kib}} or the {{es}} API.
 
     * **Server name**: This value can be found on the **Security** page of the {{ech}} deployment you want to use as a remote.
 
-      :::{image} ../../images/cloud-ce-copy-remote-cluster-parameters.png
+      :::{image} /deploy-manage/images/cloud-ce-copy-remote-cluster-parameters.png
       :alt: Remote Cluster Parameters in Deployment
-      :class: screenshot
+      :screenshot:
       :::
 
       ::::{note}
@@ -299,4 +299,4 @@ The response will include just the remote clusters from the same {{ecloud}} orga
 
 ## Configure roles and users [ec_configure_roles_and_users_3]
 
-To use a remote cluster for {{ccr}} or {{ccs}}, you need to create user roles with [remote indices privileges](../users-roles/cluster-or-deployment-auth/defining-roles.md#roles-remote-indices-priv) on the local cluster. Refer to [Configure roles and users](remote-clusters-api-key.md#remote-clusters-privileges-api-key).
+To use a remote cluster for {{ccr}} or {{ccs}}, you need to create user roles with [remote indices privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/role-structure.md#roles-remote-indices-priv) on the local cluster. Refer to [Configure roles and users](remote-clusters-api-key.md#remote-clusters-privileges-api-key).

@@ -23,15 +23,15 @@ Resetting the `elastic` user password does not interfere with Marketplace integr
 ::::
 
 ::::{note}
-The `elastic` user should be not be used unless you have no other way to access your deployment. [Create API keys for ingesting data](asciidocalypse://docs/beats/docs/reference/filebeat/beats-api-keys.md), and create user accounts with [appropriate roles for user access](../../../deploy-manage/users-roles/cluster-or-deployment-auth/quickstart.md).
+The `elastic` user should be not be used unless you have no other way to access your deployment. [Create API keys for ingesting data](beats://reference/filebeat/beats-api-keys.md), and create user accounts with [appropriate roles for user access](../../../deploy-manage/users-roles/cluster-or-deployment-auth/quickstart.md).
 ::::
 
 To reset the password:
 
 1. Log in to the Elastic Cloud Console.
-2. Find your deployment on the home page and select **Manage** to access it directly. Or, select **Hosted deployments** to go to the deployments page to view all of your deployments.
+2. Find your deployment on the home page and select **Manage** to access it directly. Or, select **Hosted deployments** to go to the **Deployments** page to view all of your deployments.
 
-    On the deployments page you can narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
+    On the **Deployments** page you can narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
 
 3. From your deployment menu, go to **Security**.
 4. Select **Reset password**.

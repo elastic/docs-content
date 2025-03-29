@@ -42,7 +42,7 @@ You don’t need to explicitly configure a `file` realm. The `file` and `native`
 
 2. If you're using a self-managed {{es}} cluster, optionally change how often the `users` and `users_roles` files are checked.
 
-    By default, {{es}} checks these files for changes every 5 seconds. You can change this default behavior by changing the `resource.reload.interval.high` setting in the `elasticsearch.yml` file 
+    By default, {{es}} checks these files for changes every 5 seconds. You can change this default behavior by changing the `resource.reload.interval.high` setting in the `elasticsearch.yml` file. 
     
     :::{{warning}}
     Because `resource.reload.interval.high` is a common setting in {{es}}, changing its value may effect other schedules in the system.

@@ -17,9 +17,9 @@ In **{{stack-manage-app}}** > **{{rules-ui}}**, click **Create rule**. Select th
 
 When you create a tracking containment rule, you must define the conditions that it detects. For example:
 
-:::{image} ../../../images/kibana-alert-types-tracking-containment-conditions.png
+:::{image} /explore-analyze/images/kibana-alert-types-tracking-containment-conditions.png
 :alt: Creating a tracking containment rule in Kibana
-:class: screenshot
+:screenshot:
 :::
 
 1. Define the entities index, which must contain a `geo_point` or `geo_shape` field, `date` field, and entity identifier. An entity identifier is a `keyword`, `number`, or `ip` field that identifies the entity. Entity data is expected to be updating so that there are entity movements to alert upon.
@@ -41,9 +41,9 @@ For each action, you must choose a connector, which provides connection informat
 
 After you select a connector, you must set the action frequency. You can choose to create a summary of alerts on each check interval or on a custom interval. Alternatively, you can set the action frequency such that actions run for each alert. Choose how often the action runs (at each check interval, only when the alert status changes, or at a custom action interval). You must also choose an action group, which indicates whether the action runs when the containment condition is met or when an entity is no longer contained. Each connector supports a specific set of actions for each action group. For example:
 
-:::{image} ../../../images/kibana-alert-types-tracking-containment-action-options.png
+:::{image} /explore-analyze/images/kibana-alert-types-tracking-containment-action-options.png
 :alt: Action frequency options for an action
-:class: screenshot
+:screenshot:
 :::
 
 You can further refine the conditions under which actions run by specifying that actions only run when they match a KQL query or when an alert occurs within a specific time frame.
@@ -52,9 +52,9 @@ You can further refine the conditions under which actions run by specifying that
 
 You can pass rule values to an action to provide contextual details. To view the list of variables available for each action, click the "add rule variable" button. For example:
 
-:::{image} ../../../images/kibana-alert-types-tracking-containment-rule-action-variables.png
+:::{image} /explore-analyze/images/kibana-alert-types-tracking-containment-rule-action-variables.png
 :alt: Passing rule values to an action
-:class: screenshot
+:screenshot:
 :::
 
 The following action variables are specific to the tracking containment rule. You can also specify [variables common to all rules](rule-action-variables.md).

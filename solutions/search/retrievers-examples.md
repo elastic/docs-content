@@ -401,7 +401,7 @@ Which would return the following results:
 
 ## Example: Grouping results by year with `collapse` [retrievers-examples-collapsing-retriever-results]
 
-In our result set, we have many documents with the same `year` value. We can clean this up using the `collapse` parameter with our retriever. This, as with the standard [collapse](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/collapse-search-results.md) feature,
+In our result set, we have many documents with the same `year` value. We can clean this up using the `collapse` parameter with our retriever. This, as with the standard [collapse](elasticsearch://reference/elasticsearch/rest-apis/collapse-search-results.md) feature,
 enables grouping results by any field and returns only the highest-scoring document from each group. In this example we’ll collapse our results based on the `year` field.
 
 ```console
@@ -551,7 +551,7 @@ This returns the following response with collapsed results.
 
 ## Example: Highlighting results based on nested sub-retrievers [retrievers-examples-highlighting-retriever-results]
 
-Highlighting is now also available for nested sub-retrievers matches. For example, consider the same `rrf` retriever as above, with a `knn` and `standard` retriever as its sub-retrievers. We can specify a `highlight` section, as defined in the [highlighting](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/highlighting.md) documentation, and compute highlights for the top results.
+Highlighting is now also available for nested sub-retrievers matches. For example, consider the same `rrf` retriever as above, with a `knn` and `standard` retriever as its sub-retrievers. We can specify a `highlight` section, as defined in the [highlighting](elasticsearch://reference/elasticsearch/rest-apis/highlighting.md) documentation, and compute highlights for the top results.
 
 ```console
 GET /retrievers_example/_search
@@ -748,7 +748,7 @@ POST /retrievers_example_nested/_doc/3
 POST /retrievers_example_nested/_refresh
 ```
 
-Now we can run an `rrf` retriever query and also compute [inner hits](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/retrieve-inner-hits.md) for the `nested_field.nested_vector` field, based on the `knn` query specified.
+Now we can run an `rrf` retriever query and also compute [inner hits](elasticsearch://reference/elasticsearch/rest-apis/retrieve-inner-hits.md) for the `nested_field.nested_vector` field, based on the `knn` query specified.
 
 ```console
 GET /retrievers_example_nested/_search

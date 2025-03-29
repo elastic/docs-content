@@ -22,23 +22,23 @@ Alternatively, you can use APIs like [get trained models](https://www.elastic.co
 
 2. Find the model you want to deploy in the list and click **Deploy model** in the **Actions** menu.
 
-:::{image} ../../../images/machine-learning-ml-dfa-trained-models-ui.png
+:::{image} /explore-analyze/images/machine-learning-ml-dfa-trained-models-ui.png
 :alt: The trained models UI in {{kib}}
-:class: screenshot
+:screenshot:
 :::
 
 3. Create an {{infer}} pipeline to be able to use the model against new data through the pipeline. Add a name and a description or use the default values.
 
-:::{image} ../../../images/machine-learning-ml-dfa-inference-pipeline.png
+:::{image} /explore-analyze/images/machine-learning-ml-dfa-inference-pipeline.png
 :alt: Creating an inference pipeline
-:class: screenshot
+:screenshot:
 :::
 
 4. Configure the pipeline processors or use the default settings.
 
-:::{image} ../../../images/machine-learning-ml-dfa-inference-processor.png
+:::{image} /explore-analyze/images/machine-learning-ml-dfa-inference-processor.png
 :alt: Configuring an inference processor
-:class: screenshot
+:screenshot:
 :::
 
 5. Configure to handle ingest failures or use the default settings.
@@ -106,7 +106,7 @@ A few observations:
 
 ::::{note}
 
-* Models exported from the [get trained models API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-get-trained-models) are limited in size by the [http.max_content_length](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/networking-settings.md) global configuration value in {{es}}. The default value is `100mb` and may need to be increased depending on the size of model being exported.
+* Models exported from the [get trained models API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-get-trained-models) are limited in size by the [http.max_content_length](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md) global configuration value in {{es}}. The default value is `100mb` and may need to be increased depending on the size of model being exported.
 * Connection timeouts can occur, for example, when model sizes are very large or your cluster is under load. If needed, you can increase [timeout configurations](https://ec.haxx.se/usingcurl/usingcurl-timeouts) for `curl` (for example, `curl --max-time 600`) or your client of choice.
 
 ::::
@@ -115,4 +115,4 @@ If you also want to copy the {{dfanalytics-job}} to the new cluster, you can exp
 
 ## Importing an external model to the {{stack}} [import-external-model-to-es]
 
-It is possible to import a model to your {{es}} cluster even if the model is not trained by Elastic {{dfanalytics}}. Eland supports [importing models](asciidocalypse://docs/eland/docs/reference/machine-learning.md) directly through its APIs. Please refer to the latest [Eland documentation](https://eland.readthedocs.io/en/latest/index.md) for more information on supported model types and other details of using Eland to import models with.
+It is possible to import a model to your {{es}} cluster even if the model is not trained by Elastic {{dfanalytics}}. Eland supports [importing models](eland://reference/machine-learning.md) directly through its APIs. Please refer to the latest [Eland documentation](https://eland.readthedocs.io/en/latest/index.html) for more information on supported model types and other details of using Eland to import models with.

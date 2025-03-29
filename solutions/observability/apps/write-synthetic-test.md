@@ -42,7 +42,7 @@ The synthetics agent exposes an API for creating and running tests, including:
 :   Runs a provided function after a single `journey` has completed. Takes one parameter: a `callback` (function). Learn more in [Set up and remove a global state](../../../solutions/observability/apps/write-synthetic-test.md#before-after).
 
 `monitor`
-:   The `monitor.use` method allows you to determine a monitor’s configuration on a journey-by-journey basis. If you want two journeys to create monitors with different intervals, for example, you should call `monitor.use` in each of them and set the `schedule` property to different values in each. Note that this is only relevant when using the `push` command to create monitors in {{kib}} an Observability serverless project. Learn more in [Configure individual monitors](../../../solutions/observability/apps/configure-individual-browser-monitors.md).
+:   The `monitor.use` method allows you to determine a monitor’s configuration on a journey-by-journey basis. If you want two journeys to create monitors with different intervals, for example, you should call `monitor.use` in each of them and set the `schedule` property to different values in each. Note that this is only relevant when using the `push` command to create monitors in {{kib}} an Observability Serverless project. Learn more in [Configure individual monitors](../../../solutions/observability/apps/configure-individual-browser-monitors.md).
 
 
 ## Create a journey [synthetics-create-journey]

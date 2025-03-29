@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/logs-index-template.html
+applies_to:
+  stack: all
+  serverless: all
 ---
 
 # Logs index template reference [logs-index-template]

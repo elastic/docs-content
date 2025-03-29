@@ -19,7 +19,7 @@ After [writing synthetic journeys](../../../solutions/observability/apps/write-s
 
 You’ll need to set a few configuration options:
 
-* **Give your monitor a name.** Provide a human readable name and a unique ID for the monitor. This will appear in {{kib}} or your Observability serverless project where you can view and manage monitors after they’re created.
+* **Give your monitor a name.** Provide a human readable name and a unique ID for the monitor. This will appear in {{kib}} or your Observability Serverless project where you can view and manage monitors after they’re created.
 * **Set the schedule.** Specify the interval at which your tests will run.
 * **Specify where the monitors should run.** You can run monitors on Elastic’s global managed testing infrastructure or [create a {{private-location}}](../../../solutions/observability/apps/monitor-resources-on-private-networks.md) to run monitors from your own premises.
 * **Set other options as needed.** There are several other options you can set to customize your implementation including params, tags, screenshot options, throttling options, and more.

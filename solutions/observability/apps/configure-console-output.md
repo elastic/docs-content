@@ -2,6 +2,8 @@
 navigation_title: "Console"
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-console-output.html
+applies_to:
+  stack: all
 ---
 
 
@@ -9,8 +11,8 @@ mapped_pages:
 # Configure the Console output [apm-console-output]
 
 
-::::{admonition}
-![supported deployment methods](../../../images/observability-binary-yes-fm-no.svg "")
+::::{note}
+![supported deployment methods](/solutions/images/observability-binary-yes-fm-no.svg "")
 
 The Console output is not yet supported by {{fleet}}-managed APM Server.
 

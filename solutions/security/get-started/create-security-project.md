@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/security-create-project.html
+applies_to:
+  serverless:
+    security: all
 ---
 
 # Create a Security project [security-create-project]

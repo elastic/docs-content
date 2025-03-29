@@ -8,12 +8,12 @@ applies_to:
 
 # Dynamic field mapping [dynamic-field-mapping]
 
-When {{es}} detects a new field in a document, it *dynamically* adds the field to the type mapping by default. The [`dynamic`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/dynamic.md) parameter controls this behavior.
+When {{es}} detects a new field in a document, it *dynamically* adds the field to the type mapping by default. The [`dynamic`](elasticsearch://reference/elasticsearch/mapping-reference/dynamic.md) parameter controls this behavior.
 
 You can explicitly instruct {{es}} to dynamically create fields based on incoming documents by setting the `dynamic` parameter to `true` or `runtime`. When dynamic field mapping is enabled, {{es}} uses the rules in the following table to determine how to map data types for each field.
 
-::::{note} 
-The field data types in the following table are the only [field data types](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/field-data-types.md) that {{es}} detects dynamically. You must explicitly map all other data types.
+::::{note}
+The field data types in the following table are the only [field data types](elasticsearch://reference/elasticsearch/mapping-reference/field-data-types.md) that {{es}} detects dynamically. You must explicitly map all other data types.
 ::::
 
 
@@ -33,9 +33,9 @@ $$$dynamic-field-mapping-types$$$
 | `string` that passes [numeric detection](#numeric-detection) | `float` or `long` | `double` or `long` |
 | `string` that doesn’t pass `date` detection or `numeric` detection | `text` with a `.keyword` sub-field | `keyword` |
 
-You can disable dynamic mapping, both at the document and at the [`object`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/object.md) level. Setting the `dynamic` parameter to `false` ignores new fields, and `strict` rejects the document if {{es}} encounters an unknown field.
+You can disable dynamic mapping, both at the document and at the [`object`](elasticsearch://reference/elasticsearch/mapping-reference/object.md) level. Setting the `dynamic` parameter to `false` ignores new fields, and `strict` rejects the document if {{es}} encounters an unknown field.
 
-::::{tip} 
+::::{tip}
 Use the [update mapping API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-mapping) to update the `dynamic` setting on existing fields.
 ::::
 
@@ -44,11 +44,11 @@ You can customize dynamic field mapping rules for [date detection](#date-detecti
 
 ## Date detection [date-detection]
 
-If `date_detection` is enabled (default), then new string fields are checked to see whether their contents match any of the date patterns specified in `dynamic_date_formats`. If a match is found, a new [`date`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/date.md) field is added with the corresponding format.
+If `date_detection` is enabled (default), then new string fields are checked to see whether their contents match any of the date patterns specified in `dynamic_date_formats`. If a match is found, a new [`date`](elasticsearch://reference/elasticsearch/mapping-reference/date.md) field is added with the corresponding format.
 
 The default value for `dynamic_date_formats` is:
 
-[ [`"strict_date_optional_time"`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/mapping-date-format.md#strict-date-time),`"yyyy/MM/dd HH:mm:ss Z||yyyy/MM/dd Z"`]
+[ [`"strict_date_optional_time"`](elasticsearch://reference/elasticsearch/mapping-reference/mapping-date-format.md#strict-date-time),`"yyyy/MM/dd HH:mm:ss Z||yyyy/MM/dd Z"`]
 
 For example:
 
@@ -61,7 +61,7 @@ PUT my-index-000001/_doc/1
 GET my-index-000001/_mapping <1>
 ```
 
-1. The `create_date` field has been added as a [`date`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/date.md) field with the [`format`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/mapping-date-format.md):<br> `"yyyy/MM/dd HH:mm:ss Z||yyyy/MM/dd Z"`.
+1. The `create_date` field has been added as a [`date`](elasticsearch://reference/elasticsearch/mapping-reference/date.md) field with the [`format`](elasticsearch://reference/elasticsearch/mapping-reference/mapping-date-format.md):<br> `"yyyy/MM/dd HH:mm:ss Z||yyyy/MM/dd Z"`.
 
 
 ### Disabling date detection [_disabling_date_detection]
@@ -82,13 +82,13 @@ PUT my-index-000001/_doc/1 <1>
 }
 ```
 
-1. The `create_date` field has been added as a [`text`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/text.md) field.
+1. The `create_date` field has been added as a [`text`](elasticsearch://reference/elasticsearch/mapping-reference/text.md) field.
 
 
 
 ### Customizing detected date formats [_customizing_detected_date_formats]
 
-Alternatively, the `dynamic_date_formats` can be customized to support your own [date formats](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/mapping-date-format.md):
+Alternatively, the `dynamic_date_formats` can be customized to support your own [date formats](elasticsearch://reference/elasticsearch/mapping-reference/mapping-date-format.md):
 
 ```console
 PUT my-index-000001
@@ -104,7 +104,7 @@ PUT my-index-000001/_doc/1
 }
 ```
 
-::::{note} 
+::::{note}
 There is a difference between configuring an array of date patterns and configuring multiple patterns in a single string separated by `||`. When you configure an array of date patterns, the pattern that matches the date in the first document with an unmapped date field will determine the mapping of that field:
 
 ```console
@@ -181,7 +181,7 @@ The resulting mapping will be:
 ::::
 
 
-::::{note} 
+::::{note}
 Epoch formats (`epoch_millis` and `epoch_second`) are not supported as dynamic date formats.
 
 ::::
@@ -208,8 +208,8 @@ PUT my-index-000001/_doc/1
 }
 ```
 
-1. The `my_float` field is added as a [`float`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/number.md) field.
-2. The `my_integer` field is added as a [`long`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/number.md) field.
+1. The `my_float` field is added as a [`float`](elasticsearch://reference/elasticsearch/mapping-reference/number.md) field.
+2. The `my_integer` field is added as a [`long`](elasticsearch://reference/elasticsearch/mapping-reference/number.md) field.
 
 
 

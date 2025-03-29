@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-mobile-session-explorer.html
+applies_to:
+  stack: all
 ---
 
 # Explore mobile sessions with Discover [apm-mobile-session-explorer]
@@ -21,31 +23,31 @@ The steps to follow are:
 
 Here we can see the `session.id` guid in the metadata viewer in the error detail view:
 
-:::{image} ../../../images/observability-mobile-session-error-details.png
+:::{image} /solutions/images/observability-mobile-session-error-details.png
 :alt: Example of session.id in error details
-:class: screenshot
+:screenshot:
 :::
 
 Copy this value and open the Discover page:
 
-:::{image} ../../../images/observability-mobile-session-explorer-nav.png
+:::{image} /solutions/images/observability-mobile-session-explorer-nav.png
 :alt: Example view of navigation to Discover
-:class: screenshot
+:screenshot:
 :::
 
-set the data view. `APM` selected in the example:
+Set the data view. `APM` selected in the example:
 
-:::{image} ../../../images/observability-mobile-session-explorer-apm.png
+:::{image} /solutions/images/observability-mobile-session-explorer-apm.png
 :alt: Example view of Explorer selecting APM data view
-:class: screenshot
+:screenshot:
 :::
 
-filter using the `session.id`: `session.id: "<copied session id guid>"`:
+Filter using the `session.id`: `session.id: "<copied session id guid>"`:
 
-:::{image} ../../../images/observability-mobile-session-filter-discover.png
+:::{image} /solutions/images/observability-mobile-session-filter-discover.png
 :alt: Filter Explor using session.id
-:class: screenshot
+:screenshot:
 :::
 
-explore all the documents associated with that session id including crashes, lifecycle events, network requests, errors, and other custom events!
+Explore all the documents associated with that session id including crashes, lifecycle events, network requests, errors, and other custom events!
 

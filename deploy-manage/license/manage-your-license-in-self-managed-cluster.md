@@ -1,13 +1,16 @@
 ---
+navigation_title: "Self-managed cluster"
+applies_to:
+  self:
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/managing-licenses.html
 ---
 
-# Manage your license in self-managed cluster [managing-licenses]
+# Manage your license in a self-managed cluster [managing-licenses]
 
-By default, new installations have a Basic license that never expires. For the full list of features available at the Free and Open Basic subscription level, refer to {{subscriptions}}.
+By default, new installations have a Basic license that never expires. For the full list of features available at the Free and Open Basic subscription level, refer to [Elastic subscriptions](https://www.elastic.co/subscriptions).
 
-To explore all of the available solutions and features, start a 30-day free trial. You can activate a trial subscription once per major product version. If you need more than 30 days to complete your evaluation, request an extended trial at {{extendtrial}}.
+To explore all of the available solutions and features, start a 30-day free trial. You can activate a trial subscription once per major product version. If you need more than 30 days to complete your evaluation, [request an extended trial](https://www.elastic.co/trialextension).
 
 To view the status of your license, start a trial, or install a new license, go to the **License Management** page using the navigation menu or the [global search field](../../explore-analyze/find-and-organize/find-apps-and-objects.md).
 

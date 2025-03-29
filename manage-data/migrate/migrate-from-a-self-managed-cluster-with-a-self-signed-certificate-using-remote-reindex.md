@@ -10,9 +10,9 @@ navigation_title: Reindex from a self-managed cluster
 
 # Migrate from a self-managed cluster with a self-signed certificate using remote reindex [ec-remote-reindex]
 
-The following instructions show you how to configure remote reindex on Elasticsearch Service from a cluster that uses a self-signed CA.
+The following instructions show you how to configure remote reindex on {{ech}} from a cluster that uses a self-signed CA.
 
-Let’s assume that the self-managed cluster that uses a self-signed certificate is called `Source`, and you want to migrate data from `Source` to `Destination` on Elasticsearch Service.
+Let’s assume that the self-managed cluster that uses a self-signed certificate is called `Source`, and you want to migrate data from `Source` to `Destination` on {{ech}}.
 
 
 ## Step 1: Create the `Source` certificate in a bundle [ec-remote-reindex-step1]
@@ -37,14 +37,14 @@ Both the folder and file names must correspond to the settings configured in [St
 
 
 
-## Step 2: Upload the zip bundle to your Elasticsearch Service account [ec-remote-reindex-step2]
+## Step 2: Upload the zip bundle to your {{ecloud}} account [ec-remote-reindex-step2]
 
 To upload your file, follow the steps in the section [Add your extension](../../deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md#ec-add-your-plugin). Enter wildcard `*` for **Version** in order to be compatible for all future upgrades, and select `A bundle containing dictionary or script` as **Type**.
 
 
-## Step 3: Create a new deployment on Elasticsearch Service [ec-remote-reindex-step3]
+## Step 3: Create a new {{ech}} deployment [ec-remote-reindex-step3]
 
-From the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body) create a new deployment. This will be the `Destination` cluster.
+From the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body) create a new deployment. This will be the `Destination` cluster.
 
 ::::{note}
 The `Destination` cluster should be the same or newer version as the `Source` cluster. If you already have a cluster available, you can skip this step.
@@ -71,7 +71,7 @@ The `Destination` cluster should be the same or newer version as the `Source` cl
 
 ## Step 5: Reindex from remote `Source` cluster. [ec-remote-reindex-step5]
 
-You can now run `reindex` on the Elasticsearch Service `Destination` cluster from `Source` cluster:
+You can now run `reindex` on the {{ech}} `Destination` cluster from `Source` cluster:
 
 ```text
 POST _reindex

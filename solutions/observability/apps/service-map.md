@@ -25,11 +25,12 @@ Select the **Service Map** tab to get started. By default, all instrumented serv
 
 Customize what the service map displays using either the query bar or the environment selector. The query bar enables you to use [advanced queries](../../../solutions/observability/apps/use-advanced-queries-on-application-data.md) to customize the service map based on your needs. The environment selector allows you to narrow displayed results to a specific environment. This can be useful if you have two or more services, in separate environments, but with the same name. Use the environment drop-down to only see the data you’re interested in, like `dev` or `production`.
 
-If there’s a specific service that interests you, select that service to highlight its connections. Click **Focus map** to refocus the map on the selected service and lock the connection highlighting. Click the **Transactions** tab to jump to the Transaction overview for the selected service. You can also use the tabs at the top of the page to easily jump to the ***Errors** or **Metrics** overview.
+If there’s a specific service that interests you, select that service to highlight its connections. Click **Focus map** to refocus the map on the selected service and lock the connection highlighting. Click the **Transactions** tab to jump to the Transaction overview for the selected service. You can also use the tabs at the top of the page to easily jump to the **Errors** or **Metrics** overview.
 
-:::{image} ../../../images/observability-service-maps-java.png
+
+:::{image} /solutions/images/observability-service-maps-java.png
 :alt: Example view of service maps in the Applications UI in Kibana
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -39,13 +40,13 @@ You can create machine learning jobs to calculate anomaly scores on APM transact
 
 |  |  |
 | --- | --- |
-| ![APM green service](../../../images/observability-green-service.png "") | Max anomaly score **≤25**. Service is healthy. |
-| ![APM yellow service](../../../images/observability-yellow-service.png "") | Max anomaly score **26-74**. Anomalous activity detected. Service may be degraded. |
-| ![APM red service](../../../images/observability-red-service.png "") | Max anomaly score **≥75**. Anomalous activity detected. Service is unhealthy. |
+| ![APM green service](/solutions/images/observability-green-service.png "") | Max anomaly score **≤25**. Service is healthy. |
+| ![APM yellow service](/solutions/images/observability-yellow-service.png "") | Max anomaly score **26-74**. Anomalous activity detected. Service may be degraded. |
+| ![APM red service](/solutions/images/observability-red-service.png "") | Max anomaly score **≥75**. Anomalous activity detected. Service is unhealthy. |
 
-:::{image} ../../../images/observability-apm-service-map-anomaly.png
+:::{image} /solutions/images/observability-apm-service-map-anomaly.png
 :alt: Example view of anomaly scores on service maps in the Applications UI
-:class: screenshot
+:screenshot:
 :::
 
 If an anomaly has been detected, click **View anomalies** to view the anomaly detection metric viewer. This time series analysis will display additional details on the severity and time of the detected anomalies.
@@ -74,4 +75,4 @@ Service Maps are supported for the following APM agent versions:
 | PHP agent | ≥ v1.2.0 |
 | Python agent | ≥ v5.5.0 |
 | Ruby agent | ≥ v3.6.0 |
-| Real User Monitoring (RUM) agent | ≥ v4.7.0 |
+| Real User Monitoring (RUM) agent (**Elastic Stack only**)| ≥ v4.7.0 |

@@ -2,6 +2,8 @@
 navigation_title: "SQS"
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/monitor-amazon-sqs.html
+applies_to:
+  stack:
 ---
 
 
@@ -24,8 +26,7 @@ To collect SQS metrics, you typically need to install the Elastic [Amazon SQS in
 
 Expand the **quick guide** to learn how, or skip to the next section if your data is already in {{es}}.
 
-:::::{dropdown} **Quick guide: Add data**
-::::{admonition}
+:::::{dropdown} Quick guide: Add data
 1. In the Observability UI, find **Integrations** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. In the query bar, search for and select the **Amazon SQS** integration.
 3. Read the overview to make sure you understand integration requirements and other considerations.
@@ -44,12 +45,12 @@ Expand the **quick guide** to learn how, or skip to the next section if your dat
 7. Click **Save and continue**. This step takes a minute or two to complete. When it’s done, you’ll have an agent policy that contains an integration policy for the configuration you just specified. If an {{agent}} is already assigned to the policy, you’re done. Otherwise, you need to deploy an {{agent}}.
 8. To deploy an {{agent}}:
 
-    1. In the popup, click **Add {{agent}} to your hosts** to open the **Add agent*** flyout. If you accidentally close the popup or the flyout doesn’t open, go to ***{{fleet}} → Agents**, then click **Add agent** to access the flyout.
+    1. In the popup, click **Add {{agent}} to your hosts** to open the **Add agent** flyout. If you accidentally close the popup or the flyout doesn’t open, go to **{{fleet}} → Agents**, then click **Add agent** to access the flyout.
     2. Follow the steps in the **Add agent** flyout to download, install, and enroll the {{agent}}.
 
 9. When incoming data is confirmed—​after a minute or two—​click **View assets** to access the dashboards.
 
-For more information {{agent}} and integrations, refer to the [{{fleet}} and {{agent}} documentation](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/index.md).
+For more information {{agent}} and integrations, refer to the [{{fleet}} and {{agent}} documentation](/reference/fleet/index.md).
 
 ::::
 
@@ -64,9 +65,9 @@ For more information {{agent}} and integrations, refer to the [{{fleet}} and {{a
 
 For example, to see an overview of your SQS metrics in {{kib}}, go to the **Dashboard** app and navigate to the **[Metrics AWS] SQS Overview** dashboard.
 
-:::{image} ../../../images/observability-sqs-dashboard.png
+:::{image} /solutions/images/observability-sqs-dashboard.png
 :alt: Screenshot showing the SQS overview dashboard
-:class: screenshot
+:screenshot:
 :::
 
 

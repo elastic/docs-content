@@ -2,6 +2,8 @@
 navigation_title: "Anonymous authentication"
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-configuration-anonymous.html
+applies_to:
+  stack: all
 ---
 
 
@@ -9,8 +11,8 @@ mapped_pages:
 # Configure anonymous authentication [apm-configuration-anonymous]
 
 
-::::{admonition}
-![supported deployment methods](../../../images/observability-binary-yes-fm-yes.svg "")
+::::{note}
+![supported deployment methods](/solutions/images/observability-binary-yes-fm-yes.svg "")
 
 Most options on this page are supported by all APM Server deployment methods.
 

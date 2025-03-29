@@ -2,29 +2,26 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/rule-monitoring-dashboard.html
   - https://www.elastic.co/guide/en/serverless/current/security-rule-monitoring-dashboard.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Detection rule monitoring dashboard
 
-% What needs to be done: Align serverless/stateful
-
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/security-docs/security/rule-monitoring-dashboard.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/security-rule-monitoring-dashboard.md
-
 The Detection rule monitoring dashboard provides visualizations to help you monitor the overall health and performance of {{elastic-sec}}'s detection rules. Consult this dashboard for a high-level view of whether your rules are running successfully and how long they’re taking to run, search data, and create alerts.
 
-:::{image} ../../../images/security-rule-monitoring-overview.png
+:::{image} /solutions/images/security-rule-monitoring-overview.png
 :alt: Overview of Detection rule monitoring dashboard
-:class: screenshot
+:screenshot:
 :::
 
 ::::{admonition} Requirements
 To access this dashboard and its data, you must have:
 
-* At least `Read` [{{kib}} privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md#adding_kibana_privileges) for both the **Analytics > Dashboard** and **Security > Security** {{kib}} features.
-* At least `read` [index privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md#adding_index_privileges) for the `.kibana-event-log-*` index.
+* At least `Read` [{{kib}} privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) for both the **Analytics > Dashboard** and **Security > Security** {{kib}} features.
+* At least `read` [index privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md#adding_index_privileges) for the `.kibana-event-log-*` index.
 
 ::::
 
@@ -50,7 +47,7 @@ The following visualizations are included:
 
 ## Visualization panel actions [rule-visualization-actions]
 
-Open a panel’s options menu (![Options menu](../../../images/security-three-dot-icon.png "")) customize the panel or use its data for further analysis and investigation:
+Open a panel’s options menu (![Options menu](/solutions/images/security-three-dot-icon.png "title =20x20")) customize the panel or use its data for further analysis and investigation:
 
 * **Edit panel settings**: Customize the panel’s display settings. Options vary by visualization type.
 * **Inspect**: Examine the panel’s underlying data and queries.

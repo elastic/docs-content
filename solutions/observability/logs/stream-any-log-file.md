@@ -2,6 +2,9 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/observability/current/logs-stream.html
   - https://www.elastic.co/guide/en/serverless/current/observability-stream-log-files.html
+applies_to:
+  stack: all
+  serverless: all
 ---
 
 # Stream any log file [logs-stream]
@@ -60,23 +63,67 @@ On your host, download and extract the installation package that corresponds wit
 :::::::{tab-set}
 
 ::::::{tab-item} macOS
-Version 9.0.0-beta1 of {{agent}} has not yet been released.
+
+```shell
+
+curl -L -O https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-{{stack-version}}-darwin-x86_64.tar.gz
+tar xzvf elastic-agent-{{stack-version}}-darwin-x86_64.tar.gz
+
+```
 ::::::
 
 ::::::{tab-item} Linux
-Version 9.0.0-beta1 of {{agent}} has not yet been released.
+
+```shell
+
+curl -L -O https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-{{stack-version}}-linux-x86_64.tar.gz
+tar xzvf elastic-agent-{{stack-version}}-linux-x86_64.tar.gz
+
+```
+
 ::::::
 
 ::::::{tab-item} Windows
-Version 9.0.0-beta1 of {{agent}} has not yet been released.
+
+```powershell
+
+# PowerShell 5.0+
+wget https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-{{stack-version}}-windows-x86_64.zip -OutFile elastic-agent-{{stack-version}}-windows-x86_64.zip
+Expand-Archive .\elastic-agent-{{stack-version}}-windows-x86_64.zip
+
+```
+
+
 ::::::
 
 ::::::{tab-item} DEB
-Version 9.0.0-beta1 of {{agent}} has not yet been released.
+
+:::tip
+To simplify upgrading to future versions of Elastic Agent, we recommended that you use the tarball distribution instead of the RPM distribution.
+You can install Elastic Agent in an unprivileged mode that does not require root privileges.
+:::
+
+```shell
+
+curl -L -O https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-{{stack-version}}-amd64.deb
+sudo dpkg -i elastic-agent-{{stack-version}}-amd64.deb
+
+```
 ::::::
 
 ::::::{tab-item} RPM
-Version 9.0.0-beta1 of {{agent}} has not yet been released.
+
+:::tip
+To simplify upgrading to future versions of Elastic Agent, we recommended that you use the tarball distribution instead of the RPM distribution.
+You can install Elastic Agent in an unprivileged mode that does not require root privileges.
+:::
+
+```shell
+
+curl -L -O https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-{{stack-version}}-x86_64.rpm
+sudo rpm -vi elastic-agent-{{stack-version}}-x86_64.rpm
+
+```
 ::::::
 
 :::::::
@@ -86,7 +133,7 @@ Version 9.0.0-beta1 of {{agent}} has not yet been released.
 After downloading and extracting the installation package, you’re ready to install the {{agent}}. From the agent directory, run the install command that corresponds with your system:
 
 ::::{note}
-On macOS, Linux (tar package), and Windows, run the `install` command to install and start {{agent}} as a managed service and start the service. The DEB and RPM packages include a service unit for Linux systems with systemd, For these systems, you must enable and start the service.
+On macOS, Linux (tar package), and Windows, run the `install` command to install and start {{agent}} as a managed service and start the service. The DEB and RPM packages include a service unit for Linux systems with systemd. For these systems, you must enable and start the service.
 ::::
 
 
@@ -225,8 +272,8 @@ inputs:
 
 Next, set the values for these fields:
 
-* `hosts` – Copy the {{es}} endpoint from **Help menu (![help icon](../../../images/observability-help-icon.png "")) → Connection details**. For example, `https://my-deployment.es.us-central1.gcp.cloud.es.io:443`.
-* `api-key` – Use an API key to grant the agent access to {{es}}. To create an API key for your agent, refer to the [Create API keys for standalone agents](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/grant-access-to-elasticsearch.md#create-api-key-standalone-agent) documentation.
+* `hosts` – Copy the {{es}} endpoint from **Help menu (![help icon](/solutions/images/observability-help-icon.png "")) → Connection details**. For example, `https://my-deployment.es.us-central1.gcp.cloud.es.io:443`.
+* `api-key` – Use an API key to grant the agent access to {{es}}. To create an API key for your agent, refer to the [Create API keys for standalone agents](/reference/fleet/grant-access-to-elasticsearch.md#create-api-key-standalone-agent) documentation.
 
     ::::{note}
     The API key format should be `<id>:<key>`. Make sure you selected **Beats** when you created your API key. Base64 encoded API keys are not currently supported in this configuration.
@@ -383,7 +430,7 @@ If you’re not seeing your log files in the UI, verify the following in the `el
 * The path to your logs file under `paths` is correct.
 * Your API key is in `<id>:<key>` format. If not, your API key may be in an unsupported format, and you’ll need to create an API key in **Beats** format.
 
-If you’re still running into issues, see [{{agent}} troubleshooting](../../../troubleshoot/ingest/fleet/common-problems.md) and [Configure standalone Elastic Agents](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/configure-standalone-elastic-agents.md).
+If you’re still running into issues, see [{{agent}} troubleshooting](../../../troubleshoot/ingest/fleet/common-problems.md) and [Configure standalone Elastic Agents](/reference/fleet/configure-standalone-elastic-agents.md).
 
 
 ## Next steps [logs-stream-next-steps]

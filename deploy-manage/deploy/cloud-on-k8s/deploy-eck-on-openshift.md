@@ -23,7 +23,7 @@ This section shows how to run ECK on OpenShift.
 1. To run the instructions on this page, you must be a `system:admin` user or a user with the privileges to create Projects, CRDs, and RBAC resources at the cluster level.
 2. Set virtual memory settings on the Kubernetes nodes.
 
-    Before deploying an Elasticsearch cluster with ECK, make sure that the Kubernetes nodes in your cluster have the correct `vm.max_map_count` sysctl setting applied. By default, Pods created by ECK are likely to run with the `restricted` [Security Context Constraint](https://docs.openshift.com/container-platform/4.12/authentication/managing-security-context-constraints.md) (SCC) which restricts privileged access required to change this setting in the underlying Kubernetes nodes.
+    Before deploying an Elasticsearch cluster with ECK, make sure that the Kubernetes nodes in your cluster have the correct `vm.max_map_count` sysctl setting applied. By default, Pods created by ECK are likely to run with the `restricted` [Security Context Constraint](https://docs.openshift.com/container-platform/4.12/authentication/managing-security-context-constraints.html) (SCC) which restricts privileged access required to change this setting in the underlying Kubernetes nodes.
 
     Alternatively, you can opt for setting `node.store.allow_mmap: false` at the [Elasticsearch node configuration](node-configuration.md) level. This has performance implications and is not recommended for production workloads.
 

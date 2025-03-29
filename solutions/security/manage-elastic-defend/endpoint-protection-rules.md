@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/endpoint-protection-rules.html
   - https://www.elastic.co/guide/en/serverless/current/endpoint-protection-rules.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Endpoint protection rules [endpoint-protection-rules]

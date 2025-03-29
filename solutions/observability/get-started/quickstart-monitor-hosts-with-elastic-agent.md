@@ -2,6 +2,9 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/observability/current/quickstart-monitor-hosts-with-elastic-agent.html
   - https://www.elastic.co/guide/en/serverless/current/observability-quickstarts-monitor-hosts-with-elastic-agent.html
+applies_to:
+  stack:
+  serverless:
 ---
 
 # Quickstart: Monitor hosts with {{agent}} [quickstart-monitor-hosts-with-elastic-agent]
@@ -65,9 +68,9 @@ The script also generates an {{agent}} configuration file that you can use with 
 1. In {{kib}}, go to the **Observability** UI and click **Add Data**.
 2. Under **What do you want to monitor?** select **Host**, and then select **Elastic Agent: Logs & Metrics**.
 
-    :::{image} ../../../images/observability-quickstart-monitor-hosts-entry-point.png
+    :::{image} /solutions/images/observability-quickstart-monitor-hosts-entry-point.png
     :alt: Host monitoring entry point
-    :class: screenshot
+    :screenshot:
     :::
 
 3. Copy the install command.
@@ -89,9 +92,9 @@ The script also generates an {{agent}} configuration file that you can use with 
 2. In your {{obs-serverless}} project, go to **Add Data**.
 3. Under **What do you want to monitor?** select **Host**, and then select **Elastic Agent: Logs & Metrics**.
 
-    :::{image} ../../../images/serverless-quickstart-monitor-hosts-entry-point.png
+    :::{image} /solutions/images/serverless-quickstart-monitor-hosts-entry-point.png
     :alt: Host monitoring entry point
-    :class: screenshot
+    :screenshot:
     :::
 
 4. Copy the install command.
@@ -113,8 +116,8 @@ When the script is done, you’ll see a message like "{{agent}} is configured an
 
 There might be a slight delay before logs and other data are ingested.
 
-::::{admonition} Need to scan your host again?
-:class: note
+::::{note}
+**Need to scan your host again?**
 
 The auto-detection script (`auto_detect.sh`) is downloaded to the directory where you ran the installation command. You can re-run the script on the same host to detect additional logs. The script will scan the host and reconfigure {{agent}} with any additional logs that are found. If the script misses any custom logs, you can add them manually by entering `n` after the script has finished scanning the host.
 
@@ -138,9 +141,9 @@ After installation is complete and all relevant data is flowing into Elastic, th
 
 For example, you can navigate the **Host overview** dashboard to explore detailed metrics about system usage and throughput. Metrics that indicate a possible problem are highlighted in red.
 
-:::{image} ../../../images/observability-quickstart-host-overview.png
+:::{image} /solutions/images/observability-quickstart-host-overview.png
 :alt: Host overview dashboard
-:class: screenshot
+:screenshot:
 :::
 
 

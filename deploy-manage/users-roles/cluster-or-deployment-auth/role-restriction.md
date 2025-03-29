@@ -1,15 +1,18 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/role-restriction.html
+applies_to:
+  ece:
+  eck:
+  ess:
+  self:
 ---
 
 # Role restriction [role-restriction]
 
 Role restriction can be used to specify conditions under which a role should be effective. When conditions are not met, the role will be disabled, which will result in access being denied. Not specifying restriction means the role is not restricted and thus always effective. This is the default behaviour.
 
-::::{note} 
 Currently, the role restriction is only supported for [API keys](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-api-key), with limitation that the API key can only have a single role descriptor.
-::::
 
 
 ## Workflows [workflows-restriction]

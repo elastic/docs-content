@@ -1,12 +1,19 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/security/current/rules-cross-cluster-search.html
+applies_to:
+  stack: all
 ---
 
 # Cross-cluster search and detection rules [rules-cross-cluster-search]
 
 [Cross-cluster search](../../search/cross-cluster-search.md) is an {{es}} feature that allows one cluster (the *local* cluster) to query data in a separate cluster (the *remote* cluster). {{elastic-sec}}'s detection rules can perform a cross-cluster search to query data in remote clusters.
 
+::::{admonition} Requirements
+* To learn about the requirements for using cross-cluster search in the {{stack}}, refer to [Cross-cluster search](../../search/cross-cluster-search.md). 
+* Using cross-cluster search for {{esql}} rules in the {{stack}} requires an [Enterprise subscription](https://www.elastic.co/pricing). 
+
+::::
 
 ## Set up cross-cluster search in detection rules [set-up-ccs-rules]
 
@@ -23,16 +30,16 @@ This section explains the general process for setting up cross-cluster search in
 
         For example, if the remote cluster’s name is `remote-security-data` and you want to query the `logs-*` indices, include both the `logs-*` and `remote-security-data:logs-*` index patterns and assign them the `read` privilege.
 
-        :::{image} ../../../images/security-ccs-local-role.png
+        :::{image} /solutions/images/security-ccs-local-role.png
         :alt: Local cluster role configuration
-        :class: screenshot
+        :screenshot:
         :::
 
     2. **Remote cluster role**: Assign the `read` and `read_cross_cluster` privileges to the indices you want to search. You don’t need to include the remote cluster’s name here.
 
-        :::{image} ../../../images/security-ccs-remote-role.png
+        :::{image} /solutions/images/security-ccs-remote-role.png
         :alt: Remote cluster role configuration
-        :class: screenshot
+        :screenshot:
         :::
 
 3. On the local cluster:
@@ -47,9 +54,9 @@ This section explains the general process for setting up cross-cluster search in
 
     2. As this user, [configure a rule](create-detection-rule.md) that searches the remote indices: create or edit a rule, then enter the `<remote_cluster_name>:<index_name>` pattern in the **Source** section.
 
-        :::{image} ../../../images/security-ccs-rule-source.png
+        :::{image} /solutions/images/security-ccs-rule-source.png
         :alt: Rule source configuration
-        :class: screenshot
+        :screenshot:
         :::
 
         ::::{note}

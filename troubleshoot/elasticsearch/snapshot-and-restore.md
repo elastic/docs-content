@@ -2,12 +2,17 @@
 navigation_title: Snapshot and restore
 ---
 
-# Troubleshoot snapshot and restore
+# Troubleshoot snapshot and restore in {{es}}
 
-:::{admonition} WIP
-⚠️ **This page is a work in progress.** ⚠️
+Use the topics in this section to troubleshoot issues with {{es}} snapshots.
 
-The documentation team is working on this section. Contributions welcome!
-:::
+* [](/troubleshoot/elasticsearch/restore-from-snapshot.md)
+* [](/troubleshoot/elasticsearch/add-repository.md)
+    * [](/troubleshoot/elasticsearch/diagnosing-corrupted-repositories.md)
+    * [](/troubleshoot/elasticsearch/diagnosing-unknown-repositories.md)
+    * [](/troubleshoot/elasticsearch/diagnosing-invalid-repositories.md)
+* [](/troubleshoot/elasticsearch/repeated-snapshot-failures.md)
 
-% What needs to be done: Write from scratch
+## Additional resources
+* [Troubleshooting overview](/troubleshoot/index.md)
+* [Contact us](/troubleshoot/index.md#contact-us)

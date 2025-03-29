@@ -155,7 +155,7 @@ If the journey contains external NPM packages other than the `@elastic/synthetic
 
 
 `--url <string>`
-:   The URL for the deployment or Observability serverless project to which you want to upload the monitors.
+:   The URL for the deployment or Observability Serverless project to which you want to upload the monitors.
 
     This can also be set in the configuration file using [`project.url`](../../../solutions/observability/apps/configure-synthetics-projects.md#synthetics-configuration-project). The value defined via the CLI will take precedence.
 
@@ -267,7 +267,7 @@ Run `npx @elastic/synthetics locations` with no flags to list all the available 
 To list both locations on Elastic’s global managed infrastructure and {{private-locations}}, include:
 
 `--url <string>`
-:   The URL for the {{kib}} deployment or Observability serverless project from which to fetch all available public and {{private-location}}s.
+:   The URL for the {{kib}} deployment or Observability Serverless project from which to fetch all available public and {{private-location}}s.
 
 `--auth <string>`
 :   API key used for [authentication](../../../deploy-manage/api-keys/elasticsearch-api-keys.md).

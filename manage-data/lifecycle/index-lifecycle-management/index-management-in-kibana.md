@@ -28,18 +28,18 @@ To add these privileges, go to **Stack Management > Security > Roles** or use th
 
 Investigate your indices and perform operations from the **Indices** view.
 
-:::{image} ../../../images/elasticsearch-reference-management_index_labels.png
+:::{image} /manage-data/images/elasticsearch-reference-management_index_labels.png
 :alt: Index Management UI
-:class: screenshot
+:screenshot:
 :::
 
 * To show details and perform operations such as close, forcemerge, and flush, click the index name.  To perform operations on multiple indices, select their checkboxes and then open the **Manage** menu. For more information on managing indices, refer to [Index APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-indices).
 * To filter the list of indices, use the search bar or click a badge. Badges indicate if an index is a [follower index](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ccr-follow), a [rollup index](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-rollup-get-rollup-index-caps), or [frozen](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-unfreeze).
-* To drill down into the index [mappings](../../data-store/mapping.md), [settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index.md), and statistics, click an index name. From this view, you can navigate to **Discover** to further explore the documents in the index.
+* To drill down into the index [mappings](../../data-store/mapping.md), [settings](elasticsearch://reference/elasticsearch/index-settings/index.md), and statistics, click an index name. From this view, you can navigate to **Discover** to further explore the documents in the index.
 
-    :::{image} ../../../images/elasticsearch-reference-management_index_details.png
+    :::{image} /manage-data/images/elasticsearch-reference-management_index_details.png
     :alt: Index Management UI
-    :class: screenshot
+    :screenshot:
     :::
 
 
@@ -52,9 +52,9 @@ The value in the **Indices** column indicates the number of backing indices. Cli
 
 A value in the data retention column indicates that the data stream is managed by a [data stream lifecycle policy](../data-stream.md). This value is the time period for which your data is guaranteed to be stored. Data older than this period can be deleted by Elasticsearch at a later time.
 
-:::{image} ../../../images/elasticsearch-reference-management-data-stream-fields.png
+:::{image} /manage-data/images/elasticsearch-reference-management-data-stream-fields.png
 :alt: Data stream details
-:class: screenshot
+:screenshot:
 :::
 
 * To view more information about a data stream, such as its generation or its current index lifecycle policy, click the stream’s name. From this view, you can navigate to **Discover** to further explore data within the data stream.
@@ -65,9 +65,9 @@ A value in the data retention column indicates that the data stream is managed b
 
 Create, edit, clone, and delete your index templates in the **Index Templates** view. Changes made to an index template do not affect existing indices.
 
-:::{image} ../../../images/elasticsearch-reference-management-index-templates.png
+:::{image} /manage-data/images/elasticsearch-reference-management-index-templates.png
 :alt: Index templates
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -79,9 +79,9 @@ In this tutorial, you’ll create an index template and use it to configure two 
 
 1. In the **Index Templates** view, open the **Create template** wizard.
 
-    :::{image} ../../../images/elasticsearch-reference-management_index_create_wizard.png
+    :::{image} /manage-data/images/elasticsearch-reference-management_index_create_wizard.png
     :alt: Create wizard
-    :class: screenshot
+    :screenshot:
     :::
 
 2. In the **Name** field, enter `my-index-template`.
@@ -96,17 +96,17 @@ In this tutorial, you’ll create an index template and use it to configure two 
 
     Component templates are optional. For this tutorial, do not add any component templates.
 
-    :::{image} ../../../images/elasticsearch-reference-management_index_component_template.png
+    :::{image} /manage-data/images/elasticsearch-reference-management_index_component_template.png
     :alt: Component templates page
-    :class: screenshot
+    :screenshot:
     :::
 
 2. Define index settings. These are optional. For this tutorial, leave this section blank.
-3. Define a mapping that contains an [object](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/object.md) field named `geo` with a child [`geo_point`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/geo-point.md) field named `coordinates`:
+3. Define a mapping that contains an [object](elasticsearch://reference/elasticsearch/mapping-reference/object.md) field named `geo` with a child [`geo_point`](elasticsearch://reference/elasticsearch/mapping-reference/geo-point.md) field named `coordinates`:
 
-    :::{image} ../../../images/elasticsearch-reference-management-index-templates-mappings.png
+    :::{image} /manage-data/images/elasticsearch-reference-management-index-templates-mappings.png
     :alt: Mapped fields page
-    :class: screenshot
+    :screenshot:
     :::
 
     Alternatively, you can click the **Load JSON** link and define the mapping as JSON:
@@ -192,11 +192,11 @@ Use the **Enrich Policies** view to add data from your existing indices to incom
 * The source indices that store enrich data as documents
 * The fields from the source indices used to match incoming documents
 * The enrich fields containing enrich data from the source indices that you want to add to incoming documents
-* An optional [query](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/query-dsl-match-all-query.md).
+* An optional [query](elasticsearch://reference/query-languages/query-dsl/query-dsl-match-all-query.md).
 
-:::{image} ../../../images/elasticsearch-reference-management-enrich-policies.png
+:::{image} /manage-data/images/elasticsearch-reference-management-enrich-policies.png
 :alt: Enrich policies
-:class: screenshot
+:screenshot:
 :::
 
 When creating an enrich policy, the UI walks you through the configuration setup and selecting the fields. Before you can use the policy with an enrich processor or {{esql}} query, you must execute the policy.

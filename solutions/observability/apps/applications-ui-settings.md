@@ -9,8 +9,7 @@ navigation_title: "Settings"
 # Applications UI settings [observability-apm-kibana-settings]
 
 
-::::{admonition} Required role
-:class: note
+::::{note}
 
 The **Editor** role or higher is required to modify settings. To learn more, refer to [Assign user roles and privileges](../../../deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
 
@@ -20,6 +19,9 @@ You can adjust Application settings to fine-tune your experience in the Applicat
 
 
 ## General settings [observability-apm-kibana-settings-general-settings]
+```{applies_to}
+stack: ga 9.1
+```
 
 To change APM settings, select **Settings** from any **Applications** page. The following settings are available.
 
@@ -67,6 +69,6 @@ APM indices are {{kib}} Spaces-aware; Changes to APM index settings will only ap
 
 **APM Labs** allows you to easily try out new features that are technical preview.
 
-To enable APM labs, go to **Applications** → **Settings*** → ***General settings*** and toggle ***Enable labs button in APM**. Select **Save changes** and refresh the page.
+To enable APM labs, go to **Applications** → **Settings** → **General settings** and toggle **Enable labs button in APM**. Select **Save changes** and refresh the page.
 
 After enabling **APM Labs** select **Labs** in the toolbar to see the technical preview features available to try out.

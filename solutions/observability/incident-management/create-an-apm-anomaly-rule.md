@@ -13,8 +13,7 @@ To use the APM Anomaly rule, you have to enable [machine learning](../../../solu
 
 ::::
 
-::::{admonition} Required role
-:class: note
+::::{note}
 
 For Observability serverless projects, the **Editor** role or higher is required to create anomaly rules. To learn more, refer to [Assign user roles and privileges](../../../deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
 
@@ -23,13 +22,13 @@ For Observability serverless projects, the **Editor** role or higher is required
 
 You can create an anomaly rule to alert you when either the latency, throughput, or failed transaction rate of a service is abnormal. Anomaly rules can be set at different levels: environment, service, and/or transaction type. Add actions to raise alerts via services or third-party integrations (for example, send an email or create a Jira issue).
 
-:::{image} ../../../images/serverless-alerts-create-apm-anomaly.png
+:::{image} /solutions/images/serverless-alerts-create-apm-anomaly.png
 :alt: Create rule for APM anomaly alert
-:class: screenshot
+:screenshot:
 :::
 
 ::::{tip}
-These steps show how to use the **Alerts** UI. You can also create an anomaly rule directly from any page within **Applications***. Click the ***Alerts and rules*** button, and select ***Create anomaly rule***. When you create a rule this way, the ***Name** and **Tags** fields will be prepopulated but you can still change these.
+These steps show how to use the **Alerts** UI. You can also create an anomaly rule directly from any page within **Applications**. Click the **Alerts and rules** button, and select **Create anomaly rule**. When you create a rule this way, the **Name** and **Tags** fields will be prepopulated but you can still change these.
 
 ::::
 
@@ -40,7 +39,7 @@ To create your anomaly rule:
 2. Select **Manage Rules** from the **Alerts** page, and select **Create rule**.
 3. Enter a **Name** for your rule, and any optional **Tags** for more granular reporting (leave blank if unsure).
 4. Select the **APM Anomaly** rule type.
-5. Select the appropriate **Service**, **Type***, and ***Environment** (or leave **ALL** to include all options).
+5. Select the appropriate **Service**, **Type**, and **Environment** (or leave **ALL** to include all options).
 6. Select the desired severity (critical, major, minor, warning) from **Has anomaly with severity**.
 7. Define the interval to check the rule (for example, check every 1 minute).
 8. (Optional) Set up **Actions**.
@@ -92,27 +91,27 @@ After you select a connector, you must set the action frequency. You can choose 
 
 Alternatively, you can set the action frequency to **For each alert** and specify the conditions each alert must meet for the action to run. For example, you can send an email only when the alert status changes to critical.
 
-:::{image} ../../../images/serverless-alert-action-frequency.png
+:::{image} /solutions/images/serverless-alert-action-frequency.png
 :alt: Configure when a rule is triggered
-:class: screenshot
+:screenshot:
 :::
 
 With the **Run when** menu you can choose if an action runs when the threshold for an alert is reached, or when the alert is recovered. For example, you can add a corresponding action for each state to ensure you are alerted when the rule is triggered and also when it recovers.
 
-:::{image} ../../../images/serverless-alert-apm-action-frequency-recovered.png
+:::{image} /solutions/images/serverless-alert-apm-action-frequency-recovered.png
 :alt: Choose between threshold met or recovered
-:class: screenshot
+:screenshot:
 :::
 
 :::::
 
 
 :::::{dropdown} Action variables
-Use the default notification message or customize it. You can add more context to the message by clicking the Add variable icon ![Add variable](../../../images/serverless-indexOpen.svg "") and selecting from a list of available variables.
+Use the default notification message or customize it. You can add more context to the message by clicking the Add variable icon ![Add variable](/solutions/images/serverless-indexOpen.svg "") and selecting from a list of available variables.
 
-:::{image} ../../../images/serverless-action-variables-popup.png
+:::{image} /solutions/images/serverless-action-variables-popup.png
 :alt: Action variables list
-:class: screenshot
+:screenshot:
 :::
 
 The following variables are specific to this rule type. You can also specify [variables common to all rules](../../../explore-analyze/alerts-cases/alerts/rule-action-variables.md).

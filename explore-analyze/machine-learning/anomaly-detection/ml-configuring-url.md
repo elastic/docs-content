@@ -10,16 +10,16 @@ mapped_pages:
 
 You can optionally attach one or more custom URLs to your {{anomaly-jobs}}. These links appear in the anomalies table in the **Anomaly Explorer** and **Single Metric Viewer** and can direct you to dashboards, the **Discover** app, or external websites. For example, you can define a custom URL that provides a way for users to drill down to the source data from the results set:
 
-:::{image} ../../../images/machine-learning-ml-customurl.jpg
+:::{image} /explore-analyze/images/machine-learning-ml-customurl.jpg
 :alt: An example of the custom URL links in the Anomaly Explorer anomalies table
-:class: screenshot
+:screenshot:
 :::
 
 When you create or edit an {{anomaly-job}} in {{kib}}, it simplifies the creation of the custom URLs for {{kib}} dashboards and the **Discover** app and it enables you to test your URLs. For example:
 
-:::{image} ../../../images/machine-learning-ml-customurl-edit.gif
+:::{image} /explore-analyze/images/machine-learning-ml-customurl-edit.gif
 :alt: Add a custom URL in {{kib}}
-:class: screenshot
+:screenshot:
 :::
 
 For each custom URL, you must supply the URL and a label, which is the link text that appears in the anomalies table. You can also optionally supply a time range. When you link to **Discover** or a {{kib}} dashboard, you’ll have additional options for specifying the pertinent {{data-source}} or dashboard name and query entities.

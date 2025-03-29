@@ -2,6 +2,9 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/observability/current/logs-filter-and-aggregate.html
   - https://www.elastic.co/guide/en/serverless/current/observability-filter-and-aggregate-logs.html
+applies_to:
+  stack: all
+  serverless: all
 ---
 
 # Filter and aggregate logs [observability-filter-and-aggregate-logs]
@@ -16,8 +19,7 @@ This guide shows you how to:
 
 ## Before you get started [logs-filter-and-aggregate-prereq]
 
-::::{admonition} Required role
-:class: note
+::::{note}
 
 **For Observability serverless projects**, the **Admin** role or higher is required to create ingest pipelines and set the index template. To learn more, refer to [Assign user roles and privileges](../../../deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
 
@@ -108,18 +110,18 @@ For this example, let’s look for logs with a `WARN` or `ERROR` log level that 
 
 2. Click the current time range, select **Absolute**, and set the **Start date** to `Sep 14, 2023 @ 00:00:00.000`.
 
-    ![Set the time range start date](../../../images/serverless-logs-start-date.png "")
+    ![Set the time range start date](/solutions/images/serverless-logs-start-date.png "")
 
 3. Click the end of the current time range, select **Absolute**, and set the **End date** to `Sep 15, 2023 @ 23:59:59.999`.
 
-    ![Set the time range end date](../../../images/serverless-logs-end-date.png "")
+    ![Set the time range end date](/solutions/images/serverless-logs-end-date.png "")
 
 
 Under the **Documents** tab, you’ll see the filtered log data matching your query.
 
-:::{image} ../../../images/serverless-logs-kql-filter.png
+:::{image} /solutions/images/serverless-logs-kql-filter.png
 :alt: logs kql filter
-:class: screenshot
+:screenshot:
 :::
 
 For more on using Logs Explorer, refer to the [Discover](../../../explore-analyze/discover.md) documentation.
@@ -129,7 +131,7 @@ For more on using Logs Explorer, refer to the [Discover](../../../explore-analyz
 
 [Query DSL](../../../explore-analyze/query-filter/languages/querydsl.md) is a JSON-based language that sends requests and retrieves data from indices and data streams. You can filter your log data using Query DSL from **Developer Tools**.
 
-For example, you might want to troubleshoot an issue that happened on a specific date or at a specific time. To do this, use a boolean query with a [range query](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/query-dsl-range-query.md) to filter for the specific timestamp range and a [term query](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/query-dsl-term-query.md) to filter for `WARN` and `ERROR` log levels.
+For example, you might want to troubleshoot an issue that happened on a specific date or at a specific time. To do this, use a boolean query with a [range query](elasticsearch://reference/query-languages/query-dsl/query-dsl-range-query.md) to filter for the specific timestamp range and a [term query](elasticsearch://reference/query-languages/query-dsl/query-dsl-term-query.md) to filter for `WARN` and `ERROR` log levels.
 
 First, from **Developer Tools**, add some logs with varying timestamps and log levels to your data stream with the following command:
 
@@ -212,7 +214,7 @@ The filtered results should show `WARN` and `ERROR` logs that occurred within th
 
 ## Aggregate logs [logs-aggregate]
 
-Use aggregation to analyze and summarize your log data to find patterns and gain insight. [Bucket aggregations](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/aggregations/bucket.md) organize log data into meaningful groups making it easier to identify patterns, trends, and anomalies within your logs.
+Use aggregation to analyze and summarize your log data to find patterns and gain insight. [Bucket aggregations](elasticsearch://reference/aggregations/bucket.md) organize log data into meaningful groups making it easier to identify patterns, trends, and anomalies within your logs.
 
 For example, you might want to understand error distribution by analyzing the count of logs per log level.
 

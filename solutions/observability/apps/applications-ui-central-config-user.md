@@ -16,26 +16,12 @@ Central configuration users need to be able to view, create, update, and delete 
 
 1. Create a new role, named something like `central-config-manager`, and assign the following privileges:
 
-    <div class="tabs" data-tab-group="central-config-manager">
-      <div role="tablist" aria-label="Central config manager">
-        <button role="tab"
-              aria-selected="true"
-              aria-controls="data-streams-tab"
-              id="data-streams">
-          Data streams
-        </button>
-        <button role="tab"
-                aria-selected="false"
-                aria-controls="classic-indices-tab"
-                id="classic-indices"
-                tabindex="-1">
-          Classic APM indices
-        </button>
-      </div>
-      <div tabindex="0"
-           role="tabpanel"
-           id="data-streams-tab"
-           aria-labelledby="data-streams">
+    ::::{tab-set}
+    :group: datastreams-classic
+
+    :::{tab-item} Data streams
+    :sync: datastreams
+
     | Type | Privilege | Purpose |
     | --- | --- | --- |
     | Index | `read` on `apm-agent-configuration` | Read-only access to `apm-agent-configuration` data |
@@ -47,19 +33,20 @@ Central configuration users need to be able to view, create, update, and delete 
     | Index | `read` on `traces-apm*` | Read-only access to `traces-apm*` data |
     | Index | `view_index_metadata` on `traces-apm*` | Read-only access to `traces-apm*` index metadata |
 
-      </div>
-      <div tabindex="0"
-           role="tabpanel"
-           id="classic-indices-tab"
-           aria-labelledby="classic-indices"
-           hidden="">
+    :::
+
+    :::{tab-item} Classic APM indices
+    :sync: classic
+
     | Type | Privilege | Purpose |
     | --- | --- | --- |
     | Index | `read` on `apm-*` | Read-only access to `apm-*` data |
     | Index | `view_index_metadata` on `apm-*` | Read-only access to `apm-*` index metadata |
 
-      </div>
-    </div>
+    :::
+
+    ::::
+
     ::::{tip}
     Using the deprecated APM Server binaries? Add the privileges under the **Classic APM indices** tab above.
     ::::
@@ -78,26 +65,12 @@ In some instances, you may wish to create a user that can only read central conf
 
 1. Create a new role, named something like `central-config-reader`, and assign the following privileges:
 
-    <div class="tabs" data-tab-group="central-config-manager">
-      <div role="tablist" aria-label="Central config manager">
-        <button role="tab"
-              aria-selected="true"
-              aria-controls="data-streams-tab"
-              id="data-streams">
-          Data streams
-        </button>
-        <button role="tab"
-                aria-selected="false"
-                aria-controls="classic-indices-tab"
-                id="classic-indices"
-                tabindex="-1">
-          Classic APM indices
-        </button>
-      </div>
-      <div tabindex="0"
-           role="tabpanel"
-           id="data-streams-tab"
-           aria-labelledby="data-streams">
+    ::::{tab-set}
+    :group: datastreams-classic
+
+    :::{tab-item} Data streams
+    :sync: datastreams
+
     | Type | Privilege | Purpose |
     | --- | --- | --- |
     | Index | `read` on `apm-agent-configuration` | Read-only access to `apm-agent-configuration` data |
@@ -109,19 +82,20 @@ In some instances, you may wish to create a user that can only read central conf
     | Index | `read` on `traces-apm*` | Read-only access to `traces-apm*` data |
     | Index | `view_index_metadata` on `traces-apm*` | Read-only access to `traces-apm*` index metadata |
 
-      </div>
-      <div tabindex="0"
-           role="tabpanel"
-           id="classic-indices-tab"
-           aria-labelledby="classic-indices"
-           hidden="">
+    :::
+
+    :::{tab-item} Classic APM indices
+    :sync: classic
+
     | Type | Privilege | Purpose |
     | --- | --- | --- |
     | Index | `read` on `apm-*` | Read-only access to `apm-*` data |
     | Index | `view_index_metadata` on `apm-*` | Read-only access to `apm-*` index metadata |
 
-      </div>
-    </div>
+    :::
+
+    ::::
+
     ::::{tip}
     Using the deprecated APM Server binaries? Add the privileges under the **Classic APM indices** tab above.
     ::::

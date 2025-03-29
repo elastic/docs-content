@@ -1,5 +1,5 @@
 ---
-navigation_title: "Kibana self-managed"
+navigation_title: "Self-managed: {{kib}}"
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/configuring-monitoring.html
 applies_to:
@@ -19,7 +19,7 @@ If you enable the {{monitor-features}} in your cluster, there are a few methods 
 
 You can also use {{kib}} to [visualize monitoring data from across the {{stack}}](kibana-monitoring-data.md).
 
-To learn about monitoring in general, see [Monitor a cluster](../../monitor.md).
+To learn about monitoring in general, refer to [](/deploy-manage/monitor/stack-monitoring.md).
 
 
 

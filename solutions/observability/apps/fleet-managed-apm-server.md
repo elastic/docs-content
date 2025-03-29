@@ -14,10 +14,10 @@ You need {{es}} for storing and searching your data, and {{kib}} for visualizing
 
 * {{es}} cluster and {{kib}} (version 9.0) with a basic license or higher. [Learn how to install the {{stack}} on your own hardware](../../../get-started/the-stack.md).
 * Secure, encrypted connection between {{kib}} and {{es}}. For more information, see [Start the {{stack}} with security enabled](../../../deploy-manage/deploy/self-managed/installing-elasticsearch.md).
-* Internet connection for {{kib}} to download integration packages from the {{package-registry}}. Make sure the {{kib}} server can connect to `https://epr.elastic.co` on port `443`. If your environment has network traffic restrictions, there are ways to work around this requirement. See [Air-gapped environments](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/air-gapped.md) for more information.
+* Internet connection for {{kib}} to download integration packages from the {{package-registry}}. Make sure the {{kib}} server can connect to `https://epr.elastic.co` on port `443`. If your environment has network traffic restrictions, there are ways to work around this requirement. See [Air-gapped environments](/reference/fleet/air-gapped.md) for more information.
 * {{kib}} user with `All` privileges on {{fleet}} and {{integrations}}. Since many Integrations assets are shared across spaces, users need the {{kib}} privileges in all spaces.
-* In the {{es}} configuration, the [built-in API key service](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/security-settings.md#api-key-service-settings) must be enabled. (`xpack.security.authc.api_key.enabled: true`)
-* In the {{kib}} configuration, the saved objects encryption key must be set. {{fleet}} requires this setting in order to save API keys and encrypt them in {{kib}}. You can either set `xpack.encryptedSavedObjects.encryptionKey` to an alphanumeric value of at least 32 characters, or run the [`kibana-encryption-keys` command](asciidocalypse://docs/kibana/docs/reference/commands/kibana-encryption-keys.md) to generate the key.
+* In the {{es}} configuration, the [built-in API key service](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#api-key-service-settings) must be enabled. (`xpack.security.authc.api_key.enabled: true`)
+* In the {{kib}} configuration, the saved objects encryption key must be set. {{fleet}} requires this setting in order to save API keys and encrypt them in {{kib}}. You can either set `xpack.encryptedSavedObjects.encryptionKey` to an alphanumeric value of at least 32 characters, or run the [`kibana-encryption-keys` command](kibana://reference/commands/kibana-encryption-keys.md) to generate the key.
 
 **Example security settings**
 
@@ -60,20 +60,20 @@ You can install only a single {{agent}} per host, which means you cannot run {{f
 ::::
 
 
-1. In {{fleet}}, open the **Settings** tab. For more information about these settings, see [{{fleet}} settings](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/fleet-settings.md).
+1. In {{fleet}}, open the **Settings** tab. For more information about these settings, see [{{fleet}} settings](/reference/fleet/fleet-settings.md).
 2. Under **Fleet Server hosts**, click **Edit hosts** and specify one or more host URLs your {{agent}}s will use to connect to {{fleet-server}}. For example, `https://192.0.2.1:8220`, where `192.0.2.1` is the host IP where you will install {{fleet-server}}. Save and apply your settings.
 
     ::::{tip}
-    If the **Edit hosts** option is grayed out, {{fleet-server}} hosts are configured outside of {{fleet}}. For more information, refer to [{{fleet}} settings in {{kib}}](asciidocalypse://docs/kibana/docs/reference/configuration-reference/fleet-settings.md).
+    If the **Edit hosts** option is grayed out, {{fleet-server}} hosts are configured outside of {{fleet}}. For more information, refer to [{{fleet}} settings in {{kib}}](kibana://reference/configuration-reference/fleet-settings.md).
     ::::
 
 3. In the **{{es}} hosts** field, specify the {{es}} URLs where {{agent}}s will send data. For example, `https://192.0.2.0:9200`. Skip this step if you’ve started the {{stack}} with security enabled (you cannot change this setting because it’s managed outside of {{fleet}}).
 4. Save and apply the settings.
 5. Click the **Agents** tab and follow the in-product instructions to add a {{fleet}} server:
 
-    :::{image} ../../../images/observability-add-fleet-server.png
+    :::{image} /solutions/images/observability-add-fleet-server.png
     :alt: In-product instructions for adding a {{fleet-server}}
-    :class: screenshot
+    :screenshot:
     :::
 
 
@@ -82,16 +82,16 @@ You can install only a single {{agent}} per host, which means you cannot run {{f
 * Choose **Quick Start** if you want {{fleet}} to generate a {{fleet-server}} policy and enrollment token for you. The {{fleet-server}} policy will include a {{fleet-server}} integration plus a system integration for monitoring {{agent}}. This option generates self-signed certificates and is not recommended for production use cases.
 * Choose **Advanced** if you want to either:
 
-    * Use your own {{fleet-server}} policy. You can create a new {{fleet-server}} policy or select an existing one. Alternatively you can [create a {{fleet-server}} policy without using the UI](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/create-policy-no-ui.md), and select the policy here.
-    * Use your own TLS certificates to encrypt traffic between {{agent}}s and {{fleet-server}}. To learn how to generate certs, refer to [Configure SSL/TLS for self-managed {{fleet-server}}s](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/secure-connections.md).
+    * Use your own {{fleet-server}} policy. You can create a new {{fleet-server}} policy or select an existing one. Alternatively you can [create a {{fleet-server}} policy without using the UI](/reference/fleet/create-policy-no-ui.md), and select the policy here.
+    * Use your own TLS certificates to encrypt traffic between {{agent}}s and {{fleet-server}}. To learn how to generate certs, refer to [Configure SSL/TLS for self-managed {{fleet-server}}s](/reference/fleet/secure-connections.md).
 
-* It’s recommended you generate a unique service token for each {{fleet-server}}. For other ways to generate service tokens, see [`elasticsearch-service-tokens`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/command-line-tools/service-tokens-command.md).
+* It’s recommended you generate a unique service token for each {{fleet-server}}. For other ways to generate service tokens, see [`elasticsearch-service-tokens`](elasticsearch://reference/elasticsearch/command-line-tools/service-tokens-command.md).
 * If you are providing your own certificates:
 
     * Before running the `install` command, make sure you replace the values in angle brackets.
     * Note that the URL specified by `--url` must match the DNS name used to generate the certificate specified by `--fleet-server-cert`.
 
-* The `install` command installs the {{agent}} as a managed service and enrolls it in a {{fleet-server}} policy. For more {{fleet-server}} commands, see [{{agent}} command reference](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/agent-command-reference.md).
+* The `install` command installs the {{agent}} as a managed service and enrolls it in a {{fleet-server}} policy. For more {{fleet-server}} commands, see [{{agent}} command reference](/reference/fleet/agent-command-reference.md).
 
 If installation is successful, you’ll see confirmation that {{fleet-server}} connected. Click **Continue enrolling Elastic Agent** to begin enrolling your agents in {{fleet-server}}.
 
@@ -100,7 +100,7 @@ If you’re unable to add a {{fleet}}-managed agent, click the **Agents** tab an
 ::::
 
 
-For more information, refer to [{{fleet-server}}](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/fleet-server.md).
+For more information, refer to [{{fleet-server}}](/reference/fleet/fleet-server.md).
 
 
 ## Step 2: Add and configure the APM integration [add-apm-integration]
@@ -114,16 +114,16 @@ If you don’t have a {{fleet}} setup already in place, the easiest way to get s
 1. In {{kib}}, find **Integrations** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Select **Elastic APM**.
 
-    :::{image} ../../../images/observability-kibana-fleet-integrations-apm.png
+    :::{image} /solutions/images/observability-kibana-fleet-integrations-apm.png
     :alt: {{fleet}} showing APM integration
-    :class: screenshot
+    :screenshot:
     :::
 
 3. Click **Add Elastic APM**.
 
-    :::{image} ../../../images/observability-kibana-fleet-integrations-apm-overview.png
+    :::{image} /solutions/images/observability-kibana-fleet-integrations-apm-overview.png
     :alt: {{fleet}} showing APM integration overview
-    :class: screenshot
+    :screenshot:
     :::
 
 4. On the **Add Elastic APM integration** page, define the host and port where APM Server will listen. Make a note of this value—​you’ll need it later.
@@ -136,19 +136,19 @@ If you don’t have a {{fleet}} setup already in place, the easiest way to get s
 6. Click **Save and continue**. This step takes a minute or two to complete. When it’s done, you’ll have an agent policy that contains an APM integration policy for the configuration you just specified.
 7. To view the new policy, click **Agent policy 1**.
 
-    :::{image} ../../../images/observability-apm-agent-policy-1.png
+    :::{image} /solutions/images/observability-apm-agent-policy-1.png
     :alt: {{fleet}} showing apm policy
-    :class: screenshot
+    :screenshot:
     :::
 
     Any {{agent}}s assigned to this policy will collect APM data from your instrumented services.
 
 
-::::{admonition}
+::::{tip}
 An internet connection is required to install the APM integration via the Fleet UI in Kibana.
 
-::::{dropdown} **If you don’t have an internet connection**
-If your environment has network traffic restrictions, there are other ways to install the APM integration. See [Air-gapped environments](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/air-gapped.md) for more information.
+::::{dropdown} If you don’t have an internet connection
+If your environment has network traffic restrictions, there are other ways to install the APM integration. See [Air-gapped environments](/reference/fleet/air-gapped.md) for more information.
 
 Option 1: Update `kibana.yml`
 :   Update `kibana.yml` to include the following, then restart {{kib}}.
@@ -159,7 +159,7 @@ xpack.fleet.packages:
   version: latest
 ```
 
-See [Configure Kibana](../../../deploy-manage/deploy/self-managed/configure.md) to learn more about how to edit the Kibana configuration file.
+See [Configure Kibana](kibana://reference/configuration-reference/general-settings.md) to learn more about how to edit the Kibana configuration file.
 
 
 Option 2: Use the {{fleet}} API
@@ -270,7 +270,7 @@ All that’s left is to compile and run your application. That’s it!
 
 **Learn more in the agent reference**
 
-Read more in the [APM Android Agent Reference](asciidocalypse://docs/apm-agent-android/docs/reference/index.md).
+Read more in the [APM Android Agent Reference](apm-agent-android://reference/index.md).
 ::::::
 
 ::::::{tab-item} Go
@@ -303,14 +303,14 @@ export ELASTIC_APM_SECRET_TOKEN=
 
 Instrumentation is the process of extending your application’s code to report trace data to Elastic APM. Go applications must be instrumented manually at the source code level. To instrument your applications, use one of the following approaches:
 
-* [Built-in instrumentation modules](asciidocalypse://docs/apm-agent-go/docs/reference/builtin-modules.md).
-* [Custom instrumentation](asciidocalypse://docs/apm-agent-go/docs/reference/custom-instrumentation.md) and context propagation with the Go Agent API.
+* [Built-in instrumentation modules](apm-agent-go://reference/builtin-modules.md).
+* [Custom instrumentation](apm-agent-go://reference/custom-instrumentation.md) and context propagation with the Go Agent API.
 
 **Learn more in the agent reference**
 
-* [Supported technologies](asciidocalypse://docs/apm-agent-go/docs/reference/supported-technologies.md)
-* [Advanced configuration](asciidocalypse://docs/apm-agent-go/docs/reference/configuration.md)
-* [Detailed guide to instrumenting Go source code](asciidocalypse://docs/apm-agent-go/docs/reference/set-up-apm-go-agent.md)
+* [Supported technologies](apm-agent-go://reference/supported-technologies.md)
+* [Advanced configuration](apm-agent-go://reference/configuration.md)
+* [Detailed guide to instrumenting Go source code](apm-agent-go://reference/set-up-apm-go-agent.md)
 ::::::
 
 ::::::{tab-item} iOS
@@ -398,7 +398,7 @@ var config = AgentConfigBuilder()
 
 **Learn more in the agent reference**
 
-Read more in the [APM iOS Agent Reference](asciidocalypse://docs/apm-agent-ios/docs/reference/index.md).
+Read more in the [APM iOS Agent Reference](apm-agent-ios://reference/index.md).
 ::::::
 
 ::::::{tab-item} Java
@@ -428,12 +428,12 @@ Different application servers have different ways of setting the `-javaagent` fl
 java -javaagent:/path/to/elastic-apm-agent-<version>.jar -Delastic.apm.service_name=my-cool-service -Delastic.apm.application_packages=org.example,org.another.example -Delastic.apm.server_url=http://127.0.0.1:8200 -jar my-application.jar
 ```
 
-Refer to [Manual setup with `-javaagent` flag](asciidocalypse://docs/apm-agent-java/docs/reference/setup-javaagent.md) to learn more.
+Refer to [Manual setup with `-javaagent` flag](apm-agent-java://reference/setup-javaagent.md) to learn more.
 
 **Alternate setup methods**
 
-* **Automatic setup with `apm-agent-attach-cli.jar`**<br> Automatically set up the agent without needing to alter the configuration of your JVM or application server. This method requires no changes to application code or JVM options, and allows attaching to a running JVM. Refer to the [Java agent documentation](asciidocalypse://docs/apm-agent-java/docs/reference/setup-attach-cli.md) for more information on this setup method.
-* **Programmatic API setup to self-attach**<br> Set up the agent with a one-line code change and an extra `apm-agent-attach` dependency. This method requires no changes to JVM options, and the agent artifact is embedded within the packaged application binary. Refer to the [Java agent documentation](asciidocalypse://docs/apm-agent-java/docs/reference/setup-attach-api.md) for more information on this setup method.
+* **Automatic setup with `apm-agent-attach-cli.jar`**<br> Automatically set up the agent without needing to alter the configuration of your JVM or application server. This method requires no changes to application code or JVM options, and allows attaching to a running JVM. Refer to the [Java agent documentation](apm-agent-java://reference/setup-attach-cli.md) for more information on this setup method.
+* **Programmatic API setup to self-attach**<br> Set up the agent with a one-line code change and an extra `apm-agent-attach` dependency. This method requires no changes to JVM options, and the agent artifact is embedded within the packaged application binary. Refer to the [Java agent documentation](apm-agent-java://reference/setup-attach-api.md) for more information on this setup method.
 ::::::
 
 ::::::{tab-item} .NET
@@ -441,14 +441,14 @@ Refer to [Manual setup with `-javaagent` flag](asciidocalypse://docs/apm-agent-j
 
 The .NET agent can be added to an application in a few different ways:
 
-* **Profiler runtime instrumentation**: The agent supports auto instrumentation without any code change and without any recompilation of your projects. See [Profiler auto instrumentation](asciidocalypse://docs/apm-agent-dotnet/docs/reference/setup-auto-instrumentation.md).
-* **NuGet packages**: The agent ships as a set of [NuGet packages](asciidocalypse://docs/apm-agent-dotnet/docs/reference/nuget-packages.md) available on [nuget.org](https://nuget.org). You can add the Agent and specific instrumentations to a .NET application by referencing one or more of these packages and following the package documentation.
-* **Host startup hook**: On .NET Core 3.0+ or .NET 5+, the agent supports auto instrumentation without any code change and without any recompilation of your projects. See [Zero code change setup on .NET Core](asciidocalypse://docs/apm-agent-dotnet/docs/reference/setup-dotnet-net-core.md) for more details.
+* **Profiler runtime instrumentation**: The agent supports auto instrumentation without any code change and without any recompilation of your projects. See [Profiler auto instrumentation](apm-agent-dotnet://reference/setup-auto-instrumentation.md).
+* **NuGet packages**: The agent ships as a set of [NuGet packages](apm-agent-dotnet://reference/nuget-packages.md) available on [nuget.org](https://nuget.org). You can add the Agent and specific instrumentations to a .NET application by referencing one or more of these packages and following the package documentation.
+* **Host startup hook**: On .NET Core 3.0+ or .NET 5+, the agent supports auto instrumentation without any code change and without any recompilation of your projects. See [Zero code change setup on .NET Core](apm-agent-dotnet://reference/setup-dotnet-net-core.md) for more details.
 
 **Learn more in the agent reference**
 
-* [Supported technologies](asciidocalypse://docs/apm-agent-dotnet/docs/reference/supported-technologies.md)
-* [Advanced configuration](asciidocalypse://docs/apm-agent-dotnet/docs/reference/configuration.md)
+* [Supported technologies](apm-agent-dotnet://reference/supported-technologies.md)
+* [Advanced configuration](apm-agent-dotnet://reference/configuration.md)
 ::::::
 
 ::::::{tab-item} Node.js
@@ -490,9 +490,9 @@ The agent will now monitor the performance of your application and record any un
 
 **Learn more in the agent reference**
 
-* [Supported technologies](asciidocalypse://docs/apm-agent-nodejs/docs/reference/supported-technologies.md)
-* [Babel/ES Modules](asciidocalypse://docs/apm-agent-nodejs/docs/reference/advanced-setup.md)
-* [Advanced configuration](asciidocalypse://docs/apm-agent-nodejs/docs/reference/configuring-agent.md)
+* [Supported technologies](apm-agent-nodejs://reference/supported-technologies.md)
+* [Babel/ES Modules](apm-agent-nodejs://reference/advanced-setup.md)
+* [Advanced configuration](apm-agent-nodejs://reference/configuring-agent.md)
 ::::::
 
 ::::::{tab-item} PHP
@@ -561,8 +561,8 @@ elastic_apm.bootstrap_php_part_file=<repo root>/agent/php/bootstrap_php_part.php
 
 **Learn more in the agent reference**
 
-* [Supported technologies](asciidocalypse://docs/apm-agent-php/docs/reference/supported-technologies.md)
-* [Configuration](asciidocalypse://docs/apm-agent-php/docs/reference/configuration.md)
+* [Supported technologies](apm-agent-php://reference/supported-technologies.md)
+* [Configuration](apm-agent-php://reference/configuration.md)
 ::::::
 
 ::::::{tab-item} Python
@@ -645,8 +645,8 @@ apm = ElasticAPM(app)
 
 **Learn more in the agent reference**
 
-* [Supported technologies](asciidocalypse://docs/apm-agent-python/docs/reference/supported-technologies.md)
-* [Advanced configuration](asciidocalypse://docs/apm-agent-python/docs/reference/configuration.md)
+* [Supported technologies](apm-agent-python://reference/supported-technologies.md)
+* [Advanced configuration](apm-agent-python://reference/configuration.md)
 ::::::
 
 ::::::{tab-item} Ruby
@@ -722,8 +722,8 @@ server_url: 'http://localhost:8200'
 
 **Learn more in the agent reference**
 
-* [Supported technologies](asciidocalypse://docs/apm-agent-ruby/docs/reference/supported-technologies.md)
-* [Advanced configuration](asciidocalypse://docs/apm-agent-ruby/docs/reference/configuration.md)
+* [Supported technologies](apm-agent-ruby://reference/supported-technologies.md)
+* [Advanced configuration](apm-agent-ruby://reference/configuration.md)
 ::::::
 
 ::::::{tab-item} RUM
@@ -794,8 +794,8 @@ const apm = initApm({
 
 **Learn more in the agent reference**
 
-* [Supported technologies](asciidocalypse://docs/apm-agent-rum-js/docs/reference/supported-technologies.md)
-* [Advanced configuration](asciidocalypse://docs/apm-agent-rum-js/docs/reference/configuration.md)
+* [Supported technologies](apm-agent-rum-js://reference/supported-technologies.md)
+* [Advanced configuration](apm-agent-rum-js://reference/configuration.md)
 ::::::
 
 ::::::{tab-item} OpenTelemetry
@@ -810,7 +810,7 @@ For more information on how to combine Elastic and OpenTelemetry, see [OpenTelem
 
 Back in {{kib}}, under {{observability}}, select APM. You should see application performance monitoring data flowing into the {{stack}}!
 
-:::{image} ../../../images/observability-kibana-apm-sample-data.png
+:::{image} /solutions/images/observability-kibana-apm-sample-data.png
 :alt: Applications UI with data
-:class: screenshot
+:screenshot:
 :::

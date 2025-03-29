@@ -2,15 +2,19 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/security/current/vuln-management-findings.html
   - https://www.elastic.co/guide/en/serverless/current/security-vuln-management-findings.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Findings page [security-vuln-management-findings]
 
 The **Vulnerabilities** tab on the Findings page displays the vulnerabilities detected by the [CNVM integration](cloud-native-vulnerability-management.md), as well as those detected by [third-party integrations](ingest-third-party-cloud-security-data.md).
 
-:::{image} ../../../images/serverless--cloud-native-security-cnvm-findings-page.png
+:::{image} /solutions/images/serverless--cloud-native-security-cnvm-findings-page.png
 :alt: The Vulnerabilities tab of the Findings page
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -34,14 +38,14 @@ Click **Group vulnerabilities by** to group your data by a field. Select one of 
 * To turn off grouping, click **Group vulnerabilities by:** and select **None**.
 
 ::::{note}
-Multiple groupings apply to your data in the order you selected them. For example, if you first select **Cloud account**, then select **Resource***, the top-level grouping will be based on ***Cloud account**, and its subordinate grouping will be based on **Resource**, as demonstrated in the following screenshot.
+Multiple groupings apply to your data in the order you selected them. For example, if you first select **Cloud account**, then select **Resource**, the top-level grouping will be based on **Cloud account**, and its subordinate grouping will be based on **Resource**, as demonstrated in the following screenshot.
 
 ::::
 
 
-:::{image} ../../../images/serverless--cloud-native-security-cnvm-findings-grouped.png
+:::{image} /solutions/images/serverless--cloud-native-security-cnvm-findings-grouped.png
 :alt: The Vulnerabilities tab of the Findings page
-:class: screenshot
+:screenshot:
 :::
 
 

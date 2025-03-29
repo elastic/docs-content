@@ -2,16 +2,13 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/connect-to-byo-llm.html
   - https://www.elastic.co/guide/en/serverless/current/connect-to-byo-llm.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Connect to your own local LLM
-
-% What needs to be done: Lift-and-shift
-
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/security-docs/security/connect-to-byo-llm.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/connect-to-byo-llm.md
 
 This page provides instructions for setting up a connector to a large language model (LLM) of your choice using LM Studio. This allows you to use your chosen model within {{elastic-sec}}. You’ll first need to set up a reverse proxy to communicate with {{elastic-sec}}, then set up LM Studio on a server, and finally configure the connector in your Elastic deployment. [Learn more about the benefits of using a local LLM](https://www.elastic.co/blog/ai-assistant-locally-hosted-models).
 
@@ -20,7 +17,7 @@ This example uses a single server hosted in GCP to run the following components:
 * LM Studio with the [Mistral-Nemo-Instruct-2407](https://huggingface.co/mistralai/Mistral-Nemo-Instruct-2407) model
 * A reverse proxy using Nginx to authenticate to Elastic Cloud
 
-:::{image} ../../../images/security-lms-studio-arch-diagram.png
+:::{image} /solutions/images/security-lms-studio-arch-diagram.png
 :alt: Architecture diagram for this guide
 :::
 
@@ -46,7 +43,7 @@ You need to set up a reverse proxy to enable communication between LM Studio and
 
 The following is an example Nginx configuration file:
 
-```txt
+```nginx
 server {
     listen                          80;
     listen                          [::]:80;
@@ -127,7 +124,7 @@ For security reasons, before downloading a model, verify that it is from a trust
 ::::
 
 
-:::{image} ../../../images/security-lms-model-select.png
+:::{image} /solutions/images/security-lms-model-select.png
 :alt: The LM Studio model selection interface
 :::
 
@@ -155,19 +152,19 @@ Once you’ve downloaded a model, use the following commands in your CLI:
 3. List all downloaded models: `lms ls`
 4. Load a model: `lms load`.
 
-:::{image} ../../../images/security-lms-cli-welcome.png
+:::{image} /solutions/images/security-lms-cli-welcome.png
 :alt: The CLI interface during execution of initial LM Studio commands
 :::
 
 After the model loads, you should see a `Model loaded successfully` message in the CLI. Select a model using the arrow and **Enter** keys.
 
-:::{image} ../../../images/security-lms-studio-model-loaded-msg.png
+:::{image} /solutions/images/security-lms-studio-model-loaded-msg.png
 :alt: The CLI message that appears after a model loads
 :::
 
 To verify which model is loaded, use the `lms ps` command.
 
-:::{image} ../../../images/security-lms-ps-command.png
+:::{image} /solutions/images/security-lms-ps-command.png
 :alt: The CLI message that appears after running lms ps
 :::
 
@@ -176,28 +173,16 @@ If your model uses NVIDIA drivers, you can check the GPU performance with the `s
 
 ### Option 2: load a model using the GUI [_option_2_load_a_model_using_the_gui]
 
-Refer to the following video to see how to load a model using LM Studio’s GUI. You can change the **port** setting, which is referenced in the Nginx configuration file. Note that the **GPU offload** was set to **Max**.
+Refer to the following video to see how to load a model using LM Studio’s GUI. You can change the **port** setting, which is referenced in the Nginx configuration file. Note that the **GPU offload** was set to **Max**. The following video demonstrates this process (click to watch).
 
-::::{admonition}
-<script type="text/javascript" async src="https://play.vidyard.com/embed/v4.js"></script>
-<img
-  style="width: 100%; margin: auto; display: block;"
-  class="vidyard-player-embed"
-  src="https://play.vidyard.com/c4AxH8d9tWMnwNp5J6bcfX.jpg"
-  data-uuid="c4AxH8d9tWMnwNp5J6bcfX"
-  data-v="4"
-  data-type="inline"
-/>
-</br>
-::::
-
+[![byollm-load-model-gui-video](https://play.vidyard.com/c4AxH8d9tWMnwNp5J6bcfX.jpg)](https://videos.elastic.co/watch/c4AxH8d9tWMnwNp5J6bcfX?)
 
 
 ## (Optional) Collect logs using Elastic’s Custom Logs integration [_optional_collect_logs_using_elastics_custom_logs_integration]
 
 You can monitor the performance of the host running LM Studio using Elastic’s [Custom Logs integration](https://docs.elastic.co/en/integrations/log). This can also help with troubleshooting. Note that the default path for LM Studio logs is `/tmp/lmstudio-server-log.txt`, as in the following screenshot:
 
-:::{image} ../../../images/security-lms-custom-logs-config.png
+:::{image} /solutions/images/security-lms-custom-logs-config.png
 :alt: The configuration window for the custom logs integration
 :::
 
@@ -215,7 +200,7 @@ Finally, configure the connector:
 7. Under **API key**, enter the secret token specified in your Nginx configuration file.
 8. Click **Save**.
 
-:::{image} ../../../images/security-lms-edit-connector.png
+:::{image} /solutions/images/security-lms-edit-connector.png
 :alt: The Edit connector page in the {{security-app}}
 :::
 

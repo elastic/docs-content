@@ -2,9 +2,9 @@
 navigation_title: "Use local collection"
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-monitoring-local-collection.html
+applies_to:
+  stack: all
 ---
-
-
 
 # Use the select metrics emitted directly to your monitoring cluster [apm-monitoring-local-collection]
 
@@ -29,5 +29,3 @@ Here is the list of every metrics we currently expose:
 * grpc.server.response.errors.count
 * grpc.server.errors.timeout
 * grpc.server.errors.ratelimit
-
-

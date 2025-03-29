@@ -35,9 +35,9 @@ The data represents two real airports, two fictitious flight routes, and fictiti
 
    You’re adding flight paths to this area, and this sets up the map for a good view of the data.
 
-   :::{image} ../../../images/kibana-fu_gs_new_england_map.png
+   :::{image} /explore-analyze/images/kibana-fu_gs_new_england_map.png
    :alt: fu gs new england map
-   :class: screenshot
+   :screenshot:
    :::
 
 
@@ -50,7 +50,7 @@ For each GeoJSON file you downloaded, complete the following steps:
 2. From the list of layer types, click **Upload file**.
 3. Using the File Picker, upload the GeoJSON file.
 
-    Depending on the geometry type of your features, this will auto-populate **Index type** with either [geo_point](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/geo-point.md) or [geo_shape](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/geo-shape.md) and **Index name** with `<file name>`.
+    Depending on the geometry type of your features, this will auto-populate **Index type** with either [geo_point](elasticsearch://reference/elasticsearch/mapping-reference/geo-point.md) or [geo_shape](elasticsearch://reference/elasticsearch/mapping-reference/geo-shape.md) and **Index name** with `<file name>`.
 
 4. Click **Import file**.
 
@@ -63,21 +63,21 @@ For each GeoJSON file you downloaded, complete the following steps:
 
    At this point, you could consider the map complete, but there are a few additions and tweaks that you can make to tell a better story with your data.
 
-   :::{image} ../../../images/kibana-fu_gs_flight_paths.png
+   :::{image} /explore-analyze/images/kibana-fu_gs_flight_paths.png
    :alt: fu gs flight paths
-   :class: screenshot
+   :screenshot:
    :::
 
 
 
 ## Add a heatmap aggregation layer [_add_a_heatmap_aggregation_layer]
 
-Looking at the `Lightning detected` layer, it’s clear where lightning has struck. What’s less clear, is if there have been more lightning strikes in some areas than others, in other words, where the lightning hot spots are. An advantage of having indexed [geo_point](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/geo-point.md) data for the lightning strikes is that you can perform aggregations on the data.
+Looking at the `Lightning detected` layer, it’s clear where lightning has struck. What’s less clear, is if there have been more lightning strikes in some areas than others, in other words, where the lightning hot spots are. An advantage of having indexed [geo_point](elasticsearch://reference/elasticsearch/mapping-reference/geo-point.md) data for the lightning strikes is that you can perform aggregations on the data.
 
 1. Click **Add layer**.
 2. From the list of layer types, click **Heat map**.
 
-    Because you indexed `lightning_detected.geojson` using the index name and pattern `lightning_detected`, that data is available as a [geo_point](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/geo-point.md) aggregation.
+    Because you indexed `lightning_detected.geojson` using the index name and pattern `lightning_detected`, that data is available as a [geo_point](elasticsearch://reference/elasticsearch/mapping-reference/geo-point.md) aggregation.
 
 3. Select `lightning_detected`.
 4. Click **Add layer** to add the heat map layer "Lightning intensity".
@@ -92,9 +92,9 @@ Looking at the `Lightning detected` layer, it’s clear where lightning has stru
 
    With your new lightning heat map layer, your map should look like this:
 
-   :::{image} ../../../images/kibana-fu_gs_lightning_intensity.png
+   :::{image} /explore-analyze/images/kibana-fu_gs_lightning_intensity.png
    :alt: fu gs lightning intensity
-   :class: screenshot
+   :screenshot:
    :::
 
 
@@ -112,8 +112,8 @@ When you’ve finished, again be sure to [save your work ](maps-getting-started.
 
 Your final map might look like this:
 
-:::{image} ../../../images/kibana-fu_gs_final_map.png
+:::{image} /explore-analyze/images/kibana-fu_gs_final_map.png
 :alt: fu gs final map
-:class: screenshot
+:screenshot:
 :::
 

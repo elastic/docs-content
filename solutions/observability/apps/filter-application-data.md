@@ -11,9 +11,9 @@ navigation_title: "Filters"
 
 Global filters are ways you can filter your APM data based on a specific time range or environment. When viewing a specific service, the filter persists as you move between tabs.
 
-:::{image} ../../../images/observability-global-filters.png
+:::{image} /solutions/images/observability-global-filters.png
 :alt: Global filters view
-:class: screenshot
+:screenshot:
 :::
 
 ::::{note}
@@ -34,12 +34,12 @@ The environment selector is a global filter for `service.environment`. It allows
 
 Service environments are defined when configuring your APM agents. It’s vital to be consistent when naming environments in your APM agents. To learn how to configure service environments, see the specific APM agent documentation:
 
-* **Go:** [`ELASTIC_APM_ENVIRONMENT`](asciidocalypse://docs/apm-agent-go/docs/reference/configuration.md#config-environment)
+* **Go:** [`ELASTIC_APM_ENVIRONMENT`](apm-agent-go://reference/configuration.md#config-environment)
 * **iOS agent:** *Not yet supported*
-* **Java:** [`environment`](asciidocalypse://docs/apm-agent-java/docs/reference/config-core.md#config-environment)
-* **.NET:** [`Environment`](asciidocalypse://docs/apm-agent-dotnet/docs/reference/config-core.md#config-environment)
-* **Node.js:** [`environment`](asciidocalypse://docs/apm-agent-nodejs/docs/reference/configuration.md#environment)
-* **PHP:** [`environment`](asciidocalypse://docs/apm-agent-php/docs/reference/configuration-reference.md#config-environment)
-* **Python:** [`environment`](asciidocalypse://docs/apm-agent-python/docs/reference/configuration.md#config-environment)
-* **Ruby:** [`environment`](asciidocalypse://docs/apm-agent-ruby/docs/reference/configuration.md#config-environment)
-* **Real User Monitoring:** [`environment`](asciidocalypse://docs/apm-agent-rum-js/docs/reference/configuration.md#environment)
+* **Java:** [`environment`](apm-agent-java://reference/config-core.md#config-environment)
+* **.NET:** [`Environment`](apm-agent-dotnet://reference/config-core.md#config-environment)
+* **Node.js:** [`environment`](apm-agent-nodejs://reference/configuration.md#environment)
+* **PHP:** [`environment`](apm-agent-php://reference/configuration-reference.md#config-environment)
+* **Python:** [`environment`](apm-agent-python://reference/configuration.md#config-environment)
+* **Ruby:** [`environment`](apm-agent-ruby://reference/configuration.md#config-environment)
+* **Real User Monitoring (Elastic Stack only):** [`environment`](apm-agent-rum-js://reference/configuration.md#environment)

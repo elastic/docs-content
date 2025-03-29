@@ -32,6 +32,9 @@ Stack trace collection settings are managed in each APM agent. You can enable an
 % Stateful only after this?
 
 ## Delete data [delete_data]
+```{applies_to}
+stack: all
+```
 
 You might want to only keep data for a defined time period. This might mean deleting old documents periodically, deleting data collected for specific services or customers, or deleting specific indices.
 
@@ -71,10 +74,13 @@ POST /.ds-*-apm*/_delete_by_query
 
 {{kib}}'s [Index Management](../../../manage-data/lifecycle/index-lifecycle-management/index-management-in-kibana.md) allows you to manage your cluster’s indices, data streams, index templates, and much more.
 
-To open **Index Management**, find **Stack Management*** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Select ***Data Streams**. Select the data streams you want to delete, and click **Delete data streams**.
+To open **Index Management**, find **Stack Management** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Select **Data Streams**. Select the data streams you want to delete, and click **Delete data streams**.
 
 
 ## Update existing data [apm-update-data]
+```{applies_to}
+stack: all
+```
 
 You might want to update documents that are already indexed. For example, if you your service name was set incorrectly.
 

@@ -2,12 +2,14 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/observability/current/inspect-metric-anomalies.html
   - https://www.elastic.co/guide/en/serverless/current/observability-detect-metric-anomalies.html
+applies_to:
+  stack:
+  serverless:
 ---
 
 # Detect metric anomalies [observability-detect-metric-anomalies]
 
-::::{admonition} Required role
-:class: note
+::::{note}
 
 **For Observability serverless projects**, the **Editor** role or higher is required to create {{ml}} jobs. To learn more, refer to [Assign user roles and privileges](../../../deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
 
@@ -70,9 +72,9 @@ After creating {{ml}} jobs, you cannot change the settings. You can recreate the
 ::::
 
 
-:::{image} ../../../images/serverless-metrics-ml-jobs.png
+:::{image} /solutions/images/serverless-metrics-ml-jobs.png
 :alt: Infrastructure {{ml-app}} anomalies
-:class: screenshot
+:screenshot:
 :::
 
 The **Anomalies** table displays a list of each single metric {{anomaly-detect}} job for the specific host or Kubernetes pod. By default, anomaly jobs are sorted by time to show the most recent job.
@@ -92,7 +94,7 @@ These predefined {{anomaly-jobs}} use [custom rules](https://www.elastic.co/guid
 
 On the **Infrastructure inventory** page, click **Show history** to view the metric values within the selected time frame. Detected anomalies with an anomaly score equal to 50 or higher are highlighted in red. To examine the detected anomalies, use the Anomaly Explorer.
 
-:::{image} ../../../images/serverless-metrics-history-chart.png
+:::{image} /solutions/images/serverless-metrics-history-chart.png
 :alt: History
-:class: screenshot
+:screenshot:
 :::

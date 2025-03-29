@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-mobile-service-overview.html
+applies_to:
+  stack: all
 ---
 
 # Mobile service overview [apm-mobile-service-overview]
@@ -27,9 +29,10 @@ Understand the impact of slow application load times and variations in applicati
 
 Note: due to the way crash rate is calculated (crashes per session) it is possible to have greater than 100% rate, due to fact that a session may contain multiple crashes.
 
-:::{image} ../../../images/observability-mobile-location.png
+
+:::{image} /solutions/images/observability-mobile-location.png
 :alt: mobile service overview centered on location map
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -37,9 +40,10 @@ Note: due to the way crash rate is calculated (crashes per session) it is possib
 
 Optimize your end-user experience and your application QA strategy based on your most used device models and operating system versions.
 
-:::{image} ../../../images/observability-mobile-most-used.png
+
+:::{image} /solutions/images/observability-mobile-most-used.png
 :alt: mobile service overview showing most used devices
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -51,9 +55,10 @@ The **Transactions** table displays a list of *transaction groups* for the selec
 
 By default, transaction groups are sorted by *Impact* to show the most used and slowest endpoints in your service. If there is a particular endpoint you are interested in, click **View transactions** to view a list of similar transactions on the [transactions overview](transactions-2.md) page.
 
-:::{image} ../../../images/observability-traffic-transactions.png
+
+:::{image} /solutions/images/observability-traffic-transactions.png
 :alt: Traffic and transactions
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -73,17 +78,19 @@ If there is no HTTP status, both transactions and spans are considered successfu
 
 The **Dependencies** table displays a list of downstream services or external connections relevant to the service at the selected time range. The table displays latency, throughput, failed transaction rate, and the impact of each dependency. By default, dependencies are sorted by *Impact* to show the most used and the slowest dependency. If there is a particular dependency you are interested in, click **[View dependencies](dependencies.md)** to learn more about it.
 
+
 ::::{note}
 Displaying dependencies for services instrumented with the Real User Monitoring (RUM) agent requires an agent version ≥ v5.6.3.
 ::::
 
 
-:::{image} ../../../images/observability-spans-dependencies.png
+:::{image} /solutions/images/observability-spans-dependencies.png
 :alt: Span type duration and dependencies
-:class: screenshot
+:screenshot:
 :::
 
-:::{image} ../../../images/observability-mobile-tp.png
+
+:::{image} /solutions/images/observability-mobile-tp.png
 :alt: mobile service overview showing latency
-:class: screenshot
+:screenshot:
 :::

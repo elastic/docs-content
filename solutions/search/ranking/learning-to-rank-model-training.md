@@ -81,7 +81,7 @@ feature_extractors=[
 ::::{admonition} Term statistics as features
 :class: note
 
-It is very common for an LTR model to leverage raw term statistics as features. To extract this information, you can use the [term statistics feature](../../../explore-analyze/scripting/modules-scripting-fields.md#scripting-term-statistics) provided as part of the  [`script_score`](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/query-dsl-script-score-query.md) query.
+It is very common for an LTR model to leverage raw term statistics as features. To extract this information, you can use the [term statistics feature](../../../explore-analyze/scripting/modules-scripting-fields.md#scripting-term-statistics) provided as part of the  [`script_score`](elasticsearch://reference/query-languages/query-dsl/query-dsl-script-score-query.md) query.
 
 ::::
 
@@ -146,11 +146,11 @@ This method will serialize the trained model and the Learning To Rank configurat
 
 The following types of models are currently supported for LTR with {{es}}:
 
-* [`DecisionTreeRegressor`](https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeRegressor.md)
-* [`RandomForestRegressor`](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestRegressor.md)
-* [`LGBMRegressor`](https://lightgbm.readthedocs.io/en/latest/pythonapi/lightgbm.LGBMRegressor.md)
-* [`XGBRanker`](https://xgboost.readthedocs.io/en/stable/python/python_api.md#xgboost.XGBRanker)
-* [`XGBRegressor`](https://xgboost.readthedocs.io/en/stable/python/python_api.md#xgboost.XGBRegressor)
+* [`DecisionTreeRegressor`](https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeRegressor.html)
+* [`RandomForestRegressor`](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestRegressor.html)
+* [`LGBMRegressor`](https://lightgbm.readthedocs.io/en/latest/pythonapi/lightgbm.LGBMRegressor.html)
+* [`XGBRanker`](https://xgboost.readthedocs.io/en/stable/python/python_api.html#xgboost.XGBRanker)
+* [`XGBRegressor`](https://xgboost.readthedocs.io/en/stable/python/python_api.html#xgboost.XGBRegressor)
 
 More model types will be supported in the future.
 

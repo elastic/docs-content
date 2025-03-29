@@ -29,7 +29,7 @@ The values in the configuration file are read in the following order:
 
 1. **Global parameters in an Observability project**: The *Global parameters* set using the UI are read first.
 2. **Configuration file**: Then the *Global parameters* are merged with any parameters defined in a configuration file. If a parameter is defined in both the Observability UI **and** a Synthetics project configuration file, the value in the configuration file will be used.
-3. **CLI**: Then the parameters defined in the configuration are merged with any parameters passed to the CLI `--params` argument. If a parameter is defined in a Synthetics project configuration file **and** using the CLI argument, the value defined using the CLI will be used. When running a script using the CLI, *Global parameters* defined in {{kib}} or the Observability serverless project have no impact on the test because it won’t have access to {{kib}} or the Observability project.
+3. **CLI**: Then the parameters defined in the configuration are merged with any parameters passed to the CLI `--params` argument. If a parameter is defined in a Synthetics project configuration file **and** using the CLI argument, the value defined using the CLI will be used. When running a script using the CLI, *Global parameters* defined in {{kib}} or the Observability Serverless project have no impact on the test because it won’t have access to {{kib}} or the Observability project.
 
 
 ### Global parameters in your Observability project [observability-synthetics-params-secrets-global-parameters-in-your-observability-project]
@@ -40,9 +40,9 @@ From any page in the Synthetics UI:
 2. Go to the **Global parameters** tab.
 3. Define parameters.
 
-:::{image} ../../../images/observability-synthetics-params-secrets-kibana-define.png
+:::{image} /solutions/images/observability-synthetics-params-secrets-kibana-define.png
 :alt: Global parameters tab on the Synthetics Settings page
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -119,16 +119,16 @@ journey("My Journey", ({ page, params }) => {
 
 To use a param in a lightweight monitor that is created in the Synthetics UI, wrap the name of the param in `${}` (for example, `${my_url}`).
 
-:::{image} ../../../images/serverless-synthetics-params-secrets-kibana-use-lightweight.png
+:::{image} /solutions/images/serverless-synthetics-params-secrets-kibana-use-lightweight.png
 :alt: Use a param in a lightweight monitor created in the Synthetics UI
-:class: screenshot
+:screenshot:
 :::
 
 To use a param in a browser monitor that is created in the Synthetics UI, add `params.` before the name of the param (for example, `params.my_url`).
 
-:::{image} ../../../images/observability-synthetics-params-secrets-kibana-use-lightweight.png
+:::{image} /solutions/images/observability-synthetics-params-secrets-kibana-use-lightweight.png
 :alt: Use a param in a lightweight monitor created in the Synthetics UI
-:class: screenshot
+:screenshot:
 :::
 
 

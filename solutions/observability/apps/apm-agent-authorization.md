@@ -1,12 +1,14 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-agent-auth.html
+applies_to:
+  stack: all
 ---
 
 # APM agent authorization [apm-agent-auth]
 
-::::{admonition}
-![supported deployment methods](../../../images/observability-binary-yes-fm-yes.svg "")
+::::{note}
+![supported deployment methods](/solutions/images/observability-binary-yes-fm-yes.svg "")
 
 Most options in this section are supported by all APM Server deployment methods.
 
@@ -92,8 +94,8 @@ Authorization token for sending APM data. The same token must also be set in eac
 
 ## `auth.api_key.elasticsearch.*` configuration options [_auth_api_key_elasticsearch_configuration_options]
 
-::::{admonition}
-![supported deployment methods](../../../images/observability-binary-yes-fm-no.svg "")
+::::{note}
+![supported deployment methods](/solutions/images/observability-binary-yes-fm-no.svg "")
 
 The below options are only supported by the APM Server binary.
 

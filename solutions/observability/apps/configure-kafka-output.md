@@ -2,15 +2,16 @@
 navigation_title: "Kafka"
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-kafka-output.html
+applies_to:
+  stack: all
 ---
-
 
 
 # Configure the Kafka output [apm-kafka-output]
 
 
-::::{admonition}
-![supported deployment methods](../../../images/observability-binary-yes-fm-no.svg "")
+::::{note}
+![supported deployment methods](/solutions/images/observability-binary-yes-fm-no.svg "")
 
 The Kafka output is not yet supported by {{fleet}}-managed APM Server.
 

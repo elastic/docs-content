@@ -10,7 +10,7 @@ mapped_pages:
 
 
 ::::{important}
-To create and manage SLOs, you need an [appropriate license](https://www.elastic.co/subscriptions) and an {{es}} cluster with both `transform` and `ingest` [node roles](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/node-settings.md#node-roles) present.
+To create and manage SLOs, you need an [appropriate license](https://www.elastic.co/subscriptions) and an {{es}} cluster with both `transform` and `ingest` [node roles](elasticsearch://reference/elasticsearch/configuration-reference/node-settings.md#node-roles) present.
 ::::
 
 
@@ -39,22 +39,22 @@ To create a role:
 
 Set the following privileges for the SLO Editor role:
 
-1. Under **Index privileges** in the **Elasticsearch** section, add `.slo-observability-*` to the **Indices** field and `read`, `view_index_metadata`, `write`, and `manage` to the **Privileges** field.
+1. Under **Index privileges** in the **Elasticsearch** section, add `.slo-observability.*` to the **Indices** field and `read`, `view_index_metadata`, `write`, and `manage` to the **Privileges** field.
 2. Click **Add index privilege**.
 3. In the **Indices** field, add the indices for which you plan to create SLOs. Then, add `read` and `view_index_metadata` to the **Privileges** field. The following example shows `logs-*`, but you can specify any indices.
 
-    :::{image} ../../../images/observability-slo-es-priv-editor.png
+    :::{image} /solutions/images/observability-slo-es-priv-editor.png
     :alt: Cluster and index privileges for SLO Editor role
-    :class: screenshot
+    :screenshot:
     :::
 
 4. In the **Kibana** section, click **Add Kibana privilege**.
 5. From the **Spaces** dropdown, either select any specific spaces you want the role to apply to, or select **All Spaces**.
 6. Set **Observability → SLOs** to `All`.
 
-    :::{image} ../../../images/observability-slo-kibana-priv-all.png
+    :::{image} /solutions/images/observability-slo-kibana-priv-all.png
     :alt: SLO Kibana all privileges
-    :class: screenshot
+    :screenshot:
     :::
 
 7. Click **Create Role** at the bottom of the page and assign the role to the relevant users.
@@ -64,20 +64,20 @@ Set the following privileges for the SLO Editor role:
 
 Set the following privileges for the SLO Read role:
 
-1. Under **Index privileges** in the **Elasticsearch** section, add `.slo-observability-*` to the **Indices** field and `read` and `view_index_metadata` to the **Privileges** field.
+1. Under **Index privileges** in the **Elasticsearch** section, add `.slo-observability.*` to the **Indices** field and `read` and `view_index_metadata` to the **Privileges** field.
 
-    :::{image} ../../../images/observability-slo-es-priv-viewer.png
+    :::{image} /solutions/images/observability-slo-es-priv-viewer.png
     :alt: Index privileges for SLO Viewer role
-    :class: screenshot
+    :screenshot:
     :::
 
 2. In the **Kibana** section, click **Add Kibana privilege**.
 3. From the **Spaces** dropdown, either select any specific spaces you want the role to apply to, or select **All Spaces**.
 4. Set **Observability → SLOs** to `Read`.
 
-    :::{image} ../../../images/observability-slo-kibana-priv-read.png
+    :::{image} /solutions/images/observability-slo-kibana-priv-read.png
     :alt: SLO Kibana read privileges
-    :class: screenshot
+    :screenshot:
     :::
 
 5. Click **Create Role** at the bottom of the page and assign the role to the relevant users.

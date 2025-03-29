@@ -1,7 +1,6 @@
 ---
 mapped_urls:
   - https://www.elastic.co/guide/en/kibana/current/upgrade.html
-  - https://www.elastic.co/guide/en/kibana/current/upgrade-migrations-rolling-back.html
   - https://www.elastic.co/guide/en/elastic-stack/current/upgrading-elastic-stack.html
   - https://www.elastic.co/guide/en/elastic-stack/current/upgrading-elasticsearch.html
   - https://www.elastic.co/guide/en/elastic-stack/current/upgrading-kibana.html
@@ -11,65 +10,29 @@ mapped_urls:
   - https://www.elastic.co/guide/en/elastic-stack/current/upgrade-elastic-stack-for-elastic-cloud.html
   - https://www.elastic.co/guide/en/elastic-stack/current/upgrading-elastic-stack-on-prem.html
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-upgrading-stack.html
-  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-orchestration.html
+  - https://www.elastic.co/guide/en/elasticsearch/reference/current/setup-upgrade.html
+applies_to:
+  stack:
+  deployment:
+    eck:
+    ess:
+    ece:
+    self:  
 ---
 
-# Upgrade your deployment or cluster
+# Upgrade your deployment or cluster [upgrade-deployment-cluster]
 
-% What needs to be done: Refine
+When upgrading an existing cluster, you perform a minor or major upgrade. For example, a minor upgrade takes you from version 9.0.0 to 9.1.0, while a major upgrade takes you from version 8.0.0 to 9.0.0.
 
-% GitHub issue: https://github.com/elastic/docs-projects/issues/270
+Upgrade procedures depend on whether you installed Elastic components using Elastic-managed or self-managed infrastructure.
 
-% Use migrated content from existing pages that map to this page:
+If you’re using Elastic-managed infrastructure, use the following options:
 
-% - [ ] ./raw-migrated-files/kibana/kibana/upgrade.md
-% - [ ] ./raw-migrated-files/kibana/kibana/upgrade-migrations-rolling-back.md
-% - [ ] ./raw-migrated-files/stack-docs/elastic-stack/upgrading-elastic-stack.md
-% - [ ] ./raw-migrated-files/stack-docs/elastic-stack/upgrading-elasticsearch.md
-% - [ ] ./raw-migrated-files/stack-docs/elastic-stack/upgrading-kibana.md
-% - [ ] ./raw-migrated-files/cloud/cloud-enterprise/ece-upgrade-deployment.md
-% - [ ] ./raw-migrated-files/cloud/cloud-heroku/ech-upgrade-deployment.md
-%      Notes: redirect only
-% - [ ] ./raw-migrated-files/cloud/cloud/ec-upgrade-deployment.md
-% - [ ] ./raw-migrated-files/stack-docs/elastic-stack/upgrade-elastic-stack-for-elastic-cloud.md
-% - [ ] ./raw-migrated-files/stack-docs/elastic-stack/upgrading-elastic-stack-on-prem.md
-% - [ ] ./raw-migrated-files/cloud-on-k8s/cloud-on-k8s/k8s-upgrading-stack.md
-% - [ ] ./raw-migrated-files/cloud-on-k8s/cloud-on-k8s/k8s-orchestration.md
-%      Notes: upgrade explanations
+* [Upgrade on {{ech}}](/deploy-manage/upgrade/deployment-or-cluster/upgrade-on-ech.md)
+* Upgrade on [{{serverless-full}}](/deploy-manage/deploy/elastic-cloud/serverless.md), which is automatically performed by Elastic and requires no user management
 
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
+If you’re using self-managed infrastructure - either on-prem or public cloud - use the following options:
 
-$$$preventing-migration-failures$$$
-
-$$$prepare-to-upgrade$$$
-
-$$$k8s-nodesets$$$
-
-$$$k8s-orchestration-limitations$$$
-
-$$$k8s-statefulsets$$$
-
-$$$k8s-upgrade-patterns$$$
-
-$$$k8s-upgrading$$$
-
-$$$prepare-to-upgrade-8x$$$
-
-$$$rolling-upgrades$$$
-
-$$$upgrading-reindex$$$
-
-**This page is a work in progress.** The documentation team is working to combine content pulled from the following pages:
-
-* [/raw-migrated-files/kibana/kibana/upgrade.md](/raw-migrated-files/kibana/kibana/upgrade.md)
-* [/raw-migrated-files/kibana/kibana/upgrade-migrations-rolling-back.md](/raw-migrated-files/kibana/kibana/upgrade-migrations-rolling-back.md)
-* [/raw-migrated-files/stack-docs/elastic-stack/upgrading-elastic-stack.md](/raw-migrated-files/stack-docs/elastic-stack/upgrading-elastic-stack.md)
-* [/raw-migrated-files/stack-docs/elastic-stack/upgrading-elasticsearch.md](/raw-migrated-files/stack-docs/elastic-stack/upgrading-elasticsearch.md)
-* [/raw-migrated-files/stack-docs/elastic-stack/upgrading-kibana.md](/raw-migrated-files/stack-docs/elastic-stack/upgrading-kibana.md)
-* [/raw-migrated-files/cloud/cloud-enterprise/ece-upgrade-deployment.md](/raw-migrated-files/cloud/cloud-enterprise/ece-upgrade-deployment.md)
-* [/raw-migrated-files/cloud/cloud-heroku/ech-upgrade-deployment.md](/raw-migrated-files/cloud/cloud-heroku/ech-upgrade-deployment.md)
-* [/raw-migrated-files/cloud/cloud/ec-upgrade-deployment.md](/raw-migrated-files/cloud/cloud/ec-upgrade-deployment.md)
-* [/raw-migrated-files/stack-docs/elastic-stack/upgrade-elastic-stack-for-elastic-cloud.md](/raw-migrated-files/stack-docs/elastic-stack/upgrade-elastic-stack-for-elastic-cloud.md)
-* [/raw-migrated-files/stack-docs/elastic-stack/upgrading-elastic-stack-on-prem.md](/raw-migrated-files/stack-docs/elastic-stack/upgrading-elastic-stack-on-prem.md)
-* [/raw-migrated-files/cloud-on-k8s/cloud-on-k8s/k8s-upgrading-stack.md](/raw-migrated-files/cloud-on-k8s/cloud-on-k8s/k8s-upgrading-stack.md)
-* [/raw-migrated-files/cloud-on-k8s/cloud-on-k8s/k8s-orchestration.md](/raw-migrated-files/cloud-on-k8s/cloud-on-k8s/k8s-orchestration.md)
+* [Upgrade the {{stack}} on a self-managed cluster](/deploy-manage/upgrade/deployment-or-cluster/self-managed.md)
+* [Upgrade on {{ece}} (ECE)](/deploy-manage/upgrade/deployment-or-cluster/upgrade-on-ece.md)
+* [Upgrade on {{eck}} (ECK)](/deploy-manage/upgrade/deployment-or-cluster/upgrade-on-eck.md)

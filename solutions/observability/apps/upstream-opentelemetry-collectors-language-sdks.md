@@ -173,7 +173,9 @@ java -javaagent:/path/to/opentelemetry-javaagent-all.jar \
      com.mycompany.checkout.CheckoutServiceServer
 ```
 
-1. [preview] The OpenTelemetry logs intake via APM Server is currently in technical preview.`OTEL_RESOURCE_ATTRIBUTES`
+1. [preview] The OpenTelemetry logs intake via APM Server is currently in technical preview.
+
+`OTEL_RESOURCE_ATTRIBUTES`
 :   Fields that describe the service and the environment that the service runs in. See [resource attributes](../../../solutions/observability/apps/resource-atrributes.md) for more information.
 
 `OTEL_EXPORTER_OTLP_ENDPOINT`
@@ -213,7 +215,9 @@ java -javaagent:/path/to/opentelemetry-javaagent-all.jar \
      com.mycompany.checkout.CheckoutServiceServer
 ```
 
-1. [preview]  The OpenTelemetry logs intake via Elastic is currently in technical preview.`OTEL_RESOURCE_ATTRIBUTES`
+1. [preview]  The OpenTelemetry logs intake via Elastic is currently in technical preview.
+
+`OTEL_RESOURCE_ATTRIBUTES`
 :   Fields that describe the service and the environment that the service runs in. See [resource attributes](../../../solutions/observability/apps/resource-atrributes.md) for more information.
 
 `OTEL_EXPORTER_OTLP_ENDPOINT`
@@ -252,6 +256,13 @@ APM Server supports both the [OTLP/gRPC](https://opentelemetry.io/docs/specs/otl
 If you use the OTLP/gRPC protocol, requests to Elastic must use either HTTP/2 over TLS or HTTP/2 Cleartext (H2C). No matter which protocol is used, OTLP/gRPC requests will have the header: `"Content-Type: application/grpc"`.
 
 When using a layer 7 (L7) proxy like AWS ALB, requests must be proxied in a way that ensures requests to Elastic follow the rules outlined above. For example, with ALB you can create rules to select an alternative backend protocol based on the headers of requests coming into ALB. In this example, you’d select the gRPC protocol when the  `"Content-Type: application/grpc"` header exists on a request.
+
+Many L7 load balancers handle HTTP and gRPC traffic separately and rely on explicitly defined routes and service configurations to correctly proxy requests. Since APM Server serves both protocols on the same port, it may not be compatible with some L7 load balancers. For example, to work around this issue in [Ingress NGINX Controller for Kubernetes](https://github.com/kubernetes/ingress-nginx), either:
+
+* Use the `otlp` exporter in the OTel collector. Set annotation `nginx.ingress.kubernetes.io/backend-protocol: "GRPC"` on the K8s Ingress object proxying to APM Server.
+* Use the `otlphttp` exporter in the OTel collector. Set annotation `nginx.ingress.kubernetes.io/backend-protocol: "HTTP"` (or `"HTTPS"` if APM Server expects TLS) on the K8s Ingress object proxying to APM Server.
+
+The preferred approach is to deploy a L4 (TCP) load balancer (e.g. [NLB](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/introduction.html) on AWS) in front of APM Server, which forwards raw TCP traffic transparently without protocol inspection.
 
 For more information on how to configure an AWS ALB to support gRPC, see this AWS blog post: [Application Load Balancer Support for End-to-End HTTP/2 and gRPC](https://aws.amazon.com/blogs/aws/new-application-load-balancer-support-for-end-to-end-http-2-and-grpc/).
 

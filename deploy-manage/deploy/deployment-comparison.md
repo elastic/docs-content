@@ -1,5 +1,5 @@
 
-# Deployment comparison reference
+# Detailed deployment comparison
 
 This reference provides detailed comparisons of features and capabilities across Elastic's deployment options: self-managed deployments, Elastic Cloud Hosted, and Serverless. For a high-level overview of deployment types and guidance on choosing between them, see the [overview](../deploy.md).
 
@@ -12,7 +12,7 @@ For more details about feature availability in Serverless, check [](elastic-clou
 | [Security configurations](/deploy-manage/security.md) | Full control | Limited control | Limited control |
 | [Authentication realms](/deploy-manage/users-roles.md) | Available | Available | Available, through Elastic Cloud only |
 | [Custom roles](/deploy-manage/users-roles.md) | Available | Available | Available |
-| [Audit logging](/deploy-manage/monitor/logging-configuration/configuring-audit-logs.md) | Available | Available | No |
+| [Audit logging](/deploy-manage/security/logging-configuration/security-event-audit-logging.md) | Available | Available | No |
 
 ## Infrastructure and cluster management
 

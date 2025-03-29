@@ -17,7 +17,7 @@ To add a snapshot repository:
 3. Select **Add Repository** to add an existing repository.
 4. Provide a name for the repository configuration.
 
-    ECE Snapshot Repository names are now required to meet the same standards as S3 buckets. Refer to the official AWS documentation on [Bucket naming rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.md).
+    ECE Snapshot Repository names are now required to meet the same standards as S3 buckets. Refer to the official AWS documentation on [Bucket naming rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html).
 
 5. Select one of the supported repository types and specify the necessary settings:
 

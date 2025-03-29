@@ -8,16 +8,15 @@ navigation_title: "Track deployments with annotations"
 
 # Track deployments with annotations [apm-transactions-annotations]
 
-::::{admonition} Required role
-:class: note
+::::{note}
 
-For Observability serverless projects, the **Admin** role or higher is required to create and manage annotations. To learn more, refer to [Assign user roles and privileges](../../../deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
+**For Observability Serverless projects**, the **Admin** role or higher is required to create and manage annotations. To learn more, refer to [Assign user roles and privileges](../../../deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
 
 ::::
 
-:::{image} ../../../images/observability-apm-transaction-annotation.png
+:::{image} /solutions/images/observability-apm-transaction-annotation.png
 :alt: Example view of transactions annotation in the Applications UI
-:class: screenshot
+:screenshot:
 :::
 
 For enhanced visibility into your deployments, we offer deployment annotations on all transaction charts. This feature enables you to easily determine if your deployment has increased response times for an end-user, or if the memory/CPU footprint of your application has changed. Being able to quickly identify bad deployments enables you to rollback and fix issues without causing costly outages.

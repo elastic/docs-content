@@ -12,32 +12,18 @@ mapped_pages:
 APM reader users typically need to view the Applications UI and dashboards and visualizations that use APM data. These users might also need to create and edit dashboards, visualizations, and machine learning jobs.
 
 
-## APM reader [apm-app-reader-full] 
+## APM reader [apm-app-reader-full]
 
 To create an APM reader user:
 
 1. Create a new role, named something like `read-apm`, and assign the following privileges:
 
-    <div class="tabs" data-tab-group="apm-app-reader">
-      <div role="tablist" aria-label="Applications UI reader">
-        <button role="tab"
-              aria-selected="true"
-              aria-controls="data-streams-tab"
-              id="data-streams">
-          Data streams
-        </button>
-        <button role="tab"
-                aria-selected="false"
-                aria-controls="classic-indices-tab"
-                id="classic-indices"
-                tabindex="-1">
-          Classic APM indices
-        </button>
-      </div>
-      <div tabindex="0"
-           role="tabpanel"
-           id="data-streams-tab"
-           aria-labelledby="data-streams">
+    ::::{tab-set}
+    :group: datastreams-classic
+
+    :::{tab-item} Data streams
+    :sync: datastreams
+
     | Type | Privilege | Purpose |
     | --- | --- | --- |
     | Index | `read` on `logs-apm*` | Read-only access to `logs-apm*` data |
@@ -47,19 +33,19 @@ To create an APM reader user:
     | Index | `read` on `traces-apm*` | Read-only access to `traces-apm*` data |
     | Index | `view_index_metadata` on `traces-apm*` | Read-only access to `traces-apm*` index metadata |
 
-      </div>
-      <div tabindex="0"
-           role="tabpanel"
-           id="classic-indices-tab"
-           aria-labelledby="classic-indices"
-           hidden="">
+    :::
+
+    :::{tab-item} Classic APM indices
+    :sync: classic
+
     | Type | Privilege | Purpose |
     | --- | --- | --- |
     | Index | `read` on `apm-*` | Read-only access to `apm-*` data |
     | Index | `view_index_metadata` on `apm-*` | Read-only access to `apm-*` index metadata |
 
-      </div>
-    </div>
+    :::
+
+    ::::
 
 2. Assign the `read-apm` role created in the previous step, and the following built-in roles to any APM reader users:
 
@@ -70,32 +56,18 @@ To create an APM reader user:
 
 
 
-## Partial APM reader [apm-app-reader-partial] 
+## Partial APM reader [apm-app-reader-partial]
 
 In some instances, you may wish to restrict certain Kibana apps that a user has access to.
 
 1. Create a new role, named something like `read-apm-partial`, and assign the following privileges:
 
-    <div class="tabs" data-tab-group="apm-app-reader">
-      <div role="tablist" aria-label="Applications UI reader">
-        <button role="tab"
-              aria-selected="true"
-              aria-controls="data-streams-tab"
-              id="data-streams">
-          Data streams
-        </button>
-        <button role="tab"
-                aria-selected="false"
-                aria-controls="classic-indices-tab"
-                id="classic-indices"
-                tabindex="-1">
-          Classic APM indices
-        </button>
-      </div>
-      <div tabindex="0"
-           role="tabpanel"
-           id="data-streams-tab"
-           aria-labelledby="data-streams">
+    ::::{tab-set}
+    :group: datastreams-classic
+
+    :::{tab-item} Data streams
+    :sync: datastreams
+
     | Type | Privilege | Purpose |
     | --- | --- | --- |
     | Index | `read` on `logs-apm*` | Read-only access to `logs-apm*` data |
@@ -105,19 +77,20 @@ In some instances, you may wish to restrict certain Kibana apps that a user has 
     | Index | `read` on `traces-apm*` | Read-only access to `traces-apm*` data |
     | Index | `view_index_metadata` on `traces-apm*` | Read-only access to `traces-apm*` index metadata |
 
-      </div>
-      <div tabindex="0"
-           role="tabpanel"
-           id="classic-indices-tab"
-           aria-labelledby="classic-indices"
-           hidden="">
+    :::
+
+    :::{tab-item} Classic APM indices
+    :sync: classic
+
     | Type | Privilege | Purpose |
     | --- | --- | --- |
     | Index | `read` on `apm-*` | Read-only access to `apm-*` data |
     | Index | `view_index_metadata` on `apm-*` | Read-only access to `apm-*` index metadata |
 
-      </div>
-    </div>
+    :::
+
+    ::::
+
 
 2. Assign feature privileges to any Kibana feature that the user needs access to. Here are two examples:
 

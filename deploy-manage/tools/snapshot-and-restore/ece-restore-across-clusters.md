@@ -1,4 +1,7 @@
 ---
+mapped_urls:
+  - https://www.elastic.co/guide/en/cloud/current/ec-restore-across-clusters.html
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-restore-across-clusters.html
 applies_to:
   deployment:
     ess: 

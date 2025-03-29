@@ -2,22 +2,23 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/cloud-posture-dashboard.html
   - https://www.elastic.co/guide/en/serverless/current/security-cloud-posture-dashboard-dash.html
+  - https://www.elastic.co/guide/en/serverless/current/security-cloud-posture-dashboard-dash-cspm.html
+  - https://www.elastic.co/guide/en/serverless/current/security-cloud-posture-dashboard-dash-kspm.html
+  - https://www.elastic.co/guide/en/security/current/cspm-posture-dashboard.html
+  - https://www.elastic.co/guide/en/security/current/cloud-nat-sec-posture-dashboard.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Cloud Security Posture dashboard
 
-% What needs to be done: Align serverless/stateful
+The Cloud Security Posture dashboard summarizes your cloud infrastructure’s overall performance against [security guidelines](/solutions/security/cloud/benchmarks.md) defined by the Center for Internet Security (CIS). To start collecting this data, refer to [Get started with Cloud Security Posture Management](/solutions/security/cloud/get-started-with-cspm-for-aws.md) or [Get started with Kubernetes Security Posture Management](/solutions/security/cloud/get-started-with-kspm.md).
 
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/security-docs/security/cloud-posture-dashboard.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/security-cloud-posture-dashboard-dash.md
-
-The Cloud Security Posture dashboard summarizes your cloud infrastructure’s overall performance against [security guidelines](/solutions/security/cloud/benchmarks-2.md) defined by the Center for Internet Security (CIS). To start collecting this data, refer to [Get started with Cloud Security Posture Management](/solutions/security/cloud/get-started-with-cspm-for-aws.md) or [Get started with Kubernetes Security Posture Management](/solutions/security/cloud/get-started-with-kspm.md).
-
-:::{image} ../../../images/security-cloud-sec-dashboard.png
+:::{image} /solutions/images/security-cloud-sec-dashboard.png
 :alt: The cloud Security dashboard
-:class: screenshot
+:screenshot:
 :::
 
 The Cloud Security Posture dashboard shows:
@@ -43,9 +44,9 @@ The remaining summary cards show your overall compliance score, and your complia
 
 Below the summary section, each row shows the CSP for a benchmark that applies to your monitored cloud resources. For example, if you are monitoring GCP and Azure cloud accounts, a row appears for CIS GCP and another appears for CIS Azure. Each row shows the CIS benchmark, the number of cloud accounts it applies to, its overall compliance score, and its compliance score grouped by CIS section.
 
-:::{image} ../../../images/security-cloud-sec-dashboard-individual-row.png
+:::{image} /solutions/images/security-cloud-sec-dashboard-individual-row.png
 :alt: A row representing a single cluster in the Cloud Security Posture dashboard
-:class: screenshot
+:screenshot:
 :::
 
 
