@@ -5,6 +5,8 @@ applies_to:
     eck: all
     ece: all
     ess: all
+mapped_pages:
+  - https://www.elastic.co/guide/en/elasticsearch/reference/current/manually-configure-security.html
 ---
 
 # Secure your cluster or deployment
@@ -25,6 +27,15 @@ You must secure [other {{stack}} components](/deploy-manage/security/secure-clie
 
 You can configure the following aspects of your Elastic cluster or deployment to maintain and enhance security:
 
+## Enable and set up security [manually-configure-security]
+```{applies_to}
+deployment:
+  self: all
+```
+
+:::{include} /deploy-manage/security/_snippets/enable-security.md
+:::
+ 
 ## Communication and network security
 
 :::{include} /deploy-manage/security/_snippets/cluster-communication-network.md
@@ -44,10 +55,6 @@ You can configure the following aspects of your Elastic cluster or deployment to
 
 :::{include} /deploy-manage/security/_snippets/audit-logging.md
 :::
-
-## Configure security in a self-managed cluster
-
-Since {{es}} 8.0, security is enabled and configured by default. However, security auto configuration [might be skipped](/deploy-manage/security/manually-configure-security-in-self-managed-cluster.md#stack-skip-auto-configuration) in certain scenarios. In these cases, you can [manually configure security](/deploy-manage/security/manually-configure-security-in-self-managed-cluster.md).
 
 ## FIPS 140-2 compliant mode
 ```{applies_to}

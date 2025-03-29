@@ -516,7 +516,7 @@ Now that the security is configured for the first {{es}} node, some steps need t
 
 ## Step 5: Generate server-side and client-side certificates for {{kib}} [install-stack-demo-secure-kib-es]
 
-Now that the transport and HTTP layers are configured with encryption using the new certificates, there are two more tasks that must be accomplished for end-to-end connectivity to {{es}}: Set up certificates for encryption between {{kib}} and {{es}}, and between the client browser and {{kib}}. For additional details about any of these steps, refer to [Mutual TLS authentication between {{kib}} and {{es}}](secure-cluster-communications.md) and [Encrypt traffic between your browser and {{kib}}](set-up-basic-security-plus-https.md#encrypt-kibana-browser).
+Now that the transport and HTTP layers are configured with encryption using the new certificates, there are two more tasks that must be accomplished for end-to-end connectivity to {{es}}: Set up certificates for encryption between {{kib}} and {{es}}, and between the client browser and {{kib}}. For additional details about any of these steps, refer to [Mutual TLS authentication between {{kib}} and {{es}}](./kibana-es-mutual-tls.md) and [Encrypt traffic between your browser and {{kib}}](set-up-basic-security-plus-https.md#encrypt-kibana-browser).
 
 1. In Step 3, when you generated a new certificate for the HTTP layer, the process created an archive `elasticsearch-ssl-http.zip`.
 

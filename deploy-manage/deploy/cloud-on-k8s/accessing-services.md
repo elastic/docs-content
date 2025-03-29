@@ -22,7 +22,7 @@ This section explains how to access and customize the Kubernetes services and se
 
 For advanced use cases related to exposing and accessing orchestrated applications, see:
 
-* [](/deploy-manage/security/secure-http-communications.md): Configuration options for the HTTP SSL certificates, including integration with certificate management systems such as [cert-manager](https://cert-manager.io/).
+* [](/deploy-manage/security/secure-cluster-communications.md): Configuration options for the HTTP SSL certificates, including integration with certificate management systems such as [cert-manager](https://cert-manager.io/).
 * [](./service-meshes.md): Connect ECK and your managed deployments to service mesh implementations such as [Istio](https://istio.io) and [Linkerd](https://linkerd.io).
 * [](./requests-routing-to-elasticsearch-nodes.md): Create custom services to expose different node types.
 * [Use Ingress to expose {{es}} or {{kib}}](./managing-deployments-using-helm-chart.md#k8s-eck-stack-ingress): Helm based installation also facilitates the creation of Ingress resources.

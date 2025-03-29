@@ -77,6 +77,11 @@ deployment:
 
 You can configure the following aspects of your Elastic cluster or deployment to maintain and enhance security:
 
+### Enable and set up security
+
+:::{include} /deploy-manage/security/_snippets/enable-security.md
+:::
+
 ### Communication and network security
 
 :::{include} /deploy-manage/security/_snippets/cluster-communication-network.md
