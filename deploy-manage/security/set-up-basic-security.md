@@ -14,7 +14,7 @@ mapped_pages:
 If your cluster has multiple nodes, then you must configure TLS between {{es}} nodes. [Production mode](../deploy/self-managed/bootstrap-checks.md#dev-vs-prod-mode) clusters will not start if you do not enable TLS. This document focuses on the manual generation and configuration of the TLS certificates for the transport protocol in multi-node self-managed clusters.
 
 ::::{note}
-For other deployment types, such as {{ech}}, {{ece}}, or {{eck}}, refer to [Manage TLS overview](./secure-cluster-communications.md).
+For other deployment types, such as {{ech}}, {{ece}}, or {{eck}}, refer to [](./secure-cluster-communications.md).
 ::::
 
 When you start {{es}} for the first time, passwords are generated for the `elastic` user and TLS is [automatically configured](./self-auto-setup.md) for you. If you configure security [manually](./self-setup.md#manual-configuration) before starting your {{es}} nodes, the auto-configuration process will respect your security configuration. You can adjust your TLS configuration at any time, such as [updating node certificates](updating-certificates.md).

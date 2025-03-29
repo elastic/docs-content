@@ -56,7 +56,7 @@ To communicate with your cluster, you must configure a password for the `elastic
     ```
 
     ::::{note}
-    If you are following this procedure for a multi-node cluster, you will have to setup [transport TLS certificates](./set-up-basic-security.md) in your nodes before being able to start the nodes.
+    If you are following this procedure for a multi-node cluster, you will have to set up [transport TLS certificates](./set-up-basic-security.md) in your nodes before being able to start the nodes.
     ::::
 
 2. On any node in your cluster, open another terminal window and set the password for the `elastic` built-in user by running the [`elasticsearch-reset-password`](elasticsearch://reference/elasticsearch/command-line-tools/reset-password.md) utility. This command resets the password to an auto-generated value.

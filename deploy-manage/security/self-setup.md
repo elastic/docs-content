@@ -9,7 +9,7 @@ mapped_pages:
 
 # Set up security in self-managed deployments
 
-There are two approaches to configuring security in self-managed deployments of the Elastic Stack:
+There are two approaches to configuring security in self-managed deployments of the {{stack}}:
 
 ## Automatic configuration [automatic-configuration]
 
@@ -18,8 +18,8 @@ Since version 8.0, {{es}} automatically enables security features on first start
 The automatic configuration::
 
 * Generates TLS certificates for the transport and HTTP layers
-* Applies security settings to elasticsearch.yml
-* Sets a password for the elastic superuser
+* Applies security settings to `elasticsearch.yml`
+* Sets a password for the `elastic` superuser
 * Creates an enrollment token to securely connect {{kib}} to {{es}}
 
 This automatic setup is the quickest way to get started and ensures your cluster is protected by default.
