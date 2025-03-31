@@ -20,7 +20,7 @@ Periodically, you might need to upgrade an Elastic Cloud Enterprise installation
 Before initiating the ECE upgrade process, review the [Support matrix](https://www.elastic.co/support/matrix#elastic-cloud-enterprise) to ensure the operating system (OS), Docker, or Podman versions you're running are compatible with the ECE version you’re upgrading to. We recommend that Docker, Podman, and the operating system are at the target version before starting the ECE upgrade.
 
 :::{note}
-During the upgrade window, there might be a short period of time during which you run a combination of versions which is not explicitly supported. For example, if you are on ECE 3.5 with Docker version 20.10 on Ubuntu 20.04, and plan to upgrade to ECE 3.7 on the same OS, you will need to upgrade Docker to version 24.0 first. In this case, and only during your upgrade window, we support the mixed OS/Docker versions. In general, this won’t be a problem. However, should anything become a blocker for the upgrade, [reach out to support for help](/troubleshoot/index.md#contact-us).
+During the upgrade window, there might be a short period of time during which you run a combination of versions which is not explicitly supported. For example, if you are on ECE 3.5 with Docker version 20.10 on Ubuntu 20.04, and plan to upgrade to ECE 3.7 on the same OS, you will need to upgrade Docker to version 24.0 first. In this case, and only during your upgrade window, we support the mixed OS and container engine versions. In general, this won’t be a problem. However, should anything become a blocker for the upgrade, [reach out to support for help](/troubleshoot/index.md#contact-us).
 :::
 
 ## The upgrade version matrix [ece-upgrade-version-matrix]
@@ -37,7 +37,12 @@ The following table shows the recommended upgrade paths from older Elastic Cloud
 If you have to upgrade to any of the intermediate versions, follow the upgrade instructions of the relevant release before upgrading to 4.0.0:
 - [ECE 2.5 Upgrade](https://www.elastic.co/guide/en/cloud-enterprise/2.5/ece-upgrade.html)
 - [ECE 2.13 Upgrade](https://www.elastic.co/guide/en/cloud-enterprise/2.13/ece-upgrade.html)
-- [ECE 3.8 Upgrade](https://www.elastic.co/guide/en/cloud-enterprise/3.7/ece-upgrade.html)
+  
+  :::{note}
+  Upgrading to 2.13.0 is not recommended as it can cause issues and you may lose access to the admin console. We strongly recommend to upgrade to 2.13.4.
+  :::
+
+- [ECE 3.8 Upgrade](https://www.elastic.co/guide/en/cloud-enterprise/3.8/ece-upgrade.html)
 
 ## The upgrade process [ece-upgrade-overview]
 
