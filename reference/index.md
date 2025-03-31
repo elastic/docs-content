@@ -1,6 +1,6 @@
 ---
 mapped_pages:
-  • https://www.elastic.co/guide/en/starting-with-the-elasticsearch-platform-and-its-solutions/current/api-reference.html
+  - https://www.elastic.co/guide/en/starting-with-the-elasticsearch-platform-and-its-solutions/current/api-reference.html
 ---
 
 # Reference [api-reference]
