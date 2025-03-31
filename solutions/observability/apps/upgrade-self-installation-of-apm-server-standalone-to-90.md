@@ -19,7 +19,7 @@ This upgrade guide is for the standalone method of running APM Server. Only use 
 
 1. Prior to upgrading to version 9.0, {{es}}, {{kib}}, and APM Server must be upgraded to version 8.18.
 
-    * To upgrade {{es}} and {{kib}}, see the [{{stack}} Installation and Upgrade Guide](https://www.elastic.co/guide/en/elastic-stack/8.18/upgrading-elastic-stack.html)
+    * To upgrade {{es}} and {{kib}}, refer to the [{{stack}} Installation and Upgrade Guide](https://www.elastic.co/guide/en/elastic-stack/8.18/upgrading-elastic-stack.html)
     * To upgrade APM Server to version 8.18, refer to [upgrade to version 8.18](https://www.elastic.co/guide/en/observability/8.18/apm-upgrading-to-8.x.html).
 
 2. Review the [Elastic APM release notes](apm-server://release-notes/index.md) and [Elastic {{observability}} release notes](/release-notes/elastic-observability/index.md).
