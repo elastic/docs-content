@@ -55,7 +55,7 @@ EDOT includes many types of instrumentation. The following table shows the statu
 
 ## Getting started
 
-Check these instructions on how to setup and collect OpenTelemetry data for your LLM applications [create a link to https://github.com/elastic/opentelemetry/pull/100/files#diff-965570d21670c0ee4bba4b303960e5fe83b285f66b001ff8f31f0413f65a9d47 once the content is finalized and merged]
+Check [these instructions](https://github.com/elastic/opentelemetry/blob/main/docs/use-cases/llm/index.md) on how to setup and collect OpenTelemetry data for your LLM applications. 
 
 ## Use cases
 
