@@ -31,15 +31,15 @@ This upgrade guide is for the standalone method of running APM Server. Only use 
 
 1. **Upgrade the {{stack}} to version 9.0**
 
-    The {{stack}} ({{es}} and {{kib}}) must be upgraded before APM Server. See the [{{stack}} Installation and Upgrade Guide](../../../deploy-manage/upgrade/deployment-or-cluster.md) for guidance.
+    The {{stack}} ({{es}} and {{kib}}) must be upgraded before APM Server. Refer to the [{{stack}} Installation and Upgrade Guide](../../../deploy-manage/upgrade/deployment-or-cluster.md) for guidance.
 
 2. **Install the 9.0 APM Server release**
 
-    See [install](apm-server-binary.md#apm-installing) to find the command that works with your system.
+    Refer to [install](apm-server-binary.md#apm-installing) to find the command that works with your system.
 
 3. **Review your configuration file**
 
-    Some settings have been removed or changed. You may need to update your `apm-server.yml` configuration file prior to starting the APM Server. See [Installation layout](installation-layout.md) for help in locating this file, and [Configure APM Server](configure-apm-server.md) for a list of all available configuration options.
+    Some settings have been removed or changed. You may need to update your `apm-server.yml` configuration file prior to starting the APM Server. Refer to [Installation layout](installation-layout.md) for help in locating this file, and [Configure APM Server](configure-apm-server.md) for a list of all available configuration options.
 
 4. **Start the APM Server**
 
@@ -55,4 +55,4 @@ This upgrade guide is for the standalone method of running APM Server. Only use 
 
 6. **(Optional) Upgrade to the APM integration**
 
-    Got time for one more upgrade? See [Switch to the Elastic APM integration](switch-to-elastic-apm-integration.md).
+    Got time for one more upgrade? Refer to [Switch to the Elastic APM integration](switch-to-elastic-apm-integration.md).
