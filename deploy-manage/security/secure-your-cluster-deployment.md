@@ -28,10 +28,6 @@ You must secure [other {{stack}} components](/deploy-manage/security/secure-clie
 You can configure the following aspects of your Elastic cluster or deployment to maintain and enhance security:
 
 ## Enable and set up security [manually-configure-security]
-```{applies_to}
-deployment:
-  self: all
-```
 
 :::{include} /deploy-manage/security/_snippets/enable-security.md
 :::
