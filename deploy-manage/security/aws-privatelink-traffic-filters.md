@@ -112,7 +112,7 @@ $ aws ec2 describe-availability-zones --region us-east-1 | jq -c '.AvailabilityZ
 {"id":"use1-az6","name":"us-east-1b"}
 ```
 
-The mapping will be different for your region. Our production VPC Service for `us-east-1` is located in `use1-az2`, `use1-az4`, `use1-az6`. We need to create the VPC Endpoint for the preceding mapping in at least one of `us-east-1a`, `us-east-1d`, `us-east-1b`.
+The mapping will be different for your region. Our production VPC Service for `us-east-1` is located in `use1-az2`, `use1-az4`, `use1-az6`. We need to create the VPC Endpoint for the preceding mapping in at least one of `us-east-1e`, `us-east-1a`, `us-east-1b`.
 
 
 ## Create your VPC endpoint and DNS entries in AWS [ec-aws-vpc-dns]
