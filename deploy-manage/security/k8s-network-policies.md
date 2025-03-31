@@ -15,6 +15,10 @@ This section describes how to use network policies to isolate the ECK operator a
 
 Note that network policies alone are not sufficient for security. You should complement them with strict RBAC policies, resource quotas, node taints, and other available security mechanisms to ensure that tenants cannot access, modify, or disrupt resources belonging to each other.
 
+:::{tip}
+{{eck}} also supports [IP traffic filtering](/deploy-manage/security/ip-filtering-basic.md).
+:::
+
 ::::{note} 
 There are several efforts to support multi-tenancy on Kubernetes, including the [official working group for multi-tenancy](https://github.com/kubernetes-sigs/multi-tenancy) and community extensions such as [loft](https://loft.sh) and [kiosk](https://github.com/kiosk-sh/kiosk), that can make configuration and management easier. You might need to employ network policies such the ones described in this section to have fine-grained control over {{stack}} applications deployed by your tenants.
 ::::

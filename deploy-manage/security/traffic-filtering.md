@@ -33,8 +33,7 @@ You can also allow traffic to or from a [remote cluster](/deploy-manage/remote-c
 | [Private link filters](/deploy-manage/security/private-link-traffic-filters.md) | Allow traffic between {{es}} and other resources hosted by the same cloud provider using private link services. Choose the relevant option for your region:<br><br>• AWS regions: [AWS PrivateLink](/deploy-manage/security/aws-privatelink-traffic-filters.md)<br><br>• Azure regions: [Azure Private Link](/deploy-manage/security/azure-private-link-traffic-filters.md)<br><br>• GCP regions: [GCP Private Service Connect](/deploy-manage/security/gcp-private-service-connect-traffic-filters.md) | {{ech}} only |
 | [Kubernetes network policies](/deploy-manage/security/k8s-network-policies.md) | Isolate pods by restricting incoming and outgoing network connections to a trusted set of sources and destinations. | {{eck}} only | 
 
-:::{tip}
-Elastic recommends that you use Kubernetes network policies over IP traffic filters for {{eck}}. This is because, in containerized environments like Kubernetes, IP addresses are usually dynamic, making network policies a more robust option.
+:::{include} _snippets/eck-traffic-filtering.md
 :::
 
 

@@ -18,6 +18,8 @@ If a node’s IP address is on the denylist, the {{es}} {{security-features}} al
 {{es}} installations are not designed to be publicly accessible over the Internet. IP filtering and the other capabilities of the {{es}} {{security-features}} do not change this condition.
 :::
 
+:::{include} _snippets/eck-traffic-filtering.md
+:::
 
 ## Enable IP filtering
 

@@ -17,3 +17,7 @@ Choose the relevant option for your cloud service provider:
 | GCP | [GCP Private Service Connect](/deploy-manage/security/gcp-private-service-connect-traffic-filters.md) |
 
 After you set up your private link, you can [claim ownership of your filter link ID](/deploy-manage/security/claim-traffic-filter-link-id-ownership-through-api.md) to prevent other organizations from using it in a traffic filter ruleset.
+
+:::{tip}
+{{ech}} also supports [IP traffic filters](/deploy-manage/security/ip-filtering-cloud.md).
+:::
