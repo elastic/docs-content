@@ -13,23 +13,14 @@ Elastic’s end-to-end LLM observability is delivered through the following meth
 
 ## Metrics and logs ingestion for LLM APIs (via Elastic integrations)
 
-Elastic’s LLM integrations now support the most widely adopted models, including OpenAI, Azure OpenAI, and a diverse range of models hosted on Amazon Bedrock and Google Vertex AI:
+Elastic’s LLM integrations now support the most widely adopted models, including OpenAI, Azure OpenAI, and a diverse range of models hosted on Amazon Bedrock and Google Vertex AI. Depending on the LLM provider you choose, the following table shows which source you can use and which type of data -- log or metrics -- you can collect.
 
-- [Amazon Bedrock](https://www.elastic.co/guide/en/integrations/current/aws_bedrock.html)
-- [Azure OpenAI](https://www.elastic.co/guide/en/integrations/current/azure_openai.html)
-- [GCP Vertex AI](https://www.elastic.co/guide/en/integrations/current/gcp_vertexai.html)
-- [OpenAI](https://www.elastic.co/guide/en/integrations/current/openai.html)
-
-Depending on the LLM provider you choose, the following table shows which source you can use and which type of data -- log or metrics -- you can collect.
-
-| **LLM Provider**  | **Source**  | **Metrics** | **Logs** | **Notes** |
+| **LLM Provider**  | **Source**  | **Metrics** | **Logs** | 
 |--------|------------|------------|
-| [AWS Bedrock][int-bedrock]| [AWS CloudWatch Logs][impl-bedrock] | ✅ | ✅ |  GA |
-| [Azure OpenAI][int-azure]| [Azure Monitor and Event Hubs][impl-azure] | ✅ | ✅ | GA |
-| [GCP Vertex AI][int-vertexai] | [GCP Cloud Monitoring][impl-vertexai]      | ✅ | 🚧 | GA, we are not able to collect meaningful information for request/response from logs due to dynamic generation, GCP are aware of this issue, not ETA yet |
-| [OpenAI][int-openai]| [OpenAI Usage API][openai-usage] | ✅| 🚧 | GA, cannot collect prompt/response logs until OpenAI provides support. |
-| [OpenTelemetry][int-wip-otel] | OTLP | 🚧 | 🚧 | This would support Elastic extensions of otel's GenAI semantic conventions |
-
+| [Amazon Bedrock](https://www.elastic.co/guide/en/integrations/current/aws_bedrock.html)| [AWS CloudWatch Logs][impl-bedrock] | ✅ | ✅ |  
+| [Azure OpenAI](https://www.elastic.co/guide/en/integrations/current/azure_openai.html)| [Azure Monitor and Event Hubs][impl-azure] | ✅ | ✅ | 
+| [GCP Vertex AI](https://www.elastic.co/guide/en/integrations/current/gcp_vertexai.html) | [GCP Cloud Monitoring][impl-vertexai]      | ✅ | 🚧 | 
+| [OpenAI](https://www.elastic.co/guide/en/integrations/current/openai.html) | [OpenAI Usage API][openai-usage] | ✅| 🚧 | 
 
 ## APM tracing for LLM models (via instrumentation)
 
@@ -43,15 +34,13 @@ You can instrument the application with one of the following Elastic Distributio
 
 EDOT includes many types of instrumentation. The following table shows the status of instrumentation relevant to GenAI on a per-language basis:
 
-
-| **SDK**  | **Language** | **Instrumented Dependency** | **Traces** | **Metrics** | **Logs** | Status | **Notes** | 
+| **SDK**  | **Language** | **Instrumented Dependency** | **Traces** | **Metrics** | **Logs** | 
 |-------|-----|----|-----|------|------|-----|------|
-| OpenAI | Python | [openai][edot-openai-py]| ✅ | ✅ | ✅ | ✅ | Tested on OpenAI, Azure and Ollama |
-| OpenAI| JS/Node | [openai][edot-openai-js] | ✅  | ✅ | ✅ | ✅ | Tested on OpenAI, Azure and Ollama|
-| OpenAI| Java| [com.openai:openai-java][edot-openai-java] | ✅ | ✅ | ✅| ✅| Tested on OpenAI, Azure and Ollama|
-| (AWS) Boto| Python| [botocore][otel-bedrock-py]| ✅ | ✅ | ✅ | ✅ | Bedrock (not SageMaker) `InvokeModel*` and `Converse*` APIs Owner: Riccardo |
-| Google Cloud AI Platform | Python | [google-cloud-aiplatform][otel-vertexai-py] | ✅ | 🚧| 🚧| 🚧 |  |
-| Langchain| JS/Node| [@langchain/core][wip-edot-langchain-js] | ✅ | 🚧| 🚧 | 🔒| Tested on OpenAI; Not yet finished |
+| OpenAI | Python | [openai](https://github.com/elastic/elastic-otel-python-instrumentations/tree/main/instrumentation/elastic-opentelemetry-instrumentation-openai)| ✅ | ✅ | ✅ | 
+| OpenAI| JS/Node | [openai](https://github.com/elastic/elastic-otel-node/tree/main/packages/instrumentation-openai) | ✅  | ✅ | ✅ | 
+| OpenAI| Java| [com.openai:openai-java](https://github.com/elastic/elastic-otel-java/tree/main/instrumentation/openai-client-instrumentation) | ✅ | ✅ | ✅| 
+| (AWS) Boto| Python| [botocore](https://github.com/open-telemetry/opentelemetry-python-contrib/blob/main/instrumentation/opentelemetry-instrumentation-botocore/src/opentelemetry/instrumentation/botocore/extensions/bedrock.py)| ✅ | ✅ | ✅ | 
+| Google Vertex AI | Python | [google-cloud-aiplatform](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation-genai/opentelemetry-instrumentation-vertexai) | ✅ | 🚧| 🚧| 
 
 ## Getting started
 
