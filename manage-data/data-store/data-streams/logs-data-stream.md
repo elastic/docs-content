@@ -181,4 +181,4 @@ The `logsdb` index mode uses the following settings:
 
 ## Notes about upgrading to Logsdb [upgrade-to-logsdb-notes]
 
-Starting with version `9.0`, `logsdb` index mode is automatically applied to data streams with names matching pattern `logs-*-*`. This is limited to Elasticsearch instances created in version `9.0` or later, as well as older instances that had no data streams matching pattern `logs-*-*`. In the latter case, `logsdb` index mode can still be configured manually, using the steps described [above](#how-to-use-logsds).
+Starting with version `9.0`, `logsdb` index mode is automatically applied to data streams with names matching the pattern `logs-*-*`. This default applies to Elasticsearch instances created in version `9.0` or later, as well as older instances that had no data streams matching the pattern `logs-*-*`. For the latter, you can still [configure `logsdb` index mode manually](#how-to-use-logsds).
