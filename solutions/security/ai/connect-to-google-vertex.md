@@ -32,6 +32,8 @@ Before continuing, you should have an active project in one of Google Vertex AIâ
 
 The following video demonstrates these steps.
 
+[![azure-openai-configure-model-video](https://play.vidyard.com/vFhtbiCZiKhvdZGy2FjyeT.jpg)](https://videos.elastic.co/watch/vFhtbiCZiKhvdZGy2FjyeT)
+
 ::::{admonition}
 <script type="text/javascript" async src="https://play.vidyard.com/embed/v4.js"></script>
 <img
