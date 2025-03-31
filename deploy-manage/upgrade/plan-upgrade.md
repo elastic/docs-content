@@ -12,9 +12,9 @@ Ensure the version you’re upgrading to for {{es}}, {{kib}}, and any ingest com
 
 ### OpenJDK compatibility and FIPS compliance
 
-By default, {{es}} is built using Java and includes a bundled version of [OpenJDK](https://openjdk.java.net/) within each distribution. While we strongly recommend using the bundled Java Virtual Machine (JVM) in all installations of {{es}}, if you choose to use your own JVM, ensure it’s compatible by reviewing the [Product and JVM support matrix](https://www.elastic.co/support/matrix#matrix_jvm). {{es}} 9.0 requires Java 21 and supports Java 24. 
+By default, {{es}} is built using Java and includes a bundled version of [OpenJDK](https://openjdk.java.net/) within each distribution. While we strongly recommend using the bundled Java Virtual Machine (JVM) in all installations of {{es}}, if you choose to use your own JVM, ensure it’s compatible by reviewing the [Product and JVM support matrix](https://www.elastic.co/support/matrix#matrix_jvm). 
 
-If you’re running {{es}} in FIPS 140-2 mode, {{es}} 9.0 has been tested with [Bouncy Castle's](https://www.bouncycastle.org/java.html) FIPS implementation and is the recommended Java security provider when running {{es}}. 
+If you’re running {{es}} in FIPS 140-2 mode, we recommend using  [Bouncy Castle](https://www.bouncycastle.org/java.html) as a Java security provider when running {{es}}. 
 
 ## Conduct a component inventory
 

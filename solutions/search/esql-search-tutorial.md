@@ -10,7 +10,7 @@ This tutorial presents examples in {{esql}} syntax. Refer to [the Query DSL vers
 
 This is a hands-on introduction to the basics of full-text search and semantic search, using [{{esql}}](/explore-analyze/query-filter/languages/esql.md).
 
-% TODO For an overview of all the search capabilities in {{esql}}, refer to [Search with {{esql}}](elasticsearch://reference/query-languages/esql/esql-for-search.md).
+For an overview of all the search capabilities in {{esql}}, refer to [Using {{esql}} for search](/solutions/search/esql-for-search.md).
 
 In this scenario, we're implementing search for a cooking blog. The blog contains recipes with various attributes including textual content, categorical data, and numerical ratings.
 
@@ -378,7 +378,7 @@ FROM cooking_blog METADATA _score
 
 This tutorial introduced the basics of search and filtering in {{esql}}. Building a real-world search experience requires understanding many more advanced concepts and techniques. Here are some resources once you're ready to dive deeper:
 
-% TODO [Search with {{esql}}](): Learn about all your options for search use cases with {{esql}}.
+- [Search with {{esql}}](esql-for-search.md): Learn about all your options for search use cases with {{esql}}.
 - [{{esql}} search functions](elasticsearch://reference/query-languages/esql/esql-functions-operators.md#esql-search-functions): Explore the full list of search functions available in {{esql}}.
 - [Semantic search](/solutions/search/semantic-search.md): Understand your various options for semantic search in Elasticsearch.
   - [The `semantic_text` workflow](/solutions/search/semantic-search.md#_semantic_text_workflow): Learn how to use the `semantic_text` field type for semantic search. This is the recommended approach for most users looking to perform semantic search in {{es}}, because it abstracts away the complexity of setting up inference endpoints and models.
