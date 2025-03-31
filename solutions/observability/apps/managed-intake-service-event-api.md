@@ -15,7 +15,6 @@ The managed intake service exposes endpoints for:
 
 * [The managed intake service information API](#observability-apm-server-api-server-information-api)
 * [Elastic APM events intake API](#observability-apm-server-api-events-intake-api)
-* [OpenTelemetry intake API](#observability-apm-server-api-opentelemetry-api)
 
 
 ## Server information API [observability-apm-server-api-server-information-api]
