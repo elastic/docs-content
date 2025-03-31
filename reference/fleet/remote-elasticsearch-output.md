@@ -83,6 +83,7 @@ Remote clusters require access to the [{{package-registry}}](/reference/fleet/in
     2. Refer to [Remote clusters](https://www.elastic.co/guide/en/elasticsearch/reference/current/remote-clusters.html) to add your main cluster (where the remote {{es}} output is configured) as a remote cluster.
     3. Go to **Stack Management > Cross-Cluster Replication**.
     4. Create a follower index named `fleet-synced-integrations-ccr-<output name>` that replicates the `fleet-synced-integrations` leader index on the main cluster.
+    5. Resume replication once the follower index is created.
 
 2. In the main cluster, in the **Remote Kibana URL** field, add the Kibana URL of the remote cluster.
 
@@ -92,4 +93,4 @@ Remote clusters require access to the [{{package-registry}}](/reference/fleet/in
     2. In the remote cluster, open the {{kib}} menu and go to **Management > Dev Tools**.
     3. Run the API request.
     4. Copy the encoded value of the generated API key.
-    5. Back in the main cluster, paste the value you copied into the output **Remote Kibana API Key** field.
+    5. Back in the main cluster, paste the value you copied into the **Remote Kibana API Key** field.
