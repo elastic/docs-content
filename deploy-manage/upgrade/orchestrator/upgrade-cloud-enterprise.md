@@ -2,15 +2,22 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-upgrade.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece_re_running_the_ece_upgrade.html
+applies_to:
+  deployment:
+    ece:  
 ---
 
 % The upgrade procedure is expected to change with ECE 3.8.0 release. This document is currently a temporary draft, pending to be refined.
 
 # Upgrade Elastic Cloud Enterprise [ece-upgrade]
 
-Periodically, you might need to upgrade an Elastic Cloud Enterprise installation as new versions with additional features become available. The upgrade process updates all hosts that are part of an Elastic Cloud Enterprise installation to the latest version of ECE, with little or no downtime for managed deployments. To upgrade deployments to Elastic Stack 9.x, the minimum required version of ECE is 3.0.0.  
+This page provides instructions on how to upgrade the ECE operator.
 
-Before initiating the ECE upgrade process, consult the [Support matrix](https://www.elastic.co/support/matrix#elastic-cloud-enterprise) to make sure that the Operating System (OS) and Docker or Podman versions you run are compatible with the ECE version you’re about to upgrade to. We recommend that Docker, Podman, and the operating system be at the target version before starting the ECE upgrade procedure.
+To learn how to upgrade {{stack}} applications like {{es}} or {{kib}}, refer to [Upgrade the Elastic Stack version](../deployment-or-cluster.md).
+
+Periodically, you might need to upgrade an Elastic Cloud Enterprise installation as new versions with additional features become available. The upgrade process updates all hosts that are part of an Elastic Cloud Enterprise installation to the latest version of ECE, with little or no downtime for managed deployments. To upgrade your deployment to {{stack}} 9.x, the minimum required ECE version is 3.0.0.  
+
+Before initiating the ECE upgrade process, review the [Support matrix](https://www.elastic.co/support/matrix#elastic-cloud-enterprise) to ensure the operating system (OS), Docker, or Podman versions you're running are compatible with the ECE version you’re upgrading to. We recommend that Docker, Podman, and the operating system are at the target version before starting the ECE upgrade.
 
 :::{note}
 During the upgrade window, there might be a short period of time during which you run a combination of versions which is not explicitly supported. For example, if you are on ECE 3.5 with Docker version 20.10 on Ubuntu 20.04, and plan to upgrade to ECE 3.7 on the same OS, you will need to upgrade Docker to version 24.0 first. In this case, and only during your upgrade window, we support the mixed OS/Docker versions. In general, this won’t be a problem. However, should anything become a blocker for the upgrade, [reach out to support for help](/troubleshoot/index.md#contact-us).
@@ -27,14 +34,14 @@ The following table shows the recommended upgrade paths from older Elastic Cloud
 | 2.5-2.12 | 1. Upgrade to 2.13.4<br>2. Upgrade to 3.8.0<br>3. Upgrade to 4.0.0<br> |
 | 2.0-2.4 | 1. Upgrade to 2.5.1<br>2. Upgrade to 2.13.4<br>3. Upgrade to 3.8.0<br>4. Upgrade to 4.0.0<br> |
 
-In case you have to upgrade to any of the intermediate versions, follow the upgrade instructions of the relevant release before upgrading to 4.0.0:
+If you have to upgrade to any of the intermediate versions, follow the upgrade instructions of the relevant release before upgrading to 4.0.0:
 - [ECE 2.5 Upgrade](https://www.elastic.co/guide/en/cloud-enterprise/2.5/ece-upgrade.html)
 - [ECE 2.13 Upgrade](https://www.elastic.co/guide/en/cloud-enterprise/2.13/ece-upgrade.html)
 - [ECE 3.8 Upgrade](https://www.elastic.co/guide/en/cloud-enterprise/3.7/ece-upgrade.html)
 
 ## The upgrade process [ece-upgrade-overview]
 
-Upgrading Elastic Cloud Enterprise works by replacing the [containers](/reference/glossary/index.md#glossary-container) that ECE itself requires to run on each host. Upgrading ECE does not touch any of the containers that run Elasticsearch clusters and Kibana instances. Each container that needs to be upgraded is renamed and stopped, followed by the creation of a new container with an upgraded instance of the ECE software and its dependencies. When the upgrade process has completed successfully, it cleans up after itself and removes the old containers.
+Upgrading Elastic Cloud Enterprise works by replacing the [containers](/reference/glossary/index.md#glossary-container) that ECE itself requires to run on each host. Upgrading ECE does not touch any of the containers that run {{es}} clusters and {{kib}} instances. Each container that needs to be upgraded is renamed and stopped, followed by the creation of a new container with an upgraded instance of the ECE software and its dependencies. When the upgrade process has completed successfully, it cleans up after itself and removes the old containers.
 
 The upgrade process creates a `frc-upgraders-monitor` container on the host where you initiate the process that performs the following actions:
 
