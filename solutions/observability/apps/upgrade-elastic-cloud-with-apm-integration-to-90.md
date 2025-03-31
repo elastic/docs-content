@@ -18,7 +18,7 @@ Follow these steps to upgrade:
 
 1. Review the [Elastic APM release notes](apm-server://release-notes/index.md) and [Elastic {{observability}} release notes](/release-notes/elastic-observability/release-notes.md).
 2. Review the [Elastic APM breaking changes](apm-server://release-notes/breaking-changes.md).
-3. Upgrade your {{ecloud}} instance to 9.0. See [Upgrade versions](../../../deploy-manage/upgrade/deployment-or-cluster.md) for details. The APM integration will automatically be upgraded to version 9.0 as a part of this process.
+3. Upgrade your {{ecloud}} instance to 9.0. Refer to [Upgrade your deployment](../../../deploy-manage/upgrade/deployment-or-cluster.md) for details. As a part of this process, the APM integration will automatically upgrade to version 9.0.
 
 ::::{note}
 {{ece}} users require additional TLS setup. See [Add APM user settings](https://www.elastic.co/guide/en/cloud-enterprise/current/ece-manage-apm-settings.html) for more information.
