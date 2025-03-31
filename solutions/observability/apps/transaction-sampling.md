@@ -108,13 +108,6 @@ In this example, `Service A` initiates four transactions. If our sample rate is 
 :alt: Distributed tracing and tail based sampling example one
 :::
 
-
-### OpenTelemetry with tail-based sampling [_opentelemetry_with_tail_based_sampling]
-
-Tail-based sampling is implemented entirely in APM Server, and will work with traces sent by either Elastic APM agents or OpenTelemetry SDKs.
-
-Due to [OpenTelemetry tail-based sampling limitations](../../../solutions/observability/apps/limitations.md#apm-open-telemetry-tbs) when using [tailsamplingprocessor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/tailsamplingprocessor), we recommend using APM Server tail-based sampling instead.
-
 ### Tail-based sampling performance and requirements [_tail_based_sampling_performance_and_requirements]
 
 Tail-based sampling (TBS), by definition, requires storing events locally temporarily, such that they can be retrieved and forwarded when a sampling decision is made.
