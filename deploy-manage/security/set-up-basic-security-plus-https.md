@@ -1,5 +1,5 @@
 ---
-navigation_title: "Set up HTTP TLS"
+navigation_title: "Set up HTTPS"
 applies_to:
   deployment:
     self: ga
@@ -9,11 +9,11 @@ mapped_pages:
 
 % Scope: HTTP certificates setup / manual configuration / multi or single node cluster
 % original title: Set up basic security for the Elastic Stack plus secured HTTPS traffic
-# Set up HTTP TLS [security-basic-setup-https]
+# Set up HTTPS [security-basic-setup-https]
 
-Enabling TLS on the HTTP layer ensures that all client communications with your cluster are encrypted, adding a critical layer of security.
+Enabling TLS on the HTTP layer, widely known as HTTPS, ensures that all client communications with your cluster are encrypted, adding a critical layer of security.
 
-This document focuses on the **manual configuration** of HTTPS for {{es}}. Use this approach if you want to provide your own TLS certificates, generate them with Elastic’s tools, or have full control over the configuration. Alternatively, {{es}} can [automatically generate and configure HTTPS certificates](./self-auto-setup.md).
+This document focuses on the **manual configuration** of HTTPS for {{es}} and {{kib}}. Use this approach if you want to provide your own TLS certificates, generate them with Elastic’s tools, or have full control over the configuration. Alternatively, {{es}} can [automatically generate and configure HTTPS certificates](./self-auto-setup.md).
 
 In this guide, you will learn how to:
 
@@ -39,7 +39,7 @@ Both workflows are supported. Choose the one that best fits your infrastructure 
 
 ## Prerequisites [basic-setup-https-prerequisites]
 
-If security feature wasn't already enabled in your cluster, complete all steps in [Manual security setup](./set-up-minimal-security.md).
+If security feature wasn't already enabled in your cluster, complete all steps in [](./set-up-minimal-security.md).
 
 For multi-node clusters, ensure you have completed the [transport TLS setup](./set-up-basic-security.md). As part of that process, you will have created a Certificate Authority (CA) that this guide reuses to issue HTTP certificates. 
 
@@ -120,7 +120,7 @@ Once TLS is enabled, all client communications with the cluster will be encrypte
 
 **Next**: [Encrypt HTTP client communications for {{kib}}](#encrypt-kibana-http)
 
-## Encrypt HTTP client communications for {{kib}} [encrypt-kibana-http]
+## Encrypt HTTP communications for {{kib}} [encrypt-kibana-http]
 
 {{kib}} handles two separate types of HTTP traffic that should be encrypted:
 * **Outgoing requests from {{kib}} to {{es}}**: {{kib}} acts as an HTTP client and must be configured to trust the TLS certificate used by {{es}}.

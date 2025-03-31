@@ -9,7 +9,11 @@ mapped_pages:
 
 # Set up security in self-managed deployments
 
-There are two approaches to configuring security in self-managed deployments of the {{stack}}:
+This section explains how to perform the initial security setup for self-managed deployments, including configuring TLS certificates to secure {{es}} and {{kib}} endpoints, setting passwords for built-in users, and generating enrollment tokens to connect {{kib}} or additional {{es}} nodes to the cluster.
+
+Self-managed deployments support two approaches for the initial setup: automatic and manual. Note that securing {{kib}} always requires some manual configuration.
+
+For guidance on configuring additional security features, refer to [](./secure-your-cluster-deployment.md).
 
 ## Automatic configuration [automatic-configuration]
 
@@ -28,7 +32,7 @@ This automatic setup is the quickest way to get started and ensures your cluster
 The automatic configuration does not enable TLS on the {{kib}} HTTP endpoint. To encrypt browser traffic to {{kib}}, follow the steps in [](./set-up-basic-security-plus-https.md#encrypt-kibana-browser).
 ::::
 
-Refer to [Automatic security setup](./self-auto-setup.md) for the complete procedure, including [cases where it may be skipped](./self-auto-setup.md#stack-skip-auto-configuration).
+Refer to [Automatic security setup](./self-auto-setup.md) for details about the full procedure, including [cases where it may be skipped](./self-auto-setup.md#stack-skip-auto-configuration).
 
 ## Manual configuration [manual-configuration]
 
@@ -42,4 +46,12 @@ If you’re securing an existing unsecured cluster, or prefer to use your own TL
 
 Each step builds on the previous one. For production environments, it’s strongly recommended to complete all three.
 
+## Kibana security configuration
 
+Refer to [](./using-kibana-with-security.md) for detailed guidance on the following security topics:
+
+* Set an encryption key for clients sessions
+* Enable TLS on the HTTP service endpoint
+* Enable mutual authentication between {{kib}} and {{es}}
+* Use secure HTTP headers
+* Require a Content Security Policy

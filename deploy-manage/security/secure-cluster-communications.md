@@ -41,7 +41,9 @@ To ensure secure operation, it’s important to understand the communication cha
 
 ### Transport layer security [encrypt-internode-communication]
 
-The transport layer relies on mutual TLS for both encryption and authentication of nodes. Correctly applying TLS ensures that a malicious node cannot join the cluster and exchange data with other nodes. While implementing username and password authentication at the HTTP layer is useful for securing external access, the security of communication between nodes requires TLS.
+The transport layer is used for communication between {{es}} nodes in a cluster. It relies on mutual TLS for both encryption and authentication of nodes.
+
+Securing this layer prevents unauthorized nodes from joining your cluster and protects internode data. While implementing username and password authentication at the HTTP layer is useful for securing external access, the security of communication between nodes requires TLS.
 
 The way that transport layer security is managed depends on your deployment type:
 
