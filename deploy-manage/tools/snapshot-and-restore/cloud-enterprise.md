@@ -89,7 +89,7 @@ To change the snapshot repository for an existing Elasticsearch cluster:
 
 1. [Log into the Cloud UI](../../deploy/cloud-enterprise/log-into-cloud-ui.md).
 2. Optional: If you need to use a repository that is not yet listed, add a snapshot repository configuration first.
-3. From the **Deployments** page, select your deployment.
+3. From the **Hosted deployments** page, select your deployment.
 
     Narrow the list by name, ID, or choose from several other filters. To further define the list, use a combination of filters.
 

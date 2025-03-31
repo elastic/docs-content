@@ -31,9 +31,9 @@ For new Elasticsearch clusters, we automatically create a Kibana instance for yo
 To access Kibana:
 
 1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
-2. On the **Deployments** page, select your deployment.
+2. On the **Hosted deployments** page, select your deployment.
 
-    On the **Deployments** page you can narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
+    On the **Hosted deployments** page you can narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
 
 3. Under **Applications**, select the Kibana **Launch** link and wait for Kibana to open.
 

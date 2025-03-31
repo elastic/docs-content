@@ -98,7 +98,7 @@ To enable or disable autoscaling on a deployment:
 
 1. Log in to the ECE [Cloud UI](../deploy/cloud-enterprise/log-into-cloud-ui.md) or [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
 
-2. On the **Deployments** page, select your deployment.
+2. On the **Hosted deployments** page, select your deployment.
 
     Narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
 
@@ -117,7 +117,7 @@ Each autoscaling setting is configured with a default value. You can adjust thes
 
 1. Log in to the ECE [Cloud UI](../deploy/cloud-enterprise/log-into-cloud-ui.md) or [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
 
-2. On the **Deployments** page, select your deployment.
+2. On the **Hosted deployments** page, select your deployment.
 
     Narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
 

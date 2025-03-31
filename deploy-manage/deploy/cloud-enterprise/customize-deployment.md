@@ -20,7 +20,7 @@ The configurable components and allowed values available on the Edit page depend
 To customize your deployment:
 
 1. [Log into the Cloud UI](./log-into-cloud-ui.md).
-2. On the **Deployments** page, select your deployment.
+2. On the **Hosted deployments** page, select your deployment.
 
     Narrow the list by name, ID, or choose from several other [filters](./search-filter-deployments.md). To further define the list, use a combination of filters.
 

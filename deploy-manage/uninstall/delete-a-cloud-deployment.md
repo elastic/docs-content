@@ -54,7 +54,7 @@ All data is lost. Billing for usage is by the hour and any outstanding charges f
 To delete an {{ece}} deployment:
 
 1. [Log into the Cloud UI](/deploy-manage/deploy/cloud-enterprise/log-into-cloud-ui.md).
-2. On the **Deployments** page, select your deployment.
+2. On the **Hosted deployments** page, select your deployment.
 
     Narrow the list by name, ID, or choose from several other filters. To further define the list, use a combination of filters.
 
@@ -72,7 +72,7 @@ Terminating a deployment stops all running instances and **deletes all data**. O
 To terminate an {{ece}} deployment,
 
 1. [Log into the Cloud UI](/deploy-manage/deploy/cloud-enterprise/log-into-cloud-ui.md).
-2. On the **Deployments** page, select your deployment.
+2. On the **Hosted deployments** page, select your deployment.
 
     Narrow the list by name, ID, or choose from several other filters. To further define the list, use a combination of filters.
 
@@ -86,7 +86,7 @@ You can restore a deployment that was previously terminated to its original conf
 To restore a terminated deployment,
 
 1. [Log into the Cloud UI](/deploy-manage/deploy/cloud-enterprise/log-into-cloud-ui.md).
-2. On the **Deployments** page, select your deployment.
+2. On the **Hosted deployments** page, select your deployment.
     Narrow the list by name, ID, or choose from several other filters. To further define the list, use a combination of filters.
 3. In the **Deployment Management** section, select **Restore** and then acknowledge the confirmation message.
 

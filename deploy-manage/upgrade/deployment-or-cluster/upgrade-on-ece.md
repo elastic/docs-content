@@ -21,7 +21,7 @@ Once you're [prepared to upgrade](/deploy-manage/upgrade/prepare-to-upgrade.md),
 ## Perform the upgrade 
 
 1. [Log in to the Cloud UI](/deploy-manage/deploy/cloud-enterprise/log-into-cloud-ui.md). 
-2. On the **Deployments** page, select your deployment.
+2. On the **Hosted deployments** page, select your deployment.
    
    Narrow the list by name, ID, or choose from several other filters. To further define the list, use a combination of filters.
 
@@ -30,7 +30,7 @@ Once you're [prepared to upgrade](/deploy-manage/upgrade/prepare-to-upgrade.md),
 3. Click **Upgrade**, then **Confirm upgrade**. The new configuration takes a few minutes to create.
 
    ::::{note} 
-   If any incompatibilities are detected when you attempt to upgrade, the UI provides a link to the Upgrade Assistant, which checks for deprecated settings in your cluster and indices and helps you resolve them. If there are any issues that would prevent a successful upgrade, the upgrade is blocked. After resolving the issues, return to the **Deployments** page and restart the upgrade. Also check the [release notes](/release-notes/index.md) to stay aware of changes and known issues for the version you're upgrading to.
+   If any incompatibilities are detected when you attempt to upgrade, the UI provides a link to the Upgrade Assistant, which checks for deprecated settings in your cluster and indices and helps you resolve them. If there are any issues that would prevent a successful upgrade, the upgrade is blocked. After resolving the issues, return to the **Hosted deployments** page and restart the upgrade. Also check the [release notes](/release-notes/index.md) to stay aware of changes and known issues for the version you're upgrading to.
    ::::
 
 **Security realm settings**

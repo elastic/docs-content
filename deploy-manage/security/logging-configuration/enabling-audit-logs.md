@@ -67,7 +67,7 @@ To enable audit logging in an {{ech}} deployment:
 
 1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
 
-2. Find your deployment on the home page in the **Hosted deployments** card and select **Manage** to access it directly. Or, select **Hosted deployments** to go to the **Deployments** page to view all of your deployments.
+2. Find your deployment on the home page in the **Hosted deployments** card and select **Manage** to access it directly. Or, select **Hosted deployments** to go to the **Hosted deployments** page to view all of your deployments.
 
 3. From your deployment menu, go to the **Edit** page.
 
@@ -91,7 +91,7 @@ To enable audit logging in an ECE deployment:
 
 1. [Log in to the Cloud UI](../../deploy/cloud-enterprise/log-into-cloud-ui.md).
 
-2. On the **Deployments** page, select your deployment.
+2. On the **Hosted deployments** page, select your deployment.
 
 3. From your deployment menu, go to the **Edit** page.
 

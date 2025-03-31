@@ -18,7 +18,7 @@ ECE blocks the configuration of certain settings that could break your cluster i
 To change {{es}} user settings:
 
 1. [Log into the Cloud UI](./log-into-cloud-ui.md).
-2. On the **Deployments** page, select your deployment.
+2. On the **Hosted deployments** page, select your deployment.
 
     Narrow the list by name, ID, or choose from several other filters. To further define the list, use a combination of filters.
 

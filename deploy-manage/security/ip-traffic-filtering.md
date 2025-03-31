@@ -56,7 +56,7 @@ You can combine any rules into a set, so we recommend that you group rules accor
 To create a rule set:
 
 1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
-2. Find your deployment on the home page in the **Hosted deployments** card and select **Manage** to access it directly. Or, select **Hosted deployments** to go to the **Deployments** page to view all of your deployments.
+2. Find your deployment on the home page in the **Hosted deployments** card and select **Manage** to access it directly. Or, select **Hosted deployments** to go to the **Hosted deployments** page to view all of your deployments.
 3. Under the **Features** tab, open the **Traffic filters** page.
 4. Select **Create filter**.
 5. Select **IP filtering rule set**.
@@ -108,7 +108,7 @@ If you want to remove any traffic restrictions from a deployment or delete a rul
 You can edit a rule set name or change the allowed traffic sources using IPv4, or a range of addresses with CIDR.
 
 1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
-2. Find your deployment on the home page in the **Hosted deployments** card and select **Manage** to access it directly. Or, select **Hosted deployments** to go to the **Deployments** page to view all of your deployments.
+2. Find your deployment on the home page in the **Hosted deployments** card and select **Manage** to access it directly. Or, select **Hosted deployments** to go to the **Hosted deployments** page to view all of your deployments.
 3. Under the **Features** tab, open the **Traffic filters** page.
 4. Find the rule set you want to edit.
 5. Select the **Edit** icon.

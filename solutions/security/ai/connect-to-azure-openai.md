@@ -49,7 +49,7 @@ The following video demonstrates these steps (click to watch).
 Now, set up the Azure OpenAI model:
 
 1. From within your Azure OpenAI deployment, select **Model deployments**, then click **Manage deployments**.
-2. On the **Deployments** page, select **Create new deployment**.
+2. On the **Hosted deployments** page, select **Create new deployment**.
 3. Under **Select a model**, choose `gpt-4o` or `gpt-4 turbo`.
 4. Set the model version to "Auto-update to default".
 

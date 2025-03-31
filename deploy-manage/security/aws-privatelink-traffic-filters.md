@@ -211,7 +211,7 @@ Having trouble finding your VPC endpoint ID? You can find it in the AWS console.
 Once you know your VPC endpoint ID you can create a private link traffic filter rule set.
 
 1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
-2. Find your deployment on the home page in the **Hosted deployments** card and select **Manage** to access it directly. Or, select **Hosted deployments** to go to the **Deployments** page to view all of your deployments.
+2. Find your deployment on the home page in the **Hosted deployments** card and select **Manage** to access it directly. Or, select **Hosted deployments** to go to the **Hosted deployments** page to view all of your deployments.
 3. Under the **Features** tab, open the **Traffic filters** page.
 4. Select **Create filter**.
 5. Select **Private link endpoint**.
@@ -272,7 +272,7 @@ The settings `xpack.fleet.agents.fleet_server.hosts` and `xpack.fleet.outputs` t
 You can edit a rule set name or to change the VPC endpoint ID.
 
 1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
-2. Find your deployment on the home page in the **Hosted deployments** card and select **Manage** to access it directly. Or, select **Hosted deployments** to go to the **Deployments** page to view all of your deployments.
+2. Find your deployment on the home page in the **Hosted deployments** card and select **Manage** to access it directly. Or, select **Hosted deployments** to go to the **Hosted deployments** page to view all of your deployments.
 3. Under the **Features** tab, open the **Traffic filters** page.
 4. Find the rule set you want to edit.
 5. Select the **Edit** icon.
