@@ -10,7 +10,7 @@ This tutorial presents examples in {{esql}} syntax. Refer to [the Query DSL vers
 
 This is a hands-on introduction to the basics of full-text search and semantic search, using [{{esql}}](/explore-analyze/query-filter/languages/esql.md).
 
-For an overview of all the search capabilities in {{esql}}, refer to [Using {{esql}} for search](elasticsearch://reference/query-languages/esql/esql-for-search.md).
+For an overview of all the search capabilities in {{esql}}, refer to [Using {{esql}} for search](/solutions/search/esql-for-search.md).
 
 In this scenario, we're implementing search for a cooking blog. The blog contains recipes with various attributes including textual content, categorical data, and numerical ratings.
 
