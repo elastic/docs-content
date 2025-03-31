@@ -7,28 +7,17 @@ navigation_title: Clients
 
 # Elasticsearch clients [elasticsearch-clients]
 
-This section contains documentation for all the official Elasticsearch clients:
+{{es}} provides official clients for popular programming languages. These client libraries make it easier to use your preferred language to work with your {{es}} deployment.
 
-* Eland
-* Go
-* Java
-* JavaScript
-* .NET
-* PHP
-* Python
-* Ruby
-* Rust
-
-You can use the following language clients with {{es-serverless}}:
-
-* [Go](go-elasticsearch://reference/getting-started-serverless.md)
-* [Java](elasticsearch-java://reference/getting-started-serverless.md)
-* [.NET](elasticsearch-net://reference/getting-started.md)
-* [Node.JS](elasticsearch-js://reference/getting-started.md)
-* [PHP](elasticsearch-php://reference/getting-started.md)
-* [Python](elasticsearch-py://reference/getting-started.md)
-* [Ruby](elasticsearch-ruby://reference/getting-started.md)
+- [Go](go-elasticsearch://reference/index.md)
+- [Java](elasticsearch-java://reference/index.md)
+- [JavaScript (Node.js)](elasticsearch-js://reference/index.md)
+- [.NET](elasticsearch-net://reference/index.md)
+- [PHP](elasticsearch-php://reference/index.md)
+- [Python](elasticsearch-py://reference/index.md)
+  - [Eland](eland://reference/index.md): Python client and toolkit for DataFrames and machine learning
+- [Ruby](elasticsearch-ruby://reference/index.md)
 
 ::::{tip}
-Learn how to [connect to your {{es-serverless}} endpoint](/solutions/search/serverless-elasticsearch-get-started.md).
+Learn how to [connect to your {{es}} endpoint](/solutions/search/search-connection-details.md).
 ::::
