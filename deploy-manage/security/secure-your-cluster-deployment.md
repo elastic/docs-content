@@ -11,7 +11,7 @@ mapped_pages:
 
 # Secure your cluster or deployment
 
-It's important to protect your {{es}} cluster and the data it contains. Implementing a defense in depth strategy provides multiple layers of security to help safeguard your system.
+It's important to protect your {{es}} cluster and the data it contains. Implementing an in-depth defense strategy provides multiple layers of security to help safeguard your system.
 
 :::{include} /deploy-manage/security/_snippets/complete-security.md
 :::

@@ -10,20 +10,8 @@ mapped_pages:
 % Original title: Start the Elastic Stack with security enabled automatically
 # Automatic security setup [configuring-stack-security]
 
-When you start {{es}} for the first time, the following security configuration occurs automatically:
-
-* [Certificates and keys](../deploy/self-managed/installing-elasticsearch.md#stack-security-certificates) for TLS are generated for the transport and HTTP layers.
-* The TLS configuration settings are written to `elasticsearch.yml`.
-* A password is generated for the `elastic` user.
-* An enrollment token is generated for {{kib}}.
-
-You can then start {{kib}} and enter the enrollment token, which is valid for 30 minutes. This token automatically applies the security settings from your {{es}} cluster, authenticates to {{es}} with the built-in `kibana` service account, and writes the security configuration to `kibana.yml`.
-
-::::{note}
-There are [some cases](/deploy-manage/security/self-auto-setup.md#stack-skip-auto-configuration) where security can’t be configured automatically because the node startup process detects that the node is already part of a cluster, or that security is already configured or explicitly disabled.
-::::
-
-
+:::{include} /deploy-manage/deploy/self-managed/_snippets/auto-security-config.md
+:::
 
 ## Prerequisites [_prerequisites_12]
 

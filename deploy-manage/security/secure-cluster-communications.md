@@ -41,7 +41,7 @@ To ensure secure operation, it’s important to understand the communication cha
 
 ### Transport layer security [encrypt-internode-communication]
 
-Securing {{es}} transport layer, also known as transport protocol, prevents unauthorized nodes from joining your cluster and protects internode traffic.
+The transport layer relies on mutual TLS for both encryption and authentication of nodes. Correctly applying TLS ensures that a malicious node cannot join the cluster and exchange data with other nodes. While implementing username and password authentication at the HTTP layer is useful for securing external access, the security of communication between nodes requires TLS.
 
 The way that transport layer security is managed depends on your deployment type:
 
@@ -65,10 +65,20 @@ The way that transport layer security is managed depends on your deployment type
 
 :::{tab-item} Self-managed
 :sync: self
-{{es}} transport security can be [automatically configured](self-auto-setup.md), or manually set up by following the steps in [Set up basic security](set-up-basic-security.md).
+{{es}} transport security can be [automatically configured](self-auto-setup.md), or manually set up by following the steps in [](set-up-basic-security.md).
 :::
 
 ::::
+
+::::{admonition} Understanding transport contexts
+Transport Layer Security (TLS) is the name of an industry standard protocol for applying security controls (such as encryption) to network communications. TLS is the modern name for what used to be called Secure Sockets Layer (SSL). The {{es}} documentation uses the terms TLS and SSL interchangeably.
+
+Transport Protocol is the name of the protocol that {{es}} nodes use to communicate with one another. This name is specific to {{es}} and distinguishes the transport port (default `9300`) from the HTTP port (default `9200`). Nodes communicate with one another using the transport port, and REST clients communicate with {{es}} using the HTTP port.
+
+Although the word *transport* appears in both contexts, they mean different things. It’s possible to apply TLS to both the {{es}} transport port and the HTTP port. We know that these overlapping terms can be confusing, so to clarify, in this scenario we’re applying TLS to the {{es}} transport port. In [](./set-up-basic-security-plus-https.md), we’ll apply TLS to the {{es}} HTTP port.
+::::
+
+
 
 ### HTTP layer security [encrypt-http-communication]
 

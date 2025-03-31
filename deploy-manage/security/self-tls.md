@@ -9,9 +9,11 @@ mapped_pages:
 
 # Manage TLS certificates in self-managed deployments
 
-This section provides guides for manually configuring and maintaining the TLS certificates in self-managed deployments. For an overview of the endpoints that need securing in {{es}} and {{kib}}, refer to [Communication channels](./secure-cluster-communications.md#communication-channels).
+This section provides guides for configuring TLS encryption in self-managed deployments. It covers how to create and manage TLS certificates, configure {{es}} and {{kib}} service endpoints to use them, and apply related security settings such as supported TLS versions and cipher suites.
 
-Use the following guides to manage TLS certificates:
+All procedures in this section focus on manual configuration. If you prefer an automated approach, consider using the [automatic security configuration](./self-auto-setup.md) feature, which sets up TLS certificates for {{es}} HTTP and transport endpoints during initial startup.
+
+For an overview of the endpoints that need securing in {{es}} and {{kib}}, refer to [Communication channels](./secure-cluster-communications.md#communication-channels).
 
 * [](./set-up-basic-security.md) (**required for multi-node clusters**): Create and configure a Certificate Authority (CA) and certificates to encrypt inter-node traffic.
 * [](./set-up-basic-security-plus-https.md) (**optional but recommended**): Create and configure certificates to encrypt traffic on {{es}} and {{kib}} HTTP endpoints.
@@ -19,8 +21,6 @@ Use the following guides to manage TLS certificates:
 * [](./updating-certificates.md): Renew or replace existing TLS certificates before they expire.
 * [](./supported-ssltls-versions-by-jdk-version.md): Customize the list of supported SSL/TLS versions in your cluster.
 * [](./enabling-cipher-suites-for-stronger-encryption.md): Enable the use of additional cipher suites, so you can use different cipher suites for your TLS communications or communications with authentication providers.
-
-As an alternative to the manual configuration, consider the [automatic security configuration](./self-auto-setup.md) procedure, which includes automatic generation of TLS certificates for {{es}} HTTP and transport endpoints.
 
 ## Certificates lifecycle
 

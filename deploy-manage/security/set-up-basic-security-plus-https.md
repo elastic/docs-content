@@ -7,14 +7,15 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/security-basic-setup-https.html
 ---
 
-
 % Scope: HTTP certificates setup / manual configuration / multi or single node cluster
 % original title: Set up basic security for the Elastic Stack plus secured HTTPS traffic
 # Set up HTTP TLS [security-basic-setup-https]
 
 Enabling TLS on the HTTP layer ensures that all client communications with your cluster are encrypted, adding a critical layer of security.
 
-This document provides guidance on how to:
+This document focuses on the **manual configuration** of HTTPS for {{es}}. Use this approach if you want to provide your own TLS certificates, generate them with Elastic’s tools, or have full control over the configuration. Alternatively, {{es}} can [automatically generate and configure HTTPS certificates](./self-auto-setup.md).
+
+In this guide, you will learn how to:
 
 * [Generate and configure TLS certificates for the HTTP endpoints of your {{es}} nodes](#encrypt-http-communication).
 * [Configure {{kib}} to securely connect to {{es}} over HTTPS](#encrypt-kibana-elasticsearch) by trusting the Certificate Authority (CA) used by {{es}}.

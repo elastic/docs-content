@@ -11,30 +11,18 @@ mapped_pages:
 % original title: Set up basic security for the Elastic Stack
 # Set up transport TLS [security-basic-setup]
 
-If your cluster has multiple nodes, then you must configure TLS between {{es}} nodes. [Production mode](../deploy/self-managed/bootstrap-checks.md#dev-vs-prod-mode) clusters will not start if you do not enable TLS. This document focuses on the manual generation and configuration of the TLS certificates for the transport protocol in multi-node self-managed clusters.
+Configuring TLS between nodes is the basic security setup to prevent unauthorized nodes from accessing to your {{es}} cluster, and it's required by multi-node clusters. [Production mode](../deploy/self-managed/bootstrap-checks.md#dev-vs-prod-mode) clusters will not start if you do not enable TLS.
+
+This document focuses on the **manual configuration** of TLS for [{{es}} transport protocol](./secure-cluster-communications.md#encrypt-internode-communication) in self-managed environments. Use this approach if you want to provide your own TLS certificates, generate them with Elastic’s tools, or have full control over the configuration. Alternatively, {{es}} can [automatically generate and configure HTTPS certificates](./self-auto-setup.md) for you.
 
 ::::{note}
 For other deployment types, such as {{ech}}, {{ece}}, or {{eck}}, refer to [](./secure-cluster-communications.md).
 ::::
 
-When you start {{es}} for the first time, passwords are generated for the `elastic` user and TLS is [automatically configured](./self-auto-setup.md) for you. If you configure security [manually](./self-setup.md#manual-configuration) before starting your {{es}} nodes, the auto-configuration process will respect your security configuration. You can adjust your TLS configuration at any time, such as [updating node certificates](updating-certificates.md).
+In this guide, you will learn how to:
 
-## Transport protocol overview
-
-The {{es}} transport protocol, which listens in port `9300` by default, handles all inter-node communication within the cluster.
-
-It relies on mutual TLS for both encryption and authentication of nodes. Correctly applying TLS ensures that a malicious node cannot join the cluster and exchange data with other nodes. While implementing username and password authentication at the HTTP layer is useful for securing external access, the security of communication between nodes requires TLS.
-
-Configuring TLS between nodes is the basic security setup to prevent unauthorized nodes from accessing to your cluster.
-
-::::{admonition} Understanding transport contexts
-Transport Layer Security (TLS) is the name of an industry standard protocol for applying security controls (such as encryption) to network communications. TLS is the modern name for what used to be called Secure Sockets Layer (SSL). The {{es}} documentation uses the terms TLS and SSL interchangeably.
-
-Transport Protocol is the name of the protocol that {{es}} nodes use to communicate with one another. This name is specific to {{es}} and distinguishes the transport port (default `9300`) from the HTTP port (default `9200`). Nodes communicate with one another using the transport port, and REST clients communicate with {{es}} using the HTTP port.
-
-Although the word *transport* appears in both contexts, they mean different things. It’s possible to apply TLS to both the {{es}} transport port and the HTTP port. We know that these overlapping terms can be confusing, so to clarify, in this scenario we’re applying TLS to the {{es}} transport port. In [](./set-up-basic-security-plus-https.md), we’ll apply TLS to the {{es}} HTTP port.
-
-::::
+* [Generate a Certificate Authority (CA) and a server certificate using the `elasticsearch-certutil` tool](#generate-certificates).
+* [Configure your {{es}} nodes to use the generated certificate for the transport layer](#encrypt-internode-communication).
 
 
 ## Generate the certificate authority [generate-certificates]
@@ -132,7 +120,6 @@ Complete the following steps **for each node in your cluster**. To join the same
     ::::{warning}
     You must perform a full cluster restart. Nodes that are configured to use TLS for transport cannot communicate with nodes that use unencrypted transport connection (and vice-versa).
     ::::
-
 
 
 ## What’s next? [encrypting-internode-whatsnext]
