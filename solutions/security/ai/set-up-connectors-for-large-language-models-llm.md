@@ -16,6 +16,7 @@ applies_to:
 Different LLMs have varying performance when used to power different features and use-cases. For more information about how various models perform on different tasks in {{elastic-sec}}, refer to the [Large language model performance matrix](/solutions/security/ai/large-language-model-performance-matrix.md).
 :::
 
+
 ## Connect to Elastic Inference Service 
 
 The Elastic Inference Service is enabled by default for any user with the necessary Elastic license or subscription. To use it:
@@ -23,7 +24,7 @@ The Elastic Inference Service is enabled by default for any user with the necess
 * Navigate to a feature that uses an LLM, such as AI Assistant.
 * Use the model selection menu to select **Elastic Intelligence Service**.
 
-# Connect to a third-party LLM
+## Connect to a third-party LLM
 
 Follow these guides to connect to one or more third party LLM providers:
 
