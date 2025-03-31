@@ -22,7 +22,7 @@ In this article, learn how to:
 
 To allow other users to interact with your projects, you must invite them to join your organization and grant them access to your organization resources and instances.
 
-Alternatively, {cloud}/ec-saml-sso.html[configure {ecloud} SAML SSO] to enable your organization members to join the {ecloud} organization automatically. preview:[]
+Alternatively, {cloud}/ec-saml-sso.html[configure {ecloud} SAML SSO] to enable your organization members to join the {ecloud} organization automatically.
 
 . Go to the user icon on the header bar and select **Organization**.
 . On the **Members** page, click **Invite members**.
