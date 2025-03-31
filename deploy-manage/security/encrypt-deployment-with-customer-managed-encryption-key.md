@@ -40,6 +40,11 @@ When a deployment encrypted with a customer-managed key is deleted or terminated
 
 ::::::{tab-item} AWS
 * Have permissions on AWS KMS to [create a symmetric AWS KMS key](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#symmetric-cmks) and to configure AWS IAM roles.
+
+  :::{tip}
+  {{ecloud}} also supports keys from [imported key material](https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html) or from [key stores external to AWS KMS](https://docs.aws.amazon.com/kms/latest/developerguide/keystore-external.html), such as CipherTrust.
+  :::
+
 * Consider the cloud regions where you need your deployment to live. Refer to the [list of available regions, deployment templates, and instance configurations](cloud://reference/cloud-hosted/ec-regions-templates-instances.md) supported by {{ecloud}}.
 ::::::
 
@@ -47,6 +52,11 @@ When a deployment encrypted with a customer-managed key is deleted or terminated
 * Have the following permissions on Azure:
 
     * Permissions to [create an RSA key](https://learn.microsoft.com/en-us/azure/key-vault/keys/about-keys#key-types-and-protection-methods) in the Azure Key Vault where you want to store your key.
+
+      :::{tip}
+      {{ecloud}} also supports keys from [key stores external to Azure Key Vault](https://learn.microsoft.com/en-us/azure/key-vault/keys/byok-specification), such as CipherTrust.
+      :::
+
     * Membership in the **Application Administrator** role. This is required to create a new service principal for {{ecloud}} in your Azure tenant.
     * Permissions to [assign roles in your Key Vault using Access control (IAM)](https://learn.microsoft.com/en-us/azure/key-vault/general/rbac-guide?tabs=azure-cli#prerequisites). This is required to grant the service principal access to your key.
 
@@ -59,6 +69,11 @@ When a deployment encrypted with a customer-managed key is deleted or terminated
 * Have the following permissions in Google Cloud KMS:
 
     * Permissions to [create a KMS key](https://cloud.google.com/kms/docs/create-key) on a key ring in the same region as your deployment. If you don’t have a key ring in the same region, or want to store the key in its own key ring, then you also need permissions to [create a key ring](https://cloud.google.com/kms/docs/create-key-ring).
+
+      :::{tip}
+      {{ecloud}} also supports keys from [key stores external to Cloud KMS](https://cloud.google.com/kms/docs/ekm), such as CipherTrust.
+      :::
+
     * Permissions to [manage access to your new key resource using IAM](https://cloud.google.com/kms/docs/iam). This is required to grant the service principals used by Elastic access to your key.
 ::::::
 
@@ -70,19 +85,7 @@ At this time, the following features are not supported:
 
 * Encrypting existing deployments with a customer-managed key
 * Disabling encryption on a deployment
-* AWS:
-
-    * Encrypting deployments using keys from [key stores external to AWS KMS](https://docs.aws.amazon.com/kms/latest/developerguide/keystore-external.html)
-
-* Azure:
-
-    * Encrypting deployments using Azure EC or symmetric keys
-    * Encrypting deployments using keys from [key stores external to Azure Key Vault](https://learn.microsoft.com/en-us/azure/key-vault/keys/byok-specification)
-
-* Google Cloud:
-
-    * Encrypting deployments using [key stores external to Cloud KMS](https://cloud.google.com/kms/docs/ekm)
-
+* Azure: Encrypting deployments using Azure EC or symmetric keys
 
 
 ## Create an encryption key for your deployment [create-encryption-key]
