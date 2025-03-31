@@ -52,6 +52,7 @@ cross_links:
   - integrations
   - kibana
   - logstash
+  - logstash-docs-md
   - search-ui
   - security-docs
 

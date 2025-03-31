@@ -1,4 +1,11 @@
 ---
+applies_to:
+  stack: 
+  deployment:
+    eck: 
+    ess: 
+    ece: 
+    self: 
 navigation_title: Incomplete migration to data tiers
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/troubleshoot-migrate-to-tiers.html

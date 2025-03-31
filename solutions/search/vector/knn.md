@@ -544,6 +544,7 @@ In our data set, the only document with the file type of `png` has a vector of `
 ### Nested kNN Search [nested-knn-search]
 
 It is common for text to exceed a particular model’s token limit and requires chunking before building the embeddings for individual chunks. When using [`nested`](elasticsearch://reference/elasticsearch/mapping-reference/nested.md) with [`dense_vector`](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md), you can achieve nearest passage retrieval without copying top-level document metadata.
+Note that nested kNN queries only support [score_mode](elasticsearch://reference/query-languages/query-dsl/query-dsl-nested-query.md#nested-top-level-params)=`max`. 
 
 Here is a simple passage vectors index that stores vectors and some top-level metadata for filtering.
 
