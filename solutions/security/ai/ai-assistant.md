@@ -10,7 +10,7 @@ applies_to:
 
 # AI Assistant
 
-The Elastic AI Assistant utilizes generative AI to bolster your cybersecurity operations team. It allows users to interact with {{elastic-sec}} for tasks such as alert investigation, incident response, and query generation or conversion using natural language and much more.
+The Elastic AI Assistant utilizes generative AI to bolster your cybersecurity operations team. It allows users to interact with {{elastic-sec}} for tasks such as alert investigation, incident response, and query generation or conversation using natural language and much more.
 
 :::{image} /solutions/images/security-assistant-basic-view.png
 :alt: Image of AI Assistant chat window
