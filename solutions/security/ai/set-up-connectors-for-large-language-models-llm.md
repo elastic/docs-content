@@ -20,12 +20,12 @@ Different LLMs have varying performance when used to power different features an
 
 The Elastic Inference Service is enabled by default for any user with the necessary Elastic license or subscription. To use it:
 
-* Navigate to a feature that uses an LLM, such as AI Assistant.
-* Use the model selection menu to select **Elastic Intelligence Service**.
+1. Navigate to a feature that uses an LLM, such as AI Assistant.
+2. Use the model selection menu to select **Elastic Intelligence Service**.
 
-# Connect to a third-party LLM
+## Connect to a third-party LLM
 
-Follow these guides to connect to one or more third party LLM providers:
+Follow these guides to connect to one or more third-party LLM providers:
 
 * [Azure OpenAI](/solutions/security/ai/connect-to-azure-openai.md)
 * [Amazon Bedrock](/solutions/security/ai/connect-to-amazon-bedrock.md)

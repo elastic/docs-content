@@ -46,14 +46,14 @@ By default, Attack Discovery analyzes up to 100 alerts from the last 24 hours, b
 
 You can select which alerts Attack Discovery will process by filtering based on a KQL query, the time and date selector, and the **Number of alerts** slider. Note that sending more alerts than your chosen LLM can handle may result in an error. Under **Alert summary** you can view a summary of the selected alerts grouped by various fields, and under **Alerts preview** you can see more details about the selected alerts.
 
-:::{admonition} How to add non-ecs fields to Attack Discovery
-Attack Discovery is designed for use with alerts based on data that complies with ECS, and by default only analyses ECS-compliant fields. However you can enable Attack Discovery to review additional fields by following these steps:
+:::{admonition} How to add non-ECS fields to Attack Discovery
+Attack Discovery is designed for use with alerts based on data that complies with ECS, and by default only analyses ECS-compliant fields. However, you can enable Attack Discovery to review additional fields by following these steps:
 
-* Select an alert with some of the non-ECS fields you want to analyze, and go to it's details flyout. From here, use the **Chat** button to open AI Assistant.
-* At the bottom of the chat window, the alert's information appears. Click **Edit** to open the anonymization window to this alert's fields.
-* Search for and select the non-ECS fields you want Attack Discovery to analyze. Set them to **Allowed**. 
+1.  Select an alert with some of the non-ECS fields you want to analyze, and go to its details flyout. From here, use the **Chat** button to open AI Assistant.
+2.  At the bottom of the chat window, the alert's information appears. Click **Edit** to open the anonymization window to this alert's fields.
+3.  Search for and select the non-ECS fields you want Attack Discovery to analyze. Set them to **Allowed**. 
 
-The selected fields can now be analyzed the next you run Attack Discovery.
+The selected fields can now be analyzed the next time you run Attack Discovery.
 :::
 
 ## Generate discoveries [attack-discovery-generate-discoveries]
