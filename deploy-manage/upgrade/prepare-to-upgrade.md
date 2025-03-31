@@ -44,7 +44,7 @@ Review the following best practices to upgrade your deployments.
 
 1. To identify if your applications use unsupported features or behave differently in 9.0.0, review the deprecation logs in the Upgrade Assistant.
 
-1. Major version upgrades can include breaking changes that require additional steps to ensure your applications function as expected. Review the breaking changes for each product you use to learn more about potential impacts on your application. Ensure you test with the new version before upgrading existing deployments.
+4. Major version upgrades can include breaking changes that require additional steps to ensure your applications function as expected. Review the [breaking changes](../../release-notes/index.md) for each product you use to learn more about potential impacts on your application. Ensure you test with the new version before upgrading existing deployments.
 
 1. Make the recommended changes to ensure your clients continue operating as expected after the upgrade.
 
@@ -170,7 +170,7 @@ The response contains the list of critical deprecation warnings in the `index_se
 :::
 
 :::{dropdown} Reindexing anomaly result indices
-For an index with less than 10 GB that contains results from multiple jobs that are still required, we recommend reindexing into a new format using the UI. You can use the [Get index information API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-indices-1) to obtain the size of an index:
+If an index size is less than 10 GB and contains results from multiple jobs that are still required, we recommend reindexing into a new format using the UI. You can use the [Get index information API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-indices-1) to obtain the size of an index:
 
 ```
 GET _cat/indices/.ml-anomalies-custom-example?v&h=index,store.size

@@ -15,16 +15,18 @@ Your monthly bill is based on the capabilities you use. When you use {{obs-serve
 * **Ingest** — Measured by the number of GB of log/event/info data that you send to your Observability project over the course of a month.
 * **Retention** — Measured by the total amount of ingested data stored in your Observability project.
 
-Ingest and retention metering is based on the uncompressed, normalized, fully enriched data volume you ingest into your Serverless project. This allows you flexibility and consistency when choosing your preferred ingest architecture for enrichment, whether through {{agent}}, {{ls}}, OpenTelemetry, or collectors—without the need to consider possible impacts on the cost.
-
-::::{note}
-One consequence of this metering method is that the absolute volume of data reported in your usage statement can be much larger than the "raw" data size or the compressed data size "on the wire." Your monthly bill will transparently display exactly how much data has been ingested, including valuable metadata added by your data shipper, and contextual enrichment performed by your ingest processing. Please note that we took the cost of metadata and enrichment into consideration while determining our Serverless per GB prices to help make {{obs-serverless}} a cost-effective service.
-::::
-
+Data volumes for ingest and retention are based on the fully enriched normalized data size at the end of the ingest pipeline, before Elasticsearch compression is performed, and will be higher than the volumes traditionally reported by Elasticsearch index size. In addition, these volumes might be larger than those reported by cloud provider proxy logs for data going into Elasticsearch. This allows you to have flexibility in choosing your preferred ingest architecture for enrichment, whether it’s through Elastic Agent, Logstash, OpenTelemetry, or collectors — with no impact on the cost.
 
 
 ## Synthetics [synthetics-billing]
 
 [Synthetic monitoring](../../../solutions/observability/apps/synthetic-monitoring.md) is an optional add-on to Observability Serverless projects that allows you to periodically check the status of your services and applications. In addition to the core ingest and retention dimensions, there is a charge to execute synthetic monitors on our testing infrastructure. Browser (journey) based tests are charged per-test-run, and ping (lightweight) tests have an all-you-can-use model per location used.
+
+## Elastic Inference Service [EIS-billing]
+[Elastic Inference Service (EIS)](../../../explore-analyze/elastic-inference/eis.md) enables you to leverage AI-powered search as a service without deploying a model in your serverless project. EIS is configured as a default LLM for use with the Observability AI Assistant (for all observability projects).
+
+:::{note}
+Use of the Observability AI Assistant uses EIS tokens and incurs related token-based add-on billing for your serverless project.
+:::
 
 Refer to [Serverless billing dimensions](serverless-project-billing-dimensions.md) and the [{{ecloud}} pricing table](https://cloud.elastic.co/cloud-pricing-table?productType=serverless&project=observability) for more details about {{obs-serverless}} billing dimensions and rates.
