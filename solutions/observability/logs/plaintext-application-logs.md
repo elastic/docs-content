@@ -234,7 +234,7 @@ By default, Windows log files are stored in `C:\ProgramData\filebeat\Logs`.
 
 Use an ingest pipeline to parse the contents of your logs into structured, [Elastic Common Schema (ECS)](ecs://reference/index.md)-compatible fields.
 
-Create an ingest pipeline that defines a [dissect processor](elasticsearch://reference/ingestion-tools/enrich-processor/dissect-processor.md) to extract structured ECS fields from your log messages. In your project, navigate to **Developer Tools** and using a command similar to the following example:
+Create an ingest pipeline that defines a [dissect processor](elasticsearch://reference/enrich-processor/dissect-processor.md) to extract structured ECS fields from your log messages. In your project, navigate to **Developer Tools** and using a command similar to the following example:
 
 ```console
 PUT _ingest/pipeline/filebeat* <1>
@@ -252,7 +252,7 @@ PUT _ingest/pipeline/filebeat* <1>
 ```
 
 1. `_ingest/pipeline/filebeat*`: The name of the pipeline. Update the pipeline name to match the name of your data stream. For more information, refer to [Data stream naming scheme](/reference/fleet/data-streams.md#data-streams-naming-scheme).
-2. `processors.dissect`: Adds a [dissect processor](elasticsearch://reference/ingestion-tools/enrich-processor/dissect-processor.md) to extract structured fields from your log message.
+2. `processors.dissect`: Adds a [dissect processor](elasticsearch://reference/enrich-processor/dissect-processor.md) to extract structured fields from your log message.
 3. `field`: The field you’re extracting data from, `message` in this case.
 4. `pattern`: The pattern of the elements in your log data. The pattern varies depending on your log format. `%{@timestamp}` is required. `%{log.level}`, `%{host.ip}`, and `%{{message}}` are common [ECS](ecs://reference/index.md) fields. This pattern would match a log file in this format: `2023-11-07T09:39:01.012Z ERROR 192.168.1.110 Server hardware failure detected.`
 
@@ -300,7 +300,7 @@ To aggregate or search for information in plaintext logs, use an ingest pipeline
 2. Select the integration policy you created in the previous section.
 3. Click **Change defaults → Advanced options**.
 4. Under **Ingest pipelines**, click **Add custom pipeline**.
-5. Create an ingest pipeline with a [dissect processor](elasticsearch://reference/ingestion-tools/enrich-processor/dissect-processor.md) to extract structured fields from your log messages.
+5. Create an ingest pipeline with a [dissect processor](elasticsearch://reference/enrich-processor/dissect-processor.md) to extract structured fields from your log messages.
 
     Click **Import processors** and add a similar JSON to the following example:
 
@@ -318,7 +318,7 @@ To aggregate or search for information in plaintext logs, use an ingest pipeline
     }
     ```
 
-    1. `processors.dissect`: Adds a [dissect processor](elasticsearch://reference/ingestion-tools/enrich-processor/dissect-processor.md) to extract structured fields from your log message.
+    1. `processors.dissect`: Adds a [dissect processor](elasticsearch://reference/enrich-processor/dissect-processor.md) to extract structured fields from your log message.
     2. `field`: The field you’re extracting data from, `message` in this case.
     3. `pattern`: The pattern of the elements in your log data. The pattern varies depending on your log format. `%{@timestamp}`, `%{log.level}`, `%{host.ip}`, and `%{{message}}` are common [ECS](ecs://reference/index.md) fields. This pattern would match a log file in this format: `2023-11-07T09:39:01.012Z ERROR 192.168.1.110 Server hardware failure detected.`
 

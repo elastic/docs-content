@@ -1,12 +1,16 @@
 ---
 navigation_title: "Upgrade on {{ece}}"
+applies_to:
+  stack:
+  deployment:
+   ece:
 ---
 
 # Upgrade your deployment on {{ece}} (ECE)
 
-Similar to {{ech}}, a single click in the {{ecloud}} console can upgrade a deployment running on ECE to a newer version, add more processing capacity, change plugins, and enable or disable high availability, all at the same time. During the upgrade process, {{es}}, {{kib}}, and all of your deployment components are upgraded simultaneously.
+A single click in the {{ecloud}} console can upgrade a deployment running on ECE to a newer version, add more processing capacity, change plugins, and enable or disable high availability, all at the same time. During the upgrade process, {{es}}, {{kib}}, Elastic APM, and all of your deployment components are upgraded simultaneously.
 
-Once you're prepared to upgrade, do the following: 
+Once you're [prepared to upgrade](/deploy-manage/upgrade/prepare-to-upgrade.md), do the following: 
 
 % Note: Add a link once confirmed where prepare to upgrade will reside in TOC. 
 
@@ -26,7 +30,7 @@ Once you're prepared to upgrade, do the following:
 3. Click **Upgrade**, then **Confirm upgrade**. The new configuration takes a few minutes to create.
 
    ::::{note} 
-   If any incompatibilities are detected when you attempt to upgrade, the UI provides a link to the Upgrade Assistant, which checks for deprecated settings in your cluster and indices and helps you resolve them. If there are any issues that would prevent a successful upgrade, the upgrade is blocked. After resolving the issues, return to the **Deployments** page and restart the upgrade.
+   If any incompatibilities are detected when you attempt to upgrade, the UI provides a link to the Upgrade Assistant, which checks for deprecated settings in your cluster and indices and helps you resolve them. If there are any issues that would prevent a successful upgrade, the upgrade is blocked. After resolving the issues, return to the **Deployments** page and restart the upgrade. Also check the [release notes](/release-notes/index.md) to stay aware of changes and known issues for the version you're upgrading to.
    ::::
 
 **Security realm settings**

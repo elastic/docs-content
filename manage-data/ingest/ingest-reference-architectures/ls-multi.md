@@ -62,8 +62,8 @@ Info on configuring {{agent}}:
 Info on {{ls}} and {{ls}} outputs:
 
 * [{{ls}} Reference](https://www.elastic.co/guide/en/logstash/current)
-* [{{ls}} {{es}} output plugin](logstash://reference/plugins-outputs-elasticsearch.md)
-* [{{ls}} output plugins](logstash://reference/output-plugins.md)
+* [{{ls}} {{es}} output plugin](logstash-docs-md://lsr/plugins-outputs-elasticsearch.md)
+* [{{ls}} output plugins](logstash-docs-md://lsr/output-plugins.md)
 
 Info on {{es}}:
 

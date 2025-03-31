@@ -1,13 +1,16 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-upgrading-eck.html
+applies_to:
+  deployment:
+    eck: ga 3.0.0  
 ---
 
 # Upgrade Elastic Cloud on Kubernetes [k8s-upgrading-eck]
 
 This page provides instructions on how to upgrade the ECK operator.
 
-For upgrades of Elastic Stack applications like Elasticsearch or Kibana, check [Upgrade the Elastic Stack version](../deployment-or-cluster.md).
+To learn how to upgrade {{stack}} applications like {{es}} or {{kib}}, refer to [Upgrade the Elastic Stack version](../deployment-or-cluster.md).
 
 
 ## Before you upgrade to ECK 3.0.0 [k8s-ga-upgrade]

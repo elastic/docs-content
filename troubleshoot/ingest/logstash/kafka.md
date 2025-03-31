@@ -67,7 +67,7 @@ From a performance perspective, decreasing the `max_poll_records` value is prefe
 
 By default, the kafka input plugin checks connectivity and validates the schema registry during plugin registration before events are processed. In some circumstances, this process may fail when it tries to validate an authenticated schema registry, causing the plugin to crash.
 
-The plugin offers a `schema_registry_validation` setting to change the default behavior. This setting allows the plugin to skip validation during registration, which allows the plugin to continue and events to be processed. See the [kafka input plugin documentation](logstash://reference/plugins-inputs-kafka.md#plugins-inputs-kafka-schema_registry_validation) for more information about the plugin and other configuration options.
+The plugin offers a `schema_registry_validation` setting to change the default behavior. This setting allows the plugin to skip validation during registration, which allows the plugin to continue and events to be processed. See the [kafka input plugin documentation](logstash-docs-md://lsr/plugins-inputs-kafka.md#plugins-inputs-kafka-schema_registry_validation) for more information about the plugin and other configuration options.
 
 ::::{note}
 An incorrectly configured schema registry will still stop the plugin from processing events.

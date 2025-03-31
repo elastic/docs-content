@@ -119,7 +119,7 @@ Currently you can’t use SSO to login directly from {{ecloud}} into Kibana endp
 
 Kibana does not currently support restoring a snapshot of their indices across Elastic Cloud deployments.
 
-* [Kibana uses encryption keys](/deploy-manage/security/secure-your-cluster-deployment.md#security-configure-settings) in various places, ranging from encrypting data in some areas of reporting, alerts, actions, connector tokens, ingest outputs used in Fleet and Synthetics monitoring to user sessions.
+* [Kibana uses encryption keys](/deploy-manage/security/secure-your-cluster-deployment.md) in various places, ranging from encrypting data in some areas of reporting, alerts, actions, connector tokens, ingest outputs used in Fleet and Synthetics monitoring to user sessions.
 * Currently, there is not a way to retrieve the values of Kibana encryption keys, or set them in the target deployment before restoring a snapshot. As a result, once a snapshot is restored, Kibana will not be able to decrypt the data required for some features to function properly in the target deployment.
 * If you have already restored a snapshot across deployments and now have broken Kibana saved objects in the target deployment, you will have to recreate all broken configurations and objects, or create a new setup in the target deployment instead of using snapshot restore.
 
