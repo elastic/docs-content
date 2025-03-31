@@ -475,7 +475,6 @@ toc:
                   - file: security/ip-filtering-cloud.md
                     children:
                       - file: security/ec-traffic-filtering-through-the-api.md
-                      - file: security/ece-traffic-filtering-through-the-api.md
                   - file: security/ip-filtering-basic.md
               - file: security/private-link-traffic-filters.md
                 children:
