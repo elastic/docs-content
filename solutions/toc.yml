@@ -121,11 +121,6 @@ toc:
                       - file: observability/apps/real-user-monitoring-rum.md
                       - file: observability/apps/create-upload-source-maps-rum.md
                   - file: observability/apps/use-opentelemetry-with-apm.md
-                    children:
-                      - file: observability/apps/upstream-opentelemetry-collectors-language-sdks.md
-                      - file: observability/apps/collect-metrics.md
-                      - file: observability/apps/limitations.md
-                      - file: observability/apps/resource-atrributes.md
                   - file: observability/apps/apm-k8s-attacher.md
                   - file: observability/apps/monitoring-aws-lambda-functions.md
                   - file: observability/apps/integrate-with-jaeger-deprecated.md
@@ -252,7 +247,6 @@ toc:
                       - file: observability/apps/apm-server-information-api.md
                       - file: observability/apps/elastic-apm-events-intake-api.md
                       - file: observability/apps/elastic-apm-agent-configuration-api.md
-                      - file: observability/apps/opentelemetry-intake-api.md
                       - file: observability/apps/jaeger-event-intake.md
                   - file: observability/apps/what-happens-when-apm-server-elasticsearch-is-down.md
                   - file: observability/apps/apm-server-response-codes.md
