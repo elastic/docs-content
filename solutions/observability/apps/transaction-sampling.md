@@ -76,24 +76,6 @@ In the example in *Figure 4*, `Service A` and `Service B` are Elastic-monitored 
 :title: Using the `restart` trace continuation strategy
 :::
 
-
-### OpenTelemetry [_opentelemetry]
-
-Head-based sampling is implemented directly in the APM agents and SDKs. The sample rate must be propagated between services and the managed intake service in order to produce accurate metrics.
-
-OpenTelemetry offers multiple samplers. However, most samplers do not propagate the sample rate. This results in inaccurate span-based metrics, like APM throughput, latency, and error metrics.
-
-For accurate span-based metrics when using head-based sampling with OpenTelemetry, you must use a [consistent probability sampler](https://opentelemetry.io/docs/specs/otel/trace/tracestate-probability-sampling/). These samplers propagate the sample rate between services and the managed intake service, resulting in accurate metrics.
-
-::::{note}
-OpenTelemetry does not offer consistent probability samplers in all languages. OpenTelemetry users should consider using tail-based sampling instead.
-
-Refer to the documentation of your favorite OpenTelemetry agent or SDK for more information on the availability of consistent probability samplers.
-
-::::
-
-% Stateful only for tail-based sampling
-
 ## Tail-based sampling [apm-tail-based-sampling]
 ```{applies_to}
 stack: all

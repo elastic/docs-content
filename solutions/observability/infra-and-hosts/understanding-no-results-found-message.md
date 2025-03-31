@@ -3,7 +3,7 @@ mapped_urls:
   - https://www.elastic.co/guide/en/observability/current/handle-no-results-found-message.html
   - https://www.elastic.co/guide/en/serverless/current/observability-handle-no-results-found-message.html
 applies_to:
-  stack: 
+  stack:
 ---
 
 # Understanding "no results found" message [observability-handle-no-results-found-message]
@@ -27,13 +27,7 @@ This could be for any of these reasons:
 
     ::::
 
-* You are not using the Elastic Distribution of the OpenTelemetry Collector, which automatically maps data to the Elastic Common Schema (ECS) fields expected by the visualization.
-
-    ::::{tip}
-    Follow our OpenTelemetry quickstart under **Observability** → **Add data** → **Monitor infrastructure** to make sure OpenTelemetry data is correctly mapped to ECS-compliant fields.
-
-    ::::
-
+* You are not using the Elastic Distribution of the OpenTelemetry (EDOT) collector, which automatically maps data to the Elastic Common Schema (ECS) fields expected by the visualization. Refer to the [EDOT documenation](https://elastic.github.io/opentelemetry/) for more information.
 
 * You have explicitly chosen not to send these metrics. You may choose to limit the metrics sent to Elastic to save on space and improve cluster performance. For example, the System integration has options to choose which metrics you want to send. You can [edit the integration policy](https://www.elastic.co/guide/en/fleet/current/edit-or-delete-integration-policy.html) to begin collecting the missing metrics. For example:
 
