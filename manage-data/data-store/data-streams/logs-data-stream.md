@@ -15,7 +15,7 @@ The {{es}} `logsdb` index mode is generally available in Elastic Cloud Hosted an
 
 A logs data stream is a data stream type that stores log data more efficiently.
 
-In benchmarks, log data stored in a logs data stream used ~2.5 times less disk space than a regular data stream. The exact impact varies by data set.
+In benchmarks, log data stored in a logs data stream used ~2.5 times less disk space than a regular data stream, at a small (10-20%) penalty in indexing performance. The exact impact varies by data set and Elasticsearch version.
 
 
 ## Create a logs data stream [how-to-use-logsds]
@@ -181,4 +181,4 @@ The `logsdb` index mode uses the following settings:
 
 ## Notes about upgrading to Logsdb [upgrade-to-logsdb-notes]
 
-TODO: add notes.
+Starting with version `9.0`, `logsdb` index mode is automatically applied to data streams with names matching the pattern `logs-*-*`. This default applies to Elasticsearch instances created in version `9.0` or later, as well as older instances that had no data streams matching the pattern `logs-*-*`. For the latter, you can still [configure `logsdb` index mode manually](#how-to-use-logsds).
