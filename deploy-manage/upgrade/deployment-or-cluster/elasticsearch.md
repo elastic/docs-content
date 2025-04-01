@@ -1,5 +1,6 @@
 ---
 applies_to:
+  stack:
   deployment:
     self: all
 ---
@@ -95,7 +96,7 @@ To upgrade a cluster:
     ::::{tip}
     When you extract the zip or tarball packages, the `elasticsearch-{{bare_version}}` directory contains the {{es}} `config`, `data`, and `logs` directories.
 
-    We recommend moving these directories out of the {{es}} directory so that there is no chance of deleting them when you upgrade {{es}}. To specify the new locations, use the `ES_PATH_CONF` environment variable and the `path.data` and `path.logs` settings. For more information, see [Important {{es}} configuration](../../../deploy-manage/deploy/self-managed/important-settings-configuration.md).
+    We recommend moving these directories out of the {{es}} directory so that there is no chance of deleting them when you upgrade {{es}}. To specify the new locations, use the `ES_PATH_CONF` environment variable and the `path.data` and `path.logs` settings. For more information, refer to [Important {{es}} configuration](../../../deploy-manage/deploy/self-managed/important-settings-configuration.md).
 
     The Debian and RPM packages place these directories in the appropriate place for each operating system. In production, we recommend using the deb or rpm package.
 
@@ -199,4 +200,11 @@ Similarly, if you run a testing/development environment with a single master nod
 
 ## Archived settings [archived-settings]
 
-If you upgrade an {{es}} cluster that uses deprecated cluster or index settings that are not used in the target version, they are archived. We recommend you remove any archived settings after upgrading. For more information, see [Archived settings](../../../deploy-manage/upgrade/deployment-or-cluster/archived-settings.md).
+If you upgrade an {{es}} cluster that uses deprecated cluster or index settings that are not used in the target version, they are archived. We recommend you remove any archived settings after upgrading. For more information, refer to [Archived settings](../../../deploy-manage/upgrade/deployment-or-cluster/archived-settings.md).
+
+## Next steps
+
+Once you've successfully upgraded {{es}}, continue upgrading the remaining {{stack}} components:
+* [{{kib}}](/deploy-manage/upgrade/deployment-or-cluster/kibana.md)
+* [Elastic APM](../../../solutions/observability/apps/upgrade.md)
+* [Ingest components](/deploy-manage/upgrade/ingest-components.md)  
