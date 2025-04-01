@@ -39,7 +39,7 @@ If you have to upgrade to any of the intermediate versions, follow the upgrade i
 - [ECE 2.13 Upgrade](https://www.elastic.co/guide/en/cloud-enterprise/2.13/ece-upgrade.html)
   
   :::{note}
-  Upgrading to 2.13.0 is not recommended as it can cause issues and you may lose access to the admin console. We strongly recommend to upgrade to 2.13.4.
+  We don't recommend upgrading to 2.13.0, as it can cause issues and you may lose access to the admin console. We strongly recommend upgrading to 2.13.4.
   :::
 
 - [ECE 3.8 Upgrade](https://www.elastic.co/guide/en/cloud-enterprise/3.8/ece-upgrade.html)
