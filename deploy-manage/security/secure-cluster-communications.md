@@ -92,17 +92,17 @@ While HTTP TLS encryption is optional in self-managed environments, it is strong
 
 The way that HTTP layer security is managed depends on your deployment type:
 
-::::{tab-set}
+:::::{tab-set}
 :group: deployments
 
-:::{tab-item} ECH and Serverless
+::::{tab-item} ECH and Serverless
 :sync: ech
 
 HTTP TLS for {{es}} and {{kib}} is fully managed by Elastic. No configuration is required.
 {{kib}} instances are automatically configured to connect securely to {{es}}, without requiring manual setup.
-:::
+::::
 
-:::{tab-item} ECE
+::::{tab-item} ECE
 :sync: ece
 
 HTTP TLS for deployments is managed at the platform proxy level. Refer to these guides for ECE-specific security customizations:
@@ -111,27 +111,31 @@ HTTP TLS for deployments is managed at the platform proxy level. Refer to these 
 * [Configure TLS version](./secure-your-elastic-cloud-enterprise-installation/configure-tls-version.md)
 
 {{kib}} instances are automatically configured to connect securely to {{es}}, without requiring manual setup.
-:::
+::::
 
-:::{tab-item} ECK
+::::{tab-item} ECK
 :sync: eck
 
 HTTP TLS is automatically enabled for {{es}} and {{kib}} using self-signed certificates, with [several options available for customization](./k8s-https-settings.md), including custom certificates and domain names.
 
 {{kib}} instances are automatically configured to connect securely to {{es}}, without requiring manual setup.
-:::
+::::
 
-:::{tab-item} Self-managed
+::::{tab-item} Self-managed
 :sync: self
 
 HTTP TLS certificates for {{es}} can be [automatically configured](self-auto-setup.md), or manually set up by following the steps in [Set up HTTP SSL](./set-up-basic-security-plus-https.md).
 
 {{kib}} acts as both an HTTP client to {{es}} and a server for browser access. It performs operations on behalf of users, so it must be properly configured to trust the {{es}} certificates, and to present its own TLS certificate for secure browser connections. These configurations must be performed manually in self-managed deployments.
 
-For environments with stricter security requirements, refer to [Mutual TLS authentication between {{kib}} and {{es}}](./kibana-es-mutual-tls.md).
+:::{note}
+The automatic configuration does not enable TLS on the {{kib}} HTTP endpoint. To encrypt browser traffic to {{kib}}, follow the steps in [](./set-up-basic-security-plus-https.md#encrypt-kibana-browser).
 :::
 
+For environments with stricter security requirements, refer to [Mutual TLS authentication between {{kib}} and {{es}}](./kibana-es-mutual-tls.md).
 ::::
+
+:::::
 
 ## Certificates lifecycle [generate-certificates]
 

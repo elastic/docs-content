@@ -5,8 +5,6 @@ applies_to:
     eck: all
     ece: all
     ess: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/elasticsearch/reference/current/manually-configure-security.html
 ---
 
 # Secure your cluster or deployment

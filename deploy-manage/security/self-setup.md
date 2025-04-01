@@ -3,6 +3,8 @@ navigation_title: "Self-managed security setup"
 applies_to:
   deployment:
     self: ga
+mapped_pages:
+  - https://www.elastic.co/guide/en/elasticsearch/reference/current/manually-configure-security.html
 ---
 
 % scope: initial security setup in self-managed deployments, following the automatic or manual (minimal, basic, https) procedures
