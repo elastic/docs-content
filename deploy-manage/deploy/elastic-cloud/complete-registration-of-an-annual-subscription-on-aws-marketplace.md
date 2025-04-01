@@ -17,9 +17,9 @@ Follow the instructions on this page to complete the registration process for an
 
 2. Follow the offer URL provided by Elastic and accept the annual subscription.
 
-:::{image} /deploy-manage/images/aws-accept-prepaid-offer.png
-:alt: Accept a prepaid offer
-:::
+   :::{image} /deploy-manage/images/aws-accept-prepaid-offer.png
+   :alt: Accept a prepaid offer
+   :::
 
 3. After accepting the offer, select **Set up your account** to complete the registration process.
 
