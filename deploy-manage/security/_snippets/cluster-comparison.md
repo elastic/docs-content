@@ -42,7 +42,7 @@ Select your deployment type below to see what's available and how implementation
 | **Data** | Encryption at rest | Fully managed | Automatically encrypted by Elastic |
 | | Secure settings | N/A |  |
 | | Saved object encryption | Fully managed | Automatically encrypted by Elastic |
-| **User Session** | Kibana Sessions | Fully managed | Automatically configured by Elastic |
+| **User session** | {{kib}} sessions | Fully managed | Automatically configured by Elastic |
 
 :::
 
