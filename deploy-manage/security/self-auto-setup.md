@@ -75,82 +75,25 @@ mapped_pages:
         bin/kibana-setup --enrollment-token <enrollment-token>
         ```
 
-
-
 ## Enroll additional nodes in your cluster [stack-enroll-nodes]
 
-When {{es}} starts for the first time, the security auto-configuration process binds the HTTP layer to `0.0.0.0`, but only binds the transport layer to localhost. This intended behavior ensures that you can start a single-node cluster with security enabled by default without any additional configuration.
-
-Before enrolling a new node, additional actions such as binding to an address other than `localhost` or satisfying bootstrap checks are typically necessary in production clusters. During that time, an auto-generated enrollment token could expire, which is why enrollment tokens aren’t generated automatically.
-
-Additionally, only nodes on the same host can join the cluster without additional configuration. If you want nodes from another host to join your cluster, you need to set `transport.host` to a [supported value](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md#network-interface-values) (such as uncommenting the suggested value of `0.0.0.0`), or an IP address that’s bound to an interface where other hosts can reach it. Refer to [transport settings](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md#transport-settings) for more information.
-
-To enroll new nodes in your cluster, create an enrollment token with the `elasticsearch-create-enrollment-token` tool on any existing node in your cluster. You can then start a new node with the `--enrollment-token` parameter so that it joins an existing cluster.
-
-1. In a separate terminal from where {{es}} is running, navigate to the directory where you installed {{es}} and run the [`elasticsearch-create-enrollment-token`](elasticsearch://reference/elasticsearch/command-line-tools/create-enrollment-token.md) tool to generate an enrollment token for your new nodes.
-
-    ```sh
-    bin/elasticsearch-create-enrollment-token -s node
-    ```
-
-    Copy the enrollment token, which you’ll use to enroll new nodes with your {{es}} cluster.
-
-2. From the installation directory of your new node, start {{es}} and pass the enrollment token with the `--enrollment-token` parameter.
-
-    ```sh
-    bin/elasticsearch --enrollment-token <enrollment-token>
-    ```
-
-    {{es}} automatically generates certificates and keys in the following directory:
-
-    ```sh
-    config/certs
-    ```
-
-3. Repeat the previous step for any new nodes that you want to enroll.
-
+:::{include} /deploy-manage/deploy/self-managed/_snippets/enroll-nodes.md
+:::
 
 ## Connect clients to {{es}} [_connect_clients_to_es_5]
 
-When you start {{es}} for the first time, TLS is configured automatically for the HTTP layer. A CA certificate is generated and stored on disk at:
-
-```sh
-/etc/elasticsearch/certs/http_ca.crt
-```
-
-The hex-encoded SHA-256 fingerprint of this certificate is also output to the terminal. Any clients that connect to {{es}}, such as the [{{es}} Clients](https://www.elastic.co/guide/en/elasticsearch/client/index.html), {{beats}}, standalone {{agent}}s, and {{ls}} must validate that they trust the certificate that {{es}} uses for HTTPS. {{fleet-server}} and {{fleet}}-managed {{agent}}s are automatically configured to trust the CA certificate. Other clients can establish trust by using either the fingerprint of the CA certificate or the CA certificate itself.
-
-If the auto-configuration process already completed, you can still obtain the fingerprint of the security certificate. You can also copy the CA certificate to your machine and configure your client to use it.
-
+:::{include} /deploy-manage/deploy/self-managed/_snippets/connect-clients.md
+:::
 
 ### Use the CA fingerprint [_use_the_ca_fingerprint_5]
 
-Copy the fingerprint value that’s output to your terminal when {{es}} starts, and configure your client to use this fingerprint to establish trust when it connects to {{es}}.
-
-If the auto-configuration process already completed, you can still obtain the fingerprint of the security certificate by running the following command. The path is to the auto-generated CA certificate for the HTTP layer.
-
-```sh
-openssl x509 -fingerprint -sha256 -in config/certs/http_ca.crt
-```
-
-The command returns the security certificate, including the fingerprint. The `issuer` should be `{{es}} security auto-configuration HTTP CA`.
-
-```sh
-issuer= /CN={{es}} security auto-configuration HTTP CA
-SHA256 Fingerprint=<fingerprint>
-```
-
+:::{include} /deploy-manage/deploy/self-managed/_snippets/ca-fingerprint.md
+:::
 
 ### Use the CA certificate [_use_the_ca_certificate_5]
 
-If your library doesn’t support a method of validating the fingerprint, the auto-generated CA certificate is created in the following directory on each {{es}} node:
-
-```sh
-/etc/elasticsearch/certs/http_ca.crt
-```
-
-Copy the `http_ca.crt` file to your machine and configure your client to use this certificate to establish trust when it connects to {{es}}.
-
+:::{include} /deploy-manage/deploy/self-managed/_snippets/ca-cert.md
+:::
 
 ## What’s next? [_whats_next]
 
@@ -159,33 +102,8 @@ Congratulations! You’ve successfully started the {{stack}} with security enabl
 
 ## Security certificates and keys [stack-security-certificates]
 
-When you install {{es}}, the following certificates and keys are generated in the {{es}} configuration directory, which are used to connect a {{kib}} instance to your secured {{es}} cluster and to encrypt internode communication. The files are listed here for reference.
-
-`http_ca.crt`
-:   The CA certificate that is used to sign the certificates for the HTTP layer of this {{es}} cluster.
-
-`http.p12`
-:   Keystore that contains the key and certificate for the HTTP layer for this node.
-
-`transport.p12`
-:   Keystore that contains the key and certificate for the transport layer for all the nodes in your cluster.
-
-`http.p12` and `transport.p12` are password-protected PKCS#12 keystores. {{es}} stores the passwords for these keystores as [secure settings](secure-settings.md). To retrieve the passwords so that you can inspect or change the keystore contents, use the [`bin/elasticsearch-keystore`](elasticsearch://reference/elasticsearch/command-line-tools/elasticsearch-keystore.md) tool.
-
-Use the following command to retrieve the password for `http.p12`:
-
-```sh
-bin/elasticsearch-keystore show xpack.security.http.ssl.keystore.secure_password
-```
-
-Use the following command to retrieve the password for `transport.p12`:
-
-```sh
-bin/elasticsearch-keystore show xpack.security.transport.ssl.keystore.secure_password
-```
-
-Additionally, when you use the enrollment token to connect {{kib}} to a secured {{es}} cluster, the HTTP layer CA certificate is retrieved from {{es}} and stored in the {{kib}} `/data` directory. This file establishes trust between {{kib}} and the {{es}} Certificate Authority (CA) for the HTTP layer.
-
+:::{include} /deploy-manage/deploy/self-managed/_snippets/security-files.md
+:::
 
 ## Cases when security auto configuration is skipped [stack-skip-auto-configuration]
 
@@ -200,8 +118,6 @@ If any of those checks fail, there’s a good indication that you manually confi
 ::::{important}
 If you redirect {{es}} output to a file, security autoconfiguration is skipped. Autoconfigured credentials can only be viewed on the terminal the first time you start {{es}}. If you need to redirect output to a file, start {{es}} without redirection the first time and use redirection on all subsequent starts.
 ::::
-
-
 
 ### Existing environment detected [stack-existing-environment-detected]
 

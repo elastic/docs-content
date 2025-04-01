@@ -3,10 +3,9 @@ navigation_title: "Self-managed security setup"
 applies_to:
   deployment:
     self: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/elasticsearch/reference/current/security-basic-setup-https.html
 ---
 
+% scope: initial security setup in self-managed deployments, following the automatic or manual (minimal, basic, https) procedures
 # Set up security in self-managed deployments
 
 This section explains how to perform the initial security setup for self-managed deployments, including configuring TLS certificates to secure {{es}} and {{kib}} endpoints, setting passwords for built-in users, and generating enrollment tokens to connect {{kib}} or additional {{es}} nodes to the cluster.
@@ -38,11 +37,11 @@ Refer to [Automatic security setup](./self-auto-setup.md) for details about the 
 
 If you’re securing an existing unsecured cluster, or prefer to use your own TLS certificates, follow the manual approach. It involves enabling different layers of protection in sequence, depending on your cluster architecture and security requirements.
 
-1. **Start with [minimal security](set-up-minimal-security.md)**: Enables password-based authentication for built-in users and configures {{kib}} to connect using credentials. Suitable for single-node clusters, but not sufficient for production or multi-node clusters.
+1. **[Set up minimal security](set-up-minimal-security.md)**: Enables password-based authentication for built-in users and configures {{kib}} to connect using credentials. Suitable for single-node clusters, but not sufficient for production or multi-node clusters.
 
-2. **Then [configure transport TLS](./set-up-basic-security.md)**: Required for multi-node clusters running in [production mode](../deploy/self-managed/bootstrap-checks.md#dev-vs-prod-mode). Secures communication between nodes and prevents unauthorized nodes from joining the cluster.
+2. **[Configure transport TLS](./set-up-basic-security.md)**: Required for multi-node clusters running in [production mode](../deploy/self-managed/bootstrap-checks.md#dev-vs-prod-mode). Secures communication between nodes and prevents unauthorized nodes from joining the cluster.
 
-3. **Finally, [configure HTTP TLS](set-up-basic-security-plus-https.md)**: Secures all client communications over HTTPS, including traffic between {{kib}} and {{es}}, and between browsers and {{kib}}. Recommended for all clusters, even single-node setups.
+3. **[Configure HTTP TLS](set-up-basic-security-plus-https.md)**: Secures all client communications over HTTPS, including traffic between {{kib}} and {{es}}, and between browsers and {{kib}}. Recommended for all clusters, even single-node setups.
 
 Each step builds on the previous one. For production environments, it’s strongly recommended to complete all three.
 

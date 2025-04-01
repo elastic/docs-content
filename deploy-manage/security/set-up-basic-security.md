@@ -24,6 +24,7 @@ In this guide, you will learn how to:
 * [Generate a Certificate Authority (CA) and a server certificate using the `elasticsearch-certutil` tool](#generate-certificates).
 * [Configure your {{es}} nodes to use the generated certificate for the transport layer](#encrypt-internode-communication).
 
+Refer to [Transport TLS/SSL settings](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#transport-tls-ssl-settings) for the complete list of available settings in {{es}}.
 
 ## Generate the certificate authority [generate-certificates]
 
@@ -127,3 +128,5 @@ Complete the following steps **for each node in your cluster**. To join the same
 Congratulations! You’ve encrypted communications between the nodes in your cluster and can pass the [TLS bootstrap check](../deploy/self-managed/bootstrap-checks.md#bootstrap-checks-tls).
 
 To add another layer of security, [set up HTTP TLS](./set-up-basic-security-plus-https.md) to encrypt client communications with both {{es}} and {{kib}}.
+
+For other tasks related with TLS encryption in self-managed deployments, refer to [](./self-tls.md).

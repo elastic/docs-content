@@ -21,6 +21,8 @@ In this guide, you will learn how to:
 * [Configure {{kib}} to securely connect to {{es}} over HTTPS](#encrypt-kibana-elasticsearch) by trusting the Certificate Authority (CA) used by {{es}}.
 * [Generate and configure TLS certificates for the {{kib}} HTTP interface to secure {{kib}} access](#encrypt-kibana-browser).
 
+Refer to [HTTP TLS/SSL settings](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#http-tls-ssl-settings) for the complete list of available settings in {{es}}.
+
 ::::{note}
 This guide uses the `elasticsearch-certutil` tool to generate Certificate Authorities (CAs) and TLS certificates. However, using this tool is not required. You can use publicly trusted certificates, your organization's internal certificate management system, or any other method that produces valid certificates.
 
@@ -140,4 +142,10 @@ Once TLS is enabled, all client communications with the cluster will be encrypte
 :::{include} /deploy-manage/security/_snippets/kibana-https-setup.md
 :::
 
-**Next**: Configure any other client that interacts with {{es}} or {{kib}} to use HTTPS and trust the appropriate CA certificate. Refer to [Secure other {{stack}} components](/deploy-manage/security/secure-clients-integrations.md) and [Securing HTTP client applications](./httprest-clients-security.md) for more details.
+## What’s next? [whats-next]
+
+After having enabled HTTPS, you should configure any other client that interacts with {{es}} or {{kib}} to use HTTPS and trust the appropriate CA certificate. Refer to [Secure other {{stack}} components](/deploy-manage/security/secure-clients-integrations.md) and [Securing HTTP client applications](./httprest-clients-security.md) for more details.
+
+For other tasks related with TLS encryption in self-managed deployments, refer to [](./self-tls.md).
+
+For other security features, refer to [](./secure-your-cluster-deployment.md).

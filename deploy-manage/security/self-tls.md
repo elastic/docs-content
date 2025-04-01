@@ -3,25 +3,32 @@ navigation_title: "Self-managed"
 applies_to:
   deployment:
     self: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/elasticsearch/reference/current/security-basic-setup-https.html
 ---
 
-# Manage TLS certificates in self-managed deployments
+% scope: TLS encryption tasks and settings after the initial setup is completed.
+# Manage TLS encryption in self-managed deployments
 
-This section provides guides for configuring TLS encryption in self-managed deployments. It covers how to create and manage TLS certificates, configure {{es}} and {{kib}} service endpoints to use them, and apply related security settings such as supported TLS versions and cipher suites.
+This section provides guidance on managing TLS certificates in self-managed deployments after the initial security setup. It covers tasks such as configuring mutual authentication, renewing certificates, and customizing supported TLS versions and cipher suites.
 
-All procedures in this section focus on manual configuration. If you prefer an automated approach, consider using the [automatic security configuration](./self-auto-setup.md) feature, which sets up TLS certificates for {{es}} HTTP and transport endpoints during initial startup.
+::::{note}
+If you're looking to secure a new or existing cluster by setting up TLS for the first time, refer to [](./self-setup.md), which covers both the [automatic](./self-auto-setup.md) and [manual](./self-setup.md#manual-configuration) configuration procedures.
+::::
 
-For an overview of the endpoints that need securing in {{es}} and {{kib}}, refer to [Communication channels](./secure-cluster-communications.md#communication-channels).
+The topics in this section focus on post-setup tasks:
 
-* [](./set-up-basic-security.md) (**required for multi-node clusters**): Create and configure a Certificate Authority (CA) and certificates to encrypt inter-node traffic.
-* [](./set-up-basic-security-plus-https.md) (**optional but recommended**): Create and configure certificates to encrypt traffic on {{es}} and {{kib}} HTTP endpoints.
-* [](./kibana-es-mutual-tls.md) (**optional**): Strengthen security by requiring {{kib}} to use an additional client certificate in the communication to {{es}}.
+* [](./kibana-es-mutual-tls.md) (**optional**): Strengthen security by requiring {{kib}} to use a client certificate when connecting to {{es}}.
 * [](./updating-certificates.md): Renew or replace existing TLS certificates before they expire.
 * [](./supported-ssltls-versions-by-jdk-version.md): Customize the list of supported SSL/TLS versions in your cluster.
-* [](./enabling-cipher-suites-for-stronger-encryption.md): Enable the use of additional cipher suites, so you can use different cipher suites for your TLS communications or communications with authentication providers.
+* [](./enabling-cipher-suites-for-stronger-encryption.md): Enable additional cipher suites for TLS communications, including those used with authentication providers.
+
+For an overview of the endpoints that need securing in {{es}} and {{kib}}, refer to [Communication channels](./secure-cluster-communications.md#communication-channels).
 
 ## Certificates lifecycle
 
 In self-managed deployments, you are responsible for certificate lifecycle management, including monitoring expiration dates, renewing certificates, and redeploying them as needed. If you used Elastic tools to generate your certificates, refer to [Update TLS certificates](./updating-certificates.md) for guidance on rotating or replacing them.
+
+## Advanced configuration references
+
+Refer to [Transport TLS/SSL settings](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#transport-tls-ssl-settings) and [HTTP TLS/SSL settings](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#http-tls-ssl-settings) for the complete list of TLS-related settings in {{es}}.
+
+For {{kib}}, refer to [{{kib}} general settings](kibana://reference/configuration-reference/general-settings.md), and search for all `ssl`-related settings. TLS settings for the HTTPS server are under the `server.ssl` namespace, while settings for the connection to {{es}} are under `elasticsearch.ssl`.
