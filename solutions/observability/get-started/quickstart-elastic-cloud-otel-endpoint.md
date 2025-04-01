@@ -19,7 +19,7 @@ This endpoint is designed for the following use cases:
 * APM: Application telemetry in OTLP format.
 
 :::{dropdown} Differences from the existing Elastic APM Endpoint
-The Elastic Cloud Managed OTLP Endpoint ensures that OpenTelemetry data is stored without any schema translation, preserving both OpenTelemetry semantic conventions and resource attributes. It supports ingesting OTLP logs, metrics, and traces in a unified manner, ensuring consistent treatment across all telemetry data. This marks a significant improvement over the {observability-guide}/apm-open-telemetry.html[existing functionality], which primarily focuses on traces and the APM use case.
+The Elastic Cloud Managed OTLP Endpoint ensures that OpenTelemetry data is stored without any schema translation, preserving both OpenTelemetry semantic conventions and resource attributes. It supports ingesting OTLP logs, metrics, and traces in a unified manner, ensuring consistent treatment across all telemetry data. This marks a significant improvement over the [existing functionality](/solutions/observability/apps/use-opentelemetry-with-apm.md), which primarily focuses on traces and the APM use case.
 :::
 
 ## Prerequisites
@@ -36,40 +36,42 @@ The Elastic Cloud Managed OTLP Endpoint ensures that OpenTelemetry data is store
 
 ### Get your native OTLP endpoint credentials
 
-. [create a new Observability project](/solutions/observability/get-started/create-an-observability-project.md), or open an existing one.
+1. [create a new Observability project](/solutions/observability/get-started/create-an-observability-project.md), or open an existing one.
 
-. In your {{obs-serverless}} project, go to **Add Data**.
+1. In your {{obs-serverless}} project, go to **Add Data**.
 
-. Under **What do you want to monitor?** select **Application**, and then under **Monitor your application using** select **OpenTelemetry**.
+1. Under **What do you want to monitor?** select **Application**, and then under **Monitor your application using** select **OpenTelemetry**.
 
-  NOTE: Follow this flow for all use cases, including logs and infrastructure monitoring.
+    :::{note}
+    Follow this flow for all use cases, including logs and infrastructure monitoring.
+    :::
 
-. Copy the `OTEL_EXPORTER_OTLP_ENDPOINT` URL. Replace `.apm` with `.ingest` and save this value for later.
+1. Copy the `OTEL_EXPORTER_OTLP_ENDPOINT` URL. Replace `.apm` with `.ingest` and save this value for later.
 
 ### Create an API key
 
-. Click "Create an API Key" to generate a new API key. Copy this value for later.
-. (Optional) Test your new API key. You can do this by sending an empty JSON object to the `/v1/traces` endpoint. For example:
+1. Click "Create an API Key" to generate a new API key. Copy this value for later.
+1. (Optional) Test your new API key. You can do this by sending an empty JSON object to the `/v1/traces` endpoint. For example:
 
-  ```bash
-  curl -X POST \
-    -H "Content-Type: application/json" \
-    -H "Authorization: ApiKey <api-key>" \
-    https://{YOUR_CLUSTER}.ingest.us-east-1.aws.elastic.cloud:443/v1/traces \
-    -d '{}'
-  ```
+    ```bash
+    curl -X POST \
+      -H "Content-Type: application/json" \
+      -H "Authorization: ApiKey <api-key>" \
+      https://{YOUR_CLUSTER}.ingest.us-east-1.aws.elastic.cloud:443/v1/traces \
+      -d '{}'
+    ```
 
-  The response should be similar to:
+    The response should be similar to:
 
-  ```txt
-  {"partialSuccess":{}}% 
-  ```
+    ```txt
+    {"partialSuccess":{}}% 
+    ```
 
 ### Send data to your Elastic Cloud Managed OTLP endpoint
 
-* [](#otel-sdk-running)
-* [](#no-sdk-running)
-* [](#instrumentation-please)
+* [I have an OTel Collector/SDK running](#otel-sdk-running)
+* [I need an OTel Collector/SDK](#no-sdk-running)
+* [I just want to use the instrumentation](#instrumentation-please)
 
 #### I have an OTel Collector/SDK running [otel-sdk-running]
 
@@ -122,8 +124,8 @@ Don't have a collector or SDK running? No problem. Spin up an EDOT collector in 
 * [Kubernetes Quickstart](https://elastic.github.io/opentelemetry/quickstart/serverless/k8s.html)
 * [Hosts & VMs Quickstart](https://elastic.github.io/opentelemetry/quickstart/serverless/hosts_vms.html)
 
-// Commenting out Docker until the docs are ready
-// * [Docker Quickstart](https://elastic.github.io/opentelemetry/quickstart/serverless/docker.html)
+% Commenting out Docker until the docs are ready
+% * [Docker Quickstart](https://elastic.github.io/opentelemetry/quickstart/serverless/docker.html)
 
 #### I just want to use the instrumentation [instrumentation-please]
 
@@ -141,7 +143,7 @@ Exporting failed. Dropping data.
 "Unauthenticated desc = ApiKey prefix not found"
 ```
 
-You must format your API key as `"Authorization": "ApiKey <api-key-value-here>"` or `"Authorization=ApiKey <api-key>"` depending on whether you're using a collector or SDK. See [](#otel-sdk-running) for more information.
+You must format your API key as `"Authorization": "ApiKey <api-key-value-here>"` or `"Authorization=ApiKey <api-key>"` depending on whether you're using a collector or SDK. See [I have an OTel Collector/SDK running](#otel-sdk-running) for more information.
 
 **Error: too many requests**
 

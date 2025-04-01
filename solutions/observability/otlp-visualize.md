@@ -14,7 +14,7 @@ Want to ingest OpenTelemetry data? See [](/solutions/observability/get-started/q
 ## Get creative with Discover
 
 Discover allows you to quickly search and filter your data, get information about the structure of the fields in your data, and display your findings in a visualization.
-Find **Discover** in your {{obs-serverless}} project's UI under *Analyze / Discover*.
+Find **Discover** in your {{obs-serverless}} project's UI under **Analyze** --> **Discover**.
 
 Attributes and resource attributes are prefixed with `attributes.*` and `resource.attributes.*`.
 You can correlate all signals with a single `resource.attributes.*`.
@@ -48,11 +48,9 @@ On the Hosts page, you can view health and performance metrics to help you quick
 
 See [](/solutions/observability/infra-and-hosts/analyze-compare-hosts.md) to learn more.
 
-[discrete]
 ### (Optional) Install the OpenTelemetry Assets integration
 
 Install the OpenTelemetry Assets integrations to access the "[OTEL][Metrics Kubernetes] Cluster Overview" dashboard.
-This dashboard 
 
 In your {{obs-serverless}} project, go to **Integrations** and toggle **Display beta integrations**.
 Search for "OpenTelemetry" and select and install **Kubernetes OpenTelemetry Assets**.
