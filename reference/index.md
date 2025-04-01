@@ -27,7 +27,7 @@ Explore reference content on Search UI and how you can develop fast, modern, and
 
 ## Elaticsearch and index management
 
-Customize your Elastic Stack setup with our configuration reference guides. From JVM settings, our client documentation, Elasticsearch privileges and index lifecycle actions, find the detailed information you need to configure your environment to meet your specific needs.
+Customize your Elastic Stack setup with our configuration reference guides. Explore JVM settings, client documentation, Elasticsearch privileges, and index lifecycle actions to find the detailed information you need to configure your environment to your specific needs.
 
 **Learn more in [Elasticsearch and index management](elasticsearch://reference/index.md)**
 
@@ -57,7 +57,7 @@ Master data querying with our comprehensive guides on QueryDSL, ES|QL, SQL, EQL,
 
 ## Scripting Languages
 
-Access syntax references, function libraries, and best practices to of Painless scripting.
+Access syntax references, function libraries, and best practices for Painless scripting.
 
 **Learn more in [Painless scripting](elasticsearch://reference/scripting-languages/painless/painless.md)**
 
