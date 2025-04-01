@@ -23,14 +23,8 @@ Refer to our [customer success stories](https://www.elastic.co/customers/success
 
 ## Step 1: Choose your deployment type
 
-Elasticsearch provides multiple deployment options:
-
-* **Elastic Cloud**: Fully managed Elasticsearch service, hassle-free with automatic updates. Ideal for those seeking scalability and ease of use. [Learn more about Elastic Cloud](../deploy-manage/deploy/elastic-cloud.md).  
-   **Get started**: [Sign up here](https://cloud.elastic.co/registration?page=docs&placement=docs-body).
-* **Serverless**: A deployment option designed for flexibility and efficiency, allowing you to scale resources automatically without worrying about infrastructure. Perfect for unpredictable workloads. [Learn more about Elasticsearch Serverless](../deploy-manage/deploy/elastic-cloud/serverless.md).  
-   **Get started**: [Sign up here](https://cloud.elastic.co/registration?page=docs&placement=docs-body).
-* **Self-Managed**: Deploy Elasticsearch on-premise or on your infrastructure. Ideal for those who prefer complete control. [Learn about self-managed deployment](../deploy-manage/deploy/self-managed.md).  
-   **Get started**: [Download Elasticsearch here](../deploy-manage/deploy/self-managed/local-development-installation-quickstart.md).
+:::{include} /deploy-manage/_snippets/deployment-options-overview.md
+:::
 
 ## Step 2: Explore the solutions
 
