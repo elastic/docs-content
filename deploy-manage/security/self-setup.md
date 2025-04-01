@@ -19,7 +19,7 @@ For guidance on configuring additional security features, refer to [](./secure-y
 
 Since version 8.0, {{es}} automatically enables security features on first startup when the node is not part of an existing cluster and none of the [incompatible settings](./self-auto-setup.md#stack-existing-settings-detected) have been explicitly configured.
 
-The automatic configuration::
+The automatic configuration:
 
 * Generates TLS certificates for the [transport and HTTP layers](./secure-cluster-communications.md#communication-channels)
 * Applies TLS configuration settings to `elasticsearch.yml`
