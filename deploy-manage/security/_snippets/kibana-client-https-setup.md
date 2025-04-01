@@ -22,9 +22,7 @@ If you obtained the {{es}} certificates using a different method, you must provi
 :::::{admonition} Connect to a secure monitoring cluster
 If the Elastic monitoring features are enabled and you configured a separate {{es}} monitoring cluster, you can also configure {{kib}} to connect to the monitoring cluster through HTTPS. The steps are the same, but each setting is prefixed by `monitoring.ui`. For example, `monitoring.ui.elasticsearch.hosts` and `monitoring.ui.elasticsearch.ssl.certificateAuthorities`.
 
-::::{note}
 If the monitoring cluster uses certificates signed by a different CA than the main cluster, you must provide a separate `elasticsearch-ca.pem` file that corresponds to the monitoring cluster's CA.
-::::
 
 :::::
 
