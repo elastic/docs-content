@@ -122,7 +122,6 @@ Once TLS is enabled, all client communications with the cluster will be encrypte
     4. Start {{es}}.
 
 
-**Next**: [Encrypt HTTP client communications for {{kib}}](#encrypt-kibana-http)
 
 ## Encrypt HTTP communications for {{kib}} [encrypt-kibana-http]
 
