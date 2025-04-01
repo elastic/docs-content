@@ -43,7 +43,7 @@ The AI assistant requires the following:
 
   - For **Observability**: {{stack}} version **8.9** or later, or an **{{observability}} serverless project**.
   
-  - For **Search**:, you must be running Elastic Stack version **8.16.0** or later, or an **{{serverless-short}} {{es}} project**.
+  - For **Search**: {{stack}}  version **8.16.0** or later, or an **{{serverless-short}} {{es}} project**.
   
     - To run {{obs-ai-assistant}} on a self-hosted Elastic stack, you need an [appropriate license](https://www.elastic.co/subscriptions).
  
