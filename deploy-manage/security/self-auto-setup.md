@@ -2,6 +2,10 @@
 navigation_title: Automatic security setup
 applies_to:
   self: ga
+sub:
+  es-conf: "/etc/elasticsearch"
+  slash: "/"
+  escape: "\\"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/configuring-stack-security.html
 ---

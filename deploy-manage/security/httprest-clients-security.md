@@ -1,6 +1,12 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/http-clients.html
+applies_to:
+  deployment:
+    self: all
+    eck: all
+    ess: all
+    ece: all
 ---
 
 # Securing HTTP client applications
