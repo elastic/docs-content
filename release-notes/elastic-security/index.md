@@ -3,6 +3,7 @@ navigation_title: "Elastic Security"
 mapped_pages:
   - https://www.elastic.co/guide/en/security/master/release-notes-header-9.0.0.html
   - https://www.elastic.co/guide/en/security/current/release-notes.html
+  - https://www.elastic.co/guide/en/security/current/whats-new.html
 ---
 # {{elastic-sec}} release notes [elastic-security-release-notes]
 

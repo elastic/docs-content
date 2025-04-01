@@ -179,6 +179,6 @@ The `logsdb` index mode uses the following settings:
 * **`index.mapping.total_fields.ignore_dynamic_beyond_limit`**: `true`
 
 
-## Notes about upgrading to Logsdb [upgrade-to-logsdb-notes]
+## Upgrade to logsdb [upgrade-to-logsdb]
 
 Starting with version `9.0`, `logsdb` index mode is automatically applied to data streams with names matching the pattern `logs-*-*`. This default applies to Elasticsearch instances created in version `9.0` or later, as well as older instances that had no data streams matching the pattern `logs-*-*`. For the latter, you can still [configure `logsdb` index mode manually](#how-to-use-logsds).
