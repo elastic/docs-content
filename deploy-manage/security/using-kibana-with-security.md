@@ -36,9 +36,9 @@ When {{kib}} traffic is balanced across multiple instances connected to the same
 
 The {{kib}} server can instruct browsers to enable additional security controls using HTTP headers.
 
-1. Enable HTTP Strict-Transport-Security.
+1. Enable `HTTP Strict Transport Security (HSTS)`.
 
-    Use [`strictTransportSecurity`](https://www.elastic.co/guide/en/kibana/current/settings.html#server-securityResponseHeaders-strictTransportSecurity) to ensure that browsers will only attempt to access {{kib}} with SSL/TLS encryption. This is designed to prevent manipulator-in-the-middle attacks. To configure this with a lifetime of one year in your `kibana.yml`:
+    Use [`strictTransportSecurity`](https://www.elastic.co/guide/en/kibana/current/settings.html#server-securityResponseHeaders-strictTransportSecurity) to ensure that browsers will only attempt to access [{{kib}} with SSL/TLS encryption](./set-up-basic-security-plus-https.md#encrypt-kibana-browser). This is designed to prevent manipulator-in-the-middle attacks. To configure this with a lifetime of one year in your `kibana.yml`:
 
     ```js
     server.securityResponseHeaders.strictTransportSecurity: "max-age=31536000"
@@ -76,6 +76,7 @@ The following {{kib}} security features are not covered in this document because
 
 * [Session management](./kibana-session-management.md)
 * [Saved objects encryption](./secure-saved-objects.md)
+* [Secure settings](./secure-settings.md)
 * [Security events audit logging](./logging-configuration/security-event-audit-logging.md)
 
 For more details, refer to [](./secure-your-cluster-deployment.md).

@@ -18,6 +18,10 @@ mapped_pages:
 * [Download](https://www.elastic.co/downloads/elasticsearch) and unpack the `elasticsearch` package distribution for your environment.
 * [Download](https://www.elastic.co/downloads/kibana) and unpack the `kibana` package distribution for your environment.
 
+::::{note}
+This guide assumes a `.tar.gz` installation of {{es}} and {{kib}} on Linux.
+For instructions tailored to other installation packages (such as DEB, RPM, Docker, or macOS), refer to the [{{es}}](/deploy-manage/deploy/self-managed/installing-elasticsearch.md#elasticsearch-install-packages) and [{{kib}}](/deploy-manage/deploy/self-managed/install-kibana.md#install) installation guides.
+::::
 
 ## Start {{es}} and enroll {{kib}} with security enabled [stack-start-with-security]
 

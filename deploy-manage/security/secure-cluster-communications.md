@@ -13,15 +13,22 @@ mapped_urls:
 % Scope: landing page for manually handling TLS certificates, and for information about TLS in Elastic Stack in general.
 # TLS encryption for cluster communications
 
-This page explains how to secure communications and set up TLS certificates between components in your {{stack}} deployment.
+This page explains how to secure communications and set up TLS certificates in your {{stack}} deployments.
 
 For {{ech}} deployments and {{serverless-full}} projects, communication security is [fully managed by Elastic](/deploy-manage/security.md#managed-security-in-elastic-cloud) with no configuration required, including TLS certificates.
 
 For ECE, ECK, and self-managed deployments, some of this process can be automated, with opportunities for manual configuration depending on your requirements. This page provides specific configuration guidance to secure the various communication channels between components.
 
-:::{tip}
 For a complete comparison of security feature availability and responsibility by deployment type, refer to [Security features by deployment type](/deploy-manage/security.md#comparison-table).
-:::
+
+::::{admonition} Understanding transport contexts
+The term *transport* can be confusing in {{es}} because it's used in two different contexts:
+- **Transport Layer Security (TLS)** is an industry-standard protocol that secures network communication. It's the modern name for SSL, and the Elastic documentation uses the terms TLS and SSL interchangeably.
+- In {{es}}, the **transport layer** refers to internal node-to-node communication, which occurs over port 9300. This communication uses the [transport interface](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md), which implements a binary protocol specific to {{es}}.
+
+Keep this distinction in mind when configuring security settings.
+::::
+
 
 ## Communication channels overview [communication-channels]
 
@@ -37,7 +44,7 @@ To ensure secure operation, it’s important to understand the communication cha
 |-------------|-----------------|--------------------|
 | [{{es}} transport layer](#encrypt-internode-communication) | Communication between {{es}} nodes within a cluster | Mutual TLS/SSL required for multi-node clusters |
 | [{{es}} HTTP layer](#encrypt-http-communication) | Communication between external clients and {{es}} through the REST API | TLS/SSL optional (but recommended) |
-| [{{kib}} HTTP layer](#encrypt-http-communication) | Communication between external browsers and {{kib}} through the REST API | TLS/SSL optional (but recommended) |
+| [{{kib}} HTTP layer](#encrypt-http-communication) | Communication between external browsers or REST clients and {{kib}} | TLS/SSL optional (but recommended) |
 
 ### Transport layer security [encrypt-internode-communication]
 
@@ -62,7 +69,10 @@ The way that transport layer security is managed depends on your deployment type
 
 :::{tab-item} ECK
 :sync: eck
-{{es}} transport security and TLS certificates are automatically configured by the operator, but you can still [customize its service and CA certificates](/deploy-manage/security/k8s-transport-settings.md).
+
+:::{include} ./_snippets/eck-transport.md
+:::
+
 :::
 
 :::{tab-item} Self-managed
@@ -71,16 +81,6 @@ The way that transport layer security is managed depends on your deployment type
 :::
 
 ::::
-
-::::{admonition} Understanding transport contexts
-Transport Layer Security (TLS) is the name of an industry standard protocol for applying security controls (such as encryption) to network communications. TLS is the modern name for what used to be called Secure Sockets Layer (SSL). The {{es}} documentation uses the terms TLS and SSL interchangeably.
-
-Transport Protocol is the name of the protocol that {{es}} nodes use to communicate with one another. This name is specific to {{es}} and distinguishes the transport port (default `9300`) from the HTTP port (default `9200`). Nodes communicate with one another using the transport port, and REST clients communicate with {{es}} using the HTTP port.
-
-Although the word *transport* appears in both contexts, they mean different things. It’s possible to apply TLS to both the {{es}} transport port and the HTTP port. We know that these overlapping terms can be confusing, so to clarify, in this scenario we’re applying TLS to the {{es}} transport port.
-::::
-
-
 
 ### HTTP layer security [encrypt-http-communication]
 
@@ -116,9 +116,9 @@ HTTP TLS for deployments is managed at the platform proxy level. Refer to these 
 ::::{tab-item} ECK
 :sync: eck
 
-HTTP TLS is automatically enabled for {{es}} and {{kib}} using self-signed certificates, with [several options available for customization](./k8s-https-settings.md), including custom certificates and domain names.
+:::{include} ./_snippets/eck-http.md
+:::
 
-{{kib}} instances are automatically configured to connect securely to {{es}}, without requiring manual setup.
 ::::
 
 ::::{tab-item} Self-managed
@@ -159,9 +159,9 @@ In ECE, the platform automatically renews internal certificates. However, you mu
 :::{tab-item} ECK
 :sync: eck
 
-ECK provides flexible options for managing SSL certificates in your deployments, including automatic certificate generation and rotation, integration with external tools like `cert-manager`, or using your own custom certificates. Custom HTTP certificates require manual management.
+:::{include} ./_snippets/eck-lifecycle.md
+:::
 
-TBD, add links to cert validity settings and cert configuration
 :::
 
 :::{tab-item} Self-managed

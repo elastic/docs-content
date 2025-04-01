@@ -14,7 +14,7 @@ If you're looking to secure a new or existing cluster by setting up TLS for the 
 
 The topics in this section focus on post-setup tasks:
 
-* [](./kibana-es-mutual-tls.md) (**optional**): Strengthen security by requiring {{kib}} to use a client certificate when connecting to {{es}}.
+* [](./kibana-es-mutual-tls.md): Strengthen security by requiring {{kib}} to use a client certificate when connecting to {{es}}.
 * [](./updating-certificates.md): Renew or replace existing TLS certificates before they expire.
 * [](./supported-ssltls-versions-by-jdk-version.md): Customize the list of supported SSL/TLS versions in your cluster.
 * [](./enabling-cipher-suites-for-stronger-encryption.md): Enable additional cipher suites for TLS communications, including those used with authentication providers.

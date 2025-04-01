@@ -10,12 +10,13 @@ mapped_urls:
 
 # Manage HTTP certificates on ECK
 
-## {{es}} certificates [k8s-tls-certificates]
-
+ECK offers several options for securing the HTTP endpoints of {{es}} and {{kib}}. By default, the operator generates a dedicated CA per deployment, and issues individual certificates for each instance. Alternatively, you can supply your own certificates or integrate with external solutions like `cert-manager`.
 
 :::{note}
-This section only covers TLS certificates for the HTTP layer. TLS certificates for the transport layer that are used for internal communications between Elasticsearch nodes are managed by ECK and cannot be changed. You can however set your own certificate authority for the [transport layer](/deploy-manage/security/k8s-transport-settings.md#k8s-transport-ca).
+This section only covers TLS certificates for the HTTP layer. TLS certificates for the transport layer that are used for internal communications between {{es}} nodes are managed by ECK and cannot be changed. You can however [set your own certificate authority for the transport layer](/deploy-manage/security/k8s-transport-settings.md#k8s-transport-ca).
 :::
+
+## {{es}} certificates [k8s-tls-certificates]
 
 By default, the operator manages a self-signed certificate with a custom CA for each resource. The CA, the certificate and the private key are each stored in a separate `Secret`.
 
@@ -198,9 +199,13 @@ spec:
 
 ## Kibana HTTP configuration in ECK [k8s-kibana-http-configuration]
 
+By default, ECK creates a `ClusterIP` [Service](https://kubernetes.io/docs/concepts/services-networking/service/) and associates it with the {{kib}} deployment.
+
+If you need to expose {{kib}} externally or customize the service settings, ECK provides flexible options, including support for load balancers, custom DNS/IP SANs, and user-provided certificates.
+
 ### Load balancer settings and TLS SANs [k8s-kibana-http-publish]
 
-By default a `ClusterIP` [Service](https://kubernetes.io/docs/concepts/services-networking/service/) is created and associated with the {{kib}} deployment. If you want to expose {{kib}} externally with a [load balancer](https://kubernetes.io/docs/concepts/services-networking/service/#loadbalancer), it is recommended to include a custom DNS name or IP in the self-generated certificate.
+If you want to expose {{kib}} externally with a [load balancer](https://kubernetes.io/docs/concepts/services-networking/service/#loadbalancer), it is recommended to include a custom DNS name or IP in the self-generated certificate.
 
 ```yaml
 apiVersion: kibana.k8s.elastic.co/v1
@@ -226,7 +231,7 @@ spec:
 
 ### Provide your own certificate [k8s-kibana-http-custom-tls]
 
-If you want to use your own certificate, the required configuration is identical to {{es}}. Refer to [setup your own {{es}} certificate](#k8s-setting-up-your-own-certificate).
+If you want to use your own certificate, the required configuration is identical to {{es}}. Refer to [setup your own {{es}} certificate](#k8s-setting-up-your-own-certificate) for more information.
 
 ## Disable TLS [k8s-disable-tls]
 
