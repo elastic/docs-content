@@ -17,7 +17,7 @@ mapped_pages:
 
 You can view the status of deployment actions and get additional information on events, including why a particular event fails e.g. misconfiguration details.
 
-1. On the Applications page for **serverlessrepo-elastic-serverless-forwarder**, click **Deployments**.
+1. On the Applications page for **serverlessrepo-elastic-serverless-forwarder**, click **Hosted deployments**.
 2. You can view the **Deployment history** here and refresh the page for updates as the application deploys. It should take around 5 minutes to deploy — if the deployment fails for any reason, the create events will be rolled back, and you will be able to see an explanation for which event failed.
 
 ::::{note}

@@ -19,7 +19,7 @@ Before setting up your custom alias, your platform administrator must enable the
 To add an alias to an existing deployment:
 
 1. [Log into the Cloud UI](log-into-cloud-ui.md).
-2. From the **Deployments** menu, select a deployment.
+2. From the **Hosted deployments** menu, select a deployment.
 3. Under **Custom endpoint alias**, select **Edit**.
 4. Define a new alias. Make sure you choose something meaningful to you.
 
@@ -34,7 +34,7 @@ To add an alias to an existing deployment:
 To remove an alias from your deployment, or if you want to re-assign an alias to another deployment, follow these steps:
 
 1. [Log into the Cloud UI](log-into-cloud-ui.md).
-2. From the **Deployments** menu, select a deployment.
+2. From the **Hosted deployments** menu, select a deployment.
 3. Under **Custom endpoint alias**, select **Edit**.
 4. Remove the text from the **Custom endpoint alias** text box.
 5. Select **Update alias**.
