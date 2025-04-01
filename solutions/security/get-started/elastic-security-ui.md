@@ -227,33 +227,33 @@ Use your keyboard to interact with draggable elements in the Elastic Security UI
 
 * Press the `Tab` key to apply keyboard focus to an element within a table. Or, use your mouse to click on an element and apply keyboard focus to it.
 
-:::{image} /solutions/images/security-timeline-accessiblity-keyboard-focus.gif
-:alt: timeline accessiblity keyboard focus
-:width: 650px
-:screenshot:
-:::
+  :::{image} /solutions/images/security-timeline-accessiblity-keyboard-focus.gif
+  :alt: timeline accessiblity keyboard focus
+  :width: 650px
+  :screenshot:
+  :::
 
 * Press `Enter` on an element with keyboard focus to display its menu and press `Tab` to apply focus sequentially to menu options. The `f`, `o`, `a`, `t`, `c` hotkeys are automatically enabled during this process and offer an alternative way to interact with menu options.
 
-:::{image} /solutions/images/security-timeline-accessiblity-keyboard-focus-hotkeys.gif
-:alt: timeline accessiblity keyboard focus hotkeys
-:width: 500px
-:screenshot:
-:::
+  :::{image} /solutions/images/security-timeline-accessiblity-keyboard-focus-hotkeys.gif
+  :alt: timeline accessiblity keyboard focus hotkeys
+  :width: 500px
+  :screenshot:
+  :::
 
 * Press the spacebar once to begin dragging an element to a different location and press it a second time to drop it. Use the directional arrows to move the element around the UI.
 
-:::{image} /solutions/images/security-timeline-ui-accessiblity-drag-n-drop.gif
-:alt: timeline ui accessiblity drag n drop
-:screenshot:
-:::
+  :::{image} /solutions/images/security-timeline-ui-accessiblity-drag-n-drop.gif
+  :alt: timeline ui accessiblity drag n drop
+  :screenshot:
+  :::
 
 * If an event has an event renderer, press the `Shift` key and the down directional arrow to apply keyboard focus to the event renderer and `Tab` or `Shift` + `Tab` to navigate between fields. To return to the cells in the current row, press the up directional arrow. To move to the next row, press the down directional arrow.
 
-:::{image} /solutions/images/security-timeline-accessiblity-event-renderers.gif
-:alt: timeline accessiblity event renderers
-:screenshot:
-:::
+  :::{image} /solutions/images/security-timeline-accessiblity-event-renderers.gif
+  :alt: timeline accessiblity event renderers
+  :screenshot:
+  :::
 
 
 ### Navigate the Elastic Security UI [timeline-tab]
@@ -262,30 +262,30 @@ Use your keyboard to navigate through rows, columns, and menu options in the Ela
 
 * Use the directional arrows to move keyboard focus right, left, up, and down in a table.
 
-:::{image} /solutions/images/security-timeline-accessiblity-directional-arrows.gif
-:alt: timeline accessiblity directional arrows
-:width: 500px
-:screenshot:
-:::
+  :::{image} /solutions/images/security-timeline-accessiblity-directional-arrows.gif
+  :alt: timeline accessiblity directional arrows
+  :width: 500px
+  :screenshot:
+  :::
 
 * Press the `Tab` key to navigate through a table cell with multiple elements, such as buttons, field names, and menus. Pressing the `Tab` key will sequentially apply keyboard focus to each element in the table cell.
 
-:::{image} /solutions/images/security-timeline-accessiblity-tab-keys.gif
-:alt: timeline accessiblity tab keys
-:width: 400px
-:screenshot:
-:::
+  :::{image} /solutions/images/security-timeline-accessiblity-tab-keys.gif
+  :alt: timeline accessiblity tab keys
+  :width: 400px
+  :screenshot:
+  :::
 
 * Use `CTRL + Home` to shift keyboard focus to the first cell in a row. Likewise, use `CTRL + End` to move keyboard focus to the last cell in the row.
 
-:::{image} /solutions/images/security-timeline-accessiblity-shifting-keyboard-focus.gif
-:alt: timeline accessiblity shifting keyboard focus
-:screenshot:
-:::
+  :::{image} /solutions/images/security-timeline-accessiblity-shifting-keyboard-focus.gif
+  :alt: timeline accessiblity shifting keyboard focus
+  :screenshot:
+  :::
 
 * Use the `Page Up` and `Page Down` keys to scroll through the page.
 
-:::{image} /solutions/images/security-timeline-accessiblity-page-up-n-down.gif
-:alt: timeline accessiblity page up n down
-:screenshot:
-:::
+  :::{image} /solutions/images/security-timeline-accessiblity-page-up-n-down.gif
+  :alt: timeline accessiblity page up n down
+  :screenshot:
+  :::

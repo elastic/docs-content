@@ -219,6 +219,10 @@ To add runtime fields to your data views, open the data view you want to change,
 
 7. Click **Create field**.
 
+:::{warning}
+Runtime fields created against a data view are not applied to the underlying index mapping in {{es}}.
+:::
+
 
 #### Runtime field examples [runtime-field-examples]
 

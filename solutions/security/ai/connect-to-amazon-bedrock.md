@@ -82,7 +82,7 @@ Create the access keys that will authenticate your Elastic connector:
 2. Search for the user you just created, and click its name.
 3. Go to the **Security credentials** tab.
 4. Under **Access keys**, click **Create access key**.
-5. Select **Third-party service**, check the box under **Confirmation***, click ***Next**, then click **Create access key**.
+5. Select **Third-party service**, check the box under **Confirmation**, click **Next**, then click **Create access key**.
 6. Click **Download .csv file** to download the key. Store it securely.
 
 The following video demonstrates these steps.
