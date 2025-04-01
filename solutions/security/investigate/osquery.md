@@ -243,7 +243,7 @@ When you save queries or add queries to a pack, you can optionally map Osquery r
     * For saved queries: Open the **Saved queries** tab, and then click the edit icon for the query that you want to map.
     * For packs: Open the **Packs** tab, edit a pack, and then click the edit icon for the query that you want to map.
 
-2. In the **ECS mapping** section, select an ***ECS field** to map.
+2. In the **ECS mapping** section, select an **ECS field** to map.
 3. In the **Value** column, use the dropdown on the left to choose what type of value to map to the ECS field:
 
     * **Osquery value**: Select an Osquery field. The fields available are based on the SQL query entered, and only include fields that the query returns. When the query runs, the ECS field is set dynamically to the value of the Osquery field selected.

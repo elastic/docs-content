@@ -121,7 +121,7 @@ The **Security AI settings** page allows you to configure AI Assistant. To acces
 
 It has the following tabs:
 
-* **Conversations:** When you open AI Assistant from certain pages, such as ***Alerts**, it defaults to the relevant conversation type. For each conversation type, choose the default System Prompt, the default connector, and the default model (if applicable). The **Streaming** setting controls whether AI Assistant’s responses appear word-by-word (streamed), or as a complete block of text. Streaming is currently only available for OpenAI models.
+* **Conversations:** When you open AI Assistant from certain pages, such as **Alerts**, it defaults to the relevant conversation type. For each conversation type, choose the default System Prompt, the default connector, and the default model (if applicable). The **Streaming** setting controls whether AI Assistant’s responses appear word-by-word (streamed), or as a complete block of text. Streaming is currently only available for OpenAI models.
 * **Connectors:** Manage all LLM connectors.
 * **System Prompts:** Edit existing System Prompts or create new ones. To create a new System Prompt, type a unique name in the **Name** field, then press **enter**. Under **Prompt**, enter or update the System Prompt’s text. Under **Contexts**, select where the System Prompt should appear.
 * **Quick Prompts:** Modify existing Quick Prompts or create new ones. To create a new Quick Prompt, type a unique name in the **Name** field, then press **enter**. Under **Prompt**, enter or update the Quick Prompt’s text.
@@ -137,7 +137,7 @@ To modify Anonymization settings, you need the **Elastic AI Assistant: All** pri
 ::::
 
 
-The **Anonymization** tab of the Security AI settings menu allows you to define default data anonymization behavior for events you send to AI Assistant. Fields with **Allowed*** toggled on are included in events provided to AI Assistant. ***Allowed*** fields with ***Anonymized** set to **Yes** are included, but with their values obfuscated.
+The **Anonymization** tab of the Security AI settings menu allows you to define default data anonymization behavior for events you send to AI Assistant. Fields with **Allowed** toggled on are included in events provided to AI Assistant. **Allowed** fields with **Anonymized** set to **Yes** are included, but with their values obfuscated.
 
 ::::{note}
 You can access anonymization settings directly from the **Attack Discovery** page by clicking the settings (![Settings icon](/solutions/images/security-icon-settings.png "title =20x20")) button next to the model selection dropdown menu.
