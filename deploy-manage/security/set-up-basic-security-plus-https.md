@@ -136,7 +136,6 @@ Once TLS is enabled, all client communications with the cluster will be encrypte
 :::{include} /deploy-manage/security/_snippets/kibana-client-https-setup.md
 :::
 
-**Next**: [Encrypt traffic between your browser and {{kib}}](#encrypt-kibana-browser)
 
 
 ### Encrypt traffic between your browser and {{kib}} [encrypt-kibana-browser]
