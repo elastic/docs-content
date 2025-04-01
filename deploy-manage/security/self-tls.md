@@ -10,9 +10,7 @@ applies_to:
 
 This section provides guidance on managing TLS certificates in self-managed deployments after the initial security setup. It covers tasks such as configuring mutual authentication, renewing certificates, and customizing supported TLS versions and cipher suites.
 
-::::{note}
 If you're looking to secure a new or existing cluster by setting up TLS for the first time, refer to [](./self-setup.md), which covers both the [automatic](./self-auto-setup.md) and [manual](./self-setup.md#manual-configuration) configuration procedures.
-::::
 
 The topics in this section focus on post-setup tasks:
 
@@ -21,7 +19,7 @@ The topics in this section focus on post-setup tasks:
 * [](./supported-ssltls-versions-by-jdk-version.md): Customize the list of supported SSL/TLS versions in your cluster.
 * [](./enabling-cipher-suites-for-stronger-encryption.md): Enable additional cipher suites for TLS communications, including those used with authentication providers.
 
-For an overview of the endpoints that need securing in {{es}} and {{kib}}, refer to [Communication channels](./secure-cluster-communications.md#communication-channels).
+For an overview of the endpoints that can be secured in {{es}} and {{kib}}, refer to [Communication channels](./secure-cluster-communications.md#communication-channels).
 
 ## Certificates lifecycle
 

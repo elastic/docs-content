@@ -23,7 +23,7 @@ To [enroll {{kib}} with an {{es}} cluster](/deploy-manage/security/self-auto-set
 Using a PKI realm is a [subscription feature](https://www.elastic.co/subscriptions).
 ::::
 
-#### Configure {{kib}} and {{es}} to use mutual TLS authentication [_configure_kib_and_es_to_use_mutual_tls_authentication]
+## Configure {{kib}} and {{es}} to use mutual TLS authentication [_configure_kib_and_es_to_use_mutual_tls_authentication]
 
 If you haven’t already, start {{kib}} and connect it to {{es}} using the [enrollment token](/deploy-manage/security/self-auto-setup.md#stack-start-with-security).
 

@@ -13,21 +13,21 @@ mapped_urls:
 % Scope: landing page for manually handling TLS certificates, and for information about TLS in Elastic Stack in general.
 # TLS encryption for cluster communications
 
-This page explains how to secure communications and setup TLS certificates between components in your {{stack}} deployment.
+This page explains how to secure communications and set up TLS certificates between components in your {{stack}} deployment.
 
-For {{ech}} and {{serverless-full}} deployments, communication security is fully managed by Elastic with no configuration required, including TLS certificates.
+For {{ech}} deployments and {{serverless-full}} projects, communication security is [fully managed by Elastic](/deploy-manage/security.md#managed-security-in-elastic-cloud) with no configuration required, including TLS certificates.
 
-For ECE, ECK, and self-managed deployments, this page provides specific configuration guidance to secure the various communication channels between components.
+For ECE, ECK, and self-managed deployments, some of this process can be automated, with opportunities for manual configuration depending on your requirements. This page provides specific configuration guidance to secure the various communication channels between components.
 
 :::{tip}
-For a complete comparison of security feature availability and responsibility by deployment type, see [Security features by deployment type](/deploy-manage/security.md#comparison-table).
+For a complete comparison of security feature availability and responsibility by deployment type, refer to [Security features by deployment type](/deploy-manage/security.md#comparison-table).
 :::
 
 ## Communication channels overview [communication-channels]
 
 Both {{es}} and {{kib}}, the core components of the {{stack}}, expose service endpoints that must be secured. {{es}} handles traffic at two levels:
 * The **transport layer** (defaults to port `9300`), used for internal communication between nodes in the cluster.
-* The **HTTP layer** (defaults to port `9200`), used by external clients — including Kibana — to send requests via the REST API.
+* The **HTTP layer** (defaults to port `9200`), used by external clients — including Kibana — to send requests using the REST API.
 
 Additionally, {{kib}} functions as a web server, exposing its own **HTTP endpoint** (defaults to port `5601`) to users, and also acts as a client when sending requests to {{es}}.
 
@@ -77,7 +77,7 @@ Transport Layer Security (TLS) is the name of an industry standard protocol for 
 
 Transport Protocol is the name of the protocol that {{es}} nodes use to communicate with one another. This name is specific to {{es}} and distinguishes the transport port (default `9300`) from the HTTP port (default `9200`). Nodes communicate with one another using the transport port, and REST clients communicate with {{es}} using the HTTP port.
 
-Although the word *transport* appears in both contexts, they mean different things. It’s possible to apply TLS to both the {{es}} transport port and the HTTP port. We know that these overlapping terms can be confusing, so to clarify, in this scenario we’re applying TLS to the {{es}} transport port. In [](./set-up-basic-security-plus-https.md), we’ll apply TLS to the {{es}} HTTP port.
+Although the word *transport* appears in both contexts, they mean different things. It’s possible to apply TLS to both the {{es}} transport port and the HTTP port. We know that these overlapping terms can be confusing, so to clarify, in this scenario we’re applying TLS to the {{es}} transport port.
 ::::
 
 

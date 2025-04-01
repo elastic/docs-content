@@ -12,10 +12,6 @@ mapped_urls:
 
 ## {{es}} certificates [k8s-tls-certificates]
 
-```{applies_to}
-deployment:
-    eck: all
-```
 
 :::{note}
 This section only covers TLS certificates for the HTTP layer. TLS certificates for the transport layer that are used for internal communications between Elasticsearch nodes are managed by ECK and cannot be changed. You can however set your own certificate authority for the [transport layer](/deploy-manage/security/k8s-transport-settings.md#k8s-transport-ca).

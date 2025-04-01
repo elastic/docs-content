@@ -17,11 +17,11 @@ Select your deployment type below to see what's available and how implementation
 
 | Category | Security feature | Status | Notes |
 |------------------|------------|--------------|-------------|
-| **Communication** | TLS (HTTP Layer) | Fully managed | Automatically configured by Elastic |
-| | TLS (Transport Layer) | Fully managed | Automatically configured by Elastic |
+| **Communication** | TLS (HTTP layer) | Fully managed | Automatically configured by Elastic |
+| | TLS (Transport layer) | Fully managed | Automatically configured by Elastic |
 | **Network** | IP traffic filtering | Configurable | [Configure IP-based access restrictions](/deploy-manage/security/ip-filtering-cloud.md) |
 | | Private link | Configurable | [Establish a secure VPC connection](/deploy-manage/security/private-link-traffic-filters.md) |
-| | Kubernetes Network Policies | N/A |  |
+| | Kubernetes network policies | N/A |  |
 | **Data** | Encryption at rest | Managed | You can [bring your own encryption key](/deploy-manage/security/encrypt-deployment-with-customer-managed-encryption-key.md) |
 | | Secure settings | Configurable | Automatically protected by Elastic |
 | | Saved object encryption | Fully managed | Automatically encrypted by Elastic |
@@ -34,11 +34,11 @@ Select your deployment type below to see what's available and how implementation
 
 | Category| Security feature | Status | Notes |
 |------------------|------------|--------------|-------------|
-| **Communication** | TLS (HTTP Layer) | Fully managed | Automatically configured by Elastic |
-| | TLS (Transport Layer) | Fully managed | Automatically configured by Elastic |
+| **Communication** | TLS (HTTP layer) | Fully managed | Automatically configured by Elastic |
+| | TLS (Transport layer) | Fully managed | Automatically configured by Elastic |
 | **Network** | IP traffic filtering | N/A | |
 | | Private link | N/A |  |
-| | Kubernetes Network Policies | N/A |  |
+| | Kubernetes network policies | N/A |  |
 | **Data** | Encryption at rest | Fully managed | Automatically encrypted by Elastic |
 | | Secure settings | N/A |  |
 | | Saved object encryption | Fully managed | Automatically encrypted by Elastic |
@@ -51,15 +51,15 @@ Select your deployment type below to see what's available and how implementation
 
 | Category| Security feature | Status | Notes |
 |------------------|------------|--------------|-------------|
-| **Communication** | TLS (HTTP Layer) | Managed | You can [configure custom certificates](/deploy-manage/security/secure-your-elastic-cloud-enterprise-installation/manage-security-certificates.md) |
-| | TLS (Transport Layer) | Fully managed | Automatically configured by Elastic |
+| **Communication** | TLS (HTTP layer) | Managed | You can [configure custom certificates](/deploy-manage/security/secure-your-elastic-cloud-enterprise-installation/manage-security-certificates.md) |
+| | TLS (Transport layer) | Fully managed | Automatically configured by Elastic |
 | **Network** | IP traffic filtering | Configurable | [Configure IP-based access restrictions](/deploy-manage/security/ip-filtering-cloud.md) |
 | | Private link | N/A |  |
-| | Kubernetes Network Policies | N/A |  |
+| | Kubernetes network policies | N/A |  |
 | **Data** | Encryption at rest | N/A |  |
 | | Secure settings | Configurable | [Configure secure settings](/deploy-manage/security/secure-settings.md) |
 | | Saved object encryption | Configurable | [Enable encryption for saved objects](/deploy-manage/security/secure-saved-objects.md) |
-| **User Session** | Kibana Sessions | Configurable | [Customize session parameters](/deploy-manage/security/kibana-session-management.md) |
+| **User session** | {{kib}} sessions | Configurable | [Customize session parameters](/deploy-manage/security/kibana-session-management.md) |
 
 :::
 
@@ -68,15 +68,15 @@ Select your deployment type below to see what's available and how implementation
 
 | Category| Security feature | Status | Notes |
 |------------------|------------|--------------|-------------|
-| **Communication** | TLS (HTTP Layer) | Managed | [Multiple options](/deploy-manage/security/k8s-https-settings.md) |
-| | TLS (Transport Layer) | Managed | [Multiple options](/deploy-manage/security/k8s-transport-settings.md) |
+| **Communication** | TLS (HTTP layer) | Managed | [Multiple options](/deploy-manage/security/k8s-https-settings.md) for customization |
+| | TLS (Transport layer) | Managed | [Multiple options](/deploy-manage/security/k8s-transport-settings.md) for customization |
 | **Network** | IP traffic filtering | Configurable | [Configure IP-based access restrictions](/deploy-manage/security/ip-filtering-basic.md) |
 | | Private link | N/A |  |
-| | Kubernetes Network Policies | Configurable | [Apply network policies to your Pods](/deploy-manage/security/k8s-network-policies.md) |
+| | Kubernetes network policies | Configurable | [Apply network policies to your Pods](/deploy-manage/security/k8s-network-policies.md) |
 | **Data** | Encryption at rest | N/A |  |
 | | Secure settings | Configurable | [Configure secure settings](/deploy-manage/security/k8s-secure-settings.md) |
 | | Saved object encryption | Configurable | [Enable encryption for saved objects](/deploy-manage/security/secure-saved-objects.md) |
-| **User Session** | Kibana Sessions | Configurable | [Customize session parameters](/deploy-manage/security/kibana-session-management.md) |
+| **User session** | {{kib}} sessions | Configurable | [Customize session parameters](/deploy-manage/security/kibana-session-management.md) |
 
 :::
 
@@ -90,11 +90,11 @@ Select your deployment type below to see what's available and how implementation
 | | TLS (Transport Layer) | Configurable | [Initial security setup](/deploy-manage/security/self-setup.md) |
 | **Network** | IP traffic filtering | Configurable | [Configure IP-based access restrictions](/deploy-manage/security/ip-filtering-basic.md) |
 | | Private link | N/A |  |
-| | Kubernetes Network Policies | N/A |  |
+| | Kubernetes network policies | N/A |  |
 | **Data** | Encryption at rest | N/A |  |
 | | Keystore security | Configurable | [Configure secure settings](/deploy-manage/security/secure-settings.md) |
 | | Saved object encryption | Configurable | [Enable encryption for saved objects](/deploy-manage/security/secure-saved-objects.md) |
-| **User Session** | Kibana Sessions | Configurable | [Customize session parameters](/deploy-manage/security/kibana-session-management.md) |
+| **User session** | {{kib}} sessions | Configurable | [Customize session parameters](/deploy-manage/security/kibana-session-management.md) |
 
 :::
 ::::

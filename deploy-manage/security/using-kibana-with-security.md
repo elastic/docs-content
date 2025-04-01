@@ -11,7 +11,7 @@ mapped_urls:
 
 This document describes security settings you may need to configure in self-managed deployments of {{kib}}. These settings help secure access, manage connections, and ensure consistent behavior across multiple instances.
 
-Additional {{kib}} security features that apply to all deployment types — such as session management, saved objects encryption, and audit logging — are covered in a separate section [at the end of this document](#additional-security-topics).
+Additional {{kib}} security features that apply to all deployment types, such as session management, saved objects encryption, and audit logging, are covered in a separate section [at the end of this document](#additional-security-topics).
 
 ## Configure encryption keys [security-configure-settings]
 
