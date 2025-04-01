@@ -47,12 +47,12 @@ If you’re securing an existing unsecured cluster, or prefer to use your own TL
 
 Each step builds on the previous one. For production environments, it’s strongly recommended to complete all three.
 
+For additional TLS configuration options, refer to [](./self-tls.md).
+
 ## Kibana security configuration
 
 Refer to [](./using-kibana-with-security.md) to learn how to implement the following security best practices for {{kib}}:
 
 * Set an encryption key for clients sessions
-* Enable TLS on the HTTP service endpoint
-* Enable mutual authentication between {{kib}} and {{es}}
 * Use secure HTTP headers
 * Require a Content Security Policy
