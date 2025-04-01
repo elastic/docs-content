@@ -78,6 +78,8 @@ The way that transport layer security is managed depends on your deployment type
 :::{tab-item} Self-managed
 :sync: self
 {{es}} transport security can be [automatically configured](self-auto-setup.md), or manually set up by following the steps in [](set-up-basic-security.md).
+
+For additional TLS configuration options, refer to [](./self-tls.md).
 :::
 
 ::::
@@ -133,6 +135,8 @@ The automatic configuration does not enable TLS on the {{kib}} HTTP endpoint. To
 :::
 
 For environments with stricter security requirements, refer to [Mutual TLS authentication between {{kib}} and {{es}}](./kibana-es-mutual-tls.md).
+
+For additional TLS configuration options, refer to [](./self-tls.md).
 ::::
 
 :::::
