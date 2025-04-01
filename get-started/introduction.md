@@ -6,7 +6,7 @@ mapped_pages:
 # Use cases [introduction]
 $$$what-is-kib$$$
 $$$what-is-es$$$
-$$$use-cases$$$
+
 The {{stack}} is used for a wide and growing range of use cases. Here are a few examples:
 
 ## Observability
@@ -16,11 +16,15 @@ The {{stack}} is used for a wide and growing range of use cases. Here are a few 
 - **Real user monitoring (RUM)**: Monitor, quantify, and analyze user interactions with web applications.
 - **OpenTelemetry**: Reuse your existing instrumentation to send telemetry data to the Elastic Stack using the OpenTelemetry standard.
 
+[**Get started with {{observability}} →**](../solutions/observability/get-started.md)
+
 ## Security
 
 - **Security information and event management (SIEM)**: Collect, store, and analyze security data from applications, systems, and services.
 - **Endpoint security**: Monitor and analyze endpoint security data.
 - **Threat hunting**: Search and analyze data to detect and respond to security threats.
+
+[**Get started with {{elastic-sec}} →**](../solutions/security/get-started.md)
 
 ## Search
 
@@ -31,6 +35,8 @@ The {{stack}} is used for a wide and growing range of use cases. Here are a few 
 - **Build search experiences**: Add hybrid search capabilities to apps or websites, or build enterprise search engines over your organization’s internal data sources.
 - **Retrieval augmented generation (RAG)**: Use {{ecloud}} as a retrieval engine to supplement generative AI models with more relevant, up-to-date, or proprietary data for a range of use cases.
 - **Geospatial search**: Search for locations and calculate spatial relationships using geospatial queries.
+
+[**Get started with {{es}} →**](../solutions/search/get-started.md)
 
 This is just a sample of search, observability, and security use cases enabled by {{ecloud}}. Refer to Elastic [customer success stories](https://www.elastic.co/customers/success-stories) for concrete examples across a range of industries.
 
