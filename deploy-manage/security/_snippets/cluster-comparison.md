@@ -25,7 +25,7 @@ Select your deployment type below to see what's available and how implementation
 | **Data** | Encryption at rest | Managed | You can [bring your own encryption key](/deploy-manage/security/encrypt-deployment-with-customer-managed-encryption-key.md) |
 | | Secure settings | Configurable | Automatically protected by Elastic |
 | | Saved object encryption | Fully managed | Automatically encrypted by Elastic |
-| **User session** | Kibana sessions | Configurable | [Customize session parameters](/deploy-manage/security/kibana-session-management.md) |
+| **User session** | {{kib}} sessions | Configurable | [Customize session parameters](/deploy-manage/security/kibana-session-management.md) |
 
 :::
 
