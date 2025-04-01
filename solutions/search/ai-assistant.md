@@ -1,6 +1,6 @@
 ---
 applies_to:
-  stack: ga 8.16.0
+  stack: ga
   serverless: ga
 ---
 
