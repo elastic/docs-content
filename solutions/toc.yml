@@ -314,7 +314,7 @@ toc:
                   - file: observability/apps/analyze-monitors.md
                   - file: observability/apps/inspect-uptime-duration-anomalies.md
               - file: observability/apps/configure-settings.md
-          - file: observability/apps/otlp-visualize.md
+          - file: observability/otlp-visualize.md
           - file: observability/apps/tutorial-monitor-java-application.md
       - file: observability/cicd.md
       - file: observability/cloud.md
