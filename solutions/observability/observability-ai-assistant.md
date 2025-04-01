@@ -20,7 +20,7 @@ The AI Assistant uses generative AI to provide:
 :screenshot:
 :::
 
-By default AI Assistant uses Elastic LLM, a preconfigured large language model (LLM) connector that works out of the box.
+By default AI Assistant uses a preconfigured large language model (LLM) connector that works out of the box.
 It also integrates with your LLM provider through our supported {{stack}} connectors:
 
 * [OpenAI connector](kibana://reference/connectors-kibana/openai-action-type.md) for OpenAI or Azure OpenAI Service.
@@ -38,7 +38,7 @@ Also, the data you provide to the Observability AI assistant is *not* anonymized
 
 ::::
 
-## Elastic LLM [elastic-llm-ai-assistant]
+## Preconfigured LLM [preconfigured-llm-ai-assistant]
 
 :::{include} ../_snippets/elastic-llm.md
 :::
@@ -49,7 +49,7 @@ The AI assistant requires the following:
 
 * {{stack}} version 8.9 and later.
 * A self-deployed connector service if [search connectors](elasticsearch://reference/search-connectors/self-managed-connectors.md) are used to populate external data into the knowledge base.
-* If not using the default Elastic LLM connector, an account with a third-party generative AI provider that preferably supports function calling. If your provider does not support function calling, you can configure AI Assistant settings under **Stack Management** to simulate function calling, but this might affect performance.
+* If not using the preconfigured default LLM connector, you need an account with a third-party generative AI provider that preferably supports function calling. If your provider does not support function calling, you can configure AI Assistant settings under **Stack Management** to simulate function calling, but this might affect performance.
 
     Refer to the [connector documentation](../../deploy-manage/manage-connectors.md) for your provider to learn about supported and default models.
 
@@ -80,7 +80,7 @@ Elastic does not control third-party tools, and assumes no responsibility or lia
 ## Set up the AI Assistant [obs-ai-set-up]
 
 :::{note}
-If you use the preconfigured [Elastic LLM](#elastic-llm-ai-assistant) connector, you can skip this step. Your LLM connector is ready to use.
+If you use [the preconfigured LLM](#preconfigured-llm-ai-assistant) connector, you can skip this step. Your LLM connector is ready to use.
 
 :::
 

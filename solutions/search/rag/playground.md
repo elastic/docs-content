@@ -59,7 +59,7 @@ Here’s a simpified overview of how Playground works:
 
     * User can also **Download the code** to integrate into application
 
-## Elastic LLM [elastic-llm-playground]
+## Elastic LLM [preconfigured-llm-playground]
 
 :::{include} ../../_snippets/elastic-llm.md
 :::
@@ -77,7 +77,7 @@ To use Playground, you’ll need the following:
 
     * See [ingest data](playground.md#playground-getting-started-ingest) if you’d like to ingest sample data.
 
-3. If not using the default Elastic LLM connector, an account with a supported LLM provider:
+3. If not using the default preconfigured LLM connector, you will need an account with a supported LLM provider:
 
     * **Amazon Bedrock**
 
@@ -120,7 +120,7 @@ You can also use locally hosted LLMs that are compatible with the OpenAI SDK. On
 ### Connect to LLM provider [playground-getting-started-connect]
 
 :::{note}
-If you use the preconfigured [Elastic LLM](#elastic-llm-playground) connector, you can skip this step. Your LLM connector is ready to use.
+If you use [the preconfigured LLM](#preconfigured-llm-playground) connector, you can skip this step. Your LLM connector is ready to use.
 
 :::
 
