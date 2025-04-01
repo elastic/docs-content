@@ -39,7 +39,7 @@ EDOT includes many types of instrumentation. The following table shows the statu
 | OpenAI | Python | [openai](https://github.com/elastic/elastic-otel-python-instrumentations/tree/main/instrumentation/elastic-opentelemetry-instrumentation-openai)| ✅ | ✅ | ✅ | 
 | OpenAI| JS/Node | [openai](https://github.com/elastic/elastic-otel-node/tree/main/packages/instrumentation-openai) | ✅  | ✅ | ✅ | 
 | OpenAI| Java| [com.openai:openai-java](https://github.com/elastic/elastic-otel-java/tree/main/instrumentation/openai-client-instrumentation) | ✅ | ✅ | ✅| 
-| (AWS) Boto| Python| [botocore](https://github.com/open-telemetry/opentelemetry-python-contrib/blob/main/instrumentation/opentelemetry-instrumentation-botocore/src/opentelemetry/instrumentation/botocore/extensions/bedrock.py)| ✅ | ✅ | ✅ | 
+| (AWS) Boto| Python| [botocore](https://opentelemetry-python-contrib.readthedocs.io/en/latest/instrumentation/botocore/botocore.html)| ✅ | ✅ | ✅ | 
 | Google Vertex AI | Python | [google-cloud-aiplatform](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation-genai/opentelemetry-instrumentation-vertexai) | ✅ | 🚧| 🚧| 
 
 ## Getting started
