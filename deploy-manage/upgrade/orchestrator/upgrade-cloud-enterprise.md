@@ -83,7 +83,7 @@ Before starting the upgrade process, verify that your setup meets the following 
 - **For *offline* or *air-gapped* installations**. Additional steps are required to upgrade Elastic Cloud Enterprise. After downloading the installation script for the new version, pull and load the required container images and push them to a private Docker registry. To learn more about pulling and loading Docker images, check Install [ECE offline](../../../deploy-manage/deploy/cloud-enterprise/air-gapped-install.md).
 - Check the security cluster’s zone count. Due to internal limitations in ECE, the built-in security cluster cannot be scaled to two zones during the ECE upgrade procedure. If the zone count is set to 2 zones, scale the cluster to 3 or 1 zone(s) before upgrading ECE.
 - **[Verify if you can upgrade directly](#ece-upgrade-version-matrix)**. When upgrading to ECE 4.0 or a higher version: 
-  - You need to first upgrade to ECE 3.8.0 or later. Refer to the [ECE version 3.8.0 upgrade instructions]((https://www.elastic.co/guide/en/cloud-enterprise/3.8/ece-upgrade.html)) for details.
+  - You need to first upgrade to ECE 3.8.0 or later. Refer to the [ECE version 3.8.0 upgrade instructions](https://www.elastic.co/guide/en/cloud-enterprise/3.8/ece-upgrade.html) for details.
 
   :::{warning}
   Don’t manually upgrade your system deployments if you are on ECE version 2.7.0 or a later version, as it can cause issues and you may lose access to the Cloud UI. Note that the only exception to that rule is when you’re upgrading to ECE 3.6.0 and your system deployments are at a version lower than 7.17.0.
