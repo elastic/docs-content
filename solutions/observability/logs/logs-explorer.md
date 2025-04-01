@@ -13,11 +13,10 @@ From the `logs-*` or `All logs` data view in Discover, you can quickly search an
 
 To open **Discover**, find `Discover` in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Select the `logs-*` or `All logs` data view from the **Data view** menu.
 
-:::{image} ../../../images/observability-log-explorer.png
+:::{image} ../../images/observability-log-explorer.png
 :alt: Screen capture of Discover
 :class: screenshot
 :::
-
 
 ## Required {{kib}} privileges [logs-explorer-privileges]
 
@@ -46,9 +45,9 @@ The actions column provides additional information about your logs.
 
 **Expand:** ![The icon to expand log details](/solutions/images/observability-expand-icon.png "") Open the log details to get an in-depth look at an individual log file.
 
-**Degraded document indicator:** ![The icon that shows ignored fields](../../../images/observability-pagesSelect-icon.png "") This indicator shows if any of the document’s fields were ignored when it was indexed. Ignored fields could indicate malformed fields or other issues with your document. Use this information to investigate and determine why fields are being ignored.
+**Degraded document indicator:** ![The icon that shows ignored fields](../../images/observability-pagesSelect-icon.png "") This indicator shows if any of the document’s fields were ignored when it was indexed. Ignored fields could indicate malformed fields or other issues with your document. Use this information to investigate and determine why fields are being ignored.
 
-**Stacktrace indicator:** ![The icon that shows if a document contains stack traces](../../../images/observability-apmTrace-icon.png "") This indicator makes it easier to find documents that contain additional information in the form of stacktraces.
+**Stacktrace indicator:** ![The icon that shows if a document contains stack traces](../../images/observability-apmTrace-icon.png "") This indicator makes it easier to find documents that contain additional information in the form of stacktraces.
 
 
 ## View log details [view-log-details]
@@ -59,10 +58,10 @@ These details provide immediate feedback and context for what’s happening and 
 
 The following actions help you filter and focus on specific fields in the log details:
 
-* **Filter for value (![filter for value icon](../../../images/observability-plusInCircle.png "")):** Show logs that contain the specific field value.
-* **Filter out value (![filter out value icon](../../../images/observability-minusInCircle.png "")):** Show logs that do **not** contain the specific field value.
-* **Filter for field present (![filter for present icon](../../../images/observability-filter.png "")):** Show logs that contain the specific field.
-* **Toggle column in table (![toggle column in table icon](../../../images/observability-listAdd.png "")):** Add or remove a column for the field to the main Discover table.
+* **Filter for value (![filter for value icon](../../images/observability-plusInCircle.png "")):** Show logs that contain the specific field value.
+* **Filter out value (![filter out value icon](../../images/observability-minusInCircle.png "")):** Show logs that do **not** contain the specific field value.
+* **Filter for field present (![filter for present icon](../../images/observability-filter.png "")):** Show logs that contain the specific field.
+* **Toggle column in table (![toggle column in table icon](../../images/observability-listAdd.png "")):** Add or remove a column for the field to the main Discover table.
 
 
 ## View log data set details [view-log-data-set-details]

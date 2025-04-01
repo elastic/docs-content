@@ -21,7 +21,7 @@ Analyze log data from your hosts, services, Kubernetes, Apache, and many more.
 
 In **Discover**, you can quickly search and filter your log data, get information about the structure of the fields, and display your findings in a visualization.
 
-:::{image} ../../../images/serverless-log-explorer-overview.png
+:::{image} ../../images/serverless-log-explorer-overview.png
 :alt: Discover showing log events
 :class: screenshot
 :::

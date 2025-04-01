@@ -211,7 +211,7 @@ Navigate to {{kib}} and choose among the following monitoring options:
 
 * **Visualize your logs with Discover**
 
-    :::{image} ../../../images/observability-firehose-cloudtrail-logsexplorer.png
+    :::{image} ../../images/observability-firehose-cloudtrail-logsexplorer.png
     :alt: Visualize CloudTrail logs with Discover
 
     :::

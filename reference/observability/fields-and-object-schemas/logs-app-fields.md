@@ -6,7 +6,7 @@ mapped_pages:
 # Discover logs fields [logs-app-fields]
 
 
-This section lists the required fields Discover uses to display log data. Please note that some of the fields listed are not [ECS fields](asciidocalypse://docs/ecs/docs/reference/index.md#_what_is_ecs).
+This section lists the required fields Discover uses to display log data. Please note that some of the fields listed are not [ECS fields](ecs://reference/index.md#_what_is_ecs).
 
 `@timestamp`
 :   Date/time when the event originated.
