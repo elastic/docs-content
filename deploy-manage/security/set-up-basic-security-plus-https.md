@@ -13,7 +13,9 @@ mapped_pages:
 
 Enabling TLS on the HTTP layer, widely known as HTTPS, ensures that all client communications with your cluster are encrypted, adding a critical layer of security.
 
-This document focuses on the **manual configuration** of HTTPS for {{es}} and {{kib}}. Use this approach if you want to provide your own TLS certificates, generate them with Elastic’s tools, or have full control over the configuration. Alternatively, {{es}} can [automatically generate and configure HTTPS certificates](./self-auto-setup.md).
+This document focuses on the **manual configuration** of HTTPS for {{es}} and {{kib}}. Use this approach if you want to provide your own TLS certificates, generate them with Elastic’s tools, or have full control over the configuration.
+
+Note that HTTPS configuration for {{kib}} is always manual. Alternatively, {{es}} supports [automatic HTTPS setup](./self-auto-setup.md), which can simplify the process if full customization isn't required.
 
 In this guide, you will learn how to:
 
