@@ -16,17 +16,17 @@ Select your deployment type below to see what's available and how implementation
 :::{tab-item} {{ech}}
 :sync: cloud-hosted
 
-| Category | Security feature | Status | Description |
+| Category | Security feature | Status | Notes |
 |------------------|------------|--------------|-------------|
 | **Communication** | TLS (HTTP Layer) | Fully managed | Automatically configured by Elastic |
 | | TLS (Transport Layer) | Fully managed | Automatically configured by Elastic |
 | **Network** | IP traffic filtering | Configurable | [Configure IP-based access restrictions](/deploy-manage/security/ip-traffic-filtering.md) |
-| | Private link | Configurable | [Establish secure VPC connection](/deploy-manage/security/private-link-traffic-filters.md) |
+| | Private link | Configurable | [Establish a secure VPC connection](/deploy-manage/security/private-link-traffic-filters.md) |
 | | Kubernetes Network Policies | N/A |  |
 | **Data** | Encryption at rest | Managed | You can [bring your own encryption key](/deploy-manage/security/encrypt-deployment-with-customer-managed-encryption-key.md) |
 | | Secure settings | Configurable | Automatically protected by Elastic |
 | | Saved object encryption | Fully managed | Automatically encrypted by Elastic |
-| **User Session** | Kibana Sessions | Configurable | [Customize session parameters](/deploy-manage/security/kibana-session-management.md) |
+| **User session** | Kibana sessions | Configurable | [Customize session parameters](/deploy-manage/security/kibana-session-management.md) |
 
 :::
 

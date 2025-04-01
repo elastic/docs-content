@@ -6,4 +6,4 @@ For self-managed deployments, security features are automatically configured whe
 If you want to use your own TLS certificates, then you should manually configure security.
 :::
 
-Deployments managed by {{eck}}, {{ece}}, {{ech}}, and {{serverless-short}} automatically configure security by default. This includes setting the `elastic` user password, generating TLS certificates, and configuring {{kib}} to connect to {{es}} securely. Disabling security is not supported in these deployment types.
+Deployments managed by {{eck}}, {{ece}}, {{ech}}, as well as {{serverless-full}} projects, automatically configure security by default. This includes setting the `elastic` user password, generating TLS certificates, and configuring {{kib}} to connect to {{es}} securely. Disabling security is not supported in these deployment types.
