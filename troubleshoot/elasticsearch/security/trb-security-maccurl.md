@@ -1,4 +1,11 @@
 ---
+applies_to:
+  stack: 
+  deployment:
+    eck: 
+    ess: 
+    ece: 
+    self: 
 navigation_title: Certificate verification with curl on Mac
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/trb-security-maccurl.html
