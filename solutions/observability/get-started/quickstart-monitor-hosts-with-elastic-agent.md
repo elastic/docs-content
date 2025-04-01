@@ -1,7 +1,9 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/quickstart-monitor-hosts-with-elastic-agent.html
   - https://www.elastic.co/guide/en/serverless/current/observability-quickstarts-monitor-hosts-with-elastic-agent.html
+  - https://www.elastic.co/guide/en/starting-with-the-elasticsearch-platform-and-its-solutions/current/getting-started-kubernetes.html
+  - https://www.elastic.co/guide/en/starting-with-the-elasticsearch-platform-and-its-solutions/current/getting-started-observability.html
 applies_to:
   stack:
   serverless:

@@ -9,7 +9,9 @@ mapped_urls:
 
 # AWS PrivateLink traffic filters
 
-Traffic filtering, to only AWS PrivateLink connections, is one of the security layers available in {{ecloud}}. It allows you to limit how your deployments can be accessed.
+Traffic filtering to only AWS PrivateLink connections is one of the security layers available in {{ech}}. It allows you to limit how your deployments can be accessed.
+
+Refer to [](/deploy-manage/security/traffic-filtering.md) to learn more about traffic filtering in {{ech}}, and how traffic filter rules work.
 
 AWS PrivateLink establishes a secure connection between two AWS Virtual Private Clouds (VPCs). The VPCs can belong to separate accounts, i.e. a service provider and its service consumers. AWS routes the PrivateLink traffic within the AWS data center and never exposes it to the public internet. In such a configuration, {{ecloud}} is the third-party service provider and the customers are service consumers.
 
@@ -46,7 +48,7 @@ Transport client is not supported over PrivateLink connections.
 
 PrivateLink Service is set up by Elastic in all supported AWS regions under the following service names:
 
-::::{dropdown} AWS Public Regions
+::::{dropdown} AWS public regions
 | **Region** | **VPC Service Name** | **Private hosted zone domain name** | **AZ Names (AZ IDs)** |
 | --- | --- | --- | --- |
 | af-south-1 | `com.amazonaws.vpce.af-south-1.vpce-svc-0d3d7b74f60a6c32c` | `vpce.af-south-1.aws.elastic-cloud.com` | `af-south-1a` (`afs1-az1`), `af-south-1b` (`afs1-az2`), `af-south-1c` (`afs1-az3`) |
@@ -74,7 +76,7 @@ PrivateLink Service is set up by Elastic in all supported AWS regions under the 
 ::::
 
 
-::::{dropdown} GovCloud Regions
+::::{dropdown} GovCloud regions
 | **Region** | **VPC Service Name** | **Private hosted zone domain name** |
 | --- | --- | --- |
 | us-gov-east-1 (GovCloud) | `com.amazonaws.vpce.us-gov-east-1.vpce-svc-0bba5ffa04f0cb26d` | `vpce.us-gov-east-1.aws.elastic-cloud.com` |
@@ -93,11 +95,11 @@ The process of setting up the PrivateLink connection to your clusters is split b
 |  | 5. Interact with your deployments over PrivateLink. |
 
 
-## Ensure your VPC endpoint is in all availability zones supported by {{ecloud}} on the region for the VPC service [ec-aws-vpc-overlapping-azs]
+## Ensure your VPC is in all availability zones [ec-aws-vpc-overlapping-azs]
 
-::::{note}
+Ensure your VPC endpoint is in all availability zones supported by {{ecloud}} on the region for the VPC service.
+
 Ensuring that your VPC is in all supported {{ecloud}} availability zones for a particular region avoids potential for a traffic imbalance. That imbalance may saturate some coordinating nodes and underutilize others in the deployment, eventually impacting performance. Enabling all supported {{ecloud}} zones ensures that traffic is balanced optimally.
-::::
 
 
 You can find the zone name to zone ID mapping with AWS CLI:
@@ -150,18 +152,28 @@ The mapping will be different for your region. Our production VPC Service for `u
 
 3. Test the connection.
 
-    Find out the endpoint of your deployment. You can do that by selecting **Copy endpoint** in the Cloud UI. It looks something like `my-deployment-d53192.es.us-east-1.aws.found.io`. `my-deployment-d53192` is an alias, and `es` is the product you want to access within your deployment.
+    Find out the endpoint of your deployment. You can do that by selecting **Copy endpoint** in the Cloud UI. It looks something like:
+    
+    ```
+    my-deployment-d53192.es.us-east-1.aws.found.io
+    ```
+    
+    where `my-deployment-d53192` is an alias, and `es` is the product you want to access within your deployment.
 
     To access your {{es}} cluster over PrivateLink:
 
     * If you have a [custom endpoint alias](/deploy-manage/deploy/elastic-cloud/custom-endpoint-aliases.md) configured, you can use the custom endpoint URL to connect.
     * Alternatively, use the following URL structure:
 
-        `https://{{alias}}.{product}.{{private_hosted_zone_domain_name}}`
+        ```
+        https://{{alias}}.{product}.{{private_hosted_zone_domain_name}}
+        ```
 
         For example:
 
-        `https://my-deployment-d53192.es.vpce.us-east-1.aws.elastic-cloud.com`
+        ```text
+        https://my-deployment-d53192.es.vpce.us-east-1.aws.elastic-cloud.com
+        ```
 
 
     ::::{tip}
@@ -171,9 +183,12 @@ The mapping will be different for your region. Our production VPC Service for `u
 
     You can test the AWS console part of the setup with a following curl (substitute the region and {{es}} ID with your cluster):
 
+    Request:
     ```sh
     $ curl -v https://my-deployment-d53192.es.vpce.us-east-1.aws.elastic-cloud.com
-    ..
+    ```
+    Response:
+    ```sh
     * Server certificate:
     *  subject: CN=*.us-east-1.aws.elastic-cloud.com
     *  SSL certificate verify ok.
@@ -196,9 +211,9 @@ Follow these high-level steps to add private link rules to your deployments.
 4. [Access the deployment over a private link](/deploy-manage/security/aws-privatelink-traffic-filters.md#ec-access-the-deployment-over-private-link).
 
 
-### Finding your VPC endpoint ID [ec-find-your-endpoint]
+### Find your VPC endpoint ID [ec-find-your-endpoint]
 
-Having trouble finding your VPC endpoint ID? You can find it in the AWS console.
+You can find your VPC endpoint ID in the AWS console:
 
 :::{image} /deploy-manage/images/cloud-ec-private-link-endpoint-id.png
 :alt: VPC Endpoint ID
@@ -210,21 +225,20 @@ Having trouble finding your VPC endpoint ID? You can find it in the AWS console.
 
 Once you know your VPC endpoint ID you can create a private link traffic filter rule set.
 
-1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
-2. Find your deployment on the home page in the **Hosted deployments** card and select **Manage** to access it directly. Or, select **Hosted deployments** to go to the **Deployments** page to view all of your deployments.
-3. Under the **Features** tab, open the **Traffic filters** page.
-4. Select **Create filter**.
-5. Select **Private link endpoint**.
-6. Create your rule set, providing a meaningful name and description.
-7. Select the region for the rule set.
-8. Enter your VPC endpoint ID.
-9. Select if this rule set should be automatically attached to new deployments.
+
+:::{include} _snippets/create-filter.md
+:::
+1. Select **Private link endpoint**.
+2. Create your rule set, providing a meaningful name and description.
+3. Select the region for the rule set.
+4. Enter your VPC endpoint ID.
+5. Select if this rule set should be automatically attached to new deployments.
 
     ::::{note}
     Each rule set is bound to a particular region and can be only assigned to deployments in the same region.
     ::::
 
-10. (Optional) You can [claim your VPC endpoint ID](/deploy-manage/security/claim-traffic-filter-link-id-ownership-through-api.md), so that no other organization is able to use it in a traffic filter ruleset.
+6.  (Optional) You can [claim your VPC endpoint ID](/deploy-manage/security/claim-traffic-filter-link-id-ownership-through-api.md), so that no other organization is able to use it in a traffic filter ruleset.
 
 The next step is to [associate the rule set](/deploy-manage/security/aws-privatelink-traffic-filters.md#ec-associate-traffic-filter-private-link-rule-set) with your deployments.
 
@@ -233,10 +247,8 @@ The next step is to [associate the rule set](/deploy-manage/security/aws-private
 
 To associate a private link rule set with your deployment:
 
-1. Go to the deployment.
-2. On the **Security** page, under **Traffic filters** select **Apply filter**.
-3. Choose the filter you want to apply and select **Apply filter**.
-
+:::{include} _snippets/associate-filter.md
+:::
 
 ### Access the deployment over a PrivateLink [ec-access-the-deployment-over-private-link]
 
@@ -247,11 +259,19 @@ Use the alias you’ve set up as CNAME DNS record to access your deployment.
 ::::
 
 
-If your deployment alias is `my-deployment-12ab9b` and it is located in `us-east-1` region you can access it under `https://my-deployment-12ab9b.es.vpce.us-east-1.aws.elastic-cloud.com`.
+If your deployment alias is `my-deployment-12ab9b` and it is located in `us-east-1` region you can access it at the following URL:
 
+```
+https://my-deployment-12ab9b.es.vpce.us-east-1.aws.elastic-cloud.com
+```
+
+Request:
 ```sh
 $ curl -u 'username:password' -v https://my-deployment-d53192.es.vpce.us-east-1.aws.elastic-cloud.com
-..
+```
+
+Response:
+```
 < HTTP/1.1 200 OK
 ..
 ```
@@ -271,28 +291,15 @@ The settings `xpack.fleet.agents.fleet_server.hosts` and `xpack.fleet.outputs` t
 
 You can edit a rule set name or to change the VPC endpoint ID.
 
-1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
-2. Find your deployment on the home page in the **Hosted deployments** card and select **Manage** to access it directly. Or, select **Hosted deployments** to go to the **Deployments** page to view all of your deployments.
-3. Under the **Features** tab, open the **Traffic filters** page.
-4. Find the rule set you want to edit.
-5. Select the **Edit** icon.
-
+:::{include} _snippets/edit-ruleset.md
+:::
 
 ### Delete a PrivateLink rule set [ec-delete-traffic-filter-private-link-rule-set]
 
-If you need to remove a rule set, you must first remove any associations with deployments.
+:::{include} _snippets/delete-ruleset.md
+:::
 
-To delete a rule set with all its rules:
+### Remove a PrivateLink rule set association from your deployment [remove-filter-deployment]
 
-1. [Remove any deployment associations](/deploy-manage/security/aws-privatelink-traffic-filters.md#ec-remove-association-traffic-filter-private-link-rule-set).
-2. Under the **Features** tab, open the **Traffic filters** page.
-3. Find the rule set you want to edit.
-4. Select the **Remove** icon. The icon is inactive if there are deployments assigned to the rule set.
-
-
-### Remove a PrivateLink rule set association from your deployment [ec-remove-association-traffic-filter-private-link-rule-set]
-
-To remove an association through the UI:
-
-1. Go to the deployment.
-2. On the **Security** page, under **Traffic filters** select **Remove**.
+:::{include} _snippets/remove-filter.md
+:::
