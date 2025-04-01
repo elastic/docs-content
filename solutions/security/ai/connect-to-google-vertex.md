@@ -32,18 +32,7 @@ Before continuing, you should have an active project in one of Google Vertex AIâ
 
 The following video demonstrates these steps.
 
-::::{admonition}
-<script type="text/javascript" async src="https://play.vidyard.com/embed/v4.js"></script>
-<img
-  style="width: 100%; margin: auto; display: block;"
-  class="vidyard-player-embed"
-  src="https://play.vidyard.com/vFhtbiCZiKhvdZGy2FjyeT.jpg"
-  data-uuid="vFhtbiCZiKhvdZGy2FjyeT"
-  data-v="4"
-  data-type="inline"
-/>
-</br>
-::::
+[![connect-vertex-api-video](https://play.vidyard.com/vFhtbiCZiKhvdZGy2FjyeT.jpg)](https://videos.elastic.co/watch/vFhtbiCZiKhvdZGy2FjyeT?)
 
 
 ::::{note}
@@ -63,19 +52,7 @@ For more information about enabling the Vertex AI API, refer to [Googleâ€™s docu
 
 The following video demonstrates these steps.
 
-::::{admonition}
-<script type="text/javascript" async src="https://play.vidyard.com/embed/v4.js"></script>
-<img
-  style="width: 100%; margin: auto; display: block;"
-  class="vidyard-player-embed"
-  src="https://play.vidyard.com/tmresYYiags2w2nTv3Gac8.jpg"
-  data-uuid="tmresYYiags2w2nTv3Gac8"
-  data-v="4"
-  data-type="inline"
-/>
-</br>
-::::
-
+[![create-vertex-account-video](https://play.vidyard.com/tmresYYiags2w2nTv3Gac8.jpg)](https://videos.elastic.co/watch/tmresYYiags2w2nTv3Gac8?)
 
 
 ## Generate a key [_generate_an_api_key]
@@ -87,18 +64,7 @@ The following video demonstrates these steps.
 
 The following video demonstrates these steps.
 
-::::{admonition}
-<script type="text/javascript" async src="https://play.vidyard.com/embed/v4.js"></script>
-<img
-  style="width: 100%; margin: auto; display: block;"
-  class="vidyard-player-embed"
-  src="https://play.vidyard.com/hrcy3F9AodwhJcV1i2yqbG.jpg"
-  data-uuid="hrcy3F9AodwhJcV1i2yqbG"
-  data-v="4"
-  data-type="inline"
-/>
-</br>
-::::
+[![create-vertex-key-video](https://play.vidyard.com/hrcy3F9AodwhJcV1i2yqbG.jpg)](https://videos.elastic.co/watch/hrcy3F9AodwhJcV1i2yqbG?)
 
 
 
@@ -117,15 +83,5 @@ Finally, configure the connector in your Elastic deployment:
 
 The following video demonstrates these steps.
 
-::::{admonition}
-<script type="text/javascript" async src="https://play.vidyard.com/embed/v4.js"></script>
-<img
-  style="width: 100%; margin: auto; display: block;"
-  class="vidyard-player-embed"
-  src="https://play.vidyard.com/8L2WPm2HKN1cH872Gs5uvL.jpg"
-  data-uuid="8L2WPm2HKN1cH872Gs5uvL"
-  data-v="4"
-  data-type="inline"
-/>
-</br>
-::::
+
+[![configure-gemini-connector-video](https://play.vidyard.com/8L2WPm2HKN1cH872Gs5uvL.jpg)](https://videos.elastic.co/watch/8L2WPm2HKN1cH872Gs5uvL?)

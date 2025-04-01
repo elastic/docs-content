@@ -1,14 +1,16 @@
 ---
 navigation_title: "Upgrade on {{eck}}"
+applies_to:
+  stack:
+  deployment:
+   eck:
 ---
 
 # Upgrade your deployment on {{eck}} (ECK)
 
 The ECK orchestrator can safely perform upgrades to newer versions of the {{stack}}. 
 
-Once you are prepared to upgrade, ensure the ECK version is [compatible](https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-supported.html) with the {{stack}} version you’re upgrading to. If it's incompatible, [upgrade your orchestrator](/deploy-manage/upgrade/orchestrator/upgrade-cloud-on-k8s.md). 
-
-% Note: Add a link once confirmed where prepare to upgrade will reside in TOC. 
+Once you're [prepared to upgrade](/deploy-manage/upgrade/prepare-to-upgrade.md), ensure the ECK version is [compatible](https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-supported.html) with the {{stack}} version you’re upgrading to. For example, if you're upgrading to 9.0.0, the minimum required ECK version is 3.0.0. If it's incompatible, [upgrade your orchestrator](/deploy-manage/upgrade/orchestrator/upgrade-cloud-on-k8s.md). 
 
 ## Perform the upgrade 
 
