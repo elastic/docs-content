@@ -1,0 +1,3 @@
+redirects:
+  'deploy-manage/security/manually-configure-security-in-self-managed-cluster.md': '!deploy-manage/security/self-setup.md'
+  'deploy-manage/security/security-certificates-keys.md': '!deploy-manage/security/self-auto-setup.md'
