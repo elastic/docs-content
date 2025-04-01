@@ -78,7 +78,7 @@ The AI Assistant connects to one of these supported LLM providers:
 
 % TODO add | Elastic LLM (default) | No configuration needed | N/A | to table
 
-| Provider | Configuration Guide | Authentication Guide |
+| Provider | Configuration | Authentication |
 |----------|---------------------|---------------------|
 | OpenAI | [Configure connector](kibana://reference/connectors-kibana/openai-action-type.md) | [Get API key](https://platform.openai.com/docs/api-reference) |
 | Azure OpenAI | [Configure connector](kibana://reference/connectors-kibana/openai-action-type.md) | [Get API key](https://learn.microsoft.com/en-us/azure/cognitive-services/openai/reference) |
