@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/security/current/data-views-in-sec.html
   - https://www.elastic.co/guide/en/serverless/current/security-data-views-in-sec.html
 applies_to:

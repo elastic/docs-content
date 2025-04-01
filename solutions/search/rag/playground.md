@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/elasticsearch-playground.html
   - https://www.elastic.co/guide/en/kibana/current/playground.html
 applies_to:

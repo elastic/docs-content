@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/security/current/cspm-benchmark-rules.html
   - https://www.elastic.co/guide/en/serverless/current/security-benchmark-rules.html
   - https://www.elastic.co/guide/en/serverless/current/security-benchmark-rules-kspm.html

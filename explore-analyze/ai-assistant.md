@@ -2,7 +2,7 @@
 applies_to:
   stack: ga
   serverless: ga
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/search-ai-assistant.html
   - https://www.elastic.co/guide/en/observability/current/obs-ai-assistant.html
   - https://www.elastic.co/guide/en/serverless/current/security-ai-for-security.html
@@ -24,7 +24,7 @@ $$$token-limits$$$
 - **Visualizing and analyzing data**: Assists you in creating visualizations and analyzing your data using Kibana.
 - **Troubleshooting**: Explains errors, messages, and suggests remediation.
 
-AI Assistant requires specific privileges and a generative AI connector. 
+AI Assistant requires specific privileges and a generative AI connector.
 
 % Check [Configure AI Assistant](../deploy-manage/) for more details on how to enable and configure it.
 

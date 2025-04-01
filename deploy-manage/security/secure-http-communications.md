@@ -4,7 +4,7 @@ applies_to:
     eck:
     ece:
     self:
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/security-basic-setup-https.html
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-tls-certificates.html
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-custom-http-certificate.html
@@ -55,7 +55,7 @@ For self-managed deployments, you need to generate and configure certificates fo
 
 ### Prerequisites
 
-Complete all steps in: 
+Complete all steps in:
 
 - [Set up basic security](/deploy-manage/security/set-up-basic-security.md)
 - [](/deploy-manage/security/set-up-basic-security-plus-https.md)
@@ -381,7 +381,7 @@ Create a Kubernetes secret with:
 * `tls.crt`: The certificate.
 * `tls.key`: The private key to the first certificate in the certificate chain.
 
-::::{warning} 
+::::{warning}
 If your `tls.crt` is signed by an intermediate CA you may need both the Root CA and the intermediate CA combined within the `ca.crt` file depending on whether the Root CA is globally trusted.
 ::::
 

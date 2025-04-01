@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshot-restore.html
   - https://www.elastic.co/guide/en/cloud/current/ec-snapshot-restore.html
   - https://www.elastic.co/guide/en/cloud/current/ec-restoring-snapshots.html

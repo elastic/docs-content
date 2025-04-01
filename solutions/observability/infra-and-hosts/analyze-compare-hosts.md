@@ -1,9 +1,9 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/analyze-hosts.html
   - https://www.elastic.co/guide/en/serverless/current/observability-analyze-hosts.html
 applies_to:
-  stack: 
+  stack:
   serverless:
 ---
 
@@ -21,7 +21,7 @@ The **Hosts** page provides a metrics-driven view of your infrastructure backed 
 
 To access the **Hosts** page in:
 - **Elastic Stack,** find **Infrastructure** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-- **Serverless,** go to **Infrastructure → Hosts** in your Elastic Observability Serverless project. 
+- **Serverless,** go to **Infrastructure → Hosts** in your Elastic Observability Serverless project.
 
 :::{image} /solutions/images/serverless-hosts.png
 :alt: Screenshot of the Hosts page

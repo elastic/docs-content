@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-secure-clusters-kerberos.html
   - https://www.elastic.co/guide/en/cloud/current/ec-secure-clusters-kerberos.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-secure-clusters-kerberos.html

@@ -1,11 +1,11 @@
 ---
-navigation_title: Manage TLS certificates 
+navigation_title: Manage TLS certificates
 applies_to:
   deployment:
     self:
     eck:
     ece:
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-security.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/security-basic-setup.html
   - https://www.elastic.co/guide/en/kibana/current/elasticsearch-mutual-tls.html

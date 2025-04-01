@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/logs-filter-and-aggregate.html
   - https://www.elastic.co/guide/en/serverless/current/observability-filter-and-aggregate-logs.html
 applies_to:
