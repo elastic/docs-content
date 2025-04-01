@@ -12,7 +12,7 @@ Select your deployment type below to see what's available and how implementation
 ::::{tab-set}
 :group: deployment-type
 
-:::{tab-item} {{ech}}
+:::{tab-item} ECH
 :sync: cloud-hosted
 
 | Category | Security feature | Status | Notes |
@@ -86,8 +86,8 @@ Select your deployment type below to see what's available and how implementation
 
 | Category| Security feature | Status | Notes |
 |------------------|------------|--------------|-------------|
-| **Communication** | TLS (HTTP Layer) | Configurable | [Initial security setup](/deploy-manage/security/self-setup.md) |
-| | TLS (Transport Layer) | Configurable | [Initial security setup](/deploy-manage/security/self-setup.md) |
+| **Communication** | TLS (HTTP layer) | Configurable | Can be automatically or manually configured. See [Initial security setup](/deploy-manage/security/self-setup.md) |
+| | TLS (Transport layer) | Configurable | Can be automatically or manually configured. See [Initial security setup](/deploy-manage/security/self-setup.md) |
 | **Network** | IP traffic filtering | Configurable | [Configure IP-based access restrictions](/deploy-manage/security/ip-filtering-basic.md) |
 | | Private link | N/A |  |
 | | Kubernetes network policies | N/A |  |
