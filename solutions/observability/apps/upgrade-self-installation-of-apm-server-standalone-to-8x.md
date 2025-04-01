@@ -22,7 +22,7 @@ This upgrade guide is for the standalone method of running APM Server. Only use 
     * To upgrade {{es}} and {{kib}}, see the [{{stack}} Installation and Upgrade Guide](https://www.elastic.co/guide/en/elastic-stack/7.17/upgrading-elastic-stack.html)
     * To upgrade APM Server to version 7.17, see [upgrade to version 7.17](https://www.elastic.co/guide/en/apm/guide/7.17/upgrading-to-717.html).
 
-2. Review the [Elastic APM release notes](apm-server://release-notes/index.md) and [Elastic {{observability}} release notes](/release-notes/elastic-observability/release-notes.md).
+2. Review the [Elastic APM release notes](apm-server://release-notes/index.md) and [Elastic {{observability}} release notes](/release-notes/elastic-observability/index.md).
 
 
 ## Upgrade steps [_upgrade_steps]
