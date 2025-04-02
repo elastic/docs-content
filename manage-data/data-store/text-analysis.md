@@ -47,9 +47,9 @@ To ensure search terms match these words as intended, you can apply the same tok
 
 Text analysis is performed by an [*analyzer*](/manage-data/data-store/text-analysis/anatomy-of-an-analyzer.md), a set of rules that govern the entire process.
 
-{{es}} includes a default analyzer, called the [standard analyzer](elasticsearch://reference/data-analysis/text-analysis/analysis-standard-analyzer.md), which works well for most use cases right out of the box.
+{{es}} includes a default analyzer, called the [standard analyzer](elasticsearch://reference/text-analysis/analysis-standard-analyzer.md), which works well for most use cases right out of the box.
 
-If you want to tailor your search experience, you can choose a different [built-in analyzer](elasticsearch://reference/data-analysis/text-analysis/analyzer-reference.md) or even [configure a custom one](/manage-data/data-store/text-analysis/create-custom-analyzer.md). A custom analyzer gives you control over each step of the analysis process, including:
+If you want to tailor your search experience, you can choose a different [built-in analyzer](elasticsearch://reference/text-analysis/analyzer-reference.md) or even [configure a custom one](/manage-data/data-store/text-analysis/create-custom-analyzer.md). A custom analyzer gives you control over each step of the analysis process, including:
 
 * Changes to the text *before* tokenization
 * How text is converted to tokens

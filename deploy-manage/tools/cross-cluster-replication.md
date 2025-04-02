@@ -67,7 +67,7 @@ Use {{ccr}} to construct several multi-cluster architectures within the Elastic 
 Watch the [{{ccr}} webinar](https://www.elastic.co/webinars/replicate-elasticsearch-data-with-cross-cluster-replication-ccr) to learn more about the following use cases. Then, [set up {{ccr}}](cross-cluster-replication/set-up-cross-cluster-replication.md) on your local machine and work through the demo from the webinar.
 
 ::::{important}
-In all of these use cases, you must [configure security](../security/manually-configure-security-in-self-managed-cluster.md) independently on every cluster. The security configuration is not replicated when configuring {{ccr}} for disaster recovery. To ensure that the {{es}} `security` feature state is backed up, [take snapshots](snapshot-and-restore/create-snapshots.md#back-up-specific-feature-state) regularly. You can then restore the native users, roles, and tokens from your security configuration.
+In all of these use cases, you must [configure security](/deploy-manage/security/manually-configure-security-in-self-managed-cluster.md) independently on every cluster. The security configuration is not replicated when configuring {{ccr}} for disaster recovery. To ensure that the {{es}} `security` feature state is backed up, [take snapshots](snapshot-and-restore/create-snapshots.md#back-up-specific-feature-state) regularly. You can then restore the native users, roles, and tokens from your security configuration.
 ::::
 
 

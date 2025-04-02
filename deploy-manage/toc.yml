@@ -472,8 +472,10 @@ toc:
             children:
               - file: security/ip-traffic-filtering.md
                 children:
-                  - file: security/ec-traffic-filtering-through-the-api.md
-                  - file: security/ece-traffic-filtering-through-the-api.md
+                  - file: security/ip-filtering-cloud.md
+                    children:
+                      - file: security/ec-traffic-filtering-through-the-api.md
+                  - file: security/ip-filtering-basic.md
               - file: security/private-link-traffic-filters.md
                 children:
                   - file: security/aws-privatelink-traffic-filters.md
@@ -508,8 +510,7 @@ toc:
               - file: security/install-stack-demo-secure.md
           - file: security/fips-140-2.md
       - file: security/secure-clients-integrations.md
-        children:
-          - file: security/httprest-clients-security.md
+      - file: security/httprest-clients-security.md
       - file: security/limitations.md
   - file: users-roles.md
     children:

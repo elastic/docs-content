@@ -11,6 +11,13 @@ mapped_urls:
   - https://www.elastic.co/guide/en/elastic-stack/current/upgrading-elastic-stack-on-prem.html
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-upgrading-stack.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/setup-upgrade.html
+applies_to:
+  stack:
+  deployment:
+    eck:
+    ess:
+    ece:
+    self:  
 ---
 
 # Upgrade your deployment or cluster [upgrade-deployment-cluster]
@@ -26,6 +33,6 @@ If you’re using Elastic-managed infrastructure, use the following options:
 
 If you’re using self-managed infrastructure - either on-prem or public cloud - use the following options:
 
-* [Upgrade the {{stack}}](/deploy-manage/upgrade/deployment-or-cluster/self-managed.md)
+* [Upgrade the {{stack}} on a self-managed cluster](/deploy-manage/upgrade/deployment-or-cluster/self-managed.md)
 * [Upgrade on {{ece}} (ECE)](/deploy-manage/upgrade/deployment-or-cluster/upgrade-on-ece.md)
 * [Upgrade on {{eck}} (ECK)](/deploy-manage/upgrade/deployment-or-cluster/upgrade-on-eck.md)

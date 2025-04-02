@@ -52,6 +52,7 @@ cross_links:
   - integrations
   - kibana
   - logstash
+  - logstash-docs-md
   - search-ui
   - security-docs
 
@@ -67,6 +68,7 @@ toc:
   - toc: release-notes
   - toc: reference
   - toc: extend
+  - file: archive.md
   - hidden: 404.md
 
 subs:

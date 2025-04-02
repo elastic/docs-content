@@ -6,3 +6,4 @@ toc:
   - file: change-your-password.md
   - file: add-a-login-method.md
   - file: multifactor-authentication.md
+  - file: dark-mode.md

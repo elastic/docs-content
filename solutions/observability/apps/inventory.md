@@ -2,6 +2,7 @@
 navigation_title: "Inventory"
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/inventory.html
+  - https://www.elastic.co/guide/en/serverless/current/observability-inventory.html
 ---
 
 

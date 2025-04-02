@@ -139,13 +139,13 @@ For instance, suppose you have an online service and you would like to predict w
 
 {{infer-cap}} can be used as a processor specified in an [ingest pipeline](../../../manage-data/ingest/transform-enrich/ingest-pipelines.md). It uses a trained model to infer against the data that is being ingested in the pipeline. The model is used on the ingest node. {{infer-cap}} pre-processes the data by using the model and provides a prediction. After the process, the pipeline continues executing (if there is any other processor in the pipeline), finally the new data together with the results are indexed into the destination index.
 
-Check the [{{infer}} processor](elasticsearch://reference/ingestion-tools/enrich-processor/inference-processor.md) and [the {{ml}} {{dfanalytics}} API documentation](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-ml-data-frame) to learn more.
+Check the [{{infer}} processor](elasticsearch://reference/enrich-processor/inference-processor.md) and [the {{ml}} {{dfanalytics}} API documentation](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-ml-data-frame) to learn more.
 
 #### {{infer-cap}} aggregation [ml-inference-aggregation-reg]
 
 {{infer-cap}} can also be used as a pipeline aggregation. You can reference a trained model in the aggregation to infer on the result field of the parent bucket aggregation. The {{infer}} aggregation uses the model on the results to provide a prediction. This aggregation enables you to run {{classification}} or {{reganalysis}} at search time. If you want to perform the analysis on a small set of data, this aggregation enables you to generate predictions without the need to set up a processor in the ingest pipeline.
 
-Check the [{{infer}} bucket aggregation](elasticsearch://reference/data-analysis/aggregations/search-aggregations-pipeline-inference-bucket-aggregation.md) and [the {{ml}} {{dfanalytics}} API documentation](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-ml-data-frame) to learn more.
+Check the [{{infer}} bucket aggregation](elasticsearch://reference/aggregations/search-aggregations-pipeline-inference-bucket-aggregation.md) and [the {{ml}} {{dfanalytics}} API documentation](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-ml-data-frame) to learn more.
 
 ::::{note}
 If you use trained model aliases to reference your trained model in an {{infer}} processor or {{infer}} aggregation, you can replace your trained model with a new one without the need of updating the processor or the aggregation. Reassign the alias you used to a new trained model ID by using the [Create or update trained model aliases API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-put-trained-model-alias). The new trained model needs to use the same type of {{dfanalytics}} as the old one.
