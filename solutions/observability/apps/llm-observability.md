@@ -42,7 +42,7 @@ EDOT includes many types of instrumentation. The following table shows the statu
 | (AWS) Boto| Python| [botocore](https://opentelemetry-python-contrib.readthedocs.io/en/latest/instrumentation/botocore/botocore.html)| ✅ | ✅ | ✅ | 
 | Google Vertex AI | Python | [google-cloud-aiplatform](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation-genai/opentelemetry-instrumentation-vertexai) | ✅ | 🚧| 🚧| 
 
-## Getting started
+### Getting started
 
 Check [these instructions](https://elastic.github.io/opentelemetry/use-cases/llm/) on how to setup and collect OpenTelemetry data for your LLM applications. 
 
