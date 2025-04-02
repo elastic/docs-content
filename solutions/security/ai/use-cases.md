@@ -8,9 +8,9 @@ applies_to:
     security: all
 ---
 
-# Use cases
+# Example AI workflows
 
-The guides in this section describe use cases for AI Assistant and Attack discovery. Refer to them for examples of each tool’s individual capabilities and of what they can do together.
+The guides in this section describe example workflows for AI Assistant and Attack discovery. Refer to them for examples of each tool’s individual capabilities and how they can work together.
 
 * [Triage alerts](/solutions/security/ai/triage-alerts.md)
 * [Identify, investigate, and document threats](/solutions/security/ai/identify-investigate-document-threats.md)

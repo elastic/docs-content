@@ -21,6 +21,13 @@ You can [interact with the AI Assistant](#obs-ai-interact) in two ways:
 :screenshot:
 :::
 
+By default, AI Assistant uses a preconfigured large language model (LLM) connector that works out of the box.
+It also integrates with your LLM provider through our supported {{stack}} connectors:
+
+* [OpenAI connector](kibana://reference/connectors-kibana/openai-action-type.md) for OpenAI or Azure OpenAI Service.
+* [Amazon Bedrock connector](kibana://reference/connectors-kibana/bedrock-action-type.md) for Amazon Bedrock, specifically for the Claude models.
+* [Google Gemini connector](kibana://reference/connectors-kibana/gemini-action-type.md) for Google Gemini.
+
 ::::{important}
 The AI Assistant uses large language models (LLMs) which are probabilistic and liable to provide incomplete or incorrect information. Elastic supports LLM configuration and connectivity but is not responsible for response accuracy. Always verify important information before implementing suggested changes.
 ::::
@@ -35,15 +42,27 @@ The {{obs-ai-assistant}} helps you:
 * **Build and execute queries**: Build Elasticsearch queries from natural language, convert Query DSL to ES|QL syntax, and execute queries directly from the chat interface 
 * **Visualize data**: Create time-series charts and distribution graphs from your Elasticsearch data
 
+## Preconfigured LLM [preconfigured-llm-ai-assistant]
+
+:::{include} ../_snippets/elastic-llm.md
+:::
+
 ## Requirements [obs-ai-requirements]
 
 The AI assistant requires the following:
 
 * Elastic deployment:
+* {{stack}} version 8.9 and later.
+* A self-deployed connector service if [search connectors](elasticsearch://reference/search-connectors/self-managed-connectors.md) are used to populate external data into the knowledge base.
+* If not using the [default preconfigured LLM](#preconfigured-llm-ai-assistant), you need an account with a third-party generative AI provider that preferably supports function calling. If your provider does not support function calling, you can configure AI Assistant settings under **Stack Management** to simulate function calling, but this might affect performance.
+
+    Refer to the [connector documentation](../../deploy-manage/manage-connectors.md) for your provider to learn about supported and default models.
+
+* The knowledge base requires a 4 GB {{ml}} node.
 
   - For **Observability**: {{stack}} version **8.9** or later, or an **{{observability}} serverless project**.
   
-  - For **Search**: {{stack}}  version **8.16.0** or later, or an **{{serverless-short}} {{es}} project**.
+  - For **Search**: {{stack}}  version **8.16.0** or later, or **{{serverless-short}} {{es}} project**.
   
     - To run {{obs-ai-assistant}} on a self-hosted Elastic stack, you need an [appropriate license](https://www.elastic.co/subscriptions).
  
@@ -70,16 +89,21 @@ It's important to understand how your data is handled when using the AI Assistan
 
 **Third-party processing**: Any data submitted may be used by the provider for AI training or other purposes with no guarantee of security or confidentiality.
 
+To set up the AI Assistant:
+
 **Telemetry collection**: Your AI provider may collect telemetry during usage. Contact them for details on what data is collected.
 
 ## Set up the AI Assistant [obs-ai-set-up]
 
-The AI Assistant connects to one of these supported LLM providers:
+:::{tip}
+If you use [the preconfigured LLM](#preconfigured-llm-ai-assistant) connector, you can skip this step. Your LLM connector is ready to use.
+:::
 
-% TODO add | Elastic LLM (default) | No configuration needed | N/A | to table
+The AI Assistant connects to one of these supported LLM providers:
 
 | Provider | Configuration | Authentication |
 |----------|---------------------|---------------------|
+| Preconfigured LLM (default) | No configuration needed | N/A |
 | OpenAI | [Configure connector](kibana://reference/connectors-kibana/openai-action-type.md) | [Get API key](https://platform.openai.com/docs/api-reference) |
 | Azure OpenAI | [Configure connector](kibana://reference/connectors-kibana/openai-action-type.md) | [Get API key](https://learn.microsoft.com/en-us/azure/cognitive-services/openai/reference) |
 | Amazon Bedrock | [Configure connector](kibana://reference/connectors-kibana/bedrock-action-type.md) | [Get auth keys](https://docs.aws.amazon.com/bedrock/latest/userguide/security-iam.html) |
@@ -108,7 +132,6 @@ The AI Assistant connects to one of these supported LLM providers:
 
 ::::
 :::::
-
 
 The AI Assistant uses [ELSER](../../explore-analyze/machine-learning/nlp/ml-nlp-elser.md), Elastic’s semantic search engine, to recall data from its internal knowledge base index to create retrieval augmented generation (RAG) responses. Adding data such as Runbooks, GitHub issues, internal documentation, and Slack messages to the knowledge base gives the AI Assistant context to provide more specific assistance.
 
@@ -214,8 +237,6 @@ Chat with the AI Assistant or interact with contextual insights located througho
 After every answer the LLM provides, let us know if the answer was helpful. Your feedback helps us improve the AI Assistant!
 ::::
 
-
-
 ### Chat with the assistant [obs-ai-chat]
 
 Select the **AI Assistant** icon (![AI Assistant icon](/solutions/images/observability-ai-assistant-icon.png "")) at the upper-right corner of the Serverless or {{kib}} UI to start the chat.
@@ -231,7 +252,6 @@ This opens the AI Assistant flyout, where you can ask the assistant questions ab
 Asking questions about your data requires `function calling`, which enables LLMs to reliably interact with third-party generative AI providers to perform searches or run advanced functions using customer data.
 
 When the {{obs-ai-assistant}} performs searches in the cluster, the queries are run with the same level of permissions as the user.
-
 ::::
 
 #### Suggest functions [obs-ai-functions]
@@ -280,7 +300,6 @@ Additional functions are available when your cluster has APM data:
 `get_apm_timeseries`
 :   Display different APM metrics (such as throughput, failure rate, or latency) for any service or all services and any or all of their dependencies. Displayed both as a time series and as a single statistic. Additionally, the function  returns any changes, such as spikes, step and trend changes, or dips. You can also use it to compare data by requesting two different time ranges, or, for example, two different service versions.
 
-
 ### Use contextual prompts [obs-ai-prompts]
 
 AI Assistant contextual prompts throughout {{observability}} provide the following information:
@@ -307,7 +326,6 @@ Clicking a prompt generates a message specific to that log entry:
 
 Continue a conversation from a contextual prompt by clicking **Start chat** to open the AI Assistant chat.
 
-
 ### Add the AI Assistant connector to alerting workflows [obs-ai-connector]
 
 Use the [Observability AI Assistant connector](kibana://reference/connectors-kibana/obs-ai-assistant-action-type.md) to add AI-generated insights and custom actions to your alerting workflows as follows:
@@ -328,7 +346,6 @@ You can ask the assistant to generate a report of the alert that fired, recall a
 Currently only Slack, email, Jira, PagerDuty, or webhook actions are supported. Additional actions will be added in the future.
 ::::
 
-
 When the alert fires, contextual details about the event—such as when the alert fired, the service or host impacted, and the threshold breached—are sent to the AI Assistant, along with the message provided during configuration. The AI Assistant runs the tasks requested in the message and creates a conversation you can use to chat with the assistant:
 
 :::{image} /solutions/images/observability-obs-ai-assistant-output.png
@@ -340,7 +357,6 @@ When the alert fires, contextual details about the event—such as when the aler
 Conversations created by the AI Assistant are public and accessible to every user with permissions to use the assistant.
 ::::
 
-
 It might take a minute or two for the AI Assistant to process the message and create the conversation.
 
 Note that overly broad prompts may result in the request exceeding token limits. For more information, refer to [Token limits](#obs-ai-token-limits). Also, attempting to analyze several alerts in a single connector execution may cause you to exceed the function call limit. If this happens, modify the message specified in the connector configuration to avoid exceeding limits.
@@ -351,7 +367,6 @@ When asked to send a message to another connector, such as Slack, the AI Assista
 The `server.publicBaseUrl` setting must be correctly specified under {{kib}} settings, or the AI Assistant is unable to generate this link.
 ::::
 
-
 :::{image} /solutions/images/observability-obs-ai-assistant-slack-message.png
 :alt: Message sent by Slack by the AI Assistant includes a link to the conversation
 :screenshot:
@@ -360,7 +375,6 @@ The `server.publicBaseUrl` setting must be correctly specified under {{kib}} set
 {{obs-ai-assistant}} connector is called when the alert fires and when it recovers.
 
 To learn more about alerting, actions, and connectors, refer to [Alerting](incident-management/alerting.md).
-
 
 ## AI Assistant Settings [obs-ai-settings]
 
@@ -375,7 +389,6 @@ The AI Assistant Settings page contains the following tabs:
 * **Knowledge base**: Manages [knowledge base entries](#obs-ai-kb-ui).
 * **Search Connectors**: Provides a link to {{kib}} **Search** → **Content** → **Connectors** UI for connectors configuration.
 
-
 ### Add Elastic documentation [obs-ai-product-documentation]
 
 You can make the official Elastic documentation available to the AI Assistant, which significantly improves its ability to accurately answer questions about the Elastic Stack and Elastic products.
@@ -386,10 +399,7 @@ Enable this feature from the **Settings** tab in AI Assistant Settings by using 
 For air-gapped environments, installing product documentation requires special configuration. See the [{{kib}} AI Assistants settings documentation](kibana://reference/configuration-reference/ai-assistant-settings.md) for detailed instructions.
 ::::
 
-
-
 ## Known issues [obs-ai-known-issues]
-
 
 ### Token limits [obs-ai-token-limits]
 

@@ -8,7 +8,8 @@ mapped_urls:
 
 # Tutorial: Securing a self-managed {{stack}} [install-stack-demo-secure]
 
-TBD: This one feels duplicate (it comes from elastic-stack original book)
+% This doc feels duplicate (it comes from elastic-stack original book), although it includes an end to end guidance and offers different examples for certificates generation
+% we have to decide what to do with this at a later stage
 
 This tutorial is a follow-on to [installing a self-managed {{stack}}](/deploy-manage/deploy/self-managed.md) with a multi-node {{es}} cluster, {{kib}}, {{fleet-server}} and {{agent}}. In a production environment, it’s recommended after completing the {{kib}} setup to proceed directly to this tutorial to configure your SSL certificates. These steps guide you through that process, and then describe how to configure {{fleet-server}} and {{agent}} with the certificates in place.
 
@@ -516,7 +517,7 @@ Now that the security is configured for the first {{es}} node, some steps need t
 
 ## Step 5: Generate server-side and client-side certificates for {{kib}} [install-stack-demo-secure-kib-es]
 
-Now that the transport and HTTP layers are configured with encryption using the new certificates, there are two more tasks that must be accomplished for end-to-end connectivity to {{es}}: Set up certificates for encryption between {{kib}} and {{es}}, and between the client browser and {{kib}}. For additional details about any of these steps, refer to [Mutual TLS authentication between {{kib}} and {{es}}](secure-cluster-communications.md) and [Encrypt traffic between your browser and {{kib}}](set-up-basic-security-plus-https.md#encrypt-kibana-browser).
+Now that the transport and HTTP layers are configured with encryption using the new certificates, there are two more tasks that must be accomplished for end-to-end connectivity to {{es}}: Set up certificates for encryption between {{kib}} and {{es}}, and between the client browser and {{kib}}. For additional details about any of these steps, refer to [Mutual TLS authentication between {{kib}} and {{es}}](./kibana-es-mutual-tls.md) and [Encrypt traffic between your browser and {{kib}}](set-up-basic-security-plus-https.md#encrypt-kibana-browser).
 
 1. In Step 3, when you generated a new certificate for the HTTP layer, the process created an archive `elasticsearch-ssl-http.zip`.
 
