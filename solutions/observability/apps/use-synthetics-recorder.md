@@ -14,7 +14,7 @@ As with any script recording technology, the Elastic Synthetics Recorder should 
 
 You can use the Synthetics Recorder to [write a synthetic test](../../../solutions/observability/apps/write-synthetic-test.md) by interacting with a web page and exporting journey code that reflects all the actions you took.
 
-:::{image} ../../../images/observability-synthetics-create-test-script-recorder.png
+:::{image} /solutions/images/observability-synthetics-create-test-script-recorder.png
 :alt: Elastic Synthetics Recorder after recording a journey and clicking Export
 :screenshot:
 :::

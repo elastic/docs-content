@@ -31,7 +31,7 @@ If you need specific alerting behavior, set up a different rule. To view all exi
 
 On the *Rules* page, you can manage the default synthetics rules including snoozing rules, disabling rules, deleting rules, and more.
 
-:::{image} ../../../images/observability-synthetics-settings-disable-default-rules.png
+:::{image} /solutions/images/observability-synthetics-settings-disable-default-rules.png
 :alt: Rules page with default Synthetics rules
 :screenshot:
 :::
@@ -48,7 +48,7 @@ You can enable and disable default alerts for individual monitors in a few ways:
 
 In the **Alerting** tab on the Synthetics Settings page, you can add and configure connectors. If you are running in Elastic Cloud, then an SMTP connector will automatically be configured, allowing you to easily set up email alerts. Read more about all available connectors in [Action types](../../../solutions/observability/incident-management/create-an-apm-anomaly-rule.md).
 
-:::{image} ../../../images/observability-synthetics-settings-alerting.png
+:::{image} /solutions/images/observability-synthetics-settings-alerting.png
 :alt: Alerting tab on the Synthetics Settings page in {kib}
 :screenshot:
 :::
@@ -60,7 +60,7 @@ In the **Alerting** tab on the Synthetics Settings page, you can add and configu
 
 In the **{{private-location}}s** tab, you can add and manage {{private-location}}s. After you [Set up {{fleet-server}} and {{agent}}](../../../solutions/observability/apps/monitor-resources-on-private-networks.md#synthetics-private-location-fleet-agent) and [Connect to the {{stack}} or your serverless Observability project](../../../solutions/observability/apps/monitor-resources-on-private-networks.md#synthetics-private-location-connect), this is where you will add the {{private-location}} so you can specify it as the location for a monitor created using the Synthetics UI or a Synthetics project.
 
-:::{image} ../../../images/observability-synthetics-settings-private-locations.png
+:::{image} /solutions/images/observability-synthetics-settings-private-locations.png
 :alt: {{private-location}}s tab on the Synthetics Settings page in {kib}
 :screenshot:
 :::
@@ -72,7 +72,7 @@ Global parameters can be defined once and used across the configuration of light
 
 In the **Global parameters** tab, you can define variables and parameters. This is one of several methods you can use to define variables and parameters. To learn more about the other methods and which methods take precedence over others, see [Work with params and secrets](../../../solutions/observability/apps/work-with-params-secrets.md).
 
-:::{image} ../../../images/observability-synthetics-settings-global-parameters.png
+:::{image} /solutions/images/observability-synthetics-settings-global-parameters.png
 :alt: Global parameters tab on the Synthetics Settings page in {kib}
 :screenshot:
 :::
@@ -84,7 +84,7 @@ When you set up a synthetic monitor, data from the monitor is saved in [Elastics
 
 In the **Data retention** tab, use the links to jump to the relevant policy for each data stream. Learn more about the data included in each data stream in [Manage data retention](../../../solutions/observability/apps/manage-data-retention.md).
 
-:::{image} ../../../images/observability-synthetics-settings-data-retention.png
+:::{image} /solutions/images/observability-synthetics-settings-data-retention.png
 :alt: Data retention tab on the Synthetics Settings page in {kib}
 :screenshot:
 :::
@@ -104,7 +104,7 @@ In a serverless project, to create a Project API key you must be logged in as a 
 ::::
 
 
-:::{image} ../../../images/observability-synthetics-settings-api-keys.png
+:::{image} /solutions/images/observability-synthetics-settings-api-keys.png
 :alt: Project API keys tab on the Synthetics Settings page in {kib}
 :screenshot:
 :::

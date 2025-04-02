@@ -12,7 +12,7 @@ This page shows the installation steps to deploy ECK in Openshift:
 
 1. Apply the manifests the same way as described in [](./install-using-yaml-manifest-quickstart.md) document:
 
-   ```shell
+   ```shell subs=true
    oc create -f https://download.elastic.co/downloads/eck/{{eck_version}}/crds.yaml
    oc apply -f https://download.elastic.co/downloads/eck/{{eck_version}}/operator.yaml
    ```

@@ -2,7 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/about-rules.html
   - https://www.elastic.co/guide/en/serverless/current/security-about-rules.html
-
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # About detection rules [security-about-rules]
@@ -41,7 +44,7 @@ You can create the following types of rules:
     ::::
 
 
-:::{image} ../../../images/security-all-rules.png
+:::{image} /solutions/images/security-all-rules.png
 :alt: Shows the Rules page
 :screenshot:
 :::

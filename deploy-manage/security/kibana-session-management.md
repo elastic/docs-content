@@ -1,9 +1,15 @@
 ---
+applies_to:
+  deployment:
+    ess: ga
+    ece: ga
+    eck: ga
+    self: ga
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/xpack-security-session-management.html
 ---
 
-# Kibana session management [xpack-security-session-management]
+# {{kib}} session management [xpack-security-session-management]
 
 When you log in, {{kib}} creates a session that is used to authenticate subsequent requests to {{kib}}. A session consists of two components: an encrypted cookie that is stored in your browser, and an encrypted document in a dedicated {{es}} hidden index. By default, the name of that index is `.kibana_security_session_1`, where the prefix is derived from the primary `.kibana` index. If either of these components are missing, the session is no longer valid.
 
@@ -32,7 +38,7 @@ xpack.security.session.lifespan: "7d"
 ## Session cleanup interval [session-cleanup-interval]
 
 ::::{important}
-If you disable session idle timeout and lifespan, then Kibana will not automatically remove session information from the index unless you explicitly log out. This might lead to an infinitely growing session index. As long as either idle timeout or lifespan is configured, Kibana sessions will be cleaned up even if you don’t explicitly log out.
+If you disable session idle timeout and lifespan, then {{kib}} will not automatically remove session information from the index unless you explicitly log out. This might lead to an infinitely growing session index. As long as either idle timeout or lifespan is configured, {{kib}} sessions will be cleaned up even if you don’t explicitly log out.
 
 ::::
 

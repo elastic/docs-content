@@ -2,13 +2,17 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/view-alert-details.html
   - https://www.elastic.co/guide/en/serverless/current/security-view-alert-details.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # View detection alert details [security-view-alert-details]
 
 To learn more about an alert, click the **View details** button from the Alerts table. This opens the alert details flyout, which helps you understand and manage the alert.
 
-:::{image} ../../../images/security-open-alert-details-flyout.gif
+:::{image} /solutions/images/security-open-alert-details-flyout.gif
 :alt: Expandable flyout
 :screenshot:
 :::
@@ -25,7 +29,7 @@ The alert details flyout has a right panel, a preview panel, and a left panel. E
 
 The right panel provides an overview of the alert. Expand any of the collapsed sections to learn more about the alert. You can also hover over fields on the **Overview** and **Table** tabs to display available [inline actions](/solutions/security/get-started/elastic-security-ui.md#inline-actions).
 
-:::{image} ../../../images/security-alert-details-flyout-right-panel.png
+:::{image} /solutions/images/security-alert-details-flyout-right-panel.png
 :alt: Right panel of the alert details flyout
 :screenshot:
 :::
@@ -33,12 +37,12 @@ The right panel provides an overview of the alert. Expand any of the collapsed s
 From the right panel, you can also:
 
 * Click **Expand details** to open the [left panel](/solutions/security/detect-and-alert/view-detection-alert-details.md#left-panel), which shows more information about sections in the right panel.
-* Click the **Chat** icon (![AI assistant chat icon](../../../images/security-ai-assistant-chat.png "title =20x20")) to access the [AI Assistant](/solutions/security/ai/ai-assistant.md).
-* Click the **Share alert** icon (![Share alert icon](../../../images/security-share-alert.png "title =20x20")) to get a shareable alert URL. We *do not* recommend copying the URL from your browser’s address bar, which can lead to inconsistent results if you’ve set up filters or relative time ranges for the Alerts page.
+* Click the **Chat** icon (![AI assistant chat icon](/solutions/images/security-ai-assistant-chat.png "title =20x20")) to access the [AI Assistant](/solutions/security/ai/ai-assistant.md).
+* Click the **Share alert** icon (![Share alert icon](/solutions/images/security-share-alert.png "title =20x20")) to get a shareable alert URL. We *do not* recommend copying the URL from your browser’s address bar, which can lead to inconsistent results if you’ve set up filters or relative time ranges for the Alerts page.
 
     ::::{note}
     For {{stack}} users only:
-    If you’ve configured the [`server.publicBaseUrl`](/deploy-manage/deploy/self-managed/configure.md#server-publicBaseUrl) setting in the `kibana.yml` file, the shareable URL is also in the `kibana.alert.url` field. You can find the field by searching for `kibana.alert.url` on the **Table** tab.
+    If you’ve configured the [`server.publicBaseUrl`](kibana://reference/configuration-reference/general-settings.md#server-publicbaseurl) setting in the `kibana.yml` file, the shareable URL is also in the `kibana.alert.url` field. You can find the field by searching for `kibana.alert.url` on the **Table** tab.
     ::::
 
 
@@ -46,14 +50,14 @@ From the right panel, you can also:
     If you’ve enabled grouping on the Alerts page, the alert details flyout won’t open until you expand a collapsed group and select an individual alert.
     ::::
 
-* Click the **Flyout settings** icon (![Flyout settings icon](../../../images/security-flyout-settings.png "title =20x20")) to access options for displaying the alert details flyout. The **Overlay** option (which displays the flyout over the Alerts table) is selected by default. Select **Push** to display the flyout to the side of the table instead. In either display, you can resize the flyout panels to your liking. Clicking **Reset size** reverts the flyout to its default dimensions.
+* Click the **Flyout settings** icon (![Flyout settings icon](/solutions/images/security-flyout-settings.png "title =20x20")) to access options for displaying the alert details flyout. The **Overlay** option (which displays the flyout over the Alerts table) is selected by default. Select **Push** to display the flyout to the side of the table instead. In either display, you can resize the flyout panels to your liking. Clicking **Reset size** reverts the flyout to its default dimensions.
 * Find basic details about the alert, such as the:
 
     * Associated rule
     * Alert status and when the alert was created
     * Alert severity and risk score (these are inherited from rule that generated the alert)
-    * Users assigned to the alert (click the **Assign alert** ![Assign alert](../../../images/security-assign-alert.png "title =20x20") icon to assign more users)
-    * Notes attached to the alert (click the **Add note** ![Add note](../../../images/security-add-note-icon.png "title =20x20") icon to create a new note)
+    * Users assigned to the alert (click the **Assign alert** ![Assign alert](/solutions/images/security-assign-alert.png "title =20x20") icon to assign more users)
+    * Notes attached to the alert (click the **Add note** ![Add note](/solutions/images/security-add-note-icon.png "title =20x20") icon to create a new note)
 
 * Click the **Table** or **JSON** tabs to display the alert details in table or JSON format. In table format, alert details are displayed as field-value pairs.
 
@@ -62,7 +66,7 @@ From the right panel, you can also:
 
 Some areas in the flyout provide previews when you click on them. For example, clicking **Show rule summary** in the rule description displays a preview of the rule’s details. To close the preview, click **Back** or **x**.
 
-:::{image} ../../../images/security-alert-details-flyout-preview-panel.gif
+:::{image} /solutions/images/security-alert-details-flyout-preview-panel.gif
 :alt: Preview panel of the alert details flyout
 :screenshot:
 :::
@@ -74,14 +78,14 @@ The left panel provides an expanded view of what’s shown in the right panel. T
 
 * Click **Expand details** at the top of the right panel.
 
-    :::{image} ../../../images/security-expand-details-button.png
+    :::{image} /solutions/images/security-expand-details-button.png
     :alt: Expand details button at the top of the alert details flyout
     :screenshot:
     :::
 
 * Click one of the section titles on the **Overview** tab within the right panel.
 
-    :::{image} ../../../images/security-alert-details-flyout-left-panel.png
+    :::{image} /solutions/images/security-alert-details-flyout-left-panel.png
     :alt: Left panel of the alert details flyout
     :screenshot:
     :::
@@ -92,7 +96,7 @@ The left panel provides an expanded view of what’s shown in the right panel. T
 
 The About section is located on the **Overview** tab in the right panel. It provides a brief description of the rule that’s related to the alert and an explanation of what generated the alert.
 
-:::{image} ../../../images/security-about-section-rp.png
+:::{image} /solutions/images/security-about-section-rp.png
 :alt: About section of the Overview tab
 :screenshot:
 :::
@@ -113,7 +117,7 @@ The About section has the following information:
 
 The Investigation section is located on the **Overview** tab in the right panel. It offers a couple of ways to begin investigating the alert.
 
-:::{image} ../../../images/security-investigation-section-rp.png
+:::{image} /solutions/images/security-investigation-section-rp.png
 :alt: Investigation section of the Overview tab
 :screenshot:
 :::
@@ -133,7 +137,7 @@ The Investigation section provides the following information:
 
 The Visualizations section is located on the **Overview** tab in the right panel. It offers a glimpse of the processes that led up to the alert and occurred after it.
 
-:::{image} ../../../images/security-visualizations-section-rp.png
+:::{image} /solutions/images/security-visualizations-section-rp.png
 :alt: Visualizations section of the Overview tab
 :screenshot:
 :::
@@ -159,14 +163,14 @@ To use the **Visualize** tab, you must turn on the `securitySolution:enableVisua
 
 The **Visualize** tab allows you to maintain the context of the Alerts table, while providing a more detailed view of alerts that you’re investigating in the event analyzer or Session View. To open the tab, click **Session viewer preview** or **Analyzer preview** from the right panel.
 
-:::{image} ../../../images/security-visualize-tab-lp.png
+:::{image} /solutions/images/security-visualize-tab-lp.png
 :alt: Expanded view of visualization details
 :screenshot:
 :::
 
 As you examine the alert’s related processes, you can also preview the alerts and events which are associated with those processes. Then, if you want to learn more about a particular alert or event, you can click **Show full alert details** to open the full details flyout.
 
-:::{image} ../../../images/security-visualize-tab-lp-alert-details.gif
+:::{image} /solutions/images/security-visualize-tab-lp-alert-details.gif
 :alt: Examine alert details from event analyzer
 :screenshot:
 :::
@@ -176,7 +180,7 @@ As you examine the alert’s related processes, you can also preview the alerts 
 
 The Insights section is located on the **Overview** tab in the right panel. It offers different perspectives from which you can assess the alert. Click **Insights** to display overviews for [related entities](/solutions/security/detect-and-alert/view-detection-alert-details.md#entities-overview), [threat intelligence](/solutions/security/detect-and-alert/view-detection-alert-details.md#threat-intelligence-overview), [correlated data](/solutions/security/detect-and-alert/view-detection-alert-details.md#correlations-overview), and [host and user prevalence](/solutions/security/detect-and-alert/view-detection-alert-details.md#prevalence-overview).
 
-:::{image} ../../../images/security-insights-section-rp.png
+:::{image} /solutions/images/security-insights-section-rp.png
 :alt: Insights section of the Overview tab
 :screenshot:
 :::
@@ -186,7 +190,7 @@ The Insights section is located on the **Overview** tab in the right panel. It o
 
 The Entities overview provides high-level details about the user and host that are related to the alert. Host and user risk classifications are also available with a [Platinum subscription](https://www.elastic.co/pricing) or higher in {{stack}} or the Security Analytics Complete [project feature](../../../deploy-manage/deploy/elastic-cloud/project-settings.md) in {{serverless-short}}.
 
-:::{image} ../../../images/security-entities-overview.png
+:::{image} /solutions/images/security-entities-overview.png
 :alt: Overview of the entity details  section in the right panel
 :screenshot:
 :::
@@ -196,7 +200,7 @@ The Entities overview provides high-level details about the user and host that a
 
 From the right panel, click **Entities** to open a detailed view of the host and user associated with the alert. The expanded view also includes risk scores and classifications and activity on related hosts and users. Access to these features requires a [Platinum subscription](https://www.elastic.co/pricing) or higher in {{stack}} or the Security Analytics Complete [project feature](../../../deploy-manage/deploy/elastic-cloud/project-settings.md) in {{serverless-short}}
 
-:::{image} ../../../images/security-expanded-entities-view.png
+:::{image} /solutions/images/security-expanded-entities-view.png
 :alt: Expanded view of entity details
 :screenshot:
 :::
@@ -206,7 +210,7 @@ From the right panel, click **Entities** to open a detailed view of the host and
 
 The Threat intelligence overview shows matched indicators, which provide threat intelligence relevant to the alert.
 
-:::{image} ../../../images/security-threat-intelligence-overview.png
+:::{image} /solutions/images/security-threat-intelligence-overview.png
 :alt: Overview of threat intelligence on the alert
 :screenshot:
 :::
@@ -226,7 +230,7 @@ The expanded threat intelligence view queries indices specified in the `security
 ::::
 
 
-:::{image} ../../../images/security-expanded-threat-intelligence-view.png
+:::{image} /solutions/images/security-expanded-threat-intelligence-view.png
 :alt: Expanded view of threat intelligence on the alert
 :screenshot:
 :::
@@ -266,7 +270,7 @@ When searching for threat intelligence, {{elastic-sec}} queries the alert docume
 
 The Correlations overview shows how an alert is related to other alerts and offers ways to investigate related alerts. Use this information to quickly find patterns between alerts and then take action.
 
-:::{image} ../../../images/security-correlations-overview.png
+:::{image} /solutions/images/security-correlations-overview.png
 :alt: Overview of available correlation data
 :screenshot:
 :::
@@ -289,7 +293,7 @@ The Correlations overview provides the following information:
 
 From the right panel, click **Correlations** to open the expanded Correlations view within the left panel.
 
-:::{image} ../../../images/security-expanded-correlations-view.png
+:::{image} /solutions/images/security-expanded-correlations-view.png
 :alt: Expanded view of correlation data
 :screenshot:
 :::
@@ -317,7 +321,7 @@ Update the date time picker for the table to show data from a different time ran
 ::::
 
 
-:::{image} ../../../images/security-expanded-prevalence-view.png
+:::{image} /solutions/images/security-expanded-prevalence-view.png
 :alt: Expanded view of prevalence data
 :screenshot:
 :::
@@ -326,8 +330,8 @@ The expanded Prevalence view provides the following details:
 
 * **Field**: Shows [highlighted fields](/solutions/security/detect-and-alert/view-detection-alert-details.md#investigation-section) for the alert and any custom highlighted fields that were added to the alert’s rule.
 * **Value**: Shows values for highlighted fields and any custom highlighted fields that were added to the alert’s rule.
-* **Alert count**: Shows the total number of alert documents that have identical highlighted field values, including the alert you’re currently examining. For example, if the `host.name` field has an alert count of 5, that means there are five total alerts with the same `host.name` value. The Alert count column only retrieves documents that contain the [`event.kind:signal`](asciidocalypse://docs/ecs/docs/reference/ecs-allowed-values-event-kind.md#ecs-event-kind-signal) field-value pair.
-* **Document count**: Shows the total number of event documents that have identical field values. A dash (`——`) displays if there are no event documents that match the field value. The Document count column only retrieves documents that don’t contain the [`event.kind:signal`](asciidocalypse://docs/ecs/docs/reference/ecs-allowed-values-event-kind.md#ecs-event-kind-signal) field-value pair.
+* **Alert count**: Shows the total number of alert documents that have identical highlighted field values, including the alert you’re currently examining. For example, if the `host.name` field has an alert count of 5, that means there are five total alerts with the same `host.name` value. The Alert count column only retrieves documents that contain the [`event.kind:signal`](ecs://reference/ecs-allowed-values-event-kind.md#ecs-event-kind-signal) field-value pair.
+* **Document count**: Shows the total number of event documents that have identical field values. A dash (`——`) displays if there are no event documents that match the field value. The Document count column only retrieves documents that don’t contain the [`event.kind:signal`](ecs://reference/ecs-allowed-values-event-kind.md#ecs-event-kind-signal) field-value pair.
 
 The following features require a [Platinum subscription](https://www.elastic.co/pricing) or higher in {{stack}} or the appropriate [{{serverless-short}} project tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md)
 
@@ -339,7 +343,7 @@ The following features require a [Platinum subscription](https://www.elastic.co/
 
 The **Response** section is located on the **Overview** tab in the right panel. It shows [response actions](/solutions/security/detect-and-alert/create-detection-rule.md) that were added to the rule associated with the alert. Click **Response** to display the response action’s results in the left panel.
 
-:::{image} ../../../images/security-response-action-rp.png
+:::{image} /solutions/images/security-response-action-rp.png
 :alt: Response section of the Overview tab
 :screenshot:
 :::
@@ -354,7 +358,7 @@ Go to the **Notes** [page](/solutions/security/investigate/notes.md#manage-notes
 ::::
 
 
-:::{image} ../../../images/security-notes-tab-lp.png
+:::{image} /solutions/images/security-notes-tab-lp.png
 :alt: Notes tab in the left panel
 :screenshot:
 :::

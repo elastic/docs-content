@@ -2,13 +2,17 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/security-assistant.html
   - https://www.elastic.co/guide/en/serverless/current/security-ai-assistant.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # AI Assistant
 
-The Elastic AI Assistant utilizes generative AI to bolster your cybersecurity operations team. It allows users to interact with {{elastic-sec}} for tasks such as alert investigation, incident response, and query generation or conversion using natural language and much more.
+The Elastic AI Assistant utilizes generative AI to bolster your cybersecurity operations team. It allows users to interact with {{elastic-sec}} for tasks such as alert investigation, incident response, and query generation or conversation using natural language and much more.
 
-:::{image} ../../../images/security-assistant-basic-view.png
+:::{image} /solutions/images/security-assistant-basic-view.png
 :alt: Image of AI Assistant chat window
 :screenshot:
 :::
@@ -57,7 +61,7 @@ While AI Assistant is compatible with many different models, refer to the [Large
 
 To open AI Assistant, select the **AI Assistant** button in the top toolbar from anywhere in the {{security-app}}. You can also use the keyboard shortcut **Cmd + ;** (or **Ctrl + ;** on Windows).
 
-:::{image} ../../../images/security-ai-assistant-button.png
+:::{image} /solutions/images/security-ai-assistant-button.png
 :alt: AI Assistant button
 :screenshot:
 :::
@@ -71,7 +75,7 @@ You can also chat with AI Assistant from several particular pages in {{elastic-s
 * [Data Quality dashboard](/solutions/security/dashboards/data-quality-dashboard.md): Select the **Incompatible fields** tab, then click **Chat**. (This is only available for fields marked red, indicating they’re incompatible).
 
 ::::{note}
-Each user’s chat history (up to the 99 most recent conversations) and custom Quick Prompts are automatically saved, so you can leave {{elastic-sec}} and return to a conversation later. Chat history appears to the left of the AI Assistant chat window, and on the **Conversations** tab of the **AI Assistant settings** menu. To access the settings menu, use the global search field to search for "AI Assistant for Security".
+Each user’s chat history (up to the 99 most recent conversations) and custom Quick Prompts are automatically saved, so you can leave {{elastic-sec}} and return to a conversation later. Chat history appears to the left of the AI Assistant chat window, and on the **Conversations** tab of the **AI Assistant settings** menu. To access the settings menu, use the global search field to search for "AI Assistant for Security" or open the menu in the upper-right of the AI Assistant chat window.
 ::::
 
 
@@ -83,24 +87,24 @@ Use these features to adjust and act on your conversations with AI Assistant:
 * (Optional) Select a *System Prompt* at the beginning of a conversation by using the **Select Prompt** menu. System Prompts provide context to the model, informing its response. To create a System Prompt, open the System Prompts dropdown menu and click **+ Add new System Prompt…​**.
 * (Optional) Select a *Quick Prompt* at the bottom of the chat window to get help writing a prompt for a specific purpose, such as summarizing an alert or converting a query from a legacy SIEM to {{elastic-sec}}.
 
-    :::{image} ../../../images/security-quick-prompts.png
-    :alt: Quick Prompts highlighted below a conversation
-    :screenshot:
-    :::
+   :::{image} ../../images/security-quick-prompts.png
+   :alt: Quick Prompts highlighted below a conversation
+   :screenshot:
+   :::
 
 * System Prompts and Quick Prompts can also be configured from the corresponding tabs on the **Security AI settings** page.
 
-    :::{image} ../../../images/security-assistant-settings-system-prompts.png
-    :alt: The Security AI settings menu's System Prompts tab
-    :::
+   :::{image} ../../images/security-assistant-settings-system-prompts.png
+   :alt: The Security AI settings menu's System Prompts tab
+   :::
 
 * Quick Prompt availability varies based on context—for example, the **Alert summarization** Quick Prompt appears when you open AI Assistant while viewing an alert. To customize existing Quick Prompts and create new ones, click **Add Quick Prompt**.
 * In an active conversation, you can use the inline actions that appear on messages to incorporate AI Assistant’s responses into your workflows:
 
-    * **Add note to timeline** (![Add note icon](../../../images/security-icon-add-note.png "title =20x20")): Add the selected text to your currently active Timeline as a note.
-    * **Add to existing case** (![Add to case icon](../../../images/security-icon-add-to-case.png "title =20x20")): Add a comment to an existing case using the selected text.
-    * **Copy to clipboard** (![Copy to clipboard icon](../../../images/security-icon-copy.png "title =20x20")): Copy the text to clipboard to paste elsewhere. Also helpful for resubmitting a previous prompt.
-    * **Add to timeline** (![Add to timeline icon](../../../images/security-icon-add-to-timeline.png "title =20x20")): Add a filter or query to Timeline using the text. This button appears for particular queries in AI Assistant’s responses.
+    * **Add note to timeline** (![Add note icon](/solutions/images/security-icon-add-note.png "title =20x20")): Add the selected text to your currently active Timeline as a note.
+    * **Add to existing case** (![Add to case icon](/solutions/images/security-icon-add-to-case.png "title =20x20")): Add a comment to an existing case using the selected text.
+    * **Copy to clipboard** (![Copy to clipboard icon](/solutions/images/security-icon-copy.png "title =20x20")): Copy the text to clipboard to paste elsewhere. Also helpful for resubmitting a previous prompt.
+    * **Add to timeline** (![Add to timeline icon](/solutions/images/security-icon-add-to-timeline.png "title =20x20")): Add a filter or query to Timeline using the text. This button appears for particular queries in AI Assistant’s responses.
 
 
 Be sure to specify which language you’d like AI Assistant to use when writing a query. For example: "Can you generate an Event Query Language query to find four failed logins followed by a successful login?"
@@ -113,11 +117,20 @@ AI Assistant can remember particular information you tell it to remember. For ex
 
 ## Configure AI Assistant [configure-ai-assistant]
 
-The **Security AI settings** page allows you to configure AI Assistant. To access it, use the global search field to search for "AI Assistant for Security".
+To adjust AI Assistant's settings from the chat window, click the **More** (three dots) button in the upper-right. 
+
+::::{image} ../../../images/security-attack-discovery-more-popover.png
+:alt: AI Assistant's more options popover
+:screenshot:
+::::
+
+The first three options (**AI Assistant settings**, **Knowledge Base**, and **Anonymization**) open the corresponding tabs of the **Security AI settings** page. The **Chat options** affect display-only user settings: whether to show or hide anonymized values, and whether to include citations. When citations are enabled, AI Assistant will refer you to information sources including data you've shared with it, information you've added to the knowledge base, and content from Elastic's Security Labs and product documentation.
+
+The **Security AI settings** page provides a range of configuration options for AI Assistant. To access it directly, use the global search field to search for "AI Assistant for Security".
 
 It has the following tabs:
 
-* **Conversations:** When you open AI Assistant from certain pages, such as ***Alerts**, it defaults to the relevant conversation type. For each conversation type, choose the default System Prompt, the default connector, and the default model (if applicable). The **Streaming** setting controls whether AI Assistant’s responses appear word-by-word (streamed), or as a complete block of text. Streaming is currently only available for OpenAI models.
+* **Conversations:** When you open AI Assistant from certain pages, such as **Alerts**, it defaults to the relevant conversation type. For each conversation type, choose the default System Prompt, the default connector, and the default model (if applicable). The **Streaming** setting controls whether AI Assistant’s responses appear word-by-word (streamed), or as a complete block of text. Streaming is currently only available for OpenAI models.
 * **Connectors:** Manage all LLM connectors.
 * **System Prompts:** Edit existing System Prompts or create new ones. To create a new System Prompt, type a unique name in the **Name** field, then press **enter**. Under **Prompt**, enter or update the System Prompt’s text. Under **Contexts**, select where the System Prompt should appear.
 * **Quick Prompts:** Modify existing Quick Prompts or create new ones. To create a new Quick Prompt, type a unique name in the **Name** field, then press **enter**. Under **Prompt**, enter or update the Quick Prompt’s text.
@@ -133,14 +146,14 @@ To modify Anonymization settings, you need the **Elastic AI Assistant: All** pri
 ::::
 
 
-The **Anonymization** tab of the Security AI settings menu allows you to define default data anonymization behavior for events you send to AI Assistant. Fields with **Allowed*** toggled on are included in events provided to AI Assistant. ***Allowed*** fields with ***Anonymized** set to **Yes** are included, but with their values obfuscated.
+The **Anonymization** tab of the Security AI settings menu allows you to define default data anonymization behavior for events you send to AI Assistant. Fields with **Allowed** toggled on are included in events provided to AI Assistant. **Allowed** fields with **Anonymized** set to **Yes** are included, but with their values obfuscated.
 
 ::::{note}
-You can access anonymization settings directly from the **Attack Discovery** page by clicking the settings (![Settings icon](../../../images/security-icon-settings.png "title =20x20")) button next to the model selection dropdown menu.
+You can access anonymization settings directly from the **Attack Discovery** page by clicking the settings (![Settings icon](/solutions/images/security-icon-settings.png "title =20x20")) button next to the model selection dropdown menu.
 ::::
 
 
-:::{image} ../../../images/security-assistant-anonymization-menu.png
+:::{image} /solutions/images/security-assistant-anonymization-menu.png
 :alt: AI Assistant's settings menu
 :screenshot:
 :::

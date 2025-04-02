@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/conf-map-ui.html
   - https://www.elastic.co/guide/en/serverless/current/security-conf-map-ui.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Configure network map data
@@ -33,7 +37,7 @@ For example, to display data that is stored in indices matching the index patter
 
 ## Add geoIP data [geoip-data]
 
-When the ECS [source.geo.location and destination.geo.location](asciidocalypse://docs/ecs/docs/reference/ecs-geo.md) fields are mapped, network data is displayed on the map.
+When the ECS [source.geo.location and destination.geo.location](ecs://reference/ecs-geo.md) fields are mapped, network data is displayed on the map.
 
 If you use Beats, configure a geoIP processor to add data to the relevant fields:
 
@@ -129,5 +133,5 @@ If you want to add your network’s internal IP addresses to the map, define geo
 
 
 ::::{tip}
-You can also enrich your data with other [host fields](asciidocalypse://docs/beats/docs/reference/packetbeat/add-host-metadata.md).
+You can also enrich your data with other [host fields](beats://reference/packetbeat/add-host-metadata.md).
 ::::

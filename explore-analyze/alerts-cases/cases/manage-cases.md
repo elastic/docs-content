@@ -15,7 +15,7 @@ To perform these tasks, you must have [full access](setup-cases.md) to the appro
 Open a new case to keep track of issues and share their details with colleagues.
 
 1. Go to **Management > {{stack-manage-app}} > Cases**, then click **Create case**.
-   :::{image} ../../../images/kibana-cases-create.png
+   :::{image} /explore-analyze/images/kibana-cases-create.png
    :alt: Create a case in {{stack-manage-app}}
    :screenshot:
    :::
@@ -68,7 +68,7 @@ For self-managed {{kib}}:
          hasAuth: true/false
    ```
 
-3. If you want the email notifications to contain links back to the case, you must configure the [server.publicBaseUrl](../../../deploy-manage/deploy/self-managed/configure.md#server-publicBaseUrl) setting.
+3. If you want the email notifications to contain links back to the case, you must configure the [server.publicBaseUrl](kibana://reference/configuration-reference/general-settings.md#server-publicbaseurl) setting.
 
 When you subsequently add assignees to cases, they receive an email.
 
@@ -76,12 +76,12 @@ When you subsequently add assignees to cases, they receive an email.
 
 After you create a case, you can upload and manage files on the **Files** tab:
 
-:::{image} ../../../images/kibana-cases-files.png
+:::{image} /explore-analyze/images/kibana-cases-files.png
 :alt: A list of files attached to a case
 :screenshot:
 :::
 
-The acceptable file types and sizes are affected by your [case settings](../../../deploy-manage/deploy/self-managed/configure.md).
+The acceptable file types and sizes are affected by your [case settings](kibana://reference/configuration-reference/general-settings.md).
 
 To download or delete the file or copy the file hash to your clipboard, open the action menu (…). The available hash functions are MD5, SHA-1, and SHA-256.
 
@@ -96,7 +96,7 @@ Uploaded files are also accessible in **{{stack-manage-app}} > Files**. When you
 
 You can also optionally add visualizations. For example, you can portray event and alert data through charts and graphs.
 
-:::{image} ../../../images/kibana-cases-visualization.png
+:::{image} /explore-analyze/images/kibana-cases-visualization.png
 :alt: Adding a visualization as a comment within a case
 :screenshot:
 :::

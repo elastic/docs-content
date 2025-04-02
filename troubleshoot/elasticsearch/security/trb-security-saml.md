@@ -1,4 +1,11 @@
 ---
+applies_to:
+  stack: 
+  deployment:
+    eck: 
+    ess: 
+    ece: 
+    self: 
 navigation_title: SAML
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/trb-security-saml.html
@@ -175,7 +182,7 @@ Some of the common SAML problems are shown below with tips on how to resolve the
 
     For further information, please read [MDN SameSite cookies](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie/SameSite)
 
-    If you serve multiple {{kib}} installations behind a load balancer make sure to use the [same security configuration](/deploy-manage/production-guidance/kibana-in-production-environments.md#load-balancing-kibana) for all installations.
+    If you serve multiple {{kib}} installations behind a load balancer make sure to use the [same security configuration](/deploy-manage/production-guidance/kibana-load-balance-traffic.md#load-balancing-kibana) for all installations.
 
 
 **Logging:**
@@ -198,5 +205,5 @@ logger.saml.name = org.elasticsearch.xpack.security.authc.saml
 logger.saml.level = DEBUG
 ```
 
-Refer to [configuring logging levels](../../../deploy-manage/monitor/logging-configuration/elasticsearch-log4j-configuration-self-managed.md#configuring-logging-levels) for more information.
+Refer to [configuring logging levels](/deploy-manage/monitor/logging-configuration/update-elasticsearch-logging-levels.md) for more information.
 

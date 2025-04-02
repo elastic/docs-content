@@ -126,7 +126,7 @@ xpack.searchable.snapshot.shared_cache.size: 4TB
 ```
 
 ::::{important}
-You can only configure these settings on nodes with the [`data_frozen`](../../distributed-architecture/clusters-nodes-shards/node-roles.md#data-frozen-node) role. Additionally, nodes with a shared cache can only have a single [data path](../../deploy/self-managed/configure-elasticsearch.md#path-settings).
+You can only configure these settings on nodes with the [`data_frozen`](../../distributed-architecture/clusters-nodes-shards/node-roles.md#data-frozen-node) role. Additionally, nodes with a shared cache can only have a single [data path](/deploy-manage/deploy/self-managed/important-settings-configuration.md#path-settings).
 ::::
 
 

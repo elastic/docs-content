@@ -1,17 +1,15 @@
 ---
 navigation_title: "Elastic Cloud"
+applies_to:
+  deployment:
+    ess: all
+  serverless: all
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/kibana-troubleshooting.html
   - https://www.elastic.co/guide/en/cloud/current/ec-monitoring-diagnose-resolve.html
 ---
 
 # Troubleshoot {{ecloud}}
-
-:::{admonition} WIP
-⚠️ **This page is a work in progress.** ⚠️
-
-The documentation team is working on restructuring this section. It currently reflects a legacy product-centric structure.
-:::
 
 Use the topics in this section to troubleshoot {{ecloud}}:
 

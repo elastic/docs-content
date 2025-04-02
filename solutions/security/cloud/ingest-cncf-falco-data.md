@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/ingest-falco.html
   - https://www.elastic.co/guide/en/serverless/current/ingest-falco.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Ingest CNCF Falco data

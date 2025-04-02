@@ -10,223 +10,114 @@ mapped_urls:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-securing-ece.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-security.html
   - https://www.elastic.co/guide/en/kibana/current/using-kibana-with-security.html
-  - https://www.elastic.co/guide/en/elasticsearch/reference/current/security-limitations.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/es-security-principles.html
   - https://www.elastic.co/guide/en/cloud/current/ec-faq-technical.html
 ---
 
-% SR: include this info somewhere in this section
-% {{ech}} doesn't support custom SSL certificates, which means that a custom CNAME for an {{ech}} endpoint such as *mycluster.mycompanyname.com* also is not supported.
-%
-% In {{ech}}, IP sniffing is not supported by design and will not return the expected results. We prevent IP sniffing from returning the expected results to improve the security of our underlying {{ech}} infrastructure.
-%
-% encryption at rest (EAR) is enabled in {{ech}} by default. We support EAR for both the data stored in your clusters and the snapshots we take for backup, on all cloud platforms and across all regions.
-% You can also bring your own key (BYOK) to encrypt your Elastic Cloud deployment data and snapshots. For more information, check [Encrypt your deployment with a customer-managed encryption key](../../../deploy-manage/security/encrypt-deployment-with-customer-managed-encryption-key.md).
-
-% Note that the encryption happens at the file system level.
-
-% What needs to be done: Refine
-
-% GitHub issue: https://github.com/elastic/docs-projects/issues/346
-
-% Scope notes: this is just communication security - link to users + roles, spaces, monitoring, ++
-
-% Use migrated content from existing pages that map to this page:
-
-% - [ ] ./raw-migrated-files/elasticsearch/elasticsearch-reference/security-files.md
-%      Notes: redirect only
-% - [ ] ./raw-migrated-files/elasticsearch/elasticsearch-reference/secure-cluster.md
-% - [ ] ./raw-migrated-files/kibana/kibana/xpack-security.md
-% - [ ] ./raw-migrated-files/cloud-on-k8s/cloud-on-k8s/k8s-securing-stack.md
-% - [ ] ./raw-migrated-files/cloud/cloud-enterprise/ece-securing-ece.md
-% - [ ] ./raw-migrated-files/cloud/cloud-heroku/ech-security.md
-% - [ ] ./raw-migrated-files/kibana/kibana/using-kibana-with-security.md
-% - [ ] ./raw-migrated-files/elasticsearch/elasticsearch-reference/security-limitations.md
-% - [ ] ./raw-migrated-files/elasticsearch/elasticsearch-reference/es-security-principles.md
-% - [ ] ./raw-migrated-files/cloud/cloud/ec-faq-technical.md
-
-$$$field-document-limitations$$$
-
-$$$alias-limitations$$$
-
-$$$preventing-unauthorized-access$$$
-
-$$$preserving-data-integrity$$$
-
-$$$maintaining-audit-trail$$$
-
-:::{warning}
-**This page is a work in progress.** 
-:::
-
-
-% The documentation team is working to combine content pulled from the following pages:
-
-% * [/raw-migrated-files/elasticsearch/elasticsearch-reference/security-files.md](/raw-migrated-files/elasticsearch/elasticsearch-reference/security-files.md)
-% * [/raw-migrated-files/elasticsearch/elasticsearch-reference/secure-cluster.md](/raw-migrated-files/elasticsearch/elasticsearch-reference/secure-cluster.md)
-% * [/raw-migrated-files/kibana/kibana/xpack-security.md](/raw-migrated-files/kibana/kibana/xpack-security.md)
-% * [/raw-migrated-files/cloud-on-k8s/cloud-on-k8s/k8s-securing-stack.md](/raw-migrated-files/cloud-on-k8s/cloud-on-k8s/k8s-securing-stack.md)
-% * [/raw-migrated-files/cloud/cloud-enterprise/ece-securing-ece.md](/raw-migrated-files/cloud/cloud-enterprise/ece-securing-ece.md)
-% * [/raw-migrated-files/cloud/cloud-heroku/ech-security.md](/raw-migrated-files/cloud/cloud-heroku/ech-security.md)
-% * [/raw-migrated-files/kibana/kibana/using-kibana-with-security.md](/raw-migrated-files/kibana/kibana/using-kibana-with-security.md)
-% * [/raw-migrated-files/elasticsearch/elasticsearch-reference/security-limitations.md](/raw-migrated-files/elasticsearch/elasticsearch-reference/security-limitations.md)
-% * [/raw-migrated-files/elasticsearch/elasticsearch-reference/es-security-principles.md](/raw-migrated-files/elasticsearch/elasticsearch-reference/es-security-principles.md)
-% * [/raw-migrated-files/cloud/cloud/ec-faq-technical.md](/raw-migrated-files/cloud/cloud/ec-faq-technical.md)
-
 # Security
 
-This overview page helps you understand Elastic's security capabilities across different deployment types. You'll find:
+An Elastic implementation comprises many moving parts: {{es}} nodes forming the cluster, {{kib}} instances, additional stack components such as Logstash and Beats, and various clients and integrations, all communicating with your cluster.
 
-- Key security features for protecting your Elastic deployment
-- Security capabilities specific to each deployment type
-- Comparison tables showing feature availability and configurability by deployment type
-- Links to detailed implementation guides
+To keep your data secured, Elastic offers security features that prevent bad actors from tampering with your data, and encrypt communications to, from, and within your cluster. Regardless of your deployment type, Elastic sets up certain security features for you automatically.
 
-## Security overview
+The availability and configurability of security features vary by deployment type. On every page, you'll see deployment type indicators that show which content applies to specific deployment types. Focus on sections tagged with your deployment type and look for subsections specifically addressing your deployment model. You can also review a [comparison table](#comparison-table) showing feature availability and configurability by deployment type.
 
-An Elastic implementation comprises many moving parts: {{es}} nodes forming the cluster, {{kib}} instances, additional stack components such as Logstash and Beats, and various clients and integrations communicating with your deployment.
-
-To keep your data secured, Elastic offers comprehensive security features that:
-- Prevent unauthorized access to your deployment
-- Encrypt communications between components
-- Protect data at rest
-- Secure sensitive settings and saved objects
-
-:::{note}
-The availability and configurability of security features vary by deployment type. Refer to [Security by deployment type](#security-features-by-deployment-type) for a comparison table.
+:::{include} /deploy-manage/security/_snippets/complete-security.md
 :::
 
-## Security topics
+## Managed security in Elastic Cloud
+```yaml {applies_to}
+deployment:
+  ess: all
+serverless: all
+```
 
-The documentation is organized into three main areas.
+{{ecloud}} has built-in security. For example, HTTPS communications between {{ecloud}} and the internet, as well as inter-node communications, are secured automatically, and cluster data is encrypted at rest. 
 
-On every page, you'll see deployment type indicators that show which content applies to specific deployment types. Focus on sections tagged with your deployment type and look for subsections specifically addressing your deployment model.
+In {{ech}}, you can augment these Security features in the following ways:
+* Configure [traffic filtering](/deploy-manage/security/traffic-filtering.md) to prevent unauthorized access to your deployments.
+* Encrypt your deployment with a [customer-managed encryption key](/deploy-manage/security/encrypt-deployment-with-customer-managed-encryption-key.md).
+* [Secure your settings](/deploy-manage/security/secure-settings.md) using {{es}} and {{kib}} keystores.
+* Use the list of [{{ecloud}} static IPs](/deploy-manage/security/elastic-cloud-static-ips.md) to allow or restrict communications in your infrastructure.
 
-### 1. Secure your orchestrator
+{{ech}} doesn't support custom SSL certificates, which means that a custom CNAME for an {{ech}} endpoint such as *mycluster.mycompanyname.com* also is not supported.
 
-The [security of your orchestrator](security/secure-hosting-environment.md) forms the foundation of your overall security posture. This section covers environment-specific security controls:
-
-- [**Elastic Cloud Hosted and Serverless**](security/secure-your-elastic-cloud-organization.md)
-- [**Elastic Cloud Enterprise**](security/secure-your-elastic-cloud-enterprise-installation.md)
-- [**Elastic Cloud on Kubernetes**](security/secure-your-eck-installation.md)
-
-:::{note}
-There is no orchestration layer for self-managed deployments because you directly control the host environment. Refer to [](security/manually-configure-security-in-self-managed-cluster.md) to learn more about securing self-managed installations.
-:::
-
-### 2. Secure your deployments and clusters
-
-[Secure your deployments](security/secure-your-cluster-deployment.md) with features available across all deployment types:
-
-- [**Traffic filtering**](security/traffic-filtering.md): IP filtering, private links, and static IPs
-- [**Secure communications**](security/secure-cluster-communications.md): TLS configuration, certificates management
-- [**Data protection**](security/data-security.md): Encryption at rest, secure settings, saved objects
-- [**Security event audit logging**](security/logging-configuration/security-event-audit-logging.md): {{es}} and {{kib}} audit logs
-- [**Session management**](security/kibana-session-management.md): Kibana session controls
-- [**FIPS 140-2 compliance**](security/fips-140-2.md): Federal security standards
-
-### 3. Secure your clients and integrations
-
-[Secure your clients and integrations](security/secure-clients-integrations.md) to ensure secure communication between your applications and Elastic:
-
-- [**Client security**](security/httprest-clients-security.md): Best practices for securely connecting applications to {{es}}
-- **Integration security**: Secure configuration for Beats, Logstash, and other integrations
-
-## Security features by deployment type
-
-Security feature availability varies by deployment type, with each feature having one of the following statuses:
-
-| **Status** | **Description** |
-|--------|-------------|
-| **Managed** | Handled automatically by Elastic with no user configuration needed |
-| **Configurable** | Built-in feature that needs your configuration (like IP filters or passwords) |
-| **Self-managed** | Infrastructure-level security you implement and maintain |
-| **N/A** | Not available for this deployment type |
-
-Select your deployment type below to see what's available and how implementation responsibilities are distributed:
-
-::::{tab-set}
-:group: deployment-type
-
-:::{tab-item} Elastic Cloud Hosted
-:sync: cloud-hosted
-
-| **Security Category** | **Security Feature** | **Status** | **Description** |
-|------------------|------------|--------------|-------------|
-| **Communication** | TLS (HTTP Layer) | Managed | Automatically configured by Elastic |
-| | TLS (Transport Layer) | Managed | Automatically configured by Elastic |
-| **Network** | IP traffic filtering | Configurable | Configure IP-based access restrictions |
-| | Private link | Configurable | Establish secure VPC connection |
-| | Static IPs | Configurable | Enable fixed IP addresses |
-| **Data** | Encryption at rest | Managed | Automatically encrypted by Elastic |
-| | Bring your own encryption key | Configurable | Implement customer-provided keys |
-| | Keystore security | Managed | Automatically protected by Elastic |
-| | Saved object encryption | Managed | Automatically encrypted by Elastic |
-| **User Session** | Kibana Sessions | Configurable | Customize session parameters |
-
-:::
-
-:::{tab-item} Serverless
-:sync: serverless
-
-| **Security Category** | **Security Feature** | **Status** | **Description** |
-|------------------|------------|--------------|-------------|
-| **Communication** | TLS (HTTP Layer) | Managed | Automatically configured by Elastic |
-| | TLS (Transport Layer) | Managed | Automatically configured by Elastic |
-| **Network** | IP traffic filtering | Configurable | Configure IP-based access restrictions |
-| | Private link | N/A | X |
-| | Static IPs | Configurable | Enable fixed IP addresses |
-| **Data** | Encryption at rest | Managed | Automatically encrypted by Elastic |
-| | Bring your own encryption key | N/A | X |
-| | Keystore security | Managed | Automatically protected by Elastic |
-| | Saved object encryption | Managed | Automatically encrypted by Elastic |
-| **User Session** | Kibana Sessions | Managed | Automatically configured by Elastic |
-
-:::
-
-:::{tab-item} ECE/ECK
-:sync: ece-eck
-
-| **Security Category** | **Security Feature** | **Status** | **Description** |
-|------------------|------------|--------------|-------------|
-| **Communication** | TLS (HTTP Layer) | Configurable | Configure custom certificates |
-| | TLS (Transport Layer) | Managed | Automatically configured by Elastic |
-| **Network** | IP traffic filtering | Configurable | Configure IP-based access restrictions |
-| | Private link | N/A | X |
-| | Static IPs | N/A | X |
-| **Data** | Encryption at rest | Self-managed | Implement at infrastructure level |
-| | Bring your own encryption key | N/A | X |
-| | Keystore security | Configurable | Configure secure settings storage |
-| | Saved object encryption | Configurable | Enable encryption for saved objects |
-| **User Session** | Kibana Sessions | Configurable | Customize session parameters |
-
-:::
-
-:::{tab-item} Self-managed
-:sync: self-managed
-
-| **Security Category** | **Security Feature** | **Status** | **Description** |
-|------------------|------------|--------------|-------------|
-| **Communication** | TLS (HTTP Layer) | Self-managed | Implement and maintain certificates |
-| | TLS (Transport Layer) | Self-managed | Implement and maintain certificates |
-| **Network** | IP traffic filtering | Configurable | Configure IP-based access restrictions |
-| | Private link | N/A | X |
-| | Static IPs | N/A | X |
-| **Data** | Encryption at rest | Self-managed | Implement at infrastructure level |
-| | Bring your own encryption key | N/A | X |
-| | Keystore security | Configurable | Configure secure settings storage |
-| | Saved object encryption | Configurable | Enable encryption for saved objects |
-| **User Session** | Kibana Sessions | Configurable | Customize session parameters |
-
-:::
-
+::::{note}
+Serverless projects are fully managed and secured by Elastic, and do not have any configurable Security features at the project level.
 ::::
 
-## Next steps
+Refer to [{{ecloud}} security](https://www.elastic.co/cloud/security) for more details about Elastic security and privacy programs.
 
-Refer to the following sections for detailed instructions about securing your hosting environment:
+## Securing your orchestrator
+```yaml {applies_to}
+deployment:
+  ece: all
+  eck: all
+```
 
-* [Elastic Cloud Hosted and Serverless security setup](/deploy-manage/security/secure-your-elastic-cloud-organization.md)
-* [Elastic Cloud Enterprise (ECE) security setup](/deploy-manage/security/secure-your-elastic-cloud-enterprise-installation.md)
-* [Elastic Cloud on Kubernetes (ECK) security setup](/deploy-manage/security/secure-your-eck-installation.md)
-* [Self-managed cluster security setup](/deploy-manage/security/manually-configure-security-in-self-managed-cluster.md)
+When running {{stack}} applications on {{ece}} or {{eck}}, you must also secure the [orchestration layer](/deploy-manage/deploy.md#who-manages-the-infrastructure) responsible for deploying and managing your Elastic products.
+
+Learn about securing the following components:
+
+* [An {{ece}} installation](/deploy-manage/security/secure-your-elastic-cloud-enterprise-installation.md)
+* [An {{eck}} operator](/deploy-manage/security/secure-your-eck-installation.md)
+
+:::{tip}
+Elastic secures your [{{ecloud}}](/deploy-manage/deploy/elastic-cloud.md) orchestrator for you.
+:::
+
+## Cluster or deployment security features
+```yaml {applies_to}
+deployment:
+  ece: all
+  eck: all
+  ess: all
+  self: all
+```
+
+You can configure the following aspects of your Elastic cluster or deployment to maintain and enhance security:
+
+### Communication and network security
+
+:::{include} /deploy-manage/security/_snippets/cluster-communication-network.md
+:::
+
+### Data security
+
+:::{include} /deploy-manage/security/_snippets/cluster-data.md
+:::
+ 
+### User session security
+
+:::{include} /deploy-manage/security/_snippets/cluster-user-session.md
+:::
+
+### Security event audit logging
+
+:::{include} /deploy-manage/security/_snippets/audit-logging.md
+:::
+
+
+% missing: fips mode, manual config
+
+% we need to refine this table, but the idea is awesome IMO
+### Security features by deployment type [comparison-table]
+
+:::{include} /deploy-manage/security/_snippets/cluster-comparison.md
+:::
+
+## Securing other {{stack}} components
+
+The {{es}} security features enable you to secure your {{es}} cluster. However, for a complete security strategy, you must secure other applications in the {{stack}}, as well as communications between {{es}} and other {{stack}} components.
+
+[Review security topics for other {{stack}} components](/deploy-manage/security/secure-clients-integrations.md). 
+
+## Securing clients and integrations
+
+If you use HTTP clients or integrations to communicate with {{es}}, then you also need to [secure communications between the clients or integrations and {{es}}](/deploy-manage/security/httprest-clients-security.md).
+
+## Security limitations
+
+There are security limitations that apply to the usage of some {{es}} features or resources. Depending on your organization's security requirements, you might want to restrict, adjust, or find workaround or alternatives for some of these features and resources.
+
+[Review {{es}} security limitations](/deploy-manage/security/limitations.md).

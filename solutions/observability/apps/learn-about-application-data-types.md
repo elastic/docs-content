@@ -14,7 +14,7 @@ Elastic APM helps you see what happens from start to finish when a request is ma
 * [**Transactions**](../../../solutions/observability/apps/transactions.md): A transaction describes an event captured by an Elastic APM agent instrumenting a service. A transaction is technically a type of span that has additional attributes associated with it and often contains multiple child *spans*. You can think of transactions as the highest level of work you’re measuring within a service.
 * [**Traces**](../../../solutions/observability/apps/traces.md#apm-distributed-tracing): A trace is a group of *transactions* and *spans* with a common root. Each trace tracks the entirety of a single request. When a trace travels through multiple services, it is known as a *distributed trace*.
 
-:::{image} ../../../images/observability-spans-transactions-and-traces.png
+:::{image} /solutions/images/observability-spans-transactions-and-traces.png
 :alt: Diagram illustrating the relationship between spans
 :::
 

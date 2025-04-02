@@ -47,7 +47,7 @@ Add, edit, or delete custom icons for the map. Icons added to the map can be use
 
 Use spatial filter settings to configure how [spatial filters](maps-create-filter-from-map.md#maps-spatial-filters) are displayed.
 
-:::{image} ../../../images/kibana-spatial_filters.png
+:::{image} /explore-analyze/images/kibana-spatial_filters.png
 :alt: spatial filters
 :::
 

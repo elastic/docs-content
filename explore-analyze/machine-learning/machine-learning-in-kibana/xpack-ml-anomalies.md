@@ -13,28 +13,28 @@ The Elastic {{ml}} {{anomaly-detect}} feature automatically models the normal be
 
 If you have a license that includes the {{ml-features}}, you can create {{anomaly-jobs}} and manage jobs and {{dfeeds}} from the **Job Management** pane:
 
-:::{image} ../../../images/kibana-ml-job-management.png
+:::{image} /explore-analyze/images/kibana-ml-job-management.png
 :alt: Job Management
 :screenshot:
 :::
 
 You can use the **Settings** pane to create and edit calendars and the filters that are used in custom rules:
 
-:::{image} ../../../images/kibana-ml-settings.png
+:::{image} /explore-analyze/images/kibana-ml-settings.png
 :alt: Calendar Management
 :screenshot:
 :::
 
 The **Anomaly Explorer** and **Single Metric Viewer** display the results of your {{anomaly-jobs}}. For example:
 
-:::{image} ../../../images/kibana-ml-single-metric-viewer.png
+:::{image} /explore-analyze/images/kibana-ml-single-metric-viewer.png
 :alt: Single Metric Viewer
 :screenshot:
 :::
 
 You can optionally add annotations by drag-selecting a period of time in the **Single Metric Viewer** and adding a description. For example, you can add an explanation for anomalies in that time period or provide notes about what is occurring in your operational environment at that time:
 
-:::{image} ../../../images/kibana-ml-annotations-list.png
+:::{image} /explore-analyze/images/kibana-ml-annotations-list.png
 :alt: Single Metric Viewer with annotations
 :screenshot:
 :::

@@ -31,8 +31,6 @@ Watch these video tutorials to help you get started:
 
 ::::
 
-
-
 ## How Playground works [playground-how-it-works]
 
 Here’s a simpified overview of how Playground works:
@@ -61,7 +59,10 @@ Here’s a simpified overview of how Playground works:
 
     * User can also **Download the code** to integrate into application
 
+## Elastic LLM [preconfigured-llm-playground]
 
+:::{include} ../../_snippets/elastic-llm.md
+:::
 
 ## Availability and prerequisites [playground-availability-prerequisites]
 
@@ -76,7 +77,7 @@ To use Playground, you’ll need the following:
 
     * See [ingest data](playground.md#playground-getting-started-ingest) if you’d like to ingest sample data.
 
-3. An account with a **supported LLM provider**. Playground supports the following:
+3. If not using the default preconfigured LLM connector, you will need an account with a supported LLM provider:
 
     * **Amazon Bedrock**
 
@@ -99,7 +100,6 @@ To use Playground, you’ll need the following:
         * Google Gemini 1.5 Pro
         * Google Gemini 1.5 Flash
 
-
 ::::{tip}
 :name: playground-local-llms
 
@@ -110,17 +110,19 @@ You can also use locally hosted LLMs that are compatible with the OpenAI SDK. On
 
 ::::
 
-
-
 ## Getting started [playground-getting-started]
 
-:::{image} ../../../images/kibana-get-started.png
+:::{image} /solutions/images/kibana-get-started.png
 :alt: get started
 :screenshot:
 :::
 
-
 ### Connect to LLM provider [playground-getting-started-connect]
+
+:::{note}
+If you use [the preconfigured LLM](#preconfigured-llm-playground) connector, you can skip this step. Your LLM connector is ready to use.
+
+:::
 
 To get started with Playground, you need to create a [connector](../../../deploy-manage/manage-connectors.md) for your LLM provider. You can also connect to [locally hosted LLMs](playground.md#playground-local-llms) which are compatible with the OpenAI API, by using the OpenAI connector.
 
@@ -146,7 +148,7 @@ If you need to update a connector, or add a new one, click the 🔧 **Manage** b
 There are many options for ingesting data into {{es}}, including:
 
 * The [Elastic crawler](https://www.elastic.co/guide/en/enterprise-search/current/crawler.html) for web content (**NOTE**: Not yet available in *Serverless*)
-* [Elastic connectors](elasticsearch://reference/ingestion-tools/search-connectors/index.md) for data synced from third-party sources
+* [Elastic connectors](elasticsearch://reference/search-connectors/index.md) for data synced from third-party sources
 * The {{es}} [Bulk API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-bulk) for JSON documents
 
     ::::{dropdown} **Expand** for example
@@ -185,7 +187,7 @@ Once you’ve connected to your LLM provider, it’s time to choose the data you
 :::::{tip}
 You can always add or remove indices later by selecting the **Data** button from the main Playground UI.
 
-:::{image} ../../../images/kibana-data-button.png
+:::{image} /solutions/images/kibana-data-button.png
 :alt: data button
 :screenshot:
 :width: 150px
@@ -204,14 +206,14 @@ Since 8.15.0 (and earlier for {{es}} Serverless), the main Playground UI has two
 
 The **chat mode** is selected when you first set up your Playground instance.
 
-:::{image} ../../../images/kibana-chat-interface.png
+:::{image} /solutions/images/kibana-chat-interface.png
 :alt: chat interface
 :screenshot:
 :::
 
 To switch to **query mode**, select **Query** from the main UI.
 
-:::{image} ../../../images/kibana-query-interface.png
+:::{image} /solutions/images/kibana-query-interface.png
 :alt: query interface
 :screenshot:
 :::
@@ -253,7 +255,7 @@ Use the **View code** button to see the Python code that powers the chat interfa
 * {{es}} Python Client + LLM provider
 * LangChain + LLM provider
 
-:::{image} ../../../images/kibana-view-code-button.png
+:::{image} /solutions/images/kibana-view-code-button.png
 :alt: view code button
 :screenshot:
 :width: 150px

@@ -3,6 +3,8 @@ navigation_title: "Configure data volume"
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/endpoint-data-volume.html
   - https://www.elastic.co/guide/en/serverless/current/security-endpoint-data-volume.html
+applies_to:
+  stack: all
 ---
 
 # Configure data volume for {{elastic-endpoint}} [endpoint-data-volume]

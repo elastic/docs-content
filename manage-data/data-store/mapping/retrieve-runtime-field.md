@@ -202,7 +202,7 @@ POST logs/_search
 }
 ```
 
-1. Define a runtime field in the main search request with a type of `lookup` that retrieves fields from the target index using the [`term`](elasticsearch://reference/query-languages/query-dsl-term-query.md) queries.
+1. Define a runtime field in the main search request with a type of `lookup` that retrieves fields from the target index using the [`term`](elasticsearch://reference/query-languages/query-dsl/query-dsl-term-query.md) queries.
 2. The target index where the lookup query executes against
 3. A field on the main index whose values are used as the input values of the lookup term query
 4. A field on the lookup index which the lookup query searches against

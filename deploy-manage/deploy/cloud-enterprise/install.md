@@ -6,6 +6,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-installing.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-install-public.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-install-your-infra.html
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-install-cloud.html
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-install-onprem.html
 navigation_title: Install ECE
 ---
 
@@ -25,7 +27,7 @@ For public cloud deployments, you can choose from the following providers:
 If you already have an ECE platform up and running, and you want to add hosts to your installation, refer to [](./install-ece-on-additional-hosts.md).
 ::::
 
-::::{note} 
+::::{note}
 In these pages we frequently refer to [Docker](https://www.docker.com/), as its currently the most common container engine, but these instructions are generally valid for [Podman](https://podman.io/) as well, with `podman` replacing `docker` in commands as appropriate.
 ::::
 
@@ -44,7 +46,7 @@ ECE supports a [wide range of OS versions](https://www.elastic.co/support/matrix
 * [Rocky Linux 8 and 9](configure-host-rhel.md)
 * [SUSE Linux Enterprise Server (SLES) 12 SP5 and 15](configure-host-suse.md)
 
-::::{important} 
+::::{important}
 Cloud providers default provide automatic operating system patching for their virtual machines. We strongly recommend disabling this feature to avoid potential data loss and installation failure. All patching should be done using the [Perform host maintenance](../../maintenance/ece/perform-ece-hosts-maintenance.md) instructions.
 ::::
 

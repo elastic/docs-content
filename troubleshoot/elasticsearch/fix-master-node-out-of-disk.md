@@ -1,4 +1,11 @@
 ---
+applies_to:
+  stack: 
+  deployment:
+    eck: 
+    ess: 
+    ece: 
+    self: 
 navigation_title: Master nodes out of disk
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/fix-master-node-out-of-disk.html
@@ -17,7 +24,7 @@ mapped_pages:
 2. On the **Hosted deployments** panel, click the gear under the `Manage deployment` column that corresponds to the name of your deployment.
 3. Go to `Actions > Edit deployment` and then go to the `Master instances` section:
 
-    :::{image} ../../images/elasticsearch-reference-increase-disk-capacity-master-node.png
+    :::{image} /troubleshoot/images/elasticsearch-reference-increase-disk-capacity-master-node.png
     :alt: Increase disk capacity of master nodes
     :screenshot:
     :::

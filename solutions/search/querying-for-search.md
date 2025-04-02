@@ -20,13 +20,13 @@ Once you know which [search approaches](search-approaches.md) you need to use, y
 | Interface | Endpoint | Description | Best for |
 |-----------|----------|-------------|----------|
 | [**Query DSL**](/explore-analyze/query-filter/languages/querydsl.md) | [`_search`](the-search-api.md) | Original, JSON-based query language native to Elasticsearch. Powerful but complex syntax. | Full-text and semantic search queries |
-| [**ESQL**](/explore-analyze/query-filter/languages/esql.md) | `_query` | Fast, SQL-like language with piped syntax, built on new compute architecture. | Filtering, analysis, aggregations |
+| [**ES|QL**](esql-for-search.md) | `_query` | Fast, SQL-like language with piped syntax, built on new compute architecture. | Filtering, analysis, aggregations |
 | [**Retrievers**](retrievers-overview.md) | `_search` | Modern `_search` API syntax focused on composability. | Building complex search pipelines, especially those using semantic search. Required for [semantic reranking](ranking/semantic-reranking.md). |
 
 These query languages are complementary, not mutually exclusive. You can use different query languages for different parts of your application, based on your specific needs. This flexibility allows you to gradually adopt newer interfaces as your requirements evolve.
 
 ::::{note} 
-You can use the [{{es}} REST APIs](https://www.elastic.co/docs/api/doc/elasticsearch) to search your data using any HTTP client, including the [{{es}} client libraries](site-or-app/clients.md), or directly in [Console](https://www.elastic.co/guide/en/serverless/current/devtools-run-api-requests-in-the-console.html). You can also run searches using [Discover](/explore-analyze/discover.md) in the UI.
+You can use the [{{es}} REST APIs](https://www.elastic.co/docs/api/doc/elasticsearch) to search your data using any HTTP client, including the [{{es}} client libraries](site-or-app/clients.md), or directly in [Console](/explore-analyze/query-filter/tools/console.md). You can also run searches using [Discover](/explore-analyze/discover.md) in the UI.
 ::::
 
 

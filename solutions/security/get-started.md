@@ -1,6 +1,10 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/security/current/getting-started.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Get started [getting-started]

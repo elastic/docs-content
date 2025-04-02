@@ -507,7 +507,7 @@ Ordering by aggregation is possible for up to **10000** entries for memory consu
 When doing full-text queries in the `WHERE` clause, results can be returned based on their [score](https://www.elastic.co/guide/en/elasticsearch/guide/2.x/relevance-intro.html) or *relevance* to the given query.
 
 ::::{note}
-When doing multiple text queries in the `WHERE` clause then, their scores will be combined using the same rules as {{es}}'s [bool query](elasticsearch://reference/query-languages/query-dsl-bool-query.md).
+When doing multiple text queries in the `WHERE` clause then, their scores will be combined using the same rules as {{es}}'s [bool query](elasticsearch://reference/query-languages/query-dsl/query-dsl-bool-query.md).
 ::::
 
 

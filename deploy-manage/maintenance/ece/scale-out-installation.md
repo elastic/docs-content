@@ -16,7 +16,7 @@ Check the available capacity:
 2. From the **Platform** menu, select **Allocators** to view the available capacity.
    Narrow the list by name, ID, or choose from several other filters. To further define the list, use a combination of filters.
    In this case 3 GB and 6 GB on two different allocators:
-   :::{image} ../../../images/cloud-enterprise-ece-available-capacity.png
+   :::{image} /deploy-manage/images/cloud-enterprise-ece-available-capacity.png
    :alt: The available capacity in an installation
    :::
 

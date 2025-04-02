@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/building-block-rule.html
   - https://www.elastic.co/guide/en/serverless/current/security-building-block-rules.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # About building block rules [security-building-block-rules]
@@ -16,7 +20,7 @@ Create building block rules when you do not want to see their generated alerts i
 
 To create a rule that searches alert indices, select **Index Patterns** as the rule’s **Source** and enter the index pattern for alert indices (`.alerts-security.alerts-*`):
 
-:::{image} ../../../images/security-alert-indices-ui.png
+:::{image} /solutions/images/security-alert-indices-ui.png
 :alt: alert indices ui
 :screenshot:
 :::

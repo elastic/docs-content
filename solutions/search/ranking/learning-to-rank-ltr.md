@@ -15,7 +15,7 @@ This feature was introduced in version 8.12.0 and is only available to certain s
 
 Learning To Rank (LTR) uses a trained machine learning (ML) model to build a ranking function for your search engine. Typically, the model is used as a second stage re-ranker, to improve the relevance of search results returned by a simpler, first stage retrieval algorithm. The LTR function takes a list of documents and a search context and outputs ranked documents:
 
-:::{image} ../../../images/elasticsearch-reference-learning-to-rank-overview.png
+:::{image} /solutions/images/elasticsearch-reference-learning-to-rank-overview.png
 :alt: Learning To Rank overview
 :title: Learning To Rank overview
 :name: learning-to-rank-overview-diagram
@@ -33,7 +33,7 @@ The LTR model is usually trained on a judgment list, which is a set of queries a
 
 The judgment list is the main input used to train the model. It consists of a dataset that contains pairs of queries and documents, along with their corresponding relevance labels. The relevance judgment is typically either a binary (relevant/irrelevant) or a more granular label, such as a grade between 0 (completely irrelevant) to 4 (highly relevant). The example below uses a graded relevance judgment.
 
-:::{image} ../../../images/elasticsearch-reference-learning-to-rank-judgment-list.png
+:::{image} /solutions/images/elasticsearch-reference-learning-to-rank-judgment-list.png
 :alt: Judgment list example
 :title: Judgment list example
 :name: learning-to-rank-judgment-list-example
@@ -62,7 +62,7 @@ These features fall into one of three main categories:
 
 To prepare the dataset for training, the features are added to the judgment list:
 
-:::{image} ../../../images/elasticsearch-reference-learning-to-rank-feature-extraction.png
+:::{image} /solutions/images/elasticsearch-reference-learning-to-rank-feature-extraction.png
 :alt: Judgment list with features
 :title: Judgment list with features
 :name: learning-to-rank-judgement-feature-extraction

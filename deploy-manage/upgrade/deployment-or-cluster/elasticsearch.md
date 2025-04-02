@@ -1,5 +1,6 @@
 ---
 applies_to:
+  stack:
   deployment:
     self: all
 ---
@@ -8,7 +9,7 @@ applies_to:
 
 An {{es}} cluster can be upgraded one node at a time so upgrading does not interrupt service. Running multiple versions of {{es}} in the same cluster beyond the duration of an upgrade is not supported, as shards cannot be replicated from upgraded nodes to nodes running the older version.
 
-Before you start, [take the upgrade preparation steps](../../../deploy-manage/upgrade/prepare-to-upgrade.md). When performing a [rolling upgrade](../../../deploy-manage/upgrade/deployment-or-cluster.md#rolling-upgrades):
+Before you start, [take the upgrade preparation steps](/deploy-manage/upgrade/prepare-to-upgrade.md). When performing a [rolling upgrade](#rolling-upgrades):
 
 1. Upgrade the data nodes first, tier-by-tier, starting with the frozen tier, then the cold tier, then the warm tier, then the hot tier, and finally any other data nodes which are not in a tier. Complete the upgrade for all nodes in each data tier before moving to the next. This ensures {{ilm-init}} can continue to move data through the tiers during the upgrade. You can get the list of nodes in a specific tier with a `GET /_nodes` request, for example: `GET /_nodes/data_frozen:true/_none`.
 2. Upgrade all remaining nodes that are neither master-eligible nor data nodes. This includes dedicated ML nodes, dedicated ingest nodes, and dedicated coordinating nodes.
@@ -95,7 +96,7 @@ To upgrade a cluster:
     ::::{tip}
     When you extract the zip or tarball packages, the `elasticsearch-{{bare_version}}` directory contains the {{es}} `config`, `data`, and `logs` directories.
 
-    We recommend moving these directories out of the {{es}} directory so that there is no chance of deleting them when you upgrade {{es}}. To specify the new locations, use the `ES_PATH_CONF` environment variable and the `path.data` and `path.logs` settings. For more information, see [Important {{es}} configuration](../../../deploy-manage/deploy/self-managed/important-settings-configuration.md).
+    We recommend moving these directories out of the {{es}} directory so that there is no chance of deleting them when you upgrade {{es}}. To specify the new locations, use the `ES_PATH_CONF` environment variable and the `path.data` and `path.logs` settings. For more information, refer to [Important {{es}} configuration](../../../deploy-manage/deploy/self-managed/important-settings-configuration.md).
 
     The Debian and RPM packages place these directories in the appropriate place for each operating system. In production, we recommend using the deb or rpm package.
 
@@ -199,4 +200,11 @@ Similarly, if you run a testing/development environment with a single master nod
 
 ## Archived settings [archived-settings]
 
-If you upgrade an {{es}} cluster that uses deprecated cluster or index settings that are not used in the target version, they are archived. We recommend you remove any archived settings after upgrading. For more information, see [Archived settings](../../../deploy-manage/upgrade/deployment-or-cluster/archived-settings.md).
+If you upgrade an {{es}} cluster that uses deprecated cluster or index settings that are not used in the target version, they are archived. We recommend you remove any archived settings after upgrading. For more information, refer to [Archived settings](../../../deploy-manage/upgrade/deployment-or-cluster/archived-settings.md).
+
+## Next steps
+
+Once you've successfully upgraded {{es}}, continue upgrading the remaining {{stack}} components:
+* [{{kib}}](/deploy-manage/upgrade/deployment-or-cluster/kibana.md)
+* [Elastic APM](../../../solutions/observability/apps/upgrade.md)
+* [Ingest components](/deploy-manage/upgrade/ingest-components.md)  

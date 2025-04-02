@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/cspm.html
   - https://www.elastic.co/guide/en/serverless/current/security-cspm.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Cloud security posture management

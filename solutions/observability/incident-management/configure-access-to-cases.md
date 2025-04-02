@@ -8,13 +8,13 @@ mapped_pages:
 To access and send cases to external systems, you need the [appropriate license](https://www.elastic.co/subscriptions), and your role must have the **Cases** {{kib}} privilege as a user for the **{{observability}}** feature.
 
 ::::{note}
-If you are using an on-premises {{kib}} deployment and want your email notifications and external incident management systems to contain links back to {{kib}}, configure the [server.publicBaseUrl](../../../deploy-manage/deploy/self-managed/configure.md#server-publicBaseUrl) setting.
+If you are using an on-premises {{kib}} deployment and want your email notifications and external incident management systems to contain links back to {{kib}}, configure the [server.publicBaseUrl](kibana://reference/configuration-reference/general-settings.md#server-publicbaseurl) setting.
 ::::
 
 
 For more details, refer to [feature access based on user privileges](../../../deploy-manage/manage-spaces.md#spaces-control-user-access).
 
-:::{image} ../../../images/observability-cases-privileges.png
+:::{image} /solutions/images/observability-cases-privileges.png
 :alt: cases privileges
 :screenshot:
 :::
@@ -30,7 +30,7 @@ Below are the minimum required privileges for some common use cases.
     ::::{note}
     Roles without `All` **{{connectors-feature}}** feature privileges cannot create, add, delete, or modify case connectors.
 
-    By default, `All` for the **Cases** feature includes authority to delete cases, delete alerts and comments from cases, edit case settings, add case comments and attachments, and re-open cases unless you customize the sub-feature privileges.
+    By default, `All` for the **Cases** feature allows you to have full control over cases, including deleting them, editing case settings, and more. You can customize the sub-feature privileges to limit feature access.
 
     ::::
 

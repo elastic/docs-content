@@ -20,9 +20,8 @@ The longer the text passed into the {{lang-ident}} model, the more accurately th
 
 The table below contains the ISO codes and the English names of the languages that {{lang-ident}} supports. If a language has a 2-letter `ISO 639-1` code, the table contains that identifier. Otherwise, the 3-letter `ISO 639-2` code is used. The `Latn` subtag indicates that the language is transliterated into Latin script.
 
-|     |     |     |     |     |     |
-| --- | --- | --- | --- | --- | --- |
 | Code | Language | Code | Language | Code | Language |
+| --- | --- | --- | --- | --- | --- |
 | af | Afrikaans | hr | Croatian | pa | Punjabi |
 | am | Amharic | ht | Haitian | pl | Polish |
 | ar | Arabic | hu | Hungarian | ps | Pashto |
