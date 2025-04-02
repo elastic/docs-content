@@ -16,21 +16,7 @@ You can [interact with the AI Assistant](#obs-ai-interact) in two ways:
 * **Contextual insights**: Embedded assistance throughout Elastic UIs that explains errors and messages with suggested remediation steps.
 * **Chat interface**: A conversational experience where you can ask questions and receive answers about your data. The assistant uses function calling to request, analyze, and visualize information based on your needs.
 
-% :::{image} /solutions/images/observability-obs-assistant2.gif
-:alt: Observability AI assistant preview
-:screenshot:
-:::
-
-By default, AI Assistant uses a preconfigured large language model (LLM) connector that works out of the box.
-It also integrates with your LLM provider through our supported {{stack}} connectors:
-
-* [OpenAI connector](kibana://reference/connectors-kibana/openai-action-type.md) for OpenAI or Azure OpenAI Service.
-* [Amazon Bedrock connector](kibana://reference/connectors-kibana/bedrock-action-type.md) for Amazon Bedrock, specifically for the Claude models.
-* [Google Gemini connector](kibana://reference/connectors-kibana/gemini-action-type.md) for Google Gemini.
-
-::::{important}
-The AI Assistant uses large language models (LLMs) which are probabilistic and liable to provide incomplete or incorrect information. Elastic supports LLM configuration and connectivity but is not responsible for response accuracy. Always verify important information before implementing suggested changes.
-::::
+By default, AI Assistant uses a [preconfigured LLM](#preconfigured-llm-ai-assistant) connector that works out of the box. You can also connect to third-party LLM providers.
 
 ## Use cases
 
@@ -51,14 +37,7 @@ The {{obs-ai-assistant}} helps you:
 
 The AI assistant requires the following:
 
-* Elastic deployment:
-* {{stack}} version 8.9 and later.
-* A self-deployed connector service if [search connectors](elasticsearch://reference/search-connectors/self-managed-connectors.md) are used to populate external data into the knowledge base.
-* If not using the [default preconfigured LLM](#preconfigured-llm-ai-assistant), you need an account with a third-party generative AI provider that preferably supports function calling. If your provider does not support function calling, you can configure AI Assistant settings under **Stack Management** to simulate function calling, but this might affect performance.
-
-    Refer to the [connector documentation](../../deploy-manage/manage-connectors.md) for your provider to learn about supported and default models.
-
-* The knowledge base requires a 4 GB {{ml}} node.
+- An **Elastic deployment**:
 
   - For **Observability**: {{stack}} version **8.9** or later, or an **{{observability}} serverless project**.
   
@@ -66,7 +45,7 @@ The AI assistant requires the following:
   
     - To run {{obs-ai-assistant}} on a self-hosted Elastic stack, you need an [appropriate license](https://www.elastic.co/subscriptions).
  
-* An account with a third-party generative AI provider that preferably supports function calling. If your AI provider does not support function calling, you can configure AI Assistant settings under **Stack Management** to simulate function calling, but this might affect performance.
+- If not using the [default preconfigured LLM](#preconfigured-llm-ai-assistant), you need an account with a third-party generative AI provider that preferably supports function calling. If your provider does not support function calling, you can configure AI Assistant settings under **Stack Management** to simulate function calling, but this might affect performance.
 
   - The free tier offered by third-party generative AI provider may not be sufficient for the proper functioning of the AI assistant. In most cases, a paid subscription to one of the supported providers is required.
 
@@ -81,21 +60,23 @@ The AI assistant requires the following:
 
 It's important to understand how your data is handled when using the AI Assistant. Here are some key points:
 
-**Data usage by Elastic**: Elastic does not use customer data for model training, but all data is processed by third-party AI providers.
+**Data usage by Elastic**
+:   Elastic does not use customer data for model training, but all data is processed by third-party AI providers.
 
-**Anonymization**: Data sent to the AI Assistant is *not* anonymized, including alert data, configurations, queries, logs, and chat interactions.
+**Anonymization**
+:   Data sent to the AI Assistant is *not* anonymized, including alert data, configurations, queries, logs, and chat interactions.
 
-**Permission context**: When the AI Assistant performs searches, it uses the same permissions as the current user.
+**Permission context**
+:   When the AI Assistant performs searches, it uses the same permissions as the current user.
 
-**Third-party processing**: Any data submitted may be used by the provider for AI training or other purposes with no guarantee of security or confidentiality.
-
-To set up the AI Assistant:
+**Third-party processing**
+:   Any data submitted may be used by the provider for AI training or other purposes with no guarantee of security or confidentiality.
 
 **Telemetry collection**: Your AI provider may collect telemetry during usage. Contact them for details on what data is collected.
 
 ## Set up the AI Assistant [obs-ai-set-up]
 
-:::{tip}
+:::{note}
 If you use [the preconfigured LLM](#preconfigured-llm-ai-assistant) connector, you can skip this step. Your LLM connector is ready to use.
 :::
 
@@ -230,6 +211,10 @@ After creating the pipeline, complete the following steps:
 
 
 ## Interact with the AI Assistant [obs-ai-interact]
+
+::::{important}
+The AI Assistant uses large language models (LLMs) which are probabilistic and liable to provide incomplete or incorrect information. Elastic supports LLM configuration and connectivity but is not responsible for response accuracy. Always verify important information before implementing suggested changes.
+::::
 
 Chat with the AI Assistant or interact with contextual insights located throughout the UI. Check the following sections for more on interacting with the AI Assistant.
 
