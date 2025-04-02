@@ -1,10 +1,11 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/what-is-observability-serverless.html
   - https://www.elastic.co/guide/en/observability/current/index.html
+  - https://www.elastic.co/guide/en/kibana/current/observability.html
 applies_to:
-  stack: 
-  serverless: 
+  stack:
+  serverless:
 ---
 
 # Observability

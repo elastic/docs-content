@@ -2,7 +2,7 @@
 applies_to:
   stack: ga
   serverless: ga
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/xpack-alerting.html
   - https://www.elastic.co/guide/en/cloud/current/ec-watcher.html
   - https://www.elastic.co/guide/en/kibana/current/watcher-ui.html

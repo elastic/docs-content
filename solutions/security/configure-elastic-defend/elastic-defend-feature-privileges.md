@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/security/current/endpoint-management-req.html
   - https://www.elastic.co/guide/en/serverless/current/security-endpoint-management-req.html
 applies_to:

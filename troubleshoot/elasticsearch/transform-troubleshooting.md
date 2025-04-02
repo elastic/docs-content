@@ -1,4 +1,11 @@
 ---
+applies_to:
+  stack: 
+  deployment:
+    eck: 
+    ess: 
+    ece: 
+    self: 
 navigation_title: Transforms
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/transform-troubleshooting.html
@@ -8,7 +15,9 @@ mapped_pages:
 
 Use the information in this section to troubleshoot common problems.
 
-For issues that you cannot fix yourself … we’re here to help. If you are an existing Elastic customer with a support contract, please create a ticket in the [Elastic Support portal](https://support.elastic.co/customers/s/login/). Or post in the [Elastic forum](https://discuss.elastic.co/).
+:::{tip}
+If you can't find your issue here, explore the other [troubleshooting topics](/troubleshoot/index.md) or [contact us](/troubleshoot/index.md#contact-us).
+:::
 
 If you encounter problems with your {{transforms}}, you can gather more information from the following files and APIs:
 

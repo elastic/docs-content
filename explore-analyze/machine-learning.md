@@ -3,7 +3,7 @@ applies_to:
   stack: ga
   serverless: ga
 navigation_title: Machine learning
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/machine-learning/current/index.html
   - https://www.elastic.co/guide/en/machine-learning/current/machine-learning-intro.html
   - https://www.elastic.co/guide/en/serverless/current/machine-learning.html

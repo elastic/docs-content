@@ -1,0 +1,1 @@
+{{es}} transport security and TLS certificates are automatically configured by the operator, but you can still [customize its service and CA certificates](/deploy-manage/security/k8s-transport-settings.md).

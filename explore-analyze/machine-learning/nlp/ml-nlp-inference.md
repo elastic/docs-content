@@ -25,7 +25,7 @@ In {{kib}}, you can create and edit pipelines in **{{stack-manage-app}}** > **In
 :::
 
 1. Click **Create pipeline** or edit an existing pipeline.
-2. Add an [{{infer}} processor](elasticsearch://reference/ingestion-tools/enrich-processor/inference-processor.md) to your pipeline:
+2. Add an [{{infer}} processor](elasticsearch://reference/enrich-processor/inference-processor.md) to your pipeline:
 
     1. Click **Add a processor** and select the **{{infer-cap}}** processor type.
     2. Set **Model ID** to the name of your trained model, for example `elastic__distilbert-base-cased-finetuned-conll03-english` or `lang_ident_model_1`.
@@ -39,7 +39,7 @@ In {{kib}}, you can create and edit pipelines in **{{stack-manage-app}}** > **In
             }
             ```
 
-        2. You can also optionally add [classification configuration options](elasticsearch://reference/ingestion-tools/enrich-processor/inference-processor.md#inference-processor-classification-opt) in the **{{infer-cap}} configuration** section. For example, to include the top five language predictions:
+        2. You can also optionally add [classification configuration options](elasticsearch://reference/enrich-processor/inference-processor.md#inference-processor-classification-opt) in the **{{infer-cap}} configuration** section. For example, to include the top five language predictions:
 
             ```js
             {
@@ -51,7 +51,7 @@ In {{kib}}, you can create and edit pipelines in **{{stack-manage-app}}** > **In
 
     4. Click **Add** to save the processor.
 
-3. Optional: Add a [set processor](elasticsearch://reference/ingestion-tools/enrich-processor/set-processor.md) to index the ingest timestamp.
+3. Optional: Add a [set processor](elasticsearch://reference/enrich-processor/set-processor.md) to index the ingest timestamp.
 
     1. Click **Add a processor** and select the **Set** processor type.
     2. Choose a name for the field (such as `event.ingested`) and set its value to `{{{_ingest.timestamp}}}`. For more details, refer to [Access ingest metadata in a processor](../../../manage-data/ingest/transform-enrich/ingest-pipelines.md#access-ingest-metadata).

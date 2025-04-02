@@ -2,7 +2,7 @@
 applies_to:
   deployment:
     ess: ga
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-add-user-settings.html
   - https://www.elastic.co/guide/en/cloud/current/ec-editing-user-settings.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-add-user-settings.html

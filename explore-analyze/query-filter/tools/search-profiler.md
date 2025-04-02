@@ -4,6 +4,7 @@ applies_to:
   serverless: ga
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/xpack-profiler.html
+  - https://www.elastic.co/guide/en/serverless/current/devtools-profile-queries-and-aggregations.html
 ---
 
 # Search profiler [xpack-profiler]

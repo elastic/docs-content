@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/security/current/rules-ui-create.html
   - https://www.elastic.co/guide/en/serverless/current/security-rules-create.html
 applies_to:
@@ -85,9 +85,9 @@ Additional configuration is required for detection rules using cross-cluster sea
 ## Create a machine learning rule [create-ml-rule]
 
 ::::{admonition} Requirements
-To create or edit {{ml}} rules, you need: 
+To create or edit {{ml}} rules, you need:
 * The appropriate [{{stack}} subscription](https://www.elastic.co/pricing) or [{{serverless-short}} project tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md).
-* The [`machine_learning_admin`](/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md) in {{stack}} or the appropriate [user role](/deploy-manage/users-roles/cloud-organization/user-roles.md) in {{serverless-short}}. 
+* The [`machine_learning_admin`](/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md) in {{stack}} or the appropriate [user role](/deploy-manage/users-roles/cloud-organization/user-roles.md) in {{serverless-short}}.
 * The selected {{ml}} job to be running for the rule to function correctly.
 
 ::::

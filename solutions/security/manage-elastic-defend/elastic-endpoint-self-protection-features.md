@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/security/current/endpoint-self-protection.html
   - https://www.elastic.co/guide/en/serverless/current/security-endpoint-self-protection.html
 applies_to:
@@ -28,7 +28,7 @@ Self-protection is also enabled on the following macOS versions:
 * macOS 11 (Big Sur)
 * macOS 12 (Monterey)
 
-::::{note} 
+::::{note}
 Other Windows and macOS variants (and all Linux distributions) do not have self-protection.
 ::::
 

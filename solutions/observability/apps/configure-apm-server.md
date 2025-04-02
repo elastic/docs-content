@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-manage-apm-settings.html
   - https://www.elastic.co/guide/en/observability/current/apm-configuring-howto-apm-server.html
 applies_to:

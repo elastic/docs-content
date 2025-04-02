@@ -1,9 +1,9 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-configure-azure-snapshotting.html
 applies_to:
   deployment:
-    ece: 
+    ece:
 ---
 
 # Azure Storage repository [ece-configure-azure-snapshotting]
