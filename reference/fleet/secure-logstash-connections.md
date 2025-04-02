@@ -155,8 +155,8 @@ output {
 
 To learn more about the {{ls}} configuration, refer to:
 
-* [{{agent}} input plugin](logstash://reference/plugins-inputs-elastic_agent.md)
-* [{{es}} output plugin](logstash://reference/plugins-outputs-elasticsearch.md)
+* [{{agent}} input plugin](logstash-docs-md://lsr/plugins-inputs-elastic_agent.md)
+* [{{es}} output plugin](logstash-docs-md://lsr/plugins-outputs-elasticsearch.md)
 * [Secure your connection to {{es}}](logstash://reference/secure-connection.md)
 
 When you’re done configuring the pipeline, restart {{ls}}:

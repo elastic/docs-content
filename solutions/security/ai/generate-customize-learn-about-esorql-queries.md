@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/security/current/esql-queries-assistant.html
   - https://www.elastic.co/guide/en/serverless/current/security-ai-assistant-esql-queries.html
 applies_to:

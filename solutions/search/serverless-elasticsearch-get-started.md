@@ -1,6 +1,6 @@
 ---
 navigation_title: "Get started on Serverless"
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/elasticsearch-connecting-to-es-serverless-endpoint.html
 applies_to:
   serverless:
@@ -108,7 +108,7 @@ If you’re already familiar with Elasticsearch, you can jump right into setting
 2. Ingest your data. Elasticsearch provides several methods for ingesting data:
 
     * [{{es}} API](ingest-for-search.md)
-    * [Connector clients](elasticsearch://reference/ingestion-tools/search-connectors/index.md)
+    * [Connector clients](elasticsearch://reference/search-connectors/index.md)
     * [File Uploader](/manage-data/ingest/upload-data-files.md)
     * [{{beats}}](beats://reference/index.md)
     * [{{ls}}](logstash://reference/index.md)

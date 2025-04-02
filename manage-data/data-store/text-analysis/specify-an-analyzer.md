@@ -34,7 +34,7 @@ If you don’t typically create mappings for your indices, you can use [index te
 1. The [`analyzer`](elasticsearch://reference/elasticsearch/mapping-reference/analyzer.md) mapping parameter for the field. See [Specify the analyzer for a field](#specify-index-field-analyzer).
 2. The `analysis.analyzer.default` index setting. See [Specify the default analyzer for an index](#specify-index-time-default-analyzer).
 
-If none of these parameters are specified, the [`standard` analyzer](elasticsearch://reference/data-analysis/text-analysis/analysis-standard-analyzer.md) is used.
+If none of these parameters are specified, the [`standard` analyzer](elasticsearch://reference/text-analysis/analysis-standard-analyzer.md) is used.
 
 
 ## Specify the analyzer for a field [specify-index-field-analyzer]
@@ -97,7 +97,7 @@ At search time, {{es}} determines which analyzer to use by checking the followin
 3. The `analysis.analyzer.default_search` index setting. See [Specify the default search analyzer for an index](#specify-search-default-analyzer).
 4. The [`analyzer`](elasticsearch://reference/elasticsearch/mapping-reference/analyzer.md) mapping parameter for the field. See [Specify the analyzer for a field](#specify-index-field-analyzer).
 
-If none of these parameters are specified, the [`standard` analyzer](elasticsearch://reference/data-analysis/text-analysis/analysis-standard-analyzer.md) is used.
+If none of these parameters are specified, the [`standard` analyzer](elasticsearch://reference/text-analysis/analysis-standard-analyzer.md) is used.
 
 
 ## Specify the search analyzer for a query [specify-search-query-analyzer]

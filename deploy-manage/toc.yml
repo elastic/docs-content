@@ -330,23 +330,29 @@ toc:
       - file: distributed-architecture/kibana-tasks-management.md
   - file: production-guidance.md
     children:
-      - file: production-guidance/getting-ready-for-production-elasticsearch.md
+      - file: production-guidance/elasticsearch-in-production-environments.md
+        children:
+          - file: production-guidance/availability-and-resilience.md
+            children:
+              - file: production-guidance/availability-and-resilience/resilience-in-small-clusters.md
+              - file: production-guidance/availability-and-resilience/resilience-in-larger-clusters.md
+              - file: production-guidance/availability-and-resilience/resilience-in-ech.md
+          - file: production-guidance/scaling-considerations.md
+          - file: production-guidance/optimize-performance.md
+            children:
+              - file: production-guidance/general-recommendations.md
+              - file: production-guidance/optimize-performance/indexing-speed.md
+              - file: production-guidance/optimize-performance/search-speed.md
+              - file: production-guidance/optimize-performance/approximate-knn-search.md
+              - file: production-guidance/optimize-performance/disk-usage.md
+              - file: production-guidance/optimize-performance/size-shards.md
       - file: production-guidance/kibana-in-production-environments.md
-      - file: production-guidance/plan-for-production-elastic-cloud.md
-      - file: production-guidance/availability-and-resilience.md
         children:
-          - file: production-guidance/availability-and-resilience/resilience-in-small-clusters.md
-          - file: production-guidance/availability-and-resilience/resilience-in-larger-clusters.md
-      - file: production-guidance/optimize-performance.md
-        children:
-          - file: production-guidance/optimize-performance/indexing-speed.md
-          - file: production-guidance/optimize-performance/search-speed.md
-          - file: production-guidance/optimize-performance/approximate-knn-search.md
-          - file: production-guidance/optimize-performance/disk-usage.md
-          - file: production-guidance/optimize-performance/size-shards.md
-      - file: production-guidance/kibana-task-manager-scaling-considerations.md
-      - file: production-guidance/kibana-alerting-production-considerations.md
-      - file: production-guidance/general-recommendations.md
+          - file: production-guidance/kibana-load-balance-traffic.md
+          - file: production-guidance/kibana-configure-memory.md
+          - file: production-guidance/kibana-task-manager-scaling-considerations.md
+          - file: production-guidance/kibana-alerting-production-considerations.md
+          - file: production-guidance/kibana-reporting-production-considerations.md
   - file: reference-architectures.md
     children:
       - file: reference-architectures/hotfrozen-high-availability.md
@@ -450,24 +456,36 @@ toc:
           - file: security/secure-your-eck-installation.md
       - file: security/secure-your-cluster-deployment.md
         children:
+          - file: security/self-setup.md
+            children:
+              - file: security/self-auto-setup.md
+              - file: security/set-up-minimal-security.md
+              - file: security/set-up-basic-security.md
+              - file: security/set-up-basic-security-plus-https.md
+              - file: security/using-kibana-with-security.md
           - file: security/secure-cluster-communications.md
             children:
-              - file: security/secure-http-communications.md
-              - file: security/k8s-transport-settings.md
-              - file: security/security-certificates-keys.md
+              - file: security/self-tls.md
                 children:
                   - file: security/updating-certificates.md
                     children:
                       - file: security/same-ca.md
                       - file: security/different-ca.md
-              - file: security/supported-ssltls-versions-by-jdk-version.md
-              - file: security/enabling-cipher-suites-for-stronger-encryption.md
+                  - file: security/kibana-es-mutual-tls.md
+                  - file: security/supported-ssltls-versions-by-jdk-version.md
+                  - file: security/enabling-cipher-suites-for-stronger-encryption.md
+              - file: security/eck-tls.md
+                children:
+                  - file: security/k8s-https-settings.md
+                  - file: security/k8s-transport-settings.md
           - file: security/traffic-filtering.md
             children:
               - file: security/ip-traffic-filtering.md
                 children:
-                  - file: security/ec-traffic-filtering-through-the-api.md
-                  - file: security/ece-traffic-filtering-through-the-api.md
+                  - file: security/ip-filtering-cloud.md
+                    children:
+                      - file: security/ec-traffic-filtering-through-the-api.md
+                  - file: security/ip-filtering-basic.md
               - file: security/private-link-traffic-filters.md
                 children:
                   - file: security/aws-privatelink-traffic-filters.md
@@ -493,17 +511,9 @@ toc:
                   - file: security/logging-configuration/logfile-audit-output.md
               - file: security/logging-configuration/auditing-search-queries.md
               - file: security/logging-configuration/correlating-kibana-elasticsearch-audit-logs.md
-          - file: security/manually-configure-security-in-self-managed-cluster.md
-            children:
-              - file: security/set-up-minimal-security.md
-              - file: security/set-up-basic-security.md
-              - file: security/set-up-basic-security-plus-https.md
-              - file: security/using-kibana-with-security.md
-              - file: security/install-stack-demo-secure.md
           - file: security/fips-140-2.md
       - file: security/secure-clients-integrations.md
-        children:
-          - file: security/httprest-clients-security.md
+      - file: security/httprest-clients-security.md
       - file: security/limitations.md
   - file: users-roles.md
     children:

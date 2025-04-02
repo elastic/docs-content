@@ -2,7 +2,7 @@
 applies_to:
   deployment:
     ess: ga
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/index.html
   - https://www.elastic.co/guide/en/cloud/current/ec-getting-started.html
   - https://www.elastic.co/guide/en/cloud/current/ec-faq-getting-started.html
@@ -106,7 +106,7 @@ Of course, you can choose to follow your own path and use Elastic components ava
 
 **Adjust the capacity and capabilities of your deployments for production**
 
-There are a few things that can help you make sure that your production deployments remain available, healthy, and ready to handle your data in a scalable way over time, with the expected level of performance. Check [](/deploy-manage/production-guidance/plan-for-production-elastic-cloud.md).
+There are a few things that can help you make sure that your production deployments remain available, healthy, and ready to handle your data in a scalable way over time, with the expected level of performance. Check [](/deploy-manage/production-guidance.md).
 
 **Secure your environment**
 

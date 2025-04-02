@@ -1,8 +1,11 @@
 ---
 navigation_title: "Logstash"
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/logstash/current/troubleshooting.html
   - https://www.elastic.co/guide/en/logstash/current/ts-logstash.html
+applies_to:
+  stack: ga
+  serverless: ga
 ---
 
 # Troubleshoot Logstash [ts-logstash]

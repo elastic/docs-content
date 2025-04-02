@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/ingest-enriching-data.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/index-mgmt.html#manage-enrich-policies
 applies_to:
@@ -9,7 +9,7 @@ applies_to:
 
 # Data enrichment
 
-You can use the [enrich processor](elasticsearch://reference/ingestion-tools/enrich-processor/enrich-processor.md) to add data from your existing indices to incoming documents during ingest.
+You can use the [enrich processor](elasticsearch://reference/enrich-processor/enrich-processor.md) to add data from your existing indices to incoming documents during ingest.
 
 For example, you can use the enrich processor to:
 

@@ -67,13 +67,13 @@ For the full command synopsis, refer to [elastic-agent install](/reference/fleet
 
 The following command applies the `docker` and `dev` tags to {{agent}} running in a Docker container:
 
-```yaml
+```yaml subs=true
 docker run \
   --env FLEET_ENROLL=1 \
   --env FLEET_URL=<Fleet Server host URL> \
   --env FLEET_ENROLLMENT_TOKEN=<enrollment token> \
   --env ELASTIC_AGENT_TAGS=docker,dev
-  --rm docker.elastic.co/elastic-agent/elastic-agent:9.0.0-beta1
+  --rm docker.elastic.co/elastic-agent/elastic-agent:{{stack-version}}
 ```
 
 For more information about running on containers, refer to the guides under [Install {{agent}}s in a containerized environment](/reference/fleet/install-elastic-agents-in-containers.md).

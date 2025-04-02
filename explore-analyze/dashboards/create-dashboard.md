@@ -20,7 +20,7 @@ mapped_pages:
     * **Add from library**. Select existing content that has already been configured and saved to the **Visualize Library**.
     * [**Controls**](add-controls.md). Add controls to help filter the content of your dashboard.
 
-      ![Options to add content to your dashboard](../../images/kibana-add_content_to_dashboard_8.15.0.png "title =60%")
+      ![Options to add content to your dashboard](/explore-analyze/images/kibana-add_content_to_dashboard_8.15.0.png "title =60%")
 
 4. Organize your dashboard by [organizing the various panels](arrange-panels.md).
 5. Define the main settings of your dashboard from the **Settings** menu located in the toolbar.

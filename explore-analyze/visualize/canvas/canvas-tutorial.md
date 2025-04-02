@@ -33,7 +33,7 @@ To customize your workpad to look the way you want, add your own images.
     1. Click the Elastic logo.
     2. Drag the image file to the **Select or drag and drop an image** field.
 
-       :::{image} ../../../images/kibana-canvas_tutorialCustomImage_7.17.0.png
+       :::{image} /explore-analyze/images/kibana-canvas_tutorialCustomImage_7.17.0.png
        :alt: The Analytics logo added to the workpad
        :screenshot:
        :::
@@ -76,7 +76,7 @@ Customize your data by connecting it to the Sample eCommerce orders data.
     3. Click **Run**.
 
 
-:::{image} ../../../images/kibana-canvas_tutorialCustomMetric_7.17.0.png
+:::{image} /explore-analyze/images/kibana-canvas_tutorialCustomMetric_7.17.0.png
 :alt: The total sales metric added to the workpad using Elasticsearch SQL
 :screenshot:
 :::
@@ -104,7 +104,7 @@ To show what your data can do, add charts, graphs, progress monitors, and more t
     3. From the **Y-axis** dropdown, select **Value**, then select **taxless_total_price**.
 
 
-:::{image} ../../../images/kibana-canvas_tutorialCustomChart_7.17.0.png
+:::{image} /explore-analyze/images/kibana-canvas_tutorialCustomChart_7.17.0.png
 :alt: Custom line chart added to the workpad using Elasticsearch SQL
 :screenshot:
 :::
@@ -120,7 +120,7 @@ To focus your data on a specific time range, add the time filter.
 
 % image doesn't exist (also broken in asciidoc /explore-analyze/visualize/canvas/canvas-tutorial.md#_show_how_your_data_changes_over_time)
 
-% :::{image} ../../../images/kibana-canvas_tutorialCustomTimeFilter_7.17.0.png
+% :::{image} /explore-analyze/images/kibana-canvas_tutorialCustomTimeFilter_7.17.0.png
 % :alt: Custom time filter added to the workpad
 % :screenshot:
 % :::

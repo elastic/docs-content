@@ -1,10 +1,10 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/incident-management.html
   - https://www.elastic.co/guide/en/serverless/current/incident-management.html
 applies_to:
-  stack: 
-  serverless: 
+  stack:
+  serverless:
 ---
 
 # Incident management [incident-management]

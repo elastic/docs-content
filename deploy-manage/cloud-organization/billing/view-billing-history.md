@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-billing-history.html
   - https://www.elastic.co/guide/en/serverless/current/general-billing-history.html
 applies_to:

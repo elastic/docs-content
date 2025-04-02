@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/starting-with-the-elasticsearch-platform-and-its-solutions/current/stack-components.html
   - https://www.elastic.co/guide/en/kibana/current/introduction.html
   - https://www.elastic.co/guide/en/kibana/current/index.html
@@ -25,7 +25,7 @@ You have many options for deploying the {{stack}} to suit your needs. You can de
 To learn how to deploy {{es}}, {{kib}}, and supporting orchestration technologies, refer to [](/deploy-manage/index.md). To learn how to deploy additional ingest and consume components, refer to the documentation for the component.
 :::
 
-![Components of the Elastic Stack](../images/stack-components-diagram.svg)
+![Components of the Elastic Stack](/get-started/images/stack-components-diagram.svg)
 
 ### Ingest [_ingest]
 

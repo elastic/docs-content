@@ -24,7 +24,7 @@ Create a custom ingest pipeline that will be called by the default integration p
     * Field: `test`
     * Value: `true`
 
-        The [Set processor](elasticsearch://reference/ingestion-tools/enrich-processor/set-processor.md) sets a document field and associates it with the specified value.
+        The [Set processor](elasticsearch://reference/enrich-processor/set-processor.md) sets a document field and associates it with the specified value.
 
 4. Click **Add**.
 5. Click **Create pipeline**.

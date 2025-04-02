@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-restart-deployment.html
   - https://www.elastic.co/guide/en/cloud/current/ec-api-deployment-other.html
 applies_to:
