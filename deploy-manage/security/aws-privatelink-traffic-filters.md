@@ -28,7 +28,7 @@ Before you begin, review  the following considerations:
 
 AWS PrivateLink filtering is supported only for AWS regions. Elastic does not yet support cross-region AWS PrivateLink connections. Your PrivateLink endpoint needs to be in the same region as your target deployments. Additional details can be found in the [AWS VPCE Documentation](https://docs.aws.amazon.com/vpc/latest/userguide/vpce-interface.html#vpce-interface-limitations).
 
-AWS interface VPC endpoints get created in availability zones (AZ). In some regions, our VPC endpoint *service* is not present in all the possible AZs that a region offers. You can only choose AZs that are common on both sides. As the *names* of AZs (for example `us-east-1a`) differ between AWS accounts, the following list of AWS regions shows the *ID* (e.g. `use1-az4`) of each available AZ for the service.
+AWS interface VPC endpoints are configured for one or more availability zones (AZ). In some regions, our VPC endpoint *service* is not present in all the possible AZs that a region offers. You can only choose AZs that are common on both sides. As the *names* of AZs (for example `us-east-1a`) differ between AWS accounts, the following list of AWS regions shows the *ID* (e.g. `use1-az4`) of each available AZ for the service.
 
 Check [interface endpoint availability zone considerations](https://docs.aws.amazon.com/vpc/latest/userguide/vpce-interface.html#vpce-interface-availability-zones) for more details.
 
