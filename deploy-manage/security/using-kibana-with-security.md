@@ -79,4 +79,4 @@ The following {{kib}} security features are not covered in this document because
 * [Secure settings](./secure-settings.md)
 * [Security events audit logging](./logging-configuration/security-event-audit-logging.md)
 
-For more details, refer to [](./secure-your-cluster-deployment.md).
+For a complete overview of available security features, refer to [](./secure-your-cluster-deployment.md).
