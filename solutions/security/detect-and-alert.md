@@ -53,7 +53,7 @@ Cold data tiers store time series data that is accessed infrequently and rarely 
 ### Best practices [best-practices-data-tiers]
 
 * **Retention in hot tier**: We recommend keeping data in the hot tier for at least 24 hours. {{ilm-cap}} policies that roll over data more frequently than once every 24 hours can increase the volume of frozen data queried by rules, leading to performance issues.
-* **Replicas for mission-critical data**: Your data should have replicas if it must be constantly available. Since frozen tiers don't support replicas, shard unavailability can cause partial rule run failures. Shard unavailability may be also encountered during or after {stack} upgrades. If this happens, you can [manually run](/solutions/security/detect-and-alert/manage-detection-rules.md#manually-run-rules) the rule over the affected time period.
+* **Replicas for mission-critical data**: Your data should have replicas if it must be highly available. Since frozen tiers don't support replicas, shard unavailability can cause partial rule run failures. Shard unavailability may be also encountered during or after {stack} upgrades. If this happens, you can [manually rerun](/solutions/security/detect-and-alert/manage-detection-rules.md#manually-run-rules) rules over the affected time period once the shards are available.
 
 ### Limitations [limitations-data-tiers]
 
@@ -61,7 +61,7 @@ Data tiers are a powerful and useful tool. When using them, keep the following l
 
 * {{ilm-cap}} policies for indices controlled by {{elastic-sec}}, including alerts and list indices, must not be modified.
 * Indicator match rule performance can be severely impacted by querying data in frozen tiers.
-* Cold and frozen source data must have an {{ilm}} policy that keeps it in the hot or warm tiers for at least one day.
+* Source data must have an {{ilm}} policy that keeps it in the hot or warm tiers for at least one day before moving to cold or frozen tiers.
 
 ## Limited support for indicator match rules [support-indicator-rules]
 
