@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-maintenance-mode-routing.html
   - https://www.elastic.co/guide/en/cloud/current/ec-maintenance-mode-routing.html
 applies_to:

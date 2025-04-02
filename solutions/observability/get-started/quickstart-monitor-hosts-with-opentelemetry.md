@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/quickstart-monitor-hosts-with-otel.html
   - https://www.elastic.co/guide/en/serverless/current/quickstart-monitor-hosts-with-otel.html
 applies_to:

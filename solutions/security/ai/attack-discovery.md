@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/security/current/attack-discovery.html
   - https://www.elastic.co/guide/en/serverless/current/attack-discovery.html
 applies_to:
@@ -51,7 +51,7 @@ Attack Discovery is designed for use with alerts based on data that complies wit
 
 1.  Select an alert with some of the non-ECS fields you want to analyze, and go to its details flyout. From here, use the **Chat** button to open AI Assistant.
 2.  At the bottom of the chat window, the alert's information appears. Click **Edit** to open the anonymization window to this alert's fields.
-3.  Search for and select the non-ECS fields you want Attack Discovery to analyze. Set them to **Allowed**. 
+3.  Search for and select the non-ECS fields you want Attack Discovery to analyze. Set them to **Allowed**.
 
 The selected fields can now be analyzed the next time you run Attack Discovery.
 :::

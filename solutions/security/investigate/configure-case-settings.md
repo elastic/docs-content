@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/security/current/cases-manage-settings.html
   - https://www.elastic.co/guide/en/serverless/current/security-cases-settings.html
 applies_to:

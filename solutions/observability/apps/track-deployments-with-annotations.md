@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-transactions-annotations.html
   - https://www.elastic.co/guide/en/serverless/current/observability-apm-track-deployments-with-annotations.html
 
