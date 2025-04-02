@@ -1,6 +1,6 @@
 ---
 mapped_urls:
-  - https://www.elastic.co/guide/en/observability/current/collect-data-with-aws-firehose.html
+  - https://www.elastic.co/guide/en/serverless/current/otlp-visualize.html
 applies_to:
   serverless:
 ---
