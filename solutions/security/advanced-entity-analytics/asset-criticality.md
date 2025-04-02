@@ -85,6 +85,7 @@ The file must contain three columns, with each entity record listed on a separat
     * `high_impact`
     * `medium_impact`
     * `low_impact`
+    * `unassigned` (available in {{serverless-short}} only)
 
 
 The maximum file size is 1 MB.
