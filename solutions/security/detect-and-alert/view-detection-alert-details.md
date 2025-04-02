@@ -37,7 +37,7 @@ The right panel provides an overview of the alert. Expand any of the collapsed s
 From the right panel, you can also:
 
 * Click **Expand details** to open the [left panel](/solutions/security/detect-and-alert/view-detection-alert-details.md#left-panel), which shows more information about sections in the right panel.
-* Click the history icon (![History icon](/solutions/images/security-history-icon.png "title =20x20")) to display a list of previously visited places. The list will show any rules, alerts, events, users, or hosts who's details you viewed. Click their entry to quickly access their details flyout.
+* Click the history icon (![History icon](/solutions/images/security-history-icon.png "title =15x15")) to display a list of places that you visited from the alert's details flyout. The list shows any rules, alerts, events, users, or hosts who's details you've viewed and can contain up to 10 unique entries. Click an entry in the list to quickly access its details flyout.
 * Click the **Chat** icon (![AI assistant chat icon](/solutions/images/security-ai-assistant-chat.png "title =20x20")) to access the [AI Assistant](/solutions/security/ai/ai-assistant.md).
 * Click the **Share alert** icon (![Share alert icon](/solutions/images/security-share-alert.png "title =20x20")) to get a shareable alert URL. We *do not* recommend copying the URL from your browser’s address bar, which can lead to inconsistent results if you’ve set up filters or relative time ranges for the Alerts page.
 
