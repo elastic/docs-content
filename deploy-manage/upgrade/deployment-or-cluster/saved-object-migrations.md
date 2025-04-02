@@ -1,6 +1,13 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/saved-object-migrations.html
+applies_to:
+  stack:
+  deployment:
+    eck:
+    ess:
+    ece:
+    self:
 ---
 
 # Saved object migrations [saved-object-migrations]
@@ -8,7 +15,7 @@ mapped_pages:
 Each time you upgrade {{kib}}, an upgrade migration is performed to ensure that all [saved objects](/explore-analyze/find-and-organize/saved-objects.md) are compatible with the new version.
 
 ::::{note} 
-{{kib}} includes an [**Upgrade Assistant**](../prepare-to-upgrade/upgrade-assistant.md) to help you prepare for an upgrade. To access the assistant, go to **Stack Management > Upgrade Assistant**.
+{{kib}} includes an [**Upgrade Assistant**](../prepare-to-upgrade/upgrade-assistant.md) to help you prepare to upgrade. To access the assistant, go to **Stack Management > Upgrade Assistant**.
 ::::
 
 
@@ -16,15 +23,10 @@ Each time you upgrade {{kib}}, an upgrade migration is performed to ensure that 
 % {{kib}} 7.12.0 and later uses a new migration process and index naming scheme. % Before you upgrade, read the documentation for your version of {{kib}}.
 % ::::
 
-
-::::{warning} 
-The `kibana.index` and `xpack.tasks.index` configuration settings are obsolete and no longer considered in 9.x. If you use custom index names, please make the necessary adaptations before upgrading to 9.x.
-::::
-
-
 ## How saved object migrations work [upgrade-migrations-process] 
 
-When you start a new {{kib}} installation, an upgrade migration is performed before starting plugins or serving HTTP traffic. Before you upgrade, shut down old nodes to prevent losing acknowledged writes. To reduce the likelihood of old nodes losing acknowledged writes, {{kib}} adds a write block to the outdated index.
+When you start a new {{kib}} installation, an upgrade migration is performed before starting plugins or serving HTTP traffic. Before you upgrade, shut down old nodes to prevent losing acknowledged writes.
+If the upgrade includes breaking changes, the old saved objects will be reindexed into new indices. Otherwise, the existing indices will be reused, and saved object documents will be updated in place.
 
 Saved objects are stored in multiple indices. While they all start with the `.kibana*` prefix, other `.kibana*` indices exist but are not used to store saved objects.  The following table lists the saved objects indices used by each {{kib}} version.
 
@@ -33,7 +35,8 @@ Saved objects are stored in multiple indices. While they all start with the `.ki
 | 6.5.0 through 7.3.x | `.kibana_N` | `.kibana` |
 | 7.4.0 through 7.11.x | `.kibana_N`<br>`.kibana_task_manager_N` | `.kibana`<br>`.kibana_task_manager` |
 | 7.11.x through 8.7.x | `.kibana_{{kibana_version}}_001`<br>`.kibana_task_manager_{{kibana_version}}_001` | `.kibana`, `.kibana_{{kibana_version}}`<br>`.kibana_task_manager`, `.kibana_task_manager_{{kibana_version}}` |
-| 8.8.0+ | `.kibana_{kibana_version}_001` <br> `.kibana_alerting_cases_{{kibana_version}}_001` <br> `.kibana_analytics_{kibana_version}_001` <br> `.kibana_ingest_{kibana_version}_001`<br> `.kibana_task_manager_{kibana_version}_001` <br> `.kibana_security_solution_{kibana_version}_001` | .`kibana`, `.kibana_{kibana_version}` <br> `.kibana_alerting_cases`, <br> `.kibana_alerting_cases_{kibana_version}` <br> `.kibana_analytics`, <br> `.kibana_analytics_{kibana_version}` <br> `.kibana_ingest`, `.kibana_ingest_{kibana_version}`<br> `.kibana_task_manager`, <br> `.kibana_task_manager_{kibana_version}` <br> `.kibana_security_solution`, <br> `.kibana_security_solution_{kibana_version}`
+| 8.8.0 through 8.15.x | `.kibana_{kibana_version}_001` <br> `.kibana_alerting_cases_{{kibana_version}}_001` <br> `.kibana_analytics_{kibana_version}_001` <br> `.kibana_ingest_{kibana_version}_001`<br> `.kibana_task_manager_{kibana_version}_001` <br> `.kibana_security_solution_{kibana_version}_001` | .`kibana`, `.kibana_{kibana_version}` <br> `.kibana_alerting_cases`, <br> `.kibana_alerting_cases_{kibana_version}` <br> `.kibana_analytics`, <br> `.kibana_analytics_{kibana_version}` <br> `.kibana_ingest`, `.kibana_ingest_{kibana_version}`<br> `.kibana_task_manager`, <br> `.kibana_task_manager_{kibana_version}` <br> `.kibana_security_solution`, <br> `.kibana_security_solution_{kibana_version}`
+| 8.16.0+ | `.kibana_usage_counters_{{kibana_version}}_001`| `.kibana_usage_counters_{{kibana_version}}_001`, <br> `.kibana_usage_counters`
 
 Starting on 7.11.0, each of the saved objects indices has a couple of aliases. For example, the `.kibana_8.8.0_001` index has a *default* alias `.kibana` and a *version* alias `.kibana_8.8.0`. The *default* aliases (such as `.kibana` and `.kibana_task_manager`) always point to the most up-to-date saved object indices. Then, *version* aliases are aligned with the deployed {{kib}} version.
 
