@@ -603,11 +603,11 @@ Supported transformations include:
 
 #### Number field formatters [field-formatters-numeric]
 
-Numeric fields support **Bytes**, **Color**, **Duration**, **Histogram**, **Number**, **Percentage**, **String**, and **Url** formatters.
+Numeric fields support **Bytes and Bits**, **Color**, **Duration**, **Histogram**, **Number**, **Percentage**, **String**, and **Url** formatters.
 
-The **Bytes**, **Number**, and **Percentage** formatters enable you to choose the display formats of numbers in the field using the [Elastic numeral pattern](../../explore-analyze/numeral-formatting.md) syntax that {{kib}} maintains.
+The **Bytes and Bits**, **Number**, and **Percentage** formatters enable you to choose the display formats of numbers in the field using the [Elastic numeral pattern](../../explore-analyze/numeral-formatting.md) syntax that {{kib}} maintains.
 
-The **Histogram** formatter is used only for the [histogram field type](elasticsearch://reference/elasticsearch/mapping-reference/histogram.md). When you use the **Histogram** formatter, you can apply the **Bytes**, **Number**, or **Percentage** format to aggregated data.
+The **Histogram** formatter is used only for the [histogram field type](elasticsearch://reference/elasticsearch/mapping-reference/histogram.md). When you use the **Histogram** formatter, you can apply the **Bytes and Bits**, **Number**, or **Percentage** format to aggregated data.
 
 You can specify the following types to the `Url` field formatter:
 

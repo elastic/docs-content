@@ -57,7 +57,7 @@ To deploy a simple [{{kib}}](/get-started/the-stack.md#stack-components-kibana) 
     kubectl port-forward service/quickstart-kb-http 5601
     ```
 
-    Open `https://localhost:5601` in your browser. Your browser will show a warning because the self-signed certificate configured by default is not verified by a known certificate authority and not trusted by your browser. You can temporarily acknowledge the warning for the purposes of this quick start but it is highly recommended that you [configure valid certificates](/deploy-manage/security/secure-http-communications.md#k8s-setting-up-your-own-certificate) for any production deployments.
+    Open `https://localhost:5601` in your browser. Your browser will show a warning because the self-signed certificate configured by default is not verified by a known certificate authority and not trusted by your browser. You can temporarily acknowledge the warning for the purposes of this quick start but it is highly recommended that you [configure valid certificates](/deploy-manage/security/k8s-https-settings.md#k8s-setting-up-your-own-certificate) for any production deployments.
 
     Login as the `elastic` user. The password can be obtained with the following command:
 

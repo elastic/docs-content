@@ -215,7 +215,7 @@ $$$bootstrap-checks-tls$$$
 If you enable {{es}} {{security-features}}, unless you have a trial license, you must configure SSL/TLS for internode-communication.
 
 :::{note}
-Single-node clusters that use a loopback interface do not have this requirement. For more information, see [*Start the {{stack}} with security enabled automatically*](/deploy-manage/security/security-certificates-keys.md).
+Single-node clusters that use a loopback interface do not have this requirement. For more information, see [*Start the {{stack}} with security enabled automatically*](/deploy-manage/security/self-auto-setup.md).
 :::
 
 To pass this bootstrap check, you must [set up SSL/TLS in your cluster](/deploy-manage/security/set-up-basic-security.md#encrypt-internode-communication).
