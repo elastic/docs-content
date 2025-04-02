@@ -53,6 +53,6 @@ For additional TLS configuration options, refer to [](./self-tls.md).
 
 Refer to [](./using-kibana-with-security.md) to learn how to implement the following security best practices for {{kib}}:
 
-* Set an encryption key for clients sessions
+* Set an encryption key for client sessions
 * Use secure HTTP headers
-* Require a Content Security Policy
+* Require a Content Security Policy (CSP)
