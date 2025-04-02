@@ -174,7 +174,7 @@ The RPM places config files, logs, and the data directory in the appropriate loc
 | plugins | Plugin files location. Each plugin will be contained in a subdirectory. | `/usr/share/elasticsearch/plugins` |  |
 | repo | Shared file system repository locations. Can hold multiple locations. A file system repository can be placed in to any subdirectory of any directory specified here. | Not configured | [`path.repo`](/deploy-manage/tools/snapshot-and-restore/shared-file-system-repository.md) |
 
-### Security certificates and keys [_security_certificates_and_keys]
+### Security certificates and keys [stack-security-certificates]
 
 :::{include} _snippets/security-files.md
 :::

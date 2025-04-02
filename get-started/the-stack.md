@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/starting-with-the-elasticsearch-platform-and-its-solutions/current/stack-components.html
   - https://www.elastic.co/guide/en/kibana/current/introduction.html
   - https://www.elastic.co/guide/en/kibana/current/index.html

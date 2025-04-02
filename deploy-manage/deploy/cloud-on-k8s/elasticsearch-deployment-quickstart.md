@@ -118,7 +118,7 @@ In order to make requests to the [{{es}} API](elasticsearch://reference/elastics
     PASSWORD=$(kubectl get secret quickstart-es-elastic-user -o go-template='{{.data.elastic | base64decode}}')
     ```
 
-2. Request the [{{es}} root API](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-info). You can do so from inside the Kubernetes cluster or from your local workstation. For demonstration purposes, certificate verification is disabled using the `-k` curl flag; however, this is not recommended outside of testing purposes. Refer to [Setup your own certificate](/deploy-manage/security/secure-http-communications.md#k8s-setting-up-your-own-certificate) for more information.
+2. Request the [{{es}} root API](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-info). You can do so from inside the Kubernetes cluster or from your local workstation. For demonstration purposes, certificate verification is disabled using the `-k` curl flag; however, this is not recommended outside of testing purposes. Refer to [Setup your own certificate](/deploy-manage/security/k8s-https-settings.md#k8s-setting-up-your-own-certificate) for more information.
 
     * From inside the Kubernetes cluster:
 

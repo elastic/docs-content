@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/security/current/data-quality-dash.html
   - https://www.elastic.co/guide/en/serverless/current/security-data-quality-dash.html
 applies_to:
@@ -26,7 +26,7 @@ Use the Data Quality dashboard to:
 
 
 ::::{note}
-* On {{serverless-short}} deployments, index `Size` data is not available. 
+* On {{serverless-short}} deployments, index `Size` data is not available.
 * The Data Quality dashboard doesn’t show data from cold or frozen [data tiers](/manage-data/lifecycle/data-tiers.md). It also doesn’t display data from remote clusters using cross-cluster search. To view data from another cluster, log in to that cluster’s {{kib}} instance.
 ::::
 

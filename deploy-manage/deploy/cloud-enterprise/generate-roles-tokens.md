@@ -2,7 +2,7 @@
 applies_to:
   deployment:
     ece: all
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-generate-roles-token.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-revoke-roles-token.html
 ---

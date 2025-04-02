@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/security/current/ingest-wiz-data.html
   - https://www.elastic.co/guide/en/serverless/current/ingest-wiz-data.html
 applies_to:
@@ -31,4 +31,4 @@ After you’ve completed these steps, Wiz data will appear on the [Misconfiguati
 :alt: Wiz data on the Findings page
 :::
 
-Any available findings data will also appear in the [Insights section](/solutions/security/detect-and-alert/view-detection-alert-details.md#insights-section) for related alerts. If alerts are present for a user or host that has findings data from Wiz, the findings will appear on the [entity details flyout](/solutions/security/advanced-entity-analytics/view-entity-details.md#entity-details-flyout). 
+Any available findings data will also appear in the [Insights section](/solutions/security/detect-and-alert/view-detection-alert-details.md#insights-section) for related alerts. If alerts are present for a user or host that has findings data from Wiz, the findings will appear on the [entity details flyout](/solutions/security/advanced-entity-analytics/view-entity-details.md#entity-details-flyout).

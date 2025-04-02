@@ -168,7 +168,7 @@ By default, the PKI realm relies on the node’s network interface to perform th
 
 Specifically, when clients presenting X.509 certificates connect to {{kib}}, {{kib}} performs the SSL/TLS authentication. {{kib}} then forwards the client’s certificate chain (by calling an {{es}} API) to have them further validated by the PKI realms that have been configured for delegation.
 
-To permit authentication delegation for a specific {{es}} PKI realm, start by [configuring the realm](#pki-realm-for-direct-clients). In this scenario, for self-managed clusters, it is mandatory that you [encrypt HTTP client communications](../../security/secure-http-communications.md#encrypt-http-communication) when you enable TLS.
+To permit authentication delegation for a specific {{es}} PKI realm, start by [configuring the realm](#pki-realm-for-direct-clients). In this scenario, for self-managed clusters, it is mandatory that you [encrypt HTTP client communications](../../security/secure-cluster-communications.md#encrypt-http-communication) when you enable TLS.
 
 You must also explicitly configure a `truststore` (or, equivalently `certificate_authorities`) even though it is the same trust configuration that you have configured on the network layer. The `xpack.security.authc.token.enabled` and `delegation.enabled` settings must also be `true`. For example:
 

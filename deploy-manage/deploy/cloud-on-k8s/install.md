@@ -3,7 +3,7 @@ navigation_title: Install
 applies_to:
   deployment:
     eck: all
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-installing-eck.html
 ---
 

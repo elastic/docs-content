@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/logs-plaintext.html
   - https://www.elastic.co/guide/en/serverless/current/observability-plaintext-application-logs.html
 applies_to:
