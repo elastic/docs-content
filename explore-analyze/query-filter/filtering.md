@@ -19,7 +19,7 @@ Some apps provide more options, such as [Dashboards](../dashboards.md).
 
 Display data within a specified time range when your index contains time-based events, and a time-field is configured for the selected [{{data-source}}](../find-and-organize/data-views.md). The default time range is 15 minutes, but you can customize it in [Advanced Settings](kibana://reference/advanced-settings.md).
 
-1. Click ![calendar icon](/explore-analyze/images/kibana-time-filter-icon.png).
+1. Click ![calendar icon](/explore-analyze/images/kibana-time-filter-icon.png "calendar icon =7%x7%").
 2. Choose one of the following:
 
     * **Quick select**. Set a time based on the last or next number of seconds, minutes, hours, or other time unit.
