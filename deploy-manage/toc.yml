@@ -463,7 +463,6 @@ toc:
               - file: security/set-up-basic-security.md
               - file: security/set-up-basic-security-plus-https.md
               - file: security/using-kibana-with-security.md
-              - file: security/install-stack-demo-secure.md
           - file: security/secure-cluster-communications.md
             children:
               - file: security/self-tls.md
