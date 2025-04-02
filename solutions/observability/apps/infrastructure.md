@@ -20,7 +20,7 @@ The **Infrastructure** tab provides information about the containers, pods, and 
 * **Hosts**: If the application is containerized—​if the APM metrics documents include `container.id`-- the `host.name` is used from the infrastructure data streams (filtered by `container.id`). If not, `host.hostname` is used from the APM metrics data streams.
 
 
-:::{image} ../../../images/serverless-infra.png
+:::{image} /solutions/images/serverless-infra.png
 :alt: Example view of the Infrastructure tab in the Applications UI
 :screenshot:
 :::

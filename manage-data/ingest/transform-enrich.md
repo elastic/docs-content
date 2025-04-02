@@ -19,7 +19,7 @@ According to your use case, you may want to control the structure of your ingest
 Finally, to help ensure optimal query results, you may want to customize how text is analyzed and how text fields are defined inside {{es}}.
 
 {{agent}} processors
-:   You can use [{{agent}} processors](/reference/ingestion-tools/fleet/agent-processors.md) to sanitize or enrich raw data at the source. Use {{agent}} processors if you need to control what data is sent across the wire, or if you need to enrich the raw data with information available on the host.
+:   You can use [{{agent}} processors](/reference/fleet/agent-processors.md) to sanitize or enrich raw data at the source. Use {{agent}} processors if you need to control what data is sent across the wire, or if you need to enrich the raw data with information available on the host.
 
 {{es}} ingest pipelines
 :   You can use [{{es}} ingest pipelines](transform-enrich/ingest-pipelines.md) to enrich incoming data or normalize field data before the data is indexed. {{es}} ingest pipelines enable you to manipulate the data as it comes in. This approach helps you avoid adding processing overhead to the hosts from which you’re collecting data.
@@ -36,7 +36,7 @@ Finally, to help ensure optimal query results, you may want to customize how tex
 {{ls}} and the {{ls}} `elastic_integration filter`
 :   If you're using {{ls}} as your primary ingest tool, you can take advantage of its built-in pipeline capabilities to transform your data. You configure a pipeline by stringing together a series of input, output, filtering, and optional codec plugins to manipulate all incoming data.
 
-:   If you're ingesting using {{agent}} with Elastic {{integrations}}, you can use the {{ls}} [`elastic_integration filter`](https://www.elastic.co/guide/en/logstash/current/) and other [{{ls}} filters](logstash://reference/filter-plugins.md) to [extend Elastic integrations](logstash://reference/using-logstash-with-elastic-integrations.md) by transforming data before it goes to {{es}}.
+:   If you're ingesting using {{agent}} with Elastic {{integrations}}, you can use the {{ls}} [`elastic_integration filter`](https://www.elastic.co/guide/en/logstash/current/) and other [{{ls}} filters](logstash-docs-md://lsr/filter-plugins.md) to [extend Elastic integrations](logstash://reference/using-logstash-with-elastic-integrations.md) by transforming data before it goes to {{es}}.
 
 Index mapping
 :   Index mapping lets you control the structure that incoming data has within an {{es}} index. You can define all of the fields that are included in the index and their respective data types. For example, you can set fields for dates, numbers, or geolocations, and define the fields to have specific formats.

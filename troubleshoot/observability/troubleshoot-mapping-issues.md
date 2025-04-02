@@ -38,7 +38,7 @@ The below command will cause {{heartbeat}} to perform its setup processes and re
 ./heartbeat setup -e
 ```
 
-For more information on how to use this command, or if you’re using DEB, RPM, or Windows, see the [{{heartbeat}} quickstart guide](asciidocalypse://docs/beats/docs/reference/heartbeat/heartbeat-installation-configuration.md).
+For more information on how to use this command, or if you’re using DEB, RPM, or Windows, see the [{{heartbeat}} quickstart guide](beats://reference/heartbeat/heartbeat-installation-configuration.md).
 
 This command performs the necessary startup tasks and ensures that your indices have the appropriate mapping going forward.
 

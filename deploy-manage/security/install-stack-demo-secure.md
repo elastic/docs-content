@@ -2,9 +2,13 @@
 applies_to:
   deployment:
     self: ga
+mapped_urls:
+  - https://www.elastic.co/guide/en/elastic-stack/current/install-stack-demo-secure.html
 ---
 
 # Tutorial: Securing a self-managed {{stack}} [install-stack-demo-secure]
+
+TBD: This one feels duplicate (it comes from elastic-stack original book)
 
 This tutorial is a follow-on to [installing a self-managed {{stack}}](/deploy-manage/deploy/self-managed.md) with a multi-node {{es}} cluster, {{kib}}, {{fleet-server}} and {{agent}}. In a production environment, it’s recommended after completing the {{kib}} setup to proceed directly to this tutorial to configure your SSL certificates. These steps guide you through that process, and then describe how to configure {{fleet-server}} and {{agent}} with the certificates in place.
 
@@ -14,15 +18,15 @@ Since {{stack}} 8.0, security is enabled by default, meaning that traffic betwee
 
 For traffic to be encrypted between {{es}} cluster nodes and between {{kib}} and {{es}}, SSL certificates must be created for the transport ({{es}} inter-node communication) and HTTP (for the {{es}} REST API) layers. Similarly, when setting up {{fleet-server}} you’ll generate and configure a new certificate bundle, and then {{elastic-agent}} uses the generated certificates to communicate with both {{fleet-server}} and {{es}}. The process to set things up is as follows:
 
-* [Prerequisites and assumptions](secure-your-cluster-deployment.md#install-stack-demo-secure-prereqs)
-* [Step 1: Generate a new self-signed CA certificate](secure-your-cluster-deployment.md#install-stack-demo-secure-ca)
-* [Step 2: Generate a new certificate for the transport layer](secure-your-cluster-deployment.md#install-stack-demo-secure-transport)
-* [Step 3: Generate new certificate(s) for the HTTP layer](secure-your-cluster-deployment.md#install-stack-demo-secure-http)
-* [Step 4: Configure security on additional {{es}} nodes](secure-your-cluster-deployment.md#install-stack-demo-secure-second-node)
-* [Step 5: Generate server-side and client-side certificates for {{kib}}](secure-your-cluster-deployment.md#install-stack-demo-secure-kib-es)
-* [Step 6: Install {{fleet}} with SSL certificates configured](secure-your-cluster-deployment.md#install-stack-demo-secure-fleet)
-* [Step 7: Install {{agent}}](secure-your-cluster-deployment.md#install-stack-demo-secure-agent)
-* [Step 8: View your system data](secure-your-cluster-deployment.md#install-stack-demo-secure-view-data)
+* [Prerequisites and assumptions](#install-stack-demo-secure-prereqs)
+* [Step 1: Generate a new self-signed CA certificate](#install-stack-demo-secure-ca)
+* [Step 2: Generate a new certificate for the transport layer](#install-stack-demo-secure-transport)
+* [Step 3: Generate new certificate(s) for the HTTP layer](#install-stack-demo-secure-http)
+* [Step 4: Configure security on additional {{es}} nodes](#install-stack-demo-secure-second-node)
+* [Step 5: Generate server-side and client-side certificates for {{kib}}](#install-stack-demo-secure-kib-es)
+* [Step 6: Install {{fleet}} with SSL certificates configured](#install-stack-demo-secure-fleet)
+* [Step 7: Install {{agent}}](#install-stack-demo-secure-agent)
+* [Step 8: View your system data](#install-stack-demo-secure-view-data)
 
 It should take between one and two hours to complete these steps.
 
@@ -536,7 +540,7 @@ Now that the transport and HTTP layers are configured with encryption using the 
     elasticsearch.ssl.certificateAuthorities: [/etc/kibana/elasticsearch-ca.pem]
     ```
 
-5. Log in to the first Elasticsearch node and use the certificate utility to generate a certificate bundle for the Kibana server. This certificate will be used to encrypt the traffic between Kibana and the client’s browser. In the command, replace <DNS name> and <IP address> with the name and IP address of your Kibana server host:
+5. Log in to the first {{es}} node and use the certificate utility to generate a certificate bundle for the {{kib}} server. This certificate will be used to encrypt the traffic between {{kib}} and the client’s browser. In the command, replace <DNS name> and <IP address> with the name and IP address of your {{kib}} server host:
 
     ```shell
     sudo /usr/share/elasticsearch/bin/elasticsearch-certutil cert --name kibana-server --ca-cert /etc/elasticsearch/certs/ca/ca.crt --ca-key /etc/elasticsearch/certs/ca/ca.key  --dns <DNS name> --ip <IP address> --pem
@@ -544,7 +548,7 @@ Now that the transport and HTTP layers are configured with encryption using the 
 
     When prompted, specify a unique name for the output file, such as `kibana-cert-bundle.zip`.
 
-6. Copy the generated archive over to your Kibana host and unpack it:
+6. Copy the generated archive over to your {{kib}} host and unpack it:
 
     ```shell
     sudo unzip kibana-cert-bundle.zip
@@ -617,11 +621,11 @@ Now that the transport and HTTP layers are configured with encryption using the 
     tail -f /var/log/kibana/kibana.log
     ```
 
-    In the log file you should find a `Kibana is now available` message.
+    In the log file you should find a `{{kib}} is now available` message.
 
 14. You should now have an end-to-end ecnrypted deployment with {{es}} and {{kib}} that provides encryption between both the cluster nodes and {{kib}}, and HTTPS access to {{kib}}.
 
-    Open a web browser to the external IP address of the Kibana host machine: `https://<kibana-host-address>:5601`. Note that the URL should use the `https` and not the `http` protocol.
+    Open a web browser to the external IP address of the {{kib}} host machine: `https://<kibana-host-address>:5601`. Note that the URL should use the `https` and not the `http` protocol.
 
 15. Log in using the `elastic` user and password that you configured when [installing your self-managed {{stack}}](/deploy-manage/deploy/self-managed.md).
 
@@ -632,7 +636,7 @@ Congratulations! You’ve successfully updated the SSL certificates between {{es
 
 Now that {{kib}} is up and running, you can proceed to install {{fleet-server}}, which will manage the {{agent}} that we’ll set up in a later step.
 
-If you’d like to learn more about these steps, refer to [Deploy on-premises and self-managed](/reference/ingestion-tools/fleet/add-fleet-server-on-prem.md) in the {{fleet}} and {{agent}} Guide. You can find detailed steps to generate and configure certificates in [Configure SSL/TLS for self-managed Fleet Servers](/reference/ingestion-tools/fleet/secure-connections.md).
+If you’d like to learn more about these steps, refer to [Deploy on-premises and self-managed](/reference/fleet/add-fleet-server-on-prem.md) in the {{fleet}} and {{agent}} Guide. You can find detailed steps to generate and configure certificates in [Configure SSL/TLS for self-managed Fleet Servers](/reference/fleet/secure-connections.md).
 
 1. Log in to the first {{es}} node and use the certificate utility to generate a certificate bundle for {{fleet-server}}. In the command, replace `<DNS name>` and `IP address` with the name and IP address of your {{fleet-server}} host:
 
@@ -692,7 +696,7 @@ If you’d like to learn more about these steps, refer to [Deploy on-premises an
 
         The URL is the inet value that you copied from the `ifconfig` output.
 
-        For details about default port assignments, refer to [Default port assignments](/reference/ingestion-tools/fleet/add-fleet-server-on-prem.md#default-port-assignments-on-prem) in the on-premises {{fleet-server}} install documentation.
+        For details about default port assignments, refer to [Default port assignments](/reference/fleet/add-fleet-server-on-prem.md#default-port-assignments-on-prem) in the on-premises {{fleet-server}} install documentation.
 
     3. Click **Add host**.
 
@@ -739,7 +743,7 @@ If you’d like to learn more about these steps, refer to [Deploy on-premises an
           --fleet-server-port=8220
         ```
 
-        For details about all of the install command options, refer to [`elastic-agent install`](/reference/ingestion-tools/fleet/agent-command-reference.md#elastic-agent-install-command) in the {{agent}} command reference.
+        For details about all of the install command options, refer to [`elastic-agent install`](/reference/fleet/agent-command-reference.md#elastic-agent-install-command) in the {{agent}} command reference.
 
 19. After you’ve made the required updates, run the `elastic-agent install` command to install {{fleet-server}}.
 
@@ -750,7 +754,7 @@ If you’d like to learn more about these steps, refer to [Deploy on-premises an
     ```
 
     ::::{tip}
-    Wondering why the command refers to {{agent}} rather than {{fleet-server}}? {{fleet-server}} is actually a subprocess that runs inside {{agent}} with a special {{fleet-server}} policy. Refer to [What is {{fleet-server}}](/reference/ingestion-tools/fleet/fleet-server.md) to learn more.
+    Wondering why the command refers to {{agent}} rather than {{fleet-server}}? {{fleet-server}} is actually a subprocess that runs inside {{agent}} with a special {{fleet-server}} policy. Refer to [What is {{fleet-server}}](/reference/fleet/fleet-server.md) to learn more.
     ::::
 
 20. Return to the {{kib}} **Add a Fleet Server** flyout and wait for confirmation that {{fleet-server}} has connected.
@@ -789,7 +793,7 @@ Before proceeding to install {{agent}}, there are a few steps needed to update t
 
 ## Step 7: Install {{agent}} [install-stack-demo-secure-agent]
 
-Next, we’ll install {{agent}} on another host and use the System integration to monitor system logs and metrics. You can find additional details about these steps in [Configure SSL/TLS for self-managed Fleet Servers](/reference/ingestion-tools/fleet/secure-connections.md).
+Next, we’ll install {{agent}} on another host and use the System integration to monitor system logs and metrics. You can find additional details about these steps in [Configure SSL/TLS for self-managed Fleet Servers](/reference/fleet/secure-connections.md).
 
 1. Log in to the host where you’d like to set up {{agent}}.
 2. Create a directory for the {{es}} certificate file:
@@ -880,7 +884,7 @@ View your system metrics data:
 2. In the query field, search for `Metrics System`.
 3. Select the `[Metrics System] Host overview` link. The {{kib}} Dashboard opens with visualizations of host metrics including CPU usage, memory usage, running processes, and more.
 
-    :::{image} /images/elastic-stack-install-stack-metrics-dashboard.png
+    :::{image} /deploy-manage/images/elastic-stack-install-stack-metrics-dashboard.png
     :alt: The System metrics host overview showing CPU usage, memory usage, and other visualizations
     :::
 
@@ -890,6 +894,6 @@ Congratulations! You’ve successfully configured security for {{es}}, {{kib}}, 
 
 ## What’s next? [_whats_next]
 
-* Do you have data ready to ingest into your newly set up {{stack}}? Learn how to [add data to Elasticsearch](../../manage-data/ingest.md).
+* Do you have data ready to ingest into your newly set up {{stack}}? Learn how to [add data to {{es}}](../../manage-data/ingest.md).
 * Use [Elastic {{observability}}](https://www.elastic.co/observability) to unify your logs, infrastructure metrics, uptime, and application performance data.
 * Want to protect your endpoints from security threats? Try [{{elastic-sec}}](https://www.elastic.co/security). Adding endpoint protection is just another integration that you add to the agent policy!

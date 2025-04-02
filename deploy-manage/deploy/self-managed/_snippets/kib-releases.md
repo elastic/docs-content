@@ -1,0 +1,1 @@
+The latest stable version of {{kib}} can be found on the [Download Kibana](https://elastic.co/downloads/kibana) page. Other versions can be found on the [Past Releases page](https://elastic.co/downloads/past-releases).

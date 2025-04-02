@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/reduce-notifications-alerts.html
   - https://www.elastic.co/guide/en/serverless/current/security-reduce-notifications-alerts.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Reduce notifications and alerts [security-reduce-notifications-alerts]

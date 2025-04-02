@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/dashboards-overview.html
   - https://www.elastic.co/guide/en/serverless/current/security-dashboards-overview.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Dashboards
@@ -16,7 +20,7 @@ To create a new custom dashboard, click **Create Dashboard**. You can control wh
 
 To create a new tag or edit existing tags, open the **Tags** menu and click **Manage tags**.
 
-:::{image} ../../images/security-dashboards-landing-page.png
+:::{image} /solutions/images/security-dashboards-landing-page.png
 :alt: The dashboards landing page
 :::
 

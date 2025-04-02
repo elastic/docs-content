@@ -6,7 +6,7 @@ applies_to:
     ess: all
 ---
 
-# Notifications settings [ec-autoops-notifications-settings]
+# Notifications Settings [ec-autoops-notifications-settings]
 
 AutoOps can notify you of new events opened or closed through various methods and operation management tools. With a customizable mechanism, you can specify which events you want to be notified about, how you wish to receive these notifications, and their frequency.
 
@@ -60,18 +60,22 @@ The following connectors are available with AutoOps:
 * [Microsoft Teams Configuration](#ec-autoops-ms-configuration)
 * [Webhook](#ec-autoops-webhook)
 
-### Email [email]
+:::{dropdown} Email
+$$$email$$$
 
 To set up notifications via email, follow these steps:
 
 1. Add a new **Email** connector.
 2. Add a list of emails.
    You can add up to 40 emails for a single email connector, and opt in to get alerts also when events close.
-4. To receive notifications, scroll down the **Notification** page and click **Add**.
-5. Fill in the filter details.
-6. Select the events that you want to send to this connector.
+3. To receive notifications, scroll down the **Notification** page and click **Add**.
+4. Fill in the filter details.
+5. Select the events that you want to send to this connector.
+:::
 
-### PagerDuty [ec-autoops-pagerduty]
+:::{dropdown} PagerDuty 
+
+$$$ec-autoops-pagerduty$$$
 
 The PagerDuty integration consists of the following parts:
 
@@ -82,13 +86,16 @@ The PagerDuty integration consists of the following parts:
 
 **AutoOps configuration**
 
-1. Add a new PagerDuty endpoint using the PagerDuty configuration application key.
+1. Add a new PagerDuty connector using the PagerDuty configuration application key.
 2. To receive Slack notifications, add a notification filter. Scroll down the Notification page and click **Add**.
 3. Fill in the filter details.
 4. Select the events that should be sent to this output.
+:::
 
 
-### Slack [ec-autoops-slack]
+:::{dropdown} Slack
+
+$$$ec-autoops-slack$$$
 
 To set up a webhook to send AutoOps notifications to a Slack channel, go through the following steps.
 
@@ -100,11 +107,15 @@ To set up a webhook to send AutoOps notifications to a Slack channel, go through
 6. Toggle the **Activate Incoming Webhooks** to On.
 7. Click **Request to Add New Webhook**.
 8. Select a Slack channel from the list to receive the notifications and click **Allow**.
-9. Copy the webhook URL to set up the webhook notification endpoint in AutoOps.
-10. Add the webhook URL when creating the endpoint.
+9. Copy the webhook URL to set up the webhook notification connector in AutoOps.
+10. Add the webhook URL when creating the connector.
+
+:::
 
 
-### VictorOps [ec-autoops-victorops]
+:::{dropdown} VictorOps 
+
+$$$ec-autoops-victorops$$$
 
 The VictorOps integration consists of the following parts:
 
@@ -115,13 +126,16 @@ The VictorOps integration consists of the following parts:
 
 **AutoOps configuration**
 
-1. Add a new PagerDuty endpoint using the PagerDuty configuration application key.
+1. Add a new PagerDuty connector using the PagerDuty configuration application key.
 2. To receive Slack notifications, add a notification filter. Scroll down the Notification page and click Add.
 3. Fill in the filter details.
 4. Select the events that should be sent to this output.
+:::
 
 
-### Opsgenie [ec-autoops-opsgenie]
+:::{dropdown} Opsgenie 
+
+$$$ec-autoops-opsgenie$$$
 
 The Opsgenie integration consists of the following parts:
 
@@ -137,13 +151,15 @@ The Opsgenie integration consists of the following parts:
 
 1. Open AutoOps and go to **User Profile**. Then, select **Notifications**.
 2. Click **Add** and select **Opsgenie** from the dropdown list.
-3. Name your endpoint and add Api Key from opsgenie API configuration. Click the validate button to make sure that your notification setting is working. Don’t forget to save your notification endpoint!
+3. Name your connector and add Api Key from opsgenie API configuration. Click the validate button to make sure that your notification setting is working. Don’t forget to save your notification connector!
 4. To receive notifications on Opsgenie, you need to add a notification filter. Scroll down the **Notification** page and click **Add**.
 5. Fill in the filter details.
 6. Select events that should be sent to this output.
+:::
 
+:::{dropdown} Microsoft Teams 
 
-### Microsoft Teams Configuration [ec-autoops-ms-configuration]
+$$$ec-autoops-ms-configuration$$$
 
 To create an incoming webhook on your Microsoft Teams, follow [these instructions](https://docs.microsoft.com/en-us/microsoftteams/platform/webhooks-and-connectors/how-to/add-incoming-webhook).
 
@@ -151,54 +167,57 @@ Save the URL displayed during the creation of the incoming webhook, as you will 
 
 **AutoOps configuration**
 
-1. Add a new MS team endpoint using the URL from Microsoft Teams.
+1. Add a new MS team connector using the URL from Microsoft Teams.
 2. To receive notifications into Microsoft Teams, you need to add a notification filter. Scroll down the Notification page and click Add.
 3. Fill in the filter details.
 4. Select events that should be sent to this output.
+:::
 
 
-### Webhook [ec-autoops-webhook]
+::::{dropdown} Webhook 
+
+$$$ec-autoops-webhook$$$
 
 A webhook enables an application to provide other applications with real-time information. A webhook is a user-defined HTTP callback (HTTP POST), which is triggered by specific events.
 
 **How to add a webhook notification**
 
-1. Go to **Settings** → **Notifications*** → ***Endpoint settings** and click **Add**.
+1. Go to **Settings** > **Notifications** > **Connector settings** and click **Add**.
 2. Select Webhook from the drop-dowon list and enter the following details:
 
-    * Name: It must be a unique name for this webhook.
-    * URL: This is the endpoint to which HTTP POST requests will be sent when events occur.
-    * Method: POST
-    * Header: Content-Type, application/Json
+    * **Name**: It must be a unique name for this webhook.
+    * **URL**: This is the endpoint to which HTTP POST requests will be sent when events occur.
+    * **Method**: POST
+    * **Header**: Content-Type, application/Json
 
 3. Review and update the message as it appears in the body section. AutoOps provides a set of optional fields to use in the message. Read your application documentation for the expected message schema.
 
-    * RESOURCE_ID – Customer Deployment ID
-    * RESOURCE_NAME – Customer Deployment name
-    * TITLE – The title of the event.
-    * DESCRIPTION – The description of the issue that was found.
-    * SEVERITY – One of the 3 severity levels (High, Medium and Low).
-    * STATUS – Indicate if the event is currently open or close.
-    * MESSAGE – The background and impact of the issue
-    * START_TIME – The time the event was open.
-    * END_TIME – The time the event was closed.
-    * ENDPOINT_TYPE – The type of the endpoint (Slack, PagerDuty, Webhook, Opsgenie, VictorOps and MS Teams).
-    * AFFECTED_NODES – List of node names.
-    * AFFECTED_INDICES – List of indices names.
-    * EVENT_LINK – Direct link to the event in AutoOps.
+    * `RESOURCE_ID`: Customer Deployment ID
+    * `RESOURCE_NAME`: Customer Deployment name
+    * `TITLE`: The title of the event.
+    * `DESCRIPTION`: The description of the issue that was found.
+    * `SEVERITY`: One of the 3 severity levels (High, Medium and Low).
+    * `STATUS`: Indicate if the event is currently open or close.
+    * `MESSAGE`: The background and impact of the issue
+    * `START_TIME`: The time the event was open.
+    * `END_TIME`: The time the event was closed.
+    * `ENDPOINT_TYPE`: The type of the endpoint (Slack, PagerDuty, Webhook, Opsgenie, VictorOps and MS Teams).
+    * `AFFECTED_NODES`: List of node names.
+    * `AFFECTED_INDICES`: List of indices names.
+    * `EVENT_LINK`: Direct link to the event in AutoOps.
 
-4. Click Validate to check your settings and click **Save**.
+4. Click **Validate** to check your settings, and then click **Save**.
 5. Optionally, you can test the webhook integration by using the [webhook.site](https://webhook.site/#!/view/fe9d630e-2f01-44b7-9e41-ef9520fbe9a7).
 
 ::::{note}
-When the Endpoint settings have been completed, continue to set up the notification filter to define which events you’d like to be notified about.
+When the connector settings have been completed, continue to set up the notification filter to define which events you’d like to be notified about.
 ::::
 
 ## Notifications report [ec-notification-report]
 
 From the **Notifications** report, you can check all the notifications sent. The report lists all the events that were set up in the notification filters and provide their status.
 
-:::{image} ../../../images/cloud-autoops-notifications-report.png
+:::{image} /deploy-manage/images/cloud-autoops-notifications-report.png
 :alt: The Notifications report
 :::
 
@@ -213,6 +232,6 @@ The notification can have one of the following statuses:
 
 The notification status appears also in the event details window.
 
-:::{image} ../../../images/cloud-autoops-notification-status.png
+:::{image} /deploy-manage/images/cloud-autoops-notification-status.png
 :alt: Notification status
 :::

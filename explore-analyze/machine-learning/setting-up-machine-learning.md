@@ -68,7 +68,7 @@ Granting `All` or `Read` {{kib}} feature privilege for {{ml-app}} will also gran
 
 In {{kib}}, the {{ml-features}} must be visible in your [space](../../deploy-manage/manage-spaces.md). To manage which features are visible in your space, go to **{{stack-manage-app}}** > **{{kib}}** > **Spaces** or use the [global search field](../find-and-organize/find-apps-and-objects.md) to locate **Spaces** directly.
 
-:::{image} ../../images/machine-learning-spaces.jpg
+:::{image} /explore-analyze/images/machine-learning-spaces.jpg
 :alt: Manage spaces in {{kib}}
 :screenshot:
 :::
@@ -77,7 +77,7 @@ In addition to index privileges, source {{data-sources}} must also exist in the 
 
 Each {{ml}} job and trained model can be assigned to all, one, or multiple spaces. This can be configured in **Machine Learning**. To open **Machine Learning**, find **{{stack-manage-app}} > Alerts and Insights** in the main menu, or use the [global search field](../find-and-organize/find-apps-and-objects.md). You can edit the spaces that a job or model is assigned to by clicking the icons in the **Spaces** column.
 
-:::{image} ../../images/machine-learning-assign-job-spaces.jpg
+:::{image} /explore-analyze/images/machine-learning-assign-job-spaces.jpg
 :alt: Assign machine learning jobs to spaces
 :screenshot:
 :::

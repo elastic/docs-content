@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/query-alert-indices.html
   - https://www.elastic.co/guide/en/serverless/current/security-query-alert-indices.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Query alert indices [security-query-alert-indices]

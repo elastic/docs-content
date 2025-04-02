@@ -1,4 +1,11 @@
 ---
+applies_to:
+  stack: 
+  deployment:
+    eck: 
+    ess: 
+    ece: 
+    self: 
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/restore-from-snapshot.html
 ---
@@ -28,7 +35,7 @@ In order to restore the indices and data streams that are missing data:
 
 3. Open your deployment’s side navigation menu (placed under the Elastic logo in the upper left corner) and go to **Dev Tools > Console**.
 
-    :::{image} ../../images/elasticsearch-reference-kibana-console.png
+    :::{image} /troubleshoot/images/elasticsearch-reference-kibana-console.png
     :alt: {{kib}} Console
     :screenshot:
     :::

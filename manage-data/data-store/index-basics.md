@@ -10,8 +10,6 @@ applies_to:
 
 # Index basics
 
-This content applies to: [![Elasticsearch](/images/serverless-es-badge.svg "")](/solutions/search.md) [![Observability](/images/serverless-obs-badge.svg "")](/solutions/observability.md) [![Security](/images/serverless-sec-badge.svg "")](/solutions/security/elastic-security-serverless.md)
-
 An index is a fundamental unit of storage in {{es}}. It is a collection of documents uniquely identified by a name or an [alias](/manage-data/data-store/aliases.md). This unique name is important because it’s used to target the index in search queries and other operations.
 
 ::::{tip}
@@ -75,7 +73,7 @@ Go to **{{project-settings}} → {{manage-app}} → {{index-manage-app}}**.
 
 Investigate your indices and perform operations from the **Indices** view.
 
-:::{image} /images/serverless-index-management-indices.png
+:::{image} /manage-data/images/serverless-index-management-indices.png
 :alt: Index Management indices
 :screenshot:
 :::
@@ -91,7 +89,7 @@ A [data stream](/manage-data/data-store/data-streams.md) lets you store append-o
 
 Investigate your data streams and address lifecycle management needs in the **Data Streams** view.
 
-:::{image} /images/serverless-management-data-stream.png
+:::{image} /manage-data/images/serverless-management-data-stream.png
 :alt: Data stream details
 :screenshot:
 :::
@@ -109,7 +107,7 @@ An [index template](/manage-data/data-store/templates.md) is a way to tell {{es}
 
 Create, edit, clone, and delete your index templates in the **Index Templates** view. Changes made to an index template do not affect existing indices.
 
-:::{image} /images/serverless-index-management-index-templates.png
+:::{image} /manage-data/images/serverless-index-management-index-templates.png
 :alt: Index templates
 :screenshot:
 :::
@@ -125,7 +123,7 @@ Create, edit, clone, and delete your index templates in the **Index Templates** 
 
 Create, edit, clone, and delete your component templates in the **Component Templates** view.
 
-:::{image} /images/serverless-management-component-templates.png
+:::{image} /manage-data/images/serverless-management-component-templates.png
 :alt: Component templates
 :screenshot:
 :::
@@ -139,7 +137,7 @@ An [enrich policy](/manage-data/ingest/transform-enrich/data-enrichment.md#enric
 
 Add data from your existing indices to incoming documents using the **Enrich Policies** view.
 
-:::{image} /images/serverless-management-enrich-policies.png
+:::{image} /manage-data/images/serverless-management-enrich-policies.png
 :alt: Enrich policies
 :screenshot:
 :::

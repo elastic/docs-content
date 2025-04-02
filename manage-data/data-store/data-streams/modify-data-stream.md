@@ -426,7 +426,7 @@ Follow these steps:
 
     You can also use a query to reindex only a subset of documents with each request.
 
-    The following [reindex API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-reindex) request copies documents from `my-data-stream` to `new-data-stream`. The request uses a [`range` query](elasticsearch://reference/query-languages/query-dsl-range-query.md) to only reindex documents with a timestamp within the last week. Note the request’s `op_type` is `create`.
+    The following [reindex API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-reindex) request copies documents from `my-data-stream` to `new-data-stream`. The request uses a [`range` query](elasticsearch://reference/query-languages/query-dsl/query-dsl-range-query.md) to only reindex documents with a timestamp within the last week. Note the request’s `op_type` is `create`.
 
     ```console
     POST /_reindex

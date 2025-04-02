@@ -1,4 +1,11 @@
 ---
+applies_to:
+  stack: 
+  deployment:
+    eck: 
+    ess: 
+    ece: 
+    self: 
 navigation_title: Corrupted repositories
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/diagnosing-corrupted-repositories.html
@@ -26,7 +33,7 @@ First mark the repository as read-only on the secondary deployments:
 
 3. Open your deployment’s side navigation menu (placed under the Elastic logo in the upper left corner) and go to **Stack Management > Snapshot and Restore > Repositories**.
 
-    :::{image} ../../images/elasticsearch-reference-repositories.png
+    :::{image} /troubleshoot/images/elasticsearch-reference-repositories.png
     :alt: {{kib}} Console
     :screenshot:
     :::
@@ -39,7 +46,7 @@ Note that we’re now configuring the primary (current) deployment.
 
 1. Open the primary deployment’s side navigation menu (placed under the Elastic logo in the upper left corner) and go to **Stack Management > Snapshot and Restore > Repositories**.
 
-    :::{image} ../../images/elasticsearch-reference-repositories.png
+    :::{image} /troubleshoot/images/elasticsearch-reference-repositories.png
     :alt: {{kib}} Console
     :screenshot:
     :::

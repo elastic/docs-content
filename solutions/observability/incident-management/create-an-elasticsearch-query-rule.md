@@ -29,7 +29,7 @@ An {{es}} query rule can be defined using {{es}} Query Domain Specific Language 
 
 When you create an {{es}} query rule, your choice of query type affects the information you must provide. For example:
 
-:::{image} ../../../images/serverless-alerting-rule-types-es-query-conditions.png
+:::{image} /solutions/images/serverless-alerting-rule-types-es-query-conditions.png
 :alt: Define the condition to detect
 :screenshot:
 :::
@@ -64,7 +64,7 @@ When you create an {{es}} query rule, your choice of query type affects the info
     :   Specify how to calculate the value that is compared to the threshold. The value is calculated by aggregating a numeric field within the time window. The aggregation options are: `count`, `average`, `sum`, `min`, and `max`. When using `count` the document count is used and an aggregation field is not necessary.
 
     Over or Grouped Over
-    :   Specify whether the aggregation is applied over all documents or split into groups using up to four grouping fields. If you choose to use grouping, it’s a [terms](elasticsearch://reference/data-analysis/aggregations/search-aggregations-bucket-terms-aggregation.md) or [multi terms aggregation](elasticsearch://reference/data-analysis/aggregations/search-aggregations-bucket-multi-terms-aggregation.md); an alert will be created for each unique set of values when it meets the condition. To limit the number of alerts on high cardinality fields, you must specify the number of groups to check against the threshold. Only the top groups are checked.
+    :   Specify whether the aggregation is applied over all documents or split into groups using up to four grouping fields. If you choose to use grouping, it’s a [terms](elasticsearch://reference/aggregations/search-aggregations-bucket-terms-aggregation.md) or [multi terms aggregation](elasticsearch://reference/aggregations/search-aggregations-bucket-multi-terms-aggregation.md); an alert will be created for each unique set of values when it meets the condition. To limit the number of alerts on high cardinality fields, you must specify the number of groups to check against the threshold. Only the top groups are checked.
 
     Threshold
     :   Defines a threshold value and a comparison operator  (`is above`, `is above or equals`, `is below`, `is below or equals`, or `is between`). The value calculated by the aggregation is compared to this threshold.
@@ -81,14 +81,14 @@ Use the **Test query** feature to verify that your query is valid.
 
 If you use query DSL, KQL, or Lucene, the query runs against the selected indices using the configured time window. The number of documents that match the query is displayed. For example:
 
-:::{image} ../../../images/serverless-alerting-rule-types-es-query-valid.png
+:::{image} /solutions/images/serverless-alerting-rule-types-es-query-valid.png
 :alt: Test {{es}} query returns number of matches when valid
 :screenshot:
 :::
 
 If you use an ES|QL query, a table is displayed. For example:
 
-:::{image} ../../../images/serverless-alerting-rule-types-esql-query-valid.png
+:::{image} /solutions/images/serverless-alerting-rule-types-esql-query-valid.png
 :alt: Test ES|QL query returns a table when valid
 :screenshot:
 :::
@@ -143,7 +143,7 @@ For more information on creating connectors, refer to [Connectors](../../../depl
 :::::{dropdown} Action frequency
 After you select a connector, you must set the action frequency. You can choose to create a **Summary of alerts** on each check interval or on a custom interval. For example, you can send email notifications that summarize the new, ongoing, and recovered alerts at a custom interval:
 
-:::{image} ../../../images/serverless-alerting-es-query-rule-action-summary.png
+:::{image} /solutions/images/serverless-alerting-es-query-rule-action-summary.png
 :alt: UI for defining alert summary action in an {{es}} query rule
 :screenshot:
 :::
@@ -152,7 +152,7 @@ Alternatively, you can set the action frequency to **For each alert** and specif
 
 With the **Run when** menu you can choose how often the action runs (at each check interval, only when the alert status changes, or at a custom action interval). You must also choose an action group, which indicates whether the action runs when the query is matched or when the alert is recovered. Each connector supports a specific set of actions for each action group. For example:
 
-:::{image} ../../../images/serverless-alerting-es-query-rule-action-query-matched.png
+:::{image} /solutions/images/serverless-alerting-es-query-rule-action-query-matched.png
 :alt: UI for defining a recovery action
 :screenshot:
 :::
@@ -163,9 +163,9 @@ You can further refine the conditions under which actions run by specifying that
 
 
 :::::{dropdown} Action variables
-Use the default notification message or customize it. You can add more context to the message by clicking the Add variable icon ![Add variable](../../../images/serverless-indexOpen.svg "") and selecting from a list of available variables.
+Use the default notification message or customize it. You can add more context to the message by clicking the Add variable icon ![Add variable](/solutions/images/serverless-indexOpen.svg "") and selecting from a list of available variables.
 
-:::{image} ../../../images/serverless-action-variables-popup.png
+:::{image} /solutions/images/serverless-action-variables-popup.png
 :alt: Action variables list
 :screenshot:
 :::

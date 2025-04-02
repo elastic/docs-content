@@ -16,13 +16,13 @@ mapped_pages:
 If you are using an **on-premises** {{stack}} deployment:
 
 * In the `kibana.yml` configuration file, add the [`xpack.encryptedSavedObjects.encryptionKey`](kibana://reference/configuration-reference/alerting-settings.md#general-alert-action-settings) setting.
-* For emails to have a footer with a link back to {{kib}}, set the [`server.publicBaseUrl`](../../../deploy-manage/deploy/self-managed/configure.md#server-publicBaseUrl) configuration setting.
+* For emails to have a footer with a link back to {{kib}}, set the [`server.publicBaseUrl`](kibana://reference/configuration-reference/general-settings.md#server-publicbaseurl) configuration setting.
 
 If you are using an **on-premises** {{stack}} deployment with [**security**](../../../deploy-manage/security.md):
 
 * If you are unable to access {{kib}} {{alert-features}}, ensure that you have not [explicitly disabled API keys](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#api-key-service-settings).
 
-The alerting framework uses queries that require the `search.allow_expensive_queries` setting to be `true`. See the scripts [documentation](elasticsearch://reference/query-languages/query-dsl-script-query.md#_allow_expensive_queries_4).
+The alerting framework uses queries that require the `search.allow_expensive_queries` setting to be `true`. See the scripts [documentation](elasticsearch://reference/query-languages/query-dsl/query-dsl-script-query.md#_allow_expensive_queries_4).
 
 ## Production considerations and scaling guidance [alerting-setup-production]
 

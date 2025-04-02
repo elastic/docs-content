@@ -1,5 +1,6 @@
 ---
 applies_to:
+  stack:
   deployment:
     self: all
 ---
@@ -11,7 +12,7 @@ When you upgrade {{kib}}, you also upgrade the {{observability}} and {{elastic-s
 ::::{warning}
 {{kib}} automatically runs saved object migrations when required. To roll back to an earlier version in case of an upgrade failure, you **must** have a [backup snapshot](../../tools/snapshot-and-restore.md) that includes the `kibana` feature state. Snapshots include this feature state by default.
 
-For more information, refer to [Migrate saved objects](../internal-upgrade-processes/saved-object-migrations.md).
+For more information, refer to [Migrate saved objects](saved-object-migrations.md).
 
 ::::
 
@@ -20,13 +21,13 @@ For more information, refer to [Migrate saved objects](../internal-upgrade-proce
 
 When upgrading several {{kib}} instances connected to the same {{es}} cluster, ensure that all outdated instances are shut down before starting the upgrade.
 
-Rolling upgrades are unsupported in {{kib}}. However, when outdated instances are shut down, you can start all upgraded instances in parallel, which allows all instances to participate in the upgrade migration in parallel.
+Rolling upgrades are unsupported in {{kib}}. However, when outdated instances are shut down, you can start all upgraded instances in parallel, which allows all instances to participate in the upgrade in parallel.
 
-For large deployments with more than 10 {{kib}} instances, and more than 10,000 saved objects, you can reduce the upgrade downtime by bringing up a single {{kib}} instance and waiting for it to complete the upgrade migration before bringing up the remaining instances.
+For large deployments with more than 10 {{kib}} instances, and more than 10,000 saved objects, you can reduce the upgrade downtime by bringing up a single {{kib}} instance and waiting for it to complete the upgrade before bringing up the remaining instances.
 
-## Preparing for migration [preventing-migration-failures]
+## Preparing for upgrading [preventing-migration-failures]
 
-Before you start, ensure you [take the upgrade preparation steps](../prepare-to-upgrade.md). Then, take these extra steps to ensure you are ready for migration.
+Before you start, ensure you [take the upgrade preparation steps](/deploy-manage/upgrade/prepare-to-upgrade.md). Then, take these extra steps to ensure you are ready to upgrade.
 
 
 ### Ensure your {{es}} cluster is healthy [_ensure_your_es_cluster_is_healthy]
@@ -44,7 +45,7 @@ A healthy cluster has:
 
 ### Ensure that all {{kib}} instances are the same [_ensure_that_all_kib_instances_are_the_same]
 
-When you perform an upgrade migration of different {{kib}} versions, the migration can fail. Ensure that all {{kib}} instances are running the same version, configuration, and plugins.
+When you perform an upgrade of different {{kib}} versions, the upgrade can fail. Ensure that all {{kib}} instances are running the same version, configuration, and plugins.
 
 ## Perform the upgrade [perform-kibana-upgrade]
 
@@ -54,7 +55,7 @@ To upgrade {{kib}}:
 2. To install the `deb` or `rpm` package:
 
     a. Use `rpm` or `dpkg`. This installs all files in their proper locations and will not overwrite the config files.
-    b. Upgrade any plugins by removing the existing plugin and reinstalling the appropriate version using the `kibana-plugin` script. For more information, see [{{kib}} plugins](kibana://reference/kibana-plugins.md).
+    b. Upgrade any plugins by removing the existing plugin and reinstalling the appropriate version using the `kibana-plugin` script. For more information, refer to [{{kib}} plugins](kibana://reference/kibana-plugins.md).
 
 3. To install from a `zip` or `tar.gz` archive:
 
@@ -66,10 +67,14 @@ To upgrade {{kib}}:
     If you use {{monitor-features}}, you must re-use the data directory when you upgrade {{kib}}. Otherwise, the {{kib}} instance is assigned a new persistent UUID and becomes a new instance in the monitoring data.
     ::::
 
-    d. Install the appropriate versions of all your plugins for your new installation using the `kibana-plugin` script. For more information, see [{{kib}} plugins](kibana://reference/kibana-plugins.md).
+    d. Install the appropriate versions of all your plugins for your new installation using the `kibana-plugin` script. For more information, refer to [{{kib}} plugins](kibana://reference/kibana-plugins.md).
 
 4. Start {{kib}}.
 
 ::::{note}
-{{kib}} 8.0.0 and later uses a new logging system, so the log formats have changed. For additional information, see [Logging configuration changes](kibana://extend/logging-config-changes.md).
+{{kib}} 8.0.0 and later uses a new logging system, so the log formats have changed. For additional information, refer to [Logging configuration changes](kibana://extend/logging-config-changes.md).
 ::::
+
+## Next steps
+
+Once you've successfully upgraded {{kib}}, [upgrade Elastic APM](../../../solutions/observability/apps/upgrade.md), then [upgrade your ingest components](/deploy-manage/upgrade/ingest-components.md).  

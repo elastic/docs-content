@@ -13,19 +13,6 @@ mapped_urls:
 
 # AI assistant
 
-% What needs to be done: Write from scratch
-
-% Scope notes: explain concept and link out to specific docs & config
-
-% Use migrated content from existing pages that map to this page:
-
-% - [ ] ./raw-migrated-files/kibana/kibana/search-ai-assistant.md
-% - [ ] ./raw-migrated-files/observability-docs/observability/obs-ai-assistant.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/security-ai-for-security.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/observability-ai-assistant.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/security-ai-assistant.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/ai-assistant-knowledge-base.md
-
 $$$token-limits$$$
 
 **AI Assistant** is a chat-based interactive tool that uses generative AI and ELSER, Elastic’s proprietary semantic search model, to help you with a variety of tasks related to Elasticsearch and Kibana, including:

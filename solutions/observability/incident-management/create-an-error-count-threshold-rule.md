@@ -18,7 +18,7 @@ For Observability serverless projects, the **Editor** role or higher is required
 
 Create an error count threshold rule to alert you when the number of errors in a service exceeds a defined threshold. Threshold rules can be set at different levels: environment, service, transaction type, and/or transaction name.
 
-:::{image} ../../../images/serverless-alerts-create-rule-error-count.png
+:::{image} /solutions/images/serverless-alerts-create-rule-error-count.png
 :alt: Create rule for error count threshold alert
 :screenshot:
 :::
@@ -89,14 +89,14 @@ After you select a connector, you must set the action frequency. You can choose 
 
 Alternatively, you can set the action frequency to **For each alert** and specify the conditions each alert must meet for the action to run. For example, you can send an email only when the alert status changes to critical.
 
-:::{image} ../../../images/serverless-alert-action-frequency.png
+:::{image} /solutions/images/serverless-alert-action-frequency.png
 :alt: Configure when a rule is triggered
 :screenshot:
 :::
 
 With the **Run when** menu you can choose if an action runs when the threshold for an alert is reached, or when the alert is recovered. For example, you can add a corresponding action for each state to ensure you are alerted when the rule is triggered and also when it recovers.
 
-:::{image} ../../../images/serverless-alert-apm-action-frequency-recovered.png
+:::{image} /solutions/images/serverless-alert-apm-action-frequency-recovered.png
 :alt: Choose between threshold met or recovered
 :screenshot:
 :::
@@ -105,9 +105,9 @@ With the **Run when** menu you can choose if an action runs when the threshold f
 
 
 :::::{dropdown} Action variables
-Use the default notification message or customize it. You can add more context to the message by clicking the Add variable icon ![Add variable](../../../images/serverless-indexOpen.svg "") and selecting from a list of available variables.
+Use the default notification message or customize it. You can add more context to the message by clicking the Add variable icon ![Add variable](/solutions/images/serverless-indexOpen.svg "") and selecting from a list of available variables.
 
-:::{image} ../../../images/serverless-action-variables-popup.png
+:::{image} /solutions/images/serverless-action-variables-popup.png
 :alt: Action variables list
 :screenshot:
 :::
@@ -181,6 +181,6 @@ Based on the criteria above, define the following rule details:
 
 Next, select the **Email** connector and click **Create a connector**. Fill out the required details: sender, host, port, etc., and select **Save**.
 
-A default message is provided as a starting point for your alert. You can use the Mustache template syntax (`{{variable}}`) to pass additional alert values at the time a condition is detected to an action. A list of available variables can be accessed by clicking the Add variable icon ![Add variable](../../../images/serverless-indexOpen.svg "").
+A default message is provided as a starting point for your alert. You can use the Mustache template syntax (`{{variable}}`) to pass additional alert values at the time a condition is detected to an action. A list of available variables can be accessed by clicking the Add variable icon ![Add variable](/solutions/images/serverless-indexOpen.svg "").
 
 Select **Save**. The alert has been created and is now active!

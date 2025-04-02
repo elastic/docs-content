@@ -1,10 +1,12 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-replication.html
+applies_to:
+  stack:
+  serverless:
 ---
 
 # Reading and writing documents [docs-replication]
-
 
 ## Introduction [_introduction]
 
@@ -14,12 +16,11 @@ Elasticsearch’s data replication model is based on the *primary-backup model* 
 
 This purpose of this section is to give a high level overview of the Elasticsearch replication model and discuss the implications it has for various interactions between write and read operations.
 
-
 ## Basic write model [basic-write-model]
 
 Every indexing operation in Elasticsearch is first resolved to a replication group using [routing](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-create), typically based on the document ID. Once the replication group has been determined, the operation is forwarded internally to the current *primary shard* of the group. This stage of indexing is referred to as the *coordinating stage*.
 
-:::{image} ../../images/elasticsearch-reference-data_processing_flow.png
+:::{image} /deploy-manage/images/elasticsearch-reference-data_processing_flow.png
 :alt: An example of a basic write model.
 :::
 
@@ -35,7 +36,6 @@ The primary shard follows this basic flow:
 Each in-sync replica copy performs the indexing operation locally so that it has a copy. This stage of indexing is the *replica stage*.
 
 These indexing stages (coordinating, primary, and replica) are sequential. To enable internal retries, the lifetime of each stage encompasses the lifetime of each subsequent stage. For example, the coordinating stage is not complete until each primary stage, which may be spread out across different primary shards, has completed. Each primary stage will not complete until the in-sync replicas have finished indexing the docs locally and responded to the replica requests.
-
 
 ### Failure handling [_failure_handling]
 
@@ -53,8 +53,6 @@ This is a valid scenario that can happen due to index configuration or simply be
 
 ::::
 
-
-
 ## Basic read model [_basic_read_model]
 
 Reads in Elasticsearch can be very lightweight lookups by ID or a heavy search request with complex aggregations that take non-trivial CPU power. One of the beauties of the primary-backup model is that it keeps all shard copies identical (with the exception of in-flight operations). As such, a single in-sync copy is sufficient to serve read requests.
@@ -65,7 +63,6 @@ When a read request is received by a node, that node is responsible for forwardi
 2. Select an active copy of each relevant shard, from the shard replication group. This can be either the primary or a replica. By default, {{es}} uses [adaptive replica selection](elasticsearch://reference/elasticsearch/rest-apis/search-shard-routing.md#search-adaptive-replica) to select the shard copies.
 3. Send shard level read requests to the selected copies.
 4. Combine the results and respond. Note that in the case of get by ID look up, only one shard is relevant and this step can be skipped.
-
 
 ### Shard failures [shard-failures]
 
@@ -79,20 +76,15 @@ To ensure fast responses, the following APIs will respond with partial results i
 
 Responses containing partial results still provide a `200 OK` HTTP status code. Shard failures are indicated by the `timed_out` and `_shards` fields of the response header.
 
-
 ## A few simple implications [_a_few_simple_implications]
 
 Each of these basic flows determines how Elasticsearch behaves as a system for both reads and writes. Furthermore, since read and write requests can be executed concurrently, these two basic flows interact with each other. This has a few inherent implications:
 
-Efficient reads
-:   Under normal operation each read operation is performed once for each relevant replication group. Only under failure conditions do multiple copies of the same shard execute the same search.
+**Efficient reads**: Under normal operation each read operation is performed once for each relevant replication group. Only under failure conditions do multiple copies of the same shard execute the same search.
 
-Read unacknowledged
-:   Since the primary first indexes locally and then replicates the request, it is possible for a concurrent read to already see the change before it has been acknowledged.
+**Read unacknowledged**: Since the primary first indexes locally and then replicates the request, it is possible for a concurrent read to already see the change before it has been acknowledged.
 
-Two copies by default
-:   This model can be fault tolerant while maintaining only two copies of the data. This is in contrast to quorum-based system where the minimum number of copies for fault tolerance is 3.
-
+**Two copies by default**: This model can be fault tolerant while maintaining only two copies of the data. This is in contrast to quorum-based system where the minimum number of copies for fault tolerance is 3.
 
 ## Failures [_failures]
 
@@ -104,8 +96,6 @@ A single shard can slow down indexing
 Dirty reads
 :   An isolated primary can expose writes that will not be acknowledged. This is caused by the fact that an isolated primary will only realize that it is isolated once it sends requests to its replicas or when reaching out to the master. At that point the operation is already indexed into the primary and can be read by a concurrent read. Elasticsearch mitigates this risk by pinging the master every second (by default) and rejecting indexing operations if no master is known.
 
-
-## The Tip of the Iceberg [_the_tip_of_the_iceberg]
+## The tip of the iceberg [_the_tip_of_the_iceberg]
 
 This document provides a high level overview of how Elasticsearch deals with data. Of course, there is much more going on under the hood. Things like primary terms, cluster state publishing, and master election all play a role in keeping this system behaving correctly. This document also doesn’t cover known and important bugs (both closed and open). We recognize that [GitHub is hard to keep up with](https://github.com/elastic/elasticsearch/issues?q=label%3Aresiliency). To help people stay on top of those, we maintain a dedicated [resiliency page](https://www.elastic.co/guide/en/elasticsearch/resiliency/current/index.html) on our website. We strongly advise reading it.
-

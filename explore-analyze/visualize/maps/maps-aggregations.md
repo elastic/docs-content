@@ -31,7 +31,7 @@ Use aggregated layers with document layers to show aggregated views when the map
 
 In the following example, the Grid aggregation layer is only visible when the map is at zoom levels 0 through 5. The Documents layer is only visible when the map is at zoom levels 4 through 24. See the [Getting started](maps-getting-started.md#maps-add-elasticsearch-layer) tutorial for more details on configuring the layers.
 
-:::{image} ../../../images/kibana-grid_to_docs.gif
+:::{image} /explore-analyze/images/kibana-grid_to_docs.gif
 :alt: grid to docs
 :screenshot:
 :::

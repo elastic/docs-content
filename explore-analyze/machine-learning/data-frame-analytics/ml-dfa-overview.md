@@ -29,7 +29,7 @@ Elastic supervised learning enables you to train a {{ml}} model based on trainin
 
 The workflow for supervised learning consists of the following stages:
 
-:::{image} ../../../images/machine-learning-ml-dfa-lifecycle-diagram.png
+:::{image} /explore-analyze/images/machine-learning-ml-dfa-lifecycle-diagram.png
 :alt: Supervised learning workflow
 :::
 

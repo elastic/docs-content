@@ -1,6 +1,10 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/identify-third-party-av-products.html
+applies_to:
+  stack: preview 9.0
+  serverless:
+    security: preview
 ---
 
 # Identify antivirus software on your hosts [identify-third-party-av-products]
@@ -35,7 +39,7 @@ To use this feature, you need:
 3. Select an LLM connector, or [add](../ai/set-up-connectors-for-large-language-models-llm.md) a new one.
 4. Click **Scan**. After a brief processing period, any detected AV products will appear under **Insights**.
 
-:::{image} ../../../images/serverless-endpoint-insights-results.png
+:::{image} /solutions/images/serverless-endpoint-insights-results.png
 :alt: Endpoint Insights results with the "Create trusted app" button highlighted
 :::
 

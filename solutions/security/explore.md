@@ -2,6 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/sec-explore-intro.html
   - https://www.elastic.co/guide/en/serverless/current/security-explore-your-data.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Explore [sec-explore-intro]

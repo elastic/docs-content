@@ -12,6 +12,13 @@ The default Kubernetes service created by ECK, named `<cluster_name>-es-http`, i
 
 As an alternative, you can use features provided by third-party software such as service meshes and ingress controllers to achieve more advanced traffic management configurations. Check the [recipes directory](https://github.com/elastic/cloud-on-k8s/tree/2.16/config/recipes) in the ECK source repository for a few examples.
 
+:::{admonition} Support scope for Ingress Controllers
+[Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/) is a standard Kubernetes concept. While ECK-managed workloads can be publicly exposed using ingress resources, and we provide [example configurations](/deploy-manage/deploy/cloud-on-k8s/recipes.md), setting up an Ingress controller requires in-house Kubernetes expertise. 
+
+If ingress configuration is challenging or unsupported in your environment, consider using standard `LoadBalancer` services as a simpler alternative.
+:::
+
+
 The service configurations shown in these sections are based on the following Elasticsearch cluster definition:
 
 ```yaml
