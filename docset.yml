@@ -68,6 +68,7 @@ toc:
   - toc: release-notes
   - toc: reference
   - toc: extend
+  - file: archive.md
   - hidden: 404.md
 
 subs:

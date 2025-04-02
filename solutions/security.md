@@ -1,9 +1,10 @@
 ---
 navigation_title: "Security"
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/security/current/index.html
   - https://www.elastic.co/guide/en/security/current/es-overview.html
   - https://www.elastic.co/guide/en/serverless/current/security-overview.html
+  - https://www.elastic.co/guide/en/kibana/current/xpack-siem.html
 applies_to:
   stack: all
   serverless:

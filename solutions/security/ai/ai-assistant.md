@@ -10,7 +10,7 @@ applies_to:
 
 # AI Assistant
 
-The Elastic AI Assistant utilizes generative AI to bolster your cybersecurity operations team. It allows users to interact with {{elastic-sec}} for tasks such as alert investigation, incident response, and query generation or conversion using natural language and much more.
+The Elastic AI Assistant utilizes generative AI to bolster your cybersecurity operations team. It allows users to interact with {{elastic-sec}} for tasks such as alert investigation, incident response, and query generation or conversation using natural language and much more.
 
 :::{image} /solutions/images/security-assistant-basic-view.png
 :alt: Image of AI Assistant chat window
@@ -75,7 +75,7 @@ You can also chat with AI Assistant from several particular pages in {{elastic-s
 * [Data Quality dashboard](/solutions/security/dashboards/data-quality-dashboard.md): Select the **Incompatible fields** tab, then click **Chat**. (This is only available for fields marked red, indicating they’re incompatible).
 
 ::::{note}
-Each user’s chat history (up to the 99 most recent conversations) and custom Quick Prompts are automatically saved, so you can leave {{elastic-sec}} and return to a conversation later. Chat history appears to the left of the AI Assistant chat window, and on the **Conversations** tab of the **AI Assistant settings** menu. To access the settings menu, use the global search field to search for "AI Assistant for Security".
+Each user’s chat history (up to the 99 most recent conversations) and custom Quick Prompts are automatically saved, so you can leave {{elastic-sec}} and return to a conversation later. Chat history appears to the left of the AI Assistant chat window, and on the **Conversations** tab of the **AI Assistant settings** menu. To access the settings menu, use the global search field to search for "AI Assistant for Security" or open the menu in the upper-right of the AI Assistant chat window.
 ::::
 
 
@@ -87,16 +87,16 @@ Use these features to adjust and act on your conversations with AI Assistant:
 * (Optional) Select a *System Prompt* at the beginning of a conversation by using the **Select Prompt** menu. System Prompts provide context to the model, informing its response. To create a System Prompt, open the System Prompts dropdown menu and click **+ Add new System Prompt…​**.
 * (Optional) Select a *Quick Prompt* at the bottom of the chat window to get help writing a prompt for a specific purpose, such as summarizing an alert or converting a query from a legacy SIEM to {{elastic-sec}}.
 
-    :::{image} /solutions/images/security-quick-prompts.png
-    :alt: Quick Prompts highlighted below a conversation
-    :screenshot:
-    :::
+   :::{image} ../../images/security-quick-prompts.png
+   :alt: Quick Prompts highlighted below a conversation
+   :screenshot:
+   :::
 
 * System Prompts and Quick Prompts can also be configured from the corresponding tabs on the **Security AI settings** page.
 
-    :::{image} /solutions/images/security-assistant-settings-system-prompts.png
-    :alt: The Security AI settings menu's System Prompts tab
-    :::
+   :::{image} ../../images/security-assistant-settings-system-prompts.png
+   :alt: The Security AI settings menu's System Prompts tab
+   :::
 
 * Quick Prompt availability varies based on context—for example, the **Alert summarization** Quick Prompt appears when you open AI Assistant while viewing an alert. To customize existing Quick Prompts and create new ones, click **Add Quick Prompt**.
 * In an active conversation, you can use the inline actions that appear on messages to incorporate AI Assistant’s responses into your workflows:
@@ -117,7 +117,16 @@ AI Assistant can remember particular information you tell it to remember. For ex
 
 ## Configure AI Assistant [configure-ai-assistant]
 
-The **Security AI settings** page allows you to configure AI Assistant. To access it, use the global search field to search for "AI Assistant for Security".
+To adjust AI Assistant's settings from the chat window, click the **More** (three dots) button in the upper-right. 
+
+::::{image} ../../../images/security-attack-discovery-more-popover.png
+:alt: AI Assistant's more options popover
+:screenshot:
+::::
+
+The first three options (**AI Assistant settings**, **Knowledge Base**, and **Anonymization**) open the corresponding tabs of the **Security AI settings** page. The **Chat options** affect display-only user settings: whether to show or hide anonymized values, and whether to include citations. When citations are enabled, AI Assistant will refer you to information sources including data you've shared with it, information you've added to the knowledge base, and content from Elastic's Security Labs and product documentation.
+
+The **Security AI settings** page provides a range of configuration options for AI Assistant. To access it directly, use the global search field to search for "AI Assistant for Security".
 
 It has the following tabs:
 

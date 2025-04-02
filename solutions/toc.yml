@@ -565,21 +565,21 @@ toc:
               - file: security/cloud/cspm-privilege-requirements.md
               - file: security/cloud/findings-page.md
               - file: security/cloud/benchmarks.md
-              - file: security/dashboards/cloud-security-posture-dashboard.md
+              - file: security/cloud/cspm-dashboard.md
               - file: security/cloud/cspm-frequently-asked-questions-faq.md
           - file: security/cloud/kubernetes-security-posture-management.md
             children:
               - file: security/cloud/get-started-with-kspm.md
               - file: security/cloud/findings-page-2.md
-              - file: security/cloud/benchmarks.md
-              - file: security/dashboards/cloud-security-posture-dashboard.md
-              - file: security/cloud/cspm-frequently-asked-questions-faq.md
+              - file: security/cloud/kspm-benchmarks.md
+              - file: security/cloud/kspm-dashboard.md
+              - file: security/cloud/kspm-frequently-asked-questions.md
           - file: security/cloud/cloud-native-vulnerability-management.md
             children:
               - file: security/cloud/get-started-with-cnvm.md
               - file: security/cloud/cnvm-privilege-requirements.md
               - file: security/cloud/findings-page-3.md
-              - file: security/dashboards/cloud-native-vulnerability-management-dashboard.md
+              - file: security/cloud/cnvm-dashboard.md
               - file: security/cloud/cnvm-frequently-asked-questions-faq.md
           - file: security/cloud/cloud-workload-protection-for-vms.md
             children:
