@@ -1,5 +1,7 @@
 ---
 navigation_title: Versioning and availability
+mapped_pages:
+  - https://www.elastic.co/guide/en/starting-with-the-elasticsearch-platform-and-its-solutions/current/introducing-elastic-documentation.html
 ---
 
 # Understanding versioning and availability
@@ -89,8 +91,8 @@ serverless:
   security: beta
   elasticsearch: ga
 ```
-- **Deployment type**: Serverless 
-- **Lifecycle**: 
+- **Deployment type**: Serverless
+- **Lifecycle**:
   - Beta for Security projects
   - Generally Available for Elasticsearch projects
 

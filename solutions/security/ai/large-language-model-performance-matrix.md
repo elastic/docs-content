@@ -41,7 +41,7 @@ Models from third-party LLM providers.
 
 Models you can [deploy yourself](/solutions/security/ai/connect-to-own-local-llm.md).
 
-| **Feature** |  | **Assistant - General** | **Assistant - {{esql}} generation** | **Assistant - Alert questions** | **Assistant - Knowledge retrieval** | **Attack Discovery** |
+| **Feature** | - | **Assistant - General** | **Assistant - {{esql}} generation** | **Assistant - Alert questions** | **Assistant - Knowledge retrieval** | **Attack Discovery** |
 | --- | --- | --- | --- | --- | --- | --- |
 | **Model** | **Mistral Nemo** | Good | Good | Great | Good | Poor |
 |  | **LLama 3.2** | Good | Poor | Good | Poor | Poor |
