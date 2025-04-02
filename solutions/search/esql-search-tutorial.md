@@ -1,6 +1,6 @@
 ---
 applies_to:
-  stack: preview
+  stack: 9.0 preview
   serverless: preview
 navigation_title: "Search and filter with ES|QL"
 ---
