@@ -102,3 +102,10 @@ Depending on your privileges and whether detection system indices have already b
 
 To learn how your rules and alerts are affected by using the [logsdb index mode](/manage-data/data-store/data-streams/logs-data-stream.md), refer to [Using logsdb index mode with {{elastic-sec}}](/solutions/security/detect-and-alert/using-logsdb-index-mode-with-elastic-security.md).
 
+## Manage rules as code [manage-rule-dac]
+
+Utilize the [Detection-as-Code](https://dac-reference.readthedocs.io/en/latest/dac_concept_and_workflows.html) (DaC) principles to externally manage your detection rules. 
+
+The {{elastic-sec}} Labs team uses the [detection-rules](https://github.com/elastic/detection-rules) repo to develop, test, and release {{elastic-sec}}'s[ prebuilt rules](https://github.com/elastic/detection-rules/tree/main/rules). The repo provides DaC features and allows you to customize settings to simplify the setup for managing user rules with the DaCe pipeline.
+
+To get started, refer to the [DaC documentation](https://github.com/elastic/detection-rules/blob/main/README.md#detections-as-code-dac).

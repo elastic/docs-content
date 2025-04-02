@@ -1,93 +1,177 @@
 ---
-navigation_title: Manage TLS certificates 
+navigation_title: Manage TLS encryption
 applies_to:
   deployment:
     self:
     eck:
     ece:
 mapped_urls:
-  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-security.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/security-basic-setup.html
   - https://www.elastic.co/guide/en/kibana/current/elasticsearch-mutual-tls.html
 ---
 
+% Scope: landing page for manually handling TLS certificates, and for information about TLS in Elastic Stack in general.
+# TLS encryption for cluster communications
 
-% TODO: what to do about this page that doesn't exist
-% * [/raw-migrated-files/cloud-on-k8s/cloud-on-k8s/k8s-security.md](/raw-migrated-files/cloud-on-k8s/cloud-on-k8s/k8s-security.md)
+This page explains how to secure communications and set up TLS certificates in your {{stack}} deployments.
 
-$$$encrypt-internode-communication$$$
-$$$generate-certificates$$$
+For {{ech}} deployments and {{serverless-full}} projects, communication security is [fully managed by Elastic](/deploy-manage/security.md#managed-security-in-elastic-cloud) with no configuration required, including TLS certificates.
 
+For ECE, ECK, and self-managed deployments, some of this process can be automated, with opportunities for manual configuration depending on your requirements. This page provides specific configuration guidance to secure the various communication channels between components.
 
-# Manage TLS certificates
+For a complete comparison of security feature availability and responsibility by deployment type, refer to [Security features by deployment type](/deploy-manage/security.md#comparison-table).
 
-This page explains how to secure communications between components in your {{stack}} deployment.
+::::{admonition} Understanding transport contexts
+The term *transport* can be confusing in {{es}} because it's used in two different contexts:
+- **Transport Layer Security (TLS)** is an industry-standard protocol that secures network communication. It's the modern name for SSL, and the Elastic documentation uses the terms TLS and SSL interchangeably.
+- In {{es}}, the **transport layer** refers to internal node-to-node communication, which occurs over port 9300. This communication uses the [transport interface](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md), which implements a binary protocol specific to {{es}}.
 
-For {{ech}} and {{serverless-full}} deployments, communications security is fully managed by Elastic with no configuration required.
-
-For ECE, ECK, and self-managed deployments, this page provides specific configuration guidance to secure the various communication channels between components.
-
-:::{tip}
-For a complete comparison of security feature availability and responsibility by deployment type, see [Security features by deployment type](/deploy-manage/security.md#comparison-table).
-:::
+Keep this distinction in mind when configuring security settings.
+::::
 
 
-## Communication channels overview
+## Communication channels overview [communication-channels]
 
-Your {{stack}} deployment includes several distinct communication channels that must be secured to protect your data and infrastructure.
+Both {{es}} and {{kib}}, the core components of the {{stack}}, expose service endpoints that must be secured. {{es}} handles traffic at two levels:
+* The **transport layer** (defaults to port `9300`), used for internal communication between nodes in the cluster.
+* The **HTTP layer** (defaults to port `9200`), used by external clients — including Kibana — to send requests using the REST API.
 
-| **Channel** | **Description** | **Security needs** |
+Additionally, {{kib}} functions as a web server, exposing its own **HTTP endpoint** (defaults to port `5601`) to users, and also acts as a client when sending requests to {{es}}.
+
+To ensure secure operation, it’s important to understand the communication channels and their specific security requirements.
+
+| **Channel** | **Description** | **TLS requirements** |
 |-------------|-----------------|--------------------|
-| [Transport layer](#transport-layer-security) | Communication between {{es}} nodes within a cluster | - Mutual TLS (required)<br>- Node authentication<br>- Node role verification |
-| [HTTP layer](#http-layer-security) | Communication between external clients and {{es}} through the REST API | - TLS encryption<br>- Authentication (basic auth, API keys, or token-based)<br>- Optional client certificate authentication |
-| [{{kib}}-to-{{es}}](#kib-to-es-communications) | Communication from the {{kib}} server to {{es}} for user requests and queries | - TLS encryption<br>- Service authentication (API keys, service tokens, or mutual TLS) |
+| [{{es}} transport layer](#encrypt-internode-communication) | Communication between {{es}} nodes within a cluster | Mutual TLS/SSL required for multi-node clusters |
+| [{{es}} HTTP layer](#encrypt-http-communication) | Communication between external clients and {{es}} through the REST API | TLS/SSL optional (but recommended) |
+| [{{kib}} HTTP layer](#encrypt-http-communication) | Communication between external browsers or REST clients and {{kib}} | TLS/SSL optional (but recommended) |
 
+### Transport layer security [encrypt-internode-communication]
 
-## Transport layer security
+The transport layer is used for communication between {{es}} nodes in a cluster. It relies on mutual TLS for both encryption and authentication of nodes.
 
-The transport layer is used for communication between {{es}} nodes in a cluster. Securing this layer prevents unauthorized nodes from joining your cluster and protects internode data.
+Securing this layer prevents unauthorized nodes from joining your cluster and protects internode data. While implementing username and password authentication at the HTTP layer is useful for securing external access, the security of communication between nodes requires TLS.
 
 The way that transport layer security is managed depends on your deployment type:
 
-- **ECH, ECE, and Serverless**: Transport security is fully managed by Elastic. No configuration is required.
-- **ECK**: Transport security is automatically configured by the operator, but you can [customize its service and SSL certificates](/deploy-manage/security/k8s-transport-settings.md).
-- **Self-managed**: Transport security must be manually configured following the steps in [Set up basic security](set-up-basic-security.md).
+::::{tab-set}
+:group: deployments
 
-## HTTP layer security
+:::{tab-item} ECH and Serverless
+:sync: ech
+{{es}} transport security is fully managed by Elastic, and no configuration is required.
+:::
 
-The HTTP layer secures client communication with your {{es}} cluster via its REST API, preventing unauthorized access and protecting data in transit.
+:::{tab-item} ECE
+:sync: ece
+{{es}} transport security is fully managed by {{ece}} platform, and no configuration is required.
+:::
+
+:::{tab-item} ECK
+:sync: eck
+
+:::{include} ./_snippets/eck-transport.md
+:::
+
+:::
+
+:::{tab-item} Self-managed
+:sync: self
+{{es}} transport security can be [automatically configured](self-auto-setup.md), or manually set up by following the steps in [](set-up-basic-security.md).
+
+For additional TLS configuration options, refer to [](./self-tls.md).
+:::
+
+::::
+
+### HTTP layer security [encrypt-http-communication]
+
+The HTTP layer includes the service endpoints exposed by both {{es}} and {{kib}}, supporting communications such as REST API requests, browser access to {{kib}}, and {{kib}}’s own traffic to {{es}}. Securing these endpoints helps prevent unauthorized access and protects sensitive data in transit.
+
+::::{important}
+While HTTP TLS encryption is optional in self-managed environments, it is strongly recommended for both production and non-production deployments. Even in non-production environments, unsecured endpoints can expose sensitive data or introduce avoidable risks.
+::::
 
 The way that HTTP layer security is managed depends on your deployment type:
 
-- **ECH and Serverless**: HTTP security is fully managed by Elastic. No configuration is required.
-- **ECE**: HTTP security is automatically enforced at ECE proxies using self-signed certificates and a default [wildcard DNS record](/deploy-manage/deploy/cloud-enterprise/ece-wildcard-dns.md). However, it's recommended to [configure your own certificates](/deploy-manage/security/secure-your-elastic-cloud-enterprise-installation/manage-security-certificates.md).
-- **ECK**: HTTP security is automatically configured with self-signed certificates. [Custom certificates and domain names can be configured](/deploy-manage/security/secure-http-communications.md#k8s-custom-http-certificate).
-- **Self-managed**: HTTP security must be manually configured following [](secure-http-communications.md).
+:::::{tab-set}
+:group: deployments
 
-## {{kib}}-to-{{es}} communications
+::::{tab-item} ECH and Serverless
+:sync: ech
 
-{{kib}} connects to {{es}} as a client but requires special configuration as it performs operations on behalf of end users.
+HTTP TLS for {{es}} and {{kib}} is fully managed by Elastic. No configuration is required.
+{{kib}} instances are automatically configured to connect securely to {{es}}, without requiring manual setup.
+::::
 
-The way that {{kib}}-to-{{es}} communication security is managed depends on your deployment type:
+::::{tab-item} ECE
+:sync: ece
 
-- **ECH and Serverless**: {{kib}}-{{es}} communication is fully managed using HTTPS and service tokens.
-- **ECE and ECK**: {{kib}}-{{es}} communication is automatically secured with service tokens.
-- **Self-managed**: {{kib}}-{{es}} communication must be manually secured. For mutual TLS configuration, refer to [Mutual TLS authentication between {{kib}} and {{es}}](secure-http-communications.md#elasticsearch-mutual-tls).
+HTTP TLS for deployments is managed at the platform proxy level. Refer to these guides for ECE-specific security customizations:
+* [Manage security certificates in ECE](./secure-your-elastic-cloud-enterprise-installation/manage-security-certificates.md)
+* [Allow x509 Certificates Signed with SHA-1](./secure-your-elastic-cloud-enterprise-installation/allow-x509-certificates-signed-with-sha-1.md)
+* [Configure TLS version](./secure-your-elastic-cloud-enterprise-installation/configure-tls-version.md)
 
-## Certificate management [generate-certificates]
+{{kib}} instances are automatically configured to connect securely to {{es}}, without requiring manual setup.
+::::
 
-Managing certificates is critical for secure communications. Certificates have limited lifetimes and must be renewed before expiry to prevent service disruptions.
+::::{tab-item} ECK
+:sync: eck
 
-The way that you manage certificates depends on your deployment type:
+:::{include} ./_snippets/eck-http.md
+:::
 
-- **ECH and Serverless**: Certificate management is fully automated by Elastic.
-- **ECE**: ECE generates certificates for you. Refer to [](/deploy-manage/security/secure-your-elastic-cloud-enterprise-installation/manage-security-certificates.md).
-- **ECK**: ECK provides flexible options for managing SSL certificates in your deployments, including automatic certificate generation and rotation, integration with external tools like `cert-manager`, or using your own custom certificates. Custom HTTP certificates require manual management.
-- **Self-managed**: Certificate management is your responsibility. See [Security certificates and keys](security-certificates-keys.md).
+::::
 
-## Next steps
+::::{tab-item} Self-managed
+:sync: self
 
-- Configure [basic security and HTTPS](set-up-basic-security-plus-https.md) for self-managed deployments.
-- Learn about [HTTP communication security](secure-http-communications.md) best practices.
-- Understand how to securely manage [security certificates and keys](security-certificates-keys.md).
-- Check [SSL/TLS version compatibility](supported-ssltls-versions-by-jdk-version.md) for optimal encryption.
+HTTP TLS certificates for {{es}} can be [automatically configured](self-auto-setup.md), or manually set up by following the steps in [Set up HTTP SSL](./set-up-basic-security-plus-https.md).
+
+{{kib}} acts as both an HTTP client to {{es}} and a server for browser access. It performs operations on behalf of users, so it must be properly configured to trust the {{es}} certificates, and to present its own TLS certificate for secure browser connections. These configurations must be performed manually in self-managed deployments.
+
+:::{note}
+The automatic configuration does not enable TLS on the {{kib}} HTTP endpoint. To encrypt browser traffic to {{kib}}, follow the steps in [](./set-up-basic-security-plus-https.md#encrypt-kibana-browser).
+:::
+
+For environments with stricter security requirements, refer to [Mutual TLS authentication between {{kib}} and {{es}}](./kibana-es-mutual-tls.md).
+
+For additional TLS configuration options, refer to [](./self-tls.md).
+::::
+
+:::::
+
+## Certificates lifecycle [generate-certificates]
+
+Managing certificates is critical for secure communications. Certificates have limited lifetimes and must be renewed before expiry to prevent service disruptions. Each deployment type provides different tools or responsibilities for managing certificates lifecycle.
+
+::::{tab-set}
+:group: deployments
+
+:::{tab-item} ECH and Serverless
+:sync: ech
+
+Certificate lifecycle is fully managed by Elastic, including renewal and rotation.
+:::
+
+:::{tab-item} ECE
+:sync: ece
+
+In ECE, the platform automatically renews internal certificates. However, you must manually renew your custom proxy and Cloud UI certificates. For more details, refer to [Manage security certificates](secure-your-elastic-cloud-enterprise-installation/manage-security-certificates.md).
+:::
+
+:::{tab-item} ECK
+:sync: eck
+
+:::{include} ./_snippets/eck-lifecycle.md
+:::
+
+:::
+
+:::{tab-item} Self-managed
+:sync: self
+
+You are responsible for certificate lifecycle management, including monitoring expiration dates, renewing certificates, and redeploying them as needed. If you used Elastic tools to generate your certificates, refer to [Update TLS certificates](./updating-certificates.md) for guidance on rotating or replacing them.
+:::
+
+::::

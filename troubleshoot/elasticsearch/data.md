@@ -2,15 +2,9 @@
 navigation_title: Data
 ---
 
-# Troubleshoot Elasticsearch data issues
+# Troubleshoot data issues in {{es}} 
 
-:::{admonition} WIP
-⚠️ **This page is a work in progress.** ⚠️
-
-The documentation team is working on this section. Contributions welcome!
-:::
-
-Use the topics in this section to troubleshoot {{es}} data issues:
+Use the topics in this section to troubleshoot data-related issues in your {{es}} deployments, including allocation problems, tiering issues, and shard limits.
 
 * [](/troubleshoot/elasticsearch/allow-all-cluster-allocation.md)
 * [](/troubleshoot/elasticsearch/allow-all-index-allocation.md)
@@ -21,6 +15,7 @@ Use the topics in this section to troubleshoot {{es}} data issues:
 * [](/troubleshoot/elasticsearch/increase-cluster-shard-limit.md)
 * [](/troubleshoot/elasticsearch/corruption-troubleshooting.md)
 
-
-
-% see also fix-watermark-errors.md
+## Additional resources
+* [](/troubleshoot/elasticsearch/fix-watermark-errors.md)
+* [Troubleshooting overview](/troubleshoot/index.md)
+* [Contact us](/troubleshoot/index.md#contact-us)

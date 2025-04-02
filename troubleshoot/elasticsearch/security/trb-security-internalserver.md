@@ -1,4 +1,11 @@
 ---
+applies_to:
+  stack: 
+  deployment:
+    eck: 
+    ess: 
+    ece: 
+    self: 
 navigation_title: Kibana internal server error
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/trb-security-internalserver.html

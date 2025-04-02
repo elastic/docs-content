@@ -22,7 +22,12 @@ In this guide, you’ll learn how to:
 
 ## Use Attack discovery to identify threats [use-case-incident-reporting-use-attack-discovery-to-identify-threats]
 
-Attack discovery can detect a wide range of threats by finding relationships among alerts that may indicate a coordinated attack. This enables you to comprehend how threats move through and affect your systems. Attack discovery generates a detailed summary of each potential threat, which can serve as the basis for further analysis. Learn how to [get started with Attack discovery](/solutions/security/ai/attack-discovery.md).
+Attack discovery can detect a wide range of threats by finding relationships among alerts that may indicate a coordinated attack. This enables you to comprehend how threats move through and affect your systems. Attack discovery generates a detailed summary of each potential threat and can highlight avenues for further investigation. Learn how to [get started with Attack discovery](/solutions/security/ai/attack-discovery.md).
+
+:::{important}
+To ensure that Attack Discovery analyzes related alerts together (and can therefore identify their connections), pay attention to the [alert filtering](/solutions/security/ai/attack-discovery.md) settings. This allows you to target Attack Discovery at specific groups of alerts, such as those related to a particular host, user, date and time, incident, or customer.
+
+:::
 
 :::{image} /solutions/images/security-attck-disc-11-alerts-disc.png
 :alt: An Attack discovery card showing an attack with 11 related alerts

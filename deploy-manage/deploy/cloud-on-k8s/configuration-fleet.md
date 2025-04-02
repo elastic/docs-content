@@ -224,7 +224,7 @@ To deploy {{agent}} in clusters with the Pod Security Policy admission controlle
 
 ## Customize {{fleet-server}} Service [k8s-elastic-agent-fleet-configuration-customize-fleet-server-service]
 
-By default, ECK creates a Service for {{fleet-server}} that {{agents}} can connect through. You can customize it using the `http` configuration element. Check more information on how to [make changes](accessing-services.md) to the Service and [customize](/deploy-manage/security/secure-http-communications.md) the TLS configuration.
+By default, ECK creates a Service for {{fleet-server}} that {{agents}} can connect through. You can customize it using the `http` configuration element. Check more information on how to [make changes](accessing-services.md) to the Service and [customize](/deploy-manage/security/secure-cluster-communications.md) the TLS configuration.
 
 
 ## Control {{fleet}} policy selection [k8s-elastic-agent-control-fleet-policy-selection]

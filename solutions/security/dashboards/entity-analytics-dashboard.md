@@ -20,16 +20,12 @@ In {{stack}}, a [Platinum subscription](https://www.elastic.co/pricing/) or high
 
 The dashboard includes the following sections:
 
-* [Entity KPIs (key performance indicators)](/solutions/security/dashboards/entity-analytics-dashboard.md#entity-kpis)
-* [User Risk Scores](/solutions/security/dashboards/entity-analytics-dashboard.md#entity-user-risk-scores)
-* [Host Risk Scores](/solutions/security/dashboards/entity-analytics-dashboard.md#entity-host-risk-scores)
-* [Entities](/solutions/security/dashboards/entity-analytics-dashboard.md#entity-entities)
-* [Anomalies](/solutions/security/dashboards/entity-analytics-dashboard.md#entity-anomalies)
-
-:::{image} /solutions/images/security-entity-dashboard.png
-:alt: Entity dashboard
-:screenshot:
-:::
+* [Entity KPIs (key performance indicators)](#entity-kpis)
+* [User Risk Scores](#entity-user-risk-scores)
+* [Host Risk Scores](#entity-host-risk-scores)
+* [Service Risk Scores](#service-risk-scores)
+* [Entities](#entity-entities)
+* [Anomalies](#entity-anomalies)
 
 
 ## Entity KPIs (key performance indicators) [entity-kpis]
@@ -55,7 +51,7 @@ Displays user risk score data for your environment, including the total number o
 Interact with the table to filter data, view more details, and take action:
 
 * Select the **User risk level** menu to filter the chart by the selected level.
-* Click a user name link to open the user details flyout.
+* Click a user name link to open the entity details flyout.
 * Hover over a user name link to display inline actions: **Add to timeline**, which adds the selected value to Timeline, and **Copy to Clipboard**, which copies the user name value for you to paste later.
 * Click **View all** in the upper-right to display all user risk information on the Users page.
 * Click the number link in the **Alerts** column to view the alerts on the Alerts page. Hover over the number and select **Investigate in timeline** (![Investigate in timeline icon](/solutions/images/security-timeline-button-osquery.png "title =20x20")) to launch Timeline with a query that includes the associated user name value.
@@ -80,12 +76,36 @@ Displays host risk score data for your environment, including the total number o
 Interact with the table to filter data, view more details, and take action:
 
 * Select the **Host risk level** menu to filter the chart by the selected level.
-* Click a host name link to open the host details flyout.
+* Click a host name link to open the entity details flyout.
 * Hover over a host name link to display inline actions: **Add to timeline**, which adds the selected value to Timeline, and **Copy to Clipboard**, which copies the host name value for you to paste later.
 * Click **View all** in the upper-right to display all host risk information on the Hosts page.
 * Click the number link in the **Alerts** column to view the alerts on the Alerts page. Hover over the number and select **Investigate in timeline** (![Investigate in timeline icon](/solutions/images/security-timeline-button-osquery.png "title =20x20")) to launch Timeline with a query that includes the associated host name value.
 
 For more information about host risk scores, refer to [Entity risk scoring](/solutions/security/advanced-entity-analytics/entity-risk-scoring.md).
+
+
+## Service Risk Scores
+
+::::{admonition} Requirements
+To display service risk scores, you must [turn on the risk scoring engine](/solutions/security/advanced-entity-analytics/turn-on-risk-scoring-engine.md).
+::::
+
+Displays service risk score data for your environment, including the total number of services, and the five most recently recorded service risk scores, with their associated service names, risk data, and number of detection alerts. Service risk scores are calculated using a weighted sum on a scale of 0 (lowest) to 100 (highest).
+
+:::{image} /solutions/images/security-service-risk-scores.png
+:alt: Service risk scores table
+:screenshot:
+:::
+
+
+Interact with the table to filter data, view more details, and take action: 
+
+* Select the **Service risk level** menu to filter the chart by the selected level. 
+* Click a service name link to open the service details flyout.
+* Hover over a service name link to display inline actions: **Add to timeline**, which adds the selected value to Timeline, and **Copy to Clipboard**, which copies the service name value for you to paste later. 
+* Click the number link in the *Alerts* column to view the alerts on the Alerts page. Hover over the number and select **Investigate in timeline** (![Investigate in timeline icon](/solutions/images/security-timeline-button-osquery.png "title =20x20")) to launch Timeline with a query that includes the associated service name value.
+
+For more information about service risk scores, refer to [Entity risk scoring](/solutions/security/advanced-entity-analytics/entity-risk-scoring.md).
 
 
 ## Entities [entity-entities]
@@ -96,14 +116,14 @@ To display the **Entities** section, you must [enable the entity store](/solutio
 ::::
 
 
-The **Entities** section provides a centralized view of all hosts and users in your environment. It displays entities from the [entity store](/solutions/security/advanced-entity-analytics/entity-store.md), which meet any of the following criteria:
+The **Entities** section provides a centralized view of all hosts, users, and services in your environment. It displays entities from the [entity store](/solutions/security/advanced-entity-analytics/entity-store.md), which meet any of the following criteria:
 
 * Have been observed by {{elastic-sec}}
 * Have an asset criticality assignment
 * Have been added to {{elastic-sec}} through an integration, such Active Directory or Okta
 
 ::::{note}
-The **Entities** table only shows a subset of the data available for each entity. You can query the `.entities.v1.latest.security_user_<space-id>` and `.entities.v1.latest.security_host_<space-id>` indices to see all the fields for each entity in the entity store.
+The **Entities** table only shows a subset of the data available for each entity. You can query the `.entities.v1.latest.security_user_<space-id>`, `.entities.v1.latest.security_host_<space-id>`, and `.entities.v1.latest.security_service_<space-id>` indices to see all the fields for each entity in the entity store.
 ::::
 
 
@@ -121,7 +141,7 @@ Entity data from different sources appears in the **Entities** section based on 
 
 Interact with the table to filter data and view more details:
 
-* Select the **Risk level** dropdown to filter the table by the selected user or host risk level.
+* Select the **Risk level** dropdown to filter the table by the selected user, host, or service risk level.
 * Select the **Criticality** dropdown to filter the table by the selected asset criticality level.
 * Select the **Source** dropdown to filter the table by the data source.
 * Click the **View details** icon (![View details icon](/solutions/images/security-view-details-icon.png "title =20x20")) to open the entity details flyout.
