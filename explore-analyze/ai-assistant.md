@@ -15,23 +15,22 @@ mapped_urls:
 
 $$$token-limits$$$
 
-**AI Assistant** is a chat-based interactive tool that uses generative AI and ELSER, Elastic’s proprietary semantic search model, to help you with a variety of tasks related to Elasticsearch and Kibana, including:
+**AI Assistant** is a chat-based interactive tool to help you with a variety of tasks related to Elasticsearch and Kibana, including:
 
-- **Constructing queries**: Assists you in building queries to search and analyze your data, including converting queries from other languages to [ES|QL](query-filter/languages/esql-rest.md).
+- **Constructing queries**: Assists you in building queries to search and analyze your data, including converting queries from other languages to [ES|QL](query-filter/languages/esql.md).
 - **Indexing data**: Guides you on how to index data into Elasticsearch.
 - **Using APIs**: Calls Elasticsearch APIs on your behalf if you need specific operations performed.
 - **Generating sample data**: Helps you create sample data for testing and development purposes.
 - **Visualizing and analyzing data**: Assists you in creating visualizations and analyzing your data using Kibana.
 - **Troubleshooting**: Explains errors, messages, and suggests remediation.
 
-AI Assistant requires specific privileges and a generative AI connector. 
+AI Assistant requires specific privileges and a generative AI connector (if not using the default Elastic LLM).
 
 % Check [Configure AI Assistant](../deploy-manage/) for more details on how to enable and configure it.
 
 The capabilities and ways to interact with AI Assistant can differ for each solution. Find more information in the respective solution docs:
 
-% - [AI Assistant for Search](../solutions/search/)
-- [AI Assistant for Observability](../solutions/observability/observability-ai-assistant.md)
+- [{{obs-ai-assistant}}](../solutions/observability/observability-ai-assistant.md)
 - [AI Assistant for Security](../solutions/security/ai/ai-assistant.md)
 
 ## Prompt best practices [rag-for-esql]
