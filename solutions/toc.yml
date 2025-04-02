@@ -90,8 +90,6 @@ toc:
           - file: observability/get-started/create-an-observability-project.md
           - file: observability/get-started/quickstart-monitor-hosts-with-elastic-agent.md
           - file: observability/get-started/quickstart-monitor-kubernetes-cluster-with-elastic-agent.md
-          - file: observability/get-started/quickstart-monitor-hosts-with-opentelemetry.md
-          - file: observability/get-started/quickstart-unified-kubernetes-observability-with-elastic-distributions-of-opentelemetry-edot.md
           - file: observability/get-started/quickstart-collect-data-with-aws-firehose.md
           - file: observability/get-started/add-data-from-splunk.md
           - file: observability/get-started/get-started-with-dashboards.md
