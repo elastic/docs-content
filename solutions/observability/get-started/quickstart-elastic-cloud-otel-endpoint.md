@@ -50,8 +50,8 @@ The Elastic Cloud Managed OTLP Endpoint ensures that OpenTelemetry data is store
 
 ### Create an API key
 
-1. Click "Create an API Key" to generate a new API key. Copy this value for later.
-1. (Optional) Test your new API key. You can do this by sending an empty JSON object to the `/v1/traces` endpoint. For example:
+1. Click **Create an API Key** to generate a new API key. Copy this value for later.
+1. (Optional) Test your new API key by sending an empty JSON object to the `/v1/traces` endpoint. For example:
 
     ```bash
     curl -X POST \
@@ -154,7 +154,7 @@ The Managed endpoint has per-project rate limits in place. If you hit this limit
 We love to hear from you!
 Help improve the Elastic Cloud Managed OTLP Endpoint by sending us feedback in our [discussion forum](https://discuss.elastic.co/c/apm) or [community Slack](https://elasticstack.slack.com/signup#/domain-signup).
 
-For EDOT collector feedback, please open an issue in the [elastic-agent repository](https://github.com/elastic/elastic-agent/issues).
+For EDOT collector feedback, open an issue in the [elastic-agent repository](https://github.com/elastic/elastic-agent/issues).
 
 ## What's next?
 

@@ -53,4 +53,4 @@ See [](/solutions/observability/infra-and-hosts/analyze-compare-hosts.md) to lea
 Install the OpenTelemetry Assets integrations to access the "[OTEL][Metrics Kubernetes] Cluster Overview" dashboard.
 
 In your {{obs-serverless}} project, go to **Integrations** and toggle **Display beta integrations**.
-Search for "OpenTelemetry" and select and install **Kubernetes OpenTelemetry Assets**.
+Search for "OpenTelemetry" to select and install **Kubernetes OpenTelemetry Assets**.
