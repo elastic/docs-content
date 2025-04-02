@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/logs-parse.html
   - https://www.elastic.co/guide/en/serverless/current/observability-parse-log-data.html
 applies_to:

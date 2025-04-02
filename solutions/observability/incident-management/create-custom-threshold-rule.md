@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/custom-threshold-alert.html
   - https://www.elastic.co/guide/en/serverless/current/observability-create-custom-threshold-alert-rule.html
 
@@ -127,7 +127,7 @@ The behavior of the alert depends on whether any **group alerts by** fields are 
     * If `host-1` reports CPU usage below the threshold of 80%, the alert status is changed to recovered.
 
 
-::::{note} 
+::::{note}
 **How to untrack decommissioned hosts**
 
 If a host (for example, `host-1`) is decommissioned, you probably no longer want to see "no data" alerts about it. To mark an alert as untracked: Go to the Alerts table, click the ![More actions](/solutions/images/serverless-boxesHorizontal.svg "") icon to expand the "More actions" menu, and click *Mark as untracked*.

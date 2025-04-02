@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/security/current/building-block-rule.html
   - https://www.elastic.co/guide/en/serverless/current/security-building-block-rules.html
 applies_to:

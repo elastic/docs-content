@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-saas-metrics-accessing.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-saas-metrics-accessing.html
 applies_to:
@@ -15,7 +15,7 @@ For advanced views or production monitoring, [enable logging and monitoring](/de
 
 :::{tip}
 For {{ece}} deployments, you can use [platform monitoring](/deploy-manage/monitor/orchestrators/ece-platform-monitoring.md) to access preconfigured performance metrics.
-::: 
+:::
 
 To access cluster performance metrics:
 
