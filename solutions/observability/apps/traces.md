@@ -37,12 +37,6 @@ In this example, Elastic’s Ruby agent communicates with Elastic’s Java agent
 :alt: How traceparent propagation works
 :::
 
-In this example, Elastic’s Ruby agent communicates with OpenTelemetry’s Java agent. Both support the `traceparent` header, and trace data is successfully propagated.
-
-:::{image} /solutions/images/observability-dt-trace-ex2.png
-:alt: How traceparent propagation works
-:::
-
 In this example, the trace meets a piece of middleware that doesn’t propagate the `traceparent` header. The distributed trace ends and any further communication will result in a new trace.
 
 :::{image} /solutions/images/observability-dt-trace-ex3.png
