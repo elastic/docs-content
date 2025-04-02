@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/security/current/use-osquery.html
   - https://www.elastic.co/guide/en/serverless/current/security-query-operating-systems.html
   - https://www.elastic.co/guide/en/kibana/current/osquery.html
@@ -20,7 +20,7 @@ With Osquery, you can:
 * View a history of past queries and their results
 * Save queries and build a library of queries for specific use cases
 
-To use Osquery, you must add the [Osquery manager integration](manage-integration.md) to an {{agent}} policy. After completing that step, you can use the Osquery features that are available in your solution. 
+To use Osquery, you must add the [Osquery manager integration](manage-integration.md) to an {{agent}} policy. After completing that step, you can use the Osquery features that are available in your solution.
 
 % The following Osquery features are available from {{elastic-sec}}:
 

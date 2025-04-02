@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/security/current/connect-to-byo-llm.html
   - https://www.elastic.co/guide/en/serverless/current/connect-to-byo-llm.html
 applies_to:

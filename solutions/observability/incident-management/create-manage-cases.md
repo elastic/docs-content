@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/manage-cases.html
   - https://www.elastic.co/guide/en/serverless/current/observability-create-a-new-case.html
 ---

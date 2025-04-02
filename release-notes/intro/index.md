@@ -1,6 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elastic-stack/current/elastic-stack-breaking-changes.html
+  - https://www.elastic.co/guide/en/starting-with-the-elasticsearch-platform-and-its-solutions/current/new.html
 ---
 
 # Release notes [elastic-release-notes]

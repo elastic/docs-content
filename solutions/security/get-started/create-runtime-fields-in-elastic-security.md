@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/security/current/runtime-fields.html
   - https://www.elastic.co/guide/en/serverless/current/security-runtime-fields.html
 applies_to:
