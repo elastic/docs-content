@@ -264,12 +264,12 @@ toc:
               - file: observability/apps/upgrade.md
                 children:
                   - file: observability/apps/apm-agent-compatibility.md
-                  - file: observability/apps/upgrade-to-version-8x.md
+                  - file: observability/apps/upgrade-to-version-90.md
                     children:
-                      - file: observability/apps/upgrade-self-installation-of-apm-server-standalone-to-8x.md
-                      - file: observability/apps/upgrade-self-installation-of-apm-integration-to-8x.md
-                      - file: observability/apps/upgrade-elastic-cloud-apm-server-standalone-to-8.md
-                      - file: observability/apps/upgrade-elastic-cloud-with-apm-integration-to-80.md
+                      - file: observability/apps/upgrade-self-installation-of-apm-server-standalone-to-90.md
+                      - file: observability/apps/upgrade-self-installation-of-apm-integration-to-90.md
+                      - file: observability/apps/upgrade-elastic-cloud-apm-server-standalone-to-90.md
+                      - file: observability/apps/upgrade-elastic-cloud-with-apm-integration-to-90.md
                   - file: observability/apps/switch-to-elastic-apm-integration.md
                     children:
                       - file: observability/apps/switch-self-installation-to-apm-integration.md
