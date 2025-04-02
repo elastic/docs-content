@@ -6,15 +6,11 @@ applies_to:
   stack: all
 ---
 
-
-
 # Monitor a Fleet-managed APM Server [apm-monitor-apm-self-install]
-
 
 ::::{note}
 This guide assumes you are already ingesting APM data into the {{stack}}.
 ::::
-
 
 In 8.0 and later, you can use {{metricbeat}} to collect data about APM Server and ship it to a monitoring cluster. To collect and ship monitoring data:
 
@@ -24,11 +20,13 @@ In 8.0 and later, you can use {{metricbeat}} to collect data about APM Server an
 
 ## Configure {{agent}} to send monitoring data [apm-configure-ea-monitoring-data]
 
-::::{admonition}
-Before you can monitor APM, you must have monitoring data for the {{es}} production cluster. To learn how, see [Collect {{es}} monitoring data with {{metricbeat}}](../../../deploy-manage/monitor/stack-monitoring/collecting-monitoring-data-with-metricbeat.md). Alternatively, open the **{{stack-monitor-app}}** app in {{kib}} and follow the in-product guide.
-
+::::{note}
+Before you can monitor APM, you must have monitoring data for the {{es}} production cluster. To learn how, see [Collect {{es}} monitoring data with {{metricbeat}}](/deploy-manage/monitor/stack-monitoring/collecting-monitoring-data-with-metricbeat.md). Alternatively, open the **{{stack-monitor-app}}** app in {{kib}} and follow the in-product guide.
 ::::
 
+:::{warning}
+Use the Fleet UI to change the agent's HTTP monitoring endpoint using [Advanced agent monitoring settings](/reference/fleet/agent-policy.md#advanced-agent-monitoring-settings-advanced-agent-monitoring-settings).
+:::
 
 1. Enable monitoring of {{agent}} by adding the following settings to your `elastic-agent.yml` configuration file:
 
@@ -99,8 +97,6 @@ See the [{{agent}} command reference](/reference/fleet/agent-command-reference.m
       period: 10s
       hosts: ["http://localhost:6791"]
       basepath: "/processes/apm-server-default"
-      username: remote_monitoring_user
-      password: your_password
     ```
 
     1. Do not change the  `module` name or `xpack.enabled` boolean; these are required for stack monitoring. We recommend accepting the default `period` for now.
@@ -115,10 +111,6 @@ See the [{{agent}} command reference](/reference/fleet/agent-command-reference.m
         If you configured {{agent}} to use encrypted communications, you must access it via HTTPS. For example, use a `hosts` setting like `https://localhost:5066`.
 
     3. APM Server metrics are exposed at `/processes/apm-server-default`. Add this location as the `basepath`.
-    4. Set the `username` and `password` settings as required by your environment. If Elastic {{security-features}} are enabled, you must provide a username and password so that {{metricbeat}} can collect metrics successfully:
-
-        1. Create a user on the {{es}} cluster that has the `remote_monitoring_collector` [built-in role](../../../deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md). Alternatively, if it’s available in your environment, use the `remote_monitoring_user` [built-in user](../../../deploy-manage/users-roles/cluster-or-deployment-auth/built-in-users.md).
-        2. Add the `username` and `password` settings to the beat module configuration file.
 
 4. Optional: Disable the system module in the {{metricbeat}}.
 
@@ -162,10 +154,10 @@ See the [{{agent}} command reference](/reference/fleet/agent-command-reference.m
 
     If the {{es}} {{security-features}} are enabled on the monitoring cluster, you must provide a valid user ID and password so that {{metricbeat}} can send metrics successfully:
 
-    1. Create a user on the monitoring cluster that has the `remote_monitoring_agent` [built-in role](../../../deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md). Alternatively, if it’s available in your environment, use the `remote_monitoring_user` [built-in user](../../../deploy-manage/users-roles/cluster-or-deployment-auth/built-in-users.md).
+    1. Create a user on the monitoring cluster that has the `remote_monitoring_agent` [built-in role](/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md). Alternatively, if it’s available in your environment, use the `remote_monitoring_user` [built-in user](/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-users.md).
     2. Add the `username` and `password` settings to the {{es}} output information in the {{metricbeat}} configuration file.
 
     For more information about these configuration options, see [Configure the {{es}} output](beats://reference/metricbeat/elasticsearch-output.md).
 
 6. [Start {{metricbeat}}](beats://reference/metricbeat/metricbeat-starting.md) to begin collecting APM monitoring data.
-7. [View the monitoring data in {{kib}}](../../../deploy-manage/monitor/stack-monitoring/kibana-monitoring-data.md).
+7. [View the monitoring data in {{kib}}](/deploy-manage/monitor/stack-monitoring/kibana-monitoring-data.md).
