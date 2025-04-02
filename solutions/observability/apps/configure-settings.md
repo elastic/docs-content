@@ -2,7 +2,7 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/configure-uptime-settings.html
 applies_to:
-  stack: all
+  stack:
 ---
 
 # Configure settings [configure-uptime-settings]

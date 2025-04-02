@@ -3,7 +3,7 @@ navigation_title: "Analyze"
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/uptime-analyze.html
 applies_to:
-  stack: all
+  stack:
 ---
 
 

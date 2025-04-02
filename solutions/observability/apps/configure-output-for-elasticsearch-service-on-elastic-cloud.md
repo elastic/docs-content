@@ -3,10 +3,8 @@ navigation_title: "{{ech}}"
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-configure-cloud-id.html
 applies_to:
-  stack: all
+  stack:
 ---
-
-
 
 # Configure the output for {{ech}} [apm-configure-cloud-id]
 

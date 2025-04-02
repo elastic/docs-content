@@ -2,7 +2,7 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/analyze-monitors.html
 applies_to:
-  stack: all
+  stack:
 ---
 
 # Analyze monitors [analyze-monitors]
