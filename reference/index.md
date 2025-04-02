@@ -25,7 +25,7 @@ Explore reference content on Search UI and how you can develop fast, modern, and
 
 **Learn more in [Search](search/index.md)**
 
-## Elaticsearch and index management
+## Elasticsearch and index management
 
 Customize your Elastic Stack setup with our configuration reference guides. Explore JVM settings, client documentation, Elasticsearch privileges, and index lifecycle actions to find the detailed information you need to configure your environment to your specific needs.
 
