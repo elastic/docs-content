@@ -134,7 +134,7 @@ This functionality is in technical preview and may be changed or removed in a fu
 ::::
 
 
-The `securitySolution:enableVisualizationsInFlyout` setting allows you to access the event analyzer and Session View in the **Visualize** [tab](/solutions/security/detect-and-alert/view-detection-alert-details.md#expanded-visualizations-view) on the alert or event details flyout. This setting is turned off by default.
+The `securitySolution:enableVisualizationsInFlyout` setting allows you to access the event analyzer and Session View in the **Visualize** [tab](/solutions/security/detect-and-alert/view-detection-alert-details.md#expanded-visualizations-view) on the alert or event details flyout.
 
 
 ## Change the default search interval and data refresh time [_change_the_default_search_interval_and_data_refresh_time]

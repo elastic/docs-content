@@ -154,13 +154,6 @@ Click **Visualizations** to display the following previews:
 This functionality is in technical preview and may be changed or removed in a future release. Elastic will work to fix any issues, but features in technical preview are not subject to the support SLA of official GA features.
 ::::
 
-
-::::{admonition} Requirements
-To use the **Visualize** tab, you must turn on the `securitySolution:enableVisualizationsInFlyout` [advanced setting](/solutions/security/get-started/configure-advanced-settings.md#visualizations-in-flyout).
-
-::::
-
-
 The **Visualize** tab allows you to maintain the context of the Alerts table, while providing a more detailed view of alerts that you’re investigating in the event analyzer or Session View. To open the tab, click **Session viewer preview** or **Analyzer preview** from the right panel.
 
 :::{image} /solutions/images/security-visualize-tab-lp.png
