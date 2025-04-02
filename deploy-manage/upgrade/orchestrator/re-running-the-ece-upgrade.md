@@ -1,3 +1,9 @@
+---
+applies_to:
+  deployment:
+    ece:
+---
+    
 # Re-running the ECE upgrade [re-running-ece-upgrade]
 
 By default, re-running the `elastic-cloud-enterprise.sh upgrade` command resumes the previous ECE upgrade process. However, if your previous ECE upgrade attempt got stuck (for example, due to infrastructure problems, a host going offline, or similar) and re-attempting the upgrade still results in the upgrade process being blocked, run `elastic-cloud-enterprise.sh upgrade --force-upgrade` to ensure that any existing upgrade state gets cleared before starting the new ECE upgrade process.

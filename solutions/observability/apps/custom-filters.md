@@ -51,7 +51,7 @@ Say you decide to [capture HTTP request bodies](built-in-data-filters.md#apm-fil
 }
 ```
 
-To obfuscate the passwords stored in the request body, you can use a series of [ingest processors](elasticsearch://reference/ingestion-tools/enrich-processor/index.md).
+To obfuscate the passwords stored in the request body, you can use a series of [ingest processors](elasticsearch://reference/enrich-processor/index.md).
 
 
 ### Create a pipeline [_create_a_pipeline]
@@ -78,7 +78,7 @@ To start, create a pipeline with a simple description and an empty array of proc
 
 #### Add a JSON processor [_add_a_json_processor]
 
-Add your first processor to the processors array. Because the agent captures the request body as a string, use the [JSON processor](elasticsearch://reference/ingestion-tools/enrich-processor/json-processor.md) to convert the original field value into a structured JSON object. Save this JSON object in a new field:
+Add your first processor to the processors array. Because the agent captures the request body as a string, use the [JSON processor](elasticsearch://reference/enrich-processor/json-processor.md) to convert the original field value into a structured JSON object. Save this JSON object in a new field:
 
 ```json
 {
@@ -93,7 +93,7 @@ Add your first processor to the processors array. Because the agent captures the
 
 #### Add a set processor [_add_a_set_processor]
 
-If `body.original_json` is not `null`, i.e., it exists, we’ll redact the `password` with the [set processor](elasticsearch://reference/ingestion-tools/enrich-processor/set-processor.md), by setting the value of `body.original_json.password` to `"redacted"`:
+If `body.original_json` is not `null`, i.e., it exists, we’ll redact the `password` with the [set processor](elasticsearch://reference/enrich-processor/set-processor.md), by setting the value of `body.original_json.password` to `"redacted"`:
 
 ```json
 {
@@ -108,7 +108,7 @@ If `body.original_json` is not `null`, i.e., it exists, we’ll redact the `pass
 
 #### Add a convert processor [_add_a_convert_processor]
 
-Use the [convert processor](elasticsearch://reference/ingestion-tools/enrich-processor/convert-processor.md) to convert the JSON value of `body.original_json` to a string and set it as the `body.original` value:
+Use the [convert processor](elasticsearch://reference/enrich-processor/convert-processor.md) to convert the JSON value of `body.original_json` to a string and set it as the `body.original` value:
 
 ```json
 {
@@ -125,7 +125,7 @@ Use the [convert processor](elasticsearch://reference/ingestion-tools/enrich-pro
 
 #### Add a remove processor [_add_a_remove_processor]
 
-Finally, use the [remove processor](elasticsearch://reference/ingestion-tools/enrich-processor/remove-processor.md) to remove the `body.original_json` field:
+Finally, use the [remove processor](elasticsearch://reference/enrich-processor/remove-processor.md) to remove the `body.original_json` field:
 
 ```json
 {

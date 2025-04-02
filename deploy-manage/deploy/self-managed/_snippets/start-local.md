@@ -1,45 +1,38 @@
 ::::{warning}
 **DO NOT USE THESE INSTRUCTIONS FOR PRODUCTION DEPLOYMENTS**
 
-The instructions on this page are for **local development only**. Do not use this configuration for production deployments, because it is not secure. Refer to [](/get-started/deployment-options.md) for a list of production deployment options.
-
+The instructions on this page are for **local development only**. Do not use this configuration for production deployments, because it is not secure. Refer to [deployment options](/get-started/deployment-options.md) for a list of production deployment options.
 ::::
 
-Quickly set up {{es}} and {{kib}} in Docker for local development or testing, using the [`start-local` script](https://github.com/elastic/start-local?tab=readme-ov-file#-try-elasticsearch-and-kibana-locally).
+Quickly set up {{es}} and {{kib}} in Docker for local development or testing, using this one-liner in the command line.
 
-This setup comes with a one-month trial license that includes all Elastic features. After the trial period, the license reverts to **Free and open - Basic**. Refer to [Elastic subscriptions](https://www.elastic.co/subscriptions) for more information.
+:::{info}
+This setup comes with a one-month trial license that includes all Elastic features.
+:::
 
 ## Prerequisites [local-dev-prerequisites]
 
 * If you don’t have Docker installed, [download and install Docker Desktop](https://www.docker.com/products/docker-desktop) for your operating system.
 * If you’re using Microsoft Windows, then install [Windows Subsystem for Linux (WSL)](https://learn.microsoft.com/en-us/windows/wsl/install).
 
-## Run `start-local` script [local-dev-quick-start]
+## Step 1: Run `start-local` script [local-dev-quick-start]
 
-To set up {{es}} and {{kib}} locally, run the `start-local` script:
+To set up {{es}} and {{kib}} locally, run the `start-local` script in the command line:
 
 ```sh
 curl -fsSL https://elastic.co/start-local | sh
 ```
-
-This script creates an `elastic-start-local` folder containing configuration files and starts both {{es}} and {{kib}} using Docker.
 
 After running the script, you can access Elastic services at the following endpoints:
 
 * **{{es}}**: [http://localhost:9200](http://localhost:9200)
 * **{{kib}}**: [http://localhost:5601](http://localhost:5601)
 
-The script generates a random password for the `elastic` user, and an API key, stored in the `.env` file.
-
-::::{warning}
-This setup is for local testing only. HTTPS is disabled, and Basic authentication is used for {{es}}. For security, {{es}} and {{kib}} are accessible only through `localhost`.
-
-::::
+That's it! There's no step 2.
 
 ## Learn more [local-dev-additional-info]
 
 For more detailed information about the `start-local` setup, refer to the [README on GitHub](https://github.com/elastic/start-local). Learn about customizing the setup, logging, and more.
-
 
 ## Next steps [local-dev-next-steps]
 

@@ -18,7 +18,7 @@ To use entity risk scoring, your role must have the appropriate user role or pri
 
 ## Preview risky entities [_preview_risky_entities]
 
-You can preview risky entities before installing the latest risk engine. The preview shows the riskiest hosts and users found in the 1000 sampled entities during the time frame selected in the date picker.
+You can preview risky entities before installing the latest risk engine. The preview shows the riskiest hosts, users, and services found in the 1000 sampled entities during the time frame selected in the date picker.
 
 ::::{note}
 The preview is limited to two risk scores per {{kib}} instance or serverless project.
@@ -26,11 +26,6 @@ The preview is limited to two risk scores per {{kib}} instance or serverless pro
 
 
 To preview risky entities, find **Entity Risk Score** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-
-:::{image} /solutions/images/security-preview-risky-entities.png
-:alt: Preview of risky entities
-:screenshot:
-:::
 
 
 ## Turn on the latest risk engine [_turn_on_the_latest_risk_engine]

@@ -302,7 +302,7 @@ Adapt and change the suggested manifests and deployment strategy to your needs, 
 
     :::{tab-item} Production
 
-    ```yaml
+    ```yaml subs=true
     apiVersion: v1
     kind: Service
     metadata:
@@ -333,7 +333,7 @@ Adapt and change the suggested manifests and deployment strategy to your needs, 
           automountServiceAccountToken: false
           containers:
           - name: elastic-agent
-            image: docker.elastic.co/beats/elastic-agent:9.0.0-beta1
+            image: docker.elastic.co/beats/elastic-agent:{{stack-version}}
             env:
               - name: FLEET_SERVER_ENABLE
                 value: "true"
@@ -388,7 +388,7 @@ Adapt and change the suggested manifests and deployment strategy to your needs, 
 
     :::{tab-item} Quick start
 
-    ```yaml
+    ```yaml subs=true
     apiVersion: v1
     kind: Service
     metadata:
@@ -419,7 +419,7 @@ Adapt and change the suggested manifests and deployment strategy to your needs, 
           automountServiceAccountToken: false
           containers:
           - name: elastic-agent
-            image: docker.elastic.co/beats/elastic-agent:9.0.0-beta1
+            image: docker.elastic.co/beats/elastic-agent:{{stack-version}}
             env:
               - name: FLEET_SERVER_ENABLE
                 value: "true"
