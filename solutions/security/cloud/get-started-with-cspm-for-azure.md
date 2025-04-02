@@ -109,7 +109,7 @@ This method involves creating an Azure VM (or using an existing one), giving it 
 After assigning the role:
 
 1. Return to the **Add CSPM** page in {{kib}}.
-2. Under **Configure integration**, select **Azure***. Under ***Setup access**, select **Manual**.
+2. Under **Configure integration**, select **Azure**. Under **Setup access**, select **Manual**.
 3. Under **Where to add this integration**, select **New hosts**.
 4. Click **Save and continue**, then follow the instructions to install {{agent}} on your Azure VM.
 
