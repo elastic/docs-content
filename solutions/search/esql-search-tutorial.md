@@ -1,4 +1,7 @@
 ---
+applies_to:
+  stack: preview
+  serverless: preview
 navigation_title: "Search and filter with ES|QL"
 ---
 
