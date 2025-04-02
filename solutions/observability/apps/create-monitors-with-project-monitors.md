@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/synthetics-get-started-project.html
   - https://www.elastic.co/guide/en/serverless/current/observability-synthetics-get-started-project.html
 

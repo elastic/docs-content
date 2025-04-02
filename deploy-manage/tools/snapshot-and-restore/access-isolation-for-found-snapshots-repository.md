@@ -1,9 +1,9 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-snapshot-repository-migration.html
 applies_to:
   deployment:
-    ess: 
+    ess:
 ---
 
 # Access isolation for the found-snapshots repository [ec-snapshot-repository-migration]

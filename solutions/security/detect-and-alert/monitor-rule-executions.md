@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/security/current/alerts-ui-monitor.html
   - https://www.elastic.co/guide/en/serverless/current/security-alerts-ui-monitor.html
 applies_to:
@@ -37,17 +37,17 @@ To sort the rules list, click any column header. To sort in descending order, cl
 
 For detailed information on a rule, the alerts it generated, and associated errors, click on its name in the table. This also allows you to perform the same actions that are available on the [**Installed Rules** tab](manage-detection-rules.md), such as modifying or deleting rules, activating or deactivating rules, exporting or importing rules, and duplicating prebuilt rules.
 
-For information about rule execution gaps (which are periods of time when a rule didn't run), use the panel above the table. The time filter on the left allows you to select a time range for viewing gap data. The **Total rules with gaps:** field tells you how many rules have unfilled or partially filled gaps within the selected time range. The **Only rules with gaps** filter on the right lets you only display rules with unfilled or partially filled gaps. 
+For information about rule execution gaps (which are periods of time when a rule didn't run), use the panel above the table. The time filter on the left allows you to select a time range for viewing gap data. The **Total rules with gaps:** field tells you how many rules have unfilled or partially filled gaps within the selected time range. The **Only rules with gaps** filter on the right lets you only display rules with unfilled or partially filled gaps.
 
 Within the table, the **Last Gap (if any)** column conveys how long the most recent gap for a rule lasted. The **Unfilled gaps duration** column shows whether a rule still has gaps and provides a total sum of the remaining unfilled or partially filled gaps. The total sum can change based on the time range that you select in the panel above the table. If a rule has no gaps, the columns display a dash (`––`).
 
-::::{tip} 
+::::{tip}
 For a detailed view of a rule's gaps, go to the **Execution results** tab and check the [Gaps table](/solutions/security/detect-and-alert/monitor-rule-executions.md#gaps-table).
 ::::
 
 ## Execution results tab [rule-execution-logs]
 
-From the **Execution results** tab, you can access the rule’s execution log, monitor and address gaps in a rule's execution schedule, and check manual runs for the rule. To find the tab, click the rule's name to open its details, then scroll down. 
+From the **Execution results** tab, you can access the rule’s execution log, monitor and address gaps in a rule's execution schedule, and check manual runs for the rule. To find the tab, click the rule's name to open its details, then scroll down.
 
 ### Execution log table [execution-log-table]
 
@@ -91,7 +91,7 @@ Gaps in rule executions are periods of time where a rule didn’t run. They can 
 Refer to the [Troubleshoot gaps](../../../troubleshoot/security/detection-rules.md#troubleshoot-gaps) section for strategies for avoiding gaps.
 ::::
 
-Use the information in the Gaps table to assess the scope and severity of rule execution gaps. To control what's shown in the table, you can filter the table by gap status, select a time range for viewing gap data, and sort multiple columns. 
+Use the information in the Gaps table to assess the scope and severity of rule execution gaps. To control what's shown in the table, you can filter the table by gap status, select a time range for viewing gap data, and sort multiple columns.
 
 :::{image} /solutions/images/security-gaps-table.png
 :alt: Gaps table on the rule execution results tab
@@ -103,20 +103,20 @@ The Gaps table has the following columns:
 * **Status**: The current state of the gap. It can be `Filled`, `Partially filled`, or `Unfilled`.
 * **Detected at**: The date and time the gap was first discovered.
 * **Manual fill tasks**: The status of the manual run that’s filling the gap. For more details about the manual run, refer to its entry in the [Manual runs table](/solutions/security/detect-and-alert/monitor-rule-executions.md#manual-runs-table).
-* **Event time covered**: How much progress the manual run has made filling the gap. 
+* **Event time covered**: How much progress the manual run has made filling the gap.
 
-    ::::{note} 
+    ::::{note}
     If you stop a manual run that's hasn't finished filling a gap, the gap’s status will be set to `Partially filled`. To fill the remaining gap, you can select the **Fill remaining gap** action or [manually run](/solutions/security/detect-and-alert/manage-detection-rules.md#manually-run-rules) the rule over the gap's time frame.
     ::::
 
-* **Range**: When the gap started and ended. 
+* **Range**: When the gap started and ended.
 * **Total gap duration**: How long the gap lasted.
 * **Actions**: The actions that you can take for the gap. They can be **Fill gap** (starts a manual run to fill the gap) or **Fill remaining gap** (starts a manual run that fills the leftover portion of the gap).
 
 
 ### Manual runs table [manual-runs-table]
 
-You can [manually run](/solutions/security/detect-and-alert/manage-detection-rules.md#manually-run-rules) enabled rules for a specified period of time to deliberately test them, provide additional rule coverage, or fill gaps in rule executions. Each manual run can produce multiple rule executions, depending on the time range of the run and the rule's execution schedule. 
+You can [manually run](/solutions/security/detect-and-alert/manage-detection-rules.md#manually-run-rules) enabled rules for a specified period of time to deliberately test them, provide additional rule coverage, or fill gaps in rule executions. Each manual run can produce multiple rule executions, depending on the time range of the run and the rule's execution schedule.
 
 ::::{note}
 Manual runs are executed with low priority and limited concurrency, meaning they might take longer to complete. This can be especially apparent for rules requiring multiple executions.
@@ -127,13 +127,13 @@ The Manual runs table tracks manual rule executions and provides important detai
 * The total number of rule executions that the manual run will produce and how many are failing, pending, running, and completed.
 * When the manual run started and the time range that it will cover.
 
-    ::::{note} 
+    ::::{note}
     To stop an active run, go to the appropriate row in the table and click **Stop run** in the **Actions** column. Completed rule executions for each manual run are logged in the Execution log table.
     ::::
 
 * The status of each manual run:
 
-    * `Pending`: The rule is not yet running. 
+    * `Pending`: The rule is not yet running.
     * `Running`: The rule is executing during the time range you specified. Some rule types, such as indicator match rules, can take longer to run.
     * `Error`: The rule's configuration is preventing it from running correctly. For example, the rule's conditions cannot be validated.
 

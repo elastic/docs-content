@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/ciphers.html
+applies_to:
+  deployment:
+    self: all
 ---
 
 # Enabling cipher suites for stronger encryption [ciphers]

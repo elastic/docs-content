@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-latency-threshold-rule.html
   - https://www.elastic.co/guide/en/serverless/current/observability-create-latency-threshold-alert-rule.html
 

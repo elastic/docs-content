@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/security/current/behavioral-detection-use-cases.html
   - https://www.elastic.co/guide/en/serverless/current/security-behavioral-detection-use-cases.html
 applies_to:
