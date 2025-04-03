@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/monitor-elasticsearch-cluster.html
   - https://www.elastic.co/guide/en/cloud/current/ec-monitoring.html
 applies_to:
@@ -56,7 +56,7 @@ deployment:
   ess:
 ```
 
-{{ece}} and {{ech}} provide out of the box tools for monitoring the health of your deployment and resolving health issues when they arise: 
+{{ece}} and {{ech}} provide out of the box tools for monitoring the health of your deployment and resolving health issues when they arise:
 
 * [Cluster health information](/deploy-manage/monitor/cloud-health-perf.md#ec-es-cluster-health), including [health warnings](/deploy-manage/monitor/cloud-health-perf.md#ec-es-health-warnings)
 * A [JVM memory pressure indicator](/deploy-manage/monitor/ec-memory-pressure.md)

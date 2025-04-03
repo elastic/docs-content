@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-getting-started-python.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-getting-started-python.html
 applies_to:

@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/security/current/advanced-settings.html
   - https://www.elastic.co/guide/en/serverless/current/security-advanced-settings.html
 applies_to:

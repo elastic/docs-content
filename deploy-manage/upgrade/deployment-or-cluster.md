@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/upgrade.html
   - https://www.elastic.co/guide/en/elastic-stack/current/upgrading-elastic-stack.html
   - https://www.elastic.co/guide/en/elastic-stack/current/upgrading-elasticsearch.html
@@ -17,7 +17,7 @@ applies_to:
     eck:
     ess:
     ece:
-    self:  
+    self:
 ---
 
 # Upgrade your deployment or cluster [upgrade-deployment-cluster]

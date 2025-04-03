@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/index-lifecycle-management.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/overview-index-lifecycle-management.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/ilm-concepts.html

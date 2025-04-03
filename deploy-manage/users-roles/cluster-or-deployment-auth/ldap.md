@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/ldap-realm.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-securing-clusters-ldap.html
 applies_to:

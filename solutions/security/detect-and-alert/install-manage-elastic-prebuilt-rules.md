@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/security/current/prebuilt-rules-management.html
   - https://www.elastic.co/guide/en/serverless/current/security-prebuilt-rules-management.html
 
@@ -23,7 +23,7 @@ Follow these guidelines to start using the {{security-app}}'s [prebuilt rules](s
 ::::{note}
 * Most prebuilt rules don’t start running by default. You can use the **Install and enable** option to start running rules as you install them, or first install the rules, then enable them manually. After installation, only a few prebuilt rules will be enabled by default, such as the Endpoint Security rule.
 
-* Without an [Enterprise subscription](https://www.elastic.co/pricing) subscription on {{stack}} or a [Complete project tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md) subscription on {{serverless-short}}, you can't modify most settings on Elastic prebuilt rules. You must first duplicate them, then make your changes to the duplicated rules. Refer to [Select and duplicate all prebuilt rules](/solutions/security/detect-and-alert/install-manage-elastic-prebuilt-rules.md#select-all-prebuilt-rules) to learn more. 
+* Without an [Enterprise subscription](https://www.elastic.co/pricing) subscription on {{stack}} or a [Complete project tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md) subscription on {{serverless-short}}, you can't modify most settings on Elastic prebuilt rules. You must first duplicate them, then make your changes to the duplicated rules. Refer to [Select and duplicate all prebuilt rules](/solutions/security/detect-and-alert/install-manage-elastic-prebuilt-rules.md#select-all-prebuilt-rules) to learn more.
 * On {{stack}}, automatic updates of Elastic prebuilt rules are supported for the current {{elastic-sec}} version and the latest three previous minor releases. For example, if you’re on {{elastic-sec}} 9.0, you’ll be able to use the Rules UI to update your prebuilt rules until {{elastic-sec}} 9.4 is released. After that point, you can still manually download and install updated prebuilt rules, but you must upgrade to the latest {{elastic-sec}} version to receive automatic updates.
 
 ::::
@@ -104,20 +104,20 @@ Without an [Enterprise subscription](https://www.elastic.co/pricing) subscriptio
 
 1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. In the **Rules** table, select the **Elastic rules** filter.
-3. Select one or more rules, or click **Select all *x* rules** above the Rules table. 
+3. Select one or more rules, or click **Select all *x* rules** above the Rules table.
 4. Click **Bulk actions** → **Duplicate**.
 5. (Optional) Select whether to duplicate the rules' exceptions, then click **Duplicate**.
 
-You can then modify the duplicated rules and, if required, delete the prebuilt ones. 
+You can then modify the duplicated rules and, if required, delete the prebuilt ones.
 
 
 ## Update Elastic prebuilt rules [update-prebuilt-rules]
 
 ::::{important}
 
-The following steps are only applicable if you have a [Platinum](https://www.elastic.co/pricing) subscription  or lower on  {{stack}} or an [Essentials project tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md) subscription on {{serverless-short}}. 
+The following steps are only applicable if you have a [Platinum](https://www.elastic.co/pricing) subscription  or lower on  {{stack}} or an [Essentials project tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md) subscription on {{serverless-short}}.
 
-If you have an Enterprise subscription on {{stack}} or a Complete project tier subscription on {{serverless-short}}, follow the guidelines in [Update modified and unmodified Elastic prebuilt rules](/solutions/security/detect-and-alert/prebuilt-rules-update-modified-unmodified.md) instead. 
+If you have an Enterprise subscription on {{stack}} or a Complete project tier subscription on {{serverless-short}}, follow the guidelines in [Update modified and unmodified Elastic prebuilt rules](/solutions/security/detect-and-alert/prebuilt-rules-update-modified-unmodified.md) instead.
 ::::
 
 Elastic regularly updates prebuilt rules to optimize their performance and ensure they detect the latest threats and techniques. When updated versions are available for your installed prebuilt rules, the **Rule Updates** tab appears on the **Rules** page, allowing you to update your installed rules with the latest versions.

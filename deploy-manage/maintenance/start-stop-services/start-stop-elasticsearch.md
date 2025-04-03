@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/starting-elasticsearch.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/stopping-elasticsearch.html
 applies_to:
@@ -89,15 +89,15 @@ During the life of the {{es}} virtual machine, certain fatal errors could arise 
 
 When {{es}} detects that the virtual machine has encountered such a fatal error {{es}} will attempt to log the error and then will halt the virtual machine. When {{es}} initiates such a shutdown, it does not go through an orderly shutdown as described above. The {{es}} process will also return with a special status code indicating the nature of the error.
 
-| Status code | Error | 
+| Status code | Error |
 | --- | --- |
-| 1   | Unknown fatal error | 
-| 78  | Bootstrap check failure | 
+| 1   | Unknown fatal error |
+| 78  | Bootstrap check failure |
 | 124 | Serious I/O error |
 | 125 | Unknown virtual machine error |
-| 126 | Stack overflow error |  
-| 127 | Out of memory error | 
-| 128 | JVM internal error | 
+| 126 | Stack overflow error |
+| 127 | Out of memory error |
+| 128 | JVM internal error |
 | 134 | Segmentation fault |
 | 137 | Slain by kernel oom-killer |
 | 143 | User or kernel SIGTERM |

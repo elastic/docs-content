@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/xpack-rollup.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/rollup-overview.html
 ---

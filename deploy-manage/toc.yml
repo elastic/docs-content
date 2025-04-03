@@ -456,18 +456,28 @@ toc:
           - file: security/secure-your-eck-installation.md
       - file: security/secure-your-cluster-deployment.md
         children:
+          - file: security/self-setup.md
+            children:
+              - file: security/self-auto-setup.md
+              - file: security/set-up-minimal-security.md
+              - file: security/set-up-basic-security.md
+              - file: security/set-up-basic-security-plus-https.md
+              - file: security/using-kibana-with-security.md
           - file: security/secure-cluster-communications.md
             children:
-              - file: security/secure-http-communications.md
-              - file: security/k8s-transport-settings.md
-              - file: security/security-certificates-keys.md
+              - file: security/self-tls.md
                 children:
                   - file: security/updating-certificates.md
                     children:
                       - file: security/same-ca.md
                       - file: security/different-ca.md
-              - file: security/supported-ssltls-versions-by-jdk-version.md
-              - file: security/enabling-cipher-suites-for-stronger-encryption.md
+                  - file: security/kibana-es-mutual-tls.md
+                  - file: security/supported-ssltls-versions-by-jdk-version.md
+                  - file: security/enabling-cipher-suites-for-stronger-encryption.md
+              - file: security/eck-tls.md
+                children:
+                  - file: security/k8s-https-settings.md
+                  - file: security/k8s-transport-settings.md
           - file: security/traffic-filtering.md
             children:
               - file: security/ip-traffic-filtering.md
@@ -501,13 +511,6 @@ toc:
                   - file: security/logging-configuration/logfile-audit-output.md
               - file: security/logging-configuration/auditing-search-queries.md
               - file: security/logging-configuration/correlating-kibana-elasticsearch-audit-logs.md
-          - file: security/manually-configure-security-in-self-managed-cluster.md
-            children:
-              - file: security/set-up-minimal-security.md
-              - file: security/set-up-basic-security.md
-              - file: security/set-up-basic-security-plus-https.md
-              - file: security/using-kibana-with-security.md
-              - file: security/install-stack-demo-secure.md
           - file: security/fips-140-2.md
       - file: security/secure-clients-integrations.md
       - file: security/httprest-clients-security.md
