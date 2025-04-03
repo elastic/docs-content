@@ -13,7 +13,7 @@ This page provides instructions on how to upgrade the ECE operator.
 
 To learn how to upgrade {{stack}} applications like {{es}} or {{kib}}, refer to [Upgrade the Elastic Stack version](../deployment-or-cluster.md).
 
-Periodically, you might need to upgrade an Elastic Cloud Enterprise installation as new versions with additional features become available. The upgrade process updates all hosts that are part of an Elastic Cloud Enterprise installation to the latest version of ECE, with little or no downtime for managed deployments. To upgrade your deployment to {{stack}} 9.x, the minimum required ECE version is 3.0.0.
+Periodically, you might need to upgrade an Elastic Cloud Enterprise installation as new versions with additional features become available. The upgrade process updates all hosts that are part of an Elastic Cloud Enterprise installation to the latest version of ECE, with little or no downtime for managed deployments. To upgrade your deployment to {{stack}} 9.x, the minimum required ECE version is 4.0.0.
 
 Before initiating the ECE upgrade process, review the [Support matrix](https://www.elastic.co/support/matrix#elastic-cloud-enterprise) to ensure the operating system (OS), Docker, or Podman versions you're running are compatible with the ECE version you’re upgrading to. We recommend that Docker, Podman, and the operating system are at the target version before starting the ECE upgrade.
 
