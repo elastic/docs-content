@@ -1,4 +1,4 @@
-:::{include} ../_snippets/find-manage-deployment-ech-and-ece.md
+:::{include} /deploy-manage/_snippets/find-manage-deployment-ech-and-ece.md
 :::
 
 3. Under the deployment's name in the navigation menu, select **Logs and metrics**.
