@@ -1,10 +1,10 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-gcs-snapshotting.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-gcs-snapshotting.html
 applies_to:
   deployment:
-    ess: 
+    ess:
 ---
 
 # Configure a snapshot repository using GCS [ec-gcs-snapshotting]

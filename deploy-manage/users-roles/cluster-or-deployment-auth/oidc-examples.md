@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-securing-clusters-oidc-op.html
 navigation_title: With Azure, Google, or Okta
 applies_to:
@@ -38,9 +38,9 @@ For more information about OpenID connect in Azure, refer to [Azure OAuth 2.0 an
 
         2. Enter a **Name** for your application, for example `ec-oauth2`.
         3. Select a **Supported Account Type** according to your preferences.
-        4. Set the **Redirect URI**. 
-            
-            It will typically be `<KIBANA_ENDPOINT_URL>/api/security/oidc/callback`, where `<KIBANA_ENDPOINT_URL>` is the base URL for your {{kib}} instance. 
+        4. Set the **Redirect URI**.
+
+            It will typically be `<KIBANA_ENDPOINT_URL>/api/security/oidc/callback`, where `<KIBANA_ENDPOINT_URL>` is the base URL for your {{kib}} instance.
 
             If you're using {{ech}}, then set this value to `<KIBANA_ENDPOINT_URL>/api/security/oidc/callback`.
         5. Select **Register**.
@@ -173,8 +173,8 @@ For more information about OpenID connect in Google, refer to [Google OpenID Con
         2. For **Application Type** choose `Web application`.
         3. Choose a **Name** for your OAuth 2 client, for example `ec-oauth2`.
         4. Add an **Authorized redirect URI**.
-    
-            It will typically be `<KIBANA_ENDPOINT_URL>/api/security/oidc/callback`, where `<KIBANA_ENDPOINT_URL>` is the base URL for your {{kib}} instance. 
+
+            It will typically be `<KIBANA_ENDPOINT_URL>/api/security/oidc/callback`, where `<KIBANA_ENDPOINT_URL>` is the base URL for your {{kib}} instance.
 
             If you're using {{ech}}, then set this value to `<KIBANA_ENDPOINT_URL>/api/security/oidc/callback`.
         5. Select **Create** and copy your client ID and your client secret for later use.
@@ -213,9 +213,9 @@ For more information about OpenID connect in Google, refer to [Google OpenID Con
     Where:
 
     * `YOUR_CLIENT_ID` is your Client ID.
-    * `<KIBANA_ENDPOINT_URL>/api/security/oidc/callback` is your Kibana endpoint. 
-  
-        It will typically be `<KIBANA_ENDPOINT_URL>/api/security/oidc/callback`, where `<KIBANA_ENDPOINT_URL>` is the base URL for your {{kib}} instance. 
+    * `<KIBANA_ENDPOINT_URL>/api/security/oidc/callback` is your Kibana endpoint.
+
+        It will typically be `<KIBANA_ENDPOINT_URL>/api/security/oidc/callback`, where `<KIBANA_ENDPOINT_URL>` is the base URL for your {{kib}} instance.
 
         If you're using {{ech}}, then set this value to `<KIBANA_ENDPOINT_URL>/api/security/oidc/callback`.
     * `YOUR_DOMAIN` and `TLD` in the `claim_patterns.principal` regular expression are your organization email domain and top level domain.
@@ -286,9 +286,9 @@ For more information about OpenID connect in Okta, refer to [Okta OAuth 2.0 docu
 
         2. For the **Platform** page settings, select **Web** then **Next**.
         3. In the **Application settings** choose a **Name** for your application, for example `Kibana OIDC`.
-        4. Set the **Base URI** to `KIBANA_ENDPOINT_URL`. 
-        5. Set the **Login redirect URI**.  
-            
+        4. Set the **Base URI** to `KIBANA_ENDPOINT_URL`.
+        5. Set the **Login redirect URI**.
+
             It will typically be `<KIBANA_ENDPOINT_URL>/api/security/oidc/callback`.
 
             If you're using {{ech}}, then set this value to `<KIBANA_ENDPOINT_URL>/api/security/oidc/callback`.

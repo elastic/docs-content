@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/synthetics-monitor-use.html
   - https://www.elastic.co/guide/en/serverless/current/observability-synthetics-monitor-use.html
 

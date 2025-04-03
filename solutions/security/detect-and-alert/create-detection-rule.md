@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/security/current/rules-ui-create.html
   - https://www.elastic.co/guide/en/serverless/current/security-rules-create.html
 applies_to:
@@ -85,9 +85,9 @@ Additional configuration is required for detection rules using cross-cluster sea
 ## Create a machine learning rule [create-ml-rule]
 
 ::::{admonition} Requirements
-To create or edit {{ml}} rules, you need: 
+To create or edit {{ml}} rules, you need:
 * The appropriate [{{stack}} subscription](https://www.elastic.co/pricing) or [{{serverless-short}} project tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md).
-* The [`machine_learning_admin`](/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md) in {{stack}} or the appropriate [user role](/deploy-manage/users-roles/cloud-organization/user-roles.md) in {{serverless-short}}. 
+* The [`machine_learning_admin`](/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md) in {{stack}} or the appropriate [user role](/deploy-manage/users-roles/cloud-organization/user-roles.md) in {{serverless-short}}.
 * The selected {{ml}} job to be running for the rule to function correctly.
 
 ::::
@@ -829,11 +829,11 @@ To interact with the rule preview:
 ### View your rule’s {{es}} queries (optional) [view-rule-es-queries]
 
 ::::{note}
-This option is only offered for {{esql}} and event correlation rules.
+This option is offered for all rule types except indicator match rules. 
 ::::
 
 
-When previewing a rule, you can also learn about its {{es}} queries, which are submitted when the rule runs. This information can help you identify and troubleshoot potential rule issues. You can also use it to confirm that your rule is retrieving the expected data.
+When previewing a rule, you can also examine the {{es}} queries that are submitted when the rule runs. Use this information to identify and troubleshoot potential rule issues and confirm that your rule is retrieving the expected data.
 
 To learn more about your rule’s {{es}} queries, preview its results and do the following:
 
@@ -843,7 +843,7 @@ To learn more about your rule’s {{es}} queries, preview its results and do the
 
     * When the rule execution started, and how long it took to complete
     * A brief explanation of what the {{es}} queries do
-    * The actual {{es}} queries that the rule submits to indices containing events that are used during the rule execution
+    * The first two {{es}} queries that the rule submits to indices containing events that are used during the rule execution
 
         ::::{tip}
         Run the queries in [Console](/explore-analyze/query-filter/tools/console.md) to determine if your rule is retrieving the expected data. For example, to test your rule’s exceptions, run the rule’s {{es}} queries, which will also contain exceptions added to the rule. If your rule’s exceptions are working as intended, the query will not return events that should be ignored.

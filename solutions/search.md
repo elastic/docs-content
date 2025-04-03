@@ -2,9 +2,10 @@
 applies:
   stack:
   serverless:
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/search-with-elasticsearch.html
   - https://www.elastic.co/guide/en/serverless/current/what-is-elasticsearch-serverless.html
+  - https://www.elastic.co/guide/en/kibana/current/search-space.html
 ---
 
 # Search

@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/security/current/value-lists-exceptions.html
   - https://www.elastic.co/guide/en/serverless/current/security-value-lists-exceptions.html
 applies_to:

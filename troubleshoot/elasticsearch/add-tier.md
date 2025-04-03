@@ -1,4 +1,11 @@
 ---
+applies_to:
+  stack: 
+  deployment:
+    eck: 
+    ess: 
+    ece: 
+    self: 
 navigation_title: Preferred data tier
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/add-tier.html

@@ -1,4 +1,11 @@
 ---
+applies_to:
+  stack: 
+  deployment:
+    eck: 
+    ess: 
+    ece: 
+    self: 
 navigation_title: Decrease disk usage
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/decrease-disk-usage-data-node.html

@@ -15,7 +15,7 @@ For {{ech}} deployments, instead of the default, Elastic-managed encryption, you
 
 
 :::{note}
-There is no encryption at rest out of the box for deployments orchestrated using [{{ece}}](secure-your-elastic-cloud-enterprise-installation.md) and [{{eck}}](secure-your-eck-installation.md), or for [self-managed clusters](manually-configure-security-in-self-managed-cluster.md). You must instead configure disk-level encryption on your hosts. 
+There is no encryption at rest out of the box for deployments orchestrated using {{ece}} and {{eck}}secure-your-eck-installation.md, or for self-managed clusters. You must instead configure disk-level encryption on your hosts. 
 
 Configuring dm-crypt or similar technologies is outside the scope of the Elastic documentation, and issues related to disk encryption are outside the scope of support.
 :::

@@ -9,7 +9,7 @@ applies_to:
 
 # Secure your cluster or deployment
 
-It's important to protect your {{es}} cluster and the data it contains. Implementing a defense in depth strategy provides multiple layers of security to help safeguard your system.
+It's important to protect your {{es}} cluster and the data it contains. Implementing an in-depth defense strategy provides multiple layers of security to help safeguard your system.
 
 :::{include} /deploy-manage/security/_snippets/complete-security.md
 :::
@@ -25,6 +25,11 @@ You must secure [other {{stack}} components](/deploy-manage/security/secure-clie
 
 You can configure the following aspects of your Elastic cluster or deployment to maintain and enhance security:
 
+## Initial security setup [manually-configure-security]
+
+:::{include} /deploy-manage/security/_snippets/enable-security.md
+:::
+ 
 ## Communication and network security
 
 :::{include} /deploy-manage/security/_snippets/cluster-communication-network.md
@@ -44,10 +49,6 @@ You can configure the following aspects of your Elastic cluster or deployment to
 
 :::{include} /deploy-manage/security/_snippets/audit-logging.md
 :::
-
-## Configure security in a self-managed cluster
-
-Since {{es}} 8.0, security is enabled and configured by default. However, security auto configuration [might be skipped](/deploy-manage/security/manually-configure-security-in-self-managed-cluster.md#stack-skip-auto-configuration) in certain scenarios. In these cases, you can [manually configure security](/deploy-manage/security/manually-configure-security-in-self-managed-cluster.md).
 
 ## FIPS 140-2 compliant mode
 ```{applies_to}

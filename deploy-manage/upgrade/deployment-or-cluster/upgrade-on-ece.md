@@ -1,12 +1,16 @@
 ---
 navigation_title: "Upgrade on {{ece}}"
+applies_to:
+  stack:
+  deployment:
+   ece:
 ---
 
 # Upgrade your deployment on {{ece}} (ECE)
 
-Similar to {{ech}}, a single click in the {{ecloud}} console can upgrade a deployment running on ECE to a newer version, add more processing capacity, change plugins, and enable or disable high availability, all at the same time. During the upgrade process, {{es}}, {{kib}}, and all of your deployment components are upgraded simultaneously.
+A single click in the {{ecloud}} console can upgrade a deployment running on ECE to a newer version, add more processing capacity, change plugins, and enable or disable high availability, all at the same time. During the upgrade process, {{es}}, {{kib}}, Elastic APM, and all of your deployment components are upgraded simultaneously.
 
-Once you're prepared to upgrade, do the following: 
+Once you're [prepared to upgrade](/deploy-manage/upgrade/prepare-to-upgrade.md), do the following: 
 
 % Note: Add a link once confirmed where prepare to upgrade will reside in TOC. 
 

@@ -4,7 +4,7 @@ applies_to:
     ess: ga
   serverless: ga
 navigation_title: Sign up
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-getting-started-trial.html
   - https://www.elastic.co/guide/en/serverless/current/general-sign-up-trial.html
   - https://www.elastic.co/guide/en/cloud/current/ec-getting-started-existing-email.html
