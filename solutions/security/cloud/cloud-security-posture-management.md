@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/security/current/cspm.html
   - https://www.elastic.co/guide/en/serverless/current/security-cspm.html
 applies_to:
@@ -22,7 +22,7 @@ This feature currently supports agentless and agent-based deployments on Amazon 
 
 ::::
 
-## How CSPM works [cspm-how-it-works] 
+## How CSPM works [cspm-how-it-works]
 
 Using the read-only credentials you will provide during the setup process, it will evaluate the configuration of resources in your environment every 24 hours. After each evaluation, the integration sends findings to Elastic. A high-level summary of the findings appears on the [Cloud Security Posture dashboard](/solutions/security/dashboards/cloud-security-posture-dashboard.md), and detailed findings appear on the [Findings page](/solutions/security/cloud/findings-page-2.md).
 

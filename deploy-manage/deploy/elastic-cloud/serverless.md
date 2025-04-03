@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/index.html
   - https://www.elastic.co/guide/en/serverless/current/intro.html
   - https://www.elastic.co/guide/en/serverless/current/general-serverless-status.html
@@ -49,8 +49,8 @@ Afterwards, you can:
 
 **Pay per usage:** Each serverless project type includes product-specific and usage-based pricing.
 
-**Data and performance control**. Control your project data and query performance against your project data. 
-  * **Data:** Choose the data you want to ingest and the method to ingest it. By default, data is stored indefinitely in your project, and you define the retention settings for your data streams. 
+**Data and performance control**. Control your project data and query performance against your project data.
+  * **Data:** Choose the data you want to ingest and the method to ingest it. By default, data is stored indefinitely in your project, and you define the retention settings for your data streams.
   * **Performance:** For granular control over costs and query performance against your project data, serverless projects come with a set of predefined settings you can edit.
 
 ## Monitor serverless status [general-serverless-status]

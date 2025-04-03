@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/security/current/automatic-import.html
   - https://www.elastic.co/guide/en/serverless/current/security-automatic-import.html
 applies_to:
@@ -21,7 +21,7 @@ Click [here](https://elastic.navattic.com/automatic-import) to access an interac
 
 ::::{admonition} Requirements
 
-* A working [LLM connector](/solutions/security/ai/set-up-connectors-for-large-language-models-llm.md). 
+* A working [LLM connector](/solutions/security/ai/set-up-connectors-for-large-language-models-llm.md).
 * {{stack}} users: An [Enterprise](https://www.elastic.co/pricing) subscription.
 * {{serverless-short}} users: a [Security Analytics Complete subscription](/deploy-manage/deploy/elastic-cloud/project-settings.md).
 * A sample of the data you want to import.
@@ -29,7 +29,7 @@ Click [here](https://elastic.navattic.com/automatic-import) to access an interac
 ::::
 
 ::::{admonition} Notes on sample data
-To use Automatic Import, you must provide a sample of the data you wish to import. An LLM will process that sample and automatically create an integration suitable for processing the data represented by the sample. **Any structured or unstructured format is acceptable, including but not limited to JSON, NDJSON, CSV, Syslog.** 
+To use Automatic Import, you must provide a sample of the data you wish to import. An LLM will process that sample and automatically create an integration suitable for processing the data represented by the sample. **Any structured or unstructured format is acceptable, including but not limited to JSON, NDJSON, CSV, Syslog.**
 
 * You can upload a sample of arbitrary size. The LLM will detect its format and select up to 100 documents for detailed analysis.
 * The more variety in your sample, the more accurate the pipeline will be. For best results, include a wide range of unique log entries in your sample instead of repeating similar logs.

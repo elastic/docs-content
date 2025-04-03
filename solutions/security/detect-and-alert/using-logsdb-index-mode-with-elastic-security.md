@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/security/current/detections-logsdb-index-mode-impact.html
   - https://www.elastic.co/guide/en/serverless/current/detections-logsdb-index-mode-impact.html
 applies_to:
@@ -23,7 +23,7 @@ When the `_source` is reconstructed, [modifications](elasticsearch://reference/e
 
 Continue reading to find out how this affects specific {{elastic-sec}} components.
 
-::::{note} 
+::::{note}
 The following statement applies to {{stack}} users only:
 
 Logsdb is not recommended for {{elastic-sec}} at this time. Users must fully understand and accept the documented changes to detection alert documents (see below), and ensure their deployment has excess hot data tier CPU resource capacity before enabling logsdb mode, as logsdb mode requires additional CPU resources during the ingest/indexing process. Enabling logsdb without sufficient hot data tier CPU may result in data ingestion backups and/or security detection rule timeouts and errors.

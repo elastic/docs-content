@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/search-your-data.html
   - https://www.elastic.co/guide/en/serverless/current/elasticsearch-search-your-data.html
   - https://www.elastic.co/guide/en/serverless/current/elasticsearch-search-your-data-the-search-api.html
@@ -11,7 +11,7 @@ applies_to:
 
 # Build your search queries
 
-::::{tip} 
+::::{tip}
 This page is focused on the search use case. For an overview of Elastic query languages for every use case, refer to the [complete overview](/explore-analyze/query-filter/languages.md).
 ::::
 
@@ -25,11 +25,11 @@ Once you know which [search approaches](search-approaches.md) you need to use, y
 
 These query languages are complementary, not mutually exclusive. You can use different query languages for different parts of your application, based on your specific needs. This flexibility allows you to gradually adopt newer interfaces as your requirements evolve.
 
-::::{note} 
+::::{note}
 You can use the [{{es}} REST APIs](https://www.elastic.co/docs/api/doc/elasticsearch) to search your data using any HTTP client, including the [{{es}} client libraries](site-or-app/clients.md), or directly in [Console](/explore-analyze/query-filter/tools/console.md). You can also run searches using [Discover](/explore-analyze/discover.md) in the UI.
 ::::
 
 
-::::{tip} 
+::::{tip}
 Try our hands-on [quick start tutorials](api-quickstarts.md) to get started, or check out our [Python notebooks](https://github.com/elastic/elasticsearch-labs/tree/main/notebooks#readme).
 ::::

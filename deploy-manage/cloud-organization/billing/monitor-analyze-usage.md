@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-account-usage.html
   - https://www.elastic.co/guide/en/serverless/current/general-monitor-usage.html
 applies_to:
@@ -27,6 +27,6 @@ To access your account usage:
 3. Select **Billing** under the user menu.
 4. Go to the **Usage** page.
 
-::::{important} 
+::::{important}
 The usage breakdown information visible on the **Usage** page is an estimate, and does not include prepaid credits, free allowances or any discounts. To get the exact amount you owe for a given month, check your invoices in the [billing history](/deploy-manage/cloud-organization/billing/view-billing-history.md).
 ::::

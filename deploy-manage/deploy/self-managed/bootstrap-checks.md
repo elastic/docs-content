@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/bootstrap-checks.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/bootstrap-checks-xpack.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/bootstrap-checks-heap-size.html

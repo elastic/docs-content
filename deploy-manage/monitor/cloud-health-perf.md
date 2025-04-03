@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/monitor-elasticsearch-cluster.html
 navigation_title: "Cloud deployment health"
 applies_to:
@@ -37,7 +37,7 @@ The **Health** page provides the following information:
 
 * **Severity**: A critical issue impacts operations such as search and ingest and should be addressed as soon as possible. Warnings don’t impact the cluster immediately but might lead to more critical issues over time such as a corrupted repository might lead to no backups being available in the future. |
 * **Description**: For most issues, you can click the description to get more details page on the specific issue and on how to fix it.
-* **Affected capabilities**: Each of these areas might impact search, ingest, backups, or deployment management capabilities. 
+* **Affected capabilities**: Each of these areas might impact search, ingest, backups, or deployment management capabilities.
 
 You can also search and filter the table based on affected resources, such as indices, repositories, nodes, or SLM policies. Individual issues can be further expanded to get more details and guided troubleshooting.
 
@@ -74,9 +74,9 @@ deployment:
   ess:
 ```
 
-{{ech}} deployments offer an additional **Performance** page to get further information about your cluster performance. 
+{{ech}} deployments offer an additional **Performance** page to get further information about your cluster performance.
 
-If you observe issues on search and ingest operations in terms of increased latency or throughput for queries, these might not be directly reported on the **Health** page, unless they are related to shard health or master node availability. 
+If you observe issues on search and ingest operations in terms of increased latency or throughput for queries, these might not be directly reported on the **Health** page, unless they are related to shard health or master node availability.
 
 The **Performance** page and the out-of-the-box logs allow you to monitor your cluster performance, but for production applications we strongly recommend setting up a dedicated monitoring cluster. Refer to [Understanding deployment health](#ec-health-best-practices), for more guidelines on how to monitor you cluster performance.
 
@@ -84,7 +84,7 @@ The **Performance** page and the out-of-the-box logs allow you to monitor your c
 
 :::{tip}
 For {{ece}} deployments, you can use [platform monitoring](/deploy-manage/monitor/orchestrators/ece-platform-monitoring.md) to access preconfigured performance metrics.
-::: 
+:::
 
 ## JVM memory pressure indicator
 
