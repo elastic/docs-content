@@ -31,7 +31,7 @@ Keystore settings must be handled using a specific tool or method depending on t
 |----------------------|--------------------------------------------|----------------------------------------|
 | {{ech}}              | Cloud UI                                  | Not available                          |
 | {{ece}}              | Cloud UI or API                                  | Not available                          |
-| {{eck}}              | Kubernetes `secrets`    | Kubernetes `secrets`                   |
+| {{eck}}              | Kubernetes secrets    | Kubernetes secrets                   |
 | Self-managed         | Manual configuration with [`elasticsearch-keystore`](elasticsearch://reference/elasticsearch/command-line-tools/elasticsearch-keystore.md) | Manual configuration with `kibana-keystore` |
 
 This section describes how to configure and manage secure settings in each keystore depending on the deployment model:
@@ -42,9 +42,9 @@ This section describes how to configure and manage secure settings in each keyst
 
 The {{es}} keystore has some important characteristics and limitations to be aware of:
 
-* **Only specific settings are allowed**: The keystore accepts only settings marked as *secure* in the [{{es}} configuration reference](elasticsearch://reference/elasticsearch/configuration-reference/index.md). Adding unsupported settings to the keystore causes the validation in the [_nodes/reload_secure_settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-reload-secure-settings) to fail and can also prevent {{es}} from starting.
-* **Mandatory for secure settings**: Settings marked as secure must be added to the keystore. They cannot be placed in `elasticsearch.yml` or set via environment variables. This differs from the {{kib}} keystore, which supports all settings.
-* **Changes require a restart**: Most secure settings take effect only after restarting the nodes. However, some are marked as *reloadable* and can be updated without a restart using the [reload_secure_settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-reload-secure-settings) API. Refer to [Reloadable settings](#reload-secure-settings) for more information.
+* **Only specific settings are allowed**: The keystore accepts only settings marked as *secure* in the [{{es}} configuration reference](elasticsearch://reference/elasticsearch/configuration-reference/index.md). Adding unsupported settings to the keystore causes the validation in the [`reload_secure_settings` API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-reload-secure-settings) to fail and can also prevent {{es}} from starting.
+* **Mandatory for secure settings**: Settings marked as secure must be added to the keystore. They cannot be placed in `elasticsearch.yml` or set using environment variables. This differs from the {{kib}} keystore, which supports all settings.
+* **Changes require a restart**: Most secure settings take effect only after restarting the nodes. However, some are marked as *reloadable* and can be updated without a restart using the [`reload_secure_settings`](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-reload-secure-settings) API. Refer to [Reloadable settings](#reloadable-secure-settings) for more information.
 * **Keystore is per-node**: Each node in the cluster has its own keystore file. Secure settings must be specified individually on every node and must have the same values across the cluster. Orchestrated deployments, such as ECH, ECE, and ECK, handle this automatically when configuring secure settings.
 
 ::::{tip}
@@ -62,14 +62,14 @@ The instructions below cover how to manage {{es}} keystore settings for each dep
 You can manage {{es}} secure settings in the **Security > {{es}} keystore** section of your deployment page in the Elastic Cloud Console or ECE Cloud UI.
 
 :::{note}
-Additionally, {{ece}} supports managing {{es}} keystore of your deployments through its [RESTful API](https://www.elastic.co/docs/api/doc/cloud-enterprise/). Refer to [Configure {{es}} keystore through ECE API](cloud://reference/cloud-enterprise/ece-restful-api-examples-configuring-keystore.md) for an example.
+{{ece}} also supports managing {{es}} keystore of your deployments through its [RESTful API](https://www.elastic.co/docs/api/doc/cloud-enterprise/). Refer to [Configure {{es}} keystore through ECE API](cloud://reference/cloud-enterprise/ece-restful-api-examples-configuring-keystore.md) for an example.
 :::
 
 There are three input formats you can use for secure setting values:
 
-* **Single string** - Associate a secret value to a setting.
-* **Multiple strings** - A group of key-value pairs, each stored as part of the setting's value.
-* **JSON block/file** - A structured JSON object containing multiple key-value pairs, typically used for more complex secrets like service account credentials.
+* **Single string**: Associate a secret value to a setting.
+* **Multiple strings**: A group of key-value pairs, each stored as part of the setting's value.
+* **JSON block/file**: A structured JSON object containing multiple key-value pairs, typically used for more complex secrets like service account credentials.
 
 **Add secure settings**
 
@@ -99,14 +99,14 @@ When your secure settings are no longer needed, delete them from the keystore.
     On the **Deployments** page you can narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
 
 3. From your deployment menu, select **Security**.
-4. From the **Existing keystores** list, use the delete icon next to the **Setting Name** that you want to delete.
+4. From the **Existing keystores** list, use the delete icon next to setting that you want to delete.
 5. On the **Confirm to delete** window, select **Confirm**.
 ::::
 
 ::::{tab-item} ECK
 :sync: eck
 
-In ECK, the operator simplifies secure settings configuration by relying on Kubernetes `Secrets`.
+In ECK, the operator simplifies secure settings configuration by relying on Kubernetes secrets.
 
 Refer to [Configure secure settings on ECK](./k8s-secure-settings.md) for details and examples.
 ::::
@@ -126,7 +126,7 @@ Changes to the keystore take effect only after restarting {{es}}, except for [re
 
 **Create the keystore**
 
-To create the `elasticsearch.keystore`, use the `create` command:
+To create the Elasticsearch keystore, use the `create` command:
 
 ```sh
 bin/elasticsearch-keystore create -p
@@ -177,7 +177,7 @@ Just like the settings values in `elasticsearch.yml`, changes to the keystore co
 
 However, certain secure settings are marked as **reloadable**. Such settings can be re-read and applied on a running node by using the [Nodes reload secure settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-reload-secure-settings).
 
-This API should be called after having properly defined the keystore settings in all nodes of the cluster. The values of all secure settings, **reloadable** or not, must be identical across all cluster nodes. After making the desired secure settings changes, call:
+This API should be called after having properly defined the keystore settings in all nodes of the cluster. The values of all secure settings, reloadable or not, must be identical across all cluster nodes. After making the desired secure settings changes, call the following endpoint:
 
 ```console
 POST _nodes/reload_secure_settings
@@ -211,13 +211,14 @@ deployment:
   eck: ga
 ```
 
-{{kib}} supports secure settings through its own keystore, similar in nature to the {{es}} keystore. It provides a way to protect sensitive configuration values, such as authentication credentials or encryption keys, by storing them securely outside of `kibana.yml`.
+{{kib}} supports secure settings through its own keystore, similar to the {{es}} keystore. It provides a way to protect sensitive configuration values, such as authentication credentials or encryption keys, by storing them securely outside of `kibana.yml`.
 
 ::::{note}
 Unlike with {{es}} keystore, any valid {{kib}} setting can be stored securely in the keystore. However, as with {{es}}, adding invalid, unsupported, or extraneous settings will cause Kibana to fail to start. Always ensure the setting exists and is properly formatted in the [configuration reference](kibana://reference/configuration-reference.md) before adding it to the keystore.
 ::::
 
-This section provides examples of {{kib}} secure settings handling using the `kibana-keystore` command-line tool.  
+This section provides examples of {{kib}} secure settings handling using the `kibana-keystore` command-line tool for self-managed deployments.
+
 For ECK deployments, the configuration process is similar to {{es}} and is documented in the [{{kib}} secure settings section for ECK](./k8s-secure-settings.md#k8s-kibana-secure-settings).
 
 ::::{important}
