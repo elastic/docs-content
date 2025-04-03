@@ -229,7 +229,7 @@ The following settings have different default values when using the Docker image
 `monitoring.ui.container.elasticsearch.enabled`
 :   `true`
 
-These settings are defined in the default `kibana.yml`. They can be overridden with a [custom `kibana.yml`](#bind-mount-config) or via [environment variables](#environment-variable-config).
+These settings are defined in the default `kibana.yml`. They can be overridden with a [custom `kibana.yml`](#bind-mount-config) or using [environment variables](#environment-variable-config).
 
 ::::{important}
 If replacing `kibana.yml` with a custom version, be sure to copy the defaults to the custom file if you want to retain them. If not, they will be "masked" by the new file.

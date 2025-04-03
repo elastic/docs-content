@@ -8,3 +8,7 @@ If you're deploying the {{stack}} in a self-managed cluster, then install the {{
 * [Elasticsearch Hadoop](elasticsearch-hadoop://reference/index.md)
 
 Installing in this order ensures that the components each product depends on are in place.
+
+:::{tip}
+If you're deploying a production environment and you plan to use [trusted CA-signed certificates]() for {{es}}, then you should do so before you deploy {{fleet}} and {{agent}}. If new security certificates are configured, any {{agent}}s need to be reinstalled, so we recommend that you set up {{fleet}} and {{agent}} with the appropriate certificates in place.
+:::

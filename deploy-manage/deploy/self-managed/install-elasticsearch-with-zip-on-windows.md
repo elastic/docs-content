@@ -65,7 +65,7 @@ If you're installing a subsequent node, then skip to [Enroll the node in an exis
 :::{include} _snippets/first-node.md
 :::
 
-## Step 3: Run {{es}}
+## Step 4: Run {{es}}
 
 You have several options for starting {{es}}:
 
@@ -212,7 +212,7 @@ Most changes (like JVM settings) made through the manager GUI will require a res
 
 * The system environment variable `ES_JAVA_HOME` should be set to the path of the JDK installation that you want the service to use. If you upgrade the JDK, you are not required to the reinstall the service, but you must set the value of the system environment variable `ES_JAVA_HOME` to the path to the new JDK installation. Upgrading across JVM types (e.g. JRE versus SE) is not supported, and requires the service to be reinstalled.
 
-## Step 4: Check that {{es}} is running [_check_that_elasticsearch_is_running_2]
+## Step 5: Check that {{es}} is running [_check_that_elasticsearch_is_running_2]
 
 :::{include} _snippets/check-es-running.md
 :::
