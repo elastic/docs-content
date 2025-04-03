@@ -280,7 +280,6 @@ toc:
                   - file: deploy/self-managed/executable-jna-tmpdir.md
                   - file: deploy/self-managed/system-config-tcpretries.md
                   - file: deploy/self-managed/bootstrap-checks.md
-              - file: deploy/self-managed/installing-stack-demo-self.md
               - file: deploy/self-managed/install-elasticsearch-from-archive-on-linux-macos.md
               - file: deploy/self-managed/install-elasticsearch-with-zip-on-windows.md
               - file: deploy/self-managed/install-elasticsearch-with-debian-package.md
