@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-autoscaling.html
   - https://www.elastic.co/guide/en/cloud/current/ec-autoscaling.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-autoscaling.html
@@ -200,7 +200,7 @@ The example deployment has a hot data and content tier, warm data tier, cold dat
 
 To learn more about the {{ece}} API, see the [RESTful API](cloud://reference/cloud-enterprise/restful-api.md) documentation. For details on the {{ech}} API, check [RESTful API](cloud://reference/cloud-hosted/ec-api-restful.md).
 
-### Requirements [ec_requirements] 
+### Requirements [ec_requirements]
 
 Note the following requirements when you run this API request:
 
@@ -218,7 +218,7 @@ Note the following requirements when you run this API request:
     * On all other components autoscaling is not currently supported.
 * On {{ece}}, autoscaling is supported for custom deployment templates on version 2.12 and above. To learn more, refer to [Updating custom templates to support `node_roles` and autoscaling](../deploy/cloud-enterprise/ce-add-support-for-node-roles-autoscaling.md).
 
-$$$ece-autoscaling-api-example-requirements-table$$$ 
+$$$ece-autoscaling-api-example-requirements-table$$$
 
 |  | `size` | `autoscaling_min` | `autoscaling_max` |
 | --- | --- | --- | --- |
@@ -237,7 +237,7 @@ $$$ece-autoscaling-api-example-requirements-table$$$
 
 ### API request example [ec_api_request_example]
 
-::::{note} 
+::::{note}
 Although autoscaling can scale some tiers by CPU, the primary measurement of tier size is memory. Limits on tier size are in terms of memory.
 ::::
 

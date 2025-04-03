@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/security/current/cspm-get-started-azure.html
   - https://www.elastic.co/guide/en/serverless/current/security-cspm-get-started-azure.html
 applies_to:

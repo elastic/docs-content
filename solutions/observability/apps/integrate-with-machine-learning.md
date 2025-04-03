@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-machine-learning-integration.html
   - https://www.elastic.co/guide/en/serverless/current/observability-apm-integrate-with-machine-learning.html
 ---

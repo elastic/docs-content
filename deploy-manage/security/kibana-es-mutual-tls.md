@@ -3,7 +3,7 @@ navigation_title: Mutual authentication
 applies_to:
   deployment:
     self: all
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/elasticsearch-mutual-tls.html
 ---
 
