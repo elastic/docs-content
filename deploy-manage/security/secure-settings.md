@@ -204,7 +204,7 @@ There are reloadable secure settings for:
 * [LDAP realm](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#ref-ldap-settings)
 * [Remote cluster credentials for the API key based security model](/deploy-manage/remote-clusters/remote-clusters-settings.md#remote-cluster-credentials-setting)
 
-## {{kib}} secure settings
+## {{kib}} secure settings [kibana]
 ```{applies_to}
 deployment:
   self: ga
