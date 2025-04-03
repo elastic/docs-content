@@ -13,13 +13,12 @@ applies_to:
 :class: important
 
 This feature is in technical preview. It may change in the future, and you should exercise caution when using it in production environments. Elastic will work to fix any issues, but features in technical preview are not subject to the support SLA of GA features.
-
 ::::
 
 
 Third-party antivirus (AV) software installed on your hosts can interfere with {{elastic-defend}}. To mitigate issues with running third-party AV alongside {{elastic-defend}}, you first have to identify which AV is present.
 
-After you’ve installed {{elastic-defend}} on one or more hosts, you can use **Endpoint Insights** to check whether your endpoints have third-party AV software installed. Using the same kinds of large language model (LLM) connectors as Elastic AI Assistant, Endpoint Insights can analyze file event logs from your hosts to determine whether antivirus software is present. From there, you can address any incompatibilities to make sure your endpoints are protected.
+After you’ve installed {{elastic-defend}} on one or more hosts, you can use *Automatic Troubleshooting* to check whether your endpoints have third-party AV software installed. Using the same kinds of large language model (LLM) connectors as Elastic AI Assistant, Automatic Troubleshooting can analyze file event logs from your hosts to determine whether antivirus software is present. From there, you can address any incompatibilities to make sure your endpoints are protected.
 
 ::::{admonition} Requirements
 To use this feature, you need:
@@ -27,21 +26,15 @@ To use this feature, you need:
 * In serverless, a Security Analytics Complete [subscription](https://www.elastic.co/pricing/serverless-security).
 * The **Endpoint Insights: Read** or **Endpoint Insights: All** security sub-feature privilege.
 * A working [LLM connector](../ai/set-up-connectors-for-large-language-models-llm.md) for AI Assistant.
-
 ::::
-
 
 
 ## Scan your hosts for AV software [_scan_your_hosts_for_av_software]
 
 1. Find **Endpoints** in the navigation menu or use the global search field.
-2. Click on an endpoint to open its details flyout, then under **Endpoint Insights**, click **Endpoint Insights scan**.
-3. Select an LLM connector, or [add](../ai/set-up-connectors-for-large-language-models-llm.md) a new one.
+2. Click on an endpoint to open its details flyout.
+3. Under **Automatic Troubleshooting**, select an LLM connector, or [add](../ai/set-up-connectors-for-large-language-models-llm.md) a new one.
 4. Click **Scan**. After a brief processing period, any detected AV products will appear under **Insights**.
-
-:::{image} /solutions/images/serverless-endpoint-insights-results.png
-:alt: Endpoint Insights results with the "Create trusted app" button highlighted
-:::
 
 
 ## Resolve incompatibilities [_resolve_incompatibilities]
