@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/security/current/osquery-placeholder-fields.html
   - https://www.elastic.co/guide/en/serverless/current/security-osquery-placeholder-fields.html
 applies_to:

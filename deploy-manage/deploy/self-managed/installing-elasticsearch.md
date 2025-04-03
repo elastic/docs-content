@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/setup.html
   - https://www.elastic.co/guide/en/elastic-stack/current/installing-elastic-stack.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/install-elasticsearch.html

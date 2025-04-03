@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/security/current/about-rules.html
   - https://www.elastic.co/guide/en/serverless/current/security-about-rules.html
 applies_to:

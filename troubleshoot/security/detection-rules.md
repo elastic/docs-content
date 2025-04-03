@@ -54,7 +54,7 @@ If you receive the following rule failure: `"An error occurred during rule execu
 ::::
 
 
-::::{dropdown} Indicator match rules are failing because the `maxClauseCount` limit is too low
+::::{dropdown} Indicator match rules are failing because the maxClauseCount limit is too low
 :name: IM-rule-heap-memory
 
 If you receive the following rule failure: `Bulk Indexing of signals failed: index: ".index-name" reason: "maxClauseCount is set to 1024" type: "too_many_clauses"`, this indicates that the limit for the total number of clauses that a query tree can have is too low. To update your maximum clause count, [increase the size of your {{es}} JVM heap memory](elasticsearch://reference/elasticsearch/jvm-settings.md#set-jvm-heap-size). 1 GB of {{es}} JVM heap size or more is sufficient.

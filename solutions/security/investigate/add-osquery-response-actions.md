@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/security/current/osquery-response-action.html
   - https://www.elastic.co/guide/en/serverless/current/security-osquery-response-action.html
 applies_to:

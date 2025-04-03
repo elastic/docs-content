@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/security/current/timelines-ui.html
   - https://www.elastic.co/guide/en/serverless/current/security-timelines-ui.html
 applies_to:
@@ -24,7 +24,7 @@ In addition to Timelines, you can create and attach Timeline templates to [detec
 
 ## Grant access to Timeline [timeline-privileges]
 
-You can control access to Timeline by setting the [{{kib}} privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md) for the **Timeline** feature under **Security**. 
+You can control access to Timeline by setting the [{{kib}} privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md) for the **Timeline** feature under **Security**.
 
 ## Create new or open existing Timeline [open-create-timeline]
 
