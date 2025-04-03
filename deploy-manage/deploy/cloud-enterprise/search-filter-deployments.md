@@ -14,7 +14,7 @@ The **Deployments** page in the Cloud UI provides several ways to find deploymen
 
 * Check the visual health indicators of deployments
 * Search for partial or whole deployment names or IDs in the search text box
-* Add filters to the **Hosted deployments** view to filter for specific conditions:
+* Add filters to the **Deployments** view to filter for specific conditions:
 
     :::{image} /deploy-manage/images/cloud-enterprise-deployment-filter.png
     :alt: Add a filter

@@ -14,7 +14,7 @@ Each deployment is based on a [deployment template](./deployment-templates.md), 
 
 To create a deployment in ECE:
 
-1. From the Cloud UI **Hosted deployments** view, select **Create deployment**.
+1. From the Cloud UI **Deployments** view, select **Create deployment**.
 
     You can quickly create a deployment by setting the basic parameters shown in the UI. If you need more control, select **Advanced settings** to configure additional options, as detailed below.
 
