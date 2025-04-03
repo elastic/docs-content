@@ -27,17 +27,18 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 ### Features and enhancements [elastic-security-900-features-enhancements]
 * Enables Automatic Import to accept CEL log samples [#206491]({{kib-pull}}206491)
-* Applies the latest Elastic UI framework (EUI) to {{elastic-sec}} features [#204007]({{kib-pull}}204007) and [#204908]({{kib-pull}}204908)
-* Adds the option to view {es} queries that run during rule execution for threshold, custom query, and {{ml}} rules [#203320]({{kib-pull}}203320)
-* Enables Automatic Import to accept CEL log samples [#206491]({{kib-pull}}206491)
+* Enhances Automatic Import by including setup and troubleshooting documentation for each input type that's selected in the readme [#206477]({{kib-pull}}206477)
 * Applies the latest Elastic UI framework (EUI) to {{elastic-sec}} features [#204007]({{kib-pull}}204007) and [#204908]({{kib-pull}}204908)
 * Adds the option to view {{es}} queries that run during rule execution for threshold, custom query, and {{ml}} rules [#203320]({{kib-pull}}203320)
-* Enhances Automatic Import by including setup and troubleshooting documentation for each input type that's selected in the readme [#206477]({{kib-pull}}206477)
 * Allows users to include `closed` alerts in risk score calculations [#201909]({{kib-pull}}201909)
 * Adds the ability to continue to the Entity Analytics dashboard when there is no data [#201363]({{kib-pull}}201363)
 * Modifies the privilege-checking behavior during rule execution. Now, only read privileges of extant indices are checked during rule execution [#177658]({{kib-pull}}177658)
 
 
 ### Fixes [elastic-security-900-fixes]
+* Fixes a bug that caused the Entity Analytics Dashboard refresh button to break risk score tables [#215472]({{kibana-pull}}215472).
+* Fixes AI Assistant `apiConfig` set by Security getting started page [#213971]({{kibana-pull}}213971).
+* Limits the length of `transformID` to 36 characters [#213405]({{kibana-pull}}213405).
 * Ensures that table actions use standard colors [#207743]({{kib-pull}}207743)
 * Fixes a bug with the **Save and continue** button on a {{fleet}} form [#211563]({{kib-pull}}211563)
+
