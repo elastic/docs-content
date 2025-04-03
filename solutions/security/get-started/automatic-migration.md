@@ -1,3 +1,9 @@
+---
+applies_to:
+  stack: preview
+  serverless: preview
+---
+
 # Automatic migration
 
 ::::{warning}
