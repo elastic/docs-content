@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/kibana-role-management.html
 applies_to:
   deployment:

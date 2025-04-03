@@ -1,12 +1,12 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-migrate-data-internal.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-migrate-data-internal.html
 applies:
 applies_to:
   stack: ga
   deployment:
-    eck: unavailable 
+    eck: unavailable
     ess: ga
     ece: unavailable
   serverless: unavailable
@@ -49,7 +49,7 @@ To restore internal indices from a snapshot, the procedure is a bit different fr
 
 
 
-3. To restore internal {{es}} indices, you need to register the snapshot repository in `read-only` mode. 
+3. To restore internal {{es}} indices, you need to register the snapshot repository in `read-only` mode.
 
     First, add the authentication information for the repository to the {{ech}} keystore, following the steps for your cloud provider:
     * [AWS S3](../../deploy-manage/tools/snapshot-and-restore/ec-aws-custom-repository.md#ec-snapshot-secrets-keystore)

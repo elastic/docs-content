@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-users-and-roles.html
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-rotate-credentials.html
 applies_to:

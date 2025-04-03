@@ -1,6 +1,6 @@
 ---
 navigation_title: "Self-managed: {{es}}"
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/monitoring-production.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/secure-monitoring.html
 applies_to:
@@ -18,7 +18,7 @@ To use the {{monitor-features}} with the {{security-features}} enabled, you need
 
 ## Collection methods
 
-You can collect monitoring and logging data in the following ways: 
+You can collect monitoring and logging data in the following ways:
 
 * [Collect monitoring data with Elastic Agent](/deploy-manage/monitor/stack-monitoring/collecting-monitoring-data-with-elastic-agent.md) (recommended)
 * [Collect monitoring data with Metricbeat](/deploy-manage/monitor/stack-monitoring/collecting-monitoring-data-with-metricbeat.md)
@@ -26,7 +26,7 @@ You can collect monitoring and logging data in the following ways:
 
 If you're building a production environment, then you should send monitoring data to a separate monitoring cluster so that historical data is available even when the nodes you are monitoring are not. To learn how to store monitoring data in a separate cluster, refer to [](/deploy-manage/monitor/stack-monitoring/es-self-monitoring-prod.md).
 
-### Legacy collection methods 
+### Legacy collection methods
 
 You can also monitor your stack using legacy {{es}} monitoring features. This method is deprecated and should not be used. To learn more, refer to [](/deploy-manage/monitor/stack-monitoring/es-legacy-collection-methods.md).
 

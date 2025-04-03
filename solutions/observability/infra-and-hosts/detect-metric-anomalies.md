@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/inspect-metric-anomalies.html
   - https://www.elastic.co/guide/en/serverless/current/observability-detect-metric-anomalies.html
 applies_to:

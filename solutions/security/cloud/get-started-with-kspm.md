@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/security/current/get-started-with-kspm.html
   - https://www.elastic.co/guide/en/serverless/current/security-get-started-with-kspm.html
 applies_to:

@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/configure-settings.html
   - https://www.elastic.co/guide/en/serverless/current/observability-configure-intra-settings.html
 ---
