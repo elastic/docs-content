@@ -7,6 +7,8 @@ sub:
   export: "$"
   escape: "^"
   auto: ".bat"
+  ipcommand: "ipconfig /all"
+  ipvalue: "inet"
 navigation_title: Install on Windows
 applies_to:
   deployment:
@@ -51,6 +53,18 @@ cd C:\Program Files\elasticsearch-{{stack-version}}
 :::{include} _snippets/enable-auto-indices.md
 :::
 
+## Step 3 (Optional): Set up the node for connectivity
+
+:::{include} _snippets/cluster-formation-brief.md
+:::
+
+If you're installing a subsequent node, then skip to [Enroll the node in an existing cluster](#existing-cluster).
+
+### Set up a node as the first node in a multi-host cluster
+
+:::{include} _snippets/first-node.md
+:::
+
 ## Step 3: Run {{es}}
 
 You have several options for starting {{es}}:
@@ -92,6 +106,10 @@ You can install {{es}} as a service that runs in the background or starts automa
 
     ```sh subs=true
     C:\Program Files\elasticsearch-{{stack-version}}\bin>elasticsearch-service.bat install
+    ```
+    
+    Response: 
+    ```
     Installing service      :  "elasticsearch-service-x64"
     Using ES_JAVA_HOME (64-bit):  "C:\jvm\jdk1.8"
     The service 'elasticsearch-service-x64' has been installed.

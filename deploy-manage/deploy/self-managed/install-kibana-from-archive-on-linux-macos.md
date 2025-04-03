@@ -2,6 +2,8 @@
 navigation_title: "Install from archive on Linux or macOS"
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/targz.html
+sub:
+ ipcommand: "ifconfig"
 navigation_title: "Linux and MacOS"
 applies_to:
   deployment:

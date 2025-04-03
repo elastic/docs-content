@@ -85,7 +85,20 @@ Alternatively, you can add a security override by following the instructions in 
 :::{include} _snippets/enable-auto-indices.md
 :::
 
-## Step 3: Start {{es}} [targz-running]
+
+## Step 3 (Optional): Set up the node for connectivity
+
+:::{include} _snippets/cluster-formation-brief.md
+:::
+
+If you're installing a subsequent node, then skip to [Enroll the node in an existing cluster](#existing-cluster).
+
+### Set up a node as the first node in a multi-host cluster
+
+:::{include} _snippets/first-node.md
+:::
+
+## Step 4: Start {{es}} [targz-running]
 
 You have several options for starting {{es}}:
 
@@ -157,11 +170,6 @@ This is convenient because you don’t have to create any directories to start u
 | logs | Log files location. | `$ES_HOME/logs` | [`path.logs`](/deploy-manage/deploy/self-managed/important-settings-configuration.md#path-settings) |
 | plugins | Plugin files location. Each plugin will be contained in a subdirectory. | `$ES_HOME/plugins` |  |
 | repo | Shared file system repository locations. Can hold multiple locations. A file system repository can be placed in to any subdirectory of any directory specified here. | Not configured | [`path.repo`](/deploy-manage/tools/snapshot-and-restore/shared-file-system-repository.md) |
-
-### Security certificates and keys [security_certificates_and_keys]
-
-:::{include} _snippets/security-files.md
-:::
 
 ## Next steps [next_steps]
 
