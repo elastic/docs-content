@@ -96,16 +96,12 @@ In {{ece}}, the following additional limitations apply:
 
 To enable or disable autoscaling on a deployment:
 
-1. Log in to the ECE [Cloud UI](../deploy/cloud-enterprise/log-into-cloud-ui.md) or [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
+:::{include} ../_snippets/find-manage-deployment-ech-and-ece.md
+:::
 
-2. On the **Deployments** page, select your deployment.
-
-    Narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
-
-
-3. In your deployment menu, select **Edit**.
-4. Select desired autoscaling configuration for this deployment using **Enable Autoscaling for:** dropdown menu.
-5. Select **Confirm** to have the autoscaling change and any other settings take effect. All plan changes are shown on the Deployment **Activity** page.
+4. Under the deployment's name in the navigation menu, select **Edit**.
+5. Select desired autoscaling configuration for this deployment using **Enable Autoscaling for:** dropdown menu.
+6. Select **Confirm** to have the autoscaling change and any other settings take effect. All plan changes are shown on the Deployment **Activity** page.
 
 When autoscaling has been enabled, the autoscaled nodes resize according to the [autoscaling settings](#ec-autoscaling-update). Current sizes are shown on the deployment overview page.
 
@@ -115,13 +111,10 @@ When autoscaling has been disabled, you need to adjust the size of data tiers an
 
 Each autoscaling setting is configured with a default value. You can adjust these if necessary, as follows:
 
-1. Log in to the ECE [Cloud UI](../deploy/cloud-enterprise/log-into-cloud-ui.md) or [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
+:::{include} ../_snippets/find-manage-deployment-ech-and-ece.md
+:::
 
-2. On the **Deployments** page, select your deployment.
-
-    Narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
-
-3. In your deployment menu, select **Edit**.
+3. Under the deployment's name in the navigation menu, select **Edit**.
 4. To update a data tier:
 
     1. Use the dropdown box to set the **Maximum size per zone** to the largest amount of resources that should be allocated to the data tier automatically. The resources will not scale above this value.
