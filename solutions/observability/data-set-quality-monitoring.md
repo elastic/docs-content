@@ -64,12 +64,12 @@ To diagnose issues in a specific data stream:
 
 ### Find ignored fields in data sets [observability-monitor-datasets-find-ignored-fields-in-data-sets]
 
-To open the details page for a data set with poor or degraded quality and view ignored fields:
+To open the details page for a data set with poor or degraded quality and view ignored fields and failed documents:
 
 1. From the data set table, select a data set name.
 2. Scroll down to **Quality issues**.
 
-The **Quality issues** section shows fields that have been ignored, the number of documents that contain ignored fields, and the timestamp of last occurrence of the field being ignored.
+The **Quality issues** section shows fields that have been ignored, the number of documents that contain ignored fields, the timestamp of last occurrence of the field being ignored, and failed documents.
 
 % Screenshot
 
@@ -77,10 +77,10 @@ The **Quality issues** section shows fields that have been ignored, the number o
 
 To use Discover to find ignored fields in individual logs:
 
-1. Find data sets with degraded documents using the **Degraded Docs** column of the data sets table.
-2. Click the percentage in the **Degraded Docs** column to open the data set in Discover.
+1. From the Data Set Quality page, use the **Degraded Docs** column to find data sets with degraded documents.
+2. Select the percentage in the **Degraded Docs** column to open the data set in Discover.
 
-The **Documents** table in Discover is automatically filtered to show documents that were not parsed correctly. Under the **actions** column, you’ll find the degraded document icon (![degraded document icon](/solutions/images/serverless-indexClose.svg "")).
+The **Documents** table in Discover is automatically filtered to show documents that were not parsed correctly. You’ll find the degraded document icon (![degraded document icon](/solutions/images/serverless-indexClose.svg "")) next to documents that weren't parsed correctly. You can also go directly to Discover and look for this icon to find documents that weren't parsed correctly.
 
 Now that you know which documents contain ignored fields, examine them more closely to find the origin of the issue:
 
