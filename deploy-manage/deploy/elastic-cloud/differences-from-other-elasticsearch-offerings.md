@@ -124,12 +124,6 @@ This table compares Observability capabilities between Elastic Cloud Hosted depl
 
 This table compares Security capabilities between Elastic Cloud Hosted deployments and Serverless projects:
 
-I'll add the links to the Security features table as well. Here's the updated table:
-
-### Security
-
-This table compares Security capabilities between Elastic Cloud Hosted deployments and Serverless projects:
-
 | **Feature** | Elastic Cloud Hosted | Serverless Security projects | Serverless notes |
 |---------|---------------------|------------------------------|------------------|
 | **[Advanced Entity Analytics](/solutions/security/advanced-entity-analytics.md)** | ✅ | ✅ | |
