@@ -47,7 +47,7 @@ You can ingest your data before migrating your rules, or migrate your rules firs
    | where disabled=0
    | table id, title, search, description, action.escu.eli5, 
    ```
-   Which would download rules related to just the `splunksysmonsecurity` app.
+   The above sample query would download rules related to just the `splunksysmonsecurity` app.
 
    We don't recommend downloading all searches (for example with `| rest /servicesNS/-/-/saved/searches`) since most of the data will be irrelevant to SIEM rule migration. 
    ::::
