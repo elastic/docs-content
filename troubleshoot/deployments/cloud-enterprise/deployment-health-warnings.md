@@ -9,7 +9,7 @@ mapped_pages:
 
 # Troubleshoot deployment health warnings [ece-deployment-no-op]
 
-The {{ece}} **Hosted deployments** page shows the current status of your active deployments. From time to time you may get one or more health warnings, such as the following:
+The {{ece}} **Deployments** page shows the current status of your active deployments. From time to time you may get one or more health warnings, such as the following:
 
 :::{image} /troubleshoot/images/cloud-ec-ce-deployment-health-warning.png
 :alt: A screen capture of the deployment page showing a typical warning: Deployment health warning: Latest change to {{es}} configuration failed.

@@ -91,7 +91,7 @@ To enable audit logging in an ECE deployment:
 
 1. [Log in to the Cloud UI](../../deploy/cloud-enterprise/log-into-cloud-ui.md).
 
-2. On the **Hosted deployments** page, select your deployment.
+2. On the **Deployments** page, select your deployment.
 
 3. From your deployment menu, go to the **Edit** page.
 

@@ -103,9 +103,10 @@ To add a warm, cold, or frozen tier when you create a deployment:
 
 To add a data tier to an existing deployment:
 
-1. Log in to the [{{ecloud}} console](https://cloud.elastic.co?page=docs&placement=docs-body) or the {{ece}} admin console.
-2. On the **Hosted deployments** page, select your deployment.
-3. In your deployment menu, select **Edit**.
+:::{include} /deploy-manage/_snippets/find-manage-deployment-ech-and-ece.md
+:::
+
+3. Under the deployment's name in the navigation menu, select **Edit**.
 4. Click **+ Add capacity** for any data tiers to add.
 5. Click **Save** at the bottom of the page to save your changes.
 
@@ -170,7 +171,7 @@ To make sure that all data can be migrated from the data tier you want to disabl
 
     ::::{tab-item} Elastic Cloud Enterprise
     1. [Log into the Cloud UI](/deploy-manage/deploy/cloud-enterprise/log-into-cloud-ui.md).
-    2. From the **Hosted deployments** page, select your deployment.
+    2. From the **Deployments** page, select your deployment.
 
         Narrow the list by name, ID, or choose from several other filters. To further define the list, use a combination of filters.
 

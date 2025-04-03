@@ -144,7 +144,7 @@ As an extra verification step, you can restore a cluster using the snapshots tha
 1. [Log into the Cloud UI](../../deploy/cloud-enterprise/log-into-cloud-ui.md).
 2. Get the plan from your test cluster.
 
-    1. From the **Hosted deployments** page, select your deployment.
+    1. From the **Deployments** page, select your deployment.
 
         Narrow the list by name, ID, or choose from several other filters. To further define the list, use a combination of filters.
 

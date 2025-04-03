@@ -77,7 +77,7 @@ This section offers suggestions on how to manage and analyze the impact of your 
 #### Review the rule sets associated with a deployment
 
 1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body) or [Cloud UI](/deploy-manage/deploy/cloud-enterprise/log-into-cloud-ui.md).
-2. On the **Hosted deployments** page, select your deployment.
+2. On the **Deployments** page, select your deployment.
 3. Select the **Security** tab on the left-hand side menu bar.
 
 Traffic filter rule sets are listed under **Traffic filters**.

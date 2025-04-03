@@ -20,7 +20,7 @@ You can make this change in the user Cloud UI. The only drawback of this method 
 
 1. The first step for any approach is to remove the remote clusters from your deployment. You will need to add them back later.
 2. From the deployment menu, open the **Snapshots** page and click **Take Snapshot now**. Wait for the snapshot to finish.
-3. From the main **Hosted deployments** page, click **Create deployment**. Next to **Settings** toggle on **Restore snapshot data**, and then select your deployment and the snapshot that you created.
+3. From the main **Deployments** page, click **Create deployment**. Next to **Settings** toggle on **Restore snapshot data**, and then select your deployment and the snapshot that you created.
 
    :::{image} /deploy-manage/images/cloud-enterprise-ce-create-from-snapshot-updated.png
    :alt: Create a Deployment using a snapshot

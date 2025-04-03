@@ -29,7 +29,7 @@ If a {{kib}} instance exists for the deployment, the following {{kib}} logs and 
 To access logs and metrics for your deployment:
 
 1. [Log into the Cloud UI](../../deploy/cloud-enterprise/log-into-cloud-ui.md).
-2. From the **Hosted deployments** page, select your deployment.
+2. From the **Deployments** page, select your deployment.
 
     Narrow the list by name, ID, or choose from several other filters. To further define the list, use a combination of filters.
 

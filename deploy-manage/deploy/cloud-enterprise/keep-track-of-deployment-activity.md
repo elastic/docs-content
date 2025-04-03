@@ -13,7 +13,7 @@ The deployment **Activity** page gives you a convenient way to follow all config
 To view the activity for a deployment:
 
 1. [Log into the Cloud UI](log-into-cloud-ui.md).
-2. On the **Hosted deployments** page, select your deployment.
+2. On the **Deployments** page, select your deployment.
 
     Narrow the list by name, ID, or choose from several other filters. To further define the list, use a combination of filters.
 
