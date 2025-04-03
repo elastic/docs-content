@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/xpack-autoscaling.html
 applies_to:
   deployment:
@@ -19,7 +19,7 @@ By default, {{serverless-full}} automatically scales your {{es}} resources based
 
 ## Cluster autoscaling
 
-::::{admonition} Indirect use only 
+::::{admonition} Indirect use only
 This feature is designed for indirect use by {{ech}}, {{ece}}, and {{eck}}. Direct use is not supported.
 ::::
 
@@ -42,7 +42,7 @@ Trained model autoscaling automatically adjusts the resources allocated to train
 Trained model autoscaling supports:
 * Scaling trained model deployments
 
-::::{note} 
+::::{note}
 Autoscaling is not supported on Debian 8.
 ::::
 

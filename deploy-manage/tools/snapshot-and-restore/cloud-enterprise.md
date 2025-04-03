@@ -1,10 +1,10 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-manage-repositories.html
 navigation_title: "Elastic Cloud Enterprise"
 applies_to:
   deployment:
-    ece: 
+    ece:
 ---
 
 # Manage snapshot repositories in Elastic Cloud Enterprise [ece-manage-repositories]
@@ -42,7 +42,7 @@ If you are installing ECE without internet access (commonly called an offline or
 
 The following guides provide instructions on adding a snapshot repository in ECE for all supported types:
 
-* [AWS S3](/deploy-manage/tools/snapshot-and-restore/ece-aws-custom-repository.md) 
+* [AWS S3](/deploy-manage/tools/snapshot-and-restore/ece-aws-custom-repository.md)
 * [Azure](/deploy-manage/tools/snapshot-and-restore/azure-storage-repository.md)
 * [Google Cloud Storage](/deploy-manage/tools/snapshot-and-restore/google-cloud-storage-gcs-repository.md)
 * [Minio](/deploy-manage/tools/snapshot-and-restore/minio-on-premise-repository.md)

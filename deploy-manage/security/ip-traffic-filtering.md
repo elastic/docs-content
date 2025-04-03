@@ -21,4 +21,3 @@ The way that you configure IP traffic filters depends on your deployment type:
 * **In {{eck}} and self-managed clusters**, traffic filters are applied at the cluster level using `elasticsearch.yml`. [Learn how to configure traffic filtering at the cluster level](/deploy-manage/security/ip-filtering-basic.md).
 
 If you use {{ech}} or {{eck}}, then other [traffic filtering](/deploy-manage/security/traffic-filtering.md) methods are also available.
-

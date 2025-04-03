@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-collect-application-data.html
   - https://www.elastic.co/guide/en/serverless/current/observability-apm-send-data-to-elastic.html
 ---
