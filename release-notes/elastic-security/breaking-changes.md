@@ -17,7 +17,7 @@ Breaking changes can impact your Elastic applications, potentially disrupting no
 % ::::
 
 ## 9.0.0 [elastic-security-900-breaking-changes]
-**Release date:** April 7, 2025
+**Release date:** April 8, 2025
 
 ::::{dropdown} Removes legacy security rules bulk endpoints
 * `POST /api/detection_engine/rules/_bulk_create` has been replaced by `POST /api/detection_engine/rules/_import`

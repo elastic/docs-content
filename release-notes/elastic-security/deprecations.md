@@ -18,7 +18,7 @@ Review the deprecated functionality for {{elastic-sec}}. While deprecations have
 % ::::
 
 ## 9.0.0 [elastic-security-900-deprecations]
-**Release date:** April 7, 2025
+**Release date:** April 8, 2025
 
 ::::{dropdown} Renames the `integration-assistant` plugin
 Renames the `integration-assistant` plugin to `automatic-import` to match the associated feature.

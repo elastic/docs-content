@@ -23,7 +23,11 @@ To check for security updates, go to [Security announcements for the Elastic sta
 % *
 
 ## 9.0.0 [elastic-security-900-release-notes]
-**Release date:** April 2, 2025
+**Release date:** April 8, 2025
+
+::::{NOTE}
+All features introduced in 8.18.0 are also available in 9.0.0.
+::::
 
 ### Features and enhancements [elastic-security-900-features-enhancements]
 * Enables Automatic Import to accept CEL log samples [#206491]({{kib-pull}}206491)
