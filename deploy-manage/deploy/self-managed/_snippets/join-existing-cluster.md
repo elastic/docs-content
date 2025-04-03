@@ -11,7 +11,7 @@ When you install {{es}}, the installation process configures a single-node clust
     An enrollment token has a lifespan of 30 minutes. You should create a new enrollment token for each new node that you add.
 
 2. Copy the enrollment token, which is output to your terminal.
-3. On your new {{es}} node, pass the enrollment token as a parameter to the [`elasticsearch-reconfigure-node`](elasticsearch://command-line-tools/reconfigure-node.md) tool:
+3. On your new {{es}} node, pass the enrollment token as a parameter to the [`elasticsearch-reconfigure-node`](elasticsearch://reference/elasticsearch/command-line-tools/reconfigure-node.md) tool:
 
     ```sh
     /usr/share/elasticsearch/bin/elasticsearch-reconfigure-node --enrollment-token <enrollment-token>

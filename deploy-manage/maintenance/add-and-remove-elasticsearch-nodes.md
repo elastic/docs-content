@@ -44,7 +44,7 @@ You can enroll additional nodes on your local machine to experiment with how an 
 :::
 
 :::{tip}
-If you installed your new {{es}} node using an [RPM](/deploy-manage/deploy/self-managed/install-elasticsearch-with-rpm.md#existing-cluster) or [Debian](/deploy-manage/deploy/self-managed/install-elasticsearch-with-debian-package.md#existing-cluster) package, then you can pass your enrollment token to the [`elasticsearch-reconfigure-node`](elasticsearch://command-line-tools/reconfigure-node.md) tool to simplify the configuration process.
+If you installed your new {{es}} node using an [RPM](/deploy-manage/deploy/self-managed/install-elasticsearch-with-rpm.md#existing-cluster) or [Debian](/deploy-manage/deploy/self-managed/install-elasticsearch-with-debian-package.md#existing-cluster) package, then you can pass your enrollment token to the [`elasticsearch-reconfigure-node`](elasticsearch://reference/elasticsearch/command-line-tools/reconfigure-node.md) tool to simplify the configuration process.
 :::
 
 ## Master-eligible nodes [add-elasticsearch-nodes-master-eligible]
