@@ -4,6 +4,6 @@ These settings can be overridden in the relevant configuration file.
 
 | Port | Access type | Purpose | Setting |
 | --- | --- | --- | --- |
-| 9200-9300	| HTTP (REST) | REST API for Elasticsearch. This is the primary interface used for access to the cluster from external sources, including {{kib}} and {{ls}}. | Elasticsearch [`http.port`](elasticsearch://configuration-reference/networking-settings.md#common-network-settings) |
-| 9300-9400	| TCP |	Transport API. Used for intra-cluster communications and client access via the transport API (Java client). | Elasticsearch [`transport.port`](elasticsearch://configuration-reference/networking-settings.md#common-network-settings) |
-| 5601 | HTTP |	{{kib}} default access port. | Kibana [`server.port`](kibana:///configuration-reference/general-settings.md#server-port) |
+| 9200-9300	| HTTP (REST) | REST API for Elasticsearch. This is the primary interface used for access to the cluster from external sources, including {{kib}} and {{ls}}. | Elasticsearch [`http.port`](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md#common-network-settings) |
+| 9300-9400	| TCP |	Transport API. Used for intra-cluster communications and client access via the transport API (Java client). | Elasticsearch [`transport.port`](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md#common-network-settings) |
+| 5601 | HTTP |	{{kib}} default access port. | Kibana [`server.port`](kibana:///reference/elasticsearch/configuration-reference/general-settings.md#server-port) |
