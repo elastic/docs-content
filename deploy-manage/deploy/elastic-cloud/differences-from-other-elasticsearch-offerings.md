@@ -73,23 +73,23 @@ This table compares Elasticsearch capabilities between Elastic Cloud Hosted depl
 
 | **Feature** | Elastic Cloud Hosted | Serverless Elasticsearch projects | Serverless notes |
 |---------|----------------------|-----------------------------------|------------------|
-| **AI Assistant** | ✅ | ✅ | |
-| **Behavioral analytics** | ✅ (deprecated in 9.0) | ❌ | Not available in Serverless |
-| **Clone index API** | ✅ | **Planned** | Coming in a future release |
-| **Cross-cluster replication** | ✅ | **Planned** | Coming in a future release |
-| **Cross-cluster search** | ✅ | **Planned** | Coming in a future release |
-| **Data lifecycle management** | - ILM <br>- Data stream lifecycle | Data stream lifecycle only | - No data tiers in Serverless <br>- Optimized for common lifecycle management needs |
-| **Elastic connectors (for search)** | ✅ (discontinued in 9.0) | Self-managed only | - Managed connectors not available <br>- Use [**self-managed connectors**](elasticsearch://reference/ingestion-tools/search-connectors/self-managed-connectors.md) |
-| **Elasticsearch for Apache Hadoop** | ✅ | ❌ | Not available in Serverless |
-| **Enterprise Search (App Search & Workplace Search)** | ✅ (discontinued in 9.0) | ❌ | Not available in Serverless |
-| **Kibana Alerts** | ✅ | ✅ | |
-| **Reindexing from remote** | ✅ | **Planned** | Coming in a future release |
+| [**AI Assistant**](/solutions/observability/observability-ai-assistant.md) | ✅ | ✅ | |
+| **Behavioral analytics** | ❌ (deprecated in 9.0) | ❌ | Not available in Serverless |
+| [**Clone index API**](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-clone) | ✅ | **Planned** | Coming in a future release |
+| [**Cross-cluster replication**](/deploy-manage/tools/cross-cluster-replication.md) | ✅ | **Planned** | Coming in a future release |
+| [**Cross-cluster search**](/solutions/search/cross-cluster-search.md) | ✅ | **Planned** | Coming in a future release |
+| **Data lifecycle management** | - [ILM](/manage-data/lifecycle/index-lifecycle-management.md) <br>- [Data stream lifecycle](/manage-data/lifecycle/data-stream.md) | [Data stream lifecycle](/manage-data/lifecycle/data-stream.md) only | - No data tiers in Serverless <br>- Optimized for common lifecycle management needs |
+| **Elastic connectors (for search)** | ❌ (Managed connectors discontinued with Enterprise Search in 9.0) | Self-managed only | - Managed connectors not available <br>- Use [**self-managed connectors**](elasticsearch://reference/search-connectors/self-managed-connectors.md) |
+| [**Elasticsearch for Apache Hadoop**](https://www.elastic.co/elasticsearch/hadoop) | ✅ | ❌ | Not available in Serverless |
+| **Enterprise Search (App Search & Workplace Search)** | ❌ (discontinued in 9.0) | ❌ | Not available in Serverless |
+| [**Kibana Alerts**](/deploy-manage/monitor/monitoring-data/configure-stack-monitoring-alerts.md) | ✅ | ✅ | |
+| [**Reindexing from remote**](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-reindex) | ✅ | **Planned** | Coming in a future release |
 | **Repository management** | ✅ | Managed | Automatically managed by Elastic |
-| **Scripted metric aggregations** | ✅ | ❌ | Not available in Serverless |
-| **Search applications** | UI and APIs | Maintenance mode (beta), API only | UI not available in Serverless |
+| [**Scripted metric aggregations**](elasticsearch://reference/aggregations/search-aggregations-metrics-scripted-metric-aggregation.md) | ✅ | ❌ | Not available in Serverless |
+| [**Search applications**](https://www.elastic.co/guide/en/elasticsearch/reference/8.18/search-application-overview.html) | - UI and APIs <br>- Maintenance mode (beta) | - API-only<br>- Maintenance mode (beta) | UI not available in Serverless |
 | **Shard management** | User-configurable | Managed by Elastic | No manual shard allocation in Serverless |
-| **Watcher** | ✅ | ❌ | Use **Kibana Alerts** instead, which provides rich integrations across use cases |
-| **Web crawler** | ✅ (discontinued with Enterprise Search in 9.0) | Self-managed only | Use [**self-managed crawler**](https://github.com/elastic/crawler) |
+| [**Watcher**](/explore-analyze/alerts-cases/watcher.md) | ✅ | ❌ | Use **Kibana Alerts** instead, which provides rich integrations across use cases |
+| **Web crawler** | ❌ (Managed Elastic Crawler discontinued with Enterprise Search in 9.0) | Self-managed only | Use [**self-managed crawler**](https://github.com/elastic/crawler) |
 
 ### Observability
 
@@ -97,28 +97,34 @@ This table compares Observability capabilities between Elastic Cloud Hosted depl
 
 | **Feature** | Elastic Cloud Hosted | Serverless Observability projects | Serverless notes |
 |---------|----------------------|-----------------------------------|------------------|
-| **AI Assistant** | ✅ | ✅ | |
+| [**AI Assistant**](/solutions/observability/observability-ai-assistant.md) | ✅ | ✅ | |
 | **APM integration** | ✅ | ✅ | Use **Managed Intake Service** (supports Elastic APM and OTLP protocols) |
-| **APM Agent Central Configuration** | ✅ | ❌ | Not available in Serverless |
-| **APM Tail-based sampling** | ✅ | ❌ | - Not available in Serverless <br>- Consider **OpenTelemetry** tail sampling processor as an alternative |
-| **Android agent/SDK instrumentation** | ✅ | ❌ | Not available in Serverless |
-| **AWS Firehose integration** | ✅ | ✅ | |
+| [**APM Agent Central Configuration**](/solutions/observability/apps/apm-agent-central-configuration.md) | ✅ | ❌ | Not available in Serverless |
+| [**APM Tail-based sampling**](/solutions/observability/apps/transaction-sampling.md#apm-tail-based-sampling) | ✅ | ❌ | - Not available in Serverless <br>- Consider **OpenTelemetry** tail sampling processor as an alternative |
+| [**Android agent/SDK instrumentation**](apm-agent-android://reference/index.md) | ✅ | ❌ | Not available in Serverless |
+| [**AWS Firehose integration**](/solutions/observability/cloud/monitor-amazon-web-services-aws-with-amazon-data-firehose.md) | ✅ | ✅ | |
 | **Custom roles for Kibana Spaces** | ✅ | **Planned** | Coming in a future release |
-| **Data stream lifecycle** | ✅ | ✅ | Primary lifecycle management method in Serverless |
-| **Elastic Serverless Forwarder** | ✅ | ❌ | |
-| **Elastic Synthetics Private Locations** | ✅ | ✅ | |
-| **Fleet Agent policies** | ✅ | ✅ | |
-| **Fleet server** | - Self-hosted <br>- Hosted | ✅ | Fully managed by Elastic |
-| **Index lifecycle management** | ✅ | ❌ | Use **data stream lifecycle** instead |
-| **iOS agent/SDK instrumentation** | ✅ | ❌ | Not available in Serverless |
-| **Kibana Alerts** | ✅ | ✅ | |
-| **LogsDB index mode** | ✅ | ✅ | - Reduces storage footprint <br> - Enabled by default <br>- Cannot be disabled |
-| **Logs management** | ✅ | ✅ | |
-| **Metrics monitoring** | ✅ | ✅ | |
-| **Observability SLO** | ✅ | ✅ | |
-| **Real User Monitoring (RUM)** | ✅ | **Planned** | Coming in a future release |
-| **Universal Profiling** | ✅ | ❌ | Not available in Serverless |
-| **Uptime monitoring** | ❌ | ❌ | - Deprecated in all deployment types <br>- Use **Synthetics app** instead |
+| [**Data stream lifecycle**](/manage-data/lifecycle/data-stream.md) | ✅ | ✅ | Primary lifecycle management method in Serverless |
+| **[Elastic Serverless Forwarder](elastic-serverless-forwarder://reference/index.md)** | ✅ | ❌ | |
+| **[Elastic Synthetics Private Locations](/solutions/observability/apps/monitor-resources-on-private-networks.md#synthetics-private-location-add)** | ✅ | ✅ | |
+| **[Fleet Agent policies](/reference/fleet/agent-policy.md)** | ✅ | ✅ | |
+| **[Fleet server](/reference/fleet/fleet-server.md)** | - Self-hosted <br>- Hosted | ✅ | Fully managed by Elastic |
+| [**Index lifecycle management**](/manage-data/lifecycle/index-lifecycle-management.md) | ✅ | ❌ | Use [**Data stream lifecycle**](/manage-data/lifecycle/data-stream.md) instead |
+| **[iOS agent/SDK instrumentation](apm-agent-ios://reference/index.md)** | ✅ | ❌ | Not available in Serverless |
+| **[Kibana Alerts](/deploy-manage/monitor/monitoring-data/configure-stack-monitoring-alerts.md)** | ✅ | ✅ | |
+| **[LogsDB index mode](/manage-data/data-store/data-streams/logs-data-stream.md)** | ✅ | ✅ | - Reduces storage footprint <br> - Enabled by default <br>- Cannot be disabled |
+| **[Logs management](/solutions/observability/logs.md)** | ✅ | ✅ | |
+| **[Metrics monitoring](/solutions/observability/apps/metrics.md)** | ✅ | ✅ | |
+| **[Observability SLO](/solutions/observability/incident-management/service-level-objectives-slos.md)** | ✅ | ✅ | |
+| [**Real User Monitoring (RUM)**](/solutions/observability/apps/real-user-monitoring-user-experience.md) | ✅ | **Planned** | Coming in a future release |
+| **[Universal Profiling](/solutions/observability/infra-and-hosts/get-started-with-universal-profiling.md)** | ✅ | ❌ | Not available in Serverless |
+| **Uptime monitoring** | ❌ | ❌ | - Deprecated in all deployment types <br>- Use [**Synthetics app**](/solutions/observability/apps/synthetic-monitoring.md) instead |
+
+### Security
+
+This table compares Security capabilities between Elastic Cloud Hosted deployments and Serverless projects:
+
+I'll add the links to the Security features table as well. Here's the updated table:
 
 ### Security
 
@@ -126,16 +132,16 @@ This table compares Security capabilities between Elastic Cloud Hosted deploymen
 
 | **Feature** | Elastic Cloud Hosted | Serverless Security projects | Serverless notes |
 |---------|---------------------|------------------------------|------------------|
-| **Advanced Entity Analytics** | ✅ | ✅ | |
-| **AI Assistant** | ✅ | ✅ | |
+| **[Advanced Entity Analytics](/solutions/security/advanced-entity-analytics.md)** | ✅ | ✅ | |
+| **[AI Assistant](/solutions/security/ai/ai-assistant.md)** | ✅ | ✅ | |
 | **API keys** | ✅ | ✅ | |
-| **Cloud Security** | ✅ | ✅ | |
-| **Defend for Containers integration** | ✅ (deprecated in 9.0) | ❌ | Not available in Serverless |
-| **Endpoint security** | ✅ | ✅ | |
-| **Kibana Alerts** | ✅ | ✅ | |
+| **[Cloud Security](/solutions/security/cloud.md)** | ✅ | ✅ | |
+| [**Defend for Containers integration**](https://www.elastic.co/guide/en/security/8.18/d4c-overview.html) | ✅ (deprecated in 9.0) | ❌ | Not available in Serverless |
+| **[Endpoint security](/solutions/security/configure-elastic-defend.md)** | ✅ | ✅ | |
+| **[Kibana Alerts](/deploy-manage/monitor/monitoring-data/configure-stack-monitoring-alerts.md)** | ✅ | ✅ | |
 | **Kibana navigation** | Standard layout | Different layout | UI differences in Security projects |
-| **LogsDB** | Optional | ✅ | - Enabled by default <br>- Cannot be disabled |
-| **Role-based access control** | ✅ | Limited | Core RBAC functionality supported - [Learn more](https://www.elastic.co/guide/en/serverless/current/security-rbac.html) |
+| **[LogsDB](/manage-data/data-store/data-streams/logs-data-stream.md)** | Optional | ✅ | - Enabled by default <br>- Cannot be disabled |
+| **Role-based access control** | ✅ | Limited | Core RBAC functionality supported |
 | **SIEM capabilities** | ✅ | ✅ | Core functionality supported |
 
 ## Elasticsearch index sizing guidelines [elasticsearch-differences-serverless-index-size]
