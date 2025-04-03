@@ -113,7 +113,7 @@ Scripting makes custom data manipulation and transformation possible during sear
 It’s the starting point for exploratory analysis.
 
 :::{image} /explore-analyze/images/explore-analyze-discover.png
-:alt: Documents view in Discover
+:alt: Documents tab in Discover
 :screenshot:
 :::
 
