@@ -21,7 +21,7 @@ In benchmarks, log data stored in a logs data stream used ~2.5 times less disk s
 ## Create a logs data stream [how-to-use-logsds]
 
 ::::{important}
-Fleet Integrations use Index Templates [Index Templates](../templates.md) managed by Elastic. To modify these backing templates instead update their [composite `custom` templates](/solutions/observability/logs/logs-index-template-reference.md##custom-logs-template-edit).
+Fleet integrations use [index templates](../templates.md) managed by Elastic. To modify these backing templates, update their [composite `custom` templates](/solutions/observability/logs/logs-index-template-reference.md##custom-logs-template-edit).
 ::::
 
 To create a logs data stream, set your [template](../templates.md) `index.mode` to `logsdb`:
