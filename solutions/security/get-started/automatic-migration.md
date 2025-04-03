@@ -20,14 +20,14 @@ You can ingest your data before migrating your rules, or migrate your rules firs
 * {{stack}} users: an [Enterprise](https://www.elastic.co/pricing) subscription. 
 * {{Stack}} users: {{ml}} must be enabled.
 * {{serverless-short}} users: a [Security Complete](../../../deploy-manage/deploy/elastic-cloud/project-settings.md) subscription.
-* {{ecloud}} users: {{ml}} must be enabled. We recommend a minimum size of 4GB of RAM per {ml} zone.
+* {{ecloud}} users: {{ml}} must be enabled. We recommend a minimum size of 4GB of RAM per {{ml}} zone.
 
 ::::
 
 ## Get started with Automatic Migration
 
 1. Find **Get started** in the navigation menu or use the [global search bar](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. Under **Configure AI provider** you can use Elastic LLM, select another configured model, or [add a new one](/solutions/security/ai/set-up-connectors-for-large-language-models-llm.md). For information on how different models perform, refer to the [LLM performance matrix](../../../solutions/security/ai/large-language-model-performance-matrix.md).
+2. Under **Configure AI provider**, you can use Elastic LLM, select another configured model, or [add a new one](/solutions/security/ai/set-up-connectors-for-large-language-models-llm.md). For information on how different models perform, refer to the [LLM performance matrix](../../../solutions/security/ai/large-language-model-performance-matrix.md).
 3. Next, under **Migrate rules & add data**, click **Translate your existing SIEM rules to Elastic**, then **Upload rules**.
 4. Follow the instructions on the **Upload Splunk SIEM rules** flyout to export your rules from Splunk as JSON. 
 
@@ -78,7 +78,7 @@ When you upload a new batch of rules, they are assigned a name and number, for e
 
 The table's fields are as follows:
 
-* **Name:** The names of Elastic authored rules cannot be edited until after rule installation. To edit the name of a custom translated rule, click the name and select **Edit**.
+* **Name:** The names of Elastic-authored rules cannot be edited until after rule installation. To edit the name of a custom translated rule, click the name and select **Edit**.
 * **Status:** The rule's translation status:
   * `Installed`: Already added to Elastic SIEM. Click **View** to manage and enable it.
   * `Translated`: Ready to install. This rule was mapped to an Elastic-authored rule, or translated by Automatic Import. Click **Install** to install it.
@@ -108,7 +108,7 @@ The table's fields are as follows:
 Once you're on the **Translated rules** page, to install any rules that were partially translated or not translated, you will need to edit them. Optionally, you can also edit custom rules that were successfully translated to finetune them. 
 
 :::{note}
-You cannot edit Elastic authored rules using this interface, but after they are installed you can edit them from the [**Rules**](/solutions/security/detect-and-alert/about-detection-rules.md) page. 
+You cannot edit Elastic authored rules using this interface, but after they are installed you can [edit them](/solutions/security/detect-and-alert/manage-detection-rules.md) from the **Rules** page. 
 :::
   
 ### Edit a custom rule
@@ -127,21 +127,21 @@ If you haven't yet ingested your data, you will likely encounter `Unknown index`
 
 ### View rule details
 
-The rule details flyout which appears when you click on a rule's name in the **Translate rules** table has two other tabs, **Overview** and **Summary**. The **Overview** tab displays information such as the rule's severity, risk score, rule type, and how frequently it runs. The **Summary** tab explains the logic behind how the rule was translated, such as why specific {{esql}} commands were used, or why a source rule was mapped to a particular Elastic authored rule.
+The rule details flyout (which appears when you click on a rule's name in the **Translate rules** table) has two other tabs, **Overview** and **Summary**. The **Overview** tab displays information such as the rule's severity, risk score, rule type, and how frequently it runs. The **Summary** tab explains the logic behind how the rule was translated, such as why specific {{esql}} commands were used, or why a source rule was mapped to a particular Elastic authored rule.
 
 ::::{important}
 All the details about your migrations is stored in the `.kibana-siem-rule-migrations-rules-default` index. You can use [Discover](/explore-analyze/discover.md) to review a variety of metrics, analyze metrics, and more.
 ::::
 
-# FAQ (Frequently asked questions)
+## Frequently asked questions (FAQ)
 
-**How does Automatic Migration handle rules that can't be exactly translated, such as due to feature parity issues?**
+**How does Automatic Migration handle rules that can't be exactly translated for various reasons, such as feature parity issues?**
 
 After translation, rules that can't be translated appear with a status of either partially translated (yellow) or not translated (red). From there, you can address them individually.
 
 **How does Automatic Migration handle Splunk rules which lookup other indices?**
 
-Rules that fall into this category will typically appear with a status of partially translated. Lookup JOINs are currently a tech preview {{esql}} which can help in this situation. 
+Rules that fall into this category will typically appear with a status of partially translated. `LOOKUP JOIN`s are currently a tech preview {{esql}} which can help in this situation. 
 
 **Are nested macros supported?**
 
