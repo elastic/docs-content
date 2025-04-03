@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/active-directory-realm.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-securing-clusters-ad.html
 applies_to:
@@ -16,7 +16,7 @@ navigation_title: "Active Directory"
 You can configure {{stack}} {{security-features}} to communicate with Active Directory to authenticate users.
 
 :::{{tip}}
-This topic describes implementing Active Directory at the cluster or deployment level, for the purposes of authenticating with {{es}} and {{kib}}. 
+This topic describes implementing Active Directory at the cluster or deployment level, for the purposes of authenticating with {{es}} and {{kib}}.
 
 You can also configure an {{ece}} installation to use an Active Directory to authenticate users. [Learn more](/deploy-manage/users-roles/cloud-enterprise-orchestrator/active-directory.md).
 :::
@@ -29,7 +29,7 @@ The path to an entry is a *Distinguished Name* (DN) that uniquely identifies a u
 
 The {{security-features}} supports only Active Directory security groups. You can't map distribution groups to roles.
 
-::::{note} 
+::::{note}
 When you use Active Directory for authentication, the username entered by the user is expected to match the `sAMAccountName` or `userPrincipalName`, not the common name.
 ::::
 
@@ -47,8 +47,8 @@ If your Active Directory domain supports authentication with user-provided crede
 
     See [Active Directory realm settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#ref-ad-settings) for all of the options you can set for an `active_directory` realm.
 
-    :::{note} 
-    Binding to Active Directory fails if the domain name is not mapped in DNS. 
+    :::{note}
+    Binding to Active Directory fails if the domain name is not mapped in DNS.
 
     In a self-managed cluster, if DNS is not being provided by a Windows DNS server, you can add a mapping for the domain in the local `/etc/hosts` file.
     :::
@@ -64,7 +64,7 @@ If your Active Directory domain supports authentication with user-provided crede
       authc:
         realms:
           active_directory:
-            my_ad:  
+            my_ad:
               order: 0 <1>
               domain_name: ad.example.com <2>
               url: ldaps://ad.example.com:636 <3>
@@ -73,7 +73,7 @@ If your Active Directory domain supports authentication with user-provided crede
   1. The order in which the `active_directory` realm is consulted during an authentication attempt.
   2. The primary domain in Active Directory. Binding to Active Directory fails if the domain name is not mapped in DNS.
   3. The LDAP URL pointing to the Active Directory Domain Controller that should handle authentication. If you don’t specify the URL, it defaults to `ldap:<domain_name>:389`.
-  
+
   :::
 
   :::{tab-item} Forest
@@ -102,16 +102,16 @@ If your Active Directory domain supports authentication with user-provided crede
   3. A load balancing setting is provided to indicate the desired behavior when choosing the server to connect to.
 
 
-  In this configuration, users will need to use either their full User Principal Name (UPN) or their down-level logon name: 
-  * A UPN is typically a concatenation of the username with `@<DOMAIN_NAME` such as `johndoe@ad.example.com`. 
-  * The down-level logon name is the NetBIOS domain name, followed by a `\` and the username, such as `AD\johndoe`. 
-  
+  In this configuration, users will need to use either their full User Principal Name (UPN) or their down-level logon name:
+  * A UPN is typically a concatenation of the username with `@<DOMAIN_NAME` such as `johndoe@ad.example.com`.
+  * The down-level logon name is the NetBIOS domain name, followed by a `\` and the username, such as `AD\johndoe`.
+
     Use of down-level logon name requires a connection to the regular LDAP ports (389 or 636) in order to query the configuration container to retrieve the domain name from the NetBIOS name.
   :::
 
   ::::
 
-  ::::{important} 
+  ::::{important}
   When you configure realms in `elasticsearch.yml`, only the realms you specify are used for authentication. If you also want to use the `native` or `file` realms, you must include them in the realm chain.
   ::::
 
@@ -129,17 +129,17 @@ If your Active Directory domain supports authentication with user-provided crede
 
 ## Step 2: Configure a bind user (Optional) [ece-ad-configuration-with-bind-user]
 
-You can choose to configure an Active Directory realm using a bind user. 
+You can choose to configure an Active Directory realm using a bind user.
 
 The Active Directory realm authenticates users using an LDAP bind request. By default, all of the LDAP operations are run by the user that {{es}} is authenticating. In some cases, regular users may not be able to access all of the necessary items within Active Directory and a bind user is needed. A bind user can be configured and is used to perform all operations other than the LDAP bind request, which is required to authenticate the credentials provided by the user.
 
 When you specify a `bind_dn`, this specific user is used to search for the Distinguished Name (`DN`) of the authenticating user based on the provided username and an LDAP attribute. If found, this user is authenticated by attempting to bind to the LDAP server using the found `DN` and the provided password.
 
-The use of a bind user enables the [run as feature](/deploy-manage/users-roles/cluster-or-deployment-auth/submitting-requests-on-behalf-of-other-users.md) to be used with the Active Directory realm. 
+The use of a bind user enables the [run as feature](/deploy-manage/users-roles/cluster-or-deployment-auth/submitting-requests-on-behalf-of-other-users.md) to be used with the Active Directory realm.
 
 In self-managed clusters, use of a bind user also enables the ability to maintain a set of pooled connections to Active Directory. These pooled connections reduce the number of resources that must be created and destroyed with every user authentication.
 
-To configure a bind user: 
+To configure a bind user:
 
 1. [Add your user settings](../../../deploy-manage/deploy/cloud-enterprise/edit-stack-settings.md) for the `active_directory` realm as follows:
 
@@ -154,9 +154,9 @@ To configure a bind user:
           realms:
             active_directory:
               my_ad:
-                order: 2 
-                domain_name: ad.example.com 
-                url: ldap://ad.example.com:389 
+                order: 2
+                domain_name: ad.example.com
+                url: ldap://ad.example.com:389
                 bind_dn: es_svc_user@ad.example.com <1>
     ```
 
@@ -176,12 +176,12 @@ An integral part of a realm authentication process is to resolve the roles assoc
 
 Because users are managed externally in the Active Directory server, the expectation is that their roles are managed there as well. Active Directory groups often represent user roles for different systems in the organization.
 
-The `active_directory` realm enables you to map Active Directory users to roles using their Active Directory groups or other metadata. 
+The `active_directory` realm enables you to map Active Directory users to roles using their Active Directory groups or other metadata.
 
-You can map Active Directory groups to roles for your users in the following ways: 
+You can map Active Directory groups to roles for your users in the following ways:
 
 * Using the role mappings page in {{kib}}.
-* Using the [role mapping API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-role-mapping). 
+* Using the [role mapping API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-role-mapping).
 * Using a role mapping file.
 
 For more information, see [Mapping users and groups to roles](/deploy-manage/users-roles/cluster-or-deployment-auth/mapping-users-groups-to-roles.md).
@@ -213,10 +213,10 @@ POST /_security/role_mapping/ldap-superuser
 
 ### Example: Using a role mapping file [ece_using_the_role_mapping_files_2]
 
-:::{tip} 
+:::{tip}
 If you're using {{ece}} or {{ech}}, then you must [upload this file as a custom bundle](/deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md) before it can be referenced.
 
-If you're using {{eck}}, then install the file as a [custom configuration file](/deploy-manage/deploy/cloud-on-k8s/custom-configuration-files-plugins.md#use-a-volume-and-volume-mount-together-with-a-configmap-or-secret). 
+If you're using {{eck}}, then install the file as a [custom configuration file](/deploy-manage/deploy/cloud-on-k8s/custom-configuration-files-plugins.md#use-a-volume-and-volume-mount-together-with-a-configmap-or-secret).
 
 If you're using a self-managed cluster, then the file must be present on each node.
 :::
@@ -280,7 +280,7 @@ If you're using {{ech}} or {{ece}}, then you must [upload your certificate as a 
 
 If you're using {{eck}}, then install the certificate as a [custom configuration file](/deploy-manage/deploy/cloud-on-k8s/custom-configuration-files-plugins.md#use-a-volume-and-volume-mount-together-with-a-configmap-or-secret).
 
-:::{tip} 
+:::{tip}
 
 If you're using {{ece}} or {{ech}}, then these steps are required only if TLS is enabled and the Active Directory controller is using self-signed certificates.
 :::
@@ -315,7 +315,7 @@ xpack:
 
 For more information about these settings, see [Active Directory realm settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#ref-ad-settings).
 
-::::{note} 
+::::{note}
 By default, when you configure {{es}} to connect to Active Directory using SSL/TLS, it attempts to verify the hostname or IP address specified with the `url` attribute in the realm configuration with the values in the certificate. If the values in the certificate and realm configuration do not match, {{es}} does not allow a connection to the Active Directory server. This is done to protect against man-in-the-middle attacks. If necessary, you can disable this behavior by setting the `ssl.verification_mode` property to `certificate`.
 ::::
 

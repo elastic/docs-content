@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/native-realm.html
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-users-and-roles.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/change-passwords-native-users.html
@@ -20,7 +20,7 @@ The easiest way to manage and authenticate users is with the internal `native` r
 In self-managed {{es}} clusters, you can also reset passwords for users in the native realm [using the command line](#reset-pw-cmd-line).
 
 :::{{tip}}
-This topic describes using the native realm at the cluster or deployment level, for the purposes of authenticating with {{es}} and {{kib}}. 
+This topic describes using the native realm at the cluster or deployment level, for the purposes of authenticating with {{es}} and {{kib}}.
 
 You can also manage and authenticate users natively at the following levels:
 
@@ -42,7 +42,7 @@ You can configure a `native` realm in the `xpack.security.authc.realms.native` n
 
 1. Add a realm configuration to `elasticsearch.yml` under the `xpack.security.authc.realms.native` namespace. It is recommended that you explicitly set the `order` attribute for the realm.
 
-    ::::{note} 
+    ::::{note}
     You can configure only one native realm on {{es}} nodes.
     ::::
 
@@ -54,7 +54,7 @@ You can configure a `native` realm in the `xpack.security.authc.realms.native` n
       order: 0
     ```
 
-    ::::{note} 
+    ::::{note}
     To limit exposure to credential theft and mitigate credential compromise, the native realm stores passwords and caches user credentials according to security best practices. By default, a hashed version of user credentials is stored in memory, using a salted `sha-256` hash algorithm and a hashed version of passwords is stored on disk salted and hashed with the `bcrypt` hash algorithm. To use different hash algorithms, see [User cache and password hash algorithms](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#hashing-settings).
     ::::
 
@@ -80,7 +80,7 @@ Elastic enables you to easily manage users in {{kib}} on the **Stack Management 
 
 ## Manage native users using the `user` API [native-users-api]
 
-You can manage users through the Elasticsearch `user` API. 
+You can manage users through the Elasticsearch `user` API.
 
 For example, you can change a user's password:
 

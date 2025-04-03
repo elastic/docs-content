@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/security/current/uninstall-agent.html
   - https://www.elastic.co/guide/en/serverless/current/security-uninstall-agent.html
 applies_to:

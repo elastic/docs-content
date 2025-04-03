@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/security/current/llm-performance-matrix.html
   - https://www.elastic.co/guide/en/serverless/current/security-llm-performance-matrix.html
 applies_to:

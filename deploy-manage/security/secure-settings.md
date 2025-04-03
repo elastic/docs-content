@@ -5,7 +5,7 @@ applies_to:
     ece: ga
     eck: ga
     self: ga
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-configuring-keystore.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-restful-api-examples-configuring-keystore.html
   - https://www.elastic.co/guide/en/cloud/current/ec-configuring-keystore.html
@@ -31,7 +31,7 @@ Some settings are sensitive, and relying on filesystem permissions to protect th
 - [Kubernetes secrets](k8s-secure-settings.md), if you are using {{eck}}.
 
 
-:::{important} 
+:::{important}
 Only some settings are designed to be read from the keystore. However, the keystore has no validation to block unsupported settings. Adding unsupported settings to the keystore causes [reload_secure_settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-reload-secure-settings) to fail and if not addressed, {{es}} will fail to start. To check whether a setting is supported in the keystore, look for a "Secure" qualifier in the [setting reference](/reference/index.md).
 :::
 
@@ -207,7 +207,7 @@ curl -k -X PATCH -H "Authorization: ApiKey $ECE_API_KEY" https://$COORDINATOR_HO
 ```
 
 
-**Verify your credentials** 
+**Verify your credentials**
 
 If your credentials are invalid, an administrator can verify that they are correct by checking the `keystore` field in the cluster metadata.
 
@@ -273,13 +273,13 @@ deployment:
 
 Some settings are sensitive, and relying on filesystem permissions to protect their values is not sufficient. For this use case, {{kib}} provides a keystore, and the `kibana-keystore` tool to manage the settings in the keystore.
 
-::::{note} 
+::::{note}
 * Run all commands as the user who runs {{kib}}.
 * Any valid {{kib}} setting can be stored in the keystore securely. Unsupported, extraneous or invalid settings will cause {{kib}} to fail to start up.
 
 ::::
 
-### Create the keystore [creating-keystore] 
+### Create the keystore [creating-keystore]
 
 To create the `kibana.keystore`, use the `create` command:
 
@@ -292,7 +292,7 @@ The file `kibana.keystore` will be created in the `config` directory defined by 
 To create a password protected keystore use the `--password` flag.
 
 
-### List settings in the keystore [list-settings] 
+### List settings in the keystore [list-settings]
 
 A list of the settings in the keystore is available with the `list` command:
 
@@ -301,9 +301,9 @@ bin/kibana-keystore list
 ```
 
 
-### Add string settings [add-string-to-keystore] 
+### Add string settings [add-string-to-keystore]
 
-::::{note} 
+::::{note}
 Your input will be JSON-parsed to allow for object/array input configurations. To enforce string values, use "double quotes" around your input.
 ::::
 
@@ -329,7 +329,7 @@ cat /file/containing/setting/value | bin/kibana-keystore add the.setting.name.to
 ```
 
 
-### Remove settings [remove-settings] 
+### Remove settings [remove-settings]
 
 To remove a setting from the keystore, use the `remove` command:
 
@@ -338,7 +338,7 @@ bin/kibana-keystore remove the.setting.name.to.remove
 ```
 
 
-### Read settings [read-settings] 
+### Read settings [read-settings]
 
 To display the configured setting values, use the `show` command:
 
@@ -347,7 +347,7 @@ bin/kibana-keystore show setting.key
 ```
 
 
-### Change password [change-password] 
+### Change password [change-password]
 
 To change the password of the keystore, use the `passwd` command:
 
@@ -355,7 +355,7 @@ To change the password of the keystore, use the `passwd` command:
 bin/kibana-keystore passwd
 ```
 
-### Has password [has-password] 
+### Has password [has-password]
 
 To check if the keystore is password protected, use the `has-passwd` command. An exit code of 0 will be returned if the keystore is password protected, and the command will fail otherwise.
 

@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/security/current/query-alert-indices.html
   - https://www.elastic.co/guide/en/serverless/current/security-query-alert-indices.html
 applies_to:

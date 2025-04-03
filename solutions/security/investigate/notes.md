@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/security/current/add-manage-notes.html
   - https://www.elastic.co/guide/en/serverless/current/security-add-manage-notes.html
 applies_to:
@@ -18,7 +18,7 @@ Configure the `securitySolution:maxUnassociatedNotes` [advanced setting](/soluti
 
 ## Grant access to notes [notes-privileges]
 
-You can control access to notes by setting the [{{kib}} privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md) for the **Notes** feature under **Security**. 
+You can control access to notes by setting the [{{kib}} privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md) for the **Notes** feature under **Security**.
 
 ## View and add notes to alerts and events [notes-alerts-events]
 
