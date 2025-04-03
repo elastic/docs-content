@@ -1,11 +1,11 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-custom-repository.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-custom-repository.html
 navigation_title: "Elastic Cloud Hosted"
 applies_to:
   deployment:
-    ess: 
+    ess:
 ---
 
 # Manage snapshot repositories in Elastic Cloud Hosted
@@ -55,7 +55,7 @@ The `found-snapshots` repository is specific to each deployment. However, you ca
 
 ## Register a snapshot repository in Elastic Cloud Hosted [register-snapshot-repos-ech]
 
-In **Elastic Cloud Hosted**, snapshot repositories are automatically registered for you, but you can create additional repositories if needed.  
+In **Elastic Cloud Hosted**, snapshot repositories are automatically registered for you, but you can create additional repositories if needed.
 
 * {{kib}}'s **Snapshot and Restore** feature
 * {{es}}'s [snapshot repository management APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-snapshot)

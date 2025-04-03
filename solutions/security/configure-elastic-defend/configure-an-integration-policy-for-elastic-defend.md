@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/security/current/configure-endpoint-integration-policy.html
   - https://www.elastic.co/guide/en/serverless/current/security-configure-endpoint-integration-policy.html
 applies_to:

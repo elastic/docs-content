@@ -3,7 +3,7 @@ navigation_title: "Unavailable shards"
 applies_to:
   deployment:
     ess: all
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-scenario_why_are_shards_unavailable.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/echscenario_why_are_shards_unavailable.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-analyze_shards_with-api.html

@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/bootstrap-checks.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/bootstrap-checks-xpack.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/bootstrap-checks-heap-size.html
@@ -215,7 +215,7 @@ $$$bootstrap-checks-tls$$$
 If you enable {{es}} {{security-features}}, unless you have a trial license, you must configure SSL/TLS for internode-communication.
 
 :::{note}
-Single-node clusters that use a loopback interface do not have this requirement. For more information, see [*Start the {{stack}} with security enabled automatically*](/deploy-manage/security/security-certificates-keys.md).
+Single-node clusters that use a loopback interface do not have this requirement. For more information, see [*Start the {{stack}} with security enabled automatically*](/deploy-manage/security/self-auto-setup.md).
 :::
 
 To pass this bootstrap check, you must [set up SSL/TLS in your cluster](/deploy-manage/security/set-up-basic-security.md#encrypt-internode-communication).
