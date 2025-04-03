@@ -22,7 +22,7 @@ Elastic Cloud Serverless takes a fundamentally different approach to running the
 | **Scaling** | Manual or automated with configuration | Fully automated |
 | **Infrastructure decisions** | User manages capacity | Automatically managed by Elastic |
 | **Pricing model** | Based on provisioned resources | Based on usage |
-| **Cloud providers** | AWS, Azure, GCP  | AWS, Azure (in preview), GCP (planned) |
+| **Cloud providers** | AWS, Azure, GCP  | AWS, Azure (in preview), GCP (in preview) |
 | **Upgrades** | User-controlled timing | Automatically performed by Elastic |
 | **User management** | Elastic Cloud-managed and deployment-local users | Elastic Cloud-managed users only. Serverless users are managed at the organization level with SAML authentication support. |
 | **Backups** | User-managed with Snapshot & Restore | Automatically backed up by Elastic |
@@ -50,7 +50,7 @@ This table compares the core platform capabilities between Elastic Cloud Hosted 
 | **Audit logging** | ✅ | **Planned** | Coming in a future release |
 | **Authentication realms** | ✅ | ✅ | Managed at organization level in Serverless; deployment level in Hosted |
 | **BYO-Key for Encryption at Rest** | ✅ | **Planned** | Coming in a future release; data in Serverless is stored on cloud-provider encrypted object storage |
-| **Cloud provider support** | - AWS <br>- GCP <br>- Azure | - AWS <br>- Azure (in preview) <br>- GCP (planned) | Azure: [Preview details](https://www.elastic.co/blog/elastic-cloud-serverless-microsoft-azure-tech-preview) |
+| **Cloud provider support** | - AWS <br>- GCP <br>- Azure | - AWS <br>- Azure (in preview) <br>- GCP (in preview) | [Elastic Cloud Hosted regions]](cloud://reference/cloud-hosted/ec-regions-templates-instances.md)<br>[Serverless regions]](/deploy-manage/deploy/elastic-cloud/regions.md) |
 | **Cluster scaling** | Manual with autoscaling option | Managed | Automatic scaling eliminates capacity planning - [Learn more](https://www.elastic.co/blog/elastic-serverless-architecture) |
 | **Custom plugins and bundles** | ✅ | ❌ | Not available in Serverless |
 | **Custom roles** | ✅ | ✅ | Fully supported in both |
