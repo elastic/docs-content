@@ -3,3 +3,4 @@ redirects:
   'deploy-manage/security/manually-configure-security-in-self-managed-cluster.md': '!deploy-manage/security/self-setup.md'
   'deploy-manage/security/security-certificates-keys.md': '!deploy-manage/security/self-auto-setup.md'
   'deploy-manage/security/ece-traffic-filtering-through-the-api.md': 'deploy-manage/security/ec-traffic-filtering-through-the-api.md'
+  'deploy-manage/security/install-stack-demo-secure.md': '!deploy-manage/security/self-setup.md'
