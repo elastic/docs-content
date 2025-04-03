@@ -4,9 +4,9 @@
 This feature is in technical preview. It may change in the future, and you should exercise caution when using it in production environments. Elastic will work to fix any issues, but features in technical preview are not subject to the support SLA of GA features.
 ::::
 
-Automatic Migration for detection rules helps you quickly convert SIEM rules from the Splunk Processing Language (SPL) to the Elasticsearch Query Language ({{esql}}). It simplifies onboarding by matching your rules to Elastic-authored rules, if comparable rules exist. Otherwise, it automatically translates rules on the fly so you can verify and edit them instead of rewriting them from scratch.
+Automatic Migration for detection rules helps you quickly convert SIEM rules from the Splunk Processing Language (SPL) to the Elasticsearch Query Language ({{esql}}). If comparable Elastic-authored rules exist, it simplifies onboarding by mapping your rules to them. Otherwise, it creates custom rules on the fly so you can verify and edit them instead of writing them from scratch.
 
-You can ingest your data before migrating your rules, or migrate your rules first, in which case the tool will recommend which data sources you need to power your migrated rules. 
+You can ingest your data before migrating your rules, or migrate your rules first in which case the tool will recommend which data sources you need to power your migrated rules. 
 
 ::::{admonition} Requirements
 * The `SIEM migrations: All` Security sub-feature privilege.
@@ -123,6 +123,9 @@ If you haven't yet ingested your data, you will likely encounter `Unknown index`
 
 The rule details flyout which appears when you click on a rule's name in the **Translate rules** table has two other tabs, **Overview** and **Summary**. The **Overview** tab displays information such as the rule's severity, risk score, rule type, and how frequently it runs. The **Summary** tab explains the logic behind how the rule was translated, such as why specific {{esql}} commands were used, or why a source rule was mapped to a particular Elastic authored rule.
 
+::::{important}
+All the details about your migrations is stored in the `.kibana-siem-rule-migrations-rules-default` index. You can use [Discover](/explore-analyze/discover.md) to review a variety of metrics, analyze metrics, and more.
+::::
 
 # FAQ (Frequently asked questions)
 
@@ -141,3 +144,7 @@ Yes, Automatic Migration can handle nested macros.
 **How can we ensure rules stay up to date?**
 
 Automatic Migration maps your rules to Elastic-authored rules whenever possible, which are updated automatically. Like all custom rules, rules created by Automatic Migration must be maintained by you.
+
+**What index does information about each migration appear in?**
+
+No matter how many times you use Automatic Migration, migration data will continue to appear in `.kibana-siem-rule-migrations-rules-default`.
