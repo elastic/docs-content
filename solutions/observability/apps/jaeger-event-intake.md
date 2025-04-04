@@ -2,7 +2,7 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-api-jaeger.html
 applies_to:
-  stack:
+  stack: deprecated
 ---
 
 # Jaeger event intake [apm-api-jaeger]

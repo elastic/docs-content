@@ -3,6 +3,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-data-model-metadata.html
 applies_to:
   stack:
+  serverless:
 ---
 
 # Metadata [apm-data-model-metadata]

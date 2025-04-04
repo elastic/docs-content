@@ -1757,7 +1757,6 @@ We have not covered the [Elastic APM OpenTracing bridge](apm-agent-java://refere
 
 ```{applies_to}
 stack: deprecated 8.15.0
-serverless: unavailable
 ```
 
 There are some basic monitoring capabilities in our application so far. We index logs (with traces), we index metrics, and we even can look in our app to figure out single performance bottlenecks thanks to APM. However, there is still one weak spot. Everything done so far was within the application, but all the users are reaching the application from the internet.
