@@ -72,12 +72,10 @@ Elastic manages the installation and configuration of the monitoring agent for y
 
 To enable monitoring on your deployment:
 
-1. Log into [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body) (ECH) or [the Cloud UI](/deploy-manage/deploy/cloud-enterprise/log-into-cloud-ui.md) (ECE).
-2. On the **Deployments** page, select your deployment.
+:::{include} /deploy-manage/_snippets/find-manage-deployment-ech-and-ece.md
+:::
 
-    Narrow the list by name, ID, or choose from several other filters. To further define the list, use a combination of filters.
-
-3. From your deployment menu, go to the **Logs and metrics** page.
+3. Under the deployment's name in the navigation menu, select **Logs and metrics**.
 4. Under **Ship to a deployment**, select **Enable**.
 5. Choose where to send your logs and metrics. Select **Save**.
 
