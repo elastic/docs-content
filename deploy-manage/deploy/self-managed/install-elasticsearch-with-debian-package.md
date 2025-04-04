@@ -145,15 +145,27 @@ sudo dpkg -i elasticsearch-{{stack-version}}-amd64.deb
 
 ### Security at startup [deb-security-configuration]
 
-:::{include} _snippets/auto-security-config.md
+:::{include} _snippets/auto-security-config-rpm-deb.md
+:::
+
+## Step 6: Reset the `elastic` superuser password
+
+:::{include} _snippets/reset-superuser-rpm-deb.md
 :::
 
 :::{include} _snippets/pw-env-var.md
 :::
 
-## Step 6: Check that {{es}} is running [deb-check-running]
+## Step 7: Check that {{es}} is running [deb-check-running]
 
 :::{include} _snippets/check-es-running.md
+:::
+
+## Step 8 (Multi-node clusters only): Clean up the config files
+
+If you are deploying a multi-node cluster, then the `elasticsearch-reconfigure-node` tool adds all existing nodes to each newly enrolled node's `discovery.seed_hosts` setting. However, you need to go back to all of the nodes in the cluster and edit them so each node in the cluster can restart and rejoin the cluster as expected.
+
+:::{include} _snippets/clean-up-multinode.md
 :::
 
 ## Configuring {{es}} [deb-configuring]

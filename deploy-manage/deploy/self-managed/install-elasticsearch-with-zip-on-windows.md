@@ -85,6 +85,8 @@ You can run {{es}} [from the command line](#command-line), or install and run {{
 :::{include} _snippets/auto-security-config.md
 :::
 
+The password for the `elastic` user and the enrollment token for {{kib}} are output to your terminal.
+
 :::{include} _snippets/pw-env-var.md
 :::
 
@@ -215,6 +217,13 @@ Most changes (like JVM settings) made through the manager GUI will require a res
 ## Step 5: Check that {{es}} is running [_check_that_elasticsearch_is_running_2]
 
 :::{include} _snippets/check-es-running.md
+:::
+
+## Step 6 (Multi-node clusters only): Clean up the config files
+
+If you are deploying a multi-node cluster, then the enrollment process adds all existing nodes to each newly enrolled node's `discovery.seed_hosts` setting. However, you need to go back to all of the nodes in the cluster and edit them so each node in the cluster can restart and rejoin the cluster as expected.
+
+:::{include} _snippets/clean-up-multinode.md
 :::
 
 ## Connect clients to {{es}} [_connect_clients_to_es_4]

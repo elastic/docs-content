@@ -116,6 +116,8 @@ You have several options for starting {{es}}:
 :::{include} _snippets/auto-security-config.md
 :::
 
+The password for the `elastic` user and the enrollment token for {{kib}} are output to your terminal.
+
 :::{include} _snippets/pw-env-var.md
 :::
 
