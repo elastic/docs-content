@@ -40,9 +40,9 @@ All features introduced in 8.18.0 are also available in 9.0.0.
 
 
 ### Fixes [elastic-security-900-fixes]
-* Fixes a bug that caused the Entity Analytics Dashboard refresh button to break risk score tables [#215472]({{kibana-pull}}215472).
-* Fixes AI Assistant `apiConfig` set by Security getting started page [#213971]({{kibana-pull}}213971).
-* Limits the length of `transformID` to 36 characters [#213405]({{kibana-pull}}213405).
+* Fixes a bug that caused the Entity Analytics Dashboard refresh button to break risk score tables [#215472]({{kib-pull}}215472).
+* Fixes AI Assistant `apiConfig` set by Security getting started page [#213971]({{kib-pull}}213971).
+* Limits the length of `transformID` to 36 characters [#213405]({{kib-pull}}213405).
 * Ensures that table actions use standard colors [#207743]({{kib-pull}}207743)
 * Fixes a bug with the **Save and continue** button on a {{fleet}} form [#211563]({{kib-pull}}211563)
 
