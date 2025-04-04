@@ -99,6 +99,7 @@ toc:
           - file: observability/get-started/get-started-with-dashboards.md
       - file: observability/apps.md
         children:
+          - file: observability/apps/llm-observability.md
           - file: observability/apps/application-performance-monitoring-apm.md
             children:
               - file: observability/apps/get-started-with-apm.md
