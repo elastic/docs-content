@@ -18,7 +18,7 @@ Elasticsearch autoscaling requires a valid Enterprise license or Enterprise tria
 ::::
 
 
-ECK can leverage the [autoscaling API](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-autoscaling) introduced in Elasticsearch 7.11 to adjust automatically the number of Pods and the allocated resources in a tier. Currently, autoscaling is supported for Elasticsearch [data tiers](/manage-data/lifecycle/data-tiers.md) and machine learning nodes.
+ECK can leverage the [autoscaling API](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-autoscaling) introduced in Elasticsearch 7.11 to adjust automatically the number of Pods and the allocated resources in a tier. Currently, autoscaling is supported for Elasticsearch [data tiers](/manage-data/lifecycle/data-tiers.md) and machine learning nodes. ECK scales Elasticsearch data and machine learning tiers exclusively by scaling storage. CPU and Memory are scaled *relative* to the storage resource min/max settings, and not independently.
 
 
 ### Enable autoscaling [k8s-enable]
@@ -100,7 +100,7 @@ In the case of storage the following restrictions apply:
 
 #### Scale Up and Scale Out [k8s-autoscaling-algorithm]
 
-In order to adapt the resources to the workload, the operator first attempts to scale up the resources (cpu, memory, and storage) allocated to each node in the NodeSets. The operator always ensures that the requested resources are within the limits specified in the autoscaling policy. If each individual node has reached the limits specified in the autoscaling policy, but more resources are required to handle the load, then the operator adds some nodes to the NodeSets. Nodes are added up to the `max` value specified in the `nodeCount` of the policy.
+In order to adapt the resources to the workload, the operator first attempts to scale up the resources (storage, with cpu and ram relative to storage) allocated to each node in the NodeSets. The operator always ensures that the requested resources are within the limits specified in the autoscaling policy. If each individual node has reached the limits specified in the autoscaling policy, but more resources are required to handle the load, then the operator adds some nodes to the NodeSets. Nodes are added up to the `max` value specified in the `nodeCount` of the policy.
 
 ::::{warning}
 Scaling up (vertically) is only supported if the actual storage capacity of the persistent volumes matches the capacity claimed. If the physical capacity of a PersistentVolume may be greater than the capacity claimed in the PersistentVolumeClaim, it is advised to set the same value for the `min` and the `max` setting of each resource. It is however still possible to let the operator scale out the NodeSets automatically, as in the following example:
