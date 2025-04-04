@@ -365,7 +365,7 @@ So what is the right number of replicas? If you have a cluster that has `num_nod
 
 ## Tune your queries with the Search Profiler [_tune_your_queries_with_the_search_profiler]
 
-The [Profile API](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-profile.html) provides detailed information about how each component of your queries and aggregations impacts the time it takes to process the request.
+The [Profile API](elasticsearch://reference/elasticsearch/rest-apis/search-profile.md) provides detailed information about how each component of your queries and aggregations impacts the time it takes to process the request.
 
 The [Search Profiler](../../../explore-analyze/query-filter/tools/search-profiler.md) in {{kib}} makes it easy to navigate and analyze the profile results and give you insight into how to tune your queries to improve performance and reduce load.
 
