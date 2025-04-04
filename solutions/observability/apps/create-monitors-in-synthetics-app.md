@@ -18,7 +18,6 @@ You can create synthetic monitors directly in the UI by opening an Observability
 
 This is one of [two approaches](../../../solutions/observability/apps/get-started.md) you can use to set up a synthetic monitor.
 
-
 ## Prerequisites [synthetics-get-started-ui-prerequisites]
 
 For **serverless Observability projects**, you must be signed in as a user with [Editor](../../../solutions/observability/apps/grant-users-access-to-secured-resources.md) access.
@@ -31,7 +30,6 @@ You should decide where you want to run the monitors before getting started. You
 * **{{private-location}}s**: {{private-location}}s allow you to run monitors from your own premises. To use {{private-location}}s you must create a {{private-location}} before continuing. For step-by-step instructions, refer to [Monitor resources on private networks](../../../solutions/observability/apps/monitor-resources-on-private-networks.md).
 
 Executing synthetic tests on Elastic’s global managed testing infrastructure incurs an additional charge. Tests are charged under one of two new billing dimensions depending on the monitor type. For *browser monitor* usage, there is a fee per test run. For *lightweight monitor* usage, there is a fee per region in which you run any monitors regardless of the number of test runs. For more details, refer to the [{{obs-serverless}} pricing page](https://www.elastic.co/pricing/serverless-observability).
-
 
 ## Add a lightweight monitor [synthetics-get-started-ui-add-a-lightweight-monitor]
 
@@ -46,7 +44,6 @@ To use the UI to add a lightweight monitor:
     If you don’t see any locations listed, refer to the [troubleshooting guide](../../../troubleshoot/observability/troubleshooting-synthetics.md#synthetics-troubleshooting-no-locations) for guidance.
 
     ::::
-
 
     :::::{note}
     If you’ve [added a {{private-location}}](../../../solutions/observability/apps/monitor-resources-on-private-networks.md), you’ll see your the {{private-location}} in the list of *Locations*.
@@ -67,8 +64,6 @@ To use the UI to add a lightweight monitor:
     :alt: Synthetics Create monitor UI
     :screenshot:
     :::
-
-
 
 ## Add a browser monitor [synthetics-get-started-ui-add-a-browser-monitor]
 
@@ -110,7 +105,6 @@ To use the UI to add a browser monitor:
 7. (Optional) Click **Run test** to verify that the test is valid.
 8. Click **Create monitor**.
 
-
 ## View in your Observability project [synthetics-get-started-ui-view-in-your-observability-project]
 
 Navigate to **Synthetics**, where you can see screenshots of each run, set up alerts in case of test failures, and more.
@@ -121,7 +115,6 @@ If a test does fail (shown as `down` in the Synthetics UI), you’ll be able to 
 When a monitor is created or updated, the first run might not occur immediately, but the time it takes for the first run to occur will be less than the monitor’s configured frequency. For example, if you create a monitor and configure it to run every 10 minutes, the first run will occur within 10 minutes of being created. After the first run, the monitor will begin running regularly based on the configured frequency. You can run a manual test if you want to see the results more quickly.
 
 ::::
-
 
 ## Next steps [synthetics-get-started-ui-next-steps]
 

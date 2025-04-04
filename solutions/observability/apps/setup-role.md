@@ -38,9 +38,7 @@ Create a **setup role**, called something like `synthetics_setup`:
         | [Index](../../../deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-indices) | `synthetics-*`: `auto_configure` | Permits auto-creation of indices and data streams. |
         | [Index](../../../deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-indices) | `synthetics-*`: `monitor` | Gives access to all actions that are required for monitoring (recovery, segments info, index stats, and status). |
 
-
 ::::{note}
 If users with the setup role also need to create, modify, and delete monitors, add the privileges defined in the [writer role](writer-role.md).
 ::::
-
 

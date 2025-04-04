@@ -11,13 +11,11 @@ Index templates are used to configure the backing indices of data streams as the
 
 The default APM index templates can be viewed in {{kib}}. To open **Index Management**, find **Stack Management** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Select **Index Templates** and search for `apm`. Select any of the APM index templates to view their relevant component templates.
 
-
 ## Edit the {{es}} index template [index-template-view]
 
 ::::{warning}
 Custom index mappings may conflict with the mappings defined by the {{es}} apm-data plugin and may break the APM integration and Applications UI in {{kib}}. Do not change or customize any default mappings.
 ::::
-
 
 The APM index templates by default reference a non-existent `@custom` component template for each data stream. You can create or edit this `@custom` component template to customize your {{es}} indices.
 
@@ -26,7 +24,6 @@ First, determine which [data stream](data-streams.md) you’d like to edit in {{
 Custom component templates are named following this pattern: `<name_of_data_stream>@custom`. Search for the name of the data stream, like `traces-apm`, and select its custom component template. Create one if it does not exist. In this example, that’d be, `traces-apm@custom`. Then click **Manage** → **Edit**.
 
 Add any custom metadata, index settings, or mappings.
-
 
 ### Index settings [apm-custom-index-template-index-settings]
 
@@ -53,8 +50,6 @@ In the **Index settings** step, you can specify custom [index settings](elastics
     }
     ```
 
-
-
 ### Mappings [apm-custom-index-template-mappings]
 
 [Mapping](../../../manage-data/data-store/mapping.md) is the process of defining how a document, and the fields it contains, are stored and indexed. In the **Mappings** step, you can add custom field mappings. For example, you could:
@@ -70,8 +65,6 @@ In the **Index settings** step, you can specify custom [index settings](elastics
     :::{image} /solutions/images/observability-custom-index-template-runtime-fields.png
     :alt: Editing a component template to add a new runtime field
     :::
-
-
 
 ## Roll over the data stream [apm-custom-index-template-rollover]
 

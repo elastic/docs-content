@@ -14,7 +14,6 @@ Some Applications UI features are provided via a REST API:
 * RUM source map API ([{{stack}}](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-apm-sourcemaps) or [{{serverless-short}}](https://www.elastic.co/docs/api/doc/serverless/group/endpoint-apm-sourcemaps))
 * APM agent key API ([{{stack}}](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-apm-agent-keys) or [{{serverless-short}}](https://www.elastic.co/docs/api/doc/serverless/group/endpoint-apm-agent-keys))
 
-
 ## Using the APIs [apm-api-example]
 
 Interact with APM APIs using cURL or another API tool. All APM APIs are Kibana APIs, not Elasticsearch APIs; because of this, the Kibana dev tools console cannot be used to interact with APM APIs.
@@ -28,14 +27,12 @@ For all APM APIs, you must use a request header. Supported headers are `Authoriz
 
     Whether using `Authorization: ApiKey {{credentials}}`, or `-u $USER:$PASSWORD`, users interacting with APM APIs must have [sufficient privileges](applications-ui-api-user.md).
 
-
 `kbn-xsrf: true`
 :   By default, you must use `kbn-xsrf` for all API calls, except in the following scenarios:
 
     * The API endpoint uses the `GET` or `HEAD` operations
     * The path is allowed using the `server.xsrf.allowlist` setting
     * XSRF protections are disabled using the `server.xsrf.disableProtection` setting
-
 
 `Content-Type: application/json`
 :   Applicable only when you send a payload in the API request. {{kib}} API requests and responses use JSON. Typically, if you include the `kbn-xsrf` header, you must also include the `Content-Type` header.
@@ -60,12 +57,7 @@ curl -X POST \
     }'
 ```
 
-
 ## Kibana API [kibana-api]
 
 In addition to the APM specific API endpoints, Kibana provides its own [REST API](/solutions/observability/apps/apm-server-api.md) which you can use to automate certain aspects of configuring and deploying Kibana.
-
-
-
-
 

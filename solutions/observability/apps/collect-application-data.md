@@ -7,7 +7,6 @@ applies_to:
   serverless:
 ---
 
-
 # Collect application data [apm-collect-application-data]
 
 % is required role serverless only?
@@ -33,9 +32,7 @@ Use Elastic APM agents or an OpenTelemetry language SDK to instrument a service 
 
     * This option includes Elastic Distributions of OpenTelemetry, which are customized versions of [OpenTelemetry language SDKs](https://opentelemetry.io/docs/languages/) that are optimized to work with an Elastic backend.
 
-
 **Not sure which method is right for you?** Compare the available options below.
-
 
 ### Capabilities [_capabilities]
 
@@ -60,7 +57,6 @@ Use Elastic APM agents or an OpenTelemetry language SDK to instrument a service 
 | **PHP** | PHP agent | [preview] EDOT PHP |
 | **Python** | Python agent | [preview] EDOT Python |
 | **Ruby** | Ruby agent | ![Not available](/solutions/images/observability-cross.svg "") |
-
 
 ## Service-specific options [_service_specific_options]
 

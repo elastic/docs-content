@@ -10,11 +10,9 @@ applies_to:
 
 # Multi-factor Authentication (MFA) for browser monitors [synthetics-mfa]
 
-
 Multi-factor Authentication (MFA) adds an essential layer of security to applications login processes, protecting against unauthorized access. A very common use case in Synthetics is testing user journeys involving websites protected by MFA.
 
 Synthetics supports testing websites secured by Time-based One-Time Password (TOTP), a common MFA method that provides short-lived one-time tokens to enhance security.
-
 
 ## Configuring TOTP for MFA [configuring_totp_for_mfa]
 
@@ -26,7 +24,6 @@ npx @elastic/synthetics totp <secret>
 // prints
 OTP Token: 123456
 ```
-
 
 ## Applying the TOTP Token in Browser Journeys [applying_the_totp_token_in_browser_journeys]
 

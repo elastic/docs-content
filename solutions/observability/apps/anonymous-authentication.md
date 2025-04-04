@@ -16,14 +16,12 @@ Elastic APM agents can send unauthenticated (anonymous) events to the APM Server
 
 In some cases, however, it makes sense to allow both authenticated and anonymous requests. For example, it isn’t possible to authenticate requests from front-end services as the secret token or API key can’t be protected. This is the case with the Real User Monitoring (RUM) agent running in a browser, or the Android or iOS/Swift agent running in a user application. However, you still likely want to authenticate requests from back-end services. To solve this problem, you can enable anonymous authentication in the APM Server to allow the ingestion of unauthenticated client-side APM data while still requiring authentication for server-side services.
 
-
 ## Configuring anonymous auth for client-side services [apm-anonymous-auth-config]
 
 ::::{note}
 You can only enable and configure anonymous authentication if an [API key](api-keys.md) or [secret token](secret-token.md) is configured. If neither are configured, these settings will be ignored.
 
 ::::
-
 
 :::::::{tab-set}
 
@@ -56,7 +54,6 @@ The remote IP address of an incoming request might be different from the end-use
 3. `X-Forwarded-For`
 
 If none of these headers are present, the remote address for the incoming request is used.
-
 
 ### Using a reverse proxy or load balancer [apm-derive-client-ip-concerns]
 

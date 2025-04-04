@@ -13,7 +13,6 @@ When you set up a synthetic monitor, data from the monitor is saved in [{{es}} d
 
 There are six data streams recorded by synthetic monitors: `http`, `tcp`, `icmp`, `browser`, `browser.network`, `browser.screenshot`. Elastic will retain data from each data stream for some time period, and the default time period varies by data stream. If you want to reduce the amount of storage required or store data for longer, you can customize how long to retain data for each data stream.
 
-
 ## Synthetics data streams [synthetics-manage-retention-data-streams]
 
 There are six data streams recorded by synthetic monitors:
@@ -28,7 +27,6 @@ There are six data streams recorded by synthetic monitors:
 | `browser.network` | Detailed metadata around requests for resources required by the pages being checked | 14 days |  |
 
 All types of checks record core metadata. Browser-based checks store two additional types of data: network and screenshot documents. These browser-specific indices are usually many times larger than the core metadata. The relative sizes of each vary depending on the sites being checked with network data usually being the larger of the two by a significant factor.
-
 
 ## Customize data stream lifecycles [synthetics-manage-retention-customize]
 

@@ -13,7 +13,6 @@ After you’ve [created a synthetic monitor](../../../solutions/observability/ap
 
 If you’re using {{project-monitors}}, you should also set up a workflow that uses [best practices for managing monitors effectively](../../../solutions/observability/apps/manage-monitors.md#synthetics-projects-best-practices) in a production environment.
 
-
 ## Update a monitor [manage-monitors-config]
 
 You can update a monitor’s configuration, for example, changing the interval at which the monitor runs a test.
@@ -82,21 +81,17 @@ If you [set up the monitor using the Synthetics UI](../../../solutions/observabi
 :::::::
 Alternatively, you can temporarily disable a monitor by updating the monitor’s configuration in your journey’s code or in the Synthetics UI using the *Enabled* toggle.
 
-
 ## Implement best practices for Synthetics projects [synthetics-projects-best-practices]
 
 ::::{important}
 This is only relevant to monitors created using projects.
 ::::
 
-
 After you’ve [set up a project](../../../solutions/observability/apps/create-monitors-with-project-monitors.md), there are some best practices you can implement to manage the Synthetics project effectively.
-
 
 ### Use version control [synthetics-version-control]
 
 First, it’s recommended that you version control all files in Git. If your Synthetics project is not already in a version controlled directory add it and push it to your Git host.
-
 
 ### Set up recommended workflow [synthetics-workflow]
 

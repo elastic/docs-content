@@ -11,11 +11,9 @@ applies_to:
 These commands only apply to the APM Server binary installation method. Fleet-managed users should see [Start and stop {{agent}}s on edge hosts](/reference/fleet/start-stop-elastic-agent.md).
 ::::
 
-
 The DEB and RPM packages include a service unit for Linux systems with systemd. On these systems, you can manage APM Server by using the usual systemd commands.
 
 We recommend that the apm-server process is run as a non-root user. Therefore, that is the default setup for APM Server’s DEB package and RPM installation.
-
 
 ## Start and stop APM Server [_start_and_stop_apm_server]
 
@@ -39,7 +37,6 @@ sudo systemctl enable apm-server
 sudo systemctl disable apm-server
 ```
 
-
 ## APM Server status and logs [_apm_server_status_and_logs]
 
 To get the service status, use `systemctl`:
@@ -54,7 +51,6 @@ Logs are stored by default in journald. To view the Logs, use `journalctl`:
 journalctl -u apm-server.service
 ```
 
-
 ## Customize systemd unit for APM Server [_customize_systemd_unit_for_apm_server]
 
 The systemd service unit file includes environment variables that you can override to change the default options.
@@ -68,7 +64,6 @@ The systemd service unit file includes environment variables that you can overri
 ::::{note}
 You can use `BEAT_LOG_OPTS` to set debug selectors for logging. However, to configure logging behavior, set the logging options described in [Configure logging](configure-logging.md).
 ::::
-
 
 To override these variables, create a drop-in unit file in the `/etc/systemd/system/apm-server.service.d` directory.
 
@@ -89,8 +84,6 @@ systemctl restart apm-server
 ::::{note}
 It is recommended that you use a configuration management tool to include drop-in unit files. If you need to add a drop-in manually, use `systemctl edit apm-server.service`.
 ::::
-
-
 
 #### Configuration file ownership [apm-config-file-ownership]
 
@@ -118,7 +111,6 @@ can only be writable by the owner but the permissions are "-rw-rw-r--"
 ```
 
 To correct this problem, use `chmod go-w /etc/apm-server/apm-server.yml` to remove write privileges from anyone other than the owner.
-
 
 ##### Disabling strict permission checks [_disabling_strict_permission_checks]
 

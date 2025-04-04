@@ -9,7 +9,6 @@ applies_to:
 
 * [{{es}} query examples](#apm-elasticsearch-query-examples)
 
-
 ## {{es}} query examples [apm-elasticsearch-query-examples]
 
 Elastic APM data is stored in [Data streams](data-streams.md).

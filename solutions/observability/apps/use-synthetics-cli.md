@@ -10,8 +10,6 @@ applies_to:
 
 # Use the Synthetics CLI [synthetics-command-reference]
 
-
-
 ## `@elastic/synthetics` [elastic-synthetics-command]
 
 Elastic uses the [@elastic/synthetics](https://www.npmjs.com/package/@elastic/synthetics) Node.js library to run synthetic browser tests and report the test results. The library also provides a CLI to help you scaffold, develop/run tests locally, and push tests to {{kib}}.
@@ -36,18 +34,15 @@ You will not need to use most command line flags. However, there are some you ma
 
     Params passed will be merged with params defined in your [`synthetics.config.js` file](../../../solutions/observability/apps/configure-synthetics-projects.md#synthetics-configuration-params). Params defined via the CLI take precedence.
 
-
 `--playwright-options <jsonstring>`
 :   JSON object to pass in custom Playwright options for the agent. For more details on relevant Playwright options, refer to the [the configuration docs](../../../solutions/observability/apps/configure-synthetics-projects.md#synthetics-configuration-playwright-options).
 
     Options passed will be merged with Playwright options defined in your [`synthetics.config.js` file](../../../solutions/observability/apps/configure-synthetics-projects.md#synthetics-configuration-playwright-options). Options defined via the CLI take precedence.
 
-
 `--screenshots <on|off|only-on-failure>`
 :   Control whether or not to capture screenshots at the end of each step. Options include `'on'`, `'off'`, or `'only-on-failure'`.
 
     This can also be set in the configuration file using [`monitor.screenshot`](../../../solutions/observability/apps/configure-synthetics-projects.md#synthetics-configuration-monitor). The value defined via the CLI will take precedence.
-
 
 `-c, --config <string>`
 :   Path to the configuration file. By default, test runner looks for a `synthetics.config.(js|ts)` file in the current directory. Synthetics configuration provides options to configure how your tests are run and pushed to Elastic. Allowed options are described in the [configuration file](../../../solutions/observability/apps/configure-synthetics-projects.md).
@@ -63,24 +58,20 @@ You will not need to use most command line flags. However, there are some you ma
 
     Throttling can also be disabled in the configuration file using [`monitor.throttling`](../../../solutions/observability/apps/configure-synthetics-projects.md#synthetics-configuration-monitor). The value defined via the CLI will take precedence.
 
-
 ::::{note}
 Network throttling for browser based monitors is disabled. See this [documention](https://github.com/elastic/synthetics/blob/main/docs/throttling.md) for more details.
 
 ::::
-
 
 `--no-headless`
 :   Runs with the browser in headful mode.
 
     This is the same as setting [Playwright’s `headless` option](https://playwright.dev/docs/api/class-testoptions#test-options-headless) to `false` by running `--playwright-options '{"headless": false}'`.
 
-
 ::::{note}
 Headful mode should only be used locally to see the browser and interact with DOM elements directly for testing purposes. Do not attempt to run in headful mode when running through Elastic’s global managed testing infrastructure or {{private-location}}s as this is not supported.
 
 ::::
-
 
 `-h, --help`
 :   Shows help for the `npx @elastic/synthetics` command.
@@ -90,13 +81,10 @@ The `--pattern`, `--tags`, and `--match` flags for filtering are only supported 
 
 ::::
 
-
 ::::{note}
 For debugging synthetic tests locally, you can set an environment variable, `DEBUG=synthetics npx @elastic/synthetics`, to capture Synthetics agent logs.
 
 ::::
-
-
 
 ## `@elastic/synthetics init` [elastic-synthetics-init-command]
 
@@ -109,7 +97,6 @@ npx @elastic/synthetics init <name-of-project>
 ```
 
 Read more about what’s included in a template Synthetics project in [Create a Synthetics project](../../../solutions/observability/apps/create-monitors-with-project-monitors.md).
-
 
 ## `@elastic/synthetics push` [elastic-synthetics-push-command]
 
@@ -127,7 +114,6 @@ The `push` command includes interactive prompts to prevent you from accidentally
 
 ::::
 
-
 ::::{note}
 If the journey contains external NPM packages other than the `@elastic/synthetics`, those packages will be bundled along with the journey code when the `push` command is invoked. However there are some limitations when using external packages:
 
@@ -136,7 +122,6 @@ If the journey contains external NPM packages other than the `@elastic/synthetic
 * Uploading files in journey scripts(via locator.setInputFiles) is not supported.
 
 ::::
-
 
 `--auth <string>`
 :   API key used for [authentication](../../../deploy-manage/api-keys/elasticsearch-api-keys.md). You can also set the API key via the `SYNTHETICS_API_KEY` environment variable.
@@ -147,14 +132,12 @@ If the journey contains external NPM packages other than the `@elastic/synthetic
 
     On {{obs-serverless}}, you must be logged in as a user with [Editor](../../../solutions/observability/apps/grant-users-access-to-secured-resources.md) access to create an API key.
 
-
 `--id <string>`
 :   A unique id associated with your project. It will be used for logically grouping monitors.
 
     If you used [`init` to create a project](../../../solutions/observability/apps/use-synthetics-cli.md#elastic-synthetics-init-command), this is the `<name-of-project>` you specified.
 
     This can also be set in the configuration file using [`project.id`](../../../solutions/observability/apps/configure-synthetics-projects.md#synthetics-configuration-project). The value defined via the CLI will take precedence.
-
 
 `--url <string>`
 :   The URL for the deployment or Observability Serverless project to which you want to upload the monitors.
@@ -168,12 +151,10 @@ If the journey contains external NPM packages other than the `@elastic/synthetic
 
     This can also be set in the configuration file using [`project.space`](../../../solutions/observability/apps/configure-synthetics-projects.md#synthetics-configuration-project). The value defined via the CLI will take precedence.
 
-
 `--schedule <number>`
 :   The interval (in minutes) at which the monitor should run.
 
     This can also be set in the configuration file using [`monitor.schedule`](../../../solutions/observability/apps/configure-synthetics-projects.md#synthetics-configuration-monitor). The value defined via the CLI will take precedence.
-
 
 [`--locations Array<SyntheticsLocationsType>`](https://github.com/elastic/synthetics/blob/v1.3.0/src/locations/public-locations.ts#L28-L37)
 :   Where to deploy the monitor. Monitors can be deployed in multiple locations so that you can detect differences in availability and response times across those locations.
@@ -182,14 +163,12 @@ If the journey contains external NPM packages other than the `@elastic/synthetic
 
     This can also be set in the configuration file using [`monitor.locations` in the configuration file](../../../solutions/observability/apps/configure-synthetics-projects.md#synthetics-configuration-monitor). The value defined via the CLI will take precedence.
 
-
 `--private-locations Array<string>`
 :   The [{{private-location}}s](../../../solutions/observability/apps/monitor-resources-on-private-networks.md) to which the monitors will be deployed. These {{private-location}}s refer to locations hosted and managed by you, whereas `locations` are hosted by Elastic. You can specify a {{private-location}} using the location’s name.
 
     To list available {{private-location}}s, refer to [`@elastic/synthetics locations`](../../../solutions/observability/apps/use-synthetics-cli.md#elastic-synthetics-locations-command).
 
     This can also be set in the configuration file using [`monitor.privateLocations` in the configuration file](../../../solutions/observability/apps/configure-synthetics-projects.md#synthetics-configuration-monitor). The value defined via the CLI will take precedence.
-
 
 `--fields <string>`
 :   A list of key-value pairs that will be sent with each monitor event. The `fields` are appended to {{es}} documents as `labels`, and those labels are displayed in {{kib}} in the *Monitor details* panel in the [individual monitor’s *Overview* tab](../../../solutions/observability/apps/analyze-data-from-synthetic-monitors.md#synthetics-analyze-individual-monitors-overview).
@@ -198,14 +177,11 @@ If the journey contains external NPM packages other than the `@elastic/synthetic
 
     This can also be set in the configuration file using [the `monitor.fields` option](../../../solutions/observability/apps/configure-synthetics-projects.md#synthetics-configuration-monitor). The value defined via the CLI will take precedence.
 
-
 `--yes`
 :   The `push` command includes interactive prompts to prevent you from accidentally deleting or duplicating monitors. If running the CLI non-interactively, you can override these prompts using the `--yes` option. When the `--yes` option is passed to `push`:
 
     * If you `push` a Synthetics project that used to contain one or more monitors but no longer contains any monitors, all monitors associated with the Synthetics project ID being pushed will be deleted.
     * If you `push` a Synthetics project that’s already been pushed using one Synthetics project ID and then try to `push` it using a *different* ID, it will create duplicates of all monitors in the Synthetics project.
-
-
 
 ## Tag monitors [tagging-and-filtering]
 
@@ -234,7 +210,6 @@ tags:
 
 To apply tags to all browser and lightweight monitors, configure using [the `monitor.tags`](../../../solutions/observability/apps/configure-synthetics-projects.md#synthetics-configuration-monitor) field in the `synthetics.config.ts` file.
 
-
 ### Filter monitors [_filtering_monitors]
 
 When running the `npx @elastic/synthetics push` command, you can filter the monitors that are pushed to {{kib}} using the following flags:
@@ -254,7 +229,6 @@ You can combine these techniques and push the monitors to different Kibana clust
 npx @elastic/synthetics push --config synthetics.qa.config.ts --tags env:qa
 npx @elastic/synthetics push --config synthetics.prod.config.ts --tags env:prod
 ```
-
 
 ## `@elastic/synthetics locations` [elastic-synthetics-locations-command]
 
@@ -277,7 +251,6 @@ To list both locations on Elastic’s global managed infrastructure and {{privat
 ::::{note}
 If an administrator has disabled Elastic managed locations for the role you are assigned and you do *not* include `--url` and `--auth`, all global locations managed by Elastic will be listed. However, you will not be able to push to these locations with your API key and will see an error: *You don’t have permission to use Elastic managed global locations*. For more details, refer to the [troubleshooting docs](../../../troubleshoot/observability/troubleshooting-synthetics.md#synthetics-troubleshooting-public-locations-disabled).
 ::::
-
 
 ## `@elastic/synthetics totp <secret>` [elastic-synthetics-totp-command]
 
@@ -306,7 +279,6 @@ npx @elastic/synthetics totp <secret> --issuer <issuer> --label <label>
 :::
 
 ::::
-
 
 `secret`
 :   The encoded secret key used to generate the TOTP.

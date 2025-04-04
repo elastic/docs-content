@@ -29,7 +29,6 @@ Results from machine learning jobs are shown in multiple places throughout the A
     :screenshot:
     :::
 
-
 ## Enable anomaly detection [observability-apm-integrate-with-machine-learning-enable-anomaly-detection]
 
 To enable machine learning anomaly detection:
@@ -42,11 +41,9 @@ To enable machine learning anomaly detection:
 
 That’s it! After a few minutes, the job will begin calculating results; it might take additional time for results to appear on your service maps. To manage existing jobs, click **Manage jobs** (or go to **Machine learning** → **Jobs**).
 
-
 ## Anomaly detection warning [observability-apm-integrate-with-machine-learning-anomaly-detection-warning]
 
 To make machine learning as easy as possible to set up, Elastic will warn you when filtered to an environment without a machine learning job.
-
 
 ## Unknown service health [observability-apm-integrate-with-machine-learning-unknown-service-health]
 

@@ -6,10 +6,7 @@ applies_to:
   stack:
 ---
 
-
-
 # APM Server advanced setup [apm-setting-up-and-running]
-
 
 Before reading this section, see the [getting started documentation](fleet-managed-apm-server.md) for basic installation and running instructions.
 
@@ -21,10 +18,4 @@ This section includes additional information on how to set up and run APM Server
 * [Tune data ingestion](tune-data-ingestion.md)
 * [High Availability](high-availability.md)
 * [Run APM Server on Docker](apm-server-binary.md#apm-running-on-docker)
-
-
-
-
-
-
 

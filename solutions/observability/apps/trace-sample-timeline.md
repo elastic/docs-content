@@ -22,12 +22,10 @@ View a span in detail by clicking on it in the timeline waterfall. For example, 
 A [span](/solutions/observability/apps/spans.md) is the duration of a single event. Spans are automatically captured by APM agents, and you can also define custom spans. Each span has a type and is defined by a different color in the timeline/waterfall visualization.
 ::::
 
-
 :::{image} /solutions/images/observability-apm-span-detail.png
 :alt: Example view of a span detail in the Applications UI
 :screenshot:
 :::
-
 
 ## Investigate [trace-sample-investigate]
 
@@ -40,7 +38,6 @@ The trace sample timeline features an **Investigate** button which provides a qu
 * the [service map](../../../solutions/observability/apps/service-map.md) filtered by the selected trace
 * the selected transaction in **Discover**
 * your [custom links](../../../solutions/observability/apps/create-custom-links.md)
-
 
 ## Distributed tracing [distributed-tracing]
 

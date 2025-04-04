@@ -18,7 +18,6 @@ To access this page, go to **{{observability}} > Uptime > Monitors**. Click on a
 
 The monitor detail screen displays several panels of information.
 
-
 ## Status panel [uptime-status-panel]
 
 The **Status** panel displays a summary of the latest information regarding your monitor. You can view its availability, monitor ID, type, and any assigned tags. You can click a link to visit the targeted URL, view when the TLS certificate expires, and determine the amount of time elapsed since the last check.
@@ -32,7 +31,6 @@ The **Monitoring from** list displays service availability per monitoring locati
 
 To display a map with each location as a pinpoint, you can toggle the availability view from list view to map view.
 
-
 ## Monitor duration [uptime-monitor-duration]
 
 The **Monitor duration** chart displays the timing for each check that was performed. The visualization helps you to gain insights into how quickly requests resolve by the targeted endpoint and give you a sense of how frequently a host or endpoint was down in your selected time span.
@@ -44,7 +42,6 @@ Included on this chart is the {{anomaly-detect}} ({{ml}}) integration. For more 
 :screenshot:
 :::
 
-
 ## Pings over time [uptime-pings-chart]
 
 The **Pings over time** chart is a graphical representation of the check statuses over time. Hover over the charts to display crosshairs with specific numeric data.
@@ -53,7 +50,6 @@ The **Pings over time** chart is a graphical representation of the check statuse
 :alt: Pings over time chart
 :screenshot:
 :::
-
 
 ## Check history [uptime-history-panel]
 

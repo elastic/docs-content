@@ -11,16 +11,13 @@ applies_to:
 
 Elastic Synthetics was designed with security in mind encrypting both persisted and transmitted data. This page catalogs the points within Elastic Synthetics where data is either stored or transmitted in an encrypted fashion.
 
-
 ## Synthetics UI (Kibana App) [_synthetics_ui_kibana_app]
 
 Data is stored in [Kibana Secure Saved Objects](../../../deploy-manage/security/secure-saved-objects.md), with sensitive fields encrypted. These fields include your script source, params, and global params.
 
-
 ## Synthetics Service [_synthetics_service]
 
 The Global Elastic Synthetics Service performs all communication of sensitive data (both internally, and with Kibana) over encrypted connections and encrypts all data persisted to disk as well.
-
 
 ## Synthetics Private Locations [_synthetics_private_locations]
 

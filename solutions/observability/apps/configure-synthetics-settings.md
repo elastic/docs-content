@@ -11,7 +11,6 @@ applies_to:
 
 There are several Synthetics settings you can adjust in Observability.
 
-
 ## Alerting [synthetics-settings-alerting]
 
 Alerting enables you to detect complex conditions using **rules** across Observability and send a notification using **connectors**.
@@ -23,7 +22,6 @@ When you create a new synthetic monitor, new default synthetics rules will be ap
 
     * **Monitor status rule** for receiving notifications for errors and outages.
     * **TLS certificate rule** for receiving notifications when one or more of your HTTP or TCP lightweight monitors has a TLS certificate expiring within a specified threshold or when it exceeds an age limit.
-
 
 However, the automatically created Synthetics internal alert is intentionally preconfigured, and some configuration options can’t be changed. For example, you can’t change how often it checks the rule.
 
@@ -48,14 +46,12 @@ You can enable and disable default alerts for individual monitors in a few ways:
 
 ::::
 
-
 In the **Alerting** tab on the Synthetics Settings page, you can add and configure connectors. If you are running in Elastic Cloud, then an SMTP connector will automatically be configured, allowing you to easily set up email alerts. Read more about all available connectors in [Action types](../../../solutions/observability/incident-management/create-an-apm-anomaly-rule.md).
 
 :::{image} /solutions/images/observability-synthetics-settings-alerting.png
 :alt: Alerting tab on the Synthetics Settings page in {kib}
 :screenshot:
 :::
-
 
 ## {{private-location}}s [synthetics-settings-private-locations]
 
@@ -68,7 +64,6 @@ In the **{{private-location}}s** tab, you can add and manage {{private-location}
 :screenshot:
 :::
 
-
 ## Global parameters [synthetics-settings-global-parameters]
 
 Global parameters can be defined once and used across the configuration of lightweight and browser-based monitors.
@@ -80,7 +75,6 @@ In the **Global parameters** tab, you can define variables and parameters. This 
 :screenshot:
 :::
 
-
 ## Data retention [synthetics-settings-data-retention]
 
 When you set up a synthetic monitor, data from the monitor is saved in [Elasticsearch data streams](../../../manage-data/data-store/data-streams.md), an append-only structure in Elasticsearch. You can customize how long synthetics data is stored by creating your own index lifecycle policy and attaching it to the relevant custom Component Template in Stack Management.
@@ -91,7 +85,6 @@ In the **Data retention** tab, use the links to jump to the relevant policy for 
 :alt: Data retention tab on the Synthetics Settings page in {kib}
 :screenshot:
 :::
-
 
 ## Project API keys [synthetics-settings-api-keys]
 
@@ -105,7 +98,6 @@ In the **Project API keys** tab, you can generate project API keys to use with y
 In a serverless project, to create a Project API key you must be logged in as a user with [Editor](../../../solutions/observability/apps/grant-users-access-to-secured-resources.md) access.
 
 ::::
-
 
 :::{image} /solutions/images/observability-synthetics-settings-api-keys.png
 :alt: Project API keys tab on the Synthetics Settings page in {kib}

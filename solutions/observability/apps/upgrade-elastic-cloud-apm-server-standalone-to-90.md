@@ -4,10 +4,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-upgrade-8.0-cloud-standalone.html
 ---
 
-
-
 # Upgrade Elastic Cloud APM Server standalone to 8. [apm-upgrade-8.0-cloud-standalone]
-
 
 This upgrade guide is for the standalone method of running APM Server. Only use this guide if both of the following are true:
 

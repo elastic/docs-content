@@ -10,7 +10,6 @@ applies_to:
 
 # Drill down into application data [apm-ui-drill-down]
 
-
 Notice something awry? Select a service or trace and dive deeper with:
 
 * [Transactions](../../../solutions/observability/apps/transactions-2.md)

@@ -51,7 +51,6 @@ In general, these are types of privileges you’ll work with:
     * Create, modify, and delete monitors.
     * View and create visualizations that access Synthetics data.
 
-
 Read more about user roles in [Assign user roles and privileges](../../../deploy-manage/users-roles/cloud-organization/user-roles.md).
 
 :::

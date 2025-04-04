@@ -10,7 +10,6 @@ applies_to:
 
 Metadata can enrich your events and make application performance monitoring even more useful. Let’s explore the different types of metadata that Elastic APM offers.
 
-
 ## Labels [apm-data-model-labels]
 
 Labels add **indexed** information to transactions, spans, and errors. Indexed means the data is searchable and aggregatable in {{es}}. Add additional key-value pairs to define multiple labels.
@@ -26,8 +25,6 @@ Label values can be a string, boolean, or number, although some agents only supp
 Avoid defining too many user-specified labels. Defining too many unique fields in an index is a condition that can lead to a [mapping explosion](../../../manage-data/data-store/mapping.md#mapping-limit-settings).
 ::::
 
-
-
 ### Agent API reference [_agent_api_reference]
 
 * Go: [`SetLabel`](apm-agent-go://reference/api-documentation.md#context-set-label)
@@ -38,7 +35,6 @@ Avoid defining too many user-specified labels. Defining too many unique fields i
 * Python: [`elasticapm.label()`](apm-agent-python://reference/api-reference.md#api-label)
 * Ruby:  [`set_label`](apm-agent-ruby://reference/api-reference.md#api-agent-set-label)
 * Rum: [`addLabels`](apm-agent-rum-js://reference/agent-api.md#apm-add-labels)
-
 
 ## Custom context [apm-data-model-custom]
 
@@ -55,8 +51,6 @@ Non-indexed information is useful for providing contextual information to help y
 Setting a circular object, a large object, or a non JSON serializable object can lead to errors.
 ::::
 
-
-
 ### Agent API reference [_agent_api_reference_2]
 
 * Go: [`SetCustom`](apm-agent-go://reference/api-documentation.md#context-set-custom)
@@ -69,7 +63,6 @@ Setting a circular object, a large object, or a non JSON serializable object can
 * Ruby: [`set_custom_context`](apm-agent-ruby://reference/api-reference.md#api-agent-set-custom-context)
 * Rum: [`setCustomContext`](apm-agent-rum-js://reference/agent-api.md#apm-set-custom-context)
 
-
 ## User context [apm-data-model-user]
 
 User context adds **indexed** user information to transactions and errors. Indexed means the data is searchable and aggregatable in {{es}}.
@@ -78,7 +71,6 @@ User context adds **indexed** user information to transactions and errors. Index
 * {{es}} type: [keyword](elasticsearch://reference/elasticsearch/mapping-reference/keyword.md)
 * {{es}} fields: `user.email` | `user.name` | `user.id`
 * Applies to: [Transactions](transactions.md) | [Errors](errors.md)
-
 
 ### Agent API reference [_agent_api_reference_3]
 

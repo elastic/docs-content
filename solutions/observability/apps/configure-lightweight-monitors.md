@@ -17,7 +17,6 @@ Monitor the status of network endpoints using the following lightweight checks:
 
 Lightweight monitors can be configured using either the [Synthetics UI](../../../solutions/observability/apps/configure-lightweight-monitors.md#synthetics-lightweight-ui) or [{{project-monitors-cap}}](../../../solutions/observability/apps/configure-lightweight-monitors.md#synthetics-lightweight-projects).
 
-
 ## Synthetics UI [synthetics-lightweight-ui]
 
 To use the UI, go to the Synthetics UI in {{kib}} or in your Observability Serverless project to create and configure monitors. For step-by-step instructions, refer to [Use the Synthetics UI](../../../solutions/observability/apps/create-monitors-in-synthetics-app.md).
@@ -26,7 +25,6 @@ To use the UI, go to the Synthetics UI in {{kib}} or in your Observability Serve
 :alt: Synthetics Create monitor UI
 :screenshot:
 :::
-
 
 ## {{project-monitors-cap}} [synthetics-lightweight-projects]
 
@@ -68,7 +66,6 @@ Each monitor type also has additional configuration options that are specific to
 
 The `tcp` and `http` monitor types both support SSL/TLS and some proxy settings.
 
-
 ### Common options [synthetics-lightweight-common-options]
 
 You can specify the following options when defining a synthetic monitor in any location. These options are the same for all monitors. Each monitor type has additional configuration options that are specific to that monitor type.
@@ -83,7 +80,6 @@ $$$monitor-type$$$
     * `http`: Connects via HTTP and optionally verifies that the host returns the expected response.
     * `icmp`: Uses an ICMP (v4 and v6) Echo Request to ping the configured hosts. Requires special permissions or root access.
     * `tcp`: Connects via TCP and optionally verifies the endpoint by sending and/or receiving a custom payload.
-
 
 $$$monitor-id$$$
 
@@ -109,7 +105,6 @@ $$$monitor-id$$$
 
     ::::
 
-
 $$$monitor-name$$$
 
 **`name`**
@@ -127,14 +122,12 @@ $$$monitor-name$$$
     name: Example website
     ```
 
-
 $$$monitor-service_name$$$
 
 **`service.name`**
 :   Type: [string](../../../solutions/observability/apps/configure-lightweight-monitors.md#synthetics-lightweight-data-string)
 
     APM service name for this monitor. Corresponds to the `service.name` ECS field. Set this when monitoring an app that is also using APM to enable integrations between Synthetics and APM data in Kibana or your Observability Serverless project.
-
 
 $$$monitor-enabled$$$
 
@@ -151,7 +144,6 @@ $$$monitor-enabled$$$
     enabled: false
     ```
 
-
 $$$monitor-schedule$$$
 
 **`schedule`**
@@ -163,13 +155,11 @@ $$$monitor-schedule$$$
     Schedules with less than 1 minute resolution will be saved to the nearest minute. For example, `@every 5s` will be changed to `@every 60s` when the monitor is pushed using the CLI.
     ::::
 
-
     **Example**: Run the task every 5 minutes from the time the monitor was started.
 
     ```yaml
     schedule: @every 5m
     ```
-
 
 $$$monitor-timeout$$$
 
@@ -185,7 +175,6 @@ $$$monitor-timeout$$$
     ```yaml
     timeout: 2m
     ```
-
 
 $$$monitor-tags$$$
 
@@ -206,7 +195,6 @@ $$$monitor-tags$$$
     tags: ["tag one", "tag two"]
     ```
 
-
 $$$monitor-mode$$$
 
 **`mode`**
@@ -220,7 +208,6 @@ $$$monitor-mode$$$
     **Default**: `any`
 
     **Example**: If you’re using a DNS-load balancer and want to ping every IP address for the specified hostname, you should use `all`.
-
 
 $$$monitor-ipv4$$$
 
@@ -237,7 +224,6 @@ $$$monitor-ipv4$$$
     ipv4: false
     ```
 
-
 $$$monitor-ipv6$$$
 
 **`ipv6`**
@@ -252,7 +238,6 @@ $$$monitor-ipv6$$$
     ```yaml
     ipv6: false
     ```
-
 
 $$$monitor-alert$$$
 
@@ -270,7 +255,6 @@ $$$monitor-alert$$$
         alert.status.enabled: true
         ```
 
-
     **`tls.enabled`** ([boolean](../../../solutions/observability/apps/configure-lightweight-monitors.md#synthetics-lightweight-data-bool))
     :   Enable TLS certificate alerts on this monitor.
 
@@ -281,7 +265,6 @@ $$$monitor-alert$$$
         ```yaml
         alert.tls.enabled: true
         ```
-
 
 $$$monitor-retest_on_failure$$$
 
@@ -297,7 +280,6 @@ $$$monitor-retest_on_failure$$$
     ```yaml
     retest_on_failure: false
     ```
-
 
 $$$monitor-locations$$$
 
@@ -330,7 +312,6 @@ $$$monitor-locations$$$
 
     ::::
 
-
 $$$monitor-private_locations$$$
 
 **`private_locations`**
@@ -362,7 +343,6 @@ $$$monitor-private_locations$$$
 
     ::::
 
-
 $$$monitor-fields$$$
 
 **`fields`**
@@ -381,8 +361,6 @@ $$$monitor-fields$$$
     fields.team: synthetics
     ```
 
-
-
 ### HTTP options [synthetics-lightweight-http]
 
 The options described here configure Synthetics to connect via HTTP and optionally verify that the host returns the expected response.
@@ -396,7 +374,6 @@ $$$monitor-http-urls$$$
 
     **Required**. The URL to ping.
 
-
 $$$monitor-http-max_redirects$$$
 
 **`max_redirects`**
@@ -409,7 +386,6 @@ $$$monitor-http-max_redirects$$$
     When this option is set to a value greater than `0`, the `monitor.ip` field will no longer be reported, as multiple DNS requests across multiple IPs may return multiple IPs. Fine-grained network timing data will also not be recorded, as with redirects that data will span multiple requests. Specifically the fields `http.rtt.content.us`, `http.rtt.response_header.us`, `http.rtt.total.us`, `http.rtt.validate.us`, `http.rtt.write_request.us` and `dns.rtt.us` will be omitted.
 
     **Default**: `0`
-
 
 $$$monitor-http-proxy_headers$$$
 
@@ -427,7 +403,6 @@ $$$monitor-http-proxy_url$$$
     http://proxy.mydomain.com:3128
     ```
 
-
 $$$monitor-http-username$$$
 
 **`username`**
@@ -437,14 +412,12 @@ $$$monitor-http-username$$$
 
     You need to specify credentials when your `check.response` settings require it. For example, you can check for a 403 response (`check.response.status: [403]`) without setting credentials.
 
-
 $$$monitor-http-password$$$
 
 **`password`**
 :   Type: [string](../../../solutions/observability/apps/configure-lightweight-monitors.md#synthetics-lightweight-data-string)
 
     The password for authenticating with the server. This setting is optional.
-
 
 $$$monitor-http-ssl$$$
 
@@ -466,7 +439,6 @@ $$$monitor-http-ssl$$$
         supported_protocols: ["TLSv1.0", "TLSv1.1", "TLSv1.2"]
     ```
 
-
 $$$monitor-http-headers$$$
 
 **`headers`**
@@ -475,7 +447,6 @@ $$$monitor-http-headers$$$
     Controls the indexing of the HTTP response headers `http.response.body.headers` field. Set `response.include_headers` to `false` to disable.
 
     **Default**: `true`
-
 
 $$$monitor-http-response$$$
 
@@ -489,12 +460,10 @@ $$$monitor-http-response$$$
         * `never`: Never include the body.
         * `always`: Always include the body with checks.
 
-
     **`include_body_max_bytes`** ([number](../../../solutions/observability/apps/configure-lightweight-monitors.md#synthetics-lightweight-data-numbers))
     :   Set `response.include_body_max_bytes` to control the maximum size of the stored body contents.
 
         **Default**: `1024`
-
 
 $$$monitor-http-check$$$
 
@@ -507,18 +476,15 @@ $$$monitor-http-check$$$
 
         The HTTP method to use.
 
-
     **`headers`**
     :   Type: [HTTP headers](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers)
 
         A dictionary of additional HTTP headers to send. By default Synthetics will set the *User-Agent* header to identify itself.
 
-
     **`body`**
     :   Type: [string](../../../solutions/observability/apps/configure-lightweight-monitors.md#synthetics-lightweight-data-string)
 
         Optional request body content.
-
 
 **Example**: This monitor POSTs an `x-www-form-urlencoded` string to the endpoint `/demo/add`.
 
@@ -530,7 +496,6 @@ check.request:
   # urlencode the body:
   body: "name=first&email=someemail%40someemailprovider.com"
 ```
-
 
 **`response`**
 :   The expected `response`.
@@ -549,12 +514,10 @@ check.request:
           status: [200, 201]
         ```
 
-
     **`headers`**
     :   Type: [HTTP headers](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers)
 
         The required response headers.
-
 
     **`body.positive`**
     :   Type: list of [string](../../../solutions/observability/apps/configure-lightweight-monitors.md#synthetics-lightweight-data-string)s
@@ -573,7 +536,6 @@ check.request:
               - foo
               - Foo
         ```
-
 
     **`body.negative`** (list of [string](../../../solutions/observability/apps/configure-lightweight-monitors.md#synthetics-lightweight-data-string)s)
     :   A list of regular expressions to match the body output negatively. Return match failed if single expression matches. HTTP response bodies of up to 100MiB are supported.
@@ -607,7 +569,6 @@ check.request:
               - Bar
         ```
 
-
     **`json`**
     :   A list of expressions executed against the body when parsed as JSON. Body sizes must be less than or equal to 100 MiB.
 
@@ -626,8 +587,6 @@ check.request:
             - description: check status
               expression: 'foo.bar == "myValue"'
         ```
-
-
 
 ### ICMP options [synthetics-lightweight-icmp]
 
@@ -652,7 +611,6 @@ $$$monitor-icmp-hosts$$$
     hosts: "myhost"
     ```
 
-
 $$$monitor-icmp-wait$$$
 
 **`wait`**
@@ -667,8 +625,6 @@ $$$monitor-icmp-wait$$$
     ```yaml
     wait: 1m
     ```
-
-
 
 ### TCP options [synthetics-lightweight-tcp]
 
@@ -690,7 +646,6 @@ $$$monitor-tcp-hosts$$$
         * `host` is the hostname.
         * `port` is the port number.
 
-
     **Examples**:
 
     ```yaml
@@ -700,7 +655,6 @@ $$$monitor-tcp-hosts$$$
     ```yaml
     hosts: "tcp://localhost:8000"
     ```
-
 
 $$$monitor-tcp-check$$$
 
@@ -720,7 +674,6 @@ $$$monitor-tcp-check$$$
       receive: 'Hello World'
     ```
 
-
 $$$monitor-tcp-proxy_url$$$
 
 **`proxy_url`**
@@ -738,7 +691,6 @@ $$$monitor-tcp-proxy_url$$$
     proxy_url: socks5://user:password@socks5-proxy:2233
     ```
 
-
 $$$monitor-tcp-proxy_use_local_resolver$$$
 
 **`proxy_use_local_resolver`**
@@ -747,7 +699,6 @@ $$$monitor-tcp-proxy_use_local_resolver$$$
     A Boolean value that determines whether hostnames are resolved locally instead of being resolved on the proxy server. The default value is `false`, which means that name resolution occurs on the proxy server.
 
     **Default**: `false`
-
 
 $$$monitor-tcp-ssl$$$
 
@@ -766,12 +717,9 @@ $$$monitor-tcp-ssl$$$
 
     Also see [Configure SSL](beats://reference/heartbeat/configuration-ssl.md) for a full description of the `ssl` options.
 
-
-
 ### Data types reference [synthetics-lightweight-data-types]
 
 Values of configuration settings are interpreted as required by Synthetics. If a value can’t be correctly interpreted as the required type - for example a string is given when a number is required - Synthetics will fail to start up.
-
 
 #### Boolean [synthetics-lightweight-data-bool]
 
@@ -781,7 +729,6 @@ Boolean values can be either `true` or `false`. Alternative names for `true` are
 enabled: true
 disabled: false
 ```
-
 
 #### Number [synthetics-lightweight-data-numbers]
 
@@ -797,8 +744,6 @@ float: 5.4
 Some settings only support a restricted number range.
 ::::
 
-
-
 #### String [synthetics-lightweight-data-string]
 
 In [YAML](http://www.yaml.org), multiple styles of string definitions are supported: double-quoted, single-quoted, unquoted.
@@ -813,8 +758,6 @@ Unquoted style requires no quotes, but does not support any escaping and can’t
 Single-quoted style is recommended when defining regular expressions, event format strings, windows file paths, or non-alphabetical symbolic characters.
 ::::
 
-
-
 #### Duration [synthetics-lightweight-data-duration]
 
 Durations require a numeric value with optional fraction and required unit. Valid time units are `ns`, `us`, `ms`, `s`, `m`, `h`. Sometimes features based on durations can be disabled by using zero or negative durations.
@@ -824,7 +767,6 @@ duration1: 2.5s
 duration2: 6h
 duration_disabled: -1s
 ```
-
 
 #### Regular expression [synthetics-lightweight-data-regex]
 

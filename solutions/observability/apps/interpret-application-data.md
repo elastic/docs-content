@@ -10,7 +10,6 @@ applies_to:
 
 # Interpret application data [observability-apm-interpret-data]
 
-
 Learn how to get the most out of your data using the Applications UI.
 
 % Stateful only for exploring mobile sessions with Discover?

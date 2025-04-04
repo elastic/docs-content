@@ -16,8 +16,6 @@ Indices created in 8.15.x and 8.16.x might be managed by [data stream lifecycle 
 
 ::::
 
-
-
 ## Default policies [index-lifecycle-policies-default]
 
 Each APM data stream has its own default lifecycle policy including a delete definition and a rollover definition.
@@ -51,14 +49,11 @@ Rollover (writing to a new index) prevents a single index from growing too large
 Default lifecycle policies can change between minor versions. This is not considered a breaking change as index management should continually improve and adapt to new features.
 ::::
 
-
-
 ## Configure a custom index lifecycle policy [apm-data-streams-custom-policy]
 
 Mappings and settings for data streams can be customized through the creation of `*@custom` component templates, which are referenced by the index templates created by the {{es}} apm-data plugin. The easiest way to configure a custom index lifecycle policy per data stream is to edit this template.
 
 This tutorial explains how to apply a custom index lifecycle policy to the `traces-apm` data stream.
-
 
 ## Step 1: View data streams [apm-data-streams-custom-one]
 
@@ -74,15 +69,12 @@ The **Data Streams** view in {{kib}} shows you data streams, index templates, an
     :screenshot:
     :::
 
-
-
 ## Step 2: Create an index lifecycle policy [apm-data-streams-custom-two]
 
 1. To open **Lifecycle Policies**, find **Stack Management** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Click **Create policy**.
 
 Name your new policy; For this tutorial, I’ve chosen `custom-traces-apm-policy`. Customize the policy to your liking, and when you’re done, click **Save policy**.
-
 
 ## Step 3: Apply the index lifecycle policy [apm-data-streams-custom-three]
 
@@ -108,8 +100,6 @@ To apply your new index lifecycle policy to the `traces-apm-*` data stream, edit
     :screenshot:
     :::
 
-
-
 ## Step 4: Roll over the data stream (optional) [apm-data-streams-custom-four]
 
 To confirm that the data stream is now using the new index template and {{ilm-init}} policy, you can either repeat [step one](#apm-data-streams-custom-one), or navigate to **{{dev-tools-app}}** and run the following:
@@ -119,7 +109,6 @@ GET /_data_stream/traces-apm-default <1>
 ```
 
 1. The name of the data stream we’ve been hacking on appended with your <namespace>
-
 
 The result should include the following:
 
@@ -139,13 +128,11 @@ The result should include the following:
 1. The name of the custom index template created in step three
 2. The name of the {{ilm-init}} policy applied to the new component template in step two
 
-
 New {{ilm-init}} policies only take effect when new indices are created, so you either must wait for a rollover to occur (usually after 30 days or when the index size reaches 50 GB), or force a rollover using the [{{es}} rollover API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-rollover):
 
 ```bash
 POST /traces-apm-default/_rollover/
 ```
-
 
 ## Namespace-level index lifecycle policies [apm-data-streams-custom-policy-namespace]
 

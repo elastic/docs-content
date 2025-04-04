@@ -9,7 +9,6 @@ applies_to:
 
 Elastic Mobile APM provides session tracking by attaching a `session.id`, a guid, to every span and event. This allows for the recall of the activities of a specific user during a specific period of time. The best way recall these data points is using [Discover](../../../explore-analyze/discover/document-explorer.md). This guide will explain how to do that.
 
-
 ## Viewing sessions with Discover [viewing-sessions-with-discover]
 
 The first step is to find the relevant `session.id`. In this example, we’ll walk through investigating a crash. Since all events and spans have `session.id` attributes, a crash is no different.

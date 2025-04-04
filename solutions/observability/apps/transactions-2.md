@@ -11,7 +11,6 @@ applies_to:
 
 A *transaction* describes an event captured by an Elastic APM agent instrumenting a service. APM agents automatically collect performance metrics on HTTP requests, database queries, and much more.
 
-
 :::{image} /solutions/images/observability-apm-transactions-overview.png
 :alt: Example view of transactions table in the Applications UI
 :screenshot:
@@ -37,7 +36,6 @@ The **Latency**, **Throughput**, **Failed transaction rate**, **Time spent by sp
 
     ::::
 
-
 **Time spent by span type**
    Visualize where your application is spending most of its time. For example, is your app spending time in external calls, database processing, or application code execution?
 
@@ -45,10 +43,8 @@ The **Latency**, **Throughput**, **Failed transaction rate**, **Time spent by sp
 
     It’s important to note that if you have asynchronous spans, the sum of all span times may exceed the duration of the transaction.
 
-
 **Cold start rate**
    Only applicable to serverless transactions, this chart displays the percentage of requests that trigger a cold start of a serverless function. See [Cold starts](../../../solutions/observability/apps/observe-lambda-functions.md#apm-lambda-cold-start-info) for more information.
-
 
 ## Transactions table [transactions-table]
 
@@ -81,7 +77,6 @@ The transaction overview page is customized for the JavaScript RUM agent. Specif
 
 Additional RUM goodies, like core vitals, and visitor breakdown by browser, location, and device, are available in the Observability User Experience tab.
 
-
 ## Transaction details [transaction-details]
 
 Selecting a transaction group will bring you to the **transaction** details. This page is visually similar to the transaction overview, but it shows data from all transactions within the selected transaction group.
@@ -90,7 +85,6 @@ Selecting a transaction group will bring you to the **transaction** details. Thi
 :alt: Example view of response time distribution
 :screenshot:
 :::
-
 
 ### Latency distribution [transaction-duration-distribution]
 
@@ -102,7 +96,6 @@ The latency distribution shows a plot of all transaction durations for the given
 :::
 
 Click and drag to select a latency duration *bucket* to display up to 500 trace samples.
-
 
 ### Trace samples [transaction-trace-sample]
 
@@ -124,7 +117,6 @@ More information on timeline waterfalls is available in [spans](../../../solutio
 
 ::::
 
-
 **Trace sample metadata**
 
 Learn more about a trace sample in the **Metadata** tab:
@@ -145,7 +137,6 @@ All of this data is stored in documents in Elasticsearch. This means you can sel
 
 ::::
 
-
 **Trace sample logs**
 
 The **Logs** tab displays logs related to the sampled trace.
@@ -160,7 +151,6 @@ To learn how to correlate your logs with your instrumented services, see [Stream
 :alt: APM logs tab
 :screenshot:
 :::
-
 
 ### Correlations [transaction-latency-correlations]
 

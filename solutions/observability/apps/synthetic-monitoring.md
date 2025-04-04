@@ -14,7 +14,6 @@ The Synthetics UI is for viewing result data from monitors created and managed d
 
 ::::
 
-
 Synthetics periodically checks the status of your services and applications. Monitor the availability of network endpoints and services using the following types of monitors:
 
 * [Lightweight HTTP/S, TCP, and ICMP monitors](../../../solutions/observability/apps/synthetic-monitoring.md#monitoring-uptime)
@@ -24,7 +23,6 @@ Synthetics periodically checks the status of your services and applications. Mon
 :alt: {{synthetics-app}} in {{kib}}
 :screenshot:
 :::
-
 
 ## Lightweight HTTP/S, TCP, and ICMP monitors [monitoring-uptime]
 
@@ -37,7 +35,6 @@ You can monitor the status of network endpoints using the following lightweight 
 | **TCP monitor** | Monitor the services running on your hosts. The TCP monitor checks individual portsto make sure the service is accessible and running. |
 
 To set up your first monitor, refer to [Get started](../../../solutions/observability/apps/get-started.md).
-
 
 ## Browser monitors [monitoring-synthetics]
 

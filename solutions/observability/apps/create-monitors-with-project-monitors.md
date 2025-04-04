@@ -10,7 +10,6 @@ applies_to:
 
 # Create monitors with a Synthetics project [observability-synthetics-get-started-project]
 
-
 A Synthetics project is the most powerful and sophisticated way to configure synthetic monitors. A Synthetics project lets you define your infrastructure as code, more commonly known as IaaC or Git-ops. With monitors created and managed in Synthetics projects, you organize your YAML configuration and JavaScript- or TypeScript-defined monitors on the filesystem, use Git for version control, and deploy via a CLI tool, usually executed on a CI/CD platform.
 
 :::{image} /solutions/images/observability-synthetics-get-started-projects.png
@@ -18,7 +17,6 @@ A Synthetics project is the most powerful and sophisticated way to configure syn
 :::
 
 This is one of [two approaches](../../../solutions/observability/apps/get-started.md) you can use to set up a synthetic monitor.
-
 
 ## Prerequisites [synthetics-get-started-project-prerequisites]
 
@@ -41,7 +39,6 @@ Working with a Synthetics project requires working with the Elastic Synthetics C
     npx @elastic/synthetics -h
     ```
 
-
 You should also decide where you want to run the monitors before getting started. You can run monitors in Synthetics projects on one or both of the following:
 
 * **Elastic’s global managed testing infrastructure**: With Elastic’s global managed testing infrastructure, you can create and run monitors in multiple locations without having to manage your own infrastructure. Elastic takes care of software updates and capacity planning for you.
@@ -53,7 +50,6 @@ You should also decide where you want to run the monitors before getting started
 If you are setting up Synthetics for a deployment configured with [traffic filters](../../../deploy-manage/security/traffic-filtering.md), connections into {{es}} are restricted and results will not be able to be written back into {{es}} unless granted. For more details, refer to [Use Synthetics with traffic filters](../../../solutions/observability/apps/use-synthetics-with-traffic-filters.md).
 
 ::::
-
 
 ## Create a Synthetics project [synthetics-get-started-project-create-a-synthetics-project]
 
@@ -82,7 +78,6 @@ Then, follow the prompts on screen to set up the correct default variables for y
         To generate a Project API key, you must be logged in as a user with [Editor](../../../solutions/observability/apps/grant-users-access-to-secured-resources.md) access.
 
         ::::
-
 
         :::{image} /solutions/images/serverless-synthetics-monitor-management-api-key.png
         :alt: Project API Keys tab in Synthetics settings
@@ -125,7 +120,6 @@ Then, take a look at key files and directories inside your Synthetics project:
         To generate a Project API key, you must be logged in as a user with [Editor](../../../solutions/observability/apps/grant-users-access-to-secured-resources.md) access.
 
         ::::
-
 
         :::{image} /solutions/images/serverless-synthetics-monitor-management-api-key.png
         :alt: Project API Keys tab in Synthetics settings
@@ -197,7 +191,6 @@ journey('My Example Journey', ({ page, params }) => {
 
 For more details on writing journeys and configuring browser monitors, refer to [Scripting browser monitors](../../../solutions/observability/apps/scripting-browser-monitors.md).
 
-
 ## Test and connect to your Observability project or Elastic Stack deployment[synthetics-get-started-project-test-and-connect-to-your-observability-project]
 
 ::::{tab-set}
@@ -219,7 +212,6 @@ While inside the project directory you can do two things with the `npx @elastic/
     ```sh
     npx @elastic/synthetics push --auth $SYNTHETICS_API_KEY --url <kibana-url>
     ```
-
 
 One monitor will appear in the {{synthetics-app}} for each journey or lightweight monitor, and you’ll manage all monitors from your local environment. For more details on using the `push` command, refer to [`@elastic/synthetics push`](../../../solutions/observability/apps/use-synthetics-cli.md#elastic-synthetics-push-command).
 
@@ -249,7 +241,6 @@ While inside the Synthetics project directory you can do two things with the `np
     npx @elastic/synthetics push --auth $SYNTHETICS_API_KEY --url <observability-project-url>
     ```
 
-
 One monitor will appear in the Synthetics UI for each journey or lightweight monitor, and you’ll manage all monitors from your local environment. For more details on using the `push` command, refer to [`@elastic/synthetics push`](../../../solutions/observability/apps/use-synthetics-cli.md#elastic-synthetics-push-command).
 
 ::::{note}
@@ -263,7 +254,6 @@ To list available {{private-location}}s, run the [`elastic-synthetics locations`
 
 ::::
 
-
 ## View in the Synthetics UI [synthetics-get-started-project-view-in-your-observability-project]
 
 Then, go to **Synthetics** in your serverless Observability project or in {{kib}}. You should see your newly pushed monitors running. You can also go to the **Management** tab to see the monitors' configuration settings.
@@ -272,8 +262,6 @@ Then, go to **Synthetics** in your serverless Observability project or in {{kib}
 When a monitor is created or updated, the first run might not occur immediately, but the time it takes for the first run to occur will be less than the monitor’s configured frequency. For example, if you create a monitor and configure it to run every 10 minutes, the first run will occur within 10 minutes of being created. After the first run, the monitor will begin running regularly based on the configured frequency. You can run a manual test if you want to see the results more quickly.
 
 ::::
-
-
 
 ## Next steps [observability-synthetics-get-started-project-next-steps]
 

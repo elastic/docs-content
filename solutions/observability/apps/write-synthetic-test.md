@@ -11,7 +11,6 @@ applies_to:
 
 After [setting up a Synthetics project](../../../solutions/observability/apps/create-monitors-with-project-monitors.md), you can start writing synthetic tests that check critical actions and requests that an end-user might make on your site.
 
-
 ## Syntax overview [synthetics-syntax]
 
 To write synthetic tests for your application, you’ll need to know basic JavaScript and [Playwright](https://playwright.dev/) syntax.
@@ -19,7 +18,6 @@ To write synthetic tests for your application, you’ll need to know basic JavaS
 ::::{tip}
 [Playwright](https://playwright.dev/) is a browser testing library developed by Microsoft. It’s fast, reliable, and features a modern API that automatically waits for page elements to be ready.
 ::::
-
 
 The synthetics agent exposes an API for creating and running tests, including:
 
@@ -47,7 +45,6 @@ The synthetics agent exposes an API for creating and running tests, including:
 `monitor`
 :   The `monitor.use` method allows you to determine a monitor’s configuration on a journey-by-journey basis. If you want two journeys to create monitors with different intervals, for example, you should call `monitor.use` in each of them and set the `schedule` property to different values in each. Note that this is only relevant when using the `push` command to create monitors in {{kib}} an Observability Serverless project. Learn more in [Configure individual monitors](../../../solutions/observability/apps/configure-individual-browser-monitors.md).
 
-
 ## Create a journey [synthetics-create-journey]
 
 Create a new file using the `.journey.ts` or `.journey.js` file extension or edit one of the example journey files.
@@ -61,7 +58,6 @@ journey('Journey name', ({ page, browser, context, params, request }) => {
   // Add steps here
 });
 ```
-
 
 ### Arguments [synthetics-journey-ref]
 
@@ -87,8 +83,6 @@ journey('Journey name', ({ page, browser, context, params, request }) => {
 
     `request`
     :   A request object that can be used to make API requests independently of the browser interactions. For example, to get authentication credentials or tokens in service of a browser-based test. See [Make API requests](../../../solutions/observability/apps/write-synthetic-test.md#synthetics-request-param) for more information.
-
-
 
 ## Add steps [synthetics-create-step]
 
@@ -117,8 +111,6 @@ step('Load the demo page', () => {
 
 1. Go to the [`page.goto` reference](https://playwright.dev/docs/api/class-page#page-goto) for more information.
 
-
-
 ### Arguments [synthetics-step-ref]
 
 |     |     |
@@ -136,8 +128,6 @@ For more details on getting started with the Synthetics Recorder, refer to [Use 
 
 ::::
 
-
-
 ### Playwright syntax [synthetics-playwright]
 
 Inside the callback for each step, you’ll likely use a lot of Playwright syntax. Use Playwright to simulate and validate user workflows including:
@@ -154,7 +144,6 @@ Do not attempt to run in headful mode (using `headless:false`) when running thro
 
 ::::
 
-
 However, not all Playwright functionality should be used with Elastic Synthetics. In some cases, there are alternatives to Playwright functionality built into the Elastic Synthetics library. These alternatives are designed to work better for synthetic monitoring. Do *not* use Playwright syntax to:
 
 * **Make API requests.** Use Elastic Synthetic’s `request` parameter instead. Read more in [Make API requests](../../../solutions/observability/apps/write-synthetic-test.md#synthetics-request-param).
@@ -168,8 +157,6 @@ There is also some Playwright functionality that is not supported out-of-the-box
 Captures done programmatically via [`screenshot`](https://playwright.dev/docs/api/class-page#page-screenshot) or [`video`](https://playwright.dev/docs/api/class-page#page-video) are not stored and are not shown in the Synthetics application. Providing a `path` will likely make the monitor fail due to missing permissions to write local files.
 
 ::::
-
-
 
 ## Make assertions [synthetics-make-assertions]
 
@@ -202,8 +189,6 @@ step('Assert placeholder text', async () => {
 1. Find the `input` element with class `new-todo`.
 2. Use the assertion library provided by the Synthetics agent to check that the value of the `placeholder` attribute matches a specific string.
 
-
-
 ## Make API requests [synthetics-request-param]
 
 You can use the `request` parameter to make API requests independently of browser interactions. For example, you could retrieve a token from an HTTP endpoint and use it in a subsequent webpage request.
@@ -226,8 +211,6 @@ For a full example that shows how to use the `request` object, refer to the [Ela
 ::::{note}
 The `request` parameter is not intended to be used for writing pure API tests. Instead, it is a way to support writing plain HTTP requests in service of a browser-based test.
 ::::
-
-
 
 ## Set up and remove a global state [before-after]
 
@@ -257,7 +240,6 @@ afterAll(({ params }) => {
 });
 ```
 
-
 ## Import NPM packages [synthetics-import-packages]
 
 You can import and use other NPM packages inside journey code. Refer to the example below using the external NPM package `is-positive`:
@@ -279,7 +261,6 @@ However there are some limitations when using external packages:
 
 * Bundled journeys after compression should not be more than 800 Kilobytes.
 * Native node modules will not work as expected due to platform inconsistency.
-
 
 ## Sample synthetic test [synthetics-sample-test]
 
@@ -304,7 +285,6 @@ journey('Ensure placeholder is correct', ({ page }) => {
 
 You can find more complex examples in the [Elastic Synthetics demo repository](https://github.com/elastic/synthetics-demo/blob/main/advanced-examples/journeys/api-requests.journey.ts).
 
-
 ## Test locally [synthetics-test-locally]
 
 As you write journeys, you can run them locally to verify they work as expected. Then, you can create monitors to run your journeys at a regular interval.
@@ -316,7 +296,6 @@ To test all the journeys in a Synthetics project, navigate into the directory co
 # that it should run all tests in the current directory.
 npx @elastic/synthetics .
 ```
-
 
 ### Test an inline monitor [synthetics-test-inline]
 

@@ -13,7 +13,6 @@ To take advantage of this feature, your APM data needs to be written to differen
 
 Multiple APM integration instances is not required though. The simplest way to take advantage of this feature is by creating filtered aliases. See the guide below for more information.
 
-
 ## Guide: Separate staging and production data [apm-spaces-example]
 
 This guide will explain how to separate your staging and production data. This can be helpful to either remove noise when troubleshooting a production issue, or to create more granular access control for certain data.
@@ -22,7 +21,6 @@ This guide assumes that you:
 
 * Are sending both staging and production APM data to an {{es}} cluster.
 * Have configured the `environment` variable in your APM agent configurations. This variable sets the `service.environment` field in APM documents. You should have documents where `service.environment: production` and `service.environment: staging`. If this field is empty, see [service environment filter](filter-application-data.md#apm-filter-your-data-service-environment-filter) to learn how to set this value.
-
 
 ### Step 1: Create filtered aliases [_step_1_create_filtered_aliases]
 
@@ -37,7 +35,6 @@ The Applications UI uses index patterns to query your APM data. An index pattern
 ::::{note}
 The default index settings also query the `apm-*` data view. This data view matches APM data shipped in earlier versions of APM (prior to v8.0).
 ::::
-
 
 Instead of querying the default APM data views, we can create filtered aliases for the Applications UI to query. A filtered alias is a secondary name for a group of data streams that has a user-defined filter to limit the documents that the alias can access.
 
@@ -79,9 +76,7 @@ POST /_aliases?pretty
 2. The alias must not match the default APM index (`traces-apm*,apm-*`)
 3. Only match documents where `service.environment: production`
 
-
 ::::
-
 
 ::::{dropdown} `logs-apm*` production alias example
 ```console
@@ -109,9 +104,7 @@ POST /_aliases?pretty
 2. The alias must not match the default APM index (`logs-apm*,apm-*`)
 3. Only match documents where `service.environment: production`
 
-
 ::::
-
 
 ::::{dropdown} `metrics-apm*` production alias example
 ```console
@@ -139,9 +132,7 @@ POST /_aliases?pretty
 2. The alias must not match the default APM index (`metrics-apm*,apm-*`)
 3. Only match documents where `service.environment: production`
 
-
 ::::
-
 
 ::::{dropdown} `traces-apm*` staging alias example
 ```console
@@ -169,9 +160,7 @@ POST /_aliases?pretty
 2. The alias must not match the default APM index (`traces-apm*,apm-*`)
 3. Only match documents where `service.environment: staging`
 
-
 ::::
-
 
 ::::{dropdown} `logs-apm*` staging alias example
 ```console
@@ -199,9 +188,7 @@ POST /_aliases?pretty
 2. The alias must not match the default APM index (`logs-apm*,apm-*`)
 3. Only match documents where `service.environment: staging`
 
-
 ::::
-
 
 ::::{dropdown} `metrics-apm*` staging alias example
 ```console
@@ -229,17 +216,13 @@ POST /_aliases?pretty
 2. The alias must not match the default APM index (`metrics-apm*,apm-*`)
 3. Only match documents where `service.environment: staging`
 
-
 ::::
-
-
 
 ### Step 2: Create {{kib}} spaces [_step_2_create_kib_spaces]
 
 Next, you’ll need to create a {{kib}} space for each service environment. To open **Spaces**, find **Stack Management** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). To create a new space, click **Create a space**. For this guide, we’ve created two Kibana spaces, one named `production` and one named `staging`.
 
 See [Kibana spaces](../../../deploy-manage/manage-spaces.md) for more information on creating a space.
-
 
 ### Step 3: Update APM index settings in each space [_step_3_update_apm_index_settings_in_each_space]
 
@@ -253,7 +236,6 @@ Open the Applications UI and navigate to **Settings** → **Indices**. Use the t
 | Span indices | `production-traces-apm` | `staging-traces-apm` |
 | Transaction indices | `production-traces-apm` | `staging-traces-apm` |
 | Metrics indices | `production-metrics-apm` | `staging-metrics-apm` |
-
 
 ### Step 4: Create {{kib}} access roles [_step_4_create_kib_access_roles]
 
@@ -306,9 +288,7 @@ POST /_security/role/production_apm_viewer
 2. Assigns `read` privileges for the Applications and User Experience UIs.
 3. Provides access to the space named `production`.
 
-
 ::::
-
 
 ::::{dropdown} Create a `staging_apm_viewer` role
 This request creates a `staging_apm_viewer` role:
@@ -341,10 +321,7 @@ POST /_security/role/staging_apm_viewer
 2. Assigns `read` privileges for the Applications and User Experience UIs.
 3. Provides access to the space named `staging`.
 
-
 ::::
-
-
 
 ### Step 5: Assign users to roles [_step_5_assign_users_to_roles]
 
@@ -368,7 +345,6 @@ POST /_security/user/production-apm-user
 
 1. Assigns the previously created `production_apm_viewer` role.
 
-
 This example creates a new user and assigns them the `staging_apm_viewer` role created in the previous step. This user will only have access to the staging space and data with a `service.environment` of `staging`. Remember to change the `password`, `full_name`, and `email` fields.
 
 ```console
@@ -382,8 +358,6 @@ POST /_security/user/staging-apm-user
 ```
 
 1. Assigns the previously created `staging_apm_viewer` role.
-
-
 
 ### Step 6: Marvel [_step_6_marvel]
 

@@ -29,7 +29,6 @@ When viewing a dependency, consider your pattern of usage with that dependency. 
 
 If your usage pattern *has* changed, the dependency view can quickly show you whether that pattern change exists in all upstream services, or just a subset of your services. You might then start digging into traces coming from impacted services to determine why that pattern change has occurred.
 
-
 ## Operations [dependencies-operations]
 
 ::::{Warning}

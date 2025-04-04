@@ -10,7 +10,6 @@ applies_to:
 
 # Filter application data [apm-filter-your-data]
 
-
 Global filters are ways you can filter your APM data based on a specific time range or environment. When viewing a specific service, the filter persists as you move between tabs.
 
 :::{image} /solutions/images/observability-global-filters.png
@@ -23,12 +22,9 @@ If you prefer to use advanced queries on your data to filter on specific pieces 
 
 ::::
 
-
-
 ## Global time range [apm-filter-your-data-global-time-range]
 
 The global time range filter restricts APM data to a specific time period.
-
 
 ## Service environment filter [apm-filter-your-data-service-environment-filter]
 

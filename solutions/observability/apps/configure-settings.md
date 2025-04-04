@@ -26,8 +26,6 @@ Uptime settings apply to the current space only. To segment different uptime use
 
     ::::
 
-
-
 ## Configure indices [configure-uptime-indices]
 
 Specify a comma-separated list of index patterns to match indices in {{es}} that contain {{heartbeat}} data.
@@ -37,12 +35,10 @@ The pattern set here only restricts what the {{uptime-app}} displays. You can st
 
 ::::
 
-
 :::{image} /solutions/images/observability-heartbeat-indices.png
 :alt: {{heartbeat}} indices
 :screenshot:
 :::
-
 
 ## Configure connectors [configure-uptime-alert-connectors]
 
@@ -56,7 +52,6 @@ For more information about each connector, see [action types and connectors](../
 :alt: Rule connector
 :screenshot:
 :::
-
 
 ## Configure certificate thresholds [configure-cert-thresholds]
 

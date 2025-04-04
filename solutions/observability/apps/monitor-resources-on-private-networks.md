@@ -16,13 +16,11 @@ To monitor resources on private networks you can either:
 
 {{private-location}}s via Elastic Agent require only outbound connections from your network, while allowing Elastic’s global managed infrastructure to access a private endpoint requires inbound access, thus posing an additional risk that users must assess.
 
-
 ## Allow access to your private network [monitor-via-access-control]
 
 To give Elastic’s global managed infrastructure access to a private endpoint, use IP address filtering, HTTP authentication, or both.
 
 To grant access via IP, use [this list of egress IPs](https://manifest.synthetics.elastic-cloud.com/v1/ip-ranges.json). The addresses and locations on this list may change, so automating updates to filtering rules is recommended. IP filtering alone will allow all users of Elastic’s global managed infrastructure access to your endpoints, if this is a concern consider adding additional protection via user/password authentication via a proxy like nginx.
-
 
 ## Monitor via a private agent [monitor-via-private-agent]
 
@@ -36,7 +34,6 @@ To grant access via IP, use [this list of egress IPs](https://manifest.synthetic
 {{private-location}}s running through {{agent}} must have a direct connection to {{es}}. Do not configure any ingest pipelines, or output via Logstash as this will prevent Synthetics from working properly and is not [supported](../../../solutions/observability/apps/synthetics-support-matrix.md).
 
 ::::
-
 
 ## Set up {{fleet-server}} and {{agent}} [synthetics-private-location-fleet-agent]
 
@@ -52,7 +49,6 @@ By default {{private-location}}s are configured to allow two simultaneous browse
 
 ::::
 
-
 ## Connect to the {{stack}} or your Observability Serverless project [synthetics-private-location-connect]
 
 After setting up {{fleet}}, you’ll connect {{fleet}} to the {{stack}} or your Observability Serverless project and enroll an {{agent}} in {{fleet}}.
@@ -63,7 +59,6 @@ Elastic provides Docker images that you can use to run {{fleet}} and an {{agent}
 The `elastic-agent-complete` Docker image is the only way to have all available options that you see in the UI.
 
 ::::
-
 
 To pull the Docker image run:
 
@@ -90,12 +85,10 @@ The `elastic-agent-complete` Docker image requires additional capabilities to op
 
 ::::
 
-
 ::::{note}
 You may need to set other environment variables. Learn how in [{{agent}} environment variables guide](/reference/fleet/agent-environment-variables.md).
 
 ::::
-
 
 ## Add a {{private-location}} [synthetics-private-location-add]
 
@@ -112,7 +105,6 @@ When the {{agent}} is running you can add a new {{private-location}} in the UI:
 It is not currently possible to use custom CAs for synthetics browser tests in private locations without following a workaround. To learn more about the workaround, refer to the following GitHub issue: [elastic/synthetics#717](https://github.com/elastic/synthetics/issues/717).
 ::::
 
-
 ## Scaling {{private-location}}s [synthetics-private-location-scaling]
 
 By default {{private-location}}s are configured to allow two simultaneous browser tests, and an unlimited number of lightweight checks. These limits can be set via the environment variables `SYNTHETICS_LIMIT_{{TYPE}}`, where `{{TYPE}}` is one of `BROWSER`, `HTTP`, `TCP`, and `ICMP` for the container running the {{agent}} docker image.
@@ -120,7 +112,6 @@ By default {{private-location}}s are configured to allow two simultaneous browse
 It is critical to allocate enough memory and CPU capacity to handle configured limits. Start by allocating at least 2 GiB of memory and two cores per browser instance to ensure consistent performance and avoid out-of-memory errors. Then adjust as needed. Resource requirements will vary depending on workload. Much less memory is needed for lightweight monitors. Start by allocating at least 512MiB of memory and two cores for lightweight checks. Then increase allocated memory and CPU based on observed usage patterns.
 
 These limits are for simultaneous tests, not total tests. For example, if 60 browser tests were scheduled to run once per hour and each took 1 minute to run, that would fully occupy one execution slot. However, it is a good practice to set up execution slots with extra capacity. A good starting point would be to over-allocate by a factor of 5. In the previous example that would mean allocating 5 slots.
-
 
 ## Next steps [synthetics-private-location-next]
 

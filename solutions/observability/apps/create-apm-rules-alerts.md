@@ -10,9 +10,7 @@ applies_to:
 
 # Create APM rules and alerts [apm-alerts]
 
-
 The Applications UI allows you to define **rules** to detect complex conditions within your APM data and trigger built-in **actions** when those conditions are met.
-
 
 ## APM rules [apm_rules]
 
@@ -37,11 +35,9 @@ stack: all
 
 View and manage rules and alerts in the Applications UI.
 
-
 ### View active alerts [apm-alert-view-active]
 
 Active alerts are displayed and grouped in multiple ways in the Applications UI.
-
 
 #### View alerts by service group [apm-alert-view-group]
 
@@ -52,7 +48,6 @@ If you’re using the [service groups](../../../solutions/observability/apps/ser
 :screenshot:
 :::
 
-
 #### View alerts by service [apm-alert-view-service]
 
 Alerts can be viewed within the context of any service. After selecting a service, go to the **Alerts** tab to view any alerts that are active for the selected service.
@@ -62,11 +57,9 @@ Alerts can be viewed within the context of any service. After selecting a servic
 :screenshot:
 :::
 
-
 ### Manage alerts and rules [apm-alert-manage]
 
 From the Applications UI, select **Alerts and rules** → **Manage rules** to be taken to the {{kib}} **{{rules-ui}}** page. From this page, you can disable, mute, and delete APM alerts.
-
 
 ### More information [apm-alert-more-info]
 

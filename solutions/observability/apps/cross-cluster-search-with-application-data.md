@@ -8,9 +8,7 @@ applies_to:
 
 # Cross-cluster search with application data [apm-cross-cluster-search]
 
-
 Elastic APM utilizes {{es}}'s cross-cluster search functionality. Cross-cluster search lets you run a single search request against one or more [remote clusters](/deploy-manage/remote-clusters/remote-clusters-self-managed.md) — making it easy to search APM data across multiple sources. This means you can also have deployments per data type, making sizing and scaling more predictable, and allowing for better performance while managing multiple observability use cases.
-
 
 ## Set up cross-cluster search [apm-set-up-cross-cluster-search]
 

@@ -17,7 +17,3 @@ As soon as an authenticated communication is enabled, requests without a valid t
 
 In some use-cases, like when an {{apm-agent}} is running on the client side, authentication is not possible. See [Anonymous authentication](anonymous-authentication.md) for more information.
 
-
-
-
-

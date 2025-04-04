@@ -4,10 +4,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-upgrade-8.0-cloud-integration.html
 ---
 
-
-
 # Upgrade Elastic Cloud with the APM integration to 8.0 [apm-upgrade-8.0-cloud-integration]
-
 
 This upgrade guide is for the Elastic APM integration. Only use this guide if both of the following are true:
 
@@ -23,5 +20,4 @@ Follow these steps to upgrade:
 ::::{note}
 {{ece}} users require additional TLS setup. Refer to [Add APM user settings](https://www.elastic.co/guide/en/cloud-enterprise/current/ece-manage-apm-settings.html) for more information.
 ::::
-
 

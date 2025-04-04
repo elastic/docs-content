@@ -11,12 +11,10 @@ applies_to:
 To minimize the privileges required by the writer role, use the [setup role](setup-role.md) to enable Monitor Management. This section assumes another user has already enabled Monitor Management.
 ::::
 
-
 For users who need to create, modify, and delete monitors, provide write access. Two types of write access are outlined below:
 
 * **General write access**: For most users, you can use [General write access](#synthetics-write-privileges-general), which grants write access to all {{kib}} apps and requires little configuration.
 * **Limited write access**: If you want to limit write access to the {{synthetics-app}} only, you can use [Limited write access](#synthetics-write-privileges-limited), which requires additional configuration.
-
 
 ## General write access [synthetics-write-privileges-general]
 
@@ -36,8 +34,6 @@ Create a **writer role**, called something like `synthetics_writer`:
     | [Cluster](../../../deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-cluster) | `manage_security` | Allows access to all security-related operations such as CRUD operations on users and roles and cache clearing. |
     | [Cluster](../../../deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-cluster) | `manage_api_key` | Allows access to all security-related operations on {{es}} API keys. |
 
-
-
 ## Limited write access [synthetics-write-privileges-limited]
 
 If you want to limit write access to the {{synthetics-app}} only, do *not* use the `editor` [built-in role](../../../deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md).
@@ -52,7 +48,6 @@ Instead to you can create a writer role, called something like `synthetics_write
 
 Additional privileges will depend on the factors below.
 
-
 ### To restrict using Elastic’s global managed infrastructure [disable-managed-locations]
 
 To restrict users assigned this role from using monitors hosted on Elastic’s global managed infrastructure:
@@ -60,7 +55,6 @@ To restrict users assigned this role from using monitors hosted on Elastic’s g
 1. Expand `Synthetics and Uptime` in the list of [Kibana](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md) privileges.
 2. Toggle *Customize sub-feature privileges*.
 3. Uncheck *Elastic managed locations enabled*.
-
 
 ### If using Private Locations [synthetics-role-write-private-locations]
 
@@ -72,7 +66,6 @@ The user who is setting up a new Private Location will need the following privil
 | --- | --- | --- |
 | [Kibana](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md) | `Fleet`: `All` | Access to Fleet in {{kib}}. |
 | [Kibana](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md) | `Integrations`: `read` | Access to Integrations in {{kib}}. |
-
 
 ### If using projects [_if_using_projects]
 

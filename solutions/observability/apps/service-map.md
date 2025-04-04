@@ -16,11 +16,9 @@ We currently surface two types of service maps:
 * **Global**: All services instrumented with APM agents and the connections between them are shown.
 * **Service-specific**: Highlight connections for a selected service.
 
-
 ## How do service maps work? [service-maps-how]
 
 Service Maps rely on distributed traces to draw connections between services. As [distributed tracing](/solutions/observability/apps/traces.md) is enabled out-of-the-box for supported technologies, so are service maps. However, if a service isn’t instrumented, or a `traceparent` header isn’t being propagated to it, distributed tracing will not work, and the connection will not be drawn on the map.
-
 
 ## Visualize your architecture [visualize-your-architecture]
 
@@ -30,12 +28,10 @@ Customize what the service map displays using either the query bar or the enviro
 
 If there’s a specific service that interests you, select that service to highlight its connections. Click **Focus map** to refocus the map on the selected service and lock the connection highlighting. Click the **Transactions** tab to jump to the Transaction overview for the selected service. You can also use the tabs at the top of the page to easily jump to the **Errors** or **Metrics** overview.
 
-
 :::{image} /solutions/images/observability-service-maps-java.png
 :alt: Example view of service maps in the Applications UI in Kibana
 :screenshot:
 :::
-
 
 ## Anomaly detection with machine learning [service-map-anomaly-detection]
 
@@ -56,14 +52,12 @@ If an anomaly has been detected, click **View anomalies** to view the anomaly de
 
 To learn how to create a machine learning job, refer to [Integrate with machine learning](../../../solutions/observability/apps/integrate-with-machine-learning.md).
 
-
 ## Legend [service-maps-legend]
 
 Nodes appear on the map in one of two shapes:
 
 * **Circle**: Instrumented services. Interior icons are based on the language of the APM agent used.
 * **Diamond**: Databases, external, and messaging. Interior icons represent the generic type, with specific icons for known entities, like Elasticsearch. Type and subtype are based on `span.type`, and `span.subtype`.
-
 
 ## Supported APM agents [service-maps-supported]
 

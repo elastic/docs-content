@@ -37,7 +37,6 @@ Select the **Comparison** box to apply a time-based or expected bounds compariso
 
 The expected bounds comparison is powered by [machine learning](../../../solutions/observability/apps/integrate-with-machine-learning.md) and requires anomaly detection to be enabled.
 
-
 ## Latency [service-latency]
 
 Response times for the service. You can filter the **Latency** chart to display the average, 95th, or 99th percentile latency times for the service.
@@ -47,7 +46,6 @@ Response times for the service. You can filter the **Latency** chart to display 
 :screenshot:
 :::
 
-
 ## Throughput and transactions [service-throughput-transactions]
 
 The **Throughput** chart visualizes the average number of transactions per minute for the selected service.
@@ -55,7 +53,6 @@ The **Throughput** chart visualizes the average number of transactions per minut
 The **Transactions** table displays a list of *transaction groups* for the selected service and includes the latency, traffic, error rate, and the impact for each transaction. Transactions that share the same name are grouped, and only one entry is displayed for each group.
 
 By default, transaction groups are sorted by *Impact* to show the most used and slowest endpoints in your service. If there is a particular endpoint you are interested in, click **View transactions** to view a list of similar transactions on the [transactions overview](../../../solutions/observability/apps/transactions-2.md) page.
-
 
 ## Failed transaction rate and errors [service-error-rates]
 
@@ -70,14 +67,12 @@ If there is no HTTP status, both transactions and spans are considered successfu
 
 ::::
 
-
 The **Errors** table provides a high-level view of each error message when it first and last occurred, along with the total number of occurrences. This makes it very easy to quickly see which errors affect your services and take actions to rectify them. To do so, click **View errors**.
 
 :::{image} /solutions/images/observability-error-rate.png
 :alt: failed transaction rate and errors
 :screenshot:
 :::
-
 
 ## Span types average duration and dependencies [service-span-duration]
 
@@ -91,29 +86,24 @@ The **Dependencies** table displays a list of downstream services or external co
 **In Elastic Stack deployments**, displaying dependencies for services instrumented with the Real User Monitoring (RUM) agent requires an agent version ≥ v5.6.3.
 ::::
 
-
 ## Cold start rate [service-cold-start]
 
 The cold start rate chart is specific to serverless services, and displays the percentage of requests that trigger a cold start of a serverless function. A cold start occurs when a serverless function has not been used for a certain period of time. Analyzing the cold start rate can be useful for deciding how much memory to allocate to a function, or when to remove a large dependency.
 
 The cold start rate chart is currently supported for [AWS Lambda](../../../solutions/observability/apps/observe-lambda-functions.md#apm-lambda-cold-start-info) functions and Azure functions.
 
-
 ## Instances [service-instances]
 
 The **Instances** table displays a list of all the available service instances within the selected time range. Depending on how the service runs, the instance could be a host or a container. The table displays latency, throughput, failed transaction, CPU usage, and memory usage for each instance. By default, instances are sorted by *Throughput*.
-
 
 :::{image} /solutions/images/observability-all-instances.png
 :alt: All instances
 :screenshot:
 :::
 
-
 ## Service metadata [service-metadata]
 
 To view metadata relating to the service agent, and if relevant, the container and cloud provider, click on each icon located at the top of the page beside the service name.
-
 
 :::{image} /solutions/images/observability-metadata-icons.png
 :alt: Service metadata

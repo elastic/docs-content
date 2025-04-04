@@ -13,7 +13,6 @@ applies_to:
 When collecting metrics, please note that the [`DoubleValueRecorder`](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/metrics/DoubleValueRecorder.md) and [`LongValueRecorder`](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/metrics/LongValueObserver.md) metrics are not yet supported.
 ::::
 
-
 Here’s an example of how to capture business metrics from a Java application.
 
 ```java
@@ -32,7 +31,6 @@ public void createOrder(HttpServletRequest request) {
 
 See the [Open Telemetry Metrics API](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/api.md) for more information.
 
-
 ## Verify OpenTelemetry metrics data [apm-open-telemetry-verify-metrics]
 
 Use **Discover** to validate that metrics are successfully reported to {{kib}}.
@@ -42,7 +40,6 @@ Use **Discover** to validate that metrics are successfully reported to {{kib}}.
 3. Click **All logs** → **Data Views** then select **APM**.
 4. Filter the data to only show documents with metrics: `processor.name :"metric"`
 5. Narrow your search with a known OpenTelemetry field. For example, if you have an `order_value` field, add `order_value: *` to your search to return only OpenTelemetry metrics documents.
-
 
 ## Visualize your metrics[apm-open-telemetry-visualize]
 

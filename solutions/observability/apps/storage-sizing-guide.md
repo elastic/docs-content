@@ -13,7 +13,6 @@ APM processing and storage costs are largely dominated by transactions, spans, a
 * [**Spans**](spans.md) belong to transactions. They measure from the start to end of an activity, and contain information about a specific code path that has been executed.
 * **Stack frames** belong to spans. Stack frames represent a function call on the call stack, and include attributes like function name, file name and path, line number, etc. Stack frames can heavily influence the size of a span.
 
-
 ## Typical transactions [_typical_transactions]
 
 Due to the high variability of APM data, it’s difficult to classify a transaction as typical. Regardless, this guide will attempt to classify Transactions as *Small*, *Medium*, or *Large*, and make recommendations based on those classifications.
@@ -33,7 +32,6 @@ Here’s a speculative reference:
 | *Large* | 30-40 | 30-40 |
 
 There will always be transaction outliers with hundreds of spans or stack frames, but those are very rare. Small transactions are the most common.
-
 
 ## Typical storage [_typical_storage]
 

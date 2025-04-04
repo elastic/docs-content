@@ -8,14 +8,12 @@ applies_to:
 
 # Use Metricbeat to send monitoring data [apm-monitoring-metricbeat-collection]
 
-
 In 7.3 and later, you can use {{metricbeat}} to collect data about APM Server and ship it to the monitoring cluster. The benefit of using {{metricbeat}} instead of internal collection is that the monitoring agent remains active even if the APM Server instance dies.
 
 To collect and ship monitoring data:
 
 1. [Configure the shipper you want to monitor](#apm-configure-shipper)
 2. [Install and configure {{metricbeat}} to collect monitoring data](#apm-configure-metricbeat)
-
 
 ## Configure the shipper you want to monitor [apm-configure-shipper]
 
@@ -60,7 +58,6 @@ To collect and ship monitoring data:
     ```
 
 5. Start APM Server.
-
 
 ## Install and configure {{metricbeat}} to collect monitoring data [apm-configure-metricbeat]
 
@@ -122,7 +119,6 @@ To collect and ship monitoring data:
     In production environments, we strongly recommend using a separate cluster (referred to as the *monitoring cluster*) to store the data. Using a separate monitoring cluster prevents production cluster outages from impacting your ability to access your monitoring data. It also prevents monitoring activities from impacting the performance of your production cluster.
     ::::
 
-
     For example, specify the {{es}} output information in the {{metricbeat}} configuration file (`metricbeat.yml`):
 
     ```yaml
@@ -140,13 +136,11 @@ To collect and ship monitoring data:
     1. In this example, the data is stored on a monitoring cluster with nodes `es-mon-1` and `es-mon-2`.
     2. Specify one of `api_key` or `username`/`password`.
 
-
     If you configured the monitoring cluster to use encrypted communications, you must access it via HTTPS. For example, use a `hosts` setting like `https://es-mon-1:9200`.
 
     ::::{important}
     The {{es}} {{monitor-features}} use ingest pipelines, therefore the cluster that stores the monitoring data must have at least one ingest node.
     ::::
-
 
     If the {{es}} {{security-features}} are enabled on the monitoring cluster, you must provide a valid user ID and password so that {{metricbeat}} can send metrics successfully:
 

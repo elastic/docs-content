@@ -34,14 +34,11 @@ If you’ve used the Elastic Synthetics integration to create monitors in the pa
 
 ::::
 
-
-
 ## Pull the Docker image [uptime-set-up-docker]
 
 Elastic provides Docker images that you can use to run monitors. Start by pulling the {{heartbeat}} Docker image.
 
 Version 9.0.0-beta1 has not yet been released.
-
 
 ## Configure [uptime-set-up-config]
 
@@ -62,7 +59,6 @@ heartbeat.monitors:
 
 1. Each `monitor` gets its own ID in the {{uptime-app}} and its own schedule entry. This allows tests to be run in parallel and analyzed separately.
 
-
 Read more about configuration options in [Configure {{heartbeat}} monitors](beats://reference/heartbeat/configuration-heartbeat-options.md).
 
 ::::{warning}
@@ -72,21 +68,17 @@ If you previously used {{heartbeat}} to set up **`browser`** monitor, you can fi
 
 ::::
 
-
-
 ## Connect to the {{stack}} [uptime-set-up-connect]
 
 After configuring the monitor, run it in Docker and connect the monitor to the {{stack}}.
 
 Version 9.0.0-beta1 has not yet been released.
 
-
 ## View in {{kib}} [uptime-set-up-kibana]
 
 {{heartbeat}} is now sending synthetic monitoring data to the {{stack}}. Navigate to the {{uptime-app}} in {{kib}}, where you can see screenshots of each run, set up alerts in case of test failures, and more.
 
 If a test does fail (shown as `down` in the {{uptime-app}}), you’ll be able to view the step script that failed, any errors, and a stack trace. For more information, refer to [Analyze](analyze.md).
-
 
 ## Manage monitors [uptime-manage]
 

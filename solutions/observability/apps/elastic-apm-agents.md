@@ -10,13 +10,11 @@ applies_to:
 
 # Elastic APM agents [observability-apm-agents-elastic-apm-agents]
 
-
 ::::{note}
 
 **For Observability Serverless projects**, the **Admin** role or higher is required to use APM agents. To learn more, refer to [Assign user roles and privileges](../../../deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
 
 ::::
-
 
 Elastic APM agents automatically measure application performance and track errors. They offer built-in support for popular frameworks and technologies, and provide easy-to-use APIs that allow you to instrument any application.
 

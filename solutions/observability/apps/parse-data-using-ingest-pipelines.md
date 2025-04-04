@@ -11,7 +11,6 @@ Ingest pipelines preprocess and enrich APM documents before indexing them. For e
 
 The default APM pipelines are defined in {{es}} apm-data plugin index templates. {{es}} then uses the index pattern in these index templates to match pipelines to APM data streams.
 
-
 ## Custom ingest pipelines [custom-ingest-pipelines]
 
 Elastic APM supports custom ingest pipelines. A custom pipeline allows you to transform data to better match your specific use case. This can be useful, for example, to ensure data security by removing or obfuscating sensitive information.
@@ -19,7 +18,6 @@ Elastic APM supports custom ingest pipelines. A custom pipeline allows you to tr
 Each data stream ships with a default pipeline. This default pipeline calls an initially non-existent and non-versioned "`@custom`" ingest pipeline. If left uncreated, this pipeline has no effect on your data. However, if utilized, this pipeline can be used for custom data processing, adding fields, sanitizing data, and more.
 
 In addition, ingest pipelines can also be used to direct application metrics (`metrics-apm.app.*`) to a data stream with a different dataset, e.g. to combine metrics for two applications. Sending other APM data to alternate data streams, like traces (`traces-apm.*`), logs (`logs-apm.*`), and internal metrics (`metrics-apm.internal*`) is not currently supported.
-
 
 ## `@custom` ingest pipeline naming convention [custom-ingest-pipeline-naming]
 
@@ -39,7 +37,6 @@ In addition, ingest pipelines can also be used to direct application metrics (`m
 To match a custom ingest pipeline with a data stream, follow the `<type>-<dataset>@custom` template, or replace `-namespace` with `@custom` in the table above. For example, to target application traces, you’d create a pipeline named `traces-apm@custom`.
 
 The `@custom` pipeline can directly contain processors or you can use the pipeline processor to call other pipelines that can be shared across multiple data streams or integrations. The `@custom` pipeline will persist across all version upgrades.
-
 
 ## Create a `@custom` ingest pipeline [custom-ingest-pipeline-create]
 

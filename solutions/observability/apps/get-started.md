@@ -18,7 +18,6 @@ There are two ways to set up a synthetic monitor:
 
 Read more about each option below, and choose the approach that works best for you.
 
-
 ## Synthetics project [observability-synthetics-get-started-synthetics-project]
 
 With a Synthetics project, you write tests in an external version-controlled Node.js project using YAML for lightweight monitors and JavaScript or TypeScript for browser monitors. Then, you use the `@elastic/synthetics` NPM library’s `push` command to create monitors.
@@ -30,7 +29,6 @@ Get started in [Create monitors in a Synthetics project](../../../solutions/obse
 :::{image} /solutions/images/observability-synthetics-get-started-projects.png
 :alt: Diagram showing which pieces of software are used to configure monitors
 :::
-
 
 ## Synthetics UI [observability-synthetics-get-started-synthetics-ui]
 

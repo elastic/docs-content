@@ -4,16 +4,12 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-upgrade-8.0-self-standalone.html
 ---
 
-
-
 # Upgrade a self-installation of APM Server standalone to 9.0 [apm-upgrade-9.0-self-standalone]
-
 
 This upgrade guide is for the standalone method of running APM Server. Only use this guide if both of the following are true:
 
 * You have a self-installation of the {{stack}}, i.e. you’re not using {{ecloud}}.
 * You’re running the APM Server binary, i.e. you haven’t switched to the Elastic APM integration.
-
 
 ## Prerequisites [_prerequisites_8]
 
@@ -24,8 +20,6 @@ This upgrade guide is for the standalone method of running APM Server. Only use 
 
 2. Review the [Elastic APM release notes](apm-server://release-notes/index.md) and [Elastic {{observability}} release notes](/release-notes/elastic-observability/index.md).
 3. Review the [Elastic APM breaking changes](apm-server://release-notes/breaking-changes.md).
-
-
 
 ## Upgrade steps [_upgrade_steps]
 

@@ -10,12 +10,10 @@ applies_to:
 
 # Configure individual browser monitors [synthetics-monitor-use]
 
-
 ::::{note}
 This is only relevant for monitors that are created and managed using a [Synthetics project](../../../solutions/observability/apps/get-started.md#observability-synthetics-get-started-synthetics-project). For more information on configuring browser monitors added in the UI, refer to [Create monitors in the Synthetics UI](../../../solutions/observability/apps/create-monitors-in-synthetics-app.md).
 
 ::::
-
 
 After [writing synthetic journeys](../../../solutions/observability/apps/write-synthetic-test.md), you can use `monitor.use` to configure the browser monitors that will run your tests.
 

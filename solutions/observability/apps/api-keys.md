@@ -11,7 +11,6 @@ applies_to:
 API keys are sent as plain-text, so they only provide security when used in combination with [TLS](apm-agent-tls-communication.md).
 ::::
 
-
 When enabled, API keys are used to authorize requests to the APM Server. API keys are not applicable for APM agents running on clients, like the RUM agent, as there is no way to prevent them from being publicly exposed.
 
 You can assign one or more unique privileges to each API key:
@@ -25,7 +24,6 @@ To secure the communication between APM Agents and the APM Server with API keys,
 2. [Create an API key user](#apm-create-api-key-user)
 3. [Create an API key in {{kib}}](#apm-create-an-api-key)
 4. [Set the API key in your APM agents](#apm-agent-api-key)
-
 
 ## Enable API keys [apm-enable-api-key]
 
@@ -84,9 +82,7 @@ POST /_security/role/apm_agent_key_role
 
 1. This example assigns privileges for the default space.
 
-
 Assign the newly created `apm_agent_key_role` role to any user that wishes to create {{apm-agent}} API keys.
-
 
 ## Create an API key in the Applications UI [apm-create-an-api-key]
 
@@ -103,7 +99,6 @@ Click **Create APM Agent key** and copy the Base64 encoded API key. You will nee
 :screenshot:
 :::
 
-
 ## Set the API key in your APM agents [apm-agent-api-key]
 
 You can now apply your newly created API keys in the configuration of each of your APM agents. See the relevant agent documentation for additional information:
@@ -118,14 +113,12 @@ You can now apply your newly created API keys in the configuration of each of yo
 * **Python agent**: [`api_key`](apm-agent-python://reference/configuration.md#config-api-key)
 * **Ruby agent**: [`api_key`](apm-agent-ruby://reference/configuration.md#config-api-key)
 
-
 ## Alternate API key creation methods [apm-configure-api-key-alternative]
 
 API keys can also be created and validated outside of {{kib}}:
 
 * [APM Server API key workflow](#apm-create-api-key-workflow-apm-server)
 * [{{es}} API key workflow](#apm-create-api-key-workflow-es)
-
 
 ### APM Server API key workflow [apm-create-api-key-workflow-apm-server]
 
@@ -137,9 +130,7 @@ This API creation method only works with the APM Server binary.
 Users should create API Keys through {{kib}} or the {{es}} REST API
 ::::
 
-
 APM Server provides a command line interface for creating, retrieving, invalidating, and verifying API keys. Keys created using this method can only be used for communication with APM Server.
-
 
 #### `apikey` subcommands [apm-create-api-key-subcommands]
 
@@ -163,9 +154,7 @@ APM Server provides a command line interface for creating, retrieving, invalidat
         * To **ingest agent data**, assign `event:write`.
         * To **upload source maps**, assign `sourcemap:write`.
 
-
     ::::
-
 
 **`info`**
 :   Query API Key(s). `--id` or `--name` required.
@@ -176,7 +165,6 @@ APM Server provides a command line interface for creating, retrieving, invalidat
 **`verify`**
 :   Check if a credentials string has the given privilege(s). `--credentials` required.
 
-
 #### Privileges [apm-create-api-key-privileges]
 
 If privileges are not specified at creation time, the created key will have all privileges.
@@ -184,7 +172,6 @@ If privileges are not specified at creation time, the created key will have all 
 * `--agent-config` grants the `config_agent:read` privilege
 * `--ingest` grants the `event:write` privilege
 * `--sourcemap` grants the `sourcemap:write` privilege
-
 
 #### Create an API key [apm-create-api-key-workflow]
 
@@ -238,7 +225,6 @@ Error count ........ 0
 
 A full list of `apikey` subcommands and flags is available in the [API key command reference](apm-server-command-reference.md#apm-apikey-command).
 
-
 ### {{es}} API key workflow [apm-create-api-key-workflow-es]
 
 It is also possible to create API keys using the {{es}} [create API key API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-api-key).
@@ -267,7 +253,6 @@ POST /_security/api_key
 1. The name of the API key
 2. The expiration time of the API key
 3. Any assigned privileges
-
 
 The response will look similar to this:
 
