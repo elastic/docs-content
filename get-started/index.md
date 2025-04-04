@@ -15,18 +15,18 @@ mapped_pages:
 
 * **[Observability](/solutions/observability.md)**: Resolve problems with open, flexible, and unified observability powered by advanced machine learning and analytics.
 * **[Security](/solutions/security.md)**: Detect, investigate, and respond to threats with AI-driven security analytics to protect your organization at scale.
-* **[Search](/solutions/search.md)**: Build powerful search and RAG applications using Elasticsearch's vector database, AI toolkit, and advanced retrieval capabilities.
+* **[Elasticsearch](/solutions/search.md)**: Build powerful search and RAG applications using Elasticsearch's vector database, AI toolkit, and advanced retrieval capabilities.
 
 :::{tip}
 Refer to our [customer success stories](https://www.elastic.co/customers/success-stories) for concrete examples of how Elastic is used in real-world scenarios.
 :::
 
-## Step 1: Choose your deployment type
+## Choose your deployment type
 
 :::{include} /deploy-manage/_snippets/deployment-options-overview.md
 :::
 
-## Step 2: Explore the solutions
+## Explore the solutions
 
 Elasticsearch supports diverse use cases. Select a solution and follow its dedicated getting-started guide:
 
