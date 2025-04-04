@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-aws-custom-repository.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-custom-repository.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-aws-custom-repository.html

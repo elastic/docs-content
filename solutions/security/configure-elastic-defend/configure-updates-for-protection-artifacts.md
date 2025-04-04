@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/security/current/artifact-control.html
   - https://www.elastic.co/guide/en/serverless/current/security-protection-artifact-control.html
 applies_to:

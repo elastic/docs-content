@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/security/current/rules-ui-management.html
   - https://www.elastic.co/guide/en/serverless/current/security-rules-ui-management.html
 applies_to:
@@ -64,9 +64,9 @@ For {{ml}} rules, an indicator icon (![Error icon from rules table](/solutions/i
 ## Modify existing rules settings [edit-rules-settings]
 
 ::::{admonition} Requirements
-* You can edit custom rules and bulk-modify them with any [{{stack}} subscription](https://www.elastic.co/pricing) or [{{serverless-short}} project tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md). 
+* You can edit custom rules and bulk-modify them with any [{{stack}} subscription](https://www.elastic.co/pricing) or [{{serverless-short}} project tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md).
 * You can edit [rule notifications](/solutions/security/detect-and-alert/create-detection-rule.md#rule-notifications) (notifications and response actions) for prebuilt rules with any {{stack}} subscription or {{serverless-short}} project tier.
-* You must have an [Enterprise subscription](https://www.elastic.co/pricing) {{stack}} or a [Complete project tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md) subscription on {{serverless-short}} to edit all prebuilt rule settings (except for the **Author** and **License** fields) and bulk-modify them. 
+* You must have an [Enterprise subscription](https://www.elastic.co/pricing) {{stack}} or a [Complete project tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md) subscription on {{serverless-short}} to edit all prebuilt rule settings (except for the **Author** and **License** fields) and bulk-modify them.
 
 ::::
 
@@ -128,7 +128,7 @@ When duplicating a rule with exceptions, you can choose to duplicate the rule an
 
 
 
-## Run rules manually [manually-run-rules] 
+## Run rules manually [manually-run-rules]
 
 Manually run enabled rules for a specified period of time to deliberately test them, provide additional rule coverage, or fill gaps in rule executions.
 
@@ -212,18 +212,18 @@ The rules are exported to an `.ndjson` file.
 ### Import rules [impr=ort-rules-ui]
 
 1. Above the Rules table, click *Import rules*.
-2. In the Import rules modal: 
+2. In the Import rules modal:
 
-    1. Drag and drop the `.ndjson` file that contains the exported rules. 
+    1. Drag and drop the `.ndjson` file that contains the exported rules.
     2. (Optional) Select the appropriate options to overwrite existing data:
 
         * **Overwrite existing detection rules with conflicting "rule_id"**: Updates existing rules if they match the `rule_id` value of any rules in the import file. Configuration data included with the rules, such as actions, is also overwritten.
         * **Overwrite existing exception lists with conflicting "list_id"**: Replaces existing exception lists with exception lists from the import file if they have a matching `list_id` value.
         * **Overwrite existing connectors with conflicting action "id"**: Updates existing connectors if they match the `action id` value of any rule actions in the import file. Configuration data included with the actions is also overwritten.
 
-The imported rules are added to the Rules table. 
+The imported rules are added to the Rules table.
 
- 
+
 ## Confirm rule prerequisites [rule-prerequisites]
 
 Many detection rules are designed to work with specific [Elastic integrations](https://docs.elastic.co/en/integrations) and data fields. These prerequisites are identified in **Related integrations** and **Required fields** on a rule’s details page. **Related integrations** also displays each integration’s installation status and includes links for installing and configuring the listed integrations.
@@ -243,12 +243,12 @@ You can also check rules' related integrations in the **Installed Rules** and **
 :::
 
 ::::{tip}
-You can hide the **integrations** badge in the Rules tables by turning off the `securitySolution:showRelatedIntegrations` [advanced setting](/solutions/security/get-started/configure-advanced-settings.md#show-related-integrations). 
+You can hide the **integrations** badge in the Rules tables by turning off the `securitySolution:showRelatedIntegrations` [advanced setting](/solutions/security/get-started/configure-advanced-settings.md#show-related-integrations).
 ::::
 
 ## Manage rules as code [manage-rule-dac]
 
-Utilize the [Detection-as-Code](https://dac-reference.readthedocs.io/en/latest/dac_concept_and_workflows.html) (DaC) principles to externally manage your detection rules. 
+Utilize the [Detection-as-Code](https://dac-reference.readthedocs.io/en/latest/dac_concept_and_workflows.html) (DaC) principles to externally manage your detection rules.
 
 The {{elastic-sec}} Labs team uses the [detection-rules](https://github.com/elastic/detection-rules) repo to develop, test, and release {{elastic-sec}}'s[ prebuilt rules](https://github.com/elastic/detection-rules/tree/main/rules). The repo provides DaC features and allows you to customize settings to simplify the setup for managing user rules with the DaCe pipeline.
 

@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/security/current/ingest-aws-securityhub-data.html
   - https://www.elastic.co/guide/en/serverless/current/ingest-aws-securityhub-data.html
 applies_to:
@@ -25,4 +25,3 @@ After you’ve completed these steps, AWS Security Hub data will appear on the M
 
 Any available findings data will also appear in the [Insights section](/solutions/security/detect-and-alert/view-detection-alert-details.md#insights-section) for related alerts. If alerts are present for a user or host that has findings data from AWS Security Hub, the findings will appear on the [entity details flyout](/solutions/security/advanced-entity-analytics/view-entity-details.md#entity-details-flyout).
 
- 

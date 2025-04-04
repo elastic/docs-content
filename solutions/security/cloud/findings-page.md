@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/security/current/cspm-findings-page.html
   - https://www.elastic.co/guide/en/serverless/current/security-cspm-findings-page.html
 applies_to:
@@ -34,9 +34,9 @@ By default, the Findings page lists all findings, without grouping or filtering.
 
 ### Group findings [_group_findings]
 
-Click **Group findings by** to group your data by a field. Select one of the suggested fields or **Custom field** to choose your own. You can select up to three group fields at once. 
+Click **Group findings by** to group your data by a field. Select one of the suggested fields or **Custom field** to choose your own. You can select up to three group fields at once.
 
-* When grouping is turned on, click a group to expand it and examine all sub-groups or findings within that group. 
+* When grouping is turned on, click a group to expand it and examine all sub-groups or findings within that group.
 * To turn off grouping, click **Group findings by** and select **None**.
 
   ::::{note}

@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/oidc-realm.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/oidc-guide.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-secure-clusters-oidc.html

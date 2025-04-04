@@ -15,7 +15,7 @@ Access {{kib}} through the web application on port 5601.
     To remotely connect to {{kib}}, set [`server.host`](kibana://reference/configuration-reference/general-settings.md#server-host) to a non-loopback address.
 
     :::{note}
-    For production deployments, you should always [secure {{kib}} with a certificate](/deploy-manage/security/secure-http-communications.md#encrypt-kibana-http) and access it over HTTPS.
+    For production deployments, you should always [secure {{kib}} with a certificate](/deploy-manage/security/set-up-basic-security-plus-https.md#encrypt-kibana-http) and access it over HTTPS.
     :::
 
 2. Log on to your account.

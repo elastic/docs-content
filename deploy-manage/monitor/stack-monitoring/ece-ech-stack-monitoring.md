@@ -38,7 +38,7 @@ For more information, refer to [Monitor with AutoOps](/deploy-manage/monitor/aut
 ## Before you begin [logging-and-monitoring-limitations]
 
 * Some limitations apply when you use monitoring on ECH or ECE. To learn more, check the monitoring [restrictions and limitations](#restrictions-monitoring).
-* Enabling logs and monitoring consumes extra resources on a deployment. For production systems, we recommend sizing deployments with logs and monitoring enabled to at least 4 GB of RAM.
+* Enabling logs and monitoring consumes extra resources on a deployment. For production systems, we recommend sizing deployments with logs and monitoring enabled to at least 4 GB of RAM on each Elasticsearch instance.
 
 ## Monitoring for production use [logging-and-monitoring-production]
 
@@ -65,14 +65,17 @@ For monitoring indices, the retention period is configured in the `.monitoring-8
 
 Elastic manages the installation and configuration of the monitoring agent for you. When you enable monitoring on a deployment, you are configuring where the monitoring agent for your current deployment should send its logs and metrics.
 
+**Before you start**
+
+- Enabling logging and monitoring increases the resource consumption of the deployment. For production systems, we recommend sizing deployments with logging and monitoring enabled to at least 4 GB of RAM on each Elasticsearch instance.
+- Enabling logging and monitoring can trigger a plan change on your deployment. You can monitor the plan change progress from the deployment's **Activity** page.
+
 To enable monitoring on your deployment:
 
-1. Log into [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body) (ECH) or [the Cloud UI](/deploy-manage/deploy/cloud-enterprise/log-into-cloud-ui.md) (ECE).
-2. On the **Deployments** page, select your deployment.
+:::{include} /deploy-manage/_snippets/find-manage-deployment-ech-and-ece.md
+:::
 
-    Narrow the list by name, ID, or choose from several other filters. To further define the list, use a combination of filters.
-
-3. From your deployment menu, go to the **Logs and metrics** page.
+3. Under the deployment's name in the navigation menu, select **Logs and metrics**.
 4. Under **Ship to a deployment**, select **Enable**.
 5. Choose where to send your logs and metrics. Select **Save**.
 
@@ -81,10 +84,6 @@ To enable monitoring on your deployment:
     ::::{tip}
     Remember to send logs and metrics for production deployments to a dedicated monitoring deployment, so that your production deployments are not impacted by the overhead of indexing and storing monitoring data. A dedicated monitoring deployment also gives you more control over the retention period for monitoring data.
     ::::
-
-::::{note}
-Enabling logs and monitoring may trigger a plan change on your deployment. You can monitor the plan change progress from the deployment’s **Activity** page.
-::::
 
 ## Access the monitoring application in {{kib}} [access-kibana-monitoring]
 

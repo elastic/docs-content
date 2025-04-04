@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/security/current/view-alert-details.html
   - https://www.elastic.co/guide/en/serverless/current/security-view-alert-details.html
 applies_to:
