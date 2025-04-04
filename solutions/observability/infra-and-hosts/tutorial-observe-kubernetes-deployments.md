@@ -523,7 +523,7 @@ Find `Discover` in the [global search field](/explore-analyze/find-and-organize/
 
 From the **Data view** menu, select `All logs`. From here, you can quickly search and filter your log data, get information about the structure of log fields, and display your findings in a visualization. Then, you can filter your log data and dive deeper into individual logs to find and troubleshoot issues. For more information, refer to:
 
-* [Explore logs in Discover](../logs/logs-explorer.md) for an overview of viewing your logs in Discover.
+* [Explore logs in Discover](../logs/discover-logs.md) for an overview of viewing your logs in Discover.
 * [Filter logs in Discover](../logs/filter-aggregate-logs.md#logs-filter-discover) for more on filtering logs in Discover.
 
 

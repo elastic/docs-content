@@ -13,6 +13,10 @@ From the `logs-*` or `All logs` data view in Discover, you can quickly search an
 
 To open **Discover**, find `Discover` in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Select the `logs-*` or `All logs` data view from the **Data view** menu.
 
+:::{note}
+For a contextual logs experience, set the **Solution view** for your space to **Observability**. Refer to [Managing spaces](../../../deploy-manage/manage-spaces.md) for more information.
+:::
+
 :::{image} ../../images/observability-log-explorer.png
 :alt: Screen capture of Discover
 :class: screenshot
@@ -20,7 +24,7 @@ To open **Discover**, find `Discover` in the [global search field](/explore-anal
 
 ## Required {{kib}} privileges [logs-explorer-privileges]
 
-Viewing data in Discover logs data views requires `read` privileges for **Discover**, **Index**, **Logs**, and **Integrations**. For more on assigning {{kib}} privileges, refer to the [{{kib}} privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md) docs.
+Viewing data in Discover logs data views requires `read` privileges for **Discover**, **Index**, and **Logs**. For more on assigning {{kib}} privileges, refer to the [{{kib}} privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md) docs.
 
 
 ## Find your logs [find-your-logs]

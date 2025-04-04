@@ -160,7 +160,7 @@ For host monitoring, the following capabilities and features are recommended:
     * [Detect anomalies](../../../solutions/observability/infra-and-hosts/detect-metric-anomalies.md) for memory usage and network traffic on hosts.
     * [Create alerts](../../../solutions/observability/incident-management/alerting.md) that notify you when an anomaly is detected or a metric exceeds a given value.
 
-* In [Discover](../../../solutions/observability/logs/logs-explorer.md), search and filter your log data, get information about the structure of log fields, and display your findings in a visualization. You can also:
+* In [Discover](../../../solutions/observability/logs/discover-logs.md), search and filter your log data, get information about the structure of log fields, and display your findings in a visualization. You can also:
 
     * [Monitor log data set quality](../../../solutions/observability/data-set-quality-monitoring.md) to find degraded documents.
     * [Run a pattern analysis](../../../explore-analyze/machine-learning/machine-learning-in-kibana/xpack-ml-aiops.md#log-pattern-analysis) to find patterns in unstructured log messages.
