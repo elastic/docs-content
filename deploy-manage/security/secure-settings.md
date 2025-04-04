@@ -29,10 +29,6 @@ Keystore settings must be handled using a specific tool or method depending on t
 | {{eck}}              | Kubernetes secrets    | Kubernetes secrets                   |
 | Self-managed         | Manual configuration with [`elasticsearch-keystore`](elasticsearch://reference/elasticsearch/command-line-tools/elasticsearch-keystore.md) | Manual configuration with `kibana-keystore` |
 
-::::{note}
-In {{serverless-full}} and {{ech}} all data is encrypted at rest already.
-::::
-
 This section describes how to configure and manage secure settings in each keystore depending on the deployment model:
 * [{{es}} secure settings](./secure-settings.md#elasticsearch)
 * [{{kib}} secure settings](./secure-settings.md#kibana)
@@ -72,7 +68,7 @@ There are three input formats you can use for secure setting values:
 * **Multiple strings**: A group of key-value pairs, each stored as part of the setting's value.
 * **JSON block/file**: A structured JSON object containing multiple key-value pairs, typically used for more complex secrets like service account credentials.
 
-### Add secure settings [ec-add-secret-values]
+#### Add secure settings [ec-add-secret-values]
 
 Add settings and secret values to the keystore.
 
@@ -90,7 +86,7 @@ Add settings and secret values to the keystore.
     All modifications to the non-reloadable settings take effect only after restarting {{es}}. [Reloadable](#reloadable-secure-settings) keystore changes take effect after issuing a [reload_secure_settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-reload-secure-settings) API request. Adding unsupported settings to the keystore will cause {{es}} to fail to start.
     :::
 
-### Remove secure settings
+#### Remove secure settings
 
 When your secure settings are no longer needed, delete them from the keystore.
 
@@ -125,7 +121,7 @@ Secure settings must be specified on every node, and must have the same values a
 Changes to the keystore take effect only after restarting {{es}}, except for [reloadable settings](#reloadable-secure-settings) that can be refreshed using the API.
 :::
 
-### Create the keystore [creating-keystore]
+#### Create the keystore [creating-keystore]
 
 To create the Elasticsearch keystore, use the `create` command:
 
@@ -137,7 +133,7 @@ You are prompted to enter a keystore password, but setting one is optional. If y
 
 The command creates a file named `elasticsearch.keystore` alongside the `elasticsearch.yml` file.
 
-### List settings in the keystore
+#### List settings in the keystore
 
 To list the settings in the keystore, use the `list` command.
 
@@ -146,7 +142,7 @@ bin/elasticsearch-keystore list
 ```
 If the {{es}} keystore is password protected, you are prompted to enter the password.
 
-### Add secure settings to the keystore
+#### Add secure settings to the keystore
 
 Sensitive string settings, like authentication credentials for Cloud plugins, can be added with the `add` command:
 
@@ -156,7 +152,7 @@ bin/elasticsearch-keystore add the.setting.name.to.set
 
 You are prompted to enter the value of the setting. If the {{es}} keystore is password protected, you are also prompted to enter the password.
 
-### Remove secure settings from the keystore
+#### Remove secure settings from the keystore
 
 To remove a setting from the keystore, use the `remove` command:
 
@@ -166,7 +162,7 @@ bin/elasticsearch-keystore remove the.setting.name.to.remove
 
 If the {{es}} keystore is password protected, you are prompted to enter the password.
 
-### Other examples [change-password]
+#### Other examples [change-password]
 
 For a full command reference and additional examples, such as displaying stored values or adding entire files as setting values, refer to the [`elasticsearch-keystore` tool documentation](elasticsearch://reference/elasticsearch/command-line-tools/elasticsearch-keystore.md).
 
