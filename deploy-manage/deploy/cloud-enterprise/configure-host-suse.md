@@ -181,7 +181,7 @@ You must use XFS and have quotas enabled on all allocators, otherwise disk usage
 
 4. Adjust the system limits.
 
-    Add the following configuration values to the `/etc/security/limits.conf` file. These values are derived from our experience with the Elastic Cloud hosted offering and should be used for ECE as well.
+    Add the following configuration values to the `/etc/security/limits.conf` file. These values are derived from our experience with the {{ecloud}} hosted offering and should be used for ECE as well.
 
     ::::{tip}
     If you are using a user name other than `elastic`, adjust the configuration values accordingly.

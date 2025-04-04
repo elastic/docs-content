@@ -11,10 +11,10 @@ mapped_pages:
 
 # Create an {{ech}} deployment [ec-create-deployment]
 
-An Elastic Cloud deployment includes Elastic Stack components such as Elasticsearch, Kibana, and other features, allowing you to store, search, and analyze your data. You can spin up a proof-of-concept deployment to learn more about what Elastic can do for you.
+An {{ecloud}} deployment includes Elastic Stack components such as Elasticsearch, Kibana, and other features, allowing you to store, search, and analyze your data. You can spin up a proof-of-concept deployment to learn more about what Elastic can do for you.
 
 :::{note}
-You can also create a deployment using the [Elastic Cloud API](https://www.elastic.co/docs/api/doc/cloud/group/endpoint-deployments). This can be an interesting alternative for more advanced needs, such as for [creating a deployment encrypted with your own key](../../security/encrypt-deployment-with-customer-managed-encryption-key.md).
+You can also create a deployment using the [{{ecloud}} API](https://www.elastic.co/docs/api/doc/cloud/group/endpoint-deployments). This can be an interesting alternative for more advanced needs, such as for [creating a deployment encrypted with your own key](../../security/encrypt-deployment-with-customer-managed-encryption-key.md).
 :::
 
 1. Log in to your [cloud.elastic.co](https://cloud.elastic.co/login) account and select **Create deployment** from the {{ecloud}} main page:

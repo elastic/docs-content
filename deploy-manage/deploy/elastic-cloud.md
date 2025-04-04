@@ -7,11 +7,11 @@ mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/intro.html
 ---
 
-# Elastic Cloud [intro]
+# {{ecloud}} [intro]
 
 {{ecloud}} allows you to centrally manage [hosted deployments](elastic-cloud/cloud-hosted.md) of the {{stack}} and [serverless projects](elastic-cloud/serverless.md) for your Observability, Security, and Search use cases. 
 
-These hosted deployments and serverless projects are hosted on Elastic Cloud, through the cloud provider and regions of your choice, and are tied to your organization account.
+These hosted deployments and serverless projects are hosted on {{ecloud}}, through the cloud provider and regions of your choice, and are tied to your organization account.
 
 You can check the operational status of {{ecloud}} at any time from [status.elastic.co](https://status.elastic.co/).
 
@@ -46,7 +46,7 @@ You can have multiple hosted deployments and serverless projects in the same {{e
 | **Pricing** | Individual per project type and based on your usage. | Based on deployment size and subscription level. |
 | **Performance** | Autoscales based on your usage. | Manual scaling. |
 | **Solutions** | Single solution per project. | Full Elastic Stack per deployment. |
-| **User management** | Elastic Cloud-managed users. | Elastic Cloud-managed users and native {{kib}} users. |
+| **User management** | {{ecloud}}-managed users. | {{ecloud}}-managed users and native {{kib}} users. |
 | **API support** | Subset of [APIs](https://www.elastic.co/docs/api). | All Elastic APIs. |
 | **Backups** | Projects automatically backed up by Elastic. | Your responsibility with Snapshot & Restore. |
 | **Data retention** | Editable on data streams. | Index Lifecycle Management. |

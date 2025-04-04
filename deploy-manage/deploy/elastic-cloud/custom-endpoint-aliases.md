@@ -120,7 +120,7 @@ For more information on configuring the `TransportClient`, see
 
 ## Create a custom domain with NGINX [ec-custom-domains-with-nginx]
 
-If you don’t get the level of domain customization you’re looking for by using the [custom endpoint aliases](../../../deploy-manage/deploy/elastic-cloud/custom-endpoint-aliases.md), you might consider creating a CNAME record that points to your Elastic Cloud endpoints. However, that can lead to some issues. Instead, setting up your own proxy could provide the desired level of customization.
+If you don’t get the level of domain customization you’re looking for by using the [custom endpoint aliases](../../../deploy-manage/deploy/elastic-cloud/custom-endpoint-aliases.md), you might consider creating a CNAME record that points to your {{ecloud}} endpoints. However, that can lead to some issues. Instead, setting up your own proxy could provide the desired level of customization.
 
 ::::{important}
 The setup described in the following sections is not supported by Elastic, and if your proxy cannot connect to the endpoint, but curl can, we may not be able to help.
@@ -130,7 +130,7 @@ The setup described in the following sections is not supported by Elastic, and i
 
 ### Avoid creating CNAMEs [ec_avoid_creating_cnames]
 
-To achieve a fully custom domain, you can add a CNAME that points to your Elastic Cloud endpoint. However, this will lead to invalid certificate errors, and moreover, may simply not work. Your Elastic Cloud endpoints already point to a proxy internal to Elastic Cloud, which may not resolve your configured CNAME in the desired way.
+To achieve a fully custom domain, you can add a CNAME that points to your {{ecloud}} endpoint. However, this will lead to invalid certificate errors, and moreover, may simply not work. Your {{ecloud}} endpoints already point to a proxy internal to {{ecloud}}, which may not resolve your configured CNAME in the desired way.
 
 So what to do, instead?
 

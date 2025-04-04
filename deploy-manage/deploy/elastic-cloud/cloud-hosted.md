@@ -148,7 +148,7 @@ This frequently-asked-questions list helps you with common questions while you g
 * [Is there a limit on the number of documents or indexes I can have in my cluster?](/deploy-manage/deploy/elastic-cloud/cloud-hosted.md#faq-limit)
 
 $$$faq-what$$$**What is {{ech}}?**
-:   {{ech}} is hosted and managed {{es}} and {{kib}} brought to you by the creators of {{es}}. {{ech}} is part of Elastic Cloud and ships with features that you can only get from the company behind {{es}}, {{kib}}, {{beats}}, and {{ls}}. {{es}} is a full text search engine that suits a range of uses, from search on websites to big data analytics and more.
+:   {{ech}} is hosted and managed {{es}} and {{kib}} brought to you by the creators of {{es}}. {{ech}} is part of {{ecloud}} and ships with features that you can only get from the company behind {{es}}, {{kib}}, {{beats}}, and {{ls}}. {{es}} is a full text search engine that suits a range of uses, from search on websites to big data analytics and more.
 
 $$$faq-aws-difference$$$**Is {{ech}}, formerly known as {{es}} Service, the same as Amazon’s {{es}} Service?**
 :   {{ech}} is not the same as the Amazon {{es}} service. To learn more about the differences, check our [AWS {{es}} Service](https://www.elastic.co/aws-elasticsearch-service) comparison.

@@ -16,7 +16,7 @@ $$$elasticsearch-manage-project-search-power-settings$$$
 Your project’s performance and general data retention are controlled by the **Search AI Lake settings**. To manage these settings:
 
 1. Navigate to [cloud.elastic.co](https://cloud.elastic.co/).
-2. Log in to your Elastic Cloud account.
+2. Log in to your {{ecloud}} account.
 3. Select your project from the **Serverless projects** panel and click **Manage**.
 
 Additionally, there are [features and add-ons](#project-features-add-ons) available for security that you can configure.

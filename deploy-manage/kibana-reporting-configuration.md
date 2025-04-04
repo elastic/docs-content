@@ -27,7 +27,7 @@ This section covers the necessary configuration to ensure reporting works correc
 * Linux versions that are in end-of-life phase are not supported.
 * Linux systems with `SELinux` or `fapolicyd` are not supported.
 
-Before upgrading {{kib}} in a production environment, we encourage you to test your screenshotting use cases in a pre-production environment to make sure your hosts support our latest build of Chromium. For the most reliable configuration of PDF/PNG {{report-features}}, consider installing {{kib}} using [Docker](/deploy-manage/deploy/self-managed/install-kibana-with-docker.md), or using [Elastic Cloud](https://cloud.elastic.co).
+Before upgrading {{kib}} in a production environment, we encourage you to test your screenshotting use cases in a pre-production environment to make sure your hosts support our latest build of Chromium. For the most reliable configuration of PDF/PNG {{report-features}}, consider installing {{kib}} using [Docker](/deploy-manage/deploy/self-managed/install-kibana-with-docker.md), or using [{{ecloud}}](https://cloud.elastic.co).
 ::::
 
 ## Configuration overview

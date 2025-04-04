@@ -30,7 +30,7 @@ For limitations related to logging and monitoring, check the [Restrictions and l
 
 % Occasionally, we also publish information about [Known problems](#ec-known-problems) with our {{ecloud}} or the Elastic Stack.
 
-To learn more about the features that are supported by {{ecloud}}, check [Elastic Cloud Subscriptions](https://www.elastic.co/cloud/elasticsearch-service/subscriptions?page=docs&placement=docs-body).
+To learn more about the features that are supported by {{ecloud}}, check [{{ecloud}} Subscriptions](https://www.elastic.co/cloud/elasticsearch-service/subscriptions?page=docs&placement=docs-body).
 
 
 ## Security [ec-restrictions-security]
@@ -92,7 +92,7 @@ Currently you can’t use SSO to login directly from {{ecloud}} into {{kib}} end
 
 ## PDF report generation using Alerts or Watcher webhooks [ec-restrictions-traffic-filters-watcher]
 
-* PDF report automatic generation via Alerts is not possible on Elastic Cloud.
+* PDF report automatic generation via Alerts is not possible on {{ecloud}}.
 * PDF report generation isn’t possible for deployments running on Elastic stack version 8.7.0 or before that are protected by traffic filters. This limitation doesn’t apply to public webhooks such as Slack, PagerDuty, and email. For deployments running on Elastic stack version 8.7.1 and beyond, [PDF report automatic generation via Watcher webhook](../../../explore-analyze/report-and-share/automating-report-generation.md#use-watcher) is possible using the `xpack.notification.webhook.additional_token_enabled` configuration setting to bypass traffic filters.
 
 
@@ -117,7 +117,7 @@ Currently you can’t use SSO to login directly from {{ecloud}} into {{kib}} end
 
 ## Restoring a snapshot across deployments [ec-snapshot-restore-enterprise-search-kibana-across-deployments]
 
-{{kib}} does not currently support restoring a snapshot of their indices across Elastic Cloud deployments.
+{{kib}} does not currently support restoring a snapshot of their indices across {{ecloud}} deployments.
 
 * [{{kib}} uses encryption keys](/deploy-manage/security/secure-your-cluster-deployment.md) in various places, ranging from encrypting data in some areas of reporting, alerts, actions, connector tokens, ingest outputs used in Fleet and Synthetics monitoring to user sessions.
 * Currently, there is not a way to retrieve the values of {{kib}} encryption keys, or set them in the target deployment before restoring a snapshot. As a result, once a snapshot is restored, {{kib}} will not be able to decrypt the data required for some features to function properly in the target deployment.
@@ -149,6 +149,6 @@ To make a seamless migration, after restoring from a snapshot there are some add
 % * A known issue can prevent direct rolling upgrades from {{es}} version 5.6.10 to version 6.3.0. As a workaround, we have removed version 6.3.0 from the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body) for new cluster deployments and for upgrading existing ones. If you are affected by this issue, check [Rolling upgrades from 5.6.x to 6.3.0 fails with "java.lang.IllegalStateException: commit doesn’t contain history uuid"](https://elastic.my.salesforce.com/articles/Support_Article/Rolling-upgrades-to-6-3-0-from-5-x-fails-with-java-lang-IllegalStateException-commit-doesn-t-contain-history-uuid?popup=false&id=kA0610000005JFG) in our Elastic Support Portal. If these steps do not work or you do not have access to the Support Portal, you can contact `support@elastic.co`.
 
 
-## Repository Analysis API is unavailable in Elastic Cloud [ec-repository-analyis-unavailable]
+## Repository Analysis API is unavailable in {{ecloud}} [ec-repository-analyis-unavailable]
 
 * The {{es}} [Repository analysis API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-repository-analyze) is not available in {{ecloud}} due to deployments defaulting to having [operator privileges](../../users-roles/cluster-or-deployment-auth/operator-privileges.md) enabled that prevent non-operator privileged users from using it along with a number of other APIs.

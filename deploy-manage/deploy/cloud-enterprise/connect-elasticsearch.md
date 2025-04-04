@@ -103,7 +103,7 @@ To get started with Metricbeat and {{ece}}:
 2. [Create a new deployment](create-deployment.md) and copy down the password for the `elastic` user.
 3. On the deployment overview page, copy down the Cloud ID.
 4. Set up the Beat of your choice, such as [Metricbeat](beats://reference/metricbeat/metricbeat-installation-configuration.md).
-5. [Configure the Beat output to send to Elastic Cloud](beats://reference/metricbeat/configure-cloud-id.md).
+5. [Configure the Beat output to send to {{ecloud}}](beats://reference/metricbeat/configure-cloud-id.md).
 
     ::::{note}
     Make sure you replace the values for `cloud.id` and `cloud.auth` with your own information.

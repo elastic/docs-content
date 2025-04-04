@@ -15,11 +15,11 @@ When a deployment is created, each {{es}} tier and stateless resource (e.g., Kib
 
 ## Migrate to a different instance configuration using the API [ec_migrate_to_a_different_instance_configuration_using_the_api]
 
-Hardware profile migrations are possible to perform through the Elastic Cloud console, however, migrating a specific tier or resource to a different instance configuration can only be achieved through the API.
+Hardware profile migrations are possible to perform through the {{ecloud}} console, however, migrating a specific tier or resource to a different instance configuration can only be achieved through the API.
 
 Prerequisites:
 
-* A valid Elastic Cloud [API key](../../api-keys/elastic-cloud-api-keys.md) (`$EC_API_KEY`)
+* A valid {{ecloud}} [API key](../../api-keys/elastic-cloud-api-keys.md) (`$EC_API_KEY`)
 
 Follow these steps to migrate to a different instance configuration, replacing the default `$EC_API_KEY` value with your actual API key:
 
@@ -80,7 +80,7 @@ You can perform multiple instance configuration migrations in the same request.
 
 
 ::::{warning}
-Having an instance configuration mismatch between the deployment and the hardware profile will cause the Elastic Cloud console to announce that there is a **Newer version available** for the hardware profile. Any hardware profile migration performed through the Elastic Cloud console will cause the instance configurations to be reset to the values in the hardware profile.
+Having an instance configuration mismatch between the deployment and the hardware profile will cause the {{ecloud}} console to announce that there is a **Newer version available** for the hardware profile. Any hardware profile migration performed through the {{ecloud}} console will cause the instance configurations to be reset to the values in the hardware profile.
 ::::
 
 

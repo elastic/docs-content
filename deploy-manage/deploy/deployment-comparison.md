@@ -10,7 +10,7 @@ For more details about feature availability in Serverless, check [](elastic-clou
 | Feature/capability | Self-managed | {{ech}} | Serverless |
 |-------------------|-------------|--------------------------------|-------------------------|
 | [Security configurations](/deploy-manage/security.md) | Full control | Limited control | Limited control |
-| [Authentication realms](/deploy-manage/users-roles.md) | Available | Available | Available, through Elastic Cloud only |
+| [Authentication realms](/deploy-manage/users-roles.md) | Available | Available | Available, through {{ecloud}} only |
 | [Custom roles](/deploy-manage/users-roles.md) | Available | Available | Available |
 | [Audit logging](/deploy-manage/security/logging-configuration/security-event-audit-logging.md) | Available | Available | No |
 
@@ -18,7 +18,7 @@ For more details about feature availability in Serverless, check [](elastic-clou
 
 | Feature/capability | Self-managed | {{ech}} | Serverless |
 |-------------------|-------------|--------------------------------|-------------------------|
-| Hosting | Any infrastructure | Elastic Cloud through AWS, Azure, or GCP | Elastic Cloud through AWS or Azure |
+| Hosting | Any infrastructure | {{ecloud}} through AWS, Azure, or GCP | {{ecloud}} through AWS or Azure |
 | Hardware configuration | Full control | Limited control | Managed by Elastic |
 | Autoscaling | No | Available | Automatic |
 | Data tiers management | Through ILM policies | Available | No data tiers |

@@ -56,7 +56,7 @@ The instructions below cover how to manage {{es}} keystore settings for each dep
 ::::{tab-item} ECH and ECE
 :sync: cloud
 % ### ECE and ECH
-You can manage {{es}} secure settings in the **Security > {{es}} keystore** section of your deployment page in the Elastic Cloud Console or ECE Cloud UI.
+You can manage {{es}} secure settings in the **Security > {{es}} keystore** section of your deployment page in the {{ecloud}} Console or ECE Cloud UI.
 
 :::{note}
 {{ece}} also supports managing {{es}} keystore of your deployments through its [RESTful API](https://www.elastic.co/docs/api/doc/cloud-enterprise/). Refer to [Configure {{es}} keystore through ECE API](cloud://reference/cloud-enterprise/ece-restful-api-examples-configuring-keystore.md) for an example.

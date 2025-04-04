@@ -26,7 +26,7 @@ $$$faq-autoops-license$$$How is AutoOps currently licensed?
 :   AutoOps current feature set is available to {{ech}} customers at all subscription tiers. For more information please refer to the [subscription page](https://www.elastic.co/subscriptions/cloud).
 
 $$$faq-autoops-installation$$$How does AutoOps get installed and why may I not see AutoOps available on specific deployments?
-:   AutoOps is automatically applied to {{es}} clusters on Elastic Cloud, rolling out in phases across CSPs and regions. Read more about AutoOps [roll out](ec-autoops-regions.md) status.
+:   AutoOps is automatically applied to {{es}} clusters on {{ecloud}}, rolling out in phases across CSPs and regions. Read more about AutoOps [roll out](ec-autoops-regions.md) status.
 
 $$$faq-autoops-issue-resolution$$$Can AutoOps currently automatically resolve issues?
 :   AutoOps only analyzes metrics, and is a “read-only” solution.

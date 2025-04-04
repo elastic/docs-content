@@ -118,7 +118,7 @@ deployment:
   ess:
 ```
 
-Elastic Cloud allows smaller instance sizes to get temporarily boosted vCPU when under heavy load. [vCPU boosting](/deploy-manage/deploy/elastic-cloud/ec-vcpu-boost-instance.md) is governed by vCPU credits that instances can earn over time when vCPU usage is less than the assigned amount.
+{{ecloud}} allows smaller instance sizes to get temporarily boosted vCPU when under heavy load. [vCPU boosting](/deploy-manage/deploy/elastic-cloud/ec-vcpu-boost-instance.md) is governed by vCPU credits that instances can earn over time when vCPU usage is less than the assigned amount.
 
 You can check the **Monitoring > Performance > CPU Credits** section of the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body), and find the related metrics:
 

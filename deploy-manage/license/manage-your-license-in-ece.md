@@ -10,7 +10,7 @@ mapped_pages:
 
 The use of {{ece}} requires a valid license, which you can obtain from Elastic and add to your installation following the steps described in this document. When you first install ECE we automatically activate ECE with a trial license that is valid for 30 days.
 
-Full ECE licenses that you obtain from Elastic enable all ECE hosted deployments with the same products, features, and support that are available at our Enterprise subscription level on Elastic Cloud for the respective stack version, as described on the [Subscriptions page](https://www.elastic.co/subscriptions/cloud).
+Full ECE licenses that you obtain from Elastic enable all ECE hosted deployments with the same products, features, and support that are available at our Enterprise subscription level on {{ecloud}} for the respective stack version, as described on the [Subscriptions page](https://www.elastic.co/subscriptions/cloud).
 
 ::::{note}
 The licenses used to activate the deployments might have a different expiration date than the license used to activate ECE. ECE manages the licenses of the hosted deployments and will automatically update the deployment license when needed.

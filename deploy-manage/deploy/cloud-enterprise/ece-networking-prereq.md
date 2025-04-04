@@ -71,7 +71,7 @@ Outbound traffic must also permit connections to the [snapshot repositories](../
 
 A typical ECE installation should be contained within a single data center. We recommend that ECE installations not span different data centers, due to variations in networking latency and bandwidth that cannot be controlled.
 
-Installation of ECE across multiple data centers might be feasible with sufficiently low latency and high bandwidth, with some restrictions around what we can support. Based on our experience with our hosted Elastic Cloud service, the following is required:
+Installation of ECE across multiple data centers might be feasible with sufficiently low latency and high bandwidth, with some restrictions around what we can support. Based on our experience with our hosted {{ecloud}} service, the following is required:
 
 * A typical network latency between the data centers of less than 10ms round-trip time during pings
 * A network bandwidth of at least 10 Gigabit

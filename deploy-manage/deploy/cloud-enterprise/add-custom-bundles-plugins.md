@@ -87,7 +87,7 @@ Custom plugins can include the official {{es}} plugins not provided with {{ece}}
 
 This example adds a custom LDAP bundle for deployment level role-based access control (RBAC). To set platform level RBAC, check [](../../../deploy-manage/users-roles/cloud-enterprise-orchestrator/manage-users-roles.md).
 
-1. Prepare a custom bundle as a ZIP file that contains your keystore file with the private key and certificate inside of a `truststore` folder [in the same way that you would on Elastic Cloud](/deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md). This bundle allows all {{es}} containers to access the same keystore file through your `ssl.truststore` settings.
+1. Prepare a custom bundle as a ZIP file that contains your keystore file with the private key and certificate inside of a `truststore` folder [in the same way that you would on {{ecloud}}](/deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md). This bundle allows all {{es}} containers to access the same keystore file through your `ssl.truststore` settings.
 2. In the [advanced configuration editor](../../../deploy-manage/deploy/cloud-enterprise/advanced-cluster-configuration.md), update your new {{es}} cluster with the custom bundle you have just created. Modify the `user_bundles` JSON attribute of **each** {{es}} instance type as shown in the following example:
 
     ```sh
