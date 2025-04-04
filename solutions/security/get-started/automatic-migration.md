@@ -27,7 +27,7 @@ You can ingest your data before migrating your rules, or migrate your rules firs
 ## Get started with Automatic Migration
 
 1. Find **Get started** in the navigation menu or use the [global search bar](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. Under **Configure AI provider**, you can use Elastic LLM, select another configured model, or [add a new one](/solutions/security/ai/set-up-connectors-for-large-language-models-llm.md). For information on how different models perform, refer to the [LLM performance matrix](../../../solutions/security/ai/large-language-model-performance-matrix.md).
+2. Under **Configure AI provider**, select a configured model or [add a new one](/solutions/security/ai/set-up-connectors-for-large-language-models-llm.md). For information on how different models perform, refer to the [LLM performance matrix](../../../solutions/security/ai/large-language-model-performance-matrix.md).
 3. Next, under **Migrate rules & add data**, click **Translate your existing SIEM rules to Elastic**, then **Upload rules**.
 4. Follow the instructions on the **Upload Splunk SIEM rules** flyout to export your rules from Splunk as JSON. 
 
