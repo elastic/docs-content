@@ -1,7 +1,7 @@
 toc:
   - file: index.md
-  - toc: intro
+  - toc: fleet-elastic-agent
+  - toc: elastic-cloud-serverless
   - toc: elastic-observability
   - toc: elastic-security
-  - toc: elastic-cloud-serverless
-  - toc: fleet-elastic-agent
+
