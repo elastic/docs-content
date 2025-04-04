@@ -24,7 +24,7 @@ The steps for setting up data tiers vary based on your deployment type:
 
 ::::::{tab-item} {{ech}}
 1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co/registration?page=docs&placement=docs-body).
-2. Add or select your deployment from the {{ecloud}} home page or the **Deployments** page.
+2. Add or select your deployment from the {{ecloud}} home page or the **Hosted deployments** page.
 3. From your deployment menu, select **Edit deployment**.
 4. To enable a data tier, click **Add capacity**.
 
