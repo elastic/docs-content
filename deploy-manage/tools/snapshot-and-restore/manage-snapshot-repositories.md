@@ -9,7 +9,7 @@ applies_to:
 
 # Manage snapshot repositories
 
-Snapshot repositories allow you to back up and restore your {{es}} data efficiently. Whether you're using [{{ech}}](#elastic-cloud-hosted), [{{ece}} (ECE)](#elastic-cloud-enterprise-ece), [{{eck}} (ECK)](#elastic-cloud-on-kubernetes-eck), or managing your own [{{es}} cluster](#self-managed), configuring a snapshot repository ensures data security, long-term archiving, and seamless migration across environments.
+Snapshot repositories allow you to back up and restore your {{es}} data efficiently. Whether you're using [{{ech}}](#elastic-cloud-hosted), [{{ece}} (ECE)](#elastic-cloud-enterprise), [{{eck}} (ECK)](#elastic-cloud-on-kubernetes), or managing your own [{{es}} cluster](#self-managed), configuring a snapshot repository ensures data security, long-term archiving, and seamless migration across environments.
 
 ## Supported repository types
 
