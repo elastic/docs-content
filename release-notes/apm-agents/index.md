@@ -1,6 +1,6 @@
 ---
-navigation_title: "Elastic APM"
+navigation_title: "Elastic APM agents"
 ---
 
-# Elastic APM release notes [elastic-apm-release-notes]
+# Elastic APM agents release notes [elastic-apm--agents-release-notes]
 Review the changes, fixes, and more in each version of the Elastic APM agents.
