@@ -1,5 +1,5 @@
 ---
-navigation_title: {{kib}} user settings
+navigation_title: Kibana user settings
 applies_to:
   deployment:
     ece: all

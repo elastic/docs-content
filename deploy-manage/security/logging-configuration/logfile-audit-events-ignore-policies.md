@@ -1,5 +1,5 @@
 ---
-navigation_title: {{es}} audit events ignore policies
+navigation_title: Elasticsearch audit events ignore policies
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/audit-log-ignore-policy.html
 applies_to:

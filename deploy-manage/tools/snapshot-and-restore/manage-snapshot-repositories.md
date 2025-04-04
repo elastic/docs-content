@@ -28,7 +28,7 @@ Other repository types are available through official plugins:
 
 * [Hadoop Distributed File System (HDFS)](elasticsearch://reference/elasticsearch-plugins/repository-hdfs.md)
 
-### {{ech}}
+### {{ech}} [elastic-cloud-hosted]
 
 {{ech}} deployments automatically register a repository named `found-snapshots` in {{es}} clusters. These repositories are used together with the `cloud-snapshot-policy` SLM policy to take periodic snapshots of your {{es}} clusters. You can also use the `found-snapshots` repository for your own [SLM policies](/deploy-manage/tools/snapshot-and-restore/create-snapshots.md#automate-snapshots-slm) or to store searchable snapshots.
 
@@ -43,7 +43,7 @@ The `found-snapshots` repository is specific to each deployment. However, you ca
 
 For more details, refer to [Registering snapshot repositories in {{ech}}](/deploy-manage/tools/snapshot-and-restore/elastic-cloud-hosted.md).
 
-### {{ece}} (ECE)
+### {{ece}} (ECE) [elastic-cloud-enterprise]
 
 Snapshot repositories are managed at the platform level in {{ece}} (ECE) and can be associated with deployments as needed. ECE supports the creation and maintenance of multiple repositories, but each deployment can be linked to only one repository for automatic snapshots.
 
@@ -62,7 +62,7 @@ No repository types other than those listed are supported in the {{ece}} platfor
 
 For more details, refer to [Managing snapshot repositories in {{ece}}](/deploy-manage/tools/snapshot-and-restore/cloud-enterprise.md).
 
-### {{eck}} (ECK)
+### {{eck}} (ECK) [elastic-cloud-on-kubernetes]
 
 {{es}} clusters deployed through ECK support the same type of deployments as self-managed {{es}} clusters. ECK does not currently provide any automation or functionality to facilitate the integration of snapshot repositores within the {{es}} clusters.
 

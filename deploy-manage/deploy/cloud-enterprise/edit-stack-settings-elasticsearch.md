@@ -1,5 +1,5 @@
 ---
-navigation_title: {{es}} user settings
+navigation_title: Elasticsearch user settings
 applies_to:
   deployment:
     ece: all
