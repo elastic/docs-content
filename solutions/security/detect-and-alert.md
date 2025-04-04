@@ -48,12 +48,12 @@ To make sure you can access Detections and manage rules, see [Detections require
 stack:
 ```
 
-Cold data tiers store time series data that is accessed infrequently and rarely updated, while frozen data tiers hold time series data that is accessed even less frequently and never updated. If you are automating searches across different [data tiers](/manage-data/lifecycle/data-tiers.md) using rules, consider the following best practices and limitations.
+Cold [data tiers](/manage-data/lifecycle/data-tiers.md) store time series data that's accessed infrequently and rarely updated, while frozen data tiers hold time series data that's accessed even less frequently and never updated. If you're automating searches across different data tiers using rules, consider the following best practices and limitations.
 
 ### Best practices [best-practices-data-tiers]
 
-* **Retention in hot tier**: We recommend keeping data in the hot tier for at least 24 hours. {{ilm-cap}} policies that roll over data more frequently than once every 24 hours can increase the volume of frozen data queried by rules, leading to performance issues.
-* **Replicas for mission-critical data**: Your data should have replicas if it must be highly available. Since frozen tiers don't support replicas, shard unavailability can cause partial rule run failures. Shard unavailability may be also encountered during or after {stack} upgrades. If this happens, you can [manually rerun](/solutions/security/detect-and-alert/manage-detection-rules.md#manually-run-rules) rules over the affected time period once the shards are available.
+* **Retention in hot tier**: We recommend keeping data in the hot tier ({{ilm-cap}} hot phase) for at least 24 hours. {{ilm-cap}} policies that move ingested data from the hot phase to another phase (for example, cold or frozen) in less than 24 hours may cause performance issues and/or rule execution errors.
+* **Replicas for mission-critical data**: Your data should have replicas if it must be highly available. Since frozen tiers don't support replicas, shard unavailability can cause partial rule run failures. Shard unavailability may be also encountered during or after {{stack}} upgrades. If this happens, you can [manually rerun](/solutions/security/detect-and-alert/manage-detection-rules.md#manually-run-rules) rules over the affected time period once the shards are available.
 
 ### Limitations [limitations-data-tiers]
 
