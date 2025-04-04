@@ -136,7 +136,7 @@ After installation is complete and all relevant data is flowing into Elastic, th
 
 ## Troubleshooting and more [_troubleshooting_and_more]
 
-* To troubleshoot deployment and installation, refer to [installation verification](https://github.com/elastic/opentelemetry/tree/main/docs/kubernetes/operator#installation-verification).
-* For application instrumentation details, refer to [Instrumenting applications with EDOT SDKs on Kubernetes](https://github.com/elastic/opentelemetry/blob/main/docs/kubernetes/operator/instrumenting-applications.md).
-* To customize the configuration, refer to [custom configuration](https://github.com/elastic/opentelemetry/tree/main/docs/kubernetes/operator#custom-configuration).
+* To troubleshoot deployment and installation, refer to [installation verification](https://github.com/elastic/opentelemetry/blob/main/docs/use-cases/kubernetes/deployment.md).
+* For application instrumentation details, refer to [Instrumenting applications with EDOT SDKs on Kubernetes](https://github.com/elastic/opentelemetry/blob/main/docs/use-cases/kubernetes/instrumenting-applications.md).
+* To customize the configuration, refer to [custom configuration](https://github.com/elastic/opentelemetry/blob/main/docs/use-cases/kubernetes/customization.md).
 * Refer to [Observability overview](../../../solutions/observability/get-started/what-is-elastic-observability.md) for a description of other useful features.
