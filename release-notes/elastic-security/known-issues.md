@@ -19,15 +19,3 @@ Known issues are significant defects or limitations that may impact your impleme
 % Workaround description.
 
 :::
-
-:::{dropdown} Duplicate alerts can be produced from manually running threshold rules
-**Elastic Stack versions: 9.0.0**
-
-On November 12, 2024, it was discovered that manually running threshold rules could produce duplicate alerts if the date range was already covered by a scheduled rule execution.
-:::
-
-:::{dropdown} Manually running custom query rules with suppression could suppress more alerts than expected
-**Elastic Stack versions: 9.0.0**
-
-On November 12, 2024, it was discovered that manually running a custom query rule with suppression could incorrectly inflate the number of suppressed alerts. 
-:::
