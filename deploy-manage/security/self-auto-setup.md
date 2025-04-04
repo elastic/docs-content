@@ -17,6 +17,10 @@ mapped_pages:
 :::{include} /deploy-manage/deploy/self-managed/_snippets/auto-security-config.md
 :::
 
+:::{note}
+In {{es}} RPM and Debian package installations, the `elastic` user password is not output at startup and must be [manually reset](/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-sm.md#using-elasticsearch-reset-password).
+:::
+
 To learn how to start {{es}} and {{kib}} with security enabled, follow one of our installation guides. Select the product that you want to install, and then select the guide your preferred installation method: 
 
 * [Install {{es}}](/deploy-manage/deploy/self-managed/installing-elasticsearch.md#installation-methods)

@@ -1,6 +1,5 @@
 To enroll new nodes in your cluster, create an enrollment token with the [`elasticsearch-create-enrollment-token`](elasticsearch://reference/elasticsearch/command-line-tools/create-enrollment-token.md) tool on any existing node in your cluster. You can then start a new node with the `--enrollment-token` parameter so that it joins an existing cluster.
 
-
 1. Using a text editor, update the `cluster.name` in `elasticsearch.yml` to match the other nodes in your cluster. 
    
    :::{tip}
