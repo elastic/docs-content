@@ -22,9 +22,10 @@ The deployment **Health** page provides detailed information on health issues, i
 
 To view the health for a deployment:
 
-1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body) or [Cloud UI](/deploy-manage/deploy/cloud-enterprise/log-into-cloud-ui.md).
-2. On the **Deployments** page, select your deployment.
-3. In your deployment menu, select **Health**.
+:::{include} ../_snippets/find-manage-deployment-ech-and-ece.md
+:::
+
+3. Under the deployment's name in the navigation menu, select **Health**.
 
 The **Health** page provides the following information:
 
