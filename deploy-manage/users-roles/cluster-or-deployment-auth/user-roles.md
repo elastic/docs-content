@@ -37,7 +37,7 @@ The authorization process revolves around the following constructs:
 :   A resource to which access is restricted. Indices, aliases, documents, fields, users, and the {{es}} cluster itself are all examples of secured objects.
 
 *Privilege*
-:   A named group of one or more actions that a user may execute against a secured resource. Each secured resource has its own sets of available privileges. For example, `read` is an index privilege that represents all actions that enable reading the indexed/stored data. For a complete list of available privileges, see [Elasticsearch privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md).
+:   A named group of one or more actions that a user may execute against a secured resource. Each secured resource has its own sets of available privileges. For example, `read` is an index privilege that represents all actions that enable reading the indexed/stored data. For a complete list of available privileges, see [{{es}} privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md).
 
 *Permissions*
 :   A set of one or more privileges against a secured resource. Permissions can easily be described in words, here are few examples:

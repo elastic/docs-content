@@ -68,6 +68,6 @@ The cluster will be resilient to the loss of any zone as long as:
 * Every index that is not a [searchable snapshot index](../../tools/snapshot-and-restore/searchable-snapshots.md) has at least one replica of each shard, in addition to the primary.
 * [Shard allocation awareness](../../distributed-architecture/shard-allocation-relocation-recovery/shard-allocation-awareness.md) is configured to avoid concentrating all copies of a shard within a single zone.
 * The cluster has at least three master-eligible nodes. At least two of these nodes are not [voting-only master-eligible nodes](../../distributed-architecture/clusters-nodes-shards/node-roles.md#voting-only-node), and they are spread evenly across at least three zones.
-* Clients are configured to send their requests to nodes in more than one zone or are configured to use a load balancer that balances the requests across an appropriate set of nodes. The [Elastic Cloud](https://cloud.elastic.co/registration?page=docs&placement=docs-body) service provides such a load balancer.
+* Clients are configured to send their requests to nodes in more than one zone or are configured to use a load balancer that balances the requests across an appropriate set of nodes. The [{{ecloud}}](https://cloud.elastic.co/registration?page=docs&placement=docs-body) service provides such a load balancer.
 
 

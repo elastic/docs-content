@@ -1,5 +1,5 @@
 ---
-navigation_title: Configure Kibana reporting
+navigation_title: Configure {{kib}} reporting
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/secure-reporting.html
 applies_to:
@@ -13,21 +13,21 @@ applies_to:
 % this anchor belongs to `kibana reporting production considerations doc`
 $$$reporting-chromium-sandbox$$$
 
-# Configure Kibana reporting [secure-reporting]
+# Configure {{kib}} reporting [secure-reporting]
 
 {{kib}}'s reporting functionality offers multiple ways to share **Discover** sessions, dashboards, **Visualize Library** visualizations, and **Canvas** workpads.
 
 This section covers the necessary configuration to ensure reporting works correctly in your deployment. For guidance on using {{report-features}} effectively, refer to [](/explore-analyze/report-and-share.md).
 
 ::::{admonition} Note for self-managed deployments
-Kibana PNG/PDF reporting uses a custom binary of headless Chromium, and support comes with special caveats:
+{{kib}} PNG/PDF reporting uses a custom binary of headless Chromium, and support comes with special caveats:
 
 * The functionality requires special OS dependencies which may not be available for all distributions and configurations of Linux.
 * It is subject to system resource configurations such as the limited number of file descriptors, allowed processes, and types of processes.
 * Linux versions that are in end-of-life phase are not supported.
 * Linux systems with `SELinux` or `fapolicyd` are not supported.
 
-Before upgrading Kibana in a production environment, we encourage you to test your screenshotting use cases in a pre-production environment to make sure your hosts support our latest build of Chromium. For the most reliable configuration of PDF/PNG {{report-features}}, consider installing {{kib}} using [Docker](/deploy-manage/deploy/self-managed/install-kibana-with-docker.md), or using [Elastic Cloud](https://cloud.elastic.co).
+Before upgrading {{kib}} in a production environment, we encourage you to test your screenshotting use cases in a pre-production environment to make sure your hosts support our latest build of Chromium. For the most reliable configuration of PDF/PNG {{report-features}}, consider installing {{kib}} using [Docker](/deploy-manage/deploy/self-managed/install-kibana-with-docker.md), or using [{{ecloud}}](https://cloud.elastic.co).
 ::::
 
 ## Configuration overview
@@ -90,7 +90,7 @@ When security is enabled, you grant users access to {{report-features}} with [{{
 
 3. Add the {{kib}} privileges.
 
-    1. Click **Add Kibana privilege**.
+    1. Click **Add {{kib}} privilege**.
     2. Select one or more **Spaces**.
     3. Click **Customize**, then click **Analytics**.
     4. For each application, select **All**, or to customize the privileges, select **Read** and **Customize sub-feature privileges**.
@@ -101,7 +101,7 @@ When security is enabled, you grant users access to {{report-features}} with [{{
 
 
         :::{image} /deploy-manage/images/kibana-kibana-privileges-with-reporting.png
-        :alt: Kibana privileges with Reporting options, Gold or higher license
+        :alt: {{kib}} privileges with Reporting options, Gold or higher license
         :screenshot:
         :::
 
@@ -130,7 +130,7 @@ Granting the privilege to generate reports also grants the user the privilege to
 With [{{kib}} application privileges](#grant-user-access), you can use the [role APIs](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-roles) to grant access to the {{report-features}}, using **All** privileges, or sub-feature privileges.
 
 :::{note}
-This API request needs to be run against the [Kibana API endpoint](https://www.elastic.co/guide/en/kibana/current/api.html).
+This API request needs to be run against the [{{kib}} API endpoint](https://www.elastic.co/guide/en/kibana/current/api.html).
 :::
 
 ```console
@@ -179,12 +179,12 @@ reporting_user:
 
 ::::{tab-item} Basic license
 
-With a Basic license, sub-feature [application privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md) are unavailable, requiring you to select **All** privileges for the applications where users can create reports. You can grant users access through the Kibana UI or role API.
+With a Basic license, sub-feature [application privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md) are unavailable, requiring you to select **All** privileges for the applications where users can create reports. You can grant users access through the {{kib}} UI or role API.
 
-Example using Kibana UI:
+Example using {{kib}} UI:
 
 :::{image} /deploy-manage/images/kibana-kibana-privileges-with-reporting-basic.png
-:alt: Kibana privileges with Reporting options, Basic license
+:alt: {{kib}} privileges with Reporting options, Basic license
 :screenshot:
 :::
 

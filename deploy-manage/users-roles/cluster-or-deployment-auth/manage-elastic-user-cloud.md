@@ -12,7 +12,7 @@ navigation_title: ECH and ECE
 
 # Reset the `elastic` user password in {{ech}} and {{ece}} [ec-password-reset]
 
-You might need to reset the password for the `elastic` superuser if you can't authenticate with the `elastic` user ID and are effectively locked out from an Elasticsearch cluster or Kibana.
+You might need to reset the password for the `elastic` superuser if you can't authenticate with the `elastic` user ID and are effectively locked out from an {{es}} cluster or {{kib}}.
 
 ::::{note}
 Elastic does not manage the `elastic` user and does not have access to the account or its credentials. If you lose the password, you have to reset it.

@@ -8,7 +8,7 @@ mapped_pages:
 
 # Resize deployment [ece-resize-deployment]
 
-Elasticsearch scales to whatever capacity you need and with as many nodes as the available resources can support. If you don’t have enough available resources, [add some capacity first](../../maintenance/ece/scale-out-installation.md).
+{{es}} scales to whatever capacity you need and with as many nodes as the available resources can support. If you don’t have enough available resources, [add some capacity first](../../maintenance/ece/scale-out-installation.md).
 
 ::::{tip} 
 You can also enable autoscaling on a deployment to have the available resources for components, such as [data tiers](/manage-data/lifecycle/data-tiers.md) and [machine learning](/explore-analyze/machine-learning.md) nodes, adjust automatically as the demands on the deployment change over time. Check [Deployment autoscaling](/deploy-manage/autoscaling/autoscaling-in-ece-and-ech.md) to learn more.
@@ -32,7 +32,7 @@ To resize a deployment:
         ::::
 
     RAM per instance
-    :   Node and instance capacity should be sufficient to sustain your search workload, even if you lose an availability zone. Currently, half of the memory is assigned to the JVM heap. For example, on an Elasticsearch cluster node with 32 GB RAM, 16 GB would be allotted to heap. Up to 64 GB RAM and 1 TB storage per node are supported.
+    :   Node and instance capacity should be sufficient to sustain your search workload, even if you lose an availability zone. Currently, half of the memory is assigned to the JVM heap. For example, on an {{es}} cluster node with 32 GB RAM, 16 GB would be allotted to heap. Up to 64 GB RAM and 1 TB storage per node are supported.
 
     Before finalizing your changes, you can review the **Architecture** summary, which shows the total number of instances per zone, with each circle color representing a different type of instance.
 

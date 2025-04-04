@@ -22,7 +22,7 @@ This type of installation is recommended for many production setups. You need:
 ## Important considerations  [ece_before_you_start_2]
 
 * Monitor the load on proxies and make sure the volume of user requests routed by the proxies does not affect the resources available to the ECE management services.
-* Note that the medium-sized Elastic Cloud Enterprise installation separates the allocator from the director and coordinator roles (ECE management services) and the proxy roles.
+* Note that the medium-sized {{ece}} installation separates the allocator from the director and coordinator roles (ECE management services) and the proxy roles.
 
 **Check the recommended JVM Heap sizes**
 
@@ -45,7 +45,7 @@ Make sure you have completed all prerequisites and environment preparations desc
 
 ## Installation steps [ece_installation_steps_2]
 
-1. Install Elastic Cloud Enterprise on the first host to start a new installation with your first availability zone. This first host holds all roles to help bootstrap the rest of the installation, but you will remove some of its roles in a later step.
+1. Install {{ece}} on the first host to start a new installation with your first availability zone. This first host holds all roles to help bootstrap the rest of the installation, but you will remove some of its roles in a later step.
 
     ```sh
     bash <(curl -fsSL https://download.elastic.co/cloud/elastic-cloud-enterprise.sh) install --availability-zone MY_ZONE-1 --memory-settings '{"runner":{"xms":"1G","xmx":"1G"},"allocator":{"xms":"4G","xmx":"4G"},"zookeeper":{"xms":"8G","xmx":"8G"},"director":{"xms":"1G","xmx":"1G"},"constructor":{"xms":"4G","xmx":"4G"},"admin-console":{"xms":"8G","xmx":"8G"}}'
@@ -59,7 +59,7 @@ Make sure you have completed all prerequisites and environment preparations desc
     curl -k -H 'Content-Type: application/json' -u admin:PASSWORD https://localhost:12443/api/v1/platform/configuration/security/enrollment-tokens -d '{ "persistent": false, "roles": ["director", "coordinator", "proxy"] }'
     ```
 
-3. Install Elastic Cloud Enterprise on a second and third host, placing them into a second and a third availability zone, and assign them the `director`, `coordinator`, and `proxy` roles. Do not assign the `allocator` role, as these hosts should not handle any user requests. Make sure you include the coordinator host IP information from step 1 and the new roles token from step 2.
+3. Install {{ece}} on a second and third host, placing them into a second and a third availability zone, and assign them the `director`, `coordinator`, and `proxy` roles. Do not assign the `allocator` role, as these hosts should not handle any user requests. Make sure you include the coordinator host IP information from step 1 and the new roles token from step 2.
 
     ```sh
     bash <(curl -fsSL https://download.elastic.co/cloud/elastic-cloud-enterprise.sh) install --coordinator-host HOST_IP --roles-token 'MY_TOKEN' --roles "director,coordinator,proxy" --availability-zone MY_ZONE-2 --memory-settings '{"runner":{"xms":"1G","xmx":"1G"},"zookeeper":{"xms":"8G","xmx":"8G"},"director":{"xms":"1G","xmx":"1G"},"constructor":{"xms":"4G","xmx":"4G"},"admin-console":{"xms":"8G","xmx":"8G"}}'
@@ -69,7 +69,7 @@ Make sure you have completed all prerequisites and environment preparations desc
     bash <(curl -fsSL https://download.elastic.co/cloud/elastic-cloud-enterprise.sh) install --coordinator-host HOST_IP --roles-token 'MY_TOKEN' --roles "director,coordinator,proxy" --availability-zone MY_ZONE-3 --memory-settings '{"runner":{"xms":"1G","xmx":"1G"},"zookeeper":{"xms":"8G","xmx":"8G"},"director":{"xms":"1G","xmx":"1G"},"constructor":{"xms":"4G","xmx":"4G"},"admin-console":{"xms":"8G","xmx":"8G"}}'
     ```
 
-4. To handle the Elasticsearch and Kibana workloads, install Elastic Cloud Enterprise on a fourth, fifth, and sixth host, distributing them evenly across the existing three availability zones and assign them the `allocator` role. Make sure you include the coordinator host IP information and allocator roles token from step 1.
+4. To handle the {{es}} and {{kib}} workloads, install {{ece}} on a fourth, fifth, and sixth host, distributing them evenly across the existing three availability zones and assign them the `allocator` role. Make sure you include the coordinator host IP information and allocator roles token from step 1.
 
     ```sh
     bash <(curl -fsSL https://download.elastic.co/cloud/elastic-cloud-enterprise.sh) install --coordinator-host HOST_IP --roles-token 'ALLOCATOR_TOKEN' --roles "allocator" --availability-zone MY_ZONE-1 --memory-settings '{"runner":{"xms":"1G","xmx":"1G"},"allocator":{"xms":"4G","xmx":"4G"}}'

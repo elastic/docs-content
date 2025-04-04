@@ -72,7 +72,7 @@ To access multiple load-balanced {{kib}} deployments from the same browser, expl
 This prevents cookie conflicts between {{kib}} instances, ensuring seamless high availability and maintaining the session active in case of an instance failure.
 
 ::::{note}
-In this context, a Kibana cluster or deployment refers to multiple Kibana instances connected to the same {{es}} cluster.
+In this context, a {{kib}} cluster or deployment refers to multiple {{kib}} instances connected to the same {{es}} cluster.
 ::::
 
 ## High availability across multiple {{es}} nodes [high-availability]

@@ -8,7 +8,7 @@ mapped_pages:
 
 # Post-installation steps [ece-getting-started-post-installation]
 
-After your Elastic Cloud Enterprise installation is up, some additional steps might be required. For a complete list of configurable features in ECE, refer to [](./configure.md).
+After your {{ece}} installation is up, some additional steps might be required. For a complete list of configurable features in ECE, refer to [](./configure.md).
 
 ::::{tip}
 To start creating {{es}} deployments directly, refer to [](./working-with-deployments.md).
@@ -30,11 +30,11 @@ To start creating {{es}} deployments directly, refer to [](./working-with-deploy
   For example, if your proxy certificate is signed for `*.elastic-cloud-enterprise.example.com` and you have a wildcard DNS register pointing `*.elastic-cloud-enterprise.example.com` to your load balancer, you should configure `elastic-cloud-enterprise.example.com` as the **deployment domain name** in Platform → Settings. Refer to [](./change-endpoint-urls.md) for more details.
   ::::
 
-* If you received a license from Elastic, [manage the licenses](../../license/manage-your-license-in-ece.md) for your Elastic Cloud Enterprise installation.
+* If you received a license from Elastic, [manage the licenses](../../license/manage-your-license-in-ece.md) for your {{ece}} installation.
 
 * [Add more platform users](../../users-roles/cloud-enterprise-orchestrator/manage-users-roles.md) with role-based access control.
 
-* [Add a snapshot repository](../../tools/snapshot-and-restore/cloud-enterprise.md) to enable regular backups of your Elasticsearch clusters.
+* [Add a snapshot repository](../../tools/snapshot-and-restore/cloud-enterprise.md) to enable regular backups of your {{es}} clusters.
 
 * Consider enabling encryption-at-rest (EAR) on your hosts.
 

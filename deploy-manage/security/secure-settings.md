@@ -56,7 +56,7 @@ The instructions below cover how to manage {{es}} keystore settings for each dep
 ::::{tab-item} ECH and ECE
 :sync: cloud
 % ### ECE and ECH
-You can manage {{es}} secure settings in the **Security > {{es}} keystore** section of your deployment page in the Elastic Cloud Console or ECE Cloud UI.
+You can manage {{es}} secure settings in the **Security > {{es}} keystore** section of your deployment page in the {{ecloud}} Console or ECE Cloud UI.
 
 :::{note}
 {{ece}} also supports managing {{es}} keystore of your deployments through its [RESTful API](https://www.elastic.co/docs/api/doc/cloud-enterprise/). Refer to [Configure {{es}} keystore through ECE API](cloud://reference/cloud-enterprise/ece-restful-api-examples-configuring-keystore.md) for an example.
@@ -111,7 +111,7 @@ Refer to [Configure secure settings on ECK](./k8s-secure-settings.md) for detail
 ::::{tab-item} Self-managed
 :sync: self-managed
 % ### Self-managed
-In self-managed deployments, you're responsible for configuring and maintaining the Elasticsearch keystore on each node individually.
+In self-managed deployments, you're responsible for configuring and maintaining the {{es}} keystore on each node individually.
 
 {{es}} provides the [`elasticsearch-keystore`](elasticsearch://reference/elasticsearch/command-line-tools/elasticsearch-keystore.md) command-line tool to help with this task. It allows you to list, add, remove, and update secure settings, as well as protect the keystore with a password if wanted.
 
@@ -123,7 +123,7 @@ Changes to the keystore take effect only after restarting {{es}}, except for [re
 
 #### Create the keystore [creating-keystore]
 
-To create the Elasticsearch keystore, use the `create` command:
+To create the {{es}} keystore, use the `create` command:
 
 ```sh
 bin/elasticsearch-keystore create -p
@@ -204,7 +204,7 @@ deployment:
 {{kib}} supports secure settings through its own keystore, similar to the {{es}} keystore. It provides a way to protect sensitive configuration values, such as authentication credentials or encryption keys, by storing them securely outside of `kibana.yml`.
 
 ::::{note}
-Unlike with {{es}} keystore, any valid {{kib}} setting can be stored securely in the keystore. However, as with {{es}}, adding invalid, unsupported, or extraneous settings will cause Kibana to fail to start. Always ensure the setting exists and is properly formatted in the [configuration reference](kibana://reference/configuration-reference.md) before adding it to the keystore.
+Unlike with {{es}} keystore, any valid {{kib}} setting can be stored securely in the keystore. However, as with {{es}}, adding invalid, unsupported, or extraneous settings will cause {{kib}} to fail to start. Always ensure the setting exists and is properly formatted in the [configuration reference](kibana://reference/configuration-reference.md) before adding it to the keystore.
 ::::
 
 This section provides examples of {{kib}} secure settings handling using the `kibana-keystore` command-line tool for self-managed deployments.

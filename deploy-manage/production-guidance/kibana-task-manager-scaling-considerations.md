@@ -10,7 +10,7 @@ applies_to:
     self: all
 ---
 
-# Kibana task manager: performance and scaling guide [task-manager-production-considerations]
+# {{kib}} task manager: performance and scaling guide [task-manager-production-considerations]
 
 {{kib}} Task Manager is leveraged by features such as [alerting](/explore-analyze/alerts-cases/alerts.md), [actions](/explore-analyze/alerts-cases/alerts.md#rules-actions), and [reporting](/explore-analyze/report-and-share.md) to run mission critical work as persistent background tasks. These background tasks distribute work across multiple {{kib}} instances. This has three major benefits:
 

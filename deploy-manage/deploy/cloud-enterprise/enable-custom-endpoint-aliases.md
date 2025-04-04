@@ -25,8 +25,8 @@ After installing or upgrading to version 2.10 or later:
     ::::
 
 
-    * For Elasticsearch, the certificate needs to allow for ***.es.<your-domain>**
-    * For Kibana, the certificate needs to allow for ***.kb.<your-domain>**
+    * For {{es}}, the certificate needs to allow for ***.es.<your-domain>**
+    * For {{kib}}, the certificate needs to allow for ***.kb.<your-domain>**
     * For APM, the certificate needs to allow for ***.apm.<your-domain>**
     * For Fleet, the certificate needs to allow for ***.fleet.<your-domain>**
     * For Universal Profiling, the certificate needs to allow for ***.profiling.<your-domain>** and ***.symbols.<your-domain>**

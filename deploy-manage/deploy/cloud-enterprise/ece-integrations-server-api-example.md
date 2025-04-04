@@ -8,7 +8,7 @@ mapped_pages:
 
 # Enable Integrations Server through the API [ece-integrations-server-api-example]
 
-This example demonstrates how to use the Elastic Cloud Enterprise RESTful API to create a deployment with Integrations Server enabled.
+This example demonstrates how to use the {{ece}} RESTful API to create a deployment with Integrations Server enabled.
 
 For more information on how to manage Integrations Server from the UI, check [Manage your Integrations Server](manage-integrations-server.md)
 

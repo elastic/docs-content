@@ -31,7 +31,7 @@ Elastic provides three serverless solutions available on {{ecloud}}. Follow thes
 
 Afterwards, you can:
 
-* Learn about the [cloud organization](../../cloud-organization.md) that is the umbrella for all of your Elastic Cloud resources, users, and account settings.
+* Learn about the [cloud organization](../../cloud-organization.md) that is the umbrella for all of your {{ecloud}} resources, users, and account settings.
 * Learn about how {{es-serverless}} is [billed](../../cloud-organization/billing/serverless-project-billing-dimensions.md).
 * Learn how to [create an API key](../../api-keys/serverless-project-api-keys.md). This key provides access to the API that enables you to manage your deployments.
 * Learn how manage [users and roles](../../users-roles/cloud-organization.md) in your {{es-serverless}} deployment.
@@ -67,7 +67,7 @@ Migration paths between hosted deployments and serverless projects are currently
 
 **How can I move data to or from serverless projects?**
 
-We are working on data migration tools! In the interim, [use Logstash](https://www.elastic.co/guide/en/serverless/current/elasticsearch-ingest-data-through-logstash.html) with Elasticsearch input and output plugins to move data to and from serverless projects.
+We are working on data migration tools! In the interim, [use Logstash](https://www.elastic.co/guide/en/serverless/current/elasticsearch-ingest-data-through-logstash.html) with {{es}} input and output plugins to move data to and from serverless projects.
 
 **How does serverless ensure compatibility between software versions?**
 

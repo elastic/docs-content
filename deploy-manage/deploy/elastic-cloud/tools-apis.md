@@ -81,7 +81,7 @@ serverless: unavailable
 :::
 
 
-## Elastic Cloud Control: command-line interface for {{ecloud}}
+## {{ecloud}} Control: command-line interface for {{ecloud}}
 ```{applies_to}
 deployment:
   ess: ga

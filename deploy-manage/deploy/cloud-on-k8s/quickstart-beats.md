@@ -8,7 +8,7 @@ mapped_pages:
 
 # Quickstart [k8s-beat-quickstart]
 
-1. Apply the following specification to deploy Filebeat and collect the logs of all containers running in the Kubernetes cluster. ECK automatically configures the secured connection to an Elasticsearch cluster named `quickstart`, created in the [Elasticsearch quickstart](deploy-an-orchestrator.md).
+1. Apply the following specification to deploy Filebeat and collect the logs of all containers running in the Kubernetes cluster. ECK automatically configures the secured connection to an {{es}} cluster named `quickstart`, created in the [{{es}} quickstart](deploy-an-orchestrator.md).
 
     ```yaml
     cat <<EOF | kubectl apply -f -
@@ -93,12 +93,12 @@ mapped_pages:
 
     You have two options:
 
-    * Follow the Elasticsearch deployment [guide](elasticsearch-deployment-quickstart.md) and run:
+    * Follow the {{es}} deployment [guide](elasticsearch-deployment-quickstart.md) and run:
 
         ```sh
         curl -u "elastic:$PASSWORD" -k "https://localhost:9200/filebeat-*/_search"
         ```
 
-    * Follow the Kibana deployment [guide](kibana-instance-quickstart.md), log in and go to **Kibana** > **Discover**.
+    * Follow the {{kib}} deployment [guide](kibana-instance-quickstart.md), log in and go to **Kibana** > **Discover**.
 
 

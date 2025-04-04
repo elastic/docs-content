@@ -6,7 +6,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-kibana.html
 ---
 
-# Kibana configuration [k8s-kibana]
+# {{kib}} configuration [k8s-kibana]
 
 The following sections describe how to customize a {{kib}} deployment to suit your requirements.
 

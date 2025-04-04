@@ -10,7 +10,7 @@ mapped_pages:
 
 ## Upgrade the Beat specification [k8s-beat-upgrade-specification]
 
-You can upgrade the Beat version or change settings by editing the YAML specification. ECK applies the changes by performing a rolling restart of the Beat Pods. Depending on the specification settings that you used, ECK will set the [output](configuration-beats.md#k8s-beat-set-beat-output) part of the config, perform Kibana dashboard [setup](configuration-beats.md#k8s-beat-set-up-kibana-dashboards), restart Beats on certificates rollover and set up the Beats [keystore](configuration-beats.md#k8s-beat-secrets-keystore-for-secure-settings).
+You can upgrade the Beat version or change settings by editing the YAML specification. ECK applies the changes by performing a rolling restart of the Beat Pods. Depending on the specification settings that you used, ECK will set the [output](configuration-beats.md#k8s-beat-set-beat-output) part of the config, perform {{kib}} dashboard [setup](configuration-beats.md#k8s-beat-set-up-kibana-dashboards), restart Beats on certificates rollover and set up the Beats [keystore](configuration-beats.md#k8s-beat-secrets-keystore-for-secure-settings).
 
 
 ## Customize Beat configuration [k8s-beat-custom-configuration]
@@ -76,9 +76,9 @@ stringData:
 For more details, check the [Beats configuration](beats://reference/libbeat/config-file-format.md) section.
 
 
-## Customize the connection to an Elasticsearch cluster [k8s-beat-connect-es]
+## Customize the connection to an {{es}} cluster [k8s-beat-connect-es]
 
-The `elasticsearchRef` element allows ECK to automatically configure Beats to establish a secured connection to a managed Elasticsearch cluster. By default it targets all nodes in your cluster. If you want to direct traffic to specific nodes of your Elasticsearch cluster, refer to [*Traffic Splitting*](requests-routing-to-elasticsearch-nodes.md) for more information and examples.
+The `elasticsearchRef` element allows ECK to automatically configure Beats to establish a secured connection to a managed {{es}} cluster. By default it targets all nodes in your cluster. If you want to direct traffic to specific nodes of your {{es}} cluster, refer to [*Traffic Splitting*](requests-routing-to-elasticsearch-nodes.md) for more information and examples.
 
 
 ## Deploy a Beat [k8s-beat-deploy-elastic-beat]
@@ -92,7 +92,7 @@ ECK supports the deployment of the following Beats:
 * [Packetbeat](https://www.elastic.co/beats/packetbeat)
 * [Journalbeat](https://www.elastic.co/guide/en/beats/journalbeat/current/index.html)
 
-For each Beat you want to deploy, you can specify the `type` and `version` elements. ECK creates a new user in Elasticsearch with a minimal set of appropriate roles and permissions to enable the use of all Beats features.
+For each Beat you want to deploy, you can specify the `type` and `version` elements. ECK creates a new user in {{es}} with a minimal set of appropriate roles and permissions to enable the use of all Beats features.
 
 
 ## Deploy a Community Beat [k8s-beat-deploy-community-beat]
@@ -101,18 +101,18 @@ ECK supports the deployment of any Community Beat.
 
 1. Specify the `type` and `version` elements.
 2. Set the `image` element to point to the image to be deployed.
-3. Make sure the following roles exist in Elasticsearch:
+3. Make sure the following roles exist in {{es}}:
 
-    * If `elasticsearchRef` is provided, create the role `eck_beat_es_$type_role`, where `$type` is the Beat type. For example, when deploying `kafkabeat`, the role name is `eck_beat_es_kafkabeat_role`. This role must have the permissions required by the Beat. Check the [Elasticsearch documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/defining-roles.html) for more details.
-    * If `kibanaRef` is provided, create the role `eck_beat_kibana_$type_role` with the permissions required to setup Kibana dashboards.
-
-
-Alternatively, create a user in Elasticsearch and include the credentials in the Beats `config` for Elasticsearch output, Kibana setup or both. If `elasticsearchRef` and `kibanaRef` are also defined, ECK will use the provided user credentials when setting up the connections.
+    * If `elasticsearchRef` is provided, create the role `eck_beat_es_$type_role`, where `$type` is the Beat type. For example, when deploying `kafkabeat`, the role name is `eck_beat_es_kafkabeat_role`. This role must have the permissions required by the Beat. Check the [{{es}} documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/defining-roles.html) for more details.
+    * If `kibanaRef` is provided, create the role `eck_beat_kibana_$type_role` with the permissions required to setup {{kib}} dashboards.
 
 
-## Set up Kibana dashboards [k8s-beat-set-up-kibana-dashboards]
+Alternatively, create a user in {{es}} and include the credentials in the Beats `config` for {{es}} output, {{kib}} setup or both. If `elasticsearchRef` and `kibanaRef` are also defined, ECK will use the provided user credentials when setting up the connections.
 
-ECK can instruct Beats to set up example dashboards packaged with the Beat. To enable this, set the `kibanaRef` element in the specification to point to ECK-managed Kibana deployment:
+
+## Set up {{kib}} dashboards [k8s-beat-set-up-kibana-dashboards]
+
+ECK can instruct Beats to set up example dashboards packaged with the Beat. To enable this, set the `kibanaRef` element in the specification to point to ECK-managed {{kib}} deployment:
 
 ```yaml
 apiVersion: beat.k8s.elastic.co/v1beta1
@@ -125,7 +125,7 @@ spec:
 ...
 ```
 
-ECK will create a new user in Elasticsearch with a minimal set of appropriate roles and permissions that is needed for dashboard setup.
+ECK will create a new user in {{es}} with a minimal set of appropriate roles and permissions that is needed for dashboard setup.
 
 
 ## Secrets keystore for secure settings [k8s-beat-secrets-keystore-for-secure-settings]
@@ -159,7 +159,7 @@ Check [Beats documentation](beats://reference/filebeat/keystore.md) for more det
 
 ## Set Beat output [k8s-beat-set-beat-output]
 
-If the `elasticsearchRef` element is specified, ECK populates the output section of the Beat config. ECK creates a user with appropriate roles and permissions and uses its credentials. If required, it also mounts the CA certificate in all Beat Pods, and recreates Pods when this certificate changes. Moreover, `elasticsearchRef` element can refer to an ECK-managed Elasticsearch cluster by filling the `name`, `namespace`, `serviceName` fields accordingly, as well as to a Kubernetes secret that contains the connection information to an Elasticsearch cluster not managed by it. In the latter case, for authenticating against the Elasticsearch cluster the secret must contain the fields of `url` and either the `username` with `password` or the `api-key`.
+If the `elasticsearchRef` element is specified, ECK populates the output section of the Beat config. ECK creates a user with appropriate roles and permissions and uses its credentials. If required, it also mounts the CA certificate in all Beat Pods, and recreates Pods when this certificate changes. Moreover, `elasticsearchRef` element can refer to an ECK-managed {{es}} cluster by filling the `name`, `namespace`, `serviceName` fields accordingly, as well as to a Kubernetes secret that contains the connection information to an {{es}} cluster not managed by it. In the latter case, for authenticating against the {{es}} cluster the secret must contain the fields of `url` and either the `username` with `password` or the `api-key`.
 
 Output can be set to any value that is supported by a given Beat. To use it, remove the `elasticsearchRef` element from the specification and include an appropriate output configuration in the `config` or `configRef` elements.
 

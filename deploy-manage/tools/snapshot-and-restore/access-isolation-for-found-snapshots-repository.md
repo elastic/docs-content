@@ -12,7 +12,7 @@ In {{ech}}, access isolation ensures that each deployment can access only its ow
 
 Any newly created deployment has snapshot isolation set up by default. The guides in these section apply only to older deployments created before this default was implemented, where deployments within the same region may still have access to each other’s snapshots.
 
-If a deployment can access the snapshots of other deployments, a notification will appear in the deployments menu under **Elasticsearch > Snapshots**, prompting you to set up access isolation.
+If a deployment can access the snapshots of other deployments, a notification will appear in the deployments menu under **{{es}} > Snapshots**, prompting you to set up access isolation.
 
 The process for enabling access isolation depends on your cloud provider:
 

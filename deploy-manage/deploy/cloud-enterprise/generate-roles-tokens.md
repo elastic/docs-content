@@ -33,13 +33,13 @@ Persistent token
 The permitted roles are the same as those you can [assign in the Cloud UI](./assign-roles-to-hosts.md):
 
 `allocator`
-:   Allocates the available computing resources to Elasticsearch nodes or Kibana instances. In larger installations, a majority of the machines will be allocators.
+:   Allocates the available computing resources to {{es}} nodes or {{kib}} instances. In larger installations, a majority of the machines will be allocators.
 
 `coordinator`
 :   Serves as a distributed coordination system and resource scheduler.
 
 `proxy`
-:   Manages communication between a user and an Elasticsearch or Kibana instance.
+:   Manages communication between a user and an {{es}} or {{kib}} instance.
 
 `director`
 :   Manages the ZooKeeper datastore. This role is typically shared with the coordinator role. In production deployments it can be separated from a coordinator.

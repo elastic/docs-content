@@ -8,11 +8,11 @@ mapped_pages:
 
 # Virtual memory [k8s-virtual-memory]
 
-By default, Elasticsearch uses memory mapping (`mmap`) to efficiently access indices. Usually, default values for virtual address space on Linux distributions are too low for Elasticsearch to work properly, which may result in out-of-memory exceptions. This is why [the quickstart example](deploy-an-orchestrator.md) disables `mmap` through the `node.store.allow_mmap: false` setting. For production workloads, it is strongly recommended to increase the kernel setting `vm.max_map_count` to `262144` and leave `node.store.allow_mmap` unset.
+By default, {{es}} uses memory mapping (`mmap`) to efficiently access indices. Usually, default values for virtual address space on Linux distributions are too low for {{es}} to work properly, which may result in out-of-memory exceptions. This is why [the quickstart example](deploy-an-orchestrator.md) disables `mmap` through the `node.store.allow_mmap: false` setting. For production workloads, it is strongly recommended to increase the kernel setting `vm.max_map_count` to `262144` and leave `node.store.allow_mmap` unset.
 
 The kernel setting `vm.max_map_count=262144` can be set on the host directly, by a dedicated init container which must be privileged, or a dedicated Daemonset.
 
-For more information, check the Elasticsearch documentation on [Virtual memory](/deploy-manage/deploy/self-managed/vm-max-map-count.md).
+For more information, check the {{es}} documentation on [Virtual memory](/deploy-manage/deploy/self-managed/vm-max-map-count.md).
 
 Optionally, you can select a different type of file system implementation for the storage. For possible options, check the [store module documentation](elasticsearch://reference/elasticsearch/index-settings/store.md).
 
@@ -27,7 +27,7 @@ spec:
 
 ## Using an Init Container to set virtual memory [k8s_using_an_init_container_to_set_virtual_memory]
 
-To add an init container that changes the host kernel setting before your Elasticsearch container starts, you can use the following example Elasticsearch spec:
+To add an init container that changes the host kernel setting before your {{es}} container starts, you can use the following example {{es}} spec:
 
 ```yaml
 cat <<EOF | kubectl apply -f -
@@ -93,7 +93,7 @@ spec:
 EOF
 ```
 
-To run an Elasticsearch instance that waits for the kernel setting to be in place:
+To run an {{es}} instance that waits for the kernel setting to be in place:
 
 ```yaml
 cat <<'EOF' | kubectl apply -f -
@@ -111,7 +111,7 @@ spec:
     #  node.store.allow_mmap: false
     podTemplate:
       spec:
-        # This init container ensures that the `max_map_count` setting has been applied before starting Elasticsearch.
+        # This init container ensures that the `max_map_count` setting has been applied before starting {{es}}.
         # This is not required, but is encouraged when using the previous Daemonset to set max_map_count.
         # Do not use this if setting config.node.store.allow_mmap: false
         initContainers:

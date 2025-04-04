@@ -7,15 +7,15 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-manage-kibana-settings.html
 ---
 
-# Add Kibana user settings [ece-manage-kibana-settings]
+# Add {{kib}} user settings [ece-manage-kibana-settings]
 
-Elastic Cloud Enterprise supports most of the standard Kibana settings. Through a YAML editor in the console, you can append Kibana properties to the `kibana.yml` file. Your changes to the configuration file are read on startup.
+{{ece}} supports most of the standard {{kib}} settings. Through a YAML editor in the console, you can append {{kib}} properties to the `kibana.yml` file. Your changes to the configuration file are read on startup.
 
 ::::{important}
-Be aware that some settings that could break your cluster if set incorrectly and that the syntax might change between major versions. Before upgrading, be sure to review the full list of the [latest Kibana settings and syntax](kibana://reference/configuration-reference/general-settings.md).
+Be aware that some settings that could break your cluster if set incorrectly and that the syntax might change between major versions. Before upgrading, be sure to review the full list of the [latest {{kib}} settings and syntax](kibana://reference/configuration-reference/general-settings.md).
 ::::
 
-To change Kibana settings:
+To change {{kib}} settings:
 
 1. [Log into the Cloud UI](../../../deploy-manage/deploy/cloud-enterprise/log-into-cloud-ui.md).
 2. On the **Deployments** page, select your deployment.
@@ -27,15 +27,15 @@ To change Kibana settings:
 5. Update the user settings.
 6. Select **Save changes**.
 
-Saving your changes initiates a configuration plan change that restarts Kibana automatically for you.
+Saving your changes initiates a configuration plan change that restarts {{kib}} automatically for you.
 
 ::::{note}
-If a setting is not supported by Elastic Cloud Enterprise, you will get an error message when you try to save. We suggest changing one setting with each save, so you know which one is not supported.
+If a setting is not supported by {{ece}}, you will get an error message when you try to save. We suggest changing one setting with each save, so you know which one is not supported.
 ::::
 
 
 ::::{tip}
-If you have a license from 2018 or earlier, you might receive a warning that your cluster license is about to expire. Don’t panic, it isn’t really. Elastic Cloud Enterprise manages the cluster licenses so that you don’t have to. In rare cases, such as when a cluster is overloaded, it can take longer for Elastic Cloud Enterprise to reapply the cluster license. If you have a license from 2019 and later, you’ll receive a warning only when your full platform license is about to expire, which you’ll need to renew.
+If you have a license from 2018 or earlier, you might receive a warning that your cluster license is about to expire. Don’t panic, it isn’t really. {{ece}} manages the cluster licenses so that you don’t have to. In rare cases, such as when a cluster is overloaded, it can take longer for {{ece}} to reapply the cluster license. If you have a license from 2019 and later, you’ll receive a warning only when your full platform license is about to expire, which you’ll need to renew.
 ::::
 
 

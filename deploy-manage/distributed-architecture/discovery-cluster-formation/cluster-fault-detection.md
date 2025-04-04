@@ -9,7 +9,7 @@ applies_to:
 
 The elected master periodically checks each of the nodes in the cluster to ensure that they are still connected and healthy. Each node in the cluster also periodically checks the health of the elected master. These checks are known respectively as *follower checks* and *leader checks*.
 
-Elasticsearch allows these checks to occasionally fail or timeout without taking any action. It considers a node to be faulty only after a number of consecutive checks have failed. You can control fault detection behavior with [`cluster.fault_detection.*` settings](elasticsearch://reference/elasticsearch/configuration-reference/discovery-cluster-formation-settings.md).
+{{es}} allows these checks to occasionally fail or timeout without taking any action. It considers a node to be faulty only after a number of consecutive checks have failed. You can control fault detection behavior with [`cluster.fault_detection.*` settings](elasticsearch://reference/elasticsearch/configuration-reference/discovery-cluster-formation-settings.md).
 
 If the elected master detects that a node has disconnected, however, this situation is treated as an immediate failure. The master bypasses the timeout and retry setting values and attempts to remove the node from the cluster. Similarly, if a node detects that the elected master has disconnected, this situation is treated as an immediate failure. The node bypasses the timeout and retry settings and restarts its discovery phase to try and find or elect a new master.
 

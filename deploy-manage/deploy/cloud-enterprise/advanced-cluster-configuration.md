@@ -17,11 +17,11 @@ To edit the cluster configuration directly:
 
     Narrow the list by name, ID, or choose from several other filters. To further define the list, use a combination of filters.
 
-3. From your deployment menu, go to the **Edit** page then go to the bottom of the page and select **advanced Elasticsearch configuration**.
+3. From your deployment menu, go to the **Edit** page then go to the bottom of the page and select **advanced {{es}} configuration**.
 4. Edit the configuration:
 
-    * The contents of the **Deployment configuration** section describe your current configuration, such as the current capacity, the node count, the installed Elasticsearch version, and so forth. You can manually edit the configuration.
-    * The **Elasticsearch cluster data** section describes additional parts of your cluster, such as its name, whether snapshots are enabled, security information, and whether Kibana is enabled.
+    * The contents of the **Deployment configuration** section describe your current configuration, such as the current capacity, the node count, the installed {{es}} version, and so forth. You can manually edit the configuration.
+    * The **{{es}} cluster data** section describes additional parts of your cluster, such as its name, whether snapshots are enabled, security information, and whether {{kib}} is enabled.
 
 5. Select **Save** for the sections that you modified to apply the new configuration. You should receive a message that your new configuration is successful.
 

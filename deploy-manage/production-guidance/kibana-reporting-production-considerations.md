@@ -7,9 +7,9 @@ applies_to:
     self: all
 ---
 
-# Kibana reporting in production environments [reporting-production-considerations]
+# {{kib}} reporting in production environments [reporting-production-considerations]
 
-In production environments, it's important to ensure that Kibana reporting is both reliable and secure. To generate [reports](/explore-analyze/report-and-share.md), {{kib}} uses the Chromium web browser, which runs on the server in headless mode (without a graphical user interface).
+In production environments, it's important to ensure that {{kib}} reporting is both reliable and secure. To generate [reports](/explore-analyze/report-and-share.md), {{kib}} uses the Chromium web browser, which runs on the server in headless mode (without a graphical user interface).
 
 Because this process requires launching a browser within your server environment, you should pay special attention to operating system compatibility, sandboxing, and dependencies.
 

@@ -98,11 +98,11 @@ deployment:
   self: all
 ```
 
-Set up authentication and authorization at the cluster or deployment level, and learn about the underlying security technologies that Elasticsearch uses to authenticate and authorize requests internally and across services.
+Set up authentication and authorization at the cluster or deployment level, and learn about the underlying security technologies that {{es}} uses to authenticate and authorize requests internally and across services.
 
 ### User authentication
 
-Set up methods to identify users to the Elasticsearch cluster.
+Set up methods to identify users to the {{es}} cluster.
 
 Key tasks for managing user authentication include:
 
@@ -110,7 +110,7 @@ Key tasks for managing user authentication include:
 * [Managing users natively](/deploy-manage/users-roles/cluster-or-deployment-auth/native.md)
 * [Integrating with external authentication providers](/deploy-manage/users-roles/cluster-or-deployment-auth/external-authentication.md)
 
-You can also learn the basics of Elasticsearch authentication, learn about accounts used to communicate within an Elasticsearch cluster and across services, and perform advanced tasks.
+You can also learn the basics of {{es}} authentication, learn about accounts used to communicate within an {{es}} cluster and across services, and perform advanced tasks.
 
 [View all user authentication docs](/deploy-manage/users-roles/cluster-or-deployment-auth/user-authentication.md)
 
@@ -124,7 +124,7 @@ Key tasks for managing user authorization include:
 * [Mapping users and groups to roles](/deploy-manage/users-roles/cluster-or-deployment-auth/mapping-users-groups-to-roles.md)
 * [Setting up field- and document-level security](/deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level.md)
 
-You can also learn the basics of Elasticsearch authorization, and perform advanced tasks.
+You can also learn the basics of {{es}} authorization, and perform advanced tasks.
 
 ::::{tip}
 User roles are also used to control access to [{{kib}} spaces](/deploy-manage/manage-spaces.md).

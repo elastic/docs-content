@@ -9,21 +9,21 @@ navigation_title: "In ECK"
 ---
 # Autoscaling in {{eck}}
 
-Configure autoscaling for Elasticsearch deployments in {{eck}}. Learn how to enable autoscaling, define policies, manage resource limits, and monitor scaling. Includes details on autoscaling stateless applications like Kibana, APM Server, and Elastic Maps Server.
+Configure autoscaling for {{es}} deployments in {{eck}}. Learn how to enable autoscaling, define policies, manage resource limits, and monitor scaling. Includes details on autoscaling stateless applications like {{kib}}, APM Server, and Elastic Maps Server.
 
 ## Deployments autoscaling on ECK [k8s-autoscaling]
 
 ::::{note}
-Elasticsearch autoscaling requires a valid Enterprise license or Enterprise trial license. Check [the license documentation](../license/manage-your-license-in-eck.md) for more details about managing licenses.
+{{es}} autoscaling requires a valid Enterprise license or Enterprise trial license. Check [the license documentation](../license/manage-your-license-in-eck.md) for more details about managing licenses.
 ::::
 
 
-ECK can leverage the [autoscaling API](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-autoscaling) introduced in Elasticsearch 7.11 to adjust automatically the number of Pods and the allocated resources in a tier. Currently, autoscaling is supported for Elasticsearch [data tiers](/manage-data/lifecycle/data-tiers.md) and machine learning nodes.
+ECK can leverage the [autoscaling API](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-autoscaling) introduced in {{es}} 7.11 to adjust automatically the number of Pods and the allocated resources in a tier. Currently, autoscaling is supported for {{es}} [data tiers](/manage-data/lifecycle/data-tiers.md) and machine learning nodes.
 
 
 ### Enable autoscaling [k8s-enable]
 
-To enable autoscaling on an Elasticsearch cluster, you need to define one or more autoscaling policies. Each autoscaling policy applies to one or more NodeSets which share the same set of roles specified in the `node.roles` setting in the Elasticsearch configuration.
+To enable autoscaling on an {{es}} cluster, you need to define one or more autoscaling policies. Each autoscaling policy applies to one or more NodeSets which share the same set of roles specified in the `node.roles` setting in the {{es}} configuration.
 
 
 #### Define autoscaling policies [k8s-autoscaling-policies]
@@ -31,11 +31,11 @@ To enable autoscaling on an Elasticsearch cluster, you need to define one or mor
 Autoscaling policies can be defined in an `ElasticsearchAutoscaler` resource. Each autoscaling policy must have the following fields:
 
 * `name` is a unique name used to identify the autoscaling policy.
-* `roles` contains a set of node roles, unique across all the autoscaling policies, used to identify the NodeSets to which this policy applies. At least one NodeSet with the exact same set of roles must exist in the Elasticsearch resource specification.
+* `roles` contains a set of node roles, unique across all the autoscaling policies, used to identify the NodeSets to which this policy applies. At least one NodeSet with the exact same set of roles must exist in the {{es}} resource specification.
 * `resources` helps define the minimum and maximum compute resources usage:
 
     * `nodeCount` defines the minimum and maximum nodes allowed in the tier.
-    * `cpu` and `memory` enforce minimum and maximum compute resources usage for the Elasticsearch container.
+    * `cpu` and `memory` enforce minimum and maximum compute resources usage for the {{es}} container.
     * `storage` enforces minimum and maximum storage request per PersistentVolumeClaim.
 
 
@@ -47,7 +47,7 @@ kind: ElasticsearchAutoscaler
 metadata:
   name: autoscaling-sample
 spec:
-  ## The name of the Elasticsearch cluster to be scaled automatically.
+  ## The name of the {{es}} cluster to be scaled automatically.
   elasticsearchRef:
     name: elasticsearch-sample
   ## The autoscaling policies.
@@ -93,7 +93,7 @@ A node role should not be referenced in more than one autoscaling policy.
 In the case of storage the following restrictions apply:
 
 * Scaling the storage size automatically requires the `ExpandInUsePersistentVolumes` feature to be enabled. It also requires a storage class that supports [volume expansion](https://kubernetes.io/blog/2018/07/12/resizing-persistent-volumes-using-kubernetes/).
-* Only one persistent volume claim per Elasticsearch node is supported when autoscaling is enabled.
+* Only one persistent volume claim per {{es}} node is supported when autoscaling is enabled.
 * Volume size cannot be scaled down.
 * Scaling up (vertically) is only supported if the available capacity in a PersistentVolume matches the capacity claimed in the PersistentVolumeClaim. Refer to the next section for more information.
 
@@ -172,7 +172,7 @@ You can find [a complete example in the ECK GitHub repository](https://github.co
 
 #### Change the polling interval [k8s-autoscaling-polling-interval]
 
-The Elasticsearch autoscaling capacity endpoint is polled every minute by the operator. This interval duration can be controlled using the `pollingPeriod` field in the autoscaling specification:
+The {{es}} autoscaling capacity endpoint is polled every minute by the operator. This interval duration can be controlled using the `pollingPeriod` field in the autoscaling specification:
 
 ```yaml
 apiVersion: autoscaling.k8s.elastic.co/v1alpha1
@@ -207,7 +207,7 @@ spec:
 
 #### Autoscaling status [k8s-autoscaling-status]
 
-In addition to the logs generated by the operator, an autoscaling status is maintained in the `ElasticsearchAutoscaler` resource. This status holds several `Conditions` to summarize the health and the status of the autoscaling mechanism. For example, dedicated `Conditions` may report if the controller cannot connect to the Elasticsearch cluster, or if a resource limit has been reached:
+In addition to the logs generated by the operator, an autoscaling status is maintained in the `ElasticsearchAutoscaler` resource. This status holds several `Conditions` to summarize the health and the status of the autoscaling mechanism. For example, dedicated `Conditions` may report if the controller cannot connect to the {{es}} cluster, or if a resource limit has been reached:
 
 ```sh
 kubectl get elasticsearchautoscaler autoscaling-sample \
@@ -234,7 +234,7 @@ kubectl get elasticsearchautoscaler autoscaling-sample \
  },
  {
    "lastTransitionTime": "2022-09-09T07:56:22Z",
-   "message": "Elasticsearch is available",
+   "message": "{{es}} is available",
    "status": "True",
    "type": "Online"
  }
@@ -302,7 +302,7 @@ You should adjust those settings manually to match the size of your deployment w
 ## Autoscaling stateless applications on ECK [k8s-stateless-autoscaling]
 
 ::::{note} 
-This section only applies to stateless applications. Check [Elasticsearch autoscaling](#k8s-autoscaling) for more details about scaling automatically Elasticsearch.
+This section only applies to stateless applications. Check [{{es}} autoscaling](#k8s-autoscaling) for more details about automatically scaling {{es}}.
 ::::
 
 
@@ -312,7 +312,7 @@ The [Horizontal Pod Autoscaler](https://kubernetes.io/docs/tasks/run-application
 * APM Server
 * Elastic Maps Server
 
-These resources expose the `scale` subresource which can be used by the Horizontal Pod Autoscaler controller to automatically adjust the number of replicas according to the CPU load or any other custom or external metric. This example shows how to create an `HorizontalPodAutoscaler` resource to adjust the replicas of a Kibana deployment according to the CPU load:
+These resources expose the `scale` subresource which can be used by the Horizontal Pod Autoscaler controller to automatically adjust the number of replicas according to the CPU load or any other custom or external metric. This example shows how to create an `HorizontalPodAutoscaler` resource to adjust the replicas of a {{kib}} deployment according to the CPU load:
 
 ```yaml
 apiVersion: elasticsearch.k8s.elastic.co/v1

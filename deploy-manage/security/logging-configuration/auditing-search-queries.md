@@ -10,7 +10,7 @@ applies_to:
   serverless: unavailable
 ---
 
-# Audit Elasticsearch search queries [auditing-search-queries]
+# Audit {{es}} search queries [auditing-search-queries]
 
 There is no [audit event type](elasticsearch://reference/elasticsearch/elasticsearch-audit-events.md) specifically dedicated to search queries. Search queries are analyzed and then processed; the processing triggers authorization actions that are audited. However, the original raw query, as submitted by the client, is not accessible downstream when authorization auditing occurs.
 

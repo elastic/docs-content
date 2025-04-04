@@ -10,8 +10,8 @@ applies_to:
 
 This section covers the recommended procedures for:
 
-* [starting and stopping self-managed Elasticsearch nodes](start-stop-services/start-stop-elasticsearch.md)
-* [starting and stopping self-managed Kibana instances](start-stop-services/start-stop-kibana.md)
+* [starting and stopping self-managed {{es}} nodes](start-stop-services/start-stop-elasticsearch.md)
+* [starting and stopping self-managed {{kib}} instances](start-stop-services/start-stop-kibana.md)
 * [restarting an ECE deployment](start-stop-services/restart-an-ece-deployment.md)
 * [restarting {{ech}} deployments](start-stop-services/restart-cloud-hosted-deployment.md)
 * [full cluster and rolling restarts for self-managed clusters](start-stop-services/full-cluster-restart-rolling-restart-procedures.md)

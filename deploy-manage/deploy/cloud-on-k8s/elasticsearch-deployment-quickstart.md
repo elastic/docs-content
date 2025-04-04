@@ -1,5 +1,5 @@
 ---
-navigation_title: Deploy an Elasticsearch cluster
+navigation_title: Deploy an {{es}} cluster
 applies_to:
   deployment:
     eck: all
@@ -7,7 +7,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-deploy-elasticsearch.html
 ---
 
-# Deploy an Elasticsearch cluster [k8s-deploy-elasticsearch]
+# Deploy an {{es}} cluster [k8s-deploy-elasticsearch]
 
 To deploy a simple [{{es}}](/solutions/search/get-started.md) cluster specification, with one {{es}} node:
 

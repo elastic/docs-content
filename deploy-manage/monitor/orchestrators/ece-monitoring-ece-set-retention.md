@@ -8,7 +8,7 @@ applies_to:
 
 # Set the retention period for logging and metrics indices [ece-monitoring-ece-set-retention]
 
-Elastic Cloud Enterprise sets up default index lifecycle management (ILM) policies on the logging and metrics indices it collects. By default, metrics indices are kept for one day and logging indices are kept for seven days. This retention period can be adjusted.
+{{ece}} sets up default index lifecycle management (ILM) policies on the logging and metrics indices it collects. By default, metrics indices are kept for one day and logging indices are kept for seven days. This retention period can be adjusted.
 
 You might need to adjust the retention period for one of the following reasons:
 

@@ -10,10 +10,10 @@ applies_to:
 
 You might need to delete hosts for several reasons:
 
-* To remove some resources from your Elastic Cloud Enterprise installation if they are no longer required.
-* To remove a faulty host from the Cloud UI so that it is no longer part of your Elastic Cloud Enterprise installation.
+* To remove some resources from your {{ece}} installation if they are no longer required.
+* To remove a faulty host from the Cloud UI so that it is no longer part of your {{ece}} installation.
 
-Deleting a host only removes the host from your installation, it does not [remove the Elastic Cloud Enterprise software from the host](../../uninstall/uninstall-elastic-cloud-enterprise.md). After the host has been deleted, you can repurpose or troubleshoot the physical host on which the Elastic Cloud Enterprise host was located.
+Deleting a host only removes the host from your installation, it does not [remove the {{ece}} software from the host](../../uninstall/uninstall-elastic-cloud-enterprise.md). After the host has been deleted, you can repurpose or troubleshoot the physical host on which the {{ece}} host was located.
 
 To delete hosts:
 

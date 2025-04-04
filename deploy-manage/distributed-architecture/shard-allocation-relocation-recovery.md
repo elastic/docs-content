@@ -7,13 +7,13 @@ applies_to:
 
 # Shard allocation, relocation, and recovery [shard-allocation-relocation-recovery]
 
-Each [index](../../manage-data/data-store/index-basics.md) in Elasticsearch is divided into one or more [shards](../../deploy-manage/index.md). Each document in an index belongs to a single shard.
+Each [index](../../manage-data/data-store/index-basics.md) in {{es}} is divided into one or more [shards](../../deploy-manage/index.md). Each document in an index belongs to a single shard.
 
 A cluster can contain multiple copies of a shard. Each shard has one distinguished shard copy called the *primary*, and zero or more non-primary copies called *replicas*. The primary shard copy serves as the main entry point for all indexing operations. The operations on the primary shard copy are then forwarded to its replicas.
 
 Replicas maintain redundant copies of your data across the [nodes](elasticsearch://reference/elasticsearch/configuration-reference/node-settings.md) in your cluster, protecting against hardware failure and increasing capacity to serve read requests like searching or retrieving a document. If the primary shard copy fails, then a replica is promoted to primary and takes over the primary’s responsibilities.
 
-Over the course of normal operation, Elasticsearch allocates shard copies to nodes, relocates shard copies across nodes to balance the cluster or satisfy new allocation constraints, and recovers shards to initialize new copies. In this topic, you’ll learn how these operations work and how you can control them.
+Over the course of normal operation, {{es}} allocates shard copies to nodes, relocates shard copies across nodes to balance the cluster or satisfy new allocation constraints, and recovers shards to initialize new copies. In this topic, you’ll learn how these operations work and how you can control them.
 
 ::::{tip}
 To learn about optimizing the number and size of shards in your cluster, refer to [Size your shards](../production-guidance/optimize-performance/size-shards.md). To learn about how read and write operations are replicated across shards and shard copies, refer to [Reading and writing documents](reading-and-writing-documents.md).

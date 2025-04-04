@@ -21,7 +21,7 @@ Read on for detail about each of these billing dimensions.
 
 ## Deployment capacity [ram-hours] 
 
-Deployment capacity refers to the cost of the nodes in your Elasticsearch deployment, plus additional node types such as Kibana, APM, and ML.  Each node type is priced in terms of GB of RAM per hour (CPU and disk are scaled with RAM and included in this price).  To calculate deployment capacity costs, we total up the cost of the nodes in your deployment(s) and multiply by GBs of RAM and how long they’ve been running.
+Deployment capacity refers to the cost of the nodes in your {{es}} deployment, plus additional node types such as {{kib}}, APM, and ML.  Each node type is priced in terms of GB of RAM per hour (CPU and disk are scaled with RAM and included in this price).  To calculate deployment capacity costs, we total up the cost of the nodes in your deployment(s) and multiply by GBs of RAM and how long they’ve been running.
 
 Deployment capacity typically constitutes the majority of your bill, and is the easiest to understand and control.
 
@@ -44,7 +44,7 @@ We meter and bill data transfer using three dimensions:
 :   *Data out* accounts for all of the traffic coming out of the deployment. This includes search results, as well as monitoring data sent from the deployment. The same rate applies regardless of the destination of the data, whether to the internet, to another region, or to a cloud provider account in the same region. Data coming out of the deployment through AWS PrivateLink, GCP Private Service Connect, or Azure Private Link, is also considered *Data out*.
 
 3. Data inter-node
-:   *Data inter-node* accounts for all of the traffic sent between the components of the deployment. This includes the data sync between nodes of a cluster which is managed automatically by Elasticsearch cluster sharding. It also includes data related to search queries executed across multiple nodes of a cluster. Note that single-node Elasticsearch clusters typically have lower charges, but may still incur inter-node charges accounting for data exchanged with Kibana nodes or other nodes, such as machine learning or APM.
+:   *Data inter-node* accounts for all of the traffic sent between the components of the deployment. This includes the data sync between nodes of a cluster which is managed automatically by {{es}} cluster sharding. It also includes data related to search queries executed across multiple nodes of a cluster. Note that single-node {{es}} clusters typically have lower charges, but may still incur inter-node charges accounting for data exchanged with {{kib}} nodes or other nodes, such as machine learning or APM.
 
 We provide a free allowance of 100GB per month, which includes the sum of *data out* and *data inter-node*, across all deployments in the account. Once this threshold is passed, a charge is applied for any data transfer used in excess of the 100GB monthly free allowance.
 
@@ -65,7 +65,7 @@ The exact root cause of unusual data transfer is not always something we can ide
 
 ## Storage [storage] 
 
-Storage costs are tied to the cost of storing the backup snapshots in the underlying IaaS object store, such as AWS S3, Google Cloud GCS or Azure Storage. These storage costs are *not* for the disk storage that persists the Elasticsearch indices, as that is already included in the [RAM Hours](#ram-hours).
+Storage costs are tied to the cost of storing the backup snapshots in the underlying IaaS object store, such as AWS S3, Google Cloud GCS or Azure Storage. These storage costs are *not* for the disk storage that persists the {{es}} indices, as that is already included in the [RAM Hours](#ram-hours).
 
 As is common with Cloud providers, we meter and bill snapshot storage using two dimensions:
 
@@ -92,9 +92,9 @@ As is common with Cloud providers, we meter and bill snapshot storage using two 
 
 Snapshots in {{ech}} save data incrementally at each snapshot event. This means that the effective snapshot size may be larger than the size of the current indices. The snapshot size increases as data is added or updated in the cluster, and deletions do not reduce the snapshot size until the snapshot containing that data is removed.
 
-API requests are executed every time a snapshot is taken or restored, affecting usage costs. In the event that you have any automated processes that use the Elasticsearch API to create or restore snapshots, these should be set so as to avoid unexpected charges.
+API requests are executed every time a snapshot is taken or restored, affecting usage costs. In the event that you have any automated processes that use the {{es}} API to create or restore snapshots, these should be set so as to avoid unexpected charges.
 
-You can use Kibana to configure a snapshot lifecycle management (SLM) policy to automate when snapshots are created and deleted, along with other options. To learn more, refer to the [Snapshot and Restore](../../tools/snapshot-and-restore/create-snapshots.md) documentation.
+You can use {{kib}} to configure a snapshot lifecycle management (SLM) policy to automate when snapshots are created and deleted, along with other options. To learn more, refer to the [Snapshot and Restore](../../tools/snapshot-and-restore/create-snapshots.md) documentation.
 
 Note that reducing either the snapshot frequency or retention period limits the availability and the recency of available data to restore from. Your snapshot policy should be configured with both costs and data availability in mind in order to minimize the potential for loss of data. Note also that reducing snapshot frequency and retention will not necessarily decrease your storage costs significantly. For example, if your dataset is only growing over time, then the total amount of data stored across all of your snapshots will be equal to your cluster size, whether that’s split across 10 snapshots or 100.
 

@@ -44,7 +44,7 @@ Refer to [{{es}} API conventions](elasticsearch://reference/elasticsearch/rest-a
 :::{include} /deploy-manage/deploy/_snippets/cloud-api-console.md
 :::
 
-## Elastic Cloud Control: command-line interface for {{ecloud}}
+## {{ecloud}} Control: command-line interface for {{ecloud}}
 
 :::{include} /deploy-manage/deploy/_snippets/ecctl.md
 :::

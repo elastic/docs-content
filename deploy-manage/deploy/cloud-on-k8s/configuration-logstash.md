@@ -393,13 +393,13 @@ spec:
 ```
 
 
-## Using Elasticsearch in Logstash pipelines [k8s-logstash-pipelines-es]
+## Using {{es}} in Logstash pipelines [k8s-logstash-pipelines-es]
 
 ### `elasticsearchRefs` for establishing a secured connection [k8s-logstash-esref]
 
-The `spec.elasticsearchRefs` section provides a mechanism to help configure Logstash to establish a secured connection to one or more ECK managed Elasticsearch clusters. By default, each `elasticsearchRef` will target all nodes in its referenced Elasticsearch cluster. If you want to direct traffic to specific nodes of your Elasticsearch cluster, refer to [*Traffic Splitting*](requests-routing-to-elasticsearch-nodes.md) for more information and examples.
+The `spec.elasticsearchRefs` section provides a mechanism to help configure Logstash to establish a secured connection to one or more ECK managed {{es}} clusters. By default, each `elasticsearchRef` will target all nodes in its referenced {{es}} cluster. If you want to direct traffic to specific nodes of your {{es}} cluster, refer to [*Traffic Splitting*](requests-routing-to-elasticsearch-nodes.md) for more information and examples.
 
-When you use `elasticsearchRefs` in a Logstash pipeline, the Logstash operator creates the necessary resources from the associated Elasticsearch cluster, and provides environment variables to allow these resources to be accessed from the pipeline configuration. Environment variables are replaced at runtime with the appropriate values. The environment variables have a fixed naming convention:
+When you use `elasticsearchRefs` in a Logstash pipeline, the Logstash operator creates the necessary resources from the associated {{es}} cluster, and provides environment variables to allow these resources to be accessed from the pipeline configuration. Environment variables are replaced at runtime with the appropriate values. The environment variables have a fixed naming convention:
 
 * `NORMALIZED_CLUSTERNAME_ES_HOSTS`
 * `NORMALIZED_CLUSTERNAME_ES_USER`
@@ -422,13 +422,13 @@ where NORMALIZED_CLUSTERNAME is the value taken from the `clusterName` field of 
     ]
     ```
 
-    You can [update user permissions](../../users-roles/cluster-or-deployment-auth/native.md) to include more indices if the Elasticsearch plugin is expected to use indices other than the default. Check out [Logstash configuration with a custom index](configuration-examples-logstash.md#k8s-logstash-configuration-custom-index) sample configuration that creates a user that writes to a custom index.
+    You can [update user permissions](../../users-roles/cluster-or-deployment-auth/native.md) to include more indices if the {{es}} plugin is expected to use indices other than the default. Check out [Logstash configuration with a custom index](configuration-examples-logstash.md#k8s-logstash-configuration-custom-index) sample configuration that creates a user that writes to a custom index.
 
 
 ::::
 
 
-This example demonstrates how to create a Logstash deployment that connects to different Elasticsearch instances, one of which is in a separate namespace:
+This example demonstrates how to create a Logstash deployment that connects to different {{es}} instances, one of which is in a separate namespace:
 
 ```yaml
 apiVersion: logstash.k8s.elastic.co/v1alpha1
@@ -468,16 +468,16 @@ spec:
         }
 ```
 
-1. Define Elasticsearch references in the CRD. This will create the appropriate Secrets to store certificate details and the rest of the connection information, and create environment variables to allow them to be referred to in Logstash pipeline configurations.
-2. This refers to an Elasticsearch cluster residing in the same namespace as the Logstash instances.
-3. This refers to an Elasticsearch cluster residing in a different namespace to the Logstash instances.
-4. Elasticsearch output definitions - use the environment variables created by the Logstash operator when specifying an `ElasticsearchRef`. Note the use of "normalized" versions of the `clusterName` in the environment variables used to populate the relevant fields.
+1. Define {{es}} references in the CRD. This will create the appropriate Secrets to store certificate details and the rest of the connection information, and create environment variables to allow them to be referred to in Logstash pipeline configurations.
+2. This refers to an {{es}} cluster residing in the same namespace as the Logstash instances.
+3. This refers to an {{es}} cluster residing in a different namespace to the Logstash instances.
+4. {{es}} output definitions - use the environment variables created by the Logstash operator when specifying an `ElasticsearchRef`. Note the use of "normalized" versions of the `clusterName` in the environment variables used to populate the relevant fields.
 
 
 
-### Connect to an external Elasticsearch cluster [k8s-logstash-external-es]
+### Connect to an external {{es}} cluster [k8s-logstash-external-es]
 
-Logstash can connect to external Elasticsearch cluster that is not managed by ECK. You can reference a Secret instead of an Elasticsearch cluster in the `elasticsearchRefs` section through the `secretName` attribute:
+Logstash can connect to external {{es}} cluster that is not managed by ECK. You can reference a Secret instead of an {{es}} cluster in the `elasticsearchRefs` section through the `secretName` attribute:
 
 ```yaml
 apiVersion: v1

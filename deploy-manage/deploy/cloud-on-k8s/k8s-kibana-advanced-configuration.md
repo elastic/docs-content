@@ -8,7 +8,7 @@ mapped_pages:
 
 # Advanced configuration [k8s-kibana-advanced-configuration]
 
-If you already looked at the [Elasticsearch on ECK](elasticsearch-configuration.md) documentation, some of these concepts might sound familiar to you. The resource definitions in ECK share the same philosophy when you want to:
+If you already looked at the [{{es}} on ECK](elasticsearch-configuration.md) documentation, some of these concepts might sound familiar to you. The resource definitions in ECK share the same philosophy when you want to:
 
 * [Customize the Pod configuration](#k8s-kibana-pod-configuration)
 * [Customize the product configuration](#k8s-kibana-configuration)
@@ -52,7 +52,7 @@ spec:
 
 The name of the container in the [Pod Template](https://kubernetes.io/docs/concepts/workloads/pods/#pod-templates) must be `kibana`.
 
-Check [Set compute resources for Kibana, Elastic Maps Server, APM Server and Logstash](manage-compute-resources.md#k8s-compute-resources-kibana-and-apm) for more information.
+Check [Set compute resources for {{kib}}, Elastic Maps Server, APM Server and Logstash](manage-compute-resources.md#k8s-compute-resources-kibana-and-apm) for more information.
 
 
 ## {{kib}} configuration [k8s-kibana-configuration]
@@ -88,7 +88,7 @@ To deploy more than one instance of {{kib}}, the instances must share a matching
 ::::{tip}
 If you need to access these encryption keys, you can find them using the `kubectl get secrets` command.
 
-The secret is named after the corresponding Kibana instance. For example, for a Kibana named `my-kibana`, you can run the following command to retrieve the current encryption keys:
+The secret is named after the corresponding {{kib}} instance. For example, for a {{kib}} named `my-kibana`, you can run the following command to retrieve the current encryption keys:
 
 ```shell
 kubectl get secret my-kibana-kb-config -o jsonpath='{ .data.kibana\.yml }' | base64 --decode | grep -A1 encryptedSavedObjects

@@ -59,7 +59,7 @@ spec:
 ```
 
 ::::{note} 
-Configuration for other Elastic stack applications, like APM Server, or Beats, is identical to the Kibana configuration except for the `apiVersion` and `kind` fields.
+Configuration for other Elastic stack applications, like APM Server, or Beats, is identical to the {{kib}} configuration except for the `apiVersion` and `kind` fields.
 ::::
 
 

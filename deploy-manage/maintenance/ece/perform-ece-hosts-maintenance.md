@@ -8,7 +8,7 @@ applies_to:
 
 # Perform ECE hosts maintenance [ece-perform-host-maintenance]
 
-These steps show how you can safely perform maintenance on hosts in your ECE installation. Host maintenance refers to actions that are not part of taking care of Elastic Cloud Enterprise itself and that you might need to perform for a number of different reasons, including:
+These steps show how you can safely perform maintenance on hosts in your ECE installation. Host maintenance refers to actions that are not part of taking care of {{ece}} itself and that you might need to perform for a number of different reasons, including:
 
 * To apply urgent operating system patches or hot fixes
 * To perform regularly scheduled software or hardware upgrades
@@ -21,17 +21,17 @@ You can perform these maintenance actions on the hosts in your ECE installation 
 * [By deleting the host (destructive)](#ece-perform-host-maintenance-delete-runner)
 * [By shutting down the host (less destructive)](#ece-perform-host-maintenance-delete-runner)
 
-Which method you choose depends on how invasive your host maintenance needs to be. If your host maintenance could affect ECE, use the destructive method that first deletes the host from your installation. These methods include a step that moves any hosted Elasticsearch clusters and Kibana instances off the affected hosts and are generally considered safe, provided that your ECE installation still has sufficient resources available to operate after the host has been removed.
+Which method you choose depends on how invasive your host maintenance needs to be. If your host maintenance could affect ECE, use the destructive method that first deletes the host from your installation. These methods include a step that moves any hosted {{es}} clusters and {{kib}} instances off the affected hosts and are generally considered safe, provided that your ECE installation still has sufficient resources available to operate after the host has been removed.
 
 ## By disabling the Docker daemon [ece-perform-host-maintenance-docker-disable]
 
-This method lets you perform maintenance actions on hosts without first removing the associated host from your Elastic Cloud Enterprise installation. It works by disabling the Docker daemon. The host remains a part of your ECE installation throughout these steps but will be offline and the resources it provides will not be available.
+This method lets you perform maintenance actions on hosts without first removing the associated host from your {{ece}} installation. It works by disabling the Docker daemon. The host remains a part of your ECE installation throughout these steps but will be offline and the resources it provides will not be available.
 
 To perform host maintenance:
 
 1. Recommended: If the host holds the allocator role and you have enough spare capacity:
    1. [Enable maintenance mode](enable-maintenance-mode.md) on the allocator.
-   2. [Move all nodes off the allocator](move-nodes-instances-from-allocators.md) and to other allocators in your installation. Moving all nodes lets you retain the same level of redundancy for highly available Elasticsearch clusters and ensures that other clusters without high availability remain available.
+   2. [Move all nodes off the allocator](move-nodes-instances-from-allocators.md) and to other allocators in your installation. Moving all nodes lets you retain the same level of redundancy for highly available {{es}} clusters and ensures that other clusters without high availability remain available.
    ::::{important}
    Skipping Step 1 will affect the availability of clusters with nodes on the allocator.
    ::::
@@ -71,7 +71,7 @@ After the host shows a green status in the Cloud UI, it is fully functional agai
 
 ## By deleting the host (destructive) [ece-perform-host-maintenance-delete-runner]
 
-This method lets you perform potentially destructive maintenance actions on hosts. It works by deleting the associated host, which removes the host from your Elastic Cloud Enterprise installation. To add the host to your ECE installation again after host maintenance is complete, you must reinstall ECE.
+This method lets you perform potentially destructive maintenance actions on hosts. It works by deleting the associated host, which removes the host from your {{ece}} installation. To add the host to your ECE installation again after host maintenance is complete, you must reinstall ECE.
 
 To perform host maintenance:
 

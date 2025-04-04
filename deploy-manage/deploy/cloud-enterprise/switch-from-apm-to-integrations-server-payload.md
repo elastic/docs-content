@@ -8,7 +8,7 @@ mapped_pages:
 
 # Switch from APM to Integrations Server payload [ece-integrations-server-apm-switch]
 
-This example shows how to use the Elastic Cloud Enterprise RESTful API to switch from using [APM & Fleet Server](https://www.elastic.co/guide/en/cloud-enterprise/current/ece-manage-apm-and-fleet.html) to [Integrations Server](manage-integrations-server.md).
+This example shows how to use the {{ece}} RESTful API to switch from using [APM & Fleet Server](https://www.elastic.co/guide/en/cloud-enterprise/current/ece-manage-apm-and-fleet.html) to [Integrations Server](manage-integrations-server.md).
 
 
 ## Requirements [ece_requirements_5]

@@ -60,9 +60,9 @@ These platforms offer built-in autoscaling and flexible resource management:
 
 * [Configure {{ech}} deployments](/deploy-manage/deploy/elastic-cloud/configure.md): Change instance sizes, increase capacity, or [select a different hardware profile](/deploy-manage/deploy/elastic-cloud/ec-change-hardware-profile.md).
 
-* [Resize an ECE deployment](/deploy-manage/deploy/cloud-enterprise/resize-deployment.md): Adjust deployment size or topology in the Elastic Cloud Enterprise console.
+* [Resize an ECE deployment](/deploy-manage/deploy/cloud-enterprise/resize-deployment.md): Adjust deployment size or topology in the {{ece}} console.
 
-* [Configure ECK deployments](/deploy-manage/deploy/cloud-on-k8s/configure-deployments.md): Change the number of Elasticsearch nodes, [customize compute resources](/deploy-manage/deploy/cloud-on-k8s/manage-compute-resources.md), or configure `nodeSets` to adjust the cluster architecture and topology.
+* [Configure ECK deployments](/deploy-manage/deploy/cloud-on-k8s/configure-deployments.md): Change the number of {{es}} nodes, [customize compute resources](/deploy-manage/deploy/cloud-on-k8s/manage-compute-resources.md), or configure `nodeSets` to adjust the cluster architecture and topology.
 
 ### Self-managed deployments
 

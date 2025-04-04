@@ -9,7 +9,7 @@ mapped_pages:
 
 # Complete the registration of an annual subscription on AWS Marketplace [ec-marketplace-aws-prepaid-signup]
 
-Follow the instructions on this page to complete the registration process for an Elastic Cloud annual subscription on AWS Marketplace.
+Follow the instructions on this page to complete the registration process for an {{ecloud}} annual subscription on AWS Marketplace.
 
 ## Accept your offer and complete registration
 

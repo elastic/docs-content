@@ -37,11 +37,11 @@ For deployments with **Elastic Stack version 7.17 and earlier**, you’ll need t
 
 ### Configure the keystore [ec-configure-azure-keystore]
 
-Create an entry for the Azure client in the Elasticsearch keystore:
+Create an entry for the Azure client in the {{es}} keystore:
 
 1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
 2. Navigate to the **Security** page of the deployment you wish to configure.
-3. Locate **Elasticsearch keystore** and select **Add settings**.
+3. Locate **{{es}} keystore** and select **Add settings**.
 4. With **Type** set to **Single string**, add the following keys and their values:
 
     * `azure.client.secondary.account`
@@ -52,7 +52,7 @@ Create an entry for the Azure client in the Elasticsearch keystore:
 
 ### Create the repository [ec-create-azure-repository]
 
-1. Open Kibana and go to **Management** > **Snapshot and Restore**.
+1. Open {{kib}} and go to **Management** > **Snapshot and Restore**.
 2. On the **Repositories** tab, select **Register a repository**.
 3. Provide a name for your repository and select type **Azure**.
 4. Provide the following settings:
@@ -70,5 +70,5 @@ Create an entry for the Azure client in the Elasticsearch keystore:
 6. Select Register.
 7. Select **Verify** to confirm that your settings are correct and the deployment can connect to your repository.
 
-Your snapshot repository is now set up using Azure Blob storage! You can use Kibana to manage your snapshots and begin sending Elasticsearch snapshots to your own container. For details, check the [Snapshot and Restore](create-snapshots.md) documentation.
+Your snapshot repository is now set up using Azure Blob storage! You can use {{kib}} to manage your snapshots and begin sending {{es}} snapshots to your own container. For details, check the [Snapshot and Restore](create-snapshots.md) documentation.
 

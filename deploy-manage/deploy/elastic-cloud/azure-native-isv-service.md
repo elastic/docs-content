@@ -25,7 +25,7 @@ The {{ecloud}} Azure Native ISV Service allows you to deploy managed instances o
 
 
 ::::{tip}
-The full product name in the Azure integrated marketplace is `Elastic Cloud (Elasticsearch) - An Azure Native ISV Service`.
+The full product name in the Azure integrated marketplace is `{{ecloud}} (Elasticsearch) - An Azure Native ISV Service`.
 ::::
 
 

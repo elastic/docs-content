@@ -50,7 +50,7 @@ Each step builds on the previous one. For production environments, it’s strong
 
 For additional TLS configuration options, refer to [](./self-tls.md).
 
-## Kibana security configuration
+## {{kib}} security configuration
 
 Refer to [](./using-kibana-with-security.md) to learn how to implement the following security best practices for {{kib}}:
 

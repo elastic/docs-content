@@ -51,7 +51,7 @@ The two original nodes should not be voting-only master-eligible nodes since a r
 
 We recommend assigning both non-tiebreaker nodes all other roles. This creates redundancy by ensuring any task in the cluster can be handled by either node.
 
-You should not send any client requests to the dedicated tiebreaker node. You should also avoid sending client requests to just one of the other two nodes. If you do, and this node fails, then any requests will not receive responses, even if the remaining nodes form a healthy cluster. Ideally, you should balance your client requests across both of the non-tiebreaker nodes. You can do this by specifying the address of both nodes when configuring your client to connect to your cluster. Alternatively, you can use a resilient load balancer to balance client requests across the appropriate nodes in your cluster. The [Elastic Cloud](https://cloud.elastic.co/registration?page=docs&placement=docs-body) service provides such a load balancer.
+You should not send any client requests to the dedicated tiebreaker node. You should also avoid sending client requests to just one of the other two nodes. If you do, and this node fails, then any requests will not receive responses, even if the remaining nodes form a healthy cluster. Ideally, you should balance your client requests across both of the non-tiebreaker nodes. You can do this by specifying the address of both nodes when configuring your client to connect to your cluster. Alternatively, you can use a resilient load balancer to balance client requests across the appropriate nodes in your cluster. The [{{ecloud}}](https://cloud.elastic.co/registration?page=docs&placement=docs-body) service provides such a load balancer.
 
 A two-node cluster with an additional tiebreaker node is the smallest possible cluster that is suitable for production deployments.
 
@@ -60,7 +60,7 @@ A two-node cluster with an additional tiebreaker node is the smallest possible c
 
 If you have three nodes, we recommend they all be [data nodes](../../distributed-architecture/clusters-nodes-shards/node-roles.md#data-node-role) and every index that is not a [searchable snapshot index](../../tools/snapshot-and-restore/searchable-snapshots.md) should have at least one replica. Nodes are data nodes by default. You may prefer for some indices to have two replicas so that each node has a copy of each shard in those indices. You should also configure each node to be [master-eligible](../../distributed-architecture/clusters-nodes-shards/node-roles.md#master-node-role) so that any two of them can hold a master election without needing to communicate with the third node. Nodes are master-eligible by default. This cluster will be resilient to the loss of any single node.
 
-You should avoid sending client requests to just one of your nodes. If you do, and this node fails, then any requests will not receive responses even if the remaining two nodes form a healthy cluster. Ideally, you should balance your client requests across all three nodes. You can do this by specifying the address of multiple nodes when configuring your client to connect to your cluster. Alternatively you can use a resilient load balancer to balance client requests across your cluster. The [Elastic Cloud](https://cloud.elastic.co/registration?page=docs&placement=docs-body) service provides such a load balancer.
+You should avoid sending client requests to just one of your nodes. If you do, and this node fails, then any requests will not receive responses even if the remaining two nodes form a healthy cluster. Ideally, you should balance your client requests across all three nodes. You can do this by specifying the address of multiple nodes when configuring your client to connect to your cluster. Alternatively you can use a resilient load balancer to balance client requests across your cluster. The [{{ecloud}}](https://cloud.elastic.co/registration?page=docs&placement=docs-body) service provides such a load balancer.
 
 
 ## Clusters with more than three nodes [high-availability-cluster-design-three-plus-nodes]
@@ -80,6 +80,6 @@ The cluster will be resilient to the loss of any node as long as:
 * There are at least two data nodes.
 * Every index that is not a [searchable snapshot index](../../tools/snapshot-and-restore/searchable-snapshots.md) has at least one replica of each shard, in addition to the primary.
 * The cluster has at least three master-eligible nodes, as long as at least two of these nodes are not voting-only master-eligible nodes.
-* Clients are configured to send their requests to more than one node or are configured to use a load balancer that balances the requests across an appropriate set of nodes. The [Elastic Cloud](https://cloud.elastic.co/registration?page=docs&placement=docs-body) service provides such a load balancer.
+* Clients are configured to send their requests to more than one node or are configured to use a load balancer that balances the requests across an appropriate set of nodes. The [{{ecloud}}](https://cloud.elastic.co/registration?page=docs&placement=docs-body) service provides such a load balancer.
 
 

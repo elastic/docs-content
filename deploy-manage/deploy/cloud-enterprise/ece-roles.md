@@ -8,7 +8,7 @@ mapped_pages:
 
 # Separation of roles [ece-roles]
 
-The separation of roles is required to group components on ECE and prevent conflicting workloads. When you install Elastic Cloud Enterprise on the first host, it is assigned many different host roles: Allocator, coordinator, director, and proxy. This role assignment is required to bring up your initial deployments. In a production environment, some of these roles need to be separated, as their loads scale differently and can create conflicting demands when placed on the same hosts. There are also certain [security implications that are addressed by separating roles](../../security/secure-your-elastic-cloud-enterprise-installation.md#ece-securing-vectors).
+The separation of roles is required to group components on ECE and prevent conflicting workloads. When you install {{ece}} on the first host, it is assigned many different host roles: Allocator, coordinator, director, and proxy. This role assignment is required to bring up your initial deployments. In a production environment, some of these roles need to be separated, as their loads scale differently and can create conflicting demands when placed on the same hosts. There are also certain [security implications that are addressed by separating roles](../../security/secure-your-elastic-cloud-enterprise-installation.md#ece-securing-vectors).
 
 Roles that should not be held by the same host:
 

@@ -36,9 +36,9 @@ For plugins larger than 200MB the download URL option **must** be used. Plugins 
 
 These two examples are for the `plugin` extension type. For bundles, change `extension_type` to `bundle`.
 
-For plugins, `version` must match (exactly) the `elasticsearch.version` field defined in the plugin’s `plugin-descriptor.properties` file. Check [Help for plugin authors](elasticsearch://extend/index.md) for details. For plugins larger than 5GB, the `plugin-descriptor.properties` file needs to be at the top of the archive. This ensures that the our verification process is able to detect that it is an Elasticsearch plugin; otherwise the plugin will be rejected by the API. This order can be achieved by specifying at time of creating the ZIP file: `zip -r name-of-plugin.zip plugin-descriptor.properties *`.
+For plugins, `version` must match (exactly) the `elasticsearch.version` field defined in the plugin’s `plugin-descriptor.properties` file. Check [Help for plugin authors](elasticsearch://extend/index.md) for details. For plugins larger than 5GB, the `plugin-descriptor.properties` file needs to be at the top of the archive. This ensures that the our verification process is able to detect that it is an {{es}} plugin; otherwise the plugin will be rejected by the API. This order can be achieved by specifying at time of creating the ZIP file: `zip -r name-of-plugin.zip plugin-descriptor.properties *`.
 
-For bundles, we recommend setting `version` using wildcard notation that matches the major version of the Elasticsearch deployment. For example, if Elasticsearch is on version 8.4.3, simply set `8.*` as the version. The value `8.*` means that the bundle is compatible with all 8.x versions of Elasticsearch.
+For bundles, we recommend setting `version` using wildcard notation that matches the major version of the {{es}} deployment. For example, if {{es}} is on version 8.4.3, simply set `8.*` as the version. The value `8.*` means that the bundle is compatible with all 8.x versions of {{es}}.
 
 $$$ec-extension-guide-create-option1$$$
 **Option 1: Stream the file from a publicly-accessible download URL**
@@ -165,7 +165,7 @@ The following are examples of a GCP plan. Your specific deployment plan will be 
 }
 ```
 
-You can use the [cat plugins API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-plugins) to confirm that the plugin has been deployed successfully to Elasticsearch.
+You can use the [cat plugins API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-plugins) to confirm that the plugin has been deployed successfully to {{es}}.
 
 The previous examples are for plugins. For bundles, use the `user_bundles` construct instead.
 
@@ -269,7 +269,7 @@ Updating `extension_type` has no effect. You cannot change the extension’s typ
 
 ## Update the version of an existing bundle [ec-extension-guide-update-version-bundle]
 
-For bundles, we recommend setting `version` using wildcard notation that matches the major version of the Elasticsearch deployment. For example, if Elasticsearch is on version 8.4.3, simply set `8.*` as the version. The value `8.*` means that the bundle is compatible with all 7.x versions of Elasticsearch.
+For bundles, we recommend setting `version` using wildcard notation that matches the major version of the {{es}} deployment. For example, if {{es}} is on version 8.4.3, simply set `8.*` as the version. The value `8.*` means that the bundle is compatible with all 7.x versions of {{es}}.
 
 For example, if the bundle was previously uploaded with the version `8.4.2`, simply update the version field. You no longer have to specify the `download_url` when only making metadata changes to a bundle.
 
@@ -311,7 +311,7 @@ For plugins, `version` must match (exactly) the `elasticsearch.version` field de
 
 ## Update the file associated to an existing extension [ec-extension-guide-update-file]
 
-You may want to update an uploaded file for an existing extension without performing an Elasticsearch upgrade. If you are updating the extension to prepare for an Elasticsearch upgrade, check the [Upgrade Elasticsearch](#ec-extension-guide-upgrade-elasticsearch) scenario later on this page.
+You may want to update an uploaded file for an existing extension without performing an {{es}} upgrade. If you are updating the extension to prepare for an {{es}} upgrade, check the [Upgrade Elasticsearch](#ec-extension-guide-upgrade-elasticsearch) scenario later on this page.
 
 This example is for the `plugin` extension type. For bundles, change `extension_type` to `bundle`.
 
@@ -341,38 +341,38 @@ curl -v -X PUT "https://api.elastic-cloud.com/api/v1/deployments/extensions/EXTE
 ```
 
 ::::{important}
-If you are not making any other plan changes and simply updating an extension file, you need to issue a no-op plan so that Elasticsearch will make use of this new file. A *no-op* (no operation) plan triggers a rolling restart on the deployment, applying the same (unchanged) plan as the current plan.
+If you are not making any other plan changes and simply updating an extension file, you need to issue a no-op plan so that {{es}} will make use of this new file. A *no-op* (no operation) plan triggers a rolling restart on the deployment, applying the same (unchanged) plan as the current plan.
 ::::
 
 
 Updating the file of an existing extension or bundle does not change its `EXTENSION_ID`.
 
 
-## Upgrade Elasticsearch [ec-extension-guide-upgrade-elasticsearch]
+## Upgrade {{es}} [ec-extension-guide-upgrade-elasticsearch]
 
-When you upgrade Elasticsearch in a deployment, you must ensure that:
+When you upgrade {{es}} in a deployment, you must ensure that:
 
-* Bundles are on versions that are compatible with the Elasticsearch version that you are upgrading to.
-* Plugins match (exactly) the Elasticsearch upgrade version.
+* Bundles are on versions that are compatible with the {{es}} version that you are upgrading to.
+* Plugins match (exactly) the {{es}} upgrade version.
 
 **To prepare existing bundle and update the plan:**
 
-1. **Update the bundle version to be compatible with the Elasticsearch upgrade version.**
+1. **Update the bundle version to be compatible with the {{es}} upgrade version.**
 
-    Bundles using wildcard notation for versions (for example, `7.*`, `8.*`) in their extension metadata are compatible with all minor versions of the same Elasticsearch major version. In other words, if you are performing a patch (for example, from `8.4.2` to `8.4.3`) or a minor (for example `8.3.0` to `8.4.3`) version upgrade of Elasticsearch and you are already using `8.*` as the `version` for the extension, you are ready for the Elasticsearch upgrade and can proceed to Step 2.
+    Bundles using wildcard notation for versions (for example, `7.*`, `8.*`) in their extension metadata are compatible with all minor versions of the same {{es}} major version. In other words, if you are performing a patch (for example, from `8.4.2` to `8.4.3`) or a minor (for example `8.3.0` to `8.4.3`) version upgrade of {{es}} and you are already using `8.*` as the `version` for the extension, you are ready for the {{es}} upgrade and can proceed to Step 2.
 
-    However, if you are using a specific `version` for bundles, or upgrading to a major version, you must update the metadata of the extension to specify the matching Elasticsearch `version` that you are upgrading to, or use the wildcard syntax described in the previous paragraph. For example, if you are upgrading from version 7.x to 8.x, set `version` to `8.*` before the upgrade. Refer to [Update the version of an existing bundle](#ec-extension-guide-update-version-bundle).
+    However, if you are using a specific `version` for bundles, or upgrading to a major version, you must update the metadata of the extension to specify the matching {{es}} `version` that you are upgrading to, or use the wildcard syntax described in the previous paragraph. For example, if you are upgrading from version 7.x to 8.x, set `version` to `8.*` before the upgrade. Refer to [Update the version of an existing bundle](#ec-extension-guide-update-version-bundle).
 
 2. **Update the bundle reference as part of an upgrade plan.**
 
     Submit a plan change that performs the following operations in a *single* [update deployment API](https://www.elastic.co/docs/api/doc/cloud/operation/operation-update-deployment) call:
 
-    * Upgrade the version of Elasticsearch to the upgrade version (for example, `8.4.3`).
-    * Update reference to the existing bundle to be compatible with Elasticsearch upgrade version (for example, `8.*`).
+    * Upgrade the version of {{es}} to the upgrade version (for example, `8.4.3`).
+    * Update reference to the existing bundle to be compatible with {{es}} upgrade version (for example, `8.*`).
 
-    This triggers a rolling upgrade plan change to the later Elasticsearch version and updates the reference to the bundle at the same time.
+    This triggers a rolling upgrade plan change to the later {{es}} version and updates the reference to the bundle at the same time.
 
-    The following example shows the upgrade of an Elasticsearch deployment and its bundle. You can also upgrade other deployment resources within the same plan change.
+    The following example shows the upgrade of an {{es}} deployment and its bundle. You can also upgrade other deployment resources within the same plan change.
 
     Update `resources.elasticsearch.plan.elasticsearch.version` and `resources.elasticsearch.plan.cluster_topology.elasticsearch.user_bundles.elasticsearch_version` accordingly.
 
@@ -414,23 +414,23 @@ When you upgrade Elasticsearch in a deployment, you must ensure that:
 
 **To create a new plugin and update the plan:**
 
-Unlike bundles, plugins *must* match the Elasticsearch version down to the patch level (for example, `8.4.3`). When upgrading Elasticsearch to a new patch, minor, or major version, update the version in the extension metadata and update the extension file. The following example updates an existing plugin and upgrades the Elasticsearch deployment from version 8.3.0 to 8.4.3.
+Unlike bundles, plugins *must* match the {{es}} version down to the patch level (for example, `8.4.3`). When upgrading {{es}} to a new patch, minor, or major version, update the version in the extension metadata and update the extension file. The following example updates an existing plugin and upgrades the {{es}} deployment from version 8.3.0 to 8.4.3.
 
-1. **Create a new plugin that matches the Elasticsearch upgrade version.**
+1. **Create a new plugin that matches the {{es}} upgrade version.**
 
-    Follow the steps in [Get an extension](#ec-extension-guide-get-extension) to create a new extension with a `version` metadata field and the plugin’s `elasticsearch.version` field in `plugin-descriptor.properties` that matches the Elasticsearch upgrade version (for example, `8.4.3`).
+    Follow the steps in [Get an extension](#ec-extension-guide-get-extension) to create a new extension with a `version` metadata field and the plugin’s `elasticsearch.version` field in `plugin-descriptor.properties` that matches the {{es}} upgrade version (for example, `8.4.3`).
 
 2. **Remove the old plugin and add the new plugin to the upgrade plan.**
 
     Submit a plan change that performs the following operations in a *single* [update deployment API](https://www.elastic.co/docs/api/doc/cloud/operation/operation-update-deployment) call:
 
-    * Upgrade the version of Elasticsearch to the upgrade version (for example, `8.4.3`).
+    * Upgrade the version of {{es}} to the upgrade version (for example, `8.4.3`).
     * Remove reference to the the plugin on the older version (for example, `8.3.0`) from the plan.
     * Add reference to the new plugin on the upgrade version (for example, `8.4.3`) to the plan.
 
-    This triggers a rolling upgrade plan change to the later Elasticsearch version, removes reference to the older plugin, and deploys your updated plugin at the same time.
+    This triggers a rolling upgrade plan change to the later {{es}} version, removes reference to the older plugin, and deploys your updated plugin at the same time.
 
-    The following example shows the upgrade of an Elasticsearch deployment and its plugin. You can also upgrade other deployment resources within the same plan change.
+    The following example shows the upgrade of an {{es}} deployment and its plugin. You can also upgrade other deployment resources within the same plan change.
 
     Update deployment plans, update `resources.elasticsearch.plan.elasticsearch.version` and `resources.elasticsearch.plan.cluster_topology.elasticsearch.user_plugins.elasticsearch_version` accordingly.
 
@@ -469,7 +469,7 @@ Unlike bundles, plugins *must* match the Elasticsearch version down to the patch
     }
     ```
 
-    You can use the [cat plugins API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-plugins) to confirm that the plugin has been upgraded successfully to Elasticsearch.
+    You can use the [cat plugins API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-plugins) to confirm that the plugin has been upgraded successfully to {{es}}.
 
 
 

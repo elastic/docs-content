@@ -51,7 +51,7 @@ When restoring data from a snapshot, keep the following in mind:
 
 ## Get a list of available snapshots
 
-To view a list of available snapshots in Kibana, go to **Stack Management > Snapshot and Restore**.
+To view a list of available snapshots in {{kib}}, go to **Stack Management > Snapshot and Restore**.
 
 You can also use the get repository API and the get snapshot API to find snapshots that are available to restore. First, use the get repository API to fetch a list of registered snapshot repositories.
 

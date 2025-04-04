@@ -108,14 +108,14 @@ stringData:
             period: 10s
 ```
 
-You can use the Fleet application in Kibana to generate the configuration for Elastic Agent, even when running in standalone mode. Check the [Elastic Agent standalone](/reference/fleet/install-standalone-elastic-agent.md) documentation. Adding the corresponding integration package to Kibana also adds the related dashboards and visualizations.
+You can use the Fleet application in {{kib}} to generate the configuration for Elastic Agent, even when running in standalone mode. Check the [Elastic Agent standalone](/reference/fleet/install-standalone-elastic-agent.md) documentation. Adding the corresponding integration package to {{kib}} also adds the related dashboards and visualizations.
 
 
 ## Use multiple Elastic Agent outputs [k8s-elastic-agent-multi-output]
 
-Elastic Agent supports the use of multiple outputs. Therefore, the `elasticsearchRefs` element accepts multiple references to Elasticsearch clusters. ECK populates the outputs section of the Elastic Agent configuration based on those references. If you configure more than one output, you also have to specify a unique `outputName` attribute.
+Elastic Agent supports the use of multiple outputs. Therefore, the `elasticsearchRefs` element accepts multiple references to {{es}} clusters. ECK populates the outputs section of the Elastic Agent configuration based on those references. If you configure more than one output, you also have to specify a unique `outputName` attribute.
 
-To send Elastic Agent’s internal monitoring and log data to a different Elasticsearch cluster called `agent-monitoring` in the `elastic-monitoring` namespace, and the harvested metrics to our `quickstart` cluster, you have to define two `elasticsearchRefs` as shown in the following example:
+To send Elastic Agent’s internal monitoring and log data to a different {{es}} cluster called `agent-monitoring` in the `elastic-monitoring` namespace, and the harvested metrics to our `quickstart` cluster, you have to define two `elasticsearchRefs` as shown in the following example:
 
 ```yaml
 apiVersion: agent.k8s.elastic.co/v1alpha1
@@ -151,14 +151,14 @@ spec:
 ```
 
 
-## Customize the connection to an Elasticsearch cluster [k8s-elastic-agent-connect-es]
+## Customize the connection to an {{es}} cluster [k8s-elastic-agent-connect-es]
 
-The `elasticsearchRefs` element allows ECK to automatically configure Elastic Agent to establish a secured connection to one or more managed Elasticsearch clusters. By default, it targets all nodes in your cluster. If you want to direct traffic to specific nodes of your Elasticsearch cluster, refer to [*Traffic Splitting*](requests-routing-to-elasticsearch-nodes.md) for more information and examples.
+The `elasticsearchRefs` element allows ECK to automatically configure Elastic Agent to establish a secured connection to one or more managed {{es}} clusters. By default, it targets all nodes in your cluster. If you want to direct traffic to specific nodes of your {{es}} cluster, refer to [*Traffic Splitting*](requests-routing-to-elasticsearch-nodes.md) for more information and examples.
 
 
 ## Set manually Elastic Agent outputs [k8s-elastic-agent-set-output]
 
-If the `elasticsearchRefs` element is specified, ECK populates the outputs section of the Elastic Agent configuration. ECK creates a user with appropriate roles and permissions and uses its credentials. If required, it also mounts the CA certificate in all Agent Pods, and recreates Pods when this certificate changes. Moreover, `elasticsearchRef` element can refer to an ECK-managed Elasticsearch cluster by filling the `name`, `namespace`, `serviceName` fields accordingly, as well as to a Kubernetes secret that contains the connection information to an Elasticsearch cluster not managed by it. In the latter case, for authenticating against the Elasticsearch cluster the secret must contain the fields of `url` and either the `username` with `password` or the `api-key`. Refer to [*Connect to external Elastic resources*](connect-to-external-elastic-resources.md) for additional details.
+If the `elasticsearchRefs` element is specified, ECK populates the outputs section of the Elastic Agent configuration. ECK creates a user with appropriate roles and permissions and uses its credentials. If required, it also mounts the CA certificate in all Agent Pods, and recreates Pods when this certificate changes. Moreover, `elasticsearchRef` element can refer to an ECK-managed {{es}} cluster by filling the `name`, `namespace`, `serviceName` fields accordingly, as well as to a Kubernetes secret that contains the connection information to an {{es}} cluster not managed by it. In the latter case, for authenticating against the {{es}} cluster the secret must contain the fields of `url` and either the `username` with `password` or the `api-key`. Refer to [*Connect to external Elastic resources*](connect-to-external-elastic-resources.md) for additional details.
 
 The outputs can also be set manually. To do that, remove the `elasticsearchRefs` element from the specification and include an appropriate output configuration in the `config`, or indirectly through the `configRef` mechanism.
 

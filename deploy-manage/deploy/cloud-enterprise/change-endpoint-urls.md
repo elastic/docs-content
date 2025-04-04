@@ -25,13 +25,13 @@ To change endpoints in the Cloud UI:
 
 1. [Log into the Cloud UI](log-into-cloud-ui.md).
 2. From the **Platform** menu, select **Settings**.
-3. Specify the deployment domain name (`CNAME`) value for your cluster and Kibana endpoints.
+3. Specify the deployment domain name (`CNAME`) value for your cluster and {{kib}} endpoints.
 4. Select **Update Deployment endpoints**. The new endpoint becomes effective immediately.
 
 To find your deployment endpoints, select a deployment and review the information on the **Elasticsearch** and **Kibana** pages.
 
 ::::{tip}
-If you install Elastic Cloud Enterprise on AWS, you likely need to modify the cluster endpoint. To learn more, check [Endpoint URLs Inaccessible on AWS](../../../troubleshoot/deployments/cloud-enterprise/common-issues.md#ece-aws-private-ip).
+If you install {{ece}} on AWS, you likely need to modify the cluster endpoint. To learn more, check [Endpoint URLs Inaccessible on AWS](../../../troubleshoot/deployments/cloud-enterprise/common-issues.md#ece-aws-private-ip).
 ::::
 
 ::::{tip}

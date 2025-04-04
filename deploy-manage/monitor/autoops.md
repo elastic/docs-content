@@ -8,7 +8,7 @@ applies_to:
 
 # AutoOps [ec-autoops]
 
-AutoOps diagnoses issues in Elasticsearch by analyzing hundreds of metrics, providing root-cause analysis and accurate resolution paths. With AutoOps, customers can prevent and resolve issues, cut down administration time, and optimize resource utilization.
+AutoOps diagnoses issues in {{es}} by analyzing hundreds of metrics, providing root-cause analysis and accurate resolution paths. With AutoOps, customers can prevent and resolve issues, cut down administration time, and optimize resource utilization.
 
 AutoOps is currently only available for [{{ech}} deployments](/deploy-manage/deploy/elastic-cloud/cloud-hosted.md).
 

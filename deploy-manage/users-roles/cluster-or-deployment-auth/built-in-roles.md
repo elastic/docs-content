@@ -104,7 +104,7 @@ $$$built-in-roles-ml-user$$$ `machine_learning_user`
 :   Grants the minimum privileges required to view {{ml}} configuration, status, and work with results. This role grants `monitor_ml` cluster privileges, read access to the `.ml-notifications` and `.ml-anomalies*` indices (which store {{ml}} results), and write access to `.ml-annotations*` indices. {{ml-cap}} users also need index privileges for source and destination indices and roles that grant access to {{kib}}. See [{{ml-cap}} security privileges](../../../explore-analyze/machine-learning/setting-up-machine-learning.md#setup-privileges).
 
 $$$built-in-roles-monitoring-user$$$ `monitoring_user`
-:   Grants the minimum privileges required for any user of {{monitoring}} other than those required to use {{kib}}. This role grants access to the monitoring indices and grants privileges necessary for reading basic cluster information. This role also includes all [Kibana privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md) for the {{stack-monitor-features}}. Monitoring users should also be assigned the `kibana_admin` role, or another role with [access to the {{kib}} instance](../../../deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md).
+:   Grants the minimum privileges required for any user of {{monitoring}} other than those required to use {{kib}}. This role grants access to the monitoring indices and grants privileges necessary for reading basic cluster information. This role also includes all [{{kib}} privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md) for the {{stack-monitor-features}}. Monitoring users should also be assigned the `kibana_admin` role, or another role with [access to the {{kib}} instance](../../../deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md).
 
 $$$built-in-roles-remote-monitoring-agent$$$ `remote_monitoring_agent`
 :   Grants the minimum privileges required to write data into the monitoring indices (`.monitoring-*`). This role also has the privileges necessary to create {{metricbeat}} indices (`metricbeat-*`) and write data into them.
@@ -113,7 +113,7 @@ $$$built-in-roles-remote-monitoring-collector$$$ `remote_monitoring_collector`
 :   Grants the minimum privileges required to collect monitoring data for the {{stack}}.
 
 $$$built-in-roles-reporting-user$$$ `reporting_user`
-:   Grants the necessary privileges required to use {{reporting}} features in {{kib}}, including generating and downloading reports. This role implicitly grants access to all Kibana reporting features, with each user having access only to their own reports. Note that reporting users should also be assigned additional roles that grant read access to the [indices](/deploy-manage/users-roles/cluster-or-deployment-auth/role-structure.md#roles-indices-priv) that will be used to generate reports.
+:   Grants the necessary privileges required to use {{reporting}} features in {{kib}}, including generating and downloading reports. This role implicitly grants access to all {{kib}} reporting features, with each user having access only to their own reports. Note that reporting users should also be assigned additional roles that grant read access to the [indices](/deploy-manage/users-roles/cluster-or-deployment-auth/role-structure.md#roles-indices-priv) that will be used to generate reports.
 
 $$$built-in-roles-rollup-admin$$$ `rollup_admin`
 :   Grants `manage_rollup` cluster privileges, which enable you to manage and execute all rollup actions.

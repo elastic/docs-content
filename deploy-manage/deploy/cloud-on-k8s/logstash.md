@@ -16,7 +16,7 @@ This section describes how to configure and deploy {{ls}} with ECK.
     * [Logstash configuration](configuration-logstash.md#k8s-logstash-configuring-logstash)
     * [Configuring Logstash pipelines](configuration-logstash.md#k8s-logstash-pipelines)
     * [Defining data volumes for Logstash](configuration-logstash.md#k8s-logstash-volumes)
-    * [Using Elasticsearch in Logstash pipelines](configuration-logstash.md#k8s-logstash-pipelines-es)
+    * [Using {{es}} in Logstash pipelines](configuration-logstash.md#k8s-logstash-pipelines-es)
     * [Expose services](configuration-logstash.md#k8s-logstash-expose-services)
 
 * [Securing Logstash API](securing-logstash-api.md)

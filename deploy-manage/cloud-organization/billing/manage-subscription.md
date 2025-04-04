@@ -66,7 +66,7 @@ You can [change your subscription level](/deploy-manage/cloud-organization/billi
 :   Make sure that there are no applications that use the SQL [JDBC](/explore-analyze/query-filter/languages/sql-jdbc.md) or [ODBC](/explore-analyze/query-filter/languages/sql-odbc.md) clients.
 
 `Field-level or document-level security`
-:   Remove any user role configurations based on field or document access [through the API](/deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level.md) or the Kibana [Roles](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md) page.
+:   Remove any user role configurations based on field or document access [through the API](/deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level.md) or the {{kib}} [Roles](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md) page.
 
 ::::{note}
 After you have made your changes to the deployment, it can take up to one hour to clear the notification banner.

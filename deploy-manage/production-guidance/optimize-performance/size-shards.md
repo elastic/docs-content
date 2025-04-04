@@ -378,7 +378,7 @@ See this [fixing "max shards open" video](https://www.youtube.com/watch?v=tZKbDe
 Each {{es}} shard is a separate Lucene index, so it shares Lucene’s [`MAX_DOC` limit](https://github.com/apache/lucene/issues/5176) of having at most 2,147,483,519 (`(2^31)-129`) documents. This per-shard limit applies to the sum of `docs.count` plus `docs.deleted` as reported by the [Index stats API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-stats). Exceeding this limit will result in errors like the following:
 
 ```txt
-Elasticsearch exception [type=illegal_argument_exception, reason=Number of documents in the shard cannot exceed [2147483519]]
+{{es}} exception [type=illegal_argument_exception, reason=Number of documents in the shard cannot exceed [2147483519]]
 ```
 
 ::::{tip}

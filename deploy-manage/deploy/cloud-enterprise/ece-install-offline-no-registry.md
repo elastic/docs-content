@@ -25,10 +25,10 @@ To perform an offline installation without a private Docker registry, you have t
     docker pull docker.elastic.co/cloud-release/enterprise-search-cloud:8.17.1
     ```
 
-    For example, for Elastic Cloud Enterprise 3.8.1 and the Elastic Stack versions it shipped with, you need:
+    For example, for {{ece}} 3.8.1 and the Elastic Stack versions it shipped with, you need:
 
-    * Elastic Cloud Enterprise 3.8.1
-    * Elasticsearch 8.17.1, Kibana 8.17.1, and APM 8.17.1
+    * {{ece}} 3.8.1
+    * {{es}} 8.17.1, {{kib}} 8.17.1, and APM 8.17.1
 
 2. Create .tar files of the images:
 
@@ -44,7 +44,7 @@ To perform an offline installation without a private Docker registry, you have t
     docker save -o enterprise-search.8.17.1.tar docker.elastic.co/cloud-release/enterprise-search-cloud:8.17.1
     ```
 
-3. Copy the .tar files to a location on your network where they are available to each host where you plan to install Elastic Cloud Enterprise. Alternatively, you can copy the .tar files to each host directly.
+3. Copy the .tar files to a location on your network where they are available to each host where you plan to install {{ece}}. Alternatively, you can copy the .tar files to each host directly.
 4. On each host, load the images into Docker, replacing `FILE_PATH` with the correct path to the .tar files:
 
     ```sh
@@ -66,7 +66,7 @@ To perform an offline installation without a private Docker registry, you have t
     curl -L -O https://download.elastic.co/cloud/elastic-cloud-enterprise.sh
     ```
 
-7. Copy the installation script to each host where you plan to install Elastic Cloud Enterprise or make it available on your network.
+7. Copy the installation script to each host where you plan to install {{ece}} or make it available on your network.
 8. Invoke the installation script on each host:
 
    ::::{note}

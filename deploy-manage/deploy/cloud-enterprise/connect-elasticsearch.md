@@ -8,7 +8,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-connect.html
 ---
 
-# Connect to Elasticsearch [ece-connect]
+# Connect to {{es}} [ece-connect]
 
 This section explains how to connect client applications to an {{es}} deployment running on ECE. You can use the [endpoint URL](#ece-connect-endpoint) available in the deployment UI, or the [Cloud ID](#ece-cloud-id) for a simplified setup with compatible clients such as Beats and Logstash.
 
@@ -103,12 +103,12 @@ To get started with Metricbeat and {{ece}}:
 2. [Create a new deployment](create-deployment.md) and copy down the password for the `elastic` user.
 3. On the deployment overview page, copy down the Cloud ID.
 4. Set up the Beat of your choice, such as [Metricbeat](beats://reference/metricbeat/metricbeat-installation-configuration.md).
-5. [Configure the Beat output to send to Elastic Cloud](beats://reference/metricbeat/configure-cloud-id.md).
+5. [Configure the Beat output to send to {{ecloud}}](beats://reference/metricbeat/configure-cloud-id.md).
 
     ::::{note}
     Make sure you replace the values for `cloud.id` and `cloud.auth` with your own information.
     ::::
 
-6. Open Kibana and explore!
+6. Open {{kib}} and explore!
 
-Metricbeat creates a data view (formerly *index pattern*) with defined fields, searches, visualizations, and dashboards that you can start exploring in Kibana. Look for information related to system metrics, such as CPU usage, utilization rates for memory and disk, and details for processes.
+Metricbeat creates a data view (formerly *index pattern*) with defined fields, searches, visualizations, and dashboards that you can start exploring in {{kib}}. Look for information related to system metrics, such as CPU usage, utilization rates for memory and disk, and details for processes.

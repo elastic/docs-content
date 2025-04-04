@@ -8,7 +8,7 @@ mapped_pages:
 
 # Custom configuration files and plugins [k8s-bundles-plugins]
 
-To run Elasticsearch with specific plugins or configuration files installed on ECK, you have multiple options. Each option has its own pros and cons.
+To run {{es}} with specific plugins or configuration files installed on ECK, you have multiple options. Each option has its own pros and cons.
 
 1. Create a custom container image with the required plugins and configuration files.
 
@@ -32,8 +32,8 @@ To run Elasticsearch with specific plugins or configuration files installed on E
     * **Cons**
 
         * Requires pods to have internet access. **Check [the note about using Istio](#istio-note)**.
-        * Adding new Elasticsearch nodes could randomly fail due to network issues or bad configuration.
-        * Each Elasticsearch node needs to repeat the download, wasting bandwidth and slowing startup.
+        * Adding new {{es}} nodes could randomly fail due to network issues or bad configuration.
+        * Each {{es}} node needs to repeat the download, wasting bandwidth and slowing startup.
         * Deployment manifests are more complicated.
 
 3. Use ConfigMaps or Secrets together with volumes and volume mounts for configuration files.
@@ -56,7 +56,7 @@ Refer to [Creating custom images](create-custom-images.md) for instructions on h
 
 ## Use init containers for plugins installation
 
-The following example describes option 2, using a repository plugin. To install the plugin before the Elasticsearch nodes start, use an init container to run the [plugin installation tool](elasticsearch://reference/elasticsearch-plugins/installation.md).
+The following example describes option 2, using a repository plugin. To install the plugin before the {{es}} nodes start, use an init container to run the [plugin installation tool](elasticsearch://reference/elasticsearch-plugins/installation.md).
 
 ```yaml
 spec:
@@ -107,7 +107,7 @@ To install custom configuration files you can:
 1. Add the configuration data into a ConfigMap or Secret.
 2. Use volumes and volume mounts in your manifest to mount the contents of the ConfigMap or Secret as files in your {{es}} nodes.
 
-The next example shows how to add a synonyms file for the [synonym token filter](elasticsearch://reference/text-analysis/analysis-synonym-tokenfilter.md) in Elasticsearch. But you can **use the same approach for any kind of file you want to mount into the configuration directory of Elasticsearch**, like adding CA certificates of external systems.
+The next example shows how to add a synonyms file for the [synonym token filter](elasticsearch://reference/text-analysis/analysis-synonym-tokenfilter.md) in {{es}}. But you can **use the same approach for any kind of file you want to mount into the configuration directory of Elasticsearch**, like adding CA certificates of external systems.
 
 1. Create the ConfigMap or Secret with the data:
 
@@ -123,7 +123,7 @@ kubectl create configmap synonyms -n <namespace> --from-file=my-synonyms.txt=syn
 Create the ConfigMap or Secret in the same namespace where your {{es}} cluster runs.
 ::::
 
-2. Declare the ConfigMap as a volume and mount it in the Elasticsearch containers.
+2. Declare the ConfigMap as a volume and mount it in the {{es}} containers.
 
 In this example, modify your {{es}} manifest to mount the contents of the `synonyms` ConfigMap into `/usr/share/elasticsearch/config/dictionaries` on the {{es}} nodes.
 
@@ -145,7 +145,7 @@ spec:
             name: synonyms <4>
 ```
 
-1. Elasticsearch runs by convention in a container called `elasticsearch`. Do not change that value.
+1. {{es}} runs by convention in a container called `elasticsearch`. Do not change that value.
 2. Use always a path under `/usr/share/elasticsearch/config`.
 3. Use `secret` instead of `configMap` if you used a secret to store the data.
 4. The ConfigMap name must be the same as the ConfigMap created in the previous step.

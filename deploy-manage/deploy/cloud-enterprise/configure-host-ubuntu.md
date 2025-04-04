@@ -63,12 +63,12 @@ Docker 25 and higher are not compatible with ECE 3.7.
 
 ## Set up XFS quotas [ece-xfs-setup-ubuntu]
 
-XFS is required to support disk space quotas for Elasticsearch data directories. Some Linux distributions such as RHEL and Rocky Linux already provide XFS as the default file system. On Ubuntu, you need to set up an XFS file system and have quotas enabled.
+XFS is required to support disk space quotas for {{es}} data directories. Some Linux distributions such as RHEL and Rocky Linux already provide XFS as the default file system. On Ubuntu, you need to set up an XFS file system and have quotas enabled.
 
-Disk space quotas set a limit on the amount of disk space an Elasticsearch cluster node can use. Currently, quotas are calculated by a static ratio of 1:32, which means that for every 1 GB of RAM a cluster is given, a cluster node is allowed to consume 32 GB of disk space.
+Disk space quotas set a limit on the amount of disk space an {{es}} cluster node can use. Currently, quotas are calculated by a static ratio of 1:32, which means that for every 1 GB of RAM a cluster is given, a cluster node is allowed to consume 32 GB of disk space.
 
 ::::{note}
-Using LVM, `mdadm`, or a combination of the two for block device management is possible, but the configuration is not covered here, and it is not supported by Elastic Cloud Enterprise.
+Using LVM, `mdadm`, or a combination of the two for block device management is possible, but the configuration is not covered here, and it is not supported by {{ece}}.
 ::::
 
 
@@ -91,7 +91,7 @@ You must use XFS and have quotas enabled on all allocators, otherwise disk usage
     sudo install -o $USER -g $USER -d -m 700 /mnt/data
     ```
 
-3. Add an entry to the `/etc/fstab` file for the new XFS volume. The default filesystem path used by Elastic Cloud Enterprise is `/mnt/data`.
+3. Add an entry to the `/etc/fstab` file for the new XFS volume. The default filesystem path used by {{ece}} is `/mnt/data`.
 
     ```sh
     /dev/xvdg1	/mnt/data	xfs	defaults,nofail,x-systemd.automount,prjquota,pquota  0 2
@@ -136,7 +136,7 @@ You must use XFS and have quotas enabled on all allocators, otherwise disk usage
     vm.max_map_count=262144
     # enable forwarding so the Docker networking works as expected
     net.ipv4.ip_forward=1
-    # Decrease the maximum number of TCP retransmissions to 5 as recommended for Elasticsearch TCP retransmission timeout.
+    # Decrease the maximum number of TCP retransmissions to 5 as recommended for {{es}} TCP retransmission timeout.
     # See https://www.elastic.co/guide/en/elasticsearch/reference/current/system-config-tcpretries.html
     net.ipv4.tcp_retries2=5
     # Make sure the host doesn't swap too early
@@ -145,7 +145,7 @@ You must use XFS and have quotas enabled on all allocators, otherwise disk usage
     ```
 
     ::::{important}
-    The `net.ipv4.tcp_retries2` setting applies to all TCP connections and affects the reliability of communication with systems other than Elasticsearch clusters too. If your clusters communicate with external systems over a low quality network then you may need to select a higher value for `net.ipv4.tcp_retries2`.
+    The `net.ipv4.tcp_retries2` setting applies to all TCP connections and affects the reliability of communication with systems other than {{es}} clusters too. If your clusters communicate with external systems over a low quality network then you may need to select a higher value for `net.ipv4.tcp_retries2`.
     ::::
 
 
@@ -157,7 +157,7 @@ You must use XFS and have quotas enabled on all allocators, otherwise disk usage
 
 4. Adjust the system limits.
 
-    Add the following configuration values to the `/etc/security/limits.conf` file. These values are derived from our experience with the Elastic Cloud hosted offering and should be used for Elastic Cloud Enterprise as well.
+    Add the following configuration values to the `/etc/security/limits.conf` file. These values are derived from our experience with the {{ecloud}} hosted offering and should be used for {{ece}} as well.
 
     ::::{tip}
     If you are using a user name other than `elastic`, adjust the configuration values accordingly.
@@ -311,4 +311,4 @@ You can specify `--log-opt max-size` and `--log-opt max-file` to define the Dock
 
     If the command returns `Docker Root Dir: /var/lib/docker`, then you need to troubleshoot the previous configuration steps until the Docker settings are applied successfully before continuing with the installation process. For more information, check [Custom Docker daemon options](https://docs.docker.com/engine/admin/systemd/#/custom-docker-daemon-options) in the Docker documentation.
 
-8. Repeat these steps on other hosts that you want to use with Elastic Cloud Enterprise or follow the steps in the next section to start installing Elastic Cloud Enterprise.
+8. Repeat these steps on other hosts that you want to use with {{ece}} or follow the steps in the next section to start installing {{ece}}.

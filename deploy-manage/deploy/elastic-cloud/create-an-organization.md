@@ -30,7 +30,7 @@ $$$general-sign-up-trial-what-is-included-in-my-trial$$$
 
 To sign up:
 
-1. Go to the [Elastic Cloud Sign Up](https://cloud.elastic.co/registration?page=docs&placement=docs-body) page.
+1. Go to the [{{ecloud}} Sign Up](https://cloud.elastic.co/registration?page=docs&placement=docs-body) page.
 2. Choose one of the available sign up methods. You can register with your email address and a password, use a Google or Microsoft account, or [subscribe from a Marketplace](../../../deploy-manage/deploy/elastic-cloud/subscribe-from-marketplace.md).
 
 :::{note}
@@ -39,7 +39,7 @@ You can only belong to one {{ecloud}} organization at a time. If you want to cre
 
 When your first sign up, you create an organization and start with a trial license.
 
-This organization is the umbrella for all of your Elastic Cloud resources, users, and account settings. Every organization has a unique identifier. Bills are invoiced according to the billing contact and details that you set for your organization. For more details on how to manage your organization, refer to [](/deploy-manage/cloud-organization.md).
+This organization is the umbrella for all of your {{ecloud}} resources, users, and account settings. Every organization has a unique identifier. Bills are invoiced according to the billing contact and details that you set for your organization. For more details on how to manage your organization, refer to [](/deploy-manage/cloud-organization.md).
 
 
 ## Trial information [general-sign-up-trial-what-is-included-in-my-trial]
@@ -87,26 +87,26 @@ For more information, check the [{{ech}} documentation](cloud-hosted.md).
 
 **Remove limitations**
 
-Subscribe to [Elastic Cloud](/deploy-manage/cloud-organization/billing/add-billing-details.md) for the following benefits:
+Subscribe to [{{ecloud}}](/deploy-manage/cloud-organization/billing/add-billing-details.md) for the following benefits:
 
 * Increased memory or storage for deployment components, such as {{es}} clusters, machine learning nodes, and APM server.
 * As many deployments and projects as you need.
 * Third availability zone for your deployments.
 * Access to additional features, such as cross-cluster search and cross-cluster replication.
 
-You can subscribe to Elastic Cloud at any time during your trial. [Billing](../../../deploy-manage/cloud-organization/billing/serverless-project-billing-dimensions.md) starts when you subscribe. To maximize the benefits of your trial, subscribe at the end of the free period. To monitor charges, anticipate future costs, and adjust your usage, check your [account usage](/deploy-manage/cloud-organization/billing/monitor-analyze-usage.md) and [billing history](/deploy-manage/cloud-organization/billing/view-billing-history.md).
+You can subscribe to {{ecloud}} at any time during your trial. [Billing](../../../deploy-manage/cloud-organization/billing/serverless-project-billing-dimensions.md) starts when you subscribe. To maximize the benefits of your trial, subscribe at the end of the free period. To monitor charges, anticipate future costs, and adjust your usage, check your [account usage](/deploy-manage/cloud-organization/billing/monitor-analyze-usage.md) and [billing history](/deploy-manage/cloud-organization/billing/view-billing-history.md).
 
 
 ### Get started with your trial [general-sign-up-trial-how-do-i-get-started-with-my-trial]
 
-Start by checking out some common approaches for [moving data into Elastic Cloud](https://www.elastic.co/guide/en/cloud/current/ec-cloud-ingest-data.html).
+Start by checking out some common approaches for [moving data into {{ecloud}}](https://www.elastic.co/guide/en/cloud/current/ec-cloud-ingest-data.html).
 
 
 ### Maintain access to your trial projects and data [general-sign-up-trial-what-happens-at-the-end-of-the-trial]
 
-When your trial expires, the deployment and project that you created during the trial period are suspended until you subscribe to [Elastic Cloud](/deploy-manage/cloud-organization/billing/add-billing-details.md). When you subscribe, you are able to resume your deployment and serverless project, and regain access to the ingested data. After your trial expires, you have 30 days to subscribe. After 30 days, your deployment, serverless project, and ingested data are permanently deleted.
+When your trial expires, the deployment and project that you created during the trial period are suspended until you subscribe to [{{ecloud}}](/deploy-manage/cloud-organization/billing/add-billing-details.md). When you subscribe, you are able to resume your deployment and serverless project, and regain access to the ingested data. After your trial expires, you have 30 days to subscribe. After 30 days, your deployment, serverless project, and ingested data are permanently deleted.
 
-If you’re interested in learning more ways to subscribe to Elastic Cloud, don’t hesitate to [contact us](https://www.elastic.co/contact).
+If you’re interested in learning more ways to subscribe to {{ecloud}}, don’t hesitate to [contact us](https://www.elastic.co/contact).
 
 
 ## How do I get help? [ec_how_do_i_get_help]

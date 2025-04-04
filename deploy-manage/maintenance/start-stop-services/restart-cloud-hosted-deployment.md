@@ -23,7 +23,7 @@ Note that if you are looking to restart {{es}} to clear out [deployment activity
 
 ## Restart an {{es}} resource by using an API [ec_restart_an_elasticsearch_resource]
 
-Restart an Elasticsearch resource by calling the following API request:
+Restart an {{es}} resource by calling the following API request:
 
 ```sh
 curl -XPOST \

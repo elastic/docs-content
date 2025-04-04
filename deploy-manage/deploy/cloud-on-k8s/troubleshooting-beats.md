@@ -10,7 +10,7 @@ mapped_pages:
 
 ## Beat Pods are crashing when kibanaRef is specified [k8s-beat-beat-pods-are-crashing-when-kibanaref-is-specified]
 
-When `kibanaRef` is specified, Beat tries to connect to the Kibana instance. If it’s unable to do so, the Beat process exits and the Pod restarts. This may happen when Kibana is not yet up or when a Beat user is not yet created in Elasticsearch. The Pod may restart a few times when it is first deployed. Afterwards, the Beat should run successfully.
+When `kibanaRef` is specified, Beat tries to connect to the {{kib}} instance. If it’s unable to do so, the Beat process exits and the Pod restarts. This may happen when {{kib}} is not yet up or when a Beat user is not yet created in {{es}}. The Pod may restart a few times when it is first deployed. Afterwards, the Beat should run successfully.
 
 
 ## Configuration containing key: null is malformed [k8s-beat-configuration-containing-key-null-is-malformed]

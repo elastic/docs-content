@@ -75,7 +75,7 @@ spec:
 
 ## Provide your own certificate [k8s-logstash-http-custom-tls]
 
-If you want to use your own certificate, the required configuration is similar to Elasticsearch. Configure the certificate in `api` Service. Check [Custom HTTP certificate](../../security/secure-cluster-communications.md).
+If you want to use your own certificate, the required configuration is similar to {{es}}. Configure the certificate in `api` Service. Check [Custom HTTP certificate](../../security/secure-cluster-communications.md).
 
 ```yaml
 apiVersion: logstash.k8s.elastic.co/v1alpha1

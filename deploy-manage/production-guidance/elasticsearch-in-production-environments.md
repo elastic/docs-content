@@ -1,5 +1,5 @@
 ---
-navigation_title: Run Elasticsearch in production
+navigation_title: Run {{es}} in production
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/scalability.html
   - https://www.elastic.co/guide/en/cloud/current/ec-planning.html

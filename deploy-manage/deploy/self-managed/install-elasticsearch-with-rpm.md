@@ -57,7 +57,7 @@ Create a file called `elasticsearch.repo` in the `/etc/yum.repos.d/` directory f
 
 ```ini
 [elasticsearch]
-name=Elasticsearch repository for 9.x packages
+name={{es}} repository for 9.x packages
 baseurl=https://artifacts.elastic.co/packages/9.x/yum
 gpgcheck=1
 gpgkey=https://artifacts.elastic.co/GPG-KEY-elasticsearch

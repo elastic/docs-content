@@ -8,7 +8,7 @@ applies_to:
 
 # Minio on-premise repository [ece-configuring-minio]
 
-Minio is a popular, open-source distributed object storage server compatible with the Amazon AWS S3 API. You can use it with Elastic Cloud Enterprise installations when you want to store your Elasticsearch snapshots locally.
+Minio is a popular, open-source distributed object storage server compatible with the Amazon AWS S3 API. You can use it with {{ece}} installations when you want to store your {{es}} snapshots locally.
 
 
 ## Create a test environment [ece-minio-test]
@@ -30,7 +30,7 @@ There are a number of different ways of orchestrating the Minio deployment (Dock
 
 We recommend:
 
-* Using a single Minio endpoint with the Elastic Cloud Enterprise installation, to simplify repository management.
+* Using a single Minio endpoint with the {{ece}} installation, to simplify repository management.
 * Securing access to the Minio endpoint with TLS.
 
 :::{image} /deploy-manage/images/cloud-enterprise-ece-minio-large-arch.png
@@ -41,7 +41,7 @@ We recommend:
 
 ## Create an offline installation [ece-minio-offline-installation]
 
-If you are installing MinIO offline, the process is very similar to the [offline installation of Elastic Cloud Enterprise](../../deploy/cloud-enterprise/air-gapped-install.md). There are two options:
+If you are installing MinIO offline, the process is very similar to the [offline installation of {{ece}}](../../deploy/cloud-enterprise/air-gapped-install.md). There are two options:
 
 * Use a private Docker repository and [install the Minio images in the private repository](https://docs.docker.com/registry/deploying/).
 * Download the Minio images from an internet-connected machine, then use docker save to bundle the images into tar files. Copy the TAR files to the target hosts and use `docker load` to install.
@@ -53,14 +53,14 @@ Gather the following after your installation:
 * Endpoint URL
 
 ::::{tip}
-Minio might report various Endpoint URLs, be sure to choose the one that will be routable from your Elasticsearch Docker containers.
+Minio might report various Endpoint URLs, be sure to choose the one that will be routable from your {{es}} Docker containers.
 ::::
 
 
 
 ## Create the S3 bucket [ece-minio-create-s3-bucket]
 
-How you create the AWS S3 bucket depends on what version of Elasticsearch you are using:
+How you create the AWS S3 bucket depends on what version of {{es}} you are using:
 
 * For version 7.x:
 
@@ -75,14 +75,14 @@ Don’t forget to make the bucket name DNS-friendly, for example no underscores 
 
 
 
-## Elastic Cloud Enterprise configuration [ece-install-with-minio]
+## {{ece}} configuration [ece-install-with-minio]
 
 You can configure existing deployments, or create new ones, with the following changes to use Minio storage.
 
 
-### Add the repository to Elastic Cloud Enterprise [ece-add-repository]
+### Add the repository to {{ece}} [ece-add-repository]
 
-You must add the new repository to Elastic Cloud Enterprise before it can be used with your Elasticsearch clusters.
+You must add the new repository to {{ece}} before it can be used with your {{es}} clusters.
 
 1. [Log into the Cloud UI](../../deploy/cloud-enterprise/log-into-cloud-ui.md).
 2. From the **Platform** menu, select **Repositories**.
@@ -121,18 +121,18 @@ The Minio repository is now available from the drop-down list of repositories wh
 
 ### Additional settings for 6.x clusters [ece-6.x-settings]
 
-For Elasticsearch versions 6.0 and later, after selecting the repository, you also need to set your **User Settings** YAML to specify the endpoint and protocol. For example:
+For {{es}} versions 6.0 and later, after selecting the repository, you also need to set your **User Settings** YAML to specify the endpoint and protocol. For example:
 
 ```
 s3.client.default.endpoint: "<your Minio endpoint>:9000"
 s3.client.default.protocol: http
 ```
-Check the [Elasticsearch S3 plugin details](https://www.elastic.co/guide/en/elasticsearch/plugins/6.8/repository-s3-client.html) for more information.
+Check the [{{es}} S3 plugin details](https://www.elastic.co/guide/en/elasticsearch/plugins/6.8/repository-s3-client.html) for more information.
 
 
-## Upgrade from 5.x to 6.x Elasticsearch clusters [ece-upgrade-minio]
+## Upgrade from 5.x to 6.x {{es}} clusters [ece-upgrade-minio]
 
-The configuration options for the Elasticsearch S3 repository plugin have changed from 5.x to 6.x versions and you must copy the endpoint and protocol values from your repository configuration to your **User Settings** YAML before you upgrade.
+The configuration options for the {{es}} S3 repository plugin have changed from 5.x to 6.x versions and you must copy the endpoint and protocol values from your repository configuration to your **User Settings** YAML before you upgrade.
 
 
 ## Verify snapshots [ece-minio-verify-snapshot]
@@ -148,10 +148,10 @@ As an extra verification step, you can restore a cluster using the snapshots tha
 
         Narrow the list by name, ID, or choose from several other filters. To further define the list, use a combination of filters.
 
-    2. From your deployment menu, go to the **Edit** page then go to the bottom of the page and select **advanced Elasticsearch configuration**.
+    2. From your deployment menu, go to the **Edit** page then go to the bottom of the page and select **advanced {{es}} configuration**.
     3. Copy the JSON format under the **Deployment configuration** heading.
 
-3. Create a new Elasticsearch cluster as your target.
+3. Create a new {{es}} cluster as your target.
 4. On the new cluster, open the advanced cluster configuration editor. In the transient section, add the `restore_snapshot` settings to the plan.
 
     ```json

@@ -1,6 +1,6 @@
 # Orchestrate other Elastic applications
 
-This section explains how to deploy and configure various Elastic Stack applications within Elastic Cloud on Kubernetes (ECK).
+This section explains how to deploy and configure various Elastic Stack applications within {{eck}} (ECK).
 
 ::::{tip}
 This content applies to APM Server, Beats, Elastic Agent, Elastic Maps Server, and Logstash applications. To orchestrate an {{es}} cluster or {{kib}}, refer to [](./manage-deployments.md).

@@ -79,7 +79,7 @@ Document-level and field-level security affords you even more granularity when i
 
 ## {{kib}} privileges [custom-roles-kib-privileges]
 
-When you create a custom role, click **Add Kibana privilege** to grant access to specific features. The features that are available vary depending on the project type. For example, in {{es-serverless}}:
+When you create a custom role, click **Add {{kib}} privilege** to grant access to specific features. The features that are available vary depending on the project type. For example, in {{es-serverless}}:
 
 :::{image} /deploy-manage/images/serverless-custom-roles-kibana-privileges.png
 :alt: Create a custom role and define {{kib}} privileges

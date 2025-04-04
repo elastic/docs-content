@@ -11,7 +11,7 @@ applies_to:
 
 # Tune for disk usage [tune-for-disk-usage]
 
-This page provides strategies to reduce the storage footprint of your Elasticsearch indices. Disk usage is influenced by field mappings, index settings, document structure, and how you manage segments and shards. Use these recommendations to improve compression, eliminate unnecessary data, and optimize storage for your specific use case.
+This page provides strategies to reduce the storage footprint of your {{es}} indices. Disk usage is influenced by field mappings, index settings, document structure, and how you manage segments and shards. Use these recommendations to improve compression, eliminate unnecessary data, and optimize storage for your specific use case.
 
 ## Disable the features you do not need [_disable_the_features_you_do_not_need]
 
@@ -81,7 +81,7 @@ The `_source` and stored fields can easily take a non negligible amount of disk 
 
 ## Force merge [_force_merge]
 
-Indices in Elasticsearch are stored in one or more shards. Each shard is a Lucene index and made up of one or more segments - the actual files on disk. Larger segments are more efficient for storing data.
+Indices in {{es}} are stored in one or more shards. Each shard is a Lucene index and made up of one or more segments - the actual files on disk. Larger segments are more efficient for storing data.
 
 The [force merge API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-forcemerge) can be used to reduce the number of segments per shard. In many cases, the number of segments can be reduced to one per shard by setting `max_num_segments=1`.
 
@@ -103,7 +103,7 @@ The type that you pick for [numeric data](elasticsearch://reference/elasticsearc
 
 ## Use index sorting to colocate similar documents [_use_index_sorting_to_colocate_similar_documents]
 
-When Elasticsearch stores `_source`, it compresses multiple documents at once in order to improve the overall compression ratio. For instance it is very common that documents share the same field names, and quite common that they share some field values, especially on fields that have a low cardinality or a [zipfian](https://en.wikipedia.org/wiki/Zipf%27s_law) distribution.
+When {{es}} stores `_source`, it compresses multiple documents at once in order to improve the overall compression ratio. For instance it is very common that documents share the same field names, and quite common that they share some field values, especially on fields that have a low cardinality or a [zipfian](https://en.wikipedia.org/wiki/Zipf%27s_law) distribution.
 
 By default documents are compressed together in the order that they are added to the index. If you enabled [index sorting](elasticsearch://reference/elasticsearch/index-settings/sorting.md) then instead they are compressed in sorted order. Sorting documents with similar structure, fields, and values together should improve the compression ratio.
 

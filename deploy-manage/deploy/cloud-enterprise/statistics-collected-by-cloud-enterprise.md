@@ -6,11 +6,11 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-phone-home.html
 ---
 
-# Statistics collected by Elastic Cloud Enterprise [ece-phone-home]
+# Statistics collected by {{ece}} [ece-phone-home]
 
-When you [log into the Cloud UI](log-into-cloud-ui.md) for the first time, you are asked to agree to the software license agreement and can opt out of sharing some basic usage statistics about Elastic Cloud Enterprise with Elastic. These statistics are never shared with anyone else. If you are unsure about opting out, the following information describes what we collect.
+When you [log into the Cloud UI](log-into-cloud-ui.md) for the first time, you are asked to agree to the software license agreement and can opt out of sharing some basic usage statistics about {{ece}} with Elastic. These statistics are never shared with anyone else. If you are unsure about opting out, the following information describes what we collect.
 
-For each Elastic Cloud Enterprise installation, we collect:
+For each {{ece}} installation, we collect:
 
 * Installation ID
 * License information
@@ -20,11 +20,11 @@ For each Elastic Cloud Enterprise installation, we collect:
 * The total RAM used by allocators
 * The availability zone each allocator belongs to
 * The total RAM available to and the total RAM used by each availability zone
-* The number of Elasticsearch clusters
+* The number of {{es}} clusters
 
-For each Elasticsearch cluster, we collect:
+For each {{es}} cluster, we collect:
 
-* Whether a cluster has a Kibana instance associated with it
+* Whether a cluster has a {{kib}} instance associated with it
 * Whether monitoring is configured
 
 Sharing these statistics with us can help us understand how you use our product better and can help us improve the product.

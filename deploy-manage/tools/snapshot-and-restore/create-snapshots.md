@@ -56,7 +56,7 @@ The guide also provides tips for creating dedicated cluster state snapshots and 
 {{slm-cap}} ({{slm-init}}) is the easiest way to regularly back up a cluster. An {{slm-init}} policy automatically takes snapshots on a preset schedule. The policy can also delete snapshots based on retention rules you define.
 
 ::::{tip}
-Elastic Cloud Hosted deployments automatically include the `cloud-snapshot-policy` {{slm-init}} policy. Elastic Cloud Hosted uses this policy to take periodic snapshots of your cluster. For more information, see the [Manage snapshot repositories in Elastic Cloud Hosted documentation](/deploy-manage/tools/snapshot-and-restore/elastic-cloud-hosted.md).
+{{ech}} deployments automatically include the `cloud-snapshot-policy` {{slm-init}} policy. {{ech}} uses this policy to take periodic snapshots of your cluster. For more information, see the [Manage snapshot repositories in {{ech}} documentation](/deploy-manage/tools/snapshot-and-restore/elastic-cloud-hosted.md).
 ::::
 
 ### {{slm-init}} security [slm-security]
@@ -282,7 +282,7 @@ The API returns:
     },
     {
       "name": "kibana",
-      "description": "Manages Kibana configuration and reports"
+      "description": "Manages {{kib}} configuration and reports"
     },
     {
       "name": "security",

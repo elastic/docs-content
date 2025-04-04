@@ -1,5 +1,5 @@
 ---
-navigation_title: "Kibana authentication"
+navigation_title: "{{kib}} authentication"
 applies_to:
   deployment:
     ess:

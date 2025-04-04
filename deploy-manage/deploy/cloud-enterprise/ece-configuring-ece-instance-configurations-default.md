@@ -8,7 +8,7 @@ mapped_pages:
 
 # Default instance configurations [ece-configuring-ece-instance-configurations-default]
 
-Elastic Cloud Enterprise ships with a number of default instance configurations:
+{{ece}} ships with a number of default instance configurations:
 
 | Instance configuration | Instance types / node types | Default size | Memory sizes | Memory to storage multiplier |
 | --- | --- | --- | --- | --- |
@@ -21,7 +21,7 @@ Elastic Cloud Enterprise ships with a number of default instance configurations:
 | `data.highstorage` | Data, Master, Coordinating | 2 GB | 1, 2, 4, 8, 16, 32, 64 | 64 |
 | `enterprise.search` | Application server, Connector, Worker | 4 GB | 2, 4, 8 | 2 |
 | `integrations.server` | Integrations Server | 512 MB | 512, 1, 2, 4, 8 | 4 |
-| `kibana` | Kibana | 1 GB | 1, 2, 4, 8 | 4 |
+| `kibana` | {{kib}} | 1 GB | 1, 2, 4, 8 | 4 |
 | `master` | Master | 1 GB | 1, 2, 4, 8, 16, 32, 64 | 4 |
 | `ml` | Machine Learning | 1 GB | 1, 2, 4, 8, 16, 32, 64 | 4 |
 

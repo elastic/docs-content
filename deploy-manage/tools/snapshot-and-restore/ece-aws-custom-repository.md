@@ -8,7 +8,7 @@ applies_to:
 
 # Configure a snapshot repository using AWS S3 [ece-aws-custom-repository]
 
-To store Elasticsearch snapshots in AWS S3, you need to configure a snapshot repository in Elastic Cloud Enterprise (ECE). This guide explains how to add an Amazon S3 repository using the Cloud UI and provides details on required settings and advanced configurations.
+To store {{es}} snapshots in AWS S3, you need to configure a snapshot repository in {{ece}} (ECE). This guide explains how to add an Amazon S3 repository using the Cloud UI and provides details on required settings and advanced configurations.
 
 To add a snapshot repository:
 

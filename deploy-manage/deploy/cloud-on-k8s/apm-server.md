@@ -10,13 +10,13 @@ mapped_pages:
 
 This section describes how to deploy, configure and access an APM Server with ECK.
 
-* [Use an Elasticsearch cluster managed by ECK](use-an-elasticsearch-cluster-managed-by-eck.md)
+* [Use an {{es}} cluster managed by ECK](use-an-elasticsearch-cluster-managed-by-eck.md)
 * [Advanced configuration](advanced-configuration.md)
 
     * [Use APM Agent central configuration](advanced-configuration.md#k8s-apm-agent-central-configuration)
     * [Customize the APM Server configuration](advanced-configuration.md#k8s-apm-customize-configuration)
     * [APM Secrets keystore for secure settings](advanced-configuration.md#k8s-apm-secure-settings)
-    * [Reference an existing Elasticsearch cluster](advanced-configuration.md#k8s-apm-existing-es)
+    * [Reference an existing {{es}} cluster](advanced-configuration.md#k8s-apm-existing-es)
     * [TLS Certificates](advanced-configuration.md#k8s-apm-tls)
 
 * [Connect to the APM Server](connect-to-apm-server.md)

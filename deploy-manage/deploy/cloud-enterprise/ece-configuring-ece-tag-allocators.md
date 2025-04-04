@@ -19,7 +19,7 @@ Allocator tags are a simple way of characterizing the hardware resources that yo
 
 You should tag your allocators under the following circumstances:
 
-* After you upgrade to or install Elastic Cloud Enterprise 2.0 or later, to characterize what kind of hardware you have available in your installation.
+* After you upgrade to or install {{ece}} 2.0 or later, to characterize what kind of hardware you have available in your installation.
 * Before you create your own instance configurations and your own deployment templates, to indicate what hardware resources you can work with.
 * After you add new allocators to your installation, to indicate what kind of hardware resources they provide.
 

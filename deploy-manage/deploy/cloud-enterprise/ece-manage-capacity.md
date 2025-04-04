@@ -8,7 +8,7 @@ mapped_pages:
 
 # Manage your allocators capacity [ece-manage-capacity]
 
-In {{ece}} (ECE), every host is a runner. Depending on the size of your platform, runners can have [one or more roles](ece-roles.md): Coordinator, director, proxy, and allocator. While planning the capacity of your ECE installation, you have to properly size the capacity for all roles. However, the allocator role deserves particular attention, as it hosts the Elasticsearch, Kibana, and APM nodes, and the relevant services.
+In {{ece}} (ECE), every host is a runner. Depending on the size of your platform, runners can have [one or more roles](ece-roles.md): Coordinator, director, proxy, and allocator. While planning the capacity of your ECE installation, you have to properly size the capacity for all roles. However, the allocator role deserves particular attention, as it hosts the {{es}}, {{kib}}, and APM nodes, and the relevant services.
 
 This section focuses on the allocator role, and explains how to plan its capacity in terms of memory, CPU, `processors` setting, and storage.
 
@@ -85,15 +85,15 @@ Those percentages represent the upper limit of the % of the total CPU resources 
 
 In addition to the [CPU quotas](#ece-alloc-cpu), the `processors` setting also plays a relevant role.
 
-The allocated `processors` setting originates from Elasticsearch and is responsible for calculating your [thread pools](elasticsearch://reference/elasticsearch/configuration-reference/thread-pool-settings.md#node.processors). While the CPU quota defines the percentage of the total CPU resources of an allocator that are assigned to an instance, the allocated `processors` define how the thread pools are calculated in Elasticsearch, and therefore how many concurrent search and indexing requests an instance can process. In other words, the CPU ratio defines how fast a single task can be completed, while the `processors` setting defines how many different tasks can be completed at the same time.
+The allocated `processors` setting originates from {{es}} and is responsible for calculating your [thread pools](elasticsearch://reference/elasticsearch/configuration-reference/thread-pool-settings.md#node.processors). While the CPU quota defines the percentage of the total CPU resources of an allocator that are assigned to an instance, the allocated `processors` define how the thread pools are calculated in {{es}}, and therefore how many concurrent search and indexing requests an instance can process. In other words, the CPU ratio defines how fast a single task can be completed, while the `processors` setting defines how many different tasks can be completed at the same time.
 
-We rely on Elasticsearch and the `-XX:ActiveProcessorCount` JVM setting to automatically detect the allocated `processors`.
+We rely on {{es}} and the `-XX:ActiveProcessorCount` JVM setting to automatically detect the allocated `processors`.
 
-In earlier versions of ECE and Elasticsearch, the [Elasticsearch processors](elasticsearch://reference/elasticsearch/configuration-reference/thread-pool-settings.md#node.processors) setting was used to configure the allocated `processors` according to the following formula:
+In earlier versions of ECE and {{es}}, the [{{es}} processors](elasticsearch://reference/elasticsearch/configuration-reference/thread-pool-settings.md#node.processors) setting was used to configure the allocated `processors` according to the following formula:
 
 `Math.min(16,Math.max(2,(16*instanceCapacity*1.0/1024/64).toInt))`
 
-The following table gives an overview of the allocated `processors` that are used to calculate the Elasticsearch [thread pools](elasticsearch://reference/elasticsearch/configuration-reference/thread-pool-settings.md) based on the preceding formula:
+The following table gives an overview of the allocated `processors` that are used to calculate the {{es}} [thread pools](elasticsearch://reference/elasticsearch/configuration-reference/thread-pool-settings.md) based on the preceding formula:
 
 | instance size | vCPU |
 | --- | --- |
@@ -104,14 +104,14 @@ The following table gives an overview of the allocated `processors` that are use
 | 16384 | 4 |
 | 32768 | 8 |
 
-This table also provides a rough indication of what the auto-detected value could be on newer versions of ECE and Elasticsearch.
+This table also provides a rough indication of what the auto-detected value could be on newer versions of ECE and {{es}}.
 
 
 ## Storage [ece-alloc-storage]
 
 ECE has specific [hardware prerequisites](ece-hardware-prereq.md) for storage. Disk space is consumed by system logs, container overhead, and deployment data.
 
-The main factor for selecting a disk quota is the deployment data, that is, data from your Elasticsearch, Kibana, and APM nodes. The biggest portion of data is consumed by the Elasticsearch nodes.
+The main factor for selecting a disk quota is the deployment data, that is, data from your {{es}}, {{kib}}, and APM nodes. The biggest portion of data is consumed by the {{es}} nodes.
 
 ::::{note}
 ECE uses [XFS](ece-software-prereq.md#ece-xfs) to enforce specific disk space quotas to control the disk consumption for the deployment nodes running on your allocator.

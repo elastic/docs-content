@@ -15,7 +15,7 @@ navigation_title: "Native"
 
 # Native user authentication [native-realm]
 
-The easiest way to manage and authenticate users is with the internal `native` realm. You can use [Elasticsearch REST APIs](#native-users-api) or [Kibana](#managing-native-users) to add and remove users, assign user roles, and manage user passwords.
+The easiest way to manage and authenticate users is with the internal `native` realm. You can use [{{es}} REST APIs](#native-users-api) or [Kibana](#managing-native-users) to add and remove users, assign user roles, and manage user passwords.
 
 In self-managed {{es}} clusters, you can also reset passwords for users in the native realm [using the command line](#reset-pw-cmd-line).
 
@@ -80,7 +80,7 @@ Elastic enables you to easily manage users in {{kib}} on the **Stack Management 
 
 ## Manage native users using the `user` API [native-users-api]
 
-You can manage users through the Elasticsearch `user` API.
+You can manage users through the {{es}} `user` API.
 
 For example, you can change a user's password:
 

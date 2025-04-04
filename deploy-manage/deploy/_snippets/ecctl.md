@@ -1,4 +1,4 @@
-Elastic Cloud Control (ECCTL) is the command-line interface for {{ecloud}} APIs. It wraps typical operations commonly needed by operators within a single command line tool.
+{{ecloud}} Control (ECCTL) is the command-line interface for {{ecloud}} APIs. It wraps typical operations commonly needed by operators within a single command line tool.
 
 ECCTL provides the following benefits: 
 

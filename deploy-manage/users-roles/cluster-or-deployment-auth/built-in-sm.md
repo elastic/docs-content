@@ -47,7 +47,7 @@ POST /_security/user/user1/_password
 
 ## Using the `user` API [native-users-api]
 
-You can manage users through the Elasticsearch `user` API.
+You can manage users through the {{es}} `user` API.
 
 For example, you can change a user's password:
 

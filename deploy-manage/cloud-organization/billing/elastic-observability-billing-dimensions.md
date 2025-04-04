@@ -15,7 +15,7 @@ Your monthly bill is based on the capabilities you use. When you use {{obs-serve
 * **Ingest** — Measured by the number of GB of log/event/info data that you send to your Observability project over the course of a month.
 * **Retention** — Measured by the total amount of ingested data stored in your Observability project.
 
-Data volumes for ingest and retention are based on the fully enriched normalized data size at the end of the ingest pipeline, before Elasticsearch compression is performed, and will be higher than the volumes traditionally reported by Elasticsearch index size. In addition, these volumes might be larger than those reported by cloud provider proxy logs for data going into Elasticsearch. This allows you to have flexibility in choosing your preferred ingest architecture for enrichment, whether it’s through Elastic Agent, Logstash, OpenTelemetry, or collectors — with no impact on the cost.
+Data volumes for ingest and retention are based on the fully enriched normalized data size at the end of the ingest pipeline, before {{es}} compression is performed, and will be higher than the volumes traditionally reported by {{es}} index size. In addition, these volumes might be larger than those reported by cloud provider proxy logs for data going into {{es}}. This allows you to have flexibility in choosing your preferred ingest architecture for enrichment, whether it’s through Elastic Agent, Logstash, OpenTelemetry, or collectors — with no impact on the cost.
 
 
 ## Synthetics [synthetics-billing]

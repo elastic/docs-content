@@ -12,7 +12,7 @@ applies_to:
 
 
 
-# Kibana alerting: performance and scaling [alerting-production-considerations]
+# {{kib}} alerting: performance and scaling [alerting-production-considerations]
 
 
 Alerting runs both rule checks and actions as persistent background tasks managed by the Task Manager.
@@ -62,7 +62,7 @@ This functionality is in technical preview and may be changed or removed in a fu
 ::::
 
 
-Alerts and actions log activity in a set of "event log" data streams, one per Kibana version, named `.kibana-event-log-{{VERSION}}`.  These data streams are configured with a lifecycle data retention of 90 days. This can be updated to other values via the standard data stream lifecycle APIs.  Note that the event log data contains the data shown in the alerting pages in {{kib}}, so reducing the data retention period will result in less data being available to view.
+Alerts and actions log activity in a set of "event log" data streams, one per {{kib}} version, named `.kibana-event-log-{{VERSION}}`.  These data streams are configured with a lifecycle data retention of 90 days. This can be updated to other values via the standard data stream lifecycle APIs.  Note that the event log data contains the data shown in the alerting pages in {{kib}}, so reducing the data retention period will result in less data being available to view.
 
 For more information on data stream lifecycle management, see: [Data stream lifecycle](../../manage-data/lifecycle/data-stream.md).
 

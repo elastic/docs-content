@@ -17,16 +17,16 @@ The `manage` cluster privilege is required to access the **Upgrade assistant**. 
 
 ## Feature set [_feature_set] 
 
-Some features of the Upgrade assistant are only needed when upgrading to a new major version. The feature set enabled by default are those for the very next version from the one Kibana currently runs on.
+Some features of the Upgrade assistant are only needed when upgrading to a new major version. The feature set enabled by default are those for the very next version from the one {{kib}} currently runs on.
 
 
 ## Deprecations [_deprecations] 
 
 The Upgrade assistant pulls information about deprecations from the following sources:
 
-* Elasticsearch Deprecation Info API
-* Elasticsearch deprecation logs
-* Kibana deprecations API
+* {{es}} Deprecation Info API
+* {{es}} deprecation logs
+* {{kib}} deprecations API
 
 For more information about Upgrade Assistant APIs, refer to [Upgrade Assistant APIs](https://www.elastic.co/guide/en/kibana/current/upgrade-assistant-api.html).
 

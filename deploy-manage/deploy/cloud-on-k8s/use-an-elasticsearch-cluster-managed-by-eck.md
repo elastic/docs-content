@@ -6,11 +6,11 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-apm-eck-managed-es.html
 ---
 
-# Use an Elasticsearch cluster managed by ECK [k8s-apm-eck-managed-es]
+# Use an {{es}} cluster managed by ECK [k8s-apm-eck-managed-es]
 
-Managing APM Server, Kibana and Elasticsearch with ECK allows a smooth and secured integration between the stack components. The output configuration of the APM Server is setup automatically to establish a trust relationship with Elasticsearch. Specifying the Kibana reference allows ECK to automatically configure the [Kibana endpoint](/solutions/observability/apps/configure-kibana-endpoint.md).
+Managing APM Server, {{kib}} and {{es}} with ECK allows a smooth and secured integration between the stack components. The output configuration of the APM Server is setup automatically to establish a trust relationship with {{es}}. Specifying the {{kib}} reference allows ECK to automatically configure the [{{kib}} endpoint](/solutions/observability/apps/configure-kibana-endpoint.md).
 
-1. To deploy an APM Server and connect it to the Elasticsearch cluster and Kibana instance you created in the [quickstart](deploy-an-orchestrator.md), apply the following specification:
+1. To deploy an APM Server and connect it to the {{es}} cluster and {{kib}} instance you created in the [quickstart](deploy-an-orchestrator.md), apply the following specification:
 
     ```yaml
     cat <<EOF | kubectl apply -f -
@@ -29,11 +29,11 @@ Managing APM Server, Kibana and Elasticsearch with ECK allows a smooth and secur
     EOF
     ```
 
-1. A reference to a Kibana instance is only required for APM Server versions 8.0.0 and later.
+1. A reference to a {{kib}} instance is only required for APM Server versions 8.0.0 and later.
 
 
 ::::{note}
-Starting with version 8.0.0 the following Kibana configuration is required to run APM Server
+Starting with version 8.0.0 the following {{kib}} configuration is required to run APM Server
 ::::
 
 
@@ -46,7 +46,7 @@ config:
     version: latest
 ```
 
-By default `elasticsearchRef` targets all nodes in your Elasticsearch cluster. If you want to direct traffic to specific nodes of your cluster, refer to [*Traffic Splitting*](requests-routing-to-elasticsearch-nodes.md) for more information and examples.
+By default `elasticsearchRef` targets all nodes in your {{es}} cluster. If you want to direct traffic to specific nodes of your cluster, refer to [*Traffic Splitting*](requests-routing-to-elasticsearch-nodes.md) for more information and examples.
 
 1. Monitor APM Server deployment.
 

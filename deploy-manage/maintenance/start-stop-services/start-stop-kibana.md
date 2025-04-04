@@ -6,7 +6,7 @@ applies_to:
      self:
 ---
 
-# Start and stop Kibana [start-stop]
+# Start and stop {{kib}} [start-stop]
 
 The method for starting and stopping {{kib}} varies depending on how you installed it.  If a password protected keystore is used, the environment variable `KBN_KEYSTORE_PASSPHRASE_FILE` can be used to point to a file containing the password, the environment variable `KEYSTORE_PASSWORD` can be defined, or you will be prompted to enter to enter the password on startup,
 
@@ -16,13 +16,13 @@ If you installed {{kib}} on Linux or Darwin with a `.tar.gz` package, you can st
 
 ### Run {{kib}} from the command line [run-kibana-from-command-line]
 
-Kibana can be started from the command line as follows:
+{{kib}} can be started from the command line as follows:
 
 ```sh
 ./bin/kibana
 ```
 
-By default, Kibana runs in the foreground, prints its logs to the standard output (`stdout`), and can be stopped by pressing **Ctrl-C**.
+By default, {{kib}} runs in the foreground, prints its logs to the standard output (`stdout`), and can be stopped by pressing **Ctrl-C**.
 
 If this is the first time you’re starting {{kib}}, this command generates a unique link in your terminal to enroll your {{kib}} instance with {{es}}.
 
@@ -41,13 +41,13 @@ If you installed {{kib}} on Windows with a `.zip` package, you can stop and star
 
 ### Run {{kib}} from the command line [_run_kib_from_the_command_line_2]
 
-Kibana can be started from the command line as follows:
+{{kib}} can be started from the command line as follows:
 
 ```sh
 .\bin\kibana.bat
 ```
 
-By default, Kibana runs in the foreground, prints its logs to `STDOUT`, and can be stopped by pressing **Ctrl-C**.
+By default, {{kib}} runs in the foreground, prints its logs to `STDOUT`, and can be stopped by pressing **Ctrl-C**.
 
 If this is the first time you’re starting {{kib}}, this command generates a unique link in your terminal to enroll your {{kib}} instance with {{es}}.
 

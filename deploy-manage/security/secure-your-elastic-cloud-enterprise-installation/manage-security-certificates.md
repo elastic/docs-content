@@ -8,7 +8,7 @@ mapped_pages:
 
 # Manage security certificates [ece-manage-certificates]
 
-During installation, Elastic Cloud Enterprise generates certificates so that you can connect to your installation securely. In order to connect securely, you must first download and trust the CA certificates generated during installation before issuing any requests to ECE. If your organization operates as its own certificate authority, you can provide your certificates for ECE to avoid a security warning when connecting to the Cloud UI over HTTPS.
+During installation, {{ece}} generates certificates so that you can connect to your installation securely. In order to connect securely, you must first download and trust the CA certificates generated during installation before issuing any requests to ECE. If your organization operates as its own certificate authority, you can provide your certificates for ECE to avoid a security warning when connecting to the Cloud UI over HTTPS.
 
 In these instructions, we show you how you can download the security certificate that gets generated during the ECE installation and use it to add your own TLS/SSL certificates. You can add your TLS/SSL certificates any time after you have installed ECE on your hosts. In addition to the steps shown here, you might also need to import your CA certificate into your browser certificate chain, if you don’t already use the same certificate within your organization.
 
@@ -18,7 +18,7 @@ Cloud UI certificate
 :   Used to connect securely to the Cloud UI and to make RESTful API calls.
 
 Proxy certificate
-:   Used to connect securely to Elasticsearch clusters and Kibana. You should use a wildcard certificate rooted at the [cluster endpoint that you set](../../deploy/cloud-enterprise/change-endpoint-urls.md) (`*.example.com`, for example). A wildcard certificate is required, because the first label of the DNS address is distinct for Elasticsearch clusters and Kibana (`bc898abb421843918ebc31a513169a.example.com`, for example).
+:   Used to connect securely to {{es}} clusters and {{kib}}. You should use a wildcard certificate rooted at the [cluster endpoint that you set](../../deploy/cloud-enterprise/change-endpoint-urls.md) (`*.example.com`, for example). A wildcard certificate is required, because the first label of the DNS address is distinct for {{es}} clusters and {{kib}} (`bc898abb421843918ebc31a513169a.example.com`, for example).
 
     If you wish to enable [custom endpoint aliases](../../deploy/cloud-enterprise/enable-custom-endpoint-aliases.md) in ECE 2.10 or later, please also follow the directions for adding Subject Alternative Name (SAN) entries to support these aliases.
 
@@ -27,7 +27,7 @@ Proxy certificate
     ::::
 
 
-    After the certificates have been installed, connecting securely to Elasticsearch, Kibana, and the Cloud UI or making secure RESTful API calls to ECE should not result in any security warnings or errors.
+    After the certificates have been installed, connecting securely to {{es}}, {{kib}}, and the Cloud UI or making secure RESTful API calls to ECE should not result in any security warnings or errors.
 
 
 
@@ -283,8 +283,8 @@ To add a proxy certificate from the command line:
     curl --cacert CA_CERTIFICATE_FILENAME -H 'Content-Type: application/json' --data-binary @PROXY_PEM_FILENAME --user "admin:PASSWORD" "https://admin:12343/api/v1/platform/configuration/security/tls/proxy"
     ```
 
-2. Log out of any Kibana instances you might be logged into and log in again.
-3. Verify that you are now using the new certificate chain. There should be no security warnings when you connect to the Elasticsearch or Kibana endpoints over HTTPS in your web browser.
+2. Log out of any {{kib}} instances you might be logged into and log in again.
+3. Verify that you are now using the new certificate chain. There should be no security warnings when you connect to the {{es}} or {{kib}} endpoints over HTTPS in your web browser.
 
     Alternatively, you can also use the openssl command to check the proxy certificates, where HOSTNAME_OR_IP is the hostname or IP address of the proxy host:
 

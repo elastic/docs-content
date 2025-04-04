@@ -8,7 +8,7 @@ applies_to:
 
 
 
-# Kibana monitoring self-managed [configuring-monitoring]
+# {{kib}} monitoring self-managed [configuring-monitoring]
 
 
 If you enable the {{monitor-features}} in your cluster, there are a few methods available to collect metrics about {{kib}}:

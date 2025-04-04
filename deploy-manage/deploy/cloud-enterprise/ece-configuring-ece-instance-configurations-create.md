@@ -39,9 +39,9 @@ Before you start creating your own instance configurations, you should have [tag
         * If you need to refine your query further, continue to adjust your outer or inner clauses. If you are unsure what to do, we recommend keeping your initial query simple. You can always refine the query later on by re-editing the instance configuration.
 
 5. Select **Instance types**.
-6. Pick the products and features of the Elastic Stack that can get deployed on the allocators you identified in the previous step. For products such as Elasticsearch, you can also select some additional options, such as the specific node types that can be deployed.
+6. Pick the products and features of the Elastic Stack that can get deployed on the allocators you identified in the previous step. For products such as {{es}}, you can also select some additional options, such as the specific node types that can be deployed.
 
-    Note that not all combinations of Elasticsearch node types are available. You can create either a general purpose Elasticsearch node that includes all three of data, master, and coordinating, or a dedicated node that includes any one of these types. Machine learning is also available as a separate instance type.
+    Note that not all combinations of {{es}} node types are available. You can create either a general purpose {{es}} node that includes all three of data, master, and coordinating, or a dedicated node that includes any one of these types. Machine learning is also available as a separate instance type.
 
 7. Select **Sizes**.
 8. Adjust how memory and storage resources get sized relative to each other and set the available sizes, including the default size. Size your instance configuration so that it will use the available memory and storage on your allocators efficiently, without leaving hardware resources unused. Keep in mind that very small sizes might not provide adequate performance for some use cases.
@@ -135,7 +135,7 @@ Before you start creating your own instance configurations, you should have [tag
     }'
     ```
 
-    1. Note, that not all combinations of Elasticsearch node types are allowed here. You can create either a general purpose Elasticsearch node that includes all three of `data`, `master`, and `ingest`, or a dedicated node, that includes any one of these types or `ml`.
+    1. Note, that not all combinations of {{es}} node types are allowed here. You can create either a general purpose {{es}} node that includes all three of `data`, `master`, and `ingest`, or a dedicated node, that includes any one of these types or `ml`.
 
 
     After you have created your new instance configuration, you can use it when you [create new deployment templates](ece-configuring-ece-create-templates.md) or when you edit existing ones.

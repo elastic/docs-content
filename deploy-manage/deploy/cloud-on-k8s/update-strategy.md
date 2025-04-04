@@ -21,7 +21,7 @@ spec:
       maxUnavailable: 1
 ```
 
-`maxSurge`: Refers to the number of extra Pods that can be temporarily scheduled exceeding the number of Pods defined in the specification. This setting is useful for controlling the resource usage of the Kubernetes cluster when nodeSet configuration changes and new Pods need to be spun up to replace existing Pods. `MaxSurge` restricts the number of extra pods that can be running at any given point in time. If you have a large Elasticsearch cluster or a Kubernetes cluster running near capacity, not setting `maxSurge` could cause the newly created pods to temporarily use up all available spare resource capacity in the Kubernetes cluster and starve other workloads running there.
+`maxSurge`: Refers to the number of extra Pods that can be temporarily scheduled exceeding the number of Pods defined in the specification. This setting is useful for controlling the resource usage of the Kubernetes cluster when nodeSet configuration changes and new Pods need to be spun up to replace existing Pods. `MaxSurge` restricts the number of extra pods that can be running at any given point in time. If you have a large {{es}} cluster or a Kubernetes cluster running near capacity, not setting `maxSurge` could cause the newly created pods to temporarily use up all available spare resource capacity in the Kubernetes cluster and starve other workloads running there.
 
 `maxUnavailable`: Refers to the number of Pods that can be unavailable out of the total number of Pods in the currently applied specification. A Pod is defined unavailable when it is not ready from a Kubernetes perspective.
 
@@ -29,7 +29,7 @@ The operator only tries to apply these constraints when a new specification is b
 
 For example, if a new specification defines a larger cluster with `maxUnavailable: 0`, the operator creates the missing Pods according to the best practices. Similarly, if a new specification defines a smaller cluster with `maxSurge: 0`, the operator safely removes the unnecessary Pods.
 
-The operator will not enforce the change budget on version upgrades for clusters that have a non-HA setup, that is, less than three nodes. In these setups, removing a single node makes the whole cluster unavailable, and the operator will instead opt to upgrade all nodes at once. This is to avoid a situation where no progress can be made in a rolling upgrade process because the Elasticsearch cluster cannot form a quorum until all nodes have been upgraded.
+The operator will not enforce the change budget on version upgrades for clusters that have a non-HA setup, that is, less than three nodes. In these setups, removing a single node makes the whole cluster unavailable, and the operator will instead opt to upgrade all nodes at once. This is to avoid a situation where no progress can be made in a rolling upgrade process because the {{es}} cluster cannot form a quorum until all nodes have been upgraded.
 
 ## Specify changeBudget [k8s_specify_changebudget]
 
