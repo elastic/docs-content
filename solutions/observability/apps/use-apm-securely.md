@@ -9,6 +9,9 @@ applies_to:
 
 # Use APM securely [apm-securing-apm-server]
 
+:::{include} _snippets/apm-server-vs-mis.md
+:::
+
 When setting up Elastic APM, it’s critical to ensure that application data is secure from start to finish. You should approach securing your application data from different perspectives:
 
 |     |     |

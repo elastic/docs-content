@@ -9,6 +9,9 @@ applies_to:
 
 # Transaction sampling [apm-sampling]
 
+:::{include} _snippets/apm-server-vs-mis.md
+:::
+
 [Distributed tracing](../../../solutions/observability/apps/traces.md) can generate a substantial amount of data. More data can mean higher costs and more noise. Sampling aims to lower the amount of data ingested and the effort required to analyze that data — all while still making it easy to find anomalous patterns in your applications, detect outages, track errors, and lower mean time to recovery (MTTR).
 
 Elastic APM supports two types of sampling:
@@ -17,7 +20,6 @@ Elastic APM supports two types of sampling:
 
 * [Head-based sampling](../../../solutions/observability/apps/transaction-sampling.md#apm-head-based-sampling)
 * [Tail-based sampling](../../../solutions/observability/apps/transaction-sampling.md#apm-tail-based-sampling)
-
 
 ## Head-based sampling [apm-head-based-sampling]
 
@@ -28,7 +30,6 @@ For example, a sampling value of `.2` indicates a transaction sample rate of `20
 Head-based sampling is quick and easy to set up. Its downside is that it’s entirely random — interesting data might be discarded purely due to chance.
 
 See [Configure head-based sampling](../../../solutions/observability/apps/transaction-sampling.md#apm-configure-head-based-sampling) to get started.
-
 
 ### Distributed tracing [distributed-tracing-examples]
 
@@ -51,7 +52,6 @@ In the example in *Figure 2*, `Service A` initiates four transactions and has a 
 :alt: Distributed tracing and head based sampling example two
 :screenshot:
 :::
-
 
 #### Trace continuation strategies with distributed tracing [_trace_continuation_strategies_with_distributed_tracing]
 
@@ -78,7 +78,6 @@ In the example in *Figure 4*, `Service A` and `Service B` are Elastic-monitored 
 :alt: Distributed tracing and head based sampling with restart continuation strategy
 :title: Using the `restart` trace continuation strategy
 :::
-
 
 ### OpenTelemetry [_opentelemetry]
 
@@ -109,7 +108,6 @@ Tail-based sampling is only supported when writing to {{es}}. If you are using a
 
 ::::
 
-
 In tail-based sampling, the sampling decision for each trace is made after the trace has completed. This means all traces will be analyzed against a set of rules, or policies, which will determine the rate at which they are sampled.
 
 Unlike head-based sampling, each trace does not have an equal probability of being sampled. Because slower traces are more interesting than faster ones, tail-based sampling uses weighted random sampling — so traces with a longer root transaction duration are more likely to be sampled than traces with a fast root transaction duration.
@@ -117,7 +115,6 @@ Unlike head-based sampling, each trace does not have an equal probability of bei
 A downside of tail-based sampling is that it results in more data being sent from APM agents to the APM Server. The APM Server will therefore use more CPU, memory, and disk than with head-based sampling. However, because the tail-based sampling decision happens in APM Server, there is less data to transfer from APM Server to {{es}}. So running APM Server close to your instrumented services can reduce any increase in transfer costs that tail-based sampling brings.
 
 See [Configure tail-based sampling](../../../solutions/observability/apps/transaction-sampling.md#apm-configure-tail-based-sampling) to get started.
-
 
 ### Distributed tracing with tail-based sampling [_distributed_tracing_with_tail_based_sampling]
 
@@ -128,7 +125,6 @@ In this example, `Service A` initiates four transactions. If our sample rate is 
 :::{image} /solutions/images/observability-dt-sampling-example-3.png
 :alt: Distributed tracing and tail based sampling example one
 :::
-
 
 ### OpenTelemetry with tail-based sampling [_opentelemetry_with_tail_based_sampling]
 
@@ -201,7 +197,6 @@ These calculation methods ensure that the APM app provides the most accurate met
 
 1 Real User Monitoring (RUM) traces are an exception to this rule. The {{kib}} apps that utilize RUM data depend on transaction events, so non-sampled RUM traces retain transaction data — only span data is dropped.
 
-
 ## Sample rates [_sample_rates]
 
 What’s the best sampling rate? Unfortunately, there isn’t one. Sampling is dependent on your data, the throughput of your application, data retention policies, and other factors. A sampling rate from `.1%` to `100%` would all be considered normal. You’ll likely decide on a unique sample rate for different scenarios. Here are some examples:
@@ -213,21 +208,17 @@ What’s the best sampling rate? Unfortunately, there isn’t one. Sampling is d
 
 Regardless of the above, cost conscious customers are likely to be fine with a lower sample rate.
 
-
 ## Configure head-based sampling [apm-configure-head-based-sampling]
 
 There are three ways to adjust the head-based sampling rate of your APM agents:
-
 
 ### Dynamic configuration [_dynamic_configuration]
 
 The transaction sample rate can be changed dynamically (no redeployment necessary) on a per-service and per-environment basis with [{{apm-agent}} Configuration](../../../solutions/observability/apps/apm-agent-central-configuration.md) in {{kib}}.
 
-
 ### {{kib}} API configuration [_kib_api_configuration]
 
 {{apm-agent}} configuration exposes an API that can be used to programmatically change your agents' sampling rate. For examples, refer to the [Agent configuration API reference](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-apm-agent-configuration).
-
 
 ### {{apm-agent}} configuration [_apm_agent_configuration]
 
@@ -241,7 +232,6 @@ Each agent provides a configuration value used to set the transaction sample rat
 * Python: [`transaction_sample_rate`](apm-agent-python://reference/configuration.md#config-transaction-sample-rate)
 * Ruby: [`transaction_sample_rate`](apm-agent-ruby://reference/configuration.md#config-transaction-sample-rate)
 
-
 ## Configure tail-based sampling [apm-configure-tail-based-sampling]
 
 Enable tail-based sampling with [Enable tail-based sampling](../../../solutions/observability/apps/tail-based-sampling.md#sampling-tail-enabled-ref). When enabled, trace events are mapped to sampling policies. Each sampling policy must specify a sample rate, and can optionally specify other conditions. All of the policy conditions must be true for a trace event to match it.
@@ -251,8 +241,6 @@ Trace events are matched to policies in the order specified. Each policy list mu
 ::::{important}
 Please note that from version `9.0.0` APM Server has an unlimited storage limit, but will stop writing when the disk where the database resides reaches 80% usage. Due to how the limit is calculated and enforced, the actual disk space may still grow slightly over this disk usage based limit, or any configured storage limit.
 ::::
-
-
 
 ### Example configuration [_example_configuration]
 
@@ -272,13 +260,9 @@ This example defines three tail-based sampling polices:
 2. Samples 1% of traces in `production` with the trace name `"GET /not_important_route"`
 3. Default policy to sample all remaining traces at 10%, e.g. traces in a different environment, like `dev`, or traces with any other name
 
-
-
 ### Configuration reference [_configuration_reference]
 
-
 #### Top-level tail-based sampling settings [_top_level_tail_based_sampling_settings]
-
 
 ##### Enable tail-based sampling [sampling-tail-enabled]
 
@@ -289,7 +273,6 @@ Set to `true` to enable tail based sampling. Disabled by default. (bool)
 | APM Server binary | `sampling.tail.enabled` |
 | Fleet-managed | `Enable tail-based sampling` |
 
-
 ##### Interval [sampling-tail-interval]
 
 Synchronization interval for multiple APM Servers. Should be in the order of tens of seconds or low minutes. Default: `1m` (1 minute). (duration)
@@ -298,7 +281,6 @@ Synchronization interval for multiple APM Servers. Should be in the order of ten
 | --- | --- |
 | APM Server binary | `sampling.tail.interval` |
 | Fleet-managed | `Interval` |
-
 
 ##### Policies [sampling-tail-policies]
 
@@ -310,7 +292,6 @@ Policies map trace events to a sample rate. Each policy must specify a sample ra
 | --- | --- |
 | APM Server binary | `sampling.tail.policies` |
 | Fleet-managed | `Policies` |
-
 
 ##### Storage limit [sampling-tail-storage_limit]
 
@@ -329,9 +310,7 @@ Default: `0GB`. (text)
 | APM Server binary | `sampling.tail.storage_limit` |
 | Fleet-managed | `Storage limit` |
 
-
 #### Policy settings [_policy_settings]
-
 
 ##### **`sample_rate`** [sampling-tail-sample-rate]
 
@@ -339,21 +318,17 @@ The sample rate to apply to trace events matching this policy. Required in each 
 
 The sample rate must be greater than or equal to `0` and less than or equal to `1`. For example, a `sample_rate` of `0.01` means that 1% of trace events matching the policy will be sampled. A `sample_rate` of `1` means that 100% of trace events matching the policy will be sampled. (int)
 
-
 ##### **`trace.name`** [sampling-tail-trace-name]
 
 The trace name for events to match a policy. A match occurs when the configured `trace.name` matches the `transaction.name` of the root transaction of a trace. A root transaction is any transaction without a `parent.id`. (string)
-
 
 ##### **`trace.outcome`** [sampling-tail-trace-outcome]
 
 The trace outcome for events to match a policy. A match occurs when the configured `trace.outcome` matches a trace’s `event.outcome` field. Trace outcome can be `success`, `failure`, or `unknown`. (string)
 
-
 ##### **`service.name`** [sampling-tail-service-name]
 
 The service name for events to match a policy. (string)
-
 
 ##### **`service.environment`** [sampling-tail-service-environment]
 

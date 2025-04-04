@@ -10,12 +10,12 @@ applies_to:
 
 # Use OpenTelemetry with APM [apm-open-telemetry]
 
+:::{include} _snippets/apm-server-vs-mis.md
+:::
 
 ::::{note}
 For a complete overview of using OpenTelemetry with Elastic, explore [**Elastic Distributions of OpenTelemetry**](https://github.com/elastic/opentelemetry).
-
 ::::
-
 
 [OpenTelemetry](https://opentelemetry.io/docs/concepts/what-is-opentelemetry/) is a set of APIs, SDKs, tooling, and integrations that enable the capture and management of telemetry data from your services and applications.
 
@@ -26,13 +26,11 @@ Elastic integrates with OpenTelemetry, allowing you to reuse your existing instr
 * [Upstream OpenTelemetry Collector and language SDKs](../../../solutions/observability/apps/use-opentelemetry-with-apm.md#apm-otel-upstream)
 * [AWS Lambda collector exporter](../../../solutions/observability/apps/use-opentelemetry-with-apm.md#apm-otel-lambda)
 
-
 ## Elastic Distributions of OpenTelemetry language SDKs [apm-otel-elastic-distros]
 
 ::::{warning}
 This functionality is in technical preview and may be changed or removed in a future release. Elastic will work to fix any issues, but features in technical preview are not subject to the support SLA of official GA features.
 ::::
-
 
 Elastic offers several distributions of OpenTelemetry language SDKs. A *distribution* is a customized version of an upstream OpenTelemetry repository. Each Elastic Distribution of OpenTelemetry is a customized version of an [OpenTelemetry language SDK](https://opentelemetry.io/docs/languages/).
 
@@ -59,7 +57,6 @@ For more details about OpenTelemetry distributions in general, visit the [OpenTe
 
 ::::
 
-
 ## Upstream OpenTelemetry API/SDK + Elastic APM agent [apm-otel-api-sdk-elastic-agent]
 
 Use the OpenTelemetry API/SDKs with [Elastic APM agents](../../../solutions/observability/apps/fleet-managed-apm-server.md#_step_3_install_apm_agents) to translate OpenTelemetry API calls to Elastic APM API calls.
@@ -80,7 +77,6 @@ Find more details about how to use an OpenTelemetry API or SDK with an Elastic A
 * [**APM Node.js agent →**](apm-agent-nodejs://reference/opentelemetry-bridge.md)
 * [**APM Python agent →**](apm-agent-python://reference/opentelemetry-api-bridge.md)
 
-
 ## Upstream OpenTelemetry Collector and language SDKs [apm-otel-upstream]
 
 The {{stack}} natively supports the OpenTelemetry protocol (OTLP). This means trace data and metrics collected from your applications and infrastructure by an OpenTelemetry Collector or OpenTelemetry language SDK can be sent to the {{stack}}.
@@ -97,7 +93,6 @@ It’s also possible to send data directly to APM Server from an upstream OpenTe
 
 ::::
 
-
 This approach works well when you need to instrument a technology that Elastic doesn’t provide a solution for. For example, if you want to instrument C or C++ you could use the [OpenTelemetry C++ client](https://github.com/open-telemetry/opentelemetry-cpp).
 
 However, there are some limitations when using collectors and language SDKs built and maintained by OpenTelemetry, including:
@@ -109,7 +104,6 @@ However, there are some limitations when using collectors and language SDKs buil
 For more on the limitations associated with using upstream OpenTelemetry tools, refer to [Limitations](../../../solutions/observability/apps/limitations.md).
 
 [**Get started with upstream OpenTelemetry Collectors and language SDKs →**](../../../solutions/observability/apps/upstream-opentelemetry-collectors-language-sdks.md)
-
 
 ## AWS Lambda collector exporter [apm-otel-lambda]
 
