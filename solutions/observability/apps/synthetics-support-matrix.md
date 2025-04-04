@@ -54,6 +54,11 @@ There are various components that make up the Synthetics solution, which are sup
 
 ## Heartbeat with Uptime [_heartbeat_with_uptime]
 
+```{applies_to}
+stack: deprecated 8.15.0
+serverless: unavailable
+```
+
 * **GA support**: As defined in the standard [Support matrix](https://www.elastic.co/support/matrix)
 * **Notes**:
 

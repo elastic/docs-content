@@ -1755,6 +1755,11 @@ We have not covered the [Elastic APM OpenTracing bridge](apm-agent-java://refere
 
 ## Step 8: Ingest Uptime data [_step_8_ingest_uptime_data]
 
+```{applies_to}
+stack: deprecated 8.15.0
+serverless: unavailable
+```
+
 There are some basic monitoring capabilities in our application so far. We index logs (with traces), we index metrics, and we even can look in our app to figure out single performance bottlenecks thanks to APM. However, there is still one weak spot. Everything done so far was within the application, but all the users are reaching the application from the internet.
 
 How about checking if our users have the same experience that our APM data is suggesting to us. Imagine having a lagging load balancer fronting your app, that costs you an additional 50 milliseconds per request. That would be devastating. Or TLS negotiation being costly. Even though none of those external events is your fault, you will still be impacted by this and should try to mitigate those. This means you need to know about them first.
