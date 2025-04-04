@@ -85,11 +85,11 @@ The table's fields are as follows:
   * `Partially translated`: Part of the query could not be translated. You may need to specify an index pattern for the rule query, upload missing macros or lookups, or fix broken rule syntax.
   * `Not translated`: None of the original query could be translated.
   * `Error`: Rule translation failed. Refer to the the error details.
-* **Risk Score:** For Elastic authored rules, risk scores are predefined. For custom translated rules, risk scores are defined as follows:
-  * If the source rule has a field comparable to Elastic's risk score, we use that value.
-  * Otherwise, if the source rule has a field comparable to Elastic's rule severity field, we base the risk score on that value according to these [guidelines](/solutions/security/detect-and-alert/create-detection-rule.md#custom-highlighted-esql-fields).
-  * Otherwise, a default value is assigned.
-* **Rule severity:** For Elastic authored rules, severity scores are predefined. For custom translated rules, risk scores are based on the source rule's severity field. Splunk severity scores are translated to Elastic rule severity scores as follows:
+* **Risk Score:** For Elastic-authored rules, risk scores are predefined. For custom translated rules, risk scores are defined as follows:
+  * If the source rule has a field comparable to Elastic's `risk score`, we use that value.
+  * Otherwise, if the source rule has a field comparable to Elastic's `rule severity` field, we base the risk score on that value according to [these guidelines](/solutions/security/detect-and-alert/create-detection-rule.md#rule-ui-basic-params).
+  * If neither of the above apply, we assign a default value.
+* **Rule severity:** For Elastic-authored rules, severity scores are predefined. For custom translated rules, risk scores are based on the source rule's severity field. Splunk severity scores are translated to Elastic rule severity scores as follows:
 
   | Splunk severity | Elastic rule severity |
   | ------- | ----------- |
@@ -99,7 +99,7 @@ The table's fields are as follows:
   | 4 (High)     | High     |
   | 5 (Critical) | Critical |
 
-* **Author:** Shows one of two possible values: `Elastic`, or `Custom`. Elastic authored rules are created by Elastic and update automatically. Custom rules are translated by the Automatic Migration tool or your team, and do not update automatically.
+* **Author:** Shows one of two possible values: `Elastic`, or `Custom`. Elastic-authored rules are created by Elastic and update automatically. Custom rules are translated by the Automatic Migration tool or your team, and do not update automatically.
 * **Integrations:** Shows the number of Elastic integrations that must be installed to provide data for the rule to run successfully.
 * **Actions:** Allows you to click **Install** to add a rule to Elastic. Installed rules must also be enabled before they will run. To install rules in bulk, select the check box at the top of the table before clicking **Install**.
 
@@ -108,7 +108,7 @@ The table's fields are as follows:
 Once you're on the **Translated rules** page, to install any rules that were partially translated or not translated, you will need to edit them. Optionally, you can also edit custom rules that were successfully translated to finetune them. 
 
 :::{note}
-You cannot edit Elastic authored rules using this interface, but after they are installed you can [edit them](/solutions/security/detect-and-alert/manage-detection-rules.md) from the **Rules** page. 
+You cannot edit Elastic-authored rules using this interface, but after they are installed you can [edit them](/solutions/security/detect-and-alert/manage-detection-rules.md) from the **Rules** page. 
 :::
   
 ### Edit a custom rule
@@ -127,7 +127,7 @@ If you haven't yet ingested your data, you will likely encounter `Unknown index`
 
 ### View rule details
 
-The rule details flyout (which appears when you click on a rule's name in the **Translate rules** table) has two other tabs, **Overview** and **Summary**. The **Overview** tab displays information such as the rule's severity, risk score, rule type, and how frequently it runs. The **Summary** tab explains the logic behind how the rule was translated, such as why specific {{esql}} commands were used, or why a source rule was mapped to a particular Elastic authored rule.
+The rule details flyout (which appears when you click on a rule's name in the **Translate rules** table) has two other tabs, **Overview** and **Summary**. The **Overview** tab displays information such as the rule's severity, risk score, rule type, and how frequently it runs. The **Summary** tab explains the logic behind how the rule was translated, such as why specific {{esql}} commands were used, or why a source rule was mapped to a particular Elastic-authored rule.
 
 ::::{important}
 All the details about your migrations is stored in the `.kibana-siem-rule-migrations-rules-default` index. You can use [Discover](/explore-analyze/discover.md) to review a variety of metrics, analyze metrics, and more.
@@ -138,10 +138,6 @@ All the details about your migrations is stored in the `.kibana-siem-rule-migrat
 **How does Automatic Migration handle rules that can't be exactly translated for various reasons, such as feature parity issues?**
 
 After translation, rules that can't be translated appear with a status of either partially translated (yellow) or not translated (red). From there, you can address them individually.
-
-**How does Automatic Migration handle Splunk rules which lookup other indices?**
-
-Rules that fall into this category will typically appear with a status of partially translated. `LOOKUP JOIN`s are currently a tech preview {{esql}} which can help in this situation. 
 
 **Are nested macros supported?**
 
@@ -154,3 +150,7 @@ Automatic Migration maps your rules to Elastic-authored rules whenever possible,
 **What index does information about each migration appear in?**
 
 No matter how many times you use Automatic Migration, migration data will continue to appear in `.kibana-siem-rule-migrations-rules-default`.
+
+**How does Automatic Migration handle Splunk rules which lookup other indices?**
+
+Rules that fall into this category will typically appear with a status of partially translated. You can use the [`LOOKUP JOIN](elasticsearch://reference/query-languages/esql/esql-lookup-join.md) capability to help in this situation. 
