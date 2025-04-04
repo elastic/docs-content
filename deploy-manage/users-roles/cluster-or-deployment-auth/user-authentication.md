@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/setting-up-authentication.html
   - https://www.elastic.co/guide/en/kibana/current/kibana-authentication.html
 applies_to:

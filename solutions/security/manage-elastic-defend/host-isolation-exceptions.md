@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/security/current/host-isolation-exceptions.html
   - https://www.elastic.co/guide/en/serverless/current/security-host-isolation-exceptions.html
 applies_to:
@@ -17,7 +17,7 @@ Host isolation exceptions support IPv4 addresses, with optional classless inter-
 
 ::::{admonition} Requirements
 * You must have the **Host Isolation Exceptions** [privilege](/solutions/security/configure-elastic-defend/elastic-defend-feature-privileges.md) or the appropriate user role to access this feature.
-* Host isolation requires the appropriate [subscription](https://www.elastic.co/pricing) in {{stack}} or [project feature](/deploy-manage/deploy/elastic-cloud/project-settings.md) in {{serverless-short}}. 
+* Host isolation requires the appropriate [subscription](https://www.elastic.co/pricing) in {{stack}} or [project feature](/deploy-manage/deploy/elastic-cloud/project-settings.md) in {{serverless-short}}.
 ::::
 
 

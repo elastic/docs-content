@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/security/current/vuln-management-get-started.html
   - https://www.elastic.co/guide/en/serverless/current/security-vuln-management-get-started.html
 applies_to:

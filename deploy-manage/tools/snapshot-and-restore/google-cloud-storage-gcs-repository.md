@@ -1,9 +1,9 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-configure-gcp-snapshotting.html
 applies_to:
   deployment:
-    ece: 
+    ece:
 ---
 
 # Google Cloud Storage (GCS) repository [ece-configure-gcp-snapshotting]

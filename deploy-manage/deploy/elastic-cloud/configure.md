@@ -2,7 +2,7 @@
 applies_to:
   deployment:
     ess: ga
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-customize-deployment.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-configure-settings.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-configure.html
@@ -15,7 +15,7 @@ You might want to change the configuration of your deployment to:
 * Add features, such as machine learning or APM (application performance monitoring).
 * Increase or decrease capacity by changing the amount of reserved memory and storage for different parts of your deployment.
 
-    ::::{note} 
+    ::::{note}
     During the free trial, {{ech}} deployments are restricted to a limited size. You can increase the size of your deployments when your trial is converted to a paid subscription.
     ::::
 
@@ -30,7 +30,7 @@ We perform all of these changes by creating instances with the new configuration
 
 By doing it this way, we reduce the risk of making configuration changes. If any of the new instances have a problems, the old ones are still there, processing requests.
 
-::::{note} 
+::::{note}
 If you use a Platform-as-a-Service provider like Heroku, the administration console is slightly different and does not allow you to make changes that will affect the price. That must be done in the platform provider’s add-on system. You can still do things like change {{es}} version or plugins.
 ::::
 
@@ -38,9 +38,9 @@ If you use a Platform-as-a-Service provider like Heroku, the administration cons
 To change your deployment:
 
 1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
-2. Find your deployment on the home page in the **Hosted deployments** card and select **Manage** to access it directly. Or, select **Hosted deployments** to go to the **Deployments** page to view all of your deployments.
+2. Find your deployment on the home page or on the **Hosted deployments** page, then select **Manage** to access its settings menus.
 
-    On the **Deployments** page you can narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
+    On the **Hosted deployments** page you can narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
 
 3. From the deployment menu, select **Edit**.
 4. Let the user interface guide you through the cluster configuration for your cluster.
@@ -51,13 +51,13 @@ To change your deployment:
 
 Review the changes to your configuration on the **Activity** page, with a tab for {{es}} and one for {{kib}}.
 
-::::{tip} 
+::::{tip}
 If you are creating a new deployment, select **Edit settings** to change the cloud provider, region, hardware profile, and stack version; or select **Advanced settings** for more complex configuration settings.
 ::::
 
 
 That’s it! If you haven’t already, [start exploring with {{kib}}](../../../deploy-manage/deploy/elastic-cloud/access-kibana.md), our visualization tool. If you’re not familiar with adding data yet, {{kib}} can show you how to index your data into {{es}}, or try our basic steps for working with [{{es}}](../../../manage-data/data-store/manage-data-from-the-command-line.md).
 
-::::{tip} 
+::::{tip}
 Some features are not available during the 14-day free trial. If a feature is greyed out, [add a credit card](../../../deploy-manage/cloud-organization/billing/add-billing-details.md) to unlock the feature.
 ::::

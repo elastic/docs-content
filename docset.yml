@@ -276,3 +276,4 @@ subs:
   version: "9.0.0"
   release-date: "2-April-2025"
   heroku: "Elasticsearch Add-on for Heroku"
+  obs-ai-assistant: "Elastic AI Assistant for Observability and Search"

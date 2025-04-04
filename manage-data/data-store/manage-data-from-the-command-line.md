@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-working-with-elasticsearch.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-working-with-elasticsearch.html
 applies_to:

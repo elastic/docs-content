@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-data-model-spans.html
   - https://www.elastic.co/guide/en/serverless/current/observability-apm-compress-spans.html
 ---

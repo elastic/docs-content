@@ -22,11 +22,11 @@ The following sections describe how to customize a {{kib}} deployment to suit yo
     * [Scaling out a {{kib}} deployment](k8s-kibana-advanced-configuration.md#k8s-kibana-scaling)
 
 * [Secure settings](../../security/k8s-secure-settings.md#k8s-kibana-secure-settings)
-* [HTTP Configuration](/deploy-manage/security/secure-http-communications.md#k8s-kibana-http-configuration)
+* [HTTP Configuration](/deploy-manage/security/k8s-https-settings.md#k8s-kibana-http-configuration)
 
-    * [Load balancer settings and TLS SANs](/deploy-manage/security/secure-http-communications.md#k8s-kibana-http-publish)
-    * [Provide your own certificate](/deploy-manage/security/secure-http-communications.md#k8s-kibana-http-custom-tls)
-    * [Disable TLS](/deploy-manage/security/secure-http-communications.md#k8s-kibana-http-disable-tls)
+    * [Load balancer settings and TLS SANs](/deploy-manage/security/k8s-https-settings.md#k8s-kibana-http-publish)
+    * [Provide your own certificate](/deploy-manage/security/k8s-https-settings.md#k8s-kibana-http-custom-tls)
+    * [Disable TLS](/deploy-manage/security/k8s-https-settings.md#k8s-disable-tls)
     * [Install {{kib}} plugins](k8s-kibana-plugins.md)
 
 * [Autoscaling stateless applications](../../autoscaling/autoscaling-in-eck.md#k8s-stateless-autoscaling): Use [Horizontal Pod Autoscaler](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/) for {{kib}} or other stateless applications.

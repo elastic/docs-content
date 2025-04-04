@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules-allocation.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/shard-allocation-filtering.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/recovery-prioritization.html

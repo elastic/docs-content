@@ -27,9 +27,9 @@ To configure ILM Migration in the console:
 
 :::{tab-item} {{ech}}
 1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
-2. From the **Deployments** page, select your deployment.
+2. From the **Hosted deployments** page, select your deployment.
 
-    On the **Deployments** page you can narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
+    On the **Hosted deployments** page you can narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
 
 3. Near the top of the deployment overview, you should get a message to migrate from index curation to index lifecycle management (ILM) along with a **Start migration** button.
 4. Select which index curation pattern you wish to migrate.
