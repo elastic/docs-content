@@ -1,10 +1,16 @@
-::::{note}
-To add a node to a cluster running on multiple machines, you must also set [`discovery.seed_hosts`](/deploy-manage/deploy/self-managed/important-settings-configuration.md#unicast.hosts) so that the new node can discover the rest of its cluster.
-::::
-
 To enroll new nodes in your cluster, create an enrollment token with the [`elasticsearch-create-enrollment-token`](elasticsearch://reference/elasticsearch/command-line-tools/create-enrollment-token.md) tool on any existing node in your cluster. You can then start a new node with the `--enrollment-token` parameter so that it joins an existing cluster.
 
-1. In a separate terminal from where {{es}} is running, navigate to the directory where you installed {{es}} and run the `elasticsearch-create-enrollment-token` tool to generate an enrollment token for your new nodes.
+
+1. Using a text editor, update the `cluster.name` in `elasticsearch.yml` to match the other nodes in your cluster. 
+   
+   :::{tip}
+   If this value isn't updated and you attempt to join an existing cluster, then the connection will fail with the following error:
+
+   ```
+   handshake failed: remote cluster name [cluster-to-join] does not match local cluster name [current-cluster-name]
+   ```
+
+2. In a separate terminal from where {{es}} is running, navigate to the directory where you installed {{es}} and run the `elasticsearch-create-enrollment-token` tool to generate an enrollment token for your new nodes.
 
     ```sh subs=true
     bin{{slash}}elasticsearch-create-enrollment-token -s node
@@ -14,7 +20,7 @@ To enroll new nodes in your cluster, create an enrollment token with the [`elast
 
     An enrollment token has a lifespan of 30 minutes. You should create a new enrollment token for each new node that you add.
 
-2. From the installation directory of your new node, start {{es}} and pass the enrollment token with the `--enrollment-token` parameter.
+3. From the installation directory of your new node, start {{es}} and pass the enrollment token with the `--enrollment-token` parameter.
 
     ```sh subs=true
     bin{{slash}}elasticsearch --enrollment-token <enrollment-token>

@@ -58,11 +58,18 @@ cd C:\Program Files\elasticsearch-{{stack-version}}
 :::{include} _snippets/cluster-formation-brief.md
 :::
 
-If you're installing a subsequent node, then skip to [Enroll the node in an existing cluster](#existing-cluster).
+* If you're installing the first node in a multi-node cluster across multiple hosts, then you need to [configure the node so that other hosts are able to connect to it](#first-node).
 
-### Set up a node as the first node in a multi-host cluster
+* If you're installing additional nodes for a cluster, then you need to [generate an enrollment token and pass it when starting {{es}} for the first time](#existing-cluster).
+
+### Set up a node as the first node in a multi-host cluster [first-node]
 
 :::{include} _snippets/first-node.md
+:::
+
+### Enroll the node in an existing cluster [existing-cluster]
+
+:::{include} _snippets/enroll-nodes.md
 :::
 
 ## Step 4: Run {{es}}
@@ -70,10 +77,9 @@ If you're installing a subsequent node, then skip to [Enroll the node in an exis
 You have several options for starting {{es}}:
 
 * [Run from the command line](#command-line)
-* [Run the node to be enrolled in an existing cluster](#existing-cluster)
 * [Install and run as a service](#windows-service)
 
-You can run {{es}} [from the command line](#command-line), or install and run {{es}} [as a service](#windows-service).
+If you're starting a node that will be enrolled in an existing cluster, refer to [Enroll the node in an existing cluster](#existing-cluster).
 
 ### Run {{es}} from the command line [command-line]
 
@@ -93,11 +99,6 @@ The password for the `elastic` user and the enrollment token for {{kib}} are out
 #### Configure {{es}} on the command line [windows-configuring]
 
 :::{include} _snippets/cmd-line-config.md
-:::
-
-### Enroll the node in an existing cluster [existing-cluster]
-
-:::{include} _snippets/enroll-nodes.md
 :::
 
 ### Install and run {{es}} as a service on Windows [windows-service]

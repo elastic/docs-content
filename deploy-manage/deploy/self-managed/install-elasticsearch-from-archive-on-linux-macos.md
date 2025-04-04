@@ -26,6 +26,10 @@ applies_to:
 :::{include} _snippets/java-version.md
 :::
 
+:::{tip}
+Elastic recommends that you run the commands in this guide using a normal user account, and avoid running the commands as `root`.
+:::
+
 ## Before you start
 
 :::{include} _snippets/prereqs.md
@@ -91,11 +95,18 @@ Alternatively, you can add a security override by following the instructions in 
 :::{include} _snippets/cluster-formation-brief.md
 :::
 
-If you're installing a subsequent node, then skip to [Enroll the node in an existing cluster](#existing-cluster).
+* If you're installing the first node in a multi-node cluster across multiple hosts, then you need to [configure the node so that other hosts are able to connect to it](#first-node).
 
-### Set up a node as the first node in a multi-host cluster
+* If you're installing additional nodes for a cluster, then you need to [generate an enrollment token and pass it when starting {{es}} for the first time](#existing-cluster).
+
+### Set up a node as the first node in a multi-host cluster [first-node]
 
 :::{include} _snippets/first-node.md
+:::
+
+### Enroll the node in an existing cluster [existing-cluster]
+
+:::{include} _snippets/enroll-nodes.md
 :::
 
 ## Step 4: Start {{es}} [targz-running]
@@ -103,8 +114,9 @@ If you're installing a subsequent node, then skip to [Enroll the node in an exis
 You have several options for starting {{es}}:
 
 * [Run from the command line](#command-line)
-* [Run the node to be enrolled in an existing cluster](#existing-cluster)
 * [Run as a daemon](#setup-installation-daemon)
+
+If you're starting a node that will be enrolled in an existing cluster, refer to [Enroll the node in an existing cluster](#existing-cluster).
 
 ### Run {{es}} from the command line [command-line]
 
@@ -124,11 +136,6 @@ The password for the `elastic` user and the enrollment token for {{kib}} are out
 #### Configure {{es}} on the command line [targz-configuring]
 
 :::{include} _snippets/cmd-line-config.md
-:::
-
-### Enroll the node in an existing cluster [existing-cluster]
-
-:::{include} _snippets/enroll-nodes.md
 :::
 
 ### Run as a daemon [setup-installation-daemon]
