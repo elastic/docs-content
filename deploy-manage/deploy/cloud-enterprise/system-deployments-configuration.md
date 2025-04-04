@@ -36,7 +36,7 @@ ECE supports the concept of [availability zones](ece-ha.md) and requires three a
 
 The system deployments are created when you install ECE or enable the user management feature, at which point they are not yet configured for high availability. As soon as you finish the installation process, you should change the configuration to ensure your system deployments are highly available and deployed across two or three availability zones. To configure your system deployments to be highly available, navigate to the **Edit** page for the cluster and change the number of availability zones under **Fault tolerance**.
 
-For the `logging-and-metrics` cluster, you might want to also make sure that your {{kib}} instance and other components are deployed across multiple availability zones, since you will often access that cluster using Kibana. You can change the availability zones for {{kib}} on the same **Edit** page.
+For the `logging-and-metrics` cluster, you might want to also make sure that your {{kib}} instance and other components are deployed across multiple availability zones, since you will often access that cluster using {{kib}}. You can change the availability zones for {{kib}} on the same **Edit** page.
 
 ::::{note} 
 For the `security` cluster, the number of zones must be set to 3 for high availability, otherwise you may encounter errors when trying to upgrade ECE versions.

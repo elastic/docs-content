@@ -38,7 +38,7 @@ These two examples are for the `plugin` extension type. For bundles, change `ext
 
 For plugins, `version` must match (exactly) the `elasticsearch.version` field defined in the plugin’s `plugin-descriptor.properties` file. Check [Help for plugin authors](elasticsearch://extend/index.md) for details. For plugins larger than 5GB, the `plugin-descriptor.properties` file needs to be at the top of the archive. This ensures that the our verification process is able to detect that it is an {{es}} plugin; otherwise the plugin will be rejected by the API. This order can be achieved by specifying at time of creating the ZIP file: `zip -r name-of-plugin.zip plugin-descriptor.properties *`.
 
-For bundles, we recommend setting `version` using wildcard notation that matches the major version of the {{es}} deployment. For example, if {{es}} is on version 8.4.3, simply set `8.*` as the version. The value `8.*` means that the bundle is compatible with all 8.x versions of Elasticsearch.
+For bundles, we recommend setting `version` using wildcard notation that matches the major version of the {{es}} deployment. For example, if {{es}} is on version 8.4.3, simply set `8.*` as the version. The value `8.*` means that the bundle is compatible with all 8.x versions of {{es}}.
 
 $$$ec-extension-guide-create-option1$$$
 **Option 1: Stream the file from a publicly-accessible download URL**
@@ -165,7 +165,7 @@ The following are examples of a GCP plan. Your specific deployment plan will be 
 }
 ```
 
-You can use the [cat plugins API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-plugins) to confirm that the plugin has been deployed successfully to Elasticsearch.
+You can use the [cat plugins API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-plugins) to confirm that the plugin has been deployed successfully to {{es}}.
 
 The previous examples are for plugins. For bundles, use the `user_bundles` construct instead.
 
@@ -269,7 +269,7 @@ Updating `extension_type` has no effect. You cannot change the extension’s typ
 
 ## Update the version of an existing bundle [ec-extension-guide-update-version-bundle]
 
-For bundles, we recommend setting `version` using wildcard notation that matches the major version of the {{es}} deployment. For example, if {{es}} is on version 8.4.3, simply set `8.*` as the version. The value `8.*` means that the bundle is compatible with all 7.x versions of Elasticsearch.
+For bundles, we recommend setting `version` using wildcard notation that matches the major version of the {{es}} deployment. For example, if {{es}} is on version 8.4.3, simply set `8.*` as the version. The value `8.*` means that the bundle is compatible with all 7.x versions of {{es}}.
 
 For example, if the bundle was previously uploaded with the version `8.4.2`, simply update the version field. You no longer have to specify the `download_url` when only making metadata changes to a bundle.
 
@@ -469,7 +469,7 @@ Unlike bundles, plugins *must* match the {{es}} version down to the patch level 
     }
     ```
 
-    You can use the [cat plugins API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-plugins) to confirm that the plugin has been upgraded successfully to Elasticsearch.
+    You can use the [cat plugins API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-plugins) to confirm that the plugin has been upgraded successfully to {{es}}.
 
 
 

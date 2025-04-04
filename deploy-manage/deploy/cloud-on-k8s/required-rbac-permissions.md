@@ -58,9 +58,9 @@ These permissions are needed by the Service Account that ECK operator runs as.
 | `Service` |  | no | Creating Services fronting Elastic Stack applications. |
 | `ConfigMap` |  | no | Reading/writing configuration. |
 | `StatefulSet` | `apps` | no | Deploying {{es}} |
-| `Deployment` | `apps` | no | Deploying Kibana, APM Server, EnterpriseSearch, Maps, Beats or Elastic Agent. |
+| `Deployment` | `apps` | no | Deploying {{kib}}, APM Server, EnterpriseSearch, Maps, Beats or Elastic Agent. |
 | `DaemonSet` | `apps` | no | Deploying Beats or Elastic Agent. |
-| `PodDisruptionBudget` | `policy` | no | Ensuring update safety for Elasticsearch. Check [docs](/deploy-manage/deploy/cloud-on-k8s/pod-disruption-budget.md) to learn more. |
+| `PodDisruptionBudget` | `policy` | no | Ensuring update safety for {{es}}. Check [docs](/deploy-manage/deploy/cloud-on-k8s/pod-disruption-budget.md) to learn more. |
 | `StorageClass` | `storage.k8s.io` | yes | Validating storage expansion support. Check [docs](volume-claim-templates.md#k8s-volume-claim-templates-update) to learn more. |
 | `coreauthorization.k8s.io` | `SubjectAccessReview` | yes | Controlling access between referenced resources. Check [docs](/deploy-manage/deploy/cloud-on-k8s/restrict-cross-namespace-resource-associations.md) to learn more. |
 

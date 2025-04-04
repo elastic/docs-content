@@ -21,7 +21,7 @@ Read on for detail about each of these billing dimensions.
 
 ## Deployment capacity [ram-hours] 
 
-Deployment capacity refers to the cost of the nodes in your {{es}} deployment, plus additional node types such as Kibana, APM, and ML.  Each node type is priced in terms of GB of RAM per hour (CPU and disk are scaled with RAM and included in this price).  To calculate deployment capacity costs, we total up the cost of the nodes in your deployment(s) and multiply by GBs of RAM and how long they’ve been running.
+Deployment capacity refers to the cost of the nodes in your {{es}} deployment, plus additional node types such as {{kib}}, APM, and ML.  Each node type is priced in terms of GB of RAM per hour (CPU and disk are scaled with RAM and included in this price).  To calculate deployment capacity costs, we total up the cost of the nodes in your deployment(s) and multiply by GBs of RAM and how long they’ve been running.
 
 Deployment capacity typically constitutes the majority of your bill, and is the easiest to understand and control.
 

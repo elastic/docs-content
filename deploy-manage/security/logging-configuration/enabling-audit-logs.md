@@ -71,11 +71,11 @@ To enable audit logging in an {{ech}} deployment:
 
 3. From your deployment menu, go to the **Edit** page.
 
-4. To enable auditing for Elasticsearch:
+4. To enable auditing for {{es}}:
     * In the **Elasticsearch** section, select **Manage user settings and extensions**. For deployments with existing user settings, you may have to expand the **Edit elasticsearch.yml** caret for each node instead.
     * Add the setting `xpack.security.audit.enabled: true`.
 
-5. To enable auditing for Kibana:
+5. To enable auditing for {{kib}}:
     * In the **Kibana** section, select **Edit user settings**. For deployments with existing user settings, you may have to expand the **Edit kibana.yml** caret instead.
     * Add the setting `xpack.security.audit.enabled: true`.
 

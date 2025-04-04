@@ -47,6 +47,6 @@ EOF
 
 ## {{es}} plugins [k8s-openshift-es-plugins]
 
-{{es}} plugins cannot be installed at runtime in most OpenShift environments. This is because the plugin installer must run as root, but {{es}} is restricted from running as root. To add plugins to Elasticsearch, you can use custom images as described in [*Create custom images*](create-custom-images.md).
+{{es}} plugins cannot be installed at runtime in most OpenShift environments. This is because the plugin installer must run as root, but {{es}} is restricted from running as root. To add plugins to {{es}}, you can use custom images as described in [*Create custom images*](create-custom-images.md).
 
 

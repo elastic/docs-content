@@ -30,7 +30,7 @@ Refer to the [Spaces documentation](/deploy-manage/manage-spaces.md) for more in
 
 ## Roles [_roles]
 
-After your spaces are set up, the next step to securing access is to provision your roles. Roles are a collection of privileges that allow you to perform actions in {{kib}} and Elasticsearch. Roles are assigned to users, and to [system accounts](built-in-users.md) that power the Elastic Stack.
+After your spaces are set up, the next step to securing access is to provision your roles. Roles are a collection of privileges that allow you to perform actions in {{kib}} and {{es}}. Roles are assigned to users, and to [system accounts](built-in-users.md) that power the Elastic Stack.
 
 You can create your own roles, or use any of the [built-in roles](built-in-roles.md). Some built-in roles are intended for Elastic Stack components and should not be assigned to end users directly.
 

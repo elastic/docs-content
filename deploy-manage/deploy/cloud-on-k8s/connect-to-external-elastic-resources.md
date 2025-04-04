@@ -65,7 +65,7 @@ The following fields are expected to be set in the referenced `Secret`:
 * `password` (required): The password for the provided user.
 * `ca.crt` (optional): The certificate authority to be used to connect to the external resource.
 
-In the case of Agent and Beats resources the following field can also be used to connect to Elasticsearch:
+In the case of Agent and Beats resources the following field can also be used to connect to {{es}}:
 
 * `api-key`: An API key to authenticate against the Elastic resource.
 

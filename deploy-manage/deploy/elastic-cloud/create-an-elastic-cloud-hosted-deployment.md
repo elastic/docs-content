@@ -11,7 +11,7 @@ mapped_pages:
 
 # Create an {{ech}} deployment [ec-create-deployment]
 
-An {{ecloud}} deployment includes Elastic Stack components such as Elasticsearch, Kibana, and other features, allowing you to store, search, and analyze your data. You can spin up a proof-of-concept deployment to learn more about what Elastic can do for you.
+An {{ecloud}} deployment includes Elastic Stack components such as {{es}}, {{kib}}, and other features, allowing you to store, search, and analyze your data. You can spin up a proof-of-concept deployment to learn more about what Elastic can do for you.
 
 :::{note}
 You can also create a deployment using the [{{ecloud}} API](https://www.elastic.co/docs/api/doc/cloud/group/endpoint-deployments). This can be an interesting alternative for more advanced needs, such as for [creating a deployment encrypted with your own key](../../security/encrypt-deployment-with-customer-managed-encryption-key.md).
@@ -52,7 +52,7 @@ You can also create a deployment using the [{{ecloud}} API](https://www.elastic.
     Trial users won’t find the Advanced settings when they create their first deployment. This option is available on the deployment’s edit page once the deployment is created.
     ::::
 
-3. Select **Create deployment**. It takes a few minutes before your deployment gets created. While waiting, you are prompted to save the admin credentials for your deployment which provides you with superuser access to Elasticsearch. Keep these credentials safe as they are shown only once. These credentials also help you [add data using Kibana](../../../manage-data/ingest.md). If you need to refresh these credentials, you can [reset the password](../../users-roles/cluster-or-deployment-auth/built-in-users.md).
+3. Select **Create deployment**. It takes a few minutes before your deployment gets created. While waiting, you are prompted to save the admin credentials for your deployment which provides you with superuser access to {{es}}. Keep these credentials safe as they are shown only once. These credentials also help you [add data using Kibana](../../../manage-data/ingest.md). If you need to refresh these credentials, you can [reset the password](../../users-roles/cluster-or-deployment-auth/built-in-users.md).
 4. Once the deployment is ready, select **Continue** to open the deployment’s main page. From here, you can start [ingesting data](../../../manage-data/ingest.md) or simply [try a sample data](../../../explore-analyze/index.md#gs-get-data-into-kibana) set to get started.
 
     At any time, you can manage and [adjust the configuration](configure.md) of your deployment to your needs, add extra layers of [security](../../users-roles/cluster-or-deployment-auth.md), or (highly recommended) set up [health monitoring](../../monitor/stack-monitoring.md).

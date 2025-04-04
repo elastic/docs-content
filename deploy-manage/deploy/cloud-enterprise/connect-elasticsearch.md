@@ -111,4 +111,4 @@ To get started with Metricbeat and {{ece}}:
 
 6. Open {{kib}} and explore!
 
-Metricbeat creates a data view (formerly *index pattern*) with defined fields, searches, visualizations, and dashboards that you can start exploring in Kibana. Look for information related to system metrics, such as CPU usage, utilization rates for memory and disk, and details for processes.
+Metricbeat creates a data view (formerly *index pattern*) with defined fields, searches, visualizations, and dashboards that you can start exploring in {{kib}}. Look for information related to system metrics, such as CPU usage, utilization rates for memory and disk, and details for processes.

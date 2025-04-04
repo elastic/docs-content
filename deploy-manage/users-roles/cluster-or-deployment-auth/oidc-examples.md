@@ -12,7 +12,7 @@ applies_to:
 
 # Set up OpenID Connect with Azure, Google, or Okta [ec-securing-clusters-oidc-op]
 
-This page explains how to implement OIDC, from the OAuth client credentials generation to the realm configuration for {{es}} and Kibana, with the following OpenID Connect Providers (OPs):
+This page explains how to implement OIDC, from the OAuth client credentials generation to the realm configuration for {{es}} and {{kib}}, with the following OpenID Connect Providers (OPs):
 
 * [Azure](#ec-securing-oidc-azure)
 * [Google](#ec-securing-oidc-google)

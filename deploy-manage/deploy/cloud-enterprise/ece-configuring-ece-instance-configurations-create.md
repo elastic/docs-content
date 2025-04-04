@@ -39,7 +39,7 @@ Before you start creating your own instance configurations, you should have [tag
         * If you need to refine your query further, continue to adjust your outer or inner clauses. If you are unsure what to do, we recommend keeping your initial query simple. You can always refine the query later on by re-editing the instance configuration.
 
 5. Select **Instance types**.
-6. Pick the products and features of the Elastic Stack that can get deployed on the allocators you identified in the previous step. For products such as Elasticsearch, you can also select some additional options, such as the specific node types that can be deployed.
+6. Pick the products and features of the Elastic Stack that can get deployed on the allocators you identified in the previous step. For products such as {{es}}, you can also select some additional options, such as the specific node types that can be deployed.
 
     Note that not all combinations of {{es}} node types are available. You can create either a general purpose {{es}} node that includes all three of data, master, and coordinating, or a dedicated node that includes any one of these types. Machine learning is also available as a separate instance type.
 

@@ -18,7 +18,7 @@ This requires a valid Enterprise license or Enterprise trial license. Check [the
 ::::
 
 
-Starting from ECK `2.6.1` and {{es}} `8.6.1`, Elastic Stack configuration policies allow you to configure the following settings for Elasticsearch:
+Starting from ECK `2.6.1` and {{es}} `8.6.1`, Elastic Stack configuration policies allow you to configure the following settings for {{es}}:
 
 * [Cluster Settings](/deploy-manage/deploy/self-managed/configure-elasticsearch.md#dynamic-cluster-setting)
 * [Snapshot Repositories](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-create-repository)
@@ -32,7 +32,7 @@ Starting from ECK `2.6.1` and {{es}} `8.6.1`, Elastic Stack configuration polici
 * [{{es}} Secure Settings](../../security/secure-settings.md) [ECK 2.11.0]
 * [Secret Mounts](#k8s-stack-config-policy-specifics-secret-mounts) [ECK 2.11.0]
 
-Additionally with ECK `2.11.0` it is possible to configure {{kib}} as well using Elastic Stack configuration policies, the following settings can be configured for Kibana:
+Additionally with ECK `2.11.0` it is possible to configure {{kib}} as well using Elastic Stack configuration policies, the following settings can be configured for {{kib}}:
 
 * [{{kib}} Configuration](kibana://reference/configuration-reference/general-settings.md) (configuration settings for {{kib}} that will go into `kibana.yml`)
 * [{{kib}} Secure Settings](../../security/k8s-secure-settings.md)
@@ -48,7 +48,7 @@ Elastic Stack configuration policies can be defined in a `StackConfigPolicy` res
 
 At least one of `spec.elasticsearch` or `spec.kibana` needs to be defined with at least one of its attributes.
 
-* `spec.elasticsearch` describes the settings to configure for Elasticsearch. Each of the following fields except `clusterSettings` is an associative array where keys are arbitrary names and values are definitions:
+* `spec.elasticsearch` describes the settings to configure for {{es}}. Each of the following fields except `clusterSettings` is an associative array where keys are arbitrary names and values are definitions:
 
     * `clusterSettings` are dynamic settings that can be set on a running cluster like with the Cluster Update Settings API.
     * `snapshotRepositories` are snapshot repositories for defining an off-cluster storage location for your snapshots. Check [Specifics for snapshot repositories](#k8s-stack-config-policy-specifics-snap-repo) for more information.
@@ -62,7 +62,7 @@ At least one of `spec.elasticsearch` or `spec.kibana` needs to be defined with a
     * `secretMounts` are the additional user created secrets that need to be mounted to the {{es}} Pods.
     * `secureSettings` is a list of Secrets containing Secure Settings to inject into the keystore(s) of the {{es}} cluster(s) to which this policy applies, similar to the [{{es}} Secure Settings](../../security/secure-settings.md).
 
-* `spec.kibana` describes the settings to configure for Kibana.
+* `spec.kibana` describes the settings to configure for {{kib}}.
 
     * `config` are the settings that go into the `kibana.yml` file.
     * `secureSettings` is a list of Secrets containing Secure Settings to inject into the keystore(s) of the {{kib}} instance(s) to which this policy applies, similar to the [{{kib}} Secure Settings](../../security/k8s-secure-settings.md).

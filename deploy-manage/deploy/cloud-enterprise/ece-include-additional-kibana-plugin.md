@@ -9,7 +9,7 @@ mapped_pages:
 
 # Include additional {{kib}} plugins [ece-include-additional-kibana-plugin]
 
-In certain cases you may choose to expand the {{kib}} Docker image included in an Elastic Stack pack to include one or more additional plugins that are not bundled in the image by default. Plugins can extend the features included in Kibana, for example to include specialized visualizations. Adding plugins allows you to tailor your ECE deployments that include {{kib}} to suit your specific use cases.
+In certain cases you may choose to expand the {{kib}} Docker image included in an Elastic Stack pack to include one or more additional plugins that are not bundled in the image by default. Plugins can extend the features included in {{kib}}, for example to include specialized visualizations. Adding plugins allows you to tailor your ECE deployments that include {{kib}} to suit your specific use cases.
 
 The process involves two main steps:
 

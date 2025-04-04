@@ -124,7 +124,7 @@ spec:
 
 ## Specify a custom service in elasticsearchRef [k8s-traffic-splitting-with-service-name]
 
-You can then use your custom service in the `elasticsearchRef` element when specifying connections between {{es}} and other stack applications. This is an example on how to target only coordinating node from Kibana:
+You can then use your custom service in the `elasticsearchRef` element when specifying connections between {{es}} and other stack applications. This is an example on how to target only coordinating node from {{kib}}:
 
 ```yaml
 apiVersion: kibana.k8s.elastic.co/v1

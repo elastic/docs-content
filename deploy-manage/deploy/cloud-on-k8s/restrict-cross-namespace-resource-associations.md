@@ -10,7 +10,7 @@ mapped_pages:
 
 This section describes how to restrict associations that can be created between resources managed by ECK.
 
-When using the `elasticsearchRef` field to establish a connection to {{es}} from Kibana, APM Server, or Beats resources, by default the association is allowed as long as both resources are deployed to namespaces managed by that particular ECK instance. The association will succeed even if the user creating the association does not have access to one of the namespaces or the {{es}} resource.
+When using the `elasticsearchRef` field to establish a connection to {{es}} from {{kib}}, APM Server, or Beats resources, by default the association is allowed as long as both resources are deployed to namespaces managed by that particular ECK instance. The association will succeed even if the user creating the association does not have access to one of the namespaces or the {{es}} resource.
 
 The enforcement of access control rules for cross-namespace associations is disabled by default. Once enabled, it only enforces access control for resources deployed across two different namespaces. Associations between resources deployed in the same namespace are not affected.
 

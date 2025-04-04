@@ -12,7 +12,7 @@ mapped_pages:
 
 # {{eck}} [k8s-overview]
 
-Built on the Kubernetes Operator pattern, {{eck}} (ECK) extends the basic Kubernetes orchestration capabilities to support the setup and management of Elasticsearch, Kibana, APM Server, Beats, Elastic Agent, Elastic Maps Server, and Logstash on Kubernetes.
+Built on the Kubernetes Operator pattern, {{eck}} (ECK) extends the basic Kubernetes orchestration capabilities to support the setup and management of {{es}}, {{kib}}, APM Server, Beats, Elastic Agent, Elastic Maps Server, and Logstash on Kubernetes.
 
 ## ECK overview
 
@@ -80,7 +80,7 @@ Alpha, beta, and stable API versions follow the same [conventions used by Kubern
 
 ECK is compatible with the following Elastic Stack applications:
 
-* Elasticsearch, Kibana, APM Server: 7.17+, 8+, 9+
+* {{es}}, {{kib}}, APM Server: 7.17+, 8+, 9+
 * Enterprise Search: 7.17+, 8+
 * Beats: 7.17+, 8+, 9+
 * Elastic Agent: 7.10+ (standalone), 7.17+ (Fleet), 8+, 9+

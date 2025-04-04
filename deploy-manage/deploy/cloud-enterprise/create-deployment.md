@@ -41,7 +41,7 @@ To create a deployment in ECE:
 
 7. Select **Create deployment**. It takes a few minutes before your deployment gets created.
 
-    While you're waiting, you will be prompted to save the admin credentials for your deployment, which grant superuser access to Elasticsearch. Write down the password for the `elastic` user and keep it somewhere safe. These credentials also help you [add data using Kibana](../../../manage-data/ingest.md). If you need to refresh these credentials, you can [reset the password](../../../deploy-manage/users-roles/cluster-or-deployment-auth/manage-elastic-user-cloud.md) at any time.
+    While you're waiting, you will be prompted to save the admin credentials for your deployment, which grant superuser access to {{es}}. Write down the password for the `elastic` user and keep it somewhere safe. These credentials also help you [add data using Kibana](../../../manage-data/ingest.md). If you need to refresh these credentials, you can [reset the password](../../../deploy-manage/users-roles/cluster-or-deployment-auth/manage-elastic-user-cloud.md) at any time.
 
 8. Once the deployment is ready, select **Continue** to open the deployment’s main page.
 

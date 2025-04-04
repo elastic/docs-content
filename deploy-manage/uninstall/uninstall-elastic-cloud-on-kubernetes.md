@@ -29,5 +29,5 @@ To uninstall the operator:
     ```
 
 ::::{warning}
-Deleting CRDs will trigger deletion of all custom resources (Elasticsearch, Kibana, APM Server, Beats, Elastic Agent, Elastic Maps Server, and Logstash) in all namespaces of the cluster, regardless of whether they are managed by a single operator or multiple operators.
+Deleting CRDs will trigger deletion of all custom resources ({{es}}, {{kib}}, APM Server, Beats, Elastic Agent, Elastic Maps Server, and Logstash) in all namespaces of the cluster, regardless of whether they are managed by a single operator or multiple operators.
 ::::

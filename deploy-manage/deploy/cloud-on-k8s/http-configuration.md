@@ -22,7 +22,7 @@ Refer to [Reserve static IP and custom domain](/deploy-manage/security/k8s-https
 
 ## Provide your own certificate [k8s-maps-http-custom-tls]
 
-If you want to use your own certificate, the required configuration is identical to Elasticsearch. Check [Custom HTTP certificate](/deploy-manage/security/k8s-https-settings.md#k8s-setting-up-your-own-certificate).
+If you want to use your own certificate, the required configuration is identical to {{es}}. Check [Custom HTTP certificate](/deploy-manage/security/k8s-https-settings.md#k8s-setting-up-your-own-certificate).
 
 
 ## Disable TLS [k8s-maps-http-disable-tls]

@@ -8,7 +8,7 @@ mapped_pages:
 
 # Manage compute resources [k8s-managing-compute-resources]
 
-To help the Kubernetes scheduler correctly place Pods in available Kubernetes nodes and ensure quality of service (QoS), it is recommended to specify the CPU and memory requirements for objects managed by the operator (Elasticsearch, Kibana, APM Server, Beats, Elastic Agent, Elastic Maps Server, and Logstash). In Kubernetes, `requests` defines the minimum amount of resources that must be available for a Pod to be scheduled; `limits` defines the maximum amount of resources that a Pod is allowed to consume. For more information about how Kubernetes uses these concepts, check [Managing Compute Resources for Containers](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/).
+To help the Kubernetes scheduler correctly place Pods in available Kubernetes nodes and ensure quality of service (QoS), it is recommended to specify the CPU and memory requirements for objects managed by the operator ({{es}}, {{kib}}, APM Server, Beats, Elastic Agent, Elastic Maps Server, and Logstash). In Kubernetes, `requests` defines the minimum amount of resources that must be available for a Pod to be scheduled; `limits` defines the maximum amount of resources that a Pod is allowed to consume. For more information about how Kubernetes uses these concepts, check [Managing Compute Resources for Containers](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/).
 
 ::::{note}
 The operator applies default requests and limits for memory and CPU. They may be suitable for experimenting with the Elastic Stack, however it is recommended to reevaluate these values for production use cases.
@@ -105,7 +105,7 @@ A [known Kubernetes issue](https://github.com/kubernetes/kubernetes/issues/51135
 
 
 
-### Set compute resources for Kibana, Elastic Maps Server, APM Server and Logstash [k8s-compute-resources-kibana-and-apm]
+### Set compute resources for {{kib}}, Elastic Maps Server, APM Server and Logstash [k8s-compute-resources-kibana-and-apm]
 
 ```yaml
 apiVersion: kibana.k8s.elastic.co/v1
@@ -331,7 +331,7 @@ To avoid this, explicitly define the requests and limits mandated by your enviro
 
 #### Monitoring {{es}} CPU using Stack Monitoring [k8s-monitor-compute-resources-stack-monitoring]
 
-If [Stack Monitoring](../../monitor/stack-monitoring/eck-stack-monitoring.md) is enabled, the pressure applied by the CPU cgroup controller to an {{es}} node can be evaluated from the **Stack Monitoring** page in Kibana.
+If [Stack Monitoring](../../monitor/stack-monitoring/eck-stack-monitoring.md) is enabled, the pressure applied by the CPU cgroup controller to an {{es}} node can be evaluated from the **Stack Monitoring** page in {{kib}}.
 
 1. On the **Stack Monitoring** page select the {{es}} node you want to monitor.
 2. Select the **Advanced** tab.

@@ -101,7 +101,7 @@ Of course, you can choose to follow your own path and use Elastic components ava
     * [Sign Up for a Trial](/deploy-manage/deploy/elastic-cloud/create-an-organization.md) - Sign up, check what your free trial includes and when we require a credit card.
     * [Sign Up from Marketplace](/deploy-manage/deploy/elastic-cloud/subscribe-from-marketplace.md) - Consolidate billing portals by signing up through one of the available marketplaces.
 
-* [Create a deployment](/deploy-manage/deploy/elastic-cloud/create-an-elastic-cloud-hosted-deployment.md) - Get up and running very quickly. Select your desired configuration and let Elastic deploy Elasticsearch, Kibana, and the Elastic products that you need for you. In a deployment, everything works together, everything runs on hardware that is optimized for your use case.
+* [Create a deployment](/deploy-manage/deploy/elastic-cloud/create-an-elastic-cloud-hosted-deployment.md) - Get up and running very quickly. Select your desired configuration and let Elastic deploy {{es}}, {{kib}}, and the Elastic products that you need for you. In a deployment, everything works together, everything runs on hardware that is optimized for your use case.
 * [Connect your data to your deployment](/manage-data/ingest.md) - Ingest and index the data you want, from a variety of sources, and take action on it.
 
 **Adjust the capacity and capabilities of your deployments for production**

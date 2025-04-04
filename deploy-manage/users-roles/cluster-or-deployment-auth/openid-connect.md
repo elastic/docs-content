@@ -350,7 +350,7 @@ You can't use [role mapping files](/deploy-manage/users-roles/cluster-or-deploym
 
 ### Example: using the role mapping API
 
-If you want all your users authenticating with OpenID Connect to get access to Kibana, issue the following request to Elasticsearch:
+If you want all your users authenticating with OpenID Connect to get access to {{kib}}, issue the following request to {{es}}:
 
 ```sh
 POST /_security/role_mapping/CLOUD_OIDC_TO_KIBANA_ADMIN <1>

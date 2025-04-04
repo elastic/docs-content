@@ -59,7 +59,7 @@ To use a custom snapshot repository, [register a new snapshot repository](snapsh
 ::::{dropdown} {{ece}}
 To enable snapshots for your {{es}} clusters, you must first [configure a repository](snapshot-and-restore/cloud-enterprise.md) at the platform level in ECE and then associate it with your deployments. Once configured, snapshots are taken every 30 minutes or at the interval you specify.
 
-Use **Kibana** to manage your snapshots. In Kibana, you can:
+Use **Kibana** to manage your snapshots. In {{kib}}, you can:
 
 - Set up additional repositories where snapshots are stored (other than the one managed by {{ece}})
 - View and delete snapshots
@@ -133,7 +133,7 @@ To restore a snapshot to a cluster, the versions for the snapshot, cluster, and 
 
 ### Snapshot version compatibility [snapshot-restore-version-compatibility]
 
-You can’t restore a snapshot to an earlier version of Elasticsearch. For example, you can’t restore a snapshot taken in 7.6.0 to a cluster running 7.5.0.
+You can’t restore a snapshot to an earlier version of {{es}}. For example, you can’t restore a snapshot taken in 7.6.0 to a cluster running 7.5.0.
 
 ### Index compatibility
 
@@ -150,7 +150,7 @@ Any index you restore from a snapshot must also be compatible with the current c
 
 [¹] Supported with [archive indices](/deploy-manage/upgrade/deployment-or-cluster/reading-indices-from-older-elasticsearch-versions.md).
 
-You can’t restore an index to an earlier version of Elasticsearch. For example, you can’t restore an index created in 7.6.0 to a cluster running 7.5.0.
+You can’t restore an index to an earlier version of {{es}}. For example, you can’t restore an index created in 7.6.0 to a cluster running 7.5.0.
 
 A compatible snapshot can contain indices created in an older incompatible version. For example, a snapshot of a 7.17 cluster can contain an index created in 6.8. Restoring the 6.8 index to an 8.17 cluster fails unless you can use the [archive functionality](/deploy-manage/upgrade/deployment-or-cluster/reading-indices-from-older-elasticsearch-versions.md). Keep this in mind if you take a snapshot before upgrading a cluster.
 

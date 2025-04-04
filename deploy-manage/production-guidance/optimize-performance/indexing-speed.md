@@ -47,7 +47,7 @@ On the other hand, if your index experiences regular search requests, this defau
 
 ## Disable replicas for initial loads [_disable_replicas_for_initial_loads]
 
-If you have a large amount of data that you want to load all at once into Elasticsearch, it may be beneficial to set `index.number_of_replicas` to `0` in order to speed up indexing. Having no replicas means that losing a single node may incur data loss, so it is important that the data lives elsewhere so that this initial load can be retried in case of an issue. Once the initial load is finished, you can set `index.number_of_replicas` back to its original value.
+If you have a large amount of data that you want to load all at once into {{es}}, it may be beneficial to set `index.number_of_replicas` to `0` in order to speed up indexing. Having no replicas means that losing a single node may incur data loss, so it is important that the data lives elsewhere so that this initial load can be retried in case of an issue. Once the initial load is finished, you can set `index.number_of_replicas` back to its original value.
 
 If `index.refresh_interval` is configured in the index settings, it may further help to unset it during this initial load and setting it back to its original value once the initial load is finished.
 

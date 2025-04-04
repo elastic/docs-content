@@ -14,7 +14,7 @@ applies_to:
 
 # Enable stack monitoring on ECK deployments [k8s-stack-monitoring]
 
-You can enable [Stack Monitoring](/deploy-manage/monitor.md) on Elasticsearch, Kibana, Beats and Logstash to collect and ship their metrics and logs to a monitoring cluster. Although self-monitoring is possible, it is advised to use a [separate monitoring cluster](/deploy-manage/monitor/stack-monitoring.md).
+You can enable [Stack Monitoring](/deploy-manage/monitor.md) on {{es}}, {{kib}}, Beats and Logstash to collect and ship their metrics and logs to a monitoring cluster. Although self-monitoring is possible, it is advised to use a [separate monitoring cluster](/deploy-manage/monitor/stack-monitoring.md).
 
 ## How stack monitoring works in ECK
 

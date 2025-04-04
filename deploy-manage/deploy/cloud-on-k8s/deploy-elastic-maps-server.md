@@ -47,5 +47,5 @@ Any Elastic Maps Server can reference (and thus access) any {{es}} instance as l
 ::::
 
 
-The Elastic Maps Server configuration file is automatically setup by ECK to establish a secure connection to Elasticsearch.
+The Elastic Maps Server configuration file is automatically setup by ECK to establish a secure connection to {{es}}.
 

@@ -86,7 +86,7 @@ By default, the health API runs at a regular cadence, and each time it runs, it 
 This message looks like:
 
 ```txt
-Detected potential performance issue with Task Manager. Set 'xpack.task_manager.monitored_stats_health_verbose_log.enabled: true' in your Kibana.yml to enable debug logging`
+Detected potential performance issue with Task Manager. Set 'xpack.task_manager.monitored_stats_health_verbose_log.enabled: true' in your {{kib}}.yml to enable debug logging`
 ```
 
 If this message appears, set [`xpack.task_manager.monitored_stats_health_verbose_log.enabled`](kibana://reference/configuration-reference/task-manager-settings.md#task-manager-settings) to `true` in your `kibana.yml`. This will start logging the health metrics at either a `warn` or `error` log level, depending on the detected severity of the potential problem.

@@ -170,7 +170,7 @@ The health of the cluster is deliberately ignored in the following cases:
 * If all the {{es}} nodes of a NodeSet are unavailable, probably caused by a misconfiguration, the operator ignores the cluster health and upgrades nodes of the NodeSet.
 * If an {{es}} node to upgrade is not healthy, and not part of the {{es}} cluster, the operator ignores the cluster health and upgrades the {{es}} node.
 
-    * {{es}} versions cannot be downgraded. For example, it is impossible to downgrade an existing cluster from version 7.3.0 to 7.2.0. This is not supported by Elasticsearch.
+    * {{es}} versions cannot be downgraded. For example, it is impossible to downgrade an existing cluster from version 7.3.0 to 7.2.0. This is not supported by {{es}}.
 
 
 Advanced users may force an upgrade by manually deleting Pods themselves. The deleted Pods are automatically recreated at the latest revision.

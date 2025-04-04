@@ -381,13 +381,13 @@ Beginning with Elastic Stack version 8.0, [Integrations Server](manage-integrati
 
 You have the option to add a combined [Application Performance Monitoring (APM) Server](/solutions/observability/apps/application-performance-monitoring-apm.md) and [Fleet Server](/reference/fleet/index.md) to your deployment. APM allows you to monitor software services and applications in real time, turning that data into documents stored in the {{es}} cluster. Fleet allows you to centrally manage Elastic Agents on many hosts.
 
-As part of provisioning, the APM Server and Fleet Server are already configured to work with {{es}} and Kibana. At the end of provisioning, you are shown the secret token to configure communication between the APM Server and the backend [APM Agents](https://www.elastic.co/guide/en/apm/agent/index.html). The APM Agents get deployed within your services and applications.
+As part of provisioning, the APM Server and Fleet Server are already configured to work with {{es}} and {{kib}}. At the end of provisioning, you are shown the secret token to configure communication between the APM Server and the backend [APM Agents](https://www.elastic.co/guide/en/apm/agent/index.html). The APM Agents get deployed within your services and applications.
 
 From the deployment **APM & Fleet** page you can also:
 
 * Get the URL to complete the APM agent configuration.
-* Use the `elastic` credentials to go to the APM area of Kibana. Step by step instructions to configure a variety of agents are available right in Kibana. After that, you can use the pre-built, dedicated dashboards and the APM tab to visualize the data that is sent back from the APM Agents.
-* Use the `elastic` credentials to go to the Fleet area of Kibana. Step by step instructions to download and install Elastic Agent on your hosts are available right in Kibana. After that, you can manage enrolled Elastic Agents on the **Agents** tab, and the data shipped back from those Elastic Agents on the **Data streams** tab.
+* Use the `elastic` credentials to go to the APM area of {{kib}}. Step by step instructions to configure a variety of agents are available right in {{kib}}. After that, you can use the pre-built, dedicated dashboards and the APM tab to visualize the data that is sent back from the APM Agents.
+* Use the `elastic` credentials to go to the Fleet area of {{kib}}. Step by step instructions to download and install Elastic Agent on your hosts are available right in {{kib}}. After that, you can manage enrolled Elastic Agents on the **Agents** tab, and the data shipped back from those Elastic Agents on the **Data streams** tab.
 * Reset the APM secret token.
 
     ::::{important}

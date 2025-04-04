@@ -52,30 +52,30 @@ helm install es-quickstart elastic/eck-stack -n elastic-stack --create-namespace
 
 ## Fleet Server with Elastic Agents along with {{es}} and {{kib}} [k8s-install-fleet-agent-elasticsearch-kibana-helm] 
 
-The following section builds upon the previous section, and allows installing Fleet Server, and Fleet-managed Elastic Agents along with {{es}} and Kibana.
+The following section builds upon the previous section, and allows installing Fleet Server, and Fleet-managed Elastic Agents along with {{es}} and {{kib}}.
 
 ```sh
-# Install an eck-managed Elasticsearch, Kibana, Fleet Server, and managed Elastic Agents using custom values.
+# Install an eck-managed {{es}}, {{kib}}, Fleet Server, and managed Elastic Agents using custom values.
 helm install eck-stack-with-fleet elastic/eck-stack \
     --values https://raw.githubusercontent.com/elastic/cloud-on-k8s/2.16/deploy/eck-stack/examples/agent/fleet-agents.yaml -n elastic-stack
 ```
 
-## Logstash along with Elasticsearch, {{kib}} and Beats [k8s-install-logstash-elasticsearch-kibana-helm] 
+## Logstash along with {{es}}, {{kib}} and Beats [k8s-install-logstash-elasticsearch-kibana-helm] 
 
-The following section builds upon the previous sections, and allows installing Logstash along with Elasticsearch, {{kib}} and Beats.
+The following section builds upon the previous sections, and allows installing Logstash along with {{es}}, {{kib}} and Beats.
 
 ```sh
-# Install an eck-managed Elasticsearch, Kibana, Beats and Logstash using custom values.
+# Install an eck-managed {{es}}, {{kib}}, Beats and Logstash using custom values.
 helm install eck-stack-with-logstash elastic/eck-stack \
     --values https://raw.githubusercontent.com/elastic/cloud-on-k8s/2.16/deploy/eck-stack/examples/logstash/basic-eck.yaml -n elastic-stack
 ```
 
 ## Standalone Elastic APM Server along with {{es}} and {{kib}} [k8s-install-apm-server-elasticsearch-kibana-helm] 
 
-The following section builds upon the previous sections, and allows installing a standalone Elastic APM Server along with {{es}} and Kibana.
+The following section builds upon the previous sections, and allows installing a standalone Elastic APM Server along with {{es}} and {{kib}}.
 
 ```sh
-# Install an eck-managed Elasticsearch, Kibana, and standalone APM Server using custom values.
+# Install an eck-managed {{es}}, {{kib}}, and standalone APM Server using custom values.
 helm install eck-stack-with-apm-server elastic/eck-stack \
     --values https://raw.githubusercontent.com/elastic/cloud-on-k8s/2.16/deploy/eck-stack/examples/apm-server/basic.yaml -n elastic-stack
 ```

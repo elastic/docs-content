@@ -84,7 +84,7 @@ Make sure you have completed all prerequisites and environment preparations desc
     bash <(curl -fsSL https://download.elastic.co/cloud/elastic-cloud-enterprise.sh) install --coordinator-host HOST_IP --roles-token 'ALLOCATOR_TOKEN' --roles "allocator" --availability-zone MY_ZONE-3 --memory-settings '{"runner":{"xms":"1G","xmx":"1G"},"allocator":{"xms":"4G","xmx":"4G"}}'
     ```
 
-5. To handle the routing of user requests to Elasticsearch, install {{ece}} on a three additional hosts, distributing them evenly across the existing three availability zones, and assign them the `proxy` role. Do not assign any other roles, as these hosts should only route user requests. Make sure you include the coordinator host IP information from step 1 and the new roles token from step 2.
+5. To handle the routing of user requests to {{es}}, install {{ece}} on a three additional hosts, distributing them evenly across the existing three availability zones, and assign them the `proxy` role. Do not assign any other roles, as these hosts should only route user requests. Make sure you include the coordinator host IP information from step 1 and the new roles token from step 2.
 
     ```sh
     bash <(curl -fsSL https://download.elastic.co/cloud/elastic-cloud-enterprise.sh) install --coordinator-host HOST_IP --roles-token 'MY_TOKEN' --roles "proxy" --availability-zone MY_ZONE-1 --memory-settings '{"runner":{"xms":"1G","xmx":"1G"}}'

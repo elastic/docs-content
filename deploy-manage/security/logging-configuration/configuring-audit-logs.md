@@ -30,7 +30,7 @@ For a complete description of event details and format, refer to the following r
 
 ### {{kib}} auditing configuration
 
-To control the logs that are outputted by Kibana, you can use [{{kib}} ignore filters](kibana://reference/configuration-reference/security-settings.md#audit-logging-ignore-filters). These are a list of filters that determine which events should be excluded from the audit log.
+To control the logs that are outputted by {{kib}}, you can use [{{kib}} ignore filters](kibana://reference/configuration-reference/security-settings.md#audit-logging-ignore-filters). These are a list of filters that determine which events should be excluded from the audit log.
 
 In self-managed systems, you can optionally configure audit logs location, and file/rolling file using [{{kib}} audit logging settings](kibana://reference/configuration-reference/security-settings.md#audit-logging-settings).
 

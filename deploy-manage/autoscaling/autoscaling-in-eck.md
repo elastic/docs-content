@@ -9,7 +9,7 @@ navigation_title: "In ECK"
 ---
 # Autoscaling in {{eck}}
 
-Configure autoscaling for {{es}} deployments in {{eck}}. Learn how to enable autoscaling, define policies, manage resource limits, and monitor scaling. Includes details on autoscaling stateless applications like Kibana, APM Server, and Elastic Maps Server.
+Configure autoscaling for {{es}} deployments in {{eck}}. Learn how to enable autoscaling, define policies, manage resource limits, and monitor scaling. Includes details on autoscaling stateless applications like {{kib}}, APM Server, and Elastic Maps Server.
 
 ## Deployments autoscaling on ECK [k8s-autoscaling]
 
@@ -302,7 +302,7 @@ You should adjust those settings manually to match the size of your deployment w
 ## Autoscaling stateless applications on ECK [k8s-stateless-autoscaling]
 
 ::::{note} 
-This section only applies to stateless applications. Check [{{es}} autoscaling](#k8s-autoscaling) for more details about scaling automatically Elasticsearch.
+This section only applies to stateless applications. Check [{{es}} autoscaling](#k8s-autoscaling) for more details about automatically scaling {{es}}.
 ::::
 
 

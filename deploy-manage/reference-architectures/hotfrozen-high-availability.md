@@ -90,7 +90,7 @@ This table shows our specific recommendations for nodes in a Hot/Frozen architec
 * If auditable or business critical events are being logged, a backup is necessary. The choice to back up data will depend on each individual business’s needs and requirements. Refer to our [snapshot repository](/deploy-manage/tools/snapshot-and-restore/self-managed.md) documentation to learn more.
 * To automate snapshots and attach to Index lifecycle management policies, refer to [SLM (Snapshot lifecycle management)](/deploy-manage/tools/snapshot-and-restore/create-snapshots.md#automate-snapshots-slm).
 
-**Kibana:**
+**{{kib}}:**
 
 * If self-deploying outside of {{ech}}, ensure that {{kib}} is configured for [high availability](/deploy-manage/production-guidance/kibana-load-balance-traffic.md#high-availability).
 

@@ -57,7 +57,7 @@ When a platform-level repository is associated with a deployment, the `found-sna
 * [Minio](/deploy-manage/tools/snapshot-and-restore/minio-on-premise-repository.md)
 
 :::{note}
-No repository types other than those listed are supported in the {{ece}} platform, even if they are supported by Elasticsearch.
+No repository types other than those listed are supported in the {{ece}} platform, even if they are supported by {{es}}.
 :::
 
 For more details, refer to [Managing snapshot repositories in {{ece}}](/deploy-manage/tools/snapshot-and-restore/cloud-enterprise.md).

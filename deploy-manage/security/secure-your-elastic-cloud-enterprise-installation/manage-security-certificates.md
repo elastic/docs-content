@@ -18,7 +18,7 @@ Cloud UI certificate
 :   Used to connect securely to the Cloud UI and to make RESTful API calls.
 
 Proxy certificate
-:   Used to connect securely to {{es}} clusters and Kibana. You should use a wildcard certificate rooted at the [cluster endpoint that you set](../../deploy/cloud-enterprise/change-endpoint-urls.md) (`*.example.com`, for example). A wildcard certificate is required, because the first label of the DNS address is distinct for {{es}} clusters and {{kib}} (`bc898abb421843918ebc31a513169a.example.com`, for example).
+:   Used to connect securely to {{es}} clusters and {{kib}}. You should use a wildcard certificate rooted at the [cluster endpoint that you set](../../deploy/cloud-enterprise/change-endpoint-urls.md) (`*.example.com`, for example). A wildcard certificate is required, because the first label of the DNS address is distinct for {{es}} clusters and {{kib}} (`bc898abb421843918ebc31a513169a.example.com`, for example).
 
     If you wish to enable [custom endpoint aliases](../../deploy/cloud-enterprise/enable-custom-endpoint-aliases.md) in ECE 2.10 or later, please also follow the directions for adding Subject Alternative Name (SAN) entries to support these aliases.
 
@@ -27,7 +27,7 @@ Proxy certificate
     ::::
 
 
-    After the certificates have been installed, connecting securely to Elasticsearch, Kibana, and the Cloud UI or making secure RESTful API calls to ECE should not result in any security warnings or errors.
+    After the certificates have been installed, connecting securely to {{es}}, {{kib}}, and the Cloud UI or making secure RESTful API calls to ECE should not result in any security warnings or errors.
 
 
 

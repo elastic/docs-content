@@ -10,7 +10,7 @@ mapped_pages:
 
 This section covers various {{es}} cluster configuration scenarios when using ECK. For configuration topics relevant to both {{es}} and {{kib}}, see the [](./configure-deployments.md).
 
-Before deploying and running ECK in production, review the basic and advanced settings available on this page. These configurations integrate Elasticsearch, Kubernetes, and ECK operator functionality to help you fine-tune your deployment.
+Before deploying and running ECK in production, review the basic and advanced settings available on this page. These configurations integrate {{es}}, Kubernetes, and ECK operator functionality to help you fine-tune your deployment.
 
 ## Key concepts
 

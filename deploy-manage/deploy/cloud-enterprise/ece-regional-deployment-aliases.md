@@ -67,7 +67,7 @@ While the `TransportClient` is deprecated, your custom endpoint aliases still wo
 
 * As part of the host name:
 
-    Similar to HTTP, you can find the fully qualified host on the deployment overview page by selecting **Copy endpoint** next to Elasticsearch. Make sure to remove the unnecessary `https://` prefix as well as the trailing HTTP port.
+    Similar to HTTP, you can find the fully qualified host on the deployment overview page by selecting **Copy endpoint** next to {{es}}. Make sure to remove the unnecessary `https://` prefix as well as the trailing HTTP port.
 
 * As part of the **Settings**:
 

@@ -52,7 +52,7 @@ You can enable adaptive allocations by using:
 If the new allocations fit on the current {{ml}} nodes, they are immediately started. If more resource capacity is needed for creating new model allocations, then your {{ml}} node will be scaled up if {{ml}} autoscaling is enabled to provide enough resources for the new allocation. The number of model allocations can be scaled down to 0. They cannot be scaled up to more than 32 allocations, unless you explicitly set the maximum number of allocations to more. Adaptive allocations must be set up independently for each deployment and [{{infer}} endpoint](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-inference).
 
 :::{note}
-When you create inference endpoints on {{serverless-short}} using Kibana, adaptive allocations are automatically turned on, and there is no option to disable them.
+When you create inference endpoints on {{serverless-short}} using {{kib}}, adaptive allocations are automatically turned on, and there is no option to disable them.
 :::
 
 ### Optimizing for typical use cases [optimizing-for-typical-use-cases]

@@ -73,7 +73,7 @@ Before you start creating your own deployment templates, you should have: [tagge
     If a data tier or component is not required for your particular use case, you can simply set its initial size per zone to `0`. You can enable a tier or component anytime you need it just by scaling up the size. If autoscaling is enabled, data tiers and machine learning nodes are sized up automatically when they’re needed. For example, when you configure your first machine learning job, ML nodes are enabled by the autoscaling process. Similarly, if you choose to create a cold data phase as part of your deployment’s index lifecycle management (ILM) policy, a cold data node is enabled automatically without your needing to configure it.
 
 8. Select **Manage indices**.
-9. On this page you can [configure index management](ece-configure-templates-index-management.md) by assigning attributes to each of the data nodes in the deployment template. In Kibana, you can configure an index lifecycle management (ILM) policy, based on the node attributes, to control how data moves across the nodes in your deployment.
+9. On this page you can [configure index management](ece-configure-templates-index-management.md) by assigning attributes to each of the data nodes in the deployment template. In {{kib}}, you can configure an index lifecycle management (ILM) policy, based on the node attributes, to control how data moves across the nodes in your deployment.
 10. Select **Stack features**.
 11. You can select a [snapshot repository](../../tools/snapshot-and-restore/cloud-enterprise.md) to be used by default for deployment backups.
 12. You can choose to [enable logging and monitoring](../../monitor/stack-monitoring/ece-ech-stack-monitoring.md) by default, so that deployment logs and metrics are send to a dedicated monitoring deployment, and so that additional log types, retention options, and {{kib}} visualizations are available on all deployments created using this template.
@@ -403,7 +403,7 @@ Before you start creating your own deployment templates, you should have: [tagge
 
 
 ::::{note}
-When specifying `node_roles` in the {{es}} plan of the deployment template, the template must contain all resource types and all {{es}} tiers. The deployment template must contain exactly one entry for each resource type. It must have one Elasticsearch, one Kibana, and one APM. On top of that, it must also include all supported {{es}} tiers in the {{es}} plan. The supported tiers are identified by the IDs `hot_content`, `warm`, `cold`, `frozen`, `master`, `coordinating` and `ml`.
+When specifying `node_roles` in the {{es}} plan of the deployment template, the template must contain all resource types and all {{es}} tiers. The deployment template must contain exactly one entry for each resource type. It must have one {{es}}, one {{kib}}, and one APM. On top of that, it must also include all supported {{es}} tiers in the {{es}} plan. The supported tiers are identified by the IDs `hot_content`, `warm`, `cold`, `frozen`, `master`, `coordinating` and `ml`.
 ::::
 
 

@@ -48,7 +48,7 @@ Deploys Logstash with a single pipeline defined in a secret, mounted as a volume
 kubectl apply -f https://raw.githubusercontent.com/elastic/cloud-on-k8s/2.16/config/recipes/logstash/logstash-es-role.yaml
 ```
 
-Deploys Logstash and Elasticsearch, and creates an updated version of the `eck_logstash_user_role` to write to a user specified index.
+Deploys Logstash and {{es}}, and creates an updated version of the `eck_logstash_user_role` to write to a user specified index.
 
 
 ## Creating persistent volumes for PQ and DLQ [k8s-logstash-configuration-pq-dlq]
@@ -57,7 +57,7 @@ Deploys Logstash and Elasticsearch, and creates an updated version of the `eck_l
 kubectl apply -f https://raw.githubusercontent.com/elastic/cloud-on-k8s/2.16/config/recipes/logstash/logstash-volumes.yaml
 ```
 
-Deploys Logstash, Beats and Elasticsearch. Logstash is configured with two pipelines:
+Deploys Logstash, Beats and {{es}}. Logstash is configured with two pipelines:
 
 * a main pipeline for reading from the {{beats}} instance, which will send to the DLQ if it is unable to write to Elasticsearch
 * a second pipeline, that will read from the DLQ. In addition, persistent queues are set up. This example shows how to configure persistent volumes outside of the default `logstash-data` persistent volume.

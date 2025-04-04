@@ -17,7 +17,7 @@ To set up automated snapshots for {{es}} on Kubernetes you have to:
 2. Set up a Snapshot Lifecycle Management Policy through [API](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-slm) or the [{{kib}} UI](/deploy-manage/tools/snapshot-and-restore.md)
 
 ::::{note}
-Support for S3, GCS and Azure repositories is bundled in {{es}} by default from version 8.0. On older versions of Elasticsearch, or if another snapshot repository plugin should be used, you have to [Install a snapshot repository plugin](#k8s-install-plugin).
+Support for S3, GCS and Azure repositories is bundled in {{es}} by default from version 8.0. On older versions of {{es}}, or if another snapshot repository plugin should be used, you have to [Install a snapshot repository plugin](#k8s-install-plugin).
 ::::
 
 
@@ -29,7 +29,7 @@ What follows is a non-exhaustive list of configuration examples. The first examp
 
 * [Basic snapshot repository setup using GCS as an example](#k8s-basic-snapshot-gcs)
 
-The following examples cover approaches that use Cloud-provider specific means to leverage Kubernetes service accounts to avoid having to configure snapshot repository credentials in Elasticsearch:
+The following examples cover approaches that use Cloud-provider specific means to leverage Kubernetes service accounts to avoid having to configure snapshot repository credentials in {{es}}:
 
 * [Use GKE Workload Identity](#k8s-gke-workload-identiy)
 * [Use AWS IAM roles for service accounts (IRSA)](#k8s-iam-service-accounts)
@@ -98,7 +98,7 @@ GCS credentials are automatically propagated into each {{es}} node’s keystore.
 
 #### Register the repository in {{es}} [k8s-create-repository]
 
-1. Create the GCS snapshot repository in Elasticsearch. You can either use the [Snapshot and Restore UI](/deploy-manage/tools/snapshot-and-restore.md) in {{kib}} version 7.4.0 or higher, or follow the procedure described in [Snapshot and Restore](/deploy-manage/tools/snapshot-and-restore.md):
+1. Create the GCS snapshot repository in {{es}}. You can either use the [Snapshot and Restore UI](/deploy-manage/tools/snapshot-and-restore.md) in {{kib}} version 7.4.0 or higher, or follow the procedure described in [Snapshot and Restore](/deploy-manage/tools/snapshot-and-restore.md):
 
     ```sh
     PUT /_snapshot/my_gcs_repository
@@ -169,7 +169,7 @@ Follow the instructions in the [GKE documentation](https://cloud.google.com/kube
 
 ### Use AWS IAM roles for service accounts (IRSA) [k8s-iam-service-accounts]
 
-The AWS IAM roles for service accounts feature allows you to give {{es}} restricted access to a S3 bucket without having to expose and store AWS credentials directly in Elasticsearch. This requires you to run the ECK operator on Amazon’s EKS offering and an [{{es}} cluster running at least version 8.1](https://www.elastic.co/guide/en/elasticsearch/reference/8.1/repository-s3.html#iam-kubernetes-service-accounts).
+The AWS IAM roles for service accounts feature allows you to give {{es}} restricted access to a S3 bucket without having to expose and store AWS credentials directly in {{es}}. This requires you to run the ECK operator on Amazon’s EKS offering and an [{{es}} cluster running at least version 8.1](https://www.elastic.co/guide/en/elasticsearch/reference/8.1/repository-s3.html#iam-kubernetes-service-accounts).
 
 Follow [the AWS documentation](https://aws.amazon.com/premiumsupport/knowledge-center/eks-restrict-s3-bucket/) to set this feature up. Specifically you need to:
 
@@ -282,7 +282,7 @@ Follow [the AWS documentation](https://aws.amazon.com/premiumsupport/knowledge-c
 
 ### Use Azure Workload Identity [k8s-azure-workload-identity]
 
-Starting with version 8.16 {{es}} supports Azure Workload identity which allows the use of Azure blob storage for {{es}} snapshots without exposing Azure credentials directly to Elasticsearch.
+Starting with version 8.16 {{es}} supports Azure Workload identity which allows the use of Azure blob storage for {{es}} snapshots without exposing Azure credentials directly to {{es}}.
 
 Follow the [Azure documentation](https://learn.microsoft.com/en-us/azure/aks/workload-identity-deploy-cluster) for setting up workload identity for the first five steps:
 

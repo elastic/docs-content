@@ -132,7 +132,7 @@ These features have been replaced by a new feature and are therefore not availab
 
 * **Watcher** is not available, in favor of [**Alerts**](../../../explore-analyze/alerts-cases/alerts.md#rules-alerts).
 
-    {{kib}} Alerts allows rich integrations across use cases like APM, metrics, security, and uptime. Prepackaged rule types simplify setup and hide the details of complex, domain-specific detections, while providing a consistent interface across Kibana.
+    {{kib}} Alerts allows rich integrations across use cases like APM, metrics, security, and uptime. Prepackaged rule types simplify setup and hide the details of complex, domain-specific detections, while providing a consistent interface across {{kib}}.
 
 
 

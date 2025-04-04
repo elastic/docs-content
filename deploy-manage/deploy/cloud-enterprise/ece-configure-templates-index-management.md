@@ -34,7 +34,7 @@ To configure index management when you create a deployment template:
 
         1. Specify the node attributes for your data configurations.
 
-            Node attributes are simple key-value pairs, such as `node_type: hot`, `node_type: warm`, and `node_type: cold`. These node attributes add defining metadata attributes to each data configuration in your template that tell your users what they can be used for. What you define here should help guide your users when they set up their index lifecycle management policy in Kibana, such as a hot-warm policy.
+            Node attributes are simple key-value pairs, such as `node_type: hot`, `node_type: warm`, and `node_type: cold`. These node attributes add defining metadata attributes to each data configuration in your template that tell your users what they can be used for. What you define here should help guide your users when they set up their index lifecycle management policy in {{kib}}, such as a hot-warm policy.
 
             1. Specify an attribute key-value pair in the **Node attributes** field, with the key and value separated by a colon.
             2. Repeat the previous step until you have added all the node attributes that you want to be available to your users when they create an index lifecycle policy later on.

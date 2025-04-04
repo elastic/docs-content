@@ -14,7 +14,7 @@ Snapshot repositories allow you to back up and restore your {{es}} data efficien
 
 By default, {{ech}} takes a snapshot of all the indices in your {{es}} cluster every 30 minutes. You can set a different snapshot interval if needed for your environment. You can also take snapshots on demand, without having to wait for the next interval. Taking a snapshot on demand does not affect the retention schedule for existing snapshots; it just adds an additional snapshot to the repository. This might be helpful if you are about to make a deployment change and you don’t have a current snapshot.
 
-Use {{kib}} to manage your snapshots. In Kibana, you can set up additional repositories where the snapshots are stored, other than the one currently managed by {{ech}}. You can view and delete snapshots, and configure a snapshot lifecycle management (SLM) policy to automate when snapshots are created and deleted.
+Use {{kib}} to manage your snapshots. In {{kib}}, you can set up additional repositories where the snapshots are stored, other than the one currently managed by {{ech}}. You can view and delete snapshots, and configure a snapshot lifecycle management (SLM) policy to automate when snapshots are created and deleted.
 
 Snapshots back up only open indices. If you close an index, it is not included in snapshots and you will not be able to restore the data.
 
@@ -38,7 +38,7 @@ When working with snapshot repositories in {{ech}}, keep the following in mind:
 - Each snapshot repository is separate and independent. {{es}} doesn’t share data between repositories.
 - Clusters should only register a particular snapshot repository bucket once. If you register the same snapshot repository with multiple clusters, only one cluster should have write access to the repository. On other clusters, register the repository as read-only.
 - This prevents multiple clusters from writing to the repository at the same time and corrupting the repository’s contents. It also prevents {{es}} from caching the repository’s contents, which means that changes made by other clusters will become visible straight away.
-- When upgrading {{es}} to a newer version, you can continue to use the same repository you were using before the upgrade. If the repository is accessed by multiple clusters, they should all have the same version. Once a repository has been modified by a particular version of Elasticsearch, it may not work correctly when accessed by older versions. However, you will be able to recover from a failed upgrade by restoring a snapshot taken before the upgrade into a cluster running the pre-upgrade version, even if you have taken more snapshots during or after the upgrade.
+- When upgrading {{es}} to a newer version, you can continue to use the same repository you were using before the upgrade. If the repository is accessed by multiple clusters, they should all have the same version. Once a repository has been modified by a particular version of {{es}}, it may not work correctly when accessed by older versions. However, you will be able to recover from a failed upgrade by restoring a snapshot taken before the upgrade into a cluster running the pre-upgrade version, even if you have taken more snapshots during or after the upgrade.
 
 ## {{ech}} snapshot repository types [ess-repo-types]
 

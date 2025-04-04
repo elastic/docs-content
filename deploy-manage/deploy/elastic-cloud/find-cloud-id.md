@@ -27,7 +27,7 @@ You include your Cloud ID along with your {{ecloud}} user credentials (defined i
 
 Not sure why you need Beats or Logstash? Here’s what they do:
 
-* [Beats](https://www.elastic.co/products/beats) is our open source platform for single-purpose data shippers. The purpose of Beats is to help you gather data from different sources and to centralize the data by shipping it to Elasticsearch. Beats install as lightweight agents and ship data from hundreds or thousands of machines to your hosted {{es}} cluster on {{ecloud}}. If you want more processing muscle, Beats can also ship to Logstash for transformation and parsing before the data gets stored in Elasticsearch.
+* [Beats](https://www.elastic.co/products/beats) is our open source platform for single-purpose data shippers. The purpose of Beats is to help you gather data from different sources and to centralize the data by shipping it to {{es}}. Beats install as lightweight agents and ship data from hundreds or thousands of machines to your hosted {{es}} cluster on {{ecloud}}. If you want more processing muscle, Beats can also ship to Logstash for transformation and parsing before the data gets stored in {{es}}.
 * [Logstash](https://www.elastic.co/products/logstash) is an open source, server-side data processing pipeline that ingests data from a multitude of sources simultaneously, transforms it, and then sends it to your favorite place where you stash things, here your hosted {{es}} cluster on {{ecloud}}. Logstash supports a variety of inputs that pull in events from a multitude of common sources — logs, metrics, web applications, data stores, and various AWS services — all in continuous, streaming fashion.
 
 
@@ -69,5 +69,5 @@ To get started with Metricbeat and {{ecloud}}:
 
 6. Open {{kib}} and explore!
 
-Metricbeat creates a data view (formerly *index pattern*) with defined fields, searches, visualizations, and dashboards that you can start exploring in Kibana. Look for information related to system metrics, such as CPU usage, utilization rates for memory and disk, and details for processes.
+Metricbeat creates a data view (formerly *index pattern*) with defined fields, searches, visualizations, and dashboards that you can start exploring in {{kib}}. Look for information related to system metrics, such as CPU usage, utilization rates for memory and disk, and details for processes.
 

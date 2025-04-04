@@ -13,7 +13,7 @@ mapped_pages:
 Use the following recommendations when configuring your load balancer:
 
 * **High availability**: The exact number of load balancers depends on the utilization rate for your clusters. In a highly available installation, use at least two load balancers for each availability zone in your installation.
-* **Inbound ports**: Load balancers require that inbound traffic is open on the ports used by Elasticsearch, Kibana, and the transport client.
+* **Inbound ports**: Load balancers require that inbound traffic is open on the ports used by {{es}}, {{kib}}, and the transport client.
 * **X-found-cluster**: ECE proxy uses the header `X-found-cluster` to know which cluster’s UUID (Universally Unique Identifier) the traffic needs to be routed to. If the load balancer rewrites a URL, make sure the HTTP header `X-Found-Cluster` gets added. For example: `X-found-cluster: d59109b8d542c5c4845679e597810796`.
 * **X-Forwarded-For**: Configure load balancers to strip inbound `X-Forwarded-For` headers and to replace them with the client source IP as seen by the load balancer. This is required to prevent clients from spoofing their IP addresses. {{ece}} uses `X-Forwarded-For` for logging client IP addresses and, if you have implemented IP filtering, for traffic management.
 * **HTTP**: Use *HTTP mode* for ports 9200/9243 (HTTP traffic to clusters) and also for ports 12400/12443 (adminconsole traffic).
