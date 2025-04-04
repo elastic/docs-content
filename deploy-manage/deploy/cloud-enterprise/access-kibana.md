@@ -35,7 +35,7 @@ To access {{kib}}:
     * Log in with [any users you created in {{kib}} already](/deploy-manage/users-roles/cluster-or-deployment-auth/user-roles.md).
 
     ::::{tip}
-    On AWS and not able to access Kibana? [Check if you need to update your endpoint URL first](../../../troubleshoot/deployments/cloud-enterprise/common-issues.md#ece-aws-private-ip).
+    On AWS and not able to access {{kib}}? [Check if you need to update your endpoint URL first](../../../troubleshoot/deployments/cloud-enterprise/common-issues.md#ece-aws-private-ip).
     ::::
 
 In production systems, you might need to control what {{es}} data users can access through {{kib}}, so you need create credentials that can be used to access the necessary {{es}} resources. This means granting read access to the necessary indexes, as well as access to update the `.kibana` index. Refer to [](/deploy-manage/users-roles/cluster-or-deployment-auth.md) for more information.
