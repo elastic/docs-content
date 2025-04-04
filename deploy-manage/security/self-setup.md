@@ -5,6 +5,7 @@ applies_to:
     self: ga
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/manually-configure-security.html
+  - https://www.elastic.co/guide/en/elastic-stack/current/install-stack-demo-secure.html
 ---
 
 % scope: initial security setup in self-managed deployments, following the automatic or manual (minimal, basic, https) procedures
