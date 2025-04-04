@@ -153,4 +153,4 @@ No matter how many times you use Automatic Migration, migration data will contin
 
 **How does Automatic Migration handle Splunk rules which lookup other indices?**
 
-Rules that fall into this category will typically appear with a status of partially translated. You can use the [`LOOKUP JOIN](elasticsearch://reference/query-languages/esql/esql-lookup-join.md) capability to help in this situation. 
+Rules that fall into this category will typically appear with a status of partially translated. You can use the [`LOOKUP JOIN`](elasticsearch://reference/query-languages/esql/esql-lookup-join.md) capability to help in this situation. 
