@@ -15,14 +15,14 @@ AutoOps is currently available in the following regions:
 | Provider | Region | Name |
 | --- | --- | --- | --- |
 | AWS | us-east-1 | US East (N. Virginia) |
+| AWS | us-east-2 | Ohio | 
 | AWS | us-west-2 | Oregon |
 | AWS | eu-west-1 | Ireland |
-| AWS | ap-southeast-1 | Singapore |
-| AWS | eu-central-1 | Frankfurt |
-| AWS | ap-northeast-1| Tokyo | 
 | AWS | eu-west-2 | London |
+| AWS | eu-central-1 | Frankfurt |
+| AWS | ap-southeast-1 | Singapore |
+| AWS | ap-northeast-1| Tokyo | 
 | AWS | ap-south-1 | Mumbai | 
-| AWS | us-east-2 | Ohio | 
 
 ::::{note} 
 Currently, a limited number of AWS regions are available. More regions for AWS, Azure and GCP will be added in the future. Also, AutoOps is currently not available for GovCloud customers.
