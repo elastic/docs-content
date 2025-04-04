@@ -1,5 +1,4 @@
 toc:
-  - file: index.md
   - toc: intro
   - toc: elasticsearch-clients
   - toc: elastic-observability
