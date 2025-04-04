@@ -2,7 +2,7 @@
 applies_to:
   deployment:
     ess: ga
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-traffic-filtering-vnet.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-traffic-filtering-vnet.html
 ---
@@ -182,7 +182,7 @@ Let’s test the connection:
         ```
 
 3. You can test the Azure portal part of the setup with the following command (substitute the region and {{es}} ID with your cluster):
-   
+
     ```sh
     $ curl -v https://6b111580caaa4a9e84b18ec7c600155e.privatelink.eastus2.azure.elastic-cloud.com:9243
     ```

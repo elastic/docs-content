@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-delete-deployment.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-delete-deployment.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-terminate-deployment.html
@@ -10,7 +10,7 @@ navigation_title: "Delete a cloud deployment"
 applies_to:
   deployment:
     ess:
-    ece: 
+    ece:
   serverless:
 ---
 
@@ -20,7 +20,7 @@ This page provides instructions for deleting several types of cloud deployments,
 
 ## {{ech}} [elastic-cloud-hosted]
 
-To delete an {{ech}} deployment: 
+To delete an {{ech}} deployment:
 
 1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
 2. On the deployment overview page, select **Actions**, then select **Delete deployment** and confirm the deletion.

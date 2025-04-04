@@ -2,7 +2,7 @@
 applies_to:
   deployment:
     self: ga
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/using-kibana-with-security.html
   - https://www.elastic.co/guide/en/kibana/current/Security-production-considerations.html
 ---

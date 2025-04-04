@@ -3,7 +3,7 @@ applies_to:
   deployment:
     ess: ga
   serverless: ga
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/elasticsearch-http-apis.html
   - https://www.elastic.co/guide/en/tpec/current/index.html
 navigation_title: "Tools and APIs"
@@ -49,8 +49,8 @@ Refer to [{{es}} API conventions](elasticsearch://reference/elasticsearch/rest-a
 
 The following APIs are available for {{es-serverless}} users:
 
-- [{{es}} {{serverless-short}} APIs](https://www.elastic.co/docs/api/doc/elasticsearch-serverless): Use these APIs to index, manage, search, and analyze your data in {{es-serverless}}. 
-  
+- [{{es}} {{serverless-short}} APIs](https://www.elastic.co/docs/api/doc/elasticsearch-serverless): Use these APIs to index, manage, search, and analyze your data in {{es-serverless}}.
+
   Learn how to [connect to your {{es-serverless}} endpoint](/solutions/search/get-started.md).
 - [{{kib}} {{serverless-short}} APIs](https://www.elastic.co/docs/api/doc/serverless): Use these APIs to manage resources such as connectors, data views, and saved objects for your {{serverless-full}} project.
 ::::

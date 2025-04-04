@@ -2,7 +2,7 @@
 applies_to:
   deployment: all
   serverless: ga
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/security-files.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/secure-cluster.html
   - https://www.elastic.co/guide/en/kibana/current/xpack-security.html
@@ -32,7 +32,7 @@ deployment:
 serverless: all
 ```
 
-{{ecloud}} has built-in security. For example, HTTPS communications between {{ecloud}} and the internet, as well as inter-node communications, are secured automatically, and cluster data is encrypted at rest. 
+{{ecloud}} has built-in security. For example, HTTPS communications between {{ecloud}} and the internet, as well as inter-node communications, are secured automatically, and cluster data is encrypted at rest.
 
 In {{ech}}, you can augment these Security features in the following ways:
 * Configure [traffic filtering](/deploy-manage/security/traffic-filtering.md) to prevent unauthorized access to your deployments.
@@ -91,7 +91,7 @@ You can configure the following aspects of your Elastic cluster or deployment to
 
 :::{include} /deploy-manage/security/_snippets/cluster-data.md
 :::
- 
+
 ### User session security
 
 :::{include} /deploy-manage/security/_snippets/cluster-user-session.md
@@ -115,7 +115,7 @@ You can configure the following aspects of your Elastic cluster or deployment to
 
 The {{es}} security features enable you to secure your {{es}} cluster. However, for a complete security strategy, you must secure other applications in the {{stack}}, as well as communications between {{es}} and other {{stack}} components.
 
-[Review security topics for other {{stack}} components](/deploy-manage/security/secure-clients-integrations.md). 
+[Review security topics for other {{stack}} components](/deploy-manage/security/secure-clients-integrations.md).
 
 ## Securing clients and integrations
 

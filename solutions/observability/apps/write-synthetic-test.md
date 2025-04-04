@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/synthetics-create-test.html
   - https://www.elastic.co/guide/en/serverless/current/observability-synthetics-create-test.html
 ---

@@ -1,6 +1,6 @@
 ---
 navigation_title: Configure Kibana reporting
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/secure-reporting.html
 applies_to:
   deployment:

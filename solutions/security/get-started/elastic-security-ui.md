@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/security/current/es-ui-overview.html
   - https://www.elastic.co/guide/en/serverless/current/security-ui.html
 applies_to:

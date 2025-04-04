@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/monitoring-overview.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/how-monitoring-works.html
 applies_to:

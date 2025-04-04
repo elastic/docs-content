@@ -1,12 +1,12 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-migrating-data.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-migrating-data.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-migrate-data2.html
 applies_to:
   stack: ga
   deployment:
-    eck: unavailable 
+    eck: unavailable
     ess: ga
     ece: ga
   serverless: unavailable
@@ -146,30 +146,30 @@ For {{ece}} users, while it is most common to have Amazon S3 buckets, you should
 3. Add the snapshot repository:
 
     ::::{tab-set}
-    
+
     :::{tab-item} {{ech}}
 
     From the [console](https://cloud.elastic.co?page=docs&placement=docs-body) of the **new** {{es}} cluster, add the snapshot repository.
-    
+
     For details, check our guidelines for:
     * [Amazon Web Services (AWS) Storage](../deploy-manage/tools/snapshot-and-restore/ec-aws-custom-repository.md)
     * [Google Cloud Storage (GCS)](../deploy-manage/tools/snapshot-and-restore/ec-gcs-snapshotting.md)
     * [Azure Blob Storage](../deploy-manage/tools/snapshot-and-restore/ec-azure-snapshotting.md).
-    
+
     If you’re migrating [searchable snapshots](../deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md), the repository name must be identical in the source and     destination clusters.
-    
+
     If the source cluster is still writing to the repository, you need to set the destination cluster’s repository connection to `readonly:true` to avoid data corruption. Refer to [backup a repository](../deploy-manage/tools/snapshot-and-restore/self-managed.md#snapshots-repository-backup) for details.
     :::
-        
+
     :::{tab-item} {{ece}}
-    
+
     From the Cloud UI of the **new** {{es}} cluster add the snapshot repository.
-    
+
     For details about configuring snapshot repositories on Amazon Web Services (AWS), Google Cloud Storage (GCS), or Azure Blob Storage, check [manage Snapshot Repositories](../deploy-manage/tools/snapshot-and-restore/cloud-enterprise.md).
-    
+
     If you’re migrating [searchable snapshots](../deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md), the repository name must be identical in the source and     destination clusters.
     :::
-        
+
     ::::
 
 4. Start the Restore process.

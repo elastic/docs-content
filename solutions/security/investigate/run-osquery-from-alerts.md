@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/security/current/alerts-run-osquery.html
   - https://www.elastic.co/guide/en/serverless/current/security-alerts-run-osquery.html
 applies_to:

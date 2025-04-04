@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/security/current/connect-to-vertex.html
   - https://www.elastic.co/guide/en/serverless/current/security-connect-to-google-vertex.html
 applies_to:

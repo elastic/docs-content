@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/action-types.html
   - https://www.elastic.co/guide/en/serverless/current/action-connectors.html
 applies_to:
