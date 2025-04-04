@@ -2,6 +2,9 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-errors.html
   - https://www.elastic.co/guide/en/serverless/current/observability-apm-errors.html
+applies_to:
+  stack:
+  serverless:
 ---
 
 # Errors [apm-errors]

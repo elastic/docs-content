@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-api-events.html
+applies_to:
+  stack:
 ---
 
 # Elastic APM events intake API [apm-api-events]
