@@ -8,7 +8,7 @@ mapped_pages:
 
 # Settings managed by ECK [k8s-reserved-settings]
 
-The following Elasticsearch settings are managed by ECK:
+The following {{es}} settings are managed by ECK:
 
 * `cluster.name`
 * `discovery.seed_hosts`
@@ -27,10 +27,10 @@ The following Elasticsearch settings are managed by ECK:
 * `xpack.security.transport.ssl.enabled`
 * `xpack.security.transport.ssl.verification_mode`
 
-The following Elasticsearch settings are not supported by ECK:
+The following {{es}} settings are not supported by ECK:
 
 * `xpack.security.http.ssl.client_authentication`: `required`
 
 ::::{warning}
-It is not recommended to change these ECK settings. We don’t support user-provided Elasticsearch configurations that use any of these settings.
+It is not recommended to change these ECK settings. We don’t support user-provided {{es}} configurations that use any of these settings.
 ::::

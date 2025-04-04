@@ -57,7 +57,7 @@ After removing an alias, your organisation’s account will hold a claim on it f
 
 ## Using the custom endpoint URL [ec-using-regional-deployment-alias]
 
-To use your new custom endpoint URL to access your Elastic products, note that each has its own alias to use in place of the default application UUID. For example, if you configured the custom endpoint alias for your deployment to be `test-alias`, the corresponding alias for the Elasticsearch cluster in that deployment is `test-alias.es`.
+To use your new custom endpoint URL to access your Elastic products, note that each has its own alias to use in place of the default application UUID. For example, if you configured the custom endpoint alias for your deployment to be `test-alias`, the corresponding alias for the {{es}} cluster in that deployment is `test-alias.es`.
 
 ::::{note}
 You can get the application-specific custom endpoint alias by selecting **Copy endpoint** for that product. It should contain a subdomain for each application type, for example `es`, `kb`, `apm`, or `ent`.

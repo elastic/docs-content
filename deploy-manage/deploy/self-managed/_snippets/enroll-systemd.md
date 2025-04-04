@@ -13,7 +13,7 @@
     For example:
 
     ```sh
-    Kibana has not been configured.
+    {{kib}} has not been configured.
     Go to http://<host>:5601/?code=<code> to get started.
     ```
 

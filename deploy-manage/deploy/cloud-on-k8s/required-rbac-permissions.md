@@ -50,14 +50,14 @@ These permissions are needed by the Service Account that ECK operator runs as.
 
 | Name | API group | Optional? | Usage |
 | --- | --- | --- | --- |
-| `Pod` |  | no | Assuring expected Pods presence during Elasticsearch reconciliation, safely deleting Pods during configuration changes and validating `podTemplate` by dry-run creation of Pods. |
+| `Pod` |  | no | Assuring expected Pods presence during {{es}} reconciliation, safely deleting Pods during configuration changes and validating `podTemplate` by dry-run creation of Pods. |
 | `Endpoint` |  | no | Checking availability of service endpoints. |
 | `Event` |  | no | Emitting events concerning reconciliation progress and issues. |
 | `PersistentVolumeClaim` |  | no | Expanding existing volumes. Check [docs](volume-claim-templates.md#k8s-volume-claim-templates-update) to learn more. |
 | `Secret` |  | no | Reading/writing configuration, passwords, certificates, and so on. |
 | `Service` |  | no | Creating Services fronting Elastic Stack applications. |
 | `ConfigMap` |  | no | Reading/writing configuration. |
-| `StatefulSet` | `apps` | no | Deploying Elasticsearch |
+| `StatefulSet` | `apps` | no | Deploying {{es}} |
 | `Deployment` | `apps` | no | Deploying Kibana, APM Server, EnterpriseSearch, Maps, Beats or Elastic Agent. |
 | `DaemonSet` | `apps` | no | Deploying Beats or Elastic Agent. |
 | `PodDisruptionBudget` | `policy` | no | Ensuring update safety for Elasticsearch. Check [docs](/deploy-manage/deploy/cloud-on-k8s/pod-disruption-budget.md) to learn more. |
@@ -69,7 +69,7 @@ And all permissions that the [Using ECK-managed resources](#k8s-eck-permissions-
 
 ## Using ECK-managed resources [k8s-eck-permissions-using]
 
-These permissions are needed to manage each Elastic Stack application. For example, to create, update and delete Elasticsearch clusters the permissions for the respective verbs must be held by the user that performs the operation.
+These permissions are needed to manage each Elastic Stack application. For example, to create, update and delete {{es}} clusters the permissions for the respective verbs must be held by the user that performs the operation.
 
 | Name | API group | Optional? |
 | --- | --- | --- |

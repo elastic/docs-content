@@ -16,7 +16,7 @@ Running the {{stack}} in production requires careful planning to ensure resilien
 
 You’ll learn how to design highly available and resilient deployments, implement best practices for managing workloads, and apply performance optimizations to handle scaling demands efficiently.
 
-For {{es}}, this includes strategies for fault tolerance, data replication, and workload distribution to maintain stability under load. For {{kib}}, you’ll explore how to deploy multiple Kibana instances within the same environment and make informed decisions about scaling horizontally or vertically based on the task manager metrics, which provide insights into background task execution and resource consumption.
+For {{es}}, this includes strategies for fault tolerance, data replication, and workload distribution to maintain stability under load. For {{kib}}, you’ll explore how to deploy multiple {{kib}} instances within the same environment and make informed decisions about scaling horizontally or vertically based on the task manager metrics, which provide insights into background task execution and resource consumption.
 
 By following this guidance, you can ensure your {{stack}} deployment is robust, efficient, and prepared for production-scale workloads.
 

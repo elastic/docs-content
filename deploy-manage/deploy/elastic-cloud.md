@@ -46,7 +46,7 @@ You can have multiple hosted deployments and serverless projects in the same {{e
 | **Pricing** | Individual per project type and based on your usage. | Based on deployment size and subscription level. |
 | **Performance** | Autoscales based on your usage. | Manual scaling. |
 | **Solutions** | Single solution per project. | Full Elastic Stack per deployment. |
-| **User management** | Elastic Cloud-managed users. | Elastic Cloud-managed users and native Kibana users. |
+| **User management** | Elastic Cloud-managed users. | Elastic Cloud-managed users and native {{kib}} users. |
 | **API support** | Subset of [APIs](https://www.elastic.co/docs/api). | All Elastic APIs. |
 | **Backups** | Projects automatically backed up by Elastic. | Your responsibility with Snapshot & Restore. |
 | **Data retention** | Editable on data streams. | Index Lifecycle Management. |

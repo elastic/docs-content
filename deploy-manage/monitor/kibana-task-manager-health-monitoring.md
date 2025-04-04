@@ -1,12 +1,12 @@
 ---
-navigation_title: "Kibana task manager monitoring"
+navigation_title: "{{kib}} task manager monitoring"
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/task-manager-health-monitoring.html
 applies_to:
   stack: preview
 ---
 
-# Kibana task manager health monitoring [task-manager-health-monitoring]
+# {{kib}} task manager health monitoring [task-manager-health-monitoring]
 
 
 ::::{warning}

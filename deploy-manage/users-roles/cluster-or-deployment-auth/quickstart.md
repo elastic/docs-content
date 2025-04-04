@@ -11,7 +11,7 @@ applies_to:
 
 # Quickstart [tutorial-secure-access-to-kibana]
 
-If you plan to use native Elasticsearch user and role management, then you can manage your users and roles completely within your {{kib}} instance. 
+If you plan to use native {{es}} user and role management, then you can manage your users and roles completely within your {{kib}} instance. 
 
 You can use native access management features to give your users access to only the surfaces and features they need. For example, some users might only need to view your dashboards, while others might need to manage your fleet of Elastic agents and run machine learning jobs to detect anomalous behavior in your network.
 
@@ -99,7 +99,7 @@ To create the role:
 
     1. From the **Spaces** dropdown, select the `Marketing` space.
     2. Expand the **Analytics** section, and select the **Read** privilege for **Dashboard**.
-    3. Click **Add Kibana privilege**.
+    3. Click **Add {{kib}} privilege**.
 
 6. Click **Create role**.
 

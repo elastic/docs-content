@@ -70,8 +70,8 @@ A `resource` field can be included in this request (check the following, manual 
 This example creates a new deployment named "my-first-api-deployment" with the following characteristics:
 
 * Version 8.17.1 of the Elastic Stack
-* Elasticsearch cluster in two zones with 4 GB of memory for each node
-* 1 GB single zone Kibana instance and 1 GB Integrations Server instance
+* {{es}} cluster in two zones with 4 GB of memory for each node
+* 1 GB single zone {{kib}} instance and 1 GB Integrations Server instance
 
 ```sh
 curl -XPOST \
@@ -263,9 +263,9 @@ curl -XPOST \
 ```
 
 1. [Available Regions](cloud://reference/cloud-hosted/ec-regions-templates-instances.md)
-2. Availability zones for the Elasticsearch cluster
+2. Availability zones for the {{es}} cluster
 3. [Available instance configurations](cloud://reference/cloud-hosted/ec-regions-templates-instances.md)
-4. Memory allocated for each Elasticsearch node
+4. Memory allocated for each {{es}} node
 5. [Available templates](cloud://reference/cloud-hosted/ec-regions-templates-instances.md)
 6. Availability zones for Kibana
 7. Memory allocated for Kibana
@@ -286,7 +286,7 @@ You are able to create deployments with *non* [End-of-life (EOL) versions](avail
 
 ## Update a deployment [ec_update_a_deployment]
 
-Modify the Elasticsearch resource by increasing the amount of memory to 8 GB.
+Modify the {{es}} resource by increasing the amount of memory to 8 GB.
 
 ```sh
 curl -XPUT \
@@ -342,7 +342,7 @@ curl -XPUT \
 ```
 
 1. Give the deployment a new name
-2. Increase the amount of memory allocated for each Elasticsearch node to 8 GB
+2. Increase the amount of memory allocated for each {{es}} node to 8 GB
 
 
 ::::{tip}

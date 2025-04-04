@@ -68,7 +68,7 @@ This table shows our specific recommendations for nodes in a Hot/Frozen architec
 | ![Frozen data node](/deploy-manage/images/reference-architectures-frozen.png "") | i3en | e8dsv4 | N2 | 8 vCPU<br>64 GB RAM<br>6-20+ TB NVMe SSD<br>Depending on days cached |
 | ![Machine learning node](/deploy-manage/images/reference-architectures-machine-learning.png "") | m6gd | f16sv2 | N2 | 16 vCPU<br>64 GB RAM<br>256 GB SSD |
 | ![Master node](/deploy-manage/images/reference-architectures-master.png "") | c5d | f16sv2 | N2 | 8 vCPU<br>16 GB RAM<br>256 GB SSD |
-| ![Kibana node](/deploy-manage/images/reference-architectures-kibana.png "") | c6gd | f16sv2 | N2 | 8-16 vCPU<br>8 GB RAM<br>256 GB SSD |
+| ![{{kib}} node](/deploy-manage/images/reference-architectures-kibana.png "") | c6gd | f16sv2 | N2 | 8-16 vCPU<br>8 GB RAM<br>256 GB SSD |
 
 
 ## Important considerations [hot-frozen-considerations]

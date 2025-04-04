@@ -52,9 +52,9 @@ podTemplate:
       linkerd.io/inject: enabled
 ```
 
-If automatic sidecar injection is enabled and [auto mounting of service account tokens](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/#use-the-default-service-account-to-access-the-api-server) is not disabled on your Kubernetes cluster, examples defined elsewhere in the ECK documentation will continue to work under Linkerd without requiring any modifications. However, as the default behaviour of ECK is to enable TLS for Elasticsearch, Kibana and APM Server resources, you will not be able to view detailed traffic information from Linkerd dashboards and command-line utilities. The following sections illustrate the optional configuration necessary to enhance the integration of Elastic Stack applications with Linkerd.
+If automatic sidecar injection is enabled and [auto mounting of service account tokens](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/#use-the-default-service-account-to-access-the-api-server) is not disabled on your Kubernetes cluster, examples defined elsewhere in the ECK documentation will continue to work under Linkerd without requiring any modifications. However, as the default behaviour of ECK is to enable TLS for Elasticsearch, {{kib}} and APM Server resources, you will not be able to view detailed traffic information from Linkerd dashboards and command-line utilities. The following sections illustrate the optional configuration necessary to enhance the integration of Elastic Stack applications with Linkerd.
 
-### Elasticsearch [k8s-service-mesh-linkerd-elasticsearch]
+### {{es}} [k8s-service-mesh-linkerd-elasticsearch]
 
 ```yaml
 apiVersion: elasticsearch.k8s.elastic.co/v1
@@ -86,9 +86,9 @@ spec:
 
 
 
-### Kibana and APM Server [k8s-service-mesh-linkerd-kibana-apm]
+### {{kib}} and APM Server [k8s-service-mesh-linkerd-kibana-apm]
 
-The configuration is almost identical for Kibana and APM Server resources.
+The configuration is almost identical for {{kib}} and APM Server resources.
 
 ```yaml
 apiVersion: ...

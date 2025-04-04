@@ -31,10 +31,10 @@ Installing ECE on multiple hosts with your own registry server is simpler, becau
     docker pull docker.elastic.co/cloud-release/enterprise-search-cloud:8.17.1
     ```
 
-    For example, for Elastic Cloud Enterprise 3.8.1 and the Elastic Stack versions it shipped with, you need:
+    For example, for {{ece}} 3.8.1 and the Elastic Stack versions it shipped with, you need:
 
-    * Elastic Cloud Enterprise 3.8.1
-    * Elasticsearch 8.17.1, Kibana 8.17.1, APM 8.17.1, and Enterprise Search 8.17.1
+    * {{ece}} 3.8.1
+    * {{es}} 8.17.1, {{kib}} 8.17.1, APM 8.17.1, and Enterprise Search 8.17.1
 
     :::{important}
        Enterprise Search is not available in versions 9.0+.
@@ -74,7 +74,7 @@ Installing ECE on multiple hosts with your own registry server is simpler, becau
     curl -L -O https://download.elastic.co/cloud/elastic-cloud-enterprise.sh
     ```
 
-6. Copy the installation script to each host where you plan to install Elastic Cloud Enterprise or make it available on your network.
+6. Copy the installation script to each host where you plan to install {{ece}} or make it available on your network.
 
 7. Invoke the installation script on each host with the `--docker-registry REGISTRY` parameter, replacing `REGISTRY` with your actual registry URL (for example `my.private.repo:5000`):
 

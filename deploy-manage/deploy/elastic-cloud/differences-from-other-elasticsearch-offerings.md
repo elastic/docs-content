@@ -8,7 +8,7 @@ applies_to:
 
 
 
-# Differences from other Elasticsearch offerings [elasticsearch-differences]
+# Differences from other {{es}} offerings [elasticsearch-differences]
 
 
 [{{es-serverless}}](../../../solutions/search.md) handles all the infrastructure management for you, providing a fully managed {{es}} service.
@@ -117,7 +117,7 @@ Managed settings
 
 ## Feature availability [elasticsearch-differences-serverless-feature-categories]
 
-Some features that are available in Elastic Cloud Hosted and self-managed offerings are not available in {{es-serverless}}. These features have either been replaced by a new feature, are planned to be released in future, or are not applicable in the new serverless architecture.
+Some features that are available in {{ech}} and self-managed offerings are not available in {{es-serverless}}. These features have either been replaced by a new feature, are planned to be released in future, or are not applicable in the new serverless architecture.
 
 
 ### Replaced features [elasticsearch-differences-serverless-features-replaced]
@@ -126,13 +126,13 @@ These features have been replaced by a new feature and are therefore not availab
 
 * **Index lifecycle management ({{ilm-init}})** is not available, in favor of [**data stream lifecycle**](../../../manage-data/data-store/index-basics.md).
 
-    In an Elastic Cloud Hosted or self-managed environment, {{ilm-init}} lets you automatically transition indices through data tiers according to your performance needs and retention requirements. This allows you to balance hardware costs with performance. {{es-serverless}} eliminates this complexity by optimizing your cluster performance for you.
+    In an {{ech}} or self-managed environment, {{ilm-init}} lets you automatically transition indices through data tiers according to your performance needs and retention requirements. This allows you to balance hardware costs with performance. {{es-serverless}} eliminates this complexity by optimizing your cluster performance for you.
 
     Data stream lifecycle is an optimized lifecycle tool that lets you focus on the most common lifecycle management needs, without unnecessary hardware-centric concepts like data tiers.
 
 * **Watcher** is not available, in favor of [**Alerts**](../../../explore-analyze/alerts-cases/alerts.md#rules-alerts).
 
-    Kibana Alerts allows rich integrations across use cases like APM, metrics, security, and uptime. Prepackaged rule types simplify setup and hide the details of complex, domain-specific detections, while providing a consistent interface across Kibana.
+    {{kib}} Alerts allows rich integrations across use cases like APM, metrics, security, and uptime. Prepackaged rule types simplify setup and hide the details of complex, domain-specific detections, while providing a consistent interface across Kibana.
 
 
 

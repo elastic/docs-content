@@ -78,7 +78,7 @@ Refer to the tables in the [Model deployment resource matrix](#model-deployment-
 
 In {{serverless-full}}, Search projects are given access to more processing resources, while Security and Observability projects have lower limits. This difference is reflected in the UI configuration: Search projects have higher resource limits compared to Security and Observability projects to accommodate their more complex operations.
 
-On {{serverless-short}}, adaptive allocations are automatically enabled for all project types. However, the "Adaptive resources" control is not displayed in Kibana for Observability and Security projects.
+On {{serverless-short}}, adaptive allocations are automatically enabled for all project types. However, the "Adaptive resources" control is not displayed in {{kib}} for Observability and Security projects.
 
 ## Model deployment resource matrix [model-deployment-resource-matrix]
 

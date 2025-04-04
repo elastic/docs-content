@@ -61,7 +61,7 @@ Audit logs are disabled by default and must be explicitly enabled.
 To learn how to consume these logs in an {{es}} cluster, refer to [](/deploy-manage/monitor/stack-monitoring/collecting-log-data-with-filebeat.md).
 :::::
 
-:::::{tab-item} Elastic Cloud Hosted
+:::::{tab-item} {{ech}}
 
 To enable audit logging in an {{ech}} deployment:
 

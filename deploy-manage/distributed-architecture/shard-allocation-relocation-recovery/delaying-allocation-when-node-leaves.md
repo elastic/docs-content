@@ -71,7 +71,7 @@ GET _cluster/health <1>
 
 ## Removing a node permanently [_removing_a_node_permanently]
 
-If a node is not going to return and you would like Elasticsearch to allocate the missing shards immediately, just update the timeout to zero:
+If a node is not going to return and you would like {{es}} to allocate the missing shards immediately, just update the timeout to zero:
 
 ```console
 PUT _all/_settings

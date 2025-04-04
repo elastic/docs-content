@@ -15,7 +15,7 @@ mapped_pages:
 This page shows how to run ECK on GKE Autopilot.
 
 1. It is recommended that each Kubernetes host’s virtual memory kernel settings be modified. Refer to [Virtual memory](virtual-memory.md).
-2. It is recommended that Elasticsearch Pods have an `initContainer` that waits for virtual memory settings to be in place.
+2. It is recommended that {{es}} Pods have an `initContainer` that waits for virtual memory settings to be in place.
 3. For Elastic Agent/Beats there are storage limitations to be considered.
 4. Ensure you are using a node class that is applicable for your workload by adding a `cloud.google.com/compute-class` label in a `nodeSelector`. Refer to [GKE Autopilot documentation.](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-compute-classes).
 
@@ -31,9 +31,9 @@ Only use the provided `Daemonset` exactly as specified or it could be rejected b
 
 Refer to [*Install ECK*](install.md) for more information on installation options.
 
-## Deploy an Elasticsearch cluster [k8s-autopilot-deploy-elasticsearch]
+## Deploy an {{es}} cluster [k8s-autopilot-deploy-elasticsearch]
 
-Create an Elasticsearch cluster. If you are using the `Daemonset` described in the [Virtual memory](virtual-memory.md) section to set `max_map_count` you can add the `initContainer` below is also used to ensure the setting is set prior to starting Elasticsearch.
+Create an {{es}} cluster. If you are using the `Daemonset` described in the [Virtual memory](virtual-memory.md) section to set `max_map_count` you can add the `initContainer` below is also used to ensure the setting is set prior to starting Elasticsearch.
 
 ```shell
 cat <<EOF | kubectl apply -f -

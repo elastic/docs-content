@@ -8,17 +8,17 @@ mapped_pages:
 
 # Manage Elastic Stack versions [ece-manage-elastic-stack]
 
-Elastic Cloud Enterprise ships with a number of different versions of the Elastic Stack containing Elasticsearch and Kibana. Periodically, you might need to manage Elastic Stack versions for one of the following reasons:
+{{ece}} ships with a number of different versions of the Elastic Stack containing {{es}} and Kibana. Periodically, you might need to manage Elastic Stack versions for one of the following reasons:
 
 * To add new versions of the Elastic Stack as they become available
 * To obtain information about existing Elastic Stack versions
 * To update existing versions of the Elastic Stack
 * To add the Elastic Stack versions that shipped with a version of ECE that you upgraded to
 
-New or updated versions of the Elastic Stack must be prepared to work with Elastic Cloud Enterprise and are provided as packs that you can download.
+New or updated versions of the Elastic Stack must be prepared to work with {{ece}} and are provided as packs that you can download.
 
 ::::{important}
-Elasticsearch 7.8 and later comes with Index Lifecycle Management (ILM) always enabled. Before upgrading to 7.8 or later, to avoid any unpredictable behavior it is important to configure hot-warm clusters on Elastic Cloud Enterprise with ILM rather than index curation. Check [migrate to index lifecycle management](../../../manage-data/lifecycle/index-lifecycle-management.md) for existing clusters, and [configure index management](https://www.elastic.co/guide/en/cloud-enterprise/current/ece-configure-index-management.html) for new clusters.
+{{es}} 7.8 and later comes with Index Lifecycle Management (ILM) always enabled. Before upgrading to 7.8 or later, to avoid any unpredictable behavior it is important to configure hot-warm clusters on {{ece}} with ILM rather than index curation. Check [migrate to index lifecycle management](../../../manage-data/lifecycle/index-lifecycle-management.md) for existing clusters, and [configure index management](https://www.elastic.co/guide/en/cloud-enterprise/current/ece-configure-index-management.html) for new clusters.
 ::::
 
 
@@ -233,16 +233,16 @@ Following is the full list of available packs containing Elastic Stack versions.
 | [Elasticsearch, Kibana, and APM stack pack: 6.3.2](https://download.elastic.co/cloud-enterprise/versions/6.3.2.zip) | ECE 1.1.4 |
 | [Elasticsearch, Kibana, and APM stack pack: 6.3.1](https://download.elastic.co/cloud-enterprise/versions/6.3.1.zip) | ECE 1.1.4 |
 | [Elasticsearch, Kibana, and APM stack pack: 6.3.0](https://download.elastic.co/cloud-enterprise/versions/6.3.0.zip) | ECE 1.1.4 |
-| [Elasticsearch and Kibana stack pack: 6.2.4](https://download.elastic.co/cloud-enterprise/versions/6.2.4.zip) | ECE 1.1.2 |
-| [Elasticsearch and Kibana stack pack: 6.2.3](https://download.elastic.co/cloud-enterprise/versions/6.2.3.zip) | ECE 1.1.2 |
-| [Elasticsearch and Kibana stack pack: 6.2.2](https://download.elastic.co/cloud-enterprise/versions/6.2.2.zip) | ECE 1.1.2 |
-| [Elasticsearch and Kibana stack pack: 6.1.4](https://download.elastic.co/cloud-enterprise/versions/6.1.4.zip) | ECE 1.1.2 |
-| [Elasticsearch and Kibana stack pack: 6.1.3](https://download.elastic.co/cloud-enterprise/versions/6.1.3.zip) | ECE 1.1.2 |
-| [Elasticsearch and Kibana stack pack: 6.0.1](https://download.elastic.co/cloud-enterprise/versions/6.0.1.zip) | ECE 1.1.2 |
-| [Elasticsearch and Kibana stack pack: 6.0.0](https://download.elastic.co/cloud-enterprise/versions/6.0.0.zip) | ECE 1.1.0 |
-| [Elasticsearch and Kibana stack pack: 5.6.16](https://download.elastic.co/cloud-enterprise/versions/5.6.16.zip) | ECE 1.1.0 |
-| [Elasticsearch and Kibana stack pack: 2.4.6](https://download.elastic.co/cloud-enterprise/versions/2.4.6.zip) | ECE 1.0.0 |
-| [Elasticsearch and Kibana stack pack: 2.4.5](https://download.elastic.co/cloud-enterprise/versions/2.4.5.zip) | ECE 1.0.0 |
+| [{{es}} and {{kib}} stack pack: 6.2.4](https://download.elastic.co/cloud-enterprise/versions/6.2.4.zip) | ECE 1.1.2 |
+| [{{es}} and {{kib}} stack pack: 6.2.3](https://download.elastic.co/cloud-enterprise/versions/6.2.3.zip) | ECE 1.1.2 |
+| [{{es}} and {{kib}} stack pack: 6.2.2](https://download.elastic.co/cloud-enterprise/versions/6.2.2.zip) | ECE 1.1.2 |
+| [{{es}} and {{kib}} stack pack: 6.1.4](https://download.elastic.co/cloud-enterprise/versions/6.1.4.zip) | ECE 1.1.2 |
+| [{{es}} and {{kib}} stack pack: 6.1.3](https://download.elastic.co/cloud-enterprise/versions/6.1.3.zip) | ECE 1.1.2 |
+| [{{es}} and {{kib}} stack pack: 6.0.1](https://download.elastic.co/cloud-enterprise/versions/6.0.1.zip) | ECE 1.1.2 |
+| [{{es}} and {{kib}} stack pack: 6.0.0](https://download.elastic.co/cloud-enterprise/versions/6.0.0.zip) | ECE 1.1.0 |
+| [{{es}} and {{kib}} stack pack: 5.6.16](https://download.elastic.co/cloud-enterprise/versions/5.6.16.zip) | ECE 1.1.0 |
+| [{{es}} and {{kib}} stack pack: 2.4.6](https://download.elastic.co/cloud-enterprise/versions/2.4.6.zip) | ECE 1.0.0 |
+| [{{es}} and {{kib}} stack pack: 2.4.5](https://download.elastic.co/cloud-enterprise/versions/2.4.5.zip) | ECE 1.0.0 |
 
 ::::
 
@@ -268,7 +268,7 @@ To obtain information about available Elastic Stack versions through the Cloud U
 2. From the **Platform** menu, select **Elastic Stack**.
 3. Select the version that you want.
 
-    The available Elastic Stack versions are shown. More detailed information about Docker images, plugins, and related Kibana versions are also available for each Elasticsearch version.
+    The available Elastic Stack versions are shown. More detailed information about Docker images, plugins, and related {{kib}} versions are also available for each {{es}} version.
 
 
 To obtain information about available Elastic Stack versions through the command line:
@@ -347,7 +347,7 @@ You can also query for a specific version with a URI such as `https://COORDINATO
 
 ## Add Elastic Stack packs [ece-manage-elastic-stack-add]
 
-You can add new Elastic Stack packs to your installation through the Cloud UI, through the Elastic Cloud Enterprise installation script, or through the RESTful API.
+You can add new Elastic Stack packs to your installation through the Cloud UI, through the {{ece}} installation script, or through the RESTful API.
 
 To add a new Elastic Stack pack from the Cloud UI:
 
@@ -360,9 +360,9 @@ To add a new Elastic Stack pack from the Cloud UI:
     After the stack pack has been uploaded successfully, the new version appears in the list of Elastic Stack versions and can be used when you create or change a deployment.
 
 
-To add a new Elastic Stack pack through the Elastic Cloud Enterprise installation script from the command line:
+To add a new Elastic Stack pack through the {{ece}} installation script from the command line:
 
-1. Log into a host running Elastic Cloud Enterprise.
+1. Log into a host running {{ece}}.
 2. Add the Elastic Stack pack with the `add-stack-version` action:
 
     ```sh
@@ -411,7 +411,7 @@ To add a new Elastic Stack pack through the RESTful API from the command line:
 
 Updating an Elastic Stack pack might become necessary if an Elastic Stack version has been updated with security fixes, for example. You can update an existing Elastic Stack version through the Cloud UI or through the command line.
 
-Updated versions of Elasticsearch and Kibana are used when you create new Elasticsearch clusters, but they are not automatically applied to already running clusters. To update existing Elasticsearch clusters and Kibana after an updated Elastic Stack pack has been added, you need to [change the deployment configuration](working-with-deployments.md).
+Updated versions of {{es}} and {{kib}} are used when you create new {{es}} clusters, but they are not automatically applied to already running clusters. To update existing {{es}} clusters and {{kib}} after an updated Elastic Stack pack has been added, you need to [change the deployment configuration](working-with-deployments.md).
 
 To update Elastic Stack packs through the Cloud UI:
 

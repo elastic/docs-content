@@ -147,7 +147,7 @@ Replace those values with your actual API key and deployment ID in the following
 
 ### Storage optimized [ec-profiles-storage]
 
-Your Elasticsearch data nodes are optimized for high I/O throughput. Use this profile if you are new to Elasticsearch or don’t need to run a more specialized workload. You can find the exact storage, memory, and vCPU allotment on the [hardware details page](cloud://reference/cloud-hosted/hardware.md#ec-getting-started-configurations) for each cloud provider.
+Your {{es}} data nodes are optimized for high I/O throughput. Use this profile if you are new to {{es}} or don’t need to run a more specialized workload. You can find the exact storage, memory, and vCPU allotment on the [hardware details page](cloud://reference/cloud-hosted/hardware.md#ec-getting-started-configurations) for each cloud provider.
 
 **Ideal use case**
 
@@ -156,7 +156,7 @@ Good for most ingestion use cases with 7-10 days of data available for fast acce
 
 ### Storage optimized (dense) [ec-profiles-storage-dense]
 
-Your Elasticsearch data nodes are optimized for high I/O throughput. You can find the exact storage, memory, and vCPU allotment on the [hardware details page](cloud://reference/cloud-hosted/hardware.md#ec-getting-started-configurations) for each cloud provider.
+Your {{es}} data nodes are optimized for high I/O throughput. You can find the exact storage, memory, and vCPU allotment on the [hardware details page](cloud://reference/cloud-hosted/hardware.md#ec-getting-started-configurations) for each cloud provider.
 
 **Ideal use case**
 

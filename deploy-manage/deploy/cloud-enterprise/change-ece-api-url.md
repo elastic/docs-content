@@ -8,7 +8,7 @@ mapped_pages:
 
 # Change the ECE API URL [ece-config-api-base-url]
 
-You can configure the HTTPS URL used to access the ECE API. You can specify either a DNS host name or an IP address. The primary use for this is to enable [single sign-on](../../users-roles/cloud-enterprise-orchestrator/configure-sso-for-deployments.md) on your deployments, so you can log into Kibana automatically once logged in to ECE.
+You can configure the HTTPS URL used to access the ECE API. You can specify either a DNS host name or an IP address. The primary use for this is to enable [single sign-on](../../users-roles/cloud-enterprise-orchestrator/configure-sso-for-deployments.md) on your deployments, so you can log into {{kib}} automatically once logged in to ECE.
 
 To change the ECE API URL in the Cloud UI:
 

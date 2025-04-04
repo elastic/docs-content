@@ -13,7 +13,7 @@ This functionality is in technical preview and may be changed or removed in a fu
 ::::
 
 
-If you already looked at the [Elasticsearch on ECK](elasticsearch-configuration.md) documentation, some of these concepts might sound familiar to you. The resource definitions in ECK share the same philosophy when you want to:
+If you already looked at the [{{es}} on ECK](elasticsearch-configuration.md) documentation, some of these concepts might sound familiar to you. The resource definitions in ECK share the same philosophy when you want to:
 
 * Customize the Pod configuration
 * Customize the product configuration

@@ -9,7 +9,7 @@ mapped_pages:
 
 # Configure index management for deployment templates [ece-configure-templates-index-management]
 
-If you create a deployment template that includes more than one data configuration, you must also specify how Elastic Cloud Enterprise should manage indices for your users when they create their deployments. For time-series use cases such as logging, metrics, and APM, providing a template that enables index management ensures that data is being stored in the most cost-effective way possible as it ages.
+If you create a deployment template that includes more than one data configuration, you must also specify how {{ece}} should manage indices for your users when they create their deployments. For time-series use cases such as logging, metrics, and APM, providing a template that enables index management ensures that data is being stored in the most cost-effective way possible as it ages.
 
 In a template that creates a hot-warm architecture, you can use index curation to specify where new indices are created initially and where they are moved to later on. However, index curation has been deprecated in favor of index lifecycle management, which offers additional features and more fine-grained control over indices. For instance, using ILM you can enable automatic roll-over of index aliases to new indices when existing indices become too large or too old, and you can set indices to be deleted when they are no longer useful.
 
@@ -43,7 +43,7 @@ To configure index management when you create a deployment template:
     Index curation
     :   Creates new indices on hot nodes first and moves them to warm nodes later on, based on the data views (formerly *index patterns*) you specify. Also manages replica counts for you, so that all shards of an index can fit on the right data nodes. Compared to index lifecycle management, index curation for time-based indices supports only one action, to move indices from nodes on one data configuration to another, but it is more straightforward to set up initially and all setup can be done directly from the Cloud UI.
 
-        If your user need to delete indices once they are no longer useful to them, they can run [Curator](curator://reference/index.md) on-premise to manage indices for Elasticsearch clusters hosted on Elastic Cloud Enterprise.
+        If your user need to delete indices once they are no longer useful to them, they can run [Curator](curator://reference/index.md) on-premise to manage indices for {{es}} clusters hosted on {{ece}}.
 
         To configure index curation:
 

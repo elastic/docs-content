@@ -34,7 +34,7 @@ Keep this distinction in mind when configuring security settings.
 
 Both {{es}} and {{kib}}, the core components of the {{stack}}, expose service endpoints that must be secured. {{es}} handles traffic at two levels:
 * The **transport layer** (defaults to port `9300`), used for internal communication between nodes in the cluster.
-* The **HTTP layer** (defaults to port `9200`), used by external clients — including Kibana — to send requests using the REST API.
+* The **HTTP layer** (defaults to port `9200`), used by external clients — including {{kib}} — to send requests using the REST API.
 
 Additionally, {{kib}} functions as a web server, exposing its own **HTTP endpoint** (defaults to port `5601`) to users, and also acts as a client when sending requests to {{es}}.
 

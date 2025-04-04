@@ -8,9 +8,9 @@ mapped_pages:
 
 # Manage your Integrations server [ec-manage-integrations-server]
 
-For deployments that are version 8.0 and later, you have the option to add a combined [Application Performance Monitoring (APM) Server](/solutions/observability/apps/application-performance-monitoring-apm.md) and [Fleet Server](/reference/fleet/index.md) to your deployment. APM allows you to monitor software services and applications in real time, turning that data into documents stored in the Elasticsearch cluster. Fleet allows you to centrally manage Elastic Agents on many hosts.
+For deployments that are version 8.0 and later, you have the option to add a combined [Application Performance Monitoring (APM) Server](/solutions/observability/apps/application-performance-monitoring-apm.md) and [Fleet Server](/reference/fleet/index.md) to your deployment. APM allows you to monitor software services and applications in real time, turning that data into documents stored in the {{es}} cluster. Fleet allows you to centrally manage Elastic Agents on many hosts.
 
-As part of provisioning, the APM Server and Fleet Server are already configured to work with Elasticsearch and Kibana. At the end of provisioning, you are shown the secret token to configure communication between the APM Server and the backend [APM Agents](https://www.elastic.co/guide/en/apm/agent/index.html). The APM Agents get deployed within your services and applications.
+As part of provisioning, the APM Server and Fleet Server are already configured to work with {{es}} and Kibana. At the end of provisioning, you are shown the secret token to configure communication between the APM Server and the backend [APM Agents](https://www.elastic.co/guide/en/apm/agent/index.html). The APM Agents get deployed within your services and applications.
 
 From the deployment **Integrations Server** page you can also:
 
@@ -19,7 +19,7 @@ From the deployment **Integrations Server** page you can also:
 * Use the `elastic` credentials to go to the Fleet area of Kibana. Step by step instructions to download and install Elastic Agent on your hosts are available right in Kibana. After that, you can manage enrolled Elastic Agents on the **Agents** tab, and the data shipped back from those Elastic Agents on the **Data streams** tab.
 * Access the Integrations Server logs and metrics.
 * Stop and restart your Integrations Server.
-* Upgrade your Integrations Server version if it is out of sync with your Elasticsearch cluster.
+* Upgrade your Integrations Server version if it is out of sync with your {{es}} cluster.
 * Fully remove the Integrations Server, delete it from the disk, and stop the charges.
 
 ::::{important}

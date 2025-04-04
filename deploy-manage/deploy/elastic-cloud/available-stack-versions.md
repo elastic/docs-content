@@ -29,7 +29,7 @@ You might sometimes notice additional versions listed in the user interface beyo
 
 Whenever a new Elastic Stack version is released, we do our best to provide the new version on our hosted service at the same time. We send you an email and add a notice to the console, recommending an upgrade. You’ll need to decide whether to upgrade to the new version with new features and bug fixes or to stay with a version you know works for you a while longer.
 
-There can be [breaking changes](elasticsearch://release-notes/breaking-changes.md) in some new versions of Elasticsearch that break what used to work in older versions. Before upgrading, you’ll want to check if the new version introduces any changes that might affect your applications. A breaking change might be a function that was previously deprecated and that has been removed in the latest version, for example. If you have an application that depends on the removed function, the application will need to be updated to continue working with the new version of Elasticsearch.
+There can be [breaking changes](elasticsearch://release-notes/breaking-changes.md) in some new versions of {{es}} that break what used to work in older versions. Before upgrading, you’ll want to check if the new version introduces any changes that might affect your applications. A breaking change might be a function that was previously deprecated and that has been removed in the latest version, for example. If you have an application that depends on the removed function, the application will need to be updated to continue working with the new version of Elasticsearch.
 
 To learn more about upgrading to newer versions of the Elastic Stack on our hosted service, check [Upgrade Versions](../../upgrade/deployment-or-cluster.md).
 
@@ -48,7 +48,7 @@ A forced upgrade or restart might become necessary in a situation that:
 
 ## Release candidates and cutting-edge releases [ec-release-builds]
 
-Interested in kicking the tires of Elasticsearch releases at the cutting edge? We sometimes make release candidate builds and other cutting-edge releases available in {{ecloud}} for you to try out.
+Interested in kicking the tires of {{es}} releases at the cutting edge? We sometimes make release candidate builds and other cutting-edge releases available in {{ecloud}} for you to try out.
 
 ::::{warning}
 Remember that cutting-edge releases are used to test new function fully. These releases might still have issues and might be less stable than the GA version. There’s also no guaranteed upgrade path to the GA version when it becomes available.
@@ -57,7 +57,7 @@ Remember that cutting-edge releases are used to test new function fully. These r
 
 If you’re interested in trying out one of these cutting-edge releases, we don’t recommended upgrading an existing deployment directly. Instead, use a copy of your existing data with a test deployment, first.
 
-Cutting-edge releases do not remain available forever. Once the GA version of Elasticsearch is released, your deployment needs to be removed after a grace period. We cannot guarantee that you will be able to upgrade to the GA version when it becomes available.
+Cutting-edge releases do not remain available forever. Once the GA version of {{es}} is released, your deployment needs to be removed after a grace period. We cannot guarantee that you will be able to upgrade to the GA version when it becomes available.
 
 
 ## Version Policy and Product End of Life [ec-version-policy-eol]

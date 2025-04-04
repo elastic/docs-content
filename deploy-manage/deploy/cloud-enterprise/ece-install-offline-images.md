@@ -10,9 +10,9 @@ mapped_pages:
 
 Versions of the Elastic Stack, containing Elasticsearch, Kibana, and other products, are available as downloadable Docker images.
 
-The first table contains the stack versions that shipped with the 3.8 version of Elastic Cloud Enterprise. You can also check the [most recent stack packs and Docker images](#ece-recent-download-list), which might have released after the 3.8 version of ECE, as well as the [full list of available stack packs and Docker images](#ece-full-download-list).
+The first table contains the stack versions that shipped with the 3.8 version of {{ece}}. You can also check the [most recent stack packs and Docker images](#ece-recent-download-list), which might have released after the 3.8 version of ECE, as well as the [full list of available stack packs and Docker images](#ece-full-download-list).
 
-| Docker images included with Elastic Cloud Enterprise 3.8.1 |
+| Docker images included with {{ece}} 3.8.1 |
 | --- |
 | docker.elastic.co/cloud-enterprise/elastic-cloud-enterprise:3.8.1 |
 | docker.elastic.co/cloud-assets/elasticsearch:6.8.23-0 |
@@ -1129,43 +1129,43 @@ Enterprise Search is not available in versions 9.0+.
 | docker.elastic.co/cloud-assets/kibana:6.3.0-0 | ECE 1.1.4 |
 | docker.elastic.co/cloud-assets/apm:6.3.0-0 | ECE 2.1.0 |
 |  |  |
-| [Elasticsearch and Kibana stack pack: 6.2.4](https://download.elastic.co/cloud-enterprise/versions/6.2.4.zip) | ECE 1.1.2 |
+| [{{es}} and {{kib}} stack pack: 6.2.4](https://download.elastic.co/cloud-enterprise/versions/6.2.4.zip) | ECE 1.1.2 |
 | docker.elastic.co/cloud-assets/elasticsearch:6.2.4-0 | ECE 1.1.2 |
 | docker.elastic.co/cloud-assets/kibana:6.2.4-0 | ECE 1.1.2 |
 |  |  |
-| [Elasticsearch and Kibana stack pack: 6.2.3](https://download.elastic.co/cloud-enterprise/versions/6.2.3.zip) | ECE 1.1.2 |
+| [{{es}} and {{kib}} stack pack: 6.2.3](https://download.elastic.co/cloud-enterprise/versions/6.2.3.zip) | ECE 1.1.2 |
 | docker.elastic.co/cloud-assets/elasticsearch:6.2.3-0 | ECE 1.1.2 |
 | docker.elastic.co/cloud-assets/kibana:6.2.3-0 | ECE 1.1.2 |
 |  |  |
-| [Elasticsearch and Kibana stack pack: 6.2.2](https://download.elastic.co/cloud-enterprise/versions/6.2.2.zip) | ECE 1.1.2 |
+| [{{es}} and {{kib}} stack pack: 6.2.2](https://download.elastic.co/cloud-enterprise/versions/6.2.2.zip) | ECE 1.1.2 |
 | docker.elastic.co/cloud-assets/elasticsearch:6.2.2-0 | ECE 1.1.2 |
 | docker.elastic.co/cloud-assets/kibana:6.2.2-0 | ECE 1.1.2 |
 |  |  |
-| [Elasticsearch and Kibana stack pack: 6.1.4](https://download.elastic.co/cloud-enterprise/versions/6.1.4.zip) | ECE 1.1.2 |
+| [{{es}} and {{kib}} stack pack: 6.1.4](https://download.elastic.co/cloud-enterprise/versions/6.1.4.zip) | ECE 1.1.2 |
 | docker.elastic.co/cloud-assets/elasticsearch:6.1.4-0 | ECE 1.1.2 |
 | docker.elastic.co/cloud-assets/kibana:6.1.4-0 | ECE 1.1.2 |
 |  |  |
-| [Elasticsearch and Kibana stack pack: 6.1.3](https://download.elastic.co/cloud-enterprise/versions/6.1.3.zip) | ECE 1.1.2 |
+| [{{es}} and {{kib}} stack pack: 6.1.3](https://download.elastic.co/cloud-enterprise/versions/6.1.3.zip) | ECE 1.1.2 |
 | docker.elastic.co/cloud-assets/elasticsearch:6.1.3-0 | ECE 1.1.2 |
 | docker.elastic.co/cloud-assets/kibana:6.1.3-0 | ECE 1.1.2 |
 |  |  |
-| [Elasticsearch and Kibana stack pack: 6.0.1](https://download.elastic.co/cloud-enterprise/versions/6.0.1.zip) | ECE 1.1.2 |
+| [{{es}} and {{kib}} stack pack: 6.0.1](https://download.elastic.co/cloud-enterprise/versions/6.0.1.zip) | ECE 1.1.2 |
 | docker.elastic.co/cloud-assets/elasticsearch:6.0.1-0 | ECE 1.1.2 |
 | docker.elastic.co/cloud-assets/kibana:6.0.1-0 | ECE 1.1.2 |
 |  |  |
-| [Elasticsearch and Kibana stack pack: 6.0.0](https://download.elastic.co/cloud-enterprise/versions/6.0.0.zip) | ECE 1.1.0 |
+| [{{es}} and {{kib}} stack pack: 6.0.0](https://download.elastic.co/cloud-enterprise/versions/6.0.0.zip) | ECE 1.1.0 |
 | docker.elastic.co/cloud-assets/elasticsearch:6.0.0-0 | ECE 1.1.0 |
 | docker.elastic.co/cloud-assets/kibana:6.0.0-0 | ECE 1.1.0 |
 |  |  |
-| [Elasticsearch and Kibana stack pack: 5.6.16](https://download.elastic.co/cloud-enterprise/versions/5.6.16.zip) | ECE 1.1.0 |
+| [{{es}} and {{kib}} stack pack: 5.6.16](https://download.elastic.co/cloud-enterprise/versions/5.6.16.zip) | ECE 1.1.0 |
 | docker.elastic.co/cloud-assets/elasticsearch:5.6.16-0 | ECE 1.1.0 |
 | docker.elastic.co/cloud-assets/kibana:5.6.16-0 | ECE 1.1.0 |
 |  |  |
-| [Elasticsearch and Kibana stack pack: 2.4.6](https://download.elastic.co/cloud-enterprise/versions/2.4.6.zip) | ECE 1.0.0 |
+| [{{es}} and {{kib}} stack pack: 2.4.6](https://download.elastic.co/cloud-enterprise/versions/2.4.6.zip) | ECE 1.0.0 |
 | docker.elastic.co/cloud-assets/elasticsearch:2.4.6-1 | ECE 1.0.0 |
 | docker.elastic.co/cloud-assets/kibana:4.6.6-2 | ECE 1.0.0 |
 |  |  |
-| [Elasticsearch and Kibana stack pack: 2.4.5](https://download.elastic.co/cloud-enterprise/versions/2.4.5.zip) | ECE 1.0.0 |
+| [{{es}} and {{kib}} stack pack: 2.4.5](https://download.elastic.co/cloud-enterprise/versions/2.4.5.zip) | ECE 1.0.0 |
 | docker.elastic.co/cloud-assets/elasticsearch:2.4.5-1 | ECE 1.0.0 |
 | docker.elastic.co/cloud-assets/kibana:4.6.4-0 | ECE 1.0.0 |
 

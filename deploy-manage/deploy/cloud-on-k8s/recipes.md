@@ -10,10 +10,10 @@ mapped_pages:
 
 This section includes recipes that provide configuration examples for some common use cases.
 
-* [Expose Elasticsearch and Kibana using a Google Cloud Load Balancer (GCLB)](https://github.com/elastic/cloud-on-k8s/tree/main/config/recipes/gclb)
-* [Expose Elasticsearch and Kibana using Istio ingress gateway](https://github.com/elastic/cloud-on-k8s/tree/main/config/recipes/istio-gateway)
+* [Expose {{es}} and {{kib}} using a Google Cloud Load Balancer (GCLB)](https://github.com/elastic/cloud-on-k8s/tree/main/config/recipes/gclb)
+* [Expose {{es}} and {{kib}} using Istio ingress gateway](https://github.com/elastic/cloud-on-k8s/tree/main/config/recipes/istio-gateway)
 * [Using Logstash with ECK](https://github.com/elastic/cloud-on-k8s/tree/main/config/recipes/logstash)
-* [Expose Elastic Maps Server and Kibana using a Kubernetes Ingress](https://github.com/elastic/cloud-on-k8s/tree/main/config/recipes/maps)
+* [Expose Elastic Maps Server and {{kib}} using a Kubernetes Ingress](https://github.com/elastic/cloud-on-k8s/tree/main/config/recipes/maps)
 * [Secure your cluster with Pod Security Policies](https://github.com/elastic/cloud-on-k8s/tree/main/config/recipes/psp)
 * [Use Traefik to expose Elastic Stack applications](https://github.com/elastic/cloud-on-k8s/tree/main/config/recipes/traefik)
 * [Deploy Elasticsearch, Kibana, Elastic Fleet Server and Elastic Agent within GKE Autopilot](https://github.com/elastic/cloud-on-k8s/tree/main/config/recipes/autopilot)

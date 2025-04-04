@@ -9,7 +9,7 @@ applies_to:
     ess:
 ---
 
-# Kibana logging [logging-configuration]
+# {{kib}} logging [logging-configuration]
 
 $$$pattern-layout$$$
 $$$time-interval-triggering-policy$$$

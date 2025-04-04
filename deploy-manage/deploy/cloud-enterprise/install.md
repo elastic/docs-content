@@ -11,7 +11,7 @@ mapped_pages:
 navigation_title: Install ECE
 ---
 
-# Install Elastic Cloud Enterprise [ece-installing]
+# Install {{ece}} [ece-installing]
 
 You can deploy {{ece}} (ECE) on public or private clouds, virtual machines, or on-premises.
 

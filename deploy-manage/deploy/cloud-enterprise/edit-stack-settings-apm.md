@@ -39,7 +39,7 @@ Pick one of the following options:
 
 ## Edit standalone APM settings (legacy) [ece-edit-apm-standalone-settings-ece]
 
-Elastic Cloud Enterprise supports most of the legacy APM settings. Through a YAML editor in the console, you can append your APM Server properties to the `apm-server.yml` file. Your changes to the configuration file are read on startup.
+{{ece}} supports most of the legacy APM settings. Through a YAML editor in the console, you can append your APM Server properties to the `apm-server.yml` file. Your changes to the configuration file are read on startup.
 
 ::::{important}
 Be aware that some settings could break your cluster if set incorrectly and that the syntax might change between major versions. Before upgrading, be sure to review the full list of the [latest APM settings and syntax](/solutions/observability/apps/configure-apm-server.md).
@@ -59,7 +59,7 @@ To change APM settings:
 6. Select **Save changes**.
 
 ::::{note}
-If a setting is not supported by Elastic Cloud Enterprise, you get an error message when you try to save. We suggest changing one setting with each save, so you know which one is not supported.
+If a setting is not supported by {{ece}}, you get an error message when you try to save. We suggest changing one setting with each save, so you know which one is not supported.
 ::::
 
 

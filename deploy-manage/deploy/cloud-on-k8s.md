@@ -10,13 +10,13 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s_learn_more_about_eck.html
 ---
 
-# Elastic Cloud on Kubernetes [k8s-overview]
+# {{eck}} [k8s-overview]
 
 Built on the Kubernetes Operator pattern, {{eck}} (ECK) extends the basic Kubernetes orchestration capabilities to support the setup and management of Elasticsearch, Kibana, APM Server, Beats, Elastic Agent, Elastic Maps Server, and Logstash on Kubernetes.
 
 ## ECK overview
 
-With Elastic Cloud on Kubernetes, you can streamline critical operations, such as:
+With {{eck}}, you can streamline critical operations, such as:
 
 1. Managing and monitoring multiple clusters
 2. Scaling cluster capacity and storage
@@ -87,11 +87,11 @@ ECK is compatible with the following Elastic Stack applications:
 * Elastic Maps Server: 7.17+, 8+, 9+
 * Logstash: 8.7+, 9+
 
-Elastic Stack application images for the OpenShift-certified Elasticsearch (ECK) Operator are only available from version 7.10 and later.
+Elastic Stack application images for the OpenShift-certified {{es}} (ECK) Operator are only available from version 7.10 and later.
 
 ## Learn more about ECK [k8s_learn_more_about_eck]
 
-* [Orchestrate Elasticsearch on Kubernetes](https://www.elastic.co/elasticsearch-kubernetes)
+* [Orchestrate {{es}} on Kubernetes](https://www.elastic.co/elasticsearch-kubernetes)
 * [ECK post on the Elastic Blog](https://www.elastic.co/blog/introducing-elastic-cloud-on-kubernetes-the-elasticsearch-operator-and-beyond?elektra=products&storm=sub1)
-* [Getting Started With Elastic Cloud on Kubernetes (ECK)](https://www.youtube.com/watch?v=PIJmlYBIFXM)
+* [Getting Started With {{eck}} (ECK)](https://www.youtube.com/watch?v=PIJmlYBIFXM)
 * [Running the Elastic Stack on Kubernetes with ECK](https://www.youtube.com/watch?v=Wf6E3vkvEFM)

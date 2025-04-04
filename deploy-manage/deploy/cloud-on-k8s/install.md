@@ -9,7 +9,7 @@ mapped_pages:
 
 # Install ECK [k8s-installing-eck]
 
-Elastic Cloud on Kubernetes (ECK) is a [Kubernetes operator](https://kubernetes.io/docs/concepts/extend-kubernetes/operator/) that helps you deploy and manage Elastic applications on Kubernetes, including Elasticsearch, Kibana, APM Server, Beats, Elastic Agent, Elastic Maps Server, and Logstash.
+{{eck}} (ECK) is a [Kubernetes operator](https://kubernetes.io/docs/concepts/extend-kubernetes/operator/) that helps you deploy and manage Elastic applications on Kubernetes, including Elasticsearch, Kibana, APM Server, Beats, Elastic Agent, Elastic Maps Server, and Logstash.
 
 ECK relies on a set of [Custom Resource Definitions (CRDs)](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/#customresourcedefinitions) to define how applications are deployed. CRDs are global resources, shared across the entire Kubernetes cluster, so installing them requires [specific permissions](../../../deploy-manage/deploy/cloud-on-k8s/required-rbac-permissions.md#k8s-eck-permissions-installing-crds).
 

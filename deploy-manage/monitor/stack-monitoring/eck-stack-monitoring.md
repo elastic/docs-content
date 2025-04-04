@@ -107,7 +107,7 @@ spec:
 2. The use of `namespace` is optional if the monitoring {{es}} cluster and the monitored {{stack}} resource are running in the same namespace.
 
 ::::{note}
-If stack monitoring is configured for a Beat, but the corresponding {{es}} cluster is not monitored, the Kibana stack monitoring page will not show the Beats data.
+If stack monitoring is configured for a Beat, but the corresponding {{es}} cluster is not monitored, the {{kib}} stack monitoring page will not show the Beats data.
 ::::
 
 ::::{note}

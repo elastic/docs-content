@@ -2,14 +2,14 @@
 applies_to:
   deployment:
     eck: ga
-navigation_title: Elastic Cloud on Kubernetes
+navigation_title: {{eck}}
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-remote-clusters.html
 ---
 
 # Remote clusters with {{eck}} [k8s-remote-clusters]
 
-The [remote clusters module](/deploy-manage/remote-clusters.md) in Elasticsearch enables you to establish uni-directional connections to a remote cluster. This functionality is used in cross-cluster replication and cross-cluster search.
+The [remote clusters module](/deploy-manage/remote-clusters.md) in {{es}} enables you to establish uni-directional connections to a remote cluster. This functionality is used in cross-cluster replication and cross-cluster search.
 
 When using remote cluster connections with ECK, the setup process depends on where the remote cluster is deployed.
 

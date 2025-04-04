@@ -46,7 +46,7 @@ Check [Setup your own certificate](./set-up-basic-security-plus-https.md#encrypt
 
 #### Custom self-signed certificate using OpenSSL [k8s_custom_self_signed_certificate_using_openssl]
 
-This example illustrates how to create your own self-signed certificate for the [quickstart Elasticsearch cluster](/deploy-manage/deploy/cloud-on-k8s/elasticsearch-deployment-quickstart.md) using the OpenSSL command line utility. Note the subject alternative name (SAN) entry for `quickstart-es-http.default.svc`.
+This example illustrates how to create your own self-signed certificate for the [quickstart {{es}} cluster](/deploy-manage/deploy/cloud-on-k8s/elasticsearch-deployment-quickstart.md) using the OpenSSL command line utility. Note the subject alternative name (SAN) entry for `quickstart-es-http.default.svc`.
 
 ```sh
 $ openssl req -x509 -sha256 -nodes -newkey rsa:4096 -days 365 -subj "/CN=quickstart-es-http" -addext "subjectAltName=DNS:quickstart-es-http.default.svc" -keyout tls.key -out tls.crt
@@ -55,7 +55,7 @@ $ kubectl create secret generic quickstart-es-cert --from-file=ca.crt=tls.crt --
 
 #### Custom self-signed certificate using cert-manager [k8s_custom_self_signed_certificate_using_cert_manager]
 
-This example illustrates how to issue a self-signed certificate for the [quickstart Elasticsearch cluster](/deploy-manage/deploy/cloud-on-k8s/elasticsearch-deployment-quickstart.md) using a [cert-manager](https://cert-manager.io) self-signed issuer.
+This example illustrates how to issue a self-signed certificate for the [quickstart {{es}} cluster](/deploy-manage/deploy/cloud-on-k8s/elasticsearch-deployment-quickstart.md) using a [cert-manager](https://cert-manager.io) self-signed issuer.
 
 ```yaml
 ---
@@ -85,7 +85,7 @@ spec:
       - quickstart
 ```
 
-Here is how to issue multiple Elasticsearch certificates from a single self-signed CA. This is useful for example for [Remote clusters](/deploy-manage/remote-clusters/eck-remote-clusters.md) which need to trust each other’s CA, in order to avoid mounting N CAs when a cluster is connected to N other clusters.
+Here is how to issue multiple {{es}} certificates from a single self-signed CA. This is useful for example for [Remote clusters](/deploy-manage/remote-clusters/eck-remote-clusters.md) which need to trust each other’s CA, in order to avoid mounting N CAs when a cluster is connected to N other clusters.
 
 ```yaml
 apiVersion: cert-manager.io/v1
@@ -197,7 +197,7 @@ spec:
         secretName: my-cert
 ```
 
-## Kibana HTTP configuration in ECK [k8s-kibana-http-configuration]
+## {{kib}} HTTP configuration in ECK [k8s-kibana-http-configuration]
 
 By default, ECK creates a `ClusterIP` [Service](https://kubernetes.io/docs/concepts/services-networking/service/) and associates it with the {{kib}} deployment.
 

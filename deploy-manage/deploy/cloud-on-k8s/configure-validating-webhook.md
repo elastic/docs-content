@@ -12,7 +12,7 @@ ECK can be configured to provide a [validating webhook](https://kubernetes.io/do
 
 Validating webhooks are defined using a `ValidatingWebhookConfiguration` object that defines the following:
 
-* Type of resource to validate (Elasticsearch, Kibana and so on)
+* Type of resource to validate (Elasticsearch, {{kib}} and so on)
 * Type of actions to validate (create, update, delete)
 * Connection details to the webhook
 
@@ -168,7 +168,7 @@ You might get errors in your Kubernetes API server logs indicating that it canno
 
 ### Resource creation taking too long or timing out [k8s-webhook-troubleshooting-timeouts] 
 
-Webhooks require network connectivity between the Kubernetes API server and the operator. If the creation of an Elasticsearch resource times out with an error message similar to the following, then the Kubernetes API server might be unable to connect to the webhook to validate the manifest.
+Webhooks require network connectivity between the Kubernetes API server and the operator. If the creation of an {{es}} resource times out with an error message similar to the following, then the Kubernetes API server might be unable to connect to the webhook to validate the manifest.
 
 ```
 Error from server (Timeout): error when creating "elasticsearch.yaml": Timeout: request did not complete within requested timeout 30s

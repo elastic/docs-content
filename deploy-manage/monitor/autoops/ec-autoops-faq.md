@@ -11,7 +11,7 @@ applies_to:
 This frequently-asked-questions list answers some of your more common questions about AutoOps.
 
 $$$faq-what-is-autoops$$$What is AutoOps? What does it do?
-:   AutoOps for Elasticsearch significantly simplifies cluster management with performance recommendations, resource utilization and cost insights, real-time issue detection and resolution paths. By analyzing hundreds of Elasticsearch metrics, your configuration, and usage patterns, AutoOps recommends operational and monitoring insights that deliver savings in administration time and hardware costs.
+:   AutoOps for {{es}} significantly simplifies cluster management with performance recommendations, resource utilization and cost insights, real-time issue detection and resolution paths. By analyzing hundreds of {{es}} metrics, your configuration, and usage patterns, AutoOps recommends operational and monitoring insights that deliver savings in administration time and hardware costs.
 
 $$$faq-autoops-availability$$$When will AutoOps be available for Self-hosted and Serverless users?
 :   AutoOps will be available for Self-hosted and Serverless customers with a different set of capabilities in the future.
@@ -19,11 +19,11 @@ $$$faq-autoops-availability$$$When will AutoOps be available for Self-hosted and
 $$$faq-autoops-monitoring$$$Does AutoOps monitor the entire Elastic Stack?
 :   AutoOps is currently limited to {{es}} (not {{kib}}, Logstash and Beats).
 
-$$$faq-autoops-supported-versions$$$What versions of Elasticsearch are supported for Elastic Cloud Hosted?
+$$$faq-autoops-supported-versions$$$What versions of {{es}} are supported for {{ech}}?
 :   AutoOps supports {es} versions according to the [supported Elastic Stack versions](https://www.elastic.co/support/eol).
 
 $$$faq-autoops-license$$$How is AutoOps currently licensed?
-:   AutoOps current feature set is available to Elastic Cloud Hosted customers at all subscription tiers. For more information please refer to the [subscription page](https://www.elastic.co/subscriptions/cloud).
+:   AutoOps current feature set is available to {{ech}} customers at all subscription tiers. For more information please refer to the [subscription page](https://www.elastic.co/subscriptions/cloud).
 
 $$$faq-autoops-installation$$$How does AutoOps get installed and why may I not see AutoOps available on specific deployments?
 :   AutoOps is automatically applied to {{es}} clusters on Elastic Cloud, rolling out in phases across CSPs and regions. Read more about AutoOps [roll out](ec-autoops-regions.md) status.

@@ -9,7 +9,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-configure-deployment-settings.html
 ---
 
-# Create an Elastic Cloud Hosted deployment [ec-create-deployment]
+# Create an {{ech}} deployment [ec-create-deployment]
 
 An Elastic Cloud deployment includes Elastic Stack components such as Elasticsearch, Kibana, and other features, allowing you to store, search, and analyze your data. You can spin up a proof-of-concept deployment to learn more about what Elastic can do for you.
 

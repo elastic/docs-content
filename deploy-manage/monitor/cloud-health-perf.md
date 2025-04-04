@@ -139,7 +139,7 @@ We’ve compiled some guidelines to help you ensure the health of your deploymen
 :   Provide instructions on how to troubleshoot issues related to unassigned shards.
 
 [](/troubleshoot/monitoring/performance.md)
-:   Address performance degradation on a smaller size Elasticsearch cluster.
+:   Address performance degradation on a smaller size {{es}} cluster.
 
 [](/troubleshoot/monitoring/high-availability.md)
 :   High availability involves more than setting multiple availability zones (although that’s really important!). Learn how to assess performance and workloads to determine if your deployment has adequate resources to mitigate a potential node failure.
