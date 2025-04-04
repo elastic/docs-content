@@ -94,5 +94,5 @@ On the **Stack Monitoring** page, you’ll see cluster alerts that require your 
 If you encounter problems, see [Troubleshooting monitoring](../monitoring-data/monitor-troubleshooting.md).
 
 :::{tip}
-If you're using {{ech}} or {{ece}}, then you can also get a direct link to the relevant **Stack Monitoring** page from the **Deployments** > **Logs and metrics** page. [Learn more](/deploy-manage/monitor/stack-monitoring/ece-ech-stack-monitoring.md#access-kibana-monitoring).
+If you're using {{ech}} or {{ece}}, then you can also get a direct link to the relevant **Stack Monitoring** page from the deployment's **Logs and metrics** page. [Learn more](/deploy-manage/monitor/stack-monitoring/ece-ech-stack-monitoring.md#access-kibana-monitoring).
 ::::
