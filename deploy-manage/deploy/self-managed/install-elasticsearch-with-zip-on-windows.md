@@ -91,7 +91,7 @@ You can install {{es}} as a service that runs in the background or starts automa
 1. Install {{es}} as a service. The name of the service and the value of `ES_JAVA_HOME` will be made available during install:
 
     ```sh subs=true
-    C:\Program Files\elasticsearch-{{stack-version}}\bin>elasticsearch-service.bat install
+    C:\Program Files\elasticsearch-{{stack-version}}>.\bin\elasticsearch-service.bat install
     Installing service      :  "elasticsearch-service-x64"
     Using ES_JAVA_HOME (64-bit):  "C:\jvm\jdk1.8"
     The service 'elasticsearch-service-x64' has been installed.
@@ -106,7 +106,7 @@ You can install {{es}} as a service that runs in the background or starts automa
 2. Start {{es}} as a service. When {{es}} starts, authentication is enabled by default:
 
     ```sh subs=true
-    C:\Program Files\elasticsearch-{{stack-version}}\bin>bin\elasticsearch-service.bat start
+    C:\Program Files\elasticsearch-{{stack-version}}>.\bin\elasticsearch-service.bat start
     ```
 
     ::::{note}
@@ -116,16 +116,16 @@ You can install {{es}} as a service that runs in the background or starts automa
 3. Generate a password for the `elastic` user with the [`elasticsearch-reset-password`](elasticsearch://reference/elasticsearch/command-line-tools/reset-password.md) tool. The password is output to the command line.
 
     ```sh subs=true
-    C:\Program Files\elasticsearch-{{stack-version}}\bin>\bin\elasticsearch-reset-password -u elastic
+    C:\Program Files\elasticsearch-{{stack-version}}>.\bin\elasticsearch-reset-password -u elastic
     ```
 
 #### Manage {{es}} as a service on Windows [windows-service-manage]
 
 Run the `elasticsearch-service.bat` script in the `bin\` folder to install, remove, manage, or configure the service and potentially start and stop the service from the command line.
 
-```sh subs=true
-C:\Program Files\elasticsearch-{{stack-version}}\bin>elasticsearch-service.bat
-```
+    ```sh subs=true
+    C:\Program Files\elasticsearch-{{stack-version}}>.\bin\elasticsearch-service.bat
+    ```
 
 Usage:
 ```
