@@ -2,6 +2,9 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/synthetics-manage-retention.html
   - https://www.elastic.co/guide/en/serverless/current/observability-synthetics-manage-retention.html
+applies_to:
+  stack:
+  serverless:
 ---
 
 # Manage data retention [synthetics-manage-retention]

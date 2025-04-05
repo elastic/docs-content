@@ -2,7 +2,8 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/uptime-intro.html
 applies_to:
-  stack: all
+  stack: deprecated 8.15.0
+  serverless: unavailable
 ---
 
 # Uptime monitoring (deprecated) [uptime-intro]
@@ -10,14 +11,14 @@ applies_to:
 ::::{admonition} Deprecated in 8.15.0.
 :class: warning
 
-Use [Synthetic monitoring](synthetic-monitoring.md) instead of the {{uptime-app}}
+Use [Synthetic monitoring](/solutions/observability/apps/synthetic-monitoring.md) instead of the {{uptime-app}}.
 ::::
 
 
 ::::{important}
 The {{uptime-app}} is for viewing result data from lightweight monitors running through {{heartbeat}} and [configured with a traditional `heartbeat.yml` file](get-started-with-uptime.md). This is for TCP, HTTP or ICMP monitors that you have configured and run from your own infrastructure with {{heartbeat}} natively.
 
-For browser-based monitors, a richer management and reporting experience, and more capabilities such as triaging and responding to alerts, use the [{{synthetics-app}}](synthetic-monitoring.md) instead of the {{uptime-app}}.
+For browser-based monitors, a richer management and reporting experience, and more capabilities such as triaging and responding to alerts, use the [{{synthetics-app}}](/solutions/observability/apps/synthetic-monitoring.md) instead of the {{uptime-app}}.
 
 Note that the {{uptime-app}} is hidden from the interface when there is no recent {{heartbeat}} data. To see the app, you may need to turn on the **Always show legacy Uptime app** setting (`observability:enableLegacyUptimeApp`) under {{kib}} Advanced Settings. To learn how, refer to [Advanced Settings](kibana://reference/advanced-settings.md).
 

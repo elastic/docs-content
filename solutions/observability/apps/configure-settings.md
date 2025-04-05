@@ -2,10 +2,17 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/configure-uptime-settings.html
 applies_to:
-  stack: all
+  stack: deprecated 8.15.0
+  serverless: unavailable
 ---
 
 # Configure settings [configure-uptime-settings]
+
+::::{admonition} Deprecated in 8.15.0.
+:class: warning
+
+Use [Synthetic monitoring](/solutions/observability/apps/synthetic-monitoring.md) instead of the {{uptime-app}}.
+::::
 
 The **Settings** page enables you to change which {{heartbeat}} indices are displayed by the {{uptime-app}}, configure rule connectors, and set expiration/age thresholds for TLS certificates.
 

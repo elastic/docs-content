@@ -2,6 +2,9 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-reduce-apm-storage.html
   - https://www.elastic.co/guide/en/serverless/current/observability-apm-reduce-your-data-usage.html
+applies_to:
+  stack:
+  serverless:
 ---
 
 # Reduce storage [apm-reduce-apm-storage]

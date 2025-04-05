@@ -2,6 +2,9 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-securing-apm-server.html
   - https://www.elastic.co/guide/en/serverless/current/observability-apm-keep-data-secure.html
+applies_to:
+  stack:
+  serverless:
 ---
 
 # Use APM securely [apm-securing-apm-server]
