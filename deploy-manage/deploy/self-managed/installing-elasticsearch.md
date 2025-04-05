@@ -52,6 +52,8 @@ Each linked guide provides the following details:
 * Archive or package contents information
 * Security certificate and key information
 
+Special considerations such as firewalls and proxy servers are not covered.
+
 Before you start, make sure that you [configure your system](/deploy-manage/deploy/self-managed/important-system-configuration.md).
 
 | Format | Description | Instructions |
@@ -77,6 +79,11 @@ You can [use Docker Compose](/deploy-manage/deploy/self-managed/install-elastics
 ## Installation order
 
 :::{include} /deploy-manage/deploy/_snippets/installation-order.md
+:::
+
+## Required ports
+
+:::{include} _snippets/ports.md
 :::
 
 ## Supported operating systems and JVMs [supported-platforms]

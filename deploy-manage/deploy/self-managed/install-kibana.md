@@ -54,6 +54,11 @@ Running different patch version releases of {{kib}} and {{es}} (e.g. {{kib}} 9.0
 :::{include} /deploy-manage/deploy/_snippets/installation-order.md
 :::
 
+## Default ports
+
+:::{include} _snippets/ports.md
+:::
+
 ## Third-party dependencies
 
 :::{include} /deploy-manage/deploy/self-managed/_snippets/third-party-dependencies.md

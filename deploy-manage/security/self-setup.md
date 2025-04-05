@@ -34,7 +34,7 @@ This automatic setup is the quickest way to get started and ensures your cluster
 The automatic configuration does not enable TLS on the {{kib}} HTTP endpoint. To encrypt browser traffic to {{kib}}, follow the steps in [](./set-up-basic-security-plus-https.md#encrypt-kibana-browser).
 ::::
 
-Refer to [Automatic security setup](./self-auto-setup.md) for details about the full procedure, including [cases where it may be skipped](./self-auto-setup.md#stack-skip-auto-configuration).
+Refer to [Automatic security setup](./self-auto-setup.md) to learn more, including a list of automatically generated security certificates and keys, and [cases where the security setup may be skipped](./self-auto-setup.md#stack-skip-auto-configuration).
 
 ## Manual configuration [manual-configuration]
 

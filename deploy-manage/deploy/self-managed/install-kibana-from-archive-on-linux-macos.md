@@ -2,6 +2,8 @@
 navigation_title: "Install from archive on Linux or macOS"
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/targz.html
+sub:
+ ipcommand: "ifconfig"
 navigation_title: "Linux and MacOS"
 applies_to:
   deployment:
@@ -39,7 +41,7 @@ cd kibana-{{stack-version}}/ <2>
 1. Compares the SHA of the downloaded `.tar.gz` archive and the published checksum, which should output `kibana-<version>-linux-x86_64.tar.gz: OK`.
 2. This directory is known as `$KIBANA_HOME`.
 
-## MacOS [install-darwin64]
+### MacOS [install-darwin64]
 
 The Darwin archive for {{kib}} {{stack-version}} can be downloaded and installed as follows:
 
@@ -79,7 +81,12 @@ Alternatively, you can add a security override if a Gatekeeper popup appears by 
 :::{include} _snippets/new-enrollment-token.md
 :::
 
-## Step 3: Run {{kib}} from the command line [targz-running]
+## Step 3 (Optional): Make {{kib}} externally accessible
+
+:::{include} _snippets/kibana-ip.md
+:::
+
+## Step 4: Run {{kib}} from the command line [targz-running]
 
 {{kib}} can be started from the command line as follows:
 
@@ -91,7 +98,14 @@ By default, {{kib}} runs in the foreground, prints its logs to the standard outp
 :::{include} _snippets/enroll-steps.md
 :::
 
-## Step 4: Configure {{kib}} using the config file [targz-configuring]
+## Step 5 (Multi-node clusters only): Clean up the config files
+
+If you are deploying a multi-node cluster, then the enrollment process adds all existing nodes to each newly enrolled node's `discovery.seed_hosts` setting. However, you need to go back to all of the nodes in the cluster and edit them so each node in the cluster can restart and rejoin the cluster as expected.
+
+:::{include} _snippets/clean-up-multinode.md
+:::
+
+## Configure {{kib}} using the config file [targz-configuring]
 
 {{kib}} loads its configuration from the `$KIBANA_HOME/config/kibana.yml` file by default. The format of this config file is explained in [](configure-kibana.md).
 

@@ -5,7 +5,7 @@ curl --cacert {{es-conf}}{{slash}}certs{{slash}}http_ca.crt {{escape}} <1>
 -u elastic:$ELASTIC_PASSWORD https://localhost:9200 <2>
 ```
 1. `--cacert`: Path to the generated `http_ca.crt` certificate for the HTTP layer.
-2. Ensure that you use `https` in your call, or the request will fail.
+2. Replace `$ELASTIC_PASSWORD` with the `elastic` superuser password. Ensure that you use `https` in your call, or the request will fail.
 
 
 

@@ -29,7 +29,7 @@ Environment variables can be injected into configuration using `${MY_ENV_VAR}` s
 
 ## Available settings
 
-For a complete list of settings that you can apply to {{kib}}, refer to [{{kib}} configuration reference](kibana:///reference/configuration-reference.md).
+For a complete list of settings that you can apply to {{kib}}, refer to [{{kib}} configuration reference](kibana://reference/configuration-reference.md).
 
 ## Additional topics
 
