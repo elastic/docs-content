@@ -1,5 +1,29 @@
-/.github/ @elastic/doc-leads
-/.github/workflows/ @elastic/docs-engineering
+# Unless a later match takes precedence, someone on the docs team must review all PRs to this repo
+*                           @elastic/docs
 
-/serverless/ @elastic/platform-docs
-/serverless/serverless-changelog.asciidoc @elastic/docs
+# Templates, workflows, and config
+/.github/                   @elastic/doc-leads
+/.github/workflows/         @elastic/docs-engineering
+/acrolinx/                  @elastic/doc-leads
+
+# V3 docs
+/cloud-account/             @elastic/platform-docs
+/deploy-manage/             @elastic/platform-docs
+/explore-analyze/           @elastic/platform-docs
+/extend/                    @elastic/platform-docs
+/get-started/               @elastic/platform-docs
+/manage-data/               @elastic/platform-docs
+/reference/                 @elastic/platform-docs
+/release-notes/             @elastic/docs
+/solutions/                 @elastic/obs-docs @elastic/search-docs @elastic/security-docs
+/solutions/observability/   @elastic/obs-docs
+/solutions/search/          @elastic/search-docs
+/solutions/security         @elastic/security-docs
+/troubleshoot/              @elastic/docs
+
+# What should we do with these files?
+/raw-migrated-files/
+
+# Legacy serverless docs
+/serverless/                                @elastic/platform-docs
+/serverless/serverless-changelog.asciidoc   @elastic/docs
