@@ -798,7 +798,8 @@ toc:
               - file: upgrade/deployment-or-cluster/kibana.md
                 children:
                   - file: upgrade/deployment-or-cluster/saved-object-migrations.md
-                  - file: upgrade/deployment-or-cluster/kibana-roll-back.md    
+                  - file: upgrade/deployment-or-cluster/kibana-roll-back.md
+          - file: upgrade/deployment-or-cluster/enterprise-search.md   
       - file: upgrade/ingest-components.md        
   - file: uninstall.md
     children:
