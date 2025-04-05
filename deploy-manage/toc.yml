@@ -94,6 +94,8 @@ toc:
                       - file: deploy/cloud-enterprise/deploy-large-installation.md
                       - file: deploy/cloud-enterprise/fresh-installation-of-ece-using-podman-hosts.md
                       - file: deploy/cloud-enterprise/migrate-ece-to-podman-hosts.md
+                        children:
+                          - file: deploy/cloud-enterprise/migrate-to-podman-5.md
                   - file: deploy/cloud-enterprise/log-into-cloud-ui.md
                   - file: deploy/cloud-enterprise/post-installation-steps.md
                   - file: deploy/cloud-enterprise/install-ece-on-additional-hosts.md

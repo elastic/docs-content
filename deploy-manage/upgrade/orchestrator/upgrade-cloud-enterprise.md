@@ -7,20 +7,18 @@ applies_to:
     ece:
 ---
 
-% The upgrade procedure is expected to change with ECE 3.8.0 release. This document is currently a temporary draft, pending to be refined.
-
 # Upgrade Elastic Cloud Enterprise [ece-upgrade]
 
 This page provides instructions on how to upgrade the ECE operator.
 
 To learn how to upgrade {{stack}} applications like {{es}} or {{kib}}, refer to [Upgrade the Elastic Stack version](../deployment-or-cluster.md).
 
-Periodically, you might need to upgrade an Elastic Cloud Enterprise installation as new versions with additional features become available. The upgrade process updates all hosts that are part of an Elastic Cloud Enterprise installation to the latest version of ECE, with little or no downtime for managed deployments. To upgrade your deployment to {{stack}} 9.x, the minimum required ECE version is 3.0.0.
+Periodically, you might need to upgrade an Elastic Cloud Enterprise installation as new versions with additional features become available. The upgrade process updates all hosts that are part of an Elastic Cloud Enterprise installation to the latest version of ECE, with little or no downtime for managed deployments. To upgrade your deployment to {{stack}} 9.x, the minimum required ECE version is 4.0.0.
 
 Before initiating the ECE upgrade process, review the [Support matrix](https://www.elastic.co/support/matrix#elastic-cloud-enterprise) to ensure the operating system (OS), Docker, or Podman versions you're running are compatible with the ECE version you’re upgrading to. We recommend that Docker, Podman, and the operating system are at the target version before starting the ECE upgrade.
 
 :::{note}
-During the upgrade window, there might be a short period of time during which you run a combination of versions which is not explicitly supported. For example, if you are on ECE 3.5 with Docker version 20.10 on Ubuntu 20.04, and plan to upgrade to ECE 3.7 on the same OS, you will need to upgrade Docker to version 24.0 first. In this case, and only during your upgrade window, we support the mixed OS/Docker versions. In general, this won’t be a problem. However, should anything become a blocker for the upgrade, [reach out to support for help](/troubleshoot/index.md#contact-us).
+During the upgrade window, there might be a short time period when you run a combination of versions that is not explicitly supported. For example, if you are on ECE 3.5 with Docker version 20.10 on Ubuntu 20.04 and plan to upgrade to ECE 3.7 on the same OS, you will need to upgrade Docker to version 24.0 first. In this case, and only during your upgrade window, we will support the mixed OS and container engine versions. In general, this won’t be a problem. However, should anything become a blocker for the upgrade, [reach out to support for help](/troubleshoot/index.md#contact-us).
 :::
 
 ## The upgrade version matrix [ece-upgrade-version-matrix]
@@ -37,7 +35,12 @@ The following table shows the recommended upgrade paths from older Elastic Cloud
 If you have to upgrade to any of the intermediate versions, follow the upgrade instructions of the relevant release before upgrading to 4.0.0:
 - [ECE 2.5 Upgrade](https://www.elastic.co/guide/en/cloud-enterprise/2.5/ece-upgrade.html)
 - [ECE 2.13 Upgrade](https://www.elastic.co/guide/en/cloud-enterprise/2.13/ece-upgrade.html)
-- [ECE 3.8 Upgrade](https://www.elastic.co/guide/en/cloud-enterprise/3.7/ece-upgrade.html)
+  
+  :::{note}
+  We don't recommend upgrading to 2.13.0, as it can cause issues and you may lose access to the admin console. We strongly recommend upgrading to 2.13.4.
+  :::
+
+- [ECE 3.8 Upgrade](https://www.elastic.co/guide/en/cloud-enterprise/3.8/ece-upgrade.html)
 
 ## The upgrade process [ece-upgrade-overview]
 
@@ -79,8 +82,8 @@ Before starting the upgrade process, verify that your setup meets the following 
 - **Proxies and load balancing**. To avoid any downtime for Elastic Cloud Enterprise, the installation must include more than one proxy and must use a load balancer as recommended. If only a single proxy is configured or if the installation is not using a load balancer, some downtime is expected when the containers on the proxies are upgraded. Each container upgrade typically takes five to ten seconds, times the number of containers on a typical host.
 - **For *offline* or *air-gapped* installations**. Additional steps are required to upgrade Elastic Cloud Enterprise. After downloading the installation script for the new version, pull and load the required container images and push them to a private Docker registry. To learn more about pulling and loading Docker images, check Install [ECE offline](../../../deploy-manage/deploy/cloud-enterprise/air-gapped-install.md).
 - Check the security cluster’s zone count. Due to internal limitations in ECE, the built-in security cluster cannot be scaled to two zones during the ECE upgrade procedure. If the zone count is set to 2 zones, scale the cluster to 3 or 1 zone(s) before upgrading ECE.
-- **[Verify if you can upgrade directly](#ece-upgrade-version-matrix)**. When upgrading to ECE 4.0 or a higher version:
-  - You need to first upgrade to ECE 3.8.0 or later. Refer to the ECE version 3.8.0 upgrade instructions for details.
+- **[Verify if you can upgrade directly](#ece-upgrade-version-matrix)**. When upgrading to ECE 4.0 or a higher version: 
+  - You need to first upgrade to ECE 3.8.0 or later. Refer to the [ECE version 3.8.0 upgrade instructions](https://www.elastic.co/guide/en/cloud-enterprise/3.8/ece-upgrade.html) for details.
 
   :::{warning}
   Don’t manually upgrade your system deployments if you are on ECE version 2.7.0 or a later version, as it can cause issues and you may lose access to the Cloud UI. Note that the only exception to that rule is when you’re upgrading to ECE 3.6.0 and your system deployments are at a version lower than 7.17.0.
