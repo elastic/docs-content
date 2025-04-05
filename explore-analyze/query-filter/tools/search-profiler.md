@@ -9,7 +9,7 @@ mapped_pages:
 
 # Search profiler [xpack-profiler]
 
-{{es}} has a powerful [Profile API](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-profile.html) that you can use to inspect and analyze your search queries. The response returns a large JSON blob, which can be difficult to analyze manually.
+{{es}} has a powerful [Profile API](elasticsearch://reference/elasticsearch/rest-apis/search-profile.md) that you can use to inspect and analyze your search queries. The response returns a large JSON blob, which can be difficult to analyze manually.
 
 The **{{searchprofiler}}** tool can transform this JSON output into a visualization that is easy to navigate, allowing you to diagnose and debug poorly performing queries much faster.
 
@@ -35,7 +35,7 @@ While the cumulative time metric is useful for comparing the performance of your
 ::::
 
 
-To see more profiling information, click **View details**. You’ll see details about the query components that ran on the shard and the timing breakdown of low-level methods. For more information, refer to [Profiling queries](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-profile.html#profiling-queries).
+To see more profiling information, click **View details**. You’ll see details about the query components that ran on the shard and the timing breakdown of low-level methods. For more information, refer to [Profiling queries](elasticsearch://reference/elasticsearch/rest-apis/search-profile.md#profiling-queries).
 
 
 ## Filter for an index or type [_filter_for_an_index_or_type]
@@ -130,7 +130,7 @@ To understand how the query trees are displayed inside the **{{searchprofiler}}*
     :screenshot:
     :::
 
-    For more information about how the **{{searchprofiler}}** works, how timings are calculated, and how to interpret various results, see [Profiling queries](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-profile.html#profiling-queries).
+    For more information about how the **{{searchprofiler}}** works, how timings are calculated, and how to interpret various results, see [Profiling queries](elasticsearch://reference/elasticsearch/rest-apis/search-profile.md#profiling-queries).
 
 
 
