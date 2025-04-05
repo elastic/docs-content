@@ -1,12 +1,14 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-performance-diagnostic.html
+applies_to:
+  stack:
 ---
 
 # APM Server performance diagnostic [apm-performance-diagnostic]
 
 
-## Diagnosing backpressure from {{es}} [apm-es-backpressure] 
+## Diagnosing backpressure from {{es}} [apm-es-backpressure]
 
 When {{es}} is under excessive load or indexing pressure, APM Server could experience the downstream backpressure when indexing new documents into {{es}}. Most commonly, backpressure from {{es}} will manifest itself in the form of higher indexing latency and/or rejected requests, which in return could lead APM Server to deny incoming requests. As a result, APM agents connected to the affected APM Server will suffer from throttling and/or request timeout when shipping APM events.
 

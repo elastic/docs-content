@@ -3,10 +3,8 @@ navigation_title: "Anonymous authentication"
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-configuration-anonymous.html
 applies_to:
-  stack: all
+  stack:
 ---
-
-
 
 # Configure anonymous authentication [apm-configuration-anonymous]
 

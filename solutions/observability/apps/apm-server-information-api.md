@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-api-info.html
+applies_to:
+  stack:
 ---
 
 # APM Server information API [apm-api-info]
@@ -8,7 +10,7 @@ mapped_pages:
 The APM Server exposes an API endpoint to query general server information. This lightweight endpoint is useful as a server up/down health check.
 
 
-## Server Information endpoint [apm-api-info-endpoint] 
+## Server Information endpoint [apm-api-info-endpoint]
 
 This is the server information endpoint:
 
@@ -23,7 +25,7 @@ To configure authenticated access to the APM server, the instructions at [APM AP
 If an [API keys](api-keys.md) or a [Secret token](secret-token.md) is passed along with the `HTTP GET` request, in addition to an HTTP 200, the response payload will include some information about the APM server.
 
 
-### Example: GET, without credentials [apm-api-info-example-get-without-credentials] 
+### Example: GET, without credentials [apm-api-info-example-get-without-credentials]
 
 Example APM Server status request with GET, without credentials:
 

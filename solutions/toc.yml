@@ -460,6 +460,7 @@ toc:
           - file: security/get-started/ingest-data-to-elastic-security.md
             children:
               - file: security/get-started/enable-threat-intelligence-integrations.md
+              - file: security/get-started/automatic-migration.md
               - file: security/get-started/automatic-import.md
               - file: security/get-started/agentless-integrations.md
           - file: security/get-started/spaces-elastic-security.md

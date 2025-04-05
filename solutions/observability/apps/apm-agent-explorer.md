@@ -2,7 +2,7 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-agent-explorer.html
 applies_to:
-  stack: all
+  stack:
 ---
 
 # APM Agent explorer [apm-agent-explorer]
