@@ -2,10 +2,10 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/monitor-datasets.html
   - https://www.elastic.co/guide/en/serverless/current/observability-monitor-datasets.html
+navigation_title: "Data set quality"
 applies_to:
   stack: beta
   serverless: beta
-navigation_title: "Data set quality"
 ---
 
 # Data set quality monitoring [observability-monitor-datasets]
@@ -35,7 +35,7 @@ Opening the details of a specific data set shows the degraded documents history,
 
 ## Investigate issues [observability-monitor-datasets-investigate-issues]
 
-The Data Set Quality page has a couple of different ways to help you find ignored fields and investigate issues. From the data set table, you can open the data set’s details page, and view commonly ignored fields and information about those fields. Open a logs data set in Logs Explorer or other data set types in Discover to find ignored fields in individual documents.
+The Data Set Quality page has a couple of different ways to help you find ignored fields and investigate issues. From the data set table, you can open the data set’s details page, and view commonly ignored fields and information about those fields. Open a logs data set in Discover or other data set types in Discover to find ignored fields in individual documents.
 
 
 ### Find ignored fields in data sets [observability-monitor-datasets-find-ignored-fields-in-data-sets]
@@ -50,12 +50,12 @@ The **Quality issues** section shows fields that have been ignored, the number o
 
 ### Find ignored fields in individual logs [observability-monitor-datasets-find-ignored-fields-in-individual-logs]
 
-To use Logs Explorer or Discover to find ignored fields in individual logs:
+To use Discover to find ignored fields in individual logs:
 
 1. Find data sets with degraded documents using the **Degraded Docs** column of the data sets table.
-2. Click the percentage in the **Degraded Docs** column to open the data set in Logs Explorer or Discover.
+2. Click the percentage in the **Degraded Docs** column to open the data set in Discover.
 
-The **Documents** table in Logs Explorer or Discover is automatically filtered to show documents that were not parsed correctly. Under the **actions** column, you’ll find the degraded document icon (![degraded document icon](/solutions/images/serverless-indexClose.svg "")).
+The **Documents** table in Discover is automatically filtered to show documents that were not parsed correctly. Under the **actions** column, you’ll find the degraded document icon (![degraded document icon](../images/serverless-indexClose.svg "")).
 
 Now that you know which documents contain ignored fields, examine them more closely to find the origin of the issue:
 

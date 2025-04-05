@@ -73,15 +73,15 @@ PUT _index_template/logs-example-default-template
 
 Filter your data using the fields you’ve extracted so you can focus on log data with specific log levels, timestamp ranges, or host IPs. You can filter your log data in different ways:
 
-* [Filter logs in Logs Explorer](../../../solutions/observability/logs/filter-aggregate-logs.md#logs-filter-logs-explorer): Filter and visualize log data in Logs Explorer.
+* [Filter logs in Discover](../../../solutions/observability/logs/filter-aggregate-logs.md#logs-filter-discover): Filter and visualize log data in Discover.
 * [Filter logs with Query DSL](../../../solutions/observability/logs/filter-aggregate-logs.md#logs-filter-qdsl): Filter log data from Developer Tools using Query DSL.
 
 
-### Filter logs in Logs Explorer [logs-filter-logs-explorer]
+### Filter logs in Discover [logs-filter-discover]
 
-Logs Explorer is a tool that automatically provides views of your log data based on integrations and data streams. To open **Logs Explorer**, find `Logs Explorer` in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+Discover is a tool that provides views of your log data based on data views and index patterns. To open **Discover**, find `Discover` in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
-From Logs Explorer, you can use the [{{kib}} Query Language (KQL)](../../../explore-analyze/query-filter/languages/kql.md) in the search bar to narrow down the log data that’s displayed. For example, you might want to look into an event that occurred within a specific time range.
+From Discover, open the `logs-*` or `All logs` data views from the **Data views** menu. From here, you can use the [{{kib}} Query Language (KQL)](../../../explore-analyze/query-filter/languages/kql.md) in the search bar to narrow down the log data that’s displayed. For example, you might want to look into an event that occurred within a specific time range.
 
 Add some logs with varying timestamps and log levels to your data stream:
 
@@ -100,19 +100,19 @@ POST logs-example-default/_bulk
 { "message": "2023-09-20T09:40:32.345Z INFO 192.168.1.106 User logout initiated." }
 ```
 
-For this example, let’s look for logs with a `WARN` or `ERROR` log level that occurred on September 14th or 15th. From Logs Explorer:
+For this example, let’s look for logs with a `WARN` or `ERROR` log level that occurred on September 14th or 15th. From Discover:
 
+1. Make sure **All logs** is selected in the **Data views** menu.
 1. Add the following KQL query in the search bar to filter for logs with log levels of `WARN` or `ERROR`:
 
     ```text
     log.level: ("ERROR" or "WARN")
     ```
+1. Click the current time range, select **Absolute**, and set the **Start date** to `Sep 14, 2023 @ 00:00:00.000`.
 
-2. Click the current time range, select **Absolute**, and set the **Start date** to `Sep 14, 2023 @ 00:00:00.000`.
+    ![Set the time range start date](../../images/serverless-logs-start-date.png "")
 
-    ![Set the time range start date](/solutions/images/serverless-logs-start-date.png "")
-
-3. Click the end of the current time range, select **Absolute**, and set the **End date** to `Sep 15, 2023 @ 23:59:59.999`.
+1. Click the end of the current time range, select **Absolute**, and set the **End date** to `Sep 15, 2023 @ 23:59:59.999`.
 
     ![Set the time range end date](/solutions/images/serverless-logs-end-date.png "")
 
@@ -124,7 +124,7 @@ Under the **Documents** tab, you’ll see the filtered log data matching your qu
 :screenshot:
 :::
 
-For more on using Logs Explorer, refer to the [Discover](../../../explore-analyze/discover.md) documentation.
+For more on using Discover, refer to the [Discover](../../../explore-analyze/discover.md) documentation.
 
 
 ### Filter logs with Query DSL [logs-filter-qdsl]

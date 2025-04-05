@@ -25,7 +25,7 @@ From the main menu, go to **Infrastructure** → **Infrastructure inventory** or
 Click **Apply** to save your changes.
 
 ::::{note}
-The patterns used to match log sources are configured in the Logs app. The default setting is `logs-*,filebeat-*,kibana_sample_data_logs*`. To change the default, refer to [Configure data sources](../../../solutions/observability/logs/configure-data-sources.md).
+The patterns used to match log sources are configured in {{kib}} advanced settings. The default setting is `logs-*-*,logs-*,filebeat-*`. To change the default, go to **Log sources** at **Stack Management** → **Advanced settings** under **Observability**.
 ::::
 
 

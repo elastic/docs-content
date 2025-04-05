@@ -209,11 +209,6 @@ Navigate to {{kib}} and choose among the following monitoring options:
     :alt: Visualize CloudTrail logs with Disocver
     :::
 
-* **Visualize your logs with Logs explorer**
-
-    :::{image} /solutions/images/observability-firehose-cloudtrail-logsexplorer.png
-    :alt: Visualize CloudTrail logs with Logs explorer
-    :::
 
 * **Visualize your logs with the CloudTrail Dashboard**
 

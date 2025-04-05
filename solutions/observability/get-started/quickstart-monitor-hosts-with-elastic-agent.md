@@ -134,7 +134,7 @@ After installation is complete and all relevant data is flowing into Elastic, th
 | Integration asset | Description |
 | --- | --- |
 | **Apache** | Prebuilt dashboard for monitoring Apache HTTP server health using error and access log data. |
-| **Custom .log files** | Logs Explorer for analyzing custom logs. |
+| **Custom .log files** | Discover for analyzing custom logs. |
 | **Docker** | Prebuilt dashboard for monitoring the status and health of Docker containers. |
 | **MySQL** | Prebuilt dashboard for monitoring MySQl server health using error and access log data. |
 | **Nginx** | Prebuilt dashboard for monitoring Nginx server health using error and access log data. |
@@ -160,7 +160,7 @@ For host monitoring, the following capabilities and features are recommended:
     * [Detect anomalies](../../../solutions/observability/infra-and-hosts/detect-metric-anomalies.md) for memory usage and network traffic on hosts.
     * [Create alerts](../../../solutions/observability/incident-management/alerting.md) that notify you when an anomaly is detected or a metric exceeds a given value.
 
-* In the [Logs Explorer](../../../solutions/observability/logs/logs-explorer.md), search and filter your log data, get information about the structure of log fields, and display your findings in a visualization. You can also:
+* In [Discover](../../../solutions/observability/logs/discover-logs.md), search and filter your log data, get information about the structure of log fields, and display your findings in a visualization. You can also:
 
     * [Monitor log data set quality](../../../solutions/observability/data-set-quality-monitoring.md) to find degraded documents.
     * [Run a pattern analysis](../../../explore-analyze/machine-learning/machine-learning-in-kibana/xpack-ml-aiops.md#log-pattern-analysis) to find patterns in unstructured log messages.

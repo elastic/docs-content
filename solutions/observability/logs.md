@@ -14,7 +14,7 @@ Elastic Observability allows you to deploy and manage logs at a petabyte scale, 
 * [Stream any log file](../../solutions/observability/logs/stream-any-log-file.md): Send log files to your Observability project using a standalone {{agent}}.
 * [Parse and route logs](../../solutions/observability/logs/parse-route-logs.md): Parse your log data and extract structured fields that you can use to analyze your data.
 * [Filter and aggregate logs](../../solutions/observability/logs/filter-aggregate-logs.md#logs-filter): Filter and aggregate your log data to find specific information, gain insight, and monitor your systems more efficiently.
-* [Explore logs](../../solutions/observability/logs/logs-explorer.md): Find information on visualizing and analyzing logs.
+* [Explore logs](../../solutions/observability/logs/discover-logs.md): Find information on visualizing and analyzing logs.
 * [Run pattern analysis on log data](../../solutions/observability/logs/run-pattern-analysis-on-log-data.md): Find patterns in unstructured log messages and make it easier to examine your data.
 * [Troubleshoot logs](../../troubleshoot/observability/troubleshoot-logs.md): Find solutions for errors you might encounter while onboarding your logs.
 
@@ -77,11 +77,11 @@ The following resources provide information on configuring your logs:
 
 ## View and monitor logs [observability-log-monitoring-view-and-monitor-logs]
 
-Use **Logs Explorer** to search, filter, and tail all your logs ingested into your project in one place.
+Use **Discover** to search, filter, and tail all your logs ingested into your project in one place.
 
 The following resources provide information on viewing and monitoring your logs:
 
-* [Discover and explore](../../solutions/observability/logs/logs-explorer.md): Discover and explore all of the log events flowing in from your servers, virtual machines, and containers in a centralized view.
+* [Discover and explore](../../solutions/observability/logs/discover-logs.md): Discover and explore all of the log events flowing in from your servers, virtual machines, and containers in a centralized view.
 * [Detect log anomalies](../../explore-analyze/machine-learning/anomaly-detection.md): Use {{ml}} to detect log anomalies automatically.
 
 
