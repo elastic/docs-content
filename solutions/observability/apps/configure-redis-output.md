@@ -6,8 +6,6 @@ applies_to:
   stack: all
 ---
 
-
-
 # Configure the Redis output [apm-redis-output]
 
 

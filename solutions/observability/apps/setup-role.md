@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/synthetics-role-setup.html
+applies_to:
+  stack:
 ---
 
 # Setup role [synthetics-role-setup]
@@ -15,7 +17,7 @@ Create a **setup role**, called something like `synthetics_setup`:
 
 1. Start with the `editor` [built-in role](../../../deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md). This role grants full access to all features in {{kib}} (including the {{observability}} solution) and read-only access to data indices.
 
-    ::::{note} 
+    ::::{note}
     The `editor` [built-in role](../../../deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md) will grant write access to *all* {{kib}} apps. If you want to limit write access to the {{synthetics-app}} only, refer to [Limited write access](writer-role.md#synthetics-write-privileges-limited).
 
     If you choose this approach, you will still need to grant the privileges in the next step.
@@ -37,7 +39,7 @@ Create a **setup role**, called something like `synthetics_setup`:
         | [Index](../../../deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-indices) | `synthetics-*`: `monitor` | Gives access to all actions that are required for monitoring (recovery, segments info, index stats, and status). |
 
 
-::::{note} 
+::::{note}
 If users with the setup role also need to create, modify, and delete monitors, add the privileges defined in the [writer role](writer-role.md).
 ::::
 

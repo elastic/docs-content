@@ -2,6 +2,9 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-logs.html
   - https://www.elastic.co/guide/en/serverless/current/observability-apm-logs.html
+applies_to:
+  stack:
+  serverless:
 ---
 
 # Logs [apm-logs]
