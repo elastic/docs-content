@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-api-config.html
+applies_to:
+  stack:
 ---
 
 # Elastic APM agent configuration API [apm-api-config]
@@ -8,7 +10,7 @@ mapped_pages:
 APM Server exposes API endpoints that allow Elastic APM agents to query the APM Server for configuration changes. More information on this feature is available in [{{apm-agent}} configuration in {{kib}}](apm-agent-central-configuration.md).
 
 
-## Agent configuration endpoints [apm-api-config-endpoint] 
+## Agent configuration endpoints [apm-api-config-endpoint]
 
 | Name | Endpoint |
 | --- | --- |
@@ -18,7 +20,7 @@ APM Server exposes API endpoints that allow Elastic APM agents to query the APM 
 The Agent configuration endpoints accepts both `HTTP GET` and `HTTP POST` requests. If an [API keys](api-keys.md) or [Secret token](secret-token.md) is configured, requests to this endpoint must be authenticated.
 
 
-### HTTP GET [apm-api-config-api-get] 
+### HTTP GET [apm-api-config-api-get]
 
 `service.name` is a required query string parameter.
 
@@ -27,7 +29,7 @@ http(s)://{hostname}:{port}/config/v1/agents?service.name=SERVICE_NAME
 ```
 
 
-### HTTP POST [apm-api-config-api-post] 
+### HTTP POST [apm-api-config-api-post]
 
 Encode parameters as a JSON object in the body. `service.name` is a required parameter.
 
@@ -43,14 +45,14 @@ http(s)://{hostname}:{port}/config/v1/agents
 ```
 
 
-### Responses [apm-api-config-api-response] 
+### Responses [apm-api-config-api-response]
 
 * Successful - `200`
 * APM Server is configured to fetch agent configuration from {{es}} but the configuration is invalid - `403`
 * APM Server is starting up or {{es}} is unreachable - `503`
 
 
-### Example request [apm-api-config-api-example] 
+### Example request [apm-api-config-api-example]
 
 Example Agent configuration `GET` request including the service name "test-service":
 
@@ -68,7 +70,7 @@ curl -X POST http://127.0.0.1:8200/config/v1/agents \
 ```
 
 
-### Example response [apm-api-config-api-ex-response] 
+### Example response [apm-api-config-api-ex-response]
 
 ```sh
 HTTP/1.1 200 OK

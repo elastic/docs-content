@@ -1,9 +1,11 @@
 ---
+navigation_title: "Get started"
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-getting-started-apm-server.html
   - https://www.elastic.co/guide/en/serverless/current/observability-apm-get-started.html
-
-navigation_title: "Get started"
+applies_to:
+  stack:
+  serverless:
 ---
 
 # Get started with APM [apm-getting-started-apm-server]
