@@ -1,9 +1,11 @@
 ---
+navigation_title: "Multi-factor Authentication"
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/synthetics-mfa.html
   - https://www.elastic.co/guide/en/serverless/current/observability-synthetics-mfa.html
-
-navigation_title: "Multi-factor Authentication"
+applies_to:
+  stack:
+  serverless:
 ---
 
 # Multi-factor Authentication (MFA) for browser monitors [synthetics-mfa]

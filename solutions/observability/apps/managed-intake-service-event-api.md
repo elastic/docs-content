@@ -1,11 +1,13 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/observability-apm-server-api.html
+applies_to:
+  serverless:
 ---
 
 # Managed intake service event API [observability-apm-server-api]
 
-::::{warning} 
+::::{warning}
 This API is exclusively for APM agent developers. The vast majority of users should have no reason to interact with this API.
 
 ::::
@@ -18,12 +20,12 @@ The managed intake service exposes endpoints for:
 * [OpenTelemetry intake API](#observability-apm-server-api-opentelemetry-api)
 
 
-## Server information API [observability-apm-server-api-server-information-api] 
+## Server information API [observability-apm-server-api-server-information-api]
 
 The managed intake service exposes an API endpoint to query general server information. This lightweight endpoint is useful as a server up/down health check.
 
 
-### Server Information endpoint [api-info-endpoint] 
+### Server Information endpoint [api-info-endpoint]
 
 Send an `HTTP GET` request to the server information endpoint:
 
@@ -36,7 +38,7 @@ This endpoint always returns an HTTP 200.
 Requests to this endpoint must be authenticated.
 
 
-#### Example [api-info-examples] 
+#### Example [api-info-examples]
 
 Example managed intake service information request:
 
@@ -53,9 +55,9 @@ curl -X POST http://127.0.0.1:8200/ \
 ```
 
 
-## Events intake API [observability-apm-server-api-events-intake-api] 
+## Events intake API [observability-apm-server-api-events-intake-api]
 
-::::{note} 
+::::{note}
 Most users do not need to interact directly with the events intake API.
 
 ::::
@@ -75,7 +77,7 @@ With NDJSON, agents can open an HTTP POST request and use chunked encoding to st
 Refer to [Learn about data types](learn-about-application-data-types.md) to learn more about the different types of events.
 
 
-### Endpoints [api-events-endpoint] 
+### Endpoints [api-events-endpoint]
 
 The managed intake service exposes the following endpoints for Elastic APM agent data intake:
 
@@ -84,7 +86,7 @@ The managed intake service exposes the following endpoints for Elastic APM agent
 | APM agent event intake | `/intake/v2/events` |
 
 
-### Request [api-events-example] 
+### Request [api-events-example]
 
 Send an `HTTP POST` request to the managed intake service `intake/v2/events` endpoint:
 
@@ -98,21 +100,21 @@ The managed intake service supports asynchronous processing of batches. To reque
 https://{hostname}:{port}/intake/v2/events?async=true
 ```
 
-::::{note} 
+::::{note}
 Since asynchronous processing defers some of the event processing to the background and takes place after the client has closed the request, some errors can’t be communicated back to the client and are logged by the managed intake service. Furthermore, asynchronous processing requests will only be scheduled if the managed intake service can service the incoming request, requests that cannot be serviced will receive an internal error `503` "queue is full" error.
 
 ::::
 
 
 
-### Response [api-events-response] 
+### Response [api-events-response]
 
 On success, the server will respond with a 202 Accepted status code and no body.
 
 Keep in mind that events can succeed and fail independently of each other. Only if all events succeed does the server respond with a 202.
 
 
-### API Errors [api-events-errors] 
+### API Errors [api-events-errors]
 
 There are two types of errors that the managed intake service may return to an agent:
 
@@ -154,25 +156,25 @@ An example error response might look something like this:
 If you’re developing an agent, these errors can be useful for debugging.
 
 
-### Event API Schemas [api-events-schema-definition] 
+### Event API Schemas [api-events-schema-definition]
 
 The managed intake service uses a collection of JSON Schemas for validating requests to the intake API.
 
 
-### Metadata [observability-apm-server-api-metadata] 
+### Metadata [observability-apm-server-api-metadata]
 
 Every new connection to the managed intake service starts with a `metadata` stanza. This provides general metadata concerning the other objects in the stream.
 
 Rather than send this metadata information from the agent multiple times, the managed intake service hangs on to this information and applies it to other objects in the stream as necessary.
 
-::::{tip} 
+::::{tip}
 Metadata is stored under `context` when viewing documents in {{es}}.
 
 ::::
 
 
 
-#### Metadata Schema [metadata-schema] 
+#### Metadata Schema [metadata-schema]
 
 The managed intake service uses JSON Schema to validate requests. The specification for metadata is defined on [GitHub](https://github.com/elastic/apm-server/blob/main/docs/spec/v2/metadata.json) and included below.
 
@@ -751,7 +753,7 @@ The managed intake service uses JSON Schema to validate requests. The specificat
 
 
 
-#### Kubernetes data [kubernetes-data] 
+#### Kubernetes data [kubernetes-data]
 
 APM agents automatically read Kubernetes data and send it to the managed intake service. In most instances, agents are able to read this data from inside the container. If this is not the case, or if you wish to override this data, you can set environment variables for the agents to read. These environment variable are set via the Kubernetes [Downward API](https://kubernetes.io/docs/tasks/inject-data-application/environment-variable-expose-pod-information/#use-pod-fields-as-values-for-environment-variables). Here’s how you would add the environment variables to your Kubernetes pod spec:
 
@@ -784,12 +786,12 @@ The table below maps these environment variables to the APM metadata event field
 | `KUBERNETES_POD_UID` | system.kubernetes.pod.uid |
 
 
-### Transactions [observability-apm-server-api-transactions] 
+### Transactions [observability-apm-server-api-transactions]
 
 Transactions are events corresponding to an incoming request or similar task occurring in a monitored service.
 
 
-#### Transaction Schema [api-transaction-schema] 
+#### Transaction Schema [api-transaction-schema]
 
 The managed intake service uses JSON Schema to validate requests. The specification for transactions is defined on [GitHub](https://github.com/elastic/apm-server/blob/main/docs/spec/v2/transaction.json) and included below.
 
@@ -1932,12 +1934,12 @@ The managed intake service uses JSON Schema to validate requests. The specificat
 
 
 
-### Spans [observability-apm-server-api-spans] 
+### Spans [observability-apm-server-api-spans]
 
 Spans are events captured by an agent occurring in a monitored service.
 
 
-#### Span Schema [api-span-schema] 
+#### Span Schema [api-span-schema]
 
 The managed intake service uses JSON Schema to validate requests. The specification for spans is defined on [GitHub](https://github.com/elastic/apm-server/blob/main/docs/spec/v2/span.json) and included below.
 
@@ -2852,12 +2854,12 @@ The managed intake service uses JSON Schema to validate requests. The specificat
 
 
 
-### Errors [observability-apm-server-api-errors] 
+### Errors [observability-apm-server-api-errors]
 
 An error or a logged error message captured by an agent occurring in a monitored service.
 
 
-#### Error Schema [api-error-schema] 
+#### Error Schema [api-error-schema]
 
 The managed intake service uses a JSON Schema to validate requests. The specification for errors is defined on [GitHub](https://github.com/elastic/apm-server/blob/main/docs/spec/v2/error.json) and included below.
 
@@ -4162,12 +4164,12 @@ The managed intake service uses a JSON Schema to validate requests. The specific
 
 
 
-### Metrics [observability-apm-server-api-metrics] 
+### Metrics [observability-apm-server-api-metrics]
 
 Metrics contain application metric data captured by an {{apm-agent}}.
 
 
-#### Metric Schema [api-metricset-schema] 
+#### Metric Schema [api-metricset-schema]
 
 The managed intake service uses JSON Schema to validate requests. The specification for metrics is defined on [GitHub](https://github.com/elastic/apm-server/blob/main/docs/spec/v2/metricset.json) and included below.
 
@@ -4480,7 +4482,7 @@ The managed intake service uses JSON Schema to validate requests. The specificat
 
 
 
-## OpenTelemetry API [observability-apm-server-api-opentelemetry-api] 
+## OpenTelemetry API [observability-apm-server-api-opentelemetry-api]
 
 Elastic supports receiving traces, metrics, and logs over the [OpenTelemetry Protocol (OTLP)](https://opentelemetry.io/docs/specs/otlp/). OTLP is the default transfer protocol for OpenTelemetry and is supported natively by the managed intake service.
 
@@ -4490,7 +4492,7 @@ The managed intake service supports two OTLP communication protocols on the same
 * OTLP/gRPC
 
 
-### OTLP/gRPC paths [otlpgrpc-paths] 
+### OTLP/gRPC paths [otlpgrpc-paths]
 
 | Name | Endpoint |
 | --- | --- |
@@ -4499,7 +4501,7 @@ The managed intake service supports two OTLP communication protocols on the same
 | OTLP logs intake | `/opentelemetry.proto.collector.logs.v1.LogsService/Export` |
 
 
-### OTLP/HTTP paths [otlphttp-paths] 
+### OTLP/HTTP paths [otlphttp-paths]
 
 | Name | Endpoint |
 | --- | --- |
@@ -4507,7 +4509,7 @@ The managed intake service supports two OTLP communication protocols on the same
 | OTLP trace intake | `/v1/traces` |
 | OTLP logs intake | `/v1/logs` |
 
-::::{tip} 
+::::{tip}
 See our [OpenTelemetry docs](upstream-opentelemetry-collectors-language-sdks.md) to learn how to send data to the managed intake service from an OpenTelemetry agent OpenTelemetry collector.
 
 ::::

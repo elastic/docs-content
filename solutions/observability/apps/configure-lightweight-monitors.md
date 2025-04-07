@@ -2,6 +2,9 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/synthetics-lightweight.html
   - https://www.elastic.co/guide/en/serverless/current/observability-synthetics-lightweight.html
+applies_to:
+  stack:
+  serverless:
 ---
 
 # Configure lightweight monitors [synthetics-lightweight]

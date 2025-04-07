@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/monitor-java-app.html
+applies_to:
+  stack:
 ---
 
 # Tutorial: Monitor a Java application [monitor-java-app]
@@ -1752,6 +1754,10 @@ We have not covered the [Elastic APM OpenTracing bridge](apm-agent-java://refere
 
 
 ## Step 8: Ingest Uptime data [_step_8_ingest_uptime_data]
+
+```{applies_to}
+stack: deprecated 8.15.0
+```
 
 There are some basic monitoring capabilities in our application so far. We index logs (with traces), we index metrics, and we even can look in our app to figure out single performance bottlenecks thanks to APM. However, there is still one weak spot. Everything done so far was within the application, but all the users are reaching the application from the internet.
 

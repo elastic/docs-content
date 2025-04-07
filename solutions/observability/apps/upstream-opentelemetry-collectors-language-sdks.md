@@ -2,6 +2,9 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-open-telemetry-direct.html
   - https://www.elastic.co/guide/en/serverless/current/observability-apm-agents-opentelemetry-opentelemetry-native-support.html
+applies_to:
+  stack:
+  serverless:
 ---
 
 # Upstream OpenTelemetry Collectors and language SDKs [apm-open-telemetry-direct]

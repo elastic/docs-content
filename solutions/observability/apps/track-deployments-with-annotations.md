@@ -1,9 +1,11 @@
 ---
+navigation_title: "Track deployments with annotations"
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-transactions-annotations.html
   - https://www.elastic.co/guide/en/serverless/current/observability-apm-track-deployments-with-annotations.html
-
-navigation_title: "Track deployments with annotations"
+applies_to:
+  stack:
+  serverless:
 ---
 
 # Track deployments with annotations [apm-transactions-annotations]

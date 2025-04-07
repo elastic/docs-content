@@ -4,3 +4,4 @@ redirects:
   'deploy-manage/security/security-certificates-keys.md': '!deploy-manage/security/self-auto-setup.md'
   'deploy-manage/security/ece-traffic-filtering-through-the-api.md': 'deploy-manage/security/ec-traffic-filtering-through-the-api.md'
   'deploy-manage/security/install-stack-demo-secure.md': '!deploy-manage/security/self-setup.md'
+  'reference/observability/fields-and-object-schemas/logs-app-fields.md': '!reference/observability/fields-and-object-schemas.md'
