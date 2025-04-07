@@ -138,7 +138,7 @@ If a field can be [aggregated](../query-filter/aggregations.md), you can quickly
 
 4. Save the visualization if you’d like to add it to a dashboard or keep it in the Visualize library for later use.
 
-For geo point fields (![Geo point field icon](/explore-analyze/images/kibana-geoip-icon.png "Geo point field icon =4%x4%")), if you click **Visualize**, your data appears in a map.
+For geo point fields (![Geo point field icon](/explore-analyze/images/kibana-geoip-icon.png "kibana-geoip-icon =4%x4%")), if you click **Visualize**, your data appears in a map.
 
 ![Map containing documents](/explore-analyze/images/kibana-discover-maps.png "")
 
