@@ -41,4 +41,4 @@ Agentless deployment for the following integrations is in beta and is subject to
 13. Wiz
 14. Zscaler ZIA
 
-To learn more about these integrations and find setup guides, refer to [integrations](https://docs.elastic.co/en/integrations/).
+To learn more about these integrations and find setup guides, refer to [Elastic integrations](https://docs.elastic.co/en/integrations/).
