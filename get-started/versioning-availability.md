@@ -6,7 +6,7 @@ mapped_pages:
 
 # Understanding versioning and availability
 
-On this page, you'll learn about our versioning systems, and how to understand how we talk about versions and feature availability in our documentation.
+On this page, you'll learn about our versioning systems, how to understand how we talk about versions and feature availability in our documentation, and where to find docs for your product version.
 
 ## Elastic Stack versioning
 
