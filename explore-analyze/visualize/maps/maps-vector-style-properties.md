@@ -46,14 +46,14 @@ Use **Icon** to symbolize Points as icons.
 | **Symbol orientation** | The symbol orientation rotating the icon clockwise. |
 | **Symbol size** | The radius of the symbol size, in pixels. |
 
-Available icons
+### Available icons
 
 :::{image} /explore-analyze/images/kibana-maki-icons.png
 :alt: maki icons
 :screenshot:
 :::
 
-Custom Icons
+### Custom Icons
 
 You can also use your own SVG icon to style Point features in your map. In **Layer settings** open the **icon** dropdown, and click the **Add custom icon** button. For best results, your SVG icon should be monochrome and have limited details.
 

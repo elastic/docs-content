@@ -37,7 +37,9 @@ You’re trying to understand a trend you see on a dashboard. You need to look a
    Your search session begins automatically. The icon after the dashboard title displays the current state of the search session. A clock icon indicates the search session is in progress. A checkmark indicates that the search session is complete.
 
 2. To continue a search in the background, click the clock icon, and then click **Save session**.
+
    ![Search Session indicator displaying the current state of the search](/explore-analyze/images/kibana-search-session-awhile.png "title =50%")
+   
    Once you save a search session, you can start a new search, navigate to a different application, or close the browser.
 
 3. To view your saved search sessions, go to the **Search Sessions** management page using the navigation menu or the [global search field](../../explore-analyze/find-and-organize/find-apps-and-objects.md). For a saved or completed session, you can also open this view from the search sessions popup.
