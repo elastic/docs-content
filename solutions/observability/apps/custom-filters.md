@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-custom-filter.html
+applies_to:
+  stack:
 ---
 
 # Custom filters [apm-custom-filter]

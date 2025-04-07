@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/synthetics-migrate-from-integration.html
+applies_to:
+  stack:
 ---
 
 # Migrate from the Elastic Synthetics integration [synthetics-migrate-from-integration]
@@ -13,7 +15,7 @@ You should *not* use the Elastic Synthetics integration to set up new monitors a
 * The **{{synthetics-app}}** is an application in {{kib}} that you can use to configure and create monitors using a user interface.
 
 
-## Compare approaches [synthetics-migrate-integration-compare] 
+## Compare approaches [synthetics-migrate-integration-compare]
 
 Below is a comparison of how you used the {{agent}} integration to create monitors and how you’ll use the {{synthetics-app}} or projects to create monitors:
 
@@ -84,7 +86,7 @@ Find more details in [Use {{project-monitors-cap}}](create-monitors-with-project
 Find more details in [Use the {{synthetics-app}}](create-monitors-in-synthetics-app.md).
 
 
-## Where monitors run [synthetics-migrate-integration-location] 
+## Where monitors run [synthetics-migrate-integration-location]
 
 If you want to continue hosting on your infrastructure, you will need to create a {{private-location}} before creating monitors. If you have already have an {{agent}} running using `elastic-agent-complete`, you can [add it as a new {{private-location}}](monitor-resources-on-private-networks.md#synthetics-private-location-add) in the {{synthetics-app}}. To create a new {{private-location}} from scratch, follow all instructions in [Monitor resources on private networks](monitor-resources-on-private-networks.md).
 
@@ -93,7 +95,7 @@ Alternatively, you can start hosting on Elastic’s global managed infrastructur
 Executing synthetic tests on Elastic’s global managed testing infrastructure incurs an additional charge. Tests are charged under one of two new billing dimensions depending on the monitor type. For *browser monitor* usage, there is a fee per test run. For *lightweight monitor* usage, there is a fee per region in which you run any monitors regardless of the number of test runs. For more details, refer to [full details and current pricing](https://www.elastic.co/pricing).
 
 
-## How to use projects [synthetics-migrate-integration-projects] 
+## How to use projects [synthetics-migrate-integration-projects]
 
 If you already have an external project you were adding via a ZIP URL you can use the same project, but you will have to make some changes.
 
@@ -105,7 +107,7 @@ First, upgrade the existing project to use the latest version of `@elastic/synth
     1. Run `npm @elastic/synthetics init <path-to-existing-project>`.
     2. Respond to all prompts provided by the CLI.
 
-        ::::{note} 
+        ::::{note}
         To ensure that your project will work with the latest version of Elastic Synthetics, the CLI will create a new configuration file on `init`, but you will see a prompt asking if you would like to continue before overwriting an existing configuration file.
 
         ::::
@@ -116,7 +118,7 @@ First, upgrade the existing project to use the latest version of `@elastic/synth
     2. `synthetics.config.ts` will contain updated default settings needed for the upgraded project.
     3. `package.json` will contain updated NPM settings for your project.
 
-        ::::{note} 
+        ::::{note}
         If there is already a `package.json` file in the directory when you run `init`, the synthetics agent will *not* create a new `package.json` file. Instead it will modify the existing `package.json` file to:
 
         * Add `@elastic/synthetics` library to the dependencies if it’s not already present.
@@ -139,7 +141,7 @@ Optionally, you can also add lightweight monitors to the project in YAML files. 
 For more information on getting started with projects, refer to [Use {{project-monitors-cap}}](create-monitors-with-project-monitors.md).
 
 
-## How to use the UI [synthetics-migrate-integration-ui] 
+## How to use the UI [synthetics-migrate-integration-ui]
 
 If you created monitors solely via the Elastic Synthetics integration UI, you can recreate monitors in the {{synthetics-app}}.
 

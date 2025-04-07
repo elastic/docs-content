@@ -1,9 +1,11 @@
 ---
+navigation_title: "Filters"
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-filters.html
   - https://www.elastic.co/guide/en/serverless/current/observability-apm-filter-your-data.html
-
-navigation_title: "Filters"
+applies_to:
+  stack:
+  serverless:
 ---
 
 # Filter application data [apm-filter-your-data]

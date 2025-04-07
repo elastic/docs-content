@@ -13,28 +13,27 @@ Installing ECE on multiple hosts with your own registry server is simpler, becau
 
 1. Set up your private Docker registry. To learn more, check [Deploy a registry server](https://docs.docker.com/registry/deploying/).
 
-    ::::{tip} 
+    ::::{tip}
     As part of the ECE [high availability](ece-ha.md) strategy, it’s a good idea to make sure that your Docker registry server is available to all ECE allocators, so that it can continue to be accessed in the event of a network partition or zone outage. Allocators attempting to start instances requiring Docker images that have not yet been pulled from a custom Docker registry will fail to start if the registry is unavailable.
     ::::
 
-2. On an internet-connected host that has Docker installed, download the [Available Docker Images](ece-install-offline-images.md) and push them to your private Docker registry. Note that for ECE version 3.0, if you want to use Elastic Stack version 8.0 in your deployments, you need to download and make available both the version 7.x and version 8.x Docker images.
+2. On an internet-connected host that has Docker installed, download the [Available Docker Images](ece-install-offline-images.md) and push them to your private Docker registry. Note that for ECE version 4.0, if you want to use Elastic Stack version 9.0 in your deployments, you need to download and make available both the version 8.x and version 9.x Docker images.
 
     ```sh
-    docker pull docker.elastic.co/cloud-enterprise/elastic-cloud-enterprise:3.8.1
-    docker pull docker.elastic.co/cloud-assets/elasticsearch:7.17.27-0
-    docker pull docker.elastic.co/cloud-assets/kibana:7.17.27-0
-    docker pull docker.elastic.co/cloud-assets/apm:7.17.27-0
-    docker pull docker.elastic.co/cloud-assets/enterprise-search:7.17.27-0
-    docker pull docker.elastic.co/cloud-release/elasticsearch-cloud-ess:8.17.1
-    docker pull docker.elastic.co/cloud-release/kibana-cloud:8.17.1
-    docker pull docker.elastic.co/cloud-release/elastic-agent-cloud:8.17.1
-    docker pull docker.elastic.co/cloud-release/enterprise-search-cloud:8.17.1
+    docker pull docker.elastic.co/cloud-enterprise/elastic-cloud-enterprise:4.0.0
+    docker pull docker.elastic.co/cloud-release/elasticsearch-cloud-ess:8.18.0
+    docker pull docker.elastic.co/cloud-release/kibana-cloud:8.18.0
+    docker pull docker.elastic.co/cloud-release/elastic-agent-cloud:8.18.0
+    docker pull docker.elastic.co/cloud-release/enterprise-search-cloud:8.18.0
+    docker pull docker.elastic.co/cloud-release/elasticsearch-cloud-ess:9.0.0
+    docker pull docker.elastic.co/cloud-release/kibana-cloud:9.0.0
+    docker pull docker.elastic.co/cloud-release/elastic-agent-cloud:9.0.0
     ```
 
-    For example, for Elastic Cloud Enterprise 3.8.1 and the Elastic Stack versions it shipped with, you need:
+    For example, for Elastic Cloud Enterprise 4.0.0 and the Elastic Stack versions it shipped with, you need:
 
-    * Elastic Cloud Enterprise 3.8.1
-    * Elasticsearch 8.17.1, Kibana 8.17.1, APM 8.17.1, and Enterprise Search 8.17.1
+    * Elastic Cloud Enterprise 4.0.0
+    * Elasticsearch 9.0.0, Kibana 9.0.0, APM 9.0.0
 
     :::{important}
        Enterprise Search is not available in versions 9.0+.
@@ -43,29 +42,27 @@ Installing ECE on multiple hosts with your own registry server is simpler, becau
 3. Tag the Docker images with your private registry URL by replacing `REGISTRY` with your actual registry address, for example `my.private.repo:5000`:
 
     ```sh
-    docker tag docker.elastic.co/cloud-enterprise/elastic-cloud-enterprise:3.8.1 REGISTRY/cloud-enterprise/elastic-cloud-enterprise:3.8.1
-    docker tag docker.elastic.co/cloud-assets/elasticsearch:7.17.27-0 REGISTRY/cloud-assets/elasticsearch:7.17.27-0
-    docker tag docker.elastic.co/cloud-assets/kibana:7.17.27-0 REGISTRY/cloud-assets/kibana:7.17.27-0
-    docker tag docker.elastic.co/cloud-assets/apm:7.17.27-0 REGISTRY/cloud-assets/apm:7.17.27-0
-    docker tag docker.elastic.co/cloud-assets/enterprise-search:7.17.27-0 REGISTRY/cloud-assets/enterprise-search:7.17.27-0
-    docker tag docker.elastic.co/cloud-release/elasticsearch-cloud-ess:8.17.1 REGISTRY/cloud-release/elasticsearch-cloud-ess:8.17.1
-    docker tag docker.elastic.co/cloud-release/kibana-cloud:8.17.1 REGISTRY/cloud-release/kibana-cloud:8.17.1
-    docker tag docker.elastic.co/cloud-release/elastic-agent-cloud:8.17.1 REGISTRY/cloud-release/elastic-agent-cloud:8.17.1
-    docker tag docker.elastic.co/cloud-release/enterprise-search-cloud:8.17.1 REGISTRY/cloud-release/enterprise-search-cloud:8.17.1
+    docker tag docker.elastic.co/cloud-enterprise/elastic-cloud-enterprise:4.0.0 REGISTRY/cloud-enterprise/elastic-cloud-enterprise:4.0.0
+    docker tag docker.elastic.co/cloud-release/elasticsearch-cloud-ess:8.18.0 REGISTRY/cloud-release/elasticsearch-cloud-ess:8.18.0
+    docker tag docker.elastic.co/cloud-release/kibana-cloud:8.18.0 REGISTRY/cloud-release/kibana-cloud:8.18.0
+    docker tag docker.elastic.co/cloud-release/elastic-agent-cloud:8.18.0 REGISTRY/cloud-release/elastic-agent-cloud:8.18.0
+    docker tag docker.elastic.co/cloud-release/enterprise-search-cloud:8.18.0 REGISTRY/cloud-release/enterprise-search-cloud:8.18.0
+    docker tag docker.elastic.co/cloud-release/elasticsearch-cloud-ess:9.0.0 REGISTRY/cloud-release/elasticsearch-cloud-ess:9.0.0
+    docker tag docker.elastic.co/cloud-release/kibana-cloud:9.0.0 REGISTRY/cloud-release/kibana-cloud:9.0.0
+    docker tag docker.elastic.co/cloud-release/elastic-agent-cloud:9.0.0 REGISTRY/cloud-release/elastic-agent-cloud:9.0.0
     ```
 
 4. Push the Docker images to your private Docker registry, using the same tags from the previous step. Replace `REGISTRY` with your actual registry URL, for example `my.private.repo:5000`:
 
     ```sh
-    docker push REGISTRY/cloud-enterprise/elastic-cloud-enterprise:3.8.1
-    docker push REGISTRY/cloud-assets/elasticsearch:7.17.27-0
-    docker push REGISTRY/cloud-assets/kibana:7.17.27-0
-    docker push REGISTRY/cloud-assets/apm:7.17.27-0
-    docker push REGISTRY/cloud-assets/enterprise-search:7.17.27-0
-    docker push REGISTRY/cloud-release/elasticsearch-cloud-ess:8.17.1
-    docker push REGISTRY/cloud-release/kibana-cloud:8.17.1
-    docker push REGISTRY/cloud-release/elastic-agent-cloud:8.17.1
-    docker push REGISTRY/cloud-release/enterprise-search-cloud:8.17.1
+    docker push REGISTRY/cloud-enterprise/elastic-cloud-enterprise:4.0.0
+    docker push REGISTRY/cloud-release/elasticsearch-cloud-ess:8.18.0
+    docker push REGISTRY/cloud-release/kibana-cloud:8.18.0
+    docker push REGISTRY/cloud-release/elastic-agent-cloud:8.18.0
+    docker push REGISTRY/cloud-release/enterprise-search-cloud:8.18.0
+    docker push REGISTRY/cloud-release/elasticsearch-cloud-ess:9.0.0
+    docker push REGISTRY/cloud-release/kibana-cloud:9.0.0
+    docker push REGISTRY/cloud-release/elastic-agent-cloud:9.0.0
     ```
 
 5. On an internet-connected host, download the installation script:

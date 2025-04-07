@@ -1,9 +1,11 @@
 ---
+navigation_title: "Configure individual monitors"
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/synthetics-monitor-use.html
   - https://www.elastic.co/guide/en/serverless/current/observability-synthetics-monitor-use.html
-
-navigation_title: "Configure individual monitors"
+applies_to:
+  stack:
+  serverless:
 ---
 
 # Configure individual browser monitors [synthetics-monitor-use]
