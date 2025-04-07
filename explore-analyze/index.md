@@ -95,7 +95,8 @@ Elasticsearch integrates machine learning for proactive analytics, helping you t
 * Forecast future trends
 * Analyze seasonal patterns
 * Perform powerful NLP operations such as semantic search
-* Machine learning models simplify complex predictive tasks, unlocking new opportunities for optimization.
+
+Machine learning models simplify complex predictive tasks, unlocking new opportunities for optimization.
 
 ## Scripting
 
@@ -111,12 +112,17 @@ Scripting makes custom data manipulation and transformation possible during sear
 
 It’s the starting point for exploratory analysis.
 
+:::{image} /explore-analyze/images/explore-analyze-discover.png
+:alt: Documents tab in Discover
+:screenshot:
+:::
+
 ## Visualize the data [view-and-analyze-the-data]
 
 Create a variety of visualizations and add them to a dashboard.
 
 ### Dashboards
-[Dashboards](/explore-analyze/dashboards.md) serve as centralized hubs for visualizing and monitoring data insights. With Dashboards, you can:
+[Dashboards](/explore-analyze/dashboards.md) serve as centralized hubs for visualizing and monitoring data insights. With dashboards, you can:
 
 * Combine multiple visualizations into a single, unified view
 * Display data from multiple indices or datasets for comprehensive analysis
@@ -124,9 +130,19 @@ Create a variety of visualizations and add them to a dashboard.
 
 Dashboards provide an interactive and cohesive environment with filtering capabilities and controls to explore trends and metrics at a glance.
 
+:::{image} /explore-analyze/images/explore-analyze-dashboard.png
+:alt: Bar chart in Lens showing flight delay type
+:screenshot:
+:::
+
 ### Panels and visualizations
 
 [Panels and visualizations](/explore-analyze/visualize.md) are the core elements that populate your dashboards, enabling dynamic data representation. They support diverse chart types, Interactive filtering, and drill-down capabilities to explore data further. These building blocks transform raw data into clear, actionable visuals, allowing users to analyze and interpret results effectively.
+
+:::{image} /explore-analyze/images/explore-analyze-lens.png
+:alt: Sample Flight data dashboard
+:screenshot:
+:::
 
 ## Reporting and sharing
 

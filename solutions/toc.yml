@@ -401,11 +401,9 @@ toc:
           - file: observability/logs/filter-aggregate-logs.md
           - file: observability/logs/explore-logs.md
             children:
-              - file: observability/logs/logs-explorer.md
+              - file: observability/logs/discover-logs.md
               - file: observability/logs/categorize-log-entries.md
               - file: observability/logs/inspect-log-anomalies.md
-              - file: observability/logs/configure-data-sources.md
-              - file: observability/logs/logs-stream.md
           - file: observability/logs/run-pattern-analysis-on-log-data.md
           - file: observability/logs/add-service-name-to-logs.md
           - file: observability/logs/logs-index-template-reference.md
