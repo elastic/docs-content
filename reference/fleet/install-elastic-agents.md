@@ -106,10 +106,6 @@ For containerized environments, the basic {{agent}} flavor is installed using th
 
 For containerized environments, the servers {{agent}} flavor is installed using the default `elastic-agent` command with an agent container package. This flavor contains the same set of components described in [Servers flavor](#elastic-agent-servers-flavor-regular) above.
 
-#### Wolfi flavor [elastic-agent-wolfi-flavor]
-
-For containerized environments, you also have the option of using a hardened [Wolfi](https://github.com/wolfi-dev/) container image. These images require Docker version 20.10.10 or later. For details about why the Wolfi images have been introduced, refer to our article [Reducing CVEs in Elastic container images](https://www.elastic.co/blog/reducing-cves-in-elastic-container-images).
-
 #### Complete flavor [elastic-agent-complete-flavor]
 
 For containerized environments, the complete {{agent}} flavor includes all of the components in the servers flavor, and also includes additional dependencies to run browser monitors through Elastic Synthetics. Refer to [Synthetic monitoring via Elastic Agent and Fleet](/solutions/observability/apps/get-started.md) for more information.
