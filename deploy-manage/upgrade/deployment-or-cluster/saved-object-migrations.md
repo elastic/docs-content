@@ -14,51 +14,79 @@ applies_to:
 
 Each time you upgrade {{kib}}, an upgrade migration is performed to ensure that all [saved objects](/explore-analyze/find-and-organize/saved-objects.md) are compatible with the new version.
 
-::::{note} 
+::::{note}
 {{kib}} includes an [**Upgrade Assistant**](../prepare-to-upgrade/upgrade-assistant.md) to help you prepare to upgrade. To access the assistant, go to **Stack Management > Upgrade Assistant**.
 ::::
 
 
-% ::::{warning} 
+% ::::{warning}
 % {{kib}} 7.12.0 and later uses a new migration process and index naming scheme. % Before you upgrade, read the documentation for your version of {{kib}}.
 % ::::
 
-## How saved object migrations work [upgrade-migrations-process] 
+## How saved object migrations work [upgrade-migrations-process]
 
 When you start a new {{kib}} installation, an upgrade migration is performed before starting plugins or serving HTTP traffic. Before you upgrade, shut down old nodes to prevent losing acknowledged writes.
 If the upgrade includes breaking changes, the old saved objects will be reindexed into new indices. Otherwise, the existing indices will be reused, and saved object documents will be updated.
 
-Saved objects are stored in multiple indices. While they all start with the `.kibana*` prefix, other `.kibana*` indices exist but are not used to store saved objects.  The following table lists the saved object indices used by each {{kib}} version.
+Saved objects are stored in multiple indices. While they all start with the `.kibana*` prefix, other `.kibana*` indices exist but are not used to store saved objects.
+The indices used to store saved objects and the conventions on their names and aliases have evolved as follows:
 
-| Upgrading from version | Index | 
-| --- | --- |
-| 6.5.0 | `.kibana_N` | 
-| 7.4.0 | `.kibana_N`<br>`.kibana_task_manager_N` | 
-| 7.11 | `.kibana_{{kibana_version}}_001`<br>`.kibana_task_manager_{{kibana_version}}_001` | 
-| 8.8.0 | `.kibana_{kibana_version}_001` <br> `.kibana_alerting_cases_{{kibana_version}}_001` <br> `.kibana_analytics_{kibana_version}_001` <br> `.kibana_ingest_{kibana_version}_001`<br> `.kibana_task_manager_{kibana_version}_001` <br> `.kibana_security_solution_{kibana_version}_001` | 
-| 8.16.0 | `.kibana_usage_counters_{{kibana_version}}_001`| 
+### Kibana 6.5.0
 
-Starting with 7.11.0, each of the saved objects indices has a couple of aliases. For example, the `.kibana_8.8.0_001` index has a *default* alias `.kibana` and a *version* alias `.kibana_8.8.0`. The *default* aliases (such as `.kibana` and `.kibana_task_manager`) always point to the most up-to-date saved object indices. Then, *version* aliases are aligned with the deployed {{kib}} version.
+The `.kibana_N` saved object index was introduced. The `N` suffix was incremented each time an upgrade was performed. At that point, a `.kibana` alias was created / updated to point to the latest version of the index.
 
-In versions 8.6.0 and newer, index names aren’t necessarily aligned with the deployed {{kib}} version. When updates on a certain index are compatible, {{kib}} will keep the existing index instead of creating a new one. This allows for a more efficient upgrade process. The following example illustrates a completely valid state for an 8.8.0 deployment:
+### Kibana 7.4.0
 
-* `.kibana_8.8.0_001` index, with `.kibana` and `.kibana_8.8.0` aliases.
-* `.kibana_task_manager_8.7.0_001` index, with `.kibana_task_manager` and `.kibana_task_manager_8.8.0` aliases.
+A new `.kibana_task_manager_N` was created, which would host the `task` saved objects. It also had a `.kibana_task_manager` alias, pointing to the latest version.
+
+### Kibana 7.11.0
+
+Starting with 7.11.0 the naming convention evolved, and the indices names started containing the version number, along with a `_001` suffix.
+Each of the saved objects indices now has a couple of aliases. For example, the `.kibana_7.11.0_001` index has a *default* `.kibana` alias and a `.kibana_7.11.0` *version* alias. The *default* aliases (such as `.kibana` and `.kibana_task_manager`) always point to the most up-to-date saved object indices. Then, *version* aliases are aligned with the deployed {{kib}} version.
+A new versioned alias was also introduced:
+
+| Alias | Version alias | Index name |
+| --- | --- | --- |
+| .kibana | .kibana_7.11.0 | .kibana_7.11.0_001 |
+| .kibana_task_manager | .kibana_task_manager_7.11.0 | .kibana_task_manager_7.11.0_001 |
+
+### Kibana 8.6.0
+
+In versions 8.6.0 and newer, compatible migrations were introduced, allowing to reuse existing saved object indices as long as changes in the mappings were compatible. After this change, index names aren’t necessarily aligned with the deployed {{kib}} version. When updates on a certain index are compatible, {{kib}} will keep the existing index instead of creating a new one. This allows for a more efficient upgrade process. The following example illustrates a completely valid state for an 8.7.0 deployment:
+
+| Alias | Versioned alias | Index name |
+| --- | --- | --- |
+| .kibana | .kibana_8.7.0 | .kibana_8.7.0_001 |
+| .kibana_task_manager | .kibana_task_manager_8.7.0 | .kibana_task_manager_7.17.0_001 |
+
+### Kibana 8.8.0
 
 Starting with 8.8.0, {{kib}} splits the main saved object index into multiple ones, as depicted in the table above. When upgrading from a previous version, the {{kib}} migration process will reindex some saved objects from the `.kibana` index into the new indices, depending on their types. Note that the `.kibana` index still exists and continues storing multiple saved object types.
 
-The following table lists the saved object indices, their relative alias(es), and the version range those aliases apply to.  
-
-| Version range | Index | Aliases |
+| Alias | Version alias | Index name |
 | --- | --- | --- |
-| 6.5.0 through 7.3.x | `.kibana_N` | `.kibana` |
-| 7.4.0 through 7.11.x | `.kibana_N`<br>`.kibana_task_manager_N` | `.kibana`<br>`.kibana_task_manager` |
-| 7.11.x through 8.7.x | `.kibana_{{kibana_version}}_001`<br>`.kibana_task_manager_{{kibana_version}}_001` | `.kibana`, `.kibana_{{kibana_version}}`<br>`.kibana_task_manager`, `.kibana_task_manager_{{kibana_version}}` |
-| 8.8.0 through 8.15.x | `.kibana_{kibana_version}_001` <br> `.kibana_alerting_cases_{{kibana_version}}_001` <br> `.kibana_analytics_{kibana_version}_001` <br> `.kibana_ingest_{kibana_version}_001`<br> `.kibana_task_manager_{kibana_version}_001` <br> `.kibana_security_solution_{kibana_version}_001` | .`kibana`, `.kibana_{kibana_version}` <br> `.kibana_alerting_cases`, <br> `.kibana_alerting_cases_{kibana_version}` <br> `.kibana_analytics`, <br> `.kibana_analytics_{kibana_version}` <br> `.kibana_ingest`, `.kibana_ingest_{kibana_version}`<br> `.kibana_task_manager`, <br> `.kibana_task_manager_{kibana_version}` <br> `.kibana_security_solution`, <br> `.kibana_security_solution_{kibana_version}`
-| 8.16.0+ | `.kibana_usage_counters_{{kibana_version}}_001`| `.kibana_usage_counters_{{kibana_version}}_001`, <br> `.kibana_usage_counters`
+| .kibana | .kibana_8.8.0 | .kibana_8.8.0_001 |
+| .kibana_task_manager | .kibana_task_manager_8.8.0 | .kibana_task_manager_7.17.0_001 |
+| .kibana_alerting_cases | .kibana_alerting_cases_8.8.0 | .kibana_alerting_cases_8.8.0_001 |
+| .kibana_analytics | .kibana_analytics_8.8.0 | .kibana_analytics_8.8.0_001 |
+| .kibana_ingest | .kibana_ingest_8.8.0 | .kibana_ingest_8.8.0_001 |
+| .kibana_security_solution | .kibana_security_solution_8.8.0 | .kibana_security_solution_8.8.0_001 |
+
+### Kibana 8.16.0 and newer
+
+A new index was introduced, with the goal of storing the `usage-counter` saved object type, which is expected to have a large number of documents.
+
+| Alias | Version alias | Index name |
+| --- | --- | --- |
+| .kibana | .kibana_8.8.0 | .kibana_8.8.0_001 |
+| .kibana_task_manager | .kibana_task_manager_8.8.0 | .kibana_task_manager_7.17.0_001 |
+| .kibana_alerting_cases | .kibana_alerting_cases_8.8.0 | .kibana_alerting_cases_8.8.0_001 |
+| .kibana_analytics | .kibana_analytics_8.8.0 | .kibana_analytics_8.8.0_001 |
+| .kibana_ingest | .kibana_ingest_8.8.0 | .kibana_ingest_8.8.0_001 |
+| .kibana_security_solution | .kibana_security_solution_8.8.0 | .kibana_security_solution_8.8.0_001 |
+| .kibana_usage_counters | .kibana_usage_counters_8.8.0 | .kibana_usage_counters_8.8.0_001 |
 
 
-## Old {{kib}} indices [upgrade-migrations-old-indices] 
+## Old {{kib}} indices [upgrade-migrations-old-indices]
 
 When you upgrade a deployment, Elastic creates multiple {{kib}} indices in {{es}}: (`.kibana_1`, `.kibana_2`, `.kibana_7.12.0_001`, `.kibana_7.13.0_001`, `.kibana_8.0.0_001`, etc.). {{kib}} only uses those indices that the *default* and *version* aliases point to. You can safely delete the older {{kib}} saved object indices, but they're retained for historical records and to facilitate rolling {{kib}} back to a previous version.
-
