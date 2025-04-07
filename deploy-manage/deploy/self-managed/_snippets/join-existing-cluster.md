@@ -2,6 +2,12 @@
 
 When you install {{es}}, the installation process configures a single-node cluster by default. If you want a node to join an existing cluster instead, generate an enrollment token on an existing node *before* you start the new node for the first time.
 
+:::{tip}
+Before you enroll your new node, make sure that your new node is able to access the first node in your cluster. You can test this by running a `curl` command to the first node at port `9200`. 
+
+If you can't access the first node, then modify your network configuration before proceeding.
+:::
+
 1. On any node in your existing cluster, generate a node enrollment token:
 
     ```sh
