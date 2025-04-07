@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/defining-roles.html
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-users-and-roles.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/defining-roles.html
@@ -54,9 +54,9 @@ When you use the UI or APIs to manage roles, the roles are stored in an internal
 ### Role management UI [roles-management-ui]
 $$$adding_kibana_privileges$$$
 
-You can manage users and roles easily in {{kib}}. 
+You can manage users and roles easily in {{kib}}.
 
-To manage roles, log in to {{kib}} and go to **Management > Security > Roles**. 
+To manage roles, log in to {{kib}} and go to **Management > Security > Roles**.
 
 [Learn more about using the role management UI](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md).
 

@@ -1,7 +1,10 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/synthetics-recorder.html
   - https://www.elastic.co/guide/en/serverless/current/observability-synthetics-recorder.html
+applies_to:
+  stack:
+  serverless:
 ---
 
 # Use the Synthetics Recorder [synthetics-recorder]

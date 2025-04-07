@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/file-realm.html
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-users-and-roles.html
 applies_to:
@@ -18,7 +18,7 @@ The `file` realm is useful as a fallback or recovery realm. For example in cases
 You can configure only one file realm on {{es}} nodes.
 
 ::::{important}
-* In self-managed deployments, as the administrator of the cluster, it is your responsibility to ensure the same users are defined on every node in the cluster. The {{stack}} {{security-features}} do not deliver any mechanism to guarantee this. 
+* In self-managed deployments, as the administrator of the cluster, it is your responsibility to ensure the same users are defined on every node in the cluster. The {{stack}} {{security-features}} do not deliver any mechanism to guarantee this.
 * You can't add or manage users in the `file` realm using the [user APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-security), or using the {{kib}} **Management > Security > Users** page.
 ::::
 
@@ -42,14 +42,14 @@ You don’t need to explicitly configure a `file` realm. The `file` and `native`
 
 2. If you're using a self-managed {{es}} cluster, optionally change how often the `users` and `users_roles` files are checked.
 
-    By default, {{es}} checks these files for changes every 5 seconds. You can change this default behavior by changing the `resource.reload.interval.high` setting in the `elasticsearch.yml` file. 
-    
+    By default, {{es}} checks these files for changes every 5 seconds. You can change this default behavior by changing the `resource.reload.interval.high` setting in the `elasticsearch.yml` file.
+
     :::{{warning}}
     Because `resource.reload.interval.high` is a common setting in {{es}}, changing its value may effect other schedules in the system.
     :::
 
-3. Restart {{es}}. 
-   
+3. Restart {{es}}.
+
    In {{eck}}, this change is propagated automatically.
 
 
@@ -59,7 +59,7 @@ You don’t need to explicitly configure a `file` realm. The `file` and `native`
 
 **In an {{eck}} deployment**, you can pass file realm user information in two ways:
 
-1. Using [`users` and `user_roles`](#using-users-and-users_roles-files) files, which are passed using file realm content secrets 
+1. Using [`users` and `user_roles`](#using-users-and-users_roles-files) files, which are passed using file realm content secrets
 2. [Using Kubernetes basic authentication secrets](#k8s-basic)
 
 You can reference several secrets in the {{es}} specification. ECK aggregates their content into a single secret, mounted in every {{es}} Pod.

@@ -3,7 +3,7 @@ navigation_title: Kibana user settings
 applies_to:
   deployment:
     ece: all
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-manage-kibana-settings.html
 ---
 

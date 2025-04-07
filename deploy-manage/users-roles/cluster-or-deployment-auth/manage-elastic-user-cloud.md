@@ -28,12 +28,10 @@ The `elastic` user should be not be used unless you have no other way to access 
 
 To reset the password:
 
-1. Log in to the Elastic Cloud Console.
-2. Find your deployment on the home page and select **Manage** to access it directly. Or, select **Hosted deployments** to go to the **Deployments** page to view all of your deployments.
+:::{include} /deploy-manage/_snippets/find-manage-deployment-ech-and-ece.md
+:::
 
-    On the **Deployments** page you can narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
-
-3. From your deployment menu, go to **Security**.
+3. Under the deployment's name in the navigation menu, select **Security**.
 4. Select **Reset password**.
 5. Copy down the auto-generated a password for the `elastic` user.
 

@@ -25,7 +25,7 @@ Although it’s simple to upgrade an {{ecloud}} deployment, the new version migh
 Log in to your {{ecloud}} environment:
 
 1. Log in to the [{{ech}} console](https://cloud.elastic.co/login). 
-2. Select your deployment on the home page in the {{ech}} card or go to the **Deployments** page.
+2. Select your deployment on the home page in the {{ech}} card or go to the **Hosted deployments** page.
       
    Narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
 
@@ -37,7 +37,7 @@ To upgrade a deployment:
 3. Click **Upgrade**, then **Confirm upgrade**. The new configuration takes a few minutes to create.
 
     ::::{note} 
-    If any incompatibilities are detected when you attempt to upgrade, the UI provides a link to the Upgrade Assistant, which checks for deprecated settings in your cluster and indices and helps you resolve them. If there are any issues that would prevent a successful upgrade, the upgrade is blocked. After resolving the issues, return to the **Deployments** page and restart the upgrade. Also check the [release notes](/release-notes/index.md) to stay aware of changes and known issues for the version you're upgrading to.
+    If any incompatibilities are detected when you attempt to upgrade, the UI provides a link to the Upgrade Assistant, which checks for deprecated settings in your cluster and indices and helps you resolve them. If there are any issues that would prevent a successful upgrade, the upgrade is blocked. After resolving the issues, return to the **Hosted deployments** page and restart the upgrade. Also check the [release notes](/release-notes/index.md) to stay aware of changes and known issues for the version you're upgrading to.
     ::::
 
 

@@ -2,8 +2,7 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-app-api.html
 applies_to:
-  stack: all
-  serverless: all
+  stack:
 ---
 
 # APM UI API [apm-app-api]
@@ -16,7 +15,7 @@ Some Applications UI features are provided via a REST API:
 * APM agent key API ([{{stack}}](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-apm-agent-keys) or [{{serverless-short}}](https://www.elastic.co/docs/api/doc/serverless/group/endpoint-apm-agent-keys))
 
 
-## Using the APIs [apm-api-example] 
+## Using the APIs [apm-api-example]
 
 Interact with APM APIs using cURL or another API tool. All APM APIs are Kibana APIs, not Elasticsearch APIs; because of this, the Kibana dev tools console cannot be used to interact with APM APIs.
 
@@ -62,7 +61,7 @@ curl -X POST \
 ```
 
 
-## Kibana API [kibana-api] 
+## Kibana API [kibana-api]
 
 In addition to the APM specific API endpoints, Kibana provides its own [REST API](/solutions/observability/apps/apm-server-api.md) which you can use to automate certain aspects of configuring and deploying Kibana.
 
