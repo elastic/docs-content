@@ -155,16 +155,16 @@ The following products versions are documented on this site:
 
 | Product | Version |
 | --- | --- |
-| APM Android agent | 1.x |
-| APM .NET agent | 1.x |
-| APM Go agent | 2.x |
-| APM iOS agent | 1.x | 
-| APM Java agent | 1.x | 
-| APM Node.js agent | 4.x |
+| APM Android agent | 1.x+ |
+| APM .NET agent | 1.x+ |
+| APM Go agent | 2.x+ |
+| APM iOS agent | 1.x+ | 
+| APM Java agent | 1.x+ | 
+| APM Node.js agent | 4.x+ |
 | APM PHP agent | All |
-| APM Python agent | 6.x |
-| APM Ruby agent | 4.x | 
-| APM Real User Monitoring JavaScript agent | 5.x |
+| APM Python agent | 6.x+ |
+| APM Ruby agent | 4.x+ | 
+| APM Real User Monitoring JavaScript agent | 5.x+ |
 | APM attacher for Kubernetes | All |
 
 
