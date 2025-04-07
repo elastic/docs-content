@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-getting-started-search-use-cases-node-logs.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-getting-started-search-use-cases-node-logs.html
 applies_to:

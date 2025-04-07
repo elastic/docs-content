@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/synthetics-role-read.html
+applies_to:
+  stack:
 ---
 
 # Reader role [synthetics-role-read]
@@ -11,12 +13,12 @@ For users who need to view and create visualizations that access Synthetics data
 * **Limited read access**: If you want to limit read access to the {{synthetics-app}} only, you can use [Limited read access](#synthetics-read-privileges-limited), which requires additional configuration.
 
 
-## General read access [synthetics-read-privileges-general] 
+## General read access [synthetics-read-privileges-general]
 
 For users who only need to view results in {{kib}}, use the `viewer` [built-in role](../../../deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md).
 
 
-## Limited read access [synthetics-read-privileges-limited] 
+## Limited read access [synthetics-read-privileges-limited]
 
 If you want to limit read access to the {{synthetics-app}} only, do *not* use the `viewer` [built-in role](../../../deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md).
 

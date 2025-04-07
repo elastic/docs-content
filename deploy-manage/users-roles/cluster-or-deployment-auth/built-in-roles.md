@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/built-in-roles.html
   - https://www.elastic.co/guide/en/kibana/current/xpack-security-authorization.html
 applies_to:
@@ -57,7 +57,7 @@ $$$built-in-roles-inference-admin$$$ `inference_admin`
 :   Provides all of the privileges of the `inference_user` role and the full use of the Inference APIs. Grants the `manage_inference` cluster privilege.
 
 $$$built-in-roles-inference-user$$$ `inference_user`
-:   Provides the minimum privileges required to view Inference configurations and perform inference. Grants the `monintor_inference` cluster privilege.
+:   Provides the minimum privileges required to view Inference configurations and perform inference. Grants the `monitor_inference` cluster privilege.
 
 $$$built-in-roles-ingest-user$$$ `ingest_admin`
 :   Grants access to manage **all** index templates and **all** ingest pipeline configurations.

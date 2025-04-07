@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/setup.html
   - https://www.elastic.co/guide/en/kibana/current/install.html
 applies_to:
@@ -19,7 +19,7 @@ This section includes information on how to set up {{kib}} and get it running, i
 
 To quickly set up {{es}} and {{kib}} in Docker for local development or testing, jump to [](/deploy-manage/deploy/self-managed/local-development-installation-quickstart.md).
 
-## Supported platforms [supported-platforms] 
+## Supported platforms [supported-platforms]
 
 Packages of {{kib}} are provided for and tested against Linux, Darwin, and Windows. Because {{kib}} runs on Node.js, we include the necessary Node.js binaries for these platforms. Running {{kib}} against a separately maintained version of Node.js is not supported.
 
@@ -37,7 +37,7 @@ To support certain older Linux platforms (most notably CentOS7/RHEL7), {{kib}} f
 | `rpm` | The `rpm` package is suitable for installation on Red Hat, SLES, OpenSuSE and other RPM-based systems.  RPMs may be downloaded from the Elastic website or from our RPM repository. | [Install with RPM](/deploy-manage/deploy/self-managed/install-kibana-with-rpm.md) |
 | `docker` | Images are available for running {{kib}} as a Docker container. They may be downloaded from the Elastic Docker Registry. | [Running {{kib}} on Docker](/deploy-manage/deploy/self-managed/install-kibana-with-docker.md) |
 
-## {{es}} version [elasticsearch-version] 
+## {{es}} version [elasticsearch-version]
 
 :::{include} /deploy-manage/deploy/_snippets/stack-version-compatibility.md
 :::

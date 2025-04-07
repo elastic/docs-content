@@ -246,7 +246,6 @@ Now that your log and metric data is streaming to {{es}}, you can view them in {
 
 * [View logs and metrics with the overview dashboard](#azure-openai-overview-dashboard): Use the built-in overview dashboard for insight into your Azure OpenAI service like total requests and token usage.
 * [View logs and metrics with Discover](#azure-openai-discover): Use Discover to find and filter your log and metric data based on specific fields.
-* [View logs with Logs Explorer](#azure-openai-logs-explorer): Use Logs Explorer for an in-depth view into your logs.
 
 
 ### View logs and metrics with the overview dashboard [azure-openai-overview-dashboard]
@@ -278,28 +277,6 @@ From here, filter your data and dive deeper into individual logs to find informa
 :::
 
 For more on using Discover and creating data views, refer to the [Discover](../../../explore-analyze/discover.md) documentation.
-
-
-### View logs with Logs Explorer [azure-openai-logs-explorer]
-
-To view Azure OpenAI logs, open {{kib}} and go to **Logs Explorer** (find `Logs Explorer` in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md)). With **Logs Explorer**, you can quickly search and filter your log data, get information about the structure of log fields, and display your findings in a visualization.
-
-:::{image} /solutions/images/observability-log-explorer.png
-:alt: screenshot of the logs explorer main page
-:screenshot:
-:::
-
-From **Logs Explorer**, you can select the Azure OpenAI integration from the data selector to view your Kubernetes data.
-
-![screenshot of the logs explorer data selector](/solutions/images/observability-azure-open-ai-data-selector.png "")
-
-From here, filter your log data and dive deeper into individual logs to find information and troubleshoot issues. For a list of Azure OpenAI fields you may want to filter by, refer to the [Azure OpenAI integration](https://docs.elastic.co/en/integrations/azure_openai#settings) documentation.
-
-For more on Logs Explorer, refer to:
-
-* [Logs Explorer](../logs/logs-explorer.md) for an overview of Logs Explorer.
-* [Filter logs in Logs Explorer](../logs/filter-aggregate-logs.md#logs-filter-logs-explorer) for more on filtering logs in Logs Explorer.
-
 
 ## Step 6: Monitor Microsoft Azure OpenAI APM with OpenTelemetry [azure-openai-apm]
 

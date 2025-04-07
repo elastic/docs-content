@@ -2,10 +2,17 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/view-monitor-status.html
 applies_to:
-  stack: all
+  stack: deprecated 8.15.0
+  serverless: unavailable
 ---
 
 # View monitor status [view-monitor-status]
+
+::::{admonition} Deprecated in 8.15.0.
+:class: warning
+
+Use [Synthetic monitoring](/solutions/observability/apps/synthetic-monitoring.md) instead of the {{uptime-app}}.
+::::
 
 The **Monitors** page provides you with a high-level view of all the services you are monitoring to help you quickly diagnose outages and other connectivity issues within your network.
 

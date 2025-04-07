@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/security/current/kspm.html
   - https://www.elastic.co/guide/en/serverless/current/security-kspm.html
 applies_to:
@@ -18,7 +18,7 @@ applies_to:
 % - [ ] ./raw-migrated-files/docs-content/serverless/security-kspm.md
 
 
-## Overview [kspm-overview] 
+## Overview [kspm-overview]
 
 The Kubernetes Security Posture Management (KSPM) integration allows you to identify configuration risks in the various components that make up your Kubernetes cluster. It does this by evaluating your Kubernetes clusters against secure configuration guidelines defined by the Center for Internet Security (CIS) and generating findings with step-by-step instructions for remediating potential security risks.
 
@@ -32,14 +32,14 @@ This integration supports Amazon EKS and unmanaged Kubernetes clusters. For setu
 
 
 
-## How KSPM works [kspm-how-kspm-works] 
+## How KSPM works [kspm-how-kspm-works]
 
 1. When you add a KSPM integration, it generates a Kubernetes manifest. When applied to a cluster, the manifest deploys an {{agent}} as a [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset) to ensure all nodes are evaluated.
 2. Upon deployment, the integration immediately assesses the security posture of your Kubernetes resources. The evaluation process repeats every four hours.
 3. After each evaluation, the integration sends findings to {{es}}. Findings appear on the [Cloud Security Posture dashboard](/solutions/security/dashboards/cloud-security-posture-dashboard.md) and the [findings](/solutions/security/cloud/findings-page-2.md) page.
 
 
-## Use cases [kspm-use-cases] 
+## Use cases [kspm-use-cases]
 
 The KSPM integration helps you to:
 
@@ -48,7 +48,7 @@ The KSPM integration helps you to:
 * Identify risks in particular CIS benchmark sections
 
 
-### Identify and remediate failed findings [kspm-remediate-failed-findings] 
+### Identify and remediate failed findings [kspm-remediate-failed-findings]
 
 To identify and remediate failed failed findings:
 
@@ -57,13 +57,13 @@ To identify and remediate failed failed findings:
 3. Click a failed finding. The findings flyout opens.
 4. Follow the steps under **Remediation** to correct the misconfiguration.
 
-   ::::{note} 
+   ::::{note}
    Remediation steps typically include commands for you to execute. These sometimes contain placeholder values that you must replace before execution.
    ::::
 
 
 
-### Identify the most misconfigured Kubernetes resources [kspm-identify-misconfigured-resources] 
+### Identify the most misconfigured Kubernetes resources [kspm-identify-misconfigured-resources]
 
 To identify the Kubernetes resources generating the most failed findings:
 
@@ -72,7 +72,7 @@ To identify the Kubernetes resources generating the most failed findings:
 3. Click a resource ID to view the findings associated with that resource.
 
 
-### Identify configuration risks by CIS section [kspm-identify-config-risks-by-section] 
+### Identify configuration risks by CIS section [kspm-identify-config-risks-by-section]
 
 To identify risks in particular CIS sections:
 

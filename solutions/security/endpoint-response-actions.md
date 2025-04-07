@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/security/current/response-actions.html
   - https://www.elastic.co/guide/en/serverless/current/security-response-actions.html
 applies_to:

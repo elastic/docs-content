@@ -1,6 +1,6 @@
 ---
 navigation_title: "Install {{elastic-defend}}"
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/security/current/install-endpoint.html
   - https://www.elastic.co/guide/en/serverless/current/security-install-edr.html
 applies_to:

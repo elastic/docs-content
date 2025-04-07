@@ -34,7 +34,7 @@ If you run into any issues, refer to [Troubleshooting](/troubleshoot/elasticsear
 
 ## Establish trust with a remote cluster [remote-clusters-security-cert]
 
-To use {{ccr}} or {{ccs}} safely with remote clusters, enable security on all connected clusters and configure Transport Layer Security (TLS) on every node. Configuring TLS security on the transport interface is minimally required for remote clusters. For additional security, configure TLS on the [HTTP interface](../security/secure-http-communications.md) as well.
+To use {{ccr}} or {{ccs}} safely with remote clusters, enable security on all connected clusters and configure Transport Layer Security (TLS) on every node. Configuring TLS security on the transport interface is minimally required for remote clusters. For additional security, configure TLS on the [HTTP interface](../security/secure-cluster-communications.md) as well.
 
 All connected clusters must trust one another and be mutually authenticated with TLS on the transport interface. This means that the local cluster trusts the certificate  authority (CA) of the remote cluster, and the remote cluster trusts the CA of the local cluster. When establishing a connection, all nodes will verify certificates from nodes on the other side. This mutual trust is required to securely connect a remote cluster, because all connected nodes effectively form a single security domain.
 

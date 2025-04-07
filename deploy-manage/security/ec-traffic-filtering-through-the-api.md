@@ -1,9 +1,9 @@
 ---
 applies_to:
   deployment:
-    ess: 
+    ess:
     ece:
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-traffic-filtering-through-the-api.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-traffic-filtering-through-the-api.html
 ---
@@ -28,20 +28,20 @@ This example demonstrates how to use the {{ecloud}} RESTful API or {{ece}} RESTf
 
 Refer to [](traffic-filtering.md) to learn about the general concepts behind filtering access to your {{ech}} and {{ece}} deployments.
 
-To learn more about these endpoints, refer to the reference for your deployment type: 
+To learn more about these endpoints, refer to the reference for your deployment type:
 
 * [{{ecloud}} API](https://www.elastic.co/docs/api/doc/cloud/group/endpoint-deploymentstrafficfilter)
 * [{{ece}} API](https://www.elastic.co/docs/api/doc/cloud-enterprise/group/endpoint-deploymentstrafficfilter)
 
 
-## Create a traffic filter rule set [ec-create-a-traffic-filter-rule-set] 
+## Create a traffic filter rule set [ec-create-a-traffic-filter-rule-set]
 
 
-### IP traffic filter ingress rule set [ec-ip-traffic-filters-ingress-rule-set] 
+### IP traffic filter ingress rule set [ec-ip-traffic-filters-ingress-rule-set]
 ```{applies_to}
 deployment:
-  ess: 
-  ece: 
+  ess:
+  ece:
 ```
 
 Send a request like the following to create an IP traffic filter ingress rule set:
@@ -124,7 +124,7 @@ If the request is successful, a response containing a $RULESET_ID is returned. $
 ```
 
 
-### IP traffic filter egress rule set [ec-ip-traffic-filters-egress-rule-set] 
+### IP traffic filter egress rule set [ec-ip-traffic-filters-egress-rule-set]
 ```{applies_to}
 deployment:
   ess: beta
@@ -170,7 +170,7 @@ https://api.elastic-cloud.com/api/v1/deployments/traffic-filter/rulesets \
 :   This can be `udp`, `tcp`, or `all`.
 
 
-### AWS Privatelink traffic filters [ec-aws-privatelink-traffic-filters-rule-set] 
+### AWS Privatelink traffic filters [ec-aws-privatelink-traffic-filters-rule-set]
 ```{applies_to}
 deployment:
   ess:
@@ -202,7 +202,7 @@ https://api.elastic-cloud.com/api/v1/deployments/traffic-filter/rulesets \
 To find the value for `source` for type `vpce`, check [Find your VPC endpoint ID](aws-privatelink-traffic-filters.md#ec-find-your-endpoint). This setting is supported only in AWS regions.
 
 
-### Azure Private Link traffic filters [ec-azure-privatelink-traffic-filters-rule-set] 
+### Azure Private Link traffic filters [ec-azure-privatelink-traffic-filters-rule-set]
 ```{applies_to}
 deployment:
   ess:
@@ -267,11 +267,11 @@ https://api.elastic-cloud.com/api/v1/deployments/traffic-filter/rulesets \
 To find the value for `source` for type `gcp_private_service_connect_endpoint`, check [Find your Private Service Connect connection ID](gcp-private-service-connect-traffic-filters.md#ec-find-your-psc-connection-id). This setting is supported only in GCP regions.
 
 
-## Update a traffic filter rule set [ec-update-a-traffic-filter-rule-set] 
+## Update a traffic filter rule set [ec-update-a-traffic-filter-rule-set]
 ```{applies_to}
 deployment:
-  ess: 
-  ece: 
+  ess:
+  ece:
 ```
 
 Send a request like the following to update an IP traffic filter ingress rule set:
@@ -339,11 +339,11 @@ https://$COORDINATOR_HOST:12443/api/v1/deployments/traffic-filter/rulesets/$RULE
 ::::
 
 
-## Associate a rule set with a deployment [ec-associate-rule-set-with-a-deployment] 
+## Associate a rule set with a deployment [ec-associate-rule-set-with-a-deployment]
 ```{applies_to}
 deployment:
-  ess: 
-  ece: 
+  ess:
+  ece:
 ```
 
 Send a request like the following to associate a rule set with a deployment:
@@ -385,11 +385,11 @@ https://$COORDINATOR_HOST:12443/api/v1/deployments/traffic-filter/rulesets/$RULE
 ::::
 
 
-## Delete a rule set association with a deployment [ec-delete-rule-set-association-with-a-deployment] 
+## Delete a rule set association with a deployment [ec-delete-rule-set-association-with-a-deployment]
 ```{applies_to}
 deployment:
-  ess: 
-  ece: 
+  ess:
+  ece:
 ```
 
 Send a request like the following to delete a rule set association with a deployment:
@@ -421,11 +421,11 @@ https://$COORDINATOR_HOST:12443/api/v1/deployments/traffic-filter/rulesets/$RULE
 ::::
 
 
-## Delete a traffic filter rule set [ec-delete-a-rule-set] 
+## Delete a traffic filter rule set [ec-delete-a-rule-set]
 ```{applies_to}
 deployment:
-  ess: 
-  ece: 
+  ess:
+  ece:
 ```
 
 Send a request like the following to delete a traffic filter rule set:

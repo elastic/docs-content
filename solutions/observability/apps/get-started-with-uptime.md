@@ -3,18 +3,21 @@ navigation_title: "Get started"
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/uptime-get-started.html
 applies_to:
-  stack: all
+  stack: deprecated 8.15.0
+  serverless: unavailable
 ---
-
-
 
 # Get started with Uptime [uptime-get-started]
 
+::::{admonition} Deprecated in 8.15.0.
+:class: warning
+
+Use [Synthetic monitoring](/solutions/observability/apps/synthetic-monitoring.md) instead of the {{uptime-app}}.
+::::
 
 ::::{important}
 **This approach can only be used to create lightweight monitors.** To create *browser* monitors, use the [{{synthetics-app}}](get-started.md).
 ::::
-
 
 {{heartbeat}} is a lightweight daemon that you install on a remote server to periodically check the status of your services and determine if they are available. It gathers performance data, formats it, and sends the data to the {{stack}}.
 

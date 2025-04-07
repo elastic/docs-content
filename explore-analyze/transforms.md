@@ -2,7 +2,7 @@
 applies_to:
   stack: ga
   serverless: ga
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/transforms.html
   - https://www.elastic.co/guide/en/serverless/current/transforms.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/data-rollup-transform.html

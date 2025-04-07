@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/security/current/security-assistant.html
   - https://www.elastic.co/guide/en/serverless/current/security-ai-assistant.html
 applies_to:
@@ -117,7 +117,7 @@ AI Assistant can remember particular information you tell it to remember. For ex
 
 ## Configure AI Assistant [configure-ai-assistant]
 
-To adjust AI Assistant's settings from the chat window, click the **More** (three dots) button in the upper-right. 
+To adjust AI Assistant's settings from the chat window, click the **More** (three dots) button in the upper-right.
 
 ::::{image} ../../../images/security-attack-discovery-more-popover.png
 :alt: AI Assistant's more options popover

@@ -1,6 +1,6 @@
 ---
 navigation_title: "Cluster or deployment"
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-securing-clusters.html
   - https://www.elastic.co/guide/en/cloud/current/ec-security.html
 applies_to:
@@ -41,7 +41,7 @@ You can also learn the basics of Elasticsearch authentication, learn about accou
 
 After a user is authenticated, use role-based access control to determine whether the user behind an incoming request is allowed to execute the request.
 
-Key tasks for managing user authorization include: 
+Key tasks for managing user authorization include:
 
 * [Defining roles](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md)
 * Assigning [built-in roles](/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md) or your own roles to users
@@ -52,6 +52,6 @@ You can also learn the basics of Elasticsearch authorization, and perform advanc
 
 ::::{tip}
 User roles are also used to control access to [{{kib}} spaces](/deploy-manage/manage-spaces.md).
-:::: 
+::::
 
 [View all user authorization docs](/deploy-manage/users-roles/cluster-or-deployment-auth/user-roles.md)

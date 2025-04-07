@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/elasticsearch-ingest-data-file-upload.html
   - https://www.elastic.co/guide/en/kibana/current/connect-to-elasticsearch.html#upload-data-kibana
 applies_to:
@@ -18,7 +18,7 @@ applies_to:
 
 % Note from David: I've removed the ID $$$upload-data-kibana$$$ from manage-data/ingest.md as those links should instead point to this page. So, please ensure that the following ID is included on this page. I've added it beside the title.
 
-You can upload files, view their fields and metrics, and optionally import them to {{es}} with the Data Visualizer. 
+You can upload files, view their fields and metrics, and optionally import them to {{es}} with the Data Visualizer.
 
 To use the Data Visualizer, click **Upload a file** on the {{es}} **Getting Started** page or navigate to the **Integrations** view and search for **Upload a file**. Clicking **Upload a file** opens the Data Visualizer UI.
 

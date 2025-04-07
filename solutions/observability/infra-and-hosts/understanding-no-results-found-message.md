@@ -1,9 +1,9 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/handle-no-results-found-message.html
   - https://www.elastic.co/guide/en/serverless/current/observability-handle-no-results-found-message.html
 applies_to:
-  stack: 
+  stack:
 ---
 
 # Understanding "no results found" message [observability-handle-no-results-found-message]
