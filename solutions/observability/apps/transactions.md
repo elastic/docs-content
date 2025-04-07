@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-data-model-transactions.html
+applies_to:
+  stack:
+  serverless:
 ---
 
 # Transactions [apm-data-model-transactions]
@@ -35,13 +38,13 @@ Transactions are grouped by their `type` and `name` in the Applications UI’s [
 * `type` should be a keyword of specific relevance in the service’s domain, e.g. `request`, `backgroundjob`, etc.
 * `name` should be a generic designation of a transaction in the scope of a single service, e.g. `GET /users/:id`, `UsersController#show`, etc.
 
-::::{tip} 
+::::{tip}
 Most agents limit keyword fields (e.g. `labels`) to 1024 characters, non-keyword fields (e.g. `span.db.statement`) to 10,000 characters.
 ::::
 
 
 
-## Data streams [_data_streams_2] 
+## Data streams [_data_streams_2]
 
 Transactions are stored with spans in the following data streams:
 
@@ -51,7 +54,7 @@ Transactions are stored with spans in the following data streams:
 See [Data streams](data-streams.md) to learn more.
 
 
-## Example transaction document [_example_transaction_document] 
+## Example transaction document [_example_transaction_document]
 
 This example shows what transaction documents can look like when indexed in {{es}}.
 

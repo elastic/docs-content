@@ -2,6 +2,9 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/synthetics-security-encryption.html
   - https://www.elastic.co/guide/en/serverless/current/observability-synthetics-security-encryption.html
+applies_to:
+  stack:
+  serverless:
 ---
 
 # Synthetics Encryption and Security [synthetics-security-encryption]

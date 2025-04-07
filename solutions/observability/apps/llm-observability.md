@@ -17,10 +17,10 @@ Elastic’s LLM integrations now support the most widely adopted models, includi
 
 | **LLM Provider**  | **Source**  | **Metrics** | **Logs** | 
 |--------|------------|------------|
-| [Amazon Bedrock](https://www.elastic.co/guide/en/integrations/current/aws_bedrock.html)| [AWS CloudWatch Logs] [impl-bedrock](https://github.com/elastic/integrations/tree/main/packages/aws_bedrock#compatibility) | ✅ | ✅ |  
-| [Azure OpenAI](https://www.elastic.co/guide/en/integrations/current/azure_openai.html)| [Azure Monitor and Event Hubs] [impl-azure](https://github.com/elastic/integrations/tree/main/packages/azure_openai#azure-openai-integration) | ✅ | ✅ | 
-| [GCP Vertex AI](https://www.elastic.co/guide/en/integrations/current/gcp_vertexai.html) | [GCP Cloud Monitoring] [impl-vertexai](https://github.com/elastic/integrations/tree/main/packages/gcp_vertexai#overview)  | ✅ | 🚧 | 
-| [OpenAI](https://www.elastic.co/guide/en/integrations/current/openai.html) | [OpenAI Usage API] [openai-usage](https://platform.openai.com/docs/api-reference/usage) | ✅| 🚧 | 
+| [Amazon Bedrock](https://www.elastic.co/guide/en/integrations/current/aws_bedrock.html)| [AWS CloudWatch Logs](https://github.com/elastic/integrations/tree/main/packages/aws_bedrock#compatibility) | ✅ | ✅ |  
+| [Azure OpenAI](https://www.elastic.co/guide/en/integrations/current/azure_openai.html)| [Azure Monitor and Event Hubs](https://github.com/elastic/integrations/tree/main/packages/azure_openai#azure-openai-integration) | ✅ | ✅ | 
+| [GCP Vertex AI](https://www.elastic.co/guide/en/integrations/current/gcp_vertexai.html) | [GCP Cloud Monitoring](https://github.com/elastic/integrations/tree/main/packages/gcp_vertexai#overview)  | ✅ | 🚧 | 
+| [OpenAI](https://www.elastic.co/guide/en/integrations/current/openai.html) | [OpenAI Usage API](https://platform.openai.com/docs/api-reference/usage) | ✅| 🚧 | 
 
 ## APM tracing for LLM models (via instrumentation)
 

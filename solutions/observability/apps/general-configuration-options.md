@@ -2,7 +2,7 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-configuration-process.html
 applies_to:
-  stack: all
+  stack:
 ---
 
 # General configuration options [apm-configuration-process]

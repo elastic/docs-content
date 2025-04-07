@@ -1,9 +1,11 @@
 ---
+navigation_title: "Interpret data"
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-interpret-data.html
   - https://www.elastic.co/guide/en/serverless/current/observability-apm-interpret-data.html
-
-navigation_title: "Interpret data"
+applies_to:
+  stack:
+  serverless:
 ---
 
 # Interpret application data [observability-apm-interpret-data]

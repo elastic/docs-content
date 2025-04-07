@@ -118,7 +118,7 @@ Logs are collected from setup onward, so you won’t see logs that occurred befo
 :::::
 
 
-Under **Visualize your data**, you’ll see links to **Logs Explorer** to view your logs and **Hosts** to view your host metrics.
+Under **Visualize your data**, you’ll see links to **Discover** to view your logs and **Hosts** to view your host metrics.
 
 
 ## Gain deeper insight into your host data  [_get_value_out_of_your_data]
@@ -130,7 +130,7 @@ After using the Hosts page and Discover to confirm you’ve ingested all the hos
     * [Detect anomalies](../../../solutions/observability/infra-and-hosts/detect-metric-anomalies.md) for memory usage and network traffic on hosts.
     * [Create alerts](../../../solutions/observability/incident-management/create-manage-rules.md) that notify you when an anomaly is detected or a metric exceeds a given value.
 
-* In the [Logs Explorer](../../../solutions/observability/logs/logs-explorer.md), search and filter your log data, get information about the structure of log fields, and display your findings in a visualization. You can also:
+* In [Discover](../../../solutions/observability/logs/discover-logs.md), search and filter your log data, get information about the structure of log fields, and display your findings in a visualization. You can also:
 
     * [Monitor log data set quality](../../../solutions/observability/data-set-quality-monitoring.md) to find degraded documents.
     * [Run a pattern analysis](../../../explore-analyze/machine-learning/machine-learning-in-kibana/xpack-ml-aiops.md#log-pattern-analysis) to find patterns in unstructured log messages.

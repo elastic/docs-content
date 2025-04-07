@@ -6,8 +6,6 @@ applies_to:
   stack: all
 ---
 
-
-
 # Configure Real User Monitoring (RUM) [apm-configuration-rum]
 
 
