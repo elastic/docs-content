@@ -1,7 +1,10 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-metrics.html
   - https://www.elastic.co/guide/en/serverless/current/observability-apm-metrics.html
+applies_to:
+  stack:
+  serverless:
 ---
 
 # Metrics [apm-metrics]

@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/triage-threshold-breaches.html
   - https://www.elastic.co/guide/en/serverless/current/observability-triage-threshold-breaches.html
 

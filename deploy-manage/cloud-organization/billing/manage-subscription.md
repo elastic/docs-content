@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/general-check-subscription.html
   - https://www.elastic.co/guide/en/cloud/current/ec-subscription-overview.html
   - https://www.elastic.co/guide/en/cloud/current/ec-select-subscription-level.html
@@ -13,14 +13,14 @@ applies_to:
 
 # Manage your subscription
 
-When you decide to add your credit card and become a paying customer, you can choose a subscription level. 
+When you decide to add your credit card and become a paying customer, you can choose a subscription level.
 
 Depending on whether you're using {{ech}} deployment or {{serverless-full}} projects, your subscription level might dictate what features you can access or what level of support you receive. On the following pricing pages, you can review additional details about what you get at each subscription level:
 
 * [{{ech}}](https://www.elastic.co/cloud/elasticsearch-service/pricing)
 * [{{serverless-full}}](https://www.elastic.co/pricing/serverless-search)
 
-You can find more details about your subscription in the [Billing overview page](https://cloud.elastic.co/billing/overview), in the **Subscription level** section. 
+You can find more details about your subscription in the [Billing overview page](https://cloud.elastic.co/billing/overview), in the **Subscription level** section.
 
 
 ## Change your subscription level [ec-select-subscription-level]

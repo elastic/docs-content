@@ -269,7 +269,7 @@ Note that the `ref_id` and version numbers for your resources may not be the sam
 You can make this change in the user [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body). The only drawback of this method is that it changes the URL used to access the {{es}} cluster and {{kib}}.
 
 1. From the deployment menu, open the **Snapshots** page and click **Take Snapshot now**. Wait for the snapshot to finish.
-2. From the main **Deployments** page, click **Create deployment**. Next to **Settings** toggle on **Restore snapshot data**, and then select your deployment and the snapshot that you created.
+2. From the main **Hosted deployments** page, click **Create deployment**. Next to **Settings** toggle on **Restore snapshot data**, and then select your deployment and the snapshot that you created.
 
     :::{image} /deploy-manage/images/cloud-ec-create-from-snapshot-updated.png
     :alt: Create a Deployment using a snapshot

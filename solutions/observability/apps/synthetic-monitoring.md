@@ -1,7 +1,10 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/monitor-uptime-synthetics.html
   - https://www.elastic.co/guide/en/serverless/current/observability-monitor-synthetics.html
+applies_to:
+  stack:
+  serverless:
 ---
 
 # Synthetic monitoring [monitor-uptime-synthetics]

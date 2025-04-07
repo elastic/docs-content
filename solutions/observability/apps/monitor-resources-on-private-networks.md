@@ -1,7 +1,10 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/synthetics-private-location.html
   - https://www.elastic.co/guide/en/serverless/current/observability-synthetics-private-location.html
+applies_to:
+  stack:
+  serverless:
 ---
 
 # Monitor resources on private networks [synthetics-private-location]

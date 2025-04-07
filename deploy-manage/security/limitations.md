@@ -2,6 +2,12 @@
 mapped_pages:
 - https://www.elastic.co/guide/en/elasticsearch/reference/current/security-limitations.html
 navigation_title: Limitations
+applies_to:
+  deployment:
+    self: all
+    eck: all
+    ess: all
+    ece: all
 ---
 
 # Security limitations [security-limitations]
