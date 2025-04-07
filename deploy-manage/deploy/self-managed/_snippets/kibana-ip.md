@@ -1,12 +1,11 @@
 The default host and port settings configure Kibana to run on localhost:5601. To change this behavior and allow remote users to connect, you need to set up {{kib}} to run on a routable, external IP address. You can do this by editing the settings in [`kibana.yml`](/deploy-manage/deploy/self-managed/configure-kibana.md): 
 
-1.  Retrieve the external IP address of your host. You’ll need this value later.
-2.  Open `kibana.yml` in a text editor.
+1.  Open `kibana.yml` in a text editor.
  
-3.  Uncomment the line `#server.host: localhost` and replace the default address with the value that you retrieved in step one. For example:
+2.  Uncomment the line `#server.host: localhost` and replace the default address with `0.0.0.0`. The `0.0.0.0` setting enables {{kib}} to listen for connections on all available network interfaces. In a production environment, you might want to [use a different value](kibana://reference/kibana/configuration-reference/general-settings.md#server-host), such as a static IP address.
 
     ```yaml
-    server.host: 10.128.0.28
+    server.host: 0.0.0.0
     ```
 
-4.  Save your changes and close the editor.
+3.  Save your changes and close the editor.

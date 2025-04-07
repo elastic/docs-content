@@ -19,26 +19,31 @@ When you install {{es}}, the installation process configures a single-node clust
 
    Answer the `Do you want to continue` prompt with `yes` (`y`). The new {{es}} node will be reconfigured.
 
-4. In a terminal, run `ifconfig` and copy the value for the host inet IP address. You’ll need this value later.
-5. Open the new Elasticsearch instance's `elasticsearch.yml` file in a text editor.
+4. Open the new Elasticsearch instance's `elasticsearch.yml` file in a text editor.
    
    The `elasticsearch-reconfigure-node` tool has updated several settings. For example:
 
    * The `transport.host: 0.0.0.0` setting is already uncommented.
    * The `discovery_seed.hosts` setting has the IP address and port of the other {{es}} nodes added the cluster so far. As you add each new {{es}} node to the cluster, the `discovery_seed.hosts` setting will contain an array of the IP addresses and port numbers to connect to each {{es}} node that was previously added to the cluster.
 
-6. In the configuration file, uncomment the line `#cluster.name: my-application` and set it to match the name you specified for the first {{es}} node:
+5. In the configuration file, uncomment the line `#cluster.name: my-application` and set it to match the name you specified for the first {{es}} node:
    
    ```yml
    cluster.name: elasticsearch-demo
    ```
 
-7. As with the first {{es}} node, you’ll need to set up {{es}} to run on a routable, external IP address. Uncomment the line `#network.host: 92.168.0.1` and replace the default address with the value that you copied. For example:
+6. As with the first {{es}} node, you’ll need to set up {{es}} to run on a routable, external IP address.     
+   
+   Uncomment the line `#network.host: 192.168.0.1` and replace the default address with `0.0.0.0`. The `0.0.0.0` setting enables {{es}} to listen for connections on all available network interfaces. In a production environment, you might want to [use a different value](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md#common-network-settings), such as a static IP address or a reference to a [network interface of the host](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md#network-interface-values).
 
-    ```yml
-    network.host: 10.128.0.132
+    ```yaml
+    network.host: 0.0.0.0
     ```
 
-8. Save your changes and close the editor.
+7. Save your changes and close the editor.
 
 You can repeat these steps for each additional {{es}} node that you would like to add to the cluster. 
+
+:::{warning}
+If you're setting up a multi-node cluster, then as soon as you add a second node to your cluster, you need to [update your first node's config file](#update-config-files) or it won't be able to restart.
+:::

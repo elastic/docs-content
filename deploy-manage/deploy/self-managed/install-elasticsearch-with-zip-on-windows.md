@@ -220,9 +220,13 @@ Most changes (like JVM settings) made through the manager GUI will require a res
 :::{include} _snippets/check-es-running.md
 :::
 
-## Step 6 (Multi-node clusters only): Clean up the config files
+## Step 6 (Multi-node clusters only): Update the config files [update-config-files]
 
 If you are deploying a multi-node cluster, then the enrollment process adds all existing nodes to each newly enrolled node's `discovery.seed_hosts` setting. However, you need to go back to all of the nodes in the cluster and edit them so each node in the cluster can restart and rejoin the cluster as expected.
+
+:::{note}
+Because the initial node in the cluster is bootstrapped as a single-node cluster, it won't have `discovery.seed_hosts` configured. This setting is mandatory for multi-node clusters and must be added manually to the first node.
+:::
 
 :::{include} _snippets/clean-up-multinode.md
 :::

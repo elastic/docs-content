@@ -97,7 +97,7 @@ sudo zypper modifyrepo --enable elasticsearch && \
 
 2. Copy the terminal output from the install command to a local file. In particular, you’ll need the password for the built-in `elastic` superuser account. The output also contains the commands to enable {{es}} to [run as a service](#running-systemd).
 
-## Step 3: Set up the node for connectivity
+## Step 3 (Optional): Set up the node for connectivity
 
 :::{include} _snippets/node-connectivity.md
 :::
@@ -153,9 +153,13 @@ sudo zypper modifyrepo --enable elasticsearch && \
 :::{include} _snippets/check-es-running.md
 :::
 
-## Step 8 (Multi-node clusters only): Clean up the config files
+## Step 8 (Multi-node clusters only): Update the config files [update-config-files]
 
 If you are deploying a multi-node cluster, then the `elasticsearch-reconfigure-node` tool adds all existing nodes to each newly enrolled node's `discovery.seed_hosts` setting. However, you need to go back to all of the nodes in the cluster and edit them so each node in the cluster can restart and rejoin the cluster as expected.
+
+:::{note}
+Because the initial node in the cluster is bootstrapped as a single-node cluster, it won't have `discovery.seed_hosts` configured. This setting is mandatory for multi-node clusters and must be added manually to the first node.
+:::
 
 :::{include} _snippets/clean-up-multinode.md
 :::

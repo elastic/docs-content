@@ -98,13 +98,6 @@ By default, {{kib}} runs in the foreground, prints its logs to the standard outp
 :::{include} _snippets/enroll-steps.md
 :::
 
-## Step 5 (Multi-node clusters only): Clean up the config files
-
-If you are deploying a multi-node cluster, then the enrollment process adds all existing nodes to each newly enrolled node's `discovery.seed_hosts` setting. However, you need to go back to all of the nodes in the cluster and edit them so each node in the cluster can restart and rejoin the cluster as expected.
-
-:::{include} _snippets/clean-up-multinode.md
-:::
-
 ## Configure {{kib}} using the config file [targz-configuring]
 
 {{kib}} loads its configuration from the `$KIBANA_HOME/config/kibana.yml` file by default. The format of this config file is explained in [](configure-kibana.md).
