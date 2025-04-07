@@ -90,7 +90,7 @@ Alternatively, you can add a security override by following the instructions in 
 :::
 
 
-## Step 3 (Optional): Set up the node for connectivity
+## Step 3: Set up the node for connectivity
 
 :::{include} _snippets/cluster-formation-brief.md
 :::

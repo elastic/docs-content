@@ -53,7 +53,7 @@ cd C:\Program Files\elasticsearch-{{stack-version}}
 :::{include} _snippets/enable-auto-indices.md
 :::
 
-## Step 3 (Optional): Set up the node for connectivity
+## Step 3: Set up the node for connectivity
 
 :::{include} _snippets/cluster-formation-brief.md
 :::

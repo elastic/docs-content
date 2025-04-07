@@ -107,7 +107,7 @@ sudo dpkg -i elasticsearch-{{stack-version}}-amd64.deb
 
 1. Compares the SHA of the downloaded Debian package and the published checksum, which should output `elasticsearch-<version>-amd64.deb: OK`.
 
-## Step 3 (Optional): Set up the node for connectivity
+## Step 3: Set up the node for connectivity
 
 :::{include} _snippets/node-connectivity.md
 :::

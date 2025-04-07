@@ -97,7 +97,7 @@ sudo zypper modifyrepo --enable elasticsearch && \
 
 2. Copy the terminal output from the install command to a local file. In particular, you’ll need the password for the built-in `elastic` superuser account. The output also contains the commands to enable {{es}} to [run as a service](#running-systemd).
 
-## Step 3 (Optional): Set up the node for connectivity
+## Step 3: Set up the node for connectivity
 
 :::{include} _snippets/node-connectivity.md
 :::
