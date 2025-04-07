@@ -1,6 +1,6 @@
 ---
-navigation_title: Elastic docs
+navigation_title: Elastic Docs
 layout: landing-page
 ---
 
-# Elastic docs
+# Elastic Docs
