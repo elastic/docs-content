@@ -11,6 +11,10 @@ applies_to:
 
 This guide compares Elastic Cloud Hosted deployments with Elastic Cloud Serverless projects, highlighting key features and capabilities across different project types. Use this information to understand what's available in each deployment option or to plan migrations between platforms.
 
+:::{note}
+The information below reflects our strategic goals, plans and objectives and includes estimated release dates, anticipated features and functions, and proposed descriptions for commercial features. All details are for information only and are subject to change in our discretion. Information may be updated, added, or removed from this document as features or products become available, canceled, or postponed.
+:::
+
 ## Architectural differences
 
 Elastic Cloud Serverless takes a fundamentally different approach to running the Elastic Stack compared to Elastic Cloud Hosted:
@@ -47,9 +51,9 @@ This table compares the core platform capabilities between Elastic Cloud Hosted 
 
 | **Feature**  | Elastic Cloud Hosted | Serverless projects| Notes  |
 |----------|----------------------|--------------------|--------|
-| **Audit logging** | ✅ | **Planned** | Coming in a future release |
+| **Audit logging** | ✅ | **Planned** | Anticipated in a future release |
 | **Authentication realms** | ✅ | ✅ | Managed at organization level in Serverless; deployment level in Hosted |
-| **BYO-Key for Encryption at Rest** | ✅ | **Planned** | Coming in a future release; data in Serverless is stored on cloud-provider encrypted object storage |
+| **BYO-Key for Encryption at Rest** | ✅ | **Planned** | Anticipated in a future release; data in Serverless is stored on cloud-provider encrypted object storage |
 | **Cloud provider support** | - AWS <br>- GCP <br>- Azure | - AWS <br>- Azure (in preview) <br>- GCP (in preview) | - [Elastic Cloud Hosted regions](cloud://reference/cloud-hosted/regions.md)<br>- [Serverless regions](/deploy-manage/deploy/elastic-cloud/regions.md) |
 | **Cluster scaling** | Manual with autoscaling option | Managed | Automatic scaling eliminates capacity planning - [Learn more](https://www.elastic.co/blog/elastic-serverless-architecture) |
 | **Custom plugins and bundles** | ✅ | ❌ | Not available in Serverless |
@@ -59,9 +63,9 @@ This table compares the core platform capabilities between Elastic Cloud Hosted 
 | **Deployment monitoring** | AutoOps or monitoring cluster | Managed | Monitoring is handled by Elastic |
 | **Hardware configuration** | Limited control | Managed | Hardware choices are managed by Elastic |
 | **High availability** | ✅ | ✅ | Automatic resilience |
-| **Network security** | Public IP traffic filtering, private connectivity (VPCs, PrivateLink) | **Planned** | - Traffic filtering coming in a future release <br>- Private connectivity options planned |
+| **Network security** | Public IP traffic filtering, private connectivity (VPCs, PrivateLink) | **Planned** | - Traffic filtering anticipated in a future release <br>- Private connectivity options planned |
 | **Node management** | User-controlled | Managed | No node configuration access by design |
-| **Snapshot/restore** | ✅ | **Planned** | User-initiated snapshots are coming in a future release |
+| **Snapshot/restore** | ✅ | **Planned** | User-initiated snapshots are anticipated in a future release |
 
 :::{note}
 The [Elastic Cloud Serverless roadmap](https://www.elastic.co/cloud/serverless/roadmap) primarily focuses on platform capabilities rather than project-specific features. Use the following project-specific tables for information about features for each project type.
@@ -75,17 +79,17 @@ This table compares Elasticsearch capabilities between Elastic Cloud Hosted depl
 |---------|----------------------|-----------------------------------|------------------|
 | [**AI Assistant**](/solutions/observability/observability-ai-assistant.md) | ✅ | ✅ | |
 | **Behavioral analytics** | ❌ (deprecated in 9.0) | ❌ | Not available in Serverless |
-| [**Clone index API**](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-clone) | ✅ | **Planned** | Coming in a future release |
-| [**Cross-cluster replication**](/deploy-manage/tools/cross-cluster-replication.md) | ✅ | **Planned** | Coming in a future release |
-| [**Cross-cluster search**](/solutions/search/cross-cluster-search.md) | ✅ | **Planned** | Coming in a future release |
+| [**Clone index API**](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-clone) | ✅ | **Planned** | Anticipated in a future release |
+| [**Cross-cluster replication**](/deploy-manage/tools/cross-cluster-replication.md) | ✅ | **Planned** | Anticipated in a future release |
+| [**Cross-cluster search**](/solutions/search/cross-cluster-search.md) | ✅ | **Planned** | Anticipated in a future release |
 | **Data lifecycle management** | - [ILM](/manage-data/lifecycle/index-lifecycle-management.md) <br>- [Data stream lifecycle](/manage-data/lifecycle/data-stream.md) | [Data stream lifecycle](/manage-data/lifecycle/data-stream.md) only | - No data tiers in Serverless <br>- Optimized for common lifecycle management needs |
 | **Elastic connectors (for search)** | ❌ (Managed connectors discontinued with Enterprise Search in 9.0) | Self-managed only | - Managed connectors not available <br>- Use [**self-managed connectors**](elasticsearch://reference/search-connectors/self-managed-connectors.md) |
 | [**Elasticsearch for Apache Hadoop**](https://www.elastic.co/elasticsearch/hadoop) | ✅ | ❌ | Not available in Serverless |
 | **Enterprise Search (App Search & Workplace Search)** | ❌ (discontinued in 9.0) | ❌ | Not available in Serverless |
 | [**Kibana Alerts**](/deploy-manage/monitor/monitoring-data/configure-stack-monitoring-alerts.md) | ✅ | ✅ | |
-| [**Reindexing from remote**](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-reindex) | ✅ | **Planned** | Coming in a future release |
+| [**Reindexing from remote**](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-reindex) | ✅ | **Planned** | Anticipated in a future release |
 | **Repository management** | ✅ | Managed | Automatically managed by Elastic |
-| [**Scripted metric aggregations**](elasticsearch://reference/aggregations/search-aggregations-metrics-scripted-metric-aggregation.md) | ✅ | ❌ | Not available in Serverless |
+| [**Scripted metric aggregations**](elasticsearch://reference/aggregations/search-aggregations-metrics-scripted-metric-aggregation.md) | ✅ | ❌ | Not available in Serverless<br>The alternative for this in Serverless is [ES|QL](/explore-analyze/query-filter/languages/esql.md) |
 | [**Search applications**](https://www.elastic.co/guide/en/elasticsearch/reference/8.18/search-application-overview.html) | - UI and APIs <br>- Maintenance mode (beta) | - API-only <br>- Maintenance mode (beta) | UI not available in Serverless |
 | **Shard management** | User-configurable | Managed by Elastic | No manual shard allocation in Serverless |
 | [**Watcher**](/explore-analyze/alerts-cases/watcher.md) | ✅ | ❌ | Use **Kibana Alerts** instead, which provides rich integrations across use cases |
@@ -103,7 +107,7 @@ This table compares Observability capabilities between Elastic Cloud Hosted depl
 | [**APM Tail-based sampling**](/solutions/observability/apps/transaction-sampling.md#apm-tail-based-sampling) | ✅ | ❌ | - Not available in Serverless <br>- Consider **OpenTelemetry** tail sampling processor as an alternative |
 | [**Android agent/SDK instrumentation**](apm-agent-android://reference/index.md) | ✅ | ❌ | Not available in Serverless |
 | [**AWS Firehose integration**](/solutions/observability/cloud/monitor-amazon-web-services-aws-with-amazon-data-firehose.md) | ✅ | ✅ | |
-| **Custom roles for Kibana Spaces** | ✅ | **Planned** | Coming in a future release |
+| **Custom roles for Kibana Spaces** | ✅ | **Planned** | Anticipated in a future release |
 | [**Data stream lifecycle**](/manage-data/lifecycle/data-stream.md) | ✅ | ✅ | Primary lifecycle management method in Serverless |
 | **[Elastic Serverless Forwarder](elastic-serverless-forwarder://reference/index.md)** | ✅ | ❌ | |
 | **[Elastic Synthetics Private Locations](/solutions/observability/apps/monitor-resources-on-private-networks.md#synthetics-private-location-add)** | ✅ | ✅ | |
@@ -116,7 +120,7 @@ This table compares Observability capabilities between Elastic Cloud Hosted depl
 | **[Logs management](/solutions/observability/logs.md)** | ✅ | ✅ | |
 | **[Metrics monitoring](/solutions/observability/apps/metrics.md)** | ✅ | ✅ | |
 | **[Observability SLO](/solutions/observability/incident-management/service-level-objectives-slos.md)** | ✅ | ✅ | |
-| [**Real User Monitoring (RUM)**](/solutions/observability/apps/real-user-monitoring-user-experience.md) | ✅ | **Planned** | Coming in a future release |
+| [**Real User Monitoring (RUM)**](/solutions/observability/apps/real-user-monitoring-user-experience.md) | ✅ | **Planned** | Anticipated in a future release |
 | **[Universal Profiling](/solutions/observability/infra-and-hosts/get-started-with-universal-profiling.md)** | ✅ | ❌ | Not available in Serverless |
 | **Uptime monitoring** | ❌ | ❌ | - Deprecated in all deployment types <br>- Use [**Synthetics app**](/solutions/observability/apps/synthetic-monitoring.md) instead |
 
