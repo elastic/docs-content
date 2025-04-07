@@ -35,7 +35,7 @@ Select a service on the **Services** page in the Applications UI then select a t
 
 ::::
 
-:::: {note}
+::::{note}
 Active queries *are* applied to correlations.
 ::::
 

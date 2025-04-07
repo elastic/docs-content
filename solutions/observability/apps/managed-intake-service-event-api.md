@@ -9,7 +9,6 @@ applies_to:
 
 ::::{warning}
 This API is exclusively for APM agent developers. The vast majority of users should have no reason to interact with this API.
-
 ::::
 
 The managed intake service exposes endpoints for:

@@ -81,7 +81,7 @@ Find more details about how to use an OpenTelemetry API or SDK with an Elastic A
 
 The {{stack}} natively supports the OpenTelemetry protocol (OTLP). This means trace data and metrics collected from your applications and infrastructure by an OpenTelemetry Collector or OpenTelemetry language SDK can be sent to the {{stack}}.
 
-You can set up an [OpenTelemetry Collector](https://opentelemetry.io/docs/collector/), instrument your application with an [OpenTelemetry language SDK](https://opentelemetry.io/docs/languages/) that sends data to the collector, and use the collector to process and export the data to APM Server.
+You can set up an [OpenTelemetry Collector](https://opentelemetry.io/docs/collector/), instrument your application with an [OpenTelemetry language SDK](https://opentelemetry.io/docs/languages/) that sends data to the collector, and use the collector to process and export the data to either {{apm-server-or-mis}}.
 
 :::{image} /solutions/images/observability-apm-otel-api-sdk-collector.png
 :alt: apm otel api sdk collector
@@ -89,7 +89,7 @@ You can set up an [OpenTelemetry Collector](https://opentelemetry.io/docs/collec
 :::
 
 ::::{note}
-It’s also possible to send data directly to APM Server from an upstream OpenTelemetry SDK. You might do this during development or if you’re monitoring a small-scale application. Read more about when to use a collector in the [OpenTelemetry documentation](https://opentelemetry.io/docs/collector/#when-to-use-a-collector).
+It’s also possible to send data directly to either {{apm-server-or-mis}} from an upstream OpenTelemetry SDK. You might do this during development or if you’re monitoring a small-scale application. Read more about when to use a collector in the [OpenTelemetry documentation](https://opentelemetry.io/docs/collector/#when-to-use-a-collector).
 
 ::::
 

@@ -119,7 +119,7 @@ This example contains JVM metrics produced by the {{apm-java-agent}}. and contai
 
 ## Calculated metrics [_calculated_metrics]
 
-APM agents and APM Server calculate metrics from trace events to power visualizations in the Applications UI.
+APM agents and either {{apm-server-or-mis}} calculate metrics from trace events to power visualizations in the Applications UI.
 
 Calculated metrics are an implementation detail and while we aim for stability for these data models, the dimensions and concrete limits for aggregations are subject to change within minor version updates.
 
@@ -235,7 +235,7 @@ This example shows what breakdown metric documents can look like when indexed in
 
 ### Transaction metrics [_transaction_metrics]
 
-To power [{{kib}} Applications UI](overviews.md) visualizations, APM Server aggregates transaction events into latency distribution metrics.
+To power [{{kib}} Applications UI](overviews.md) visualizations, either {{apm-server-or-mis}} aggregates transaction events into latency distribution metrics.
 
 **`transaction.duration.summary`** and **`transaction.duration.histogram`**
 :   These metrics represent the latency summary and latency distribution of transaction groups, used to power transaction-oriented visualizations and analytics in Elastic APM.
@@ -421,7 +421,7 @@ This example shows what transaction documents can look like when indexed in {{es
 
 ### Service-transaction metrics [_service_transaction_metrics]
 
-To power [{{kib}} Applications UI](overviews.md) visualizations, APM Server aggregates transaction events into service-transaction metrics. Service-transaction metrics are similar to transaction metrics, but they usually have a much lower cardinality as they have significantly fewer dimensions. The UI uses them when fewer details of the transactions are needed.
+To power [{{kib}} Applications UI](overviews.md) visualizations, either {{apm-server-or-mis}} aggregates transaction events into service-transaction metrics. Service-transaction metrics are similar to transaction metrics, but they usually have a much lower cardinality as they have significantly fewer dimensions. The UI uses them when fewer details of the transactions are needed.
 
 **`transaction.duration.summary`** and **`transaction.duration.histogram`**
 :   These metrics represent the latency summary and latency distribution of service transaction groups, used to power service-oriented visualizations and analytics in Elastic APM.
@@ -955,7 +955,7 @@ This example shows what service-transaction documents can look like when indexed
 
 ### Service-destination metrics [_service_destination_metrics]
 
-To power [{{kib}} Applications UI](overviews.md) visualizations, APM Server aggregates span events into service-destination metrics.
+To power [{{kib}} Applications UI](overviews.md) visualizations, either {{apm-server-or-mis}} aggregates span events into service-destination metrics.
 
 **`span.destination.service.response_time.count`** and **`span.destination.service.response_time.sum.us`**
 :   These metrics measure the count and total duration of requests from one service to another service. These are used to calculate the throughput and latency of requests to backend services such as databases in [Service maps](service-map.md).
@@ -1048,7 +1048,7 @@ This example shows what service-destination documents can look like when indexed
 
 ### Service-summary metrics [_service_summary_metrics]
 
-To power [{{kib}} Applications UI](overviews.md) visualizations, APM Server aggregates transaction, error, log, and metric events into service-summary metrics.
+To power [{{kib}} Applications UI](overviews.md) visualizations, either {{apm-server-or-mis}} aggregates transaction, error, log, and metric events into service-summary metrics.
 
 These metric documents can be identified by searching for `metricset.name: service_summary`.
 

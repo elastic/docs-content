@@ -32,7 +32,7 @@ Most agents limit keyword fields, like `span.id`, to 1024 characters, and non-ke
 
 ## Dropped spans [apm-data-model-dropped-spans]
 
-For performance reasons, APM agents can choose to sample or omit spans purposefully. This can be useful in preventing edge cases, like long-running transactions with over 100 spans, that would otherwise overload both the Agent and the APM Server. When this occurs, the Applications UI will display the number of spans dropped.
+For performance reasons, APM agents can choose to sample or omit spans purposefully. This can be useful in preventing edge cases, like long-running transactions with over 100 spans, that would otherwise overload both the Agent and the {{apm-server-or-mis}}. When this occurs, the Applications UI will display the number of spans dropped.
 
 To configure the number of spans recorded per transaction, see the relevant Agent documentation:
 
@@ -48,7 +48,7 @@ To configure the number of spans recorded per transaction, see the relevant Agen
 
 ## Missing spans [apm-data-model-missing-spans]
 
-Agents stream spans to the APM Server separately from their transactions. Because of this, unforeseen errors may cause spans to go missing. Agents know how many spans a transaction should have; if the number of expected spans does not equal the number of spans received by the APM Server, the Applications UI will calculate the difference and display a message.
+Agents stream spans to the {{apm-server-or-mis}} separately from their transactions. Because of this, unforeseen errors may cause spans to go missing. Agents know how many spans a transaction should have; if the number of expected spans does not equal the number of spans received by the {{apm-server-or-mis}}, the Applications UI will calculate the difference and display a message.
 
 ## Data streams [_data_streams]
 

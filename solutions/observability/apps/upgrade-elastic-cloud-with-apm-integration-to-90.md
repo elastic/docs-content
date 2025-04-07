@@ -2,6 +2,8 @@
 navigation_title: "{{ecloud}} APM integration"
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-upgrade-8.0-cloud-integration.html
+applies_to:
+  stack:
 ---
 
 # Upgrade Elastic Cloud with the APM integration to 8.0 [apm-upgrade-8.0-cloud-integration]

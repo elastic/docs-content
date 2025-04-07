@@ -3,6 +3,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-custom-filter.html
 applies_to:
   stack:
+  serverless:
 ---
 
 # Custom filters [apm-custom-filter]
@@ -10,6 +11,11 @@ applies_to:
 Custom filters, including [ingest pipeline filters](#apm-filters-ingest-pipeline) and [APM agent filters](#apm-filters-in-agent), allow you to filter or redact APM data on ingestion.
 
 ## Ingest pipeline filters [apm-filters-ingest-pipeline]
+
+```{applies_to}
+stack:
+serverless: unavailable
+```
 
 Ingest pipelines specify a series of processors that transform data in a specific way. Transformation happens prior to indexing—​inflicting no performance overhead on the monitored application. Pipelines are a flexible and easy way to filter or obfuscate Elastic APM data.
 
@@ -23,6 +29,11 @@ Features of this approach:
 For a step-by-step example, refer to [Tutorial: Use an ingest pipeline to redact sensitive information](#apm-filters-ingest-pipeline-tutorial).
 
 ## APM agent filters [apm-filters-in-agent]
+
+```{applies_to}
+stack:
+serverless:
+```
 
 Some APM agents offer a way to manipulate or drop APM events *before* they are sent to APM Server.
 
@@ -40,6 +51,11 @@ Refer to the relevant agent’s documentation for more information and examples:
 * Ruby: [`add_filter()`](apm-agent-ruby://reference/api-reference.md#api-agent-add-filter).
 
 ## Tutorial: Use an ingest pipeline to redact sensitive information [apm-filters-ingest-pipeline-tutorial]
+
+```{applies_to}
+stack:
+serverless: unavailable
+```
 
 Say you decide to [capture HTTP request bodies](built-in-data-filters.md#apm-filters-http-body) but quickly notice that sensitive information is being collected in the `http.request.body.original` field:
 

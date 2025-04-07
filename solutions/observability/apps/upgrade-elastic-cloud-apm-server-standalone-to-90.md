@@ -2,6 +2,8 @@
 navigation_title: "{{ecloud}} standalone"
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-upgrade-8.0-cloud-standalone.html
+applies_to:
+  stack:
 ---
 
 # Upgrade Elastic Cloud APM Server standalone to 8. [apm-upgrade-8.0-cloud-standalone]

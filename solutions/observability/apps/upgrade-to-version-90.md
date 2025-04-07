@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-upgrading-to-8.x.html
+applies_to:
+  stack:
 ---
 
 # Upgrade to version 9.0 [apm-upgrading-to-9.0]

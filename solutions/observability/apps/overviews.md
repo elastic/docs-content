@@ -18,9 +18,6 @@ For a quick, high-level overview of the health and performance of your applicati
 * [Service Map](../../../solutions/observability/apps/service-map.md)
 
 ## View an individual service [apm-ui-individual-service]
-```{applies_to}
-stack: all
-```
 
 View an individual service:
 

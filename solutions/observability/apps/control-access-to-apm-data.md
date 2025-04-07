@@ -50,7 +50,7 @@ The `production-<event>-apm` aliases will contain a filter that only provides ac
 
 To create these six filtered aliases, use the {{es}} [Aliases API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-update-aliases). In {{kib}}, open **Dev Tools** and run the following POST requests.
 
-::::{dropdown} `traces-apm*` production alias example
+::::{dropdown} traces-apm* production alias example
 ```console
 POST /_aliases?pretty
 {
@@ -78,7 +78,7 @@ POST /_aliases?pretty
 
 ::::
 
-::::{dropdown} `logs-apm*` production alias example
+::::{dropdown} logs-apm* production alias example
 ```console
 POST /_aliases?pretty
 {
@@ -106,7 +106,7 @@ POST /_aliases?pretty
 
 ::::
 
-::::{dropdown} `metrics-apm*` production alias example
+::::{dropdown} metrics-apm* production alias example
 ```console
 POST /_aliases?pretty
 {
@@ -134,7 +134,7 @@ POST /_aliases?pretty
 
 ::::
 
-::::{dropdown} `traces-apm*` staging alias example
+::::{dropdown} traces-apm* staging alias example
 ```console
 POST /_aliases?pretty
 {
@@ -162,7 +162,7 @@ POST /_aliases?pretty
 
 ::::
 
-::::{dropdown} `logs-apm*` staging alias example
+::::{dropdown} logs-apm* staging alias example
 ```console
 POST /_aliases?pretty
 {
@@ -190,7 +190,7 @@ POST /_aliases?pretty
 
 ::::
 
-::::{dropdown} `metrics-apm*` staging alias example
+::::{dropdown} metrics-apm* staging alias example
 ```console
 POST /_aliases?pretty
 {
@@ -257,7 +257,7 @@ Using the table below, assign each role the following privileges:
 
 Alternatively, you can use the {{es}} [Create or update roles API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-role):
 
-::::{dropdown} Create a `production_apm_viewer` role
+::::{dropdown} Create a production_apm_viewer role
 This request creates a `production_apm_viewer` role:
 
 ```console
@@ -290,7 +290,7 @@ POST /_security/role/production_apm_viewer
 
 ::::
 
-::::{dropdown} Create a `staging_apm_viewer` role
+::::{dropdown} Create a staging_apm_viewer role
 This request creates a `staging_apm_viewer` role:
 
 ```console

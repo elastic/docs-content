@@ -23,6 +23,11 @@ Elastic APM supports two types of sampling:
 
 ## Head-based sampling [apm-head-based-sampling]
 
+```{applies_to}
+stack:
+serverless:
+```
+
 In head-based sampling, the sampling decision for each trace is made when the trace is initiated. Each trace has a defined and equal probability of being sampled.
 
 For example, a sampling value of `.2` indicates a transaction sample rate of `20%`. This means that only `20%` of traces will send and retain all of their associated information. The remaining traces will drop contextual information to reduce the transfer and storage size of the trace.
@@ -97,8 +102,10 @@ Refer to the documentation of your favorite OpenTelemetry agent or SDK for more 
 % Stateful only for tail-based sampling
 
 ## Tail-based sampling [apm-tail-based-sampling]
+
 ```{applies_to}
-stack: all
+stack:
+serverless: unavailable
 ```
 
 ::::{note}
@@ -183,6 +190,11 @@ The tail-based sampling implementation in version 9.0 offers significantly bette
 
 ## Sampled data and visualizations [_sampled_data_and_visualizations]
 
+```{applies_to}
+stack:
+serverless:
+```
+
 A sampled trace retains all data associated with it. A non-sampled trace drops all [span](../../../solutions/observability/apps/spans.md) and [transaction](../../../solutions/observability/apps/transactions.md) data1. Regardless of the sampling decision, all traces retain [error](../../../solutions/observability/apps/errors.md) data.
 
 Some visualizations in the {{apm-app}}, like latency, are powered by aggregated transaction and span [metrics](../../../solutions/observability/apps/metrics.md). The way these metrics are calculated depends on the sampling method used:
@@ -199,6 +211,11 @@ These calculation methods ensure that the APM app provides the most accurate met
 
 ## Sample rates [_sample_rates]
 
+```{applies_to}
+stack:
+serverless:
+```
+
 What’s the best sampling rate? Unfortunately, there isn’t one. Sampling is dependent on your data, the throughput of your application, data retention policies, and other factors. A sampling rate from `.1%` to `100%` would all be considered normal. You’ll likely decide on a unique sample rate for different scenarios. Here are some examples:
 
 * Services with considerably more traffic than others might be safe to sample at lower rates
@@ -209,6 +226,11 @@ What’s the best sampling rate? Unfortunately, there isn’t one. Sampling is d
 Regardless of the above, cost conscious customers are likely to be fine with a lower sample rate.
 
 ## Configure head-based sampling [apm-configure-head-based-sampling]
+
+```{applies_to}
+stack:
+serverless:
+```
 
 There are three ways to adjust the head-based sampling rate of your APM agents:
 
@@ -233,6 +255,11 @@ Each agent provides a configuration value used to set the transaction sample rat
 * Ruby: [`transaction_sample_rate`](apm-agent-ruby://reference/configuration.md#config-transaction-sample-rate)
 
 ## Configure tail-based sampling [apm-configure-tail-based-sampling]
+
+```{applies_to}
+stack:
+serverless: unavailable
+```
 
 Enable tail-based sampling with [Enable tail-based sampling](../../../solutions/observability/apps/tail-based-sampling.md#sampling-tail-enabled-ref). When enabled, trace events are mapped to sampling policies. Each sampling policy must specify a sample rate, and can optionally specify other conditions. All of the policy conditions must be true for a trace event to match it.
 

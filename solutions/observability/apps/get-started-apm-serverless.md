@@ -11,7 +11,7 @@ applies_to:
 ::::{admonition} Required role
 :class: note
 
-The **Admin** role or higher is required to send APM data to Elastic. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md).
+**For Observability Serverless projects**, the **Admin** role or higher is required to send APM data to Elastic. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md).
 ::::
 
 In this guide you’ll learn how to collect and send Application Performance Monitoring (APM) data to Elastic, then explore and visualize the data in real time.
