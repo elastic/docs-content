@@ -13,7 +13,7 @@ applies_to:
 
 Elastic APM data is stored in [Data streams](data-streams.md).
 
-The following examples enable you to interact with {{es}}'s REST API. One possible way to do this is using {{kib}}'s [{{dev-tools-app}} console](../../../explore-analyze/query-filter/tools/console.md).
+The following examples enable you to interact with {{es}}'s REST API. One possible way to do this is using {{kib}}'s [{{dev-tools-app}} console](/explore-analyze/query-filter/tools/console.md).
 
 Data streams, templates, and index-level operations can also be manged via {{kib}}'s [Index management](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-mgmt.html) panel.
 

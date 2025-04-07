@@ -18,7 +18,7 @@ Global filters are ways you can filter your APM data based on a specific time ra
 :::
 
 ::::{note}
-If you prefer to use advanced queries on your data to filter on specific pieces of information, see [Query your data](../../../solutions/observability/apps/use-advanced-queries-on-application-data.md).
+If you prefer to use advanced queries on your data to filter on specific pieces of information, see [Query your data](/solutions/observability/apps/use-advanced-queries-on-application-data.md).
 
 ::::
 

@@ -20,7 +20,7 @@ Agents automatically instrument a variety of libraries to capture these spans fr
 
 Among other things, spans can contain:
 
-* A `transaction.id` attribute that refers to its parent [transaction](../../../solutions/observability/apps/transactions.md).
+* A `transaction.id` attribute that refers to its parent [transaction](/solutions/observability/apps/transactions.md).
 * A `parent.id` attribute that refers to its parent span or transaction.
 * Its start time and duration.
 * A `name`, `type`, `subtype`, and `action`—see the [span name/type alignment](https://docs.google.com/spreadsheets/d/1SmWeX5AeqUcayrArUauS_CxGgsjwRgMYH4ZY8yQsMhQ/edit#gid=644582948) sheet for span name patterns and examples by {{apm-agent}}. In addition, some APM agents test against a public [span type/subtype spec](https://github.com/elastic/apm/blob/main/tests/agents/json-specs/span_types.json).
@@ -57,7 +57,7 @@ Spans are stored with transactions in the following data streams:
 * Application traces: `traces-apm-<namespace>`
 * RUM and iOS agent application traces: `traces-apm.rum-<namespace>`
 
-See [Data streams](../../../solutions/observability/apps/data-streams.md) to learn more.
+See [Data streams](/solutions/observability/apps/data-streams.md) to learn more.
 
 ## Example span document [_example_span_document]
 

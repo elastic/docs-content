@@ -15,11 +15,11 @@ Monitor the status of network endpoints using the following lightweight checks:
 * **ICMP**: Check the availability of your hosts. The ICMP monitor uses ICMP (v4 and v6) Echo Requests to check the network reachability of the hosts you are pinging. This will tell you whether the host is available and connected to the network, but doesn’t tell you if a service on the host is running or not.
 * **TCP**: Monitor the services running on your hosts. The TCP monitor checks individual ports to make sure the service is accessible and running.
 
-Lightweight monitors can be configured using either the [Synthetics UI](../../../solutions/observability/apps/configure-lightweight-monitors.md#synthetics-lightweight-ui) or [{{project-monitors-cap}}](../../../solutions/observability/apps/configure-lightweight-monitors.md#synthetics-lightweight-projects).
+Lightweight monitors can be configured using either the [Synthetics UI](/solutions/observability/apps/configure-lightweight-monitors.md#synthetics-lightweight-ui) or [{{project-monitors-cap}}](/solutions/observability/apps/configure-lightweight-monitors.md#synthetics-lightweight-projects).
 
 ## Synthetics UI [synthetics-lightweight-ui]
 
-To use the UI, go to the Synthetics UI in {{kib}} or in your Observability Serverless project to create and configure monitors. For step-by-step instructions, refer to [Use the Synthetics UI](../../../solutions/observability/apps/create-monitors-in-synthetics-app.md).
+To use the UI, go to the Synthetics UI in {{kib}} or in your Observability Serverless project to create and configure monitors. For step-by-step instructions, refer to [Use the Synthetics UI](/solutions/observability/apps/create-monitors-in-synthetics-app.md).
 
 :::{image} /solutions/images/observability-synthetics-get-started-ui-lightweight.png
 :alt: Synthetics Create monitor UI
@@ -28,7 +28,7 @@ To use the UI, go to the Synthetics UI in {{kib}} or in your Observability Serve
 
 ## {{project-monitors-cap}} [synthetics-lightweight-projects]
 
-To use YAML files to create lightweight monitors in a Synthetics project, [set up the Synthetics project](../../../solutions/observability/apps/create-monitors-with-project-monitors.md) and configure monitors in YAML files in the `lightweight` directory.
+To use YAML files to create lightweight monitors in a Synthetics project, [set up the Synthetics project](/solutions/observability/apps/create-monitors-with-project-monitors.md) and configure monitors in YAML files in the `lightweight` directory.
 
 In each YAML file, define a set of `monitors` to check your remote hosts. Each `monitor` item is an entry in a YAML list and begins with a dash (`-`). You can define the type of monitor to use, the hosts to check, and other optional settings.
 
@@ -56,13 +56,13 @@ heartbeat.monitors:
 ```
 
 $$$synthetics-monitor-options$$$
-There are some common monitor configuration options that are the same for all lightweight monitor types. For a complete list, refer to [Common options](../../../solutions/observability/apps/configure-lightweight-monitors.md#synthetics-lightweight-common-options).
+There are some common monitor configuration options that are the same for all lightweight monitor types. For a complete list, refer to [Common options](/solutions/observability/apps/configure-lightweight-monitors.md#synthetics-lightweight-common-options).
 
 Each monitor type also has additional configuration options that are specific to that type. Refer to:
 
-* [HTTP options](../../../solutions/observability/apps/configure-lightweight-monitors.md#synthetics-lightweight-http)
-* [ICMP options](../../../solutions/observability/apps/configure-lightweight-monitors.md#synthetics-lightweight-icmp)
-* [TCP options](../../../solutions/observability/apps/configure-lightweight-monitors.md#synthetics-lightweight-tcp)
+* [HTTP options](/solutions/observability/apps/configure-lightweight-monitors.md#synthetics-lightweight-http)
+* [ICMP options](/solutions/observability/apps/configure-lightweight-monitors.md#synthetics-lightweight-icmp)
+* [TCP options](/solutions/observability/apps/configure-lightweight-monitors.md#synthetics-lightweight-tcp)
 
 The `tcp` and `http` monitor types both support SSL/TLS and some proxy settings.
 
@@ -84,7 +84,7 @@ $$$monitor-type$$$
 $$$monitor-id$$$
 
 **`id`**
-:   Type: [string](../../../solutions/observability/apps/configure-lightweight-monitors.md#synthetics-lightweight-data-string)
+:   Type: [string](/solutions/observability/apps/configure-lightweight-monitors.md#synthetics-lightweight-data-string)
 
     **Required**. A unique identifier for this configuration. This should not change with edits to the monitor configuration regardless of changes to any config fields.
 
@@ -108,7 +108,7 @@ $$$monitor-id$$$
 $$$monitor-name$$$
 
 **`name`**
-:   Type: [string](../../../solutions/observability/apps/configure-lightweight-monitors.md#synthetics-lightweight-data-string)
+:   Type: [string](/solutions/observability/apps/configure-lightweight-monitors.md#synthetics-lightweight-data-string)
 
     Human readable name for this monitor.
 
@@ -125,14 +125,14 @@ $$$monitor-name$$$
 $$$monitor-service_name$$$
 
 **`service.name`**
-:   Type: [string](../../../solutions/observability/apps/configure-lightweight-monitors.md#synthetics-lightweight-data-string)
+:   Type: [string](/solutions/observability/apps/configure-lightweight-monitors.md#synthetics-lightweight-data-string)
 
     APM service name for this monitor. Corresponds to the `service.name` ECS field. Set this when monitoring an app that is also using APM to enable integrations between Synthetics and APM data in Kibana or your Observability Serverless project.
 
 $$$monitor-enabled$$$
 
 **`enabled`**
-:   Type: [boolean](../../../solutions/observability/apps/configure-lightweight-monitors.md#synthetics-lightweight-data-bool)
+:   Type: [boolean](/solutions/observability/apps/configure-lightweight-monitors.md#synthetics-lightweight-data-bool)
 
     Whether the monitor is enabled.
 
@@ -147,7 +147,7 @@ $$$monitor-enabled$$$
 $$$monitor-schedule$$$
 
 **`schedule`**
-:   Type: [duration](../../../solutions/observability/apps/configure-lightweight-monitors.md#synthetics-lightweight-data-duration)
+:   Type: [duration](/solutions/observability/apps/configure-lightweight-monitors.md#synthetics-lightweight-data-duration)
 
     **Required**. The task schedule.
 
@@ -164,7 +164,7 @@ $$$monitor-schedule$$$
 $$$monitor-timeout$$$
 
 **`timeout`**
-:   Type: [duration](../../../solutions/observability/apps/configure-lightweight-monitors.md#synthetics-lightweight-data-duration)
+:   Type: [duration](/solutions/observability/apps/configure-lightweight-monitors.md#synthetics-lightweight-data-duration)
 
     The total running time for each ping test. This is the total time allowed for testing the connection and exchanging data.
 
@@ -179,7 +179,7 @@ $$$monitor-timeout$$$
 $$$monitor-tags$$$
 
 **`tags`**
-:   Type: list of [string](../../../solutions/observability/apps/configure-lightweight-monitors.md#synthetics-lightweight-data-string)s
+:   Type: list of [string](/solutions/observability/apps/configure-lightweight-monitors.md#synthetics-lightweight-data-string)s
 
     A list of tags that will be sent with the monitor event.
 
@@ -212,7 +212,7 @@ $$$monitor-mode$$$
 $$$monitor-ipv4$$$
 
 **`ipv4`**
-:   Type: [boolean](../../../solutions/observability/apps/configure-lightweight-monitors.md#synthetics-lightweight-data-bool)
+:   Type: [boolean](/solutions/observability/apps/configure-lightweight-monitors.md#synthetics-lightweight-data-bool)
 
     Whether to ping using the ipv4 protocol if hostnames are configured.
 
@@ -227,7 +227,7 @@ $$$monitor-ipv4$$$
 $$$monitor-ipv6$$$
 
 **`ipv6`**
-:   Type: [boolean](../../../solutions/observability/apps/configure-lightweight-monitors.md#synthetics-lightweight-data-bool)
+:   Type: [boolean](/solutions/observability/apps/configure-lightweight-monitors.md#synthetics-lightweight-data-bool)
 
     Whether to ping using the ipv6 protocol if hostnames are configured.
 
@@ -242,9 +242,9 @@ $$$monitor-ipv6$$$
 $$$monitor-alert$$$
 
 **`alert`**
-:   Enable or disable alerts on this monitor. Read more about alerts in [Alerting](../../../solutions/observability/apps/configure-synthetics-settings.md#synthetics-settings-alerting).
+:   Enable or disable alerts on this monitor. Read more about alerts in [Alerting](/solutions/observability/apps/configure-synthetics-settings.md#synthetics-settings-alerting).
 
-    **`status.enabled`** ([boolean](../../../solutions/observability/apps/configure-lightweight-monitors.md#synthetics-lightweight-data-bool))
+    **`status.enabled`** ([boolean](/solutions/observability/apps/configure-lightweight-monitors.md#synthetics-lightweight-data-bool))
     :   Enable monitor status alerts on this monitor.
 
         **Default**: `true`
@@ -255,7 +255,7 @@ $$$monitor-alert$$$
         alert.status.enabled: true
         ```
 
-    **`tls.enabled`** ([boolean](../../../solutions/observability/apps/configure-lightweight-monitors.md#synthetics-lightweight-data-bool))
+    **`tls.enabled`** ([boolean](/solutions/observability/apps/configure-lightweight-monitors.md#synthetics-lightweight-data-bool))
     :   Enable TLS certificate alerts on this monitor.
 
         **Default**: `true`
@@ -269,7 +269,7 @@ $$$monitor-alert$$$
 $$$monitor-retest_on_failure$$$
 
 **`retest_on_failure`**
-:   Type: [boolean](../../../solutions/observability/apps/configure-lightweight-monitors.md#synthetics-lightweight-data-bool)
+:   Type: [boolean](/solutions/observability/apps/configure-lightweight-monitors.md#synthetics-lightweight-data-bool)
 
     Enable or disable retesting when a monitor fails. Default is `true`.
 
@@ -290,7 +290,7 @@ $$$monitor-locations$$$
 
     To list available locations you can:
 
-    * Run the [`elastic-synthetics locations` command](../../../solutions/observability/apps/use-synthetics-cli.md#elastic-synthetics-locations-command).
+    * Run the [`elastic-synthetics locations` command](/solutions/observability/apps/use-synthetics-cli.md#elastic-synthetics-locations-command).
     * Find `Synthetics` in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) and click **Create monitor**. Locations will be listed in *Locations*.
 
     **Examples**:
@@ -306,7 +306,7 @@ $$$monitor-locations$$$
     ```
 
     ::::{note}
-    This can also be set using [`monitor.locations` in the Synthetics project configuration file](../../../solutions/observability/apps/configure-synthetics-projects.md#synthetics-configuration-monitor) or via the CLI using the [`--location` flag on `push`](../../../solutions/observability/apps/use-synthetics-cli.md#elastic-synthetics-push-command).
+    This can also be set using [`monitor.locations` in the Synthetics project configuration file](/solutions/observability/apps/configure-synthetics-projects.md#synthetics-configuration-monitor) or via the CLI using the [`--location` flag on `push`](/solutions/observability/apps/use-synthetics-cli.md#elastic-synthetics-push-command).
 
     The value defined via the CLI takes precedence over the value defined in the lightweight monitor configuration, and the value defined in the lightweight monitor configuration takes precedence over the value defined in the Synthetics project configuration file.
 
@@ -315,13 +315,13 @@ $$$monitor-locations$$$
 $$$monitor-private_locations$$$
 
 **`private_locations`**
-:   Type: list of [string](../../../solutions/observability/apps/configure-lightweight-monitors.md#synthetics-lightweight-data-string)s
+:   Type: list of [string](/solutions/observability/apps/configure-lightweight-monitors.md#synthetics-lightweight-data-string)s
 
-    The [{{private-location}}s](../../../solutions/observability/apps/monitor-resources-on-private-networks.md) to which the monitors will be deployed. These {{private-location}}s refer to locations hosted and managed by you, whereas  `locations` are hosted by Elastic. You can specify a {{private-location}} using the location’s name.
+    The [{{private-location}}s](/solutions/observability/apps/monitor-resources-on-private-networks.md) to which the monitors will be deployed. These {{private-location}}s refer to locations hosted and managed by you, whereas  `locations` are hosted by Elastic. You can specify a {{private-location}} using the location’s name.
 
     To list available {{private-location}}s you can:
 
-    * Run the [`elastic-synthetics locations` command](../../../solutions/observability/apps/use-synthetics-cli.md#elastic-synthetics-locations-command) and specify the {{kib}} URL of the deployment. This will fetch all available private locations associated with the deployment.
+    * Run the [`elastic-synthetics locations` command](/solutions/observability/apps/use-synthetics-cli.md#elastic-synthetics-locations-command) and specify the {{kib}} URL of the deployment. This will fetch all available private locations associated with the deployment.
     * Find `Synthetics` in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) and click **Create monitor**. {{private-location}}s will be listed in *Locations*.
 
     **Examples**:
@@ -337,7 +337,7 @@ $$$monitor-private_locations$$$
     ```
 
     ::::{note}
-    This can also be set using [`monitor.privateLocations` in the Synthetics project configuration file](../../../solutions/observability/apps/configure-synthetics-projects.md#synthetics-configuration-monitor) or via the CLI using the [`--privateLocations` flag on `push`](../../../solutions/observability/apps/use-synthetics-cli.md#elastic-synthetics-push-command).
+    This can also be set using [`monitor.privateLocations` in the Synthetics project configuration file](/solutions/observability/apps/configure-synthetics-projects.md#synthetics-configuration-monitor) or via the CLI using the [`--privateLocations` flag on `push`](/solutions/observability/apps/use-synthetics-cli.md#elastic-synthetics-push-command).
 
     The value defined via the CLI takes precedence over the value defined in the lightweight monitor configuration, and the value defined in the lightweight monitor configuration takes precedence over the value defined in Synthetics project configuration file.
 
@@ -346,7 +346,7 @@ $$$monitor-private_locations$$$
 $$$monitor-fields$$$
 
 **`fields`**
-:   A list of key-value pairs that will be sent with each monitor event. The `fields` are appended to {{es}} documents as `labels`, and those labels are displayed in {{kib}} in the *Monitor details* panel in the [individual monitor’s *Overview* tab](../../../solutions/observability/apps/analyze-data-from-synthetic-monitors.md#synthetics-analyze-individual-monitors-overview).
+:   A list of key-value pairs that will be sent with each monitor event. The `fields` are appended to {{es}} documents as `labels`, and those labels are displayed in {{kib}} in the *Monitor details* panel in the [individual monitor’s *Overview* tab](/solutions/observability/apps/analyze-data-from-synthetic-monitors.md#synthetics-analyze-individual-monitors-overview).
 
     **Examples**:
 
@@ -365,19 +365,19 @@ $$$monitor-fields$$$
 
 The options described here configure Synthetics to connect via HTTP and optionally verify that the host returns the expected response.
 
-Valid options for HTTP monitors include [all common options](../../../solutions/observability/apps/configure-lightweight-monitors.md#synthetics-lightweight-common-options) and the following HTTP-specific options:
+Valid options for HTTP monitors include [all common options](/solutions/observability/apps/configure-lightweight-monitors.md#synthetics-lightweight-common-options) and the following HTTP-specific options:
 
 $$$monitor-http-urls$$$
 
 **`urls`**
-:   Type: [string](../../../solutions/observability/apps/configure-lightweight-monitors.md#synthetics-lightweight-data-string)
+:   Type: [string](/solutions/observability/apps/configure-lightweight-monitors.md#synthetics-lightweight-data-string)
 
     **Required**. The URL to ping.
 
 $$$monitor-http-max_redirects$$$
 
 **`max_redirects`**
-:   Type: [number](../../../solutions/observability/apps/configure-lightweight-monitors.md#synthetics-lightweight-data-numbers)
+:   Type: [number](/solutions/observability/apps/configure-lightweight-monitors.md#synthetics-lightweight-data-numbers)
 
     The total number of redirections Synthetics will follow.
 
@@ -395,7 +395,7 @@ $$$monitor-http-proxy_headers$$$
 $$$monitor-http-proxy_url$$$
 
 **`proxy_url`**
-:   ([string](../../../solutions/observability/apps/configure-lightweight-monitors.md#synthetics-lightweight-data-string)) The HTTP proxy URL. This setting is optional.
+:   ([string](/solutions/observability/apps/configure-lightweight-monitors.md#synthetics-lightweight-data-string)) The HTTP proxy URL. This setting is optional.
 
     **Example**:
 
@@ -406,7 +406,7 @@ $$$monitor-http-proxy_url$$$
 $$$monitor-http-username$$$
 
 **`username`**
-:   Type: [string](../../../solutions/observability/apps/configure-lightweight-monitors.md#synthetics-lightweight-data-string)
+:   Type: [string](/solutions/observability/apps/configure-lightweight-monitors.md#synthetics-lightweight-data-string)
 
     The username for authenticating with the server. The credentials are passed with the request. This setting is optional.
 
@@ -415,7 +415,7 @@ $$$monitor-http-username$$$
 $$$monitor-http-password$$$
 
 **`password`**
-:   Type: [string](../../../solutions/observability/apps/configure-lightweight-monitors.md#synthetics-lightweight-data-string)
+:   Type: [string](/solutions/observability/apps/configure-lightweight-monitors.md#synthetics-lightweight-data-string)
 
     The password for authenticating with the server. This setting is optional.
 
@@ -442,7 +442,7 @@ $$$monitor-http-ssl$$$
 $$$monitor-http-headers$$$
 
 **`headers`**
-:   Type: [boolean](../../../solutions/observability/apps/configure-lightweight-monitors.md#synthetics-lightweight-data-bool)
+:   Type: [boolean](/solutions/observability/apps/configure-lightweight-monitors.md#synthetics-lightweight-data-bool)
 
     Controls the indexing of the HTTP response headers `http.response.body.headers` field. Set `response.include_headers` to `false` to disable.
 
@@ -460,7 +460,7 @@ $$$monitor-http-response$$$
         * `never`: Never include the body.
         * `always`: Always include the body with checks.
 
-    **`include_body_max_bytes`** ([number](../../../solutions/observability/apps/configure-lightweight-monitors.md#synthetics-lightweight-data-numbers))
+    **`include_body_max_bytes`** ([number](/solutions/observability/apps/configure-lightweight-monitors.md#synthetics-lightweight-data-numbers))
     :   Set `response.include_body_max_bytes` to control the maximum size of the stored body contents.
 
         **Default**: `1024`
@@ -482,7 +482,7 @@ $$$monitor-http-check$$$
         A dictionary of additional HTTP headers to send. By default Synthetics will set the *User-Agent* header to identify itself.
 
     **`body`**
-    :   Type: [string](../../../solutions/observability/apps/configure-lightweight-monitors.md#synthetics-lightweight-data-string)
+    :   Type: [string](/solutions/observability/apps/configure-lightweight-monitors.md#synthetics-lightweight-data-string)
 
         Optional request body content.
 
@@ -503,7 +503,7 @@ check.request:
     Under `check.response`, specify these options:
 
     **`status`**
-    :   Type: list of [string](../../../solutions/observability/apps/configure-lightweight-monitors.md#synthetics-lightweight-data-string)s
+    :   Type: list of [string](/solutions/observability/apps/configure-lightweight-monitors.md#synthetics-lightweight-data-string)s
 
         A list of expected status codes. 4xx and 5xx codes are considered `down` by default. Other codes are considered `up`.
 
@@ -520,7 +520,7 @@ check.request:
         The required response headers.
 
     **`body.positive`**
-    :   Type: list of [string](../../../solutions/observability/apps/configure-lightweight-monitors.md#synthetics-lightweight-data-string)s
+    :   Type: list of [string](/solutions/observability/apps/configure-lightweight-monitors.md#synthetics-lightweight-data-string)s
 
         A list of regular expressions to match the body output. Only a single expression needs to match.
 
@@ -537,7 +537,7 @@ check.request:
               - Foo
         ```
 
-    **`body.negative`** (list of [string](../../../solutions/observability/apps/configure-lightweight-monitors.md#synthetics-lightweight-data-string)s)
+    **`body.negative`** (list of [string](/solutions/observability/apps/configure-lightweight-monitors.md#synthetics-lightweight-data-string)s)
     :   A list of regular expressions to match the body output negatively. Return match failed if single expression matches. HTTP response bodies of up to 100MiB are supported.
 
         This monitor examines match successfully if there is no *bar* or *Bar* at all, examines match failed if there is *bar* or *Bar* in the response body:
@@ -596,12 +596,12 @@ On Linux, regular users may perform pings if the right file capabilities are set
 
 Other platforms may require Synthetics to run as root or administrator to execute pings.
 
-Valid options for ICMP monitors include [all common options](../../../solutions/observability/apps/configure-lightweight-monitors.md#synthetics-lightweight-common-options) and the following ICMP-specific options:
+Valid options for ICMP monitors include [all common options](/solutions/observability/apps/configure-lightweight-monitors.md#synthetics-lightweight-common-options) and the following ICMP-specific options:
 
 $$$monitor-icmp-hosts$$$
 
 **`hosts`**
-:   Type: [string](../../../solutions/observability/apps/configure-lightweight-monitors.md#synthetics-lightweight-data-string)
+:   Type: [string](/solutions/observability/apps/configure-lightweight-monitors.md#synthetics-lightweight-data-string)
 
     **Required**. The host to ping.
 
@@ -614,7 +614,7 @@ $$$monitor-icmp-hosts$$$
 $$$monitor-icmp-wait$$$
 
 **`wait`**
-:   Type: [duration](../../../solutions/observability/apps/configure-lightweight-monitors.md#synthetics-lightweight-data-duration)
+:   Type: [duration](/solutions/observability/apps/configure-lightweight-monitors.md#synthetics-lightweight-data-duration)
 
     The duration to wait before emitting another ICMP Echo Request if no response is received.
 
@@ -630,12 +630,12 @@ $$$monitor-icmp-wait$$$
 
 The options described here configure Synthetics to connect via TCP and optionally verify the endpoint by sending and/or receiving a custom payload.
 
-Valid options for TCP monitors include [all common options](../../../solutions/observability/apps/configure-lightweight-monitors.md#synthetics-lightweight-common-options) and the following TCP-specific options:
+Valid options for TCP monitors include [all common options](/solutions/observability/apps/configure-lightweight-monitors.md#synthetics-lightweight-common-options) and the following TCP-specific options:
 
 $$$monitor-tcp-hosts$$$
 
 **`hosts`**
-:   Type: [string](../../../solutions/observability/apps/configure-lightweight-monitors.md#synthetics-lightweight-data-string)
+:   Type: [string](/solutions/observability/apps/configure-lightweight-monitors.md#synthetics-lightweight-data-string)
 
     **Required**. The host to ping. The value can be:
 
@@ -694,7 +694,7 @@ $$$monitor-tcp-proxy_url$$$
 $$$monitor-tcp-proxy_use_local_resolver$$$
 
 **`proxy_use_local_resolver`**
-:   Type: [boolean](../../../solutions/observability/apps/configure-lightweight-monitors.md#synthetics-lightweight-data-bool)
+:   Type: [boolean](/solutions/observability/apps/configure-lightweight-monitors.md#synthetics-lightweight-data-bool)
 
     A Boolean value that determines whether hostnames are resolved locally instead of being resolved on the proxy server. The default value is `false`, which means that name resolution occurs on the proxy server.
 

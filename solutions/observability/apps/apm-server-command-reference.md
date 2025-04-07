@@ -24,7 +24,7 @@ Use `sudo` to run the following commands if:
 
 ::::
 
-Some of the features described here require an Elastic license. For more information, see [https://www.elastic.co/subscriptions](https://www.elastic.co/subscriptions) and [License Management](../../../deploy-manage/license/manage-your-license-in-self-managed-cluster.md).
+Some of the features described here require an Elastic license. For more information, see [https://www.elastic.co/subscriptions](https://www.elastic.co/subscriptions) and [License Management](/deploy-manage/license/manage-your-license-in-self-managed-cluster.md).
 
 | Commands |  |
 | --- | --- |

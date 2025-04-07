@@ -12,7 +12,7 @@ applies_to:
 
 ::::{note}
 
-The **Editor** role or higher is required to modify settings. To learn more, refer to [Assign user roles and privileges](../../../deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
+The **Editor** role or higher is required to modify settings. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
 
 ::::
 
@@ -62,7 +62,7 @@ To change APM settings, select **Settings** from any **Applications** page. The 
 
 The Applications UI uses data views to query APM indices. In non-serverless versions, change the default APM indices that the Applications UI queries by opening the Applications UI and select **Settings** → **Indices**. Index settings in the Applications UI take precedence over those set in `kibana.yml`.
 
-APM indices are {{kib}} Spaces-aware; Changes to APM index settings will only apply to the currently enabled space. See [Control access to APM data](../../../solutions/observability/apps/control-access-to-apm-data.md) for more information.
+APM indices are {{kib}} Spaces-aware; Changes to APM index settings will only apply to the currently enabled space. See [Control access to APM data](/solutions/observability/apps/control-access-to-apm-data.md) for more information.
 
 ## APM Labs [observability-apm-kibana-settings-apm-labs]
 

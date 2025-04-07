@@ -7,7 +7,7 @@ applies_to:
 
 # Control access to APM data [apm-spaces]
 
-Starting in version 8.2.0, the Applications UI is [Kibana space](../../../deploy-manage/manage-spaces.md) aware. This allows you to separate your data—​and access to that data—​by team, use case, service environment, or any other filter that you choose.
+Starting in version 8.2.0, the Applications UI is [Kibana space](/deploy-manage/manage-spaces.md) aware. This allows you to separate your data—​and access to that data—​by team, use case, service environment, or any other filter that you choose.
 
 To take advantage of this feature, your APM data needs to be written to different data streams. One way to accomplish this is with different namespaces. For example, you can send production data to an APM integration with a namespace of `production`, while sending staging data to a different APM integration with a namespace of `staging`.
 
@@ -222,7 +222,7 @@ POST /_aliases?pretty
 
 Next, you’ll need to create a {{kib}} space for each service environment. To open **Spaces**, find **Stack Management** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). To create a new space, click **Create a space**. For this guide, we’ve created two Kibana spaces, one named `production` and one named `staging`.
 
-See [Kibana spaces](../../../deploy-manage/manage-spaces.md) for more information on creating a space.
+See [Kibana spaces](/deploy-manage/manage-spaces.md) for more information on creating a space.
 
 ### Step 3: Update APM index settings in each space [_step_3_update_apm_index_settings_in_each_space]
 
@@ -327,7 +327,7 @@ POST /_security/role/staging_apm_viewer
 
 The last thing to do is assign users to the newly created roles above. Users will only have access to the data within the spaces that they are granted.
 
-For information on how to create users and assign them roles with the {{kib}} UI, see [Securing access to Kibana](../../../deploy-manage/users-roles/cluster-or-deployment-auth/quickstart.md).
+For information on how to create users and assign them roles with the {{kib}} UI, see [Securing access to Kibana](/deploy-manage/users-roles/cluster-or-deployment-auth/quickstart.md).
 
 Alternatively, you can use the {{es}} [Create or update users API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-user).
 

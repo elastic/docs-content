@@ -21,10 +21,10 @@ For a complete overview of using OpenTelemetry with Elastic, explore [**Elastic 
 
 Elastic integrates with OpenTelemetry, allowing you to reuse your existing instrumentation to easily send observability data to the {{stack}}. There are several ways to integrate OpenTelemetry with the {{stack}}:
 
-* [Elastic Distributions of OpenTelemetry language SDKs](../../../solutions/observability/apps/use-opentelemetry-with-apm.md#apm-otel-elastic-distros)
-* [Upstream OpenTelemetry API/SDK + Elastic APM agent](../../../solutions/observability/apps/use-opentelemetry-with-apm.md#apm-otel-api-sdk-elastic-agent)
-* [Upstream OpenTelemetry Collector and language SDKs](../../../solutions/observability/apps/use-opentelemetry-with-apm.md#apm-otel-upstream)
-* [AWS Lambda collector exporter](../../../solutions/observability/apps/use-opentelemetry-with-apm.md#apm-otel-lambda)
+* [Elastic Distributions of OpenTelemetry language SDKs](/solutions/observability/apps/use-opentelemetry-with-apm.md#apm-otel-elastic-distros)
+* [Upstream OpenTelemetry API/SDK + Elastic APM agent](/solutions/observability/apps/use-opentelemetry-with-apm.md#apm-otel-api-sdk-elastic-agent)
+* [Upstream OpenTelemetry Collector and language SDKs](/solutions/observability/apps/use-opentelemetry-with-apm.md#apm-otel-upstream)
+* [AWS Lambda collector exporter](/solutions/observability/apps/use-opentelemetry-with-apm.md#apm-otel-lambda)
 
 ## Elastic Distributions of OpenTelemetry language SDKs [apm-otel-elastic-distros]
 
@@ -59,7 +59,7 @@ For more details about OpenTelemetry distributions in general, visit the [OpenTe
 
 ## Upstream OpenTelemetry API/SDK + Elastic APM agent [apm-otel-api-sdk-elastic-agent]
 
-Use the OpenTelemetry API/SDKs with [Elastic APM agents](../../../solutions/observability/apps/fleet-managed-apm-server.md#_step_3_install_apm_agents) to translate OpenTelemetry API calls to Elastic APM API calls.
+Use the OpenTelemetry API/SDKs with [Elastic APM agents](/solutions/observability/apps/fleet-managed-apm-server.md#_step_3_install_apm_agents) to translate OpenTelemetry API calls to Elastic APM API calls.
 
 :::{image} /solutions/images/observability-apm-otel-api-sdk-elastic-agent.png
 :alt: apm otel api sdk elastic agent
@@ -101,9 +101,9 @@ However, there are some limitations when using collectors and language SDKs buil
 * You won’t have access to Elastic enterprise APM features.
 * You may experience problems with performance efficiency.
 
-For more on the limitations associated with using upstream OpenTelemetry tools, refer to [Limitations](../../../solutions/observability/apps/limitations.md).
+For more on the limitations associated with using upstream OpenTelemetry tools, refer to [Limitations](/solutions/observability/apps/limitations.md).
 
-[**Get started with upstream OpenTelemetry Collectors and language SDKs →**](../../../solutions/observability/apps/upstream-opentelemetry-collectors-language-sdks.md)
+[**Get started with upstream OpenTelemetry Collectors and language SDKs →**](/solutions/observability/apps/upstream-opentelemetry-collectors-language-sdks.md)
 
 ## AWS Lambda collector exporter [apm-otel-lambda]
 

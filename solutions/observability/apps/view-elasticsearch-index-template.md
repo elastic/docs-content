@@ -30,7 +30,7 @@ Add any custom metadata, index settings, or mappings.
 In the **Index settings** step, you can specify custom [index settings](elasticsearch://reference/elasticsearch/index-settings/index.md). For example, you could:
 
 * Customize the index lifecycle policy applied to a data stream. See [custom index lifecycle policies](index-lifecycle-management.md#apm-data-streams-custom-policy) for a walk-through.
-* Change the number of [shards](../../../deploy-manage/index.md) per index. Specify the number of primary shards:
+* Change the number of [shards](/deploy-manage/index.md) per index. Specify the number of primary shards:
 
     ```json
     {
@@ -40,7 +40,7 @@ In the **Index settings** step, you can specify custom [index settings](elastics
     }
     ```
 
-* Change the number of [replicas](../../../deploy-manage/distributed-architecture/reading-and-writing-documents.md) per index. Specify the number of replica shards:
+* Change the number of [replicas](/deploy-manage/distributed-architecture/reading-and-writing-documents.md) per index. Specify the number of replica shards:
 
     ```json
     {
@@ -52,7 +52,7 @@ In the **Index settings** step, you can specify custom [index settings](elastics
 
 ### Mappings [apm-custom-index-template-mappings]
 
-[Mapping](../../../manage-data/data-store/mapping.md) is the process of defining how a document, and the fields it contains, are stored and indexed. In the **Mappings** step, you can add custom field mappings. For example, you could:
+[Mapping](/manage-data/data-store/mapping.md) is the process of defining how a document, and the fields it contains, are stored and indexed. In the **Mappings** step, you can add custom field mappings. For example, you could:
 
 * Add custom field mappings that you can index on and search. In the **Mapped fields** tab, add a new field including the [field type](elasticsearch://reference/elasticsearch/mapping-reference/field-data-types.md):
 
@@ -60,7 +60,7 @@ In the **Index settings** step, you can specify custom [index settings](elastics
     :alt: Editing a component template to add a new mapped field
     :::
 
-* Add a [runtime field](../../../manage-data/data-store/mapping/runtime-fields.md) that is evaluated at query time. In the **Runtime fields** tab, click **Create runtime field** and provide a field name, type, and optionally a script:
+* Add a [runtime field](/manage-data/data-store/mapping/runtime-fields.md) that is evaluated at query time. In the **Runtime fields** tab, click **Create runtime field** and provide a field name, type, and optionally a script:
 
     :::{image} /solutions/images/observability-custom-index-template-runtime-fields.png
     :alt: Editing a component template to add a new runtime field

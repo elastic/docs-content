@@ -18,7 +18,7 @@ You’ll need:
 * **{{es}}** for storing and indexing data.
 * **{{kib}}** for visualizing with the Applications UI.
 
-We recommend you use the same version of {{es}}, {{kib}}, and APM Server. See [Installing the {{stack}}](../../../get-started/the-stack.md) for more information about installing these products.
+We recommend you use the same version of {{es}}, {{kib}}, and APM Server. See [Installing the {{stack}}](/get-started/the-stack.md) for more information about installing these products.
 
 :::{image} /solutions/images/observability-apm-architecture-diy.png
 :alt: Install Elastic APM yourself
@@ -27,7 +27,7 @@ We recommend you use the same version of {{es}}, {{kib}}, and APM Server. See [I
 ## Step 1: Install [apm-installing]
 
 ::::{note}
-**Before you begin**: If you haven’t installed the {{stack}}, do that now. See [Learn how to install the {{stack}} on your own hardware](../../../get-started/the-stack.md).
+**Before you begin**: If you haven’t installed the {{stack}}, do that now. See [Learn how to install the {{stack}} on your own hardware](/get-started/the-stack.md).
 ::::
 
 To download and install APM Server, use the commands below that work with your system. If you use `apt` or `yum`, you can [install APM Server from our repositories](#apm-setup-repositories) to update to the newest version more easily.
@@ -774,7 +774,7 @@ Docker images for APM Server are available from the Elastic Docker registry. The
 
 A list of all published Docker images and tags is available at [www.docker.elastic.co](https://www.docker.elastic.co).
 
-These images are free to use under the Elastic license. They contain open source and free commercial features and access to paid commercial features. [Start a 30-day trial](../../../deploy-manage/license/manage-your-license-in-self-managed-cluster.md) to try out all of the paid commercial features. See the [Subscriptions](https://www.elastic.co/subscriptions) page for information about Elastic license levels.
+These images are free to use under the Elastic license. They contain open source and free commercial features and access to paid commercial features. [Start a 30-day trial](/deploy-manage/license/manage-your-license-in-self-managed-cluster.md) to try out all of the paid commercial features. See the [Subscriptions](https://www.elastic.co/subscriptions) page for information about Elastic license levels.
 
 ### Pull the image [_pull_the_image]
 

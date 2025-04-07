@@ -91,7 +91,7 @@ Previous {{kib}} versions included the metric [First input delay (FID)](https://
 | **RUM agent version ≥ 5.16.0** | INP data will be visible. | FID data will be visible. |
 | **RUM agent version < 5.16.0** | The INP section will be empty. | FID data will be visible. |
 
-RUM agent version ≥ 5.16.0 will continue to collect FID metrics so, while FID metrics are not shown in the User Experience app in {{kib}} versions 8.12 and later, you can choose to visualize FID metrics in a [custom dashboard](../../../explore-analyze/dashboards/create-dashboard-of-panels-with-web-server-data.md) or using [Lens](../../../explore-analyze/visualize/lens.md).
+RUM agent version ≥ 5.16.0 will continue to collect FID metrics so, while FID metrics are not shown in the User Experience app in {{kib}} versions 8.12 and later, you can choose to visualize FID metrics in a [custom dashboard](/explore-analyze/dashboards/create-dashboard-of-panels-with-web-server-data.md) or using [Lens](/explore-analyze/visualize/lens.md).
 
 ::::
 

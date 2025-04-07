@@ -12,7 +12,7 @@ applies_to:
 
 ::::{note}
 
-**For serverless Observability projects**, the **Editor** role or higher is required to create and manage custom links. To learn more, refer to [Assign user roles and privileges](../../../deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
+**For serverless Observability projects**, the **Editor** role or higher is required to create and manage custom links. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
 
 ::::
 

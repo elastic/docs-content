@@ -27,7 +27,7 @@ This upgrade guide is for the standalone method of running APM Server. Only use 
 
 1. **Upgrade the {{stack}} to version 9.0**
 
-    The {{stack}} ({{es}} and {{kib}}) must be upgraded before APM Server. Refer to the [{{stack}} Installation and Upgrade Guide](../../../deploy-manage/upgrade/deployment-or-cluster.md) for guidance.
+    The {{stack}} ({{es}} and {{kib}}) must be upgraded before APM Server. Refer to the [{{stack}} Installation and Upgrade Guide](/deploy-manage/upgrade/deployment-or-cluster.md) for guidance.
 
 2. **Install the 9.0 APM Server release**
 

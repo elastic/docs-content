@@ -44,7 +44,7 @@ The **Latency**, **Throughput**, **Failed transaction rate**, **Time spent by sp
     It’s important to note that if you have asynchronous spans, the sum of all span times may exceed the duration of the transaction.
 
 **Cold start rate**
-   Only applicable to serverless transactions, this chart displays the percentage of requests that trigger a cold start of a serverless function. See [Cold starts](../../../solutions/observability/apps/observe-lambda-functions.md#apm-lambda-cold-start-info) for more information.
+   Only applicable to serverless transactions, this chart displays the percentage of requests that trigger a cold start of a serverless function. See [Cold starts](/solutions/observability/apps/observe-lambda-functions.md#apm-lambda-cold-start-info) for more information.
 
 ## Transactions table [transactions-table]
 
@@ -55,7 +55,7 @@ The **Transactions** table displays a list of *transaction groups* for the selec
 :screenshot:
 :::
 
-By default, transaction groups are sorted by *Impact*. Impact helps show the most used and slowest endpoints in your service - in other words, it’s the collective amount of pain a specific endpoint is causing your users. If there’s a particular endpoint you’re worried about, you can click on it to view the [transaction details](../../../solutions/observability/apps/transactions-2.md#transaction-details).
+By default, transaction groups are sorted by *Impact*. Impact helps show the most used and slowest endpoints in your service - in other words, it’s the collective amount of pain a specific endpoint is causing your users. If there’s a particular endpoint you’re worried about, you can click on it to view the [transaction details](/solutions/observability/apps/transactions-2.md#transaction-details).
 
 ::::{important}
 If you only see one route in the Transactions table, or if you have transactions named "unknown route", it could be a symptom that the APM agent either wasn’t installed correctly or doesn’t support your framework.
@@ -113,7 +113,7 @@ Each sample has a trace timeline waterfall that shows how a typical request in t
 :::
 
 ::::{note}
-More information on timeline waterfalls is available in [spans](../../../solutions/observability/apps/trace-sample-timeline.md).
+More information on timeline waterfalls is available in [spans](/solutions/observability/apps/trace-sample-timeline.md).
 
 ::::
 
@@ -145,7 +145,7 @@ Logs provide detailed information about specific events, and are crucial to succ
 
 If you’ve correlated your application’s logs and traces, you never have to search for relevant data; it’s already available to you. Viewing log and trace data together allows you to quickly diagnose and solve problems.
 
-To learn how to correlate your logs with your instrumented services, see [Stream application logs](../../../solutions/observability/logs/stream-application-logs.md)
+To learn how to correlate your logs with your instrumented services, see [Stream application logs](/solutions/observability/logs/stream-application-logs.md)
 
 :::{image} /solutions/images/observability-apm-logs-tab.png
 :alt: APM logs tab
@@ -154,7 +154,7 @@ To learn how to correlate your logs with your instrumented services, see [Stream
 
 ### Correlations [transaction-latency-correlations]
 
-Correlations surface attributes of your data that are potentially correlated with high-latency or erroneous transactions. To learn more, see [Find transaction latency and failure correlations](../../../solutions/observability/apps/find-transaction-latency-failure-correlations.md).
+Correlations surface attributes of your data that are potentially correlated with high-latency or erroneous transactions. To learn more, see [Find transaction latency and failure correlations](/solutions/observability/apps/find-transaction-latency-failure-correlations.md).
 
 :::{image} /solutions/images/observability-correlations-hover.png
 :alt: APM lattency correlations

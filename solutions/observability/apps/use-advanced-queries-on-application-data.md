@@ -24,13 +24,13 @@ When you type, you can begin to see some of the transaction fields available for
 :::
 
 ::::{tip}
-To learn more about the {{kib}} query language capabilities, see the [Kibana Query Language Enhancements](../../../explore-analyze/query-filter/languages/kql.md) documentation.
+To learn more about the {{kib}} query language capabilities, see the [Kibana Query Language Enhancements](/explore-analyze/query-filter/languages/kql.md) documentation.
 
 ::::
 
 ### APM queries [apm-app-queries]
 
-APM queries can be handy for removing noise from your data in the [Services](../../../solutions/observability/apps/services.md), [Transactions](../../../solutions/observability/apps/transactions-2.md), [Errors](../../../solutions/observability/apps/errors-2.md), [Metrics](../../../solutions/observability/apps/metrics-2.md), and [Traces](../../../solutions/observability/apps/traces-2.md) views.
+APM queries can be handy for removing noise from your data in the [Services](/solutions/observability/apps/services.md), [Transactions](/solutions/observability/apps/transactions-2.md), [Errors](/solutions/observability/apps/errors-2.md), [Metrics](/solutions/observability/apps/metrics-2.md), and [Traces](/solutions/observability/apps/traces-2.md) views.
 
 For example, in the **Services** view, you can quickly view a list of all the instrumented services running on your production environment: `service.environment : production`. Or filter the list by including the APM agent’s name and the host it’s running on: `service.environment : "production" and agent.name : "java" and host.name : "prod-server1"`.
 
@@ -40,7 +40,7 @@ On the **Transactions** view, you may want to list only the slower transactions 
 
 ## Querying in Discover [discover-advanced-queries]
 
-Alternatively, you can query your APM documents in [**Discover**](../../../explore-analyze/discover.md). Querying documents in **Discover** works the same way as queries in the Applications UI, and **Discover** supports all of the example APM queries shown on this page.
+Alternatively, you can query your APM documents in [**Discover**](/explore-analyze/discover.md). Querying documents in **Discover** works the same way as queries in the Applications UI, and **Discover** supports all of the example APM queries shown on this page.
 
 ### Discover queries [discover-queries]
 

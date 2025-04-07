@@ -17,6 +17,6 @@ Follow these steps to upgrade:
 
 1. Review the [Elastic APM release notes](apm-server://release-notes/index.md) and [Elastic {{observability}} release notes](/release-notes/elastic-observability/index.md).
 2. Review the [Elastic APM breaking changes](apm-server://release-notes/breaking-changes.md).
-3. Upgrade {{ecloud}} to 9.0, refer to [Upgrade your deployment](../../../deploy-manage/upgrade/deployment-or-cluster.md) for instructions.
+3. Upgrade {{ecloud}} to 9.0, refer to [Upgrade your deployment](/deploy-manage/upgrade/deployment-or-cluster.md) for instructions.
 4. (Optional) Upgrade to the APM integration. Got time for one more upgrade? Refer to [Switch to the Elastic APM integration](switch-to-elastic-apm-integration.md).
 

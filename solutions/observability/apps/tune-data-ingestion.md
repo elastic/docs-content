@@ -46,7 +46,7 @@ Increasing the default value for the following configuration variable will help 
 
 The {{es}} Reference provides insight on tuning {{es}}.
 
-[Tune for indexing speed](../../../deploy-manage/production-guidance/optimize-performance/indexing-speed.md) provides information on:
+[Tune for indexing speed](/deploy-manage/production-guidance/optimize-performance/indexing-speed.md) provides information on:
 
 * Refresh interval
 * Disabling swapping
@@ -54,7 +54,7 @@ The {{es}} Reference provides insight on tuning {{es}}.
 * Considerations regarding faster hardware
 * Setting the indexing buffer size
 
-[Tune for disk usage](../../../deploy-manage/production-guidance/optimize-performance/disk-usage.md) provides information on:
+[Tune for disk usage](/deploy-manage/production-guidance/optimize-performance/disk-usage.md) provides information on:
 
 * Disabling unneeded features
 * Shard size

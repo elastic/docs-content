@@ -9,7 +9,7 @@ applies_to:
 
 # Traces [apm-data-model-traces]
 
-A trace is a group of [transactions](../../../solutions/observability/apps/transactions.md) and [spans](../../../solutions/observability/apps/spans.md) with a common root. Each trace tracks the entirety of a single request. It describes the individual operations and their causality that ensue from a single logical operation.
+A trace is a group of [transactions](/solutions/observability/apps/transactions.md) and [spans](/solutions/observability/apps/spans.md) with a common root. Each trace tracks the entirety of a single request. It describes the individual operations and their causality that ensue from a single logical operation.
 
 ## Distributed tracing [apm-distributed-tracing]
 

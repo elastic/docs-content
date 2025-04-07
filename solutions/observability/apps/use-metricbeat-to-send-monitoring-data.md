@@ -102,7 +102,7 @@ To collect and ship monitoring data:
 
     If the Elastic {{security-features}} are enabled, you must also provide a user ID and password so that {{metricbeat}} can collect metrics successfully:
 
-    1. Create a user on the {{es}} cluster that has the `remote_monitoring_collector` [built-in role](../../../deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md). Alternatively, if it’s available in your environment, use the `remote_monitoring_user` [built-in user](../../../deploy-manage/users-roles/cluster-or-deployment-auth/built-in-users.md).
+    1. Create a user on the {{es}} cluster that has the `remote_monitoring_collector` [built-in role](/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md). Alternatively, if it’s available in your environment, use the `remote_monitoring_user` [built-in user](/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-users.md).
     2. Add the `username` and `password` settings to the beat module configuration file.
 
 4. Optional: Disable the system module in the {{metricbeat}}.
@@ -144,7 +144,7 @@ To collect and ship monitoring data:
 
     If the {{es}} {{security-features}} are enabled on the monitoring cluster, you must provide a valid user ID and password so that {{metricbeat}} can send metrics successfully:
 
-    1. Create a user on the monitoring cluster that has the `remote_monitoring_agent` [built-in role](../../../deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md). Alternatively, if it’s available in your environment, use the `remote_monitoring_user` [built-in user](../../../deploy-manage/users-roles/cluster-or-deployment-auth/built-in-users.md).
+    1. Create a user on the monitoring cluster that has the `remote_monitoring_agent` [built-in role](/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md). Alternatively, if it’s available in your environment, use the `remote_monitoring_user` [built-in user](/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-users.md).
 
         ::::{tip}
         If you’re using {{ilm}}, the remote monitoring user requires additional privileges to create and read indices. For more information, see [Use feature roles](create-assign-feature-roles-to-apm-server-users.md).
@@ -155,5 +155,5 @@ To collect and ship monitoring data:
     For more information about these configuration options, see [Configure the {{es}} output](beats://reference/metricbeat/elasticsearch-output.md).
 
 6. [Start {{metricbeat}}](beats://reference/metricbeat/metricbeat-starting.md) to begin collecting monitoring data.
-7. [View the monitoring data in {{kib}}](../../../deploy-manage/monitor/stack-monitoring/kibana-monitoring-data.md).
+7. [View the monitoring data in {{kib}}](/deploy-manage/monitor/stack-monitoring/kibana-monitoring-data.md).
 

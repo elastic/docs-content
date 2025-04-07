@@ -231,7 +231,7 @@ Authentication is specified in the APM Server configuration file:
     1. The path to the certificate for SSL client authentication
     2. The client certificate key
 
-    These settings assume that the distinguished name (DN) in the certificate is mapped to the appropriate roles in the `role_mapping.yml` file on each node in the {{es}} cluster. For more information, see [Using role mapping files](../../../deploy-manage/users-roles/cluster-or-deployment-auth/mapping-users-groups-to-roles.md#mapping-roles-file).
+    These settings assume that the distinguished name (DN) in the certificate is mapped to the appropriate roles in the `role_mapping.yml` file on each node in the {{es}} cluster. For more information, see [Using role mapping files](/deploy-manage/users-roles/cluster-or-deployment-auth/mapping-users-groups-to-roles.md#mapping-roles-file).
 
     By default, APM Server uses the list of trusted certificate authorities (CA) from the operating system where APM Server is running. If the certificate authority that signed your node certificates is not in the host system’s trusted certificate authorities list, you need to add the path to the `.pem` file that contains your CA’s certificate to the APM Server configuration. This will configure APM Server to use a specific list of CA certificates instead of the default list from the OS.
 

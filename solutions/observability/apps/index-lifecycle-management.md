@@ -9,10 +9,10 @@ applies_to:
 
 Lifecycle policies allow you to automate the lifecycle of your APM indices as they grow and age. A default policy is applied to each APM data stream, but can be customized depending on your business needs.
 
-In the latest version of Elastic APM, clusters are managed by [index lifecycle management (ILM)](../../../manage-data/lifecycle/index-lifecycle-management.md) to provide the default data retention settings for APM data as well as allow customization for lifecycle.
+In the latest version of Elastic APM, clusters are managed by [index lifecycle management (ILM)](/manage-data/lifecycle/index-lifecycle-management.md) to provide the default data retention settings for APM data as well as allow customization for lifecycle.
 
 ::::{note}
-Indices created in 8.15.x and 8.16.x might be managed by [data stream lifecycle (DSL)](../../../manage-data/lifecycle/data-stream.md). More details are available in [APM version 8.15](https://www.elastic.co/guide/en/observability/current/apm-release-notes-8.15.html). By default, new indices created in 8.17 are managed by ILM. More details are available in [APM version 8.17](https://www.elastic.co/guide/en/observability/current/apm-release-notes-8.17.html). If you have indices managed by DSL, any custom DSL settings that you specified will *not* automatically apply to the new indices managed by ILM. Instead, you can replicate custom DSL settings in ILM using this guide.
+Indices created in 8.15.x and 8.16.x might be managed by [data stream lifecycle (DSL)](/manage-data/lifecycle/data-stream.md). More details are available in [APM version 8.15](https://www.elastic.co/guide/en/observability/current/apm-release-notes-8.15.html). By default, new indices created in 8.17 are managed by ILM. More details are available in [APM version 8.17](https://www.elastic.co/guide/en/observability/current/apm-release-notes-8.17.html). If you have indices managed by DSL, any custom DSL settings that you specified will *not* automatically apply to the new indices managed by ILM. Instead, you can replicate custom DSL settings in ILM using this guide.
 
 ::::
 

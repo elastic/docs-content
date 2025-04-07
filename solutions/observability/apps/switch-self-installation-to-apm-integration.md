@@ -16,7 +16,7 @@ applies_to:
 
 ## Upgrade the {{stack}} [apm-integration-upgrade-1]
 
-The {{stack}} ({{es}} and {{kib}}) must be upgraded to version 7.14 or higher. See the [{{stack}} Installation and Upgrade Guide](../../../deploy-manage/upgrade/deployment-or-cluster.md) for guidance.
+The {{stack}} ({{es}} and {{kib}}) must be upgraded to version 7.14 or higher. See the [{{stack}} Installation and Upgrade Guide](/deploy-manage/upgrade/deployment-or-cluster.md) for guidance.
 
 Review the [Elastic APM release notes](apm-server://release-notes/index.md) and [Elastic {{observability}} release notes](/release-notes/elastic-observability/index.md) for important changes between your current APM version and this one.
 
@@ -25,7 +25,7 @@ Review the [Elastic APM release notes](apm-server://release-notes/index.md) and 
 {{fleet}} Server is a component of the {{stack}} used to centrally manage {{agent}}s. The APM integration requires a {{fleet}} Server to be running and accessible to your hosts. Add a {{fleet}} Server by following [this guide](/reference/fleet/deployment-models.md).
 
 ::::{tip}
-If you’re upgrading a self-managed deployment of the {{stack}}, you’ll need to enable [{{es}} security](../../../deploy-manage/deploy/self-managed/installing-elasticsearch.md) and the [API key service](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md).
+If you’re upgrading a self-managed deployment of the {{stack}}, you’ll need to enable [{{es}} security](/deploy-manage/deploy/self-managed/installing-elasticsearch.md) and the [API key service](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md).
 ::::
 
 After adding your {{fleet}} Server host and generating a service token, the in-product help in {{kib}} will provide a command to run to start an {{agent}} as a {{fleet}} Server. Commands may require administrator privileges.

@@ -103,11 +103,11 @@ export default env => {
 
 ::::
 
-The configuration file can either export an object, or a function that when called should return the generated configuration. To know more about configuring the tests based on environments, look at the [dynamic configuration](../../../solutions/observability/apps/work-with-params-secrets.md#synthetics-dynamic-configs) documentation.
+The configuration file can either export an object, or a function that when called should return the generated configuration. To know more about configuring the tests based on environments, look at the [dynamic configuration](/solutions/observability/apps/work-with-params-secrets.md#synthetics-dynamic-configs) documentation.
 
 ## `params` [synthetics-configuration-params]
 
-A JSON object that defines any variables your tests require. Read more in [Work with params and secrets](../../../solutions/observability/apps/work-with-params-secrets.md).
+A JSON object that defines any variables your tests require. Read more in [Work with params and secrets](/solutions/observability/apps/work-with-params-secrets.md).
 
 ## `playwrightOptions` [synthetics-configuration-playwright-options]
 
@@ -181,7 +181,7 @@ playwrightOptions: {
 }
 ```
 
-To use a timezone and/or locale for a *specific* monitor, add these options to a journey using [`monitor.use`](../../../solutions/observability/apps/configure-individual-browser-monitors.md).
+To use a timezone and/or locale for a *specific* monitor, add these options to a journey using [`monitor.use`](/solutions/observability/apps/configure-individual-browser-monitors.md).
 
 ### Device emulation [synthetics-config-device-emulation]
 
@@ -207,17 +207,17 @@ Information about the Synthetics project.
 `id` (`string`)
 :   A unique id associated with your Synthetics project. It will be used for logically grouping monitors.
 
-    If you used [`init` to create a Synthetics project](../../../solutions/observability/apps/use-synthetics-cli.md#elastic-synthetics-init-command), this is the `<name-of-synthetics-project>` you specified.
+    If you used [`init` to create a Synthetics project](/solutions/observability/apps/use-synthetics-cli.md#elastic-synthetics-init-command), this is the `<name-of-synthetics-project>` you specified.
 
 `url` (`string`)
 :   The URL for the Serverless Observability project or the {{kib}} URL for the deployment to which you want to upload the monitors.
 
 space (`string`)
-:   For {{kib}} deployments 9.0 or higher, the identifier of the target [{{kib}} space](../../../deploy-manage/manage-spaces.md) for the pushed monitors. Spaces help you organize pushed monitors. Pushes to the "default" space if not specified.
+:   For {{kib}} deployments 9.0 or higher, the identifier of the target [{{kib}} space](/deploy-manage/manage-spaces.md) for the pushed monitors. Spaces help you organize pushed monitors. Pushes to the "default" space if not specified.
 
 ## `monitor` [synthetics-configuration-monitor]
 
-Default values to be applied to *all* monitors when using the [`@elastic/synthetics` `push` command](../../../solutions/observability/apps/use-synthetics-cli.md#elastic-synthetics-push-command).
+Default values to be applied to *all* monitors when using the [`@elastic/synthetics` `push` command](/solutions/observability/apps/use-synthetics-cli.md#elastic-synthetics-push-command).
 
 `id` (`string`)
 :   A unique identifier for this monitor.
@@ -239,16 +239,16 @@ $$$synthetics-configuration-monitor-tags$$$ `tags` (`Array<string>`)
 
     To list available locations you can:
 
-    * Run the [`elastic-synthetics locations` command](../../../solutions/observability/apps/use-synthetics-cli.md#elastic-synthetics-locations-command).
-    * Find `Synthetics` in the [global search field](../../../get-started/the-stack.md#kibana-navigation-search) and click **Create monitor**. Locations will be listed in *Locations*.
+    * Run the [`elastic-synthetics locations` command](/solutions/observability/apps/use-synthetics-cli.md#elastic-synthetics-locations-command).
+    * Find `Synthetics` in the [global search field](/get-started/the-stack.md#kibana-navigation-search) and click **Create monitor**. Locations will be listed in *Locations*.
 
 `privateLocations` (`Array<string>`)
-:   The [{{private-location}}s](../../../solutions/observability/apps/monitor-resources-on-private-networks.md) to which the monitors will be deployed. These {{private-location}}s refer to locations hosted and managed by you, whereas `locations` are hosted by Elastic. You can specify a {{private-location}} using the location’s name.
+:   The [{{private-location}}s](/solutions/observability/apps/monitor-resources-on-private-networks.md) to which the monitors will be deployed. These {{private-location}}s refer to locations hosted and managed by you, whereas `locations` are hosted by Elastic. You can specify a {{private-location}} using the location’s name.
 
     To list available {{private-location}}s you can:
 
-    * Run the [`elastic-synthetics locations` command](../../../solutions/observability/apps/use-synthetics-cli.md#elastic-synthetics-locations-command) with the URL for the Observability project or the {{kib}} URL for the deployment from which to fetch available locations.
-    * Find `Synthetics` in the [global search field](../../../get-started/the-stack.md#kibana-navigation-search) and click **Create monitor**. {{private-location}}s will be listed in *Locations*.
+    * Run the [`elastic-synthetics locations` command](/solutions/observability/apps/use-synthetics-cli.md#elastic-synthetics-locations-command) with the URL for the Observability project or the {{kib}} URL for the deployment from which to fetch available locations.
+    * Find `Synthetics` in the [global search field](/get-started/the-stack.md#kibana-navigation-search) and click **Create monitor**. {{private-location}}s will be listed in *Locations*.
 
 `throttling` (`boolean` | [`ThrottlingOptions`](https://github.com/elastic/synthetics/blob/v1.3.0/src/common_types.ts#L194-L198))
 :   Control the monitor’s download speeds, upload speeds, and latency to simulate your application’s behavior on slower or laggier networks. Set to `false` to disable throttling altogether.
@@ -257,7 +257,7 @@ $$$synthetics-configuration-monitor-tags$$$ `tags` (`Array<string>`)
 :   Control whether or not to capture screenshots. Options include `'on'`, `'off'`, or `'only-on-failure'`.
 
 `alert.status.enabled` (`boolean`)
-:   Enable or disable monitor status alerts. Read more about alerts in [Alerting](../../../solutions/observability/apps/configure-synthetics-settings.md#synthetics-settings-alerting).
+:   Enable or disable monitor status alerts. Read more about alerts in [Alerting](/solutions/observability/apps/configure-synthetics-settings.md#synthetics-settings-alerting).
 
 `retestOnFailure` (`boolean`)
 :   Enable or disable retesting when a monitor fails. Default is `true`.
@@ -267,7 +267,7 @@ $$$synthetics-configuration-monitor-tags$$$ `tags` (`Array<string>`)
     Using `retestOnFailure` can reduce noise related to transient problems.
 
 `fields` (`object`)
-:   A list of key-value pairs that will be sent with each monitor event. The `fields` are appended to {{es}} documents as `labels`, and those labels are displayed in {{kib}} in the *Monitor details* panel in the [individual monitor’s *Overview* tab](../../../solutions/observability/apps/analyze-data-from-synthetic-monitors.md#synthetics-analyze-individual-monitors-overview).
+:   A list of key-value pairs that will be sent with each monitor event. The `fields` are appended to {{es}} documents as `labels`, and those labels are displayed in {{kib}} in the *Monitor details* panel in the [individual monitor’s *Overview* tab](/solutions/observability/apps/analyze-data-from-synthetic-monitors.md#synthetics-analyze-individual-monitors-overview).
 
     For example:
 
@@ -280,5 +280,5 @@ $$$synthetics-configuration-monitor-tags$$$ `tags` (`Array<string>`)
 
 For information on configuring monitors individually, refer to:
 
-* [Configure individual browser monitors](../../../solutions/observability/apps/configure-individual-browser-monitors.md) for browser monitors
-* [Configure lightweight monitors](../../../solutions/observability/apps/configure-lightweight-monitors.md) for lightweight monitors
+* [Configure individual browser monitors](/solutions/observability/apps/configure-individual-browser-monitors.md) for browser monitors
+* [Configure lightweight monitors](/solutions/observability/apps/configure-lightweight-monitors.md) for lightweight monitors

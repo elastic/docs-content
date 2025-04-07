@@ -35,9 +35,9 @@ The trace sample timeline features an **Investigate** button which provides a qu
 * logs and metrics for the selected host
 * trace logs for the selected `trace.id`
 * uptime status of the selected domain
-* the [service map](../../../solutions/observability/apps/service-map.md) filtered by the selected trace
+* the [service map](/solutions/observability/apps/service-map.md) filtered by the selected trace
 * the selected transaction in **Discover**
-* your [custom links](../../../solutions/observability/apps/create-custom-links.md)
+* your [custom links](/solutions/observability/apps/create-custom-links.md)
 
 ## Distributed tracing [distributed-tracing]
 

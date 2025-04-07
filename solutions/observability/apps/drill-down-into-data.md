@@ -12,9 +12,9 @@ applies_to:
 
 Notice something awry? Select a service or trace and dive deeper with:
 
-* [Transactions](../../../solutions/observability/apps/transactions-2.md)
-* [Trace sample timeline](../../../solutions/observability/apps/trace-sample-timeline.md)
-* [Errors](../../../solutions/observability/apps/errors-2.md)
-* [Metrics](../../../solutions/observability/apps/metrics-2.md)
-* [Infrastructure](../../../solutions/observability/apps/infrastructure.md)
-* [Logs](../../../solutions/observability/apps/logs.md)
+* [Transactions](/solutions/observability/apps/transactions-2.md)
+* [Trace sample timeline](/solutions/observability/apps/trace-sample-timeline.md)
+* [Errors](/solutions/observability/apps/errors-2.md)
+* [Metrics](/solutions/observability/apps/metrics-2.md)
+* [Infrastructure](/solutions/observability/apps/infrastructure.md)
+* [Logs](/solutions/observability/apps/logs.md)

@@ -23,7 +23,7 @@ This upgrade guide is for the Elastic APM integration. Only use this guide if bo
 
 1. Upgrade the {{stack}} to version 9.0.
 
-    The {{stack}} ({{es}} and {{kib}}) must be upgraded before {{agent}}. refer to the [{{stack}} Installation and Upgrade Guide](../../../deploy-manage/upgrade/deployment-or-cluster.md) for guidance.
+    The {{stack}} ({{es}} and {{kib}}) must be upgraded before {{agent}}. refer to the [{{stack}} Installation and Upgrade Guide](/deploy-manage/upgrade/deployment-or-cluster.md) for guidance.
 
 2. Upgrade {{agent}} to version 9.0 As a part of this process, the APM integration will automatically upgrade to version 9.0.
 

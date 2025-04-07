@@ -85,7 +85,7 @@ For example, consider traces that would originally be indexed to `traces-apm-def
 ]
 ```
 
-To find other ingest pipelines from the {{es}} apm-data plugin that are called by default, go to **Stack management** → **Ingest pipelines** [in Kibana](../../../deploy-manage/index.md) and search for `apm`. Default APM ingest pipelines will follow the pattern `*-apm*@default-pipeline`.
+To find other ingest pipelines from the {{es}} apm-data plugin that are called by default, go to **Stack management** → **Ingest pipelines** [in Kibana](/deploy-manage/index.md) and search for `apm`. Default APM ingest pipelines will follow the pattern `*-apm*@default-pipeline`.
 
 For more custom APM ingest pipeline guides, see [parse data using ingest pipelines](parse-data-using-ingest-pipelines.md).
 
