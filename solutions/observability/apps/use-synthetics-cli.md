@@ -1,9 +1,11 @@
 ---
+navigation_title: "Use the CLI"
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/synthetics-command-reference.html
   - https://www.elastic.co/guide/en/serverless/current/observability-synthetics-command-reference.html
-
-navigation_title: "Use the CLI"
+applies_to:
+  stack:
+  serverless:
 ---
 
 # Use the Synthetics CLI [synthetics-command-reference]

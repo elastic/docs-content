@@ -2,6 +2,9 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm.html
   - https://www.elastic.co/guide/en/serverless/current/observability-apm.html
+applies_to:
+  stack:
+  serverless:
 ---
 
 # Application performance monitoring (APM) [apm]
