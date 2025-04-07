@@ -37,13 +37,12 @@ The `.kibana_N` saved object index was introduced. The `N` suffix was incremente
 
 ### Kibana 7.4.0
 
-A new `.kibana_task_manager_N` was created, which would host the `task` saved objects. It also had a `.kibana_task_manager` alias, pointing to the latest version.
+A new `.kibana_task_manager_N` was created, which would host the `task` saved objects. It also had a `.kibana_task_manager` alias, pointing to the latest version of the index.
 
 ### Kibana 7.11.0
 
 Starting with 7.11.0 the naming convention evolved, and the indices names started containing the version number, along with a `_001` suffix.
-Each of the saved objects indices now has a couple of aliases. For example, the `.kibana_7.11.0_001` index has a *default* `.kibana` alias and a `.kibana_7.11.0` *version* alias. The *default* aliases (such as `.kibana` and `.kibana_task_manager`) always point to the most up-to-date saved object indices. Then, *version* aliases are aligned with the deployed {{kib}} version.
-A new versioned alias was also introduced:
+Each of the saved objects indices now has a couple of aliases. For example, the `.kibana_7.11.0_001` index has a *default* `.kibana` alias and a `.kibana_7.11.0` *version* alias. The *default* aliases (such as `.kibana` and `.kibana_task_manager`) always point to the most up-to-date saved object indices. Then, *version* aliases are aligned with the deployed {{kib}} version:
 
 | Alias | Version alias | Index name |
 | --- | --- | --- |
