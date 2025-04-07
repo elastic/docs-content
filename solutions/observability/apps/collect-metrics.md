@@ -2,6 +2,9 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-open-telemetry-collect-metrics.html
   - https://www.elastic.co/guide/en/serverless/current/observability-apm-agents-opentelemetry-collect-metrics.html
+applies_to:
+  stack:
+  serverless:
 ---
 
 # Collect metrics [apm-open-telemetry-collect-metrics]

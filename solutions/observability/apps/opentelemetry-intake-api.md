@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-api-otlp.html
+applies_to:
+  stack:
 ---
 
 # OpenTelemetry intake API [apm-api-otlp]
@@ -13,7 +15,7 @@ APM Server supports two OTLP communication protocols on the same port:
 * OTLP/gRPC
 
 
-## OTLP/gRPC paths [_otlpgrpc_paths] 
+## OTLP/gRPC paths [_otlpgrpc_paths]
 
 | Name | Endpoint |
 | --- | --- |
@@ -22,7 +24,7 @@ APM Server supports two OTLP communication protocols on the same port:
 | OTLP logs intake | `/opentelemetry.proto.collector.logs.v1.LogsService/Export` |
 
 
-## OTLP/HTTP paths [_otlphttp_paths] 
+## OTLP/HTTP paths [_otlphttp_paths]
 
 | Name | Endpoint |
 | --- | --- |
@@ -30,7 +32,7 @@ APM Server supports two OTLP communication protocols on the same port:
 | OTLP trace intake | `/v1/traces` |
 | OTLP logs intake | `/v1/logs` |
 
-::::{tip} 
+::::{tip}
 See our OpenTelemetry documentation to learn how to send data to the APM Server from an [OpenTelemetry agent](upstream-opentelemetry-collectors-language-sdks.md#apm-instrument-apps-otel) or [OpenTelemetry collector](upstream-opentelemetry-collectors-language-sdks.md#apm-connect-open-telemetry-collector).
 ::::
 

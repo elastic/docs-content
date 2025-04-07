@@ -2,6 +2,9 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/synthetics-feature-roles.html
   - https://www.elastic.co/guide/en/serverless/current/observability-synthetics-feature-roles.html
+applies_to:
+  stack:
+  serverless:
 ---
 
 # Grant users access to secured resources [observability-synthetics-feature-roles]

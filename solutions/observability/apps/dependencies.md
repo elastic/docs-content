@@ -2,6 +2,9 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-dependencies.html
   - https://www.elastic.co/guide/en/serverless/current/observability-apm-dependencies.html
+applies_to:
+  stack:
+  serverless:
 ---
 
 # Dependencies [apm-dependencies]

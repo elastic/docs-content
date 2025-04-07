@@ -2,9 +2,9 @@
 navigation_title: "Create a central config user"
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-app-central-config-user.html
+applies_to:
+  stack:
 ---
-
-
 
 # Applications UI central config user [apm-app-central-config-user]
 
