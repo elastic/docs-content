@@ -63,7 +63,7 @@ This table compares the core platform capabilities between Elastic Cloud Hosted 
 | **Deployment monitoring** | AutoOps or monitoring cluster | Managed | Monitoring is handled by Elastic |
 | **Hardware configuration** | Limited control | Managed | Hardware choices are managed by Elastic |
 | **High availability** | ✅ | ✅ | Automatic resilience |
-| **Network security** | Public IP traffic filtering, private connectivity (VPCs, PrivateLink) | **Planned** | - Traffic filtering anticipated in a future release <br>- Private connectivity options planned |
+| **Network security** | Public IP traffic filtering, private connectivity (VPCs, PrivateLink) | **Planned** | - Traffic filtering anticipated in a future release <br>- Private connectivity options anticipated in a future release |
 | **Node management** | User-controlled | Managed | No node configuration access by design |
 | **Snapshot/restore** | ✅ | **Planned** | User-initiated snapshots are anticipated in a future release |
 
