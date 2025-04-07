@@ -2,7 +2,10 @@
 applies_to:
   stack:
   deployment:
-    self: all
+    self:
+    eck:
+    ess:
+    ece:
 ---
 
 # Upgrade to Enterprise Search
