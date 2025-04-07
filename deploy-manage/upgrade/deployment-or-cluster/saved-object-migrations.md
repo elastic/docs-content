@@ -60,7 +60,7 @@ In versions 8.6.0 and newer, compatible migrations were introduced, allowing to 
 
 ### Kibana 8.8.0
 
-Starting with 8.8.0, {{kib}} splits the main saved object index into multiple ones, as depicted in the table above. When upgrading from a previous version, the {{kib}} migration process will reindex some saved objects from the `.kibana` index into the new indices, depending on their types. Note that the `.kibana` index still exists and continues storing multiple saved object types.
+Starting with 8.8.0, {{kib}} splits the main saved object index into multiple ones, as depicted in the table below. When upgrading from a previous version, the {{kib}} migration process will reindex some saved objects from the `.kibana` index into the new indices, depending on their types. Note that the `.kibana` index still exists and continues storing multiple saved object types.
 
 | Alias | Version alias | Index name |
 | --- | --- | --- |
