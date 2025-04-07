@@ -16,7 +16,7 @@ The **Visualize Library** is a space where you can save visualization panels tha
 
 ## Visualizations [visualize-library-visualizations]
 
-By default the **Visualizations** page opens first. Here you can create new visualizations, or select from a list of previously created visualizations. To learn more, refer to [Save to the Visualize Library](../../explore-analyze/visualize/manage-panels#save-to-visualize-library).
+By default the **Visualizations** page opens first. Here you can create new visualizations, or select from a list of previously created visualizations. To learn more, refer to [Save to the Visualize Library](../../explore-analyze/visualize/manage-panels).
 
 
 ## Annotation groups [visualize-library-annotation-groups]
