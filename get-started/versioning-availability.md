@@ -141,7 +141,7 @@ You can find documentation for previous product versions on our [Previous versio
 | Elastic Common Schema | 9.0.0+ |
 | ECS logging Java library | 1.x+ |
 | Other ECS logging libraries | All |
-| {{es}} API client | 9.0.0+ |
+| {{es}} API clients | 9.0.0+ |
 | {{es}} for Apache Hadoop | 9.0.0+ |
 | Curator | 8.0+ | 
 | Elastic Cloud Control (ECCTL) | 1.14+ |
