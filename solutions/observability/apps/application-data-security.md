@@ -2,6 +2,8 @@
 navigation_title: "Secure data"
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-data-security.html
+applies_to:
+  stack:
 ---
 
 
@@ -19,7 +21,7 @@ Depending on the type of data, we offer several different ways to filter, manipu
 In addition to utilizing filters, you should regularly review the [sensitive fields](#apm-sensitive-fields) table to ensure sensitive data is not being ingested. If it is, it’s possible to remove or redact it. See [Delete sensitive data](delete-sensitive-data.md) for more information.
 
 
-## Built-in data filters [apm-built-in-data-filters] 
+## Built-in data filters [apm-built-in-data-filters]
 
 Built-in data filters allow you to filter or turn off ingestion of the following types of data:
 
@@ -32,7 +34,7 @@ Built-in data filters allow you to filter or turn off ingestion of the following
 | [Database statements](built-in-data-filters.md#apm-filters-database-statements) | Sensitive user or business information |
 
 
-## Custom filters [apm-custom-data-filters] 
+## Custom filters [apm-custom-data-filters]
 
 Custom filters allow you to filter or redact other types of APM data on ingestion:
 
@@ -42,7 +44,7 @@ Custom filters allow you to filter or redact other types of APM data on ingestio
 | [{{apm-agent}} filters](custom-filters.md#apm-filters-in-agent) | Not supported by all agents.Data is sanitized before leaving the instrumented service.Potential overhead implications on the instrumented service |
 
 
-## Sensitive fields [apm-sensitive-fields] 
+## Sensitive fields [apm-sensitive-fields]
 
 You should review the following fields regularly to ensure sensitive data is not being captured:
 
@@ -59,8 +61,3 @@ You should review the following fields regularly to ensure sensitive data is not
 | `url.query` | The query string of the request, e.g. `?pass=hunter2`. | [Custom filters](custom-filters.md) |
 | `user.*` | Logged-in user information. | [Custom filters](custom-filters.md) |
 | `user_agent.*` | Device and version making the network request. | [Personal data](built-in-data-filters.md#apm-filters-personal-data) |
-
-
-
-
-

@@ -2,15 +2,15 @@
 navigation_title: "Create an API user"
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-app-api-user.html
+applies_to:
+  stack:
 ---
-
-
 
 # Applications UI API user [apm-app-api-user]
 
 
 
-## Central configuration API [apm-app-api-config-manager] 
+## Central configuration API [apm-app-api-config-manager]
 
 Users can list, search, create, update, and delete central configurations via the Applications UI API.
 
@@ -22,7 +22,7 @@ Users can list, search, create, update, and delete central configurations via th
 
 
 
-## Central configuration API reader [apm-app-api-config-reader] 
+## Central configuration API reader [apm-app-api-config-reader]
 
 Sometimes a user only needs to list and search central configurations via the Applications UI API.
 
@@ -34,7 +34,7 @@ Sometimes a user only needs to list and search central configurations via the Ap
 
 
 
-## Annotation API [apm-app-api-annotation-manager] 
+## Annotation API [apm-app-api-annotation-manager]
 
 Users can use the annotation API to create annotations on their APM data.
 

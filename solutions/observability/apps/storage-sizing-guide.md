@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-storage-guide.html
+applies_to:
+  stack:
 ---
 
 # Storage and sizing guide [apm-storage-guide]

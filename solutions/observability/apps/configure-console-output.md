@@ -3,10 +3,8 @@ navigation_title: "Console"
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-console-output.html
 applies_to:
-  stack: all
+  stack:
 ---
-
-
 
 # Configure the Console output [apm-console-output]
 

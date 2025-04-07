@@ -2,6 +2,9 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-transactions.html
   - https://www.elastic.co/guide/en/serverless/current/observability-apm-transactions.html
+applies_to:
+  stack:
+  serverless:
 ---
 
 # Transactions [apm-transactions]

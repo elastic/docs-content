@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-data-model-errors.html
+applies_to:
+  stack:
+  serverless:
 ---
 
 # Errors [apm-data-model-errors]
@@ -23,7 +26,7 @@ An Error contains:
 
 In addition, agents provide options for users to capture custom [metadata](metadata.md). Metadata can be indexed - [`labels`](metadata.md#apm-data-model-labels), or not-indexed - [`custom`](metadata.md#apm-data-model-custom).
 
-::::{tip} 
+::::{tip}
 Most agents limit keyword fields (e.g. `error.id`) to 1024 characters, non-keyword fields (e.g. `error.exception.message`) to 10,000 characters.
 ::::
 
@@ -31,7 +34,7 @@ Most agents limit keyword fields (e.g. `error.id`) to 1024 characters, non-keywo
 Errors are stored in error indices.
 
 
-## Data streams [_data_streams_3] 
+## Data streams [_data_streams_3]
 
 Errors are stored in the following data streams:
 
@@ -41,7 +44,7 @@ Errors are stored in the following data streams:
 See [Data streams](data-streams.md) to learn more.
 
 
-## Example error document [_example_error_document] 
+## Example error document [_example_error_document]
 
 This example shows what error documents can look like when indexed in {{es}}.
 

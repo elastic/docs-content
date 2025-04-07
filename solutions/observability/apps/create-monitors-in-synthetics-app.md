@@ -1,9 +1,11 @@
 ---
+navigation_title: "Use the Synthetics UI"
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/synthetics-get-started-ui.html
   - https://www.elastic.co/guide/en/serverless/current/observability-synthetics-get-started-ui.html
-
-navigation_title: "Use the Synthetics UI"
+applies_to:
+  stack:
+  serverless:
 ---
 
 # Create monitors in the Synthetics UI [synthetics-get-started-ui]
