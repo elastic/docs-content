@@ -143,7 +143,7 @@ To save space on the dashboard, hide the axis labels.
 
 Since you removed the axis labels, add a panel title:
 
-1. Hover over the panel and click ![Settings icon](/explore-analyze/images/kibana-settings-icon-hover-action.png ""). The **Settings** flyout appears.
+1. Hover over the panel and click ![Settings icon](/explore-analyze/images/kibana-settings-icon-hover-action.png "kibana-settings-icon-hover-action =4%x4%"). The **Settings** flyout appears.
 2. In the **Title** field, enter `Median of bytes`, then click **Apply**.
 
    :::{image} /explore-analyze/images/kibana-lens_lineChartMetricOverTime_8.4.0.png
@@ -250,7 +250,7 @@ To display the values as a percentage of the sum of all values, use the **Pie** 
 
 Add a panel title:
 
-1. Hover over the panel and click ![Settings icon](/explore-analyze/images/kibana-settings-icon-hover-action.png ""). The **Settings** flyout appears.
+1. Hover over the panel and click ![Settings icon](/explore-analyze/images/kibana-settings-icon-hover-action.png "kibana-settings-icon-hover-action =4%x4%"). The **Settings** flyout appears.
 2. In the **Title** field, enter `Sum of bytes from large requests`, then click **Apply**.
 
 
@@ -279,7 +279,7 @@ The distribution of a number can help you find patterns. For example, you can an
 
 Add a panel title:
 
-1. Hover over the panel and click ![Settings icon](/explore-analyze/images/kibana-settings-icon-hover-action.png ""). The **Settings** flyout appears.
+1. Hover over the panel and click ![Settings icon](/explore-analyze/images/kibana-settings-icon-hover-action.png "kibana-settings-icon-hover-action =4%x4%"). The **Settings** flyout appears.
 2. In the **Title** field, enter `Website traffic`, then click **Apply**.
 
 
@@ -339,7 +339,7 @@ Remove the documents that do not match the filter criteria:
 
 Add a panel title:
 
-1. Hover over the panel and click ![Settings icon](/explore-analyze/images/kibana-settings-icon-hover-action.png ""). The **Settings** flyout appears.
+1. Hover over the panel and click ![Settings icon](/explore-analyze/images/kibana-settings-icon-hover-action.png "kibana-settings-icon-hover-action =4%x4%"). The **Settings** flyout appears.
 2. In the **Title** field, enter `Page views by location and referrer`, then click **Apply**.
 
 
