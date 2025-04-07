@@ -24,6 +24,6 @@ Known issues are significant defects or limitations that may impact your impleme
 
 **{{stack}} versions: 9.0.0**
 
-On April 8, 2025, it was discovered that alert suppression for event correlation rules is incorrectly shown as being in technical preview when you create a new rule. For more information, check [#1021](https://github.com/elastic/docs-content/issues/1021) 
+On April 8, 2025, it was discovered that alert suppression for event correlation rules is incorrectly shown as being in technical preview when you create a new rule. For more information, check [#1021](https://github.com/elastic/docs-content/issues/1021). 
 
 :::
