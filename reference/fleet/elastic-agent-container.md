@@ -9,6 +9,8 @@ You can run {{agent}} inside a container — either with {{fleet-server}} or
 
 Note that running {{elastic-agent}} in a container is supported only in Linux environments. For this reason we don’t currently provide {{agent}} container images for Windows.
 
+In version 9.0.0, the default Ubuntu-based Docker images used for {{agent}} have been changed to Red Hat UBI (Universal Base Image) minimal based images, to reduce the overall footprint of the agent Docker images and to improve compliance with enterprise standards. Refer to [#6427]({{agent-pull}}6427) for details.
+
 Considerations:
 
 * When {{agent}} runs inside a container, it cannot be upgraded through {{fleet}} as it expects that the container itself is upgraded.
