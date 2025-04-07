@@ -1,9 +1,11 @@
 ---
+navigation_title: "AWS Lambda Functions"
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-monitoring-aws-lambda.html
   - https://www.elastic.co/guide/en/serverless/current/observability-apm-agents-aws-lambda-functions.html
-
-navigation_title: "AWS Lambda Functions"
+applies_to:
+  stack:
+  serverless:
 ---
 
 # Monitoring AWS Lambda Functions [apm-monitoring-aws-lambda]

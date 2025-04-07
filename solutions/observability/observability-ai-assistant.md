@@ -16,7 +16,7 @@ You can [interact with the AI Assistant](#obs-ai-interact) in two ways:
 * **Contextual insights**: Embedded assistance throughout Elastic UIs that explains errors and messages with suggested remediation steps.
 * **Chat interface**: A conversational experience where you can ask questions and receive answers about your data. The assistant uses function calling to request, analyze, and visualize information based on your needs.
 
-By default, AI Assistant uses a [preconfigured LLM](#preconfigured-llm-ai-assistant) connector that works out of the box. You can also connect to third-party LLM providers.
+The AI Assistant integrates with your large language model (LLM) provider through our supported {{stack}} connectors:
 
 ## Use cases
 
@@ -27,11 +27,6 @@ The {{obs-ai-assistant}} helps you:
 * **Generate reports**: Create alert summaries and incident timelines with key metrics
 * **Build and execute queries**: Build Elasticsearch queries from natural language, convert Query DSL to ES|QL syntax, and execute queries directly from the chat interface 
 * **Visualize data**: Create time-series charts and distribution graphs from your Elasticsearch data
-
-## Preconfigured LLM [preconfigured-llm-ai-assistant]
-
-:::{include} ../_snippets/elastic-llm.md
-:::
 
 ## Requirements [obs-ai-requirements]
 
@@ -45,7 +40,7 @@ The AI assistant requires the following:
   
     - To run {{obs-ai-assistant}} on a self-hosted Elastic stack, you need an [appropriate license](https://www.elastic.co/subscriptions).
  
-- If not using the [default preconfigured LLM](#preconfigured-llm-ai-assistant), you need an account with a third-party generative AI provider that preferably supports function calling. If your provider does not support function calling, you can configure AI Assistant settings under **Stack Management** to simulate function calling, but this might affect performance.
+- An account with a third-party generative AI provider that preferably supports function calling. If your AI provider does not support function calling, you can configure AI Assistant settings under **Stack Management** to simulate function calling, but this might affect performance.
 
   - The free tier offered by third-party generative AI provider may not be sufficient for the proper functioning of the AI assistant. In most cases, a paid subscription to one of the supported providers is required.
 
@@ -75,10 +70,6 @@ It's important to understand how your data is handled when using the AI Assistan
 **Telemetry collection**: Your AI provider may collect telemetry during usage. Contact them for details on what data is collected.
 
 ## Set up the AI Assistant [obs-ai-set-up]
-
-:::{note}
-If you use [the preconfigured LLM](#preconfigured-llm-ai-assistant) connector, you can skip this step. Your LLM connector is ready to use.
-:::
 
 The AI Assistant connects to one of these supported LLM providers:
 

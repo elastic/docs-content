@@ -2,6 +2,8 @@
 navigation_title: "Switch a self-installation"
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-integration-upgrade-steps.html
+applies_to:
+  stack:
 ---
 
 

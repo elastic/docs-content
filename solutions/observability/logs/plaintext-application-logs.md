@@ -20,7 +20,7 @@ To ingest, parse, and correlate plaintext logs:
 
 1. Ingest plaintext logs with [{{filebeat}}](../../../solutions/observability/logs/plaintext-application-logs.md#ingest-plaintext-logs-with-filebeat) or [{{agent}}](../../../solutions/observability/logs/plaintext-application-logs.md#ingest-plaintext-logs-with-the-agent) and parse them before indexing with an ingest pipeline.
 2. [Correlate plaintext logs with an {{apm-agent}}.](../../../solutions/observability/logs/plaintext-application-logs.md#correlate-plaintext-logs)
-3. [View logs in Logs Explorer](../../../solutions/observability/logs/plaintext-application-logs.md#view-plaintext-logs)
+3. [View logs in Discover](../../../solutions/observability/logs/plaintext-application-logs.md#view-plaintext-logs)
 
 
 ## Ingest logs [ingest-plaintext-logs]
@@ -351,31 +351,4 @@ Learn about correlating plaintext logs in the agent-specific ingestion guides:
 
 ## View logs [view-plaintext-logs]
 
-To view logs ingested by {{filebeat}}, go to **Discover** from the main menu and create a data view based on the `filebeat-*` index pattern. Refer to [Create a data view](../../../explore-analyze/find-and-organize/data-views.md) for more information.
-
-To view logs ingested by {{agent}}, go to Logs Explorer by clicking **Explorer** under **Logs** from the {{observability}} main menu. Refer to the [Filter and aggregate logs](../../../solutions/observability/logs/filter-aggregate-logs.md) documentation for more information on viewing and filtering your logs in {{kib}}.
-
-
-% What needs to be done: Align serverless/stateful
-
-% Use migrated content from existing pages that map to this page:
-
-% - [ ] ./raw-migrated-files/docs-content/serverless/observability-plaintext-application-logs.md
-
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
-
-$$$correlate-plaintext-logs$$$
-
-$$$ingest-plaintext-logs-with-filebeat$$$
-
-$$$ingest-plaintext-logs-with-the-agent$$$
-
-$$$observability-plaintext-application-logs-correlate-logs$$$
-
-$$$observability-plaintext-application-logs-ingest-logs-with-agent$$$
-
-$$$observability-plaintext-application-logs-ingest-logs-with-filebeat$$$
-
-$$$observability-plaintext-application-logs-view-logs$$$
-
-$$$view-plaintext-logs$$$
+To view logs ingested by {{filebeat}}, go to **Discover** from the main menu and create a data view based on the `filebeat-*` index pattern. You can also select **All logs** from the **Data views** menu as it includes the `filebeat-*` index pattern by default. Refer to [Create a data view](../../../explore-analyze/find-and-organize/data-views.md) for more information.

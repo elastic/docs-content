@@ -6,8 +6,6 @@ applies_to:
   stack: all
 ---
 
-
-
 # Configure APM instrumentation [apm-configuration-instrumentation]
 
 

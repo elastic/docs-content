@@ -2,10 +2,17 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/inspect-uptime-duration-anomalies.html
 applies_to:
-  stack: all
+  stack: deprecated 8.15.0
+  serverless: unavailable
 ---
 
 # Inspect uptime duration anomalies [inspect-uptime-duration-anomalies]
+
+::::{admonition} Deprecated in 8.15.0.
+:class: warning
+
+Use [Synthetic monitoring](/solutions/observability/apps/synthetic-monitoring.md) instead of the {{uptime-app}}.
+::::
 
 Each monitor location is modeled, and when a monitor runs for an unusual amount of time, at a particular time, an anomaly is recorded and highlighted on the **Monitor duration** chart.
 

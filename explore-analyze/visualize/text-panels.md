@@ -19,6 +19,7 @@ For example, when you enter:
 :::{image} /explore-analyze/images/kibana-markdown_example_1.png
 :alt: Markdown text with links
 :screenshot:
+:width: 75%
 :::
 
 The following instructions are displayed:
@@ -26,6 +27,7 @@ The following instructions are displayed:
 :::{image} /explore-analyze/images/kibana-markdown_example_2.png
 :alt: Panel with markdown link text
 :screenshot:
+:width: 75%
 :::
 
 Or when you enter:
@@ -33,6 +35,7 @@ Or when you enter:
 :::{image} /explore-analyze/images/kibana-markdown_example_3.png
 :alt: Markdown text with image file
 :screenshot:
+:width: 75%
 :::
 
 The following image is displayed:
