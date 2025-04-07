@@ -13,9 +13,9 @@ mapped_pages:
 
 {{es}} is the heart of the [Elastic Stack](the-stack.md). Combined with {{kib}}, it powers these Elastic solutions and use cases:
 
+* **[Elasticsearch](/solutions/search.md)**: Build powerful search and RAG applications using Elasticsearch's vector database, AI toolkit, and advanced retrieval capabilities.
 * **[Observability](/solutions/observability.md)**: Resolve problems with open, flexible, and unified observability powered by advanced machine learning and analytics.
 * **[Security](/solutions/security.md)**: Detect, investigate, and respond to threats with AI-driven security analytics to protect your organization at scale.
-* **[Elasticsearch](/solutions/search.md)**: Build powerful search and RAG applications using Elasticsearch's vector database, AI toolkit, and advanced retrieval capabilities.
 
 :::{tip}
 Refer to our [customer success stories](https://www.elastic.co/customers/success-stories) for concrete examples of how Elastic is used in real-world scenarios.
