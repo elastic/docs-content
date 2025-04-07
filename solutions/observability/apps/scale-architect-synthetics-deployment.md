@@ -1,9 +1,11 @@
 ---
+navigation_title: "Scale and architect a deployment"
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/synthetics-scale-and-architect.html
   - https://www.elastic.co/guide/en/serverless/current/observability-synthetics-scale-and-architect.html
-
-navigation_title: "Scale and architect a deployment"
+applies_to:
+  stack:
+  serverless:
 ---
 
 # Scale and architect a Synthetics deployment [synthetics-scale-and-architect]
@@ -13,6 +15,9 @@ Use these advanced considerations when using the {{synthetics-app}} for large an
 % Stateful only for do not use... section
 
 ## Do not use the Synthetics UI with CCS/CCR [synthetics-no-ccs-ccr]
+```{applies_to}
+stack:
+```
 
 In complex environments it’s common to have multiple task-specific {{stack}} deployments with one  centralized overview cluster using CCS or CCR to centralize {{kib}} dashboards and apps. **Do not use this pattern with the Synthetics UI**. Instead, configure your synthetic monitors directly on the {{kib}} instance where you want to view and manage them.
 

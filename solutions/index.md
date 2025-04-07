@@ -30,6 +30,6 @@ Learn more in the following sections:
 
 | Solution | Use case | 
 | --- | --- | 
-| [Search](search.md) | Build search experiences, or implement custom use cases with Elasticsearch
+| [Elasticsearch](search.md) | Build search experiences, or implement custom use cases with Elasticsearch
 | [Observability](observability.md) | Monitor and troubleshoot applications and infrastructure with Elastic Observability
 | [Security](security.md) | Protect applications and infrastructure with Elastic Security

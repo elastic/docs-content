@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-exploring-es-data.html
+applies_to:
+  stack:
 ---
 
 # Explore data in Elasticsearch [apm-exploring-es-data]
@@ -8,7 +10,7 @@ mapped_pages:
 * [{{es}} query examples](#apm-elasticsearch-query-examples)
 
 
-## {{es}} query examples [apm-elasticsearch-query-examples] 
+## {{es}} query examples [apm-elasticsearch-query-examples]
 
 Elastic APM data is stored in [Data streams](data-streams.md).
 

@@ -11,6 +11,7 @@ toc:
               - file: deploy/elastic-cloud/subscribe-from-marketplace.md
                 children:
                   - hidden: deploy/elastic-cloud/create-monthly-pay-as-you-go-subscription-on-aws-marketplace.md
+                  - hidden: deploy/elastic-cloud/complete-registration-of-an-annual-subscription-on-aws-marketplace.md
                   - hidden: deploy/elastic-cloud/azure-marketplace-pricing.md
                   - hidden: deploy/elastic-cloud/create-monthly-pay-as-you-go-subscription-on-gcp-marketplace.md
                   - file: deploy/elastic-cloud/aws-marketplace.md
@@ -799,7 +800,8 @@ toc:
               - file: upgrade/deployment-or-cluster/kibana.md
                 children:
                   - file: upgrade/deployment-or-cluster/saved-object-migrations.md
-                  - file: upgrade/deployment-or-cluster/kibana-roll-back.md    
+                  - file: upgrade/deployment-or-cluster/kibana-roll-back.md
+          - file: upgrade/deployment-or-cluster/enterprise-search.md   
       - file: upgrade/ingest-components.md        
   - file: uninstall.md
     children:

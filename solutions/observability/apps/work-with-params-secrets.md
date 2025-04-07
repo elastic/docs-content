@@ -2,6 +2,9 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/synthetics-params-secrets.html
   - https://www.elastic.co/guide/en/serverless/current/observability-synthetics-params-secrets.html
+applies_to:
+  stack:
+  serverless:
 ---
 
 # Work with params and secrets [observability-synthetics-params-secrets]
