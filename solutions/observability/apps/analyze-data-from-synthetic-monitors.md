@@ -1,9 +1,11 @@
 ---
+navigation_title: "Analyze monitor data"
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/synthetics-analyze.html
   - https://www.elastic.co/guide/en/serverless/current/observability-synthetics-analyze.html
-
-navigation_title: "Analyze monitor data"
+applies_to:
+  stack:
+  serverless:
 ---
 
 # Analyze data from synthetic monitors

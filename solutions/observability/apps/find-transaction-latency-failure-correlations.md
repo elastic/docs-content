@@ -2,8 +2,10 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-correlations.html
   - https://www.elastic.co/guide/en/serverless/current/observability-apm-find-transaction-latency-and-failure-correlations.html
+applies_to:
+  stack:
+  serverless:
 ---
-
 
 # Find transaction latency and failure correlations [observability-apm-find-transaction-latency-and-failure-correlations]
 

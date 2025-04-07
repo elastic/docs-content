@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-secure-agent-communication.html
+applies_to:
+  stack:
 ---
 
 # Secure communication with APM agents [apm-secure-agent-communication]

@@ -164,6 +164,11 @@ The following variables are specific to this rule type. You an also specify [var
 
 ## Uptime monitor status [monitor-status-alert-uptime]
 
+```{applies_to}
+stack: deprecated 8.15.0
+serverless: unavailable
+```
+
 ::::{warning}
 **The Uptime app and the Uptime monitor status rule are deprecated as of version 8.15.0.**
 
