@@ -519,23 +519,12 @@ For more on using the **Metrics Explorer** page, refer to [Explore infrastructur
 
 ### View Kubernetes logs [monitor-k8s-explore-logs]
 
-Find `Logs Explorer` in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+Find `Discover` in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
-With **Logs Explorer**, you can quickly search and filter your log data, get information about the structure of log fields, and display your findings in a visualization.
+From the **Data view** menu, select `All logs`. From here, you can quickly search and filter your log data, get information about the structure of log fields, and display your findings in a visualization. Then, you can filter your log data and dive deeper into individual logs to find and troubleshoot issues. For more information, refer to:
 
-:::{image} /solutions/images/observability-log-explorer.png
-:alt: screenshot of the logs explorer main page
-:screenshot:
-:::
-
-From **Logs Explorer**, you can select the Kubernetes integration from the data selector to view your Kubernetes data.
-
-![screenshot of the logs explorer main page](/solutions/images/observability-logs-explorer-applications.png "")
-
-From here, you can filter your log data and dive deeper into individual logs to find and troubleshoot issues. For more information, refer to:
-
-* [Logs Explorer](../logs/logs-explorer.md) for an over view of Logs Explorer.
-* [Filter logs in Logs Explorer](../logs/filter-aggregate-logs.md#logs-filter-logs-explorer) for more on filtering logs in Logs Explorer.
+* [Explore logs in Discover](../logs/discover-logs.md) for an overview of viewing your logs in Discover.
+* [Filter logs in Discover](../logs/filter-aggregate-logs.md#logs-filter-discover) for more on filtering logs in Discover.
 
 
 ## Part 4: Monitor application performance [monitor-kubernetes-application-performance]
