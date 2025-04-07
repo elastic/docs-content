@@ -115,6 +115,7 @@ For contributors and those interested in the technical details, see the [Elastic
 ## Find docs for your product version
 
 In April 2025, we released our new documentation site. This site includes documentation for our latest product versions.
+
 You can find documentation for previous product versions on our [Previous versions](/archive.md) page. You can also access the previous version of a page, where available, by clicking the **View previous version** link in the sidebar. 
 
 % not sure about curator
