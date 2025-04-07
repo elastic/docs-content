@@ -71,27 +71,58 @@ Verify that required traffic is allowed. Check the [Networking prerequisites](ec
         SELINUX=enforcing
         ```
 
-4. Install podman:
+4. Install Podman:
+    
+    * For Podman 4
 
-    * Install the latest available version `4.*` using dnf.
+        * Install the latest available version `4.*` using dnf.
 
-        ```sh
-        sudo dnf install podman-4.* podman-remote-4.*
-        ```
+            ```sh
+            sudo dnf install podman-4.* podman-remote-4.*
+            ```
 
-    * To prevent automatic Podman major version updates, configure the Podman version to be locked while still allowing minor and patch updates.
+        * To prevent automatic Podman major version updates, configure the Podman version to be locked at version `4.*` while still allowing minor and patch updates.
 
-        ```sh
-        ## Install versionlock
-        sudo dnf install 'dnf-command(versionlock)'
+            ```sh
+            ## Install versionlock
+            sudo dnf install 'dnf-command(versionlock)'
 
-        ## Lock major version
-        sudo dnf versionlock add --raw 'podman-4.*'
-        sudo dnf versionlock add --raw 'podman-remote-4.*'
+            ## Lock major version
+            sudo dnf versionlock add --raw 'podman-4.*'
+            sudo dnf versionlock add --raw 'podman-remote-4.*'
 
-        ## Verify that podman-4.* and podman-remote-4.* appear in the output
-        sudo dnf versionlock list
-        ```
+            ## Verify that podman-4.* and podman-remote-4.* appear in the output
+            sudo dnf versionlock list
+            ```
+
+    * For Podman 5
+
+        * Install version `5.2.2-13.*` using dnf.
+
+            :::{note}
+            As mentioned in [Migrating to Podman 5](migrate-to-podman-5.md) it is recommended to install Podman `5.2.2-13` since this is the latest supported version.
+
+            If you decide to install a previous Podman 5 version, make sure to replace `5.2.2-13` with the desired version in the commands below.
+
+            The version lock is still required for previous versions, to prevent automatic in-place updates that may be affected by a known [memory leak issue](https://github.com/containers/podman/issues/25473).
+            :::
+
+            ```sh
+            sudo dnf install podman-5.2.2-13.* podman-remote-5.2.2-13.*
+            ```
+        * To prevent automatic Podman updates to unsupported versions, configure the Podman version to be locked at version `5.2.2-13.*`.
+
+            ```sh
+            ## Install versionlock
+            sudo dnf install 'dnf-command(versionlock)'
+
+            ## Lock major version
+            sudo dnf versionlock add --raw 'podman-5.2.2-13.*'
+            sudo dnf versionlock add --raw 'podman-remote-5.2.2-13.*'
+
+            ## Verify that podman-5.2.2-13.* and podman-remote-5.2.2-13.* appear in the output
+            sudo dnf versionlock list
+            ```
 
 5. [This step is for RHEL 9 and Rocky Linux 9 only] Switch the network stack from Netavark to CNI:
 
