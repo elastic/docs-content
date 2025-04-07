@@ -120,6 +120,8 @@ You can access the previous version of a page, where available, by clicking the 
 
 % not sure about curator
 
+The following products versions are documented on this site:
+
 #### Core products and deployment methods
 
 | Product | Version |
