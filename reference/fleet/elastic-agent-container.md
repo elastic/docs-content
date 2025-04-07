@@ -43,19 +43,19 @@ Run the `docker pull` command against the Elastic Docker registry:
 ### Basic flavor
 
 ```terminal subs=true
-docker pull docker.elastic.co/elastic-agent/elastic-agent:{{stack-version}}
+docker pull docker.elastic.co/elastic-agent/elastic-agent-slim:{{stack-version}}
 ```
 
 Alternately, you can use the hardened [Wolfi](https://github.com/wolfi-dev/) image. Using Wolfi images requires Docker version 20.10.10 or later. For details about why the Wolfi images have been introduced, refer to our article [Reducing CVEs in Elastic container images](https://www.elastic.co/blog/reducing-cves-in-elastic-container-images).
 
-```terminal
-docker pull docker.elastic.co/elastic-agent/elastic-agent-slim-wolfi:9.0.0-beta1
+```terminal subs=true
+docker pull docker.elastic.co/elastic-agent/elastic-agent-slim-wolfi:{{stack-version}}
 ```
 
 ### Server flavor
 
-```terminal
-docker pull docker.elastic.co/elastic-agent/elastic-agent:9.0.0-beta1
+```terminal subs=true
+docker pull docker.elastic.co/elastic-agent/elastic-agent:{{stack-version}}
 ```
 
 To run the server flavor using the hardened [Wolfi](https://github.com/wolfi-dev/) image, run:
