@@ -116,11 +116,11 @@ For contributors and those interested in the technical details, see the [Elastic
 
 In April 2025, we released our new documentation site. This site includes documentation for the our latest product versions.
 
-You can find documentation for previous product versions on our [Previous versions](archive.md) page. You can also access the previous version of a page, where available, by clicking the **View previous version** link in the sidebar. 
+You can find documentation for previous product versions on our [Previous versions](/archive.md) page. You can also access the previous version of a page, where available, by clicking the **View previous version** link in the sidebar. 
 
 % not sure about curator
 
-### Core products and deployment methods
+#### Core products and deployment methods
 
 | Product | Version |
 | --- | --- |
@@ -134,7 +134,7 @@ You can find documentation for previous product versions on our [Previous versio
 
 \* Excludes release notes before January 2025
 
-### Schemas, libraries, and tools
+#### Schemas, libraries, and tools
 
 | Product | Version |
 | --- | --- |
@@ -149,7 +149,7 @@ You can find documentation for previous product versions on our [Previous versio
 | Elastic integrations | All |
 | Elastic Search UI library | All |
 
-### APM agents and tools
+#### APM agents and tools
 
 | Product | Version |
 | --- | --- |
