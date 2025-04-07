@@ -15,10 +15,10 @@ To perform an offline installation without a private Docker registry, you have t
 
     ```sh
     docker pull docker.elastic.co/cloud-enterprise/elastic-cloud-enterprise:4.0.0
-    docker pull docker.elastic.co/cloud-assets/elasticsearch:8.18.0-0
-    docker pull docker.elastic.co/cloud-assets/kibana:8.18.0-0
-    docker pull docker.elastic.co/cloud-assets/apm:8.18.0-0
-    docker pull docker.elastic.co/cloud-assets/enterprise-search:8.18.0-0
+    docker pull docker.elastic.co/cloud-release/elasticsearch-cloud-ess:8.18.0
+    docker pull docker.elastic.co/cloud-release/kibana-cloud:8.18.0
+    docker pull docker.elastic.co/cloud-release/elastic-agent-cloud:8.18.0
+    docker pull docker.elastic.co/cloud-release/enterprise-search-cloud:8.18.0
     docker pull docker.elastic.co/cloud-release/elasticsearch-cloud-ess:9.0.0
     docker pull docker.elastic.co/cloud-release/kibana-cloud:9.0.0
     docker pull docker.elastic.co/cloud-release/elastic-agent-cloud:9.0.0
@@ -33,10 +33,10 @@ To perform an offline installation without a private Docker registry, you have t
 
     ```sh
     docker save -o ece.4.0.0.tar docker.elastic.co/cloud-enterprise/elastic-cloud-enterprise:4.0.0
-    docker save -o es.8.18.0-0.tar docker.elastic.co/cloud-assets/elasticsearch:8.18.0-0
-    docker save -o kibana.8.18.0-0.tar docker.elastic.co/cloud-assets/kibana:8.18.0-0
-    docker save -o apm.8.18.0-0.tar docker.elastic.co/cloud-assets/apm:8.18.0-0
-    docker save -o enterprise-search.8.18.0-0.tar docker.elastic.co/cloud-assets/enterprise-search:8.18.0-0
+    docker save -o es.8.18.0.tar docker.elastic.co/cloud-release/elasticsearch-cloud-ess:8.18.0
+    docker save -o kibana.8.18.0.tar docker.elastic.co/cloud-release/kibana-cloud:8.18.0
+    docker save -o apm.8.18.0.tar docker.elastic.co/cloud-release/elastic-agent-cloud:8.18.0
+    docker save -o enterprise-search.8.18.0.tar docker.elastic.co/cloud-release/enterprise-search-cloud:8.18.0
     docker save -o es.9.0.0.tar docker.elastic.co/cloud-release/elasticsearch-cloud-ess:9.0.0
     docker save -o kibana.9.0.0.tar docker.elastic.co/cloud-release/kibana-cloud:9.0.0
     docker save -o apm.9.0.0.tar docker.elastic.co/cloud-release/elastic-agent-cloud:9.0.0
@@ -47,10 +47,10 @@ To perform an offline installation without a private Docker registry, you have t
 
     ```sh
     docker load < FILE_PATH/ece.4.0.0.tar
-    docker load < FILE_PATH/es.8.18.0-0.tar
-    docker load < FILE_PATH/kibana.8.18.0-0.tar
-    docker load < FILE_PATH/apm.8.18.0-0.tar
-    docker load < FILE_PATH/enterprise-search.8.18.0-0.tar
+    docker load < FILE_PATH/es.8.18.0.tar
+    docker load < FILE_PATH/kibana.8.18.0.tar
+    docker load < FILE_PATH/apm.8.18.0.tar
+    docker load < FILE_PATH/enterprise-search.8.18.0.tar
     docker load < FILE_PATH/es.9.0.0.tar
     docker load < FILE_PATH/kibana.9.0.0.tar
     docker load < FILE_PATH/apm.9.0.0.tar

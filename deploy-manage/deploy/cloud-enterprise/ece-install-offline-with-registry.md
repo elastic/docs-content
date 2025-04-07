@@ -21,10 +21,10 @@ Installing ECE on multiple hosts with your own registry server is simpler, becau
 
     ```sh
     docker pull docker.elastic.co/cloud-enterprise/elastic-cloud-enterprise:4.0.0
-    docker pull docker.elastic.co/cloud-assets/elasticsearch:8.18.0-0
-    docker pull docker.elastic.co/cloud-assets/kibana:8.18.0-0
-    docker pull docker.elastic.co/cloud-assets/apm:8.18.0-0
-    docker pull docker.elastic.co/cloud-assets/enterprise-search:8.18.0-0
+    docker pull docker.elastic.co/cloud-release/elasticsearch-cloud-ess:8.18.0
+    docker pull docker.elastic.co/cloud-release/kibana-cloud:8.18.0
+    docker pull docker.elastic.co/cloud-release/elastic-agent-cloud:8.18.0
+    docker pull docker.elastic.co/cloud-release/enterprise-search-cloud:8.18.0
     docker pull docker.elastic.co/cloud-release/elasticsearch-cloud-ess:9.0.0
     docker pull docker.elastic.co/cloud-release/kibana-cloud:9.0.0
     docker pull docker.elastic.co/cloud-release/elastic-agent-cloud:9.0.0
@@ -43,10 +43,10 @@ Installing ECE on multiple hosts with your own registry server is simpler, becau
 
     ```sh
     docker tag docker.elastic.co/cloud-enterprise/elastic-cloud-enterprise:4.0.0 REGISTRY/cloud-enterprise/elastic-cloud-enterprise:4.0.0
-    docker tag docker.elastic.co/cloud-assets/elasticsearch:8.18.0-0 REGISTRY/cloud-assets/elasticsearch:8.18.0-0
-    docker tag docker.elastic.co/cloud-assets/kibana:8.18.0-0 REGISTRY/cloud-assets/kibana:8.18.0-0
-    docker tag docker.elastic.co/cloud-assets/apm:8.18.0-0 REGISTRY/cloud-assets/apm:8.18.0-0
-    docker tag docker.elastic.co/cloud-assets/enterprise-search:8.18.0-0 REGISTRY/cloud-assets/enterprise-search:8.18.0-0
+    docker tag docker.elastic.co/cloud-assets/elasticsearch:8.18.0 REGISTRY/cloud-release/elasticsearch-cloud-ess:8.18.0
+    docker tag docker.elastic.co/cloud-assets/kibana:8.18.0 REGISTRY/cloud-release/kibana-cloud:8.18.0
+    docker tag docker.elastic.co/cloud-assets/apm:8.18.0 REGISTRY/cloud-release/elastic-agent-cloud:8.18.0
+    docker tag docker.elastic.co/cloud-assets/enterprise-search:8.18.0 REGISTRY/cloud-release/enterprise-search-cloud:8.18.0
     docker tag docker.elastic.co/cloud-release/elasticsearch-cloud-ess:9.0.0 REGISTRY/cloud-release/elasticsearch-cloud-ess:9.0.0
     docker tag docker.elastic.co/cloud-release/kibana-cloud:9.0.0 REGISTRY/cloud-release/kibana-cloud:9.0.0
     docker tag docker.elastic.co/cloud-release/elastic-agent-cloud:9.0.0 REGISTRY/cloud-release/elastic-agent-cloud:9.0.0
@@ -56,10 +56,10 @@ Installing ECE on multiple hosts with your own registry server is simpler, becau
 
     ```sh
     docker push REGISTRY/cloud-enterprise/elastic-cloud-enterprise:4.0.0
-    docker push REGISTRY/cloud-assets/elasticsearch:8.18.0-0
-    docker push REGISTRY/cloud-assets/kibana:8.18.0-0
-    docker push REGISTRY/cloud-assets/apm:8.18.0-0
-    docker push REGISTRY/cloud-assets/enterprise-search:8.18.0-0
+    docker push REGISTRY/cloud-assets/elasticsearch:8.18.0
+    docker push REGISTRY/cloud-assets/kibana:8.18.0
+    docker push REGISTRY/cloud-assets/apm:8.18.0
+    docker push REGISTRY/cloud-assets/enterprise-search:8.18.0
     docker push REGISTRY/cloud-release/elasticsearch-cloud-ess:9.0.0
     docker push REGISTRY/cloud-release/kibana-cloud:9.0.0
     docker push REGISTRY/cloud-release/elastic-agent-cloud:9.0.0

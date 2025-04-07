@@ -15,10 +15,10 @@ The first table contains the stack versions that shipped with the 4.0 version of
 | Docker images included with Elastic Cloud Enterprise 4.0.0 |
 | --- |
 | docker.elastic.co/cloud-enterprise/elastic-cloud-enterprise:4.0.0 |
-| docker.elastic.co/cloud-assets/elasticsearch:8.18.0-0 |
-| docker.elastic.co/cloud-assets/kibana:8.18.0-0 |
-| docker.elastic.co/cloud-assets/apm:8.18.0-0 |
-| docker.elastic.co/cloud-assets/enterprise-search:8.18.0-0 |
+| docker.elastic.co/cloud-release/elasticsearch-cloud-ess:8.18.0 |
+| docker.elastic.co/cloud-release/kibana-cloud:8.18.0 |
+| docker.elastic.co/cloud-release/elastic-agent-cloud:8.18.0 |
+| docker.elastic.co/cloud-release/enterprise-search-cloud:8.18.0 |
 | docker.elastic.co/cloud-release/elasticsearch-cloud-ess:9.0.0 |
 | docker.elastic.co/cloud-release/kibana-cloud:9.0.0 |
 | docker.elastic.co/cloud-release/elastic-agent-cloud:9.0.0 |
