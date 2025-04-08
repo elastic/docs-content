@@ -33,15 +33,15 @@ The indices used to store saved objects and the conventions on their names and a
 
 ### Kibana 6.5.0
 
-The `.kibana_N` saved object index was introduced. The `N` suffix was incremented each time an upgrade was performed. At that point, a `.kibana` alias was created / updated to point to the latest version of the index.
+The `.kibana_N` saved object index is created. Saved objects are reindexed into a new index, and the `N` suffix is incremented each time an upgrade is performed. A `.kibana` alias is maintained, which points to the latest version of the index.
 
 ### Kibana 7.4.0
 
-A new `.kibana_task_manager_N` was created, which would host the `task` saved objects. It also had a `.kibana_task_manager` alias, pointing to the latest version of the index.
+A new `.kibana_task_manager_N` is introduced, which hosts the `task` saved objects. It also has the corresponding `.kibana_task_manager` alias, pointing to the latest version of the index.
 
 ### Kibana 7.11.0
 
-Starting with 7.11.0 the naming convention evolved, and the indices names started containing the version number, along with a `_001` suffix.
+Starting with 7.11.0 the naming convention evolves, and the indices names contain the version number, along with a `_001` suffix.
 Each of the saved objects indices now has a couple of aliases. For example, the `.kibana_7.11.0_001` index has a *default* `.kibana` alias and a `.kibana_7.11.0` *version* alias. The *default* aliases (such as `.kibana` and `.kibana_task_manager`) always point to the most up-to-date saved object indices. Then, *version* aliases are aligned with the deployed {{kib}} version:
 
 | Alias | Version alias | Index name |
@@ -51,7 +51,7 @@ Each of the saved objects indices now has a couple of aliases. For example, the 
 
 ### Kibana 8.6.0
 
-In versions 8.6.0 and newer, compatible migrations were introduced, allowing to reuse existing saved object indices as long as changes in the mappings were compatible. After this change, index names aren’t necessarily aligned with the deployed {{kib}} version. When updates on a certain index are compatible, {{kib}} will keep the existing index instead of creating a new one. This allows for a more efficient upgrade process. The following example illustrates a completely valid state for an 8.7.0 deployment:
+In versions 8.6.0 and newer, compatible migrations are introduced, allowing to reuse existing saved object indices as long as changes in the mappings are compatible. After this change, index names aren’t necessarily aligned with the deployed {{kib}} version. When updates on a certain index are compatible, {{kib}} will keep the existing index instead of creating a new one. This allows for a more efficient upgrade process. The following example illustrates a completely valid state for an 8.7.0 deployment:
 
 | Alias | Versioned alias | Index name |
 | --- | --- | --- |
@@ -73,7 +73,7 @@ Starting with 8.8.0, {{kib}} splits the main saved object index into multiple on
 
 ### Kibana 8.16.0 and newer
 
-A new index was introduced, with the goal of storing the `usage-counter` saved object type, which is expected to have a large number of documents.
+A new index is introduced, with the goal of storing the `usage-counter` saved object type, which is expected to have a large number of documents.
 
 | Alias | Version alias | Index name |
 | --- | --- | --- |
