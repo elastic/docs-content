@@ -6,7 +6,7 @@ sub:
   slash: "/"
   distro: "RPM"
   export: "export"
-  escape: "\\"
+escape: "\\"
 navigation_title: "Install with RPM package"
 applies_to:
   deployment:
@@ -81,25 +81,36 @@ sudo zypper modifyrepo --enable elasticsearch && \
 
 ### Download and install the RPM manually [install-rpm]
 
-The RPM for {{es}} {{stack-version}} can be downloaded from the website and installed as follows:
+1. Download and install the RPM for {{es}} {{stack-version}} with the following commands:
 
-```sh subs=true
-wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-{{stack-version}}-x86_64.rpm
-wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-{{stack-version}}-x86_64.rpm.sha512
-shasum -a 512 -c elasticsearch-{{stack-version}}-x86_64.rpm.sha512 <1>
-sudo rpm --install elasticsearch-{{stack-version}}-x86_64.rpm
-```
+    ```sh subs=true
+    wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-{{stack-version}}-x86_64.rpm
+    wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-{{stack-version}}-x86_64.rpm.sha512
+    shasum -a 512 -c elasticsearch-{{stack-version}}-x86_64.rpm.sha512 <1>
+    sudo rpm --install elasticsearch-{{stack-version}}-x86_64.rpm
+    ```
 
-1. Compares the SHA of the downloaded RPM and the published checksum, which should output `elasticsearch-<version>-x86_64.rpm: OK`.
+    1. Compares the SHA of the downloaded RPM and the published checksum, which should output `elasticsearch-<version>-x86_64.rpm: OK`.
 
-:::{include} _snippets/skip-set-kernel-params.md
+    :::{include} _snippets/skip-set-kernel-params.md
+    :::
+
+2. Copy the terminal output from the install command to a local file. In particular, you’ll need the password for the built-in `elastic` superuser account. The output also contains the commands to enable {{es}} to [run as a service](#running-systemd).
+
+## Step 3: Set up the node for connectivity
+
+:::{include} _snippets/node-connectivity.md
 :::
 
-### Step 3 (Optional): Reconfigure a node to join an existing cluster [_reconfigure_a_node_to_join_an_existing_cluster_2]
+### Set up a node as the first node in a cluster [first-node]
+
+:::{include} _snippets/first-node.md
+:::
+
+### Reconfigure a node to join an existing cluster [existing-cluster]
 
 :::{include} _snippets/join-existing-cluster.md
 :::
-
 
 ## Step 4: Enable automatic creation of system indices [rpm-enable-indices]
 
@@ -126,15 +137,31 @@ sudo rpm --install elasticsearch-{{stack-version}}-x86_64.rpm
 
 ### Security at startup [deb-security-configuration]
 
-:::{include} _snippets/auto-security-config.md
+:::{include} _snippets/auto-security-config-rpm-deb.md
+:::
+
+## Step 6: Reset the `elastic` superuser password
+
+:::{include} _snippets/reset-superuser-rpm-deb.md
 :::
 
 :::{include} _snippets/pw-env-var.md
 :::
 
-## Step 6: Check that {{es}} is running [rpm-check-running]
+## Step 7: Check that {{es}} is running [rpm-check-running]
 
 :::{include} _snippets/check-es-running.md
+:::
+
+## Step 8 (Multi-node clusters only): Update the config files [update-config-files]
+
+If you are deploying a multi-node cluster, then the `elasticsearch-reconfigure-node` tool adds all existing nodes to each newly enrolled node's `discovery.seed_hosts` setting. However, you need to go back to all of the nodes in the cluster and edit them so each node in the cluster can restart and rejoin the cluster as expected.
+
+:::{note}
+Because the initial node in the cluster is bootstrapped as a single-node cluster, it won't have `discovery.seed_hosts` configured. This setting is mandatory for multi-node clusters and must be added manually to the first node.
+:::
+
+:::{include} _snippets/clean-up-multinode.md
 :::
 
 ## Configuring {{es}} [rpm-configuring]
@@ -173,11 +200,6 @@ The RPM places config files, logs, and the data directory in the appropriate loc
 | logs | Log files location. | `/var/log/elasticsearch` | [`path.logs`](/deploy-manage/deploy/self-managed/important-settings-configuration.md#path-settings) |
 | plugins | Plugin files location. Each plugin will be contained in a subdirectory. | `/usr/share/elasticsearch/plugins` |  |
 | repo | Shared file system repository locations. Can hold multiple locations. A file system repository can be placed in to any subdirectory of any directory specified here. | Not configured | [`path.repo`](/deploy-manage/tools/snapshot-and-restore/shared-file-system-repository.md) |
-
-### Security certificates and keys [stack-security-certificates]
-
-:::{include} _snippets/security-files.md
-:::
 
 ## Next steps [_next_steps]
 

@@ -2,6 +2,9 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-lambda.html
   - https://www.elastic.co/guide/en/serverless/current/observability-apm-observe-lambda-functions.html
+applies_to:
+  stack:
+  serverless:
 ---
 
 # Observe Lambda functions [apm-lambda]

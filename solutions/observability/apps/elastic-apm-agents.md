@@ -1,9 +1,11 @@
 ---
+navigation_title: "APM agents"
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-agents.html
   - https://www.elastic.co/guide/en/serverless/current/observability-apm-agents-elastic-apm-agents.html
-
-navigation_title: "APM agents"
+applies_to:
+  stack:
+  serverless:
 ---
 
 # Elastic APM agents [observability-apm-agents-elastic-apm-agents]

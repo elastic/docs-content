@@ -135,7 +135,6 @@ On the **Logs** tab you can filter, search, and explore the agent logs:
 
 * Change the log level to filter the view by log levels. Want to see debugging logs? Refer to [Change the logging level](#change-logging-level).
 * Change the time range to view historical logs.
-* Click **Open in Logs** to tail agent log files in real time. For more information about logging, refer to [Tail log files](/solutions/observability/logs/logs-stream.md).
 
 
 ## Change the logging level [change-logging-level]

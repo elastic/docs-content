@@ -2,6 +2,9 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-view-and-analyze-data.html
   - https://www.elastic.co/guide/en/serverless/current/observability-apm-view-and-analyze-traces.html
+applies_to:
+  stack:
+  serverless:
 ---
 
 # View and analyze data [apm-view-and-analyze-data]
