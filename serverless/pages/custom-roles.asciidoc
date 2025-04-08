@@ -4,12 +4,6 @@
 // :description: Create and manage roles that grant privileges within your project.
 // :keywords: serverless, Elasticsearch, Security
 
-ifndef::serverlessCustomRoles[]
-coming:[]
-endif::[]
-
-ifdef::serverlessCustomRoles[]
-
 This content applies to: {es-badge} {sec-badge}
 
 The built-in <<general-assign-user-roles-organization-level-roles,organization-level roles>> and <<general-assign-user-roles-instance-access-roles,instance access roles>> are great for getting started with {serverless-full}, and for system administrators who do not need more restrictive access.
@@ -112,4 +106,3 @@ As new features are added to {serverless-full}, roles that use the custom option
 After your roles are set up, the next step to securing access is to assign roles to your users.
 Click the **Assign roles** link to go to the **Members** tab of the **Organization** page.
 Learn more in <<general-assign-user-roles>>.
-endif::[]

@@ -22,11 +22,4 @@ Data volumes for ingest and retention are based on the fully enriched normalized
 
 [Synthetic monitoring](../../../solutions/observability/apps/synthetic-monitoring.md) is an optional add-on to Observability Serverless projects that allows you to periodically check the status of your services and applications. In addition to the core ingest and retention dimensions, there is a charge to execute synthetic monitors on our testing infrastructure. Browser (journey) based tests are charged per-test-run, and ping (lightweight) tests have an all-you-can-use model per location used.
 
-## Elastic Inference Service [EIS-billing]
-[Elastic Inference Service (EIS)](../../../explore-analyze/elastic-inference/eis.md) enables you to leverage AI-powered search as a service without deploying a model in your serverless project. EIS is configured as a default LLM for use with the Observability AI Assistant (for all observability projects).
-
-:::{note}
-Use of the Observability AI Assistant uses EIS tokens and incurs related token-based add-on billing for your serverless project.
-:::
-
 Refer to [Serverless billing dimensions](serverless-project-billing-dimensions.md) and the [{{ecloud}} pricing table](https://cloud.elastic.co/cloud-pricing-table?productType=serverless&project=observability) for more details about {{obs-serverless}} billing dimensions and rates.

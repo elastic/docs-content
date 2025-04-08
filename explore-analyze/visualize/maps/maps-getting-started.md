@@ -171,7 +171,7 @@ View your geospatial data alongside a heat map and pie chart, and then filter th
 5. Set a filter from the map:
 
     1. Open a tooltip by clicking anywhere in the United States vector.
-    2. To show only documents where **geo.src** is **US**, click the filter icon ![filter icon](/explore-analyze/images/kibana-gs-filter-icon.png "")in the row for **ISO 3066-1 alpha-2**.
+    2. To show only documents where **geo.src** is **US**, click the filter icon ![filter icon](/explore-analyze/images/kibana-gs-filter-icon.png "kibana-gs-filter-icon =4%x4%")in the row for **ISO 3066-1 alpha-2**.
 
        :::{image} /explore-analyze/images/kibana-gs_tooltip_filter.png
        :alt: Tooltip on map

@@ -14,8 +14,6 @@ A **dashboard** is made of one or more **panels** that you can organize as you l
 
 ![Example dashboard](/explore-analyze/images/kibana-dashboard-overview.png "")
 
-There are several [panel editors](visualize.md#panels-editors) in {{kib}} that let you create and configure different types of visualizations.
-
 At any time, you can [share a dashboard](dashboards/sharing.md) you’ve created with your team, in {{kib}} or outside.
 
 Some dashboards are created and managed by the system, and are identified as `managed` in your list of dashboards. This generally happens when you set up an integration to add data. You can’t edit managed dashboards directly, but you can [duplicate](dashboards/duplicate-dashboards.md) them and edit these duplicates.
