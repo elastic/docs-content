@@ -33,23 +33,9 @@ Some of the unique benefits of {{ecloud}} include:
 
 For more information, refer to [](/deploy-manage/cloud-organization.md).
 
-## Differences between serverless projects and hosted deployments[general-what-is-serverless-elastic-differences-between-serverless-projects-and-hosted-deployments-on-ecloud]
+## Compare {{ech}} and {{serverless-short}} [general-what-is-serverless-elastic-differences-between-serverless-projects-and-hosted-deployments-on-ecloud]
 
-You can have multiple hosted deployments and serverless projects in the same {{ecloud}} organization, and each deployment type has its own specificities.
-
-
-| Option | Serverless | Hosted |
-| --- | --- | --- |
-| **Cluster management** | Fully managed by Elastic. | You provision and manage your hosted clusters. Shared responsibility with Elastic. |
-| **Scaling** | Autoscales out of the box. | Manual scaling or autoscaling available for you to enable. |
-| **Upgrades** | Automatically performed by Elastic. | You choose when to upgrade. |
-| **Pricing** | Individual per project type and based on your usage. | Based on deployment size and subscription level. |
-| **Performance** | Autoscales based on your usage. | Manual scaling. |
-| **Solutions** | Single solution per project. | Full Elastic Stack per deployment. |
-| **User management** | Elastic Cloud-managed users. | Elastic Cloud-managed users and native Kibana users. |
-| **API support** | Subset of [APIs](https://www.elastic.co/docs/api). | All Elastic APIs. |
-| **Backups** | Projects automatically backed up by Elastic. | Your responsibility with Snapshot & Restore. |
-| **Data retention** | Editable on data streams. | Index Lifecycle Management. |
+Refer to [Compare Cloud Hosted and Serverless](/deploy-manage/deploy/elastic-cloud/differences-from-other-elasticsearch-offerings.md) for a detailed comparison between {{ech}} deployments and {{serverless-short}} projects.
 
 ## APIs
 
