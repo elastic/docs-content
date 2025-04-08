@@ -38,7 +38,12 @@ CD c:\kibana-{{stack-version}}-windows-x86_64
 :::{include} _snippets/new-enrollment-token.md
 :::
 
-## Step 3: Run {{kib}} from the command line [windows-running]
+## Step 3 (Optional): Make {{kib}} externally accessible
+
+:::{include} _snippets/kibana-ip.md
+:::
+
+## Step 4: Run {{kib}} from the command line [windows-running]
 
 {{kib}} can be started from the command line as follows:
 

@@ -10,19 +10,11 @@ applies_to:
 
 # Enable large language model (LLM) access
 
-{{elastic-sec}} uses large language models (LLMs) for some of its advanced analytics features. To enable these features, you can connect to Elastic LLM, a third-party LLM provider, or a custom local LLM.
+{{elastic-sec}} uses large language models (LLMs) for some of its advanced analytics features. To enable these features, you can connect a third-party LLM provider or a custom local LLM.
 
 :::{important}
 Different LLMs have varying performance when used to power different features and use-cases. For more information about how various models perform on different tasks in {{elastic-sec}}, refer to the [Large language model performance matrix](/solutions/security/ai/large-language-model-performance-matrix.md).
 :::
-
-
-## Connect to Elastic LLM
-
-Elastic LLM is enabled by default for any user with the necessary Elastic license or subscription. To use it:
-
-1. Navigate to a feature that uses an LLM, such as AI Assistant.
-2. Use the model selection menu to select the Elastic LLM*.
 
 ## Connect to a third-party LLM
 

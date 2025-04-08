@@ -33,7 +33,7 @@ Some of the unique benefits of {{ecloud}} include:
 
 For more information, refer to [](/deploy-manage/cloud-organization.md).
 
-## Differences between serverless projects and hosted deployments[general-what-is-serverless-elastic-differences-between-serverless-projects-and-hosted-deployments-on-ecloud]
+## Compare {{ech}} and {{serverless-short}} [general-what-is-serverless-elastic-differences-between-serverless-projects-and-hosted-deployments-on-ecloud]
 
 You can have multiple hosted deployments and serverless projects in the same {{ecloud}} organization, and each deployment type has its own specificities.
 
