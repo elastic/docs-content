@@ -17,7 +17,7 @@ The managed intake service exposes endpoints for:
 
 * [The managed intake service information API](#observability-apm-server-api-server-information-api)
 * [Elastic APM events intake API](#observability-apm-server-api-events-intake-api)
-
+* [OpenTelemetry intake API](#observability-apm-server-api-opentelemetry-api)
 
 ## Server information API [observability-apm-server-api-server-information-api]
 
@@ -4477,4 +4477,35 @@ The managed intake service uses JSON Schema to validate requests. The specificat
 }
 ```
 
+::::
+
+## OpenTelemetry API [observability-apm-server-api-opentelemetry-api]
+
+Elastic supports receiving traces, metrics, and logs over the [OpenTelemetry Protocol (OTLP)](https://opentelemetry.io/docs/specs/otlp/). OTLP is the default transfer protocol for OpenTelemetry and is supported natively by the managed intake service.
+
+The managed intake service supports two OTLP communication protocols on the same port:
+
+* OTLP/HTTP (protobuf)
+* OTLP/gRPC
+
+
+### OTLP/gRPC paths [otlpgrpc-paths]
+
+| Name | Endpoint |
+| --- | --- |
+| OTLP metrics intake | `/opentelemetry.proto.collector.metrics.v1.MetricsService/Export` |
+| OTLP trace intake | `/opentelemetry.proto.collector.trace.v1.TraceService/Export` |
+| OTLP logs intake | `/opentelemetry.proto.collector.logs.v1.LogsService/Export` |
+
+
+### OTLP/HTTP paths [otlphttp-paths]
+
+| Name | Endpoint |
+| --- | --- |
+| OTLP metrics intake | `/v1/metrics` |
+| OTLP trace intake | `/v1/traces` |
+| OTLP logs intake | `/v1/logs` |
+
+::::{tip}
+See our [OpenTelemetry docs](upstream-opentelemetry-collectors-language-sdks.md) to learn how to send data to the managed intake service from an OpenTelemetry agent OpenTelemetry collector.
 ::::
