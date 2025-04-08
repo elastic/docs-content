@@ -16,7 +16,7 @@ Now that you have {{ece}} up and running, take a look at some of the additional 
 * [Assign roles to hosts](../../../deploy-manage/deploy/cloud-enterprise/assign-roles-to-hosts.md) - Make sure new hosts can be used for their intended purpose after you install ECE on them.
 * [System deployments configuration](system-deployments-configuration.md) - Best practices for ECE system deployments to ensure a highly available and resilient setup.
 * [Configure deployment templates](configure-deployment-templates.md) – Define the resources, topology, hardware, and configurations that will be applied to your deployments.
-* [Manage Elastic Stack versions](./manage-elastic-stack-versions.md) - Upload or remove Elastic Stack packs.
+* [Manage {{stack}} versions](./manage-elastic-stack-versions.md) - Upload or remove {{stack}} packs.
 * [Change the ECE API URL](./change-ece-api-url.md) - Configure the HTTPS URL used to access the ECE API.
 * [Change endpoint URLs](change-endpoint-urls.md) - Configure the URLs to access {{es}} and {{kib}} deployments to match your [domain name](./ece-wildcard-dns.md) and [proxy certificate](../../security/secure-your-elastic-cloud-enterprise-installation/manage-security-certificates.md).
 * [Enable custom endpoint aliases](./enable-custom-endpoint-aliases.md) - This feature allows to use aliases in the endpoint URLs instead of cluster UUIDs.
@@ -30,7 +30,7 @@ Other sections of the documentation describe important ECE features to consider:
 
 ## Advanced configuration procedures
 
-* [Configure allocator affinity](configure-allocator-affinity.md) - Determine how ECE distributes your Elastic Stack deployments across allocators.
+* [Configure allocator affinity](configure-allocator-affinity.md) - Determine how ECE distributes your {{stack}} deployments across allocators.
 * [Change allocator disconnect timeout](change-allocator-disconnect-timeout.md) - Configure how long ECE waits before considering allocators to be disconnected.
 * [Migrate ECE to Podman hosts](./migrate-ece-to-podman-hosts.md) - If you are running a Docker based installation and you need to migrate to Podman.
 * [Migrate ECE on Podman hosts to SELinux in enforcing mode](../../security/secure-your-elastic-cloud-enterprise-installation/migrate-ece-on-podman-hosts-to-selinux-enforce.md) - Migrate ECE to SELinux in `enforcing` mode using Podman.

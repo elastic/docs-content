@@ -8,7 +8,7 @@ mapped_pages:
 
 # Available Docker images [ece-install-offline-images]
 
-Versions of the Elastic Stack, containing {{es}}, {{kib}}, and other products, are available as downloadable Docker images.
+Versions of the {{stack}}, containing {{es}}, {{kib}}, and other products, are available as downloadable Docker images.
 
 The first table contains the stack versions that shipped with the 4.0 version of Elastic Cloud Enterprise. You can also check the [most recent stack packs and Docker images](#ece-recent-download-list), which might have released after the 4.0 version of ECE, as well as the [full list of available stack packs and Docker images](#ece-full-download-list).
 
@@ -23,12 +23,12 @@ The first table contains the stack versions that shipped with the 4.0 version of
 | docker.elastic.co/cloud-release/kibana-cloud:9.0.0 |
 | docker.elastic.co/cloud-release/elastic-agent-cloud:9.0.0 |
 
-$$$ece-all-stacks$$$Additional Elastic Stack versions are available as Docker images that you can use with ECE. For offline installations, you need to download both the Elastic Stack pack and the Docker images for the same version.
+$$$ece-all-stacks$$$Additional {{stack}} versions are available as Docker images that you can use with ECE. For offline installations, you need to download both the {{stack}} pack and the Docker images for the same version.
 
-To learn more about adding the stack pack to ECE, check [Manage Elastic Stack Versions](manage-elastic-stack-versions.md).
+To learn more about adding the stack pack to ECE, check [Manage {{stack}} Versions](manage-elastic-stack-versions.md).
 
 
-## Most recent Elastic Stack packs and Docker images [ece-recent-download-list]
+## Most recent {{stack}} packs and Docker images [ece-recent-download-list]
 
 :::{important}
 Enterprise Search is not available in versions 9.0+.
@@ -61,7 +61,7 @@ Enterprise Search is not available in versions 9.0+.
 |  |  |
 
 
-## All available Elastic Stack packs and Docker images [ece-full-download-list]
+## All available {{stack}} packs and Docker images [ece-full-download-list]
 
 ::::{dropdown} Expand to view the full list
 | Required downloads | Minimum required ECE version |

@@ -69,7 +69,7 @@ A `resource` field can be included in this request (check the following, manual 
 
 This example creates a new deployment named "my-first-api-deployment" with the following characteristics:
 
-* Version 8.17.1 of the Elastic Stack
+* Version 8.17.1 of the {{stack}}
 * {{es}} cluster in two zones with 4 GB of memory for each node
 * 1 GB single zone {{kib}} instance and 1 GB Integrations Server instance
 

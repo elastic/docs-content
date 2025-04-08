@@ -16,7 +16,7 @@ For example: You might decide to create a new deployment template, if you have a
 
 ## Before you begin [ece_before_you_begin_3]
 
-Before you start creating your own deployment templates, you should have: [tagged your allocators](ece-configuring-ece-tag-allocators.md) to tell ECE what kind of hardware you have available for Elastic Stack deployments. If the default instance configurations don’t provide what you need, you might also need to [create your own instance configurations](ece-configuring-ece-instance-configurations-create.md) first.
+Before you start creating your own deployment templates, you should have: [tagged your allocators](ece-configuring-ece-tag-allocators.md) to tell ECE what kind of hardware you have available for {{stack}} deployments. If the default instance configurations don’t provide what you need, you might also need to [create your own instance configurations](ece-configuring-ece-instance-configurations-create.md) first.
 
 
 ## Create deployment templates in the UI [ece-configuring-ece-create-templates-ui]

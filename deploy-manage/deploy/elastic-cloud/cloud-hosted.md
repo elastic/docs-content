@@ -52,13 +52,13 @@ $$$faq-where$$$
 
 $$$faq-x-pack$$$
 
-**{{ech}} is the Elastic Stack, managed through {{ecloud}} deployments.**
+**{{ech}} is the {{stack}}, managed through {{ecloud}} deployments.**
 
 It is also formerly known as {{es}} Service.
 
-{{ech}} allows you to manage one or more instances of the Elastic Stack through **deployments**. These deployments are hosted on {{ecloud}}, through the cloud provider and regions of your choice, and are tied to your organization account.
+{{ech}} allows you to manage one or more instances of the {{stack}} through **deployments**. These deployments are hosted on {{ecloud}}, through the cloud provider and regions of your choice, and are tied to your organization account.
 
-A **hosted deployment** helps you manage an {{es}} cluster and instances of other Elastic products, like {{kib}} or APM instances, in one place. Spin up, scale, upgrade, and delete your Elastic Stack products without having to manage each one separately. In a deployment, everything works together.
+A **hosted deployment** helps you manage an {{es}} cluster and instances of other Elastic products, like {{kib}} or APM instances, in one place. Spin up, scale, upgrade, and delete your {{stack}} products without having to manage each one separately. In a deployment, everything works together.
 
 ::::{note}
 {{ech}} is one of the two deployment options available on {{ecloud}}. [Depending on your needs](../elastic-cloud.md), you can also run [{{serverless-full}} projects](/deploy-manage/deploy/elastic-cloud/serverless.md).
@@ -78,7 +78,7 @@ You can use these presets, or start from them to get the unique configuration yo
 Building a rich search experience, gaining actionable insight into your environment, or protecting your systems and endpoints? You can implement each of these major use cases, and more, with the solutions that are pre-built in each Elastic deployment.
 
 :::{image} /deploy-manage/images/cloud-ec-stack-components.png
-:alt: Elastic Stack components and solutions with Enterprise Search
+:alt: {{stack}} components and solutions with Enterprise Search
 :width: 75%
 :::
 
@@ -86,7 +86,7 @@ Building a rich search experience, gaining actionable insight into your environm
 Enterprise Search is not available in {{stack}} 9.0+.
 :::
 
-These solutions help you accomplish your use cases: Ingest data into the deployment and set up specific capabilities of the Elastic Stack.
+These solutions help you accomplish your use cases: Ingest data into the deployment and set up specific capabilities of the {{stack}}.
 
 Of course, you can choose to follow your own path and use Elastic components available in your deployment to ingest, visualize, and analyze your data independently from solutions.
 
@@ -136,7 +136,7 @@ This frequently-asked-questions list helps you with common questions while you g
 
 * [What is {{ech}}?](/deploy-manage/deploy/elastic-cloud/cloud-hosted.md#faq-what)
 * [Is {{ech}}, formerly known as {{es}} Service, the same as Amazon’s {{es}} Service?](/deploy-manage/deploy/elastic-cloud/cloud-hosted.md#faq-aws-difference)
-* [Can I run the full Elastic Stack in {{ech}}?](/deploy-manage/deploy/elastic-cloud/cloud-hosted.md#faq-full-stack)
+* [Can I run the full {{stack}} in {{ech}}?](/deploy-manage/deploy/elastic-cloud/cloud-hosted.md#faq-full-stack)
 * [Can I try {{ech}} for free?](/deploy-manage/deploy/elastic-cloud/cloud-hosted.md#faq-trial)
 * [What if I need to change the size of my {{es}} cluster at a later time?](/deploy-manage/deploy/elastic-cloud/cloud-hosted.md#faq-config)
 * [Do you offer support subscriptions?](/deploy-manage/deploy/elastic-cloud/cloud-hosted.md#faq-subscriptions)
@@ -153,11 +153,11 @@ $$$faq-what$$$**What is {{ech}}?**
 $$$faq-aws-difference$$$**Is {{ech}}, formerly known as {{es}} Service, the same as Amazon’s {{es}} Service?**
 :   {{ech}} is not the same as the Amazon {{es}} service. To learn more about the differences, check our [AWS {{es}} Service](https://www.elastic.co/aws-elasticsearch-service) comparison.
 
-$$$faq-full-stack$$$**Can I run the full Elastic Stack in {{ech}}?**
-:   Many of the products that are part of the Elastic Stack are readily available in {{ech}}, including {{es}}, {{kib}}, plugins, and features such as monitoring and security. Use other Elastic Stack products directly with {{ech}}. For example, both Logstash and Beats can send their data to {{ech}}. What is run is determined by the [subscription level](https://www.elastic.co/cloud/as-a-service/subscriptions).
+$$$faq-full-stack$$$**Can I run the full {{stack}} in {{ech}}?**
+:   Many of the products that are part of the {{stack}} are readily available in {{ech}}, including {{es}}, {{kib}}, plugins, and features such as monitoring and security. Use other {{stack}} products directly with {{ech}}. For example, both Logstash and Beats can send their data to {{ech}}. What is run is determined by the [subscription level](https://www.elastic.co/cloud/as-a-service/subscriptions).
 
 $$$faq-trial$$$**Can I try {{ech}} for free?**
-:   Yes, sign up for a 14-day free trial. The trial starts the moment a cluster is created. During the free trial period get access to a deployment to explore Elastic solutions for Search, Observability, Security, or the latest version of the Elastic Stack.
+:   Yes, sign up for a 14-day free trial. The trial starts the moment a cluster is created. During the free trial period get access to a deployment to explore Elastic solutions for Search, Observability, Security, or the latest version of the {{stack}}.
 
 
 $$$faq-config$$$**What if I need to change the size of my {{es}} cluster at a later time?**

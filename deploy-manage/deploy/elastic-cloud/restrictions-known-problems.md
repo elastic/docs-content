@@ -28,7 +28,7 @@ When using {{ecloud}}, there are some limitations you should be aware of:
 
 For limitations related to logging and monitoring, check the [Restrictions and limitations](../../monitor/stack-monitoring/ece-ech-stack-monitoring.md#restrictions-monitoring) section of the logging and monitoring page.
 
-% Occasionally, we also publish information about [Known problems](#ec-known-problems) with our {{ecloud}} or the Elastic Stack.
+% Occasionally, we also publish information about [Known problems](#ec-known-problems) with our {{ecloud}} or the {{stack}}.
 
 To learn more about the features that are supported by {{ecloud}}, check [{{ecloud}} Subscriptions](https://www.elastic.co/cloud/elasticsearch-service/subscriptions?page=docs&placement=docs-body).
 
@@ -93,7 +93,7 @@ Currently you can’t use SSO to login directly from {{ecloud}} into {{kib}} end
 ## PDF report generation using Alerts or Watcher webhooks [ec-restrictions-traffic-filters-watcher]
 
 * PDF report automatic generation via Alerts is not possible on {{ecloud}}.
-* PDF report generation isn’t possible for deployments running on Elastic stack version 8.7.0 or before that are protected by traffic filters. This limitation doesn’t apply to public webhooks such as Slack, PagerDuty, and email. For deployments running on Elastic stack version 8.7.1 and beyond, [PDF report automatic generation via Watcher webhook](../../../explore-analyze/report-and-share/automating-report-generation.md#use-watcher) is possible using the `xpack.notification.webhook.additional_token_enabled` configuration setting to bypass traffic filters.
+* PDF report generation isn’t possible for deployments running on {{stack}} version 8.7.0 or before that are protected by traffic filters. This limitation doesn’t apply to public webhooks such as Slack, PagerDuty, and email. For deployments running on {{stack}} version 8.7.1 and beyond, [PDF report automatic generation via Watcher webhook](../../../explore-analyze/report-and-share/automating-report-generation.md#use-watcher) is possible using the `xpack.notification.webhook.additional_token_enabled` configuration setting to bypass traffic filters.
 
 
 ## {{kib}} [ec-restrictions-kibana]

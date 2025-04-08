@@ -8,7 +8,7 @@ mapped_pages:
 
 # Create a deployment
 
-An ECE deployment is a fully managed Elastic Stack environment running on {{ece}}. It includes {{es}}, {{kib}}, and optional features like Machine Learning or an Integrations (Fleet & APM) Server.
+An ECE deployment is a fully managed {{stack}} environment running on {{ece}}. It includes {{es}}, {{kib}}, and optional features like Machine Learning or an Integrations (Fleet & APM) Server.
 
 Each deployment is based on a [deployment template](./deployment-templates.md), which defines its resources, default topology, scaling policies, and available features. Deployments can be customized based on workload requirements, snapshot settings, and security configurations.
 

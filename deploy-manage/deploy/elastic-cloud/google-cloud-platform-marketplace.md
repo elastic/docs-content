@@ -72,5 +72,5 @@ If you already unsubscribed before the new billing account has been set up, you 
 
 ## Native GCP integrations [ec-gcp-marketplace-native] 
 
-You can ingest data from Google Pub/Sub to the Elastic Stack very easily from the Google Cloud Console. You can use the [Metricbeat Google Cloud Platform module](../../../solutions/observability/cloud/monitor-google-cloud-platform-gcp.md) or the [GCP Dataflow Templates](../../../solutions/observability/cloud/gcp-dataflow-templates.md).
+You can ingest data from Google Pub/Sub to the {{stack}} very easily from the Google Cloud Console. You can use the [Metricbeat Google Cloud Platform module](../../../solutions/observability/cloud/monitor-google-cloud-platform-gcp.md) or the [GCP Dataflow Templates](../../../solutions/observability/cloud/gcp-dataflow-templates.md).
 

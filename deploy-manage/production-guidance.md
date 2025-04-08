@@ -9,7 +9,7 @@ applies_to:
     self: all
 ---
 
-% scope: the scope of this page is just a brief introduction to prod guidance at elastic stack level, links to ES and KIB,
+% scope: the scope of this page is just a brief introduction to prod guidance at {{stack}} level, links to ES and KIB,
 # Production guidance
 
 Running the {{stack}} in production requires careful planning to ensure resilience, performance, and scalability. This section outlines best practices and recommendations for optimizing {{es}} and {{kib}} in production environments.

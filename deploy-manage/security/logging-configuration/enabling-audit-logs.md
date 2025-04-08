@@ -102,7 +102,7 @@ To enable audit logging in an ECE deployment:
 5. To enable auditing for {{kib}}:
     * In the **Kibana** section, select **Edit user settings**. For deployments with existing user settings, you may have to expand the **Edit kibana.yml** caret instead.
     * Add the setting `xpack.security.audit.enabled: true`.
-    * If your Elastic Stack version is below 7.6.0, add the setting `logging.quiet: false`.
+    * If your {{stack}} version is below 7.6.0, add the setting `logging.quiet: false`.
 
 6. Select **Save**.
 

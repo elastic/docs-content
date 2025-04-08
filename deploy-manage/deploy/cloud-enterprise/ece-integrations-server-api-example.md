@@ -15,7 +15,7 @@ For more information on how to manage Integrations Server from the UI, check [Ma
 
 ## Requirements [ece_requirements_4]
 
-Integrations Server can be enabled only on new deployments, starting with Elastic Stack version 8.0.
+Integrations Server can be enabled only on new deployments, starting with {{stack}} version 8.0.
 
 It’s possible to enable Integrations Server on an existing deployment with version 8.0 only if [APM & Fleet Server](https://www.elastic.co/guide/en/cloud-enterprise/current/ece-manage-apm-and-fleet.html) hasn’t been previously enabled on the deployment.
 

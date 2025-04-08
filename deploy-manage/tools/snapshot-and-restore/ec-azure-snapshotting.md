@@ -17,11 +17,11 @@ Configure a custom snapshot repository using your Azure Blob storage account.
 Follow the Microsoft documentation to [set up an Azure storage account](https://docs.microsoft.com/en-us/azure/storage/common/storage-account-create) with an access key, and then [create a container](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-quickstart-blobs-portal).
 
 
-## Enable the `repository-azure` plugin in Elastic Stack 7.17 and earlier [ec-enable-azure-plugin]
+## Enable the `repository-azure` plugin in {{stack}} 7.17 and earlier [ec-enable-azure-plugin]
 
-For deployments with **Elastic Stack version 7.17 and earlier**, you’ll need to enable the `repository-azure` plugin to use the Azure repository type. On the Azure platform, the plugin is enabled by default. If your deployment is on AWS or GCP, follow these steps to enable the `repository-azure` plugin:
+For deployments with **{{stack}} version 7.17 and earlier**, you’ll need to enable the `repository-azure` plugin to use the Azure repository type. On the Azure platform, the plugin is enabled by default. If your deployment is on AWS or GCP, follow these steps to enable the `repository-azure` plugin:
 
-1. Refer to [Azure Repository Plugin](https://www.elastic.co/guide/en/elasticsearch/plugins/7.17/repository-azure.html) to download the version of the plugin that matches your Elastic Stack version.
+1. Refer to [Azure Repository Plugin](https://www.elastic.co/guide/en/elasticsearch/plugins/7.17/repository-azure.html) to download the version of the plugin that matches your {{stack}} version.
 2. Upload the plugin to your deployment:
 
     1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).

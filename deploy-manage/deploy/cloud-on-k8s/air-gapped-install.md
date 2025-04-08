@@ -12,7 +12,7 @@ mapped_pages:
 
 The ECK operator can be run in an air-gapped environment without access to the open internet when configured to avoid pulling container images from `docker.elastic.co`.
 
-By default ECK does not require you to specify the container image for each Elastic Stack application you deploy.
+By default ECK does not require you to specify the container image for each {{stack}} application you deploy.
 
 ```yaml
 apiVersion: elasticsearch.k8s.elastic.co/v1
@@ -69,6 +69,6 @@ For example, if your private registry is `my.registry` and all Elastic images ar
 
 ## ECK Diagnostics in air-gapped environments [k8s-eck-diag-air-gapped]
 
-The [eck-diagnostics tool](../../../troubleshoot/deployments/cloud-on-k8s/run-eck-diagnostics.md) optionally runs diagnostics for Elastic Stack applications in a separate container that is deployed into the Kubernetes cluster.
+The [eck-diagnostics tool](../../../troubleshoot/deployments/cloud-on-k8s/run-eck-diagnostics.md) optionally runs diagnostics for {{stack}} applications in a separate container that is deployed into the Kubernetes cluster.
 
 In air-gapped environments with no access to the `docker.elastic.co` registry, you should copy the latest support-diagnostics container image to your internal image registry and then run the tool with the additional flag `--diagnostic-image <custom-support-diagnostics-image-name>`. To find out which support diagnostics container image matches your version of eck-diagnostics, run the tool once without arguments and it will print the default image in use.

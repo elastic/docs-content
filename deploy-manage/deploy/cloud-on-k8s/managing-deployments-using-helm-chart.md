@@ -1,5 +1,5 @@
 ---
-navigation_title: Elastic Stack Helm chart
+navigation_title: {{stack}} Helm chart
 applies_to:
   deployment:
     eck: all
@@ -7,9 +7,9 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-stack-helm-chart.html
 ---
 
-# Elastic Stack Helm chart [k8s-stack-helm-chart]
+# {{stack}} Helm chart [k8s-stack-helm-chart]
 
-Starting from ECK 2.4.0, a Helm chart is available for managing Elastic Stack resources using the ECK Operator. It is available from the Elastic Helm repository and can be added to your Helm repository list by running the following command:
+Starting from ECK 2.4.0, a Helm chart is available for managing {{stack}} resources using the ECK Operator. It is available from the Elastic Helm repository and can be added to your Helm repository list by running the following command:
 
 ```sh
 helm repo add elastic https://helm.elastic.co
@@ -20,7 +20,7 @@ helm repo update
 The minimum supported version of Helm is 3.2.0.
 ::::
 
-The Elastic Stack (`eck-stack`) Helm chart is built on top of individual charts such as `eck-elasticsearch` and `eck-kibana`. For more details on its structure and dependencies, refer to the [chart repository](https://github.com/elastic/cloud-on-k8s/tree/main/deploy/eck-stack/).
+The {{stack}} (`eck-stack`) Helm chart is built on top of individual charts such as `eck-elasticsearch` and `eck-kibana`. For more details on its structure and dependencies, refer to the [chart repository](https://github.com/elastic/cloud-on-k8s/tree/main/deploy/eck-stack/).
 
 The chart enables you to deploy the core components ({{es}} and {{kib}}) together, along with other {{stack}} applications if needed, under the same chart release. The following sections guide you through the installation process for multiple use cases. Choose the command that best fits your setup.
 
@@ -80,7 +80,7 @@ helm install eck-stack-with-apm-server elastic/eck-stack \
     --values https://raw.githubusercontent.com/elastic/cloud-on-k8s/2.16/deploy/eck-stack/examples/apm-server/basic.yaml -n elastic-stack
 ```
 
-## Install individual components of the Elastic Stack [k8s-eck-stack-individual-components] 
+## Install individual components of the {{stack}} [k8s-eck-stack-individual-components] 
 
 You can install individual components in one of two ways using the provided Helm Charts.
 
@@ -99,7 +99,7 @@ helm install es-quickstart elastic/eck-stack -n elastic-stack --create-namespace
 helm install es-quickstart elastic/eck-elasticsearch -n elastic-stack --create-namespace
 ```
 
-## Adding Ingress to the Elastic stack [k8s-eck-stack-ingress] 
+## Adding Ingress to the {{stack}} [k8s-eck-stack-ingress] 
 
 :::{admonition} Support scope for Ingress Controllers
 [Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/) is a standard Kubernetes concept. While ECK-managed workloads can be publicly exposed using ingress resources, and we provide [example configurations](/deploy-manage/deploy/cloud-on-k8s/recipes.md), setting up an Ingress controller requires in-house Kubernetes expertise. 
@@ -181,7 +181,7 @@ spec:
 
 ## View available configuration options [k8s-install-helm-show-values-stack]
 
-You can view all configurable values of the Elastic Stack helm chart of the individual charts by running the following:
+You can view all configurable values of the {{stack}} helm chart of the individual charts by running the following:
 
 ```sh
 helm show values elastic/eck-stack

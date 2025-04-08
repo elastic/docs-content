@@ -34,7 +34,7 @@ This example demonstrates how to use the {{ecloud}} RESTful API to create a depl
 
 #### Requirements [ec_requirements_2]
 
-Integrations Server can be enabled only on new deployments, starting with Elastic Stack version 8.0.
+Integrations Server can be enabled only on new deployments, starting with {{stack}} version 8.0.
 
 It’s possible to enable Integrations Server on an existing deployment with version 8.0 only if [APM & Fleet Server](switch-from-apm-to-integrations-server-payload.md#ec-manage-apm-and-fleet) hasn’t been previously enabled on the deployment.
 

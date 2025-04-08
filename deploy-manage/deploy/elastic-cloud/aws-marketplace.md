@@ -48,7 +48,7 @@ To subscribe to {{ecloud}} through the AWS Marketplace:
 
     1. Ensure that you have the necessary AWS permissions required to complete a marketplace transaction.
     2. Create a new {{ecloud}} account. This account is linked to your AWS Marketplace subscription.
-    3. (Optional) Use the {{ecloud}} CloudFormation template to quickly get started with Elastic. The template deploys the Elastic Stack in your {{ecloud}} account, and also provisions the {{agent}} on a new EC2 instance in your AWS environment.
+    3. (Optional) Use the {{ecloud}} CloudFormation template to quickly get started with Elastic. The template deploys the {{stack}} in your {{ecloud}} account, and also provisions the {{agent}} on a new EC2 instance in your AWS environment.
     4. Navigate to {{ecloud}} to continue.
 
         ::::{note}

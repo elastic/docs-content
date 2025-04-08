@@ -17,7 +17,7 @@ The information below reflects our strategic goals, plans and objectives and inc
 
 ## Architectural differences
 
-{{serverless-full}} takes a fundamentally different approach to running the Elastic Stack compared to {{ech}}:
+{{serverless-full}} takes a fundamentally different approach to running the {{stack}} compared to {{ech}}:
 
 | **Functionality** | {{ech}} | {{serverless-full}} |
 |--------|----------------------|--------------------------|
@@ -30,7 +30,7 @@ The information below reflects our strategic goals, plans and objectives and inc
 | **Upgrades** | User-controlled timing | Automatically performed by Elastic |
 | **User management** | Elastic Cloud-managed and deployment-local users | Elastic Cloud-managed users only. Serverless users are managed at the organization level with SAML authentication support. |
 | **Backups** | User-managed with Snapshot & Restore | Automatically backed up by Elastic |
-| **Solutions** | Full Elastic Stack per deployment | Single solution per project |
+| **Solutions** | Full {{stack}} per deployment | Single solution per project |
 
 In Serverless, Elastic automatically manages:
 * Cluster scaling and optimization
@@ -221,6 +221,6 @@ Managed settings
 - [Elasticsearch Serverless API reference](https://www.elastic.co/docs/api/doc/elasticsearch-serverless): Check out the complete list of available APIs in {{serverless-full}}
 - [Project settings](/deploy-manage/deploy/elastic-cloud/project-settings.md): Configure project settings in {{serverless-full}}
 - [Serverless regions](/deploy-manage/deploy/elastic-cloud/regions.md): Choose the right region for your {{serverless-full}} project
-- [Elastic Cloud pricing](https://www.elastic.co/pricing/): Understand pricing for {{ech}} and Serverless projects
+- [{{ecloud}} pricing](https://www.elastic.co/pricing/): Understand pricing for {{ech}} and Serverless projects
   - [Serverless project billing](/deploy-manage/cloud-organization/billing/serverless-project-billing-dimensions.md): Understand billing dimensions for Serverless projects
   - [{{ech}} billing](/deploy-manage/cloud-organization/billing/cloud-hosted-deployment-billing-dimensions.md): Understand billing dimensions for {{ech}} deployments

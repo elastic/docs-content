@@ -16,7 +16,7 @@ This section covers the following topics:
 
 ## APM Server service [k8s-apm-service]
 
-The APM Server is exposed with a Service. For information on accessing it, check [How to access Elastic Stack services](accessing-services.md).
+The APM Server is exposed with a Service. For information on accessing it, check [How to access {{stack}} services](accessing-services.md).
 
 To retrieve the list of all the APM Services, use the following command:
 

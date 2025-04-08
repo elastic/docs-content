@@ -9,7 +9,7 @@ applies_to:
 # How to access AutoOps [ec-autoops-how-to-access]
 
 ::::{note}
-AutoOps supports {{es}} versions according to the [supported Elastic Stack versions](https://www.elastic.co/support/eol).
+AutoOps supports {{es}} versions according to the [supported {{stack}} versions](https://www.elastic.co/support/eol).
 ::::
 
 

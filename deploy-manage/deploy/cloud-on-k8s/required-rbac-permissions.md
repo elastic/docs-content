@@ -22,7 +22,7 @@ This permission is required to install CRDs. CRDs ([CustomResourceDefinitions](h
 
 | Name | API group | Optional? | Usage |
 | --- | --- | --- | --- |
-| `CustomResourceDefinition` | `apiextensions.k8s.io` | no | Extend Kubernetes APIs with Elastic Stack application resources. |
+| `CustomResourceDefinition` | `apiextensions.k8s.io` | no | Extend Kubernetes APIs with {{stack}} application resources. |
 
 
 ## Installing the ECK operator [k8s-eck-permissions-installing-operator]
@@ -55,7 +55,7 @@ These permissions are needed by the Service Account that ECK operator runs as.
 | `Event` |  | no | Emitting events concerning reconciliation progress and issues. |
 | `PersistentVolumeClaim` |  | no | Expanding existing volumes. Check [docs](volume-claim-templates.md#k8s-volume-claim-templates-update) to learn more. |
 | `Secret` |  | no | Reading/writing configuration, passwords, certificates, and so on. |
-| `Service` |  | no | Creating Services fronting Elastic Stack applications. |
+| `Service` |  | no | Creating Services fronting {{stack}} applications. |
 | `ConfigMap` |  | no | Reading/writing configuration. |
 | `StatefulSet` | `apps` | no | Deploying {{es}} |
 | `Deployment` | `apps` | no | Deploying {{kib}}, APM Server, EnterpriseSearch, Maps, Beats or Elastic Agent. |
@@ -69,7 +69,7 @@ And all permissions that the [Using ECK-managed resources](#k8s-eck-permissions-
 
 ## Using ECK-managed resources [k8s-eck-permissions-using]
 
-These permissions are needed to manage each Elastic Stack application. For example, to create, update and delete {{es}} clusters the permissions for the respective verbs must be held by the user that performs the operation.
+These permissions are needed to manage each {{stack}} application. For example, to create, update and delete {{es}} clusters the permissions for the respective verbs must be held by the user that performs the operation.
 
 | Name | API group | Optional? |
 | --- | --- | --- |

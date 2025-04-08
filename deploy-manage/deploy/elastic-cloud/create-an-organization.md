@@ -48,13 +48,13 @@ Your free 14-day trial includes:
 
 **One hosted deployment**
 
-A deployment lets you explore Elastic solutions for Search, Observability, and Security. Trial deployments run on the latest version of the Elastic Stack. They includes 8 GB of RAM spread out over two availability zones, and enough storage space to get you started. If you’re looking to evaluate a smaller workload, you can scale down your trial deployment. Each deployment includes Elastic features such as Maps, SIEM, machine learning, advanced security, and much more. You have some sample data sets to play with and tutorials that describe how to add your own data.
+A deployment lets you explore Elastic solutions for Search, Observability, and Security. Trial deployments run on the latest version of the {{stack}}. They includes 8 GB of RAM spread out over two availability zones, and enough storage space to get you started. If you’re looking to evaluate a smaller workload, you can scale down your trial deployment. Each deployment includes Elastic features such as Maps, SIEM, machine learning, advanced security, and much more. You have some sample data sets to play with and tutorials that describe how to add your own data.
 
 For more information, check the [{{ech}} documentation](cloud-hosted.md).
 
 **One serverless project**
 
-Serverless projects package Elastic Stack features by type of solution:
+Serverless projects package {{stack}} features by type of solution:
 
 * [{{es}}](../../../solutions/search.md)
 * [Observability](../../../solutions/observability.md)

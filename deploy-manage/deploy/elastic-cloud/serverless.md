@@ -45,7 +45,7 @@ Afterwards, you can:
 
 **Optimized data storage:** Your data is stored in cost-efficient, general storage. A cache layer is available on top of the general storage for recent and frequently queried data that provides faster search speed. The size of the cache layer and the volume of data it holds depend on [settings](../../../deploy-manage/deploy/elastic-cloud/project-settings.md) that you can configure for each project.
 
-**Dedicated experiences:** All serverless solutions are built on the Elastic Search Platform and include the core capabilities of the Elastic Stack. They also each offer a distinct experience and specific capabilities that help you focus on your data, goals, and use cases.
+**Dedicated experiences:** All serverless solutions are built on the Elastic Search Platform and include the core capabilities of the {{stack}}. They also each offer a distinct experience and specific capabilities that help you focus on your data, goals, and use cases.
 
 **Pay per usage:** Each serverless project type includes product-specific and usage-based pricing.
 

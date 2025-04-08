@@ -17,7 +17,7 @@ System owned deployment templates are automatically updated during the ECE upgra
 
 ## Adding support for node_roles [ece_adding_support_for_node_roles]
 
-The `node_roles` field defines the roles that an {{es}} topology element can have, which is used in place of `node_type` when a new feature such as autoscaling is enabled, or when a new data tier is added. This field is supported on [Elastic stack versions 7.10 and above](cloud://reference/cloud-enterprise/changes-to-index-allocation-api.md).
+The `node_roles` field defines the roles that an {{es}} topology element can have, which is used in place of `node_type` when a new feature such as autoscaling is enabled, or when a new data tier is added. This field is supported on [{{stack}} versions 7.10 and above](cloud://reference/cloud-enterprise/changes-to-index-allocation-api.md).
 
 There are a number of fields that need to be added to each {{es}} node in order to support `node_roles`:
 
@@ -757,7 +757,7 @@ After adding support for `node_roles`, the resulting deployment template should 
 
 ## Adding support for autoscaling [ece_adding_support_for_autoscaling]
 
-After adding support for `node_roles` we can then update the template to support autoscaling. Autoscaling is used to automatically adjust the available resources in the deployments. Currently, this feature is available for {{es}} data tiers and machine learning node in [Elastic stack versions 7.11 and above](../../autoscaling.md).
+After adding support for `node_roles` we can then update the template to support autoscaling. Autoscaling is used to automatically adjust the available resources in the deployments. Currently, this feature is available for {{es}} data tiers and machine learning node in [{{stack}} versions 7.11 and above](../../autoscaling.md).
 
 There are a number of autoscaling fields that need to be added in order to support autoscaling:
 
@@ -1736,7 +1736,7 @@ Having added support for `node_roles` and autoscaling to your custom template, i
 
 After the template is updated, you can start [creating new deployments](create-deployment.md) or [migrating existing ones to `node_roles`](#ece-migrating-a-deployment-to-node-roles).
 
-Although `node_roles` and autoscaling are only available in more recent Elastic stack versions, an updated template can still be used with deployments that have versions below 7.10. In these cases, the data tiers and autoscaling features will only take effect once the deployment is upgraded to versions 7.10 and 7.11, respectively.
+Although `node_roles` and autoscaling are only available in more recent {{stack}} versions, an updated template can still be used with deployments that have versions below 7.10. In these cases, the data tiers and autoscaling features will only take effect once the deployment is upgraded to versions 7.10 and 7.11, respectively.
 
 
 ## Migrating a deployment to `node_roles` [ece-migrating-a-deployment-to-node-roles]

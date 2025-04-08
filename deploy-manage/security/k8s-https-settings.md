@@ -40,7 +40,7 @@ QLYL4zLEby3vRxq65+xofVBJAaM=
 
 ### Custom HTTP certificate [k8s-custom-http-certificate]
 
-You can provide your own CA and certificates instead of the self-signed certificate to connect to Elastic stack applications through HTTPS using a Kubernetes secret.
+You can provide your own CA and certificates instead of the self-signed certificate to connect to {{stack}} applications through HTTPS using a Kubernetes secret.
 
 Check [Setup your own certificate](./set-up-basic-security-plus-https.md#encrypt-http-communication) to learn how to do that with `elasticsearch-certutil` tool.
 
@@ -160,7 +160,7 @@ spec:
 
 ### Provide your own certificate [k8s-setting-up-your-own-certificate]
 
-You can bring your own certificate to configure TLS to ensure that communication between HTTP clients and the Elastic Stack application is encrypted.
+You can bring your own certificate to configure TLS to ensure that communication between HTTP clients and the {{stack}} application is encrypted.
 
 Create a Kubernetes secret with:
 

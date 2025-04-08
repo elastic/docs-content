@@ -13,7 +13,7 @@ This example shows how to use the {{ecloud}} RESTful API to switch from using [A
 
 ### Requirements [ec_requirements_3]
 
-Given a deployment that is using an APM & Fleet Server with Elastic Stack version 8.0 or later, it is possible to start using Integrations Server instead by updating the deployment with an Integrations Server payload. Switching from APM & Fleet Server to Integrations Server in this way ensures that the endpoints and credentials currently used by APM Server and Fleet Server remain the same after the switch.
+Given a deployment that is using an APM & Fleet Server with {{stack}} version 8.0 or later, it is possible to start using Integrations Server instead by updating the deployment with an Integrations Server payload. Switching from APM & Fleet Server to Integrations Server in this way ensures that the endpoints and credentials currently used by APM Server and Fleet Server remain the same after the switch.
 
 In order to start using the Integrations Server payload, you first need to enable the APM integration for Elastic Agent by following the steps in [Switch to the Elastic APM integration](/solutions/observability/apps/switch-an-elastic-cloud-cluster-to-apm-integration.md).
 
@@ -375,7 +375,7 @@ curl -XPUT \
 ## Manage your APM & Fleet Server [ec-manage-apm-and-fleet]
 
 ::::{note}
-Beginning with Elastic Stack version 8.0, [Integrations Server](manage-integrations-server.md) is replacing APM & Fleet Server. New deployments with version 8.0 will use Integrations Server automatically. Existing deployments using APM & Fleet Server will continue to use APM & Fleet Server after upgrading to version 8.0.
+Beginning with {{stack}} version 8.0, [Integrations Server](manage-integrations-server.md) is replacing APM & Fleet Server. New deployments with version 8.0 will use Integrations Server automatically. Existing deployments using APM & Fleet Server will continue to use APM & Fleet Server after upgrading to version 8.0.
 ::::
 
 

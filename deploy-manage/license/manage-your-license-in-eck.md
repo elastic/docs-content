@@ -9,10 +9,10 @@ mapped_pages:
 
 # Manage your license in {{eck}} [k8s-licensing]
 
-When you install the default distribution of ECK, you receive a Basic license. Any Elastic stack application you manage through ECK will also be Basic licensed. Go to [https://www.elastic.co/subscriptions](https://www.elastic.co/subscriptions) to check which features are included in the Basic license for free.
+When you install the default distribution of ECK, you receive a Basic license. Any {{stack}} application you manage through ECK will also be Basic licensed. Go to [https://www.elastic.co/subscriptions](https://www.elastic.co/subscriptions) to check which features are included in the Basic license for free.
 
 ::::{important}
-ECK is only offered in two licensing tiers: Basic and Enterprise. Similar to the Elastic Stack, customers can download and use ECK with a Basic license for free. Basic license users can obtain support from GitHub or through our [community](https://discuss.elastic.co). A paid Enterprise subscription is required to engage the Elastic support team. For more details, check the [Elastic subscriptions](https://www.elastic.co/subscriptions).
+ECK is only offered in two licensing tiers: Basic and Enterprise. Similar to the {{stack}}, customers can download and use ECK with a Basic license for free. Basic license users can obtain support from GitHub or through our [community](https://discuss.elastic.co). A paid Enterprise subscription is required to engage the Elastic support team. For more details, check the [Elastic subscriptions](https://www.elastic.co/subscriptions).
 ::::
 
 
@@ -89,7 +89,7 @@ kubectl create secret generic eck-license --from-file=my-license-file.json -n el
 kubectl label secret eck-license "license.k8s.elastic.co/scope"=operator -n elastic-system
 ```
 
-After you install a license into ECK, the Enterprise features of the operator are available, like {{es}} autoscaling and support for Elastic Maps Server. All the Elastic Stack applications you manage with ECK will have Platinum and Enterprise features enabled.  The [`_license`](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-license-get) API reports that individual {{es}} clusters are running under an Enterprise license, and the [elastic-licensing](#k8s-get-usage-data) ConfigMap contains the current license level of the ECK operator. The applications created before you installed the license are upgraded to Platinum or Enterprise features without interruption of service after a short delay.
+After you install a license into ECK, the Enterprise features of the operator are available, like {{es}} autoscaling and support for Elastic Maps Server. All the {{stack}} applications you manage with ECK will have Platinum and Enterprise features enabled.  The [`_license`](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-license-get) API reports that individual {{es}} clusters are running under an Enterprise license, and the [elastic-licensing](#k8s-get-usage-data) ConfigMap contains the current license level of the ECK operator. The applications created before you installed the license are upgraded to Platinum or Enterprise features without interruption of service after a short delay.
 
 ::::{note}
 The {{es}} `_license` API for versions before 8.0.0 reports a Platinum license level for backwards compatibility even if an Enterprise license is installed.

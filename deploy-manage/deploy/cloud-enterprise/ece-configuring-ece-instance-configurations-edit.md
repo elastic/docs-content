@@ -8,7 +8,7 @@ mapped_pages:
 
 # Edit instance configurations [ece-configuring-ece-instance-configurations-edit]
 
-Instance configurations enable components of the Elastic Stack to be matched to allocators for a specific use case. The matching is accomplished by defining a query that filters possible allocators based on their tags. For existing instance configurations, you can edit the query to change how allocators get matched, which in turn changes what components of the Elastic Stack get hosted on the matching allocators when creating or changing a deployment.
+Instance configurations enable components of the {{stack}} to be matched to allocators for a specific use case. The matching is accomplished by defining a query that filters possible allocators based on their tags. For existing instance configurations, you can edit the query to change how allocators get matched, which in turn changes what components of the {{stack}} get hosted on the matching allocators when creating or changing a deployment.
 
 You might need to edit instance configurations under the following circumstances:
 
@@ -16,7 +16,7 @@ You might need to edit instance configurations under the following circumstances
 * If tagged allocators in your ECE installation are not being used as expected when you create or change deployments. Editing an instance configuration affects all deployments that depend on it, and tagged allocators that do not get matched by an instance configuration will not be used. If this happens, you can edit your instance configurations to create less restrictive queries.
 
 ::::{tip}
-If you edit instance configurations, so that they match fewer allocators, instances of the Elastic Stack that were previously matched to those allocators might be relocated. Keep this in mind when making queries more restrictive.
+If you edit instance configurations, so that they match fewer allocators, instances of the {{stack}} that were previously matched to those allocators might be relocated. Keep this in mind when making queries more restrictive.
 ::::
 
 ## Steps [ece_steps]
@@ -48,7 +48,7 @@ If you edit instance configurations, so that they match fewer allocators, instan
 
     3. Check the list of allocators that get matched by your query:
 
-        * If you are satisfied that your query matches all the allocators where the component(s) of the Elastic Stack can be deployed, move on to the next step. For the `data.default` instance configuration, this means all the allocators where {{es}} data nodes for incoming data should be deployed, for example.
+        * If you are satisfied that your query matches all the allocators where the component(s) of the {{stack}} can be deployed, move on to the next step. For the `data.default` instance configuration, this means all the allocators where {{es}} data nodes for incoming data should be deployed, for example.
         * If you need to refine your query further, continue to adjust your outer or inner clauses. If you are unsure what to do, keep your initial query simple. You can always refine the query later on by re-editing the instance configuration.
 
 6. Select **Save changes**.

@@ -14,7 +14,7 @@ navigation_title: Heroku
 
 This documentation applies to Heroku users who want to make use of the {{es}} Add-On for Heroku that is available from the [Heroku Dashboard](https://dashboard.heroku.com/), or that can be installed from the CLI.
 
-The add-on runs on {{ecloud}} and provides access to [Elasticsearch](https://www.elastic.co/products/elasticsearch), the open source, distributed, RESTful search engine. Many other features of the Elastic Stack are also readily available to Heroku users through the [{{es}} Add-On for Heroku console](https://cloud.elastic.co?page=docs&placement=docs-body) after you install the add-on. For example, you can use {{kib}} to visualize your {{es}} data.
+The add-on runs on {{ecloud}} and provides access to [Elasticsearch](https://www.elastic.co/products/elasticsearch), the open source, distributed, RESTful search engine. Many other features of the {{stack}} are also readily available to Heroku users through the [{{es}} Add-On for Heroku console](https://cloud.elastic.co?page=docs&placement=docs-body) after you install the add-on. For example, you can use {{kib}} to visualize your {{es}} data.
 
 To learn more about what plans are available for Heroku users and their cost, refer to the [{{es}} add-on](https://elements.heroku.com/addons/foundelasticsearch) in the Elements Marketplace.
 

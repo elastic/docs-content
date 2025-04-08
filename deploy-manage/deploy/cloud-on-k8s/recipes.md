@@ -15,7 +15,7 @@ This section includes recipes that provide configuration examples for some commo
 * [Using Logstash with ECK](https://github.com/elastic/cloud-on-k8s/tree/main/config/recipes/logstash)
 * [Expose Elastic Maps Server and {{kib}} using a Kubernetes Ingress](https://github.com/elastic/cloud-on-k8s/tree/main/config/recipes/maps)
 * [Secure your cluster with Pod Security Policies](https://github.com/elastic/cloud-on-k8s/tree/main/config/recipes/psp)
-* [Use Traefik to expose Elastic Stack applications](https://github.com/elastic/cloud-on-k8s/tree/main/config/recipes/traefik)
+* [Use Traefik to expose {{stack}} applications](https://github.com/elastic/cloud-on-k8s/tree/main/config/recipes/traefik)
 * [Deploy {{es}}, {{kib}}, Elastic Fleet Server and Elastic Agent within GKE Autopilot](https://github.com/elastic/cloud-on-k8s/tree/main/config/recipes/autopilot)
 
 ::::{warning}

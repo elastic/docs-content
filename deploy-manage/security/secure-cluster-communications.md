@@ -10,7 +10,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/elasticsearch-mutual-tls.html
 ---
 
-% Scope: landing page for manually handling TLS certificates, and for information about TLS in Elastic Stack in general.
+% Scope: landing page for manually handling TLS certificates, and for information about TLS in {{stack}} in general.
 # TLS encryption for cluster communications
 
 This page explains how to secure communications and set up TLS certificates in your {{stack}} deployments.

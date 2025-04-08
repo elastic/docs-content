@@ -17,7 +17,7 @@ Installing ECE on multiple hosts with your own registry server is simpler, becau
     As part of the ECE [high availability](ece-ha.md) strategy, it’s a good idea to make sure that your Docker registry server is available to all ECE allocators, so that it can continue to be accessed in the event of a network partition or zone outage. Allocators attempting to start instances requiring Docker images that have not yet been pulled from a custom Docker registry will fail to start if the registry is unavailable.
     ::::
 
-2. On an internet-connected host that has Docker installed, download the [Available Docker Images](ece-install-offline-images.md) and push them to your private Docker registry. Note that for ECE version 4.0, if you want to use Elastic Stack version 9.0 in your deployments, you need to download and make available both the version 8.x and version 9.x Docker images.
+2. On an internet-connected host that has Docker installed, download the [Available Docker Images](ece-install-offline-images.md) and push them to your private Docker registry. Note that for ECE version 4.0, if you want to use {{stack}} version 9.0 in your deployments, you need to download and make available both the version 8.x and version 9.x Docker images.
 
     ```sh
     docker pull docker.elastic.co/cloud-enterprise/elastic-cloud-enterprise:4.0.0

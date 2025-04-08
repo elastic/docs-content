@@ -32,7 +32,7 @@ If you have a license from 2018 or earlier, you might receive a warning that you
 When the {{ece}} license expires, and consequently the cluster license that’s currently installed for all managed clusters since it has the same expiration date, the following takes place:
 
 * **Users cannot create new clusters or modify existing clusters**: They can only delete them. These clusters are still fully accessible for the client though.
-* **X-Pack features are degraded**: For the details about what functionality will be reduced when cluster license expires, read more about the [Elastic Stack license expiration](https://www.elastic.co/guide/en/elastic-stack-overview/current/license-expiration.html).
+* **X-Pack features are degraded**: For the details about what functionality will be reduced when cluster license expires, read more about the [{{stack}} license expiration](https://www.elastic.co/guide/en/elastic-stack-overview/current/license-expiration.html).
 
 
 ## Download a license [ece_download_a_license]

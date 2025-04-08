@@ -9,7 +9,7 @@ mapped_pages:
 
 Several types of {{es}} API keys exist:
 
-* **Personal/User** API key: allows external services to access the Elastic Stack on behalf of a user.
+* **Personal/User** API key: allows external services to access the {{stack}} on behalf of a user.
 * **Cross-cluster** API key: allows other clusters to connect to this cluster.
 * **Managed** API key: created and managed by {{kib}} to run background tasks.
 

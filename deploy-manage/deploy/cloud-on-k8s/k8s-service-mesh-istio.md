@@ -13,7 +13,7 @@ The instructions in this section describe how to connect the operator and manage
 These instructions have been tested with Istio 1.24.3. Older or newer versions of Istio might require additional configuration steps not documented here.
 
 ::::{warning}
-Some Elastic Stack features such as [{{kib}} alerting and actions](/explore-analyze/alerts-cases.md) rely on the {{es}} API keys feature which requires TLS to be enabled at the application level. If you want to use these features, you should not disable the self-signed certificate on the {{es}} resource and enable `PERMISSIVE` mode for the {{es}} service through a `DestinationRule` or `PeerAuthentication` resource. Strict mTLS mode is currently not compatible with Elastic Stack features requiring TLS to be enabled for the {{es}} HTTP layer.
+Some {{stack}} features such as [{{kib}} alerting and actions](/explore-analyze/alerts-cases.md) rely on the {{es}} API keys feature which requires TLS to be enabled at the application level. If you want to use these features, you should not disable the self-signed certificate on the {{es}} resource and enable `PERMISSIVE` mode for the {{es}} service through a `DestinationRule` or `PeerAuthentication` resource. Strict mTLS mode is currently not compatible with {{stack}} features requiring TLS to be enabled for the {{es}} HTTP layer.
 ::::
 
 
@@ -24,7 +24,7 @@ If you use a Kubernetes distribution like Minikube, which does not have support 
 
 ## Connect the operator to the Istio service mesh [k8s-service-mesh-istio-operator-connection]
 
-The operator itself must be connected to the service mesh to deploy and manage Elastic Stack resources that you wish to connect to the service mesh. This is achieved by injecting an Istio sidecar to the ECK operator Pods. The following instructions assume that [automatic sidecar injection](https://istio.io/docs/setup/additional-setup/sidecar-injection/#automatic-sidecar-injection) is enabled on your cluster through a mutating admissions webhook. Refer to [Istio injection documentation](https://istio.io/docs/setup/additional-setup/sidecar-injection/#injection) if you prefer a different method of injection.
+The operator itself must be connected to the service mesh to deploy and manage {{stack}} resources that you wish to connect to the service mesh. This is achieved by injecting an Istio sidecar to the ECK operator Pods. The following instructions assume that [automatic sidecar injection](https://istio.io/docs/setup/additional-setup/sidecar-injection/#automatic-sidecar-injection) is enabled on your cluster through a mutating admissions webhook. Refer to [Istio injection documentation](https://istio.io/docs/setup/additional-setup/sidecar-injection/#injection) if you prefer a different method of injection.
 
 1. Create the `elastic-system` namespace and enable sidecar injection:
 
@@ -67,7 +67,7 @@ As the default `failurePolicy` of the webhook is `Ignore`, the operator continue
 ECK has a fallback validation mechanism that reports validation failures as events associated with the relevant resource ({{es}}, {{kib}}, APM Server, Beats, Elastic Agent, Elastic Maps Server, and Logstash) that must be manually discovered by running `kubectl describe`. For example, to find the validation errors in an {{es}} resource named `quickstart`, you can run `kubectl describe elasticsearch quickstart`.
 
 
-## Connect Elastic Stack applications to the Istio service mesh [k8s-service-mesh-istio-stack-connection]
+## Connect {{stack}} applications to the Istio service mesh [k8s-service-mesh-istio-stack-connection]
 
 This section assumes that you are deploying ECK custom resources to a namespace that has [automatic sidecar injection](https://istio.io/docs/setup/additional-setup/sidecar-injection/#automatic-sidecar-injection) enabled.
 

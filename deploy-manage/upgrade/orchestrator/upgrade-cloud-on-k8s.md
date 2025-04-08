@@ -10,12 +10,12 @@ applies_to:
 
 This page provides instructions on how to upgrade the ECK operator.
 
-To learn how to upgrade {{stack}} applications like {{es}} or {{kib}}, refer to [Upgrade the Elastic Stack version](../deployment-or-cluster.md).
+To learn how to upgrade {{stack}} applications like {{es}} or {{kib}}, refer to [Upgrade the {{stack}} version](../deployment-or-cluster.md).
 
 
 ## Before you upgrade to ECK 3.0.0 [k8s-ga-upgrade]
 
-The upgrade process results in an update to all the existing managed resources. This potentially triggers a rolling restart of all {{es}} and {{kib}} pods. This [list](#k8s-beta-to-ga-rolling-restart) details the affected target versions that will cause a rolling restart. If you have a large {{es}} cluster or multiple Elastic Stack deployments, the rolling restart could cause a performance degradation. When you plan to upgrade ECK for production workloads, take into consideration the time required to upgrade the ECK operator plus the time required to roll all managed workloads and {{es}} clusters. For more details on controlling rolling restarts during the upgrade, refer to the [control the rolling restarts during the upgrade](#k8s-beta-to-ga-rolling-restart) section.
+The upgrade process results in an update to all the existing managed resources. This potentially triggers a rolling restart of all {{es}} and {{kib}} pods. This [list](#k8s-beta-to-ga-rolling-restart) details the affected target versions that will cause a rolling restart. If you have a large {{es}} cluster or multiple {{stack}} deployments, the rolling restart could cause a performance degradation. When you plan to upgrade ECK for production workloads, take into consideration the time required to upgrade the ECK operator plus the time required to roll all managed workloads and {{es}} clusters. For more details on controlling rolling restarts during the upgrade, refer to the [control the rolling restarts during the upgrade](#k8s-beta-to-ga-rolling-restart) section.
 
 Before upgrading, refer to the [release notes](cloud-on-k8s://release-notes/index.md) to make sure that the release does not contain any breaking changes that could affect you. The [release highlights document](cloud-on-k8s://release-notes/index.md) provides more details and possible workarounds for any breaking changes or known issues in each release.
 
@@ -106,10 +106,10 @@ Stepping over one of these versions, for example, upgrading ECK from 2.6 to 2.9,
 ::::
 
 
-If you have a very large {{es}} cluster or multiple Elastic Stack deployments, this rolling restart might be disruptive or inconvenient. To have more control over when the pods belonging to a particular deployment should be restarted, you can [add an annotation](../../../troubleshoot/deployments/cloud-on-k8s/troubleshooting-methods.md#k8s-exclude-resource) to the corresponding resources to temporarily exclude them from being managed by the operator. When the time is convenient, you can remove the annotation and let the rolling restart go through.
+If you have a very large {{es}} cluster or multiple {{stack}} deployments, this rolling restart might be disruptive or inconvenient. To have more control over when the pods belonging to a particular deployment should be restarted, you can [add an annotation](../../../troubleshoot/deployments/cloud-on-k8s/troubleshooting-methods.md#k8s-exclude-resource) to the corresponding resources to temporarily exclude them from being managed by the operator. When the time is convenient, you can remove the annotation and let the rolling restart go through.
 
 ::::{warning}
-Once a resource is excluded from being managed by ECK, you will not be able to add/remove nodes, upgrade Stack version, or perform other [orchestration tasks](../../deploy/cloud-on-k8s/configure-deployments.md) by updating the resource manifest. You must remember to remove the exclusion to ensure that your Elastic Stack deployment is continually monitored and managed by the operator.
+Once a resource is excluded from being managed by ECK, you will not be able to add/remove nodes, upgrade Stack version, or perform other [orchestration tasks](../../deploy/cloud-on-k8s/configure-deployments.md) by updating the resource manifest. You must remember to remove the exclusion to ensure that your {{stack}} deployment is continually monitored and managed by the operator.
 ::::
 
 Exclude Elastic resources from being managed by the operator:

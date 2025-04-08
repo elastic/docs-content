@@ -28,7 +28,7 @@ To configure index management when you create a deployment template:
 1. On the **Index Management** page, configure the index curation methods that you want to be available when your users create deployments:
 
     Index lifecycle management
-    :   Uses the ILM feature of the Elastic Stack that provides an integrated and streamlined way to manage time-based data, making it easier to follow best practices for managing your indices. Compared to index curation, ILM gives you more fine-grained control over the lifecycle of each index.
+    :   Uses the ILM feature of the {{stack}} that provides an integrated and streamlined way to manage time-based data, making it easier to follow best practices for managing your indices. Compared to index curation, ILM gives you more fine-grained control over the lifecycle of each index.
 
         To configure index lifecycle management:
 

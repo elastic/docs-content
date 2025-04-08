@@ -13,7 +13,7 @@ applies_to:
 
 This page provides instructions on how to upgrade the ECE operator.
 
-To learn how to upgrade {{stack}} applications like {{es}} or {{kib}}, refer to [Upgrade the Elastic Stack version](../deployment-or-cluster.md).
+To learn how to upgrade {{stack}} applications like {{es}} or {{kib}}, refer to [Upgrade the {{stack}} version](../deployment-or-cluster.md).
 
 Periodically, you might need to upgrade an {{ece}} installation as new versions with additional features become available. The upgrade process updates all hosts that are part of an Elastic Cloud Enterprise installation to the latest version of ECE, with little or no downtime for managed deployments. To upgrade your deployment to {{stack}} 9.x, the minimum required ECE version is 4.0.0.
 
@@ -92,7 +92,7 @@ Before starting the upgrade process, verify that your setup meets the following 
   :::
 
   - Ensure that your system deployments are at their [expected versions](/deploy-manage/deploy/cloud-enterprise/default-system-deployment-versions.md). Since ECE 3.6.1, the upgrade process automatically upgrades system deployments to the required version. If the {{ece}} platform was upgraded successfully and yet one or more system deployments were not upgraded to [their expected version](/deploy-manage/deploy/cloud-enterprise/default-system-deployment-versions.md) during the very last phase of the {{ece}} upgrade, you can re-run the `elastic-cloud-enterprise.sh upgrade --cloud-enterprise-version <your target version>` command to retry system deployment upgrade only.
-  - Check that your deployments are running on Elastic Stack version 7.0.0 or above.
+  - Check that your deployments are running on {{stack}} version 7.0.0 or above.
 - Before running the upgrade command, ensure that you include the same installation flags that were used during the initial setup. Some deployment configurations, such as those using Podman or SELinux, require specific flags to be passed again during the upgrade. Failure to do so may result in compatibility errors.
 
 ## Certificate rotation [ece-upgrade-certificates]

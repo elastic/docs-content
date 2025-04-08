@@ -19,7 +19,7 @@ To uninstall the operator:
       | xargs -n1 kubectl delete elastic --all -n
     ```
 
-    This deletes all underlying Elastic Stack resources, including their Pods, Secrets, Services, and so on.
+    This deletes all underlying {{stack}} resources, including their Pods, Secrets, Services, and so on.
 
 2. Uninstall the operator:
 

@@ -15,7 +15,7 @@ navigation_title: Install ECE
 
 You can deploy {{ece}} (ECE) on public or private clouds, virtual machines, or on-premises.
 
-In ECE, a host refers to any server, VM, or cloud instance where the ECE software is installed. An ECE platform consists of multiple hosts working together to orchestrate Elastic Stack applications.
+In ECE, a host refers to any server, VM, or cloud instance where the ECE software is installed. An ECE platform consists of multiple hosts working together to orchestrate {{stack}} applications.
 
 For public cloud deployments, you can choose from the following providers:
 

@@ -8,7 +8,7 @@ mapped_pages:
 
 # Configure allocator affinity [ece-configuring-allocator-affinity]
 
-One of the benefits of the ECE platform is its robust deployment instance distribution logic that maximizes the utilization of the underlying resources you deploy the Elastic Stack on. In ECE 2.4 and later, you can customize how Elastic Stack deployments get distributed across the available set of allocators in your ECE installation, which is known as *allocator affinity*.
+One of the benefits of the ECE platform is its robust deployment instance distribution logic that maximizes the utilization of the underlying resources you deploy the {{stack}} on. In ECE 2.4 and later, you can customize how {{stack}} deployments get distributed across the available set of allocators in your ECE installation, which is known as *allocator affinity*.
 
 
 ## Before you begin [ece_before_you_begin_6] 

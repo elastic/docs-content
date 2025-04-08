@@ -45,7 +45,7 @@ You can have multiple hosted deployments and serverless projects in the same {{e
 | **Upgrades** | Automatically performed by Elastic. | You choose when to upgrade. |
 | **Pricing** | Individual per project type and based on your usage. | Based on deployment size and subscription level. |
 | **Performance** | Autoscales based on your usage. | Manual scaling. |
-| **Solutions** | Single solution per project. | Full Elastic Stack per deployment. |
+| **Solutions** | Single solution per project. | Full {{stack}} per deployment. |
 | **User management** | {{ecloud}}-managed users. | {{ecloud}}-managed users and native {{kib}} users. |
 | **API support** | Subset of [APIs](https://www.elastic.co/docs/api). | All Elastic APIs. |
 | **Backups** | Projects automatically backed up by Elastic. | Your responsibility with Snapshot & Restore. |

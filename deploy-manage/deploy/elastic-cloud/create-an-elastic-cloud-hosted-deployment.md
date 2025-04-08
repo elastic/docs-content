@@ -11,7 +11,7 @@ mapped_pages:
 
 # Create an {{ech}} deployment [ec-create-deployment]
 
-An {{ecloud}} deployment includes Elastic Stack components such as {{es}}, {{kib}}, and other features, allowing you to store, search, and analyze your data. You can spin up a proof-of-concept deployment to learn more about what Elastic can do for you.
+An {{ecloud}} deployment includes {{stack}} components such as {{es}}, {{kib}}, and other features, allowing you to store, search, and analyze your data. You can spin up a proof-of-concept deployment to learn more about what Elastic can do for you.
 
 :::{note}
 You can also create a deployment using the [{{ecloud}} API](https://www.elastic.co/docs/api/doc/cloud/group/endpoint-deployments). This can be an interesting alternative for more advanced needs, such as for [creating a deployment encrypted with your own key](../../security/encrypt-deployment-with-customer-managed-encryption-key.md).
@@ -38,9 +38,9 @@ You can also create a deployment using the [{{ecloud}} API](https://www.elastic.
 
     **Region**: The cloud platform’s region your deployment will live. If you have compliance or latency requirements, you can create your deployment in any of our [supported regions](cloud://reference/cloud-hosted/regions.md). The region should be as close as possible to the location of your data.
 
-    **Hardware profile**: This allows you to configure the underlying virtual hardware that you’ll deploy your Elastic Stack on. Each hardware profile provides a unique blend of storage, RAM and vCPU sizes. You can select a hardware profile that’s best suited for your use case. For example CPU Optimized if you have a search-heavy use case that’s bound by compute resources. For more details, check the [hardware profiles](ec-change-hardware-profile.md) section. You can also view the [virtual hardware details](cloud://reference/cloud-hosted/hardware.md) which powers hardware profiles. With the **Advanced settings** option, you can configure the underlying virtual hardware associated with each profile.
+    **Hardware profile**: This allows you to configure the underlying virtual hardware that you’ll deploy your {{stack}} on. Each hardware profile provides a unique blend of storage, RAM and vCPU sizes. You can select a hardware profile that’s best suited for your use case. For example CPU Optimized if you have a search-heavy use case that’s bound by compute resources. For more details, check the [hardware profiles](ec-change-hardware-profile.md) section. You can also view the [virtual hardware details](cloud://reference/cloud-hosted/hardware.md) which powers hardware profiles. With the **Advanced settings** option, you can configure the underlying virtual hardware associated with each profile.
 
-    **Version**: The Elastic Stack version that will get deployed. Defaults to the latest version. Our [version policy](available-stack-versions.md) describes which versions are available to deploy.
+    **Version**: The {{stack}} version that will get deployed. Defaults to the latest version. Our [version policy](available-stack-versions.md) describes which versions are available to deploy.
 
     **Snapshot source**: To create a deployment from a snapshot, select a snapshot source. You need to [configure snapshots](../../tools/snapshot-and-restore.md) and establish a snapshot lifecycle management policy and repository before you can restore from a snapshot. The snapshot options depend on the stack version the deployment is running.
 
@@ -67,7 +67,7 @@ To make sure you’re all set for production, consider the following actions:
 
 * [Plan for your expected workloads](/deploy-manage/production-guidance.md) and consider how many availability zones you’ll need.
 * [Create a deployment](/deploy-manage/deploy/elastic-cloud/create-an-elastic-cloud-hosted-deployment.md) on the region you need and with a hardware profile that matches your use case.
-* [Change your configuration](/deploy-manage/deploy/elastic-cloud/ec-customize-deployment-components.md) by turning on autoscaling, adding high availability, or adjusting components of the Elastic Stack.
+* [Change your configuration](/deploy-manage/deploy/elastic-cloud/ec-customize-deployment-components.md) by turning on autoscaling, adding high availability, or adjusting components of the {{stack}}.
 * [Add extensions and plugins](/deploy-manage/deploy/elastic-cloud/add-plugins-extensions.md) to use Elastic supported extensions or add your own custom dictionaries and scripts.
 * [Edit settings and defaults](/deploy-manage/deploy/elastic-cloud/edit-stack-settings.md) to fine tune the performance of specific features.
 * [Manage your deployment](/deploy-manage/deploy/elastic-cloud/manage-deployments.md) as a whole to restart, upgrade, stop routing, or delete.

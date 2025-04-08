@@ -6,16 +6,16 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-manage-elastic-stack.html
 ---
 
-# Manage Elastic Stack versions [ece-manage-elastic-stack]
+# Manage {{stack}} versions [ece-manage-elastic-stack]
 
-{{ece}} ships with a number of different versions of the Elastic Stack containing {{es}} and {{kib}}. Periodically, you might need to manage Elastic Stack versions for one of the following reasons:
+{{ece}} ships with a number of different versions of the {{stack}} containing {{es}} and {{kib}}. Periodically, you might need to manage {{stack}} versions for one of the following reasons:
 
-* To add new versions of the Elastic Stack as they become available
-* To obtain information about existing Elastic Stack versions
-* To update existing versions of the Elastic Stack
-* To add the Elastic Stack versions that shipped with a version of ECE that you upgraded to
+* To add new versions of the {{stack}} as they become available
+* To obtain information about existing {{stack}} versions
+* To update existing versions of the {{stack}}
+* To add the {{stack}} versions that shipped with a version of ECE that you upgraded to
 
-New or updated versions of the Elastic Stack must be prepared to work with {{ece}} and are provided as packs that you can download.
+New or updated versions of the {{stack}} must be prepared to work with {{ece}} and are provided as packs that you can download.
 
 ::::{important}
 {{es}} 7.8 and later comes with Index Lifecycle Management (ILM) always enabled. Before upgrading to 7.8 or later, to avoid any unpredictable behavior it is important to configure hot-warm clusters on {{ece}} with ILM rather than index curation. Check [migrate to index lifecycle management](../../../manage-data/lifecycle/index-lifecycle-management.md) for existing clusters, and [configure index management](https://www.elastic.co/guide/en/cloud-enterprise/current/ece-configure-index-management.html) for new clusters.
@@ -23,13 +23,13 @@ New or updated versions of the Elastic Stack must be prepared to work with {{ece
 
 
 
-## Most recent Elastic Stack packs [ece_most_recent_elastic_stack_packs]
+## Most recent {{stack}} packs [ece_most_recent_elastic_stack_packs]
 
 :::{important}
 Enterprise Search is not available in versions 9.0+.
 :::
 
-The following are the most recently released Elastic Stack packs for version 8.x, 7.x, and 6.x, respectively:
+The following are the most recently released {{stack}} packs for version 8.x, 7.x, and 6.x, respectively:
 
 $$$ece-elastic-stack-stackpacks-recent$$$
 
@@ -41,9 +41,9 @@ $$$ece-elastic-stack-stackpacks-recent$$$
 | [{{es}}, {{kib}}, and APM stack pack: 6.8.23](https://download.elastic.co/cloud-enterprise/versions/6.8.23.zip) | ECE 1.1.4 |
 
 
-## All available Elastic Stack packs [ece-elastic-stack-stackpacks]
+## All available {{stack}} packs [ece-elastic-stack-stackpacks]
 
-Following is the full list of available packs containing Elastic Stack versions. Note that Enterprise Search was introduced with ECE 2.6.0 and requires that version or higher.
+Following is the full list of available packs containing {{stack}} versions. Note that Enterprise Search was introduced with ECE 2.6.0 and requires that version or higher.
 
 ::::{dropdown} **Expand to view the full list**
 | Required downloads | Minimum required ECE version |
@@ -254,7 +254,7 @@ Following is the full list of available packs containing Elastic Stack versions.
 
 
 ::::{tip}
-For *offline* or *air-gapped* installations, additional steps are required to add Elastic Stack packs, as these packs do not contain any Docker images. After downloading a stack pack, you also need to pull and load the Docker images that match the Elastic Stack version. To learn more about what Docker images you need and about pulling and loading Docker images, check [Install ECE offline](air-gapped-install.md).
+For *offline* or *air-gapped* installations, additional steps are required to add {{stack}} packs, as these packs do not contain any Docker images. After downloading a stack pack, you also need to pull and load the Docker images that match the {{stack}} version. To learn more about what Docker images you need and about pulling and loading Docker images, check [Install ECE offline](air-gapped-install.md).
 ::::
 
 
@@ -264,20 +264,20 @@ For *offline* or *air-gapped* installations, additional steps are required to ad
 The examples shown all use HTTPS over port 12443, which requires that you have [a TLS certificate configured](../../security/secure-your-elastic-cloud-enterprise-installation/manage-security-certificates.md). Alternatively, you can specify the `-k` option to turn off certificate verification, as shown in our examples, or use HTTP over port 12400.
 
 
-## Get Elastic Stack information [ece_get_elastic_stack_information]
+## Get {{stack}} information [ece_get_elastic_stack_information]
 
-You can obtain information about existing Elastic Stack versions that are available in your installation through the Cloud UI or through the command line.
+You can obtain information about existing {{stack}} versions that are available in your installation through the Cloud UI or through the command line.
 
-To obtain information about available Elastic Stack versions through the Cloud UI:
+To obtain information about available {{stack}} versions through the Cloud UI:
 
 1. [Log into the Cloud UI](log-into-cloud-ui.md).
-2. From the **Platform** menu, select **Elastic Stack**.
+2. From the **Platform** menu, select **{{stack}}**.
 3. Select the version that you want.
 
-    The available Elastic Stack versions are shown. More detailed information about Docker images, plugins, and related {{kib}} versions are also available for each {{es}} version.
+    The available {{stack}} versions are shown. More detailed information about Docker images, plugins, and related {{kib}} versions are also available for each {{es}} version.
 
 
-To obtain information about available Elastic Stack versions through the command line:
+To obtain information about available {{stack}} versions through the command line:
 
 ```sh
 curl -X GET -u USER:PASSWORD https://COORDINATOR_HOST:12443/api/v1/stack/versions
@@ -351,25 +351,25 @@ curl -X GET -u admin:4Z52y8Gq7PrxMDy47ipJPSh4ozBMynOGa9HWxcy2D3j https://10.56.1
 You can also query for a specific version with a URI such as `https://COORDINATOR_HOST:12443/api/v1/stack/versions/5.3.2`, for example.
 
 
-## Add Elastic Stack packs [ece-manage-elastic-stack-add]
+## Add {{stack}} packs [ece-manage-elastic-stack-add]
 
-You can add new Elastic Stack packs to your installation through the Cloud UI, through the {{ece}} installation script, or through the RESTful API.
+You can add new {{stack}} packs to your installation through the Cloud UI, through the {{ece}} installation script, or through the RESTful API.
 
-To add a new Elastic Stack pack from the Cloud UI:
+To add a new {{stack}} pack from the Cloud UI:
 
-1. Download the Elastic Stack version that you want.
+1. Download the {{stack}} version that you want.
 2. [Log into the Cloud UI](log-into-cloud-ui.md).
-3. From the **Platform** menu, select **Elastic Stack**.
-4. Select **Upload Elastic Stack pack**.
-5. Select a .zip file that contains an Elastic Stack pack and upload it.
+3. From the **Platform** menu, select **{{stack}}**.
+4. Select **Upload {{stack}} pack**.
+5. Select a .zip file that contains an {{stack}} pack and upload it.
 
-    After the stack pack has been uploaded successfully, the new version appears in the list of Elastic Stack versions and can be used when you create or change a deployment.
+    After the stack pack has been uploaded successfully, the new version appears in the list of {{stack}} versions and can be used when you create or change a deployment.
 
 
-To add a new Elastic Stack pack through the {{ece}} installation script from the command line:
+To add a new {{stack}} pack through the {{ece}} installation script from the command line:
 
 1. Log into a host running {{ece}}.
-2. Add the Elastic Stack pack with the `add-stack-version` action:
+2. Add the {{stack}} pack with the `add-stack-version` action:
 
     ```sh
     ./elastic-cloud-enterprise.sh add-stack-version \
@@ -377,7 +377,7 @@ To add a new Elastic Stack pack through the {{ece}} installation script from the
         --version X.Y.Z <1>
     ```
 
-    1. A supported Elastic Stack version, such as `8.12.2`
+    1. A supported {{stack}} version, such as `8.12.2`
 
 
     For example:
@@ -389,10 +389,10 @@ To add a new Elastic Stack pack through the {{ece}} installation script from the
     ```
 
 
-To add a new Elastic Stack pack through the RESTful API from the command line:
+To add a new {{stack}} pack through the RESTful API from the command line:
 
 1. Download the pack on an internet-connected host from Elastic and make it available locally.
-2. Add the Elastic Stack pack with the following API call:
+2. Add the {{stack}} pack with the following API call:
 
     ```sh
     curl -X POST -u USER:PASSWORD https://COORDINATOR_HOST:12443/api/v1/stack/versions \
@@ -400,7 +400,7 @@ To add a new Elastic Stack pack through the RESTful API from the command line:
         --data-binary "@PATH/STACK_PACK_FILE" <1>
     ```
 
-    1. The local path and the new Elastic Stack pack .zip file
+    1. The local path and the new {{stack}} pack .zip file
 
 
     For example:
@@ -413,28 +413,28 @@ To add a new Elastic Stack pack through the RESTful API from the command line:
 
 
 
-## Update Elastic Stack packs [ece_update_elastic_stack_packs]
+## Update {{stack}} packs [ece_update_elastic_stack_packs]
 
-Updating an Elastic Stack pack might become necessary if an Elastic Stack version has been updated with security fixes, for example. You can update an existing Elastic Stack version through the Cloud UI or through the command line.
+Updating an {{stack}} pack might become necessary if an {{stack}} version has been updated with security fixes, for example. You can update an existing {{stack}} version through the Cloud UI or through the command line.
 
-Updated versions of {{es}} and {{kib}} are used when you create new {{es}} clusters, but they are not automatically applied to already running clusters. To update existing {{es}} clusters and {{kib}} after an updated Elastic Stack pack has been added, you need to [change the deployment configuration](working-with-deployments.md).
+Updated versions of {{es}} and {{kib}} are used when you create new {{es}} clusters, but they are not automatically applied to already running clusters. To update existing {{es}} clusters and {{kib}} after an updated {{stack}} pack has been added, you need to [change the deployment configuration](working-with-deployments.md).
 
-To update Elastic Stack packs through the Cloud UI:
+To update {{stack}} packs through the Cloud UI:
 
-1. Download the [Elastic Stack version](#ece-elastic-stack-stackpacks) that you want.
+1. Download the [{{stack}} version](#ece-elastic-stack-stackpacks) that you want.
 2. [Log into the Cloud UI](log-into-cloud-ui.md).
-3. From the **Platform** menu, select **Elastic Stack**.
+3. From the **Platform** menu, select **{{stack}}**.
 4. Delete the old pack you want to replace.
-5. Select **Upload Elastic Stack pack**.
-6. Select a ZIP file that contains an Elastic Stack pack and upload it.
+5. Select **Upload {{stack}} pack**.
+6. Select a ZIP file that contains an {{stack}} pack and upload it.
 
-    After the stack pack has been uploaded successfully, the updated Elastic Stack version replaces the existing one.
+    After the stack pack has been uploaded successfully, the updated {{stack}} version replaces the existing one.
 
 
-To update Elastic Stack packs through the RESTful API from the command line:
+To update {{stack}} packs through the RESTful API from the command line:
 
 1. Download an updated pack on an internet-connected host from Elastic and make it available locally.
-2. Update the Elastic Stack pack with the following API call:
+2. Update the {{stack}} pack with the following API call:
 
     ```sh
     curl -X PUT -u USER:PASSWORD https://COORDINATOR_HOST:12443/api/v1/stack/versions/VERSION \ <1>
@@ -443,7 +443,7 @@ To update Elastic Stack packs through the RESTful API from the command line:
     ```
 
     1. The version being updated
-    2. The local path and the updated Elastic Stack pack .zip file
+    2. The local path and the updated {{stack}} pack .zip file
 
 
     For example:

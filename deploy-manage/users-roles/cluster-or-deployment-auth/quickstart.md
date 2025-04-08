@@ -30,13 +30,13 @@ Refer to the [Spaces documentation](/deploy-manage/manage-spaces.md) for more in
 
 ## Roles [_roles]
 
-After your spaces are set up, the next step to securing access is to provision your roles. Roles are a collection of privileges that allow you to perform actions in {{kib}} and {{es}}. Roles are assigned to users, and to [system accounts](built-in-users.md) that power the Elastic Stack.
+After your spaces are set up, the next step to securing access is to provision your roles. Roles are a collection of privileges that allow you to perform actions in {{kib}} and {{es}}. Roles are assigned to users, and to [system accounts](built-in-users.md) that power the {{stack}}.
 
-You can create your own roles, or use any of the [built-in roles](built-in-roles.md). Some built-in roles are intended for Elastic Stack components and should not be assigned to end users directly.
+You can create your own roles, or use any of the [built-in roles](built-in-roles.md). Some built-in roles are intended for {{stack}} components and should not be assigned to end users directly.
 
 An example of a built-in role is `kibana_admin`. Assigning this role to your users will grant access to all of {{kib}}'s features. This includes the ability to manage spaces.
 
-Built-in roles are great for getting started with the Elastic Stack, and for system administrators who do not need more restrictive access. However, if you need to control access with more precision, you can create [custom roles](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md).
+Built-in roles are great for getting started with the {{stack}}, and for system administrators who do not need more restrictive access. However, if you need to control access with more precision, you can create [custom roles](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md).
 
 As an administrator, you have the ability to create your own roles to describe exactly the kind of access your users should have. For example, you might create a `marketing_user` role, which you then assign to all users in your marketing department. This role would grant access to all of the necessary data and features for this team to be successful, without granting them access they don’t require.
 
