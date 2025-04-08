@@ -1,7 +1,10 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/synthetics-get-started.html
   - https://www.elastic.co/guide/en/serverless/current/observability-synthetics-get-started.html
+applies_to:
+  stack:
+  serverless:
 ---
 
 # Get started [observability-synthetics-get-started]

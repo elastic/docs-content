@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-autoscaling.html
   - https://www.elastic.co/guide/en/cloud/current/ec-autoscaling.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-autoscaling.html
@@ -96,16 +96,12 @@ In {{ece}}, the following additional limitations apply:
 
 To enable or disable autoscaling on a deployment:
 
-1. Log in to the ECE [Cloud UI](../deploy/cloud-enterprise/log-into-cloud-ui.md) or [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
+:::{include} ../_snippets/find-manage-deployment-ech-and-ece.md
+:::
 
-2. On the **Deployments** page, select your deployment.
-
-    Narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
-
-
-3. In your deployment menu, select **Edit**.
-4. Select desired autoscaling configuration for this deployment using **Enable Autoscaling for:** dropdown menu.
-5. Select **Confirm** to have the autoscaling change and any other settings take effect. All plan changes are shown on the Deployment **Activity** page.
+4. Under the deployment's name in the navigation menu, select **Edit**.
+5. Select desired autoscaling configuration for this deployment using **Enable Autoscaling for:** dropdown menu.
+6. Select **Confirm** to have the autoscaling change and any other settings take effect. All plan changes are shown on the Deployment **Activity** page.
 
 When autoscaling has been enabled, the autoscaled nodes resize according to the [autoscaling settings](#ec-autoscaling-update). Current sizes are shown on the deployment overview page.
 
@@ -115,13 +111,10 @@ When autoscaling has been disabled, you need to adjust the size of data tiers an
 
 Each autoscaling setting is configured with a default value. You can adjust these if necessary, as follows:
 
-1. Log in to the ECE [Cloud UI](../deploy/cloud-enterprise/log-into-cloud-ui.md) or [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
+:::{include} ../_snippets/find-manage-deployment-ech-and-ece.md
+:::
 
-2. On the **Deployments** page, select your deployment.
-
-    Narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
-
-3. In your deployment menu, select **Edit**.
+3. Under the deployment's name in the navigation menu, select **Edit**.
 4. To update a data tier:
 
     1. Use the dropdown box to set the **Maximum size per zone** to the largest amount of resources that should be allocated to the data tier automatically. The resources will not scale above this value.
@@ -200,7 +193,7 @@ The example deployment has a hot data and content tier, warm data tier, cold dat
 
 To learn more about the {{ece}} API, see the [RESTful API](cloud://reference/cloud-enterprise/restful-api.md) documentation. For details on the {{ech}} API, check [RESTful API](cloud://reference/cloud-hosted/ec-api-restful.md).
 
-### Requirements [ec_requirements] 
+### Requirements [ec_requirements]
 
 Note the following requirements when you run this API request:
 
@@ -218,7 +211,7 @@ Note the following requirements when you run this API request:
     * On all other components autoscaling is not currently supported.
 * On {{ece}}, autoscaling is supported for custom deployment templates on version 2.12 and above. To learn more, refer to [Updating custom templates to support `node_roles` and autoscaling](../deploy/cloud-enterprise/ce-add-support-for-node-roles-autoscaling.md).
 
-$$$ece-autoscaling-api-example-requirements-table$$$ 
+$$$ece-autoscaling-api-example-requirements-table$$$
 
 |  | `size` | `autoscaling_min` | `autoscaling_max` |
 | --- | --- | --- | --- |
@@ -237,7 +230,7 @@ $$$ece-autoscaling-api-example-requirements-table$$$
 
 ### API request example [ec_api_request_example]
 
-::::{note} 
+::::{note}
 Although autoscaling can scale some tiers by CPU, the primary measurement of tier size is memory. Limits on tier size are in terms of memory.
 ::::
 

@@ -2,7 +2,7 @@
 applies_to:
   stack: ga
   serverless: ga
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/alerting-getting-started.html#alerting-concepts-differences
   - https://www.elastic.co/guide/en/serverless/current/project-settings-alerts.html
 ---

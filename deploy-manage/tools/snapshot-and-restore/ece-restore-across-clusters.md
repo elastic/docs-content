@@ -1,18 +1,18 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-restore-across-clusters.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-restore-across-clusters.html
 applies_to:
   deployment:
-    ess: 
-    ece: 
+    ess:
+    ece:
 ---
 
 # Restore a snapshot across clusters [ece-restore-across-clusters]
 
 Snapshots can be restored to either the same Elasticsearch cluster or to another cluster. If you are restoring all indices to another cluster, you can [clone](/deploy-manage/tools/snapshot-and-restore/ece-restore-snapshots-into-new-deployment.md) a cluster.
 
-::::{note} 
+::::{note}
 Users created using the X-Pack security features or using Shield are not included when you restore across clusters, only data from Elasticsearch indices is restored. If you do want to create a cloned cluster with the same users as your old cluster, you need to recreate the users manually on the new cluster.
 ::::
 
@@ -49,6 +49,6 @@ To restore built-in snapshots across clusters, there are two options:
 
 When restoring snapshots across clusters on {{ech}} or {{ece}}, the platform creates a new repository called `\_clone_{{clusterIdPrefix}}`, which persists until manually deleted. If the repository is still in use, for example by mounted searchable snapshots, it can’t be removed.
 
-::::{warning} 
+::::{warning}
 When restoring from a deployment that’s using searchable snapshots, refer to [Restore snapshots containing searchable snapshots indices across clusters](ece-restore-snapshots-containing-searchable-snapshots-indices-across-clusters.md).
 ::::

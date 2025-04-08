@@ -3,7 +3,7 @@ navigation_title: Elasticsearch user settings
 applies_to:
   deployment:
     ece: all
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-add-user-settings.html
 ---
 

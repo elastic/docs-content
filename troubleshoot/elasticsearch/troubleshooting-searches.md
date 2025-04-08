@@ -1,7 +1,15 @@
 ---
+applies_to:
+  stack: 
+  deployment:
+    eck: 
+    ess: 
+    ece: 
+    self: 
 navigation_title: Searches
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/troubleshooting-searches.html
+  - https://www.elastic.co/guide/en/serverless/current/devtools-dev-tools-troubleshooting.html
 ---
 
 # Troubleshoot searches [troubleshooting-searches]
@@ -201,7 +209,7 @@ GET /my-index-000001/_explain/0
 }
 ```
 
-The [profile API](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-profile.html) provides detailed timing information about a search request. For a visual representation of the results, use the [Search Profiler](../../explore-analyze/query-filter/tools/search-profiler.md) in {{kib}}.
+The [profile API](elasticsearch://reference/elasticsearch/rest-apis/search-profile.md) provides detailed timing information about a search request. For a visual representation of the results, use the [Search Profiler](../../explore-analyze/query-filter/tools/search-profiler.md) in {{kib}}.
 
 ::::{note}
 To troubleshoot queries in {{kib}}, select **Inspect** in the toolbar. Next, select **Request**. You can now copy the query {{kib}} sent to {{es}} for further analysis in Console.

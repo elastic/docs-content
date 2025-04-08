@@ -1,7 +1,10 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-sampling.html
   - https://www.elastic.co/guide/en/serverless/current/observability-apm-transaction-sampling.html
+applies_to:
+  stack:
+  serverless:
 ---
 
 # Transaction sampling [apm-sampling]

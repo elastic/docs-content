@@ -1,10 +1,11 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/what-is-observability-serverless.html
   - https://www.elastic.co/guide/en/observability/current/index.html
+  - https://www.elastic.co/guide/en/kibana/current/observability.html
 applies_to:
-  stack: 
-  serverless: 
+  stack:
+  serverless:
 ---
 
 # Observability
@@ -24,7 +25,7 @@ applies_to:
 
 ## How to [_how_to]
 
-* [**Explore log data**](observability/logs/logs-explorer.md): Use Discover to explore your log data.
+* [**Explore log data**](observability/logs/discover-logs.md): Use Discover to explore your log data.
 * [**Trigger alerts and triage problems**](../solutions/observability/incident-management/create-manage-rules.md): Create rules to detect complex conditions and trigger alerts.
 * [**Track and deliver on your SLOs**](observability/incident-management/service-level-objectives-slos.md): Measure key metrics important to the business.
 * [**Detect anomalies and spikes**](../explore-analyze/machine-learning/anomaly-detection.md): Find unusual behavior in time series data.

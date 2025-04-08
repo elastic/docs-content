@@ -1,7 +1,10 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/synthetics-create-test.html
   - https://www.elastic.co/guide/en/serverless/current/observability-synthetics-create-test.html
+applies_to:
+  stack:
+  serverless:
 ---
 
 # Write a synthetic test [synthetics-create-test]
@@ -95,10 +98,10 @@ A basic two-step journey would look like this:
 
 ```js
 journey('Journey name', ({ page, browser, client, params, request }) => {
-    step('Step 1 name', () => {
+    step('Step 1 name', async () => {
       // Do something here
     });
-    step('Step 2 name', () => {
+    step('Step 2 name', async () => {
       // Do something else here
     });
 });
@@ -107,7 +110,7 @@ journey('Journey name', ({ page, browser, client, params, request }) => {
 Steps can be as simple or complex as you need them to be. For example, a basic first step might load a web page:
 
 ```js
-step('Load the demo page', () => {
+step('Load the demo page', async () => {
   await page.goto('https://elastic.github.io/synthetics-demo/'); <1>
 });
 ```

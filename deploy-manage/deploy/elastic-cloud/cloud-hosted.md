@@ -2,7 +2,7 @@
 applies_to:
   deployment:
     ess: ga
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/index.html
   - https://www.elastic.co/guide/en/cloud/current/ec-getting-started.html
   - https://www.elastic.co/guide/en/cloud/current/ec-faq-getting-started.html

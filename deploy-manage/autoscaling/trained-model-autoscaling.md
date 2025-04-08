@@ -1,13 +1,13 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/general-ml-nlp-auto-scale.html
   - https://www.elastic.co/guide/en/machine-learning/current/ml-nlp-auto-scale.html
 applies_to:
-  deployment: 
+  deployment:
     ess:
     eck:
     ece:
-  serverless: 
+  serverless:
 ---
 
 # Trained model autoscaling
@@ -93,7 +93,7 @@ On {{serverless-short}}, VCUs for {{ml}} are based on the amount of vCPU and mem
 As a math formula, `VCUs = 8 * allocations * threads`, or `1` VCU for every `1GB` of memory consumed, whichever is greater.
 ::::
 
-If you use a self-managed cluster or ECK, vCPUs level ranges are derived from the `total_ml_processors` and `max_single_ml_node_processors` values. Use the [get {{ml}} info API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-info) to check these values. 
+If you use a self-managed cluster or ECK, vCPUs level ranges are derived from the `total_ml_processors` and `max_single_ml_node_processors` values. Use the [get {{ml}} info API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-info) to check these values.
 
 The following tables show you the number of allocations, threads, and vCPUs available in ECE and ECH when adaptive resources are enabled or disabled.
 

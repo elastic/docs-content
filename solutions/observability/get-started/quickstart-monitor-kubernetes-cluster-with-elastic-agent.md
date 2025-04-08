@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/observability-quickstarts-k8s-logs-metrics.html
   - https://www.elastic.co/guide/en/observability/current/monitor-k8s-logs-metrics-with-elastic-agent.html
 applies_to:

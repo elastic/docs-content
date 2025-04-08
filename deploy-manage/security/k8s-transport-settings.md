@@ -6,9 +6,9 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-transport-settings.html
 ---
 
-# Transport certificates on ECK [k8s-transport-settings]
+# Manage transport certificates on ECK [k8s-transport-settings]
 
-The transport module in Elasticsearch is used for internal communication between nodes within the cluster as well as communication between remote clusters. Check the [Elasticsearch documentation](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md) for details. For customization options of the HTTP layer, check [Services](../deploy/cloud-on-k8s/accessing-services.md) and [TLS certificates](/deploy-manage/security/secure-http-communications.md).
+The transport module in Elasticsearch is used for internal communication between nodes within the cluster as well as communication between remote clusters. Check the [Elasticsearch documentation](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md) for details. For customization options of the HTTP layer, check [Access services](../deploy/cloud-on-k8s/accessing-services.md) and [HTTP TLS certificates](./k8s-https-settings.md).
 
 ## Customize the Transport Service [k8s_customize_the_transport_service]
 

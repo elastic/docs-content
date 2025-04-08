@@ -1,7 +1,10 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/synthetics-configuration.html
   - https://www.elastic.co/guide/en/serverless/current/observability-synthetics-configuration.html
+applies_to:
+  stack:
+  serverless:
 ---
 
 # Configure a Synthetics project [observability-synthetics-configuration]
