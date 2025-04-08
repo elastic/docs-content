@@ -107,7 +107,17 @@ sudo dpkg -i elasticsearch-{{stack-version}}-amd64.deb
 
 1. Compares the SHA of the downloaded Debian package and the published checksum, which should output `elasticsearch-<version>-amd64.deb: OK`.
 
-## Step 3 (Optional): Reconfigure a node to join an existing cluster [_reconfigure_a_node_to_join_an_existing_cluster]
+## Step 3: Set up the node for connectivity
+
+:::{include} _snippets/node-connectivity.md
+:::
+
+### Set up a node as the first node in a cluster [first-node]
+
+:::{include} _snippets/first-node.md
+:::
+
+### Reconfigure a node to join an existing cluster [existing-cluster]
 
 :::{include} _snippets/join-existing-cluster.md
 :::
@@ -135,15 +145,31 @@ sudo dpkg -i elasticsearch-{{stack-version}}-amd64.deb
 
 ### Security at startup [deb-security-configuration]
 
-:::{include} _snippets/auto-security-config.md
+:::{include} _snippets/auto-security-config-rpm-deb.md
+:::
+
+## Step 6: Reset the `elastic` superuser password
+
+:::{include} _snippets/reset-superuser-rpm-deb.md
 :::
 
 :::{include} _snippets/pw-env-var.md
 :::
 
-## Step 6: Check that {{es}} is running [deb-check-running]
+## Step 7: Check that {{es}} is running [deb-check-running]
 
 :::{include} _snippets/check-es-running.md
+:::
+
+## Step 8 (Multi-node clusters only): Update the config files [update-config-files]
+
+If you are deploying a multi-node cluster, then the `elasticsearch-reconfigure-node` tool adds all existing nodes to each newly enrolled node's `discovery.seed_hosts` setting. However, you need to go back to all of the nodes in the cluster and edit them so each node in the cluster can restart and rejoin the cluster as expected.
+
+:::{note}
+Because the initial node in the cluster is bootstrapped as a single-node cluster, it won't have `discovery.seed_hosts` configured. This setting is mandatory for multi-node clusters and must be added manually to the first node.
+:::
+
+:::{include} _snippets/clean-up-multinode.md
 :::
 
 ## Configuring {{es}} [deb-configuring]
@@ -182,11 +208,6 @@ The Debian package places config files, logs, and the data directory in the appr
 | logs | Log files location. | `/var/log/elasticsearch` | [`path.logs`](/deploy-manage/deploy/self-managed/important-settings-configuration.md#path-settings) |
 | plugins | Plugin files location. Each plugin will be contained in a subdirectory. | `/usr/share/elasticsearch/plugins` |  |
 | repo | Shared file system repository locations. Can hold multiple locations. A file system repository can be placed in to any subdirectory of any directory specified here. | Not configured | [`path.repo`](/deploy-manage/tools/snapshot-and-restore/shared-file-system-repository.md) |
-
-### Security certificates and keys [stack-security-certificates]
-
-:::{include} _snippets/security-files.md
-:::
 
 ## Next steps [_next_steps]
 
