@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/observability-introduction.html
   - https://www.elastic.co/guide/en/serverless/current/observability-serverless-observability-overview.html
 
@@ -19,11 +19,11 @@ mapped_urls:
 
 Analyze log data from your hosts, services, Kubernetes, Apache, and many more.
 
-In **Logs Explorer** (powered by Discover), you can quickly search and filter your log data, get information about the structure of the fields, and display your findings in a visualization.
+In **Discover**, you can quickly search and filter your log data, get information about the structure of the fields, and display your findings in a visualization.
 
-:::{image} /solutions/images/serverless-log-explorer-overview.png
-:alt: Logs Explorer showing log events
-:screenshot:
+:::{image} ../../images/logs-discover.png
+:alt: Discover showing log events
+:class: screenshot
 :::
 
 [Learn more about log monitoring →](../../../solutions/observability/logs.md)

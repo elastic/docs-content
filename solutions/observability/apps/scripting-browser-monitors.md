@@ -1,7 +1,10 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/synthetics-journeys.html
   - https://www.elastic.co/guide/en/serverless/current/observability-synthetics-journeys.html
+applies_to:
+  stack:
+  serverless:
 ---
 
 # Scripting browser monitors [synthetics-journeys]

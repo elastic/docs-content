@@ -1,9 +1,9 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-snapshot-repository-aws-gcp-migration.html
 applies_to:
   deployment:
-    ess: 
+    ess:
 ---
 
 # Repository isolation on AWS and GCP [ec-snapshot-repository-aws-gcp-migration]

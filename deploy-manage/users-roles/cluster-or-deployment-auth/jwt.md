@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-securing-clusters-JWT.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-securing-clusters-JWT.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-securing-clusters-JWT.html

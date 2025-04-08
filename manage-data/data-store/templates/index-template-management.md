@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/index-mgmt.html#manage-index-templates
   - https://www.elastic.co/guide/en/serverless/current/index-management.html#index-management-manage-index-templates
 applies_to:

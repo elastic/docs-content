@@ -4,10 +4,13 @@ navigation_title: "Clients"
 
 # Troubleshoot {{es}} clients
 
-:::{admonition} WIP
-⚠️ **This page is a work in progress.** ⚠️
+Use the topics in this section to troubleshoot issues you encounter while using the official [Elasticsearch clients](/reference/elasticsearch-clients/index.md):
 
-The documentation team is working on this section. Contributions welcome!
-:::
+* [](/troubleshoot/elasticsearch/elasticsearch-client-java-api-client/java.md)
+* [](/troubleshoot/elasticsearch/elasticsearch-client-net-api/net.md)
+* [](/troubleshoot/elasticsearch/elasticsearch-client-javascript-api/nodejs.md)
+* [](/troubleshoot/elasticsearch/elasticsearch-client-ruby-api/ruby.md)
 
-% What needs to be done: Write from scratch
+## Additional resources
+* [Troubleshooting overview](/troubleshoot/index.md)
+* [Contact us](/troubleshoot/index.md#contact-us)

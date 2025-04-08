@@ -4,10 +4,14 @@ navigation_title: More topics
 
 # More Elasticsearch troubleshooting topics
 
-:::{admonition} WIP
-⚠️ **This page is a work in progress.** ⚠️
+This section contains additional topics for troubleshooting issues with {{es}} deployments.
 
-The documentation team is working on this section. Contributions welcome!
-:::
+* [](/troubleshoot/elasticsearch/discovery-troubleshooting.md)
+* [](/troubleshoot/elasticsearch/monitoring-troubleshooting.md)
+* [](/troubleshoot/elasticsearch/transform-troubleshooting.md)
+* [](/troubleshoot/elasticsearch/watcher-troubleshooting.md)
+* [](/troubleshoot/elasticsearch/elasticsearch-hadoop/elasticsearch-for-apache-hadoop.md)
 
-% What needs to be done: Write from scratch
+## Additional resources
+* [Troubleshooting overview](/troubleshoot/index.md)
+* [Contact us](/troubleshoot/index.md#contact-us)

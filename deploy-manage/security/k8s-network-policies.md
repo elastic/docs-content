@@ -15,6 +15,10 @@ This section describes how to use network policies to isolate the ECK operator a
 
 Note that network policies alone are not sufficient for security. You should complement them with strict RBAC policies, resource quotas, node taints, and other available security mechanisms to ensure that tenants cannot access, modify, or disrupt resources belonging to each other.
 
+:::{tip}
+{{eck}} also supports [IP traffic filtering](/deploy-manage/security/ip-filtering-basic.md).
+:::
+
 ::::{note} 
 There are several efforts to support multi-tenancy on Kubernetes, including the [official working group for multi-tenancy](https://github.com/kubernetes-sigs/multi-tenancy) and community extensions such as [loft](https://loft.sh) and [kiosk](https://github.com/kiosk-sh/kiosk), that can make configuration and management easier. You might need to employ network policies such the ones described in this section to have fine-grained control over {{stack}} applications deployed by your tenants.
 ::::
@@ -58,8 +62,8 @@ The minimal set of permissions required are as follows:
 
 |     |     |
 | --- | --- |
-| Egress (outgoing) | * TCP port 443 of the Kubernetes API server.<br>* UDP port 53 for DNS lookup.<br>* TCP port 9200 of {{es}} nodes on managed namespace.<br> |
-| Ingress (incoming) | * TCP port 9443 for webhook requests from the Kubernetes API server.<br> |
+| Egress (outgoing) | • TCP port 443 of the Kubernetes API server.<br>• UDP port 53 for DNS lookup.<br>• TCP port 9200 of {{es}} nodes on managed namespace.<br> |
+| Ingress (incoming) | • TCP port 9443 for webhook requests from the Kubernetes API server.<br> |
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -109,8 +113,8 @@ spec:
 
 |     |     |
 | --- | --- |
-| Egress (outgoing) | * TCP port 9300 to other {{es}} nodes in the namespace (transport port).<br>* UDP port 53 for DNS lookup.<br> |
-| Ingress (incoming) | * TCP port 9200 from the operator and other pods in the namespace.<br>* TCP port 9300 from other {{es}} nodes in the namespace (transport port).<br> |
+| Egress (outgoing) | • TCP port 9300 to other {{es}} nodes in the namespace (transport port).<br>• UDP port 53 for DNS lookup.<br> |
+| Ingress (incoming) | • TCP port 9200 from the operator and other pods in the namespace.<br>• TCP port 9300 from other {{es}} nodes in the namespace (transport port).<br> |
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -171,8 +175,8 @@ spec:
 
 |     |     |
 | --- | --- |
-| Egress (outgoing) | * TCP port 9200 to {{es}} nodes in the namespace.<br>* UDP port 53 for DNS lookup.<br> |
-| Ingress (incoming) | * TCP port 5601 from other pods in the namespace.<br> |
+| Egress (outgoing) | • TCP port 9200 to {{es}} nodes in the namespace.<br>• UDP port 53 for DNS lookup.<br> |
+| Ingress (incoming) | • TCP port 5601 from other pods in the namespace.<br> |
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -222,8 +226,8 @@ spec:
 
 |     |     |
 | --- | --- |
-| Egress (outgoing) | * TCP port 9200 to {{es}} nodes in the namespace.<br>* TCP port 5601 to {{kib}} instances in the namespace.<br>* UDP port 53 for DNS lookup.<br> |
-| Ingress (incoming) | * TCP port 8200 from other pods in the namespace.<br> |
+| Egress (outgoing) | • TCP port 9200 to {{es}} nodes in the namespace.<br>• TCP port 5601 to {{kib}} instances in the namespace.<br>• UDP port 53 for DNS lookup.<br> |
+| Ingress (incoming) | • TCP port 8200 from other pods in the namespace.<br> |
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -282,7 +286,7 @@ Some {{beats}} may require additional access rules than what is listed here. For
 
 |     |     |
 | --- | --- |
-| Egress (outgoing) | * TCP port 9200 to {{es}} nodes in the namespace.<br>* TCP port 5601 to {{kib}} instances in the namespace.<br>* UDP port 53 for DNS lookup.<br> |
+| Egress (outgoing) | • TCP port 9200 to {{es}} nodes in the namespace.<br>• TCP port 5601 to {{kib}} instances in the namespace.<br>• UDP port 53 for DNS lookup.<br> |
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -330,7 +334,7 @@ Some {{agent}} policies may require additional access rules other than those lis
 
 |     |     |
 | --- | --- |
-| Egress (outgoing) | * TCP port 9200 to {{es}} nodes in the namespace.<br>* TCP port 5601 to {{kib}} instances in the namespace.<br>* TCP port 8220 to {{fleet}} instances in the namespace.<br>* UDP port 53 for DNS lookup.<br> |
+| Egress (outgoing) | • TCP port 9200 to {{es}} nodes in the namespace.<br>• TCP port 5601 to {{kib}} instances in the namespace.<br>• TCP port 8220 to {{fleet}} instances in the namespace.<br>• UDP port 53 for DNS lookup.<br> |
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -401,7 +405,7 @@ spec:
 
 |     |     |
 | --- | --- |
-| Egress (outgoing) | * TCP port 9200 to {{es}} nodes in the namespace.<br>* UDP port 53 for DNS lookup.<br> |
+| Egress (outgoing) | • TCP port 9200 to {{es}} nodes in the namespace.<br>• UDP port 53 for DNS lookup.<br> |
 
 ```yaml
 apiVersion: networking.k8s.io/v1

@@ -2,6 +2,8 @@
 navigation_title: "Switch a self-installation"
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-integration-upgrade-steps.html
+applies_to:
+  stack:
 ---
 
 
@@ -20,7 +22,7 @@ mapped_pages:
 
 The {{stack}} ({{es}} and {{kib}}) must be upgraded to version 7.14 or higher. See the [{{stack}} Installation and Upgrade Guide](../../../deploy-manage/upgrade/deployment-or-cluster.md) for guidance.
 
-Review the [Elastic APM release notes](apm-server://release-notes/index.md) and [Elastic {{observability}} release notes](/release-notes/elastic-observability/release-notes.md) for important changes between your current APM version and this one.
+Review the [Elastic APM release notes](apm-server://release-notes/index.md) and [Elastic {{observability}} release notes](/release-notes/elastic-observability/index.md) for important changes between your current APM version and this one.
 
 
 ## Add a {{fleet}} Server [apm-integration-upgrade-2]

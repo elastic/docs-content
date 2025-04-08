@@ -39,7 +39,7 @@ To create a role:
 
 Set the following privileges for the SLO Editor role:
 
-1. Under **Index privileges** in the **Elasticsearch** section, add `.slo-observability-*` to the **Indices** field and `read`, `view_index_metadata`, `write`, and `manage` to the **Privileges** field.
+1. Under **Index privileges** in the **Elasticsearch** section, add `.slo-observability.*` to the **Indices** field and `read`, `view_index_metadata`, `write`, and `manage` to the **Privileges** field.
 2. Click **Add index privilege**.
 3. In the **Indices** field, add the indices for which you plan to create SLOs. Then, add `read` and `view_index_metadata` to the **Privileges** field. The following example shows `logs-*`, but you can specify any indices.
 
@@ -64,7 +64,7 @@ Set the following privileges for the SLO Editor role:
 
 Set the following privileges for the SLO Read role:
 
-1. Under **Index privileges** in the **Elasticsearch** section, add `.slo-observability-*` to the **Indices** field and `read` and `view_index_metadata` to the **Privileges** field.
+1. Under **Index privileges** in the **Elasticsearch** section, add `.slo-observability.*` to the **Indices** field and `read` and `view_index_metadata` to the **Privileges** field.
 
     :::{image} /solutions/images/observability-slo-es-priv-viewer.png
     :alt: Index privileges for SLO Viewer role

@@ -4,8 +4,6 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/tls-certificate-alert.html
 ---
 
-
-
 # Create a TLS certificate rule [tls-certificate-alert]
 
 
@@ -156,8 +154,15 @@ The following variables are specific to this rule type. You an also specify [var
 
 ## Uptime TLS rule [tls-rule-uptime]
 
-::::{warning}
-Deprecated in 8.15.0.
+```{applies_to}
+stack: deprecated 8.15.0
+serverless: unavailable
+```
+
+::::{admonition} Deprecated in 8.15.0.
+:class: warning
+
+Use [Synthetic monitoring](/solutions/observability/apps/synthetic-monitoring.md) instead of the {{uptime-app}}.
 ::::
 
 
