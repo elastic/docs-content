@@ -20,13 +20,6 @@ In addition to health status, active alerts for each service are prominently dis
 :screenshot:
 :::
 
-% Stateful only for the following tip?
-
-::::{tip}
-Want to monitor service logs without instrumenting all your services? Learn about our [Inventory](../../../solutions/observability/apps/inventory.md).
-::::
-
-
 ## Service groups [service-groups]
 
 ::::{note}
