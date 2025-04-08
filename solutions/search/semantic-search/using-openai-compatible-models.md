@@ -83,7 +83,7 @@ Since the created endpoint only works locally, it cannot be accessed from extern
    Region                        United States (us)                                                                                                                                                                  
    Latency                       561ms                                                                                                                                                                               
    Web Interface                 http://127.0.0.1:4040                                                                                                                                                               
-   Forwarding                    https://your-ngrok-url.ngrok-free.app -> http://localhost:11434                                                                                                                   
+   Forwarding                    https://your-ngrok-endpoint.ngrok-free.app -> http://localhost:11434                                                                                                                   
    
    
    Connections                   ttl     opn     rt1     rt5     p50     p90                                                                                                                                         
@@ -108,7 +108,7 @@ Now, create a connector using the public URL from ngrok.
 2. Select **OpenAI** on the fly-out.
 3. Provide a name for the connector.
 4. Under **Connector settings**, select **Other (OpenAI Compatible Service)** as the OpenAI provider.
-5. Paste the ngrok-generated URL into the **URL** field.
+5. Paste the ngrok-generated URL into the **URL** field and add the `v1/chat/completions` endpoint. For example: https://your-ngrok-endpoint.ngrok-free.app/v1/chat/completions
 6. Specify the default model, for example, `llama3.2`.
 7. Provide any random string for the API key (it will not be used for requests).
 8. **Save**.
@@ -119,6 +119,66 @@ Now, create a connector using the public URL from ngrok.
 9. Click **Add data sources** and connect your index.
 
 You can now use Playground with the LLM running locally.
+
+## Using the local LLM with the {{infer}} API
+
+You can use your locally installed LLM with the {{infer}} API.
+
+Create the {{infer}} endpoint for a `chat_completion` task type with the `openai` service with the following request:
+
+```console
+PUT _inference/chat_completion/llama-completion
+{
+    "service": "openai",
+    "service_settings": {
+        "api_key": "ignored", <1>
+        "model_id": "llama3.2", <2>
+        "url": "https://your-ngrok-endpoint.ngrok-free.app/v1/chat/completions" <3>
+    }
+}
+```
+
+1. The `api_key` parameter is required for the `openai` service and must be set, but the specific value is not important for the local AI service.
+2. The model name.
+3. The ngrok-generated URL with the chat completion endpoint (`v1/chat/completions`).
+
+Verify if the {{infer}} endpoint working correctly:
+
+```console
+POST _inference/chat_completion/llama-completion/_stream
+{
+    "model": "llama3.2",
+    "messages": [
+        {
+            "role": "user",
+            "content": "What is the capital of France?"
+        }
+    ],
+    "temperature": 0.7,
+    "max_completion_tokens": 300
+}
+```
+
+The request results in a response similar to this:
+
+```console-result
+event: message
+data: {
+  "id" : "chatcmpl-416",
+  "choices" : [
+    {
+      "delta" : {
+        "content" : "The",
+        "role" : "assistant"
+      },
+      "index" : 0
+    }
+  ],
+  "model" : "llama3.2",
+  "object" : "chat.completion.chunk"
+}
+(...)
+```
 
 ## Further reading
 
