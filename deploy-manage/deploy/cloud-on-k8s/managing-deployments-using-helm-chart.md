@@ -1,5 +1,5 @@
 ---
-navigation_title: {{stack}} Helm chart
+navigation_title: Elastic Stack Helm chart
 applies_to:
   deployment:
     eck: all
