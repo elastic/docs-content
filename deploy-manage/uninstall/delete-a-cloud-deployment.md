@@ -14,7 +14,7 @@ applies_to:
   serverless:
 ---
 
-# Delete an Enterprise or Hosted deployment or a Serverless project
+# Delete a cloud deployment
 
 This page provides instructions for deleting several types of cloud deployments, and outlines key considerations before proceeding.
 
@@ -90,3 +90,31 @@ To restore a terminated deployment,
     Narrow the list by name, ID, or choose from several other filters. To further define the list, use a combination of filters.
 3. In the **Deployment Management** section, select **Restore** and then acknowledge the confirmation message.
 
+## {{eck}} [elastic-cloud-kubernetes]
+
+To delete a deployment managed by {{eck}}, you need to remove the corresponding custom resource from your Kubernetes cluster. This action deletes all {{es}} and {{kib}} pods and their associated persistent data.
+
+To delete an Elasticsearch deployment created with {{eck}}:
+
+1. Run the following command to delete the {{es}} custom resource:
+
+   ```shell
+   kubectl delete elasticsearch <deployment-name>
+   ```
+   For example:
+
+   ```shell
+   kubectl delete elasticsearch test-deployment
+   ```
+
+   This deletes the custom resource and all associated infrastructure, such as {{es}} nodes, services, and persistent data volumes.
+
+2. If you also deployed {{kib}} or other stack components, delete those resources as well:
+
+   ```shell
+   kubectl delete kibana <kibana-resource-name>
+   ```
+   
+:::{{tip}}
+To fully uninstall {{eck}} from your cluster including all managed resources and the ECK operator, refer to the [Uninstall Elastic Cloud on Kubernetes](/deploy-manage/uninstall/uninstall-elastic-cloud-on-kubernetes.md) guide.
+:::
