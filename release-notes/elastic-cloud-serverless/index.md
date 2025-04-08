@@ -17,6 +17,69 @@ For {{serverless-full}} API changes, refer to [APIs Changelog](https://www.elast
 
 % ### Fixes [elastic-cloud-serverless-releasedate-fixes]
 
+## April 7, 2025 [serverless-changelog-04072025]
+
+### Features and enhancements
+
+[discrete]
+[[features-deploy@1744006300]]
+==== New features
+* Adds keyboard navigation for drag-and-drop interactions to Dashboards({kibana-pull}208286[#208286]).
+* Adds 'Read More' and 'Read Less' functionality to fields in Document view in Discover. ({kibana-pull}215326[#215326]).
+
+[discrete]
+[[enhancements-deploy@1744006300]]
+==== Enhancements
+* Injects/extracts tag references for Dashboards ({kibana-pull}214788[#214788]).
+* Adds an option to User Settings that allows the Kibana interface to display in a high contrast mode ({kibana-pull}216242[#216242]).
+* Adds a back external link indicator to the side navigtion ({kibana-pull}215946[#215946]).
+* Adds default metrics dashboard for Node.js OTel in Elastic Observability Serverless ({kibana-pull}215735[#215735]).
+* Replaces Sourcerer with Discover Data View Picker in Elastic Security Serverless ({kibana-pull}210585[#210585]).
+* Handles grouping in multi value fields in Elastic Security Serverless ({kibana-pull}215913[#215913]).
+* Replaces sourcerer in the global header in Elastic Security Serverless ({kibana-pull}216685[#216685]).
+* Adds validation and autocomplete support for the `CHANGE_POINT` command in ES|QL ({kibana-pull}216043[#216043]).
+* Adds support for aggregrate filtering in the ES|QL editor ({kibana-pull}216379[#216379]).
+* Changes the agent details last activity value to show the formatted datetime in Fleet ({kibana-pull}215531[#215531]).
+* Allows SSL configuration to be disabled for Fleet agent Logstash output ({kibana-pull}216216[#216216]).
+* Enhances the display for anomaly time function values for Machine Learning ({kibana-pull}216142[#216142]).
+* Adds Voyage AI and DeepSeek icons for Machine Learning ({kibana-pull}216651[#216651]).
+* Moves rule settings to a flyout instead of a modal ({kibana-pull}216162[#216162]).
+
+[discrete]
+[[fixes-deploy@1744006300]]
+==== Fixes
+* Fixes a race condition in `useBatchedPublishingSubjects` in Dashboards and visualizations ({kibana-pull}216399[#216399]).
+* Fixes State being dropped when editing visualize embeddables in Dashboards and visualizations ({kibana-pull}216901[#216901]).
+* Updates the HTTP API response from 201 to 200 in Dashboards and visualizations ({kibana-pull}217054[#217054]).
+* Fixes an issue where scaling edits weren't saved in Dashboards and visualizations ({kibana-pull}217235[#217235]).
+* Fixes an issue where the Discover flyout closed when the focus was on filter ({kibana-pull}216630[#216630]).
+* Fixes the CSV export for ES|QL embeddable in Discover ({kibana-pull}216325[#216325]).
+* Fixes the JSON view for ES|QL record in DocViewer ({kibana-pull}216642[#216642]).
+* Adds items count to fields accordion titled `aria-label` in Discover({kibana-pull}216993[#216993]).
+* Makes service inventory icons visible if the `agentName` is returned in Elastic Observability Serverless ({kibana-pull}216220[#216220]).
+* Changes the tpm abbreviation to trace per minute for screen-readers in Elastic Observability Serverless ({kibana-pull}216282[#216282]).
+* Adds the `aria-label` to the fold traces button in Elastic Observability Serverless ({kibana-pull}216485[#216485]).
+* Only allows `.ndjson` files when bulk importing to the knowledge base in Elastic Observability Serverless ({kibana-pull}215433[#215433]).
+* Adds the `aria-label` to the technical preview badge in Elastic Observability Serverless ({kibana-pull}216483[#216483]).
+* Fixes span link invalid filter in Elastic Observability Serverless ({kibana-pull}215322[#215322]).
+* Fixes the missing URL in the transaction summary in Elastic Observability Serverless ({kibana-pull}215397[#215397]).
+* Fixes the query for transaction marks in Elastic Observability Serverless ({kibana-pull}215819[#215819]).
+* Updates the `retrieve_elastic_doc` API test in Elastic Observability Serverless ({kibana-pull}215237[#215237]).
+* Adds error text in environment filter when the input is invalid in Elastic Observability Serverless ({kibana-pull}216782[#216782]).
+* Fixes the fold/unfold button in traces waterfall explorer in Elastic Observability Serverless ({kibana-pull}216972[#216972]).
+* Fixes the alert severity order in Elastic Security Serverless({kibana-pull}215813[#215813]).
+* Fixes the error callout placement on the engine status page in Elastic Security Serverless ({kibana-pull}216228[#216228]).
+* Reads `config` from preconfigured connectors in AI Assistant and Attack Discovery in Elastic Security Serverless ({kibana-pull}216700[#216700]).
+* Fixes bedrock `modelId` encoding in Elastic Security Serverless ({kibana-pull}216915[#216915]).
+* Fixes AI Assistant prompt in Elastic Security Serverless ({kibana-pull}217058[#217058]).
+* Hides "not" operators from suggestions menu in ES|QL ({kibana-pull}216355[#216355]).
+* Fixes the CSV report time range when exporting from Discover in ES|QL ({kibana-pull}216792[#216792]).
+* Fixes unenroll inactive agent tasks if the first set of agents returned is equal to UNENROLLMENT_BATCH_SIZE in Fleet ({kibana-pull}216283[#216283]).
+* Supports integrations having secrets with multiple values in Fleet({kibana-pull}216918[#216918]).
+* Adds overlay to the add/edit integration page in Fleet ({kibana-pull}217151[#217151]).
+
+
+
 ## March 10, 2025 [serverless-changelog-03102025]
 
 ### Features and enhancements [elastic-cloud-serverless-03102025-features-enhancements]
