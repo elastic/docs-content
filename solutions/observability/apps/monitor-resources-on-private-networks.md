@@ -104,7 +104,7 @@ When the {{agent}} is running you can add a new {{private-location}} in the UI:
 1. Find `Synthetics` in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 1. Go to **Settings**.
 1. Go to the **{{private-location}}s** tab.
-1. Click **Add location**.
+1. Click **Create location**.
 1. Give your new location a unique _Location name_.
 1. Select the _Agent policy_ you created above.
 1. (Optional) In _Tags_ select [tags](/explore-analyze/find-and-organize/tags.md) to assign to this location.
