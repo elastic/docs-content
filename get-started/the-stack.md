@@ -9,7 +9,7 @@ mapped_pages:
 
 # The {{stack}}
 
-This section provides an overview of the {{stack}} and its components — powered by [{{es}} and {{kib}}](index.md).
+This section provides an overview of the {{stack}} and its components.
 
 $$$kibana-navigation-search$$$
 
