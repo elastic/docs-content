@@ -129,7 +129,7 @@ To create a new API key:
 
 1. In your Elastic Observability Serverless project, go to any Applications page.
 1. Click **Settings**.
-1. Select the **APM agent keys** tab.
+1. Select the **Agent keys** tab.
 1. Click **Create APM agent key**.
 1. Name the key and assign privileges to it.
 1. Click **Create APM agent key**.
