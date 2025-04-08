@@ -39,7 +39,7 @@ Elasticsearch supports diverse use cases. Select a solution and follow its dedic
 
 ## Next steps
 
-To learn more about our products and solutions, see:
+To learn more about our products and solutions, check out:
 
 - [{{es}} and {{kib}}](introduction.md), the core components of the {{stack}}.
   - [The stack](/get-started/the-stack.md) to understand the relationship between core and optional components of an Elastic deployment.
