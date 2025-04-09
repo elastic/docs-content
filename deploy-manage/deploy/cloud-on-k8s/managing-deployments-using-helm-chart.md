@@ -80,6 +80,10 @@ helm install eck-stack-with-apm-server elastic/eck-stack \
     --values https://raw.githubusercontent.com/elastic/cloud-on-k8s/2.16/deploy/eck-stack/examples/apm-server/basic.yaml -n elastic-stack
 ```
 
+## Enterprise Search server along with Elasticsearch and Kibana [k8s-install-enterprise-search-elasticsearch-kibana-helm]
+
+Enterprise Search is not available in {{stack}} versions 9.0 and later. For an example deployment of {{es}}, {{kib}}, and an Enterprise Search server using the Helm chart, refer to the [previous ECK documentation](https://www.elastic.co/guide/en/cloud-on-k8s/2.16/k8s-stack-helm-chart.html).
+
 ## Install individual components of the Elastic Stack [k8s-eck-stack-individual-components] 
 
 You can install individual components in one of two ways using the provided Helm Charts.
