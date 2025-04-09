@@ -67,7 +67,7 @@ Deleting a deployment cannot be undone.
 
 ### Terminate a deployment
 
-Terminating a deployment stops all running instances and **deletes all data**. Only configuration information is saved so that you can restore the deployment in the future. If there is [a snapshot repository associated](/deploy-manage/tools/snapshot-and-restore/cloud-enterprise.md) with the Elasticsearch cluster and at least one snapshot has been taken, you can restore the cluster with the same indices later.
+Terminating a deployment stops all running instances and **deletes all data**. Only configuration information is saved so that you can restore the deployment in the future. If there is [a snapshot repository associated](/deploy-manage/tools/snapshot-and-restore/cloud-enterprise.md) with the {{es}} cluster and at least one snapshot has been taken, you can restore the cluster with the same indices later.
 
 To terminate an {{ece}} deployment,
 

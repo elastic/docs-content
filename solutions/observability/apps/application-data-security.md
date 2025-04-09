@@ -4,12 +4,10 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-data-security.html
 applies_to:
   stack:
+  serverless:
 ---
 
-
-
 # Application data security [apm-data-security]
-
 
 When setting up Elastic APM, it’s essential to review all captured data carefully to ensure it doesn’t contain sensitive information like passwords, credit card numbers, or health data. In addition, you may wish to filter out other identifiable information, like IP addresses, user agent information, or form field data.
 
@@ -19,7 +17,6 @@ Depending on the type of data, we offer several different ways to filter, manipu
 * [Custom filters](#apm-custom-data-filters)
 
 In addition to utilizing filters, you should regularly review the [sensitive fields](#apm-sensitive-fields) table to ensure sensitive data is not being ingested. If it is, it’s possible to remove or redact it. See [Delete sensitive data](delete-sensitive-data.md) for more information.
-
 
 ## Built-in data filters [apm-built-in-data-filters]
 
@@ -33,7 +30,6 @@ Built-in data filters allow you to filter or turn off ingestion of the following
 | [Real user monitoring data](built-in-data-filters.md#apm-filters-real-user-data) | URLs visited, click events, user browser errors, resources used, etc. |
 | [Database statements](built-in-data-filters.md#apm-filters-database-statements) | Sensitive user or business information |
 
-
 ## Custom filters [apm-custom-data-filters]
 
 Custom filters allow you to filter or redact other types of APM data on ingestion:
@@ -42,7 +38,6 @@ Custom filters allow you to filter or redact other types of APM data on ingestio
 | --- | --- |
 | [Ingest pipelines](custom-filters.md#apm-filters-ingest-pipeline) | Applied at ingestion time.All agents and fields are supported. Data leaves the instrumented service.There are no performance overhead implications on the instrumented service. |
 | [{{apm-agent}} filters](custom-filters.md#apm-filters-in-agent) | Not supported by all agents.Data is sanitized before leaving the instrumented service.Potential overhead implications on the instrumented service |
-
 
 ## Sensitive fields [apm-sensitive-fields]
 

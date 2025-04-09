@@ -11,7 +11,7 @@ applies_to:
 You can use AWS S3 as a repository for [Snapshot/Restore](../snapshot-and-restore.md).
 
 ::::{note}
-If you are looking for a hosted solution of Elasticsearch on AWS, please visit [https://www.elastic.co/cloud/](https://www.elastic.co/cloud/).
+If you are looking for a hosted solution of {{es}} on AWS, please visit [https://www.elastic.co/cloud/](https://www.elastic.co/cloud/).
 ::::
 
 See [this video](https://www.youtube.com/watch?v=ACqfyzWf-xs) for a walkthrough of connecting an AWS S3 repository.
@@ -272,7 +272,7 @@ For more information about S3 storage classes, see [AWS Storage Classes Guide](h
 
 ## Recommended S3 permissions [repository-s3-permissions]
 
-In order to restrict the Elasticsearch snapshot process to the minimum required resources, we recommend using Amazon IAM in conjunction with pre-existing S3 buckets. Here is an example policy which will allow the snapshot access to an S3 bucket named "snaps.example.com". This may be configured through the AWS IAM console, by creating a Custom Policy, and using a Policy Document similar to this (changing snaps.example.com to your bucket name).
+In order to restrict the {{es}} snapshot process to the minimum required resources, we recommend using Amazon IAM in conjunction with pre-existing S3 buckets. Here is an example policy which will allow the snapshot access to an S3 bucket named "snaps.example.com". This may be configured through the AWS IAM console, by creating a Custom Policy, and using a Policy Document similar to this (changing snaps.example.com to your bucket name).
 
 ```js
 {
@@ -371,7 +371,7 @@ If the symlink exists, it will be used by default by all S3 repositories that do
 
 ## AWS VPC bandwidth settings [repository-s3-aws-vpc]
 
-AWS instances resolve S3 endpoints to a public IP. If the Elasticsearch instances reside in a private subnet in an AWS VPC then all traffic to S3 will go through the VPC’s NAT instance. If your VPC’s NAT instance is a smaller instance size (e.g. a t2.micro) or is handling a high volume of network traffic your bandwidth to S3 may be limited by that NAT instance’s networking bandwidth limitations. Instead we recommend creating a [VPC endpoint](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-endpoints.html) that enables connecting to S3 in instances that reside in a private subnet in an AWS VPC. This will eliminate any limitations imposed by the network bandwidth of your VPC’s NAT instance.
+AWS instances resolve S3 endpoints to a public IP. If the {{es}} instances reside in a private subnet in an AWS VPC then all traffic to S3 will go through the VPC’s NAT instance. If your VPC’s NAT instance is a smaller instance size (e.g. a t2.micro) or is handling a high volume of network traffic your bandwidth to S3 may be limited by that NAT instance’s networking bandwidth limitations. Instead we recommend creating a [VPC endpoint](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-endpoints.html) that enables connecting to S3 in instances that reside in a private subnet in an AWS VPC. This will eliminate any limitations imposed by the network bandwidth of your VPC’s NAT instance.
 
 Instances residing in a public subnet in an AWS VPC will connect to S3 via the VPC’s internet gateway and not be bandwidth limited by the VPC’s NAT instance.
 
@@ -403,7 +403,7 @@ PUT /_cluster/settings
 }
 ```
 
-Collect the Elasticsearch logs covering the time period of the failed analysis from all nodes in your cluster and share them with the supplier of your storage system along with the analysis response so they can use them to determine the problem. See the [AWS Java SDK](https://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/java-dg-logging.html) documentation for further information, including details about other loggers that can be used to obtain even more verbose logs. When you have finished collecting the logs needed by your supplier, set the logger settings back to `null` to return to the default logging configuration and disable insecure network trace logging again. See [Logger](elasticsearch://reference/elasticsearch/configuration-reference/miscellaneous-cluster-settings.md#cluster-logger) and [Cluster update settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings) for more information.
+Collect the {{es}} logs covering the time period of the failed analysis from all nodes in your cluster and share them with the supplier of your storage system along with the analysis response so they can use them to determine the problem. See the [AWS Java SDK](https://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/java-dg-logging.html) documentation for further information, including details about other loggers that can be used to obtain even more verbose logs. When you have finished collecting the logs needed by your supplier, set the logger settings back to `null` to return to the default logging configuration and disable insecure network trace logging again. See [Logger](elasticsearch://reference/elasticsearch/configuration-reference/miscellaneous-cluster-settings.md#cluster-logger) and [Cluster update settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings) for more information.
 
 
 ## Linearizable register implementation [repository-s3-linearizable-registers]

@@ -20,7 +20,6 @@ Elastic APM also automatically collects unhandled errors and exceptions. Errors 
 
 Metrics are another vital source of information when debugging production systems. Elastic APM agents automatically pick up basic host-level metrics and agent-specific metrics, like JVM metrics in the Java Agent, and Go runtime metrics in the Go Agent.
 
-
 ## Give Elastic APM a try [give_elastic_apm_a_try]
 
-Use [Get started with application traces and APM](../../../solutions/observability/apps/fleet-managed-apm-server.md) to quickly spin up an APM deployment. Want to host everything yourself instead? See [Get started](../../../solutions/observability/apps/get-started-with-apm.md).
+Use [Get started with application traces and APM](/solutions/observability/apps/fleet-managed-apm-server.md) to quickly spin up an APM deployment. Want to host everything yourself instead? See [Get started](/solutions/observability/apps/get-started-with-apm.md).

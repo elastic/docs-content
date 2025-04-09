@@ -47,7 +47,7 @@ This type of deployment is recommended for many production setups. You need:
 :::
 
 * Monitor the load on proxies and make sure the volume of user requests routed by the proxies does not affect the resources available to the ECE management services.
-* Note that the large-sized Elastic Cloud Enterprise installation separates the allocator and proxy roles from the director and coordinator roles (ECE management services).
+* Note that the large-sized {{ece}} installation separates the allocator and proxy roles from the director and coordinator roles (ECE management services).
 
 You can proceed with this scenario and [install ECE](./install.md).
 
@@ -69,6 +69,6 @@ This type of deployment is recommended for deployments with significant overall 
 :alt: A large installation with nine to twelve hosts across three availability zones
 :::
 
-Note that the large-sized Elastic Cloud Enterprise installation separates the allocator and proxy roles from the director and coordinator roles (ECE management services).
+Note that the large-sized {{ece}} installation separates the allocator and proxy roles from the director and coordinator roles (ECE management services).
 
 You can proceed with this scenario and [install ECE](./install.md).

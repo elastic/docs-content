@@ -2,18 +2,16 @@
 navigation_title: "Self-installation APM integration"
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-upgrade-8.0-self-integration.html
+applies_to:
+  stack:
 ---
 
-
-
 # Upgrade a self-installation of the APM integration to 9.0 [apm-upgrade-9.0-self-integration]
-
 
 This upgrade guide is for the Elastic APM integration. Only use this guide if both of the following are true:
 
 * You have a self-installation of the {{stack}}, i.e. you’re not using {{ecloud}}.
 * You have already switched to and are running {{fleet}} and the Elastic APM integration.
-
 
 ## Prerequisites [_prerequisites_9]
 
@@ -21,12 +19,11 @@ This upgrade guide is for the Elastic APM integration. Only use this guide if bo
 2. Review the [Elastic APM release notes](apm-server://release-notes/index.md) and [Elastic {{observability}} release notes](/release-notes/elastic-observability/index.md).
 3. Review the [Elastic APM breaking changes](apm-server://release-notes/breaking-changes.md).
 
-
 ## Upgrade steps [_upgrade_steps_2]
 
 1. Upgrade the {{stack}} to version 9.0.
 
-    The {{stack}} ({{es}} and {{kib}}) must be upgraded before {{agent}}. refer to the [{{stack}} Installation and Upgrade Guide](../../../deploy-manage/upgrade/deployment-or-cluster.md) for guidance.
+    The {{stack}} ({{es}} and {{kib}}) must be upgraded before {{agent}}. refer to the [{{stack}} Installation and Upgrade Guide](/deploy-manage/upgrade/deployment-or-cluster.md) for guidance.
 
 2. Upgrade {{agent}} to version 9.0 As a part of this process, the APM integration will automatically upgrade to version 9.0.
 

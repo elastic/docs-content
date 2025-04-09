@@ -11,7 +11,6 @@ applies_to:
 Most users do not need to interact directly with the events intake API.
 ::::
 
-
 The events intake API is what we call the internal protocol that APM agents use to talk to the APM Server. Agents communicate with the Server by sending events — captured pieces of information — in an HTTP request. Events can be:
 
 * Transactions
@@ -25,7 +24,6 @@ With NDJSON, agents can open an HTTP POST request and use chunked encoding to st
 
 See the [APM data model](learn-about-application-data-types.md) to learn more about the different types of events.
 
-
 ### Endpoints [apm-api-events-endpoint]
 
 APM Server exposes the following endpoints for Elastic APM agent data intake:
@@ -35,7 +33,6 @@ APM Server exposes the following endpoints for Elastic APM agent data intake:
 | APM agent event intake | `/intake/v2/events` |
 | RUM event intake (v2) | `/intake/v2/rum/events` |
 | RUM event intake (v3) | `/intake/v3/rum/events` |
-
 
 ### Request [apm-api-events-example]
 
@@ -55,20 +52,17 @@ http(s)://{hostname}:{port}/intake/v2/events?async=true
 Since asynchronous processing defers some of the event processing to the background and takes place after the client has closed the request, some errors can’t be communicated back to the client and are logged by the APM Server. Furthermore, asynchronous processing requests will only be scheduled if the APM Server can service the incoming request, requests that cannot be serviced will receive an internal error `503` "queue is full" error.
 ::::
 
-
 For [RUM](real-user-monitoring-rum.md) send an `HTTP POST` request to the APM Server `intake/v3/rum/events` endpoint instead:
 
 ```bash
 http(s)://{hostname}:{port}/intake/v3/rum/events
 ```
 
-
 ### Response [apm-api-events-response]
 
 On success, the server will respond with a 202 Accepted status code and no body.
 
 Keep in mind that events can succeed and fail independently of each other. Only if all events succeed does the server respond with a 202.
-
 
 ### Errors [apm-api-events-errors]
 
@@ -108,9 +102,7 @@ An example error response might look something like this:
 3. An immediately returning non-event related error
 4. The number of accepted events
 
-
 If you’re developing an agent, these errors can be useful for debugging.
-
 
 ### Event API Schemas [apm-api-events-schema-definition]
 
@@ -133,10 +125,8 @@ Rather than send this metadata information from the agent multiple times, the AP
 Metadata is stored under `context` when viewing documents in {{es}}.
 ::::
 
-
 * [Kubernetes data](#apm-api-kubernetes-data)
 * [Metadata Schema](#apm-api-metadata-schema)
-
 
 #### Kubernetes data [apm-api-kubernetes-data]
 
@@ -169,7 +159,6 @@ The table below maps these environment variables to the APM metadata event field
 | `KUBERNETES_POD_NAME` | system.kubernetes.pod.name |
 | `KUBERNETES_NAMESPACE` | system.kubernetes.namespace |
 | `KUBERNETES_POD_UID` | system.kubernetes.pod.uid |
-
 
 #### Metadata Schema [apm-api-metadata-schema]
 
@@ -753,11 +742,9 @@ APM Server uses JSON Schema to validate requests. The specification for metadata
 }
 ```
 
-
 ## Transactions [apm-api-transaction]
 
 Transactions are events corresponding to an incoming request or similar task occurring in a monitored service.
-
 
 #### Transaction Schema [apm-api-transaction-schema]
 
@@ -1897,11 +1884,9 @@ APM Server uses JSON Schema to validate requests. The specification for transact
 }
 ```
 
-
 ## Spans [apm-api-span]
 
 Spans are events captured by an agent occurring in a monitored service.
-
 
 #### Span Schema [apm-api-span-schema]
 
@@ -2816,11 +2801,9 @@ APM Server uses JSON Schema to validate requests. The specification for spans is
 }
 ```
 
-
 ## Errors [apm-api-error]
 
 An error or a logged error message captured by an agent occurring in a monitored service.
-
 
 #### Error Schema [apm-api-error-schema]
 
@@ -4122,11 +4105,9 @@ APM Server uses JSON Schema to validate requests. The specification for errors i
 }
 ```
 
-
 ## Metrics [apm-api-metricset]
 
 Metrics contain application metric data captured by an {{apm-agent}}.
-
 
 #### Metric Schema [apm-api-metricset-schema]
 
@@ -4436,7 +4417,6 @@ APM Server uses JSON Schema to validate requests. The specification for metrics 
 }
 ```
 
-
 ## Example request body [apm-api-event-example]
 
 A request body example containing one event for all currently supported event types.
@@ -4448,5 +4428,4 @@ A request body example containing one event for all currently supported event ty
 {"transaction":{"timestamp":1571657444929001,"name":"ResourceHttpRequestHandler","type":"http","id":"4340a8e0df1906ecbfa9","trace_id":"0acd456789abcdef0123456789abcdef","parent_id":"abcdefabcdef01234567","span_count":{"started":17,"dropped":0},"duration":32.592981,"result":"HTTP2xx","sampled":true,"context":{"service":{"name":"experimental-java","agent":{"version":"1.10.0-SNAPSHOT","ephemeral_id":"e71be9ac-93b0-44b9-a997-5638f6ccfc36"}},"request":{"socket":{"remote_address":"12.53.12.1:8080","encrypted":true},"http_version":"1.1","method":"POST","url":{"protocol":"https:","full":"https://www.example.com/p/a/t/h?query=string#hash","hostname":"www.example.com","port":"8080","pathname":"/p/a/t/h","search":"?query=string","hash":"#hash","raw":"/p/a/t/h?query=string#hash"},"headers":{"user-agent":["Mozilla/5.0(Macintosh;IntelMacOSX10_10_5)AppleWebKit/537.36(KHTML,likeGecko)Chrome/51.0.2704.103Safari/537.36","MozillaChromeEdge"],"content-type":"text/html","cookie":"c1=v1,c2=v2","Elastic-Apm-Traceparent":["00-33a0bd4cceff0370a7c57d807032688e-69feaabc5b88d7e8-01"]},"cookies":{"c1":"v1","c2":"v2"},"env":{"SERVER_SOFTWARE":"nginx","GATEWAY_INTERFACE":"CGI/1.1"},"body":{"string":"helloworld","additional":{"foo":{},"bar":123,"req":"additionalinformation"}}},"response":{"status_code":200,"transfer_size":300,"encoded_body_size":356.90,"decoded_body_size":401.90,"headers":{"content-type":"application/json"},"headers_sent":true,"finished":true}, "user":{"id":"99","username":"foo","email":"foo@mail.com"},"tags":{"organization_uuid":"9f0e9d64-c185-4d21-a6f4-4673ed561ec8","tag5":null},"custom":{"my_key":1,"some_other_value":"foobar","and_objects":{"foo":["bar","baz"]},"(":"notavalidregexandthatisfine"}}}}
 {"metricset":{"samples":{"transaction.breakdown.count":{"value":12},"transaction.duration.sum.us":{"value":12},"transaction.duration.count":{"value":2},"transaction.self_time.sum.us":{"value":10},"transaction.self_time.count":{"value":2},"span.self_time.count":{"value":1},"span.self_time.sum.us":{"value":633.288},"byte_counter":{"value":1},"short_counter":{"value":227},"integer_gauge":{"value":42767},"long_gauge":{"value":3147483648},"float_gauge":{"value":9.16},"double_gauge":{"value":3.141592653589793},"dotted.float.gauge":{"value":6.12},"negative.d.o.t.t.e.d":{"value":-1022}},"tags":{"code":200,"success":true},"transaction":{"type":"request","name":"GET/"},"span":{"type":"db","subtype":"mysql"},"timestamp":1571657444929001}}
 ```
-
 

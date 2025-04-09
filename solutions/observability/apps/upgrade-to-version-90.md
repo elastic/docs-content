@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-upgrading-to-8.x.html
+applies_to:
+  stack:
 ---
 
 # Upgrade to version 9.0 [apm-upgrading-to-9.0]
@@ -11,7 +13,6 @@ This guide explains the upgrade process for version 9.0. For a detailed look at 
 * [What’s new in {{kib}}](https://www.elastic.co/guide/en/kibana/current/whats-new.html)
 * [{{es}} release highlights](https://www.elastic.co/guide/en/elasticsearch/reference/current/release-highlights.html)
 
-
 ## Notable APM changes [_notable_apm_changes]
 
 * All index management has been removed from APM Server; the built-in {{es}} apm-data plugin is entirely responsible for setting up index templates, index lifecycle polices, and index pipelines.
@@ -19,7 +20,6 @@ This guide explains the upgrade process for version 9.0. For a detailed look at 
 * APM Server has a new {{es}} output implementation with defaults that should be sufficient for most use cases.
 
 As a result of the above changes, a number of index management and index tuning configuration variables have been removed. See the APM [release notes](apm-server://release-notes/index.md), [breaking changes](https://www.elastic.co/guide/en/observability/current/apm-breaking.html) for full details.
-
 
 ## Find your upgrade guide [_find_your_upgrade_guide]
 

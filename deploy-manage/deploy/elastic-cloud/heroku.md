@@ -14,7 +14,7 @@ navigation_title: Heroku
 
 This documentation applies to Heroku users who want to make use of the {{es}} Add-On for Heroku that is available from the [Heroku Dashboard](https://dashboard.heroku.com/), or that can be installed from the CLI.
 
-The add-on runs on {{ecloud}} and provides access to [Elasticsearch](https://www.elastic.co/products/elasticsearch), the open source, distributed, RESTful search engine. Many other features of the Elastic Stack are also readily available to Heroku users through the [{{es}} Add-On for Heroku console](https://cloud.elastic.co?page=docs&placement=docs-body) after you install the add-on. For example, you can use {{kib}} to visualize your {{es}} data.
+The add-on runs on {{ecloud}} and provides access to [Elasticsearch](https://www.elastic.co/products/elasticsearch), the open source, distributed, RESTful search engine. Many other features of the {{stack}} are also readily available to Heroku users through the [{{es}} Add-On for Heroku console](https://cloud.elastic.co?page=docs&placement=docs-body) after you install the add-on. For example, you can use {{kib}} to visualize your {{es}} data.
 
 To learn more about what plans are available for Heroku users and their cost, refer to the [{{es}} add-on](https://elements.heroku.com/addons/foundelasticsearch) in the Elements Marketplace.
 
@@ -79,7 +79,7 @@ There are several ways to ingest data into the deployment:
 You might want to add more layers of security to your deployment, such as:
 
 * Add more users to the deployment with third-party authentication providers and services like [SAML](../../users-roles/cluster-or-deployment-auth/saml.md), [OpenID Connect](../../users-roles/cluster-or-deployment-auth/openid-connect.md), or [Kerberos](../../users-roles/cluster-or-deployment-auth/kerberos.md).
-* Do not use clients that only support HTTP to connect to Elastic Cloud. If you need to do so, you should use a reverse proxy setup.
+* Do not use clients that only support HTTP to connect to {{ecloud}}. If you need to do so, you should use a reverse proxy setup.
 * Create [traffic filters](../../security/traffic-filtering.md) and apply them to your deployments.
 * If needed, you can [reset](../../users-roles/cluster-or-deployment-auth/built-in-users.md) the `elastic` password.
 

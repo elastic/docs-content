@@ -15,10 +15,9 @@ Select your deployment method to get started:
 * [Fleet-managed](monitor-fleet-managed-apm-server.md)
 * [APM Server binary](monitor-apm-server-binary.md)
 
-
 ## {{ecloud}} [apm-monitor-apm-cloud]
 
 {{ecloud}} manages the installation and configuration of a monitoring agent for you — so all you have to do is flip a switch and watch the data pour in.
 
-* **{{ech}}** user? See [Stack Monitoring on {{ecloud}} deployments](../../../deploy-manage/monitor/stack-monitoring/ece-ech-stack-monitoring.md).
+* **{{ech}}** user? See [Stack Monitoring on {{ecloud}} deployments](/deploy-manage/monitor/stack-monitoring/ece-ech-stack-monitoring.md).
 * **{{ece}}** user? See [Enable stack monitoring on ECE deployments](/deploy-manage/monitor/stack-monitoring/ece-ech-stack-monitoring.md).

@@ -11,9 +11,7 @@ applies_to:
 This documentation only applies to the APM Server binary.
 ::::
 
-
 Use role-based access control or API keys to grant APM Server users access to secured resources.
-
 
 ## Role-based access [apm-secure-comms-stack-role-based]
 
@@ -21,13 +19,11 @@ Manage access on a feature-by-feature basis by creating several custom feature-r
 
 [**Read more in Use feature roles →**](create-assign-feature-roles-to-apm-server-users.md)
 
-
 ## API keys [apm-secure-comms-stack-api-keys]
 
 Instead of using usernames and passwords, you can use API keys to grant access to Elasticsearch resources. You can set API keys to expire at a certain time, and you can explicitly invalidate them.
 
 [**Read more in Grant access using API keys →**](grant-access-using-api-keys.md)
-
 
 ## More resources [_more_resources]
 
@@ -46,7 +42,4 @@ A reference of all available [SSL configuration settings](ssltls-settings.md) is
 APM Server exposes an HTTP endpoint, and as with anything that opens ports on your servers, you should be careful about who can connect to it. Firewall rules are recommended to ensure only authorized systems can connect.
 
 ::::
-
-
-
 

@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-upgrade.html
+applies_to:
+  stack:
 ---
 
 # Upgrade [apm-upgrade]

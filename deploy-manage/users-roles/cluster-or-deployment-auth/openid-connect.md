@@ -350,7 +350,7 @@ You can't use [role mapping files](/deploy-manage/users-roles/cluster-or-deploym
 
 ### Example: using the role mapping API
 
-If you want all your users authenticating with OpenID Connect to get access to Kibana, issue the following request to Elasticsearch:
+If you want all your users authenticating with OpenID Connect to get access to {{kib}}, issue the following request to {{es}}:
 
 ```sh
 POST /_security/role_mapping/CLOUD_OIDC_TO_KIBANA_ADMIN <1>
@@ -440,10 +440,10 @@ xpack.security.authc.providers:
 The configuration values used in the example above are:
 
 `xpack.security.authc.providers`
-:   Add an `oidc` provider to instruct {{kib}} to use OpenID Connect single sign-on as the authentication method. This instructs Kibana to attempt to initiate an SSO flow every time a user attempts to access a URL in {{kib}}, if the user is not already authenticated.
+:   Add an `oidc` provider to instruct {{kib}} to use OpenID Connect single sign-on as the authentication method. This instructs {{kib}} to attempt to initiate an SSO flow every time a user attempts to access a URL in {{kib}}, if the user is not already authenticated.
 
 `xpack.security.authc.providers.oidc.<provider-name>.realm`
-:   The name of the OpenID Connect realm in {{es}} that should handle authentication for this Kibana instance.
+:   The name of the OpenID Connect realm in {{es}} that should handle authentication for this {{kib}} instance.
 
 ### Supporting OIDC and basic authentication in {{kib}}
 
@@ -529,7 +529,7 @@ On a high level, the custom web application would need to perform the following 
     }
     ```
 
-    Elasticsearch will validate this and if all is correct will respond with an access token that can be used as a `Bearer` token for subsequent requests and a refresh token that can be later used to refresh the given access token as described in [Get token](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-get-token).
+    {{es}} will validate this and if all is correct will respond with an access token that can be used as a `Bearer` token for subsequent requests and a refresh token that can be later used to refresh the given access token as described in [Get token](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-get-token).
 
 4. At some point, if necessary, the custom web application can log the user out by using the [OIDC logout API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-oidc-logout) passing the access token and refresh token as parameters. For example:
 

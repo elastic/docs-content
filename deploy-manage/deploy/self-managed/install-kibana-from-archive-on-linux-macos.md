@@ -13,7 +13,7 @@ applies_to:
 # Install {{kib}} from archive on Linux or macOS [targz]
 
 
-{{kib}} is provided for Linux and Darwin as a `.tar.gz` package. These packages are the easiest formats to use when trying out Kibana.
+{{kib}} is provided for Linux and Darwin as a `.tar.gz` package. These packages are the easiest formats to use when trying out {{kib}}.
 
 :::{include} _snippets/trial.md
 :::
@@ -107,7 +107,7 @@ By default, {{kib}} runs in the foreground, prints its logs to the standard outp
 
 The `.tar.gz` packages are entirely self-contained. All files and directories are, by default, contained within `$KIBANA_HOME` — the directory created when unpacking the archive.
 
-This is very convenient because you don’t have to create any directories to start using Kibana, and uninstalling {{kib}} is as easy as removing the `$KIBANA_HOME` directory.  However, it is advisable to change the default locations of the config and data directories so that you do not delete important data later on.
+This is very convenient because you don’t have to create any directories to start using {{kib}}, and uninstalling {{kib}} is as easy as removing the `$KIBANA_HOME` directory.  However, it is advisable to change the default locations of the config and data directories so that you do not delete important data later on.
 
 | Type | Description | Default Location | Setting |
 | --- | --- | --- | --- |

@@ -10,9 +10,9 @@ mapped_pages:
 
 In Kubernetes, a [`securityContext`](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/) defines privilege and access control settings for a Pod or Container. You can set up it through the `podTemplate` section of an Elastic resource specification.
 
-## Default Elasticsearch security context [k8s_default_elasticsearch_security_context]
+## Default {{es}} security context [k8s_default_elasticsearch_security_context]
 
-As of version 8.8.0, the Elasticsearch container and ECK managed sidecars and init containers are running with the following security context:
+As of version 8.8.0, the {{es}} container and ECK managed sidecars and init containers are running with the following security context:
 
 ```yaml
 securityContext:
@@ -28,16 +28,16 @@ securityContext:
 
 
 
-## Running older versions of Elasticsearch as non-root [k8s_running_older_versions_of_elasticsearch_as_non_root]
+## Running older versions of {{es}} as non-root [k8s_running_older_versions_of_elasticsearch_as_non_root]
 
 ::::{note} 
 when running on Red Hat OpenShift a random user ID is [automatically assigned](https://cloud.redhat.com/blog/a-guide-to-openshift-and-uids) and the following instructions do not apply.
 ::::
 
 
-In versions of Elasticsearch before 8.0.0, the Elastisearch container is run as root and its entrypoint is responsible to run the Elasticsearch process with the `elasticsearch` user (defined with ID 1000). In the background, ECK uses an `initContainer` to make sure that the data volume is writable for the `elasticsearch` user.
+In versions of {{es}} before 8.0.0, the Elastisearch container is run as root and its entrypoint is responsible to run the {{es}} process with the `elasticsearch` user (defined with ID 1000). In the background, ECK uses an `initContainer` to make sure that the data volume is writable for the `elasticsearch` user.
 
-To run the Elastisearch container as a non-root user, you need to configure the Elasticsearch manifest with an appropriate security context to make the data volume writable to the `elasticsearch` user by specifying the right group ID through the `fsGroup`.
+To run the Elastisearch container as a non-root user, you need to configure the {{es}} manifest with an appropriate security context to make the data volume writable to the `elasticsearch` user by specifying the right group ID through the `fsGroup`.
 
 Kubernetes recursively changes ownership and permissions for the contents of each volume to match the `fsGroup` specified in a Pod’s securityContext when that volume is mounted and makes all processes of the containers part of the supplementary group ID.
 

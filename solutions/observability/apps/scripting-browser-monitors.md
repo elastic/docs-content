@@ -15,11 +15,11 @@ You can use synthetic monitors to detect bugs caused by invalid states you could
 
 Start by learning the basics of synthetic monitoring, including how to:
 
-* [Write a synthetic test](../../../solutions/observability/apps/write-synthetic-test.md)
-* [Test locally](../../../solutions/observability/apps/write-synthetic-test.md#synthetics-test-locally)
-* [Configure individual browser monitors](../../../solutions/observability/apps/configure-individual-browser-monitors.md)
-* [Work with params and secrets](../../../solutions/observability/apps/work-with-params-secrets.md)
-* [Use the Synthetics Recorder](../../../solutions/observability/apps/use-synthetics-recorder.md)
+* [Write a synthetic test](/solutions/observability/apps/write-synthetic-test.md)
+* [Test locally](/solutions/observability/apps/write-synthetic-test.md#synthetics-test-locally)
+* [Configure individual browser monitors](/solutions/observability/apps/configure-individual-browser-monitors.md)
+* [Work with params and secrets](/solutions/observability/apps/work-with-params-secrets.md)
+* [Use the Synthetics Recorder](/solutions/observability/apps/use-synthetics-recorder.md)
 
 :::{image} /solutions/images/observability-synthetic-monitor-lifecycle.png
 :alt: Diagram of the lifecycle of a synthetic monitor: write a test

@@ -19,4 +19,3 @@ If {{es}} goes down, the APM Server will eventually deny incoming requests. Both
 Fleet-managed APM Server users might also be interested in [Fleet/Agent proxy support](/reference/fleet/fleet-agent-proxy-support.md).
 ::::
 
-
