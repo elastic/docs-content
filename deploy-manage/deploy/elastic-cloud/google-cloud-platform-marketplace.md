@@ -15,7 +15,7 @@ Some differences exist when you subscribe to {{ecloud}} through the GCP Marketpl
 
 * There is no trial period. Billing starts when you subscribe to {{ecloud}}.
 * Existing {{ecloud}} organizations cannot be converted to use the GCP Marketplace.
-* Pricing for an {{ecloud}} subscription through the GCP Marketplace follows the pricing outlined on the [Elastic Cloud](https://console.cloud.google.com/marketplace/product/endpoints/elasticsearch-service.gcpmarketplace.elastic.co) page in the GCP Marketplace. Pricing is based the Elastic Cloud [Billing Dimensions](../../cloud-organization/billing/cloud-hosted-deployment-billing-dimensions.md).
+* Pricing for an {{ecloud}} subscription through the GCP Marketplace follows the pricing outlined on the [{{ecloud}}](https://console.cloud.google.com/marketplace/product/endpoints/elasticsearch-service.gcpmarketplace.elastic.co) page in the GCP Marketplace. Pricing is based the {{ecloud}} [Billing Dimensions](../../cloud-organization/billing/cloud-hosted-deployment-billing-dimensions.md).
 * To access your billing information at any time go to **Account & Billing**. You can also go to **Account & Billing** and then **Usage** to view your usage hours and units per hour.
 
 ::::{important} 
@@ -26,19 +26,19 @@ Only one {{ecloud}} organization can be subscribed through GCP Marketplace per G
 To subscribe to {{ecloud}} through the GCP Marketplace:
 
 1. Log in to your Google Cloud Platform account.
-2. Go to the [Elastic Cloud](https://console.cloud.google.com/marketplace/product/elastic-prod/elastic-cloud) page in the GCP Marketplace.
-3. On the Elastic Cloud page select **Subscribe**, where you will be directed to another page. There is only one plan—the Elastic plan—and it’s pre-selected. The billing account you are logged into will be pre-selected for this purchase, though you can change it at this time.
+2. Go to the [{{ecloud}}](https://console.cloud.google.com/marketplace/product/elastic-prod/elastic-cloud) page in the GCP Marketplace.
+3. On the {{ecloud}} page select **Subscribe**, where you will be directed to another page. There is only one plan—the Elastic plan—and it’s pre-selected. The billing account you are logged into will be pre-selected for this purchase, though you can change it at this time.
 4. Accept the terms of service (TOS) and select **Subscribe**.
 5. When you are presented with a pop-up that specifies that "Your order request has been sent to Elastic" choose **Sign up with Elastic** to continue.
 6. After choosing to sign up, a new window will appear. Do one of the following:
 
-    * Create a new, unique user account for an {{ecloud}} Elastic Cloud organization.
-    * Log in with an existing user account that’s associated with an Elastic Cloud trial. This links the billing account used for the purchase on GCP Marketplace to the existing Elastic organization.
+    * Create a new, unique user account for an {{ecloud}} {{ecloud}} organization.
+    * Log in with an existing user account that’s associated with an {{ecloud}} trial. This links the billing account used for the purchase on GCP Marketplace to the existing Elastic organization.
 
 7. After signing up, check your inbox to verify the email address you signed up with. Upon verification, you will be asked to create a password, and once created your organization will be set up and you will be logged into it.
 
     ::::{note} 
-    Immediately after your first login to Elastic Cloud you may briefly see a banner on the Elastic Cloud user console saying that your account is disconnected. There is sometimes a short delay in activation, but refreshing the page is generally enough time to allow its completion. If this issue persists, please contact support.
+    Immediately after your first login to {{ecloud}} you may briefly see a banner on the {{ecloud}} user console saying that your account is disconnected. There is sometimes a short delay in activation, but refreshing the page is generally enough time to allow its completion. If this issue persists, please contact support.
     ::::
 
 
@@ -63,7 +63,7 @@ To prevent downtime, do not remove the currently used billing account before the
 {{ecloud}} subscriptions through GCP Marketplace are associated with a GCP billing account.  In order to change the billing account associated with an {{ecloud}} organization:
 
 * for customers under a Private Offer contract: please reach out to Elastic support and provide the GCP Billing Account, as well as the contact of any reseller information for approval.
-* for pay-as-you-go customers: you need to have purchased and subscribed to Elastic Cloud on the new billing account using the details above—but do not create a new Elastic user or organization (that is, you can skip Steps 5 and 6 in the subscription instructions, above). Once you successfully subscribed with the new billing account, you can contact Elastic support and provide the new billing account ID you wish to move to, which you can find from [GCP’s billing page](https://console.cloud.google.com/billing). The ID is in the format `000000-000000-000000`.
+* for pay-as-you-go customers: you need to have purchased and subscribed to {{ecloud}} on the new billing account using the details above—but do not create a new Elastic user or organization (that is, you can skip Steps 5 and 6 in the subscription instructions, above). Once you successfully subscribed with the new billing account, you can contact Elastic support and provide the new billing account ID you wish to move to, which you can find from [GCP’s billing page](https://console.cloud.google.com/billing). The ID is in the format `000000-000000-000000`.
 
 If you cancel your {{ecloud}} order on GCP through the [marketplace orders page](https://console.cloud.google.com/marketplace/orders) before the switch to the new billing account has been done, any running deployments will immediately enter a degraded state known as maintenance mode and they will be scheduled for termination in five days.
 
@@ -72,5 +72,5 @@ If you already unsubscribed before the new billing account has been set up, you 
 
 ## Native GCP integrations [ec-gcp-marketplace-native] 
 
-You can ingest data from Google Pub/Sub to the Elastic Stack very easily from the Google Cloud Console. You can use the [Metricbeat Google Cloud Platform module](../../../solutions/observability/cloud/monitor-google-cloud-platform-gcp.md) or the [GCP Dataflow Templates](../../../solutions/observability/cloud/gcp-dataflow-templates.md).
+You can ingest data from Google Pub/Sub to the {{stack}} very easily from the Google Cloud Console. You can use the [Metricbeat Google Cloud Platform module](../../../solutions/observability/cloud/monitor-google-cloud-platform-gcp.md) or the [GCP Dataflow Templates](../../../solutions/observability/cloud/gcp-dataflow-templates.md).
 

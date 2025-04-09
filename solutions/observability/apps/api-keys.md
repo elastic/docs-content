@@ -7,25 +7,26 @@ applies_to:
 
 # API keys [apm-api-key]
 
+:::{include} _snippets/apm-server-vs-mis.md
+:::
+
 ::::{important}
 API keys are sent as plain-text, so they only provide security when used in combination with [TLS](apm-agent-tls-communication.md).
 ::::
 
-
-When enabled, API keys are used to authorize requests to the APM Server. API keys are not applicable for APM agents running on clients, like the RUM agent, as there is no way to prevent them from being publicly exposed.
+When enabled, API keys are used to authorize requests to {{apm-server-or-mis}}. API keys are not applicable for APM agents running on clients, like the RUM agent, as there is no way to prevent them from being publicly exposed.
 
 You can assign one or more unique privileges to each API key:
 
 * **Agent configuration** (`config_agent:read`): Required for agents to read [Agent configuration remotely](apm-agent-central-configuration.md).
 * **Ingest** (`event:write`): Required for ingesting agent events.
 
-To secure the communication between APM Agents and the APM Server with API keys, make sure [TLS](apm-agent-tls-communication.md) is enabled, then complete these steps:
+To secure the communication between APM Agents and either {{apm-server-or-mis}} with API keys, make sure [TLS](apm-agent-tls-communication.md) is enabled, then complete these steps:
 
 1. [Enable API keys](#apm-enable-api-key)
 2. [Create an API key user](#apm-create-api-key-user)
 3. [Create an API key in {{kib}}](#apm-create-an-api-key)
 4. [Set the API key in your APM agents](#apm-agent-api-key)
-
 
 ## Enable API keys [apm-enable-api-key]
 
@@ -50,11 +51,20 @@ apm-server.auth.api_key.limit: 50 <2>
 
 ::::::
 
+::::::{tab-item} {{serverless-full}}
+API keys are enabled by default.
+::::::
+
 :::::::
 
 ## Create an API key user in {{kib}} [apm-create-api-key-user]
 
-API keys can only have the same or lower access rights than the user that creates them. Instead of using a superuser account to create API keys, you can create a role with the minimum required privileges.
+API keys can only have the same or lower access rights than the user that creates them.
+
+:::::::{tab-set}
+
+::::::{tab-item} Fleet-managed or APM Server binary
+Instead of using a superuser account to create API keys, you can create a role with the minimum required privileges.
 
 The user creating an {{apm-agent}} API key must have at least the `manage_own_api_key` cluster privilege and the APM application-level privileges that it wishes to grant. In addition, when creating an API key from the Applications UI, you’ll need the appropriate {{kib}} Space and Feature privileges.
 
@@ -84,13 +94,22 @@ POST /_security/role/apm_agent_key_role
 
 1. This example assigns privileges for the default space.
 
-
 Assign the newly created `apm_agent_key_role` role to any user that wishes to create {{apm-agent}} API keys.
+::::::
 
+::::::{tab-item} {{serverless-full}}
+**For Observability Serverless projects**, the Editor role or higher is required to create and manage API keys. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
+::::::
+
+:::::::
 
 ## Create an API key in the Applications UI [apm-create-an-api-key]
 
 The Applications UI has a built-in workflow that you can use to easily create and view {{apm-agent}} API keys. Only API keys created in the Applications UI will show up here.
+
+:::::::{tab-set}
+
+::::::{tab-item} Fleet-managed or APM Server binary
 
 Using a superuser account, or a user with the role created in the previous step, In {{kib}}, find **Applications** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Go to **Settings** → **Agent keys**. Enter a name for your API key and select at least one privilege.
 
@@ -103,6 +122,27 @@ Click **Create APM Agent key** and copy the Base64 encoded API key. You will nee
 :screenshot:
 :::
 
+::::::
+
+::::::{tab-item} {{serverless-full}}
+To create a new API key:
+
+1. In your Elastic Observability Serverless project, go to any Applications page.
+1. Click **Settings**.
+1. Select the **Agent keys** tab.
+1. Click **Create APM agent key**.
+1. Name the key and assign privileges to it.
+1. Click **Create APM agent key**.
+1. Copy the key now. You will not be able to see it again. API keys do not expire.
+
+To view all API keys for your project:
+
+1. Expand **Project settings**.
+1. Select **Management**.
+1. Select **API keys**.
+::::::
+
+:::::::
 
 ## Set the API key in your APM agents [apm-agent-api-key]
 
@@ -118,14 +158,17 @@ You can now apply your newly created API keys in the configuration of each of yo
 * **Python agent**: [`api_key`](apm-agent-python://reference/configuration.md#config-api-key)
 * **Ruby agent**: [`api_key`](apm-agent-ruby://reference/configuration.md#config-api-key)
 
-
 ## Alternate API key creation methods [apm-configure-api-key-alternative]
+
+```{applies_to}
+stack:
+serverless: unavailable
+```
 
 API keys can also be created and validated outside of {{kib}}:
 
 * [APM Server API key workflow](#apm-create-api-key-workflow-apm-server)
 * [{{es}} API key workflow](#apm-create-api-key-workflow-es)
-
 
 ### APM Server API key workflow [apm-create-api-key-workflow-apm-server]
 
@@ -137,9 +180,7 @@ This API creation method only works with the APM Server binary.
 Users should create API Keys through {{kib}} or the {{es}} REST API
 ::::
 
-
 APM Server provides a command line interface for creating, retrieving, invalidating, and verifying API keys. Keys created using this method can only be used for communication with APM Server.
-
 
 #### `apikey` subcommands [apm-create-api-key-subcommands]
 
@@ -163,9 +204,7 @@ APM Server provides a command line interface for creating, retrieving, invalidat
         * To **ingest agent data**, assign `event:write`.
         * To **upload source maps**, assign `sourcemap:write`.
 
-
     ::::
-
 
 **`info`**
 :   Query API Key(s). `--id` or `--name` required.
@@ -176,7 +215,6 @@ APM Server provides a command line interface for creating, retrieving, invalidat
 **`verify`**
 :   Check if a credentials string has the given privilege(s). `--credentials` required.
 
-
 #### Privileges [apm-create-api-key-privileges]
 
 If privileges are not specified at creation time, the created key will have all privileges.
@@ -184,7 +222,6 @@ If privileges are not specified at creation time, the created key will have all 
 * `--agent-config` grants the `config_agent:read` privilege
 * `--ingest` grants the `event:write` privilege
 * `--sourcemap` grants the `sourcemap:write` privilege
-
 
 #### Create an API key [apm-create-api-key-workflow]
 
@@ -238,7 +275,6 @@ Error count ........ 0
 
 A full list of `apikey` subcommands and flags is available in the [API key command reference](apm-server-command-reference.md#apm-apikey-command).
 
-
 ### {{es}} API key workflow [apm-create-api-key-workflow-es]
 
 It is also possible to create API keys using the {{es}} [create API key API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-api-key).
@@ -267,7 +303,6 @@ POST /_security/api_key
 1. The name of the API key
 2. The expiration time of the API key
 3. Any assigned privileges
-
 
 The response will look similar to this:
 

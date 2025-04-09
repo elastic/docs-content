@@ -8,12 +8,12 @@ mapped_pages:
 
 # Configure allocator affinity [ece-configuring-allocator-affinity]
 
-One of the benefits of the ECE platform is its robust deployment instance distribution logic that maximizes the utilization of the underlying resources you deploy the Elastic Stack on. In ECE 2.4 and later, you can customize how Elastic Stack deployments get distributed across the available set of allocators in your ECE installation, which is known as *allocator affinity*.
+One of the benefits of the ECE platform is its robust deployment instance distribution logic that maximizes the utilization of the underlying resources you deploy the {{stack}} on. In ECE 2.4 and later, you can customize how {{stack}} deployments get distributed across the available set of allocators in your ECE installation, which is known as *allocator affinity*.
 
 
 ## Before you begin [ece_before_you_begin_6] 
 
-Configuring allocator affinity is an optional post-installation task that changes the behavior of Elastic Cloud Enterprise. If you do not explicitly set an affinity strategy, all instances use the [`fill-anti-affinity`](#fill-anti-affinity) strategy by default.
+Configuring allocator affinity is an optional post-installation task that changes the behavior of {{ece}}. If you do not explicitly set an affinity strategy, all instances use the [`fill-anti-affinity`](#fill-anti-affinity) strategy by default.
 
 To follow these steps, you must be familiar with using the ECE RESTful API. The API examples in this topic use HTTPS, which requires that you have a [TLS certificate already installed](../../security/secure-your-elastic-cloud-enterprise-installation/manage-security-certificates.md). For testing purposes only, you can specify the `-k` option to turn off certificate verification, as shown in our examples, or use HTTP over port 12400 until you get your TLS certificate sorted out.
 
@@ -26,7 +26,7 @@ $$$fill-anti-affinity$$$`fill-anti-affinity` (default)
 :   Prefers to create instances of the same deployment on separate allocators, if available. This strategy tries to fill an already used allocator in a given zone before moving on to the next one, but it will prioritize separating instances of the same deployment onto different allocators. The strategy strikes a good balance between utilization and fault tolerance, as it minimizes the impact on any given deployment in case of a host failure. This strategy is the default for ECE 2.3 and later.
 
 `fill`
-:   Similar to the previous strategy, optimizes for maximum utilization of already used allocators before expanding to new, unused ones. Because this strategy makes sure that existing resources are fully utilized before requiring new ones to be provisioned, it is especially useful when running ECE on cloud environments where you typically pay only for provisioned capacity. With this strategy, new Elasticsearch nodes and Kibana instances for a deployment are created on the least empty allocator in a given zone, even if multiple instances end up on the same allocator, making sure to fill it first before moving on to the next allocator in that zone. The trade-off is that you potentially give up host-level high availability (HA) if an allocator gets filled with multiple instances from the same deployment. This strategy was the default for ECE 2.2 and earlier.
+:   Similar to the previous strategy, optimizes for maximum utilization of already used allocators before expanding to new, unused ones. Because this strategy makes sure that existing resources are fully utilized before requiring new ones to be provisioned, it is especially useful when running ECE on cloud environments where you typically pay only for provisioned capacity. With this strategy, new {{es}} nodes and {{kib}} instances for a deployment are created on the least empty allocator in a given zone, even if multiple instances end up on the same allocator, making sure to fill it first before moving on to the next allocator in that zone. The trade-off is that you potentially give up host-level high availability (HA) if an allocator gets filled with multiple instances from the same deployment. This strategy was the default for ECE 2.2 and earlier.
 
 `distribute`
 :   This strategy optimizes for distributing the deployment instances as evenly as possible across all available resources in a given availability zone, creating new deployment instances on the least used allocators. This stategy is useful in scenarios where the hardware resources are already provisioned, typically in on-premise datacenters, and you want to use as much of them as possible. Available in ECE 2.4 and later.

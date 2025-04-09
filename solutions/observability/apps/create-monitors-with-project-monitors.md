@@ -10,21 +10,19 @@ applies_to:
 
 # Create monitors with a Synthetics project [observability-synthetics-get-started-project]
 
-
 A Synthetics project is the most powerful and sophisticated way to configure synthetic monitors. A Synthetics project lets you define your infrastructure as code, more commonly known as IaaC or Git-ops. With monitors created and managed in Synthetics projects, you organize your YAML configuration and JavaScript- or TypeScript-defined monitors on the filesystem, use Git for version control, and deploy via a CLI tool, usually executed on a CI/CD platform.
 
 :::{image} /solutions/images/observability-synthetics-get-started-projects.png
 :alt: Diagram showing which pieces of software are used to configure monitors
 :::
 
-This is one of [two approaches](../../../solutions/observability/apps/get-started.md) you can use to set up a synthetic monitor.
-
+This is one of [two approaches](/solutions/observability/apps/get-started.md) you can use to set up a synthetic monitor.
 
 ## Prerequisites [synthetics-get-started-project-prerequisites]
 
-For **serverless Observability projects**, you must be signed in as a user with [Editor](../../../solutions/observability/apps/grant-users-access-to-secured-resources.md) access.
+For **serverless Observability projects**, you must be signed in as a user with [Editor](/solutions/observability/apps/grant-users-access-to-secured-resources.md) access.
 
-For **Elastic Stack deployments**, you must be signed into {{kib}} as a user with at least [synthetics write permissions](../../../solutions/observability/apps/writer-role.md), and Monitor Management must be enabled by an administrator as described in [Setup role](../../../solutions/observability/apps/setup-role.md).
+For **Elastic Stack deployments**, you must be signed into {{kib}} as a user with at least [synthetics write permissions](/solutions/observability/apps/writer-role.md), and Monitor Management must be enabled by an administrator as described in [Setup role](/solutions/observability/apps/setup-role.md).
 
 Working with a Synthetics project requires working with the Elastic Synthetics CLI tool, which can be invoked via the `npx @elastic/synthetics` command. Before getting started you’ll need to:
 
@@ -41,19 +39,17 @@ Working with a Synthetics project requires working with the Elastic Synthetics C
     npx @elastic/synthetics -h
     ```
 
-
 You should also decide where you want to run the monitors before getting started. You can run monitors in Synthetics projects on one or both of the following:
 
 * **Elastic’s global managed testing infrastructure**: With Elastic’s global managed testing infrastructure, you can create and run monitors in multiple locations without having to manage your own infrastructure. Elastic takes care of software updates and capacity planning for you.
-* **{{private-location}}s**: {{private-location}}s allow you to run monitors from your own premises. To use {{private-location}}s you must create a {{private-location}} before continuing. For step-by-step instructions, refer to [Monitor resources on private networks](../../../solutions/observability/apps/monitor-resources-on-private-networks.md).
+* **{{private-location}}s**: {{private-location}}s allow you to run monitors from your own premises. To use {{private-location}}s you must create a {{private-location}} before continuing. For step-by-step instructions, refer to [Monitor resources on private networks](/solutions/observability/apps/monitor-resources-on-private-networks.md).
 
 % Stateful only for following note?
 
 ::::{note}
-If you are setting up Synthetics for a deployment configured with [traffic filters](../../../deploy-manage/security/traffic-filtering.md), connections into {{es}} are restricted and results will not be able to be written back into {{es}} unless granted. For more details, refer to [Use Synthetics with traffic filters](../../../solutions/observability/apps/use-synthetics-with-traffic-filters.md).
+If you are setting up Synthetics for a deployment configured with [traffic filters](/deploy-manage/security/traffic-filtering.md), connections into {{es}} are restricted and results will not be able to be written back into {{es}} unless granted. For more details, refer to [Use Synthetics with traffic filters](/solutions/observability/apps/use-synthetics-with-traffic-filters.md).
 
 ::::
-
 
 ## Create a Synthetics project [synthetics-get-started-project-create-a-synthetics-project]
 
@@ -79,10 +75,9 @@ Then, follow the prompts on screen to set up the correct default variables for y
     4. Click **Generate Project API key**.
 
         ::::{important}
-        To generate a Project API key, you must be logged in as a user with [Editor](../../../solutions/observability/apps/grant-users-access-to-secured-resources.md) access.
+        To generate a Project API key, you must be logged in as a user with [Editor](/solutions/observability/apps/grant-users-access-to-secured-resources.md) access.
 
         ::::
-
 
         :::{image} /solutions/images/serverless-synthetics-monitor-management-api-key.png
         :alt: Project API Keys tab in Synthetics settings
@@ -103,7 +98,7 @@ Then, take a look at key files and directories inside your Synthetics project:
 * `synthetics.config.ts` contains settings for your Synthetics project. When you create a new Synthetics project, it will contain some basic configuration options that you can customize later.
 
     ::::{note}
-    The `synthetics.config.ts` in the sample Synthetics project uses a location on Elastic’s global managed testing infrastructure. Administrators can restrict access to Elastic’s global managed testing infrastructure. When you attempt to [`push` the sample monitors](../../../solutions/observability/apps/create-monitors-with-project-monitors.md#synthetics-get-started-project-test-and-connect-to-your-observability-project), if you see an error stating that you don’t have permission to use Elastic managed global locations, refer to the [troubleshooting guide](../../../troubleshoot/observability/troubleshooting-synthetics.md#synthetics-troubleshooting-no-locations) for guidance.
+    The `synthetics.config.ts` in the sample Synthetics project uses a location on Elastic’s global managed testing infrastructure. Administrators can restrict access to Elastic’s global managed testing infrastructure. When you attempt to [`push` the sample monitors](/solutions/observability/apps/create-monitors-with-project-monitors.md#synthetics-get-started-project-test-and-connect-to-your-observability-project), if you see an error stating that you don’t have permission to use Elastic managed global locations, refer to the [troubleshooting guide](/troubleshoot/observability/troubleshooting-synthetics.md#synthetics-troubleshooting-no-locations) for guidance.
 
     ::::
 
@@ -122,10 +117,9 @@ Then, take a look at key files and directories inside your Synthetics project:
     4. Click **Generate Project API key**.
 
         ::::{important}
-        To generate a Project API key, you must be logged in as a user with [Editor](../../../solutions/observability/apps/grant-users-access-to-secured-resources.md) access.
+        To generate a Project API key, you must be logged in as a user with [Editor](/solutions/observability/apps/grant-users-access-to-secured-resources.md) access.
 
         ::::
-
 
         :::{image} /solutions/images/serverless-synthetics-monitor-management-api-key.png
         :alt: Project API Keys tab in Synthetics settings
@@ -146,7 +140,7 @@ Then, take a look at key files and directories inside your Synthetics project:
 * `synthetics.config.ts` contains settings for your Synthetics project. When you create a new Synthetics project, it will contain some basic configuration options that you can customize later.
 
     ::::{note}
-    The `synthetics.config.ts` in the sample Synthetics project uses a location on Elastic’s global managed testing infrastructure. Administrators can restrict access to Elastic’s global managed testing infrastructure. When you attempt to [`push` the sample monitors](../../../solutions/observability/apps/create-monitors-with-project-monitors.md#synthetics-get-started-project-test-and-connect-to-your-observability-project), if you see an error stating that you don’t have permission to use Elastic managed global locations, refer to the [troubleshooting guide](../../../troubleshoot/observability/troubleshooting-synthetics.md#synthetics-troubleshooting-no-locations) for guidance.
+    The `synthetics.config.ts` in the sample Synthetics project uses a location on Elastic’s global managed testing infrastructure. Administrators can restrict access to Elastic’s global managed testing infrastructure. When you attempt to [`push` the sample monitors](/solutions/observability/apps/create-monitors-with-project-monitors.md#synthetics-get-started-project-test-and-connect-to-your-observability-project), if you see an error stating that you don’t have permission to use Elastic managed global locations, refer to the [troubleshooting guide](/troubleshoot/observability/troubleshooting-synthetics.md#synthetics-troubleshooting-no-locations) for guidance.
 
     ::::
 
@@ -171,7 +165,7 @@ heartbeat.monitors:
   schedule: '@every 1m'
 ```
 
-For more details on lightweight monitor configuration options, refer to [Configure lightweight monitors](../../../solutions/observability/apps/configure-lightweight-monitors.md).
+For more details on lightweight monitor configuration options, refer to [Configure lightweight monitors](/solutions/observability/apps/configure-lightweight-monitors.md).
 
 Inside the `journeys` directory you’ll find sample browser monitors. Here’s an example of a TypeScript file defining a browser monitor:
 
@@ -195,8 +189,7 @@ journey('My Example Journey', ({ page, params }) => {
 });
 ```
 
-For more details on writing journeys and configuring browser monitors, refer to [Scripting browser monitors](../../../solutions/observability/apps/scripting-browser-monitors.md).
-
+For more details on writing journeys and configuring browser monitors, refer to [Scripting browser monitors](/solutions/observability/apps/scripting-browser-monitors.md).
 
 ## Test and connect to your Observability project or Elastic Stack deployment[synthetics-get-started-project-test-and-connect-to-your-observability-project]
 
@@ -220,13 +213,12 @@ While inside the project directory you can do two things with the `npx @elastic/
     npx @elastic/synthetics push --auth $SYNTHETICS_API_KEY --url <kibana-url>
     ```
 
-
-One monitor will appear in the {{synthetics-app}} for each journey or lightweight monitor, and you’ll manage all monitors from your local environment. For more details on using the `push` command, refer to [`@elastic/synthetics push`](../../../solutions/observability/apps/use-synthetics-cli.md#elastic-synthetics-push-command).
+One monitor will appear in the {{synthetics-app}} for each journey or lightweight monitor, and you’ll manage all monitors from your local environment. For more details on using the `push` command, refer to [`@elastic/synthetics push`](/solutions/observability/apps/use-synthetics-cli.md#elastic-synthetics-push-command).
 
 ::::{note}
-If you’ve [added a {{private-location}}](../../../solutions/observability/apps/monitor-resources-on-private-networks.md), you can `push` to that {{private-location}}.
+If you’ve [added a {{private-location}}](/solutions/observability/apps/monitor-resources-on-private-networks.md), you can `push` to that {{private-location}}.
 
-To list available {{private-location}}s, run the [`elastic-synthetics locations` command](../../../solutions/observability/apps/use-synthetics-cli.md#elastic-synthetics-locations-command) with the {{kib}} URL for the deployment from which to fetch available locations.
+To list available {{private-location}}s, run the [`elastic-synthetics locations` command](/solutions/observability/apps/use-synthetics-cli.md#elastic-synthetics-locations-command) with the {{kib}} URL for the deployment from which to fetch available locations.
 
 ::::
 
@@ -249,20 +241,18 @@ While inside the Synthetics project directory you can do two things with the `np
     npx @elastic/synthetics push --auth $SYNTHETICS_API_KEY --url <observability-project-url>
     ```
 
-
-One monitor will appear in the Synthetics UI for each journey or lightweight monitor, and you’ll manage all monitors from your local environment. For more details on using the `push` command, refer to [`@elastic/synthetics push`](../../../solutions/observability/apps/use-synthetics-cli.md#elastic-synthetics-push-command).
+One monitor will appear in the Synthetics UI for each journey or lightweight monitor, and you’ll manage all monitors from your local environment. For more details on using the `push` command, refer to [`@elastic/synthetics push`](/solutions/observability/apps/use-synthetics-cli.md#elastic-synthetics-push-command).
 
 ::::{note}
-If you’ve [added a {{private-location}}](../../../solutions/observability/apps/monitor-resources-on-private-networks.md), you can `push` to that {{private-location}}.
+If you’ve [added a {{private-location}}](/solutions/observability/apps/monitor-resources-on-private-networks.md), you can `push` to that {{private-location}}.
 
-To list available {{private-location}}s, run the [`elastic-synthetics locations` command](../../../solutions/observability/apps/use-synthetics-cli.md#elastic-synthetics-locations-command) with the URL for the Observability project from which to fetch available locations.
+To list available {{private-location}}s, run the [`elastic-synthetics locations` command](/solutions/observability/apps/use-synthetics-cli.md#elastic-synthetics-locations-command) with the URL for the Observability project from which to fetch available locations.
 
 ::::
 
 :::
 
 ::::
-
 
 ## View in the Synthetics UI [synthetics-get-started-project-view-in-your-observability-project]
 
@@ -273,12 +263,10 @@ When a monitor is created or updated, the first run might not occur immediately,
 
 ::::
 
-
-
 ## Next steps [observability-synthetics-get-started-project-next-steps]
 
 Learn more about:
 
-* [Configuring lightweight monitors](../../../solutions/observability/apps/configure-lightweight-monitors.md)
-* [Configuring browser monitors](../../../solutions/observability/apps/write-synthetic-test.md)
-* [Implementing best practices for working with Synthetics projects](../../../solutions/observability/apps/manage-monitors.md#synthetics-projects-best-practices)
+* [Configuring lightweight monitors](/solutions/observability/apps/configure-lightweight-monitors.md)
+* [Configuring browser monitors](/solutions/observability/apps/write-synthetic-test.md)
+* [Implementing best practices for working with Synthetics projects](/solutions/observability/apps/manage-monitors.md#synthetics-projects-best-practices)

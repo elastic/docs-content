@@ -10,25 +10,25 @@ applies_to:
 
 How you configure the APM Server depends on your deployment method.
 
-* **APM Server binary** users need to edit the `apm-server.yml` configuration file. The location of the file varies by platform. To locate the file, see [Installation layout](../../../solutions/observability/apps/installation-layout.md).
+* **APM Server binary** users need to edit the `apm-server.yml` configuration file. The location of the file varies by platform. To locate the file, see [Installation layout](/solutions/observability/apps/installation-layout.md).
 * **Fleet-managed** users configure the APM Server directly in {{kib}}. Each configuration page describes the specific location.
-* **Elastic cloud** users should see [Add APM user settings](../../../solutions/observability/apps/configure-apm-server.md) for information on how to configure Elastic APM.
+* **Elastic cloud** users should see [Add APM user settings](/solutions/observability/apps/configure-apm-server.md) for information on how to configure Elastic APM.
 
 The following topics describe how to configure APM Server:
 
-* [General configuration options](../../../solutions/observability/apps/general-configuration-options.md)
-* [Anonymous authentication](../../../solutions/observability/apps/configure-anonymous-authentication.md)
-* [APM agent authorization](../../../solutions/observability/apps/apm-agent-authorization.md)
-* [APM agent central configuration](../../../solutions/observability/apps/configure-apm-agent-central-configuration.md)
-* [Instrumentation](../../../solutions/observability/apps/configure-apm-instrumentation.md)
-* [{{kib}} endpoint](../../../solutions/observability/apps/configure-kibana-endpoint.md)
-* [Logging](../../../solutions/observability/apps/configure-logging.md)
-* [Output](../../../solutions/observability/apps/configure-output.md)
-* [Project paths](../../../solutions/observability/apps/configure-project-paths.md)
-* [Real User Monitoring (RUM)](../../../solutions/observability/apps/configure-real-user-monitoring-rum.md)
-* [SSL/TLS settings](../../../solutions/observability/apps/ssltls-settings.md)
-* [Tail-based sampling](../../../solutions/observability/apps/tail-based-sampling.md)
-* [Use environment variables in the configuration](../../../solutions/observability/apps/use-environment-variables-in-configuration.md)
+* [General configuration options](/solutions/observability/apps/general-configuration-options.md)
+* [Anonymous authentication](/solutions/observability/apps/configure-anonymous-authentication.md)
+* [APM agent authorization](/solutions/observability/apps/apm-agent-authorization.md)
+* [APM agent central configuration](/solutions/observability/apps/configure-apm-agent-central-configuration.md)
+* [Instrumentation](/solutions/observability/apps/configure-apm-instrumentation.md)
+* [{{kib}} endpoint](/solutions/observability/apps/configure-kibana-endpoint.md)
+* [Logging](/solutions/observability/apps/configure-logging.md)
+* [Output](/solutions/observability/apps/configure-output.md)
+* [Project paths](/solutions/observability/apps/configure-project-paths.md)
+* [Real User Monitoring (RUM)](/solutions/observability/apps/configure-real-user-monitoring-rum.md)
+* [SSL/TLS settings](/solutions/observability/apps/ssltls-settings.md)
+* [Tail-based sampling](/solutions/observability/apps/tail-based-sampling.md)
+* [Use environment variables in the configuration](/solutions/observability/apps/use-environment-variables-in-configuration.md)
 
 ## Edit APM user settings [ec-manage-apm-settings]
 
@@ -39,12 +39,10 @@ Change how Elastic APM runs by providing your own user settings. Starting in {{s
 
     Check [APM configuration reference](/solutions/observability/apps/configure-apm-server.md) for information on how to configure Elastic APM in this mode.
 
-
 Standalone APM Server (legacy)
 :   Deployments created prior to {{stack}} version 8.0 are in legacy mode. Upgrading to or past {{stack}} 8.0 will not remove you from legacy mode.
 
-    Check [Edit standalone APM settings (legacy)](../../../solutions/observability/apps/configure-apm-server.md#ec-edit-apm-standalone-settings) and [Supported standalone APM settings (legacy)](../../../solutions/observability/apps/configure-apm-server.md#ec-apm-settings) for information on how to configure Elastic APM in this mode.
-
+    Check [Edit standalone APM settings (legacy)](/solutions/observability/apps/configure-apm-server.md#ec-edit-apm-standalone-settings) and [Supported standalone APM settings (legacy)](/solutions/observability/apps/configure-apm-server.md#ec-apm-settings) for information on how to configure Elastic APM in this mode.
 
 To learn more about the differences between these modes, or to switch from Standalone APM Server (legacy) mode to {{fleet}}-managed, check [Switch to the Elastic APM integration](/solutions/observability/apps/switch-to-elastic-apm-integration.md).
 
@@ -68,8 +66,6 @@ To add user settings:
 If a setting is not supported on {{ecloud}}, you will get an error message when you try to save.
 ::::
 
-
-
 ## Supported standalone APM settings (legacy) [ec-apm-settings]
 
 {{ech}} supports the following setting when running APM in standalone mode (legacy).
@@ -77,7 +73,6 @@ If a setting is not supported on {{ecloud}}, you will get an error message when 
 ::::{tip}
 Some settings that could break your cluster if set incorrectly are blocklisted. The following settings are generally safe in cloud environments. For detailed information about APM settings, check the [APM documentation](/solutions/observability/apps/configure-apm-server.md).
 ::::
-
 
 ### Version 8.0+ [ec_version_8_0_3]
 
@@ -169,7 +164,6 @@ The following `apm-server.auth.anonymous.*` settings can be configured to restri
 `output.elasticsearch.flush_bytes`
 :   The bulk request size threshold, in bytes, before flushing to Elasticsearch. The value must have a suffix. The default is 5MB.
 
-
 ### Version 7.17+ [ec_version_7_17]
 
 This stack version includes all of the settings from 7.16 and the following:
@@ -193,7 +187,6 @@ Allow anonymous access only for specified agents and/or services. This is primar
 
 `apm-server.auth.api_key.limit`
 :   Restrict how many unique API keys are allowed per minute. Should be set to at least the amount of different API keys configured in your monitored services. Every unique API key triggers one request to Elasticsearch. This will be replacing the config option `apm-server.api_key.limit` from `8.0` on.
-
 
 ### Supported versions before 8.x [ec_supported_versions_before_8_x_3]
 
@@ -340,7 +333,6 @@ Allow anonymous access only for specified agents and/or services. This is primar
     | 4GB | 762 |
     | 8GB | 1067 |
 
-
 `output.elasticsearch.indices`
 :   Array of index selector rules supporting conditionals and formatted string.
 
@@ -358,7 +350,6 @@ Allow anonymous access only for specified agents and/or services. This is primar
     | 4GB | 14 |
     | 8GB | 20 |
 
-
 `queue.mem.events`
 :   Maximum number of events to concurrently store in the internal queue. By default, this number changes based on the size of the instance:
 
@@ -370,13 +361,11 @@ Allow anonymous access only for specified agents and/or services. This is primar
     | 4GB | 16000 |
     | 8GB | 32000 |
 
-
 `queue.mem.flush.min_events`
 :   Minimum number of events to have before pushing them to Elasticsearch. By default, this number changes based on the size of the instance.
 
 `queue.mem.flush.timeout`
 :   Maximum duration before sending the events to the output if the `min_events` is not crossed.
-
 
 ### Logging settings [ec_logging_settings]
 
@@ -393,5 +382,5 @@ Allow anonymous access only for specified agents and/or services. This is primar
 :   The period after which to log the internal metrics. Defaults to *30s*.
 
 ::::{note}
-To change logging settings you must first [enable deployment logging](../../../deploy-manage/monitor/stack-monitoring/ece-ech-stack-monitoring.md).
+To change logging settings you must first [enable deployment logging](/deploy-manage/monitor/stack-monitoring/ece-ech-stack-monitoring.md).
 ::::

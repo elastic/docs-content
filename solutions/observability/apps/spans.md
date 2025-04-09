@@ -9,6 +9,9 @@ applies_to:
 
 # Spans [apm-data-model-spans]
 
+:::{include} _snippets/apm-server-vs-mis.md
+:::
+
 % Stateful only until Span Compressions
 
 **Spans** contain information about the execution of a specific code path. They measure from the start to the end of an activity, and they can have a parent/child relationship with other spans.
@@ -17,7 +20,7 @@ Agents automatically instrument a variety of libraries to capture these spans fr
 
 Among other things, spans can contain:
 
-* A `transaction.id` attribute that refers to its parent [transaction](../../../solutions/observability/apps/transactions.md).
+* A `transaction.id` attribute that refers to its parent [transaction](/solutions/observability/apps/transactions.md).
 * A `parent.id` attribute that refers to its parent span or transaction.
 * Its start time and duration.
 * A `name`, `type`, `subtype`, and `action`—see the [span name/type alignment](https://docs.google.com/spreadsheets/d/1SmWeX5AeqUcayrArUauS_CxGgsjwRgMYH4ZY8yQsMhQ/edit#gid=644582948) sheet for span name patterns and examples by {{apm-agent}}. In addition, some APM agents test against a public [span type/subtype spec](https://github.com/elastic/apm/blob/main/tests/agents/json-specs/span_types.json).
@@ -27,11 +30,9 @@ Among other things, spans can contain:
 Most agents limit keyword fields, like `span.id`, to 1024 characters, and non-keyword fields, like `span.start.us`, to 10,000 characters.
 ::::
 
-
-
 ## Dropped spans [apm-data-model-dropped-spans]
 
-For performance reasons, APM agents can choose to sample or omit spans purposefully. This can be useful in preventing edge cases, like long-running transactions with over 100 spans, that would otherwise overload both the Agent and the APM Server. When this occurs, the Applications UI will display the number of spans dropped.
+For performance reasons, APM agents can choose to sample or omit spans purposefully. This can be useful in preventing edge cases, like long-running transactions with over 100 spans, that would otherwise overload both the Agent and the {{apm-server-or-mis}}. When this occurs, the Applications UI will display the number of spans dropped.
 
 To configure the number of spans recorded per transaction, see the relevant Agent documentation:
 
@@ -45,11 +46,9 @@ To configure the number of spans recorded per transaction, see the relevant Agen
 * Python: [`transaction_max_spans`](apm-agent-python://reference/configuration.md#config-transaction-max-spans)
 * Ruby: [`transaction_max_spans`](apm-agent-ruby://reference/configuration.md#config-transaction-max-spans)
 
-
 ## Missing spans [apm-data-model-missing-spans]
 
-Agents stream spans to the APM Server separately from their transactions. Because of this, unforeseen errors may cause spans to go missing. Agents know how many spans a transaction should have; if the number of expected spans does not equal the number of spans received by the APM Server, the Applications UI will calculate the difference and display a message.
-
+Agents stream spans to the {{apm-server-or-mis}} separately from their transactions. Because of this, unforeseen errors may cause spans to go missing. Agents know how many spans a transaction should have; if the number of expected spans does not equal the number of spans received by the {{apm-server-or-mis}}, the Applications UI will calculate the difference and display a message.
 
 ## Data streams [_data_streams]
 
@@ -58,8 +57,7 @@ Spans are stored with transactions in the following data streams:
 * Application traces: `traces-apm-<namespace>`
 * RUM and iOS agent application traces: `traces-apm.rum-<namespace>`
 
-See [Data streams](../../../solutions/observability/apps/data-streams.md) to learn more.
-
+See [Data streams](/solutions/observability/apps/data-streams.md) to learn more.
 
 ## Example span document [_example_span_document]
 
@@ -424,7 +422,6 @@ This example shows what span documents can look like when indexed in {{es}}.
 
 ::::
 
-
 ## Span compression [apm-spans-span-compression]
 
 In some cases, APM agents may collect large amounts of very similar or identical spans in a transaction. For example, this can happen if spans are captured inside a loop or in unoptimized SQL queries that use multiple queries instead of joins to fetch related data.
@@ -441,11 +438,9 @@ Regardless of the compression strategy, a span is eligible for compression if:
 * It is an *exit* span (such as database query spans).
 * Its outcome is not `"failure"`.
 
-
 ### Compression strategies [apm-span-compression-strategy]
 
 The {{apm-agent}} selects between two strategies to decide if adjacent spans can be compressed. In both strategies, only one previous span needs to be kept in memory. This ensures that the agent doesn’t require large amounts of memory to enable span compression.
-
 
 #### Same-Kind strategy [apm-span-compression-same]
 
@@ -464,13 +459,11 @@ The agent uses the exact-match strategy if two adjacent spans have the same:
 * span subtype
 * `destination.service.resource` (e.g. database name)
 
-
 ### Settings [apm-span-compression-settings]
 
 You can specify the maximum span duration in the agent’s configuration settings. Spans with a duration longer than the specified value will not be compressed.
 
 For the "Same-Kind" strategy, the default maximum span duration is 0 milliseconds, which means that the "Same-Kind" strategy is disabled by default. For the "Exact-Match" strategy, the default limit is 50 milliseconds.
-
 
 ### Agent support [apm-span-compression-support]
 

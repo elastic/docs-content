@@ -6,8 +6,6 @@ applies_to:
   stack:
 ---
 
-
-
 # APM agent central configuration [apm-agent-configuration]
 
 APM Agent configuration allows you to fine-tune your APM agent configuration from within the Applications UI. Changes are automatically propagated to your APM agents, so there’s no need to redeploy.
@@ -19,11 +17,9 @@ To get started, choose the services and environments you wish to configure. The 
 :screenshot:
 :::
 
-
 ## Precedence [_precedence]
 
 Configurations set from the Applications UI take precedence over configurations set locally in each APM agent. However, if APM Server is slow to respond, is offline, reports an error, etc., APM agents will use local defaults until they’re able to update the configuration. For this reason, it is still essential to set custom default configurations locally in each of your APM agents.
-
 
 ## Supported configurations [_supported_configurations]
 
@@ -60,7 +56,6 @@ Ruby agent
 
 Real User Monitoring (RUM) agent
 :   [Configuration reference](apm-agent-rum-js://reference/configuration.md)
-
 
 ## APM Server configuration [_apm_server_configuration]
 

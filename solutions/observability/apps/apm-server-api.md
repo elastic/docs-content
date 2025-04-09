@@ -15,8 +15,3 @@ The APM Server exposes endpoints for:
 * [OpenTelemetry intake API](opentelemetry-intake-api.md)
 * [Jaeger event intake](jaeger-event-intake.md)
 
-
-
-
-
-

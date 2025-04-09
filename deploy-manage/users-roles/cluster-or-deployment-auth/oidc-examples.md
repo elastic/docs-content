@@ -12,7 +12,7 @@ applies_to:
 
 # Set up OpenID Connect with Azure, Google, or Okta [ec-securing-clusters-oidc-op]
 
-This page explains how to implement OIDC, from the OAuth client credentials generation to the realm configuration for Elasticsearch and Kibana, with the following OpenID Connect Providers (OPs):
+This page explains how to implement OIDC, from the OAuth client credentials generation to the realm configuration for {{es}} and {{kib}}, with the following OpenID Connect Providers (OPs):
 
 * [Azure](#ec-securing-oidc-azure)
 * [Google](#ec-securing-oidc-google)
@@ -62,7 +62,7 @@ For more information about OpenID connect in Azure, refer to [Azure OAuth 2.0 an
 
     For OIDC, the client secret setting name in the keystore should be in the form `xpack.security.authc.realms.oidc.<oidc-realm-name>.rp.client_secret`.
 
-3. Configure Elasticsearch with the OIDC realm.
+3. Configure {{es}} with the OIDC realm.
 
     To learn more about the available endpoints provided by Microsoft Azure, refer to the **Endpoints** details in the application that you configured.
 
@@ -70,7 +70,7 @@ For more information about OpenID connect in Azure, refer to [Azure OAuth 2.0 an
     :alt: A screenshot of the Azure Endpoints dialog with fields for Display Name
     :::
 
-    To configure Elasticsearch for OIDC, [update your Elasticsearch user settings](../../../deploy-manage/deploy/elastic-cloud/edit-stack-settings.md) with the following configuration:
+    To configure {{es}} for OIDC, [update your {{es}} user settings](../../../deploy-manage/deploy/elastic-cloud/edit-stack-settings.md) with the following configuration:
 
     ```sh
     xpack:
@@ -99,7 +99,7 @@ For more information about OpenID connect in Azure, refer to [Azure OAuth 2.0 an
 
     * `<Application (client) ID>` is your Client ID, available in the application details on Azure.
     * `<Directory (tenant) ID>` is your Directory ID, available in the application details on Azure.
-    * `KIBANA_ENDPOINT_URL` is your Kibana endpoint.
+    * `KIBANA_ENDPOINT_URL` is your {{kib}} endpoint.
     * `YOUR_DOMAIN` and `TLD` in the `claim_patterns.principal` regular expression are your organization email domain and top level domain.
 
 
@@ -138,7 +138,7 @@ For more information about OpenID connect in Azure, refer to [Azure OAuth 2.0 an
 
     If you use an email in the `claim_patterns.principal`, you won’t need to add the domain in the role_mapping (for example, `firstname.lastname@your_domain.tld` should be `firstname.lastname`).
 
-5. Configure Kibana with the OIDC realm. [Update your Kibana user settings](../../../deploy-manage/deploy/elastic-cloud/edit-stack-settings.md) with the following configuration:
+5. Configure {{kib}} with the OIDC realm. [Update your {{kib}} user settings](../../../deploy-manage/deploy/elastic-cloud/edit-stack-settings.md) with the following configuration:
 
     ```sh
     xpack.security.authc.providers:
@@ -183,11 +183,11 @@ For more information about OpenID connect in Google, refer to [Google OpenID Con
 
     For OIDC, the client secret setting name in the keystore should be in the form `xpack.security.authc.realms.oidc.<oidc-realm-name>.rp.client_secret`.
 
-3. Configure Elasticsearch with the OIDC realm.
+3. Configure {{es}} with the OIDC realm.
 
     To learn more about the endpoints provided by Google, refer to this [OpenID configuration](https://accounts.google.com/.well-known/openid-configuration).
 
-    To configure Elasticsearch for OIDC, [update your Elasticsearch user settings](../../../deploy-manage/deploy/elastic-cloud/edit-stack-settings.md) with the following configuration:
+    To configure {{es}} for OIDC, [update your {{es}} user settings](../../../deploy-manage/deploy/elastic-cloud/edit-stack-settings.md) with the following configuration:
 
     ```sh
     xpack:
@@ -213,7 +213,7 @@ For more information about OpenID connect in Google, refer to [Google OpenID Con
     Where:
 
     * `YOUR_CLIENT_ID` is your Client ID.
-    * `<KIBANA_ENDPOINT_URL>/api/security/oidc/callback` is your Kibana endpoint.
+    * `<KIBANA_ENDPOINT_URL>/api/security/oidc/callback` is your {{kib}} endpoint.
 
         It will typically be `<KIBANA_ENDPOINT_URL>/api/security/oidc/callback`, where `<KIBANA_ENDPOINT_URL>` is the base URL for your {{kib}} instance.
 
@@ -256,7 +256,7 @@ For more information about OpenID connect in Google, refer to [Google OpenID Con
 
     If you use an email in the `claim_patterns.principal`, you won’t need to add the domain in the role_mapping (for example, `firstname.lastname@your_domain.tld` should be `firstname.lastname`).
 
-2. Configure Kibana with the OIDC realm. [Update your Kibana user settings](../../../deploy-manage/deploy/elastic-cloud/edit-stack-settings.md) with the following configuration:
+2. Configure {{kib}} with the OIDC realm. [Update your {{kib}} user settings](../../../deploy-manage/deploy/elastic-cloud/edit-stack-settings.md) with the following configuration:
 
     ```sh
     xpack.security.authc.providers:
@@ -285,7 +285,7 @@ For more information about OpenID connect in Okta, refer to [Okta OAuth 2.0 docu
             :::
 
         2. For the **Platform** page settings, select **Web** then **Next**.
-        3. In the **Application settings** choose a **Name** for your application, for example `Kibana OIDC`.
+        3. In the **Application settings** choose a **Name** for your application, for example `{{kib}} OIDC`.
         4. Set the **Base URI** to `KIBANA_ENDPOINT_URL`.
         5. Set the **Login redirect URI**.
 
@@ -299,11 +299,11 @@ For more information about OpenID connect in Okta, refer to [Okta OAuth 2.0 docu
 
     For OIDC, the client secret setting name in the keystore should be in the form `xpack.security.authc.realms.oidc.<oidc-realm-name>.rp.client_secret`.
 
-3. Configure Elasticsearch with the OIDC realm.
+3. Configure {{es}} with the OIDC realm.
 
     To learn more about the available endpoints provided by Okta, refer to the following OpenID configuration: `https://{{yourOktadomain}}/.well-known/openid-configuration`
 
-    To configure Elasticsearch for OIDC, [update your Elasticsearch user settings](../../../deploy-manage/deploy/elastic-cloud/edit-stack-settings.md) with the following configuration:
+    To configure {{es}} for OIDC, [update your {{es}} user settings](../../../deploy-manage/deploy/elastic-cloud/edit-stack-settings.md) with the following configuration:
 
     ```sh
     xpack:
@@ -330,7 +330,7 @@ For more information about OpenID connect in Okta, refer to [Okta OAuth 2.0 docu
     Where:
 
     * `YOUR_CLIENT_ID` is the Client ID that you set up in the previous steps.
-    * `KIBANA_ENDPOINT_URL` is your Kibana endpoint, available from the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
+    * `KIBANA_ENDPOINT_URL` is your {{kib}} endpoint, available from the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
     * `YOUR_OKTA_DOMAIN` is the URL of your Okta domain shown on your Okta dashboard.
     * `YOUR_DOMAIN` and `TLD` in the `claim_patterns.principal` regular expression are your organization email domain and top level domain.
 

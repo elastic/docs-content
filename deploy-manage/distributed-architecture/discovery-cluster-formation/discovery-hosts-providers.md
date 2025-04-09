@@ -7,7 +7,7 @@ applies_to:
 
 # Discovery [discovery-hosts-providers]
 
-Discovery is the process by which the cluster formation module finds other nodes with which to form a cluster. This process runs when you start an Elasticsearch node or when a node believes the master node failed and continues until the master node is found or a new master node is elected.
+Discovery is the process by which the cluster formation module finds other nodes with which to form a cluster. This process runs when you start an {{es}} node or when a node believes the master node failed and continues until the master node is found or a new master node is elected.
 
 This process starts with a list of *seed* addresses from one or more [seed hosts providers](#built-in-hosts-providers), together with the addresses of any master-eligible nodes that were in the last-known cluster. The process operates in two phases: First, each node probes the seed addresses by connecting to each address and attempting to identify the node to which it is connected and to verify that it is master-eligible. Secondly, if successful, it shares with the remote node a list of all of its known master-eligible peers and the remote node responds with *its* peers in turn. The node then probes all the new nodes that it just discovered, requests their peers, and so on.
 

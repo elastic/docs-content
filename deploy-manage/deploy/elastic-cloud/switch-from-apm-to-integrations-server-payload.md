@@ -13,7 +13,7 @@ This example shows how to use the {{ecloud}} RESTful API to switch from using [A
 
 ### Requirements [ec_requirements_3]
 
-Given a deployment that is using an APM & Fleet Server with Elastic Stack version 8.0 or later, it is possible to start using Integrations Server instead by updating the deployment with an Integrations Server payload. Switching from APM & Fleet Server to Integrations Server in this way ensures that the endpoints and credentials currently used by APM Server and Fleet Server remain the same after the switch.
+Given a deployment that is using an APM & Fleet Server with {{stack}} version 8.0 or later, it is possible to start using Integrations Server instead by updating the deployment with an Integrations Server payload. Switching from APM & Fleet Server to Integrations Server in this way ensures that the endpoints and credentials currently used by APM Server and Fleet Server remain the same after the switch.
 
 In order to start using the Integrations Server payload, you first need to enable the APM integration for Elastic Agent by following the steps in [Switch to the Elastic APM integration](/solutions/observability/apps/switch-an-elastic-cloud-cluster-to-apm-integration.md).
 
@@ -375,19 +375,19 @@ curl -XPUT \
 ## Manage your APM & Fleet Server [ec-manage-apm-and-fleet]
 
 ::::{note}
-Beginning with Elastic Stack version 8.0, [Integrations Server](manage-integrations-server.md) is replacing APM & Fleet Server. New deployments with version 8.0 will use Integrations Server automatically. Existing deployments using APM & Fleet Server will continue to use APM & Fleet Server after upgrading to version 8.0.
+Beginning with {{stack}} version 8.0, [Integrations Server](manage-integrations-server.md) is replacing APM & Fleet Server. New deployments with version 8.0 will use Integrations Server automatically. Existing deployments using APM & Fleet Server will continue to use APM & Fleet Server after upgrading to version 8.0.
 ::::
 
 
-You have the option to add a combined [Application Performance Monitoring (APM) Server](/solutions/observability/apps/application-performance-monitoring-apm.md) and [Fleet Server](/reference/fleet/index.md) to your deployment. APM allows you to monitor software services and applications in real time, turning that data into documents stored in the Elasticsearch cluster. Fleet allows you to centrally manage Elastic Agents on many hosts.
+You have the option to add a combined [Application Performance Monitoring (APM) Server](/solutions/observability/apps/application-performance-monitoring-apm.md) and [Fleet Server](/reference/fleet/index.md) to your deployment. APM allows you to monitor software services and applications in real time, turning that data into documents stored in the {{es}} cluster. Fleet allows you to centrally manage Elastic Agents on many hosts.
 
-As part of provisioning, the APM Server and Fleet Server are already configured to work with Elasticsearch and Kibana. At the end of provisioning, you are shown the secret token to configure communication between the APM Server and the backend [APM Agents](https://www.elastic.co/guide/en/apm/agent/index.html). The APM Agents get deployed within your services and applications.
+As part of provisioning, the APM Server and Fleet Server are already configured to work with {{es}} and {{kib}}. At the end of provisioning, you are shown the secret token to configure communication between the APM Server and the backend [APM Agents](https://www.elastic.co/guide/en/apm/agent/index.html). The APM Agents get deployed within your services and applications.
 
 From the deployment **APM & Fleet** page you can also:
 
 * Get the URL to complete the APM agent configuration.
-* Use the `elastic` credentials to go to the APM area of Kibana. Step by step instructions to configure a variety of agents are available right in Kibana. After that, you can use the pre-built, dedicated dashboards and the APM tab to visualize the data that is sent back from the APM Agents.
-* Use the `elastic` credentials to go to the Fleet area of Kibana. Step by step instructions to download and install Elastic Agent on your hosts are available right in Kibana. After that, you can manage enrolled Elastic Agents on the **Agents** tab, and the data shipped back from those Elastic Agents on the **Data streams** tab.
+* Use the `elastic` credentials to go to the APM area of {{kib}}. Step by step instructions to configure a variety of agents are available right in {{kib}}. After that, you can use the pre-built, dedicated dashboards and the APM tab to visualize the data that is sent back from the APM Agents.
+* Use the `elastic` credentials to go to the Fleet area of {{kib}}. Step by step instructions to download and install Elastic Agent on your hosts are available right in {{kib}}. After that, you can manage enrolled Elastic Agents on the **Agents** tab, and the data shipped back from those Elastic Agents on the **Data streams** tab.
 * Reset the APM secret token.
 
     ::::{important}
@@ -396,7 +396,7 @@ From the deployment **APM & Fleet** page you can also:
 
 * Access the APM & Fleet logs and metrics.
 * Stop and restart your APM & Fleet Server.
-* Upgrade your APM & Fleet Server version if it is out of sync with your Elasticsearch cluster.
+* Upgrade your APM & Fleet Server version if it is out of sync with your {{es}} cluster.
 * Fully remove the APM & Fleet Server, delete it from the disk, and stop the charges.
 
 

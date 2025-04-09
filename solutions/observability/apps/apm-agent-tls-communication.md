@@ -11,9 +11,7 @@ TLS is disabled by default. When TLS is enabled for APM Server inbound communica
 
 When TLS is enabled, a certificate and corresponding private key are required. The certificate and private key can either be issued by a trusted certificate authority (CA) or be [self-signed](#apm-agent-self-sign).
 
-
 ## Use a self-signed certificate [apm-agent-self-sign]
-
 
 ### Step 1: Create a self-signed certificate [apm-agent-self-sign-1]
 
@@ -23,7 +21,6 @@ The {{es}} distribution offers the `certutil` tool for the creation of self-sign
 2. Extract the contents of the CA archive.
 3. Create the self-signed certificate: `./bin/elasticsearch-certutil cert --ca-cert <path-to-ca-crt>/ca.crt --ca-key <path-to-ca-key>/ca.key --pem --name localhost`
 4. Extract the certificate and key from the resulted zip archive.
-
 
 ### Step 2: Configure the APM Server [apm-agent-self-sign-2]
 
@@ -73,7 +70,6 @@ We do not recommend disabling {{apm-agent}} verification of the server’s certi
 * **Python agent**: [`verify_server_cert`](apm-agent-python://reference/configuration.md#config-verify-server-cert)
 * **Ruby agent**: [`verify_server_cert`](apm-agent-ruby://reference/configuration.md#config-verify-server-cert)
 * **Node.js agent**: [`verifyServerCert`](apm-agent-nodejs://reference/configuration.md#validate-server-cert)
-
 
 ## Client certificate authentication [apm-agent-client-cert]
 

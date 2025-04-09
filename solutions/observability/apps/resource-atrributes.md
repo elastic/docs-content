@@ -45,4 +45,4 @@ Need to add event attributes instead? Use attributes—​not to be confused wit
 
 Elastic integrates with OpenTelemetry, allowing you to reuse your existing instrumentation to easily send observability data to the {{stack}}.
 
-For more information on how to combine Elastic and OpenTelemetry, see [OpenTelemetry integration](../../../solutions/observability/apps/use-opentelemetry-with-apm.md).
+For more information on how to combine Elastic and OpenTelemetry, see [OpenTelemetry integration](/solutions/observability/apps/use-opentelemetry-with-apm.md).

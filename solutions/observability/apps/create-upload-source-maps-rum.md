@@ -31,7 +31,6 @@ Follow the steps below to enable source mapping your error stack traces in the A
 * [Generate a source map](#apm-source-map-rum-generate)
 * [Upload the source map](#apm-source-map-rum-upload)
 
-
 ## Initialize the RUM Agent [apm-source-map-rum-initialize]
 
 Set the service name and version of your application when initializing the RUM Agent. To make uploading subsequent source maps easier, the `serviceVersion` you choose might be the `version` from your `package.json`. For example:
@@ -54,7 +53,6 @@ const serviceVersion = git.short()
 ```
 
 It can also be any other unique string that indicates a specific version of your application. The APM integration uses the service name and version to match the correct source map file to each stack trace.
-
 
 ## Generate a source map [apm-source-map-rum-generate]
 
@@ -84,14 +82,11 @@ module.exports = {
 
 1. If you’re using a different method of defining `serviceVersion`, you can set it here.
 
-
-
 ## Upload the source map [apm-source-map-rum-upload]
 
 ::::{tip}
 When uploading a source map, ensure that RUM support is enabled in the APM integration.
 ::::
-
 
 {{kib}} exposes a source map endpoint for uploading source maps. Source maps can be uploaded as a string, or as a file upload.
 
@@ -103,7 +98,6 @@ Let’s look at two different ways to upload a source map: curl and a custom app
 * `sourcemap`: The location of the source map.
 
 If you have multiple source maps, you’ll need to upload each individually.
-
 
 ### Upload via curl [apm-source-map-curl]
 
@@ -151,7 +145,6 @@ request.post({url: 'http://localhost:5601/api/apm/sourcemaps',formData: formData
   }
 })
 ```
-
 
 ## What happens next [apm-source-map-next]
 

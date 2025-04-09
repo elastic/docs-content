@@ -8,7 +8,6 @@ applies_to:
 
 # Configure APM agent central configuration [apm-configure-agent-config]
 
-
 ::::{note}
 ![supported deployment methods](/solutions/images/observability-binary-yes-fm-yes.svg "")
 
@@ -16,11 +15,9 @@ APM agent central configuration is supported by all APM Server deployment method
 
 ::::
 
-
 APM agent central configuration allows you to fine-tune your APM agents from within the Applications UI. Changes are automatically propagated to your APM agents, so there’s no need to redeploy your applications.
 
 To learn more about this feature, see [APM agent central configuration](apm-agent-central-configuration.md).
-
 
 ## APM agent configuration options [_apm_agent_configuration_options]
 
@@ -35,12 +32,9 @@ apm-server.agent.config.elasticsearch.api_key: TiNAGG4BaaMdaH1tRfuU:KnR6yE41RrSo
 
 1.  You *must* set the API key to be configured to **Beats**. Base64 encoded API keys are not currently supported in this configuration. For details on how to create and configure a compatible API key, refer to [Create an API key for writing events](grant-access-using-api-keys.md#apm-beats-api-key-publish).
 
-
-
 ### `apm-server.agent.config.cache.expiration` [apm-agent-config-cache]
 
 When using APM agent central configuration, information fetched from {{es}} will be cached in memory for some time. Specify the cache expiration time via this setting. Defaults to `30s` (30 seconds).
-
 
 ### `apm-server.agent.config.elasticsearch` [apm-agent-config-elasticsearch]
 
@@ -48,9 +42,7 @@ Takes the same options as [output.elasticsearch](configure-elasticsearch-output.
 
 For APM Server binary users and Elastic Agent standalone-managed APM Server, APM agent central configuration is automatically fetched from {{es}} using the `output.elasticsearch` configuration. If `output.elasticsearch` isn’t set or doesn’t have sufficient privileges, use these {{es}} options to provide {{es}} access.
 
-
 ### Common problems [_common_problems]
-
 
 #### HTTP 403 errors [_http_403_errors]
 
@@ -71,7 +63,6 @@ rejecting fetch request: no valid elasticsearch config
 This occurs because the user or API key set in either `apm-server.agent.config.elasticsearch` or `output.elasticsearch` (if `apm-server.agent.config.elasticsearch` is not set) does not have adequate permissions to read source maps from {{es}}.
 
 To fix this error, ensure that APM Server has all the required privileges. For more details, refer to [Create a *central configuration management* role](create-assign-feature-roles-to-apm-server-users.md#apm-privileges-agent-central-config-server).
-
 
 #### HTTP 401 errors [_http_401_errors]
 

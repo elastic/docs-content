@@ -36,7 +36,7 @@ FOUNDELASTICSEARCH_URL: https://74f176887fdef36bb51e6e37nnnnnnnn.us-east-1.aws.f
 
 ## Install a specific version and plugins [ech-getting-started-installing-version]
 
-If you want your add-on to run a specific version of Elasticsearch, use the `--elasticsearch-version` parameter. We also provide many of the plugins that are available for Elasticsearch. You use the `--plugins` parameter to specify a comma-separated list of plugins that you want installed.
+If you want your add-on to run a specific version of {{es}}, use the `--elasticsearch-version` parameter. We also provide many of the plugins that are available for {{es}}. You use the `--plugins` parameter to specify a comma-separated list of plugins that you want installed.
 
 To find which {{es}} versions and plugins are currently available, you can omit the version to default to the latest one and add plugins later on from the [{{heroku}} console](https://cloud.elastic.co?page=docs&placement=docs-body). To use your own custom plugins, you can upload and select these plugins in the console as well.
 

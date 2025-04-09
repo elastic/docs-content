@@ -9,8 +9,7 @@ applies_to:
 
 # Traces [apm-data-model-traces]
 
-A trace is a group of [transactions](../../../solutions/observability/apps/transactions.md) and [spans](../../../solutions/observability/apps/spans.md) with a common root. Each trace tracks the entirety of a single request. It describes the individual operations and their causality that ensue from a single logical operation.
-
+A trace is a group of [transactions](/solutions/observability/apps/transactions.md) and [spans](/solutions/observability/apps/spans.md) with a common root. Each trace tracks the entirety of a single request. It describes the individual operations and their causality that ensue from a single logical operation.
 
 ## Distributed tracing [apm-distributed-tracing]
 
@@ -24,13 +23,11 @@ Tracking requests as they propagate through your services provides an end-to-end
 
 For supported technologies, distributed tracing works out-of-the-box, with no additional configuration required.
 
-
 ### How distributed tracing works [apm-how-distributed-tracing]
 
 Distributed tracing works by injecting a custom `traceparent` HTTP header into outgoing requests. This header includes information, like `trace-id`, which is used to identify the current trace, and `parent-id`, which is used to identify the parent of the current span on incoming requests or the current span on an outgoing request.
 
 When a service is working on a request, it checks for the existence of this HTTP header. If it’s missing, the service starts a new trace. If it exists, the service ensures the current action is added as a child of the existing trace, and continues to propagate the trace.
-
 
 ### Trace propagation examples [apm-trace-propagation]
 
@@ -51,7 +48,6 @@ In this example, the trace meets a piece of middleware that doesn’t propagate 
 :::{image} /solutions/images/observability-dt-trace-ex3.png
 :alt: How traceparent propagation works
 :::
-
 
 ### W3C Trace Context specification [apm-w3c-tracecontext-spec]
 
@@ -74,8 +70,6 @@ All Elastic agents now support the official W3C Trace Context specification and 
 Older Elastic agents use a unique `elastic-apm-traceparent` header. For backward-compatibility purposes, new versions of Elastic agents still support this header.
 ::::
 
-
-
 ### Visualize distributed tracing [apm-visualize-distributed-tracing]
 
 APM's timeline visualization provides a visual deep-dive into each of your application’s traces:
@@ -85,11 +79,9 @@ APM's timeline visualization provides a visual deep-dive into each of your appli
 :screenshot:
 :::
 
-
 ### Manual distributed tracing [apm-manual-distributed-tracing]
 
 Elastic agents automatically propagate distributed tracing context for supported technologies. If your service communicates over a different, unsupported protocol, you can manually propagate distributed tracing context from a sending service to a receiving service with each agent’s API.
-
 
 #### Add the `traceparent` header to outgoing requests [apm-distributed-tracing-outgoing]
 
@@ -380,7 +372,6 @@ $receiverTransaction = ElasticApm::beginCurrentTransaction( <1>
 1. Start a new transaction
 2. Pass in the received distributed tracing data (serialized as string)
 
-
 Once this new transaction has been created in the receiving service, you can create child spans, or use any other agent API methods as you typically would.
 ::::::
 
@@ -397,7 +388,6 @@ client.begin_transaction('processors', trace_parent=parent) <2>
 
 1. Create a `TraceParent` object from HTTP headers formed as a dictionary
 2. Begin a new transaction as a child of the received `TraceParent`
-
 
 ::::{tip}
 See the [`TraceParent` API](apm-agent-python://reference/api-reference.md#traceparent-api) for additional examples.

@@ -8,11 +8,11 @@ mapped_pages:
 
 # Configure the validating webhook [k8s-webhook]
 
-ECK can be configured to provide a [validating webhook](https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/) that validates Elastic custom resources (Elasticsearch, Kibana, APM Server, Beats, Elastic Agent, Elastic Maps Server, and Logstash) before they are created or updated. Validating webhooks provide immediate feedback if a submitted manifest contains invalid or illegal configuration — which can help you catch errors early and save time that would otherwise be spent on troubleshooting.
+ECK can be configured to provide a [validating webhook](https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/) that validates Elastic custom resources ({{es}}, {{kib}}, APM Server, Beats, Elastic Agent, Elastic Maps Server, and Logstash) before they are created or updated. Validating webhooks provide immediate feedback if a submitted manifest contains invalid or illegal configuration — which can help you catch errors early and save time that would otherwise be spent on troubleshooting.
 
 Validating webhooks are defined using a `ValidatingWebhookConfiguration` object that defines the following:
 
-* Type of resource to validate (Elasticsearch, Kibana and so on)
+* Type of resource to validate ({{es}}, {{kib}} and so on)
 * Type of actions to validate (create, update, delete)
 * Connection details to the webhook
 
@@ -27,7 +27,7 @@ Validating webhooks are defined using a `ValidatingWebhookConfiguration` object 
 
 When using the default `operator.yaml` manifest, ECK is installed with a `ValidatingWebhookConfiguration` configured as follows:
 
-* Validate all known Elastic custom resources (Elasticsearch, Kibana, APM Server, Beats, Elastic Agent, Elastic Maps Server, and Logstash) on create and update.
+* Validate all known Elastic custom resources ({{es}}, {{kib}}, APM Server, Beats, Elastic Agent, Elastic Maps Server, and Logstash) on create and update.
 * The operator itself is the webhook server — which is exposed through a service named `elastic-webhook-server` in the `elastic-system` namespace.
 * The operator generates a certificate for the webhook and stores it in a secret named `elastic-webhook-server-cert` in the `elastic-system` namespace. This certificate is automatically rotated by the operator when it is due to expire.
 
@@ -168,7 +168,7 @@ You might get errors in your Kubernetes API server logs indicating that it canno
 
 ### Resource creation taking too long or timing out [k8s-webhook-troubleshooting-timeouts] 
 
-Webhooks require network connectivity between the Kubernetes API server and the operator. If the creation of an Elasticsearch resource times out with an error message similar to the following, then the Kubernetes API server might be unable to connect to the webhook to validate the manifest.
+Webhooks require network connectivity between the Kubernetes API server and the operator. If the creation of an {{es}} resource times out with an error message similar to the following, then the Kubernetes API server might be unable to connect to the webhook to validate the manifest.
 
 ```
 Error from server (Timeout): error when creating "elasticsearch.yaml": Timeout: request did not complete within requested timeout 30s
@@ -233,5 +233,5 @@ spec:
 If your attempts to update a resource fail with an error message similar to the following, you can force the webhook to ignore it by removing the `kubectl.kubernetes.io/last-applied-configuration` annotation from your resource.
 
 ```
-admission webhook "elastic-es-validation-v1.k8s.elastic.co" denied the request: Elasticsearch.elasticsearch.k8s.elastic.co "quickstart" is invalid: some-misspelled-field: Invalid value: "some-misspelled-field": some-misspelled-field field found in the kubectl.kubernetes.io/last-applied-configuration annotation is unknown
+admission webhook "elastic-es-validation-v1.k8s.elastic.co" denied the request: {{es}}.elasticsearch.k8s.elastic.co "quickstart" is invalid: some-misspelled-field: Invalid value: "some-misspelled-field": some-misspelled-field field found in the kubectl.kubernetes.io/last-applied-configuration annotation is unknown
 ```

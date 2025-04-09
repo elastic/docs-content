@@ -79,18 +79,18 @@ To add or edit user settings:
 6. Select **Save changes**.
 
 ::::{note}
-In some cases, you may get a warning saying "User settings are different across Elasticsearch instances". To fix this issue, ensure that your user settings (including the comments sections and whitespaces) are identical across all Elasticsearch nodes (not only the data tiers, but also the Master, Machine Learning, and Coordinating nodes).
+In some cases, you may get a warning saying "User settings are different across {{es}} instances". To fix this issue, ensure that your user settings (including the comments sections and whitespaces) are identical across all {{es}} nodes (not only the data tiers, but also the Master, Machine Learning, and Coordinating nodes).
 ::::
 
-## Edit Kibana user settings [ec-manage-kibana-settings]
+## Edit {{kib}} user settings [ec-manage-kibana-settings]
 
-{{ech}} supports most of the standard Kibana and X-Pack settings. Through a YAML editor in the console, you can append Kibana properties to the `kibana.yml` file. Your changes to the configuration file are read on startup.
+{{ech}} supports most of the standard {{kib}} and X-Pack settings. Through a YAML editor in the console, you can append {{kib}} properties to the `kibana.yml` file. Your changes to the configuration file are read on startup.
 
 Be aware that some settings that could break your cluster if set incorrectly and that the syntax might change between major versions.
 
-For a list of supported settings, check [Kibana settings](kibana://reference/cloud/elastic-cloud-kibana-settings.md).
+For a list of supported settings, check [{{kib}} settings](kibana://reference/cloud/elastic-cloud-kibana-settings.md).
 
-To change Kibana settings:
+To change {{kib}} settings:
 
 1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
 2. Find your deployment on the home page or on the **Hosted deployments** page, then select **Manage** to access its settings menus.
@@ -102,7 +102,7 @@ To change Kibana settings:
 5. Update the user settings.
 6. Select **Save changes**.
 
-Saving your changes initiates a configuration plan change that restarts Kibana automatically for you.
+Saving your changes initiates a configuration plan change that restarts {{kib}} automatically for you.
 
 ::::{note}
 If a setting is not supported by {{ech}}, you will get an error message when you try to save.

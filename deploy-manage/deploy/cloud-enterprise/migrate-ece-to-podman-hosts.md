@@ -298,7 +298,7 @@ Using Docker or Podman as container runtime is a configuration local to the host
     sudo install -o elastic -g elastic -d -m 700 /mnt/data
     ```
 
-21. As a sudoers user, modify the entry for the XFS volume in the `/etc/fstab` file to add `pquota,prjquota`. The default filesystem path used by Elastic Cloud Enterprise is `/mnt/data`.
+21. As a sudoers user, modify the entry for the XFS volume in the `/etc/fstab` file to add `pquota,prjquota`. The default filesystem path used by {{ece}} is `/mnt/data`.
 
     ::::{note}
     Replace `/dev/nvme1n1` in the following example with the corresponding device on your host, and add this example configuration as a single line to `/etc/fstab`.
@@ -352,7 +352,7 @@ Using Docker or Podman as container runtime is a configuration local to the host
     vm.max_map_count=262144
     # enable forwarding so the Docker networking works as expected
     net.ipv4.ip_forward=1
-    # Decrease the maximum number of TCP retransmissions to 5 as recommended for Elasticsearch TCP retransmission timeout.
+    # Decrease the maximum number of TCP retransmissions to 5 as recommended for {{es}} TCP retransmission timeout.
     # See /deploy-manage/deploy/self-managed/system-config-tcpretries.md
     net.ipv4.tcp_retries2=5
     # Make sure the host doesn't swap too early
@@ -416,7 +416,7 @@ Using Docker or Podman as container runtime is a configuration local to the host
 
     1. Use the ECE installer script together with the `--podman` flag to add the additional host as a podman-based host.
 
-        Refer to the official [Install Elastic Cloud Enterprise on an additional host](install-ece-on-additional-hosts.md) and [Install ECE online](./install.md) documentation to adapt the command line parameters to your environment including fetching the role token.
+        Refer to the official [Install {{ece}} on an additional host](install-ece-on-additional-hosts.md) and [Install ECE online](./install.md) documentation to adapt the command line parameters to your environment including fetching the role token.
 
         [JVM heap sizes](ece-jvm.md) describes recommended JVM options.
 
