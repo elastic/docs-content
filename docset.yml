@@ -26,6 +26,7 @@ cross_links:
   - cloud
   - cloud-on-k8s
   - curator
+  - detection-rules
   - ecctl
   - ecs
   - ecs-dotnet
@@ -54,7 +55,6 @@ cross_links:
   - logstash
   - logstash-docs-md
   - search-ui
-  - security-docs
 
 toc:
   - file: index.md
