@@ -8,7 +8,6 @@ applies_to:
 
 # Use the select metrics emitted directly to your monitoring cluster [apm-monitoring-local-collection]
 
-
 In 8.11 and later, we emit a selected set of metrics directly to the monitoring cluster. The benefit of using local collection instead of internal collection is that the metrics are sent directly to your main monitoring index, making it easier to view shared data.
 
 ## The select metrics [apm-select-metrics]

@@ -8,7 +8,6 @@ applies_to:
 
 # Monitor the APM Server binary [apm-monitoring]
 
-
 There are two methods to monitor the APM Server binary. Make sure monitoring is enabled on your {{es}} cluster, then configure one of these methods to collect APM Server metrics:
 
 * [Internal collection](use-internal-collection-to-send-monitoring-data.md) - Internal collectors send monitoring data directly to your monitoring cluster.

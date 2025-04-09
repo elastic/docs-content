@@ -9,7 +9,7 @@ applies_to:
 
 # Dependencies [apm-dependencies]
 
-APM agents collect details about external calls made from instrumented services. Sometimes, these external calls resolve into a downstream service that’s instrumented — in these cases, you can utilize [distributed tracing](../../../solutions/observability/apps/trace-sample-timeline.md#distributed-tracing) to drill down into problematic downstream services. Other times, though, it’s not possible to instrument a downstream dependency — like with a database or third-party service. **Dependencies** gives you a window into these uninstrumented, downstream dependencies.
+APM agents collect details about external calls made from instrumented services. Sometimes, these external calls resolve into a downstream service that’s instrumented — in these cases, you can utilize [distributed tracing](/solutions/observability/apps/trace-sample-timeline.md#distributed-tracing) to drill down into problematic downstream services. Other times, though, it’s not possible to instrument a downstream dependency — like with a database or third-party service. **Dependencies** gives you a window into these uninstrumented, downstream dependencies.
 
 :::{image} /solutions/images/observability-dependencies.png
 :alt: Dependencies view in the Applications UI
@@ -29,7 +29,6 @@ When viewing a dependency, consider your pattern of usage with that dependency. 
 
 If your usage pattern *has* changed, the dependency view can quickly show you whether that pattern change exists in all upstream services, or just a subset of your services. You might then start digging into traces coming from impacted services to determine why that pattern change has occurred.
 
-
 ## Operations [dependencies-operations]
 
 ::::{Warning}
@@ -45,7 +44,7 @@ The Dependency operations functionality is in beta and is subject to change. The
 :screenshot:
 :::
 
-Selecting an operation displays the operation’s impact and performance trends over time, via key metrics like latency, throughput, and failed transaction rate. In addition, the [**Trace sample timeline**](../../../solutions/observability/apps/trace-sample-timeline.md) provides a visual drill-down into an end-to-end trace sample.
+Selecting an operation displays the operation’s impact and performance trends over time, via key metrics like latency, throughput, and failed transaction rate. In addition, the [**Trace sample timeline**](/solutions/observability/apps/trace-sample-timeline.md) provides a visual drill-down into an end-to-end trace sample.
 
 :::{image} /solutions/images/observability-operations-detail.png
 :alt: operations detail view in the Applications UI

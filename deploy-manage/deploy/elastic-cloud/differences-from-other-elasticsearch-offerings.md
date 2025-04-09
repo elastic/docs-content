@@ -7,9 +7,9 @@ applies_to:
   ess:
 ---
 
-# Compare Elastic Cloud Hosted and Serverless [elasticsearch-differences]
+# Compare {{ech}} and Serverless [elasticsearch-differences]
 
-This guide compares Elastic Cloud Hosted deployments with Elastic Cloud Serverless projects, highlighting key features and capabilities across different project types. Use this information to understand what's available in each deployment option or to plan migrations between platforms.
+This guide compares {{ech}} deployments with {{serverless-full}} projects, highlighting key features and capabilities across different project types. Use this information to understand what's available in each deployment option or to plan migrations between platforms.
 
 :::{note}
 The information below reflects our strategic goals, plans and objectives and includes estimated release dates, anticipated features and functions, and proposed descriptions for commercial features. All details are for information only and are subject to change in our discretion. Information may be updated, added, or removed from this document as features or products become available, canceled, or postponed.
@@ -17,9 +17,9 @@ The information below reflects our strategic goals, plans and objectives and inc
 
 ## Architectural differences
 
-Elastic Cloud Serverless takes a fundamentally different approach to running the Elastic Stack compared to Elastic Cloud Hosted:
+{{serverless-full}} takes a fundamentally different approach to running the {{stack}} compared to {{ech}}:
 
-| **Functionality** | Elastic Cloud Hosted | Elastic Cloud Serverless |
+| **Functionality** | {{ech}} | {{serverless-full}} |
 |--------|----------------------|--------------------------|
 | **Management model** | Self-service infrastructure | Fully managed service |
 | **Project organization** | Single deployments with multiple capabilities | Separate projects for Elasticsearch, Observability, and Security |
@@ -30,7 +30,7 @@ Elastic Cloud Serverless takes a fundamentally different approach to running the
 | **Upgrades** | User-controlled timing | Automatically performed by Elastic |
 | **User management** | Elastic Cloud-managed and deployment-local users | Elastic Cloud-managed users only. Serverless users are managed at the organization level with SAML authentication support. |
 | **Backups** | User-managed with Snapshot & Restore | Automatically backed up by Elastic |
-| **Solutions** | Full Elastic Stack per deployment | Single solution per project |
+| **Solutions** | Full {{stack}} per deployment | Single solution per project |
 
 In Serverless, Elastic automatically manages:
 * Cluster scaling and optimization
@@ -47,14 +47,14 @@ $$$elasticsearch-differences-serverless-feature-planned$$$
 
 ### Core platform capabilities
 
-This table compares the core platform capabilities between Elastic Cloud Hosted deployments and Serverless projects:
+This table compares the core platform capabilities between {{ech}} deployments and Serverless projects:
 
-| **Feature**  | Elastic Cloud Hosted | Serverless projects| Notes  |
+| **Feature**  | {{ech}} | Serverless projects| Notes  |
 |----------|----------------------|--------------------|--------|
 | **Audit logging** | ✅ | **Planned** | Anticipated in a future release |
 | **Authentication realms** | ✅ | ✅ | Managed at organization level in Serverless; deployment level in Hosted |
 | **BYO-Key for Encryption at Rest** | ✅ | **Planned** | Anticipated in a future release; data in Serverless is stored on cloud-provider encrypted object storage |
-| **Cloud provider support** | - AWS <br>- GCP <br>- Azure | - AWS <br>- Azure (in preview) <br>- GCP (in preview) | - [Elastic Cloud Hosted regions](cloud://reference/cloud-hosted/regions.md)<br>- [Serverless regions](/deploy-manage/deploy/elastic-cloud/regions.md) |
+| **Cloud provider support** | - AWS <br>- GCP <br>- Azure | - AWS <br>- Azure (in preview) <br>- GCP (in preview) | - [{{ech}} regions](cloud://reference/cloud-hosted/regions.md)<br>- [Serverless regions](/deploy-manage/deploy/elastic-cloud/regions.md) |
 | **Cluster scaling** | Manual with autoscaling option | Managed | Automatic scaling eliminates capacity planning - [Learn more](https://www.elastic.co/blog/elastic-serverless-architecture) |
 | **Custom plugins and bundles** | ✅ | ❌ | Not available in Serverless |
 | **Custom roles** | ✅ | ✅ | Not available in Serverless Observability projects. |
@@ -68,14 +68,14 @@ This table compares the core platform capabilities between Elastic Cloud Hosted 
 | **Snapshot/restore** | ✅ | **Planned** | User-initiated snapshots are anticipated in a future release |
 
 :::{note}
-The [Elastic Cloud Serverless roadmap](https://www.elastic.co/cloud/serverless/roadmap) primarily focuses on platform capabilities rather than project-specific features. Use the following project-specific tables for information about features for each project type.
+The [{{serverless-full}} roadmap](https://www.elastic.co/cloud/serverless/roadmap) primarily focuses on platform capabilities rather than project-specific features. Use the following project-specific tables for information about features for each project type.
 :::
 
 ### Elasticsearch
 
-This table compares Elasticsearch capabilities between Elastic Cloud Hosted deployments and Serverless projects:
+This table compares Elasticsearch capabilities between {{ech}} deployments and Serverless projects:
 
-| **Feature** | Elastic Cloud Hosted | Serverless Elasticsearch projects | Serverless notes |
+| **Feature** | {{ech}} | Serverless Elasticsearch projects | Serverless notes |
 |---------|----------------------|-----------------------------------|------------------|
 | [**AI Assistant**](/solutions/observability/observability-ai-assistant.md) | ✅ | ✅ | |
 | **Behavioral analytics** | ❌ (deprecated in 9.0) | ❌ | Not available in Serverless |
@@ -97,9 +97,9 @@ This table compares Elasticsearch capabilities between Elastic Cloud Hosted depl
 
 ### Observability
 
-This table compares Observability capabilities between Elastic Cloud Hosted deployments and Serverless projects:
+This table compares Observability capabilities between {{ech}} deployments and Serverless projects:
 
-| **Feature** | Elastic Cloud Hosted | Serverless Observability projects | Serverless notes |
+| **Feature** | {{ech}} | Serverless Observability projects | Serverless notes |
 |---------|----------------------|-----------------------------------|------------------|
 | [**AI Assistant**](/solutions/observability/observability-ai-assistant.md) | ✅ | ✅ | |
 | **APM integration** | ✅ | ✅ | Use **Managed Intake Service** (supports Elastic APM and OTLP protocols) |
@@ -126,9 +126,9 @@ This table compares Observability capabilities between Elastic Cloud Hosted depl
 
 ### Security
 
-This table compares Security capabilities between Elastic Cloud Hosted deployments and Serverless projects:
+This table compares Security capabilities between {{ech}} deployments and Serverless projects:
 
-| **Feature** | Elastic Cloud Hosted | Serverless Security projects | Serverless notes |
+| **Feature** | {{ech}} | Serverless Security projects | Serverless notes |
 |---------|---------------------|------------------------------|------------------|
 | **[Advanced Entity Analytics](/solutions/security/advanced-entity-analytics.md)** | ✅ | ✅ | |
 | **[AI Assistant](/solutions/security/ai/ai-assistant.md)** | ✅ | ✅ | |
@@ -158,7 +158,7 @@ These recommendations do not apply to indices using better binary quantization (
 
 ## Available {{es}} APIs [elasticsearch-differences-serverless-apis-availability]
 
-Because Elastic Cloud Serverless manages infrastructure automatically, certain Elasticsearch APIs are not available:
+Because {{serverless-full}} manages infrastructure automatically, certain Elasticsearch APIs are not available:
 
 Infrastructure operations
 :   * All `_nodes/*` operations
@@ -197,7 +197,7 @@ Refer to the [{{es-serverless}} API reference](https://www.elastic.co/docs/api/d
 
 ## Available {{es}} settings [elasticsearch-differences-serverless-settings-availability]
 
-In Elastic Cloud Serverless Elasticsearch projects, you can only configure [index-level settings](elasticsearch://reference/elasticsearch/index-settings/index.md). Cluster-level settings and node-level settings are fully managed by Elastic.
+In {{serverless-full}} Elasticsearch projects, you can only configure [index-level settings](elasticsearch://reference/elasticsearch/index-settings/index.md). Cluster-level settings and node-level settings are fully managed by Elastic.
 
 Available settings
 :   **Index-level settings**: Settings that control how documents are processed, stored, and searched are available to end users. These include:
@@ -217,10 +217,10 @@ Managed settings
 
 ## Learn more
 
-- [Elastic Cloud Serverless roadmap](https://www.elastic.co/cloud/serverless/roadmap): See upcoming features and development plans for the Serverless platform
-- [Elasticsearch Serverless API reference](https://www.elastic.co/docs/api/doc/elasticsearch-serverless): Check out the complete list of available APIs in Elastic Cloud Serverless
-- [Project settings](/deploy-manage/deploy/elastic-cloud/project-settings.md): Configure project settings in Elastic Cloud Serverless
-- [Serverless regions](/deploy-manage/deploy/elastic-cloud/regions.md): Choose the right region for your Elastic Cloud Serverless project
-- [Elastic Cloud pricing](https://www.elastic.co/pricing/): Understand pricing for Elastic Cloud Hosted and Serverless projects
+- [{{serverless-full}} roadmap](https://www.elastic.co/cloud/serverless/roadmap): See upcoming features and development plans for the Serverless platform
+- [Elasticsearch Serverless API reference](https://www.elastic.co/docs/api/doc/elasticsearch-serverless): Check out the complete list of available APIs in {{serverless-full}}
+- [Project settings](/deploy-manage/deploy/elastic-cloud/project-settings.md): Configure project settings in {{serverless-full}}
+- [Serverless regions](/deploy-manage/deploy/elastic-cloud/regions.md): Choose the right region for your {{serverless-full}} project
+- [{{ecloud}} pricing](https://www.elastic.co/pricing/): Understand pricing for {{ech}} and Serverless projects
   - [Serverless project billing](/deploy-manage/cloud-organization/billing/serverless-project-billing-dimensions.md): Understand billing dimensions for Serverless projects
-  - [Elastic Cloud Hosted billing](/deploy-manage/cloud-organization/billing/cloud-hosted-deployment-billing-dimensions.md): Understand billing dimensions for Elastic Cloud Hosted deployments
+  - [{{ech}} billing](/deploy-manage/cloud-organization/billing/cloud-hosted-deployment-billing-dimensions.md): Understand billing dimensions for {{ech}} deployments

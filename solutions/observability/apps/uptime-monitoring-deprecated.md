@@ -14,7 +14,6 @@ applies_to:
 Use [Synthetic monitoring](/solutions/observability/apps/synthetic-monitoring.md) instead of the {{uptime-app}}.
 ::::
 
-
 ::::{important}
 The {{uptime-app}} is for viewing result data from lightweight monitors running through {{heartbeat}} and [configured with a traditional `heartbeat.yml` file](get-started-with-uptime.md). This is for TCP, HTTP or ICMP monitors that you have configured and run from your own infrastructure with {{heartbeat}} natively.
 
@@ -24,9 +23,7 @@ Note that the {{uptime-app}} is hidden from the interface when there is no recen
 
 ::::
 
-
 The {{uptime-app}} uses {{agent}} to periodically check the status of your services and applications. Monitor the availability of network endpoints and services using [Lightweight HTTP/S, TCP, and ICMP monitors](synthetic-monitoring.md#monitoring-uptime).
-
 
 ## Lightweight HTTP/S, TCP, and ICMP monitors [uptime-lightweight]
 
@@ -44,7 +41,6 @@ In the {{uptime-app}}, you can monitor the status of network endpoints using the
 :::
 
 To set up your first monitor, refer to [Get started with Uptime](get-started-with-uptime.md).
-
 
 ## TLS Certificates [view-certificate-status]
 

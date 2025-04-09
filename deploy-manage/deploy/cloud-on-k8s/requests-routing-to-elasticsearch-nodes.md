@@ -6,9 +6,9 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-traffic-splitting.html
 ---
 
-# Requests routing to Elasticsearch nodes [k8s-traffic-splitting]
+# Requests routing to {{es}} nodes [k8s-traffic-splitting]
 
-The default Kubernetes service created by ECK, named `<cluster_name>-es-http`, is configured to include all the Elasticsearch nodes in that cluster. This configuration is good to get started and is adequate for most use cases. However, if you are operating an Elasticsearch cluster with [different node types](elasticsearch://reference/elasticsearch/configuration-reference/node-settings.md) and want control over which nodes handle which types of traffic, you should create additional Kubernetes services yourself.
+The default Kubernetes service created by ECK, named `<cluster_name>-es-http`, is configured to include all the {{es}} nodes in that cluster. This configuration is good to get started and is adequate for most use cases. However, if you are operating an {{es}} cluster with [different node types](elasticsearch://reference/elasticsearch/configuration-reference/node-settings.md) and want control over which nodes handle which types of traffic, you should create additional Kubernetes services yourself.
 
 As an alternative, you can use features provided by third-party software such as service meshes and ingress controllers to achieve more advanced traffic management configurations. Check the [recipes directory](https://github.com/elastic/cloud-on-k8s/tree/2.16/config/recipes) in the ECK source repository for a few examples.
 
@@ -19,7 +19,7 @@ If ingress configuration is challenging or unsupported in your environment, cons
 :::
 
 
-The service configurations shown in these sections are based on the following Elasticsearch cluster definition:
+The service configurations shown in these sections are based on the following {{es}} cluster definition:
 
 ```yaml
 apiVersion: elasticsearch.k8s.elastic.co/v1
@@ -64,7 +64,7 @@ spec:
 
 ## Create services for exposing different node types [k8s-traffic-splitting-by-node-type]
 
-The following examples illustrate how to create services for accessing different types of Elasticsearch nodes. The procedure for exposing services publicly is the same as described in [Allow public access](accessing-services.md#k8s-allow-public-access).
+The following examples illustrate how to create services for accessing different types of {{es}} nodes. The procedure for exposing services publicly is the same as described in [Allow public access](accessing-services.md#k8s-allow-public-access).
 
 $$$k8s-traffic-splitting-coordinating-nodes$$$
 
@@ -124,7 +124,7 @@ spec:
 
 ## Specify a custom service in elasticsearchRef [k8s-traffic-splitting-with-service-name]
 
-You can then use your custom service in the `elasticsearchRef` element when specifying connections between Elasticsearch and other stack applications. This is an example on how to target only coordinating node from Kibana:
+You can then use your custom service in the `elasticsearchRef` element when specifying connections between {{es}} and other stack applications. This is an example on how to target only coordinating node from {{kib}}:
 
 ```yaml
 apiVersion: kibana.k8s.elastic.co/v1

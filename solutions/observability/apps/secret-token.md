@@ -11,7 +11,6 @@ applies_to:
 Secret tokens are sent as plain-text, so they only provide security when used in combination with [TLS](apm-agent-tls-communication.md).
 ::::
 
-
 When defined, secret tokens are used to authorize requests to the APM Server. Both the {{apm-agent}} and APM Server must be configured with the same secret token for the request to be accepted.
 
 To secure the communication between APM agents and the APM Server with a secret token:
@@ -24,8 +23,6 @@ To secure the communication between APM agents and the APM Server with a secret 
 Secret tokens are not applicable for the RUM Agent, as there is no way to prevent them from being publicly exposed.
 ::::
 
-
-
 ## Create a secret token [apm-create-secret-token]
 
 % This should be checked and updated, it doesn't looks like it's there by default vv
@@ -33,7 +30,6 @@ Secret tokens are not applicable for the RUM Agent, as there is no way to preven
 ::::{note}
 {{ech}} and {{ece}} deployments provision a secret token when the deployment is created. The secret token can be found and reset in the {{ecloud}} Console under the deployment's **APM & Fleet** page.
 ::::
-
 
 :::::::{tab-set}
 

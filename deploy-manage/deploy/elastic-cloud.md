@@ -7,11 +7,11 @@ mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/intro.html
 ---
 
-# Elastic Cloud [intro]
+# {{ecloud}} [intro]
 
 {{ecloud}} allows you to centrally manage [hosted deployments](elastic-cloud/cloud-hosted.md) of the {{stack}} and [serverless projects](elastic-cloud/serverless.md) for your Observability, Security, and Search use cases. 
 
-These hosted deployments and serverless projects are hosted on Elastic Cloud, through the cloud provider and regions of your choice, and are tied to your organization account.
+These hosted deployments and serverless projects are hosted on {{ecloud}}, through the cloud provider and regions of your choice, and are tied to your organization account.
 
 You can check the operational status of {{ecloud}} at any time from [status.elastic.co](https://status.elastic.co/).
 
@@ -35,7 +35,21 @@ For more information, refer to [](/deploy-manage/cloud-organization.md).
 
 ## Compare {{ech}} and {{serverless-short}} [general-what-is-serverless-elastic-differences-between-serverless-projects-and-hosted-deployments-on-ecloud]
 
-Refer to [Compare Cloud Hosted and Serverless](/deploy-manage/deploy/elastic-cloud/differences-from-other-elasticsearch-offerings.md) for a detailed comparison between {{ech}} deployments and {{serverless-short}} projects.
+You can have multiple hosted deployments and serverless projects in the same {{ecloud}} organization, and each deployment type has its own specificities.
+
+
+| Option | Serverless | Hosted |
+| --- | --- | --- |
+| **Cluster management** | Fully managed by Elastic. | You provision and manage your hosted clusters. Shared responsibility with Elastic. |
+| **Scaling** | Autoscales out of the box. | Manual scaling or autoscaling available for you to enable. |
+| **Upgrades** | Automatically performed by Elastic. | You choose when to upgrade. |
+| **Pricing** | Individual per project type and based on your usage. | Based on deployment size and subscription level. |
+| **Performance** | Autoscales based on your usage. | Manual scaling. |
+| **Solutions** | Single solution per project. | Full {{stack}} per deployment. |
+| **User management** | {{ecloud}}-managed users. | {{ecloud}}-managed users and native {{kib}} users. |
+| **API support** | Subset of [APIs](https://www.elastic.co/docs/api). | All Elastic APIs. |
+| **Backups** | Projects automatically backed up by Elastic. | Your responsibility with Snapshot & Restore. |
+| **Data retention** | Editable on data streams. | Index Lifecycle Management. |
 
 ## APIs
 

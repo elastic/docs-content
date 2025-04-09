@@ -19,12 +19,9 @@ See the [{{fleet}} and {{agent}} Guide](/reference/fleet/data-streams.md) to lea
 
 ::::
 
-
-
 ## Data stream naming scheme [apm-data-streams-naming-scheme]
 
 APM data follows the `<type>-<dataset>-<namespace>` naming scheme. The `type` and `dataset` are predefined by the {{es}} apm-data plugin, but the `namespace` is your opportunity to customize how different types of data are stored in {{es}}. There is no recommendation for what to use as your namespace—​it is intentionally flexible. For example, you might create namespaces for each of your environments, like `dev`, `prod`, `production`, etc. Or, you might create namespaces that correspond to strategic business units within your organization.
-
 
 ## APM data streams [apm-data-streams-list]
 
@@ -35,7 +32,6 @@ Traces
 
     * Application traces: `traces-apm-<namespace>`
     * RUM and iOS agent application traces: `traces-apm.rum-<namespace>`
-
 
 Metrics
 :   Metrics include application-based metrics, aggregation metrics, and basic system metrics. Metrics are stored in the following data streams:
@@ -57,23 +53,18 @@ Metrics
             '\\', '/', '*', '?', '"', '<', '>', '|', ' ', ',', '#', ':', '-'
             ```
 
-
         ::::
-
 
         ::::{important}
         Additional storage efficiencies provided by [Synthetic `_source`](elasticsearch://reference/elasticsearch/mapping-reference/mapping-source-field.md) are available to users with an [appropriate license](https://www.elastic.co/subscriptions).
 
         ::::
 
-
 Logs
 :   Logs include application error events and application logs. Logs are stored in the following data streams:
 
     * APM error/exception logging: `logs-apm.error-<namespace>`
     * Applications UI logging: `logs-apm.app.<service.name>-<namespace>`
-
-
 
 ## APM data stream rerouting [apm-data-stream-rerouting]
 
@@ -94,10 +85,9 @@ For example, consider traces that would originally be indexed to `traces-apm-def
 ]
 ```
 
-To find other ingest pipelines from the {{es}} apm-data plugin that are called by default, go to **Stack management** → **Ingest pipelines** [in Kibana](../../../deploy-manage/index.md) and search for `apm`. Default APM ingest pipelines will follow the pattern `*-apm*@default-pipeline`.
+To find other ingest pipelines from the {{es}} apm-data plugin that are called by default, go to **Stack management** → **Ingest pipelines** [in Kibana](/deploy-manage/index.md) and search for `apm`. Default APM ingest pipelines will follow the pattern `*-apm*@default-pipeline`.
 
 For more custom APM ingest pipeline guides, see [parse data using ingest pipelines](parse-data-using-ingest-pipelines.md).
-
 
 ## What’s next? [apm-data-streams-next]
 

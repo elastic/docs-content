@@ -23,6 +23,3 @@ Learn how to view and interpret data in the {{uptime-app}}:
 * [Analyze monitors](analyze-monitors.md)
 * [Inspect uptime duration anomalies](inspect-uptime-duration-anomalies.md)
 
-
-
-

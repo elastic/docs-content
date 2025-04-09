@@ -16,7 +16,6 @@ Use [Synthetic monitoring](/solutions/observability/apps/synthetic-monitoring.md
 
 Each monitor location is modeled, and when a monitor runs for an unusual amount of time, at a particular time, an anomaly is recorded and highlighted on the **Monitor duration** chart.
 
-
 ## Enable uptime duration {{anomaly-detect}} [uptime-anomaly-detection]
 
 Create a {{ml}} job to detect anomalous monitor duration rates automatically.

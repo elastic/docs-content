@@ -6,10 +6,7 @@ applies_to:
   stack: all
 ---
 
-
-
 # Real user monitoring (User Experience) [user-experience]
-
 
 {{user-experience}} provides a way to quantify and analyze the perceived performance of your web application. Unlike testing environments, {{user-experience}} data reflects real-world user experiences. Drill down further by looking at data by URL, operating system, browser, and location — all of which can impact how your application performs on end-user machines.
 
@@ -20,11 +17,9 @@ Powered by the APM Real user monitoring (RUM) agent, all it takes is a few lines
 :screenshot:
 :::
 
-
 ## Why is {{user-experience}} important? [why-user-experience]
 
 Search engines are placing increasing importance on user experience when organically ranking websites. Elastic makes it easy to view your website data in the context of Google Core Web Vitals — metrics that score three key areas of user experience: loading performance, visual stability, and interactivity. These Core Web Vitals are set to become the main performance measurement in Google ranking factors. If you’re a content-based site that wants to appear in the “Top Stories” section of Google search results, you must have good Core Web Vitals.
-
 
 ## How does {{user-experience}} work? [how-user-experience-works]
 
@@ -32,9 +27,7 @@ Search engines are placing increasing importance on user experience when organic
 
 The RUM agent can be installed as a dependency to your application, or with just a few lines of JavaScript. It only takes a few minutes to [get started](real-user-monitoring-rum.md).
 
-
 ## {{user-experience}} in {{kib}} [user-experience-tab]
-
 
 ### Page load duration [user-experience-page-load]
 
@@ -46,7 +39,6 @@ You won’t be able to fix any problems from viewing these metrics alone, but yo
 :alt: {{user-experience}} page load duration metrics
 :screenshot:
 :::
-
 
 ### {{user-experience}} metrics [user-experience-metrics]
 
@@ -78,9 +70,7 @@ Total long tasks duration
 
 ::::
 
-
 These metrics tell an important story about how users experience your website. But developers shouldn’t have to become experts at interpreting and acting on these signals; they should spend their time reacting to the opportunities that these metrics present. For that reason (and many others), Elastic has embraced Google Core Web Vitals.
-
 
 #### Core Web Vitals [user-experience-core-vitals]
 
@@ -101,10 +91,9 @@ Previous {{kib}} versions included the metric [First input delay (FID)](https://
 | **RUM agent version ≥ 5.16.0** | INP data will be visible. | FID data will be visible. |
 | **RUM agent version < 5.16.0** | The INP section will be empty. | FID data will be visible. |
 
-RUM agent version ≥ 5.16.0 will continue to collect FID metrics so, while FID metrics are not shown in the User Experience app in {{kib}} versions 8.12 and later, you can choose to visualize FID metrics in a [custom dashboard](../../../explore-analyze/dashboards/create-dashboard-of-panels-with-web-server-data.md) or using [Lens](../../../explore-analyze/visualize/lens.md).
+RUM agent version ≥ 5.16.0 will continue to collect FID metrics so, while FID metrics are not shown in the User Experience app in {{kib}} versions 8.12 and later, you can choose to visualize FID metrics in a [custom dashboard](/explore-analyze/dashboards/create-dashboard-of-panels-with-web-server-data.md) or using [Lens](/explore-analyze/visualize/lens.md).
 
 ::::
-
 
 Cumulative layout shift (CLS)
 :   Visual stability. Is content moving around because of `async` resource loading or dynamic content additions? CLS measures these frustrating unexpected layout shifts. To provide a good user experience, Google recommends a CLS score of less than `.1`. <sup class="footnote">[<a id="_footnoteref_7" class="footnote" href="#_footnotedef_7" title="View footnote.">7</a>]</sup>(https://web.dev/cls/)]
@@ -112,8 +101,6 @@ Cumulative layout shift (CLS)
 ::::{tip}
 [Beginning in May 2021](https://webmasters.googleblog.com/2020/11/timing-for-page-experience.md), Google will start using Core Web Vitals as part of their ranking algorithm and will open up the opportunity for websites to rank in the "top stories" position without needing to leverage [AMP](https://amp.dev/). <sup class="footnote">[<a id="_footnoteref_8" class="footnote" href="#_footnotedef_8" title="View footnote.">8</a>]</sup>(https://webmasters.googleblog.com/2020/05/evaluating-page-experience.md)]
 ::::
-
-
 
 ### Load/view distribution [user-experience-distribution]
 
@@ -126,7 +113,6 @@ Don’t forget, this data also influences search engine page rankings and placem
 :screenshot:
 :::
 
-
 ### Error breakdown [user-experience-errors]
 
 JavaScript errors can be detrimental to a users experience on your website. But variation in users' software and hardware makes it nearly impossible to test for every combination. And, as JavaScript continues to get more and more complex, the need for user experience monitoring and error reporting only increases. Error monitoring makes this visible by surfacing JavaScript errors that are occurring on your website in production.
@@ -138,11 +124,9 @@ JavaScript errors can be detrimental to a users experience on your website. But 
 
 Open error messages in APM for additional analysis tools, like occurrence rates, transaction ids, user data, and more.
 
-
 ### Feedback and troubleshooting [user-experience-feedback]
 
 Have a question? Want to leave feedback? Visit the [{{user-experience}} discussion forum](https://discuss.elastic.co/c/observability/user-experience/87).
-
 
 #### References [user-experience-references]
 

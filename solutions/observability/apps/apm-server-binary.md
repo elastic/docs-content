@@ -9,7 +9,6 @@ applies_to:
 
 This guide will explain how to set up and configure the APM Server binary.
 
-
 ## Prerequisites [_prerequisites_7]
 
 First, see the [Elastic Support Matrix](https://www.elastic.co/support/matrix) for information about supported operating systems and product compatibility.
@@ -19,19 +18,17 @@ You’ll need:
 * **{{es}}** for storing and indexing data.
 * **{{kib}}** for visualizing with the Applications UI.
 
-We recommend you use the same version of {{es}}, {{kib}}, and APM Server. See [Installing the {{stack}}](../../../get-started/the-stack.md) for more information about installing these products.
+We recommend you use the same version of {{es}}, {{kib}}, and APM Server. See [Installing the {{stack}}](/get-started/the-stack.md) for more information about installing these products.
 
 :::{image} /solutions/images/observability-apm-architecture-diy.png
 :alt: Install Elastic APM yourself
 :::
 
-
 ## Step 1: Install [apm-installing]
 
 ::::{note}
-**Before you begin**: If you haven’t installed the {{stack}}, do that now. See [Learn how to install the {{stack}} on your own hardware](../../../get-started/the-stack.md).
+**Before you begin**: If you haven’t installed the {{stack}}, do that now. See [Learn how to install the {{stack}} on your own hardware](/get-started/the-stack.md).
 ::::
-
 
 To download and install APM Server, use the commands below that work with your system. If you use `apt` or `yum`, you can [install APM Server from our repositories](#apm-setup-repositories) to update to the newest version more easily.
 
@@ -87,7 +84,6 @@ $$$apm-docker$$$
 
 See [Running on Docker](#apm-running-on-docker) for deploying Docker containers.
 
-
 ## Step 2: Set up and configure [apm-server-configuration]
 
 Configure APM by editing the `apm-server.yml` configuration file. The location of this file varies by platform—​see the [Installation layout](installation-layout.md) for help locating it.
@@ -107,9 +103,7 @@ output.elasticsearch:
 2. The {{es}} `host:port` to connect to.
 3. This example uses basic authentication. The user provided here needs the privileges required to publish events to {{es}}. To create a dedicated user for this role, see [Create a *writer* role](create-assign-feature-roles-to-apm-server-users.md#apm-privileges-to-publish-events).
 
-
 All available configuration options are outlined in [configuring APM Server](configure-apm-server.md).
-
 
 ## Step 3: Start [apm-server-starting]
 
@@ -125,13 +119,11 @@ To start APM Server, run:
 The `-e` [global flag](apm-server-command-reference.md#apm-global-flags) enables logging to stderr and disables syslog/file output. Remove this flag if you’ve enabled logging in the configuration file. For Linux systems, see [APM Server status and logs](apm-server-systemd.md).
 ::::
 
-
 You should see APM Server start up. It will try to connect to {{es}} on localhost port `9200` and expose an API to agents on port `8200`. You can change the defaults in `apm-server.yml` or by supplying a different address on the command line:
 
 ```bash
 ./apm-server -e -E output.elasticsearch.hosts=ElasticsearchAddress:9200 -E apm-server.host=localhost:8200
 ```
-
 
 ### Debian Package / RPM [apm-running-deb-rpm]
 
@@ -144,7 +136,6 @@ sudo -u apm-server apm-server [<argument...>]
 ```
 
 By default, APM Server loads its configuration file from `/etc/apm-server/apm-server.yml`. See the [deb & rpm default paths](installation-layout.md) for a full directory layout.
-
 
 ## Step 4: Install APM agents [apm-next-steps]
 
@@ -164,7 +155,6 @@ plugins {
 ```
 
 1. The Elastic plugin declaration must be added below the Android app plugin declaration (`com.android.application`) and below the Kotlin plugin declaration (if used).
-
 
 **2. Configure the agent**
 
@@ -195,11 +185,9 @@ elasticApm {
 4. Defaults to null. More info on API Keys [here](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-api-key).
 5. Defaults to null.
 
-
 ::::{note}
 When both `secretToken` and `apiKey` are provided, apiKey has priority and secretToken is ignored.
 ::::
-
 
 **3. Initialize the agent**
 
@@ -219,7 +207,6 @@ class MyApp extends android.app.Application {
 ```
 
 1. Initialize the Elastic APM agent once.
-
 
 All that’s left is to compile and run your application. That’s it!
 
@@ -328,7 +315,6 @@ struct MyApp: App {
 1. The APM integration host and port
 2. Secret token for APM integration connection
 
-
 If you’re not using `SwiftUI`, you can alternatively add the same thing to your `AppDelegate.swift` file:
 
 ```swift
@@ -350,7 +336,6 @@ var config = AgentConfigBuilder()
 1. The APM integration host and port
 2. Secret token for APM integration connection
 
-
 **Learn more in the agent reference**
 
 Read more in the [APM iOS Agent Reference](apm-agent-ios://reference/index.md).
@@ -369,7 +354,6 @@ The first step in getting started with the Elastic APM Java agent is to retrieve
     ```bash
     curl -o 'elastic-apm-agent.jar' -L 'https://oss.sonatype.org/service/local/artifact/maven/redirect?r=releases&g=co.elastic.apm&a=elastic-apm-agent&v=LATEST'
     ```
-
 
 **2. Add `-javaagent` flag**
 
@@ -479,7 +463,6 @@ If you can’t find your distribution, you can install the agent by building it 
 The agent is currently only available for Linux operating system.
 ::::
 
-
 1. Download the agent source from [https://github.com/elastic/apm-agent-php/](https://github.com/elastic/apm-agent-php/).
 2. Execute the following commands to build the agent and install it:
 
@@ -560,7 +543,6 @@ MIDDLEWARE = (
 )
 ```
 
-
 Flask
 :   **1. Install the {{apm-agent}}**
 
@@ -597,7 +579,6 @@ app.config['ELASTIC_APM'] = {
 apm = ElasticAPM(app)
 ```
 
-
 **Learn more in the agent reference**
 
 * [Supported technologies](apm-agent-python://reference/supported-technologies.md)
@@ -631,7 +612,6 @@ secret_token: ''
 # Set custom APM integration host and port (default: http://localhost:8200)
 server_url: 'http://localhost:8200'
 ```
-
 
 Rack
 :   For Rack or a compatible framework, like Sinatra, include the middleware in your app and start the agent.
@@ -673,7 +653,6 @@ secret_token: ''
 # Set custom APM integration host and port (default: http://localhost:8200)
 server_url: 'http://localhost:8200'
 ```
-
 
 **Learn more in the agent reference**
 
@@ -770,7 +749,6 @@ Once you have at least one {{apm-agent}} sending data to APM Server, you can sta
 :screenshot:
 :::
 
-
 ## Repositories for APT and YUM [apm-setup-repositories]
 
 We have repositories available for APT and YUM-based distributions. Note that we provide binary packages, but no source packages.
@@ -782,16 +760,13 @@ We use the PGP key [D88E42B4](https://pgp.mit.edu/pks/lookup?op=vindex&search=0x
 ```
 to sign all our packages. It is available from [https://pgp.mit.edu](https://pgp.mit.edu).
 
-
 ### APT [_apt]
 
 Version 9.0.0-beta1 of apm-server has not yet been released.
 
-
 ### YUM [_yum]
 
 Version 9.0.0-beta1 of apm-server has not yet been released.
-
 
 ## Run APM Server on Docker [apm-running-on-docker]
 
@@ -799,8 +774,7 @@ Docker images for APM Server are available from the Elastic Docker registry. The
 
 A list of all published Docker images and tags is available at [www.docker.elastic.co](https://www.docker.elastic.co).
 
-These images are free to use under the Elastic license. They contain open source and free commercial features and access to paid commercial features. [Start a 30-day trial](../../../deploy-manage/license/manage-your-license-in-self-managed-cluster.md) to try out all of the paid commercial features. See the [Subscriptions](https://www.elastic.co/subscriptions) page for information about Elastic license levels.
-
+These images are free to use under the Elastic license. They contain open source and free commercial features and access to paid commercial features. [Start a 30-day trial](/deploy-manage/license/manage-your-license-in-self-managed-cluster.md) to try out all of the paid commercial features. See the [Subscriptions](https://www.elastic.co/subscriptions) page for information about Elastic license levels.
 
 ### Pull the image [_pull_the_image]
 
@@ -808,11 +782,9 @@ Obtaining APM Server for Docker is as simple as issuing a `docker pull` command 
 
 However, version 9.0.0-beta1 of APM Server has not yet been released, so no Docker image is currently available for this version.
 
-
 ### Configure APM Server on Docker [_configure_apm_server_on_docker]
 
 The Docker image provides several methods for configuring APM Server. The conventional approach is to provide a configuration file via a volume mount, but it’s also possible to create a custom image with your configuration included.
-
 
 #### Example configuration file [_example_configuration_file]
 
@@ -821,7 +793,6 @@ Download this example configuration file as a starting point:
 ```sh
 curl -L -O https://raw.githubusercontent.com/elastic/apm-server/master/apm-server.docker.yml
 ```
-
 
 #### Volume-mounted configuration [_volume_mounted_configuration]
 
@@ -841,12 +812,9 @@ docker run -d \
 1. Substitute your {{es}} hosts and ports.
 2. If you are using {{ech}}, replace the `-E output.elasticsearch.hosts` line with the Cloud ID and elastic password using the syntax shown earlier.
 
-
-
 #### Customize your configuration [_customize_your_configuration]
 
 The `apm-server.docker.yml` downloaded earlier should be customized for your environment. See [Configure APM Server](configure-apm-server.md) for more details. Edit the configuration file and customize it to match your environment then re-deploy your APM Server container.
-
 
 #### Custom image configuration [_custom_image_configuration]
 

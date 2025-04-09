@@ -21,7 +21,6 @@ To find correlations:
 
 Select a service on the **Services** page in the Applications UI then select a transaction group from the **Transactions** tab.
 
-
 :::
 
 :::{tab-item} Serverless
@@ -36,10 +35,9 @@ Select a service on the **Services** page in the Applications UI then select a t
 
 ::::
 
-:::: {note}
+::::{note}
 Active queries *are* applied to correlations.
 ::::
-
 
 ## Find high transaction latency correlations [observability-apm-find-transaction-latency-and-failure-correlations-find-high-transaction-latency-correlations]
 
@@ -62,7 +60,6 @@ If a correlated attribute seems noteworthy, use the **Filter** quick links:
 You can also click the icon beside the field name to view and filter its most popular values.
 
 In this example screenshot, there are transactions that are skewed to the right with slower response times than the overall latency distribution. If you select the `+` filter in the appropriate row of the table, it creates a new query in the Applications UI for transactions with this attribute. With the "noise" now filtered out, you can begin viewing sample traces to continue your investigation.
-
 
 ## Find failed transaction correlations [correlations-error-rate]
 

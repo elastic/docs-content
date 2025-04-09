@@ -26,5 +26,5 @@ In this section, you'll learn the following about using ECE platform monitoring:
 For information about troubleshooting {{ECE}} using these metrics, and guidance on capturing other diagnostic information like heap dumps and thread dumps, refer to [](/troubleshoot/deployments/cloud-enterprise/cloud-enterprise.md).
 
 ::::{important} 
-The `logging-and-metrics` deployment is for use by your ECE installation only. You must not use this deployment to index monitoring data from your own Elasticsearch clusters or use it to index data from Beats and Logstash. Always create a separate, dedicated monitoring deployment for your own use.
+The `logging-and-metrics` deployment is for use by your ECE installation only. You must not use this deployment to index monitoring data from your own {{es}} clusters or use it to index data from Beats and Logstash. Always create a separate, dedicated monitoring deployment for your own use.
 ::::

@@ -15,8 +15,6 @@ If you accidentally ingest sensitive data, follow these steps to remove or redac
     * [Redact specific fields](#apm-redact-field-data)
     * [Delete {{es}} documents](#apm-delete-doc-data)
 
-
-
 ## Redact specific fields [apm-redact-field-data]
 
 To redact sensitive data in a specific field, use the [update by query API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-update-by-query).
@@ -63,13 +61,11 @@ POST /logs-apm.error-default/_update_by_query
 
 See [update by query API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-update-by-query) for more information and examples.
 
-
 ## Delete {{es}} documents [apm-delete-doc-data]
 
 ::::{warning}
 This will permanently delete your data. You should test your queries with the [search API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search) prior to deleting data.
 ::::
-
 
 To delete an {{es}} document, you can use the [delete by query API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-delete-by-query).
 

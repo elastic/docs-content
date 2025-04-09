@@ -13,11 +13,3 @@ The [storage and sizing guide](storage-sizing-guide.md) attempts to define a "ty
 
 In addition, the Applications UI makes it easy to visualize your APM data usage with [storage explorer](storage-explorer.md). Storage explorer allows you to analyze the storage footprint of each of your services to see which are producing large amounts of data—​so you can better reduce the data you’re collecting or forecast and prepare for future storage needs.
 
-
-
-
-
-
-
-
-

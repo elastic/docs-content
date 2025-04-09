@@ -2,27 +2,27 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-custom-repository.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-custom-repository.html
-navigation_title: "Elastic Cloud Hosted"
+navigation_title: "{{ech}}"
 applies_to:
   deployment:
     ess:
 ---
 
-# Manage snapshot repositories in Elastic Cloud Hosted
+# Manage snapshot repositories in {{ech}}
 
-Snapshot repositories allow you to back up and restore your Elasticsearch data efficiently. In Elastic Cloud Hosted, repositories are automatically registered and managed within your deployment, ensuring data security, long-term archiving, and seamless recovery.
+Snapshot repositories allow you to back up and restore your {{es}} data efficiently. In {{ech}}, repositories are automatically registered and managed within your deployment, ensuring data security, long-term archiving, and seamless recovery.
 
-By default, Elastic Cloud Hosted takes a snapshot of all the indices in your Elasticsearch cluster every 30 minutes. You can set a different snapshot interval if needed for your environment. You can also take snapshots on demand, without having to wait for the next interval. Taking a snapshot on demand does not affect the retention schedule for existing snapshots; it just adds an additional snapshot to the repository. This might be helpful if you are about to make a deployment change and you don’t have a current snapshot.
+By default, {{ech}} takes a snapshot of all the indices in your {{es}} cluster every 30 minutes. You can set a different snapshot interval if needed for your environment. You can also take snapshots on demand, without having to wait for the next interval. Taking a snapshot on demand does not affect the retention schedule for existing snapshots; it just adds an additional snapshot to the repository. This might be helpful if you are about to make a deployment change and you don’t have a current snapshot.
 
-Use Kibana to manage your snapshots. In Kibana, you can set up additional repositories where the snapshots are stored, other than the one currently managed by Elastic Cloud Hosted. You can view and delete snapshots, and configure a snapshot lifecycle management (SLM) policy to automate when snapshots are created and deleted.
+Use {{kib}} to manage your snapshots. In {{kib}}, you can set up additional repositories where the snapshots are stored, other than the one currently managed by {{ech}}. You can view and delete snapshots, and configure a snapshot lifecycle management (SLM) policy to automate when snapshots are created and deleted.
 
 Snapshots back up only open indices. If you close an index, it is not included in snapshots and you will not be able to restore the data.
 
 A snapshot taken using the default `found-snapshots` repository can only be restored to deployments in the same region. If you need to restore snapshots across regions, create the destination deployment, connect to the custom repository, and then restore from a snapshot.
 
-From within Elastic Cloud Hosted, you can restore a snapshot from a different deployment in the same region.
+From within {{ech}}, you can restore a snapshot from a different deployment in the same region.
 
-## Prerequisites for Elastic Cloud Hosted
+## Prerequisites for {{ech}}
 
 To use Kibana's Snapshot and Restore feature, you must have the following permissions:
 
@@ -33,16 +33,16 @@ To register a snapshot repository, the cluster’s global metadata must be writa
 
 ## Considerations
 
-When working with snapshot repositories in Elastic Cloud Hosted, keep the following in mind:
+When working with snapshot repositories in {{ech}}, keep the following in mind:
 
-- Each snapshot repository is separate and independent. Elasticsearch doesn’t share data between repositories.
+- Each snapshot repository is separate and independent. {{es}} doesn’t share data between repositories.
 - Clusters should only register a particular snapshot repository bucket once. If you register the same snapshot repository with multiple clusters, only one cluster should have write access to the repository. On other clusters, register the repository as read-only.
-- This prevents multiple clusters from writing to the repository at the same time and corrupting the repository’s contents. It also prevents Elasticsearch from caching the repository’s contents, which means that changes made by other clusters will become visible straight away.
-- When upgrading Elasticsearch to a newer version, you can continue to use the same repository you were using before the upgrade. If the repository is accessed by multiple clusters, they should all have the same version. Once a repository has been modified by a particular version of Elasticsearch, it may not work correctly when accessed by older versions. However, you will be able to recover from a failed upgrade by restoring a snapshot taken before the upgrade into a cluster running the pre-upgrade version, even if you have taken more snapshots during or after the upgrade.
+- This prevents multiple clusters from writing to the repository at the same time and corrupting the repository’s contents. It also prevents {{es}} from caching the repository’s contents, which means that changes made by other clusters will become visible straight away.
+- When upgrading {{es}} to a newer version, you can continue to use the same repository you were using before the upgrade. If the repository is accessed by multiple clusters, they should all have the same version. Once a repository has been modified by a particular version of {{es}}, it may not work correctly when accessed by older versions. However, you will be able to recover from a failed upgrade by restoring a snapshot taken before the upgrade into a cluster running the pre-upgrade version, even if you have taken more snapshots during or after the upgrade.
 
-## Elastic Cloud Hosted snapshot repository types [ess-repo-types]
+## {{ech}} snapshot repository types [ess-repo-types]
 
-[Elastic Cloud Hosted deployments](https://cloud.elastic.co/registration?page=docs&placement=docs-body) automatically register the [`found-snapshots`](../snapshot-and-restore.md) repository. {{ech}} uses this repository and the `cloud-snapshot-policy` to take periodic snapshots of your cluster. You can also use the `found-snapshots` repository for your own [{{slm-init}} policies](create-snapshots.md#automate-snapshots-slm) or to store searchable snapshots.
+[{{ech}} deployments](https://cloud.elastic.co/registration?page=docs&placement=docs-body) automatically register the [`found-snapshots`](../snapshot-and-restore.md) repository. {{ech}} uses this repository and the `cloud-snapshot-policy` to take periodic snapshots of your cluster. You can also use the `found-snapshots` repository for your own [{{slm-init}} policies](create-snapshots.md#automate-snapshots-slm) or to store searchable snapshots.
 
 The `found-snapshots` repository is specific to each deployment. However, you can restore snapshots from another deployment’s `found-snapshots` repository if the deployments are under the same account and in the same region. See the Cloud [Snapshot and restore](../snapshot-and-restore.md) documentation to learn more.
 
@@ -53,9 +53,9 @@ The `found-snapshots` repository is specific to each deployment. However, you ca
 * [AWS S3](ec-aws-custom-repository.md)
 * [Source-only](source-only-repository.md)
 
-## Register a snapshot repository in Elastic Cloud Hosted [register-snapshot-repos-ech]
+## Register a snapshot repository in {{ech}} [register-snapshot-repos-ech]
 
-In **Elastic Cloud Hosted**, snapshot repositories are automatically registered for you, but you can create additional repositories if needed.
+In **{{ech}}**, snapshot repositories are automatically registered for you, but you can create additional repositories if needed.
 
 * {{kib}}'s **Snapshot and Restore** feature
 * {{es}}'s [snapshot repository management APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-snapshot)

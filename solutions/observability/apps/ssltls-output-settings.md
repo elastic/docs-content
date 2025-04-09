@@ -14,7 +14,6 @@ These configuration options are only relevant to APM Server binary users. Fleet-
 
 ::::
 
-
 You can specify SSL/TLS options with any output that supports SSL, like {{es}}, {{ls}}, or Kafka. Example output config with SSL/TLS enabled:
 
 ```yaml
@@ -30,11 +29,9 @@ There are a number of SSL/TLS configuration options available to you:
 * [Client configuration options](#apm-ssl-client-config)
 * [Server configuration options](#apm-ssl-server-config)
 
-
 ## Common configuration options [apm-ssl-common-config]
 
 Common SSL configuration options can be used in both client and server configurations. You can specify the following options in the `ssl` section of each subsystem that supports SSL.
-
 
 ### `enabled` [apm-enabled]
 
@@ -45,14 +42,11 @@ SSL settings are disabled if either `enabled` is set to `false` or the `ssl` sec
 
 ::::
 
-
-
 ### `supported_protocols` [apm-supported-protocols]
 
 List of allowed SSL/TLS versions. If SSL/TLS server decides for protocol versions not configured, the connection will be dropped during or after the handshake. The setting is a list of allowed protocol versions: `SSLv3`, `TLSv1` for TLS version 1.0, `TLSv1.0`, `TLSv1.1`, `TLSv1.2`, and `TLSv1.3`.
 
 The default value is `[TLSv1.1, TLSv1.2, TLSv1.3]`.
-
 
 ### `cipher_suites` [apm-cipher-suites]
 
@@ -97,7 +91,6 @@ Here is a list of acronyms used in defining the cipher suites:
 * RSA: Cipher suites using RSA.
 * SHA, SHA256, SHA384: Cipher suites using SHA-1, SHA-256 or SHA-384.
 
-
 ### `curve_types` [apm-curve-types]
 
 The list of curve types for ECDHE (Elliptic Curve Diffie-Hellman ephemeral key exchange).
@@ -109,7 +102,6 @@ The following elliptic curve types are available:
 * P-521
 * X25519
 
-
 ### `ca_sha256` [apm-ca-sha256]
 
 This configures a certificate pin that you can use to ensure that a specific certificate is part of the verified chain.
@@ -120,12 +112,9 @@ The pin is a base64 encoded string of the SHA-256 of the certificate.
 This check is not a replacement for the normal SSL validation, but it adds additional validation. If this option is used with  `verification_mode` set to `none`, the check will always fail because it will not receive any verified chains.
 ::::
 
-
-
 ## Client configuration options [apm-ssl-client-config]
 
 You can specify the following options in the `ssl` section of each subsystem that supports SSL.
-
 
 ### `certificate_authorities` [apm-client-certificate-authorities]
 
@@ -157,7 +146,6 @@ certificate_authorities:
     -----END CERTIFICATE-----
 ```
 
-
 ### `certificate: "/etc/pki/client/cert.pem"` [apm-client-certificate]
 
 The path to the certificate for SSL client authentication is only required if `client_authentication` is specified. If the certificate is not specified, client authentication is not available. The connection might fail if the server requests client authentication. If the SSL server does not require client authentication, the certificate will be loaded, but not requested or used by the server.
@@ -186,7 +174,6 @@ certificate: |
     sxSmbIUfc2SGJGCJD4I=
     -----END CERTIFICATE-----
 ```
-
 
 ### `key: "/etc/pki/client/cert.key"` [apm-client-key]
 
@@ -224,11 +211,9 @@ key: |
     -----END PRIVATE KEY-----
 ```
 
-
 ### `key_passphrase` [apm-client-key-passphrase]
 
 The passphrase used to decrypt an encrypted key stored in the configured `key` file.
-
 
 ### `verification_mode` [apm-client-verification-mode]
 
@@ -248,12 +233,9 @@ Controls the verification of server certificates. Valid values are:
 
     The default value is `full`.
 
-
-
 ## Server configuration options [apm-ssl-server-config]
 
 You can specify the following options in the `ssl` section of each subsystem that supports SSL.
-
 
 ### `certificate_authorities` [apm-server-certificate-authorities]
 
@@ -285,7 +267,6 @@ certificate_authorities:
     -----END CERTIFICATE-----
 ```
 
-
 ### `certificate: "/etc/pki/server/cert.pem"` [apm-server-certificate]
 
 For server authentication, the path to the SSL authentication certificate must be specified for TLS. If the certificate is not specified, startup will fail.
@@ -314,7 +295,6 @@ certificate: |
     sxSmbIUfc2SGJGCJD4I=
     -----END CERTIFICATE-----
 ```
-
 
 ### `key: "/etc/pki/server/cert.key"` [apm-server-key]
 
@@ -352,11 +332,9 @@ key: |
     -----END PRIVATE KEY-----
 ```
 
-
 ### `key_passphrase` [apm-server-key-passphrase]
 
 The passphrase is used to decrypt an encrypted key stored in the configured `key` file.
-
 
 ### `verification_mode` [apm-server-verification-mode]
 
@@ -376,8 +354,6 @@ Controls the verification of client certificates. Valid values are:
 
     The default value is `full`.
 
-
-
 ### `renegotiation` [apm-server-renegotiation]
 
 This configures what types of TLS renegotiation are supported. The valid options are:
@@ -392,5 +368,4 @@ This configures what types of TLS renegotiation are supported. The valid options
 :   Allows a remote server to request renegotiation repeatedly.
 
     The default value is `never`.
-
 

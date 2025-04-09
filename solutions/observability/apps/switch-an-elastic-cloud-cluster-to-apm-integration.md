@@ -6,21 +6,16 @@ applies_to:
   stack:
 ---
 
-
-
 # Switch an Elastic Cloud cluster to the APM integration [apm-integration-upgrade-steps-ess]
-
 
 1. [Upgrade the {{stack}}](#apm-integration-upgrade-ess-1)
 2. [Switch to {{agent}}](#apm-integration-upgrade-ess-2)
 3. [Configure the APM integration](#apm-integration-upgrade-ess-3)
 4. [Scale APM and {{fleet}}](#apm-integration-upgrade-ess-4)
 
-
 ## Upgrade the {{stack}} [apm-integration-upgrade-ess-1]
 
-Use the {{ecloud}} Console to upgrade the {{stack}} to version 9.0.0-beta1. See the [Upgrade guide](../../../deploy-manage/upgrade/deployment-or-cluster.md) for details.
-
+Use the {{ecloud}} Console to upgrade the {{stack}} to version 9.0.0-beta1. See the [Upgrade guide](/deploy-manage/upgrade/deployment-or-cluster.md) for details.
 
 ## Switch to {{agent}} [apm-integration-upgrade-ess-2]
 
@@ -40,16 +35,13 @@ With a Superuser account, complete the following steps:
     :alt: {{agent}} settings migration
     :::
 
-
 {{ecloud}} will now create a {{fleet}} Server instance to contain the new APM integration, and then will shut down the old APM server instance. Within minutes your data should begin appearing in the Applications UI again.
-
 
 ## Configure the APM integration [apm-integration-upgrade-ess-3]
 
 You can now update settings that were removed during the upgrade. See [Configure APM Server](configure-apm-server.md) for a reference of all available settings.
 
 In {{kib}}, navigate to **Management** > **Fleet**. Select the **Elastic Cloud Agent Policy**. Next to the **Elastic APM** integration, select **Actions** > **Edit integration**.
-
 
 ## Scale APM and {{fleet}} [apm-integration-upgrade-ess-4]
 

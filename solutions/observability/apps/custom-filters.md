@@ -3,14 +3,19 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-custom-filter.html
 applies_to:
   stack:
+  serverless:
 ---
 
 # Custom filters [apm-custom-filter]
 
 Custom filters, including [ingest pipeline filters](#apm-filters-ingest-pipeline) and [APM agent filters](#apm-filters-in-agent), allow you to filter or redact APM data on ingestion.
 
-
 ## Ingest pipeline filters [apm-filters-ingest-pipeline]
+
+```{applies_to}
+stack:
+serverless: unavailable
+```
 
 Ingest pipelines specify a series of processors that transform data in a specific way. Transformation happens prior to indexing—​inflicting no performance overhead on the monitored application. Pipelines are a flexible and easy way to filter or obfuscate Elastic APM data.
 
@@ -23,8 +28,12 @@ Features of this approach:
 
 For a step-by-step example, refer to [Tutorial: Use an ingest pipeline to redact sensitive information](#apm-filters-ingest-pipeline-tutorial).
 
-
 ## APM agent filters [apm-filters-in-agent]
+
+```{applies_to}
+stack:
+serverless:
+```
 
 Some APM agents offer a way to manipulate or drop APM events *before* they are sent to APM Server.
 
@@ -41,8 +50,12 @@ Refer to the relevant agent’s documentation for more information and examples:
 * Python: [custom processors](apm-agent-python://reference/sanitizing-data.md).
 * Ruby: [`add_filter()`](apm-agent-ruby://reference/api-reference.md#api-agent-add-filter).
 
-
 ## Tutorial: Use an ingest pipeline to redact sensitive information [apm-filters-ingest-pipeline-tutorial]
+
+```{applies_to}
+stack:
+serverless: unavailable
+```
 
 Say you decide to [capture HTTP request bodies](built-in-data-filters.md#apm-filters-http-body) but quickly notice that sensitive information is being collected in the `http.request.body.original` field:
 
@@ -55,13 +68,11 @@ Say you decide to [capture HTTP request bodies](built-in-data-filters.md#apm-fil
 
 To obfuscate the passwords stored in the request body, you can use a series of [ingest processors](elasticsearch://reference/enrich-processor/index.md).
 
-
 ### Create a pipeline [_create_a_pipeline]
 
 ::::{tip}
 This tutorial uses the [Ingest APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-ingest), but it’s also possible to create a pipeline using the UI. In Kibana, go to **Stack Management** → **Ingest Pipelines** → **Create pipeline** → **New pipeline** or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 ::::
-
 
 To start, create a pipeline with a simple description and an empty array of processors:
 
@@ -75,8 +86,6 @@ To start, create a pipeline with a simple description and an empty array of proc
 ```
 
 1. The processors defined below will go in this array
-
-
 
 #### Add a JSON processor [_add_a_json_processor]
 
@@ -92,7 +101,6 @@ Add your first processor to the processors array. Because the agent captures the
 }
 ```
 
-
 #### Add a set processor [_add_a_set_processor]
 
 If `body.original_json` is not `null`, i.e., it exists, we’ll redact the `password` with the [set processor](elasticsearch://reference/enrich-processor/set-processor.md), by setting the value of `body.original_json.password` to `"redacted"`:
@@ -106,7 +114,6 @@ If `body.original_json` is not `null`, i.e., it exists, we’ll redact the `pass
   }
 }
 ```
-
 
 #### Add a convert processor [_add_a_convert_processor]
 
@@ -124,7 +131,6 @@ Use the [convert processor](elasticsearch://reference/enrich-processor/convert-p
 }
 ```
 
-
 #### Add a remove processor [_add_a_remove_processor]
 
 Finally, use the [remove processor](elasticsearch://reference/enrich-processor/remove-processor.md) to remove the `body.original_json` field:
@@ -138,7 +144,6 @@ Finally, use the [remove processor](elasticsearch://reference/enrich-processor/r
   }
 }
 ```
-
 
 #### Register the pipeline [_register_the_pipeline]
 
@@ -182,7 +187,6 @@ PUT _ingest/pipeline/apm_redacted_body_password
   ]
 }
 ```
-
 
 ### Test the pipeline [_test_the_pipeline]
 
@@ -228,7 +232,6 @@ POST _ingest/pipeline/apm_redacted_body_password/_simulate
 1. This document features the same sensitive data from the original example above
 2. This document only contains an unrelated field
 3. This document contains invalid JSON
-
 
 The API response should be similar to this:
 
@@ -277,7 +280,6 @@ The API response should be similar to this:
 
 As expected, only the first simulated document has a redacted password field. All other documents are unaffected.
 
-
 ### Create a `@custom` pipeline [_create_a_custom_pipeline]
 
 The final step in this process is to call the newly created `apm_redacted_body_password` pipeline from the `@custom` pipeline of the data stream you wish to edit.
@@ -314,9 +316,7 @@ PUT _ingest/pipeline/traces-apm@custom
 
 1. The name of the pipeline we previously created
 
-
 That’s it! Passwords will now be redacted from your APM HTTP body data.
-
 
 ### Next steps [_next_steps]
 

@@ -6,18 +6,13 @@ applies_to:
   stack: deprecated
 ---
 
-
-
 # Integrate with Jaeger (deprecated) [apm-jaeger-integration]
-
 
 ::::{warning}
 Support for Jaeger is deprecated and will be removed in a future version of Elastic APM. [Jaeger clients are deprecated](https://www.jaegertracing.io/docs/1.35/client-libraries/) in favor of OpenTelemetry SDKs, and OpenTelemetry has removed all Jaeger exporters from their [specification](https://github.com/open-telemetry/opentelemetry-specification/pull/2858).
 ::::
 
-
 Elastic APM integrates with [Jaeger](https://www.jaegertracing.io/), an open-source, distributed tracing system. This integration allows users with an existing Jaeger setup to switch from the default Jaeger backend, to the {{stack}}. Best of all, no instrumentation changes are needed in your application code.
-
 
 ## Supported architecture [apm-jaeger-architecture]
 
@@ -28,7 +23,6 @@ Jaeger architecture supports different data formats and transport protocols that
 * The gRPC endpoint supports probabilistic sampling. Sampling decisions can be configured [centrally](#apm-configure-sampling-central-jaeger) with {{apm-agent}} central configuration, or [locally](#apm-configure-sampling-local-jaeger) in each Jaeger client.
 
 See the [Jaeger docs](https://www.jaegertracing.io/docs/1.27/architecture) for more information on Jaeger architecture.
-
 
 ## Get started [apm-get-started-jaeger]
 
@@ -41,8 +35,6 @@ Connect your preexisting Jaeger setup to Elastic APM in three steps:
 ::::{important}
 There are [caveats](#apm-caveats-jaeger) to this integration.
 ::::
-
-
 
 ### Configure Jaeger agents [apm-configure-agent-client-jaeger]
 
@@ -63,7 +55,6 @@ The APM integration serves Jaeger gRPC over the same host and port as the Elasti
     --reporter.grpc.host-port=<apm-url:443>
     --agent.tags="elastic-apm-auth=Bearer <secret-token>"
     ```
-
 
 ::::{tip}
 For the equivalent environment variables, change all letters to upper-case and replace punctuation with underscores (`_`). See the [Jaeger CLI flags documentation](https://www.jaegertracing.io/docs/1.27/cli/) for more information.
@@ -95,7 +86,6 @@ For the equivalent environment variables, change all letters to upper-case and r
     --agent.tags="elastic-apm-auth=Bearer <secret-token>"
     ```
 
-
 ::::{tip}
 For the equivalent environment variables, change all letters to upper-case and replace punctuation with underscores (`_`). See the [Jaeger CLI flags documentation](https://www.jaegertracing.io/docs/1.27/cli/) for more information.
 ::::
@@ -112,21 +102,17 @@ There are two different ways to configure the sampling rate of your Jaeger agent
 * [{{apm-agent}} central configuration (default)](#apm-configure-sampling-central-jaeger)
 * [Local sampling in each Jaeger client](#apm-configure-sampling-local-jaeger)
 
-
 #### {{apm-agent}} central configuration (default) [apm-configure-sampling-central-jaeger]
 
 Central sampling, with {{apm-agent}} central configuration, allows Jaeger clients to poll APM Server for the sampling rate. This means sample rates can be configured on the fly, on a per-service and per-environment basis. See [Central configuration](apm-agent-central-configuration.md) to learn more.
-
 
 #### Local sampling in each Jaeger client [apm-configure-sampling-local-jaeger]
 
 If you don’t have access to the Applications UI, you’ll need to change the Jaeger client’s `sampler.type` and `sampler.param`. This enables you to set the sampling configuration locally in each Jaeger client. See the official [Jaeger sampling documentation](https://www.jaegertracing.io/docs/1.27/sampling/) for more information.
 
-
 ### Start sending data [apm-configure-start-jaeger]
 
 That’s it! Data sent from Jaeger clients to the APM Server can now be viewed in the Applications UI.
-
 
 ## Caveats [apm-caveats-jaeger]
 
