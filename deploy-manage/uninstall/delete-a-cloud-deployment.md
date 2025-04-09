@@ -98,7 +98,7 @@ To delete an Elasticsearch deployment created with {{eck}}:
 1. Run the following command to delete the {{es}} custom resource:
 
    ```shell
-   kubectl delete elasticsearch <deployment-name>
+   kubectl delete elasticsearch <elasticsearch-resource-name>
    ```
    For example:
 
