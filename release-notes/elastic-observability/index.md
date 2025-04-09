@@ -37,4 +37,4 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Updates the `Close project` navigation label to `Log out` to better reflect the intended action for users in serverless environments [#211463]({{kib-pull}}211463)
 * Fixes an issue where clicking a name badge for a synthetics monitor led to a page that failed to load monitor details [#210695]({{kib-pull}}210695)
 * Fixes code scanning alert no. 456: Incomplete string escaping or encoding [#193909]({{kib-pull}}193909)
-* Fixes code scanning alert: Incomplete string escaping or encoding [#193365]({kib-pull}193365)
+* Fixes code scanning alert: Incomplete string escaping or encoding [#193365]({{kib-pull}}193365)
