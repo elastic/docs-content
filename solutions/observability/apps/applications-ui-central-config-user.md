@@ -2,13 +2,11 @@
 navigation_title: "Create a central config user"
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-app-central-config-user.html
+applies_to:
+  stack:
 ---
 
-
-
 # Applications UI central config user [apm-app-central-config-user]
-
-
 
 ## Central configuration manager [apm-app-central-config-manager]
 
@@ -57,8 +55,6 @@ Central configuration users need to be able to view, create, update, and delete 
     | --- | --- | --- |
     | Kibana | `All` on the APM and User Experience feature | Allow full use of the Applications and User Experience UIs |
 
-
-
 ## Central configuration reader [apm-app-central-config-reader]
 
 In some instances, you may wish to create a user that can only read central configurations, but not create, update, or delete them.
@@ -105,8 +101,6 @@ In some instances, you may wish to create a user that can only read central conf
     | Type | Privilege | Purpose |
     | --- | --- | --- |
     | Kibana | `read` on the APM and User Experience feature | Allow read access to the Applications and User Experience UIs |
-
-
 
 ## Central configuration API [apm-app-central-config-api]
 

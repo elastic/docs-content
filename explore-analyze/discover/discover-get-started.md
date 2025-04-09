@@ -30,7 +30,7 @@ Select the data you want to explore, and then specify the time range in which to
    ::::{tip}
    By default, {{kib}} requires a [{{data-source}}](../find-and-organize/data-views.md) to access your Elasticsearch data. A {{data-source}} can point to one or more indices, [data streams](../../manage-data/data-store/data-streams.md), or [index aliases](https://www.elastic.co/guide/en/elasticsearch/reference/current/alias.html). When adding data to {{es}} using one of the many integrations available, sometimes data views are created automatically, but you can also create your own.
 
-   You can also [try {{esql}}](try-esql.md), that let's you query any data you have in {{es}} without specifying a {{data-source}} first.
+   You can also [try {{esql}}](try-esql.md), that lets you query any data you have in {{es}} without specifying a {{data-source}} first.
    ::::
    If you’re using sample data, data views are automatically created and are ready to use.
    :::{image} /explore-analyze/images/kibana-discover-data-view.png
@@ -67,17 +67,19 @@ You can later filter the data that shows in the chart and in the table by specif
   **Discover** shows the top 10 values and the number of records used to calculate those values.
 
 3. Select the **Plus** icon to add fields to the results table. You can also drag them from the list into the table.
+
    ![How to add a field as a column in the table](/explore-analyze/images/kibana-discover-add-field.png "title =50%")
+   
    When you add fields to the table, the **Summary** column is replaced.
    ![Document table with fields for manufacturer](/explore-analyze/images/kibana-document-table.png "")
 
-4. Arrange the view to your liking to display the fields and data you care most about using the various display options of **Discover**. For example, you can change the order and size of columns, expand the table to be in full screen or collapse the chart and the list of fields. Check [Customize the Discover view](document-explorer.md).
+4. Arrange the view to your liking to display the fields and data you care most about using the various display options of **Discover**. For example, you can change the order and size of columns, expand the table to be in full screen or collapse the chart and the list of fields. Check [Customize the Discover view](document-explorer.md) for more information.
 5. **Save** your changes to be able to open the same view later on and explore your data further.
 
 
 ### Add a field to your {{data-source}} [add-field-in-discover]
 
-What happens if you forgot to define an important value as a separate field? Or, what if you want to combine two fields and treat them as one? This is where [runtime fields](../../manage-data/data-store/mapping/runtime-fields.md) come into play. You can add a runtime field to your {{data-source}} from inside of **Discover**, and then use that field for analysis and visualizations, the same way you do with other fields.
+What happens if you forgot to define an important value as a separate field? Or, what if you want to combine two fields and treat them as one? This is where [runtime fields](../../manage-data/data-store/mapping/runtime-fields.md) come into play. You can add a runtime field to your {{data-source}} from inside of **Discover**, and then use that field for analysis and visualizations the same way you do with other fields.
 
 1. In the sidebar, select **Add a field**.
 2. Select the **Type** of the new field.
@@ -125,6 +127,7 @@ In the following example, we’re adding 2 fields: A simple "Hello world" field,
 If a field can be [aggregated](../query-filter/aggregations.md), you can quickly visualize it in detail by opening it in **Lens** from **Discover**. **Lens** is the default visualization editor in {{kib}}.
 
 1. In the list of fields, find an aggregatable field. For example, with the sample data, you can look for `day_of_week`.
+   
    ![Top values for the day_of_week field](/explore-analyze/images/kibana-discover-day-of-week.png "title =60%")
 
 2. In the popup, click **Visualize**.
@@ -135,7 +138,7 @@ If a field can be [aggregated](../query-filter/aggregations.md), you can quickly
 
 4. Save the visualization if you’d like to add it to a dashboard or keep it in the Visualize library for later use.
 
-For geo point fields (![Geo point field icon](/explore-analyze/images/kibana-geoip-icon.png "")), if you click **Visualize**, your data appears in a map.
+For geo point fields (![Geo point field icon](/explore-analyze/images/kibana-geoip-icon.png "kibana-geoip-icon =4%x4%")), if you click **Visualize**, your data appears in a map.
 
 ![Map containing documents](/explore-analyze/images/kibana-discover-maps.png "")
 

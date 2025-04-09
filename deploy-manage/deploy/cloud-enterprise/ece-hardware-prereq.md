@@ -35,7 +35,7 @@ ECE installations with **spinning disks** are not supported when you run allocat
 | **Medium deployment**2 | 32 GB RAM | 32 GB RAM | 16 GB RAM | 256 GB RAM<br> |
 | **Large deployment**3 | 128 GB RAM | 128 GB RAM | 16 GB RAM | 256 GB RAM<br> |
 
-1 Allocators must be sized to support your Elasticsearch clusters and Kibana instances. We recommend host machines that provide between 128 GB and 256 GB of memory. While smaller hosts might not pack larger Elasticsearch clusters and Kibana instances as efficiently, larger hosts might provide fewer CPU resources per GB of RAM on average. For example, running 64 * 2GB nodes on a 128GB host with 16 vCPUs means that each node will get 2/128 of the total CPU time. This is 1/4 core on average, and might not be sufficient. We recommend inspecting both what is the expected number and size of the nodes you plan to run on your hosts in order to understand which hardware will work best in your environment.
+1 Allocators must be sized to support your {{es}} clusters and {{kib}} instances. We recommend host machines that provide between 128 GB and 256 GB of memory. While smaller hosts might not pack larger {{es}} clusters and {{kib}} instances as efficiently, larger hosts might provide fewer CPU resources per GB of RAM on average. For example, running 64 * 2GB nodes on a 128GB host with 16 vCPUs means that each node will get 2/128 of the total CPU time. This is 1/4 core on average, and might not be sufficient. We recommend inspecting both what is the expected number and size of the nodes you plan to run on your hosts in order to understand which hardware will work best in your environment.
 
 2 For high availability, requires three hosts each of the capacities indicated, spread across three availability zones.
 

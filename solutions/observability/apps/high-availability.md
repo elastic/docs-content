@@ -2,7 +2,7 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-high-availability.html
 applies_to:
-  stack: all
+  stack:
 ---
 
 # High Availability [apm-high-availability]
@@ -18,5 +18,4 @@ If {{es}} goes down, the APM Server will eventually deny incoming requests. Both
 ::::{tip}
 Fleet-managed APM Server users might also be interested in [Fleet/Agent proxy support](/reference/fleet/fleet-agent-proxy-support.md).
 ::::
-
 

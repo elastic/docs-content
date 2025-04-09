@@ -2,15 +2,13 @@
 navigation_title: "Create an APM reader user"
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-app-reader.html
+applies_to:
+  stack:
 ---
-
-
 
 # APM reader user [apm-app-reader]
 
-
 APM reader users typically need to view the Applications UI and dashboards and visualizations that use APM data. These users might also need to create and edit dashboards, visualizations, and machine learning jobs.
-
 
 ## APM reader [apm-app-reader-full]
 
@@ -54,8 +52,6 @@ To create an APM reader user:
     | `kibana_admin` | Grants access to all features in Kibana. |
     | `machine_learning_admin` | Grants the privileges required to create, update, and view machine learning jobs |
 
-
-
 ## Partial APM reader [apm-app-reader-partial]
 
 In some instances, you may wish to restrict certain Kibana apps that a user has access to.
@@ -91,7 +87,6 @@ In some instances, you may wish to restrict certain Kibana apps that a user has 
 
     ::::
 
-
 2. Assign feature privileges to any Kibana feature that the user needs access to. Here are two examples:
 
     | Type | Privilege | Purpose |
@@ -104,5 +99,4 @@ In some instances, you may wish to restrict certain Kibana apps that a user has 
     | Role | Purpose |
     | --- | --- |
     | `machine_learning_admin` | Grants the privileges required to create, update, and view machine learning jobs |
-
 

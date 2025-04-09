@@ -19,7 +19,6 @@ body:
         - Missing information
         - I can't find what I'm looking for
         - Other
-        - Other
   - type: input
     id: link
     attributes:

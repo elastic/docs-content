@@ -1,6 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/elastic-entity-model.html
+  - https://www.elastic.co/guide/en/serverless/current/observability-elastic-entity-model.html
 ---
 
 # Elastic Entity Model [elastic-entity-model]
@@ -8,7 +9,6 @@ mapped_pages:
 ::::{warning}
 This functionality is in technical preview and may be changed or removed in a future release. Elastic will work to fix any issues, but features in technical preview are not subject to the support SLA of official GA features.
 ::::
-
 
 The Elastic Entity Model consists of:
 

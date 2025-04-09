@@ -12,7 +12,7 @@ toc:
         children:
           - file: search/elasticsearch-basics-quickstart.md
           - file: search/querydsl-full-text-filter-tutorial.md
-          - file: search/esql-full-text-filter-tutorial.md
+          - file: search/esql-search-tutorial.md
       - file: search/ingest-for-search.md
         children:
           - file: search/search-pipelines.md
@@ -67,6 +67,7 @@ toc:
         children:
           - file: search/the-search-api.md
           - file: search/async-search-api.md
+          - file: search/esql-for-search.md
           - file: search/retrievers-overview.md
             children:
               - file: search/retrievers-examples.md
@@ -81,6 +82,7 @@ toc:
               - file: search/search-applications/search-application-security.md
               - file: search/search-applications/search-application-client.md
       - file: search/apis-and-tools.md
+      - file: search/ai-assistant.md
   - file: observability.md
     children:
       - file: observability/get-started.md
@@ -92,14 +94,17 @@ toc:
           - file: observability/get-started/quickstart-monitor-hosts-with-opentelemetry.md
           - file: observability/get-started/quickstart-unified-kubernetes-observability-with-elastic-distributions-of-opentelemetry-edot.md
           - file: observability/get-started/quickstart-collect-data-with-aws-firehose.md
+          - file: observability/get-started/quickstart-elastic-cloud-otel-endpoint.md
           - file: observability/get-started/add-data-from-splunk.md
           - file: observability/get-started/get-started-with-dashboards.md
       - file: observability/apps.md
         children:
+          - file: observability/apps/llm-observability.md
           - file: observability/apps/application-performance-monitoring-apm.md
             children:
               - file: observability/apps/get-started-with-apm.md
                 children:
+                  - file: observability/apps/get-started-apm-serverless.md
                   - file: observability/apps/fleet-managed-apm-server.md
                   - file: observability/apps/apm-server-binary.md
               - file: observability/apps/learn-about-application-data-types.md
@@ -138,7 +143,7 @@ toc:
                       - file: observability/apps/service-map.md
                       - file: observability/apps/service-overview.md
                       - file: observability/apps/mobile-service-overview.md
-                  - file: observability/apps/inventory.md
+                  - hidden: observability/apps/inventory.md
                   - file: observability/apps/drill-down-into-data.md
                     children:
                       - file: observability/apps/transactions-2.md
@@ -244,8 +249,6 @@ toc:
               - file: observability/apps/apm-apis.md
                 children:
                   - file: observability/apps/apm-ui-api.md
-                    children:
-                      - file: observability/apps/managed-intake-service-event-api.md
                   - file: observability/apps/apm-server-api.md
                     children:
                       - file: observability/apps/apm-server-information-api.md
@@ -253,20 +256,16 @@ toc:
                       - file: observability/apps/elastic-apm-agent-configuration-api.md
                       - file: observability/apps/opentelemetry-intake-api.md
                       - file: observability/apps/jaeger-event-intake.md
-                  - file: observability/apps/what-happens-when-apm-server-elasticsearch-is-down.md
-                  - file: observability/apps/apm-server-response-codes.md
-                  - file: observability/apps/processing-performance.md
-                  - file: observability/apps/enable-apm-server-binary-debugging.md
-                  - file: observability/apps/apm-server-performance-diagnostic.md
+                  - file: observability/apps/managed-intake-service-event-api.md
               - file: observability/apps/upgrade.md
                 children:
                   - file: observability/apps/apm-agent-compatibility.md
-                  - file: observability/apps/upgrade-to-version-8x.md
+                  - file: observability/apps/upgrade-to-version-90.md
                     children:
-                      - file: observability/apps/upgrade-self-installation-of-apm-server-standalone-to-8x.md
-                      - file: observability/apps/upgrade-self-installation-of-apm-integration-to-8x.md
-                      - file: observability/apps/upgrade-elastic-cloud-apm-server-standalone-to-8.md
-                      - file: observability/apps/upgrade-elastic-cloud-with-apm-integration-to-80.md
+                      - file: observability/apps/upgrade-self-installation-of-apm-server-standalone-to-90.md
+                      - file: observability/apps/upgrade-self-installation-of-apm-integration-to-90.md
+                      - file: observability/apps/upgrade-elastic-cloud-apm-server-standalone-to-90.md
+                      - file: observability/apps/upgrade-elastic-cloud-with-apm-integration-to-90.md
                   - file: observability/apps/switch-to-elastic-apm-integration.md
                     children:
                       - file: observability/apps/switch-self-installation-to-apm-integration.md
@@ -312,6 +311,7 @@ toc:
                   - file: observability/apps/analyze-monitors.md
                   - file: observability/apps/inspect-uptime-duration-anomalies.md
               - file: observability/apps/configure-settings.md
+          - file: observability/otlp-visualize.md
           - file: observability/apps/tutorial-monitor-java-application.md
       - file: observability/cicd.md
       - file: observability/cloud.md
@@ -396,11 +396,9 @@ toc:
           - file: observability/logs/filter-aggregate-logs.md
           - file: observability/logs/explore-logs.md
             children:
-              - file: observability/logs/logs-explorer.md
+              - file: observability/logs/discover-logs.md
               - file: observability/logs/categorize-log-entries.md
               - file: observability/logs/inspect-log-anomalies.md
-              - file: observability/logs/configure-data-sources.md
-              - file: observability/logs/logs-stream.md
           - file: observability/logs/run-pattern-analysis-on-log-data.md
           - file: observability/logs/add-service-name-to-logs.md
           - file: observability/logs/logs-index-template-reference.md
@@ -455,6 +453,7 @@ toc:
           - file: security/get-started/ingest-data-to-elastic-security.md
             children:
               - file: security/get-started/enable-threat-intelligence-integrations.md
+              - file: security/get-started/automatic-migration.md
               - file: security/get-started/automatic-import.md
               - file: security/get-started/agentless-integrations.md
           - file: security/get-started/spaces-elastic-security.md
@@ -491,6 +490,8 @@ toc:
               - file: security/detect-and-alert/launch-timeline-from-investigation-guides.md
               - file: security/detect-and-alert/exclude-cold-frozen-data-from-individual-rules.md
           - file: security/detect-and-alert/install-manage-elastic-prebuilt-rules.md
+            children:
+              - file: security/detect-and-alert/prebuilt-rules-update-modified-unmodified.md
           - file: security/detect-and-alert/manage-detection-rules.md
           - file: security/detect-and-alert/monitor-rule-executions.md
           - file: security/detect-and-alert/rule-exceptions.md
@@ -562,21 +563,21 @@ toc:
               - file: security/cloud/cspm-privilege-requirements.md
               - file: security/cloud/findings-page.md
               - file: security/cloud/benchmarks.md
-              - file: security/dashboards/cloud-security-posture-dashboard.md
+              - file: security/cloud/cspm-dashboard.md
               - file: security/cloud/cspm-frequently-asked-questions-faq.md
           - file: security/cloud/kubernetes-security-posture-management.md
             children:
               - file: security/cloud/get-started-with-kspm.md
               - file: security/cloud/findings-page-2.md
-              - file: security/cloud/benchmarks.md
-              - file: security/dashboards/cloud-security-posture-dashboard.md
-              - file: security/cloud/cspm-frequently-asked-questions-faq.md
+              - file: security/cloud/kspm-benchmarks.md
+              - file: security/cloud/kspm-dashboard.md
+              - file: security/cloud/kspm-frequently-asked-questions.md
           - file: security/cloud/cloud-native-vulnerability-management.md
             children:
               - file: security/cloud/get-started-with-cnvm.md
               - file: security/cloud/cnvm-privilege-requirements.md
               - file: security/cloud/findings-page-3.md
-              - file: security/dashboards/cloud-native-vulnerability-management-dashboard.md
+              - file: security/cloud/cnvm-dashboard.md
               - file: security/cloud/cnvm-frequently-asked-questions-faq.md
           - file: security/cloud/cloud-workload-protection-for-vms.md
             children:
@@ -631,6 +632,7 @@ toc:
             children:
               - file: security/advanced-entity-analytics/entity-risk-scoring-requirements.md
               - file: security/advanced-entity-analytics/turn-on-risk-scoring-engine.md
+              - file: security/advanced-entity-analytics/view-entity-details.md
               - file: security/advanced-entity-analytics/asset-criticality.md
               - file: security/advanced-entity-analytics/entity-store.md
               - file: security/advanced-entity-analytics/view-analyze-risk-score-data.md

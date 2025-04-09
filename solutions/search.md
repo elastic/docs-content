@@ -2,12 +2,13 @@
 applies:
   stack:
   serverless:
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/search-with-elasticsearch.html
   - https://www.elastic.co/guide/en/serverless/current/what-is-elasticsearch-serverless.html
+  - https://www.elastic.co/guide/en/kibana/current/search-space.html
 ---
 
-# Search
+# Elasticsearch
 
 {{es}} enables you to build powerful search experiences for websites, applications, and enterprise data using Elastic's unified platform.
 

@@ -91,7 +91,7 @@ To ingest Azure subscription and resource logs into Elastic using the Microsoft 
     ::::
 
 3. In {{kib}}, find the {{observability}} **Overview** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Refresh the page until you see some data. This may take a few minutes.
-4. To analyze your subscription and resource logs, click **Show Logs Explorer**.
+4. To analyze your subscription and resource logs, click **Show Logs**.
 
 
 ## Step 3: Ingest logs and metrics from your virtual machines. [azure-step-three]
@@ -104,7 +104,7 @@ To ingest Azure subscription and resource logs into Elastic using the Microsoft 
 
     ![Select VMs to collect logs and metrics from](/solutions/images/observability-monitor-azure-elastic-vms.png "")
 
-3. Wait until it is installed and sending data (if the list does not update, click **Refresh** ). To see the logs from the VM, open **Logs Explorer** (find `Logs Explorer` in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md)).
+3. Wait until it is installed and sending data (if the list does not update, click **Refresh** ). To see the logs from the VM, open **Discover** (find `Discover` in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md)).
 
     To view VM metrics, go to **Infrastructure inventory** and then select a VM. (To open **Infrastructure inventory**, find **Infrastructure** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).)
 
@@ -198,23 +198,50 @@ Download and install {{metricbeat}}.
 :::::::{tab-set}
 
 ::::::{tab-item} DEB
-Version 9.0.0-beta1 of Metricbeat has not yet been released.
+```shell subs=true
+curl -L -O https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-{{stack-version}}-amd64.deb
+sudo dpkg -i metricbeat-{{stack-version}}-amd64.deb
+```
 ::::::
 
 ::::::{tab-item} RPM
-Version 9.0.0-beta1 of Metricbeat has not yet been released.
+```shell subs=true
+curl -L -O https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-{{stack-version}}-x86_64.rpm
+sudo rpm -vi metricbeat-{{stack-version}}-x86_64.rpm
+```
 ::::::
 
 ::::::{tab-item} MacOS
-Version 9.0.0-beta1 of Metricbeat has not yet been released.
+```shell subs=true
+curl -L -O https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-{{stack-version}}-darwin-x86_64.tar.gz
+tar xzvf metricbeat-{{stack-version}}-darwin-x86_64.tar.gz
+```
 ::::::
 
 ::::::{tab-item} Linux
-Version 9.0.0-beta1 of Metricbeat has not yet been released.
+```shell subs=true
+curl -L -O https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-{{stack-version}}-linux-x86_64.tar.gz
+tar xzvf metricbeat-{{stack-version}}-linux-x86_64.tar.gz
+```
 ::::::
 
 ::::::{tab-item} Windows
-Version 9.0.0-beta1 of Metricbeat has not yet been released.
+1. Download the [Metricbeat Windows zip file](https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-{{stack-version}}-windows-x86_64.zip).
+
+2. Extract the contents of the zip file into `C:\Program Files`.
+
+3. Rename the `metricbeat-{{stack-version}}-windows-x86_64` directory to `Metricbeat`.
+
+4. Open a PowerShell prompt as an Administrator (right-click the PowerShell icon and select *Run As Administrator*).
+
+5. From the PowerShell prompt, run the following commands to install Metricbeat as a Windows service:
+
+  ```shell subs=true
+  PS > cd 'C:\Program Files\Metricbeat'
+  PS C:\Program Files\Metricbeat> .\install-service-metricbeat.ps1
+  ```
+
+NOTE: If script execution is disabled on your system, you need to set the execution policy for the current session to allow the script to run. For example: `PowerShell.exe -ExecutionPolicy UnRestricted -File .\install-service-metricbeat.ps1`.
 ::::::
 
 :::::::

@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/security/current/endpoint-artifacts.html
   - https://www.elastic.co/guide/en/serverless/current/security-optimize-edr.html
 applies_to:

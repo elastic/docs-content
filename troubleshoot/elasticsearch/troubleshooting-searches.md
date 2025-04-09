@@ -1,7 +1,15 @@
 ---
+applies_to:
+  stack: 
+  deployment:
+    eck: 
+    ess: 
+    ece: 
+    self: 
 navigation_title: Searches
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/troubleshooting-searches.html
+  - https://www.elastic.co/guide/en/serverless/current/devtools-dev-tools-troubleshooting.html
 ---
 
 # Troubleshoot searches [troubleshooting-searches]
@@ -126,7 +134,7 @@ GET /my-index-000001/_count
 }
 ```
 
-If the field is aggregatable, you can use [aggregations](../../explore-analyze/query-filter/aggregations.md) to check the field’s values. For `keyword` fields, you can use a [terms aggregation](elasticsearch://reference/data-analysis/aggregations/search-aggregations-bucket-terms-aggregation.md) to retrieve the field’s most common values:
+If the field is aggregatable, you can use [aggregations](../../explore-analyze/query-filter/aggregations.md) to check the field’s values. For `keyword` fields, you can use a [terms aggregation](elasticsearch://reference/aggregations/search-aggregations-bucket-terms-aggregation.md) to retrieve the field’s most common values:
 
 ```console
 GET /my-index-000001/_search?filter_path=aggregations
@@ -143,7 +151,7 @@ GET /my-index-000001/_search?filter_path=aggregations
 }
 ```
 
-For numeric fields, you can use the [stats aggregation](elasticsearch://reference/data-analysis/aggregations/search-aggregations-metrics-stats-aggregation.md) to get an idea of the field’s value distribution:
+For numeric fields, you can use the [stats aggregation](elasticsearch://reference/aggregations/search-aggregations-metrics-stats-aggregation.md) to get an idea of the field’s value distribution:
 
 ```console
 GET my-index-000001/_search?filter_path=aggregations
@@ -201,7 +209,7 @@ GET /my-index-000001/_explain/0
 }
 ```
 
-The [profile API](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-profile.html) provides detailed timing information about a search request. For a visual representation of the results, use the [Search Profiler](../../explore-analyze/query-filter/tools/search-profiler.md) in {{kib}}.
+The [profile API](elasticsearch://reference/elasticsearch/rest-apis/search-profile.md) provides detailed timing information about a search request. For a visual representation of the results, use the [Search Profiler](../../explore-analyze/query-filter/tools/search-profiler.md) in {{kib}}.
 
 ::::{note}
 To troubleshoot queries in {{kib}}, select **Inspect** in the toolbar. Next, select **Request**. You can now copy the query {{kib}} sent to {{es}} for further analysis in Console.

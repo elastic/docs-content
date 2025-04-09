@@ -8,7 +8,7 @@ mapped_pages:
 
 # Init containers for plugin downloads [k8s-init-containers-plugin-downloads]
 
-You can install custom plugins before the Elasticsearch container starts with an `initContainer`. For example:
+You can install custom plugins before the {{es}} container starts with an `initContainer`. For example:
 
 ```yaml
 spec:
@@ -27,7 +27,7 @@ spec:
             bin/elasticsearch-plugin install --batch analysis-icu
 ```
 
-You can also override the Elasticsearch container image to use your own image with the plugins already installed, as described in [custom images](create-custom-images.md). For more information on both these options, you can check the [Create automated snapshots](../../tools/snapshot-and-restore/cloud-on-k8s.md) section and the Kubernetes documentation on [init containers](https://kubernetes.io/docs/concepts/workloads/pods/init-containers/).
+You can also override the {{es}} container image to use your own image with the plugins already installed, as described in [custom images](create-custom-images.md). For more information on both these options, you can check the [Create automated snapshots](../../tools/snapshot-and-restore/cloud-on-k8s.md) section and the Kubernetes documentation on [init containers](https://kubernetes.io/docs/concepts/workloads/pods/init-containers/).
 
 The init container inherits:
 

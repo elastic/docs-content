@@ -2,7 +2,7 @@
 applies_to:
   stack: ga
   serverless: ga
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/data-views.html
   - https://www.elastic.co/guide/en/serverless/current/data-views.html
   - https://www.elastic.co/guide/en/kibana/current/managing-data-views.html
@@ -215,9 +215,13 @@ To add runtime fields to your data views, open the data view you want to change,
 
     * To view the other available fields, use the **Document ID** arrows.
     * To filter the fields list, enter the keyword in **Filter fields**.
-    * To pin frequently used fields to the top of the list, hover over the field, then click ![Icon to pin field to the top of the list](../../images/kibana-stackManagement-indexPatterns-pinRuntimeField-7.15.png "").
+    * To pin frequently used fields to the top of the list, hover over the field, then click ![Icon to pin field to the top of the list](/explore-analyze/images/kibana-stackManagement-indexPatterns-pinRuntimeField-7.15.png "").
 
 7. Click **Create field**.
+
+:::{warning}
+Runtime fields created against a data view are not applied to the underlying index mapping in {{es}}.
+:::
 
 
 #### Runtime field examples [runtime-field-examples]
@@ -599,11 +603,11 @@ Supported transformations include:
 
 #### Number field formatters [field-formatters-numeric]
 
-Numeric fields support **Bytes**, **Color**, **Duration**, **Histogram**, **Number**, **Percentage**, **String**, and **Url** formatters.
+Numeric fields support **Bytes and Bits**, **Color**, **Duration**, **Histogram**, **Number**, **Percentage**, **String**, and **Url** formatters.
 
-The **Bytes**, **Number**, and **Percentage** formatters enable you to choose the display formats of numbers in the field using the [Elastic numeral pattern](../../explore-analyze/numeral-formatting.md) syntax that {{kib}} maintains.
+The **Bytes and Bits**, **Number**, and **Percentage** formatters enable you to choose the display formats of numbers in the field using the [Elastic numeral pattern](../../explore-analyze/numeral-formatting.md) syntax that {{kib}} maintains.
 
-The **Histogram** formatter is used only for the [histogram field type](elasticsearch://reference/elasticsearch/mapping-reference/histogram.md). When you use the **Histogram** formatter, you can apply the **Bytes**, **Number**, or **Percentage** format to aggregated data.
+The **Histogram** formatter is used only for the [histogram field type](elasticsearch://reference/elasticsearch/mapping-reference/histogram.md). When you use the **Histogram** formatter, you can apply the **Bytes and Bits**, **Number**, or **Percentage** format to aggregated data.
 
 You can specify the following types to the `Url` field formatter:
 

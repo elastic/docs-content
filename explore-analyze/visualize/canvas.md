@@ -8,7 +8,9 @@ mapped_pages:
 
 # Canvas [canvas]
 
-**Note:** Canvas is only available for upgraded installations with existing workpads.
+:::{note}
+Canvas is only available for upgraded installations with existing workpads.
+:::
 
 **Canvas** is a data visualization and presentation tool that allows you to pull live data from {{es}}, then combine the data with colors, images, text, and your imagination to create dynamic, multi-page, pixel-perfect displays. If you are a little bit creative, a little bit technical, and a whole lot curious, then **Canvas** is for you.
 
@@ -19,7 +21,7 @@ With **Canvas**, you can:
 * Pull your data directly from {{es}}, then show it off with charts, graphs, progress monitors, and more.
 * Focus the data you want to display with filters.
 
-:::{image} ../../images/kibana-canvas_logWebTrafficWorkpadTemplate_7.17.0.png
+:::{image} /explore-analyze/images/kibana-canvas_logWebTrafficWorkpadTemplate_7.17.0.png
 :alt: Logs Web Traffic workpad template
 :::
 

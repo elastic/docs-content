@@ -95,21 +95,21 @@ $$$faq-refund$$$Can I get a refund?
 $$$faq-included$$$What is included in my paid {{ech}} deployment?
 :   All subscription tiers for {{ech}} include the following free allowance:
 
-    * Free 1GB RAM Kibana instance
+    * Free 1GB RAM {{kib}} instance
     * Free 1GB RAM Machine Learning node
     * Free 1GB RAM APM server
     * A free allowance for [data transfer and snapshot storage costs](#faq-dts)
 
-    Note that if you go above the free tier of Kibana/ML/APM (for example, a 2GB Kibana instance), you will be charged in full for the size of that instance.
+    Note that if you go above the free tier of Kibana/ML/APM (for example, a 2GB {{kib}} instance), you will be charged in full for the size of that instance.
 
 
 $$$faq-dts$$$What are the data transfer and storage charges and how can I control them?
 :   Read about our [usage-based billing dimensions](/deploy-manage/cloud-organization/billing.md#pricing-model).
 
 $$$faq-taxes$$$What taxes will be applied on my invoice?
-:   Customers within the United States, and US territories, will be billed from Elasticsearch Inc., based out of the United States. The US Sales Tax rate will be based on the SaaS tax rates in the local jurisdiction (state/county/city) of the billing address of your subscription.
+:   Customers within the United States, and US territories, will be billed from {{es}} Inc., based out of the United States. The US Sales Tax rate will be based on the SaaS tax rates in the local jurisdiction (state/county/city) of the billing address of your subscription.
 
-    Customers outside the United States, will be billed from Elasticsearch BV, based out of the Netherlands. Customers with a billing address in countries with applicable EU VAT will have VAT applied based on their country and status as a business or private customer. Elastic collects VAT Numbers associated with EU VAT to determine your status as a business (B2B) or private / non-business customer (B2C), as this is a key factor to determine Elastic’s liability to charge VAT on your subscription. To update your VAT Number follow the instructions provided in [Add your billing details](/deploy-manage/cloud-organization/billing/add-billing-details.md). Customers located in countries without EU VAT will not be applied VAT on their invoices.
+    Customers outside the United States, will be billed from {{es}} BV, based out of the Netherlands. Customers with a billing address in countries with applicable EU VAT will have VAT applied based on their country and status as a business or private customer. Elastic collects VAT Numbers associated with EU VAT to determine your status as a business (B2B) or private / non-business customer (B2C), as this is a key factor to determine Elastic’s liability to charge VAT on your subscription. To update your VAT Number follow the instructions provided in [Add your billing details](/deploy-manage/cloud-organization/billing/add-billing-details.md). Customers located in countries without EU VAT will not be applied VAT on their invoices.
 
 
 

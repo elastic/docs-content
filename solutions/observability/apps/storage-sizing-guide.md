@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-storage-guide.html
+applies_to:
+  stack:
 ---
 
 # Storage and sizing guide [apm-storage-guide]
@@ -10,7 +12,6 @@ APM processing and storage costs are largely dominated by transactions, spans, a
 * [**Transactions**](transactions.md) describe an event captured by an Elastic {{apm-agent}} instrumenting a service. They are the highest level of work being measuring within a service.
 * [**Spans**](spans.md) belong to transactions. They measure from the start to end of an activity, and contain information about a specific code path that has been executed.
 * **Stack frames** belong to spans. Stack frames represent a function call on the call stack, and include attributes like function name, file name and path, line number, etc. Stack frames can heavily influence the size of a span.
-
 
 ## Typical transactions [_typical_transactions]
 
@@ -31,7 +32,6 @@ Here’s a speculative reference:
 | *Large* | 30-40 | 30-40 |
 
 There will always be transaction outliers with hundreds of spans or stack frames, but those are very rare. Small transactions are the most common.
-
 
 ## Typical storage [_typical_storage]
 

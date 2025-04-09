@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-api-jaeger.html
+applies_to:
+  stack: deprecated
 ---
 
 # Jaeger event intake [apm-api-jaeger]
@@ -9,7 +11,6 @@ mapped_pages:
 * Support for Jaeger is deprecated, and will be removed in a future release [#1167](https://github.com/elastic/apm-server/issues/11671)
 
 ::::
-
 
 Elastic APM natively supports Jaeger, an open-source, distributed tracing system. [Learn more](integrate-with-jaeger-deprecated.md).
 

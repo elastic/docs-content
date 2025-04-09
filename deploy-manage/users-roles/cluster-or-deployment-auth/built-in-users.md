@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/built-in-users.html
 applies_to:
   deployment:
@@ -31,7 +31,7 @@ The following built-in users are available:
     Anyone who can log in as the `elastic` user has direct read-only access to restricted indices, such as `.security`. This user also has the ability to manage security and create roles with unlimited privileges.
 
 `kibana_system`
-:   The user Kibana uses to connect and communicate with {{es}}.
+:   The user {{kib}} uses to connect and communicate with {{es}}.
 
 `logstash_system`
 :   The user Logstash uses when storing monitoring information in {{es}}.

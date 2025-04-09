@@ -2,10 +2,17 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/configure-uptime-settings.html
 applies_to:
-  stack: all
+  stack: deprecated 8.15.0
+  serverless: unavailable
 ---
 
 # Configure settings [configure-uptime-settings]
+
+::::{admonition} Deprecated in 8.15.0.
+:class: warning
+
+Use [Synthetic monitoring](/solutions/observability/apps/synthetic-monitoring.md) instead of the {{uptime-app}}.
+::::
 
 The **Settings** page enables you to change which {{heartbeat}} indices are displayed by the {{uptime-app}}, configure rule connectors, and set expiration/age thresholds for TLS certificates.
 
@@ -15,11 +22,9 @@ Uptime settings apply to the current space only. To segment different uptime use
 2. At the top of the page, click **Settings**.
 
     ::::{important}
-    To modify items on this page, you must have the [`all`](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md) Uptime privilege granted to your role.
+    To modify items on this page, you must have the [`all`](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md) Uptime privilege granted to your role.
 
     ::::
-
-
 
 ## Configure indices [configure-uptime-indices]
 
@@ -30,12 +35,10 @@ The pattern set here only restricts what the {{uptime-app}} displays. You can st
 
 ::::
 
-
 :::{image} /solutions/images/observability-heartbeat-indices.png
 :alt: {{heartbeat}} indices
 :screenshot:
 :::
-
 
 ## Configure connectors [configure-uptime-alert-connectors]
 
@@ -43,13 +46,12 @@ The pattern set here only restricts what the {{uptime-app}} displays. You can st
 
 Click **Create connector** and follow the prompts to select a connector type and configure its properties. After you create a connector, it’s available to you anytime you set up a rule action in the current space.
 
-For more information about each connector, see [action types and connectors](../../../deploy-manage/manage-connectors.md).
+For more information about each connector, see [action types and connectors](/deploy-manage/manage-connectors.md).
 
 :::{image} /solutions/images/observability-alert-connector.png
 :alt: Rule connector
 :screenshot:
 :::
-
 
 ## Configure certificate thresholds [configure-cert-thresholds]
 

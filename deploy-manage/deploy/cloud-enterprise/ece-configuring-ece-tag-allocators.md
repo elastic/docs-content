@@ -8,7 +8,7 @@ mapped_pages:
 
 # Tag your allocators [ece-configuring-ece-tag-allocators]
 
-You tag allocators to indicate what kind of hardware you have available. These tags matter, because they enable instance configurations to filter on allocators where components of the Elastic Stack should get deployed. Without tags, instance configurations will allow Elastic Stack components to get deployed wherever there is space on allocators. With tags, instance configurations can filter out those allocators that are best suited to deploy specific components of the Elastic Stack and make sure they get deployed there.
+You tag allocators to indicate what kind of hardware you have available. These tags matter, because they enable instance configurations to filter on allocators where components of the {{stack}} should get deployed. Without tags, instance configurations will allow {{stack}} components to get deployed wherever there is space on allocators. With tags, instance configurations can filter out those allocators that are best suited to deploy specific components of the {{stack}} and make sure they get deployed there.
 
 Allocator tags are a simple way of characterizing the hardware resources that you have in your ECE installation, such as:
 
@@ -19,12 +19,12 @@ Allocator tags are a simple way of characterizing the hardware resources that yo
 
 You should tag your allocators under the following circumstances:
 
-* After you upgrade to or install Elastic Cloud Enterprise 2.0 or later, to characterize what kind of hardware you have available in your installation.
+* After you upgrade to or install {{ece}} 2.0 or later, to characterize what kind of hardware you have available in your installation.
 * Before you create your own instance configurations and your own deployment templates, to indicate what hardware resources you can work with.
 * After you add new allocators to your installation, to indicate what kind of hardware resources they provide.
 
 ::::{tip}
-You can also delete tags, if you have no more use for them. Keep in mind that removing tags from allocators can in turn affect what allocators get matched. Removing a tag might prompt ECE to move instances of the Elastic Stack to other allocators.
+You can also delete tags, if you have no more use for them. Keep in mind that removing tags from allocators can in turn affect what allocators get matched. Removing a tag might prompt ECE to move instances of the {{stack}} to other allocators.
 ::::
 
 
@@ -44,7 +44,7 @@ $$$allocator-sample-tags$$$Tags are simple key-value pairs. A small sampling of 
 `instanceFamily: i3`, `instanceFamily: m5`
 :   Indicates the host type, used extensively on {{ech}} to identify hosts with specific hardware characteristics. If you run your own hardware on-premise and have standardized on several specific host configurations, you could use similar tags. If you are deploying ECE on another cloud platform, you could use the instance type or machine type names from your provider.
 
-Avoid tags that describe a particular use case or an Elastic Stack component you plan to run on these allocators. Examples of tags to avoid include `elasticsearch: false` or `kibana: true`. You should define the intended use at the level of instance configurations instead and tag your allocators only to describe hardware characteristics.
+Avoid tags that describe a particular use case or an {{stack}} component you plan to run on these allocators. Examples of tags to avoid include `elasticsearch: false` or `kibana: true`. You should define the intended use at the level of instance configurations instead and tag your allocators only to describe hardware characteristics.
 
 ::::{tip}
 If you have an allocator that meets several criteria, such as an allocator with multi-purpose hardware, consider assigning it a single tag that identifies its multipurpose view, such as the `instanceFamily: i3` example mentioned earlier. While it is not wrong to assign multiple tags to an allocator, filtering on the allocator when you create or edit instance configurations will be simpler with a single tag.

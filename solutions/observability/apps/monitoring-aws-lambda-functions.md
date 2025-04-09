@@ -1,15 +1,16 @@
 ---
-mapped_urls:
+navigation_title: "AWS Lambda Functions"
+mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-monitoring-aws-lambda.html
   - https://www.elastic.co/guide/en/serverless/current/observability-apm-agents-aws-lambda-functions.html
-
-navigation_title: "AWS Lambda Functions"
+applies_to:
+  stack:
+  serverless:
 ---
 
 # Monitoring AWS Lambda Functions [apm-monitoring-aws-lambda]
 
-
-Elastic APM lets you monitor your AWS Lambda functions. The natural integration of [distributed tracing](../../../solutions/observability/apps/traces.md#apm-distributed-tracing) into your AWS Lambda functions provides insights into the function’s execution and runtime behavior as well as its relationships and dependencies to other services.
+Elastic APM lets you monitor your AWS Lambda functions. The natural integration of [distributed tracing](/solutions/observability/apps/traces.md#apm-distributed-tracing) into your AWS Lambda functions provides insights into the function’s execution and runtime behavior as well as its relationships and dependencies to other services.
 
 ## AWS Lambda architecture [aws-lambda-arch]
 

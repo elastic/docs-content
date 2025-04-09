@@ -1,5 +1,11 @@
 ---
 navigation_title: "Server logs"
+applies_to:
+  deployment:
+    ess: all
+    ece: all
+    self: all
+    eck: all
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/kibana-troubleshooting-kibana-server-logs.html
 ---

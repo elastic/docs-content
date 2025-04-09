@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/logs-plaintext.html
   - https://www.elastic.co/guide/en/serverless/current/observability-plaintext-application-logs.html
 applies_to:
@@ -20,7 +20,7 @@ To ingest, parse, and correlate plaintext logs:
 
 1. Ingest plaintext logs with [{{filebeat}}](../../../solutions/observability/logs/plaintext-application-logs.md#ingest-plaintext-logs-with-filebeat) or [{{agent}}](../../../solutions/observability/logs/plaintext-application-logs.md#ingest-plaintext-logs-with-the-agent) and parse them before indexing with an ingest pipeline.
 2. [Correlate plaintext logs with an {{apm-agent}}.](../../../solutions/observability/logs/plaintext-application-logs.md#correlate-plaintext-logs)
-3. [View logs in Logs Explorer](../../../solutions/observability/logs/plaintext-application-logs.md#view-plaintext-logs)
+3. [View logs in Discover](../../../solutions/observability/logs/plaintext-application-logs.md#view-plaintext-logs)
 
 
 ## Ingest logs [ingest-plaintext-logs]
@@ -234,7 +234,7 @@ By default, Windows log files are stored in `C:\ProgramData\filebeat\Logs`.
 
 Use an ingest pipeline to parse the contents of your logs into structured, [Elastic Common Schema (ECS)](ecs://reference/index.md)-compatible fields.
 
-Create an ingest pipeline that defines a [dissect processor](elasticsearch://reference/ingestion-tools/enrich-processor/dissect-processor.md) to extract structured ECS fields from your log messages. In your project, navigate to **Developer Tools** and using a command similar to the following example:
+Create an ingest pipeline that defines a [dissect processor](elasticsearch://reference/enrich-processor/dissect-processor.md) to extract structured ECS fields from your log messages. In your project, navigate to **Developer Tools** and using a command similar to the following example:
 
 ```console
 PUT _ingest/pipeline/filebeat* <1>
@@ -252,7 +252,7 @@ PUT _ingest/pipeline/filebeat* <1>
 ```
 
 1. `_ingest/pipeline/filebeat*`: The name of the pipeline. Update the pipeline name to match the name of your data stream. For more information, refer to [Data stream naming scheme](/reference/fleet/data-streams.md#data-streams-naming-scheme).
-2. `processors.dissect`: Adds a [dissect processor](elasticsearch://reference/ingestion-tools/enrich-processor/dissect-processor.md) to extract structured fields from your log message.
+2. `processors.dissect`: Adds a [dissect processor](elasticsearch://reference/enrich-processor/dissect-processor.md) to extract structured fields from your log message.
 3. `field`: The field you’re extracting data from, `message` in this case.
 4. `pattern`: The pattern of the elements in your log data. The pattern varies depending on your log format. `%{@timestamp}` is required. `%{log.level}`, `%{host.ip}`, and `%{{message}}` are common [ECS](ecs://reference/index.md) fields. This pattern would match a log file in this format: `2023-11-07T09:39:01.012Z ERROR 192.168.1.110 Server hardware failure detected.`
 
@@ -300,7 +300,7 @@ To aggregate or search for information in plaintext logs, use an ingest pipeline
 2. Select the integration policy you created in the previous section.
 3. Click **Change defaults → Advanced options**.
 4. Under **Ingest pipelines**, click **Add custom pipeline**.
-5. Create an ingest pipeline with a [dissect processor](elasticsearch://reference/ingestion-tools/enrich-processor/dissect-processor.md) to extract structured fields from your log messages.
+5. Create an ingest pipeline with a [dissect processor](elasticsearch://reference/enrich-processor/dissect-processor.md) to extract structured fields from your log messages.
 
     Click **Import processors** and add a similar JSON to the following example:
 
@@ -318,7 +318,7 @@ To aggregate or search for information in plaintext logs, use an ingest pipeline
     }
     ```
 
-    1. `processors.dissect`: Adds a [dissect processor](elasticsearch://reference/ingestion-tools/enrich-processor/dissect-processor.md) to extract structured fields from your log message.
+    1. `processors.dissect`: Adds a [dissect processor](elasticsearch://reference/enrich-processor/dissect-processor.md) to extract structured fields from your log message.
     2. `field`: The field you’re extracting data from, `message` in this case.
     3. `pattern`: The pattern of the elements in your log data. The pattern varies depending on your log format. `%{@timestamp}`, `%{log.level}`, `%{host.ip}`, and `%{{message}}` are common [ECS](ecs://reference/index.md) fields. This pattern would match a log file in this format: `2023-11-07T09:39:01.012Z ERROR 192.168.1.110 Server hardware failure detected.`
 
@@ -351,31 +351,4 @@ Learn about correlating plaintext logs in the agent-specific ingestion guides:
 
 ## View logs [view-plaintext-logs]
 
-To view logs ingested by {{filebeat}}, go to **Discover** from the main menu and create a data view based on the `filebeat-*` index pattern. Refer to [Create a data view](../../../explore-analyze/find-and-organize/data-views.md) for more information.
-
-To view logs ingested by {{agent}}, go to Logs Explorer by clicking **Explorer** under **Logs** from the {{observability}} main menu. Refer to the [Filter and aggregate logs](../../../solutions/observability/logs/filter-aggregate-logs.md) documentation for more information on viewing and filtering your logs in {{kib}}.
-
-
-% What needs to be done: Align serverless/stateful
-
-% Use migrated content from existing pages that map to this page:
-
-% - [ ] ./raw-migrated-files/docs-content/serverless/observability-plaintext-application-logs.md
-
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
-
-$$$correlate-plaintext-logs$$$
-
-$$$ingest-plaintext-logs-with-filebeat$$$
-
-$$$ingest-plaintext-logs-with-the-agent$$$
-
-$$$observability-plaintext-application-logs-correlate-logs$$$
-
-$$$observability-plaintext-application-logs-ingest-logs-with-agent$$$
-
-$$$observability-plaintext-application-logs-ingest-logs-with-filebeat$$$
-
-$$$observability-plaintext-application-logs-view-logs$$$
-
-$$$view-plaintext-logs$$$
+To view logs ingested by {{filebeat}}, go to **Discover** from the main menu and create a data view based on the `filebeat-*` index pattern. You can also select **All logs** from the **Data views** menu as it includes the `filebeat-*` index pattern by default. Refer to [Create a data view](../../../explore-analyze/find-and-organize/data-views.md) for more information.

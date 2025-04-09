@@ -18,7 +18,7 @@ Your monthly bill is based on the capabilities you use. When you use Security An
 * **Ingest** — Measured by the number of GB of log/event/info data that you send to your Security project over the course of a month.
 * **Retention** — Measured by the total amount of ingested data stored in your Security project.
 
-Data volumes for ingest and retention are based on the fully enriched normalized data size at the end of the ingest pipeline, before {{es}} compression is performed, and will be higher than the volumes traditionally reported by {{es}} index size. In addition, these volumes might be larger than those reported by cloud provider proxy logs for data going into Elasticsearch. This allows you to have flexibility in choosing your preferred ingest architecture for enrichment, whether it’s through {{agent}}, {{ls}}, OpenTelemetry, or collectors — with no impact on the cost.
+Data volumes for ingest and retention are based on the fully enriched normalized data size at the end of the ingest pipeline, before {{es}} compression is performed, and will be higher than the volumes traditionally reported by {{es}} index size. In addition, these volumes might be larger than those reported by cloud provider proxy logs for data going into {{es}}. This allows you to have flexibility in choosing your preferred ingest architecture for enrichment, whether it’s through {{agent}}, {{ls}}, OpenTelemetry, or collectors — with no impact on the cost.
 
 
 ## Endpoint Protection [security-billing-endpoint-protection]
@@ -28,8 +28,7 @@ Endpoint Protection is an *optional* add-on to Security Analytics that provides 
 * **Endpoint Protection Essentials** — Includes robust protection against malware, ransomware, and other malicious behaviors.
 * **Endpoint Protection Complete** — Adds endpoint response actions and advanced policy management.
 
-You pay based on the number of protected endpoints you configure with the {{elastic-defend}} integration. Note that logs, events, and alerts ingested into your Security project from endpoints running {{elastic-defend}} are billed using the **Ingest** and **Retention** pricing described above.
-
+You pay based on the number of protected endpoints configured with the {{elastic-defend}} integration. Logs, events, and alerts from these endpoints are billed using the **Ingest** and **Retention** pricing. If you're using {{elastic-defend}} solely for data collection (without Endpoint Essentials or Complete add-ons), endpoints do not count towards billing. In this case, you're only billed for data ingestion and retention, and you can configure event collection and telemetry in the policy without enabling protections. 
 
 ## Cloud Protection [security-billing-cloud-protection]
 

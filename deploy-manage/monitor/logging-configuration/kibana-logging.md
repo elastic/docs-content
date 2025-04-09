@@ -9,7 +9,7 @@ applies_to:
     ess:
 ---
 
-# Kibana logging [logging-configuration]
+# {{kib}} logging [logging-configuration]
 
 $$$pattern-layout$$$
 $$$time-interval-triggering-policy$$$
@@ -17,7 +17,7 @@ $$$size-limit-triggering-policy$$$
 $$$logging-appenders$$$
 $$$dedicated-loggers$$$
 
-You do not need to configure any additional settings to use the logging features in Kibana. Logging is enabled by default.
+You do not need to configure any additional settings to use the logging features in {{kib}}. Logging is enabled by default.
 
 In all deployment types, you might want to change the log level for {{kib}}. In a self-managed, ECE, or ECK deployment, you might want to further customize your logging settings to define where log messages are displayed, stored, and formatted, or provide granular settings for different loggers.
 

@@ -1,12 +1,13 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/monitor-java-app.html
+applies_to:
+  stack:
 ---
 
 # Tutorial: Monitor a Java application [monitor-java-app]
 
 In this guide, you’ll learn how to monitor a Java application using Elastic {{observability}}: Logs, Infrastructure metrics, APM, and Uptime.
-
 
 ## What you’ll learn [_what_youll_learn]
 
@@ -18,11 +19,9 @@ You’ll learn how to:
 * Instrument your application using the [Elastic APM Java agent](apm-agent-java://reference/index.md).
 * Monitor your services using {{heartbeat}} and view your uptime data in {{kib}}.
 
-
 ## Before you begin [_before_you_begin]
 
 Create an [{{ech}}](https://cloud.elastic.co/registration?page=docs&placement=docs-body) deployment. The deployment includes an {{es}} cluster for storing and searching your data, {{kib}} for visualizing and managing your data, and an APM server. If you do not want to follow all those steps listed here and take a look at the final java code, check out the [observability-contrib GitHub repository](https://github.com/elastic/observability-contrib/tree/main/monitor-java-app) for the sample application.
-
 
 ## Step 1: Create a Java application [_step_1_create_a_java_application]
 
@@ -199,12 +198,9 @@ To create the Java application, you require OpenJDK 14 (or higher) and the [Java
     ./gradlew clean check shadowJar
     ```
 
-
-
 ## Step 2: Ingest logs [_step_2_ingest_logs]
 
 Logs can be events such as checkout, an exception, or an HTTP request. For this tutorial, let’s use log4j2 as our logging implementation.
-
 
 ### Add logging implementation [_add_logging_implementation]
 
@@ -225,7 +221,6 @@ Logs can be events such as checkout, an exception, or an HTTP request. For this 
     The logger call must be within the lambda. Otherwise, the log message is logged only during startup.
 
     ::::
-
 
     ```java
     package de.spinscale.javalin;
@@ -279,8 +274,6 @@ Logs can be events such as checkout, an exception, or an HTTP request. For this 
     17:17:40.019 [INFO ] de.spinscale.javalin.App - This is an informative logging message, user agent [curl/7.64.1]
     ```
 
-
-
 ### Log requests [_log_requests]
 
 Depending on the application traffic and whether it happens outside of the application, it makes sense to log each request on the application level.
@@ -319,8 +312,6 @@ Depending on the application traffic and whether it happens outside of the appli
     10:43:50.066 [INFO ] de.spinscale.javalin.App - GET / 200 0:0:0:0:0:0:0:1 "curl/7.64.1" 7
     ```
 
-
-
 ### Create an ISO8601 timestamp [_create_an_iso8601_timestamp]
 
 Before ingesting logs into {{ech}}, create an ISO8601 timestamp by editing the `log4j2.xml` file.
@@ -329,7 +320,6 @@ Before ingesting logs into {{ech}}, create an ISO8601 timestamp by editing the `
 Creating an ISO8601 timestamp removes the need to do any calculation for timestamps when ingesting logs, as this is a unique point in time, including the timezone. Having a timezone becomes more important once you are running across data centers while trying to follow data streams.
 
 ::::
-
 
 ```text
 <PatternLayout pattern="%d{ISO8601_OFFSET_DATE_TIME_HHCMM} [%-5level] %logger{36} %msg%n"/>
@@ -340,7 +330,6 @@ The log entries are ingested containing timestamps like the following.
 ```text
 2020-07-03T14:25:40,378+02:00 [INFO ] de.spinscale.javalin.App GET / 200 0:0:0:0:0:0:0:1 "curl/7.64.1" 0
 ```
-
 
 ### Log to a file and stdout [_log_to_a_file_and_stdout]
 
@@ -369,7 +358,6 @@ The log entries are ingested containing timestamps like the following.
 
 2. Restart the application and send a request. The logs will be sent to `/tmp/javalin/app.log`.
 
-
 ### Install and configure {{filebeat}} [_install_and_configure_filebeat]
 
 To read the log file and send it to {{es}}, {{filebeat}} is required. To download and install {{filebeat}}, use the commands that work with your system:
@@ -377,23 +365,50 @@ To read the log file and send it to {{es}}, {{filebeat}} is required. To downloa
 :::::::{tab-set}
 
 ::::::{tab-item} DEB
-Version 9.0.0-beta1 of Filebeat has not yet been released.
+```shell subs=true
+curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{stack-version}}-amd64.deb
+sudo dpkg -i filebeat-{{stack-version}}-amd64.deb
+```
 ::::::
 
 ::::::{tab-item} RPM
-Version 9.0.0-beta1 of Filebeat has not yet been released.
+```shell subs=true
+curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{stack-version}}-x86_64.rpm
+sudo rpm -vi filebeat-{{stack-version}}-x86_64.rpm
+```
 ::::::
 
 ::::::{tab-item} MacOS
-Version 9.0.0-beta1 of Filebeat has not yet been released.
+```shell subs=true
+curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{stack-version}}-darwin-x86_64.tar.gz
+tar xzvf filebeat-{{stack-version}}-darwin-x86_64.tar.gz
+```
 ::::::
 
 ::::::{tab-item} Linux
-Version 9.0.0-beta1 of Filebeat has not yet been released.
+```shell subs=true
+curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{stack-version}}-linux-x86_64.tar.gz
+tar xzvf filebeat-{{stack-version}}-linux-x86_64.tar.gz
+```
 ::::::
 
 ::::::{tab-item} Windows
-Version 9.0.0-beta1 of Filebeat has not yet been released.
+1. Download the [Filebeat Windows zip file](https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{stack-version}}-windows-x86_64.zip).
+
+2. Extract the contents of the zip file into `C:\Program Files`.
+
+3. Rename the `filebeat-[version]-windows-x86_64` directory to `Filebeat`.
+
+4. Open a PowerShell prompt as an Administrator (right-click the PowerShell icon and select *Run As Administrator*).
+
+5. From the PowerShell prompt, run the following commands to install Filebeat as a Windows service:
+
+```shell subs=true
+PS > cd 'C:\Program Files\Filebeat'
+PS C:\Program Files\Filebeat> .\install-service-filebeat.ps1
+```
+
+NOTE: If script execution is disabled on your system, you need to set the execution policy for the current session to allow the script to run. For example: `PowerShell.exe -ExecutionPolicy UnRestricted -File .\install-service-filebeat.ps1`.
 ::::::
 
 :::::::
@@ -403,7 +418,6 @@ Version 9.0.0-beta1 of Filebeat has not yet been released.
     Substitute the Cloud ID from your deployment in the following command.  To find your Cloud ID Click on your deployment in [https://cloud.elastic.co/deployments](https://cloud.elastic.co/deployments)
 
     ::::
-
 
     ```bash
     ./filebeat keystore create
@@ -443,7 +457,6 @@ Version 9.0.0-beta1 of Filebeat has not yet been released.
 
     ::::
 
-
     To see if both settings have been stored, run `./filebeat keystore list`.
 
 3. To load the {{filebeat}} dashboards, use the `elastic` super user.
@@ -472,8 +485,6 @@ Version 9.0.0-beta1 of Filebeat has not yet been released.
       api_key: ${ES_API_KEY}
     ```
 
-
-
 ### Send data to {{es}} [_send_data_to_es]
 
 To send data to {{es}}, start {{filebeat}}.
@@ -489,7 +500,6 @@ sudo service filebeat start
 If you use an `init.d` script to start Filebeat, you can’t specify command line flags (see [Command reference](https://www.elastic.co/guide/en/beats/filebeat/master/command-line-options.html)). To specify flags, start Filebeat in the foreground.
 ::::
 
-
 Also see [Filebeat and systemd](https://www.elastic.co/guide/en/beats/filebeat/master/running-with-systemd.html).
 ::::::
 
@@ -501,7 +511,6 @@ sudo service filebeat start
 ::::{note}
 If you use an `init.d` script to start Filebeat, you can’t specify command line flags (see [Command reference](https://www.elastic.co/guide/en/beats/filebeat/master/command-line-options.html)). To specify flags, start Filebeat in the foreground.
 ::::
-
 
 Also see [Filebeat and systemd](https://www.elastic.co/guide/en/beats/filebeat/master/running-with-systemd.html).
 ::::::
@@ -540,7 +549,6 @@ wrk -t1 -c 100 -d10s http://localhost:7000
 ```
 
 This command results in roughly 8,000 requests per second, and the equivalent number of log lines are also written.
-
 
 ## Step 3: View logs in {{kib}} [_step_3_view_logs_in_kib]
 
@@ -603,10 +611,7 @@ This command results in roughly 8,000 requests per second, and the equivalent nu
     * When you compare the `@timestamp` field with the timestamp of the log message, you will notice that it differs. This means that you don’t get the results you expect when filtering based on the `@timestamp` field. The current `@timestamp` field reflects the timestamp when the event was created within {{filebeat}}, not the timestamp of when the log event occurred in the application.
     * One cannot filter on specific fields like the HTTP verb, the HTTP status code, the log level or the class that generated the log message
 
-
-
 ## Step 4: Work with your logs [_step_4_work_with_your_logs]
-
 
 ### Structure logs [_structure_logs]
 
@@ -620,7 +625,7 @@ Let’s take another look at a log message generated by our app.
 
 This message has four parts: `timestamp`, `log level`, `class`, and `message`. The rules of splitting are apparent as well, as most of them involve whitespace.
 
-The good news is that all {{beats}} can process a log line before sending it to {{es}} by using [processors](beats://reference/filebeat/filtering-enhancing-data.md). If the capabilities of these processors are not enough, you can always let {{es}} do the heavy lifting by using [an ingest node](../../../manage-data/ingest/transform-enrich/ingest-pipelines.md). This is what many modules in {{filebeat}} do. A module in {{filebeat}} is a way to parse a specific log file format for a particular software.
+The good news is that all {{beats}} can process a log line before sending it to {{es}} by using [processors](beats://reference/filebeat/filtering-enhancing-data.md). If the capabilities of these processors are not enough, you can always let {{es}} do the heavy lifting by using [an ingest node](/manage-data/ingest/transform-enrich/ingest-pipelines.md). This is what many modules in {{filebeat}} do. A module in {{filebeat}} is a way to parse a specific log file format for a particular software.
 
 Let’s try this by using a couple of processors and only a {{filebeat}} configuration.
 
@@ -653,7 +658,6 @@ There is also a dedicated timestamp parsing so that the `@timestamp` field conta
 The removal of parts of the original message is debatable. Keeping the original message around makes a lot of sense to me. With the above example, debugging might become problematic if parsing the timestamp does not work as expected.
 
 ::::
-
 
 There is also a slight difference in the parsing of a timestamp as the go time parser only accepts dots as a separator between seconds and milliseconds. Still, our default output of the log4j2 is using a comma.
 
@@ -750,7 +754,6 @@ When the log level is `INFO`, it is logged with additional space at the end. You
 </File>
 ```
 
-
 ### Parse exceptions [_parse_exceptions]
 
 Exceptions are a special treat in the case of logging. They span multiple lines, so the old rule of one message per line does not exist in exceptions.
@@ -801,9 +804,7 @@ This introduces state into your logging. You cannot split a log file among sever
 
 ::::
 
-
 After restarting {{filebeat}} and your Javalin app, trigger an exception, and you will see a long stack trace in the `message` field of your logs.
-
 
 ### Configure log rotation [_configure_log_rotation]
 
@@ -841,10 +842,9 @@ The sample added a `JavalinAppLogRolling` appender to our configuration that use
 
 If a new log file is created, older log files are gzipped as well to take less space on disk. The size of 50 megabytes refers to the unpacked file size, so the potentially twenty files on disk will be much smaller each.
 
-
 ### Ingest node [_ingest_node]
 
-The built-in modules are almost entirely using the [Ingest node](../../../manage-data/ingest/transform-enrich/ingest-pipelines.md) feature of {{es}} instead of the {{beats}} processors.
+The built-in modules are almost entirely using the [Ingest node](/manage-data/ingest/transform-enrich/ingest-pipelines.md) feature of {{es}} instead of the {{beats}} processors.
 
 One of the most helpful parts of the ingest pipeline is the ability to debug by using the [Simulate Pipeline API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ingest-simulate).
 
@@ -909,7 +909,6 @@ One of the most helpful parts of the ingest pipeline is the ability to debug by 
     ```
 
 4. Restart {{filebeat}} and see if logs are flowing in as expected.
-
 
 ### Write logs as JSON [_write_logs_as_json]
 
@@ -978,8 +977,6 @@ While log4j2 has a [JSONLayout](https://logging.apache.org/log4j/2.x/manual/layo
 
     As you can see, just by writing out logs as JSON, our whole logging setup got a ton easier, so whenever possible, try to directly write your logs as JSON.
 
-
-
 ## Step 5: Ingest metrics [_step_5_ingest_metrics]
 
 A metric is considered a point in time value that can change anytime. The number of current requests can change any millisecond. You could have a spike of 1000 requests, and then everything goes back to one request. This also means that these kinds of metrics may not be accurate, and you also want to pull min/max values to get some more indication. Furthermore, this implies that you need to think about the duration of those metrics as well. Do you need those once per minute or every 10 seconds?
@@ -987,7 +984,6 @@ A metric is considered a point in time value that can change anytime. The number
 To get a different angled view of your application, let’s ingest some metrics. In this example, we will use the [Metricbeat Prometheus Module](beats://reference/metricbeat/metricbeat-module-prometheus.md) to send data to {{es}}.
 
 The underlying library used in our app is [micrometer.io](http://micrometer.io/), a vendor-neutral application metrics facade in combination with its [Prometheus support](http://micrometer.io/docs/registry/prometheus) to implement a pull-based model. You could use the [elastic support](http://micrometer.io/docs/registry/elastic) to achieve a push-based model. This would require users to store credential data of the {{es}} cluster in our app. This example keeps this data in the surrounding tools.
-
 
 ### Add metrics to the application [_add_metrics_to_the_application]
 
@@ -1088,8 +1084,6 @@ The underlying library used in our app is [micrometer.io](http://micrometer.io/)
 
     This returns a line based response with one metric per line. This is the standard Prometheus format.
 
-
-
 ### Install and configure {{metricbeat}} [_install_and_configure_metricbeat]
 
 To send metrics to {{es}}, {{metricbeat}} is required. To download and install {{metricbeat}}, use the commands that work with your system:
@@ -1097,23 +1091,50 @@ To send metrics to {{es}}, {{metricbeat}} is required. To download and install {
 :::::::{tab-set}
 
 ::::::{tab-item} DEB
-Version 9.0.0-beta1 of Metricbeat has not yet been released.
+```shell subs=true
+curl -L -O https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-{{stack-version}}-amd64.deb
+sudo dpkg -i metricbeat-{{stack-version}}-amd64.deb
+```
 ::::::
 
 ::::::{tab-item} RPM
-Version 9.0.0-beta1 of Metricbeat has not yet been released.
+```shell subs=true
+curl -L -O https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-{{stack-version}}-x86_64.rpm
+sudo rpm -vi metricbeat-{{stack-version}}-x86_64.rpm
+```
 ::::::
 
 ::::::{tab-item} MacOS
-Version 9.0.0-beta1 of Metricbeat has not yet been released.
+```shell subs=true
+curl -L -O https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-{{stack-version}}-darwin-x86_64.tar.gz
+tar xzvf metricbeat-{{stack-version}}-darwin-x86_64.tar.gz
+```
 ::::::
 
 ::::::{tab-item} Linux
-Version 9.0.0-beta1 of Metricbeat has not yet been released.
+```shell subs=true
+curl -L -O https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-{{stack-version}}-linux-x86_64.tar.gz
+tar xzvf metricbeat-{{stack-version}}-linux-x86_64.tar.gz
+```
 ::::::
 
 ::::::{tab-item} Windows
-Version 9.0.0-beta1 of Metricbeat has not yet been released.
+1. Download the [Metricbeat Windows zip file](https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-{{stack-version}}-windows-x86_64.zip).
+
+2. Extract the contents of the zip file into `C:\Program Files`.
+
+3. Rename the `metricbeat-[version]-windows-x86_64` directory to `Metricbeat`.
+
+4. Open a PowerShell prompt as an Administrator (right-click the PowerShell icon and select *Run As Administrator*).
+
+5. From the PowerShell prompt, run the following commands to install Metricbeat as a Windows service:
+
+  ```shell subs=true
+  PS > cd 'C:\Program Files\Metricbeat'
+  PS C:\Program Files\Metricbeat> .\install-service-metricbeat.ps1
+  ```
+
+NOTE: If script execution is disabled on your system, you need to set the execution policy for the current session to allow the script to run. For example: `PowerShell.exe -ExecutionPolicy UnRestricted -File .\install-service-metricbeat.ps1`.
 ::::::
 
 :::::::
@@ -1204,7 +1225,6 @@ sudo service metricbeat start
 If you use an `init.d` script to start Metricbeat, you can’t specify command line flags (see [Command reference](https://www.elastic.co/guide/en/beats/metricbeat/master/command-line-options.html)). To specify flags, start Metricbeat in the foreground.
 ::::
 
-
 Also see [Metricbeat and systemd](https://www.elastic.co/guide/en/beats/metricbeat/master/running-with-systemd.html).
 ::::::
 
@@ -1216,7 +1236,6 @@ sudo service metricbeat start
 ::::{note}
 If you use an `init.d` script to start Metricbeat, you can’t specify command line flags (see [Command reference](https://www.elastic.co/guide/en/beats/metricbeat/master/command-line-options.html)). To specify flags, start Metricbeat in the foreground.
 ::::
-
 
 Also see [Metricbeat and systemd](https://www.elastic.co/guide/en/beats/metricbeat/master/running-with-systemd.html).
 ::::::
@@ -1265,7 +1284,6 @@ GET metricbeat-*/_search?filter_path=**.prometheus,hits.total
 }
 ```
 
-
 ## Step 6: View metrics in {{kib}} [_step_6_view_metrics_in_kib]
 
 As this is custom data from our Javalin app, there is no predefined dashboard for displaying this data.
@@ -1288,15 +1306,13 @@ Visualize the number of log messages over time, split by the log level. Since th
 1. Log into {{kib}} and select **Visualize** → **Create Visualization**.
 2. Create a line chart and select `metricbeat-*` as the source.
 
-    The basic idea is to have a [max aggregation](elasticsearch://reference/data-analysis/aggregations/search-aggregations-metrics-max-aggregation.md) on the y-axis on the `prometheus.log4j2_events_total.rate` field, whereas the x-axis, is split by date using a [date_histogram aggregation](elasticsearch://reference/data-analysis/aggregations/search-aggregations-bucket-datehistogram-aggregation.md) on the `@timestamp` field.
+    The basic idea is to have a [max aggregation](elasticsearch://reference/aggregations/search-aggregations-metrics-max-aggregation.md) on the y-axis on the `prometheus.log4j2_events_total.rate` field, whereas the x-axis, is split by date using a [date_histogram aggregation](elasticsearch://reference/aggregations/search-aggregations-bucket-datehistogram-aggregation.md) on the `@timestamp` field.
 
-    There is one more split within each date histogram bucket, split by log level, using a [terms aggregation](elasticsearch://reference/data-analysis/aggregations/search-aggregations-bucket-terms-aggregation.md) on the `prometheus.labels.level`, which contains the log level. Also, increase the size of the log level to six to display every log level.
+    There is one more split within each date histogram bucket, split by log level, using a [terms aggregation](elasticsearch://reference/aggregations/search-aggregations-bucket-terms-aggregation.md) on the `prometheus.labels.level`, which contains the log level. Also, increase the size of the log level to six to display every log level.
 
     The final result looks like this.
 
     ![Date Histogram of the log rate per log level](/solutions/images/observability-monitor-java-app-metrics-kibana-create-visualization-log-rate.png "")
-
-
 
 ### Visualize open files over time [_visualize_open_files_over_time]
 
@@ -1362,7 +1378,7 @@ Let’s look at the `process_files_open_files` metric. This should be a rather s
 
     Results show that only twenty requests were sent, which makes sense given the processing time.
 
-    Now let’s build a visualization using [Lens](../../../explore-analyze/dashboards.md) in {{kib}}.
+    Now let’s build a visualization using [Lens](/explore-analyze/dashboards.md) in {{kib}}.
 
     ![Lens visualization](/solutions/images/observability-monitor-java-app-metrics-kibana-create-visualization-open-files.png "")
 
@@ -1380,8 +1396,6 @@ Let’s look at the `process_files_open_files` metric. This should be a rather s
 
     This is an area chart of the total events counter the Javalin app emits. It’s rising because there is a component polling an endpoint that, in turn, produces another log message. The steeper peek was due to sending more requests. But where is the sudden drop-off coming from? A JVM restart. As those metrics are not persisted, they reset on a JVM restart. With that in mind, it’s often better to log the `rate` instead of the `counter` field.
 
-
-
 ## Step 7: Instrument the application [_step_7_instrument_the_application]
 
 The third piece of {{observability}} is Application Performance Management (APM). An APM setup consists of an APM server which accepts the data (and is already running within our {{ecloud}} setup) and an agent delivering the data to the server.
@@ -1391,7 +1405,6 @@ The agent has two tasks: instrumenting the Java application to extract applicati
 One of the APM’s core ideas is the ability to follow the flow of a user session across your whole stack, regardless of whether you have dozens of microservices or a monolith answering your user requests. This implies the ability to tag a request across your entire stack.
 
 To fully capture user activity, you need to start in the browser of the user using Real User Monitoring (RUM) down to your application, which sends a SQL query to your database.
-
 
 ### Data Model [_data_model]
 
@@ -1406,7 +1419,6 @@ This is a Spring Boot application. The `UserProfileController.showProfile()` met
 The Java {{apm-agent}} can instrument specific frameworks automatically. Spring and Spring Boot are supported well, and the above data was created by adding the agent to the Spring Boot application; there is no configuration necessary.
 
 There are currently agents for Go, .NET, Node, Python, Ruby, and the browser (RUM). Agents keep getting added so you may want to check the [APM agent documentation](https://www.elastic.co/guide/en/apm/agent/index.html).
-
 
 ### Add the {{apm-agent}} to your code [_add_the_apm_agent_to_your_code]
 
@@ -1434,7 +1446,6 @@ java -javaagent:/path/to/elastic-apm-agent-1.17.0.jar\
 ```
 
 You could now go ahead and open up the Applications UI and you should see the data flowing in.
-
 
 ### Automatic attachment [_automatic_attachment]
 
@@ -1468,7 +1479,6 @@ This above message will return something like this:
 So now the agent was attached to a running application with a special configuration.
 
 While both of the first two possibilities work, you can also use the third one: using the {{apm-agent}} as a direct dependency. This allows you to write custom spans and transactions within our application.
-
 
 ### Programmatic setup [_programmatic_setup]
 
@@ -1532,8 +1542,6 @@ A programmatic setup allows you to attach the agent via a line of java in your s
     As you can see, this is quite the difference to the Spring Boot application shown earlier. The different endpoints are not listed; we can see the requests per minute though including errors.
 
     The only transaction comes from a single servlet, which is not too helpful. Let’s try to fix this by introducing custom programmatic transactions.
-
-
 
 ### Custom transactions [_custom_transactions]
 
@@ -1604,8 +1612,6 @@ A programmatic setup allows you to attach the agent via a line of java in your s
       + " " + ctx.endpointHandlerPath()));
     ```
 
-
-
 ### Method tracing via agent configuration [_method_tracing_via_agent_configuration]
 
 Instead of writing code to trace methods, you can also configure the agent to do this. Let’s try to figure out if logging is a bottleneck for our application and trace the request logger statements we added earlier.
@@ -1657,8 +1663,6 @@ ELASTIC_APM_TRACE_METHODS="de.spinscale.javalin.Log4j2RequestLogger#handle"
 
     If you are on the quest for a faster service, you may want to rethink logging. However, this logging happens after the result is written to the client, so while the total processing time increases with logging, responding to the client does not (closing the connection however might be). Also note that these tests were conducted without a proper warm-up. I assume that after appropriate JVM warm-up, you will have much faster processing of requests.
 
-
-
 ### Automatic profiling of inferred spans [_automatic_profiling_of_inferred_spans]
 
 Once you have a bigger application with more code paths than our sample app, you can try to enable the [automatic profiling of inferred spans](apm-agent-java://reference/config-profiling.md#config-profiling-inferred-spans-enabled) by setting the following.
@@ -1668,7 +1672,6 @@ ELASTIC_APM_PROFILING_INFERRED_SPANS_ENABLED=true
 ```
 
 This mechanism uses the [async profiler](https://github.com/jvm-profiling-tools/async-profiler) to create spans without you having to instrument anything allowing you to find bottlenecks faster.
-
 
 ### Log correlation [_log_correlation]
 
@@ -1695,16 +1698,17 @@ We have not covered the [Elastic APM OpenTracing bridge](apm-agent-java://refere
 
 ::::
 
-
-
 ## Step 8: Ingest Uptime data [_step_8_ingest_uptime_data]
+
+```{applies_to}
+stack: deprecated 8.15.0
+```
 
 There are some basic monitoring capabilities in our application so far. We index logs (with traces), we index metrics, and we even can look in our app to figure out single performance bottlenecks thanks to APM. However, there is still one weak spot. Everything done so far was within the application, but all the users are reaching the application from the internet.
 
 How about checking if our users have the same experience that our APM data is suggesting to us. Imagine having a lagging load balancer fronting your app, that costs you an additional 50 milliseconds per request. That would be devastating. Or TLS negotiation being costly. Even though none of those external events is your fault, you will still be impacted by this and should try to mitigate those. This means you need to know about them first.
 
 [Uptime](https://www.elastic.co/uptime-monitoring) not only enables you to monitor the availability of a service, but also graph latencies over time, and get notified about expiring TLS certificates.
-
 
 ### Setup [_setup]
 
@@ -1713,23 +1717,50 @@ To send uptime data to {{es}}, {{heartbeat}} (the polling component) is required
 :::::::{tab-set}
 
 ::::::{tab-item} DEB
-Version 9.0.0-beta1 of Heartbeat has not yet been released.
+```shell subs=true
+curl -L -O https://artifacts.elastic.co/downloads/beats/heartbeat/heartbeat-{{stack-version}}-amd64.deb
+sudo dpkg -i heartbeat-{{stack-version}}-amd64.deb
+```
 ::::::
 
 ::::::{tab-item} RPM
-Version 9.0.0-beta1 of Heartbeat has not yet been released.
+```shell subs=true
+curl -L -O https://artifacts.elastic.co/downloads/beats/heartbeat/heartbeat-{{stack-version}}-x86_64.rpm
+sudo rpm -vi heartbeat-{{stack-version}}-x86_64.rpm
+```
 ::::::
 
 ::::::{tab-item} MacOS
-Version 9.0.0-beta1 of Heartbeat has not yet been released.
+```shell subs=true
+curl -L -O https://artifacts.elastic.co/downloads/beats/heartbeat/heartbeat-{{stack-version}}-darwin-x86_64.tar.gz
+tar xzvf heartbeat-{{stack-version}}-darwin-x86_64.tar.gz
+```
 ::::::
 
 ::::::{tab-item} Linux
-Version 9.0.0-beta1 of Heartbeat has not yet been released.
+```shell subs=true
+curl -L -O https://artifacts.elastic.co/downloads/beats/heartbeat/heartbeat-{{stack-version}}-linux-x86_64.tar.gz
+tar xzvf heartbeat-{{stack-version}}-linux-x86_64.tar.gz
+```
 ::::::
 
 ::::::{tab-item} Windows
-Version 9.0.0-beta1 of Heartbeat has not yet been released.
+1. Download the [Heartbeat Windows zip file](https://artifacts.elastic.co/downloads/beats/heartbeat/heartbeat-{{stack-version}}-windows-x86_64.zip).
+
+2. Extract the contents of the zip file into `C:\Program Files`.
+
+3. Rename the `heartbeat-[version]-windows-x86_64` directory to `Heartbeat`.
+
+4. Open a PowerShell prompt as an Administrator (right-click the PowerShell icon and select *Run As Administrator*).
+
+5. From the PowerShell prompt, run the following commands to install Heartbeat as a Windows service:
+
+  ```shell subs=true
+  PS > cd 'C:\Program Files\Heartbeat'
+  PS C:\Program Files\Heartbeat> .\install-service-heartbeat.ps1
+  ```
+
+NOTE: If script execution is disabled on your system, you need to set the execution policy for the current session to allow the script to run. For example: `PowerShell.exe -ExecutionPolicy UnRestricted -File .\install-service-heartbeat.ps1`.
 ::::::
 
 :::::::
@@ -1815,7 +1846,6 @@ sudo service heartbeat start
 If you use an `init.d` script to start Heartbeat, you can’t specify command line flags (see [Command reference](https://www.elastic.co/guide/en/beats/heartbeat/master/command-line-options.html)). To specify flags, start Heartbeat in the foreground.
 ::::
 
-
 Also see [Heartbeat and systemd](https://www.elastic.co/guide/en/beats/heartbeat/master/running-with-systemd.html).
 ::::::
 
@@ -1827,7 +1857,6 @@ sudo service heartbeat start
 ::::{note}
 If you use an `init.d` script to start Heartbeat, you can’t specify command line flags (see [Command reference](https://www.elastic.co/guide/en/beats/heartbeat/master/command-line-options.html)). To specify flags, start Heartbeat in the foreground.
 ::::
-
 
 Also see [Heartbeat and systemd](https://www.elastic.co/guide/en/beats/heartbeat/master/running-with-systemd.html).
 ::::::
@@ -1872,7 +1901,6 @@ The interesting part is the world map at the top. You can specify in the configu
 The duration of the monitor is in the low milliseconds, as it is really fast. Check the monitor for the `httpbin.org` endpoint, and you will see a much higher duration. In this case, it is about 400 milliseconds for each request. This is not too surprising because the endpoint is not nearby, and you need to initiate a TLS connection for every request, which is costly.
 
 Do not underestimate the importance of this kind of monitoring. Also, consider this just the beginning as the next step is to have synthetics that monitor the correct behavior of your application, for example, to ensure that your checkout process works all the time.
-
 
 ## What’s next? [_whats_next]
 

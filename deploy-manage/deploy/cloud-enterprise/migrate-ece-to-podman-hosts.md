@@ -101,27 +101,58 @@ Using Docker or Podman as container runtime is a configuration local to the host
         SELINUX=enforcing
         ```
 
-4. Install podman:
+4. Install Podman:
+    
+    * For Podman 4
 
-    * Install the latest available version `4.*` using dnf.
+        * Install the latest available version `4.*` using dnf.
 
-        ```sh
-        sudo dnf install podman-4.* podman-remote-4.*
-        ```
+            ```sh
+            sudo dnf install podman-4.* podman-remote-4.*
+            ```
 
-    * To prevent automatic Podman major version updates, configure the Podman version to be locked while still allowing minor and patch updates.
+        * To prevent automatic Podman major version updates, configure the Podman version to be locked at version `4.*` while still allowing minor and patch updates.
 
-        ```sh
-        ## Install versionlock
-        sudo dnf install 'dnf-command(versionlock)'
+            ```sh
+            ## Install versionlock
+            sudo dnf install 'dnf-command(versionlock)'
 
-        ## Lock major version
-        sudo dnf versionlock add --raw 'podman-4.*'
-        sudo dnf versionlock add --raw 'podman-remote-4.*'
+            ## Lock major version
+            sudo dnf versionlock add --raw 'podman-4.*'
+            sudo dnf versionlock add --raw 'podman-remote-4.*'
 
-        ## Verify that podman-4.* and podman-remote-4.* appear in the output
-        sudo dnf versionlock list
-        ```
+            ## Verify that podman-4.* and podman-remote-4.* appear in the output
+            sudo dnf versionlock list
+            ```
+
+    * For Podman 5
+
+        * Install version `5.2.2-13.*` using dnf.
+
+            :::{note}
+            As mentioned in [Migrating to Podman 5](migrate-to-podman-5.md) it is recommended to install Podman `5.2.2-13` since this is the latest supported version.
+
+            If you decide to install a previous Podman 5 version, make sure to replace `5.2.2-13` with the desired version in the commands below.
+
+            The version lock is still required for previous versions, to prevent automatic in-place updates that may be affected by a known [memory leak issue](https://github.com/containers/podman/issues/25473).
+            :::
+
+            ```sh
+            sudo dnf install podman-5.2.2-13.* podman-remote-5.2.2-13.*
+            ```
+        * To prevent automatic Podman updates to unsupported versions, configure the Podman version to be locked at version `5.2.2-13.*`.
+
+            ```sh
+            ## Install versionlock
+            sudo dnf install 'dnf-command(versionlock)'
+
+            ## Lock major version
+            sudo dnf versionlock add --raw 'podman-5.2.2-13.*'
+            sudo dnf versionlock add --raw 'podman-remote-5.2.2-13.*'
+
+            ## Verify that podman-5.2.2-13.* and podman-remote-5.2.2-13.* appear in the output
+            sudo dnf versionlock list
+            ```
 
 5. [This step is for RHEL 9 and Rocky Linux 9 only] Switch the network stack from Netavark to CNI:
 
@@ -267,7 +298,7 @@ Using Docker or Podman as container runtime is a configuration local to the host
     sudo install -o elastic -g elastic -d -m 700 /mnt/data
     ```
 
-21. As a sudoers user, modify the entry for the XFS volume in the `/etc/fstab` file to add `pquota,prjquota`. The default filesystem path used by Elastic Cloud Enterprise is `/mnt/data`.
+21. As a sudoers user, modify the entry for the XFS volume in the `/etc/fstab` file to add `pquota,prjquota`. The default filesystem path used by {{ece}} is `/mnt/data`.
 
     ::::{note}
     Replace `/dev/nvme1n1` in the following example with the corresponding device on your host, and add this example configuration as a single line to `/etc/fstab`.
@@ -321,7 +352,7 @@ Using Docker or Podman as container runtime is a configuration local to the host
     vm.max_map_count=262144
     # enable forwarding so the Docker networking works as expected
     net.ipv4.ip_forward=1
-    # Decrease the maximum number of TCP retransmissions to 5 as recommended for Elasticsearch TCP retransmission timeout.
+    # Decrease the maximum number of TCP retransmissions to 5 as recommended for {{es}} TCP retransmission timeout.
     # See /deploy-manage/deploy/self-managed/system-config-tcpretries.md
     net.ipv4.tcp_retries2=5
     # Make sure the host doesn't swap too early
@@ -385,7 +416,7 @@ Using Docker or Podman as container runtime is a configuration local to the host
 
     1. Use the ECE installer script together with the `--podman` flag to add the additional host as a podman-based host.
 
-        Refer to the official [Install Elastic Cloud Enterprise on an additional host](install-ece-on-additional-hosts.md) and [Install ECE online](./install.md) documentation to adapt the command line parameters to your environment including fetching the role token.
+        Refer to the official [Install {{ece}} on an additional host](install-ece-on-additional-hosts.md) and [Install ECE online](./install.md) documentation to adapt the command line parameters to your environment including fetching the role token.
 
         [JVM heap sizes](ece-jvm.md) describes recommended JVM options.
 

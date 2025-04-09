@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/triage-slo-burn-rate-breaches.html
   - https://www.elastic.co/guide/en/serverless/current/observability-triage-slo-burn-rate-breaches.html
 

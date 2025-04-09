@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/security/current/alert-suppression.html
   - https://www.elastic.co/guide/en/serverless/current/security-alert-suppression.html
 applies_to:

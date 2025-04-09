@@ -10,11 +10,11 @@ mapped_pages:
 
 This section describes how to restrict associations that can be created between resources managed by ECK.
 
-When using the `elasticsearchRef` field to establish a connection to Elasticsearch from Kibana, APM Server, or Beats resources, by default the association is allowed as long as both resources are deployed to namespaces managed by that particular ECK instance. The association will succeed even if the user creating the association does not have access to one of the namespaces or the Elasticsearch resource.
+When using the `elasticsearchRef` field to establish a connection to {{es}} from {{kib}}, APM Server, or Beats resources, by default the association is allowed as long as both resources are deployed to namespaces managed by that particular ECK instance. The association will succeed even if the user creating the association does not have access to one of the namespaces or the {{es}} resource.
 
 The enforcement of access control rules for cross-namespace associations is disabled by default. Once enabled, it only enforces access control for resources deployed across two different namespaces. Associations between resources deployed in the same namespace are not affected.
 
-Associations are allowed as long as the `ServiceAccount` used by the associated resource can execute HTTP `GET` requests against the referenced Elasticsearch object.
+Associations are allowed as long as the `ServiceAccount` used by the associated resource can execute HTTP `GET` requests against the referenced {{es}} object.
 
 ::::{important} 
 ECK automatically removes any associations that do not have the correct access rights. If you have existing associations, do not enable this feature without creating the required `Roles` and `RoleBindings` as described in the following sections.
@@ -23,7 +23,7 @@ ECK automatically removes any associations that do not have the correct access r
 
 To enable the restriction of cross-namespace associations, start the operator with the `--enforce-rbac-on-refs` flag.
 
-1. Create a `ClusterRole` to allow HTTP `GET` requests to be run against Elasticsearch objects:
+1. Create a `ClusterRole` to allow HTTP `GET` requests to be run against {{es}} objects:
 
     ```yaml
     apiVersion: rbac.authorization.k8s.io/v1
@@ -39,7 +39,7 @@ To enable the restriction of cross-namespace associations, start the operator wi
           - get
     ```
 
-2. Create a `ServiceAccount` and a `RoleBinding` in the Elasticsearch namespace to allow any resource using the `ServiceAccount` to associate with the Elasticsearch cluster:
+2. Create a `ServiceAccount` and a `RoleBinding` in the {{es}} namespace to allow any resource using the `ServiceAccount` to associate with the {{es}} cluster:
 
     ```sh
     > kubectl create serviceaccount associated-resource-sa
@@ -74,7 +74,7 @@ To enable the restriction of cross-namespace associations, start the operator wi
       elasticsearchRef:
         name: "elasticsearch-sample"
         namespace: "elasticsearch-ns"
-      # Service account used by this resource to get access to an Elasticsearch cluster
+      # Service account used by this resource to get access to an {{es}} cluster
       serviceAccountName: associated-resource-sa
     ```
 
@@ -86,5 +86,5 @@ If the `serviceAccountName` is not set, ECK uses the default service account ass
 ::::
 
 
-The associated resource `associated-resource` is now allowed to create an association with any Elasticsearch cluster in the namespace `elasticsearch-ns`.
+The associated resource `associated-resource` is now allowed to create an association with any {{es}} cluster in the namespace `elasticsearch-ns`.
 

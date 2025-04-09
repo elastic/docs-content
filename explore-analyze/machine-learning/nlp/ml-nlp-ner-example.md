@@ -43,7 +43,7 @@ docker run -it --rm docker.elastic.co/eland/eland \
       --start
 ```
 
-You need to provide an administrator username and its password and replace the `$CLOUD_ID` with the ID of your Cloud deployment. This Cloud ID can be copied from the **Deployments** page on your Cloud website.
+You need to provide an administrator username and its password and replace the `$CLOUD_ID` with the ID of your Cloud deployment. This Cloud ID can be copied from the **Hosted deployments** page on your Cloud website.
 
 Since the `--start` option is used at the end of the Eland import command, {{es}} deploys the model ready to use. If you have multiple models and want to select which model to deploy, you can use the **{{ml-app}} > Model Management** user interface in {{kib}} to manage the starting and stopping of models.
 
@@ -113,7 +113,7 @@ Using the example text "Elastic is headquartered in Mountain View, California.",
 
 ## Add the NER model to an {{infer}} ingest pipeline [ex-ner-ingest]
 
-You can perform bulk {{infer}} on documents as they are ingested by using an [{{infer}} processor](elasticsearch://reference/ingestion-tools/enrich-processor/inference-processor.md) in your ingest pipeline. The novel *Les Misérables* by Victor Hugo is used as an example for {{infer}} in the following example. [Download](https://github.com/elastic/stack-docs/blob/8.5/docs/en/stack/ml/nlp/data/les-miserables-nd.json) the novel text split by paragraph as a JSON file, then upload it by using the [Data Visualizer](../../../manage-data/ingest/upload-data-files.md). Give the new index the name `les-miserables` when uploading the file.
+You can perform bulk {{infer}} on documents as they are ingested by using an [{{infer}} processor](elasticsearch://reference/enrich-processor/inference-processor.md) in your ingest pipeline. The novel *Les Misérables* by Victor Hugo is used as an example for {{infer}} in the following example. [Download](https://github.com/elastic/stack-docs/blob/8.5/docs/en/stack/ml/nlp/data/les-miserables-nd.json) the novel text split by paragraph as a JSON file, then upload it by using the [Data Visualizer](../../../manage-data/ingest/upload-data-files.md). Give the new index the name `les-miserables` when uploading the file.
 
 Now create an ingest pipeline either in the [Stack management UI](ml-nlp-inference.md#ml-nlp-inference-processor) or by using the API:
 
