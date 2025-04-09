@@ -13,7 +13,6 @@ mapped_pages:
 This section contains reference information for Elastic Observability features, including:
 
 * Fields reference
-  * Logs Discover fields
   * Infrastructure app fields
 * Elastic Entity Model
 
