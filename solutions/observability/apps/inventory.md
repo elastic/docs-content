@@ -3,19 +3,18 @@ navigation_title: "Inventory"
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/inventory.html
   - https://www.elastic.co/guide/en/serverless/current/observability-inventory.html
+applies_to:
+  stack:
+  serverless:
 ---
 
-
-
 # Inventory [inventory]
-
-
-Inventory provides a single place to observe the status of your entire ecosystem of hosts, containers, and services at a glance, even just from logs. From there, you can monitor and understand the health of your entities, check what needs attention, and start your investigations.
 
 ::::{note}
 The new Inventory requires the Elastic Entity Model (EEM). To learn more, refer to [Elastic Entity Model](/reference/observability/elastic-entity-model.md).
 ::::
 
+Inventory provides a single place to observe the status of your entire ecosystem of hosts, containers, and services at a glance, even just from logs. From there, you can monitor and understand the health of your entities, check what needs attention, and start your investigations.
 
 :::{image} /solutions/images/observability-inventory-catalog.png
 :alt: Inventory catalog
@@ -44,7 +43,6 @@ Inventory allows you to:
 * Drill down into any host, container, or service to help you understand performance
 * Debug resource bottlenecks with your service caused by their containers and the hosts they run on.
 * Easily discover all entities related to the host, container or service you are viewing by leveraging your tags and labels
-
 
 ## Explore your entities [explore-your-entities]
 
@@ -78,11 +76,9 @@ For each entity, you can click the entity name and get a detailed view. For exam
 
 If you open an entity of type `host` or `container` that does not have infrastructure data, some of the visualizations will be blank and some features on the page will not be fully populated.
 
-
 ## Add entities to the Inventory [add-entities-to-inventory]
 
 You can add entities to the Inventory through one of the following approaches: **Add data** or **Associate existing service logs**.
-
 
 ## Add data [add-data-entities]
 
@@ -92,7 +88,6 @@ To add entities, select **Add data** and choose one of the following onboarding 
 * **Kubernetes** Detects hosts, containers, and services
 * **Application** Detects services
 * **Cloud** Ingests telemetry data from the Cloud
-
 
 ## Associate existing service logs [associate-existing-service-logs]
 

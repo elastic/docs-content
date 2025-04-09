@@ -12,7 +12,7 @@ applies_to:
 :::{include} _snippets/legacy-warning.md
 :::
 
-The purpose of exporters is to take data collected from any Elastic Stack source and route it to the monitoring cluster. It is possible to configure more than one exporter, but the general and default setup is to use a single exporter.
+The purpose of exporters is to take data collected from any {{stack}} source and route it to the monitoring cluster. It is possible to configure more than one exporter, but the general and default setup is to use a single exporter.
 
 There are two types of exporters in {{es}}:
 

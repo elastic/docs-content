@@ -8,14 +8,12 @@ applies_to:
 
 # Use Metricbeat to send monitoring data [apm-monitoring-metricbeat-collection]
 
-
 In 7.3 and later, you can use {{metricbeat}} to collect data about APM Server and ship it to the monitoring cluster. The benefit of using {{metricbeat}} instead of internal collection is that the monitoring agent remains active even if the APM Server instance dies.
 
 To collect and ship monitoring data:
 
 1. [Configure the shipper you want to monitor](#apm-configure-shipper)
 2. [Install and configure {{metricbeat}} to collect monitoring data](#apm-configure-metricbeat)
-
 
 ## Configure the shipper you want to monitor [apm-configure-shipper]
 
@@ -61,7 +59,6 @@ To collect and ship monitoring data:
 
 5. Start APM Server.
 
-
 ## Install and configure {{metricbeat}} to collect monitoring data [apm-configure-metricbeat]
 
 1. Install {{metricbeat}} on the same server as APM Server. To learn how, see [Get started with {{metricbeat}}](beats://reference/metricbeat/metricbeat-installation-configuration.md). If you already have {{metricbeat}} installed on the server, skip this step.
@@ -105,7 +102,7 @@ To collect and ship monitoring data:
 
     If the Elastic {{security-features}} are enabled, you must also provide a user ID and password so that {{metricbeat}} can collect metrics successfully:
 
-    1. Create a user on the {{es}} cluster that has the `remote_monitoring_collector` [built-in role](../../../deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md). Alternatively, if it’s available in your environment, use the `remote_monitoring_user` [built-in user](../../../deploy-manage/users-roles/cluster-or-deployment-auth/built-in-users.md).
+    1. Create a user on the {{es}} cluster that has the `remote_monitoring_collector` [built-in role](/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md). Alternatively, if it’s available in your environment, use the `remote_monitoring_user` [built-in user](/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-users.md).
     2. Add the `username` and `password` settings to the beat module configuration file.
 
 4. Optional: Disable the system module in the {{metricbeat}}.
@@ -121,7 +118,6 @@ To collect and ship monitoring data:
     ::::{tip}
     In production environments, we strongly recommend using a separate cluster (referred to as the *monitoring cluster*) to store the data. Using a separate monitoring cluster prevents production cluster outages from impacting your ability to access your monitoring data. It also prevents monitoring activities from impacting the performance of your production cluster.
     ::::
-
 
     For example, specify the {{es}} output information in the {{metricbeat}} configuration file (`metricbeat.yml`):
 
@@ -140,17 +136,15 @@ To collect and ship monitoring data:
     1. In this example, the data is stored on a monitoring cluster with nodes `es-mon-1` and `es-mon-2`.
     2. Specify one of `api_key` or `username`/`password`.
 
-
     If you configured the monitoring cluster to use encrypted communications, you must access it via HTTPS. For example, use a `hosts` setting like `https://es-mon-1:9200`.
 
     ::::{important}
     The {{es}} {{monitor-features}} use ingest pipelines, therefore the cluster that stores the monitoring data must have at least one ingest node.
     ::::
 
-
     If the {{es}} {{security-features}} are enabled on the monitoring cluster, you must provide a valid user ID and password so that {{metricbeat}} can send metrics successfully:
 
-    1. Create a user on the monitoring cluster that has the `remote_monitoring_agent` [built-in role](../../../deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md). Alternatively, if it’s available in your environment, use the `remote_monitoring_user` [built-in user](../../../deploy-manage/users-roles/cluster-or-deployment-auth/built-in-users.md).
+    1. Create a user on the monitoring cluster that has the `remote_monitoring_agent` [built-in role](/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md). Alternatively, if it’s available in your environment, use the `remote_monitoring_user` [built-in user](/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-users.md).
 
         ::::{tip}
         If you’re using {{ilm}}, the remote monitoring user requires additional privileges to create and read indices. For more information, see [Use feature roles](create-assign-feature-roles-to-apm-server-users.md).
@@ -161,5 +155,5 @@ To collect and ship monitoring data:
     For more information about these configuration options, see [Configure the {{es}} output](beats://reference/metricbeat/elasticsearch-output.md).
 
 6. [Start {{metricbeat}}](beats://reference/metricbeat/metricbeat-starting.md) to begin collecting monitoring data.
-7. [View the monitoring data in {{kib}}](../../../deploy-manage/monitor/stack-monitoring/kibana-monitoring-data.md).
+7. [View the monitoring data in {{kib}}](/deploy-manage/monitor/stack-monitoring/kibana-monitoring-data.md).
 

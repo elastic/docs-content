@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/security/current/shared-exception-lists.html
   - https://www.elastic.co/guide/en/serverless/current/security-shared-exception-lists.html
 applies_to:

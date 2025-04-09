@@ -1,20 +1,20 @@
 ---
-mapped_urls:
+navigation_title: "APM agents"
+mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-agents.html
   - https://www.elastic.co/guide/en/serverless/current/observability-apm-agents-elastic-apm-agents.html
-
-navigation_title: "APM agents"
+applies_to:
+  stack:
+  serverless:
 ---
 
 # Elastic APM agents [observability-apm-agents-elastic-apm-agents]
 
-
 ::::{note}
 
-**For Observability Serverless projects**, the **Admin** role or higher is required to use APM agents. To learn more, refer to [Assign user roles and privileges](../../../deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
+**For Observability Serverless projects**, the **Admin** role or higher is required to use APM agents. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
 
 ::::
-
 
 Elastic APM agents automatically measure application performance and track errors. They offer built-in support for popular frameworks and technologies, and provide easy-to-use APIs that allow you to instrument any application.
 
@@ -31,7 +31,7 @@ Spans are grouped in transactions—by default, one for each incoming HTTP reque
 
 **Learn more**
 
-If you're ready to give Elastic APM a try, see [Get started with traces and APM](../../../solutions/observability/apps/get-started-with-apm.md).
+If you're ready to give Elastic APM a try, see [Get started with traces and APM](/solutions/observability/apps/get-started-with-apm.md).
 
 See the [Java agent reference](apm-agent-java://reference/index.md) for full documentation, including:
 
@@ -57,7 +57,7 @@ These events, called Transactions and Spans, are sent to Elastic, where they're 
 
 **Learn more**
 
-If you’re ready to give Elastic APM a try, see [Get started with traces and APM](../../../solutions/observability/apps/get-started-with-apm.md).
+If you’re ready to give Elastic APM a try, see [Get started with traces and APM](/solutions/observability/apps/get-started-with-apm.md).
 
 See the [Node.js agent reference](apm-agent-nodejs://reference/index.md) for full documentation, including:
 
@@ -87,7 +87,7 @@ In addition to APM and error data, the Python agent also collects system and app
 
 **Learn more**
 
-If you’re ready to give Elastic APM a try, see [Get started with traces and APM](../../../solutions/observability/apps/get-started-with-apm.md).
+If you’re ready to give Elastic APM a try, see [Get started with traces and APM](/solutions/observability/apps/get-started-with-apm.md).
 
 See the [Python agent reference](apm-agent-python://reference/index.md) for full documentation, including:
 
@@ -113,7 +113,7 @@ These events, called Transactions and Spans, are sent to Elastic, where they're 
 
 **Learn more**
 
-If you're ready to give Elastic APM a try, see [Get started with traces and APM](../../../solutions/observability/apps/get-started-with-apm.md).
+If you're ready to give Elastic APM a try, see [Get started with traces and APM](/solutions/observability/apps/get-started-with-apm.md).
 
 See the [Ruby agent reference](apm-agent-ruby://reference/index.md) for full documentation, including:
 
@@ -145,7 +145,7 @@ In addition to capturing events like those mentioned here, the agent also collec
 
 **Learn more**
 
-If you're ready to give Elastic APM a try, see [Get started with traces and APM](../../../solutions/observability/apps/get-started-with-apm.md).
+If you're ready to give Elastic APM a try, see [Get started with traces and APM](/solutions/observability/apps/get-started-with-apm.md).
 
 See the [Go agent reference](apm-agent-go://reference/index.md) for full documentation, including:
 
@@ -169,7 +169,7 @@ The Agent automatically registers callback methods for built-in Diagnostic Sourc
 
 **Learn more**
 
-If you're ready to give Elastic APM a try, see [Get started with traces and APM](../../../solutions/observability/apps/get-started-with-apm.md).
+If you're ready to give Elastic APM a try, see [Get started with traces and APM](/solutions/observability/apps/get-started-with-apm.md).
 
 See the [.NET agent reference](apm-agent-dotnet://reference/index.md) for full documentation, including:
 
@@ -191,7 +191,7 @@ The Elastic APM PHP agent measures application performance and tracks errors. Th
 
 **Learn more**
 
-If you're ready to give Elastic APM a try, see [Get started with traces and APM](../../../solutions/observability/apps/get-started-with-apm.md).
+If you're ready to give Elastic APM a try, see [Get started with traces and APM](/solutions/observability/apps/get-started-with-apm.md).
 
 See the [PHP agent reference](apm-agent-php://reference/index.md)  for full documentation, including:
 

@@ -1,13 +1,14 @@
 ---
-mapped_urls:
+navigation_title: "Filters"
+mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-filters.html
   - https://www.elastic.co/guide/en/serverless/current/observability-apm-filter-your-data.html
-
-navigation_title: "Filters"
+applies_to:
+  stack:
+  serverless:
 ---
 
 # Filter application data [apm-filter-your-data]
-
 
 Global filters are ways you can filter your APM data based on a specific time range or environment. When viewing a specific service, the filter persists as you move between tabs.
 
@@ -17,16 +18,13 @@ Global filters are ways you can filter your APM data based on a specific time ra
 :::
 
 ::::{note}
-If you prefer to use advanced queries on your data to filter on specific pieces of information, see [Query your data](../../../solutions/observability/apps/use-advanced-queries-on-application-data.md).
+If you prefer to use advanced queries on your data to filter on specific pieces of information, see [Query your data](/solutions/observability/apps/use-advanced-queries-on-application-data.md).
 
 ::::
-
-
 
 ## Global time range [apm-filter-your-data-global-time-range]
 
 The global time range filter restricts APM data to a specific time period.
-
 
 ## Service environment filter [apm-filter-your-data-service-environment-filter]
 

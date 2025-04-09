@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/ldap-realm.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-securing-clusters-ldap.html
 applies_to:
@@ -314,4 +314,4 @@ By default, when you configure {{es}} to connect to an LDAP server using SSL/TLS
 
 The LDAP security realm uses the {{kib}}-provided [basic authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-authentication.md#basic-authentication) login form. Basic authentication is enabled by default.
 
-You can also use LDAP with [token authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-authentication.md#token-authentication) in Kibana.
+You can also use LDAP with [token authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-authentication.md#token-authentication) in {{kib}}.

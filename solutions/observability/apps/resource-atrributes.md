@@ -1,9 +1,10 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-open-telemetry-resource-attributes.html
   - https://www.elastic.co/guide/en/serverless/current/observability-apm-agents-opentelemetry-resource-attributes.html
 applies_to:
-  stack: all
+  stack:
+  serverless:
 ---
 
 # Resource attributes [apm-open-telemetry-resource-attributes]
@@ -44,4 +45,4 @@ Need to add event attributes instead? Use attributes—​not to be confused wit
 
 Elastic integrates with OpenTelemetry, allowing you to reuse your existing instrumentation to easily send observability data to the {{stack}}.
 
-For more information on how to combine Elastic and OpenTelemetry, see [OpenTelemetry integration](../../../solutions/observability/apps/use-opentelemetry-with-apm.md).
+For more information on how to combine Elastic and OpenTelemetry, see [OpenTelemetry integration](/solutions/observability/apps/use-opentelemetry-with-apm.md).

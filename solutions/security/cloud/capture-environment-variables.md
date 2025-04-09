@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/security/current/environment-variable-capture.html
   - https://www.elastic.co/guide/en/serverless/current/security-environment-variable-capture.html
 applies_to:

@@ -1,14 +1,15 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/synthetics-support-matrix.html
+applies_to:
+  stack:
 ---
 
 # Synthetics support matrix [synthetics-support-matrix]
 
 There are various components that make up the Synthetics solution, which are supported in the following configurations:
 
-
-## {{synthetics-app}} [_synthetics_app] 
+## {{synthetics-app}} [_synthetics_app]
 
 * **GA support**: 8.8.0 and higher
 * **Notes**:
@@ -16,24 +17,19 @@ There are various components that make up the Synthetics solution, which are sup
     * For creating and managing lightweight and browser monitors configured through the [{{synthetics-app}}](create-monitors-in-synthetics-app.md)
     * For reporting for lightweight and browser monitors configured through the [{{synthetics-app}}](create-monitors-in-synthetics-app.md) and/or [{{project-monitors-cap}}](create-monitors-with-project-monitors.md)
 
-
-
-## {{project-monitors-cap}} [_project_monitors_cap] 
+## {{project-monitors-cap}} [_project_monitors_cap]
 
 * **GA support**: 8.8.0 and higher
 * **Notes**: For creating and managing lightweight and browser monitors configured as [{{project-monitors-cap}}](create-monitors-with-project-monitors.md)
 
-
-## Elastic’s global managed testing infrastructure [_elastics_global_managed_testing_infrastructure_2] 
+## Elastic’s global managed testing infrastructure [_elastics_global_managed_testing_infrastructure_2]
 
 * **GA support**: 8.8.0 and higher
 * **Notes**: Elastic’s infrastructure for running lightweight and browser monitors configured through the [{{synthetics-app}}](create-monitors-in-synthetics-app.md) and/or [{{project-monitors-cap}}](create-monitors-with-project-monitors.md)
 
     Executing synthetic tests on Elastic’s global managed testing infrastructure incurs an additional charge. Tests are charged under one of two new billing dimensions depending on the monitor type. For *browser monitor* usage, there is a fee per test run. For *lightweight monitor* usage, there is a fee per region in which you run any monitors regardless of the number of test runs. For more details, refer to [full details and current pricing](https://www.elastic.co/pricing).
 
-
-
-## {{private-location}}s [_private_locations_2] 
+## {{private-location}}s [_private_locations_2]
 
 * **GA support**: 8.8.0 and higher
 * **Notes**:
@@ -48,9 +44,12 @@ There are various components that make up the Synthetics solution, which are sup
 
         * Do not configure any ingest pipelines or Logstash output
 
+## Heartbeat with Uptime [_heartbeat_with_uptime]
 
-
-## Heartbeat with Uptime [_heartbeat_with_uptime] 
+```{applies_to}
+stack: deprecated 8.15.0
+serverless: unavailable
+```
 
 * **GA support**: As defined in the standard [Support matrix](https://www.elastic.co/support/matrix)
 * **Notes**:
@@ -58,9 +57,7 @@ There are various components that make up the Synthetics solution, which are sup
     * For running lightweight monitors via YML configuration running on self-managed infrastructure
     * Browser-based monitors are not supported in this configuration
 
-
-
-## Standalone {{agent}} [_standalone_agent] 
+## Standalone {{agent}} [_standalone_agent]
 
 * **GA support**: As defined in the standard [Support matrix](https://www.elastic.co/support/matrix)
 * **Notes**:
@@ -69,9 +66,7 @@ There are various components that make up the Synthetics solution, which are sup
     * Browser-based monitors are not supported in this configuration
     * Results for monitors configured using the standalone {{agent}} are available in the {{uptime-app}} (*not* the {{synthetics-app}})
 
-
-
-## Synthetics Recorder [_synthetics_recorder] 
+## Synthetics Recorder [_synthetics_recorder]
 
 System requirements:
 
@@ -83,9 +78,7 @@ System requirements:
     * Fedora - 24 and newer
     * Debian - 8 and newer
 
-
-
-## Output to Elasticsearch [_output_to_elasticsearch] 
+## Output to Elasticsearch [_output_to_elasticsearch]
 
 Synthetics must have a direct connection to {{es}}, whether running monitors from Elastic’s global managed testing infrastructure or from {{private-location}}s.
 

@@ -2,12 +2,18 @@
 navigation_title: "Uptime duration anomaly"
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/duration-anomaly-alert.html
+applies:
+  stack: deprecated 8.15.0
+  serverless: unavailable
 ---
-
-
 
 # Create an uptime duration anomaly rule [duration-anomaly-alert]
 
+::::{admonition} Deprecated in 8.15.0.
+:class: warning
+
+Use [Synthetic monitoring](/solutions/observability/apps/synthetic-monitoring.md) instead of the {{uptime-app}}.
+::::
 
 Within the {{uptime-app}}, create an **Uptime duration anomaly** rule to receive notifications based on the response durations for all of the geographic locations of each monitor. When a monitor runs for an unusual amount of time, at a particular time, an anomaly is recorded and highlighted on the [Monitor duration](../apps/inspect-uptime-duration-anomalies.md) chart.
 

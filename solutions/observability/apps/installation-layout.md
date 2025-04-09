@@ -2,13 +2,12 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-directory-layout.html
 applies_to:
-  stack: all
+  stack:
 ---
 
 # Installation layout [apm-directory-layout]
 
 View the installation layout and default paths for both Fleet-managed APM Server and the APM Server binary.
-
 
 ## Fleet-managed [_fleet_managed]
 

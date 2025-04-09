@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-delete-deployment.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-delete-deployment.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-terminate-deployment.html
@@ -10,7 +10,7 @@ navigation_title: "Delete a cloud deployment"
 applies_to:
   deployment:
     ess:
-    ece: 
+    ece:
   serverless:
 ---
 
@@ -20,7 +20,7 @@ This page provides instructions for deleting several types of cloud deployments,
 
 ## {{ech}} [elastic-cloud-hosted]
 
-To delete an {{ech}} deployment: 
+To delete an {{ech}} deployment:
 
 1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
 2. On the deployment overview page, select **Actions**, then select **Delete deployment** and confirm the deletion.
@@ -67,7 +67,7 @@ Deleting a deployment cannot be undone.
 
 ### Terminate a deployment
 
-Terminating a deployment stops all running instances and **deletes all data**. Only configuration information is saved so that you can restore the deployment in the future. If there is [a snapshot repository associated](/deploy-manage/tools/snapshot-and-restore/cloud-enterprise.md) with the Elasticsearch cluster and at least one snapshot has been taken, you can restore the cluster with the same indices later.
+Terminating a deployment stops all running instances and **deletes all data**. Only configuration information is saved so that you can restore the deployment in the future. If there is [a snapshot repository associated](/deploy-manage/tools/snapshot-and-restore/cloud-enterprise.md) with the {{es}} cluster and at least one snapshot has been taken, you can restore the cluster with the same indices later.
 
 To terminate an {{ece}} deployment,
 

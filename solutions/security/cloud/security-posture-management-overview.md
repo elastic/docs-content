@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/security/current/security-posture-management.html
   - https://www.elastic.co/guide/en/serverless/current/security-posture-management.html
 applies_to:

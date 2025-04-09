@@ -13,7 +13,7 @@ applies_to:
 ::::
 
 
-Use the [nginx Elastic integration](https://docs.elastic.co/en/integrations/nginx) and the {{agent}} to collect valuable metrics and logs from your nginx instances. Then, use built-in dashboards and tools like Logs Explorer in {{kib}} to visualize and monitor your nginx data from one place. This data provides valuable insight into your nginx instances—for example:
+Use the [nginx Elastic integration](https://docs.elastic.co/en/integrations/nginx) and the {{agent}} to collect valuable metrics and logs from your nginx instances. Then, use built-in dashboards and tools like Discover to visualize and monitor your nginx data from one place. This data provides valuable insight into your nginx instances—for example:
 
 * A spike in error logs for a certain resource may mean you have a deleted resource that is still needed.
 * Access logs can show when a service’s peak times are, and, from this, when it might be best to perform things like maintenance.
@@ -197,33 +197,20 @@ The **Metrics Nginx overview** shows visual representations of total requests, p
 
 ### View logs [monitor-nginx-explore-logs]
 
-After your nginx logs are ingested, view and explore your logs using [Logs Explorer](#monitor-nginx-logs-explorer) or the [nginx logs dashboards](#monitor-nginx-logs-dashboard).
+After your nginx logs are ingested, view and explore your logs using [Discover](#monitor-nginx-discover) or the [nginx logs dashboards](#monitor-nginx-logs-dashboard).
 
 
-#### Logs Explorer [monitor-nginx-logs-explorer]
+#### Discover [monitor-nginx-discover]
 
-With Logs Explorer, you can quickly search and filter your log data, get information about the structure of log fields, and display your findings in a visualization.
+With Discover, you can quickly search and filter your log data, get information about the structure of log fields, and display your findings in a visualization.
 
-To open **Logs Explorer**, find `Logs Explorer` in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+Find `Discover` in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 Filter your results to see logs from the nginx integration from the data selector:
 
-1. Under **Integrations**, select **Nginx**.
+1. From the **Data view** menu, select all logs.
 
-    :::{image} /solutions/images/observability-nginx-data-selector.png
-    :alt: nginx integration in the data selector
-    :screenshot:
-    :::
-
-2. Select either **access** logs or **error** logs to view the logs you’re looking for.
-
-The **Documents** table now shows your nginx logs:
-
-:::{image} /solutions/images/observability-nginx-logs-explorer.png
-:alt: Logs Explorer showing nginx error logs
-:screenshot:
-:::
-
+2. Filter the log results using the KQL search bar. Enter `data_stream.dataset : "nginx.error"` to show nginx error logs or `data_stream.dataset : "nginx.access"` to show nginx access logs.
 
 #### nginx logs dashboards [monitor-nginx-logs-dashboard]
 

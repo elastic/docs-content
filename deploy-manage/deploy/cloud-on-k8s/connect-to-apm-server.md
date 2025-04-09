@@ -16,7 +16,7 @@ This section covers the following topics:
 
 ## APM Server service [k8s-apm-service]
 
-The APM Server is exposed with a Service. For information on accessing it, check [How to access Elastic Stack services](accessing-services.md).
+The APM Server is exposed with a Service. For information on accessing it, check [How to access {{stack}} services](accessing-services.md).
 
 To retrieve the list of all the APM Services, use the following command:
 
@@ -45,6 +45,6 @@ For more information, check [APM Server Reference](https://www.elastic.co/guide/
 
 ## APM Server API keys [k8s-apm-api-keys]
 
-If you want to configure API keys to authorize requests to the APM Server, instead of using the APM Server CLI, you have to create API keys using the Elasticsearch  [create API key API](https://www.elastic.co/guide/en/elasticsearch/reference/7.14/security-api-create-api-key.html), check the [APM Server documentation](/solutions/observability/apps/api-keys.md).
+If you want to configure API keys to authorize requests to the APM Server, instead of using the APM Server CLI, you have to create API keys using the {{es}}  [create API key API](https://www.elastic.co/guide/en/elasticsearch/reference/7.14/security-api-create-api-key.html), check the [APM Server documentation](/solutions/observability/apps/api-keys.md).
 
 

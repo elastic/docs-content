@@ -1,5 +1,5 @@
 ---
-navigation_title: Deploy an Elasticsearch cluster
+navigation_title: Deploy an {{es}} cluster
 applies_to:
   deployment:
     eck: all
@@ -7,7 +7,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-deploy-elasticsearch.html
 ---
 
-# Deploy an Elasticsearch cluster [k8s-deploy-elasticsearch]
+# Deploy an {{es}} cluster [k8s-deploy-elasticsearch]
 
 To deploy a simple [{{es}}](/solutions/search/get-started.md) cluster specification, with one {{es}} node:
 
@@ -118,7 +118,7 @@ In order to make requests to the [{{es}} API](elasticsearch://reference/elastics
     PASSWORD=$(kubectl get secret quickstart-es-elastic-user -o go-template='{{.data.elastic | base64decode}}')
     ```
 
-2. Request the [{{es}} root API](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-info). You can do so from inside the Kubernetes cluster or from your local workstation. For demonstration purposes, certificate verification is disabled using the `-k` curl flag; however, this is not recommended outside of testing purposes. Refer to [Setup your own certificate](/deploy-manage/security/secure-http-communications.md#k8s-setting-up-your-own-certificate) for more information.
+2. Request the [{{es}} root API](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-info). You can do so from inside the Kubernetes cluster or from your local workstation. For demonstration purposes, certificate verification is disabled using the `-k` curl flag; however, this is not recommended outside of testing purposes. Refer to [Setup your own certificate](/deploy-manage/security/k8s-https-settings.md#k8s-setting-up-your-own-certificate) for more information.
 
     * From inside the Kubernetes cluster:
 

@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/security/current/detection-entity-dashboard.html
   - https://www.elastic.co/guide/en/serverless/current/security-detection-entity-dashboard.html
 applies_to:
@@ -98,11 +98,11 @@ Displays service risk score data for your environment, including the total numbe
 :::
 
 
-Interact with the table to filter data, view more details, and take action: 
+Interact with the table to filter data, view more details, and take action:
 
-* Select the **Service risk level** menu to filter the chart by the selected level. 
+* Select the **Service risk level** menu to filter the chart by the selected level.
 * Click a service name link to open the service details flyout.
-* Hover over a service name link to display inline actions: **Add to timeline**, which adds the selected value to Timeline, and **Copy to Clipboard**, which copies the service name value for you to paste later. 
+* Hover over a service name link to display inline actions: **Add to timeline**, which adds the selected value to Timeline, and **Copy to Clipboard**, which copies the service name value for you to paste later.
 * Click the number link in the *Alerts* column to view the alerts on the Alerts page. Hover over the number and select **Investigate in timeline** (![Investigate in timeline icon](/solutions/images/security-timeline-button-osquery.png "title =20x20")) to launch Timeline with a query that includes the associated service name value.
 
 For more information about service risk scores, refer to [Entity risk scoring](/solutions/security/advanced-entity-analytics/entity-risk-scoring.md).

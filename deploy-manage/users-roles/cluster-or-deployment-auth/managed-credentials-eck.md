@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-users-and-roles.html
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-rotate-credentials.html
 applies_to:
@@ -57,7 +57,7 @@ kubectl delete secret quickstart-es-elastic-user
 ```
 
 ::::{warning}
-If you are using the `elastic` user credentials in your own applications, they will fail to connect to {{es}} and Kibana after you run this command. It is not recommended to use `elastic` user credentials for production use cases. Always [create your own users with restricted roles](../../../deploy-manage/users-roles/cluster-or-deployment-auth/native.md) to access Elasticsearch.
+If you are using the `elastic` user credentials in your own applications, they will fail to connect to {{es}} and {{kib}} after you run this command. It is not recommended to use `elastic` user credentials for production use cases. Always [create your own users with restricted roles](../../../deploy-manage/users-roles/cluster-or-deployment-auth/native.md) to access {{es}}.
 ::::
 
 

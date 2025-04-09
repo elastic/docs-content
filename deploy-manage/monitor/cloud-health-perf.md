@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/monitor-elasticsearch-cluster.html
 navigation_title: "Cloud deployment health"
 applies_to:
@@ -22,9 +22,10 @@ The deployment **Health** page provides detailed information on health issues, i
 
 To view the health for a deployment:
 
-1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body) or [Cloud UI](/deploy-manage/deploy/cloud-enterprise/log-into-cloud-ui.md).
-2. On the **Deployments** page, select your deployment.
-3. In your deployment menu, select **Health**.
+:::{include} ../_snippets/find-manage-deployment-ech-and-ece.md
+:::
+
+3. Under the deployment's name in the navigation menu, select **Health**.
 
 The **Health** page provides the following information:
 
@@ -37,7 +38,7 @@ The **Health** page provides the following information:
 
 * **Severity**: A critical issue impacts operations such as search and ingest and should be addressed as soon as possible. Warnings don’t impact the cluster immediately but might lead to more critical issues over time such as a corrupted repository might lead to no backups being available in the future. |
 * **Description**: For most issues, you can click the description to get more details page on the specific issue and on how to fix it.
-* **Affected capabilities**: Each of these areas might impact search, ingest, backups, or deployment management capabilities. 
+* **Affected capabilities**: Each of these areas might impact search, ingest, backups, or deployment management capabilities.
 
 You can also search and filter the table based on affected resources, such as indices, repositories, nodes, or SLM policies. Individual issues can be further expanded to get more details and guided troubleshooting.
 
@@ -74,9 +75,9 @@ deployment:
   ess:
 ```
 
-{{ech}} deployments offer an additional **Performance** page to get further information about your cluster performance. 
+{{ech}} deployments offer an additional **Performance** page to get further information about your cluster performance.
 
-If you observe issues on search and ingest operations in terms of increased latency or throughput for queries, these might not be directly reported on the **Health** page, unless they are related to shard health or master node availability. 
+If you observe issues on search and ingest operations in terms of increased latency or throughput for queries, these might not be directly reported on the **Health** page, unless they are related to shard health or master node availability.
 
 The **Performance** page and the out-of-the-box logs allow you to monitor your cluster performance, but for production applications we strongly recommend setting up a dedicated monitoring cluster. Refer to [Understanding deployment health](#ec-health-best-practices), for more guidelines on how to monitor you cluster performance.
 
@@ -84,7 +85,7 @@ The **Performance** page and the out-of-the-box logs allow you to monitor your c
 
 :::{tip}
 For {{ece}} deployments, you can use [platform monitoring](/deploy-manage/monitor/orchestrators/ece-platform-monitoring.md) to access preconfigured performance metrics.
-::: 
+:::
 
 ## JVM memory pressure indicator
 
@@ -117,7 +118,7 @@ deployment:
   ess:
 ```
 
-Elastic Cloud allows smaller instance sizes to get temporarily boosted vCPU when under heavy load. [vCPU boosting](/deploy-manage/deploy/elastic-cloud/ec-vcpu-boost-instance.md) is governed by vCPU credits that instances can earn over time when vCPU usage is less than the assigned amount.
+{{ecloud}} allows smaller instance sizes to get temporarily boosted vCPU when under heavy load. [vCPU boosting](/deploy-manage/deploy/elastic-cloud/ec-vcpu-boost-instance.md) is governed by vCPU credits that instances can earn over time when vCPU usage is less than the assigned amount.
 
 You can check the **Monitoring > Performance > CPU Credits** section of the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body), and find the related metrics:
 
@@ -138,7 +139,7 @@ We’ve compiled some guidelines to help you ensure the health of your deploymen
 :   Provide instructions on how to troubleshoot issues related to unassigned shards.
 
 [](/troubleshoot/monitoring/performance.md)
-:   Address performance degradation on a smaller size Elasticsearch cluster.
+:   Address performance degradation on a smaller size {{es}} cluster.
 
 [](/troubleshoot/monitoring/high-availability.md)
 :   High availability involves more than setting multiple availability zones (although that’s really important!). Learn how to assess performance and workloads to determine if your deployment has adequate resources to mitigate a potential node failure.

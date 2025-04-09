@@ -14,7 +14,6 @@ Most options on this page are supported by all APM Server deployment methods.
 
 ::::
 
-
 These settings apply to SSL/TLS communication between the APM Server and APM Agents. See [{{apm-agent}} TLS communication](apm-agent-tls-communication.md) to learn more.
 
 :::::::{tab-set}
@@ -48,7 +47,6 @@ Enable or disable TLS. Disabled by default.
 | APM Server binary | `apm-server.ssl.enabled` |
 | Fleet-managed | `Enable TLS` |
 
-
 ## File path to server certificate [_file_path_to_server_certificate]
 
 The path to the file containing the certificate for Server authentication. Required if TLS is enabled.
@@ -57,7 +55,6 @@ The path to the file containing the certificate for Server authentication. Requi
 | --- | --- |
 | APM Server binary | `apm-server.ssl.certificate` |
 | Fleet-managed | `File path to server certificate` |
-
 
 ## File path to server certificate key [_file_path_to_server_certificate_key]
 
@@ -68,7 +65,6 @@ The path to the file containing the Server certificate key. Required if TLS is e
 | APM Server binary | `apm-server.ssl.key` |
 | Fleet-managed | `File path to server certificate key` |
 
-
 ## Key passphrase [_key_passphrase]
 
 The passphrase used to decrypt an encrypted key stored in the configured `apm-server.ssl.key` file.
@@ -78,7 +74,6 @@ The passphrase used to decrypt an encrypted key stored in the configured `apm-se
 | APM Server binary | `apm-server.ssl.key_passphrase` |
 | Fleet-managed | N/A |
 
-
 ## Supported protocol versions [_supported_protocol_versions]
 
 This setting is a list of allowed protocol versions: `SSLv3`, `TLSv1.0`, `TLSv1.1`, `TLSv1.2` and `TLSv1.3`. We do not recommend using `SSLv3` or `TLSv1.0`. The default value is `[TLSv1.1, TLSv1.2, TLSv1.3]`.
@@ -87,7 +82,6 @@ This setting is a list of allowed protocol versions: `SSLv3`, `TLSv1.0`, `TLSv1.
 | --- | --- |
 | APM Server binary | `apm-server.ssl.supported_protocols` |
 | Fleet-managed | `Supported protocol versions` |
-
 
 ## Cipher suites for TLS connections [_cipher_suites_for_tls_connections]
 
@@ -137,7 +131,6 @@ Here is a list of acronyms used in defining the cipher suites:
 * RSA: Cipher suites using RSA.
 * SHA, SHA256, SHA384: Cipher suites using SHA-1, SHA-256 or SHA-384.
 
-
 ## Curve types for ECDHE based cipher suites [_curve_types_for_ecdhe_based_cipher_suites]
 
 The list of curve types for ECDHE (Elliptic Curve Diffie-Hellman ephemeral key exchange).
@@ -147,7 +140,6 @@ The list of curve types for ECDHE (Elliptic Curve Diffie-Hellman ephemeral key e
 | APM Server binary | `apm-server.ssl.curve_types` |
 | Fleet-managed | `Curve types for ECDHE based cipher suites` |
 
-
 ## List of root certificates for verifying client certificates [_list_of_root_certificates_for_verifying_client_certificates]
 
 The list of root certificates for verifying client certificates. If `certificate_authorities` is empty or not set, the trusted certificate authorities of the host system are used. If `certificate_authorities` is set, `client_authentication` will be automatically set to `required`. Sending client certificates is currently only supported by the RUM agent through the browser, the Java agent (see [Agent certificate authentication](apm-agent-java://reference/ssl-configuration.md)), and the Jaeger agent.
@@ -156,7 +148,6 @@ The list of root certificates for verifying client certificates. If `certificate
 | --- | --- |
 | APM Server binary | `apm-server.ssl.certificate_authorities` |
 | Fleet-managed | N/A |
-
 
 ## Client authentication [_client_authentication]
 
