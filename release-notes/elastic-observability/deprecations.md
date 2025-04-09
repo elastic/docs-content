@@ -26,3 +26,19 @@ Review the deprecated functionality for Elastic {{observability}}. While depreca
 % **Impact**<br> Impact of deprecation. 
 % **Action**<br> Steps for mitigating deprecation impact.
 % ::::
+
+::::{dropdown} Removed Logs Explorer
+Logs Explorer has been removed. 
+
+For more information, check [#203685]({{kib-pull}}203685).
+
+**Action**<br>
+Use the improved logs exploration experience in Discover.
+::::
+
+::::{dropdown} Removed GA feature flags for host and container views
+The `observability:enableInfrastructureHostsView` and `enableInfrastructureContainerAssetView` feature flags have been removed for host and container views.
+
+For more information, check [#197684]({{kib-pull}}197684).
+
+::::
