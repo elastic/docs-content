@@ -6,15 +6,11 @@ applies_to:
   stack:
 ---
 
-
-
 # APM Server command reference [apm-command-line-options]
-
 
 ::::{important}
 These commands only apply to the APM Server binary installation method.
 ::::
-
 
 APM Server provides a command-line interface for starting APM Server and performing common tasks, like testing configuration files.
 
@@ -28,8 +24,7 @@ Use `sudo` to run the following commands if:
 
 ::::
 
-
-Some of the features described here require an Elastic license. For more information, see [https://www.elastic.co/subscriptions](https://www.elastic.co/subscriptions) and [License Management](../../../deploy-manage/license/manage-your-license-in-self-managed-cluster.md).
+Some of the features described here require an Elastic license. For more information, see [https://www.elastic.co/subscriptions](https://www.elastic.co/subscriptions) and [License Management](/deploy-manage/license/manage-your-license-in-self-managed-cluster.md).
 
 | Commands |  |
 | --- | --- |
@@ -43,20 +38,17 @@ Some of the features described here require an Elastic license. For more informa
 
 Also see [Global flags](#apm-global-flags).
 
-
 ## `apikey` command [apm-apikey-command]
 
 ::::{warning}
 This functionality is in technical preview and may be changed or removed in a future release. Elastic will work to fix any issues, but features in technical preview are not subject to the support SLA of official GA features.
 ::::
 
-
 ::::{admonition} Deprecated in 8.6.0.
 :class: warning
 
 Users should create API Keys through {{kib}} or the {{es}} REST API. See [API keys](api-keys.md).
 ::::
-
 
 Communication between APM agents and APM Server now supports sending an [API Key in the Authorization header](api-keys.md). APM Server provides an `apikey` command that can create, verify, invalidate, and show information about API Keys for agent/server communication. Most operations require the `manage_own_api_key` cluster privilege, and you must ensure that `apm-server.api_key` or `output.elasticsearch` are configured appropriately.
 
@@ -88,9 +80,7 @@ apm-server apikey SUBCOMMAND [FLAGS]
         * To **ingest agent data**, assign `event:write`.
         * To **upload source maps**, assign `sourcemap:write`.
 
-
     ::::
-
 
 **`info`**
 :   Query API Key(s). `--id` or `--name` required.
@@ -142,7 +132,6 @@ apm-server apikey invalidate --name example-001
 
 For more information, see [API keys](api-keys.md).
 
-
 ## `export` command [apm-export-command]
 
 Exports the configuration, index template, or {{ilm-init}} policy to stdout. You can use this command to quickly view your configuration or see the contents of the index template or the {{ilm-init}} policy.
@@ -189,7 +178,6 @@ apm-server export config
 apm-server export template --es.version 9.0.0-beta1 --index myindexname
 ```
 
-
 ## `help` command [apm-help-command]
 
 Shows help for any command. If no command is specified, shows help for the `run` command.
@@ -215,7 +203,6 @@ Also see [Global flags](#apm-global-flags).
 ```sh
 apm-server help export
 ```
-
 
 ## `keystore` command [apm-keystore-command]
 
@@ -264,7 +251,6 @@ apm-server keystore list
 ```
 
 See [Secrets keystore](secrets-keystore-for-secure-settings.md) for more examples.
-
 
 ## `run` command [apm-run-command]
 
@@ -316,7 +302,6 @@ Or:
 apm-server -e
 ```
 
-
 ## `test` command [apm-test-command]
 
 Tests the configuration.
@@ -348,7 +333,6 @@ Also see [Global flags](#apm-global-flags).
 apm-server test config
 ```
 
-
 ## `version` command [apm-version-command]
 
 Shows information about the current version.
@@ -372,7 +356,6 @@ Also see [Global flags](#apm-global-flags).
 apm-server version
 ```
 
-
 ## Global flags [apm-global-flags]
 
 These global flags are available whenever you run APM Server.
@@ -385,7 +368,6 @@ These global flags are available whenever you run APM Server.
     ```
 
     This setting is applied to the currently running APM Server process. The APM Server configuration file is not changed.
-
 
 **`-c, --c FILE`**
 :   Specifies the configuration file to use for APM Server. The file you specify here is relative to `path.config`. If the `-c` flag is not specified, the default config file, `apm-server.yml`, is used.

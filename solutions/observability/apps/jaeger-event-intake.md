@@ -12,7 +12,6 @@ applies_to:
 
 ::::
 
-
 Elastic APM natively supports Jaeger, an open-source, distributed tracing system. [Learn more](integrate-with-jaeger-deprecated.md).
 
 **Jaeger/gRPC paths**

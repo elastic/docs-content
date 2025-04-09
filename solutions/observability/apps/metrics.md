@@ -8,11 +8,13 @@ applies_to:
 
 # Metrics [apm-data-model-metrics]
 
+:::{include} _snippets/apm-server-vs-mis.md
+:::
+
 **Metrics** measure the state of a system by gathering information on a regular interval. There are two types of APM metrics:
 
 * **System metrics**: Basic infrastructure and application metrics.
 * **Calculated metrics**: Aggregated trace event metrics used to power visualizations in the Applications UI.
-
 
 ## System metrics [_system_metrics]
 
@@ -24,7 +26,6 @@ Infrastructure and application metrics are important sources of information when
 Most agents limit keyword fields to 1024 characters, non-keyword fields (e.g. `system.memory.total`) to 10,000 characters.
 ::::
 
-
 Metrics are stored in metric indices.
 
 For a full list of tracked metrics, see the relevant agent documentation:
@@ -34,7 +35,6 @@ For a full list of tracked metrics, see the relevant agent documentation:
 * [Node.js](apm-agent-nodejs://reference/metrics.md)
 * [Python](apm-agent-python://reference/metrics.md)
 * [Ruby](apm-agent-ruby://reference/metrics.md)
-
 
 ### Example system metric document [_example_system_metric_document]
 
@@ -117,16 +117,13 @@ This example contains JVM metrics produced by the {{apm-java-agent}}. and contai
 
 ::::
 
-
-
 ## Calculated metrics [_calculated_metrics]
 
-APM agents and APM Server calculate metrics from trace events to power visualizations in the Applications UI.
+APM agents and either {{apm-server-or-mis}} calculate metrics from trace events to power visualizations in the Applications UI.
 
 Calculated metrics are an implementation detail and while we aim for stability for these data models, the dimensions and concrete limits for aggregations are subject to change within minor version updates.
 
 These metrics are described below.
-
 
 ### Breakdown metrics [_breakdown_metrics]
 
@@ -143,8 +140,6 @@ You can filter and group by these dimensions:
 * `transaction.type`: The type of the enclosing transaction, for example `request`
 * `span.type`: The type of the span, for example `app`, `template` or `db`
 * `span.subtype`: The sub-type of the span, for example `mysql` (optional)
-
-
 
 ### Example breakdown metric document [_example_breakdown_metric_document]
 
@@ -238,11 +233,9 @@ This example shows what breakdown metric documents can look like when indexed in
 
 ::::
 
-
-
 ### Transaction metrics [_transaction_metrics]
 
-To power [{{kib}} Applications UI](overviews.md) visualizations, APM Server aggregates transaction events into latency distribution metrics.
+To power [{{kib}} Applications UI](overviews.md) visualizations, either {{apm-server-or-mis}} aggregates transaction events into latency distribution metrics.
 
 **`transaction.duration.summary`** and **`transaction.duration.histogram`**
 :   These metrics represent the latency summary and latency distribution of transaction groups, used to power transaction-oriented visualizations and analytics in Elastic APM.
@@ -288,9 +281,7 @@ You can filter and group by these dimensions (some of which are optional, for ex
 * `transaction.root`: A boolean flag indicating whether the transaction is the root of a trace
 * `transaction.type`: The type of the transaction, for example `request`
 
-
 The `@timestamp` field of these documents holds the start of the aggregation interval.
-
 
 ### Example transaction document [_example_transaction_document_2]
 
@@ -428,11 +419,9 @@ This example shows what transaction documents can look like when indexed in {{es
 
 ::::
 
-
-
 ### Service-transaction metrics [_service_transaction_metrics]
 
-To power [{{kib}} Applications UI](overviews.md) visualizations, APM Server aggregates transaction events into service-transaction metrics. Service-transaction metrics are similar to transaction metrics, but they usually have a much lower cardinality as they have significantly fewer dimensions. The UI uses them when fewer details of the transactions are needed.
+To power [{{kib}} Applications UI](overviews.md) visualizations, either {{apm-server-or-mis}} aggregates transaction events into service-transaction metrics. Service-transaction metrics are similar to transaction metrics, but they usually have a much lower cardinality as they have significantly fewer dimensions. The UI uses them when fewer details of the transactions are needed.
 
 **`transaction.duration.summary`** and **`transaction.duration.histogram`**
 :   These metrics represent the latency summary and latency distribution of service transaction groups, used to power service-oriented visualizations and analytics in Elastic APM.
@@ -450,9 +439,7 @@ You can filter and group by these dimensions:
 * `service.name`: The name of the service that made the request
 * `transaction.type`: The type of the enclosing transaction, for example `request`
 
-
 The `@timestamp` field of these documents holds the start of the aggregation interval.
-
 
 ### Example service-transaction document [_example_service_transaction_document]
 
@@ -966,11 +953,9 @@ This example shows what service-transaction documents can look like when indexed
 
 ::::
 
-
-
 ### Service-destination metrics [_service_destination_metrics]
 
-To power [{{kib}} Applications UI](overviews.md) visualizations, APM Server aggregates span events into service-destination metrics.
+To power [{{kib}} Applications UI](overviews.md) visualizations, either {{apm-server-or-mis}} aggregates span events into service-destination metrics.
 
 **`span.destination.service.response_time.count`** and **`span.destination.service.response_time.sum.us`**
 :   These metrics measure the count and total duration of requests from one service to another service. These are used to calculate the throughput and latency of requests to backend services such as databases in [Service maps](service-map.md).
@@ -992,9 +977,7 @@ You can filter and group by these dimensions:
 * `span.destination.service.resource`: The destination service resource, for example `mysql`
 * `span.name`: The name of the operation, for example `SELECT FROM table_name`.
 
-
 The `@timestamp` field of these documents holds the start of the aggregation interval.
-
 
 ### Example service-destination document [_example_service_destination_document]
 
@@ -1063,11 +1046,9 @@ This example shows what service-destination documents can look like when indexed
 
 ::::
 
-
-
 ### Service-summary metrics [_service_summary_metrics]
 
-To power [{{kib}} Applications UI](overviews.md) visualizations, APM Server aggregates transaction, error, log, and metric events into service-summary metrics.
+To power [{{kib}} Applications UI](overviews.md) visualizations, either {{apm-server-or-mis}} aggregates transaction, error, log, and metric events into service-summary metrics.
 
 These metric documents can be identified by searching for `metricset.name: service_summary`.
 
@@ -1082,7 +1063,6 @@ You can filter and group by these dimensions:
 * `service.name`: The name of the service that made the request
 
 The `@timestamp` field of these documents holds the start of the aggregation interval.
-
 
 ### Example service-summary document [_example_service_summary_document]
 
@@ -1132,8 +1112,6 @@ This example shows what service-summary documents can look like when indexed in 
 
 ::::
 
-
-
 ## Data streams [_data_streams_4]
 
 Metrics are stored in the following data streams:
@@ -1147,11 +1125,9 @@ Metrics are stored in the following data streams:
 
 See [Data streams](data-streams.md) to learn more.
 
-
 ## Aggregated metrics: limits and overflows [_aggregated_metrics_limits_and_overflows]
 
 For all aggregated metrics, namely transaction, service-transaction, service-destination, and service-summary metrics, there are limits on the number of unique groups tracked at any given time.
-
 
 ### Limits [_limits]
 
@@ -1164,9 +1140,7 @@ Note that all the below limits may change in the future with further improvement
     * For service-destination metrics, there is an additional limit of 5000 total service destination groups per GB of APM Server starting with 10000 service destination groups for 1 GB APM Server, and each service may only consume up to 10% of the service destination groups, which is 1000 service destination groups for 1GB APM Server with 500 increment per GB of APM Server.
     * For service-summary metrics, there is no additional limit.
 
-
 In the previous metrics, a service is defined as a combination of `service.name`, `service.environment`, `service.language.name` and `agent.name`.
-
 
 ### Overflows [_overflows]
 

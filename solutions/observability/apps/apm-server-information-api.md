@@ -9,7 +9,6 @@ applies_to:
 
 The APM Server exposes an API endpoint to query general server information. This lightweight endpoint is useful as a server up/down health check.
 
-
 ## Server Information endpoint [apm-api-info-endpoint]
 
 This is the server information endpoint:
@@ -23,7 +22,6 @@ Sending an `HTTP GET` request to the server information endpoint will return an 
 To configure authenticated access to the APM server, the instructions at [APM API key](api-keys.md) or [APM Secret Token](secret-token.md), must be followed to configure the correct permissions for APM access.
 
 If an [API keys](api-keys.md) or a [Secret token](secret-token.md) is passed along with the `HTTP GET` request, in addition to an HTTP 200, the response payload will include some information about the APM server.
-
 
 ### Example: GET, without credentials [apm-api-info-example-get-without-credentials]
 
@@ -48,7 +46,6 @@ curl --verbose -X GET http://127.0.0.1:8200
 <
 * Connection #0 to host 127.0.0.1 left intact
 ```
-
 
 ### Example: GET, with secret token [apm-api-info-example-get-with-secret-token]
 

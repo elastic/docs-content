@@ -9,20 +9,17 @@ applies_to:
 
 This section explains how to adapt data ingestion according to your needs.
 
-
 ## Tune APM Server [apm-tune-apm-server]
 
 * [Add APM Server or {{agent}} instances](#apm-add-apm-server-instances)
 * [Reduce the payload size](#apm-reduce-payload-size)
 * [Adjust anonymous auth rate limit](#apm-adjust-event-rate)
 
-
 ### Add APM Server or {{agent}} instances [apm-add-apm-server-instances]
 
 If the APM Server cannot process data quickly enough, you will see request timeouts. One way to solve this problem is to increase processing power.
 
 Increase processing power by either migrating to a more powerful machine or adding more APM Server/Elastic Agent instances. Having several instances will also increase [availability](high-availability.md).
-
 
 ### Reduce the payload size [apm-reduce-payload-size]
 
@@ -31,7 +28,6 @@ Large payloads may result in request timeouts. You can reduce the payload size b
 Optionally you can also [reduce the sample rate](reduce-storage.md#apm-reduce-sample-rate) or [reduce the amount of stack traces](reduce-storage.md#observability-apm-reduce-stacktrace).
 
 Read more in the [agents documentation](https://www.elastic.co/guide/en/apm/agent/index.html).
-
 
 ### Adjust anonymous auth rate limit [apm-adjust-event-rate]
 
@@ -46,12 +42,11 @@ Increasing the default value for the following configuration variable will help 
 | APM Server binary | [`rate_limit.event_limit`](configure-anonymous-authentication.md#apm-config-auth-anon-event-limit) |
 | Fleet-managed | `Anonymous Event rate limit (event limit)` |
 
-
 ## Tune {{es}} [apm-tune-elasticsearch]
 
 The {{es}} Reference provides insight on tuning {{es}}.
 
-[Tune for indexing speed](../../../deploy-manage/production-guidance/optimize-performance/indexing-speed.md) provides information on:
+[Tune for indexing speed](/deploy-manage/production-guidance/optimize-performance/indexing-speed.md) provides information on:
 
 * Refresh interval
 * Disabling swapping
@@ -59,7 +54,7 @@ The {{es}} Reference provides insight on tuning {{es}}.
 * Considerations regarding faster hardware
 * Setting the indexing buffer size
 
-[Tune for disk usage](../../../deploy-manage/production-guidance/optimize-performance/disk-usage.md) provides information on:
+[Tune for disk usage](/deploy-manage/production-guidance/optimize-performance/disk-usage.md) provides information on:
 
 * Disabling unneeded features
 * Shard size

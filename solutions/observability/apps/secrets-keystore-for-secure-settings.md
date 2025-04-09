@@ -6,15 +6,11 @@ applies_to:
   stack: all
 ---
 
-
-
 # Secrets keystore for secure settings [apm-keystore]
-
 
 ::::{important}
 The APM Server keystore only applies to the APM Server binary installation method.
 ::::
-
 
 When you configure APM Server, you might need to specify sensitive settings, such as passwords. Rather than relying on file system permissions to protect these values, you can use the APM Server keystore to securely store secret values for use in configuration settings.
 
@@ -41,8 +37,6 @@ To create and manage keys, use the `keystore` command. See the [command referenc
 The `keystore` command must be run by the same user who will run APM Server.
 ::::
 
-
-
 ## Create a keystore [apm-creating-keystore]
 
 To create a secrets keystore, use:
@@ -52,7 +46,6 @@ apm-server keystore create
 ```
 
 APM Server creates the keystore in the directory defined by the `path.data` configuration setting.
-
 
 ## Add keys [apm-add-keys-to-keystore]
 
@@ -76,7 +69,6 @@ To pass the value through stdin, use the `--stdin` flag. You can also use `--for
 cat /file/containing/setting/value | apm-server keystore add ES_PWD --stdin --force
 ```
 
-
 ## List keys [apm-list-settings]
 
 To list the keys defined in the keystore, use:
@@ -84,7 +76,6 @@ To list the keys defined in the keystore, use:
 ```sh
 apm-server keystore list
 ```
-
 
 ## Remove keys [apm-remove-settings]
 

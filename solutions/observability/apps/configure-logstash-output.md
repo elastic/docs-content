@@ -8,7 +8,6 @@ applies_to:
 
 # Configure the Logstash output [apm-logstash-output]
 
-
 ::::{note}
 ![supported deployment methods](/solutions/images/observability-binary-yes-fm-no.svg "")
 
@@ -16,9 +15,7 @@ The {{ls}} output is not yet supported by {{fleet}}-managed APM Server.
 
 ::::
 
-
 {{ls}} allows for additional processing and routing of APM events. The {{ls}} output sends events directly to {{ls}} using the lumberjack protocol, which runs over TCP.
-
 
 ## Send events to {{ls}} [_send_events_to_ls]
 
@@ -26,7 +23,6 @@ To send events to {{ls}}, you must:
 
 1. [Enable the {{ls}} output in APM Server](#apm-ls-output-config)
 2. [Create a {{ls}} configuration pipeline in {{ls}}](#apm-ls-config-pipeline)
-
 
 ### {{ls}} output configuration [apm-ls-output-config]
 
@@ -42,8 +38,6 @@ To enable the {{ls}} output in APM Server, edit the `apm-server.yml` file to:
     ```
 
     1. The `hosts` option specifies the {{ls}} server and the port (`5044`) where {{ls}} is configured to listen for incoming APM Server connections.
-
-
 
 ### {{ls}} configuration pipeline [apm-ls-config-pipeline]
 
@@ -74,7 +68,6 @@ Finally, you must create a {{ls}} configuration pipeline that listens for incomi
     1. Enables indexing into {{es}} data streams.
     2. This example assumes you’re sending data to {{ecloud}}. If you’re using a self-hosted version of {{es}}, use `hosts` instead. See [{{es}} output plugin](logstash-docs-md://lsr/plugins-outputs-elasticsearch.md) for more information.
 
-
 Here’s what your basic {{ls}} configuration file will look like when we put everything together:
 
 ```json
@@ -93,7 +86,6 @@ output {
 }
 ```
 
-
 ## Accessing the @metadata field [_accessing_the_metadata_field]
 
 Every event sent to {{ls}} contains a special field called [`@metadata`](logstash://reference/event-dependent-configuration.md#metadata) that you can use in {{ls}} for conditionals, filtering, indexing and more. APM Server sends the following `@metadata` to {{ls}}:
@@ -110,7 +102,6 @@ Every event sent to {{ls}} contains a special field called [`@metadata`](logstas
 
 1. To change the default `apm-server` value, set the [`index`](#apm-logstash-index) option in the APM Server config file.
 2. The current version of APM Server.
-
 
 In addition to `@metadata`, APM Server provides other potentially useful fields, like the `data_stream` field, which can be used to conditionally operate on [event types](learn-about-application-data-types.md), namespaces, or datasets.
 
@@ -144,17 +135,13 @@ output {
 3. Add a Logstash mutate filter to update the value of `data_stream.dataset`.
 4. In this example, `cloud_id` and `cloud_auth` are stored as [environment variables](logstash://reference/environment-variables.md).
 
-
-
 ### Compatibility [_compatibility_2]
 
 This output works with all compatible versions of {{ls}}. See the [Elastic Support Matrix](https://www.elastic.co/support/matrix#matrix_compatibility).
 
-
 ### Configuration options [_configuration_options_4]
 
 You can specify the following options in the `logstash` section of the `apm-server.yml` config file:
-
 
 #### `enabled` [_enabled_3]
 
@@ -162,13 +149,11 @@ The enabled config is a boolean setting to enable or disable the output. If set 
 
 The default value is `false`.
 
-
 #### `hosts` [apm-hosts]
 
 The list of known {{ls}} servers to connect to. If load balancing is disabled, but multiple hosts are configured, one host is selected randomly (there is no precedence). If one host becomes unreachable, another one is selected randomly.
 
 All entries in this list can contain a port number. The default port number 5044 will be used if no number is given.
-
 
 #### `compression_level` [_compression_level_2]
 
@@ -178,18 +163,15 @@ Increasing the compression level will reduce the network usage but will increase
 
 The default value is 3.
 
-
 #### `escape_html` [_escape_html_2]
 
 Configure escaping of HTML in strings. Set to `true` to enable escaping.
 
 The default value is `false`.
 
-
 #### `worker` [_worker]
 
 The number of workers per configured host publishing events to {{ls}}. This is best used with load balancing mode enabled. Example: If you have 2 hosts and 3 workers, in total 6 workers are started (3 for each host).
-
 
 #### `loadbalance` [apm-loadbalance]
 
@@ -202,7 +184,6 @@ output.logstash:
   index: apm-server
 ```
 
-
 #### `ttl` [_ttl]
 
 Time to live for a connection to {{ls}} after which the connection will be re-established. Useful when {{ls}} hosts represent load balancers. Since the connections to {{ls}} hosts are sticky, operating behind load balancers can lead to uneven load distribution between the instances. Specifying a TTL on the connection allows to achieve equal connection distribution between the instances.  Specifying a TTL of 0 will disable this feature.
@@ -213,12 +194,9 @@ The default value is 0.
 The "ttl" option is not yet supported on an asynchronous {{ls}} client (one with the "pipelining" option set).
 ::::
 
-
-
 #### `pipelining` [_pipelining]
 
 Configures the number of batches to be sent asynchronously to {{ls}} while waiting for ACK from {{ls}}. Output only becomes blocking once number of `pipelining` batches have been written. Pipelining is disabled if a value of 0 is configured. The default value is 2.
-
 
 #### `proxy_url` [_proxy_url_2]
 
@@ -234,11 +212,9 @@ output.logstash:
   proxy_url: socks5://user:password@socks5-proxy:2233
 ```
 
-
 #### `proxy_use_local_resolver` [apm-logstash-proxy-use-local-resolver]
 
 The `proxy_use_local_resolver` option determines if {{ls}} hostnames are resolved locally when using a proxy. The default value is false, which means that when a proxy is used the name resolution occurs on the proxy server.
-
 
 #### `index` [apm-logstash-index]
 
@@ -248,17 +224,13 @@ The index root name to write events to. The default is `apm-server`. For example
 This parameter’s value will be assigned to the `metadata.beat` field. It can then be accessed in {{ls}}'s output section as `%{[@metadata][beat]}`.
 ::::
 
-
-
 #### `ssl` [_ssl_2]
 
 Configuration options for SSL parameters like the root CA for {{ls}} connections. See [SSL/TLS output settings](ssltls-output-settings.md) for more information. To use SSL, you must also configure the [{{beats}} input plugin for {{ls}}](logstash-docs-md://lsr/plugins-inputs-beats.md) to use SSL/TLS.
 
-
 #### `timeout` [_timeout_2]
 
 The number of seconds to wait for responses from the {{ls}} server before timing out. The default is 30 (seconds).
-
 
 #### `max_retries` [_max_retries_2]
 
@@ -267,7 +239,6 @@ The number of times to retry publishing an event after a publishing failure. Aft
 Set `max_retries` to a value less than 0 to retry until all events are published.
 
 The default is 3.
-
 
 #### `bulk_max_size` [_bulk_max_size]
 
@@ -279,23 +250,19 @@ Specifying a larger batch size can improve performance by lowering the overhead 
 
 Setting `bulk_max_size` to values less than or equal to 0 disables the splitting of batches. When splitting is disabled, the queue decides on the number of events to be contained in a batch.
 
-
 #### `slow_start` [_slow_start]
 
 If enabled, only a subset of events in a batch of events is transferred per transaction. The number of events to be sent increases up to `bulk_max_size` if no error is encountered. On error, the number of events per transaction is reduced again.
 
 The default is `false`.
 
-
 #### `backoff.init` [_backoff_init_2]
 
 The number of seconds to wait before trying to reconnect to {{ls}} after a network error. After waiting `backoff.init` seconds, APM Server tries to reconnect. If the attempt fails, the backoff timer is increased exponentially up to `backoff.max`. After a successful connection, the backoff timer is reset. The default is `1s`.
 
-
 #### `backoff.max` [_backoff_max_2]
 
 The maximum number of seconds to wait before attempting to connect to {{ls}} after a network error. The default is `60s`.
-
 
 ## Secure communication with {{ls}} [apm-configuring-ssl-logstash]
 
@@ -350,8 +317,6 @@ To use SSL mutual authentication:
 
         For more information about these options, see the [documentation for the {{beats}} input plugin](logstash-docs-md://lsr/plugins-inputs-beats.md).
 
-
-
 ### Validate the {{ls}} server’s certificate [apm-testing-ssl-logstash]
 
 Before running APM Server, you should validate the {{ls}} server’s certificate. You can use `curl` to validate the certificate even though the protocol used to communicate with {{ls}} is not based on HTTP. For example:
@@ -397,7 +362,7 @@ Validation for this test fails because the certificate is not valid for the spec
 curl: (51) SSL: certificate verification failed (result: 5)
 ```
 
-See the [troubleshooting docs](../../../troubleshoot/observability/apm/common-problems.md#apm-ssl-client-fails) for info about resolving this issue.
+See the [troubleshooting docs](/troubleshoot/observability/apm/common-problems.md#apm-ssl-client-fails) for info about resolving this issue.
 
 ### Test the APM Server to {{ls}} connection [_test_the_apm_server_to_ls_connection]
 
@@ -407,5 +372,5 @@ If you have APM Server running as a service, first stop the service. Then test y
 apm-server -c apm-server.yml -e -v
 ```
 
-Any errors will be printed to the console. See the [troubleshooting docs](../../../troubleshoot/observability/apm/common-problems.md#apm-ssl-client-fails) for info about resolving common errors.
+Any errors will be printed to the console. See the [troubleshooting docs](/troubleshoot/observability/apm/common-problems.md#apm-ssl-client-fails) for info about resolving common errors.
 

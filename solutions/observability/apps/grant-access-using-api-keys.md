@@ -15,8 +15,6 @@ APM Server instances typically send both collected data and monitoring informati
 For security reasons, we recommend using a unique API key per APM Server instance. You can create as many API keys per user as necessary.
 ::::
 
-
-
 ## Create an API key for writing events [apm-beats-api-key-publish]
 
 To create an API key:
@@ -74,7 +72,6 @@ To create an API key:
     :alt: API key dropdown highlighting the Beats option
     :::
 
-
 You can now use this API key in your `apm-server.yml` configuration file:
 
 ```yaml
@@ -83,8 +80,6 @@ output.elasticsearch:
 ```
 
 1. Format is `id:api_key` (as shown in the {{beats}} dropdown)
-
-
 
 ## Create an API key for monitoring [apm-beats-api-key-monitor]
 
@@ -114,7 +109,6 @@ Enter a name for your API key and select **Restrict privileges**. In the role de
 This example only provides privileges for **publishing monitoring data**. See [Use feature roles](create-assign-feature-roles-to-apm-server-users.md) for additional privileges and information.
 ::::
 
-
 To set an expiration date for the API key, select **Expire after time** and input the lifetime of the API key in days.
 
 Click **Create API key**. In the dropdown, switch to **{{beats}}** and copy the API key.
@@ -127,8 +121,6 @@ monitoring.elasticsearch:
 ```
 
 1. Format is `id:api_key` (as shown in the {{beats}} dropdown)
-
-
 
 ## Create an API key with {{es}} APIs [apm-beats-api-key-es]
 
@@ -172,9 +164,7 @@ POST /_security/api_key
 1. Name of the API key
 2. Granted privileges, see [Use feature roles](create-assign-feature-roles-to-apm-server-users.md)
 
-
 See the [Create API key](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-api-key) reference for more information.
-
 
 ## Learn more about API keys [apm-learn-more-api-keys]
 

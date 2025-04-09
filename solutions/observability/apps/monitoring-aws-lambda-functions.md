@@ -10,8 +10,7 @@ applies_to:
 
 # Monitoring AWS Lambda Functions [apm-monitoring-aws-lambda]
 
-
-Elastic APM lets you monitor your AWS Lambda functions. The natural integration of [distributed tracing](../../../solutions/observability/apps/traces.md#apm-distributed-tracing) into your AWS Lambda functions provides insights into the function’s execution and runtime behavior as well as its relationships and dependencies to other services.
+Elastic APM lets you monitor your AWS Lambda functions. The natural integration of [distributed tracing](/solutions/observability/apps/traces.md#apm-distributed-tracing) into your AWS Lambda functions provides insights into the function’s execution and runtime behavior as well as its relationships and dependencies to other services.
 
 ## AWS Lambda architecture [aws-lambda-arch]
 

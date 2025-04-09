@@ -9,7 +9,6 @@ applies_to:
 
 APM Server exposes API endpoints that allow Elastic APM agents to query the APM Server for configuration changes. More information on this feature is available in [{{apm-agent}} configuration in {{kib}}](apm-agent-central-configuration.md).
 
-
 ## Agent configuration endpoints [apm-api-config-endpoint]
 
 | Name | Endpoint |
@@ -19,7 +18,6 @@ APM Server exposes API endpoints that allow Elastic APM agents to query the APM 
 
 The Agent configuration endpoints accepts both `HTTP GET` and `HTTP POST` requests. If an [API keys](api-keys.md) or [Secret token](secret-token.md) is configured, requests to this endpoint must be authenticated.
 
-
 ### HTTP GET [apm-api-config-api-get]
 
 `service.name` is a required query string parameter.
@@ -27,7 +25,6 @@ The Agent configuration endpoints accepts both `HTTP GET` and `HTTP POST` reques
 ```bash
 http(s)://{hostname}:{port}/config/v1/agents?service.name=SERVICE_NAME
 ```
-
 
 ### HTTP POST [apm-api-config-api-post]
 
@@ -44,13 +41,11 @@ http(s)://{hostname}:{port}/config/v1/agents
 }
 ```
 
-
 ### Responses [apm-api-config-api-response]
 
 * Successful - `200`
 * APM Server is configured to fetch agent configuration from {{es}} but the configuration is invalid - `403`
 * APM Server is starting up or {{es}} is unreachable - `503`
-
 
 ### Example request [apm-api-config-api-example]
 
@@ -68,7 +63,6 @@ curl -X POST http://127.0.0.1:8200/config/v1/agents \
   -H 'content-type: application/json' \
   -d '{"service": {"name": "test-service"}}'
 ```
-
 
 ### Example response [apm-api-config-api-ex-response]
 

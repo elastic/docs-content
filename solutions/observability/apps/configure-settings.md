@@ -22,11 +22,9 @@ Uptime settings apply to the current space only. To segment different uptime use
 2. At the top of the page, click **Settings**.
 
     ::::{important}
-    To modify items on this page, you must have the [`all`](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md) Uptime privilege granted to your role.
+    To modify items on this page, you must have the [`all`](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md) Uptime privilege granted to your role.
 
     ::::
-
-
 
 ## Configure indices [configure-uptime-indices]
 
@@ -37,12 +35,10 @@ The pattern set here only restricts what the {{uptime-app}} displays. You can st
 
 ::::
 
-
 :::{image} /solutions/images/observability-heartbeat-indices.png
 :alt: {{heartbeat}} indices
 :screenshot:
 :::
-
 
 ## Configure connectors [configure-uptime-alert-connectors]
 
@@ -50,13 +46,12 @@ The pattern set here only restricts what the {{uptime-app}} displays. You can st
 
 Click **Create connector** and follow the prompts to select a connector type and configure its properties. After you create a connector, it’s available to you anytime you set up a rule action in the current space.
 
-For more information about each connector, see [action types and connectors](../../../deploy-manage/manage-connectors.md).
+For more information about each connector, see [action types and connectors](/deploy-manage/manage-connectors.md).
 
 :::{image} /solutions/images/observability-alert-connector.png
 :alt: Rule connector
 :screenshot:
 :::
-
 
 ## Configure certificate thresholds [configure-cert-thresholds]
 

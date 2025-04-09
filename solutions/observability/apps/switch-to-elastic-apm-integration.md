@@ -30,7 +30,6 @@ The APM integration offers a number of benefits over the standalone method of ru
 * Easier and less error-prone upgrade path
 * Zero-downtime configuration changes
 
-
 ## APM integration architecture [apm-arch-upgrade]
 
 Elastic APM consists of four components: **APM agents**, the **Elastic APM integration**, **{{es}}**, and **{{kib}}**. Generally, there are two ways that these four components can work together:
@@ -47,7 +46,6 @@ Or, APM agents and the APM integration live on edge machines and enroll via a ce
 In order to collect data from RUM and mobile agents, which run in browser and mobile applications, you must run {{agent}} centrally. For other applications, such as backend services, {{agent}} may be co-located on the edge machine.
 ::::
 
-
 ## Limitations [apm-integration-upgrade-limitations]
 
 There are some limitations to be aware of:
@@ -56,7 +54,6 @@ There are some limitations to be aware of:
 * Currently, only the {{es}} output is supported
 * APM runs under {{agent}} which, depending on the installation method, might require root privileges
 * An {{agent}} with the APM integration enabled must be managed by {{fleet}}.
-
 
 ## Make the switch [_make_the_switch]
 

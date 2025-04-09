@@ -10,7 +10,6 @@ applies_to:
 
 # Use advanced queries on your application data [apm-advanced-queries]
 
-
 Querying your APM data is an essential tool that can make finding bottlenecks in your code even more straightforward.
 
 Using the query bar, a powerful data query feature, you can pass advanced queries on your data to filter on specific pieces of information you’re interested in. APM queries entered into the query bar are added as parameters to the URL, so it’s easy to share a specific query or view with others.
@@ -25,14 +24,13 @@ When you type, you can begin to see some of the transaction fields available for
 :::
 
 ::::{tip}
-To learn more about the {{kib}} query language capabilities, see the [Kibana Query Language Enhancements](../../../explore-analyze/query-filter/languages/kql.md) documentation.
+To learn more about the {{kib}} query language capabilities, see the [Kibana Query Language Enhancements](/explore-analyze/query-filter/languages/kql.md) documentation.
 
 ::::
 
-
 ### APM queries [apm-app-queries]
 
-APM queries can be handy for removing noise from your data in the [Services](../../../solutions/observability/apps/services.md), [Transactions](../../../solutions/observability/apps/transactions-2.md), [Errors](../../../solutions/observability/apps/errors-2.md), [Metrics](../../../solutions/observability/apps/metrics-2.md), and [Traces](../../../solutions/observability/apps/traces-2.md) views.
+APM queries can be handy for removing noise from your data in the [Services](/solutions/observability/apps/services.md), [Transactions](/solutions/observability/apps/transactions-2.md), [Errors](/solutions/observability/apps/errors-2.md), [Metrics](/solutions/observability/apps/metrics-2.md), and [Traces](/solutions/observability/apps/traces-2.md) views.
 
 For example, in the **Services** view, you can quickly view a list of all the instrumented services running on your production environment: `service.environment : production`. Or filter the list by including the APM agent’s name and the host it’s running on: `service.environment : "production" and agent.name : "java" and host.name : "prod-server1"`.
 
@@ -40,11 +38,9 @@ On the **Traces** view, you might want to view failed transaction results from a
 
 On the **Transactions** view, you may want to list only the slower transactions than a specified time threshold: `transaction.duration.us > 2000000`. Or filter the list by including the service version and the Kubernetes pod it’s running on: `transaction.duration.us > 2000000 and service.version : "7.12.0" and kubernetes.pod.name : "pod-5468b47f57-pqk2m"`.
 
-
 ## Querying in Discover [discover-advanced-queries]
 
-Alternatively, you can query your APM documents in [**Discover**](../../../explore-analyze/discover.md). Querying documents in **Discover** works the same way as queries in the Applications UI, and **Discover** supports all of the example APM queries shown on this page.
-
+Alternatively, you can query your APM documents in [**Discover**](/explore-analyze/discover.md). Querying documents in **Discover** works the same way as queries in the Applications UI, and **Discover** supports all of the example APM queries shown on this page.
 
 ### Discover queries [discover-queries]
 

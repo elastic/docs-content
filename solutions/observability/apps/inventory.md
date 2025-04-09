@@ -44,7 +44,6 @@ Inventory allows you to:
 * Debug resource bottlenecks with your service caused by their containers and the hosts they run on.
 * Easily discover all entities related to the host, container or service you are viewing by leveraging your tags and labels
 
-
 ## Explore your entities [explore-your-entities]
 
 1. To view all your entities, find **Inventory** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
@@ -77,11 +76,9 @@ For each entity, you can click the entity name and get a detailed view. For exam
 
 If you open an entity of type `host` or `container` that does not have infrastructure data, some of the visualizations will be blank and some features on the page will not be fully populated.
 
-
 ## Add entities to the Inventory [add-entities-to-inventory]
 
 You can add entities to the Inventory through one of the following approaches: **Add data** or **Associate existing service logs**.
-
 
 ## Add data [add-data-entities]
 
@@ -91,7 +88,6 @@ To add entities, select **Add data** and choose one of the following onboarding 
 * **Kubernetes** Detects hosts, containers, and services
 * **Application** Detects services
 * **Cloud** Ingests telemetry data from the Cloud
-
 
 ## Associate existing service logs [associate-existing-service-logs]
 

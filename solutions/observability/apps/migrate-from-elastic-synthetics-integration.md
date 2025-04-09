@@ -14,7 +14,6 @@ You should *not* use the Elastic Synthetics integration to set up new monitors a
 * With Elastic **{{project-monitors-cap}}**, you write tests in an external version-controlled project and use a CLI tool to push monitors to the {{stack}}.
 * The **{{synthetics-app}}** is an application in {{kib}} that you can use to configure and create monitors using a user interface.
 
-
 ## Compare approaches [synthetics-migrate-integration-compare]
 
 Below is a comparison of how you used the {{agent}} integration to create monitors and how you’ll use the {{synthetics-app}} or projects to create monitors:
@@ -32,7 +31,6 @@ Below is a comparison of how you used the {{agent}} integration to create monito
     * Your infrastructure using [{{private-location}}s](monitor-resources-on-private-networks.md)
     * Elastic’s global managed infrastructure
 
-
 **Where you configure monitors**:
 
 * **{{agent}} integration**: You could configure monitors using:
@@ -44,7 +42,6 @@ Below is a comparison of how you used the {{agent}} integration to create monito
 
     * A user interface in {{kib}} (all lightweight monitors, browser monitors via inline script only)
     * Code in an external, version-controlled project (all monitor types)
-
 
 **How to use projects ([read more](#synthetics-migrate-integration-projects))**:
 
@@ -61,7 +58,6 @@ Below is a comparison of how you used the {{agent}} integration to create monito
     2. Configure lightweight monitors in YAML files.
     3. Write journeys in JavaScript or TypeScript files and configure individual monitors in your journey code using `monitor.use` or configure all monitors using the `synthetics.config.ts` file.
     4. Use the `elastic/synthetics push` command to create monitors.
-
 
 Find more details in [Use {{project-monitors-cap}}](create-monitors-with-project-monitors.md).
 
@@ -82,9 +78,7 @@ Find more details in [Use {{project-monitors-cap}}](create-monitors-with-project
     4. Configure the monitor.
     5. Create the monitor.
 
-
 Find more details in [Use the {{synthetics-app}}](create-monitors-in-synthetics-app.md).
-
 
 ## Where monitors run [synthetics-migrate-integration-location]
 
@@ -93,7 +87,6 @@ If you want to continue hosting on your infrastructure, you will need to create 
 Alternatively, you can start hosting on Elastic’s global managed infrastructure. With Elastic’s global managed testing infrastructure, you can create and run monitors in multiple locations without having to manage your own infrastructure. Elastic takes care of software updates and capacity planning for you.
 
 Executing synthetic tests on Elastic’s global managed testing infrastructure incurs an additional charge. Tests are charged under one of two new billing dimensions depending on the monitor type. For *browser monitor* usage, there is a fee per test run. For *lightweight monitor* usage, there is a fee per region in which you run any monitors regardless of the number of test runs. For more details, refer to [full details and current pricing](https://www.elastic.co/pricing).
-
 
 ## How to use projects [synthetics-migrate-integration-projects]
 
@@ -128,7 +121,6 @@ First, upgrade the existing project to use the latest version of `@elastic/synth
 
     4. `.github/` will contain sample workflow files to use with GitHub Actions.
 
-
 Then, you can further configure monitors as needed. In the upgraded project, you’ll use code (instead of the Integrations UI) to define settings like the name of the monitor and the frequency at which it will run. There are two ways you can configure monitors using code:
 
 * For individual monitors, use `monitor.use` directly in the journey code. Read more in [Configure individual monitors](configure-individual-browser-monitors.md).
@@ -139,7 +131,6 @@ Finally, you’ll create monitors using `push` instead of by adding a ZIP URL in
 Optionally, you can also add lightweight monitors to the project in YAML files. Read more about adding lightweight monitors to projects in [Configure lightweight monitors](configure-lightweight-monitors.md).
 
 For more information on getting started with projects, refer to [Use {{project-monitors-cap}}](create-monitors-with-project-monitors.md).
-
 
 ## How to use the UI [synthetics-migrate-integration-ui]
 
