@@ -24,11 +24,11 @@ Built-in data filters allow you to filter or turn off ingestion of the following
 
 | Data type | Common sensitive data |
 | --- | --- |
-| [HTTP headers](built-in-data-filters.md#apm-filters-http-header) | Passwords, credit card numbers, authorization, etc. |
-| [HTTP bodies](built-in-data-filters.md#apm-filters-http-body) | Passwords, credit card numbers, etc. |
-| [Personal data](built-in-data-filters.md#apm-filters-personal-data) | Client IP address and user agent. |
-| [Real user monitoring data](built-in-data-filters.md#apm-filters-real-user-data) | URLs visited, click events, user browser errors, resources used, etc. |
-| [Database statements](built-in-data-filters.md#apm-filters-database-statements) | Sensitive user or business information |
+| [HTTP headers](/solutions/observability/apps/built-in-data-filters.md#apm-filters-http-header) | Passwords, credit card numbers, authorization, etc. |
+| [HTTP bodies](/solutions/observability/apps/built-in-data-filters.md#apm-filters-http-body) | Passwords, credit card numbers, etc. |
+| [Personal data](/solutions/observability/apps/built-in-data-filters.md#apm-filters-personal-data) | Client IP address and user agent. |
+| [Real user monitoring data](/solutions/observability/apps/built-in-data-filters.md#apm-filters-real-user-data) | URLs visited, click events, user browser errors, resources used, etc. |
+| [Database statements](/solutions/observability/apps/built-in-data-filters.md#apm-filters-database-statements) | Sensitive user or business information |
 
 ## Custom filters [apm-custom-data-filters]
 
@@ -36,8 +36,8 @@ Custom filters allow you to filter or redact other types of APM data on ingestio
 
 |     |     |
 | --- | --- |
-| [Ingest pipelines](custom-filters.md#apm-filters-ingest-pipeline) | Applied at ingestion time.All agents and fields are supported. Data leaves the instrumented service.There are no performance overhead implications on the instrumented service. |
-| [{{apm-agent}} filters](custom-filters.md#apm-filters-in-agent) | Not supported by all agents.Data is sanitized before leaving the instrumented service.Potential overhead implications on the instrumented service |
+| [Ingest pipelines](/solutions/observability/apps/custom-filters.md#apm-filters-ingest-pipeline) | Applied at ingestion time.All agents and fields are supported. Data leaves the instrumented service.There are no performance overhead implications on the instrumented service. |
+| [{{apm-agent}} filters](/solutions/observability/apps/custom-filters.md#apm-filters-in-agent) | Not supported by all agents.Data is sanitized before leaving the instrumented service.Potential overhead implications on the instrumented service |
 
 ## Sensitive fields [apm-sensitive-fields]
 
@@ -45,14 +45,14 @@ You should review the following fields regularly to ensure sensitive data is not
 
 | Field | Description | Remedy |
 | --- | --- | --- |
-| `client.ip` | The client IP address, as forwarded by proxy. | [Personal data](built-in-data-filters.md#apm-filters-personal-data) |
-| `http.request.body.original` | The body of the monitored HTTP request. | [HTTP bodies](built-in-data-filters.md#apm-filters-http-body) |
-| `http.request.headers` | The canonical headers of the monitored HTTP request. | [HTTP headers](built-in-data-filters.md#apm-filters-http-header) |
+| `client.ip` | The client IP address, as forwarded by proxy. | [Personal data](/solutions/observability/apps/built-in-data-filters.md#apm-filters-personal-data) |
+| `http.request.body.original` | The body of the monitored HTTP request. | [HTTP bodies](/solutions/observability/apps/built-in-data-filters.md#apm-filters-http-body) |
+| `http.request.headers` | The canonical headers of the monitored HTTP request. | [HTTP headers](/solutions/observability/apps/built-in-data-filters.md#apm-filters-http-header) |
 | `http.request.socket.remote_address` | The address of the last proxy or end-user (if no proxy). | [Custom filters](custom-filters.md) |
-| `http.response.headers` | The canonical headers of the monitored HTTP response. | [HTTP headers](built-in-data-filters.md#apm-filters-http-header) |
-| `process.args` | Process arguments. | [Database statements](built-in-data-filters.md#apm-filters-database-statements) |
-| `span.db.statement` | Database statement. | [Database statements](built-in-data-filters.md#apm-filters-database-statements) |
+| `http.response.headers` | The canonical headers of the monitored HTTP response. | [HTTP headers](/solutions/observability/apps/built-in-data-filters.md#apm-filters-http-header) |
+| `process.args` | Process arguments. | [Database statements](/solutions/observability/apps/built-in-data-filters.md#apm-filters-database-statements) |
+| `span.db.statement` | Database statement. | [Database statements](/solutions/observability/apps/built-in-data-filters.md#apm-filters-database-statements) |
 | `stacktrace.vars` | A flat mapping of local variables captured in the stack frame | [Custom filters](custom-filters.md) |
 | `url.query` | The query string of the request, e.g. `?pass=hunter2`. | [Custom filters](custom-filters.md) |
 | `user.*` | Logged-in user information. | [Custom filters](custom-filters.md) |
-| `user_agent.*` | Device and version making the network request. | [Personal data](built-in-data-filters.md#apm-filters-personal-data) |
+| `user_agent.*` | Device and version making the network request. | [Personal data](/solutions/observability/apps/built-in-data-filters.md#apm-filters-personal-data) |

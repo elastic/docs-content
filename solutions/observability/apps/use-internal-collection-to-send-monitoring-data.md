@@ -10,7 +10,7 @@ applies_to:
 
 Use internal collectors to send {{beats}} monitoring data directly to your monitoring cluster. Or as an alternative to internal collection, use [Use {{metricbeat}} collection](use-metricbeat-to-send-monitoring-data.md). The benefit of using internal collection instead of {{metricbeat}} is that you have fewer pieces of software to install and maintain.
 
-1. Create an API key or user that has appropriate authority to send system-level monitoring data to {{es}}. For example, you can use the built-in `apm_system` user or assign the built-in `apm_system` role to another user. For more information on the required privileges, see [Create a *monitoring* role](create-assign-feature-roles-to-apm-server-users.md#apm-privileges-to-publish-monitoring). For more information on how to use API keys, see [Grant access using API keys](grant-access-using-api-keys.md).
+1. Create an API key or user that has appropriate authority to send system-level monitoring data to {{es}}. For example, you can use the built-in `apm_system` user or assign the built-in `apm_system` role to another user. For more information on the required privileges, see [Create a *monitoring* role](/solutions/observability/apps/create-assign-feature-roles-to-apm-server-users.md#apm-privileges-to-publish-monitoring). For more information on how to use API keys, see [Grant access using API keys](grant-access-using-api-keys.md).
 2. Add the `monitoring` settings in the APM Server configuration file. If you configured the {{es}} output and want to send APM Server monitoring events to the same {{es}} cluster, specify the following minimal configuration:
 
     ```yaml

@@ -62,13 +62,13 @@ This setting supports [Central configuration](apm-agent-central-configuration.md
 
 By default, {{apm-server-or-mis}} captures some personal data associated with trace events:
 
-* `client.ip`: The client’s IP address. Typically derived from the HTTP headers of incoming requests. `client.ip` is also used in conjunction with the [`geoip` processor](elasticsearch://reference/enrich-processor/geoip-processor.md) to assign geographical information to trace events. To learn more about how `client.ip` is derived, see [Deriving an incoming request’s `client.ip` address](anonymous-authentication.md#apm-derive-client-ip).
+* `client.ip`: The client’s IP address. Typically derived from the HTTP headers of incoming requests. `client.ip` is also used in conjunction with the [`geoip` processor](elasticsearch://reference/enrich-processor/geoip-processor.md) to assign geographical information to trace events. To learn more about how `client.ip` is derived, see [Deriving an incoming request’s `client.ip` address](/solutions/observability/apps/anonymous-authentication.md#apm-derive-client-ip).
 * `user_agent`: User agent data, including the client operating system, device name, vendor, and version.
 
 The capturing of this data can be turned off by setting **Capture personal data** to `false`.
 
 :::{note}
-This setting only prevents {{apm-server-or-mis}} from capturing already ingested personal data. It does not prevent such data from appearing in ingestion logs where applicable. See [{{apm-agent}} filters](custom-filters.md#apm-filters-in-agent) for redacting data on ingestion.
+This setting only prevents {{apm-server-or-mis}} from capturing already ingested personal data. It does not prevent such data from appearing in ingestion logs where applicable. See [{{apm-agent}} filters](/solutions/observability/apps/custom-filters.md#apm-filters-in-agent) for redacting data on ingestion.
 :::
 
 ## Real user monitoring data [apm-filters-real-user-data]

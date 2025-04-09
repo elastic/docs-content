@@ -82,7 +82,7 @@ Find more details in [Use the {{synthetics-app}}](create-monitors-in-synthetics-
 
 ## Where monitors run [synthetics-migrate-integration-location]
 
-If you want to continue hosting on your infrastructure, you will need to create a {{private-location}} before creating monitors. If you have already have an {{agent}} running using `elastic-agent-complete`, you can [add it as a new {{private-location}}](monitor-resources-on-private-networks.md#synthetics-private-location-add) in the {{synthetics-app}}. To create a new {{private-location}} from scratch, follow all instructions in [Monitor resources on private networks](monitor-resources-on-private-networks.md).
+If you want to continue hosting on your infrastructure, you will need to create a {{private-location}} before creating monitors. If you have already have an {{agent}} running using `elastic-agent-complete`, you can [add it as a new {{private-location}}](/solutions/observability/apps/monitor-resources-on-private-networks.md#synthetics-private-location-add) in the {{synthetics-app}}. To create a new {{private-location}} from scratch, follow all instructions in [Monitor resources on private networks](monitor-resources-on-private-networks.md).
 
 Alternatively, you can start hosting on Elastic’s global managed infrastructure. With Elastic’s global managed testing infrastructure, you can create and run monitors in multiple locations without having to manage your own infrastructure. Elastic takes care of software updates and capacity planning for you.
 
@@ -126,7 +126,7 @@ Then, you can further configure monitors as needed. In the upgraded project, you
 * For individual monitors, use `monitor.use` directly in the journey code. Read more in [Configure individual monitors](configure-individual-browser-monitors.md).
 * To configure all monitors at once, use the synthetics configuration file. Read more in [Configure projects](configure-synthetics-projects.md).
 
-Finally, you’ll create monitors using `push` instead of by adding a ZIP URL in the Integrations UI. This will require an API token. Read more in [`@elastic/synthetics push`](use-synthetics-cli.md#elastic-synthetics-push-command).
+Finally, you’ll create monitors using `push` instead of by adding a ZIP URL in the Integrations UI. This will require an API token. Read more in [`@elastic/synthetics push`](/solutions/observability/apps/use-synthetics-cli.md#elastic-synthetics-push-command).
 
 Optionally, you can also add lightweight monitors to the project in YAML files. Read more about adding lightweight monitors to projects in [Configure lightweight monitors](configure-lightweight-monitors.md).
 

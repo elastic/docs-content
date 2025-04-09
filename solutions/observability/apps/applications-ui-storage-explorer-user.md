@@ -41,4 +41,4 @@ View the **Storage Explorer** in the Applications UI.
 
     ::::
 
-2. Assign the `storage-explorer_user` created previously, and the roles and privileges necessary to create a [full](apm-reader-user.md#apm-app-reader-full) or [partial](apm-reader-user.md#apm-app-reader-partial) APM reader to any users that need to view **Storage Explorer** in the Applications UI.
+2. Assign the `storage-explorer_user` created previously, and the roles and privileges necessary to create a [full](/solutions/observability/apps/apm-reader-user.md#apm-app-reader-full) or [partial](apm-reader-user.md#apm-app-reader-partial) APM reader to any users that need to view **Storage Explorer** in the Applications UI.

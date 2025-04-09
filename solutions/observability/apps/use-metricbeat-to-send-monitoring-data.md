@@ -39,7 +39,7 @@ To collect and ship monitoring data:
     monitoring.enabled: false
     ```
 
-    For more information, see [Monitoring configuration options](use-internal-collection-to-send-monitoring-data.md#apm-configuration-monitor).
+    For more information, see [Monitoring configuration options](/solutions/observability/apps/use-internal-collection-to-send-monitoring-data.md#apm-configuration-monitor).
 
 3. Configure host (optional).<br>
 

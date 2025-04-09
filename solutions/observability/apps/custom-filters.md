@@ -57,7 +57,7 @@ stack:
 serverless: unavailable
 ```
 
-Say you decide to [capture HTTP request bodies](built-in-data-filters.md#apm-filters-http-body) but quickly notice that sensitive information is being collected in the `http.request.body.original` field:
+Say you decide to [capture HTTP request bodies](/solutions/observability/apps/built-in-data-filters.md#apm-filters-http-body) but quickly notice that sensitive information is being collected in the `http.request.body.original` field:
 
 ```json
 {

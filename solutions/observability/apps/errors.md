@@ -21,9 +21,9 @@ An Error contains:
     * Host - architecture, hostname, IP, etc.
     * Process - args, PID, PPID, etc.
     * URL - full, domain, port, query, etc.
-    * [User](metadata.md#apm-data-model-user) - (if supplied) email, ID, username, etc.
+    * [User](/solutions/observability/apps/metadata.md#apm-data-model-user) - (if supplied) email, ID, username, etc.
 
-In addition, agents provide options for users to capture custom [metadata](metadata.md). Metadata can be indexed - [`labels`](metadata.md#apm-data-model-labels), or not-indexed - [`custom`](metadata.md#apm-data-model-custom).
+In addition, agents provide options for users to capture custom [metadata](/solutions/observability/apps/metadata.md). Metadata can be indexed - [`labels`](metadata.md#apm-data-model-labels), or not-indexed - [`custom`](metadata.md#apm-data-model-custom).
 
 ::::{tip}
 Most agents limit keyword fields (e.g. `error.id`) to 1024 characters, non-keyword fields (e.g. `error.exception.message`) to 10,000 characters.

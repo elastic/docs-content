@@ -173,7 +173,7 @@ The number of concurrent load-balanced Kafka output workers.
 
 Output codec configuration. If the `codec` section is missing, events will be JSON encoded.
 
-See [Change the output codec](configure-console-output.md#apm-configuration-output-codec) for more information.
+See [Change the output codec](/solutions/observability/apps/configure-console-output.md#apm-configuration-output-codec) for more information.
 
 ### `metadata` [_metadata]
 

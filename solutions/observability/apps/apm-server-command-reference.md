@@ -394,7 +394,7 @@ These global flags are available whenever you run APM Server.
 :   Sets the path for log files. See the [Installation layout](installation-layout.md) section for details.
 
 **`--strict.perms`**
-:   Sets strict permission checking on configuration files. The default is `-strict.perms=true`. See [Configuration file ownership](apm-server-systemd.md#apm-config-file-ownership) for more information.
+:   Sets strict permission checking on configuration files. The default is `-strict.perms=true`. See [Configuration file ownership](/solutions/observability/apps/apm-server-systemd.md#apm-config-file-ownership) for more information.
 
 **`-v, --v`**
 :   Logs INFO-level messages.

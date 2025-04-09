@@ -69,7 +69,7 @@ The user who is setting up a new Private Location will need the following privil
 
 ### If using projects [_if_using_projects]
 
-If the user should be able to create and update monitors using [projects](get-started.md#observability-synthetics-get-started-synthetics-project), add *at least one* of following privileges:
+If the user should be able to create and update monitors using [projects](/solutions/observability/apps/get-started.md#observability-synthetics-get-started-synthetics-project), add *at least one* of following privileges:
 
 | Type | Privilege | Purpose |
 | --- | --- | --- |

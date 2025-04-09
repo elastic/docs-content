@@ -17,5 +17,5 @@ This section includes additional information on how to set up and run APM Server
 * [Command reference](apm-server-command-reference.md)
 * [Tune data ingestion](tune-data-ingestion.md)
 * [High Availability](high-availability.md)
-* [Run APM Server on Docker](apm-server-binary.md#apm-running-on-docker)
+* [Run APM Server on Docker](/solutions/observability/apps/apm-server-binary.md#apm-running-on-docker)
 

@@ -23,7 +23,7 @@ Note that the {{uptime-app}} is hidden from the interface when there is no recen
 
 ::::
 
-The {{uptime-app}} uses {{agent}} to periodically check the status of your services and applications. Monitor the availability of network endpoints and services using [Lightweight HTTP/S, TCP, and ICMP monitors](synthetic-monitoring.md#monitoring-uptime).
+The {{uptime-app}} uses {{agent}} to periodically check the status of your services and applications. Monitor the availability of network endpoints and services using [Lightweight HTTP/S, TCP, and ICMP monitors](/solutions/observability/apps/synthetic-monitoring.md#monitoring-uptime).
 
 ## Lightweight HTTP/S, TCP, and ICMP monitors [uptime-lightweight]
 

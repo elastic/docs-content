@@ -36,7 +36,7 @@ Additionally, the APM Server can rate-limit unauthenticated requests based on th
 ::::::
 
 ::::::{tab-item} APM Server binary
-When an [API key](api-keys.md) or [secret token](secret-token.md) is configured, anonymous authentication must be enabled to collect RUM data. To enable anonymous access, set either [`apm-server.rum.enabled`](configure-real-user-monitoring-rum.md#apm-rum-enable) or [`apm-server.auth.anonymous.enabled`](configure-anonymous-authentication.md#apm-config-auth-anon-enabled) to `true`.
+When an [API key](/solutions/observability/apps/api-keys.md) or [secret token](secret-token.md) is configured, anonymous authentication must be enabled to collect RUM data. To enable anonymous access, set either [`apm-server.rum.enabled`](configure-real-user-monitoring-rum.md#apm-rum-enable) or [`apm-server.auth.anonymous.enabled`](configure-anonymous-authentication.md#apm-config-auth-anon-enabled) to `true`.
 
 Because anyone can send anonymous events to the APM Server, additional configuration variables are available to rate limit the number anonymous events the APM Server processes; throughput is equal to the `rate_limit.ip_limit` times the `rate_limit.event_limit`.
 

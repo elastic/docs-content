@@ -55,7 +55,7 @@ For more information about each connector, see [action types and connectors](/de
 
 ## Configure certificate thresholds [configure-cert-thresholds]
 
-You can modify certificate thresholds to control how Uptime displays your TLS values in the [TLS Certificates](uptime-monitoring-deprecated.md#view-certificate-status) page. These settings also determine which certificates are selected by any TLS rule you create.
+You can modify certificate thresholds to control how Uptime displays your TLS values in the [TLS Certificates](/solutions/observability/apps/uptime-monitoring-deprecated.md#view-certificate-status) page. These settings also determine which certificates are selected by any TLS rule you create.
 
 |     |     |
 | --- | --- |

@@ -29,8 +29,8 @@ Instead of using usernames and passwords, you can use API keys to grant access t
 
 After privileged users have been created, use authentication to connect to a secured Elastic cluster.
 
-* [Secure communication with {{es}}](configure-elasticsearch-output.md#apm-securing-communication-elasticsearch)
-* [Secure communication with {{ls}}](configure-logstash-output.md#apm-configuring-ssl-logstash)
+* [Secure communication with {{es}}](/solutions/observability/apps/configure-elasticsearch-output.md#apm-securing-communication-elasticsearch)
+* [Secure communication with {{ls}}](/solutions/observability/apps/configure-logstash-output.md#apm-configuring-ssl-logstash)
 
 For secure communication between APM Server and APM Agents, see [Secure communication with APM agents](secure-communication-with-apm-agents.md).
 

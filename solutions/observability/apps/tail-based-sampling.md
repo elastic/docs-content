@@ -48,7 +48,7 @@ Configure and customize Fleet-managed APM settings directly in {{kib}}:
 
 ## Top-level tail-based sampling settings [apm-configuration-tbs]
 
-See [Tail-based sampling](transaction-sampling.md#apm-tail-based-sampling) to learn more.
+See [Tail-based sampling](/solutions/observability/apps/transaction-sampling.md#apm-tail-based-sampling) to learn more.
 
 ### Enable tail-based sampling [sampling-tail-enabled-ref]
 
@@ -98,7 +98,7 @@ Default: `0GB`. (text)
 
 ## Policy-level tail-based sampling settings [apm-configuration-tbs-policy]
 
-See [Tail-based sampling](transaction-sampling.md#apm-tail-based-sampling) to learn more.
+See [Tail-based sampling](/solutions/observability/apps/transaction-sampling.md#apm-tail-based-sampling) to learn more.
 
 ### **`sample_rate`** [sampling-tail-sample-rate-ref]
 

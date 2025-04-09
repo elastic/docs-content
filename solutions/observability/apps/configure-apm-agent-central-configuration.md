@@ -30,7 +30,7 @@ apm-server.agent.config.cache.expiration: 45s
 apm-server.agent.config.elasticsearch.api_key: TiNAGG4BaaMdaH1tRfuU:KnR6yE41RrSowb0kQ0HWoA <1>
 ```
 
-1.  You *must* set the API key to be configured to **Beats**. Base64 encoded API keys are not currently supported in this configuration. For details on how to create and configure a compatible API key, refer to [Create an API key for writing events](grant-access-using-api-keys.md#apm-beats-api-key-publish).
+1.  You *must* set the API key to be configured to **Beats**. Base64 encoded API keys are not currently supported in this configuration. For details on how to create and configure a compatible API key, refer to [Create an API key for writing events](/solutions/observability/apps/grant-access-using-api-keys.md#apm-beats-api-key-publish).
 
 ### `apm-server.agent.config.cache.expiration` [apm-agent-config-cache]
 
@@ -62,8 +62,8 @@ rejecting fetch request: no valid elasticsearch config
 
 This occurs because the user or API key set in either `apm-server.agent.config.elasticsearch` or `output.elasticsearch` (if `apm-server.agent.config.elasticsearch` is not set) does not have adequate permissions to read source maps from {{es}}.
 
-To fix this error, ensure that APM Server has all the required privileges. For more details, refer to [Create a *central configuration management* role](create-assign-feature-roles-to-apm-server-users.md#apm-privileges-agent-central-config-server).
+To fix this error, ensure that APM Server has all the required privileges. For more details, refer to [Create a *central configuration management* role](/solutions/observability/apps/create-assign-feature-roles-to-apm-server-users.md#apm-privileges-agent-central-config-server).
 
 #### HTTP 401 errors [_http_401_errors]
 
-If you get an HTTP 401 error from APM Server, make sure that you’re using an API key that is configured to **Beats**. For details on how to create and configure a compatible API key, refer to [Create an API key for writing events](grant-access-using-api-keys.md#apm-beats-api-key-publish).
+If you get an HTTP 401 error from APM Server, make sure that you’re using an API key that is configured to **Beats**. For details on how to create and configure a compatible API key, refer to [Create an API key for writing events](/solutions/observability/apps/grant-access-using-api-keys.md#apm-beats-api-key-publish).

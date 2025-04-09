@@ -27,11 +27,11 @@ A transaction contains:
     * Host - architecture, hostname, IP, etc.
     * Process - args, PID, PPID, etc.
     * URL - full, domain, port, query, etc.
-    * [User](metadata.md#apm-data-model-user) - (if supplied) email, ID, username, etc.
+    * [User](/solutions/observability/apps/metadata.md#apm-data-model-user) - (if supplied) email, ID, username, etc.
 
 * Other relevant information depending on the agent. Example: The JavaScript RUM agent captures transaction marks, which are points in time relative to the start of the transaction with some label.
 
-In addition, agents provide options for users to capture custom [metadata](metadata.md). Metadata can be indexed - [`labels`](metadata.md#apm-data-model-labels), or not-indexed - [`custom`](metadata.md#apm-data-model-custom).
+In addition, agents provide options for users to capture custom [metadata](/solutions/observability/apps/metadata.md). Metadata can be indexed - [`labels`](metadata.md#apm-data-model-labels), or not-indexed - [`custom`](metadata.md#apm-data-model-custom).
 
 Transactions are grouped by their `type` and `name` in the Applications UI’s [Transaction overview](transactions-2.md). If you’re using a supported framework, APM agents will automatically handle the naming for you. If you’re not, or if you wish to override the default, all agents have API methods to manually set the `type` and `name`.
 

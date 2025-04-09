@@ -49,7 +49,7 @@ All anonymous access configuration is ignored if [authenticated communication](s
 
 ## Real User Monitoring (RUM) [apm-config-auth-anon-rum]
 
-If an [API key](api-keys.md) or [secret token](secret-token.md) is configured, then anonymous authentication must be enabled to collect RUM data. For this reason, anonymous auth will be enabled automatically if [Enable RUM](configure-real-user-monitoring-rum.md#apm-rum-enable) is set to `true`, and [Anonymous Agent access](#apm-config-auth-anon-enabled) is not explicitly defined.
+If an [API key](/solutions/observability/apps/api-keys.md) or [secret token](secret-token.md) is configured, then anonymous authentication must be enabled to collect RUM data. For this reason, anonymous auth will be enabled automatically if [Enable RUM](configure-real-user-monitoring-rum.md#apm-rum-enable) is set to `true`, and [Anonymous Agent access](#apm-config-auth-anon-enabled) is not explicitly defined.
 
 See [Real User Monitoring (RUM)](configure-real-user-monitoring-rum.md) for additional RUM configuration options.
 

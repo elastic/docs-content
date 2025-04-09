@@ -25,7 +25,7 @@ View deployment annotations in the Applications UI.
 
     1 `{{ANNOTATION_INDEX}}` should be the index name you’ve defined in [`xpack.observability.annotations.index`](kibana://reference/configuration-reference/apm-settings.md).
 
-2. Assign the `annotation_user` created previously, and the roles and privileges necessary to create a [full](apm-reader-user.md#apm-app-reader-full) or [partial](apm-reader-user.md#apm-app-reader-partial) APM reader to any users that need to view annotations in the Applications UI
+2. Assign the `annotation_user` created previously, and the roles and privileges necessary to create a [full](/solutions/observability/apps/apm-reader-user.md#apm-app-reader-full) or [partial](apm-reader-user.md#apm-app-reader-partial) APM reader to any users that need to view annotations in the Applications UI
 
 ## Annotation API [apm-app-annotation-api]
 

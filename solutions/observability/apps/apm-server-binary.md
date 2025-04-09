@@ -101,7 +101,7 @@ output.elasticsearch:
 
 1. The `host:port` APM Server listens on.
 2. The {{es}} `host:port` to connect to.
-3. This example uses basic authentication. The user provided here needs the privileges required to publish events to {{es}}. To create a dedicated user for this role, see [Create a *writer* role](create-assign-feature-roles-to-apm-server-users.md#apm-privileges-to-publish-events).
+3. This example uses basic authentication. The user provided here needs the privileges required to publish events to {{es}}. To create a dedicated user for this role, see [Create a *writer* role](/solutions/observability/apps/create-assign-feature-roles-to-apm-server-users.md#apm-privileges-to-publish-events).
 
 All available configuration options are outlined in [configuring APM Server](configure-apm-server.md).
 
@@ -116,7 +116,7 @@ To start APM Server, run:
 ```
 
 ::::{note}
-The `-e` [global flag](apm-server-command-reference.md#apm-global-flags) enables logging to stderr and disables syslog/file output. Remove this flag if you’ve enabled logging in the configuration file. For Linux systems, see [APM Server status and logs](apm-server-systemd.md).
+The `-e` [global flag](/solutions/observability/apps/apm-server-command-reference.md#apm-global-flags) enables logging to stderr and disables syslog/file output. Remove this flag if you’ve enabled logging in the configuration file. For Linux systems, see [APM Server status and logs](apm-server-systemd.md).
 ::::
 
 You should see APM Server start up. It will try to connect to {{es}} on localhost port `9200` and expose an API to agents on port `8200`. You can change the defaults in `apm-server.yml` or by supplying a different address on the command line:
@@ -127,7 +127,7 @@ You should see APM Server start up. It will try to connect to {{es}} on localhos
 
 ### Debian Package / RPM [apm-running-deb-rpm]
 
-For Debian package and RPM installations, we recommend the `apm-server` process runs as a non-root user. Therefore, these installation methods create an `apm-server` user which you can use to start the process. In addition, APM Server will only start if the configuration file is [owned by the user running the process](apm-server-systemd.md#apm-config-file-ownership).
+For Debian package and RPM installations, we recommend the `apm-server` process runs as a non-root user. Therefore, these installation methods create an `apm-server` user which you can use to start the process. In addition, APM Server will only start if the configuration file is [owned by the user running the process](/solutions/observability/apps/apm-server-systemd.md#apm-config-file-ownership).
 
 To start the APM Server in this case, run:
 

@@ -29,7 +29,7 @@ Add any custom metadata, index settings, or mappings.
 
 In the **Index settings** step, you can specify custom [index settings](elasticsearch://reference/elasticsearch/index-settings/index.md). For example, you could:
 
-* Customize the index lifecycle policy applied to a data stream. See [custom index lifecycle policies](index-lifecycle-management.md#apm-data-streams-custom-policy) for a walk-through.
+* Customize the index lifecycle policy applied to a data stream. See [custom index lifecycle policies](/solutions/observability/apps/index-lifecycle-management.md#apm-data-streams-custom-policy) for a walk-through.
 * Change the number of [shards](/deploy-manage/index.md) per index. Specify the number of primary shards:
 
     ```json

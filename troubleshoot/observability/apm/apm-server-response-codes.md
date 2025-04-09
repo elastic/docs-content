@@ -10,7 +10,7 @@ applies_to:
 # APM Server response codes [apm-common-response-codes]
 
 
-## HTTP 400: Data decoding error / Data validation error [apm-bad-request] 
+## HTTP 400: Data decoding error / Data validation error [apm-bad-request]
 
 ::::{tab-set}
 
@@ -25,7 +25,7 @@ The most likely cause for this error is using an incompatible version of an {{ap
 ::::
 
 
-## HTTP 400: Event too large [apm-event-too-large] 
+## HTTP 400: Event too large [apm-event-too-large]
 
 ::::{tab-set}
 
@@ -40,7 +40,7 @@ APM agents communicate with the Managed intake service by sending events in an H
 ::::
 
 
-## HTTP 401: Invalid token [apm-unauthorized] 
+## HTTP 401: Invalid token [apm-unauthorized]
 
 ::::{tab-set}
 
@@ -55,14 +55,14 @@ The API key is invalid.
 ::::
 
 
-## HTTP 403: Forbidden request [apm-forbidden] 
+## HTTP 403: Forbidden request [apm-forbidden]
 
-Either you are sending requests to a [RUM](../../../solutions/observability/apps/real-user-monitoring-rum.md) endpoint without RUM enabled, or a request is coming from an origin not specified in the APM integration settings. See the [Allowed origins](../../../solutions/observability/apps/configure-real-user-monitoring-rum.md#apm-rum-allow-origins) setting for more information.
+Either you are sending requests to a [RUM](/solutions/observability/apps/real-user-monitoring-rum.md) endpoint without RUM enabled, or a request is coming from an origin not specified in the APM integration settings. See the [Allowed origins](/solutions/observability/apps/configure-real-user-monitoring-rum.md#apm-rum-allow-origins) setting for more information.
 
 
-## HTTP 503: Request timed out waiting to be processed [apm-request-timed-out] 
+## HTTP 503: Request timed out waiting to be processed [apm-request-timed-out]
 
-This happens when APM Server exceeds the maximum number of requests that it can process concurrently. To alleviate this problem, you can try to: reduce the sample rate and/or reduce the collected stack trace information. See [Reduce storage](../../../solutions/observability/apps/reduce-storage.md) for more information.
+This happens when APM Server exceeds the maximum number of requests that it can process concurrently. To alleviate this problem, you can try to: reduce the sample rate and/or reduce the collected stack trace information. See [Reduce storage](/solutions/observability/apps/reduce-storage.md) for more information.
 
 Another option is to increase processing power. This can be done by either migrating your {{agent}} to a more powerful machine or adding more APM Server instances.
 

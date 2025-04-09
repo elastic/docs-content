@@ -49,7 +49,7 @@ output.elasticsearch:
   api_key: "ZCV7VnwBgnX0T19fN8Qe:KnR6yE41RrSowb0kQ0HWoA" <1>
 ```
 
-1.  You *must* set the API key to be configured to **Beats**. Base64 encoded API keys are not currently supported in this configuration. For details on how to create and configure a compatible API key, refer to [Create an API key for writing events](grant-access-using-api-keys.md#apm-beats-api-key-publish).
+1.  You *must* set the API key to be configured to **Beats**. Base64 encoded API keys are not currently supported in this configuration. For details on how to create and configure a compatible API key, refer to [Create an API key for writing events](/solutions/observability/apps/grant-access-using-api-keys.md#apm-beats-api-key-publish).
 
 **PKI certificate authentication:**
 
@@ -111,7 +111,7 @@ The default value is `false`.
 
 Instead of using a username and password, you can use API keys to secure communication with {{es}}. The value must be the ID of the API key and the API key joined by a colon: `id:api_key`.
 
-You *must* set the API key to be configured to **Beats**. Base64 encoded API keys are not currently supported in this configuration. For details on how to create and configure a compatible API key, refer to [Create an API key for writing events](grant-access-using-api-keys.md#apm-beats-api-key-publish).
+You *must* set the API key to be configured to **Beats**. Base64 encoded API keys are not currently supported in this configuration. For details on how to create and configure a compatible API key, refer to [Create an API key for writing events](/solutions/observability/apps/grant-access-using-api-keys.md#apm-beats-api-key-publish).
 
 :::{image} /solutions/images/observability-apm-api-key-beats.png
 :alt: API key dropdown highlighting the Beats option
@@ -121,7 +121,7 @@ You *must* set the API key to be configured to **Beats**. Base64 encoded API key
 
 The basic authentication username for connecting to {{es}}.
 
-This user needs the privileges required to publish events to {{es}}. To create a user like this, see [Create a *writer* role](create-assign-feature-roles-to-apm-server-users.md#apm-privileges-to-publish-events).
+This user needs the privileges required to publish events to {{es}}. To create a user like this, see [Create a *writer* role](/solutions/observability/apps/create-assign-feature-roles-to-apm-server-users.md#apm-privileges-to-publish-events).
 
 ### `password` [_password]
 
@@ -207,7 +207,7 @@ Authentication is specified in the APM Server configuration file:
       password: "{pwd}"
     ```
 
-    1. This user needs the privileges required to publish events to {{es}}. To create a user like this, see [Create a *writer* role](create-assign-feature-roles-to-apm-server-users.md#apm-privileges-to-publish-events).
+    1. This user needs the privileges required to publish events to {{es}}. To create a user like this, see [Create a *writer* role](/solutions/observability/apps/create-assign-feature-roles-to-apm-server-users.md#apm-privileges-to-publish-events).
 
 * To use token-based **API key authentication**, specify the `api_key` under `output.elasticsearch`. For example:
 
@@ -217,7 +217,7 @@ Authentication is specified in the APM Server configuration file:
       api_key: "KnR6yE41RrSowb0kQ0HWoA" <1>
     ```
 
-    1. This API key must have the privileges required to publish events to {{es}}. You *must* set the API key to be configured to **Beats**. Base64 encoded API keys are not currently supported in this configuration. For details on how to create and configure a compatible API key, refer to [Create an API key for writing events](grant-access-using-api-keys.md#apm-beats-api-key-publish).
+    1. This API key must have the privileges required to publish events to {{es}}. You *must* set the API key to be configured to **Beats**. Base64 encoded API keys are not currently supported in this configuration. For details on how to create and configure a compatible API key, refer to [Create an API key for writing events](/solutions/observability/apps/grant-access-using-api-keys.md#apm-beats-api-key-publish).
 
 * To use **Public Key Infrastructure (PKI) certificates** to authenticate users, specify the `certificate` and `key` settings under `output.elasticsearch`. For example:
 

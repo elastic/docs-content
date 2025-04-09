@@ -137,7 +137,7 @@ Source maps are supported by all APM Server deployment methods, however, the opt
 
 ### `source_mapping.enabled` [apm-config-sourcemapping-enabled]
 
-Used to enable/disable [source mapping](create-upload-source-maps-rum.md) for RUM events. When enabled, the APM Server needs additional privileges to read source maps. See [Use feature roles](create-assign-feature-roles-to-apm-server-users.md#apm-privileges-rum-source-mapping) for more details.
+Used to enable/disable [source mapping](/solutions/observability/apps/create-upload-source-maps-rum.md) for RUM events. When enabled, the APM Server needs additional privileges to read source maps. See [Use feature roles](create-assign-feature-roles-to-apm-server-users.md#apm-privileges-rum-source-mapping) for more details.
 
 Default: `true`
 

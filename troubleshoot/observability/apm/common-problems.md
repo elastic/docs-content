@@ -162,7 +162,7 @@ APM agent --> Load Balancer  --> APM Server
    10s            15s               3600s
 ```
 
-The APM Server timeout can be configured by updating the [maximum duration for reading an entire request](../../../solutions/observability/apps/general-configuration-options.md#apm-read_timeout).
+The APM Server timeout can be configured by updating the [maximum duration for reading an entire request](/solutions/observability/apps/general-configuration-options.md#apm-read_timeout).
 
 
 ## Field limit exceeded [apm-field-limit-exceeded]
@@ -239,7 +239,7 @@ If your problem is occurring in a different APM agent, the tips above still appl
 stack: all
 ```
 
-The [transaction overview](../../../solutions/observability/apps/transactions-2.md) will only display helpful information when the transactions in your services are named correctly. If you’re seeing "GET unknown route" or "unknown route" in the Applications UI, it could be a sign that something isn’t working as it should.
+The [transaction overview](/solutions/observability/apps/transactions-2.md) will only display helpful information when the transactions in your services are named correctly. If you’re seeing "GET unknown route" or "unknown route" in the Applications UI, it could be a sign that something isn’t working as it should.
 
 Elastic APM agents come with built-in support for popular frameworks out-of-the-box. This means, among other things, that the APM agent will try to automatically name HTTP requests. As an example, the Node.js agent uses the route that handled the request, while the Java agent uses the Servlet name.
 
@@ -292,5 +292,5 @@ It’s likely that there is a problem correlating APM and infrastructure data. T
 
 To fix this, make sure these two fields match exactly.
 
-For example, if the APM agent is not configured to use the correct host name, the host name might be set to the container name or the Kubernetes pod name. To get the correct host name, you need to set some additional configuration options, specifically `system.kubernetes.node.name` as described in [Kubernetes data](../../../solutions/observability/apps/elastic-apm-events-intake-api.md#apm-api-kubernetes-data).
+For example, if the APM agent is not configured to use the correct host name, the host name might be set to the container name or the Kubernetes pod name. To get the correct host name, you need to set some additional configuration options, specifically `system.kubernetes.node.name` as described in [Kubernetes data](/solutions/observability/apps/elastic-apm-events-intake-api.md#apm-api-kubernetes-data).
 

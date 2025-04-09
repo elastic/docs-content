@@ -88,7 +88,7 @@ This basic package is suitable for most use cases and it offers a reduced size o
 
 The servers {{agent}} flavor is installed using the `elastic-agent install --install-servers` command, or for RPM and DEB packages the `ELATIC_AGENT_FLAVOR=servers` environment variable. In addition to components included in the basic flavor, this flavor also includes:
 
-* `apm-server` - implements the Elastic [APM Server](../../solutions/observability/apps/get-started-with-apm.md).
+* `apm-server` - implements the Elastic [APM Server](/solutions/observability/apps/get-started-with-apm.md).
 * `cloudbeat` - implements [Cloud Security Posture Management (CSPM)](../../solutions/security/cloud/cloud-security-posture-management.md) integrations.
 * `fleet-server`, implements [Fleet Server](../fleet/fleet-server.md) for managing {{agents}}.
 * `pf-elastic-symbolizer` - a server side component of Elastic [Universal Profiling](../../solutions/observability/infra-and-hosts/get-started-with-universal-profiling.md).
@@ -96,7 +96,7 @@ The servers {{agent}} flavor is installed using the `elastic-agent install --ins
 
 Beginning in version 9.0, for {{agents}} to have the full functionality that was supported by default in pre-9.x versions, you need to install the servers {[agent]} flavor.
 
-### Flavors for container package installs 
+### Flavors for container package installs
 
 #### Basic flavor [elastic-agent-basic-flavor-container]
 
