@@ -8,14 +8,14 @@ navigation_title: Using OpenAI compatible models
 # Using OpenAI compatible models with the {{infer-cap}} API
 
 {{es}} enables you to use LLMs through the {{infer}} API, supporting providers such as Amazon Bedrock, Cohere, Google AI, HuggingFace, OpenAI, and more, as a service.
-It also allows you to use models deployed in your local environment that are compatible with OpenAI.
+It also allows you to use models deployed in your local environment that have an OpenAI compatible API.
 
 This page walks you through the process of connecting local models to {{es}} using Ollama.
 
 [Ollama](https://ollama.com/) enables you to download and run LLM models on your own infrastructure.
 For a list of available models compatible with Ollama, refer to this [page](https://ollama.com/library).
 
-Using Llama models ensures that your interactions remain private, as the models run on your infrastructure.
+Using Ollama ensures that your interactions remain private, as the models run on your infrastructure.
 
 ## Overview
 
