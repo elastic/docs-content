@@ -8,14 +8,12 @@ applies_to:
 
 # Configure the Kafka output [apm-kafka-output]
 
-
 ::::{note}
 ![supported deployment methods](/solutions/images/observability-binary-yes-fm-no.svg "")
 
 The Kafka output is not yet supported by {{fleet}}-managed APM Server.
 
 ::::
-
 
 The Kafka output sends events to Apache Kafka.
 
@@ -42,17 +40,13 @@ output.kafka:
 Events bigger than [`max_message_bytes`](#apm-kafka-max_message_bytes) will be dropped. To avoid this problem, make sure APM Server does not generate events bigger than [`max_message_bytes`](#apm-kafka-max_message_bytes).
 ::::
 
-
-
 ## Compatibility [apm-kafka-compatibility]
 
 This output works with all Kafka versions in between 0.11 and 2.2.2. Older versions might work as well, but are not supported.
 
-
 ## Configuration options [_configuration_options_5]
 
 You can specify the following options in the `kafka` section of the `apm-server.yml` config file:
-
 
 ### `enabled` [_enabled_4]
 
@@ -60,11 +54,9 @@ The `enabled` config is a boolean setting to enable or disable the output. If se
 
 The default value is `false`.
 
-
 ### `hosts` [_hosts_2]
 
 The list of Kafka broker addresses from where to fetch the cluster metadata. The cluster metadata contain the actual Kafka brokers events are published to.
-
 
 ### `version` [_version]
 
@@ -76,23 +68,19 @@ Valid values are all Kafka releases in between `0.8.2.0` and `2.0.0`.
 
 See [Compatibility](#apm-kafka-compatibility) for information on supported versions.
 
-
 ### `username` [_username_2]
 
 The username for connecting to Kafka. If username is configured, the password must be configured as well.
 
-
 ### `password` [_password_2]
 
 The password for connecting to Kafka.
-
 
 ### `sasl.mechanism` [_sasl_mechanism]
 
 ::::{warning}
 This functionality is in beta and is subject to change. The design and code is less mature than official GA features and is being provided as-is with no warranties. Beta features are not subject to the support SLA of official GA features.
 ::::
-
 
 The SASL mechanism to use when connecting to Kafka. It can be one of:
 
@@ -101,7 +89,6 @@ The SASL mechanism to use when connecting to Kafka. It can be one of:
 * `SCRAM-SHA-512` for SCRAM-SHA-512.
 
 If `sasl.mechanism` is not set, `PLAIN` is used if `username` and `password` are provided. Otherwise, SASL authentication is disabled.
-
 
 ### `topic` [apm-topic-option-kafka]
 
@@ -114,7 +101,6 @@ topic: '%{[fields.log_topic]}'
 ```
 
 See the [`topics`](#apm-topics-option-kafka) setting for other ways to set the topic dynamically.
-
 
 ### `topics` [apm-topics-option-kafka]
 
@@ -151,13 +137,11 @@ output.kafka:
 
 This configuration results in topics named `critical-9.0.0-beta1`, `error-9.0.0-beta1`, and `logs-9.0.0-beta1`.
 
-
 ### `key` [_key]
 
 Optional formatted string specifying the Kafka event key. If configured, the event key can be extracted from the event using a format string.
 
 See the Kafka documentation for the implications of a particular choice of key; by default, the key is chosen by the Kafka cluster.
-
 
 ### `partition` [_partition]
 
@@ -177,24 +161,19 @@ All partitioners will try to publish events to all partitions by default. If a p
 Publishing to a subset of available partitions potentially increases resource usage because events may become unevenly distributed.
 ::::
 
-
-
 ### `client_id` [_client_id]
 
 The configurable client ID used for logging, debugging, and auditing purposes. The default is "beats".
 
-
 ### `worker` [_worker_2]
 
 The number of concurrent load-balanced Kafka output workers.
-
 
 ### `codec` [_codec]
 
 Output codec configuration. If the `codec` section is missing, events will be JSON encoded.
 
 See [Change the output codec](configure-console-output.md#apm-configuration-output-codec) for more information.
-
 
 ### `metadata` [_metadata]
 
@@ -212,7 +191,6 @@ Kafka metadata update settings. The metadata do contain information about broker
 **`retry.backoff`**
 :   Waiting time between retries during leader elections. Default is `250ms`.
 
-
 ### `max_retries` [_max_retries_3]
 
 The number of times to retry publishing an event after a publishing failure. After the specified number of retries, the events are typically dropped.
@@ -221,46 +199,37 @@ Set `max_retries` to a value less than 0 to retry until all events are published
 
 The default is 3.
 
-
 ### `backoff.init` [_backoff_init_3]
 
 The number of seconds to wait before trying to republish to Kafka after a network error. After waiting `backoff.init` seconds, APM Server tries to republish. If the attempt fails, the backoff timer is increased exponentially up to `backoff.max`. After a successful publish, the backoff timer is reset. The default is `1s`.
-
 
 ### `backoff.max` [_backoff_max_3]
 
 The maximum number of seconds to wait before attempting to republish to Kafka after a network error. The default is `60s`.
 
-
 ### `bulk_max_size` [_bulk_max_size_2]
 
 The maximum number of events to bulk in a single Kafka request. The default is 2048.
-
 
 ### `bulk_flush_frequency` [_bulk_flush_frequency]
 
 Duration to wait before sending bulk Kafka request. 0 is no delay. The default is 0.
 
-
 ### `timeout` [_timeout_3]
 
 The number of seconds to wait for responses from the Kafka brokers before timing out. The default is 30 (seconds).
-
 
 ### `broker_timeout` [_broker_timeout]
 
 The maximum duration a broker will wait for number of required ACKs. The default is `10s`.
 
-
 ### `channel_buffer_size` [_channel_buffer_size]
 
 Per Kafka broker number of messages buffered in output pipeline. The default is 256.
 
-
 ### `keep_alive` [_keep_alive]
 
 The keep-alive period for an active network connection. If `0s`, keep-alives are disabled. The default is `0s`.
-
 
 ### `compression` [_compression]
 
@@ -273,8 +242,6 @@ When targeting Azure Event Hub for Kafka, set `compression` to `none` as the pro
 
 ::::
 
-
-
 ### `compression_level` [_compression_level_3]
 
 Sets the compression level used by gzip. Setting this value to 0 disables compression. The compression level must be in the range of 1 (best speed) to 9 (best compression).
@@ -283,11 +250,9 @@ Increasing the compression level will reduce the network usage but will increase
 
 The default value is 4.
 
-
 ### `max_message_bytes` [apm-kafka-max_message_bytes]
 
 The maximum permitted size of JSON-encoded messages. Bigger messages will be dropped. The default value is 1000000 (bytes). This value should be equal to or less than the broker’s `message.max.bytes`.
-
 
 ### `required_acks` [_required_acks]
 
@@ -295,16 +260,13 @@ The ACK reliability level required from broker. 0=no response, 1=wait for local 
 
 Note: If set to 0, no ACKs are returned by Kafka. Messages might be lost silently on error.
 
-
 ### `enable_krb5_fast` [_enable_krb5_fast]
 
 ::::{warning}
 This functionality is in beta and is subject to change. The design and code is less mature than official GA features and is being provided as-is with no warranties. Beta features are not subject to the support SLA of official GA features.
 ::::
 
-
 Enable Kerberos FAST authentication. This may conflict with some Active Directory installations. It is separate from the standard Kerberos settings because this flag only applies to the Kafka output. The default is `false`.
-
 
 ### `ssl` [_ssl_3]
 

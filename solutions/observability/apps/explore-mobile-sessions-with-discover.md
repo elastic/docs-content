@@ -7,8 +7,7 @@ applies_to:
 
 # Explore mobile sessions with Discover [apm-mobile-session-explorer]
 
-Elastic Mobile APM provides session tracking by attaching a `session.id`, a guid, to every span and event. This allows for the recall of the activities of a specific user during a specific period of time. The best way recall these data points is using [Discover](../../../explore-analyze/discover/document-explorer.md). This guide will explain how to do that.
-
+Elastic Mobile APM provides session tracking by attaching a `session.id`, a guid, to every span and event. This allows for the recall of the activities of a specific user during a specific period of time. The best way recall these data points is using [Discover](/explore-analyze/discover/document-explorer.md). This guide will explain how to do that.
 
 ## Viewing sessions with Discover [viewing-sessions-with-discover]
 

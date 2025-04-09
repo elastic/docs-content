@@ -23,8 +23,6 @@ Each endpoint, URL, and service represents a *monitor*.
 
 ::::
 
-
-
 ## Filter monitors [filter-monitors]
 
 To get started with your analysis, use the automated filter options, such as location, port, scheme, and tags, or define a custom filter by field, URL, monitor ID, and other attributes.
@@ -33,7 +31,6 @@ To get started with your analysis, use the automated filter options, such as loc
 :alt: Uptime filter bar
 :screenshot:
 :::
-
 
 ## Monitor availability [monitor-availability]
 
@@ -55,14 +52,12 @@ Use monitor tags to display a custom assortment of monitors; for example, consid
 
 ::::
 
-
 Expand the table row for a specific monitor on the list to view additional information such as which alerts are configured for the monitor, a recent error and when it occurred, the date and time of any recent test runs, and it’s URL.
 
 :::{image} /solutions/images/observability-monitors-list.png
 :alt: Monitors list
 :screenshot:
 :::
-
 
 ## Integrate with other Observability apps [observability-integrations]
 

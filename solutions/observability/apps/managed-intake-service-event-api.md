@@ -9,9 +9,7 @@ applies_to:
 
 ::::{warning}
 This API is exclusively for APM agent developers. The vast majority of users should have no reason to interact with this API.
-
 ::::
-
 
 The managed intake service exposes endpoints for:
 
@@ -19,11 +17,9 @@ The managed intake service exposes endpoints for:
 * [Elastic APM events intake API](#observability-apm-server-api-events-intake-api)
 * [OpenTelemetry intake API](#observability-apm-server-api-opentelemetry-api)
 
-
 ## Server information API [observability-apm-server-api-server-information-api]
 
 The managed intake service exposes an API endpoint to query general server information. This lightweight endpoint is useful as a server up/down health check.
-
 
 ### Server Information endpoint [api-info-endpoint]
 
@@ -36,7 +32,6 @@ https://{hostname}:{port}/
 This endpoint always returns an HTTP 200.
 
 Requests to this endpoint must be authenticated.
-
 
 #### Example [api-info-examples]
 
@@ -54,14 +49,12 @@ curl -X POST http://127.0.0.1:8200/ \
 }
 ```
 
-
 ## Events intake API [observability-apm-server-api-events-intake-api]
 
 ::::{note}
 Most users do not need to interact directly with the events intake API.
 
 ::::
-
 
 The events intake API is what we call the internal protocol that APM agents use to talk to the managed intake service. Agents communicate with the Server by sending events — captured pieces of information — in an HTTP request. Events can be:
 
@@ -76,7 +69,6 @@ With NDJSON, agents can open an HTTP POST request and use chunked encoding to st
 
 Refer to [Learn about data types](learn-about-application-data-types.md) to learn more about the different types of events.
 
-
 ### Endpoints [api-events-endpoint]
 
 The managed intake service exposes the following endpoints for Elastic APM agent data intake:
@@ -84,7 +76,6 @@ The managed intake service exposes the following endpoints for Elastic APM agent
 | Name | Endpoint |
 | --- | --- |
 | APM agent event intake | `/intake/v2/events` |
-
 
 ### Request [api-events-example]
 
@@ -105,14 +96,11 @@ Since asynchronous processing defers some of the event processing to the backgro
 
 ::::
 
-
-
 ### Response [api-events-response]
 
 On success, the server will respond with a 202 Accepted status code and no body.
 
 Keep in mind that events can succeed and fail independently of each other. Only if all events succeed does the server respond with a 202.
-
 
 ### API Errors [api-events-errors]
 
@@ -152,14 +140,11 @@ An example error response might look something like this:
 3. An immediately returning non-event related error
 4. The number of accepted events
 
-
 If you’re developing an agent, these errors can be useful for debugging.
-
 
 ### Event API Schemas [api-events-schema-definition]
 
 The managed intake service uses a collection of JSON Schemas for validating requests to the intake API.
-
 
 ### Metadata [observability-apm-server-api-metadata]
 
@@ -171,8 +156,6 @@ Rather than send this metadata information from the agent multiple times, the ma
 Metadata is stored under `context` when viewing documents in {{es}}.
 
 ::::
-
-
 
 #### Metadata Schema [metadata-schema]
 
@@ -751,8 +734,6 @@ The managed intake service uses JSON Schema to validate requests. The specificat
 
 ::::
 
-
-
 #### Kubernetes data [kubernetes-data]
 
 APM agents automatically read Kubernetes data and send it to the managed intake service. In most instances, agents are able to read this data from inside the container. If this is not the case, or if you wish to override this data, you can set environment variables for the agents to read. These environment variable are set via the Kubernetes [Downward API](https://kubernetes.io/docs/tasks/inject-data-application/environment-variable-expose-pod-information/#use-pod-fields-as-values-for-environment-variables). Here’s how you would add the environment variables to your Kubernetes pod spec:
@@ -785,11 +766,9 @@ The table below maps these environment variables to the APM metadata event field
 | `KUBERNETES_NAMESPACE` | system.kubernetes.namespace |
 | `KUBERNETES_POD_UID` | system.kubernetes.pod.uid |
 
-
 ### Transactions [observability-apm-server-api-transactions]
 
 Transactions are events corresponding to an incoming request or similar task occurring in a monitored service.
-
 
 #### Transaction Schema [api-transaction-schema]
 
@@ -1932,12 +1911,9 @@ The managed intake service uses JSON Schema to validate requests. The specificat
 
 ::::
 
-
-
 ### Spans [observability-apm-server-api-spans]
 
 Spans are events captured by an agent occurring in a monitored service.
-
 
 #### Span Schema [api-span-schema]
 
@@ -2852,12 +2828,9 @@ The managed intake service uses JSON Schema to validate requests. The specificat
 
 ::::
 
-
-
 ### Errors [observability-apm-server-api-errors]
 
 An error or a logged error message captured by an agent occurring in a monitored service.
-
 
 #### Error Schema [api-error-schema]
 
@@ -4162,12 +4135,9 @@ The managed intake service uses a JSON Schema to validate requests. The specific
 
 ::::
 
-
-
 ### Metrics [observability-apm-server-api-metrics]
 
 Metrics contain application metric data captured by an {{apm-agent}}.
-
 
 #### Metric Schema [api-metricset-schema]
 
@@ -4480,8 +4450,6 @@ The managed intake service uses JSON Schema to validate requests. The specificat
 
 ::::
 
-
-
 ## OpenTelemetry API [observability-apm-server-api-opentelemetry-api]
 
 Elastic supports receiving traces, metrics, and logs over the [OpenTelemetry Protocol (OTLP)](https://opentelemetry.io/docs/specs/otlp/). OTLP is the default transfer protocol for OpenTelemetry and is supported natively by the managed intake service.
@@ -4491,7 +4459,6 @@ The managed intake service supports two OTLP communication protocols on the same
 * OTLP/HTTP (protobuf)
 * OTLP/gRPC
 
-
 ### OTLP/gRPC paths [otlpgrpc-paths]
 
 | Name | Endpoint |
@@ -4499,7 +4466,6 @@ The managed intake service supports two OTLP communication protocols on the same
 | OTLP metrics intake | `/opentelemetry.proto.collector.metrics.v1.MetricsService/Export` |
 | OTLP trace intake | `/opentelemetry.proto.collector.trace.v1.TraceService/Export` |
 | OTLP logs intake | `/opentelemetry.proto.collector.logs.v1.LogsService/Export` |
-
 
 ### OTLP/HTTP paths [otlphttp-paths]
 
@@ -4513,5 +4479,4 @@ The managed intake service supports two OTLP communication protocols on the same
 See our [OpenTelemetry docs](upstream-opentelemetry-collectors-language-sdks.md) to learn how to send data to the managed intake service from an OpenTelemetry agent OpenTelemetry collector.
 
 ::::
-
 

@@ -32,14 +32,13 @@ Elasticsearch supports diverse use cases. Select a solution and follow its dedic
 
 |     |     |
 | --- | --- |
-|  |  |
 | ![elasticsearch](https://www.elastic.co/docs/assets/images/elasticsearch.png "elasticsearch =50%") | **Elasticsearch**<br> Create seamless search experiences for apps, websites, or workplaces.<br><br>[**Get started →**](../solutions/search/get-started.md)<br> |
 | ![observability](https://www.elastic.co/docs/assets/images/observability.png "observability =50%") | **Observability**<br> Monitor logs, metrics, and traces to gain insight into your systems.<br><br>[**Get started →**](../solutions/observability/get-started.md)<br> |
 | ![security](https://www.elastic.co/docs/assets/images/security.png "security =50%") | **Security**<br> Monitor logs, metrics, and traces to gain insight into your systems.<br><br>[**Get started →**](../solutions/security/get-started.md)<br> |
 
 ## Next steps
 
-For learn more about our products and solutions, see:
+To learn more about our products and solutions, check out:
 
 - [{{es}} and {{kib}}](introduction.md), the core components of the {{stack}}.
   - [The stack](/get-started/the-stack.md) to understand the relationship between core and optional components of an Elastic deployment.

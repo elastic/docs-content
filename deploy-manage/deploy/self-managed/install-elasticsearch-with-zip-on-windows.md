@@ -7,6 +7,8 @@ sub:
   export: "$"
   escape: "^"
   auto: ".bat"
+  ipcommand: "ipconfig /all"
+  ipvalue: "inet"
 navigation_title: Install on Windows
 applies_to:
   deployment:
@@ -51,15 +53,33 @@ cd C:\Program Files\elasticsearch-{{stack-version}}
 :::{include} _snippets/enable-auto-indices.md
 :::
 
-## Step 3: Run {{es}}
+## Step 3: Set up the node for connectivity
+
+:::{include} _snippets/cluster-formation-brief.md
+:::
+
+* If you're installing the first node in a multi-node cluster across multiple hosts, then you need to [configure the node so that other hosts are able to connect to it](#first-node).
+
+* If you're installing additional nodes for a cluster, then you need to [generate an enrollment token and pass it when starting {{es}} for the first time](#existing-cluster).
+
+### Set up a node as the first node in a multi-host cluster [first-node]
+
+:::{include} _snippets/first-node.md
+:::
+
+### Enroll the node in an existing cluster [existing-cluster]
+
+:::{include} _snippets/enroll-nodes.md
+:::
+
+## Step 4: Run {{es}}
 
 You have several options for starting {{es}}:
 
 * [Run from the command line](#command-line)
-* [Run the node to be enrolled in an existing cluster](#existing-cluster)
 * [Install and run as a service](#windows-service)
 
-You can run {{es}} [from the command line](#command-line), or install and run {{es}} [as a service](#windows-service).
+If you're starting a node that will be enrolled in an existing cluster, refer to [Enroll the node in an existing cluster](#existing-cluster).
 
 ### Run {{es}} from the command line [command-line]
 
@@ -71,17 +91,14 @@ You can run {{es}} [from the command line](#command-line), or install and run {{
 :::{include} _snippets/auto-security-config.md
 :::
 
+The password for the `elastic` user and the enrollment token for {{kib}} are output to your terminal.
+
 :::{include} _snippets/pw-env-var.md
 :::
 
 #### Configure {{es}} on the command line [windows-configuring]
 
 :::{include} _snippets/cmd-line-config.md
-:::
-
-### Enroll the node in an existing cluster [existing-cluster]
-
-:::{include} _snippets/enroll-nodes.md
 :::
 
 ### Install and run {{es}} as a service on Windows [windows-service]
@@ -92,6 +109,10 @@ You can install {{es}} as a service that runs in the background or starts automa
 
     ```sh subs=true
     C:\Program Files\elasticsearch-{{stack-version}}\bin>elasticsearch-service.bat install
+    ```
+    
+    Response: 
+    ```
     Installing service      :  "elasticsearch-service-x64"
     Using ES_JAVA_HOME (64-bit):  "C:\jvm\jdk1.8"
     The service 'elasticsearch-service-x64' has been installed.
@@ -194,9 +215,20 @@ Most changes (like JVM settings) made through the manager GUI will require a res
 
 * The system environment variable `ES_JAVA_HOME` should be set to the path of the JDK installation that you want the service to use. If you upgrade the JDK, you are not required to the reinstall the service, but you must set the value of the system environment variable `ES_JAVA_HOME` to the path to the new JDK installation. Upgrading across JVM types (e.g. JRE versus SE) is not supported, and requires the service to be reinstalled.
 
-## Step 4: Check that {{es}} is running [_check_that_elasticsearch_is_running_2]
+## Step 5: Check that {{es}} is running [_check_that_elasticsearch_is_running_2]
 
 :::{include} _snippets/check-es-running.md
+:::
+
+## Step 6 (Multi-node clusters only): Update the config files [update-config-files]
+
+If you are deploying a multi-node cluster, then the enrollment process adds all existing nodes to each newly enrolled node's `discovery.seed_hosts` setting. However, you need to go back to all of the nodes in the cluster and edit them so each node in the cluster can restart and rejoin the cluster as expected.
+
+:::{note}
+Because the initial node in the cluster is bootstrapped as a single-node cluster, it won't have `discovery.seed_hosts` configured. This setting is mandatory for multi-node clusters and must be added manually to the first node.
+:::
+
+:::{include} _snippets/clean-up-multinode.md
 :::
 
 ## Connect clients to {{es}} [_connect_clients_to_es_4]

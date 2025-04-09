@@ -12,22 +12,19 @@ applies_to:
 
 ::::{note}
 
-**For serverless Observability projects**, the **Editor** role or higher is required to create and manage custom links. To learn more, refer to [Assign user roles and privileges](../../../deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
+**For serverless Observability projects**, the **Editor** role or higher is required to create and manage custom links. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
 
 ::::
-
 
 Elastic’s custom link feature allows you to easily create up to 500 dynamic links based on your specific APM data. Custom links can be filtered to only appear in the Applications UI for relevant services, environments, transaction types, or transaction names.
 
 Ready to dive in? Jump straight to the [examples](#custom-links-examples).
-
 
 ## Create a link [custom-links-create]
 
 Each custom link consists of a label, URL, and optional filter. The easiest way to create a custom link is from within the actions dropdown in the transaction detail page. This method will automatically apply filters, scoping the link to that specific service, environment, transaction type, and transaction name.
 
 Alternatively, you can create a custom link in the Applications UI by navigating to **Settings** > **Customize UI**, and selecting **Create custom link**.
-
 
 ### Label [custom-links-label]
 
@@ -36,8 +33,6 @@ The name of your custom link. The actions context menu displays this text, so ke
 ::::{tip}
 Custom links are displayed alphabetically in the actions menu.
 ::::
-
-
 
 ### URL [custom-links-url]
 
@@ -50,7 +45,6 @@ Because everyone’s data is different, you’ll need to examine your traces to 
 :screenshot:
 :::
 
-
 ### Filters [custom-links-filters]
 
 Filter each link to only appear for specific services or transactions. You can filter on the following fields:
@@ -62,11 +56,9 @@ Filter each link to only appear for specific services or transactions. You can f
 
 Multiple values are allowed when comma-separated.
 
-
 ## Custom link examples [custom-links-examples]
 
 Not sure where to start with custom links? Take a look at the examples below and customize them to your liking!
-
 
 ### Email [custom-links-examples-email]
 
@@ -87,7 +79,6 @@ This link opens an email addressed to the team or owner of `python-backend`. It 
 | Label | `Email python-backend engineers` |
 | Link | `mailto:python_team@elastic.co` |
 | Filters | `service.name:python-backend` |
-
 
 ### GitHub issue [custom-links-examples-gh]
 
@@ -116,7 +107,6 @@ This link opens a new GitHub issue in the apm-agent-rum repository. It populates
 
 See the [GitHub automation documentation](https://help.github.com/en/github/managing-your-work-on-github/about-automation-for-issues-and-pull-requests-with-query-parameters) for a full list of supported query parameters.
 
-
 ### Jira task [custom-links-examples-jira]
 
 Create a Jira task with pre-populated metadata from the selected trace sample.
@@ -142,7 +132,6 @@ This link creates a new task on the Engineering board in Jira. It populates the 
 
 See the [Jira application administration knowledge base](https://confluence.atlassian.com/jirakb/how-to-create-issues-using-direct-html-links-in-jira-server-159474.html) for a full list of supported query parameters.
 
-
 ### Dashboards [custom-links-examples-kib]
 
 Link to a custom dashboard.
@@ -160,7 +149,6 @@ This link opens the current `transaction.id` in a custom dashboard. There are no
 | --- | --- |
 | Label | `Open transaction in Python drilldown viz` |
 | URL | `https://kibana-instance/app/kibana#/dashboard?_g=(filters:!(),refreshInterval:(pause:!t,value:0),time:(from:now-24h,to:now))&_a=(description:'',filters:!(),fullScreenMode:!f,options:(hidePanelTitles:!f,useMargins:!t),panels:!((embeddableConfig:(),gridData:(h:15,i:cb79c1c0-1af8-472c-aaf7-d158a76946fb,w:24,x:0,y:0),id:c8c74b20-6a30-11ea-92ab-b5d3feff11df,panelIndex:cb79c1c0-1af8-472c-aaf7-d158a76946fb,type:visualization,version:'7.7')),query:(language:kuery,query:'transaction.id:{{transaction.id}}'),timeRestore:!f,title:'',viewMode:edit)` |
-
 
 ### Slack channel [custom-links-examples-slack]
 
@@ -181,7 +169,6 @@ This link opens a company slack channel, #apm-user-support. It only appears when
 | Label | `Open #apm-user-support` |
 | Link | `https://COMPANY_SLACK.slack.com/archives/efk52kt23k` |
 | Filters | `transaction.name:GET user/login` |
-
 
 ### Website [custom-links-examples-web]
 

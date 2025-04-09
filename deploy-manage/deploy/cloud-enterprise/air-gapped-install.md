@@ -18,7 +18,7 @@ Before you start, you must:
 
 * Follow the same prerequisites described in [](./install.md#ece-install-prerequisites). This includes [](./identify-deployment-scenario.md) and [](./prepare-environment.md) steps.
 * [Configure your operating system](./configure-operating-system.md) in all ECE hosts.
-* Be part of the `docker` group to run the installation script. You should not install Elastic Cloud Enterprise as the `root` user.
+* Be part of the `docker` group to run the installation script. You should not install {{ece}} as the `root` user.
 * Set up and run a local copy of the Elastic Package Repository, otherwise your deployments with APM server and Elastic agent won’t work. Refer to the [Running EPR in air-gapped environments](/reference/fleet/air-gapped.md#air-gapped-diy-epr) documentation.
 
 When you are ready to install ECE, you can proceed:

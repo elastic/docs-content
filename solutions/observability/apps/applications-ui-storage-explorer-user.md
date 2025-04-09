@@ -8,8 +8,6 @@ applies_to:
 
 # Applications UI storage explorer user [apm-app-storage-explorer-user-create]
 
-
-
 ## Storage Explorer user [apm-app-storage-explorer-user]
 
 View the **Storage Explorer** in the Applications UI.

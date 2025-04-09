@@ -6,6 +6,7 @@ toc:
       - file: deploy/deployment-comparison.md
       - file: deploy/elastic-cloud.md
         children:
+          - file: deploy/elastic-cloud/differences-from-other-elasticsearch-offerings.md
           - file: deploy/elastic-cloud/create-an-organization.md
             children:
               - file: deploy/elastic-cloud/subscribe-from-marketplace.md
@@ -29,7 +30,6 @@ toc:
                       - file: deploy/elastic-cloud/heroku-reference-regions.md
           - file: deploy/elastic-cloud/serverless.md
             children:
-              - file: deploy/elastic-cloud/differences-from-other-elasticsearch-offerings.md
               - file: deploy/elastic-cloud/create-serverless-project.md
               - file: deploy/elastic-cloud/regions.md
               - file: deploy/elastic-cloud/project-settings.md

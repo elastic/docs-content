@@ -14,7 +14,6 @@ This documentation is only relevant for APM Server binary users.
 
 ::::
 
-
 You can use environment variable references in the config file to set values that need to be configurable during deployment. To do this, use:
 
 `${VAR}`
@@ -46,8 +45,6 @@ You can also specify environment variables when you override a config setting fr
 
 ::::
 
-
-
 ## Examples [_examples]
 
 Here are some examples of configurations that use environment variables and what each configuration looks like after replacement:
@@ -60,7 +57,6 @@ Here are some examples of configurations that use environment variables and what
 | `name: ${NAME:beats}` | `export NAME=elastic` | `name: elastic` |
 | `name: ${NAME:?You need to set the NAME environment variable}` | no setting | None. Returns an error message that’s prepended with the custom text. |
 | `name: ${NAME:?You need to set the NAME environment variable}` | `export NAME=elastic` | `name: elastic` |
-
 
 ## Specify complex objects in environment variables [_specify_complex_objects_in_environment_variables]
 
@@ -83,7 +79,6 @@ output.elasticsearch:
 
 When APM Server loads the config file, it resolves the environment variable and replaces it with the specified list before reading the `hosts` setting.
 
-
 ### Opt-out of complex object parsing [_opt_out_of_complex_object_parsing]
 
 To opt-out of this complex object parsing behavior such that the environment variable is always parsed as a string, wrap the environment variable in double-quotes (`"`), and escape all double quotes within them.
@@ -104,5 +99,4 @@ ES_PASSWORD='"foo,bar\"baz"'
 ::::{note}
 Do not use double-quotes (`"`) to wrap regular expressions. Otherwise, the backslash (`\`) will be interpreted as an escape character.
 ::::
-
 

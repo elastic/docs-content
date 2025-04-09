@@ -42,8 +42,6 @@ Transactions are grouped by their `type` and `name` in the Applications UI’s [
 Most agents limit keyword fields (e.g. `labels`) to 1024 characters, non-keyword fields (e.g. `span.db.statement`) to 10,000 characters.
 ::::
 
-
-
 ## Data streams [_data_streams_2]
 
 Transactions are stored with spans in the following data streams:
@@ -52,7 +50,6 @@ Transactions are stored with spans in the following data streams:
 * RUM and iOS agent application traces: `traces-apm.rum-<namespace>`
 
 See [Data streams](data-streams.md) to learn more.
-
 
 ## Example transaction document [_example_transaction_document]
 
@@ -466,6 +463,4 @@ This example shows what transaction documents can look like when indexed in {{es
 ```
 
 ::::
-
-
 

@@ -26,6 +26,10 @@ applies_to:
 :::{include} _snippets/java-version.md
 :::
 
+:::{tip}
+Elastic recommends that you run the commands in this guide using a normal user account, and avoid running the commands as `root`.
+:::
+
 ## Before you start
 
 :::{include} _snippets/prereqs.md
@@ -85,13 +89,34 @@ Alternatively, you can add a security override by following the instructions in 
 :::{include} _snippets/enable-auto-indices.md
 :::
 
-## Step 3: Start {{es}} [targz-running]
+
+## Step 3: Set up the node for connectivity
+
+:::{include} _snippets/cluster-formation-brief.md
+:::
+
+* If you're installing the first node in a multi-node cluster across multiple hosts, then you need to [configure the node so that other hosts are able to connect to it](#first-node).
+
+* If you're installing additional nodes for a cluster, then you need to [generate an enrollment token and pass it when starting {{es}} for the first time](#existing-cluster).
+
+### Set up a node as the first node in a multi-host cluster [first-node]
+
+:::{include} _snippets/first-node.md
+:::
+
+### Enroll the node in an existing cluster [existing-cluster]
+
+:::{include} _snippets/enroll-nodes.md
+:::
+
+## Step 4: Start {{es}} [targz-running]
 
 You have several options for starting {{es}}:
 
 * [Run from the command line](#command-line)
-* [Run the node to be enrolled in an existing cluster](#existing-cluster)
 * [Run as a daemon](#setup-installation-daemon)
+
+If you're starting a node that will be enrolled in an existing cluster, refer to [Enroll the node in an existing cluster](#existing-cluster).
 
 ### Run {{es}} from the command line [command-line]
 
@@ -103,17 +128,14 @@ You have several options for starting {{es}}:
 :::{include} _snippets/auto-security-config.md
 :::
 
+The password for the `elastic` user and the enrollment token for {{kib}} are output to your terminal.
+
 :::{include} _snippets/pw-env-var.md
 :::
 
 #### Configure {{es}} on the command line [targz-configuring]
 
 :::{include} _snippets/cmd-line-config.md
-:::
-
-### Enroll the node in an existing cluster [existing-cluster]
-
-:::{include} _snippets/enroll-nodes.md
 :::
 
 ### Run as a daemon [setup-installation-daemon]
@@ -124,6 +146,17 @@ You have several options for starting {{es}}:
 ## Step 4: Check that {{es}} is running [check_that_elasticsearch_is_running]
 
 :::{include} _snippets/check-es-running.md
+:::
+
+## Step 5 (Multi-node clusters only): Update the config files [update-config-files]
+
+If you are deploying a multi-node cluster, then the enrollment process adds all existing nodes to each newly enrolled node's `discovery.seed_hosts` setting. However, you need to go back to all of the nodes in the cluster and edit them so each node in the cluster can restart and rejoin the cluster as expected.
+
+:::{note}
+Because the initial node in the cluster is bootstrapped as a single-node cluster, it won't have `discovery.seed_hosts` configured. This setting is mandatory for multi-node clusters and must be added manually to the first node.
+:::
+
+:::{include} _snippets/clean-up-multinode.md
 :::
 
 ## Connect clients to {{es}} [connect_clients_to_es]
@@ -157,11 +190,6 @@ This is convenient because you don’t have to create any directories to start u
 | logs | Log files location. | `$ES_HOME/logs` | [`path.logs`](/deploy-manage/deploy/self-managed/important-settings-configuration.md#path-settings) |
 | plugins | Plugin files location. Each plugin will be contained in a subdirectory. | `$ES_HOME/plugins` |  |
 | repo | Shared file system repository locations. Can hold multiple locations. A file system repository can be placed in to any subdirectory of any directory specified here. | Not configured | [`path.repo`](/deploy-manage/tools/snapshot-and-restore/shared-file-system-repository.md) |
-
-### Security certificates and keys [stack-security-certificates]
-
-:::{include} _snippets/security-files.md
-:::
 
 ## Next steps [next_steps]
 

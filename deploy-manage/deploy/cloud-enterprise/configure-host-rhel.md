@@ -268,7 +268,7 @@ Verify that required traffic is allowed. Check the [Networking prerequisites](ec
     sudo install -o elastic -g elastic -d -m 700 /mnt/data
     ```
 
-21. As a sudoers user, modify the entry for the XFS volume in the `/etc/fstab` file to add `pquota,prjquota`. The default filesystem path used by Elastic Cloud Enterprise is `/mnt/data`.
+21. As a sudoers user, modify the entry for the XFS volume in the `/etc/fstab` file to add `pquota,prjquota`. The default filesystem path used by {{ece}} is `/mnt/data`.
 
     ::::{note}
     Replace `/dev/nvme1n1` in the following example with the corresponding device on your host, and add this example configuration as a single line to `/etc/fstab`.
@@ -322,7 +322,7 @@ Verify that required traffic is allowed. Check the [Networking prerequisites](ec
     vm.max_map_count=262144
     # enable forwarding so the Docker networking works as expected
     net.ipv4.ip_forward=1
-    # Decrease the maximum number of TCP retransmissions to 5 as recommended for Elasticsearch TCP retransmission timeout.
+    # Decrease the maximum number of TCP retransmissions to 5 as recommended for {{es}} TCP retransmission timeout.
     # See /deploy-manage/deploy/self-managed/system-config-tcpretries.md
     net.ipv4.tcp_retries2=5
     # Make sure the host doesn't swap too early

@@ -9,13 +9,12 @@ applies_to:
 
 This guide will explain how to set up and configure a Fleet-managed APM Server.
 
-
 ## Prerequisites [_prerequisites_6]
 
 You need {{es}} for storing and searching your data, and {{kib}} for visualizing and managing it. When setting these components up, you need:
 
-* {{es}} cluster and {{kib}} (version 9.0) with a basic license or higher. [Learn how to install the {{stack}} on your own hardware](../../../get-started/the-stack.md).
-* Secure, encrypted connection between {{kib}} and {{es}}. For more information, see [Start the {{stack}} with security enabled](../../../deploy-manage/deploy/self-managed/installing-elasticsearch.md).
+* {{es}} cluster and {{kib}} (version 9.0) with a basic license or higher. [Learn how to install the {{stack}} on your own hardware](/get-started/the-stack.md).
+* Secure, encrypted connection between {{kib}} and {{es}}. For more information, see [Start the {{stack}} with security enabled](/deploy-manage/deploy/self-managed/installing-elasticsearch.md).
 * Internet connection for {{kib}} to download integration packages from the {{package-registry}}. Make sure the {{kib}} server can connect to `https://epr.elastic.co` on port `443`. If your environment has network traffic restrictions, there are ways to work around this requirement. See [Air-gapped environments](/reference/fleet/air-gapped.md) for more information.
 * {{kib}} user with `All` privileges on {{fleet}} and {{integrations}}. Since many Integrations assets are shared across spaces, users need the {{kib}} privileges in all spaces.
 * In the {{es}} configuration, the [built-in API key service](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#api-key-service-settings) must be enabled. (`xpack.security.authc.api_key.enabled: true`)
@@ -39,9 +38,7 @@ elasticsearch.username: "kibana_system" <1>
 xpack.encryptedSavedObjects.encryptionKey: "something_at_least_32_characters"
 ```
 
-1. The password should be stored in the {{kib}} keystore as described in the [{{es}} security documentation](../../../deploy-manage/security/set-up-minimal-security.md).
-
-
+1. The password should be stored in the {{kib}} keystore as described in the [{{es}} security documentation](/deploy-manage/security/set-up-minimal-security.md).
 
 ## Step 1: Set up Fleet [_step_1_set_up_fleet]
 
@@ -52,7 +49,6 @@ If you already have a {{fleet-server}} set up, you can choose to skip this step.
 
 ::::
 
-
 The first time you use {{fleet}}, you’ll need to set it up and add a {{fleet-server}} using the steps outlined below.
 
 To deploy a self-managed {{fleet-server}}, you install an {{agent}} and enroll it in an agent policy containing the {{fleet-server}} integration.
@@ -60,7 +56,6 @@ To deploy a self-managed {{fleet-server}}, you install an {{agent}} and enroll i
 ::::{note}
 You can install only a single {{agent}} per host, which means you cannot run {{fleet-server}} and another {{agent}} on the same host unless you deploy a containerized {{fleet-server}}.
 ::::
-
 
 1. In {{fleet}}, open the **Settings** tab. For more information about these settings, see [{{fleet}} settings](/reference/fleet/fleet-settings.md).
 2. Under **Fleet Server hosts**, click **Edit hosts** and specify one or more host URLs your {{agent}}s will use to connect to {{fleet-server}}. For example, `https://192.0.2.1:8220`, where `192.0.2.1` is the host IP where you will install {{fleet-server}}. Save and apply your settings.
@@ -77,7 +72,6 @@ You can install only a single {{agent}} per host, which means you cannot run {{f
     :alt: In-product instructions for adding a {{fleet-server}}
     :screenshot:
     :::
-
 
 **Notes:**
 
@@ -101,9 +95,7 @@ If installation is successful, you’ll see confirmation that {{fleet-server}} c
 If you’re unable to add a {{fleet}}-managed agent, click the **Agents** tab and confirm that the agent running {{fleet-server}} is healthy.
 ::::
 
-
 For more information, refer to [{{fleet-server}}](/reference/fleet/fleet-server.md).
-
 
 ## Step 2: Add and configure the APM integration [add-apm-integration]
 
@@ -111,7 +103,6 @@ For more information, refer to [{{fleet-server}}](/reference/fleet/fleet-server.
 If you don’t have a {{fleet}} setup already in place, the easiest way to get started is to run the APM integration in the same {{agent}} that acts as the {{fleet-server}}. However, it is *not mandatory* for the APM integration to run in the same {{agent}} that acts as the {{fleet-server}}.
 
 ::::
-
 
 1. In {{kib}}, find **Integrations** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Select **Elastic APM**.
@@ -145,7 +136,6 @@ If you don’t have a {{fleet}} setup already in place, the easiest way to get s
 
     Any {{agent}}s assigned to this policy will collect APM data from your instrumented services.
 
-
 ::::{tip}
 An internet connection is required to install the APM integration via the Fleet UI in Kibana.
 
@@ -163,7 +153,6 @@ xpack.fleet.packages:
 
 See [Configure Kibana](kibana://reference/configuration-reference/general-settings.md) to learn more about how to edit the Kibana configuration file.
 
-
 Option 2: Use the {{fleet}} API
 :   Use the {{fleet}} API to install the APM integration. To be successful, this needs to be run against the {{kib}} API, not the {{es}} API.
 
@@ -174,13 +163,9 @@ POST kbn:/api/fleet/epm/packages/apm/9.0.0
 
 See [Kibana API](https://www.elastic.co/guide/en/kibana/current/api.html) to learn more about how to use the Kibana APIs.
 
-
 ::::
 
-
 ::::
-
-
 
 ## Step 3: Install APM agents [_step_3_install_apm_agents]
 
@@ -193,7 +178,6 @@ APM agents are written in the same language as your service. To monitor a new se
 ::::{tip}
 You can edit your APM integration settings if you need to change the APM Server URL or secret token to match your APM agents.
 ::::
-
 
 :::::::{tab-set}
 
@@ -211,7 +195,6 @@ plugins {
 ```
 
 1. The Elastic plugin declaration must be added below the Android app plugin declaration (`com.android.application`) and below the Kotlin plugin declaration (if used).
-
 
 **2. Configure the agent**
 
@@ -242,11 +225,9 @@ elasticApm {
 4. Defaults to null. More info on API Keys [here](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-api-key).
 5. Defaults to null.
 
-
 ::::{note}
 When both `secretToken` and `apiKey` are provided, apiKey has priority and secretToken is ignored.
 ::::
-
 
 **3. Initialize the agent**
 
@@ -266,7 +247,6 @@ class MyApp extends android.app.Application {
 ```
 
 1. Initialize the Elastic APM agent once.
-
 
 All that’s left is to compile and run your application. That’s it!
 
@@ -375,7 +355,6 @@ struct MyApp: App {
 1. The APM integration host and port
 2. Secret token for APM integration connection
 
-
 If you’re not using `SwiftUI`, you can alternatively add the same thing to your `AppDelegate.swift` file:
 
 ```swift
@@ -397,7 +376,6 @@ var config = AgentConfigBuilder()
 1. The APM integration host and port
 2. Secret token for APM integration connection
 
-
 **Learn more in the agent reference**
 
 Read more in the [APM iOS Agent Reference](apm-agent-ios://reference/index.md).
@@ -416,7 +394,6 @@ The first step in getting started with the Elastic APM Java agent is to retrieve
     ```bash
     curl -o 'elastic-apm-agent.jar' -L 'https://oss.sonatype.org/service/local/artifact/maven/redirect?r=releases&g=co.elastic.apm&a=elastic-apm-agent&v=LATEST'
     ```
-
 
 **2. Add `-javaagent` flag**
 
@@ -526,7 +503,6 @@ If you can’t find your distribution, you can install the agent by building it 
 The agent is currently only available for Linux operating system.
 ::::
 
-
 1. Download the agent source from [https://github.com/elastic/apm-agent-php/](https://github.com/elastic/apm-agent-php/).
 2. Execute the following commands to build the agent and install it:
 
@@ -607,7 +583,6 @@ MIDDLEWARE = (
 )
 ```
 
-
 Flask
 :   **1. Install the {{apm-agent}}**
 
@@ -644,7 +619,6 @@ app.config['ELASTIC_APM'] = {
 apm = ElasticAPM(app)
 ```
 
-
 **Learn more in the agent reference**
 
 * [Supported technologies](apm-agent-python://reference/supported-technologies.md)
@@ -678,7 +652,6 @@ secret_token: ''
 # Set custom APM integration host and port (default: http://localhost:8200)
 server_url: 'http://localhost:8200'
 ```
-
 
 Rack
 :   For Rack or a compatible framework, like Sinatra, include the middleware in your app and start the agent.
@@ -720,7 +693,6 @@ secret_token: ''
 # Set custom APM integration host and port (default: http://localhost:8200)
 server_url: 'http://localhost:8200'
 ```
-
 
 **Learn more in the agent reference**
 

@@ -9,7 +9,7 @@ applies_to:
 
 # View and analyze data [apm-view-and-analyze-data]
 
-After you’ve started [sending application data to Elastic](../../../solutions/observability/apps/collect-application-data.md), you can open the Applications UI to view your data in a variety of visualizations and start analyzing data.
+After you’ve started [sending application data to Elastic](/solutions/observability/apps/collect-application-data.md), you can open the Applications UI to view your data in a variety of visualizations and start analyzing data.
 
 The Applications UI allows you to monitor your software services and applications in real-time. You can visualize detailed performance information on your services, identify and analyze errors, and monitor host-level and APM agent-specific metrics like JVM and Go runtime metrics.
 
@@ -19,6 +19,6 @@ For example, you can see information about response times, requests per minute, 
 
 To get started with the Applications UI:
 
-* Start with quick, high-level [overviews](../../../solutions/observability/apps/overviews.md) that show you the overall health and performance of your application.
-* [Drill down into data](../../../solutions/observability/apps/drill-down-into-data.md) for specific services or traces to get additional insight into your application.
-* Learn how to get the most out of your data by mastering how to [search and filter data](../../../solutions/observability/apps/filter-search-application-data.md), getting tips on [how to interpret data](../../../solutions/observability/apps/interpret-application-data.md), and taking advantage of [machine learning](../../../solutions/observability/apps/integrate-with-machine-learning.md).
+* Start with quick, high-level [overviews](/solutions/observability/apps/overviews.md) that show you the overall health and performance of your application.
+* [Drill down into data](/solutions/observability/apps/drill-down-into-data.md) for specific services or traces to get additional insight into your application.
+* Learn how to get the most out of your data by mastering how to [search and filter data](/solutions/observability/apps/filter-search-application-data.md), getting tips on [how to interpret data](/solutions/observability/apps/interpret-application-data.md), and taking advantage of [machine learning](/solutions/observability/apps/integrate-with-machine-learning.md).

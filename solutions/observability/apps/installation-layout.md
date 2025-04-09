@@ -9,7 +9,6 @@ applies_to:
 
 View the installation layout and default paths for both Fleet-managed APM Server and the APM Server binary.
 
-
 ## Fleet-managed [_fleet_managed]
 
 {{agent}} files are installed in the following locations. You cannot override these installation paths because they are required for upgrades.

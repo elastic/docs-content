@@ -14,19 +14,16 @@ As with any script recording technology, the Elastic Synthetics Recorder should 
 
 ::::
 
-
-You can use the Synthetics Recorder to [write a synthetic test](../../../solutions/observability/apps/write-synthetic-test.md) by interacting with a web page and exporting journey code that reflects all the actions you took.
+You can use the Synthetics Recorder to [write a synthetic test](/solutions/observability/apps/write-synthetic-test.md) by interacting with a web page and exporting journey code that reflects all the actions you took.
 
 :::{image} /solutions/images/observability-synthetics-create-test-script-recorder.png
 :alt: Elastic Synthetics Recorder after recording a journey and clicking Export
 :screenshot:
 :::
 
-
 ### Set up [synthetics-recorder-set-up]
 
 For information on how to download the Elastic Synthetics Recorder, go to the [download page](https://github.com/elastic/synthetics-recorder/blob/main/docs/DOWNLOAD.md).
-
 
 ## Record a journey [synthetics-recorder-record-a-journey]
 
@@ -35,14 +32,12 @@ To record a journey:
 1. Enter a starting URL in the search box. This URL will be the starting point of the journey script the recorder will create.
 2. Click **Start** or press Enter on your keyboard. This will launch a Chromium window open to the page you specified and start recording.
 3. Start interacting with the browser. This can include clicking on text, navigation, focusing on inputs like buttons and text fields, and more.
-4. (Optional) You can click **Pause** to temporarily stop recording actions while you continue to interact with the browser. Click again to start recording actions again. Note: It’s especially important to [test the journey](../../../solutions/observability/apps/use-synthetics-recorder.md#synthetics-recorder-test-the-journey) if you paused recording at any point.
+4. (Optional) You can click **Pause** to temporarily stop recording actions while you continue to interact with the browser. Click again to start recording actions again. Note: It’s especially important to [test the journey](/solutions/observability/apps/use-synthetics-recorder.md#synthetics-recorder-test-the-journey) if you paused recording at any point.
 5. When you’re done interacting with the browser window, click **Stop** or close the browser to stop recording.
-
 
 ## Edit a journey [synthetics-recorder-edit-a-journey]
 
 Once you’ve started recording, you can use the Synthetics Recorder UI to edit steps and individual actions before generating the journey code. You can also edit the journey after you’ve stopped recording.
-
 
 ### Name steps [synthetics-recorder-name-steps]
 
@@ -53,7 +48,6 @@ To edit a step name:
 1. Hover over the current step name and click the pencil icon that appears.
 2. Edit the text in the text box.
 3. Click Return or Enter on your keyboard to save the updated name.
-
 
 ### Split into multiple steps [synthetics-recorder-split-into-multiple-steps]
 
@@ -67,7 +61,6 @@ To add a step:
 2. (Optional) Consider naming the step.
 
 Use the trash can icon to delete the step divider, adding the actions from the deleted step into the previous step.
-
 
 ### Edit or delete recorded actions [synthetics-recorder-edit-or-delete-recorded-actions]
 
@@ -85,10 +78,8 @@ To delete an action:
 2. Click **Delete action**.
 
 ::::{important}
-If you changed or deleted any actions to ensure the journey still works, it’s especially important to [test the journey](../../../solutions/observability/apps/use-synthetics-recorder.md#synthetics-recorder-test-the-journey).
+If you changed or deleted any actions to ensure the journey still works, it’s especially important to [test the journey](/solutions/observability/apps/use-synthetics-recorder.md#synthetics-recorder-test-the-journey).
 ::::
-
-
 
 ### Add assertions [synthetics-recorder-add-assertions]
 
@@ -103,10 +94,8 @@ To add an assertion:
 5. Click **Save**.
 
 ::::{important}
-If you added any assertions after you’ve finished recording to ensure the journey still works, it’s especially important to [test the journey](../../../solutions/observability/apps/use-synthetics-recorder.md#synthetics-recorder-test-the-journey).
+If you added any assertions after you’ve finished recording to ensure the journey still works, it’s especially important to [test the journey](/solutions/observability/apps/use-synthetics-recorder.md#synthetics-recorder-test-the-journey).
 ::::
-
-
 
 ## Test the journey [synthetics-recorder-test-the-journey]
 
@@ -118,15 +107,13 @@ When you click the **Test** button, Elastic Synthetics will run the journey. As 
 If you paused recording, updated actions, or added assertions manually in the recorder it is especially important that you test the journey to  verify that the actions work in sequence.
 ::::
 
-
-
 ## Export [synthetics-recorder-export]
 
 When you are satisfied with journey you’ve created, you can export it from the recorder.
 
 Click **Export** to view the final journey code. From there you can use the code by:
 
-* Copy and pasting code containing all steps into a new or existing [Synthetics project](../../../solutions/observability/apps/create-monitors-with-project-monitors.md) or an [inline monitor](../../../solutions/observability/apps/create-monitors-in-synthetics-app.md).
+* Copy and pasting code containing all steps into a new or existing [Synthetics project](/solutions/observability/apps/create-monitors-with-project-monitors.md) or an [inline monitor](/solutions/observability/apps/create-monitors-in-synthetics-app.md).
 * Click **Export** to save a JavaScript file containing all steps.
 
 You can also check **Export as project** and either copy and paste or **Export** to get the full journey code including `journey` and imports for all dependencies.
