@@ -34,7 +34,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Resolves an issue that prevented the chat feature from functioning correctly on the Alerts page [#197126]({{kib-pull}}197126)
 * Addresses a missing versioning issue in `inventory_view_saved_object` that could prevent the Observability Infrastructure Inventory view from loading post-upgrade [#207007]({{kib-pull}}207007)
 * Enables the use of wildcard filters in SLO queries [#213119]({{kib-pull}}213119)
-* Updates the `Close project` navigation label to `Log out` to better reflect the intended action for users in serverless environments [#211463]({kib-pull}211463)
+* Updates the `Close project` navigation label to `Log out` to better reflect the intended action for users in serverless environments [#211463]({{kib-pull}}211463)
 * Fixes an issue where clicking a name badge for a synthetics monitor led to a page that failed to load monitor details [#210695]({kib-pull}210695)
 * Fixes code scanning alert no. 456: Incomplete string escaping or encoding [#193909]({kib-pull}193909)
 * Fixes code scanning alert: Incomplete string escaping or encoding [#193365]({kib-pull}193365)
