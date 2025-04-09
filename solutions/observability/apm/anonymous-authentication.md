@@ -11,7 +11,7 @@ Elastic APM agents can send unauthenticated (anonymous) events to the APM Server
 
 | Configuration | Default |
 | --- | --- |
-| An [API key](api-keys.md) or [secret token](secret-token.md) is configured | Anonymous requests are rejected and an authentication error is returned. |
+| An [API key](/solutions/observability/apm/api-keys.md) or [secret token](/solutions/observability/apm/secret-token.md) is configured | Anonymous requests are rejected and an authentication error is returned. |
 | No API key or secret token is configured | Anonymous requests are accepted by the APM Server. |
 
 In some cases, however, it makes sense to allow both authenticated and anonymous requests. For example, it isn’t possible to authenticate requests from front-end services as the secret token or API key can’t be protected. This is the case with the Real User Monitoring (RUM) agent running in a browser, or the Android or iOS/Swift agent running in a user application. However, you still likely want to authenticate requests from back-end services. To solve this problem, you can enable anonymous authentication in the APM Server to allow the ingestion of unauthenticated client-side APM data while still requiring authentication for server-side services.
@@ -19,14 +19,14 @@ In some cases, however, it makes sense to allow both authenticated and anonymous
 ## Configuring anonymous auth for client-side services [apm-anonymous-auth-config]
 
 ::::{note}
-You can only enable and configure anonymous authentication if an [API key](api-keys.md) or [secret token](secret-token.md) is configured. If neither are configured, these settings will be ignored.
+You can only enable and configure anonymous authentication if an [API key](/solutions/observability/apm/api-keys.md) or [secret token](/solutions/observability/apm/secret-token.md) is configured. If neither are configured, these settings will be ignored.
 
 ::::
 
 :::::::{tab-set}
 
 ::::::{tab-item} Fleet-managed
-When an [API key](api-keys.md) or [secret token](secret-token.md) is configured, anonymous authentication must be enabled to collect RUM data. Set **Anonymous Agent access** to true to enable anonymous authentication.
+When an [API key](/solutions/observability/apm/api-keys.md) or [secret token](/solutions/observability/apm/secret-token.md) is configured, anonymous authentication must be enabled to collect RUM data. Set **Anonymous Agent access** to true to enable anonymous authentication.
 
 When configuring anonymous authentication for client-side services, there are a few configuration variables that can mitigate the impact of malicious requests to an unauthenticated APM Server endpoint.
 
@@ -36,11 +36,11 @@ Additionally, the APM Server can rate-limit unauthenticated requests based on th
 ::::::
 
 ::::::{tab-item} APM Server binary
-When an [API key](/solutions/observability/apps/api-keys.md) or [secret token](secret-token.md) is configured, anonymous authentication must be enabled to collect RUM data. To enable anonymous access, set either [`apm-server.rum.enabled`](configure-real-user-monitoring-rum.md#apm-rum-enable) or [`apm-server.auth.anonymous.enabled`](configure-anonymous-authentication.md#apm-config-auth-anon-enabled) to `true`.
+When an [API key](/solutions/observability/apm/api-keys.md) or [secret token](/solutions/observability/apm/secret-token.md) is configured, anonymous authentication must be enabled to collect RUM data. To enable anonymous access, set either [`apm-server.rum.enabled`](/solutions/observability/apm/configure-real-user-monitoring-rum.md#apm-rum-enable) or [`apm-server.auth.anonymous.enabled`](/solutions/observability/apm/configure-anonymous-authentication.md#apm-config-auth-anon-enabled) to `true`.
 
 Because anyone can send anonymous events to the APM Server, additional configuration variables are available to rate limit the number anonymous events the APM Server processes; throughput is equal to the `rate_limit.ip_limit` times the `rate_limit.event_limit`.
 
-See [Anonymous authentication](configure-anonymous-authentication.md) for a complete list of options and a sample configuration file.
+See [Anonymous authentication](/solutions/observability/apm/configure-anonymous-authentication.md) for a complete list of options and a sample configuration file.
 ::::::
 
 :::::::

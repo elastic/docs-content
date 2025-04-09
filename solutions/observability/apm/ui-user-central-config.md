@@ -104,4 +104,4 @@ In some instances, you may wish to create a user that can only read central conf
 
 ## Central configuration API [apm-app-central-config-api]
 
-See [Create an API user](applications-ui-api-user.md).
+See [Create an API user](/solutions/observability/apm/ui-user-api.md).

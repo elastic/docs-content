@@ -120,7 +120,7 @@ The Redis data type to use for publishing events.If the data type is `list`, the
 
 Output codec configuration. If the `codec` section is missing, events will be JSON encoded.
 
-See [Change the output codec](/solutions/observability/apps/configure-console-output.md#apm-configuration-output-codec) for more information.
+See [Change the output codec](/solutions/observability/apm/configure-console-output.md#apm-configuration-output-codec) for more information.
 
 ### `worker` [_worker_3]
 
@@ -162,7 +162,7 @@ Setting `bulk_max_size` to values less than or equal to 0 disables the splitting
 
 ### `ssl` [_ssl_4]
 
-Configuration options for SSL parameters like the root CA for Redis connections guarded by SSL proxies (for example [stunnel](https://www.stunnel.org)). See [SSL/TLS output settings](ssltls-output-settings.md) for more information.
+Configuration options for SSL parameters like the root CA for Redis connections guarded by SSL proxies (for example [stunnel](https://www.stunnel.org)). See [SSL/TLS output settings](/solutions/observability/apm/ssl-tls-output-settings.md) for more information.
 
 ### `proxy_url` [_proxy_url_3]
 

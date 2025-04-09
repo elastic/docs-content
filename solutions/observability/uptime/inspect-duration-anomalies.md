@@ -11,7 +11,7 @@ applies_to:
 ::::{admonition} Deprecated in 8.15.0.
 :class: warning
 
-Use [Synthetic monitoring](/solutions/observability/apps/synthetic-monitoring.md) instead of the {{uptime-app}}.
+Use [Synthetic monitoring](/solutions/observability/synthetics/index.md) instead of the {{uptime-app}}.
 ::::
 
 Each monitor location is modeled, and when a monitor runs for an unusual amount of time, at a particular time, an anomaly is recorded and highlighted on the **Monitor duration** chart.

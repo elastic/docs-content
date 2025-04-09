@@ -48,7 +48,7 @@ The **Throughput** chart visualizes the average number of transactions per minut
 
 The **Transactions** table displays a list of *transaction groups* for the selected service and includes the latency, traffic, error rate, and the impact for each transaction. Transactions that share the same name are grouped, and only one entry is displayed for each group.
 
-By default, transaction groups are sorted by *Impact* to show the most used and slowest endpoints in your service. If there is a particular endpoint you are interested in, click **View transactions** to view a list of similar transactions on the [transactions overview](transactions-2.md) page.
+By default, transaction groups are sorted by *Impact* to show the most used and slowest endpoints in your service. If there is a particular endpoint you are interested in, click **View transactions** to view a list of similar transactions on the [transactions overview](/solutions/observability/apm/transactions-ui.md) page.
 
 :::{image} /solutions/images/observability-traffic-transactions.png
 :alt: Traffic and transactions
@@ -68,7 +68,7 @@ If there is no HTTP status, both transactions and spans are considered successfu
 
 ::::
 
-The **Dependencies** table displays a list of downstream services or external connections relevant to the service at the selected time range. The table displays latency, throughput, failed transaction rate, and the impact of each dependency. By default, dependencies are sorted by *Impact* to show the most used and the slowest dependency. If there is a particular dependency you are interested in, click **[View dependencies](dependencies.md)** to learn more about it.
+The **Dependencies** table displays a list of downstream services or external connections relevant to the service at the selected time range. The table displays latency, throughput, failed transaction rate, and the impact of each dependency. By default, dependencies are sorted by *Impact* to show the most used and the slowest dependency. If there is a particular dependency you are interested in, click **[View dependencies](/solutions/observability/apm/dependencies.md)** to learn more about it.
 
 ::::{note}
 Displaying dependencies for services instrumented with the Real User Monitoring (RUM) agent requires an agent version ≥ v5.6.3.

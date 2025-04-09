@@ -31,11 +31,11 @@ This upgrade guide is for the standalone method of running APM Server. Only use 
 
 2. **Install the 9.0 APM Server release**
 
-    Refer to [install](/solutions/observability/apps/apm-server-binary.md#apm-installing) to find the command that works with your system.
+    Refer to [install](/solutions/observability/apm/get-started-apm-server-binary.md#apm-installing) to find the command that works with your system.
 
 3. **Review your configuration file**
 
-    Some settings have been removed or changed. You may need to update your `apm-server.yml` configuration file prior to starting the APM Server. Refer to [Installation layout](installation-layout.md) for help in locating this file, and [Configure APM Server](configure-apm-server.md) for a list of all available configuration options.
+    Some settings have been removed or changed. You may need to update your `apm-server.yml` configuration file prior to starting the APM Server. Refer to [Installation layout](/solutions/observability/apm/installation-layout.md) for help in locating this file, and [Configure APM Server](/solutions/observability/apm/configure-apm-server.md) for a list of all available configuration options.
 
 4. **Start the APM Server**
 
@@ -45,10 +45,10 @@ This upgrade guide is for the standalone method of running APM Server. Only use 
     ./apm-server -e
     ```
 
-    Additional details are available in [start the APM Server](/solutions/observability/apps/apm-server-binary.md#apm-server-starting).
+    Additional details are available in [start the APM Server](/solutions/observability/apm/get-started-apm-server-binary.md#apm-server-starting).
 
 5. When upgrading from 8.18 to 9.0, if you have 7.x indices, you need to either set the indices to `readonly`, or if reindexing, add [ILM privileges](https://www.elastic.co/guide/en/apm/guide/7.17/privileges-to-setup-beats.html#_set_up_ilm) for `reindexed-v*-apm*` indices.
 
 6. **(Optional) Upgrade to the APM integration**
 
-    Got time for one more upgrade? Refer to [Switch to the Elastic APM integration](switch-to-elastic-apm-integration.md).
+    Got time for one more upgrade? Refer to [Switch to the Elastic APM integration](/solutions/observability/apm/switch-to-elastic-apm-integration.md).

@@ -19,7 +19,7 @@ Custom index mappings may conflict with the mappings defined by the {{es}} apm-d
 
 The APM index templates by default reference a non-existent `@custom` component template for each data stream. You can create or edit this `@custom` component template to customize your {{es}} indices.
 
-First, determine which [data stream](data-streams.md) you’d like to edit in {{kib}}. To open **Index Management**, find **Stack Management** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Select **Component Templates**.
+First, determine which [data stream](/solutions/observability/apm/data-streams.md) you’d like to edit in {{kib}}. To open **Index Management**, find **Stack Management** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Select **Component Templates**.
 
 Custom component templates are named following this pattern: `<name_of_data_stream>@custom`. Search for the name of the data stream, like `traces-apm`, and select its custom component template. Create one if it does not exist. In this example, that’d be, `traces-apm@custom`. Then click **Manage** → **Edit**.
 
@@ -29,7 +29,7 @@ Add any custom metadata, index settings, or mappings.
 
 In the **Index settings** step, you can specify custom [index settings](elasticsearch://reference/elasticsearch/index-settings/index.md). For example, you could:
 
-* Customize the index lifecycle policy applied to a data stream. See [custom index lifecycle policies](/solutions/observability/apps/index-lifecycle-management.md#apm-data-streams-custom-policy) for a walk-through.
+* Customize the index lifecycle policy applied to a data stream. See [custom index lifecycle policies](/solutions/observability/apm/index-lifecycle-management.md#apm-data-streams-custom-policy) for a walk-through.
 * Change the number of [shards](/deploy-manage/index.md) per index. Specify the number of primary shards:
 
     ```json

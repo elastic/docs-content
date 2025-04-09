@@ -8,14 +8,14 @@ applies_to:
 
 # Transactions [apm-data-model-transactions]
 
-**Transactions** are a special kind of [span](spans.md) that have additional attributes associated with them. They describe an event captured by an Elastic {{apm-agent}} instrumenting a service. You can think of transactions as the highest level of work you’re measuring within a service. As an example, a transaction might be a:
+**Transactions** are a special kind of [span](/solutions/observability/apm/spans.md) that have additional attributes associated with them. They describe an event captured by an Elastic {{apm-agent}} instrumenting a service. You can think of transactions as the highest level of work you’re measuring within a service. As an example, a transaction might be a:
 
 * Request to your server
 * Batch job
 * Background job
 * Custom transaction type
 
-Agents decide whether to sample transactions or not, and provide settings to control sampling behavior. If sampled, the [spans](spans.md) of a transaction are sent and stored as separate documents. Within one transaction there can be 0, 1, or many spans captured.
+Agents decide whether to sample transactions or not, and provide settings to control sampling behavior. If sampled, the [spans](/solutions/observability/apm/spans.md) of a transaction are sent and stored as separate documents. Within one transaction there can be 0, 1, or many spans captured.
 
 A transaction contains:
 
@@ -27,13 +27,13 @@ A transaction contains:
     * Host - architecture, hostname, IP, etc.
     * Process - args, PID, PPID, etc.
     * URL - full, domain, port, query, etc.
-    * [User](/solutions/observability/apps/metadata.md#apm-data-model-user) - (if supplied) email, ID, username, etc.
+    * [User](/solutions/observability/apm/metadata.md#apm-data-model-user) - (if supplied) email, ID, username, etc.
 
 * Other relevant information depending on the agent. Example: The JavaScript RUM agent captures transaction marks, which are points in time relative to the start of the transaction with some label.
 
-In addition, agents provide options for users to capture custom [metadata](/solutions/observability/apps/metadata.md). Metadata can be indexed - [`labels`](metadata.md#apm-data-model-labels), or not-indexed - [`custom`](metadata.md#apm-data-model-custom).
+In addition, agents provide options for users to capture custom [metadata](/solutions/observability/apm/metadata.md). Metadata can be indexed - [`labels`](/solutions/observability/apm/metadata.md#apm-data-model-labels), or not-indexed - [`custom`](/solutions/observability/apm/metadata.md#apm-data-model-custom).
 
-Transactions are grouped by their `type` and `name` in the Applications UI’s [Transaction overview](transactions-2.md). If you’re using a supported framework, APM agents will automatically handle the naming for you. If you’re not, or if you wish to override the default, all agents have API methods to manually set the `type` and `name`.
+Transactions are grouped by their `type` and `name` in the Applications UI’s [Transaction overview](/solutions/observability/apm/transactions-ui.md). If you’re using a supported framework, APM agents will automatically handle the naming for you. If you’re not, or if you wish to override the default, all agents have API methods to manually set the `type` and `name`.
 
 * `type` should be a keyword of specific relevance in the service’s domain, e.g. `request`, `backgroundjob`, etc.
 * `name` should be a generic designation of a transaction in the scope of a single service, e.g. `GET /users/:id`, `UsersController#show`, etc.
@@ -49,7 +49,7 @@ Transactions are stored with spans in the following data streams:
 * Application traces: `traces-apm-<namespace>`
 * RUM and iOS agent application traces: `traces-apm.rum-<namespace>`
 
-See [Data streams](data-streams.md) to learn more.
+See [Data streams](/solutions/observability/apm/data-streams.md) to learn more.
 
 ## Example transaction document [_example_transaction_document]
 

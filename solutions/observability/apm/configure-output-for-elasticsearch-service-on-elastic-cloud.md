@@ -16,7 +16,7 @@ This documentation only applies to APM Server binary users.
 ::::
 
 ::::{note}
-This page refers to using a separate instance of APM Server with an existing [{{ech}} deployment](https://www.elastic.co/cloud/elasticsearch-service?page=docs&placement=docs-body). If you want to use APM on {{ech}}, see: [Create your deployment](/deploy-manage/deploy/elastic-cloud/create-an-elastic-cloud-hosted-deployment.md) and [Add APM user settings](configure-apm-server.md).
+This page refers to using a separate instance of APM Server with an existing [{{ech}} deployment](https://www.elastic.co/cloud/elasticsearch-service?page=docs&placement=docs-body). If you want to use APM on {{ech}}, see: [Create your deployment](/deploy-manage/deploy/elastic-cloud/create-an-elastic-cloud-hosted-deployment.md) and [Add APM user settings](/solutions/observability/apm/configure-apm-server.md).
 ::::
 
 APM Server comes with two settings that simplify the output configuration when used together with [{{ech}}](https://www.elastic.co/cloud/elasticsearch-service?page=docs&placement=docs-body). When defined, these setting overwrite settings from other parts in the configuration.

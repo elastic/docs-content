@@ -14,7 +14,7 @@ Most options on this page are supported by all APM Server deployment methods.
 
 ::::
 
-These settings apply to SSL/TLS communication between the APM Server and APM Agents. See [{{apm-agent}} TLS communication](apm-agent-tls-communication.md) to learn more.
+These settings apply to SSL/TLS communication between the APM Server and APM Agents. See [{{apm-agent}} TLS communication](/solutions/observability/apm/apm-agent-tls-communication.md) to learn more.
 
 :::::::{tab-set}
 

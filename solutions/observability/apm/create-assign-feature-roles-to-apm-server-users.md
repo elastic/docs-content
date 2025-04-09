@@ -29,7 +29,7 @@ In general, there are three types of privileges you’ll work with when creating
 The following are common roles that APM Server users might need:
 
 * [**Writer role**](#apm-privileges-to-publish-events): Allows a user to publish events collected by APM Server, which is **required** to write to {{es}}.
-* [**Central configuration management role**](#apm-privileges-agent-central-config): Allows a user to view APM Agent central configurations, which is **required** when [central configuration management](apm-agent-central-configuration.md) is enabled (it is enabled by default).
+* [**Central configuration management role**](#apm-privileges-agent-central-config): Allows a user to view APM Agent central configurations, which is **required** when [central configuration management](/solutions/observability/apm/apm-agent-central-configuration.md) is enabled (it is enabled by default).
 * [**Monitoring role**](#apm-privileges-to-publish-monitoring): Allows a user to publish monitoring data, view monitoring data, or both.
 * [**RUM source mapping role**](#apm-privileges-rum-source-mapping): Allows a user to read RUM source maps.
 
@@ -47,7 +47,7 @@ If you want to create an APM Server user who can use the Elastic APM Real User M
 APM users that publish events to {{es}} *must* have privileges to write to APM data streams.
 
 ::::{note}
-This is not needed when APM Server doesn’t write to {{es}} directly. For example, in some cases you may configure APM Server to write to another output like Logstash, Kafka, or any other output supported by libbeat. In these cases, different authentication credentials will need to be passed to [`apm-server.agent.config.elasticsearch`](/solutions/observability/apps/configure-apm-agent-central-configuration.md#apm-agent-config-elasticsearch).
+This is not needed when APM Server doesn’t write to {{es}} directly. For example, in some cases you may configure APM Server to write to another output like Logstash, Kafka, or any other output supported by libbeat. In these cases, different authentication credentials will need to be passed to [`apm-server.agent.config.elasticsearch`](/solutions/observability/apm/configure-apm-agent-central-configuration.md#apm-agent-config-elasticsearch).
 
 ::::
 
@@ -59,7 +59,7 @@ To grant an APM Server user the required privileges for writing events to {{es}}
     | --- | --- | --- |
     | Index | `auto_configure` on `traces-apm*`, `logs-apm*`, and `metrics-apm*` indices | Permits auto-creation of indices and data streams |
     | Index | `create_doc` on `traces-apm*`, `logs-apm*`, and `metrics-apm*` indices | Write events into {{es}} |
-    | Cluster | `monitor` | Allows cluster UUID checks, which are performed as part of APM server startup preconditionsif [Elasticsearch security](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md) is enabled (it is enabled by default), and allows a license check, which is required if [tail-based sampling](/solutions/observability/apps/transaction-sampling.md#apm-tail-based-sampling) is enabled. |
+    | Cluster | `monitor` | Allows cluster UUID checks, which are performed as part of APM server startup preconditionsif [Elasticsearch security](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md) is enabled (it is enabled by default), and allows a license check, which is required if [tail-based sampling](/solutions/observability/apm/transaction-sampling.md#apm-tail-based-sampling) is enabled. |
 
 ::::{note}
 If you have explicitly disabled Elastic security *and* you are *not* using tail-based sampling, the `monitor` privilege may not be necessary.
@@ -77,7 +77,7 @@ Assign additional APM feature roles to users as needed including the *Central co
 ::::{important}
 :name: apm-central-config-role-note
 
-The privileges included in this role are **required** for all users when [central configuration management](apm-agent-central-configuration.md) is enabled (it is enabled by default). You need this role unless central configuration management has been explicitly disabled in the Applications UI.
+The privileges included in this role are **required** for all users when [central configuration management](/solutions/observability/apm/apm-agent-central-configuration.md) is enabled (it is enabled by default). You need this role unless central configuration management has been explicitly disabled in the Applications UI.
 
 ::::
 
@@ -112,7 +112,7 @@ Assign additional APM feature roles to users as needed including the *Writer rol
 ::::
 
 ::::{tip}
-Looking for privileges and roles needed to use central configuration from the Applications UI or APM UI API? See [Applications UI central configuration user](applications-ui-central-config-user.md).
+Looking for privileges and roles needed to use central configuration from the Applications UI or APM UI API? See [Applications UI central configuration user](/solutions/observability/apm/ui-user-central-config.md).
 ::::
 
 ## Create a *monitoring* role [apm-privileges-to-publish-monitoring]
@@ -135,7 +135,7 @@ Looking for privileges and roles needed to use central configuration from the Ap
 
 #### Internal collection [apm-privileges-to-publish-monitoring-internal]
 
-If you’re using [internal collection](use-internal-collection-to-send-monitoring-data.md) to collect metrics about APM Server, either:
+If you’re using [internal collection](/solutions/observability/apm/use-internal-collection-to-send-monitoring-data.md) to collect metrics about APM Server, either:
 
 * Use the built-in `apm_system` user or role
 * Create a custom role
@@ -167,10 +167,10 @@ Assign additional APM feature roles to users as needed including the [*Writer ro
 #### {{metricbeat}} collection [apm-privileges-to-publish-monitoring-metricbeat]
 
 ::::{note}
-When using {{metricbeat}} to collect metrics, no roles or users need to be created with APM Server. See [Use {{metricbeat}} collection](use-metricbeat-to-send-monitoring-data.md) for complete details on setting up {{metricbeat}} collection.
+When using {{metricbeat}} to collect metrics, no roles or users need to be created with APM Server. See [Use {{metricbeat}} collection](/solutions/observability/apm/use-metricbeat-to-send-monitoring-data.md) for complete details on setting up {{metricbeat}} collection.
 ::::
 
-If you’re [using {{metricbeat}}](use-metricbeat-to-send-monitoring-data.md) to collect metrics about APM Server, you can either:
+If you’re [using {{metricbeat}}](/solutions/observability/apm/use-metricbeat-to-send-monitoring-data.md) to collect metrics about APM Server, you can either:
 
 * Use the built-in `remote_monitoring_user` user or role
 * Create a custom user
@@ -222,7 +222,7 @@ Assign additional APM feature roles to users as needed including the [*Writer ro
 ## Create a *source map* role [apm-privileges-rum-source-map]
 
 $$$apm-privileges-rum-source-mapping$$$
-If [real user monitoring](configure-real-user-monitoring-rum.md) is enabled, additional privileges are required to read source maps.
+If [real user monitoring](/solutions/observability/apm/configure-real-user-monitoring-rum.md) is enabled, additional privileges are required to read source maps.
 
 To grant an APM Server user with the required privileges for reading RUM source maps from {{es}} directly without {{kib}}, assign the user the following privileges:
 

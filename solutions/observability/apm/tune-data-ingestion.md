@@ -19,13 +19,13 @@ This section explains how to adapt data ingestion according to your needs.
 
 If the APM Server cannot process data quickly enough, you will see request timeouts. One way to solve this problem is to increase processing power.
 
-Increase processing power by either migrating to a more powerful machine or adding more APM Server/Elastic Agent instances. Having several instances will also increase [availability](high-availability.md).
+Increase processing power by either migrating to a more powerful machine or adding more APM Server/Elastic Agent instances. Having several instances will also increase [availability](/solutions/observability/apm/high-availability.md).
 
 ### Reduce the payload size [apm-reduce-payload-size]
 
 Large payloads may result in request timeouts. You can reduce the payload size by decreasing the flush interval in the agents. This will cause agents to send smaller and more frequent requests.
 
-Optionally you can also [reduce the sample rate](/solutions/observability/apps/reduce-storage.md#apm-reduce-sample-rate) or [reduce the amount of stack traces](reduce-storage.md#observability-apm-reduce-stacktrace).
+Optionally you can also [reduce the sample rate](/solutions/observability/apm/reduce-storage.md#apm-reduce-sample-rate) or [reduce the amount of stack traces](/solutions/observability/apm/reduce-storage.md#observability-apm-reduce-stacktrace).
 
 Read more in the [agents documentation](https://www.elastic.co/guide/en/apm/agent/index.html).
 
@@ -39,7 +39,7 @@ Increasing the default value for the following configuration variable will help 
 
 |     |     |
 | --- | --- |
-| APM Server binary | [`rate_limit.event_limit`](/solutions/observability/apps/configure-anonymous-authentication.md#apm-config-auth-anon-event-limit) |
+| APM Server binary | [`rate_limit.event_limit`](/solutions/observability/apm/configure-anonymous-authentication.md#apm-config-auth-anon-event-limit) |
 | Fleet-managed | `Anonymous Event rate limit (event limit)` |
 
 ## Tune {{es}} [apm-tune-elasticsearch]

@@ -12,7 +12,7 @@ In 8.11 and later, we emit a selected set of metrics directly to the monitoring 
 
 ## The select metrics [apm-select-metrics]
 
-We only ship a select list of metrics, to avoid overwhelming your monitoring cluster. If you need the entire set of metrics and traces we can expose, you should use [Self Instrumentation](configure-apm-instrumentation.md) instead of local collection.
+We only ship a select list of metrics, to avoid overwhelming your monitoring cluster. If you need the entire set of metrics and traces we can expose, you should use [Self Instrumentation](/solutions/observability/apm/configure-apm-instrumentation.md) instead of local collection.
 
 Here is the list of every metrics we currently expose:
 

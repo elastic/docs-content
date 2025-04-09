@@ -9,9 +9,9 @@ applies_to:
 
 The APM Server exposes endpoints for:
 
-* [APM Server information API](apm-server-information-api.md)
-* [Elastic APM events intake API](elastic-apm-events-intake-api.md)
-* [Elastic APM agent configuration API](elastic-apm-agent-configuration-api.md)
-* [OpenTelemetry intake API](opentelemetry-intake-api.md)
-* [Jaeger event intake](jaeger-event-intake.md)
+* [APM Server information API](/solutions/observability/apm/apm-server-information-api.md)
+* [Elastic APM events intake API](/solutions/observability/apm/elastic-apm-events-intake-api.md)
+* [Elastic APM agent configuration API](/solutions/observability/apm/elastic-apm-agent-configuration-api.md)
+* [OpenTelemetry intake API](/solutions/observability/apm/opentelemetry-intake-api.md)
+* [Jaeger event intake](/solutions/observability/apm/jaeger-event-intake.md)
 

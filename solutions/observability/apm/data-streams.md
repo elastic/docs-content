@@ -28,7 +28,7 @@ APM data follows the `<type>-<dataset>-<namespace>` naming scheme. The `type` an
 By type, the APM data streams are:
 
 Traces
-:   Traces are comprised of [spans and transactions](learn-about-application-data-types.md). Traces are stored in the following data streams:
+:   Traces are comprised of [spans and transactions](/solutions/observability/apm/data-types.md). Traces are stored in the following data streams:
 
     * Application traces: `traces-apm-<namespace>`
     * RUM and iOS agent application traces: `traces-apm.rum-<namespace>`
@@ -87,10 +87,10 @@ For example, consider traces that would originally be indexed to `traces-apm-def
 
 To find other ingest pipelines from the {{es}} apm-data plugin that are called by default, go to **Stack management** → **Ingest pipelines** [in Kibana](/deploy-manage/index.md) and search for `apm`. Default APM ingest pipelines will follow the pattern `*-apm*@default-pipeline`.
 
-For more custom APM ingest pipeline guides, see [parse data using ingest pipelines](parse-data-using-ingest-pipelines.md).
+For more custom APM ingest pipeline guides, see [parse data using ingest pipelines](/solutions/observability/apm/parse-data-using-ingest-pipelines.md).
 
 ## What’s next? [apm-data-streams-next]
 
-* Data streams define not only how data is stored in {{es}}, but also how data is retained over time. See [{{ilm-cap}}](index-lifecycle-management.md) to learn how to create your own data retention policies.
-* See [Manage storage](manage-storage.md) for information on APM storage and processing costs, processing and performance, and other index management features.
+* Data streams define not only how data is stored in {{es}}, but also how data is retained over time. See [{{ilm-cap}}](/solutions/observability/apm/index-lifecycle-management.md) to learn how to create your own data retention policies.
+* See [Manage storage](/solutions/observability/apm/manage-storage.md) for information on APM storage and processing costs, processing and performance, and other index management features.
 

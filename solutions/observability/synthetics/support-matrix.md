@@ -14,18 +14,18 @@ There are various components that make up the Synthetics solution, which are sup
 * **GA support**: 8.8.0 and higher
 * **Notes**:
 
-    * For creating and managing lightweight and browser monitors configured through the [{{synthetics-app}}](create-monitors-in-synthetics-app.md)
-    * For reporting for lightweight and browser monitors configured through the [{{synthetics-app}}](create-monitors-in-synthetics-app.md) and/or [{{project-monitors-cap}}](create-monitors-with-project-monitors.md)
+    * For creating and managing lightweight and browser monitors configured through the [{{synthetics-app}}](/solutions/observability/synthetics/create-monitors-ui.md)
+    * For reporting for lightweight and browser monitors configured through the [{{synthetics-app}}](/solutions/observability/synthetics/create-monitors-ui.md) and/or [{{project-monitors-cap}}](/solutions/observability/synthetics/create-monitors-with-projects.md)
 
 ## {{project-monitors-cap}} [_project_monitors_cap]
 
 * **GA support**: 8.8.0 and higher
-* **Notes**: For creating and managing lightweight and browser monitors configured as [{{project-monitors-cap}}](create-monitors-with-project-monitors.md)
+* **Notes**: For creating and managing lightweight and browser monitors configured as [{{project-monitors-cap}}](/solutions/observability/synthetics/create-monitors-with-projects.md)
 
 ## Elastic’s global managed testing infrastructure [_elastics_global_managed_testing_infrastructure_2]
 
 * **GA support**: 8.8.0 and higher
-* **Notes**: Elastic’s infrastructure for running lightweight and browser monitors configured through the [{{synthetics-app}}](create-monitors-in-synthetics-app.md) and/or [{{project-monitors-cap}}](create-monitors-with-project-monitors.md)
+* **Notes**: Elastic’s infrastructure for running lightweight and browser monitors configured through the [{{synthetics-app}}](/solutions/observability/synthetics/create-monitors-ui.md) and/or [{{project-monitors-cap}}](/solutions/observability/synthetics/create-monitors-with-projects.md)
 
     Executing synthetic tests on Elastic’s global managed testing infrastructure incurs an additional charge. Tests are charged under one of two new billing dimensions depending on the monitor type. For *browser monitor* usage, there is a fee per test run. For *lightweight monitor* usage, there is a fee per region in which you run any monitors regardless of the number of test runs. For more details, refer to [full details and current pricing](https://www.elastic.co/pricing).
 

@@ -26,12 +26,12 @@ To grant access via IP, use [this list of egress IPs](https://manifest.synthetic
 
 {{private-location}}s allow you to run monitors from your own premises. Before running a monitor on a {{private-location}}, you’ll need to:
 
-* [Set up {{fleet-server}} and {{agent}}](/solutions/observability/apps/monitor-resources-on-private-networks.md#synthetics-private-location-fleet-agent).
-* [Connect {{fleet}} to the {{stack}}](/solutions/observability/apps/monitor-resources-on-private-networks.md#synthetics-private-location-connect) and enroll an {{agent}} in {{fleet}}.
-* [Add a {{private-location}}](/solutions/observability/apps/monitor-resources-on-private-networks.md#synthetics-private-location-add) in the Synthetics UI.
+* [Set up {{fleet-server}} and {{agent}}](/solutions/observability/synthetics/monitor-resources-on-private-networks.md#synthetics-private-location-fleet-agent).
+* [Connect {{fleet}} to the {{stack}}](/solutions/observability/synthetics/monitor-resources-on-private-networks.md#synthetics-private-location-connect) and enroll an {{agent}} in {{fleet}}.
+* [Add a {{private-location}}](/solutions/observability/synthetics/monitor-resources-on-private-networks.md#synthetics-private-location-add) in the Synthetics UI.
 
 ::::{important}
-{{private-location}}s running through {{agent}} must have a direct connection to {{es}}. Do not configure any ingest pipelines, or output via Logstash as this will prevent Synthetics from working properly and is not [supported](/solutions/observability/apps/synthetics-support-matrix.md).
+{{private-location}}s running through {{agent}} must have a direct connection to {{es}}. Do not configure any ingest pipelines, or output via Logstash as this will prevent Synthetics from working properly and is not [supported](/solutions/observability/synthetics/support-matrix.md).
 
 ::::
 
@@ -43,7 +43,7 @@ Start by setting up {{fleet-server}} and {{agent}}:
 * **Create an agent policy**: For more information on agent policies and creating them, refer to [{{agent}} policy](/reference/fleet/agent-policy.md#create-a-policy).
 
 ::::{important}
-A {{private-location}} should be set up against an agent policy that runs on a single {{agent}}. The {{agent}} must be **enrolled in Fleet** ({{private-location}}s cannot be set up using **standalone** {{agents}}). Do *not* run the same agent policy on multiple agents being used for {{private-location}}s, as you may end up with duplicate or missing tests. {{private-location}}s do not currently load balance tests across multiple {{agents}}. See [Scaling {{private-location}}s](/solutions/observability/apps/monitor-resources-on-private-networks.md#synthetics-private-location-scaling) for information on increasing the capacity within a {{private-location}}.
+A {{private-location}} should be set up against an agent policy that runs on a single {{agent}}. The {{agent}} must be **enrolled in Fleet** ({{private-location}}s cannot be set up using **standalone** {{agents}}). Do *not* run the same agent policy on multiple agents being used for {{private-location}}s, as you may end up with duplicate or missing tests. {{private-location}}s do not currently load balance tests across multiple {{agents}}. See [Scaling {{private-location}}s](/solutions/observability/synthetics/monitor-resources-on-private-networks.md#synthetics-private-location-scaling) for information on increasing the capacity within a {{private-location}}.
 
 By default {{private-location}}s are configured to allow two simultaneous browser tests and an unlimited number of lightweight checks. As a result, if more than two browser tests are assigned to a particular {{private-location}}, there may be a delay to run them.
 
@@ -115,4 +115,4 @@ These limits are for simultaneous tests, not total tests. For example, if 60 bro
 
 ## Next steps [synthetics-private-location-next]
 
-Now you can add monitors to your {{private-location}} in [the Synthetics UI](/solutions/observability/apps/create-monitors-in-synthetics-app.md) or using the [Elastic Synthetics library’s `push` method](/solutions/observability/apps/create-monitors-with-project-monitors.md).
+Now you can add monitors to your {{private-location}} in [the Synthetics UI](/solutions/observability/synthetics/create-monitors-ui.md) or using the [Elastic Synthetics library’s `push` method](/solutions/observability/synthetics/create-monitors-with-projects.md).

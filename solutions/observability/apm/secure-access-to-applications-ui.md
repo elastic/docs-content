@@ -18,8 +18,8 @@ Use role-based access control to grant users access to secured resources. The ro
 
 Select your use-case to get started:
 
-* [Create an APM reader user](apm-reader-user.md)
-* [Create an annotation user](applications-ui-annotation-user.md)
-* [Create a central config user](applications-ui-central-config-user.md)
-* [Create a storage explorer user](applications-ui-storage-explorer-user.md)
-* [Create an API user](applications-ui-api-user.md)
+* [Create an APM reader user](/solutions/observability/apm/ui-user-reader.md)
+* [Create an annotation user](/solutions/observability/apm/ui-user-annotation.md)
+* [Create a central config user](/solutions/observability/apm/ui-user-central-config.md)
+* [Create a storage explorer user](/solutions/observability/apm/ui-user-storage-explorer.md)
+* [Create an API user](/solutions/observability/apm/ui-user-api.md)

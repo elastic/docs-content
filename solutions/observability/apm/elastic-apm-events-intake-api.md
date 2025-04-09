@@ -22,7 +22,7 @@ Each event is sent as its own line in the HTTP request body. This is known as [n
 
 With NDJSON, agents can open an HTTP POST request and use chunked encoding to stream events to the APM Server as soon as they are recorded in the agent. This makes it simple for agents to serialize each event to a stream of newline delimited JSON. The APM Server also treats the HTTP body as a compressed stream and thus reads and handles each event independently.
 
-See the [APM data model](learn-about-application-data-types.md) to learn more about the different types of events.
+See the [APM data model](/solutions/observability/apm/data-types.md) to learn more about the different types of events.
 
 ### Endpoints [apm-api-events-endpoint]
 
@@ -52,7 +52,7 @@ http(s)://{hostname}:{port}/intake/v2/events?async=true
 Since asynchronous processing defers some of the event processing to the background and takes place after the client has closed the request, some errors can’t be communicated back to the client and are logged by the APM Server. Furthermore, asynchronous processing requests will only be scheduled if the APM Server can service the incoming request, requests that cannot be serviced will receive an internal error `503` "queue is full" error.
 ::::
 
-For [RUM](real-user-monitoring-rum.md) send an `HTTP POST` request to the APM Server `intake/v3/rum/events` endpoint instead:
+For [RUM](/solutions/observability/apm/real-user-monitoring-rum.md) send an `HTTP POST` request to the APM Server `intake/v3/rum/events` endpoint instead:
 
 ```bash
 http(s)://{hostname}:{port}/intake/v3/rum/events

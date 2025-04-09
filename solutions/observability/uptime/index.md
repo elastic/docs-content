@@ -11,19 +11,19 @@ applies_to:
 ::::{admonition} Deprecated in 8.15.0.
 :class: warning
 
-Use [Synthetic monitoring](/solutions/observability/apps/synthetic-monitoring.md) instead of the {{uptime-app}}.
+Use [Synthetic monitoring](/solutions/observability/synthetics/index.md) instead of the {{uptime-app}}.
 ::::
 
 ::::{important}
-The {{uptime-app}} is for viewing result data from lightweight monitors running through {{heartbeat}} and [configured with a traditional `heartbeat.yml` file](get-started-with-uptime.md). This is for TCP, HTTP or ICMP monitors that you have configured and run from your own infrastructure with {{heartbeat}} natively.
+The {{uptime-app}} is for viewing result data from lightweight monitors running through {{heartbeat}} and [configured with a traditional `heartbeat.yml` file](/solutions/observability/uptime/get-started.md). This is for TCP, HTTP or ICMP monitors that you have configured and run from your own infrastructure with {{heartbeat}} natively.
 
-For browser-based monitors, a richer management and reporting experience, and more capabilities such as triaging and responding to alerts, use the [{{synthetics-app}}](/solutions/observability/apps/synthetic-monitoring.md) instead of the {{uptime-app}}.
+For browser-based monitors, a richer management and reporting experience, and more capabilities such as triaging and responding to alerts, use the [{{synthetics-app}}](/solutions/observability/synthetics/index.md) instead of the {{uptime-app}}.
 
 Note that the {{uptime-app}} is hidden from the interface when there is no recent {{heartbeat}} data. To see the app, you may need to turn on the **Always show legacy Uptime app** setting (`observability:enableLegacyUptimeApp`) under {{kib}} Advanced Settings. To learn how, refer to [Advanced Settings](kibana://reference/advanced-settings.md).
 
 ::::
 
-The {{uptime-app}} uses {{agent}} to periodically check the status of your services and applications. Monitor the availability of network endpoints and services using [Lightweight HTTP/S, TCP, and ICMP monitors](/solutions/observability/apps/synthetic-monitoring.md#monitoring-uptime).
+The {{uptime-app}} uses {{agent}} to periodically check the status of your services and applications. Monitor the availability of network endpoints and services using [Lightweight HTTP/S, TCP, and ICMP monitors](/solutions/observability/synthetics/index.md#monitoring-uptime).
 
 ## Lightweight HTTP/S, TCP, and ICMP monitors [uptime-lightweight]
 
@@ -40,13 +40,13 @@ In the {{uptime-app}}, you can monitor the status of network endpoints using the
 :screenshot:
 :::
 
-To set up your first monitor, refer to [Get started with Uptime](get-started-with-uptime.md).
+To set up your first monitor, refer to [Get started with Uptime](/solutions/observability/uptime/get-started.md).
 
 ## TLS Certificates [view-certificate-status]
 
 The TLS Certificates page in the {{uptime-app}} lists the TLS certificates that are being monitored and shows the TLS certificate data in your indices.
 
-In addition to the common name, associated monitors, issuer information, and SHA fingerprints, an assigned status is derived from the threshold values in the [Settings](configure-settings.md) page.
+In addition to the common name, associated monitors, issuer information, and SHA fingerprints, an assigned status is derived from the threshold values in the [Settings](/solutions/observability/uptime/configure-settings.md) page.
 
 :::{image} /solutions/images/observability-tls-certificates.png
 :alt: TLS certificates

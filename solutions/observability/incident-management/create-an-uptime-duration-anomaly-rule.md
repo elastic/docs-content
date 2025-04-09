@@ -12,10 +12,10 @@ applies:
 ::::{admonition} Deprecated in 8.15.0.
 :class: warning
 
-Use [Synthetic monitoring](/solutions/observability/apps/synthetic-monitoring.md) instead of the {{uptime-app}}.
+Use [Synthetic monitoring](/solutions/observability/synthetics/index.md) instead of the {{uptime-app}}.
 ::::
 
-Within the {{uptime-app}}, create an **Uptime duration anomaly** rule to receive notifications based on the response durations for all of the geographic locations of each monitor. When a monitor runs for an unusual amount of time, at a particular time, an anomaly is recorded and highlighted on the [Monitor duration](../apps/inspect-uptime-duration-anomalies.md) chart.
+Within the {{uptime-app}}, create an **Uptime duration anomaly** rule to receive notifications based on the response durations for all of the geographic locations of each monitor. When a monitor runs for an unusual amount of time, at a particular time, an anomaly is recorded and highlighted on the [Monitor duration](/solutions/observability/uptime/inspect-duration-anomalies.md) chart.
 
 
 ## Conditions [duration-alert-conditions]
@@ -41,7 +41,7 @@ The *anomaly score* is a value from `0` to `100`, which indicates the significan
 
 Extend your rules by connecting them to actions that use the following supported built-in integrations. Actions are {{kib}} services or integrations with third-party systems that run as background tasks on the {{kib}} server when rule conditions are met.
 
-You can configure action types on the [Settings](../apps/configure-settings.md#configure-uptime-alert-connectors) page.
+You can configure action types on the [Settings](/solutions/observability/uptime/configure-settings.md#configure-uptime-alert-connectors) page.
 
 * [D3 Security](kibana://reference/connectors-kibana/d3security-action-type.md)
 * [Email](kibana://reference/connectors-kibana/email-action-type.md)

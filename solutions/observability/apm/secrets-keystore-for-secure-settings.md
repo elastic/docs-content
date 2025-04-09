@@ -31,7 +31,7 @@ When APM Server unpacks the configuration, it resolves keys before resolving env
 
 Notice that the APM Server keystore differs from the {{es}} keystore. Whereas the {{es}} keystore lets you store `elasticsearch.yml` values by name, the APM Server keystore lets you specify arbitrary names that you can reference in the APM Server configuration.
 
-To create and manage keys, use the `keystore` command. See the [command reference](/solutions/observability/apps/apm-server-command-reference.md#apm-keystore-command) for the full command syntax, including optional flags.
+To create and manage keys, use the `keystore` command. See the [command reference](/solutions/observability/apm/apm-server-command-reference.md#apm-keystore-command) for the full command syntax, including optional flags.
 
 ::::{note}
 The `keystore` command must be run by the same user who will run APM Server.

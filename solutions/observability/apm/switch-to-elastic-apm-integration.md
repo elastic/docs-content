@@ -59,5 +59,5 @@ There are some limitations to be aware of:
 
 Select a guide below to get started.
 
-* [Switch a self-installation](switch-self-installation-to-apm-integration.md)
-* [Switch an {{ecloud}} cluster](switch-an-elastic-cloud-cluster-to-apm-integration.md)
+* [Switch a self-installation](/solutions/observability/apm/switch-self-installation-to-apm-integration.md)
+* [Switch an {{ecloud}} cluster](/solutions/observability/apm/switch-an-elastic-cloud-cluster-to-apm-integration.md)

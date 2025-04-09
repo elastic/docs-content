@@ -57,7 +57,7 @@ stack:
 serverless: unavailable
 ```
 
-Say you decide to [capture HTTP request bodies](/solutions/observability/apps/built-in-data-filters.md#apm-filters-http-body) but quickly notice that sensitive information is being collected in the `http.request.body.original` field:
+Say you decide to [capture HTTP request bodies](/solutions/observability/apm/built-in-data-filters.md#apm-filters-http-body) but quickly notice that sensitive information is being collected in the `http.request.body.original` field:
 
 ```json
 {
@@ -320,5 +320,5 @@ That’s it! Passwords will now be redacted from your APM HTTP body data.
 
 ### Next steps [_next_steps]
 
-To learn more about ingest pipelines, see [View the {{es}} index template](view-elasticsearch-index-template.md).
+To learn more about ingest pipelines, see [View the {{es}} index template](/solutions/observability/apm/view-elasticsearch-index-template.md).
 

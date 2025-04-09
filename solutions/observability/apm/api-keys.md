@@ -11,17 +11,17 @@ applies_to:
 :::
 
 ::::{important}
-API keys are sent as plain-text, so they only provide security when used in combination with [TLS](apm-agent-tls-communication.md).
+API keys are sent as plain-text, so they only provide security when used in combination with [TLS](/solutions/observability/apm/apm-agent-tls-communication.md).
 ::::
 
 When enabled, API keys are used to authorize requests to {{apm-server-or-mis}}. API keys are not applicable for APM agents running on clients, like the RUM agent, as there is no way to prevent them from being publicly exposed.
 
 You can assign one or more unique privileges to each API key:
 
-* **Agent configuration** (`config_agent:read`): Required for agents to read [Agent configuration remotely](apm-agent-central-configuration.md).
+* **Agent configuration** (`config_agent:read`): Required for agents to read [Agent configuration remotely](/solutions/observability/apm/apm-agent-central-configuration.md).
 * **Ingest** (`event:write`): Required for ingesting agent events.
 
-To secure the communication between APM Agents and either {{apm-server-or-mis}} with API keys, make sure [TLS](apm-agent-tls-communication.md) is enabled, then complete these steps:
+To secure the communication between APM Agents and either {{apm-server-or-mis}} with API keys, make sure [TLS](/solutions/observability/apm/apm-agent-tls-communication.md) is enabled, then complete these steps:
 
 1. [Enable API keys](#apm-enable-api-key)
 2. [Create an API key user](#apm-create-api-key-user)
@@ -33,7 +33,7 @@ To secure the communication between APM Agents and either {{apm-server-or-mis}} 
 :::::::{tab-set}
 
 ::::::{tab-item} Fleet-managed
-Enable API key authorization in the [API key authentication options](/solutions/observability/apps/apm-agent-authorization.md#apm-api-key-auth-settings). You should also set a limit on the number of unique API keys that APM Server allows per minute; this value should be the number of unique API keys configured in your monitored services.
+Enable API key authorization in the [API key authentication options](/solutions/observability/apm/apm-agent-authorization.md#apm-api-key-auth-settings). You should also set a limit on the number of unique API keys that APM Server allows per minute; this value should be the number of unique API keys configured in your monitored services.
 ::::::
 
 ::::::{tab-item} APM Server binary
@@ -273,7 +273,7 @@ Invalidated keys ... qT4tz28B1g59zC3uAXfW
 Error count ........ 0
 ```
 
-A full list of `apikey` subcommands and flags is available in the [API key command reference](/solutions/observability/apps/apm-server-command-reference.md#apm-apikey-command).
+A full list of `apikey` subcommands and flags is available in the [API key command reference](/solutions/observability/apm/apm-server-command-reference.md#apm-apikey-command).
 
 ### {{es}} API key workflow [apm-create-api-key-workflow-es]
 

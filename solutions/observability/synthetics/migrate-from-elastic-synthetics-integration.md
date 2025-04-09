@@ -28,7 +28,7 @@ Below is a comparison of how you used the {{agent}} integration to create monito
 * **{{agent}} integration**: You had to run monitors on your infrastructure
 * **Projects or the {{synthetics-app}}**: You can run monitors on both:
 
-    * Your infrastructure using [{{private-location}}s](monitor-resources-on-private-networks.md)
+    * Your infrastructure using [{{private-location}}s](/solutions/observability/synthetics/monitor-resources-on-private-networks.md)
     * Elastic’s global managed infrastructure
 
 **Where you configure monitors**:
@@ -59,7 +59,7 @@ Below is a comparison of how you used the {{agent}} integration to create monito
     3. Write journeys in JavaScript or TypeScript files and configure individual monitors in your journey code using `monitor.use` or configure all monitors using the `synthetics.config.ts` file.
     4. Use the `elastic/synthetics push` command to create monitors.
 
-Find more details in [Use {{project-monitors-cap}}](create-monitors-with-project-monitors.md).
+Find more details in [Use {{project-monitors-cap}}](/solutions/observability/synthetics/create-monitors-with-projects.md).
 
 **How to use the UI ([read more](#synthetics-migrate-integration-ui))**:
 
@@ -78,11 +78,11 @@ Find more details in [Use {{project-monitors-cap}}](create-monitors-with-project
     4. Configure the monitor.
     5. Create the monitor.
 
-Find more details in [Use the {{synthetics-app}}](create-monitors-in-synthetics-app.md).
+Find more details in [Use the {{synthetics-app}}](/solutions/observability/synthetics/create-monitors-ui.md).
 
 ## Where monitors run [synthetics-migrate-integration-location]
 
-If you want to continue hosting on your infrastructure, you will need to create a {{private-location}} before creating monitors. If you have already have an {{agent}} running using `elastic-agent-complete`, you can [add it as a new {{private-location}}](/solutions/observability/apps/monitor-resources-on-private-networks.md#synthetics-private-location-add) in the {{synthetics-app}}. To create a new {{private-location}} from scratch, follow all instructions in [Monitor resources on private networks](monitor-resources-on-private-networks.md).
+If you want to continue hosting on your infrastructure, you will need to create a {{private-location}} before creating monitors. If you have already have an {{agent}} running using `elastic-agent-complete`, you can [add it as a new {{private-location}}](/solutions/observability/synthetics/monitor-resources-on-private-networks.md#synthetics-private-location-add) in the {{synthetics-app}}. To create a new {{private-location}} from scratch, follow all instructions in [Monitor resources on private networks](/solutions/observability/synthetics/monitor-resources-on-private-networks.md).
 
 Alternatively, you can start hosting on Elastic’s global managed infrastructure. With Elastic’s global managed testing infrastructure, you can create and run monitors in multiple locations without having to manage your own infrastructure. Elastic takes care of software updates and capacity planning for you.
 
@@ -123,14 +123,14 @@ First, upgrade the existing project to use the latest version of `@elastic/synth
 
 Then, you can further configure monitors as needed. In the upgraded project, you’ll use code (instead of the Integrations UI) to define settings like the name of the monitor and the frequency at which it will run. There are two ways you can configure monitors using code:
 
-* For individual monitors, use `monitor.use` directly in the journey code. Read more in [Configure individual monitors](configure-individual-browser-monitors.md).
-* To configure all monitors at once, use the synthetics configuration file. Read more in [Configure projects](configure-synthetics-projects.md).
+* For individual monitors, use `monitor.use` directly in the journey code. Read more in [Configure individual monitors](/solutions/observability/synthetics/configure-individual-browser-monitors.md).
+* To configure all monitors at once, use the synthetics configuration file. Read more in [Configure projects](/solutions/observability/synthetics/configure-projects.md).
 
-Finally, you’ll create monitors using `push` instead of by adding a ZIP URL in the Integrations UI. This will require an API token. Read more in [`@elastic/synthetics push`](/solutions/observability/apps/use-synthetics-cli.md#elastic-synthetics-push-command).
+Finally, you’ll create monitors using `push` instead of by adding a ZIP URL in the Integrations UI. This will require an API token. Read more in [`@elastic/synthetics push`](/solutions/observability/synthetics/cli.md#elastic-synthetics-push-command).
 
-Optionally, you can also add lightweight monitors to the project in YAML files. Read more about adding lightweight monitors to projects in [Configure lightweight monitors](configure-lightweight-monitors.md).
+Optionally, you can also add lightweight monitors to the project in YAML files. Read more about adding lightweight monitors to projects in [Configure lightweight monitors](/solutions/observability/synthetics/configure-lightweight-monitors.md).
 
-For more information on getting started with projects, refer to [Use {{project-monitors-cap}}](create-monitors-with-project-monitors.md).
+For more information on getting started with projects, refer to [Use {{project-monitors-cap}}](/solutions/observability/synthetics/create-monitors-with-projects.md).
 
 ## How to use the UI [synthetics-migrate-integration-ui]
 
@@ -142,5 +142,5 @@ The configuration options in the {{synthetics-app}} look very similar to the Ela
 2. You cannot use a ZIP URL for browser monitors. Use projects instead.
 3. You can test the configuration (including the journey for browser monitors) using **Run test** before creating the monitor.
 
-For more information on getting started with the {{synthetics-app}}, refer to [Use the {{synthetics-app}}](create-monitors-in-synthetics-app.md).
+For more information on getting started with the {{synthetics-app}}, refer to [Use the {{synthetics-app}}](/solutions/observability/synthetics/create-monitors-ui.md).
 

@@ -11,7 +11,7 @@ applies_to:
 ::::{admonition} Deprecated in 8.15.0.
 :class: warning
 
-Use [Synthetic monitoring](/solutions/observability/apps/synthetic-monitoring.md) instead of the {{uptime-app}}.
+Use [Synthetic monitoring](/solutions/observability/synthetics/index.md) instead of the {{uptime-app}}.
 ::::
 
 The **Settings** page enables you to change which {{heartbeat}} indices are displayed by the {{uptime-app}}, configure rule connectors, and set expiration/age thresholds for TLS certificates.
@@ -55,7 +55,7 @@ For more information about each connector, see [action types and connectors](/de
 
 ## Configure certificate thresholds [configure-cert-thresholds]
 
-You can modify certificate thresholds to control how Uptime displays your TLS values in the [TLS Certificates](/solutions/observability/apps/uptime-monitoring-deprecated.md#view-certificate-status) page. These settings also determine which certificates are selected by any TLS rule you create.
+You can modify certificate thresholds to control how Uptime displays your TLS values in the [TLS Certificates](/solutions/observability/uptime/index.md#view-certificate-status) page. These settings also determine which certificates are selected by any TLS rule you create.
 
 |     |     |
 | --- | --- |

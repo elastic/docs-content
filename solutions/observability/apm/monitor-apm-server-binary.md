@@ -10,6 +10,6 @@ applies_to:
 
 There are two methods to monitor the APM Server binary. Make sure monitoring is enabled on your {{es}} cluster, then configure one of these methods to collect APM Server metrics:
 
-* [Internal collection](use-internal-collection-to-send-monitoring-data.md) - Internal collectors send monitoring data directly to your monitoring cluster.
-* [{{metricbeat}} collection](use-metricbeat-to-send-monitoring-data.md) - {{metricbeat}} collects monitoring data from your APM Server instance and sends it directly to your monitoring cluster.
-* [Local collection](use-select-metrics-emitted-directly-to-monitoring-cluster.md) - Local collection sends select monitoring data directly to the standard indices of your monitoring cluster.
+* [Internal collection](/solutions/observability/apm/use-internal-collection-to-send-monitoring-data.md) - Internal collectors send monitoring data directly to your monitoring cluster.
+* [{{metricbeat}} collection](/solutions/observability/apm/use-metricbeat-to-send-monitoring-data.md) - {{metricbeat}} collects monitoring data from your APM Server instance and sends it directly to your monitoring cluster.
+* [Local collection](/solutions/observability/apm/use-select-metrics-emitted-directly-to-monitoring-cluster.md) - Local collection sends select monitoring data directly to the standard indices of your monitoring cluster.

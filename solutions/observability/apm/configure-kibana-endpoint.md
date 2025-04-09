@@ -13,7 +13,7 @@ applies_to:
 
 You must configure the {{kib}} endpoint when running the APM Server binary with a non-{{es}} output. Configuring the {{kib}} endpoint allows the APM Server to communicate with {{kib}} and ensure that the APM integration was properly set up. It is also required for APM agent configuration when using an output other than {{es}}.
 
-For all other use-cases, starting in version 8.7.0, APM agent configurations is fetched directly from {{es}}. Configuring and enabling the {{kib}} endpoint is only used as a fallback. Please see [APM agent central configuration](configure-apm-agent-central-configuration.md) instead.
+For all other use-cases, starting in version 8.7.0, APM agent configurations is fetched directly from {{es}}. Configuring and enabling the {{kib}} endpoint is only used as a fallback. Please see [APM agent central configuration](/solutions/observability/apm/configure-apm-agent-central-configuration.md) instead.
 
 ::::
 
@@ -84,5 +84,5 @@ apm-server.kibana.ssl.certificate: "/etc/pki/client/cert.pem"
 apm-server.kibana.ssl.key: "/etc/pki/client/cert.key"
 ```
 
-For information on the additional SSL configuration options, see [SSL/TLS output settings](ssltls-output-settings.md).
+For information on the additional SSL configuration options, see [SSL/TLS output settings](/solutions/observability/apm/ssl-tls-output-settings.md).
 

@@ -775,7 +775,7 @@ const apm = initApm({
 ::::::{tab-item} OpenTelemetry
 Elastic integrates with OpenTelemetry, allowing you to reuse your existing instrumentation to easily send observability data to the {{stack}}.
 
-For more information on how to combine Elastic and OpenTelemetry, see [OpenTelemetry integration](use-opentelemetry-with-apm.md).
+For more information on how to combine Elastic and OpenTelemetry, see [OpenTelemetry integration](/solutions/observability/apm/use-opentelemetry-with-apm.md).
 ::::::
 
 :::::::

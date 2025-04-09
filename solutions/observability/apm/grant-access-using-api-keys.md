@@ -61,7 +61,7 @@ To create an API key:
     ```
 
     ::::{note}
-    This example only provides privileges for **writing data**. See [Use feature roles](create-assign-feature-roles-to-apm-server-users.md) for additional privileges and information.
+    This example only provides privileges for **writing data**. See [Use feature roles](/solutions/observability/apm/create-assign-feature-roles-to-apm-server-users.md) for additional privileges and information.
     ::::
 
 4. To set an expiration date for the API key, select **Expire after time** and input the lifetime of the API key in days.
@@ -106,7 +106,7 @@ Enter a name for your API key and select **Restrict privileges**. In the role de
 ```
 
 ::::{note}
-This example only provides privileges for **publishing monitoring data**. See [Use feature roles](create-assign-feature-roles-to-apm-server-users.md) for additional privileges and information.
+This example only provides privileges for **publishing monitoring data**. See [Use feature roles](/solutions/observability/apm/create-assign-feature-roles-to-apm-server-users.md) for additional privileges and information.
 ::::
 
 To set an expiration date for the API key, select **Expire after time** and input the lifetime of the API key in days.
@@ -162,7 +162,7 @@ POST /_security/api_key
 ```
 
 1. Name of the API key
-2. Granted privileges, see [Use feature roles](create-assign-feature-roles-to-apm-server-users.md)
+2. Granted privileges, see [Use feature roles](/solutions/observability/apm/create-assign-feature-roles-to-apm-server-users.md)
 
 See the [Create API key](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-api-key) reference for more information.
 

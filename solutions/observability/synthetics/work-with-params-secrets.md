@@ -11,18 +11,18 @@ applies_to:
 
 Params allow you to use dynamically defined values in your synthetic monitors. For example, you may want to test a production website with a particular demo account whose password is only known to the team managing the synthetic monitors.
 
-For more information about security-sensitive use cases, refer to [Working with secrets and sensitive values](/solutions/observability/apps/work-with-params-secrets.md#synthetics-secrets-sensitive).
+For more information about security-sensitive use cases, refer to [Working with secrets and sensitive values](/solutions/observability/synthetics/work-with-params-secrets.md#synthetics-secrets-sensitive).
 
 ## Define params [synthetics-params-secrets-define]
 
 Param values can be declared by any of the following methods:
 
-* In the *Global parameters* tab of the [Synthetics Settings page in an Observability project](/solutions/observability/apps/configure-synthetics-settings.md#synthetics-settings-global-parameters).
-* Declaring a default value for the parameter in a [configuration file](/solutions/observability/apps/work-with-params-secrets.md#synthetics-dynamic-configs).
-* Passing the `--params` [CLI argument](/solutions/observability/apps/work-with-params-secrets.md#synthetics-cli-params).
+* In the *Global parameters* tab of the [Synthetics Settings page in an Observability project](/solutions/observability/synthetics/configure-settings.md#synthetics-settings-global-parameters).
+* Declaring a default value for the parameter in a [configuration file](/solutions/observability/synthetics/work-with-params-secrets.md#synthetics-dynamic-configs).
+* Passing the `--params` [CLI argument](/solutions/observability/synthetics/work-with-params-secrets.md#synthetics-cli-params).
 
 ::::{note}
-If you are creating and managing synthetic monitors using a [Synthetics project](/solutions/observability/apps/create-monitors-with-project-monitors.md), you can also use regular environment variables via the standard node `process.env` global object.
+If you are creating and managing synthetic monitors using a [Synthetics project](/solutions/observability/synthetics/create-monitors-with-projects.md), you can also use regular environment variables via the standard node `process.env` global object.
 
 ::::
 
@@ -67,7 +67,7 @@ The example above uses the `env` variable, which corresponds to the value of the
 
 ### CLI argument [synthetics-cli-params]
 
-To set parameters when running [`npx @elastic/synthetics` on the command line](/solutions/observability/apps/use-synthetics-cli.md), use the `--params` or `-p` flag. The provided map is merged over any existing variables defined in the `synthetics.config.{js,ts}` file.
+To set parameters when running [`npx @elastic/synthetics` on the command line](/solutions/observability/synthetics/cli.md), use the `--params` or `-p` flag. The provided map is merged over any existing variables defined in the `synthetics.config.{js,ts}` file.
 
 For example, to override the `my_url` parameter, you would run:
 

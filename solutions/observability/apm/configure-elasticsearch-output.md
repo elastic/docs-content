@@ -49,7 +49,7 @@ output.elasticsearch:
   api_key: "ZCV7VnwBgnX0T19fN8Qe:KnR6yE41RrSowb0kQ0HWoA" <1>
 ```
 
-1.  You *must* set the API key to be configured to **Beats**. Base64 encoded API keys are not currently supported in this configuration. For details on how to create and configure a compatible API key, refer to [Create an API key for writing events](/solutions/observability/apps/grant-access-using-api-keys.md#apm-beats-api-key-publish).
+1.  You *must* set the API key to be configured to **Beats**. Base64 encoded API keys are not currently supported in this configuration. For details on how to create and configure a compatible API key, refer to [Create an API key for writing events](/solutions/observability/apm/grant-access-using-api-keys.md#apm-beats-api-key-publish).
 
 **PKI certificate authentication:**
 
@@ -111,7 +111,7 @@ The default value is `false`.
 
 Instead of using a username and password, you can use API keys to secure communication with {{es}}. The value must be the ID of the API key and the API key joined by a colon: `id:api_key`.
 
-You *must* set the API key to be configured to **Beats**. Base64 encoded API keys are not currently supported in this configuration. For details on how to create and configure a compatible API key, refer to [Create an API key for writing events](/solutions/observability/apps/grant-access-using-api-keys.md#apm-beats-api-key-publish).
+You *must* set the API key to be configured to **Beats**. Base64 encoded API keys are not currently supported in this configuration. For details on how to create and configure a compatible API key, refer to [Create an API key for writing events](/solutions/observability/apm/grant-access-using-api-keys.md#apm-beats-api-key-publish).
 
 :::{image} /solutions/images/observability-apm-api-key-beats.png
 :alt: API key dropdown highlighting the Beats option
@@ -121,7 +121,7 @@ You *must* set the API key to be configured to **Beats**. Base64 encoded API key
 
 The basic authentication username for connecting to {{es}}.
 
-This user needs the privileges required to publish events to {{es}}. To create a user like this, see [Create a *writer* role](/solutions/observability/apps/create-assign-feature-roles-to-apm-server-users.md#apm-privileges-to-publish-events).
+This user needs the privileges required to publish events to {{es}}. To create a user like this, see [Create a *writer* role](/solutions/observability/apm/create-assign-feature-roles-to-apm-server-users.md#apm-privileges-to-publish-events).
 
 ### `password` [_password]
 
@@ -186,7 +186,7 @@ The HTTP request timeout in seconds for the {{es}} request. The default is 90.
 
 Configuration options for SSL parameters like the certificate authority to use for HTTPS-based connections. If the `ssl` section is missing, the host CAs are used for HTTPS connections to {{es}}.
 
-See the [secure communication with {{es}}](#apm-securing-communication-elasticsearch) guide or [SSL configuration reference](ssltls-output-settings.md) for more information.
+See the [secure communication with {{es}}](#apm-securing-communication-elasticsearch) guide or [SSL configuration reference](/solutions/observability/apm/ssl-tls-output-settings.md) for more information.
 
 ## Secure communication with {{es}} [apm-securing-communication-elasticsearch]
 
@@ -207,7 +207,7 @@ Authentication is specified in the APM Server configuration file:
       password: "{pwd}"
     ```
 
-    1. This user needs the privileges required to publish events to {{es}}. To create a user like this, see [Create a *writer* role](/solutions/observability/apps/create-assign-feature-roles-to-apm-server-users.md#apm-privileges-to-publish-events).
+    1. This user needs the privileges required to publish events to {{es}}. To create a user like this, see [Create a *writer* role](/solutions/observability/apm/create-assign-feature-roles-to-apm-server-users.md#apm-privileges-to-publish-events).
 
 * To use token-based **API key authentication**, specify the `api_key` under `output.elasticsearch`. For example:
 
@@ -217,7 +217,7 @@ Authentication is specified in the APM Server configuration file:
       api_key: "KnR6yE41RrSowb0kQ0HWoA" <1>
     ```
 
-    1. This API key must have the privileges required to publish events to {{es}}. You *must* set the API key to be configured to **Beats**. Base64 encoded API keys are not currently supported in this configuration. For details on how to create and configure a compatible API key, refer to [Create an API key for writing events](/solutions/observability/apps/grant-access-using-api-keys.md#apm-beats-api-key-publish).
+    1. This API key must have the privileges required to publish events to {{es}}. You *must* set the API key to be configured to **Beats**. Base64 encoded API keys are not currently supported in this configuration. For details on how to create and configure a compatible API key, refer to [Create an API key for writing events](/solutions/observability/apm/grant-access-using-api-keys.md#apm-beats-api-key-publish).
 
 * To use **Public Key Infrastructure (PKI) certificates** to authenticate users, specify the `certificate` and `key` settings under `output.elasticsearch`. For example:
 
@@ -259,4 +259,4 @@ Authentication is specified in the APM Server configuration file:
 
 More information on sending data to a secured cluster is available in the configuration reference:
 
-* [SSL/TLS output settings](ssltls-output-settings.md)
+* [SSL/TLS output settings](/solutions/observability/apm/ssl-tls-output-settings.md)

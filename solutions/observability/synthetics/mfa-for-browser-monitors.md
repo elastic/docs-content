@@ -16,7 +16,7 @@ Synthetics supports testing websites secured by Time-based One-Time Password (TO
 
 ## Configuring TOTP for MFA [configuring_totp_for_mfa]
 
-To test a browser journey that uses TOTP for MFA, first configure the Synthetics authenticator token in the target application. To do this, generate a One-Time Password (OTP) using the Synthetics CLI; refer to [`@elastic/synthetics totp <secret>`](/solutions/observability/apps/use-synthetics-cli.md).
+To test a browser journey that uses TOTP for MFA, first configure the Synthetics authenticator token in the target application. To do this, generate a One-Time Password (OTP) using the Synthetics CLI; refer to [`@elastic/synthetics totp <secret>`](/solutions/observability/synthetics/cli.md).
 
 ```sh
 npx @elastic/synthetics totp <secret>

@@ -9,7 +9,7 @@ applies_to:
 
 SSL/TLS is available for:
 
-* [APM Server **inputs**](ssltls-input-settings.md) (APM Agents)
-* [APM Server **outputs**](ssltls-output-settings.md) that support SSL, like {{es}}, {{ls}}, or Kafka.
+* [APM Server **inputs**](/solutions/observability/apm/ssl-tls-input-settings.md) (APM Agents)
+* [APM Server **outputs**](/solutions/observability/apm/ssl-tls-output-settings.md) that support SSL, like {{es}}, {{ls}}, or Kafka.
 
-Additional information on getting started with SSL/TLS is available in [Use APM securely](use-apm-securely.md).
+Additional information on getting started with SSL/TLS is available in [Use APM securely](/solutions/observability/apm/use-apm-securely.md).

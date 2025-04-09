@@ -173,7 +173,7 @@ The number of concurrent load-balanced Kafka output workers.
 
 Output codec configuration. If the `codec` section is missing, events will be JSON encoded.
 
-See [Change the output codec](/solutions/observability/apps/configure-console-output.md#apm-configuration-output-codec) for more information.
+See [Change the output codec](/solutions/observability/apm/configure-console-output.md#apm-configuration-output-codec) for more information.
 
 ### `metadata` [_metadata]
 
@@ -270,5 +270,5 @@ Enable Kerberos FAST authentication. This may conflict with some Active Director
 
 ### `ssl` [_ssl_3]
 
-Configuration options for SSL parameters like the root CA for Kafka connections. The Kafka host keystore should be created with the `-keyalg RSA` argument to ensure it uses a cipher supported by [{{filebeat}}'s Kafka library](https://github.com/Shopify/sarama/wiki/Frequently-Asked-Questions#why-cant-sarama-connect-to-my-kafka-cluster-using-ssl). See [SSL/TLS output settings](ssltls-output-settings.md) for more information.
+Configuration options for SSL parameters like the root CA for Kafka connections. The Kafka host keystore should be created with the `-keyalg RSA` argument to ensure it uses a cipher supported by [{{filebeat}}'s Kafka library](https://github.com/Shopify/sarama/wiki/Frequently-Asked-Questions#why-cant-sarama-connect-to-my-kafka-cluster-using-ssl). See [SSL/TLS output settings](/solutions/observability/apm/ssl-tls-output-settings.md) for more information.
 

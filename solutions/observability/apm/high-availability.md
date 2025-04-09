@@ -9,7 +9,7 @@ applies_to:
 
 To achieve high availability you can place multiple instances of APM Server behind a regular HTTP load balancer, for example HAProxy or Nginx.
 
-The endpoint `/` always returns an `HTTP 200`. You can configure your load balancer to send HTTP requests to this endpoint to determine if an APM Server is running. See [APM Server information API](apm-server-information-api.md) for more information on that endpoint.
+The endpoint `/` always returns an `HTTP 200`. You can configure your load balancer to send HTTP requests to this endpoint to determine if an APM Server is running. See [APM Server information API](/solutions/observability/apm/apm-server-information-api.md) for more information on that endpoint.
 
 In case of temporal issues, like unavailable {{es}} or a sudden high workload, APM Server does not have an internal queue to buffer requests, but instead leverages an HTTP request timeout to act as back-pressure.
 

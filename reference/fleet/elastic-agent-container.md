@@ -134,7 +134,7 @@ docker run \
 1. Set to 1 to enroll the {{agent}} into {{fleet-server}}.
 2. URL to enroll the {{fleet-server}} into. You can find it in {{kib}}. Select **Management → {{fleet}} → Fleet Settings**, and copy the {{fleet-server}} host URL.
 3. The token to use for enrollment. Close the flyout panel and select **Enrollment tokens**. Find the Agent policy you want to enroll {{agent}} into, and display and copy the secret token. To learn how to create a policy, refer to [Create an agent policy without using the UI](/reference/fleet/create-policy-no-ui.md).
-4. If you want to run **elastic-agent-complete** image, replace `elastic-agent` to `elastic-agent-complete`. Use the `elastic-agent` user instead of root to run Synthetics Browser tests. Synthetic tests cannot run under the root user. Refer to [Synthetics {{fleet}} Quickstart](/solutions/observability/apps/get-started.md) for more information.
+4. If you want to run **elastic-agent-complete** image, replace `elastic-agent` to `elastic-agent-complete`. Use the `elastic-agent` user instead of root to run Synthetics Browser tests. Synthetic tests cannot run under the root user. Refer to [Synthetics {{fleet}} Quickstart](/solutions/observability/synthetics/get-started.md) for more information.
 
 Refer to [Environment variables](/reference/fleet/agent-environment-variables.md) for all available options.
 :::
@@ -158,7 +158,7 @@ docker run \
 3. The {{fleet}} service token. [Generate one in the {{fleet}} UI](/reference/fleet/fleet-enrollment-tokens.md#create-fleet-enrollment-tokens) if you don’t have one already.
 4. ID of the {{fleet-server}} policy. We recommend only having one fleet-server policy. To learn how to create a policy, refer to [Create an agent policy without using the UI](/reference/fleet/create-policy-no-ui.md).
 5. publish container port 8220 to host.
-6. If you want to run the **elastic-agent-complete** image, replace `elastic-agent` with `elastic-agent-complete`. Use the `elastic-agent` user instead of root to run Synthetics Browser tests. Synthetic tests cannot run under the root user. Refer to [Synthetics {{fleet}} Quickstart](/solutions/observability/apps/get-started.md) for more information.
+6. If you want to run the **elastic-agent-complete** image, replace `elastic-agent` with `elastic-agent-complete`. Use the `elastic-agent` user instead of root to run Synthetics Browser tests. Synthetic tests cannot run under the root user. Refer to [Synthetics {{fleet}} Quickstart](/solutions/observability/synthetics/get-started.md) for more information.
 
 Refer to [Environment variables](/reference/fleet/agent-environment-variables.md) for all available options.
 :::
@@ -242,7 +242,7 @@ services:
       - FLEET_URL=<fleet-server-url>
 ```
 
-1. Switch `elastic-agent` to `elastic-agent-complete` if you intend to use the complete version. Use the `elastic-agent` user instead of root to run Synthetics Browser tests. Synthetic tests cannot run under the root user. Refer to [Synthetics {{fleet}} Quickstart](/solutions/observability/apps/get-started.md) for more information.
+1. Switch `elastic-agent` to `elastic-agent-complete` if you intend to use the complete version. Use the `elastic-agent` user instead of root to run Synthetics Browser tests. Synthetic tests cannot run under the root user. Refer to [Synthetics {{fleet}} Quickstart](/solutions/observability/synthetics/get-started.md) for more information.
 2. Synthetic browser monitors require this set to `elastic-agent`.
 
 

@@ -30,7 +30,7 @@ To learn more about the {{kib}} query language capabilities, see the [Kibana Que
 
 ### APM queries [apm-app-queries]
 
-APM queries can be handy for removing noise from your data in the [Services](/solutions/observability/apps/services.md), [Transactions](/solutions/observability/apps/transactions-2.md), [Errors](/solutions/observability/apps/errors-2.md), [Metrics](/solutions/observability/apps/metrics-2.md), and [Traces](/solutions/observability/apps/traces-2.md) views.
+APM queries can be handy for removing noise from your data in the [Services](/solutions/observability/apm/services.md), [Transactions](/solutions/observability/apm/transactions-ui.md), [Errors](/solutions/observability/apm/errors-ui.md), [Metrics](/solutions/observability/apm/metrics-ui.md), and [Traces](/solutions/observability/apm/traces-ui.md) views.
 
 For example, in the **Services** view, you can quickly view a list of all the instrumented services running on your production environment: `service.environment : production`. Or filter the list by including the APM agent’s name and the host it’s running on: `service.environment : "production" and agent.name : "java" and host.name : "prod-server1"`.
 

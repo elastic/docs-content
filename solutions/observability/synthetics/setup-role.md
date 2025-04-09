@@ -9,7 +9,7 @@ applies_to:
 
 Administrators who set up Synthetics typically need to enable Monitor Management.
 
-Monitor Management will be enabled automatically when a user with the required permissions loads the Synthetics UI. This must be completed just once by an admin before any users with the [Writer role](writer-role.md) can create synthetic monitors. This applies to monitors created via both [projects](create-monitors-with-project-monitors.md) and [the UI](create-monitors-in-synthetics-app.md).
+Monitor Management will be enabled automatically when a user with the required permissions loads the Synthetics UI. This must be completed just once by an admin before any users with the [Writer role](/solutions/observability/synthetics/writer-role.md) can create synthetic monitors. This applies to monitors created via both [projects](/solutions/observability/synthetics/create-monitors-with-projects.md) and [the UI](/solutions/observability/synthetics/create-monitors-ui.md).
 
 As a best practice, **grant the setup role to administrators only**, and use a more restrictive role for event publishing.
 
@@ -18,7 +18,7 @@ Create a **setup role**, called something like `synthetics_setup`:
 1. Start with the `editor` [built-in role](/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md). This role grants full access to all features in {{kib}} (including the {{observability}} solution) and read-only access to data indices.
 
     ::::{note}
-    The `editor` [built-in role](/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md) will grant write access to *all* {{kib}} apps. If you want to limit write access to the {{synthetics-app}} only, refer to [Limited write access](/solutions/observability/apps/writer-role.md#synthetics-write-privileges-limited).
+    The `editor` [built-in role](/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md) will grant write access to *all* {{kib}} apps. If you want to limit write access to the {{synthetics-app}} only, refer to [Limited write access](/solutions/observability/synthetics/writer-role.md#synthetics-write-privileges-limited).
 
     If you choose this approach, you will still need to grant the privileges in the next step.
 
@@ -39,6 +39,6 @@ Create a **setup role**, called something like `synthetics_setup`:
         | [Index](/deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-indices) | `synthetics-*`: `monitor` | Gives access to all actions that are required for monitoring (recovery, segments info, index stats, and status). |
 
 ::::{note}
-If users with the setup role also need to create, modify, and delete monitors, add the privileges defined in the [writer role](writer-role.md).
+If users with the setup role also need to create, modify, and delete monitors, add the privileges defined in the [writer role](/solutions/observability/synthetics/writer-role.md).
 ::::
 

@@ -20,7 +20,7 @@ applies_to:
 
 APM agents automatically pick up basic host-level metrics, including system and process-level CPU and memory metrics. Agent specific metrics are also available, like [JVM metrics](apm-agent-java://reference/metrics.md) in the Java Agent, and [Go runtime](apm-agent-go://reference/metrics.md) metrics in the Go Agent.
 
-Infrastructure and application metrics are important sources of information when debugging production systems, which is why we’ve made it easy to filter metrics for specific hosts or containers in the {{kib}} [metrics overview](metrics-2.md).
+Infrastructure and application metrics are important sources of information when debugging production systems, which is why we’ve made it easy to filter metrics for specific hosts or containers in the {{kib}} [metrics overview](/solutions/observability/apm/metrics-ui.md).
 
 ::::{tip}
 Most agents limit keyword fields to 1024 characters, non-keyword fields (e.g. `system.memory.total`) to 10,000 characters.
@@ -127,7 +127,7 @@ These metrics are described below.
 
 ### Breakdown metrics [_breakdown_metrics]
 
-To power the [Time spent by span type](transactions-2.md) graph, agents collect summarized metrics about the timings of spans and transactions, broken down by span type.
+To power the [Time spent by span type](/solutions/observability/apm/transactions-ui.md) graph, agents collect summarized metrics about the timings of spans and transactions, broken down by span type.
 
 **`span.self_time.count`** and **`span.self_time.sum.us`**
 :   These metrics measure the "self-time" for a span type, and optional subtype, within a transaction group. Together these metrics can be used to calculate the average duration and percentage of time spent on each type of operation within a transaction group.
@@ -235,7 +235,7 @@ This example shows what breakdown metric documents can look like when indexed in
 
 ### Transaction metrics [_transaction_metrics]
 
-To power [{{kib}} Applications UI](overviews.md) visualizations, either {{apm-server-or-mis}} aggregates transaction events into latency distribution metrics.
+To power [{{kib}} Applications UI](/solutions/observability/apm/overviews.md) visualizations, either {{apm-server-or-mis}} aggregates transaction events into latency distribution metrics.
 
 **`transaction.duration.summary`** and **`transaction.duration.histogram`**
 :   These metrics represent the latency summary and latency distribution of transaction groups, used to power transaction-oriented visualizations and analytics in Elastic APM.
@@ -421,7 +421,7 @@ This example shows what transaction documents can look like when indexed in {{es
 
 ### Service-transaction metrics [_service_transaction_metrics]
 
-To power [{{kib}} Applications UI](overviews.md) visualizations, either {{apm-server-or-mis}} aggregates transaction events into service-transaction metrics. Service-transaction metrics are similar to transaction metrics, but they usually have a much lower cardinality as they have significantly fewer dimensions. The UI uses them when fewer details of the transactions are needed.
+To power [{{kib}} Applications UI](/solutions/observability/apm/overviews.md) visualizations, either {{apm-server-or-mis}} aggregates transaction events into service-transaction metrics. Service-transaction metrics are similar to transaction metrics, but they usually have a much lower cardinality as they have significantly fewer dimensions. The UI uses them when fewer details of the transactions are needed.
 
 **`transaction.duration.summary`** and **`transaction.duration.histogram`**
 :   These metrics represent the latency summary and latency distribution of service transaction groups, used to power service-oriented visualizations and analytics in Elastic APM.
@@ -955,10 +955,10 @@ This example shows what service-transaction documents can look like when indexed
 
 ### Service-destination metrics [_service_destination_metrics]
 
-To power [{{kib}} Applications UI](overviews.md) visualizations, either {{apm-server-or-mis}} aggregates span events into service-destination metrics.
+To power [{{kib}} Applications UI](/solutions/observability/apm/overviews.md) visualizations, either {{apm-server-or-mis}} aggregates span events into service-destination metrics.
 
 **`span.destination.service.response_time.count`** and **`span.destination.service.response_time.sum.us`**
-:   These metrics measure the count and total duration of requests from one service to another service. These are used to calculate the throughput and latency of requests to backend services such as databases in [Service maps](service-map.md).
+:   These metrics measure the count and total duration of requests from one service to another service. These are used to calculate the throughput and latency of requests to backend services such as databases in [Service maps](/solutions/observability/apm/service-map.md).
 
 These metric documents can be identified by searching for `metricset.name: service_destination`.
 
@@ -1048,7 +1048,7 @@ This example shows what service-destination documents can look like when indexed
 
 ### Service-summary metrics [_service_summary_metrics]
 
-To power [{{kib}} Applications UI](overviews.md) visualizations, either {{apm-server-or-mis}} aggregates transaction, error, log, and metric events into service-summary metrics.
+To power [{{kib}} Applications UI](/solutions/observability/apm/overviews.md) visualizations, either {{apm-server-or-mis}} aggregates transaction, error, log, and metric events into service-summary metrics.
 
 These metric documents can be identified by searching for `metricset.name: service_summary`.
 
@@ -1123,7 +1123,7 @@ Metrics are stored in the following data streams:
 * APM service summary metrics: `metrics-apm.service_summary.<metricset.interval>-<namespace>`
 * Application metrics: `metrics-apm.app.<service.name>-<namespace>`
 
-See [Data streams](data-streams.md) to learn more.
+See [Data streams](/solutions/observability/apm/data-streams.md) to learn more.
 
 ## Aggregated metrics: limits and overflows [_aggregated_metrics_limits_and_overflows]
 

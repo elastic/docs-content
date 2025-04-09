@@ -44,14 +44,14 @@ Configure and customize Fleet-managed APM settings directly in {{kib}}:
 
 :::::::
 ::::{important}
-All anonymous access configuration is ignored if [authenticated communication](secure-communication-with-apm-agents.md) is disabled.
+All anonymous access configuration is ignored if [authenticated communication](/solutions/observability/apm/secure-communication-with-apm-agents.md) is disabled.
 ::::
 
 ## Real User Monitoring (RUM) [apm-config-auth-anon-rum]
 
-If an [API key](/solutions/observability/apps/api-keys.md) or [secret token](secret-token.md) is configured, then anonymous authentication must be enabled to collect RUM data. For this reason, anonymous auth will be enabled automatically if [Enable RUM](configure-real-user-monitoring-rum.md#apm-rum-enable) is set to `true`, and [Anonymous Agent access](#apm-config-auth-anon-enabled) is not explicitly defined.
+If an [API key](/solutions/observability/apm/api-keys.md) or [secret token](/solutions/observability/apm/secret-token.md) is configured, then anonymous authentication must be enabled to collect RUM data. For this reason, anonymous auth will be enabled automatically if [Enable RUM](/solutions/observability/apm/configure-real-user-monitoring-rum.md#apm-rum-enable) is set to `true`, and [Anonymous Agent access](#apm-config-auth-anon-enabled) is not explicitly defined.
 
-See [Real User Monitoring (RUM)](configure-real-user-monitoring-rum.md) for additional RUM configuration options.
+See [Real User Monitoring (RUM)](/solutions/observability/apm/configure-real-user-monitoring-rum.md) for additional RUM configuration options.
 
 ### Mitigating malicious requests [apm-config-auth-anon-mitigating]
 

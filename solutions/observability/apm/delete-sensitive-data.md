@@ -9,7 +9,7 @@ applies_to:
 
 If you accidentally ingest sensitive data, follow these steps to remove or redact the offending data:
 
-1. Stop collecting the sensitive data. Use the **remedy** column of the [sensitive fields](/solutions/observability/apps/application-data-security.md#apm-sensitive-fields) table to determine how to stop collecting the offending data.
+1. Stop collecting the sensitive data. Use the **remedy** column of the [sensitive fields](/solutions/observability/apm/secure-data.md#apm-sensitive-fields) table to determine how to stop collecting the offending data.
 2. Delete or redact the ingested data. With data collection fixed, you can now delete or redact the offending data:
 
     * [Redact specific fields](#apm-redact-field-data)

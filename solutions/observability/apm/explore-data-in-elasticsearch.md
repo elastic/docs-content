@@ -11,7 +11,7 @@ applies_to:
 
 ## {{es}} query examples [apm-elasticsearch-query-examples]
 
-Elastic APM data is stored in [Data streams](data-streams.md).
+Elastic APM data is stored in [Data streams](/solutions/observability/apm/data-streams.md).
 
 The following examples enable you to interact with {{es}}'s REST API. One possible way to do this is using {{kib}}'s [{{dev-tools-app}} console](/explore-analyze/query-filter/tools/console.md).
 

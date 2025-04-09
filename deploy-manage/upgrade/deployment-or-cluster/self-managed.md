@@ -13,7 +13,7 @@ If you've installed the {{stack}} on your own self-managed infrastructure, once 
 It's important that you upgrade your components in this order:
 * [{{es}}](/deploy-manage/upgrade/deployment-or-cluster/elasticsearch.md)
 * [{{kib}}](/deploy-manage/upgrade/deployment-or-cluster/kibana.md)
-* [Elastic APM](/solutions/observability/apps/upgrade.md)
+* [Elastic APM](/solutions/observability/apm/upgrade.md)
 * [Ingest components](/deploy-manage/upgrade/ingest-components.md)
 
 :::{important}

@@ -7,7 +7,7 @@ applies_to:
 
 # Elastic APM agent configuration API [apm-api-config]
 
-APM Server exposes API endpoints that allow Elastic APM agents to query the APM Server for configuration changes. More information on this feature is available in [{{apm-agent}} configuration in {{kib}}](apm-agent-central-configuration.md).
+APM Server exposes API endpoints that allow Elastic APM agents to query the APM Server for configuration changes. More information on this feature is available in [{{apm-agent}} configuration in {{kib}}](/solutions/observability/apm/apm-agent-central-configuration.md).
 
 ## Agent configuration endpoints [apm-api-config-endpoint]
 
@@ -16,7 +16,7 @@ APM Server exposes API endpoints that allow Elastic APM agents to query the APM 
 | Agent configuration intake | `/config/v1/agents` |
 | RUM configuration intake | `/config/v1/rum/agents` |
 
-The Agent configuration endpoints accepts both `HTTP GET` and `HTTP POST` requests. If an [API keys](api-keys.md) or [Secret token](secret-token.md) is configured, requests to this endpoint must be authenticated.
+The Agent configuration endpoints accepts both `HTTP GET` and `HTTP POST` requests. If an [API keys](/solutions/observability/apm/api-keys.md) or [Secret token](/solutions/observability/apm/secret-token.md) is configured, requests to this endpoint must be authenticated.
 
 ### HTTP GET [apm-api-config-api-get]
 

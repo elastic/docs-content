@@ -103,7 +103,7 @@ Every event sent to {{ls}} contains a special field called [`@metadata`](logstas
 1. To change the default `apm-server` value, set the [`index`](#apm-logstash-index) option in the APM Server config file.
 2. The current version of APM Server.
 
-In addition to `@metadata`, APM Server provides other potentially useful fields, like the `data_stream` field, which can be used to conditionally operate on [event types](learn-about-application-data-types.md), namespaces, or datasets.
+In addition to `@metadata`, APM Server provides other potentially useful fields, like the `data_stream` field, which can be used to conditionally operate on [event types](/solutions/observability/apm/data-types.md), namespaces, or datasets.
 
 As an example, you might want to use {{ls}} to route all `metrics` events to the same custom metrics data stream, rather than to service-specific data streams.
 
@@ -226,7 +226,7 @@ This parameter’s value will be assigned to the `metadata.beat` field. It can t
 
 #### `ssl` [_ssl_2]
 
-Configuration options for SSL parameters like the root CA for {{ls}} connections. See [SSL/TLS output settings](ssltls-output-settings.md) for more information. To use SSL, you must also configure the [{{beats}} input plugin for {{ls}}](logstash-docs-md://lsr/plugins-inputs-beats.md) to use SSL/TLS.
+Configuration options for SSL parameters like the root CA for {{ls}} connections. See [SSL/TLS output settings](/solutions/observability/apm/ssl-tls-output-settings.md) for more information. To use SSL, you must also configure the [{{beats}} input plugin for {{ls}}](logstash-docs-md://lsr/plugins-inputs-beats.md) to use SSL/TLS.
 
 #### `timeout` [_timeout_2]
 
@@ -291,7 +291,7 @@ To use SSL mutual authentication:
           ssl.key: "/etc/client.key"
         ```
 
-        For more information about these configuration options, see [SSL/TLS output settings](ssltls-output-settings.md).
+        For more information about these configuration options, see [SSL/TLS output settings](/solutions/observability/apm/ssl-tls-output-settings.md).
 
 3. Configure {{ls}} to use SSL. In the {{ls}} config file, specify the following settings for the [{{beats}} input plugin for {{ls}}](logstash-docs-md://lsr/plugins-inputs-beats.md):
 

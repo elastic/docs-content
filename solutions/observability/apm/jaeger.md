@@ -104,7 +104,7 @@ There are two different ways to configure the sampling rate of your Jaeger agent
 
 #### {{apm-agent}} central configuration (default) [apm-configure-sampling-central-jaeger]
 
-Central sampling, with {{apm-agent}} central configuration, allows Jaeger clients to poll APM Server for the sampling rate. This means sample rates can be configured on the fly, on a per-service and per-environment basis. See [Central configuration](apm-agent-central-configuration.md) to learn more.
+Central sampling, with {{apm-agent}} central configuration, allows Jaeger clients to poll APM Server for the sampling rate. This means sample rates can be configured on the fly, on a per-service and per-environment basis. See [Central configuration](/solutions/observability/apm/apm-agent-central-configuration.md) to learn more.
 
 #### Local sampling in each Jaeger client [apm-configure-sampling-local-jaeger]
 
@@ -126,7 +126,7 @@ There are some limitations and differences between Elastic APM and Jaeger that y
 **Differences between APM Agents and Jaeger Clients:**
 
 * Jaeger clients only sends trace data. APM agents support a larger number of features, like multiple types of metrics, and application breakdown charts. When using Jaeger, features like this will not be available in the Applications UI.
-* Elastic APM’s [Learn about data types](learn-about-application-data-types.md) is different than Jaegers. For Jaeger trace data to work with Elastic’s data model, we rely on spans being tagged with the appropriate [`span.kind`](https://github.com/opentracing/specification/blob/master/semantic_conventions.md).
+* Elastic APM’s [Learn about data types](/solutions/observability/apm/data-types.md) is different than Jaegers. For Jaeger trace data to work with Elastic’s data model, we rely on spans being tagged with the appropriate [`span.kind`](https://github.com/opentracing/specification/blob/master/semantic_conventions.md).
 
-    * Server Jaeger spans are mapped to Elastic APM [Transactions](transactions.md).
-    * Client Jaeger spans are mapped to Elastic APM [Spans](spans.md) — unless the span is the root, in which case it is mapped to an Elastic APM [Transactions](transactions.md).
+    * Server Jaeger spans are mapped to Elastic APM [Transactions](/solutions/observability/apm/transactions.md).
+    * Client Jaeger spans are mapped to Elastic APM [Spans](/solutions/observability/apm/spans.md) — unless the span is the root, in which case it is mapped to an Elastic APM [Transactions](/solutions/observability/apm/transactions.md).

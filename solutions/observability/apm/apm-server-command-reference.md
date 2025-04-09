@@ -31,7 +31,7 @@ Some of the features described here require an Elastic license. For more informa
 | [`apikey`](#apm-apikey-command) | Manage API Keys for communication between APM agents and server. [8.6.0] |
 | [`export`](#apm-export-command) | Exports the configuration, index template, or {{ilm-init}} policy to stdout. |
 | [`help`](#apm-help-command) | Shows help for any command. |
-| [`keystore`](#apm-keystore-command) | Manages the [secrets keystore](secrets-keystore-for-secure-settings.md). |
+| [`keystore`](#apm-keystore-command) | Manages the [secrets keystore](/solutions/observability/apm/secrets-keystore-for-secure-settings.md). |
 | [`run`](#apm-run-command) | Runs APM Server. This command is used by default if you start APM Server without specifying a command. |
 | [`test`](#apm-test-command) | Tests the configuration. |
 | [`version`](#apm-version-command) | Shows information about the current version. |
@@ -47,10 +47,10 @@ This functionality is in technical preview and may be changed or removed in a fu
 ::::{admonition} Deprecated in 8.6.0.
 :class: warning
 
-Users should create API Keys through {{kib}} or the {{es}} REST API. See [API keys](api-keys.md).
+Users should create API Keys through {{kib}} or the {{es}} REST API. See [API keys](/solutions/observability/apm/api-keys.md).
 ::::
 
-Communication between APM agents and APM Server now supports sending an [API Key in the Authorization header](api-keys.md). APM Server provides an `apikey` command that can create, verify, invalidate, and show information about API Keys for agent/server communication. Most operations require the `manage_own_api_key` cluster privilege, and you must ensure that `apm-server.api_key` or `output.elasticsearch` are configured appropriately.
+Communication between APM agents and APM Server now supports sending an [API Key in the Authorization header](/solutions/observability/apm/api-keys.md). APM Server provides an `apikey` command that can create, verify, invalidate, and show information about API Keys for agent/server communication. Most operations require the `manage_own_api_key` cluster privilege, and you must ensure that `apm-server.api_key` or `output.elasticsearch` are configured appropriately.
 
 **SYNOPSIS**
 
@@ -130,7 +130,7 @@ apm-server apikey info --name example-001 --valid-only
 apm-server apikey invalidate --name example-001
 ```
 
-For more information, see [API keys](api-keys.md).
+For more information, see [API keys](/solutions/observability/apm/api-keys.md).
 
 ## `export` command [apm-export-command]
 
@@ -206,7 +206,7 @@ apm-server help export
 
 ## `keystore` command [apm-keystore-command]
 
-Manages the [secrets keystore](secrets-keystore-for-secure-settings.md).
+Manages the [secrets keystore](/solutions/observability/apm/secrets-keystore-for-secure-settings.md).
 
 **SYNOPSIS**
 
@@ -250,7 +250,7 @@ apm-server keystore remove ES_PWD
 apm-server keystore list
 ```
 
-See [Secrets keystore](secrets-keystore-for-secure-settings.md) for more examples.
+See [Secrets keystore](/solutions/observability/apm/secrets-keystore-for-secure-settings.md) for more examples.
 
 ## `run` command [apm-run-command]
 
@@ -382,19 +382,19 @@ These global flags are available whenever you run APM Server.
 :   For logging purposes, specifies the environment that APM Server is running in. This setting is used to select a default log output when no log output is configured. Supported values are: `systemd`, `container`, `macos_service`, and `windows_service`. If `systemd` or `container` is specified, APM Server will log to stdout and stderr by default.
 
 **`--path.config`**
-:   Sets the path for configuration files. See the [Installation layout](installation-layout.md) section for details.
+:   Sets the path for configuration files. See the [Installation layout](/solutions/observability/apm/installation-layout.md) section for details.
 
 **`--path.data`**
-:   Sets the path for data files. See the [Installation layout](installation-layout.md) section for details.
+:   Sets the path for data files. See the [Installation layout](/solutions/observability/apm/installation-layout.md) section for details.
 
 **`--path.home`**
-:   Sets the path for miscellaneous files. See the [Installation layout](installation-layout.md) section for details.
+:   Sets the path for miscellaneous files. See the [Installation layout](/solutions/observability/apm/installation-layout.md) section for details.
 
 **`--path.logs`**
-:   Sets the path for log files. See the [Installation layout](installation-layout.md) section for details.
+:   Sets the path for log files. See the [Installation layout](/solutions/observability/apm/installation-layout.md) section for details.
 
 **`--strict.perms`**
-:   Sets strict permission checking on configuration files. The default is `-strict.perms=true`. See [Configuration file ownership](/solutions/observability/apps/apm-server-systemd.md#apm-config-file-ownership) for more information.
+:   Sets strict permission checking on configuration files. The default is `-strict.perms=true`. See [Configuration file ownership](/solutions/observability/apm/apm-server-systemd.md#apm-config-file-ownership) for more information.
 
 **`-v, --v`**
 :   Logs INFO-level messages.

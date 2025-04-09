@@ -10,7 +10,7 @@ applies_to:
 ::::{note}
 ![supported deployment methods](/solutions/images/observability-binary-yes-fm-yes.svg "")
 
-Most options on this page are supported by all APM Server deployment methods when writing to {{es}}. If you are using a different [output](configure-output.md), tail-based sampling is *not* supported.
+Most options on this page are supported by all APM Server deployment methods when writing to {{es}}. If you are using a different [output](/solutions/observability/apm/configure-output.md), tail-based sampling is *not* supported.
 
 ::::
 
@@ -48,7 +48,7 @@ Configure and customize Fleet-managed APM settings directly in {{kib}}:
 
 ## Top-level tail-based sampling settings [apm-configuration-tbs]
 
-See [Tail-based sampling](/solutions/observability/apps/transaction-sampling.md#apm-tail-based-sampling) to learn more.
+See [Tail-based sampling](/solutions/observability/apm/transaction-sampling.md#apm-tail-based-sampling) to learn more.
 
 ### Enable tail-based sampling [sampling-tail-enabled-ref]
 
@@ -98,7 +98,7 @@ Default: `0GB`. (text)
 
 ## Policy-level tail-based sampling settings [apm-configuration-tbs-policy]
 
-See [Tail-based sampling](/solutions/observability/apps/transaction-sampling.md#apm-tail-based-sampling) to learn more.
+See [Tail-based sampling](/solutions/observability/apm/transaction-sampling.md#apm-tail-based-sampling) to learn more.
 
 ### **`sample_rate`** [sampling-tail-sample-rate-ref]
 
@@ -124,7 +124,7 @@ The service environment for events to match a policy. (string)
 
 ## Monitoring tail-based sampling [sampling-tail-monitoring-ref]
 
-APM Server produces metrics to monitor the performance and estimate the workload being processed by tail-based sampling. In order to use these metrics, you need to [enable monitoring for the APM Server](/solutions/observability/apps/monitor-apm-server.md). The following metrics are produced by the tail-based sampler (note that the metrics might have a different prefix,  for example `beat.stats` for ECH deployments, based on how the APM Server is running):
+APM Server produces metrics to monitor the performance and estimate the workload being processed by tail-based sampling. In order to use these metrics, you need to [enable monitoring for the APM Server](/solutions/observability/apm/monitor-apm-server.md). The following metrics are produced by the tail-based sampler (note that the metrics might have a different prefix,  for example `beat.stats` for ECH deployments, based on how the APM Server is running):
 
 ### `apm-server.sampling.tail.dynamic_service_groups` [sampling-tail-monitoring-dynamic-service-group-ref]
 

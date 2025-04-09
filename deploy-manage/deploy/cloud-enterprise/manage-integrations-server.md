@@ -8,7 +8,7 @@ mapped_pages:
 
 # Manage your Integrations Server [ece-manage-integrations-server]
 
-For deployments that are version 8.0 and later, you have the option to add a combined [Application Performance Monitoring (APM) Server](/solutions/observability/apps/application-performance-monitoring-apm.md) and [Fleet Server](/reference/fleet/index.md) to your deployment. APM allows you to monitor software services and applications in real time, turning that data into documents stored in the {{es}} cluster. Fleet allows you to centrally manage Elastic Agents on many hosts.
+For deployments that are version 8.0 and later, you have the option to add a combined [Application Performance Monitoring (APM) Server](/solutions/observability/apm/index.md) and [Fleet Server](/reference/fleet/index.md) to your deployment. APM allows you to monitor software services and applications in real time, turning that data into documents stored in the {{es}} cluster. Fleet allows you to centrally manage Elastic Agents on many hosts.
 
 As part of provisioning, the APM Server and Fleet Server are already configured to work with {{es}} and {{kib}}. At the end of provisioning, you are shown the secret token to configure communication between the APM Server and the backend [APM Agents](https://www.elastic.co/guide/en/apm/agent/index.html). The APM Agents get deployed within your services and applications.
 
@@ -23,7 +23,7 @@ From the deployment **Integrations Server** page you can also:
 * Fully remove the Integrations Server, delete it from the disk, and stop the charges.
 
 ::::{important}
-The APM secret token can no longer be reset from the {{ece}} UI. Check [Secret token](/solutions/observability/apps/secret-token.md) for instructions on managing a secret token. Note that resetting the token disrupts your APM service and restarts the server. When the server restarts, you’ll need to update all of your agents with the new token.
+The APM secret token can no longer be reset from the {{ece}} UI. Check [Secret token](/solutions/observability/apm/secret-token.md) for instructions on managing a secret token. Note that resetting the token disrupts your APM service and restarts the server. When the server restarts, you’ll need to update all of your agents with the new token.
 ::::
 
 ## Routing to Fleet Server [ece-integrations-server-fleet-routing]

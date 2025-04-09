@@ -77,4 +77,4 @@ To upgrade {{kib}}:
 
 ## Next steps
 
-Once you've successfully upgraded {{kib}}, [upgrade Elastic APM](/solutions/observability/apps/upgrade.md), then [upgrade your ingest components](/deploy-manage/upgrade/ingest-components.md).
+Once you've successfully upgraded {{kib}}, [upgrade Elastic APM](/solutions/observability/apm/upgrade.md), then [upgrade your ingest components](/deploy-manage/upgrade/ingest-components.md).

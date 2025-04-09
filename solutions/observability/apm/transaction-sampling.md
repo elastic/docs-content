@@ -12,14 +12,14 @@ applies_to:
 :::{include} _snippets/apm-server-vs-mis.md
 :::
 
-[Distributed tracing](/solutions/observability/apps/traces.md) can generate a substantial amount of data. More data can mean higher costs and more noise. Sampling aims to lower the amount of data ingested and the effort required to analyze that data — all while still making it easy to find anomalous patterns in your applications, detect outages, track errors, and lower mean time to recovery (MTTR).
+[Distributed tracing](/solutions/observability/apm/traces.md) can generate a substantial amount of data. More data can mean higher costs and more noise. Sampling aims to lower the amount of data ingested and the effort required to analyze that data — all while still making it easy to find anomalous patterns in your applications, detect outages, track errors, and lower mean time to recovery (MTTR).
 
 Elastic APM supports two types of sampling:
 
 % Stateful only for Tail-based sampling
 
-* [Head-based sampling](/solutions/observability/apps/transaction-sampling.md#apm-head-based-sampling)
-* [Tail-based sampling](/solutions/observability/apps/transaction-sampling.md#apm-tail-based-sampling)
+* [Head-based sampling](/solutions/observability/apm/transaction-sampling.md#apm-head-based-sampling)
+* [Tail-based sampling](/solutions/observability/apm/transaction-sampling.md#apm-tail-based-sampling)
 
 ## Head-based sampling [apm-head-based-sampling]
 
@@ -34,7 +34,7 @@ For example, a sampling value of `.2` indicates a transaction sample rate of `20
 
 Head-based sampling is quick and easy to set up. Its downside is that it’s entirely random — interesting data might be discarded purely due to chance.
 
-See [Configure head-based sampling](/solutions/observability/apps/transaction-sampling.md#apm-configure-head-based-sampling) to get started.
+See [Configure head-based sampling](/solutions/observability/apm/transaction-sampling.md#apm-configure-head-based-sampling) to get started.
 
 ### Distributed tracing [distributed-tracing-examples]
 
@@ -62,7 +62,7 @@ In the example in *Figure 2*, `Service A` initiates four transactions and has a 
 
 In addition to setting the sample rate, you can also specify which *trace continuation strategy* to use. There are three trace continuation strategies: `continue`, `restart`, and `restart_external`.
 
-The **`continue`** trace continuation strategy is the default and will behave similar to the examples in the [Distributed tracing section](/solutions/observability/apps/transaction-sampling.md#distributed-tracing-examples).
+The **`continue`** trace continuation strategy is the default and will behave similar to the examples in the [Distributed tracing section](/solutions/observability/apm/transaction-sampling.md#distributed-tracing-examples).
 
 Use the **`restart_external`** trace continuation strategy on an Elastic-monitored service to start a new trace if the previous service did not have a `traceparent` header with `es` vendor data. This can be helpful if a transaction includes an Elastic-monitored service that is receiving requests from an unmonitored service.
 
@@ -111,7 +111,7 @@ serverless: unavailable
 ::::{note}
 **Support for tail-based sampling**
 
-Tail-based sampling is only supported when writing to {{es}}. If you are using a different [output](/solutions/observability/apps/configure-output.md), tail-based sampling is *not* supported.
+Tail-based sampling is only supported when writing to {{es}}. If you are using a different [output](/solutions/observability/apm/configure-output.md), tail-based sampling is *not* supported.
 
 ::::
 
@@ -121,7 +121,7 @@ Unlike head-based sampling, each trace does not have an equal probability of bei
 
 A downside of tail-based sampling is that it results in more data being sent from APM agents to the APM Server. The APM Server will therefore use more CPU, memory, and disk than with head-based sampling. However, because the tail-based sampling decision happens in APM Server, there is less data to transfer from APM Server to {{es}}. So running APM Server close to your instrumented services can reduce any increase in transfer costs that tail-based sampling brings.
 
-See [Configure tail-based sampling](/solutions/observability/apps/transaction-sampling.md#apm-configure-tail-based-sampling) to get started.
+See [Configure tail-based sampling](/solutions/observability/apm/transaction-sampling.md#apm-configure-tail-based-sampling) to get started.
 
 ### Distributed tracing with tail-based sampling [_distributed_tracing_with_tail_based_sampling]
 
@@ -137,7 +137,7 @@ In this example, `Service A` initiates four transactions. If our sample rate is 
 
 Tail-based sampling is implemented entirely in APM Server, and will work with traces sent by either Elastic APM agents or OpenTelemetry SDKs.
 
-Due to [OpenTelemetry tail-based sampling limitations](/solutions/observability/apps/limitations.md#apm-open-telemetry-tbs) when using [tailsamplingprocessor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/tailsamplingprocessor), we recommend using APM Server tail-based sampling instead.
+Due to [OpenTelemetry tail-based sampling limitations](/solutions/observability/apm/limitations.md#apm-open-telemetry-tbs) when using [tailsamplingprocessor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/tailsamplingprocessor), we recommend using APM Server tail-based sampling instead.
 
 ### Tail-based sampling performance and requirements [_tail_based_sampling_performance_and_requirements]
 
@@ -195,9 +195,9 @@ stack:
 serverless:
 ```
 
-A sampled trace retains all data associated with it. A non-sampled trace drops all [span](/solutions/observability/apps/spans.md) and [transaction](/solutions/observability/apps/transactions.md) data1. Regardless of the sampling decision, all traces retain [error](/solutions/observability/apps/errors.md) data.
+A sampled trace retains all data associated with it. A non-sampled trace drops all [span](/solutions/observability/apm/spans.md) and [transaction](/solutions/observability/apm/transactions.md) data1. Regardless of the sampling decision, all traces retain [error](/solutions/observability/apm/errors.md) data.
 
-Some visualizations in the {{apm-app}}, like latency, are powered by aggregated transaction and span [metrics](/solutions/observability/apps/metrics.md). The way these metrics are calculated depends on the sampling method used:
+Some visualizations in the {{apm-app}}, like latency, are powered by aggregated transaction and span [metrics](/solutions/observability/apm/metrics.md). The way these metrics are calculated depends on the sampling method used:
 
 * **Head-based sampling**: Metrics are calculated based on all sampled events.
 * **Tail-based sampling**: Metrics are calculated based on all events, regardless of whether they are ultimately sampled or not.
@@ -236,7 +236,7 @@ There are three ways to adjust the head-based sampling rate of your APM agents:
 
 ### Dynamic configuration [_dynamic_configuration]
 
-The transaction sample rate can be changed dynamically (no redeployment necessary) on a per-service and per-environment basis with [{{apm-agent}} Configuration](/solutions/observability/apps/apm-agent-central-configuration.md) in {{kib}}.
+The transaction sample rate can be changed dynamically (no redeployment necessary) on a per-service and per-environment basis with [{{apm-agent}} Configuration](/solutions/observability/apm/apm-agent-central-configuration.md) in {{kib}}.
 
 ### {{kib}} API configuration [_kib_api_configuration]
 
@@ -261,7 +261,7 @@ stack:
 serverless: unavailable
 ```
 
-Enable tail-based sampling with [Enable tail-based sampling](/solutions/observability/apps/tail-based-sampling.md#sampling-tail-enabled-ref). When enabled, trace events are mapped to sampling policies. Each sampling policy must specify a sample rate, and can optionally specify other conditions. All of the policy conditions must be true for a trace event to match it.
+Enable tail-based sampling with [Enable tail-based sampling](/solutions/observability/apm/tail-based-sampling.md#sampling-tail-enabled-ref). When enabled, trace events are mapped to sampling policies. Each sampling policy must specify a sample rate, and can optionally specify other conditions. All of the policy conditions must be true for a trace event to match it.
 
 Trace events are matched to policies in the order specified. Each policy list must conclude with a default policy — one that only specifies a sample rate. This default policy is used to catch remaining trace events that don’t match a stricter policy. Requiring this default policy ensures that traces are only dropped intentionally. If you enable tail-based sampling and send a transaction that does not match any of the policies, APM Server will reject the transaction with the error `no matching policy`.
 

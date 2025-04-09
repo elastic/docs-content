@@ -11,7 +11,7 @@ applies_to:
 ::::{admonition} Deprecated in 8.15.0.
 :class: warning
 
-Use [Synthetic monitoring](/solutions/observability/apps/synthetic-monitoring.md) instead of the {{uptime-app}}.
+Use [Synthetic monitoring](/solutions/observability/synthetics/index.md) instead of the {{uptime-app}}.
 ::::
 
 To access this page, go to **{{observability}} > Uptime > Monitors**. Click on a listed monitor to view more details and analyze further.
@@ -35,7 +35,7 @@ To display a map with each location as a pinpoint, you can toggle the availabili
 
 The **Monitor duration** chart displays the timing for each check that was performed. The visualization helps you to gain insights into how quickly requests resolve by the targeted endpoint and give you a sense of how frequently a host or endpoint was down in your selected time span.
 
-Included on this chart is the {{anomaly-detect}} ({{ml}}) integration. For more information, see [Inspect Uptime duration anomalies](inspect-uptime-duration-anomalies.md).
+Included on this chart is the {{anomaly-detect}} ({{ml}}) integration. For more information, see [Inspect Uptime duration anomalies](/solutions/observability/uptime/inspect-duration-anomalies.md).
 
 :::{image} /solutions/images/observability-monitor-duration-chart.png
 :alt: Monitor duration chart

@@ -67,7 +67,7 @@ Each event is sent as its own line in the HTTP request body. This is known as [n
 
 With NDJSON, agents can open an HTTP POST request and use chunked encoding to stream events to the managed intake service as soon as they are recorded in the agent. This makes it simple for agents to serialize each event to a stream of newline delimited JSON. The managed intake service also treats the HTTP body as a compressed stream and thus reads and handles each event independently.
 
-Refer to [Learn about data types](learn-about-application-data-types.md) to learn more about the different types of events.
+Refer to [Learn about data types](/solutions/observability/apm/data-types.md) to learn more about the different types of events.
 
 ### Endpoints [api-events-endpoint]
 
@@ -4476,7 +4476,7 @@ The managed intake service supports two OTLP communication protocols on the same
 | OTLP logs intake | `/v1/logs` |
 
 ::::{tip}
-See our [OpenTelemetry docs](upstream-opentelemetry-collectors-language-sdks.md) to learn how to send data to the managed intake service from an OpenTelemetry agent OpenTelemetry collector.
+See our [OpenTelemetry docs](/solutions/observability/apm/upstream-opentelemetry-collectors-language-sdks.md) to learn how to send data to the managed intake service from an OpenTelemetry agent OpenTelemetry collector.
 
 ::::
 

@@ -30,22 +30,22 @@ You will not need to use most command line flags. However, there are some you ma
 :   RegExp pattern to match journey files in the current working directory. Defaults to `/*.journey.(ts|js)$/`, which matches files ending with `.journey.ts` or `.journey.js`.
 
 `--params <jsonstring>`
-:   JSON object that defines any variables your tests require. Read more in [Work with params and secrets](/solutions/observability/apps/work-with-params-secrets.md).
+:   JSON object that defines any variables your tests require. Read more in [Work with params and secrets](/solutions/observability/synthetics/work-with-params-secrets.md).
 
-    Params passed will be merged with params defined in your [`synthetics.config.js` file](/solutions/observability/apps/configure-synthetics-projects.md#synthetics-configuration-params). Params defined via the CLI take precedence.
+    Params passed will be merged with params defined in your [`synthetics.config.js` file](/solutions/observability/synthetics/configure-projects.md#synthetics-configuration-params). Params defined via the CLI take precedence.
 
 `--playwright-options <jsonstring>`
-:   JSON object to pass in custom Playwright options for the agent. For more details on relevant Playwright options, refer to the [the configuration docs](/solutions/observability/apps/configure-synthetics-projects.md#synthetics-configuration-playwright-options).
+:   JSON object to pass in custom Playwright options for the agent. For more details on relevant Playwright options, refer to the [the configuration docs](/solutions/observability/synthetics/configure-projects.md#synthetics-configuration-playwright-options).
 
-    Options passed will be merged with Playwright options defined in your [`synthetics.config.js` file](/solutions/observability/apps/configure-synthetics-projects.md#synthetics-configuration-playwright-options). Options defined via the CLI take precedence.
+    Options passed will be merged with Playwright options defined in your [`synthetics.config.js` file](/solutions/observability/synthetics/configure-projects.md#synthetics-configuration-playwright-options). Options defined via the CLI take precedence.
 
 `--screenshots <on|off|only-on-failure>`
 :   Control whether or not to capture screenshots at the end of each step. Options include `'on'`, `'off'`, or `'only-on-failure'`.
 
-    This can also be set in the configuration file using [`monitor.screenshot`](/solutions/observability/apps/configure-synthetics-projects.md#synthetics-configuration-monitor). The value defined via the CLI will take precedence.
+    This can also be set in the configuration file using [`monitor.screenshot`](/solutions/observability/synthetics/configure-projects.md#synthetics-configuration-monitor). The value defined via the CLI will take precedence.
 
 `-c, --config <string>`
-:   Path to the configuration file. By default, test runner looks for a `synthetics.config.(js|ts)` file in the current directory. Synthetics configuration provides options to configure how your tests are run and pushed to Elastic. Allowed options are described in the [configuration file](/solutions/observability/apps/configure-synthetics-projects.md).
+:   Path to the configuration file. By default, test runner looks for a `synthetics.config.(js|ts)` file in the current directory. Synthetics configuration provides options to configure how your tests are run and pushed to Elastic. Allowed options are described in the [configuration file](/solutions/observability/synthetics/configure-projects.md).
 
 `--reporter <json|junit|buildkite-cli|default>`
 :   One of `json`, `junit`, `buildkite-cli`, or `default`. Use the JUnit or Buildkite reporter to provide easily parsed output to CI systems.
@@ -56,7 +56,7 @@ You will not need to use most command line flags. However, there are some you ma
 `--no-throttling`
 :   Does not apply throttling.
 
-    Throttling can also be disabled in the configuration file using [`monitor.throttling`](/solutions/observability/apps/configure-synthetics-projects.md#synthetics-configuration-monitor). The value defined via the CLI will take precedence.
+    Throttling can also be disabled in the configuration file using [`monitor.throttling`](/solutions/observability/synthetics/configure-projects.md#synthetics-configuration-monitor). The value defined via the CLI will take precedence.
 
 ::::{note}
 Network throttling for browser based monitors is disabled. See this [documention](https://github.com/elastic/synthetics/blob/main/docs/throttling.md) for more details.
@@ -96,7 +96,7 @@ This will create a template Node.js project that includes the synthetics agent, 
 npx @elastic/synthetics init <name-of-project>
 ```
 
-Read more about what’s included in a template Synthetics project in [Create a Synthetics project](/solutions/observability/apps/create-monitors-with-project-monitors.md).
+Read more about what’s included in a template Synthetics project in [Create a Synthetics project](/solutions/observability/synthetics/create-monitors-with-projects.md).
 
 ## `@elastic/synthetics push` [elastic-synthetics-push-command]
 
@@ -126,56 +126,56 @@ If the journey contains external NPM packages other than the `@elastic/synthetic
 `--auth <string>`
 :   API key used for [authentication](/deploy-manage/api-keys/elasticsearch-api-keys.md). You can also set the API key via the `SYNTHETICS_API_KEY` environment variable.
 
-    If you are pushing to a [{{private-location}}](/solutions/observability/apps/create-monitors-in-synthetics-app.md), you must use an API key generated in 8.4 or higher.
+    If you are pushing to a [{{private-location}}](/solutions/observability/synthetics/create-monitors-ui.md), you must use an API key generated in 8.4 or higher.
 
-    On {{stack}}, you must be logged into {{kib}} as a user with the privileges described in [Writer role](/solutions/observability/apps/writer-role.md) to create an API key.
+    On {{stack}}, you must be logged into {{kib}} as a user with the privileges described in [Writer role](/solutions/observability/synthetics/writer-role.md) to create an API key.
 
-    On {{obs-serverless}}, you must be logged in as a user with [Editor](/solutions/observability/apps/grant-users-access-to-secured-resources.md) access to create an API key.
+    On {{obs-serverless}}, you must be logged in as a user with [Editor](/solutions/observability/synthetics/grant-access-to-secured-resources.md) access to create an API key.
 
 `--id <string>`
 :   A unique id associated with your project. It will be used for logically grouping monitors.
 
-    If you used [`init` to create a project](/solutions/observability/apps/use-synthetics-cli.md#elastic-synthetics-init-command), this is the `<name-of-project>` you specified.
+    If you used [`init` to create a project](/solutions/observability/synthetics/cli.md#elastic-synthetics-init-command), this is the `<name-of-project>` you specified.
 
-    This can also be set in the configuration file using [`project.id`](/solutions/observability/apps/configure-synthetics-projects.md#synthetics-configuration-project). The value defined via the CLI will take precedence.
+    This can also be set in the configuration file using [`project.id`](/solutions/observability/synthetics/configure-projects.md#synthetics-configuration-project). The value defined via the CLI will take precedence.
 
 `--url <string>`
 :   The URL for the deployment or Observability Serverless project to which you want to upload the monitors.
 
-    This can also be set in the configuration file using [`project.url`](/solutions/observability/apps/configure-synthetics-projects.md#synthetics-configuration-project). The value defined via the CLI will take precedence.
+    This can also be set in the configuration file using [`project.url`](/solutions/observability/synthetics/configure-projects.md#synthetics-configuration-project). The value defined via the CLI will take precedence.
 
 % Stateful only for --space
 
 `--space <string>`
 :   The identifier of the target [{{kib}} space](/deploy-manage/manage-spaces.md) for the pushed monitors. Spaces help you organize pushed monitors. Pushes to the "default" space if not specified.
 
-    This can also be set in the configuration file using [`project.space`](/solutions/observability/apps/configure-synthetics-projects.md#synthetics-configuration-project). The value defined via the CLI will take precedence.
+    This can also be set in the configuration file using [`project.space`](/solutions/observability/synthetics/configure-projects.md#synthetics-configuration-project). The value defined via the CLI will take precedence.
 
 `--schedule <number>`
 :   The interval (in minutes) at which the monitor should run.
 
-    This can also be set in the configuration file using [`monitor.schedule`](/solutions/observability/apps/configure-synthetics-projects.md#synthetics-configuration-monitor). The value defined via the CLI will take precedence.
+    This can also be set in the configuration file using [`monitor.schedule`](/solutions/observability/synthetics/configure-projects.md#synthetics-configuration-monitor). The value defined via the CLI will take precedence.
 
 [`--locations Array<SyntheticsLocationsType>`](https://github.com/elastic/synthetics/blob/v1.3.0/src/locations/public-locations.ts#L28-L37)
 :   Where to deploy the monitor. Monitors can be deployed in multiple locations so that you can detect differences in availability and response times across those locations.
 
-    To list available locations, refer to [`@elastic/synthetics locations`](/solutions/observability/apps/use-synthetics-cli.md#elastic-synthetics-locations-command).
+    To list available locations, refer to [`@elastic/synthetics locations`](/solutions/observability/synthetics/cli.md#elastic-synthetics-locations-command).
 
-    This can also be set in the configuration file using [`monitor.locations` in the configuration file](/solutions/observability/apps/configure-synthetics-projects.md#synthetics-configuration-monitor). The value defined via the CLI will take precedence.
+    This can also be set in the configuration file using [`monitor.locations` in the configuration file](/solutions/observability/synthetics/configure-projects.md#synthetics-configuration-monitor). The value defined via the CLI will take precedence.
 
 `--private-locations Array<string>`
-:   The [{{private-location}}s](/solutions/observability/apps/monitor-resources-on-private-networks.md) to which the monitors will be deployed. These {{private-location}}s refer to locations hosted and managed by you, whereas `locations` are hosted by Elastic. You can specify a {{private-location}} using the location’s name.
+:   The [{{private-location}}s](/solutions/observability/synthetics/monitor-resources-on-private-networks.md) to which the monitors will be deployed. These {{private-location}}s refer to locations hosted and managed by you, whereas `locations` are hosted by Elastic. You can specify a {{private-location}} using the location’s name.
 
-    To list available {{private-location}}s, refer to [`@elastic/synthetics locations`](/solutions/observability/apps/use-synthetics-cli.md#elastic-synthetics-locations-command).
+    To list available {{private-location}}s, refer to [`@elastic/synthetics locations`](/solutions/observability/synthetics/cli.md#elastic-synthetics-locations-command).
 
-    This can also be set in the configuration file using [`monitor.privateLocations` in the configuration file](/solutions/observability/apps/configure-synthetics-projects.md#synthetics-configuration-monitor). The value defined via the CLI will take precedence.
+    This can also be set in the configuration file using [`monitor.privateLocations` in the configuration file](/solutions/observability/synthetics/configure-projects.md#synthetics-configuration-monitor). The value defined via the CLI will take precedence.
 
 `--fields <string>`
-:   A list of key-value pairs that will be sent with each monitor event. The `fields` are appended to {{es}} documents as `labels`, and those labels are displayed in {{kib}} in the *Monitor details* panel in the [individual monitor’s *Overview* tab](/solutions/observability/apps/analyze-data-from-synthetic-monitors.md#synthetics-analyze-individual-monitors-overview).
+:   A list of key-value pairs that will be sent with each monitor event. The `fields` are appended to {{es}} documents as `labels`, and those labels are displayed in {{kib}} in the *Monitor details* panel in the [individual monitor’s *Overview* tab](/solutions/observability/synthetics/analyze-data.md#synthetics-analyze-individual-monitors-overview).
 
     Example: `--fields '{ "foo": bar", "team": "synthetics" }'`
 
-    This can also be set in the configuration file using [the `monitor.fields` option](/solutions/observability/apps/configure-synthetics-projects.md#synthetics-configuration-monitor). The value defined via the CLI will take precedence.
+    This can also be set in the configuration file using [the `monitor.fields` option](/solutions/observability/synthetics/configure-projects.md#synthetics-configuration-monitor). The value defined via the CLI will take precedence.
 
 `--yes`
 :   The `push` command includes interactive prompts to prevent you from accidentally deleting or duplicating monitors. If running the CLI non-interactively, you can override these prompts using the `--yes` option. When the `--yes` option is passed to `push`:
@@ -208,7 +208,7 @@ tags:
   - env:qa
 ```
 
-To apply tags to all browser and lightweight monitors, configure using [the `monitor.tags`](/solutions/observability/apps/configure-synthetics-projects.md#synthetics-configuration-monitor) field in the `synthetics.config.ts` file.
+To apply tags to all browser and lightweight monitors, configure using [the `monitor.tags`](/solutions/observability/synthetics/configure-projects.md#synthetics-configuration-monitor) field in the `synthetics.config.ts` file.
 
 ### Filter monitors [_filtering_monitors]
 

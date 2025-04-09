@@ -8,9 +8,9 @@ applies_to:
 
 # Use internal collection to send monitoring data [apm-monitoring-internal-collection]
 
-Use internal collectors to send {{beats}} monitoring data directly to your monitoring cluster. Or as an alternative to internal collection, use [Use {{metricbeat}} collection](use-metricbeat-to-send-monitoring-data.md). The benefit of using internal collection instead of {{metricbeat}} is that you have fewer pieces of software to install and maintain.
+Use internal collectors to send {{beats}} monitoring data directly to your monitoring cluster. Or as an alternative to internal collection, use [Use {{metricbeat}} collection](/solutions/observability/apm/use-metricbeat-to-send-monitoring-data.md). The benefit of using internal collection instead of {{metricbeat}} is that you have fewer pieces of software to install and maintain.
 
-1. Create an API key or user that has appropriate authority to send system-level monitoring data to {{es}}. For example, you can use the built-in `apm_system` user or assign the built-in `apm_system` role to another user. For more information on the required privileges, see [Create a *monitoring* role](/solutions/observability/apps/create-assign-feature-roles-to-apm-server-users.md#apm-privileges-to-publish-monitoring). For more information on how to use API keys, see [Grant access using API keys](grant-access-using-api-keys.md).
+1. Create an API key or user that has appropriate authority to send system-level monitoring data to {{es}}. For example, you can use the built-in `apm_system` user or assign the built-in `apm_system` role to another user. For more information on the required privileges, see [Create a *monitoring* role](/solutions/observability/apm/create-assign-feature-roles-to-apm-server-users.md#apm-privileges-to-publish-monitoring). For more information on how to use API keys, see [Grant access using API keys](/solutions/observability/apm/grant-access-using-api-keys.md).
 2. Add the `monitoring` settings in the APM Server configuration file. If you configured the {{es}} output and want to send APM Server monitoring events to the same {{es}} cluster, specify the following minimal configuration:
 
     ```yaml
@@ -64,7 +64,7 @@ Use internal collectors to send {{beats}} monitoring data directly to your monit
         ssl.key: "/etc/pki/client/cert.key"
     ```
 
-    You must specify the `username` as `""` explicitly so that the username from the client certificate (`CN`) is used. See [SSL/TLS output settings](ssltls-output-settings.md) for more information about SSL settings.
+    You must specify the `username` as `""` explicitly so that the username from the client certificate (`CN`) is used. See [SSL/TLS output settings](/solutions/observability/apm/ssl-tls-output-settings.md) for more information about SSL settings.
 
 3. Start APM Server.
 4. [View the monitoring data in {{kib}}](/deploy-manage/monitor/stack-monitoring/kibana-monitoring-data.md).
@@ -87,11 +87,11 @@ The {{es}} instances that you want to ship your APM Server metrics to. This conf
 
 #### `api_key` [_api_key_3]
 
-The detail of the API key to be used to send monitoring information to {{es}}. See [Grant access using API keys](grant-access-using-api-keys.md) for more information.
+The detail of the API key to be used to send monitoring information to {{es}}. See [Grant access using API keys](/solutions/observability/apm/grant-access-using-api-keys.md) for more information.
 
 #### `bulk_max_size` [_bulk_max_size_5]
 
-The maximum number of metrics to bulk in a single {{es}} bulk API index request. The default is `50`. For more information, see [{{es}}](configure-elasticsearch-output.md).
+The maximum number of metrics to bulk in a single {{es}} bulk API index request. The default is `50`. For more information, see [{{es}}](/solutions/observability/apm/configure-elasticsearch-output.md).
 
 #### `backoff.init` [_backoff_init_5]
 
@@ -107,15 +107,15 @@ The gzip compression level. Setting this value to `0` disables compression. The 
 
 #### `headers` [_headers_2]
 
-Custom HTTP headers to add to each request. For more information, see [{{es}}](configure-elasticsearch-output.md).
+Custom HTTP headers to add to each request. For more information, see [{{es}}](/solutions/observability/apm/configure-elasticsearch-output.md).
 
 #### `hosts` [_hosts_4]
 
-The list of {{es}} nodes to connect to. Monitoring metrics are distributed to these nodes in round robin order. For more information, see [{{es}}](configure-elasticsearch-output.md).
+The list of {{es}} nodes to connect to. Monitoring metrics are distributed to these nodes in round robin order. For more information, see [{{es}}](/solutions/observability/apm/configure-elasticsearch-output.md).
 
 #### `max_retries` [_max_retries_5]
 
-The number of times to retry sending the monitoring metrics after a failure. After the specified number of retries, the metrics are typically dropped. The default value is `3`. For more information, see [{{es}}](configure-elasticsearch-output.md).
+The number of times to retry sending the monitoring metrics after a failure. After the specified number of retries, the metrics are typically dropped. The default value is `3`. For more information, see [{{es}}](/solutions/observability/apm/configure-elasticsearch-output.md).
 
 #### `parameters` [_parameters_2]
 
@@ -139,7 +139,7 @@ The name of the protocol to use when connecting to the {{es}} cluster. The optio
 
 #### `proxy_url` [_proxy_url_4]
 
-The URL of the proxy to use when connecting to the {{es}} cluster. For more information, see [{{es}}](configure-elasticsearch-output.md).
+The URL of the proxy to use when connecting to the {{es}} cluster. For more information, see [{{es}}](/solutions/observability/apm/configure-elasticsearch-output.md).
 
 #### `timeout` [_timeout_5]
 
@@ -147,7 +147,7 @@ The HTTP request timeout in seconds for the {{es}} request. The default is `90`.
 
 #### `ssl` [_ssl_5]
 
-Configuration options for Transport Layer Security (TLS) or Secure Sockets Layer (SSL) parameters like the certificate authority (CA) to use for HTTPS-based connections. If the `ssl` section is missing, the host CAs are used for HTTPS connections to {{es}}. For more information, see [SSL/TLS output settings](ssltls-output-settings.md).
+Configuration options for Transport Layer Security (TLS) or Secure Sockets Layer (SSL) parameters like the certificate authority (CA) to use for HTTPS-based connections. If the `ssl` section is missing, the host CAs are used for HTTPS connections to {{es}}. For more information, see [SSL/TLS output settings](/solutions/observability/apm/ssl-tls-output-settings.md).
 
 #### `username` [_username_3]
 

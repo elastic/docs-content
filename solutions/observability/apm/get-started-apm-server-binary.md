@@ -86,7 +86,7 @@ See [Running on Docker](#apm-running-on-docker) for deploying Docker containers.
 
 ## Step 2: Set up and configure [apm-server-configuration]
 
-Configure APM by editing the `apm-server.yml` configuration file. The location of this file varies by platform—​see the [Installation layout](installation-layout.md) for help locating it.
+Configure APM by editing the `apm-server.yml` configuration file. The location of this file varies by platform—​see the [Installation layout](/solutions/observability/apm/installation-layout.md) for help locating it.
 
 A minimal configuration file might look like this:
 
@@ -101,9 +101,9 @@ output.elasticsearch:
 
 1. The `host:port` APM Server listens on.
 2. The {{es}} `host:port` to connect to.
-3. This example uses basic authentication. The user provided here needs the privileges required to publish events to {{es}}. To create a dedicated user for this role, see [Create a *writer* role](/solutions/observability/apps/create-assign-feature-roles-to-apm-server-users.md#apm-privileges-to-publish-events).
+3. This example uses basic authentication. The user provided here needs the privileges required to publish events to {{es}}. To create a dedicated user for this role, see [Create a *writer* role](/solutions/observability/apm/create-assign-feature-roles-to-apm-server-users.md#apm-privileges-to-publish-events).
 
-All available configuration options are outlined in [configuring APM Server](configure-apm-server.md).
+All available configuration options are outlined in [configuring APM Server](/solutions/observability/apm/configure-apm-server.md).
 
 ## Step 3: Start [apm-server-starting]
 
@@ -116,7 +116,7 @@ To start APM Server, run:
 ```
 
 ::::{note}
-The `-e` [global flag](/solutions/observability/apps/apm-server-command-reference.md#apm-global-flags) enables logging to stderr and disables syslog/file output. Remove this flag if you’ve enabled logging in the configuration file. For Linux systems, see [APM Server status and logs](apm-server-systemd.md).
+The `-e` [global flag](/solutions/observability/apm/apm-server-command-reference.md#apm-global-flags) enables logging to stderr and disables syslog/file output. Remove this flag if you’ve enabled logging in the configuration file. For Linux systems, see [APM Server status and logs](/solutions/observability/apm/apm-server-systemd.md).
 ::::
 
 You should see APM Server start up. It will try to connect to {{es}} on localhost port `9200` and expose an API to agents on port `8200`. You can change the defaults in `apm-server.yml` or by supplying a different address on the command line:
@@ -127,7 +127,7 @@ You should see APM Server start up. It will try to connect to {{es}} on localhos
 
 ### Debian Package / RPM [apm-running-deb-rpm]
 
-For Debian package and RPM installations, we recommend the `apm-server` process runs as a non-root user. Therefore, these installation methods create an `apm-server` user which you can use to start the process. In addition, APM Server will only start if the configuration file is [owned by the user running the process](/solutions/observability/apps/apm-server-systemd.md#apm-config-file-ownership).
+For Debian package and RPM installations, we recommend the `apm-server` process runs as a non-root user. Therefore, these installation methods create an `apm-server` user which you can use to start the process. In addition, APM Server will only start if the configuration file is [owned by the user running the process](/solutions/observability/apm/apm-server-systemd.md#apm-config-file-ownership).
 
 To start the APM Server in this case, run:
 
@@ -135,7 +135,7 @@ To start the APM Server in this case, run:
 sudo -u apm-server apm-server [<argument...>]
 ```
 
-By default, APM Server loads its configuration file from `/etc/apm-server/apm-server.yml`. See the [deb & rpm default paths](installation-layout.md) for a full directory layout.
+By default, APM Server loads its configuration file from `/etc/apm-server/apm-server.yml`. See the [deb & rpm default paths](/solutions/observability/apm/installation-layout.md) for a full directory layout.
 
 ## Step 4: Install APM agents [apm-next-steps]
 
@@ -735,14 +735,14 @@ const apm = initApm({
 ::::::{tab-item} OpenTelemetry
 Elastic integrates with OpenTelemetry, allowing you to reuse your existing instrumentation to easily send observability data to the {{stack}}.
 
-For more information on how to combine Elastic and OpenTelemetry, see [OpenTelemetry integration](use-opentelemetry-with-apm.md).
+For more information on how to combine Elastic and OpenTelemetry, see [OpenTelemetry integration](/solutions/observability/apm/use-opentelemetry-with-apm.md).
 ::::::
 
 :::::::
 
 ## Step 5: View your data [_step_5_view_your_data]
 
-Once you have at least one {{apm-agent}} sending data to APM Server, you can start visualizing your data in the [{{kib}} Applications UI](overviews.md).
+Once you have at least one {{apm-agent}} sending data to APM Server, you can start visualizing your data in the [{{kib}} Applications UI](/solutions/observability/apm/overviews.md).
 
 :::{image} /solutions/images/observability-kibana-apm-sample-data.png
 :alt: Applications UI with data
@@ -814,7 +814,7 @@ docker run -d \
 
 #### Customize your configuration [_customize_your_configuration]
 
-The `apm-server.docker.yml` downloaded earlier should be customized for your environment. See [Configure APM Server](configure-apm-server.md) for more details. Edit the configuration file and customize it to match your environment then re-deploy your APM Server container.
+The `apm-server.docker.yml` downloaded earlier should be customized for your environment. See [Configure APM Server](/solutions/observability/apm/configure-apm-server.md) for more details. Edit the configuration file and customize it to match your environment then re-deploy your APM Server container.
 
 #### Custom image configuration [_custom_image_configuration]
 

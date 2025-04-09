@@ -28,7 +28,7 @@ Not all features of {{ecloud}} are available to Heroku users. Specifically, you 
 
 Generally, if a feature is shown as available in the [{{heroku}} console](https://cloud.elastic.co?page=docs&placement=docs-body), you can use it.
 
-[{{es}} Machine Learning](https://www.elastic.co/guide/en/machine-learning/current/index.html), [Elastic APM](/solutions/observability/apps/application-performance-monitoring-apm.md) and [Elastic Fleet Server](https://www.elastic.co/guide/en/fleet/current/fleet-overview.html) are not supported by the {{es}} Add-On for Heroku.
+[{{es}} Machine Learning](https://www.elastic.co/guide/en/machine-learning/current/index.html), [Elastic APM](/solutions/observability/apm/index.md) and [Elastic Fleet Server](https://www.elastic.co/guide/en/fleet/current/fleet-overview.html) are not supported by the {{es}} Add-On for Heroku.
 
 For other restrictions that apply to all of {{ecloud}}, refer to [](/deploy-manage/deploy/elastic-cloud/restrictions-known-problems.md).
 

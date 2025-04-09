@@ -10,25 +10,25 @@ applies_to:
 
 How you configure the APM Server depends on your deployment method.
 
-* **APM Server binary** users need to edit the `apm-server.yml` configuration file. The location of the file varies by platform. To locate the file, see [Installation layout](/solutions/observability/apps/installation-layout.md).
+* **APM Server binary** users need to edit the `apm-server.yml` configuration file. The location of the file varies by platform. To locate the file, see [Installation layout](/solutions/observability/apm/installation-layout.md).
 * **Fleet-managed** users configure the APM Server directly in {{kib}}. Each configuration page describes the specific location.
-* **Elastic cloud** users should see [Add APM user settings](/solutions/observability/apps/configure-apm-server.md) for information on how to configure Elastic APM.
+* **Elastic cloud** users should see [Add APM user settings](/solutions/observability/apm/configure-apm-server.md) for information on how to configure Elastic APM.
 
 The following topics describe how to configure APM Server:
 
-* [General configuration options](/solutions/observability/apps/general-configuration-options.md)
-* [Anonymous authentication](/solutions/observability/apps/configure-anonymous-authentication.md)
-* [APM agent authorization](/solutions/observability/apps/apm-agent-authorization.md)
-* [APM agent central configuration](/solutions/observability/apps/configure-apm-agent-central-configuration.md)
-* [Instrumentation](/solutions/observability/apps/configure-apm-instrumentation.md)
-* [{{kib}} endpoint](/solutions/observability/apps/configure-kibana-endpoint.md)
-* [Logging](/solutions/observability/apps/configure-logging.md)
-* [Output](/solutions/observability/apps/configure-output.md)
-* [Project paths](/solutions/observability/apps/configure-project-paths.md)
-* [Real User Monitoring (RUM)](/solutions/observability/apps/configure-real-user-monitoring-rum.md)
-* [SSL/TLS settings](/solutions/observability/apps/ssltls-settings.md)
-* [Tail-based sampling](/solutions/observability/apps/tail-based-sampling.md)
-* [Use environment variables in the configuration](/solutions/observability/apps/use-environment-variables-in-configuration.md)
+* [General configuration options](/solutions/observability/apm/general-configuration-options.md)
+* [Anonymous authentication](/solutions/observability/apm/configure-anonymous-authentication.md)
+* [APM agent authorization](/solutions/observability/apm/apm-agent-authorization.md)
+* [APM agent central configuration](/solutions/observability/apm/configure-apm-agent-central-configuration.md)
+* [Instrumentation](/solutions/observability/apm/configure-apm-instrumentation.md)
+* [{{kib}} endpoint](/solutions/observability/apm/configure-kibana-endpoint.md)
+* [Logging](/solutions/observability/apm/configure-logging.md)
+* [Output](/solutions/observability/apm/configure-output.md)
+* [Project paths](/solutions/observability/apm/configure-project-paths.md)
+* [Real User Monitoring (RUM)](/solutions/observability/apm/configure-real-user-monitoring-rum.md)
+* [SSL/TLS settings](/solutions/observability/apm/ssl-tls-settings.md)
+* [Tail-based sampling](/solutions/observability/apm/tail-based-sampling.md)
+* [Use environment variables in the configuration](/solutions/observability/apm/use-environment-variables-in-configuration.md)
 
 ## Edit APM user settings [ec-manage-apm-settings]
 
@@ -37,14 +37,14 @@ Change how Elastic APM runs by providing your own user settings. Starting in {{s
 {{fleet}}-managed APM integration
 :   New deployments created in {{stack}} version 8.0 and later will be managed by {{fleet}}.
 
-    Check [APM configuration reference](/solutions/observability/apps/configure-apm-server.md) for information on how to configure Elastic APM in this mode.
+    Check [APM configuration reference](/solutions/observability/apm/configure-apm-server.md) for information on how to configure Elastic APM in this mode.
 
 Standalone APM Server (legacy)
 :   Deployments created prior to {{stack}} version 8.0 are in legacy mode. Upgrading to or past {{stack}} 8.0 will not remove you from legacy mode.
 
-    Check [Edit standalone APM settings (legacy)](/solutions/observability/apps/configure-apm-server.md#ec-edit-apm-standalone-settings) and [Supported standalone APM settings (legacy)](/solutions/observability/apps/configure-apm-server.md#ec-apm-settings) for information on how to configure Elastic APM in this mode.
+    Check [Edit standalone APM settings (legacy)](/solutions/observability/apm/configure-apm-server.md#ec-edit-apm-standalone-settings) and [Supported standalone APM settings (legacy)](/solutions/observability/apm/configure-apm-server.md#ec-apm-settings) for information on how to configure Elastic APM in this mode.
 
-To learn more about the differences between these modes, or to switch from Standalone APM Server (legacy) mode to {{fleet}}-managed, check [Switch to the Elastic APM integration](/solutions/observability/apps/switch-to-elastic-apm-integration.md).
+To learn more about the differences between these modes, or to switch from Standalone APM Server (legacy) mode to {{fleet}}-managed, check [Switch to the Elastic APM integration](/solutions/observability/apm/switch-to-elastic-apm-integration.md).
 
 ## Edit standalone APM settings (legacy) [ec-edit-apm-standalone-settings]
 
@@ -71,7 +71,7 @@ If a setting is not supported on {{ecloud}}, you will get an error message when 
 {{ech}} supports the following setting when running APM in standalone mode (legacy).
 
 ::::{tip}
-Some settings that could break your cluster if set incorrectly are blocklisted. The following settings are generally safe in cloud environments. For detailed information about APM settings, check the [APM documentation](/solutions/observability/apps/configure-apm-server.md).
+Some settings that could break your cluster if set incorrectly are blocklisted. The following settings are generally safe in cloud environments. For detailed information about APM settings, check the [APM documentation](/solutions/observability/apm/configure-apm-server.md).
 ::::
 
 ### Version 8.0+ [ec_version_8_0_3]
@@ -248,7 +248,7 @@ Allow anonymous access only for specified agents and/or services. This is primar
 :   Specifies the maximum allowed size of an event for processing by the server, in bytes. Defaults to `307200`.
 
 `output.elasticsearch.pipelines`
-:   Adds an array for pipeline selector configurations that support conditionals, format string-based field access, and name mappings used to [parse data using ingest node pipelines](/solutions/observability/apps/application-performance-monitoring-apm.md).
+:   Adds an array for pipeline selector configurations that support conditionals, format string-based field access, and name mappings used to [parse data using ingest node pipelines](/solutions/observability/apm/index.md).
 
 `apm-server.register.ingest.pipeline.enabled`
 :   Loads the pipeline definitions to Elasticsearch when the APM Server starts up. Defaults to `false`.

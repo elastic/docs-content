@@ -17,7 +17,7 @@ Labels add **indexed** information to transactions, spans, and errors. Indexed m
 * Indexed: Yes
 * {{es}} type: [object](elasticsearch://reference/elasticsearch/mapping-reference/object.md)
 * {{es}} field: `labels`
-* Applies to: [Transactions](transactions.md) | [Spans](spans.md) | [Errors](errors.md)
+* Applies to: [Transactions](/solutions/observability/apm/transactions.md) | [Spans](/solutions/observability/apm/spans.md) | [Errors](/solutions/observability/apm/errors.md)
 
 Label values can be a string, boolean, or number, although some agents only support string values at this time. Because labels for a given key, regardless of agent used, are stored in the same place in {{es}}, all label values of a given key must have the same data type. Multiple data types per key will throw an exception, for example: `{foo: bar}` and `{foo: 42}` is not allowed.
 
@@ -45,7 +45,7 @@ Non-indexed information is useful for providing contextual information to help y
 * Indexed: No
 * {{es}} type: [object](elasticsearch://reference/elasticsearch/mapping-reference/object.md)
 * {{es}} fields: `transaction.custom` | `error.custom`
-* Applies to: [Transactions](transactions.md) | [Errors](errors.md)
+* Applies to: [Transactions](/solutions/observability/apm/transactions.md) | [Errors](/solutions/observability/apm/errors.md)
 
 ::::{important}
 Setting a circular object, a large object, or a non JSON serializable object can lead to errors.
@@ -70,7 +70,7 @@ User context adds **indexed** user information to transactions and errors. Index
 * Indexed: Yes
 * {{es}} type: [keyword](elasticsearch://reference/elasticsearch/mapping-reference/keyword.md)
 * {{es}} fields: `user.email` | `user.name` | `user.id`
-* Applies to: [Transactions](transactions.md) | [Errors](errors.md)
+* Applies to: [Transactions](/solutions/observability/apm/transactions.md) | [Errors](/solutions/observability/apm/errors.md)
 
 ### Agent API reference [_agent_api_reference_3]
 

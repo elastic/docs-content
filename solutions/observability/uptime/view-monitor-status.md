@@ -11,7 +11,7 @@ applies_to:
 ::::{admonition} Deprecated in 8.15.0.
 :class: warning
 
-Use [Synthetic monitoring](/solutions/observability/apps/synthetic-monitoring.md) instead of the {{uptime-app}}.
+Use [Synthetic monitoring](/solutions/observability/synthetics/index.md) instead of the {{uptime-app}}.
 ::::
 
 The **Monitors** page provides you with a high-level view of all the services you are monitoring to help you quickly diagnose outages and other connectivity issues within your network.
@@ -66,6 +66,6 @@ The Monitor list also contains a menu of available integrations. Expand the tabl
 Depending on the features you have installed and configured, you can view logs, metrics, or APM data relating to that monitor. You can choose:
 
 * Show host, pod, or container logs in the [{{logs-app}}](../logs/explore-logs.md).
-* Show APM data in the [Applications UI](traces-2.md).
+* Show APM data in the [Applications UI](/solutions/observability/apm/traces-ui.md).
 * Show host, pod, or container metrics in the [{{infrastructure-app}}](/solutions/observability/infra-and-hosts/analyze-infrastructure-host-metrics.md).
 

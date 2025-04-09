@@ -8,14 +8,14 @@ applies_to:
 # Secret token [apm-secret-token]
 
 ::::{important}
-Secret tokens are sent as plain-text, so they only provide security when used in combination with [TLS](apm-agent-tls-communication.md).
+Secret tokens are sent as plain-text, so they only provide security when used in combination with [TLS](/solutions/observability/apm/apm-agent-tls-communication.md).
 ::::
 
 When defined, secret tokens are used to authorize requests to the APM Server. Both the {{apm-agent}} and APM Server must be configured with the same secret token for the request to be accepted.
 
 To secure the communication between APM agents and the APM Server with a secret token:
 
-1. Make sure [TLS](apm-agent-tls-communication.md) is enabled
+1. Make sure [TLS](/solutions/observability/apm/apm-agent-tls-communication.md) is enabled
 2. [Create a secret token](#apm-create-secret-token)
 3. [Configure the secret token in your APM agents](#apm-configure-secret-token)
 

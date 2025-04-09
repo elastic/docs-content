@@ -14,16 +14,16 @@ An Error contains:
 
 * Both the captured `exception` and the captured `log` of an error can contain a `stack trace`, which is helpful for debugging.
 * The `culprit` of an error indicates where it originated.
-* An error might relate to the [transaction](transactions.md) during which it happened, via the `transaction.id`.
+* An error might relate to the [transaction](/solutions/observability/apm/transactions.md) during which it happened, via the `transaction.id`.
 * Data about the environment in which the event is recorded:
 
     * Service - environment, framework, language, etc.
     * Host - architecture, hostname, IP, etc.
     * Process - args, PID, PPID, etc.
     * URL - full, domain, port, query, etc.
-    * [User](/solutions/observability/apps/metadata.md#apm-data-model-user) - (if supplied) email, ID, username, etc.
+    * [User](/solutions/observability/apm/metadata.md#apm-data-model-user) - (if supplied) email, ID, username, etc.
 
-In addition, agents provide options for users to capture custom [metadata](/solutions/observability/apps/metadata.md). Metadata can be indexed - [`labels`](metadata.md#apm-data-model-labels), or not-indexed - [`custom`](metadata.md#apm-data-model-custom).
+In addition, agents provide options for users to capture custom [metadata](/solutions/observability/apm/metadata.md). Metadata can be indexed - [`labels`](/solutions/observability/apm/metadata.md#apm-data-model-labels), or not-indexed - [`custom`](/solutions/observability/apm/metadata.md#apm-data-model-custom).
 
 ::::{tip}
 Most agents limit keyword fields (e.g. `error.id`) to 1024 characters, non-keyword fields (e.g. `error.exception.message`) to 10,000 characters.
@@ -38,7 +38,7 @@ Errors are stored in the following data streams:
 * APM error/exception logging: `logs-apm.error-<namespace>`
 * Applications UI logging: `logs-apm.app.<service.name>-<namespace>`
 
-See [Data streams](data-streams.md) to learn more.
+See [Data streams](/solutions/observability/apm/data-streams.md) to learn more.
 
 ## Example error document [_example_error_document]
 

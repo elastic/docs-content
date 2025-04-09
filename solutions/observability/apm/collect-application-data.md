@@ -18,15 +18,15 @@ applies_to:
 ::::
 
 ::::{note}
-Want to get started quickly? See [Get started with traces and APM](/solutions/observability/apps/get-started-with-apm.md).
+Want to get started quickly? See [Get started with traces and APM](/solutions/observability/apm/get-started.md).
 ::::
 
 ## Language-specific options [_language_specific_options]
 
 Use Elastic APM agents or an OpenTelemetry language SDK to instrument a service in the language its written in:
 
-* [**Elastic APM agents**](/solutions/observability/apps/elastic-apm-agents.md): Elastic APM agents are instrumentation libraries written in the same language as your service.
-* [**OpenTelemetry**](/solutions/observability/apps/use-opentelemetry-with-apm.md): OpenTelemetry is an open source set of APIs, SDKs, tooling, and integrations that enable the capture and management of telemetry data from your services and applications.
+* [**Elastic APM agents**](/solutions/observability/apm/elastic-apm-agents.md): Elastic APM agents are instrumentation libraries written in the same language as your service.
+* [**OpenTelemetry**](/solutions/observability/apm/use-opentelemetry-with-apm.md): OpenTelemetry is an open source set of APIs, SDKs, tooling, and integrations that enable the capture and management of telemetry data from your services and applications.
 
     * This option includes Elastic Distributions of OpenTelemetry, which are customized versions of [OpenTelemetry language SDKs](https://opentelemetry.io/docs/languages/) that are optimized to work with an Elastic backend.
 
@@ -36,9 +36,9 @@ Use Elastic APM agents or an OpenTelemetry language SDK to instrument a service 
 
 |  | Elastic APM agent | Elastic Distribution of OpenTelemetry |
 | --- | --- | --- |
-| **Support level** | Fully supported | Mixed support<br>*Refer to the* [*availability table*](/solutions/observability/apps/collect-application-data.md#apm-collect-data-availability) |
+| **Support level** | Fully supported | Mixed support<br>*Refer to the* [*availability table*](/solutions/observability/apm/collect-application-data.md#apm-collect-data-availability) |
 | **Data protocol** | Elastic protocol | [OpenTelemetry protocol (OTLP)](https://opentelemetry.io/docs/specs/otel/protocol/) |
-| **Central configuration** | Supported<br>*Refer to* [*APM agent central configuration*](/solutions/observability/apps/apm-agent-central-configuration.md) | Not supported |
+| **Central configuration** | Supported<br>*Refer to* [*APM agent central configuration*](/solutions/observability/apm/apm-agent-central-configuration.md) | Not supported |
 
 % Stateful only after this comment?
 
@@ -62,4 +62,4 @@ Elastic also offers several tools to help you collect data from specific service
 
 * **Kubernetes**: The Elastic APM attacher for Kubernetes simplifies the instrumentation and configuration of your application pods. Read more in the [APM attacher for Kubernetes docs](apm-k8s-attacher://reference/index.md).
 * **AWS Lambda Functions**: Helps you monitor your AWS Lambda functions. Read more in the [APM Architecture for AWS Lambda docs](apm-aws-lambda://reference/index.md).
-* **Jaeger (deprecated)**: Helps you to switch an existing Jaeger setup from the default Jaeger backend to the {{stack}}. Read more in [Integrate with Jaeger](/solutions/observability/apps/integrate-with-jaeger-deprecated.md).
+* **Jaeger (deprecated)**: Helps you to switch an existing Jaeger setup from the default Jaeger backend to the {{stack}}. Read more in [Integrate with Jaeger](/solutions/observability/apm/jaeger.md).

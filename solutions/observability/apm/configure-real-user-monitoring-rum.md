@@ -65,7 +65,7 @@ To enable RUM support, set to `true`. By default this is disabled. (bool)
 | Fleet-managed | `Enable RUM` |
 
 ::::{note}
-If an [API key](api-keys.md) or [secret token](secret-token.md) is configured, enabling RUM support will automatically enable [Anonymous authentication](configure-anonymous-authentication.md). Anonymous authentication is required as the RUM agent runs in the browser.
+If an [API key](/solutions/observability/apm/api-keys.md) or [secret token](/solutions/observability/apm/secret-token.md) is configured, enabling RUM support will automatically enable [Anonymous authentication](/solutions/observability/apm/configure-anonymous-authentication.md). Anonymous authentication is required as the RUM agent runs in the browser.
 
 ::::
 
@@ -137,17 +137,17 @@ Source maps are supported by all APM Server deployment methods, however, the opt
 
 ### `source_mapping.enabled` [apm-config-sourcemapping-enabled]
 
-Used to enable/disable [source mapping](/solutions/observability/apps/create-upload-source-maps-rum.md) for RUM events. When enabled, the APM Server needs additional privileges to read source maps. See [Use feature roles](create-assign-feature-roles-to-apm-server-users.md#apm-privileges-rum-source-mapping) for more details.
+Used to enable/disable [source mapping](/solutions/observability/apm/create-upload-source-maps-rum.md) for RUM events. When enabled, the APM Server needs additional privileges to read source maps. See [Use feature roles](/solutions/observability/apm/create-assign-feature-roles-to-apm-server-users.md#apm-privileges-rum-source-mapping) for more details.
 
 Default: `true`
 
 ### `source_mapping.elasticsearch` [apm-config-sourcemapping-elasticsearch]
 
-Configure the {{es}} source map retrieval location, taking the same options as [output.elasticsearch](configure-elasticsearch-output.md). This must be set when using an output other than {{es}}, and that output is writing to {{es}}. Otherwise leave this section empty.
+Configure the {{es}} source map retrieval location, taking the same options as [output.elasticsearch](/solutions/observability/apm/configure-elasticsearch-output.md). This must be set when using an output other than {{es}}, and that output is writing to {{es}}. Otherwise leave this section empty.
 
 ### `source_mapping.cache.expiration` [apm-rum-sourcemap-cache]
 
-If a source map has been uploaded to the APM Server, [source mapping](create-upload-source-maps-rum.md) is automatically applied to documents sent to the RUM endpoint. Source maps are fetched from {{es}} and then kept in an in-memory cache for the configured time. Values configured without a time unit are treated as seconds.
+If a source map has been uploaded to the APM Server, [source mapping](/solutions/observability/apm/create-upload-source-maps-rum.md) is automatically applied to documents sent to the RUM endpoint. Source maps are fetched from {{es}} and then kept in an in-memory cache for the configured time. Values configured without a time unit are treated as seconds.
 
 Default: `5m` (5 minutes)
 
@@ -159,4 +159,4 @@ Default: `"apm-*-sourcemap*"`
 
 ## Ingest pipelines [_ingest_pipelines]
 
-The default APM Server pipeline includes processors that enrich RUM data prior to indexing in {{es}}. See [Parse data using ingest pipelines](parse-data-using-ingest-pipelines.md) for details on how to locate, edit, or disable this preprocessing.
+The default APM Server pipeline includes processors that enrich RUM data prior to indexing in {{es}}. See [Parse data using ingest pipelines](/solutions/observability/apm/parse-data-using-ingest-pipelines.md) for details on how to locate, edit, or disable this preprocessing.

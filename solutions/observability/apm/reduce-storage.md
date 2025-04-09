@@ -15,13 +15,13 @@ The richness and volume of APM data provides unique insights into your applicati
 
 Distributed tracing can generate a substantial amount of data. More data can mean higher costs and more noise. Sampling aims to lower the amount of data ingested and the effort required to analyze that data.
 
-See [Transaction sampling](/solutions/observability/apps/transaction-sampling.md) to learn more.
+See [Transaction sampling](/solutions/observability/apm/transaction-sampling.md) to learn more.
 
 ## Enable span compression [enable_span_compression]
 
 In some cases, APM agents may collect large amounts of very similar or identical spans in a transaction. These repeated, similar spans often don’t provide added benefit, especially if they are of very short duration. Span compression takes these similar spans and compresses them into a single span-- retaining important information but reducing processing and storage overhead.
 
-See [Span compression](/solutions/observability/apps/spans.md#apm-spans-span-compression) to learn more.
+See [Span compression](/solutions/observability/apm/spans.md#apm-spans-span-compression) to learn more.
 
 ## Reduce collected stack trace information [observability-apm-reduce-stacktrace]
 
@@ -42,15 +42,15 @@ You might want to only keep data for a defined time period. This might mean dele
 
 Depending on your use case, you can delete data:
 
-* periodically with [{{ilm}}](/solutions/observability/apps/reduce-storage.md#apm-delete-data-with-ilm)
-* [matching a query](/solutions/observability/apps/reduce-storage.md#apm-delete-data-query)
-* with the [{{kib}} Index Management UI](/solutions/observability/apps/reduce-storage.md#apm-delete-data-in-kibana)
+* periodically with [{{ilm}}](/solutions/observability/apm/reduce-storage.md#apm-delete-data-with-ilm)
+* [matching a query](/solutions/observability/apm/reduce-storage.md#apm-delete-data-query)
+* with the [{{kib}} Index Management UI](/solutions/observability/apm/reduce-storage.md#apm-delete-data-in-kibana)
 
-If you want to delete data for security or privacy reasons, see [Secure data](/solutions/observability/apps/application-data-security.md).
+If you want to delete data for security or privacy reasons, see [Secure data](/solutions/observability/apm/secure-data.md).
 
 ### Delete data with {{ilm}} ({{ilm-init}}) [apm-delete-data-with-ilm]
 
-Index lifecycle management enables you to automate how you want to manage your indices over time. You can base actions on factors such as shard size and performance requirements. See [{{ilm-cap}}](/solutions/observability/apps/index-lifecycle-management.md) to learn more.
+Index lifecycle management enables you to automate how you want to manage your indices over time. You can base actions on factors such as shard size and performance requirements. See [{{ilm-cap}}](/solutions/observability/apm/index-lifecycle-management.md) to learn more.
 
 ### Delete data matching a query [apm-delete-data-query]
 

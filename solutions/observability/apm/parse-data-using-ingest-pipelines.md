@@ -47,6 +47,6 @@ The process for creating a custom ingest pipeline is as follows:
 
 If you prefer more guidance, see one of these tutorials:
 
-* [Ingest pipeline filters](/solutions/observability/apps/custom-filters.md#apm-filters-ingest-pipeline) — Learn how to obfuscate passwords stored in the `http.request.body.original` field.
-* [APM data stream rerouting](/solutions/observability/apps/data-streams.md#apm-data-stream-rerouting) — Learn how to reroute APM data to user-defined APM data streams.
+* [Ingest pipeline filters](/solutions/observability/apm/custom-filters.md#apm-filters-ingest-pipeline) — Learn how to obfuscate passwords stored in the `http.request.body.original` field.
+* [APM data stream rerouting](/solutions/observability/apm/data-streams.md#apm-data-stream-rerouting) — Learn how to reroute APM data to user-defined APM data streams.
 

@@ -206,5 +206,5 @@ If you upgrade an {{es}} cluster that uses deprecated cluster or index settings 
 
 Once you've successfully upgraded {{es}}, continue upgrading the remaining {{stack}} components:
 * [{{kib}}](/deploy-manage/upgrade/deployment-or-cluster/kibana.md)
-* [Elastic APM](/solutions/observability/apps/upgrade.md)
+* [Elastic APM](/solutions/observability/apm/upgrade.md)
 * [Ingest components](/deploy-manage/upgrade/ingest-components.md)

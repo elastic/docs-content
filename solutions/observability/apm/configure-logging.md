@@ -30,11 +30,11 @@ logging.files:
 ```
 
 ::::{tip}
-In addition to setting logging options in the config file, you can modify the logging output configuration from the command line. See [Command reference](apm-server-command-reference.md).
+In addition to setting logging options in the config file, you can modify the logging output configuration from the command line. See [Command reference](/solutions/observability/apm/apm-server-command-reference.md).
 ::::
 
 ::::{warning}
-When APM Server is running on a Linux system with systemd, it uses by default the `-e` command line option, that makes it write all the logging output to stderr so it can be captured by journald. Other outputs are disabled. See [APM Server and systemd](apm-server-systemd.md) to know more and learn how to change this.
+When APM Server is running on a Linux system with systemd, it uses by default the `-e` command line option, that makes it write all the logging output to stderr so it can be captured by journald. Other outputs are disabled. See [APM Server and systemd](/solutions/observability/apm/apm-server-systemd.md) to know more and learn how to change this.
 ::::
 
 ## Configuration options [_configuration_options_2]
@@ -98,7 +98,7 @@ To configure multiple selectors, use the following [YAML list syntax](beats://re
 logging.selectors: [ harvester, input ]
 ```
 
-To override selectors at the command line, use the `-d` global flag (`-d` also sets the debug log level). For more information, see [Command reference](apm-server-command-reference.md).
+To override selectors at the command line, use the `-d` global flag (`-d` also sets the debug log level). For more information, see [Command reference](/solutions/observability/apm/apm-server-command-reference.md).
 
 ### `logging.metrics.enabled` [_logging_metrics_enabled]
 
@@ -118,7 +118,7 @@ The period after which to log the internal metrics. The default is `30s`.
 
 ### `logging.files.path` [_logging_files_path]
 
-The directory that log files are written to. The default is the logs path. See the [Installation layout](installation-layout.md) section for details.
+The directory that log files are written to. The default is the logs path. See the [Installation layout](/solutions/observability/apm/installation-layout.md) section for details.
 
 ### `logging.files.name` [_logging_files_name]
 

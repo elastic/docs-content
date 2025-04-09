@@ -15,7 +15,7 @@ applies_to:
 
 ## Local debugging [synthetics-troubleshooting-local-debugging]
 
-For debugging synthetic tests locally, you can set an environment variable, `DEBUG=synthetics`, to capture Synthetics agent logs when using the [Synthetics CLI](/solutions/observability/apps/use-synthetics-cli.md).
+For debugging synthetic tests locally, you can set an environment variable, `DEBUG=synthetics`, to capture Synthetics agent logs when using the [Synthetics CLI](/solutions/observability/synthetics/cli.md).
 
 
 ## Common issues [synthetics-troubleshooting-common-issues]
@@ -34,9 +34,9 @@ Synthetic monitors will stop running if you have gone through this workflow:
 
 This happens because the permissions granted by clicking **Enable Monitor Management** in versions prior to 8.6.0 are not sufficient in versions 8.8.0 and above.
 
-To fix this, a user with [admin permissions](/solutions/observability/apps/setup-role.md) needs to visit the {{synthetics-app}} in {{kib}}. In 8.8.0 and above, the equivalent of "enabling monitor management" happens automatically in the background when a user with [admin permissions](/solutions/observability/apps/setup-role.md) visits the {{synthetics-app}}.
+To fix this, a user with [admin permissions](/solutions/observability/synthetics/setup-role.md) needs to visit the {{synthetics-app}} in {{kib}}. In 8.8.0 and above, the equivalent of "enabling monitor management" happens automatically in the background when a user with [admin permissions](/solutions/observability/synthetics/setup-role.md) visits the {{synthetics-app}}.
 
-If a user *without* [admin permissions](/solutions/observability/apps/setup-role.md) visits the {{synthetics-app}} before an admin has visited it, the user will see a note that says "Only administrators can enable this feature". That note will persist until an admin user visits the {{synthetics-app}}.
+If a user *without* [admin permissions](/solutions/observability/synthetics/setup-role.md) visits the {{synthetics-app}} before an admin has visited it, the user will see a note that says "Only administrators can enable this feature". That note will persist until an admin user visits the {{synthetics-app}}.
 
 
 ### No results from a monitor configured to run on a {{private-location}} [synthetics-troubleshooting-no-agent-running]
@@ -54,15 +54,15 @@ When creating a {{private-location}}, you have to:
 ::::{tab-set}
 
 :::{tab-item} {{serverless-short}}
-1. [Set up {{agent}}](/solutions/observability/apps/monitor-resources-on-private-networks.md#synthetics-private-location-fleet-agent).
-2. [Connect {{fleet}} to your Observability project](/solutions/observability/apps/monitor-resources-on-private-networks.md#synthetics-private-location-connect) and enroll an {{agent}} in {{fleet}}.
-3. [Add a {{private-location}}](/solutions/observability/apps/monitor-resources-on-private-networks.md#synthetics-private-location-add) in the Synthetics UI.
+1. [Set up {{agent}}](/solutions/observability/synthetics/monitor-resources-on-private-networks.md#synthetics-private-location-fleet-agent).
+2. [Connect {{fleet}} to your Observability project](/solutions/observability/synthetics/monitor-resources-on-private-networks.md#synthetics-private-location-connect) and enroll an {{agent}} in {{fleet}}.
+3. [Add a {{private-location}}](/solutions/observability/synthetics/monitor-resources-on-private-networks.md#synthetics-private-location-add) in the Synthetics UI.
 :::
 
 :::{tab-item} {{stack}}
-1. [Set up {{fleet-server}} and {{agent}}](/solutions/observability/apps/monitor-resources-on-private-networks.md#synthetics-private-location-fleet-agent).
-2. [Connect {{fleet}} to the {{stack}}](/solutions/observability/apps/monitor-resources-on-private-networks.md#synthetics-private-location-connect) and enroll an {{agent}} in {{fleet}}.
-3. [Add a {{private-location}}](/solutions/observability/apps/monitor-resources-on-private-networks.md#synthetics-private-location-add) in the {{synthetics-app}}.
+1. [Set up {{fleet-server}} and {{agent}}](/solutions/observability/synthetics/monitor-resources-on-private-networks.md#synthetics-private-location-fleet-agent).
+2. [Connect {{fleet}} to the {{stack}}](/solutions/observability/synthetics/monitor-resources-on-private-networks.md#synthetics-private-location-connect) and enroll an {{agent}} in {{fleet}}.
+3. [Add a {{private-location}}](/solutions/observability/synthetics/monitor-resources-on-private-networks.md#synthetics-private-location-add) in the {{synthetics-app}}.
 :::
 
 ::::
@@ -76,7 +76,7 @@ To fix this, make sure there is an agent configured to run against the agent pol
 
 If you have configured a monitor but don’t see any results for that monitor in the {{synthetics-app}}, whether running them from Elastic’s global managed testing infrastructure or from {{private-location}}s, ensure Synthetics has a direct connection to {{es}}.
 
-Do not configure any ingest pipelines or output via Logstash as this will prevent Synthetics from working properly and is not [supported](/solutions/observability/apps/synthetics-support-matrix.md).
+Do not configure any ingest pipelines or output via Logstash as this will prevent Synthetics from working properly and is not [supported](/solutions/observability/synthetics/support-matrix.md).
 
 
 ### Browser monitor configured to run on a {{private-location}} not running to schedule [synthetics-troubleshooting-missing-browser-schedules]
@@ -92,7 +92,7 @@ Start by identifying the cause of the issue. First, check if the time it takes t
 
 1. Go to the {{synthetics-app}}.
 2. Click the monitor, then click **Go to monitor**.
-3. Go to the [Overview tab](/solutions/observability/apps/analyze-data-from-synthetic-monitors.md#synthetics-analyze-individual-monitors-overview) to see the *Avg. duration*. You can also view the duration for individual runs in the [History tab](/solutions/observability/apps/analyze-data-from-synthetic-monitors.md#synthetics-analyze-individual-monitors-history).
+3. Go to the [Overview tab](/solutions/observability/synthetics/analyze-data.md#synthetics-analyze-individual-monitors-overview) to see the *Avg. duration*. You can also view the duration for individual runs in the [History tab](/solutions/observability/synthetics/analyze-data.md#synthetics-analyze-individual-monitors-history).
 4. Compare the duration to the scheduled frequency. If the duration is *greater than* the scheduled frequency, for example if the monitor that takes 90 seconds to run and its scheduled frequency is 1 minute, the next scheduled run will not occur because the current one is still running so you may see results for every other scheduled run.
 
     To fix this, you can either:
@@ -105,28 +105,28 @@ If the duration is *less than* the scheduled frequency or the suggestion above d
 
 To fix this issue, you can either:
 
-* Increase the number of concurrent browser monitors allowed (as described in [Scaling Private Locations](/solutions/observability/apps/monitor-resources-on-private-networks.md#synthetics-private-location-scaling)), paying attention to the scaling and hardware requirements documented.
+* Increase the number of concurrent browser monitors allowed (as described in [Scaling Private Locations](/solutions/observability/synthetics/monitor-resources-on-private-networks.md#synthetics-private-location-scaling)), paying attention to the scaling and hardware requirements documented.
 * Create multiple {{private-location}}s and spread your browser monitors across them more evenly (effectively horizontally scaling your {{private-location}}s).
 
 
 ### No locations are available [synthetics-troubleshooting-no-locations]
 
-When using {{ecloud}}, if there are no options available in the *Locations* dropdown when you try to create a monitor in the {{synthetics-app}} *or* if no locations are listed when using the [`location` command](/solutions/observability/apps/use-synthetics-cli.md#elastic-synthetics-locations-command), it might be because you do not have permission to use Elastic managed locations *and* there are no [Private Locations](/solutions/observability/apps/monitor-resources-on-private-networks.md#monitor-via-private-agent) available yet.
+When using {{ecloud}}, if there are no options available in the *Locations* dropdown when you try to create a monitor in the {{synthetics-app}} *or* if no locations are listed when using the [`location` command](/solutions/observability/synthetics/cli.md#elastic-synthetics-locations-command), it might be because you do not have permission to use Elastic managed locations *and* there are no [Private Locations](/solutions/observability/synthetics/monitor-resources-on-private-networks.md#monitor-via-private-agent) available yet.
 
 There are a few ways to fix this:
 
 ::::{tab-set}
 
 :::{tab-item} {{serverless-short}}
-* If you have [Editor](/solutions/observability/apps/grant-users-access-to-secured-resources.md) access, you can [create a new Private Location](/solutions/observability/apps/monitor-resources-on-private-networks.md#monitor-via-private-agent). Then try creating the monitor again.
-* If you do *not* have the right privileges to create a Private Location, you can ask an [Admin](/solutions/observability/apps/grant-users-access-to-secured-resources.md) to create a Private Location or give you the necessary privileges so you can [create a new Private Location](/solutions/observability/apps/monitor-resources-on-private-networks.md#monitor-via-private-agent). Then try creating the monitor again.
+* If you have [Editor](/solutions/observability/synthetics/grant-access-to-secured-resources.md) access, you can [create a new Private Location](/solutions/observability/synthetics/monitor-resources-on-private-networks.md#monitor-via-private-agent). Then try creating the monitor again.
+* If you do *not* have the right privileges to create a Private Location, you can ask an [Admin](/solutions/observability/synthetics/grant-access-to-secured-resources.md) to create a Private Location or give you the necessary privileges so you can [create a new Private Location](/solutions/observability/synthetics/monitor-resources-on-private-networks.md#monitor-via-private-agent). Then try creating the monitor again.
 
 :::
 
 :::{tab-item} {{stack}}
-* If you have [write access](/solutions/observability/apps/writer-role.md) including the privileges for [creating new Private Locations](/solutions/observability/apps/writer-role.md#synthetics-role-write-private-locations), you can [create a new Private Location](/solutions/observability/apps/monitor-resources-on-private-networks.md#monitor-via-private-agent). Then try creating the monitor again.
-* If you do *not* have the right privileges to create a Private Location, you can ask someone with the [necessary privileges](/solutions/observability/apps/writer-role.md#synthetics-role-write-private-locations) to create a Private Location or ask an administrator with a [setup role](/solutions/observability/apps/setup-role.md) to give you the necessary privileges and [create a new Private Location](/solutions/observability/apps/monitor-resources-on-private-networks.md#monitor-via-private-agent). Then try creating the monitor again.
-* If you want to create a monitor to run on Elastic’s global managed infrastructure, ask an administrator with a [setup role](/solutions/observability/apps/setup-role.md) to update [`Synthetics and Uptime` sub-feature privileges](/solutions/observability/apps/writer-role.md#disable-managed-locations) for the role you’re currently assigned. Then try creating the monitor again.
+* If you have [write access](/solutions/observability/synthetics/writer-role.md) including the privileges for [creating new Private Locations](/solutions/observability/synthetics/writer-role.md#synthetics-role-write-private-locations), you can [create a new Private Location](/solutions/observability/synthetics/monitor-resources-on-private-networks.md#monitor-via-private-agent). Then try creating the monitor again.
+* If you do *not* have the right privileges to create a Private Location, you can ask someone with the [necessary privileges](/solutions/observability/synthetics/writer-role.md#synthetics-role-write-private-locations) to create a Private Location or ask an administrator with a [setup role](/solutions/observability/synthetics/setup-role.md) to give you the necessary privileges and [create a new Private Location](/solutions/observability/synthetics/monitor-resources-on-private-networks.md#monitor-via-private-agent). Then try creating the monitor again.
+* If you want to create a monitor to run on Elastic’s global managed infrastructure, ask an administrator with a [setup role](/solutions/observability/synthetics/setup-role.md) to update [`Synthetics and Uptime` sub-feature privileges](/solutions/observability/synthetics/writer-role.md#disable-managed-locations) for the role you’re currently assigned. Then try creating the monitor again.
 :::
 
 ::::
@@ -140,8 +140,8 @@ If you try to create or edit a monitor hosted on Elastic’s global managed infr
 
 To fix this you can either:
 
-* Ask an administrator with a [setup role](/solutions/observability/apps/setup-role.md) to update [`Synthetics and Uptime` sub-feature privileges](/solutions/observability/apps/writer-role.md#disable-managed-locations) for the role you’re currently assigned or assign you a role that allows using Elastic’s global managed infrastructure.
-* Use a [Private Location](/solutions/observability/apps/monitor-resources-on-private-networks.md#monitor-via-private-agent).
+* Ask an administrator with a [setup role](/solutions/observability/synthetics/setup-role.md) to update [`Synthetics and Uptime` sub-feature privileges](/solutions/observability/synthetics/writer-role.md#disable-managed-locations) for the role you’re currently assigned or assign you a role that allows using Elastic’s global managed infrastructure.
+* Use a [Private Location](/solutions/observability/synthetics/monitor-resources-on-private-networks.md#monitor-via-private-agent).
 
 
 ## Get help [synthetics-troubleshooting-get-help]

@@ -16,9 +16,9 @@ Starting in version 8.15.0, the {{es}} apm-data plugin manages APM index templat
 
 The APM Server receives performance data from your APM agents, validates and processes it, and then transforms the data into {{es}} documents. If you’re on this page, then you’ve chosen to self-manage the Elastic Stack, and you now must decide how to run and configure the APM Server. There are two options, and the components required are different for each:
 
-* **[Elastic Cloud Serverless](/solutions/observability/apps/get-started-with-apm.md#get-started-apm-serverless)**
-* **[Fleet-managed APM Server](/solutions/observability/apps/get-started-with-apm.md#apm-setup-fleet-managed-apm)**
-* **[APM Server binary](/solutions/observability/apps/get-started-with-apm.md#apm-setup-apm-server-binary)**
+* **[Elastic Cloud Serverless](/solutions/observability/apm/get-started.md#get-started-apm-serverless)**
+* **[Fleet-managed APM Server](/solutions/observability/apm/get-started.md#apm-setup-fleet-managed-apm)**
+* **[APM Server binary](/solutions/observability/apm/get-started.md#apm-setup-apm-server-binary)**
 
 ## Elastic Cloud Serverless [get-started-apm-serverless]
 

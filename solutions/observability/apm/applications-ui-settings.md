@@ -62,7 +62,7 @@ To change APM settings, select **Settings** from any **Applications** page. The 
 
 The Applications UI uses data views to query APM indices. In non-serverless versions, change the default APM indices that the Applications UI queries by opening the Applications UI and select **Settings** → **Indices**. Index settings in the Applications UI take precedence over those set in `kibana.yml`.
 
-APM indices are {{kib}} Spaces-aware; Changes to APM index settings will only apply to the currently enabled space. See [Control access to APM data](/solutions/observability/apps/control-access-to-apm-data.md) for more information.
+APM indices are {{kib}} Spaces-aware; Changes to APM index settings will only apply to the currently enabled space. See [Control access to APM data](/solutions/observability/apm/control-access-to-apm-data.md) for more information.
 
 ## APM Labs [observability-apm-kibana-settings-apm-labs]
 

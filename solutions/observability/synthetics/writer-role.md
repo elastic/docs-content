@@ -8,7 +8,7 @@ applies_to:
 # Writer role [synthetics-role-write]
 
 ::::{important}
-To minimize the privileges required by the writer role, use the [setup role](setup-role.md) to enable Monitor Management. This section assumes another user has already enabled Monitor Management.
+To minimize the privileges required by the writer role, use the [setup role](/solutions/observability/synthetics/setup-role.md) to enable Monitor Management. This section assumes another user has already enabled Monitor Management.
 ::::
 
 For users who need to create, modify, and delete monitors, provide write access. Two types of write access are outlined below:
@@ -69,7 +69,7 @@ The user who is setting up a new Private Location will need the following privil
 
 ### If using projects [_if_using_projects]
 
-If the user should be able to create and update monitors using [projects](/solutions/observability/apps/get-started.md#observability-synthetics-get-started-synthetics-project), add *at least one* of following privileges:
+If the user should be able to create and update monitors using [projects](/solutions/observability/synthetics/get-started.md#observability-synthetics-get-started-synthetics-project), add *at least one* of following privileges:
 
 | Type | Privilege | Purpose |
 | --- | --- | --- |

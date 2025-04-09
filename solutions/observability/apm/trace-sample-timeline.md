@@ -19,7 +19,7 @@ The trace sample timeline visualization is a high-level view of what your applic
 View a span in detail by clicking on it in the timeline waterfall. For example, when you click on an SQL Select database query, the information displayed includes the actual SQL that was executed, how long it took, and the percentage of the trace’s total time. You also get a stack trace, which shows the SQL query in your code. Finally, APM knows which files are your code and which are just modules or libraries that you’ve installed. These library frames will be minimized by default in order to show you the most relevant stack trace.
 
 ::::{tip}
-A [span](/solutions/observability/apps/spans.md) is the duration of a single event. Spans are automatically captured by APM agents, and you can also define custom spans. Each span has a type and is defined by a different color in the timeline/waterfall visualization.
+A [span](/solutions/observability/apm/spans.md) is the duration of a single event. Spans are automatically captured by APM agents, and you can also define custom spans. Each span has a type and is defined by a different color in the timeline/waterfall visualization.
 ::::
 
 :::{image} /solutions/images/observability-apm-span-detail.png
@@ -35,9 +35,9 @@ The trace sample timeline features an **Investigate** button which provides a qu
 * logs and metrics for the selected host
 * trace logs for the selected `trace.id`
 * uptime status of the selected domain
-* the [service map](/solutions/observability/apps/service-map.md) filtered by the selected trace
+* the [service map](/solutions/observability/apm/service-map.md) filtered by the selected trace
 * the selected transaction in **Discover**
-* your [custom links](/solutions/observability/apps/create-custom-links.md)
+* your [custom links](/solutions/observability/apm/create-custom-links.md)
 
 ## Distributed tracing [distributed-tracing]
 

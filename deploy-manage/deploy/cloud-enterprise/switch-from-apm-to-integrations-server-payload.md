@@ -15,7 +15,7 @@ This example shows how to use the {{ece}} RESTful API to switch from using [APM 
 
 Given a deployment that is using an APM & Fleet Server with {{stack}} version 8.0 or later, it is possible to start using Integrations Server instead by updating the deployment with an Integrations Server payload. Switching from APM & Fleet Server to Integrations Server in this way ensures that the endpoints and credentials currently used by APM Server and Fleet Server remain the same after the switch.
 
-In order to start using the Integrations Server payload, you first need to enable the APM integration for Elastic Agent by following the steps in [Switch to the Elastic APM integration](/solutions/observability/apps/switch-an-elastic-cloud-cluster-to-apm-integration.md).
+In order to start using the Integrations Server payload, you first need to enable the APM integration for Elastic Agent by following the steps in [Switch to the Elastic APM integration](/solutions/observability/apm/switch-an-elastic-cloud-cluster-to-apm-integration.md).
 
 
 ## API request example [ece_api_request_example_3]

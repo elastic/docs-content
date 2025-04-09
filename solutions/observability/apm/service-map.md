@@ -18,13 +18,13 @@ We currently surface two types of service maps:
 
 ## How do service maps work? [service-maps-how]
 
-Service Maps rely on distributed traces to draw connections between services. As [distributed tracing](/solutions/observability/apps/traces.md) is enabled out-of-the-box for supported technologies, so are service maps. However, if a service isn’t instrumented, or a `traceparent` header isn’t being propagated to it, distributed tracing will not work, and the connection will not be drawn on the map.
+Service Maps rely on distributed traces to draw connections between services. As [distributed tracing](/solutions/observability/apm/traces.md) is enabled out-of-the-box for supported technologies, so are service maps. However, if a service isn’t instrumented, or a `traceparent` header isn’t being propagated to it, distributed tracing will not work, and the connection will not be drawn on the map.
 
 ## Visualize your architecture [visualize-your-architecture]
 
 Select the **Service Map** tab to get started. By default, all instrumented services and connections are shown. Whether you’re onboarding a new engineer, or just trying to grasp the big picture, drag things around, zoom in and out, and begin to visualize how your services are connected.
 
-Customize what the service map displays using either the query bar or the environment selector. The query bar enables you to use [advanced queries](/solutions/observability/apps/use-advanced-queries-on-application-data.md) to customize the service map based on your needs. The environment selector allows you to narrow displayed results to a specific environment. This can be useful if you have two or more services, in separate environments, but with the same name. Use the environment drop-down to only see the data you’re interested in, like `dev` or `production`.
+Customize what the service map displays using either the query bar or the environment selector. The query bar enables you to use [advanced queries](/solutions/observability/apm/advanced-queries.md) to customize the service map based on your needs. The environment selector allows you to narrow displayed results to a specific environment. This can be useful if you have two or more services, in separate environments, but with the same name. Use the environment drop-down to only see the data you’re interested in, like `dev` or `production`.
 
 If there’s a specific service that interests you, select that service to highlight its connections. Click **Focus map** to refocus the map on the selected service and lock the connection highlighting. Click the **Transactions** tab to jump to the Transaction overview for the selected service. You can also use the tabs at the top of the page to easily jump to the **Errors** or **Metrics** overview.
 
@@ -50,7 +50,7 @@ You can create machine learning jobs to calculate anomaly scores on APM transact
 
 If an anomaly has been detected, click **View anomalies** to view the anomaly detection metric viewer. This time series analysis will display additional details on the severity and time of the detected anomalies.
 
-To learn how to create a machine learning job, refer to [Integrate with machine learning](/solutions/observability/apps/integrate-with-machine-learning.md).
+To learn how to create a machine learning job, refer to [Integrate with machine learning](/solutions/observability/apm/machine-learning.md).
 
 ## Legend [service-maps-legend]
 

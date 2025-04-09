@@ -39,7 +39,7 @@ To collect and ship monitoring data:
     monitoring.enabled: false
     ```
 
-    For more information, see [Monitoring configuration options](/solutions/observability/apps/use-internal-collection-to-send-monitoring-data.md#apm-configuration-monitor).
+    For more information, see [Monitoring configuration options](/solutions/observability/apm/use-internal-collection-to-send-monitoring-data.md#apm-configuration-monitor).
 
 3. Configure host (optional).<br>
 
@@ -147,7 +147,7 @@ To collect and ship monitoring data:
     1. Create a user on the monitoring cluster that has the `remote_monitoring_agent` [built-in role](/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md). Alternatively, if it’s available in your environment, use the `remote_monitoring_user` [built-in user](/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-users.md).
 
         ::::{tip}
-        If you’re using {{ilm}}, the remote monitoring user requires additional privileges to create and read indices. For more information, see [Use feature roles](create-assign-feature-roles-to-apm-server-users.md).
+        If you’re using {{ilm}}, the remote monitoring user requires additional privileges to create and read indices. For more information, see [Use feature roles](/solutions/observability/apm/create-assign-feature-roles-to-apm-server-users.md).
         ::::
 
     2. Add the `username` and `password` settings to the {{es}} output information in the {{metricbeat}} configuration file.

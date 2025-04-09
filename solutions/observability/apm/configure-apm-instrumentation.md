@@ -38,17 +38,17 @@ Set to `true` to enable instrumentation of APM Server. Defaults to `false`.
 
 ### `environment` [_environment]
 
-Set the environment in which APM Server is running, for example, `staging`, `production`, `dev`, etc. Environments can be filtered in the [{{kib}} Applications UI](overviews.md).
+Set the environment in which APM Server is running, for example, `staging`, `production`, `dev`, etc. Environments can be filtered in the [{{kib}} Applications UI](/solutions/observability/apm/overviews.md).
 
 ### `hosts` [_hosts]
 
-The [APM Server](get-started-with-apm.md) hosts to report instrumentation data to. Defaults to `http://localhost:8200`.
+The [APM Server](/solutions/observability/apm/get-started.md) hosts to report instrumentation data to. Defaults to `http://localhost:8200`.
 
 ### `api_key` [_api_key]
 
-[API key](api-keys.md) used to secure communication with the APM Server(s). If `api_key` is set then `secret_token` will be ignored.
+[API key](/solutions/observability/apm/api-keys.md) used to secure communication with the APM Server(s). If `api_key` is set then `secret_token` will be ignored.
 
 ### `secret_token` [_secret_token_2]
 
-[Secret token](secret-token.md) used to secure communication with the APM Server(s).
+[Secret token](/solutions/observability/apm/secret-token.md) used to secure communication with the APM Server(s).
 

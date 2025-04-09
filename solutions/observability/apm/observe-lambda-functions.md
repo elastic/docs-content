@@ -11,7 +11,7 @@ applies_to:
 
 Elastic APM provides performance and error monitoring for AWS Lambda functions. See how your Lambda functions relate to and depend on other services, and get insight into function execution and runtime behavior, like lambda duration, cold start rate, cold start duration, compute usage, memory usage, and more.
 
-To set up Lambda monitoring, refer to [AWS Lambda functions](/solutions/observability/apps/monitoring-aws-lambda-functions.md).
+To set up Lambda monitoring, refer to [AWS Lambda functions](/solutions/observability/apm/monitor-aws-lambda-functions.md).
 
 :::{image} /solutions/images/observability-lambda-overview.png
 :alt: lambda overview
@@ -32,7 +32,7 @@ Cold start is also displayed in the trace waterfall, where you can drill-down in
 
 ### Latency distribution correlation [apm-lambda-cold-start-latency]
 
-The [latency correlations](/solutions/observability/apps/find-transaction-latency-failure-correlations.md) feature can be used to visualize the impact of Lambda cold starts on latency—​just select the `faas.coldstart` field.
+The [latency correlations](/solutions/observability/apm/find-transaction-latency-failure-correlations.md) feature can be used to visualize the impact of Lambda cold starts on latency—​just select the `faas.coldstart` field.
 
 ## AWS Lambda function grouping [apm-lambda-service-config]
 

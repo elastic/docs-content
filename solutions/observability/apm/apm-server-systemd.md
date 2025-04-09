@@ -62,7 +62,7 @@ The systemd service unit file includes environment variables that you can overri
 | `BEAT_PATH_OPTS` | Other paths | ``-path.home /usr/share/apm-server -path.config /etc/apm-server -path.data /var/lib/apm-server -path.logs /var/log/apm-server`` |
 
 ::::{note}
-You can use `BEAT_LOG_OPTS` to set debug selectors for logging. However, to configure logging behavior, set the logging options described in [Configure logging](configure-logging.md).
+You can use `BEAT_LOG_OPTS` to set debug selectors for logging. However, to configure logging behavior, set the logging options described in [Configure logging](/solutions/observability/apm/configure-logging.md).
 ::::
 
 To override these variables, create a drop-in unit file in the `/etc/systemd/system/apm-server.service.d` directory.

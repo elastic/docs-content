@@ -12,8 +12,8 @@ Use the {{stack}} {{monitor-features}} to gain insight into the real-time health
 Select your deployment method to get started:
 
 * [{{ecloud}}](#apm-monitor-apm-cloud)
-* [Fleet-managed](monitor-fleet-managed-apm-server.md)
-* [APM Server binary](monitor-apm-server-binary.md)
+* [Fleet-managed](/solutions/observability/apm/monitor-fleet-managed-apm-server.md)
+* [APM Server binary](/solutions/observability/apm/monitor-apm-server-binary.md)
 
 ## {{ecloud}} [apm-monitor-apm-cloud]
 
