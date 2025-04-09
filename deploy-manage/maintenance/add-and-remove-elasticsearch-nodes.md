@@ -4,6 +4,8 @@ mapped_pages:
 applies_to:
   deployment:
      self:
+sub:
+  slash: "\\"
 ---
 
 # Add and Remove Elasticsearch nodes [add-elasticsearch-nodes]
@@ -38,12 +40,11 @@ Refer to the following pages to learn more about how to add nodes to your cluste
 
 You can enroll additional nodes on your local machine to experiment with how an {{es}} cluster with multiple nodes behaves.
 
-::::{note}
-To add a node to a cluster running on multiple machines, you must also set [`discovery.seed_hosts`](../deploy/self-managed/important-settings-configuration.md#unicast.hosts) so that the new node can discover the rest of its cluster.
-
-::::
-
 :::{include} /deploy-manage/deploy/self-managed/_snippets/enroll-nodes.md
+:::
+
+:::{tip}
+If you installed your new {{es}} node using an [RPM](/deploy-manage/deploy/self-managed/install-elasticsearch-with-rpm.md#existing-cluster) or [Debian](/deploy-manage/deploy/self-managed/install-elasticsearch-with-debian-package.md#existing-cluster) package, then you can pass your enrollment token to the [`elasticsearch-reconfigure-node`](elasticsearch://reference/elasticsearch/command-line-tools/reconfigure-node.md) tool to simplify the configuration process.
 :::
 
 ## Master-eligible nodes [add-elasticsearch-nodes-master-eligible]

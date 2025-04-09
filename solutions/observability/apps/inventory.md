@@ -10,11 +10,11 @@ applies_to:
 
 # Inventory [inventory]
 
-Inventory provides a single place to observe the status of your entire ecosystem of hosts, containers, and services at a glance, even just from logs. From there, you can monitor and understand the health of your entities, check what needs attention, and start your investigations.
-
 ::::{note}
 The new Inventory requires the Elastic Entity Model (EEM). To learn more, refer to [Elastic Entity Model](/reference/observability/elastic-entity-model.md).
 ::::
+
+Inventory provides a single place to observe the status of your entire ecosystem of hosts, containers, and services at a glance, even just from logs. From there, you can monitor and understand the health of your entities, check what needs attention, and start your investigations.
 
 :::{image} /solutions/images/observability-inventory-catalog.png
 :alt: Inventory catalog
