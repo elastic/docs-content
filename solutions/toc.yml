@@ -142,7 +142,7 @@ toc:
                       - file: observability/apps/service-map.md
                       - file: observability/apps/service-overview.md
                       - file: observability/apps/mobile-service-overview.md
-                  - file: observability/apps/inventory.md
+                  - hidden: observability/apps/inventory.md
                   - file: observability/apps/drill-down-into-data.md
                     children:
                       - file: observability/apps/transactions-2.md
