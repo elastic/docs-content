@@ -92,8 +92,7 @@ To restore a terminated deployment,
 
 ## {{eck}} [elastic-cloud-kubernetes]
 
-To delete a deployment managed by {{eck}}, you need to remove the corresponding custom resource from your Kubernetes cluster. This action deletes all {{es}} and {{kib}} pods and their associated persistent data.
-
+To delete a deployment managed by {{eck}}, remove the corresponding `{{es}}`, `{{kib}}`, and any other related custom resources from your Kubernetes cluster. This action deletes all associated pods and their persistent data.
 To delete an Elasticsearch deployment created with {{eck}}:
 
 1. Run the following command to delete the {{es}} custom resource:
