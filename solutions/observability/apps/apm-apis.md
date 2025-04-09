@@ -3,9 +3,13 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-apis.html
 applies_to:
   stack:
+  serverless:
 ---
 
 # APM APIs [apm-apis]
+
+:::{include} _snippets/apm-server-vs-mis.md
+:::
 
 There are two kinds of APIs related to Elastic APM:
 
