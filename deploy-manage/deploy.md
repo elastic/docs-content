@@ -24,7 +24,7 @@ This section focuses on deploying and managing {{es}} and {{kib}}, as well as su
 
 To learn how to deploy optional {{stack}} components, refer to the following sections:
 * [Fleet and Elastic Agent](/reference/fleet/index.md)
-* [APM](/solutions/observability/apps/application-performance-monitoring-apm.md)
+* [APM](/solutions/observability/apm/index.md)
 * [Beats](beats://reference/index.md)
 * [Logstash](logstash://reference/index.md)
 :::

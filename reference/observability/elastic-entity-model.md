@@ -21,7 +21,7 @@ In the context of Elastic Observability, an *entity* is an object of interest th
 The concept of an entity is important as a means to unify observability signals based on the underlying entity that the signals describe.
 
 ::::{note}
-* The Elastic Entity Model currently supports the [new Inventory experience](/solutions/observability/apps/inventory.md) limited to service, host, and container entities.
+* The Elastic Entity Model currently supports the [new Inventory experience](/solutions/observability/apm/inventory.md) limited to service, host, and container entities.
 * During Technical Preview, Entity Discovery Framework components are not enabled by default.
 
 ::::
@@ -30,7 +30,7 @@ The concept of an entity is important as a means to unify observability signals 
 
 ## Enable the Elastic Entity Model [_enable_the_elastic_entity_model]
 
-You can enable the Elastic Entity Model from the new [Inventory](/solutions/observability/apps/inventory.md). If already enabled, you will not be prompted to enable the Elastic Entity Model.
+You can enable the Elastic Entity Model from the new [Inventory](/solutions/observability/apm/inventory.md). If already enabled, you will not be prompted to enable the Elastic Entity Model.
 
 The following {{es}} privileges are required:
 

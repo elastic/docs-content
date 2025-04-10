@@ -45,6 +45,6 @@ For more information, check [APM Server Reference](https://www.elastic.co/guide/
 
 ## APM Server API keys [k8s-apm-api-keys]
 
-If you want to configure API keys to authorize requests to the APM Server, instead of using the APM Server CLI, you have to create API keys using the {{es}}  [create API key API](https://www.elastic.co/guide/en/elasticsearch/reference/7.14/security-api-create-api-key.html), check the [APM Server documentation](/solutions/observability/apps/api-keys.md).
+If you want to configure API keys to authorize requests to the APM Server, instead of using the APM Server CLI, you have to create API keys using the {{es}}  [create API key API](https://www.elastic.co/guide/en/elasticsearch/reference/7.14/security-api-create-api-key.html), check the [APM Server documentation](/solutions/observability/apm/api-keys.md).
 
 

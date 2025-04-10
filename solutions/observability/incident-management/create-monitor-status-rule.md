@@ -217,7 +217,7 @@ The final step when creating a rule is to select one or more actions to take whe
 
 You can extend your rules by connecting them to actions that use the following supported built-in integrations. Actions are {{kib}} services or integrations with third-party systems that run as background tasks on the {{kib}} server when rule conditions are met.
 
-You can configure action types on the [Settings](../../../solutions/observability/apps/configure-settings.md#configure-uptime-alert-connectors) page.
+You can configure action types on the [Settings](/solutions/observability/uptime/configure-settings.md#configure-uptime-alert-connectors) page.
 
 :::{image} /solutions/images/observability-uptime-alert-connectors.png
 :alt: Uptime rule connectors

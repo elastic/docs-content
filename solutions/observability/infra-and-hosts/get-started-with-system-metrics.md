@@ -141,4 +141,4 @@ Now that you’ve added metrics and explored your data, learn how to onboard oth
 
 * [Get started with system logs](../../../solutions/observability/logs/get-started-with-system-logs.md)
 * [Stream any log file](../../../solutions/observability/logs/stream-any-log-file.md)
-* [Get started with traces and APM](../../../solutions/observability/apps/get-started-with-apm.md)
+* [Get started with traces and APM](/solutions/observability/apm/get-started.md)
