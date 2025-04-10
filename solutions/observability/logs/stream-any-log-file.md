@@ -11,7 +11,7 @@ applies_to:
 
 This guide shows you how to manually configure a standalone {{agent}} to send your log data to {{es}} using the `elastic-agent.yml` file.
 
-To get started quickly without manually configuring the {{agent}}, you can use the **Monitor hosts with {{agent}}** quickstart. Refer to the [quickstart documentation](../../../solutions/observability/get-started/quickstart-monitor-hosts-with-elastic-agent.md) for more information.
+To get started quickly without manually configuring the {{agent}}, you can use the **Monitor hosts with {{agent}}** quickstart. Refer to the [quickstart documentation](/solutions/observability/get-started/quickstart-monitor-hosts-with-elastic-agent.md) for more information.
 
 Continue with this guide for instructions on manual configuration.
 
@@ -39,7 +39,7 @@ To get started quickly, create an {{ech}} deployment and host it on AWS, GCP, or
 :::{tab-item} Serverless
 :sync: serverless
 
-The **Admin** role or higher is required to onboard log data. To learn more, refer to [Assign user roles and privileges](../../../deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
+The **Admin** role or higher is required to onboard log data. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
 
 :::
 
@@ -49,9 +49,9 @@ The **Admin** role or higher is required to onboard log data. To learn more, ref
 
 Complete these steps to install and configure the standalone {{agent}} and send your log data to {{es}}:
 
-1. [Download and extract the {{agent}} installation package.](../../../solutions/observability/logs/stream-any-log-file.md#logs-stream-extract-agent)
-2. [Install and start the {{agent}}.](../../../solutions/observability/logs/stream-any-log-file.md#logs-stream-install-agent)
-3. [Configure the {{agent}}.](../../../solutions/observability/logs/stream-any-log-file.md#logs-stream-agent-config)
+1. [Download and extract the {{agent}} installation package.](/solutions/observability/logs/stream-any-log-file.md#logs-stream-extract-agent)
+2. [Install and start the {{agent}}.](/solutions/observability/logs/stream-any-log-file.md#logs-stream-install-agent)
+3. [Configure the {{agent}}.](/solutions/observability/logs/stream-any-log-file.md#logs-stream-agent-config)
 
 
 ### Step 1: Download and extract the {{agent}} installation package [logs-stream-extract-agent]
@@ -430,12 +430,12 @@ If you’re not seeing your log files in the UI, verify the following in the `el
 * The path to your logs file under `paths` is correct.
 * Your API key is in `<id>:<key>` format. If not, your API key may be in an unsupported format, and you’ll need to create an API key in **Beats** format.
 
-If you’re still running into issues, see [{{agent}} troubleshooting](../../../troubleshoot/ingest/fleet/common-problems.md) and [Configure standalone Elastic Agents](/reference/fleet/configure-standalone-elastic-agents.md).
+If you’re still running into issues, see [{{agent}} troubleshooting](/troubleshoot/ingest/fleet/common-problems.md) and [Configure standalone Elastic Agents](/reference/fleet/configure-standalone-elastic-agents.md).
 
 
 ## Next steps [logs-stream-next-steps]
 
 After you have your agent configured and are streaming log data to {{es}}:
 
-* Refer to the [Parse and organize logs](../../../solutions/observability/logs/parse-route-logs.md) documentation for information on extracting structured fields from your log data, rerouting your logs to different data streams, and filtering and aggregating your log data.
-* Refer to the [Filter and aggregate logs](../../../solutions/observability/logs/filter-aggregate-logs.md) documentation for information on filtering and aggregating your log data to find specific information, gain insight, and monitor your systems more efficiently.
+* Refer to the [Parse and organize logs](/solutions/observability/logs/parse-route-logs.md) documentation for information on extracting structured fields from your log data, rerouting your logs to different data streams, and filtering and aggregating your log data.
+* Refer to the [Filter and aggregate logs](/solutions/observability/logs/filter-aggregate-logs.md) documentation for information on filtering and aggregating your log data to find specific information, gain insight, and monitor your systems more efficiently.

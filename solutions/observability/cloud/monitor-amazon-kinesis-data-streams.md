@@ -62,7 +62,7 @@ For more information {{agent}} and integrations, refer to the [{{fleet}} and {{a
 :::::
 
 
-{{agent}} is currently the preferred way to add Kinesis data stream metrics. For other ways, refer to [Adding data to {{es}}](../../../manage-data/ingest.md).
+{{agent}} is currently the preferred way to add Kinesis data stream metrics. For other ways, refer to [Adding data to {{es}}](/manage-data/ingest.md).
 
 
 ## Dashboards [dashboard-kinesis]

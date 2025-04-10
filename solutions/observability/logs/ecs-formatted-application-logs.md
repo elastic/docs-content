@@ -13,8 +13,8 @@ Logs formatted in Elastic Common Schema (ECS) don’t require manual parsing, an
 
 You can format your logs in ECS format the following ways:
 
-* [ECS loggers](../../../solutions/observability/logs/ecs-formatted-application-logs.md#ecs-loggers): plugins for your logging libraries that reformat your logs into ECS format.
-* [APM agent ECS reformatting](../../../solutions/observability/logs/ecs-formatted-application-logs.md#apm-agent-ecs-reformatting): Java, Ruby, and Python {{apm-agent}}s automatically reformat application logs to ECS format without a logger.
+* [ECS loggers](/solutions/observability/logs/ecs-formatted-application-logs.md#ecs-loggers): plugins for your logging libraries that reformat your logs into ECS format.
+* [APM agent ECS reformatting](/solutions/observability/logs/ecs-formatted-application-logs.md#apm-agent-ecs-reformatting): Java, Ruby, and Python {{apm-agent}}s automatically reformat application logs to ECS format without a logger.
 
 
 ## ECS loggers [ecs-loggers]
@@ -41,9 +41,9 @@ Java, Ruby, and Python {{apm-agent}}s can automatically reformat application log
 
 To set up log ECS reformatting:
 
-1. [Enable {{apm-agent}} reformatting](../../../solutions/observability/logs/ecs-formatted-application-logs.md#enable-log-ecs-reformatting)
-2. [Ingest logs with {{filebeat}} or {{agent}}](../../../solutions/observability/logs/ecs-formatted-application-logs.md#ingest-ecs-logs)
-3. [View logs in Discover](../../../solutions/observability/logs/ecs-formatted-application-logs.md#view-ecs-logs)
+1. [Enable {{apm-agent}} reformatting](/solutions/observability/logs/ecs-formatted-application-logs.md#enable-log-ecs-reformatting)
+2. [Ingest logs with {{filebeat}} or {{agent}}](/solutions/observability/logs/ecs-formatted-application-logs.md#ingest-ecs-logs)
+3. [View logs in Discover](/solutions/observability/logs/ecs-formatted-application-logs.md#view-ecs-logs)
 
 
 ### Enable log ECS reformatting [enable-log-ecs-reformatting]
@@ -59,8 +59,8 @@ Log ECS reformatting is controlled by the `log_ecs_reformatting` configuration o
 
 After enabling log ECS reformatting, send your application logs to your project using one of the following shipping tools:
 
-* [{{filebeat}}](../../../solutions/observability/logs/ecs-formatted-application-logs.md#ingest-ecs-logs-with-filebeat): A lightweight data shipper that sends log data to your project.
-* [{{agent}}](../../../solutions/observability/logs/ecs-formatted-application-logs.md#ingest-ecs-logs-with-agent): A single agent for logs, metrics, security data, and threat prevention. With Fleet, you can centrally manage {{agent}} policies and lifecycles directly from your project.
+* [{{filebeat}}](/solutions/observability/logs/ecs-formatted-application-logs.md#ingest-ecs-logs-with-filebeat): A lightweight data shipper that sends log data to your project.
+* [{{agent}}](/solutions/observability/logs/ecs-formatted-application-logs.md#ingest-ecs-logs-with-agent): A single agent for logs, metrics, security data, and threat prevention. With Fleet, you can centrally manage {{agent}} policies and lifecycles directly from your project.
 
 
 #### Ingest logs with {{filebeat}} [ingest-ecs-logs-with-filebeat]
@@ -173,7 +173,7 @@ filebeat.inputs:
 
 #### Step 4: Set up and start {{filebeat}} [step-4-ecs-set-up-and-start-filebeat]
 
-From the {{filebeat}} installation directory, set the [index template](../../../manage-data/data-store/templates.md) by running the command that aligns with your system:
+From the {{filebeat}} installation directory, set the [index template](/manage-data/data-store/templates.md) by running the command that aligns with your system:
 
 :::::::{tab-set}
 
@@ -314,7 +314,7 @@ To add the custom logs integration to your project:
 
 ## View logs [view-ecs-logs]
 
-Refer to the [Filter and aggregate logs](../../../solutions/observability/logs/filter-aggregate-logs.md) documentation for more information on viewing and filtering your logs in {{kib}}.
+Refer to the [Filter and aggregate logs](/solutions/observability/logs/filter-aggregate-logs.md) documentation for more information on viewing and filtering your logs in {{kib}}.
 
 
 % What needs to be done: Align serverless/stateful

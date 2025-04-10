@@ -36,7 +36,7 @@ Make sure the deployment is on AWS, because the Firehose delivery stream connect
 
 ## Use Elastic Analytics Discover to manually analyze data [aws-firehose-discover]
 
-In Elastic Analytics, you can search and filter your data, get information about the structure of the fields, and display your findings in a visualization. You can also customize and save your searches and place them on a dashboard. For more information, check the [Discover](../../../explore-analyze/discover.md) documentation.
+In Elastic Analytics, you can search and filter your data, get information about the structure of the fields, and display your findings in a visualization. You can also customize and save your searches and place them on a dashboard. For more information, check the [Discover](/explore-analyze/discover.md) documentation.
 
 For example, for your VPC flow logs you want to know:
 
@@ -77,7 +77,7 @@ If you select the destination port field, the pop-up shows that port `8081` is b
 
 ## Use Machine Learning to detect anomalies [aws-firehose-ml]
 
-Elastic Observability provides the ability to detect anomalies on logs using Machine Learning (ML). To learn more about how to use the ML analysis with your logs, check the [Machine learning](../../../explore-analyze/machine-learning/machine-learning-in-kibana.md) documentation. You can select the following options:
+Elastic Observability provides the ability to detect anomalies on logs using Machine Learning (ML). To learn more about how to use the ML analysis with your logs, check the [Machine learning](/explore-analyze/machine-learning/machine-learning-in-kibana.md) documentation. You can select the following options:
 
 * Log rate: Automatically detects anomalous log entry rates
 * Categorization: Automatically categorizes log messages

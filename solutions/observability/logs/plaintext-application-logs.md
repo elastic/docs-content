@@ -14,21 +14,21 @@ Ingest and parse plaintext logs, including existing logs, from any programming l
 Plaintext logs require some additional setup that structured logs do not require:
 
 * To search, filter, and aggregate effectively, you need to parse plaintext logs using an ingest pipeline to extract structured fields. Parsing is based on log format, so you might have to maintain different settings for different applications.
-* To [correlate plaintext logs](../../../solutions/observability/logs/plaintext-application-logs.md#correlate-plaintext-logs), you need to inject IDs into log messages and parse them using an ingest pipeline.
+* To [correlate plaintext logs](/solutions/observability/logs/plaintext-application-logs.md#correlate-plaintext-logs), you need to inject IDs into log messages and parse them using an ingest pipeline.
 
 To ingest, parse, and correlate plaintext logs:
 
-1. Ingest plaintext logs with [{{filebeat}}](../../../solutions/observability/logs/plaintext-application-logs.md#ingest-plaintext-logs-with-filebeat) or [{{agent}}](../../../solutions/observability/logs/plaintext-application-logs.md#ingest-plaintext-logs-with-the-agent) and parse them before indexing with an ingest pipeline.
-2. [Correlate plaintext logs with an {{apm-agent}}.](../../../solutions/observability/logs/plaintext-application-logs.md#correlate-plaintext-logs)
-3. [View logs in Discover](../../../solutions/observability/logs/plaintext-application-logs.md#view-plaintext-logs)
+1. Ingest plaintext logs with [{{filebeat}}](/solutions/observability/logs/plaintext-application-logs.md#ingest-plaintext-logs-with-filebeat) or [{{agent}}](/solutions/observability/logs/plaintext-application-logs.md#ingest-plaintext-logs-with-the-agent) and parse them before indexing with an ingest pipeline.
+2. [Correlate plaintext logs with an {{apm-agent}}.](/solutions/observability/logs/plaintext-application-logs.md#correlate-plaintext-logs)
+3. [View logs in Discover](/solutions/observability/logs/plaintext-application-logs.md#view-plaintext-logs)
 
 
 ## Ingest logs [ingest-plaintext-logs]
 
 Send application logs to {{es}} using one of the following shipping tools:
 
-* [{{filebeat}}](../../../solutions/observability/logs/plaintext-application-logs.md#ingest-plaintext-logs-with-filebeat) A lightweight data shipper that sends log data to {{es}}.
-* [{{agent}}](../../../solutions/observability/logs/plaintext-application-logs.md#ingest-plaintext-logs-with-the-agent) A single agent for logs, metrics, security data, and threat prevention. Combined with Fleet, you can centrally manage {{agent}} policies and lifecycles directly from {{kib}}.
+* [{{filebeat}}](/solutions/observability/logs/plaintext-application-logs.md#ingest-plaintext-logs-with-filebeat) A lightweight data shipper that sends log data to {{es}}.
+* [{{agent}}](/solutions/observability/logs/plaintext-application-logs.md#ingest-plaintext-logs-with-the-agent) A single agent for logs, metrics, security data, and threat prevention. Combined with Fleet, you can centrally manage {{agent}} policies and lifecycles directly from {{kib}}.
 
 
 ### Ingest logs with {{filebeat}} [ingest-plaintext-logs-with-filebeat]
@@ -143,7 +143,7 @@ filebeat.inputs:
 
 {{filebeat}} comes with predefined assets for parsing, indexing, and visualizing your data. To load these assets:
 
-From the {{filebeat}} installation directory, set the [index template](../../../manage-data/data-store/templates.md) by running the command that aligns with your system:
+From the {{filebeat}} installation directory, set the [index template](/manage-data/data-store/templates.md) by running the command that aligns with your system:
 
 :::::::{tab-set}
 
@@ -257,7 +257,7 @@ PUT _ingest/pipeline/filebeat* <1>
 4. `pattern`: The pattern of the elements in your log data. The pattern varies depending on your log format. `%{@timestamp}` is required. `%{log.level}`, `%{host.ip}`, and `%{{message}}` are common [ECS](ecs://reference/index.md) fields. This pattern would match a log file in this format: `2023-11-07T09:39:01.012Z ERROR 192.168.1.110 Server hardware failure detected.`
 
 
-Refer to [Extract structured fields](../../../solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-extract-structured-fields) for more on using ingest pipelines to parse your log data.
+Refer to [Extract structured fields](/solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-extract-structured-fields) for more on using ingest pipelines to parse your log data.
 
 After creating your pipeline, specify the pipeline for filebeat in the `filebeat.yml` file:
 
@@ -351,4 +351,4 @@ Learn about correlating plaintext logs in the agent-specific ingestion guides:
 
 ## View logs [view-plaintext-logs]
 
-To view logs ingested by {{filebeat}}, go to **Discover** from the main menu and create a data view based on the `filebeat-*` index pattern. You can also select **All logs** from the **Data views** menu as it includes the `filebeat-*` index pattern by default. Refer to [Create a data view](../../../explore-analyze/find-and-organize/data-views.md) for more information.
+To view logs ingested by {{filebeat}}, go to **Discover** from the main menu and create a data view based on the `filebeat-*` index pattern. You can also select **All logs** from the **Data views** menu as it includes the `filebeat-*` index pattern by default. Refer to [Create a data view](/explore-analyze/find-and-organize/data-views.md) for more information.

@@ -11,7 +11,7 @@ navigation_title: "Custom threshold"
 
 ::::{note}
 
-**For Observability serverless projects**, the **Editor** role or higher is required to create a custom threshold rule. To learn more, refer to [Assign user roles and privileges](../../../deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
+**For Observability serverless projects**, the **Editor** role or higher is required to create a custom threshold rule. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
 
 ::::
 
@@ -32,7 +32,7 @@ Create a custom threshold rule to trigger an alert when an {{obs-serverless}} da
 
 Specify the following settings to define the data the rule applies to:
 
-* **Select a data view:** Click the data view field to search for and select a data view that points to the indices or data streams that you’re creating a rule for. You can also create a *new* data view by clicking **Create a data view**. Refer to [Create a data view](../../../explore-analyze/find-and-organize/data-views.md) for more on creating data views.
+* **Select a data view:** Click the data view field to search for and select a data view that points to the indices or data streams that you’re creating a rule for. You can also create a *new* data view by clicking **Create a data view**. Refer to [Create a data view](/explore-analyze/find-and-organize/data-views.md) for more on creating data views.
 * **Define query filter (optional):** Use a query filter to narrow down the data that the rule applies to. For example, set a query filter to a specific host name using the query filter `host.name:host-1` to only apply the rule to that host.
 
 
@@ -43,7 +43,7 @@ Set the conditions for the rule to detect using aggregations, an equation, and a
 
 ### Set aggregations [custom-threshold-aggregation]
 
-Aggregations summarize your data to make it easier to analyze. Set any of the following aggregation types to gather data to create your rule: `Average`, `Max`, `Min`, `Cardinality`, `Count`, `Sum,` `Percentile`, or `Rate`. For more information about these options, refer to [Aggregation options](../../../solutions/observability/incident-management/aggregation-options.md).
+Aggregations summarize your data to make it easier to analyze. Set any of the following aggregation types to gather data to create your rule: `Average`, `Max`, `Min`, `Cardinality`, `Count`, `Sum,` `Percentile`, or `Rate`. For more information about these options, refer to [Aggregation options](/solutions/observability/incident-management/aggregation-options.md).
 
 For example, to gather the total number of log documents with a log level of `warn`:
 
@@ -171,7 +171,7 @@ Some connector types are paid commercial features, while others are free. For a 
 ::::
 
 
-For more information on creating connectors, refer to [Connectors](../../../deploy-manage/manage-connectors.md).
+For more information on creating connectors, refer to [Connectors](/deploy-manage/manage-connectors.md).
 
 :::::
 
@@ -205,7 +205,7 @@ Use the default notification message or customize it. You can add more context t
 :screenshot:
 :::
 
-The following variables are specific to this rule type. You can also specify [variables common to all rules](../../../explore-analyze/alerts-cases/alerts/rule-action-variables.md).
+The following variables are specific to this rule type. You can also specify [variables common to all rules](/explore-analyze/alerts-cases/alerts/rule-action-variables.md).
 
 `context.alertDetailsUrl`
 :   Link to the alert troubleshooting view for further context and details. This will be an empty string if the `server.publicBaseUrl` is not configured.

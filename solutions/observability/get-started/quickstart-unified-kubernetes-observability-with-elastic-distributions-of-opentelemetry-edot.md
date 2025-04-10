@@ -45,7 +45,7 @@ For a more detailed description of the components and advanced configuration, re
 :::{tab-item} Serverless
 :sync: serverless
 
-* An {{obs-serverless}} project. To learn more, refer to [Create an Observability project](../../../solutions/observability/get-started/create-an-observability-project.md).
+* An {{obs-serverless}} project. To learn more, refer to [Create an Observability project](/solutions/observability/get-started/create-an-observability-project.md).
 * A running Kubernetes cluster (v1.23 or newer).
 * [Kubectl](https://kubernetes.io/docs/reference/kubectl/).
 * [Helm](https://helm.sh/docs/intro/install/).
@@ -92,7 +92,7 @@ For a more detailed description of the components and advanced configuration, re
 :::{tab-item} Serverless
 :sync: serverless
 
-1. [Create a new {{obs-serverless}} project](../../../solutions/observability/get-started/create-an-observability-project.md), or open an existing one.
+1. [Create a new {{obs-serverless}} project](/solutions/observability/get-started/create-an-observability-project.md), or open an existing one.
 2. In your {{obs-serverless}} project, go to **Add Data**.
 3. Under **What do you want to monitor?** select **Kubernetes**, and then select **OpenTelemetry: Full Observability**.
 
@@ -139,4 +139,4 @@ After installation is complete and all relevant data is flowing into Elastic, th
 * To troubleshoot deployment and installation, refer to [installation verification](https://github.com/elastic/opentelemetry/tree/main/docs/kubernetes/operator#installation-verification).
 * For application instrumentation details, refer to [Instrumenting applications with EDOT SDKs on Kubernetes](https://github.com/elastic/opentelemetry/blob/main/docs/kubernetes/operator/instrumenting-applications.md).
 * To customize the configuration, refer to [custom configuration](https://github.com/elastic/opentelemetry/tree/main/docs/kubernetes/operator#custom-configuration).
-* Refer to [Observability overview](../../../solutions/observability/get-started/what-is-elastic-observability.md) for a description of other useful features.
+* Refer to [Observability overview](/solutions/observability/get-started/what-is-elastic-observability.md) for a description of other useful features.
