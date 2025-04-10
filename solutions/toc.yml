@@ -50,7 +50,7 @@ toc:
               - file: search/rag/playground-context.md
               - file: search/rag/playground-query.md
               - file: search/rag/playground-troubleshooting.md
-          - file: search/mcp.md    
+          - file: search/mcp.md
       - file: search/hybrid-search.md
         children:
           - file: search/hybrid-semantic-text.md
@@ -379,7 +379,6 @@ toc:
                   - file: observability/infra-and-hosts/step-4-run-backend-applications.md
                   - file: observability/infra-and-hosts/step-5-next-steps.md
               - file: observability/infra-and-hosts/operate-universal-profiling-backend.md
-              - file: observability/infra-and-hosts/universal-profiling-issues.md
           - file: observability/infra-and-hosts/tutorial-observe-kubernetes-deployments.md
           - file: observability/infra-and-hosts/tutorial-observe-nginx-instances.md
             children:
