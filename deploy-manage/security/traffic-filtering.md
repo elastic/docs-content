@@ -116,7 +116,7 @@ Requests rejected by traffic filter have status code `403 Forbidden` and one of 
 ```
 
 ```json
-{"ok":false,"message":"Forbidden due to traffic filtering. See the Elastic documentation on Traffic Filtering for more information."}
+{"ok":false,"message":"Forbidden due to traffic filtering. Please see the Elastic documentation on Traffic Filtering for more information."}
 ```
 
 Additionally, traffic filter rejections are logged in ECE proxy logs as `status_reason: BLOCKED_BY_IP_FILTER`. Proxy logs also provide client IP in `client_ip` field.

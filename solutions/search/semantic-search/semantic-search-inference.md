@@ -1458,7 +1458,7 @@ As a result, you receive the top 10 documents that are closest in meaning to the
         "_score": 0.86815524,
         "_source": {
           "id": 3041038,
-          "content": "For example, the cost of the fuel could be 96.9, the amount could be 10 pounds, and the distance covered could be 80 miles. To convert between Litres per 100KM and Miles Per Gallon, provide a value and click on the required button.o calculate how much fuel you'll need for a given journey, provide the distance in miles you will be covering on your journey, and the estimated MPG of your vehicle. To work out what MPG you are really getting, provide the cost of the fuel, how much you spent on the fuel, and how far it took you."
+          "content": "For example, the cost of the fuel could be 96.9, the amount could be 10 pounds, and the distance covered could be 80 miles. To convert between Litres per 100KM and Miles Per Gallon, please provide a value and click on the required button.o calculate how much fuel you'll need for a given journey, please provide the distance in miles you will be covering on your journey, and the estimated MPG of your vehicle. To work out what MPG you are really getting, please provide the cost of the fuel, how much you spent on the fuel, and how far it took you."
         }
       },
       {

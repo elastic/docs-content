@@ -467,11 +467,11 @@ $$$azure-integration-deployment-failed-traffic-filter$$$My {{ecloud}} deployment
     ```txt
     {
       "code": "DeploymentFailed",
-      "message": "At least one resource deployment operation failed. List deployment operations for details. See https://aka.ms/DeployOperations for usage details.",
+      "message": "At least one resource deployment operation failed. Please list deployment operations for details. Please see https://aka.ms/DeployOperations for usage details.",
       "details": [
         {
           "code": "500",
-          "message": "An error occurred during deployment creation. Try again. If the problem persists, contact support@elastic.co."
+          "message": "An error occurred during deployment creation. Please try again. If the problem persists, please contact support@elastic.co."
         }
       ]
     ```

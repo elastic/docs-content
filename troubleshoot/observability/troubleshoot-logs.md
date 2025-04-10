@@ -50,7 +50,7 @@ User does not have permissions to create API key.
 
 Required cluster privileges are [`monitor`, `manage_own_api_key`] and
 required index privileges are [`auto_configure`, `create_doc`] for
-indices [`logs-*-*`, `metrics-*-*`], add all required privileges
+indices [`logs-*-*`, `metrics-*-*`], please add all required privileges
 to the role of the authenticated user.
 ```
 
