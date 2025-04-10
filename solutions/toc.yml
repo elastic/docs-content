@@ -97,222 +97,222 @@ toc:
           - file: observability/get-started/quickstart-elastic-cloud-otel-endpoint.md
           - file: observability/get-started/add-data-from-splunk.md
           - file: observability/get-started/get-started-with-dashboards.md
-      - file: observability/apps.md
+      - file: observability/applications/index.md
         children:
-          - file: observability/apps/llm-observability.md
-          - file: observability/apps/application-performance-monitoring-apm.md
+          - file: observability/applications/llm-observability.md
+          - file: observability/apm/index.md
             children:
-              - file: observability/apps/get-started-with-apm.md
+              - file: observability/apm/get-started.md
                 children:
-                  - file: observability/apps/get-started-apm-serverless.md
-                  - file: observability/apps/fleet-managed-apm-server.md
-                  - file: observability/apps/apm-server-binary.md
-              - file: observability/apps/learn-about-application-data-types.md
+                  - file: observability/apm/get-started-serverless.md
+                  - file: observability/apm/get-started-fleet-managed-apm-server.md
+                  - file: observability/apm/get-started-apm-server-binary.md
+              - file: observability/apm/data-types.md
                 children:
-                  - file: observability/apps/spans.md
-                  - file: observability/apps/transactions.md
+                  - file: observability/apm/spans.md
+                  - file: observability/apm/transactions.md
                     children:
-                      - file: observability/apps/transaction-sampling.md
-                  - file: observability/apps/traces.md
-                  - file: observability/apps/errors.md
-                  - file: observability/apps/metrics.md
-                  - file: observability/apps/metadata.md
-              - file: observability/apps/collect-application-data.md
+                      - file: observability/apm/transaction-sampling.md
+                  - file: observability/apm/traces.md
+                  - file: observability/apm/errors.md
+                  - file: observability/apm/metrics.md
+                  - file: observability/apm/metadata.md
+              - file: observability/apm/collect-application-data.md
                 children:
-                  - file: observability/apps/elastic-apm-agents.md
+                  - file: observability/apm/elastic-apm-agents.md
                     children:
-                      - file: observability/apps/apm-agent-central-configuration.md
-                      - file: observability/apps/real-user-monitoring-rum.md
-                      - file: observability/apps/create-upload-source-maps-rum.md
-                  - file: observability/apps/use-opentelemetry-with-apm.md
+                      - file: observability/apm/apm-agent-central-configuration.md
+                      - file: observability/apm/real-user-monitoring-rum.md
+                      - file: observability/apm/create-upload-source-maps-rum.md
+                  - file: observability/apm/use-opentelemetry-with-apm.md
                     children:
-                      - file: observability/apps/upstream-opentelemetry-collectors-language-sdks.md
-                      - file: observability/apps/collect-metrics.md
-                      - file: observability/apps/limitations.md
-                      - file: observability/apps/resource-atrributes.md
-                  - file: observability/apps/apm-k8s-attacher.md
-                  - file: observability/apps/monitoring-aws-lambda-functions.md
-                  - file: observability/apps/integrate-with-jaeger-deprecated.md
-              - file: observability/apps/view-analyze-data.md
+                      - file: observability/apm/upstream-opentelemetry-collectors-language-sdks.md
+                      - file: observability/apm/collect-metrics.md
+                      - file: observability/apm/limitations.md
+                      - file: observability/apm/resource-attributes.md
+                  - file: observability/apm/apm-k8s-attacher.md
+                  - file: observability/apm/monitor-aws-lambda-functions.md
+                  - file: observability/apm/jaeger.md
+              - file: observability/apm/view-analyze-data.md
                 children:
-                  - file: observability/apps/overviews.md
+                  - file: observability/apm/overviews.md
                     children:
-                      - file: observability/apps/services.md
-                      - file: observability/apps/traces-2.md
-                      - file: observability/apps/dependencies.md
-                      - file: observability/apps/service-map.md
-                      - file: observability/apps/service-overview.md
-                      - file: observability/apps/mobile-service-overview.md
-                  - hidden: observability/apps/inventory.md
-                  - file: observability/apps/drill-down-into-data.md
+                      - file: observability/apm/services.md
+                      - file: observability/apm/traces-ui.md
+                      - file: observability/apm/dependencies.md
+                      - file: observability/apm/service-map.md
+                      - file: observability/apm/service-overview.md
+                      - file: observability/apm/mobile-service-overview.md
+                  - hidden: observability/apm/inventory.md
+                  - file: observability/apm/drill-down-into-data.md
                     children:
-                      - file: observability/apps/transactions-2.md
-                      - file: observability/apps/trace-sample-timeline.md
-                      - file: observability/apps/errors-2.md
-                      - file: observability/apps/metrics-2.md
-                      - file: observability/apps/infrastructure.md
-                      - file: observability/apps/logs.md
-                  - file: observability/apps/filter-search-application-data.md
+                      - file: observability/apm/transactions-ui.md
+                      - file: observability/apm/trace-sample-timeline.md
+                      - file: observability/apm/errors-ui.md
+                      - file: observability/apm/metrics-ui.md
+                      - file: observability/apm/infrastructure.md
+                      - file: observability/apm/logs.md
+                  - file: observability/apm/filter-search-data.md
                     children:
-                      - file: observability/apps/filter-application-data.md
-                      - file: observability/apps/use-advanced-queries-on-application-data.md
-                      - file: observability/apps/cross-cluster-search-with-application-data.md
-                  - file: observability/apps/interpret-application-data.md
+                      - file: observability/apm/filter-data.md
+                      - file: observability/apm/advanced-queries.md
+                      - file: observability/apm/cross-cluster-search.md
+                  - file: observability/apm/interpret-data.md
                     children:
-                      - file: observability/apps/find-transaction-latency-failure-correlations.md
-                      - file: observability/apps/track-deployments-with-annotations.md
-                      - file: observability/apps/explore-mobile-sessions-with-discover.md
-                      - file: observability/apps/observe-lambda-functions.md
-                  - file: observability/apps/integrate-with-machine-learning.md
-                  - file: observability/apps/apm-agent-explorer.md
-                  - file: observability/apps/applications-ui-settings.md
-              - file: observability/apps/act-on-data.md
+                      - file: observability/apm/find-transaction-latency-failure-correlations.md
+                      - file: observability/apm/track-deployments-with-annotations.md
+                      - file: observability/apm/explore-mobile-sessions.md
+                      - file: observability/apm/observe-lambda-functions.md
+                  - file: observability/apm/machine-learning.md
+                  - file: observability/apm/apm-agent-explorer.md
+                  - file: observability/apm/applications-ui-settings.md
+              - file: observability/apm/act-on-data.md
                 children:
-                  - file: observability/apps/create-apm-rules-alerts.md
-                  - file: observability/apps/create-custom-links.md
-              - file: observability/apps/use-apm-securely.md
+                  - file: observability/apm/create-apm-rules-alerts.md
+                  - file: observability/apm/create-custom-links.md
+              - file: observability/apm/use-apm-securely.md
                 children:
-                  - file: observability/apps/application-data-security.md
+                  - file: observability/apm/secure-data.md
                     children:
-                      - file: observability/apps/control-access-to-apm-data.md
-                      - file: observability/apps/built-in-data-filters.md
-                      - file: observability/apps/custom-filters.md
-                      - file: observability/apps/delete-sensitive-data.md
-                  - file: observability/apps/secure-communication-with-apm-agents.md
+                      - file: observability/apm/control-access-to-apm-data.md
+                      - file: observability/apm/built-in-data-filters.md
+                      - file: observability/apm/custom-filters.md
+                      - file: observability/apm/delete-sensitive-data.md
+                  - file: observability/apm/secure-communication-with-apm-agents.md
                     children:
-                      - file: observability/apps/apm-agent-tls-communication.md
-                      - file: observability/apps/api-keys.md
-                      - file: observability/apps/secret-token.md
-                      - file: observability/apps/anonymous-authentication.md
-                  - file: observability/apps/secure-communication-with-elastic-stack.md
+                      - file: observability/apm/apm-agent-tls-communication.md
+                      - file: observability/apm/api-keys.md
+                      - file: observability/apm/secret-token.md
+                      - file: observability/apm/anonymous-authentication.md
+                  - file: observability/apm/secure-communication-with-elastic-stack.md
                     children:
-                      - file: observability/apps/create-assign-feature-roles-to-apm-server-users.md
-                      - file: observability/apps/grant-access-using-api-keys.md
-                  - file: observability/apps/secure-access-to-applications-ui.md
+                      - file: observability/apm/create-assign-feature-roles-to-apm-server-users.md
+                      - file: observability/apm/grant-access-using-api-keys.md
+                  - file: observability/apm/secure-access-to-applications-ui.md
                     children:
-                      - file: observability/apps/apm-reader-user.md
-                      - file: observability/apps/applications-ui-annotation-user.md
-                      - file: observability/apps/applications-ui-api-user.md
-                      - file: observability/apps/applications-ui-central-config-user.md
-                      - file: observability/apps/applications-ui-storage-explorer-user.md
-              - file: observability/apps/manage-storage.md
+                      - file: observability/apm/ui-user-reader.md
+                      - file: observability/apm/ui-user-annotation.md
+                      - file: observability/apm/ui-user-api.md
+                      - file: observability/apm/ui-user-central-config.md
+                      - file: observability/apm/ui-user-storage-explorer.md
+              - file: observability/apm/manage-storage.md
                 children:
-                  - file: observability/apps/storage-explorer.md
-                  - file: observability/apps/data-streams.md
-                  - file: observability/apps/index-lifecycle-management.md
-                  - file: observability/apps/view-elasticsearch-index-template.md
-                  - file: observability/apps/parse-data-using-ingest-pipelines.md
-                  - file: observability/apps/storage-sizing-guide.md
-                  - file: observability/apps/reduce-storage.md
-                  - file: observability/apps/explore-data-in-elasticsearch.md
-              - file: observability/apps/configure-apm-server.md
+                  - file: observability/apm/storage-explorer.md
+                  - file: observability/apm/data-streams.md
+                  - file: observability/apm/index-lifecycle-management.md
+                  - file: observability/apm/view-elasticsearch-index-template.md
+                  - file: observability/apm/parse-data-using-ingest-pipelines.md
+                  - file: observability/apm/storage-sizing-guide.md
+                  - file: observability/apm/reduce-storage.md
+                  - file: observability/apm/explore-data-in-elasticsearch.md
+              - file: observability/apm/configure-apm-server.md
                 children:
-                  - file: observability/apps/general-configuration-options.md
-                  - file: observability/apps/configure-anonymous-authentication.md
-                  - file: observability/apps/apm-agent-authorization.md
-                  - file: observability/apps/configure-apm-agent-central-configuration.md
-                  - file: observability/apps/configure-apm-instrumentation.md
-                  - file: observability/apps/configure-kibana-endpoint.md
-                  - file: observability/apps/configure-logging.md
-                  - file: observability/apps/configure-output.md
+                  - file: observability/apm/general-configuration-options.md
+                  - file: observability/apm/configure-anonymous-authentication.md
+                  - file: observability/apm/apm-agent-authorization.md
+                  - file: observability/apm/configure-apm-agent-central-configuration.md
+                  - file: observability/apm/configure-apm-instrumentation.md
+                  - file: observability/apm/configure-kibana-endpoint.md
+                  - file: observability/apm/configure-logging.md
+                  - file: observability/apm/configure-output.md
                     children:
-                      - file: observability/apps/configure-output-for-elasticsearch-service-on-elastic-cloud.md
-                      - file: observability/apps/configure-elasticsearch-output.md
-                      - file: observability/apps/configure-logstash-output.md
-                      - file: observability/apps/configure-kafka-output.md
-                      - file: observability/apps/configure-redis-output.md
-                      - file: observability/apps/configure-console-output.md
-                  - file: observability/apps/configure-project-paths.md
-                  - file: observability/apps/configure-real-user-monitoring-rum.md
-                  - file: observability/apps/ssltls-settings.md
+                      - file: observability/apm/configure-output-for-elasticsearch-service-on-elastic-cloud.md
+                      - file: observability/apm/configure-elasticsearch-output.md
+                      - file: observability/apm/configure-logstash-output.md
+                      - file: observability/apm/configure-kafka-output.md
+                      - file: observability/apm/configure-redis-output.md
+                      - file: observability/apm/configure-console-output.md
+                  - file: observability/apm/configure-project-paths.md
+                  - file: observability/apm/configure-real-user-monitoring-rum.md
+                  - file: observability/apm/ssl-tls-settings.md
                     children:
-                      - file: observability/apps/ssltls-output-settings.md
-                      - file: observability/apps/ssltls-input-settings.md
-                  - file: observability/apps/tail-based-sampling.md
-                  - file: observability/apps/use-environment-variables-in-configuration.md
-                  - file: observability/apps/apm-server-advanced-setup.md
+                      - file: observability/apm/ssl-tls-output-settings.md
+                      - file: observability/apm/ssl-tls-input-settings.md
+                  - file: observability/apm/tail-based-sampling.md
+                  - file: observability/apm/use-environment-variables-in-configuration.md
+                  - file: observability/apm/apm-server-advanced-setup.md
                     children:
-                      - file: observability/apps/installation-layout.md
-                      - file: observability/apps/secrets-keystore-for-secure-settings.md
-                      - file: observability/apps/apm-server-command-reference.md
-                      - file: observability/apps/tune-data-ingestion.md
-                      - file: observability/apps/high-availability.md
-                      - file: observability/apps/apm-server-systemd.md
-              - file: observability/apps/monitor-apm-server.md
+                      - file: observability/apm/installation-layout.md
+                      - file: observability/apm/secrets-keystore-for-secure-settings.md
+                      - file: observability/apm/apm-server-command-reference.md
+                      - file: observability/apm/tune-data-ingestion.md
+                      - file: observability/apm/high-availability.md
+                      - file: observability/apm/apm-server-systemd.md
+              - file: observability/apm/monitor-apm-server.md
                 children:
-                  - file: observability/apps/monitor-fleet-managed-apm-server.md
-                  - file: observability/apps/monitor-apm-server-binary.md
+                  - file: observability/apm/monitor-fleet-managed-apm-server.md
+                  - file: observability/apm/monitor-apm-server-binary.md
                     children:
-                      - file: observability/apps/use-internal-collection-to-send-monitoring-data.md
-                      - file: observability/apps/use-metricbeat-to-send-monitoring-data.md
-                      - file: observability/apps/use-select-metrics-emitted-directly-to-monitoring-cluster.md
-              - file: observability/apps/apm-apis.md
+                      - file: observability/apm/use-internal-collection-to-send-monitoring-data.md
+                      - file: observability/apm/use-metricbeat-to-send-monitoring-data.md
+                      - file: observability/apm/use-select-metrics-emitted-directly-to-monitoring-cluster.md
+              - file: observability/apm/apis.md
                 children:
-                  - file: observability/apps/apm-ui-api.md
-                  - file: observability/apps/apm-server-api.md
+                  - file: observability/apm/apm-ui-api.md
+                  - file: observability/apm/apm-server-api.md
                     children:
-                      - file: observability/apps/apm-server-information-api.md
-                      - file: observability/apps/elastic-apm-events-intake-api.md
-                      - file: observability/apps/elastic-apm-agent-configuration-api.md
-                      - file: observability/apps/opentelemetry-intake-api.md
-                      - file: observability/apps/jaeger-event-intake.md
-                  - file: observability/apps/managed-intake-service-event-api.md
-              - file: observability/apps/upgrade.md
+                      - file: observability/apm/apm-server-information-api.md
+                      - file: observability/apm/elastic-apm-events-intake-api.md
+                      - file: observability/apm/elastic-apm-agent-configuration-api.md
+                      - file: observability/apm/opentelemetry-intake-api.md
+                      - file: observability/apm/jaeger-event-intake.md
+                  - file: observability/apm/managed-intake-service-event-api.md
+              - file: observability/apm/upgrade.md
                 children:
-                  - file: observability/apps/apm-agent-compatibility.md
-                  - file: observability/apps/upgrade-to-version-90.md
+                  - file: observability/apm/apm-agent-compatibility.md
+                  - file: observability/apm/upgrade-to-version-9.md
                     children:
-                      - file: observability/apps/upgrade-self-installation-of-apm-server-standalone-to-90.md
-                      - file: observability/apps/upgrade-self-installation-of-apm-integration-to-90.md
-                      - file: observability/apps/upgrade-elastic-cloud-apm-server-standalone-to-90.md
-                      - file: observability/apps/upgrade-elastic-cloud-with-apm-integration-to-90.md
-                  - file: observability/apps/switch-to-elastic-apm-integration.md
+                      - file: observability/apm/upgrade-self-installation-of-apm-server-standalone-to-9.md
+                      - file: observability/apm/upgrade-self-installation-of-apm-integration-to-9.md
+                      - file: observability/apm/upgrade-elastic-cloud-apm-server-standalone-to-9.md
+                      - file: observability/apm/upgrade-elastic-cloud-with-apm-integration-to-9.md
+                  - file: observability/apm/switch-to-elastic-apm-integration.md
                     children:
-                      - file: observability/apps/switch-self-installation-to-apm-integration.md
-                      - file: observability/apps/switch-an-elastic-cloud-cluster-to-apm-integration.md
-          - file: observability/apps/synthetic-monitoring.md
+                      - file: observability/apm/switch-self-installation-to-apm-integration.md
+                      - file: observability/apm/switch-an-elastic-cloud-cluster-to-apm-integration.md
+          - file: observability/synthetics/index.md
             children:
-              - file: observability/apps/get-started.md
+              - file: observability/synthetics/get-started.md
                 children:
-                  - file: observability/apps/create-monitors-with-project-monitors.md
-                  - file: observability/apps/create-monitors-in-synthetics-app.md
-              - file: observability/apps/scripting-browser-monitors.md
+                  - file: observability/synthetics/create-monitors-with-projects.md
+                  - file: observability/synthetics/create-monitors-ui.md
+              - file: observability/synthetics/scripting-browser-monitors.md
                 children:
-                  - file: observability/apps/write-synthetic-test.md
-                  - file: observability/apps/configure-individual-browser-monitors.md
-                  - file: observability/apps/use-synthetics-recorder.md
-              - file: observability/apps/configure-lightweight-monitors.md
-              - file: observability/apps/manage-monitors.md
-              - file: observability/apps/work-with-params-secrets.md
-              - file: observability/apps/analyze-data-from-synthetic-monitors.md
-              - file: observability/apps/monitor-resources-on-private-networks.md
-              - file: observability/apps/use-synthetics-cli.md
-              - file: observability/apps/configure-synthetics-projects.md
-              - file: observability/apps/multi-factor-authentication-mfa-for-browser-monitors.md
-              - file: observability/apps/configure-synthetics-settings.md
-              - file: observability/apps/grant-users-access-to-secured-resources.md
+                  - file: observability/synthetics/write-synthetic-test.md
+                  - file: observability/synthetics/configure-individual-browser-monitors.md
+                  - file: observability/synthetics/use-synthetics-recorder.md
+              - file: observability/synthetics/configure-lightweight-monitors.md
+              - file: observability/synthetics/manage-monitors.md
+              - file: observability/synthetics/work-with-params-secrets.md
+              - file: observability/synthetics/analyze-data.md
+              - file: observability/synthetics/monitor-resources-on-private-networks.md
+              - file: observability/synthetics/cli.md
+              - file: observability/synthetics/configure-projects.md
+              - file: observability/synthetics/mfa-for-browser-monitors.md
+              - file: observability/synthetics/configure-settings.md
+              - file: observability/synthetics/grant-access-to-secured-resources.md
                 children:
-                  - file: observability/apps/setup-role.md
-                  - file: observability/apps/writer-role.md
-                  - file: observability/apps/reader-role.md
-              - file: observability/apps/manage-data-retention.md
-              - file: observability/apps/use-synthetics-with-traffic-filters.md
-              - file: observability/apps/migrate-from-elastic-synthetics-integration.md
-              - file: observability/apps/scale-architect-synthetics-deployment.md
-              - file: observability/apps/synthetics-support-matrix.md
-              - file: observability/apps/synthetics-encryption-security.md
-          - file: observability/apps/real-user-monitoring-user-experience.md
-          - file: observability/apps/uptime-monitoring-deprecated.md
+                  - file: observability/synthetics/setup-role.md
+                  - file: observability/synthetics/writer-role.md
+                  - file: observability/synthetics/reader-role.md
+              - file: observability/synthetics/manage-data-retention.md
+              - file: observability/synthetics/traffic-filters.md
+              - file: observability/synthetics/migrate-from-elastic-synthetics-integration.md
+              - file: observability/synthetics/scale-architect-synthetics-deployment.md
+              - file: observability/synthetics/support-matrix.md
+              - file: observability/synthetics/encryption-security.md
+          - file: observability/applications/user-experience.md
+          - file: observability/uptime/index.md
             children:
-              - file: observability/apps/get-started-with-uptime.md
-              - file: observability/apps/analyze.md
+              - file: observability/uptime/get-started.md
+              - file: observability/uptime/analyze.md
                 children:
-                  - file: observability/apps/view-monitor-status.md
-                  - file: observability/apps/analyze-monitors.md
-                  - file: observability/apps/inspect-uptime-duration-anomalies.md
-              - file: observability/apps/configure-settings.md
+                  - file: observability/uptime/view-monitor-status.md
+                  - file: observability/uptime/analyze-monitors.md
+                  - file: observability/uptime/inspect-duration-anomalies.md
+              - file: observability/uptime/configure-settings.md
           - file: observability/otlp-visualize.md
-          - file: observability/apps/tutorial-monitor-java-application.md
+          - file: observability/applications/tutorial-monitor-java-application.md
       - file: observability/cicd.md
       - file: observability/cloud.md
         children:

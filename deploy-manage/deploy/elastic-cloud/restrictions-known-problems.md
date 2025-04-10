@@ -106,7 +106,7 @@ Currently you can’t use SSO to login directly from {{ecloud}} into {{kib}} end
 
 % If you are using APM 7.9.0 or older:
 
-% * You cannot use [APM Agent central configuration](/solutions/observability/apps/apm-agent-central-configuration.md) if your deployment is secured by [traffic filters](../../security/traffic-filtering.md).
+% * You cannot use [APM Agent central configuration](/solutions/observability/apm/apm-agent-central-configuration.md) if your deployment is secured by [traffic filters](../../security/traffic-filtering.md).
 % * If you access your APM deployment over [PrivateLink](../../security/aws-privatelink-traffic-filters.md), to use APM Agent central configuration you need to allow access to the APM deployment over public internet.
 
 

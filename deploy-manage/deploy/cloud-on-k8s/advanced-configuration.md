@@ -17,7 +17,7 @@ This section covers the following topics:
 
 ## Use APM Agent central configuration [k8s-apm-agent-central-configuration]
 
-[APM Agent configuration management](/solutions/observability/apps/apm-agent-central-configuration.md) [7.5.1] allows you to configure your APM Agents centrally from the {{kib}} APM app. To use this feature, the APM Server needs to be configured with connection details of the {{kib}} instance. If {{kib}} is managed by ECK, you can simply add a `kibanaRef` attribute to the APM Server specification:
+[APM Agent configuration management](/solutions/observability/apm/apm-agent-central-configuration.md) [7.5.1] allows you to configure your APM Agents centrally from the {{kib}} APM app. To use this feature, the APM Server needs to be configured with connection details of the {{kib}} instance. If {{kib}} is managed by ECK, you can simply add a `kibanaRef` attribute to the APM Server specification:
 
 ```yaml
 cat <<EOF | kubectl apply -f -
@@ -105,7 +105,7 @@ The APM Server keystore can be used to store sensitive settings in the APM Serve
             password: "${ES_PASSWORD}"
     ```
 
-3. Reference the key in the APM Server configuration, as described in the [Secrets keystore for secure settings](/solutions/observability/apps/secrets-keystore-for-secure-settings.md).
+3. Reference the key in the APM Server configuration, as described in the [Secrets keystore for secure settings](/solutions/observability/apm/secrets-keystore-for-secure-settings.md).
 
 
 ## Reference an existing {{es}} cluster [k8s-apm-existing-es]

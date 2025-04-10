@@ -44,7 +44,7 @@ The **Service** inventory provides a quick, high-level overview of the health an
 :screenshot:
 :::
 
-[Learn more about Application performance monitoring (APM) →](../../../solutions/observability/apps/application-performance-monitoring-apm.md)
+[Learn more about Application performance monitoring (APM) →](/solutions/observability/apm/index.md)
 
 
 ## Infrastructure monitoring [metrics-overview]
@@ -78,13 +78,13 @@ On the {{observability}} **Overview** page, the **{{user-experience}}** chart pr
 
 You can then drill down into the {{user-experience}} dashboard by clicking **Show dashboard** too see data by URL, operating system, browser, and location.
 
- [Learn more about {{user-experience}} →](../../../solutions/observability/apps/real-user-monitoring-user-experience.md)
+ [Learn more about {{user-experience}} →](/solutions/observability/applications/user-experience.md)
 
 ## Synthetic monitoring [synthetic-monitoring-overview]
 
 Simulate actions and requests that an end user would perform on your site at predefined intervals and in a controlled environment. The end result is rich, consistent, and repeatable data that you can trend and alert on.
 
-[Learn more about Synthetic monitoring →](../../../solutions/observability/apps/synthetic-monitoring.md)
+[Learn more about Synthetic monitoring →](/solutions/observability/synthetics/index.md)
 
 % Stateful only for Universal Profiling.
 

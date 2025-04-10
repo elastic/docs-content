@@ -88,7 +88,7 @@ This basic package is suitable for most use cases and it offers a reduced size o
 
 The servers {{agent}} flavor is installed using the `elastic-agent install --install-servers` command, or for RPM and DEB packages the `ELATIC_AGENT_FLAVOR=servers` environment variable. In addition to components included in the basic flavor, this flavor also includes:
 
-* `apm-server` - implements the Elastic [APM Server](../../solutions/observability/apps/get-started-with-apm.md).
+* `apm-server` - implements the Elastic [APM Server](/solutions/observability/apm/get-started.md).
 * `cloudbeat` - implements [Cloud Security Posture Management (CSPM)](../../solutions/security/cloud/cloud-security-posture-management.md) integrations.
 * `fleet-server`, implements [Fleet Server](../fleet/fleet-server.md) for managing {{agents}}.
 * `pf-elastic-symbolizer` - a server side component of Elastic [Universal Profiling](../../solutions/observability/infra-and-hosts/get-started-with-universal-profiling.md).
@@ -96,7 +96,7 @@ The servers {{agent}} flavor is installed using the `elastic-agent install --ins
 
 Beginning in version 9.0, for {{agents}} to have the full functionality that was supported by default in pre-9.x versions, you need to install the servers {[agent]} flavor.
 
-### Flavors for container package installs 
+### Flavors for container package installs
 
 #### Basic flavor [elastic-agent-basic-flavor-container]
 
@@ -108,7 +108,7 @@ For containerized environments, the servers {{agent}} flavor is installed using 
 
 #### Complete flavor [elastic-agent-complete-flavor]
 
-For containerized environments, the complete {{agent}} flavor is installed using the `elastic-agent-complete` command with an agent container package. This flavor includes all of the components in the servers flavor, and also includes additional dependencies to run browser monitors through Elastic Synthetics. It also includes the [journald](https://www.freedesktop.org/software/systemd/man/latest/systemd-journald.service.html) dependences necessary to use the [journald input](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-input-journald.html). Refer to [Synthetic monitoring via Elastic Agent and Fleet](/solutions/observability/apps/get-started.md) for more information.
+For containerized environments, the complete {{agent}} flavor is installed using the `elastic-agent-complete` command with an agent container package. This flavor includes all of the components in the servers flavor, and also includes additional dependencies to run browser monitors through Elastic Synthetics. It also includes the [journald](https://www.freedesktop.org/software/systemd/man/latest/systemd-journald.service.html) dependences necessary to use the [journald input](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-input-journald.html). Refer to [Synthetic monitoring via Elastic Agent and Fleet](/solutions/observability/synthetics/get-started.md) for more information.
 
 ## Resource requirements [elastic-agent-installation-resource-requirements]
 

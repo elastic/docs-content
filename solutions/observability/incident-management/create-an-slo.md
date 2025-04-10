@@ -184,9 +184,9 @@ Create an indicator based on the availability of your synthetic monitors. Availa
 
 When defining a Synthetics availability SLI, set the following fields:
 
-* **Monitor name** — The name of one or more [synthetic monitors](../../../solutions/observability/apps/configure-synthetics-projects.md).
-* **Project** — The ID of one or more [projects](../../../solutions/observability/apps/configure-synthetics-projects.md#synthetics-configuration-project) containing synthetic monitors.
-* **Tags** — One or more [tags](../../../solutions/observability/apps/configure-synthetics-projects.md) assigned to synthetic monitors.
+* **Monitor name** — The name of one or more [synthetic monitors](/solutions/observability/synthetics/configure-projects.md).
+* **Project** — The ID of one or more [projects](/solutions/observability/synthetics/configure-projects.md#synthetics-configuration-project) containing synthetic monitors.
+* **Tags** — One or more [tags](/solutions/observability/synthetics/configure-projects.md) assigned to synthetic monitors.
 * **Query filter** — An optional KQL query used to filter the Synthetics checks on some relevant criteria.
 
 ::::{note}
