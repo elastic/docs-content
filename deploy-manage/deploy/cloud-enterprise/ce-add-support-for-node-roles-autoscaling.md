@@ -9,7 +9,7 @@ mapped_pages:
 
 # Updating custom templates to support node_roles and autoscaling [ce-add-support-for-node-roles-and-autoscaling]
 
-Templates created in older versions of ECE should be updated in order to take advantage of new Elastic Cloud Enterprise features, such as [Data tiers](../../../manage-data/lifecycle/data-tiers.md), and [Deployment autoscaling](../../autoscaling.md). By updating these templates we also ensure forward compatibility with future Elastic Cloud Enterprise versions that will require certain fields such as `node_roles` and `id` to be present in the deployment configuration.
+Templates created in older versions of ECE should be updated in order to take advantage of new {{ece}} features, such as [Data tiers](../../../manage-data/lifecycle/data-tiers.md), and [Deployment autoscaling](../../autoscaling.md). By updating these templates we also ensure forward compatibility with future {{ece}} versions that will require certain fields such as `node_roles` and `id` to be present in the deployment configuration.
 
 ::::{note}
 System owned deployment templates are automatically updated during the ECE upgrade process to support both data tiers with `node_roles` and autoscaling. However, custom templates that you created must be manually updated by following the steps in this guide.
@@ -17,11 +17,11 @@ System owned deployment templates are automatically updated during the ECE upgra
 
 ## Adding support for node_roles [ece_adding_support_for_node_roles]
 
-The `node_roles` field defines the roles that an Elasticsearch topology element can have, which is used in place of `node_type` when a new feature such as autoscaling is enabled, or when a new data tier is added. This field is supported on [Elastic stack versions 7.10 and above](cloud://reference/cloud-enterprise/changes-to-index-allocation-api.md).
+The `node_roles` field defines the roles that an {{es}} topology element can have, which is used in place of `node_type` when a new feature such as autoscaling is enabled, or when a new data tier is added. This field is supported on [{{stack}} versions 7.10 and above](cloud://reference/cloud-enterprise/changes-to-index-allocation-api.md).
 
-There are a number of fields that need to be added to each Elasticsearch node in order to support `node_roles`:
+There are a number of fields that need to be added to each {{es}} node in order to support `node_roles`:
 
-* **id**: Unique identifier of the topology element. This field, along with the `node_roles`, identifies an Elasticsearch topology element.
+* **id**: Unique identifier of the topology element. This field, along with the `node_roles`, identifies an {{es}} topology element.
 * **node_roles**: The list of node roles. Allowable roles are: `master`, `ingest`, `ml`, `data_hot`, `data_content`, `data_warm`, `data_cold`, `data_frozen`, `remote_cluster_client`, and `transform`. For details, check [Node roles](elasticsearch://reference/elasticsearch/configuration-reference/node-settings.md#node-roles).
 * **topology_element_control**: Controls for the topology element.
 
@@ -313,7 +313,7 @@ The following example is based on the `default` system owned deployment template
 ::::
 
 
-In the reference example there are seven different *Elasticsearch topology elements*: `hot_content`, `warm`, `cold`, `frozen`, `coordinating`, `master`, and `ml`. These names map to the `id` field of each topology element. In addition, this template contains four different *resources*: `elasticsearch`, `kibana`, `apm`, and `enterprise_search`.
+In the reference example there are seven different *{{es}} topology elements*: `hot_content`, `warm`, `cold`, `frozen`, `coordinating`, `master`, and `ml`. These names map to the `id` field of each topology element. In addition, this template contains four different *resources*: `elasticsearch`, `kibana`, `apm`, and `enterprise_search`.
 
 
 ### Requirements [ece_requirements]
@@ -326,17 +326,17 @@ To add support for `node_roles`, the deployment template has to meet the followi
     ::::{note}
     :name: ece-ce-valid-topology-element-ids
 
-    The IDs `hot_content`, `warm`, `cold`, `frozen`, `coordinating`, `master`, and `ml` are the **only** ones supported in an Elasticsearch topology element. In addition, there may not be topology elements with duplicate IDs inside the `elasticsearch` resource.
+    The IDs `hot_content`, `warm`, `cold`, `frozen`, `coordinating`, `master`, and `ml` are the **only** ones supported in an {{es}} topology element. In addition, there may not be topology elements with duplicate IDs inside the `elasticsearch` resource.
     ::::
 
 * Each topology element contains the `id`, `node_roles`, and `topology_element_control` fields.
 
-It is also recommended that all Elasticsearch topology elements have the `node_attributes` field. This field can be useful in ILM policies, when creating a deployment using a version below 7.10, that does not support `node_roles`.
+It is also recommended that all {{es}} topology elements have the `node_attributes` field. This field can be useful in ILM policies, when creating a deployment using a version below 7.10, that does not support `node_roles`.
 
 Except for the `id` and `node_roles`, all fields can be configured by the user. Also, the topology elements must contain the exact same `id` and `node_roles` that are present in the reference example.
 
 ::::{note}
-Although it is required for the template to contain all resources and topology elements, it is possible to disable certain components by setting their `size.value` (and `topology_element_control.size` in the case of the Elasticsearch topology elements) to `0`.
+Although it is required for the template to contain all resources and topology elements, it is possible to disable certain components by setting their `size.value` (and `topology_element_control.size` in the case of the {{es}} topology elements) to `0`.
 ::::
 
 
@@ -345,23 +345,23 @@ Although it is required for the template to contain all resources and topology e
 
 To update a custom deployment template:
 
-1. Add the `id`, `node_roles`, `node_attributes`, and `topology_element_control` fields to the existing Elasticsearch topology elements. Keep in mind that these fields must match the Elasticsearch topology element in question:
+1. Add the `id`, `node_roles`, `node_attributes`, and `topology_element_control` fields to the existing {{es}} topology elements. Keep in mind that these fields must match the {{es}} topology element in question:
 
     * If the `id` of the topology elements in the existing templates already match any of the seven mentioned in the requirements, then simply add the `node_roles` and `topology_element_control` to those elements, based on the reference example.
-    * Otherwise, map each of the existing topology elements to one of the seven Elasticsearch topology elements, based on their `node_type`, and add the fields accordingly.
+    * Otherwise, map each of the existing topology elements to one of the seven {{es}} topology elements, based on their `node_type`, and add the fields accordingly.
 
 2. Add the `elasticsearch` topology elements that are missing.
 3. Add the `resources` that are missing.
 
 ::::{note}
-It is recommended to add the `id` field to each Elasticsearch topology element in the deployment plan, before updating the template. This can be performed either through a deployment update API request or using the deployment **Advanced edit** page. Refer to the [note above](#ece-ce-valid-topology-element-ids) to understand which values are available for the `id` field.
+It is recommended to add the `id` field to each {{es}} topology element in the deployment plan, before updating the template. This can be performed either through a deployment update API request or using the deployment **Advanced edit** page. Refer to the [note above](#ece-ce-valid-topology-element-ids) to understand which values are available for the `id` field.
 ::::
 
 
 
 ### Example [ece-ce-add-support-to-node-roles-example]
 
-The existing template contains three Elasticsearch topology elements and two resources (`elasticsearch` and `kibana`).
+The existing template contains three {{es}} topology elements and two resources (`elasticsearch` and `kibana`).
 
 ::::{dropdown} Custom example without support for `node_roles`
 ```json
@@ -465,9 +465,9 @@ The existing template contains three Elasticsearch topology elements and two res
 ::::
 
 
-In this case we can match the three existing Elasticsearch topology elements to `hot_content`, `master`, and `ml`, respectively, based on their `node_type` field. Therefore, we can simply add the `id`, `node_roles`, `topology_element_control`, and `node_attributes` that are already associated with these topology elements in the reference example.
+In this case we can match the three existing {{es}} topology elements to `hot_content`, `master`, and `ml`, respectively, based on their `node_type` field. Therefore, we can simply add the `id`, `node_roles`, `topology_element_control`, and `node_attributes` that are already associated with these topology elements in the reference example.
 
-Then, it is only necessary to add the four Elasticsearch topology elements (`warm`, `cold`, `frozen`, and `coordinating`) and two resources (`apm` and `enterprise_search`) that are missing. These fields can also be added based on the reference example.
+Then, it is only necessary to add the four {{es}} topology elements (`warm`, `cold`, `frozen`, and `coordinating`) and two resources (`apm` and `enterprise_search`) that are missing. These fields can also be added based on the reference example.
 
 After adding support for `node_roles`, the resulting deployment template should look similar to the following:
 
@@ -757,13 +757,13 @@ After adding support for `node_roles`, the resulting deployment template should 
 
 ## Adding support for autoscaling [ece_adding_support_for_autoscaling]
 
-After adding support for `node_roles` we can then update the template to support autoscaling. Autoscaling is used to automatically adjust the available resources in the deployments. Currently, this feature is available for Elasticsearch data tiers and machine learning node in [Elastic stack versions 7.11 and above](../../autoscaling.md).
+After adding support for `node_roles` we can then update the template to support autoscaling. Autoscaling is used to automatically adjust the available resources in the deployments. Currently, this feature is available for {{es}} data tiers and machine learning node in [{{stack}} versions 7.11 and above](../../autoscaling.md).
 
 There are a number of autoscaling fields that need to be added in order to support autoscaling:
 
-* **autoscaling_min**: The default minimum size of an Elasticsearch topology element when autoscaling is enabled. This setting is currently available only for machine learning nodes, since these are the only nodes that support scaling down.
-* **autoscaling_max**: The default maximum size of an Elasticsearch topology element when autoscaling is enabled. This setting is currently available only for data tiers and machine learning nodes, since these are the only nodes that support scaling up.
-* **autoscaling_enabled**: When set to `true`, autoscaling is enabled by default on an Elasticsearch cluster.
+* **autoscaling_min**: The default minimum size of an {{es}} topology element when autoscaling is enabled. This setting is currently available only for machine learning nodes, since these are the only nodes that support scaling down.
+* **autoscaling_max**: The default maximum size of an {{es}} topology element when autoscaling is enabled. This setting is currently available only for data tiers and machine learning nodes, since these are the only nodes that support scaling up.
+* **autoscaling_enabled**: When set to `true`, autoscaling is enabled by default on an {{es}} cluster.
 
 ::::{note}
 These fields represent the default settings for the deployment. However, autoscaling can be enabled/disabled and the maximum and minimum autoscaling sizes can be adjusted in the deployment settings.
@@ -1094,7 +1094,7 @@ If necessary, the values chosen for each field can be based on the reference exa
 
 To update a custom deployment template:
 
-1. Add the `autoscaling_min` and `autoscaling_max` fields to the Elasticsearch topology elements (check [Autoscaling through the API](../../autoscaling/autoscaling-in-ece-and-ech.md#ec-autoscaling-api-example)).
+1. Add the `autoscaling_min` and `autoscaling_max` fields to the {{es}} topology elements (check [Autoscaling through the API](../../autoscaling/autoscaling-in-ece-and-ech.md#ec-autoscaling-api-example)).
 2. Add the `autoscaling_enabled` fields to the `elasticsearch` resource. Set this field to `true` in case you want autoscaling enabled by default, and to `false` otherwise.
 
 
@@ -1736,7 +1736,7 @@ Having added support for `node_roles` and autoscaling to your custom template, i
 
 After the template is updated, you can start [creating new deployments](create-deployment.md) or [migrating existing ones to `node_roles`](#ece-migrating-a-deployment-to-node-roles).
 
-Although `node_roles` and autoscaling are only available in more recent Elastic stack versions, an updated template can still be used with deployments that have versions below 7.10. In these cases, the data tiers and autoscaling features will only take effect once the deployment is upgraded to versions 7.10 and 7.11, respectively.
+Although `node_roles` and autoscaling are only available in more recent {{stack}} versions, an updated template can still be used with deployments that have versions below 7.10. In these cases, the data tiers and autoscaling features will only take effect once the deployment is upgraded to versions 7.10 and 7.11, respectively.
 
 
 ## Migrating a deployment to `node_roles` [ece-migrating-a-deployment-to-node-roles]
@@ -1753,7 +1753,7 @@ If you do not intend to perform any of these actions, the migration can only be 
 
 1. Go to the deployment **Edit** page.
 2. Get the deployment update payload by clicking **Equivalent API request** at the bottom of the page.
-3. Update the payload by replacing `node_type` with `node_roles` in each Elasticsearch topology element. To know which `node_roles` to add to each topology element, refer to the [custom template example](#ece-ce-add-support-to-node-roles-example) where support for `node_roles` is added.
+3. Update the payload by replacing `node_type` with `node_roles` in each {{es}} topology element. To know which `node_roles` to add to each topology element, refer to the [custom template example](#ece-ce-add-support-to-node-roles-example) where support for `node_roles` is added.
 4. Send a `PUT` request with the updated deployment payload to conclude the migration. Check the [Update Deployment](https://www.elastic.co/docs/api/doc/cloud-enterprise/operation/operation-update-deployment) API documentation for more details.
 
 **Using the Advanced edit:**
@@ -1765,7 +1765,7 @@ To follow this approach you need to have administrator privileges.
 
 1. Go to the deployment **Edit** page.
 2. Click **Advanced edit** at the bottom of the page.
-3. Update the **Deployment configuration** by replacing `node_type` with `node_roles` in each Elasticsearch topology element. To know which `node_roles` to add to each topology element, refer to the [custom template example](#ece-ce-add-support-to-node-roles-example) where support for `node_roles` is added.
+3. Update the **Deployment configuration** by replacing `node_type` with `node_roles` in each {{es}} topology element. To know which `node_roles` to add to each topology element, refer to the [custom template example](#ece-ce-add-support-to-node-roles-example) where support for `node_roles` is added.
 4. Click **Save** to conclude the migration.
 
 ::::{warning}

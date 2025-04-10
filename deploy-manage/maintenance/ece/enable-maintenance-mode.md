@@ -8,7 +8,7 @@ applies_to:
 
 # Enable maintenance mode [ece-maintenance-mode]
 
-Maintenance mode lets you perform actions on an allocator safely that might otherwise carry some risk. For example, if you want to remove the allocator role from a host, enabling maintenance mode prevents new Elasticsearch clusters and Kibana instances from being provisioned on the allocator whilst you are moving the existing nodes to another allocator or whilst you are removing the role.
+Maintenance mode lets you perform actions on an allocator safely that might otherwise carry some risk. For example, if you want to remove the allocator role from a host, enabling maintenance mode prevents new {{es}} clusters and {{kib}} instances from being provisioned on the allocator whilst you are moving the existing nodes to another allocator or whilst you are removing the role.
 
 To put an allocator into maintenance mode:
 
@@ -17,7 +17,7 @@ To put an allocator into maintenance mode:
 3. Choose the allocator you want to work with and select **Enable Maintenance Mode**. Confirm the action.
    Narrow the list by name, ID, or choose from several other filters. To further define the list, use a combination of filters.
 
-After the allocator enters maintenance mode, no new Elasticsearch nodes or Kibana instances will be started on the allocator. Existing nodes will continue to work as expected. You can now safely perform actions like [moving nodes off the allocator](move-nodes-instances-from-allocators.md).
+After the allocator enters maintenance mode, no new {{es}} nodes or {{kib}} instances will be started on the allocator. Existing nodes will continue to work as expected. You can now safely perform actions like [moving nodes off the allocator](move-nodes-instances-from-allocators.md).
 
 If you want to make the allocator fully active again, select **Disable Maintenance Mode**. Confirm the action.
 

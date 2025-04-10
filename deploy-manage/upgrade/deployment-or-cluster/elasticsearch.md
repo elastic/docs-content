@@ -4,7 +4,7 @@ applies_to:
   deployment:
     self: all
 ---
-    
+
 # Upgrade {{es}} [upgrading-elasticsearch]
 
 An {{es}} cluster can be upgraded one node at a time so upgrading does not interrupt service. Running multiple versions of {{es}} in the same cluster beyond the duration of an upgrade is not supported, as shards cannot be replicated from upgraded nodes to nodes running the older version.
@@ -206,5 +206,5 @@ If you upgrade an {{es}} cluster that uses deprecated cluster or index settings 
 
 Once you've successfully upgraded {{es}}, continue upgrading the remaining {{stack}} components:
 * [{{kib}}](/deploy-manage/upgrade/deployment-or-cluster/kibana.md)
-* [Elastic APM](../../../solutions/observability/apps/upgrade.md)
-* [Ingest components](/deploy-manage/upgrade/ingest-components.md)  
+* [Elastic APM](/solutions/observability/apm/upgrade.md)
+* [Ingest components](/deploy-manage/upgrade/ingest-components.md)

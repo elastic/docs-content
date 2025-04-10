@@ -1,12 +1,12 @@
 ---
-navigation_title: "Kibana task manager monitoring"
+navigation_title: "{{kib}} task manager monitoring"
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/task-manager-health-monitoring.html
 applies_to:
   stack: preview
 ---
 
-# Kibana task manager health monitoring [task-manager-health-monitoring]
+# {{kib}} task manager health monitoring [task-manager-health-monitoring]
 
 
 ::::{warning}
@@ -86,7 +86,7 @@ By default, the health API runs at a regular cadence, and each time it runs, it 
 This message looks like:
 
 ```txt
-Detected potential performance issue with Task Manager. Set 'xpack.task_manager.monitored_stats_health_verbose_log.enabled: true' in your Kibana.yml to enable debug logging`
+Detected potential performance issue with Task Manager. Set 'xpack.task_manager.monitored_stats_health_verbose_log.enabled: true' in your {{kib}}.yml to enable debug logging`
 ```
 
 If this message appears, set [`xpack.task_manager.monitored_stats_health_verbose_log.enabled`](kibana://reference/configuration-reference/task-manager-settings.md#task-manager-settings) to `true` in your `kibana.yml`. This will start logging the health metrics at either a `warn` or `error` log level, depending on the detected severity of the potential problem.

@@ -142,4 +142,4 @@ The data collected by {{agent}} is stored in indices that are more granular than
 Want to get up and running with {{fleet}} and {{agent}} quickly? Read our getting started guides:
 
 * [Get started with logs and metrics](/solutions/observability/infra-and-hosts/get-started-with-system-metrics.md)
-* [Get started with APM](/solutions/observability/apps/get-started-with-apm.md)
+* [Get started with APM](/solutions/observability/apm/get-started.md)

@@ -39,7 +39,7 @@ Currently, autoscaling behavior is as follows:
 
 * **Data tiers**
 
-    * Each Elasticsearch [data tier](../../manage-data/lifecycle/data-tiers.md) scales upward based on the amount of available storage. When we detect more storage is needed, autoscaling will scale up each data tier independently to ensure you can continue and ingest more data to your hot and content tier, or move data to the warm, cold, or frozen data tiers.
+    * Each {{es}} [data tier](../../manage-data/lifecycle/data-tiers.md) scales upward based on the amount of available storage. When we detect more storage is needed, autoscaling will scale up each data tier independently to ensure you can continue and ingest more data to your hot and content tier, or move data to the warm, cold, or frozen data tiers.
     * In addition to scaling up existing data tiers, a new data tier will be automatically added when necessary, based on your [index lifecycle management policies](https://www.elastic.co/guide/en/cloud-enterprise/current/ece-configure-index-management.html).
     * To control the maximum size of each data tier and ensure it will not scale above a certain size, you can use the maximum size per zone field.
     * Autoscaling based on memory or CPU, as well as autoscaling downward, is not currently supported. In case you want to adjust the size of your data tier to add more memory or CPU, or in case you deleted data and want to scale it down, you can set the current size per zone of each data tier manually.
@@ -53,7 +53,7 @@ Currently, autoscaling behavior is as follows:
     * The determination of when to scale is based on the expected memory and CPU requirements for the currently configured machine learning jobs and trained models.
 
 ::::{note}
-For any Elasticsearch component the number of availability zones is not affected by autoscaling. You can always set the number of availability zones manually and the autoscaling mechanism will add or remove capacity per availability zone.
+For any {{es}} component the number of availability zones is not affected by autoscaling. You can always set the number of availability zones manually and the autoscaling mechanism will add or remove capacity per availability zone.
 ::::
 
 ## When does autoscaling occur?[ec-autoscaling-factors]
@@ -81,7 +81,7 @@ In {{ece}} deployments, a warning is also issued in the ECE `service-constructor
 
 The following are known limitations and restrictions with autoscaling:
 
-* Autoscaling will not run if the cluster is unhealthy or if the last Elasticsearch plan failed.
+* Autoscaling will not run if the cluster is unhealthy or if the last {{es}} plan failed.
 
 In {{ech}} the following additional limitations apply:
 
@@ -129,12 +129,12 @@ Each autoscaling setting is configured with a default value. You can adjust thes
 
 % ECE NOTE
 ::::{note} - {{ece}}
-On Elastic Cloud Enterprise, system-owned deployment templates include the default values for all deployment autoscaling settings.
+On {{ece}}, system-owned deployment templates include the default values for all deployment autoscaling settings.
 ::::
 
 ## Autoscaling example [ec-autoscaling-example]
 
-To help you better understand the available autoscaling settings, this example describes a typical autoscaling workflow on sample Elastic Cloud Enterprise or {{ech}} deployment.
+To help you better understand the available autoscaling settings, this example describes a typical autoscaling workflow on sample {{ece}} or {{ech}} deployment.
 
 1. Enable autoscaling:
 
@@ -145,7 +145,7 @@ To help you better understand the available autoscaling settings, this example d
 
 2. View and adjust autoscaling settings on data tiers:
 
-    1. Open the **Edit** page for your deployment to get the current and maximum size per zone of each Elasticsearch data tier. In this example, the hot data and content tier has the following settings:
+    1. Open the **Edit** page for your deployment to get the current and maximum size per zone of each {{es}} data tier. In this example, the hot data and content tier has the following settings:
 
         |     |     |     |
         | --- | --- | --- |
@@ -197,8 +197,8 @@ To learn more about the {{ece}} API, see the [RESTful API](cloud://reference/clo
 
 Note the following requirements when you run this API request:
 
-* All Elasticsearch components must be included in the request, even if they are not enabled (that is, if they have a zero size). All components are included in this example.
-* The request requires a format that supports data tiers. Specifically, all Elasticsearch components must contain the following properties:
+* All {{es}} components must be included in the request, even if they are not enabled (that is, if they have a zero size). All components are included in this example.
+* The request requires a format that supports data tiers. Specifically, all {{es}} components must contain the following properties:
 
     * `id`
     * `node_attributes`
@@ -218,7 +218,7 @@ $$$ece-autoscaling-api-example-requirements-table$$$
 | data tier | ✓ | ✕ | ✓ |
 | machine learning node | ✕ | ✓ | ✓ |
 | coordinating and master nodes | ✓ | ✕ | ✕ |
-| Kibana | ✓ | ✕ | ✕ |
+| {{kib}} | ✓ | ✕ | ✕ |
 | APM | ✓ | ✕ | ✕ |
 
 * ✓ = Include the property.

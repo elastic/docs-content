@@ -11,7 +11,7 @@ applies_to:
   serverless: unavailable
 ---
 
-# Elasticsearch audit events ignore policies [audit-log-ignore-policy]
+# {{es}} audit events ignore policies [audit-log-ignore-policy]
 
 The comprehensive audit trail is necessary to ensure accountability. It offers tremendous value during incident response and can even be required for demonstrating compliance.
 

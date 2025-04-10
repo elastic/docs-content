@@ -34,7 +34,7 @@ For more detailed instructions, see the [Google Cloud documentation](https://clo
 
 ### Service authentication [repository-gcs-service-authentication]
 
-The repository must authenticate the requests it makes to the Google Cloud Storage service. It is common for Google client libraries to employ a strategy named [application default credentials](https://cloud.google.com/docs/authentication/production#providing_credentials_to_your_application). However, that strategy is only **partially supported** by Elasticsearch. The repository operates under the Elasticsearch process, which runs with the security manager enabled. The security manager obstructs the "automatic" credential discovery when the environment variable `GOOGLE_APPLICATION_CREDENTIALS` is used to point to a local file on disk. It can, however, retrieve the service account that is attached to the resource that is running Elasticsearch, or fall back to the default service account that Compute Engine, Kubernetes Engine or App Engine provide. Alternatively, you must configure [service account](#repository-gcs-using-service-account) credentials if you are using an environment that does not support automatic credential discovery.
+The repository must authenticate the requests it makes to the Google Cloud Storage service. It is common for Google client libraries to employ a strategy named [application default credentials](https://cloud.google.com/docs/authentication/production#providing_credentials_to_your_application). However, that strategy is only **partially supported** by {{es}}. The repository operates under the {{es}} process, which runs with the security manager enabled. The security manager obstructs the "automatic" credential discovery when the environment variable `GOOGLE_APPLICATION_CREDENTIALS` is used to point to a local file on disk. It can, however, retrieve the service account that is attached to the resource that is running {{es}}, or fall back to the default service account that Compute Engine, Kubernetes Engine or App Engine provide. Alternatively, you must configure [service account](#repository-gcs-using-service-account) credentials if you are using an environment that does not support automatic credential discovery.
 
 
 ### Using a service account [repository-gcs-using-service-account]
@@ -70,7 +70,7 @@ A JSON service account file looks like this:
 }
 ```
 
-To provide this file to the repository, it must be stored in the [Elasticsearch keystore](../../security/secure-settings.md). You must add a `file` setting with the name `gcs.client.NAME.credentials_file` using the `add-file` subcommand. `NAME` is the name of the client configuration for the repository. The implicit client name is `default`, but a different client name can be specified in the repository settings with the `client` key.
+To provide this file to the repository, it must be stored in the [{{es}} keystore](../../security/secure-settings.md). You must add a `file` setting with the name `gcs.client.NAME.credentials_file` using the `add-file` subcommand. `NAME` is the name of the client configuration for the repository. The implicit client name is `default`, but a different client name can be specified in the repository settings with the `client` key.
 
 ::::{note}
 Passing the file path via the GOOGLE_APPLICATION_CREDENTIALS environment variable is **not** supported.
@@ -118,7 +118,7 @@ PUT _snapshot/my_gcs_repository
 }
 ```
 
-Some settings are sensitive and must be stored in the [Elasticsearch keystore](../../security/secure-settings.md). This is the case for the service account file:
+Some settings are sensitive and must be stored in the [{{es}} keystore](../../security/secure-settings.md). This is the case for the service account file:
 
 ```sh
 bin/elasticsearch-keystore add-file gcs.client.default.credentials_file /path/service-account.json
