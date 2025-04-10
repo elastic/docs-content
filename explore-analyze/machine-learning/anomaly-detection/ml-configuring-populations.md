@@ -3,7 +3,9 @@ applies_to:
   stack: ga
   serverless: ga
 mapped_pages:
-  - https://www.elastic.co/guide/en/machine-learning/master/ml-configuring-populations.html
+  - https://www.elastic.co/guide/en/machine-learning/current/ml-anomaly-detection-job-types.html
+  # I'm not 100% sure about this one, but https://www.elastic.co/guide/en/machine-learning/8.18/ml-configuring-populations.html
+  # points to https://www.elastic.co/guide/en/machine-learning/8.18/ml-anomaly-detection-job-types.html#population-jobs
 ---
 
 # Performing population analysis [ml-configuring-populations]
