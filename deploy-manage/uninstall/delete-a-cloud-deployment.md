@@ -116,5 +116,5 @@ To delete an Elasticsearch deployment created with {{eck}}:
    ```
    
 :::{{tip}}
-To fully uninstall {{eck}} from your cluster including all managed resources and the ECK operator, refer to the [Uninstall Elastic Cloud on Kubernetes](/deploy-manage/uninstall/uninstall-elastic-cloud-on-kubernetes.md) guide.
+To fully uninstall {{eck}} from your cluster including all managed resources and the ECK operator, refer to the [](/deploy-manage/uninstall/uninstall-elastic-cloud-on-kubernetes.md) guide.
 :::
