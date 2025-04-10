@@ -18,7 +18,7 @@ Elasticsearch autoscaling requires a valid Enterprise license or Enterprise tria
 ::::
 
 
-ECK can leverage the [autoscaling API](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-autoscaling) introduced in Elasticsearch 7.11 to adjust automatically the number of Pods and the allocated resources in a tier. Currently, autoscaling is supported for Elasticsearch [data tiers](/manage-data/lifecycle/data-tiers.md) and machine learning nodes. ECK scales Elasticsearch data tiers exclusively by scaling storage. CPU and Memory are scaled *relative* to the storage resource min/max settings, and not independently in data tiers. ECK can scale memory and CPU on ML tiers if specified in the `ElasticsearchAutoscaler.spec`. On Frozen tiers ECK can scale memory if specified in the `ElasticsearchAutoscaler.cpu`, but will scale CPU in relation to the storage.
+ECK can leverage the [autoscaling API](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-autoscaling) introduced in Elasticsearch 7.11 to adjust automatically the number of Pods and the allocated resources in a tier. Currently, autoscaling is supported for Elasticsearch [data tiers](/manage-data/lifecycle/data-tiers.md) and machine learning nodes. ECK scales Elasticsearch data tiers (excluding frozen tiers) exclusively by scaling storage. CPU and Memory are scaled *relative* to the storage resource min/max settings, and not independently in data tiers (again excluding frozen tiers). ECK can scale memory and CPU on ML tiers if specified in the `ElasticsearchAutoscaler.spec`. On Frozen tiers ECK can scale memory if specified in the `ElasticsearchAutoscaler.cpu`, but will scale CPU in relation to the storage.
 
 
 ### Enable autoscaling [k8s-enable]
