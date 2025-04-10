@@ -6,7 +6,7 @@ applies_to:
 # Date
 The date processor parses date strings and uses them as the timestamp of the document.
 
-This functionality uses the {{es}} date pipeline processor. Additional details can be found in the [{{es}} documentation](elasticsearch://reference/enrich-processor/date-processor).
+This functionality uses the {{es}} date pipeline processor. Additional details can be found in the [{{es}} documentation](elasticsearch://reference/enrich-processor/date-processor.md).
 
 ## Examples
 

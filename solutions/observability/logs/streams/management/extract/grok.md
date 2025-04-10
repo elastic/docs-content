@@ -7,7 +7,7 @@ The grok processor is used to parse unstructured log messages and extract fields
 You can provide multiple patterns to the Grok processor. The Grok processor will try to match the log message against each pattern in the order they are provided. If a pattern matches, the fields will be extracted and the remaining patterns will not be used. If a pattern does not match, the grok processor will try the next pattern. If no patterns match, the grok processor will fail and you can troubleshoot the issue. See below for more information.
 It is recommended to start with the most common patterns first and then add more specific patterns later. This will help to reduce the number of runs the grok processor has to do and will improve the performance of the pipeline.
 
-This functionality uses the {{es}} grok pipeline processor. Additional details can be found in the [{{es}} documentation](elasticsearch://reference/enrich-processor/grok-processor).
+This functionality uses the {{es}} grok pipeline processor. Additional details can be found in the [{{es}} documentation](elasticsearch://reference/enrich-processor/grok-processor.md).
 
 The grok processor uses a set of predefined patterns to match the log messages and extract the fields. The patterns are defined in the TODO.
 In addition you can also define your own pattern definitions by expanding the `Optional fields` section. This will allow you to define your own patterns and use them in the grok processor.

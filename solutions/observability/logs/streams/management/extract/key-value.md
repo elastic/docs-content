@@ -5,7 +5,7 @@ applies_to:
 # Key value
 The key value processor allows you to extract key-value pairs from a field and assign them to a target field or the root of the document.
 
-This functionality uses the {{es}} kv pipeline processor. Additional details can be found in the [{{es}} documentation](elasticsearch://reference/enrich-processor/kv-processor).
+This functionality uses the {{es}} kv pipeline processor. Additional details can be found in the [{{es}} documentation](elasticsearch://reference/enrich-processor/kv-processor.md).
 
 ## Required fields
 ### Field
