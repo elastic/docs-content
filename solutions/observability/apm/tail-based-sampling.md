@@ -14,7 +14,7 @@ Most options on this page are supported by all APM Server deployment methods whe
 ::::
 
 ::::{note}
-Enhanced privileges are required to use tail-based sampling. For more information, refer to [Create a tail-based sampling role](/solutions/observability/apps/create-assign-feature-roles-to-apm-server-users.md#apm-privileges-tail-based-sampling).
+Enhanced privileges are required to use tail-based sampling. For more information, refer to [Create a tail-based sampling role](/solutions/observability/apm/create-assign-feature-roles-to-apm-server-users.md#apm-privileges-tail-based-sampling).
 ::::
 
 Tail-based sampling configuration options.

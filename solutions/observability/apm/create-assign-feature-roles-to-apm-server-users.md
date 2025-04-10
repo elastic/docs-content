@@ -30,7 +30,7 @@ The following are common roles that APM Server users might need:
 * [**Central configuration management role**](#apm-privileges-agent-central-config): Allows a user to view APM Agent central configurations, which is **required** when [central configuration management](/solutions/observability/apm/apm-agent-central-configuration.md) is enabled (it is enabled by default).
 * [**Monitoring role**](#apm-privileges-to-publish-monitoring): Allows a user to publish monitoring data, view monitoring data, or both.
 * [**RUM source mapping role**](#apm-privileges-rum-source-mapping): Allows a user to read RUM source maps.
-* [**Tail-based sampling role**](#apm-privileges-tail-based-sampling): Allows a user to use [tail-based sampling](/solutions/observability/apps/transaction-sampling.md#apm-tail-based-sampling).
+* [**Tail-based sampling role**](#apm-privileges-tail-based-sampling): Allows a user to use [tail-based sampling](/solutions/observability/apm/transaction-sampling.md#apm-tail-based-sampling).
 
 ::::{admonition} Example: Assigning multiple roles to an APM Server user
 If you want to create an APM Server user who can use the Elastic APM Real User Monitoring (RUM) JavaScript Agent to ingest data from a frontend application and you use central configuration to manage APM agents, you would need to assign these three roles to the user:
@@ -228,7 +228,7 @@ The previous privileges should be sufficient for RUM source mapping to work prop
 
 ## Create a *tail-based sampling* role [apm-privileges-tail-based-sampling]
 
-If [tail-based sampling](/solutions/observability/apps/tail-based-sampling.md) is enabled, the user will need additional privileges.
+If [tail-based sampling](/solutions/observability/apm/tail-based-sampling.md) is enabled, the user will need additional privileges.
 
 To grant an APM Server user with the required privileges for reading tail-based sampling indices from {{es}}, assign the user the following privileges:
 
