@@ -6,7 +6,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-delete-deployment.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-restore-deployment.html
   - https://www.elastic.co/guide/en/cloud/current/ec-billing-stop.html
-navigation_title: "Delete a cloud deployment"
+navigation_title: "Delete an orchestrated deployment"
 applies_to:
   deployment:
     ess:
@@ -15,7 +15,7 @@ applies_to:
   serverless:
 ---
 
-# Delete a cloud deployment
+# Delete an orchestrated deployment
 
 This page provides instructions for deleting several types of cloud deployments, and outlines key considerations before proceeding.
 
@@ -93,7 +93,7 @@ To restore a terminated deployment,
 
 ## {{eck}} [elastic-cloud-kubernetes]
 
-To delete a deployment managed by {{eck}}, remove the corresponding `{{es}}`, `{{kib}}`, and any other related custom resources from your Kubernetes cluster. This action deletes all associated pods and their persistent data.
+To delete a deployment managed by {{eck}}, remove the corresponding {{es}}, {{kib}}, and any other related custom resources from your Kubernetes cluster. This action deletes all associated pods and their persistent data.
 To delete an Elasticsearch deployment created with {{eck}}:
 
 1. Run the following command to delete the {{es}} custom resource:
@@ -106,8 +106,10 @@ To delete an Elasticsearch deployment created with {{eck}}:
    ```shell
    kubectl delete elasticsearch test-deployment
    ```
+   :::{warning}
+   This deletes the custom resource and all associated infrastructure, such as {{es}} nodes, services, and persistent data volumes. By default, this also deletes the data stored in those volumes, but you can [configure](/deploy-manage/deploy/cloud-on-k8s/volume-claim-templates.md#controlling-volume-claim-deletion-k8s_controlling_volume_claim_deletion) the `volumeClaimDeletePolicy` field in the {{es}} resource manifest to retain the volumes if you plan to recreate the cluster later.
+   :::
 
-   This deletes the custom resource and all associated infrastructure, such as {{es}} nodes, services, and persistent data volumes.
 
 2. If you also deployed {{kib}} or other stack components, delete those resources as well:
 
