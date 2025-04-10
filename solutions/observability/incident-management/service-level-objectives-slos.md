@@ -75,7 +75,7 @@ There are also options to sort and group the SLOs displayed in the overview:
 
 * **Sort by**: SLI value, SLO status, Error budget consumed, or Error budget remaining.
 * **Group by**: None, Tags, Status, or SLI type.
-* Click icons to switch between a card view (![Card view icon](/solutions/images/serverless-apps.svg "")), list view (![List view icon](/solutions/images/serverless-list.svg "")), or compact view (![Compact view icon](/solutions/images/serverless-tableDensityCompact.svg "")]).
+* Click icons to switch between a card view (![Card view icon](/solutions/images/serverless-apps.svg "")), list view (![List view icon](/solutions/images/serverless-list.svg "")), or compact view (![Compact view icon](/solutions/images/serverless-tableDensityCompact.svg "")).
 
 
 ## SLO dashboard panels [observability-slos-slo-dashboard-panels]
@@ -100,7 +100,7 @@ To learn more about Dashboards, see [Dashboards](/solutions/observability/get-st
 
 Starting in version 8.12.0, SLOs are generally available (GA). If you’re upgrading from a beta version of SLOs (available in 8.11.0 and earlier), you must migrate your SLO definitions to a new format.
 
-Refer to [Upgrade from beta to GA](/troubleshoot/observability/troubleshoot-service-level-objectives-slos.
+Refer to [Upgrade from beta to GA](/troubleshoot/observability/troubleshoot-service-level-objectives-slos.md).
 
 
 ## Next steps [slo-overview-next-steps]
