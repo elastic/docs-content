@@ -25,7 +25,7 @@ As the following diagram illustrates, {{agent}} can monitor the host where it's 
 To learn about installation options, refer to [](/reference/fleet/install-elastic-agents.md).
 
 :::{note}
-Using {{fleet}} and {{agent}} {{serverless-full}}? Please note these [restrictions](/reference/fleet/fleet-agent-serverless-restrictions.md).
+Using {{fleet}} and {{agent}} {{serverless-full}}? Note these [restrictions](/reference/fleet/fleet-agent-serverless-restrictions.md).
 :::
 
 :::{tip}

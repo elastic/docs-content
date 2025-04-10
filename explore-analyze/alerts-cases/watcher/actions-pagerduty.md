@@ -23,7 +23,7 @@ The following snippet shows a simple PagerDuty action definition:
     "transform" : { ... },
     "throttle_period" : "5m",
     "pagerduty" : {
-      "description" : "Main system down, please check!" <1>
+      "description" : "Main system down, check!" <1>
     }
   }
 }
@@ -41,7 +41,7 @@ To give the PagerDuty incident some more context, you can attach the payload as 
     "throttle_period" : "5m",
     "pagerduty" : {
       "account" : "team1",
-      "description" : "Main system down, please check! Happened at {{ctx.execution_time}}",
+      "description" : "Main system down, check! Happened at {{ctx.execution_time}}",
       "attach_payload" : true,
       "client" : "/foo/bar/{{ctx.watch_id}}",
       "client_url" : "http://www.example.org/",

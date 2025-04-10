@@ -26,7 +26,7 @@ When `kubectl` is used to modify a resource, it calculates the diff between the 
 If you have configured a Beat to run as a `Deployment` and you are using a `hostPath` volume as the Beats data directory, you might encounter an error similar to the following:
 
 ```shell
-ERROR   instance/beat.go:958    Exiting: data path already locked by another beat. Please make sure that multiple beats are not sharing the same data path (path.data).
+ERROR   instance/beat.go:958    Exiting: data path already locked by another beat. Make sure that multiple beats are not sharing the same data path (path.data).
 ```
 
 This can happen if the new Pod is scheduled on the same Kubernetes node as the old Pod and is now trying to use the same data directory. Use a [`Recreate`](/deploy-manage/deploy/cloud-on-k8s/configuration-beats.md#k8s-beat-chose-the-deployment-model) deployment strategy to avoid this problem.

@@ -31,7 +31,7 @@ Saved objects that are corrupted through manual editing or integrations cause mi
 For example, you receive the following error message:
 
 ```sh
-Unable to migrate the corrupt saved object document with _id: 'marketing_space:dashboard:e3c5fc71-ac71-4805-bcab-2bcc9cc93275'. To allow migrations to proceed, please delete this document from the [.kibana_7.12.0_001] index.
+Unable to migrate the corrupt saved object document with _id: 'marketing_space:dashboard:e3c5fc71-ac71-4805-bcab-2bcc9cc93275'. To allow migrations to proceed, delete this document from the [.kibana_7.12.0_001] index.
 ```
 
 To delete the documents that cause migrations to fail, take the following steps:
@@ -177,7 +177,7 @@ If routing allocation is the issue, the `_cluster/allocation/explain` API will r
 Upgrade migrations fail because routing allocation is disabled or restricted (`cluster.routing.allocation.enable: none/primaries/new_primaries`), which causes {{kib}} to log errors such as:
 
 ```sh
-Unable to complete saved object migrations for the [.kibana] index: [incompatible_cluster_routing_allocation] The elasticsearch cluster has cluster routing allocation incorrectly set for migrations to continue. To proceed, please remove the cluster routing allocation settings with PUT /_cluster/settings {"transient": {"cluster.routing.allocation.enable": null}, "persistent": {"cluster.routing.allocation.enable": null}}
+Unable to complete saved object migrations for the [.kibana] index: [incompatible_cluster_routing_allocation] The elasticsearch cluster has cluster routing allocation incorrectly set for migrations to continue. To proceed, remove the cluster routing allocation settings with PUT /_cluster/settings {"transient": {"cluster.routing.allocation.enable": null}, "persistent": {"cluster.routing.allocation.enable": null}}
 ```
 
 To get around the issue, remove the transient and persisted routing allocation settings:

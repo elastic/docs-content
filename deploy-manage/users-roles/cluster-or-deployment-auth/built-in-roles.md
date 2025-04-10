@@ -68,7 +68,7 @@ $$$built-in-roles-ingest-user$$$ `ingest_admin`
 
 
 $$$built-in-roles-kibana-dashboard$$$ `kibana_dashboard_only_user`
-:   (This role is deprecated, please use [{{kib}} feature privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md#kibana-feature-privileges) instead). Grants read-only access to the {{kib}} Dashboard in every [space in {{kib}}](/deploy-manage/manage-spaces.md). This role does not have access to editing tools in {{kib}}.
+:   (This role is deprecated, use [{{kib}} feature privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md#kibana-feature-privileges) instead). Grants read-only access to the {{kib}} Dashboard in every [space in {{kib}}](/deploy-manage/manage-spaces.md). This role does not have access to editing tools in {{kib}}.
 
 $$$built-in-roles-kibana-system$$$ `kibana_system`
 :   Grants access necessary for the {{kib}} system user to read from and write to the {{kib}} indices, manage index templates and tokens, and check the availability of the {{es}} cluster. It also permits activating, searching, and retrieving user profiles, as well as updating user profile data for the `kibana-*` namespace. This role grants read access to the `.monitoring-*` indices and read and write access to the `.reporting-*` indices. For more information, see [Configuring Security in {{kib}}](/deploy-manage/security.md).
@@ -82,7 +82,7 @@ $$$built-in-roles-kibana-admin$$$ `kibana_admin`
 :   Grants access to all {{kib}} features in all spaces. For more information on {{kib}} authorization, see [](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md).
 
 $$$built-in-roles-kibana-user$$$ `kibana_user`
-:   This role is deprecated, please use the [`kibana_admin`](#built-in-roles-kibana-admin) role instead. Grants access to all features in {{kib}}.
+:   This role is deprecated, use the [`kibana_admin`](#built-in-roles-kibana-admin) role instead. Grants access to all features in {{kib}}.
 
 $$$built-in-roles-logstash-admin$$$ `logstash_admin`
 :   Grants access to the `.logstash*` indices for managing configurations, and grants necessary access for logstash-specific APIs exposed by the logstash x-pack plugin.

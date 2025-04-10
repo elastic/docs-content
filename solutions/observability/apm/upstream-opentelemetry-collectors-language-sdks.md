@@ -185,7 +185,7 @@ java -javaagent:/path/to/opentelemetry-javaagent-all.jar \
 
     For information on how to format an API key, see [API keys](/solutions/observability/apm/api-keys.md).
 
-    Please note the required space between `Bearer` and `an_apm_secret_token`, and `ApiKey` and `an_api_key`.
+    Note the required space between `Bearer` and `an_apm_secret_token`, and `ApiKey` and `an_api_key`.
 
     ::::{note}
     If you are using a version of the Python OpenTelemetry agent *before* 1.27.0, the content of the header *must* be URL-encoded. You can use the Python standard library’s `urllib.parse.quote` function to encode the content of the header.
