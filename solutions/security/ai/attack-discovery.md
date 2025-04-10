@@ -39,7 +39,7 @@ You need the `Attack Discovery: All` privilege to use Attack Discovery.
 
 By default, Attack Discovery analyzes up to 100 alerts from the last 24 hours, but you can customize how many and which alerts it analyzes using the settings menu. To open it, click the gear icon next to the **Generate** button.
 
-::::{image} ../../../images/security-attack-discovery-settings.png
+::::{image} /solutions/images/security-attack-discovery-settings.png
 :alt: Attack Discovery's settings menu
 :width: 500px
 ::::
