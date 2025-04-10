@@ -43,7 +43,7 @@ outputs:
 
 ## Kafka output and using {{ls}} to index data to {{es}} [_kafka_output_and_using_ls_to_index_data_to_es]
 
-If you are considering using {{ls}} to ship the data from `kafka` to {{es}}, please be aware the structure of the documents sent from {{agent}} to `kafka` must not be modified by {{ls}}. We suggest disabling `ecs_compatibility` on both the `kafka` input and the `json` codec in order to make sure the input doesn’t edit the fields and their contents.
+If you are considering using {{ls}} to ship the data from `kafka` to {{es}}, be aware the structure of the documents sent from {{agent}} to `kafka` must not be modified by {{ls}}. We suggest disabling `ecs_compatibility` on both the `kafka` input and the `json` codec in order to make sure the input doesn’t edit the fields and their contents.
 
 The data streams set up by the integrations expect to receive events having the same structure and field names as they were sent directly from an {{agent}}.
 

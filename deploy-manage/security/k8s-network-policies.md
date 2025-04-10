@@ -109,7 +109,7 @@ spec:
 ```
 
 
-## Isolating Elasticsearch [k8s-network-policies-elasticsearch-isolation] 
+## Isolating {{es}} [k8s-network-policies-elasticsearch-isolation] 
 
 |     |     |
 | --- | --- |
@@ -171,7 +171,7 @@ spec:
 ```
 
 
-## Isolating Kibana [k8s-network-policies-kibana-isolation] 
+## Isolating {{kib}} [k8s-network-policies-kibana-isolation] 
 
 |     |     |
 | --- | --- |
@@ -201,7 +201,7 @@ spec:
   - ports:
     - port: 53
       protocol: UDP
-    # [Optional] If Agent is deployed, this is to allow Kibana to access the Elastic Package Registry (https://epr.elastic.co).
+    # [Optional] If Agent is deployed, this is to allow {{kib}} to access the Elastic Package Registry (https://epr.elastic.co).
     # - port: 443
     #   protocol: TCP
   ingress:
@@ -433,3 +433,6 @@ spec:
       common.k8s.elastic.co/type: logstash
 ```
 
+## Isolating Enterprise Search [k8s-network-policies-enterprise-search-isolation]
+
+Enterprise Search is not available in {{stack}} versions 9.0 and later. For an example of Enterprise Search isolation using network policies in previous {{stack}} versions, refer to the [previous ECK documentation](https://www.elastic.co/guide/en/cloud-on-k8s/2.16/k8s_prerequisites.html#k8s-network-policies-enterprise-search-isolation).

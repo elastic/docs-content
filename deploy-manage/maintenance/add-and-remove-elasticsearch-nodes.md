@@ -4,9 +4,11 @@ mapped_pages:
 applies_to:
   deployment:
      self:
+sub:
+  slash: "\\"
 ---
 
-# Add and Remove Elasticsearch nodes [add-elasticsearch-nodes]
+# Add and Remove {{es}} nodes [add-elasticsearch-nodes]
 
 When you start an instance of {{es}}, you are starting a *node*. An {{es}} *cluster* is a group of nodes that have the same `cluster.name` attribute. As nodes join or leave a cluster, the cluster automatically reorganizes itself to evenly distribute the data across the available nodes.
 
@@ -38,23 +40,22 @@ Refer to the following pages to learn more about how to add nodes to your cluste
 
 You can enroll additional nodes on your local machine to experiment with how an {{es}} cluster with multiple nodes behaves.
 
-::::{note}
-To add a node to a cluster running on multiple machines, you must also set [`discovery.seed_hosts`](../deploy/self-managed/important-settings-configuration.md#unicast.hosts) so that the new node can discover the rest of its cluster.
-
-::::
-
 :::{include} /deploy-manage/deploy/self-managed/_snippets/enroll-nodes.md
+:::
+
+:::{tip}
+If you installed your new {{es}} node using an [RPM](/deploy-manage/deploy/self-managed/install-elasticsearch-with-rpm.md#existing-cluster) or [Debian](/deploy-manage/deploy/self-managed/install-elasticsearch-with-debian-package.md#existing-cluster) package, then you can pass your enrollment token to the [`elasticsearch-reconfigure-node`](elasticsearch://reference/elasticsearch/command-line-tools/reconfigure-node.md) tool to simplify the configuration process.
 :::
 
 ## Master-eligible nodes [add-elasticsearch-nodes-master-eligible]
 
-As nodes are added or removed Elasticsearch maintains an optimal level of fault tolerance by automatically updating the cluster’s *voting configuration*, which is the set of [master-eligible nodes](../distributed-architecture/clusters-nodes-shards/node-roles.md#master-node-role) whose responses are counted when making decisions such as electing a new master or committing a new cluster state.
+As nodes are added or removed {{es}} maintains an optimal level of fault tolerance by automatically updating the cluster’s *voting configuration*, which is the set of [master-eligible nodes](../distributed-architecture/clusters-nodes-shards/node-roles.md#master-node-role) whose responses are counted when making decisions such as electing a new master or committing a new cluster state.
 
 It is recommended to have a small and fixed number of master-eligible nodes in a cluster, and to scale the cluster up and down by adding and removing master-ineligible nodes only. However there are situations in which it may be desirable to add or remove some master-eligible nodes to or from a cluster.
 
 ### Adding master-eligible nodes [modules-discovery-adding-nodes]
 
-If you wish to add some nodes to your cluster, simply configure the new nodes to find the existing cluster and start them up. Elasticsearch adds the new nodes to the voting configuration if it is appropriate to do so.
+If you wish to add some nodes to your cluster, simply configure the new nodes to find the existing cluster and start them up. {{es}} adds the new nodes to the voting configuration if it is appropriate to do so.
 
 During master election or when joining an existing formed cluster, a node sends a join request to the master in order to be officially added to the cluster.
 

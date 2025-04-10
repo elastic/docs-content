@@ -24,7 +24,7 @@ You might want to change the configuration of your deployment to:
 * Upgrade to new versions of {{es}}. You can upgrade from one major version to another, such as from 6.8.23 to 7.17.27, or from one minor version to another, such as 6.1 to 6.2. You can’t downgrade versions.
 * Change what plugins are available on your {{es}} cluster.
 
-With the exception of major version upgrades for Elastic Stack products, {{ech}} can perform configuration changes without having to interrupt your deployment. You can continue searching and indexing. The changes can also be done in bulk. For example: in one action, you can add more memory, upgrade, adjust the number of {{es}} plugins and adjust the number of availability zones.
+With the exception of major version upgrades for {{stack}} products, {{ech}} can perform configuration changes without having to interrupt your deployment. You can continue searching and indexing. The changes can also be done in bulk. For example: in one action, you can add more memory, upgrade, adjust the number of {{es}} plugins and adjust the number of availability zones.
 
 We perform all of these changes by creating instances with the new configurations that join your existing deployment before removing the old ones. For example: if you are changing your {{es}} cluster configuration, we create new {{es}} nodes, recover your indexes, and start routing requests to the new nodes. Only when all new {{es}} nodes are ready, do we bring down the old ones.
 

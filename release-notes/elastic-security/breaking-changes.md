@@ -17,9 +17,9 @@ Breaking changes can impact your Elastic applications, potentially disrupting no
 % ::::
 
 ## 9.0.0 [elastic-security-900-breaking-changes]
-**Release date:** April 2, 2025
+**Release date:** April 8, 2025
 
-::::{dropdown} Removed legacy security rules bulk endpoints
+::::{dropdown} Removes legacy security rules bulk endpoints
 * `POST /api/detection_engine/rules/_bulk_create` has been replaced by `POST /api/detection_engine/rules/_import`
 * `PUT /api/detection_engine/rules/_bulk_update` has been replaced by `POST /api/detection_engine/rules/_bulk_action`
 * `PATCH /api/detection_engine/rules/_bulk_update has been replaced by `POST /api/detection_engine/rules/_bulk_action`
@@ -50,7 +50,7 @@ Update your implementations to use the new endpoints:
     * Alternatively, delete rules individually using `DELETE /api/detection_engine/rules` ([API documentation](https://www.elastic.co/docs/api/doc/kibana/operation/operation-deleterule)).
 ::::
 
-::::{dropdown} Remove deprecated endpoint management endpoints
+::::{dropdown} Removes deprecated endpoint management endpoints
 * `POST /api/endpoint/isolate` has been replaced by `POST /api/endpoint/action/isolate`
 * `POST /api/endpoint/unisolate` has been replaced by `POST /api/endpoint/action/unisolate`
 * `GET /api/endpoint/policy/summaries` has been deprecated without replacement. Will be removed in v9.0.0
@@ -70,13 +70,13 @@ Update your implementations to use the new endpoints:
 ::::
 
 ::::{dropdown} Refactors the Timeline HTTP API endpoints
-For more information, check [#200633]({{kib-pull}}200633).
+For more information, refer to [#200633]({{kib-pull}}200633).
 ::::
 
 ::::{dropdown} Removes deprecated {{elastic-defend}} APIs
-For more information, check [#199598]({{kib-pull}}199598).
+For more information, refer to [#199598]({{kib-pull}}199598).
 ::::
 
 ::::{dropdown} Removes deprecated API endpoints for bulk CRUD actions on detection rules
-For more information, check [#197422]({{kib-pull}}197422) and [#207906]({{kib-pull}}207906).
+For more information, refer to [#197422]({{kib-pull}}197422) and [#207906]({{kib-pull}}207906).
 ::::

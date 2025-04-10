@@ -8,10 +8,10 @@ mapped_pages:
 
 # Manage compute resources [k8s-managing-compute-resources]
 
-To help the Kubernetes scheduler correctly place Pods in available Kubernetes nodes and ensure quality of service (QoS), it is recommended to specify the CPU and memory requirements for objects managed by the operator (Elasticsearch, Kibana, APM Server, Beats, Elastic Agent, Elastic Maps Server, and Logstash). In Kubernetes, `requests` defines the minimum amount of resources that must be available for a Pod to be scheduled; `limits` defines the maximum amount of resources that a Pod is allowed to consume. For more information about how Kubernetes uses these concepts, check [Managing Compute Resources for Containers](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/).
+To help the Kubernetes scheduler correctly place Pods in available Kubernetes nodes and ensure quality of service (QoS), it is recommended to specify the CPU and memory requirements for objects managed by the operator ({{es}}, {{kib}}, APM Server, Beats, Elastic Agent, Elastic Maps Server, and Logstash). In Kubernetes, `requests` defines the minimum amount of resources that must be available for a Pod to be scheduled; `limits` defines the maximum amount of resources that a Pod is allowed to consume. For more information about how Kubernetes uses these concepts, check [Managing Compute Resources for Containers](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/).
 
 ::::{note}
-The operator applies default requests and limits for memory and CPU. They may be suitable for experimenting with the Elastic Stack, however it is recommended to reevaluate these values for production use cases.
+The operator applies default requests and limits for memory and CPU. They may be suitable for experimenting with the {{stack}}, however it is recommended to reevaluate these values for production use cases.
 ::::
 
 
@@ -25,7 +25,7 @@ Also, to minimize disruption caused by Pod evictions due to resource contention,
 You can set compute resource constraints in the `podTemplate` of objects managed by the operator.
 
 
-### Set compute resources for Elasticsearch [k8s-compute-resources-elasticsearch]
+### Set compute resources for {{es}} [k8s-compute-resources-elasticsearch]
 
 ```yaml
 apiVersion: elasticsearch.k8s.elastic.co/v1
@@ -52,9 +52,9 @@ spec:
 
 #### Memory limit and JVM Heap settings [k8s-elasticsearch-memory]
 
-Starting with Elasticsearch 7.11, the heap size of the JVM is automatically calculated based on the node roles and the available memory. The available memory is defined by the value of `resources.limits.memory` set on the `elasticsearch` container in the Pod template, or the available memory on the Kubernetes node if no limit is set.
+Starting with {{es}} 7.11, the heap size of the JVM is automatically calculated based on the node roles and the available memory. The available memory is defined by the value of `resources.limits.memory` set on the `elasticsearch` container in the Pod template, or the available memory on the Kubernetes node if no limit is set.
 
-For Elasticsearch before 7.11, or if you want to override the default calculated heap size on newer versions, set the `ES_JAVA_OPTS` environment variable in the `podTemplate` to an appropriate value:
+For {{es}} before 7.11, or if you want to override the default calculated heap size on newer versions, set the `ES_JAVA_OPTS` environment variable in the `podTemplate` to an appropriate value:
 
 ```yaml
 apiVersion: elasticsearch.k8s.elastic.co/v1
@@ -84,7 +84,7 @@ spec:
 
 #### CPU resources [k8s-elasticsearch-cpu]
 
-The value set for CPU limits or requests directly impacts the Elasticsearch `node.processors` setting. By default Elasticsearch automatically detects the number of processors and sets the thread pool settings based on it. The following table gives the default value for `node.processors` given the CPU limits and requests set on the `elasticsearch` container:
+The value set for CPU limits or requests directly impacts the {{es}} `node.processors` setting. By default {{es}} automatically detects the number of processors and sets the thread pool settings based on it. The following table gives the default value for `node.processors` given the CPU limits and requests set on the `elasticsearch` container:
 
 |  | No CPU limit | With CPU limit |
 | --- | --- | --- |
@@ -92,12 +92,12 @@ The value set for CPU limits or requests directly impacts the Elasticsearch `nod
 | CPU request set to 1 | `All the available cores on the K8S node` | `Value of the CPU limit` |
 | Other CPU requests | `Value of the CPU request` | `Value of the CPU limit` |
 
-You can also set your own value for `node.processors` in the Elasticsearch config.
+You can also set your own value for `node.processors` in the {{es}} config.
 
 ::::{note}
 A [known Kubernetes issue](https://github.com/kubernetes/kubernetes/issues/51135) may lead to over-aggressive CPU limits throttling. If the host Linux Kernel does not include [this CFS quota fix](https://github.com/kubernetes/kubernetes/issues/67577), you may want to:
 
-* not set any CPU limit in the Elasticsearch resource (Burstable QoS)
+* not set any CPU limit in the {{es}} resource (Burstable QoS)
 * [reduce the CFS quota period](https://github.com/kubernetes/kubernetes/pull/63437) in kubelet configuration
 * [disable CFS quotas](https://github.com/kubernetes/kubernetes/issues/51135#issuecomment-386319185) in kubelet configuration
 
@@ -105,7 +105,7 @@ A [known Kubernetes issue](https://github.com/kubernetes/kubernetes/issues/51135
 
 
 
-### Set compute resources for Kibana, Elastic Maps Server, APM Server and Logstash [k8s-compute-resources-kibana-and-apm]
+### Set compute resources for {{kib}}, Elastic Maps Server, APM Server and Logstash [k8s-compute-resources-kibana-and-apm]
 
 ```yaml
 apiVersion: kibana.k8s.elastic.co/v1
@@ -283,8 +283,8 @@ If `resources` is not defined in the specification of an object, then the operat
 | Type | Requests | Limits |
 | --- | --- | --- |
 | APM Server | `512Mi` | `512Mi` |
-| Elasticsearch | `2Gi` | `2Gi` |
-| Kibana | `1Gi` | `1Gi` |
+| {{es}} | `2Gi` | `2Gi` |
+| {{kib}} | `1Gi` | `1Gi` |
 | Beat | `300Mi` | `300Mi` |
 | Elastic Agent | `400Mi` | `400Mi` |
 | Elastic Maps Server | `200Mi` | `200Mi` |
@@ -308,7 +308,7 @@ spec:
     type: Container
 ```
 
-With this limit range in place, if you create an Elasticsearch object without defining the `resources` section, you will get the following error:
+With this limit range in place, if you create an {{es}} object without defining the `resources` section, you will get the following error:
 
 ```
 Cannot create pod elasticsearch-sample-es-ldbgj48c7r: pods "elasticsearch-sample-es-ldbgj48c7r" is forbidden: minimum memory usage per Container is 3Gi, but request is 2Gi
@@ -329,14 +329,14 @@ To avoid this, explicitly define the requests and limits mandated by your enviro
 :::
 
 
-#### Monitoring Elasticsearch CPU using Stack Monitoring [k8s-monitor-compute-resources-stack-monitoring]
+#### Monitoring {{es}} CPU using Stack Monitoring [k8s-monitor-compute-resources-stack-monitoring]
 
-If [Stack Monitoring](../../monitor/stack-monitoring/eck-stack-monitoring.md) is enabled, the pressure applied by the CPU cgroup controller to an Elasticsearch node can be evaluated from the **Stack Monitoring** page in Kibana.
+If [Stack Monitoring](../../monitor/stack-monitoring/eck-stack-monitoring.md) is enabled, the pressure applied by the CPU cgroup controller to an {{es}} node can be evaluated from the **Stack Monitoring** page in {{kib}}.
 
-1. On the **Stack Monitoring** page select the Elasticsearch node you want to monitor.
+1. On the **Stack Monitoring** page select the {{es}} node you want to monitor.
 2. Select the **Advanced** tab.
 
-In the following example, an Elasticsearch container is limited to 2 cores.
+In the following example, an {{es}} container is limited to 2 cores.
 
 ```yaml
 nodeSets:
@@ -351,7 +351,7 @@ nodeSets:
               cpu: 2
 ```
 
-The **Cgroup usage** curve shows that the CPU usage of this container has been steadily increasing up to 2 cores. Then, while the container was still requesting more CPU, the **Cgroup Throttling** curve shows how much the Elasticsearch container has been throttled:
+The **Cgroup usage** curve shows that the CPU usage of this container has been steadily increasing up to 2 cores. Then, while the container was still requesting more CPU, the **Cgroup Throttling** curve shows how much the {{es}} container has been throttled:
 
 :::{image} /deploy-manage/images/cloud-on-k8s-cgroups-cfs-stats.png
 :alt: cgroup CPU perforamce chart

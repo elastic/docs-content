@@ -107,8 +107,8 @@ There are different distributions available:
 
 * {{stack-version}} (recommended): *docker.elastic.co/package-registry/distribution:{{stack-version}}* - Selection of packages from the production repository released with {{stack}} {{stack-version}}.
 * lite-{{stack-version}}: *docker.elastic.co/package-registry/distribution:lite-{{stack-version}}* - Subset of the most commonly used packages from the production repository released with {{stack}} {{stack-version}}. This image is a good candidate to start using {{fleet}} in air-gapped environments.
-* production: *docker.elastic.co/package-registry/distribution:production* - Packages available in the production registry ([https://epr.elastic.co](https://epr.elastic.co)). Please note that this image is updated every time a new version of a package gets published.
-* lite: *docker.elastic.co/package-registry/distribution:lite* - Subset of the most commonly used packages available in the production registry ([https://epr.elastic.co](https://epr.elastic.co)). Please note that this image is updated every time a new version of a package gets published.
+* production: *docker.elastic.co/package-registry/distribution:production* - Packages available in the production registry ([https://epr.elastic.co](https://epr.elastic.co)). Note that this image is updated every time a new version of a package gets published.
+* lite: *docker.elastic.co/package-registry/distribution:lite* - Subset of the most commonly used packages available in the production registry ([https://epr.elastic.co](https://epr.elastic.co)). Note that this image is updated every time a new version of a package gets published.
 
 
 To update the distribution image, re-pull the image and then restart the docker container.

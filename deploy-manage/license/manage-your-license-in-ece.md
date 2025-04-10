@@ -8,9 +8,9 @@ mapped_pages:
 
 # Manage your license in {{ece}} [ece-add-license]
 
-The use of Elastic Cloud Enterprise requires a valid license, which you can obtain from Elastic and add to your installation following the steps described in this document. When you first install ECE we automatically activate ECE with a trial license that is valid for 30 days.
+The use of {{ece}} requires a valid license, which you can obtain from Elastic and add to your installation following the steps described in this document. When you first install ECE we automatically activate ECE with a trial license that is valid for 30 days.
 
-Full ECE licenses that you obtain from Elastic enable all ECE hosted deployments with the same products, features, and support that are available at our Enterprise subscription level on Elastic Cloud for the respective stack version, as described on the [Subscriptions page](https://www.elastic.co/subscriptions/cloud).
+Full ECE licenses that you obtain from Elastic enable all ECE hosted deployments with the same products, features, and support that are available at our Enterprise subscription level on {{ecloud}} for the respective stack version, as described on the [Subscriptions page](https://www.elastic.co/subscriptions/cloud).
 
 ::::{note}
 The licenses used to activate the deployments might have a different expiration date than the license used to activate ECE. ECE manages the licenses of the hosted deployments and will automatically update the deployment license when needed.
@@ -18,21 +18,21 @@ The licenses used to activate the deployments might have a different expiration 
 
 
 ::::{note}
-If you have a license from 2018 or earlier, you might receive a warning that your cluster license is about to expire. Don’t panic, it isn’t really. Elastic Cloud Enterprise manages the cluster licenses so that you don’t have to. In rare cases, such as when a cluster is overloaded, it can take longer for Elastic Cloud Enterprise to reapply the cluster license.
+If you have a license from 2018 or earlier, you might receive a warning that your cluster license is about to expire. Don’t panic, it isn’t really. {{ece}} manages the cluster licenses so that you don’t have to. In rare cases, such as when a cluster is overloaded, it can take longer for {{ece}} to reapply the cluster license.
 ::::
 
 
 
 ## Licenses Expiration [ece_licenses_expiration]
 
-Elastic Cloud Enterprise Licenses contains two types of licenses - the actual license for Elastic Cloud Enterprise that is validated to enable Elastic Cloud Enterprise features and the *cluster licenses*, which Elastic Cloud Enterprise installs into the individual clusters.
+{{ece}} Licenses contains two types of licenses - the actual license for {{ece}} that is validated to enable {{ece}} features and the *cluster licenses*, which {{ece}} installs into the individual clusters.
 
-Elastic Cloud Enterprise installs those cluster licenses with an approximately 3 month window, and updates the cluster licenses automatically as they get within a month of expiration.
+{{ece}} installs those cluster licenses with an approximately 3 month window, and updates the cluster licenses automatically as they get within a month of expiration.
 
-When the Elastic Cloud Enterprise license expires, and consequently the cluster license that’s currently installed for all managed clusters since it has the same expiration date, the following takes place:
+When the {{ece}} license expires, and consequently the cluster license that’s currently installed for all managed clusters since it has the same expiration date, the following takes place:
 
 * **Users cannot create new clusters or modify existing clusters**: They can only delete them. These clusters are still fully accessible for the client though.
-* **X-Pack features are degraded**: For the details about what functionality will be reduced when cluster license expires, read more about the [Elastic Stack license expiration](https://www.elastic.co/guide/en/elastic-stack-overview/current/license-expiration.html).
+* **X-Pack features are degraded**: For the details about what functionality will be reduced when cluster license expires, read more about the [{{stack}} license expiration](https://www.elastic.co/guide/en/elastic-stack-overview/current/license-expiration.html).
 
 
 ## Download a license [ece_download_a_license]
@@ -70,7 +70,7 @@ To check your current license expiry date:
 
 To request a trial license extension from Elastic:
 
-1. Fill in the form at [https://www.elastic.co/contact](https://www.elastic.co/contact). Make sure to choose Elastic Cloud Enterprise as the area of interest and state that you request a trial license extension.
+1. Fill in the form at [https://www.elastic.co/contact](https://www.elastic.co/contact). Make sure to choose {{ece}} as the area of interest and state that you request a trial license extension.
 
     Someone from Elastic will be in touch to respond to your trial extension request.
 

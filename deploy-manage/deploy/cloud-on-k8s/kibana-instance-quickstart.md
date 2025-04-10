@@ -1,5 +1,5 @@
 ---
-navigation_title: Deploy a Kibana instance
+navigation_title: Deploy a {{kib}} instance
 applies_to:
   deployment:
     eck: all
@@ -7,7 +7,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-deploy-kibana.html
 ---
 
-# Deploy a Kibana instance [k8s-deploy-kibana]
+# Deploy a {{kib}} instance [k8s-deploy-kibana]
 
 To deploy a simple [{{kib}}](/get-started/the-stack.md#stack-components-kibana) specification, with one {{kib}} instance:
 
