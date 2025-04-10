@@ -57,11 +57,10 @@ Cold [data tiers](/manage-data/lifecycle/data-tiers.md) store time series data t
 
 ### Limitations [limitations-data-tiers]
 
-Data tiers are a powerful and useful tool. When using them, keep the following limitations in mind:
+Data tiers are a powerful and useful tool. When using them, keep the following in mind:
 
-* {{ilm-cap}} policies for indices controlled by {{elastic-sec}}, including alerts and list indices, must not be modified.
-* Indicator match rule performance can be severely impacted by querying data in frozen tiers.
-* Source data must have an {{ilm}} policy that keeps it in the hot or warm tiers for at least one day before moving to cold or frozen tiers.
+* To avoid rule failures, do not modify {{ilm}} policies for {elastic-sec}-controlled indices, such as alert and list indices.
+* Source data must have an {{ilm}} policy that keeps it in the hot or warm tiers for at least 24 hours before moving to cold or frozen tiers.
 
 ## Limited support for indicator match rules [support-indicator-rules]
 
