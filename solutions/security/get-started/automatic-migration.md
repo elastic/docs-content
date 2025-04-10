@@ -31,7 +31,7 @@ You can ingest your data before migrating your rules, or migrate your rules firs
 3. Next, under **Migrate rules & add data**, click **Translate your existing SIEM rules to Elastic**, then **Upload rules**.
 4. Follow the instructions on the **Upload Splunk SIEM rules** flyout to export your rules from Splunk as JSON.
 
-   :::{image} ../../images/security-siem-migration-1.png
+   :::{image} ../../../images/security-siem-migration-1.png
    :alt: the Upload Splunk SIEM rules flyout
    :width: 700px
    :screenshot:
