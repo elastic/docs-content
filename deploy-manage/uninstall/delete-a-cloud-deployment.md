@@ -107,7 +107,7 @@ To delete an Elasticsearch deployment created with {{eck}}:
    kubectl delete elasticsearch test-deployment
    ```
    :::{warning}
-   This deletes the custom resource and all associated infrastructure, such as {{es}} nodes, services, and persistent data volumes. By default, this also deletes the data stored in those volumes, but you can [configure](/deploy-manage/deploy/cloud-on-k8s/volume-claim-templates.md#controlling-volume-claim-deletion-k8s_controlling_volume_claim_deletion) the `volumeClaimDeletePolicy` field in the {{es}} resource manifest to retain the volumes if you plan to recreate the cluster later.
+   This deletes the custom resource and all associated infrastructure, such as {{es}} nodes, services, and persistent data volumes. By default, this also deletes the data stored in those volumes, but you can [configure](/deploy-manage/deploy/cloud-on-k8s/volume-claim-templates.md#k8s_controlling_volume_claim_deletion) the `volumeClaimDeletePolicy` field in the {{es}} resource manifest to retain the volumes if you plan to recreate the cluster later.
    :::
 
 
