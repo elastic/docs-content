@@ -1,4 +1,4 @@
-# APM agents
+# APM Agents
 
 % TO-DO: Add links to "APM basics"%
 
