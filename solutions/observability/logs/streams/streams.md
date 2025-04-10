@@ -10,10 +10,10 @@ Streams is currently in Technical Preview and available only on Elastic Cloud Se
 # Streams
 
 Streams provides a single, centralized UI within {{kib}} that streamlines common tasks, reducing the need to navigate multiple applications or manually configure underlying {{es}} components. Key workflows supported today include:
-- Extracting fields from your documents - TODO: link to sub page
-- Changing the retention of a Stream - TODO: link to sub page
+- [Extracting fields](../streams/management/extract.md) from your documents.
+- [Changing the retention](../streams/management/retention.md) of a stream.
 
-A Stream in this interface directly corresponds to an {{es}} data stream (e.g., `logs-myapp-default`). Operations performed here configure that specific data stream.
+A Stream in this interface directly corresponds to an {{es}} data stream (for example, `logs-myapp-default`). Operations performed here configure that specific data stream.
 
 
 ## Required permissions
