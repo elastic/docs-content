@@ -35,6 +35,6 @@ After the agent is installed and successfully streaming log data, you can view t
 Now that you’ve added logs and explored your data, learn how to onboard other types of data:
 
 * [Stream any log file](stream-any-log-file.md)
-* [Get started with traces and APM](../apps/get-started-with-apm.md)
+* [Get started with traces and APM](/solutions/observability/apm/get-started.md)
 
 To onboard other types of data, select **Add Data** from the main menu.

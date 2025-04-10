@@ -142,6 +142,6 @@ An action is triggered if any of the following conditions are met within the las
   The 60-day and 30-day thresholds are skipped for Trial licenses, which are only valid for 30 days.
 
 :::{note}
-For the `Elasticsearch nodes changed` alert, if you have only one master node in your cluster, during the master node vacate no notification will be sent. Kibana needs to communicate with the master node in order to send a notification. One way to avoid this is by shipping your deployment metrics to a dedicated monitoring cluster.
+For the `{{es}} nodes changed` alert, if you have only one master node in your cluster, during the master node vacate no notification will be sent. {{kib}} needs to communicate with the master node in order to send a notification. One way to avoid this is by shipping your deployment metrics to a dedicated monitoring cluster.
 :::
 ::::

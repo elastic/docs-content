@@ -10,7 +10,7 @@ applies_to:
     self: all
 ---
 
-# Kibana task manager: performance and scaling guide [task-manager-production-considerations]
+# {{kib}} task manager: performance and scaling guide [task-manager-production-considerations]
 
 {{kib}} Task Manager is leveraged by features such as [alerting](/explore-analyze/alerts-cases/alerts.md), [actions](/explore-analyze/alerts-cases/alerts.md#rules-actions), and [reporting](/explore-analyze/report-and-share.md) to run mission critical work as persistent background tasks. These background tasks distribute work across multiple {{kib}} instances. This has three major benefits:
 
@@ -106,7 +106,7 @@ A recommended strategy is to follow these steps:
 3. If the throughput is insufficient, and {{kib}} instances exhibit low resource usage, incrementally scale vertically while [monitoring](../monitor/monitoring-data/kibana-page.md) the impact of these changes.
 4. If the throughput is insufficient, and {{kib}} instances are exhibiting high resource usage, incrementally scale horizontally by provisioning new {{kib}} instances and reassess.
 
-Task Manager, like the rest of the Elastic Stack, is designed to scale horizontally. Take advantage of this ability to ensure mission critical services, such as Alerting, Actions, and Reporting, always have the capacity they need.
+Task Manager, like the rest of the {{stack}}, is designed to scale horizontally. Take advantage of this ability to ensure mission critical services, such as Alerting, Actions, and Reporting, always have the capacity they need.
 
 Scaling horizontally requires a higher degree of coordination between {{kib}} instances. One way Task Manager coordinates with other instances is by delaying its polling schedule to avoid conflicts with other instances. By using [health monitoring](../monitor/kibana-task-manager-health-monitoring.md) to evaluate the [date of the `last_polling_delay`](../../troubleshoot/kibana/task-manager.md#task-manager-health-evaluate-the-runtime) across a deployment, you can estimate the frequency at which Task Manager resets its delay mechanism. A higher frequency suggests {{kib}} instances conflict at a high rate, which you can address by scaling vertically rather than horizontally, reducing the required coordination.
 

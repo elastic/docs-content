@@ -162,7 +162,7 @@ APM agent --> Load Balancer  --> APM Server
    10s            15s               3600s
 ```
 
-The APM Server timeout can be configured by updating the [maximum duration for reading an entire request](../../../solutions/observability/apps/general-configuration-options.md#apm-read_timeout).
+The APM Server timeout can be configured by updating the [maximum duration for reading an entire request](/solutions/observability/apm/general-configuration-options.md#apm-read_timeout).
 
 
 ## Field limit exceeded [apm-field-limit-exceeded]
@@ -213,7 +213,7 @@ https://www.elastic.co/guide/en/infrastructure/guide/current/index.html
 
 These URLs, like most, include unique names. If we named transactions based on each unique URL, we’d end up with the problem described above—a very large number of different transaction names. Instead, we should strip away the unique information and group our transactions based on common information. In this case, that means naming all blog transactions, `/blog`, and all documentation transactions, `/guide`.
 
-If you feel like you’d be losing valuable information by following this naming convention, don’t fret! You can always add additional metadata to your transactions using [labels](/solutions/observability/apps/metadata.md#apm-data-model-labels) (indexed) or [custom context](/solutions/observability/apps/metadata.md#apm-data-model-custom) (non-indexed).
+If you feel like you’d be losing valuable information by following this naming convention, don’t fret! You can always add additional metadata to your transactions using [labels](/solutions/observability/apm/metadata.md#apm-data-model-labels) (indexed) or [custom context](/solutions/observability/apm/metadata.md#apm-data-model-custom) (non-indexed).
 
 After ensuring you’ve correctly named your transactions, you might still see errors in the Applications UI related to transaction group limit reached:
 
@@ -239,7 +239,7 @@ If your problem is occurring in a different APM agent, the tips above still appl
 stack: all
 ```
 
-The [transaction overview](../../../solutions/observability/apps/transactions-2.md) will only display helpful information when the transactions in your services are named correctly. If you’re seeing "GET unknown route" or "unknown route" in the Applications UI, it could be a sign that something isn’t working as it should.
+The [transaction overview](/solutions/observability/apm/transactions-ui.md) will only display helpful information when the transactions in your services are named correctly. If you’re seeing "GET unknown route" or "unknown route" in the Applications UI, it could be a sign that something isn’t working as it should.
 
 Elastic APM agents come with built-in support for popular frameworks out-of-the-box. This means, among other things, that the APM agent will try to automatically name HTTP requests. As an example, the Node.js agent uses the route that handled the request, while the Java agent uses the Servlet name.
 
@@ -261,7 +261,7 @@ As an example, some APM agents store cookie values in `http.request.cookies`. Si
 
 **Ensure a field is searchable** There are two things you can do to if you’d like to ensure a field is searchable:
 
-1. Index your additional data as [labels](/solutions/observability/apps/metadata.md) instead. These are dynamic by default, which means they will be indexed and become searchable and aggregatable.
+1. Index your additional data as [labels](/solutions/observability/apm/metadata.md) instead. These are dynamic by default, which means they will be indexed and become searchable and aggregatable.
 2. Create a custom mapping for the field.
 
 
@@ -292,5 +292,5 @@ It’s likely that there is a problem correlating APM and infrastructure data. T
 
 To fix this, make sure these two fields match exactly.
 
-For example, if the APM agent is not configured to use the correct host name, the host name might be set to the container name or the Kubernetes pod name. To get the correct host name, you need to set some additional configuration options, specifically `system.kubernetes.node.name` as described in [Kubernetes data](../../../solutions/observability/apps/elastic-apm-events-intake-api.md#apm-api-kubernetes-data).
+For example, if the APM agent is not configured to use the correct host name, the host name might be set to the container name or the Kubernetes pod name. To get the correct host name, you need to set some additional configuration options, specifically `system.kubernetes.node.name` as described in [Kubernetes data](/solutions/observability/apm/elastic-apm-events-intake-api.md#apm-api-kubernetes-data).
 

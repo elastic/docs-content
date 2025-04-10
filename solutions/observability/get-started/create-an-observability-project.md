@@ -46,5 +46,5 @@ To return to the onboarding page later, select **Add data** from the main menu.
 Learn how to add data to your project and start using {{obs-serverless}} features:
 
 * [Get started with system logs](../logs/get-started-with-system-logs.md)
-* [Get started with traces and APM](../apps/get-started-with-apm.md)
+* [Get started with traces and APM](/solutions/observability/apm/get-started.md)
 * [Get started with system metrics](../infra-and-hosts/get-started-with-system-metrics.md)

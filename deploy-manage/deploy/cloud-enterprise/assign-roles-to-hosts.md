@@ -8,20 +8,20 @@ mapped_pages:
 
 # Assign roles to hosts [ece-change-roles]
 
-Assigning roles might be required after you [install Elastic Cloud Enterprise on hosts](install.md) to make sure the new hosts can be used for their intended purpose and to remove roles from the initial host to implement a recommended ECE installation. Similarly, if you need more processing capacity for Elasticsearch nodes in your deployment, change the role of a new runner to `allocator` to add its capacity to your installation.
+Assigning roles might be required after you [install {{ece}} on hosts](install.md) to make sure the new hosts can be used for their intended purpose and to remove roles from the initial host to implement a recommended ECE installation. Similarly, if you need more processing capacity for {{es}} nodes in your deployment, change the role of a new runner to `allocator` to add its capacity to your installation.
 
 These steps describe how to assign roles from the Cloud UI. For automation purposes, assigning roles with a [token you generate](generate-roles-tokens.md) is preferred.
 
-Each Elastic Cloud Enterprise runner can take on several roles:
+Each {{ece}} runner can take on several roles:
 
 `allocator`
-:   Allocates the available computing resources to Elasticsearch nodes or Kibana instances. In larger installations, a majority of the machines will be allocators.
+:   Allocates the available computing resources to {{es}} nodes or {{kib}} instances. In larger installations, a majority of the machines will be allocators.
 
 `coordinator`
 :   Serves as a distributed coordination system and resource scheduler.
 
 `proxy`
-:   Manages communication between a user and an Elasticsearch or Kibana instance.
+:   Manages communication between a user and an {{es}} or {{kib}} instance.
 
 `director`
 :   Manages the ZooKeeper datastore. This role is typically shared with the coordinator role. In production deployments it can be separated from a coordinator.
@@ -33,7 +33,7 @@ Once the `director` role is assigned to a runner, the Zookeeper service starts o
 
 Each role is associated with a set of Docker containers that provide the specific functionality.
 
-There are some additional roles shown in the Cloud UI, such as the [beats-runner](/reference/glossary/index.md#glossary-beats-runner) and [services-forwarder](/reference/glossary/index.md#glossary-services-forwarder) roles, that are required by Elastic Cloud Enterprise and that you cannot modify.
+There are some additional roles shown in the Cloud UI, such as the [beats-runner](/reference/glossary/index.md#glossary-beats-runner) and [services-forwarder](/reference/glossary/index.md#glossary-services-forwarder) roles, that are required by {{ece}} and that you cannot modify.
 
 To assign roles to hosts:
 
@@ -47,5 +47,5 @@ To assign roles to hosts:
 3. To update the roles, select the host IP address and then choose **Manage roles** from the **Manage host** menu.
 4. Select the role assignments for the host and choose **Update roles**.
 
-Elastic Cloud Enterprise automatically starts managing the node in its new role and makes it available for use.
+{{ece}} automatically starts managing the node in its new role and makes it available for use.
 

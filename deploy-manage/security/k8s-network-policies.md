@@ -109,7 +109,7 @@ spec:
 ```
 
 
-## Isolating Elasticsearch [k8s-network-policies-elasticsearch-isolation] 
+## Isolating {{es}} [k8s-network-policies-elasticsearch-isolation] 
 
 |     |     |
 | --- | --- |
@@ -171,7 +171,7 @@ spec:
 ```
 
 
-## Isolating Kibana [k8s-network-policies-kibana-isolation] 
+## Isolating {{kib}} [k8s-network-policies-kibana-isolation] 
 
 |     |     |
 | --- | --- |
@@ -201,7 +201,7 @@ spec:
   - ports:
     - port: 53
       protocol: UDP
-    # [Optional] If Agent is deployed, this is to allow Kibana to access the Elastic Package Registry (https://epr.elastic.co).
+    # [Optional] If Agent is deployed, this is to allow {{kib}} to access the Elastic Package Registry (https://epr.elastic.co).
     # - port: 443
     #   protocol: TCP
   ingress:

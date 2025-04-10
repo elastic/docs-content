@@ -10,21 +10,21 @@ applies_to:
 
 ## Introduction [_introduction]
 
-Each index in Elasticsearch is [divided into shards](../../deploy-manage/index.md) and each shard can have multiple copies. These copies are known as a *replication group* and must be kept in sync when documents are added or removed. If we fail to do so, reading from one copy will result in very different results than reading from another. The process of keeping the shard copies in sync and serving reads from them is what we call the *data replication model*.
+Each index in {{es}} is [divided into shards](../../deploy-manage/index.md) and each shard can have multiple copies. These copies are known as a *replication group* and must be kept in sync when documents are added or removed. If we fail to do so, reading from one copy will result in very different results than reading from another. The process of keeping the shard copies in sync and serving reads from them is what we call the *data replication model*.
 
 Elasticsearch’s data replication model is based on the *primary-backup model* and is described very well in the [PacificA paper](https://www.microsoft.com/en-us/research/publication/pacifica-replication-in-log-based-distributed-storage-systems/) of Microsoft Research. That model is based on having a single copy from the replication group that acts as the primary shard. The other copies are called *replica shards*. The primary serves as the main entry point for all indexing operations. It is in charge of validating them and making sure they are correct. Once an index operation has been accepted by the primary, the primary is also responsible for replicating the operation to the other copies.
 
-This purpose of this section is to give a high level overview of the Elasticsearch replication model and discuss the implications it has for various interactions between write and read operations.
+This purpose of this section is to give a high level overview of the {{es}} replication model and discuss the implications it has for various interactions between write and read operations.
 
 ## Basic write model [basic-write-model]
 
-Every indexing operation in Elasticsearch is first resolved to a replication group using [routing](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-create), typically based on the document ID. Once the replication group has been determined, the operation is forwarded internally to the current *primary shard* of the group. This stage of indexing is referred to as the *coordinating stage*.
+Every indexing operation in {{es}} is first resolved to a replication group using [routing](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-create), typically based on the document ID. Once the replication group has been determined, the operation is forwarded internally to the current *primary shard* of the group. This stage of indexing is referred to as the *coordinating stage*.
 
 :::{image} /deploy-manage/images/elasticsearch-reference-data_processing_flow.png
 :alt: An example of a basic write model.
 :::
 
-The next stage of indexing is the *primary stage*, performed on the primary shard. The primary shard is responsible for validating the operation and forwarding it to the other replicas. Since replicas can be offline, the primary is not required to replicate to all replicas. Instead, Elasticsearch maintains a list of shard copies that should receive the operation. This list is called the *in-sync copies* and is maintained by the master node. As the name implies, these are the set of "good" shard copies that are guaranteed to have processed all of the index and delete operations that have been acknowledged to the user. The primary is responsible for maintaining this invariant and thus has to replicate all operations to each copy in this set.
+The next stage of indexing is the *primary stage*, performed on the primary shard. The primary shard is responsible for validating the operation and forwarding it to the other replicas. Since replicas can be offline, the primary is not required to replicate to all replicas. Instead, {{es}} maintains a list of shard copies that should receive the operation. This list is called the *in-sync copies* and is maintained by the master node. As the name implies, these are the set of "good" shard copies that are guaranteed to have processed all of the index and delete operations that have been acknowledged to the user. The primary is responsible for maintaining this invariant and thus has to replicate all operations to each copy in this set.
 
 The primary shard follows this basic flow:
 
@@ -55,7 +55,7 @@ This is a valid scenario that can happen due to index configuration or simply be
 
 ## Basic read model [_basic_read_model]
 
-Reads in Elasticsearch can be very lightweight lookups by ID or a heavy search request with complex aggregations that take non-trivial CPU power. One of the beauties of the primary-backup model is that it keeps all shard copies identical (with the exception of in-flight operations). As such, a single in-sync copy is sufficient to serve read requests.
+Reads in {{es}} can be very lightweight lookups by ID or a heavy search request with complex aggregations that take non-trivial CPU power. One of the beauties of the primary-backup model is that it keeps all shard copies identical (with the exception of in-flight operations). As such, a single in-sync copy is sufficient to serve read requests.
 
 When a read request is received by a node, that node is responsible for forwarding it to the nodes that hold the relevant shards, collating the responses, and responding to the client. We call that node the *coordinating node* for that request. The basic flow is as follows:
 
@@ -78,7 +78,7 @@ Responses containing partial results still provide a `200 OK` HTTP status code. 
 
 ## A few simple implications [_a_few_simple_implications]
 
-Each of these basic flows determines how Elasticsearch behaves as a system for both reads and writes. Furthermore, since read and write requests can be executed concurrently, these two basic flows interact with each other. This has a few inherent implications:
+Each of these basic flows determines how {{es}} behaves as a system for both reads and writes. Furthermore, since read and write requests can be executed concurrently, these two basic flows interact with each other. This has a few inherent implications:
 
 **Efficient reads**: Under normal operation each read operation is performed once for each relevant replication group. Only under failure conditions do multiple copies of the same shard execute the same search.
 
@@ -94,8 +94,8 @@ A single shard can slow down indexing
 :   Because the primary waits for all replicas in the in-sync copies set during each operation, a single slow shard can slow down the entire replication group. This is the price we pay for the read efficiency mentioned above. Of course a single slow shard will also slow down unlucky searches that have been routed to it.
 
 Dirty reads
-:   An isolated primary can expose writes that will not be acknowledged. This is caused by the fact that an isolated primary will only realize that it is isolated once it sends requests to its replicas or when reaching out to the master. At that point the operation is already indexed into the primary and can be read by a concurrent read. Elasticsearch mitigates this risk by pinging the master every second (by default) and rejecting indexing operations if no master is known.
+:   An isolated primary can expose writes that will not be acknowledged. This is caused by the fact that an isolated primary will only realize that it is isolated once it sends requests to its replicas or when reaching out to the master. At that point the operation is already indexed into the primary and can be read by a concurrent read. {{es}} mitigates this risk by pinging the master every second (by default) and rejecting indexing operations if no master is known.
 
 ## The tip of the iceberg [_the_tip_of_the_iceberg]
 
-This document provides a high level overview of how Elasticsearch deals with data. Of course, there is much more going on under the hood. Things like primary terms, cluster state publishing, and master election all play a role in keeping this system behaving correctly. This document also doesn’t cover known and important bugs (both closed and open). We recognize that [GitHub is hard to keep up with](https://github.com/elastic/elasticsearch/issues?q=label%3Aresiliency). To help people stay on top of those, we maintain a dedicated [resiliency page](https://www.elastic.co/guide/en/elasticsearch/resiliency/current/index.html) on our website. We strongly advise reading it.
+This document provides a high level overview of how {{es}} deals with data. Of course, there is much more going on under the hood. Things like primary terms, cluster state publishing, and master election all play a role in keeping this system behaving correctly. This document also doesn’t cover known and important bugs (both closed and open). We recognize that [GitHub is hard to keep up with](https://github.com/elastic/elasticsearch/issues?q=label%3Aresiliency). To help people stay on top of those, we maintain a dedicated [resiliency page](https://www.elastic.co/guide/en/elasticsearch/resiliency/current/index.html) on our website. We strongly advise reading it.
