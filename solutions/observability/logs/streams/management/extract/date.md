@@ -1,6 +1,6 @@
 ---
 applies_to:
-    serverless: tp
+    serverless: preview
 ---
 
 # Date

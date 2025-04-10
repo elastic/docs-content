@@ -1,6 +1,6 @@
 ---
 applies_to:
-    serverless: tp
+    serverless: preview
 ---
 # Extract field
 Log messages are often unstructured. To get the most value, it’s important to parse them and extract some of the information into dedicated fields. The most common data to extract is usually the timestamp and the log level, but other pieces of information like IP addresses, usernames, or ports can also be useful.

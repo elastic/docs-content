@@ -1,6 +1,6 @@
 ---
 applies_to:
-    serverless: tp
+    serverless: preview
 ---
 # Key value
 The key value processor allows you to extract key-value pairs from a field and assign them to a target field or the root of the document.

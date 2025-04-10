@@ -1,6 +1,6 @@
 ---
 applies_to:
-    serverless: tp
+    serverless: preview
 ---
 # Management
 The **Management** tab provides the following ways to interact with your stream:
