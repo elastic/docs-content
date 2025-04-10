@@ -50,6 +50,7 @@ toc:
               - file: search/rag/playground-context.md
               - file: search/rag/playground-query.md
               - file: search/rag/playground-troubleshooting.md
+          - file: search/mcp.md    
       - file: search/hybrid-search.md
         children:
           - file: search/hybrid-semantic-text.md
