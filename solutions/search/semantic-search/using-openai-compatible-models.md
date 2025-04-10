@@ -10,7 +10,7 @@ navigation_title: Using OpenAI compatible models
 {{es}} enables you to use LLMs through the {{infer}} API, supporting providers such as Amazon Bedrock, Cohere, Google AI, HuggingFace, OpenAI, and more, as a service.
 It also allows you to use models deployed in your local environment that have an OpenAI compatible API.
 
-This page walks you through the process of connecting local models to {{es}} using Ollama.
+This page shows you how to connect local models to {{es}} using Ollama.
 
 [Ollama](https://ollama.com/) enables you to download and run LLM models on your own infrastructure.
 For a list of available models compatible with Ollama, refer to this [page](https://ollama.com/library).
@@ -182,4 +182,4 @@ data: {
 
 ## Further reading
 
-* [Unsing Ollama with the {{infer}} API](https://www.elastic.co/search-labs/blog/ollama-with-inference-api#expose-endpoint-to-the-internet-using-ngrok): A more comprehensive, end-to-end guide to using Ollama with {{es}}.
+* [Using Ollama with the {{infer}} API](https://www.elastic.co/search-labs/blog/ollama-with-inference-api#expose-endpoint-to-the-internet-using-ngrok): A more comprehensive, end-to-end guide to using Ollama with {{es}}.
