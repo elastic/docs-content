@@ -12,11 +12,11 @@ When an API object is built and a required property hasn’t been set, a `Missin
 However, there may be bugs in the [Elasticsearch API specification](https://github.com/elastic/elasticsearch-specification) where a response object’s property is incorrectly required, leading to a `MissingRequiredPropertyException` when deserializing a response. If this happens, here’s how you can work around it:
 
 * Make sure you use the latest release of the Java API Client. The issue may already have been fixed.
-* If the issue is still present on the latest version, [open an issue](https://github.com/elastic/elasticsearch-java/issues/new/choose) so that we can fix it in the next release. Please help us to improve the Java API Client.
+* If the issue is still present on the latest version, [open an issue](https://github.com/elastic/elasticsearch-java/issues/new/choose) so that we can fix it in the next release. Help us to improve the Java API Client.
 * Temporarily disable required property checks for the offending request:
 
 ::::{warning} 
-This is a workaround. Do not consider this as a permanent solution, and please [open an issue](https://github.com/elastic/elasticsearch-java/issues/new/choose) so that the problem can be fixed in a future release.
+This is a workaround. Do not consider this as a permanent solution, and [open an issue](https://github.com/elastic/elasticsearch-java/issues/new/choose) so that the problem can be fixed in a future release.
 ::::
 
 

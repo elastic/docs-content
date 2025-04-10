@@ -18,7 +18,7 @@ Each time you upgrade {{kib}}, an upgrade migration is performed to ensure that 
 
 
 ::::{warning} 
-The `kibana.index` and `xpack.tasks.index` configuration settings are obsolete and no longer taken into account in 8.x. If you are using custom index names, please perform the necessary adaptations before attempting to upgrade to 8.x.
+The `kibana.index` and `xpack.tasks.index` configuration settings are obsolete and no longer taken into account in 8.x. If you are using custom index names, perform the necessary adaptations before attempting to upgrade to 8.x.
 ::::
 
 

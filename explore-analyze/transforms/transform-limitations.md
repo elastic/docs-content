@@ -49,7 +49,7 @@ A {{ctransform}} periodically checks for changes to source data. The functionali
 
 ### Aggregation responses may be incompatible with destination index mappings [transform-aggresponse-limitations]
 
-When a pivot {{transform}} is first started, it will deduce the mappings required for the destination index. This process is based on the field types of the source index and the aggregations used. If the fields are derived from [`scripted_metrics`](elasticsearch://reference/aggregations/search-aggregations-metrics-scripted-metric-aggregation.md) or [`bucket_scripts`](elasticsearch://reference/aggregations/search-aggregations-pipeline-bucket-script-aggregation.md), [dynamic mappings](../../manage-data/data-store/mapping/dynamic-mapping.md) will be used. In some instances the deduced mappings may be incompatible with the actual data. For example, numeric overflows might occur or dynamically mapped fields might contain both numbers and strings. Please check {{es}} logs if you think this may have occurred.
+When a pivot {{transform}} is first started, it will deduce the mappings required for the destination index. This process is based on the field types of the source index and the aggregations used. If the fields are derived from [`scripted_metrics`](elasticsearch://reference/aggregations/search-aggregations-metrics-scripted-metric-aggregation.md) or [`bucket_scripts`](elasticsearch://reference/aggregations/search-aggregations-pipeline-bucket-script-aggregation.md), [dynamic mappings](../../manage-data/data-store/mapping/dynamic-mapping.md) will be used. In some instances the deduced mappings may be incompatible with the actual data. For example, numeric overflows might occur or dynamically mapped fields might contain both numbers and strings. Check {{es}} logs if you think this may have occurred.
 
 You can view the deduced mappings by using the [preview transform API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-transform-preview-transform). See the `generated_dest_index` object in the API response.
 
@@ -119,7 +119,7 @@ If your data uses the [date nanosecond data type](elasticsearch://reference/elas
 
 [ILM](../../manage-data/lifecycle/index-lifecycle-management.md) is not recommended to use as a {{transform}} destination index. {{transforms-cap}} update documents in the current destination, and cannot delete documents in the indices previously used by ILM. This may lead to duplicated documents when you use {{transforms}} combined with ILM in case of a rollover.
 
-If you use ILM to have time-based indices, please consider using the [Date index name](elasticsearch://reference/enrich-processor/date-index-name-processor.md) instead. The processor works without duplicated documents if your {{transform}} contains a `group_by` based on `date_histogram`.
+If you use ILM to have time-based indices, consider using the [Date index name](elasticsearch://reference/enrich-processor/date-index-name-processor.md) instead. The processor works without duplicated documents if your {{transform}} contains a `group_by` based on `date_histogram`.
 
 ## Limitations in {{kib}} [transform-ui-limitations]
 

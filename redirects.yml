@@ -5,6 +5,7 @@ redirects:
   'deploy-manage/security/ece-traffic-filtering-through-the-api.md': 'deploy-manage/security/ec-traffic-filtering-through-the-api.md'
   'deploy-manage/security/install-stack-demo-secure.md': '!deploy-manage/security/self-setup.md'
   'reference/observability/fields-and-object-schemas/logs-app-fields.md': '!reference/observability/fields-and-object-schemas.md'
+  'reference/observability/fields-and-object-schemas/metrics-app-fields.md': '!reference/observability/fields-and-object-schemas.md'
   # Related to https://github.com/elastic/docs-content/pull/1069
   'solutions/observability/apps/llm-observability.md': 'solutions/observability/applications/llm-observability.md'
   'solutions/observability/apps.md': 'solutions/observability/applications/index.md'

@@ -64,4 +64,4 @@ To analyze RDS database metrics, you can select view filters based on the follow
 | **Active Transactions** | Average of `aws.rds.transactions.active`. |
 | **Latency** | Average of `aws.rds.latency.dml`. |
 
-For information about the fields used by the Infrastructure UI to display AWS services metrics, see the [Infrastructure app fields](/reference/observability/serverless/infrastructure-app-fields.md).
+For information about the fields used by the Infrastructure UI to display AWS services metrics, see the [Infrastructure app fields](/reference/observability/fields-and-object-schemas.md).
