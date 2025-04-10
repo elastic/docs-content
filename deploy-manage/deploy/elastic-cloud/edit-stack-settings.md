@@ -111,4 +111,4 @@ If a setting is not supported by {{ech}}, you will get an error message when you
 ## Edit APM user settings [ec-manage-apm-settings]
 
 Change how Elastic APM runs by providing your own user settings.
-Check [APM configuration reference](/solutions/observability/apps/configure-apm-server.md) for information on how to configure the {{fleet}}-managed APM integration.
+Check [APM configuration reference](/solutions/observability/apm/configure-apm-server.md) for information on how to configure the {{fleet}}-managed APM integration.

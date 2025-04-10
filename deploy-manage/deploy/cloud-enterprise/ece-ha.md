@@ -57,4 +57,4 @@ If you’re using a [private Docker registry server](ece-install-offline-with-re
 
 Avoid deleting containers unless explicitly instructed by Elastic Support or official documentation. Doing so may lead to unexpected issues or loss of access to your {{ece}} platform. For more details, refer to [](/troubleshoot/deployments/cloud-enterprise/troubleshooting-container-engines.md).
 
-If in doubt, please [contact support for help](/troubleshoot/index.md#contact-us).
+If in doubt, [contact support for help](/troubleshoot/index.md#contact-us).

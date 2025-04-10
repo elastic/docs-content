@@ -45,7 +45,7 @@ Trying to decide which ingest component to use? Refer to [Adding data to {{es}}]
 
 #### APM [stack-components-apm]
 
-Elastic APM is an application performance monitoring system built on the {{stack}}. It allows you to monitor software services and applications in real-time, by collecting detailed performance information on response time for incoming requests, database queries, calls to caches, external HTTP requests, and more. This makes it easy to pinpoint and fix performance problems quickly. [Learn more about APM](/solutions/observability/apps/application-performance-monitoring-apm.md).
+Elastic APM is an application performance monitoring system built on the {{stack}}. It allows you to monitor software services and applications in real-time, by collecting detailed performance information on response time for incoming requests, database queries, calls to caches, external HTTP requests, and more. This makes it easy to pinpoint and fix performance problems quickly. [Learn more about APM](/solutions/observability/apm/index.md).
 
 #### {{beats}} [stack-components-beats]
 

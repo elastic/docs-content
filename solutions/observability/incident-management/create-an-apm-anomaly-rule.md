@@ -9,7 +9,7 @@ navigation_title: "APM anomaly"
 # Create an APM anomaly rule [observability-create-anomaly-alert-rule]
 
 ::::{important}
-To use the APM Anomaly rule, you have to enable [machine learning](../../../solutions/observability/apps/integrate-with-machine-learning.md#observability-apm-integrate-with-machine-learning-enable-anomaly-detection), which requires an [appropriate license](https://www.elastic.co/subscriptions).
+To use the APM Anomaly rule, you have to enable [machine learning](/solutions/observability/apm/machine-learning.md#observability-apm-integrate-with-machine-learning-enable-anomaly-detection), which requires an [appropriate license](https://www.elastic.co/subscriptions).
 
 ::::
 

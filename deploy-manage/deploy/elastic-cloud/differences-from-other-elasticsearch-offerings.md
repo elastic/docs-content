@@ -103,14 +103,14 @@ This table compares Observability capabilities between {{ech}} deployments and S
 |---------|----------------------|-----------------------------------|------------------|
 | [**AI Assistant**](/solutions/observability/observability-ai-assistant.md) | ✅ | ✅ | |
 | **APM integration** | ✅ | ✅ | Use **Managed Intake Service** (supports Elastic APM and OTLP protocols) |
-| [**APM Agent Central Configuration**](/solutions/observability/apps/apm-agent-central-configuration.md) | ✅ | ❌ | Not available in Serverless |
-| [**APM Tail-based sampling**](/solutions/observability/apps/transaction-sampling.md#apm-tail-based-sampling) | ✅ | ❌ | - Not available in Serverless <br>- Consider **OpenTelemetry** tail sampling processor as an alternative |
+| [**APM Agent Central Configuration**](/solutions/observability/apm/apm-agent-central-configuration.md) | ✅ | ❌ | Not available in Serverless |
+| [**APM Tail-based sampling**](/solutions/observability/apm/transaction-sampling.md#apm-tail-based-sampling) | ✅ | ❌ | - Not available in Serverless <br>- Consider **OpenTelemetry** tail sampling processor as an alternative |
 | [**Android agent/SDK instrumentation**](apm-agent-android://reference/index.md) | ✅ | ❌ | Not available in Serverless |
 | [**AWS Firehose integration**](/solutions/observability/cloud/monitor-amazon-web-services-aws-with-amazon-data-firehose.md) | ✅ | ✅ | |
 | **Custom roles for Kibana Spaces** | ✅ | **Planned** | Anticipated in a future release |
 | [**Data stream lifecycle**](/manage-data/lifecycle/data-stream.md) | ✅ | ✅ | Primary lifecycle management method in Serverless |
 | **[Elastic Serverless Forwarder](elastic-serverless-forwarder://reference/index.md)** | ✅ | ❌ | |
-| **[Elastic Synthetics Private Locations](/solutions/observability/apps/monitor-resources-on-private-networks.md#synthetics-private-location-add)** | ✅ | ✅ | |
+| **[Elastic Synthetics Private Locations](/solutions/observability/synthetics/monitor-resources-on-private-networks.md#synthetics-private-location-add)** | ✅ | ✅ | |
 | **[Fleet Agent policies](/reference/fleet/agent-policy.md)** | ✅ | ✅ | |
 | **[Fleet server](/reference/fleet/fleet-server.md)** | - Self-hosted <br>- Hosted | ✅ | Fully managed by Elastic |
 | [**Index lifecycle management**](/manage-data/lifecycle/index-lifecycle-management.md) | ✅ | ❌ | Use [**Data stream lifecycle**](/manage-data/lifecycle/data-stream.md) instead |
@@ -118,11 +118,11 @@ This table compares Observability capabilities between {{ech}} deployments and S
 | **[Kibana Alerts](/deploy-manage/monitor/monitoring-data/configure-stack-monitoring-alerts.md)** | ✅ | ✅ | |
 | **[LogsDB index mode](/manage-data/data-store/data-streams/logs-data-stream.md)** | ✅ | ✅ | - Reduces storage footprint <br> - Enabled by default <br>- Cannot be disabled |
 | **[Logs management](/solutions/observability/logs.md)** | ✅ | ✅ | |
-| **[Metrics monitoring](/solutions/observability/apps/metrics.md)** | ✅ | ✅ | |
+| **[Metrics monitoring](/solutions/observability/apm/metrics.md)** | ✅ | ✅ | |
 | **[Observability SLO](/solutions/observability/incident-management/service-level-objectives-slos.md)** | ✅ | ✅ | |
-| [**Real User Monitoring (RUM)**](/solutions/observability/apps/real-user-monitoring-user-experience.md) | ✅ | **Planned** | Anticipated in a future release |
+| [**Real User Monitoring (RUM)**](/solutions/observability/applications/user-experience.md) | ✅ | **Planned** | Anticipated in a future release |
 | **[Universal Profiling](/solutions/observability/infra-and-hosts/get-started-with-universal-profiling.md)** | ✅ | ❌ | Not available in Serverless |
-| **Uptime monitoring** | ❌ | ❌ | - Deprecated in all deployment types <br>- Use [**Synthetics app**](/solutions/observability/apps/synthetic-monitoring.md) instead |
+| **Uptime monitoring** | ❌ | ❌ | - Deprecated in all deployment types <br>- Use [**Synthetics app**](/solutions/observability/synthetics/index.md) instead |
 
 ### Security
 

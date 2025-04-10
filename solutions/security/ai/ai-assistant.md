@@ -38,7 +38,7 @@ The Elastic AI Assistant is designed to enhance your analysis with smart dialogu
 
 Elastic does not store or examine prompts or results used by AI Assistant, or use this data for model training. This includes anything you send the model, such as alert or event data, detection rule configurations, queries, and prompts. However, any data you provide to AI Assistant will be processed by the third-party large language model (LLM) provider you connected to as part of AI Assistant setup.
 
-Elastic does not control third-party tools, and assumes no responsibility or liability for their content, operation, or use, nor for any loss or damage that may arise from your using such tools. Please exercise caution when using AI tools with personal, sensitive, or confidential information. Any data you submit may be used by the provider for AI training or other purposes. There is no guarantee that the provider will keep any information you provide secure or confidential. You should familiarize yourself with the privacy practices and terms of use of any generative AI tools prior to use.
+Elastic does not control third-party tools, and assumes no responsibility or liability for their content, operation, or use, nor for any loss or damage that may arise from your using such tools. Exercise caution when using AI tools with personal, sensitive, or confidential information. Any data you submit may be used by the provider for AI training or other purposes. There is no guarantee that the provider will keep any information you provide secure or confidential. You should familiarize yourself with the privacy practices and terms of use of any generative AI tools prior to use.
 
 ::::{note}
 Elastic can automatically anonymize event data that you provide to AI Assistant as context. To learn more, refer to [Configure AI Assistant](/solutions/security/ai/ai-assistant.md#configure-ai-assistant).
@@ -174,7 +174,7 @@ The **Knowledge base** tab of the **Security AI settings** page allows you to en
 
 Elastic AI Assistant allows you to take full advantage of the {{elastic-sec}} platform to improve your security operations. It can help you write an {{esql}} query for a particular use case, or answer general questions about how to use the platform. Its ability to assist you depends on the specificity and detail of your questions. The more context and detail you provide, the more tailored and useful its responses will be.
 
-To maximize its usefulness, consider using more detailed prompts or asking for additional information. For instance, after asking for an {{esql}} query example, you could ask a follow-up question like, “Could you give me some other examples?” You can also ask for clarification or further exposition, for example "Please provide comments explaining the query you just gave."
+To maximize its usefulness, consider using more detailed prompts or asking for additional information. For instance, after asking for an {{esql}} query example, you could ask a follow-up question like, “Could you give me some other examples?” You can also ask for clarification or further exposition, for example "Provide comments explaining the query you just gave."
 
 In addition to practical advice, AI Assistant can offer conceptual advice, tips, and best practices for enhancing your security measures. You can ask it, for example:
 

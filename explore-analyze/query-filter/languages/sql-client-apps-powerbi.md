@@ -11,7 +11,7 @@ mapped_pages:
 You can use the {{es}} ODBC driver to access {{es}} data from Microsoft Power BI Desktop.
 
 ::::{important}
-Elastic does not endorse, promote or provide support for this application; for native Elasticsearch integration in this product, please reach out to its vendor.
+Elastic does not endorse, promote or provide support for this application; for native Elasticsearch integration in this product, reach out to its vendor.
 ::::
 
 

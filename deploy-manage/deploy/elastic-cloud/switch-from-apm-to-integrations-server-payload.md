@@ -15,7 +15,7 @@ This example shows how to use the {{ecloud}} RESTful API to switch from using [A
 
 Given a deployment that is using an APM & Fleet Server with {{stack}} version 8.0 or later, it is possible to start using Integrations Server instead by updating the deployment with an Integrations Server payload. Switching from APM & Fleet Server to Integrations Server in this way ensures that the endpoints and credentials currently used by APM Server and Fleet Server remain the same after the switch.
 
-In order to start using the Integrations Server payload, you first need to enable the APM integration for Elastic Agent by following the steps in [Switch to the Elastic APM integration](/solutions/observability/apps/switch-an-elastic-cloud-cluster-to-apm-integration.md).
+In order to start using the Integrations Server payload, you first need to enable the APM integration for Elastic Agent by following the steps in [Switch to the Elastic APM integration](/solutions/observability/apm/switch-an-elastic-cloud-cluster-to-apm-integration.md).
 
 
 ### API request example [ec_api_request_example_3]
@@ -379,7 +379,7 @@ Beginning with {{stack}} version 8.0, [Integrations Server](manage-integrations-
 ::::
 
 
-You have the option to add a combined [Application Performance Monitoring (APM) Server](/solutions/observability/apps/application-performance-monitoring-apm.md) and [Fleet Server](/reference/fleet/index.md) to your deployment. APM allows you to monitor software services and applications in real time, turning that data into documents stored in the {{es}} cluster. Fleet allows you to centrally manage Elastic Agents on many hosts.
+You have the option to add a combined [Application Performance Monitoring (APM) Server](/solutions/observability/apm/index.md) and [Fleet Server](/reference/fleet/index.md) to your deployment. APM allows you to monitor software services and applications in real time, turning that data into documents stored in the {{es}} cluster. Fleet allows you to centrally manage Elastic Agents on many hosts.
 
 As part of provisioning, the APM Server and Fleet Server are already configured to work with {{es}} and {{kib}}. At the end of provisioning, you are shown the secret token to configure communication between the APM Server and the backend [APM Agents](https://www.elastic.co/guide/en/apm/agent/index.html). The APM Agents get deployed within your services and applications.
 
@@ -402,7 +402,7 @@ From the deployment **APM & Fleet** page you can also:
 
 ### Upgrading to {{stack}} 8.0 [ec-upgrade-apm-stack-8]
 
-The following APM settings have been removed in {{stack}} version 8.0. This change is only relevant to users upgrading a standalone (legacy) deployment of APM Server to {{stack}} version 8.0. Check [Add APM user settings](../../../solutions/observability/apps/configure-apm-server.md) for more details.
+The following APM settings have been removed in {{stack}} version 8.0. This change is only relevant to users upgrading a standalone (legacy) deployment of APM Server to {{stack}} version 8.0. Check [Add APM user settings](/solutions/observability/apm/configure-apm-server.md) for more details.
 
 ```yaml
 apm-server.api_key.enabled

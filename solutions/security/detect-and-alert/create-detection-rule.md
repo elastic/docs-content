@@ -520,7 +520,7 @@ When configuring an {{esql}} rule’s **[Custom highlighted fields](/solutions/s
         :::
 
         ::::{note}
-        For threshold rules, not all source event values can be used for overrides; only the fields that were aggregated over (the `Group by` fields) will contain data. Please also note that overrides are not supported for event correlation rules.
+        For threshold rules, not all source event values can be used for overrides; only the fields that were aggregated over (the `Group by` fields) will contain data. Also note that overrides are not supported for event correlation rules.
         ::::
 
     5. **Default risk score**: A numerical value between 0 and 100 that indicates the risk of events detected by the rule. This setting changes to a default value when you change the **Severity** level, but you can adjust the risk score as needed. General guidelines are:
