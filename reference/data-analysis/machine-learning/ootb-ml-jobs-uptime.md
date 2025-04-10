@@ -5,7 +5,7 @@ mapped_pages:
 
 # Uptime {{anomaly-detect}} configurations [ootb-ml-jobs-uptime]
 
-If you have appropriate {{heartbeat}} data in {{es}}, you can enable this {{anomaly-job}} in the [{{uptime-app}}](/solutions/observability/apps/synthetic-monitoring.md#monitoring-uptime) in {{kib}}. For more usage information, refer to [Inspect uptime duration anomalies](/solutions/observability/apps/inspect-uptime-duration-anomalies.md).
+If you have appropriate {{heartbeat}} data in {{es}}, you can enable this {{anomaly-job}} in the [{{uptime-app}}](/solutions/observability/synthetics/index.md#monitoring-uptime) in {{kib}}. For more usage information, refer to [Inspect uptime duration anomalies](/solutions/observability/uptime/inspect-duration-anomalies.md).
 
 
 ## Uptime: {{heartbeat}} [uptime-heartbeat]

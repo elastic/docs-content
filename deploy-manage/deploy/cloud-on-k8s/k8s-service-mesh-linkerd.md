@@ -33,15 +33,15 @@ linkerd stat sts/elastic-operator -n elastic-system
 If the installation was successful, the output of the above command should show `1/1` under the `MESHED` column.
 
 
-## Connect Elastic Stack applications to the Linkerd service mesh [k8s-service-mesh-linkerd-stack-connection]
+## Connect {{stack}} applications to the Linkerd service mesh [k8s-service-mesh-linkerd-stack-connection]
 
-The easiest way to connect applications to the service mesh is by adding the `linkerd.io/inject: enabled` annotation to the deployment namespace. For example, if you are planning to deploy Elastic Stack applications to a namespace named `elastic-stack`, annotate it as follows to enable [automatic Linkerd sidecar injection](https://linkerd.io/2/features/proxy-injection/).
+The easiest way to connect applications to the service mesh is by adding the `linkerd.io/inject: enabled` annotation to the deployment namespace. For example, if you are planning to deploy {{stack}} applications to a namespace named `elastic-stack`, annotate it as follows to enable [automatic Linkerd sidecar injection](https://linkerd.io/2/features/proxy-injection/).
 
 ```sh
 kubectl annotate namespace elastic-stack linkerd.io/inject=enabled
 ```
 
-Any Elasticsearch, Kibana, or APM Server resources deployed to a namespace with the above annotation will automatically join the mesh.
+Any {{es}}, {{kib}}, or APM Server resources deployed to a namespace with the above annotation will automatically join the mesh.
 
 Alternatively, if you only want specific resources to join the mesh, add the `linkerd.io/inject: enabled` annotation to the `podTemplate` (check [API documentation](cloud-on-k8s://reference/api-docs.md)) of the resource as follows:
 
@@ -52,9 +52,9 @@ podTemplate:
       linkerd.io/inject: enabled
 ```
 
-If automatic sidecar injection is enabled and [auto mounting of service account tokens](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/#use-the-default-service-account-to-access-the-api-server) is not disabled on your Kubernetes cluster, examples defined elsewhere in the ECK documentation will continue to work under Linkerd without requiring any modifications. However, as the default behaviour of ECK is to enable TLS for Elasticsearch, Kibana and APM Server resources, you will not be able to view detailed traffic information from Linkerd dashboards and command-line utilities. The following sections illustrate the optional configuration necessary to enhance the integration of Elastic Stack applications with Linkerd.
+If automatic sidecar injection is enabled and [auto mounting of service account tokens](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/#use-the-default-service-account-to-access-the-api-server) is not disabled on your Kubernetes cluster, examples defined elsewhere in the ECK documentation will continue to work under Linkerd without requiring any modifications. However, as the default behaviour of ECK is to enable TLS for {{es}}, {{kib}} and APM Server resources, you will not be able to view detailed traffic information from Linkerd dashboards and command-line utilities. The following sections illustrate the optional configuration necessary to enhance the integration of {{stack}} applications with Linkerd.
 
-### Elasticsearch [k8s-service-mesh-linkerd-elasticsearch]
+### {{es}} [k8s-service-mesh-linkerd-elasticsearch]
 
 ```yaml
 apiVersion: elasticsearch.k8s.elastic.co/v1
@@ -86,9 +86,9 @@ spec:
 
 
 
-### Kibana and APM Server [k8s-service-mesh-linkerd-kibana-apm]
+### {{kib}} and APM Server [k8s-service-mesh-linkerd-kibana-apm]
 
-The configuration is almost identical for Kibana and APM Server resources.
+The configuration is almost identical for {{kib}} and APM Server resources.
 
 ```yaml
 apiVersion: ...

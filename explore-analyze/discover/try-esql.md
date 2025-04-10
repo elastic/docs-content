@@ -59,7 +59,7 @@ To load the sample data:
    ::::
 
 
-Let’s add `geo.dest` to our query, to find out the geographical destination of the visits, and limit the results.
+Let’s add `geo.dest` to our query to find out the geographical destination of the visits and limit the results.
 
 1. Copy the query below:
 

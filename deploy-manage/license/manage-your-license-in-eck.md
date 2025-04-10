@@ -9,10 +9,10 @@ mapped_pages:
 
 # Manage your license in {{eck}} [k8s-licensing]
 
-When you install the default distribution of ECK, you receive a Basic license. Any Elastic stack application you manage through ECK will also be Basic licensed. Go to [https://www.elastic.co/subscriptions](https://www.elastic.co/subscriptions) to check which features are included in the Basic license for free.
+When you install the default distribution of ECK, you receive a Basic license. Any {{stack}} application you manage through ECK will also be Basic licensed. Go to [https://www.elastic.co/subscriptions](https://www.elastic.co/subscriptions) to check which features are included in the Basic license for free.
 
 ::::{important}
-ECK is only offered in two licensing tiers: Basic and Enterprise. Similar to the Elastic Stack, customers can download and use ECK with a Basic license for free. Basic license users can obtain support from GitHub or through our [community](https://discuss.elastic.co). A paid Enterprise subscription is required to engage the Elastic support team. For more details, check the [Elastic subscriptions](https://www.elastic.co/subscriptions).
+ECK is only offered in two licensing tiers: Basic and Enterprise. Similar to the {{stack}}, customers can download and use ECK with a Basic license for free. Basic license users can obtain support from GitHub or through our [community](https://discuss.elastic.co). A paid Enterprise subscription is required to engage the Elastic support team. For more details, check the [Elastic subscriptions](https://www.elastic.co/subscriptions).
 ::::
 
 
@@ -62,7 +62,7 @@ When downloading the license choose the "Orchestration license" option.
 ::::
 
 
-The downloaded JSON file contains the Enterprise orchestration license which enables ECK Enterprise features. Embedded in the orchestration license are also Enterprise stack licenses for recent Elasticsearch versions and Platinum licenses for older Elasticsearch versions that do not support Enterprise licenses.
+The downloaded JSON file contains the Enterprise orchestration license which enables ECK Enterprise features. Embedded in the orchestration license are also Enterprise stack licenses for recent {{es}} versions and Platinum licenses for older {{es}} versions that do not support Enterprise licenses.
 
 To add the license to your ECK installation, create a Kubernetes secret of the following form:
 
@@ -89,10 +89,10 @@ kubectl create secret generic eck-license --from-file=my-license-file.json -n el
 kubectl label secret eck-license "license.k8s.elastic.co/scope"=operator -n elastic-system
 ```
 
-After you install a license into ECK, the Enterprise features of the operator are available, like Elasticsearch autoscaling and support for Elastic Maps Server. All the Elastic Stack applications you manage with ECK will have Platinum and Enterprise features enabled.  The [`_license`](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-license-get) API reports that individual Elasticsearch clusters are running under an Enterprise license, and the [elastic-licensing](#k8s-get-usage-data) ConfigMap contains the current license level of the ECK operator. The applications created before you installed the license are upgraded to Platinum or Enterprise features without interruption of service after a short delay.
+After you install a license into ECK, the Enterprise features of the operator are available, like {{es}} autoscaling and support for Elastic Maps Server. All the {{stack}} applications you manage with ECK will have Platinum and Enterprise features enabled.  The [`_license`](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-license-get) API reports that individual {{es}} clusters are running under an Enterprise license, and the [elastic-licensing](#k8s-get-usage-data) ConfigMap contains the current license level of the ECK operator. The applications created before you installed the license are upgraded to Platinum or Enterprise features without interruption of service after a short delay.
 
 ::::{note}
-The Elasticsearch `_license` API for versions before 8.0.0 reports a Platinum license level for backwards compatibility even if an Enterprise license is installed.
+The {{es}} `_license` API for versions before 8.0.0 reports a Platinum license level for backwards compatibility even if an Enterprise license is installed.
 ::::
 
 
@@ -102,11 +102,11 @@ The Elasticsearch `_license` API for versions before 8.0.0 reports a Platinum li
 Before your current Enterprise license expires, you will receive a new Enterprise license from Elastic (provided that your subscription is valid).
 
 ::::{note}
-You can check the expiry date of your license in the [elastic-licensing](#k8s-get-usage-data) ConfigMap. Enterprise licenses are container licenses that include multiple licenses for individual Elasticsearch clusters with shorter expiry. Therefore, you get a different expiry in Kibana or through the Elasticsearch [`_license`](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-license-get) API. ECK automatically updates the Elasticsearch cluster licenses until the expiry date of the ECK Enterprise license is reached.
+You can check the expiry date of your license in the [elastic-licensing](#k8s-get-usage-data) ConfigMap. Enterprise licenses are container licenses that include multiple licenses for individual {{es}} clusters with shorter expiry. Therefore, you get a different expiry in {{kib}} or through the {{es}} [`_license`](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-license-get) API. ECK automatically updates the {{es}} cluster licenses until the expiry date of the ECK Enterprise license is reached.
 ::::
 
 
-To avoid any unintended downgrade of individual Elasticsearch clusters to a Basic license while installing the new license, we recommend installing the new Enterprise license as a new Kubernetes secret next to your existing Enterprise license. Just replace `eck-license` with a different name in the [Kubernetes secret example](#k8s-add-license). ECK will use the correct license automatically.
+To avoid any unintended downgrade of individual {{es}} clusters to a Basic license while installing the new license, we recommend installing the new Enterprise license as a new Kubernetes secret next to your existing Enterprise license. Just replace `eck-license` with a different name in the [Kubernetes secret example](#k8s-add-license). ECK will use the correct license automatically.
 
 Once you have created the new license secret you can safely delete the old license secret.
 
@@ -151,10 +151,10 @@ elastic_licensing_enterprise_resource_units_total{license_level="enterprise"} 1
 # HELP elastic_licensing_memory_gibibytes_apm Memory used by APM server in GiB
 # TYPE elastic_licensing_memory_gibibytes_apm gauge
 elastic_licensing_memory_gibibytes_apm{license_level="enterprise"} 0.5
-# HELP elastic_licensing_memory_gibibytes_elasticsearch Memory used by Elasticsearch in GiB
+# HELP elastic_licensing_memory_gibibytes_elasticsearch Memory used by {{es}} in GiB
 # TYPE elastic_licensing_memory_gibibytes_elasticsearch gauge
 elastic_licensing_memory_gibibytes_elasticsearch{license_level="enterprise"} 18
-# HELP elastic_licensing_memory_gibibytes_kibana Memory used by Kibana in GiB
+# HELP elastic_licensing_memory_gibibytes_kibana Memory used by {{kib}} in GiB
 # TYPE elastic_licensing_memory_gibibytes_kibana gauge
 elastic_licensing_memory_gibibytes_kibana{license_level="enterprise"} 1
 # HELP elastic_licensing_memory_gibibytes_logstash Memory used by Logstash in GiB

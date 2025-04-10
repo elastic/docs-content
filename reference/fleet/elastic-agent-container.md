@@ -9,6 +9,8 @@ You can run {{agent}} inside a container — either with {{fleet-server}} or
 
 Note that running {{elastic-agent}} in a container is supported only in Linux environments. For this reason we don’t currently provide {{agent}} container images for Windows.
 
+In version 9.0.0, the default Ubuntu-based Docker images used for {{agent}} have been changed to Red Hat UBI (Universal Base Image) minimal based images, to reduce the overall footprint of the agent Docker images and to improve compliance with enterprise standards. Refer to [#6427]({{agent-pull}}6427) for details.
+
 Considerations:
 
 * When {{agent}} runs inside a container, it cannot be upgraded through {{fleet}} as it expects that the container itself is upgraded.
@@ -34,19 +36,35 @@ Considerations:
 
 ## Step 1: Pull the image [_step_1_pull_the_image]
 
-There are two images for Elastic Agent, elastic-agent and elastic-agent-complete. The elastic-agent image contains all the binaries for running Beats, while the elastic-agent-complete image contains these binaries plus additional dependencies to run browser monitors through Elastic Synthetics. Refer to [Synthetic monitoring via Elastic Agent and Fleet](/solutions/observability/apps/get-started.md) for more information.
+There are various flavors of images for {{agent}}, elastic-agent and elastic-agent-complete. Refer to [Install {{agents}}](./install-elastic-agents.md) for full details about each flavor.
 
 Run the `docker pull` command against the Elastic Docker registry:
 
+### Basic flavor
+
 ```terminal subs=true
-docker pull docker.elastic.co/elastic-agent/elastic-agent:{{stack-version}}
+docker pull docker.elastic.co/elastic-agent/elastic-agent-slim:{{stack-version}}
 ```
 
 Alternately, you can use the hardened [Wolfi](https://github.com/wolfi-dev/) image. Using Wolfi images requires Docker version 20.10.10 or later. For details about why the Wolfi images have been introduced, refer to our article [Reducing CVEs in Elastic container images](https://www.elastic.co/blog/reducing-cves-in-elastic-container-images).
 
 ```terminal subs=true
+docker pull docker.elastic.co/elastic-agent/elastic-agent-slim-wolfi:{{stack-version}}
+```
+
+### Server flavor
+
+```terminal subs=true
+docker pull docker.elastic.co/elastic-agent/elastic-agent:{{stack-version}}
+```
+
+To run the server flavor using the hardened [Wolfi](https://github.com/wolfi-dev/) image, run:
+
+```terminal subs=true
 docker pull docker.elastic.co/elastic-agent/elastic-agent-wolfi:{{stack-version}}
 ```
+
+### Complete flavor
 
 If you want to run Synthetics tests, run the docker pull command to fetch the elastic-agent-complete image:
 
@@ -116,7 +134,7 @@ docker run \
 1. Set to 1 to enroll the {{agent}} into {{fleet-server}}.
 2. URL to enroll the {{fleet-server}} into. You can find it in {{kib}}. Select **Management → {{fleet}} → Fleet Settings**, and copy the {{fleet-server}} host URL.
 3. The token to use for enrollment. Close the flyout panel and select **Enrollment tokens**. Find the Agent policy you want to enroll {{agent}} into, and display and copy the secret token. To learn how to create a policy, refer to [Create an agent policy without using the UI](/reference/fleet/create-policy-no-ui.md).
-4. If you want to run **elastic-agent-complete** image, replace `elastic-agent` to `elastic-agent-complete`. Use the `elastic-agent` user instead of root to run Synthetics Browser tests. Synthetic tests cannot run under the root user. Refer to [Synthetics {{fleet}} Quickstart](/solutions/observability/apps/get-started.md) for more information.
+4. If you want to run **elastic-agent-complete** image, replace `elastic-agent` to `elastic-agent-complete`. Use the `elastic-agent` user instead of root to run Synthetics Browser tests. Synthetic tests cannot run under the root user. Refer to [Synthetics {{fleet}} Quickstart](/solutions/observability/synthetics/get-started.md) for more information.
 
 Refer to [Environment variables](/reference/fleet/agent-environment-variables.md) for all available options.
 :::
@@ -140,7 +158,7 @@ docker run \
 3. The {{fleet}} service token. [Generate one in the {{fleet}} UI](/reference/fleet/fleet-enrollment-tokens.md#create-fleet-enrollment-tokens) if you don’t have one already.
 4. ID of the {{fleet-server}} policy. We recommend only having one fleet-server policy. To learn how to create a policy, refer to [Create an agent policy without using the UI](/reference/fleet/create-policy-no-ui.md).
 5. publish container port 8220 to host.
-6. If you want to run the **elastic-agent-complete** image, replace `elastic-agent` with `elastic-agent-complete`. Use the `elastic-agent` user instead of root to run Synthetics Browser tests. Synthetic tests cannot run under the root user. Refer to [Synthetics {{fleet}} Quickstart](/solutions/observability/apps/get-started.md) for more information.
+6. If you want to run the **elastic-agent-complete** image, replace `elastic-agent` with `elastic-agent-complete`. Use the `elastic-agent` user instead of root to run Synthetics Browser tests. Synthetic tests cannot run under the root user. Refer to [Synthetics {{fleet}} Quickstart](/solutions/observability/synthetics/get-started.md) for more information.
 
 Refer to [Environment variables](/reference/fleet/agent-environment-variables.md) for all available options.
 :::
@@ -224,7 +242,7 @@ services:
       - FLEET_URL=<fleet-server-url>
 ```
 
-1. Switch `elastic-agent` to `elastic-agent-complete` if you intend to use the complete version. Use the `elastic-agent` user instead of root to run Synthetics Browser tests. Synthetic tests cannot run under the root user. Refer to [Synthetics {{fleet}} Quickstart](/solutions/observability/apps/get-started.md) for more information.
+1. Switch `elastic-agent` to `elastic-agent-complete` if you intend to use the complete version. Use the `elastic-agent` user instead of root to run Synthetics Browser tests. Synthetic tests cannot run under the root user. Refer to [Synthetics {{fleet}} Quickstart](/solutions/observability/synthetics/get-started.md) for more information.
 2. Synthetic browser monitors require this set to `elastic-agent`.
 
 

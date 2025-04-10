@@ -8,7 +8,7 @@ mapped_pages:
 ---
 
 % Scope: TLS certificates setup / multi-node cluster / manual configuration
-% original title: Set up basic security for the Elastic Stack
+% original title: Set up basic security for the {{stack}}
 # Set up transport TLS [security-basic-setup]
 
 Configuring TLS between nodes is the basic security setup to prevent unauthorized nodes from accessing to your {{es}} cluster, and it's required by multi-node clusters. [Production mode](../deploy/self-managed/bootstrap-checks.md#dev-vs-prod-mode) clusters will not start if you do not enable TLS.

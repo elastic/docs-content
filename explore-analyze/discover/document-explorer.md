@@ -55,10 +55,9 @@ You can define different settings for the header row and body rows.
 
 When the number of results returned by your search query (displayed at the top of the **Documents** or **Results** tab) is greater than the value of [`discover:sampleSize`](kibana://reference/advanced-settings.md#kibana-discover-settings), the number of results displayed in the table is limited to the configured value by default. You can adjust the initial sample size for searches to any number between 10 and `discover:sampleSize` from the **Display options** located in the table toolbar.
 
-On the last page of the table, a message indicates that you’ve reached the end of the loaded search results. From that message, you can choose to load more results to continue exploring.
-
 ![Limit sample size in Discover](/explore-analyze/images/kibana-discover-limit-sample-size.png "title =50%")
 
+On the last page of the table, a message indicates that you’ve reached the end of the loaded search results. From that message, you can choose to load more results to continue exploring.
 
 ### Sort the fields [document-explorer-sort-data]
 
@@ -69,6 +68,7 @@ To add or remove a sort on a single field, click the column header, and then sel
 To sort by multiple fields:
 
 1. Click the **Sort fields** option.
+   
    ![Pop-up in document table for sorting columns](/explore-analyze/images/kibana-document-explorer-sort-data.png "title =50%")
 
 2. To add fields to the sort, select their names from the dropdown menu.

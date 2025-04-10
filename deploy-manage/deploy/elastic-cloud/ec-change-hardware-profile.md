@@ -8,19 +8,19 @@ mapped_pages:
 
 # Change hardware profiles [ec-change-hardware-profile]
 
-Deployment hardware profiles deploy the Elastic Stack on virtual hardware. Each hardware profile has a different blend of storage, RAM, and vCPU.
+Deployment hardware profiles deploy the {{stack}} on virtual hardware. Each hardware profile has a different blend of storage, RAM, and vCPU.
 
-Elastic Cloud regularly introduces new hardware profiles to provide:
+{{ecloud}} regularly introduces new hardware profiles to provide:
 
-* More optimal hardware for applications in the Elastic Stack.
+* More optimal hardware for applications in the {{stack}}.
 * Cost efficiencies when new hardware from Cloud providers becomes available.
 
 ::::{tip}
-The Elastic Cloud console indicates when a new version of a hardware profile is available in the overview page for your deployment, under the Hardware profile section.
+The {{ecloud}} console indicates when a new version of a hardware profile is available in the overview page for your deployment, under the Hardware profile section.
 ::::
 
 
-## Change the hardware profile using the Elastic Cloud console [ec_change_the_hardware_profile_using_the_elastic_cloud_console]
+## Change the hardware profile using the {{ecloud}} console [ec_change_the_hardware_profile_using_the_elastic_cloud_console]
 
 ### Upgrade to the newest version of your current hardware profile [ec_upgrade_to_the_newest_version_of_your_current_hardware_profile]
 
@@ -72,7 +72,7 @@ If your deployment is configured for high availability, the hardware profile cha
 
 Prerequisites:
 
-* A valid Elastic Cloud [API key](../../api-keys/elastic-cloud-api-keys.md) (`$EC_API_KEY`)
+* A valid {{ecloud}} [API key](../../api-keys/elastic-cloud-api-keys.md) (`$EC_API_KEY`)
 * The deployment ID of the deployment you wish to modify (`{{deployment_id}}`)
 
 Replace those values with your actual API key and deployment ID in the following instructions.
@@ -147,7 +147,7 @@ Replace those values with your actual API key and deployment ID in the following
 
 ### Storage optimized [ec-profiles-storage]
 
-Your Elasticsearch data nodes are optimized for high I/O throughput. Use this profile if you are new to Elasticsearch or don’t need to run a more specialized workload. You can find the exact storage, memory, and vCPU allotment on the [hardware details page](cloud://reference/cloud-hosted/hardware.md#ec-getting-started-configurations) for each cloud provider.
+Your {{es}} data nodes are optimized for high I/O throughput. Use this profile if you are new to {{es}} or don’t need to run a more specialized workload. You can find the exact storage, memory, and vCPU allotment on the [hardware details page](cloud://reference/cloud-hosted/hardware.md#ec-getting-started-configurations) for each cloud provider.
 
 **Ideal use case**
 
@@ -156,7 +156,7 @@ Good for most ingestion use cases with 7-10 days of data available for fast acce
 
 ### Storage optimized (dense) [ec-profiles-storage-dense]
 
-Your Elasticsearch data nodes are optimized for high I/O throughput. You can find the exact storage, memory, and vCPU allotment on the [hardware details page](cloud://reference/cloud-hosted/hardware.md#ec-getting-started-configurations) for each cloud provider.
+Your {{es}} data nodes are optimized for high I/O throughput. You can find the exact storage, memory, and vCPU allotment on the [hardware details page](cloud://reference/cloud-hosted/hardware.md#ec-getting-started-configurations) for each cloud provider.
 
 **Ideal use case**
 

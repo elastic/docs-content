@@ -392,4 +392,4 @@ When a host is detected by APM, but is not collecting full metrics (for example,
 
 This could mean that the APM agent has not been configured to use the correct host name. Instead, the host name might be the container name or the Kubernetes pod name.
 
-To get the correct host name, you need to set some additional configuration options, specifically `system.kubernetes.node.name` as described in [Kubernetes data](../../../solutions/observability/apps/managed-intake-service-event-api.md#kubernetes-data).
+To get the correct host name, you need to set some additional configuration options, specifically `system.kubernetes.node.name` as described in [Kubernetes data](/solutions/observability/apm/managed-intake-service-event-api.md#kubernetes-data).

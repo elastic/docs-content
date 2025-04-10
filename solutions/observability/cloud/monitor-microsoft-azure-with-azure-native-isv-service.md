@@ -98,7 +98,7 @@ To ingest Azure subscription and resource logs into Elastic, you use the Azure N
     ::::
 
 3. In {{kib}}, under **{{observability}}**, find **Overview** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Refresh the page until you see some data. This may take a few minutes.
-4. To analyze your subscription and resource logs, click **Show Logs Explorer**.
+4. To analyze your subscription and resource logs, click **Show Logs**.
 
 
 ## Step 3: Ingest logs and metrics from your virtual machines (VMs) [azure-ingest-VM-logs-metrics]
@@ -112,7 +112,7 @@ To ingest Azure subscription and resource logs into Elastic, you use the Azure N
     :::
 
 3. Wait until the extension is installed and sending data (if the list does not update, click **Refresh** ).
-4. Back in {{kib}}, view the **Logs Explorer** again. Notice that you can filter the view to show logs for a specific instance, for example `cloud.instance.name : "ingest-tutorial-linux"`.
+4. Back in {{kib}}, view the **Discover** again. Notice that you can filter the view to show logs for a specific instance, for example `cloud.instance.name : "ingest-tutorial-linux"`.
 5. To view VM metrics, go to **Infrastructure inventory** and then select a VM. (To open **Infrastructure inventory**, find **Infrastructure** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).)
 
     To explore the data further, click **Open as page**.

@@ -12,7 +12,7 @@ applies_to:
 
 When auditing security events, a single client request might generate multiple audit events across multiple cluster nodes, potentially leading to a high volume of log data and I/O operations. To maintain clarity and ensure logs remain actionable, {{es}} and {{kib}} provide configuration mechanisms to control what events are logged and which can be ignored.
 
-### Elasticsearch auditing configuration
+### {{es}} auditing configuration
 
 {{es}} configuration options include:
 
@@ -28,9 +28,9 @@ For a complete description of event details and format, refer to the following r
   * [{{es}} audit events details and schema](elasticsearch://reference/elasticsearch/elasticsearch-audit-events.md)
   * [{{es}} log entry output format](./logfile-audit-output.md#audit-log-entry-format)
 
-### Kibana auditing configuration
+### {{kib}} auditing configuration
 
-To control the logs that are outputted by Kibana, you can use [{{kib}} ignore filters](kibana://reference/configuration-reference/security-settings.md#audit-logging-ignore-filters). These are a list of filters that determine which events should be excluded from the audit log.
+To control the logs that are outputted by {{kib}}, you can use [{{kib}} ignore filters](kibana://reference/configuration-reference/security-settings.md#audit-logging-ignore-filters). These are a list of filters that determine which events should be excluded from the audit log.
 
 In self-managed systems, you can optionally configure audit logs location, and file/rolling file using [{{kib}} audit logging settings](kibana://reference/configuration-reference/security-settings.md#audit-logging-settings).
 

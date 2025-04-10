@@ -9,13 +9,13 @@ applies_to:
 # How to access AutoOps [ec-autoops-how-to-access]
 
 ::::{note}
-AutoOps supports {{es}} versions according to the [supported Elastic Stack versions](https://www.elastic.co/support/eol).
+AutoOps supports {{es}} versions according to the [supported {{stack}} versions](https://www.elastic.co/support/eol).
 ::::
 
 
-To access AutoOps from your Elastic Cloud console, follow these steps:
+To access AutoOps from your {{ecloud}} console, follow these steps:
 
-1. Log in to your Elastic Cloud Hosted account. Use your credentials to access your Elastic Cloud dashboard.
+1. Log in to your {{ech}} account. Use your credentials to access your {{ecloud}} dashboard.
 2. Navigate through your list of deployments and locate the one you want to manage.
 3. Click **Manage** on the right side of the selected deployment.
 4. On the deployment details page, click **Open AutoOps**.
