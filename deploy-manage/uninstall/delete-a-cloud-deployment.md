@@ -11,6 +11,7 @@ applies_to:
   deployment:
     ess:
     ece:
+    eck:
   serverless:
 ---
 
