@@ -76,22 +76,36 @@ Install {{filebeat}} on the server you want to monitor by running the commands t
 
 ::::::{tab-item} DEB
 ```sh subs=true
+curl -L -O https\://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{version}}-amd64.deb
+sudo dpkg -i filebeat-{{version}}-amd64.deb
+```
+::::::
+
+::::::{tab-item} RPM
+```sh subs=true
+curl -L -O https\://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{version}}-x86_64.rpm
+sudo rpm -vi filebeat-{{version}}-x86_64.rpm
+```
+::::::
+
+::::::{tab-item} macOS
+```sh subs=true
 curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{version}}-darwin-x86_64.tar.gz
 tar xzvf filebeat-{{version}}-darwin-x86_64.tar.gz
 ```
 ::::::
 
-::::::{tab-item} RPM
+::::::{tab-item} Linux
 ```sh subs=true
 curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{version}}-linux-x86_64.tar.gz
 tar xzvf filebeat-{{version}}-linux-x86_64.tar.gz
 ```
 ::::::
 
-::::::{tab-item} macOS
-1. Download the {{filebeat}} Windows zip file: `https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{version}}-windows-x86_64.zip`
+::::::{tab-item} Windows
+1. Download the [{{filebeat}} Windows zip file](https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{version}}-windows-x86_64.zip).
 2. Extract the contents of the zip file into `C:\Program Files`.
-3. Rename the `filebeat-{{version}}-windows-x86_64` directory to `{{filebeat}}`.
+3. Rename the _filebeat-{{version}}-windows-x86\_64_ directory to _Filebeat_:
 4. Open a PowerShell prompt as an Administrator (right-click the PowerShell icon and select **Run As Administrator**).
 5. From the PowerShell prompt, run the following commands to install {{filebeat}} as a Windows service:
 
@@ -100,22 +114,7 @@ tar xzvf filebeat-{{version}}-linux-x86_64.tar.gz
     PS C:\Program Files\{filebeat}> .\install-service-filebeat.ps1
     ```
 
-
 If script execution is disabled on your system, you need to set the execution policy for the current session to allow the script to run. For example: `PowerShell.exe -ExecutionPolicy UnRestricted -File .\install-service-filebeat.ps1`.
-::::::
-
-::::::{tab-item} Linux
-```sh subs=true
-curl -L -O https\://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{version}}-amd64.deb
-sudo dpkg -i filebeat-{{version}}-amd64.deb
-```
-::::::
-
-::::::{tab-item} Windows
-```sh subs=true
-curl -L -O https\://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{version}}-x86_64.rpm
-sudo rpm -vi filebeat-{{version}}-x86_64.rpm
-```
 ::::::
 
 :::::::

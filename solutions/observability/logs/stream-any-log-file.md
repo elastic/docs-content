@@ -64,29 +64,24 @@ On your host, download and extract the installation package that corresponds wit
 
 ::::::{tab-item} macOS
 
-```shell
-
+```shell subs=true
 curl -L -O https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-{{stack-version}}-darwin-x86_64.tar.gz
 tar xzvf elastic-agent-{{stack-version}}-darwin-x86_64.tar.gz
-
 ```
 ::::::
 
 ::::::{tab-item} Linux
 
-```shell
-
+```shell subs=true
 curl -L -O https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-{{stack-version}}-linux-x86_64.tar.gz
 tar xzvf elastic-agent-{{stack-version}}-linux-x86_64.tar.gz
-
 ```
 
 ::::::
 
 ::::::{tab-item} Windows
 
-```powershell
-
+```powershell subs=true
 # PowerShell 5.0+
 wget https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-{{stack-version}}-windows-x86_64.zip -OutFile elastic-agent-{{stack-version}}-windows-x86_64.zip
 Expand-Archive .\elastic-agent-{{stack-version}}-windows-x86_64.zip
@@ -103,11 +98,9 @@ To simplify upgrading to future versions of Elastic Agent, we recommended that y
 You can install Elastic Agent in an unprivileged mode that does not require root privileges.
 :::
 
-```shell
-
+```shell subs=true
 curl -L -O https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-{{stack-version}}-amd64.deb
 sudo dpkg -i elastic-agent-{{stack-version}}-amd64.deb
-
 ```
 ::::::
 
@@ -118,11 +111,9 @@ To simplify upgrading to future versions of Elastic Agent, we recommended that y
 You can install Elastic Agent in an unprivileged mode that does not require root privileges.
 :::
 
-```shell
-
+```shell subs=true
 curl -L -O https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-{{stack-version}}-x86_64.rpm
 sudo rpm -vi elastic-agent-{{stack-version}}-x86_64.rpm
-
 ```
 ::::::
 
