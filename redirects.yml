@@ -191,7 +191,7 @@ redirects:
   'troubleshoot/elasticsearch/elasticsearch-client-java-api-client/java.md': 'reference/elasticsearch/clients/java/troubleshooting/index.md'
   'troubleshoot/elasticsearch/elasticsearch-client-java-api-client/missing-required-property.md': 'reference/elasticsearch/clients/java/troubleshooting/missing-required-property.md'
   'troubleshoot/elasticsearch/elasticsearch-client-java-api-client/typed-keys-serialization.md': 'reference/elasticsearch/clients/java/troubleshooting/serialize-without-typed-keys.md'
-  'troubleshoot/elasticsearch/elasticsearch-client-javascript-api/nodejs.md': 'reference/elasticsearch/clients/javascript/timeout-best-practices.md'
+  'troubleshoot/elasticsearch/elasticsearch-client-javascript-api/nodejs.md': 'reference/elasticsearch/clients/javascript/index.md'
   'troubleshoot/elasticsearch/elasticsearch-client-net-api/audit-trail.md': 'reference/elasticsearch/clients/dotnet/troubleshoot/audit-trail.md'
   'troubleshoot/elasticsearch/elasticsearch-client-net-api/debug-information.md': 'reference/elasticsearch/clients/dotnet/troubleshoot/debug-information.md'
   'troubleshoot/elasticsearch/elasticsearch-client-net-api/debug-mode.md': 'reference/elasticsearch/clients/dotnet/troubleshoot/debug-mode.md'
