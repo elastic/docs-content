@@ -5,6 +5,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/security-endpoint-data-volume.html
 applies_to:
   stack: all
+  serverless:
+    security: all
 ---
 
 # Configure data volume for {{elastic-endpoint}} [endpoint-data-volume]
