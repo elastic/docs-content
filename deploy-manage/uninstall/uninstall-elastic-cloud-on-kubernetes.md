@@ -19,7 +19,7 @@ To uninstall the operator:
       | xargs -n1 kubectl delete elastic --all -n
     ```
 
-    This deletes all underlying Elastic Stack resources, including their Pods, Secrets, Services, and so on.
+    This deletes all underlying {{stack}} resources, including their Pods, Secrets, Services, and so on.
 
 2. Uninstall the operator:
 
@@ -29,5 +29,5 @@ To uninstall the operator:
     ```
 
 ::::{warning}
-Deleting CRDs will trigger deletion of all custom resources (Elasticsearch, Kibana, APM Server, Beats, Elastic Agent, Elastic Maps Server, and Logstash) in all namespaces of the cluster, regardless of whether they are managed by a single operator or multiple operators.
+Deleting CRDs will trigger deletion of all custom resources ({{es}}, {{kib}}, APM Server, Beats, Elastic Agent, Elastic Maps Server, and Logstash) in all namespaces of the cluster, regardless of whether they are managed by a single operator or multiple operators.
 ::::

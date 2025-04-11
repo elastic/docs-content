@@ -20,14 +20,10 @@ Known issues are significant defects or limitations that may impact your impleme
 
 :::
 
-:::{dropdown} Duplicate alerts can be produced from manually running threshold rules
-**Elastic Stack versions: 9.0.0**
+:::{dropdown} The technical preview badge incorrectly displays on the alert suppression fields for event correlation rules 
 
-On November 12, 2024, it was discovered that manually running threshold rules could produce duplicate alerts if the date range was already covered by a scheduled rule execution.
-:::
+**{{stack}} versions: 9.0.0**
 
-:::{dropdown} Manually running custom query rules with suppression could suppress more alerts than expected
-**Elastic Stack versions: 9.0.0**
+On April 8, 2025, it was discovered that alert suppression for event correlation rules is incorrectly shown as being in technical preview when you create a new rule. For more information, check [#1021](https://github.com/elastic/docs-content/issues/1021). 
 
-On November 12, 2024, it was discovered that manually running a custom query rule with suppression could incorrectly inflate the number of suppressed alerts. 
 :::

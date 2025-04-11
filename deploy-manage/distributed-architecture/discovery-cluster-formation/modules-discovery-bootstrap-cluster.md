@@ -7,7 +7,7 @@ applies_to:
 
 # Bootstrapping a cluster [modules-discovery-bootstrap-cluster]
 
-Starting an Elasticsearch cluster for the very first time requires the initial set of [master-eligible nodes](../clusters-nodes-shards/node-roles.md#master-node-role) to be explicitly defined on one or more of the master-eligible nodes in the cluster. This is known as *cluster bootstrapping*. This is only required the first time a cluster starts up. Freshly-started nodes that are joining a running cluster obtain this information from the cluster’s elected master.
+Starting an {{es}} cluster for the very first time requires the initial set of [master-eligible nodes](../clusters-nodes-shards/node-roles.md#master-node-role) to be explicitly defined on one or more of the master-eligible nodes in the cluster. This is known as *cluster bootstrapping*. This is only required the first time a cluster starts up. Freshly-started nodes that are joining a running cluster obtain this information from the cluster’s elected master.
 
 The initial set of master-eligible nodes is defined in the [`cluster.initial_master_nodes` setting](../../deploy/self-managed/important-settings-configuration.md#initial_master_nodes). This should be set to a list containing one of the following items for each master-eligible node:
 
@@ -62,7 +62,7 @@ This message shows the node names `master-a.example.com` and `master-b.example.c
 
 ## Choosing a cluster name [bootstrap-cluster-name]
 
-The [`cluster.name`](elasticsearch://reference/elasticsearch/configuration-reference/miscellaneous-cluster-settings.md#cluster-name) setting enables you to create multiple clusters which are separated from each other. Nodes verify that they agree on their cluster name when they first connect to each other, and Elasticsearch will only form a cluster from nodes that all have the same cluster name. The default value for the cluster name is `elasticsearch`, but it is recommended to change this to reflect the logical name of the cluster.
+The [`cluster.name`](elasticsearch://reference/elasticsearch/configuration-reference/miscellaneous-cluster-settings.md#cluster-name) setting enables you to create multiple clusters which are separated from each other. Nodes verify that they agree on their cluster name when they first connect to each other, and {{es}} will only form a cluster from nodes that all have the same cluster name. The default value for the cluster name is `elasticsearch`, but it is recommended to change this to reflect the logical name of the cluster.
 
 ## Auto-bootstrapping in development mode [bootstrap-auto-bootstrap]
 

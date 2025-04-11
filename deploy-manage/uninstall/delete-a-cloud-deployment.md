@@ -28,7 +28,7 @@ To delete an {{ech}} deployment:
 When you delete your deployment, billing stops immediately, rounding up to the nearest hour.
 
 :::{{warning}}
-When deployments are deleted, we erase all data on disk, including snapshots. Snapshots are retained for very a limited amount of time post deletion and we cannot guarantee that deleted deployments can be restored from snapshots for this reason. If you accidentally delete a deployment, please contact support as soon as possible to increase the likelihood of restoring your deployment.
+When deployments are deleted, we erase all data on disk, including snapshots. Snapshots are retained for very a limited amount of time post deletion and we cannot guarantee that deleted deployments can be restored from snapshots for this reason. If you accidentally delete a deployment, contact support as soon as possible to increase the likelihood of restoring your deployment.
 :::
 
 :::{{tip}}
@@ -67,7 +67,7 @@ Deleting a deployment cannot be undone.
 
 ### Terminate a deployment
 
-Terminating a deployment stops all running instances and **deletes all data**. Only configuration information is saved so that you can restore the deployment in the future. If there is [a snapshot repository associated](/deploy-manage/tools/snapshot-and-restore/cloud-enterprise.md) with the Elasticsearch cluster and at least one snapshot has been taken, you can restore the cluster with the same indices later.
+Terminating a deployment stops all running instances and **deletes all data**. Only configuration information is saved so that you can restore the deployment in the future. If there is [a snapshot repository associated](/deploy-manage/tools/snapshot-and-restore/cloud-enterprise.md) with the {{es}} cluster and at least one snapshot has been taken, you can restore the cluster with the same indices later.
 
 To terminate an {{ece}} deployment,
 

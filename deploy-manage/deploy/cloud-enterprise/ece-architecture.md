@@ -9,14 +9,14 @@ mapped_pages:
 
 # Service-oriented architecture [ece-architecture]
 
-Elastic Cloud Enterprise has a service-oriented architecture that lets you:
+{{ece}} has a service-oriented architecture that lets you:
 
 * Scale each service separately, with different reliability and performance requirements.
 * Access services through the API.
 * Deploy each service independently in its own Docker container.
 
 :::{image} /deploy-manage/images/cloud-enterprise-ece-architecture.png
-:alt: Elastic Cloud Enterprise high level architecture
+:alt: {{ece}} high level architecture
 :::
 
 ## Control plane [ece_control_plane]
@@ -51,18 +51,18 @@ Provide web and API access for administrators to manage and monitor the ECE inst
 
 ## Proxies [ece_proxies]
 
-* Handle user requests, mapping deployment IDs that are passed in request URLs for the container to the actual Elasticsearch cluster nodes and other instances. The association of deployment IDs to a container is stored in ZooKeeper, cached by the proxies. In the event of ZooKeeper downtime, the platform can still service the requests to existing deployments by using the cache.
-* Keep track of the state and availability of zones, if you have a highly available Elasticsearch cluster. If one of the zones goes down, the proxy will not route any requests there.
+* Handle user requests, mapping deployment IDs that are passed in request URLs for the container to the actual {{es}} cluster nodes and other instances. The association of deployment IDs to a container is stored in ZooKeeper, cached by the proxies. In the event of ZooKeeper downtime, the platform can still service the requests to existing deployments by using the cache.
+* Keep track of the state and availability of zones, if you have a highly available {{es}} cluster. If one of the zones goes down, the proxy will not route any requests there.
 * Help with no-downtime scaling and upgrades. Before performing an upgrade, a snapshot is taken, and data is migrated to the new nodes. When the migration is complete, a proxy switches the traffic to the new nodes and disconnects the old ones.
 * Multiple proxies are usually configured behind a load balancer to ensure that the system remains available.
 
 
 ## Allocators [ece-architecture-allocators]
 
-* Run on all the machines that host Elasticsearch nodes and Kibana instances.
+* Run on all the machines that host {{es}} nodes and {{kib}} instances.
 * Control the lifecycle of cluster nodes by:
 
-    * Creating new containers and starting Elasticsearch nodes when requested
+    * Creating new containers and starting {{es}} nodes when requested
     * Restarting a node if it becomes unresponsive
     * Removing a node if it is no longer needed
 
@@ -74,7 +74,7 @@ Services are deployed as Docker containers, which simplifies the operational eff
 
 * **Shares of resources**
 
-    Each cluster node is run within a Docker container to make sure that all of the nodes have access to a guaranteed share of host resources. This mitigates the *noisy neighbor effect* where one busy deployment can overwhelm the entire host. The CPU resources are relative to the size of the Elasticsearch cluster they get assigned to. For example, a cluster with 32GB of RAM gets assigned twice as many CPU resources as a cluster with 16GB of RAM.
+    Each cluster node is run within a Docker container to make sure that all of the nodes have access to a guaranteed share of host resources. This mitigates the *noisy neighbor effect* where one busy deployment can overwhelm the entire host. The CPU resources are relative to the size of the {{es}} cluster they get assigned to. For example, a cluster with 32GB of RAM gets assigned twice as many CPU resources as a cluster with 16GB of RAM.
 
 * **Better security**
 

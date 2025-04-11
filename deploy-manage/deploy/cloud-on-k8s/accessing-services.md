@@ -12,7 +12,7 @@ mapped_pages:
 
 To provide access to {{es}}, {{kib}}, and other {{stack}} applications when applicable, ECK relies on [Kubernetes services](https://kubernetes.io/docs/concepts/services-networking/service/).
 
-All Elastic Stack resources deployed by the ECK operator are secured by default. The operator sets up basic authentication and TLS to encrypt network traffic to, from, and within your Elasticsearch cluster.
+All {{stack}} resources deployed by the ECK operator are secured by default. The operator sets up basic authentication and TLS to encrypt network traffic to, from, and within your {{es}} cluster.
 
 This section explains how to access and customize the Kubernetes services and secrets created by ECK, covering topics such as:
 
@@ -63,7 +63,7 @@ hulk-kb-http        ClusterIP      10.19.247.151   <none>           5601/TCP   1
 
 You can expose services in [different ways](https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types) by specifying an `http.service.spec.type` in the `spec` of the resource manifest. On cloud providers which support external load balancers, you can set the `type` field to `LoadBalancer` to provision a load balancer for the `Service`, and populate the column `EXTERNAL-IP` after a short delay. Depending on the cloud provider, it may incur costs.
 
-By default, the Elasticsearch service created by ECK is configured to route traffic to all Elasticsearch nodes in the cluster. Depending on your cluster configuration, you may want more control over the set of nodes that handle different types of traffic (query, ingest, and so on). Refer to [](./requests-routing-to-elasticsearch-nodes.md) for more information.
+By default, the {{es}} service created by ECK is configured to route traffic to all {{es}} nodes in the cluster. Depending on your cluster configuration, you may want more control over the set of nodes that handle different types of traffic (query, ingest, and so on). Refer to [](./requests-routing-to-elasticsearch-nodes.md) for more information.
 
 ::::{warning}
 When you change the `clusterIP` setting of the service, ECK will delete and re-create the service as `clusterIP` is an immutable field. Depending on your client implementation, this might result in a short disruption until the service DNS entries refresh to point to the new endpoints.
@@ -93,7 +93,7 @@ hulk-kb-http        LoadBalancer   10.19.247.151   35.242.197.228   5601:31380/T
 
 ## Access the endpoint [k8s-request-elasticsearch-endpoint]
 
-You can access the Elasticsearch endpoint within or outside the Kubernetes cluster.
+You can access the {{es}} endpoint within or outside the Kubernetes cluster.
 
 **Within the Kubernetes cluster**
 

@@ -6,16 +6,16 @@ applies_to:
     eck: ga 3.0.0  
 ---
 
-# Upgrade Elastic Cloud on Kubernetes [k8s-upgrading-eck]
+# Upgrade {{eck}} [k8s-upgrading-eck]
 
 This page provides instructions on how to upgrade the ECK operator.
 
-To learn how to upgrade {{stack}} applications like {{es}} or {{kib}}, refer to [Upgrade the Elastic Stack version](../deployment-or-cluster.md).
+To learn how to upgrade {{stack}} applications like {{es}} or {{kib}}, refer to [Upgrade the {{stack}} version](../deployment-or-cluster.md).
 
 
 ## Before you upgrade to ECK 3.0.0 [k8s-ga-upgrade]
 
-The upgrade process results in an update to all the existing managed resources. This potentially triggers a rolling restart of all Elasticsearch and Kibana pods. This [list](#k8s-beta-to-ga-rolling-restart) details the affected target versions that will cause a rolling restart. If you have a large Elasticsearch cluster or multiple Elastic Stack deployments, the rolling restart could cause a performance degradation. When you plan to upgrade ECK for production workloads, take into consideration the time required to upgrade the ECK operator plus the time required to roll all managed workloads and Elasticsearch clusters. For more details on controlling rolling restarts during the upgrade, refer to the [control the rolling restarts during the upgrade](#k8s-beta-to-ga-rolling-restart) section.
+The upgrade process results in an update to all the existing managed resources. This potentially triggers a rolling restart of all {{es}} and {{kib}} pods. This [list](#k8s-beta-to-ga-rolling-restart) details the affected target versions that will cause a rolling restart. If you have a large {{es}} cluster or multiple {{stack}} deployments, the rolling restart could cause a performance degradation. When you plan to upgrade ECK for production workloads, take into consideration the time required to upgrade the ECK operator plus the time required to roll all managed workloads and {{es}} clusters. For more details on controlling rolling restarts during the upgrade, refer to the [control the rolling restarts during the upgrade](#k8s-beta-to-ga-rolling-restart) section.
 
 Before upgrading, refer to the [release notes](cloud-on-k8s://release-notes/index.md) to make sure that the release does not contain any breaking changes that could affect you. The [release highlights document](cloud-on-k8s://release-notes/index.md) provides more details and possible workarounds for any breaking changes or known issues in each release.
 
@@ -71,7 +71,7 @@ If you are using ECK through an OLM-managed distribution channel like [operatorh
 
 ### Upgrading from ECK 1.9 or earlier [k8s_upgrading_from_eck_1_9_or_earlier]
 
-Operator Lifecycle Manager (OLM) and OpenShift OperatorHub users that run with automatic upgrades enabled, are advised to set the `set-default-security-context` [operator flag](/deploy-manage/deploy/cloud-on-k8s/configure-eck.md) explicitly before upgrading to ECK 2.0 or later. If not set, ECK can fail to [auto-detect](https://github.com/elastic/cloud-on-k8s/issues/5061) the correct security context configuration and Elasticsearch Pods may not be allowed to run.
+Operator Lifecycle Manager (OLM) and OpenShift OperatorHub users that run with automatic upgrades enabled, are advised to set the `set-default-security-context` [operator flag](/deploy-manage/deploy/cloud-on-k8s/configure-eck.md) explicitly before upgrading to ECK 2.0 or later. If not set, ECK can fail to [auto-detect](https://github.com/elastic/cloud-on-k8s/issues/5061) the correct security context configuration and {{es}} Pods may not be allowed to run.
 
 
 ### Upgrading from ECK 2.0 or later [k8s_upgrading_from_eck_2_0_or_later]
@@ -106,10 +106,10 @@ Stepping over one of these versions, for example, upgrading ECK from 2.6 to 2.9,
 ::::
 
 
-If you have a very large Elasticsearch cluster or multiple Elastic Stack deployments, this rolling restart might be disruptive or inconvenient. To have more control over when the pods belonging to a particular deployment should be restarted, you can [add an annotation](../../../troubleshoot/deployments/cloud-on-k8s/troubleshooting-methods.md#k8s-exclude-resource) to the corresponding resources to temporarily exclude them from being managed by the operator. When the time is convenient, you can remove the annotation and let the rolling restart go through.
+If you have a very large {{es}} cluster or multiple {{stack}} deployments, this rolling restart might be disruptive or inconvenient. To have more control over when the pods belonging to a particular deployment should be restarted, you can [add an annotation](../../../troubleshoot/deployments/cloud-on-k8s/troubleshooting-methods.md#k8s-exclude-resource) to the corresponding resources to temporarily exclude them from being managed by the operator. When the time is convenient, you can remove the annotation and let the rolling restart go through.
 
 ::::{warning}
-Once a resource is excluded from being managed by ECK, you will not be able to add/remove nodes, upgrade Stack version, or perform other [orchestration tasks](../../deploy/cloud-on-k8s/configure-deployments.md) by updating the resource manifest. You must remember to remove the exclusion to ensure that your Elastic Stack deployment is continually monitored and managed by the operator.
+Once a resource is excluded from being managed by ECK, you will not be able to add/remove nodes, upgrade Stack version, or perform other [orchestration tasks](../../deploy/cloud-on-k8s/configure-deployments.md) by updating the resource manifest. You must remember to remove the exclusion to ensure that your {{stack}} deployment is continually monitored and managed by the operator.
 ::::
 
 Exclude Elastic resources from being managed by the operator:
@@ -118,7 +118,7 @@ Exclude Elastic resources from being managed by the operator:
 ```shell
 ANNOTATION='eck.k8s.elastic.co/managed=false'
 
-# Exclude a single Elasticsearch resource named "quickstart"
+# Exclude a single {{es}} resource named "quickstart"
 kubectl annotate --overwrite elasticsearch quickstart $ANNOTATION
 
 # Exclude all resources in the current namespace
@@ -133,7 +133,7 @@ Once the operator has been upgraded and you are ready to let the resource become
 ```shell
 RM_ANNOTATION='eck.k8s.elastic.co/managed-'
 
-# Resume management of a single Elasticsearch cluster named "quickstart"
+# Resume management of a single {{es}} cluster named "quickstart"
 kubectl annotate elasticsearch quickstart $RM_ANNOTATION
 ```
 

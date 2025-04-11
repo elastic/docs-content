@@ -64,8 +64,8 @@ Want to use {{fleet}} or some other feature not covered in the quickstarts? Foll
 % Stateful only for Universal profiling
 
 * [Get started with system metrics](../../solutions/observability/infra-and-hosts/get-started-with-system-metrics.md)
-* [Get started with application traces and APM](../../solutions/observability/apps/fleet-managed-apm-server.md)
-* [Get started with synthetic monitoring](../../solutions/observability/apps/synthetic-monitoring.md)
+* [Get started with application traces and APM](/solutions/observability/apm/get-started-fleet-managed-apm-server.md)
+* [Get started with synthetic monitoring](/solutions/observability/synthetics/index.md)
 * [Get started with Universal Profiling](../../solutions/observability/infra-and-hosts/get-started-with-universal-profiling.md)
 
 

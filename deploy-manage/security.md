@@ -25,7 +25,7 @@ The availability and configurability of security features vary by deployment typ
 :::{include} /deploy-manage/security/_snippets/complete-security.md
 :::
 
-## Managed security in Elastic Cloud
+## Managed security in {{ecloud}} [managed-security-in-elastic-cloud]
 ```yaml {applies_to}
 deployment:
   ess: all

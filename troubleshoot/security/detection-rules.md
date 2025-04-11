@@ -159,7 +159,7 @@ It’s recommended to set the `Additional look-back time` to at least 1 minute. 
 {{elastic-sec}} prevents duplication. Any duplicate alerts that are discovered during the `Additional look-back time` are *not* created.
 
 ::::{note}
-If the rule that experiences gaps is an indicator match rule, see [how to tune indicator match rules](../../solutions/security/detect-and-alert/tune-detection-rules.md#tune-indicator-rules). Also please note that {{elastic-sec}} provides [limited support for indicator match rules](../../solutions/security/detect-and-alert.md#support-indicator-rules).
+If the rule that experiences gaps is an indicator match rule, see [how to tune indicator match rules](../../solutions/security/detect-and-alert/tune-detection-rules.md#tune-indicator-rules). Also note that {{elastic-sec}} provides [limited support for indicator match rules](../../solutions/security/detect-and-alert.md#support-indicator-rules).
 ::::
 
 

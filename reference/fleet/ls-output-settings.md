@@ -17,7 +17,7 @@ To receive the events in {{ls}}, you also need to create a {{ls}} configuration 
 
 The following example configures a {{ls}} pipeline that listens on port `5044` for incoming {{agent}} connections and routes received events to {{es}}.
 
-The {{ls}} pipeline definition below is an example. Please refer to the `Additional Logstash configuration required` steps when creating the {{ls}} output in the Fleet outputs page.
+The {{ls}} pipeline definition below is an example. See the `Additional Logstash configuration required` steps when creating the {{ls}} output in the Fleet outputs page.
 
 ```yaml
 input {

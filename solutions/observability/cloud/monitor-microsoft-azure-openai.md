@@ -246,7 +246,6 @@ Now that your log and metric data is streaming to {{es}}, you can view them in {
 
 * [View logs and metrics with the overview dashboard](#azure-openai-overview-dashboard): Use the built-in overview dashboard for insight into your Azure OpenAI service like total requests and token usage.
 * [View logs and metrics with Discover](#azure-openai-discover): Use Discover to find and filter your log and metric data based on specific fields.
-* [View logs with Logs Explorer](#azure-openai-logs-explorer): Use Logs Explorer for an in-depth view into your logs.
 
 
 ### View logs and metrics with the overview dashboard [azure-openai-overview-dashboard]
@@ -279,26 +278,186 @@ From here, filter your data and dive deeper into individual logs to find informa
 
 For more on using Discover and creating data views, refer to the [Discover](../../../explore-analyze/discover.md) documentation.
 
+## Step 6: Monitor Microsoft Azure OpenAI APM with OpenTelemetry [azure-openai-apm]
 
-### View logs with Logs Explorer [azure-openai-logs-explorer]
+The Azure OpenAI API provides useful data to help monitor and understand your code. Using OpenTelemetry, you can ingest this data into Elastic {{observability}}. From there, you can view and analyze your data to monitor the cost and performance of your applications.
 
-To view Azure OpenAI logs, open {{kib}} and go to **Logs Explorer** (find `Logs Explorer` in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md)). With **Logs Explorer**, you can quickly search and filter your log data, get information about the structure of log fields, and display your findings in a visualization.
+For this tutorial, we’ll be using an [example Python application](https://github.com/mdbirnstiehl/AzureOpenAIAPMmonitoringOtel) and the Python OpenTelemetry libraries to instrument the application and send data to {{observability}}.
 
-:::{image} /solutions/images/observability-log-explorer.png
-:alt: screenshot of the logs explorer main page
+
+### Set your environment variables [azure-openai-apm-env-var]
+
+To start collecting APM data for your Azure OpenAI applications, gather the OpenTelemetry OTLP exporter endpoint and authentication header from your {{ecloud}} instance:
+
+1. Find **Integrations** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+2. Select the **APM** integration.
+3. Scroll down to **APM Agents** and select the **OpenTelemetry** tab.
+4. Make note of the configuration values for the following configuration settings:
+
+    * `OTEL_EXPORTER_OTLP_ENDPOINT`
+    * `OTEL_EXPORTER_OTLP_HEADERS`
+
+
+With the configuration values from the APM integration and your [Azure OpenAI API key and endpoint](https://learn.microsoft.com/en-us/azure/ai-services/openai/quickstart?tabs=command-line%2Cpython-new&pivots=programming-language-python#retrieve-key-and-endpoint), set the following environment variables using the export command on the command line:
+
+```bash
+export AZURE_OPENAI_API_KEY="your-Azure-OpenAI-API-key"
+export AZURE_OPENAI_ENDPOINT="your-Azure-OpenAI-endpoint"
+export OPENAI_API_VERSION="your_api_version"
+export OTEL_EXPORTER_OTLP_HEADERS="Authorization=Bearer%20<your-otel-exporter-auth-header>"
+export OTEL_EXPORTER_OTLP_ENDPOINT="your-otel-exporter-endpoint"
+export OTEL_RESOURCE_ATTRIBUTES=service.name=your-service-name
+```
+
+
+### Download Python libraries [azure-openai-apm-python-libraries]
+
+Install the necessary Python libraries using this command:
+
+```bash
+pip3 install openai flask opentelemetry-distro[otlp] opentelemetry-instrumentation
+```
+
+
+### Instrument the application [azure-openai-apm-instrument]
+
+The following code is from the [example application](https://github.com/mdbirnstiehl/AzureOpenAIAPMmonitoringOtel). In a real use case, you would add the import statements to your code.
+
+The app we’re using in this tutorial is a simple example that calls Azure OpenAI APIs with the following message: “How do I send my APM data to Elastic Observability?”:
+
+```python
+import os
+
+from flask import Flask
+from openai import AzureOpenAI
+from opentelemetry import trace
+
+from monitor import count_completion_requests_and_tokens
+
+
+# Initialize Flask app
+app = Flask(__name__)
+
+# Set OpenAI API key
+client = AzureOpenAI(
+    api_key=os.getenv("AZURE_OPENAI_API_KEY"),
+    api_version=os.getenv("OPENAI_API_VERSION"),
+    azure_endpoint=os.getenv("AZURE_OPENAI_ENDPOINT"),
+)
+
+# Monkey-patch the openai.Completion.create function
+client.chat.completions.create = count_completion_requests_and_tokens(
+    client.chat.completions.create
+)
+
+tracer = trace.get_tracer("counter")
+
+
+@app.route("/completion")
+@tracer.start_as_current_span("completion")
+def completion():
+    response = client.chat.completions.create(
+        model="gpt-4",
+        messages=[
+            {
+                "role": "user",
+                "content": "How do I send my APM data to Elastic Observability?",
+            }
+        ],
+        max_tokens=20,
+        temperature=0,
+    )
+    return response.choices[0].message.content.strip()
+```
+
+The code uses monkey patching, a technique in Python that dynamically modifies the behavior of a class or module at runtime by modifying its attributes or methods, to modify the behavior of the `chat.completions` call so we can add the response metrics to the OpenTelemetry spans.
+
+The [`monitor.py` file](https://github.com/mdbirnstiehl/AzureOpenAIAPMmonitoringOtel/blob/main/monitor.py) in the example application instruments the application and can be used to instrument your own applications.
+
+```python
+def count_completion_requests_and_tokens(func):
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+        counters["completion_count"] += 1
+        response = func(*args, **kwargs)
+
+        token_count = response.usage.total_tokens
+        prompt_tokens = response.usage.prompt_tokens
+        completion_tokens = response.usage.completion_tokens
+        cost = calculate_cost(response)
+        strResponse = json.dumps(response, default=str)
+
+        # Set OpenTelemetry attributes
+        span = trace.get_current_span()
+        if span:
+            span.set_attribute("completion_count", counters["completion_count"])
+            span.set_attribute("token_count", token_count)
+            span.set_attribute("prompt_tokens", prompt_tokens)
+            span.set_attribute("completion_tokens", completion_tokens)
+            span.set_attribute("model", response.model)
+            span.set_attribute("cost", cost)
+            span.set_attribute("response", strResponse)
+        return response
+
+    return wrapper
+```
+
+Adding this data to our span lets us send it to our OTLP endpoint, so you can search for the data in {{observability}} and build dashboards and visualizations.
+
+Implementing the following function allows you to calculate the cost of a single request to the OpenAI APIs.
+
+```python
+def calculate_cost(response):
+    if response.model in ["gpt-4", "gpt-4-0314"]:
+        cost = (
+            response.usage.prompt_tokens * 0.03
+            + response.usage.completion_tokens * 0.06
+        ) / 1000
+    elif response.model in ["gpt-4-32k", "gpt-4-32k-0314"]:
+        cost = (
+            response.usage.prompt_tokens * 0.06
+            + response.usage.completion_tokens * 0.12
+        ) / 1000
+    elif "gpt-3.5-turbo" in response.model:
+        cost = response.usage.total_tokens * 0.002 / 1000
+    elif "davinci" in response.model:
+        cost = response.usage.total_tokens * 0.02 / 1000
+    elif "curie" in response.model:
+        cost = response.usage.total_tokens * 0.002 / 1000
+    elif "babbage" in response.model:
+        cost = response.usage.total_tokens * 0.0005 / 1000
+    elif "ada" in response.model:
+        cost = response.usage.total_tokens * 0.0004 / 1000
+    else:
+        cost = 0
+    return cost
+```
+
+To download the example application and try it for yourself, go to the [GitHub repo](https://github.com/mdbirnstiehl/AzureOpenAIAPMmonitoringOtel).
+
+
+### View APM data from OpenTelemetry in {{kib}} [azure-openai-view-apm-data]
+
+After ingesting your data, you can filter and explore it using Discover in {{kib}}. Go to **Discover** from the {{kib}} menu under **Analytics**. You can then filter by the fields sent to {{observability}} by OpenTelemetry, including:
+
+* `numeric_labels.completion_count`
+* `numeric_labels.completion_tokens`
+* `numeric_labels.cost`
+* `numeric_labels.prompt_tokens`
+* `numeric_labels.token_count`
+
+:::{image} /solutions/images/observability-azure-openai-apm-discover.png
+:alt: screenshot of the discover main page
 :screenshot:
 :::
 
-From **Logs Explorer**, you can select the Azure OpenAI integration from the data selector to view your Kubernetes data.
+Then, use these fields to create visualizations and build dashboards. Refer to the [Dashboard and visualizations](../../../explore-analyze/dashboards.md) documentation for more information.
 
-![screenshot of the logs explorer data selector](/solutions/images/observability-azure-open-ai-data-selector.png "")
+:::{image} /solutions/images/observability-azure-openai-apm-dashboard.png
+:alt: screenshot of the Azure OpenAI APM dashboard
+:screenshot:
+:::
 
-From here, filter your log data and dive deeper into individual logs to find information and troubleshoot issues. For a list of Azure OpenAI fields you may want to filter by, refer to the [Azure OpenAI integration](https://docs.elastic.co/en/integrations/azure_openai#settings) documentation.
-
-For more on Logs Explorer, refer to:
-
-* [Logs Explorer](../logs/logs-explorer.md) for an overview of Logs Explorer.
-* [Filter logs in Logs Explorer](../logs/filter-aggregate-logs.md#logs-filter-logs-explorer) for more on filtering logs in Logs Explorer.
 
 ## What’s next? [azure-openai-alerts]
 

@@ -8,7 +8,7 @@ mapped_pages:
 Specify these settings to send data over a secure connection to Kafka. In the {{fleet}} [Output settings](/reference/fleet/fleet-settings.md#output-settings), make sure that the Kafka output type is selected.
 
 ::::{note}
-If you plan to use {{ls}} to modify {{agent}} output data before it’s sent to Kafka, please refer to our [guidance](#kafka-output-settings-ls-warning) for doing so, further in on this page.
+If you plan to use {{ls}} to modify {{agent}} output data before it’s sent to Kafka, refer to our [guidance](#kafka-output-settings-ls-warning) for doing so, further in on this page.
 ::::
 
 
@@ -117,7 +117,7 @@ Configure timeout and buffer size values for the Kafka brokers.
 
 ## Kafka output and using {{ls}} to index data to {{es}} [kafka-output-settings-ls-warning]
 
-If you are considering using {{ls}} to ship the data from `kafka` to {{es}}, please be aware the structure of the documents sent from {{agent}} to `kafka` must not be modified by {{ls}}. We suggest disabling `ecs_compatibility` on both the `kafka` input and the `json` codec in order to make sure the input doesn’t edit the fields and their contents.
+If you are considering using {{ls}} to ship the data from `kafka` to {{es}}, be aware the structure of the documents sent from {{agent}} to `kafka` must not be modified by {{ls}}. We suggest disabling `ecs_compatibility` on both the `kafka` input and the `json` codec in order to make sure the input doesn’t edit the fields and their contents.
 
 The data streams setup by the integrations expect to receive events having the same structure and field names as they were sent directly from an {{agent}}.
 

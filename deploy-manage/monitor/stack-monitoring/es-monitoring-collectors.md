@@ -43,9 +43,9 @@ Collection is currently done serially, rather than in parallel, to avoid extra o
 For more information about the configuration options for the collectors, see [Monitoring collection settings](elasticsearch://reference/elasticsearch/configuration-reference/monitoring-settings.md#monitoring-collection-settings).
 
 
-## Collecting data from across the Elastic Stack [es-monitoring-stack]
+## Collecting data from across the {{stack}} [es-monitoring-stack]
 
-{{es}} {{monitor-features}} also receive monitoring data from other parts of the Elastic Stack. In this way, it serves as an unscheduled monitoring data collector for the stack.
+{{es}} {{monitor-features}} also receive monitoring data from other parts of the {{stack}}. In this way, it serves as an unscheduled monitoring data collector for the stack.
 
 By default, data collection is disabled. {{es}} monitoring data is not collected and all monitoring data from other sources such as {{kib}}, Beats, and Logstash is ignored. You must set `xpack.monitoring.collection.enabled` to `true` to enable the collection of monitoring data. See [Monitoring settings](elasticsearch://reference/elasticsearch/configuration-reference/monitoring-settings.md).
 
