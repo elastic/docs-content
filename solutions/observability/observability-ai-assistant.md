@@ -25,7 +25,7 @@ The {{obs-ai-assistant}} helps you:
 * **Decode error messages**: Interpret stack traces and error logs to pinpoint root causes
 * **Identify performance bottlenecks**: Find resource-intensive operations and slow queries in Elasticsearch
 * **Generate reports**: Create alert summaries and incident timelines with key metrics
-* **Build and execute queries**: Build Elasticsearch queries from natural language, convert Query DSL to ES|QL syntax, and execute queries directly from the chat interface 
+* **Build and execute queries**: Build Elasticsearch queries from natural language, convert Query DSL to ES|QL syntax, and execute queries directly from the chat interface
 * **Visualize data**: Create time-series charts and distribution graphs from your Elasticsearch data
 
 ## Requirements [obs-ai-requirements]
@@ -35,16 +35,16 @@ The AI assistant requires the following:
 - An **Elastic deployment**:
 
   - For **Observability**: {{stack}} version **8.9** or later, or an **{{observability}} serverless project**.
-  
+
   - For **Search**: {{stack}}  version **8.16.0** or later, or **{{serverless-short}} {{es}} project**.
-  
+
     - To run {{obs-ai-assistant}} on a self-hosted Elastic stack, you need an [appropriate license](https://www.elastic.co/subscriptions).
- 
+
 - An account with a third-party generative AI provider that preferably supports function calling. If your AI provider does not support function calling, you can configure AI Assistant settings under **Stack Management** to simulate function calling, but this might affect performance.
 
   - The free tier offered by third-party generative AI provider may not be sufficient for the proper functioning of the AI assistant. In most cases, a paid subscription to one of the supported providers is required.
 
-    Refer to the [documentation](../../deploy-manage/manage-connectors.md) for your provider to learn about supported and default models.
+    Refer to the [documentation](/deploy-manage/manage-connectors.md) for your provider to learn about supported and default models.
 
 * The knowledge base requires a 4 GB {{ml}} node.
   - In {{ecloud}} or {{ece}}, if you have Machine Learning autoscaling enabled, Machine Learning nodes will be started when using the knowledge base and AI Assistant. Therefore using these features will incur additional costs.
@@ -105,7 +105,7 @@ The AI Assistant connects to one of these supported LLM providers:
 ::::
 :::::
 
-The AI Assistant uses [ELSER](../../explore-analyze/machine-learning/nlp/ml-nlp-elser.md), Elastic’s semantic search engine, to recall data from its internal knowledge base index to create retrieval augmented generation (RAG) responses. Adding data such as Runbooks, GitHub issues, internal documentation, and Slack messages to the knowledge base gives the AI Assistant context to provide more specific assistance.
+The AI Assistant uses [ELSER](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md), Elastic’s semantic search engine, to recall data from its internal knowledge base index to create retrieval augmented generation (RAG) responses. Adding data such as Runbooks, GitHub issues, internal documentation, and Slack messages to the knowledge base gives the AI Assistant context to provide more specific assistance.
 
 Add data to the knowledge base with one or more of the following methods:
 
@@ -119,7 +119,7 @@ You can also add information to the knowledge base by asking the AI Assistant to
 
 To add external data to the knowledge base in {{kib}}:
 
-1. To open AI Assistant settings, find `AI Assistants` in the [global search field](../../explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. To open AI Assistant settings, find `AI Assistants` in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Under **{{obs-ai-assistant}}**, click **Manage settings**.
 3. Switch to the **Knowledge base** tab.
 4. Click the **New entry** button, and choose either:
@@ -146,7 +146,7 @@ To add external data to the knowledge base in {{kib}}:
 **Setup process:**
 
 1. **Create a connector**
-   
+
    **Use the UI**:
 
    - Navigate to `Content / Connectors` in the global search field
@@ -356,7 +356,7 @@ To learn more about alerting, actions, and connectors, refer to [Alerting](incid
 
 To access the AI Assistant Settings page, you can:
 
-* Find `AI Assistants` in the [global search field](../../explore-analyze/find-and-organize/find-apps-and-objects.md).
+* Find `AI Assistants` in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 * Use the **More actions** menu inside the AI Assistant window.
 
 The AI Assistant Settings page contains the following tabs:
