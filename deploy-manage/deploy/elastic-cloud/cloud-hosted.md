@@ -71,6 +71,8 @@ There are a few things that can help you make sure that your production deployme
 :::{include} /deploy-manage/_snippets/ecloud-security.md
 :::
 
+Refer to [](/deploy-manage/security.md) for more details.
+
 :::{include} /deploy-manage/security/_snippets/complete-security.md
 :::
 
