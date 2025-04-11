@@ -21,8 +21,8 @@ For a complete overview of using OpenTelemetry with Elastic, explore [**Elastic 
 
 Elastic integrates with OpenTelemetry, allowing you to reuse your existing instrumentation to easily send observability data to the {{stack}}. You can integrate OpenTelemetry with the {{stack}} the following ways:
 
-* [Elastic Distributions of OpenTelemetry language SDKs](#elastic-distributions-of-opentelemetry-language-sdks-apm-otel-elastic-distros)
-* [AWS Lambda collector exporter](#aws-lambda-collector-exporter-apm-otel-lambda)
+* [Elastic Distributions of OpenTelemetry language SDKs](#apm-otel-elastic-distros)
+* [AWS Lambda collector exporter](#apm-otel-lambda)
 
 ## Elastic Distributions of OpenTelemetry language SDKs [apm-otel-elastic-distros]
 
