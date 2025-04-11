@@ -34,7 +34,7 @@ Access detailed reference documentation on field and object schemas as well as t
 
 Explore reference content on Search UI and how you can develop fast, modern, and engaging search experiences.
 
-**Learn more in [Search](search-ui://reference/index.md)**
+**Learn more in [Search UI](search-ui://reference/index.md)**
 
 ## Elasticsearch and index management
 
