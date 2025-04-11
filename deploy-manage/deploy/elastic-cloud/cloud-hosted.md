@@ -108,7 +108,6 @@ This frequently-asked-questions list helps you with common questions while you g
 * [What is the difference between {{ech}} and the Amazon {{es}} Service?](/deploy-manage/deploy/elastic-cloud/cloud-hosted.md#faq-vs-aws)
 * [Can I use {{ech}} on platforms other than AWS?](/deploy-manage/deploy/elastic-cloud/cloud-hosted.md#faq-aws)
 * [Do you offer Elastic’s commercial products?](/deploy-manage/deploy/elastic-cloud/cloud-hosted.md#faq-elastic)
-* [Is my {{es}} cluster protected by X-Pack?](/deploy-manage/deploy/elastic-cloud/cloud-hosted.md#faq-x-pack)
 * [Is there a limit on the number of documents or indexes I can have in my cluster?](/deploy-manage/deploy/elastic-cloud/cloud-hosted.md#faq-limit)
 
 $$$faq-what$$$**What is {{ech}}?**
