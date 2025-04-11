@@ -18,7 +18,7 @@ Known issues are significant defects or limitations that may impact your impleme
 
 :::{dropdown} In {{sec-serverless}}, installing an {{elastic-defend}} integration or a new agent policy upgrades installed prebuilt rules, reverting user customizations and overwriting user-added actions and exceptions
 
-On April 10, 2025, it was discovered that when you install an {{elastic-defend}} integration or a new agent policy for this integration, the installed prebuilt detection rules are upgraded to their latest versions (if any new versions are available). The upgraded rules lose any user-added rule actions, exceptions, and any user customizations. 
+On April 10, 2025, it was discovered that when you install a new {{elastic-defend}} integration or agent policy, the installed prebuilt detection rules upgrade to their latest versions (if any new versions are available). The upgraded rules lose any user-added rule actions, exceptions, and customizations. 
 
 **Workaround**
 

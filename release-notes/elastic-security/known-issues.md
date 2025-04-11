@@ -21,7 +21,7 @@ Known issues are significant defects or limitations that may impact your impleme
 
 **{{stack}} versions: 9.0.0**
 
-On April 10, 2025, it was discovered that when you install an {{elastic-defend}} integration or a new agent policy for this integration, the installed prebuilt detection rules are upgraded to their latest versions (if any new versions are available). The upgraded rules lose any user-added rule actions, exceptions, and any user customizations. 
+On April 10, 2025, it was discovered that when you install a new {{elastic-defend}} integration or agent policy, the installed prebuilt detection rules upgrade to their latest versions (if any new versions are available). The upgraded rules lose any user-added rule actions, exceptions, and customizations.  
 
 **Workaround**
 
