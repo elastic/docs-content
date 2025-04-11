@@ -193,6 +193,8 @@ redirects:
   'solutions/observability/apps/inspect-uptime-duration-anomalies.md': 'solutions/observability/uptime/inspect-duration-anomalies.md'
   'solutions/observability/apps/configure-settings.md': 'solutions/observability/uptime/configure-settings.md'
   'solutions/observability/apps/tutorial-monitor-java-application.md': 'solutions/observability/applications/tutorial-monitor-java-application.md'
+  # we can't redirect to the search-ui book so this is the next best option
+  'reference/search/index.md': 'reference/index.md'
 
 # Related to https://github.com/elastic/docs-content/pull/1108
   'troubleshoot/elasticsearch/elasticsearch-client-java-api-client/apache-errors.md': 'troubleshoot/elasticsearch/clients.md'
