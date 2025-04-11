@@ -19,12 +19,6 @@ Access detailed reference documentation on field and object schemas as well as t
 
 **Learn more in [Observability](observability/index.md)**
 
-## Search
-
-Explore reference content on Search UI and how you can develop fast, modern, and engaging search experiences.
-
-**Learn more in [Search](search/index.md)**
-
 ## Elasticsearch and index management
 
 Customize your Elastic Stack setup with our configuration reference guides. Explore JVM settings, client documentation, Elasticsearch privileges, and index lifecycle actions to find the detailed information you need to configure your environment to your specific needs.
@@ -72,6 +66,12 @@ Unlock insights with powerful data analysis tools. Utilize text analysis compone
 Standardize your data with ECS. Access logging libraries, field references, and categorization fields to ensure consistency and compatibility across your data sources.
 
 **Learn more in [ECS](ecs://reference/index.md)**
+
+## Search UI library
+
+Explore reference content on the Search UI library and how you can develop fast, modern, and engaging search experiences.
+
+**Learn more in [Search UI](search-ui://reference/search-ui/index.md)**
 
 ## Cloud
 
