@@ -42,10 +42,12 @@ the **Overview** tab is made up of the following components:
 - **Document count**: The current total number of documents in your stream, unrelated to the time range.
 - **Storage size**: The current total storage size of your stream, unrelated to the time range.
 - **Ingestion**: shows the average ingestion per day since the stream was created.
-- Dashboards table: quick links to [dashboards](#streams-dashboard-tab) you've attached to the stream.
+- **Dashboards table**: quick links to [dashboards](#streams-dashboard-tab) you've added to the stream.
+
+% Maybe we want to add something about the documents ingestion graph as well?
 
 
-## Dashboard tab [streams-dashboard-tab]
+## Dashboards tab [streams-dashboard-tab]
 
 The **Dashboards** tab is where you can add dashboards to your stream. [Dashboards](../../../../explore-analyze/dashboards.md) are visualizations that group important assets for your stream.
 
