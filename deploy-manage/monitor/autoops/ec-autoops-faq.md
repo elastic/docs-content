@@ -23,7 +23,7 @@ $$$faq-autoops-supported-versions$$$What versions of {{es}} are supported for {{
 :   AutoOps supports {es} versions according to the [supported {{stack}} versions](https://www.elastic.co/support/eol).
 
 $$$faq-autoops-license$$$How is AutoOps currently licensed?
-:   AutoOps current feature set is available to {{ech}} customers at all subscription tiers. For more information please refer to the [subscription page](https://www.elastic.co/subscriptions/cloud).
+:   AutoOps current feature set is available to {{ech}} customers at all subscription tiers. For more information refer to the [subscription page](https://www.elastic.co/subscriptions/cloud).
 
 $$$faq-autoops-installation$$$How does AutoOps get installed and why may I not see AutoOps available on specific deployments?
 :   AutoOps is automatically applied to {{es}} clusters on {{ecloud}}, rolling out in phases across CSPs and regions. Read more about AutoOps [roll out](ec-autoops-regions.md) status.

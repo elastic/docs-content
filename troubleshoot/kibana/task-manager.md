@@ -11,7 +11,7 @@ mapped_pages:
 
 Task Manager is used by a wide range of services in {{kib}}, such as [Alerting](../../deploy-manage/production-guidance/kibana-alerting-production-considerations.md), Actions, Reporting, and Telemetry. Unexpected behavior in these services might be a downstream issue originating in Task Manager.
 
-This page describes how to resolve common problems you might encounter with Task Manager. If your problem isn’t described here, please review open issues in the following GitHub repositories:
+This page describes how to resolve common problems you might encounter with Task Manager. If your problem isn’t described here, review open issues in the following GitHub repositories:
 
 * [{{kib}}](https://github.com/elastic/kibana/issues) ([Task Manager issues](https://github.com/elastic/kibana/issues?q=is%3Aopen+is%3Aissue+label%3A%22Feature%3ATask+Manager%22))
 

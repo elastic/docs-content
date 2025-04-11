@@ -23,7 +23,7 @@ Thanks to its [JDBC](sql-jdbc.md) and [ODBC](sql-odbc.md) interfaces, a broad ra
 * [Tableau Server](sql-client-apps-tableau-server.md)
 
 ::::{important} 
-Elastic does not endorse, promote or provide support for any of the applications listed. For native Elasticsearch integration in these products, please reach out to their respective vendor.
+Elastic does not endorse, promote or provide support for any of the applications listed. For native Elasticsearch integration in these products, reach out to their respective vendor.
 ::::
 
 

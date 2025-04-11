@@ -87,7 +87,7 @@ To disable the agent, set [`active`](apm-agent-rum-js://reference/configuration.
 
 ## Get in touch [get-in-touch] 
 
-If you have any questions, please create a new topic in the [Elastic APM discuss forum](https://discuss.elastic.co/c/apm).
+If you have any questions, create a new topic in the [Elastic APM discuss forum](https://discuss.elastic.co/c/apm).
 
-For bug reports and feature requests, please [create an issue](https://github.com/elastic/apm-agent-rum-js/issues/new) on our [github repo](https://github.com/elastic/apm-agent-rum-js) and include as much information as possible. See [Debugging](#debugging) for how to gather debugging information.
+For bug reports and feature requests, [create an issue](https://github.com/elastic/apm-agent-rum-js/issues/new) on our [github repo](https://github.com/elastic/apm-agent-rum-js) and include as much information as possible. See [Debugging](#debugging) for how to gather debugging information.
 
