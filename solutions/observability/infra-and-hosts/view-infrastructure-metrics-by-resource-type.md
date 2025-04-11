@@ -1,10 +1,10 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/view-infrastructure-metrics.html
   - https://www.elastic.co/guide/en/serverless/current/observability-view-infrastructure-metrics.html
 applies_to:
-  stack: 
-  serverless: 
+  stack:
+  serverless:
 ---
 
 # View infrastructure metrics by resource type [observability-view-infrastructure-metrics]
@@ -362,5 +362,5 @@ Select your resource, and from the **Metric** filter menu, click **Add metric**.
 Depending on the features you have installed and configured, you can view logs or traces relating to a specific resource. For example, in the high-level view, when you click a Kubernetes Pod resource, you can choose:
 
 * **Kubernetes Pod logs** to [view corresponding logs](../../../solutions/observability/logs.md) in the {{logs-app}}.
-* **Kubernetes Pod APM traces** to [view corresponding APM traces](../../../solutions/observability/apps/application-performance-monitoring-apm.md) in the {{apm-app}}.
-* **Kubernetes Pod in Uptime** to [view related uptime information](../../../solutions/observability/apps/synthetic-monitoring.md) in the {{uptime-app}}.
+* **Kubernetes Pod APM traces** to [view corresponding APM traces](/solutions/observability/apm/index.md) in the {{apm-app}}.
+* **Kubernetes Pod in Uptime** to [view related uptime information](/solutions/observability/synthetics/index.md) in the {{uptime-app}}.

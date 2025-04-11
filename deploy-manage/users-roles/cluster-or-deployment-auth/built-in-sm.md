@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/change-passwords-native-users.html
 applies_to:
   deployment:
@@ -47,7 +47,7 @@ POST /_security/user/user1/_password
 
 ## Using the `user` API [native-users-api]
 
-You can manage users through the Elasticsearch `user` API.
+You can manage users through the {{es}} `user` API.
 
 For example, you can change a user's password:
 

@@ -12,8 +12,8 @@ applies_to:
 Nodes and shards are what make {{es}} distributed and scalable. These concepts aren’t essential if you’re just getting started. How you [deploy {{es}}](../../get-started/deployment-options.md) in production determines what you need to know:
 
 * **Self-managed {{es}}**: You are responsible for setting up and managing nodes, clusters, shards, and replicas. This includes managing the underlying infrastructure, scaling, and ensuring high availability through failover and backup strategies.
-* **Elastic Cloud**: Elastic can autoscale resources in response to workload changes. Choose from different deployment types to apply sensible defaults for your use case. A basic understanding of nodes, shards, and replicas is still important.
-* **Elastic Cloud Serverless**: You don’t need to worry about nodes, shards, or replicas. These resources are 100% automated on the serverless platform, which is designed to scale with your workload.
+* **{{ecloud}}**: Elastic can autoscale resources in response to workload changes. Choose from different deployment types to apply sensible defaults for your use case. A basic understanding of nodes, shards, and replicas is still important.
+* **{{serverless-full}}**: You don’t need to worry about nodes, shards, or replicas. These resources are 100% automated on the serverless platform, which is designed to scale with your workload.
 
 ::::
 

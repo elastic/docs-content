@@ -22,16 +22,16 @@ mapped_pages:
 `Failure unspecified at GSS-API level (Mechanism level: Checksum failed)`
 :   When you see this error message on the HTTP client side, then it may be related to an incorrect password.
 
-When you see this error message in the {{es}} server logs, then it may be related to the {{es}} service keytab. The keytab file is present but it failed to log in as the user. Please check the keytab expiry. Also check whether the keytab contain up-to-date credentials; if not, replace them.
+When you see this error message in the {{es}} server logs, then it may be related to the {{es}} service keytab. The keytab file is present but it failed to log in as the user. Check the keytab expiry. Also check whether the keytab contain up-to-date credentials; if not, replace them.
 
-You can use tools like `klist` or `ktab` to list principals inside the keytab and validate them. You can use `kinit` to see if you can acquire initial tickets using the keytab. Please check the tools and their documentation in your Kerberos environment.
+You can use tools like `klist` or `ktab` to list principals inside the keytab and validate them. You can use `kinit` to see if you can acquire initial tickets using the keytab. Check the tools and their documentation in your Kerberos environment.
 
-Kerberos depends on proper hostname resolution, so please check your DNS infrastructure. Incorrect DNS setup, DNS SRV records or configuration for KDC servers in `krb5.conf` can cause problems with hostname resolution.
+Kerberos depends on proper hostname resolution, so check your DNS infrastructure. Incorrect DNS setup, DNS SRV records or configuration for KDC servers in `krb5.conf` can cause problems with hostname resolution.
 
 
 `Failure unspecified at GSS-API level (Mechanism level: Request is a replay (34))`
 `Failure unspecified at GSS-API level (Mechanism level: Clock skew too great (37))`
-:   To prevent replay attacks, Kerberos V5 sets a maximum tolerance for computer clock synchronization and it is typically 5 minutes. Please check whether the time on the machines within the domain is in sync.
+:   To prevent replay attacks, Kerberos V5 sets a maximum tolerance for computer clock synchronization and it is typically 5 minutes. Check whether the time on the machines within the domain is in sync.
 
 
 `gss_init_sec_context() failed: An unsupported mechanism was requested`

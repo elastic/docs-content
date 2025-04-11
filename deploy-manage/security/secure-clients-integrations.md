@@ -1,6 +1,12 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/security-clients-integrations.html
+applies_to:
+  deployment:
+    self: all
+    eck: all
+    ess: all
+    ece: all
 ---
 
 # Secure other {{stack}} components 

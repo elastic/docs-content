@@ -9,14 +9,14 @@ mapped_pages:
 
 # Create deployment templates [ece-configuring-ece-create-templates]
 
-Elastic Cloud Enterprise comes with some deployment templates already built in, but you can create new deployment templates to address particular use cases that you might have.
+{{ece}} comes with some deployment templates already built in, but you can create new deployment templates to address particular use cases that you might have.
 
-For example: You might decide to create a new deployment template, if you have a specific search use case that requires Elasticsearch data nodes in a specific configuration that also includes machine learning for anomaly detection. If you need to create these deployments fairly frequently, you can create a deployment template once and deploy it as many times as you like. Or, create a single template for both your test and production deployments to ensure they are exactly the same.
+For example: You might decide to create a new deployment template, if you have a specific search use case that requires {{es}} data nodes in a specific configuration that also includes machine learning for anomaly detection. If you need to create these deployments fairly frequently, you can create a deployment template once and deploy it as many times as you like. Or, create a single template for both your test and production deployments to ensure they are exactly the same.
 
 
 ## Before you begin [ece_before_you_begin_3]
 
-Before you start creating your own deployment templates, you should have: [tagged your allocators](ece-configuring-ece-tag-allocators.md) to tell ECE what kind of hardware you have available for Elastic Stack deployments. If the default instance configurations don’t provide what you need, you might also need to [create your own instance configurations](ece-configuring-ece-instance-configurations-create.md) first.
+Before you start creating your own deployment templates, you should have: [tagged your allocators](ece-configuring-ece-tag-allocators.md) to tell ECE what kind of hardware you have available for {{stack}} deployments. If the default instance configurations don’t provide what you need, you might also need to [create your own instance configurations](ece-configuring-ece-instance-configurations-create.md) first.
 
 
 ## Create deployment templates in the UI [ece-configuring-ece-create-templates-ui]
@@ -63,7 +63,7 @@ Before you start creating your own deployment templates, you should have: [tagge
         :alt: screencapture of the "Availability zones" radio buttons
         :::
 
-    * Add user settings to configure how Elasticsearch and other components run. Check [Editing your user settings](edit-stack-settings.md) for details about what settings are available.
+    * Add user settings to configure how {{es}} and other components run. Check [Editing your user settings](edit-stack-settings.md) for details about what settings are available.
 
         :::{image} /deploy-manage/images/cloud-enterprise-ece-create-template-user-settings.png
         :alt: screencapture of the "User settings" expandable section
@@ -73,12 +73,12 @@ Before you start creating your own deployment templates, you should have: [tagge
     If a data tier or component is not required for your particular use case, you can simply set its initial size per zone to `0`. You can enable a tier or component anytime you need it just by scaling up the size. If autoscaling is enabled, data tiers and machine learning nodes are sized up automatically when they’re needed. For example, when you configure your first machine learning job, ML nodes are enabled by the autoscaling process. Similarly, if you choose to create a cold data phase as part of your deployment’s index lifecycle management (ILM) policy, a cold data node is enabled automatically without your needing to configure it.
 
 8. Select **Manage indices**.
-9. On this page you can [configure index management](ece-configure-templates-index-management.md) by assigning attributes to each of the data nodes in the deployment template. In Kibana, you can configure an index lifecycle management (ILM) policy, based on the node attributes, to control how data moves across the nodes in your deployment.
+9. On this page you can [configure index management](ece-configure-templates-index-management.md) by assigning attributes to each of the data nodes in the deployment template. In {{kib}}, you can configure an index lifecycle management (ILM) policy, based on the node attributes, to control how data moves across the nodes in your deployment.
 10. Select **Stack features**.
 11. You can select a [snapshot repository](../../tools/snapshot-and-restore/cloud-enterprise.md) to be used by default for deployment backups.
-12. You can choose to [enable logging and monitoring](../../monitor/stack-monitoring/ece-ech-stack-monitoring.md) by default, so that deployment logs and metrics are send to a dedicated monitoring deployment, and so that additional log types, retention options, and Kibana visualizations are available on all deployments created using this template.
+12. You can choose to [enable logging and monitoring](../../monitor/stack-monitoring/ece-ech-stack-monitoring.md) by default, so that deployment logs and metrics are send to a dedicated monitoring deployment, and so that additional log types, retention options, and {{kib}} visualizations are available on all deployments created using this template.
 13. Select **Extensions**.
-14. Select any Elasticsearch extensions that you would like to be available automatically to all deployments created using the template.
+14. Select any {{es}} extensions that you would like to be available automatically to all deployments created using the template.
 15. Select **Save and create template**.
 
 
@@ -92,7 +92,7 @@ Before you start creating your own deployment templates, you should have: [tagge
 
 2. Post the JSON for your new deployment template.
 
-    The following example creates a deployment template that defaults to a highly available Elasticsearch cluster with 4 GB per hot node, a 16 GB machine learning node, 3 dedicated master nodes of 1 GB each, a 1 GB Kibana instance, and a 1 GB dedicated coordinating node that is tasked with handling and coordinating all incoming requests for the cluster. Elasticsearch and Kibana use the default instance configurations, but the machine learning node is based on the custom instance configuration in our previous example.
+    The following example creates a deployment template that defaults to a highly available {{es}} cluster with 4 GB per hot node, a 16 GB machine learning node, 3 dedicated master nodes of 1 GB each, a 1 GB {{kib}} instance, and a 1 GB dedicated coordinating node that is tasked with handling and coordinating all incoming requests for the cluster. {{es}} and {{kib}} use the default instance configurations, but the machine learning node is based on the custom instance configuration in our previous example.
 
     ```sh
     curl -k -X POST -H "Authorization: ApiKey $ECE_API_KEY" https://$COORDINATOR_HOST:12443/api/v1/deployments/templates?region=ece-region -H 'content-type: application/json' -d '{
@@ -403,7 +403,7 @@ Before you start creating your own deployment templates, you should have: [tagge
 
 
 ::::{note}
-When specifying `node_roles` in the Elasticsearch plan of the deployment template, the template must contain all resource types and all Elasticsearch tiers. The deployment template must contain exactly one entry for each resource type. It must have one Elasticsearch, one Kibana, and one APM. On top of that, it must also include all supported Elasticsearch tiers in the Elasticsearch plan. The supported tiers are identified by the IDs `hot_content`, `warm`, `cold`, `frozen`, `master`, `coordinating` and `ml`.
+When specifying `node_roles` in the {{es}} plan of the deployment template, the template must contain all resource types and all {{es}} tiers. The deployment template must contain exactly one entry for each resource type. It must have one {{es}}, one {{kib}}, and one APM. On top of that, it must also include all supported {{es}} tiers in the {{es}} plan. The supported tiers are identified by the IDs `hot_content`, `warm`, `cold`, `frozen`, `master`, `coordinating` and `ml`.
 ::::
 
 

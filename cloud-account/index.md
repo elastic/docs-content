@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-account-user-settings.html
   - https://www.elastic.co/guide/en/serverless/current/general-user-profile.html
 applies:
@@ -23,7 +23,7 @@ Additionally, you can manage your organization membership, including joining or 
 
 Some options also let you set personal preferences and customize the interface, such as [using dark mode](dark-mode.md) in your projects and deployments.
 
-::::{tip} 
+::::{tip}
 This section focuses on the actions you can take as an individual user to manage your own account. It does not cover organization-wide settings, such as managing user permissions or configuring organization-level access controls, which are handled by the organization administrators.
 
 For information on organization and access management, refer to:

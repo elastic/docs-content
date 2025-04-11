@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/client/index.html
   - https://www.elastic.co/guide/en/serverless/current/elasticsearch-clients.html
 applies_to:

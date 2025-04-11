@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/logs-metrics-get-started.html
   - https://www.elastic.co/guide/en/serverless/current/observability-get-started-with-metrics.html
 applies_to:
@@ -141,4 +141,4 @@ Now that you’ve added metrics and explored your data, learn how to onboard oth
 
 * [Get started with system logs](../../../solutions/observability/logs/get-started-with-system-logs.md)
 * [Stream any log file](../../../solutions/observability/logs/stream-any-log-file.md)
-* [Get started with traces and APM](../../../solutions/observability/apps/get-started-with-apm.md)
+* [Get started with traces and APM](/solutions/observability/apm/get-started.md)

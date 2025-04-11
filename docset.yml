@@ -26,6 +26,7 @@ cross_links:
   - cloud
   - cloud-on-k8s
   - curator
+  - detection-rules
   - ecctl
   - ecs
   - ecs-dotnet
@@ -54,7 +55,6 @@ cross_links:
   - logstash
   - logstash-docs-md
   - search-ui
-  - security-docs
 
 toc:
   - file: index.md
@@ -276,3 +276,5 @@ subs:
   version: "9.0.0"
   release-date: "2-April-2025"
   heroku: "Elasticsearch Add-on for Heroku"
+  obs-ai-assistant: "Elastic AI Assistant for Observability and Search"
+  apm-server-or-mis: "APM Server or the managed intake service"

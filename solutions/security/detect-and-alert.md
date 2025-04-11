@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/security/current/detection-engine-overview.html
   - https://www.elastic.co/guide/en/serverless/current/security-detection-engine-overview.html
 applies_to:
@@ -17,7 +17,7 @@ Use the detection engine to create and manage rules and view the alerts these ru
 :screenshot:
 :::
 
-In addition to creating [your own rules](/solutions/security/detect-and-alert/create-detection-rule.md), enable [Elastic prebuilt rules](/solutions/security/detect-and-alert/install-manage-elastic-prebuilt-rules.md#load-prebuilt-rules) to immediately start detecting suspicious activity. For detailed information on all the prebuilt rules, see the [Prebuilt rule reference](security-docs://reference/prebuilt-rules/index.md) section. Once the prebuilt rules are loaded and running, [Tune detection rules](/solutions/security/detect-and-alert/tune-detection-rules.md) and [Add and manage exceptions](/solutions/security/detect-and-alert/add-manage-exceptions.md) explain how to modify the rules to reduce false positives and get a better set of actionable alerts. You can also use exceptions and value lists when creating or modifying your own rules.
+In addition to creating [your own rules](/solutions/security/detect-and-alert/create-detection-rule.md), enable [Elastic prebuilt rules](/solutions/security/detect-and-alert/install-manage-elastic-prebuilt-rules.md#load-prebuilt-rules) to immediately start detecting suspicious activity. For detailed information on all the prebuilt rules, see the [Prebuilt rule reference](detection-rules://index.md) section. Once the prebuilt rules are loaded and running, [Tune detection rules](/solutions/security/detect-and-alert/tune-detection-rules.md) and [Add and manage exceptions](/solutions/security/detect-and-alert/add-manage-exceptions.md) explain how to modify the rules to reduce false positives and get a better set of actionable alerts. You can also use exceptions and value lists when creating or modifying your own rules.
 
 There are several special prebuilt rules you need to know about:
 
@@ -42,25 +42,25 @@ To make sure you can access Detections and manage rules, see [Detections require
 
 
 
-## Compatibility with cold and frozen tier nodes [cold-tier-detections]
+## Manage data in cold and frozen tiers [cold-tier-detections]
 
 ```yaml {applies_to}
 stack:
 ```
 
-Cold and frozen [data tiers](/manage-data/lifecycle/data-tiers.md) hold time series data that is only accessed occasionally. In {{stack}} version >=7.11.0, {{elastic-sec}} supports cold but not frozen tier data for the following {{es}} indices:
+Cold [data tiers](/manage-data/lifecycle/data-tiers.md) store time series data that's accessed infrequently and rarely updated, while frozen data tiers hold time series data that's accessed even less frequently and never updated. If you're automating searches across different data tiers using rules, consider the following best practices and limitations.
 
-* Index patterns specified in `securitySolution:defaultIndex`
-* Index patterns specified in the definitions of detection rules, except for indicator match rules
-* Index patterns specified in the data sources selector on various {{security-app}} pages
+### Best practices [best-practices-data-tiers]
 
-{{elastic-sec}} does **NOT** support either cold or frozen tier data for the following {{es}} indices:
+* **Retention in hot tier**: We recommend keeping data in the hot tier ({{ilm-cap}} hot phase) for at least 24 hours. {{ilm-cap}} policies that move ingested data from the hot phase to another phase (for example, cold or frozen) in less than 24 hours may cause performance issues and/or rule execution errors.
+* **Replicas for mission-critical data**: Your data should have replicas if it must be highly available. Since frozen tiers don't support replicas, shard unavailability can cause partial rule run failures. Shard unavailability may be also encountered during or after {{stack}} upgrades. If this happens, you can [manually rerun](/solutions/security/detect-and-alert/manage-detection-rules.md#manually-run-rules) rules over the affected time period once the shards are available.
 
-* Index patterns controlled by {{elastic-sec}}, including alerts and list indices
-* Index patterns specified in the definition of indicator match rules
+### Limitations [limitations-data-tiers]
 
-Using either cold or frozen tier data for unsupported indices may result in detection rule timeouts and overall performance degradation.
+Data tiers are a powerful and useful tool. When using them, keep the following in mind:
 
+* To avoid rule failures, do not modify {{ilm}} policies for {elastic-sec}-controlled indices, such as alert and list indices.
+* Source data must have an {{ilm}} policy that keeps it in the hot or warm tiers for at least 24 hours before moving to cold or frozen tiers.
 
 ## Limited support for indicator match rules [support-indicator-rules]
 
@@ -104,7 +104,7 @@ To learn how your rules and alerts are affected by using the [logsdb index mode]
 
 ## Manage rules as code [manage-rule-dac]
 
-Utilize the [Detection-as-Code](https://dac-reference.readthedocs.io/en/latest/dac_concept_and_workflows.html) (DaC) principles to externally manage your detection rules. 
+Utilize the [Detection-as-Code](https://dac-reference.readthedocs.io/en/latest/dac_concept_and_workflows.html) (DaC) principles to externally manage your detection rules.
 
 The {{elastic-sec}} Labs team uses the [detection-rules](https://github.com/elastic/detection-rules) repo to develop, test, and release {{elastic-sec}}'s[ prebuilt rules](https://github.com/elastic/detection-rules/tree/main/rules). The repo provides DaC features and allows you to customize settings to simplify the setup for managing user rules with the DaCe pipeline.
 

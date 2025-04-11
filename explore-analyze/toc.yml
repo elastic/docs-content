@@ -118,10 +118,7 @@ toc:
       - file: transforms/transform-limitations.md
   - file: elastic-inference.md
     children:
-      - file: elastic-inference/eis.md
       - file: elastic-inference/inference-api.md
-        children:
-          - file: elastic-inference/inference-api/elastic-inference-service-eis.md
   - file: machine-learning.md
     children:
       - file: machine-learning/setting-up-machine-learning.md

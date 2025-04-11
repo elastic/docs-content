@@ -8,12 +8,12 @@ mapped_pages:
 
 # Create instance configurations [ece-configuring-ece-instance-configurations-create]
 
-If you plan to [create your own templates](ece-configuring-ece-create-templates.md) and the [default instance configurations](./ece-configuring-ece-instance-configurations-default.md) that ship with ECE don’t quite suit your purpose, it’s generally easier and safer to create your own custom instance configurations first. Instance configurations match components of the Elastic Stack to allocators and tailor how memory and storage resources get sized relative to each other, and what sizes are available.
+If you plan to [create your own templates](ece-configuring-ece-create-templates.md) and the [default instance configurations](./ece-configuring-ece-instance-configurations-default.md) that ship with ECE don’t quite suit your purpose, it’s generally easier and safer to create your own custom instance configurations first. Instance configurations match components of the {{stack}} to allocators and tailor how memory and storage resources get sized relative to each other, and what sizes are available.
 
 
 ## Before you begin [ece_before_you_begin_2] 
 
-Before you start creating your own instance configurations, you should have [tagged your allocators](ece-configuring-ece-tag-allocators.md) to tell ECE what kind of hardware you have available for Elastic Stack deployments. If you do not tag your allocators, templates that use these instance configurations will deploy wherever there is space rather than on specific allocators.
+Before you start creating your own instance configurations, you should have [tagged your allocators](ece-configuring-ece-tag-allocators.md) to tell ECE what kind of hardware you have available for {{stack}} deployments. If you do not tag your allocators, templates that use these instance configurations will deploy wherever there is space rather than on specific allocators.
 
 
 ## Create an instance configuration in the UI [ece_create_an_instance_configuration_in_the_ui] 
@@ -35,13 +35,13 @@ Before you start creating your own instance configurations, you should have [tag
 
     3. Check the list of allocators that get matched by your query:
 
-        * If you are satisfied that your query matches all the allocators where the component(s) of the Elastic Stack can be deployed, move on to the next step.
+        * If you are satisfied that your query matches all the allocators where the component(s) of the {{stack}} can be deployed, move on to the next step.
         * If you need to refine your query further, continue to adjust your outer or inner clauses. If you are unsure what to do, we recommend keeping your initial query simple. You can always refine the query later on by re-editing the instance configuration.
 
 5. Select **Instance types**.
-6. Pick the products and features of the Elastic Stack that can get deployed on the allocators you identified in the previous step. For products such as Elasticsearch, you can also select some additional options, such as the specific node types that can be deployed.
+6. Pick the products and features of the {{stack}} that can get deployed on the allocators you identified in the previous step. For products such as {{es}}, you can also select some additional options, such as the specific node types that can be deployed.
 
-    Note that not all combinations of Elasticsearch node types are available. You can create either a general purpose Elasticsearch node that includes all three of data, master, and coordinating, or a dedicated node that includes any one of these types. Machine learning is also available as a separate instance type.
+    Note that not all combinations of {{es}} node types are available. You can create either a general purpose {{es}} node that includes all three of data, master, and coordinating, or a dedicated node that includes any one of these types. Machine learning is also available as a separate instance type.
 
 7. Select **Sizes**.
 8. Adjust how memory and storage resources get sized relative to each other and set the available sizes, including the default size. Size your instance configuration so that it will use the available memory and storage on your allocators efficiently, without leaving hardware resources unused. Keep in mind that very small sizes might not provide adequate performance for some use cases.
@@ -135,7 +135,7 @@ Before you start creating your own instance configurations, you should have [tag
     }'
     ```
 
-    1. Note, that not all combinations of Elasticsearch node types are allowed here. You can create either a general purpose Elasticsearch node that includes all three of `data`, `master`, and `ingest`, or a dedicated node, that includes any one of these types or `ml`.
+    1. Note, that not all combinations of {{es}} node types are allowed here. You can create either a general purpose {{es}} node that includes all three of `data`, `master`, and `ingest`, or a dedicated node, that includes any one of these types or `ml`.
 
 
     After you have created your new instance configuration, you can use it when you [create new deployment templates](ece-configuring-ece-create-templates.md) or when you edit existing ones.

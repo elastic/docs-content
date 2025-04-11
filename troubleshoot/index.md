@@ -1,6 +1,6 @@
 ---
 navigation_title: "Troubleshoot"
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/starting-with-the-elasticsearch-platform-and-its-solutions/current/get-support-help.html
   - https://www.elastic.co/guide/en/starting-with-the-elasticsearch-platform-and-its-solutions/current/troubleshooting-and-faqs.html
   - https://www.elastic.co/guide/en/cloud/current/ec-get-help.html
@@ -14,8 +14,8 @@ This section contains troubleshooting resources and guidance to help you resolve
 
 If you can't find your issue here, explore the [additional resources](#troubleshoot-additional-resources) or [contact us](#contact-us).
 
-:::{note} 
-You might need to review troubleshooting content for more than one product or topic area. Most Elastic deployments use multiple components from the [Elastic Stack](/get-started/the-stack.md), plus a deployment orchestrator. Check all topics relevant to your infrastructure. 
+:::{note}
+You might need to review troubleshooting content for more than one product or topic area. Most Elastic deployments use multiple components from the [Elastic Stack](/get-started/the-stack.md), plus a deployment orchestrator. Check all topics relevant to your infrastructure.
 :::
 
 * [{{es}}](/troubleshoot/elasticsearch.md)
@@ -40,7 +40,7 @@ You might need to review troubleshooting content for more than one product or to
 
 ## Contact us [contact-us]
 
-If you have an [Elastic subscription](https://www.elastic.co/pricing), you can contact Elastic support for assistance. You can reach us in the following ways: 
+If you have an [Elastic subscription](https://www.elastic.co/pricing), you can contact Elastic support for assistance. You can reach us in the following ways:
 
 * **Through the [Elastic Support Portal](https://support.elastic.co/):** The Elastic Support Portal is the central place where you can access all of your cases, subscriptions, and licenses. Within a few hours after subscribing, you'll receive an email with instructions on how to log in to the Support Portal, where you can track both current and archived cases.
 
@@ -57,7 +57,7 @@ If you have an [Elastic subscription](https://www.elastic.co/pricing), you can c
 
 Try these tips when opening a support case:
 
-* Include the deployment ID that you want help with, especially if you have several deployments. 
+* Include the deployment ID that you want help with, especially if you have several deployments.
 
   You can find the deployment ID on the overview page for your cluster in the {{ecloud}} Console.
 

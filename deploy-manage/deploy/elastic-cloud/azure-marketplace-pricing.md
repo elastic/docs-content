@@ -51,4 +51,4 @@ For customers paying in non-USD currencies, any future prepaid fees, or on-deman
 
 ## Our commitment to you [ec_our_commitment_to_you]
 
-We understand that pricing adjustments can raise questions or concerns, and we are here to support you throughout this process. Should you have any inquiries or need assistance, please reach out to your Elastic account representative or Elastic Support at `support@elastic.co`.
+We understand that pricing adjustments can raise questions or concerns, and we are here to support you throughout this process. Should you have any inquiries or need assistance, reach out to your Elastic account representative or Elastic Support at `support@elastic.co`.

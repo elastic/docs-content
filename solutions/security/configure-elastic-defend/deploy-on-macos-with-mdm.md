@@ -1,6 +1,6 @@
 ---
 navigation_title: "Deploy on macOS with MDM"
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/security/current/deploy-with-mdm.html
   - https://www.elastic.co/guide/en/serverless/current/security-deploy-with-mdm.html
 applies_to:

@@ -2,7 +2,7 @@
 applies_to:
   deployment:
     ess: ga
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-traffic-filtering-vpc.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-traffic-filtering-vpc.html
 ---
@@ -22,13 +22,13 @@ Read more about [Traffic Filtering](/deploy-manage/security/traffic-filtering.md
 
 ## Considerations
 
-Before you begin, review  the following considerations: 
+Before you begin, review  the following considerations:
 
 ### PrivateLink filtering and regions
 
-AWS PrivateLink filtering is supported only for AWS regions. Elastic does not yet support cross-region AWS PrivateLink connections. Your PrivateLink endpoint needs to be in the same region as your target deployments. Additional details can be found in the [AWS VPCE Documentation](https://docs.aws.amazon.com/vpc/latest/userguide/vpce-interface.html#vpce-interface-limitations). 
+AWS PrivateLink filtering is supported only for AWS regions. Elastic does not yet support cross-region AWS PrivateLink connections. Your PrivateLink endpoint needs to be in the same region as your target deployments. Additional details can be found in the [AWS VPCE Documentation](https://docs.aws.amazon.com/vpc/latest/userguide/vpce-interface.html#vpce-interface-limitations).
 
-AWS interface VPC endpoints get created in availability zones (AZ). In some regions, our VPC endpoint *service* is not present in all the possible AZs that a region offers. You can only choose AZs that are common on both sides. As the *names* of AZs (for example `us-east-1a`) differ between AWS accounts, the following list of AWS regions shows the *ID* (e.g. `use1-az4`) of each available AZ for the service. 
+AWS interface VPC endpoints are configured for one or more availability zones (AZ). In some regions, our VPC endpoint *service* is not present in all the possible AZs that a region offers. You can only choose AZs that are common on both sides. As the *names* of AZs (for example `us-east-1a`) differ between AWS accounts, the following list of AWS regions shows the *ID* (e.g. `use1-az4`) of each available AZ for the service.
 
 Check [interface endpoint availability zone considerations](https://docs.aws.amazon.com/vpc/latest/userguide/vpce-interface.html#vpce-interface-availability-zones) for more details.
 
@@ -36,7 +36,7 @@ Check [interface endpoint availability zone considerations](https://docs.aws.ama
 
 Elastic [charges](/deploy-manage/cloud-organization/billing/cloud-hosted-deployment-billing-dimensions.md) for inter-node traffic regardless of whether nodes are in the same or different availability zones (AZ). As a result, placing the deployment nodes within a single AZ, instead of two or three, does not reduce inter-node costs.
 
-On the customer VPC side, the inter-availability zone data transfer, within the same AWS region, towards AWS PrivateLink endpoints, [is free of charge](https://aws.amazon.com/about-aws/whats-new/2022/04/aws-data-transfer-price-reduction-privatelink-transit-gateway-client-vpn-services/). As a result, you do not incur charges for cross-AZ data transfer within your VPC when the target is the AWS Privatelink Elastic Cloud service endpoint. We recommend you set up the VPC endpoints in all supported Elastic Cloud AZs for a particular region for maximum traffic throughput and resiliency.
+On the customer VPC side, the inter-availability zone data transfer, within the same AWS region, towards AWS PrivateLink endpoints, [is free of charge](https://aws.amazon.com/about-aws/whats-new/2022/04/aws-data-transfer-price-reduction-privatelink-transit-gateway-client-vpn-services/). As a result, you do not incur charges for cross-AZ data transfer within your VPC when the target is the AWS Privatelink {{ecloud}} service endpoint. We recommend you set up the VPC endpoints in all supported {{ecloud}} AZs for a particular region for maximum traffic throughput and resiliency.
 
 If Elastic and your VPC overlap in two AZs or less, you can create subnets and VPC PrivateLink endpoints in your VPC within the same availability zones where Elastic PrivateLink service has presence.
 
@@ -153,11 +153,11 @@ The mapping will be different for your region. Our production VPC Service for `u
 3. Test the connection.
 
     Find out the endpoint of your deployment. You can do that by selecting **Copy endpoint** in the Cloud UI. It looks something like:
-    
+
     ```
     my-deployment-d53192.es.us-east-1.aws.found.io
     ```
-    
+
     where `my-deployment-d53192` is an alias, and `es` is the product you want to access within your deployment.
 
     To access your {{es}} cluster over PrivateLink:

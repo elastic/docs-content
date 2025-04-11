@@ -31,6 +31,10 @@ If the upgrade includes breaking changes, the old saved objects will be reindexe
 Saved objects are stored in multiple indices. While they all start with the `.kibana*` prefix, other `.kibana*` indices exist but are not used to store saved objects.
 The indices used to store saved objects and the conventions on their names and aliases have evolved as follows:
 
+::::{warning} 
+The `kibana.index` and `xpack.tasks.index` configuration settings are obsolete and no longer taken into account in 8.x. If you are using custom index names, perform the necessary adaptations before attempting to upgrade to 8.x.
+::::
+
 ### Kibana 6.5.0
 
 The `.kibana_N` saved object index is created. Saved objects are reindexed into a new index, and the `N` suffix is incremented each time an upgrade is performed. A `.kibana` alias is maintained, which points to the latest version of the index.

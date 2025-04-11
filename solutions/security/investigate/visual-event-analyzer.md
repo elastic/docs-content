@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/security/current/visual-event-analyzer.html
   - https://www.elastic.co/guide/en/serverless/current/security-visual-event-analyzer.html
 applies_to:
@@ -13,7 +13,7 @@ applies_to:
 {{elastic-sec}} allows any event detected by {{elastic-endpoint}} to be analyzed using a process-based visual analyzer, which shows a graphical timeline of processes that led up to the alert and the events that occurred immediately after. Examining events in the visual event analyzer is useful to determine the origin of potentially malicious activity and other areas in your environment that may be compromised. It also enables security analysts to drill down into all related hosts, processes, and other events to aid in their investigations.
 
 ::::{tip}
-If you’re experiencing performance degradation, you can [exclude cold and frozen tier data](/solutions/security/get-started/configure-advanced-settings.md#exclude-cold-frozen-tiers) from analyzer queries. This setting is only available for the {{stack}}. 
+If you’re experiencing performance degradation, you can [exclude cold and frozen tier data](/solutions/security/get-started/configure-advanced-settings.md#exclude-cold-frozen-tiers) from analyzer queries. This setting is only available for the {{stack}}.
 ::::
 
 
@@ -43,11 +43,6 @@ To find events that can be visually analyzed:
     * `agent.type:"winlogbeat" and event.module: "sysmon" and process.entity_id : *`
 
 3. Events that can be visually analyzed are denoted by a cubical **Analyze event** icon. Select this option to open the event in the visual analyzer. The event analyzer is accessible from the **Hosts**, **Alerts**, and **Timelines** pages, as well as the alert details flyout.
-
-    ::::{tip}
-    Turn on the `securitySolution:enableVisualizationsInFlyout` [advanced setting](/solutions/security/get-started/configure-advanced-settings.md#visualizations-in-flyout) to access the event analyzer from the **Visualize** tab in the alert or event details flyout.
-    ::::
-
 
     :::{image} /solutions/images/security-analyze-event-button.png
     :alt: analyze event button

@@ -3,7 +3,7 @@ navigation_title: "Unavailable nodes"
 applies_to:
   deployment:
     ess: all
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-scenario_why_is_my_node_unavailable.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/echscenario_why_is_my_node_unavailable.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-single-node-deployment-disk-used.html

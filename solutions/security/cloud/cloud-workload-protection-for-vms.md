@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/security/current/cloud-workload-protection.html
   - https://www.elastic.co/guide/en/serverless/current/security-cloud-workload-protection.html
 applies_to:

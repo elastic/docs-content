@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/monitoring-overview.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/how-monitoring-works.html
 applies_to:
@@ -87,7 +87,7 @@ Most of these methods require that you configure monitoring of {{es}} before mon
     * [Packetbeat](beats://reference/packetbeat/monitoring.md)
     * [Winlogbeat](beats://reference/winlogbeat/monitoring.md)
 
-* [**APM Server**](/solutions/observability/apps/monitor-apm-server.md)
+* [**APM Server**](/solutions/observability/apm/monitor-apm-server.md)
 
 * **{{agent}}s**:
   * [{{fleet}}-managed {{agent}}s](/reference/fleet/monitor-elastic-agent.md)

@@ -76,7 +76,7 @@ These steps describe how to set up {{fleet}} components to use a proxy.
 
     :::::{admonition}
     ::::{warning}
-    If agents are unable to reach the configured proxy server, they will not be able to write data to the output that has the proxy server configured. When changing the proxy of an output, please ensure that the affected agents all have connectivity to the proxy itself.
+    If agents are unable to reach the configured proxy server, they will not be able to write data to the output that has the proxy server configured. When changing the proxy of an output, ensure that the affected agents all have connectivity to the proxy itself.
     ::::
 
 
@@ -99,7 +99,7 @@ These steps describe how to set up {{fleet}} components to use a proxy.
 
     :::::{admonition}
     ::::{warning}
-    If agents are unable to reach the configured proxy server, they will not be able to download binaries from the agent download source that has the proxy server configured. When changing the proxy of an agent binary source, please ensure that the affected agents all have connectivity to the proxy itself.
+    If agents are unable to reach the configured proxy server, they will not be able to download binaries from the agent download source that has the proxy server configured. When changing the proxy of an agent binary source, ensure that the affected agents all have connectivity to the proxy itself.
     ::::
 
 

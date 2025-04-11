@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/logs-ecs-application.html
   - https://www.elastic.co/guide/en/serverless/current/observability-ecs-application-logs.html
 applies_to:
@@ -43,7 +43,7 @@ To set up log ECS reformatting:
 
 1. [Enable {{apm-agent}} reformatting](../../../solutions/observability/logs/ecs-formatted-application-logs.md#enable-log-ecs-reformatting)
 2. [Ingest logs with {{filebeat}} or {{agent}}](../../../solutions/observability/logs/ecs-formatted-application-logs.md#ingest-ecs-logs)
-3. [View logs in Logs Explorer](../../../solutions/observability/logs/ecs-formatted-application-logs.md#view-ecs-logs)
+3. [View logs in Discover](../../../solutions/observability/logs/ecs-formatted-application-logs.md#view-ecs-logs)
 
 
 ### Enable log ECS reformatting [enable-log-ecs-reformatting]

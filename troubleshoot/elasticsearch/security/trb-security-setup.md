@@ -37,7 +37,7 @@ The [elasticsearch-setup-passwords command](elasticsearch://reference/elasticsea
     PKIX path building failed:
     sun.security.provider.certpath.SunCertPathBuilderException:
     unable to find valid certification path to requested target
-    Please check the elasticsearch SSL settings under
+    Check the elasticsearch SSL settings under
     xpack.security.http.ssl.
     ...
     ERROR: Failed to establish SSL connection to elasticsearch at
@@ -52,7 +52,7 @@ The [elasticsearch-setup-passwords command](elasticsearch://reference/elasticsea
     failed: java.security.cert.CertificateException:
     No subject alternative DNS name matching
     elasticsearch.example.com found.
-    Please check the elasticsearch SSL settings under
+    Check the elasticsearch SSL settings under
     xpack.security.http.ssl.
     ...
     ERROR: Failed to establish SSL connection to elasticsearch at

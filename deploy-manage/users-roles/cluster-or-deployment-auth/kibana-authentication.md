@@ -1,5 +1,5 @@
 ---
-navigation_title: "Kibana authentication"
+navigation_title: "{{kib}} authentication"
 applies_to:
   deployment:
     ess:
@@ -158,7 +158,7 @@ Note that with `server.ssl.clientAuthentication` set to `required`, users are as
 
 ## SAML single sign-on [saml]
 
-SAML authentication is part of single sign-on (SSO), a [subscription feature](https://www.elastic.co/subscriptions). This allows users to log in to {{kib}} with an external Identity Provider, such as Okta or Auth0. Make sure that SAML is enabled and configured in {{es}} before setting it up in {{kib}}. See [Configuring SAML single sign-on on the Elastic Stack](/deploy-manage/users-roles/cluster-or-deployment-auth/saml.md).
+SAML authentication is part of single sign-on (SSO), a [subscription feature](https://www.elastic.co/subscriptions). This allows users to log in to {{kib}} with an external Identity Provider, such as Okta or Auth0. Make sure that SAML is enabled and configured in {{es}} before setting it up in {{kib}}. See [Configuring SAML single sign-on on the {{stack}}](/deploy-manage/users-roles/cluster-or-deployment-auth/saml.md).
 
 Enable SAML authentication by specifying which SAML realm in {{es}} should be used:
 

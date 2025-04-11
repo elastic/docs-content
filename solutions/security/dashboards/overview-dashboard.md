@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/security/current/overview-dashboard.html
   - https://www.elastic.co/guide/en/serverless/current/security-overview-dashboard.html
 applies_to:

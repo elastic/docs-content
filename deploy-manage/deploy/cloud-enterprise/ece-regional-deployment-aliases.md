@@ -8,7 +8,7 @@ mapped_pages:
 
 # Custom endpoint aliases [ece-regional-deployment-aliases]
 
-Custom aliases for your deployment endpoints on Elastic Cloud Enterprise allow you to have predictable, human-readable URLs that can be shared easily.
+Custom aliases for your deployment endpoints on {{ece}} allow you to have predictable, human-readable URLs that can be shared easily.
 
 ::::{important}
 Before setting up your custom alias, your platform administrator must enable the feature. Check [Enable custom endpoint aliases](enable-custom-endpoint-aliases.md) for more information.
@@ -41,7 +41,7 @@ To remove an alias from your deployment, or if you want to re-assign an alias to
 
 ## Using the custom endpoint URL [ece-using-regional-deployment-alias]
 
-To use your new custom endpoint URL to access your Elastic products, note that each has its own alias to use in place of the default application UUID. For example, if you configured the custom endpoint alias for your deployment to be `test-alias`, the corresponding alias for the Elasticsearch cluster in that deployment is `test-alias.es`.
+To use your new custom endpoint URL to access your Elastic products, note that each has its own alias to use in place of the default application UUID. For example, if you configured the custom endpoint alias for your deployment to be `test-alias`, the corresponding alias for the {{es}} cluster in that deployment is `test-alias.es`.
 
 ::::{note}
 You can get the application-specific custom endpoint alias by selecting **Copy endpoint** for that product. It should contain a subdomain for each application type, for example `es`, `kb`, `apm`, or `ent`.
@@ -67,7 +67,7 @@ While the `TransportClient` is deprecated, your custom endpoint aliases still wo
 
 * As part of the host name:
 
-    Similar to HTTP, you can find the fully qualified host on the deployment overview page by selecting **Copy endpoint** next to Elasticsearch. Make sure to remove the unnecessary `https://` prefix as well as the trailing HTTP port.
+    Similar to HTTP, you can find the fully qualified host on the deployment overview page by selecting **Copy endpoint** next to {{es}}. Make sure to remove the unnecessary `https://` prefix as well as the trailing HTTP port.
 
 * As part of the **Settings**:
 

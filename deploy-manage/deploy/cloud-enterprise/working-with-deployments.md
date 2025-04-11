@@ -2,7 +2,7 @@
 applies_to:
   deployment:
     ece: all
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-stack-getting-started.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-administering-deployments.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-monitoring-deployments.html
@@ -24,7 +24,7 @@ All of these profiles are based on [deployment templates](./deployment-templates
 
 ## Creating deployments
 
-Refer to [Create a deployment](./create-deployment.md) to launch and configure an Elastic Stack environment.
+Refer to [Create a deployment](./create-deployment.md) to launch and configure an {{stack}} environment.
 
 ## Administering deployments [ece-administering-deployments]
 
@@ -44,7 +44,7 @@ From the deployment main page, you can quickly access the following configuratio
 
 * Select **{{es}} > snapshots** to associate a [snapshots repository](../../tools/snapshot-and-restore/cloud-enterprise.md#ece-manage-repositories-clusters) with the deployment.
 
-* Select **Monitoring > Logs and metrics** to set up [Stack monitoring](../../monitor/stack-monitoring/ece-ech-stack-monitoring.md) for your deployment, forwarding its logs and metrics to a dedicated monitoring deployment. 
+* Select **Monitoring > Logs and metrics** to set up [Stack monitoring](../../monitor/stack-monitoring/ece-ech-stack-monitoring.md) for your deployment, forwarding its logs and metrics to a dedicated monitoring deployment.
 
   ::::{note}
   In addition to the monitoring of clusters that is described here, don’t forget that {{ece}} also provides [monitoring information for your entire installation](../../../deploy-manage/monitor/orchestrators/ece-platform-monitoring.md).

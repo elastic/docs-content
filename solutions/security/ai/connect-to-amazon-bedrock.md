@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/security/current/assistant-connect-to-bedrock.html
   - https://www.elastic.co/guide/en/serverless/current/security-connect-to-bedrock.html
 applies_to:
@@ -84,8 +84,6 @@ Create the access keys that will authenticate your Elastic connector:
 4. Under **Access keys**, click **Create access key**.
 5. Select **Third-party service**, check the box under **Confirmation**, click **Next**, then click **Create access key**.
 6. Click **Download .csv file** to download the key. Store it securely.
-
-The following video demonstrates these steps.
 
 The following video demonstrates these steps (click to watch).
 

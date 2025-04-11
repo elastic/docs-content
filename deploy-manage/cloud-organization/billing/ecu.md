@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-billing-ecu.html
 applies_to:
   deployment:
@@ -15,7 +15,7 @@ The nominal value of one Elastic Consumption Unit is $1.00. You can use our [{{e
 
 Your monthly usage statement is issued in ECU, though it also includes the currency equivalent of your consumption. The **Usage** page in the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body) also shows usage information in ECU.
 
-## Contractual information and quoting [ec_contractual_information_and_quoting] 
+## Contractual information and quoting [ec_contractual_information_and_quoting]
 
 When you sign a prepaid consumption contract, you are purchasing Elastic Consumption Units which can be used to cover your {{ecloud}} usage throughout your contract period.
 

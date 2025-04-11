@@ -40,12 +40,12 @@ spec:
     namespace: default
 ```
 
-The use of `namespace` is optional if the Elasticsearch cluster is running in the same namespace as Elastic Maps Server.
+The use of `namespace` is optional if the {{es}} cluster is running in the same namespace as Elastic Maps Server.
 
 ::::{note} 
-Any Elastic Maps Server can reference (and thus access) any Elasticsearch instance as long as they are both in namespaces that are watched by the same ECK instance. ECK will copy the required Secret from Elasticsearch to the Elastic Maps Server namespace. Elastic Maps Server cannot automatically connect to Elasticsearch (through `elasticsearchRef`) in a namespace managed by a different ECK instance. For more information, check [Restrict cross-namespace resource associations](restrict-cross-namespace-resource-associations.md).
+Any Elastic Maps Server can reference (and thus access) any {{es}} instance as long as they are both in namespaces that are watched by the same ECK instance. ECK will copy the required Secret from {{es}} to the Elastic Maps Server namespace. Elastic Maps Server cannot automatically connect to {{es}} (through `elasticsearchRef`) in a namespace managed by a different ECK instance. For more information, check [Restrict cross-namespace resource associations](restrict-cross-namespace-resource-associations.md).
 ::::
 
 
-The Elastic Maps Server configuration file is automatically setup by ECK to establish a secure connection to Elasticsearch.
+The Elastic Maps Server configuration file is automatically setup by ECK to establish a secure connection to {{es}}.
 

@@ -25,7 +25,6 @@ To access the Upgrade Assistant, you need the `manage` cluster privilege. You ma
 
 Some features of the Upgrade Assistant are only needed when upgrading to a new major version. The features enabled by default are those for the next version from the one {{kib}} currently runs on.
 
-
 ## Deprecations [_deprecations] 
 
 The Upgrade Assistant pulls information about deprecations from the following sources:
