@@ -49,7 +49,7 @@ To find the Cloud ID of your [deployment](https://cloud.elastic.co/deployments),
 
 ![Cloud ID](/solutions/images/observability-monitor-gcp-cloud-id.png "")
 
-Use [{{kib}}](../../../deploy-manage/api-keys/elasticsearch-api-keys.md#create-api-key) to create a Base64-encoded API key to authenticate on your deployment.
+Use [{{kib}}](/deploy-manage/api-keys/elasticsearch-api-keys.md#create-api-key) to create a Base64-encoded API key to authenticate on your deployment.
 
 ::::{important}
 You can optionally restrict the privileges of your API Key; otherwise they’ll be a point in time snapshot of permissions of the authenticated user. For this tutorial the data is written to the `logs-gcp.audit-default` data streams.

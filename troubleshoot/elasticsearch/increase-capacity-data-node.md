@@ -20,7 +20,7 @@ In order to increase the disk capacity of the data nodes in your cluster:
 
 1. Log in to the [{{ecloud}} console](https://cloud.elastic.co?page=docs&placement=docs-body).
 2. On the **Hosted deployments** panel, click the gear under the `Manage deployment` column that corresponds to the name of your deployment.
-3. If autoscaling is available but not enabled, please enable it. You can do this by clicking the button `Enable autoscaling` on a banner like the one below:
+3. If autoscaling is available but not enabled, enable it. You can do this by clicking the button `Enable autoscaling` on a banner like the one below:
 
     :::{image} /troubleshoot/images/elasticsearch-reference-autoscaling_banner.png
     :alt: Autoscaling banner
@@ -34,7 +34,7 @@ In order to increase the disk capacity of the data nodes in your cluster:
     :screenshot:
     :::
 
-4. If autoscaling has succeeded the cluster should return to `healthy` status. If the cluster is still out of disk, please check if autoscaling has reached its limits. You will be notified about this by the following banner:
+4. If autoscaling has succeeded the cluster should return to `healthy` status. If the cluster is still out of disk, check if autoscaling has reached its limits. You will be notified about this by the following banner:
 
     :::{image} /troubleshoot/images/elasticsearch-reference-autoscaling_limits_banner.png
     :alt: Autoscaling banner

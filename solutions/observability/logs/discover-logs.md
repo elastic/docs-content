@@ -14,7 +14,7 @@ From the `logs-*` or `All logs` data view in Discover, you can quickly search an
 To open **Discover**, find `Discover` in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Select the `logs-*` or `All logs` data view from the **Data view** menu.
 
 :::{note}
-For a contextual logs experience, set the **Solution view** for your space to **Observability**. Refer to [Managing spaces](../../../deploy-manage/manage-spaces.md) for more information.
+For a contextual logs experience, set the **Solution view** for your space to **Observability**. Refer to [Managing spaces](/deploy-manage/manage-spaces.md) for more information.
 :::
 
 :::{image} ../../images/observability-log-explorer.png
@@ -24,23 +24,23 @@ For a contextual logs experience, set the **Solution view** for your space to **
 
 ## Required {{kib}} privileges [logs-explorer-privileges]
 
-Viewing data in Discover logs data views requires `read` privileges for **Discover**, **Index**, and **Logs**. For more on assigning {{kib}} privileges, refer to the [{{kib}} privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md) docs.
+Viewing data in Discover logs data views requires `read` privileges for **Discover**, **Index**, and **Logs**. For more on assigning {{kib}} privileges, refer to the [{{kib}} privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md) docs.
 
 
 ## Find your logs [find-your-logs]
 
 By default, the **All logs** data view shows all of your logs, according to the index patterns set in the **logs sources** advanced setting. To open **Advanced settings**, find **Stack Management** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
-To focus on logs from a specific source or sources, create a data view using the index patterns of those source. For more information on creating data views, refer to [Create a data view](../../../explore-analyze/find-and-organize/data-views.md#settings-create-pattern)
+To focus on logs from a specific source or sources, create a data view using the index patterns of those source. For more information on creating data views, refer to [Create a data view](/explore-analyze/find-and-organize/data-views.md#settings-create-pattern)
 
-Once you have the logs you want to focus on displayed, you can drill down further to find the information you need. For more on filtering your data in Discover, refer to [Filter logs in Discover](../../../solutions/observability/logs/filter-aggregate-logs.md#logs-filter-discover).
+Once you have the logs you want to focus on displayed, you can drill down further to find the information you need. For more on filtering your data in Discover, refer to [Filter logs in Discover](/solutions/observability/logs/filter-aggregate-logs.md#logs-filter-discover).
 
 
 ## Review log data in the documents table [review-log-data-in-the-documents-table]
 
 The documents table lets you add fields, order table columns, sort fields, and update the row height in the same way you would in Discover.
 
-Refer to the [Discover](../../../explore-analyze/discover.md) documentation for more information on updating the table.
+Refer to the [Discover](/explore-analyze/discover.md) documentation for more information on updating the table.
 
 
 ### Actions column [actions-column]
@@ -72,4 +72,4 @@ The following actions help you filter and focus on specific fields in the log de
 
 Go to **Data Sets** to view more details about your data sets and monitor their overall quality. To open **Data Set Quality**, find **Stack Management** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
-Refer to [*Data set quality*](../../../solutions/observability/data-set-quality-monitoring.md) for more information.
+Refer to [*Data set quality*](/solutions/observability/data-set-quality-monitoring.md) for more information.

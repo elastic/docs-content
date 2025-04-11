@@ -8,7 +8,7 @@ applies_to:
 
 # Common problems [fleet-troubleshooting]
 
-We have collected the most common known problems and listed them here. If your problem is not described here, please review the open issues in the following GitHub repositories:
+We have collected the most common known problems and listed them here. If your problem is not described here, review the open issues in the following GitHub repositories:
 
 | Repository | To review or report issues about |
 | --- | --- |
@@ -210,7 +210,7 @@ To fix this problem, add your CA certificate file path to the {{kib}} startup fi
 1. To investigate the error, open your browser’s development console.
 2. Select the **Network** tab, and refresh the page.
 
-    One of the requests to the {{fleet}} API will most likely have returned an error. If the error message doesn’t give you enough information to fix the problem, please contact us in the [discuss forum](https://discuss.elastic.co/).
+    One of the requests to the {{fleet}} API will most likely have returned an error. If the error message doesn’t give you enough information to fix the problem, contact us in the [discuss forum](https://discuss.elastic.co/).
 
 
 
@@ -301,7 +301,7 @@ When creating an issue or sending a support forum communication, this section ca
     ```
 
     ::::{note}
-    Both of the above commands are accessible via Windows or macOS with their OS-specific slight variation in how you call them. If needed, please refer to [*Install {{agent}}s*](/reference/fleet/install-elastic-agents.md) for examples of how to adjust them.
+    Both of the above commands are accessible via Windows or macOS with their OS-specific slight variation in how you call them. If needed, refer to [*Install {{agent}}s*](/reference/fleet/install-elastic-agents.md) for examples of how to adjust them.
     ::::
 
 
@@ -347,12 +347,12 @@ The {{agent}} diagnostics bundle collects the following information:
 Note that the diagnostics bundle is intended for debugging purposes only, its structure may change between releases.
 
 ::::{important}
-{{agent}} attempts to automatically redact credentials and API keys when creating diagnostics. Please review the contents of the archive before sharing to ensure that there are no credentials in plain text.
+{{agent}} attempts to automatically redact credentials and API keys when creating diagnostics. Review the contents of the archive before sharing to ensure that there are no credentials in plain text.
 ::::
 
 
 ::::{important}
-The ZIP archive containing diagnostics information will include the raw events of documents sent to the {{agent}} output. By default, it will log only the failing events as `warn`. When the `debug` logging level is enabled, all events are logged. Please review the contents of the archive before sharing to ensure that no sensitive information is included.
+The ZIP archive containing diagnostics information will include the raw events of documents sent to the {{agent}} output. By default, it will log only the failing events as `warn`. When the `debug` logging level is enabled, all events are logged. Review the contents of the archive before sharing to ensure that no sensitive information is included.
 ::::
 
 

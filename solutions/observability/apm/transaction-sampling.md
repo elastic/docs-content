@@ -84,23 +84,6 @@ In the example in *Figure 4*, `Service A` and `Service B` are Elastic-monitored 
 :title: Using the `restart` trace continuation strategy
 :::
 
-### OpenTelemetry [_opentelemetry]
-
-Head-based sampling is implemented directly in the APM agents and SDKs. The sample rate must be propagated between services and the managed intake service in order to produce accurate metrics.
-
-OpenTelemetry offers multiple samplers. However, most samplers do not propagate the sample rate. This results in inaccurate span-based metrics, like APM throughput, latency, and error metrics.
-
-For accurate span-based metrics when using head-based sampling with OpenTelemetry, you must use a [consistent probability sampler](https://opentelemetry.io/docs/specs/otel/trace/tracestate-probability-sampling/). These samplers propagate the sample rate between services and the managed intake service, resulting in accurate metrics.
-
-::::{note}
-OpenTelemetry does not offer consistent probability samplers in all languages. OpenTelemetry users should consider using tail-based sampling instead.
-
-Refer to the documentation of your favorite OpenTelemetry agent or SDK for more information on the availability of consistent probability samplers.
-
-::::
-
-% Stateful only for tail-based sampling
-
 ## Tail-based sampling [apm-tail-based-sampling]
 
 ```{applies_to}
@@ -132,12 +115,6 @@ In this example, `Service A` initiates four transactions. If our sample rate is 
 :::{image} /solutions/images/observability-dt-sampling-example-3.png
 :alt: Distributed tracing and tail based sampling example one
 :::
-
-### OpenTelemetry with tail-based sampling [_opentelemetry_with_tail_based_sampling]
-
-Tail-based sampling is implemented entirely in APM Server, and will work with traces sent by either Elastic APM agents or OpenTelemetry SDKs.
-
-Due to [OpenTelemetry tail-based sampling limitations](/solutions/observability/apm/limitations.md#apm-open-telemetry-tbs) when using [tailsamplingprocessor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/tailsamplingprocessor), we recommend using APM Server tail-based sampling instead.
 
 ### Tail-based sampling performance and requirements [_tail_based_sampling_performance_and_requirements]
 
@@ -195,7 +172,7 @@ stack:
 serverless:
 ```
 
-A sampled trace retains all data associated with it. A non-sampled trace drops all [span](/solutions/observability/apm/spans.md) and [transaction](/solutions/observability/apm/transactions.md) data1. Regardless of the sampling decision, all traces retain [error](/solutions/observability/apm/errors.md) data.
+A sampled trace retains all data associated with it. A non-sampled trace drops all [span](/solutions/observability/apm/spans.md) and [transaction](/solutions/observability/apm/transactions.md) data.[¹](#footnote-1) Regardless of the sampling decision, all traces retain [error](/solutions/observability/apm/errors.md) data.
 
 Some visualizations in the {{apm-app}}, like latency, are powered by aggregated transaction and span [metrics](/solutions/observability/apm/metrics.md). The way these metrics are calculated depends on the sampling method used:
 
@@ -207,7 +184,7 @@ For all sampling methods, metrics are weighted by the inverse sampling rate of t
 
 These calculation methods ensure that the APM app provides the most accurate metrics possible given the sampling strategy in use, while also accounting for the head-based sampling rate to estimate the full population of traces.
 
-1 Real User Monitoring (RUM) traces are an exception to this rule. The {{kib}} apps that utilize RUM data depend on transaction events, so non-sampled RUM traces retain transaction data — only span data is dropped.
+¹ $$$footnote-1$$$ Real User Monitoring (RUM) traces are an exception to this rule. The {{kib}} apps that utilize RUM data depend on transaction events, so non-sampled RUM traces retain transaction data — only span data is dropped.
 
 ## Sample rates [_sample_rates]
 
@@ -266,7 +243,7 @@ Enable tail-based sampling with [Enable tail-based sampling](/solutions/observab
 Trace events are matched to policies in the order specified. Each policy list must conclude with a default policy — one that only specifies a sample rate. This default policy is used to catch remaining trace events that don’t match a stricter policy. Requiring this default policy ensures that traces are only dropped intentionally. If you enable tail-based sampling and send a transaction that does not match any of the policies, APM Server will reject the transaction with the error `no matching policy`.
 
 ::::{important}
-Please note that from version `9.0.0` APM Server has an unlimited storage limit, but will stop writing when the disk where the database resides reaches 80% usage. Due to how the limit is calculated and enforced, the actual disk space may still grow slightly over this disk usage based limit, or any configured storage limit.
+Note that from version `9.0.0` APM Server has an unlimited storage limit, but will stop writing when the disk where the database resides reaches 80% usage. Due to how the limit is calculated and enforced, the actual disk space may still grow slightly over this disk usage based limit, or any configured storage limit.
 ::::
 
 ### Example configuration [_example_configuration]

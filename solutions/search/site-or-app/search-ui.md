@@ -113,7 +113,7 @@ Read the [Elasticsearch Connector](search-ui://reference/api-connectors-elastics
 
 ### Where do I report issues with the Search UI? [overview-where-do-i-report-issues-with-the-search-ui]
 
-If something is not working as expected, please open an [issue](https://github.com/elastic/search-ui/issues/new).
+If something is not working as expected, open an [issue](https://github.com/elastic/search-ui/issues/new).
 
 
 ### Where can I go to get help? [overview-where-can-i-go-to-get-help]
@@ -126,12 +126,12 @@ The Enterprise Search team at Elastic maintains this library and are happy to he
 We welcome contributors to the project. Before you begin, a couple notes…​
 
 * Read the [Search UI Contributor’s Guide](https://github.com/elastic/search-ui/blob/main/CONTRIBUTING.md).
-* Prior to opening a pull request, please:
+* Prior to opening a pull request:
 
     * Create an issue to [discuss the scope of your proposal](https://github.com/elastic/search-ui/issues).
     * Sign the [Contributor License Agreement](https://www.elastic.co/contributor-agreement/). We are not asking you to assign copyright to us, but to give us the right to distribute your code without restriction. We ask this of all contributors in order to assure our users of the origin and continuing existence of the code. You only need to sign the CLA once.
 
-* Please write simple code and concise documentation, when appropriate.
+* Write simple code and concise documentation, when appropriate.
 
 
 ## License 📗 [overview-license]

@@ -207,7 +207,7 @@ Collecting metrics from `kube-state-metrics` is on by default. The `kube-state-m
 
 With the Kubernetes integration, you can collect a number of metrics using the `kube-state-metrics`. Expand the following list to see all available metrics from `kube-state-metrics`.
 
-::::{dropdown} Expand to see available metrics from `kube-state-metrics`
+::::{dropdown} Expand to see available metrics from kube-state-metrics
 **Container metrics**
 :   Monitor Container performance to ensure efficiency and stability in pods. Learn more at [`kube-state-metrics` container metrics](https://docs.elastic.co/en/integrations/kubernetes/kube-state-metrics#state_container).
 
