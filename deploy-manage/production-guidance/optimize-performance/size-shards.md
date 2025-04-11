@@ -29,13 +29,13 @@ To avoid either of these states, implement the following guidelines:
 
 ### Shard distribution guidelines
 
-To ensure that each node is working optimally, distribute shards evenly across nodes. Uneven distribution can cause some nodes to work harder than others, leading to performance degradation and instability. 
+To ensure that each node is working optimally, distribute shards evenly across nodes. Uneven distribution can cause some nodes to work harder than others, leading to performance degradation and instability.
 
 While {{es}} automatically balances shards, you need to configure indices with an appropriate number of shards and replicas to allow for even distribution across nodes.
 
-If you are using [data streams](/manage-data/data-store/data-streams.md), each data stream is backed by a sequence of indices, each index potentially having multiple shards. 
+If you are using [data streams](/manage-data/data-store/data-streams.md), each data stream is backed by a sequence of indices, each index potentially having multiple shards.
 
-Despite these general guidelines, it is good to develop a tailored [sharding strategy](#create-a-sharding-strategy) that considers your specific infrastructure, use case, and performance expectations. 
+Despite these general guidelines, it is good to develop a tailored [sharding strategy](#create-a-sharding-strategy) that considers your specific infrastructure, use case, and performance expectations.
 
 ## Create a sharding strategy [create-a-sharding-strategy]
 
@@ -377,7 +377,7 @@ See this [fixing "max shards open" video](https://www.youtube.com/watch?v=tZKbDe
 
 Each {{es}} shard is a separate Lucene index, so it shares Lucene’s [`MAX_DOC` limit](https://github.com/apache/lucene/issues/5176) of having at most 2,147,483,519 (`(2^31)-129`) documents. This per-shard limit applies to the sum of `docs.count` plus `docs.deleted` as reported by the [Index stats API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-stats). Exceeding this limit will result in errors like the following:
 
-```txt
+```txt subs=true
 {{es}} exception [type=illegal_argument_exception, reason=Number of documents in the shard cannot exceed [2147483519]]
 ```
 
