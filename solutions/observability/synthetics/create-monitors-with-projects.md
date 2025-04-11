@@ -193,10 +193,10 @@ For more details on writing journeys and configuring browser monitors, refer to 
 
 ## Test and connect to your Observability project or Elastic Stack deployment[synthetics-get-started-project-test-and-connect-to-your-observability-project]
 
-::::{tab-set}
+:::::{tab-set}
 :group: stack-serverless
 
-:::{tab-item} Elastic Stack
+::::{tab-item} Elastic Stack
 :sync: stack
 
 While inside the project directory you can do two things with the `npx @elastic/synthetics` command:
@@ -215,16 +215,16 @@ While inside the project directory you can do two things with the `npx @elastic/
 
 One monitor will appear in the {{synthetics-app}} for each journey or lightweight monitor, and you’ll manage all monitors from your local environment. For more details on using the `push` command, refer to [`@elastic/synthetics push`](/solutions/observability/synthetics/cli.md#elastic-synthetics-push-command).
 
-::::{note}
+:::{note}
 If you’ve [added a {{private-location}}](/solutions/observability/synthetics/monitor-resources-on-private-networks.md), you can `push` to that {{private-location}}.
 
 To list available {{private-location}}s, run the [`elastic-synthetics locations` command](/solutions/observability/synthetics/cli.md#elastic-synthetics-locations-command) with the {{kib}} URL for the deployment from which to fetch available locations.
 
-::::
-
 :::
 
-:::{tab-item} Serverless
+::::
+
+::::{tab-item} Serverless
 :sync: serverless
 
 While inside the Synthetics project directory you can do two things with the `npx @elastic/synthetics` command:
@@ -243,16 +243,16 @@ While inside the Synthetics project directory you can do two things with the `np
 
 One monitor will appear in the Synthetics UI for each journey or lightweight monitor, and you’ll manage all monitors from your local environment. For more details on using the `push` command, refer to [`@elastic/synthetics push`](/solutions/observability/synthetics/cli.md#elastic-synthetics-push-command).
 
-::::{note}
+:::{note}
 If you’ve [added a {{private-location}}](/solutions/observability/synthetics/monitor-resources-on-private-networks.md), you can `push` to that {{private-location}}.
 
 To list available {{private-location}}s, run the [`elastic-synthetics locations` command](/solutions/observability/synthetics/cli.md#elastic-synthetics-locations-command) with the URL for the Observability project from which to fetch available locations.
 
-::::
-
 :::
 
 ::::
+
+:::::
 
 ## View in the Synthetics UI [synthetics-get-started-project-view-in-your-observability-project]
 

@@ -44,7 +44,7 @@ Check [these instructions](https://elastic.github.io/opentelemetry/use-cases/llm
 
 For an SRE team optimizing a customer support system powered by Azure OpenAI, Elastic’s [Azure OpenAI integration](https://www.elastic.co/guide/en/integrations/current/azure_openai.html) provides critical insights. They can quickly identify which model variants experience higher latency or error rates, enabling smarter decisions on model deployment or even switching providers based on real-time performance metrics.
 
-:::{image} ../../../images/llm-performance-reliability.png
+:::{image} /solutions/images/llm-performance-reliability.png
 :alt:  LLM performance and reliability
 :screenshot:
 :::
@@ -53,7 +53,7 @@ For an SRE team optimizing a customer support system powered by Azure OpenAI, El
 
 Consider an enterprise utilizing an OpenAI model for real-time user interactions. Encountering unexplained delays, an SRE can use OpenAI tracing to dissect the transaction pathway, identify if one specific API call or model invocation is the bottleneck, and monitor a request to see the exact prompt and response between the user and the LLM. 
 
-:::{image} ../../../images/llm-openai-applications.png
+:::{image} /solutions/images/llm-openai-applications.png
 :alt:  Troubleshoot OpenAI-powered applications
 :screenshot:
 :::
@@ -62,7 +62,7 @@ Consider an enterprise utilizing an OpenAI model for real-time user interactions
 
 For cost-sensitive deployments, being acutely aware of which LLM configurations are more cost-effective is crucial. Elastic’s dashboards, pre-configured to display model usage patterns, help mitigate unnecessary spending effectively. You can use out-of-the-box dashboards for metrics, logs, and traces.
 
-:::{image} ../../../images/llm-costs-usage-concerns.png
+:::{image} /solutions/images/llm-costs-usage-concerns.png
 :alt:  LLM cost and usage concerns
 :screenshot:
 :::
@@ -71,7 +71,7 @@ For cost-sensitive deployments, being acutely aware of which LLM configurations 
 
 With the Elastic Amazon Bedrock integration for Guardrails, SREs can swiftly address security concerns, like verifying if certain user interactions prompt policy violations. Elastic's observability logs clarify whether guardrails rightly blocked potentially harmful responses, bolstering compliance assurance.
 
-:::{image} ../../../images/llm-amazon-bedrock-guardrails.png
+:::{image} /solutions/images/llm-amazon-bedrock-guardrails.png
 :alt:  Elastic Amazon Bedrock integration for Guardrails
 :screenshot:
 :::

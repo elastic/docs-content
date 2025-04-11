@@ -27,7 +27,7 @@ The **Filter by** section controls the scope of the rule. The rule will only che
 
 ## Conditions [observability-monitor-status-alert-conditions]
 
-Conditions for each rule will be applied to all monitors that match the filters in the [**Filter by** section](../../../solutions/observability/incident-management/create-monitor-status-rule.md#observability-monitor-status-alert-filters). You can choose the number of times the monitor has to be down relative to either a number of checks run or a time range in which checks were run, and the minimum number of locations the monitor must be down in.
+Conditions for each rule will be applied to all monitors that match the filters in the [**Filter by** section](/solutions/observability/incident-management/create-monitor-status-rule.md#observability-monitor-status-alert-filters). You can choose the number of times the monitor has to be down relative to either a number of checks run or a time range in which checks were run, and the minimum number of locations the monitor must be down in.
 
 ::::{note}
 Retests are included in the number of checks.
@@ -111,7 +111,7 @@ Use the default notification message or customize it. You can add more context t
 :screenshot:
 :::
 
-The following variables are specific to this rule type. You an also specify [variables common to all rules](../../../explore-analyze/alerts-cases/alerts/rule-action-variables.md).
+The following variables are specific to this rule type. You an also specify [variables common to all rules](/explore-analyze/alerts-cases/alerts/rule-action-variables.md).
 
 `context.checkedAt`
 :   Timestamp of the monitor run.
@@ -174,7 +174,7 @@ serverless: unavailable
 
 If you are using the Uptime monitor status rule with the Uptime app, you should migrate the Uptime monitor and the Uptime monitor status rule to Elastic Synthetics and the Synthetics monitor rule.
 
-If you are using the Uptime monitor status rule with a monitor created with Elastic Synthetics, you should migrate the Uptime monitor status rule to the Synthetics monitor rule. Learn how in [Migrate from the Uptime rule to the Synthetics rule](../../../solutions/observability/incident-management/create-monitor-status-rule.md#migrate-monitor-rule).
+If you are using the Uptime monitor status rule with a monitor created with Elastic Synthetics, you should migrate the Uptime monitor status rule to the Synthetics monitor rule. Learn how in [Migrate from the Uptime rule to the Synthetics rule](/solutions/observability/incident-management/create-monitor-status-rule.md#migrate-monitor-rule).
 
 ::::
 
@@ -263,8 +263,8 @@ To receive a notification when the alert recovers, select **Run when Recovered**
 
 If you are currently using the Uptime monitor status with a monitor created with Elastic Synthetics, you should migrate the Uptime monitor status rule to:
 
-* If you were using the Uptime rule for **synthetic monitor *status* checks**, you can recreate similar functionality using the [Synthetics monitor rule](../../../solutions/observability/incident-management/create-monitor-status-rule.md#migrate-monitor-rule-synthetics-rule).
-* If you were using the Uptime rule for **synthetic monitor *availability* checks**, there is no equivalent in the Synthetics monitor rule. Instead, you can use the [Synthetics availability SLI](../../../solutions/observability/incident-management/create-monitor-status-rule.md#migrate-monitor-rule-synthetics-sli) to create similar functionality.
+* If you were using the Uptime rule for **synthetic monitor *status* checks**, you can recreate similar functionality using the [Synthetics monitor rule](/solutions/observability/incident-management/create-monitor-status-rule.md#migrate-monitor-rule-synthetics-rule).
+* If you were using the Uptime rule for **synthetic monitor *availability* checks**, there is no equivalent in the Synthetics monitor rule. Instead, you can use the [Synthetics availability SLI](/solutions/observability/incident-management/create-monitor-status-rule.md#migrate-monitor-rule-synthetics-sli) to create similar functionality.
 
 
 ### Uptime status check to Synthetics monitor rule [migrate-monitor-rule-synthetics-rule]
@@ -278,7 +278,7 @@ The KQL syntax that you used in the Uptime monitor status rule is also valid in 
 #### Conditions [monitor-status-alert-checks-conditions]
 
 ::::{note}
-If you are using the *Uptime availability condition* refer to [Uptime availability check to Synthetics availability SLI](../../../solutions/observability/incident-management/create-monitor-status-rule.md#migrate-monitor-rule-synthetics-sli).
+If you are using the *Uptime availability condition* refer to [Uptime availability check to Synthetics availability SLI](/solutions/observability/incident-management/create-monitor-status-rule.md#migrate-monitor-rule-synthetics-sli).
 
 ::::
 
@@ -293,12 +293,12 @@ If you’re using the Uptime status check condition, you can recreate similar ef
 
 #### Actions [monitor-status-alert-checks-actions]
 
-The default messages for the Uptime monitor status rule and Synthetics monitor status rule are different, but you can recreate similar messages using [Synthetics monitor status rule action variables](../../../solutions/observability/incident-management/create-monitor-status-rule.md#observability-monitor-status-alert-action-variables).
+The default messages for the Uptime monitor status rule and Synthetics monitor status rule are different, but you can recreate similar messages using [Synthetics monitor status rule action variables](/solutions/observability/incident-management/create-monitor-status-rule.md#observability-monitor-status-alert-action-variables).
 
 
 ### Uptime availability check to Synthetics availability SLI [migrate-monitor-rule-synthetics-sli]
 
-SLOs allow you to set clear, measurable targets for your service performance, based on factors like availability. The [Synthetics availability SLI](../../../solutions/observability/incident-management/create-an-slo.md#synthetics-availability-sli) is a service-level indicator (SLI) based on the availability of your synthetic monitors.
+SLOs allow you to set clear, measurable targets for your service performance, based on factors like availability. The [Synthetics availability SLI](/solutions/observability/incident-management/create-an-slo.md#synthetics-availability-sli) is a service-level indicator (SLI) based on the availability of your synthetic monitors.
 
 
 #### Filters [monitor-status-alert-checks-filters-uptime]
@@ -318,4 +318,4 @@ Use the following Synthetics availability SLI fields to replace the Uptime monit
 
 #### Actions [monitor-status-alert-checks-actions-uptime]
 
-After creating a new SLO using the Synthetics availability SLI, you can use the SLO burn rate rule. For more information about configuring the rule, see [Create an SLO burn rate rule](../../../solutions/observability/incident-management/create-an-slo-burn-rate-rule.md).
+After creating a new SLO using the Synthetics availability SLI, you can use the SLO burn rate rule. For more information about configuring the rule, see [Create an SLO burn rate rule](/solutions/observability/incident-management/create-an-slo-burn-rate-rule.md).

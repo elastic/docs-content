@@ -12,12 +12,12 @@ applies_to:
 
 Something isn’t quite working as expected? Here are some guidelines how to find out what’s going wrong. 
 
-As a first step, please check if your stack is compatible with the currently [supported technologies](apm-agent-java://reference/set-up-apm-java-agent.md#supported-technologies).
+As a first step, check if your stack is compatible with the currently [supported technologies](apm-agent-java://reference/set-up-apm-java-agent.md#supported-technologies).
 
 Don’t worry if you can’t figure out what the problem is. Open a topic in the [APM discuss forum](https://discuss.elastic.co/c/apm) and we will help you out.
 
 ::::{important}
-If you do so, **please attach your debug logs** so that we can analyze the problem. Upload the **complete** logs to a service like [https://gist.github.com](https://gist.github.com). The logs should include everything from the application startup up until the first request has been executed. In addition to agent and application logs, look for `[elastic-apm-agent]` entries in all of your service’s std out and std error logs, where we sometimes print useful information when logging is unavailable.
+If you do so, **attach your debug logs** so that we can analyze the problem. Upload the **complete** logs to a service like [https://gist.github.com](https://gist.github.com). The logs should include everything from the application startup up until the first request has been executed. In addition to agent and application logs, look for `[elastic-apm-agent]` entries in all of your service’s std out and std error logs, where we sometimes print useful information when logging is unavailable.
 ::::
 
 
@@ -53,7 +53,7 @@ Set the log level to `DEBUG` or even `TRACE` to get more information about the b
     * All data sent to apm-server is included in JSON format
 
 
-Please always post the whole content of your log files when asking for help. Use the [procedure](#trouble-shooting-logging-procedure) to ensure consistent logs when reporting potential issues.
+Always post the whole content of your log files when asking for help. Use the [procedure](#trouble-shooting-logging-procedure) to ensure consistent logs when reporting potential issues.
 
 When the agent starts up, you should see logs similar to these:
 
@@ -197,7 +197,7 @@ There are two reasons why this might happen:
     Requests reach a servlet
     :   The Agent has a *pre-filter* heuristic to only consider classes whose names end with *Servlet*. This heuristic can be disabled by setting the internal configuration `enable_type_matching_name_pre_filtering=false`.
 
-        Please note that this has an impact on all plugins. A small increase of overhead during application startup time is expected.
+        Note that this has an impact on all plugins. A small increase of overhead during application startup time is expected.
 
 
     Requests do not reach a servlet
@@ -260,12 +260,12 @@ Known issues:
 
 * When [`profiling_inferred_spans_enabled` ([1.15.0] experimental)](apm-agent-java://reference/config-profiling.md#config-profiling-inferred-spans-enabled) is set to `true`, it uses a native library that collects low-level information from the JVM. All known issues so far had been fixed. Try to disable it if you think the crash may be related. We continuously upgrade to the latest async profiler version, so upgrading your agent to the latest version may already contain a fix.
 
-Whenever you encounter a JVM crash, please report through [our forum](https://discuss.elastic.co/c/observability/apm/58) or by opening an issue on our [GitHub repository](https://github.com/elastic/apm-agent-java). Look for the crash log (e.g. an `hs_err_pid<PID>.log`) and provide it when reporting, as well as all factors describing you setup and scenario.
+Whenever you encounter a JVM crash, report through [our forum](https://discuss.elastic.co/c/observability/apm/58) or by opening an issue on our [GitHub repository](https://github.com/elastic/apm-agent-java). Look for the crash log (e.g. an `hs_err_pid<PID>.log`) and provide it when reporting, as well as all factors describing you setup and scenario.
 
 
 ### JVM Hangs [trouble-shooting-jvm-hangs]
 
-If your JVM gets hang when attaching the Java agent, please create a thread dump (e.g. through `jstack`) and report through [our forum](https://discuss.elastic.co/c/observability/apm/58) or by opening an issue on our [GitHub repository](https://github.com/elastic/apm-agent-java).
+If your JVM gets hang when attaching the Java agent, create a thread dump (e.g. through `jstack`) and report through [our forum](https://discuss.elastic.co/c/observability/apm/58) or by opening an issue on our [GitHub repository](https://github.com/elastic/apm-agent-java).
 
 
 ### Custom Java runtimes using `jlink` [trouble-shooting-jlink]

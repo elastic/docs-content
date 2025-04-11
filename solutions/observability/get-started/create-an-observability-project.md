@@ -13,7 +13,7 @@ applies_to:
 
 ::::{note}
 
-The **Admin** role or higher is required to create projects. To learn more, refer to [Assign user roles and privileges](../../../deploy-manage/users-roles/cloud-organization/manage-users.md#general-assign-user-roles).
+The **Admin** role or higher is required to create projects. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/manage-users.md#general-assign-user-roles).
 
 ::::
 
@@ -27,7 +27,7 @@ An {{obs-serverless}} project allows you to run {{obs-serverless}} in an autosca
 5. (Optional) Click **Edit settings** to change your project settings:
 
     * **Cloud provider**: The cloud platform where you’ll deploy your project. We currently support Amazon Web Services (AWS).
-    * **Region**: The [region](../../../deploy-manage/deploy/elastic-cloud/regions.md) where your project will live.
+    * **Region**: The [region](/deploy-manage/deploy/elastic-cloud/regions.md) where your project will live.
 
 6. Click **Create project**. It takes a few minutes to create your project.
 7. When the project is ready, click **Continue**.

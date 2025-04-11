@@ -116,7 +116,7 @@ The API returns:
 
 Depending on the concrete repository implementation the numbers shown for bytes free as well as the number of blobs removed will either be an approximation or an exact result. Any non-zero value for the number of blobs removed implies that unreferenced blobs were found and subsequently cleaned up.
 
-Please note that most of the cleanup operations executed by this endpoint are automatically executed when deleting any snapshot from a repository. If you regularly delete snapshots, you will in most cases not get any or only minor space savings from using this functionality and should lower your frequency of invoking it accordingly.
+Note that most of the cleanup operations executed by this endpoint are automatically executed when deleting any snapshot from a repository. If you regularly delete snapshots, you will in most cases not get any or only minor space savings from using this functionality and should lower your frequency of invoking it accordingly.
 
 ## Back up a repository [snapshots-repository-backup]
 

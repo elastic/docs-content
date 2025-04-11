@@ -27,7 +27,7 @@ In this quickstart guide, you’ll learn how to monitor your hosts using the Ela
 
 * An {{es}} cluster for storing and searching your data, and {{kib}} for visualizing and managing your data. This quickstart is available for all Elastic deployment models. The quickest way to get started with this quickstart is using a trial project on [Elastic serverless](https://docs.elastic.co/serverless/quickstart-monitor-hosts-with-otel.html).
 * This quickstart is only available for Linux and MacOS systems.
-* A user with the **Admin** role or higher—required to onboard system logs and metrics. To learn more, refer to [User roles and privileges](../../../deploy-manage/users-roles/cloud-organization/user-roles.md).
+* A user with the **Admin** role or higher—required to onboard system logs and metrics. To learn more, refer to [User roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md).
 * Root privileges on the host—required to run the OpenTelemetry collector because of these components:
 
     * `hostmetrics` receiver to read all system metrics (all processes, memory, etc.).
@@ -38,9 +38,9 @@ In this quickstart guide, you’ll learn how to monitor your hosts using the Ela
 :::{tab-item} Serverless
 :sync: serverless
 
-* An {{observability}} project. To learn more, refer to [Create an Observability project](../../../solutions/observability/get-started/create-an-observability-project.md).
+* An {{observability}} project. To learn more, refer to [Create an Observability project](/solutions/observability/get-started/create-an-observability-project.md).
 * This quickstart is only available for Linux and MacOS systems.
-* A user with the **Admin** role or higher—required to onboard system logs and metrics. To learn more, refer to [Assign user roles and privileges](../../../deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
+* A user with the **Admin** role or higher—required to onboard system logs and metrics. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
 * Root privileges on the host—required to run the OpenTelemetry collector because of these components:
 
     * `hostmetrics` receiver to read all system metrics (all processes, memory, etc.).
@@ -94,7 +94,7 @@ Logs are collected from setup onward, so you won’t see logs that occurred befo
 ::::{tab-item} Serverless
 :sync: serverless
 
-1. [Create a new {{obs-serverless}} project](../../../solutions/observability/get-started/create-an-observability-project.md), or open an existing one.
+1. [Create a new {{obs-serverless}} project](/solutions/observability/get-started/create-an-observability-project.md), or open an existing one.
 2. To open the quickstart, go to **Add Data**.
 3. Select **Collect and analyze logs**, and then select **OpenTelemetry**.
 4. Under **What do you want to monitor?** select **Host**, and then select **Elastic Agent: Logs & Metrics**.
@@ -125,22 +125,22 @@ Under **Visualize your data**, you’ll see links to **Discover** to view your l
 
 After using the Hosts page and Discover to confirm you’ve ingested all the host logs and metrics you want to monitor, use Elastic {{observability}} to gain deeper insight into your host data with the following capabilities and features:
 
-* In the [Infrastructure UI](../../../solutions/observability/infra-and-hosts/analyze-infrastructure-host-metrics.md), analyze and compare data collected from your hosts. You can also:
+* In the [Infrastructure UI](/solutions/observability/infra-and-hosts/analyze-infrastructure-host-metrics.md), analyze and compare data collected from your hosts. You can also:
 
-    * [Detect anomalies](../../../solutions/observability/infra-and-hosts/detect-metric-anomalies.md) for memory usage and network traffic on hosts.
-    * [Create alerts](../../../solutions/observability/incident-management/create-manage-rules.md) that notify you when an anomaly is detected or a metric exceeds a given value.
+    * [Detect anomalies](/solutions/observability/infra-and-hosts/detect-metric-anomalies.md) for memory usage and network traffic on hosts.
+    * [Create alerts](/solutions/observability/incident-management/create-manage-rules.md) that notify you when an anomaly is detected or a metric exceeds a given value.
 
-* In [Discover](../../../solutions/observability/logs/discover-logs.md), search and filter your log data, get information about the structure of log fields, and display your findings in a visualization. You can also:
+* In [Discover](/solutions/observability/logs/discover-logs.md), search and filter your log data, get information about the structure of log fields, and display your findings in a visualization. You can also:
 
-    * [Monitor log data set quality](../../../solutions/observability/data-set-quality-monitoring.md) to find degraded documents.
-    * [Run a pattern analysis](../../../explore-analyze/machine-learning/machine-learning-in-kibana/xpack-ml-aiops.md#log-pattern-analysis) to find patterns in unstructured log messages.
-    * [Create alerts](../../../solutions/observability/incident-management/create-manage-rules.md) that notify you when an Observability data type reaches or exceeds a given value.
+    * [Monitor log data set quality](/solutions/observability/data-set-quality-monitoring.md) to find degraded documents.
+    * [Run a pattern analysis](/explore-analyze/machine-learning/machine-learning-in-kibana/xpack-ml-aiops.md#log-pattern-analysis) to find patterns in unstructured log messages.
+    * [Create alerts](/solutions/observability/incident-management/create-manage-rules.md) that notify you when an Observability data type reaches or exceeds a given value.
 
-* Use [machine learning](../../../explore-analyze/machine-learning/machine-learning-in-kibana.md) to apply predictive analytics to your data:
+* Use [machine learning](/explore-analyze/machine-learning/machine-learning-in-kibana.md) to apply predictive analytics to your data:
 
-    * [Detect anomalies](../../../explore-analyze/machine-learning/anomaly-detection.md) by comparing real-time and historical data from different sources to look for unusual, problematic patterns.
-    * [Analyze log spikes and drops](../../../explore-analyze/machine-learning/machine-learning-in-kibana/xpack-ml-aiops.md#log-rate-analysis).
-    * [Detect change points](../../../explore-analyze/machine-learning/machine-learning-in-kibana/xpack-ml-aiops.md#change-point-detection) in your time series data.
+    * [Detect anomalies](/explore-analyze/machine-learning/anomaly-detection.md) by comparing real-time and historical data from different sources to look for unusual, problematic patterns.
+    * [Analyze log spikes and drops](/explore-analyze/machine-learning/machine-learning-in-kibana/xpack-ml-aiops.md#log-rate-analysis).
+    * [Detect change points](/explore-analyze/machine-learning/machine-learning-in-kibana/xpack-ml-aiops.md#change-point-detection) in your time series data.
 
 
-Refer to the [Elastic Observability](../../../solutions/observability.md) for a description of other useful features.
+Refer to the [Elastic Observability](/solutions/observability.md) for a description of other useful features.

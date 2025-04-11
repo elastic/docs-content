@@ -261,7 +261,7 @@ $$$azure-integration-migrate$$$How do I migrate my data from the classic Azure m
 
 
 $$$azure-integration-no-inbox$$$Can I invite users to my organization, even if they cannot receive emails?
-:   You can add Azure users as members of your organization even if they don’t have an inbox. Please reach out to Elastic support.
+:   You can add Azure users as members of your organization even if they don’t have an inbox. Reach out to Elastic support.
 
 
 ## Billing [ec-azure-integration-billing-faq]
@@ -510,7 +510,7 @@ Mimicking this metadata by manually adding tags to an {{ecloud}} deployment will
 
 $$$azure-integration-logs-not-ingested$$$My {{ecloud}} Azure Native ISV Service logs are not being ingested.
 :   * When you set up monitoring for your Azure services, if your Azure and Elastic resources are in different subscriptions, you need to make sure that the `Microsoft.Elastic` resource provider is registered in the subscription in which the Azure resources exist. Check [How do I monitor my existing Azure services?](#azure-integration-monitor) for details.
-* If you are using [IP or Private Link traffic filters](../../security/traffic-filtering.md), please reach out to [the Elastic Support Team](#azure-integration-support).
+* If you are using [IP or Private Link traffic filters](../../security/traffic-filtering.md), reach out to [the Elastic Support Team](#azure-integration-support).
 
 
 

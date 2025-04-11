@@ -195,7 +195,7 @@ Your results should be similar to the following:
 Index setup finished.
 Loading dashboards (Kibana must be running and reachable)
 Loaded dashboards
-Setting up ML using setup --machine-learning is going to be removed in 8.0.0. Please use the ML app instead.
+Setting up ML using setup --machine-learning is going to be removed in 8.0.0. Use the ML app instead.
 See more: /explore-analyze/machine-learning.md
 Loaded machine learning job configurations
 Loaded Ingest pipelines
