@@ -23,7 +23,7 @@ Validating webhooks are defined using a `ValidatingWebhookConfiguration` object 
 * Failure policy if the webhook is unavailable (block the operation or continue without validation)
 
 
-## Defaults provided by ECK [k8s-webhook-defaults] 
+## Defaults provided by ECK [k8s-webhook-defaults]
 
 When using the default `operator.yaml` manifest, ECK is installed with a `ValidatingWebhookConfiguration` configured as follows:
 
@@ -32,12 +32,12 @@ When using the default `operator.yaml` manifest, ECK is installed with a `Valida
 * The operator generates a certificate for the webhook and stores it in a secret named `elastic-webhook-server-cert` in the `elastic-system` namespace. This certificate is automatically rotated by the operator when it is due to expire.
 
 
-## Manual configuration [k8s-webhook-manual-config] 
+## Manual configuration [k8s-webhook-manual-config]
 
 If you installed ECK without the webhook and want to enable it later on, or if you want to customise the configuration such as providing your own certificates, this section describes the options available to you.
 
 
-### Configuration options [k8s-webhook-config-options] 
+### Configuration options [k8s-webhook-config-options]
 
 You can customise almost all aspects of the webhook setup by changing the [operator configuration](configure-eck.md).
 
@@ -51,7 +51,7 @@ You can customise almost all aspects of the webhook setup by changing the [opera
 | `webhook-port` | 9443 | Port to listen for incoming validation requests. |
 
 
-### Using your own certificates [k8s-webhook-existing-certs] 
+### Using your own certificates [k8s-webhook-existing-certs]
 
 This section describes how you can use your own certificates for the webhook instead of letting the operator manage them automatically. There are a few important things to be aware of when going down this route:
 
@@ -60,7 +60,7 @@ This section describes how you can use your own certificates for the webhook ins
 * You must update the `caBundle` fields in the `ValidatingWebhookConfiguration` yourself. This must be done at the beginning and whenever the certificate is rotated.
 
 
-#### Use a certificate signed by your own CA [k8s-webhook-own-ca] 
+#### Use a certificate signed by your own CA [k8s-webhook-own-ca]
 
 * The certificate must have a Subject Alternative Name (SAN) of the form `<service_name>.<namespace>.svc` (for example `elastic-webhook-server.elastic-system.svc`). A typical OpenSSL command to generate such a certificate would be as follows:
 
@@ -81,7 +81,7 @@ This section describes how you can use your own certificates for the webhook ins
     * Set `webhook-secret` to the name of the secret you have just created (`elastic-webhook-server-custom-cert`)
 
 
-::::{note} 
+::::{note}
 If you are using the [Helm chart installation method](install-using-helm-chart.md), you can install the operator by running this command:
 
 ```sh
@@ -95,7 +95,7 @@ helm install elastic-operator elastic/eck-operator -n elastic-system --create-na
 
 
 
-#### Use a certificate from cert-manager [k8s-webhook-cert-manager] 
+#### Use a certificate from cert-manager [k8s-webhook-cert-manager]
 
 This section describes how to use [cert-manager](https://cert-manager.io/) to manage the webhook certificate. It assumes that there is a `ClusterIssuer` named `self-signing-issuer` available.
 
@@ -138,7 +138,7 @@ This section describes how to use [cert-manager](https://cert-manager.io/) to ma
     * Set `webhook-secret` to the name of the certificate secret (`elastic-webhook-server-cert`)
 
 
-::::{note} 
+::::{note}
 If you are using the [Helm chart installation method](install-using-helm-chart.md), you can install the operator by running the following command:
 
 ```sh
@@ -152,7 +152,7 @@ helm install elastic-operator elastic/eck-operator -n elastic-system --create-na
 
 
 
-## Disable the webhook [k8s-disable-webhook] 
+## Disable the webhook [k8s-disable-webhook]
 
 To disable the webhook, set the [`enable-webhook`](configure-eck.md) operator configuration flag to `false` and remove the `ValidatingWebhookConfiguration` named `elastic-webhook.k8s.elastic.co`:
 
@@ -161,12 +161,12 @@ kubectl delete validatingwebhookconfigurations.admissionregistration.k8s.io elas
 ```
 
 
-## Troubleshooting [k8s-webhook-troubleshooting] 
+## Troubleshooting [k8s-webhook-troubleshooting]
 
 You might get errors in your Kubernetes API server logs indicating that it cannot reach the operator service (`elastic-webhook-server`). This could be because no operator pods are available to handle request or because a network policy or a firewall rule is preventing the control plane from accessing the service. To help with troubleshooting, you can change the [`failurePolicy`](https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/#failure-policy) of the webhook configuration to `Fail`. This will cause create or update operations to fail if there is an error contacting the webhook. Usually the error message will contain helpful information about the failure that will allow you to diagnose the root cause.
 
 
-### Resource creation taking too long or timing out [k8s-webhook-troubleshooting-timeouts] 
+### Resource creation taking too long or timing out [k8s-webhook-troubleshooting-timeouts]
 
 Webhooks require network connectivity between the Kubernetes API server and the operator. If the creation of an {{es}} resource times out with an error message similar to the following, then the Kubernetes API server might be unable to connect to the webhook to validate the manifest.
 
@@ -228,10 +228,10 @@ spec:
 ```
 
 
-### Updates failing due to validation errors [k8s-webhook-troubleshooting-validation-failure] 
+### Updates failing due to validation errors [k8s-webhook-troubleshooting-validation-failure]
 
 If your attempts to update a resource fail with an error message similar to the following, you can force the webhook to ignore it by removing the `kubectl.kubernetes.io/last-applied-configuration` annotation from your resource.
 
-```
+```txt subs=true
 admission webhook "elastic-es-validation-v1.k8s.elastic.co" denied the request: {{es}}.elasticsearch.k8s.elastic.co "quickstart" is invalid: some-misspelled-field: Invalid value: "some-misspelled-field": some-misspelled-field field found in the kubectl.kubernetes.io/last-applied-configuration annotation is unknown
 ```

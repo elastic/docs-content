@@ -85,7 +85,7 @@ By default, the health API runs at a regular cadence, and each time it runs, it 
 
 This message looks like:
 
-```txt
+```txt subs=true
 Detected potential performance issue with Task Manager. Set 'xpack.task_manager.monitored_stats_health_verbose_log.enabled: true' in your {{kib}}.yml to enable debug logging`
 ```
 

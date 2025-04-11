@@ -924,7 +924,7 @@ For details on scaling Task Manager, see [Scaling guidance](../../deploy-manage/
 Tasks are not running, and the server logs contain the following error message:
 
 ```txt
-[warning][plugins][taskManager] Task Manager cannot operate when inline scripts are disabled in {{es}}
+[warning][plugins][taskManager] Task Manager cannot operate when inline scripts are disabled in Elasticsearch
 ```
 
 **Solution**:

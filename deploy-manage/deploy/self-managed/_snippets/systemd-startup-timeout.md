@@ -14,11 +14,11 @@ Versions of `systemd` prior to 238 do not support the timeout extension mechanis
 However the `systemd` logs will report that the startup timed out:
 
 ```text
-Jan 31 01:22:30 debian systemd[1]: Starting {{es}}...
+Jan 31 01:22:30 debian systemd[1]: Starting Elasticsearch...
 Jan 31 01:37:15 debian systemd[1]: elasticsearch.service: Start operation timed out. Terminating.
 Jan 31 01:37:15 debian systemd[1]: elasticsearch.service: Main process exited, code=killed, status=15/TERM
 Jan 31 01:37:15 debian systemd[1]: elasticsearch.service: Failed with result 'timeout'.
-Jan 31 01:37:15 debian systemd[1]: Failed to start {{es}}.
+Jan 31 01:37:15 debian systemd[1]: Failed to start Elasticsearch.
 ```
 
 To avoid this, upgrade your `systemd` to at least version 238. You can also temporarily work around the problem by extending the `TimeoutStartSec` parameter.

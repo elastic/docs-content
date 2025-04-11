@@ -99,14 +99,13 @@ When security is enabled, you grant users access to {{report-features}} with [{{
         If you have a Basic license, sub-feature privileges are unavailable.
         :::
 
+        :::{note}
+        If the **Reporting** options for application features are unavailable, and the cluster license is higher than Basic, contact your administrator.
+        :::
 
         :::{image} /deploy-manage/images/kibana-kibana-privileges-with-reporting.png
         :alt: {{kib}} privileges with Reporting options, Gold or higher license
         :screenshot:
-        :::
-
-        :::{note}
-        If the **Reporting** options for application features are unavailable, and the cluster license is higher than Basic, contact your administrator.
         :::
 
     5. Click **Add {{kib}} privilege**.

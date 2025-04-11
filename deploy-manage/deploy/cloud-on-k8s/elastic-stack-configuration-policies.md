@@ -294,7 +294,7 @@ kubectl get -n b scp test-err-stack-config-policy -o jsonpath="{.status}" | jq .
 Important events are also reported through Kubernetes events, such as when two config policies conflict or you don’t have the appropriate license:
 
 ```sh
-54s    Warning   Unexpected          stackconfigpolicy/config-test   conflict: resource {{es}} ns1/cluster-a already configured by StackConfigpolicy default/config-test-2
+54s    Warning   Unexpected          stackconfigpolicy/config-test   conflict: resource Elasticsearch ns1/cluster-a already configured by StackConfigpolicy default/config-test-2
 ```
 
 ```sh

@@ -43,7 +43,7 @@ To review and modify existing **{{stack-monitor-app}}** rules, click **Enter set
 Alternatively, to manage all rules, including create and delete functionality go to **{{stack-manage-app}} > {{rules-ui}}**.
 :::
 
-1. On any card showing available alerts, select the **alerts** indicator. Use the menu to select the type of alert for which you’d like to be notified. 
+1. On any card showing available alerts, select the **alerts** indicator. Use the menu to select the type of alert for which you’d like to be notified.
 2. In the **Edit rule** pane, set how often to check for the condition and how often to send notifications.
 3. In the **Actions** section, select the connector that you'd like to use for notifications.
 4. Configure the connector message contents and select **Save**.
@@ -52,70 +52,70 @@ Alternatively, to manage all rules, including create and delete functionality go
 
 The following rules are [preconfigured](#_create_default_rules) for stack monitoring.
 
-:::{dropdown} CPU usage threshold 
+:::{dropdown} CPU usage threshold
 
 $$$kibana-alerts-cpu-threshold$$$
 
-This rule checks for {{es}} nodes that run a consistently high CPU load. 
+This rule checks for {{es}} nodes that run a consistently high CPU load.
 
 By default, the condition is set at 85% or more averaged over the last 5 minutes. The default rule checks on a schedule time of 1 minute with a re-notify interval of 1 day.
 :::
 
-:::{dropdown} Disk usage threshold 
+:::{dropdown} Disk usage threshold
 
 $$$kibana-alerts-disk-usage-threshold$$$
 
-This rule checks for {{es}} nodes that are nearly at disk capacity. 
+This rule checks for {{es}} nodes that are nearly at disk capacity.
 
 By default, the condition is set at 80% or more averaged over the last 5 minutes. The default rule checks on a schedule time of 1 minute with a re-notify interval of 1 day.
 :::
 
-:::{dropdown} JVM memory threshold 
+:::{dropdown} JVM memory threshold
 
 $$$kibana-alerts-jvm-memory-threshold$$$
 
-This rule checks for {{es}} nodes that use a high amount of JVM memory. 
+This rule checks for {{es}} nodes that use a high amount of JVM memory.
 
 By default, the condition is set at 85% or more averaged over the last 5 minutes. The default rule checks on a schedule time of 1 minute with a re-notify interval of 1 day.
 :::
 
-:::{dropdown} Missing monitoring data 
+:::{dropdown} Missing monitoring data
 
 $$$kibana-alerts-missing-monitoring-data$$$
 
-This rule checks for {{es}} nodes that stop sending monitoring data. 
+This rule checks for {{es}} nodes that stop sending monitoring data.
 
 By default, the condition is set to missing for 15 minutes looking back 1 day. The default rule checks on a schedule time of 1 minute with a re-notify interval of 6 hours.
 :::
 
-:::{dropdown} Thread pool rejections (search/write) 
+:::{dropdown} Thread pool rejections (search/write)
 
 $$$kibana-alerts-thread-pool-rejections$$$
 
-This rule checks for {{es}} nodes that experience thread pool rejections. 
+This rule checks for {{es}} nodes that experience thread pool rejections.
 
 By default, the condition is set at 300 or more over the last 5 minutes. The default rule checks on a schedule time of 1 minute with a re-notify interval of 1 day. Thresholds can be set independently for `search` and `write` type rejections.
 :::
 
-:::{dropdown} CCR read exceptions 
+:::{dropdown} CCR read exceptions
 
 $$$kibana-alerts-ccr-read-exceptions$$$
 
-This rule checks for read exceptions on any of the replicated {{es}} clusters. 
+This rule checks for read exceptions on any of the replicated {{es}} clusters.
 
 The condition is met if 1 or more read exceptions are detected in the last hour. The default rule checks on a schedule time of 1 minute with a re-notify interval of 6 hours.
 :::
 
-:::{dropdown} Large shard size 
+:::{dropdown} Large shard size
 
 $$$kibana-alerts-large-shard-size$$$
 
-This rule checks for a large average shard size (across associated primaries) on any of the specified data views in an {{es}} cluster. 
+This rule checks for a large average shard size (across associated primaries) on any of the specified data views in an {{es}} cluster.
 
 The condition is met if an index’s average shard size is 55gb or higher in the last 5 minutes. The default rule matches the pattern of `-.*` by running checks on a schedule time of 1 minute with a re-notify interval of 12 hours.
 :::
 
-::::{dropdown} Cluster alerting 
+::::{dropdown} Cluster alerting
 
 $$$kibana-alerts-cluster-alerts$$$
 
@@ -142,6 +142,6 @@ An action is triggered if any of the following conditions are met within the las
   The 60-day and 30-day thresholds are skipped for Trial licenses, which are only valid for 30 days.
 
 :::{note}
-For the `{{es}} nodes changed` alert, if you have only one master node in your cluster, during the master node vacate no notification will be sent. {{kib}} needs to communicate with the master node in order to send a notification. One way to avoid this is by shipping your deployment metrics to a dedicated monitoring cluster.
+For the `Elasticsearch nodes changed` alert, if you have only one master node in your cluster, during the master node vacate no notification will be sent. {{kib}} needs to communicate with the master node in order to send a notification. One way to avoid this is by shipping your deployment metrics to a dedicated monitoring cluster.
 :::
 ::::

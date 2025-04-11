@@ -262,7 +262,7 @@ Response:
 ::::{note}
 If you are using Azure Private Link together with Fleet, and enrolling the Elastic Agent with a Private Link URL, you need to configure Fleet Server to use and propagate the Private Link URL by updating the **Fleet Server hosts** field in the **Fleet settings** section of {{kib}}. Otherwise, Elastic Agent will reset to use a default address instead of the Private Link URL. The URL needs to follow this pattern: `https://<Fleet component ID/deployment alias>.fleet.<Private hosted zone domain name>:443`.
 
-Similarly, the {{es}} host needs to be updated to propagate the Private Link URL. The {{es}} URL needs to follow this pattern: `https://<{{es}} cluster ID/deployment alias>.es.<Private hosted zone domain name>:443`.
+Similarly, the {{es}} host needs to be updated to propagate the Private Link URL. The {{es}} URL needs to follow this pattern: `https://<Elasticsearch cluster ID/deployment alias>.es.<Private hosted zone domain name>:443`.
 
 ::::
 

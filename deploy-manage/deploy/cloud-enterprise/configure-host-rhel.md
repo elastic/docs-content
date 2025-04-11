@@ -72,7 +72,7 @@ Verify that required traffic is allowed. Check the [Networking prerequisites](ec
         ```
 
 4. Install Podman:
-    
+
     * For Podman 4
 
         * Install the latest available version `4.*` using dnf.
@@ -322,7 +322,7 @@ Verify that required traffic is allowed. Check the [Networking prerequisites](ec
     vm.max_map_count=262144
     # enable forwarding so the Docker networking works as expected
     net.ipv4.ip_forward=1
-    # Decrease the maximum number of TCP retransmissions to 5 as recommended for {{es}} TCP retransmission timeout.
+    # Decrease the maximum number of TCP retransmissions to 5 as recommended for Elasticsearch TCP retransmission timeout.
     # See /deploy-manage/deploy/self-managed/system-config-tcpretries.md
     net.ipv4.tcp_retries2=5
     # Make sure the host doesn't swap too early

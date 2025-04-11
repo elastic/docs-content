@@ -55,7 +55,7 @@ You have several options for installing the {{es}} RPM package:
 
 Create a file called `elasticsearch.repo` in the `/etc/yum.repos.d/` directory for RedHat based distributions, or in the `/etc/zypp/repos.d/` directory for OpenSuSE based distributions, containing:
 
-```ini
+```ini subs=true
 [elasticsearch]
 name={{es}} repository for 9.x packages
 baseurl=https://artifacts.elastic.co/packages/9.x/yum

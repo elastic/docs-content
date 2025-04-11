@@ -159,7 +159,7 @@ You must use XFS and have quotas enabled on all allocators, otherwise disk usage
     vm.max_map_count=262144
     # enable forwarding so the Docker networking works as expected
     net.ipv4.ip_forward=1
-    # Decrease the maximum number of TCP retransmissions to 5 as recommended for {{es}} TCP retransmission timeout.
+    # Decrease the maximum number of TCP retransmissions to 5 as recommended for Elasticsearch TCP retransmission timeout.
     # See https://www.elastic.co/guide/en/elasticsearch/reference/current/system-config-tcpretries.html
     net.ipv4.tcp_retries2=5
     # Make sure the host doesn't swap too early

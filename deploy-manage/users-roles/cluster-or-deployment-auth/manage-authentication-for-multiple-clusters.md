@@ -327,7 +327,7 @@ spec:
 
 ```yaml
 apiVersion: elasticsearch.k8s.elastic.co/v1
-kind: {{es}}
+kind: Elasticsearch
 metadata:
   name: quickstart
   namespace: kvalliy

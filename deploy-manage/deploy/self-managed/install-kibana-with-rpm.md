@@ -43,7 +43,7 @@ You have the following options for installing the {{es}} RPM package:
 
 Create a file called `kibana.repo` in the `/etc/yum.repos.d/` directory for RedHat based distributions, or in the `/etc/zypp/repos.d/` directory for OpenSuSE based distributions, containing:
 
-```sh
+```sh subs=true
 [kibana-9.X]
 name={{kib}} repository for 9.x packages
 baseurl=https://artifacts.elastic.co/packages/9.x/yum

@@ -110,8 +110,8 @@ You can install {{es}} as a service that runs in the background or starts automa
     ```sh subs=true
     C:\Program Files\elasticsearch-{{stack-version}}\bin>elasticsearch-service.bat install
     ```
-    
-    Response: 
+
+    Response:
     ```
     Installing service      :  "elasticsearch-service-x64"
     Using ES_JAVA_HOME (64-bit):  "C:\jvm\jdk1.8"
@@ -183,8 +183,8 @@ The {{es}} service can be configured prior to installation by setting the follow
 | `SERVICE_ID` | A unique identifier for the service. Useful if installing multiple instances on the same machine. Defaults to `elasticsearch-service-x64`. |
 | `SERVICE_USERNAME` | The user to run as, defaults to the local system account. |
 | `SERVICE_PASSWORD` | The password for the user specified in `%SERVICE_USERNAME%`. |
-| `SERVICE_DISPLAY_NAME` | The name of the service. Defaults to `{{es}}<version> %SERVICE_ID%`. |
-| `SERVICE_DESCRIPTION` | The description of the service. Defaults to `{{es}}<version> Windows Service - https://elastic.co`. |
+| `SERVICE_DISPLAY_NAME` | The name of the service. Defaults to `Elasticsearch<version> %SERVICE_ID%`. |
+| `SERVICE_DESCRIPTION` | The description of the service. Defaults to `Elasticsearch<version> Windows Service - https://elastic.co`. |
 | `ES_JAVA_HOME` | The installation directory of the desired JVM to run the service under. |
 | `SERVICE_LOG_DIR` | Service log directory, defaults to `%ES_HOME%\logs`. Note that this does not control the path for the {{es}} logs; the path for these is set via the setting `path.logs` in the `elasticsearch.yml` configuration file, or on the command line. |
 | `ES_PATH_CONF` | Configuration file directory (which needs to include `elasticsearch.yml`, `jvm.options`, and `log4j2.properties` files), defaults to `%ES_HOME%\config`. |

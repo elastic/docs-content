@@ -160,7 +160,7 @@ Now that you know how to use the APM keystore and customize the server configura
             secret:
               defaultMode: 420
               optional: false
-              secretName: es-ca # This is the secret that holds the {{es}} CA cert
+              secretName: es-ca # This is the secret that holds the Elasticsearch CA cert
     ```
 
 
