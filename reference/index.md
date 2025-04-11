@@ -60,13 +60,13 @@ Extend the functionality of your Elastic Stack with a variety of plugins. From a
 
 **Learn more in [Plugins](elasticsearch://reference/elasticsearch-plugins/index.md)**
 
-## Query Languages
+## Query languages
 
 Master data querying with our comprehensive guides on QueryDSL, ES|QL, SQL, EQL, and Kibana Query Language. 
 
 **Learn more in [Query languages](elasticsearch://reference/query-languages/index.md)**
 
-## Scripting Languages
+## Scripting languages
 
 Access syntax references, function libraries, and best practices for Painless scripting.
 
