@@ -194,7 +194,7 @@ redirects:
   'solutions/observability/apps/configure-settings.md': 'solutions/observability/uptime/configure-settings.md'
   'solutions/observability/apps/tutorial-monitor-java-application.md': 'solutions/observability/applications/tutorial-monitor-java-application.md'
 
-# Related to https://github.com/elastic/docs-content/pull/
+# Related to https://github.com/elastic/docs-content/pull/1108
   'troubleshoot/elasticsearch/elasticsearch-client-java-api-client/apache-errors.md': 'troubleshoot/elasticsearch/clients.md'
   'troubleshoot/elasticsearch/elasticsearch-client-java-api-client/error-no-such-method.md': 'troubleshoot/elasticsearch/clients.md'
   'troubleshoot/elasticsearch/elasticsearch-client-java-api-client/java.md': 'troubleshoot/elasticsearch/clients.md'
