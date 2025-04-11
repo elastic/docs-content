@@ -54,12 +54,12 @@ For logs that with an existing field being used to represent the service name, m
 7. Under **Field path**, select the existing field you want to map to the service name.
 8. Select **Add field**.
 
-For more ways to add a field to your mapping, refer to [add a field to an existing mapping](../../../manage-data/data-store/mapping/explicit-mapping.md#add-field-mapping).
+For more ways to add a field to your mapping, refer to [add a field to an existing mapping](/manage-data/data-store/mapping/explicit-mapping.md#add-field-mapping).
 
 
 ## Additional ways to process data [observability-add-logs-service-name-additional-ways-to-process-data]
 
 The {{stack}} provides additional ways to process your data:
 
-* **[Ingest pipelines](../../../manage-data/ingest/transform-enrich/ingest-pipelines.md):** convert data to ECS, normalize field data, or enrich incoming data.
+* **[Ingest pipelines](/manage-data/ingest/transform-enrich/ingest-pipelines.md):** convert data to ECS, normalize field data, or enrich incoming data.
 * **[Logstash](https://www.elastic.co/guide/en/logstash/current):** enrich your data using input, output, and filter plugins.

@@ -199,7 +199,6 @@ APM Server provides a command line interface for creating, retrieving, invalidat
         | `manage_own_api_key` | Allow APM Server to create, retrieve, and invalidate API keys |
 
     2. Depending on what the **API key role** will be used for, also assign the appropriate `apm` application-level privileges:
-
         * To **receive Agent configuration**, assign `config_agent:read`.
         * To **ingest agent data**, assign `event:write`.
         * To **upload source maps**, assign `sourcemap:write`.

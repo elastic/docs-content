@@ -8,7 +8,7 @@ mapped_pages:
 
 ::::{note}
 
-**For Observability serverless projects**, the **Editor** role or higher is required to create and manage rules for alerting. To learn more, refer to [Assign user roles and privileges](../../../deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
+**For Observability serverless projects**, the **Editor** role or higher is required to create and manage rules for alerting. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
 
 ::::
 
@@ -24,17 +24,17 @@ Learn more about Observability rules and how to create them:
 
 | Rule type | Name | Detects when…​ |
 | --- | --- | --- |
-| AIOps | [Anomaly detection](../../../solutions/observability/incident-management/create-an-apm-anomaly-rule.md) | Anomalies match specific conditions. |
-| APM | [APM anomaly](../../../solutions/observability/incident-management/create-an-apm-anomaly-rule.md) | The latency, throughput, or failed transaction rate of a service is abnormal. |
-| Observability | [Custom threshold](../../../solutions/observability/incident-management/create-an-apm-anomaly-rule.md) | An Observability data type reaches or exceeds a given value. |
-| Stack | [{{es}} query](../../../solutions/observability/incident-management/create-an-elasticsearch-query-rule.md) | Matches are found during the latest query run. |
-| APM | [Error count threshold](../../../solutions/observability/incident-management/create-an-error-count-threshold-rule.md) | The number of errors in a service exceeds a defined threshold. |
-| APM | [Failed transaction rate threshold](../../../solutions/observability/incident-management/create-failed-transaction-rate-threshold-rule.md) | The rate of transaction errors in a service exceeds a defined threshold. |
-| Metrics | [Inventory](../../../solutions/observability/incident-management/create-an-inventory-rule.md) | The infrastructure inventory exceeds a defined threshold. |
-| Logs | [Log threshold](../../../solutions/observability/incident-management/create-log-threshold-rule.md) | An Observability data type reaches or exceeds a given value. |
-| Metrics | [Metric threshold](../../../solutions/observability/incident-management/create-metric-threshold-rule.md)| An Observability data type reaches or exceeds a given value. |
-| APM | [Latency threshold](../../../solutions/observability/incident-management/create-latency-threshold-rule.md) | The latency of a specific transaction type in a service exceeds a defined threshold. |
-| SLO | [SLO burn rate rule](../../../solutions/observability/incident-management/create-an-slo-burn-rate-rule.md) | The burn rate is above a defined threshold. |
+| AIOps | [Anomaly detection](/solutions/observability/incident-management/create-an-apm-anomaly-rule.md) | Anomalies match specific conditions. |
+| APM | [APM anomaly](/solutions/observability/incident-management/create-an-apm-anomaly-rule.md) | The latency, throughput, or failed transaction rate of a service is abnormal. |
+| Observability | [Custom threshold](/solutions/observability/incident-management/create-an-apm-anomaly-rule.md) | An Observability data type reaches or exceeds a given value. |
+| Stack | [{{es}} query](/solutions/observability/incident-management/create-an-elasticsearch-query-rule.md) | Matches are found during the latest query run. |
+| APM | [Error count threshold](/solutions/observability/incident-management/create-an-error-count-threshold-rule.md) | The number of errors in a service exceeds a defined threshold. |
+| APM | [Failed transaction rate threshold](/solutions/observability/incident-management/create-failed-transaction-rate-threshold-rule.md) | The rate of transaction errors in a service exceeds a defined threshold. |
+| Metrics | [Inventory](/solutions/observability/incident-management/create-an-inventory-rule.md) | The infrastructure inventory exceeds a defined threshold. |
+| Logs | [Log threshold](/solutions/observability/incident-management/create-log-threshold-rule.md) | An Observability data type reaches or exceeds a given value. |
+| Metrics | [Metric threshold](/solutions/observability/incident-management/create-metric-threshold-rule.md)| An Observability data type reaches or exceeds a given value. |
+| APM | [Latency threshold](/solutions/observability/incident-management/create-latency-threshold-rule.md) | The latency of a specific transaction type in a service exceeds a defined threshold. |
+| SLO | [SLO burn rate rule](/solutions/observability/incident-management/create-an-slo-burn-rate-rule.md) | The burn rate is above a defined threshold. |
 
 
 ## Creating rules and alerts [observability-create-manage-rules-creating-rules-and-alerts]
@@ -42,7 +42,7 @@ Learn more about Observability rules and how to create them:
 You start by defining the rule and how often it should be evaluated. You can extend these rules by adding an appropriate action (for example, send an email or create an issue) to be triggered when the rule conditions are met. These actions are defined within each rule and implemented by the appropriate connector for that action e.g. Slack, Jira. You can create any rules from scratch using the **Manage Rules** page, or you can create specific rule types from their respective UIs and benefit from some of the details being pre-filled (for example, Name and Tags).
 
 * For APM alert types, you can select **Alerts and rules** and create rules directly from the **Services**, **Traces**, and **Dependencies** UIs.
-* For SLO alert types, from the **SLOs** page open the **More actions** menu ![action menu](/solutions/images/serverless-boxesHorizontal.svg "") for an SLO and select **Create new alert rule**. Alternatively, when you create a new SLO, the **Create new SLO burn rate alert rule** checkbox is enabled by default and will prompt you to [Create SLO burn rate rule](../../../solutions/observability/incident-management/create-an-slo-burn-rate-rule.md) upon saving the SLO.
+* For SLO alert types, from the **SLOs** page open the **More actions** menu ![action menu](/solutions/images/serverless-boxesHorizontal.svg "") for an SLO and select **Create new alert rule**. Alternatively, when you create a new SLO, the **Create new SLO burn rate alert rule** checkbox is enabled by default and will prompt you to [Create SLO burn rate rule](/solutions/observability/incident-management/create-an-slo-burn-rate-rule.md) upon saving the SLO.
 
 After a rule is created, you can open the **More actions** menu ![More actions](/solutions/images/serverless-boxesHorizontal.svg "") and select **Edit rule** to check or change the definition, and/or add or modify actions.
 
@@ -89,11 +89,11 @@ When you snooze a rule, the rule checks continue to run on a schedule but the al
 
 When a rule is in a snoozed state, you can cancel or change the duration of this state.
 
-To temporarily suppress notifications for *all* rules, create a [maintenance window](../../../explore-analyze/alerts-cases/alerts/maintenance-windows.md).
+To temporarily suppress notifications for *all* rules, create a [maintenance window](/explore-analyze/alerts-cases/alerts/maintenance-windows.md).
 
 
 ## Import and export rules [observability-create-manage-rules-import-and-export-rules]
 
-To import and export rules, use [{{saved-objects-app}}](../../../explore-analyze/find-and-organize.md).
+To import and export rules, use [{{saved-objects-app}}](/explore-analyze/find-and-organize.md).
 
 Rules are disabled on export. You are prompted to re-enable the rule on successful import.
