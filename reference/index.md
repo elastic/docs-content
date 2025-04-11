@@ -30,11 +30,11 @@ Access detailed reference documentation on field and object schemas as well as t
 
 **Learn more in [Observability](observability/index.md)**
 
-## Search
+## Search UI
 
 Explore reference content on Search UI and how you can develop fast, modern, and engaging search experiences.
 
-**Learn more in [Search](search/index.md)**
+**Learn more in [Search](search-ui://reference/index.md)**
 
 ## Elasticsearch and index management
 
