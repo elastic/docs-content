@@ -1,7 +1,4 @@
 ---
-mapped_pages:
-  - https://www.elastic.co/guide/en/security/master/release-notes-header-9.0.0.html#known-issue-9.0.0
-
 navigation_title: "Known issues"
 ---
 
@@ -15,15 +12,15 @@ Known issues are significant defects or limitations that may impact your impleme
 % On [Month Day, Year], a known issue was discovered that [description of known issue].
 % For more information, check [Issue #](Issue link).
 
-% **Workaround** 
+% **Workaround**
 % Workaround description.
 
 :::
 
-:::{dropdown} The technical preview badge incorrectly displays on the alert suppression fields for event correlation rules 
+:::{dropdown} The technical preview badge incorrectly displays on the alert suppression fields for event correlation rules
 
 **{{stack}} versions: 9.0.0**
 
-On April 8, 2025, it was discovered that alert suppression for event correlation rules is incorrectly shown as being in technical preview when you create a new rule. For more information, check [#1021](https://github.com/elastic/docs-content/issues/1021). 
+On April 8, 2025, it was discovered that alert suppression for event correlation rules is incorrectly shown as being in technical preview when you create a new rule. For more information, check [#1021](https://github.com/elastic/docs-content/issues/1021).
 
 :::

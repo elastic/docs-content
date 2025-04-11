@@ -172,7 +172,7 @@ $$$faq-where$$$**Where are deployments hosted?**
 $$$faq-vs-aws$$$**What is the difference between {{ech}} and the Amazon {{es}} Service?**
 :   {{ech}} is the only hosted and managed {{es}} service built, managed, and supported by the company behind {{es}}, {{kib}}, {{beats}}, and {{ls}}. With {{ech}}, you always get the latest versions of the software. Our service is built on best practices and years of experience hosting and managing thousands of {{es}} clusters in the Cloud and on premise. For more information, check the following Amazon and Elastic {{es}} Service [comparison page](https://www.elastic.co/aws-elasticsearch-service).
 
-    Please note that there is no formal partnership between Elastic and Amazon Web Services (AWS), and Elastic does not provide any support on the AWS {{es}} Service.
+    Note that there is no formal partnership between Elastic and Amazon Web Services (AWS), and Elastic does not provide any support on the AWS {{es}} Service.
 
 
 $$$faq-aws$$$**Can I use {{ech}} on platforms other than AWS?**

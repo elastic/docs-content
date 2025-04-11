@@ -97,7 +97,7 @@ When you [configure inputs](/reference/fleet/elastic-agent-input-configuration.m
 | `httpjson` | Read messages from an HTTP API with JSON payloads. | [HTTP JSON input](beats://reference/filebeat/filebeat-input-httpjson.md) ({{filebeat}} docs) |
 | `journald` | [beta] A system service that collects and stores logging data. | [Journald input](beats://reference/filebeat/filebeat-input-journald.md) ({{filebeat}} docs) |
 | `kafka` | Reads from topics in a Kafka cluster. | [Kafka input](beats://reference/filebeat/filebeat-input-kafka.md) ({{filebeat}} docs) |
-| `log` | DEPRECATED: Please use the `filestream` input instead. | n/a |
+| `log` | DEPRECATED: Use the `filestream` input instead. | n/a |
 | `logfile` | Alias for `log`. | n/a |
 | `log/redis_slowlog` | Alias for `redis`. | n/a |
 | `log/syslog` | Alias for `syslog`. | n/a |

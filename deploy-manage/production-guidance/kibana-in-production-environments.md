@@ -21,7 +21,7 @@ Now, Kibana’s resource requirements extend beyond user activity. The system mu
 Additionally, the task manager enables distributed coordination across multiple {{kib}} instances, allowing {{kib}} to function as a logical cluster in certain aspects.
 
 ::::{important} 
-* {{kib}} does not support rolling [upgrades](/deploy-manage/upgrade/deployment-or-cluster/kibana.md), and deploying mixed versions of {{kib}} can result in data loss or upgrade failures. Please shut down all instances of {{kib}} before performing an upgrade, and ensure all running {{kib}} instances have matching versions.
+* {{kib}} does not support rolling [upgrades](/deploy-manage/upgrade/deployment-or-cluster/kibana.md), and deploying mixed versions of {{kib}} can result in data loss or upgrade failures. Shut down all instances of {{kib}} before performing an upgrade, and ensure all running {{kib}} instances have matching versions.
 * While {{kib}} isn’t resource intensive, we still recommend running {{kib}} separate from  your {{es}} data or master nodes.
 ::::
 
