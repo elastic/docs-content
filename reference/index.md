@@ -7,6 +7,17 @@ mapped_pages:
 
 Explore the reference documentation for the Elastic Stack. Whether you are configuring security protocols, enhancing search functionalities, or integrating with cloud services, our detailed manuals, API guides, and configuration settings provide the information you need.
 
+## APIs
+Explore the reference documentation for Elastic APIs.
+
+|     |     |
+| --- | --- |
+| {{es}} | • [{{es}}](elasticsearch://reference/elasticsearch/rest-apis/index.md)<br>• [{{es}} Serverless](https://www.elastic.co/docs/api/doc/elasticsearch-serverless)<br> |
+| {{kib}} | • [{{kib}}](https://www.elastic.co/docs/api/doc/kibana)<br>• [{{kib}} Serverless](https://www.elastic.co/docs/api/doc/serverless)<br>• [{{fleet}}](/reference/fleet/fleet-api-docs.md)<br>• [{{observability}} Serverless SLOs](https://www.elastic.co/docs/api/doc/serverless/group/endpoint-slo)<br>• [{{elastic-sec}}](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-security-ai-assistant-api)<br>• [{{elastic-sec}} Serverless](https://www.elastic.co/docs/api/doc/serverless/group/endpoint-security-ai-assistant-api)<br> |
+| {{ls}} | • [Monitoring {{ls}}](https://www.elastic.co/guide/en/logstash/current/monitoring-logstash.html)<br> |
+| APM | • [APM](/solutions/observability/apm/apm-server-api.md)<br>• [APM Serverless](https://www.elastic.co/docs/api/doc/serverless/group/endpoint-apm-agent-configuration)<br>• [Observability intake Serverless](https://www.elastic.co/docs/api/doc/observability-serverless)<br> |
+| {{ecloud}} | • [{{ech}}](https://www.elastic.co/docs/api/doc/cloud)<br>• [{{ecloud}} Serverless](https://www.elastic.co/docs/api/doc/elastic-cloud-serverless)<br>• [{{ece}}](https://www.elastic.co/docs/api/doc/cloud-enterprise)<br>• [{{eck}}](cloud-on-k8s://reference/api-docs.md)<br> |
+
 ## Security
 
 Access detailed reference documentation on field and object schemas as well as the diffferent commands used to manage and troubleshoot Elastic Endpoint.
@@ -79,14 +90,5 @@ Leverage the power of the cloud with Elastic Cloud solutions. Explore Elastic Cl
 
 **Learn more in [Cloud](cloud://reference/index.md)**
 
-## APIs
-Explore the reference documentation for Elastic APIs.
 
-|     |     |
-| --- | --- |
-| {{es}} | • [{{es}}](elasticsearch://reference/elasticsearch/rest-apis/index.md)<br>• [{{es}} Serverless](https://www.elastic.co/docs/api/doc/elasticsearch-serverless)<br> |
-| {{kib}} | • [{{kib}}](https://www.elastic.co/docs/api/doc/kibana)<br>• [{{kib}} Serverless](https://www.elastic.co/docs/api/doc/serverless)<br>• [{{fleet}}](/reference/fleet/fleet-api-docs.md)<br>• [{{observability}} Serverless SLOs](https://www.elastic.co/docs/api/doc/serverless/group/endpoint-slo)<br>• [{{elastic-sec}}](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-security-ai-assistant-api)<br>• [{{elastic-sec}} Serverless](https://www.elastic.co/docs/api/doc/serverless/group/endpoint-security-ai-assistant-api)<br> |
-| {{ls}} | • [Monitoring {{ls}}](https://www.elastic.co/guide/en/logstash/current/monitoring-logstash.html)<br> |
-| APM | • [APM](/solutions/observability/apm/apm-server-api.md)<br>• [APM Serverless](https://www.elastic.co/docs/api/doc/serverless/group/endpoint-apm-agent-configuration)<br>• [Observability intake Serverless](https://www.elastic.co/docs/api/doc/observability-serverless)<br> |
-| {{ecloud}} | • [{{ech}}](https://www.elastic.co/docs/api/doc/cloud)<br>• [{{ecloud}} Serverless](https://www.elastic.co/docs/api/doc/elastic-cloud-serverless)<br>• [{{ece}}](https://www.elastic.co/docs/api/doc/cloud-enterprise)<br>• [{{eck}}](cloud-on-k8s://reference/api-docs.md)<br> |
 
