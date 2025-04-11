@@ -335,6 +335,7 @@ The **Response** section is located on the **Overview** tab in the right panel. 
 
 :::{image} /solutions/images/security-response-action-rp.png
 :alt: Response section of the Overview tab
+:width: 550px
 :screenshot:
 :::
 
