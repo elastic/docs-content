@@ -85,7 +85,7 @@ These full-text functions address several key limitations that existed for text 
 Refer to this blog for more context: [Introducing full text filtering in {{esql}}](https://www.elastic.co/search-labs/blog/filtering-in-esql-full-text-search-match-qstr).
 
 ::::{tip}
-See [Match field parameters](elasticsearch://reference/query-languages/esql/_snippets/functions/layout/match.md) for more advanced options using match.
+See [Match field parameters](elasticsearch://reference/query-languages/esql/functions-operators/search-functions.md#esql-match) for more advanced options using match.
 ::::
 
 ::::{important}
@@ -94,7 +94,7 @@ These queries match documents but don't automatically sort by relevance. To get 
 
 ### Query string (`QSTR`) function [esql-for-search-query-string]
 
-The [`qstr` function](elasticsearch://reference/query-languages/esql/_snippets/functions/layout/qstr.md) provides the same functionality as the Query DSL's `query_string` query. This is for advanced use cases, such as wildcard searches, searches across multiple fields, and more.
+The [`qstr` function](elasticsearch://reference/query-languages/esql/functions-operators/search-functions.md#esql-qstr) provides the same functionality as the Query DSL's `query_string` query. This is for advanced use cases, such as wildcard searches, searches across multiple fields, and more.
 
 ```esql
 FROM articles METADATA _score
@@ -107,7 +107,7 @@ For complete details, refer to the [Query DSL `query_string` docs](elasticsearch
 
 ### `KQL` function [esql-for-search-kql]
 
-Use the [KQL function](elasticsearch://reference/query-languages/esql/_snippets/functions/layout/kql.md) to use the [Kibana Query Language](/explore-analyze/query-filter/languages/kql.md) in your {{esql}} queries:
+Use the [KQL function](elasticsearch://reference/query-languages/esql/functions-operators/search-functions.md#esql-kql) to use the [Kibana Query Language](/explore-analyze/query-filter/languages/kql.md) in your {{esql}} queries:
 
 ```esql
 FROM logs*

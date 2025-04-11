@@ -39,11 +39,11 @@ Data is often messy and incomplete. [Ingest pipelines](../manage-data/ingest/tra
 
 [ES|QL](query-filter/languages/esql.md) has support for [Geospatial Search](elasticsearch://reference/query-languages/esql/functions-operators/spatial-functions.md) functions, enabling efficient index searching for documents that intersect with, are within, are contained by, or are disjoint from a query geometry. In addition, the `ST_DISTANCE` function calculates the distance between two points.
 
-* [`ST_INTERSECTS`](elasticsearch://reference/query-languages/esql/_snippets/functions/layout/st_intersects.md)
-* [`ST_DISJOINT`](elasticsearch://reference/query-languages/esql/_snippets/functions/layout/st_disjoint.md)
-* [`ST_CONTAINS`](elasticsearch://reference/query-languages/esql/_snippets/functions/layout/st_contains.md)
-* [`ST_WITHIN`](elasticsearch://reference/query-languages/esql/_snippets/functions/layout/st_within.md)
-* [`ST_DISTANCE`](elasticsearch://reference/query-languages/esql/_snippets/functions/layout/st_distance.md)
+* [`ST_INTERSECTS`](elasticsearch://reference/query-languages/esql/functions-operators/spatial-functions.md#esql-st_intersects)
+* [`ST_DISJOINT`](elasticsearch://reference/query-languages/esql/functions-operators/spatial-functions.md#esql-st_disjoint)
+* [`ST_CONTAINS`](elasticsearch://reference/query-languages/esql/functions-operators/spatial-functions.md#esql-st_contains)
+* [`ST_WITHIN`](elasticsearch://reference/query-languages/esql/functions-operators/spatial-functions.md#esql-st_within)
+* [`ST_DISTANCE`](elasticsearch://reference/query-languages/esql/functions-operators/spatial-functions.md#esql-st_distance)
 
 
 ## Aggregate [geospatial-aggregate]

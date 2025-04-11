@@ -152,12 +152,12 @@ Full-text search involves executing text-based queries across one or more docume
 :::{tip}
 {{esql}} provides two ways to perform full-text searches:
 
-1. Full [match function](elasticsearch://reference/query-languages/esql/_snippets/functions/layout/match.md) syntax: `match(field, "search terms")`
-1. Compact syntax using the [match operator `:`](elasticsearch://reference/query-languages/esql/_snippets/operators/layout/match_operator.md): `field:"search terms"`
+1. Full [match function](elasticsearch://reference/query-languages/esql/functions-operators/search-functions.md#esql-match) syntax: `match(field, "search terms")`
+1. Compact syntax using the [match operator `:`](elasticsearch://reference/query-languages/esql/functions-operators/operators.md#esql-match-operator): `field:"search terms"`
 
 Both are equivalent and can be used interchangeably. The compact syntax is more concise, while the function syntax allows for more configuration options. We'll use the compact syntax in most examples for brevity.
 
-Refer to the [match function](elasticsearch://reference/query-languages/esql/_snippets/functions/layout/match.md) reference docs for advanced parameters available with the function syntax.
+Refer to the [match function](elasticsearch://reference/query-languages/esql/functions-operators/search-functions.md#esql-match) reference docs for advanced parameters available with the function syntax.
 :::
 
 ### Basic full-text query
