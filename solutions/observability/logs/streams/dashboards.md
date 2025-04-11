@@ -5,8 +5,8 @@ applies_to:
 
 # Dashboards
 
-From the **Dashboards** tab, attach dashboards to your stream that group important assets for that specific stream. Attach a dashboard to your stream by selecting it from the list of available dashboards.
+The **Dashboards** tab is where you can add dashboards to your stream. Dashboards group important assets for a specific stream. Add a dashboard to your stream by selecting it from the list of available dashboards.
 
-![alt text](<dashboards.png>)
+![Image of the dashboards UI](<dashboards.png>)
 
-Attached Dashboards are also shown on the overview page as quick links.
+Added dashboards are also shown on the [**Overview** tab](./overview.md) as quick links.

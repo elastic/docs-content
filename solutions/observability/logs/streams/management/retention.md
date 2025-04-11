@@ -3,17 +3,21 @@ applies_to:
     serverless: preview
 ---
 
-# Data retention
+# Manage data retention [streams-data-retention]
 
-Use the **Data retention** tab to manage the retention of your stream and get insight into the ingestion and size of your data.
+Use the **Data retention** page under the **Management** tab to set how long your stream retains data and to get insight into your streams data ingestion and storage size.
 
 ![alt text](<retention.png>)
 
-**Ingestion**: Estimated ingestion per day and month calculated based on the size of all data in the stream and divided by the age of the stream. This is an estimate, and the actual ingestion may vary.
+The **Data retention** page is made up of the following components that can help you determine how long you want your stream to retain data:
 
-**Size**: The total size of the data in the stream. This is all data currently in the stream.
+% this list doesn't show all of the components in the screenshot. Should we add the other components, or is the screenshot out of date?
 
-**Ingestion Rate**: Estimated ingestion rate per time bucket. The bucket interval is dynamic and adjusts based on the selected time range. The ingestion rate is calulated based on the average document size in a stream, multiplied by the number of documents in the bucket. This is an estimate, and the actual ingestion rate may vary.
+- **Ingestion**: Estimated ingestion per day and month calculated based on the size of all data in the stream and divided by the age of the stream. This is an estimate, and the actual ingestion may vary.
+- **Size**: The total size of the data in the stream. This is all data currently in the stream.
+- **Ingestion Rate**: Estimated ingestion rate per time bucket. The bucket interval is dynamic and adjusts based on the selected time range. The ingestion rate is calulated based on the average document size in a stream, multiplied by the number of documents in the bucket. This is an estimate, and the actual ingestion rate may vary.
 
-## Change retention
-Click the `Edit data retention` button to change the retention of your Stream. The retention is set in days. The retention is the minimum number of days after which the data is deleted. You can define a global default retention in your [project settings](../../../../../deploy-manage/deploy/elastic-cloud/project-settings.md).
+## Edit data retention period[streams-update-data-retention]
+Select `Edit data retention` to change how long data for your stream is retained. The **Retention period** is the minimum number of days after which the data is deleted.
+
+To define a global default retention policy, refer to [project settings](../../../../../deploy-manage/deploy/elastic-cloud/project-settings.md).

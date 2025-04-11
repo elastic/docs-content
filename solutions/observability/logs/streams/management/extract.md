@@ -2,33 +2,42 @@
 applies_to:
     serverless: preview
 ---
-# Extract field
+# Extract fields [streams-extract-fields]
 Log messages are often unstructured. To get the most value, it’s important to parse them and extract some of the information into dedicated fields. The most common data to extract is usually the timestamp and the log level, but other pieces of information like IP addresses, usernames, or ports can also be useful.
-The extract field UI let’s you easily iterate and process your data. Any change is immediately available as a preview and is tested end to end.
-Because the changes to your data's structure is simulated, you'll see them instantly. You'll also see potential indexing problems such as mapping conflicts ahead of time, so you can address them before applying the change.
-Applied changes aren't retroactive and only affect **future data ingested**.
 
-## Add a processor
-Streams uses {{es}} ingest pipelines to process your data. The processors are the building blocks of the pipeline and are used to transform your data.
+Use the **Extract field** page under the **Management** tab to easily iterate and process your data. Any change is immediately available as a preview and is tested end-to-end.
+Because the changes to your data's structure is simulated, you'll see them instantly.
+
+The UI also shows indexing problems, such as mapping conflicts, ahead of time, so you can address them before applying the change.
+
+:::{note}
+Applied changes aren't retroactive and only affect *future data ingested*.
+:::
+
+## Add a processor [streams-add-processors]
+Streams uses {{es}} ingest pipelines to process your data. Ingest pipelines are made up of processors that transform your data.
+
 To add a processor:
 
-1. Select **Add processor**. This opens a list of supported processors.
-1. Select one of the following processors from the list:
-  - [Date](./extract/date.md)
-  - [Dissect](./extract/dissect.md)
-  - [Grok](./extract/grok.md)
-  - [Key-Value (KV)](./extract/key-value.md)
-  - GeoIP
-  - Rename
-  - Set
-  - URL Decode
-1. Save the processor by selecting **Add Processor** towards the top.
+1. Select **Add processor** to open a list of supported processors.
+1. Select a processor from the list:
+    - [Date](./extract/date.md)
+    - [Dissect](./extract/dissect.md)
+    - [Grok](./extract/grok.md)
+    - [Key-Value (KV)](./extract/key-value.md)
+    - GeoIP
+    - Rename
+    - Set
+    - URL Decode
+1. Select **Add Processor** to save the processor.
 
-JSON editing of the processors is planned for a future release. More processors may be added over time.
+:::{note}
+Editing processors with JSON is planned for a future release. More processors may be added over time.
+:::
 
-### Add conditions to processors
+### Add conditions to processors [streams-add-processor-conditions]
 You can provide a condition for each processor under **Optional fields**. The condition is a boolean expression that is evaluated for each document. Provide a field, a value, and a comparator.
-Processors support the following comparators:
+Processors support these comparators:
 - equals
 - not equals
 - less than
@@ -41,13 +50,13 @@ Processors support the following comparators:
 - exists
 - not exists
 
-### Ignore failures
+### Ignore failures [streams-ignore-failures]
 Turn on the `Ignore failure` option to ignore the processor if it fails. This is useful if you want to continue processing the document even if the processor fails.
 
-### Ignore missing fields
+### Ignore missing fields [streams-ignore-missing-fields]
 Turn on the `Ignore missing fields` option to ignore the processor if the field is not present. This is useful if you want to continue processing the document even if the field is not present.
 
-### Preview Changes
+### Preview changes [streams-preview-changes]
 The left side of the UI gives you access to a subset of pipeline processors to modify your documents, while the right side shows you a preview of the results, with additional filtering options depending on the outcome of the simulation.
 
 Anytime you make a change on the left side of the UI, the table on the right updates automatically.
@@ -65,7 +74,7 @@ If you then edit the stream again, keep the following in mind:
 
 ![alt text](<grok.png>)
 
-## Detect and handle failures
+## Detect and handle failures [streams-detect-failures]
 Documents fail processing for many different reasons. Streams helps you to easily find and handle failures before deploying changes.
 
 The following example shows not all messages matched the provided grok pattern:
@@ -87,12 +96,12 @@ As part of processing, streams also checks for mapping conflicts. This is done b
 
 ![alt text](<mapping-conflicts.png>)
 
-## Processor Statistics and Detected Fields
+## Processor statistics and detected fields [streams-stats-and-detected-fields]
 Once saved, the processor also gives you statistics at a quick glance to indicate how successful the processing was for this step and which fields were added.
 
 ![alt text](<field-stats.png>)
 
-## Advanced: How and where do these changes get applied to the underlying datastream?
+## Advanced: How and where do these changes get applied to the underlying datastream? [streams-applied-changes]
 When you save processors, streams modifies the ‘best matching’ ingest pipeline for the data stream. In short, streams chooses the best matching pipeline ending in “@custom” that is already part of your data stream or adds one for you.
 
 Streams identifies the appropriate @custom pipeline (for example, logs-myintegration@custom or logs@custom).
@@ -117,11 +126,11 @@ Streams then adds a pipeline processor to the end of that @custom pipeline. This
 
 Streams then creates and manages the `<data_stream_name>@stream.processing` pipeline, placing the processors you configured in the UI (Grok, Set, etc.) inside it.
 
-**User Interaction with Pipelines**:
+**User interaction with pipelines**:
 Do not manually modify the `<data_stream_name>@stream.processing` pipeline created by streams.
 You can still add your own processors manually to the @custom pipeline if needed. Any processors you add before the pipeline processor streams created may effect the behavior in unexpected ways.
 
-## Known limitations
+## Known limitations [streams-known-limitations]
 - The UI does not support all processors. We are working on adding more processors in the future.
 - The UI does not support all processor options. We are working on adding more options in the future.
 - The simulation may not accurately reflect the changes to the existing data when editing existing processors or re-ordering them.

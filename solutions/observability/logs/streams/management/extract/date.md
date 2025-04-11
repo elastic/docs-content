@@ -3,16 +3,17 @@ applies_to:
     serverless: preview
 ---
 
-# Date
+# Date processor [streams-date-processor]
+
 The date processor parses date strings and uses them as the timestamp of the document.
 
-This functionality uses the {{es}} date pipeline processor. Additional details can be found in the [{{es}} documentation](elasticsearch://reference/enrich-processor/date-processor.md).
+This functionality uses the {{es}} date pipeline processor. Refer to [date processor](elasticsearch://reference/enrich-processor/date-processor.md) in the {{es}} docs for more information.
 
 ## Examples
 
 The following list provides some common examples of date formats and how to parse them.
 
-**common formats**
+**Common formats**
 ```
 2025-04-04T09:04:45+00:00 => ISO8601
 1618886400 => UNIX
@@ -20,7 +21,7 @@ The following list provides some common examples of date formats and how to pars
 4000000049c9f0ca => TAI64N
 ```
 
-**custom formats**
+**Custom formats**
 ```
 2023-10-15 => yyyy-MM-dd
 15/10/2023 => dd/MM/yyyy
@@ -33,15 +34,12 @@ Sunday, October 15, 2023 => EEEE, MMMM dd, yyyy
 ```
 
 
-## Optional Fields
-**Target field**
-The field that will hold the parsed date. Defaults to `@timestamp`.
+## Optional Fields [streams-date-optional-fields]
+The following fields are optional for the date processor:
 
-**Timezone**
-The timezone to use when parsing the date. Supports template snippets. Defaults to `UTC`.
-
-**Locale**
-The locale to use when parsing the date, relevant when parsing month names or weekdays. Supports template snippets. Defaults to `ENGLISH`.
-
-**Output format**
-The format to use when writing the date to `target_field`. Must be a valid Java time pattern. Defaults to `yyyy-MM-dd'T'HH:mm:ss.SSSXXX`.
+| Field | Description|
+| ------- | --------------- |
+| Target field | The field that will hold the parsed date. Defaults to `@timestamp`. |
+| Timezone | The timezone to use when parsing the date. Supports template snippets. Defaults to `UTC`. |
+| Locale | The locale to use when parsing the date, relevant when parsing month names or weekdays. Supports template snippets. Defaults to `ENGLISH`. |
+| Output format | The format to use when writing the date to `target_field`. Must be a valid Java time pattern. Defaults to `yyyy-MM-dd'T'HH:mm:ss.SSSXXX`. |
