@@ -9,7 +9,7 @@ navigation_title: "SLO burn rate breaches"
 # Triage SLO burn rate breaches [triage-slo-burn-rate-breaches]
 
 
-SLO burn rate breaches occur when the percentage of bad events over a specified time period exceeds the threshold set in your [SLO burn rate rule](../../../solutions/observability/incident-management/create-an-slo-burn-rate-rule.md). When this happens, you are at risk of exhausting your error budget and violating your SLO.
+SLO burn rate breaches occur when the percentage of bad events over a specified time period exceeds the threshold set in your [SLO burn rate rule](/solutions/observability/incident-management/create-an-slo-burn-rate-rule.md). When this happens, you are at risk of exhausting your error budget and violating your SLO.
 
 To triage issues quickly, go to the alert details page:
 
@@ -50,5 +50,5 @@ The contents of the alert details page may vary depending on the type of SLI tha
 After investigating the alert, you may want to:
 
 * Click **Snooze the rule** to snooze notifications for a specific time period or indefinitely.
-* Click the ![Actions](/solutions/images/observability-boxesVertical.svg "") icon and select **Add to case** to add the alert to a new or existing case. To learn more, refer to [Cases](../../../solutions/observability/incident-management/cases.md).
+* Click the ![Actions](/solutions/images/observability-boxesVertical.svg "") icon and select **Add to case** to add the alert to a new or existing case. To learn more, refer to [Cases](/solutions/observability/incident-management/cases.md).
 * Click the ![Actions](/solutions/images/observability-boxesVertical.svg "") icon and select **Mark as untracked**. When an alert is marked as untracked, actions are no longer generated. You can choose to move active alerts to this state when you disable or delete rules.

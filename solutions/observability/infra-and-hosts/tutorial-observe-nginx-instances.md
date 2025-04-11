@@ -2,7 +2,7 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/monitor-nginx.html
 applies_to:
-  stack: 
+  stack:
 ---
 
 # Tutorial: Observe your nginx instances [monitor-nginx]
@@ -275,7 +275,7 @@ These anomaly detection jobs are available when you have data that matches the q
 
 ### Before you begin [monitor-nginx-ml-prereqs]
 
-Verify that your environment is set up properly to use the {{ml-features}}. If {{es}} {{security-features}} are enabled, you need a user with permissions to manage {{anomaly-jobs}}. Refer to [Set up ML features](../../../explore-analyze/machine-learning/setting-up-machine-learning.md).
+Verify that your environment is set up properly to use the {{ml-features}}. If {{es}} {{security-features}} are enabled, you need a user with permissions to manage {{anomaly-jobs}}. Refer to [Set up ML features](/explore-analyze/machine-learning/setting-up-machine-learning.md).
 
 
 ### Add nginx ML jobs [monitor-nginx-ml-add-jobs]
@@ -297,11 +297,11 @@ Back on the **Anomaly Detection Jobs** page, you should see the nginx anomaly de
 
 View your anomaly detection job results using the Anomaly Explorer or Single Metric Viewer found under **Anomaly Detection** in the Machine Learning menu. The Anomaly Explorer shows the results from all or any combination of your nginx ML jobs. The Single Metric Viewer focuses on a specific job. These tools offer a comprehensive view of anomalies and help find patterns and irregularities across data points and time intervals.
 
-Refer to [View anomaly detection job results](../../../explore-analyze/machine-learning/anomaly-detection/ml-ad-view-results.md) for more on viewing and understanding your anomaly detection job results.
+Refer to [View anomaly detection job results](/explore-analyze/machine-learning/anomaly-detection/ml-ad-view-results.md) for more on viewing and understanding your anomaly detection job results.
 
 
 ### Set up alerts [monitor-nginx-ml-alert]
 
 With the nginx ML jobs detecting anomalies, you can set rules to generate alerts when your jobs meet specific conditions. For example, you could set up a rule on the `low_request_rate_nginx` job to alert when low request rates hit a specific severity threshold. When you get alerted, you can make sure your server isn’t experiencing issues.
 
-Refer to [Generating alerts for anomaly detection jobs](../../../explore-analyze/machine-learning/anomaly-detection/ml-configuring-alerts.md) for more on setting these rules and generating alerts.
+Refer to [Generating alerts for anomaly detection jobs](/explore-analyze/machine-learning/anomaly-detection/ml-configuring-alerts.md) for more on setting these rules and generating alerts.
