@@ -16,23 +16,30 @@ navigation_title: "Error: unable to retrieve node fs stats"
 Error: unable to retrieve node fs stats
 ```
 
-This error occurs when the Elasticsearch client (like Kibana) cannot fetch version information from one or more Elasticsearch nodes. This may happen due to network issues, incorrect configuration, or unavailable nodes. To resolve this, ensure that the nodes are up and running, check the network connectivity between the client and the nodes, and verify the configuration settings. If the issue persists, consider checking the Elasticsearch logs for more detailed error information.
+This error occurs when the {{es}} client (like {{kib}}) cannot fetch version information from one or more {{es}} nodes. This may happen due to network issues, incorrect configuration, or unavailable nodes. 
+
+To resolve this
+- Ensure that the nodes are up and running
+- Check the network connectivity between the client and the nodes
+- Verify the configuration settings. 
+
+If the issue persists, consider checking the {{es}} logs for more detailed error information.
 
 ## What it means
 
-This log message typically comes from **Kibana** when it tries to connect to Elasticsearch during its startup routine. Kibana acts as a client to Elasticsearch and requires access to:
+This log message typically comes from {{kib}} when it tries to connect to {{es}} during its startup routine. {{kib}} acts as a client to {{es}} and requires access to:
 
 - The cluster’s host and port
 - Authentication credentials (if required)
 - TLS settings (if applicable)
 
-If Kibana can’t reach the nodes listed in its configuration, it can’t determine if the versions are compatible, and it throws this error.
+If {{kib}} can’t reach the nodes listed in its configuration, it can’t determine if the versions are compatible, and it throws this error.
 
-## Common causes
+## Potential causes
 
 - One or more entries in `elasticsearch.hosts` are unreachable or misconfigured
 - The `KBN_PATH_CONF` environment variable points to a different config file
-- A firewall is blocking access between Kibana and Elasticsearch
+- A firewall is blocking access between {{kib}} and {{es}}
 
 ## Configuration locations
 
@@ -50,7 +57,7 @@ elasticsearch.username: "kibana"
 elasticsearch.password: "your_password"
 elasticsearch.ssl.certificateAuthorities: ["path/to/ca.crt"]
 ```
-Kibana tries every endpoint in `elasticsearch.hosts`, so even one unreachable node can cause the log. Use `https` if your cluster requires encrypted communication.
+{{kib}} tries every endpoint in `elasticsearch.hosts`, so even one unreachable node can cause the log. Use `https` if your cluster requires encrypted communication.
 
 ## How to resolve it
 
@@ -92,5 +99,5 @@ You should see a response like:
 }
 ```
 
-If all else fails, refer to your Kibana logs for more details and context.
+If all else fails, refer to your {{kib}} logs for more details and context.
 

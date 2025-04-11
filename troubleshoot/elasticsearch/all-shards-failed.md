@@ -16,15 +16,13 @@ navigation_title: "Error: all shards failed"
 Error: all shards failed
 ```
 
-This error indicates that Elasticsearch failed to retrieve a response from any shard involved in a query. This can result from shard allocation issues, misconfiguration, insufficient resources, or unsupported operations such as aggregating on text fields. 
+This error indicates that {{es}} failed to retrieve a response from any shard involved in a query. This can result from shard allocation issues, misconfiguration, insufficient resources, or unsupported operations such as aggregating on text fields. 
 
-## Fix improper use of text fields
+##  Improper use of text fields
 
 Text fields aren't optimized for operations like sorting or aggregations by default. Attempting these operations may trigger the error.
 
-### Resolution
-
-Use the `.keyword` sub-field:
+To fix, use the `.keyword` sub-field:
 
 ```console
 GET my-index/_search
@@ -39,7 +37,7 @@ GET my-index/_search
 }
 ```
 
-If no `.keyword` sub-field exists, update the mapping to handle multi-fields:
+If no `.keyword` sub-field exists, update the mapping to handle [multi-fields](elasticsearch://reference/elasticsearch/mapping-reference/field-data-types.md):
 
 ```console
 PUT my-index
@@ -59,11 +57,9 @@ PUT my-index
 }
 ```
 
-## Fix metric aggregations on text fields
+## Metric aggregations on text fields
 
 Metric aggregations require numeric fields. Attempting them on text fields will fail.
-
-### Resolution
 
 Use a script to convert the text to numeric:
 
@@ -97,13 +93,11 @@ PUT my-index
 }
 ```
 
-## Fix failed shard recovery
+## Failed shard recovery
 
 A shard failure during recovery can prevent successful queries.
 
-### Resolution
-
-Check cluster health:
+To confirm, check cluster health:
 
 ```console
 GET _cluster/health
@@ -111,13 +105,11 @@ GET _cluster/health
 
 Identify and resolve the cause. If necessary, and as a last resort, delete the problematic index.
 
-## Fix misused global aggregation
+## Misused global aggregation
 
-Global aggregations must be top-level. Nesting them incorrectly causes errors.
+[Global aggregations](elasticsearch://reference/aggregations/search-aggregations-bucket-global-aggregation) must be top-level. Nesting them incorrectly causes errors.
 
-### Resolution
-
-Structure the query so the `global` aggregation is top-level:
+To fix, structure the query so the `global` aggregation is top-level:
 
 ```console
 GET my-index/_search
@@ -138,11 +130,11 @@ GET my-index/_search
 }
 ```
 
-## Fix reverse_nested usage errors
+## Reverse_nested usage errors
 
-The `reverse_nested` aggregation must appear within a `nested` context.
+The [reverse_nested](elasticsearch://reference/aggregations/search-aggregations-bucket-reverse-nested-aggregation.md) aggregation must appear within a `nested` context.
 
-### Resolution
+To fix, structure the query so the `reverse_nested` aggregation is within a `nested` context:
 
 ```console
 GET my-index/_search
@@ -176,7 +168,7 @@ GET my-index/_search
 }
 ```
 
-## View shard allocation and status
+## Further troubleshooting
 
 Use the `_cat/shards` API to view shard status and troubleshoot further.
 

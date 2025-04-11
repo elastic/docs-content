@@ -20,7 +20,7 @@ This error occurs when there's an attempt to update the number of replicas on on
 
 ## What it means
 
-The number of replicas in an index determines how many copies of each shard exist. Changing the replica count affects cluster resilience and search performance. Elasticsearch allows you to adjust this dynamically, and logs the change with this message:
+The number of replicas in an index determines how many copies of each shard exist. Changing the replica count affects cluster resilience and search performance. {{es}} allows you to adjust this dynamically, and logs the change with this message:
 
 ```console
 updating number_of_replicas to [replica-count] for indices [index-list]
@@ -47,7 +47,7 @@ If the value is missing or malformed, the update fails.
 
 ## Dynamic replica allocation
 
-Elasticsearch supports dynamic replica scaling using `index.auto_expand_replicas`. This allows replica counts to adjust based on the number of available nodes.
+{{es}} supports dynamic replica scaling using `index.auto_expand_replicas`. This allows replica counts to adjust based on the number of available nodes.
 
 Example configuration:
 
@@ -55,7 +55,7 @@ Example configuration:
 index.auto_expand_replicas: 0-5
 ```
 
-With this setting, Elasticsearch will scale replicas from 0 up to 5 as nodes are added or removed.
+With this setting, {{es}} will scale replicas from 0 up to 5 as nodes are added or removed.
 
 To disable automatic expansion:
 

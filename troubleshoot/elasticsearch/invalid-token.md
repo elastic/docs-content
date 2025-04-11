@@ -16,30 +16,30 @@ navigation_title: "Error: invalid token"
 Error: invalid token
 ```
 
-This error occurs when Elasticsearch receives a request containing an invalid or expired token during authentication. It's typically caused by missing, incorrect, or outdated tokens.
+This error occurs when {{es}} receives a request containing an invalid or [expired token](token-expired.md) during authentication. It's typically caused by missing, incorrect, or outdated tokens.
 
 ## What it means
 
-With security enabled in Elasticsearch, clients must authenticate using valid tokens. If a token is invalid or expired, the request is rejected.
+With security enabled in {{es}}, clients must authenticate using valid tokens. If a token is invalid or expired, the request is rejected.
 
-## Common causes
+This can be caused by
 
 - Expired or revoked token
 - Incorrect or malformed token format
 - Missing `Authorization` header or wrong scheme (e.g., missing `Bearer` prefix)
 - Token not properly attached by client or middleware
-- Misconfigured security settings in Elasticsearch
+- Misconfigured security settings in {{es}}
 
 ## How to resolve it
 
 1. **Verify the token** – Ensure it’s correctly formatted and current.
 2. **Check expiration** – Generate a new token if needed.
 3. **Inspect your client** – Confirm the token is sent in the `Authorization` header.
-4. **Review Elasticsearch settings** – Check that token auth is enabled:
+4. **Review {{es}} settings** – Check that token auth is enabled:
 
    ```yaml
    xpack.security.authc.token.enabled: true
    ```
 
-5. **Use logs for details** – Elasticsearch logs may provide context about the failure.
+5. **Use logs for details** – {{es}} logs may provide context about the failure.
 

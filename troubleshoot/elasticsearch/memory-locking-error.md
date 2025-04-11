@@ -17,11 +17,13 @@ Error: memory locking requested for elasticsearch process but memory is not lock
 ```
 
 
-This error indicates that Elasticsearch attempted to lock its memory to prevent swapping but failed. Swapping can severely impact performance and stability by introducing large garbage collection (GC) pauses.
+This error indicates that {{es}} attempted to lock its memory to prevent swapping but failed. Swapping can severely impact performance and stability by introducing large garbage collection (GC) pauses.
+
+You can fix this by reviewing your memory swapping options, and adjust as needed.
 
 ## What it means
 
-Elasticsearch uses the `bootstrap.memory_lock: true` setting to request that its memory be locked into RAM, preventing the OS from swapping it to disk. If this lock fails due to missing system permissions or improper configuration, Elasticsearch logs this error.
+{{es}} uses the `bootstrap.memory_lock: true` setting to request that its memory be locked into RAM, preventing the OS from swapping it to disk. If this lock fails due to missing system permissions or improper configuration, {{es}} logs this error.
 
 ## How to resolve it
 
@@ -56,4 +58,3 @@ Elasticsearch uses the `bootstrap.memory_lock: true` setting to request that its
    ```
 
    If the value is `false`, further [system-level configuration](https://www.elastic.co/guide/en/elasticsearch/reference/current/setup-configuration-memory.html) is required.
-

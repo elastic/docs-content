@@ -31,6 +31,15 @@ toc:
           - file: elasticsearch/increase-shard-limit.md
           - file: elasticsearch/increase-cluster-shard-limit.md
           - file: elasticsearch/corruption-troubleshooting.md
+          - file: elasticsearch/all-shards-failed.md
+          - file: elasticsearch/failed-to-parse-field-of-type.md
+          - file: elasticsearch/unable-to-retrieve-node-fs-stats.md
+          - file: elasticsearch/unable-to-parse-response-body.md
+          - file: elasticsearch/invalid-token.md
+          - file: elasticsearch/token-expired.md
+          - file: elasticsearch/updating-number-of-replicas-to-for-indices.md
+          - file: elasticsearch/memory-locking-error.md
+          
       - file: elasticsearch/capacity.md
         children:  
         - file: elasticsearch/fix-data-node-out-of-disk.md

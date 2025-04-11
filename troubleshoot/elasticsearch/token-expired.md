@@ -16,24 +16,13 @@ navigation_title: "Error: token expired"
 Error: token expired
 ```
 
-This error occurs when the access token used for authentication has expired. Tokens are typically time-bound, and this error appears when the session outlasts the token’s validity.
+This error occurs when the access token used for authentication has expired. When token-based authentication is enabled in {{es}}, each access token has a limited lifespan. If a token is used after its expiration time, {{es}} rejects the request.
 
-## What it means
-
-When token-based authentication is enabled in Elasticsearch, each access token has a limited lifespan. If a token is used after its expiration time, Elasticsearch rejects the request.
-
-## Common causes
-
-- Access token used beyond its expiration window
-- Application not handling token refresh properly
-- Long-lived sessions without token renewal
-
-## How to resolve it
-
-1. **Refresh the token** – Obtain a new token using your token refresh workflow.
-2. **Implement automatic token refresh** – Ensure your application is configured to refresh tokens before expiration.
-3. **Avoid using expired tokens** – Do not reuse tokens after logout or expiration.
-4. **Adjust token lifespan if needed** – You can configure a longer token expiration in `elasticsearch.yml`, though this should be balanced against security needs:
+To fix, 
+- **Refresh the token** – Obtain a new token using your token refresh workflow.
+- **Implement automatic token refresh** – Ensure your application is configured to refresh tokens before expiration.
+- **Avoid using expired tokens** – Do not reuse tokens after logout or expiration.
+- **Adjust token lifespan if needed** – You can configure a longer token expiration in `elasticsearch.yml`, though this should be balanced against security needs:
 
    ```yaml
    xpack.security.authc.token.timeout: 20m
