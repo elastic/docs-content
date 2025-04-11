@@ -11,7 +11,7 @@ mapped_pages:
 ---
 
 % Scope: Automatic setup
-% Original title: Start the Elastic Stack with security enabled automatically
+% Original title: Start the {{stack}} with security enabled automatically
 # Automatic security setup [configuring-stack-security]
 
 :::{include} /deploy-manage/deploy/self-managed/_snippets/auto-security-config.md

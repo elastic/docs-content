@@ -38,7 +38,7 @@ To configure SAML, you need to perform the following steps:
 1. [Configure the prerequisites](#prerequisites)
 2. [Create one or more SAML realms](#saml-create-realm)
 3. [Configure role mappings](#saml-role-mapping)
-4. [Configure Kibana to use SAML as the authentication provider](#saml-configure-kibana)
+4. [Configure {{kib}} to use SAML as the authentication provider](#saml-configure-kibana)
 
 Additional steps outlined in this document are optional.
 
@@ -591,7 +591,7 @@ PUT /_security/role_mapping/saml-example
 }
 ```
 
-1. The `example_role` role is **not** a builtin Elasticsearch role. This example assumes that you have created a custom role of your own, with appropriate access to your [data streams, indices,](/deploy-manage/users-roles/cluster-or-deployment-auth/role-structure.md#roles-indices-priv) and [Kibana features](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md#kibana-feature-privileges).
+1. The `example_role` role is **not** a builtin {{es}} role. This example assumes that you have created a custom role of your own, with appropriate access to your [data streams, indices,](/deploy-manage/users-roles/cluster-or-deployment-auth/role-structure.md#roles-indices-priv) and [{{kib}} features](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md#kibana-feature-privileges).
 
 ### Example: Role mapping API, using SAML attributes
 
@@ -668,7 +668,7 @@ The configuration values used in the example above are:
 :   Add `saml` provider to instruct {{kib}} to use SAML SSO as the authentication method.
 
 `xpack.security.authc.providers.saml.<provider-name>.realm`
-:   Set this to the name of the SAML realm that you have used in your [Elasticsearch realm configuration](/deploy-manage/users-roles/cluster-or-deployment-auth/saml.md#saml-create-realm), for instance: `saml1`
+:   Set this to the name of the SAML realm that you have used in your [{{es}} realm configuration](/deploy-manage/users-roles/cluster-or-deployment-auth/saml.md#saml-create-realm), for instance: `saml1`
 
 ### Supporting SAML and basic authentication in {{kib}} [saml-kibana-basic]
 
@@ -795,7 +795,7 @@ On a high level, the custom web application would need to perform the following 
     }
     ```
 
-    Elasticsearch will validate this and if all is correct will respond with an access token that can be used as a `Bearer` token for subsequent requests. It also supplies a refresh token that can be later used to refresh the given access token as described in [get token API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-get-token).
+    {{es}} will validate this and if all is correct will respond with an access token that can be used as a `Bearer` token for subsequent requests. It also supplies a refresh token that can be later used to refresh the given access token as described in [get token API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-get-token).
 
 4. The response to calling `/_security/saml/authenticate` will contain only the username of the authenticated user. If you need to get the values for the SAML Attributes that were contained in the SAML Response for that user, you can call the Authenticate API `/_security/_authenticate/` using the access token as a `Bearer` token and the SAML attribute values will be contained in the response as part of the [User metadata](/deploy-manage/users-roles/cluster-or-deployment-auth/saml.md#saml-user-metadata).
 

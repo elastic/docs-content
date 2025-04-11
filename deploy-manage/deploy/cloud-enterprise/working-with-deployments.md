@@ -24,7 +24,7 @@ All of these profiles are based on [deployment templates](./deployment-templates
 
 ## Creating deployments
 
-Refer to [Create a deployment](./create-deployment.md) to launch and configure an Elastic Stack environment.
+Refer to [Create a deployment](./create-deployment.md) to launch and configure an {{stack}} environment.
 
 ## Administering deployments [ece-administering-deployments]
 

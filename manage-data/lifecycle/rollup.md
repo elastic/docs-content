@@ -9,7 +9,7 @@ mapped_pages:
 ::::{admonition} Deprecated in 8.11.0.
 :class: warning
 
-Rollups will be removed in a future version. Please [migrate](/manage-data/lifecycle/rollup/migrating-from-rollup-to-downsampling.md) to [downsampling](/manage-data/data-store/data-streams/downsampling-time-series-data-stream.md) instead.
+Rollups will be removed in a future version. [Migrate](/manage-data/lifecycle/rollup/migrating-from-rollup-to-downsampling.md) to [downsampling](/manage-data/data-store/data-streams/downsampling-time-series-data-stream.md) instead.
 ::::
 
 Keeping historical data around for analysis is extremely useful but often avoided due to the financial cost of archiving massive amounts of data. For example, your system may be generating 500 documents every second. That will generate 43 million documents per day, and nearly 16 billion documents a year. Retention periods are thus driven by financial realities rather than by the usefulness of extensive historical data.

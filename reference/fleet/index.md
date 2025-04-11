@@ -25,7 +25,7 @@ As the following diagram illustrates, {{agent}} can monitor the host where it's 
 To learn about installation options, refer to [](/reference/fleet/install-elastic-agents.md).
 
 :::{note}
-Using {{fleet}} and {{agent}} {{serverless-full}}? Please note these [restrictions](/reference/fleet/fleet-agent-serverless-restrictions.md).
+Using {{fleet}} and {{agent}} {{serverless-full}}? Note these [restrictions](/reference/fleet/fleet-agent-serverless-restrictions.md).
 :::
 
 :::{tip}
@@ -142,4 +142,4 @@ The data collected by {{agent}} is stored in indices that are more granular than
 Want to get up and running with {{fleet}} and {{agent}} quickly? Read our getting started guides:
 
 * [Get started with logs and metrics](/solutions/observability/infra-and-hosts/get-started-with-system-metrics.md)
-* [Get started with APM](/solutions/observability/apps/get-started-with-apm.md)
+* [Get started with APM](/solutions/observability/apm/get-started.md)

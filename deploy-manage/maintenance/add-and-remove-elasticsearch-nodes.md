@@ -8,7 +8,7 @@ sub:
   slash: "\\"
 ---
 
-# Add and Remove Elasticsearch nodes [add-elasticsearch-nodes]
+# Add and Remove {{es}} nodes [add-elasticsearch-nodes]
 
 When you start an instance of {{es}}, you are starting a *node*. An {{es}} *cluster* is a group of nodes that have the same `cluster.name` attribute. As nodes join or leave a cluster, the cluster automatically reorganizes itself to evenly distribute the data across the available nodes.
 
@@ -49,13 +49,13 @@ If you installed your new {{es}} node using an [RPM](/deploy-manage/deploy/self-
 
 ## Master-eligible nodes [add-elasticsearch-nodes-master-eligible]
 
-As nodes are added or removed Elasticsearch maintains an optimal level of fault tolerance by automatically updating the cluster’s *voting configuration*, which is the set of [master-eligible nodes](../distributed-architecture/clusters-nodes-shards/node-roles.md#master-node-role) whose responses are counted when making decisions such as electing a new master or committing a new cluster state.
+As nodes are added or removed {{es}} maintains an optimal level of fault tolerance by automatically updating the cluster’s *voting configuration*, which is the set of [master-eligible nodes](../distributed-architecture/clusters-nodes-shards/node-roles.md#master-node-role) whose responses are counted when making decisions such as electing a new master or committing a new cluster state.
 
 It is recommended to have a small and fixed number of master-eligible nodes in a cluster, and to scale the cluster up and down by adding and removing master-ineligible nodes only. However there are situations in which it may be desirable to add or remove some master-eligible nodes to or from a cluster.
 
 ### Adding master-eligible nodes [modules-discovery-adding-nodes]
 
-If you wish to add some nodes to your cluster, simply configure the new nodes to find the existing cluster and start them up. Elasticsearch adds the new nodes to the voting configuration if it is appropriate to do so.
+If you wish to add some nodes to your cluster, simply configure the new nodes to find the existing cluster and start them up. {{es}} adds the new nodes to the voting configuration if it is appropriate to do so.
 
 During master election or when joining an existing formed cluster, a node sends a join request to the master in order to be officially added to the cluster.
 

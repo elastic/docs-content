@@ -19,7 +19,7 @@ You can ingest your data before migrating your rules, or migrate your rules firs
 * A working [LLM connector](/solutions/security/ai/set-up-connectors-for-large-language-models-llm.md).
 * {{stack}} users: an [Enterprise](https://www.elastic.co/pricing) subscription. 
 * {{Stack}} users: {{ml}} must be enabled.
-* {{serverless-short}} users: a [Security Complete](../../../deploy-manage/deploy/elastic-cloud/project-settings.md) subscription.
+* {{serverless-short}} users: a [Security Complete](/deploy-manage/deploy/elastic-cloud/project-settings.md) subscription.
 * {{ecloud}} users: {{ml}} must be enabled. We recommend a minimum size of 4GB of RAM per {{ml}} zone.
 
 ::::
@@ -27,11 +27,11 @@ You can ingest your data before migrating your rules, or migrate your rules firs
 ## Get started with Automatic Migration
 
 1. Find **Get started** in the navigation menu or use the [global search bar](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. Under **Configure AI provider**, select a configured model or [add a new one](/solutions/security/ai/set-up-connectors-for-large-language-models-llm.md). For information on how different models perform, refer to the [LLM performance matrix](../../../solutions/security/ai/large-language-model-performance-matrix.md).
+2. Under **Configure AI provider**, select a configured model or [add a new one](/solutions/security/ai/set-up-connectors-for-large-language-models-llm.md). For information on how different models perform, refer to the [LLM performance matrix](/solutions/security/ai/large-language-model-performance-matrix.md).
 3. Next, under **Migrate rules & add data**, click **Translate your existing SIEM rules to Elastic**, then **Upload rules**.
 4. Follow the instructions on the **Upload Splunk SIEM rules** flyout to export your rules from Splunk as JSON. 
 
-   :::{image} ../../../images/security-siem-migration-1.png
+   :::{image} /solutions/images/security-siem-migration-1.png
    :alt: the Upload Splunk SIEM rules flyout
    :width: 700px
    :screenshot:
@@ -70,7 +70,7 @@ This section describes the **Translated rules** page's interface and explains ho
 
 When you upload a new batch of rules, they are assigned a name and number, for example `SIEM rule migration 1`, or `SIEM rule migration 2`. Use the **Migrations** dropdown menu in the upper right to select which batch appears. 
 
-::::{image} ../../../images/security-siem-migration-processed-rules.png
+::::{image} /solutions/images/security-siem-migration-processed-rules.png
 :alt: The translated rules page
 :width: 850px
 :screenshot:
@@ -115,7 +115,7 @@ You cannot edit Elastic-authored rules using this interface, but after they are 
 
 Click the rule's name to open the rule's details flyout to the **Translation** tab, which shows the source rule alongside the translated — or partially translated — Elastic version. You can update any part of the rule. When finished, click **Save**.
 
-::::{image} ../../../images/security-siem-migration-edit-rule.png
+::::{image} /solutions/images/security-siem-migration-edit-rule.png
 :alt: The rule details flyout
 :width: 850px
 :screenshot:
