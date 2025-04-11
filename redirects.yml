@@ -6,6 +6,8 @@ redirects:
   'deploy-manage/security/install-stack-demo-secure.md': '!deploy-manage/security/self-setup.md'
   'reference/observability/fields-and-object-schemas/logs-app-fields.md': '!reference/observability/fields-and-object-schemas.md'
   'reference/observability/fields-and-object-schemas/metrics-app-fields.md': '!reference/observability/fields-and-object-schemas.md'
+  'solutions/observability/infra-and-hosts/universal-profiling-issues.md': 'release-notes/elastic-observability/index.md'
+
   # Related to https://github.com/elastic/docs-content/pull/1069
   'solutions/observability/apps/llm-observability.md': 'solutions/observability/applications/llm-observability.md'
   'solutions/observability/apps.md': 'solutions/observability/applications/index.md'

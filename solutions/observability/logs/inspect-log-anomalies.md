@@ -14,10 +14,10 @@ When the {{anomaly-detect}} features of {{ml}} are enabled, you can use the **Lo
 * A significant drop in the log rate might suggest that a piece of infrastructure stopped responding, and thus we’re serving fewer requests.
 * A spike in the log rate could denote a DDoS attack. This may lead to an investigation of IP addresses from incoming requests.
 
-You can also view log anomalies directly in the [{{ml-app}} app](../../../explore-analyze/machine-learning/machine-learning-in-kibana/xpack-ml-anomalies.md).
+You can also view log anomalies directly in the [{{ml-app}} app](/explore-analyze/machine-learning/machine-learning-in-kibana/xpack-ml-anomalies.md).
 
 ::::{note}
-This feature makes use of {{ml}} {{anomaly-jobs}}. To set up jobs, you must have `all` {{kib}} feature privileges for **{{ml-app}}**. Users that have full or read-only access to {{ml-features}} within a {{kib}} space can view the results of *all* {{anomaly-jobs}} that are visible in that space, even if they do not have access to the source indices of those jobs. You must carefully consider who is given access to {{ml-features}}; {{anomaly-job}} results may propagate field values that contain sensitive information from the source indices to the results. For more details, refer to [Set up {{ml-features}}](../../../explore-analyze/machine-learning/setting-up-machine-learning.md).
+This feature makes use of {{ml}} {{anomaly-jobs}}. To set up jobs, you must have `all` {{kib}} feature privileges for **{{ml-app}}**. Users that have full or read-only access to {{ml-features}} within a {{kib}} space can view the results of *all* {{anomaly-jobs}} that are visible in that space, even if they do not have access to the source indices of those jobs. You must carefully consider who is given access to {{ml-features}}; {{anomaly-job}} results may propagate field values that contain sensitive information from the source indices to the results. For more details, refer to [Set up {{ml-features}}](/explore-analyze/machine-learning/setting-up-machine-learning.md).
 ::::
 
 

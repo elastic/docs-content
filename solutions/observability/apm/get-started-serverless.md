@@ -182,10 +182,9 @@ To send APM data to Elastic, you must install an APM agent and configure it to s
 
         If you can’t find your distribution, you can install the agent by building it from the source. The following instructions will build the APM agent using the same docker environment that Elastic uses to build our official packages.
 
-        ::::{note}
+        ```{note}
         The agent is currently only available for Linux operating system.
-
-        ::::
+        ```
 
         1. Download the [agent source](https://github.com/elastic/apm-agent-php/).
         2. Execute the following commands to build the agent and install it:

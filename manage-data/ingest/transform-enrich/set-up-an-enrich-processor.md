@@ -68,7 +68,7 @@ Once the enrich policy is created, you need to execute it using the [execute enr
 The *enrich index* contains documents from the policy’s source indices. Enrich indices always begin with `.enrich-*`, are read-only, and are [force merged](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-forcemerge).
 
 ::::{warning}
-Enrich indices should only be used by the [enrich processor](elasticsearch://reference/enrich-processor/enrich-processor.md) or the [{{esql}} `ENRICH` command](elasticsearch://reference/query-languages/esql/esql-commands.md#esql-enrich). Avoid using enrich indices for other purposes.
+Enrich indices should only be used by the [enrich processor](elasticsearch://reference/enrich-processor/enrich-processor.md) or the [{{esql}} `ENRICH` command](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-enrich). Avoid using enrich indices for other purposes.
 
 ::::
 

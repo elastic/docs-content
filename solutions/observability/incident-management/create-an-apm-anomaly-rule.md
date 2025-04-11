@@ -15,7 +15,7 @@ To use the APM Anomaly rule, you have to enable [machine learning](/solutions/ob
 
 ::::{note}
 
-For Observability serverless projects, the **Editor** role or higher is required to create anomaly rules. To learn more, refer to [Assign user roles and privileges](../../../deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
+For Observability serverless projects, the **Editor** role or higher is required to create anomaly rules. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
 
 ::::
 
@@ -81,7 +81,7 @@ Some connector types are paid commercial features, while others are free. For a 
 ::::
 
 
-For more information on creating connectors, refer to [Connectors](../../../deploy-manage/manage-connectors.md).
+For more information on creating connectors, refer to [Connectors](/deploy-manage/manage-connectors.md).
 
 :::::
 
@@ -114,7 +114,7 @@ Use the default notification message or customize it. You can add more context t
 :screenshot:
 :::
 
-The following variables are specific to this rule type. You can also specify [variables common to all rules](../../../explore-analyze/alerts-cases/alerts/rule-action-variables.md).
+The following variables are specific to this rule type. You can also specify [variables common to all rules](/explore-analyze/alerts-cases/alerts/rule-action-variables.md).
 
 `context.alertDetailsUrl`
 :   Link to the alert troubleshooting view for further context and details. This will be an empty string if the `server.publicBaseUrl` is not configured.
