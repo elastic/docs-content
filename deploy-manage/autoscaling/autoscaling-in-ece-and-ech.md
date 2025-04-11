@@ -147,12 +147,11 @@ To help you better understand the available autoscaling settings, this example d
 
     1. Open the **Edit** page for your deployment to get the current and maximum size per zone of each {{es}} data tier. In this example, the hot data and content tier has the following settings:
 
-        |     |     |     |
-        | --- | --- | --- |
-        | **Current size per zone** | **Maximum size per zone** |  |
-        | 45GB storage | 1.41TB storage |  |
-        | 1GB RAM | 32GB RAM |  |
-        | Up to 2.5 vCPU | 5 vCPU |  |
+        | Current size per zone | Maximum size per zone |
+        | --- | --- |
+        | 45GB storage | 1.41TB storage |
+        | 1GB RAM | 32GB RAM |
+        | Up to 2.5 vCPU | 5 vCPU |
 
         The fault tolerance for the data tier is set to 2 availability zones.
 
@@ -166,11 +165,10 @@ To help you better understand the available autoscaling settings, this example d
 
     1. From the deployment **Edit** page you can check the minimum and maximum size of your deployment’s machine learning instances. In this example, the machine learning instance has the following settings:
 
-        |     |     |     |
-        | --- | --- | --- |
-        | **Minimum size per zone** | **Maximum size per zone** |  |
-        | 1GB RAM | 64GB RAM |  |
-        | 0.5 vCPU up to 8 vCPU | 32 vCPU |  |
+        | Minimum size per zone | Maximum size per zone |
+        | --- | --- |
+        | 1GB RAM | 64GB RAM |
+        | 0.5 vCPU up to 8 vCPU | 32 vCPU |
 
         The fault tolerance for the machine learning instance is set to 1 availability zone.
 

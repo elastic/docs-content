@@ -27,12 +27,12 @@ The script also generates an {{agent}} configuration file that you can use with 
 :sync: stack
 
 * An {{es}} cluster for storing and searching your data, and {{kib}} for visualizing and managing your data. This quickstart is available for all Elastic deployment models. To get started quickly, try out [{{ecloud}}](https://cloud.elastic.co/registration?page=docs&placement=docs-body).
-* A user with the `superuser` [built-in role](../../../deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md) or the privileges required to onboard data.
+* A user with the `superuser` [built-in role](/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md) or the privileges required to onboard data.
 
     ::::{dropdown} Expand to view required privileges
-    * [**Cluster**](../../../deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-cluster): `['monitor', 'manage_own_api_key']`
-    * [**Index**](../../../deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-indices): `{ names: ['logs-*-*', 'metrics-*-*'], privileges: ['auto_configure', 'create_doc'] }`
-    * [**Kibana**](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md): `{ spaces: ['*'], feature: { fleet: ['all'], fleetv2: ['all'] } }`
+    * [**Cluster**](/deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-cluster): `['monitor', 'manage_own_api_key']`
+    * [**Index**](/deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-indices): `{ names: ['logs-*-*', 'metrics-*-*'], privileges: ['auto_configure', 'create_doc'] }`
+    * [**Kibana**](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md): `{ spaces: ['*'], feature: { fleet: ['all'], fleetv2: ['all'] } }`
 
     ::::
 
@@ -43,8 +43,8 @@ The script also generates an {{agent}} configuration file that you can use with 
 :::{tab-item} Serverless
 :sync: serverless
 
-* An {{obs-serverless}} project. To learn more, refer to [Create an Observability project](../../../solutions/observability/get-started/create-an-observability-project.md).
-* A user with the **Admin** role or higher—required to onboard system logs and metrics. To learn more, refer to [Assign user roles and privileges](../../../deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
+* An {{obs-serverless}} project. To learn more, refer to [Create an Observability project](/solutions/observability/get-started/create-an-observability-project.md).
+* A user with the **Admin** role or higher—required to onboard system logs and metrics. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
 * Root privileges on the host—required to run the auto-detection script used in this quickstart.
 
 :::
@@ -90,7 +90,7 @@ The script also generates an {{agent}} configuration file that you can use with 
 :::{tab-item} Serverless
 :sync: serverless
 
-1. [Create a new {{obs-serverless}} project](../../../solutions/observability/get-started/create-an-observability-project.md), or open an existing one.
+1. [Create a new {{obs-serverless}} project](/solutions/observability/get-started/create-an-observability-project.md), or open an existing one.
 2. In your {{obs-serverless}} project, go to **Add Data**.
 3. Under **What do you want to monitor?** select **Host**, and then select **Elastic Agent: Logs & Metrics**.
 
@@ -155,22 +155,22 @@ After using the dashboards to examine your data and confirm you’ve ingested al
 
 For host monitoring, the following capabilities and features are recommended:
 
-* In the [Infrastructure UI](../../../solutions/observability/infra-and-hosts/analyze-infrastructure-host-metrics.md), analyze and compare data collected from your hosts. You can also:
+* In the [Infrastructure UI](/solutions/observability/infra-and-hosts/analyze-infrastructure-host-metrics.md), analyze and compare data collected from your hosts. You can also:
 
-    * [Detect anomalies](../../../solutions/observability/infra-and-hosts/detect-metric-anomalies.md) for memory usage and network traffic on hosts.
-    * [Create alerts](../../../solutions/observability/incident-management/alerting.md) that notify you when an anomaly is detected or a metric exceeds a given value.
+    * [Detect anomalies](/solutions/observability/infra-and-hosts/detect-metric-anomalies.md) for memory usage and network traffic on hosts.
+    * [Create alerts](/solutions/observability/incident-management/alerting.md) that notify you when an anomaly is detected or a metric exceeds a given value.
 
-* In [Discover](../../../solutions/observability/logs/discover-logs.md), search and filter your log data, get information about the structure of log fields, and display your findings in a visualization. You can also:
+* In [Discover](/solutions/observability/logs/discover-logs.md), search and filter your log data, get information about the structure of log fields, and display your findings in a visualization. You can also:
 
-    * [Monitor log data set quality](../../../solutions/observability/data-set-quality-monitoring.md) to find degraded documents.
-    * [Run a pattern analysis](../../../explore-analyze/machine-learning/machine-learning-in-kibana/xpack-ml-aiops.md#log-pattern-analysis) to find patterns in unstructured log messages.
-    * [Create alerts](../../../solutions/observability/incident-management/alerting.md) that notify you when an Observability data type reaches or exceeds a given value.
+    * [Monitor log data set quality](/solutions/observability/data-set-quality-monitoring.md) to find degraded documents.
+    * [Run a pattern analysis](/explore-analyze/machine-learning/machine-learning-in-kibana/xpack-ml-aiops.md#log-pattern-analysis) to find patterns in unstructured log messages.
+    * [Create alerts](/solutions/observability/incident-management/alerting.md) that notify you when an Observability data type reaches or exceeds a given value.
 
-* Use [machine learning](../../../explore-analyze/machine-learning/machine-learning-in-kibana.md) to apply predictive analytics to your data:
+* Use [machine learning](/explore-analyze/machine-learning/machine-learning-in-kibana.md) to apply predictive analytics to your data:
 
-    * [Detect anomalies](../../../explore-analyze/machine-learning/anomaly-detection.md) by comparing real-time and historical data from different sources to look for unusual, problematic patterns.
-    * [Analyze log spikes and drops](../../../explore-analyze/machine-learning/machine-learning-in-kibana/xpack-ml-aiops.md#log-rate-analysis).
-    * [Detect change points](../../../explore-analyze/machine-learning/machine-learning-in-kibana/xpack-ml-aiops.md#change-point-detection) in your time series data.
+    * [Detect anomalies](/explore-analyze/machine-learning/anomaly-detection.md) by comparing real-time and historical data from different sources to look for unusual, problematic patterns.
+    * [Analyze log spikes and drops](/explore-analyze/machine-learning/machine-learning-in-kibana/xpack-ml-aiops.md#log-rate-analysis).
+    * [Detect change points](/explore-analyze/machine-learning/machine-learning-in-kibana/xpack-ml-aiops.md#change-point-detection) in your time series data.
 
 
-Refer to the [OBservability overview](../../../solutions/observability/get-started/what-is-elastic-observability.md) for a description of other useful features.
+Refer to the [Observability overview](/solutions/observability/get-started/what-is-elastic-observability.md) for a description of other useful features.
