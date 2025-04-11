@@ -82,7 +82,7 @@ Standardize your data with ECS. Access logging libraries, field references, and 
 
 Explore reference content on the Search UI library and how you can develop fast, modern, and engaging search experiences.
 
-**Learn more in [Search UI](search-ui://reference/search-ui/index.md)**
+**Learn more in [Search UI](search-ui://reference/index.md)**
 
 ## Cloud
 
