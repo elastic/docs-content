@@ -18,7 +18,7 @@ On this page, you’ll learn how to configure and use Universal Profiling. This 
 * Installing the Universal Profiling Agent
 * Installing the Universal Profiling Agent integration
 
-We would appreciate feedback on your experience with this product and any other profiling pain points you may have. See the [send feedback](../../../troubleshoot/observability/troubleshoot-your-universal-profiling-agent-deployment.md#profiling-send-feedback) section of the troubleshooting documentation for more information.
+We would appreciate feedback on your experience with this product and any other profiling pain points you may have. See the [send feedback](/troubleshoot/observability/troubleshoot-your-universal-profiling-agent-deployment.md#profiling-send-feedback) section of the troubleshooting documentation for more information.
 
 
 ## Prerequisites [profiling-prereqs]

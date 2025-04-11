@@ -8,7 +8,7 @@ mapped_pages:
 % Stateful only for the following admon.
 
 ::::{important}
-**For Elastic Stack v9,** to create and manage SLOs, you need an [appropriate license](https://www.elastic.co/subscriptions), an {{es}} cluster with both `transform` and `ingest` [node roles](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-node.html#node-roles) present, and [SLO access](../../../solutions/observability/incident-management/configure-service-level-objective-slo-access.md) must be configured.
+**For Elastic Stack v9,** to create and manage SLOs, you need an [appropriate license](https://www.elastic.co/subscriptions), an {{es}} cluster with both `transform` and `ingest` [node roles](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-node.html#node-roles) present, and [SLO access](/solutions/observability/incident-management/configure-service-level-objective-slo-access.md) must be configured.
 
 ::::
 
@@ -28,7 +28,7 @@ The following table lists some important concepts related to SLOs:
 | **Error budget** | The amount of time that your SLI can fail to meet the SLO target before it violates your SLO. |
 | **Burn rate** | The rate at which your service consumes your error budget. |
 
-In addition to these key concepts related to SLO functionality, see [Understanding SLO internals](../../../troubleshoot/observability/troubleshoot-service-level-objectives-slos.md#slo-understanding-slos) for more information on how SLOs work and their relationship with other system components, such as [{{es}} Transforms](../../../explore-analyze/transforms.md).
+In addition to these key concepts related to SLO functionality, see [Understanding SLO internals](/troubleshoot/observability/troubleshoot-service-level-objectives-slos.md#slo-understanding-slos) for more information on how SLOs work and their relationship with other system components, such as [{{es}} Transforms](/explore-analyze/transforms.md).
 
 
 ## SLO overview [slo-in-elastic]
@@ -45,7 +45,7 @@ Select an SLO from the overview to see additional details including:
 * **Burn rate:** the percentage of bad events over different time periods (1h, 6h, 24h, 72h) and the risk of exhausting your error budget within those time periods.
 * **Historical SLI:** the SLI value and how it’s trending over the SLO time window.
 * **Error budget burn down:** the remaining error budget and how it’s trending over the SLO time window.
-* **Alerts:** active alerts if you’ve set any [SLO burn rate alert rules](../../../solutions/observability/incident-management/create-an-slo-burn-rate-rule.md) for the SLO.
+* **Alerts:** active alerts if you’ve set any [SLO burn rate alert rules](/solutions/observability/incident-management/create-an-slo-burn-rate-rule.md) for the SLO.
 
 :::{image} /solutions/images/serverless-slo-detailed-view.png
 :alt: Detailed view of a single SLO
@@ -75,7 +75,7 @@ There are also options to sort and group the SLOs displayed in the overview:
 
 * **Sort by**: SLI value, SLO status, Error budget consumed, or Error budget remaining.
 * **Group by**: None, Tags, Status, or SLI type.
-* Click icons to switch between a card view (![Card view icon](/solutions/images/serverless-apps.svg "")), list view (![List view icon](/solutions/images/serverless-list.svg "")), or compact view (![Compact view icon](/solutions/images/serverless-tableDensityCompact.svg "")]).
+* Click icons to switch between a card view (![Card view icon](/solutions/images/serverless-apps.svg "")), list view (![List view icon](/solutions/images/serverless-list.svg "")), or compact view (![Compact view icon](/solutions/images/serverless-tableDensityCompact.svg "")).
 
 
 ## SLO dashboard panels [observability-slos-slo-dashboard-panels]
@@ -92,7 +92,7 @@ Available SLO panels include:
 :screenshot:
 :::
 
-To learn more about Dashboards, see [Dashboards](../../../solutions/observability/get-started/get-started-with-dashboards.md).
+To learn more about Dashboards, see [Dashboards](/solutions/observability/get-started/get-started-with-dashboards.md).
 
 % Stateful only for upgrade.
 
@@ -100,7 +100,7 @@ To learn more about Dashboards, see [Dashboards](../../../solutions/observabilit
 
 Starting in version 8.12.0, SLOs are generally available (GA). If you’re upgrading from a beta version of SLOs (available in 8.11.0 and earlier), you must migrate your SLO definitions to a new format.
 
-Refer to [Upgrade from beta to GA](../../../troubleshoot/observability/troubleshoot-service-level-objectives-slos.
+Refer to [Upgrade from beta to GA](/troubleshoot/observability/troubleshoot-service-level-objectives-slos.md).
 
 
 ## Next steps [slo-overview-next-steps]
@@ -109,8 +109,8 @@ Refer to [Upgrade from beta to GA](../../../troubleshoot/observability/troublesh
 
 Get started using SLOs to measure your service performance:
 
-* [Configure SLO access](../../../solutions/observability/incident-management/configure-service-level-objective-slo-access.md)
-* [Create an SLO](../../../solutions/observability/incident-management/create-an-slo.md)
-* [SLO burn rate](../../../solutions/observability/incident-management/create-an-slo-burn-rate-rule.md)
-* [View alerts](../../../solutions/observability/incident-management/view-alerts.md)
-* [SLO burn rate breaches](../../../solutions/observability/incident-management/triage-slo-burn-rate-breaches.md)
+* [Configure SLO access](/solutions/observability/incident-management/configure-service-level-objective-slo-access.md)
+* [Create an SLO](/solutions/observability/incident-management/create-an-slo.md)
+* [SLO burn rate](/solutions/observability/incident-management/create-an-slo-burn-rate-rule.md)
+* [View alerts](/solutions/observability/incident-management/view-alerts.md)
+* [SLO burn rate breaches](/solutions/observability/incident-management/triage-slo-burn-rate-breaches.md)

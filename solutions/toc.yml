@@ -372,7 +372,6 @@ toc:
                   - file: observability/infra-and-hosts/step-4-run-backend-applications.md
                   - file: observability/infra-and-hosts/step-5-next-steps.md
               - file: observability/infra-and-hosts/operate-universal-profiling-backend.md
-              - file: observability/infra-and-hosts/universal-profiling-issues.md
           - file: observability/infra-and-hosts/tutorial-observe-kubernetes-deployments.md
           - file: observability/infra-and-hosts/tutorial-observe-nginx-instances.md
             children:

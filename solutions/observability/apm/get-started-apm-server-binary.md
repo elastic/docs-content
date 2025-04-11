@@ -67,8 +67,7 @@ tar xzvf apm-server-{{apm_server_version}}-darwin-x86_64.tar.gz
 $$$apm-installing-on-windows$$$
 **Windows:**
 
-1. Download the APM Server Windows zip file from the
-https://www.elastic.co/downloads/apm/apm-server[downloads page].
+1. Download the APM Server Windows zip file from the [downloads page](https://www.elastic.co/downloads/apm/apm-server).
 
 1. Extract the contents of the zip file into `C:\Program Files`.
 

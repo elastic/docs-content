@@ -11,7 +11,7 @@ applies_to:
 
 ::::{note}
 
-**For Observability serverless projects**, the **Admin** role or higher is required to create ingest pipelines that parse and route logs. To learn more, refer to [Assign user roles and privileges](../../../deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
+**For Observability serverless projects**, the **Admin** role or higher is required to create ingest pipelines that parse and route logs. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
 
 ::::
 
@@ -22,8 +22,8 @@ After parsing, you can use the structured fields to further organize your logs b
 
 Refer to the following sections for more on parsing and organizing your log data:
 
-* [Extract structured fields](../../../solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-extract-structured-fields): Extract structured fields like timestamps, log levels, or IP addresses to make querying and filtering your data easier.
-* [Reroute log data to specific data streams](../../../solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-reroute-log-data-to-specific-data-streams): Route data from the generic data stream to a target data stream for more granular control over data retention, permissions, and processing.
+* [Extract structured fields](/solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-extract-structured-fields): Extract structured fields like timestamps, log levels, or IP addresses to make querying and filtering your data easier.
+* [Reroute log data to specific data streams](/solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-reroute-log-data-to-specific-data-streams): Route data from the generic data stream to a target data stream for more granular control over data retention, permissions, and processing.
 
 
 ## Extract structured fields [observability-parse-log-data-extract-structured-fields]
@@ -124,10 +124,10 @@ When you added the log to Elastic in the previous section, the `@timestamp` fiel
 
 When looking into issues, you want to filter for logs by when the issue occurred not when the log was added to Elastic. To do this, extract the timestamp from the unstructured `message` field to the structured `@timestamp` field by completing the following:
 
-1. [Use an ingest pipeline to extract the `@timestamp` field](../../../solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-use-an-ingest-pipeline-to-extract-the-timestamp-field)
-2. [Test the pipeline with the simulate pipeline API](../../../solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-test-the-pipeline-with-the-simulate-pipeline-api)
-3. [Configure a data stream with an index template](../../../solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-configure-a-data-stream-with-an-index-template)
-4. [Create a data stream](../../../solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-create-a-data-stream)
+1. [Use an ingest pipeline to extract the `@timestamp` field](/solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-use-an-ingest-pipeline-to-extract-the-timestamp-field)
+2. [Test the pipeline with the simulate pipeline API](/solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-test-the-pipeline-with-the-simulate-pipeline-api)
+3. [Configure a data stream with an index template](/solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-configure-a-data-stream-with-an-index-template)
+4. [Create a data stream](/solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-create-a-data-stream)
 
 
 #### Use an ingest pipeline to extract the `@timestamp` field [observability-parse-log-data-use-an-ingest-pipeline-to-extract-the-timestamp-field]
@@ -320,14 +320,14 @@ Extracting the `log.level` field lets you filter by severity and focus on critic
 
 To extract and use the `log.level` field:
 
-1. [Add the `log.level` field to the dissect processor pattern in your ingest pipeline.](../../../solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-add-loglevel-to-your-ingest-pipeline)
-2. [Test the pipeline with the simulate API.](../../../solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-test-the-pipeline-with-the-simulate-api)
-3. [Query your logs based on the `log.level` field.](../../../solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-query-logs-based-on-loglevel)
+1. [Add the `log.level` field to the dissect processor pattern in your ingest pipeline.](/solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-add-loglevel-to-your-ingest-pipeline)
+2. [Test the pipeline with the simulate API.](/solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-test-the-pipeline-with-the-simulate-api)
+3. [Query your logs based on the `log.level` field.](/solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-query-logs-based-on-loglevel)
 
 
 #### Add `log.level` to your ingest pipeline [observability-parse-log-data-add-loglevel-to-your-ingest-pipeline]
 
-Add the `%{log.level}` option to the dissect processor pattern in the ingest pipeline you created in the [Extract the `@timestamp` field](../../../solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-use-an-ingest-pipeline-to-extract-the-timestamp-field) section with this command:
+Add the `%{log.level}` option to the dissect processor pattern in the ingest pipeline you created in the [Extract the `@timestamp` field](/solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-use-an-ingest-pipeline-to-extract-the-timestamp-field) section with this command:
 
 ```console
 PUT _ingest/pipeline/logs-example-default
@@ -350,7 +350,7 @@ Now your pipeline will extract these fields:
 * The `log.level` field: `WARN`
 * The `message` field: `192.168.1.101 Disk usage exceeds 90%.`
 
-In addition to setting an ingest pipeline, you need to set an index template. Use the index template created in the [Extract the `@timestamp` field](../../../solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-configure-a-data-stream-with-an-index-template) section.
+In addition to setting an ingest pipeline, you need to set an index template. Use the index template created in the [Extract the `@timestamp` field](/solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-configure-a-data-stream-with-an-index-template) section.
 
 
 #### Test the pipeline with the simulate API [observability-parse-log-data-test-the-pipeline-with-the-simulate-api]
@@ -491,14 +491,14 @@ This section shows you how to extract the `host.ip` field from the following exa
 
 To extract and use the `host.ip` field:
 
-1. [Add the `host.ip` field to your dissect processor in your ingest pipeline.](../../../solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-add-hostip-to-your-ingest-pipeline)
-2. [Test the pipeline with the simulate API.](../../../solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-test-the-pipeline-with-the-simulate-api)
-3. [Query your logs based on the `host.ip` field.](../../../solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-query-logs-based-on-hostip)
+1. [Add the `host.ip` field to your dissect processor in your ingest pipeline.](/solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-add-hostip-to-your-ingest-pipeline)
+2. [Test the pipeline with the simulate API.](/solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-test-the-pipeline-with-the-simulate-api)
+3. [Query your logs based on the `host.ip` field.](/solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-query-logs-based-on-hostip)
 
 
 #### Add `host.ip` to your ingest pipeline [observability-parse-log-data-add-hostip-to-your-ingest-pipeline]
 
-Add the `%{host.ip}` option to the dissect processor pattern in the ingest pipeline you created in the [Extract the `@timestamp` field](../../../solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-use-an-ingest-pipeline-to-extract-the-timestamp-field) section:
+Add the `%{host.ip}` option to the dissect processor pattern in the ingest pipeline you created in the [Extract the `@timestamp` field](/solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-use-an-ingest-pipeline-to-extract-the-timestamp-field) section:
 
 ```console
 PUT _ingest/pipeline/logs-example-default
@@ -522,7 +522,7 @@ Your pipeline will extract these fields:
 * The `host.ip` field: `192.168.1.101`
 * The `message` field: `Disk usage exceeds 90%.`
 
-In addition to setting an ingest pipeline, you need to set an index template. Use the index template created in the [Extract the `@timestamp` field](../../../solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-configure-a-data-stream-with-an-index-template) section.
+In addition to setting an ingest pipeline, you need to set an index template. Use the index template created in the [Extract the `@timestamp` field](/solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-configure-a-data-stream-with-an-index-template) section.
 
 
 #### Test the pipeline with the simulate API [observability-parse-log-data-test-the-pipeline-with-the-simulate-api-1]
@@ -758,16 +758,16 @@ This section shows you how to use a reroute processor to send the high-severity 
 ```
 
 ::::{note}
-When routing data to different data streams, we recommend picking a field with a limited number of distinct values to prevent an excessive increase in the number of data streams. For more details, refer to the [Size your shards](../../../deploy-manage/production-guidance/optimize-performance/size-shards.md) documentation.
+When routing data to different data streams, we recommend picking a field with a limited number of distinct values to prevent an excessive increase in the number of data streams. For more details, refer to the [Size your shards](/deploy-manage/production-guidance/optimize-performance/size-shards.md) documentation.
 
 ::::
 
 
 To use a reroute processor:
 
-1. [Add a reroute processor to your ingest pipeline.](../../../solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-add-a-reroute-processor-to-the-ingest-pipeline)
-2. [Add the example logs to your data stream.](../../../solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-add-logs-to-a-data-stream)
-3. [Query your logs and verify the high-severity logs were routed to the new data stream.](../../../solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-verify-the-reroute-processor-worked)
+1. [Add a reroute processor to your ingest pipeline.](/solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-add-a-reroute-processor-to-the-ingest-pipeline)
+2. [Add the example logs to your data stream.](/solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-add-logs-to-a-data-stream)
+3. [Query your logs and verify the high-severity logs were routed to the new data stream.](/solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-verify-the-reroute-processor-worked)
 
 
 ### Add a reroute processor to the ingest pipeline [observability-parse-log-data-add-a-reroute-processor-to-the-ingest-pipeline]
@@ -802,7 +802,7 @@ The previous command sets the following values for your reroute processor:
 * `if`: Conditionally runs the processor. In the example, `"ctx.log?.level == 'WARN' || ctx.log?.level == 'ERROR'",` means the processor runs when the `log.level` field is `WARN` or `ERROR`.
 * `dataset`: the data stream dataset to route your document to if the previous condition is `true`. In the example, logs with a `log.level` of `WARN` or `ERROR` are routed to the `logs-critical-default` data stream.
 
-In addition to setting an ingest pipeline, you need to set an index template. Use the index template created in the [Extract the `@timestamp` field](../../../solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-configure-a-data-stream-with-an-index-template) section.
+In addition to setting an ingest pipeline, you need to set an index template. Use the index template created in the [Extract the `@timestamp` field](/solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-configure-a-data-stream-with-an-index-template) section.
 
 
 ### Add logs to a data stream [observability-parse-log-data-add-logs-to-a-data-stream]

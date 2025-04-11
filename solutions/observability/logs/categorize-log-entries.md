@@ -12,7 +12,7 @@ Application log events are often unstructured and contain variable data. Many lo
 The **Categories** page enables you to identify patterns in your log events quickly. Instead of manually identifying similar logs, the logs categorization view lists log events that have been grouped based on their messages and formats so that you can take action quicker.
 
 ::::{note}
-This feature makes use of {{ml}} {{anomaly-jobs}}. To set up jobs, you must have `all` {{kib}} feature privileges for **{{ml-app}}**. Users that have full or read-only access to {{ml-features}} within a {{kib}} space can view the results of *all* {{anomaly-jobs}} that are visible in that space, even if they do not have access to the source indices of those jobs. You must carefully consider who is given access to {{ml-features}}; {{anomaly-job}} results may propagate field values that contain sensitive information from the source indices to the results. For more details, refer to [Set up {{ml-features}}](../../../explore-analyze/machine-learning/setting-up-machine-learning.md).
+This feature makes use of {{ml}} {{anomaly-jobs}}. To set up jobs, you must have `all` {{kib}} feature privileges for **{{ml-app}}**. Users that have full or read-only access to {{ml-features}} within a {{kib}} space can view the results of *all* {{anomaly-jobs}} that are visible in that space, even if they do not have access to the source indices of those jobs. You must carefully consider who is given access to {{ml-features}}; {{anomaly-job}} results may propagate field values that contain sensitive information from the source indices to the results. For more details, refer to [Set up {{ml-features}}](/explore-analyze/machine-learning/setting-up-machine-learning.md).
 ::::
 
 
@@ -51,4 +51,4 @@ To view a log message under a particular category, click the arrow at the end of
 :screenshot:
 :::
 
-For more information about categorization, go to [Detecting anomalous categories of data](../../../explore-analyze/machine-learning/anomaly-detection/ml-configuring-categories.md).
+For more information about categorization, go to [Detecting anomalous categories of data](/explore-analyze/machine-learning/anomaly-detection/ml-configuring-categories.md).
