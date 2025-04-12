@@ -99,7 +99,7 @@ Excessive JVM garbage collection usually indicates high heap memory usage. Commo
 
 You might experience high CPU usage on specific data nodes or an entire [data tier](/manage-data/lifecycle/data-tiers.md) if traffic isn’t evenly distributed. This is known as [hot spotting](hotspotting.md). Hot spotting commonly occurs when read or write applications don’t properly balance requests across nodes, or when indices receiving heavy write activity, such as indices in the hot tier, have their shards concentrated on just one or a few nodes.
 
-For details on diagnosing and resolving these issues, see [hot spotting](hotspotting.md).
+For details on diagnosing and resolving these issues, refer to [](hotspotting.md).
 
 **Oversharding**
 
