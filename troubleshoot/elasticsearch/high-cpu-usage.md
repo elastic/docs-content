@@ -119,7 +119,7 @@ For more information, refer to [](/deploy-manage/production-guidance/optimize-pe
 
 To further reduce CPU load or mitigate temporary spikes in resource usage, consider these steps:
 
-* Scale your cluster: Heavy indexing and search loads can deplete smaller thread pools.Add nodes or upgrade existing ones to handle increased indexing and search loads more effectively.
+* **Scale your cluster**: Heavy indexing and search loads can deplete smaller thread pools. Add nodes or upgrade existing ones to handle increased indexing and search loads more effectively.
 * Spread out bulk requests: Submit smaller [bulk indexing](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-bulk-1) or multi-search requests and space them out to avoid overwhelming thread pools.
 * Cancel long-running searches: Regularly use the task management API to identify and cancel searches that consume excessive CPU time. To check
 for these searches, use the [task management API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-tasks-list).
