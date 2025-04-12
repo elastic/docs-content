@@ -75,7 +75,7 @@ This API returns a breakdown of any hot threads in plain text. High CPU usage fr
 
 The following tips outline the most common causes of high CPU usage and their solutions.
 
-**Check JVM garbage collection**
+### Check JVM garbage collection
 
 High CPU usage is often caused by excessive JVM garbage collection (GC) activity. This excessive GC typically arises from configuration problems or inefficient queries causing increased heap memory usage.
 
