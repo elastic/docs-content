@@ -40,7 +40,7 @@ This usually indicates a misconfiguration in your initial cluster settings. Note
 ```
 If this setting is omitted during the first cluster formation, no master election can occur.
 
-Only nodes with `node.master: true` are eligible to become master nodes and participate in elections. Make sure the nodes listed in `cluster.initial_master_nodes` are properly configured as master-eligible. Nodes with `node.voting_only: true` can participate in voting but cannot become master themselves. See [this guide](/deploy-manage/distributed-architecture/discovery-cluster-formation/discovery-hosts-providers) for more information.
+Only nodes with `node.master: true` are eligible to become master nodes and participate in elections. Make sure the nodes listed in `cluster.initial_master_nodes` are properly configured as master-eligible. Nodes with `node.voting_only: true` can participate in voting but cannot become master themselves. See [this guide](/deploy-manage/distributed-architecture/discovery-cluster-formation/discovery-hosts-providers.md) for more information.
 
 An {{es}} cluster requires a quorum of master-eligible nodes to elect a master. A quorum is defined as `(N/2 + 1)`, where N is the number of master-eligible nodes. If fewer than this number are available, the cluster will not elect a master and will not form. This quorum mechanism helps prevent split-brain scenarios where multiple nodes mistakenly believe they are the master. For more details, see [Quorum-based decision making](../../deploy-manage/distributed-architecture/discovery-cluster-formation/modules-discovery-quorums.md).
 
