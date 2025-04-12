@@ -113,7 +113,7 @@ If you have too many small shards, you can address this by doing the following:
 * Deleting or closing indices containing outdated or unnecessary data.
 * Reindexing smaller shards into fewer, larger shards to optimize cluster performance.
 
-See [Size your shards](/deploy-manage/production-guidance/optimize-performance/size-shards.md) for more information.
+For more information, refer to [](/deploy-manage/production-guidance/optimize-performance/size-shards.md).
 
 ### Additional recommendations
 
