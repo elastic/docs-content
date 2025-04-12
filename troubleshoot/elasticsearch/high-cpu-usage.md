@@ -81,7 +81,7 @@ High CPU usage is often caused by excessive JVM garbage collection (GC) activity
 
 For optimal JVM performance, garbage collection should meet these criteria:
 
-1. Young GC completes quickly (ideally within 50 ms).
+* Young GC completes quickly, ideally within 50 milliseconds.
 2. Young GC does not occur too frequently (approximately once every 10 seconds).
 3. Old GC completes quickly (ideally within 1 second).
 4. Old GC does not occur too frequently (once every 10 minutes or less frequently).
