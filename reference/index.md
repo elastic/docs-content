@@ -48,7 +48,7 @@ Visualize and analyze your data with Kibana. Configure advanced settings, explor
 
 **Learn more in [Kibana](kibana://reference/index.md)**
 
-## Plugins
+## Elasticsearch plugins
 
 Extend the functionality of your Elastic Stack with a variety of plugins. From analysis and discovery to snapshot/restore and store plugins, customize your setup to fit your requirements.
 
@@ -66,17 +66,17 @@ Access syntax references, function libraries, and best practices for Painless sc
 
 **Learn more in [Painless scripting](elasticsearch://reference/scripting-languages/painless/painless.md)**
 
-## Data analysis
-
-Unlock insights with powerful data analysis tools. Utilize text analysis components, aggregations, and function references to derive meaningful conclusions from your data.
-
-**Learn more in [Data analysis](data-analysis/index.md)**
-
 ## ECS (Elastic Common Schema) reference
 
 Standardize your data with ECS. Access logging libraries, field references, and categorization fields to ensure consistency and compatibility across your data sources.
 
 **Learn more in [ECS](ecs://reference/index.md)**
+
+## Data analysis
+
+Unlock insights with powerful data analysis tools. Utilize text analysis components, aggregations, and function references to derive meaningful conclusions from your data.
+
+**Learn more in [Data analysis](data-analysis/index.md)**
 
 ## Search UI library
 
