@@ -93,7 +93,7 @@ Excessive JVM garbage collection usually indicates high heap memory usage. Commo
 * Excessively large bulk indexing requests
 * Inefficient or incorrect mapping definitions
 * Improper heap size configuration
-* Misconfiguration of JVM new generation ratio (-XX:NewRatio)
+* Misconfiguration of JVM new generation ratio (`-XX:NewRatio`)
 
 **Hot spotting**
 
