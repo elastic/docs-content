@@ -107,7 +107,7 @@ If your Elasticsearch cluster contains a large number of shards, you might be fa
 
 Oversharding occurs when there are too many shards, causing each shard to be smaller than optimal. While Elasticsearch doesn’t have a strict minimum shard size, an excessive number of small shards can negatively impact performance. Each shard consumes cluster resources since Elasticsearch must maintain metadata and manage shard states across all nodes.
 
-If you have too many small shards, you can address this by:
+If you have too many small shards, you can address this by doing the following:
 
 * Removing empty or unused indices.
 * Deleting or closing indices containing outdated or unnecessary data.
