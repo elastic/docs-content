@@ -22,7 +22,7 @@ To fix, ensure the field's value matches the expected data type in the mapping.
 
 ## Understand field types and mapping
 
-By default, {{es}} uses [dynamic mappings](../../manage-data/data-store/mapping/dynamic-mapping.md) to infer a field's type based on the **first value indexed** when no explicit mapping exists.
+By default, {{es}} uses [dynamic mappings](../../manage-data/data-store/mapping/dynamic-field-mapping.md) to infer a field's type based on the **first value indexed** when no explicit mapping exists.
 
 For example, if you index:
 

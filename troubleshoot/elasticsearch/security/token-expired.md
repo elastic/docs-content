@@ -18,7 +18,7 @@ Error: token expired
 
 This error occurs when the access token used for authentication has expired. When token-based authentication is enabled in {{es}}, each access token has a limited lifespan. If a token is used after its expiration time, {{es}} rejects the request.
 
-To fix, 
+**Resolution**
 - **Refresh the token** – Obtain a new token using your token refresh workflow.
 - **Implement automatic token refresh** – Ensure your application is configured to refresh tokens before expiration.
 - **Avoid using expired tokens** – Do not reuse tokens after logout or expiration.

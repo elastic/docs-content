@@ -13,7 +13,7 @@ navigation_title: "Error: updating number_of_replicas for indices"
 # Fix error when updating number_of_replicas for indices in Elasticsearch [updating-number-of-replicas-for-indices-error]
 
 ```console
-updating number_of_replicas to {new replicas number} for indices {affected indices list}.
+updating number_of_replicas to [] for indices [].
 ```
 
 This error occurs when there's an attempt to update the number of replicas on one or more indices, but the value provided is either missing or invalid. This can be caused by syntax errors, incorrect data types, or trying to assign more replicas than available nodes can support.

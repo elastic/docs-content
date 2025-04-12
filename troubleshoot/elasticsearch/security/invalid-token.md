@@ -18,7 +18,7 @@ Error: invalid token
 
 This error occurs when {{es}} receives a request containing an invalid or [expired token](token-expired.md) during authentication. It's typically caused by missing, incorrect, or outdated tokens.
 
-## What it means
+**Symptoms**
 
 With security enabled in {{es}}, clients must authenticate using valid tokens. If a token is invalid or expired, the request is rejected.
 
@@ -30,7 +30,7 @@ This can be caused by
 - Token not properly attached by client or middleware
 - Misconfigured security settings in {{es}}
 
-## How to resolve it
+**Resolution**
 
 1. **Verify the token** – Ensure it’s correctly formatted and current.
 2. **Check expiration** – Generate a new token if needed.

@@ -20,6 +20,13 @@ This error occurs when {{es}} cannot understand the response body it received, p
 
 ## Issues with REST
 
+:::{warning}
+Deprecated in 7.15.0.
+
+The Java REST Client is deprecated in favor of the [Java API Client](https://www.elastic.co/guide/en/elasticsearch/client/java-api-client/current/index.html).
+:::
+
+
 This error is typically related to the REST High Level Client and it occurs whenever the client cannot parse the response received by {{es}}’s low-level client.
 
 ### What it means
@@ -34,7 +41,7 @@ Below are a few scenarios where users reported receiving this error, and the lik
 
 {{es}} does not guarantee that it will maintain the compatibility between different major versions. If you’re running a 6.x cluster, but your application uses a 7.x version of the High Level Client, this could be what is causing the issue, due to differences in the response schema.
 
-You can learn more about [compatibility for the High Level REST client](https://www.elastic.co/guide/en/elasticsearch/client/java-rest/current/java-rest-high-compatibility.html).
+You can learn more about the [compatibility for the High Level REST client](https://www.elastic.co/guide/en/elasticsearch/client/java-rest/current/java-rest-high-compatibility.html) (deprecated). 
 
 #### The cluster is behind a reverse proxy with a path prefix
 

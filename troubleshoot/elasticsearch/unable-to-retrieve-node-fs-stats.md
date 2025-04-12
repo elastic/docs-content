@@ -19,9 +19,10 @@ Error: unable to retrieve node fs stats
 This error occurs when the {{es}} client (like {{kib}}) cannot fetch version information from one or more {{es}} nodes. This may happen due to network issues, incorrect configuration, or unavailable nodes. 
 
 To resolve this
-- Ensure that the nodes are up and running
-- Check the network connectivity between the client and the nodes
-- Verify the configuration settings. 
+
+1. Ensure that the nodes are up and running
+2. Check the network connectivity between the client and the nodes
+3. Verify the configuration settings. 
 
 If the issue persists, consider checking the {{es}} logs for more detailed error information.
 

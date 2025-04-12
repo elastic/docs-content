@@ -59,7 +59,7 @@ PUT my-index
 
 ## Metric aggregations on text fields
 
-Metric aggregations require numeric fields. Attempting them on text fields will fail.
+[Metric aggregations](elasticsearch://reference/aggregations/metrics.md) require numeric fields. Attempting them on text fields will fail.
 
 Use a script to convert the text to numeric:
 
@@ -107,7 +107,7 @@ Identify and resolve the cause. If necessary, and as a last resort, delete the p
 
 ## Misused global aggregation
 
-[Global aggregations](elasticsearch://reference/aggregations/search-aggregations-bucket-global-aggregation) must be top-level. Nesting them incorrectly causes errors.
+[Global aggregations](elasticsearch://reference/aggregations/search-aggregations-bucket-global-aggregation.md) must be top-level. Nesting them incorrectly causes errors.
 
 To fix, structure the query so the `global` aggregation is top-level:
 
