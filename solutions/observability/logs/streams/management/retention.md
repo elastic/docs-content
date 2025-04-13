@@ -5,7 +5,7 @@ applies_to:
 
 # Manage data retention [streams-data-retention]
 
-Use the **Data retention** page under the **Management** tab to set how long your stream retains data and to get insight into your streams data ingestion and storage size.
+Use the **Data retention** page under the **Management** tab to determine how long your stream retains data and to get insight into your stream's data ingestion and storage size.
 
 ![alt text](<retention.png>)
 

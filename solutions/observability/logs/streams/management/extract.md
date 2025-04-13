@@ -102,7 +102,7 @@ These failures may be something you should address, but in some cases they also 
 
 ### Mapping Conflicts
 
-As part of processing, streams also checks for mapping conflicts by simulating the change end to end. If a mapping conflict is detected, streams marks the processor as failed and displays a failure message:
+As part of processing, Streams also checks for mapping conflicts by simulating the change end to end. If a mapping conflict is detected, Streams marks the processor as failed and displays a failure message:
 
 ![alt text](<mapping-conflicts.png>)
 
@@ -114,7 +114,7 @@ Once saved, the processor also gives you a quick look at how successful the proc
 
 ## Advanced: How and where do these changes get applied to the underlying datastream? [streams-applied-changes]
 
-When you save processors, streams modifies the "best matching" ingest pipeline for the data stream. In short, streams either chooses the best matching pipeline ending in `@custom` that is already part of your data stream, or it adds one for you.
+When you save processors, Streams modifies the "best matching" ingest pipeline for the data stream. In short, Streams either chooses the best matching pipeline ending in `@custom` that is already part of your data stream, or it adds one for you.
 
 Streams identifies the appropriate @custom pipeline (for example, `logs-myintegration@custom` or `logs@custom`).
 It checks the default_pipeline that is set on the datastream.
@@ -122,10 +122,10 @@ It checks the default_pipeline that is set on the datastream.
 You can view the default pipeline at **Management** → **Advanced** under **Ingest pipeline**.
 In this default pipeline, we locate the last processor that calls a pipeline ending in `@custom`. For integrations, this would result in a pipeline name like `logs-myintegration@custom`. Without an integration, the only `@custom` pipeline available may be `logs@custom`.
 
-- If no default pipeline is detected, streams adds a default pipeline to the data stream by updating the index templates.
-- If a default pipeline is detected, but it does not contain a custom pipeline, streams adds the pipeline processor directly to the pipeline.
+- If no default pipeline is detected, Streams adds a default pipeline to the data stream by updating the index templates.
+- If a default pipeline is detected, but it does not contain a custom pipeline, Streams adds the pipeline processor directly to the pipeline.
 
-Streams then adds a pipeline processor to the end of that `@custom` pipeline. This processor definition directs matching documents to a dedicated pipeline managed by streams called `<data_stream_name>@stream.processing`:
+Streams then adds a pipeline processor to the end of that `@custom` pipeline. This processor definition directs matching documents to a dedicated pipeline managed by Streams called `<data_stream_name>@stream.processing`:
 
 // Example processor added to the relevant @custom pipeline
 {
@@ -133,7 +133,7 @@ Streams then adds a pipeline processor to the end of that `@custom` pipeline. Th
     "name": "<data_stream_name>@stream.processing", // e.g., logs-my-app-default@stream.processing
     "if": "ctx._index == '<data_stream_name>'",
     "ignore_missing_pipeline": true,
-    "description": "Call the stream's managed pipeline - do not change this manually but instead use the streams UI or API"
+    "description": "Call the stream's managed pipeline - do not change this manually but instead use the Streams UI or API"
   }
 }
 
@@ -141,8 +141,8 @@ Streams then creates and manages the `<data_stream_name>@stream.processing` pipe
 
 ### User interaction with pipelines
 
-Do not manually modify the `<data_stream_name>@stream.processing` pipeline created by streams.
-You can still add your own processors manually to the `@custom` pipeline if needed. Adding processors before the pipeline processor streams created may cause unexpected behavior.
+Do not manually modify the `<data_stream_name>@stream.processing` pipeline created by Streams.
+You can still add your own processors manually to the `@custom` pipeline if needed. Adding processors before the pipeline processor Streams created may cause unexpected behavior.
 
 ## Known limitations [streams-known-limitations]
 

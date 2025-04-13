@@ -21,13 +21,13 @@ Streams requires the following Elastic Cloud Serverless roles:
 
 % - TODO
 
-## Access streams
-To access streams:
+## Access Streams
+To access Streams:
 
 - From the navigation menu, select **Streams**.
 
 - From discover, expand a document's details flyout.
-Select the **Stream** link or action associated with the document's data stream to open the streams interface, filtered to show only the selected stream.
+Select the **Stream** link or action associated with the document's data stream to open the Streams interface, filtered to show only the selected stream.
 
 
 ## Overview tab [streams-overview-tab]
