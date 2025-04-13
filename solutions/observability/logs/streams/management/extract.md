@@ -3,18 +3,20 @@ applies_to:
     serverless: preview
 ---
 # Extract fields [streams-extract-fields]
-Log messages are often unstructured. To get the most value, it’s important to parse them and extract some of the information into dedicated fields. The most common data to extract is usually the timestamp and the log level, but other pieces of information like IP addresses, usernames, or ports can also be useful.
 
-Use the **Extract field** page under the **Management** tab to easily iterate and process your data. Any change is immediately available as a preview and is tested end-to-end.
-Because the changes to your data's structure is simulated, you'll see them instantly.
+Unstructured log messages need to be parsed into meaningful fields so you can filter and analyze them quickly. Common fields to extract include timestamp and the log level, but you can also extract information like IP addresses, usernames, or ports.
 
-The UI also shows indexing problems, such as mapping conflicts, ahead of time, so you can address them before applying the change.
+Use the **Extract field** page under the **Management** tab to process your data. Changes are immediately available as a preview and tested end-to-end.
+The UI simulates your changes, so you can see them immediately.
+
+The UI also shows indexing problems, such as mapping conflicts, so you can address them before applying changes.
 
 :::{note}
 Applied changes aren't retroactive and only affect *future data ingested*.
 :::
 
 ## Add a processor [streams-add-processors]
+
 Streams uses {{es}} ingest pipelines to process your data. Ingest pipelines are made up of processors that transform your data.
 
 To add a processor:
@@ -36,7 +38,8 @@ Editing processors with JSON is planned for a future release. More processors ma
 :::
 
 ### Add conditions to processors [streams-add-processor-conditions]
-You can provide a condition for each processor under **Optional fields**. The condition is a boolean expression that is evaluated for each document. Provide a field, a value, and a comparator.
+
+You can provide a condition for each processor under **Optional fields**. Conditions are boolean expressions that are evaluated for each document. Provide a field, a value, and a comparator.
 Processors support these comparators:
 - equals
 - not equals
@@ -51,31 +54,37 @@ Processors support these comparators:
 - not exists
 
 ### Ignore failures [streams-ignore-failures]
-Turn on the `Ignore failure` option to ignore the processor if it fails. This is useful if you want to continue processing the document even if the processor fails.
+
+Turn on **Ignore failure** to ignore the processor if it fails. This is useful if you want to continue processing the document even if the processor fails.
 
 ### Ignore missing fields [streams-ignore-missing-fields]
-Turn on the `Ignore missing fields` option to ignore the processor if the field is not present. This is useful if you want to continue processing the document even if the field is not present.
+
+Turn on **Ignore missing fields** to ignore the processor if the field is not present. This is useful if you want to continue processing the document even if the field is not present.
 
 ### Preview changes [streams-preview-changes]
-The left side of the UI gives you access to a subset of pipeline processors to modify your documents, while the right side shows you a preview of the results, with additional filtering options depending on the outcome of the simulation.
 
-Anytime you make a change on the left side of the UI, the table on the right updates automatically.
+Under **Processors for field extraction**, set pipeline processors to modify your documents. **Data preview** shows you a preview of the results, with additional filtering options depending on the outcome of the simulation.
 
-We recommend primarily adding processing steps, not removing them or changing the order of existing processors, as this may lead to unexpected results.
+When you add or edit processors, the **Data preview** updates automatically.
 
-To preview changes, streams loads 100 documents from your existing data and runs your changes using them.
+:::{note}
+To avoid unexpected results, focus on adding processors rather than removing or reordering existing processors.
+:::
+
+**Data preview** loads 100 documents from your existing data and runs your changes using them.
 For any newly added processors, this simulation is reliable. You can save individual processors during the preview, and even reorder them.
-Once you click 'Save changes' at the bottom right of the UI, the changes are applied to the data stream.
+Selecting 'Save changes' applies your changes to the data stream.
 
-If you then edit the stream again, keep the following in mind:
+If you edit the stream again, note the following:
 - Adding more processors to the end of the list will work as expected.
-- Making changes to existing processors or re-ordering them may cause unexpected results, as we are not able to accurately simulate the changes to the existing data. This is because the documents used for sampling may have already been processed by the pipeline. This is a known limitation.
-- Adding a new processor and moving it before an existing processor may have unexpected consequences. The simulation will only simulate the new processor, and not the existing ones. This means that the simulation may not accurately reflect the changes to the existing data.
+- Changing existing processors or re-ordering them may cause unexpected results. Because the the pipeline may have already processed the documents used for sampling, the UI cannot accurately simulate changes to existing data.
+- Adding a new processor and moving it before an existing processor may cause unexpected results. The UI only simulates the new processor, not the existing ones, so the simulation may not accurately reflect changes to existing data.
 
 ![alt text](<grok.png>)
 
 ## Detect and handle failures [streams-detect-failures]
-Documents fail processing for many different reasons. Streams helps you to easily find and handle failures before deploying changes.
+
+Documents fail processing for different reasons. Streams helps you to easily find and handle failures before deploying changes.
 
 The following example shows not all messages matched the provided grok pattern:
 
@@ -85,34 +94,38 @@ You can filter your documents by selecting **Parsed** or **Failed** at the top o
 
 ![alt text](<failures.png>)
 
-Any failures are displayed at the bottom of the process editor:
+Failures are displayed at the bottom of the process editor:
 
 ![alt text](<processor-failures.png>)
 
 These failures may be something you should address, but in some cases they also act as more of a warning.
 
-**Map Conflicts**
-As part of processing, streams also checks for mapping conflicts. This is done by end-to-end simulation of the change. If a mapping conflict is detected, the processor is marked as failed and you'll see a failure message will the UI:
+### Mapping Conflicts
+
+As part of processing, streams also checks for mapping conflicts by simulating the change end to end. If a mapping conflict is detected, streams marks the processor as failed and displays a failure message:
 
 ![alt text](<mapping-conflicts.png>)
 
 ## Processor statistics and detected fields [streams-stats-and-detected-fields]
-Once saved, the processor also gives you statistics at a quick glance to indicate how successful the processing was for this step and which fields were added.
+
+Once saved, the processor also gives you a quick look at how successful the processing was for this step and which fields were added.
 
 ![alt text](<field-stats.png>)
 
 ## Advanced: How and where do these changes get applied to the underlying datastream? [streams-applied-changes]
-When you save processors, streams modifies the ‘best matching’ ingest pipeline for the data stream. In short, streams chooses the best matching pipeline ending in “@custom” that is already part of your data stream or adds one for you.
 
-Streams identifies the appropriate @custom pipeline (for example, logs-myintegration@custom or logs@custom).
+When you save processors, streams modifies the "best matching" ingest pipeline for the data stream. In short, streams either chooses the best matching pipeline ending in `@custom` that is already part of your data stream, or it adds one for you.
+
+Streams identifies the appropriate @custom pipeline (for example, `logs-myintegration@custom` or `logs@custom`).
 It checks the default_pipeline that is set on the datastream.
 
-You can also view the default pipeline in the **Advanced** tab under `Ingest pipeline`.
-In this default pipeline, we locate the last processor that calls a pipeline ending in “@custom”. For integrations, this would result in a pipeline name like `logs-myintegration@custom`. When not using the integration, the only @custom pipeline available may be `logs@custom`.
-- If no default pipeline is detected, a default pipeline will be added to the data stream by updating the index templates.
-- If a default pipeline is detected, but it does not contain a custom pipeline, the pipeline processor is added to the pipeline directly.
+You can view the default pipeline at **Management** → **Advanced** under **Ingest pipeline**.
+In this default pipeline, we locate the last processor that calls a pipeline ending in `@custom`. For integrations, this would result in a pipeline name like `logs-myintegration@custom`. Without an integration, the only `@custom` pipeline available may be `logs@custom`.
 
-Streams then adds a pipeline processor to the end of that @custom pipeline. This processor definition directs matching documents to a dedicated pipeline managed by streams called `<data_stream_name>@stream.processing`:
+- If no default pipeline is detected, streams adds a default pipeline to the data stream by updating the index templates.
+- If a default pipeline is detected, but it does not contain a custom pipeline, streams adds the pipeline processor directly to the pipeline.
+
+Streams then adds a pipeline processor to the end of that `@custom` pipeline. This processor definition directs matching documents to a dedicated pipeline managed by streams called `<data_stream_name>@stream.processing`:
 
 // Example processor added to the relevant @custom pipeline
 {
@@ -126,11 +139,13 @@ Streams then adds a pipeline processor to the end of that @custom pipeline. This
 
 Streams then creates and manages the `<data_stream_name>@stream.processing` pipeline, placing the processors you configured in the UI (Grok, Set, etc.) inside it.
 
-**User interaction with pipelines**:
+### User interaction with pipelines
+
 Do not manually modify the `<data_stream_name>@stream.processing` pipeline created by streams.
-You can still add your own processors manually to the @custom pipeline if needed. Any processors you add before the pipeline processor streams created may effect the behavior in unexpected ways.
+You can still add your own processors manually to the `@custom` pipeline if needed. Adding processors before the pipeline processor streams created may cause unexpected behavior.
 
 ## Known limitations [streams-known-limitations]
+
 - The UI does not support all processors. We are working on adding more processors in the future.
 - The UI does not support all processor options. We are working on adding more options in the future.
 - The simulation may not accurately reflect the changes to the existing data when editing existing processors or re-ordering them.
