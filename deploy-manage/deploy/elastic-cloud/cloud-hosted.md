@@ -11,47 +11,6 @@ mapped_pages:
 
 # {{ech}}
 
-% What needs to be done: Refine
-
-% GitHub issue: https://github.com/elastic/docs-projects/issues/338
-
-% Use migrated content from existing pages that map to this page:
-
-% - [ ] ./raw-migrated-files/cloud/cloud/ec-getting-started.md
-% - [ ] ./raw-migrated-files/cloud/cloud/ec-prepare-production.md
-%      Notes: link roundup is good but the plan for prod content is not needed here
-% - [ ] ./raw-migrated-files/cloud/cloud/ec-faq-getting-started.md
-%      Notes: extract what we can from faq
-% - [ ] ./raw-migrated-files/cloud/cloud/ec-about.md
-%      Notes: redirect only
-% - [ ] ./raw-migrated-files/cloud/cloud-heroku/ech-configure.md
-
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
-
-$$$faq-aws-difference$$$
-
-$$$faq-aws$$$
-
-$$$faq-config$$$
-
-$$$faq-elastic$$$
-
-$$$faq-full-stack$$$
-
-$$$faq-limit$$$
-
-$$$faq-subscriptions$$$
-
-$$$faq-trial$$$
-
-$$$faq-vs-aws$$$
-
-$$$faq-what$$$
-
-$$$faq-where$$$
-
-$$$faq-x-pack$$$
-
 **{{ech}} is the {{stack}}, managed through {{ecloud}} deployments.**
 
 It is also formerly known as {{es}} Service.
@@ -63,7 +22,6 @@ A **hosted deployment** helps you manage an {{es}} cluster and instances of othe
 ::::{note}
 {{ech}} is one of the two deployment options available on {{ecloud}}. [Depending on your needs](../elastic-cloud.md), you can also run [{{serverless-full}} projects](/deploy-manage/deploy/elastic-cloud/serverless.md).
 ::::
-
 
 **Hardware profiles to optimize deployments for your usage.**
 
@@ -91,7 +49,7 @@ These solutions help you accomplish your use cases: Ingest data into the deploym
 Of course, you can choose to follow your own path and use Elastic components available in your deployment to ingest, visualize, and analyze your data independently from solutions.
 
 
-## How to operate {{ech}}? [ec_how_to_operate_elasticsearch_service]
+## How to operate {{ech}} [ec_how_to_operate_elasticsearch_service]
 
 **Where to start?**
 
@@ -110,7 +68,13 @@ There are a few things that can help you make sure that your production deployme
 
 **Secure your environment**
 
-Control which users and services can access your deployments by [securing your environment](/deploy-manage/security/secure-your-cluster-deployment.md). [Add authentication mechanisms](/deploy-manage/users-roles.md), configure [traffic filtering](/deploy-manage/security/traffic-filtering.md) for private link, encrypt your deployment data and snapshots at rest [with your own key](/deploy-manage/security/encrypt-deployment-with-customer-managed-encryption-key.md), [manage trust](/deploy-manage/remote-clusters.md) with {{es}} clusters from other environments, and more.
+:::{include} /deploy-manage/_snippets/ecloud-security.md
+:::
+
+Refer to [](/deploy-manage/security.md) for more details.
+
+:::{include} /deploy-manage/security/_snippets/complete-security.md
+:::
 
 **Monitor your deployments and keep them healthy**
 
@@ -120,13 +84,13 @@ Control which users and services can access your deployments by [securing your e
 
 Find more information about {{ech}} on the following pages:
 
-* [Subscription Levels](/deploy-manage/license.md)
-* [Version Policy](/deploy-manage/deploy/elastic-cloud/available-stack-versions.md)
-* [{{ech}} Hardware](cloud://reference/cloud-hosted/hardware.md)
-* [{{ech}} Regions](cloud://reference/cloud-hosted/regions.md)
-* [Service Status](/deploy-manage/cloud-organization/service-status.md)
+* [](/deploy-manage/license.md)
+* [](/deploy-manage/deploy/elastic-cloud/available-stack-versions.md)
+* [{{ech}} hardware](cloud://reference/cloud-hosted/hardware.md)
+* [{{ech}} regions](cloud://reference/cloud-hosted/regions.md)
+* [](/deploy-manage/cloud-organization/service-status.md)
 * [Getting help](/troubleshoot/index.md)
-* [Restrictions and known problems](/deploy-manage/deploy/elastic-cloud/restrictions-known-problems.md)
+* [](/deploy-manage/deploy/elastic-cloud/restrictions-known-problems.md)
 
 :::{dropdown} {{ech}} FAQ
 
@@ -144,7 +108,6 @@ This frequently-asked-questions list helps you with common questions while you g
 * [What is the difference between {{ech}} and the Amazon {{es}} Service?](/deploy-manage/deploy/elastic-cloud/cloud-hosted.md#faq-vs-aws)
 * [Can I use {{ech}} on platforms other than AWS?](/deploy-manage/deploy/elastic-cloud/cloud-hosted.md#faq-aws)
 * [Do you offer Elastic’s commercial products?](/deploy-manage/deploy/elastic-cloud/cloud-hosted.md#faq-elastic)
-* [Is my {{es}} cluster protected by X-Pack?](/deploy-manage/deploy/elastic-cloud/cloud-hosted.md#faq-x-pack)
 * [Is there a limit on the number of documents or indexes I can have in my cluster?](/deploy-manage/deploy/elastic-cloud/cloud-hosted.md#faq-limit)
 
 $$$faq-what$$$**What is {{ech}}?**
@@ -190,10 +153,6 @@ $$$faq-elastic$$$**Do you offer Elastic’s commercial products?**
     * Graph Analysis & Visualization
 
     [Contact us](https://www.elastic.co/cloud/contact) to learn more.
-
-
-$$$faq-x-pack$$$**Is my {{es}} cluster protected by X-Pack?**
-:   Yes, X-Pack security features offer the full power to protect your {{ech}} deployment with basic authentication and role-based access control.
 
 $$$faq-limit$$$**Is there a limit on the number of documents or indexes I can have in my cluster?**
 :   No. We do not enforce any artificial limit on the number of indexes or documents you can store in your cluster.

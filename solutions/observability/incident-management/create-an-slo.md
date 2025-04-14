@@ -9,9 +9,9 @@ mapped_pages:
 
 ::::{important}
 
-**For Observability serverless projects**, The **Editor** role or higher is required to create SLOs. To learn more, refer to [Assign user roles and privileges](../../../deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
+**For Observability serverless projects**, The **Editor** role or higher is required to create SLOs. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
 
-**For Elastic Stack**, to create and manage SLOs, you need an [appropriate license](https://www.elastic.co/subscriptions), an {{es}} cluster with both `transform` and `ingest` [node roles](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-node.html#node-roles) present, and [SLO access](../../../solutions/observability/incident-management/configure-service-level-objective-slo-access.md) must be configured.
+**For Elastic Stack**, to create and manage SLOs, you need an [appropriate license](https://www.elastic.co/subscriptions), an {{es}} cluster with both `transform` and `ingest` [node roles](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-node.html#node-roles) present, and [SLO access](/solutions/observability/incident-management/configure-service-level-objective-slo-access.md) must be configured.
 
 ::::
 
@@ -23,9 +23,9 @@ To create an SLO, find **SLOs** in the main menu or use the [global search field
 
 From here, complete the following steps:
 
-1. [Define your service-level indicator (SLI)](../../../solutions/observability/incident-management/create-an-slo.md#define-sli).
-2. [Set your objectives](../../../solutions/observability/incident-management/create-an-slo.md#set-slo).
-3. [Describe your SLO](../../../solutions/observability/incident-management/create-an-slo.md#slo-describe).
+1. [Define your service-level indicator (SLI)](/solutions/observability/incident-management/create-an-slo.md#define-sli).
+2. [Set your objectives](/solutions/observability/incident-management/create-an-slo.md#set-slo).
+3. [Describe your SLO](/solutions/observability/incident-management/create-an-slo.md#slo-describe).
 
 ::::{note}
 **For Elastic Stack**, the cluster must include one or more nodes with both `ingest` and `transform` [roles](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-node.html#node-roles). The roles can exist on the same node or be distributed across separate nodes. On {{ech}} deployments, this is handled by the hot nodes, which serve as both `ingest` and `transform` nodes.
@@ -36,11 +36,11 @@ From here, complete the following steps:
 
 The type of SLI to use depends on the location of your data:
 
-* [Custom KQL](../../../solutions/observability/incident-management/create-an-slo.md#custom-kql): Create an SLI based on raw logs coming from your services.
-* [Timeslice metric](../../../solutions/observability/incident-management/create-an-slo.md#timeslice-metric): Create an SLI based on a custom equation that uses multiple aggregations.
-* [Custom metric](../../../solutions/observability/incident-management/create-an-slo.md#custom-metric): Create an SLI to define custom equations from metric fields in your indices.
-* [Histogram metric](../../../solutions/observability/incident-management/create-an-slo.md#histogram-metric): Create an SLI based on histogram metrics.
-* [APM latency and APM availability](../../../solutions/observability/incident-management/create-an-slo.md#apm-latency-and-availability): Create an SLI based on services using application performance monitoring (APM).
+* [Custom KQL](/solutions/observability/incident-management/create-an-slo.md#custom-kql): Create an SLI based on raw logs coming from your services.
+* [Timeslice metric](/solutions/observability/incident-management/create-an-slo.md#timeslice-metric): Create an SLI based on a custom equation that uses multiple aggregations.
+* [Custom metric](/solutions/observability/incident-management/create-an-slo.md#custom-metric): Create an SLI to define custom equations from metric fields in your indices.
+* [Histogram metric](/solutions/observability/incident-management/create-an-slo.md#histogram-metric): Create an SLI based on histogram metrics.
+* [APM latency and APM availability](/solutions/observability/incident-management/create-an-slo.md#apm-latency-and-availability): Create an SLI based on services using application performance monitoring (APM).
 
 
 ### Custom KQL [custom-kql]
@@ -200,9 +200,9 @@ Synthetics availability SLIs are automatically grouped by monitor and location.
 
 After defining your SLI, you need to set your objectives. To set your objectives, complete the following:
 
-1. [Select your budgeting method](../../../solutions/observability/incident-management/create-an-slo.md#slo-budgeting-method)
-2. [Set your time window](../../../solutions/observability/incident-management/create-an-slo.md#slo-time-window)
-3. [Set your target/SLO percentage](../../../solutions/observability/incident-management/create-an-slo.md#slo-target)
+1. [Select your budgeting method](/solutions/observability/incident-management/create-an-slo.md#slo-budgeting-method)
+2. [Set your time window](/solutions/observability/incident-management/create-an-slo.md#slo-time-window)
+3. [Set your target/SLO percentage](/solutions/observability/incident-management/create-an-slo.md#slo-target)
 
 
 ### Set your time window and duration [slo-time-window]
@@ -239,11 +239,11 @@ After setting your objectives, give your SLO a name, a short description, and ad
 
 When you use the UI to create an SLO, a default SLO burn rate alert rule is created automatically. The burn rate rule will use the default configuration and no connector. You must configure a connector if you want to receive alerts for SLO breaches.
 
-For more information about configuring the rule, see [Create an SLO burn rate rule](../../../solutions/observability/incident-management/create-an-slo-burn-rate-rule.md).
+For more information about configuring the rule, see [Create an SLO burn rate rule](/solutions/observability/incident-management/create-an-slo-burn-rate-rule.md).
 
 ## Add an SLO Overview panel to a custom dashboard [slo-dashboard]
 
-After you’ve created your SLO, you can monitor it from the *SLOs* page in Observability, but you can also add an *SLO Overview* panel to a custom dashboard. Read more about dashboards in [Dashboard and visualizations](../../../explore-analyze/dashboards.md).
+After you’ve created your SLO, you can monitor it from the *SLOs* page in Observability, but you can also add an *SLO Overview* panel to a custom dashboard. Read more about dashboards in [Dashboard and visualizations](/explore-analyze/dashboards.md).
 
 :::{image} /solutions/images/observability-slo-overview-embeddable-widget.png
 :alt: Using the Add panel button to add an SLO Overview widget to a dashboard
