@@ -230,7 +230,7 @@ The previous privileges should be sufficient for RUM source mapping to work prop
 
 If [tail-based sampling](/solutions/observability/apm/tail-based-sampling.md) is enabled, the user will need additional privileges.
 
-To grant an APM Server user with the required privileges for reading tail-based sampling indices from {{es}}, assign the user the following privileges:
+APM Server users need the following privileges to read tail-based sampling indices from {{es}}:
 
 | Type | Privilege | Purpose |
 | --- | --- | --- |
