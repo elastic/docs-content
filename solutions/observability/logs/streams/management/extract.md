@@ -127,6 +127,7 @@ In this default pipeline, we locate the last processor that calls a pipeline end
 
 Streams then adds a pipeline processor to the end of that `@custom` pipeline. This processor definition directs matching documents to a dedicated pipeline managed by Streams called `<data_stream_name>@stream.processing`:
 
+```json
 // Example processor added to the relevant @custom pipeline
 {
   "pipeline": {
@@ -136,6 +137,7 @@ Streams then adds a pipeline processor to the end of that `@custom` pipeline. Th
     "description": "Call the stream's managed pipeline - do not change this manually but instead use the Streams UI or API"
   }
 }
+```
 
 Streams then creates and manages the `<data_stream_name>@stream.processing` pipeline, placing the processors you configured in the UI (Grok, Set, etc.) inside it.
 
