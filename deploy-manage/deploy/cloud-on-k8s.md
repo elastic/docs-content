@@ -12,7 +12,7 @@ mapped_pages:
 
 # {{eck}} [k8s-overview]
 
-Built on the Kubernetes Operator pattern, {{eck}} (ECK) extends the basic Kubernetes orchestration capabilities to support the setup and management of {{es}}, {{kib}}, APM Server, Beats, Elastic Agent, Elastic Maps Server, and Logstash on Kubernetes.
+Built on the Kubernetes Operator pattern, {{eck}} (ECK) extends the basic Kubernetes orchestration capabilities to support the setup and management of {{eck_resources_list}} on Kubernetes.
 
 ## ECK overview
 
@@ -28,7 +28,7 @@ This section provides everything you need to install, configure, and manage {{st
 
 - [](./cloud-on-k8s/deploy-an-orchestrator.md): ECK installation methods and configuration options. Deploy ECK on managed Kubernetes platforms like GKE, AKS, and EKS, on self-managed Kubernetes clusters, on OpenShift, and even in air-gapped environments.
 - [](./cloud-on-k8s/manage-deployments.md): Handle {{es}} clusters and {{kib}} instances through ECK.
-- [](./cloud-on-k8s/orchestrate-other-elastic-applications.md): Run APM Server, Beats, Elastic Agent, Elastic Maps Server, and Logstash on Kubernetes.
+- [](./cloud-on-k8s/orchestrate-other-elastic-applications.md): Run {{eck_resources_list_short}} on Kubernetes.
 - [](./cloud-on-k8s/tools-apis.md): A collection of tools and APIs available in ECK based environments.
 
 Other sections of the documentation include the following important topics around ECK:
