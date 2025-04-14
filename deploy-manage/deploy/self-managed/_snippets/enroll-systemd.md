@@ -9,11 +9,11 @@
 
     * A host address to access {{kib}}
     * A six digit verification code
-  
+
     For example:
 
     ```sh
-    {{kib}} has not been configured.
+    Kibana has not been configured.
     Go to http://<host>:5601/?code=<code> to get started.
     ```
 

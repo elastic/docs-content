@@ -3,7 +3,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-upgrading-eck.html
 applies_to:
   deployment:
-    eck: ga 3.0.0  
+    eck: ga 3.0.0
 ---
 
 # Upgrade {{eck}} [k8s-upgrading-eck]
@@ -118,7 +118,7 @@ Exclude Elastic resources from being managed by the operator:
 ```shell
 ANNOTATION='eck.k8s.elastic.co/managed=false'
 
-# Exclude a single {{es}} resource named "quickstart"
+# Exclude a single Elasticsearch resource named "quickstart"
 kubectl annotate --overwrite elasticsearch quickstart $ANNOTATION
 
 # Exclude all resources in the current namespace

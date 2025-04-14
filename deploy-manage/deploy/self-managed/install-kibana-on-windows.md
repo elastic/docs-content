@@ -71,8 +71,8 @@ This is very convenient because you don’t have to create any directories to st
 | home | {{kib}} home directory or `$KIBANA_HOME` | Directory created by unpacking the archive |  |
 | bin | Binary scripts including `kibana` to start the {{kib}} server    and `kibana-plugin` to install plugins | `$KIBANA_HOME\bin` |  |
 | config | Configuration files including `kibana.yml` | `$KIBANA_HOME\config` | `[KBN_PATH_CONF](configure-kibana.md)` |
-|  | data | `The location of the data files written to disk by {{kib}} and its plugins` | `$KIBANA_HOME\data` |
-|  | plugins | `Plugin files location. Each plugin will be contained in a subdirectory.` | `$KIBANA_HOME\plugins` |
+|  | data | The location of the data files written to disk by {{kib}} and its plugins | `$KIBANA_HOME\data` |
+|  | plugins | Plugin files location. Each plugin will be contained in a subdirectory. | `$KIBANA_HOME\plugins` |
 
 ## Next steps
 
