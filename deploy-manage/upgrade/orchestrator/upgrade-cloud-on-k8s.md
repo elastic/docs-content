@@ -115,7 +115,7 @@ Once a resource is excluded from being managed by ECK, you will not be able to a
 Exclude Elastic resources from being managed by the operator:
 
 
-```shell
+```shell subs=true
 ANNOTATION='eck.k8s.elastic.co/managed=false'
 
 # Exclude a single {{es}} resource named "quickstart"
@@ -130,7 +130,7 @@ for NS in $(kubectl get ns -o=custom-columns='NAME:.metadata.name' --no-headers)
 
 Once the operator has been upgraded and you are ready to let the resource become managed again (triggering a rolling restart of pods in the process), remove the annotation.
 
-```shell
+```shell subs=true
 RM_ANNOTATION='eck.k8s.elastic.co/managed-'
 
 # Resume management of a single {{es}} cluster named "quickstart"
