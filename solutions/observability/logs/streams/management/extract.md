@@ -77,7 +77,7 @@ Selecting 'Save changes' applies your changes to the data stream.
 
 If you edit the stream again, note the following:
 - Adding more processors to the end of the list will work as expected.
-- Changing existing processors or re-ordering them may cause unexpected results. Because the the pipeline may have already processed the documents used for sampling, the UI cannot accurately simulate changes to existing data.
+- Changing existing processors or re-ordering them may cause unexpected results. Because the pipeline may have already processed the documents used for sampling, the UI cannot accurately simulate changes to existing data.
 - Adding a new processor and moving it before an existing processor may cause unexpected results. The UI only simulates the new processor, not the existing ones, so the simulation may not accurately reflect changes to existing data.
 
 ![Screenshot of the Grok processor UI](<../../../../images/logs-streams-grok.png>)
