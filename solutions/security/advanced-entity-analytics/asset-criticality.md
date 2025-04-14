@@ -30,7 +30,7 @@ For example, you can assign **Extreme impact** to business-critical entities, or
 
 ## View and assign asset criticality [_view_and_assign_asset_criticality]
 
-Entities do not have a default asset criticality level. You can either assign asset criticality to your entities individually, or [bulk assign](#bulk-assign-asset-criticality) it to multiple entities by importing a text file. Alternatively, you can assign and manage asset criticality records through the [*Asset criticality API*](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-security-entity-analytics-api).
+Entities do not have a default asset criticality level. You can either assign asset criticality to your entities individually, or [bulk assign](#bulk-assign-asset-criticality) it to multiple entities by importing a text file. Alternatively, you can assign and manage asset criticality records through the [Asset criticality API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-security-entity-analytics-api).
 
 When you assign, change, or unassign an individual entity’s asset criticality level, that entity’s risk score is immediately recalculated.
 
