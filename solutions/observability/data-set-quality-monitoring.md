@@ -17,7 +17,7 @@ To open **Data Set Quality**, find **Stack Management** in the main menu or use 
 ::::{admonition} Requirements
 :class: note
 
-Users with the `viewer` role can view the Data Sets Quality summary. To view the Active Data Sets and Estimated Data summaries, users need the `monitor` [index privilege](../../deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-indices) for the `logs-*-*` index.
+Users with the `viewer` role can view the Data Sets Quality summary. To view the Active Data Sets and Estimated Data summaries, users need the `monitor` [index privilege](/deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-indices) for the `logs-*-*` index.
 
 ::::
 

@@ -9,7 +9,7 @@ navigation_title: "Threshold breaches"
 # Triage threshold breaches [triage-threshold-breaches]
 
 
-Threshold breaches occur when an {{observability}} data type reaches or exceeds the threshold set in your [custom threshold rule](../../../solutions/observability/incident-management/create-custom-threshold-rule.md). For example, you might have a custom threshold rule that triggers an alert when the total number of log documents with a log level of `error` reaches 100.
+Threshold breaches occur when an {{observability}} data type reaches or exceeds the threshold set in your [custom threshold rule](/solutions/observability/incident-management/create-custom-threshold-rule.md). For example, you might have a custom threshold rule that triggers an alert when the total number of log documents with a log level of `error` reaches 100.
 
 To triage issues quickly, go to the alert details page:
 
@@ -32,7 +32,7 @@ Explore charts on the page to learn more about the threshold breach:
 
     ::::
 
-* **Log rate analysis chart**. If your rule is intended to detect log threshold breaches (that is, it has a single condition that uses a count aggregation), you can run a log rate analysis, assuming you have the required license. Running a log rate analysis is useful for detecting significant dips or spikes in the number of logs. Notice that you can adjust the baseline and deviation, and then run the analysis again. For more information about using the log rate analysis feature, refer to the [AIOps Labs](../../../explore-analyze/machine-learning/machine-learning-in-kibana/xpack-ml-aiops.md#log-rate-analysis) documentation.
+* **Log rate analysis chart**. If your rule is intended to detect log threshold breaches (that is, it has a single condition that uses a count aggregation), you can run a log rate analysis, assuming you have the required license. Running a log rate analysis is useful for detecting significant dips or spikes in the number of logs. Notice that you can adjust the baseline and deviation, and then run the analysis again. For more information about using the log rate analysis feature, refer to the [AIOps Labs](/explore-analyze/machine-learning/machine-learning-in-kibana/xpack-ml-aiops.md#log-rate-analysis) documentation.
 
     :::{image} /solutions/images/observability-log-threshold-breach-log-rate-analysis.png
     :alt: Log rate analysis chart in alert details for log threshold breach
@@ -52,5 +52,5 @@ Analyze these charts to better understand when the breach started, it’s curren
 After investigating the alert, you may want to:
 
 * Click **Snooze the rule** to snooze notifications for a specific time period or indefinitely.
-* Click the ![Actions](/solutions/images/observability-boxesVertical.svg "") icon and select **Add to case** to add the alert to a new or existing case. To learn more, refer to [Cases](../../../solutions/observability/incident-management/cases.md).
+* Click the ![Actions](/solutions/images/observability-boxesVertical.svg "") icon and select **Add to case** to add the alert to a new or existing case. To learn more, refer to [Cases](/solutions/observability/incident-management/cases.md).
 * Click the ![Actions](/solutions/images/observability-boxesVertical.svg "") icon and select **Mark as untracked**. When an alert is marked as untracked, actions are no longer generated. You can choose to move active alerts to this state when you disable or delete rules.

@@ -228,7 +228,7 @@ POST /_query?format=txt
 }
 ```
 1. The `METADATA _score` clause is used to return the score of each document
-2. The [match (`:`) operator](elasticsearch://reference/query-languages/esql/esql-functions-operators.md#esql-search-operators) is used on the `content` field for standard keyword matching
+2. The [match (`:`) operator](elasticsearch://reference/query-languages/esql/functions-operators/operators.md#esql-match-operator) is used on the `content` field for standard keyword matching
 3. Semantic search using the `match()` function on the `semantic_text` field with a boost of `0.75`
 4. Sorts by descending score and limits to 1000 results
 :::

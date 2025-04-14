@@ -106,4 +106,4 @@ Click any subheadings under Universal Profiling in the navigation menu. You shou
 
 If you see instructions on how to deploy the Universal Profiling Agent like in the [examples](get-started-with-universal-profiling.md#profiling-install-profiling-agent) from the [Get Started](get-started-with-universal-profiling.md) documentation, the agents did not reconnect to the Integrations Server replicas.
 
-Refer to the [troubleshooting](../../../troubleshoot/observability/troubleshoot-your-universal-profiling-agent-deployment.md) documentation and the [Get Started](get-started-with-universal-profiling.md) documentation to investigate the issue.
+Refer to the [troubleshooting](/troubleshoot/observability/troubleshoot-your-universal-profiling-agent-deployment.md) documentation and the [Get Started](get-started-with-universal-profiling.md) documentation to investigate the issue.
