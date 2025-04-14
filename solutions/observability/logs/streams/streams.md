@@ -40,7 +40,7 @@ The **Overview** tab provides key metrics for the selected stream, such as data 
 
 the **Overview** tab is made up of the following components:
 
-- **Data retention**: Your current data retention policy. For more detailed information, visit [**Data Retention**](./management/retention.md) under the **Management** tab.
+- **Data retention**: Your current data retention policy. For more detailed information, refer to the [**Data Retention**](./management/retention.md) tab on the **Management** page.
 - **Document count**: The current total number of documents in your stream, unrelated to the time range.
 - **Storage size**: The current total storage size of your stream, unrelated to the time range.
 - **Ingestion**: shows the average ingestion per day since the stream was created.
@@ -59,9 +59,9 @@ Add a dashboard to your stream by selecting it from the list of available dashbo
 
 Added dashboards are also shown on the [**Overview** tab](#streams-overview-tab) as quick links.
 
-## Management tab [streams-management-tab]
+## Management page [streams-management-tab]
 
-The **Management** tab is where you can interact with and configure your stream in the following ways:
+The **Management** page is where you can interact with and configure your stream in the following ways:
 
 % Probably want a screenshot here for consistency with the other tabs?
 

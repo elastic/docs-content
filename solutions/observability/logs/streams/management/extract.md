@@ -6,7 +6,7 @@ applies_to:
 
 Unstructured log messages need to be parsed into meaningful fields so you can filter and analyze them quickly. Common fields to extract include timestamp and the log level, but you can also extract information like IP addresses, usernames, or ports.
 
-Use the **Extract field** page under the **Management** tab to process your data. Changes are immediately available as a preview and tested end-to-end.
+Use the **Extract field** tab on the **Management** page to process your data. Changes are immediately available as a preview and tested end-to-end.
 The UI simulates your changes, so you can see them immediately.
 
 The UI also shows indexing problems, such as mapping conflicts, so you can address them before applying changes.
