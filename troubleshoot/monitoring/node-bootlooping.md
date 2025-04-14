@@ -102,7 +102,7 @@ In some cases, settings may accidentally be added to the keystore that should ha
 
 The error message `The configuration setting [...] is required` indicates that the corresponding setting is configured and present in the Elasticsearch instance via [Elasticsearch user settings](/deploy-manage/deploy/elastic-cloud/edit-stack-settings.md#ec-add-user-settings), but is either missing or improperly configured in [secure settings](/deploy-manage/security/secure-settings.md). Please review your [secure settings](/deploy-manage/security/secure-settings.md) to ensure they are configured correctly.
 
-Additionally, if you configure these settings via a client tool or API and encounter the error, try configuring the settings directly in the Cloud UI to isolate the cause. If configuring in the Cloud UI does not result in the same error, it suggests that the keystore setting is valid, and the method of configuration should be examined. Conversely, if the same error is reported, it suggests that the keystore setting may be invalid and should be reviewed.
+  Additionally, if you configure these settings via a client tool, such as the [Terraform Provider for Elastic Cloud](https://github.com/elastic/terraform-provider-ec), or through an API and encounter the error, try configuring the settings directly in the Cloud UI to isolate the cause. If configuring in the Cloud UI does not result in the same error, it suggests that the keystore setting is valid, and the method of configuration should be examined. Conversely, if the same error is reported, it suggests that the keystore setting may be invalid and should be reviewed.
 
 
 
