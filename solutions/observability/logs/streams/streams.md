@@ -19,7 +19,8 @@ A Stream in this interface directly corresponds to an {{es}} data stream (for ex
 ## Required permissions
 Streams requires the following Elastic Cloud Serverless roles:
 
-% - TODO
+- Admin: ability to manage all Streams
+- Editor/ Viewer: limited access, unable to perform all actions 
 
 ## Access Streams
 To access Streams:
@@ -27,7 +28,7 @@ To access Streams:
 - From the navigation menu, select **Streams**.
 
 - From discover, expand a document's details flyout.
-Select the **Stream** link or action associated with the document's data stream to open the Streams interface, filtered to show only the selected stream.
+Select the **Stream** link or action associated with the document's data stream to open the Streams interface, filtered to show only the selected stream. Note that this only works for documents stored in a data stream.
 
 
 ## Overview tab [streams-overview-tab]
