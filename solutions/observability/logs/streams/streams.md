@@ -34,7 +34,7 @@ Access streams in one of the following ways:
 
 ## Overview tab [streams-overview-tab]
 
-The **Overview** tab provides key metrics for the selected stream, such as data retention, document count, storage size, and average ingestion.
+Use the **Overview** tab to find key metrics for the selected stream, such as data retention, document count, storage size, and average ingestion.
 
 ![Screenshot of the Overview tab UI](<../../../images/logs-streams-overview.png>)
 
@@ -51,7 +51,7 @@ the **Overview** tab is made up of the following components:
 
 ## Dashboards tab [streams-dashboard-tab]
 
-The **Dashboards** tab is where you can add dashboards to your stream. [Dashboards](../../../../explore-analyze/dashboards.md) are visualizations that group together important assets for your stream.
+Use the **Dashboards** tab to add dashboards to your stream. [Dashboards](../../../../explore-analyze/dashboards.md) are visualizations that group together important assets for your stream.
 
 Add a dashboard to your stream by selecting it from the list of available dashboards.
 
@@ -59,9 +59,9 @@ Add a dashboard to your stream by selecting it from the list of available dashbo
 
 Added dashboards are also shown on the [**Overview** tab](#streams-overview-tab) as quick links.
 
-## Management page [streams-management-tab]
+## Manage stream [streams-management-tab]
 
-The **Management** page is where you can interact with and configure your stream in the following ways:
+Use the **Manage stream** page to interact with and configure your stream in the following ways:
 
 % Probably want a screenshot here for consistency with the other tabs?
 

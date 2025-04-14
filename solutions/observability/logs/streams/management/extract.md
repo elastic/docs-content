@@ -6,7 +6,7 @@ applies_to:
 
 Unstructured log messages need to be parsed into meaningful fields so you can filter and analyze them quickly. Common fields to extract include timestamp and the log level, but you can also extract information like IP addresses, usernames, or ports.
 
-Use the **Extract field** tab on the **Management** page to process your data. Changes are immediately available as a preview and tested end-to-end.
+Use the **Extract field** tab on the **Manage stream** page to process your data. Changes are immediately available as a preview and tested end-to-end.
 The UI simulates your changes, so you can see them immediately.
 
 The UI also shows indexing problems, such as mapping conflicts, so you can address them before applying changes.
@@ -119,7 +119,7 @@ When you save processors, Streams modifies the "best matching" ingest pipeline f
 Streams identifies the appropriate @custom pipeline (for example, `logs-myintegration@custom` or `logs@custom`).
 It checks the default_pipeline that is set on the datastream.
 
-You can view the default pipeline at **Management** → **Advanced** under **Ingest pipeline**.
+You can view the default pipeline at **Manage stream** → **Advanced** under **Ingest pipeline**.
 In this default pipeline, we locate the last processor that calls a pipeline ending in `@custom`. For integrations, this would result in a pipeline name like `logs-myintegration@custom`. Without an integration, the only `@custom` pipeline available may be `logs@custom`.
 
 - If no default pipeline is detected, Streams adds a default pipeline to the data stream by updating the index templates.
