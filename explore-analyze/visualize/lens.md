@@ -45,7 +45,7 @@ Edit and delete.
 
 1. Hover over the panel and click ![Edit visualization icon](/explore-analyze/images/kibana-edit-visualization-icon.png "") to edit the visualization. The **Edit visualization** flyout appears.
 2. To change the aggregation **Quick function**, click the field in the flyout.
-3. To delete a field, click ![Actions menu icon to delete a field](/explore-analyze/images/kibana-trash_can.png "") next to the field.
+3. To delete a field, click ![Actions menu icon to delete a field](/explore-analyze/images/kibana-trash_can.png "kibana-trash_can =5%x5%") next to the field.
 4. To duplicate a layer, click ![Actions menu to duplicate Lens visualization layers](/explore-analyze/images/kibana-vertical-actions-menu.png "") in the flyout, then select **Duplicate layer**.
 5. To clear the layer configuration, click ![Actions menu to clear Lens visualization layers](/explore-analyze/images/kibana-vertical-actions-menu.png "") in the flyout, then select **Clear layer**.
 6. Click **Apply and close**.
@@ -67,6 +67,7 @@ Change the fields list to display a different {{data-source}}, different time ra
 * If the fields list is empty, change the [time filter](../query-filter/filtering.md).
 * To add fields, open the {{data-source}} dropdown, then select **Add a field to this {{data-source}}**.
   ![Dropdown menu located next to {{data-source}} field with items for adding and managing fields](/explore-analyze/images/kibana-lens_dataViewDropDown_8.4.0.png "")
+  
   For more information about adding fields to {{data-sources}} and examples, refer to [Explore your data with runtime fields](../find-and-organize/data-views.md#runtime-fields).
 
 

@@ -1,5 +1,5 @@
 ---
-navigation_title: Include additional Kibana plugins
+navigation_title: Include additional {{kib}} plugins
 applies_to:
   deployment:
     ece: all
@@ -7,31 +7,31 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-include-additional-kibana-plugin.html
 ---
 
-# Include additional Kibana plugins [ece-include-additional-kibana-plugin]
+# Include additional {{kib}} plugins [ece-include-additional-kibana-plugin]
 
-In certain cases you may choose to expand the Kibana Docker image included in an Elastic Stack pack to include one or more additional plugins that are not bundled in the image by default. Plugins can extend the features included in Kibana, for example to include specialized visualizations. Adding plugins allows you to tailor your ECE deployments that include Kibana to suit your specific use cases.
+In certain cases you may choose to expand the {{kib}} Docker image included in an {{stack}} pack to include one or more additional plugins that are not bundled in the image by default. Plugins can extend the features included in {{kib}}, for example to include specialized visualizations. Adding plugins allows you to tailor your ECE deployments that include {{kib}} to suit your specific use cases.
 
 The process involves two main steps:
 
-1. [Extend an existing Kibana Docker image to include the additional plugins.](#ece-create-modified-docker-image)
-2. [Update the Elastic Stack pack included in your ECE installation to point to your modified Docker image.](#ece-modify-stack-pack)
+1. [Extend an existing {{kib}} Docker image to include the additional plugins.](#ece-create-modified-docker-image)
+2. [Update the {{stack}} pack included in your ECE installation to point to your modified Docker image.](#ece-modify-stack-pack)
 
 
 ## Before you begin [ece_before_you_begin_5] 
 
 Note the following restrictions:
 
-* These instructions have been tested for Elastic Stack versions starting with 6.7.0 and may not work for earlier versions.
-* Plugins that you bundle yourself to be included in the Elastic Stack are not covered by Elastic Customer Support and include no guarantee from Elastic.
-* After uploading a modified version of an Elastic Stack pack, if you reapply the original stack the changes will be lost and new Kibana instances will use the original Docker image provided by Elastic.
+* These instructions have been tested for {{stack}} versions starting with 6.7.0 and may not work for earlier versions.
+* Plugins that you bundle yourself to be included in the {{stack}} are not covered by Elastic Customer Support and include no guarantee from Elastic.
+* After uploading a modified version of an {{stack}} pack, if you reapply the original stack the changes will be lost and new {{kib}} instances will use the original Docker image provided by Elastic.
 * The Dockerfile used in this example includes an optimization process that is relatively expensive and may require a machine with several GB of RAM to run successfully.
 
 
-## Extend a Kibana Docker image to include additional plugins [ece-create-modified-docker-image] 
+## Extend a {{kib}} Docker image to include additional plugins [ece-create-modified-docker-image] 
 
-This example runs a Dockerfile to install the [analyze_api_ui plugin](https://github.com/johtani/analyze-api-ui-plugin) or [kibana-enhanced-table](https://github.com/fbaligand/kibana-enhanced-table) into different versions of Kibana Docker image. The contents of the Dockerfile varies depending on the version of the Elastic Stack pack that you want to modify.
+This example runs a Dockerfile to install the [analyze_api_ui plugin](https://github.com/johtani/analyze-api-ui-plugin) or [kibana-enhanced-table](https://github.com/fbaligand/kibana-enhanced-table) into different versions of {{kib}} Docker image. The contents of the Dockerfile varies depending on the version of the {{stack}} pack that you want to modify.
 
-1. Choose a directory on your ECE installation and save the Dockerfile code for your Elastic Stack version as a file named  `Dockerfile`.
+1. Choose a directory on your ECE installation and save the Dockerfile code for your {{stack}} version as a file named  `Dockerfile`.
 
     ```sh
     FROM docker.elastic.co/cloud-release/kibana-cloud:8.13.1
@@ -47,7 +47,7 @@ This example runs a Dockerfile to install the [analyze_api_ui plugin](https://gi
     * The plugin name and version number
 
         ::::{important} 
-        When you modify a Kibana Docker image, make sure you maintain the original image structure and only add the additional plugins.
+        When you modify a {{kib}} Docker image, make sure you maintain the original image structure and only add the additional plugins.
         ::::
 
 3. Build the modified Docker image, specifying an image name and version number. If you are using your own Docker repository, the `docker.elastic.co/cloud-assets` section must match your specific configuration. The image build process can take several minutes.
@@ -73,11 +73,11 @@ This example runs a Dockerfile to install the [analyze_api_ui plugin](https://gi
 
 
 
-## Modify the Elastic Stack pack to point to your modified image [ece-modify-stack-pack] 
+## Modify the {{stack}} pack to point to your modified image [ece-modify-stack-pack] 
 
-Follow these steps to update the Elastic Stack pack zip files in your ECE setup to point to your modified Docker image:
+Follow these steps to update the {{stack}} pack zip files in your ECE setup to point to your modified Docker image:
 
-1. Download to a local directory the [Elastic Stack pack](manage-elastic-stack-versions.md) that you want to modify.
+1. Download to a local directory the [{{stack}} pack](manage-elastic-stack-versions.md) that you want to modify.
 2. Save the following bash script with the name `change-kibana-image.sh`:
 
     ```sh
@@ -85,7 +85,7 @@ Follow these steps to update the Elastic Stack pack zip files in your ECE setup 
 
     set -eo pipefail
 
-    # Repack a stackpack to modify the Kibana image it points to
+    # Repack a stackpack to modify the {{kib}} image it points to
 
     NO_COLOR='\033[0m'
     ERROR_COLOR='\033[1;31m'
@@ -138,17 +138,17 @@ Follow these steps to update the Elastic Stack pack zip files in your ECE setup 
     sudo chmod 755 change-kibana-image.sh
     ```
 
-4. Run the script to update the Elastic Stack pack, where `FILE_PATH` is the location where you downloaded the Elastic Stack pack zip file:
+4. Run the script to update the {{stack}} pack, where `FILE_PATH` is the location where you downloaded the {{stack}} pack zip file:
 
     ```sh
     ./change-kibana-image.sh FILE_PATH/8.13.1.zip docker.elastic.co/cloud-assets/kibana-with-plugin:8.13.1
     ```
 
-5. Upload the modified Elastic Stack pack to your ECE installation:
+5. Upload the modified {{stack}} pack to your ECE installation:
 
     1. [Log into the Cloud UI](log-into-cloud-ui.md).
-    2. Go to **Platform** and then **Elastic Stack**.
-    3. Select **Upload Elastic Stack pack** to add the new Elastic Stack pack or replace an existing one. You can create a new deployment using the new or updated Elastic stack pack. When you launch Kibana the additional plugin is available.
+    2. Go to **Platform** and then **{{stack}}**.
+    3. Select **Upload {{stack}} pack** to add the new {{stack}} pack or replace an existing one. You can create a new deployment using the new or updated {{stack}} pack. When you launch {{kib}} the additional plugin is available.
 
 
 

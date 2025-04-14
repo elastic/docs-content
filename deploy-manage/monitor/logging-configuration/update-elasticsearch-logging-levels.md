@@ -9,7 +9,7 @@ applies_to:
     self: all
 ---
 
-# Update Elasticsearch logging levels [logging]
+# Update {{es}} logging levels [logging]
 
 $$$deprecation-logging$$$
 $$$_deprecation_logs_throttling$$$

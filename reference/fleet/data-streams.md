@@ -101,7 +101,7 @@ You can edit a `@custom` component template to customize your {{es}} indices:
 5. Search for the name of the data stream’s custom component template and click the edit icon.
 6. Add any custom index settings, metadata, or mappings. For example, you may want to:
 
-    * Customize the index lifecycle policy applied to a data stream. See [Configure a custom index lifecycle policy](/solutions/observability/apps/index-lifecycle-management.md#apm-data-streams-custom-policy) in the APM Guide for a walk-through.
+    * Customize the index lifecycle policy applied to a data stream. See [Configure a custom index lifecycle policy](/solutions/observability/apm/index-lifecycle-management.md#apm-data-streams-custom-policy) in the APM Guide for a walk-through.
 
         Specify lifecycle name in the **index settings**:
 

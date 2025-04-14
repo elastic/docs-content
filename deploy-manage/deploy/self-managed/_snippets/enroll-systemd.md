@@ -1,4 +1,4 @@
-1. Run the `status` command to get details about the {{{kib}}} service.
+1. Run the `status` command to get details about the {{kib}} service.
 
     ```sh
     sudo systemctl status kibana
@@ -13,7 +13,7 @@
     For example:
 
     ```sh
-    Kibana has not been configured.
+    {{kib}} has not been configured.
     Go to http://<host>:5601/?code=<code> to get started.
     ```
 

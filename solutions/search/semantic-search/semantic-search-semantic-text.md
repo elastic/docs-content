@@ -127,7 +127,7 @@ GET semantic-embeddings/_search
 :::{tab-item} ES|QL
 :sync: esql
 
-The ES|QL approach uses the [match (`:`) operator](elasticsearch://reference/query-languages/esql/esql-functions-operators.md#esql-search-operators), which automatically detects the `semantic_text` field and performs the search on it. The query uses `METADATA _score` to sort by `_score` in descending order.
+The ES|QL approach uses the [match (`:`) operator](elasticsearch://reference/query-languages/esql/functions-operators/operators.md#esql-match-operator), which automatically detects the `semantic_text` field and performs the search on it. The query uses `METADATA _score` to sort by `_score` in descending order.
 
 
 ```console
@@ -142,7 +142,7 @@ POST /_query?format=txt
 }
 ```
 1. The `METADATA _score` clause is used to return the score of each document
-2. The [match (`:`) operator](elasticsearch://reference/query-languages/esql/esql-functions-operators.md#esql-search-operators) is used on the `content` field for standard keyword matching
+2. The [match (`:`) operator](elasticsearch://reference/query-languages/esql/functions-operators/operators.md#esql-match-operator) is used on the `content` field for standard keyword matching
 3. Sorts by descending score to display the most relevant results first
 4. Limits the results to 1000 documents
 

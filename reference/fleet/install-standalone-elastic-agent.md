@@ -64,6 +64,23 @@ To install and run {{agent}} standalone:
     curl -L -O https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-{{stack-version}}-amd64.deb
     sudo dpkg -i elastic-agent-{{stack-version}}-amd64.deb
     ```
+
+    By default the {{agent}} basic flavor is installed. To install the servers flavor add the `ELASTIC_AGENT_FLAVOR=servers` parameter. Refer to [{{agent}} installation flavors](./install-elastic-agents.md#elastic-agent-installation-flavors) for details about the different flavors.
+
+    You can use either of the two command formats to set the `ELASTIC_AGENT_FLAVOR` environment variable:
+
+    ```shell subs=true
+    curl -L -O https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-{{stack-version}}-amd64.deb
+    sudo ELASTIC_AGENT_FLAVOR=servers dpkg -i elastic-agent-{{stack-version}}-amd64.deb
+    ```
+
+    ```shell subs=true
+    curl -L -O https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-{{stack-version}}-amd64.deb
+    ELASTIC_AGENT_FLAVOR=servers sudo -E dpkg -i elastic-agent-{{stack-version}}-amd64.deb
+    ```
+    
+    **NOTE:** If you need to uninstall an {{agent}} package on Debian Linux, note that the `dpkg -r` command to remove a package leaves the flavor file in place. Instead, `dpkg -P` must to be used to purge all package content and reset the flavor.
+
     :::
 
     :::{tab-item} RPM
@@ -77,11 +94,28 @@ To install and run {{agent}} standalone:
     curl -L -O https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-{{stack-version}}-x86_64.rpm
     sudo rpm -vi elastic-agent-{{stack-version}}-x86_64.rpm
     ```
+
+    By default the {{agent}} basic flavor is installed. To install the servers flavor add the `ELASTIC_AGENT_FLAVOR=servers` parameter. Refer to [{{agent}} installation flavors](./install-elastic-agents.md#elastic-agent-installation-flavors) for details about the different flavors.
+    
+    You can use either of the two command formats to set the `ELASTIC_AGENT_FLAVOR` environment variable:
+
+    ```shell subs=true
+    curl -L -O https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-{{stack-version}}-amd64.deb
+    sudo ELASTIC_AGENT_FLAVOR=servers rpm -vi elastic-agent-{{stack-version}}-x86_64.rpm
+    ```
+
+    ```shell subs=true
+    curl -L -O https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-{{stack-version}}-amd64.deb
+    ELASTIC_AGENT_FLAVOR=servers sudo -E rpm -vi elastic-agent-{{stack-version}}-x86_64.rpm
+    ```
+
     :::
 
     ::::
 
     The commands shown are for AMD platforms, but ARM packages are also available. Refer to the {{agent}} [downloads page](https://www.elastic.co/downloads/elastic-agent) for the full list of available packages.
+
+
 
 2. Modify settings in the `elastic-agent.yml` as required.
 
@@ -122,6 +156,9 @@ To install and run {{agent}} standalone:
     ```shell
     sudo ./elastic-agent install
     ```
+
+    By default the {{agent}} basic flavor is installed. To install the servers flavor, add the `--ìnstall-servers` parameter. Refer to [{{agent}} installation flavors](./install-elastic-agents.md#elastic-agent-installation-flavors) for details.
+
     ::::
 
     ::::{tab-item} Linux
@@ -132,7 +169,10 @@ To install and run {{agent}} standalone:
 
     ```shell
     sudo ./elastic-agent install
-    ```
+    ``` 
+
+    By default the {{agent}} basic flavor is installed. To install the servers flavor, add the `--ìnstall-servers` parameter. Refer to [{{agent}} installation flavors](./install-elastic-agents.md#elastic-agent-installation-flavors) for details.
+
     ::::
 
     ::::{tab-item} Windows
@@ -144,6 +184,9 @@ To install and run {{agent}} standalone:
     ```shell
     .\elastic-agent.exe install
     ```
+
+    By default the {{agent}} basic flavor is installed. To install the servers flavor, add the `--ìnstall-servers` parameter. Refer to [{{agent}} installation flavors](./install-elastic-agents.md#elastic-agent-installation-flavors) for details.
+
     ::::
 
     ::::{tab-item} DEB
@@ -154,6 +197,7 @@ To install and run {{agent}} standalone:
     ```
     
     1. The DEB package includes a service unit for Linux systems with systemd. On these systems, you can manage {{agent}} by using the usual systemd commands. If you don’t have systemd, run `sudo service elastic-agent start`.
+
     ::::
 
     ::::{tab-item} RPM
@@ -164,6 +208,7 @@ To install and run {{agent}} standalone:
     ```
 
     1. The RPM package includes a service unit for Linux systems with systemd. On these systems, you can manage {{agent}} by using the usual systemd commands. If you don’t have systemd, run `sudo service elastic-agent start`.
+
     ::::
 
     :::::

@@ -152,7 +152,7 @@ Use the default notification message or customize it. You can add more context t
 :screenshot:
 :::
 
-The following variables are specific to this rule type. You an also specify [variables common to all rules](../../../explore-analyze/alerts-cases/alerts/rule-action-variables.md).
+The following variables are specific to this rule type. You an also specify [variables common to all rules](/explore-analyze/alerts-cases/alerts/rule-action-variables.md).
 
 `context.alertDetailsUrl`
 :   Link to the alert troubleshooting view for further context and details. This will be an empty string if the `server.publicBaseUrl` is not configured.
@@ -332,7 +332,7 @@ When a rule check is performed, a query is built based on the configuration of t
 
 ## Settings [settings]
 
-With log threshold rules, it’s not possible to set an explicit index pattern as part of the configuration. The index pattern is instead inferred from **Log indices** on the [Settings](../logs/configure-data-sources.md) page of the {{logs-app}}.
+With log threshold rules, it’s not possible to set an explicit index pattern as part of the configuration. The index pattern is instead inferred from **Log sources** at **Stack Management** → **Advanced settings** under **Observability**.
 
 With each execution of the rule check, the **Log indices** setting is checked, but it is not stored when the rule is created.
 
